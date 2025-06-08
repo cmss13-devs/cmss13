@@ -192,6 +192,7 @@
 
 				if(ishuman_strict(target))
 					target.apply_effect(2, SLOW)
+					target.apply_stamina_damage(stamina_damage, limb_to_target, ARMOR_ENERGY)
 
 			target.apply_armoured_damage(get_xeno_damage_slash(target, damage), ARMOR_MELEE, BRUTE, limb_to_target ? limb_to_target.name : "chest")
 			shake_camera(target, 2, 1)

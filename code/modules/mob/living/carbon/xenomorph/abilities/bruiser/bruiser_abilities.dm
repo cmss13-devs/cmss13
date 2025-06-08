@@ -6,8 +6,9 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	xeno_cooldown = 8 SECONDS
 
-	var/base_damage = 25
+	var/base_damage = 15
 	var/damage_variance = 5
+	var/stamina_damage = 50
 
 /datum/action/xeno_action/activable/fling/bash
 	name = "Bash"

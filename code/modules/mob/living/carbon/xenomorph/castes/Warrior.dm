@@ -327,7 +327,7 @@
 	if (!fling_user.Adjacent(affected_atom) && range == 1)
 		return
 	else if(!fling_user.Adjacent(affected_atom) && get_dist(affected_atom, fling_user) <= range)
-		fling_user.throw_atom(get_step_towards(affected_atom, fling_user), 3, SPEED_SLOW, fling_user, tracking=TRUE)
+		fling_user.throw_atom(get_step_towards(affected_atom, fling_user), 3, SPEED_VERY_FAST, fling_user, tracking=TRUE)
 	else if(get_dist(affected_atom, fling_user) > range)
 		return
 

@@ -51,6 +51,12 @@
 
 /obj/structure/machinery/medical_pod/autodoc/go_out()
 	. = ..()
+	surgery = 0
+	heal_brute = 0
+	heal_burn = 0
+	heal_toxin = 0
+	filtering = 0
+	blood_transfer = 0
 	surgery_todo_list = list()
 	stop_processing()
 	if(connected)
@@ -68,12 +74,6 @@
 	if(surgery)
 		visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
 		occupant.take_limb_damage(rand(30,50),rand(30,50))
-		surgery = FALSE
-		heal_brute = 0
-		heal_burn = 0
-		heal_toxin = 0
-		filtering = 0
-		blood_transfer = 0
 		// message_admins for now, may change to message_admins later
 		message_admins("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
 		return TRUE
@@ -108,7 +108,6 @@
 	..()
 	if((stat & NOPOWER) && occupant)
 		visible_message("\The [src] engages the safety override, ejecting the occupant.")
-		surgery = 0
 		go_out()
 		return
 
@@ -135,7 +134,6 @@
 	if(occupant)
 		if(occupant.stat == DEAD)
 			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Patient has expired.")
-			surgery = 0
 			go_out()
 			return
 		if(surgery)
@@ -554,7 +552,6 @@
 
 	patient.pain.recalculate_pain()
 	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
-	surgery = 0
 	SStgui.close_uis(connected)
 	go_out()
 

@@ -324,9 +324,12 @@
 	if (!fling_user.check_state() || fling_user.agility)
 		return
 
+	var/applied_cooldown_early = FALSE
 	if (!fling_user.Adjacent(affected_atom) && range == 1)
 		return
 	else if(!fling_user.Adjacent(affected_atom) && get_dist(affected_atom, fling_user) <= range)
+		apply_cooldown()
+		applied_cooldown_early = TRUE
 		fling_user.throw_atom(get_step_towards(affected_atom, fling_user), 3, SPEED_VERY_FAST, fling_user, tracking=TRUE)
 	else if(get_dist(affected_atom, fling_user) > range)
 		return
@@ -375,7 +378,8 @@
 
 		carbon.apply_armoured_damage(fling_damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 
-	apply_cooldown()
+	if(!applied_cooldown_early)
+		apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/affected_atom)

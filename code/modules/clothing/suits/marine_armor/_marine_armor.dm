@@ -281,7 +281,7 @@
 	specialty = "M4 pattern marine"
 
 /obj/item/clothing/suit/storage/marine/MP
-	name = "\improper M2 pattern MP armor"
+	name = "\improper M2 pattern military police armor"
 	desc = "A standard Colonial Marines M2 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
 	icon_state = "mp_armor"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -317,18 +317,18 @@
 	black_market_value = 20
 
 /obj/item/clothing/suit/storage/marine/MP/warden
-	name = "\improper M3 pattern warden MP armor"
+	name = "\improper M3 pattern warden military police armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Wardens. Useful for letting your men know who is in charge."
 	icon_state = "warden"
 	uniform_restricted = list(/obj/item/clothing/under/marine/warden)
-	specialty = "M3 pattern warden MP"
+	specialty = "M3 pattern warden military police"
 
 /obj/item/clothing/suit/storage/marine/MP/WO
-	name = "\improper M3 pattern CMP armor"
+	name = "\improper M3 pattern chief military police armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically distributed to Chief Military Polices. Useful for letting your men know who is in charge."
 	icon_state = "warrant_officer"
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/warrant)
-	specialty = "M3 pattern CMP"
+	specialty = "M3 pattern chief military police"
 	black_market_value = 30
 
 /obj/item/clothing/suit/storage/marine/MP/general

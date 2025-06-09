@@ -51,12 +51,12 @@
 
 /obj/structure/machinery/medical_pod/autodoc/go_out()
 	. = ..()
-	surgery = 0
-	heal_brute = 0
-	heal_burn = 0
-	heal_toxin = 0
-	filtering = 0
-	blood_transfer = 0
+	surgery = FALSE
+	heal_brute = FALSE
+	heal_burn = FALSE
+	heal_toxin = FALSE
+	filtering = FALSE
+	blood_transfer = FALSE
 	surgery_todo_list = list()
 	stop_processing()
 	if(connected)

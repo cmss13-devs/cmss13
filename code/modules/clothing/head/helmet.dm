@@ -1085,7 +1085,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
 /obj/item/clothing/head/helmet/marine/MP
-	name = "\improper M10 pattern MP helmet"
+	name = "\improper M10 pattern military police helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."
 	icon_state = "mp_helmet"
 	item_state = "mp_helmet"
@@ -1098,11 +1098,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor/security)
 
 /obj/item/clothing/head/helmet/marine/MP/WO
-	name = "\improper M10 pattern CMP helmet"
+	name = "\improper M10 pattern chief military helmet"
 	desc = "A well-crafted variant of the M10 Helmet typically distributed to Chief Military Polices. Useful for letting your men know who is in charge."
 	icon_state = "cmp_helmet"
 	item_state = "cmp_helmet"
-	specialty = "M10 pattern CMP"
+	specialty = "M10 pattern chief military police"
 
 /obj/item/clothing/head/helmet/marine/MP/SO
 	name = "\improper M10 pattern Officer Helmet"

@@ -1284,23 +1284,42 @@
 	take_damage(tforce)
 
 
-/turf/closed/wall/resin/attack_alien(mob/living/carbon/xenomorph/M)
-	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, M) & COMPONENT_CANCEL_XENO_ATTACK)
+/turf/closed/wall/resin/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, xeno) & COMPONENT_CANCEL_XENO_ATTACK)
 		return XENO_NO_DELAY_ACTION
 
-	if(islarva(M)) //Larvae can't do shit
+	if(islarva(xeno)) //Larvae can't do shit
 		return
-	if(M.a_intent == INTENT_HELP)
+
+	if(isxeno_builder(xeno) && xeno.a_intent == INTENT_DISARM) // Allows builders to break down structures quicker and regain plasma
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] starts to tear [src] apart!"),\
+		SPAN_XENONOTICE("We start tearing [src] apart!"))
+		var/time_to_decon = clamp(damage_cap / 100, 2, 6)
+		if(xeno.hivenumber != hivenumber)
+			time_to_decon *= 1.5
+
+		if(!do_after(xeno, time_to_decon SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			return XENO_NO_DELAY_ACTION
+
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] finishes tearing [src] apart, and consumes the remains!"),\
+		SPAN_XENONOTICE("We finish tearing [src] apart and consume what is left to reabsorb plasma!"))
+		var/plasma_recycled = round(damage_cap - damage, 1) / 10
+		new /datum/effects/heal_over_time(xeno, plasma_recycled)
+		dismantle_wall()
+		playsound(src, "alien_resin_break", 25)
+		return XENO_ATTACK_ACTION
+
+	if(xeno.a_intent == INTENT_HELP)
 		return XENO_NO_DELAY_ACTION
 
-	M.animation_attack_on(src)
-	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"),
+	xeno.animation_attack_on(src)
+	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] claws \the [src]!"),
 	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
-	if (M.hivenumber == hivenumber)
+	if (xeno.hivenumber == hivenumber)
 		take_damage(ceil(HEALTH_WALL_XENO * 0.25)) //Four hits for a regular wall
 	else
-		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
+		take_damage(xeno.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
 	return XENO_ATTACK_ACTION
 
 

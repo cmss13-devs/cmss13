@@ -46,18 +46,18 @@
 	new_fruit.color = n_color
 	user.put_in_hands(new_fruit)
 
-/obj/effect/alien/resin/fruit/Initialize(mapload, obj/effect/alien/weeds/W, mob/living/carbon/xenomorph/X)
-	if(!istype(X))
+/obj/effect/alien/resin/fruit/Initialize(mapload, obj/effect/alien/weeds/weed, mob/living/carbon/xenomorph/xeno)
+	if(!istype(xeno))
 		return INITIALIZE_HINT_QDEL
 
-	bound_xeno = X
-	bound_weed = W
-	hivenumber = X.hivenumber
-	RegisterSignal(W, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
-	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
+	bound_xeno = xeno
+	bound_weed = weed
+	hivenumber = xeno.hivenumber
+	RegisterSignal(weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
+	RegisterSignal(xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
 	set_hive_data(src, hivenumber)
 	//Keep timer value here
-	timer_id = addtimer(CALLBACK(src, PROC_REF(mature)), time_to_mature * W.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
+	timer_id = addtimer(CALLBACK(src, PROC_REF(mature)), time_to_mature * weed.fruit_growth_multiplier, TIMER_UNIQUE | TIMER_STOPPABLE)
 	. = ..()
 	// Need to do it here because baseline initialize override the icon through config.
 	icon = 'icons/mob/xenos/fruits.dmi'
@@ -123,7 +123,8 @@
 /obj/effect/alien/resin/fruit/proc/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature) // Someone might've eaten it before us!
 		recipient.gain_health(75)
-		to_chat(recipient, SPAN_XENONOTICE("We recover a bit from our injuries."))
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit from our injuries."))
+		recipient.balloon_alert(recipient, "We feel our wounds getting quickly mended!", text_color = "#17991B")
 		if(do_consume)
 			finish_consume(recipient)
 
@@ -217,9 +218,10 @@
 		return
 	if(recipient && !QDELETED(recipient))
 		recipient.gain_health(heal_amount)
-		to_chat(recipient, SPAN_XENONOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
-		// Every second, heal him for 20.
+		//Every second, heal them for 20.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
+		recipient.balloon_alert(recipient, "Our flesh mends, and the regeneration quickens!", text_color = "#17991B")
 	if(do_consume)
 		finish_consume(recipient)
 
@@ -252,9 +254,10 @@
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
 		recipient.add_xeno_shield(clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
-		to_chat(recipient, SPAN_XENONOTICE("We feel our defense being bolstered, and begin to regenerate rapidly."))
-		// Every seconds, heal him for 5.
+		//Every second, heal them for 5.
 		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel our defense being bolstered, and begin to slowly regenerate."))
+		recipient.balloon_alert(recipient, "Our regeneration quickens and carapace thickens!", text_color = "#179973")
 	if(do_consume)
 		finish_consume(recipient)
 
@@ -288,8 +291,9 @@
 		for(var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
 			if(E.effect_source == "spore")
 				qdel(E)
-		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 60 SECONDS, "spore")
-		to_chat(recipient, SPAN_XENONOTICE("We feel a frenzy coming onto us! Our abilities will cool off faster as we slash!"))
+		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 90 SECONDS, "spore")
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel a frenzy coming onto us! Our abilities will cool off faster as we slash!"))
+		recipient.balloon_alert(recipient, "We feel a frenzy coming onto us!", text_color = "#994617", delay = 1 SECONDS)
 	if(do_consume)
 		finish_consume(recipient)
 
@@ -338,8 +342,9 @@
 
 /obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
-		to_chat(recipient, SPAN_XENONOTICE("The [name] invigorates us to move faster!"))
-		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENONOTICE("We feel the effects of the [name] wane..."))
+		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENOWARNING("We feel the effects of the [name] wane..."))
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("The [name] invigorates us to move faster!"))
+		recipient.balloon_alert(recipient, "We feel invigorated to run faster!", text_color = "#5B248C", delay = 1 SECONDS)
 	if(do_consume)
 		finish_consume(recipient)
 
@@ -367,9 +372,10 @@
 
 /obj/effect/alien/resin/fruit/plasma/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && recipient.plasma_max > 0 && !QDELETED(recipient))
-		to_chat(recipient, SPAN_XENONOTICE("The [name] boosts our plasma regeneration!"))
-		// with the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds
+		//With the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds.
 		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas)
+		to_chat(recipient, SPAN_XENOBOLDNOTICE("The [name] boosts our plasma regeneration!"))
+		recipient.balloon_alert(recipient, "We feel our plasma rapidly regenerate!", text_color = "#287A90")
 	if(do_consume)
 		finish_consume(recipient)
 
@@ -400,11 +406,11 @@
 	pixel_x = 0
 	pixel_y = 0
 
-/obj/item/reagent_container/food/snacks/resin_fruit/proc/link_xeno(mob/living/carbon/xenomorph/X)
-	to_chat(X, SPAN_XENOHIGHDANGER("One of our resin fruits has been picked."))
-	X.current_fruits.Add(src)
-	bound_xeno = X
-	RegisterSignal(X, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
+/obj/item/reagent_container/food/snacks/resin_fruit/proc/link_xeno(mob/living/carbon/xenomorph/xeno)
+	to_chat(xeno, SPAN_XENOHIGHDANGER("One of our resin fruits has been picked."))
+	xeno.current_fruits.Add(src)
+	bound_xeno = xeno
+	RegisterSignal(xeno, COMSIG_PARENT_QDELETING, PROC_REF(handle_xeno_qdel))
 
 /obj/item/reagent_container/food/snacks/resin_fruit/proc/handle_xeno_qdel()
 	SIGNAL_HANDLER
@@ -485,10 +491,10 @@
 	reagents.add_reagent("fruit_resin", 30)
 
 /obj/effect/alien/resin/fruit/MouseDrop(atom/over_object)
-	var/mob/living/carbon/xenomorph/X = over_object
-	if(!istype(X) || !Adjacent(X) || X != usr || X.is_mob_incapacitated() || X.body_position == LYING_DOWN)
+	var/mob/living/carbon/xenomorph/xeno = over_object
+	if(!istype(xeno) || !Adjacent(xeno) || xeno != usr || xeno.is_mob_incapacitated() || xeno.body_position == LYING_DOWN)
 		return ..()
-	X.pickup_fruit(src)
+	xeno.pickup_fruit(src)
 
 // Handles xenos picking up fruit
 /mob/living/carbon/xenomorph/proc/pickup_fruit(obj/effect/alien/resin/fruit/F)

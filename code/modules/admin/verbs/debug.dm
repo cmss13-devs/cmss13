@@ -154,7 +154,7 @@
 	set name = "Delete Instance"
 
 	// to prevent REALLY stupid deletions
-	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
+	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/ai)
 	var/chosen_deletion = input(usr, "Type the path of the object you want to delete", "Delete:") as null|text
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)

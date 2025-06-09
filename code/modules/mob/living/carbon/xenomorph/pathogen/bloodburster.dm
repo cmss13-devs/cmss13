@@ -74,6 +74,7 @@
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 	acid_blood_damage = 0
+	bubble_icon = "pathogen"
 
 	var/bloody_state = LARVA_STATE_BLOODY
 
@@ -137,7 +138,9 @@
 	else
 		icon_state = "[state]Bloodburster"
 
-
+/mob/living/carbon/xenomorph/bloodburster/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
 
 /datum/behavior_delegate/bloodburster_base
 	name = "Base Bloodburster Behavior Delegate"

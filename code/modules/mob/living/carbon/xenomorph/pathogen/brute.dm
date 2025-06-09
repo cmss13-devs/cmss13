@@ -66,8 +66,11 @@
 
 	mob_size = MOB_SIZE_BIG
 	acid_blood_damage = 0
+	bubble_icon = "pathogenroyal"
 
-
+/mob/living/carbon/xenomorph/brute/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
 
 /datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute
 	name = "Arm Whack"

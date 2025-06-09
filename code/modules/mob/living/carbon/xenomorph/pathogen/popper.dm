@@ -68,6 +68,11 @@
 
 	mob_size = MOB_SIZE_XENO_SMALL
 	acid_blood_damage = 0
+	bubble_icon = "pathogen"
+
+/mob/living/carbon/xenomorph/popper/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
 
 /mob/living/carbon/xenomorph/popper/death(cause, gibbed)
 	. = ..()

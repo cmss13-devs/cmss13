@@ -68,6 +68,11 @@
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
 	acid_blood_damage = 0
+	bubble_icon = "pathogen"
+
+/mob/living/carbon/xenomorph/blight/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
 
 /datum/behavior_delegate/blight_base
 	name = "Base Blight Behavior Delegate"

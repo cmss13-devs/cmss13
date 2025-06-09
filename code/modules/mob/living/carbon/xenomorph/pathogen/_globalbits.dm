@@ -5,6 +5,7 @@
 /datum/caste_datum/pathogen
 	minimum_evolve_time = 0
 	pathogen_creature = TRUE
+	language = LANGUAGE_PATHOGEN
 
 /datum/caste_datum/pathogen/get_minimap_icon()
 	var/image/background = mutable_appearance('icons/mob/pathogen/neo_blips.dmi', minimap_background)
@@ -15,8 +16,6 @@
 	background.overlays += icon
 
 	return background
-
-
 
 /datum/admins/var/create_pathogen_creatures_html = null
 /datum/admins/proc/create_pathogen_creatures(mob/user)
@@ -56,6 +55,18 @@
 	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
 	hivenumber = XENO_HIVE_PATHOGEN
 
+/obj/effect/alien/weeds/weedwall/window/pathogen
+	name = "mycelium blight"
+	desc = "A mycelium growth of strange origins..."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/weeds/weedwall/frame/pathogen
+	name = "mycelium blight"
+	desc = "A mycelium growth of strange origins..."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
 /datum/action/xeno_action/onclick/plant_weeds/pathogen
 	name = "Spread Blight (200)"
 	action_icon_state = "plant_weeds"
@@ -67,3 +78,41 @@
 
 	plant_on_semiweedable = TRUE
 	node_type = /obj/effect/alien/weeds/node/pathogen
+
+
+// LANGUAGE SHIT
+/mob/living/carbon/xenomorph/proc/make_pathogen_speaker()
+	set_languages(list(LANGUAGE_PATHOGEN, LANGUAGE_PATHOGEN_MIND, LANGUAGE_XENOMORPH))
+	langchat_color = "#c2c38d"
+	speaking_key = "-"
+
+/datum/language/pathogen
+	name = LANGUAGE_PATHOGEN
+	color = "pathogen"
+	desc = "The common tongue of the Pathogen Confluence."
+	speech_verb = "clicks"
+	ask_verb = "clicks"
+	exclaim_verb = "clicks"
+	key = "-"
+	flags = RESTRICTED
+	syllables = list("sss", "sSs", "SSS")
+
+/datum/language/pathogen_mind
+	name = LANGUAGE_PATHOGEN_MIND
+	desc = "Pathogen Creatures have the strange ability to commune over a mycelial hivemind."
+	speech_verb = "hiveminds"
+	ask_verb = "hiveminds"
+	exclaim_verb = "hiveminds"
+	color = "pathogen"
+	key = "q"//Same key as xeno hivemind because it does the same backend, it only appears different for language menu.
+	flags = RESTRICTED|HIVEMIND
+
+//Make queens BOLD text
+/datum/language/pathogen_mind/broadcast(mob/living/speaker, message, speaker_mask)
+	if(iscarbon(speaker))
+		var/mob/living/carbon/C = speaker
+
+		if(!(C.hivenumber in GLOB.hive_datum))
+			return
+
+		C.hivemind_broadcast(message, GLOB.hive_datum[C.hivenumber])

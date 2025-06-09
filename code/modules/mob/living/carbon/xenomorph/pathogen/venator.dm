@@ -34,8 +34,8 @@
 	icon_size = 48
 	icon_state = "Venator Walking"
 	plasma_types = list()
-	pixel_x = -12
-	old_x = -12
+	pixel_x = -8
+	old_x = -8
 	tier = 3
 	organ_value = 10000
 	base_actions = list(
@@ -67,6 +67,11 @@
 
 	mob_size = MOB_SIZE_BIG
 	acid_blood_damage = 0
+	bubble_icon = "pathogenroyal"
+
+/mob/living/carbon/xenomorph/venator/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
 
 /datum/action/xeno_action/activable/tail_stab/pathogen_t3
 	name = "Spike Lash"

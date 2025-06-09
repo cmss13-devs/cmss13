@@ -131,29 +131,51 @@
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
+					var/broadcast_tier = "normal"
 					if(isqueen(src))
 						var/mob/hologram/queen/queen_eye = client?.eye
 						if(istype(queen_eye))
 							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+						broadcast_tier = "royal"
 					else if(hive.leading_cult_sl == src)
-						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+						broadcast_tier = "leader"
 					else if(istype(X) && IS_XENO_LEADER(X))
-						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [src.name][track] hisses, <span class='normal'>'[message]'</span>")
-					else
-						ghostrend = SPAN_XENO("Hivemind, [src.name][track] hisses, <span class='normal'>'[message]'</span>")
+						broadcast_tier = "leader"
+
+					ghostrend = get_hivemind_render(hive.hivenumber, broadcast_tier, message, "[src.name][track]")
+
 					S.show_message(ghostrend, SHOW_MESSAGE_AUDIBLE)
 
 			else if(hive.hivenumber == xeno_hivenumber(S) || hive.hivenumber == hear_hivemind)
 				if(isxeno(src) && isxeno(S))
 					overwatch_insert = " (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
+				var/broadcast_tier = "normal"
 				if(isqueen(src) || hive.leading_cult_sl == src)
-					rendered = SPAN_XENOQUEEN("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+					broadcast_tier = "royal"
 				else if(istype(X) && IS_XENO_LEADER(X))
-					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
-				else
-					rendered = SPAN_XENO("Hivemind, [src.name][overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
+					broadcast_tier = "leader"
+
+				rendered = get_hivemind_render(hive.hivenumber, broadcast_tier, message, "[src.name][overwatch_insert]")
 
 				S.show_message(rendered, SHOW_MESSAGE_AUDIBLE)
 
+/mob/living/carbon/proc/get_hivemind_render(hivenumber, tier, message, tracker)
+	if(hivenumber != XENO_HIVE_PATHOGEN)
+		var/the_message = "Hivemind, [tracker] hisses, <span class='normal'>'[message]'</span>"
+		switch(tier)
+			if("royal")
+				return SPAN_XENOQUEEN(the_message)
+			if("leader")
+				return SPAN_XENOLEADER("Hivemind, Leader [tracker] hisses, <span class='normal'>'[message]'</span>")
+			if("normal")
+				return SPAN_XENO(the_message)
+	else
+		var/the_message = "[LANGUAGE_PATHOGEN_MIND], [tracker] clicks, <span class='normal'>'[message]'</span>"
+		switch(tier)
+			if("royal")
+				return SPAN_PATHOGEN_QUEEN(the_message)
+			if("leader")
+				return SPAN_PATHOGEN_LEADER("[LANGUAGE_PATHOGEN_MIND], Leader [tracker] clicks, <span class='normal'>'[message]'</span>")
+			if("normal")
+				return SPAN_PATHOGEN(the_message)

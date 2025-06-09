@@ -864,6 +864,9 @@
 	// Update the hive status UI
 	new_hive.hive_ui.update_all_xeno_data()
 
+	if(new_hivenumber == XENO_HIVE_PATHOGEN)
+		make_pathogen_speaker()
+
 	return TRUE
 
 

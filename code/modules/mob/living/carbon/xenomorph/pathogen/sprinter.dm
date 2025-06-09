@@ -48,7 +48,6 @@
 	organ_value = 500 //worthless
 
 	mob_size = MOB_SIZE_XENO_SMALL
-	acid_blood_damage = 0
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -77,7 +76,12 @@
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
 	speaking_noise = "neo_talk"
+	acid_blood_damage = 0
+	bubble_icon = "pathogen"
 
+/mob/living/carbon/xenomorph/sprinter/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
 
 /mob/living/carbon/xenomorph/sprinter/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()

@@ -305,10 +305,16 @@
 				return FALSE
 
 		if(istype(O, /obj/structure/window/framed))
-			new /obj/effect/alien/weeds/weedwall/window(T, parent)
+			if(hivenumber == XENO_HIVE_PATHOGEN)
+				new /obj/effect/alien/weeds/weedwall/window/pathogen(T, parent)
+			else
+				new /obj/effect/alien/weeds/weedwall/window(T, parent)
 			return FALSE
 		else if(istype(O, /obj/structure/window_frame))
-			new /obj/effect/alien/weeds/weedwall/frame(T, parent)
+			if(hivenumber == XENO_HIVE_PATHOGEN)
+				new /obj/effect/alien/weeds/weedwall/frame/pathogen(T, parent)
+			else
+				new /obj/effect/alien/weeds/weedwall/frame(T, parent)
 			return FALSE
 		else if(istype(O, /obj/structure/machinery/door) && O.density && (!(O.flags_atom & ON_BORDER) || O.dir != direction))
 			return FALSE

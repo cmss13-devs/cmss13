@@ -13,7 +13,7 @@
 
 /datum/equipment_preset/cia/analyst
 	name = "CIA Agent (Civilian Clothing)"
-	job_title = "Intelligence Analyst"
+	job_title = JOB_CIA
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"
 	minimap_background = "background_civillian"
@@ -62,7 +62,7 @@
 
 /datum/equipment_preset/cia/officer
 	name = "CIA Agent (USCM Liaison - 1st Lieutenant)"
-	job_title = "Intelligence Liaison Officer"
+	job_title = JOB_CIA_LIAISON
 	assignment = JOB_CIA_LIAISON
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "ILO"

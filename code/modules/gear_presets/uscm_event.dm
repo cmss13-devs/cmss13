@@ -393,7 +393,7 @@
 	skills = /datum/skills/general
 
 	assignment = JOB_PROVOST_MARSHAL
-	job_title = "Provost Marshal"
+	job_title = JOB_PROVOST_MARSHAL
 	paygrades = list(PAY_SHORT_PVM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -427,7 +427,7 @@
 	minimum_age = 50
 
 	assignment = JOB_PROVOST_SMARSHAL
-	job_title = "Provost Sector Marshal"
+	job_title = JOB_PROVOST_SMARSHAL
 	paygrades = list(PAY_SHORT_PVSM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVSM
 

@@ -267,7 +267,7 @@
 
 	layer = LYING_BETWEEN_MOB_LAYER
 
-	if(stasis_mob.holo_card_color)
+	if(stasis_mob.holo_card_color && !opened)
 		var/image/holo_card_icon = image('icons/obj/bodybag.dmi', src, "cryocard_[stasis_mob.holo_card_color]")
 
 		if(!holo_card_icon) // makes sure an icon was actually located
@@ -277,10 +277,10 @@
 
 /obj/structure/closet/bodybag/cryobag/open()
 	. = ..()
-	if(locate(stasis_mob) in contents)
+	if(stasis_mob)
 		stasis_mob.in_stasis = FALSE
 		UnregisterSignal(stasis_mob, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
-	stasis_mob = null
+		stasis_mob = null
 	STOP_PROCESSING(SSobj, src)
 	if(used > max_uses)
 		new /obj/item/trash/used_stasis_bag(loc)
@@ -293,16 +293,10 @@
 		if(human.buckled || (human.stat == DEAD))
 			continue
 		mobs_can_store += human
-	var/mob/living/carbon/human/mob_to_store
-	if(length(mobs_can_store) > 1)
-		to_chat(usr, SPAN_WARNING("The [name] is too full to close properly!"))
-		return
-	if(length(mobs_can_store) == 1)
-		var/mob/living/carbon/human/mob_to_store = listgetindex(mobs_can_store, 1)
+	if(length(mobs_can_store))
+		var/mob/living/carbon/human/mob_to_store = pick(mobs_can_store)
 		mob_to_store.forceMove(src)
 		stored_units += mob_size
-	else
-		to_chat(usr, SPAN_WARNING("The [name] is too full to close properly!"))
 	return stored_units
 
 /obj/structure/closet/bodybag/cryobag/close()

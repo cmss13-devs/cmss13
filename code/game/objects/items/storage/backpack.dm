@@ -1278,7 +1278,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper lightweight medic combat pack"
 	desc = "A small, lightweight medic pack for expeditions and short-range operations."
 	icon_state = "ERT_satchel_medic_black"
-	max_storage_space = 25
 
 /obj/item/storage/backpack/lightpack/black/medic/five_slot
 	max_storage_space = 15

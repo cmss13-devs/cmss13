@@ -1974,11 +1974,11 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!result)
 						return
 					if(result == "Lightmode")
-						tgui_say_light_mode = TRUE
-						to_chat(user, SPAN_NOTICE("You're now using the say interface whitemode."))
+					tgui_say_light_mode = TRUE
+					to_chat(user, SPAN_NOTICE("You're now using the say interface light mode."))
 					else
-						tgui_say_light_mode = FALSE
-						to_chat(user, SPAN_NOTICE("You're now using the say interface darkmode."))
+					tgui_say_light_mode = FALSE
+					to_chat(user, SPAN_NOTICE("You're now using the say interface dark mode."))
 					user?.client.tgui_say?.load()
 					save_preferences()
 

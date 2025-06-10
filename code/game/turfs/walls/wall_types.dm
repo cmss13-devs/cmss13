@@ -1296,7 +1296,7 @@
 		SPAN_XENONOTICE("We start tearing [src] apart!"))
 		var/time_to_decon = 3
 		if(xeno.hivenumber != hivenumber)
-			time_to_decon *= 1.5
+			time_to_decon *= 2
 
 		if(!do_after(xeno, time_to_decon SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return XENO_NO_DELAY_ACTION

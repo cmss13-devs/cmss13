@@ -243,7 +243,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/tramadol(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
-/obj/item/storage/pouch/firstaid/full/wy
+/obj/item/storage/pouch/firstaid/full/black
 	icon_state = "wy_firstaid"
 
 /obj/item/storage/pouch/firstaid/full/alternate

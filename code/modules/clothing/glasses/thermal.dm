@@ -66,14 +66,6 @@
 		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/goggles.dmi',
 	)
 
-/obj/item/clothing/glasses/thermal/syndi/soro
-	icon = 'icons/obj/items/clothing/glasses/night_vision.dmi'
-	icon_state = "upp_goggles"
-	deactive_state = "upp_goggles_0"
-	item_icons = list(
-		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/night_vision.dmi',
-	)
-
 /obj/item/clothing/glasses/thermal/monocle
 	name = "Thermoncle"
 	desc = "A monocle thermal."

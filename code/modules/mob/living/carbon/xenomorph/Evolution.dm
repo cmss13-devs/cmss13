@@ -295,6 +295,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(tier == 0 || tier == 4)
 		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
 		return
+	if(agility || fortify || crest_defense || stealth)
+		to_chat(src, SPAN_XENOWARNING("We can't transmute while in this stance."))
+		return
 	if(lock_evolve)
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))

@@ -142,7 +142,6 @@ SYNTHETIC
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_SUPER,
 		SKILL_PILOT = SKILL_PILOT_TRAINED,
 		SKILL_POLICE = SKILL_POLICE_FLASH,
-		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_TRAINED,
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_NOVICE,
@@ -163,7 +162,7 @@ SYNTHETIC
 	)
 
 /datum/skills/synth_specialised/engineering
-	name = "Engineering Synthetic"
+	name = JOB_SYNTH_ENG
 	additional_skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_MASTER,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_MASTER,
@@ -174,7 +173,7 @@ SYNTHETIC
 	)
 
 /datum/skills/synth_specialised/medical
-	name = "Medical Synthetic"
+	name = JOB_SYNTH_MED
 	additional_skills = list(
 		SKILL_MEDICAL = SKILL_MEDICAL_MASTER,
 		SKILL_SURGERY = SKILL_SURGERY_EXPERT,
@@ -183,7 +182,7 @@ SYNTHETIC
 	)
 
 /datum/skills/synth_specialised/intel
-	name = "Intelligence Synthetic"
+	name = JOB_SYNTH_INTEL
 	additional_skills = list(
 		SKILL_JTAC = SKILL_JTAC_MASTER,
 		SKILL_INTEL = SKILL_INTEL_EXPERT,
@@ -191,14 +190,14 @@ SYNTHETIC
 	)
 
 /datum/skills/synth_specialised/mp
-	name = "Military Police Synthetic"
+	name = JOB_SYNTH_MP
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 	)
 
 /datum/skills/synth_specialised/command
-	name = "Command Support Synthetic"
+	name = JOB_SYNTH_CMD
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER,
 		SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED,

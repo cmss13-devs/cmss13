@@ -1294,7 +1294,7 @@
 	if(isxeno_builder(xeno) && xeno.a_intent == INTENT_DISARM) // Allows builders to break down structures quicker and regain plasma
 		xeno.visible_message(SPAN_XENONOTICE("[xeno] starts to tear [src] apart!"),\
 		SPAN_XENONOTICE("We start tearing [src] apart!"))
-		var/time_to_decon = clamp(damage_cap / 100, 2, 6)
+		var/time_to_decon = 3
 		if(xeno.hivenumber != hivenumber)
 			time_to_decon *= 1.5
 

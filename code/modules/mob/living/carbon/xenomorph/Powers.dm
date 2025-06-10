@@ -32,138 +32,144 @@
 			return SECRETE_RESIN_FAIL
 
 	var/turf/current_turf = get_turf(target)
+	var/can_deconstruct = TRUE
 
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
 		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
 		return SECRETE_RESIN_FAIL
 
-	// Only usable at range by those able to build at range, otherwise disarm the target!
-	if(!src.Adjacent(target) && (extra_build_dist != IGNORE_BUILD_DISTANCE && caste.max_build_dist + extra_build_dist > 1))
-		if(istype(target, /obj/effect/alien/resin/construction))
-			var/obj/effect/alien/resin/construction/construct_target = target
-			if((hivenumber != construct_target.linked_hive.hivenumber))
-				return SECRETE_RESIN_FAIL
+	if(istype(target, /obj/structure/mineral_door/resin) || istype(target, /turf/closed/wall/resin) || istype(target, /turf/closed/wall/resin/membrane))
 
-			if(a_intent == INTENT_HARM)
-				construct_target.health -= initial(construct_target.health) * 2
-				construct_target.healthcheck()
-				construct_target.visible_message(SPAN_XENONOTICE("[construct_target] shudders and withdraws back into the weeds!"))
-				playsound(construct_target.loc, "alien_resin_break", 25)
-			else
-				construct_target.template.add_crystal(src)
-			return SECRETE_RESIN_INTERRUPT
-
-		// Check to see if we cannot thicken things, or we can thicken and our targets are already thickened; we want thickening to take priority
-		if(thick == FALSE || (thick == TRUE && (istype(target, /turf/closed/wall/resin/thick) || istype(target, /turf/closed/wall/resin/membrane/thick) || istype(target, /obj/structure/mineral_door/resin/thick))))
+		if(thick) //hivelords can thicken existing resin structures.
+			var/thickened = FALSE
 			if(istype(target, /turf/closed/wall/resin))
-				var/turf/closed/wall/resin/resin_wall = target
-
-				if(resin_wall.hivenumber != hivenumber)
-					to_chat(src, SPAN_XENOWARNING("We cannot deconstruct what doesn't belong to our hive!"))
-					return SECRETE_RESIN_FAIL
+				var/turf/closed/wall/resin/wall = target
 
 				if(istype(target, /turf/closed/wall/resin/weak))
-					to_chat(src, SPAN_XENOWARNING("[resin_wall] is too weak to be worth deconstructing."))
+					to_chat(src, SPAN_XENOWARNING("[wall] is too flimsy to be reinforced."))
 					return SECRETE_RESIN_FAIL
 
-				for(var/datum/effects/xeno_structure_reinforcement/sf in resin_wall.effects_list)
-					to_chat(src, SPAN_XENOWARNING("The extra resin makes it difficult to deconstruct [resin_wall]. We should wait for it to wear off."))
+				for(var/datum/effects/xeno_structure_reinforcement/sf in wall.effects_list)
+					to_chat(src, SPAN_XENOWARNING("The extra resin is preventing us from reinforcing [wall]. Wait until it elapse."))
 					return SECRETE_RESIN_FAIL
 
-				resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] starts to shudder!"))
-				to_chat(src, SPAN_XENOWARNING("We channel our focus on deconstructing [resin_wall]!"))
-				if(!do_after(src, 2 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))
-					resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] stops shuddering!"))
-					to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [resin_wall]!"))
+				if (wall.hivenumber != hivenumber)
+					to_chat(src, SPAN_XENOWARNING("[wall] doesn't belong to your hive!"))
 					return SECRETE_RESIN_FAIL
 
-				resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] crumbles!"))
-				to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_wall]!"))
-				resin_wall.dismantle_wall()
-				playsound(resin_wall.loc, "alien_resin_break", 25)
+				if(wall.type == /turf/closed/wall/resin)
+					wall.ChangeTurf(/turf/closed/wall/resin/thick)
+					total_resin_cost = XENO_THICKEN_WALL_COST
+					thickened = TRUE
+					can_deconstruct = FALSE
+				else if(wall.type == /turf/closed/wall/resin/membrane)
+					wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
+					total_resin_cost = XENO_THICKEN_MEMBRANE_COST
+					thickened = TRUE
+					can_deconstruct = FALSE
+				else if(!can_deconstruct)
+					to_chat(src, SPAN_XENOWARNING("[wall] can't be made thicker."))
+					return SECRETE_RESIN_FAIL
+
+			else if(istype(target, /obj/structure/mineral_door/resin))
+				var/obj/structure/mineral_door/resin/door = target
+				if (door.hivenumber != hivenumber)
+					to_chat(src, SPAN_XENOWARNING("[door] doesn't belong to your hive!"))
+					return SECRETE_RESIN_FAIL
+
+				for(var/datum/effects/xeno_structure_reinforcement/sf in door.effects_list)
+					to_chat(src, SPAN_XENOWARNING("The extra resin is preventing us from reinforcing [door]. Wait until it elapse."))
+					return SECRETE_RESIN_FAIL
+
+				if(door.hardness == 1.5) //non thickened
+					var/oldloc = door.loc
+					qdel(door)
+					new /obj/structure/mineral_door/resin/thick (oldloc, door.hivenumber)
+					total_resin_cost = XENO_THICKEN_DOOR_COST
+					thickened = TRUE
+					can_deconstruct = FALSE
+				else if(!can_deconstruct)
+					to_chat(src, SPAN_XENOWARNING("[door] can't be made thicker."))
+					return SECRETE_RESIN_FAIL
+
+			if(thickened)
+				if(message)
+					visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and thickens [target]."),
+						SPAN_XENONOTICE("We regurgitate some resin and thicken [target], using [total_resin_cost] plasma."), null, 5)
+					if(use_plasma)
+						use_plasma(total_resin_cost)
+					playsound(loc, "alien_resin_build", 25)
+				target.add_hiddenprint(src) //so admins know who thickened the walls
 				return TRUE
 
-			if(istype(target, /obj/structure/mineral_door/resin))
-				var/obj/structure/mineral_door/resin/resin_door = target
+		if(can_deconstruct && !src.Adjacent(target))
+			// Only those able to build at range can deconstruct at range, and not when adjacent to the target; because if you're next to it, you can just disarm decon it!
+			if(extra_build_dist == IGNORE_BUILD_DISTANCE || caste.max_build_dist + extra_build_dist > 1)
+				if(istype(target, /obj/effect/alien/resin/construction))
+					var/obj/effect/alien/resin/construction/construct_target = target
+					if((hivenumber != construct_target.linked_hive.hivenumber))
+						return SECRETE_RESIN_FAIL
 
-				if(resin_door.hivenumber != hivenumber)
-					to_chat(src, SPAN_XENOWARNING("We cannot deconstruct what doesn't belong to our hive!"))
-					return SECRETE_RESIN_FAIL
+					if(a_intent == INTENT_HARM)
+						construct_target.health -= initial(construct_target.health) * 2
+						construct_target.healthcheck()
+						construct_target.visible_message(SPAN_XENONOTICE("[construct_target] shudders and withdraws back into the weeds!"))
+						playsound(construct_target.loc, "alien_resin_break", 25)
+					else
+						construct_target.template.add_crystal(src)
+					return SECRETE_RESIN_INTERRUPT
 
-				for(var/datum/effects/xeno_structure_reinforcement/sf in resin_door.effects_list)
-					to_chat(src, SPAN_XENOWARNING("The extra resin makes it difficult to deconstruct [resin_door]. We should wait for it to wear off."))
-					return SECRETE_RESIN_FAIL
+				if(istype(target, /turf/closed/wall/resin))
+					var/turf/closed/wall/resin/resin_wall = target
 
-				resin_door.visible_message(SPAN_XENONOTICE("[resin_door] starts to shudder!"))
-				to_chat(src, SPAN_XENONOTICE("We channel our focus into [resin_door] to deconstruct it!"))
-				if(!do_after(src, 2 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))
-					resin_door.visible_message(SPAN_XENONOTICE("[resin_door] stops shuddering!"))
-					to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [resin_door]!"))
-					return SECRETE_RESIN_FAIL
+					if(resin_wall.hivenumber != hivenumber)
+						to_chat(src, SPAN_XENOWARNING("We cannot deconstruct what doesn't belong to our hive!"))
+						return SECRETE_RESIN_FAIL
 
-				resin_door.visible_message(SPAN_XENONOTICE("[resin_door] crumbles and returns to weeds!"))
-				to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_door]!"))
-				resin_door.Dismantle(1)
-				playsound(resin_door.loc, "alien_resin_move", 25)
-				return TRUE
+					if(istype(target, /turf/closed/wall/resin/weak))
+						to_chat(src, SPAN_XENOWARNING("[resin_wall] is too weak to be worth deconstructing."))
+						return SECRETE_RESIN_FAIL
 
-	else if(thick) //hivelords can thicken existing resin structures.
-		var/thickened = FALSE
-		if(istype(target, /turf/closed/wall/resin))
-			var/turf/closed/wall/resin/wall = target
+					for(var/datum/effects/xeno_structure_reinforcement/sf in resin_wall.effects_list)
+						to_chat(src, SPAN_XENOWARNING("The extra resin makes it difficult to deconstruct [resin_wall]. We should wait for it to wear off."))
+						return SECRETE_RESIN_FAIL
 
-			if(istype(target, /turf/closed/wall/resin/weak))
-				to_chat(src, SPAN_XENOWARNING("[wall] is too flimsy to be reinforced."))
-				return SECRETE_RESIN_FAIL
+					resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] starts to shudder!"))
+					to_chat(src, SPAN_XENOWARNING("We channel our focus on deconstructing [resin_wall]!"))
+					if(!do_after(src, 2 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))
+						resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] stops shuddering!"))
+						to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [resin_wall]!"))
+						return SECRETE_RESIN_FAIL
 
-			for(var/datum/effects/xeno_structure_reinforcement/sf in wall.effects_list)
-				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing us from reinforcing [wall]. Wait until it elapse."))
-				return SECRETE_RESIN_FAIL
+					resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] crumbles!"))
+					to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_wall]!"))
+					resin_wall.dismantle_wall()
+					playsound(resin_wall.loc, "alien_resin_break", 25)
+					return TRUE
 
-			if (wall.hivenumber != hivenumber)
-				to_chat(src, SPAN_XENOWARNING("[wall] doesn't belong to your hive!"))
-				return SECRETE_RESIN_FAIL
+				if(istype(target, /obj/structure/mineral_door/resin))
+					var/obj/structure/mineral_door/resin/resin_door = target
 
-			if(wall.type == /turf/closed/wall/resin)
-				wall.ChangeTurf(/turf/closed/wall/resin/thick)
-				total_resin_cost = XENO_THICKEN_WALL_COST
-			else if(wall.type == /turf/closed/wall/resin/membrane)
-				wall.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
-				total_resin_cost = XENO_THICKEN_MEMBRANE_COST
-			else
-				to_chat(src, SPAN_XENOWARNING("[wall] can't be made thicker."))
-				return SECRETE_RESIN_FAIL
-			thickened = TRUE
+					if(resin_door.hivenumber != hivenumber)
+						to_chat(src, SPAN_XENOWARNING("We cannot deconstruct what doesn't belong to our hive!"))
+						return SECRETE_RESIN_FAIL
 
-		else if(istype(target, /obj/structure/mineral_door/resin))
-			var/obj/structure/mineral_door/resin/door = target
-			if (door.hivenumber != hivenumber)
-				to_chat(src, SPAN_XENOWARNING("[door] doesn't belong to your hive!"))
-				return SECRETE_RESIN_FAIL
+					for(var/datum/effects/xeno_structure_reinforcement/sf in resin_door.effects_list)
+						to_chat(src, SPAN_XENOWARNING("The extra resin makes it difficult to deconstruct [resin_door]. We should wait for it to wear off."))
+						return SECRETE_RESIN_FAIL
 
-			for(var/datum/effects/xeno_structure_reinforcement/sf in door.effects_list)
-				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing us from reinforcing [door]. Wait until it elapse."))
-				return SECRETE_RESIN_FAIL
+					resin_door.visible_message(SPAN_XENONOTICE("[resin_door] starts to shudder!"))
+					to_chat(src, SPAN_XENONOTICE("We channel our focus into [resin_door] to deconstruct it!"))
+					if(!do_after(src, 2 SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))
+						resin_door.visible_message(SPAN_XENONOTICE("[resin_door] stops shuddering!"))
+						to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [resin_door]!"))
+						return SECRETE_RESIN_FAIL
 
-			if(door.hardness == 1.5) //non thickened
-				var/oldloc = door.loc
-				qdel(door)
-				new /obj/structure/mineral_door/resin/thick (oldloc, door.hivenumber)
-				total_resin_cost = XENO_THICKEN_DOOR_COST
-			else
-				to_chat(src, SPAN_XENOWARNING("[door] can't be made thicker."))
-				return SECRETE_RESIN_FAIL
-			thickened = TRUE
-
-		if(thickened)
-			if(message)
-				visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and thickens [target]."),
-					SPAN_XENONOTICE("We regurgitate some resin and thicken [target], using [total_resin_cost] plasma."), null, 5)
-				if(use_plasma)
-					use_plasma(total_resin_cost)
-				playsound(loc, "alien_resin_build", 25)
-			target.add_hiddenprint(src) //so admins know who thickened the walls
-			return TRUE
+					resin_door.visible_message(SPAN_XENONOTICE("[resin_door] crumbles and returns to weeds!"))
+					to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_door]!"))
+					resin_door.Dismantle(1)
+					playsound(resin_door.loc, "alien_resin_move", 25)
+					return TRUE
 
 	if(!resin_construct.can_build_here(current_turf, src))
 		return SECRETE_RESIN_FAIL

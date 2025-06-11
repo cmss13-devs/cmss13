@@ -436,7 +436,7 @@
 	minimum_age = 60
 
 	assignment = JOB_PROVOST_CMARSHAL
-	job_title = "Provost Chief Marshal"
+	job_title = JOB_PROVOST_CMARSHAL
 	paygrades = list(PAY_SHORT_PVCM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVCM
 

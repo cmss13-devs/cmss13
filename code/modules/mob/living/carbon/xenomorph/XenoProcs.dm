@@ -454,8 +454,6 @@
 	SPAN_XENOWARNING("We release [user] from our grip!"), null, 5)
 	playsound(src, 'sound/voice/alien_growl1.ogg', 15)
 	log_interact(src, user, "[key_name(src)] released [key_name(user)] at [get_area_name(loc)]")
-	if(stuns)
-		user.adjust_effect(2, STUN)
 	UnregisterSignal(user, COMSIG_MOB_DEATH)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null

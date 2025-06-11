@@ -101,7 +101,14 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	for(var/datum/squad/root_squad in GLOB.RoleAuthority.squads)
 		root_squad.release_overwatch()
 		break
-	..()
+	QDEL_NULL(tacmap)
+	GLOB.active_overwatch_consoles -= src
+	current_orbital_cannon = null
+	concurrent_users = null
+	if(!camera_holder)
+		return ..()
+	disconnect_holder()
+	return ..()
 
 /obj/structure/machinery/computer/overwatch/proc/connect_holder(new_holder)
 	camera_holder = new_holder

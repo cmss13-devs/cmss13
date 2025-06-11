@@ -1291,22 +1291,6 @@
 	if(islarva(xeno)) //Larvae can't do shit
 		return
 
-	if(isxeno_builder(xeno) && xeno.a_intent == INTENT_DISARM) // Allows builders to break down structures quicker and regain plasma
-		xeno.visible_message(SPAN_XENONOTICE("[xeno] starts to tear [src] apart!"),\
-		SPAN_XENONOTICE("We start tearing [src] apart!"))
-		var/time_to_decon = 3
-		if(xeno.hivenumber != hivenumber)
-			time_to_decon *= 2
-
-		if(!do_after(xeno, time_to_decon SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			return XENO_NO_DELAY_ACTION
-
-		xeno.visible_message(SPAN_XENONOTICE("[xeno] finishes tearing [src] apart!"),\
-		SPAN_XENONOTICE("We finish tearing [src] apart!"))
-		dismantle_wall()
-		playsound(src, "alien_resin_break", 25)
-		return XENO_ATTACK_ACTION
-
 	if(xeno.a_intent == INTENT_HELP)
 		return XENO_NO_DELAY_ACTION
 

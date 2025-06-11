@@ -51,7 +51,7 @@
 
 /datum/xeno_shield/proc/begin_decay()
 	if(linked_xeno && istype(linked_xeno, /mob/living/carbon/xenomorph) && shield_source == XENO_SHIELD_SOURCE_GARDENER)
-		linked_xeno.balloon_alert(linked_xeno, "Our carapace shell begins to decay!", text_color = "#17997280")
+		linked_xeno.balloon_alert(linked_xeno, "our carapace shell begins to decay!", text_color = "#17997280")
 		playsound(linked_xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 	START_PROCESSING(SSobj, src)
 	processing = TRUE

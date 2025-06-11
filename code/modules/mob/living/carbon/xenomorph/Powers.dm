@@ -34,7 +34,7 @@
 	var/turf/current_turf = get_turf(target)
 	var/can_deconstruct = TRUE
 
-	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > src.caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
+	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, target) > caste.max_build_dist + extra_build_dist) // Hivelords and eggsac carriers have max_build_dist of 1, drones and queens 0
 		to_chat(src, SPAN_XENOWARNING("We can't build from that far!"))
 		return SECRETE_RESIN_FAIL
 

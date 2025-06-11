@@ -102,7 +102,7 @@
 				target.add_hiddenprint(src) //so admins know who thickened the walls
 				return TRUE
 
-		if(can_deconstruct && !src.Adjacent(target))
+		if(can_deconstruct && !Adjacent(target))
 			// Only those able to build at range can deconstruct at range, and not when adjacent to the target; because if you're next to it, you can just disarm decon it!
 			if(extra_build_dist == IGNORE_BUILD_DISTANCE || caste.max_build_dist + extra_build_dist > 1)
 				if(istype(target, /obj/effect/alien/resin/construction))

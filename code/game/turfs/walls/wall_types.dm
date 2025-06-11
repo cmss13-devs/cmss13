@@ -1313,7 +1313,7 @@
 		return XENO_NO_DELAY_ACTION
 
 	xeno.animation_attack_on(src)
-	xeno.visible_message(SPAN_XENONOTICE("\The [xeno] claws \the [src]!"),
+	xeno.visible_message(SPAN_XENONOTICE("[xeno] claws [src]!"),
 	SPAN_XENONOTICE("We claw \the [src]."))
 	playsound(src, "alien_resin_break", 25)
 	if (xeno.hivenumber == hivenumber)

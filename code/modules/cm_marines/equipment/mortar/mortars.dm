@@ -35,7 +35,7 @@
 	/// if true, blows up the shell immediately
 	var/ship_side = FALSE
 	/// The max range the mortar can fire at
-	var/max_range = 56
+	var/max_range = 64
 	/// The min range the mortar can fire at
 	var/min_range = 15
 	/// True if in lase mode, else in coordinate mode

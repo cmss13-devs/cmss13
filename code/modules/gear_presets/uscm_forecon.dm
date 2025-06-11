@@ -4,7 +4,6 @@
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
-	job_title = JOB_MARINE
 	faction_group = list(FACTION_MARINE)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	auto_squad_name = SQUAD_FORECON

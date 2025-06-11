@@ -39,7 +39,6 @@
 				if(istype(I, /obj/item/card/id/dogtag))
 					show_blip(human_user, sourcemob)
 					detected_sound = TRUE
-					break  // no need to keep checking contents
 
 		CHECK_TICK
 

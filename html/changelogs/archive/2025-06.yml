@@ -113,3 +113,7 @@
       prot (from 15).
   - balance: Light and Press armor now have 15 bomb prot (from 20).
   - bugfix: light armor no longer has more bomb armor than medium.
+2025-06-11:
+  stalkerino:
+  - rscadd: makes it so uscm headset (cosmetic) counts as a helmet accessory
+  - rscadd: Helmet rail flashlight is now directional

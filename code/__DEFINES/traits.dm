@@ -165,6 +165,8 @@
 #define TRAIT_NO_STRAY "trait_no_stray"
 /// When a Xeno hauls us. We can take out our knife or gun if hauled though we are immobilized, also shielded from most damage.
 #define TRAIT_HAULED "hauled"
+/// Mob is inside a vehicle that protects it
+#define TRAIT_INSIDE_VEHICLE "trait_inside_vehicle"
 // only used by valkyrie
 #define TRAIT_VALKYRIE_ARMORED "trait_valkyrie_armored"
 
@@ -337,6 +339,7 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_IN_TUTORIAL,
 	TRAIT_SPEC_KIT,
 	TRAIT_SPEC_VENDOR,
+	TRAIT_INSIDE_VEHICLE,
 ))
 
 /*
@@ -378,6 +381,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_CLOAKED" = TRAIT_CLOAKED,
 		"TRAIT_SPEC_KIT" = TRAIT_SPEC_KIT,
 		"TRAIT_SPEC_VENDOR" = TRAIT_SPEC_VENDOR,
+		"TRAIT_INSIDE_VEHICLE" = TRAIT_INSIDE_VEHICLE,
 	),
 	/mob/living/carbon/xenomorph = list(
 		"TRAIT_ABILITY_NO_PLASMA_TRANSFER" = TRAIT_ABILITY_NO_PLASMA_TRANSFER,

@@ -450,7 +450,7 @@
 	// Every caste is manually defined here so you get
 	var/list/xeno_counts = list(
 		// Yes, Queen is technically considered to be tier 0
-		list(XENO_CASTE_LARVA = 0, "Queen" = 0),
+		list(XENO_CASTE_LARVA = 0, XENO_CASTE_QUEEN = 0),
 		list(XENO_CASTE_DRONE = 0, XENO_CASTE_RUNNER = 0, XENO_CASTE_SENTINEL = 0, XENO_CASTE_DEFENDER = 0),
 		list(XENO_CASTE_HIVELORD = 0, XENO_CASTE_BURROWER = 0, XENO_CASTE_CARRIER = 0, XENO_CASTE_LURKER = 0, XENO_CASTE_SPITTER = 0, XENO_CASTE_WARRIOR = 0),
 		list(XENO_CASTE_BOILER = 0, XENO_CASTE_CRUSHER = 0, XENO_CASTE_PRAETORIAN = 0, XENO_CASTE_RAVAGER = 0)
@@ -467,6 +467,33 @@
 			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
 
 	return xeno_counts
+
+/// Returns the full minimap icon as base64 string.
+/datum/hive_status/proc/get_xeno_icons()
+	// Must match hardcoded xeno counts order.
+	var/list/xeno_icons = list(
+		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = ""),
+		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = ""),
+		list(XENO_CASTE_HIVELORD = "", XENO_CASTE_BURROWER = "", XENO_CASTE_CARRIER = "", XENO_CASTE_LURKER = "", XENO_CASTE_SPITTER = "", XENO_CASTE_WARRIOR = ""),
+		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "")
+	)
+
+	for(var/caste in GLOB.xeno_datum_list)
+		var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[caste]
+
+		// Special castes like king will not show up.
+		if(caste_datum.tier < 0 || caste_datum.tier >= length(xeno_icons) || !(caste_datum.caste_type in xeno_icons[caste_datum.tier+1]))
+			continue
+
+		xeno_icons[caste_datum.tier+1][caste_datum.caste_type] = GLOB.minimap_icons[caste_datum.minimap_icon]
+
+	return xeno_icons
+
+/// Returns the default minimap icon background, as specified on drone caste.
+/datum/hive_status/proc/get_xeno_background()
+	var/datum/caste_datum/drone = GLOB.xeno_datum_list[XENO_CASTE_DRONE]
+
+	return GLOB.minimap_icons[drone.minimap_background]
 
 /**
  * Returns a sorted list of some basic info (stuff that's needed for sorting) about all the xenos in the hive
@@ -606,8 +633,13 @@
 		if(cur_area)
 			area_name = cur_area.name
 
+		var/plasma_percent = -1
+		if(xeno.plasma_max != 0)
+			plasma_percent = round((xeno.plasma_stored / xeno.plasma_max) * 100, 1)
+
 		xenos["[xeno.nicknumber]"] = list(
 			"health" = round((xeno.health / xeno.maxHealth) * 100, 1),
+			"plasma" = plasma_percent,
 			"area" = area_name,
 			"is_ssd" = (!xeno.client)
 		)
@@ -1057,9 +1089,12 @@
 	return hit_larva_pylon_limit
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
-/datum/hive_status/proc/increase_larva_after_burst()
+/datum/hive_status/proc/increase_larva_after_burst(is_nested)
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
 	partial_larva += extra_per_burst
+	if(is_nested)
+		var/extra_per_nested_burst = CONFIG_GET(number/extra_larva_per_nested_burst)
+		partial_larva += extra_per_nested_burst
 	convert_partial_larva_to_full_larva()
 
 ///Called after times when partial larva are added to process them to stored larva

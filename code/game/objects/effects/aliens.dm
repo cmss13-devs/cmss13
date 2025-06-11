@@ -170,6 +170,10 @@
 
 //damages human that comes in contact
 /obj/effect/xenomorph/spray/proc/apply_spray(mob/living/carbon/H, should_stun = TRUE)
+	if(HAS_TRAIT(H, TRAIT_INSIDE_VEHICLE))
+		H.buckled?.visible_message(SPAN_WARNING("[H.buckled] withstands the acid spray!"))
+		return
+
 	if(H.body_position == STANDING_UP)
 		to_chat(H, SPAN_DANGER("Your feet scald and burn! Argh!"))
 		if(ishuman(H))
@@ -210,6 +214,7 @@
 		var/mob/living/carbon/human/hooman = carbone
 
 		var/damage = damage_amount
+		var/sizzle_sound = pick('sound/effects/sizzle1.ogg', 'sound/effects/sizzle2.ogg')
 
 		var/buffed_splash = FALSE
 		var/datum/effects/acid/acid_effect = locate() in hooman.effects_list
@@ -230,6 +235,7 @@
 		if (buffed_splash)
 			hooman.KnockDown(stun_duration)
 			to_chat(hooman, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
+			playsound(hooman, sizzle_sound, 75, 1)
 		hooman.last_damage_data = cause_data
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)

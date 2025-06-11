@@ -70,12 +70,90 @@
 		return
 	. = ..()
 
+/obj/item/clothing/under/marine/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
 /obj/item/clothing/under/marine/medic
 	name = "\improper USCM corpsman uniform"
 	desc = "Standard-issue Marine hospital corpsman fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_medic"
 	worn_state = "marine_medic"
 	specialty = "USCM Hospital Corpsman"
+
+/obj/item/clothing/under/marine/medic/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/medic/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/medic/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/medic/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/medic/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/under/marine/engineer
 	name = "\improper USCM ComTech uniform"
@@ -84,16 +162,43 @@
 	worn_state = "marine_engineer"
 	specialty = "USCM Combat Technician"
 
-/obj/item/clothing/under/marine/engineer/standard
+/obj/item/clothing/under/marine/engineer/jungle
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
-/obj/item/clothing/under/marine/engineer/darker
+/obj/item/clothing/under/marine/engineer/desert
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/engineer/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/engineer/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/engineer/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 	)
 
 /obj/item/clothing/under/marine/rto
@@ -103,12 +208,90 @@
 	item_state = "marine_rto"
 	specialty = "marine Radio Telephone Operator"
 
+/obj/item/clothing/under/marine/rto/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/rto/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/rto/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/rto/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/rto/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
 /obj/item/clothing/under/marine/tanker
 	name = "\improper USCM tanker uniform"
 	icon_state = "marine_tanker"
 	worn_state = "marine_tanker"
 	flags_jumpsuit = FALSE
 	specialty = "USCM tanker"
+
+/obj/item/clothing/under/marine/tanker/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/tanker/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/tanker/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/tanker/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/tanker/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/under/marine/tanker/New(loc,
 	new_protection = list(MAP_ICE_COLONY = ICE_PLANET_MIN_COLD_PROT))
@@ -136,16 +319,43 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military police"
 
-/obj/item/clothing/under/marine/mp/standard
+/obj/item/clothing/under/marine/mp/jungle
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
-/obj/item/clothing/under/marine/mp/darker
+/obj/item/clothing/under/marine/mp/desert
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/mp/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/mp/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/mp/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
 	)
 
 /obj/item/clothing/under/marine/warden
@@ -156,6 +366,45 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/warden)
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "military warden"
+
+/obj/item/clothing/under/marine/warden/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/warden/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/warden/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/warden/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/warden/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/under/marine/officer
 	name = "marine officer uniform"
@@ -177,6 +426,45 @@
 	worn_state = "io"
 	specialty = "marine intelligence officer"
 
+/obj/item/clothing/under/marine/officer/intel/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/officer/intel/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/intel/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/intel/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/intel/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
 /obj/item/clothing/under/marine/officer/warrant
 	name = "\improper chief MP uniform"
 	desc = "A uniform typically worn by a Chief MP of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions. This uniform includes a small EMF distributor to help nullify energy-based weapon fire, along with a hazmat chemical filter woven throughout the material to ward off biological and radiation hazards."
@@ -186,6 +474,45 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine, /obj/item/clothing/suit/storage/jacket/marine/service/cmp)
 	flags_jumpsuit = FALSE
 	specialty = "chief MP"
+
+/obj/item/clothing/under/marine/officer/warrant/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/officer/warrant/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/warrant/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/warrant/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/warrant/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/under/marine/officer/pilot
 	name = "pilot officer bodysuit"
@@ -200,6 +527,45 @@
 	suit_restricted = list(/obj/item/clothing/suit/storage/jacket/marine/pilot/armor, /obj/item/clothing/suit/storage/marine/light/vest/dcc, /obj/item/clothing/suit/storage/jacket/marine/pilot, /obj/item/clothing/suit/storage/marine/light/vest)
 	flags_atom = FPRINT
 
+/obj/item/clothing/under/marine/officer/pilot/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/officer/pilot/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/pilot/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/pilot/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/pilot/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
 /obj/item/clothing/under/marine/officer/pilot/flight
 	name = "tactical pilot officer flightsuit"
 	desc = "A flightsuit worn by pilot officers of the USCM, with plenty of leather straps, pouches, and other essential gear you will never use. Looks badass."
@@ -209,6 +575,27 @@
 	flags_jumpsuit = UNIFORM_JACKET_REMOVABLE
 	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_MIN_COLD_PROT
+
+/obj/item/clothing/under/marine/engineer/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/officer/pilot/flight/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/pilot/flight/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/under/marine/officer/pilot/dcc
 	name = "dropship crew chief bodysuit"
@@ -232,6 +619,45 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	item_state_slots = list(WEAR_BODY = "marine_tanker")
 
+/obj/item/clothing/under/marine/officer/tanker/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/officer/tanker/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/tanker/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/tanker/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/tanker/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
+
 /obj/item/clothing/under/marine/officer/bridge
 	name = "marine service uniform"
 	desc = "A service uniform worn by members of the USCM. Do the corps proud. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
@@ -252,6 +678,45 @@
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE|UNIFORM_JACKET_REMOVABLE
 	specialty = "marine operations"
 	flags_atom = FPRINT
+
+/obj/item/clothing/under/marine/officer/boiler/jungle
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+
+/obj/item/clothing/under/marine/officer/boiler/desert
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/desert.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/desert.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/desert_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/boiler/classic
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/classic.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/classic.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/boiler/snow
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/snow.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+
+/obj/item/clothing/under/marine/officer/boiler/urban
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_map/urban.dmi'
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_map/urban.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/urban_righthand.dmi'
+	)
 
 /obj/item/clothing/under/marine/officer/command
 	name = "\improper USCM officer uniform"

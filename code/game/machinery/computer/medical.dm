@@ -19,6 +19,7 @@
 	var/bio_link_target_record_id
 	/// time left for someone to authenticate a biometric scan, before it aborts
 	var/biometric_scan_timer
+	/// the current users access level for the medical record database. see define definitions for access permissions
 	var/access_level = MEDICAL_RECORD_ACCESS_LEVEL_0
 	/// the id number of the lastest viewed record. used to manage ui data
 	var/currently_selected_record_id
@@ -51,8 +52,6 @@
 
 	tgui_interact(user)
 
-	return
-
 /obj/structure/machinery/computer/med_data/proc/get_database_access_level(obj/item/card/id/id)
 	if(!id)
 		return MEDICAL_RECORD_ACCESS_LEVEL_0
@@ -68,11 +67,9 @@
 		deltimer(biometric_scan_timer)
 		biometric_scan_timer = null
 
-	var/assignment
+	var/assignment  = "Unassigned"	// whichever job is listed on the id of the current user
 	if(target.job)
 		assignment = target.job
-	else
-		assignment = "Unassigned"
 
 	for (var/datum/data/record/general_record in GLOB.data_core.general)
 		if(general_record.fields["id"] != general_record_id)
@@ -204,6 +201,22 @@
 
 	return record
 
+/obj/structure/machinery/computer/med_data/ui_status(mob/user)
+	if(inoperable())
+		return UI_CLOSE
+
+	if(!ishumansynth_strict(user) || (user.stat == DEAD))
+		return UI_CLOSE
+
+	if((user.stat == UNCONSCIOUS) || !allowed(user))
+		return UI_DISABLED
+
+	if(get_dist(src, user) <= 2)
+		return UI_INTERACTIVE
+
+	// if none of the above were true, something is very wrong
+	return UI_CLOSE
+
 /obj/structure/machinery/computer/med_data/ui_data(mob/user)
 	. = ..()
 
@@ -220,6 +233,15 @@
 		// checks if the record is being viewed, and requires more data
 		if((id_number == currently_selected_record_id) && currently_selected_record_id)
 			records |= list(gather_record_data(user, general))
+			// sends photo data seperately from the records system, for ease of use
+			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
+			var/photo_data = icon2html(photo_icon, user.client, sourceonly = TRUE)
+
+			var/photo_front = general.fields["photo_front"] ? icon2html(general.fields["photo_front"], user.client, sourceonly = TRUE) : photo_data
+			var/photo_side = general.fields["photo_side"] ? icon2html(general.fields["photo_side"], user.client, sourceonly = TRUE) : photo_data
+
+			.["photo_front"] = photo_front
+			.["photo_side"] = photo_side
 		else
 			var/list/record = list(
 				"id" = id_number,
@@ -283,18 +305,8 @@
 				return
 
 			currently_selected_record_id = id
-			tgui_interact(user, ui)
 
-			var/icon/photo_icon = new /icon('icons/misc/buildmode.dmi', "buildhelp")
-			var/photo_data = icon2html(photo_icon, user.client, sourceonly = TRUE)
-
-			var/photo_front = general_record.fields["photo_front"] ? icon2html(general_record.fields["photo_front"], user.client, sourceonly = TRUE) : photo_data
-			var/photo_side = general_record.fields["photo_side"] ? icon2html(general_record.fields["photo_side"], user.client, sourceonly = TRUE) : photo_data
-
-			ui.send_update(list(
-				"photo_front" = photo_front,
-				"photo_side" = photo_side
-			))
+			. = TRUE
 
 		if("update_field")
 			var/id = params["id"]
@@ -338,13 +350,12 @@
 				tgui_alert(user, "Record or associated field not found.")
 				return
 
-
 			var/name = general_record.fields["name"]
-			message_admins("[key_name(user)] changed the record of [name]. Field [original_field] value changed to [value]")
-
-			tgui_interact(user, ui)
+			// record modifications to be ported to ARES logs in future
+			msg_admin_niche("[key_name(user)] changed the record of [name]. Field [original_field] value changed to [value]")
 
 			. = TRUE
+
 		if ("add_comment")
 			var/id = params["id"]
 			var/comment = params["comment"]
@@ -379,9 +390,8 @@
 			to_chat(user, SPAN_NOTICE("Comment added successfully."))
 			msg_admin_niche("[key_name_admin(user)] added medical comment.")
 
-			tgui_interact(user, ui)
+			. = TRUE
 
-			return
 		if ("delete_comment")
 			var/id = params["id"]
 			var/comment_key = params["key"]
@@ -414,7 +424,7 @@
 			to_chat(user, SPAN_NOTICE("Comment deleted successfully."))
 			msg_admin_niche("[key_name_admin(user)] deleted medical comment.")
 
-			tgui_interact(user, ui)
+			. = TRUE
 
 		//* Records maintenance actions
 		if ("new_medical_record")
@@ -431,6 +441,7 @@
 				playsound(src, 'sound/machines/ping.ogg', 15, FALSE)
 				bio_link_target_record_id = id
 				biometric_scan_timer = addtimer(CALLBACK(src, PROC_REF(handle_biometric_scan_timeout), user), 10 SECONDS, TIMER_STOPPABLE)
+
 			return
 
 		if ("new_general_record")
@@ -443,9 +454,7 @@
 			to_chat(user, SPAN_NOTICE("You successfully created new general record"))
 			msg_admin_niche("[key_name_admin(user)] created new general record.")
 
-			tgui_interact(user, ui)
-
-			return
+			. = TRUE
 
 		if ("delete_medical_record")
 			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
@@ -489,8 +498,8 @@
 		if ("update_photo")
 			var/id = params["id"]
 			var/photo_profile = params["photo_profile"]
-			var/icon/img = get_photo(user)
-			if(!img)
+			var/icon/image = get_photo(user)
+			if(!image)
 				to_chat(user, SPAN_WARNING("You are currently not holding any photo."))
 				return
 
@@ -501,14 +510,15 @@
 				to_chat(user, SPAN_WARNING("Record not found."))
 				return
 
-			general_record.fields["photo_[photo_profile]"] = img
+			general_record.fields["photo_[photo_profile]"] = image
 			ui.send_update(list(
-				"photo_[photo_profile]" = icon2html(img, user.client, sourceonly = TRUE),
+				"photo_[photo_profile]" = icon2html(image, user.client, sourceonly = TRUE),
 			))
-			tgui_interact(user, ui)
+
 			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo"))
 			msg_admin_niche("[key_name_admin(user)] updated record photo of [general_record.fields["name"]].")
-			return
+
+			. = TRUE
 
 /obj/structure/machinery/computer/med_data/proc/validate_field(field, value, mob/user = usr, strict_mode = FALSE)
 	var/list/validators = list(

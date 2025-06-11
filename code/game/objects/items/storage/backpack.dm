@@ -340,9 +340,33 @@
 	name = "leather satchel"
 	desc = "A very fancy satchel made of fine leather. Looks pretty pricey."
 	icon_state = "satchel"
+	item_state = "satchel"
 	worn_accessible = TRUE
 	storage_slots = null
 	max_storage_space = 15
+	item_state_slots = list(WEAR_BACK = "satchel")
+	var/mode = TRUE
+
+/obj/item/storage/backpack/satchel/post_skin_selection()
+	toggle_mode()
+
+/obj/item/storage/backpack/satchel/verb/toggle_mode()
+	set category = "Object"
+	set name = "Change Side of Strap"
+	set desc = "Changes which arm the strap of the satchel will be on."
+	set src in usr
+	if(!ishuman(usr))
+		return
+	if(mode)
+		// Strap in the same arm
+		item_state_slots[WEAR_BACK] = "[item_state]_b"
+		mode = FALSE
+	else
+		// Strap in the opposite arm
+		item_state_slots[WEAR_BACK] = item_state
+		mode = TRUE
+	update_icon()
+	usr.update_inv_back()
 
 /obj/item/storage/backpack/satchel/withwallet
 
@@ -533,7 +557,23 @@
 	name = "\improper USCM expedition chestrig"
 	desc = "A heavy-duty IMP based chestrig, can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "intel_chestrig"
-	max_storage_space = 20
+
+/obj/item/storage/backpack/marine/satchel/intel/expeditionsatchel
+	name = "\improper USCM lightweight expedition satchel"
+	desc = "A heavy-duty IMP based satchel, reinforced with kevlar so it doesn't rip. Can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
+	icon_state = "intel_satchel"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_state_slots = list(
+		WEAR_BACK = "intel_satchel",
+		WEAR_R_HAND = "marinesatch",
+		WEAR_L_HAND = "marinesatch",
+	)
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"

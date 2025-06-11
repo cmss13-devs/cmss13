@@ -1301,10 +1301,8 @@
 		if(!do_after(xeno, time_to_decon SECONDS, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			return XENO_NO_DELAY_ACTION
 
-		xeno.visible_message(SPAN_XENONOTICE("[xeno] finishes tearing [src] apart, and consumes the remains!"),\
-		SPAN_XENONOTICE("We finish tearing [src] apart and consume what is left to reabsorb plasma!"))
-		var/plasma_recycled = round(damage_cap - damage, 1) / 10
-		new /datum/effects/heal_over_time(xeno, plasma_recycled)
+		xeno.visible_message(SPAN_XENONOTICE("[xeno] finishes tearing [src] apart!"),\
+		SPAN_XENONOTICE("We finish tearing [src] apart!"))
 		dismantle_wall()
 		playsound(src, "alien_resin_break", 25)
 		return XENO_ATTACK_ACTION

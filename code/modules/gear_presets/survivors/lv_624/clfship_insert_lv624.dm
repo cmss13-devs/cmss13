@@ -43,7 +43,7 @@
 	assignment = JOB_CLF_LEADER
 	rank = JOB_CLF_LEADER
 	role_comm_title = "LDR"
-	skills = /datum/skills/clf/leader
+	skills = /datum/skills/civilian/survivor/clf/leader
 	minimap_icon = "clf_sl"
 
 /datum/equipment_preset/survivor/clf/leader/load_gear(mob/living/carbon/human/new_human)
@@ -88,7 +88,7 @@
 	role_comm_title = "MED"
 	minimap_icon = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/clf/combat_medic
+	skills = /datum/skills/civilian/survivor/clf/combat_medic
 
 /datum/equipment_preset/survivor/clf/medic/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_rebel_equipment(new_human)
@@ -137,7 +137,7 @@
 
 	minimap_icon = "clf_engi"
 
-	skills = /datum/skills/clf/combat_engineer
+	skills = /datum/skills/civilian/survivor/clf/combat_engineer
 
 /datum/equipment_preset/survivor/clf/engineer/load_gear(mob/living/carbon/human/new_human)
 

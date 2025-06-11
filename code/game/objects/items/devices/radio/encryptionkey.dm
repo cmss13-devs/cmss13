@@ -174,7 +174,7 @@
 /obj/item/device/encryptionkey/squadlead
 	name = "\improper Squad Leader Radio Encryption Key"
 	icon_state = "sl_key"
-	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_JTAC = TRUE)
+	channels = list(RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_REQ = TRUE)
 
 /obj/item/device/encryptionkey/squadlead/acting
 	abstract = TRUE

@@ -1,0 +1,4 @@
+author: "PGrayCS"
+delete-after: True
+changes:
+  - bugfix: "Vendor briefcases can now be scrolled"

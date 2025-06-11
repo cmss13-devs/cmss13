@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
-	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 0 // VERY high slash damage, but attacks relatively slowly
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
@@ -46,7 +46,7 @@
 		/datum/action/xeno_action/activable/oppressor_punch,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
-	claw_type = CLAW_TYPE_SHARP
+	claw_type = CLAW_TYPE_VERY_SHARP
 
 	tackle_min = 2
 	tackle_max = 6

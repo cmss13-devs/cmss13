@@ -3,10 +3,10 @@
 	tier = 1
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
-	melee_damage_upper = XENO_DAMAGE_TIER_2
+	melee_damage_upper = XENO_DAMAGE_TIER_1
 	melee_vehicle_damage = 0
 	max_health = XENO_HEALTH_TIER_2
-	plasma_gain = XENO_PLASMA_GAIN_TIER_1
+	plasma_gain = XENO_PLASMA_GAIN_TIER_2
 	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_NO_ARMOR
@@ -41,13 +41,13 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/place_spores,
-		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
+		/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
-	claw_type = CLAW_TYPE_SHARP
+	claw_type = CLAW_TYPE_NORMAL
 
 	tackle_min = 2
 	tackle_max = 6
@@ -79,9 +79,9 @@
 	new /obj/effect/pathogen/spore_cloud(loc)
 
 /datum/action/xeno_action/onclick/place_spores
-	name = "Place spore sac (750)"
+	name = "Place spore sac (700)"
 	action_icon_state = "place_trap"
-	plasma_cost = 750
+	plasma_cost = 700
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 

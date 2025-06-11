@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_5
 
-	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 0 // VERY high slash damage, but attacks relatively slowly
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/venator_base

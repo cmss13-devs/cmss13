@@ -79,6 +79,9 @@
 	plant_on_semiweedable = TRUE
 	node_type = /obj/effect/alien/weeds/node/pathogen
 
+/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper
+	name = "Spread Blight (100)"
+	plasma_cost = 100
 
 // LANGUAGE SHIT
 /mob/living/carbon/xenomorph/proc/make_pathogen_speaker()

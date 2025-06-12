@@ -306,7 +306,7 @@
 
 			currently_selected_record_id = id
 
-			. = TRUE
+			return TRUE
 
 		if("update_field")
 			var/id = params["id"]
@@ -320,7 +320,7 @@
 				return
 
 			if(!id || !field)
-				alert(user, "Invalid record ID or field.")
+				tgui_alert(user, "Invalid record ID or field.")
 				return
 
 			var/is_general_field = copytext(field, 1, 9) == "general_"
@@ -352,9 +352,9 @@
 
 			var/name = general_record.fields["name"]
 			// record modifications to be ported to ARES logs in future
-			msg_admin_niche("[key_name(user)] changed the record of [name]. Field [original_field] value changed to [value]")
+			msg_admin_niche("[key_name(user)] changed the record of [name] at [get_location_in_text(user)]. Field [original_field] value changed to [value] [ADMIN_JMP(loc)]")
 
-			. = TRUE
+			return TRUE
 
 		if ("add_comment")
 			var/id = params["id"]
@@ -388,9 +388,9 @@
 				medical_record.fields["comments"]["[comment_id]"] = new_comment
 
 			to_chat(user, SPAN_NOTICE("Comment added successfully."))
-			msg_admin_niche("[key_name_admin(user)] added medical comment.")
+			msg_admin_niche("[key_name_admin(user)] added medical comment for [medical_record.fields["name"]] at [get_location_in_text(user)] [ADMIN_JMP(loc)]")
 
-			. = TRUE
+			return TRUE
 
 		if ("delete_comment")
 			var/id = params["id"]
@@ -422,9 +422,9 @@
 			medical_record.fields["comments"][comment_key] = comment
 
 			to_chat(user, SPAN_NOTICE("Comment deleted successfully."))
-			msg_admin_niche("[key_name_admin(user)] deleted medical comment.")
+			msg_admin_niche("[key_name_admin(user)] deleted comment [comment_key] on [medical_record.fields["name"]]'s medical record at [get_location_in_text(user)] [ADMIN_JMP(loc)]")
 
-			. = TRUE
+			return TRUE
 
 		//* Records maintenance actions
 		if ("new_medical_record")
@@ -452,9 +452,9 @@
 
 			CreateGeneralRecord()
 			to_chat(user, SPAN_NOTICE("You successfully created new general record"))
-			msg_admin_niche("[key_name_admin(user)] created new general record.")
+			msg_admin_niche("[key_name_admin(user)] created new general record at [get_location_in_text(user)] [ADMIN_JMP(loc)].")
 
-			. = TRUE
+			return TRUE
 
 		if ("delete_medical_record")
 			if(access_level != MEDICAL_RECORD_ACCESS_LEVEL_2)
@@ -472,7 +472,7 @@
 			var/record_name = general_record.fields["name"]
 			if ((istype(medical_record, /datum/data/record) && GLOB.data_core.medical.Find(medical_record)))
 				GLOB.data_core.medical -= medical_record
-				msg_admin_niche("[key_name_admin(user)] deleted the medical record of [record_name].")
+				msg_admin_niche("[key_name_admin(user)] deleted the medical record of [record_name] at [get_location_in_text(user)] [ADMIN_JMP(loc)].")
 				qdel(medical_record)
 
 				tgui_interact(user, ui)
@@ -516,9 +516,9 @@
 			))
 
 			to_chat(user, SPAN_NOTICE("You successfully updated record [photo_profile] photo"))
-			msg_admin_niche("[key_name_admin(user)] updated record photo of [general_record.fields["name"]].")
+			msg_admin_niche("[key_name_admin(user)] updated the record photo of [general_record.fields["name"]] at [get_location_in_text(user)] [ADMIN_JMP(loc)]")
 
-			. = TRUE
+			return TRUE
 
 /obj/structure/machinery/computer/med_data/proc/validate_field(field, value, mob/user = usr, strict_mode = FALSE)
 	var/list/validators = list(

@@ -42,8 +42,11 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute,
+		/datum/action/xeno_action/onclick/crusher_stomp/pathogen_brute,
 		/datum/action/xeno_action/activable/oppressor_punch,
+		/datum/action/xeno_action/onclick/crusher_shield,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
@@ -76,3 +79,6 @@
 	name = "Arm Whack"
 	blunt_stab = TRUE
 	stab_range = 2
+
+/datum/action/xeno_action/onclick/crusher_stomp/pathogen_brute
+	ability_primacy = XENO_PRIMARY_ACTION_1

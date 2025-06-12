@@ -47,28 +47,38 @@
 	get_targets()
 
 /obj/structure/machinery/computer/wy_intranet/Destroy()
-	targets = null
+	for(var/obj/target in targets)
+		clean_target(target)
 	. = ..()
+
+/obj/structure/machinery/computer/wy_intranet/proc/clean_target(obj/structure/target)
+	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+	targets -= target
 
 /obj/structure/machinery/computer/wy_intranet/proc/get_targets()
 	targets = list()
 	for(var/obj/structure/machinery/door/target_door in GLOB.machines)
 		if(target_door.id == divider_id)
 			targets += target_door
+			RegisterSignal(target_door, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), target_door)
 			continue
 		if(target_door.id == hidden_cell_id)
 			targets += target_door
+			RegisterSignal(target_door, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), target_door)
 
 	for(var/obj/structure/machinery/flasher/target_flash in GLOB.machines)
 		if(target_flash.id == hidden_cell_id)
 			targets += target_flash
+			RegisterSignal(target_flash, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), target_flash)
 			continue
 		if(target_flash.id == security_system_id)
 			targets += target_flash
+			RegisterSignal(target_flash, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), target_flash)
 
 	for(var/obj/structure/pipes/vents/pump/no_boom/gas/gas_vent in GLOB.gas_vents)
 		if(gas_vent.network_id == security_system_id)
 			targets += gas_vent
+			RegisterSignal(gas_vent, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), gas_vent)
 
 /obj/structure/machinery/computer/wy_intranet/liaison
 	divider_id = "CLRoomDivider"
@@ -228,7 +238,7 @@
 	if(ACCESS_WY_GENERAL in card.access)
 		if(card.paygrade)
 			switch(card.paygrade)
-				if(PAY_SHORT_WYC10)
+				if(PAY_SHORT_WYC10, PAY_SHORT_WYC11)
 					return WY_COMP_ACCESS_DIRECTOR
 				if(PAY_SHORT_WYC9, PAY_SHORT_WYC8)
 					return WY_COMP_ACCESS_SENIOR_LEAD
@@ -290,7 +300,7 @@
 		if(target_door.density)
 			continue
 		target_door.close()
-		target_door.lock()
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock)), 1 SECONDS)
 		open_cell_door = FALSE
 
 	return TRUE

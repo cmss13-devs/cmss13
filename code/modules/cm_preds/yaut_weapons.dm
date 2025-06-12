@@ -235,7 +235,7 @@
 	icon_state = "predscythe"
 	item_state = "scythe_dual"
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT
-	flags_equip_slot = SLOT_WAIST
+	flags_equip_slot = SLOT_BACK|SLOT_WAIST
 	force = MELEE_FORCE_TIER_6
 	throwforce = MELEE_FORCE_TIER_5
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -656,6 +656,11 @@
 					user.put_in_inactive_hand(cut_scalp) //Put it in the user's offhand if possible.
 					victim.h_style = "Bald"
 					victim.update_hair() //tear the hair off with the scalp
+					if(user.hunter_data.prey == target)
+						to_chat(src, SPAN_YAUTJABOLD("You have claimed the scalp of [target] as your trophy."))
+						user.emote("roar2")
+						message_all_yautja("[user.real_name] has claimed the scalp of [target] as their trophy.")
+						user.hunter_data.prey = null
 
 		if(FLAY_STAGE_STRIP)
 			user.visible_message(SPAN_DANGER("<B>[user] jabs \his [tool.name] into [victim]'s cuts, prying, cutting, then tearing off large areas of skin. The remainder hangs loosely.</B>"),
@@ -888,6 +893,73 @@
 	item_state = "longaxe"
 
 /*#########################################
+########### Duelling Weaponry #############
+#########################################*/
+
+/obj/item/weapon/yautja/duelsword
+	name = "duelling blade"
+	desc = "A primitive yet deadly sword used in yautja rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
+	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
+	icon_state = "duelling_sword"
+	item_state = "duelling_sword"
+	force = MELEE_FORCE_STRONG
+	throwforce = MELEE_FORCE_WEAK
+	sharp = IS_SHARP_ITEM_BIG
+	edge = 1
+	w_class = SIZE_LARGE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
+
+/obj/item/weapon/yautja/duelclub
+	name = "duelling club"
+	desc = "A crude metal club adorned with a skull. Used as a non-lethal training weapon for young yautja honing their combat skills."
+	flags_item = ADJACENT_CLICK_DELAY
+	icon_state = "duelling_club"
+	item_state = "duelling_club"
+	sharp = 0
+	edge = 0
+	w_class = SIZE_MEDIUM
+	force = MELEE_FORCE_STRONG
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 7
+	throwforce = 7
+	attack_verb = list("smashed", "beaten", "slammed", "struck", "smashed", "battered", "cracked")
+	hitsound = 'sound/weapons/genhit3.ogg'
+
+/obj/item/weapon/yautja/duelaxe
+	name = "duelling hatchet"
+	desc = "A short ceremonial duelling hatchet. Designed for ritual combat or settling disputes among Yautja. It features a keen edge capable of cleaving flesh or bone. Though smaller than traditional Yautja weapons."
+	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
+	icon_state = "duelling_hatchet"
+	item_state = "duelling_hatchet"
+	force = MELEE_FORCE_NORMAL
+	w_class = SIZE_SMALL
+	throwforce = 20
+	throw_speed = SPEED_VERY_FAST
+	throw_range = 4
+	sharp = IS_SHARP_ITEM_BIG
+	edge = 1
+	attack_verb = list("chopped", "torn", "cut")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+
+/obj/item/weapon/yautja/duelknife
+	name = "duelling knife"
+	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
+	flags_item = ADJACENT_CLICK_DELAY
+	embeddable = FALSE
+	icon_state = "duelling_knife"
+	item_state = "duelling_knife"
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	attack_verb = list("ripped", "torn", "cut")
+	force = 25
+	throwforce = MELEE_FORCE_STRONG
+	edge = 1
+	attack_speed = 12
+
+/*#########################################
 ############## Ranged Weapons #############
 #########################################*/
 
@@ -990,7 +1062,6 @@
 	if(refund)
 		spikes++
 	return TRUE
-
 
 /obj/item/weapon/gun/energy/yautja
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -1234,7 +1305,7 @@
 		WEAR_J_STORE = "plasma_wear_off"
 	)
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
-	ammo = /datum/ammo/energy/yautja/caster/stun
+	ammo = /datum/ammo/energy/yautja/caster/bolt/single_stun
 	muzzle_flash = "muzzle_flash_blue"
 	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	w_class = SIZE_HUGE
@@ -1251,7 +1322,7 @@
 	var/obj/item/clothing/gloves/yautja/hunter/source = null
 	charge_cost = 100 //How much energy is needed to fire.
 	var/mode = "stun"//fire mode (stun/lethal)
-	var/strength = "low power stun bolts"//what it's shooting
+	var/strength = "stun bolts"//what it's shooting
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty, caster_material = "ebony")
 	icon_state = "[base_icon_state]_[caster_material]"
@@ -1283,65 +1354,59 @@
 	switch(mode)
 		if("stun")
 			switch(strength)
-				if("low power stun bolts")
-					strength = "high power stun bolts"
-					charge_cost = 50
-					set_fire_delay(FIRE_DELAY_TIER_1)
-					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
-					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/stun]
-				if("high power stun bolts")
+				if("stun bolts")
 					strength = "plasma immobilizers"
-					charge_cost = 200
+					charge_cost = 150
 					set_fire_delay(FIRE_DELAY_TIER_2 * 8)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/stun]
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/aoe_stun]
 				if("plasma immobilizers")
-					strength = "low power stun bolts"
+					strength = "stun bolts"
 					charge_cost = 30
 					set_fire_delay(FIRE_DELAY_TIER_6)
 					fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_stun]
 		if("lethal")
 			switch(strength)
-				if("plasma bolts")
-					strength = "plasma spheres"
+				if("plasma bolt")
+					strength = "plasma eradicator"
 					charge_cost = 1000
 					set_fire_delay(FIRE_DELAY_TIER_2 * 12)
 					fire_sound = 'sound/weapons/pulse.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
-				if("plasma spheres")
-					strength = "plasma bolts"
-					charge_cost = 100
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/aoe_lethal]
+				if("plasma eradicator")
+					strength = "plasma bolt"
+					charge_cost = 500
 					set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
-					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_lethal]
+
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/use_unique_action()
 	switch(mode)
 		if("stun")
 			mode = "lethal"
 			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
-			strength = "plasma bolts"
+			strength = "plasma bolt"
 			charge_cost = 100
 			set_fire_delay(FIRE_DELAY_TIER_6 * 3)
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
-			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_lethal]
 
 		if("lethal")
 			mode = "stun"
 			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beeps: [src] is now set to [mode] mode"))
-			strength = "low power stun bolts"
+			strength = "stun bolts"
 			charge_cost = 30
 			set_fire_delay(FIRE_DELAY_TIER_6)
 			fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
-			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/single_stun]
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/get_examine_text(mob/user)
 	. = ..()

@@ -197,6 +197,7 @@
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR", 0, null, null, null),
 		list("UM5 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -240,6 +241,7 @@
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Webbing", 10, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("E-Tool", 5, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
@@ -396,6 +398,7 @@
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("MEDICAL OPTICS", 0, null, null, null),
 		list("HealthMate HUD", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
@@ -599,6 +602,7 @@
 		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Welderpack", 0, /obj/item/storage/backpack/marine/engineerpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("WELDING PROTECTION (CHOOSE 1)", 0, null, null, null),
 		list("Welding Goggles", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
@@ -772,6 +776,7 @@
 		list("Standard Apparel", 0, list (/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/shoes/marine/upp/knife, /obj/item/clothing/gloves/marine/veteran/upp, /obj/item/device/radio/headset/distress/UPP), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR", 0, null, null, null),
 		list("UH7 Heavy Plated Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -914,6 +919,7 @@
 		list("Standard Apparel", 0, list (/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/shoes/marine/upp/knife, /obj/item/clothing/gloves/marine/veteran/upp, /obj/item/device/radio/headset/distress/UPP), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR", 0, null, null, null),
 		list("UH7 Heavy Plated Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -1086,6 +1092,7 @@
 		list("Standard Apparel", 0, list (/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/shoes/marine/upp/knife, /obj/item/clothing/gloves/marine/veteran/upp, /obj/item/device/radio/headset/distress/UPP/command), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("ARMOR", 0, null, null, null),
 		list("UH7 Heavy Plated Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -1294,6 +1301,7 @@
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Beret", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -1794,6 +1802,7 @@
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/command, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Beret", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -1982,6 +1991,7 @@
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP/command, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Beret", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -2148,6 +2158,7 @@
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Binoculars", 0, /obj/item/device/binoculars/range, null, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Beret", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -2349,6 +2360,7 @@
 
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Peaked Cap", 0, /obj/item/clothing/head/uppcap/peaked, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -3202,6 +3214,7 @@
 		list("UPP Cloak", 0, /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Binoculars", 0, /obj/item/device/binoculars/range, null, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -3335,6 +3348,7 @@
 		list("UPP Cloak", 0, /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Binoculars", 0, /obj/item/device/binoculars/range, null, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -3500,6 +3514,7 @@
 		list("UPP Cloak", 0, /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("UPP Balaclava", 0, /obj/item/clothing/mask/gas/pmc/upp, MARINE_CAN_BUY_MASK, VENDOR_ITEM_MANDATORY),
 		list("Binoculars", 0, /obj/item/device/binoculars/range, null, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -3768,6 +3783,7 @@
 		list("Welding Kit", 0, /obj/item/tool/weldpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("Type 73 Pistol", 0, /obj/item/weapon/gun/pistol/t73, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_RECOMMENDED),
@@ -3878,6 +3894,7 @@
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Welderpack", 0, /obj/item/storage/backpack/marine/engineerpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
 		list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -4126,6 +4143,7 @@
 		list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("IRP", 0, /obj/item/storage/box/mre/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 		list("Binoculars", 0, /obj/item/device/binoculars, null, VENDOR_ITEM_MANDATORY),
+		list("Combat Lubricant", 0, /obj/item/stack/repairable/gunlube, MARINE_CAN_BUY_REPAIRABLE, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET", 0, null, null, null),
 		list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),

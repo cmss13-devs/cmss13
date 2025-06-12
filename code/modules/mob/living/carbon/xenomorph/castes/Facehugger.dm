@@ -92,15 +92,14 @@
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-/mob/living/carbon/xenomorph/facehugger/Life(delta_time)
-	if(stat == DEAD)
-		return ..()
+/mob/living/carbon/xenomorph/facehugger/Logout()
+	. = ..()
 
-	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
-		// Become a npc once again
-		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-		qdel(src)
-	return ..()
+	if(stat == DEAD)
+		return
+
+	if(!aghosted)
+		gib()
 
 /mob/living/carbon/xenomorph/facehugger/update_icons()
 	. = ..()
@@ -173,6 +172,12 @@
 	return did_hug
 
 /mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse, aghosted)
+	if(!aghosted && !can_reenter_corpse && !QDELETED(src) && stat != DEAD)
+		// Become a npc once again
+		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		qdel(src)
+		return
+
 	var/mob/dead/observer/ghost = ..()
 	ghost?.bypass_time_of_death_checks_hugger = hug_successful
 	return ghost

@@ -285,6 +285,7 @@
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
 		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
 	)
 
 	var/dat = ""
@@ -379,6 +380,15 @@
 		to_chat(src,SPAN_BOLDNOTICE( "Depressing the mouse button on disarm or harm intent will now click the target immediately, even if you hold it down -- unless you're click-dragging yourself, an ally, or an object in your inventory."))
 	else
 		to_chat(src,SPAN_BOLDNOTICE( "Click-dragging now blocks clicks from going through."))
+	prefs.save_preferences()
+
+/// Toggles whether activating marine leader orders will be spoken or not, on by default
+/client/proc/toggle_leadership_spoken_orders()
+	prefs.toggle_prefs ^= TOGGLE_LEADERSHIP_SPOKEN_ORDERS
+	if(prefs.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS)
+		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will no longer be verbally spoken."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will now be verbally spoken."))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.

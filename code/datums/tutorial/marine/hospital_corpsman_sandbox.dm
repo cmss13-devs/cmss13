@@ -74,6 +74,8 @@
 	var/survival_difficulty = TUTORIAL_HM_INJURY_SEVERITY_BOOBOO
 	/// Holds a random timer per survival wave for a booboo agent to spawn
 	var/booboo_timer
+	/// Holds a timer which forces agents to stop processing movement, in case they are misbehaving
+	var/terminate_movement_timer
 	/// List of injuries on patient NPCs that must be treated before fully healed. Is only tested AFTER they pass 65% health
 	var/list/mob/living/carbon/human/realistic_dummy/agent_healing_tasks = list()
 	/// Wave number when the last resupply phase triggered. Will wait 3 waves before rolling again
@@ -87,6 +89,8 @@
 		/datum/reagent/medical/kelotane,
 		/datum/reagent/medical/oxycodone
 	)
+	/// List of supply room vendors to be restocked before a supply phase
+	var/list/supply_vendors = list()
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/start_tutorial(mob/starting_mob)
 	. = ..()
@@ -106,6 +110,14 @@
 	if(booboo_timer)
 		deltimer(booboo_timer)
 		booboo_timer = null
+	if(terminate_movement_timer)
+		deltimer(terminate_movement_timer)
+		terminate_movement_timer = null
+	// clears refs to old friends, since passed
+	agent_healing_tasks = list()
+	agents = list()
+	dragging_agents = list()
+	active_agents = list()
 
 	switch(stage)
 		if(TUTORIAL_HM_PHASE_RESUPPLY)
@@ -140,6 +152,7 @@
 		max_survival_agents = 6
 		playsound(tutorial_mob.loc, 'sound/effects/siren.ogg', 50)
 		message_to_player("Warning! Mass-Casualty event detected!")
+		last_masscas_round = survival_wave
 	// 50% chance per wave of increasing difficulty by one step
 	// two round grace period from start
 	else if(prob(TUTORIAL_HM_DIFFICULTY_INCREASE * 100) && !(survival_wave <= 2))
@@ -151,6 +164,7 @@
 	CMO_npc.say("Now entering round [survival_wave]![difficulty_upgrade_warning]")
 
 	addtimer(CALLBACK(src, PROC_REF(spawn_agents)), 2 SECONDS)
+	terminate_movement_timer = addtimer(CALLBACK(src, PROC_REF(terminate_agent_processing)), 15 SECONDS, TIMER_STOPPABLE)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/end_supply_phase()
 
@@ -167,6 +181,7 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/begin_supply_phase()
 
+	restock_supply_room()
 	TUTORIAL_ATOM_FROM_TRACKING(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor, prep_door)
 	prep_door.unlock(TRUE)
 	prep_door.open()
@@ -182,6 +197,11 @@
 
 	last_resupply_round = survival_wave
 	give_action(tutorial_mob, /datum/action/hm_tutorial/sandbox/ready_up, null, null, src)
+
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/restock_supply_room()
+
+	for(var/obj/structure/machinery/cm_vending/sorted/medical/supply_vendor in supply_vendors)
+		supply_vendor.populate_product_list(1.2)
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/spawn_agents()
 	SIGNAL_HANDLER
@@ -242,18 +262,18 @@
 
 	var/list/healing_tasks = list()
 	UnregisterSignal(target, COMSIG_HUMAN_HM_TUTORIAL_TREATED)
-	var/list/injury_type = list()
 	for(var/obj/limb/limb as anything in target.limbs)
+		var/list/injury_type = list()
 		if((limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED))
 			injury_type |= FRACTURE
-			healing_tasks[limb] = injury_type
 			RegisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED, PROC_REF(health_tasks_handler))
 		if(limb.can_bleed_internally)
 			for(var/datum/wound/wound as anything in limb.wounds)
 				if(wound.internal)
 					injury_type |= INTERNAL_BLEEDING
-					healing_tasks[limb] = injury_type
 					RegisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, PROC_REF(health_tasks_handler), TRUE) // yeah yeah, give me a break
+		if(length(injury_type))
+			healing_tasks[limb] = injury_type
 	if(!length(healing_tasks) || bypass)
 		make_agent_leave(target)
 	else
@@ -263,7 +283,7 @@
 	SIGNAL_HANDLER
 
 	var/list/healing_tasks = agent_healing_tasks[target]
-	var/list/injury_type = list()
+
 	var/obj/limb/limb
 	if(istype(source, /obj/limb)) // swaps around the variables from COMSIG_LIVING_LIMB_SPLINTED to make them consistent
 		limb = source
@@ -271,24 +291,23 @@
 		health_tasks_handler(target, target_redirect)
 		UnregisterSignal(limb, COMSIG_LIVING_LIMB_SPLINTED)
 		return
-	if(surgery)
-		limb = surgery.affected_limb
-		if(istype(surgery, /datum/surgery/internal_bleeding))
-			for(limb in healing_tasks)
-				injury_type = healing_tasks[surgery.affected_limb]
+	for(limb in healing_tasks)
+		var/list/injury_type = list()
+		injury_type |= healing_tasks[limb]
+		if(surgery && limb == surgery.affected_limb)
+			if(istype(surgery, /datum/surgery/internal_bleeding))
 				injury_type -= INTERNAL_BLEEDING
 				injury_type |= SUTURE
-		if(istype(surgery, /datum/surgery/suture_incision))
-			for(limb in healing_tasks)
+			if(istype(surgery, /datum/surgery/suture_incision))
 				injury_type = healing_tasks[surgery.affected_limb]
 				if(SUTURE in injury_type)
 					injury_type -= SUTURE
-	for(limb in healing_tasks)
-		injury_type = healing_tasks[limb]
 		if((FRACTURE in injury_type) && (limb.status & LIMB_BROKEN) && (limb.status & LIMB_SPLINTED))
 			injury_type -= FRACTURE
 		if(!length(injury_type) && limb) // makes sure something DID exist on the list
 			healing_tasks -= limb
+		else
+			healing_tasks[limb] = injury_type
 	if(!length(healing_tasks))
 		UnregisterSignal(tutorial_mob, COMSIG_HUMAN_SURGERY_STEP_SUCCESS)
 		make_agent_leave(target)
@@ -321,7 +340,18 @@
 			var/targetlimb = limb.display_name
 			help_me |= list("Need a [targetlimb] splint please Doc", "Splint [targetlimb]", "Can you splint my [targetlimb] please")
 
-	help_me |= list("Doc can I get some pills?", "Need a patch up please", "Im hurt Doc...", "Can I get some healthcare?", "Pill me real quick")
+	help_me |= list(
+		"Doc can I get some pills?",
+		"Need a patch up please",
+		"Im hurt Doc...",
+		"Can I get some healthcare?",
+		"Pill me real quick",
+		"HEEEEEELP!!!",
+		"M-Medic.. I'm dying",
+		"I'll pay you 20 bucks to patch me up",
+		"MEDIC!!!!! HEEEEEELP!!!!",
+		"HEEEELP MEEEEEE!!!!!"
+	)
 
 	target.say("[pick(help_me)]")
 
@@ -334,6 +364,25 @@
 	for(var/mob/living/carbon/human/active_agent as anything in active_agents)
 		move_agent(active_agent, active_agents)
 
+/datum/tutorial/marine/hospital_corpsman_sandbox/proc/terminate_agent_processing()
+
+	if(terminate_movement_timer)
+		deltimer(terminate_movement_timer)
+		terminate_movement_timer = null
+	for(var/mob/living/carbon/human/dragging_agent as anything in dragging_agents)
+		dragging_agent.stop_pulling()
+		var/mob/living/carbon/human/dragging_target = dragging_agents[dragging_agent]
+		if(dragging_target)
+			active_agents |= dragging_target	// sorry bud, you'll have to get there yourself
+		dragging_agents -= dragging_agent
+		make_dragging_agent_leave(dragging_agent)
+	for(var/mob/living/carbon/human/active_agent as anything in active_agents)
+		var/turf/dropoff_point = loc_from_corner(rand(6, 8), rand(1, 3))
+		active_agent.forceMove(dropoff_point)
+		active_agents -= active_agent
+	listclearnulls(dragging_agents)
+	listclearnulls(active_agents)
+
 /datum/tutorial/marine/hospital_corpsman_sandbox/proc/move_agent(mob/agent, list/agent_list)
 
 	var/dropoff_point_offset
@@ -344,6 +393,9 @@
 	var/turf/dropoff_point = agents[target]
 	var/step_direction
 	var/turf/target_turf
+	if(!dropoff_point)	// Something has gone horribly wrong
+		terminate_agent_processing()
+		return
 	if(locate(agent) in agent_spawn_location)
 		var/initial_step_direction = pick((agent_spawn_location.y) <= (dropoff_point.y) ? NORTH : SOUTH)
 		target_turf = get_step(agent, initial_step_direction)
@@ -503,6 +555,9 @@
 	var/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/prep_door = locate(/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor) in get_turf(loc_from_corner(4, 1))
 	var/obj/structure/bed/medevac_stretcher/prop/medevac_bed = locate(/obj/structure/bed/medevac_stretcher/prop) in get_turf(loc_from_corner(7, 0))
 	var/obj/structure/machinery/smartfridge/smartfridge = locate(/obj/structure/machinery/smartfridge) in get_turf(loc_from_corner(0, 3))
+	supply_vendors |= locate(/obj/structure/machinery/cm_vending/sorted/medical/blood/bolted) in get_turf(loc_from_corner(0, 0))
+	supply_vendors |= locate(/obj/structure/machinery/cm_vending/sorted/medical/bolted) in get_turf(loc_from_corner(1, 0))
+	supply_vendors |= locate(/obj/structure/machinery/cm_vending/sorted/medical/marinemed) in get_turf(loc_from_corner(2, 3))
 	agent_spawn_location = get_turf(loc_from_corner(12, 2))
 	var/obj/item/storage/pill_bottle/imialky/ia = new /obj/item/storage/pill_bottle/imialky
 	smartfridge.add_local_item(ia) //I have won, but at what cost?
@@ -523,7 +578,17 @@
 
 /datum/tutorial/marine/hospital_corpsman_sandbox/Destroy(force)
 	STOP_PROCESSING(SSfastobj, src)
+	if(booboo_timer)
+		deltimer(booboo_timer)
+		booboo_timer = null
+	if(terminate_movement_timer)
+		deltimer(terminate_movement_timer)
+		terminate_movement_timer = null
+	agent_healing_tasks = list()
+	terminate_agent_processing()
+	QDEL_LIST(supply_vendors)
 	QDEL_LIST(agents)
+	QDEL_LIST(active_agents)
 	QDEL_LIST(dragging_agents)
 	return ..()
 

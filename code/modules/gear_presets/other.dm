@@ -5,30 +5,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/other/mutineer
-	name = "Mutineer"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/mutineer/load_status(mob/living/carbon/human/new_human)
-	. = ..()
-	new_human.mob_flags |= MUTINEER
-	new_human.hud_set_squad()
-
-	to_chat(new_human, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
-	to_chat(new_human, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
-
-/datum/equipment_preset/other/mutineer/leader
-	name = "Mutineer Leader"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/other/mutineer/leader/load_status(mob/living/carbon/human/new_human)
-	for(var/datum/action/human_action/activable/mutineer/A in new_human.actions)
-		A.remove_from(new_human)
-
-	var/list/abilities = subtypesof(/datum/action/human_action/activable/mutineer)
-	for(var/type in abilities)
-		give_action(new_human, type)
-
 /datum/equipment_preset/other/freelancer
 	name = "Freelancer"
 
@@ -537,31 +513,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/other/business_person
-	name = "Business Person"
-	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_MARINE
-	idtype = /obj/item/card/id/silver/cl
-	assignment = "Corporate Representative"
-	rank = "Corporate Representative"
-	skills = /datum/skills/civilian
-
-/datum/equipment_preset/other/business_person/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_CIVIL_LIAISON)
-
-/datum/equipment_preset/other/business_person/load_gear(mob/living/carbon/human/new_human)
-	//TODO: add backpacks and satchels
-	new_human.equip_if_possible(new /obj/item/clothing/under/lawyer/bluesuit, WEAR_BODY)
-	new_human.equip_if_possible(new /obj/item/clothing/shoes/centcom, WEAR_FEET)
-	new_human.equip_if_possible(new /obj/item/clothing/gloves/white, WEAR_HANDS)
-
-	new_human.equip_if_possible(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
-	new_human.equip_if_possible(new /obj/item/clipboard, WEAR_WAIST)
-
-
-//*****************************************************************************************************/
-
 /datum/equipment_preset/other/pizza
 	name = "Pizza"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -607,6 +558,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/pizzabox/meat, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/dr_gibb, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/thirteenloko, WEAR_IN_BACK)
+
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/souto
 	name = "Souto Man"

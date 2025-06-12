@@ -514,7 +514,8 @@ world
 
 		if(no_anim)
 			//Clean up repeated frames
-			var/icon/cleaned = new /icon()
+			// Done this way otherwise Width() and Height() would always be 0 for this icon
+			var/icon/cleaned = icon('icons/effects/effects.dmi', "nothing")
 			cleaned.Insert(flat, "", SOUTH, 1, 0)
 			return cleaned
 		else
@@ -757,6 +758,12 @@ world
 
 	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
 
+	var/width = icon2collapse.Width()
+	var/height = icon2collapse.Height()
+	if(width != height)
+		var/new_dimension = min(width, height)
+		center_icon(icon2collapse, new_dimension, new_dimension)
+
 	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
 
 	var/rsc_ref = name_and_ref[1] //weird object thats not even readable to the debugger, represents a reference to the icons rsc entry
@@ -888,6 +895,50 @@ world
 	image_to_center.pixel_y = y_offset
 
 	return image_to_center
+
+/**
+ * Centers an icon.
+ *
+ * Arguments:
+ * * icon - The icon to center
+ * * final_width - The width to crop to. Will use Width() if <= 0
+ * * final_height - The height to crop to. Will use Height() if <= 0
+ */
+/proc/center_icon(icon/icon, final_width, final_height)
+	var/width = icon.Width() || world.icon_size
+	var/height = icon.Height() || world.icon_size
+
+	if(final_width <= 0)
+		final_width = width
+	if(final_height <= 0)
+		final_height = height
+
+	var/left = INFINITY
+	var/right = 0
+	var/bottom = INFINITY
+	var/top = 0
+
+	// Find the inner dimensions (non-alpha pixels)
+	for(var/x in 1 to width)
+		for(var/y in 1 to height)
+			if(icon.GetPixel(x, y))
+				left = min(x, left)
+				right = max(x, right)
+				bottom = min(y, bottom)
+				top = max(y, top)
+
+	if(!right)
+		// Fully transparent
+		icon.Crop(1, 1, final_width, final_height)
+		return icon
+
+	var/inner_width = right - left
+	var/inner_height = top - bottom
+	var/left_padding = left - floor((final_width - inner_width) * 0.5)
+	var/bottom_padding = bottom - floor((final_height - inner_height) * 0.5)
+
+	icon.Crop(left_padding, bottom_padding, left_padding + final_width - 1, bottom_padding + final_height - 1)
+	return icon
 
 //For creating consistent icons for human looking simple animals
 /proc/get_flat_human_icon(icon_id, equipment_preset_dresscode, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)

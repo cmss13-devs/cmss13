@@ -416,7 +416,7 @@
 			if("talk_phone")
 				sound = pick('sound/machines/telephone/talk_phone1.ogg', 'sound/machines/telephone/talk_phone2.ogg', 'sound/machines/telephone/talk_phone3.ogg', 'sound/machines/telephone/talk_phone4.ogg', 'sound/machines/telephone/talk_phone5.ogg', 'sound/machines/telephone/talk_phone6.ogg', 'sound/machines/telephone/talk_phone7.ogg')
 			if("bone_break")
-				sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
+				sound = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg','sound/effects/crack1.ogg', 'sound/effects/crack2.ogg', 'sound/effects/crackandbleed.ogg')
 			if("plush")
 				sound = pick('sound/items/plush1.ogg', 'sound/items/plush2.ogg', 'sound/items/plush3.ogg')
 			// working joe
@@ -435,8 +435,6 @@
 				sound = pick('sound/voice/pred_pain_rare1.ogg')
 			if("pred_death")
 				sound = pick('sound/voice/pred_death1.ogg', 'sound/voice/pred_death2.ogg')
-			if("pred_laugh4")
-				sound = pick('sound/voice/pred_laugh4.ogg', 'sound/voice/pred_laugh5.ogg')
 			if("clownstep")
 				sound = pick('sound/effects/clownstep1.ogg', 'sound/effects/clownstep2.ogg')
 			if("giant_lizard_growl")

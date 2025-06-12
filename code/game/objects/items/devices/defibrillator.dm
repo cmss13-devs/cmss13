@@ -115,7 +115,7 @@
 		return
 
 	//Job knowledge requirement
-	if(istype(user) && !noskill)
+	if(user.skills && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
 			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
@@ -200,7 +200,7 @@
 	//job knowledge requirement
 	if(user.skills && !noskill)
 		if(!skillcheck(user, skill_to_check, skill_level))
-			if(skill_to_check_alt && !skillcheck(user, skill_to_check_alt, skill_level_alt))
+			if(!skill_to_check_alt || (!skillcheck(user, skill_to_check_alt, skill_level_alt)))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return
 
@@ -286,7 +286,8 @@
 		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(target)] with [src].")
 		playsound(get_turf(src), sound_success, 25, 0)
 		user.track_life_saved(user.job)
-		user.life_revives_total++
+		if(!user.statistic_exempt && ishuman(target))
+			user.life_revives_total++
 		target.handle_revive()
 		if(heart)
 			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences

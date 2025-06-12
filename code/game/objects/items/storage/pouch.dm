@@ -165,8 +165,17 @@
 	new /obj/item/attachable/bayonet(src)
 	new /obj/item/stack/medical/splint(src)
 
-/obj/item/storage/pouch/survival/full/black
+/obj/item/storage/pouch/survival/full/wy
 	icon_state = "soctools"
+
+/obj/item/storage/pouch/survival/full/wy/fill_preset_inventory()
+	new /obj/item/device/flashlight/combat(src)
+	new /obj/item/tool/crowbar/tactical(src)
+	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/device/radio(src)
+	new /obj/item/attachable/bayonet/wy(src)
+	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/pouch/survival/synth
 	name = "synth survival pouch"
@@ -1622,7 +1631,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
 	)
 	max_w_class = SIZE_LARGE
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW|STORAGE_ALLOW_WHILE_HAULED
 	can_hold = list(/obj/item/weapon/sword/machete)
 
 	var/sheathe_sound = 'sound/weapons/gun_rifle_draw.ogg'

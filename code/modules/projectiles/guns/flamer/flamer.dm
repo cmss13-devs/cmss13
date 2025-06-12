@@ -265,7 +265,6 @@
 		return
 
 	if(current_turf.density)
-		addtimer(CALLBACK(src, PROC_REF(process_flame_tiles), turfs, target, user, chem, max_range, flameshape, fire_type, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
 		stop_at_turf = TRUE
 	else if(prev_turf)
 		var/atom/movable/temp = new /obj/flamer_fire()
@@ -465,9 +464,9 @@
 		return FALSE
 	return ..()
 
-/obj/item/weapon/gun/flamer/m240/spec/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/gun/flamer/m240/spec/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc, silent)
 	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
-		if(..(user, WEAR_IN_SCABBARD)) //...first try to put it onto the Broiler.
+		if(..(user, WEAR_IN_SCABBARD, check_loc, silent)) //...first try to put it onto the Broiler.
 			return TRUE
 	return ..()
 
@@ -669,28 +668,29 @@
 			continue
 
 		if(ishuman(ignited_morb))
-			var/mob/living/carbon/human/H = ignited_morb //fixed :s
+			var/mob/living/carbon/human/target_human = ignited_morb //fixed :s
 
 			if(weapon_cause_data)
 				var/mob/user = weapon_cause_data.resolve_mob()
 				if(user)
 					var/area/thearea = get_area(user)
-					if(user.faction == H.faction && !thearea?.statistic_exempt)
-						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+					if(user.faction == target_human.faction && !thearea?.statistic_exempt)
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)
-							H.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
+							target_human.track_friendly_fire(weapon_cause_data.cause_name)
+						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 						var/ff_living = TRUE
-						if(H.stat == DEAD)
+						if(target_human.stat == DEAD)
 							ff_living = FALSE
-						msg_admin_ff(ff_msg, ff_living)
+						if(!((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) && ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER)))
+							msg_admin_ff(ff_msg, ff_living)
 					else
-						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						msg_admin_attack("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_cause_data.cause_name)
-					H.track_shot_hit(weapon_cause_data.cause_name, H)
+					target_human.track_shot_hit(weapon_cause_data.cause_name, target_human)
 
 		var/fire_intensity_resistance = ignited_morb.check_fire_intensity_resistance()
 		var/firedamage = max(burn_dam - fire_intensity_resistance, 0)

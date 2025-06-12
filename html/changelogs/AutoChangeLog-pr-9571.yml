@@ -1,0 +1,5 @@
+author: "SpypigDev"
+delete-after: True
+changes:
+  - bugfix: "Groundside operations consoles can now be deleted and replaced without issue"
+  - bugfix: "Slight tweak to overwatch console ui_status design"

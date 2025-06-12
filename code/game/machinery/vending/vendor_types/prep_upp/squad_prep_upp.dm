@@ -61,6 +61,10 @@
 		list("M94 Marking Flare Pack", floor(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 //		list("M89-S Signal Flare Pack", floor(scale * 1), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR), (removed until signal flares work per faction)
 
+		list("REPAIR TOOLS", -1, null, null),
+		list("Multi-Purpose Combat Lubricant", floor(scale * 30), /obj/item/stack/repairable/gunlube, VENDOR_ITEM_REGULAR),
+		list("Firearms Repair Kit", floor(scale * 10), /obj/item/stack/repairable/gunkit, VENDOR_ITEM_REGULAR),
+
 		list("MISCELLANEOUS", -1, null, null),
 		list("Engineer Kit", floor(scale * 1), /obj/item/storage/toolkit/empty, VENDOR_ITEM_REGULAR),
 		list("Map", floor(scale * 5), /obj/item/map/current_map, VENDOR_ITEM_REGULAR),

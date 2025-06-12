@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "Fixed a cleared label preventing new a label if it was the same as the last label"

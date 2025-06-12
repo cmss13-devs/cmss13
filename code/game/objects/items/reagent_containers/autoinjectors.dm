@@ -25,9 +25,9 @@
 	var/maptext_label
 	var/custom_chem_icon
 	maptext_height = 16
-	maptext_width = 16
-	maptext_x = 18
-	maptext_y = 3
+	maptext_width = 24
+	maptext_x = 4
+	maptext_y = 2
 
 /obj/item/reagent_container/hypospray/autoinjector/Initialize()
 	. = ..()
@@ -293,6 +293,8 @@
 	desc = "A strange glowing crystal with a spike at one end."
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "crystal"
+	injectSFX = 'sound/items/pred_crystal_inject.ogg'
+	injectVOL = 15
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE
 	uses_left = 1

@@ -118,6 +118,7 @@
 		list("Webbing", floor(scale * 2), /obj/item/clothing/accessory/storage/webbing, VENDOR_ITEM_REGULAR),
 		list("Black Webbing", floor(scale * 2), /obj/item/clothing/accessory/storage/webbing/black, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0.75, /obj/item/clothing/accessory/storage/droppouch, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 0.75, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 0.75, /obj/item/clothing/accessory/storage/holster, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR", -1, null, null),
@@ -201,7 +202,7 @@
 		list("United Americas Shoulder patch", floor(scale * 10), /obj/item/clothing/accessory/patch/ua, VENDOR_ITEM_REGULAR),
 		list("United Americas Flag Shoulder patch", floor(scale * 10), /obj/item/clothing/accessory/patch/uasquare, VENDOR_ITEM_REGULAR),
 		list("Bedroll", floor(scale * 20), /obj/item/roller/bedroll, VENDOR_ITEM_REGULAR),
-		list("M5 Camera Gear", floor(scale *0.5), /obj/item/device/overwatch_camera, VENDOR_ITEM_REGULAR),
+		list("M5 Camera Gear", floor(scale * 2), /obj/item/device/overwatch_camera, VENDOR_ITEM_REGULAR),
 
 		list("OPTICS", -1, null, null, null),
 		list("Advanced Medical Optic (CORPSMAN ONLY)", floor(scale * 4), /obj/item/device/helmet_visor/medical/advanced, VENDOR_ITEM_REGULAR),

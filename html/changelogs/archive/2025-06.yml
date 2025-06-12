@@ -117,3 +117,6 @@
   stalkerino:
   - rscadd: makes it so uscm headset (cosmetic) counts as a helmet accessory
   - rscadd: Helmet rail flashlight is now directional
+2025-06-12:
+  PGrayCS:
+  - bugfix: Vendor briefcases can now be scrolled

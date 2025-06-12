@@ -79,13 +79,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("Dress Gloves", 0, /obj/item/clothing/gloves/marine/dress, CIVILIAN_CAN_BUY_GLOVES, VENDOR_ITEM_REGULAR),
 
 	list("ACCESSORIES (CHOOSE 5)", 0, null, null, null),
-	list("Black Tie", 0, /obj/item/clothing/accessory/black, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
-	list("Red Tie", 0, /obj/item/clothing/accessory/red, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	list("Purple Tie", 0, /obj/item/clothing/accessory/purple, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	list("Blue Tie", 0, /obj/item/clothing/accessory/blue, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	list("Green Tie", 0, /obj/item/clothing/accessory/green, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	list("Gold Tie", 0, /obj/item/clothing/accessory/gold, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-	list("Special Tie", 0, /obj/item/clothing/accessory/horrible, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+	list("Black Tie", 0, /obj/item/clothing/accessory/tie/black, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
+	list("Red Tie", 0, /obj/item/clothing/accessory/tie/red, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+	list("Purple Tie", 0, /obj/item/clothing/accessory/tie/purple, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+	list("Blue Tie", 0, /obj/item/clothing/accessory/tie, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+	list("Green Tie", 0, /obj/item/clothing/accessory/tie/green, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+	list("Gold Tie", 0, /obj/item/clothing/accessory/tie/gold, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+	list("Special Tie", 0, /obj/item/clothing/accessory/tie/horrible, CIVILIAN_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 ))
 
 /obj/structure/machinery/cm_vending/clothing/corporate_liaison

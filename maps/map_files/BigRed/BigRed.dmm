@@ -27331,10 +27331,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "mnu" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "mnv" = (
@@ -33026,11 +33026,11 @@
 /area/bigredv2/outside/medical)
 "rXy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
 	pixel_y = 12
 	},
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "rXJ" = (
@@ -38828,8 +38828,8 @@
 	pixel_y = 7
 	},
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "xNa" = (

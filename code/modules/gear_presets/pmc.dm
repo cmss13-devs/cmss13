@@ -235,6 +235,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Black Webbing", 10, /obj/item/clothing/accessory/storage/webbing/black, null, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch, null, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 10, /obj/item/clothing/accessory/storage/droppouch/black, VENDOR_ITEM_REGULAR),
 	)
 
 //*****************************************************************************************************/

@@ -16,7 +16,7 @@
 	attack_delay = 0 // VERY high slash damage, but attacks relatively slowly
 
 	available_strains = list()
-	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
+	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/brute
 
 	deevolves_to = list(PATHOGEN_CREATURE_NEOMORPH)
 	caste_desc = "Why run if you can whack them to death."
@@ -70,6 +70,7 @@
 	mob_size = MOB_SIZE_BIG
 	acid_blood_damage = 0
 	bubble_icon = "pathogenroyal"
+	aura_strength = 3
 
 /mob/living/carbon/xenomorph/brute/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()
@@ -82,3 +83,66 @@
 
 /datum/action/xeno_action/onclick/crusher_stomp/pathogen_brute
 	ability_primacy = XENO_PRIMARY_ACTION_1
+
+
+/datum/behavior_delegate/pathogen_base/brute
+	name = "Base Brute Behavior Delegate"
+
+	var/aoe_slash_damage_reduction = 0.50
+
+/datum/behavior_delegate/pathogen_base/brute/melee_attack_additional_effects_target(mob/living/carbon/target)
+
+	if (!isxeno_human(target))
+		return
+
+	new /datum/effects/xeno_slow(target, bound_xeno, 2 SECONDS)
+
+	var/damage = bound_xeno.melee_damage_upper * aoe_slash_damage_reduction
+
+	var/base_cdr_amount = 1.5 SECONDS
+	var/cdr_amount = base_cdr_amount
+	for (var/mob/living/carbon/aoe_targets in orange(1, target))
+		if (aoe_targets.stat == DEAD)
+			continue
+
+		if(!isxeno_human(aoe_targets) || bound_xeno.can_not_harm(aoe_targets))
+			continue
+
+		if (HAS_TRAIT(aoe_targets, TRAIT_NESTED))
+			continue
+
+		cdr_amount += 0.5 SECONDS
+
+		to_chat(aoe_targets, SPAN_XENODANGER("[bound_xeno] slashes [aoe_targets]!"))
+		to_chat(bound_xeno, SPAN_XENODANGER("We slash [aoe_targets]!"))
+
+		bound_xeno.flick_attack_overlay(aoe_targets, "slash")
+
+		aoe_targets.last_damage_data = create_cause_data(initial(bound_xeno.name), bound_xeno)
+		//Logging, including anti-rulebreak logging
+		if(aoe_targets.status_flags & XENO_HOST && aoe_targets.stat != DEAD)
+			//Host might be rogue, needs further investigation
+			aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)] while they were infected</font>")
+			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(aoe_targets)] while they were infected</font>")
+		else
+			aoe_targets.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(bound_xeno)]</font>")
+			bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(aoe_targets)]</font>")
+		log_attack("[key_name(bound_xeno)] slashed [key_name(aoe_targets)]")
+		aoe_targets.apply_armoured_damage(get_xeno_damage_slash(aoe_targets, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
+
+	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
+	if (!cAction.action_cooldown_check())
+		cAction.reduce_cooldown(cdr_amount)
+
+	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_action(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
+	if (!sAction.action_cooldown_check())
+		sAction.reduce_cooldown(base_cdr_amount)
+
+/datum/behavior_delegate/pathogen_base/brute/append_to_stat()
+	. = list()
+	var/shield_total = 0
+	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
+		if (XS.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
+			shield_total += XS.amount
+
+	. += "Shield: [shield_total]"

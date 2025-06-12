@@ -206,7 +206,9 @@
 	else if(iscarbon(crosser))
 		var/mob/living/carbon/human/human_passer = crosser
 		if(istype(human_passer) && linked_cloud)
-			linked_cloud.attempt_inhale(human_passer)
+			if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || isyautja(human_passer) || issynth(human_passer)) //Predators are too stealthy to trigger the clouds.
+				return
+				linked_cloud.attempt_inhale(human_passer)
 
 /obj/effect/pathogen/spore_cloud/Crossed(atom/movable/crosser)
 	if(!ishuman(crosser))

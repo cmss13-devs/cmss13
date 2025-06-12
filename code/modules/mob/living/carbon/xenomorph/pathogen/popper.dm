@@ -71,6 +71,7 @@
 	mob_size = MOB_SIZE_XENO_SMALL
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
+	aura_strength = 2
 
 /mob/living/carbon/xenomorph/popper/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()
@@ -155,7 +156,7 @@
 
 /datum/action/xeno_action/onclick/release_spores
 	name = "Release Spore Cloud (200)"
-	action_icon_state = "place_trap"
+	action_icon_state = "gas mine"
 	plasma_cost = 200
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -170,6 +171,8 @@
 		to_chat(popper, SPAN_XENOWARNING("We can't do that here."))
 		return
 	if(!popper.check_plasma(plasma_cost))
+		return
+	if(!do_after(popper, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 	popper.use_plasma(plasma_cost)
 	playsound(popper.loc, "alien_resin_build", 25)

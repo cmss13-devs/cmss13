@@ -160,6 +160,80 @@
 		else
 			to_chat(src, SPAN_BOLDNOTICE("Explosive antigrief has an unknown value... you should probably fix that."))
 
+/client/proc/set_dropship_airlock()
+	set name = "Set Dropship Airlock"
+	set category = "Admin.Shuttles"
+
+	if(!admin_holder || !(admin_holder.rights & R_MOD))
+		return
+
+	var/list/inner_ports = list()
+	for(var/obj/docking_port/stationary/marine_dropship/airlock/inner/inner_port in GLOB.dropship_airlock_docking_ports)
+		inner_ports += inner_port
+
+	var/obj/docking_port/stationary/marine_dropship/airlock/inner/selected_inner = tgui_input_list(usr, "Select a dropship airlock to set", "Select", inner_ports)
+	if(selected_inner.undergoing_admin_command)
+		if(tgui_alert(usr, "This airlock is currently processing [selected_inner.undergoing_admin_command] as a command. Do you want to send a second command at the same time? THIS MAY CAUSE ISSUES.", "Proceed?", list("Yes", "No")) != "Yes")
+			return
+
+	var/choice = tgui_input_list(usr, "What do you want to do to the dropship airlock? (Player control is currently [selected_inner.allow_processing_to_end ? "enabled" : "disabled"])", "Set", list("Enable Player Control", "Disable Player Control", "Return Dropship", "Exit Dropship", "Specific Control"))
+	switch(choice)
+		if("Enable Player Control")
+			if(selected_inner.allow_processing_to_end)
+				return
+			selected_inner.allow_processing_to_end = TRUE
+			selected_inner.processing = FALSE
+			to_chat(usr, SPAN_WARNING("You have enabled player control for the dropship at airlock [selected_inner]"))
+			log_admin("Admin [key_name(src)] has enabled player control for the dropship at airlock [selected_inner]")
+		if("Disable Player Control")
+			selected_inner.allow_processing_to_end = FALSE
+			selected_inner.processing = TRUE
+			to_chat(usr, SPAN_WARNING("You have disabled player control for the dropship at airlock [selected_inner]"))
+			log_admin("Admin [key_name(src)] has disabled player control for the dropship at airlock [selected_inner]")
+		if("Return Dropship")
+			selected_inner.undergoing_admin_command = "Return Dropship"
+			selected_inner.allow_processing_to_end = FALSE
+			selected_inner.processing = TRUE
+			var/time_to_process = selected_inner.force_process(DROPSHIP_AIRLOCK_GO_UP)
+			addtimer(CALLBACK(selected_inner, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, end_of_admin_command)), time_to_process)
+			to_chat(usr, SPAN_WARNING("You have begun to return the dropship."))
+			log_admin("Admin [key_name(src)] has begun to return the dropship to [selected_inner]")
+		if("Exit Dropship")
+			selected_inner.undergoing_admin_command = "Exit Dropship"
+			selected_inner.allow_processing_to_end = FALSE
+			selected_inner.processing = TRUE
+			var/time_to_process = selected_inner.force_process(DROPSHIP_AIRLOCK_GO_DOWN)
+			addtimer(CALLBACK(selected_inner, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, end_of_admin_command)), time_to_process)
+			to_chat(usr, SPAN_WARNING("You have begun to exit the dropship."))
+			log_admin("Admin [key_name(src)] has begun to exit the dropship from [selected_inner]")
+		if("Specific Control")
+			selected_inner.undergoing_admin_command = "\improper Specific Control"
+			selected_inner.allow_processing_to_end = FALSE
+			selected_inner.processing = TRUE
+			to_chat(usr, SPAN_WARNING("You have begin to enter specific controls for the dropship at [selected_inner]"))
+			log_admin("Admin [key_name(src)] has begun to enter specific control for the dropship at [selected_inner]")
+			var/specific_choice = tgui_input_list(usr, "Which specific control do you want to effectuate? (MAY BREAK IMMERSION, ESPECIALLY DROPSHIP RAISE/LOWER)", "Set", list("[selected_inner.playing_airlock_alarm ? "Disable Airlock Alarm" : "Enable Airlock Alarm"]", "[selected_inner.open_inner_airlock ? "Close Inner Airlock" : "Open Inner Airlock"]", "[selected_inner.lowered_dropship ? "Raise Dropship" : "Lower Dropship"]", "[selected_inner.open_outer_airlock ? "Close Outer Airlock" : "Open Outer Airlock"]", "Declamp Dropship"))
+			switch(specific_choice)
+				if("Disable Airlock Alarm")
+					selected_inner.update_airlock_alarm(FALSE, TRUE)
+				if("Enable Airlock Alarm")
+					selected_inner.update_airlock_alarm(TRUE, TRUE)
+				if("Close Inner Airlock")
+					selected_inner.update_inner_airlock(FALSE, TRUE)
+				if("Open Inner Airlock")
+					selected_inner.update_inner_airlock(TRUE, TRUE)
+				if("Lower Dropship")
+					selected_inner.update_dropship_height(FALSE, TRUE)
+				if("Raise Dropship")
+					selected_inner.update_dropship_height(TRUE, TRUE)
+				if("Close Outer Airlock")
+					selected_inner.update_outer_airlock(FALSE, TRUE)
+				if("Open Outer Airlock")
+					selected_inner.update_outer_airlock(TRUE, TRUE)
+				if("Declamp Dropship")
+					selected_inner.update_clamps(TRUE, TRUE)
+			addtimer(CALLBACK(selected_inner, TYPE_PROC_REF(/obj/docking_port/stationary/marine_dropship/airlock/inner, end_of_admin_command)), DROPSHIP_AIRLOCK_MAX_THEORETICAL_UPDATE_PERIOD)
+
 #undef ANTIGRIEF_OPTION_ENABLED
 #undef ANTIGRIEF_OPTION_NEW_PLAYERS
 #undef ANTIGRIEF_OPTION_DISABLED

@@ -3,10 +3,14 @@
 		.=1
 	else
 		return 0
-	if(LAZYLEN(accessories) && restricted_accessory_slots && (A.worn_accessory_slot in restricted_accessory_slots))
+	if(LAZYLEN(accessories))
+		var/accessory_count
 		for(var/obj/item/clothing/accessory/AC in accessories)
 			if (AC.worn_accessory_slot == A.worn_accessory_slot)
-				return 0
+				accessory_count++
+		if(accessory_count >= A.worn_accessory_limit)
+			return 0
+
 
 /obj/item/clothing/accessory/proc/get_inv_overlay()
 	if(!inv_overlay)

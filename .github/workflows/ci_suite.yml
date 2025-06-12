@@ -9,6 +9,7 @@ jobs:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Run Linters
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     concurrency:
       group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
@@ -20,27 +21,30 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/SpacemanDMM
-          key: ${{ runner.os }}-spacemandmm-${{ secrets.CACHE_PURGE_KEY }}
-      - name: Restore Yarn cache
+          key: ${{ runner.os }}-spacemandmm-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-spacemandmm-
+      - name: Setup Node
+        uses: ./.github/actions/setup_node
+        with:
+          restore-yarn-cache: true
+      - name: Restore Bootstrap cache
         uses: actions/cache@v4
         with:
-          path: tgui/.yarn/cache
-          key: ${{ runner.os }}-yarn-${{ secrets.CACHE_PURGE_KEY }}-${{ hashFiles('tgui/yarn.lock') }}
+          path: tools/bootstrap/.cache
+          key: ${{ runner.os }}-bootstrap-${{ hashFiles('tools/requirements.txt') }}
           restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-bootstrap-
       - name: Restore Rust cache
         uses: actions/cache@v4
         with:
           path: ~/.cargo
-          key: ${{ runner.os }}-rust
+          key: ${{ runner.os }}-rust-${{ hashFiles('dependencies.sh')}}
           restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            ${{ runner.os }}-rust-
       - name: Install Tools
         run: |
           pip3 install setuptools
-          bash tools/ci/install_node.sh
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
           cargo install ripgrep --features pcre2
           tools/bootstrap/python -c ''
@@ -83,16 +87,15 @@ jobs:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Compile Maps
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
-      - name: Restore BYOND cache
-        uses: actions/cache@v3
-        with:
-          path: ~/BYOND
-          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+      - name: Setup Node
+        uses: ./.github/actions/setup_node
+      - name: Restore BYOND from Cache
+        uses: ./.github/actions/restore_or_install_byond
       - name: Compile All Maps
         run: |
-          bash tools/ci/install_byond.sh
           source $HOME/BYOND/byond/bin/byondsetup
           tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
@@ -123,6 +126,9 @@ jobs:
         run: |
           ALTERNATE_TESTS_JSON=$(jq -nRc '[inputs | capture("^(?<major>[0-9]+)\\.(?<minor>[0-9]+): (?<map>.+)$")]' .github/alternate_byond_versions.txt)
           echo "alternate_tests=$ALTERNATE_TESTS_JSON" >> $GITHUB_OUTPUT
+      - name: Set up BYOND cache
+        uses: ./.github/actions/restore_or_install_byond
+
   run_all_tests:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Unit Tests
@@ -167,24 +173,34 @@ jobs:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Windows Build
     runs-on: windows-latest
+    timeout-minutes: 30
     concurrency:
       group: test_windows-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
-      - name: Restore Yarn cache
-        uses: actions/cache@v3
+      - name: Setup Node
+        uses: ./.github/actions/setup_node
         with:
-          path: tgui/.yarn/cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('tgui/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+          restore-yarn-cache: true
+      - name: Configure BYOND version from inputs
+        if: ${{ inputs.major }}
+        shell: bash
+        run: |
+          echo "BYOND_MAJOR=${{ inputs.major }}" >> $GITHUB_ENV
+          echo "BYOND_MINOR=${{ inputs.minor }}" >> $GITHUB_ENV
+      - name: Configure BYOND version from dependencies.sh
+        if: ${{ !inputs.major }}
+        shell: bash
+        run: |
+          source dependencies.sh
+          echo "BYOND_MAJOR=$BYOND_MAJOR" >> $GITHUB_ENV
+          echo "BYOND_MINOR=$BYOND_MINOR" >> $GITHUB_ENV
       - name: Restore BYOND cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: C:\\byond
-          key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
+          key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}-${{ env.BYOND_MINOR }}
       - name: Compile
         run: pwsh tools/ci/build.ps1
         env:

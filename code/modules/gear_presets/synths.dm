@@ -53,7 +53,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
-	rank = "Synthetic"
+	job_title = "Synthetic"
 	role_comm_title = "Syn"
 	preset_generation_support = TRUE
 
@@ -80,7 +80,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
-	rank = "Synthetic"
+	job_title = "Synthetic"
 	role_comm_title = "Syn"
 	paygrades = list(PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_0)
 

@@ -1,0 +1,5 @@
+author: "FebrezeNinja"
+delete-after: True
+changes:
+  - bugfix: "M10 ammo boxes now craftable"
+  - bugfix: "Changed ammo box names to match actual size"

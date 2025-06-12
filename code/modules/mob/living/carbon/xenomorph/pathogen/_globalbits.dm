@@ -1,6 +1,3 @@
-/datum/behavior_delegate/pathogen_base
-	name = "Base Pathogen Behavior Delegate"
-
 /datum/caste_datum/var/pathogen_creature = FALSE
 /datum/caste_datum/pathogen
 	minimum_evolve_time = 0
@@ -119,3 +116,116 @@
 			return
 
 		C.hivemind_broadcast(message, GLOB.hive_datum[C.hivenumber])
+
+
+
+/datum/behavior_delegate/pathogen_base
+	name = "Base Pathogen Behavior Delegate"
+
+	// State
+	var/next_slash_buffed = FALSE
+
+#define BLIGHT_TOUCH_DELAY 4 SECONDS
+
+/datum/behavior_delegate/pathogen_base/venator/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
+	if (!next_slash_buffed)
+		return original_damage
+
+	if (!isxeno_human(carbon_target))
+		return original_damage
+
+	if(skillcheck(carbon_target, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
+		carbon_target.visible_message(SPAN_DANGER("[carbon_target] withstands the blight!"))
+		next_slash_buffed = FALSE
+		return original_damage //endurance 5 makes you immune to weak blight
+	if(ishuman(carbon_target))
+		var/mob/living/carbon/human/human = carbon_target
+		if(human.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || human.species.flags & NO_NEURO)
+			human.visible_message(SPAN_DANGER("[human] shrugs off the blight!"))
+			next_slash_buffed = FALSE
+			return //species like zombies or synths are immune to blight
+	if (next_slash_buffed)
+		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add blight into our attack, [carbon_target] is about to fall over paralyzed!"))
+		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its blight coated claws!"))
+		carbon_target.sway_jitter(times = 3, steps = floor(BLIGHT_TOUCH_DELAY/3))
+		carbon_target.apply_effect(4, DAZE)
+		addtimer(CALLBACK(src, PROC_REF(blight_slash), carbon_target), BLIGHT_TOUCH_DELAY)
+		next_slash_buffed = FALSE
+	if(!next_slash_buffed)
+		var/datum/action/xeno_action/onclick/blight_slash/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/blight_slash)
+		if (ability && istype(ability))
+			ability.button.icon_state = "template"
+	return original_damage
+
+#undef BLIGHT_TOUCH_DELAY
+
+/datum/behavior_delegate/pathogen_base/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+
+	if(!isxeno_human(target_carbon))
+		return
+
+	if(next_slash_buffed)
+		return INTENT_HARM
+
+/datum/behavior_delegate/pathogen_base/proc/blight_slash(mob/living/carbon/human/human_target)
+	human_target.KnockDown(2)
+	human_target.Stun(2)
+	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the blight!"))
+
+/datum/action/xeno_action/verb/verb_blight_slash()
+	set category = "Alien"
+	set name = "Blight Slash"
+	set hidden = TRUE
+	var/action_name = "Blight Slash"
+	handle_xeno_macro(src,action_name)
+
+// Blight slash
+/datum/action/xeno_action/onclick/blight_slash
+	name = "Blight Slash"
+	action_icon_state = "lurker_inject_neuro"
+	macro_path = /datum/action/xeno_action/verb/verb_blight_slash
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+	xeno_cooldown = 12 SECONDS
+	plasma_cost = 50
+
+	var/buff_duration = 50
+
+/datum/action/xeno_action/onclick/blight_slash/use_ability(atom/target)
+	var/mob/living/carbon/xenomorph/paraslash_user = owner
+
+	if (!istype(paraslash_user))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	var/datum/behavior_delegate/pathogen_base/venator/behavior = paraslash_user.behavior_delegate
+	if (istype(behavior))
+		behavior.next_slash_buffed = TRUE
+
+	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next slash will apply blight!"))
+	button.icon_state = "template_active"
+
+	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
+
+	apply_cooldown()
+	return ..()
+
+/datum/action/xeno_action/onclick/blight_slash/proc/unbuff_slash()
+	var/mob/living/carbon/xenomorph/unbuffslash_user = owner
+	if (!istype(unbuffslash_user))
+		return
+	var/datum/behavior_delegate/pathogen_base/behavior = unbuffslash_user.behavior_delegate
+	if (istype(behavior))
+		// In case slash has already landed
+		if (!behavior.next_slash_buffed)
+			return
+		behavior.next_slash_buffed = FALSE
+
+	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply blight!"))
+	button.icon_state = "template"

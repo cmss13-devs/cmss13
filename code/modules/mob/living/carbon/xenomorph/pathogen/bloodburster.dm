@@ -15,7 +15,7 @@
 	attack_delay = -4
 
 	available_strains = list()
-	behavior_delegate_type = /datum/behavior_delegate/bloodburster_base
+	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/bloodburster
 	evolves_to = list(PATHOGEN_CREATURE_POPPER, PATHOGEN_CREATURE_SPRINTER, PATHOGEN_CREATURE_NEOMORPH)
 	deevolves_to = list()
 
@@ -142,10 +142,10 @@
 	. = ..()
 	make_pathogen_speaker()
 
-/datum/behavior_delegate/bloodburster_base
+/datum/behavior_delegate/pathogen_base/bloodburster
 	name = "Base Bloodburster Behavior Delegate"
 
-/datum/behavior_delegate/bloodburster_base/melee_attack_additional_effects_self()
+/datum/behavior_delegate/pathogen_base/bloodburster/melee_attack_additional_effects_self()
 	..()
 
 	var/datum/action/xeno_action/onclick/xenohide/hide = get_action(bound_xeno, /datum/action/xeno_action/onclick/xenohide)

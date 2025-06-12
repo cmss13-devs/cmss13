@@ -16,7 +16,7 @@
 	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
 
 	available_strains = list()
-	behavior_delegate_type = /datum/behavior_delegate/neomorph_base
+	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/neomorph
 
 	deevolves_to = list(PATHOGEN_CREATURE_BURSTER, PATHOGEN_CREATURE_POPPER)
 	caste_desc = "A fast, powerful combatant."
@@ -44,6 +44,7 @@
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/pounce/runner/neomorph,
 		/datum/action/xeno_action/activable/headbite,
+		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
@@ -73,13 +74,13 @@
 	. = ..()
 	make_pathogen_speaker()
 
-/datum/behavior_delegate/neomorph_base
+/datum/behavior_delegate/pathogen_base/neomorph
 	name = "Base Neomorph Behavior Delegate"
 
 	// Config
 	var/slash_slow_duration = 35
 
-/datum/behavior_delegate/neomorph_base/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
+/datum/behavior_delegate/pathogen_base/neomorph/melee_attack_additional_effects_target(mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))
 		return
 

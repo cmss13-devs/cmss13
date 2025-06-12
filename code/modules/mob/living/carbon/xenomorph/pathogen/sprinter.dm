@@ -15,7 +15,7 @@
 	attack_delay = -1
 
 	available_strains = list()
-	behavior_delegate_type = /datum/behavior_delegate/sprinter_base
+	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/sprinter
 	evolves_to = list(PATHOGEN_CREATURE_BLIGHT)
 	deevolves_to = list(PATHOGEN_CREATURE_BURSTER)
 
@@ -58,6 +58,7 @@
 		/datum/action/xeno_action/activable/pounce/runner,
 		/datum/action/xeno_action/activable/runner_skillshot,
 		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
@@ -94,10 +95,10 @@
 	if(is_zoomed)
 		zoom_out()
 
-/datum/behavior_delegate/sprinter_base
+/datum/behavior_delegate/pathogen_base/sprinter
 	name = "Base Sprinter Behavior Delegate"
 
-/datum/behavior_delegate/sprinter_base/melee_attack_additional_effects_self()
+/datum/behavior_delegate/pathogen_base/sprinter/melee_attack_additional_effects_self()
 	..()
 
 	var/datum/action/xeno_action/onclick/xenohide/hide = get_action(bound_xeno, /datum/action/xeno_action/onclick/xenohide)

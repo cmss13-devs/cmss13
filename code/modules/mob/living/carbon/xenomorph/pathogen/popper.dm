@@ -40,8 +40,9 @@
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/place_spores,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper,
+		/datum/action/xeno_action/onclick/place_spore_sac,
+		/datum/action/xeno_action/onclick/release_spores,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
@@ -78,14 +79,14 @@
 	. = ..()
 	new /obj/effect/pathogen/spore_cloud(loc)
 
-/datum/action/xeno_action/onclick/place_spores
+/datum/action/xeno_action/onclick/place_spore_sac
 	name = "Place spore sac (700)"
 	action_icon_state = "place_trap"
 	plasma_cost = 700
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
-/datum/action/xeno_action/onclick/place_spores/use_ability(atom/A)
+/datum/action/xeno_action/onclick/place_spore_sac/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/popper = owner
 	if(!popper.check_state())
 		return
@@ -150,3 +151,27 @@
 			return FALSE
 
 	return TRUE
+
+/datum/action/xeno_action/onclick/release_spores
+	name = "Release Spore Cloud (200)"
+	action_icon_state = "place_trap"
+	plasma_cost = 200
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+
+/datum/action/xeno_action/onclick/release_spores/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/popper = owner
+	if(!popper.check_state())
+		return
+
+	var/turf/target_turf = get_turf(popper)
+	if(!istype(target_turf))
+		to_chat(popper, SPAN_XENOWARNING("We can't do that here."))
+		return
+	if(!popper.check_plasma(plasma_cost))
+		return
+	popper.use_plasma(plasma_cost)
+	playsound(popper.loc, "alien_resin_build", 25)
+	new /obj/effect/pathogen/spore_cloud(target_turf)
+	popper.visible_message(SPAN_DANGER("[src] releases a cloud of spores!"), SPAN_XENONOTICE("We release a spore cloud."))
+	return ..()

@@ -16,7 +16,7 @@
 	attack_delay = 1.7 // VERY high slash damage, but attacks relatively slowly
 
 	available_strains = list()
-	behavior_delegate_type = /datum/behavior_delegate/blight_base
+	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/blight
 
 	deevolves_to = list(PATHOGEN_CREATURE_SPRINTER)
 	caste_desc = "A fast, powerful combatant."
@@ -45,6 +45,7 @@
 		/datum/action/xeno_action/onclick/lurker_invisibility/blight,
 		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
+		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
@@ -74,7 +75,7 @@
 	. = ..()
 	make_pathogen_speaker()
 
-/datum/behavior_delegate/blight_base
+/datum/behavior_delegate/pathogen_base/blight
 	name = "Base Blight Behavior Delegate"
 
 	// Config
@@ -82,21 +83,21 @@
 	var/invis_start_time = -1 // Special value for when we're not invisible
 	var/invis_duration = 30 SECONDS // so we can display how long the lurker is invisible to it
 
-/datum/behavior_delegate/blight_base/melee_attack_additional_effects_self()
+/datum/behavior_delegate/pathogen_base/blight/melee_attack_additional_effects_self()
 	..()
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if (lurker_invis_action)
 		lurker_invis_action.invisibility_off() // Full cooldown
 
-/datum/behavior_delegate/blight_base/proc/decloak_handler(mob/source)
+/datum/behavior_delegate/pathogen_base/blight/proc/decloak_handler(mob/source)
 	SIGNAL_HANDLER
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if(istype(lurker_invis_action))
 		lurker_invis_action.invisibility_off(0.5) // Partial refund of remaining time
 
 /// Implementation for enabling invisibility.
-/datum/behavior_delegate/blight_base/proc/on_invisibility()
+/datum/behavior_delegate/pathogen_base/blight/proc/on_invisibility()
 	var/datum/action/xeno_action/activable/pounce/lurker/lurker_pounce_action = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
 	if(lurker_pounce_action)
 		lurker_pounce_action.knockdown = TRUE // pounce knocks down
@@ -107,7 +108,7 @@
 	invis_start_time = world.time
 
 /// Implementation for disabling invisibility.
-/datum/behavior_delegate/blight_base/proc/on_invisibility_off()
+/datum/behavior_delegate/pathogen_base/blight/proc/on_invisibility_off()
 	var/datum/action/xeno_action/activable/pounce/lurker/lurker_pounce_action = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/lurker)
 	if(lurker_pounce_action)
 		lurker_pounce_action.knockdown = FALSE // pounce no longer knocks down
@@ -117,7 +118,7 @@
 	UnregisterSignal(bound_xeno, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 	invis_start_time = -1
 
-/datum/behavior_delegate/blight_base/append_to_stat()
+/datum/behavior_delegate/pathogen_base/blight/append_to_stat()
 	. = list()
 
 	// Invisible
@@ -142,7 +143,7 @@
 	var/time_left = timeleft(lurker_invisibility_action.cooldown_timer_id) / 10
 	. += "Invisibility Recharge: [time_left] second\s."
 
-/datum/behavior_delegate/blight_base/on_collide(atom/movable/movable_atom)
+/datum/behavior_delegate/pathogen_base/blight/on_collide(atom/movable/movable_atom)
 	. = ..()
 
 	if(!ishuman(movable_atom))
@@ -184,9 +185,9 @@
 	xeno.speed_modifier += speed_buff
 	xeno.recalculate_speed()
 
-	var/datum/behavior_delegate/blight_base/behavior = xeno.behavior_delegate
+	var/datum/behavior_delegate/pathogen_base/blight/behavior = xeno.behavior_delegate
 	if(!istype(behavior))
-		CRASH("blight_base behavior_delegate missing/invalid for [xeno]!")
+		CRASH("blight behavior_delegate missing/invalid for [xeno]!")
 
 	var/recharge_time = behavior.invis_recharge_time
 	if(behavior.invis_start_time > 0) // Sanity

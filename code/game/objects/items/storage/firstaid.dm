@@ -36,6 +36,7 @@
 		/obj/item/roller,
 		/obj/item/bodybag,
 		/obj/item/reagent_container/blood,
+		/obj/item/tool/surgery/FixOVein,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
 	required_skill_for_nest_opening = SKILL_MEDICAL

@@ -115,8 +115,9 @@
 				layer = initial(layer) - 0.01
 			else
 				layer = initial(layer)
+		pixel_y = initial(pixel_y)
 		if(!anchored)
-			layer = initial(layer)
+			pixel_y += 2
 	else
 		if(can_change_dmg_state)
 			icon_state = "[barricade_type]_closed_[damage_state]"

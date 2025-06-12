@@ -7114,7 +7114,7 @@
 "arg" = (
 /obj/structure/machinery/flasher{
 	alpha = 1;
-	id = "Containment Cell 4";
+	id = "CL_Containment";
 	layer = 2.1;
 	name = "Mounted Flash";
 	pixel_x = -15;
@@ -8802,6 +8802,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
+/obj/structure/machinery/flasher{
+	alpha = 0;
+	id = "CL_Security";
+	layer = 2.1;
+	name = "Ceiling Flash";
+	mouse_opacity = 0;
+	pixel_y = 24
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "avD" = (
@@ -8970,13 +8978,6 @@
 "awd" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/machinery/flasher{
-	alpha = 0;
-	id = "CL_Security";
-	layer = 2.1;
-	name = "Ceiling Flash";
-	mouse_opacity = 0
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -30933,15 +30934,6 @@
 "fQS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/machinery/flasher{
-	alpha = 0;
-	id = "CL_Security";
-	layer = 2.1;
-	name = "Ceiling Flash";
-	pixel_x = -15;
-	pixel_y = 30;
-	mouse_opacity = 0
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1

@@ -154,7 +154,21 @@
 	..()
 
 /obj/structure/barricade/Collided(atom/movable/atom_movable)
-	..()
+	// Similar behavior to /atom/movable/Collided(atom/movable/AM) but we account for something in our same location
+	if(isliving(atom_movable) && !anchored)
+		var/blocked = FALSE
+		for(var/atom/movable/other_moveable as anything in loc)
+			if(other_moveable == src || other_moveable == atom_movable)
+				continue
+			if(!other_moveable.density || !other_moveable.can_block_movement)
+				continue
+			blocked = TRUE
+			break
+		if(!blocked)
+			var/target_dir = get_dir(atom_movable, src) || dir
+			var/turf/target_turf = get_step(loc, target_dir)
+			Move(target_turf)
+	SEND_SIGNAL(src, COMSIG_STRUCTURE_COLLIDED, atom_movable)
 
 	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable

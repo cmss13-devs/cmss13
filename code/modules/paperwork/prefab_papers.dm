@@ -60,7 +60,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	var/selected = GLOB.prefab_papers[chosen].type
 	if(!user.Adjacent(src))
 		return
- 
+
 	var/obj/item/paper/prefab/document = new selected
 	document.forceMove(user.loc)
 	user.put_in_hands(document)

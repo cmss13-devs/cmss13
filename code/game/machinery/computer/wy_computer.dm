@@ -40,6 +40,10 @@
 	/// Machinery the console interacts with (doors/shutters)
 	var/list/obj/structure/machinery/targets = list()
 
+	/// Document Printer
+	var/list/document_categories = list(PAPER_CATEGORY_LIAISON)
+	var/list/documents_available = list()
+
 	COOLDOWN_DECLARE(printer_cooldown)
 	COOLDOWN_DECLARE(cell_flasher)
 	COOLDOWN_DECLARE(sec_flasher)
@@ -47,6 +51,7 @@
 /obj/structure/machinery/computer/wy_intranet/Initialize()
 	internal_camera_console = new(src)
 	internal_camera_console.network = internal_camera_network
+	get_possible_documents()
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -246,6 +251,16 @@
 		if("open_cameras")
 			internal_camera_console.tgui_interact(user)
 
+		if("print_document")
+			if(!COOLDOWN_FINISHED(src, printer_cooldown))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				to_chat(user, SPAN_WARNING("The printer is not ready to print another document."))
+				return FALSE
+			playsound = FALSE
+			playsound(src, 'sound/machines/fax.ogg', 15, 1)
+			var/selected_document = params["document_name"]
+			addtimer(CALLBACK(src, PROC_REF(print_document), selected_document), 3.4 SECONDS)
+
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)
 
@@ -409,3 +424,28 @@
 		current_vent["available"] = is_available
 		security_vents += list(current_vent)
 	return security_vents
+
+
+/obj/structure/machinery/computer/wy_intranet/proc/get_possible_documents()
+	documents_available.Cut()
+	for(var/docname in GLOB.prefab_papers)
+		var/obj/item/paper/prefab/document = GLOB.prefab_papers[docname]
+		if(!istype(document))
+			continue
+		if(!document.is_prefab || !document.doc_datum_type || (document.name == "paper"))
+			continue
+		if(!document.document_category || !(document.document_category in document_categories))
+			continue
+		documents_available += docname
+	return
+
+/obj/structure/machinery/computer/wy_intranet/proc/print_document(document_name)
+	if(!COOLDOWN_FINISHED(src, printer_cooldown))
+		return FALSE
+	COOLDOWN_START(src, printer_cooldown, 20 SECONDS)
+	visible_message(SPAN_NOTICE("[src] prints out a paper."))
+
+	var/selected_document = GLOB.prefab_papers[document_name].type
+	new selected_document(loc)
+
+	return TRUE

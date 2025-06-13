@@ -146,6 +146,8 @@
 
 	data["restricted_camera"] = internal_camera_restricted
 
+	data["available_documents"] = documents_available
+
 	return data
 
 /obj/structure/machinery/computer/wy_intranet/ui_status(mob/user, datum/ui_state/state)
@@ -206,6 +208,9 @@
 		if("page_vents")
 			last_menu = current_menu
 			current_menu = "vents"
+		if("page_printer")
+			last_menu = current_menu
+			current_menu = "printer"
 
 		if("unlock_divider")
 			toggle_divider()
@@ -259,6 +264,7 @@
 			playsound = FALSE
 			playsound(src, 'sound/machines/fax.ogg', 15, 1)
 			var/selected_document = params["document_name"]
+			COOLDOWN_START(src, printer_cooldown, 23.4 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(print_document), selected_document), 3.4 SECONDS)
 
 	if(playsound)
@@ -440,9 +446,6 @@
 	return
 
 /obj/structure/machinery/computer/wy_intranet/proc/print_document(document_name)
-	if(!COOLDOWN_FINISHED(src, printer_cooldown))
-		return FALSE
-	COOLDOWN_START(src, printer_cooldown, 20 SECONDS)
 	visible_message(SPAN_NOTICE("[src] prints out a paper."))
 
 	var/selected_document = GLOB.prefab_papers[document_name].type

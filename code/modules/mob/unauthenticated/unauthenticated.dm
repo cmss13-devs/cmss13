@@ -100,7 +100,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	var/mob/new_player/new_mob = new()
 	new_mob.client = client
 
-	winset(new_mob.client, "mainwindow.split", list("splitter" = "50"))
+	winset(new_mob.client, "mainwindow.split", list("splitter" = "[cached_splitter_location]"))
 
 	new_mob.client.PostLogin()
 

@@ -31,6 +31,10 @@
 				help_shake_act(attacking_mob)
 				return 1
 
+			if(species.flags & IS_SYNTHETIC)
+				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly... "))
+				return 0
+
 			if(cpr_attempt_timer >= world.time)
 				to_chat(attacking_mob, SPAN_NOTICE("<B>CPR is already being performed on [src]!</B>"))
 				return 0
@@ -142,7 +146,7 @@
 						chance = !hand ? 40 : 20
 
 					if (prob(chance))
-						visible_message(SPAN_DANGER("[attacking_mob] accidentally discharges [src]'s [held_weapon.name] during the struggle!"), SPAN_DANGER("[attacking_mob] accidentally discharge your [held_weapon.name] during the struggle!"), null, 5)
+						visible_message(SPAN_DANGER("[attacking_mob] accidentally discharges [src]'s [held_weapon.name] during the struggle!"), SPAN_DANGER("[attacking_mob] accidentally discharges your [held_weapon.name] during the struggle!"), null, 5)
 						var/list/turfs = list()
 						for(var/turf/turfs_to_discharge in view())
 							turfs += turfs_to_discharge

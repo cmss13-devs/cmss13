@@ -25,6 +25,7 @@
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/marine/veteran
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
 

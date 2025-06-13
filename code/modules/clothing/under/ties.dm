@@ -900,8 +900,6 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/device/defibrillator/synthetic,
 		/obj/item/stack/rods,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunkit,
 	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small

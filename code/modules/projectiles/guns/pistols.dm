@@ -1020,7 +1020,6 @@ L54 service pistol
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
-	jam_threshold = GUN_DURABILITY_HIGH
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AUTO_EJECTOR
 
 /obj/item/weapon/gun/pistol/l54/custom/alt

@@ -101,6 +101,8 @@
 
 	if(bloody_state == LARVA_STATE_MATURE)
 		progress = "Mature "
+	else if(bloody_state == LARVA_STATE_BLOODY)
+		progress = "Fresh "
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""

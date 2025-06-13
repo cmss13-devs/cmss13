@@ -148,7 +148,7 @@
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add blight into our attack, [carbon_target] is about to fall over paralyzed!"))
 		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its blight coated claws!"))
 		carbon_target.sway_jitter(times = 3, steps = floor(BLIGHT_TOUCH_DELAY/3))
-		carbon_target.apply_effect(4, DAZE)
+		carbon_target.apply_effect(6, DAZE)
 		addtimer(CALLBACK(src, PROC_REF(blight_slash), carbon_target), BLIGHT_TOUCH_DELAY)
 		next_slash_buffed = FALSE
 	if(!next_slash_buffed)
@@ -204,7 +204,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	var/datum/behavior_delegate/pathogen_base/venator/behavior = paraslash_user.behavior_delegate
+	var/datum/behavior_delegate/pathogen_base/behavior = paraslash_user.behavior_delegate
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 

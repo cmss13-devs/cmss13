@@ -26,17 +26,17 @@
 	if(hivenumber == XENO_HIVE_PATHOGEN)
 		switch(age)
 			if(XENO_YOUNG)
-				age_prefix = "Fresh "
+				age_prefix = "Fresh"
 			if(XENO_NORMAL)
 				age_prefix = ""
 			if(XENO_MATURE)
-				age_prefix = "Mature "
+				age_prefix = "Scarred "
 			if(XENO_ELDER)
 				age_prefix = "Enduring "
 			if(XENO_ANCIENT)
-				age_prefix = "Scarred "
-			if(XENO_PRIME)
 				age_prefix = "Apex "
+			if(XENO_PRIME)
+				age_prefix = "Centennial "
 	else
 		switch(age)
 			if(XENO_YOUNG)

@@ -117,6 +117,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/cmb, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/cmb_riot_shield, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 
 /datum/equipment_preset/survivor/uscm/solaris
 	name = "Survivor - Solaris United States Colonial Marine Corps Recruiter"

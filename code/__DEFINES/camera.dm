@@ -22,6 +22,8 @@
 #define CAMERA_NET_LASER_TARGETS "Laser Targets"
 #define CAMERA_NET_CORRESPONDENT "Combat Correspondent Live"
 
+#define CAMERA_NET_WY "WY"
+
 #define CAMERA_NET_POWER_ALARMS "Power Alarms"
 #define CAMERA_NET_ATMOSPHERE_ALARMS "Atmosphere Alarms"
 #define CAMERA_NET_FIRE_ALARMS "Fire Alarms"

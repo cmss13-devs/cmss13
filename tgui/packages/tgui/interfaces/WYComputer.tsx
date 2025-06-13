@@ -29,6 +29,7 @@ type Data = {
   cell_flash_cooldown: number;
   sec_flash_cooldown: number;
   security_vents: VentRecord[];
+  restricted_camera: BooleanLike;
 };
 
 export const WYComputer = (props) => {
@@ -133,6 +134,7 @@ const MainMenu = (props) => {
     open_cell_shutters,
     cell_flash_cooldown,
     sec_flash_cooldown,
+    restricted_camera,
   } = data;
 
   return (
@@ -246,6 +248,21 @@ const MainMenu = (props) => {
               Nerve Gas Control
             </Button>
           )}
+          {!restricted_camera && (
+            <Button
+              align="center"
+              tooltip="Open the available intranet camera feeds."
+              icon="camera"
+              color="yellow"
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('open_cameras')}
+            >
+              Access Camera Feed
+            </Button>
+          )}
         </Section>
       )}
       {(access_level === 3 || access_level >= 5) && !!has_hidden_cell && (
@@ -309,6 +326,21 @@ const MainMenu = (props) => {
           >
             Cell Flash
           </Button.Confirm>
+          {!!restricted_camera && (
+            <Button
+              align="center"
+              tooltip="Open the available intranet camera feeds."
+              icon="camera"
+              color="yellow"
+              ml="auto"
+              px="2rem"
+              width="100%"
+              bold
+              onClick={() => act('open_cameras')}
+            >
+              Access Camera Feed
+            </Button>
+          )}
         </Section>
       )}
     </>

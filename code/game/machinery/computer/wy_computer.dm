@@ -31,6 +31,12 @@
 	/// A loose number to order security vents if they aren't pre-ordered.
 	var/vent_tag_num = 1
 
+	/// Internal camera console
+	var/obj/structure/machinery/computer/cameras/internal/internal_camera_console
+	var/internal_camera_network = list(CAMERA_NET_WY)
+	/// If you need access to hidden cell stuff or not
+	var/internal_camera_restricted = FALSE
+
 	/// Machinery the console interacts with (doors/shutters)
 	var/list/obj/structure/machinery/targets = list()
 
@@ -39,6 +45,8 @@
 	COOLDOWN_DECLARE(sec_flasher)
 
 /obj/structure/machinery/computer/wy_intranet/Initialize()
+	internal_camera_console = new(src)
+	internal_camera_console.network = internal_camera_network
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -47,6 +55,8 @@
 	get_targets()
 
 /obj/structure/machinery/computer/wy_intranet/Destroy()
+	qdel(internal_camera_console)
+	internal_camera_console = null
 	for(var/obj/target in targets)
 		clean_target(target)
 	. = ..()
@@ -84,6 +94,8 @@
 	divider_id = "CLRoomDivider"
 	hidden_cell_id = "CL_Containment"
 	security_system_id = "CL_Security"
+	internal_camera_network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH, CAMERA_NET_CONTAINMENT_HIDDEN)
+	internal_camera_restricted = TRUE
 
 // ------ WY Intranet Console UI ------ //
 
@@ -126,6 +138,8 @@
 	data["cell_flash_cooldown"] = !COOLDOWN_FINISHED(src, cell_flasher)
 
 	data["security_vents"] = get_security_vents()
+
+	data["restricted_camera"] = internal_camera_restricted
 
 	return data
 
@@ -228,6 +242,9 @@
 			log_ares_security("Nerve Gas Release", "Released Nerve Gas from Vent '[sec_vent.vent_tag]'.")
 			sec_vent.create_gas(VENT_GAS_CN20, 6, 5 SECONDS)
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via WY Intranet.")
+
+		if("open_cameras")
+			internal_camera_console.tgui_interact(user)
 
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)

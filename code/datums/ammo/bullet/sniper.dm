@@ -93,6 +93,7 @@
 	name = "crude sniper bullet"
 	damage = 42
 	penetration = ARMOR_PENETRATION_TIER_6
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge
 
 /datum/ammo/bullet/sniper/crude/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -103,6 +104,7 @@
 	damage = 80
 	penetration = ARMOR_PENETRATION_TIER_10
 	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge //traditionally, SVDs use casings
 
 /datum/ammo/bullet/sniper/anti_materiel
 	name = "anti-materiel sniper bullet"
@@ -114,6 +116,7 @@
 	penetration = ARMOR_PENETRATION_TIER_10 + ARMOR_PENETRATION_TIER_5
 	bullet_duraloss = BULLET_DURABILITY_LOSS_HIGH //while ordinarily i wouldnt add this when theres no subtype of AMR bullets, a .50 cal being fired should have inherent drawbacks
 	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge // I would be surprised if something as powerful as this would not need a casing
 
 /datum/ammo/bullet/sniper/anti_materiel/proc/stopping_power_knockback(mob/living/living_mob, obj/projectile/fired_projectile)
 	var/stopping_power = min(CEILING((fired_projectile.damage/30), 1), 5) // This is from bullet damage, and does not take Aimed Shot into account.
@@ -284,6 +287,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER|AMMO_ANTIVEHICLE
 	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
 	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge
 
 /datum/ammo/bullet/sniper/anti_materiel/vulture/on_hit_mob(mob/hit_mob, obj/projectile/bullet)
 	. = ..()
@@ -329,6 +333,7 @@
 	penetration = ARMOR_PENETRATION_TIER_10 + ARMOR_PENETRATION_TIER_5
 	bullet_duraloss = BULLET_DURABILITY_LOSS_SPECIAL // if theres any chance this bullet is getting spawned in, its obviously getting some drawbacks
 	bullet_duramage = BULLET_DURABILITY_DAMAGE_SPECIAL
+	shell_casing = /obj/effect/decal/ammo_casing/cartridge
 
 /datum/ammo/bullet/sniper/elite/set_bullet_traits()
 	. = ..()

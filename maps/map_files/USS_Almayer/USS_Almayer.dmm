@@ -13452,7 +13452,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "aML" = (
-/obj/item/ammo_casing/bullet,
+/obj/effect/decal/ammo_casing,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
 "aMO" = (

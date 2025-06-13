@@ -83,40 +83,45 @@
 	var/point_delay = 1 SECONDS
 
 
-/mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)
-	if(!Q)
+/mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/viewing_xeno)
+	if(!viewing_xeno)
 		return INITIALIZE_HINT_QDEL
 
-	if(!istype(Q))
-		stack_trace("Tried to initialize a /mob/hologram/queen on type ([Q.type])")
+	var/datum/hive_status/hive = viewing_xeno.hive
+	if(!hive)
 		return INITIALIZE_HINT_QDEL
 
-	if(!Q.ovipositor)
+	if(!isqueen(viewing_xeno) && !(hive.living_xeno_queen == viewing_xeno))
 		return INITIALIZE_HINT_QDEL
+
+	var/mob/living/carbon/xenomorph/queen/viewing_queen = viewing_xeno
+	if(istype(viewing_queen))
+		if(!hive.allow_no_queen_actions && !viewing_queen.ovipositor)
+			return INITIALIZE_HINT_QDEL
 
 	// Make sure to turn off any previous overwatches
-	Q.overwatch(stop_overwatch = TRUE)
+	viewing_xeno.overwatch(stop_overwatch = TRUE)
 
 	. = ..()
-	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
-	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
-	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
-	RegisterSignal(Q, list(
+	RegisterSignal(viewing_xeno, COMSIG_MOB_PRE_CLICK, PROC_REF(handle_overwatch))
+	RegisterSignal(viewing_xeno, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, PROC_REF(exit_hologram))
+	RegisterSignal(viewing_xeno, COMSIG_XENO_OVERWATCH_XENO, PROC_REF(start_watching))
+	RegisterSignal(viewing_xeno, list(
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), PROC_REF(stop_watching))
-	RegisterSignal(Q, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
+	RegisterSignal(viewing_xeno, COMSIG_MOB_REAL_NAME_CHANGED, PROC_REF(on_name_changed))
 	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 	// Default color
-	if(Q.hive.color)
-		color = Q.hive.color
+	if(viewing_xeno.hive.color)
+		color = viewing_xeno.hive.color
 
-	hivenumber = Q.hivenumber
+	hivenumber = viewing_xeno.hivenumber
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
-	Q.sight |= SEE_TURFS|SEE_OBJS
+	viewing_xeno.sight |= SEE_TURFS|SEE_OBJS
 
 /mob/hologram/queen/proc/exit_hologram()
 	SIGNAL_HANDLER
@@ -245,7 +250,7 @@
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
 		var/mob/living/carbon/xenomorph/queen/Q = linked_mob
-		if(Q.ovipositor)
+		if((Q.hive.living_xeno_queen == Q) || Q.ovipositor)
 			give_action(linked_mob, /datum/action/xeno_action/onclick/eye)
 
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)

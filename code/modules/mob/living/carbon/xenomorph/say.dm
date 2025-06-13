@@ -127,7 +127,7 @@
 				hear_hivemind = Hu.hivenumber
 
 		if(!QDELETED(S) && (isxeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
-			var/mob/living/carbon/xenomorph/X = src
+			var/mob/living/carbon/xenomorph/xeno = src
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
@@ -139,8 +139,11 @@
 						broadcast_tier = "royal"
 					else if(hive.leading_cult_sl == src)
 						broadcast_tier = "leader"
-					else if(istype(X) && IS_XENO_LEADER(X))
-						broadcast_tier = "leader"
+					else if(istype(xeno))
+						if(IS_XENO_LEADER(xeno))
+							broadcast_tier = "leader"
+						if(xeno.is_hive_ruler())
+							broadcast_tier = "royal"
 
 					ghostrend = get_hivemind_render(hive.hivenumber, broadcast_tier, message, "[src.name][track]")
 
@@ -151,10 +154,13 @@
 					overwatch_insert = " (<a href='byond://?src=\ref[S];[overwatch_target]=\ref[src];[overwatch_src]=\ref[S]'>watch</a>)"
 
 				var/broadcast_tier = "normal"
-				if(isqueen(src) || hive.leading_cult_sl == src)
+				if(isqueen(src) || (hive.leading_cult_sl == src))
 					broadcast_tier = "royal"
-				else if(istype(X) && IS_XENO_LEADER(X))
-					broadcast_tier = "leader"
+				else if(istype(xeno))
+					if(IS_XENO_LEADER(xeno))
+						broadcast_tier = "leader"
+					if(xeno.is_hive_ruler())
+						broadcast_tier = "royal"
 
 				rendered = get_hivemind_render(hive.hivenumber, broadcast_tier, message, "[src.name][overwatch_insert]")
 

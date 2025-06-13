@@ -642,6 +642,8 @@
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_NEST  "thick resin nest"
 
+#define PATHOGEN_STRUCTURE_CORE "blight core"
+
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1
 #define RESIN_TRAP_GAS 2

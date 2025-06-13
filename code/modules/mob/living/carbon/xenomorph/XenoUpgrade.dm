@@ -26,7 +26,7 @@
 	if(hivenumber == XENO_HIVE_PATHOGEN)
 		switch(age)
 			if(XENO_YOUNG)
-				age_prefix = "Fresh"
+				age_prefix = "Fresh "
 			if(XENO_NORMAL)
 				age_prefix = ""
 			if(XENO_MATURE)

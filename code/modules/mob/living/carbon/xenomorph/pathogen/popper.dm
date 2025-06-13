@@ -45,6 +45,7 @@
 		/datum/action/xeno_action/onclick/place_spore_sac,
 		/datum/action/xeno_action/onclick/release_spores,
 		/datum/action/xeno_action/onclick/tacmap,
+		/datum/action/xeno_action/activable/create_core,//temp
 	)
 	inherent_verbs = list(
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
@@ -160,6 +161,7 @@
 	plasma_cost = 200
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
+	var/windup_duration = 1 SECONDS
 
 /datum/action/xeno_action/onclick/release_spores/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/popper = owner
@@ -172,7 +174,7 @@
 		return
 	if(!popper.check_plasma(plasma_cost))
 		return
-	if(!do_after(popper, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+	if(!do_after(popper, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		return
 	popper.use_plasma(plasma_cost)
 	playsound(popper.loc, "alien_resin_build", 25)

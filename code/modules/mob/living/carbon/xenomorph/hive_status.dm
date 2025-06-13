@@ -89,7 +89,8 @@
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
-		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
+		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery,
+		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
 	)
 
 	var/list/list/hive_structures = list() //Stringref list of structures that have been built
@@ -1611,6 +1612,10 @@
 		/datum/caste_datum/pathogen/blight = 4,
 		/datum/caste_datum/pathogen/brute = 1,
 		/datum/caste_datum/pathogen/venator = 2,
+	)
+
+	hive_structures_limit = list(
+		PATHOGEN_STRUCTURE_CORE = 1,
 	)
 
 /datum/hive_status/pathogen/get_xeno_counts()

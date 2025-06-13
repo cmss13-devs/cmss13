@@ -229,3 +229,9 @@
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply blight!"))
 	button.icon_state = "template"
+
+
+/mob/living/carbon/xenomorph/proc/is_hive_ruler()
+	if(hive && (hive.living_xeno_queen == src))
+		return TRUE
+	return FALSE

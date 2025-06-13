@@ -540,7 +540,7 @@
 		hide_from(xeno)
 		return
 
-	if(!xeno.hive.living_xeno_queen.ovipositor)
+	if(!xeno.hive.allow_no_queen_actions && !xeno.hive.living_xeno_queen.ovipositor)
 		hide_from(xeno)
 
 	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
@@ -558,7 +558,7 @@
 
 	tracked_queen = new_queen
 
-	if(!tracked_queen?.ovipositor)
+	if(!hive.allow_no_queen_actions && !tracked_queen?.ovipositor)
 		hide_from(owner)
 
 	RegisterSignal(tracked_queen, COMSIG_QUEEN_MOUNT_OVIPOSITOR, PROC_REF(handle_mount_ovipositor))

@@ -351,7 +351,7 @@
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
 
-/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber, ai_hard_off = FALSE)
+/mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
@@ -515,7 +515,7 @@
 	Decorate()
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, PROC_REF(handle_screech_act))
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src, ai_hard_off)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER

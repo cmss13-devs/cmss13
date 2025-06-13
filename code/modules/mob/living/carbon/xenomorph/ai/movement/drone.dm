@@ -85,7 +85,7 @@
 	if(checked_weeds && IS_SAME_HIVENUMBER(checked_weeds, parent))
 		return FALSE
 
-	if(checked_turf.is_weedable() < FULLY_WEEDABLE)
+	if(checked_turf.is_weedable < FULLY_WEEDABLE)
 		return FALSE
 
 	var/obj/effect/alien/weeds/found_weeds = locate(/obj/effect/alien/weeds/node) in range(3, checked_turf)

@@ -10,8 +10,8 @@
 	if(istype(parent, /mob))
 		return COMPONENT_INCOMPATIBLE
 
-	var/turf/open/location = get_turf(parent)
-	if(location.is_weedable() != FULLY_WEEDABLE)
+	var/turf/location = get_turf(parent)
+	if(location.is_weedable != FULLY_WEEDABLE)
 		return COMPONENT_INCOMPATIBLE
 
 /datum/component/ai_behavior_override/build/Destroy(force, silent, ...)

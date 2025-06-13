@@ -242,7 +242,7 @@
 
 	if(user.action_busy)
 		to_chat(user, SPAN_WARNING("We are already busy with something."))
-		return
+		return XENO_NO_DELAY_ACTION
 
 	if(user.anchored)
 		to_chat(user, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
@@ -264,7 +264,7 @@
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
 
 	if(user.banished)
-		return
+		return XENO_NO_DELAY_ACTION
 
 	if(user.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY

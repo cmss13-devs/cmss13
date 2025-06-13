@@ -110,13 +110,15 @@ const InputArea = (props: {
       autoSelect
       height={multiline || input.length >= 30 ? '100%' : '1.8rem'}
       maxLength={max_length}
+      noResize
       onEscape={() => act('cancel')}
       onEnter={(event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (visualMultiline && event.shiftKey) {
           return;
         }
         event.preventDefault();
-        act('submit', { entry: input });
+
+        act('submit', { entry: input.replace(/"/g, '') });
       }}
       onChange={(_, value) => onType(value)}
       onInput={(_, value) => onType(value)}

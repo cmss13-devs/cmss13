@@ -10,6 +10,7 @@ export enum WindowSize {
 export enum LineLength {
   Small = 36,
   Medium = 70,
+  Large = 104,
 }
 
 /**

@@ -1,0 +1,5 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - rscadd: "acid now tracks the item it is applied to"
+  - balance: "you can't pick up items with acid on them"

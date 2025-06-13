@@ -237,6 +237,7 @@
 
 
 /mob/proc/Life(delta_time)
+	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
@@ -479,6 +480,9 @@
 	if(throwing || is_mob_incapacitated())
 		return
 
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		return
+
 	if(pulling)
 		// Are we pulling the same thing twice? Just stop pulling.
 		if(pulling == AM)
@@ -642,7 +646,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/dizzy_process()
 	is_dizzy = 1
 	while(dizziness > 100)
-		SEND_SIGNAL(src, COMSIG_HUMAN_ANIMATING)
+		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		if(client)
 			if(buckled || resting)
 				client.pixel_x = 0
@@ -683,7 +687,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/jittery_process()
 	is_jittery = 1
 	while(jitteriness > 100)
-		SEND_SIGNAL(src, COMSIG_HUMAN_ANIMATING)
+		SEND_SIGNAL(src, COMSIG_MOB_ANIMATING)
 		var/amplitude = min(4, jitteriness / 100)
 		pixel_x = old_x + rand(-amplitude, amplitude)
 		pixel_y = old_y + rand(-amplitude/3, amplitude/3)

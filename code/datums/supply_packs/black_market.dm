@@ -66,10 +66,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 /datum/supply_packs/contraband/seized/black_market_scanner
 	name = "black market scanner crate"
 	contains = list(/obj/item/device/black_market_scanner)
-	containername = "trash cart"
+	containername = "interesting wooden crate"
 	dollar_cost = 5
 	crate_heat = 0
-	containertype = /obj/structure/closet/crate/trashcart
+	containertype = /obj/structure/closet/coffin/woodencrate
 
 /datum/supply_packs/contraband/seized/confiscated_equipment
 	name = "seized foreign equipment crate"
@@ -616,7 +616,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/toy/prize/deathripley,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
-		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/toy/inflatable_duck,
 		/obj/item/pamphlet/skill/powerloader,
 		/obj/item/pamphlet/language/russian,

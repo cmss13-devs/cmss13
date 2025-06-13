@@ -98,8 +98,6 @@
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
 		/obj/item/device/defibrillator/synthetic,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunkit,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
@@ -159,8 +157,6 @@
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
 		/obj/item/device/defibrillator/synthetic,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunkit,
 	)
 
 	bypass_w_limit = list(
@@ -760,6 +756,29 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
+
+/obj/item/storage/belt/marine/sharp
+	name = "\improper M103 pattern SHARP magazine belt"
+	desc = "A specially modified M103 pattern rig designed to hold P9 SHARP rifle magazines, instead of tank shells."
+	icon_state = "tankbelt"
+	item_state = "tankbelt"
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi',
+	)
+	item_state_slots = list(
+		WEAR_L_HAND = "utility",
+		WEAR_R_HAND = "utility")
+	storage_slots = 8
+	max_storage_space = 8
+	can_hold = list(
+		/obj/item/ammo_magazine/rifle/sharp/explosive,
+		/obj/item/ammo_magazine/rifle/sharp/flechette,
+		/obj/item/ammo_magazine/rifle/sharp/incendiary,
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/storage/belt/marine/upp
 	name = "\improper Type 41 pattern load rig"
@@ -1472,6 +1491,11 @@
 	for(var/i = 1 to 3)
 		new /obj/item/ammo_magazine/pistol/mod88(src)
 
+/obj/item/storage/belt/gun/m4a3/vp78/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/vp78())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/vp78(src)
+
 /obj/item/storage/belt/gun/m4a3/wy
 	name = "\improper WY-TM892 pattern general pistol holster rig"
 	desc = "The WY-TM892 is the standard load-bearing equipment of the W-Y security forces. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol magazines."
@@ -2068,6 +2092,7 @@
 	item_state = "upp_belt"
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/UPP.dmi'
 	item_icons = list(
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/UPP.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'

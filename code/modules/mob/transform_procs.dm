@@ -82,6 +82,8 @@
 				new_xeno = new /mob/living/carbon/xenomorph/lurker(loc)
 			if(XENO_CASTE_WARRIOR)
 				new_xeno = new /mob/living/carbon/xenomorph/warrior(loc)
+			if(XENO_CASTE_BRUISER)
+				new_xeno = new /mob/living/carbon/xenomorph/bruiser(loc)
 			if(XENO_CASTE_BURROWER)
 				new_xeno = new /mob/living/carbon/xenomorph/burrower(loc)
 			if(XENO_CASTE_CARRIER)

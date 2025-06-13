@@ -24,7 +24,7 @@
 	tackle_chance = 25
 
 	evolution_allowed = FALSE
-	deevolves_to = list(XENO_CASTE_WARRIOR)
+	deevolves_to = list(XENO_CASTE_BRUISER)
 	caste_desc = "A huge tanky xenomorph."
 
 	minimap_icon = "crusher"

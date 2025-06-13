@@ -15,7 +15,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
-	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
+	evolves_to = list(XENO_CASTE_PRAETORIAN)
 	deevolves_to = list(XENO_CASTE_DEFENDER)
 	caste_desc = "A powerful front line combatant."
 	can_vent_crawl = 0
@@ -324,7 +324,14 @@
 	if (!fling_user.check_state() || fling_user.agility)
 		return
 
-	if (!fling_user.Adjacent(affected_atom))
+	var/applied_cooldown_early = FALSE
+	if (!fling_user.Adjacent(affected_atom) && range == 1)
+		return
+	else if(!fling_user.Adjacent(affected_atom) && get_dist(affected_atom, fling_user) <= range)
+		apply_cooldown()
+		applied_cooldown_early = TRUE
+		fling_user.throw_atom(get_step_towards(affected_atom, fling_user), 3, SPEED_VERY_FAST, fling_user, tracking=TRUE)
+	else if(get_dist(affected_atom, fling_user) > range)
 		return
 
 	var/mob/living/carbon/carbon = affected_atom
@@ -363,7 +370,16 @@
 	fling_user.flick_attack_overlay(carbon, "disarm")
 	fling_user.throw_carbon(carbon, facing, fling_distance, SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
 
-	apply_cooldown()
+	if(fling_damage)
+		var/obj/limb/target_limb = carbon.get_limb(check_zone(fling_user.zone_selected))
+
+		if (ishuman(carbon) && (!target_limb || (target_limb.status & LIMB_DESTROYED)))
+			target_limb = carbon.get_limb("chest")
+
+		carbon.apply_armoured_damage(fling_damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
+
+	if(!applied_cooldown_early)
+		apply_cooldown()
 	return ..()
 
 /datum/action/xeno_action/activable/warrior_punch/use_ability(atom/affected_atom)

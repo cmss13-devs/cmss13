@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(permitted_guests)
+
 /mob/unauthenticated
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
@@ -8,7 +10,7 @@
 	/// Where this user previously had their splitter, so they don't get too mad at us for moving it
 	var/cached_splitter_location
 
-	var/static/valid_characters = list("abcdefghijklmnopqrstuvwxyzAbCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+	var/static/valid_characters = splittext("abcdefghijklmnopqrstuvwxyzAbCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "")
 	var/access_code
 
 	var/datum/tgui_window/unauthenticated_menu
@@ -81,18 +83,26 @@
 	if(!code)
 		notify_unauthenticated_menu()
 
+	if(world.IsBanned("Guest-Forums-[client.external_username]", client.address, client.computer_id, real_bans_only = TRUE))
+		unauthenticated_menu.send_message("banned")
+		QDEL_IN(client, 10 SECONDS)
+		return FALSE
+
 	log_in()
 
 /// Switches the clients ckey, and continues the logging in
 /mob/unauthenticated/proc/log_in()
-	client.ckey = "guest-[client.external_username]"
+	client.key = "Guest-Forums-[client.external_username]"
+	GLOB.permitted_guests |= client.key
 
 	client.PreLogin()
 
 	var/mob/new_player/new_mob = new()
 	new_mob.client = client
 
-	client.PostLogin()
+	winset(new_mob.client, "mainwindow.split", list("splitter" = "50"))
+
+	new_mob.client.PostLogin()
 
 /// Displays the usual lobby menu and moves the splitter all the way over, for the full screen effect
 /mob/unauthenticated/proc/display_unauthenticated_menu()
@@ -134,7 +144,7 @@
 
 	switch(action)
 		if("open_browser")
-			client << link("[CONFIG_GET(string/auth_url)]&code=[access_code]")
+			client << link("[CONFIG_GET(string/auth_url)]?code=[access_code]")
 		if("recall_code")
 			if(!COOLDOWN_FINISHED(src, recall_code_cooldown))
 				return

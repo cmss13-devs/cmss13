@@ -1,5 +1,5 @@
 import { storage } from 'common/storage';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useBackend } from '../backend';
 import { Button, Section, Stack } from '../components';
@@ -9,6 +9,8 @@ const MAX_TIMEOUT = 10800000; // 3 hours
 
 export const UnauthenticatedMenu = () => {
   const { act } = useBackend();
+
+  const [banned, setIsBanned] = useState(false);
 
   useEffect(() => {
     Byond.subscribeTo('logged_in', (payload: { access_code: string }) => {
@@ -23,6 +25,8 @@ export const UnauthenticatedMenu = () => {
         act('recall_code', { code: value.code });
       }
     });
+
+    Byond.subscribeTo('banned', () => setIsBanned(true));
   }, []);
 
   return (
@@ -32,7 +36,7 @@ export const UnauthenticatedMenu = () => {
           <Stack.Item>
             <Stack align="center">
               <Stack.Item>
-                <Authentication />
+                {banned ? <Banned /> : <Authentication />}
               </Stack.Item>
             </Stack>
           </Stack.Item>
@@ -53,13 +57,33 @@ const Authentication = () => {
         </Stack.Item>
         <Stack.Item>
           <Stack align="center">
-            <Stack.Item>
-              <Button onClick={() => act('open_browser')} fluid>
+            <Stack.Item grow>
+              <Button
+                onClick={() => act('open_browser')}
+                fluid
+                textAlign="center"
+              >
                 Click here to log in with CM-SS13 Forums
               </Button>
             </Stack.Item>
           </Stack>
         </Stack.Item>
+      </Stack>
+    </Section>
+  );
+};
+
+const Banned = () => {
+  return (
+    <Section title="Authenticate">
+      <Stack vertical>
+        <Stack.Item>
+          You are banned, and cannot currently log into the game.
+        </Stack.Item>
+        <Stack.Item>
+          You will be automatically disconnected in ten seconds.
+        </Stack.Item>
+        <Stack.Item>Appeal this ban on the CM-SS13 forums.</Stack.Item>
       </Stack>
     </Section>
   );

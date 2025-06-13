@@ -518,11 +518,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 /client/var/external_username
 
-/client/proc/get_ckey()
+/// To be used when displaying a client's "username" to players
+/client/proc/username()
 	if(external_username)
 		return external_username
 
-	return ckey
+	return key
 
 /// Handles login-related logging and associated notifications
 /client/proc/notify_login()

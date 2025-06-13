@@ -66,8 +66,7 @@ CLIENT_VERB(ooc, msg as text)
 	var/ooc_prefix = handle_ooc_prefix()
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
-			var/display_name = src.key
-			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[ooc_prefix]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[ooc_prefix]<span class='prefix'>OOC: [username()]</span>: <span class='message'>[msg]</span></span></font>")
 
 /client/proc/set_ooc_color_global(newColor as color)
 	set name = "OOC Text Color - Global"

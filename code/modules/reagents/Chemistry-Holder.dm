@@ -6,6 +6,7 @@
 	var/trigger_volatiles = FALSE
 	var/allow_star_shape = TRUE
 	var/exploded = FALSE
+	var/endothermic_reaction_occuring = FALSE
 	var/datum/weakref/source_mob
 
 	var/locked = FALSE
@@ -21,6 +22,7 @@
 	var/min_fire_dur = 3
 
 	var/fire_penetrating = FALSE
+
 
 /datum/reagents/New(maximum=100)
 	maximum_volume = maximum
@@ -250,8 +252,18 @@
 						continue
 					else if(current.original_id == reagent.original_id || current.id == reagent.original_id)
 						//Merge into the original
+						var/volume_factor = clamp((max(current.overdose - reagent.overdose, 5) / 5)-1, 1, 3)
+						if(max(current.overdose, 5)/5 < 3)
+							volume_factor = 1
 						reagent_list -= reagent
-						current.volume += reagent.volume
+						current.volume += floor(reagent.volume / volume_factor)
+						var/list/seen = viewers(4, get_turf(my_atom))
+						for(var/mob/seen_mob in seen)
+							if(volume_factor == 1)
+								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
+							else
+								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] The solution decreases in volume."))
+						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 20, 1)
 						qdel(reagent)
 						break
 			for(var/datum/chemical_reaction/reaction in GLOB.chemical_reactions_filtered_list[reagent.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
@@ -291,27 +303,87 @@
 					for(var/required_reagent in reaction.required_reagents)
 						if(!preserved_data)
 							preserved_data = get_data(required_reagent)
-						remove_reagent(required_reagent, (multiplier * reaction.required_reagents[required_reagent]), safety = TRUE)
 
 					var/created_volume = reaction.result_amount*multiplier
+					reaction.on_reaction(src, created_volume, multiplier)
+
 					if(reaction.result)
-
 						multiplier = max(multiplier, 1) //this shouldnt happen ...
-						add_reagent(reaction.result, reaction.result_amount*multiplier)
 						set_data(reaction.result, preserved_data)
-
-						//add secondary products
+					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_CALM) && !CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC)) //mix the chemicals
+						if(endothermic_reaction_occuring)
+							continue
+						for(var/required_reagent in reaction.required_reagents)
+							remove_reagent(required_reagent, (multiplier * reaction.required_reagents[required_reagent]), safety = TRUE)
+						add_reagent(reaction.result, reaction.result_amount*multiplier)
 						for(var/secondary_result in reaction.secondary_results)
 							add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * multiplier)
+						var/list/seen = viewers(4, get_turf(my_atom))
+						for(var/mob/seen_mob in seen)
+							to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution begins to bubble."))
+						playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 20, 1)
+						reaction_occurred = TRUE
+					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_BUBBLING))
+						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
+							return
+						var/datum/reagent/result_to_splash = GLOB.chemical_reagents_list[reaction.result]
+						var/datum/reagent/recipe_to_splash = GLOB.chemical_reagents_list[pick(reaction.required_reagents)]
+						for(var/mob/living/carbon/human/victim in view(1, get_turf(my_atom)))
+							if(prob(20))
+								to_chat(victim, SPAN_WARNING("\A large [pick("chunk", "drop", "lump")] of [pick("foam", "bubbles", "froth")] misses You narrowly!"))
+								return
+							if(!prob(min(victim.getarmor(null, ARMOR_BIO)*2, 100)) && created_volume >= 5)
+								playsound(victim, "acid_sizzle", 15, TRUE)
+								to_chat(victim, SPAN_BOLDWARNING("[my_atom] chemicals from [my_atom] splash on you!"))
+								victim.reagents.add_reagent(result_to_splash.id, max(1+rand(0,2), rand(4,6)))
+								victim.reagents.add_reagent(recipe_to_splash.id, max(1+rand(0,2), rand(4,6)))
+								if(result_to_splash.get_property(PROPERTY_CORROSIVE) || recipe_to_splash.get_property(PROPERTY_CORROSIVE))//make a burning sound and flash if the reagents involved are corrosive
+									animation_flash_color(victim, "#FF0000")
+							else if (created_volume >= 5)
+								to_chat(victim, SPAN_WARNING("Your gear protects you from [pick("chunk", "drop", "lump")] of foam and bubbles!"))
 
-					var/list/seen = viewers(4, get_turf(my_atom))
-					for(var/mob/M in seen)
-						to_chat(M, SPAN_NOTICE("[icon2html(my_atom, M)] The solution begins to bubble."))
+					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_GLOWING))
+						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
+							return
+						var/list/seen = viewers(3, get_turf(my_atom))
+						var/datum/reagent/result_chemical = GLOB.chemical_reagents_list[reaction.result]
+						for(var/mob/seen_mob in seen)
+							if(prob(50))
+								to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] starts to glow!"))
+						var/obj/item/device/flashlight/flare/on/illumination/chemical/chem_light = new(my_atom, max(1,created_volume*2), result_chemical.burncolor)
+						chem_light.set_light_color(result_chemical.burncolor)
 
-					playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
+					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_FIRE))
+						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
+							return
+						var/datum/reagent/reagent_to_burn = GLOB.chemical_reagents_list[reaction.result]
+						for(var/datum/reagent/water_in_holder in reagent_list)
+							if(water_in_holder.id == "water" && water_in_holder.volume >= created_volume)
+								var/list/seen = viewers(2, get_turf(my_atom))
+								for(var/mob/seen_mob in seen)
+									to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to boil before settling down."))
+								return
+						if(timeleft(addtimer(CALLBACK(src, PROC_REF(combust), get_turf(my_atom), 1+floor(max(multiplier/6, 0)), 3+floor(max(multiplier/6, 0)), 2, 2, reagent_to_burn.burncolor, 0, 0 , FALSE), 3 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)) == 3 SECONDS) //prevents smoke and sound spam
+							var/list/seen = viewers(3, get_turf(my_atom))
+							for(var/mob/seen_mob in seen)
+								to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to smoke heavily!"))
+							var/datum/effect_system/smoke_spread/bad/fire_smoke = new(my_atom)
+							fire_smoke.attach(my_atom)
+							fire_smoke.set_up(0,3 SECONDS, my_atom)
+							fire_smoke.start()
+							playsound(get_turf(my_atom), 'sound/effects/tankhiss3.ogg', 5, 45000, 4)
 
-					reaction.on_reaction(src, created_volume)
-					reaction_occurred = TRUE
+					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_SMOKING))
+						if(!HAS_TRAIT(my_atom, TRAIT_REACTS_UNSAFELY))
+							return
+						var/list/seen = viewers(3, get_turf(my_atom))
+						for(var/mob/seen_mob in seen)
+							to_chat(seen_mob, SPAN_WARNING("[icon2html(my_atom, seen_mob)] [my_atom] starts to give heavy fumes from it's contents!"))
+						addtimer(CALLBACK(src, PROC_REF(create_smoke_reaction), created_volume, reaction), 4 SECONDS, TIMER_UNIQUE)
+						playsound(get_turf(my_atom), 'sound/effects/tankhiss3.ogg', 10, 30000, 4)// what a great sound where did it hide all this time
+
+					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+						addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction, multiplier), 2 SECONDS, TIMER_UNIQUE)//this could easily be in process but I want to control the time
 					break
 
 	while(reaction_occurred)
@@ -322,6 +394,52 @@
 		exploded = FALSE
 	update_total()
 	return FALSE
+
+/datum/reagents/proc/create_smoke_reaction(created_volume)
+	var/list/seen = viewers(2, get_turf(my_atom))
+	if(!CHECK_BITFIELD(my_atom.flags_atom, OPENCONTAINER))
+		for(var/mob/seen_mob in seen)
+			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] Lid on [my_atom] prevents fumes from spreading around itself."))
+		return
+	for(var/mob/seen_mob in seen)
+		to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] "))
+		playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
+	var/location = get_turf(my_atom)
+	var/datum/effect_system/smoke_spread/chem/smoke_reaction = new /datum/effect_system/smoke_spread/chem
+	smoke_reaction.attach(location)
+	smoke_reaction.set_up(src, max(1, rand(3,8)), 0, location)
+	playsound(location, 'sound/effects/smoke.ogg', 25, 1)
+	INVOKE_ASYNC(smoke_reaction, TYPE_PROC_REF(/datum/effect_system/smoke_spread/chem, start))
+
+/datum/reagents/proc/handle_endothermic_reaction(datum/chemical_reaction/reaction, multiplier)//HOPEFULLY, we are already clear on stuff like beaker type or holder type by checks made earlier, so we are only checking if we have enough chemicals.
+	var/required_reagents_present = 0
+	var/required_catalysts_present = 0
+	for(var/datum/reagent/reagent_in_holder in reagent_list)
+		if((reagent_in_holder.id in reaction.required_reagents) && reagent_in_holder.volume >= reaction.required_reagents[reagent_in_holder.id] * 2)
+			required_reagents_present++
+	for(var/datum/reagent/catalysts_in_holder in reagent_list)
+		if((catalysts_in_holder.id in reaction.required_catalysts) && catalysts_in_holder.volume >= reaction.required_catalysts[catalysts_in_holder.id])
+			required_catalysts_present++
+	if(!(length(reaction.required_reagents) == required_reagents_present && length(reaction.required_catalysts) == required_catalysts_present))
+		endothermic_reaction_occuring = FALSE //forgive me
+		handle_reactions()
+		return
+	var/list/seen = viewers(2, get_turf(my_atom))
+	if(prob(10))
+		for(var/mob/seen_mob in seen)
+			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] The solution bubbles."))
+			playsound(get_turf(my_atom), 'sound/effects/bubbles.ogg', 15, 1)
+	for(var/required_reagent in reaction.required_reagents)
+		remove_reagent(required_reagent, reaction.required_reagents[required_reagent] * 2, safety = TRUE)
+	add_reagent(reaction.result, reaction.result_amount * 2)
+	for(var/secondary_result in reaction.secondary_results)
+		add_reagent(secondary_result, reaction.result_amount * reaction.secondary_results[secondary_result] * 2)
+	var/list/this_turf = viewers(0, get_turf(my_atom))
+	for(var/mob/seen_mob in this_turf)
+		if(prob(15))
+			to_chat(seen_mob, SPAN_NOTICE("[icon2html(my_atom, seen_mob)] [my_atom] feels extremely cold to touch."))
+	endothermic_reaction_occuring = TRUE
+	addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction), 1 SECONDS, TIMER_UNIQUE)
 
 /datum/reagents/proc/isolate_reagent(reagent)
 	for(var/datum/reagent/R in reagent_list)
@@ -665,7 +783,7 @@
 
 	return exploded
 
-/datum/reagents/proc/combust(turf/sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating)
+/datum/reagents/proc/combust(turf/sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad, fire_penetrating, flush_beaker = TRUE)
 	if(!sourceturf)
 		return
 	if(sourceturf.chemexploded)
@@ -702,7 +820,8 @@
 		smoke.start(intensity, max_fire_int)
 		smoke = null
 
-	exploded = TRUE // clears reagents after all reactions processed
+	if(flush_beaker)
+		exploded = TRUE // clears reagents after all reactions processed
 
 	msg_admin_attack("Chemical fire with Intensity: [intensity], Duration: [duration], Radius: [radius], Flameshape: [flameshape] in [sourceturf.loc.name] ([sourceturf.x],[sourceturf.y],[sourceturf.z]).", sourceturf.x, sourceturf.y, sourceturf.z)
 

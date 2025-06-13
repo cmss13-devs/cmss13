@@ -367,10 +367,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#848484"
 	},
-/obj/item/stack/repairable/gunlube{
-	pixel_x = -9;
-	pixel_y = 4
-	},
 /turf/open/floor/strata/red3,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "cX" = (
@@ -2822,10 +2818,6 @@
 /obj/structure/largecrate/random/barrel/black{
 	pixel_x = 5;
 	pixel_y = 6
-	},
-/obj/item/stack/repairable/gunlube{
-	pixel_x = 10;
-	pixel_y = -6
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/lv759/indoors/twe_souter_outpost/hangar)

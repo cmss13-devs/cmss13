@@ -120,3 +120,34 @@
 2025-06-12:
   PGrayCS:
   - bugfix: Vendor briefcases can now be scrolled
+2025-06-13:
+  AI-1CE:
+  - rscadd: Adds extended lore to three brands of cigarettes.
+  DolphinShark20:
+  - balance: Lurkers can no longer evolve whilst invisible
+  - bugfix: Transmuting a strain now performs stance checks like picking a strain
+      checks
+  Drathek:
+  - bugfix: Fixed a cleared label preventing new a label if it was the same as the
+      last label
+  - balance: Monkey hosts now are single bursts.
+  FebrezeNinja:
+  - bugfix: Autodoc no longer locks procedures because of dead patient
+  - bugfix: M10 ammo boxes now craftable
+  - bugfix: Changed ammo box names to match actual size
+  SpypigDev:
+  - bugfix: Groundside operations consoles can now be deleted and replaced without
+      issue
+  - bugfix: Slight tweak to overwatch console ui_status design
+  TheGamerdk:
+  - ui: There's now a 'Show Plasma' toggle in the Hive Status UI to toggle the Plasma
+      column.
+  realforest2001:
+  - rscadd: Added a Weyland-Yutani Intranet Terminal to the CLs office.
+  - maptweak: Re-orders the buttons on the CLs desk to make more sense.
+  sergeant_lemon:
+  - bugfix: Fixed T-shirt and jeans sprites missing pixels
+  stalkerino:
+  - balance: gives io headset supply radio
+  zzzmike:
+  - qol: give hint regarding impending game end due to hivemind collapse

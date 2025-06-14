@@ -251,8 +251,6 @@
 	headshot_state = HEADSHOT_OVERLAY_HEAVY
 	damage = 50
 	penetration = ARMOR_PENETRATION_TIER_10
-	bullet_duraloss = BULLET_DURABILITY_LOSS_SEVERE
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_HIGH
 
 /datum/ammo/bullet/pistol/squash/rubber
 	name = "rubber squash-head pistol bullet"

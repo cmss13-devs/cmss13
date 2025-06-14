@@ -6933,6 +6933,12 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
+"asf" = (
+/turf/closed/wall/r_wall/bunker/floodgate{
+	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
+	name = "bunker superdense wall"
+	},
+/area/tyrargo/underground/oob_area)
 "asg" = (
 /obj/structure/flora/bush/snow,
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -6992,6 +6998,13 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/oob)
+"aso" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/blue/southwest,
+/area/tyrargo/underground/oob_area)
+"asp" = (
+/turf/open/floor/corsat/blue/northeast,
+/area/tyrargo/underground/oob_area)
 "asq" = (
 /obj/structure/flora/tree/tyrargo/tree_2{
 	pixel_x = -24;
@@ -13967,6 +13980,13 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/fsb_south)
+"aJA" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/turf/open/floor/corsat/blue/west,
+/area/tyrargo/underground/oob_area)
 "aJB" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red{
 	dir = 4
@@ -31704,6 +31724,18 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/fsb_north)
+"bsu" = (
+/obj/structure/prop/tyrargo/boards/boards_2{
+	layer = 2.1;
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/oob_area)
+"bsv" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/underground/oob_area)
 "bsw" = (
 /turf/closed/wall/rock,
 /area/tyrargo/oob)
@@ -88432,7 +88464,7 @@
 /area/tyrargo/underground/oob_area)
 "epf" = (
 /obj/effect/decal/hybrisa/bloodtrail,
-/turf/open/floor/corsat/box,
+/turf/open/floor/corsat/bluecorner/north,
 /area/tyrargo/underground/oob_area)
 "epg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -88477,7 +88509,7 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 9
 	},
-/turf/open/floor/corsat/bluecorner/north,
+/turf/open/floor/corsat/blue/west,
 /area/tyrargo/underground/oob_area)
 "epn" = (
 /obj/effect/decal/hybrisa/bloodtrail{
@@ -88522,7 +88554,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/turf/open/floor/corsat/blue/north,
+/turf/open/floor/corsat/box,
 /area/tyrargo/underground/oob_area)
 "ept" = (
 /obj/effect/decal/cleanable/dirt,
@@ -109831,12 +109863,12 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
+bsO
+bsO
+bsO
 bsO
 bsO
 bsO
@@ -110016,12 +110048,12 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsO
-bsO
+bsv
+aJA
+eoH
+aso
+asf
 epl
-enA
 enA
 enA
 eoX
@@ -110197,11 +110229,11 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
-bsO
-epl
+eoS
+ekX
+bsu
+elf
+eoz
 epm
 epf
 epb
@@ -110380,9 +110412,9 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsO
+ekF
+elf
+eoA
 eps
 epn
 emr
@@ -110559,13 +110591,13 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
-bsw
-bsw
 bsO
-emG
+bsO
+bsO
+bsO
+bsO
+asp
+eoA
 epo
 epd
 epe
@@ -110745,7 +110777,7 @@ bsw
 bsw
 bsw
 bsw
-bsw
+bsO
 bsO
 ept
 epo
@@ -113820,9 +113852,9 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
@@ -114002,9 +114034,9 @@ bsw
 bsw
 bsw
 bsw
+bsO
 bsw
-bsw
-bsw
+bsO
 bsw
 bsw
 bsw
@@ -114184,9 +114216,9 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
@@ -114912,9 +114944,9 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 ekA
 ekQ
 emX
@@ -115094,9 +115126,9 @@ bsw
 bsw
 bsw
 bsw
+bsO
 bsw
-bsw
-bsw
+bsO
 bsw
 enm
 ekV
@@ -115276,9 +115308,9 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 bsw
 ekX
 elc
@@ -116004,9 +116036,9 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
@@ -116186,9 +116218,9 @@ bsw
 bsw
 bsw
 bsw
+bsO
 bsw
-bsw
-bsw
+bsO
 bsw
 bsw
 bsw
@@ -116368,9 +116400,9 @@ bsw
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
@@ -117102,32 +117134,32 @@ bsw
 bsw
 bsw
 bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
-bsw
-bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+elc
 emU
-ekX
 ekA
 ekA
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
+bsO
+bsO
+bsO
 bsw
 bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 caV
@@ -117284,32 +117316,32 @@ bsw
 bsw
 bsw
 bsw
+bsO
+bsw
+bsO
 bsw
 bsw
 bsw
+bsO
+bsw
+bsO
 bsw
 bsw
 bsw
+bsO
+bsw
+bsO
 bsw
 bsw
 bsw
+bsO
+bsw
+bsO
 bsw
 bsw
+bsO
 bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
+bsO
 bsw
 bsw
 cbG
@@ -117466,32 +117498,32 @@ bsw
 bsw
 bsw
 bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw
+bsO
+bsO
+bsO
 bsw
 bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
-bsw
+bsO
+bsO
+bsO
 bsw
 bsw
 bsw

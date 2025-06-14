@@ -16,8 +16,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("APC Circuit Board", 2, /obj/item/circuitboard/apc, null, VENDOR_ITEM_REGULAR),
 		list("Entrenching Tool (ET)", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Power Cell", 3, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
-		list("Metal x10", 5, /obj/item/stack/sheet/metal/small_stack, null, VENDOR_ITEM_RECOMMENDED),
-		list("Plasteel x10", 7, /obj/item/stack/sheet/plasteel/small_stack, null, VENDOR_ITEM_RECOMMENDED),
 		list("Plastic Explosive", 3, /obj/item/explosive/plastic, null, VENDOR_ITEM_REGULAR),
 		list("Breaching Charge", 5, /obj/item/explosive/plastic/breaching_charge, null, VENDOR_ITEM_RECOMMENDED),
 		list("Sandbags x25", 10, /obj/item/stack/sandbags_empty/half, null, VENDOR_ITEM_RECOMMENDED),
@@ -217,9 +215,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 /obj/effect/essentials_set/engi
 	spawned_gear_list = list(
 		/obj/item/explosive/plastic,
-		/obj/item/stack/sandbags_empty = 25,
-		/obj/item/stack/sheet/metal/large_stack,
-		/obj/item/stack/sheet/plasteel/med_large_stack,
+		/obj/item/stack/sandbags_empty = 50,
+		/obj/item/stack/sandbags_empty/half,
+		/obj/item/stack/sheet/metal/med_small_stack,
 		/obj/item/circuitboard/apc,
 		/obj/item/cell/high,
 		/obj/item/tool/shovel/etool/folded,

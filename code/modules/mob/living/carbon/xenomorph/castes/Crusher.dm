@@ -188,7 +188,10 @@
 			src.visible_message(SPAN_DANGER("[src] smashes into [fence]!"))
 			fence.cut_grille()
 			. = TRUE
-
+	else if(istype(target, /obj/structure/fence/fob))
+		var/obj/structure/fence/fob/fence = target
+		if(fence.state == "on")
+			. = FALSE
 	// Anything else?
 	else
 		if (isobj(target))

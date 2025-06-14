@@ -86,3 +86,6 @@
 
 /// From /mob/living/carbon/human/UnarmedAttack()
 #define COMSIG_HUMAN_UNARMED_ATTACK "human_unarmed_attack"
+
+/// From /obj/structure/closet/bodybag/cryobag/close()
+#define COMSIG_HUMAN_TRIAGE_CARD_UPDATED "human_triage_card_updated"

@@ -584,8 +584,8 @@
 			if(empowered)
 				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
-			for (var/datum/effects/boiler_trap/F in H.effects_list)
-				if (F.cause_data && F.cause_data.resolve_mob() == linked_xeno)
+			for(var/datum/effects/boiler_trap/F in H.effects_list)
+				if(F.cause_data && F.cause_data.resolve_mob() == linked_xeno)
 					found = F
 					break
 			if(found)

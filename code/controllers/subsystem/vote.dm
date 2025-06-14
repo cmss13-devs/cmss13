@@ -389,7 +389,7 @@ CLIENT_VERB(vote)
 	set category = "OOC"
 	set name = "Vote"
 
-	SSvote.tgui_interact(src)
+	SSvote.tgui_interact(mob)
 
 /datum/controller/subsystem/vote/Topic(href, href_list)
 	. = ..()

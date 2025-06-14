@@ -37,6 +37,9 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 	check_logged_in()
 
+/mob/unauthenticated/set_logged_in_mob()
+	return FALSE
+
 /// Creates our authentication request, stores the code in the database and on us
 /mob/unauthenticated/proc/create_access_code_entity()
 	WAIT_DB_READY
@@ -92,15 +95,25 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 /// Switches the clients ckey, and continues the logging in
 /mob/unauthenticated/proc/log_in()
-	client.key = "Guest-Forums-[client.external_username]"
-	GLOB.permitted_guests |= client.key
+	// Grab our client from the directory based on the *old* Guest ckey
+	var/client/user = GLOB.directory[ckey]
+	GLOB.directory -= ckey
 
-	client.PreLogin()
+	user.key = "Guest-Forums-[user.external_username]"
+	GLOB.permitted_guests |= user.key
 
-	var/mob/new_player/new_mob = new()
-	new_mob.client = client
+	// Readd the client to the directory with the *new* Guest ckey
+	GLOB.directory[ckey] = user
 
-	winset(new_mob.client, "mainwindow.split", list("splitter" = "[cached_splitter_location]"))
+	close_unauthenticated_menu(user)
+
+	user.PreLogin()
+
+	var/mob/new_mob = GLOB.ckey_to_occupied_mob[user.ckey]
+	if(QDELETED(new_mob))
+		new_mob = new /mob/new_player()
+
+	new_mob.client = user
 
 	new_mob.client.PostLogin()
 
@@ -109,6 +122,8 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	set waitfor = FALSE
 
 	cached_splitter_location = winget(client, "mainwindow.split", "splitter")
+	if(cached_splitter_location == "100")
+		cached_splitter_location = "50"
 
 	winset(client, null, list(
 		"mainwindow.split.splitter" = "100",
@@ -126,6 +141,17 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	)
 
 	tgui_interact(src)
+
+/mob/unauthenticated/proc/close_unauthenticated_menu(client/to_close)
+	set waitfor = FALSE
+
+	winset(to_close, null, list(
+		"mainwindow.split.splitter" = cached_splitter_location,
+		"mapwindow.lobby_browser.is-disabled" = "true",
+		"mapwindow.lobby_browser.is-visible" = "false",
+		"mapwindow.status_bar.is-visible" = "true",
+	))
+
 
 /mob/unauthenticated/tgui_interact(mob/user, datum/tgui/ui)
 	. = ..()

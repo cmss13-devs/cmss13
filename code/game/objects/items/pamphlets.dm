@@ -54,6 +54,12 @@
 	icon_state = "pamphlet_medical"
 	trait = /datum/character_trait/skills/medical
 
+/obj/item/pamphlet/skill/science
+	name = "scientific instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a scientific insignia."
+	icon_state = "pamphlet_science"
+	trait = /datum/character_trait/skills/science
+
 /obj/item/pamphlet/skill/engineer
 	name = "engineer instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia."

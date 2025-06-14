@@ -56,6 +56,11 @@
 	desc = "A sturdy pair of leather shoes."
 	icon_state = "leather"
 
+/obj/item/clothing/shoes/leather/fancy
+	name = "fancy leather shoes"
+	desc = "A fancy pair of leather shoes."
+	icon_state = "fancy"
+
 /obj/item/clothing/shoes/rainbow
 	name = "rainbow shoes"
 	desc = "Very gay shoes."

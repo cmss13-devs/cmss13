@@ -99,6 +99,12 @@
 	)
 	flags_armor_protection = 0
 
+/obj/item/clothing/head/straw
+	name = "\improper straw hat"
+	icon_state = "strawhat"
+	item_state = "strawhat"
+	desc = "A weathered straw hat with a brown leather band around the crown. It looks perfect for sunny days and long afternoons in the fields."
+
 //stylish bs12 hats
 
 /obj/item/clothing/head/bowlerhat
@@ -197,3 +203,9 @@
 	flags_inv_hide = HIDEALLHAIR
 	siemens_coefficient = 2
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+
+/obj/item/clothing/head/foil
+	name = "foil hat"
+	desc = "Keeps the government, aliens, and your in-laws from reading your thoughts. Probably."
+	icon_state = "foil"
+	item_state = "foil"

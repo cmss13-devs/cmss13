@@ -38,7 +38,7 @@
 		/obj/item/storage/box/explosive_mines/satchel_charges,
 		/obj/item/storage/box/explosive_mines/satchel_charges,
 	)
-	cost = 10
+	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
 	containername = "\improper explosive M17 charges crate (WARNING)"
 	group = "Explosives"

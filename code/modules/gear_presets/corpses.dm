@@ -757,7 +757,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 
 //*****************************************************************************************************/
 
@@ -782,7 +782,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 
 /datum/equipment_preset/corpse/pmc/goon/lead/burst
 	name = "Corpse - Burst Weyland-Yutani Corporate Security Lead (Goon Lead)"
@@ -812,7 +812,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 
 
 //*****************************************************************************************************/
@@ -1097,7 +1097,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/vp78, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/wy, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/p90, WEAR_IN_L_STORE)
@@ -1128,7 +1128,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/baton, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/vp78, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/wy/pmc_p90, WEAR_L_STORE)
 
 /datum/equipment_preset/corpse/pmc/hybrisa_goon/lead/burst

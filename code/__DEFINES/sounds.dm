@@ -86,8 +86,10 @@
 #define SOUND_ECHO_REVERB_OFF list(0, 0, -10000, -10000, 0, 0.0, 0, 0.25, 1.5, 1.0, 0, 1.0, 0, 0.0, 0.0, 0.0, 1.0, 0) //-10000 to Room & RoomHF makes enviromental reverb effectively inaudible
 
 #define AMBIENCE_SHIP 'sound/ambience/shipambience.ogg'
+#define AMBIENCE_SHIP_ALT 'sound/ambience/shipambience1.ogg'
 #define AMBIENCE_JUNGLE 'sound/ambience/ambienceLV624.ogg'
 #define AMBIENCE_JUNGLEMOON 'sound/ambience/junglemoon.ogg'
+#define AMBIENCE_JUNGLE_ALT 'sound/ambience/ambience_strata.ogg'
 #define AMBIENCE_RIVER  'sound/ambience/ambienceriver.ogg'
 #define AMBIENCE_MALL 'sound/ambience/medbay1.ogg'
 #define AMBIENCE_CAVE 'sound/ambience/desert.ogg'

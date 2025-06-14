@@ -352,6 +352,7 @@
 	var/creation_time = 0
 
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
@@ -735,10 +736,17 @@
 
 	QDEL_NULL(iff_tag)
 
+	QDEL_NULL(ai_movement_handler)
+
 	if(hardcore)
 		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
 
 	return ..()
+
+/mob/living/carbon/xenomorph/Moved(atom/oldloc, direction, Forced)
+	. = ..()
+	if(!client) // We are not, in fact, counted steps for AI xeno in /client/Move()
+		life_steps_total++
 
 /mob/living/carbon/xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
 	return FALSE

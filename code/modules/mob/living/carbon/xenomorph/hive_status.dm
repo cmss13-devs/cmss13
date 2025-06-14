@@ -472,8 +472,8 @@
 /datum/hive_status/proc/get_xeno_icons()
 	// Must match hardcoded xeno counts order.
 	var/list/xeno_icons = list(
-		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = ""),
-		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = ""),
+		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = "", XENO_CASTE_PREDALIEN_LARVA = "", XENO_CASTE_HELLHOUND = ""),
+		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = "", XENO_CASTE_PREDALIEN = ""),
 		list(XENO_CASTE_HIVELORD = "", XENO_CASTE_BURROWER = "", XENO_CASTE_CARRIER = "", XENO_CASTE_LURKER = "", XENO_CASTE_SPITTER = "", XENO_CASTE_WARRIOR = ""),
 		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "")
 	)
@@ -1089,9 +1089,12 @@
 	return hit_larva_pylon_limit
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
-/datum/hive_status/proc/increase_larva_after_burst()
+/datum/hive_status/proc/increase_larva_after_burst(is_nested)
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
 	partial_larva += extra_per_burst
+	if(is_nested)
+		var/extra_per_nested_burst = CONFIG_GET(number/extra_larva_per_nested_burst)
+		partial_larva += extra_per_nested_burst
 	convert_partial_larva_to_full_larva()
 
 ///Called after times when partial larva are added to process them to stored larva

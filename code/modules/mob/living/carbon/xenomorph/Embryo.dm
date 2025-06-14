@@ -82,6 +82,11 @@
 	if(hivenumber == XENO_HIVE_TUTORIAL)
 		return
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+
+	var/is_nested = HAS_TRAIT(affected_mob, TRAIT_NESTED)
+	if(is_nested && !(affected_mob.stat & DEAD) && stage <= 3 && affected_mob.reagents && affected_mob.reagents.get_reagent_amount("host_stabilizer") < 1)
+		affected_mob.reagents.add_reagent("host_stabilizer", 1)
+
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < BODYTEMP_CRYO_LIQUID_THRESHOLD)
@@ -89,7 +94,7 @@
 				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
 			if(stage == 4) // Stasis affects late-stage less
 				counter += 0.11 * hive.larva_gestation_multiplier * delta_time
-		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
+		else if(is_nested) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
 			counter += 1.5 * hive.larva_gestation_multiplier * delta_time //Currently twice as much, can be changed
 		else
 			if(stage < 5)
@@ -248,8 +253,8 @@
 
 	if(hive)
 		hive.add_xeno(new_xeno)
-		if(!affected_mob.first_xeno && hive.hive_location)
-			hive.increase_larva_after_burst()
+		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob))
+			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
 
 	new_xeno.update_icons()

@@ -17,6 +17,9 @@
         "/datum/equipment_preset/survivor/flight_control_operator",
         "/datum/equipment_preset/survivor/civilian"
     ],
+    "CO_survivor_types": [
+        "/datum/equipment_preset/survivor/cmb/co"
+    ],
     "defcon_triggers": [
         4750,
         3500,

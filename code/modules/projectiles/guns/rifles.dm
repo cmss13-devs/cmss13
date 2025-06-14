@@ -34,16 +34,10 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	can_jam = TRUE
-	initial_jam_chance = GUN_JAM_CHANCE_FAIR
-	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
-	durability_loss = GUN_DURABILITY_LOSS_HIGH
 
 /obj/item/weapon/gun/rifle/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else
-		cock(user)
+	cock(user)
+
 
 //-------------------------------------------------------
 //M41A PULSE RIFLE
@@ -463,9 +457,6 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
-	initial_jam_chance = GUN_JAM_CHANCE_MEDIUM // some lore nerd is gonna yell at my ear saying that the mk1 is a beautiful piece of machinery that never jams
-	unjam_chance = GUN_UNJAM_CHANCE_FAIR
-	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE
 
 /obj/item/weapon/gun/rifle/m41aMK1/ap //for making it start with ap loaded
 	current_mag = /obj/item/ammo_magazine/rifle/m41aMK1/ap
@@ -604,10 +595,10 @@
 		is_locked = FALSE
 
 /obj/item/weapon/gun/rifle/m46c/pickup(user)
+	. = ..()
 	if(!linked_human)
 		name_after_co(user)
 		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
-	..()
 
 //---ability actions--\\
 
@@ -896,7 +887,6 @@
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/bipod,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/scope/slavic,
 	)
@@ -907,6 +897,8 @@
 		/obj/item/attachable/scope/slavic,
 		/obj/item/attachable/magnetic_harness,
 	)
+	random_spawn_under = list() //prevents equiping invalid attachments from base
+	random_spawn_muzzle = list()
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 	hud_offset = -4
@@ -928,13 +920,10 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	recoil = RECOIL_AMOUNT_TIER_5
-	initial_jam_chance = GUN_JAM_CHANCE_HIGH
-	unjam_chance = GUN_UNJAM_CHANCE_FAIR
-	durability_loss = GUN_DURABILITY_LOSS_DESTRUCTIVE
 
 /obj/item/weapon/gun/rifle/mar40/lmg/tactical
 	desc = "A cheap, reliable LMG chambered in 7.62x39mm. Commonly found in the hands of slightly better funded criminals. This one has been equipped with an after-market ammo-counter."
-	starting_attachment_types = list(/obj/item/attachable/bipod, /obj/item/attachable/magnetic_harness)
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
 	flags_gun_features = GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
 //-------------------------------------------------------
 //M16 RIFLE
@@ -1436,9 +1425,6 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_1
-	initial_jam_chance = GUN_JAM_CHANCE_SEVERE
-	unjam_chance = GUN_UNJAM_CHANCE_MEDIUM
-	durability_loss = GUN_DURABILITY_LOSS_CRITICAL
 
 
 /obj/item/weapon/gun/rifle/lmg/tactical
@@ -1812,8 +1798,6 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
-	durability_loss = GUN_DURABILITY_LOSS_FAIR
-	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/rifle/m4ra/training
 	current_mag = /obj/item/ammo_magazine/rifle/m4ra/rubber
@@ -1893,8 +1877,6 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
-	durability_loss = GUN_DURABILITY_LOSS_LOW
-	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/rifle/l42a/training
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
@@ -2007,7 +1989,6 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
-	durability_loss = GUN_DURABILITY_LOSS_LOW
 
 //=ROYAL MARINES=\\
 
@@ -2228,9 +2209,9 @@
 	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
-	recoil = RECOIL_AMOUNT_TIER_4 + RECOIL_AMOUNT_TIER_5/5
-	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_2_5
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
 	damage_falloff_mult = 0
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 
@@ -2286,7 +2267,7 @@
 	scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
@@ -2505,8 +2486,6 @@
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_6
-	durability_loss = GUN_DURABILITY_LOSS_CRITICAL
-	jam_threshold = GUN_DURABILITY_MAX
 
 /obj/item/weapon/gun/rifle/xm51/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -2522,16 +2501,13 @@
 	))
 
 /obj/item/weapon/gun/rifle/xm51/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else
-		if(!COOLDOWN_FINISHED(src, allow_pump))
-			return
-		if(in_chamber)
-			if(COOLDOWN_FINISHED(src, allow_message))
-				to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
-				COOLDOWN_START(src, allow_message, message_delay)
-			return
+	if(!COOLDOWN_FINISHED(src, allow_pump))
+		return
+	if(in_chamber)
+		if(COOLDOWN_FINISHED(src, allow_message))
+			to_chat(usr, SPAN_WARNING("<i>[src] already has a shell in the chamber!<i>"))
+			COOLDOWN_START(src, allow_message, message_delay)
+		return
 
 	playsound(user, pump_sound, 10, 1)
 	COOLDOWN_START(src, allow_pump, pump_delay)

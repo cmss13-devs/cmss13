@@ -59850,6 +59850,7 @@
 	pixel_x = 3;
 	pixel_y = -2
 	},
+/obj/item/folded_tent/mess,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "ssU" = (

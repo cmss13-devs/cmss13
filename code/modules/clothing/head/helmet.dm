@@ -805,6 +805,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 
 /obj/item/clothing/head/helmet/marine/welding
 	name = "\improper M10 welding helmet"
@@ -1118,8 +1119,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
 
 /obj/item/clothing/head/helmet/marine/MP/provost/marshal
-	name = "\improper Provost Marshal Cap"
-	desc = "The expensive headwear of a Provost Marshal. Contains shards of kevlar to keep its valuable contents safe."
+	name = "\improper M10 pattern MP riot helmet"
+	desc = "A variant of the M10 for the Military Police deployed to deal with riots, often worn by MPs from the Provost Office."
 	icon_state = "pvmarshalhat"
 	item_state = "pvmarshalhat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'

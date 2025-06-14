@@ -8,7 +8,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH_K9
-	rank = "Synthetic K9"
+	job_title = JOB_SYNTH_K9
 	paygrades = list(PAY_SHORT_SYN_K9 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "K9"
 

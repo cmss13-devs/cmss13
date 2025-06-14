@@ -2,7 +2,7 @@
 /datum/equipment_preset/pmc
 	name = "PMC"
 	faction = FACTION_PMC
-	rank = FACTION_PMC
+	job_title = FACTION_PMC
 	idtype = /obj/item/card/id/pmc
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
@@ -62,7 +62,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_STANDARD
-	rank = JOB_PMC_STANDARD
+	job_title = JOB_PMC_STANDARD
 	minimap_icon = "pmc_gun"
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
@@ -244,7 +244,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_DETAINER
-	rank = JOB_PMC_DETAINER
+	job_title = JOB_PMC_DETAINER
 	minimap_icon = "pmc_mp"
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
@@ -378,7 +378,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_CROWD_CONTROL
-	rank = JOB_PMC_CROWD_CONTROL
+	job_title = JOB_PMC_CROWD_CONTROL
 	minimap_icon = "pmc_riot"
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
@@ -436,7 +436,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_MEDIC
-	rank = JOB_PMC_MEDIC
+	job_title = JOB_PMC_MEDIC
 	minimap_icon = "pmc_md"
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CM"
@@ -625,7 +625,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_INVESTIGATOR
-	rank = JOB_PMC_INVESTIGATOR
+	job_title = JOB_PMC_INVESTIGATOR
 	minimap_icon = "pmc_mi"
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc/medic/chem
@@ -816,7 +816,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_LEADER
-	rank = JOB_PMC_LEADER
+	job_title = JOB_PMC_LEADER
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 
@@ -976,7 +976,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_LEAD_INVEST
-	rank = JOB_PMC_LEAD_INVEST
+	job_title = JOB_PMC_LEAD_INVEST
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 	minimap_icon = "cia_lo"
@@ -1123,7 +1123,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_GUNNER
-	rank = JOB_PMC_GUNNER
+	job_title = JOB_PMC_GUNNER
 	paygrades = list(PAY_SHORT_PMC_SS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SG"
 
@@ -1234,7 +1234,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_SNIPER
-	rank = JOB_PMC_SNIPER
+	job_title = JOB_PMC_SNIPER
 	paygrades = list(PAY_SHORT_PMC_WS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Spc"
 	minimap_icon = "pmc_spec"
@@ -1358,7 +1358,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_CREWMAN
-	rank = JOB_PMC_CREWMAN
+	job_title = JOB_PMC_CREWMAN
 	minimap_icon = "pmc_vc"
 	paygrades = list(PAY_SHORT_PMC_VS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc/tank_crew
@@ -1493,7 +1493,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_DOCTOR
-	rank = JOB_PMC_DOCTOR
+	job_title = JOB_PMC_DOCTOR
 	paygrades = list(PAY_SHORT_PMC_DOC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SGN"
 
@@ -1673,7 +1673,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_ENGINEER
-	rank = JOB_PMC_ENGINEER
+	job_title = JOB_PMC_ENGINEER
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TEC"
 
@@ -1836,7 +1836,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	languages = ALL_HUMAN_LANGUAGES
 
 	assignment = JOB_PMC_DIRECTOR
-	rank = JOB_PMC_DIRECTOR
+	job_title = JOB_PMC_DIRECTOR
 	paygrades = list(PAY_SHORT_PMC_DIR = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "DIR"
 	skills = /datum/skills/pmc/director
@@ -1879,7 +1879,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	skills = /datum/skills/synthetic
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
-	rank = JOB_PMC_SYNTH
+	job_title = JOB_PMC_SYNTH
 	minimap_icon = "pmc_syn"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"

@@ -2,7 +2,7 @@
 	name = "Yautja"
 	idtype = null //No IDs for Yautja!
 	languages = list(LANGUAGE_YAUTJA)
-	rank = "Predator"
+	job_title = "Predator"
 	faction = FACTION_YAUTJA
 	faction_group = FACTION_LIST_YAUTJA
 	uses_special_name = TRUE
@@ -24,7 +24,7 @@
 		new_human.skin_color = mob_client.prefs.predator_skin_color
 
 /datum/equipment_preset/yautja/load_id(mob/living/carbon/human/new_human)
-	new_human.job = rank
+	new_human.job = job_title
 	new_human.faction = faction
 	new_human.faction_group = faction_group
 
@@ -144,7 +144,7 @@
 /datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
 	name = "Yautja Young (non-WL)"
 	minimap_icon = "predator_young"
-	rank = "Young Blood"
+	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
@@ -156,7 +156,7 @@
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
 	name = "Yautja Youngblood pack leader (non-WL)"
 	minimap_icon = "predator_young"
-	rank = "Young Blood"
+	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 

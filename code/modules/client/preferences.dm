@@ -101,6 +101,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	//Synthetic specific preferences
 	var/synthetic_name = "Undefined"
 	var/synthetic_type = SYNTH_GEN_THREE
+	var/synth_specialisation = "Generalised"
 	//Predator specific preferences.
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
@@ -537,6 +538,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				dat += "<b>Synthetic Name:</b> <a href='byond://?_src_=prefs;preference=synth_name;task=input'><b>[synthetic_name]</b></a><br>"
 				dat += "<b>Synthetic Type:</b> <a href='byond://?_src_=prefs;preference=synth_type;task=input'><b>[synthetic_type]</b></a><br>"
 				dat += "<b>Synthetic Whitelist Status:</b> <a href='byond://?_src_=prefs;preference=synth_status;task=input'><b>[synth_status]</b></a><br>"
+				dat += "<b>Synthetic Specialisation:</b> <a href='byond://?_src_=prefs;preference=synth_specialisation;task=input'><b>[synth_specialisation]</b></a><br>"
 				dat += "</div>"
 			else
 				dat += "<b>You do not have the whitelist for this role.</b>"
@@ -1275,6 +1277,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 							var/datum/action/human_action/activable/ability = human.selected_ability
 							human.set_selected_ability(null)
 							human.set_selected_ability(ability)
+
 				if("synth_name")
 					var/raw_name = input(user, "Choose your Synthetic's name:", "Character Preference")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)
@@ -1287,6 +1290,16 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_synth_type = tgui_input_list(user, "Choose your model of synthetic:", "Make and Model", PLAYER_SYNTHS)
 					if(new_synth_type)
 						synthetic_type = new_synth_type
+				if("synth_specialisation")
+					var/list/options = list("Generalised", "Engineering", "Medical", "Intel", "MP", "Command")
+
+					var/new_specialisation = tgui_input_list(user, "Choose your new Specialisation.", "Specialisation", options)
+
+					if(!new_specialisation)
+						return
+
+					synth_specialisation = new_specialisation
+
 				if("pred_name")
 					var/raw_name = input(user, "Choose your Predator's name:", "Character Preference")  as text|null
 					if(raw_name) // Check to ensure that the user entered text (rather than cancel.)

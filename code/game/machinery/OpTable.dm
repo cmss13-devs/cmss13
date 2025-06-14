@@ -96,8 +96,13 @@
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
+
+	if(!H.has_limb("head"))
+		to_chat(user, SPAN_WARNING("The patient has no head to attach the mask to!"))
+		return
+
 	H.visible_message(SPAN_NOTICE("[user] begins to connect [H] to the anesthetic system."))
-	if(!do_after(user, 25, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+		if(!do_after(user, 25, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 		to_chat(user, SPAN_NOTICE("You stop placing the mask on [H]'s face."))
 		return
 
@@ -107,6 +112,9 @@
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
+		if(!H.has_limb("head"))
+			to_chat(user, SPAN_WARNING("The patient has no head to attach the mask to!"))
+			return
 	if(H.wear_mask)
 		var/obj/item/mask = H.wear_mask
 		if(mask.flags_inventory & CANTSTRIP)

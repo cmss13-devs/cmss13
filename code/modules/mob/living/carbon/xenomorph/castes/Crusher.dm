@@ -95,6 +95,13 @@
 		vehicle_in_path.Collided(src)
 		. = FALSE
 
+	else if (istype(target, /obj/vehicle/rx47_mech))
+		var/obj/vehicle/rx47_mech/mech_in_path = target
+		visible_message(SPAN_DANGER("[src] rams into [mech_in_path] and skids to a halt!"), SPAN_XENOWARNING("We ram into [mech_in_path] and skid to a halt!"))
+
+		mech_in_path.Collided(src)
+		. = FALSE
+
 	else if (istype(target, /obj/structure/machinery/m56d_hmg))
 		var/obj/structure/machinery/m56d_hmg/weapon_in_path = target
 		visible_message(SPAN_DANGER("[src] rams [weapon_in_path]!"), SPAN_XENODANGER("We ram [weapon_in_path]!"))

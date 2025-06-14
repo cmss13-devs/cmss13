@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - rscadd: "New yautja weapon \"Chain Gauntlets\""
+  - rscadd: "New sprites for \"Chain Gauntlets\""

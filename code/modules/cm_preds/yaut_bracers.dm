@@ -77,7 +77,7 @@
 	..()
 
 /obj/item/clothing/gloves/yautja/pickup(mob/living/user)
-	..()
+	. = ..()
 	if(!isyautja(user))
 		to_chat(user, SPAN_WARNING("The bracer feels cold against your skin, heavy with an unfamiliar, almost alien weight."))
 

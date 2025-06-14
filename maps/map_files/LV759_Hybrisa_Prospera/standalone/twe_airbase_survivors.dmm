@@ -1,0 +1,6350 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 7
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = -14;
+	pixel_x = -4
+	},
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/obj/item/trash/burger,
+/turf/open/floor/almayer/blackfull/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ab" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_x = -1
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ac" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/darkred2/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ad" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/stack/folding_barricade,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ae" = (
+/obj/structure/machinery/door_control{
+	id = "twe_hangar_lockdown";
+	name = "Flight Control - Lockdown";
+	pixel_y = 30;
+	pixel_x = 1;
+	layer = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"af" = (
+/obj/item/trash/twe_mre,
+/obj/item/ammo_box{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/lv759/indoors/twe_souter_outpost)
+"ag" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	layer = 2.5;
+	dir = 1
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"ah" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"aj" = (
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"am" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"ao" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"at" = (
+/obj/structure/machinery/vending/dinnerware,
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	dir = 1;
+	name = "rubber mat";
+	pixel_x = -3;
+	pixel_y = -26
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"au" = (
+/obj/structure/largecrate/supply{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"aw" = (
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"aA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_x = 12;
+	pixel_y = 25
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"aC" = (
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/prison/red/west,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"aM" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"aT" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe3{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"bc" = (
+/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"be" = (
+/obj/structure/reagent_dispensers/water_cooler{
+	pixel_x = 11;
+	pixel_y = 3;
+	density = 0
+	},
+/obj/item/trash/twe_mre,
+/turf/open/floor/almayer/blackfull/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"bk" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"bp" = (
+/obj/effect/landmark/survivor_spawner/twe/iasf/engi,
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/almayer/plating_striped/north,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"br" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = 9;
+	pixel_y = 42
+	},
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"bw" = (
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 9;
+	pixel_y = 17
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	name = "TWE coffee mug";
+	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty.";
+	pixel_y = -3;
+	pixel_x = -9
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/red,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"bB" = (
+/obj/structure/machinery/mech_bay_recharge_port{
+	name = "Power Port"
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/almayer/orangefull,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"bD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"bE" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/tool/weldingtool/hugetank,
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/almayer/black/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"bG" = (
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/central_streets)
+"bN" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	pixel_x = -5;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = 16;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"bP" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,7"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"bQ" = (
+/obj/structure/bed/chair/vehicle/white{
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = 1;
+	buckle_offset_x = 6;
+	buckle_offset_y = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"bT" = (
+/obj/item/ammo_box/magazine/p90/empty{
+	pixel_x = -4;
+	pixel_y = -6
+	},
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/strata/red3/west,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"bU" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "1,1"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"bW" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 31;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"cc" = (
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"cg" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"ch" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "5,15"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"cn" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"co" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"cp" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_x = -18;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -15;
+	pixel_x = -1
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/trash/twe_mre,
+/obj/structure/bed/roller,
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"cz" = (
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"cA" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/prop/alien/hugger,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"cV" = (
+/obj/structure/machinery/light/small{
+	pixel_x = -16
+	},
+/obj/item/book/codebook/twe{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/turf/open/floor/strata/red3,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"cW" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"cX" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "7,2"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"cZ" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	pixel_y = 1
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/prison/darkred2/southwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"da" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -18;
+	pixel_y = 6
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"dc" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"dd" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/bed/stool{
+	pixel_x = -6;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"dg" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"dn" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_y = 22;
+	pixel_x = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/darkred2/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"dq" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"dv" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"dx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"dy" = (
+/obj/item/prop/colony/usedbandage{
+	name = "bandages";
+	layer = 4;
+	pixel_x = -10;
+	pixel_y = 19
+	},
+/obj/item/attachable/bayonet/rmc{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/prop/colony/usedbandage{
+	name = "bandages";
+	layer = 4;
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/obj/item/prop/colony/usedbandage{
+	name = "bandages";
+	layer = 4;
+	pixel_x = -16;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/darkpurple2/north,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"dB" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalk/northeast,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"dD" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "6,1"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"dF" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/sign/poster/nspa{
+	pixel_y = 31;
+	pixel_x = -4
+	},
+/obj/structure/sign/poster/music{
+	pixel_x = 3;
+	pixel_y = 34
+	},
+/obj/item/ammo_box/magazine/misc/mre/twe{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"dI" = (
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "imperial_armory";
+	name = "Armory Lockdown";
+	needs_power = 0;
+	unacidable = 1;
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"dK" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"dN" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/black/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"dP" = (
+/turf/open/floor/prison/darkred2/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"dR" = (
+/obj/structure/barricade/deployable{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = -6
+	},
+/turf/open/floor/prison/darkred2/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"dS" = (
+/obj/effect/decal/hybrisa/TWE_logo_large/directional_1{
+	dir = 4;
+	pixel_x = 16;
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	health = 140;
+	icon_state = "folding_2";
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"dU" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"dW" = (
+/obj/structure/janitorialcart,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/metal/stripe_red/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"dY" = (
+/obj/structure/cargo_container/hybrisa/containersextended/blueright,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ef" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/tool/stamp{
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/red/east,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"en" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_one_access = null;
+	dir = 1;
+	name = "\improper UD4-UK"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"et" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	id = "twe_hangar_lockdown"
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"eu" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,4"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"ev" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,4"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"ew" = (
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"eD" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,6"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"eE" = (
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5;
+	dir = 4;
+	pixel_x = 2
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"eG" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,4"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"eK" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "3,11"
+	},
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,2"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"eN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"eO" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"eT" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/closed/shuttle/twe_dropship/transparent{
+	icon_state = "5,14_alt"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"eU" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"fb" = (
+/obj/structure/prop/hybrisa/misc/trash/green{
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"fg" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"fh" = (
+/obj/item/storage/box/teabags{
+	pixel_y = 9;
+	pixel_x = 21
+	},
+/obj/item/reagent_container/food/drinks/sillycup{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/structure/surface/table/reinforced/black,
+/obj/item/ammo_box/magazine/misc/mre/twe,
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"fi" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_6{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"fn" = (
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/almayer/plating_striped/north,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"fp" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,6"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"fq" = (
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"fs" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,4"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"ft" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"fv" = (
+/obj/structure/bed/chair/office/light,
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 3.3;
+	color = "#a6aeab"
+	},
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"fw" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "8,6"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"fB" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"fE" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"fG" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "souter_outside_west";
+	name = "\improper Emergency Exit";
+	vehicle_resistant = 1;
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"fK" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/structure/bed/hybrisa/prisonbed{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"fQ" = (
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"fT" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/floor/prison/darkred2/northeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"fU" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 20;
+	pixel_y = 15
+	},
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"fX" = (
+/obj/effect/spawner/random/toolbox{
+	layer = 4;
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"fZ" = (
+/turf/template_noop,
+/area/template_noop)
+"ga" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"gb" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"gc" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_y = 25;
+	pixel_x = -7
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"gf" = (
+/obj/item/shard,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"gh" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"gj" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "7,1"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"gk" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 2;
+	pixel_y = 31
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 13;
+	pixel_y = 31
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/strata,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = -3;
+	pixel_y = 19
+	},
+/turf/open/floor/prison/darkred2/southwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"gs" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"gv" = (
+/obj/item/frame/rack{
+	color = "#848484"
+	},
+/turf/open/floor/strata/red3,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"gA" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"gD" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "1,11"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"gX" = (
+/obj/item/stack/sheet/cardboard,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"gY" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "7,3"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"gZ" = (
+/obj/structure/bed/hybrisa/bunkbed2,
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"ha" = (
+/obj/structure/machinery/disposal{
+	pixel_x = -1
+	},
+/obj/structure/sign/safety/bathunisex{
+	pixel_x = 1;
+	pixel_y = -25
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_y = 12
+	},
+/obj/structure/machinery/door_control{
+	id = "twe_hangar_lockdown";
+	name = "Flight Control - Lockdown";
+	pixel_y = 9;
+	pixel_x = 24;
+	layer = 4
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"hb" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"hc" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"he" = (
+/obj/item/clothing/accessory/patch/twe,
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"hi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"hk" = (
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/darkred2/northeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"hm" = (
+/turf/closed/shuttle/twe_dropship/transparent{
+	icon_state = "3,13_alt"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"ho" = (
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"hp" = (
+/obj/structure/machinery/light,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 8;
+	pixel_y = -3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5
+	},
+/obj/item/ammo_box/magazine/misc/mre/twe/empty{
+	pixel_x = -11
+	},
+/turf/open/floor/almayer/floor,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"hq" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_one_access = null;
+	name = "\improper UD4-UK"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"hs" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,7"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"ht" = (
+/obj/structure/sign/safety/opens_up{
+	pixel_x = 31;
+	pixel_y = -12
+	},
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"hw" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"hy" = (
+/obj/structure/bedsheetbin{
+	pixel_y = 20
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/prison/darkpurple2,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"hA" = (
+/obj/structure/closet/crate{
+	color = "#98a3ab"
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 1;
+	pixel_y = 26
+	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/darkpurple2,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"hB" = (
+/obj/structure/bed/chair{
+	icon_state = "chair_alt";
+	pixel_x = -8;
+	pixel_y = 18
+	},
+/obj/structure/sign/poster/pinup{
+	pixel_x = 7;
+	pixel_y = 35
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"hE" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 8;
+	layer = 3
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"hJ" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "souter_east";
+	name = "\improper Lockdown";
+	vehicle_resistant = 1;
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"hL" = (
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/item/tool/screwdriver/tactical{
+	pixel_x = 6;
+	pixel_y = 7
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"hT" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "8,3"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"hY" = (
+/obj/structure/machinery/washing_machine{
+	pixel_y = 18;
+	density = 0
+	},
+/obj/item/clothing/under/marine/veteran/royal_marine/iasf,
+/turf/open/floor/prison/darkpurple2,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"ia" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"ie" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"ij" = (
+/obj/structure/machinery/door_control{
+	id = "hangar_storage_2";
+	name = "Hangar Inner Podlock";
+	pixel_y = 11;
+	pixel_x = -22
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = -6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"ik" = (
+/obj/structure/surface/rack{
+	color = "#848484"
+	},
+/turf/open/floor/strata/red4/east,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"io" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 9;
+	pixel_x = 5
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/prison/blue/southeast,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"iq" = (
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = 9;
+	pixel_y = 16;
+	buckle_offset_x = 9;
+	buckle_offset_y = 16
+	},
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = -7;
+	pixel_y = 16;
+	buckle_offset_x = -7;
+	buckle_offset_y = 16
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"iw" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"iy" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"iD" = (
+/obj/structure/window_frame/hybrisa/marshalls/reinforced,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost)
+"iP" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 5;
+	pixel_y = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"iW" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"jj" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "6,13";
+	density = 0;
+	pixel_x = -13;
+	pixel_y = -1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"jq" = (
+/obj/structure/sign/safety/east{
+	pixel_y = -30
+	},
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"jB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/trash/twe_mre,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"jL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/item/paper/crumpled,
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"jN" = (
+/obj/item/bedsheet/colorable{
+	dir = 4;
+	layer = 4.1;
+	color = "#81929f";
+	pixel_y = -4
+	},
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"kb" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"kc" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ke" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/shard,
+/turf/open/floor/prison/red/southwest,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"kf" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime3"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ki" = (
+/obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/prison/red/southeast,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"km" = (
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"kn" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"kq" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/open/floor/prison/darkred2/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"kt" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime3"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_y = 12
+	},
+/obj/item/tool/wet_sign{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/darkred2/southwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"kv" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"kG" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 4.1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"kK" = (
+/obj/structure/window_frame/hybrisa/marshalls/reinforced,
+/obj/item/shard,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"kP" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1;
+	welded = 1
+	},
+/obj/item/shard,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"kQ" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/shard,
+/turf/open/floor/prison/red/west,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"kU" = (
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/paper{
+	pixel_x = -4;
+	pixel_y = 21
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"kV" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "4,10"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"kW" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "2,0"
+	},
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"kY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"kZ" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "hangar_storage_2";
+	name = "\improper Lockdown";
+	vehicle_resistant = 1;
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"lf" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime2"
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4;
+	pixel_y = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"li" = (
+/obj/item/tool/pen/blue{
+	pixel_x = -9;
+	pixel_y = -2
+	},
+/turf/open/floor/prison/red/east,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"ln" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "2,13";
+	density = 0;
+	pixel_x = 13;
+	pixel_y = -1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"lp" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "3,15"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"lq" = (
+/obj/structure/machinery/computer/communications{
+	dir = 4;
+	pixel_y = 5
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/obj/item/reagent_container/food/drinks/coffee/cuppa_joes{
+	pixel_x = -20;
+	pixel_y = 3
+	},
+/obj/item/prop/tableflag/uscm{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"lD" = (
+/obj/structure/machinery/space_heater/radiator/red,
+/obj/structure/window/reinforced{
+	dir = 4;
+	layer = 3.3;
+	color = "#a6aeab"
+	},
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"lE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/structure/machinery/door_control{
+	id = "twe_hangar_lockdown";
+	name = "Flight Control - Lockdown";
+	pixel_y = 28;
+	layer = 4
+	},
+/obj/item/tool/pen/blue{
+	pixel_y = -8;
+	pixel_x = 5
+	},
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"lF" = (
+/obj/structure/machinery/door/airlock/hybrisa/generic/autoname{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"lH" = (
+/obj/structure/bed/stool{
+	pixel_x = -6;
+	pixel_y = 18
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"lK" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"lL" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_y = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"lN" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"lO" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"lU" = (
+/obj/item/paper{
+	pixel_y = 11;
+	pixel_x = -8
+	},
+/obj/structure/machinery/photocopier{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/prison/red/west,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"lW" = (
+/obj/structure/prop/hybrisa/airport/refuelinghose{
+	pixel_x = -16;
+	pixel_y = -9;
+	dir = 1;
+	layer = 3.1
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"mb" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = 17
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_y = 7
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = -6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"md" = (
+/obj/structure/cargo_container/hybrisa/containersextended/blueleft,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"me" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "0,7"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"mg" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"mh" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"mi" = (
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"mn" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"mt" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 10;
+	pixel_y = -8
+	},
+/turf/open/floor/prison/darkpurple2/north,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"mu" = (
+/obj/item/tool/kitchen/utensil/pfork,
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"mv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	icon_state = "wy_water_crushed"
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe3{
+	dir = 8
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"mw" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 1;
+	pixel_y = 26
+	},
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/obj/structure/closet/crate{
+	color = "#98a3ab"
+	},
+/obj/item/roller/bedroll,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/prison/darkpurple2,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"mx" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/prison/red/north,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"mD" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"mE" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"mI" = (
+/obj/item/paper/crumpled{
+	pixel_x = -14;
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"mL" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -6;
+	pixel_y = 19
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"mN" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/bed/hybrisa/bunkbed2{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"mP" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/obj/structure/machinery/faxmachine/twe{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 7;
+	pixel_y = -5
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 41
+	},
+/turf/open/floor/prison/red/northwest,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"mR" = (
+/obj/structure/reagent_dispensers/water_cooler/walk_past{
+	pixel_x = 13;
+	pixel_y = 5
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 12
+	},
+/turf/open/floor/prison/red/northeast,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"mT" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "3,11"
+	},
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "6,2"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"mW" = (
+/obj/structure/machinery/newscaster{
+	pixel_y = 30
+	},
+/obj/item/stack/folding_barricade/three,
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"mZ" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 15;
+	pixel_y = 2
+	},
+/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"nd" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"nj" = (
+/obj/item/clothing/gloves/marine/veteran/insulated{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"nk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/turf/open/floor/almayer/floor,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"nl" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -5;
+	pixel_y = 22
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"ns" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32;
+	pixel_x = -4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2
+	},
+/obj/item/tool/wet_sign{
+	pixel_x = -11;
+	pixel_y = 21
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4;
+	pixel_y = 8
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/item/storage/firstaid/regular/empty{
+	pixel_x = -11;
+	pixel_y = -6
+	},
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"nt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/item/trash/twe_mre,
+/obj/item/ammo_box/magazine/misc/mre/twe{
+	pixel_x = -12;
+	pixel_y = 9
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"ny" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32;
+	pixel_x = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 2
+	},
+/obj/structure/bed/bedroll{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop/colony/usedbandage{
+	dir = 9
+	},
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"nB" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/blue/northeast,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"nC" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/structure/sign/banners/twe_flag{
+	pixel_y = 28
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"nD" = (
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"nG" = (
+/obj/structure/toilet{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/structure/machinery/light/small{
+	pixel_x = -16
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime3";
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 8
+	},
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"nI" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	pixel_y = 25
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"nO" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = -15
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"nP" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"nS" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"nT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"nX" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"nZ" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt";
+	pixel_x = -4;
+	pixel_y = 3;
+	layer = 2.8
+	},
+/turf/open/floor/prison/darkpurple2/north,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"od" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "1,2"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"oh" = (
+/obj/structure/machinery/light,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/roller/bedroll,
+/turf/open/floor/prison/blue/southwest,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"oi" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 1;
+	pixel_y = 26
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/clipboard{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"om" = (
+/obj/structure/machinery/big_computers/computerblack/computer5,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off{
+	pixel_x = 3;
+	pixel_y = 30
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"op" = (
+/obj/structure/machinery/big_computers/computerblack/computer4,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	icon_state = "bluemultimonitorbig_on";
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"or" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"ot" = (
+/obj/structure/machinery/big_computers/computerblack/computer3,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	icon_state = "bluemultimonitorbig_on";
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"ou" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ow" = (
+/obj/item/tool/mop{
+	pixel_y = 23
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid{
+	pixel_x = -9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/item/trash/twe_mre,
+/turf/open/floor/hybrisa/metal/stripe_red/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"oR" = (
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"pb" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"pc" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "1,12"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"pk" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "7,12"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"pn" = (
+/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"pv" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"pH" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/lv759/indoors/twe_souter_outpost)
+"pK" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"pY" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 31;
+	pixel_x = 6
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/turf/open/floor/prison/darkred2/southwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"pZ" = (
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5;
+	pixel_y = -2
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"qe" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"qn" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = -6
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"qy" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 3.3;
+	color = "#a6aeab"
+	},
+/turf/open/floor/almayer/blackfull/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"qK" = (
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/ammo_box/magazine/misc/mre/twe{
+	pixel_x = -16;
+	pixel_y = 6
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/turf/open/floor/strata/red4/west,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"qW" = (
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -10;
+	pixel_y = 34
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red,
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt";
+	pixel_x = -4;
+	pixel_y = 3;
+	layer = 2.8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"qY" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ra" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"rg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	pixel_x = 10;
+	pixel_y = 14
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/obj/item/prop/colony/used_flare,
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"rl" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/central_streets)
+"rt" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/largecrate/empty/case/double,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ru" = (
+/obj/structure/largecrate/random/case/double,
+/obj/item/clothing/head/helmet/marine/veteran/iasf_beret{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"rR" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"rZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"sj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"sl" = (
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"sv" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"sx" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 10;
+	pixel_x = -2;
+	layer = 3.1
+	},
+/obj/structure/barricade/deployable{
+	dir = 8;
+	pixel_x = -5
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = -6;
+	layer = 3.11
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"sB" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"sH" = (
+/obj/structure/machinery/big_computers/computerblack/computer5,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_off{
+	pixel_x = -1;
+	pixel_y = 30
+	},
+/obj/item/prop/tableflag/uscm{
+	pixel_x = 12;
+	pixel_y = 17;
+	layer = 3.2;
+	name = "TWE table flag";
+	desc = "A miniature table flag bearing the insignia of the Three World Empire, representing the unity of Earth, Mars, and Titan."
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"sN" = (
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"sV" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"sZ" = (
+/obj/structure/machinery/door_control{
+	id = "hangar_storage_1";
+	name = "Hangar Outer Podlock";
+	pixel_y = -22;
+	pixel_x = -7
+	},
+/obj/structure/machinery/door_control{
+	id = "hangar_storage_2";
+	name = "Hangar Inner Podlock";
+	pixel_y = -22;
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"tf" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/bed/bedroll{
+	dir = 8
+	},
+/obj/item/prop/colony/usedbandage{
+	name = "bandages";
+	layer = 4;
+	pixel_x = -10;
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"tr" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = 4;
+	layer = 3.3;
+	pixel_y = 1
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"tt" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 9
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"tE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 1;
+	pixel_y = 6;
+	buckling_y = 6
+	},
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"tH" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/turf/closed/shuttle/twe_dropship/transparent{
+	icon_state = "3,14_alt"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"tK" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "7,0"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"tM" = (
+/obj/structure/machinery/computer/cameras{
+	dir = 1;
+	pixel_y = -11
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	name = "TWE coffee mug";
+	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty.";
+	pixel_y = 13;
+	pixel_x = -9
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"tP" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"tS" = (
+/obj/structure/cargo_container/wy/left,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"ui" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_x = 9;
+	name = "TWE coffee mug";
+	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty.";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"un" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"uz" = (
+/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"uD" = (
+/obj/structure/machinery/door_control{
+	id = "souter_east";
+	name = "Hangar Inner Podlock";
+	pixel_y = -22;
+	pixel_x = 7
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"uG" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/bed/hybrisa/bunkbed2{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"uH" = (
+/obj/item/tool/warning_cone{
+	layer = 4;
+	pixel_x = -20
+	},
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"uK" = (
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"uL" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"uS" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/colony_streets/central_streets)
+"ve" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1;
+	pixel_x = 20;
+	pixel_y = 16
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 10
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"vf" = (
+/obj/structure/machinery/door_control{
+	id = "imperial_armory";
+	name = "Armory Lockdown";
+	pixel_x = -22;
+	pixel_y = 5;
+	needs_power = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5;
+	dir = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/red4,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"vj" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 6;
+	pixel_y = 15
+	},
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/prison/darkpurple2/north,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"vI" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/item/spacecash/ewallet{
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"vL" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"vP" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "8,0";
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"wf" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"wk" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 3.3;
+	color = "#a6aeab"
+	},
+/obj/item/frame/rack{
+	color = "#848484";
+	layer = 3.4
+	},
+/turf/open/floor/almayer/blackfull/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"wJ" = (
+/obj/effect/decal/hybrisa/TWE_logo_large{
+	dir = 1;
+	pixel_x = 16;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"wL" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"wS" = (
+/obj/structure/sign/poster/ad{
+	pixel_y = 32
+	},
+/obj/structure/sign/poster/ad{
+	layer = 4;
+	pixel_x = 12;
+	pixel_y = 34
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/central_streets)
+"xb" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = 36;
+	pixel_y = -5
+	},
+/obj/structure/machinery/door_control{
+	id = "souter_west";
+	name = "Hangar Outer Podlock";
+	pixel_y = 10;
+	pixel_x = 23
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 22;
+	pixel_x = 3
+	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"xc" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"xd" = (
+/obj/effect/decal/hybrisa/TWE_logo_large/directional_1{
+	pixel_x = 16;
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/device/m56d_post,
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"xf" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_2";
+	pixel_x = 5;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"xl" = (
+/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"xp" = (
+/obj/structure/machinery/big_computers/computerblack/computer3{
+	pixel_y = -19;
+	layer = 2.9;
+	icon_state = "blacksensor_comp3_off"
+	},
+/turf/closed/shuttle/twe_dropship/transparent{
+	icon_state = "4,14"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"xs" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	icon_state = "wy_water_crushed"
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"xt" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = -6
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"xv" = (
+/obj/structure/cargo_container/wy/right,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"xD" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "0,8"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"xN" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"xS" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"yn" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"yq" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"yr" = (
+/obj/structure/surface/rack{
+	color = "#848484"
+	},
+/obj/item/fuel_cell,
+/obj/item/fuel_cell,
+/turf/open/floor/almayer/plating_striped,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"yE" = (
+/obj/structure/machinery/big_computers/messaging_server/black{
+	layer = 2.9
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"zj" = (
+/obj/item/parachute,
+/obj/item/parachute,
+/obj/item/parachute,
+/obj/item/parachute,
+/obj/item/parachute,
+/obj/item/parachute,
+/obj/item/parachute,
+/obj/item/parachute,
+/obj/structure/closet/crate/green,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"zo" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/item/ammo_magazine/smg/p90/twe{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"zr" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	dir = 1;
+	name = "rubber mat";
+	pixel_y = -5;
+	pixel_x = 17
+	},
+/turf/open/floor/prison/blue/west,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"zJ" = (
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "2,12"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"zN" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"zR" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"zU" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 32;
+	pixel_y = -4
+	},
+/obj/structure/sign/safety/reception{
+	pixel_x = 32;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"zY" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/closed/shuttle/twe_dropship{
+	icon_state = "4,8"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"zZ" = (
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Ae" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"Ah" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 12
+	},
+/obj/item/trash/twe_mre,
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"Ai" = (
+/obj/effect/landmark/survivor_spawner/twe/iasf/pilot,
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"Ak" = (
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"Am" = (
+/obj/structure/machinery/door_control{
+	id = "souter_east";
+	name = "Hangar Inner Podlock";
+	pixel_x = -22;
+	pixel_y = 10
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = -6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Ao" = (
+/obj/structure/bed/chair/vehicle/white{
+	dir = 4;
+	pixel_x = -6;
+	pixel_y = 1;
+	buckle_offset_x = -6;
+	buckle_offset_y = 1
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"AL" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"AM" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"AN" = (
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_one_access = null;
+	dir = 1;
+	name = "\improper UD4-UK - cockpit"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"AO" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/bed/bedroll{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"AS" = (
+/obj/item/tool/pen/blue{
+	pixel_x = -9;
+	pixel_y = -2
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"AY" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/ammo_box{
+	pixel_x = 3;
+	pixel_y = 27
+	},
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Be" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Bf" = (
+/obj/structure/machinery/light/blue{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Bj" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
+/obj/structure/surface/rack{
+	color = "#848484"
+	},
+/obj/item/storage/backpack/rmc/light,
+/turf/open/floor/strata/red3/north,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"Bq" = (
+/obj/item/prop/colony/used_flare,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Bw" = (
+/obj/vehicle/powerloader{
+	layer = 5
+	},
+/turf/open/floor/mech_bay_recharge_floor,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"BD" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/structure/largecrate/random/barrel/black{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"BT" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"BW" = (
+/obj/structure/machinery/door_control{
+	id = "hangar_storage_1";
+	name = "Hangar Outer Podlock";
+	pixel_y = 10;
+	pixel_x = 23
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_10";
+	pixel_y = 22;
+	pixel_x = 2
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/darkred2/northwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"BY" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ca" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = -6
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 6
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"CE" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"CR" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime3";
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"CS" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/sign/safety/ammunition{
+	pixel_x = 16;
+	pixel_y = -24
+	},
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"CY" = (
+/obj/effect/decal/hybrisa/TWE_logo_large/directional_1{
+	dir = 10;
+	pixel_x = 16;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Dg" = (
+/obj/structure/largecrate/random/case/double,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5
+	},
+/turf/open/floor/almayer/floor,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Dh" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/obj/structure/reagent_dispensers/fueltank/spacecraft{
+	layer = 3.1
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Di" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Dm" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32;
+	pixel_x = 17
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Dw" = (
+/obj/structure/machinery/light/small,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_x = -7;
+	name = "TWE coffee mug";
+	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty.";
+	pixel_y = 9
+	},
+/obj/item/reagent_container/pill/teabag{
+	pixel_y = 11;
+	pixel_x = 6
+	},
+/obj/item/reagent_container/pill/teabag/earl_grey{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_x = 14;
+	name = "TWE coffee mug";
+	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty.";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	dir = 1;
+	name = "rubber mat";
+	pixel_x = 5;
+	pixel_y = -23
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Dx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 2
+	},
+/obj/structure/sign/banners/twe_flag{
+	pixel_y = 28
+	},
+/obj/structure/bed/bedroll{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"DA" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_x = 9;
+	pixel_y = 25
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"DC" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -5;
+	pixel_y = -4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"DD" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"DF" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"DM" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Ec" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Er" = (
+/obj/structure/disposalpipe/segment,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ey" = (
+/obj/structure/machinery/light,
+/obj/structure/cargo_container/hybrisa/containersextended/blueright,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"EC" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/central_streets)
+"EK" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"ER" = (
+/obj/structure/machinery/faxmachine/twe,
+/obj/item/paper,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"EX" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "4,1";
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"EY" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"EZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/obj/structure/sign/safety/distribution_pipes{
+	pixel_x = 7;
+	pixel_y = 31
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Fu" = (
+/obj/structure/sign/safety/water{
+	pixel_x = 32;
+	pixel_y = 7;
+	name = "showers semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of showers."
+	},
+/turf/open/floor/prison/darkred2/southwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"FA" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash,
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	dir = 1;
+	name = "rubber mat";
+	pixel_y = -5;
+	pixel_x = 17
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -9;
+	pixel_y = -2
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"FD" = (
+/obj/structure/prop/hybrisa/misc/cabinet{
+	dir = 8;
+	pixel_x = 6;
+	pixel_y = 14;
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = -7;
+	pixel_x = -6
+	},
+/obj/item/trash/hybrisa/cuppa_joes/empty_cup,
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"FH" = (
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"FZ" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ga" = (
+/obj/structure/window/framed/hybrisa/marshalls/reinforced,
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	layer = 3.2;
+	alpha = 220
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"Gl" = (
+/obj/item/device/flashlight/lamp/on{
+	pixel_x = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"Gn" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"Go" = (
+/obj/structure/bed/chair{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Gr" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4,
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/structure/disposalpipe/segment,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Gs" = (
+/obj/structure/machinery/disposal/delivery,
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Gt" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Gu" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/bed/hybrisa/bunkbed2{
+	dir = 8
+	},
+/obj/item/clothing/head/helmet/marine/veteran/iasf_beret{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"GD" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"GE" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"GI" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	icon_state = "grime3";
+	pixel_x = -10;
+	pixel_y = -2
+	},
+/obj/item/paper{
+	pixel_y = 11;
+	pixel_x = -8
+	},
+/obj/item/paper/crumpled,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"GM" = (
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"GN" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"GO" = (
+/obj/structure/machinery/door_control{
+	id = "souter_south";
+	name = "Emergency Exit Access";
+	pixel_y = -19;
+	pixel_x = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Hc" = (
+/obj/structure/machinery/light/small{
+	pixel_x = 16
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door_control{
+	id = "souter_west";
+	name = "Hangar Outer Podlock";
+	pixel_y = -22;
+	pixel_x = -7
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Hh" = (
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/structure/bed/hybrisa/bunkbed2,
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"Hm" = (
+/obj/structure/bed/hybrisa/bunkbed2{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"Hs" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/obj/item/stack/sandbags/small_stack,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ht" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Hy" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"HA" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"HQ" = (
+/obj/structure/window/framed/hybrisa/marshalls/reinforced,
+/obj/structure/curtain/colorable_transparent{
+	color = "#b3aa9b";
+	layer = 3.2;
+	alpha = 220
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"HU" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_25";
+	pixel_x = 12;
+	pixel_y = 20
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 10
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/medic,
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"HV" = (
+/obj/structure/surface/rack{
+	color = "#848484"
+	},
+/obj/item/storage/belt/marine/rmc{
+	pixel_y = -2
+	},
+/turf/open/floor/strata/red3/north,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"HW" = (
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_full_bl";
+	pixel_x = 8;
+	pixel_y = -2
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 9;
+	pixel_x = 2
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/lv759/indoors/twe_souter_outpost)
+"HX" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/hybrisa/misc/fake/wire/red,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -6
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Ii" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison/red/east,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"Ij" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"Iv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"IB" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_x = 3;
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"IC" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/sign/poster/nspa{
+	pixel_y = 33
+	},
+/obj/structure/sign/poster/nspa{
+	pixel_x = 8;
+	pixel_y = 36
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"IE" = (
+/obj/structure/machinery/newscaster{
+	pixel_y = 30
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"IJ" = (
+/obj/item/clothing/shoes/marine/royal_marine{
+	pixel_x = -5;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"IP" = (
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/obj/item/stack/sheet/cardboard,
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"IS" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Ja" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsright,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Jj" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Jl" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Jn" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/prop/colony/usedbandage{
+	dir = 10
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"Jp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Js" = (
+/obj/structure/machinery/space_heater/radiator/red,
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	color = "#a6aeab"
+	},
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"JD" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/trash/eat{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = -6
+	},
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28;
+	pixel_x = 6
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"JG" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	pixel_y = 25
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"JL" = (
+/obj/structure/machinery/washing_machine{
+	pixel_y = 18;
+	density = 0
+	},
+/obj/structure/machinery/washing_machine{
+	layer = 3.5;
+	pixel_y = 33;
+	density = 0
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"Kd" = (
+/obj/structure/window/framed/hybrisa/marshalls/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	id = "twe_hangar_lockdown"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"Kf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/metal/stripe_red/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Kl" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	pixel_y = 25
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Kx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5;
+	dir = 4;
+	pixel_x = 2
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid{
+	pixel_x = -9
+	},
+/obj/item/trash/twe_mre,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Kz" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"KI" = (
+/obj/item/shard,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"KK" = (
+/obj/structure/platform/metal/stair_cut/hybrisa_metal_right,
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 4
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv759/outdoors/colony_streets/central_streets)
+"KL" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/sign/safety/ammunition{
+	pixel_x = -1;
+	pixel_y = -24
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"KM" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"KN" = (
+/obj/structure/window/framed/hybrisa/marshalls/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"KS" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"KW" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/west,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	icon_state = "wy_water_crushed"
+	},
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+	dir = 5;
+	pixel_y = 34;
+	lazy_nodes = 0;
+	layer = 3;
+	pixel_x = 4
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"La" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/closet/bodybag,
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Lh" = (
+/obj/structure/machinery/light/small,
+/obj/structure/surface/rack{
+	color = "#848484"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/fuel_cell/used,
+/turf/open/floor/almayer/plating_striped,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"Li" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/deployable,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"LD" = (
+/obj/item/stack/sheet/cardboard{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/red3/east,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"LI" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Mg" = (
+/obj/effect/decal/hybrisa/TWE_logo_large/directional_1{
+	dir = 1;
+	pixel_x = 16;
+	pixel_y = 9
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Mp" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Mx" = (
+/obj/structure/closet/crate{
+	color = "#98a3ab"
+	},
+/obj/item/roller/bedroll,
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/clothing/under/marine/veteran/royal_marine/iasf,
+/obj/item/clothing/under/marine/veteran/royal_marine/iasf,
+/obj/item/clothing/under/marine/veteran/royal_marine/iasf,
+/obj/item/clothing/under/marine/veteran/royal_marine/iasf,
+/turf/open/floor/prison/darkpurple2/north,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"MH" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"MO" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 11
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"MP" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/prop/hybrisa/fakeplatforms/platform4{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"MW" = (
+/obj/effect/decal/hybrisa/TWE_logo_large/directional_1{
+	dir = 8;
+	pixel_x = 16;
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood,
+/obj/item/device/m56d_gun,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"MX" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red,
+/obj/structure/largecrate/random/case{
+	pixel_y = 10
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Nb" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/item/stack/rods,
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Nd" = (
+/obj/structure/machinery/door_control{
+	id = "imperial_armory";
+	name = "Armory Lockdown";
+	pixel_x = 23;
+	pixel_y = 5;
+	needs_power = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5;
+	dir = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/strata/red4/north,
+/area/lv759/indoors/twe_souter_outpost/armoury)
+"Nf" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	welded = 1
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"Nj" = (
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Nn" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Nw" = (
+/obj/structure/platform/metal/hybrisa/metalplatform6/north,
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"NO" = (
+/obj/structure/platform/metal/hybrisa/metalplatform1,
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/item/trash/eat{
+	pixel_x = 10;
+	pixel_y = 10
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"NV" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Om" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1;
+	pixel_y = 12
+	},
+/obj/effect/spawner/random/pills/midchance,
+/obj/item/tool/soap{
+	pixel_x = 5
+	},
+/obj/structure/curtain/open/colorable_transparent{
+	color = "#687d89";
+	alpha = 235
+	},
+/turf/open/floor/plating/plating_catwalk/aicore/white,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"OI" = (
+/obj/structure/largecrate/supply/supplies/mre/twe,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"OS" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 2;
+	pixel_y = 33
+	},
+/obj/structure/sign/safety/opens_up{
+	pixel_x = 14;
+	pixel_y = 33
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Pa" = (
+/obj/structure/sign/poster/music{
+	pixel_x = 3;
+	pixel_y = 34
+	},
+/obj/structure/sign/poster/ad{
+	pixel_x = 7;
+	pixel_y = 38;
+	layer = 3.2
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Pe" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Pg" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow2";
+	layer = 2.5;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Pm" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/bed/roller,
+/obj/effect/landmark/corpsespawner/hybrisa/civilian,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Pp" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Pz" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 4
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"PD" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 18;
+	layer = 4.2
+	},
+/obj/structure/machinery/floodlight/landing/floor,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = -1
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"PI" = (
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = -7;
+	pixel_y = 16;
+	buckle_offset_x = -7;
+	buckle_offset_y = 16
+	},
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = 9;
+	pixel_y = 16;
+	buckle_offset_x = 9;
+	buckle_offset_y = 16
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"PO" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"PR" = (
+/obj/item/prop/colony/usedbandage{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"PT" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 26;
+	pixel_x = -9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Qr" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/black/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Qt" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	pixel_y = 1
+	},
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/prison/darkred2/northeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Qv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9";
+	pixel_y = 13;
+	pixel_x = -7
+	},
+/obj/structure/sign/poster/corporate{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/central_streets)
+"QN" = (
+/obj/item/prop/almayer/comp_open{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#848484"
+	},
+/turf/open/floor/prison/blue/east,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"QR" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/reagent_container/food/drinks/cans/waterbottle{
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Rc" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "6,0"
+	},
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"Rj" = (
+/obj/structure/cargo_container/hybrisa/containersextended/blueleft,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Rl" = (
+/obj/item/ammo_box/magazine/p90/empty{
+	pixel_x = 4;
+	pixel_y = -9
+	},
+/obj/item/ammo_magazine/smg/p90/twe{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Rq" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "souter_west";
+	name = "\improper Lockdown";
+	vehicle_resistant = 1;
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Rt" = (
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Ru" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"RB" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"RD" = (
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/outdoors/colony_streets/central_streets)
+"RH" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"RK" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/bed/hybrisa/bunkbed2,
+/turf/open/floor/hybrisa/carpet/carpetdarkerblue,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"RM" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
+/turf/open/hybrisa/street/sidewalk/west,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"RT" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/darkred2/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Sk" = (
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -2
+	},
+/turf/open/hybrisa/street/sidewalk/southeast,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Sn" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "2,1"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"So" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 17
+	},
+/obj/item/tool/shovel/etool{
+	pixel_x = 12;
+	pixel_y = 3
+	},
+/obj/item/stack/sandbags_empty{
+	pixel_x = 5;
+	pixel_y = -10
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"SD" = (
+/obj/structure/barricade/sandbags/wired{
+	pixel_y = -2
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/turf/open/hybrisa/street/sidewalk/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"SH" = (
+/obj/structure/window_frame/hybrisa/marshalls/reinforced,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"SP" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"SW" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsleft,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Tb" = (
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Td" = (
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Tn" = (
+/obj/structure/prop/hybrisa/airport/refuelinghose2{
+	pixel_x = -17;
+	pixel_y = -9;
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Tt" = (
+/obj/structure/disposalpipe/tagger{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Tv" = (
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_y = 32
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5;
+	dir = 8;
+	pixel_x = -2
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Ty" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5;
+	dir = 8;
+	pixel_x = -2
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Tz" = (
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"TC" = (
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost)
+"TG" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/doubleroad/lines2{
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"TI" = (
+/turf/closed/shuttle/twe_dropship/transparent{
+	icon_state = "5,13_alt"
+	},
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"TJ" = (
+/obj/structure/surface/table/reinforced/black,
+/obj/item/clothing/accessory/patch/twe,
+/turf/open/floor/almayer,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"TN" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 19
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	pixel_x = 3;
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"TO" = (
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/road/lines3,
+/turf/open/hybrisa/street/asphalt,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"TW" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/central_streets)
+"TY" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Ul" = (
+/obj/item/tool/wrench{
+	pixel_x = 1;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/uscm{
+	pixel_x = 6;
+	name = "TWE coffee mug";
+	desc = "A red, white and blue coffee mug depicting the flag of the TWE. Patriotic and bold, and commonly seen among veterans as a novelty."
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"Um" = (
+/obj/effect/spawner/random/tool,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Un" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/effect/landmark/survivor_spawner/twe/iasf/squad_leader,
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"Uq" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	id = "hangar_storage_1";
+	name = "\improper Lockdown";
+	vehicle_resistant = 1;
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"UC" = (
+/obj/structure/window/framed/hybrisa/marshalls/cell,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/maint)
+"UD" = (
+/obj/structure/cargo_container/wy/mid,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"UF" = (
+/obj/structure/barricade/handrail/strata{
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"UH" = (
+/obj/structure/prop/hybrisa/misc/stoneplanterseats/empty{
+	dir = 1;
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"UU" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	dir = 1;
+	name = "rubber mat";
+	pixel_y = -5;
+	pixel_x = -1
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"Vj" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/structure/bed/stool{
+	pixel_x = -6;
+	pixel_y = 16
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/southwest,
+/area/lv759/indoors/twe_souter_outpost)
+"Vl" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "1,0"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"Vq" = (
+/obj/structure/machinery/door_control{
+	id = "souter_outside_west";
+	name = "Emergency Exit Access";
+	pixel_y = -3;
+	pixel_x = -22
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Vr" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = 17
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_y = 1
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Vs" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic/autoname{
+	dir = 1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	id = "twe_hangar_lockdown";
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"Vt" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Vz" = (
+/obj/item/stack/folding_barricade,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"VD" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"VE" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/machinery/power/apc/power/south,
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/lv759/indoors/twe_souter_outpost)
+"VH" = (
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2";
+	pixel_y = 2
+	},
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"VN" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/shutters{
+	id = "twe_hangar_lockdown";
+	dir = 8
+	},
+/turf/open/floor/hybrisa/metal/yellow_warning_floor,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"VQ" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"VX" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_5{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/marhsalls,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"We" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -36;
+	pixel_y = 15
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Wj" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/item/reagent_container/food/drinks/cans/classcola{
+	icon_state = "cola_crushed"
+	},
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/platform/metal/hybrisa/metalplatform1/east,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/obj/item/hybrisa/misc/trash_bag_full_prop{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Wm" = (
+/obj/structure/roof/hybrisa/lattice_prop/lattice_4{
+	pixel_y = 16;
+	layer = 6
+	},
+/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"Wq" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Ww" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/obj/item/ammo_box{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Wz" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/prison/darkpurple2/north,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"WG" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "8,8"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"WL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	pixel_y = -4
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost)
+"WM" = (
+/obj/structure/shuttle/part/twe_cosmetic1/transparent{
+	icon_state = "4,15"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"WP" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/pill/teabag{
+	pixel_y = 11;
+	pixel_x = 9
+	},
+/obj/item/trash/tray,
+/turf/open/floor/almayer/black/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"WQ" = (
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = -7;
+	pixel_y = 16;
+	buckle_offset_x = -7;
+	buckle_offset_y = 16
+	},
+/obj/structure/bed/chair/vehicle/white{
+	pixel_x = 9;
+	pixel_y = 16;
+	buckle_offset_x = 9;
+	buckle_offset_y = 16
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"Xa" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/item/trash/hybrisa/cuppa_joes/lid,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost)
+"Xi" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Xj" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 9
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"Xq" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Xy" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Xz" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"XC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_x = -9;
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_y = 12
+	},
+/obj/structure/machinery/iv_drip{
+	pixel_x = 7;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/blue/northwest,
+/area/lv759/indoors/twe_souter_outpost/flight)
+"XJ" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_y = 25;
+	pixel_x = -10
+	},
+/turf/open/floor/hybrisa/metal/grated,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Ya" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/hybrisa/metal/stripe_red/east,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Yb" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform4/deco,
+/obj/item/prop/colony/used_flare,
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Yk" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/trash/eat,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"Yy" = (
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -14
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"YA" = (
+/obj/effect/decal/hybrisa/TWE_logo_large/directional_1{
+	dir = 9;
+	pixel_x = 16;
+	pixel_y = 9
+	},
+/obj/item/prop/alien/hugger,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/hybrisa/street/sidewalkfull,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"YK" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/darkpurple2/north,
+/area/lv759/indoors/twe_souter_outpost/dorm)
+"YL" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"YN" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/outdoors/colony_streets/central_streets)
+"YR" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -11;
+	pixel_y = -2
+	},
+/obj/structure/prop/hybrisa/misc/metergreen{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"YV" = (
+/turf/open/hybrisa/street/sidewalk/east,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Zd" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/cement2,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Zf" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"Zi" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"Zm" = (
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/reception)
+"Zn" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/ammo_magazine/rifle/rmc_f90,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+"Zr" = (
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/structure/prop/hybrisa/misc/fake/lattice/full,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1,
+/obj/effect/hybrisa/misc/fake/pipes/pipe1{
+	dir = 4
+	},
+/obj/structure/platform/metal/hybrisa/metalplatform1/north,
+/obj/structure/prop/hybrisa/misc/floorprops/grate,
+/obj/structure/roof/hybrisa/billboardsandsigns/billboardsmedium/billboard3{
+	dir = 6;
+	pixel_y = 34;
+	lazy_nodes = 0;
+	layer = 3
+	},
+/turf/open/hybrisa/street/underground_unweedable,
+/area/lv759/outdoors/colony_streets/central_streets)
+"Zy" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/vents/pump_hybrisa{
+	welded = 1
+	},
+/obj/structure/sign/safety/airtraffictower{
+	pixel_x = 36;
+	pixel_y = -6
+	},
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 36;
+	pixel_y = 6
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/closet/bodybag,
+/turf/open/floor/prison/darkred2,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ZG" = (
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/twe_gunship)
+"ZN" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning";
+	layer = 2.5;
+	pixel_y = -2
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_y = 29;
+	pixel_x = 4
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/twe_souter_outpost/hallway)
+"ZV" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	pixel_y = 25
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/twe_souter_outpost/hangar)
+"ZZ" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/shard,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood,
+/turf/open/hybrisa/street/sidewalk/south,
+/area/lv759/outdoors/colony_streets/north_west_street)
+
+(1,1,1) = {"
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+Yb
+fi
+fi
+YV
+YV
+YV
+ht
+bW
+YV
+YV
+fi
+YV
+YV
+YV
+pb
+fZ
+fZ
+"}
+(2,1,1) = {"
+fZ
+Tb
+DF
+CE
+gb
+BT
+fU
+Wq
+gb
+UH
+fb
+KS
+ft
+Xy
+hw
+hw
+uK
+uK
+uK
+uK
+zZ
+fG
+zZ
+VX
+zZ
+zZ
+zZ
+zZ
+KK
+uS
+"}
+(3,1,1) = {"
+TG
+Tb
+rR
+Kz
+gh
+dU
+CY
+xd
+SD
+Zd
+Nb
+ou
+VH
+Jp
+uK
+JL
+Hm
+fK
+Mx
+HQ
+Vq
+nT
+wk
+WP
+bE
+aa
+Gs
+zZ
+Pa
+rl
+"}
+(4,1,1) = {"
+TG
+Pz
+md
+FZ
+RM
+Xq
+MW
+wJ
+dS
+aM
+DD
+Bq
+Zn
+Tt
+uK
+hy
+fQ
+jN
+dy
+HQ
+dR
+sx
+MO
+fh
+TJ
+Go
+at
+zZ
+wS
+TW
+"}
+(5,1,1) = {"
+Nn
+Vt
+dY
+Hs
+xc
+EY
+YA
+Mg
+ZZ
+Xi
+cA
+BY
+RH
+Mp
+uK
+hB
+br
+Gl
+mt
+lF
+jB
+km
+mu
+ui
+dg
+bN
+Dw
+zZ
+aA
+GM
+"}
+(6,1,1) = {"
+TG
+Tb
+tS
+uH
+So
+dB
+AY
+nd
+Sk
+ah
+kG
+aw
+dv
+Nw
+uK
+mw
+RK
+mN
+YK
+uK
+pY
+Yk
+qy
+Qr
+dN
+be
+tr
+zZ
+gc
+YN
+"}
+(7,1,1) = {"
+TG
+Tb
+UD
+rt
+gb
+BT
+Er
+Er
+gb
+zU
+Gr
+gf
+fB
+dK
+uK
+uK
+uK
+uK
+uK
+uK
+Ww
+KL
+bc
+bc
+bc
+bc
+bc
+aj
+Bf
+nS
+"}
+(8,1,1) = {"
+TG
+Tb
+xv
+Ak
+Ak
+Ak
+kK
+SH
+Ak
+Ak
+iD
+KI
+kP
+iD
+uK
+hA
+uG
+Gu
+nZ
+uK
+Pm
+ZN
+dI
+vf
+bT
+ik
+bc
+KW
+SP
+UF
+"}
+(9,1,1) = {"
+TG
+hE
+Ak
+Ak
+mP
+lU
+aC
+kQ
+ke
+Zm
+WL
+eO
+mg
+VE
+uK
+IJ
+Ah
+fQ
+Wz
+HQ
+mI
+gA
+bc
+HV
+zo
+gv
+bc
+un
+gs
+wL
+"}
+(10,1,1) = {"
+TO
+Tb
+Ak
+nC
+mx
+Zi
+Un
+kU
+bw
+KN
+Vj
+AS
+Ij
+pH
+uK
+hY
+he
+nD
+Wz
+HQ
+dP
+gA
+bc
+Bj
+cz
+cV
+bc
+JD
+KM
+YN
+"}
+(11,1,1) = {"
+fZ
+fZ
+Ak
+GD
+mR
+Ii
+li
+ef
+ki
+KN
+af
+gX
+Xa
+HW
+uK
+dF
+gZ
+Hh
+vj
+lF
+MP
+pZ
+dI
+Nd
+LD
+qK
+bc
+aj
+bG
+TW
+"}
+(12,1,1) = {"
+fZ
+fZ
+Ak
+Ak
+Ak
+Gn
+xS
+Ga
+Ak
+Ak
+TC
+sB
+kb
+TC
+uK
+uK
+uK
+uK
+uK
+uK
+gk
+CS
+bc
+bc
+bc
+bc
+bc
+aj
+IC
+or
+"}
+(13,1,1) = {"
+fZ
+fZ
+zZ
+bD
+DC
+zN
+Vz
+fT
+nO
+dc
+dP
+pv
+ad
+hk
+zR
+kc
+dc
+kc
+zR
+Tz
+ac
+hb
+Qt
+ab
+VQ
+NV
+GO
+zZ
+cn
+EC
+"}
+(14,1,1) = {"
+fZ
+fZ
+zZ
+zZ
+oi
+YL
+ga
+mD
+mD
+mD
+mE
+mD
+qY
+iW
+mD
+mD
+mD
+mD
+LI
+kf
+CR
+TY
+Li
+pK
+QR
+rg
+sj
+kY
+Iv
+ia
+"}
+(15,1,1) = {"
+fZ
+fZ
+fZ
+zZ
+cp
+Ht
+dq
+Ru
+kq
+RT
+kq
+Fu
+dq
+vL
+Kf
+Ya
+Kf
+xb
+kt
+dW
+ow
+BW
+cZ
+uL
+Hy
+dn
+xf
+zZ
+OS
+nS
+"}
+(16,1,1) = {"
+fZ
+fZ
+zZ
+zZ
+mW
+gA
+cc
+zZ
+zZ
+zZ
+zZ
+zZ
+jq
+mZ
+Rq
+Rq
+Rq
+pn
+sN
+Uq
+Uq
+pn
+UC
+Nf
+UC
+sN
+zZ
+zZ
+YN
+cW
+"}
+(17,1,1) = {"
+fZ
+fZ
+zZ
+qn
+La
+gA
+dq
+sv
+kv
+Xz
+zZ
+Om
+lf
+xl
+Dm
+EK
+Hc
+pn
+bB
+Ul
+sZ
+pn
+fn
+nP
+yr
+sN
+mv
+HA
+RD
+wL
+"}
+(18,1,1) = {"
+fZ
+fZ
+zZ
+EZ
+Zy
+eE
+Kx
+ha
+zZ
+nG
+xl
+xl
+xl
+xl
+cg
+EK
+uD
+pn
+Bw
+dd
+nj
+lN
+bp
+am
+Lh
+sN
+Zr
+Di
+sV
+PO
+"}
+(19,1,1) = {"
+fZ
+fZ
+uz
+uz
+uz
+VN
+Vs
+uz
+xl
+xl
+xl
+fg
+iy
+xl
+hJ
+hJ
+hJ
+pn
+pn
+kZ
+kZ
+pn
+pn
+co
+pn
+pn
+mh
+aT
+kn
+wL
+"}
+(20,1,1) = {"
+fZ
+fZ
+uz
+yE
+XC
+zr
+oh
+uz
+MX
+mL
+qW
+Ty
+Ty
+HX
+Ty
+Ty
+Ty
+Am
+mb
+Tv
+Ty
+ij
+Vr
+lL
+iw
+xl
+Wj
+eN
+yn
+UF
+"}
+(21,1,1) = {"
+fZ
+fZ
+uz
+uz
+Dx
+tt
+lD
+uz
+lH
+Kl
+GE
+hi
+hi
+GE
+hi
+hi
+hi
+GE
+GE
+hi
+PT
+GE
+mn
+PD
+yq
+xl
+xl
+xl
+IS
+wL
+"}
+(22,1,1) = {"
+fZ
+fZ
+fZ
+uz
+PR
+ve
+hL
+Kd
+lO
+ZV
+We
+sl
+Rt
+Rt
+Rt
+Rt
+xD
+me
+fp
+eu
+hT
+AM
+eU
+rZ
+ag
+ru
+SW
+xl
+Ca
+UF
+"}
+(23,1,1) = {"
+fZ
+fZ
+uz
+uz
+ns
+xN
+lq
+Kd
+lO
+ZV
+Rt
+Rt
+ln
+pc
+hm
+hq
+gD
+gD
+ev
+ev
+od
+bU
+Vl
+fX
+ag
+Ec
+Ja
+xl
+ao
+Jl
+"}
+(24,1,1) = {"
+fZ
+fZ
+uz
+om
+jL
+FA
+fv
+Kd
+lO
+ZV
+lp
+tH
+hm
+zJ
+iq
+fq
+Ao
+Ao
+Ao
+oR
+eK
+Sn
+kW
+Um
+Pg
+Rl
+au
+xl
+DA
+Gt
+"}
+(25,1,1) = {"
+fZ
+fZ
+uz
+op
+nt
+tf
+tM
+uz
+YR
+ZV
+WM
+xp
+Ae
+AN
+Ai
+kV
+zY
+hs
+PI
+ew
+en
+EX
+ZG
+rZ
+ag
+zj
+Rj
+xl
+XJ
+Pp
+"}
+(26,1,1) = {"
+fZ
+fZ
+uz
+ot
+tE
+UU
+lK
+Kd
+lO
+ZV
+ch
+eT
+TI
+zJ
+WQ
+FH
+bQ
+bQ
+bQ
+ie
+mT
+dD
+Rc
+rZ
+Pg
+Zf
+Ey
+xl
+ra
+DM
+"}
+(27,1,1) = {"
+fZ
+fZ
+uz
+sH
+lE
+Jn
+ho
+Kd
+lO
+ZV
+Rt
+Rt
+jj
+pk
+TI
+hq
+gY
+gY
+fs
+eD
+cX
+gj
+tK
+rZ
+ag
+Td
+OI
+xl
+xt
+Gt
+"}
+(28,1,1) = {"
+fZ
+fZ
+uz
+uz
+ny
+Xj
+ER
+Kd
+lO
+JG
+sl
+Rt
+Rt
+Rt
+Rt
+Rt
+WG
+bP
+fw
+eG
+hT
+Rt
+vP
+rZ
+ag
+nk
+xl
+xl
+Jj
+Pp
+"}
+(29,1,1) = {"
+fZ
+fZ
+fZ
+uz
+HU
+AO
+Js
+uz
+ae
+nI
+tP
+Pe
+nl
+Pe
+Pe
+Pe
+MH
+GN
+wf
+lW
+Pe
+da
+Pe
+AL
+yq
+hp
+xl
+xs
+dx
+Gt
+"}
+(30,1,1) = {"
+fZ
+fZ
+fZ
+uz
+FD
+GI
+IP
+et
+RB
+VD
+RB
+RB
+RB
+IB
+TN
+RB
+Tn
+Yy
+qe
+RB
+RB
+nX
+RB
+iP
+BD
+Dg
+xl
+NO
+vI
+bk
+"}
+(31,1,1) = {"
+fZ
+fZ
+fZ
+uz
+nB
+QN
+io
+uz
+xl
+xl
+xl
+xl
+xl
+hc
+Dh
+xl
+xl
+xl
+xl
+xl
+xl
+xl
+xl
+xl
+xl
+xl
+xl
+Nj
+Qv
+Be
+"}
+(32,1,1) = {"
+fZ
+fZ
+fZ
+uz
+Wm
+uz
+uz
+uz
+xl
+xl
+fZ
+fZ
+xl
+xl
+xl
+xl
+fZ
+fZ
+fZ
+fZ
+fE
+fE
+fZ
+fZ
+fZ
+Nj
+Nj
+Nj
+IE
+mi
+"}
+(33,1,1) = {"
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+fZ
+"}

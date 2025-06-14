@@ -85,7 +85,7 @@
 /area/bigredv2/caves/lambda/breakroom)
 "ap" = (
 /obj/structure/sign/safety/bulkhead_door,
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/lambda/breakroom)
 "aq" = (
 /turf/open/floor/almayer/w_y0/north,
@@ -202,7 +202,7 @@
 /turf/open/floor/darkpurplecorners2,
 /area/bigredv2/caves/lambda/breakroom)
 "aI" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/caves/lambda/breakroom)
 "aJ" = (
 /obj/structure/machinery/light,

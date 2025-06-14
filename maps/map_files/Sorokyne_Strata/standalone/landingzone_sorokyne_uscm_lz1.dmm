@@ -102,7 +102,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/mining_outpost/central)
 "cG" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/flight_control)
 "cI" = (
 /obj/structure/bed/nest,
@@ -166,7 +166,7 @@
 /obj/structure/machinery/weather_siren{
 	pixel_y = -8
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "dx" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass/colony{
@@ -206,7 +206,7 @@
 	pixel_y = 28
 	},
 /obj/structure/sign/prop1,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "dS" = (
 /obj/structure/machinery/cm_vending/sorted/boozeomat,
@@ -257,7 +257,7 @@
 /area/strata/ag/interior/landing_zones/near_lz1)
 "eB" = (
 /obj/structure/sign/nosmoking_1,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/central)
 "eC" = (
 /obj/structure/extinguisher_cabinet,
@@ -269,7 +269,7 @@
 /area/strata/ag/interior/landing_zones/near_lz1)
 "eP" = (
 /obj/structure/extinguisher_cabinet,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "eT" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -316,14 +316,14 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "fZ" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "gn" = (
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "gz" = (
 /obj/structure/sign/safety/bulkhead_door,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "gY" = (
 /obj/structure/machinery/light/small{
@@ -370,7 +370,7 @@
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "hH" = (
 /obj/structure/sign/prop1,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "hW" = (
 /obj/structure/machinery/bioprinter,
@@ -381,7 +381,7 @@
 /area/strata/ag/interior/mining_outpost/central)
 "hX" = (
 /obj/structure/sign/safety/outpatient,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/central)
 "iC" = (
 /obj/structure/flora/pottedplant{
@@ -475,7 +475,7 @@
 /area/strata/ag/interior/landing_zones/near_lz1)
 "jN" = (
 /obj/structure/bed/nest,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/hive)
 "jY" = (
 /obj/structure/barricade/metal/wired,
@@ -712,7 +712,7 @@
 	pixel_x = 18;
 	pixel_y = 10
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/central)
 "oU" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
@@ -775,7 +775,7 @@
 	pixel_y = -8
 	},
 /obj/structure/sign/prop1,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "qV" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -863,7 +863,7 @@
 /area/strata/ag/interior/mining_outpost/flight_control)
 "sZ" = (
 /obj/structure/sign/poster,
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/central)
 "tg" = (
 /obj/structure/machinery/light/small,
@@ -917,7 +917,7 @@
 	pixel_x = -18;
 	pixel_y = 10
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "tY" = (
 /obj/structure/bed/chair/office/light,
@@ -1090,7 +1090,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "xD" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/hive)
 "xI" = (
 /obj/structure/bed/chair/office/light{
@@ -1489,7 +1489,7 @@
 /turf/open/floor/plating,
 /area/strata/ag/interior/landing_zones/lz1)
 "Gs" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "Gu" = (
 /obj/structure/barricade/handrail/strata{
@@ -1518,7 +1518,7 @@
 /obj/structure/machinery/weather_siren{
 	pixel_y = -8
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/exterior/marsh/river)
 "GZ" = (
 /obj/structure/bed/nest,
@@ -1669,7 +1669,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "JU" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/strata/ag/interior/mining_outpost/flight_control)
 "JX" = (
 /obj/structure/machinery/space_heater,
@@ -1939,10 +1939,10 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/ag/interior/mining_outpost/hive)
 "Qh" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/strata/ag/interior/mining_outpost/hive)
 "QA" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/strata/ag/interior/mining_outpost/central)
 "QG" = (
 /obj/structure/pipes/vents/pump,
@@ -2040,7 +2040,7 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/ag/interior/landing_zones/near_lz1)
 "SH" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/south_dormitories)
 "SU" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -2103,7 +2103,7 @@
 /turf/open/floor/strata/red1,
 /area/strata/ag/interior/mining_outpost/flight_control)
 "Uh" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/ag/interior/mining_outpost/central)
 "Us" = (
 /turf/open/floor/strata/multi_tiles,

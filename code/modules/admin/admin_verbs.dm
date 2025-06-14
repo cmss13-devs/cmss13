@@ -245,6 +245,8 @@ GLOBAL_LIST_INIT(admin_verbs_possess, list(
 
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
 	/client/proc/whitelist_panel,
+	/client/proc/yautja_debug_reset_clan,
+	/client/proc/yautja_debug_force_clan,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_color, list(

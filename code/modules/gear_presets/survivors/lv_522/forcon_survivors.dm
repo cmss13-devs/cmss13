@@ -280,11 +280,11 @@
 			if(CO_GUN_DEAGLE)
 				sidearm = /obj/item/weapon/gun/pistol/heavy/co
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
-				sidearmammo = /obj/item/ammo_magazine/pistol/heavy
+				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
 			if(CO_GUN_DEAGLE_COUNCIL)
 				sidearm = /obj/item/weapon/gun/pistol/heavy/co
 				sidearmbelt = /obj/item/storage/belt/gun/m4a3
-				sidearmammo = /obj/item/ammo_magazine/pistol/heavy
+				sidearmammo = /obj/item/ammo_magazine/pistol/heavy/super
 
 	var/obj/item/clothing/under/marine/reconnaissance/uniform = new()
 	var/obj/item/clothing/accessory/storage/droppouch/pouch = new()

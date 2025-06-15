@@ -30,6 +30,10 @@
 	var/thralled_reason //The Reason the target was Thralled.
 	var/mob/living/carbon/thrall //The Thrall the Hunter marked.
 
+	var/blooded = FALSE
+	var/mob/living/carbon/blooded_set //! The Yautja that blooded the thrall
+	var/blooded_reason //! The reason the thrall was blooded
+	var/mob/living/carbon/newblood //! The thrall that is now blooded
 
 /datum/huntdata/proc/clean_data()
 	if(dishonored)
@@ -85,3 +89,12 @@
 
 	if(owner)
 		owner = null
+
+	if(blooded)
+		if(blooded_set)
+			blooded_set.hunter_data.newblood = null
+			blooded_set = null
+		blooded = FALSE
+	if(newblood)
+		newblood.hunter_data.blooded_set = null
+		newblood = null

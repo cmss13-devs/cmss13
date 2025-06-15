@@ -264,7 +264,6 @@
 	var/sidearmammo = /obj/item/ammo_magazine/revolver/mateba
 
 	if(new_human.client && new_human.client.prefs)
-		sidearm = new_human.client.prefs.commander_sidearm
 		switch(sidearm)
 			if(CO_GUN_MATEBA)
 				sidearm = /obj/item/weapon/gun/revolver/mateba/cmateba

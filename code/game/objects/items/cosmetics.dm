@@ -98,6 +98,11 @@
 	paint_type = "clown_camo"
 	icon_state = "clown_camo"
 
+/obj/item/facepaint/clown/alt
+
+	paint_type = "clown_camo_alt"
+	icon_state = "clown_camo_alt"
+
 /obj/item/facepaint/sunscreen_stick
 	name= "\improper USCM issue sunscreen"
 	desc = "A stick of SPF 50 sunscreen, issued to you by the good brass of the Corps. Whereas the previously issued sunscreen was toxic upon ingestion, this batch improves upon that by only containing excessive amounts of cadmium."

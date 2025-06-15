@@ -549,13 +549,13 @@
 
 	var/result = tgui_alert(src, "Which input color do you want?", "Input Style", list("Darkmode", "Lightmode"))
 	if(!result)
-		return
+	return
 	if(result == "Lightmode")
-		prefs.tgui_say_light_mode = TRUE
-		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
+	prefs.tgui_say_light_mode = TRUE
+	to_chat(src, SPAN_NOTICE("You're now using the say interface light mode."))
 	else
-		prefs.tgui_say_light_mode = FALSE
-		to_chat(src, SPAN_NOTICE("You're now using the say interface whitemode."))
+	prefs.tgui_say_light_mode = FALSE
+	to_chat(src, SPAN_NOTICE("You're now using the say interface dark mode."))
 	tgui_say?.load()
 	prefs.save_preferences()
 

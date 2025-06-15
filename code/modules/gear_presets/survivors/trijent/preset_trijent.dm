@@ -114,7 +114,7 @@
 	..()
 
 /datum/equipment_preset/survivor/twe/excom
-	name = "CO Survivor - Trijent Dam - IASF INCOM Officer"
+	name = "CO Survivor - Trijent Dam - INCOM Officer"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	job_title = JOB_TWE_RMC_CAPTAIN
 	role_comm_title = "IASF CPT"

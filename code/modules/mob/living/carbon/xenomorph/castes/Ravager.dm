@@ -66,6 +66,7 @@
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/ravager.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
 	weed_food_states = list("Ravager_1","Ravager_2","Ravager_3")
 	weed_food_states_flipped = list("Ravager_1","Ravager_2","Ravager_3")
 
@@ -310,6 +311,10 @@
 			if(structure_blocker.opacity)
 				blocked = TRUE
 				break
+		for(var/obj/vehicle/rx47_mech/mech in temp)
+			blocked = TRUE
+			break
+
 		if(blocked)
 			break
 

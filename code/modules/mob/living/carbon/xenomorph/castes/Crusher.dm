@@ -69,6 +69,7 @@
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/crusher.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
 	weed_food_states = list("Crusher_1","Crusher_2","Crusher_3")
 	weed_food_states_flipped = list("Crusher_1","Crusher_2","Crusher_3")
 
@@ -93,6 +94,13 @@
 		visible_message(SPAN_DANGER("[src] rams into [vehicle_in_path] and skids to a halt!"), SPAN_XENOWARNING("We ram into [vehicle_in_path] and skid to a halt!"))
 
 		vehicle_in_path.Collided(src)
+		. = FALSE
+
+	else if (istype(target, /obj/vehicle/rx47_mech))
+		var/obj/vehicle/rx47_mech/mech_in_path = target
+		visible_message(SPAN_DANGER("[src] rams into [mech_in_path] and skids to a halt!"), SPAN_XENOWARNING("We ram into [mech_in_path] and skid to a halt!"))
+
+		mech_in_path.Collided(src)
 		. = FALSE
 
 	else if (istype(target, /obj/structure/machinery/m56d_hmg))

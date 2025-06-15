@@ -438,7 +438,7 @@
 /area/almayer/maint/hull/upper/s_stern)
 "abd" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -509,7 +509,7 @@
 /area/almayer/hallways/lower/port_fore_hallway)
 "abr" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -643,7 +643,7 @@
 /area/almayer/medical/operating_room_four)
 "abK" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -7601,7 +7601,7 @@
 /area/almayer/maint/hull/lower/l_f_s)
 "asG" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7616,7 +7616,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/squads/delta)
@@ -7768,7 +7768,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
@@ -8020,7 +8020,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -8089,7 +8089,7 @@
 /area/almayer/living/bridgebunks)
 "aut" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -8104,7 +8104,7 @@
 "auv" = (
 /obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -8267,6 +8267,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_m_p)
+"auS" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/squads/charlie_delta_shared)
 "auT" = (
 /turf/open/floor/almayer/orangecorner/north,
 /area/almayer/command/cic)
@@ -8640,7 +8646,7 @@
 /area/almayer/living/starboard_garden)
 "awa" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/maint/hull/lower/p_bow)
@@ -8862,7 +8868,7 @@
 /area/almayer/lifeboat_pumps/south1)
 "awK" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -9167,7 +9173,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/emcloset,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -9890,6 +9896,9 @@
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /turf/open/floor/almayer,
 /area/almayer/hallways/upper/midship_hallway)
+"azy" = (
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/charlie_delta_shared)
 "azz" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -11496,7 +11505,7 @@
 /area/almayer/engineering/upper_engineering)
 "aDF" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/fore_hallway)
@@ -12358,7 +12367,7 @@
 /obj/item/clothing/ears/earmuffs,
 /obj/item/clothing/glasses/regular/hipster,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -12592,7 +12601,7 @@
 /area/almayer/maint/upper/u_a_s)
 "aGJ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /obj/structure/largecrate/random/mini/wooden{
@@ -12615,7 +12624,7 @@
 /area/almayer/living/synthcloset)
 "aGM" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -12652,7 +12661,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "aGR" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_s)
@@ -12708,7 +12717,7 @@
 /area/almayer/medical/morgue)
 "aHb" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -12735,7 +12744,7 @@
 /area/almayer/maint/upper/u_m_s)
 "aHg" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -12917,7 +12926,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/medical/lower_medical_lobby)
@@ -12940,7 +12949,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/medical/operating_room_three)
@@ -12996,7 +13005,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/living/briefing)
@@ -13051,7 +13060,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -13083,7 +13092,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -13118,6 +13127,9 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/almayer/command/cichallway)
+"aIm" = (
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "aIn" = (
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/lower_medical_medbay)
@@ -13138,7 +13150,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -13241,7 +13253,7 @@
 	},
 /obj/structure/machinery/light/red{
 	dir = 4;
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/hangar)
@@ -13258,6 +13270,9 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/vehiclehangar)
+"aIJ" = (
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/maint/lower/cryo_cells)
 "aIK" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -13277,7 +13292,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/engineering/lower/workshop)
@@ -13405,7 +13420,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -13538,7 +13553,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/medical/operating_room_one)
@@ -13558,7 +13573,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -13583,6 +13598,9 @@
 	},
 /turf/open/floor/almayer/blue/northwest,
 /area/almayer/command/cic)
+"aJH" = (
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/cryo_cells)
 "aJI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -13645,7 +13663,7 @@
 /area/almayer/lifeboat_pumps/south1)
 "aJV" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer,
@@ -13677,7 +13695,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/squads/alpha)
@@ -13731,7 +13749,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -13769,7 +13787,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -13979,14 +13997,14 @@
 /area/almayer/command/airoom)
 "aKU" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/shipboard/starboard_point_defense)
 "aKV" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plating_striped/east,
@@ -14041,7 +14059,7 @@
 /area/almayer/stair_clone/upper/starboard_fore)
 "aLe" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -14182,7 +14200,7 @@
 "aLv" = (
 /obj/structure/largecrate/supply,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -14197,7 +14215,7 @@
 "aLy" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -14222,7 +14240,7 @@
 /area/almayer/shipboard/navigation)
 "aLD" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -14304,7 +14322,7 @@
 /area/almayer/command/cic)
 "aLN" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -14386,7 +14404,7 @@
 "aLX" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -14721,7 +14739,7 @@
 "aMW" = (
 /obj/structure/machinery/light/red{
 	dir = 8;
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/vehiclehangar)
@@ -14750,7 +14768,7 @@
 	},
 /obj/structure/machinery/light/red{
 	dir = 4;
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
@@ -14861,16 +14879,6 @@
 /obj/structure/barricade/handrail,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
-"aNq" = (
-/obj/structure/catwalk{
-	health = null
-	},
-/obj/structure/barricade/handrail,
-/obj/structure/machinery/light/red{
-	dir = 4
-	},
-/turf/open/floor/plating/almayer/no_build,
-/area/almayer/hallways/lower/vehiclehangar)
 "aNr" = (
 /obj/effect/landmark/start/researcher,
 /obj/effect/landmark/late_join/researcher,
@@ -14947,7 +14955,7 @@
 /area/almayer/shipboard/weapon_room)
 "aND" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
@@ -14957,7 +14965,7 @@
 /area/almayer/hallways/upper/midship_hallway)
 "aNF" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_s)
@@ -14969,7 +14977,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/living/port_emb)
@@ -15019,7 +15027,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -15043,7 +15051,7 @@
 /area/almayer/living/grunt_rnr)
 "aNS" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -15089,13 +15097,13 @@
 /area/almayer/medical/containment)
 "aNZ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/maint/hull/lower/p_bow)
 "aOa" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/vehiclehangar)
@@ -15108,7 +15116,7 @@
 /area/almayer/living/pilotbunks)
 "aOc" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -15195,7 +15203,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -15253,14 +15261,14 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "aOv" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -15312,7 +15320,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "aOE" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -15449,7 +15457,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -15462,14 +15470,14 @@
 /area/almayer/command/lifeboat)
 "aPb" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open_space,
 /area/almayer/medical/lower_medical_lobby)
 "aPc" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open_space,
 /area/almayer/medical/lower_medical_lobby)
@@ -15532,7 +15540,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -15652,14 +15660,11 @@
 /turf/open_space,
 /area/almayer/medical/lower_medical_medbay)
 "aPG" = (
-/obj/structure/catwalk{
-	health = null
-	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
-/turf/open/floor/plating/almayer/no_build,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/lower_medical_medbay)
 "aPH" = (
 /obj/structure/pipes/vents/pump{
@@ -15742,7 +15747,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "aPX" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open_space,
@@ -15750,7 +15755,7 @@
 "aPY" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open_space,
@@ -15761,16 +15766,6 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/medical/cryo_tubes)
-"aQa" = (
-/obj/structure/machinery/light/red{
-	light_color = #FF0000;
-	dir = 4
-	},
-/obj/structure/machinery/light/red{
-	dir = 4
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/medical/lower_medical_medbay)
 "aQb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15847,7 +15842,7 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/plating/almayer/no_build,
@@ -15892,14 +15887,14 @@
 	health = null
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "aQt" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -15950,9 +15945,15 @@
 "aQB" = (
 /turf/closed/wall/almayer/aicore/hull,
 /area/almayer/squads/alpha_bravo_shared)
+"aQC" = (
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/engineering/lower)
 "aQD" = (
 /turf/closed/wall/almayer/aicore/hull,
 /area/almayer/squads/alpha)
+"aQE" = (
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/shipboard/sea_office)
 "aQF" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/offices)
@@ -15974,6 +15975,9 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/cryo)
+"aQI" = (
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/hallways/lower/port_aft_hallway)
 "aQJ" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/stair_clone/lower/port_aft)
@@ -16245,7 +16249,7 @@
 /area/almayer/hallways/lower/vehiclehangar)
 "aRH" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -16569,7 +16573,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "aSK" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -16904,7 +16908,7 @@
 /area/almayer/maint/hull/lower/s_bow)
 "aTV" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -16997,11 +17001,22 @@
 "aUm" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/numbertwobunks)
+"aUn" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/living/cryo_cells)
 "aUo" = (
 /obj/structure/bed,
 /obj/item/bedsheet/hop,
 /turf/open/floor/carpet,
 /area/almayer/living/numbertwobunks)
+"aUp" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/medical/lower_medical_medbay)
+"aUq" = (
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/hallways/lower/starboard_aft_hallway)
 "aUw" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
@@ -22821,7 +22836,7 @@
 /area/almayer/living/tankerbunks)
 "bTW" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/s_bow)
@@ -23081,7 +23096,7 @@
 /area/almayer/powered)
 "bWn" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plating_striped/west,
@@ -23092,7 +23107,7 @@
 /area/almayer/shipboard/port_point_defense)
 "bWp" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plating_striped/east,
@@ -23734,7 +23749,7 @@
 /area/almayer/hallways/upper/midship_hallway)
 "ceY" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -23762,7 +23777,7 @@
 	pixel_y = -3
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -25228,7 +25243,7 @@
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/wrapped/chunk,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/cargo,
@@ -25681,7 +25696,7 @@
 /area/almayer/command/airoom)
 "cLq" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plating_striped/west,
@@ -26316,7 +26331,7 @@
 /area/almayer/maint/hull/lower/l_m_p)
 "cYo" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -26561,7 +26576,7 @@
 /area/almayer/maint/hull/upper/u_f_p)
 "dcX" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -27191,7 +27206,7 @@
 "dtu" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/cargo,
@@ -27879,7 +27894,7 @@
 /area/almayer/maint/hull/upper/u_a_p)
 "dJy" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -28390,7 +28405,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
@@ -28632,7 +28647,7 @@
 /area/almayer/command/airoom)
 "ecb" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -28718,7 +28733,7 @@
 "eem" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -29114,7 +29129,7 @@
 /area/almayer/shipboard/brig/execution_storage)
 "elY" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/sign/safety/hazard{
 	pixel_y = 32
@@ -29212,7 +29227,7 @@
 /area/almayer/maint/hull/lower/l_m_s)
 "eox" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/s_bow)
@@ -29375,7 +29390,7 @@
 /area/almayer/engineering/lower/engine_core)
 "erE" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -29525,7 +29540,7 @@
 /area/space)
 "etF" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -30149,7 +30164,7 @@
 "eGH" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -31110,7 +31125,7 @@
 /area/almayer/squads/alpha)
 "fbe" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/largecrate/random/barrel/yellow,
@@ -31247,7 +31262,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
@@ -31329,7 +31344,7 @@
 /area/almayer/maint/hull/lower/s_bow)
 "fgh" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /obj/structure/surface/rack,
@@ -31699,7 +31714,7 @@
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "fpR" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /obj/structure/largecrate/random/case/double,
@@ -31941,7 +31956,7 @@
 	pixel_y = 5
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -32117,7 +32132,7 @@
 /area/almayer/shipboard/brig/armory)
 "fBo" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -32563,7 +32578,7 @@
 /area/almayer/living/grunt_rnr)
 "fLi" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -32776,7 +32791,7 @@
 /area/almayer/medical/upper_medical)
 "fQy" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -33098,7 +33113,7 @@
 /area/almayer/living/briefing)
 "fZR" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/stern)
@@ -33380,7 +33395,7 @@
 	},
 /obj/item/toy/deck/uno,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
@@ -33720,7 +33735,7 @@
 /area/almayer/maint/hull/upper/u_a_s)
 "gqx" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -33781,7 +33796,7 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -34872,7 +34887,7 @@
 /area/almayer/engineering/lower)
 "gNZ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -34937,7 +34952,7 @@
 /area/almayer/command/lifeboat)
 "gQQ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -35271,7 +35286,7 @@
 /area/almayer/shipboard/brig/starboard_hallway)
 "gYU" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -35761,7 +35776,7 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "hjT" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/largecrate,
@@ -35773,7 +35788,7 @@
 /area/almayer/lifeboat_pumps/south2)
 "hkz" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -36115,7 +36130,7 @@
 /area/almayer/medical/containment/cell)
 "hqm" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -36259,7 +36274,7 @@
 "hto" = (
 /obj/structure/largecrate/random/barrel/red,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -36956,7 +36971,7 @@
 /area/almayer/squads/bravo)
 "hNh" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
@@ -37436,7 +37451,7 @@
 /area/almayer/lifeboat_pumps/south1)
 "hWH" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /obj/structure/prop/invuln/overhead_pipe{
@@ -37539,7 +37554,7 @@
 /area/almayer/maint/hull/lower/l_a_s)
 "hYj" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_a_p)
@@ -38337,7 +38352,7 @@
 /area/almayer/hallways/upper/midship_hallway)
 "isq" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/largecrate/random/secure,
@@ -38757,7 +38772,7 @@
 /area/almayer/lifeboat_pumps/north2)
 "iEa" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/p_bow)
@@ -38870,7 +38885,7 @@
 /area/almayer/maint/lower/cryo_cells)
 "iGc" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_s)
@@ -38945,7 +38960,7 @@
 /area/almayer/squads/delta)
 "iIU" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer/plate,
@@ -39508,7 +39523,7 @@
 /area/almayer/shipboard/brig/cells)
 "iTQ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -39633,7 +39648,7 @@
 /area/almayer/lifeboat_pumps/south1)
 "iVG" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /obj/structure/closet/firecloset,
@@ -41727,7 +41742,7 @@
 /area/almayer/shipboard/brig/chief_mp_office)
 "jPU" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -42694,7 +42709,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "klT" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_s)
@@ -42730,7 +42745,7 @@
 "kng" = (
 /obj/item/storage/toolbox/electrical,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -42854,7 +42869,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "kqb" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -42911,7 +42926,7 @@
 /area/almayer/maint/hull/lower/l_m_s)
 "kqC" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /obj/structure/largecrate/random/barrel/green,
@@ -43326,7 +43341,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
@@ -43728,7 +43743,7 @@
 /area/almayer/maint/hull/lower/l_m_s)
 "kIl" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -43998,7 +44013,7 @@
 /area/almayer/maint/hull/lower/l_m_p)
 "kOR" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/largecrate/random/secure,
@@ -44268,14 +44283,14 @@
 	pixel_y = 8
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_f_s)
 "kUL" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/closet/emcloset,
@@ -45664,7 +45679,7 @@
 /area/almayer/hallways/lower/vehiclehangar)
 "lCm" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -45833,7 +45848,7 @@
 /area/almayer/engineering/lower/workshop/hangar)
 "lFt" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -46380,7 +46395,7 @@
 /area/almayer/hallways/lower/port_fore_hallway)
 "lUQ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -46500,7 +46515,7 @@
 /area/almayer/engineering/upper_engineering/port)
 "lYt" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -46575,7 +46590,7 @@
 /area/almayer/maint/hull/lower/l_m_p)
 "lZJ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_p)
@@ -46704,7 +46719,7 @@
 /area/almayer/shipboard/brig/mp_bunks)
 "mem" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/prop/invuln/overhead_pipe{
@@ -47761,7 +47776,7 @@
 /area/almayer/maint/upper/u_f_p)
 "mCL" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_bow)
@@ -48229,7 +48244,7 @@
 /area/almayer/squads/bravo)
 "mLN" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -49008,7 +49023,7 @@
 "ndm" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -49071,7 +49086,7 @@
 "neO" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -49207,7 +49222,7 @@
 /area/almayer/engineering/lower/workshop)
 "nhw" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_p)
@@ -49273,7 +49288,7 @@
 /area/almayer/maint/upper/u_m_p)
 "nhV" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/p_bow)
@@ -50379,7 +50394,7 @@
 /area/almayer/command/cichallway)
 "nFs" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -50444,14 +50459,14 @@
 /area/almayer/living/starboard_emb)
 "nGi" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
 "nGk" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
@@ -50535,7 +50550,7 @@
 	pixel_y = -29
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_m_p)
@@ -50773,7 +50788,7 @@
 	},
 /obj/item/frame/rack,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north1)
@@ -51322,7 +51337,7 @@
 /area/almayer/maint/hull/lower/l_a_p)
 "oaP" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -51821,7 +51836,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "old" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk,
@@ -52267,7 +52282,7 @@
 "osr" = (
 /obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -52358,7 +52373,7 @@
 /area/almayer/medical/containment/cell)
 "otW" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_x = 12
@@ -52480,7 +52495,7 @@
 	health = 80
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -52975,7 +52990,7 @@
 /area/almayer/squads/charlie)
 "oHf" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/largecrate/random/barrel/green,
@@ -53362,7 +53377,7 @@
 /area/almayer/command/cic)
 "oPF" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -53588,7 +53603,7 @@
 /area/almayer/maint/hull/upper/u_f_s)
 "oUx" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
@@ -54621,7 +54636,7 @@
 /area/almayer/hallways/upper/midship_hallway)
 "puT" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -54777,7 +54792,7 @@
 /area/almayer/shipboard/weapon_room)
 "pzc" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/largecrate/random/barrel/white,
@@ -54961,7 +54976,7 @@
 /area/almayer/maint/hull/upper/u_f_s)
 "pFr" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_p)
@@ -55130,7 +55145,7 @@
 /obj/structure/platform/metal/almayer/east,
 /obj/item/reagent_container/glass/rag,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -55230,7 +55245,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -55601,7 +55616,7 @@
 "pVh" = (
 /obj/structure/largecrate/random/barrel/blue,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -55877,7 +55892,7 @@
 /area/almayer/living/briefing)
 "qbD" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plating_striped/east,
@@ -55898,7 +55913,7 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
@@ -56615,7 +56630,7 @@
 /area/almayer/engineering/lower/workshop/hangar)
 "qoM" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -56719,7 +56734,7 @@
 /area/almayer/maint/hull/upper/s_bow)
 "qqS" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/s_stern)
@@ -56764,7 +56779,7 @@
 /area/almayer/command/computerlab)
 "qsp" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_bow)
@@ -57070,7 +57085,7 @@
 "qxS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -57506,7 +57521,7 @@
 /area/almayer/engineering/lower/workshop/hangar)
 "qGC" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -57558,7 +57573,7 @@
 /area/almayer/hallways/upper/aft_hallway)
 "qHG" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -57871,7 +57886,7 @@
 /area/almayer/hallways/upper/port)
 "qNK" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -58081,7 +58096,7 @@
 /obj/item/ammo_box/magazine/l42a,
 /obj/item/ammo_box/magazine/l42a,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_m_s)
@@ -58591,7 +58606,7 @@
 /area/almayer/shipboard/brig/general_equipment)
 "rdN" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -58820,7 +58835,7 @@
 /area/almayer/lifeboat_pumps/south2)
 "riT" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plating_striped/north,
@@ -59062,7 +59077,7 @@
 /area/almayer/lifeboat_pumps/south2)
 "roG" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -59406,7 +59421,7 @@
 /area/almayer/squads/charlie)
 "rwe" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /obj/structure/sign/safety/bulkhead_door{
@@ -60299,7 +60314,7 @@
 /area/almayer/shipboard/brig/processing)
 "rQs" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -60636,7 +60651,7 @@
 /area/almayer/maint/hull/lower/stern)
 "rXQ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -61293,7 +61308,7 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -61514,7 +61529,7 @@
 /area/almayer/engineering/lower)
 "sql" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -61635,7 +61650,7 @@
 /area/almayer/shipboard/brig/perma)
 "stP" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
@@ -62243,7 +62258,7 @@
 /area/almayer/engineering/lower/engine_core)
 "sIu" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
@@ -62436,7 +62451,7 @@
 /area/almayer/engineering/upper_engineering)
 "sOD" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -62698,7 +62713,7 @@
 /area/almayer/hallways/upper/starboard)
 "sWp" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /obj/structure/prop/invuln/overhead_pipe{
@@ -62978,7 +62993,7 @@
 /area/almayer/maint/lower/constr)
 "tcm" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/largecrate/random/barrel/white,
@@ -63189,7 +63204,7 @@
 /area/almayer/medical/containment/cell)
 "tfQ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_p)
@@ -63398,7 +63413,7 @@
 	amount = 20
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -63559,7 +63574,7 @@
 /area/almayer/shipboard/brig/execution)
 "tmQ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -64636,7 +64651,7 @@
 /area/almayer/hallways/upper/fore_hallway)
 "tJq" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -65220,7 +65235,7 @@
 /area/almayer/living/bridgebunks)
 "tZc" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/port_point_defense)
@@ -65688,7 +65703,7 @@
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -65804,7 +65819,7 @@
 /area/almayer/living/offices)
 "umk" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /obj/structure/surface/rack,
@@ -66037,7 +66052,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -66744,7 +66759,7 @@
 "uHk" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /obj/structure/sign/safety/maint{
@@ -66884,7 +66899,7 @@
 /area/almayer/engineering/upper_engineering/starboard)
 "uMf" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk,
@@ -68841,7 +68856,7 @@
 /area/almayer/living/briefing)
 "vyh" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -68936,7 +68951,7 @@
 /area/almayer/shipboard/brig/cells)
 "vzB" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_m_p)
@@ -69147,7 +69162,7 @@
 /area/almayer/maint/hull/upper/u_f_s)
 "vDN" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -69227,7 +69242,7 @@
 /area/almayer/hallways/upper/starboard)
 "vFn" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/shipboard/stern_point_defense)
@@ -69497,7 +69512,7 @@
 /area/almayer/shipboard/brig/armory)
 "vKI" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -70462,7 +70477,7 @@
 /area/almayer/hallways/lower/port_umbilical)
 "wdW" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
@@ -71075,7 +71090,7 @@
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "wra" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -71160,7 +71175,7 @@
 /area/almayer/shipboard/brig/processing)
 "wsw" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -71530,7 +71545,7 @@
 "wyb" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /obj/structure/sign/safety/hvac_old{
@@ -71647,7 +71662,7 @@
 "wDq" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
@@ -72401,7 +72416,7 @@
 /area/almayer/maint/upper/u_f_s)
 "wRf" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/sign/safety/nonpress_0g{
 	pixel_x = 15;
@@ -73476,7 +73491,7 @@
 /area/almayer/shipboard/brig/medical)
 "xpL" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -74039,7 +74054,7 @@
 /area/almayer/squads/req)
 "xyZ" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000
+	light_color = "#BB3F3F"
 	},
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/plating/plating_catwalk,
@@ -74956,7 +74971,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -75324,7 +75339,7 @@
 /area/almayer/squads/req)
 "ycM" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -75587,7 +75602,7 @@
 /area/almayer/maint/hull/lower/l_a_s)
 "yih" = (
 /obj/structure/machinery/light/red{
-	light_color = #FF0000;
+	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
@@ -113862,7 +113877,7 @@ aJh
 aJh
 pzW
 aIw
-aNq
+aNp
 aNo
 aNj
 aNd
@@ -121576,9 +121591,9 @@ aJP
 aJP
 aJP
 aHU
-aQe
-aQe
-aQe
+aQm
+aQm
+aQm
 aTH
 aTJ
 aTK
@@ -121678,7 +121693,7 @@ aJE
 aJE
 aJE
 aJE
-aJE
+aQm
 aQe
 aQe
 aQe
@@ -121781,7 +121796,7 @@ aJE
 aJE
 aJE
 aJE
-aJE
+aQm
 aQe
 aQe
 aQe
@@ -121884,7 +121899,7 @@ aJE
 aJE
 aJE
 aJE
-aJE
+aQm
 aQe
 aQe
 aQe
@@ -121988,9 +122003,9 @@ aJM
 aJM
 aJM
 aJM
-aQe
-aQe
-aQe
+aQm
+aQm
+aQm
 aTH
 aTH
 aTO
@@ -122121,11 +122136,11 @@ aOh
 aQX
 aQX
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRc
+aHs
 aRc
 aHs
 aHs
@@ -122206,9 +122221,9 @@ aIn
 aHE
 aHE
 aHE
+aIn
 aHE
-aHE
-aHE
+aIn
 aHE
 aHE
 aHE
@@ -122224,11 +122239,11 @@ aOh
 aQX
 aRe
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRc
+aHs
 aRc
 aRc
 aHs
@@ -122305,13 +122320,13 @@ aRQ
 aHE
 aHE
 aHE
-aQa
+aSK
 aHE
 aHE
 aHE
+aIn
 aHE
-aHE
-aHE
+aIn
 aHE
 aHE
 aHE
@@ -122327,11 +122342,11 @@ aOh
 aQX
 aRe
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRc
+aHs
 aRc
 aRc
 aHs
@@ -122413,7 +122428,7 @@ aRQ
 aRQ
 aRQ
 aRQ
-aRQ
+aUp
 aRQ
 aRQ
 aRQ
@@ -122430,11 +122445,11 @@ aOo
 aQX
 aRe
 aRe
+aRb
 aRe
 aRe
 aRe
-aRe
-aRe
+aRb
 aRe
 aRe
 aQX
@@ -122514,11 +122529,11 @@ aHE
 aRQ
 aRQ
 aSQ
+aRQ
 aSQ
-aSQ
 aSU
 aSU
-aSU
+aRQ
 aSQ
 aRQ
 aRQ
@@ -122533,11 +122548,11 @@ aOh
 aQX
 aRe
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRe
+aQX
 aRe
 aRe
 aQX
@@ -122617,11 +122632,11 @@ aHE
 aRQ
 aSQ
 aSQ
+aRQ
 aSU
 aSU
 aSU
-aSU
-aSU
+aRQ
 aSQ
 aSQ
 aRQ
@@ -122636,11 +122651,11 @@ aOh
 aQX
 aRe
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRe
+aQX
 aRe
 aRe
 aQX
@@ -122720,11 +122735,11 @@ aHE
 aRQ
 aSU
 aSU
+aRQ
 aSU
 aSU
 aSU
-aSU
-aSU
+aRQ
 aSU
 aSQ
 aRQ
@@ -122739,11 +122754,11 @@ aOh
 aQX
 aQX
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRe
+aQX
 aRe
 aQX
 aQX
@@ -122823,11 +122838,11 @@ aIn
 aRQ
 aSU
 aSU
+aOU
 aSU
 aSU
 aSU
-aSU
-aSU
+aOU
 aSU
 aSQ
 aRQ
@@ -122926,11 +122941,11 @@ aHN
 aRh
 aTt
 aSU
+aOU
 aSU
 aSU
 aSU
-aSU
-aSU
+aOU
 aSU
 avo
 aRh
@@ -123029,11 +123044,11 @@ aRl
 aRh
 aTt
 avo
+aRh
 avo
 avo
 avo
-avo
-avo
+aRh
 avo
 avo
 aRh
@@ -123132,11 +123147,11 @@ aRl
 aRh
 aTt
 aTt
+aRh
 avo
 avo
 avo
-avo
-avo
+aRh
 avo
 avo
 aRh
@@ -123235,11 +123250,11 @@ aRl
 aRh
 aRh
 aTt
-aTt
+aRh
 avo
 avo
 avo
-avo
+aRh
 avo
 aRh
 aRh
@@ -123340,7 +123355,7 @@ aRh
 aRh
 aRh
 aRh
-aRh
+aRn
 aRh
 aRh
 aRh
@@ -123357,11 +123372,11 @@ aOo
 aQX
 aQX
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRe
+aQX
 aRe
 aQX
 aQX
@@ -123460,11 +123475,11 @@ aOh
 aQX
 aRe
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRe
+aQX
 aRe
 aRe
 aQX
@@ -123563,11 +123578,11 @@ aRw
 aQX
 aRe
 aRe
+aRb
 aRe
 aRe
 aRe
-aRe
-aRe
+aRb
 aRe
 aRe
 aQX
@@ -123666,11 +123681,11 @@ aRw
 aQX
 aRe
 aRe
+aRb
 aRe
 aRe
 aRe
-aRe
-aRe
+aRb
 aRe
 aRe
 aQX
@@ -123769,11 +123784,11 @@ aRz
 aQX
 aRe
 aRe
+aQX
 aRe
 aRe
 aRe
-aRe
-aRe
+aQX
 aRe
 aRe
 aQX
@@ -123872,11 +123887,11 @@ aRw
 aRh
 aRh
 avo
+aRh
 avo
 avo
 avo
-avo
-avo
+aRh
 avo
 aQX
 aQX
@@ -123953,25 +123968,25 @@ aRh
 aRl
 aRl
 aRl
-aRh
+aRR
 avo
 avo
-aRh
+aRR
 aRl
 aRl
 aRl
-aRh
+aRR
 avo
 avo
-aRh
+aRR
 aRl
 aRl
 aRl
 aRh
 aRh
-aRz
-aRz
-aRz
+aRw
+aRw
+aRw
 aRh
 aRh
 aRh
@@ -124056,17 +124071,17 @@ aRh
 aRl
 aRl
 aRl
-aRh
+aRR
 avo
 avo
-aRh
+aRR
 aRl
 aRl
 aRl
-aRh
+aRR
 avo
 avo
-aRh
+aRR
 aRl
 aRl
 aRl
@@ -124254,9 +124269,9 @@ aRh
 aRh
 aRh
 aRh
-aJD
-aJD
-aJD
+aTS
+aTS
+aTS
 aRh
 aRh
 aHN
@@ -124278,9 +124293,9 @@ aHN
 aHN
 aRh
 aRh
-aRw
-aRw
-aRw
+aRz
+aRz
+aRz
 aHN
 aRl
 aRl
@@ -124357,9 +124372,9 @@ aRh
 aRh
 aRh
 aRh
-aJD
-aJD
-aJD
+aTS
+aTS
+aTS
 aHN
 aHN
 aRl
@@ -124372,7 +124387,7 @@ aHN
 aRl
 aRl
 aRl
-aRl
+aHN
 aRl
 aRl
 aHN
@@ -124460,9 +124475,9 @@ aRh
 aRh
 aRh
 aRh
-aJD
-aJD
-aJD
+aTS
+aTS
+aTS
 aHN
 aHN
 aRl
@@ -124475,7 +124490,7 @@ aHN
 aRl
 aRl
 aRl
-aRl
+aHN
 aRl
 aRl
 aHN
@@ -124484,9 +124499,9 @@ aRl
 aRl
 aHN
 aHN
-aRw
-aRw
-aRw
+aRz
+aRz
+aRz
 aRh
 aRh
 aRh
@@ -124563,9 +124578,9 @@ aRh
 aRh
 aRh
 aRh
-aJD
-aJD
-aJD
+aTS
+aTS
+aTS
 aHN
 aHN
 aRl
@@ -124578,7 +124593,7 @@ aHN
 aRl
 aRl
 aRl
-aRl
+aHN
 aRl
 aRl
 aHN
@@ -124587,9 +124602,9 @@ aRl
 aRl
 aHN
 aHN
-aRw
-aRw
-aRw
+aRz
+aRz
+aRz
 aRh
 aRh
 aRh
@@ -124690,9 +124705,9 @@ aRh
 aRh
 aRh
 aRh
-asm
-asm
-asm
+aRz
+aRz
+aRz
 aRh
 aRh
 aRh
@@ -124786,16 +124801,16 @@ aRl
 aRl
 aRh
 aRh
+avo
+avo
+avo
+avo
+avo
 aRh
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-asm
-asm
-asm
+aRw
+aRw
+aRw
 aRh
 aRh
 aRh
@@ -124888,17 +124903,17 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 aRh
 aRh
 aRh
@@ -124991,17 +125006,17 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 aRh
 aRh
 aRh
@@ -125094,17 +125109,17 @@ aHN
 aHN
 aHN
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
-asm
-asm
-asm
+aRz
+aRz
+aRz
 aRh
 aRh
 aRh
@@ -125197,34 +125212,34 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRz
+aRw
+aRw
+aRw
 asm
 asm
 aHs
@@ -125300,35 +125315,35 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRz
+aRw
+aRw
+aRw
+aRw
 asm
 aHs
 aHs
@@ -125403,35 +125418,35 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRw
+aRw
+aRw
+aRz
+aRz
+aRw
+aRw
+aRw
+aRw
 asm
 aHs
 aHs
@@ -125506,18 +125521,18 @@ aHN
 aHN
 aHN
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
+aRz
+aRz
+aRz
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -125531,10 +125546,10 @@ auc
 auc
 auc
 auc
-auc
-auc
-asm
-asm
+auS
+auS
+aRw
+aRw
 asm
 arl
 aHs
@@ -125609,18 +125624,18 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
+aRw
+aRw
+aRw
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -125635,9 +125650,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+azy
+aRz
+aRz
 asm
 aHs
 aHs
@@ -125712,18 +125727,18 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
+aRw
+aRw
+aRw
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -125738,9 +125753,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+azy
+aRz
+aRz
 asm
 aHs
 aHs
@@ -125816,16 +125831,16 @@ aRl
 aRl
 aRh
 aRh
+avo
+avo
+avo
+avo
+avo
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 asm
 auc
 auc
@@ -125841,9 +125856,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+azy
+aRz
+aRz
 asm
 aHs
 aHs
@@ -125926,10 +125941,10 @@ aRh
 aRh
 aRh
 asm
+aRz
+aRz
+aRz
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -125944,9 +125959,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+auS
+aRw
+aRw
 asm
 aHs
 aHs
@@ -126022,16 +126037,16 @@ aRl
 aRl
 aRh
 aRh
+avo
+avo
+avo
+avo
+avo
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 asm
 auc
 auc
@@ -126047,9 +126062,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+auS
+aRw
+aRw
 asm
 aHs
 aHs
@@ -126124,18 +126139,18 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
+aRw
+aRw
+aRw
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -126150,9 +126165,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+auS
+aRw
+aRw
 asm
 arl
 aHs
@@ -126227,18 +126242,18 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
+aRw
+aRw
+aRw
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -126253,9 +126268,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+azy
+aRz
+aRz
 asm
 aHs
 aHs
@@ -126330,18 +126345,18 @@ aHN
 aHN
 aHN
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
+aRz
+aRz
+aRz
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -126356,9 +126371,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+auS
+aRw
+aRw
 asm
 aHs
 aHs
@@ -126433,18 +126448,18 @@ aRl
 aRl
 aRl
 aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
-aRh
+avo
+avo
+avo
+avo
+avo
+avo
+avo
 asm
+aRw
+aRw
+aRw
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -126459,9 +126474,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+auS
+aRw
+aRw
 asm
 aHU
 aHU
@@ -126536,18 +126551,18 @@ aSZ
 aSZ
 aSZ
 uys
-uys
-uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
 asm
+aRw
+aRw
+aRw
 asm
-asm
-asm
-asm
 auc
 auc
 auc
@@ -126562,9 +126577,9 @@ auc
 auc
 auc
 auc
-auc
-asm
-asm
+auS
+aRw
+aRw
 asm
 alW
 ajU
@@ -126639,17 +126654,17 @@ aSZ
 aSZ
 aSZ
 uys
-uys
-uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 asm
 avs
 avs
@@ -126665,9 +126680,9 @@ aQK
 aQK
 aQK
 aQK
-aQK
-asm
-asm
+atk
+aRz
+aRz
 asm
 alW
 alW
@@ -126742,17 +126757,17 @@ aTa
 aTa
 aTa
 uys
-uys
-uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
 asm
-asm
-asm
-asm
+aRz
+aRz
+aRz
 asm
 avs
 avs
@@ -126768,9 +126783,9 @@ aQK
 aQK
 aQK
 aQK
-aQK
-asm
-asm
+aQP
+aRw
+aRw
 asm
 alW
 alW
@@ -126846,17 +126861,17 @@ aSZ
 aSZ
 uys
 uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
 uys
 asm
+aRw
+aRw
+aRw
 asm
-asm
-asm
-asm
 avs
 avs
 avs
@@ -126871,9 +126886,9 @@ aQK
 aQK
 aQK
 aQK
-aQK
-aQK
-aHD
+aQP
+aQP
+aJs
 aHU
 aHU
 aHU
@@ -126956,9 +126971,9 @@ uys
 uys
 uys
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -126974,9 +126989,9 @@ aQK
 aQK
 aQK
 aQK
-aQK
-aQK
-aHD
+aQP
+aQP
+aJs
 aHU
 aQJ
 ari
@@ -127054,14 +127069,14 @@ aSV
 aHF
 uys
 uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
 uys
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -127077,9 +127092,9 @@ aQK
 aQK
 aQK
 aQK
-aQK
-aQK
-aHD
+atk
+atk
+asH
 aHU
 aQJ
 ari
@@ -127156,15 +127171,15 @@ aTc
 aSV
 aHF
 uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
 asm
-asm
-asm
-asm
+aRz
+aRz
+aRz
 avs
 avs
 avs
@@ -127180,9 +127195,9 @@ aQK
 aQK
 aQK
 aQK
-aQK
-aQK
-aHD
+aQP
+aQP
+aJs
 aHU
 aQJ
 arj
@@ -127259,15 +127274,15 @@ aTb
 aSV
 aHF
 uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -127283,9 +127298,9 @@ aQK
 aQK
 aQK
 aQK
-aQK
-aQK
-aHD
+aQP
+aQP
+aJs
 aHU
 aHU
 aHU
@@ -127363,14 +127378,14 @@ aSV
 aHF
 uys
 uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
 uys
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -127386,8 +127401,8 @@ aQK
 aQK
 aQK
 aQK
-aQK
-atk
+aQP
+aQP
 aJs
 aJs
 asH
@@ -127471,9 +127486,9 @@ uys
 uys
 uys
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -127489,7 +127504,7 @@ aQK
 aQK
 aQK
 aQK
-atk
+aQP
 aQP
 aJs
 aJs
@@ -127574,9 +127589,9 @@ aHF
 uys
 uys
 asm
-asm
-asm
-asm
+aRz
+aRz
+aRz
 avs
 avs
 avs
@@ -127677,9 +127692,9 @@ aHF
 uys
 uys
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -127780,9 +127795,9 @@ aHF
 uys
 uys
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -127883,9 +127898,9 @@ aHF
 uys
 uys
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -127986,9 +128001,9 @@ aHF
 uys
 asm
 asm
-asm
-asm
-asm
+aRz
+aRz
+aRz
 avs
 avs
 avs
@@ -128089,9 +128104,9 @@ aHF
 uys
 asm
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -128192,9 +128207,9 @@ aHF
 uys
 asm
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -128295,9 +128310,9 @@ uys
 uys
 uys
 asm
-asm
-asm
-asm
+aRw
+aRw
+aRw
 avs
 avs
 avs
@@ -128394,13 +128409,13 @@ aHF
 aHF
 aHF
 uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
 aDb
-aDb
-aDb
-aDb
+aSf
+aSf
+aSf
 avs
 avs
 avs
@@ -128497,13 +128512,13 @@ aHF
 aHF
 aHF
 uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
 aDb
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -128604,9 +128619,9 @@ uys
 uys
 uys
 aDb
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -128700,16 +128715,16 @@ aSZ
 aSZ
 uys
 uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
 uys
 aDb
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -128802,17 +128817,17 @@ aTa
 aTa
 aTa
 uys
-uys
-uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
 aDb
-aDb
-aDb
-aDb
+aSf
+aSf
+aSf
 avs
 avs
 avs
@@ -128905,17 +128920,17 @@ aSZ
 aSZ
 aSZ
 uys
-uys
-uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
 aDb
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -129008,17 +129023,17 @@ aSZ
 aSZ
 aSZ
 uys
-uys
-uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
+aIm
 aDb
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -129112,16 +129127,16 @@ aSZ
 aSZ
 uys
 uys
-uys
-uys
-uys
-uys
-uys
+aIm
+aIm
+aIm
+aIm
+aIm
 uys
 aDb
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -129222,9 +129237,9 @@ aHG
 aHG
 uys
 uys
-aDb
-aDb
-aDb
+aSf
+aSf
+aSf
 avs
 avs
 avs
@@ -129318,16 +129333,16 @@ aTd
 aTd
 aHG
 aHG
+aIJ
+aIJ
+aIJ
+aIJ
+aIJ
 aHG
 aHG
-aHG
-aHG
-aHG
-aHG
-aHG
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -129420,17 +129435,17 @@ aTe
 aTe
 aTe
 aIu
-aIu
-aIu
-aIu
+aQE
+aQE
+aQE
+aIJ
+aIJ
+aIJ
+aIJ
 aHG
-aHG
-aHG
-aHG
-aHG
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -129524,16 +129539,16 @@ aTe
 aTe
 aIu
 aIu
-aIu
-aIu
+aQE
+aQE
+aJH
+aJH
+aJH
 aHH
 aHH
-aHH
-aHH
-aHH
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -129634,9 +129649,9 @@ aHH
 aHH
 aHH
 aHH
-aDb
-aDb
-aDb
+aSf
+aSf
+aSf
 avs
 avs
 avs
@@ -129730,16 +129745,16 @@ aTe
 aTe
 aIu
 aIu
-aIu
-aIu
+aQE
+aQE
+aJH
+aJH
+aJH
 aHH
 aHH
-aHH
-aHH
-aHH
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -129832,17 +129847,17 @@ aTe
 aTe
 aTe
 aIu
-aIu
-aIu
-aIu
+aQE
+aQE
+aQE
+aJH
+aJH
+aJH
+aJH
 aHH
-aHH
-aHH
-aHH
-aHH
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -129935,17 +129950,17 @@ aTe
 aTe
 aTe
 aIu
-aIu
-aIu
-aIu
+aQE
+aQE
+aQE
+aJH
+aJH
+aJH
+aJH
 aHH
-aHH
-aHH
-aHH
-aHH
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -130038,17 +130053,17 @@ aRV
 aRV
 aRV
 aHH
+aJH
+aJH
+aJH
+aJH
+aJH
+aJH
+aJH
 aHH
-aHH
-aHH
-aHH
-aHH
-aHH
-aHH
-aHH
-aDb
-aDb
-aDb
+aSf
+aSf
+aSf
 avs
 avs
 avs
@@ -130141,17 +130156,17 @@ aSe
 aSe
 aSe
 aHH
+aJH
+aJH
+aJH
+aJH
+aJH
+aJH
+aJH
 aHH
-aHH
-aHH
-aHH
-aHH
-aHH
-aHH
-aHH
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -130245,16 +130260,16 @@ aSe
 aSe
 aHH
 aHH
+aJH
+aJH
+aJH
+aJH
+aJH
 aHH
 aHH
-aHH
-aHH
-aHH
-aHH
-aHH
-aDb
-aDb
-aDb
+aRB
+aRB
+aRB
 avs
 avs
 avs
@@ -130355,9 +130370,9 @@ aHH
 aHH
 aHH
 aHH
-aDb
-aDb
-aDb
+aSf
+aSf
+aSf
 avs
 avs
 avs
@@ -130752,7 +130767,7 @@ aRV
 aRV
 aHH
 aHH
-aHH
+aUn
 aHH
 aHH
 aRV
@@ -130760,7 +130775,7 @@ aRV
 aRV
 aHH
 aHH
-aHH
+aUn
 aHH
 aHH
 aRV
@@ -130854,17 +130869,17 @@ aSe
 aSe
 aSe
 aHH
-aHH
-aHH
-aHH
+aJH
+aJH
+aJH
 aHH
 aSe
 aSe
 aSe
 aHH
-aHH
-aHH
-aHH
+aJH
+aJH
+aJH
 aHH
 aSe
 aSe
@@ -130957,17 +130972,17 @@ aSe
 aSe
 aSe
 aHH
-aHH
-aHH
-aHH
+aJH
+aJH
+aJH
 aHH
 aSe
 aSe
 aSe
 aHH
-aHH
-aHH
-aHH
+aJH
+aJH
+aJH
 aHH
 aSe
 aSe
@@ -131060,17 +131075,17 @@ aSe
 aSe
 aSe
 aHH
-aHH
-aHH
-aHH
+aJH
+aJH
+aJH
 aHH
 aSe
 aSe
 aSe
 aHH
-aHH
-aHH
-aHH
+aJH
+aJH
+aJH
 aHH
 aSe
 aSe
@@ -131163,17 +131178,17 @@ aIR
 aIR
 aIR
 aTq
-aTq
-aTq
-aTq
+aUq
+aUq
+aUq
 aTq
 aIS
 aIS
 aSf
 aDb
-aDb
-aDb
-aDb
+aQI
+aQI
+aQI
 aDb
 aRB
 aRB
@@ -131267,15 +131282,15 @@ aIR
 aIR
 aTq
 aTq
-aTq
-aTq
+aUq
+aUq
 aTq
 aIR
 aIR
 aRB
 aDb
-aDb
-aDb
+aQI
+aQI
 aDb
 aDb
 aRB
@@ -131883,7 +131898,7 @@ aTQ
 aTQ
 aRr
 aRr
-aRr
+aQC
 ldc
 aSR
 aSR
@@ -131895,7 +131910,7 @@ aSR
 aSR
 aSR
 ldc
-aRr
+aQC
 aRr
 aRr
 aHD
@@ -131985,9 +132000,9 @@ aRr
 aTQ
 aTQ
 aRr
-aRr
-aRr
-ldc
+aQC
+aQC
+aIK
 aSR
 aSR
 aSR
@@ -131997,9 +132012,9 @@ aSR
 aSR
 aSR
 aSR
-ldc
-aRr
-aRr
+aIK
+aQC
+aQC
 aRr
 aHD
 aHD
@@ -132088,8 +132103,8 @@ aRr
 aRr
 aRr
 aRr
-aRr
-aRr
+aQC
+aQC
 ldc
 aSR
 aSR
@@ -132101,8 +132116,8 @@ aSR
 aSR
 aSR
 ldc
-aRr
-aRr
+aQC
+aQC
 aRr
 aRr
 aRr
@@ -132191,8 +132206,8 @@ aRr
 aRr
 aRr
 aRr
-aRr
-aRr
+aQC
+aQC
 ldc
 aSR
 aSR
@@ -132204,8 +132219,8 @@ aSR
 aSR
 aSR
 ldc
-aRr
-aRr
+aQC
+aQC
 aRr
 aRr
 aRr
@@ -132294,21 +132309,21 @@ aRr
 aRr
 aRr
 aRr
-aRr
-aRr
+aQC
+aQC
 ldc
 ldc
 aSR
 aSR
-aSR
-aSR
-aSR
-aSR
+ldc
+ldc
+ldc
 aSR
 aSR
 ldc
-aRr
-aRr
+ldc
+aQC
+aQC
 aRr
 aRr
 aRr
@@ -132397,9 +132412,9 @@ aRr
 aRr
 aRr
 aRr
-aRr
-aRr
-aRr
+aQC
+aQC
+aQC
 ldc
 aSR
 aSR
@@ -132409,9 +132424,9 @@ aSR
 aSR
 aSR
 ldc
-aRr
-aRr
-aRr
+aQC
+aQC
+aQC
 aRr
 aRr
 aRr
@@ -132500,9 +132515,9 @@ aRr
 aRr
 aRr
 aRr
-aRr
-aRr
-aRr
+aQC
+aQC
+aQC
 ldc
 aSR
 aSR
@@ -132512,9 +132527,9 @@ aSR
 aSR
 aSR
 ldc
-aRr
-aRr
-aRr
+aQC
+aQC
+aQC
 aRr
 aRr
 aRr
@@ -132604,8 +132619,8 @@ aRW
 aRW
 aRr
 aRr
-aRr
-aRr
+aQC
+aQC
 ldc
 aSR
 aSR
@@ -132615,8 +132630,8 @@ aSR
 aSR
 aSR
 ldc
-aRr
-aRr
+aQC
+aQC
 aRr
 aRr
 aRW
@@ -132707,8 +132722,8 @@ aRW
 aRW
 aRr
 aRr
-aRr
-aRr
+aQC
+aQC
 ldc
 aSR
 aSR
@@ -132718,8 +132733,8 @@ aSR
 aSR
 aSR
 ldc
-aRr
-aRr
+aQC
+aQC
 aRr
 aRr
 aRW

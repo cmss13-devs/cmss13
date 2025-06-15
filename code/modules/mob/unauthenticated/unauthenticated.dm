@@ -15,6 +15,8 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 	var/datum/tgui_window/unauthenticated_menu
 
+	var/new_ckey
+
 	COOLDOWN_DECLARE(recall_code_cooldown)
 
 /mob/unauthenticated/New(loc, ...)
@@ -81,12 +83,27 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 			addtimer(CALLBACK(src, PROC_REF(check_logged_in)), 5 SECONDS)
 		return
 
-	client.external_username = ckey(request.external_username)
+	if(request.external_username)
+		client.external_username = ckey(request.external_username)
+
+		new_ckey = "Guest-Forums-[client.external_username]"
+
+	else if(request.internal_user_id)
+		var/datum/view_record/players/player = locate() in DB_VIEW(
+			/datum/view_record/players,
+			DB_COMP("id", DB_EQUALS, request.internal_user_id)
+		)
+
+		if(!player)
+			message_admins("Something has gone really wrong when authenticating [client].")
+			return
+
+		new_ckey = player.ckey
 
 	if(!code)
 		notify_unauthenticated_menu()
 
-	if(world.IsBanned("Guest-Forums-[client.external_username]", client.address, client.computer_id, real_bans_only = TRUE))
+	if(world.IsBanned(new_ckey, client.address, client.computer_id, real_bans_only = TRUE))
 		unauthenticated_menu.send_message("banned")
 		QDEL_IN(client, 10 SECONDS)
 		return FALSE
@@ -99,7 +116,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	var/client/user = GLOB.directory[ckey]
 	GLOB.directory -= ckey
 
-	user.key = "Guest-Forums-[user.external_username]"
+	user.key = new_ckey
 	GLOB.permitted_guests |= user.key
 
 	// Readd the client to the directory with the *new* Guest ckey
@@ -162,6 +179,17 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 		ui.closeable = FALSE
 		ui.open(preinitialized = TRUE)
 
+/mob/unauthenticated/ui_static_data(mob/user)
+	. = ..()
+
+	.["auth_options"] = list()
+
+	var/config_options = CONFIG_GET(keyed_list/auth_urls)
+	for(var/key in config_options)
+		.["auth_options"] += list(
+			list("name" = key, "url" = config_options[key])
+		)
+
 /mob/unauthenticated/ui_state(mob/user)
 	return GLOB.always_state
 
@@ -170,7 +198,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 	switch(action)
 		if("open_browser")
-			client << link("[CONFIG_GET(string/auth_url)]?code=[access_code]")
+			client << link("[CONFIG_GET(keyed_list/auth_urls)[params["auth_option"]]]?code=[access_code]")
 		if("recall_code")
 			if(!COOLDOWN_FINISHED(src, recall_code_cooldown))
 				return

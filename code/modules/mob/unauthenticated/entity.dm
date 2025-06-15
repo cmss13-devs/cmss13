@@ -5,6 +5,7 @@
 
 	var/approved = FALSE
 	var/external_username
+	var/internal_user_id
 
 /datum/entity_meta/authentication_request
 	entity_type = /datum/entity/authentication_request
@@ -14,6 +15,7 @@
 		"time" = DB_FIELDTYPE_DATE,
 		"approved" = DB_FIELDTYPE_INT,
 		"external_username" = DB_FIELDTYPE_STRING_MEDIUM,
+		"internal_user_id" = DB_FIELDTYPE_INT,
 	)
 
 /datum/view_record/authentication_request
@@ -22,6 +24,7 @@
 
 	var/approved
 	var/external_username
+	var/internal_user_id
 
 /datum/entity_view_meta/authentication_request
 	root_record_type = /datum/entity/authentication_request
@@ -31,4 +34,5 @@
 		"time",
 		"approved",
 		"external_username",
+		"internal_user_id"
 	)

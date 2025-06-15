@@ -310,7 +310,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
 	// we should interrupt this here, now
-	if(IsGuestKey(key) && CONFIG_GET(string/auth_url) && !check_localhost_status())
+	if(IsGuestKey(key) && length(CONFIG_GET(keyed_list/auth_urls)) && !check_localhost_status())
 		mob = new /mob/unauthenticated()
 		return mob
 

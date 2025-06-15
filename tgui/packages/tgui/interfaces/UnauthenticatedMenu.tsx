@@ -7,6 +7,10 @@ import { Window } from '../layouts';
 
 const MAX_TIMEOUT = 10800000; // 3 hours
 
+type MenuData = {
+  auth_options: { name: string; url: string }[];
+};
+
 export const UnauthenticatedMenu = () => {
   const { act } = useBackend();
 
@@ -47,7 +51,9 @@ export const UnauthenticatedMenu = () => {
 };
 
 const Authentication = () => {
-  const { act } = useBackend();
+  const { act, data } = useBackend<MenuData>();
+
+  const { auth_options } = data;
 
   return (
     <Section title="Authenticate">
@@ -55,19 +61,23 @@ const Authentication = () => {
         <Stack.Item>
           You are not currently authenticated, so cannot log into the game.
         </Stack.Item>
-        <Stack.Item>
-          <Stack align="center">
-            <Stack.Item grow>
-              <Button
-                onClick={() => act('open_browser')}
-                fluid
-                textAlign="center"
-              >
-                Click here to log in with CM-SS13 Forums
-              </Button>
-            </Stack.Item>
-          </Stack>
-        </Stack.Item>
+        {auth_options.map((option) => (
+          <Stack.Item key={option.name}>
+            <Stack align="center">
+              <Stack.Item grow>
+                <Button
+                  onClick={() =>
+                    act('open_browser', { auth_option: option.name })
+                  }
+                  fluid
+                  textAlign="center"
+                >
+                  Click here to log in with {option.name}
+                </Button>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+        ))}
       </Stack>
     </Section>
   );

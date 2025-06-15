@@ -347,7 +347,6 @@
 				src.visible_message(SPAN_WARNING("The explosion causes shards to spall off of [src]!"))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/spall, cause_data)
 		take_damage(exp_damage, mob)
-
 	return
 
 /turf/closed/wall/get_explosion_resistance()

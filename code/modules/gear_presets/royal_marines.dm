@@ -49,7 +49,7 @@
 /datum/equipment_preset/twe/royal_marine
 	name = "Royal Marines Commando"
 	assignment = "Royal Marine"
-	rank = JOB_TWE_RMC_RIFLEMAN
+	job_title = JOB_TWE_RMC_RIFLEMAN
 	var/human_versus_human = FALSE
 	///Gives the Royal Marines their radios
 	var/headset_type = /obj/item/device/radio/headset/distress/royal_marine
@@ -63,7 +63,7 @@
 	role_comm_title = "RMC"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Rifleman"
-	rank = JOB_TWE_RMC_RIFLEMAN
+	job_title = JOB_TWE_RMC_RIFLEMAN
 
 	minimap_icon = "rmc_rifleman"
 
@@ -125,7 +125,7 @@
 /datum/equipment_preset/twe/royal_marine/spec/marksman
 	name = "TWE Royal Marine Commando (Marksman)"
 	assignment = "Royal Marines Marksman"
-	rank = JOB_TWE_RMC_MARKSMAN
+	job_title = JOB_TWE_RMC_MARKSMAN
 	minimap_icon = "rmc_marksman"
 
 /datum/equipment_preset/twe/royal_marine/spec/marksman/load_gear(mob/living/carbon/human/new_human)
@@ -170,7 +170,7 @@
 	name = "TWE Royal Marine Commando (Breacher)"
 	role_comm_title = "RMC BRC"
 	assignment = "Royal Marines Breacher"
-	rank = JOB_TWE_RMC_BREACHER
+	job_title = JOB_TWE_RMC_BREACHER
 	minimap_icon = "rmc_breacher"
 
 	skills = /datum/skills/rmc/breacher
@@ -220,7 +220,7 @@
 	name = "TWE Royal Marine Commando (Smartgunner)"
 	role_comm_title = "RMC SG"
 	assignment = "Royal Marines Smartgunner"
-	rank = JOB_TWE_RMC_SMARTGUNNER
+	job_title = JOB_TWE_RMC_SMARTGUNNER
 
 	minimap_icon = "rmc_sg"
 
@@ -271,7 +271,7 @@
 	role_comm_title = "RMC MED"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Medical Technician"
-	rank = JOB_TWE_RMC_MEDIC
+	job_title = JOB_TWE_RMC_MEDIC
 
 	minimap_icon = "rmc_medic"
 
@@ -320,7 +320,7 @@
 	role_comm_title = "RMC TL"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Team Leader"
-	rank = JOB_TWE_RMC_TEAMLEADER
+	job_title = JOB_TWE_RMC_TEAMLEADER
 
 	minimap_icon = "rmc_teamleader"
 
@@ -373,7 +373,7 @@
 	role_comm_title = "RMC LT"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Team Commander"
-	rank = JOB_TWE_RMC_LIEUTENANT
+	job_title = JOB_TWE_RMC_LIEUTENANT
 
 	minimap_icon = "rmc_lieutenant"
 
@@ -442,7 +442,7 @@
 	role_comm_title = "RMC CPT"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Captain"
-	rank = JOB_TWE_RMC_CAPTAIN
+	job_title = JOB_TWE_RMC_CAPTAIN
 
 	minimap_icon = "rmc_commander"
 
@@ -511,7 +511,7 @@
 	role_comm_title = "RMC MJR"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Royal Marines Major"
-	rank = JOB_TWE_RMC_MAJOR
+	job_title = JOB_TWE_RMC_MAJOR
 
 	minimap_icon = "rmc_major"
 

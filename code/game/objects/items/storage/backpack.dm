@@ -480,7 +480,7 @@
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
 	)
-	can_hold = list(/obj/item/ammo_box, /obj/item/stack/folding_barricade)
+	can_hold = list(/obj/item/ammo_box, /obj/item/stack/folding_barricade, /obj/item/stack/sandbags, /obj/item/stack/sandbags_empty)
 	max_w_class = SIZE_MASSIVE
 	throw_range = 0
 	xeno_types = null

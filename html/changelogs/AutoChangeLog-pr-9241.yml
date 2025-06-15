@@ -1,9 +1,0 @@
-author: "Detective-Google"
-delete-after: True
-changes:
-  - rscdel: "Reverts the jamming system"
-  - rscadd: "Guns now have a \"Second wind\" that can be seen in their examine."
-  - rscadd: "Spraying an acided gun with an extinguisher will extinguish the acid."
-  - balance: "Allowing the acid to finish on the weapon will remove it's \"Second wind\" and play a click noise."
-  - balance: "Once the weapon has lost its \"Second wind\" it can no longer have future acid sprayed off of it."
-  - rscadd: "\"Second wind\" applies to explosions from minor to moderate severity, and is only consumed if the weapon would have otherwise been destroyed by the explosion."

@@ -83,8 +83,8 @@
 /datum/equipment_preset/survivor/cmb/co
 	name = "CO Survivor - Solaris Ridge - CMB Marshal"
 	assignment = "CMB Marshal"
-	role_comm_title = "CMB MAR"
 	rank = JOB_CMB_TL
+	role_comm_title = "CMB MAR"
 	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "deputy"
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)

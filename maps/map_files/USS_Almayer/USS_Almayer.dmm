@@ -13310,7 +13310,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/maint/lower/cryo_cells)
 "aIK" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering";
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -15375,6 +15376,10 @@
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/case,
+/obj/structure/largecrate/random/mini{
+	pixel_y = 6
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aOK" = (
@@ -15726,6 +15731,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/lower_medical_lobby)
 "aPM" = (
@@ -15988,6 +15994,10 @@
 /turf/closed/wall/almayer/aicore/hull,
 /area/almayer/squads/alpha)
 "aQE" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/shipboard/sea_office)
 "aQF" = (
@@ -16018,6 +16028,7 @@
 	pixel_y = 19;
 	layer = 5.2
 	},
+/obj/structure/largecrate/random/mini/ammo,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/port_aft_hallway)
 "aQJ" = (
@@ -16142,6 +16153,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "aRd" = (
@@ -16406,6 +16418,11 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/squads/bravo)
 "aRY" = (
+/obj/structure/largecrate/random/barrel/medical,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/lockerroom)
 "aRZ" = (
@@ -16471,6 +16488,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/operating_room_three)
 "aSk" = (
@@ -16560,6 +16578,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/operating_room_four)
@@ -16717,6 +16739,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/light,
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/clipboard,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/engineering/lower/workshop)
 "aSS" = (
@@ -16802,17 +16825,22 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/item/tool/wet_sign,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/sea_office)
 "aTg" = (
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/chief_mp_office)
 "aTh" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering"
+	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "aTi" = (
-/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering"
+	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/engineering/lower/workshop)
 "aTj" = (
@@ -17024,6 +17052,17 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aTT" = (
@@ -17155,6 +17194,9 @@
 	pixel_y = 19;
 	layer = 5.2
 	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "aUr" = (
@@ -17254,6 +17296,10 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/briefing)
 "aUA" = (
@@ -17291,6 +17337,7 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/obj/structure/airlock_assembly,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/grunt_rnr)
 "aUE" = (
@@ -17349,7 +17396,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/port_aft_hallway)
 "aUJ" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Requisitions Storage";
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -17450,6 +17498,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/airlock_assembly/multi_tile,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/squads/req)
 "aUW" = (
@@ -17457,6 +17506,7 @@
 	light_color = "#BB3F3F";
 	dir = 4
 	},
+/obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/cryo_cells)
 "aUX" = (
@@ -17595,6 +17645,12 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/item/storage/belt/marine{
+	pixel_y = -1
+	},
+/obj/item/storage/belt/marine{
+	pixel_y = 11
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/hallways/lower/port_aft_hallway)
 "aVo" = (
@@ -17633,7 +17689,8 @@
 /turf/open_space,
 /area/almayer/living/briefing)
 "aVt" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Requisitions Storage";
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -17765,6 +17822,9 @@
 	pixel_y = 19;
 	layer = 5.2
 	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/lower_medical_medbay)
 "aVK" = (
@@ -17809,6 +17869,12 @@
 /obj/structure/machinery/light/red{
 	dir = 4;
 	light_color = "#BB3F3F"
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/operating_room_two)
@@ -18354,6 +18420,17 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "aXd" = (
@@ -19257,6 +19334,9 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/grunt_rnr)
 "aZj" = (
@@ -19371,6 +19451,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/briefing)
@@ -19709,6 +19793,10 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/briefing)
 "bam" = (
@@ -19755,6 +19843,10 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/squads/charlie)
 "bap" = (
@@ -19774,6 +19866,10 @@
 	icon_state = "SW-out";
 	layer = 2.5;
 	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/squads/charlie)
@@ -19934,6 +20030,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/port_midship_hallway)
 "baR" = (
@@ -20645,6 +20742,12 @@
 /area/almayer/medical/operating_room_three)
 "bck" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/operating_room_four)
 "bcl" = (
@@ -20709,6 +20812,9 @@
 	pixel_y = 19;
 	layer = 5.2
 	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/briefing)
 "bct" = (
@@ -20751,6 +20857,12 @@
 /obj/structure/surface/rack{
 	pixel_y = 19;
 	layer = 5.2
+	},
+/obj/item/storage/box/tapes{
+	pixel_y = -2
+	},
+/obj/item/storage/box/tapes{
+	pixel_y = 5
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/squads/req)
@@ -21016,6 +21128,9 @@
 	pixel_y = 19;
 	layer = 5.2
 	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/cryo_cells)
 "bdf" = (
@@ -21126,6 +21241,10 @@
 "bdt" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/almayer,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/lockerroom)
 "bdu" = (
@@ -21354,10 +21473,17 @@
 	pixel_y = 19;
 	layer = 5.2
 	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/cryo_cells)
 "bdY" = (
 /obj/structure/surface/table/almayer,
+/obj/item/inflatable,
+/obj/item/inflatable{
+	pixel_y = 6
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/cryo_cells)
 "bdZ" = (
@@ -21444,6 +21570,11 @@
 "bel" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/almayer,
+/obj/item/storage/box/ids{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/storage/box/lights,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/briefing)
 "bem" = (
@@ -21454,6 +21585,10 @@
 "ben" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/almayer,
+/obj/structure/prop/server_equipment/laptop/closed,
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_y = 5
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/cryo_cells)
 "beo" = (
@@ -21624,6 +21759,15 @@
 "beE" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/almayer,
+/obj/item/storage/box/disks{
+	pixel_y = 13;
+	pixel_x = -4
+	},
+/obj/effect/spawner/random/tool,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/shipboard/sea_office)
 "beF" = (
@@ -21678,6 +21822,17 @@
 	light_color = "#BB3F3F"
 	},
 /obj/structure/surface/table/almayer,
+/obj/item/storage/box/sprays{
+	pixel_x = 13;
+	pixel_y = 4
+	},
+/obj/item/storage/box/sprays{
+	pixel_y = 3
+	},
+/obj/item/storage/box/sprays{
+	pixel_y = 14;
+	pixel_x = 9
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/squads/req)
 "beN" = (
@@ -21692,6 +21847,10 @@
 /area/almayer/lifeboat_pumps/north2)
 "beO" = (
 /obj/structure/surface/table/almayer,
+/obj/item/storage/box/sprays{
+	pixel_x = -4;
+	pixel_y = 7
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/squads/req)
 "beP" = (
@@ -21751,7 +21910,18 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
-/obj/structure/surface/table/almayer,
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_x = -7;
+	pixel_y = -1
+	},
+/obj/structure/largecrate/random/mini/small_case/b{
+	pixel_x = 8;
+	pixel_y = -1
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -1;
+	pixel_y = 9
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/squads/req)
 "beY" = (
@@ -21764,6 +21934,7 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/airlock_assembly,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/cryo_cells)
 "bfa" = (
@@ -21796,6 +21967,7 @@
 "bfe" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/engineering/lower/workshop)
 "bff" = (
@@ -21882,6 +22054,9 @@
 "bfr" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/almayer,
+/obj/structure/bed{
+	pixel_y = 9
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/port_aft_hallway)
 "bfs" = (
@@ -22208,6 +22383,8 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/storage/belt/utility/full,
+/obj/item/clothing/glasses/welding,
 /turf/open/floor/almayer/no_build,
 /area/almayer/engineering/lower/workshop)
 "bgq" = (
@@ -22722,6 +22899,7 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/item/tool/wet_sign,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/squads/req)
 "bhm" = (
@@ -22930,6 +23108,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/item/frame/fire_alarm,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/engineering/lower/workshop)
 "bhN" = (
@@ -22951,6 +23130,9 @@
 /obj/structure/surface/rack{
 	pixel_y = 19;
 	layer = 5.2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/lower_medical_medbay)
@@ -23035,10 +23217,17 @@
 	pixel_y = 19;
 	layer = 5.2
 	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "bib" = (
 /obj/structure/surface/table/almayer,
+/obj/item/storage/firstaid/regular{
+	pixel_y = 9
+	},
+/obj/item/storage/firstaid/regular/empty,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/chemistry)
 "bic" = (
@@ -23247,6 +23436,13 @@
 	pixel_y = 19;
 	layer = 5.2
 	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12;
+	pixel_y = 12
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/chemistry)
 "biz" = (
@@ -23285,6 +23481,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/briefing)
@@ -23509,6 +23709,12 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bja" = (
@@ -23579,6 +23785,17 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/starboard_midship_hallway)
@@ -24045,6 +24262,17 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "bkk" = (
@@ -24252,6 +24480,7 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/grunt_rnr)
 "bkL" = (
@@ -24331,6 +24560,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/grunt_rnr)
 "bkW" = (
@@ -24346,6 +24579,14 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/grunt_rnr)
 "bkY" = (
@@ -24354,6 +24595,15 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/obj/effect/spawner/random/technology_scanner,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/grunt_rnr)
@@ -24365,6 +24615,25 @@
 	layer = 2.5;
 	pixel_y = 0
 	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_y = 11
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_y = 15
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_y = 18
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/grunt_rnr)
 "bla" = (
@@ -24375,6 +24644,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
+/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/living/grunt_rnr)
 "blb" = (
@@ -24619,6 +24889,7 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/squads/bravo)
 "blC" = (
+/obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/lockerroom)
 "blD" = (
@@ -24713,6 +24984,10 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/operating_room_three)
 "blP" = (
@@ -24720,6 +24995,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/operating_room_four)
@@ -24858,10 +25137,15 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/shipboard/sea_office)
 "bmf" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/sea_office)
 "bmg" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/cryo_cells)
 "bmh" = (
@@ -24925,6 +25209,9 @@
 /obj/structure/surface/rack{
 	pixel_y = 19;
 	layer = 5.2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/cryo_cells)
@@ -24996,6 +25283,11 @@
 /obj/structure/machinery/light/red{
 	dir = 8;
 	light_color = "#BB3F3F"
+	},
+/obj/structure/largecrate/random/case/double,
+/obj/structure/largecrate/random/mini/wooden{
+	pixel_y = 16;
+	pixel_x = 3
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/shipboard/sea_office)
@@ -25108,10 +25400,17 @@
 /turf/open/floor/almayer,
 /area/almayer/living/gym)
 "bmG" = (
+/obj/structure/machinery/recharge_station,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/cryo_cells)
 "bmH" = (
 /obj/structure/surface/table/almayer,
+/obj/item/storage/box/m94{
+	pixel_y = 7
+	},
+/obj/item/storage/box/m94{
+	pixel_y = 10
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/living/cryo_cells)
 "bmI" = (
@@ -25136,6 +25435,7 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
+/obj/structure/machinery/portable_atmospherics/powered/scrubber,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/engineering/lower/engine_core)
 "bmL" = (
@@ -25360,6 +25660,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
+/obj/structure/machinery/power/port_gen/pacman,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/engineering/lower/engine_core)
 "bnh" = (
@@ -25555,6 +25856,9 @@
 "bnD" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/almayer,
+/obj/item/cpr_dummy{
+	pixel_y = 12
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/chemistry)
 "bnE" = (
@@ -25563,6 +25867,12 @@
 /area/almayer/medical/lower_medical_lobby)
 "bnF" = (
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/operating_room_two)
 "bnG" = (
@@ -25841,6 +26151,10 @@
 /obj/item/tool/hand_labeler{
 	pixel_y = 14;
 	pixel_x = -15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/medical/lockerroom)
@@ -26163,6 +26477,81 @@
 /obj/structure/dropship_equipment/fulton_system,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
+"bpk" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/ladder/multiz,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/lower/cryo_cells)
+"bpl" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_p)
+"bpm" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_p)
+"bpn" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_p)
+"bpo" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_p)
+"bpp" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/maint/hull/lower/l_a_p)
+"bpq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/maint/hull/lower/l_a_p)
+"bpr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/vehicle/train/cargo/engine,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_p)
+"bps" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/maint/hull/lower/l_a_p)
+"bpt" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_p)
+"bpu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/maint/hull/lower/l_a_p)
 "bpv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -26182,6 +26571,26 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
+"bpx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic{
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/delta)
+"bpy" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic{
+	dir = 8
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic{
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/delta)
 "bpz" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/pillbottles{
@@ -26228,9 +26637,92 @@
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/living/briefing)
+"bpB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/maint/hull/lower/l_a_p)
 "bpC" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
+"bpD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/delta)
+"bpE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/delta)
+"bpF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/squads/delta)
 "bpG" = (
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/medic,
 /turf/open/floor/almayer/test_floor4,
@@ -26243,6 +26735,21 @@
 /obj/structure/closet/secure_closet/fridge/dry/stock,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
+"bpJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/delta)
 "bpK" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/sl,
 /turf/open/floor/almayer/test_floor4,
@@ -26256,6 +26763,45 @@
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/squads/alpha)
+"bpM" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/squads/delta)
+"bpN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/port_fore_hallway)
+"bpO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_fore_hallway)
+"bpP" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_m_p)
 "bpQ" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 4;
@@ -26277,6 +26823,91 @@
 /obj/structure/machinery/computer/supply/asrs,
 /turf/open/floor/almayer/green/north,
 /area/almayer/squads/req)
+"bpU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/briefing)
+"bpV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/grunt_rnr)
+"bpW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/grunt_rnr)
+"bpX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/grunt_rnr)
+"bpY" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_y = 11
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_y = 15
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/grunt_rnr)
+"bpZ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/briefing)
 "bqa" = (
 /obj/structure/filingcabinet/medical{
 	pixel_x = 7;
@@ -26285,9 +26916,58 @@
 	},
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/medical/morgue)
+"bqb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_fore_hallway)
 "bqc" = (
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_aft_hallway)
+"bqd" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/grunt_rnr)
+"bqe" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/grunt_rnr)
+"bqf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/grunt_rnr)
 "bqg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -26301,11 +26981,317 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_fore_hallway)
+"bqh" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/port_fore_hallway)
+"bqi" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/port_fore_hallway)
+"bqj" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/port_fore_hallway)
+"bqk" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/port_midship_hallway)
+"bql" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_midship_hallway)
+"bqm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_midship_hallway)
+"bqn" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/port_aft_hallway)
+"bqo" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_fore_hallway)
+"bqp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_fore_hallway)
+"bqq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_midship_hallway)
+"bqr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_midship_hallway)
+"bqs" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_aft_hallway)
+"bqt" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/port_fore_hallway)
+"bqu" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/port_midship_hallway)
+"bqv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_midship_hallway)
+"bqw" = (
+/obj/structure/machinery/door/airlock/almayer/security{
+	access_modified = 1;
+	dir = 2;
+	name = "\improper Security Checkpoint";
+	req_access = null;
+	req_one_access_txt = "3;19"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/living/briefing)
+"bqx" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/lockerroom)
+"bqy" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/emcloset,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bqz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bqA" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/mousetraps{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/storage/box/mousetraps{
+	pixel_x = 15;
+	pixel_y = 2
+	},
+/obj/item/storage/box/mousetraps{
+	pixel_y = 14;
+	pixel_x = 9
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bqB" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/m94,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bqC" = (
+/obj/structure/largecrate/random,
+/obj/structure/largecrate/random{
+	pixel_y = 17;
+	layer = 5.2
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bqD" = (
+/obj/structure/largecrate/random,
+/obj/structure/largecrate/random/mini{
+	pixel_y = 13;
+	layer = 5.2
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bqE" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "bqF" = (
 /obj/structure/dropship_equipment/fuel/fuel_enhancer,
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/hangar)
+"bqG" = (
+/obj/structure/filingcabinet{
+	pixel_x = -9
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 7
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "bqH" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -26326,13 +27312,87 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/lower_medical_lobby)
+"bqI" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bqJ" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bqK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/storage/box/masks{
+	pixel_y = -2
+	},
+/obj/item/storage/box/masks{
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "bqL" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_lobby)
+"bqM" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/storage/box/explosive_mines,
+/obj/item/storage/box/explosive_mines,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bqN" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -3
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/cryo_cells)
+"bqO" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/cryo_cells)
+"bqP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/living/cryo_cells)
+"bqQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/operating_room_four)
 "bqR" = (
 /turf/open/floor/almayer/sterile_green_side/southeast,
 /area/almayer/medical/lower_medical_lobby)
+"bqS" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bqT" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -26343,6 +27403,19 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
+"bqU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bqV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/empty/case,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bqW" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/head/cmcap{
@@ -26359,6 +27432,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
+"bqX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/empty/case/double,
+/obj/item/storage/box/mousetraps{
+	pixel_y = 16;
+	pixel_x = 4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bqY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -26387,6 +27469,32 @@
 /obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
+"brc" = (
+/obj/item/device/assembly/mousetrap/armed,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"brd" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/cryo_cells)
+"bre" = (
+/obj/structure/prop/almayer/computers/sensor_computer2,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower)
 "brf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/cameras/almayer_network/vehicle{
@@ -26394,6 +27502,21 @@
 	},
 /turf/open/floor/almayer/redfull,
 /area/almayer/shipboard/starboard_missiles)
+"brg" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/lockerroom)
+"brh" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/lockerroom)
 "bri" = (
 /turf/open/floor/almayer/cargo_arrow/west,
 /area/almayer/squads/req)
@@ -26404,10 +27527,48 @@
 	},
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/squads/req)
+"brk" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/medical/lower_medical_lobby)
+"brl" = (
+/obj/structure/machinery/door/airlock/almayer/security{
+	access_modified = 1;
+	dir = 8;
+	name = "\improper Security Checkpoint";
+	req_access = null;
+	req_one_access_txt = "3;19"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/living/briefing)
+"brm" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/photocopier{
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "brn" = (
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/smart,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/bravo)
+"bro" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/storage/box/guncase/m41a,
+/obj/item/storage/box/guncase/m41a{
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "brp" = (
 /obj/structure/supply_drop/bravo,
 /turf/open/floor/plating,
@@ -26426,18 +27587,44 @@
 /obj/structure/machinery/cm_vending/clothing/engi/bravo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
+"bru" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "brv" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha)
+"brw" = (
+/obj/item/device/assembly/mousetrap/armed,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"brx" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Requisitions Storage"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/squads/req)
 "bry" = (
 /obj/structure/sign/poster{
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/red/east,
 /area/almayer/squads/alpha)
+"brz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/ladder/multiz,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "brA" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
@@ -26448,6 +27635,48 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
+"brB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"brC" = (
+/obj/structure/surface/table/almayer,
+/obj/item/fuel_cell/used{
+	pixel_y = 15
+	},
+/obj/item/fuel_cell/used{
+	pixel_y = 8;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/cryo_cells)
+"brD" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/living/cryo_cells)
+"brE" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower)
+"brF" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower)
+"brG" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/lockerroom)
 "brH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -26465,6 +27694,91 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
+"brI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/lower_medical_medbay)
+"brJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/briefing)
+"brK" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"brL" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"brM" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Requisitions Storage"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/living/briefing)
+"brN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/storage/box/syringes{
+	pixel_y = -2
+	},
+/obj/item/storage/box/syringes{
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"brO" = (
+/obj/structure/largecrate,
+/obj/item/frame/rack{
+	pixel_y = 15
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"brP" = (
+/obj/structure/largecrate,
+/obj/item/storage/box/teabags{
+	pixel_y = 11
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"brQ" = (
+/obj/structure/machinery/suit_storage_unit/carbon_unit,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower)
+"brR" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/no_build,
+/area/almayer/engineering/lower)
 "brS" = (
 /obj/structure/closet/secure_closet/staff_officer/gear{
 	pixel_x = 1;
@@ -26472,13 +27786,142 @@
 	},
 /turf/open/floor/almayer/blue,
 /area/almayer/living/bridgebunks)
+"brT" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/engineering/lower/engine_core)
+"brU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/lockerroom)
+"brV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/belt/utility/full,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "brW" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"brX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/stack/cable_coil/random,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "brY" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
+"brZ" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bsa" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/stack/sheet/cardboard{
+	amount = 50
+	},
+/obj/item/packageWrap,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/obj/structure/noticeboard{
+	pixel_x = 16;
+	pixel_y = 29
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bsb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/obj/effect/landmark/map_item,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bsc" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bsd" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/ladder/multiz,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/maint/lower/cryo_cells)
+"bse" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/shipboard/sea_office)
+"bsf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/stack/cable_coil/orange,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/cryo_cells)
+"bsg" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/cryo_cells)
+"bsh" = (
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/engineering/lower/engine_core)
+"bsi" = (
+/obj/structure/machinery/door/airlock/almayer/security/reinforced{
+	access_modified = 1;
+	closeOtherId = "astroladder_n";
+	name = "\improper Astronavigational Deck";
+	req_access = null;
+	req_one_access_txt = "3;19"
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/hallways/hangar)
 "bsj" = (
 /obj/structure/surface/table/almayer,
@@ -26507,6 +27950,60 @@
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_lobby)
+"bsk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/trash/USCMtray{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/trash/USCMtray{
+	pixel_y = 8
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bsl" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bsm" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bsn" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bso" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/snappops{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/storage/box/snappops,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bsp" = (
 /obj/structure/sink{
 	dir = 4;
@@ -26514,9 +28011,67 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/brig/perma)
+"bsq" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/powercell,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bsr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/tool/extinguisher{
+	pixel_y = 19;
+	pixel_x = -7
+	},
+/obj/item/tool/crowbar/red,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bss" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard{
+	pixel_x = -5;
+	pixel_y = 8
+	},
+/obj/item/tool/pen{
+	pixel_y = 5;
+	pixel_x = -4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bst" = (
 /turf/closed/wall/almayer/white,
 /area/almayer/medical/operating_room_one)
+"bsu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bsv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "bsw" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -26524,6 +28079,15 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/living/chapel)
+"bsx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "bsy" = (
 /obj/structure/closet/medical_wall{
 	pixel_x = 30
@@ -26548,6 +28112,35 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_three)
+"bsA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/tool/weldpack{
+	pixel_y = 20;
+	pixel_x = 9
+	},
+/obj/structure/prop/server_equipment/laptop{
+	pixel_x = 1;
+	pixel_y = 2;
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bsB" = (
+/obj/structure/closet/crate,
+/obj/item/storage/firstaid/rad,
+/obj/item/storage/firstaid/rad,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/engine_core)
+"bsC" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/computer/arcade,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bsD" = (
 /obj/structure/closet{
 	name = "boxing attire"
@@ -26564,6 +28157,15 @@
 /obj/item/clothing/under/shorts/grey,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
+"bsE" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/mop{
+	pixel_y = 22;
+	pixel_x = 8
+	},
+/obj/item/reagent_container/glass/bucket/janibucket,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bsF" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
@@ -26582,6 +28184,23 @@
 	},
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/living/cryo_cells)
+"bsH" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/facepaint,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
+"bsI" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/sign/calendar{
+	pixel_y = 27
+	},
+/obj/item/storage/box/pdt_kit{
+	pixel_y = 10;
+	pixel_x = -8
+	},
+/obj/item/storage/box/pdt_kit,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bsJ" = (
 /obj/structure/machinery/door/poddoor/railing{
 	dir = 4;
@@ -26600,6 +28219,11 @@
 	},
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/almayer/squads/req)
+"bsM" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/toy,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bsN" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -26608,6 +28232,11 @@
 /obj/item/folder/black,
 /turf/open/floor/almayer/greenfull,
 /area/almayer/living/offices)
+"bsO" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bsP" = (
 /obj/structure/window/framed/almayer/white,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -26648,6 +28277,11 @@
 /obj/structure/machinery/cm_vending/clothing/specialist/bravo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
+"bsT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/device/assembly/mousetrap/armed,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/briefing)
 "bsU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -26655,10 +28289,70 @@
 	},
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/squads/alpha)
+"bsV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/device/assembly/prox_sensor{
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
 "bsW" = (
 /obj/structure/machinery/cm_vending/clothing/leader/bravo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
+"bsX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/device/assembly/igniter{
+	pixel_y = 10;
+	pixel_x = 7
+	},
+/obj/item/device/assembly/timer,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bsY" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/recharger,
+/obj/structure/machinery/recharger{
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bsZ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/vending/cola{
+	pixel_x = 6
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"bta" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/vending/cola{
+	pixel_x = -6
+	},
+/obj/structure/machinery/vending/cola{
+	pixel_y = 25;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/squads/req)
+"btb" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 1
+	},
+/obj/item/inflatable{
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/shipboard/sea_office)
 "btc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -26667,6 +28361,54 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/redfull,
 /area/almayer/squads/alpha)
+"btd" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 1
+	},
+/obj/item/inflatable{
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/living/cryo_cells)
+"bte" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/box/co2_knife{
+	pixel_y = 10;
+	pixel_x = -6
+	},
+/obj/item/storage/belt/utility,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/cryo_cells)
+"btf" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/bed{
+	pixel_y = 9
+	},
+/obj/structure/bed{
+	pixel_y = 17
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/port_aft_hallway)
+"btg" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/hand_labeler,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/workshop)
+"bth" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/frame/air_alarm,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/workshop)
 "bti" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -26674,11 +28416,88 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/command/computerlab)
+"btj" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/medical/lower_medical_medbay)
+"btk" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/medical/lower_medical_medbay)
+"btl" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Requisitions Storage";
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/living/briefing)
+"btm" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/folder/black_random{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/folder/black_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/workshop)
+"btn" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/lower_medical_medbay)
+"bto" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/workshop)
+"btp" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/engineering/lower/engine_core)
+"btq" = (
+/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/portable_atmospherics/powered/scrubber{
+	pixel_y = 20
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/engineering/lower/engine_core)
 "btr" = (
 /obj/structure/closet/boxinggloves,
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
+"bts" = (
+/obj/structure/reagent_dispensers/fueltank/custom,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/engine_core)
+"btt" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/case,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/medical/lower_medical_lobby)
+"btu" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/case,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/medical/lower_medical_lobby)
 "btv" = (
 /obj/structure/machinery/light,
 /obj/structure/disposalpipe/segment{
@@ -26686,6 +28505,18 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
+"btw" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/lower_medical_lobby)
 "btx" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 1
@@ -26693,6 +28524,46 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
+"bty" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/medical/lower_medical_lobby)
+"btz" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/vehicle/powerloader{
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/req)
+"btA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/workshop)
+"btB" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/machinery/cell_charger,
+/turf/open/floor/almayer/no_build,
+/area/almayer/engineering/lower/workshop)
 "btC" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
@@ -26703,12 +28574,77 @@
 "btD" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/port_missiles)
+"btE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/lower_medical_lobby)
+"btF" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/medical/lower_medical_lobby)
 "btG" = (
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
+"btH" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/cell/high,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/workshop)
+"btI" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/structure/prop/almayer/minigun_crate,
+/obj/structure/prop/almayer/minigun_crate{
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/cryo_cells)
+"btJ" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/tool/weldpack/minitank,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/cryo_cells)
+"btK" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/starboard_aft_hallway)
+"btL" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/device/analyzer,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/workshop)
 "btM" = (
 /obj/effect/spawner/random/toolbox,
 /obj/structure/pipes/vents/scrubber{
@@ -26735,9 +28671,67 @@
 "btO" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"btP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/medical/lower_medical_medbay)
+"btQ" = (
+/obj/structure/machinery/pipedispenser,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/engine_core)
+"btR" = (
+/obj/structure/closet/crate,
+/obj/item/storage/firstaid/o2,
+/obj/item/storage/firstaid/o2,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/engineering/lower/engine_core)
+"btS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/chemistry)
+"btT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/medical,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12;
+	pixel_y = -15
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/chemistry)
+"btU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/living/cryo_cells)
 "btV" = (
 /turf/closed/wall/almayer/outer,
 /area/almayer/maint/upper/u_f_p)
+"btW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/cryo_cells)
 "btX" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -26754,18 +28748,240 @@
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/living/briefing)
+"btZ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/cryo_cells)
+"bua" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/cryo_cells)
+"bub" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/medical,
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/chemistry)
 "buc" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/north1)
+"bud" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/chemistry)
+"bue" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/chemistry)
+"buf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/medical/chemistry)
+"bug" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/cryo_cells)
+"buh" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/circuitboard/airalarm{
+	pixel_x = 6
+	},
+/obj/item/circuitboard/airalarm{
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/chemistry)
+"bui" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/lower_medical_lobby)
 "buj" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/operating_room_one)
+"buk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/operating_room_one)
+"bul" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/living/briefing)
+"bum" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/living/cryo_cells)
+"bun" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/starboard_fore_hallway)
+"buo" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/starboard_fore_hallway)
+"bup" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/starboard_aft_hallway)
+"buq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/starboard_aft_hallway)
 "bur" = (
 /obj/structure/prop/almayer/missile_tube,
 /turf/open/floor/almayer/plating_stripedcorner/west,
 /area/almayer/shipboard/starboard_missiles)
+"bus" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/starboard_aft_hallway)
+"but" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/starboard_fore_hallway)
 "buu" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -26778,16 +28994,224 @@
 	},
 /turf/open/floor/almayer/cargo_arrow,
 /area/almayer/living/offices)
+"buw" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/hallways/lower/starboard_fore_hallway)
+"bux" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/squads/alpha)
+"buy" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/alpha)
 "buz" = (
 /obj/structure/supply_drop/charlie,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
+"buA" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/squads/alpha)
 "buB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/almayer/green,
 /area/almayer/living/offices)
+"buC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/alpha)
+"buD" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/squads/alpha)
+"buE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/alpha)
+"buF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/alpha)
+"buG" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/squads/alpha)
+"buH" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_s)
+"buI" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_s)
+"buJ" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_s)
+"buK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/maint/hull/lower/l_a_s)
+"buL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/maint/hull/lower/l_a_s)
 "buM" = (
 /obj/structure/machinery/cm_vending/clothing/smartgun/bravo,
 /turf/open/floor/almayer/plate,
@@ -26807,6 +29231,21 @@
 /obj/structure/machinery/cm_vending/gear/medic,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
+"buP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/maint/hull/lower/l_a_s)
 "buS" = (
 /obj/structure/machinery/cm_vending/gear/engi,
 /turf/open/floor/almayer/plate,
@@ -80768,11 +83207,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/lifeboat_pumps/south2)
 "xxa" = (
-/obj/item/stack/sheet/cardboard{
-	amount = 50
-	},
-/obj/structure/surface/rack,
-/obj/item/packageWrap,
+/obj/structure/ladder/multiz,
 /turf/open/floor/almayer/green/east,
 /area/almayer/squads/req)
 "xxh" = (
@@ -105348,7 +107783,7 @@ xss
 xss
 dXb
 ndm
-xss
+bpk
 iFY
 dXb
 xss
@@ -121408,15 +123843,15 @@ azJ
 azJ
 azJ
 avN
-aIA
+bsi
 avN
-aIA
+bsi
 avN
 azJ
 avN
-aIA
+bsi
 avN
-aIA
+bsi
 avN
 azJ
 azJ
@@ -126143,7 +128578,7 @@ bnJ
 aTD
 aTD
 bnq
-bib
+bud
 bib
 aTD
 aTD
@@ -126156,7 +128591,7 @@ aPh
 aPb
 aRI
 aRI
-bdq
+brG
 aRY
 boi
 aRI
@@ -126252,15 +128687,15 @@ bhX
 aTD
 aOY
 aOT
-bdx
+btt
 bmU
 aPq
 aPh
 aOY
 aRI
-beA
+brU
 bdq
-aRY
+brg
 blG
 bch
 aRI
@@ -126351,19 +128786,19 @@ bix
 bns
 aTF
 bhY
-bhY
+btS
 aTD
 aOY
 aOT
-bdx
+btu
 bmU
 aPq
 aPh
 aOY
 aRI
-beA
+brU
 bdq
-bdq
+brh
 blH
 bof
 aRI
@@ -126451,10 +128886,10 @@ aQe
 aQe
 aTD
 biy
-bns
-aTF
-bhY
-bhY
+buf
+bue
+bub
+btT
 aTD
 aOY
 aOT
@@ -126466,7 +128901,7 @@ aOY
 aRI
 beA
 bdq
-bdq
+brh
 blH
 blC
 aRI
@@ -126556,7 +128991,7 @@ aTD
 bnD
 bns
 aTF
-bhY
+btS
 aTD
 aTD
 aOY
@@ -126571,7 +129006,7 @@ aRI
 bok
 bdt
 blH
-blC
+bqx
 aRI
 aOi
 auZ
@@ -126656,7 +129091,7 @@ bjd
 aQn
 aQh
 aTD
-bnD
+buh
 bnv
 aTF
 aTD
@@ -126674,7 +129109,7 @@ aRI
 aRI
 boj
 blH
-blC
+bqx
 aRI
 aOj
 bbg
@@ -126862,15 +129297,15 @@ aQv
 aQo
 aQj
 aRM
-aOE
+bui
 bnw
 aOE
 aHP
 bnm
 bmM
 bmM
-bmM
-bms
+btE
+btw
 bmY
 bmM
 bmM
@@ -126971,9 +129406,9 @@ bnn
 aOO
 aOO
 aOO
-aOO
-aPm
-aOO
+bty
+btF
+bty
 aPL
 aOO
 aPm
@@ -127187,7 +129622,7 @@ aOY
 aOY
 aOY
 aOT
-bdx
+brk
 bcK
 aHm
 aRM
@@ -127697,7 +130132,7 @@ aWK
 aRQ
 aRQ
 aRQ
-aWK
+btj
 aWK
 aWK
 aRN
@@ -127800,7 +130235,7 @@ aPW
 aPN
 aPs
 aPy
-aPp
+btk
 bdF
 bef
 aRN
@@ -127912,9 +130347,9 @@ blO
 bcO
 aRN
 aRN
-baF
-bah
-baC
+bqt
+bqo
+bqh
 boF
 ayL
 ayL
@@ -127991,9 +130426,9 @@ aJO
 aJO
 aJO
 boI
-biI
-biT
-biI
+but
+buo
+bun
 aTG
 aVT
 bnz
@@ -128201,7 +130636,7 @@ biL
 biT
 biI
 aTG
-biB
+buk
 bir
 aTM
 aTI
@@ -128223,7 +130658,7 @@ aSc
 aRN
 baF
 bah
-baC
+bqi
 boF
 ayL
 ayL
@@ -128309,7 +130744,7 @@ bis
 aTK
 bic
 aTH
-bcS
+btP
 bhE
 bhz
 aPP
@@ -128321,12 +130756,12 @@ bcS
 aRO
 bcl
 blP
-aSd
+bqQ
 bck
 aRO
 baF
 aOh
-baC
+bqi
 boF
 ayL
 ayL
@@ -128412,7 +130847,7 @@ bis
 aTK
 bid
 aTH
-bcS
+btP
 bgr
 bhz
 aPP
@@ -128515,7 +130950,7 @@ bis
 aTK
 bid
 aTH
-bcS
+btP
 bgr
 bhz
 aPP
@@ -128638,13 +131073,13 @@ aOh
 baD
 aWs
 aOp
-aZo
+bpN
 aZo
 bah
 aZo
 aOo
 aYM
-aZo
+bpN
 aOp
 aZc
 aYM
@@ -128741,13 +131176,13 @@ aYy
 aYN
 aWs
 aYN
-aYN
+bqb
 aYN
 bai
 aYN
 aZT
 aZp
-aZp
+bpO
 aYN
 aZc
 aYN
@@ -128844,13 +131279,13 @@ bah
 baE
 aZc
 aZo
-aZo
+bpN
 aZo
 bah
 bab
 aOo
 aZh
-aZh
+bpP
 aZh
 aRa
 aQU
@@ -129050,7 +131485,7 @@ aOh
 baF
 aQX
 bau
-aRe
+bqd
 aQX
 bkV
 bkQ
@@ -129152,12 +131587,12 @@ baF
 aOh
 baF
 aQX
-ble
-aRe
+bqe
+bqd
 aQX
-bkW
+bpW
 auW
-bkL
+bpV
 aHs
 aZq
 aRc
@@ -129255,7 +131690,7 @@ baF
 aOh
 baF
 aQX
-ble
+bqe
 aRe
 aQX
 bkX
@@ -129330,9 +131765,9 @@ aJM
 aJM
 aJM
 aJM
-biL
-biT
-biI
+buw
+buo
+bun
 aRQ
 aRQ
 aWK
@@ -129361,7 +131796,7 @@ aQX
 bau
 blc
 aRb
-bkX
+bpX
 aYr
 bkL
 aRb
@@ -129447,7 +131882,7 @@ aSQ
 aRQ
 bgZ
 bgs
-aIn
+btn
 aRQ
 aSQ
 aRQ
@@ -129457,11 +131892,11 @@ bdF
 bcS
 aRQ
 aRQ
-baF
-aOh
-baF
+bqt
+bqp
+bqj
 aQX
-ble
+bqf
 aZu
 aQX
 bkY
@@ -129550,7 +131985,7 @@ aSQ
 aRQ
 bot
 bgs
-aIn
+btn
 aRQ
 aSQ
 aSQ
@@ -129564,10 +131999,10 @@ baF
 aOh
 baF
 aQX
-ble
+bqf
 aZu
 aQX
-bkY
+bpY
 aYr
 bkL
 aQX
@@ -129761,7 +132196,7 @@ aOU
 aSU
 aSQ
 aRQ
-beh
+brI
 bdN
 bcT
 aRh
@@ -129864,7 +132299,7 @@ aOU
 aSU
 bcu
 aRh
-aIi
+brJ
 bdP
 bcU
 aRh
@@ -130068,7 +132503,7 @@ aWY
 aVs
 aRh
 avo
-blR
+brZ
 aRh
 bcX
 bdQ
@@ -130263,7 +132698,7 @@ biK
 aRh
 aRh
 aRh
-aRn
+brl
 aRh
 aRh
 aRh
@@ -130277,7 +132712,7 @@ aRh
 aRh
 aRh
 aRh
-aRn
+brl
 aRh
 aRh
 aRh
@@ -130388,7 +132823,7 @@ baC
 aOh
 baF
 aQX
-ble
+bqf
 aZu
 aQX
 bkW
@@ -130466,12 +132901,12 @@ aTX
 biM
 biY
 aJD
-aRR
+bqw
 aHN
 aIr
 bik
 aHW
-aRR
+bqw
 bdb
 bdS
 bhA
@@ -130481,17 +132916,17 @@ bdS
 bfO
 bdb
 bdb
-aRR
+bqw
 aIr
 aIj
 aHW
 aHN
-aRR
+bqw
 aZg
 bbl
 baK
 aQX
-ble
+bqf
 aZu
 aRb
 bkW
@@ -130675,7 +133110,7 @@ aTS
 aRh
 aRh
 aRh
-aRn
+brl
 aRh
 aRh
 aRh
@@ -130689,7 +133124,7 @@ aRh
 aRh
 aRh
 aRh
-aRn
+brl
 aRh
 aRh
 aRh
@@ -130796,9 +133231,9 @@ bcW
 bcY
 aRh
 aRh
-aXu
-aXO
-aXu
+bqu
+bqq
+bqk
 aRh
 aRh
 bld
@@ -131009,7 +133444,7 @@ aWA
 aWx
 aRl
 baq
-bak
+bpZ
 bag
 aRl
 aRl
@@ -131215,11 +133650,11 @@ aWA
 aZH
 aZH
 aZH
-aZA
+bpU
 aZH
 aZH
 aZH
-aZA
+bpU
 aZm
 aQX
 aYU
@@ -131291,7 +133726,7 @@ biP
 biP
 biP
 aWA
-aIr
+bul
 aZH
 bgc
 aRl
@@ -131313,7 +133748,7 @@ aHW
 aWA
 aRz
 baP
-baP
+bql
 aRh
 aRh
 aRh
@@ -131394,7 +133829,7 @@ biP
 biP
 biP
 aWA
-aIr
+bul
 bcY
 bcY
 bcY
@@ -131416,7 +133851,7 @@ bcr
 aWA
 aRz
 baP
-baP
+bql
 aRh
 aRh
 aRh
@@ -131519,7 +133954,7 @@ aHW
 aWA
 aRz
 baP
-baP
+bql
 aRh
 aRh
 aRh
@@ -132128,11 +134563,11 @@ bak
 bon
 aRh
 aRh
+bsk
+brV
 bel
-bel
-bel
-bcu
-bcu
+brm
+bqS
 aRh
 asm
 aXu
@@ -132230,8 +134665,8 @@ bcX
 bak
 boo
 aRh
-aZw
-aZw
+bsC
+bsl
 avo
 avo
 avo
@@ -132333,13 +134768,13 @@ bcX
 bak
 bor
 aRh
+bsE
+bsm
+bro
+brK
+bro
 aZw
-avo
-blR
-avo
-blR
-aZw
-aZw
+bqy
 asm
 aXv
 aXQ
@@ -132435,14 +134870,14 @@ aRh
 bhe
 bgB
 bdb
-aRR
+btl
 avo
-avo
+bsn
 aRh
 aRh
 aRh
-aZw
-aZw
+bqU
+bqz
 asm
 baT
 baT
@@ -132539,10 +134974,10 @@ bcW
 bak
 bcX
 aRh
-bcu
+bsH
+bsm
 avo
-avo
-avo
+brL
 aZw
 aZw
 bcs
@@ -132642,12 +135077,12 @@ bhf
 bak
 bcX
 aRh
-bcu
-bcu
+bsI
+bso
 avo
 avo
 aZw
-aZw
+bqV
 bcs
 asm
 aXv
@@ -132746,11 +135181,11 @@ bak
 bcX
 aRh
 aRh
-bcu
+bsq
 avo
 aZw
-aZw
-aZw
+bqV
+bqX
 aRh
 asm
 aXv
@@ -132851,7 +135286,7 @@ aRh
 aRh
 aRh
 aRh
-aRn
+brM
 aRh
 aRh
 aRh
@@ -132952,11 +135387,11 @@ aZA
 bcX
 aRh
 aRh
-bel
-bel
+bsr
+brX
 aZw
 aZw
-avo
+brc
 aRh
 asm
 aXv
@@ -133054,13 +135489,13 @@ bcW
 aZA
 bcX
 aRh
-bcu
-bcu
+bsM
+bss
 avo
 aZw
 aZw
 aZw
-bcu
+bqA
 asm
 aXv
 bbv
@@ -133157,13 +135592,13 @@ bcX
 aZA
 bcW
 aRh
-aZw
+bsO
+bsm
 avo
 avo
 avo
 avo
-avo
-bcu
+bqB
 asm
 aXu
 bbw
@@ -133259,14 +135694,14 @@ aRh
 bhe
 bgD
 bdS
-aRR
-aZw
-avo
+btl
+bsT
+bsm
+brZ
+brK
 blR
 avo
-blR
-avo
-avo
+bqC
 asm
 bbM
 bbx
@@ -133364,12 +135799,12 @@ aZA
 bcW
 aRh
 aZw
-aZw
+bsu
 aRh
 aRh
 aRh
-avo
-avo
+bld
+bqD
 asm
 aXu
 bbq
@@ -133467,12 +135902,12 @@ bgE
 aSZ
 aVt
 bcv
-bcv
+bsv
 bdc
+bqI
+bru
 aIm
-bdc
-aIm
-aIm
+bqE
 asm
 aXu
 bbq
@@ -133569,13 +136004,13 @@ aSZ
 bgF
 aSZ
 uys
-bem
-bcv
+bsV
+bsv
 aIm
 aIm
 aIm
 aIm
-aIm
+bqG
 asm
 aXu
 bbq
@@ -133672,11 +136107,11 @@ bgf
 bgf
 bgf
 uys
-bem
-bem
+bsX
+bsx
 bcv
 aIm
-aIm
+brw
 aIm
 aIm
 aUJ
@@ -133776,11 +136211,11 @@ bgF
 aSZ
 uys
 uys
-bem
+bsA
 bcv
 aIm
 aIm
-aIm
+bqE
 uys
 asm
 aXu
@@ -133882,7 +136317,7 @@ uys
 uys
 uys
 uys
-aUX
+brx
 uys
 uys
 asm
@@ -134086,11 +136521,11 @@ aTc
 aSV
 aHF
 uys
-bem
+bsa
 bcv
 aIm
 aIm
-aIm
+bqI
 asm
 bbM
 bbx
@@ -134189,11 +136624,11 @@ bgg
 aSV
 aHF
 uys
-bem
+bsb
 bem
 bcv
 aIm
-aIm
+bqJ
 aUJ
 aXu
 bbv
@@ -134248,11 +136683,11 @@ aTQ
 aKm
 bke
 bkl
-bkl
+buL
 bkl
 bkq
 bkl
-bkn
+buJ
 bkn
 bkq
 bkl
@@ -134294,7 +136729,7 @@ aHF
 uys
 uys
 bem
-bcv
+brz
 aIm
 uys
 asm
@@ -134322,12 +136757,12 @@ aXC
 aWk
 aXq
 aVS
-aXg
-aXg
-asH
-aXi
-aVS
-aVS
+bpn
+bpr
+bpq
+bpp
+bpo
+bpl
 aJs
 asH
 aHD
@@ -134351,11 +136786,11 @@ aTQ
 bkJ
 bkI
 bkI
-bkI
+buP
 bkC
 bkH
 bkC
-bkC
+buK
 bkC
 bkr
 bkm
@@ -134425,12 +136860,12 @@ aXE
 aWk
 aXq
 aXf
-aXk
+bpt
 aXk
 asH
 aXi
 aXf
-aXf
+bpm
 aVa
 asH
 aHD
@@ -134454,11 +136889,11 @@ emA
 emA
 bke
 bkl
-bkl
+buL
 bkl
 aWe
 bkn
-bkn
+buJ
 bkn
 bkt
 bkn
@@ -134504,9 +136939,9 @@ aHF
 uys
 uys
 asm
-aZg
-bbt
-baK
+bqv
+bqr
+bqm
 avs
 avs
 avs
@@ -134528,12 +136963,12 @@ aXC
 aWk
 aXr
 aXg
-aXg
+bpn
 aXg
 asL
 aNq
 aVS
-aXg
+bpn
 aVh
 tcO
 tcO
@@ -134771,9 +137206,9 @@ emA
 emA
 emA
 aTQ
-aTP
-aKb
-bjL
+buH
+buE
+buA
 aJY
 aJY
 aJY
@@ -135037,9 +137472,9 @@ aQK
 aQK
 aQK
 aQK
-aYi
-aXT
-aXG
+bpE
+bpD
+bpB
 aHD
 tcO
 aaa
@@ -135316,7 +137751,7 @@ aHF
 aHF
 aHF
 aTu
-bhi
+btz
 bgG
 aTc
 aSV
@@ -135390,8 +137825,8 @@ aaa
 emA
 aTQ
 bkj
-bjY
-bjN
+buF
+buC
 aJY
 aJY
 aJY
@@ -135631,8 +138066,8 @@ aSZ
 uys
 uys
 beM
-bdc
-bcy
+bsc
+brN
 bcv
 aUU
 uys
@@ -135732,9 +138167,9 @@ aWX
 bgf
 bgf
 uys
-bem
+bsY
 beO
-aIm
+bsc
 bcv
 bcv
 bcv
@@ -135835,13 +138270,13 @@ bhk
 bgF
 aSZ
 uys
-bem
+bsZ
 bcv
-aIm
-aIm
+bsc
+brO
+brB
 bcv
-bcv
-bcy
+bqK
 aDb
 baU
 bbC
@@ -135938,13 +138373,13 @@ bhk
 bgF
 aSZ
 uys
-bem
-bem
-aIm
-aIm
+bta
+bcv
+bsc
+brP
 aIm
 bcv
-bcy
+bqM
 aDb
 baU
 bbC
@@ -136007,9 +138442,9 @@ emA
 emA
 emA
 aTQ
-bkf
-bjX
-bjO
+buI
+buG
+buD
 aJY
 aJY
 aJY
@@ -136043,7 +138478,7 @@ aSZ
 uys
 uys
 beX
-aIm
+bsc
 aIm
 aIm
 aUV
@@ -136249,7 +138684,7 @@ aTd
 aHG
 aHG
 aIJ
-blU
+bsd
 blX
 blU
 blL
@@ -136352,7 +138787,7 @@ aTe
 aVu
 bme
 bme
-bme
+bse
 blY
 bcB
 bcB
@@ -136586,7 +139021,7 @@ aXI
 aXR
 aXI
 aQK
-aXp
+bpx
 aXp
 aXm
 aXl
@@ -136689,7 +139124,7 @@ aYh
 aXX
 aUs
 aQK
-aXp
+bpx
 aXp
 aXm
 aHD
@@ -136768,7 +139203,7 @@ aQE
 aJH
 aJH
 aJH
-aJH
+bqN
 aHH
 boc
 bbC
@@ -136792,7 +139227,7 @@ aXI
 aXR
 aXI
 aQK
-aXp
+bpx
 aXp
 aXn
 aHD
@@ -136865,13 +139300,13 @@ aTe
 bgL
 bgh
 aIu
-bfq
+btb
 beY
 beE
 aHH
 bdY
 aJH
-aJH
+bqN
 aHH
 bod
 boa
@@ -136895,7 +139330,7 @@ aQP
 aXR
 aXI
 aQK
-aXp
+bpy
 aXp
 aXn
 aHD
@@ -136968,13 +139403,13 @@ bhn
 bgQ
 aRV
 aHH
-bmE
+btd
 beo
-ben
+bsf
 aHH
-bdY
+brC
 aJH
-aJH
+bqN
 aHH
 boe
 bbD
@@ -136998,9 +139433,9 @@ aQP
 aXS
 aXI
 aQK
+bpx
 aXp
-aXp
-aXo
+bpu
 aHD
 tcO
 aaa
@@ -137073,11 +139508,11 @@ bcI
 aHH
 bmE
 beo
-beo
+bsg
 ben
 aJH
 aJH
-aJH
+bqO
 aHH
 baU
 bbC
@@ -137103,8 +139538,8 @@ aXJ
 aQK
 aXs
 aXp
-aXo
-aJt
+bpu
+bps
 tcO
 aaa
 aaa
@@ -137176,7 +139611,7 @@ bcI
 aHH
 aHH
 beZ
-beo
+bsg
 beo
 aJH
 aUW
@@ -137206,8 +139641,8 @@ atk
 aQK
 aXs
 aXp
-aXo
-aJt
+bpu
+bps
 tcO
 aaa
 aaa
@@ -137353,7 +139788,7 @@ aJY
 bjH
 aKb
 bjH
-bjH
+bux
 aUe
 aUa
 bjo
@@ -137365,14 +139800,14 @@ aUb
 aUb
 aUa
 bhR
-bhR
+bup
 bhR
 bbX
 aSe
 bhL
 bhL
 bbX
-bhL
+btU
 bhL
 bhL
 aWJ
@@ -137401,7 +139836,7 @@ aZM
 aRm
 aRk
 aZb
-aYZ
+bpF
 aYZ
 aYK
 aYx
@@ -137456,7 +139891,7 @@ aUg
 bjG
 bjI
 bjG
-bjG
+buy
 bjG
 bji
 bjn
@@ -137468,14 +139903,14 @@ bjn
 bjn
 bji
 biQ
-biQ
+buq
 biQ
 aWJ
 aRV
 aRV
 bhn
 bbX
-bcF
+btW
 bcF
 bcF
 aWJ
@@ -137504,7 +139939,7 @@ aZJ
 aZJ
 aZD
 aZn
-aZa
+bpJ
 aZa
 aYL
 aYx
@@ -137559,7 +139994,7 @@ aJY
 aUe
 aKb
 bjH
-bjH
+bux
 bjH
 bjF
 aUb
@@ -137571,14 +140006,14 @@ bjo
 bjo
 aWa
 bhR
-biR
+bus
 biR
 aWJ
 bcG
 aSe
 bgm
 bbX
-bhL
+btU
 bhL
 bhL
 bbX
@@ -137595,8 +140030,8 @@ aSe
 bcG
 aWJ
 bbc
-bbG
-bbc
+bqs
+bqn
 aWB
 aWy
 aRm
@@ -137607,7 +140042,7 @@ aZM
 aZM
 aUA
 aYZ
-aZb
+bpM
 aZb
 aYK
 aYx
@@ -137780,13 +140215,13 @@ aTq
 aTq
 aTq
 aHH
-bcI
-bdh
+bum
+bug
 aXc
 aHH
 bdX
 bnj
-bdX
+btI
 aHH
 bcJ
 bdi
@@ -137887,9 +140322,9 @@ bcJ
 bdh
 bcJ
 aHH
-bmm
+btZ
 bnj
-bdX
+btI
 aHH
 bcJ
 bdi
@@ -137990,21 +140425,21 @@ bcJ
 bdi
 bcJ
 aHH
-bmm
+bua
 bnk
-bdX
+btJ
 aHH
 bcJ
 bdi
 bcI
 aHH
-bmH
+bte
 bmw
 bmm
 aHH
-bcI
-bdi
-bcJ
+brD
+brd
+bqP
 aHH
 aDb
 aDb
@@ -138198,13 +140633,13 @@ bil
 aTq
 aTq
 bhQ
-aUq
+btK
 aTq
 bhs
 aIR
 baU
 aDb
-bfr
+btf
 aVn
 aDb
 aDb
@@ -138813,19 +141248,19 @@ aTQ
 aTQ
 aRr
 aRr
-aSu
+brQ
 ldc
 bhM
-bfe
-bfB
-bfB
+btL
+btA
+btA
 bfP
 bgn
 bfB
-bfe
+btg
 aSR
 ldc
-aSu
+brQ
 aRr
 aRr
 aHD
@@ -139019,14 +141454,14 @@ aRr
 aRr
 aRr
 aSu
-beu
+brR
 ldc
 bnl
 bfc
 bfP
-bfP
-bfP
-bfP
+beF
+beF
+beF
 bfP
 bfc
 bfe
@@ -139120,9 +141555,9 @@ aRr
 aRr
 aRr
 aRr
-aRr
-aSu
-beu
+bre
+brE
+brR
 ldc
 bhS
 bfQ
@@ -139135,8 +141570,8 @@ bfv
 bff
 ldc
 beu
-aSu
-aRr
+brE
+bre
 aRr
 aRr
 aRr
@@ -139223,9 +141658,9 @@ aRr
 aRr
 aRr
 aRr
-aRr
-aSu
-beu
+bre
+brE
+brR
 ldc
 ldc
 bfR
@@ -139238,8 +141673,8 @@ bfA
 ldc
 ldc
 beu
-aSu
-aRr
+brE
+bre
 aRr
 aRr
 aRr
@@ -139328,20 +141763,20 @@ aRr
 aRr
 aRr
 aSu
-beu
-aSu
+brR
+brE
 ldc
 bfc
 bfP
-bgp
+btB
 bgV
 bgp
 bfP
 bfc
 ldc
 aSu
-beu
-aSu
+brR
+brE
 aRr
 aRr
 aRr
@@ -139431,8 +141866,8 @@ aRr
 aRr
 aRr
 bip
-beu
-aSu
+brR
+brE
 ldc
 bfB
 bfc
@@ -139442,9 +141877,9 @@ bfP
 bfc
 bfB
 ldc
-aSu
-beu
-aQC
+brE
+brR
+brF
 aRr
 aRr
 aRr
@@ -139534,8 +141969,8 @@ aRW
 aRW
 aRr
 aRr
-beu
-aSu
+brR
+brE
 ldc
 bfB
 bfB
@@ -139545,8 +141980,8 @@ bfP
 bfB
 bfB
 ldc
-aSu
-beu
+brE
+brR
 aRr
 aRr
 aRW
@@ -139638,18 +142073,18 @@ aRW
 aRr
 aRr
 beu
-aSu
+brE
 ldc
 bnd
-bfe
+btH
 bht
 bgn
-bfe
-bfe
-aSR
+bto
+btm
+bth
 ldc
-aSu
-beu
+brE
+brR
 aRr
 aRr
 aRW
@@ -139740,8 +142175,8 @@ aRW
 aRW
 hsy
 hsy
-aSv
-aSv
+bsh
+brT
 hsy
 ldc
 bfS
@@ -139751,8 +142186,8 @@ bfS
 bfS
 ldc
 hsy
-aSv
-aSv
+bsh
+brT
 hsy
 hsy
 aRW
@@ -141596,15 +144031,15 @@ aRW
 aRW
 aRW
 hsy
-aSL
+btQ
 bne
 aST
 aST
-aST
-aST
+btq
+btp
 aST
 bmI
-aSL
+bsB
 hsy
 aRW
 aRW
@@ -141699,7 +144134,7 @@ aRW
 aRW
 aRW
 hsy
-aSL
+btR
 bnf
 bmN
 bmN
@@ -141707,7 +144142,7 @@ bmN
 bmN
 bmN
 bmJ
-aSL
+bsB
 hsy
 aRW
 aRW
@@ -141804,9 +144239,9 @@ aRW
 hsy
 hsy
 bng
-aSL
-aSL
-aSL
+bts
+bts
+bts
 aSL
 aSL
 bmK

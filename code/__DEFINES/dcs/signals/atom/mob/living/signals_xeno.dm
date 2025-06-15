@@ -42,6 +42,8 @@
 #define COMSIG_XENO_STOP_MOMENTUM "xeno_stop_momentum"
 /// Called whenever xeno should resume charge
 #define COMSIG_XENO_START_CHARGING "xeno_start_charging"
+/// From /datum/action/xeno_action/onclick/charger_charge/proc/stop_momentum()
+#define COMSIG_XENO_STOPPED_CHARGING "xeno_stopped_charging"
 
 // Used in resin_constructions.dm
 // Checks whether the xeno can build a thick structure regardless of hive weeds
@@ -95,3 +97,9 @@
 
 /// From /mob/living/carbon/xenomorph/proc/do_evolve()
 #define COMSIG_XENO_EVOLVE_TO_NEW_CASTE "xeno_evolve_to_new_caste"
+
+/// From /datum/action/xeno_action/activable/pounce/use_ability()
+#define COMSIG_XENO_USED_POUNCE "xeno_used_pounce"
+
+/// From /mob/living/carbon/xenomorph/proc/handle_ai_shot()
+#define COMSIG_XENO_HANDLE_AI_SHOT "xeno_handle_ai_shot"

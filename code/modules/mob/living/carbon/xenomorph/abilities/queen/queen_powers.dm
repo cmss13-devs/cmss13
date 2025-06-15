@@ -164,7 +164,7 @@
 		return
 	var/datum/hive_status/hive = xeno.hive
 	if(xeno.observed_xeno)
-		if(!length(hive.open_xeno_leader_positions) && xeno.observed_xeno.hive_pos == NORMAL_XENO)
+		if(!length(hive.open_xeno_leader_positions) && IS_NORMAL_XENO(xeno.observed_xeno))
 			to_chat(xeno, SPAN_XENOWARNING("You currently have [length(hive.xeno_leader_list)] promoted leaders. You may not maintain additional leaders until your power grows."))
 			return
 		var/mob/living/carbon/xenomorph/targeted_xeno = xeno.observed_xeno
@@ -172,7 +172,7 @@
 			to_chat(xeno, SPAN_XENOWARNING("You cannot add yourself as a leader!"))
 			return
 		apply_cooldown()
-		if(targeted_xeno.hive_pos == NORMAL_XENO)
+		if(IS_NORMAL_XENO(targeted_xeno))
 			if(!hive.add_hive_leader(targeted_xeno))
 				to_chat(xeno, SPAN_XENOWARNING("Unable to add the leader."))
 				return
@@ -192,7 +192,7 @@
 
 		if(length(possible_xenos) > 1)
 			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(xeno, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
-			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != xeno.z || !xeno.check_state())
+			if(!selected_xeno || IS_NORMAL_XENO(selected_xeno) || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != xeno.z || !xeno.check_state())
 				return
 			xeno.overwatch(selected_xeno)
 		else if(length(possible_xenos))

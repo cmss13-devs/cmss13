@@ -14097,22 +14097,141 @@
 	},
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/hangar)
+"aLr" = (
+/obj/structure/ladder/multiz,
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/shipboard/weapon_room)
+"aLs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/weapon_room)
+"aLt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/weapon_room)
+"aLu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/weapon_room)
+"aLv" = (
+/obj/structure/largecrate/supply,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLw" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
 "aLx" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/hallways/lower/repair_bay)
+"aLy" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLz" = (
+/obj/structure/largecrate/supply,
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLA" = (
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLB" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLC" = (
+/obj/structure/largecrate/supply,
+/obj/item/toy/deck{
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLD" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
 "aLE" = (
 /obj/docking_port/stationary/emergency_response/external/hangar_starboard{
 	dwidth = 8
 	},
 /turf/open/space,
 /area/space)
+"aLF" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/surface/table/almayer,
+/obj/item/tool/screwdriver{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
+"aLG" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
+"aLH" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/shipboard/navigation)
+"aLI" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ashtray/bronze{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/ash,
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = -13;
+	pixel_y = 8
+	},
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
 "aLJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"aLK" = (
+/obj/structure/surface/table/almayer,
+/obj/item/stack/cable_coil{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
 "aLL" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/starboard_point_defense)
@@ -14122,6 +14241,39 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
+"aLN" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
+"aLO" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/navigation)
+"aLP" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLQ" = (
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
+	access_modified = 1;
+	req_one_access = null;
+	req_one_access_txt = "7;19"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/shipboard/navigation)
+"aLR" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
 "aLS" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard{
@@ -14155,15 +14307,60 @@
 "aLT" = (
 /turf/closed/wall/almayer,
 /area/almayer/squads/alpha)
+"aLU" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLV" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
 "aLW" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_point_defense)
+"aLX" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/navigation)
+"aLY" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/almayer/red,
+/area/almayer/shipboard/weapon_room)
 "aLZ" = (
 /obj/structure/bed/sofa/south/white,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname/almayer,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/upper_medical)
+"aMa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer,
+/area/almayer/shipboard/weapon_room)
+"aMb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/weapon_room)
+"aMc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/weapon_room)
 "aMd" = (
 /obj/structure/filingcabinet/seeds{
 	density = 0;
@@ -14177,6 +14374,12 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
+"aMe" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/shipboard/weapon_room)
 "aMf" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/upper/u_f_s)
@@ -14203,6 +14406,28 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
+"aMh" = (
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
+"aMi" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
+"aMj" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/shipboard/weapon_room)
+"aMk" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/shipboard/weapon_room)
 "aMl" = (
 /turf/open/floor/almayer/silver/east,
 /area/almayer/hallways/upper/midship_hallway)
@@ -14210,6 +14435,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange/east,
 /area/almayer/command/telecomms)
+"aMn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/shipboard/weapon_room)
 "aMo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14219,6 +14450,10 @@
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/command/telecomms)
+"aMp" = (
+/obj/structure/ladder/multiz,
+/turf/open/floor/plating/almayer,
+/area/almayer/shipboard/weapon_room)
 "aMq" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/lighter/random{
@@ -14230,12 +14465,49 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
+"aMr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/shipboard/weapon_room)
+"aMs" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
 "aMt" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"aMu" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/shipboard/weapon_room)
+"aMv" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/shipboard/weapon_room)
 "aMw" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/almayer/plate,
@@ -14259,6 +14531,13 @@
 "aMz" = (
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha)
+"aMA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/shipboard/weapon_room)
 "aMB" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -14284,6 +14563,17 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/engineering/airmix)
+"aMF" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/shipboard/weapon_room)
 "aMG" = (
 /obj/structure/machinery/microwave{
 	pixel_y = 7
@@ -14306,10 +14596,27 @@
 /obj/effect/landmark/late_join/delta,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
+"aMJ" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
+"aMK" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
 "aML" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
+"aMM" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
+"aMN" = (
+/obj/structure/window/framed/almayer,
+/turf/open/floor/plating,
+/area/almayer/shipboard/navigation)
 "aMO" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 26
@@ -14326,12 +14633,43 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/alpha)
+"aMR" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/shipboard/navigation)
+"aMS" = (
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 29
+	},
+/turf/open/floor/almayer/red/east,
+/area/almayer/shipboard/navigation)
 "aMT" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/command/lifeboat)
 "aMU" = (
 /turf/open/floor/almayer/red,
 /area/almayer/command/lifeboat)
+"aMV" = (
+/turf/open/floor/almayer/red/southwest,
+/area/almayer/shipboard/navigation)
+"aMW" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/vehiclehangar)
+"aMX" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/hallways/lower/vehiclehangar)
 "aMY" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -14339,6 +14677,37 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
+"aMZ" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNa" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNb" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/almayer/hallways/lower/vehiclehangar)
 "aNc" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -14349,9 +14718,59 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/squads/alpha)
+"aNd" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open_space,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNe" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNf" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNg" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNh" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/almayer/hallways/lower/vehiclehangar)
 "aNi" = (
 /turf/closed/wall/almayer,
 /area/almayer/living/chapel)
+"aNj" = (
+/turf/open_space,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNk" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/hallways/lower/vehiclehangar)
 "aNl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -14361,6 +14780,32 @@
 "aNm" = (
 /turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
+"aNn" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/turf/open_space,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNo" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open_space,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNp" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/hallways/lower/vehiclehangar)
+"aNq" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/hallways/lower/vehiclehangar)
 "aNr" = (
 /obj/effect/landmark/start/researcher,
 /obj/effect/landmark/late_join/researcher,
@@ -14377,6 +14822,24 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/offices/cryo)
+"aNt" = (
+/turf/open/floor/almayer/red/northwest,
+/area/almayer/shipboard/navigation)
+"aNu" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/power/apc/almayer/east,
+/turf/open/floor/almayer/red/east,
+/area/almayer/shipboard/navigation)
+"aNv" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clipboard,
+/obj/item/paper,
+/turf/open/floor/almayer/red/northwest,
+/area/almayer/shipboard/navigation)
+"aNw" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
 "aNx" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -14384,6 +14847,39 @@
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/squads/alpha_bravo_shared)
+"aNy" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
+"aNz" = (
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/almayer/shipboard/weapon_room)
+"aNA" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/shipboard/weapon_room)
+"aNB" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/obj/structure/barricade/handrail,
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/shipboard/weapon_room)
+"aNC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/shipboard/weapon_room)
 "aNE" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/silver,
@@ -18757,11 +19253,10 @@
 	pixel_x = 7;
 	pixel_y = 32
 	},
-/turf/open/floor/almayer/red/north,
-/area/almayer/shipboard/weapon_room)
-"bBx" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
 "bBy" = (
@@ -18769,6 +19264,10 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
 "bBz" = (
@@ -19562,17 +20061,13 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "bHq" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/airlock/almayer/security/glass/reinforced{
+/obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	access_modified = 1;
 	dir = 1;
-	name = "\improper Particle Cannon Systems Room";
-	req_access = null;
-	req_one_access_txt = "3;19"
+	req_one_access = null;
+	req_one_access_txt = "7;19"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/navigation)
 "bHu" = (
@@ -19606,15 +20101,6 @@
 "bHP" = (
 /turf/open/floor/plating/almayer,
 /area/almayer/shipboard/weapon_room)
-"bId" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 28
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/clipboard,
-/obj/item/paper,
-/turf/open/floor/almayer/red/northwest,
-/area/almayer/shipboard/navigation)
 "bIe" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
@@ -19672,14 +20158,6 @@
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/almayer/red/northeast,
-/area/almayer/shipboard/navigation)
-"bIy" = (
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 28
-	},
-/turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/navigation)
 "bIJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -19830,10 +20308,6 @@
 	dir = 1
 	},
 /turf/open/floor/almayer,
-/area/almayer/shipboard/navigation)
-"bJZ" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer/red/east,
 /area/almayer/shipboard/navigation)
 "bKb" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -20738,6 +21212,7 @@
 /area/almayer/shipboard/weapon_room)
 "bQz" = (
 /obj/structure/largecrate/random/case/double,
+/obj/item/folder/black,
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
 "bQA" = (
@@ -20765,15 +21240,27 @@
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
 "bQG" = (
-/obj/structure/surface/table/almayer,
-/obj/item/folder/black,
-/obj/item/book/manual/orbital_cannon_manual,
 /obj/structure/sign/safety/fire_haz{
 	pixel_x = 8;
 	pixel_y = -32
+	},
+/obj/structure/surface/rack,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
@@ -20786,6 +21273,7 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
+/obj/item/book/manual/orbital_cannon_manual,
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
 "bQQ" = (
@@ -21470,13 +21958,6 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_p)
-"bXo" = (
-/obj/structure/sign/safety/ladder{
-	pixel_x = 24;
-	pixel_y = 32
-	},
-/turf/open/floor/almayer/red/northwest,
-/area/almayer/shipboard/navigation)
 "bXw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/gloves{
@@ -21526,13 +22007,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
-"bXY" = (
-/obj/structure/sign/safety/ladder{
-	pixel_x = 24;
-	pixel_y = -32
-	},
-/turf/open/floor/almayer/red/southwest,
-/area/almayer/shipboard/navigation)
 "bYa" = (
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/cargo/blend,
 /turf/open/floor/almayer/green/southwest,
@@ -46816,9 +47290,6 @@
 /obj/structure/machinery/cryopod/right,
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/offices/cryo)
-"mTm" = (
-/turf/open/floor/almayer/red/east,
-/area/almayer/shipboard/navigation)
 "mTp" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -47316,8 +47787,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_s)
 "neO" = (
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/red/north,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/plate,
 /area/almayer/shipboard/navigation)
 "neS" = (
 /obj/structure/largecrate/random/case/double,
@@ -79578,17 +80052,17 @@ amg
 amg
 bFj
 alU
-bId
-bJU
-bKd
 alU
-bLm
-bTG
-bMT
+aLB
+aLB
+aLB
+aLB
+aLA
+aLA
+aLA
+aLC
+aLz
 alU
-bNi
-bNn
-bNq
 alU
 bON
 amg
@@ -79677,25 +80151,25 @@ kMW
 eQR
 bBA
 bBv
-aqu
+aMa
 tkq
 bFa
 alU
 neO
-aoi
-avB
-bKq
-ayw
-aoi
-avB
-bKq
-ayw
-aoi
-azA
+aLB
+aLB
+aLw
+aLw
+aLw
+aLw
+aLw
+aLA
+aLz
+aLv
 alU
 bOO
 tkq
-aqu
+aLs
 bQG
 bBA
 uoO
@@ -79779,27 +80253,27 @@ nBJ
 iWJ
 apw
 bBA
-bBx
-amg
+aLr
+aMb
 bEw
 aou
 bHq
-aoc
 bJX
 bJX
-bKs
-bLo
-bMO
-bMU
-bNf
 bJX
 bJX
-let
+aLO
+bJX
+aLF
+bJX
+bJX
+bJX
+bJX
 bHq
 bFk
 bPq
-amg
-rAD
+aLt
+aLr
 bBA
 sGK
 nhV
@@ -79883,25 +80357,25 @@ dKS
 ffN
 bBA
 bBy
-amg
+aMc
 aoa
 ald
 alU
-bIn
-bJY
-aoi
+aLw
+aLw
+aLw
+aLw
 bLh
-bLp
-bMP
-bNa
-bLh
-aoi
-bNo
-bNt
+aLG
+aLG
+aLw
+aLw
+aLw
+aLw
 alU
 akb
 aoa
-amg
+aLu
 bQE
 bBA
 bME
@@ -79990,17 +80464,17 @@ aqu
 bEx
 bQt
 alU
-bIw
-bJY
-sta
-rxK
-amX
+aLX
+aLA
+aLA
+aLw
 bLh
-azA
-pfa
-iLq
-bNo
-bNS
+aLI
+aLG
+aLw
+aLA
+aLA
+aLy
 alU
 bPg
 bEx
@@ -80091,19 +80565,19 @@ bBA
 lsV
 amg
 ddz
-ald
+aLY
 alU
-bIx
-bJZ
-kyN
-bLi
-bLq
-bMR
-bNb
-bNg
-mTm
-gjt
-vJo
+alU
+aLA
+aLA
+aLA
+bLh
+aLK
+aLw
+aLA
+aLA
+aLB
+alU
 alU
 bPh
 bPC
@@ -80196,15 +80670,15 @@ bBA
 bBA
 bBA
 alU
-bIy
 alU
 alU
-alU
-syg
-alU
-pQz
-alU
-alU
+aLR
+aLA
+bLh
+aLw
+aLw
+aLA
+aLA
 alU
 pzW
 pzW
@@ -80301,13 +80775,13 @@ aow
 bWJ
 nar
 alU
-bXo
-oCi
-bLs
-mZM
-any
-grG
-bXY
+aLU
+aLR
+bLh
+aLw
+aLw
+aLA
+aLA
 alU
 xNM
 ikl
@@ -80404,13 +80878,13 @@ aox
 aoj
 nCR
 alU
-bKf
-bKf
-anF
-bLj
-anA
-bNk
-bNk
+aLV
+aLU
+aLP
+aLN
+aLA
+aLA
+aLD
 alU
 odt
 ikl
@@ -80509,9 +80983,9 @@ aiX
 alU
 alU
 alU
-iTW
+aLQ
 alU
-noo
+aLH
 alU
 alU
 alU
@@ -109753,27 +110227,27 @@ nBJ
 nBJ
 nBJ
 bAs
+aMh
+aMh
+aMh
+aMh
+aMh
+aMh
+aMh
 bAs
+bdH
+bdH
+bdH
+bdH
+bdH
 bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
+aMh
+aMh
+aMh
+aMh
+aMh
+aMh
+aMh
 bAs
 wid
 wid
@@ -109856,6 +110330,13 @@ nBJ
 nBJ
 nBJ
 bAs
+aMi
+aMi
+aNw
+aMh
+aMh
+aMh
+aMh
 bAs
 bAs
 bAs
@@ -109863,20 +110344,13 @@ bAs
 bAs
 bAs
 bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
+aMh
+aMh
+aMh
+aMh
+aMJ
+aMi
+aMi
 bAs
 wid
 wid
@@ -109958,29 +110432,29 @@ bdH
 nBJ
 nBJ
 nBJ
+aMe
+aMj
+aNA
+aNy
+aMh
+aMh
+aMh
+aMh
 bAs
+aMh
+aMh
+aMh
+aMh
+aMh
 bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
+aMh
+aMh
+aMh
+aMh
+aMK
+aMu
+aMj
+aMe
 wid
 wid
 wid
@@ -110062,27 +110536,27 @@ nBJ
 nBJ
 nBJ
 bAs
+aMk
+aNB
+aNy
+aMh
+aMh
+aMh
+aMh
 bAs
+aMh
+aMh
+aMh
+aMh
+aMh
 bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
+aMh
+aMh
+aMh
+aMh
+aMK
+aMv
+aMk
 bAs
 wid
 wid
@@ -110165,27 +110639,27 @@ nBJ
 nBJ
 nBJ
 bAs
+aMk
+aNB
+aNy
+aMh
+aMh
+aMh
+aMh
 bAs
+aMh
+aMh
+aMh
+aMh
+aMh
 bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
+aMh
+aMh
+aMh
+aMh
+aMK
+aMv
+aMk
 bAs
 wid
 wid
@@ -110268,27 +110742,27 @@ nBJ
 nBJ
 nBJ
 bAs
+aMk
+aNB
+aNy
+aMh
+aMh
+aMh
+aMh
 bAs
+aMh
+aMh
+aMh
+aMh
+aMh
 bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
-bAs
+aMh
+aMh
+aMh
+aMh
+aMK
+aMv
+aMk
 bAs
 wid
 wid
@@ -110371,27 +110845,27 @@ nBJ
 nBJ
 nBJ
 bAs
-bAs
-bAs
-bAs
-bAs
+aMk
+aNB
+aNy
+aMh
+aIm
+aMN
+aIm
+aMN
 aIm
 aIm
 aIm
 aIm
 aIm
+aMN
 aIm
+aMN
 aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-bAs
-bAs
-bAs
-bAs
+aMh
+aMK
+aMv
+aMk
 bAs
 wid
 wid
@@ -110474,27 +110948,27 @@ nBJ
 nBJ
 nBJ
 bAs
-bAs
-bAs
-bAs
-bAs
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-bAs
-bAs
-bAs
-bAs
+aMk
+aNB
+aNz
+aMi
+aMN
+aNv
+bJU
+bKd
+alU
+bLm
+bTG
+bMT
+alU
+bNi
+bNn
+bNq
+aMN
+aMi
+aMM
+aMv
+aMk
 bAs
 wid
 wid
@@ -110577,27 +111051,27 @@ nBJ
 nBJ
 nBJ
 bAs
-bAs
-bAs
-bAs
-bAs
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-bAs
-bAs
-bAs
-bAs
+aMn
+aMk
+aMj
+aMj
+aMN
+amX
+aoi
+avB
+bKq
+ayw
+aoi
+avB
+bKq
+ayw
+aoi
+azA
+aMN
+aMj
+aMj
+aMk
+aMn
 bAs
 wid
 wid
@@ -110680,27 +111154,27 @@ nBJ
 nBJ
 nBJ
 bAs
-bAs
-bAs
-bAs
-bAs
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-bAs
-bAs
-bAs
-bAs
+aLr
+aNC
+aMk
+aMk
+aMR
+aoc
+bJX
+bJX
+bKs
+bLo
+bMO
+bMU
+bNf
+bJX
+bJX
+let
+aMR
+aMk
+aMk
+aMA
+aMp
 bAs
 wid
 wid
@@ -110783,27 +111257,27 @@ nBJ
 nBJ
 nBJ
 bAs
-bAs
-bAs
-bAs
-bAs
+aMr
+aMF
+aMF
+aMF
 aIm
+bIn
+bJY
+aoi
+bLh
+bLp
+bMP
+bNa
+bLh
+aoi
+bNo
+bNt
 aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-bAs
-bAs
-bAs
-bAs
+aMF
+aMF
+aMF
+aMr
 bAs
 wid
 wid
@@ -110886,27 +111360,27 @@ nBJ
 nBJ
 nBJ
 bAs
-bAs
-bAs
-bAs
-bAs
+aMs
+aMs
+aMs
+aMs
+aMN
+bIw
+bJY
+sta
+rxK
+amX
+bLh
+azA
+pfa
+iLq
+bNo
+bNS
 aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-bAs
-bAs
-bAs
-bAs
+aMs
+aMs
+aMs
+aMs
 bAs
 wid
 wid
@@ -110989,27 +111463,27 @@ nBJ
 nBJ
 nBJ
 bAs
-bAs
-bAs
-bAs
-bAs
+aMh
+aMh
+aMh
+aMh
 aIm
+bIx
+aNu
+kyN
+bLi
+bLq
+bMR
+bNb
+bNg
+aMS
+gjt
+vJo
 aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-bAs
-bAs
-bAs
-bAs
+aMh
+aMh
+aMh
+aMh
 bAs
 wid
 wid
@@ -111098,15 +111572,15 @@ bAs
 bAs
 aIm
 aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
+alU
+alU
+alU
+syg
+alU
+pQz
+alU
+alU
+alU
 azy
 azy
 azy
@@ -111201,15 +111675,15 @@ aJh
 aJh
 aJh
 aJh
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
+alU
+aNt
+oCi
+bLs
+mZM
+any
+grG
+aMV
+alU
 azy
 azy
 azy
@@ -111304,15 +111778,15 @@ aJh
 aJh
 aJh
 aJh
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
+alU
+bKf
+bKf
+anF
+bLj
+anA
+bNk
+bNk
+alU
 azy
 azy
 azy
@@ -111407,15 +111881,15 @@ aJh
 aJh
 aJh
 aJh
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
-aIm
+alU
+alU
+alU
+iTW
+alU
+noo
+alU
+alU
+alU
 azy
 azy
 azy
@@ -111512,11 +111986,11 @@ aJh
 aJh
 azy
 azy
-azy
-azy
-azy
-azy
-azy
+aIs
+aIs
+aNe
+aIs
+aIs
 azy
 azy
 azy
@@ -111614,13 +112088,13 @@ aJh
 aJh
 aJh
 azy
-azy
-azy
-azy
-azy
-azy
-azy
-azy
+aMW
+aIs
+aIw
+aNf
+aIw
+aIs
+aMW
 azy
 azy
 azy
@@ -111717,13 +112191,13 @@ aJh
 aJh
 aJh
 azy
-azy
-azy
-azy
-azy
-azy
-azy
-azy
+aIs
+aIw
+aNk
+aNg
+aNa
+aIw
+aIs
 azy
 azy
 azy
@@ -111820,13 +112294,13 @@ aJh
 aJh
 aJh
 azy
-azy
-azy
-azy
-azy
-azy
-azy
-azy
+aIw
+aNp
+aNn
+aNh
+aNb
+aMX
+aIw
 azy
 azy
 azy
@@ -111923,13 +112397,13 @@ aJh
 aJh
 aJh
 azy
-azy
-azy
-azy
-azy
-azy
-azy
-azy
+aIw
+aNp
+aNo
+aNj
+aNd
+aMX
+aIw
 azy
 azy
 azy
@@ -112026,13 +112500,13 @@ aJh
 aJh
 aJh
 azy
-azy
-azy
-azy
-azy
-azy
-azy
-azy
+aIw
+aNq
+aNo
+aNj
+aNd
+aMZ
+aIw
 azy
 azy
 azy
@@ -112129,13 +112603,13 @@ aJh
 aJh
 aJh
 azy
-aIs
+ryY
 azy
 azy
 azy
 azy
 azy
-aIs
+ryY
 azy
 azy
 azy

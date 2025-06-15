@@ -1,0 +1,4 @@
+author: "MemesLauncher"
+delete-after: True
+changes:
+  - balance: "Enabled the storage of flag/teslas into the construction rig."

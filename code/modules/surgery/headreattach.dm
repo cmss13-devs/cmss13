@@ -81,8 +81,8 @@
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
 
 /datum/surgery_step/reattach_head/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
-	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the carbon fibre skeleton and silicon musculature of \his body."),
-	SPAN_NOTICE("You reattach [target]'s head to the carbon fibre skeleton and silicon musculature of \his body."))
+	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the carbon fiber skeleton and silicon musculature of \his body."),
+	SPAN_NOTICE("You reattach [target]'s head to the carbon fiber skeleton and silicon musculature of \his body."))
 	log_interact(user, target, "[key_name(user)] attached [tool] to [key_name(target)]'s neck.")
 
 	surgery.patient_head = tool

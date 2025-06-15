@@ -24,6 +24,7 @@
 	tacklestrength_min = 4
 	tacklestrength_max = 4
 
+	available_strains = list(/datum/xeno_strain/mangonel)
 	behavior_delegate_type = /datum/behavior_delegate/sentinel_base
 	minimap_icon = "sentinel"
 

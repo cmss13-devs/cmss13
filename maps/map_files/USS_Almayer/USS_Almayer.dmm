@@ -14577,6 +14577,9 @@
 "aMp" = (
 /obj/structure/ladder/multiz,
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/shipboard/weapon_room)
 "aMq" = (
@@ -23313,6 +23316,10 @@
 /area/almayer/medical/operating_room_two)
 "biG" = (
 /obj/structure/ladder/multiz,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/shipboard/weapon_room)
 "biH" = (

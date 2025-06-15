@@ -1406,6 +1406,10 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidwarning/west,
 /area/bigredv2/outside/space_port)
+"afq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1510,6 +1514,10 @@
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/dark,
 /area/bigredv2/outside/telecomm)
+"afK" = (
+/obj/structure/machinery/transformer/lz2,
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/s)
 "afL" = (
 /obj/structure/showcase{
 	icon_state = "broadcaster_send";
@@ -1520,6 +1528,9 @@
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
+"afN" = (
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/s)
 "afO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/delivery,
@@ -1539,6 +1550,9 @@
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/marshal_office)
+"afR" = (
+/turf/open/floor/hybrisa/tile/asteroidwarning_bigtile/west,
+/area/bigredv2/outside/nw)
 "afS" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
@@ -1659,9 +1673,16 @@
 	},
 /turf/open/floor/asteroidwarning/southeast,
 /area/bigredv2/outside/space_port)
+"agp" = (
+/obj/structure/machinery/transformer/lz1,
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "agq" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/bigredv2/outside/n)
+"agr" = (
+/turf/open/floor/hybrisa/tile/asteroidfloor_bigtile,
+/area/bigredv2/outside/nw)
 "ags" = (
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/n)
@@ -38675,12 +38696,6 @@
 /obj/structure/window/framed/solaris/reinforced/hull,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/oob)
-"xIt" = (
-/obj/item/trash/popcorn{
-	pixel_y = 9
-	},
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/nw)
 "xIv" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 8;
@@ -48903,7 +48918,7 @@ ahR
 aeI
 aeI
 aeI
-fWH
+aeI
 aeI
 aeI
 aeI
@@ -49339,7 +49354,7 @@ aeI
 aeI
 aeI
 aeI
-aeI
+mZh
 aeI
 aeI
 aeI
@@ -50190,7 +50205,7 @@ aeI
 aeI
 aeI
 wHT
-ajy
+auF
 anp
 avT
 avT
@@ -50407,7 +50422,7 @@ aeI
 aeI
 aeI
 aeI
-ajy
+aeI
 anp
 qaR
 avT
@@ -50621,10 +50636,10 @@ aeI
 aeI
 aeI
 vWw
-aeI
-mZh
-aeI
-ajy
+aoO
+afR
+afR
+aiw
 anp
 avT
 avT
@@ -50838,10 +50853,10 @@ aeI
 aeI
 aeI
 aeI
-aeI
-aeI
-aeI
-caL
+ajy
+agr
+agp
+ajx
 anp
 anp
 alX
@@ -51054,11 +51069,11 @@ aeI
 aeI
 aeI
 aeI
-aeI
-aeI
-fWH
-aeI
+mZh
 ajy
+agr
+agr
+ajx
 vCl
 ing
 alu
@@ -51270,12 +51285,12 @@ aeI
 aoO
 aiw
 hxn
-aiw
-aiw
-aiw
-aiw
-aiw
-xIt
+ahQ
+aeI
+ajy
+ajx
+ajx
+ajx
 gyv
 vsz
 ngo
@@ -54805,9 +54820,9 @@ nKZ
 mEg
 aMd
 bjx
-bjx
-bjx
-bjx
+blq
+bjw
+afq
 bjw
 axX
 lmi
@@ -55022,10 +55037,10 @@ vkR
 phk
 aIn
 bjy
-bjy
-bjy
-bjB
 blq
+afN
+afK
+bjw
 axX
 bmp
 nVq
@@ -55239,10 +55254,10 @@ iww
 cdI
 aIn
 bjy
-bjy
-bjy
-bkp
 blq
+afN
+afN
+afq
 axX
 bmq
 nVq
@@ -55456,10 +55471,10 @@ oYO
 vrD
 aIn
 bjz
-bjz
-bkp
-bjA
-blq
+blu
+bjx
+bjx
+bjx
 axX
 trr
 tTI

@@ -87,3 +87,7 @@
 
 /// From /datum/controller/subsystem/hijack/fire()
 #define COMSIG_GLOB_FUEL_PUMP_UPDATE "!fuel_pump_update"
+
+/// From /obj/structure/machinery/transformer
+#define COMSIG_GLOB_TRASNFORMER_ON "!transformer_on"
+#define COMSIG_GLOB_TRASNFORMER_OFF "!transformer_off"

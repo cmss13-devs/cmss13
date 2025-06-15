@@ -289,7 +289,7 @@
 //power_source is a source of electricity, can be powercell, area, apc, cable, powernet or null
 //source is an object caused electrocuting (airlock, grille, etc)
 //No animations will be performed by this proc.
-/proc/electrocute_mob(mob/living/carbon/M as mob, power_source, obj/source, siemens_coeff = 1.0)
+/proc/electrocute_mob(mob/living/carbon/M as mob, power_source, obj/source, siemens_coeff = 1.0, needs_power = TRUE)
 	//This is for performance optimization only.
 	//DO NOT modify siemens_coeff here. That is checked in human/electrocute_act()
 	if(istype(M,/mob/living/carbon/human))
@@ -311,7 +311,7 @@
 
 	var/shock_damage = 0
 
-	if(!power_source && source_area && (!source_area.requires_power || source_area.unlimited_power))
+	if(!power_source && (source_area && (!source_area.requires_power || source_area.unlimited_power)) || !needs_power)
 		shock_damage = min(rand(25, 75),rand(25, 75))
 		M.electrocute_act(shock_damage, source, siemens_coeff)
 	else

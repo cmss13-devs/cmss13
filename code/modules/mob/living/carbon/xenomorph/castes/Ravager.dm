@@ -303,7 +303,7 @@
 					framed_window.deconstruct(disassembled = FALSE)
 			if(istype(structure_blocker, /obj/structure/fence))
 				var/obj/structure/fence/fence = structure_blocker
-				if(!fence.unslashable)
+				if(!fence.unslashable && !istype(fence, /obj/structure/fence/fob))
 					fence.health -= 50
 					fence.healthcheck()
 

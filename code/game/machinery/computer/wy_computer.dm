@@ -31,14 +31,27 @@
 	/// A loose number to order security vents if they aren't pre-ordered.
 	var/vent_tag_num = 1
 
+	/// Internal camera console
+	var/obj/structure/machinery/computer/cameras/internal/internal_camera_console
+	var/internal_camera_network = list(CAMERA_NET_WY)
+	/// If you need access to hidden cell stuff or not
+	var/internal_camera_restricted = FALSE
+
 	/// Machinery the console interacts with (doors/shutters)
 	var/list/obj/structure/machinery/targets = list()
+
+	/// Document Printer
+	var/list/document_categories = list(PAPER_CATEGORY_LIAISON)
+	var/list/documents_available = list()
 
 	COOLDOWN_DECLARE(printer_cooldown)
 	COOLDOWN_DECLARE(cell_flasher)
 	COOLDOWN_DECLARE(sec_flasher)
 
 /obj/structure/machinery/computer/wy_intranet/Initialize()
+	internal_camera_console = new(src)
+	internal_camera_console.network = internal_camera_network
+	get_possible_documents()
 	. = ..()
 	return INITIALIZE_HINT_LATELOAD
 
@@ -47,33 +60,47 @@
 	get_targets()
 
 /obj/structure/machinery/computer/wy_intranet/Destroy()
-	targets = null
+	qdel(internal_camera_console)
+	internal_camera_console = null
+	for(var/obj/target in targets)
+		clean_target(target)
 	. = ..()
+
+/obj/structure/machinery/computer/wy_intranet/proc/clean_target(obj/structure/target)
+	UnregisterSignal(target, COMSIG_PARENT_QDELETING)
+	targets -= target
 
 /obj/structure/machinery/computer/wy_intranet/proc/get_targets()
 	targets = list()
 	for(var/obj/structure/machinery/door/target_door in GLOB.machines)
 		if(target_door.id == divider_id)
 			targets += target_door
+			RegisterSignal(target_door, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), target_door)
 			continue
 		if(target_door.id == hidden_cell_id)
 			targets += target_door
+			RegisterSignal(target_door, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), target_door)
 
 	for(var/obj/structure/machinery/flasher/target_flash in GLOB.machines)
 		if(target_flash.id == hidden_cell_id)
 			targets += target_flash
+			RegisterSignal(target_flash, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), target_flash)
 			continue
 		if(target_flash.id == security_system_id)
 			targets += target_flash
+			RegisterSignal(target_flash, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), target_flash)
 
 	for(var/obj/structure/pipes/vents/pump/no_boom/gas/gas_vent in GLOB.gas_vents)
 		if(gas_vent.network_id == security_system_id)
 			targets += gas_vent
+			RegisterSignal(gas_vent, COMSIG_PARENT_QDELETING, PROC_REF(clean_target), gas_vent)
 
 /obj/structure/machinery/computer/wy_intranet/liaison
 	divider_id = "CLRoomDivider"
 	hidden_cell_id = "CL_Containment"
 	security_system_id = "CL_Security"
+	internal_camera_network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH, CAMERA_NET_CONTAINMENT_HIDDEN)
+	internal_camera_restricted = TRUE
 
 // ------ WY Intranet Console UI ------ //
 
@@ -116,6 +143,10 @@
 	data["cell_flash_cooldown"] = !COOLDOWN_FINISHED(src, cell_flasher)
 
 	data["security_vents"] = get_security_vents()
+
+	data["restricted_camera"] = internal_camera_restricted
+
+	data["available_documents"] = documents_available
 
 	return data
 
@@ -177,6 +208,9 @@
 		if("page_vents")
 			last_menu = current_menu
 			current_menu = "vents"
+		if("page_printer")
+			last_menu = current_menu
+			current_menu = "printer"
 
 		if("unlock_divider")
 			toggle_divider()
@@ -219,6 +253,20 @@
 			sec_vent.create_gas(VENT_GAS_CN20, 6, 5 SECONDS)
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via WY Intranet.")
 
+		if("open_cameras")
+			internal_camera_console.tgui_interact(user)
+
+		if("print_document")
+			if(!COOLDOWN_FINISHED(src, printer_cooldown))
+				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
+				to_chat(user, SPAN_WARNING("The printer is not ready to print another document."))
+				return FALSE
+			playsound = FALSE
+			playsound(src, 'sound/machines/fax.ogg', 15, 1)
+			var/selected_document = params["document_name"]
+			COOLDOWN_START(src, printer_cooldown, 23.4 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(print_document), selected_document), 3.4 SECONDS)
+
 	if(playsound)
 		playsound(src, "keyboard_alt", 15, 1)
 
@@ -228,7 +276,7 @@
 	if(ACCESS_WY_GENERAL in card.access)
 		if(card.paygrade)
 			switch(card.paygrade)
-				if(PAY_SHORT_WYC10)
+				if(PAY_SHORT_WYC10, PAY_SHORT_WYC11)
 					return WY_COMP_ACCESS_DIRECTOR
 				if(PAY_SHORT_WYC9, PAY_SHORT_WYC8)
 					return WY_COMP_ACCESS_SENIOR_LEAD
@@ -290,7 +338,7 @@
 		if(target_door.density)
 			continue
 		target_door.close()
-		target_door.lock()
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock)), 1 SECONDS)
 		open_cell_door = FALSE
 
 	return TRUE
@@ -382,3 +430,25 @@
 		current_vent["available"] = is_available
 		security_vents += list(current_vent)
 	return security_vents
+
+
+/obj/structure/machinery/computer/wy_intranet/proc/get_possible_documents()
+	documents_available.Cut()
+	for(var/docname in GLOB.prefab_papers)
+		var/obj/item/paper/prefab/document = GLOB.prefab_papers[docname]
+		if(!istype(document))
+			continue
+		if(!document.is_prefab || !document.doc_datum_type || (document.name == "paper"))
+			continue
+		if(!document.document_category || !(document.document_category in document_categories))
+			continue
+		documents_available += docname
+	return
+
+/obj/structure/machinery/computer/wy_intranet/proc/print_document(document_name)
+	visible_message(SPAN_NOTICE("[src] prints out a paper."))
+
+	var/selected_document = GLOB.prefab_papers[document_name].type
+	new selected_document(loc)
+
+	return TRUE

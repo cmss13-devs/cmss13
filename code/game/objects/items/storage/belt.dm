@@ -98,8 +98,6 @@
 		/obj/item/explosive/plastic,
 		/obj/item/device/lightreplacer,
 		/obj/item/device/defibrillator/synthetic,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunkit,
 	)
 	bypass_w_limit = list(
 		/obj/item/tool/shovel/etool,
@@ -155,12 +153,10 @@
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
 		/obj/item/stack/barbed_wire,
-		/obj/item/defenses/handheld/sentry,
+		/obj/item/defenses/handheld,
 		/obj/item/stack/rods,
 		/obj/item/stack/tile,
 		/obj/item/device/defibrillator/synthetic,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunkit,
 	)
 
 	bypass_w_limit = list(
@@ -169,7 +165,7 @@
 		/obj/item/stack/sheet,
 		/obj/item/stack/sandbags_empty,
 		/obj/item/stack/sandbags,
-		/obj/item/defenses/handheld/sentry,
+		/obj/item/defenses/handheld,
 	)
 
 /obj/item/storage/belt/medical

@@ -1,7 +1,7 @@
 /datum/equipment_preset/goon
 	name = "WY Goons"
 	faction = FACTION_WY
-	rank = FACTION_WY
+	job_title = FACTION_WY
 	idtype = /obj/item/card/id/silver/cl
 	faction_group = list(FACTION_WY)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
@@ -64,7 +64,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON
-	rank = JOB_WY_GOON
+	job_title = JOB_WY_GOON
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon
 	minimap_icon = "goon_standard"
@@ -146,7 +146,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON_TECH
-	rank = JOB_WY_GOON_TECH
+	job_title = JOB_WY_GOON_TECH
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_tech
 	minimap_icon = "goon_engi"
@@ -193,7 +193,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON_MEDIC
-	rank = JOB_WY_GOON_MEDIC
+	job_title = JOB_WY_GOON_MEDIC
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_medic
 	minimap_icon = "goon_med"
@@ -251,7 +251,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_GOON_LEAD
-	rank = JOB_WY_GOON_LEAD
+	job_title = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_lead
 	minimap_icon = "goon_leader"
@@ -334,7 +334,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_RESEARCHER
-	rank = JOB_WY_RESEARCHER
+	job_title = JOB_WY_RESEARCHER
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/researcher
 	minimap_icon = "goon_sci"
@@ -380,7 +380,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_RESEARCH_LEAD
-	rank = JOB_WY_RESEARCH_LEAD
+	job_title = JOB_WY_RESEARCH_LEAD
 	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/researcher
 	minimap_icon = "goon_sci_lead"

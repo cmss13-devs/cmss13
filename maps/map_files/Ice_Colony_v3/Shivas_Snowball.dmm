@@ -197,6 +197,11 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
+"aaM" = (
+/obj/structure/surface/table,
+/obj/item/device/defibrillator/synthetic,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
 "aaN" = (
 /obj/item/weapon/gun/flamer/survivor,
 /obj/structure/surface/rack,
@@ -46424,7 +46429,7 @@ qep
 arX
 ktd
 azg
-kjt
+aaM
 kjt
 ver
 ver

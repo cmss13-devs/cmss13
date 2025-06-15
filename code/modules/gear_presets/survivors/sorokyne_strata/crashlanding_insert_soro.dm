@@ -4,7 +4,7 @@
 	name = "Survivor - UPP SOF"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	origin_override = ORIGIN_UPP
-	rank = JOB_SURVIVOR
+	job_title = JOB_SURVIVOR
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
@@ -42,7 +42,7 @@
 	name = "Survivor - UPP SOF Soldier"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 	assignment = JOB_UPP
-	rank = JOB_UPP
+	job_title = JOB_UPP
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	skills = /datum/skills/military/survivor/upp_private
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -58,7 +58,7 @@
 	name = "Survivor - UPP SOF Sapper"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_ENGI
-	rank = JOB_UPP_ENGI
+	job_title = JOB_UPP_ENGI
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 
 	minimap_icon = "upp_sapper"
@@ -79,7 +79,7 @@
 	name = "Survivor - UPP SOF Medic"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_MEDIC
-	rank = JOB_UPP_MEDIC
+	job_title = JOB_UPP_MEDIC
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 
 	minimap_icon = "upp_med"
@@ -101,7 +101,7 @@
 /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
 	name = "Survivor - UPP SOF Specialist"
 	assignment = JOB_UPP_SPECIALIST
-	rank = JOB_UPP_SPECIALIST
+	job_title = JOB_UPP_SPECIALIST
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_0)
@@ -119,7 +119,7 @@
 	name = "Survivor - UPP SOF Squad Leader"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_LEADER
-	rank = JOB_UPP_LEADER
+	job_title = JOB_UPP_LEADER
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	role_comm_title = "121/RECON SL"
 
@@ -144,7 +144,7 @@
 
 	languages = ALL_SYNTH_LANGUAGES_UPP
 	assignment = JOB_UPP_SUPPORT_SYNTH
-	rank = JOB_UPP_SUPPORT_SYNTH
+	job_title = JOB_UPP_SUPPORT_SYNTH
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic

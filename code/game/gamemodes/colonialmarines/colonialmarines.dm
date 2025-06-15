@@ -446,7 +446,7 @@
 				continue
 
 			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
-				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+				xeno_message("The Hive is ready for a new Queen to evolve. The hive can only survive for a limited time without a queen!", 3, hive.hivenumber)
 
 		if(!active_lz && world.time > lz_selection_timer)
 			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))

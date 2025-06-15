@@ -53,7 +53,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
-	rank = "Synthetic"
+	job_title = "Synthetic"
 	role_comm_title = "Syn"
 	preset_generation_support = TRUE
 
@@ -80,7 +80,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
-	rank = "Synthetic"
+	job_title = "Synthetic"
 	role_comm_title = "Syn"
 	paygrades = list(PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_0)
 
@@ -126,7 +126,7 @@
 	faction_group = list(FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
-	rank = JOB_SYNTH_SURVIVOR
+	job_title = JOB_SYNTH_SURVIVOR
 	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = TRUE
 
@@ -617,7 +617,7 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
-	rank = JOB_CMB_SYN
+	job_title = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
@@ -646,7 +646,7 @@
 /datum/equipment_preset/synth/survivor/wy/security_synth
 	name = "Survivor - Synthetic - W-Y Security Guard Synthetic"
 	assignment = JOB_WY_SEC_SYNTH
-	rank = JOB_WY_SEC_SYNTH
+	job_title = JOB_WY_SEC_SYNTH
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(
@@ -746,7 +746,7 @@
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE)
 	assignment = JOB_WORKING_JOE
-	rank = JOB_WORKING_JOE
+	job_title = JOB_WORKING_JOE
 
 	minimap_icon = "joe"
 
@@ -839,7 +839,7 @@
 /datum/equipment_preset/synth/working_joe/upp
 	name = "Synthetic - Dzho Automaton"
 	assignment = JOB_UPP_JOE
-	rank = JOB_UPP_JOE
+	job_title = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
 	idtype = /obj/item/card/id/dogtag
 	minimap_background = "background_upp"
@@ -952,7 +952,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_NEUTRAL
 	assignment = JOB_COLONIST
-	rank = JOB_COLONIST
+	job_title = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)

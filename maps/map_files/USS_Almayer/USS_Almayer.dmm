@@ -15043,9 +15043,27 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
+"aNU" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/maint/hull/lower/p_bow)
+"aNV" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/living/tankerbunks)
 "aNW" = (
 /turf/open/floor/almayer/redcorner,
 /area/almayer/shipboard/brig/starboard_hallway)
+"aNX" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/living/tankerbunks)
 "aNY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -15057,6 +15075,31 @@
 /obj/structure/machinery/light,
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/containment)
+"aNZ" = (
+/obj/structure/machinery/light/red{
+	light_color = #FF0000
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/maint/hull/lower/p_bow)
+"aOa" = (
+/obj/structure/machinery/light/red{
+	light_color = #FF0000
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/hallways/lower/vehiclehangar)
+"aOb" = (
+/obj/structure/catwalk{
+	health = null
+	},
+/turf/open/floor/plating/almayer/no_build,
+/area/almayer/living/pilotbunks)
+"aOc" = (
+/obj/structure/machinery/light/red{
+	light_color = #FF0000;
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/maint/hull/lower/s_bow)
 "aOd" = (
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/almayer/medical/containment)
@@ -15075,6 +15118,12 @@
 	},
 /turf/open/floor/almayer/research/containment/corner/north,
 /area/almayer/medical/containment/cell)
+"aOf" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/almayer/maint/hull/lower/s_bow)
 "aOq" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -110413,8 +110462,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJQ
+aJQ
 bAs
 bAs
 bAs
@@ -110438,8 +110487,8 @@ bAs
 bAs
 bAs
 bAs
-wid
-wid
+awq
+awq
 wid
 bdH
 bdH
@@ -110516,8 +110565,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aMh
 aMh
@@ -110541,8 +110590,8 @@ aMh
 aMh
 aMh
 bAs
-wid
-wid
+axV
+axV
 wid
 bdH
 bdH
@@ -110619,8 +110668,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aMi
 aMi
@@ -110644,8 +110693,8 @@ aMJ
 aMi
 aMi
 bAs
-wid
-wid
+axV
+axV
 wid
 bdH
 bdH
@@ -110722,8 +110771,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aOc
+aJQ
 aMe
 aMj
 aNA
@@ -110747,8 +110796,8 @@ aMK
 aMu
 aMj
 aMe
-wid
-wid
+awq
+aNZ
 wid
 bdH
 bdH
@@ -110825,8 +110874,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aMk
 aNB
@@ -110850,8 +110899,8 @@ aMK
 aMv
 aMk
 bAs
-wid
-wid
+axV
+axV
 wid
 bdH
 bdH
@@ -110928,8 +110977,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aMk
 aNB
@@ -110953,8 +111002,8 @@ aMK
 aMv
 aMk
 bAs
-wid
-wid
+axV
+axV
 wid
 bdH
 bdH
@@ -111031,8 +111080,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJQ
+aJQ
 bAs
 aMk
 aNB
@@ -111056,8 +111105,8 @@ aMK
 aMv
 aMk
 bAs
-wid
-wid
+awq
+awq
 wid
 bdH
 bdH
@@ -111134,8 +111183,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aMk
 aNB
@@ -111159,8 +111208,8 @@ aMK
 aMv
 aMk
 bAs
-wid
-wid
+axV
+axV
 wid
 bdH
 bdH
@@ -111237,8 +111286,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aMk
 aNB
@@ -111262,8 +111311,8 @@ aMM
 aMv
 aMk
 bAs
-wid
-wid
+axV
+axV
 wid
 bdH
 bdH
@@ -111340,8 +111389,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aOc
+aJQ
 bAs
 aMn
 aMk
@@ -111365,8 +111414,8 @@ aMj
 aMk
 aMn
 bAs
-wid
-wid
+awq
+aNZ
 wid
 bdH
 bdH
@@ -111443,8 +111492,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aLr
 aNC
@@ -111468,8 +111517,8 @@ aMk
 aMA
 aMp
 bAs
-wid
-wid
+axV
+axV
 wid
 bdH
 bdH
@@ -111546,8 +111595,8 @@ bdH
 bdH
 bdH
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aMr
 aMF
@@ -111571,8 +111620,8 @@ aMF
 aMF
 aMr
 bAs
-wid
-wid
+axV
+axV
 wid
 bdH
 bdH
@@ -111649,8 +111698,8 @@ bdH
 bdH
 nBJ
 nBJ
-nBJ
-nBJ
+aJQ
+aJQ
 bAs
 aMs
 aMs
@@ -111674,8 +111723,8 @@ aMs
 aMs
 aMs
 bAs
-wid
-wid
+awq
+awq
 wid
 wid
 bdH
@@ -111752,8 +111801,8 @@ bdH
 bdH
 nBJ
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 aMh
 aMh
@@ -111777,8 +111826,8 @@ aMh
 aMh
 aMh
 bAs
-wid
-wid
+axV
+axV
 wid
 wid
 bdH
@@ -111855,8 +111904,8 @@ bdH
 nBJ
 nBJ
 nBJ
-nBJ
-nBJ
+aJS
+aJS
 bAs
 bAs
 bAs
@@ -111880,8 +111929,8 @@ azy
 azy
 azy
 azy
-wid
-wid
+axV
+axV
 wid
 wid
 wid
@@ -111958,8 +112007,8 @@ nBJ
 nBJ
 nBJ
 nBJ
-nBJ
-aJh
+aOc
+aJm
 aJh
 aJh
 aJh
@@ -111983,8 +112032,8 @@ azy
 azy
 azy
 azy
-azy
-azy
+aIs
+aOa
 wid
 wid
 wid
@@ -112058,11 +112107,11 @@ nBJ
 aJT
 aJR
 aJQ
-nBJ
-nBJ
-nBJ
-nBJ
-aJh
+aOf
+aJS
+aJQ
+aJS
+aOb
 aJh
 aJh
 aJh
@@ -112086,11 +112135,11 @@ azy
 azy
 azy
 azy
-azy
-azy
-wid
-wid
-wid
+aIw
+aIw
+awq
+axV
+aNU
 awq
 axa
 avP
@@ -112161,11 +112210,11 @@ nBJ
 aJV
 aJR
 aJQ
-nBJ
-nBJ
-nBJ
-nBJ
-aJh
+aOf
+aJS
+aJQ
+aJS
+aOb
 aJh
 aJh
 aJh
@@ -112189,11 +112238,11 @@ azy
 azy
 azy
 azy
-azy
-axX
-axX
-axX
-axX
+aIw
+aNX
+axW
+aNX
+aNV
 axW
 axa
 awa

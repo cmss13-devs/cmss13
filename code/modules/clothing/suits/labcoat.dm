@@ -363,3 +363,15 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
+
+/obj/item/clothing/suit/storage/labcoat/brown
+	icon_state = "labcoat_brown"
+	item_state = "labcoat_brown"
+
+/obj/item/clothing/suit/storage/labcoat/short
+	icon_state = "labcoat_short"
+	item_state = "labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/long
+	icon_state = "labcoat_long"
+	item_state = "labcoat_long"

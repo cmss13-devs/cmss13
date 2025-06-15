@@ -118,7 +118,7 @@
 	name = "Survivor - UPP - Ministry of Defense - Army Reservist"
 	assignment = "Armiyskiy Rezervist"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
-	rank = JOB_SURVIVOR
+	job_title = JOB_SURVIVOR
 	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
@@ -511,7 +511,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
 	faction_group = FACTION_HYPERDYNE
-	rank = JOB_HC_EXECUTIVE
+	job_title = JOB_HC_EXECUTIVE
 	faction = FACTION_HYPERDYNE
 	faction_group = list(FACTION_HYPERDYNE, FACTION_LIST_SURVIVOR_UPP)
 	idtype = /obj/item/card/id/silver/cl/hyperdyne

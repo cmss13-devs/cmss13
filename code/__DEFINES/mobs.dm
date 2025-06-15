@@ -223,6 +223,7 @@
 #define NO_SHRAPNEL (1<<14)
 #define HAS_HARDCRIT (1<<15)
 #define NO_OVERLAYS (1<<16) // Stop OnMob overlays from appearing on sprite
+#define IS_SYNTHETIC_K9 (1<<17)
 
 //=================================================
 

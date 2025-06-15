@@ -185,8 +185,8 @@ Royal Marines Commando
 		SKILL_SPEC_WEAPONS = SKILL_SPEC_SMARTGUN,
 	)
 
-/datum/skills/rmc/excomcaptain // EXACT SAME AS MARINE/FORECON CO, USED FOR TRIJENT DAM CO SURVIVOR i love beees
-	name = "EXCOM Officer"
+/datum/skills/rmc/incom // EXACT SAME AS MARINE/FORECON CO, USED FOR TRIJENT DAM CO SURVIVOR i love beees
+	name = "INCOM Officer"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,

@@ -113,7 +113,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	..()
 
-/datum/equipment_preset/survivor/twe/excom
+/datum/equipment_preset/survivor/twe/incom
 	name = "CO Survivor - Trijent Dam - INCOM Officer"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	job_title = JOB_TWE_RMC_CAPTAIN
@@ -123,7 +123,7 @@
 	faction_group = list(FACTION_TWE, FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_icon = "rmc_commander"
 	idtype = /obj/item/card/id/dogtag
-	skills = /datum/skills/rmc/excomcaptain
+	skills = /datum/skills/rmc/incom
 
 /datum/equipment_preset/survivor/twe/excom/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/royal_marine/team_leader, WEAR_HEAD)

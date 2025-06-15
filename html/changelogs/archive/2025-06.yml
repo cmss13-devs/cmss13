@@ -172,3 +172,15 @@
   - rscadd: Xeno can be fed with any type of food
   realforest2001:
   - admin: Mentors can now disable their stuff.
+2025-06-15:
+  Drathek:
+  - bugfix: Fixed an exploit allowing hauled to still enter tunnels
+  MemesLauncher:
+  - balance: Enabled the storage of flag/teslas into the construction rig.
+  Red-byte3D:
+  - rscadd: New yautja weapon "Chain Gauntlets"
+  - rscadd: New sprites for "Chain Gauntlets"
+  cuberound:
+  - balance: Allows IMP ammo rack to carry filled sandbags
+  realforest2001:
+  - code_imp: Changed the backend of crew manifest labelling from equipment presets.

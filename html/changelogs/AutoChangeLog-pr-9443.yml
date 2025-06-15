@@ -1,4 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - code_imp: "Changed the backend of crew manifest labelling from equipment presets."

@@ -309,8 +309,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
-	acquire_dpi()
-
 	// we should interrupt this here, now
 	if(IsGuestKey(key) && CONFIG_GET(string/auth_url) && !check_localhost_status())
 		mob = new /mob/unauthenticated()
@@ -405,6 +403,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 /client/proc/PostLogin()
 	add_verb(src, collect_client_verbs())
+
+	acquire_dpi()
 
 	// Initialize tgui panel
 	stat_panel.initialize(
@@ -566,8 +566,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 
 /client/proc/acquire_dpi()
-	set waitfor = FALSE
-
 	// Remove with 516
 	if(byond_version < 516)
 		return

@@ -2,7 +2,7 @@
 /datum/equipment_preset/pmc/commando
 	name = "WY-Commandos"
 	faction = FACTION_PMC
-	rank = FACTION_PMC
+	job_title = FACTION_PMC
 	idtype = /obj/item/card/id/pmc/commando
 	headset_type = /obj/item/device/radio/headset/distress/pmc/commando
 	faction = FACTION_PMC
@@ -15,7 +15,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_COMMANDO_STANDARD
-	rank = JOB_WY_COMMANDO_STANDARD
+	job_title = JOB_WY_COMMANDO_STANDARD
 	minimap_icon = "pmc_gun"
 	paygrades = list(PAY_SHORT_WY_COM = JOB_PLAYTIME_TIER_0)
 
@@ -67,7 +67,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_COMMANDO_GUNNER
-	rank = JOB_WY_COMMANDO_GUNNER
+	job_title = JOB_WY_COMMANDO_GUNNER
 	minimap_icon = "pmc_sg"
 	skills = /datum/skills/pmc/commando/gunner
 	paygrades = list(PAY_SHORT_WY_GUN = JOB_PLAYTIME_TIER_0)
@@ -117,7 +117,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_COMMANDO_LEADER
-	rank = JOB_WY_COMMANDO_LEADER
+	job_title = JOB_WY_COMMANDO_LEADER
 	minimap_icon = "pmc_ld"
 	skills = /datum/skills/pmc/commando/leader
 	paygrades = list(PAY_SHORT_WY_COMLD = JOB_PLAYTIME_TIER_0)
@@ -189,7 +189,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_WY_COMMANDO_DOGCATHER
-	rank = JOB_WY_COMMANDO_DOGCATHER
+	job_title = JOB_WY_COMMANDO_DOGCATHER
 	paygrades = list(PAY_SHORT_WY_DOG = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "DOG"
 	minimap_icon = "dogcather"

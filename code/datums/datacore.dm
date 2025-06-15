@@ -69,6 +69,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	else
 		assignment = "Неназначен"	// SS220 EDIT TRANSLATE
 
+	var/manifest_title
+	if(target?.assigned_equipment_preset.manifest_title)
+		manifest_title = target.assigned_equipment_preset.manifest_title
+	else
+		manifest_title = target.job
+
 	var/id = add_zero(num2hex(target.gid), 6) //this was the best they could come up with? A large random number? *sigh*
 	var/icon/front = new(get_id_photo(target), dir = SOUTH)
 	var/icon/side = new(get_id_photo(target), dir = WEST)
@@ -79,8 +85,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.fields["id"] = id
 	record_general.fields["name"] = target.real_name
 	record_general.name = target.real_name
-	record_general.fields["real_rank"] = target.job
-	record_general.fields["rank"] = assignment
+	record_general.fields["real_rank"] = assignment
+	record_general.fields["rank"] = manifest_title
 	record_general.fields["squad"] = target.assigned_squad ? target.assigned_squad.name : null
 	record_general.fields["age"] = target.age
 	record_general.fields["p_stat"] = "Active"

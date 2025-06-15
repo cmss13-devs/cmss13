@@ -213,6 +213,7 @@
 	. = ..()
 
 /turf/ex_act(severity)
+	ChangeTurf(/turf/open_space)
 	return 0
 
 /turf/proc/update_icon() //Base parent. - Abby

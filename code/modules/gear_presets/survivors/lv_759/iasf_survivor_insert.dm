@@ -5,7 +5,7 @@
 /datum/equipment_preset/survivor/iasf
 	name = "Survivor - IASF"
 	paygrades = list(PAY_SHORT_IASFE2 = JOB_PLAYTIME_TIER_0)
-	rank = JOB_SURVIVOR
+	job_title = JOB_SURVIVOR
 	skills = /datum/skills/iasf
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	faction = FACTION_IASF
@@ -61,7 +61,7 @@
 	name = "Survivor - IASF Paratrooper"
 	paygrades = list(PAY_SHORT_IASFE2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_IASFE2 = JOB_PLAYTIME_TIER_1)
 	assignment = "IASF - Paratrooper"
-	rank = JOB_TWE_IASF_PARA
+	job_title = JOB_TWE_IASF_PARA
 	skills = /datum/skills/iasf
 
 /datum/equipment_preset/survivor/iasf/paratrooper/load_gear(mob/living/carbon/human/new_human)
@@ -83,7 +83,7 @@
 	name = "Survivor - IASF Combat Engineer"
 	paygrades = list(PAY_SHORT_IASFE3 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Combat Engineer"
-	rank = JOB_TWE_IASF_PARA_ENGI
+	job_title = JOB_TWE_IASF_PARA_ENGI
 
 	minimap_icon = "rmc_breacher"
 
@@ -117,7 +117,7 @@
 	name = "Survivor - IASF Combat Medical Technician"
 	paygrades = list(PAY_SHORT_IASFE3 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Combat Medical Technician"
-	rank = JOB_TWE_IASF_PARA_MEDIC
+	job_title = JOB_TWE_IASF_PARA_MEDIC
 
 	minimap_icon = "rmc_medic"
 
@@ -152,7 +152,7 @@
 /datum/equipment_preset/survivor/iasf/pilot
 	name = "Survivor - IASF Dropship Pilot"
 	assignment = "IASF - Dropship Pilot"
-	rank = JOB_TWE_IASF_PARA_PILOT
+	job_title = JOB_TWE_IASF_PARA_PILOT
 	minimap_icon = "rmc_marksman"
 	paygrades = list(PAY_SHORT_IASFE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/iasf/pilot
@@ -174,7 +174,7 @@
 	name = "Survivor - IASF Squad Leader"
 	paygrades = list(PAY_SHORT_IASFE5 = JOB_PLAYTIME_TIER_0)
 	assignment = "IASF - Squad Leader"
-	rank = JOB_TWE_IASF_PARA_SQUAD_LEADER
+	job_title = JOB_TWE_IASF_PARA_SQUAD_LEADER
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	role_comm_title = "24/PARA SL"
 
@@ -200,7 +200,7 @@
 	assignment = "IASF - Support Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = ALL_SYNTH_LANGUAGES
-	rank = JOB_TWE_IASF_PARA_SYNTH
+	job_title = JOB_TWE_IASF_PARA_SYNTH
 	faction = FACTION_IASF
 	faction_group = FACTION_LIST_SURVIVOR_IASF
 	skills = /datum/skills/colonial_synthetic
@@ -251,7 +251,7 @@
 	faction_group = FACTION_LIST_SURVIVOR_IASF
 	skills = /datum/skills/iasf/commander
 	paygrades = list(PAY_SHORT_IASFO5 = JOB_PLAYTIME_TIER_0)
-	rank = JOB_TWE_IASF_PARA_COMMANDER
+	job_title = JOB_TWE_IASF_PARA_COMMANDER
 	minimap_icon = "rmc_commander"
 	minimap_background = "background_twe"
 	idtype = /obj/item/card/id/gold

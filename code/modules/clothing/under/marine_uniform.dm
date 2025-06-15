@@ -1778,7 +1778,7 @@
 	)
 	icon_state = "rmc_uniform"
 	worn_state = "rmc_uniform"
-	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/veteran/royal_marine/tl
 	icon_state = "rmc_uniform_teaml"
@@ -1799,6 +1799,7 @@
 	)
 	icon_state = "rmc_uniform_service"
 	worn_state = "rmc_uniform_service"
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/royal_marine/black
 	icon_state = "rmc_uniform_service_alt"

@@ -1107,7 +1107,7 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "acM" = (
 /obj/item/device/radio/intercom{
@@ -3808,7 +3808,7 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "aiC" = (
 /obj/structure/sign/safety/ladder{
@@ -5404,7 +5404,7 @@
 	layer = 3.1;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "ane" = (
 /turf/open/floor/almayer/plating_striped/east,
@@ -5694,7 +5694,7 @@
 "anS" = (
 /obj/structure/barricade/handrail,
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "anT" = (
 /obj/structure/barricade/handrail{
@@ -5708,7 +5708,7 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "anU" = (
 /obj/structure/machinery/door/airlock/almayer/security{
@@ -6034,7 +6034,7 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "aoM" = (
 /turf/open/floor/almayer/dark_sterile,
@@ -7635,7 +7635,7 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/delta)
 "asJ" = (
 /obj/structure/machinery/light{
@@ -7785,7 +7785,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "atg" = (
 /obj/structure/bed/sofa/vert/grey/top,
@@ -8037,7 +8037,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/delta)
 "auj" = (
 /obj/structure/surface/table/almayer,
@@ -8284,7 +8284,7 @@
 /area/almayer/maint/upper/u_m_p)
 "auS" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/charlie_delta_shared)
 "auT" = (
 /turf/open/floor/almayer/orangecorner/north,
@@ -8298,7 +8298,7 @@
 /area/almayer/engineering/upper_engineering)
 "auW" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "auX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -8668,7 +8668,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/p_bow)
 "awb" = (
 /obj/structure/window/framed/almayer,
@@ -9398,7 +9398,7 @@
 /area/almayer/living/numbertwobunks)
 "axV" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/p_bow)
 "axW" = (
 /turf/open/floor/almayer/no_build/plate,
@@ -10566,7 +10566,7 @@
 /area/almayer/medical/containment/cell)
 "aBf" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "aBg" = (
 /obj/structure/disposalpipe/segment{
@@ -12824,7 +12824,7 @@
 "aHm" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aHn" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -12942,7 +12942,7 @@
 "aHE" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "aHF" = (
 /turf/open_space,
@@ -12961,7 +12961,7 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aHK" = (
 /obj/structure/flora/pottedplant{
@@ -12981,7 +12981,7 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/operating_room_three)
 "aHN" = (
 /turf/open/floor/almayer/no_build/plate,
@@ -13035,7 +13035,7 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aHW" = (
 /obj/effect/decal/warning_stripes{
@@ -13089,7 +13089,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aIc" = (
 /obj/effect/decal/warning_stripes{
@@ -13119,7 +13119,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/operating_room_three)
 "aIh" = (
 /turf/open/floor/almayer/plate,
@@ -13174,7 +13174,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aIq" = (
 /obj/structure/machinery/power/apc/almayer/north,
@@ -13214,7 +13214,7 @@
 /area/almayer/engineering/lower/workshop)
 "aIw" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aIx" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
@@ -13327,7 +13327,7 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/workshop)
 "aIN" = (
 /obj/effect/decal/warning_stripes{
@@ -13466,14 +13466,14 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "aJb" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/workshop)
 "aJc" = (
 /obj/effect/decal/warning_stripes{
@@ -13484,7 +13484,7 @@
 /area/almayer/engineering/lower/workshop)
 "aJd" = (
 /obj/structure/machinery/light,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "aJe" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
@@ -13557,7 +13557,7 @@
 /area/almayer/hallways/hangar)
 "aJs" = (
 /obj/effect/decal/heavy_cable/node_n_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aJt" = (
 /turf/open/floor/almayer/no_build/plating,
@@ -13598,7 +13598,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/operating_room_one)
 "aJA" = (
 /obj/effect/decal/warning_stripes{
@@ -13618,13 +13618,13 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/operating_room_one)
 "aJD" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/decal/heavy_cable/node_s_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "aJE" = (
 /turf/closed/wall/almayer/reinforced,
@@ -13691,7 +13691,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/maint/hull/lower/s_bow)
 "aJS" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/s_bow)
 "aJT" = (
 /obj/structure/ladder/multiz,
@@ -13742,7 +13742,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "aKd" = (
 /obj/effect/decal/warning_stripes{
@@ -13798,7 +13798,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "aKm" = (
 /obj/effect/decal/warning_stripes{
@@ -13833,7 +13833,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "aKq" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -14200,7 +14200,7 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "aLp" = (
 /obj/structure/sign/safety/terminal{
@@ -14210,7 +14210,7 @@
 /obj/structure/sign/safety/intercom{
 	pixel_y = -32
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "aLq" = (
 /obj/structure/barricade/handrail{
@@ -14220,7 +14220,7 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "aLr" = (
 /obj/structure/ladder/multiz,
@@ -14547,10 +14547,10 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "aMk" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "aMl" = (
 /turf/open/floor/almayer/silver/east,
@@ -14619,13 +14619,13 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "aMv" = (
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "aMw" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
@@ -14690,7 +14690,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "aMG" = (
 /obj/structure/machinery/microwave{
@@ -14787,7 +14787,7 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aMY" = (
 /obj/effect/decal/cleanable/blood,
@@ -14804,7 +14804,7 @@
 	dir = 4;
 	light_color = "#BB3F3F"
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aNa" = (
 /obj/structure/barricade/handrail{
@@ -14815,7 +14815,7 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aNb" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -14840,7 +14840,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aNf" = (
 /obj/structure/barricade/handrail{
@@ -14848,7 +14848,7 @@
 	layer = 3.1;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aNg" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
@@ -14874,7 +14874,7 @@
 	pixel_x = 1
 	},
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aNl" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -14896,7 +14896,7 @@
 /area/almayer/hallways/lower/vehiclehangar)
 "aNp" = (
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aNq" = (
 /obj/structure/machinery/light/red{
@@ -14967,11 +14967,11 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "aNB" = (
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "aNC" = (
 /obj/effect/decal/warning_stripes{
@@ -15005,7 +15005,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/port_emb)
 "aNI" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/tl,
@@ -15053,7 +15053,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "aNQ" = (
 /obj/structure/disposalpipe/segment{
@@ -15102,7 +15102,7 @@
 /turf/open/floor/almayer/redcorner,
 /area/almayer/shipboard/brig/starboard_hallway)
 "aNX" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/tankerbunks)
 "aNY" = (
 /obj/effect/decal/warning_stripes{
@@ -15130,7 +15130,7 @@
 /area/almayer/hallways/lower/vehiclehangar)
 "aOb" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/pilotbunks)
 "aOc" = (
 /obj/structure/machinery/light/red{
@@ -15231,7 +15231,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "aOq" = (
 /obj/structure/surface/rack,
@@ -15276,7 +15276,7 @@
 	dir = 1
 	},
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "aOu" = (
 /obj/structure/machinery/light/red{
@@ -15372,7 +15372,7 @@
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aOK" = (
 /obj/structure/disposalpipe/junction{
@@ -15412,7 +15412,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aOP" = (
 /obj/structure/platform/metal/kutjevo_smooth,
@@ -15479,7 +15479,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "aPa" = (
 /obj/structure/machinery/light{
@@ -15506,7 +15506,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aPe" = (
 /obj/structure/largecrate/random/case/double,
@@ -15559,7 +15559,7 @@
 	dir = 4
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aPn" = (
 /obj/structure/machinery/cm_vending/clothing/marine/bravo{
@@ -15582,13 +15582,13 @@
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "aPq" = (
 /obj/structure/barricade/handrail,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "aPr" = (
 /obj/structure/barricade/handrail{
@@ -15614,7 +15614,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "aPw" = (
 /turf/closed/wall/almayer/outer,
@@ -15779,7 +15779,7 @@
 /obj/structure/barricade/handrail,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "aPX" = (
 /obj/structure/machinery/light/red{
@@ -15798,7 +15798,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "aPZ" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/cryo_tubes)
 "aQa" = (
 /obj/structure/machinery/light/red{
@@ -15886,7 +15886,7 @@
 	dir = 1
 	},
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "aQp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -16048,7 +16048,7 @@
 /area/almayer/maint/hull/lower/l_a_p)
 "aQP" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/delta)
 "aQQ" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
@@ -16074,7 +16074,7 @@
 "aQU" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_m_p)
 "aQV" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -16192,11 +16192,11 @@
 "aRl" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aRm" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/charlie)
 "aRn" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
@@ -16226,7 +16226,7 @@
 "aRs" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/tankerbunks)
 "aRt" = (
 /turf/open/floor/almayer/emeraldcorner/west,
@@ -16252,7 +16252,7 @@
 "aRw" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aRx" = (
 /obj/structure/bed/chair/comfy{
@@ -16273,7 +16273,7 @@
 "aRB" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_aft_hallway)
 "aRC" = (
 /obj/structure/sign/poster/io{
@@ -16300,7 +16300,7 @@
 "aRG" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "aRH" = (
 /obj/structure/machinery/light/red{
@@ -16431,7 +16431,7 @@
 /area/almayer/medical/operating_room_four)
 "aSe" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "aSf" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -16449,7 +16449,7 @@
 	dir = 8
 	},
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "aSh" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
@@ -16579,14 +16579,14 @@
 "aSy" = (
 /obj/structure/barricade/handrail,
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "aSz" = (
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "aSA" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -16622,14 +16622,14 @@
 	dir = 8
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "aSG" = (
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "aSH" = (
 /obj/structure/machinery/light,
@@ -16673,11 +16673,11 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "aSN" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "aSO" = (
 /obj/effect/decal/medical_decals{
@@ -16747,7 +16747,7 @@
 "aSZ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "aTa" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -16764,7 +16764,7 @@
 /obj/structure/barricade/handrail,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "aTc" = (
 /obj/structure/barricade/handrail,
@@ -16780,12 +16780,12 @@
 "aTd" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/lower/cryo_cells)
 "aTe" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/sea_office)
 "aTf" = (
 /obj/effect/decal/warning_stripes{
@@ -16850,7 +16850,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "aTp" = (
 /obj/structure/barricade/handrail{
@@ -16980,7 +16980,7 @@
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "aTM" = (
 /obj/effect/decal/warning_stripes{
@@ -17000,7 +17000,7 @@
 "aTP" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "aTQ" = (
 /turf/closed/wall/almayer/reinforced,
@@ -17025,7 +17025,7 @@
 /area/almayer/maint/hull/lower/s_bow)
 "aTU" = (
 /obj/structure/largecrate/random/barrel/true_random,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/s_bow)
 "aTV" = (
 /obj/structure/machinery/light/red{
@@ -17070,7 +17070,7 @@
 /area/almayer/squads/bravo)
 "aUb" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/bravo)
 "aUc" = (
 /turf/closed/wall/almayer/reinforced,
@@ -17081,7 +17081,7 @@
 "aUe" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "aUf" = (
 /turf/closed/wall/almayer/reinforced,
@@ -17409,7 +17409,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aUS" = (
 /obj/structure/platform/metal/kutjevo_smooth/west,
@@ -17460,7 +17460,7 @@
 "aVa" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aVb" = (
 /obj/structure/largecrate/random/barrel/true_random,
@@ -17506,7 +17506,7 @@
 "aVh" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aVi" = (
 /obj/structure/machinery/light/red{
@@ -17638,7 +17638,7 @@
 /obj/structure/barricade/handrail,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aVx" = (
 /obj/structure/machinery/light/red{
@@ -17673,7 +17673,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aVA" = (
 /obj/structure/machinery/light/red{
@@ -17682,7 +17682,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "aVB" = (
 /obj/structure/machinery/light/red{
@@ -17845,7 +17845,7 @@
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "aVS" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aVT" = (
 /obj/structure/machinery/light/red{
@@ -17879,7 +17879,7 @@
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "aVY" = (
 /obj/structure/machinery/light/red{
@@ -18064,7 +18064,7 @@
 	dir = 8
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "aWu" = (
 /obj/structure/sign/safety/escapepod{
@@ -18089,7 +18089,7 @@
 	dir = 8
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aWy" = (
 /obj/structure/machinery/light/red{
@@ -18097,7 +18097,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/charlie)
 "aWz" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -18152,7 +18152,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aWI" = (
 /obj/structure/machinery/light/red{
@@ -18160,7 +18160,7 @@
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_aft_hallway)
 "aWJ" = (
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -18174,7 +18174,7 @@
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "aWM" = (
 /turf/open/floor/almayer/greencorner/east,
@@ -18185,7 +18185,7 @@
 	dir = 8
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "aWO" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
@@ -18195,7 +18195,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aWQ" = (
 /obj/structure/machinery/door/airlock/almayer/security/reinforced{
@@ -18213,7 +18213,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aWS" = (
 /obj/structure/barricade/handrail{
@@ -18281,7 +18281,7 @@
 	dir = 1
 	},
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aWZ" = (
 /obj/structure/pipes/standard/simple/visible,
@@ -18304,7 +18304,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "aXd" = (
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -18313,12 +18313,12 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/lifeboat_pumps/south1)
 "aXf" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aXg" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aXh" = (
 /obj/structure/largecrate/random/secure,
@@ -18338,7 +18338,7 @@
 /area/almayer/hallways/hangar)
 "aXk" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aXl" = (
 /obj/structure/surface/table/almayer,
@@ -18399,12 +18399,12 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "aXu" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aXv" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aXw" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -18439,7 +18439,7 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "aXz" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aXA" = (
 /obj/structure/pipes/vents/pump{
@@ -18461,7 +18461,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/decal/heavy_cable/node_s_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_p)
 "aXD" = (
 /obj/structure/disposalpipe/segment,
@@ -18510,7 +18510,7 @@
 "aXI" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/delta)
 "aXJ" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -18531,10 +18531,10 @@
 "aXL" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aXM" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aXN" = (
 /obj/effect/decal/warning_stripes{
@@ -18704,7 +18704,7 @@
 /area/almayer/maint/hull/lower/l_a_p)
 "aYc" = (
 /obj/effect/decal/heavy_cable/node_n_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aYd" = (
 /obj/structure/dropship_equipment/medevac_system,
@@ -18719,7 +18719,7 @@
 "aYf" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/charlie_delta_shared)
 "aYg" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -18770,11 +18770,11 @@
 "aYl" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aYm" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aYn" = (
 /obj/effect/decal/warning_stripes{
@@ -18801,7 +18801,7 @@
 "aYp" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_m_p)
 "aYq" = (
 /obj/effect/decal/warning_stripes{
@@ -18816,7 +18816,7 @@
 "aYr" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "aYs" = (
 /obj/effect/decal/warning_stripes{
@@ -19024,7 +19024,7 @@
 /area/almayer/squads/delta)
 "aYM" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "aYN" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19050,7 +19050,7 @@
 /area/almayer/maint/hull/lower/l_m_p)
 "aYP" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_m_p)
 "aYQ" = (
 /obj/structure/sink{
@@ -19076,7 +19076,7 @@
 "aYT" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "aYU" = (
 /obj/structure/machinery/light/red{
@@ -19084,7 +19084,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "aYV" = (
 /obj/structure/machinery/light/red{
@@ -19115,7 +19115,7 @@
 	dir = 8
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "aYY" = (
 /obj/effect/decal/warning_stripes{
@@ -19130,7 +19130,7 @@
 "aYZ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/delta)
 "aZa" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19145,7 +19145,7 @@
 /area/almayer/squads/delta)
 "aZb" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/delta)
 "aZc" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19185,7 +19185,7 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "aZh" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_m_p)
 "aZi" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19214,7 +19214,7 @@
 "aZk" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "aZl" = (
 /obj/structure/surface/rack,
@@ -19230,7 +19230,7 @@
 /area/almayer/living/grunt_rnr)
 "aZm" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "aZn" = (
 /obj/effect/decal/warning_stripes{
@@ -19245,7 +19245,7 @@
 "aZo" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "aZp" = (
 /obj/effect/decal/warning_stripes{
@@ -19422,7 +19422,7 @@
 /area/almayer/living/briefing)
 "aZH" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "aZI" = (
 /obj/structure/reagent_dispensers/watertank,
@@ -19461,7 +19461,7 @@
 "aZM" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/charlie)
 "aZN" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19548,33 +19548,33 @@
 /area/almayer/maint/hull/lower/p_bow)
 "bab" = (
 /obj/effect/decal/heavy_cable/node_n_e_s,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "bac" = (
 /obj/effect/decal/heavy_cable/node_n_w,
 /obj/effect/decal/heavy_cable/node_s_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "bad" = (
 /obj/effect/decal/heavy_cable/node_n_e_s,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "bae" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "baf" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/grunt_rnr)
 "bag" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w,
 /obj/effect/decal/heavy_cable/node_n_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bah" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19722,7 +19722,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bar" = (
 /obj/effect/decal/warning_stripes{
@@ -19745,7 +19745,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/squads/charlie)
 "bat" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/p_bow)
 "bau" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19782,7 +19782,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/hangar)
 "baA" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "baB" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -19791,23 +19791,23 @@
 "baC" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "baD" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w,
 /obj/effect/decal/heavy_cable/node_s_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "baE" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_e,
 /obj/effect/decal/heavy_cable/node_s_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "baF" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "baG" = (
 /obj/effect/decal/warning_stripes{
@@ -19846,7 +19846,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_e,
 /obj/effect/decal/heavy_cable/node_s_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_midship_hallway)
 "baM" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
@@ -19893,7 +19893,7 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "baU" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_aft_hallway)
 "baV" = (
 /obj/effect/decal/warning_stripes{
@@ -19922,7 +19922,7 @@
 "baY" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_aft_hallway)
 "baZ" = (
 /turf/closed/wall/almayer/white,
@@ -19950,7 +19950,7 @@
 "bbc" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_aft_hallway)
 "bbd" = (
 /obj/structure/pipes/vents/scrubber{
@@ -20330,7 +20330,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "bbI" = (
 /obj/structure/barricade/handrail{
@@ -20348,7 +20348,7 @@
 /area/almayer/hallways/hangar)
 "bbJ" = (
 /obj/effect/decal/heavy_cable/node_n_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_fore_hallway)
 "bbK" = (
 /obj/structure/machinery/light/red{
@@ -20412,11 +20412,11 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "bbP" = (
 /obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_aft_hallway)
 "bbQ" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "bbR" = (
 /obj/effect/decal/warning_stripes{
@@ -20535,7 +20535,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "bcf" = (
 /obj/structure/barricade/handrail{
@@ -20544,7 +20544,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "bcg" = (
 /obj/effect/decal/warning_stripes{
@@ -20756,7 +20756,7 @@
 /area/almayer/living/cryo_cells)
 "bcG" = (
 /obj/effect/decal/heavy_cable/node_n_e_s,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "bcH" = (
 /obj/effect/decal/warning_stripes{
@@ -20771,12 +20771,12 @@
 /area/almayer/squads/bravo)
 "bcI" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "bcJ" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "bcK" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -20834,7 +20834,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "bcQ" = (
 /obj/effect/decal/heavy_cable/node_n_e_s,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "bcR" = (
 /obj/structure/machinery/light{
@@ -20857,7 +20857,7 @@
 "bcS" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "bcT" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -20885,15 +20885,15 @@
 "bcW" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bcX" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bcY" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bcZ" = (
 /obj/structure/machinery/chem_dispenser/corpsman{
@@ -21031,7 +21031,7 @@
 /area/almayer/hallways/lower/port_aft_hallway)
 "bdo" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower)
 "bdp" = (
 /obj/structure/barricade/handrail{
@@ -21039,7 +21039,7 @@
 	layer = 3.1;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/weapon_room)
 "bdq" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -21059,7 +21059,7 @@
 /area/almayer/medical/lockerroom)
 "bdu" = (
 /obj/effect/decal/heavy_cable/node_n_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bdv" = (
 /obj/structure/machinery/cm_vending/clothing/leader/alpha,
@@ -21075,7 +21075,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bdy" = (
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
@@ -21259,7 +21259,7 @@
 /area/almayer/living/briefing)
 "bdT" = (
 /obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bdU" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
@@ -21291,7 +21291,7 @@
 /area/almayer/living/cryo_cells)
 "bdZ" = (
 /obj/effect/decal/heavy_cable/node_n_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_aft_hallway)
 "bea" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -21335,7 +21335,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "bef" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "beg" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
@@ -21364,7 +21364,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bel" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -21500,7 +21500,7 @@
 /area/almayer/medical/lockerroom)
 "beB" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "beC" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -21549,12 +21549,12 @@
 /area/almayer/shipboard/sea_office)
 "beF" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/workshop)
 "beG" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "beH" = (
 /turf/open/floor/almayer,
@@ -21569,7 +21569,7 @@
 /area/almayer/hallways/lower/vehiclehangar)
 "beJ" = (
 /obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "beK" = (
 /obj/structure/barricade/handrail{
@@ -21577,7 +21577,7 @@
 	layer = 3.1;
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "beL" = (
 /obj/item/device/radio/intercom{
@@ -21702,7 +21702,7 @@
 "bfb" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/workshop)
 "bfc" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -21730,11 +21730,11 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "bfh" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bfi" = (
 /obj/structure/machinery/light/red{
@@ -21745,7 +21745,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/hallways/lower/vehiclehangar)
 "bfj" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/vehiclehangar)
 "bfk" = (
 /obj/structure/machinery/light{
@@ -21894,13 +21894,13 @@
 /turf/open/floor/almayer/redcorner/north,
 /area/almayer/squads/alpha)
 "bfF" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "bfG" = (
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "bfH" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -21910,7 +21910,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bfJ" = (
 /obj/structure/surface/table/almayer,
@@ -21934,7 +21934,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "bfN" = (
 /obj/structure/machinery/light/red{
@@ -21998,7 +21998,7 @@
 "bfU" = (
 /obj/structure/barricade/handrail,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bfV" = (
 /obj/structure/machinery/landinglight/ds2{
@@ -22027,7 +22027,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "bfX" = (
 /obj/effect/decal/heavy_cable/node_n_e_s,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bfY" = (
 /obj/structure/surface/table/almayer,
@@ -22058,17 +22058,17 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bgc" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bgd" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_e_s,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bge" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -22081,16 +22081,16 @@
 "bgg" = (
 /obj/structure/barricade/handrail,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "bgh" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/sea_office)
 "bgi" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "bgj" = (
 /obj/structure/machinery/landinglight/ds1{
@@ -22112,7 +22112,7 @@
 "bgm" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_e_s,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "bgn" = (
 /turf/open/floor/almayer/no_build/plate,
@@ -22130,7 +22130,7 @@
 /area/almayer/engineering/lower/workshop)
 "bgq" = (
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/engineering/lower/engine_core)
 "bgr" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -22563,14 +22563,14 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bhd" = (
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bhe" = (
 /obj/structure/machinery/light/red{
@@ -22591,7 +22591,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bhg" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -22604,7 +22604,7 @@
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "bhi" = (
 /obj/structure/barricade/handrail{
@@ -22626,11 +22626,11 @@
 	dir = 1
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "bhk" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "bhl" = (
 /obj/effect/decal/warning_stripes{
@@ -22644,7 +22644,7 @@
 /area/almayer/squads/req)
 "bhm" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/lower/cryo_cells)
 "bhn" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -22671,7 +22671,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "bhq" = (
 /obj/structure/machinery/light{
@@ -22684,11 +22684,11 @@
 /area/almayer/living/briefing)
 "bhr" = (
 /obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "bhs" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "bht" = (
 /obj/structure/surface/table/almayer,
@@ -22706,14 +22706,14 @@
 /area/almayer/engineering/lower/engine_core)
 "bhv" = (
 /obj/structure/barricade/handrail,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/hangar)
 "bhw" = (
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bhx" = (
 /obj/structure/bed/chair/wood/normal{
@@ -22730,7 +22730,7 @@
 "bhz" = (
 /obj/structure/barricade/handrail,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "bhA" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -22820,7 +22820,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bhI" = (
 /obj/structure/stairs/perspective{
@@ -22834,12 +22834,12 @@
 /turf/open/floor/almayer/blue/west,
 /area/almayer/living/bridgebunks)
 "bhK" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/briefing)
 "bhL" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/living/cryo_cells)
 "bhM" = (
 /obj/structure/surface/table/almayer,
@@ -22860,7 +22860,7 @@
 "bhO" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "bhP" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -22882,7 +22882,7 @@
 "bhR" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "bhS" = (
 /obj/structure/platform/metal/almayer/east,
@@ -23004,7 +23004,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bii" = (
 /obj/effect/decal/warning_stripes{
@@ -23035,7 +23035,7 @@
 "bil" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "bim" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -23050,7 +23050,7 @@
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "bin" = (
 /obj/effect/decal/heavy_cable/node_s_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "bio" = (
 /obj/effect/decal/warning_stripes{
@@ -23095,7 +23095,7 @@
 "bit" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/decal/heavy_cable/node_s_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_medbay)
 "biu" = (
 /obj/structure/machinery/smartfridge/chemistry,
@@ -23159,7 +23159,7 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "biA" = (
 /turf/closed/wall/almayer/white,
@@ -23226,7 +23226,7 @@
 "biI" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "biJ" = (
 /obj/structure/flora/pottedplant{
@@ -23255,16 +23255,16 @@
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "biL" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "biM" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "biN" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "biO" = (
 /obj/effect/decal/warning_stripes{
@@ -23290,7 +23290,7 @@
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "biR" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "biS" = (
 /obj/structure/machinery/light/red{
@@ -23458,12 +23458,12 @@
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "bje" = (
 /obj/effect/decal/heavy_cable/node_n_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "bjf" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "bjg" = (
 /obj/item/trash/chips,
@@ -23555,11 +23555,11 @@
 "bjo" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/bravo)
 "bjp" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "bjq" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -23575,7 +23575,7 @@
 "bjr" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "bjs" = (
 /obj/structure/machinery/disposal,
@@ -23627,7 +23627,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/stairs)
 "bjz" = (
 /obj/effect/decal/warning_stripes{
@@ -23728,7 +23728,7 @@
 /area/almayer/squads/alpha)
 "bjH" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "bjI" = (
 /obj/effect/decal/warning_stripes{
@@ -23763,11 +23763,11 @@
 "bjK" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "bjL" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "bjM" = (
 /obj/structure/platform/metal/almayer,
@@ -23788,7 +23788,7 @@
 "bjO" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "bjP" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -23822,10 +23822,10 @@
 "bjU" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "bjV" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/alpha)
 "bjW" = (
 /obj/effect/decal/warning_stripes{
@@ -23896,7 +23896,7 @@
 "bkc" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "bkd" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
@@ -23907,11 +23907,11 @@
 "bke" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_s_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "bkf" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "bkg" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/spec,
@@ -23950,20 +23950,20 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "bkl" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "bkm" = (
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "bkn" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/l_a_s)
 "bko" = (
 /obj/structure/bed/chair/comfy/charlie{
@@ -24465,7 +24465,7 @@
 /area/almayer/hallways/hangar)
 "blv" = (
 /obj/effect/decal/heavy_cable/node_n_w_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/hallways/lower/port_aft_hallway)
 "blw" = (
 /obj/structure/machinery/light{
@@ -24527,7 +24527,7 @@
 /area/almayer/squads/req)
 "blE" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "blF" = (
 /obj/effect/decal/warning_stripes{
@@ -24576,7 +24576,7 @@
 "blK" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/squads/req)
 "blL" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -24862,7 +24862,7 @@
 "bmq" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bmr" = (
 /obj/structure/pipes/vents/pump{
@@ -25112,7 +25112,7 @@
 /area/almayer/hallways/hangar)
 "bmS" = (
 /obj/effect/decal/heavy_cable/node_s_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bmT" = (
 /obj/effect/decal/warning_stripes{
@@ -25195,7 +25195,7 @@
 "bna" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/node_n_w,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bnb" = (
 /obj/effect/decal/warning_stripes{
@@ -25261,7 +25261,7 @@
 /area/almayer/engineering/lower/engine_core)
 "bnh" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bni" = (
 /obj/effect/decal/warning_stripes{
@@ -25314,7 +25314,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "bnn" = (
 /obj/effect/decal/heavy_cable/node_s_e,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bno" = (
 /obj/structure/disposalpipe/junction{
@@ -25452,7 +25452,7 @@
 /area/almayer/medical/chemistry)
 "bnE" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/medical/lower_medical_lobby)
 "bnF" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -28090,7 +28090,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 5
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bKt" = (
 /obj/structure/cargo_container/armat/left,
@@ -28172,7 +28172,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bLj" = (
 /obj/structure/machinery/light{
@@ -28180,7 +28180,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bLk" = (
 /obj/structure/machinery/prop/almayer/computer{
@@ -28494,14 +28494,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bNg" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 9
 	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "bNh" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -50130,7 +50130,7 @@
 /turf/open/floor/almayer/redfull,
 /area/almayer/living/briefing)
 "kEA" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/stair_clone/lower/port_aft)
 "kEE" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -50616,7 +50616,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering/port)
 "kPZ" = (
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/stairs)
 "kQr" = (
 /obj/structure/surface/table/almayer,
@@ -55356,7 +55356,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "mZP" = (
 /obj/structure/surface/rack,
@@ -56143,7 +56143,7 @@
 	},
 /obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/stairs)
 "nnL" = (
 /obj/structure/toilet{
@@ -60557,7 +60557,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "pfc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor{
@@ -66001,7 +66001,7 @@
 /area/almayer/maint/hull/lower/l_m_p)
 "rxK" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "rxQ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -74759,7 +74759,7 @@
 /area/almayer/engineering/lower)
 "vmJ" = (
 /obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open/floor/almayer/no_build/catwalk,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/maint/hull/lower/stairs)
 "vmN" = (
 /obj/structure/machinery/light,

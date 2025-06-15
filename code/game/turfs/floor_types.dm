@@ -315,6 +315,10 @@
 		update_icon()
 	..()
 
+/turf/open/floor/plating/plating_catwalk/no_build
+	allow_construction = FALSE
+	turf_flags = parent_type::turf_flags|TURF_HULL
+
 /turf/open/floor/plating/plating_catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'
 
@@ -2007,9 +2011,6 @@
 
 /turf/open/floor/almayer/no_build/test_floor4
 	icon_state = "test_floor4"
-
-/turf/open/floor/almayer/no_build/catwalk
-	icon_state = "plating_catwalk"
 
 /turf/open/floor/almayer/aicore
 	icon = 'icons/turf/floors/aicore.dmi'

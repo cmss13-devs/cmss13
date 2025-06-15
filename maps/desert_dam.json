@@ -17,6 +17,9 @@
         "/datum/equipment_preset/survivor/corporate/trijent",
         "/datum/equipment_preset/survivor/civilian"
     ],
+    "CO_survivor_types": [
+    "/datum/equipment_preset/survivor/twe/excom"
+    ],
     "defcon_triggers": [
         3300,
         2100,

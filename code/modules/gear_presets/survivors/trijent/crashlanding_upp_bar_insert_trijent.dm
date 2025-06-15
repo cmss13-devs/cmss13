@@ -176,6 +176,21 @@
 	..()
 
 //it's used on all of the above in their spawner.
+
+/datum/equipment_preset/survivor/upp/spacesecurity // CO SURVIVOR
+	name = "Survivor - UPP Ministry of Space Security Officer"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "MSS Officer"
+	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0)
+	job_title = JOB_UPP_LT_OFFICER
+	faction = FACTION_UPP
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	role_comm_title = "173/RECON MSS"
+	minimap_icon = "upp_lt"
+	minimap_background = "background_upp"
+	idtype = /obj/item/card/id/dogtag/upp
+
+
 /datum/equipment_preset/synth/survivor/upp
 	name = "Survivor - Synthetic - UPP Synth"
 	flags = EQUIPMENT_PRESET_EXTRA

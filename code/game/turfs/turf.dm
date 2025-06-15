@@ -216,8 +216,8 @@
 	. = ..()
 
 /turf/ex_act(severity)
-	if(breach_resistance && severity >= breach_resistance)
-		addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
+	//if(breach_resistance && severity >= breach_resistance)
+	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
 	return 0
 
 /turf/proc/breach_floor(severity)

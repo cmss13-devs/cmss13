@@ -17,12 +17,10 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 /turf/open_space/Initialize()
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
-	return INITIALIZE_HINT_LATELOAD
-
-/turf/open_space/LateInitialize(mapload)
-	. = ..()
 	for(var/atom/movable/fall_candidate in contents)
 		check_fall(fall_candidate)
+	return INITIALIZE_HINT_LATELOAD
+
 
 
 /turf/open_space/Entered(atom/movable/entered_movable, atom/old_loc)

@@ -26,6 +26,9 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
+
+	///How much explosive power is needed to breach, null is unbreachable
+	var/breach_resistance
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?
@@ -213,7 +216,8 @@
 	. = ..()
 
 /turf/ex_act(severity)
-	breach_floor(severity)
+	if(breach_resistance && severity >= breach_resistance)
+		breach_floor(severity)
 	return 0
 
 /turf/proc/breach_floor(severity)

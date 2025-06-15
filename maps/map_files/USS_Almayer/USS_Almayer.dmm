@@ -911,7 +911,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/turf/open/space/basic,
+/turf/open/floor/almayer/no_build/plating,
 /area/almayer/maint/hull/lower/stairs)
 "aco" = (
 /obj/structure/bed/chair/wood/normal{

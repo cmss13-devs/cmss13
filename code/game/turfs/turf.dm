@@ -213,9 +213,11 @@
 	. = ..()
 
 /turf/ex_act(severity)
-	ChangeTurf(/turf/open_space)
+	breach_floor(severity)
 	return 0
 
+/turf/proc/breach_floor(severity)
+	ChangeTurf(/turf/open_space)
 /turf/proc/update_icon() //Base parent. - Abby
 	return
 

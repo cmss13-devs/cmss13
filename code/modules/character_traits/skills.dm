@@ -100,9 +100,9 @@
 
 /datum/character_trait/skills/loader
 	trait_name = "Loader Training"
-	trait_desc = "Boosts the endurance skill by 1."
-	skill = SKILL_ENDURANCE
-	skill_cap = SKILL_ENDURANCE_TRAINED
+	trait_desc = "Boosts the engineering skill by 1."
+	skill = SKILL_ENGINEER
+	skill_cap = SKILL_ENGINEER_NOVICE
 	skill_increment = 1
 
 /datum/character_trait/skills/mortar

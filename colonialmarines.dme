@@ -1643,6 +1643,7 @@
 #include "code\modules\character_traits\skills.dm"
 #include "code\modules\clans\clan.dm"
 #include "code\modules\clans\client.dm"
+#include "code\modules\clans\debugging.dm"
 #include "code\modules\clans\rank.dm"
 #include "code\modules\clans\ship.dm"
 #include "code\modules\client\body_picker.dm"

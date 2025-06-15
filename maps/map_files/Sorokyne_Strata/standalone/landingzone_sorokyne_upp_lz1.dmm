@@ -696,10 +696,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
 	},
-/obj/item/stack/repairable/gunlube{
-	pixel_x = 6;
-	pixel_y = 9
-	},
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "ca" = (
@@ -1126,10 +1122,6 @@
 	},
 /obj/structure/machinery/light{
 	dir = 1
-	},
-/obj/item/stack/repairable/gunkit{
-	pixel_x = 1;
-	pixel_y = 6
 	},
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/research)

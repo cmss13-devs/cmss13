@@ -15,6 +15,7 @@
 		client.player_data.playtime_start = world.time
 
 	GLOB.player_list |= src
+	set_logged_in_mob()
 
 	update_Login_details()
 
@@ -64,3 +65,6 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(client, COMSIG_CLIENT_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_MOB_LOGGED_IN)
+
+/mob/proc/set_logged_in_mob()
+	GLOB.ckey_to_occupied_mob[client.ckey] = src

@@ -799,7 +799,7 @@
 	if(world.time % 5)
 		if(ismob(AM))
 			var/mob/rivermob = AM
-			if(!HAS_TRAIT(rivermob, TRAIT_HAULED))
+			if(!HAS_TRAIT(rivermob, TRAIT_HAULED) && !HAS_TRAIT(rivermob, TRAIT_INSIDE_VEHICLE))
 				to_chat(rivermob, SPAN_WARNING("Moving through the incredibly deep ocean slows you down a lot!"))
 
 /turf/open/gm/coast

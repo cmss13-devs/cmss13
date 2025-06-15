@@ -1962,6 +1962,9 @@
 	icon_state = "logo_c"
 	name = "\improper USCM Logo"
 
+/turf/open/floor/almayer/uscm/southface
+	dir = NORTH
+
 /turf/open/floor/almayer/uscm/directional
 	icon_state = "logo_directional"
 
@@ -1991,6 +1994,33 @@
 
 /turf/open/floor/almayer/uscm/directional/northwest
 	dir = NORTHWEST
+
+/turf/open/floor/almayer/uscm/south_face
+	icon_state = "logo_directional1"
+
+/turf/open/floor/almayer/uscm/south_face/north
+	dir = WEST
+
+/turf/open/floor/almayer/uscm/south_face/south
+	dir = EAST
+
+/turf/open/floor/almayer/uscm/south_face/east
+	dir = NORTH
+
+/turf/open/floor/almayer/uscm/south_face/west
+	dir = SOUTH
+
+/turf/open/floor/almayer/uscm/south_face/northwest
+	dir = SOUTHWEST
+
+/turf/open/floor/almayer/uscm/south_face/northeast
+	dir = NORTHWEST
+
+/turf/open/floor/almayer/uscm/south_face/southeast
+	dir = NORTHEAST
+
+/turf/open/floor/almayer/uscm/south_face/southwest
+	dir = SOUTHEAST
 
 /turf/open/floor/almayer/no_build
 	allow_construction = FALSE

@@ -228,6 +228,9 @@
 	slash = FALSE
 	freeze_self = FALSE
 
+/datum/action/xeno_action/activable/pounce/base_prae_dash/initialize_pounce_pass_flags()
+	pounce_pass_flags = PASS_MOB_THRU|PASS_OVER_THROW_MOB
+
 /datum/action/xeno_action/activable/prae_acid_ball
 	name = "Acid Ball"
 	action_icon_state = "prae_acid_ball"
@@ -289,8 +292,6 @@
 	spray_type = ACID_SPRAY_LINE
 	spray_distance = 7
 	spray_effect_type = /obj/effect/xenomorph/spray/praetorian
-	activation_delay = TRUE
-	activation_delay_length = 5
 
 ///////////////////////// VALKYRIE PRAE
 

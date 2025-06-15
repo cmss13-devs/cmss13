@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_POLICE "Military Police"
 #define JOB_WARDEN "Military Warden"
-#define JOB_CHIEF_POLICE "Chief MP"
+#define JOB_CHIEF_POLICE "Chief Military Police"
 #define JOB_POLICE_ROLES /datum/timelock/mp
 #define JOB_POLICE_ROLES_LIST    list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE, JOB_CO)
 

@@ -16,7 +16,7 @@
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/bloodburster
-	evolves_to = list(PATHOGEN_CREATURE_POPPER, PATHOGEN_CREATURE_SPRINTER, PATHOGEN_CREATURE_NEOMORPH)
+	evolves_to = list(PATHOGEN_CREATURE_SPRINTER, PATHOGEN_CREATURE_NEOMORPH)
 	deevolves_to = list()
 
 	tackle_min = 4

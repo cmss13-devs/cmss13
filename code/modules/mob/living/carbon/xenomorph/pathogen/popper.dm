@@ -19,7 +19,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
 
 	caste_desc = "A fast, powerful combatant."
-	evolves_to = list(PATHOGEN_CREATURE_NEOMORPH, PATHOGEN_CREATURE_SPRINTER)
+	evolves_to = list()
 
 	heal_resting = 1
 
@@ -271,6 +271,7 @@
 	growth_state = POPPER_COCOON_HATCHED
 	update_icon()
 	linked_hive.spawn_as_popper(user, src)
+	addtimer(CALLBACK(src, PROC_REF(decay)), 30 SECONDS)
 	return TRUE
 
 /obj/effect/alien/resin/special/popper_cocoon/attack_ghost(mob/dead/observer/user)

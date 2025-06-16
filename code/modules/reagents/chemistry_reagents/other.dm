@@ -1098,7 +1098,7 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_PAINING = 2, PROPERTY_FLUXING = 3, PROPERTY_HEMOSITIC = 2)
-
+	flags = REAGENT_NO_GENERATION
 /datum/reagent/blood/xeno_blood/blight/on_mob_life(mob/living/M)
 	. = ..()
 	if(!.)

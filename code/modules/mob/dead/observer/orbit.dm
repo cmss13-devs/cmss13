@@ -53,6 +53,7 @@
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
+	var/list/infected = list()
 	var/list/ert_members = list()
 	var/list/upp = list()
 	var/list/clf = list()
@@ -165,6 +166,9 @@
 
 				if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
+
+				if(human.status_flags & XENO_HOST)
+					infected += list(serialized)
 
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)

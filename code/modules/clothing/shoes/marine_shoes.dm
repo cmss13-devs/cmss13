@@ -288,10 +288,3 @@
 	name = "\improper RMC dress shoes"
 	desc = "Polished fancy dress shoes. You can see your reflection in them."
 	icon_state = "rmc_laceups"
-
-/obj/item/clothing/shoes/marine/colony
-	name = "\improper utility boots"
-	desc = "Roughened up utility boots."
-
-/obj/item/clothing/shoes/marine/colony/knife
-	spawn_item_type = /obj/item/attachable/bayonet/colony

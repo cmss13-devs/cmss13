@@ -240,25 +240,29 @@
 	assignment = JOB_CLF_COORDINATOR
 	rank = JOB_CLF_COORDINATOR
 	role_comm_title = "CRDN"
-
 	minimap_icon = "clf_cr"
-
-	skills = /datum/skills/clf/coordinator
+	skills = /datum/skills/civilian/survivor/clf/coordinator
 
 /datum/equipment_preset/survivor/clf/coordinator/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/colonist/clf/new_uniform = new()
+	var/obj/item/clothing/accessory/storage/webbing/new_webbing = new()
+	new_uniform.attach_accessory(new_human, new_webbing)
+	new_human.equip_to_slot_or_del(new_uniform, WEAR_BODY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia/gambeson(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/militia/brown(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clf(new_human), WEAR_FACE)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/colony/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/dragon_katana/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen(new_human), WEAR_R_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/paper(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/clf(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)

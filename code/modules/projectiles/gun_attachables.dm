@@ -368,12 +368,6 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 7
 	pry_delay = 1 SECONDS
 
-/obj/item/attachable/bayonet/colony
-	name = "survival knife"
-	desc = "Mass produced utility knife."
-	icon_state = "colony_bayonet"
-	attach_icon = "colony_bayonet_a"
-
 /obj/item/attachable/bayonet/co2
 	AUTOWIKI_SKIP(TRUE)
 

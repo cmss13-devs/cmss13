@@ -226,12 +226,14 @@
 
 	var/obj/item/mask = human_passer.wear_mask
 	var/obj/item/helmet = human_passer.head
-	if((mask?.flags_inventory & SPOREPROOF) || (helmet?.flags_inventory & SPOREPROOF))
-		inhaling = FALSE
-		return FALSE
-	if(prob(80) && ((mask?.flags_inventory & BLOCKGASEFFECT) || (helmet?.flags_inventory & BLOCKGASEFFECT)))
-		inhaling = FALSE
-		return FALSE
+	if(mask)
+		if((mask.flags_inventory & SPOREPROOF) || (prob(80) && (mask.flags_inventory & BLOCKGASEFFECT)))
+			inhaling = FALSE
+			return FALSE
+	if(helmet)
+		if((helmet.flags_inventory & SPOREPROOF) || (prob(80) && (helmet.flags_inventory & BLOCKGASEFFECT)))
+			inhaling = FALSE
+			return FALSE
 
 	var/embryos = 0
 	for(var/obj/item/alien_embryo/embryo in human_passer) // already got one, stops doubling up

@@ -18,7 +18,7 @@
         "/datum/equipment_preset/survivor/civilian"
     ],
     "CO_survivor_types": [
-    "/datum/equipment_preset/survivor/twe/incom"
+    "/datum/equipment_preset/survivor/trijent/cosurvivor"
     ],
     "defcon_triggers": [
         3300,

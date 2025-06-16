@@ -15,6 +15,11 @@
         },
         {
             "Marine Main Ship": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Marine Main Ship": true,
             "Down": -1
         }
     ],

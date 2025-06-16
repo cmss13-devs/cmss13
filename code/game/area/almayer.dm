@@ -984,3 +984,22 @@
 
 /area/almayer/middeck/maintenance/saft
 	name = "\improper Middle Deck Maintenance - Port-Aft"
+
+//Admin Lower Level
+
+/area/almayer/underdeck/
+	name = "USS Almayer - Under Deck"
+	allow_construction = FALSE
+	icon_state = "lowerhull"
+
+/area/almayer/underdeck/hangar
+	name = "USS Almayer - Under Deck Hangar"
+	icon_state = "hangar"
+
+/area/almayer/underdeck/req
+	name = "USS Almayer - Under Deck Cargo"
+	icon_state = "req"
+
+/area/almayer/underdeck/vehicle
+	name = "USS Almayer - Under Deck Vehicle Bay"
+	icon_state = "req"

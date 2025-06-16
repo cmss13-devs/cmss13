@@ -305,7 +305,6 @@
 							preserved_data = get_data(required_reagent)
 
 					var/created_volume = reaction.result_amount*multiplier
-					reaction.on_reaction(src, created_volume, multiplier)
 
 					if(reaction.result)
 						multiplier = max(multiplier, 1) //this shouldnt happen ...
@@ -384,8 +383,8 @@
 
 					if(CHECK_BITFIELD(reaction.reaction_type, CHEM_REACTION_ENDOTHERMIC))
 						addtimer(CALLBACK(src, PROC_REF(handle_endothermic_reaction), reaction, multiplier), 2 SECONDS, TIMER_UNIQUE)//this could easily be in process but I want to control the time
-					break
 
+					reaction.on_reaction(src, created_volume, multiplier)
 	while(reaction_occurred)
 	if(trigger_volatiles)
 		handle_volatiles()

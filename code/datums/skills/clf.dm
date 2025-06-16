@@ -94,7 +94,7 @@ COLONIAL LIBERATION FRONT
 	)
 
 /datum/skills/clf/coordinator
-	name = "Survivor CLF Coordinator"
+	name = "CLF Coordinator"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,

@@ -176,6 +176,7 @@
 	var/list/overmind_abilities = list(
 		/datum/action/xeno_action/onclick/exit_overmind,
 		/datum/action/xeno_action/onclick/set_xeno_lead,
+		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/activable/info_marker/queen,

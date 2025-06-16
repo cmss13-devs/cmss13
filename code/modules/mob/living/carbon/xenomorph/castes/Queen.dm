@@ -326,8 +326,8 @@
 		/mob/living/carbon/xenomorph/proc/construction_toggle,
 		/mob/living/carbon/xenomorph/proc/destruction_toggle,
 		/mob/living/carbon/xenomorph/proc/toggle_unnesting,
-		/mob/living/carbon/xenomorph/queen/proc/set_orders,
-		/mob/living/carbon/xenomorph/queen/proc/hive_message,
+		/mob/living/carbon/xenomorph/proc/set_orders,
+		/mob/living/carbon/xenomorph/proc/hive_message,
 		/mob/living/carbon/xenomorph/proc/rename_tunnel,
 		/mob/living/carbon/xenomorph/proc/set_hugger_reserve_for_morpher,
 	)
@@ -596,7 +596,7 @@
 	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
 		. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
 
-/mob/living/carbon/xenomorph/queen/proc/set_orders()
+/mob/living/carbon/xenomorph/proc/set_orders()
 	set category = "Alien"
 	set name = "Set Hive Orders (50)"
 	set desc = "Give some specific orders to the hive. They can see this on the status pane."
@@ -621,7 +621,7 @@
 
 	last_special = world.time + 15 SECONDS
 
-/mob/living/carbon/xenomorph/queen/proc/hive_message()
+/mob/living/carbon/xenomorph/proc/hive_message()
 	set category = "Alien"
 	set name = "Word of the Queen (50)"
 	set desc = "Send a message to all aliens in the hive that is big and visible"

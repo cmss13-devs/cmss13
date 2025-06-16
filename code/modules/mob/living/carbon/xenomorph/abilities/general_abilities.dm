@@ -552,6 +552,10 @@
 /// handles the addition of a new queen, hiding if appropriate
 /datum/action/xeno_action/onclick/tacmap/proc/handle_new_queen(datum/hive_status/hive, mob/living/carbon/xenomorph/queen/new_queen)
 	SIGNAL_HANDLER
+	var/datum/hive_status/checked_hive = hive
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!checked_hive)
+		checked_hive = GLOB.hive_datum[xeno.hivenumber]
 
 	if(tracked_queen)
 		UnregisterSignal(tracked_queen, list(COMSIG_QUEEN_MOUNT_OVIPOSITOR, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR))

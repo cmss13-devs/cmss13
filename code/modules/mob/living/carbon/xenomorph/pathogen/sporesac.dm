@@ -227,11 +227,17 @@
 	var/obj/item/mask = human_passer.wear_mask
 	var/obj/item/helmet = human_passer.head
 	if(mask)
-		if((mask.flags_inventory & SPOREPROOF) || (prob(80) && (mask.flags_inventory & BLOCKGASEFFECT)))
+		if(mask.flags_inventory & SPOREPROOF)
+			inhaling = FALSE
+			return FALSE
+		if(prob(80) && (mask.flags_inventory & BLOCKGASEFFECT))
 			inhaling = FALSE
 			return FALSE
 	if(helmet)
-		if((helmet.flags_inventory & SPOREPROOF) || (prob(80) && (helmet.flags_inventory & BLOCKGASEFFECT)))
+		if(helmet.flags_inventory & SPOREPROOF)
+			inhaling = FALSE
+			return FALSE
+		if(prob(80) && (helmet.flags_inventory & BLOCKGASEFFECT))
 			inhaling = FALSE
 			return FALSE
 

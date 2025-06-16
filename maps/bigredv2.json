@@ -18,7 +18,7 @@
         "/datum/equipment_preset/survivor/civilian"
     ],
     "CO_survivor_types": [
-        "/datum/equipment_preset/survivor/cmb/co"
+        "/datum/equipment_preset/survivor/solaris_ridge/co_survivor"
     ],
     "defcon_triggers": [
         4750,

@@ -80,10 +80,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 	..()
 
-/datum/equipment_preset/survivor/colonial_marshal/co/solaris
+/datum/equipment_preset/survivor/solaris_ridge/co_survivor
 	name = "CO Survivor - Solaris Marshal"
 	assignment = "CMB Marshal"
 	job_title = JOB_CMB_TL
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	role_comm_title = "CMB MAR"
 	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "deputy"
@@ -91,7 +92,7 @@
 	idtype = /obj/item/card/id/marshal
 	skills = /datum/skills/cmb/cosurvivor
 
-/datum/equipment_preset/survivor/colonial_marshal/co/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/solaris_ridge/co_survivor/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)

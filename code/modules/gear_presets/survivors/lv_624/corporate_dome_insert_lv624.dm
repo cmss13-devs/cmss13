@@ -54,7 +54,7 @@
 	name = "Survivor - Corporate Security Goon Medic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_MEDIC
-	rank = JOB_WY_GOON_MEDIC
+	job_title = JOB_WY_GOON_MEDIC
 	skills = /datum/skills/civilian/survivor/goon/medic
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL)
 	minimap_icon = "goon_med"
@@ -91,7 +91,7 @@
 	name = "Survivor - Corporate Security Goon Technician"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_TECH
-	rank = JOB_WY_GOON_TECH
+	job_title = JOB_WY_GOON_TECH
 	skills = /datum/skills/civilian/survivor/goon/tech
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_ENGINEERING)
 	minimap_icon = "goon_engi"
@@ -124,7 +124,7 @@
 	name = "Survivor - Corporate Security Goon Lead"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_LEAD
-	rank = JOB_WY_GOON_LEAD
+	job_title = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/goon/lead
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL, ACCESS_WY_ENGINEERING)
@@ -158,7 +158,7 @@
 	name = "Survivor - Synthetic - Corporate Security Goon Synthetic"
 	idtype = /obj/item/card/id/silver/cl
 	assignment = JOB_WY_GOON_SYNTH
-	rank = JOB_WY_GOON_SYNTH
+	job_title = JOB_WY_GOON_SYNTH
 	minimap_icon = "goon_synth"
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(

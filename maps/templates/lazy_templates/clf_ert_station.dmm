@@ -1671,7 +1671,7 @@
 /area/adminlevel/ert_station/clf_station)
 "Vk" = (
 /obj/structure/surface/table/woodentable/poor,
-/obj/item/stack/repairable/gunlube,
+/obj/item/prop/helmetgarb/gunoil,
 /obj/item/weapon/baton/cattleprod,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)

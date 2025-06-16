@@ -20,13 +20,14 @@
 	// accessory stuff
 	var/list/accessories
 	var/list/valid_accessory_slots = list()
-	var/list/restricted_accessory_slots = list()
 	/// Whether this item can be converted into an accessory when used
 	var/can_become_accessory = FALSE
 	/// default slot for accessories, pathed here for use for non-accessories
 	var/worn_accessory_slot = ACCESSORY_SLOT_DEFAULT
 	/// for pathing to different accessory subtypes with unique mechanics
 	var/accessory_path = /obj/item/clothing/accessory
+	/// default limit for attaching accessories, should only be 1 for most accessories, you don't want multiple storage accessories after all
+	var/worn_accessory_limit = 1
 
 /obj/item/clothing/proc/convert_to_accessory(mob/user)
 	if(!can_become_accessory)
@@ -47,6 +48,7 @@
 	new_accessory.high_visibility = TRUE
 	new_accessory.removable = TRUE
 	new_accessory.worn_accessory_slot = worn_accessory_slot
+	new_accessory.worn_accessory_limit = worn_accessory_limit
 	new_accessory.can_become_accessory = can_become_accessory
 
 	new_accessory.inv_overlay = image("icon" = accessory_icons[WEAR_FACE], "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]") // will need a dynamic implementation in the future, or path directly to accessory\inventory_overlays to its own dmi file  - nihi
@@ -253,6 +255,7 @@
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
 	)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_PONCHO, ACCESSORY_SLOT_MASK, ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M, ACCESSORY_SLOT_UTILITY, ACCESSORY_SLOT_PATCH)
 
 /obj/item/clothing/suit/update_clothing_icon()
 	if (ismob(src.loc))
@@ -292,7 +295,6 @@
 	flags_equip_slot = SLOT_HANDS
 	attack_verb = list("challenged")
 	valid_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_WRIST_L, ACCESSORY_SLOT_WRIST_R) // To prevent infinitely putting watches/wrist accessories on your gloves. That can be reserved for uniforms, where you have the whole ARM to put shit on
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/hands_monkey.dmi')
 	blood_overlay_type = "hands"
 	var/gloves_blood_amt = 0 //taken from blood.dm
@@ -467,6 +469,7 @@
 	if(!user.drop_inv_item_to_loc(item_to_insert, src))
 		return FALSE
 	_insert_item(item_to_insert)
+	item_to_insert.last_equipped_slot = WEAR_IN_SHOES
 	to_chat(user, SPAN_NOTICE("You slide [item_to_insert] into [src]."))
 	playsound(user, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	return TRUE

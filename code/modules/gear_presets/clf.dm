@@ -2,7 +2,7 @@
 	name = FACTION_CLF
 	languages = list(LANGUAGE_JAPANESE, LANGUAGE_ENGLISH)
 	assignment = JOB_CLF
-	rank = FACTION_CLF
+	job_title = FACTION_CLF
 	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
@@ -52,7 +52,7 @@
 	name = "CLF Soldier"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF
-	rank = JOB_CLF
+	job_title = JOB_CLF
 	role_comm_title = "GRL"
 
 	minimap_icon = "clf_mil"
@@ -162,7 +162,7 @@
 	name = "CLF Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_ENGI
-	rank = JOB_CLF_ENGI
+	job_title = JOB_CLF_ENGI
 	role_comm_title = "TECH"
 
 	minimap_icon = "clf_engi"
@@ -291,7 +291,7 @@
 	name = "CLF Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_MEDIC
-	rank = JOB_CLF_MEDIC
+	job_title = JOB_CLF_MEDIC
 	role_comm_title = "MED"
 	minimap_icon = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
@@ -452,7 +452,7 @@
 	name = "CLF Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_SPECIALIST
-	rank = JOB_CLF_SPECIALIST
+	job_title = JOB_CLF_SPECIALIST
 	role_comm_title = "SPC"
 
 	minimap_icon = "clf_spec"
@@ -581,7 +581,7 @@
 	name = "CLF Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_LEADER
-	rank = JOB_CLF_LEADER
+	job_title = JOB_CLF_LEADER
 	role_comm_title = "LDR"
 
 	minimap_icon = "clf_sl"
@@ -737,7 +737,7 @@
 
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
-	rank = JOB_CLF_SYNTH
+	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 
@@ -826,6 +826,7 @@
 		list("Surgical Webbing Vest", 0, /obj/item/clothing/accessory/storage/surg_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest (Blue)", 0, /obj/item/clothing/accessory/storage/surg_vest/blue, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("SHOES (CHOOSE 1)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
@@ -987,7 +988,7 @@
 	name = "CLF Cell Commander"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COMMANDER
-	rank = JOB_CLF_COMMANDER
+	job_title = JOB_CLF_COMMANDER
 	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMDR"
 

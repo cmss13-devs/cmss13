@@ -158,7 +158,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
 	assignment = JOB_WY_GOON_SYNTH
-	rank = JOB_WY_GOON_SYNTH
+	job_title = JOB_WY_GOON_SYNTH
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	minimap_icon = "goon_synth"
@@ -185,7 +185,7 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
-	rank = JOB_CMB_SYN
+	job_title = JOB_CMB_SYN
 	minimap_background = "background_cmb"
 	minimap_icon = "cmb_syn"
 

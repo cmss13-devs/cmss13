@@ -5,7 +5,7 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
 	minimap_background = "background_forecon"
-	rank = JOB_SURVIVOR
+	job_title = JOB_SURVIVOR
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(

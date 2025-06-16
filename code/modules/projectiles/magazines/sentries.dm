@@ -19,7 +19,14 @@
 	max_rounds = 99999
 	current_rounds = 99999
 
+/obj/item/ammo_magazine/sentry/premade/lowammo
+	max_rounds = 500
+	current_rounds = 500
+
 /obj/item/ammo_magazine/sentry/premade/dumb
+	default_ammo = /datum/ammo/bullet/turret/dumb
+
+/obj/item/ammo_magazine/sentry/premade/lowammo/dumb
 	default_ammo = /datum/ammo/bullet/turret/dumb
 
 /obj/item/ammo_magazine/sentry/shotgun

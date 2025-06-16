@@ -76,6 +76,7 @@
 
 	overmind_mob.change_real_name(overmind_mob, "Overmind ([overmind_mob.full_designation])")
 	overmind_mob.hive.set_living_xeno_queen(overmind_mob)
+	linked_hive.add_hive_leader(overmind_mob)
 	overmind_mob.lock_evolve = TRUE
 
 	// Remove their abilities
@@ -128,6 +129,7 @@
 	overmind_mob.cannot_slash = FALSE
 	overmind_mob.invisibility = initial(overmind_mob.invisibility)
 	overmind_mob.hive.set_living_xeno_queen(null)
+	linked_hive.remove_hive_leader(overmind_mob)
 
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == XENO_HIVE_PATHOGEN)

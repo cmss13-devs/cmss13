@@ -23,6 +23,7 @@
 	evolves_to = list()
 
 	heal_resting = 1.6
+	is_intelligent = TRUE
 
 	minimap_icon = "venator"
 	evolution_allowed = FALSE

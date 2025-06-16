@@ -223,10 +223,13 @@
 	if(inhaling) // Can't be inhaled by more than one person.
 		return FALSE
 	inhaling = TRUE
-	if(prob(80) && (human_passer.wear_mask && (human_passer.wear_mask.flags_inventory & BLOCKGASEFFECT)))
+
+	var/obj/item/mask = human_passer.wear_mask
+	var/obj/item/helmet = human_passer.head
+	if((mask?.flags_inventory & SPOREPROOF) || (helmet?.flags_inventory & SPOREPROOF))
 		inhaling = FALSE
 		return FALSE
-	if(prob(80) && (human_passer.head && (human_passer.head.flags_inventory & BLOCKGASEFFECT)))
+	if(prob(80) && ((mask?.flags_inventory & BLOCKGASEFFECT) || (helmet?.flags_inventory & BLOCKGASEFFECT)))
 		inhaling = FALSE
 		return FALSE
 

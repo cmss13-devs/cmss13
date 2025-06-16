@@ -35,9 +35,6 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	client.prefs = dummy_preferences
 
 	display_unauthenticated_menu()
-	create_access_code_entity()
-
-	check_logged_in()
 
 /mob/unauthenticated/set_logged_in_mob()
 	return FALSE
@@ -198,7 +195,12 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 	switch(action)
 		if("open_browser")
+			if(!access_code)
+				create_access_code_entity()
+
 			client << link("[CONFIG_GET(keyed_list/auth_urls)[params["auth_option"]]]?code=[access_code]")
+
+			INVOKE_ASYNC(src, PROC_REF(check_logged_in))
 		if("recall_code")
 			if(!COOLDOWN_FINISHED(src, recall_code_cooldown))
 				return

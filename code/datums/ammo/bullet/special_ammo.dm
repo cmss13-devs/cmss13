@@ -158,6 +158,11 @@
 	icon_state = "bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
+/datum/ammo/bullet/turret/fob
+	name = "30mm autocannon bullet"
+	damage = 100
+	shell_speed = 5*AMMO_SPEED_TIER_6
+
 /datum/ammo/bullet/machinegun //Adding this for the MG Nests (~Art)
 	name = "machinegun bullet"
 	icon_state = "bullet" // Keeping it bog standard with the turret but allows it to be changed

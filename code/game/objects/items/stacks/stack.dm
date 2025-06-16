@@ -208,6 +208,11 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))
 			return
 
+		var/area/current_area = get_area(usr)
+		if((R.flags & RESULT_REQUIRES_LANDING_ZONE) && !current_area.is_landing_zone)
+			to_chat(usr, SPAN_WARNING("The [R.title] can only be constructed in the landing zone."))
+			return
+
 		if(R.time)
 			if(usr.action_busy)
 				return

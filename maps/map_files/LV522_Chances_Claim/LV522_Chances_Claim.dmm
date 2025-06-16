@@ -750,6 +750,93 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
+"acV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
+"acW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/lv522/indoors/lone_buildings/storage_blocks/south)
+"acX" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"acY" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement14,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"acZ" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement15,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"ada" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/b_block/hydro/glass)
+"adb" = (
+/obj/structure/machinery/transformer/lz1,
+/turf/open/floor/plating/platebotc,
+/area/lv522/indoors/b_block/hydro/glass)
+"adc" = (
+/turf/open/floor/plating/platebotc,
+/area/lv522/indoors/b_block/hydro/glass)
+"add" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement12,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"ade" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"adf" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"adg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"adh" = (
+/turf/open/floor/plating,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"adi" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	pixel_y = 5
+	},
+/turf/open/asphalt/cement/cement2,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"adj" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1;
+	pixel_y = 5
+	},
+/turf/open/asphalt/cement/cement9,
+/area/lv522/outdoors/colony_streets/south_east_street)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -777,6 +864,16 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/containers)
+"adn" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -9;
+	pixel_y = 25
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv522/outdoors/colony_streets/south_east_street)
+"ado" = (
+/turf/open/floor/prison/darkyellowfull2/east,
+/area/lv522/outdoors/colony_streets/south_west_street)
 "adG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/reagent_container/food/condiment/saltshaker,
@@ -7767,10 +7864,6 @@
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/lv522/oob)
-"eaG" = (
-/obj/structure/ore_box,
-/turf/open/floor/prison/darkbrownfull2,
-/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "ebe" = (
 /obj/item/storage/pouch/autoinjector/full,
 /turf/open/auto_turf/shale/layer2,
@@ -10371,12 +10464,6 @@
 /obj/effect/landmark/lv624/fog_blocker/short,
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1)
-"fBR" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/auto_turf/shale/layer1,
-/area/lv522/outdoors/colony_streets/south_east_street)
 "fBY" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/floor/prison/floor_plate,
@@ -16679,7 +16766,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/asphalt/cement/cement1,
+/turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "jdv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -25003,12 +25090,6 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/executive)
 "nnG" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "mining_secure_blast_1";
-	layer = 3.3;
-	name = "\improper Secure Blast Door";
-	unacidable = 1
-	},
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "nnW" = (
@@ -38270,14 +38351,11 @@
 /turf/open/floor/prison/greenfull/east,
 /area/lv522/landing_zone_1/ceiling)
 "tUL" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 11;
-	pixel_y = 25
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/auto_turf/sand_white/layer0,
+/obj/structure/machinery/transformer/lz2,
+/turf/open/floor/plating,
 /area/lv522/outdoors/colony_streets/south_east_street)
 "tUM" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -39622,12 +39700,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
-"uDT" = (
-/obj/structure/pipes/standard/manifold/hidden/green{
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/lv522/indoors/b_block/bridge)
 "uEt" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -42235,13 +42307,7 @@
 /turf/open/floor/prison,
 /area/lv522/atmos/way_in_command_centre)
 "vMX" = (
-/obj/structure/surface/rack,
 /obj/structure/machinery/light,
-/obj/item/ammo_box/magazine/misc/flares{
-	pixel_x = -3;
-	pixel_y = 11
-	},
-/obj/item/ammo_box/magazine/misc/flares,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/lone_buildings/storage_blocks/south)
 "vNi" = (
@@ -44041,12 +44107,6 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/lone_buildings/storage_blocks/north_west)
-"wHj" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/light,
-/obj/item/clothing/mask/gas,
-/turf/open/floor/prison/darkbrownfull2,
-/area/lv522/indoors/lone_buildings/storage_blocks/south)
 "wHo" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/hardhat/white{
@@ -59312,11 +59372,11 @@ tSL
 hpq
 max
 xKk
-rIj
-rIj
-rIj
-rIj
-rIj
+ado
+ado
+ado
+ado
+ado
 xKk
 max
 max
@@ -61587,8 +61647,8 @@ wIr
 rvu
 aPu
 fTP
-oLa
-oLa
+qzQ
+qzQ
 qzQ
 aPu
 qSS
@@ -61792,10 +61852,10 @@ hyf
 wIr
 fYm
 aPu
-oLa
-uWT
-uWT
-tkf
+qzQ
+ada
+ada
+fTP
 qzQ
 aPu
 jiF
@@ -61999,8 +62059,8 @@ cfz
 aPu
 qzQ
 oLa
-uWT
-uWT
+adc
+adb
 tkf
 fTP
 fTP
@@ -62205,8 +62265,8 @@ tIT
 jey
 iXM
 uIk
-uWT
-uWT
+adc
+adc
 eng
 iXM
 vUe
@@ -62410,10 +62470,10 @@ hyf
 wIr
 dgY
 aPu
-xgH
-uWT
-uWT
-xgH
+oqp
+ada
+ada
+oqp
 fTP
 dPv
 pcO
@@ -62617,8 +62677,8 @@ wIr
 qJv
 aPu
 bpN
-uDT
-pOs
+vUe
+hoy
 poD
 aPu
 rSW
@@ -64689,7 +64749,7 @@ ylo
 fCW
 yfu
 nXO
-hJQ
+acr
 ylo
 hdG
 mPr
@@ -64893,8 +64953,8 @@ bwF
 aPe
 nnG
 yfu
-yfu
-yfu
+acW
+acV
 vMX
 ylo
 hdG
@@ -65099,9 +65159,9 @@ qbG
 aPe
 nnG
 yfu
-yfu
-yfu
-wHj
+acV
+acV
+vMX
 ylo
 hdG
 mPr
@@ -65307,7 +65367,7 @@ vOb
 acr
 yfu
 yfu
-eaG
+acr
 ylo
 nJr
 mPr
@@ -69617,11 +69677,11 @@ six
 hMz
 fWG
 fWG
-fWG
+adn
 jqr
 xxq
 xxq
-xxq
+xzK
 jdq
 vss
 vss
@@ -69827,8 +69887,8 @@ fWG
 uwT
 uwT
 uwT
-uwT
-tKe
+bqE
+add
 uwT
 uwT
 uwT
@@ -70032,13 +70092,13 @@ fWG
 fWG
 fWG
 uwT
+adi
+xzK
+ade
+acY
 uwT
 uwT
-tKe
-uwT
-uwT
-uwT
-uwT
+acX
 uwT
 fWG
 fWG
@@ -70237,11 +70297,11 @@ gkY
 eZe
 fWG
 fWG
-uwT
-uwT
-uwT
+fWG
+bqE
+adh
 tUL
-uwT
+hMz
 uwT
 uwT
 fWG
@@ -70443,11 +70503,11 @@ jmG
 hkO
 eZe
 fWG
-uwT
-uwT
-ixP
-tKe
-uwT
+fWG
+bqE
+adh
+adf
+hMz
 uwT
 cpy
 cpy
@@ -70649,12 +70709,12 @@ jmG
 jmG
 dVD
 fWG
-uwT
-uwT
-ixP
-tKe
 fWG
-cpy
+adj
+xxq
+adg
+acZ
+qZf
 cpy
 uje
 fWG
@@ -70855,10 +70915,10 @@ kua
 jmG
 fEY
 fWG
+fWG
 uwT
 uwT
-ixP
-fBR
+tKe
 fWG
 fWG
 fWG

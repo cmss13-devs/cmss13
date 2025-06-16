@@ -1616,6 +1616,7 @@
 
 	hive_structures_limit = list(
 		PATHOGEN_STRUCTURE_CORE = 1,
+		PATHOGEN_STRUCTURE_COCOON = 8,
 	)
 
 /datum/hive_status/pathogen/get_xeno_counts()
@@ -1639,3 +1640,11 @@
 			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
 
 	return xeno_counts
+
+/datum/hive_status/pathogen/set_hive_location(obj/effect/alien/resin/special/pylon/core/C)
+	if(!C || C == hive_location)
+		return
+	var/area/A = get_area(C)
+	xeno_message(SPAN_XENOANNOUNCE("The confluence location has been set as \the [A]."), 3, hivenumber)
+	hive_location = C
+	hive_ui.update_hive_location()

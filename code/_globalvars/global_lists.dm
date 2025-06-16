@@ -108,6 +108,10 @@ GLOBAL_LIST_INIT(resin_build_order_ovipositor, list(
 	/datum/resin_construction/resin_obj/resin_spike
 ))
 
+GLOBAL_LIST_INIT(resin_build_order_pathogen_overmind, list(
+	/datum/resin_construction/resin_obj/popper_cocoon
+))
+
 //Xeno Leader Mark Meanings
 GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin_mark_meanings())
 

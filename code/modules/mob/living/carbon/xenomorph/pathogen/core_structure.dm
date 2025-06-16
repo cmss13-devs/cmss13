@@ -49,7 +49,13 @@
 	if(hive.hivecore_cooldown)
 		to_chat(creature, SPAN_WARNING("The weeds are still recovering from the death of the hive core, wait until the weeds have recovered!"))
 		return FALSE
-	if(hive.has_structure(PATHOGEN_STRUCTURE_CORE) || !hive.can_build_structure(PATHOGEN_STRUCTURE_CORE))
+
+	if(hive.has_structure(PATHOGEN_STRUCTURE_CORE))
+		to_chat(creature, SPAN_WARNING("We already have a blight core!"))
+		return FALSE
+
+	if(!hive.can_build_structure(PATHOGEN_STRUCTURE_CORE))
+		to_chat(creature, SPAN_WARNING("We cannot create a blight core!"))
 		return FALSE
 
 	if(!creature.check_state(TRUE))
@@ -66,6 +72,7 @@
 	if(!spacecheck(creature, target_turf, structure_template)) //doublechecking
 		return FALSE
 
+	// Currently, we will never get here, I think.
 	if(hive.has_structure(PATHOGEN_STRUCTURE_CORE))
 		if(alert(creature, "Are we sure that we want to move the confluence and destroy the old blight core?", "Confirm Move", "Yes", "No") != "Yes")
 			return FALSE
@@ -148,6 +155,10 @@
 	light_range = 4
 	cover_range = WEED_RANGE_CORE
 	node_type = /obj/effect/alien/weeds/node/pylon/pathogen_core
+
+	forced_hive = TRUE
+	hivenumber = XENO_HIVE_PATHOGEN
+
 	var/next_attacked_message = 5 SECONDS
 	var/last_attacked_message = 0
 	var/warn = TRUE // should we warn of hivecore destruction?
@@ -158,7 +169,7 @@
 
 	var/mob/living/carbon/xenomorph/overmind_mob
 	/// What was the name of the creature now acting as overmind?
-	var/overmind_stored_name
+	var/list/overmind_stored_stuff = list()
 	/// Is the overmind in a state of strength? (Has the core been alive a while)
 	var/overmind_strengthened = FALSE
 	var/list/overmind_abilities = list(
@@ -171,6 +182,8 @@
 		/datum/action/xeno_action/activable/queen_heal, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
+		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
+		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
 		)
 	var/list/overmind_abilities_strong = list()
 

@@ -186,7 +186,7 @@
 	var/obj/effect/alien/weeds/nearby_weeds = locate() in turf_area
 	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
 		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
-		if(crossing_turf_weeds)
+		if(crossing_turf_weeds && !(crossing_turf_weeds.hivenumber == XENO_HIVE_PATHOGEN))
 			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 

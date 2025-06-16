@@ -22,6 +22,7 @@
 #define SPAN_PATHOGEN(X) "<span class='pathogen'>[X]</span>"
 #define SPAN_PATHOGEN_LEADER(X) "<span class='pathogenleader'>[X]</span>"
 #define SPAN_PATHOGEN_QUEEN(X) "<span class='pathogenqueen'>[X]</span>"
+#define SPAN_PATHOGEN_ANNOUNCE(X) "<span class='pathogenannounce'>[X]</span>"
 
 #define SPAN_PSYTALK(X) "<span class='psy_talk'>[X]</span>"
 

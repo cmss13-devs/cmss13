@@ -235,3 +235,9 @@
 	if(hive && (hive.living_xeno_queen == src))
 		return TRUE
 	return FALSE
+
+/mob/living/carbon/xenomorph/proc/give_blight_core()
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		give_action(src, /datum/action/xeno_action/activable/create_core)
+		return TRUE
+	return FALSE

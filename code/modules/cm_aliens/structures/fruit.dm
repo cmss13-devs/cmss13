@@ -11,7 +11,7 @@
 	health = 25
 	layer = BUSH_LAYER // technically a plant amiright
 	var/picked = FALSE
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	var/consume_delay = 2 SECONDS
 	var/mature = FALSE
 	var/flags = 0

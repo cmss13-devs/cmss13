@@ -25,8 +25,6 @@
 	var/spread_on_semiweedable = FALSE
 	var/block_structures = BLOCK_NOTHING
 
-	var/datum/hive_status/linked_hive = null
-	var/hivenumber = XENO_HIVE_NORMAL
 	var/turf/weeded_turf
 
 	// Which node is responsible for keeping this weed patch alive?

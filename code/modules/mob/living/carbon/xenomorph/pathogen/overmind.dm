@@ -17,6 +17,10 @@
 		message_admins("Pathogen Overmind assignment failed! (ERR-03)")
 		return FALSE
 
+	if(core.overmind_mob)
+		message_admins("Pathogen Overmind assignment failed! There is already an Overmind!")
+		return FALSE
+
 	log_game("[key_name_admin(approver)] has approved [key_name_admin(candidate)] to become the Pathogen Overmind!")
 	message_admins("[key_name_admin(approver)] has approved [key_name_admin(candidate)] to become the Pathogen Overmind!")
 	core.make_overmind(candidate)
@@ -52,10 +56,20 @@
 	overmind_mob = target_creature
 	overmind_mob.forceMove(loc)
 	overmind_mob.cannot_slash = TRUE
-	overmind_mob.invisibility = 70
-	overmind_stored_name = overmind_mob.name
+	overmind_mob.invisibility = 60
 
-	ADD_TRAIT(overmind_mob, TRAIT_IMMOBILIZED, OVIPOSITOR_TRAIT)
+	overmind_stored_stuff["plasmagen"] = overmind_mob.plasma_gain
+	overmind_stored_stuff["plasmamax"] = overmind_mob.plasma_max
+	overmind_stored_stuff["maxhealth"] = overmind_mob.maxHealth
+	overmind_stored_stuff["armor"] = overmind_mob.armor_deflection
+
+	overmind_mob.plasma_gain = 6
+	overmind_mob.plasma_max = 1400
+	overmind_mob.maxHealth = 1400
+	overmind_mob.armor_deflection = 45
+
+	ADD_TRAIT(overmind_mob, TRAIT_IMMOBILIZED, OVERMIND_TRAIT)
+	ADD_TRAIT(overmind_mob, TRAIT_PATHOGEN_OVERMIND, OVERMIND_TRAIT)
 	overmind_mob.set_body_position(STANDING_UP)
 	overmind_mob.set_resting(FALSE)
 
@@ -75,9 +89,12 @@
 	for(var/path in abilities_to_give)
 		give_action(overmind_mob, path)
 
+	overmind_mob.set_resin_build_order(GLOB.resin_build_order_pathogen_overmind)
+	overmind_mob.extra_build_dist = IGNORE_BUILD_DISTANCE
+
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == XENO_HIVE_PATHOGEN)
-			to_chat(X, SPAN_PATHOGEN_QUEEN("[overmind_mob.full_designation] has become the Overmind!"))
+			to_chat(X, SPAN_PATHOGEN_ANNOUNCE("[overmind_mob.full_designation] has become the Overmind!"))
 
 	return TRUE
 
@@ -92,16 +109,34 @@
 
 	// Removes the mob from the core
 
-	overmind_mob.change_real_name(overmind_stored_name)
+	REMOVE_TRAIT(overmind_mob, TRAIT_IMMOBILIZED, OVERMIND_TRAIT)
+	REMOVE_TRAIT(overmind_mob, TRAIT_PATHOGEN_OVERMIND, OVERMIND_TRAIT)
 
-	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, OVIPOSITOR_TRAIT)
+	overmind_mob.generate_name()
+	overmind_mob.plasma_gain = overmind_stored_stuff["plasmagen"]
+	overmind_mob.plasma_max = overmind_stored_stuff["plasmamax"]
+	overmind_mob.maxHealth = overmind_stored_stuff["maxhealth"]
+	overmind_mob.armor_deflection = overmind_stored_stuff["armor"]
+	overmind_stored_stuff["name"] = null
+	overmind_stored_stuff["plasmagen"] = null
+	overmind_stored_stuff["plasmamax"] = null
+	overmind_stored_stuff["maxhealth"] = null
+	overmind_stored_stuff["armor"] = null
+
 	overmind_mob.cannot_slash = FALSE
 	overmind_mob.invisibility = initial(overmind_mob.invisibility)
 	overmind_mob.hive.set_living_xeno_queen(null)
 
 	for(var/mob/living/carbon/xenomorph/X in GLOB.living_xeno_list)
 		if(X.hivenumber == XENO_HIVE_PATHOGEN)
-			to_chat(X, SPAN_PATHOGEN_QUEEN("[overmind_mob.full_designation] is no longer the Overmind!"))
+			to_chat(X, SPAN_PATHOGEN_ANNOUNCE("[overmind_mob.full_designation] is no longer the Overmind!"))
+
+	var/list/cocoons = linked_hive.hive_structures[PATHOGEN_STRUCTURE_COCOON]
+	for(var/obj/effect/alien/resin/special/popper_cocoon/cocoon in cocoons)
+		cocoon.death()
+
+	overmind_mob.set_resin_build_order(overmind_mob.caste.resin_build_order)
+	overmind_mob.extra_build_dist = initial(overmind_mob.extra_build_dist)
 
 	overmind_mob.lock_evolve = FALSE
 	overmind_mob = null
@@ -121,6 +156,11 @@
 	var/datum/hive_status/pathogen/hive = creature.hive
 
 	var/obj/effect/alien/resin/special/pylon/pathogen_core/core = hive.hive_location
+
+	var/choice = tgui_alert(creature, "Do you want to step down from Overmind?", "Leave Overmind", list("Yes", "No"))
+
+	if(choice != "Yes")
+		return FALSE
 
 	if(core.overmind_mob != creature)
 		return FALSE

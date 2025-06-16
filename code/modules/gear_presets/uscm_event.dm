@@ -15,7 +15,7 @@
 	idtype = /obj/item/card/id/general
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_COLONEL
-	rank = JOB_COLONEL
+	job_title = JOB_COLONEL
 	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "COL"
 	minimum_age = 40
@@ -60,7 +60,7 @@
 	idtype = /obj/item/card/id/general
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_GENERAL
-	rank = JOB_GENERAL
+	job_title = JOB_GENERAL
 	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "GEN"
 	minimum_age = 50
@@ -127,14 +127,14 @@
 	name = "USCM O-10C - Assistant Commandant of the Marine Corps (High Command)"
 	paygrades = list(PAY_SHORT_MO10C = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ACMC
-	rank = JOB_ACMC
+	job_title = JOB_ACMC
 	role_comm_title = "ACMC"
 
 /datum/equipment_preset/uscm_event/general/o10s
 	name = "USCM O-10S - Commandant of the Marine Corps (High Command)"
 	paygrades = list(PAY_SHORT_MO10S = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_CMC
-	rank = JOB_CMC
+	job_title = JOB_CMC
 	role_comm_title = "CMC"
 
 /*****************************************************************************************************/
@@ -151,7 +151,7 @@
 		ACCESS_MARINE_OT,
 	)
 	assignment = JOB_ORDNANCE_TECH
-	rank = "UPP"
+	job_title = "UPP"
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "OT"
 	skills = /datum/skills/spy
@@ -206,7 +206,7 @@
 /datum/equipment_preset/uscm_event/provost/enforcer
 	name = "Provost Enforcer"
 	assignment = JOB_PROVOST_ENFORCER
-	rank = JOB_PROVOST_ENFORCER
+	job_title = JOB_PROVOST_ENFORCER
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -250,7 +250,7 @@
 	name = "Provost Team Leader"
 	skills = /datum/skills/CMP
 	assignment = JOB_PROVOST_TML
-	rank = JOB_PROVOST_TML
+	job_title = JOB_PROVOST_TML
 	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -294,7 +294,7 @@
 /datum/equipment_preset/uscm_event/provost/inspector
 	name = "Provost Inspector"
 	assignment = JOB_PROVOST_INSPECTOR
-	rank = JOB_PROVOST_INSPECTOR
+	job_title = JOB_PROVOST_INSPECTOR
 	paygrades = list(PAY_SHORT_PVI = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvI"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -332,7 +332,7 @@
 /datum/equipment_preset/uscm_event/provost/inspector/chief
 	name = "Provost Chief Inspector"
 	assignment = JOB_PROVOST_CINSPECTOR
-	rank = JOB_PROVOST_CINSPECTOR
+	job_title = JOB_PROVOST_CINSPECTOR
 	paygrades = list(PAY_SHORT_PVCI = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvCI"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -369,7 +369,7 @@
 /datum/equipment_preset/uscm_event/provost/inspector/advisor
 	name = "Provost Advisor"
 	assignment = JOB_PROVOST_ADVISOR
-	rank = JOB_PROVOST_ADVISOR
+	job_title = JOB_PROVOST_ADVISOR
 	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9E = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -381,7 +381,7 @@
 	skills = /datum/skills/general
 
 	assignment = JOB_PROVOST_DMARSHAL
-	rank = JOB_PROVOST_DMARSHAL
+	job_title = JOB_PROVOST_DMARSHAL
 	paygrades = list(PAY_SHORT_PVDM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVDM
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -393,7 +393,7 @@
 	skills = /datum/skills/general
 
 	assignment = JOB_PROVOST_MARSHAL
-	rank = "Provost Marshal"
+	job_title = JOB_PROVOST_MARSHAL
 	paygrades = list(PAY_SHORT_PVM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -427,7 +427,7 @@
 	minimum_age = 50
 
 	assignment = JOB_PROVOST_SMARSHAL
-	rank = "Provost Sector Marshal"
+	job_title = JOB_PROVOST_SMARSHAL
 	paygrades = list(PAY_SHORT_PVSM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVSM
 
@@ -436,7 +436,7 @@
 	minimum_age = 60
 
 	assignment = JOB_PROVOST_CMARSHAL
-	rank = "Provost Chief Marshal"
+	job_title = JOB_PROVOST_CMARSHAL
 	paygrades = list(PAY_SHORT_PVCM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVCM
 

@@ -9,7 +9,7 @@
 	var/turf/home_turf
 
 	/// Should the alien try climbing barricades and other structures, if able?
-	var/do_climb_structures = FALSE
+	var/do_climb_structures = TRUE
 
 /datum/xeno_ai_movement/New(mob/living/carbon/xenomorph/parent)
 	. = ..()

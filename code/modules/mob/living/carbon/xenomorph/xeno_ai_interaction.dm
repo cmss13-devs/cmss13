@@ -49,31 +49,14 @@ At bare minimum, make sure the relevant checks from parent types gets copied in 
 /////////////////////////////
 /obj/structure/machinery/door/poddoor/xeno_ai_obstacle(mob/living/carbon/xenomorph/X, direction, turf/target)
 	. = ..()
-	if(!.)
-		return INFINITY
-
-	if(unacidable)
-		return INFINITY
-
-	if(!(stat & NOPOWER))
-		return INFINITY
-
-	return DOOR_PENALTY
-
+	return INFINITY
 
 /////////////////////////////
 //         SHUTTERS        //
 /////////////////////////////
 /obj/structure/machinery/door/poddoor/shutters/xeno_ai_obstacle(mob/living/carbon/xenomorph/X, direction, turf/target)
 	. = ..()
-	if(!.)
-		return INFINITY
-
-	if(unacidable)
-		return INFINITY
-
-	return DOOR_PENALTY
-
+	return INFINITY
 
 /////////////////////////////
 //         AIRLOCK         //
@@ -272,7 +255,7 @@ At bare minimum, make sure the relevant checks from parent types gets copied in 
 /obj/structure/window_frame/xeno_ai_obstacle(mob/living/carbon/xenomorph/X, direction, turf/target)
 	if(X.claw_type == CLAW_TYPE_VERY_SHARP || (X.claw_type >= CLAW_TYPE_SHARP && !reinforced))
 		return ..()
-	return WINDOW_FRAME_PENALTY
+	return INFINITY
 
 
 /////////////////////////////

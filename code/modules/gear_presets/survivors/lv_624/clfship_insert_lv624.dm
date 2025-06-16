@@ -238,7 +238,7 @@
 	name = "CLF Survivor Coordinator"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COORDINATOR
-	rank = JOB_CLF_COORDINATOR
+	job_title = JOB_CLF_COORDINATOR
 	role_comm_title = "CRDN"
 	minimap_icon = "clf_cr"
 	skills = /datum/skills/civilian/survivor/clf/coordinator

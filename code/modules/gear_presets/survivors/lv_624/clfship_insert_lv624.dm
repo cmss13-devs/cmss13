@@ -235,7 +235,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/synth/full(new_human), WEAR_R_STORE)
 
 /datum/equipment_preset/survivor/clf/coordinator
-	name = "CLF Coordinator"
+	name = "CLF Survivor Coordinator"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COORDINATOR
 	rank = JOB_CLF_COORDINATOR

@@ -80,8 +80,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
 	..()
 
-/datum/equipment_preset/survivor/cmb/co
-	name = "CO Survivor - Solaris Ridge - CMB Marshal"
+/datum/equipment_preset/survivor/colonial_marshal/co/solaris
+	name = "CO Survivor - Solaris Marshal"
 	assignment = "CMB Marshal"
 	job_title = JOB_CMB_TL
 	role_comm_title = "CMB MAR"
@@ -91,7 +91,7 @@
 	idtype = /obj/item/card/id/marshal
 	skills = /datum/skills/cmb/cosurvivor
 
-/datum/equipment_preset/survivor/cmb/co/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/survivor/colonial_marshal/co/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
@@ -117,6 +117,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5, WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/cmb, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/cmb_riot_shield, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/overwatch_camera, WEAR_R_EAR)
+	..()
 
 /datum/equipment_preset/survivor/uscm/solaris
 	name = "Survivor - Solaris United States Colonial Marine Corps Recruiter"

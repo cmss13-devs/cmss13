@@ -132,7 +132,7 @@
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
 					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
 					var/broadcast_tier = "normal"
-					if(isqueen(src))
+					if(xeno.is_hive_ruler())
 						var/mob/hologram/queen/queen_eye = client?.eye
 						if(istype(queen_eye))
 							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
@@ -142,8 +142,6 @@
 					else if(istype(xeno))
 						if(IS_XENO_LEADER(xeno))
 							broadcast_tier = "leader"
-						if(xeno.is_hive_ruler())
-							broadcast_tier = "royal"
 
 					ghostrend = get_hivemind_render(hive.hivenumber, broadcast_tier, message, "[src.name][track]")
 

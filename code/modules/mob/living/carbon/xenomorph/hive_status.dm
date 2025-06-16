@@ -1616,7 +1616,7 @@
 
 	hive_structures_limit = list(
 		PATHOGEN_STRUCTURE_CORE = 1,
-		PATHOGEN_STRUCTURE_COCOON = 8,
+		PATHOGEN_STRUCTURE_COCOON = 3,
 	)
 
 /datum/hive_status/pathogen/get_xeno_counts()

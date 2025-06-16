@@ -2,10 +2,10 @@
 	caste_type = PATHOGEN_CREATURE_POPPER
 	tier = 1
 
-	melee_damage_lower = XENO_DAMAGE_TIER_1
-	melee_damage_upper = XENO_DAMAGE_TIER_1
+	melee_damage_lower = 10
+	melee_damage_upper = 10
 	melee_vehicle_damage = 0
-	max_health = XENO_HEALTH_TIER_2
+	max_health = XENO_HEALTH_RUNNER
 	plasma_gain = XENO_PLASMA_GAIN_TIER_2
 	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
@@ -187,7 +187,7 @@
 	desc = "A cocoon to grow a Pathogen Popper."
 	construction_name = "mycelial cocoon"
 	cost = 800
-	max_per_xeno = 8
+	max_per_xeno = 3
 
 	build_path = /obj/effect/alien/resin/special/popper_cocoon
 

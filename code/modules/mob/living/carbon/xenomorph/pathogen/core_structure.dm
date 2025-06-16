@@ -172,6 +172,7 @@
 	var/list/overmind_stored_stuff = list()
 	/// Is the overmind in a state of strength? (Has the core been alive a while)
 	var/overmind_strengthened = FALSE
+
 	var/list/overmind_abilities = list(
 		/datum/action/xeno_action/onclick/exit_overmind,
 		/datum/action/xeno_action/onclick/set_xeno_lead,
@@ -184,8 +185,12 @@
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
+		/datum/action/xeno_action/onclick/emit_pheromones,
 		)
-	var/list/overmind_abilities_strong = list()
+
+	var/list/overmind_abilities_strong = list(
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		)
 
 	protection_level = TURF_PROTECTION_OB
 

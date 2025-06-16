@@ -1603,6 +1603,8 @@
 	allow_queen_evolve = FALSE
 	allow_no_queen_evo = TRUE
 
+	destruction_allowed = NORMAL_XENO
+
 	larva_gestation_multiplier = 1.5
 
 	hive_orders = "Kill everyone and everything."

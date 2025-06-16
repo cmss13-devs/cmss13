@@ -250,7 +250,7 @@
 /mob/hologram/queen/Destroy()
 	if(linked_mob)
 		var/mob/living/carbon/xenomorph/queen/Q = linked_mob
-		if((Q.hive.living_xeno_queen == Q) || Q.ovipositor)
+		if((Q.hive.living_xeno_queen == Q) || (istype(Q) && Q.ovipositor))
 			give_action(linked_mob, /datum/action/xeno_action/onclick/eye)
 
 		linked_mob.sight &= ~(SEE_TURFS|SEE_OBJS)

@@ -24,7 +24,7 @@
 #define iswarrior(A) (istype(A, /mob/living/carbon/xenomorph/warrior))
 #define isburrower(A) (istype(A, /mob/living/carbon/xenomorph/burrower))
 
-#define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A))
+#define isxeno_builder(A) (isdrone(A) || ishivelord(A) || iscarrier(A) || isburrower(A) || isqueen(A) || is_pathogen_creature(A))
 
 #define is_pathogen_creature(A) (istype(A, /mob/living/carbon/xenomorph)) && (istype(A?:caste, /datum/caste_datum/pathogen))
 

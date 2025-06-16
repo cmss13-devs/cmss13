@@ -309,6 +309,7 @@
 	popper.visible_message(SPAN_XENODANGER("A Popper suddenly emerges out of \the [source]!"), SPAN_XENODANGER("You emerge out of \the [source] and awaken from your slumber."))
 	playsound(popper, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	popper.generate_name()
+	popper.timeofdeath = user.timeofdeath
 	msg_admin_niche("[key_name(popper)] has joined as a Pathogen Popper at ([source.x],[source.y],[source.z]).")
 
 /datum/hive_status/proc/can_spawn_as_popper(mob/dead/observer/user)

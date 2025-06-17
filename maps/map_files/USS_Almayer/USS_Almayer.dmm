@@ -32892,6 +32892,22 @@
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/hanger)
+"bBb" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bBc" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bBd" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -32908,16 +32924,165 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/cryo_cells)
+"bBf" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bBg" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/alpha)
+"bBh" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bBi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bBj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bBk" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bBl" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
+"bBm" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bBn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bBo" = (
+/obj/structure/barricade/handrail{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bBp" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bBq" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
+"bBr" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
+"bBs" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bBt" = (
+/obj/structure/cryofeed,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/underdeck/hangar)
 "bBu" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/red/north,
@@ -32934,6 +33099,29 @@
 	},
 /turf/open/floor/almayer/red/north,
 /area/almayer/shipboard/weapon_room)
+"bBw" = (
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/almayer/underdeck/hangar)
+"bBx" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
 "bBy" = (
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
@@ -32953,6 +33141,14 @@
 "bBA" = (
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/shipboard/weapon_room)
+"bBB" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bBC" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -32964,13 +33160,148 @@
 /obj/structure/curtain/red,
 /turf/open/floor/plating,
 /area/almayer/living/pilotbunks)
+"bBE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bBF" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bBG" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/plating_striped/west,
+/area/almayer/underdeck/hangar)
 "bBH" = (
 /turf/open/floor/almayer/blue,
 /area/almayer/hallways/upper/midship_hallway)
+"bBI" = (
+/obj/structure/cryofeed/right,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/underdeck/hangar)
+"bBJ" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/plating_striped,
+/area/almayer/underdeck/req)
+"bBK" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/plating_striped,
+/area/almayer/underdeck/req)
+"bBL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
+"bBM" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
 "bBN" = (
 /obj/structure/machinery/light,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"bBO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
+"bBP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
 "bBQ" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door_control{
@@ -32986,12 +33317,63 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"bBS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bBT" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bBU" = (
 /obj/structure/sign/safety/security{
 	pixel_x = 32
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_bow)
+"bBV" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bBW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bBX" = (
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
 "bBY" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer{
@@ -32999,6 +33381,49 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
+"bBZ" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
+"bCa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/plating_striped,
+/area/almayer/underdeck/req)
+"bCb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bCc" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
 "bCd" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -33013,6 +33438,17 @@
 "bCe" = (
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/almayer/command/cicconference)
+"bCf" = (
+/obj/structure/cargo_container/uscm/chinook/left,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
 "bCg" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -33026,6 +33462,30 @@
 /obj/structure/window/framed/almayer,
 /turf/open/floor/plating,
 /area/almayer/living/briefing)
+"bCi" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bCj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
 "bCk" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk,
@@ -33041,6 +33501,17 @@
 	},
 /turf/open/floor/almayer/sterile_green_side/east,
 /area/almayer/medical/operating_room_three)
+"bCm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
 "bCn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -33052,6 +33523,33 @@
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/operating_room_four)
+"bCo" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bCp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
+"bCq" = (
+/obj/structure/cargo_container/uscm/mid,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
 "bCr" = (
 /obj/structure/platform_decoration/metal/almayer,
 /obj/structure/cargo_container/uscm/right{
@@ -33063,6 +33561,11 @@
 /obj/docking_port/stationary/escape_pod/cl,
 /turf/open/floor/plating,
 /area/almayer/command/corporateliaison)
+"bCt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bCu" = (
 /obj/structure/bed/chair/comfy/alpha{
 	dir = 4
@@ -33081,6 +33584,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_a_s)
+"bCw" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/closed/wall/almayer/outer,
+/area/almayer/underdeck/vehicle)
 "bCx" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -33109,12 +33621,50 @@
 "bCB" = (
 /turf/open/floor/almayer/green/east,
 /area/almayer/squads/req)
+"bCC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
 "bCD" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
 /turf/open/floor/almayer/silver/west,
 /area/almayer/living/cryo_cells)
+"bCE" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bCF" = (
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
 "bCG" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -33122,6 +33672,66 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/cryo_cells)
+"bCH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bCI" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/underdeck/req)
+"bCJ" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/underdeck/req)
+"bCK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bCL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
 "bCM" = (
 /obj/structure/machinery/cryopod,
 /turf/open/floor/almayer/cargo,
@@ -33137,6 +33747,11 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/cryo_cells)
+"bCO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/hardpoint/locomotion/arc_wheels,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
 "bCP" = (
 /obj/structure/bed/chair,
 /obj/effect/decal/warning_stripes{
@@ -33146,6 +33761,16 @@
 	},
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/squads/alpha)
+"bCQ" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bCR" = (
 /obj/structure/largecrate/random/case,
 /turf/open/floor/almayer/plate,
@@ -33161,6 +33786,63 @@
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/squads/alpha)
+"bCT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bCU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/hardpoint/primary/dualcannon,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bCV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stool,
+/turf/open/floor/almayer/no_build,
+/area/almayer/underdeck/vehicle)
+"bCW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build,
+/area/almayer/underdeck/vehicle)
+"bCX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/no_build,
+/area/almayer/underdeck/vehicle)
 "bCY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -33173,9 +33855,227 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/weapon_room)
+"bDa" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bDb" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/underdeck/vehicle)
+"bDc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build,
+/area/almayer/underdeck/vehicle)
+"bDd" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bDe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/obj/item/hardpoint/locomotion/apc_wheels,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bDf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bDg" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bDh" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bDi" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bDj" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bDk" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/underdeck/req)
+"bDl" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/underdeck/req)
+"bDm" = (
+/obj/structure/platform/metal/almayer,
+/obj/structure/largecrate/random{
+	layer = 2.9
+	},
+/obj/structure/largecrate/random{
+	pixel_y = 22;
+	layer = 3.1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/plating_striped/south,
+/area/almayer/underdeck/req)
+"bDn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_magazine/hardpoint/boyars_dualcannon,
+/obj/item/ammo_magazine/hardpoint/boyars_dualcannon{
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bDo" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bDp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bDq" = (
+/obj/structure/cargo_container/uscm/right,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
+"bDr" = (
+/obj/structure/largecrate/supply/medicine,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
 "bDs" = (
 /turf/open/floor/prison/kitchen,
 /area/almayer/living/grunt_rnr)
+"bDt" = (
+/obj/structure/largecrate/random,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
+"bDu" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
 "bDv" = (
 /obj/structure/machinery/status_display{
 	pixel_y = -30;
@@ -33204,6 +34104,111 @@
 	},
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/lockerroom)
+"bDw" = (
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/underdeck/req)
+"bDx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bDy" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/underdeck/req)
+"bDz" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/underdeck/req)
+"bDA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/underdeck/req)
+"bDB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/weapons/flamers,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/turf/open/floor/almayer/plating_striped/north,
+/area/almayer/underdeck/req)
+"bDC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
+"bDD" = (
+/obj/structure/largecrate/random/case/double,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
+"bDE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_magazine/hardpoint/m56_cupola/frontal_cannon,
+/obj/item/hardpoint/secondary/m56cupola{
+	pixel_y = 14
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
 "bDF" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -33211,6 +34216,20 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/weapon_room/notunnel)
+"bDG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/item/hardpoint/primary/cannon{
+	pixel_y = 21;
+	anchored = 1
+	},
+/turf/open/floor/almayer/no_build,
+/area/almayer/underdeck/vehicle)
 "bDH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -33220,6 +34239,43 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bDI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
+"bDJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/autoname/almayer{
+	dir = 4;
+	name = "ship-grade camera"
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/hardpoint/armor/ballistic,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/vehicle)
+"bDK" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/underdeck/vehicle)
 "bDL" = (
 /obj/structure/machinery/cryopod/right{
 	layer = 2.91;
@@ -33235,6 +34291,35 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/cryo_cells)
+"bDM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
+"bDN" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bDO" = (
 /turf/open/floor/almayer/tcomms,
 /area/almayer/shipboard/weapon_room)
@@ -33250,6 +34335,23 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
+"bDR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/hardpoint/holder/tank_turret,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build,
+/area/almayer/underdeck/vehicle)
 "bDS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -33335,6 +34437,33 @@
 "bEd" = (
 /turf/open/floor/almayer/redcorner/west,
 /area/almayer/living/cryo_cells)
+"bEe" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/heavy_cable/node_s_e,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
+"bEf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
 "bEg" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plate,
@@ -33355,6 +34484,23 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/squads/req)
+"bEj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/hangar)
 "bEk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -33373,6 +34519,16 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/squads/req)
+"bEn" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/underdeck/hangar)
 "bEp" = (
 /obj/structure/filingcabinet,
 /obj/structure/sign/safety/galley{
@@ -36203,6 +37359,13 @@
 /obj/structure/largecrate/random/secure{
 	pixel_y = 11
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
 "cdI" = (
@@ -37045,13 +38208,18 @@
 	icon = 'icons/obj/vehicles/tank.dmi';
 	icon_state = "tank_base";
 	explo_proof = 1;
-	name = "\improper M577 armored personnel carrier";
-	pixel_y = -46;
+	name = "M34A2 Longstreet Light Tank";
+	pixel_y = -45;
 	unacidable = 1;
 	unslashable = 1;
 	use_power = 0;
 	needs_power = 0;
-	pixel_x = -24
+	pixel_x = -11;
+	desc = "A giant piece of armor with a big gun, you know what to do. Entrance in the back.";
+	layer = 2.9
+	},
+/obj/item/ammo_magazine/hardpoint/ltb_cannon{
+	pixel_x = -7
 	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/underdeck/vehicle)
@@ -38229,6 +39397,7 @@
 	icon_state = "NW-out";
 	pixel_y = 2
 	},
+/obj/structure/largecrate/random,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
 "cJm" = (
@@ -43606,6 +44775,19 @@
 	light_color = "#BB3F3F";
 	dir = 1
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "eSN" = (
@@ -43912,6 +45094,13 @@
 	},
 /obj/item/storage/box/attachments{
 	pixel_y = 7
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
@@ -45310,6 +46499,19 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
@@ -50517,6 +51719,13 @@
 /obj/item/storage/box/guncase/m41aMK1,
 /obj/item/storage/box/guncase/m41aMK1,
 /obj/item/storage/box/guncase/m41aMK1,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
 "hPN" = (
@@ -51178,6 +52387,7 @@
 	pixel_y = 2
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
 "iaR" = (
@@ -51384,6 +52594,13 @@
 /obj/structure/largecrate/random{
 	pixel_y = 19;
 	layer = 3.2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped,
 /area/almayer/underdeck/req)
@@ -51624,6 +52841,26 @@
 	pixel_x = 4;
 	layer = 3.1
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/underdeck/req)
 "imS" = (
@@ -51679,6 +52916,19 @@
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
@@ -53226,6 +54476,19 @@
 	dir = 1;
 	name = "ship-grade camera"
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/underdeck/req)
 "iVy" = (
@@ -54033,10 +55296,21 @@
 "jjp" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/effect/decal/heavy_cable/node_n_w,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
 "jjz" = (
 /obj/structure/cargo_container/uscm/chinook/left,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/underdeck/req)
 "jjS" = (
@@ -56864,6 +58138,13 @@
 	pixel_x = 6;
 	layer = 3.2
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
 /turf/open/floor/almayer/plating_striped,
 /area/almayer/underdeck/req)
 "kti" = (
@@ -58024,6 +59305,7 @@
 	dir = 1;
 	name = "ship-grade camera"
 	},
+/obj/structure/largecrate/random,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
 "kRP" = (
@@ -58288,6 +59570,19 @@
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
@@ -59888,6 +61183,19 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
 	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/underdeck/req)
@@ -61684,6 +62992,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/largecrate/random,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
 "myl" = (
@@ -61933,13 +63242,14 @@
 	icon = 'icons/obj/vehicles/arc.dmi';
 	icon_state = "arc_base";
 	explo_proof = 1;
-	name = "\improper M577 armored personnel carrier";
+	name = "\improper M540-B Armored Recon Carrier";
 	pixel_y = -46;
 	unacidable = 1;
 	unslashable = 1;
 	use_power = 0;
 	needs_power = 0;
-	pixel_x = -24
+	pixel_x = -24;
+	desc = "An M540-B Armored Recon Carrier. A lightly armored reconnaissance and intelligence vehicle. Entrances on the sides."
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -62135,6 +63445,10 @@
 /area/almayer/underdeck/req)
 "mGA" = (
 /obj/effect/decal/heavy_cable/node_n_e_s,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
 "mGM" = (
@@ -64589,6 +65903,7 @@
 	light_color = "#BB3F3F"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
 "nCx" = (
@@ -65096,6 +66411,13 @@
 /obj/structure/cargo_container/uscm/tartarus/left,
 /obj/item/storage/box/guncase/smartpistol{
 	layer = 5.2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
@@ -66746,6 +68068,12 @@
 /area/almayer/command/lifeboat)
 "orU" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/underdeck/vehicle)
 "osc" = (
@@ -66942,6 +68270,13 @@
 /obj/structure/surface/rack{
 	pixel_y = 19;
 	layer = 5.2
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped,
 /area/almayer/underdeck/req)
@@ -68890,6 +70225,12 @@
 	pixel_x = -6
 	},
 /obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/underdeck/req)
 "pkh" = (
@@ -69714,6 +71055,7 @@
 	light_color = "#BB3F3F";
 	dir = 8
 	},
+/obj/item/hardpoint/locomotion/treads,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
 "pGG" = (
@@ -69991,6 +71333,11 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
 "pMA" = (
@@ -70199,6 +71546,10 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
@@ -70516,6 +71867,13 @@
 "pXD" = (
 /obj/structure/cargo_container/uscm/mid{
 	layer = 3.1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
@@ -72628,6 +73986,26 @@
 	light_color = "#BB3F3F"
 	},
 /obj/structure/cargo_container/uscm/chinook/left,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 32;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "qKY" = (
@@ -74790,6 +76168,19 @@
 "rDX" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/underdeck/req)
 "rEc" = (
@@ -75275,6 +76666,7 @@
 	pixel_y = 2;
 	pixel_x = 1
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
 "rOc" = (
@@ -75392,6 +76784,19 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice1";
+	pixel_x = 16;
+	pixel_y = -16;
+	layer = 5.3
 	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/underdeck/req)
@@ -76733,6 +78138,19 @@
 /obj/structure/cargo_container/hybrisa/containersextended/greenleft{
 	pixel_y = 9
 	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "srR" = (
@@ -76772,6 +78190,13 @@
 /obj/item/hardpoint/primary/cannon{
 	pixel_y = 5;
 	anchored = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
@@ -77082,6 +78507,8 @@
 	light_color = "#BB3F3F";
 	dir = 8
 	},
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
 "szE" = (
@@ -77642,6 +79069,13 @@
 /area/almayer/living/briefing)
 "sMK" = (
 /obj/vehicle/powerloader,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
 "sMM" = (
@@ -78891,6 +80325,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
 "tlM" = (
@@ -79804,6 +81239,19 @@
 /obj/structure/platform/metal/almayer/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/camera/autoname/almayer,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice2";
+	pixel_x = 16;
+	pixel_y = 22;
+	layer = 5.3
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/underdeck/req)
 "tFJ" = (
@@ -80256,6 +81704,13 @@
 	},
 /obj/item/storage/box/guncase/xm88,
 /obj/item/storage/box/guncase/xm88,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice3";
+	pixel_x = 16;
+	pixel_y = 0;
+	layer = 5.4
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
 "tPD" = (
@@ -82807,6 +84262,10 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
@@ -88244,6 +89703,7 @@
 	dir = 1;
 	name = "ship-grade camera"
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
 "wNG" = (
@@ -88787,12 +90247,12 @@
 	icon_state = "apc_base";
 	explo_proof = 1;
 	name = "\improper M577 armored personnel carrier";
-	pixel_y = -46;
+	pixel_y = -22;
 	unacidable = 1;
 	unslashable = 1;
 	use_power = 0;
 	needs_power = 0;
-	pixel_x = -24
+	pixel_x = -14
 	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/underdeck/vehicle)
@@ -98604,21 +100064,21 @@ xXs
 res
 res
 res
-hMO
-nPV
-hMO
+bCT
+bDJ
+bDE
 res
 res
 res
-hMO
-nPV
-hMO
+bCU
+bDn
+bCT
 res
 res
 res
 mXJ
 nPV
-hMO
+bCT
 res
 res
 res
@@ -98715,13 +100175,13 @@ res
 uzu
 mXJ
 slL
-hMO
-szC
+bCK
+bDe
 res
 uzu
 mXJ
 xkm
-hMO
+bCU
 szC
 res
 res
@@ -98824,8 +100284,8 @@ res
 mXJ
 mCR
 swd
-qtI
-hMO
+bCV
+bCK
 res
 res
 mvb
@@ -98911,25 +100371,25 @@ xXs
 xXs
 xXs
 res
-res
-mXJ
-lOd
-giM
-uwW
-hMO
-res
-mXJ
-lOd
+bCw
+bDd
+bDR
+bDK
+bCW
+bDf
+bCw
+bDd
+bDc
 orU
-uwW
-hMO
-res
-mXJ
-lOd
-giM
-uwW
-hMO
-res
+bCW
+bDf
+bCw
+bDd
+bDc
+bDb
+bCW
+bCL
+bCw
 res
 mvb
 bOb
@@ -99018,7 +100478,7 @@ res
 mXJ
 lOd
 giM
-dJH
+bDG
 hMO
 res
 mXJ
@@ -99031,7 +100491,7 @@ mXJ
 lOd
 giM
 uwW
-hMO
+bCO
 res
 res
 mvb
@@ -99133,7 +100593,7 @@ res
 mXJ
 dOO
 hoz
-moi
+bCX
 hMO
 res
 res
@@ -99554,7 +101014,7 @@ ocM
 ocM
 ocM
 ocM
-wAt
+bBn
 nCs
 res
 xXs
@@ -99637,9 +101097,9 @@ gSQ
 uJJ
 lHc
 uJJ
-ukA
+bDx
 tlC
-ukA
+bDx
 ukA
 kOo
 ukA
@@ -100154,9 +101614,9 @@ pDH
 pDH
 pDH
 pMl
+bBT
 wap
-wap
-mEh
+bBB
 mEh
 wap
 dxD
@@ -100164,12 +101624,12 @@ cvz
 cvz
 xcF
 wap
+bBV
 wap
 wap
-wap
-wap
-wap
-sNl
+bCi
+bBT
+bBS
 pDH
 pDH
 pDH
@@ -100254,12 +101714,12 @@ pDH
 pDH
 pDH
 pDH
+bBT
+bBs
+bBV
 wap
-rRP
 wap
-wap
-wap
-mEh
+bBB
 mEh
 weF
 pIs
@@ -100267,13 +101727,13 @@ cvz
 cvz
 pWY
 fLc
+bBB
 mEh
 mEh
-mEh
+bBV
 wap
-wap
-wap
-rRP
+bBT
+bBs
 wap
 pDH
 pDH
@@ -100359,10 +101819,10 @@ sNk
 vEd
 mfX
 mfX
+bCC
 mfX
 mfX
-mfX
-mfX
+bCC
 mfX
 cJc
 pDH
@@ -100370,10 +101830,10 @@ vkx
 vkx
 pDH
 sOs
+bCj
 qcs
 qcs
-qcs
-qcs
+bCj
 qcs
 qSw
 qSw
@@ -100462,21 +101922,21 @@ cYQ
 vEd
 wap
 wap
+bBV
 wap
-wap
 mEh
-mEh
-mEh
+bBB
+bDi
 kRG
 pDH
 dxF
 dxF
 pDH
-uOZ
+bDa
+bCQ
 wap
 wap
-wap
-mEh
+bBB
 mEh
 mEh
 mEh
@@ -100765,9 +102225,9 @@ xXs
 xXs
 xXs
 pDH
-jdp
-lco
-jdp
+bBk
+bEf
+bBk
 pDH
 pkh
 pkh
@@ -100791,9 +102251,9 @@ pkh
 pkh
 pkh
 pDH
-jdp
-iPs
-tGb
+bBk
+bBi
+bBb
 pDH
 xXs
 xXs
@@ -101409,9 +102869,9 @@ pkh
 pkh
 pkh
 pDH
-tGb
-mEn
-tGb
+bBb
+bBj
+bBb
 pDH
 xXs
 xXs
@@ -101486,9 +102946,9 @@ xXs
 xXs
 xXs
 pDH
-tGb
-oaV
-tGb
+bBb
+bEj
+bBb
 pDH
 pkh
 pkh
@@ -101615,7 +103075,7 @@ pkh
 pkh
 pkh
 pDH
-tGb
+bBm
 mEn
 tGb
 pDH
@@ -101718,7 +103178,7 @@ pkh
 pkh
 pkh
 pDH
-tGb
+bBm
 mEn
 prT
 pDH
@@ -101916,12 +103376,12 @@ dxF
 pDH
 qJQ
 fFY
+bBt
 dAg
 dAg
 dAg
 dAg
-dAg
-dAg
+bBt
 gLB
 vTf
 jdp
@@ -102012,21 +103472,21 @@ pDH
 eRm
 pDH
 xcF
-jdp
+bDg
 pDH
 vkx
 vkx
 pDH
 oMR
 sEC
+bBw
 wpm
 wpm
 wpm
 wpm
-wpm
-wpm
+bBw
 fKW
-vTf
+bBo
 tGb
 lco
 tGb
@@ -102104,10 +103564,10 @@ xXs
 xXs
 xXs
 pDH
-jdp
-lco
-tGb
-sNl
+bBk
+bEf
+bBb
+bDM
 pDH
 pDH
 hqU
@@ -102115,20 +103575,20 @@ pDH
 pDH
 upq
 oaV
-jdp
+bDg
 qUk
 dxD
 xcF
 qUk
 sNl
 xeP
-xeP
+bBx
 xeP
 xeP
 xeP
 ufb
-xeP
-xeP
+bBx
+bBp
 myk
 tGb
 lco
@@ -102225,12 +103685,12 @@ pxs
 mEh
 mEh
 wap
-wap
+bBV
 wap
 wap
 mEh
 mEh
-mEh
+bBB
 mEh
 mEh
 gGj
@@ -102321,19 +103781,19 @@ eoY
 dCh
 oeu
 eYE
-mfX
+bCC
 mfX
 dCs
 gmV
 mfX
 mfX
 mfX
-mfX
-mfX
-mfX
+bCC
+bCm
+bCm
+bCb
 oeu
-oeu
-oeu
+bBE
 oeu
 mfX
 mfX
@@ -102413,16 +103873,16 @@ xXs
 xXs
 xXs
 pDH
-tGb
-oaV
-mLl
-wap
+bBb
+bEj
+bEe
+bDN
 pDH
 dsF
 oIE
 bYH
 pDH
-wap
+bDo
 lco
 mGA
 mEh
@@ -102431,12 +103891,12 @@ pxs
 wap
 wap
 mEh
+bCE
+bCo
+bCo
 mEh
 mEh
-mEh
-mEh
-mEh
-mEh
+bBB
 wap
 wap
 uyY
@@ -102516,7 +103976,7 @@ xXs
 xXs
 xXs
 pDH
-tGb
+bBh
 oaV
 jdp
 qOH
@@ -102525,21 +103985,21 @@ pDH
 dDS
 pDH
 pDH
-upq
+bDp
 oaV
-tGb
+bDh
 ldy
 eAQ
 xcF
 lAH
 lsG
 qim
+bCF
 qim
-qim
 csa
 csa
 csa
-csa
+bBF
 csa
 fLc
 jdp
@@ -102619,7 +104079,7 @@ xXs
 xXs
 xXs
 pDH
-tGb
+bBh
 oaV
 jdp
 pDH
@@ -102630,19 +104090,19 @@ pDH
 pDH
 pDH
 xcF
-tGb
+bDh
 pDH
 vkx
 vkx
 pDH
 kfs
 pfq
+bBG
 fWl
 fWl
 fWl
 fWl
-fWl
-fWl
+bBG
 xTy
 vTf
 jdp
@@ -102722,7 +104182,7 @@ xXs
 xXs
 xXs
 pDH
-oqd
+bEn
 oaV
 mLl
 hYL
@@ -102740,12 +104200,12 @@ dxF
 pDH
 qJQ
 tzJ
+bBI
 syh
 syh
 syh
 syh
-syh
-syh
+bBI
 ooq
 vTf
 jdp
@@ -102928,7 +104388,7 @@ xXs
 xXs
 xXs
 pDH
-oqd
+bEn
 oaV
 jdp
 pDH
@@ -103031,7 +104491,7 @@ xXs
 xXs
 xXs
 pDH
-tGb
+bBh
 lco
 jdp
 pDH
@@ -103134,9 +104594,9 @@ xXs
 xXs
 xXs
 pDH
-jdp
-lco
-jdp
+bBk
+bEf
+bBk
 pDH
 pkh
 pkh
@@ -103263,9 +104723,9 @@ pkh
 pkh
 pkh
 pDH
-jdp
-iPs
-tGb
+bBf
+bBi
+bBb
 pDH
 xXs
 xXs
@@ -103366,7 +104826,7 @@ pkh
 pkh
 pkh
 pDH
-jdp
+bBc
 iPs
 tGb
 pDH
@@ -103677,7 +105137,7 @@ pkh
 pDH
 tGb
 iPs
-jdp
+bBc
 pDH
 xXs
 xXs
@@ -103752,9 +105212,9 @@ xXs
 xXs
 xXs
 pDH
-jdp
-oaV
-tGb
+bBk
+bEj
+bBb
 pDH
 pkh
 pkh
@@ -103778,9 +105238,9 @@ pkh
 pkh
 pkh
 pDH
-tGb
-mEn
-jdp
+bBb
+bBj
+bBf
 pDH
 xXs
 xXs
@@ -103883,7 +105343,7 @@ pkh
 pDH
 tGb
 mEn
-jdp
+bBc
 pDH
 xXs
 xXs
@@ -103986,7 +105446,7 @@ pkh
 pDH
 tGb
 mEn
-tGb
+bBh
 pDH
 xXs
 xXs
@@ -104171,10 +105631,10 @@ vEd
 wap
 wap
 wap
-wap
-wap
-mEh
-wap
+bBV
+bBT
+bCo
+bCi
 wND
 pDH
 dxF
@@ -104182,11 +105642,11 @@ dxF
 pDH
 uOZ
 mEh
-mEh
-mEh
-wap
-wap
-wap
+bBB
+bCo
+bBT
+bBT
+bBV
 wap
 mEh
 vEd
@@ -104274,10 +105734,10 @@ vEd
 oeu
 oeu
 oeu
+bCC
 mfX
 mfX
-mfX
-mfX
+bCC
 rNL
 pDH
 vkx
@@ -104285,11 +105745,11 @@ vkx
 pDH
 qbd
 mfX
-mfX
+bCC
 oeu
 oeu
 oeu
-oeu
+bBE
 oeu
 mfX
 vEd
@@ -104377,10 +105837,10 @@ pDH
 wap
 gBP
 mEh
+bBB
 mEh
 mEh
-mEh
-mEh
+bBB
 fVS
 tYf
 dxF
@@ -104388,11 +105848,11 @@ dxF
 nGy
 eZN
 mEh
+bBB
 mEh
 mEh
 mEh
-mEh
-mEh
+bBB
 gBP
 mEh
 pDH
@@ -104480,10 +105940,10 @@ pDH
 pDH
 pDH
 dxF
+bDj
 wgc
 wgc
-wgc
-wgc
+bDj
 wgc
 eAQ
 dxF
@@ -104491,11 +105951,11 @@ dxF
 pxs
 wgc
 wgc
+bCH
+bCt
 upq
 upq
-upq
-upq
-cvz
+bBW
 pDH
 pDH
 pDH
@@ -108700,13 +110160,13 @@ xXs
 xXs
 xXs
 xXs
-upQ
-mWR
-jVH
-rAr
-jVH
-kOa
-fqX
+bDI
+bDB
+bCc
+bBX
+bCc
+bDq
+bDk
 gmS
 tLK
 jmi
@@ -108715,12 +110175,12 @@ lEG
 syl
 gmS
 imM
-jVH
-iMl
-jVH
-rAr
-tTn
-uro
+bCc
+bCp
+bCc
+bBX
+bBJ
+bBq
 xXs
 xXs
 xXs
@@ -108804,11 +110264,11 @@ xXs
 xXs
 xXs
 fDA
-tuq
-jVH
-rAr
-npc
-npc
+bDA
+bCc
+bBX
+bDr
+bDr
 lFF
 gmS
 gmS
@@ -108818,11 +110278,11 @@ tLK
 gmS
 gmS
 pjT
-jVH
-jVH
-jVH
-jVH
-tTn
+bBZ
+bBZ
+bBZ
+bBZ
+bBK
 qKN
 xXs
 xXs
@@ -110040,12 +111500,12 @@ xXs
 xXs
 xXs
 mbo
-dST
-obK
-jVH
-kOa
-iMl
-kdN
+bDC
+bDy
+bCc
+bDq
+bCp
+bDl
 gmS
 syl
 wkh
@@ -110053,13 +111513,13 @@ uEM
 eJH
 shI
 gmS
-hLJ
+bCI
 cdC
 nOB
 tPA
-ukS
-upQ
-mbo
+bCa
+bBL
+bBr
 xXs
 xXs
 xXs
@@ -110144,10 +111604,10 @@ xXs
 xXs
 gmS
 eSu
-hdT
-fsF
-fsF
-iMl
+bDz
+bDu
+bDu
+bCp
 iVd
 gmS
 gmS
@@ -110158,9 +111618,9 @@ gmS
 gmS
 rDX
 ssz
-rgP
+bCq
 eXR
-tTn
+bBJ
 kXk
 gmS
 xXs
@@ -111070,12 +112530,12 @@ xXs
 xXs
 xXs
 gmS
-nAN
-obK
-jVH
-jVH
-jVH
-fqX
+bDD
+bDy
+bCc
+bCc
+bCc
+bDk
 gmS
 uKz
 hxT
@@ -111083,12 +112543,12 @@ wgY
 vXp
 syl
 gmS
-xxT
+bCJ
 hPM
-jVH
-jVH
+bCc
+bCc
 ovt
-uro
+bBq
 gmS
 xXs
 xXs
@@ -111176,8 +112636,8 @@ gmS
 srP
 jjz
 sMK
-mBg
-jVH
+bDw
+bCc
 lFF
 gmS
 gmS
@@ -111188,10 +112648,10 @@ gmS
 gmS
 tFF
 hPM
-jVH
-jVH
+bCc
+bCc
 ovt
-gbQ
+bBM
 gmS
 xXs
 xXs
@@ -112409,12 +113869,12 @@ xXs
 xXs
 xXs
 gmS
-dST
-tuq
-jVH
-jVH
-jZB
-iWz
+bDC
+bDA
+bCc
+bCc
+bDt
+bDm
 gmS
 syl
 lEG
@@ -112422,12 +113882,12 @@ uEM
 hxT
 shI
 gmS
-xxT
-jVH
-jVH
-fjl
+bCJ
+bCc
+bCc
+bCf
 ksS
-dST
+bBO
 gmS
 xXs
 xXs
@@ -112513,10 +113973,10 @@ xXs
 xXs
 gmS
 iou
-tuq
-jVH
-jVH
-jZB
+bDA
+bCc
+bCc
+bDt
 rQf
 gmS
 gmS
@@ -112526,11 +113986,11 @@ eJH
 gmS
 gmS
 tFF
-iMl
-fjl
+bCp
+bCf
 pXD
 ifW
-kIz
+bBP
 gmS
 xXs
 xXs

@@ -1621,7 +1621,7 @@
 	name = "Corpse - US Army - Trooper"
 	assignment = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
-	rank = JOB_ARMY_TROOPER
+	job_title  = JOB_ARMY_TROOPER
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/army_standard
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -1705,7 +1705,7 @@
 	name = "Corpse - US Army - Medic"
 	assignment = JOB_ARMY_MEDIC
 	faction = FACTION_MARINE
-	rank = JOB_ARMY_MEDIC
+	job_title  = JOB_ARMY_MEDIC
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/army_medic
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

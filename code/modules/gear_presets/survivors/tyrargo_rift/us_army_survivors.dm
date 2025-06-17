@@ -5,7 +5,7 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
 	minimap_background = "background_ua"
-	rank = JOB_ARMY_TROOPER
+	job_title  = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -178,7 +178,7 @@
 /datum/equipment_preset/survivor/army/standard
 	name = "Survivor - US Army Trooper"
 	assignment = JOB_ARMY_TROOPER
-	rank = JOB_ARMY_TROOPER
+	job_title  = JOB_ARMY_TROOPER
 	skills = /datum/skills/military/survivor/army_standard
 	minimap_icon = "hudsquad_trpr"
 
@@ -195,7 +195,7 @@
 	name = "Survivor - US Army Combat Engineering Technician"
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_ENGI
-	rank = JOB_ARMY_ENGI
+	job_title  = JOB_ARMY_ENGI
 	skills = /datum/skills/military/survivor/army_engineer
 	minimap_icon = "hudsquad_cet"
 
@@ -211,7 +211,7 @@
 	name = "Survivor - US Army Combat Medical Technician"
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MEDIC
-	rank = JOB_ARMY_MEDIC
+	job_title  = JOB_ARMY_MEDIC
 	skills = /datum/skills/military/survivor/army_medic
 	minimap_icon = "hudsquad_cet"
 
@@ -231,7 +231,7 @@
 	name = "Survivor - US Army Marksman"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MARKSMAN
-	rank = JOB_ARMY_MARKSMAN
+	job_title  = JOB_ARMY_MARKSMAN
 	skills = /datum/skills/military/survivor/army_marksman
 	minimap_icon = "hudsquad_snpr"
 
@@ -249,7 +249,7 @@
 	name = "Survivor - US Army Heavy Gunner"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SMARTGUNNER
-	rank = JOB_ARMY_SMARTGUNNER
+	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner
 	minimap_icon = "hudsquad_mmg"
 
@@ -269,7 +269,7 @@
 	name = "Survivor - US Army Squad Leader"
 	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SNCO
-	rank = JOB_ARMY_SNCO
+	job_title  = JOB_ARMY_SNCO
 	skills = /datum/skills/military/survivor/army_sl
 	minimap_icon = "hudsquad_sl_army"
 
@@ -288,7 +288,7 @@
 	name = "Survivor - US Army Commander"
 	paygrades = list(PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_CO
-	rank = JOB_ARMY_CO
+	job_title  = JOB_ARMY_CO
 	idtype = /obj/item/card/id/gold
 	skills = /datum/skills/commander
 	minimap_icon = "hudsquad_co_army"
@@ -336,7 +336,7 @@
 	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0)
 	faction_group = list(FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = JOB_ARMY_SYN
-	rank = "Synthetic"
+	job_title  = "Synthetic"
 	idtype = /obj/item/card/id/gold
 
 /datum/equipment_preset/synth/survivor/army/load_gear(mob/living/carbon/human/preset_human)

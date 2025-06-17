@@ -2,7 +2,7 @@
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "ARMY"
-	rank = JOB_ARMY_TROOPER
+	job_title  = JOB_ARMY_TROOPER
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -64,7 +64,7 @@
 /datum/equipment_preset/us_army/standard
 	name = "US Army Trooper"
 	assignment = JOB_ARMY_TROOPER
-	rank = JOB_ARMY_TROOPER
+	job_title  = JOB_ARMY_TROOPER
 	skills = /datum/skills/military/survivor/army_standard
 	minimap_icon = "hudsquad_trpr"
 
@@ -99,7 +99,7 @@
 	name = "US Army Heavy Gunner"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SMARTGUNNER
-	rank = JOB_ARMY_SMARTGUNNER
+	job_title  = JOB_ARMY_SMARTGUNNER
 	skills = /datum/skills/military/survivor/army_gunner
 	minimap_icon = "hudsquad_mmg"
 
@@ -138,7 +138,7 @@
 	name = "US Army Combat Medical Technician"
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_MEDIC
-	rank = JOB_ARMY_MEDIC
+	job_title  = JOB_ARMY_MEDIC
 	skills = /datum/skills/military/survivor/army_medic
 	minimap_icon = "hudsquad_cet"
 
@@ -176,7 +176,7 @@
 	name = "US Army Squad Leader"
 	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_ARMY_SNCO
-	rank = JOB_ARMY_SNCO
+	job_title  = JOB_ARMY_SNCO
 	skills = /datum/skills/military/survivor/army_sl
 	minimap_icon = "hudsquad_sl_army"
 
@@ -212,7 +212,7 @@
 	name = "US Army Vehicle Crewman (CRMN)"
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_TANK_CREW
-	rank = JOB_TANK_CREW
+	job_title  = JOB_TANK_CREW
 	skills = /datum/skills/tank_crew
 	minimap_icon = "vc"
 	minimap_background = "background_intel"

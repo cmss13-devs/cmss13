@@ -36000,13 +36000,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
-"bPF" = (
-/obj/structure/reagent_dispensers/water_cooler/walk_past{
-	pixel_x = 10;
-	pixel_y = 3
-	},
-/turf/open/floor/almayer/dark_sterile,
-/area/almayer/medical/medical_science)
 "bPG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -45023,6 +45016,10 @@
 	dir = 1
 	},
 /obj/structure/machinery/disposal,
+/obj/structure/reagent_dispensers/water_cooler/walk_past{
+	pixel_x = 16;
+	pixel_y = -1
+	},
 /turf/open/floor/almayer/sterile_green_side,
 /area/almayer/medical/medical_science)
 "eWp" = (
@@ -202365,7 +202362,7 @@ vOy
 vOy
 xTR
 aiT
-bPF
+aoM
 vgB
 kgs
 lXl

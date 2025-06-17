@@ -677,3 +677,60 @@
 	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
 	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/// Soro UPP - SOF - Survivors
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/soldier
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/sapper
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/sapper
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/medic
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/medic
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/specialist
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH

@@ -907,6 +907,26 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/beret/SOF_beret
+	name = "\improper SOF beret"
+	desc = "A finely crafted beret worn by members of the UPP Space Operations Forces. It signifies service in the void, from deep-space missions to planetary operations, and is a mark of discipline and camaraderie among its wearers."
+	icon_state = "SOF_beret"
+	item_state = "SOF_beret"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
+	)
+
+/obj/item/clothing/head/beret/army_beret
+	name = "\improper UPP reservist beret"
+	desc = "A well-made beret worn by reservists of the UPP armed forces. It signifies their continued commitment to the cause, even while not on active duty, and serves as a symbol of unity and service."
+	icon_state = "army_beret"
+	item_state = "army_beret"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
+	)
+
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."

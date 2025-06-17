@@ -198,28 +198,6 @@
 		// Get a candidate from observers
 		var/list/candidates = get_alien_candidates(hive, abomination = (isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR)))
 		if(candidates && length(candidates))
-			// If they were facehugged by a player thats still in queue, they get second dibs on the new larva.
-			if(hugger_ckey)
-				for(var/mob/dead/observer/cur_obs as anything in candidates)
-					if(cur_obs.ckey == hugger_ckey)
-						hugger = cur_obs
-						if(!is_nested)
-							cur_obs.ManualFollow(affected_mob)
-							if(cur_obs.client.prefs?.toggles_flashing & FLASH_POOLSPAWN)
-								window_flash(cur_obs.client)
-						if(is_nested || tgui_alert(cur_obs, "An unnested host you hugged is about to burst! Do you want to control the new larva?", "Larva maturation", list("Yes", "No"), 10 SECONDS) == "Yes")
-							picked = cur_obs
-							candidates -= cur_obs
-							message_alien_candidates(candidates, dequeued = 0)
-							for(var/obj/item/alien_embryo/embryo as anything in GLOB.player_embryo_list)
-								if(!embryo)
-									continue
-								if(embryo.hugger_ckey == cur_obs.ckey && embryo != src)
-									// Skipping src just in case an admin wants to quickly check before this thing fully deletes
-									// If this nulls out any embryo, wow
-									embryo.hugger_ckey = null
-						break
-
 			// Get a candidate from the front of the queue
 			if(!picked)
 				if(is_nested)

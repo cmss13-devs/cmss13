@@ -212,6 +212,7 @@
 	data["marines"] = marines
 	data["survivors"] = survivors
 	data["xenos"] = xenos
+	data["infected"] = infected
 	data["ert_members"] = ert_members
 	data["upp"] = upp
 	data["clf"] = clf

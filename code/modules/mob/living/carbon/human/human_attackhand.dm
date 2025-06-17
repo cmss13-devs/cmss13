@@ -146,7 +146,7 @@
 						chance = !hand ? 40 : 20
 
 					if (prob(chance))
-						visible_message(SPAN_DANGER("[attacking_mob] accidentally discharges [src]'s [held_weapon.name] during the struggle!"), SPAN_DANGER("[attacking_mob] accidentally discharge your [held_weapon.name] during the struggle!"), null, 5)
+						visible_message(SPAN_DANGER("[attacking_mob] accidentally discharges [src]'s [held_weapon.name] during the struggle!"), SPAN_DANGER("[attacking_mob] accidentally discharges your [held_weapon.name] during the struggle!"), null, 5)
 						var/list/turfs = list()
 						for(var/turf/turfs_to_discharge in view())
 							turfs += turfs_to_discharge
@@ -156,7 +156,7 @@
 
 						attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally discharged <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."
 						attacking_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."
-						msg_admin_attack("[key_name(src)] accidentally discharged <b>[held_weapon.name]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]) triggered by <b>[key_name(attacking_mob)]</b>.", src.loc.x, src.loc.y, src.loc.z)
+						msg_admin_ff("[key_name(src)][ADMIN_JMP(src)] [ADMIN_PM(src)] accidentally discharged <b>[held_weapon.name]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]) triggered by <b>[key_name(attacking_mob)][ADMIN_JMP(attacking_mob)] [ADMIN_PM(attacking_mob)]</b>.")
 
 			var/disarm_chance = rand(1, 100)
 			var/attacker_skill_level = attacking_mob.skills ? attacking_mob.skills.get_skill_level(SKILL_CQC) : SKILL_CQC_MAX // No skills, so assume max

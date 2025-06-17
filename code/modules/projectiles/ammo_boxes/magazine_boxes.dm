@@ -270,7 +270,7 @@
 //-----------------------M10 Pistol Mag Boxes-----------------------
 
 /obj/item/ammo_box/magazine/m10
-	name = "magazine box (M10 x 12)"
+	name = "magazine box (M10 x 22)"
 	icon_state = "base_m10"
 	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
@@ -283,7 +283,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/extended
-	name = "magazine box (Ext m10 x 10)"
+	name = "magazine box (Ext m10 x 14)"
 	overlay_ammo_type = "_ext"
 	overlay_content = "_hv"
 	num_of_magazines = 14
@@ -293,7 +293,7 @@
 	empty = TRUE
 
 /obj/item/ammo_box/magazine/m10/drum
-	name = "magazine box (Drum m10 x 10)"
+	name = "magazine box (Drum m10 x 12)"
 	overlay_ammo_type = "_drum"
 	overlay_content = "_hv"
 	num_of_magazines = 12

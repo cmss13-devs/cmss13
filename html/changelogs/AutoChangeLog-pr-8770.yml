@@ -1,0 +1,11 @@
+author: "Zenith, Tsurupeta, dimdimich1996, Crowford, Amory, BOBAMA"
+delete-after: True
+changes:
+  - rscadd: "added AK-4047 Rifle"
+  - rscadd: "added SOF insert"
+  - rscadd: "changed + added many survivors to be completely unique."
+  - code_imp: "changed how weather sirens work."
+  - soundadd: "added new sounds to AK-4047 and Jungle ambience."
+  - imageadd: "added many new sprites for survivors, map objects & map visuals in general."
+  - mapadd: "added new northern checkpoint area + small cave area."
+  - maptweak: "massively changed Soro's visuals, snow gone, pure jungle + much more UPP theming."

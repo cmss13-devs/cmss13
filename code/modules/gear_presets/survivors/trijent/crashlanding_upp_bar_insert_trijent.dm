@@ -4,7 +4,7 @@
 	name = "Survivor - UPP"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0)
 	origin_override = ORIGIN_UPP
-	rank = JOB_SURVIVOR
+	job_title = JOB_SURVIVOR
 	skills = /datum/skills/military/survivor/upp_private
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
@@ -27,7 +27,6 @@
 		if(2)
 			uniform.roll_suit_sleeves(new_human)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/airborne, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/flare(new_human), WEAR_R_STORE)
@@ -44,7 +43,7 @@
 	name = "Survivor - UPP Soldier"
 	paygrades = list(PAY_SHORT_UE1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UE2 = JOB_PLAYTIME_TIER_1)
 	assignment = JOB_UPP
-	rank = JOB_UPP
+	job_title = JOB_UPP
 	skills = /datum/skills/military/survivor/upp_private
 
 /datum/equipment_preset/survivor/upp/soldier/load_gear(mob/living/carbon/human/new_human)
@@ -70,7 +69,7 @@
 	name = "Survivor - UPP Sapper"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_ENGI
-	rank = JOB_UPP_ENGI
+	job_title = JOB_UPP_ENGI
 
 	minimap_icon = "upp_sapper"
 
@@ -101,7 +100,7 @@
 	name = "Survivor - UPP Medic"
 	paygrades = list(PAY_SHORT_UE3 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_MEDIC
-	rank = JOB_UPP_MEDIC
+	job_title = JOB_UPP_MEDIC
 
 	minimap_icon = "upp_med"
 
@@ -133,7 +132,7 @@
 /datum/equipment_preset/survivor/upp/specialist
 	name = "Survivor - UPP Specialist"
 	assignment = JOB_UPP_SPECIALIST
-	rank = JOB_UPP_SPECIALIST
+	job_title = JOB_UPP_SPECIALIST
 	minimap_icon = "upp_spec"
 	paygrades = list(PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/upp_spec
@@ -156,7 +155,7 @@
 	name = "Survivor - UPP Squad Leader"
 	paygrades = list(PAY_SHORT_UE5 = JOB_PLAYTIME_TIER_0)
 	assignment = JOB_UPP_LEADER
-	rank = JOB_UPP_LEADER
+	job_title = JOB_UPP_LEADER
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	role_comm_title = "173/RECON SL"
 
@@ -181,7 +180,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	languages = ALL_SYNTH_LANGUAGES_UPP
 	assignment = JOB_UPP_SUPPORT_SYNTH
-	rank = JOB_UPP_SUPPORT_SYNTH
+	job_title = JOB_UPP_SUPPORT_SYNTH
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic

@@ -77,6 +77,12 @@
 	icon_state = "darkred"
 	worn_state = "darkred"
 
+/obj/item/clothing/under/color/white/alt
+	name = "white jumpsuit"
+	icon_state = "white_alt"
+	item_state = "w_suit"
+	worn_state = "white_alt"
+
 /obj/item/clothing/under/color/escaped_prisoner_colony
 	name = "battle-worn prisoner jumpsuit"
 	desc = "A torn prison jumpsuit caked with dried blood and grime. Makeshift bandages wrap around the left arm and leg—soaked and dirty, barely holding together. The fabric is ripped at the seams and scorched in places, but the suit sensors still blink stubbornly, stuck on 'Fully On.'"

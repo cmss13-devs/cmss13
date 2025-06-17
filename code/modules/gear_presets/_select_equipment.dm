@@ -14,7 +14,8 @@
 	var/idtype = /obj/item/card/id
 	var/list/access = list()
 	var/assignment
-	var/rank
+	var/job_title
+	var/manifest_title
 	var/list/paygrades = list("???")
 	var/role_comm_title
 	var/minimum_age
@@ -53,6 +54,9 @@
 
 
 /datum/equipment_preset/New()
+	if(!manifest_title)
+		manifest_title = job_title
+
 	uniform_sets = list(
 		UNIFORM_VEND_UTILITY_UNIFORM = utility_under,
 		UNIFORM_VEND_UTILITY_JACKET = utility_over,
@@ -102,7 +106,7 @@
 	if(!mob_client || new_human.client != mob_client)
 		playtime = JOB_PLAYTIME_TIER_1
 	else
-		playtime = get_job_playtime(mob_client, rank)
+		playtime = get_job_playtime(mob_client, job_title)
 		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
 			playtime = JOB_PLAYTIME_TIER_1
 	var/final_paygrade
@@ -111,7 +115,7 @@
 		if(required_time - playtime > 0)
 			break
 		final_paygrade = current_paygrade
-	if(rank == JOB_SQUAD_MARINE && final_paygrade == PAY_SHORT_ME3)
+	if(job_title == JOB_SQUAD_MARINE && final_paygrade == PAY_SHORT_ME3)
 		if(GLOB.data_core.leveled_riflemen > GLOB.data_core.leveled_riflemen_max)
 			return PAY_SHORT_ME2
 		else
@@ -145,7 +149,7 @@
 	ID.faction = faction
 	ID.faction_group = faction_group.Copy()
 	ID.assignment = assignment
-	ID.rank = rank
+	ID.rank = manifest_title
 	ID.registered_name = new_human.real_name
 	ID.registered_ref = WEAKREF(new_human)
 	ID.registered_gid = new_human.gid
@@ -158,7 +162,7 @@
 	if(new_human.mind)
 		new_human.mind.name = new_human.real_name
 		// Bank account details handled in generate_money_account()
-	new_human.job = rank
+	new_human.job = job_title
 	new_human.comm_title = role_comm_title
 
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/new_human, client/mob_client)
@@ -222,7 +226,7 @@
 				qdel(R)
 
 	if(flags & EQUIPMENT_PRESET_MARINE)
-		var/playtime = get_job_playtime(new_human.client, rank)
+		var/playtime = get_job_playtime(new_human.client, job_title)
 		var/medal_type
 
 		switch(playtime)

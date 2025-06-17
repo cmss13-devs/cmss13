@@ -25044,6 +25044,13 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bjT" = (
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/obj/structure/platform/metal/kutjevo_smooth,
+/turf/open_space,
+/area/almayer/middeck/hanger)
 "bjU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/node_s_w,
@@ -32813,10 +32820,23 @@
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bAR" = (
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/turf/open_space,
+/area/almayer/middeck/hanger)
 "bAS" = (
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"bAT" = (
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/almayer/middeck/hanger)
 "bAU" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
@@ -32824,6 +32844,55 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
+"bAV" = (
+/obj/effect/attach_point/weapon/dropship1/right_wing,
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open_space,
+/area/almayer/middeck/hanger)
+"bAW" = (
+/obj/effect/attach_point/weapon/dropship1/left_fore,
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/turf/open_space,
+/area/almayer/middeck/hanger)
+"bAX" = (
+/obj/effect/attach_point/electronics/dropship1{
+	dir = 1;
+	attach_id = 5
+	},
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/turf/open_space,
+/area/almayer/middeck/hanger)
+"bAY" = (
+/obj/effect/attach_point/electronics/dropship1{
+	dir = 1;
+	attach_id = 6
+	},
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/turf/open_space,
+/area/almayer/middeck/hanger)
+"bAZ" = (
+/obj/effect/attach_point/weapon/dropship1/right_fore,
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/turf/open_space,
+/area/almayer/middeck/hanger)
+"bBa" = (
+/obj/structure/blocker/forcefield/human{
+	alpha = 0
+	},
+/obj/structure/platform/metal/kutjevo_smooth/north,
+/turf/open_space,
+/area/almayer/middeck/hanger)
 "bBd" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -162405,19 +162474,19 @@ azJ
 azJ
 azJ
 azJ
+bAR
+bAR
+bAR
 azJ
 azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
 aFh
@@ -162506,24 +162575,24 @@ anS
 aJo
 azJ
 azJ
+bAW
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bjT
 aiB
 baA
 aBf
@@ -162609,6 +162678,8 @@ anS
 aJo
 azJ
 azJ
+bAX
+bAR
 azJ
 azJ
 azJ
@@ -162616,17 +162687,15 @@ azJ
 azJ
 azJ
 azJ
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bjT
 aiB
 baA
 aBf
@@ -162709,7 +162778,11 @@ aJh
 aBf
 aBf
 anS
-aJo
+bBa
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
 azJ
@@ -162723,13 +162796,9 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bAR
+bAR
+bjT
 aiB
 baA
 aBf
@@ -162812,7 +162881,11 @@ aJh
 aBf
 aBf
 anS
-aJo
+bBa
+bAR
+azJ
+azJ
+bAR
 azJ
 azJ
 azJ
@@ -162826,11 +162899,7 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+bAR
 azJ
 aFh
 aiB
@@ -162915,7 +162984,8 @@ aJh
 aBf
 aBf
 anS
-aJo
+bBa
+bAR
 azJ
 azJ
 azJ
@@ -162932,8 +163002,7 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
+bAR
 azJ
 aFh
 aiB
@@ -163018,7 +163087,11 @@ aJh
 baA
 aBf
 bhv
-aJo
+bBa
+bAR
+azJ
+azJ
+bAR
 azJ
 azJ
 azJ
@@ -163032,11 +163105,7 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+bAR
 azJ
 aFh
 aiB
@@ -163121,7 +163190,11 @@ aJh
 baA
 aBf
 bhv
-aJo
+bBa
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
 azJ
@@ -163135,13 +163208,9 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bAR
+bAR
+bjT
 bbH
 aBf
 aBf
@@ -163227,6 +163296,8 @@ bhv
 aJo
 azJ
 azJ
+bAY
+bAR
 azJ
 azJ
 azJ
@@ -163234,17 +163305,15 @@ azJ
 azJ
 azJ
 azJ
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bjT
 bbH
 aBf
 aBf
@@ -163330,24 +163399,24 @@ bhv
 aJo
 azJ
 azJ
+bAZ
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bjT
 bbH
 aBf
 aBf
@@ -163435,19 +163504,19 @@ azJ
 azJ
 azJ
 azJ
+bAR
+bAR
+bAR
 azJ
 azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
 aFh
@@ -164671,19 +164740,19 @@ azJ
 azJ
 azJ
 azJ
+bAR
+bAR
+bAR
 azJ
 azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
 aFh
@@ -164772,24 +164841,24 @@ bhv
 aJo
 azJ
 azJ
+bAW
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bjT
 bbH
 aBf
 baA
@@ -164875,6 +164944,8 @@ bhv
 aJo
 azJ
 azJ
+bAX
+bAR
 azJ
 azJ
 azJ
@@ -164882,17 +164953,15 @@ azJ
 azJ
 azJ
 azJ
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bjT
 bbH
 aBf
 aBf
@@ -164975,7 +165044,11 @@ aJh
 aBf
 aBf
 bhv
-aJo
+bBa
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
 azJ
@@ -164989,13 +165062,9 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bAR
+bAR
+bjT
 bbH
 aBf
 aBf
@@ -165078,7 +165147,11 @@ aJh
 aBf
 aBf
 bhv
-aJo
+bBa
+bAR
+azJ
+azJ
+bAR
 azJ
 azJ
 azJ
@@ -165092,11 +165165,7 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+bAR
 azJ
 aFh
 bbH
@@ -165181,7 +165250,8 @@ aJh
 aBf
 aBf
 bhv
-aJo
+bBa
+bAR
 azJ
 azJ
 azJ
@@ -165198,8 +165268,7 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
+bAR
 azJ
 aFh
 bbH
@@ -165284,7 +165353,11 @@ aJh
 aBf
 aBf
 bhv
-aJo
+bBa
+bAR
+azJ
+azJ
+bAR
 azJ
 azJ
 azJ
@@ -165298,11 +165371,7 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+bAR
 azJ
 aFh
 bbH
@@ -165387,7 +165456,11 @@ aJh
 aBf
 aBf
 bhv
-aJo
+bBa
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
 azJ
@@ -165401,13 +165474,9 @@ azJ
 azJ
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bAR
+bAR
+bjT
 bbH
 aBf
 aBf
@@ -165493,6 +165562,8 @@ bhv
 aJo
 azJ
 azJ
+bAY
+bAR
 azJ
 azJ
 azJ
@@ -165500,17 +165571,15 @@ azJ
 azJ
 azJ
 azJ
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bjT
 aiB
 baA
 aBf
@@ -165596,24 +165665,24 @@ bhv
 aJo
 azJ
 azJ
+bAZ
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
+bAR
 azJ
 azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-aFh
+bjT
 aiB
 baA
 aZh
@@ -165701,22 +165770,22 @@ aDe
 aDe
 aDe
 aDe
+bAT
+bAT
+bAV
 aDe
 aDe
 aDe
 aDe
 aDe
+bAT
+bAT
+bAT
+bAT
+bAT
 aDe
 aDe
-aDe
-aDe
-aDe
-aDe
-aDe
-aDe
-aDe
-aDe
-aFG
+aFi
 adj
 blr
 aDa

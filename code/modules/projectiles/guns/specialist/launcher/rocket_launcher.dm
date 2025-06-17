@@ -477,6 +477,11 @@
 	if(do_after(user, f_aiming_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(!QDELETED(target))
 			.=..()
+			if(.)
+				user.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(user)] fired [name] on [target]</font>"
+				msg_admin_niche("[key_name(user, user.client)] fired [src.name] on [target.name] at ([target.x],[target.y],[target.z] [ADMIN_JMP(target)] ")
+				log_game("[key_name(user)] fired [src.name] on [target.name] at ([target.x],[target.y],[target.z])")
+
 	target.overlays -= lockon_icon
 	target.overlays -= lockon_direction_icon
 	qdel(laser_beam)

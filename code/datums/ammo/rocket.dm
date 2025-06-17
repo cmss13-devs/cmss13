@@ -338,7 +338,7 @@
 	var/right_angle = (angle + 90 ) % 360
 	var/left_angle = (angle -90) % 360
 	var/diagonal_left = (angle - 135) % 360
-	var/diagpmal_right = (angle + 135) % 360
+	var/diagonal_right = (angle + 135) % 360
 	var/turf/initial_location = projectile.loc
 	var/list/cleared_locations = list(initial_location)
 	var/edge = FALSE
@@ -360,7 +360,7 @@
 			INVOKE_ASYNC(src, PROC_REF(detonate),left_turf, initial_location, cleared_locations)
 			cleared_locations |= left_turf
 			if(i > 2)
-				right_turf = get_angle_target_turf(new_turf, diagpmal_right , ii)
+				right_turf = get_angle_target_turf(new_turf, diagonal_right , ii)
 				INVOKE_ASYNC(src, PROC_REF(detonate),right_turf, initial_location, cleared_locations,edge)
 				left_turf = get_angle_target_turf(new_turf, diagonal_left , ii)
 				INVOKE_ASYNC(src, PROC_REF(detonate),left_turf, initial_location, cleared_locations,edge)

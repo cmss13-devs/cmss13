@@ -5,7 +5,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	melee_vehicle_damage = 0
-	max_health = XENO_HEALTH_RUNNER
+	max_health = XENO_HEALTH_LESSER_DRONE
 	plasma_gain = XENO_PLASMA_GAIN_TIER_2
 	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
@@ -50,8 +50,9 @@
 	)
 	claw_type = CLAW_TYPE_NORMAL
 
-	tackle_min = 2
+	tackle_min = 6
 	tackle_max = 6
+	tackle_chance = 10
 
 	icon_xeno = 'icons/mob/pathogen/popper.dmi'
 	icon_xenonid = 'icons/mob/pathogen/popper.dmi'
@@ -79,6 +80,9 @@
 /mob/living/carbon/xenomorph/popper/death(cause, gibbed)
 	. = ..()
 	new /obj/effect/pathogen/spore_cloud(loc)
+
+/mob/living/carbon/xenomorph/popper/start_pulling(atom/movable/AM)
+	return
 
 /datum/action/xeno_action/onclick/place_spore_sac
 	name = "Place spore sac (700)"

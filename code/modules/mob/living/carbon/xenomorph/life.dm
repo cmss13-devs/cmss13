@@ -30,11 +30,8 @@
 		handle_luminosity()
 		handle_blood()
 
-		if(behavior_delegate)
-			behavior_delegate.on_life()
-
-		if(loc)
-			handle_environment()
+		behavior_delegate?.on_life()
+		handle_environment()
 		if(client)
 			handle_regular_hud_updates()
 

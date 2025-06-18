@@ -154,6 +154,7 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	can_become_accessory = TRUE
 	worn_accessory_slot = ACCESSORY_SLOT_MASK
+	worn_accessory_limit = 2
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	icon_state = "scarf_red"
@@ -232,6 +233,7 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	can_become_accessory = TRUE
 	worn_accessory_slot = ACCESSORY_SLOT_MASK
+	worn_accessory_limit = 2
 
 /obj/item/clothing/mask/tornscarf/green
 	icon_state = "torn_scarf_green"
@@ -365,6 +367,7 @@
 	actions_types = list(/datum/action/item_action/toggle)
 	can_become_accessory = TRUE
 	worn_accessory_slot = ACCESSORY_SLOT_MASK
+	worn_accessory_limit = 2
 
 /obj/item/clothing/mask/neckerchief/ui_action_click()
 	adjust()

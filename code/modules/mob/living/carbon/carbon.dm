@@ -132,8 +132,15 @@
 	next_haul_resist = world.time + 1.4 SECONDS
 	if(istype(get_active_hand(), /obj/item))
 		var/obj/item/item = get_active_hand()
-		if(item.force)
-			var/damage_of_item = rand(floor(item.force / 4), item.force)
+		if(item.force > 0)
+			var/limited_force = min(item.force, 35)
+			var/damage_of_item = rand(floor(limited_force / 4), limited_force)
+
+			xeno.last_damage_data = create_cause_data("scuffling", src)
+			attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYPE: [uppertext(BRUTE)])</font>"
+			xeno.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [key_name(src)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYPE: [uppertext(BRUTE)])</font>"
+			msg_admin_attack("[key_name(src)] attacked [key_name(xeno)] with [item.name] (INTENT: [uppertext(intent_text(a_intent))]) (DAMTYPE: [uppertext(BRUTE)]) in [get_area(xeno)] ([xeno.loc.x],[xeno.loc.y],[xeno.loc.z]).", xeno.loc.x, xeno.loc.y, xeno.loc.z)
+
 			xeno.take_limb_damage(damage_of_item)
 			for(var/mob/mobs_in_view as anything in viewers(src, null))
 				if(mobs_in_view.client)
@@ -145,8 +152,7 @@
 				var/hit_sound = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
 				playsound(loc, hit_sound, 25, 1)
 			if(prob(max(4*(100*xeno.getBruteLoss()/xeno.maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
-				xeno.last_damage_data = create_cause_data("scuffling", src)
-				xeno.gib(last_damage_data)
+				xeno.release_haul(stuns=FALSE)
 		else
 			for(var/mob/mobs_can_hear in hearers(4, xeno))
 				if(mobs_can_hear.client)
@@ -504,6 +510,7 @@
 
 	hauling_xeno = xeno
 	RegisterSignal(xeno, COMSIG_MOB_DEATH, PROC_REF(release_haul_death))
+	RegisterSignal(src, COMSIG_ATTEMPT_MOB_PULL, PROC_REF(haul_grab_attempt))
 	RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(haul_fire_shield))
 	RegisterSignal(src, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(haul_fire_shield_callback))
 	layer = LYING_BETWEEN_MOB_LAYER
@@ -515,21 +522,24 @@
 	SIGNAL_HANDLER
 	handle_unhaul()
 
+/mob/living/carbon/human/proc/haul_grab_attempt()
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_MOB_PULL
+
 /mob/living/carbon/human/proc/haul_fire_shield(mob/living/burning_mob) //Stealing it from the pyro spec armor, xenos shield us from fire
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_IGNITION
 
-
 /mob/living/carbon/human/proc/haul_fire_shield_callback(mob/living/burning_mob)
 	SIGNAL_HANDLER
-	. = COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
+	return COMPONENT_NO_IGNITE|COMPONENT_NO_BURN
 
 // Removing traits and other stuff after xeno releases us from haul
 /mob/living/carbon/human/proc/handle_unhaul()
 	var/location = get_turf(loc)
 	remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
 	pixel_y = 0
-	UnregisterSignal(src, list(COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
+	UnregisterSignal(src, list(COMSIG_ATTEMPT_MOB_PULL, COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
 	UnregisterSignal(hauling_xeno, COMSIG_MOB_DEATH)
 	hauling_xeno = null
 	layer = MOB_LAYER

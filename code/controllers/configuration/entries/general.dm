@@ -156,6 +156,9 @@ Administrative related.
 /datum/config_entry/string/ooc_color_admin
 	config_entry_value = "#ff8000"
 
+/datum/config_entry/string/ooc_color_maint
+	config_entry_value = "#00ffff"
+
 /datum/config_entry/string/ooc_color_default
 	config_entry_value = "#b82e00"
 
@@ -680,3 +683,6 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/repo_name
 
 /datum/config_entry/string/org
+
+/datum/config_entry/string/twofactor_admins_url
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN

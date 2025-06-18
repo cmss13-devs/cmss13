@@ -1,0 +1,4 @@
+author: "Detective-Google"
+delete-after: True
+changes:
+  - bugfix: "chain gauntlets no longer speed up all preds while sprinting"

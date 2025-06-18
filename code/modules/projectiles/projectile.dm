@@ -510,7 +510,7 @@
 		return FALSE
 
 	if(isxeno(L))
-		if(L.body_position != LYING_DOWN)
+		if(L.body_position != LYING_DOWN && L.stat != UNCONSCIOUS) //We don't want to "somehow" dodge bullets when lying down/unconscious.
 			var/mob/living/carbon/xenomorph/xeno = L
 			var/dodge_roll = rand(1, 100)
 			if(dodge_roll <= xeno.dodge_chance)

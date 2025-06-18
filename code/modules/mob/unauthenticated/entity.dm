@@ -34,5 +34,5 @@
 		"time",
 		"approved",
 		"external_username",
-		"internal_user_id"
+		"internal_user_id",
 	)

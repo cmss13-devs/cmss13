@@ -171,7 +171,7 @@
 	/// What was the name of the creature now acting as overmind?
 	var/list/overmind_stored_stuff = list()
 	/// Is the overmind in a state of strength? (Has the core been alive a while)
-	var/overmind_strengthened = FALSE
+	var/overmind_strengthened = TRUE
 
 	var/list/overmind_abilities = list(
 		/datum/action/xeno_action/onclick/exit_overmind,

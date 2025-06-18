@@ -62,11 +62,13 @@
 	overmind_stored_stuff["plasmamax"] = overmind_mob.plasma_max
 	overmind_stored_stuff["maxhealth"] = overmind_mob.maxHealth
 	overmind_stored_stuff["armor"] = overmind_mob.armor_deflection
+	overmind_stored_stuff["aura"] = overmind_mob.aura_strength
 
 	overmind_mob.plasma_gain = 6
 	overmind_mob.plasma_max = 1400
 	overmind_mob.maxHealth = 1400
 	overmind_mob.armor_deflection = 45
+	overmind_mob.aura_strength = 6
 
 	ADD_TRAIT(overmind_mob, TRAIT_IMMOBILIZED, OVERMIND_TRAIT)
 	ADD_TRAIT(overmind_mob, TRAIT_PATHOGEN_OVERMIND, OVERMIND_TRAIT)
@@ -120,11 +122,13 @@
 	overmind_mob.plasma_max = overmind_stored_stuff["plasmamax"]
 	overmind_mob.maxHealth = overmind_stored_stuff["maxhealth"]
 	overmind_mob.armor_deflection = overmind_stored_stuff["armor"]
+	overmind_mob.aura_strength = overmind_stored_stuff["aura"]
 	overmind_stored_stuff["name"] = null
 	overmind_stored_stuff["plasmagen"] = null
 	overmind_stored_stuff["plasmamax"] = null
 	overmind_stored_stuff["maxhealth"] = null
 	overmind_stored_stuff["armor"] = null
+	overmind_stored_stuff["aura"] = null
 
 	overmind_mob.cannot_slash = FALSE
 	overmind_mob.invisibility = initial(overmind_mob.invisibility)

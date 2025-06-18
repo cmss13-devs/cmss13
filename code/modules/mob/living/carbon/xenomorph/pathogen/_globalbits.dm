@@ -4,6 +4,7 @@
 	pathogen_creature = TRUE
 	language = LANGUAGE_PATHOGEN
 
+/*
 /datum/caste_datum/pathogen/get_minimap_icon()
 	var/image/background = mutable_appearance('icons/mob/pathogen/neo_blips.dmi', minimap_background)
 
@@ -13,6 +14,7 @@
 	background.overlays += icon
 
 	return background
+*/
 
 /datum/admins/var/create_pathogen_creatures_html = null
 /datum/admins/proc/create_pathogen_creatures(mob/user)

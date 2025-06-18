@@ -79,7 +79,7 @@
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/explosives
-	containername = "\improper BRUTE rocket crate (WARNING)"
+	containername = "\improper M6H-BRUTE Breaching Rocket Crate (WARNING)"
 	group = "Explosives"
 
 /datum/supply_packs/explosives_incendiary

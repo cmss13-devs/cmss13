@@ -152,7 +152,7 @@
 /obj/item/device/encryptionkey/io
 	name = "\improper Marine Intelligence Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
+	channels = list(RADIO_CHANNEL_ALMAYER = TRUE, RADIO_CHANNEL_COMMAND = TRUE, RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_REQ = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_MEDSCI = TRUE, SQUAD_MARINE_1 = FALSE, SQUAD_MARINE_2 = FALSE, SQUAD_MARINE_3 = FALSE, SQUAD_MARINE_4 = FALSE, SQUAD_MARINE_5 = FALSE, SQUAD_MARINE_CRYO = FALSE)
 
 /obj/item/device/encryptionkey/vc
 	name = "\improper Marine Vehicle Crewman Radio Encryption Key"
@@ -258,6 +258,15 @@
 	name = "\improper WY Commando Radio Encryption Key"
 	icon_state = "pmc_key"
 	channels = list(RADIO_CHANNEL_WY_WO = TRUE, RADIO_CHANNEL_WY = TRUE)
+
+//---------------------------------------------------
+//Hyperdyne Keys
+
+/obj/item/device/encryptionkey/hyperdyne
+	name = "\improper Hyperdyne Corporation encryption key"
+	icon_state = "ce_key"
+	channels = list(RADIO_CHANNEL_HYPERDYNE = TRUE)
+	tracking_options = list("Corporate Liaison" = TRACKER_CL)
 
 //---------------------------------------------------
 //UPP Keys

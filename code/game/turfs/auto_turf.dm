@@ -296,6 +296,7 @@
 /turf/open/auto_turf/snow/brown_base/layer4
 	icon_state = "snow_b_4" //Add sorokyne rock decals to this one
 	bleed_layer = 4
+
 /turf/open/auto_turf/strata_grass
 	name = "matted grass"
 	icon = 'icons/turf/floors/auto_strata_grass.dmi'

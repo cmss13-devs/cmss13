@@ -1157,6 +1157,6 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		if(195 to 254) // 30%
 			new_human.equip_to_slot_or_del(new /obj/item/attachable/flashlight/grip(new_human), WEAR_IN_BACK)
 		if(255 to 324) // 35%
-			new_human.equip_to_slot_or_del(new /obj/item/m_gift (new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack (new_human), WEAR_IN_BACK)
 		if(325 to 444) // 45%
 			new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/civ(new_human), WEAR_IN_BACK)

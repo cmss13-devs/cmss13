@@ -172,3 +172,26 @@
   - rscadd: Xeno can be fed with any type of food
   realforest2001:
   - admin: Mentors can now disable their stuff.
+2025-06-15:
+  Drathek:
+  - bugfix: Fixed an exploit allowing hauled to still enter tunnels
+  MemesLauncher:
+  - balance: Enabled the storage of flag/teslas into the construction rig.
+  Red-byte3D:
+  - rscadd: New yautja weapon "Chain Gauntlets"
+  - rscadd: New sprites for "Chain Gauntlets"
+  cuberound:
+  - balance: Allows IMP ammo rack to carry filled sandbags
+  realforest2001:
+  - code_imp: Changed the backend of crew manifest labelling from equipment presets.
+2025-06-18:
+  Zenith, Tsurupeta, dimdimich1996, Crowford, Amory, BOBAMA:
+  - rscadd: added AK-4047 Rifle
+  - rscadd: added SOF insert
+  - rscadd: changed + added many survivors to be completely unique.
+  - code_imp: changed how weather sirens work.
+  - soundadd: added new sounds to AK-4047 and Jungle ambience.
+  - imageadd: added many new sprites for survivors, map objects & map visuals in general.
+  - mapadd: added new northern checkpoint area + small cave area.
+  - maptweak: massively changed Soro's visuals, snow gone, pure jungle + much more
+      UPP theming.

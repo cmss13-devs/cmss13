@@ -431,7 +431,7 @@
 
 /obj/item/weapon/gun/launcher/rocket/brute/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc, silent)
 	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
-		if(..(user, WEAR_IN_BACK, check_loc, silent)) //...first try to put it onto the Broiler.
+		if(..(user, WEAR_IN_BACK, check_loc, silent)) //...first try to put it into the bag
 			return TRUE
 	return ..()
 

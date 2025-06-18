@@ -471,7 +471,7 @@
 /obj/item/storage/belt/gun/brutepack
 	flags_equip_slot = SLOT_BACK //yes we are belt subtype that is worn on back
 	storage_slots = 7
-	max_w_class = 10
+	max_w_class = SIZE_MEDIUM
 	name = "\improper M271A2 Pattern Launcher Rig"
 	desc = "A special-issue harness designed to allow the user to freely and securely holster a M6H-BRUTE launcher system on their back without impeding movement, while also having several other integrated storage packs for additional ammo and equipment."
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
@@ -484,6 +484,7 @@
 		/obj/item/ammo_magazine,
 		/obj/item/weapon/gun/launcher/rocket/brute,
 	)
+	bypass_w_limit = list(/obj/item/weapon/gun/launcher/rocket/brute)
 
 /obj/item/storage/belt/gun/brutepack/update_icon()
 	. = ..()

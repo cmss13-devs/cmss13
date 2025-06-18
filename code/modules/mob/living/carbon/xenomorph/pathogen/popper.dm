@@ -32,7 +32,7 @@
 	icon_size = 32
 	icon_state = "Popper Walking"
 	plasma_types = list()
-	tier = 1
+	tier = 0
 	base_pixel_x = 0
 	base_pixel_y = -20
 	organ_value = 10000
@@ -348,3 +348,45 @@
 		return FALSE
 
 	return TRUE
+
+/datum/game_mode/proc/attempt_to_join_as_pathogen_popper(mob/xeno_candidate)
+	var/datum/hive_status/hive
+
+	hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
+
+	if(length(hive.totalXenos) <= 0)
+		to_chat(xeno_candidate, SPAN_WARNING("The confluence isn't active at this point for you to join."))
+		return FALSE
+
+
+	var/list/selection_list = list()
+	var/list/selection_list_structure = list()
+
+	for(var/obj/effect/alien/resin/special/popper_cocoon/cocoon as anything in hive.hive_structures[PATHOGEN_STRUCTURE_COCOON])
+		if(cocoon.growth_state == POPPER_COCOON_GROWN)
+			var/cocoon_number = 1
+			var/cocoon_name = "[cocoon.name] at [get_area(cocoon)]"
+			//For renaming the cocoons if we have duplicates
+			var/cocoon_selection_name = cocoon_name
+			while(cocoon_selection_name in selection_list)
+				cocoon_selection_name = "[cocoon_name] ([cocoon_number])"
+				cocoon_number++
+			selection_list += cocoon_selection_name
+			selection_list_structure += cocoon
+
+	if(!length(selection_list))
+		to_chat(xeno_candidate, SPAN_WARNING("The confluence does not have enough cocoons to hatch another Popper!"))
+		return FALSE
+
+	var/prompt = tgui_input_list(xeno_candidate, "Select spawn?", "Spawnpoint Selection", selection_list)
+	if(!prompt)
+		return FALSE
+
+	var/obj/effect/alien/resin/special/popper_cocoon/selected_structure = selection_list_structure[selection_list.Find(prompt)]
+
+	if(!hive.can_spawn_as_popper(xeno_candidate))
+		return FALSE
+
+	selected_structure.hatch(xeno_candidate)
+	return TRUE
+

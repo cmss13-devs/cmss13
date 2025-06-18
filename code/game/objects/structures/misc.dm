@@ -89,6 +89,10 @@
 	var/list/practice_mode = PRACTICE_LEVEL_LOW
 	///health of the target mode
 	var/practice_health = 230
+/obj/structure/target/Initialize(mapload, ...)
+	. = ..()
+	icon_state = pick("target_a", "target_q")
+
 /obj/structure/target/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_BOLDNOTICE("It seems to have a control panel on it.")
@@ -110,7 +114,7 @@
 
 /obj/structure/target/attack_hand(mob/user)
 	. = ..()
-	var/list/sorted_options = list("Very Easy" = PRACTICE_LEVEL_LOW, "Easy" = PRACTICE_LEVEL_MEDIUM_LOW, "Medium" = PRACTICE_LEVEL_MEDIUM, "Hard" = PRACTICE_LEVEL_HIGH, "Very hard" = PRACTICE_LEVEL_VERY_HIGH, "Impossible" = PRACTICE_LEVEL_EXTREMELY_HIGH)
+	var/list/sorted_options = list("Very Light Target" = PRACTICE_LEVEL_LOW, "Light target" = PRACTICE_LEVEL_MEDIUM_LOW, "Standard target" = PRACTICE_LEVEL_MEDIUM, "Heavy target" = PRACTICE_LEVEL_HIGH, "Super-heavy target" = PRACTICE_LEVEL_VERY_HIGH, "Impossible" = PRACTICE_LEVEL_EXTREMELY_HIGH)
 	var/picked_option = tgui_input_list(user, "Select target difficulty.", "Target difficulty", sorted_options,  20 SECONDS)
 	if(picked_option)
 		practice_mode = sorted_options[picked_option]
@@ -121,7 +125,7 @@
 	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)
 	animate(transform = matrix(270, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
 	langchat_speech("[src] folds to the ground!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
-	playsound(loc, 'sound/machines/chime.ogg', 40, TRUE, 6)
+	playsound(loc, 'sound/machines/chime.ogg', 50, TRUE, 7)
 	addtimer(CALLBACK(src, PROC_REF(raise_target)), 5 SECONDS)
 
 /obj/structure/target/proc/raise_target()

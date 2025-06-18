@@ -139,6 +139,8 @@
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 
+//= CLF =\\
+
 /obj/item/clothing/mask/gas/clf
 	name = "carbon mask"
 	desc = "Used for obscurity on the frontier."

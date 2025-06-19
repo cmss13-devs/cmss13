@@ -1,13 +1,6 @@
 /mob/living/carbon/human/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	var/is_a_synth = issynth(src)
 	ghostize()
-	var/datum/hive_status/main_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
-	var/see_humans_on_tacmap = main_hive.see_humans_on_tacmap
-	if(!see_humans_on_tacmap)
-		xeno_announcement("There is only a handful of tallhosts left, they are now visible on our hive mind map.", XENO_HIVE_NORMAL, SPAN_ANNOUNCEMENT_HEADER_BLUE("[QUEEN_MOTHER_ANNOUNCE]"))
-		main_hive.see_humans_on_tacmap = TRUE
-		main_hive.tacmap_requires_queen_ovi = FALSE
-		SEND_SIGNAL(main_hive, COMSIG_XENO_REVEAL_TACMAP)
 	for(var/obj/limb/E in limbs)
 		if(istype(E, /obj/limb/chest))
 			continue

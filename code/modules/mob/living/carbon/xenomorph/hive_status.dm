@@ -131,7 +131,7 @@
 
 	// Can this hive see humans on the tacmap
 	var/see_humans_on_tacmap = FALSE
-	// Does The queen need to be on ovi for xenos to see
+	// Does the queen need to be on ovi for xenos to see
 	var/tacmap_requires_queen_ovi = TRUE
 
 	var/list/available_nicknumbers = list()

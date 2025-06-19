@@ -78,9 +78,9 @@
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
+	. = ..()
 	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/clothing/mask/gas/yautja/Destroy()
 	remove_from_missing_pred_gear(src)

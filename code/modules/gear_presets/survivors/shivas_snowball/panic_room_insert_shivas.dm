@@ -9,7 +9,7 @@
 	assignment = "Assistant Operations Manager"
 	minimap_background = "background_wy_management"
 	minimap_icon = "ass_man"
-	rank = JOB_ASSISTANT_MANAGER
+	job_title = JOB_ASSISTANT_MANAGER
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	access = list(
@@ -49,7 +49,7 @@
 	name = "Survivor - Weyland-Yutani Commando (Shivas)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_COMMANDO_STANDARD
-	rank = JOB_WY_COMMANDO_STANDARD
+	job_title = JOB_WY_COMMANDO_STANDARD
 	faction = FACTION_PMC
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	paygrades = list(PAY_SHORT_WY_COM = JOB_PLAYTIME_TIER_0)

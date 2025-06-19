@@ -84,6 +84,13 @@
 /obj/item/clothing/shoes/marine/upp/knife
 	spawn_item_type = /obj/item/attachable/bayonet/upp
 
+/obj/item/clothing/shoes/marine/upp/black
+	icon_state = "marine"
+	item_state = "marine"
+
+/obj/item/clothing/shoes/marine/upp/black/knife
+	spawn_item_type = /obj/item/attachable/bayonet/upp
+
 /obj/item/clothing/shoes/marine/joe
 	name = "biohazard boots"
 	desc = "A pair of somewhat cheaply made biohazard boots. Tomorrow, Together."

@@ -1,4 +1,0 @@
-author: "MemesLauncher"
-delete-after: True
-changes:
-  - bugfix: "Fix being able to put C4 / Custom C4 / Breaching charges / Non-lethal breaching charges / Plasma breaching charges to dense fog."

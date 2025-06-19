@@ -7,9 +7,6 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	sight = BLIND
 	stat = DEAD
 
-	/// Where this user previously had their splitter, so they don't get too mad at us for moving it
-	var/cached_splitter_location
-
 	var/static/valid_characters = splittext("abcdefghijklmnopqrstuvwxyzAbCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "")
 	var/access_code
 
@@ -135,18 +132,12 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 /mob/unauthenticated/proc/display_unauthenticated_menu()
 	set waitfor = FALSE
 
-	cached_splitter_location = winget(client, "mainwindow.split", "splitter")
-	if(cached_splitter_location == "100")
-		cached_splitter_location = "50"
-
 	winset(client, null, list(
-		"mainwindow.split.splitter" = "100",
-		"mapwindow.lobby_browser.is-disabled" = "false",
-		"mapwindow.lobby_browser.is-visible" = "true",
-		"mapwindow.status_bar.is-visible" = "false",
+		"mainwindow.fullscreen_browser.is-disabled" = "false",
+		"mainwindow.fullscreen_browser.is-visible" = "true",
 	))
 
-	unauthenticated_menu = new(client, "lobby_browser")
+	unauthenticated_menu = new(client, "fullscreen_browser")
 	unauthenticated_menu.initialize(
 		assets = list(
 				get_asset_datum(/datum/asset/simple/tgui),
@@ -160,10 +151,8 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	set waitfor = FALSE
 
 	winset(to_close, null, list(
-		"mainwindow.split.splitter" = cached_splitter_location,
-		"mapwindow.lobby_browser.is-disabled" = "true",
-		"mapwindow.lobby_browser.is-visible" = "false",
-		"mapwindow.status_bar.is-visible" = "true",
+		"mainwindow.fullscreen_browser.is-disabled" = "true",
+		"mainwindow.fullscreen_browser.is-visible" = "false",
 	))
 
 

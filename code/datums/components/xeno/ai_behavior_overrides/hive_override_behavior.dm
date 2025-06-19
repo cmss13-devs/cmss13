@@ -14,13 +14,10 @@ GLOBAL_LIST_EMPTY(ai_hives)
 /datum/component/ai_behavior_override/hive/Initialize(...)
 	. = ..()
 
-	if(!istype(parent, /turf/open) && !istype(parent, /obj/effect/alien))
+	if(!istype(parent, /obj/effect/alien))
 		return COMPONENT_INCOMPATIBLE
 
 	GLOB.ai_hives += src
-
-	if(!istype(parent, /obj/effect/alien))
-		new /obj/effect/alien/weeds/node(get_turf(parent))
 
 /datum/component/ai_behavior_override/hive/Destroy(force, silent, ...)
 	GLOB.ai_hives -= src

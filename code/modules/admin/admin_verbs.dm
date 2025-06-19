@@ -331,6 +331,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 		add_verb(src, GLOB.mentor_verbs)
 	if(CLIENT_HAS_RIGHTS(src, R_BUILDMODE))
 		add_verb(src, /client/proc/togglebuildmodeself)
+		add_verb(src, /client/proc/toggle_game_master)
+		add_verb(src, /client/proc/open_resin_panel)
 	if(CLIENT_HAS_RIGHTS(src, R_SERVER))
 		add_verb(src, GLOB.admin_verbs_server)
 	if(CLIENT_HAS_RIGHTS(src, R_DEBUG))
@@ -356,6 +358,8 @@ GLOBAL_LIST_INIT(mentor_verbs, list(
 	remove_verb(src, list(
 		GLOB.admin_verbs_default,
 		/client/proc/togglebuildmodeself,
+		/client/proc/toggle_game_master,
+		/client/proc/open_resin_panel,
 		GLOB.admin_verbs_admin,
 		GLOB.admin_verbs_ban,
 		GLOB.admin_verbs_minor_event,

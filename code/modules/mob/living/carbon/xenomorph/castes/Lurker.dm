@@ -338,4 +338,3 @@
 		behavior.next_slash_buffed = FALSE
 
 	to_chat(xeno, SPAN_XENODANGER("We have waited too long, our slash will no longer deal increased damage!"))
-

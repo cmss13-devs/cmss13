@@ -541,7 +541,7 @@
 		hide_from(xeno)
 		return
 
-	if(!xeno.hive.living_xeno_queen.ovipositor && !xeno.hive.tacmap_requires_queen_ovi)
+	if(!xeno.hive.living_xeno_queen?.ovipositor && !xeno.hive.tacmap_requires_queen_ovi)
 		hide_from(xeno)
 
 	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)

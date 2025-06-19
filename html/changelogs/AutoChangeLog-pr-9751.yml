@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "CIA Skills include Antag for the items they can buy that require it."

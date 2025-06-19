@@ -195,3 +195,23 @@
   - mapadd: added new northern checkpoint area + small cave area.
   - maptweak: massively changed Soro's visuals, snow gone, pure jungle + much more
       UPP theming.
+2025-06-19:
+  Blundir:
+  - rscadd: added wy commando deathsquad variation for admins
+  - balance: returned wy commando ert into rotation, tweaked the gear of it
+  DarkLordCabbage:
+  - qol: SEAtech vendor now comes stocked with a few flashlights
+  - qol: synths now have custom surgery messages, i.e. carbon fibre skeleton instead
+      of bone
+  - bugfix: fixed synth k9s being unable to get their head reattached
+  - code_imp: head reattachment surgery checks for IS_SYNTH instead of a species list
+  Detective-Google:
+  - config: config added for maintainer color, maintainers being anyone with R_PROFILER.
+      this layers above R_ADMIN color and below R_COLOR custom colors.
+  - bugfix: chain gauntlets no longer speed up all preds while sprinting
+  Drathek:
+  - qol: Xeno preference and click drag override are enabled by default for new connects
+  MistChristmas:
+  - bugfix: CIA Skills include Antag for the items they can buy that require it.
+  realforest2001:
+  - rscadd: Added a follow category for people infected with xeno larva.

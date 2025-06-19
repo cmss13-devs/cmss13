@@ -4,6 +4,7 @@
 	var/time
 
 	var/approved = FALSE
+	var/authentication_method
 	var/external_username
 	var/internal_user_id
 
@@ -14,6 +15,7 @@
 		"access_code" = DB_FIELDTYPE_STRING_MEDIUM,
 		"time" = DB_FIELDTYPE_DATE,
 		"approved" = DB_FIELDTYPE_INT,
+		"authentication_method" = DB_FIELDTYPE_STRING_MEDIUM,
 		"external_username" = DB_FIELDTYPE_STRING_MEDIUM,
 		"internal_user_id" = DB_FIELDTYPE_INT,
 	)
@@ -23,6 +25,7 @@
 	var/time
 
 	var/approved
+	var/authentication_method
 	var/external_username
 	var/internal_user_id
 
@@ -33,6 +36,7 @@
 		"access_code",
 		"time",
 		"approved",
+		"authentication_method",
 		"external_username",
 		"internal_user_id",
 	)

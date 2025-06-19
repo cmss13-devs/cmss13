@@ -2,11 +2,15 @@
 	mob_type_allowed_typecache = list(/mob/living/carbon/xenomorph)
 	mob_type_blacklist_typecache = list(/mob/living/carbon/xenomorph/facehugger, /mob/living/carbon/xenomorph/larva)
 	keybind_category = CATEGORY_XENO_EMOTE
+	var/pathogen_sound
 	var/predalien_sound
 	var/larva_sound
 
 /datum/emote/living/carbon/xeno/get_sound(mob/living/user)
 	. = ..()
+
+	if(is_pathogen_creature(user) && pathogen_sound)
+		. = pathogen_sound
 
 	if(ispredalien(user) && predalien_sound)
 		. = predalien_sound
@@ -21,6 +25,7 @@
 	message = "growls."
 	sound = "alien_growl"
 	predalien_sound = 'sound/voice/predalien_growl.ogg'
+	pathogen_sound = 'sound/pathogen_creatures/neo_growl.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/hiss
@@ -30,6 +35,7 @@
 	message = "hisses."
 	sound = "alien_hiss"
 	predalien_sound = 'sound/voice/predalien_hiss.ogg'
+	pathogen_sound = 'sound/pathogen_creatures/neo_hiss.ogg'
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 
 /datum/emote/living/carbon/xeno/needshelp
@@ -47,6 +53,7 @@
 	message = "roars!"
 	sound = "alien_roar"
 	predalien_sound = 'sound/voice/predalien_roar.ogg'
+	pathogen_sound = 'sound/pathogen_creatures/neo_roar.ogg'
 	larva_sound = "alien_roar_larva"
 	emote_type = EMOTE_AUDIBLE|EMOTE_VISIBLE
 

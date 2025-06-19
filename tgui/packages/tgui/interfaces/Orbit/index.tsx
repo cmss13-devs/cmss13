@@ -134,6 +134,7 @@ const xenoSplitter = (members: Array<Observable>) => {
   const mutatedHive: Array<Observable> = [];
   const otherHives: Array<Observable> = [];
   const yautjaHive: Array<Observable> = [];
+  const pathogenHive: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.area_name?.includes('Thunderdome')) {
@@ -148,6 +149,8 @@ const xenoSplitter = (members: Array<Observable>) => {
       mutatedHive.push(x);
     } else if (x.hivenumber?.includes('yautja')) {
       yautjaHive.push(x);
+    } else if (x.hivenumber?.includes('pathogen')) {
+      pathogenHive.push(x);
     } else {
       otherHives.push(x);
     }
@@ -160,6 +163,7 @@ const xenoSplitter = (members: Array<Observable>) => {
     buildSquadObservable('Mutated', 'pink', mutatedHive),
     buildSquadObservable('Other', 'light-grey', otherHives),
     buildSquadObservable('Yautja', 'green', yautjaHive),
+    buildSquadObservable('Pathogen', 'white', pathogenHive),
   ];
   return squads;
 };

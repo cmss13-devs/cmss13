@@ -89,7 +89,8 @@
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
-		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery
+		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery,
+		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
 	)
 
 	var/list/list/hive_structures = list() //Stringref list of structures that have been built
@@ -1623,3 +1624,63 @@
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
 
+/datum/hive_status/pathogen
+	name = "Pathogen Confluence"
+	reporting_id = "pathogen"
+	hivenumber = XENO_HIVE_PATHOGEN
+	prefix = ""
+	color = "#bdc9c4"
+	ui_color = "#bdc9c4"
+
+	hive_inherant_traits = list(TRAIT_NO_COLOR)
+	latejoin_burrowed = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	allow_no_queen_evo = TRUE
+
+	destruction_allowed = NORMAL_XENO
+
+	larva_gestation_multiplier = 1.5
+
+	hive_orders = "Kill everyone and everything."
+
+	free_slots = list(
+		/datum/caste_datum/pathogen/neomorph = 6,
+		/datum/caste_datum/pathogen/blight = 4,
+		/datum/caste_datum/pathogen/brute = 1,
+		/datum/caste_datum/pathogen/venator = 2,
+	)
+
+	hive_structures_limit = list(
+		PATHOGEN_STRUCTURE_CORE = 1,
+		PATHOGEN_STRUCTURE_COCOON = 3,
+	)
+
+/datum/hive_status/pathogen/get_xeno_counts()
+	// Every caste is manually defined here so you get
+	var/list/xeno_counts = list(
+		list(PATHOGEN_CREATURE_BURSTER = 0, PATHOGEN_CREATURE_POPPER = 0),
+		list(PATHOGEN_CREATURE_SPRINTER = 0),
+		list(PATHOGEN_CREATURE_NEOMORPH = 0, PATHOGEN_CREATURE_BLIGHT = 0),
+		list(PATHOGEN_CREATURE_BRUTE = 0, PATHOGEN_CREATURE_VENATOR = 0)
+	)
+
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		//don't show xenos in the thunderdome when admins test stuff.
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+				continue
+
+		if(xeno.caste && xeno.counts_for_slots)
+			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
+
+	return xeno_counts
+
+/datum/hive_status/pathogen/set_hive_location(obj/effect/alien/resin/special/pylon/core/C)
+	if(!C || C == hive_location)
+		return
+	var/area/A = get_area(C)
+	xeno_message(SPAN_XENOANNOUNCE("The confluence location has been set as \the [A]."), 3, hivenumber)
+	hive_location = C
+	hive_ui.update_hive_location()

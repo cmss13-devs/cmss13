@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	sight = BLIND
 	stat = DEAD
 
-	var/static/valid_characters = splittext("abcdefghijklmnopqrstuvwxyzAbCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "")
+	var/static/valid_characters = splittext("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", "")
 	var/access_code
 
 	var/datum/tgui_window/unauthenticated_menu

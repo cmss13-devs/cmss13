@@ -68,7 +68,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 		DB_AND(
 			DB_COMP("access_code", DB_EQUALS, code ? code : access_code),
 			DB_COMP("time", DB_GREATER, time2text(world.timeofday - 3 HOURS, "YYYY-MM-DD hh:mm:ss")),
-			DB_COMP("approved", DB_EQUALS, TRUE)
+			DB_COMP("approved", DB_EQUALS, TRUE),
 		)
 	)
 
@@ -80,7 +80,11 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	if(request.external_username)
 		client.external_username = ckey(request.external_username)
 
-		new_ckey = "Guest-Forums-[client.external_username]"
+		var/middle = ""
+		if(request.authentication_method)
+			middle = "[capitalize(request.authentication_method)]-"
+
+		new_ckey = "Guest-[middle][client.external_username]"
 
 	else if(request.internal_user_id)
 		var/datum/view_record/players/player = locate() in DB_VIEW(
@@ -101,6 +105,8 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 		unauthenticated_menu.send_message("banned")
 		QDEL_IN(client, 10 SECONDS)
 		return FALSE
+
+	message_admins("Non-BYOND user [new_ckey] (previously [key]) has been authenticated via [request.authentication_method].")
 
 	log_in()
 

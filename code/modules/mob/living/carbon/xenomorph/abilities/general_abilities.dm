@@ -535,12 +535,13 @@
 
 	hivenumber = xeno.hive.hivenumber
 	RegisterSignal(xeno.hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
+	RegisterSignal(xeno.hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(handle_unhide_tacmap))
 
-	if(!xeno.hive.living_xeno_queen)
+	if(!xeno.hive.living_xeno_queen && !xeno.hive.allow_no_queen_actions)
 		hide_from(xeno)
 		return
 
-	if(!xeno.hive.living_xeno_queen.ovipositor)
+	if(!xeno.hive.living_xeno_queen.ovipositor && !xeno.hive.tacmap_requires_queen_ovi)
 		hide_from(xeno)
 
 	handle_new_queen(new_queen = xeno.hive.living_xeno_queen)
@@ -574,7 +575,14 @@
 /datum/action/xeno_action/onclick/tacmap/proc/handle_dismount_ovipositor()
 	SIGNAL_HANDLER
 
-	hide_from(owner)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno.hive?.tacmap_requires_queen_ovi)
+		hide_from(owner)
+
+/datum/action/xeno_action/onclick/tacmap/proc/handle_unhide_tacmap()
+	SIGNAL_HANDLER
+
+	unhide_from(owner)
 
 /datum/action/xeno_action/onclick/tacmap/can_use_action()
 	if(!owner)

@@ -52,7 +52,7 @@
 #define CO_GUNS list(CO_GUN_MATEBA, CO_GUN_MATEBA_SPECIAL, CO_GUN_M1911, CO_GUN_DEAGLE)
 
 ///Council CO special weapons options
-#define COUNCIL_CO_GUNS list(CO_GUN_MATEBA_COUNCIL)
+#define COUNCIL_CO_GUNS list(CO_GUN_MATEBA_COUNCIL, CO_GUN_DEAGLE_COUNCIL)
 
 #define CO_GUN_MATEBA "Mateba"
 #define CO_GUN_MATEBA_SPECIAL "Mateba Special"

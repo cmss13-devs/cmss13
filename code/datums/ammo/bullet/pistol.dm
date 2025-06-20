@@ -150,7 +150,6 @@
 	name = ".50 high-impact armor piercing pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 50
-	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
 
 /datum/ammo/bullet/pistol/deagle/highimpact/upp
 	name = "high-impact pistol bullet"

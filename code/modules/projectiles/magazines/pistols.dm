@@ -226,7 +226,6 @@
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
 	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_CRITICAL
 
 //-------------------------------------------------------
 //Type 31 pistol. //A makarov

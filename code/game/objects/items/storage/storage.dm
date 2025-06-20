@@ -43,7 +43,7 @@
 	var/required_skill_level_for_nest_opening = null
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
-	if(CAN_PICKUP(usr, src))
+	if(CAN_PICKUP(usr, src) && !HAS_TRAIT(usr, TRAIT_HAULED))
 		if(over_object == usr) // this must come before the screen objects only block
 			open(usr)
 			return

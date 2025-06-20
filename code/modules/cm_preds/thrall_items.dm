@@ -199,19 +199,19 @@
 	SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
 	user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
 	var/tele_time = animation_teleport_quick_out(user)
-	var/mob/living/M = user.pulling
-	if(istype(M)) // Pulled person
-		SEND_SIGNAL(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
-		animation_teleport_quick_out(M)
+	var/mob/living/passenger = user.pulling
+	if(istype(passenger)) // Pulled person
+		SEND_SIGNAL(passenger, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+		passenger.visible_message(SPAN_WARNING("[icon2html(passenger, viewers(src))][passenger] disappears!"))
+		animation_teleport_quick_out(passenger)
 
 		sleep(tele_time) // Animation delay
 		user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled
 
 		// Undo animations
 		animation_teleport_quick_in(user)
-		if(istype(M) && !QDELETED(M))
-			animation_teleport_quick_in(M)
+		if(istype(passenger) && !QDELETED(passenger))
+			animation_teleport_quick_in(passenger)
 		teleporting = FALSE
 	else
 		VARSET_CALLBACK(src, teleporting, FALSE)

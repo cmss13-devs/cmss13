@@ -205,7 +205,7 @@
 /datum/equipment_preset/uscm/mech
 	name = "USCM Mechsuit Operator (MECH)"
 	assignment = JOB_MECH_OP
-	rank = JOB_MECH_OP
+	job_title = JOB_MECH_OP
 	role_comm_title = "MECH"
 	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
@@ -239,7 +239,7 @@
 /datum/equipment_preset/uscm/mech/lead
 	name = "USCM Lead Mechsuit Operator (MECH-L)"
 	assignment = JOB_MECH_OP_L
-	rank = JOB_MECH_OP_L
+	job_title = JOB_MECH_OP_L
 	role_comm_title = "MECH-L"
 	idtype = /obj/item/card/id/silver
 	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)

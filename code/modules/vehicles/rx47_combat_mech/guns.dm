@@ -8,7 +8,6 @@
 	start_semiauto = FALSE
 	start_automatic = TRUE
 	akimbo_forbidden = TRUE
-	can_jam = FALSE
 	has_empty_icon = FALSE
 
 /obj/item/weapon/gun/mech/dropped(mob/user)
@@ -90,9 +89,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_OFF
 	recoil_buildup_limit = RECOIL_OFF
-	durability_loss = GUN_DURABILITY_LOSS_NONE
-
-
 
 //Cannon
 /obj/item/ammo_magazine/rx47_cannon
@@ -172,16 +168,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_OFF
 	recoil_buildup_limit = RECOIL_OFF
-	durability_loss = GUN_DURABILITY_LOSS_NONE
-
-
-
-
-
-
-
-
-
 
 
 

@@ -101,9 +101,23 @@
 
 /obj/item/clothing/head/straw
 	name = "\improper straw hat"
+	desc = "A weathered straw hat with a brown leather band around the crown. It looks perfect for sunny days and long afternoons in the fields."
 	icon_state = "strawhat"
 	item_state = "strawhat"
-	desc = "A weathered straw hat with a brown leather band around the crown. It looks perfect for sunny days and long afternoons in the fields."
+
+/obj/item/clothing/head/cowboy
+
+	name = "\improper cowboy hat"
+	desc = "An iconic American cowboy hat."
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	icon_state = "cowboy_dark"
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	)
+	desc = "A finely made cowboy hat."
+
+/obj/item/clothing/head/cowboy/light
+	icon_state = "cowboy_light"
 
 //stylish bs12 hats
 

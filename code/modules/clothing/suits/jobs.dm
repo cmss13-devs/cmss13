@@ -362,6 +362,16 @@
 	icon_state = "suitjacket_comedian"
 	initial_icon_state = "suitjacket_comedian"
 
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/brown
+	name = "brown suit-jacket"
+	icon_state = "suitjacket_brown"
+	initial_icon_state = "suitjacket_brown"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/light_brown
+	name = "light-brown suit-jacket"
+	icon_state = "suitjacket_lightbrown"
+	initial_icon_state = "suitjacket_lightbrown"
+
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker
 	name = "windbreaker parent object"

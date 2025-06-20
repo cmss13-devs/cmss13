@@ -645,8 +645,8 @@
 	name = "\improper L64A3 squash-head magazine (8.88x51mm Caseless)"
 	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo. "
 	caliber = "8.88x51mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/assault_rifles.dmi'
-	icon_state = "l42"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/marksman_rifles.dmi'
+	icon_state = "l64"
 	w_class = SIZE_MEDIUM
 	max_rounds = 25
 	default_ammo = /datum/ammo/bullet/rifle/l64

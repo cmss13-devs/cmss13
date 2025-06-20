@@ -641,6 +641,21 @@
 	default_ammo = /datum/ammo/bullet/rifle/l23/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
 
+/obj/item/ammo_magazine/rifle/l64
+	name = "\improper L64A3 squash-head magazine (8.88x51mm Caseless)"
+	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo. "
+	caliber = "8.88x51mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/assault_rifles.dmi'
+	icon_state = "l42"
+	w_class = SIZE_MEDIUM
+	max_rounds = 25
+	default_ammo = /datum/ammo/bullet/rifle/l64
+	gun_type = /obj/item/weapon/gun/rifle/l42a3
+	ammo_band_icon = "+rmcdmr_band"
+	ammo_band_icon_empty = "+rmcdmr_band_e"
+	ammo_band_color = AMMO_BAND_COLOR_IMPACT
+
+
 //--------------------------------------------------------
 //XM51 BREACHING SHOTGUN
 

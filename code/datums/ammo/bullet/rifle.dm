@@ -286,3 +286,7 @@
 	damage = 0
 	stamina_damage = 22
 	shrapnel_chance = 0
+
+/datum/ammo/bullet/rifle/l64
+
+	name = "8.88x51 squash-head bullet"

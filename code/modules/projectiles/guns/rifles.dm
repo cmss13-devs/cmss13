@@ -2374,8 +2374,8 @@
 //L42A3 Battle Rifle
 
 /obj/item/weapon/gun/rifle/l42a3
-	name = "\improper L42A3 battle rifle"
-	desc = "The L42A3 Battle Rifle, found commonly in Three World Empire's armories. Used by RMC and IASF alike, valued for its reliability."
+	name = "\improper L64A3 battle rifle"
+	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces. valued for its reliability."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/marksman_rifles.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
@@ -2388,7 +2388,7 @@
 	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
 	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
 	fire_sound = 'sound/weapons/gun_carbine.ogg'
-	current_mag = /obj/item/ammo_magazine/rifle/l42a
+	current_mag = /obj/item/ammo_magazine/rifle/l64
 
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -2449,8 +2449,8 @@
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
 
 /obj/item/weapon/gun/rifle/l42a3/marksman
-	name = "\improper L42A3 battle rifle"
-	desc = "The L42A3 Battle Rifle, modification sold to TWE. This particular version of the weapon has been given a custom stock and variable zoom scope. Reliable and deadly."
+	name = "\improper L64A3 battle rifle"
+	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces.  Reliable and deadly."
 
 	current_mag = /obj/item/ammo_magazine/rifle/l42a/ap
 
@@ -2477,24 +2477,6 @@
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
 	update_attachable(S.slot)
-
-/obj/item/weapon/gun/rifle/l42a3/fal // THE RIGHT ARM OF FREEDOM, MOTHERFU-
-	name = "\improper L42A3-F battle rifle"
-	desc = "The L42A3 Battle Rifle with a heavily modified firing mechanism, giving it a burst-fire option. Extremely deadly."
-
-	current_mag = /obj/item/ammo_magazine/rifle/l42a/extended
-	start_automatic = TRUE
-
-/obj/item/weapon/gun/rifle/l42a3/fal/set_gun_config_values()
-	..()
-	set_fire_delay(FIRE_DELAY_TIER_10)
-	set_burst_amount(0)
-	set_burst_delay(FIRE_DELAY_TIER_9)
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_6
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_10
-	damage_falloff_mult = 0
-	scatter = SCATTER_AMOUNT_TIER_9
 
 //-------------------------------------------------------
 

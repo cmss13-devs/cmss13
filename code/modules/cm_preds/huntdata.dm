@@ -6,34 +6,34 @@
 
 	//vars for Hunters targeting prey.
 	var/hunted = FALSE
-	var/mob/living/carbon/hunter //Target has their hunter variable linked to the Hunter.
-	var/mob/living/carbon/prey //Hunter has their prey variable linked to their target.
+	var/mob/living/carbon/hunter /// Target has their hunter variable linked to the Hunter.
+	var/mob/living/carbon/prey /// Hunter has their prey variable linked to their target.
 
 
 	//Vars for Hunters marking someone as dishonorable.
 	var/dishonored = FALSE
-	var/mob/living/carbon/dishonored_set //The Hunter who marked the target as Dishonorable.
-	var/list/dishonored_targets = list() //The list of people a specific Hunter has marked as Dishonorable.
-	var/dishonored_reason //The Reason the target was set as dishonorable.
+	var/mob/living/carbon/dishonored_set /// The Hunter who marked the target as Dishonorable.
+	var/list/dishonored_targets = list() /// The list of people a specific Hunter has marked as Dishonorable.
+	var/dishonored_reason /// The Reason the target was set as dishonorable.
 
 	var/honored = FALSE
-	var/mob/living/carbon/honored_set //The Hunter who marked the target as Honorable.
-	var/list/honored_targets = list() //The list of people a specific Hunter has marked as Honorable.
-	var/honored_reason //The Reason the target was set as Honorable.
+	var/mob/living/carbon/honored_set /// The Hunter who marked the target as Honorable.
+	var/list/honored_targets = list() /// The list of people a specific Hunter has marked as Honorable.
+	var/honored_reason /// The Reason the target was set as Honorable.
 
 	var/gear = FALSE
-	var/mob/living/carbon/gear_set //The Hunter who marked the target as having Hunter Gear.
-	var/list/gear_targets = list() //The list of people a specific Hunter has marked as having Hunter Gear.
+	var/mob/living/carbon/gear_set /// The Hunter who marked the target as having Hunter Gear.
+	var/list/gear_targets = list() /// The list of people a specific Hunter has marked as having Hunter Gear.
 
 	var/thralled = FALSE
 	var/mob/living/carbon/thralled_set //The Hunter who marked a target as their Thrall.
-	var/thralled_reason //The Reason the target was Thralled.
-	var/mob/living/carbon/thrall //The Thrall the Hunter marked.
+	var/thralled_reason /// The Reason the target was Thralled.
+	var/mob/living/carbon/thrall /// The Thrall the Hunter marked.
 
 	var/blooded = FALSE
-	var/mob/living/carbon/blooded_set //! The Yautja that blooded the thrall
-	var/blooded_reason //! The reason the thrall was blooded
-	var/mob/living/carbon/newblood //! The thrall that is now blooded
+	var/mob/living/carbon/blooded_set /// The Yautja that blooded the thrall
+	var/blooded_reason /// The reason the thrall was blooded
+	var/mob/living/carbon/newblood /// The thrall that is now blooded
 
 /datum/huntdata/proc/clean_data()
 	if(dishonored)

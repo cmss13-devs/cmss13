@@ -7,8 +7,8 @@
 		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
 		return
 
-	var/mob/living/carbon/human/T = src
-	if(!isyautja(T))
+	var/mob/living/carbon/human/target = src
+	if(!isyautja(target))
 		return
 
 	var/list/options = list()
@@ -23,12 +23,12 @@
 		"Un-Mark as Gear Carrier"
 	)
 
-	if(!T.hunter_data.prey)
+	if(!target.hunter_data.prey)
 		options += "Mark as Prey"
 	else
 		options += "Un-Mark as Prey"
 
-	if(!T.hunter_data.thrall)
+	if(!target.hunter_data.thrall)
 		options += "Mark as Thralled"
 
 	options += optionsp
@@ -41,27 +41,27 @@
 
 		switch(input)
 			if("Mark as Prey")
-				T.mark_for_hunt()
+				target.mark_for_hunt()
 			if("Un-Mark as Prey")
-				T.remove_from_hunt()
+				target.remove_from_hunt()
 			if("Mark as Honored")
-				T.mark_honored()
+				target.mark_honored()
 			if("Un-Mark as Honored")
-				T.unmark_honored()
+				target.unmark_honored()
 			if("Mark as Dishonorable")
-				T.mark_dishonored()
+				target.mark_dishonored()
 			if("Un-Mark as Dishonorable")
-				T.unmark_dishonored()
+				target.unmark_dishonored()
 			if("Mark as Gear Carrier")
-				T.mark_gear()
+				target.mark_gear()
 			if("Un-Mark as Gear Carrier")
-				T.unmark_gear()
+				target.unmark_gear()
 			if("Mark as Thralled")
-				T.mark_thralled()
+				target.mark_thralled()
 			if("Un-Mark as Thralled")
-				T.unmark_thralled()
+				target.unmark_thralled()
 			if("Mark as Blooded")
-				T.mark_blooded()
+				target.mark_blooded()
 
 	return
 

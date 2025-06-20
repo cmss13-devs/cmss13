@@ -220,20 +220,6 @@
 	notification_sound = !notification_sound
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
 
-/obj/item/clothing/gloves/yautja/thrall/update_minimap_icon()
-	if(!ishuman(owner))
-		return
-
-	var/mob/living/carbon/human/human_owner = owner
-	var/turf/wearer_turf = get_turf(owner)
-	if(owner.stat >= DEAD)
-		if(human_owner.undefibbable)
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("undefibbable"))
-		else
-			SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon, overlay_iconstates = list("defibbable"))
-	else
-		SSminimaps.add_marker(owner, wearer_turf.z, MINIMAP_FLAG_YAUTJA, minimap_icon)
-
 /obj/item/clothing/gloves/yautja/hunter
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."

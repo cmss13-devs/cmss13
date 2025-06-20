@@ -168,11 +168,11 @@
 	if(isthrall(user))
 		var/datum/entity/clan_player/clan_info = H.client.clan_info
 		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
-			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
-			for(var/datum/view_record/clan_view/CV in CPV)
-				if(!SSpredships.is_clanship_loaded(CV?.clan_id))
+			var/list/datum/view_record/clan_view/clan_perm_view = DB_VIEW(/datum/view_record/clan_view/)
+			for(var/datum/view_record/clan_view/clan_view in clan_perm_view)
+				if(!SSpredships.is_clanship_loaded(clan_view?.clan_id))
 					continue
-				ship_to_tele += list("[CV.name]" = "[CV.clan_id]: [CV.name]")
+				ship_to_tele += list("[clan_view.name]" = "[clan_view.clan_id]: [clan_view.name]")
 		if(SSpredships.is_clanship_loaded(clan_info?.clan_id))
 			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
 
@@ -191,16 +191,19 @@
 	teleporting = TRUE
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 
-	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		// Display fancy animation for you and the person you might be pulling (Legacy)
-		SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
-		var/tele_time = animation_teleport_quick_out(user)
-		var/mob/living/M = user.pulling
-		if(istype(M)) // Pulled person
-			SEND_SIGNAL(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-			M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
-			animation_teleport_quick_out(M)
+	if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, "You were interrupted!")
+		teleporting = FALSE
+		return
+	// Display fancy animation for you and the person you might be pulling (Legacy)
+	SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+	user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
+	var/tele_time = animation_teleport_quick_out(user)
+	var/mob/living/M = user.pulling
+	if(istype(M)) // Pulled person
+		SEND_SIGNAL(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+		M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
+		animation_teleport_quick_out(M)
 
 		sleep(tele_time) // Animation delay
 		user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled

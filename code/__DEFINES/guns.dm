@@ -57,5 +57,6 @@
 #define CO_GUN_MATEBA "Mateba"
 #define CO_GUN_MATEBA_SPECIAL "Mateba Special"
 #define CO_GUN_DEAGLE "Desert Eagle"
+#define CO_GUN_DEAGLE_COUNCIL "Desert Eagle Special"
 #define CO_GUN_M1911 "M1911C"
 #define CO_GUN_MATEBA_COUNCIL "Colonel's Mateba"

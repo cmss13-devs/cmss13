@@ -57,8 +57,8 @@
 /obj/item/storage/mateba_case
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "matebacase"
-	name = "mateba customization kit case"
-	desc = "A wooden case used for storing the tools and parts needed to customize a Mateba revolver. Comes with three barrel lengths and the necessary key to swap them out."
+	name = "mateba case"
+	desc = "A wooden case used for storing the tools and parts needed to customize a Mateba revolver. Comes with three barrel lengths and the necessary key to swap them out, as well as room for the gun itself."
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
@@ -70,8 +70,14 @@
 
 /obj/item/storage/mateba_case/captain/council
 	icon_state = "c_matebacase"
-	name = "colonel's mateba customization kit case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is custom-made for colonels."
+	name = "senior officer's mateba case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver, as well as room for the gun itself. This variant is custom-made for senior officers and comes with silver barrel attachments."
+
+/obj/item/storage/mateba_case/captain/council/fill_preset_inventory()
+	new /obj/item/attachable/mateba/short/silver(src)
+	new /obj/item/attachable/mateba/silver(src)
+	new /obj/item/attachable/mateba/long/silver(src)
+	new /obj/item/weapon/mateba_key(src)
 
 /obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"
@@ -79,9 +85,9 @@
 	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is made for general-grade golden Matebas and comes with golden barrel attachments."
 
 /obj/item/storage/mateba_case/general/fill_preset_inventory()
-	new /obj/item/attachable/mateba/short/dark(src)
-	new /obj/item/attachable/mateba/dark(src)
-	new /obj/item/attachable/mateba/long/dark(src)
+	new /obj/item/attachable/mateba/short/gold(src)
+	new /obj/item/attachable/mateba/gold(src)
+	new /obj/item/attachable/mateba/long/gold(src)
 	new /obj/item/weapon/mateba_key(src)
 
 //6 pack

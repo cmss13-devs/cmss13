@@ -1314,7 +1314,6 @@
 	icon_state = "mercenary_heavy_uniform"
 	worn_state = "mercenary_heavy_uniform"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/mercenary)
 
 /obj/item/clothing/under/marine/veteran/mercenary/miner
 	name = "\improper Mercenary miner fatigues"

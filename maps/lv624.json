@@ -7,6 +7,7 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",
+        "/datum/equipment_preset/synth/survivor/hybrisa/paramedic",
         "/datum/equipment_preset/survivor/chaplain/lv",
         "/datum/equipment_preset/survivor/engineer/lv",
         "/datum/equipment_preset/survivor/corporate/lv",
@@ -14,7 +15,9 @@
         "/datum/equipment_preset/survivor/security/lv",
         "/datum/equipment_preset/survivor/colonial_marshal/lv",
         "/datum/equipment_preset/survivor/goon",
-        "/datum/equipment_preset/survivor/civilian"
+        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/civilian_unique"
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
     "announce_text": "An automated distress signal has been received from the archaeological site of Lazarus Landing, on the border world of LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",

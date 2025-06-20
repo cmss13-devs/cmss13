@@ -175,6 +175,10 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 /obj/structure/flora/tree/tyrargo/tree_3
 	icon_state = "bald"
 
+/obj/structure/flora/tree/tyrargo/tree_3/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around, south_offset = 5)
+
 /obj/structure/flora/tree/tyrargo/tree_4
 	icon_state = "dead_tree1"
 
@@ -188,6 +192,10 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 /obj/structure/flora/tree/tyrargo_small
 	icon = 'icons/obj/structures/props/natural/vegetation/tyrargo_dead_trees.dmi'
 	icon_state = "tree_1"
+
+/obj/structure/flora/tree/tyrargo_small/Initialize(mapload, ...)
+	. = ..()
+	AddComponent(/datum/component/shimmy_around, south_offset = 5)
 
 /obj/structure/flora/tree/tyrargo_small/tree_2
 	icon_state = "tree_2"

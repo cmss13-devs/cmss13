@@ -22,6 +22,7 @@
 	worn_accessory_slot = 1
 
 /obj/item/clothing/accessory/attack_self(mob/user)
+	. = ..()
 	if(can_become_accessory)
 		revert_from_accessory(user)
 

@@ -83,6 +83,8 @@
 /obj/item/clothing/attack_self(mob/user)
 	if(can_become_accessory)
 		convert_to_accessory(user)
+		return
+	return ..()
 
 /obj/item/clothing/get_examine_line(mob/user)
 	. = ..()

@@ -273,7 +273,7 @@
 
 /obj/item/ammo_magazine/pistol/t73_impact
 	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/upp
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag_impact"

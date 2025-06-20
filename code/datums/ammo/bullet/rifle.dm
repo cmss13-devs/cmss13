@@ -290,3 +290,6 @@
 /datum/ammo/bullet/rifle/l64
 
 	name = "8.88x51 squash-head bullet"
+
+/datum/ammo/bullet/rifle/ap/l64
+	name = "8.88x51 armour piercing squash-head bullet"

@@ -791,14 +791,16 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	needs_power = FALSE
 	use_power = USE_POWER_NONE
 	health = 150
+	sub_name = "CC (portable)"
 	var/obj/item/device/fax_backpack/faxbag
 
 /obj/structure/machinery/faxmachine/backpack/New(loc, portable_id_tag)
-	. = ..()
 	if(portable_id_tag)
 		machine_id_tag = portable_id_tag
+		identity_name = sub_name ? "[sub_name], [machine_id_tag]" : machine_id_tag
 		fixed_id_tag = TRUE
 		GLOB.fax_network.all_faxcodes[machine_id_tag] = src
+	return ..()
 
 ///The wearable and deployable part of the fax machine backpack
 /obj/item/device/fax_backpack

@@ -195,7 +195,7 @@
 	to_chat(user, SPAN_NOTICE("You press a few buttons..."))
 	//Add a little delay so the user wouldn't be just spamming all the buttons
 	user.next_move = world.time + 3
-	if(do_after(usr, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 1))
+	if(do_after(user, 3, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = 1))
 		if(prob(randomProbability))
 			return activate_random_verb(user)
 		if(!prob(workingProbability))
@@ -754,7 +754,7 @@
 			M.invisibility = INVISIBILITY_LEVEL_ONE
 			M.see_invisible = SEE_INVISIBLE_LEVEL_ONE
 
-		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
+		log_game("[key_name_admin(user)] has enabled their cloaking device.")
 		if(!silent)
 			M.visible_message(SPAN_WARNING("[M] vanishes into thin air!"), SPAN_NOTICE("You are now invisible to normal detection."))
 			var/sound_to_use
@@ -1324,7 +1324,7 @@
 		return
 
 	name_active = !name_active
-	to_chat(usr, SPAN_NOTICE("\The [src] will [name_active ? "now" : "no longer"] show your name when fellow Yautja examine you."))
+	to_chat(usr, SPAN_NOTICE("[src] will [name_active ? "now" : "no longer"] show your name when fellow Yautja examine you."))
 
 /obj/item/clothing/gloves/yautja/hunter/verb/idchip()
 	set name = "Toggle ID Chip"
@@ -1388,7 +1388,7 @@
 
 	var/obj/item/grab/held_mob = user.get_active_hand()
 	if(!istype(held_mob))
-		log_attack("[key_name_admin(usr)] has unlocked their own bracer.")
+		log_attack("[key_name_admin(user)] has unlocked their own bracer.")
 		toggle_lock_internal(user)
 		return TRUE
 

@@ -1328,6 +1328,12 @@
 	else
 		return ..()
 
+/obj/item/storage/belt/grenade/bugkiller
+
+/obj/item/storage/belt/grenade/bugkiller/fill_preset_inventory()
+	new /obj/item/explosive/grenade/custom/antiweed(src)
+	new /obj/item/explosive/grenade/custom/antiweed(src)
+	new /obj/item/explosive/grenade/custom/antiweed(src)
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
 
@@ -2142,6 +2148,15 @@
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
+
+/obj/item/storage/belt/gun/mateba/commando/full/deathsquad/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba/engraved/tactical())
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/ap(src)
 
 /obj/item/storage/belt/gun/mateba/general
 	name = "luxurious M276 pattern Mateba holster rig"

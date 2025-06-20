@@ -1,0 +1,4 @@
+author: "Generalcamo"
+delete-after: True
+changes:
+  - bugfix: "Autodoc consoles now inherit the skill requirements of their connected machine."

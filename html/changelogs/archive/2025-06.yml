@@ -184,3 +184,34 @@
   - balance: Allows IMP ammo rack to carry filled sandbags
   realforest2001:
   - code_imp: Changed the backend of crew manifest labelling from equipment presets.
+2025-06-18:
+  Zenith, Tsurupeta, dimdimich1996, Crowford, Amory, BOBAMA:
+  - rscadd: added AK-4047 Rifle
+  - rscadd: added SOF insert
+  - rscadd: changed + added many survivors to be completely unique.
+  - code_imp: changed how weather sirens work.
+  - soundadd: added new sounds to AK-4047 and Jungle ambience.
+  - imageadd: added many new sprites for survivors, map objects & map visuals in general.
+  - mapadd: added new northern checkpoint area + small cave area.
+  - maptweak: massively changed Soro's visuals, snow gone, pure jungle + much more
+      UPP theming.
+2025-06-19:
+  Blundir:
+  - rscadd: added wy commando deathsquad variation for admins
+  - balance: returned wy commando ert into rotation, tweaked the gear of it
+  DarkLordCabbage:
+  - qol: SEAtech vendor now comes stocked with a few flashlights
+  - qol: synths now have custom surgery messages, i.e. carbon fibre skeleton instead
+      of bone
+  - bugfix: fixed synth k9s being unable to get their head reattached
+  - code_imp: head reattachment surgery checks for IS_SYNTH instead of a species list
+  Detective-Google:
+  - config: config added for maintainer color, maintainers being anyone with R_PROFILER.
+      this layers above R_ADMIN color and below R_COLOR custom colors.
+  - bugfix: chain gauntlets no longer speed up all preds while sprinting
+  Drathek:
+  - qol: Xeno preference and click drag override are enabled by default for new connects
+  MistChristmas:
+  - bugfix: CIA Skills include Antag for the items they can buy that require it.
+  realforest2001:
+  - rscadd: Added a follow category for people infected with xeno larva.

@@ -1264,6 +1264,20 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Hyperdyne Corporation shoulder patch"
 	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
 
+// Misc Headwear
+
+/datum/gear/civilian/headwear
+	fluff_cost = 2
+	slot = WEAR_HEAD
+
+/datum/gear/civilian/headwear/cowboy_hat
+	display_name = "cowboy hat, brown"
+	path = /obj/item/clothing/head/cowboy
+
+/datum/gear/civilian/headwear/cowboy_hat/light
+	display_name = "cowboy hat, light-brown"
+	path = /obj/item/clothing/head/cowboy/light
+
 // Cheap Civilian shades - colorful!
 
 /datum/gear/civilian/eyewear/bimax_shades

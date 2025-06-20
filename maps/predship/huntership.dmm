@@ -392,7 +392,7 @@
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "ba" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/elder,
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder,
 /turf/open/floor/corsat,
 /area/yautja)
 "bb" = (
@@ -15127,8 +15127,7 @@
 /turf/open/floor/corsat,
 /area/yautja/hangar)
 "ZI" = (
-/obj/structure/machinery/cm_vending/clothing/yautja/elder,
-/obj/structure/machinery/cm_vending/clothing/yautja/elder/right,
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder/right,
 /turf/open/floor/corsat,
 /area/yautja)
 "ZK" = (

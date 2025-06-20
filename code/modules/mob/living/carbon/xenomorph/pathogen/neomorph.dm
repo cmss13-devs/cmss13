@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_9
 
-	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 2
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/neomorph
@@ -26,7 +26,7 @@
 
 	minimap_icon = "neomorph"
 
-/mob/living/carbon/xenomorph/neomorph
+/mob/living/carbon/xenomorph/pathogen/neomorph
 	caste_type = PATHOGEN_CREATURE_NEOMORPH
 	name = PATHOGEN_CREATURE_NEOMORPH
 	desc = "A sleek, fast alien with sharp claws."
@@ -69,10 +69,6 @@
 	speaking_noise = "neo_talk"
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
-
-/mob/living/carbon/xenomorph/neomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	make_pathogen_speaker()
 
 /datum/behavior_delegate/pathogen_base/neomorph
 	name = "Base Neomorph Behavior Delegate"

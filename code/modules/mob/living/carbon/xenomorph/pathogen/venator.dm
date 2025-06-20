@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_5
 
-	attack_delay = 0 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 0
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/venator
@@ -28,7 +28,7 @@
 	minimap_icon = "venator"
 	evolution_allowed = FALSE
 
-/mob/living/carbon/xenomorph/venator
+/mob/living/carbon/xenomorph/pathogen/venator
 	caste_type = PATHOGEN_CREATURE_VENATOR
 	name = PATHOGEN_CREATURE_VENATOR
 	desc = "A wandering ball of death."
@@ -70,10 +70,6 @@
 	mob_size = MOB_SIZE_BIG
 	acid_blood_damage = 0
 	bubble_icon = "pathogenroyal"
-
-/mob/living/carbon/xenomorph/venator/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	make_pathogen_speaker()
 
 /datum/action/xeno_action/activable/tail_stab/pathogen_t3
 	name = "Spike Lash"

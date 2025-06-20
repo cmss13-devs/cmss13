@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
-	attack_delay = 0 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 0
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/brute
@@ -27,7 +27,7 @@
 	minimap_icon = "brute"
 	evolution_allowed = FALSE
 
-/mob/living/carbon/xenomorph/brute
+/mob/living/carbon/xenomorph/pathogen/brute
 	caste_type = PATHOGEN_CREATURE_BRUTE
 	name = PATHOGEN_CREATURE_BRUTE
 	desc = "A lumbering tank on legs."
@@ -71,10 +71,6 @@
 	acid_blood_damage = 0
 	bubble_icon = "pathogenroyal"
 	aura_strength = 3
-
-/mob/living/carbon/xenomorph/brute/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	make_pathogen_speaker()
 
 /datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute
 	name = "Arm Whack"

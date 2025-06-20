@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_8
 
-	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 2
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base
@@ -25,7 +25,7 @@
 
 	minimap_icon = "popper"
 
-/mob/living/carbon/xenomorph/popper
+/mob/living/carbon/xenomorph/pathogen/popper
 	caste_type = PATHOGEN_CREATURE_POPPER
 	name = PATHOGEN_CREATURE_POPPER
 	desc = "A sleek, fast alien with sharp claws."
@@ -72,16 +72,13 @@
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
 	aura_strength = 2
+	counts_for_slots = FALSE
 
-/mob/living/carbon/xenomorph/popper/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	make_pathogen_speaker()
-
-/mob/living/carbon/xenomorph/popper/death(cause, gibbed)
+/mob/living/carbon/xenomorph/pathogen/popper/death(cause, gibbed)
 	. = ..()
 	new /obj/effect/pathogen/spore_cloud(loc)
 
-/mob/living/carbon/xenomorph/popper/start_pulling(atom/movable/AM)
+/mob/living/carbon/xenomorph/pathogen/popper/start_pulling(atom/movable/AM)
 	return
 
 /datum/action/xeno_action/onclick/place_spore_sac
@@ -92,7 +89,7 @@
 	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/place_spore_sac/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/popper = owner
+	var/mob/living/carbon/xenomorph/pathogen/popper = owner
 	if(!popper.check_state())
 		return
 
@@ -166,7 +163,7 @@
 	var/windup_duration = 1 SECONDS
 
 /datum/action/xeno_action/onclick/release_spores/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/popper = owner
+	var/mob/living/carbon/xenomorph/pathogen/popper = owner
 	if(!popper.check_state())
 		return
 
@@ -308,7 +305,7 @@
 	qdel(src)
 
 /datum/hive_status/proc/spawn_as_popper(mob/dead/observer/user, atom/source)
-	var/mob/living/carbon/xenomorph/popper/popper = new /mob/living/carbon/xenomorph/popper(source.loc, null, XENO_HIVE_PATHOGEN)
+	var/mob/living/carbon/xenomorph/pathogen/popper/popper = new /mob/living/carbon/xenomorph/pathogen/popper(source.loc, null, XENO_HIVE_PATHOGEN)
 	user.mind.transfer_to(popper, TRUE)
 	popper.visible_message(SPAN_XENODANGER("A Popper suddenly emerges out of \the [source]!"), SPAN_XENODANGER("You emerge out of \the [source] and awaken from your slumber."))
 	playsound(popper, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)

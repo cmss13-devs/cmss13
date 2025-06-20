@@ -1,21 +1,3 @@
-/datum/caste_datum/var/pathogen_creature = FALSE
-/datum/caste_datum/pathogen
-	minimum_evolve_time = 0
-	pathogen_creature = TRUE
-	language = LANGUAGE_PATHOGEN
-
-/*
-/datum/caste_datum/pathogen/get_minimap_icon()
-	var/image/background = mutable_appearance('icons/mob/pathogen/neo_blips.dmi', minimap_background)
-
-	var/iconstate = minimap_icon ? minimap_icon : "unknown"
-	var/mutable_appearance/icon = image('icons/mob/pathogen/neo_blips.dmi', icon_state = iconstate)
-	icon.appearance_flags = RESET_COLOR
-	background.overlays += icon
-
-	return background
-*/
-
 /datum/admins/var/create_pathogen_creatures_html = null
 /datum/admins/proc/create_pathogen_creatures(mob/user)
 	if(!create_xenos_html)
@@ -34,53 +16,20 @@
 	if(admin_holder)
 		admin_holder.create_pathogen_creatures(usr)
 
+/mob/living/carbon/xenomorph/proc/is_hive_ruler()
+	if(hive && (hive.living_xeno_queen == src))
+		return TRUE
+	return FALSE
 
-/// WEEDS
-/obj/effect/alien/weeds/node/pathogen
-	name = "mycelium blight node"
-	desc = "A weird, pulsating node."
-	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
-	hivenumber = XENO_HIVE_PATHOGEN
+/mob/living/carbon/xenomorph/proc/give_blight_core()
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		give_action(src, /datum/action/xeno_action/activable/create_core)
+		return TRUE
+	return FALSE
 
-/obj/effect/alien/weeds/pathogen
-	name = "mycelium blight"
-	desc = "A mycelium growth of strange origins..."
-	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
-	hivenumber = XENO_HIVE_PATHOGEN
-
-/obj/effect/alien/weeds/weedwall/pathogen
-	name = "mycelium blight"
-	desc = "A mycelium growth of strange origins..."
-	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
-	hivenumber = XENO_HIVE_PATHOGEN
-
-/obj/effect/alien/weeds/weedwall/window/pathogen
-	name = "mycelium blight"
-	desc = "A mycelium growth of strange origins..."
-	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
-	hivenumber = XENO_HIVE_PATHOGEN
-
-/obj/effect/alien/weeds/weedwall/frame/pathogen
-	name = "mycelium blight"
-	desc = "A mycelium growth of strange origins..."
-	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
-	hivenumber = XENO_HIVE_PATHOGEN
-
-/datum/action/xeno_action/onclick/plant_weeds/pathogen
-	name = "Spread Blight (200)"
-	action_icon_state = "plant_weeds"
-	plasma_cost = 200
-	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
-	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 1 SECONDS
-	ability_primacy = XENO_PRIMARY_ACTION_1
-
-	plant_on_semiweedable = TRUE
-	node_type = /obj/effect/alien/weeds/node/pathogen
-
-/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper
-	name = "Spread Blight (100)"
-	plasma_cost = 100
+//####################################################################
+//####################################################################
+//####################################################################
 
 // LANGUAGE SHIT
 /mob/living/carbon/xenomorph/proc/make_pathogen_speaker()
@@ -119,7 +68,84 @@
 
 		C.hivemind_broadcast(message, GLOB.hive_datum[C.hivenumber])
 
+//####################################################################
+//####################################################################
+//####################################################################
 
+/// WEEDS
+/obj/effect/alien/weeds/node/pathogen
+	name = "mycelium blight node"
+	desc = "A weird, pulsating node."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/weeds/pathogen
+	name = "mycelium blight"
+	desc = "A mycelium growth of strange origins..."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/weeds/weedwall/pathogen
+	name = "mycelium blight"
+	desc = "A mycelium growth of strange origins..."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/weeds/weedwall/window/pathogen
+	name = "mycelium blight"
+	desc = "A mycelium growth of strange origins..."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+/obj/effect/alien/weeds/weedwall/frame/pathogen
+	name = "mycelium blight"
+	desc = "A mycelium growth of strange origins..."
+	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
+	hivenumber = XENO_HIVE_PATHOGEN
+
+// Ability
+
+/datum/action/xeno_action/onclick/plant_weeds/pathogen
+	name = "Spread Blight (200)"
+	action_icon_state = "plant_weeds"
+	plasma_cost = 200
+	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 1 SECONDS
+	ability_primacy = XENO_PRIMARY_ACTION_1
+
+	plant_on_semiweedable = TRUE
+	node_type = /obj/effect/alien/weeds/node/pathogen
+
+/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper
+	name = "Spread Blight (100)"
+	plasma_cost = 100
+
+//####################################################################
+//####################################################################
+//####################################################################
+
+/datum/caste_datum/var/pathogen_creature = FALSE
+/datum/caste_datum/pathogen
+	minimum_evolve_time = 0
+	pathogen_creature = TRUE
+	language = LANGUAGE_PATHOGEN
+
+/*
+/datum/caste_datum/pathogen/get_minimap_icon()
+	var/image/background = mutable_appearance('icons/mob/pathogen/neo_blips.dmi', minimap_background)
+
+	var/iconstate = minimap_icon ? minimap_icon : "unknown"
+	var/mutable_appearance/icon = image('icons/mob/pathogen/neo_blips.dmi', icon_state = iconstate)
+	icon.appearance_flags = RESET_COLOR
+	background.overlays += icon
+
+	return background
+*/
+
+//####################################################################
+//####################################################################
+//####################################################################
 
 /datum/behavior_delegate/pathogen_base
 	name = "Base Pathogen Behavior Delegate"
@@ -233,13 +259,190 @@
 	button.icon_state = "template"
 
 
-/mob/living/carbon/xenomorph/proc/is_hive_ruler()
-	if(hive && (hive.living_xeno_queen == src))
-		return TRUE
-	return FALSE
+/mob/living/carbon/xenomorph/pathogen/do_evolve()
+	if(!evolve_checks())
+		return
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(user)
+		to_chat(src, "Release [user] before evolving!")
+		return
 
-/mob/living/carbon/xenomorph/proc/give_blight_core()
-	if(hivenumber == XENO_HIVE_PATHOGEN)
-		give_action(src, /datum/action/xeno_action/activable/create_core)
-		return TRUE
-	return FALSE
+	var/list/castes_available = caste.evolves_to.Copy()
+
+	for(var/caste in castes_available)
+		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
+			castes_available -= caste
+
+	if(!length(castes_available))
+		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))
+		return
+
+	var/castepick
+	if((client.prefs && client.prefs.no_radials_preference) || !hive.evolution_menu_images)
+		castepick = tgui_input_list(src, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", castes_available, theme="hive_status")
+	else
+		var/list/fancy_caste_list = list()
+		for(var/caste in castes_available)
+			fancy_caste_list[caste] = hive.evolution_menu_images[caste]
+
+		castepick = show_radial_menu(src, client?.eye, fancy_caste_list)
+	if(!castepick) //Changed my mind
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
+		return // Message will be handled by component
+
+	var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[castepick]
+	if(caste_datum && caste_datum.minimum_evolve_time > ROUND_TIME)
+		to_chat(src, SPAN_WARNING("The Hive cannot support this caste yet! ([floor((caste_datum.minimum_evolve_time - ROUND_TIME) / 10)] seconds remaining)"))
+		return
+
+	if(!evolve_checks())
+		return
+
+	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
+		if(hardcore)
+			to_chat(src, SPAN_WARNING("Nuh-uhh."))
+			return
+
+		if(SSticker.mode && hive.xeno_queen_timer > world.time)
+			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
+			return
+
+		var/required_plasma = min(500, plasma_max)
+		if(plasma_stored >= required_plasma)
+			if(hive.living_xeno_queen)
+				to_chat(src, SPAN_WARNING("There already is a living Queen."))
+				return
+		else
+			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
+			return
+
+	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
+		if(evolution_stored < evolution_threshold)
+			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
+			return
+
+	var/mob/living/carbon/xenomorph/xeno_type = null
+	xeno_type = GLOB.RoleAuthority.get_caste_by_text(castepick)
+
+	if(isnull(xeno_type))
+		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
+		return
+
+	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
+	var/potential_queens = hive.get_potential_queen_count()
+
+	if(!can_evolve(castepick, potential_queens))
+		return
+	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
+
+	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
+	SPAN_XENONOTICE("We begin to twist and contort."))
+	xeno_jitter(25)
+	evolving = TRUE
+	var/level_to_switch_to = get_vision_level()
+
+	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
+		to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
+		evolving = FALSE
+		return
+
+	evolving = FALSE
+
+	if(!isturf(loc)) //qdel'd or moved into something
+		return
+
+	// subtract the threshold, keep the stored amount
+	evolution_stored -= evolution_threshold
+
+	// don't drop their organ
+	var/obj/item/organ/xeno/organ = locate() in src
+	if(!isnull(organ))
+		qdel(organ)
+
+	//From there, the new xeno exists, hopefully
+	var/mob/living/carbon/xenomorph/new_xeno = new xeno_type(get_turf(src), src)
+	new_xeno.creation_time = creation_time
+
+	if(!istype(new_xeno))
+		//Something went horribly wrong!
+		to_chat(src, SPAN_WARNING("Something went terribly wrong here. Your new xeno is null! Tell a coder immediately!"))
+		stack_trace("Xeno evolution failed: [src] attempted to evolve into \'[castepick]\'")
+		if(new_xeno)
+			qdel(new_xeno)
+		return
+
+	var/area/xeno_area = get_area(new_xeno)
+	if(!should_block_game_interaction(new_xeno) || (xeno_area.flags_atom & AREA_ALLOW_XENO_JOIN))
+		switch(new_xeno.tier) //They have evolved, add them to the slot count IF they are in regular game space
+			if(2)
+				hive.tier_2_xenos |= new_xeno
+			if(3)
+				hive.tier_3_xenos |= new_xeno
+
+	log_game("EVOLVE: [key_name(src)] evolved into [new_xeno].")
+	if(mind)
+		mind.transfer_to(new_xeno)
+	else
+		new_xeno.key = key
+		if(new_xeno.client)
+			new_xeno.client.change_view(GLOB.world_view_size)
+
+	//Regenerate the new mob's name now that our player is inside
+	new_xeno.generate_name()
+	if(new_xeno.client)
+		new_xeno.set_lighting_alpha(level_to_switch_to)
+	if(new_xeno.health - getBruteLoss(src) - getFireLoss(src) > 0) //Cmon, don't kill the new one! Shouldnt be possible though
+		new_xeno.bruteloss = bruteloss //Transfers the damage over.
+		new_xeno.fireloss = fireloss //Transfers the damage over.
+		new_xeno.updatehealth()
+
+	if(plasma_max == 0)
+		new_xeno.plasma_stored = new_xeno.plasma_max
+	else
+		new_xeno.plasma_stored = new_xeno.plasma_max*(plasma_stored/plasma_max) //preserve the ratio of plasma
+
+	new_xeno.built_structures = built_structures.Copy()
+
+	built_structures = null
+
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of [src]."),
+	SPAN_XENODANGER("We emerge in a greater form from the husk of our old body. For the hive!"))
+
+	if(hive.living_xeno_queen && hive.living_xeno_queen.observed_xeno == src)
+		hive.living_xeno_queen.overwatch(new_xeno)
+
+	transfer_observers_to(new_xeno)
+	new_xeno._status_traits = _status_traits
+
+	// Freshly evolved xenos emerge standing.
+	// This resets density and resting status traits.
+	set_body_position(STANDING_UP)
+
+	qdel(src)
+	new_xeno.xeno_jitter(25)
+
+	if (new_xeno.client)
+		new_xeno.client.mouse_pointer_icon = initial(new_xeno.client.mouse_pointer_icon)
+
+	if(new_xeno.mind && GLOB.round_statistics)
+		GLOB.round_statistics.track_new_participant(new_xeno.faction, 0) //so an evolved xeno doesn't count as two.
+	SSround_recording.recorder.track_player(new_xeno)
+
+	// We prevent de-evolved people from being tracked for the rest of the round relating to T1s in order to prevent people
+	// Intentionally de/re-evolving to mess with the stats gathered. We don't track t2/3 because it's a legit strategy to open
+	// With a t1 into drone before de-evoing later to go t1 into another caste once survs are dead/capped
+	if(new_xeno.ckey && !((new_xeno.caste.caste_type in XENO_T1_CASTES) && (new_xeno.ckey in GLOB.deevolved_ckeys) && !(new_xeno.datum_flags & DF_VAR_EDITED)))
+		var/caste_cleaned_key = lowertext(replacetext(castepick, " ", "_"))
+		if(!SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key])
+			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] = 1
+		else
+			SSticker.mode?.round_stats.castes_evolved[caste_cleaned_key] += 1
+
+	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
+
+
+/mob/living/carbon/xenomorph/pathogen/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()

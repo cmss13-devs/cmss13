@@ -36,6 +36,7 @@
 		/obj/item/roller,
 		/obj/item/bodybag,
 		/obj/item/reagent_container/blood,
+		/obj/item/tool/surgery/FixOVein,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
 	required_skill_for_nest_opening = SKILL_MEDICAL
@@ -288,7 +289,7 @@
 	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
 	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
 	new /obj/item/stack/medical/splint/nano(src)
-	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
 	new /obj/item/storage/syringe_case/commando(src)
 	new /obj/item/storage/surgical_case/elite/commando(src)
 	new /obj/item/roller/surgical(src)
@@ -415,7 +416,7 @@
 /obj/item/storage/syringe_case/commando
 
 /obj/item/storage/syringe_case/commando/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/ultrazine( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
 
@@ -608,9 +609,9 @@
 	var/display_maptext = TRUE
 	var/maptext_label
 	maptext_height = 16
-	maptext_width = 16
-	maptext_x = 18
-	maptext_y = 3
+	maptext_width = 24
+	maptext_x = 4
+	maptext_y = 2
 
 	var/base_icon = "pill_canister"
 	var/static/list/possible_colors = list(
@@ -807,7 +808,7 @@
 	set src in usr
 
 	if(src && ishuman(usr))
-		var/str = copytext(reject_bad_text(input(usr,"Label text? (2 CHARACTERS MAXIMUM)", "Set \the [src]'s on-sprite label", "")), 1, 3)
+		var/str = copytext(reject_bad_text(input(usr,"Label text? (3 CHARACTERS MAXIMUM)", "Set \the [src]'s on-sprite label", "")), 1, 4)
 		if(!str || !length(str))
 			to_chat(usr, SPAN_NOTICE("You clear the label off \the [src]."))
 			maptext_label = null

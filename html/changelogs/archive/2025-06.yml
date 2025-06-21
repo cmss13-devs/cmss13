@@ -1,0 +1,240 @@
+2025-06-01:
+  Blundir:
+  - refactor: xeno wound icons have been moved to xeno caste dmi files
+  Nihisohel:
+  - rscadd: You can now attach patches on armor; this might look ugly if you are sleeveless
+      and padless, however.
+  - rscadd: Nearly every exosuit clothing can now hold accessories.
+  - bugfix: Accessories now have a limit to them, typically only 1 but some items
+      can go up to 4.
+  - code_imp: Cleans up the valid accessory lists.
+  - refactor: Defuncts restricted_accessory_slots on clothings for a more intuitive
+      per accessory slot limit dependent on accessory category.
+2025-06-02:
+  Git-Nivrak:
+  - balance: Facehuggers now gib when ghosting
+2025-06-03:
+  BOBAMAx:
+  - bugfix: clf surv skills work now
+  DarkLordCabbage:
+  - spellcheck: Fixes the synth recharge station being referred to as a sleeper in
+      some cases.
+  Drulikar:
+  - bugfix: Fixed a source of nulls being added to GLOB.new_player_list and GLOB.player_list
+  hry-gh:
+  - admin: server operators can now choose to enforce two factor authentication in
+      game for admins
+  matttheficus:
+  - qol: flaying a target with the Ceremonial Dagger now announces and unsets Prey
+      like the Butcher Verb.
+2025-06-04:
+  DarkLordCabbage:
+  - rscdel: Removed CPR'ing synths
+  - qol: You can now use the hand labeler to label crates
+  - bugfix: Prevents an error message  about ejecting an occupant from an auotdoc
+      if there is no occupant.
+  Joelampost:
+  - bugfix: Fixes the area checks for the hunting grounds
+  KornFlaks:
+  - qol: Xeno minimap icons are now shown alongside caste name in hive status
+  - qol: Xeno plasma percentage column is added to the hive status
+  Lagomorphica:
+  - rscadd: a variety of new clothing, patches, and other options in the synthetic
+      loadout menu, moving some from the synthetic vendor to the loadout menu as well
+  - rscadd: most uniforms now have their map specific variants as separate spawnable
+      variants - NOT ALL OF THESE WERE ADDED TO SYNTHETIC. only the currently existing
+      ones (standard marine, comtech, corpsman, MP) were added, however all uniforms
+      with a gamemode skin now have spawnable types with that gamemode skin.
+  Red-byte3D:
+  - qol: Spitter empowered acids (when you spit at somebody and they get the yellow
+      acid) now make sound when you hit them with the spray line.
+  - qol: Shrapnel embeds now have a noise.
+  - qol: A ton of new noises for praetorian pierce, vanguard tail sweep  and bone
+      breaks
+  Venuska1117:
+  - qol: For The Hive! ability countdown now display on action button instead of status
+      panel.
+  Willzadl:
+  - bugfix: Door control buttons can no longer be destroyed by explosives
+  kalazus:
+  - bugfix: fixed king stunning himself by jumping on turrets.
+  zzzmike:
+  - qol: nuke detonation countdown is now called detonation countdown, not "preparation
+      cycle"
+2025-06-05:
+  DarkLordCabbage:
+  - spellcheck: fixed a few typos and grammatical errors in MRE food item descriptions,
+      added some fluff as well.
+  Drathek:
+  - bugfix: Simple mobs and decoys now update away_timer
+  - refactor: Calling parent for Life() is now required as well as other minor Life()
+      refactoring
+  - ui: Ping relay browser will attempt to retry once if a relay errors
+2025-06-06:
+  Drathek:
+  - bugfix: Fixed hauled persons being able to pull stuff and other people being able
+      to pull hauled people
+  - bugfix: Fixed monkeys being able to move while hauled
+  dadlips:
+  - bugfix: infinite money glitch
+  kiVts:
+  - bugfix: fixed an attachment exploit
+2025-06-07:
+  Joelampost:
+  - rscadd: Adds a hard lockout for player who have reached 10 youngblood hours from
+      youngblood.
+  - rscadd: Adds a cooldown for youngblood ERTs (40 minutes).
+  - rscadd: Adds three new youngblood ERTs intended for newer and more experienced
+      players
+2025-06-08:
+  Drathek:
+  - bugfix: Fixed various behaviors regarding applying and removing labels
+  - code_imp: Most labeling now uses tgui_input_text
+  - admin: Most means of removing labels is now logged
+  - admin: Resisting with a weapon while hauled is now attack logged and all attack
+      logs indicating a damage type changed
+  - balance: Reverse bursting no longer gibs the xeno and instead forces a drop using
+      the same probabilities based on health as before
+  - balance: Xenos can no longer tunnel while hauling someone
+  - balance: An additional larva is granted if a nested human bursts
+  - balance: Struggling damage is capped at 35
+  - balance: Nested hosts under stage 4 are stabilized (brute/burn heals if above
+      max health, oxy heals if above 20, bleeding cured)
+  - config: Added extra_larva_per_nested_burst to grant additional larva for nested
+      bursts
+  MemesLauncher:
+  - bugfix: Fix being able to put C4 / Custom C4 / Breaching charges / Non-lethal
+      breaching charges / Plasma breaching charges to dense fog.
+  Willzadl:
+  - rscadd: extra descriptions and lore to many gun magazines
+  - spellcheck: fixed many typos in the descriptions of gun magazines
+  private-tristan:
+  - balance: Medium, RTO, Tanker, Ghillie, Scout, and Pyro armor now have 20 bomb
+      prot (from 15).
+  - balance: Light and Press armor now have 15 bomb prot (from 20).
+  - bugfix: light armor no longer has more bomb armor than medium.
+2025-06-11:
+  stalkerino:
+  - rscadd: makes it so uscm headset (cosmetic) counts as a helmet accessory
+  - rscadd: Helmet rail flashlight is now directional
+2025-06-12:
+  PGrayCS:
+  - bugfix: Vendor briefcases can now be scrolled
+2025-06-13:
+  AI-1CE:
+  - rscadd: Adds extended lore to three brands of cigarettes.
+  DolphinShark20:
+  - balance: Lurkers can no longer evolve whilst invisible
+  - bugfix: Transmuting a strain now performs stance checks like picking a strain
+      checks
+  Drathek:
+  - bugfix: Fixed a cleared label preventing new a label if it was the same as the
+      last label
+  - balance: Monkey hosts now are single bursts.
+  FebrezeNinja:
+  - bugfix: Autodoc no longer locks procedures because of dead patient
+  - bugfix: M10 ammo boxes now craftable
+  - bugfix: Changed ammo box names to match actual size
+  SpypigDev:
+  - bugfix: Groundside operations consoles can now be deleted and replaced without
+      issue
+  - bugfix: Slight tweak to overwatch console ui_status design
+  TheGamerdk:
+  - ui: There's now a 'Show Plasma' toggle in the Hive Status UI to toggle the Plasma
+      column.
+  realforest2001:
+  - rscadd: Added a Weyland-Yutani Intranet Terminal to the CLs office.
+  - maptweak: Re-orders the buttons on the CLs desk to make more sense.
+  sergeant_lemon:
+  - bugfix: Fixed T-shirt and jeans sprites missing pixels
+  stalkerino:
+  - balance: gives io headset supply radio
+  zzzmike:
+  - qol: give hint regarding impending game end due to hivemind collapse
+2025-06-14:
+  Detective-Google:
+  - rscdel: Reverts the jamming system
+  - rscadd: Guns now have a "Second wind" that can be seen in their examine.
+  - rscadd: Spraying an acided gun with an extinguisher will extinguish the acid.
+  - balance: Allowing the acid to finish on the weapon will remove it's "Second wind"
+      and play a click noise.
+  - balance: Once the weapon has lost its "Second wind" it can no longer have future
+      acid sprayed off of it.
+  - rscadd: '"Second wind" applies to explosions from minor to moderate severity,
+      and is only consumed if the weapon would have otherwise been destroyed by the
+      explosion.'
+  - rscadd: acid now tracks the item it is applied to
+  - balance: you can't pick up items with acid on them
+  Drathek:
+  - bugfix: Fixed missing icons for hellhound, predalien, and predalien larva in hive
+      status
+  LiquidPotroh:
+  - rscadd: Xeno can be fed with any type of food
+  realforest2001:
+  - admin: Mentors can now disable their stuff.
+2025-06-15:
+  Drathek:
+  - bugfix: Fixed an exploit allowing hauled to still enter tunnels
+  MemesLauncher:
+  - balance: Enabled the storage of flag/teslas into the construction rig.
+  Red-byte3D:
+  - rscadd: New yautja weapon "Chain Gauntlets"
+  - rscadd: New sprites for "Chain Gauntlets"
+  cuberound:
+  - balance: Allows IMP ammo rack to carry filled sandbags
+  realforest2001:
+  - code_imp: Changed the backend of crew manifest labelling from equipment presets.
+2025-06-18:
+  Zenith, Tsurupeta, dimdimich1996, Crowford, Amory, BOBAMA:
+  - rscadd: added AK-4047 Rifle
+  - rscadd: added SOF insert
+  - rscadd: changed + added many survivors to be completely unique.
+  - code_imp: changed how weather sirens work.
+  - soundadd: added new sounds to AK-4047 and Jungle ambience.
+  - imageadd: added many new sprites for survivors, map objects & map visuals in general.
+  - mapadd: added new northern checkpoint area + small cave area.
+  - maptweak: massively changed Soro's visuals, snow gone, pure jungle + much more
+      UPP theming.
+2025-06-19:
+  Blundir:
+  - rscadd: added wy commando deathsquad variation for admins
+  - balance: returned wy commando ert into rotation, tweaked the gear of it
+  DarkLordCabbage:
+  - qol: SEAtech vendor now comes stocked with a few flashlights
+  - qol: synths now have custom surgery messages, i.e. carbon fibre skeleton instead
+      of bone
+  - bugfix: fixed synth k9s being unable to get their head reattached
+  - code_imp: head reattachment surgery checks for IS_SYNTH instead of a species list
+  Detective-Google:
+  - config: config added for maintainer color, maintainers being anyone with R_PROFILER.
+      this layers above R_ADMIN color and below R_COLOR custom colors.
+  - bugfix: chain gauntlets no longer speed up all preds while sprinting
+  Drathek:
+  - qol: Xeno preference and click drag override are enabled by default for new connects
+  MistChristmas:
+  - bugfix: CIA Skills include Antag for the items they can buy that require it.
+  realforest2001:
+  - rscadd: Added a follow category for people infected with xeno larva.
+2025-06-21:
+  Detective-Google:
+  - bugfix: survivors no longer randomly spawn as synth paramedics
+  Generalcamo:
+  - bugfix: Autodoc consoles now inherit the skill requirements of their connected
+      machine.
+  MeH0y:
+  - balance: loader pamphlet now gives engineering level 1
+  Nihisohel:
+  - rscadd: Yautja capes can now be converted into accessories
+  - bugfix: Yautja clothings can hold more accessories
+  Zenith, AmoryBlaine:
+  - rscadd: Added new civilian default preset with various tweaks to the old ones
+  - rscadd: Added EMT, KMCC Miner & Firefighter survivors to Solaris, LV & Trijent
+  - rscadd: Added random rare item to  /civilian & /civilian/unique roles.
+  - imageadd: added various new apparel sprites and replaced many legacy clothing
+      sprites.
+  - imageadd: added comfy bedrolls and bedsheets for bedrolls.
+  cuberound:
+  - balance: applies 1 second fire delay instead of 2 seconds (same as normal tesla)
+      on micro tesla as intended
+  kiVts:
+  - rscadd: Shooting target on target range should be more useful now.

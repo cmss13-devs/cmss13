@@ -84,6 +84,13 @@
 /obj/item/clothing/shoes/marine/upp/knife
 	spawn_item_type = /obj/item/attachable/bayonet/upp
 
+/obj/item/clothing/shoes/marine/upp/black
+	icon_state = "marine"
+	item_state = "marine"
+
+/obj/item/clothing/shoes/marine/upp/black/knife
+	spawn_item_type = /obj/item/attachable/bayonet/upp
+
 /obj/item/clothing/shoes/marine/joe
 	name = "biohazard boots"
 	desc = "A pair of somewhat cheaply made biohazard boots. Tomorrow, Together."
@@ -194,6 +201,13 @@
 	item_state = "cbrn"
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	spawn_item_type = /obj/item/attachable/bayonet
+
+/obj/item/clothing/shoes/marine/cbrn_non_armored
+	name = "\improper M2 MOPP boots"
+	desc = "M2 MOPP boots are designed to shield the wearer from contact with hazardous substances and potential infection vectors in contaminated environments. These older boots offer basic resistance to punctures and environmental threats, but lack the advanced durability and radiation shielding of later models. Users should inspect these boots regularly for signs of wear or damage."
+	icon_state = "cbrn"
+	item_state = "cbrn"
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/corporate

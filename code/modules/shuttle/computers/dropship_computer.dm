@@ -314,6 +314,7 @@
 	if(!dropship_control_lost)
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
+		update_icon()
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		RegisterSignal(lockdown_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost))
 		RegisterSignal(lockdown_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won))
@@ -346,6 +347,14 @@
 			return
 		hijack(xeno)
 		return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/update_icon()
+	. = ..()
+	if(icon_state == "console") // someday, replace this with a better check
+		if(dropship_control_lost)
+			icon_state = "[initial(icon_state)]-locked"
+		else
+			icon_state = initial(icon_state)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user, force = FALSE)
 	// select crash location
@@ -411,6 +420,7 @@
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 	dropship_control_lost = FALSE
 	UnregisterSignal(lockdown_minesweeper, list(COMSIG_MINESWEEPER_LOST, COMSIG_MINESWEEPER_WON))
+	update_icon()
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)

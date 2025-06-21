@@ -53,6 +53,7 @@
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
+	var/list/infected = list()
 	var/list/ert_members = list()
 	var/list/upp = list()
 	var/list/clf = list()
@@ -148,7 +149,7 @@
 					for(var/key in icon)
 						icon = key
 						break
-				if(id_card.minimap_icon_override)
+				if(id_card?.minimap_icon_override)
 					icon = id_card.minimap_icon_override
 				if(human.rank_override)
 					icon = human.rank_override
@@ -165,6 +166,9 @@
 
 				if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
+
+				if(human.status_flags & XENO_HOST)
+					infected += list(serialized)
 
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)
@@ -208,6 +212,7 @@
 	data["marines"] = marines
 	data["survivors"] = survivors
 	data["xenos"] = xenos
+	data["infected"] = infected
 	data["ert_members"] = ert_members
 	data["upp"] = upp
 	data["clf"] = clf

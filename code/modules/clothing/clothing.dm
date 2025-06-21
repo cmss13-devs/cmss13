@@ -81,6 +81,7 @@
 	qdel(src)
 
 /obj/item/clothing/attack_self(mob/user)
+	. = ..()
 	if(can_become_accessory)
 		convert_to_accessory(user)
 

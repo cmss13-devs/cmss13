@@ -167,6 +167,9 @@
 	var/last_healed = 0
 	var/last_attempt = 0 // logs time of last attempt to prevent spam. if you want to destroy it, you must commit.
 
+	/// Set to TRUE when being destroyed by the pathogen creatures for relocation.
+	var/blight_dissovling = FALSE
+
 	var/mob/living/carbon/xenomorph/overmind_mob
 	/// What was the name of the creature now acting as overmind?
 	var/list/overmind_stored_stuff = list()
@@ -230,23 +233,16 @@
 			admin_request_overmind(attacking_xeno)
 			return XENO_NO_DELAY_ACTION
 
-	if(attacking_xeno.a_intent != INTENT_HELP && attacking_xeno.can_destroy_special() && attacking_xeno.hivenumber == linked_hive.hivenumber)
+	if(!overmind_mob && attacking_xeno.a_intent != INTENT_HELP && attacking_xeno.can_destroy_special() && attacking_xeno.hivenumber == linked_hive.hivenumber)
 		if(last_attempt + 6 SECONDS > world.time)
-			to_chat(attacking_xeno, SPAN_WARNING("We have attempted to destroy \the [src] too recently! Wait a bit!")) // no spammy
+			to_chat(attacking_xeno, SPAN_WARNING("We have attempted to dissolve \the [src] too recently! Wait a bit!")) // no spammy
 			return XENO_NO_DELAY_ACTION
 
 		else if(warn && world.time > XENOMORPH_PRE_SETUP_CUTOFF)
-			if((alert(attacking_xeno, "Are we sure that you want to destroy the hive core? (There will be a 5 minute cooldown before you can build another one.)", , "Yes", "No") != "Yes"))
+			if((alert(attacking_xeno, "Are you sure that you want to dissolve the blight core?", , "Yes", "No") != "Yes"))
 				return XENO_NO_DELAY_ACTION
 
-			INVOKE_ASYNC(src, PROC_REF(startDestroying), attacking_xeno)
-			return XENO_NO_DELAY_ACTION
-
-		else if(world.time < XENOMORPH_PRE_SETUP_CUTOFF)
-			if((alert(attacking_xeno, "Are we sure that we want to remove the hive core? No cooldown will be applied.", , "Yes", "No") != "Yes"))
-				return XENO_NO_DELAY_ACTION
-
-			INVOKE_ASYNC(src, PROC_REF(startDestroying), attacking_xeno)
+			INVOKE_ASYNC(src, PROC_REF(dissolve), attacking_xeno)
 			return XENO_NO_DELAY_ACTION
 
 	if(linked_hive)
@@ -256,20 +252,21 @@
 		. = ..()
 
 		if(last_attacked_message < world.time && current_health > health)
-			xeno_message(SPAN_XENOANNOUNCE("The hive core is under attack!"), 2, linked_hive.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("The blight core is under attack!"), 2, linked_hive.hivenumber)
 			last_attacked_message = world.time + next_attacked_message
 	else
 		. = ..()
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/Destroy()
 	if(linked_hive)
-		visible_message(SPAN_XENOHIGHDANGER("The resin roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
+		visible_message(SPAN_XENOHIGHDANGER("The mycelial roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
 		linked_hive.hive_location = null
 		if(world.time < XENOMORPH_PRE_SETUP_CUTOFF)
 			. = ..()
 			return
-		linked_hive.hivecore_cooldown = TRUE
-		INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
+		if(!blight_dissovling)
+			linked_hive.hivecore_cooldown = TRUE
+			INVOKE_ASYNC(src, PROC_REF(cooldownFinish),linked_hive) // start cooldown
 
 	if(overmind_mob)
 		unset_overmind()
@@ -277,22 +274,24 @@
 	SSminimaps.remove_marker(src)
 	. = ..()
 
-/obj/effect/alien/resin/special/pylon/pathogen_core/proc/startDestroying(mob/living/carbon/xenomorph/M)
-	xeno_message(SPAN_XENOANNOUNCE("[M] is destroying \the [src]!"), 3, linked_hive.hivenumber)
-	visible_message(SPAN_DANGER("[M] starts destroying \the [src]!"))
+/obj/effect/alien/resin/special/pylon/pathogen_core/proc/dissolve(mob/living/carbon/xenomorph/dissolver)
+	xeno_message(SPAN_XENOANNOUNCE("[dissolver] is dissolving \the [src]!"), 3, linked_hive.hivenumber)
+	visible_message(SPAN_DANGER("[dissolver] starts dissolving \the [src]!"))
 	last_attempt = world.time //spamcheck
-	if(!do_after(M, 5 SECONDS , INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(M,SPAN_WARNING("You stop destroying \the [src]."))
-		visible_message(SPAN_WARNING("[M] stops destroying \the [src]."))
+	if(!do_after(dissolver, 5 SECONDS , INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+		to_chat(dissolver,SPAN_WARNING("You stop dissolving \the [src]."))
+		visible_message(SPAN_WARNING("[dissolver] stops dissolving \the [src]."))
 		last_attempt = world.time // update the spam check
 		return XENO_NO_DELAY_ACTION
+	blight_dissovling = TRUE
+	give_action(dissolver, /datum/action/xeno_action/activable/create_core)
 	qdel(src)
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/cooldownFinish(datum/hive_status/linked_hive)
 	sleep(HIVECORE_COOLDOWN)
 	if(linked_hive.hivecore_cooldown) // check if its true so we don't double set it.
 		linked_hive.hivecore_cooldown = FALSE
-		xeno_message(SPAN_XENOANNOUNCE("The weeds have recovered! A new hive core can be built!"), 3, linked_hive.hivenumber)
+		xeno_message(SPAN_XENOANNOUNCE("The weeds have recovered! A new blight core can be built!"), 3, linked_hive.hivenumber)
 	else
 		log_admin("Hivecore cooldown reset proc aborted due to hivecore cooldown var being set to false before the cooldown has finished!")
 		// Tell admins that this condition is reached so they know what has happened if it fails somehow

@@ -7,7 +7,6 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 	needs_power = FALSE
-	var/override_being_removed = FALSE
 
 	// Admin disabled
 	var/disabled = FALSE
@@ -21,6 +20,13 @@
 
 	// Landing zones which can be used
 	var/compatible_landing_zones = list()
+
+	///a minesweeper game PO plays if DS is locked
+	var/obj/structure/machinery/computer/arcade/minesweeper/lockdown_minesweeper
+	///each cleared field equals to 30 (score)seconds cleared, at 300 score shuttle is unlocked.
+	var/minesweeper_score = 0
+	///fluff components the dropship has, each cleared field gets one of these clared.
+	var/list/dropship_components = list("Left engine controller", "Right engine controller", "Flight panel", "Surface controls", "Security controls", "Hydraulics controls", "Fuel distribution", "Autopilot controls", "Weapons controls", "APU")
 
 	// If the computer is on the dropship or remotely accessing it
 	var/is_remote = FALSE
@@ -42,6 +48,10 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/Initialize(mapload, ...)
 	. = ..()
 	compatible_landing_zones = get_landing_zones()
+	lockdown_minesweeper = new(src)
+	lockdown_minesweeper.quiet_game = TRUE
+	lockdown_minesweeper.name = "Dropship Troubleshooting"
+	//lockdown_minesweeper.loc = src
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Destroy()
 	. = ..()
@@ -184,30 +194,10 @@
 			to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt."))
 			return
 		var/remaining_time = timeleft(door_control_cooldown) / 10
-		to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt. In large text it says the lockout will be automatically removed in [remaining_time] seconds."))
+		to_chat(user, SPAN_WARNING("The shuttle is not responding and all systems appear offline. In large text it says the lockout will be automatically removed in [remaining_time] seconds."))
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 			return
-		if(user.action_busy || override_being_removed)
-			return
-		to_chat(user, SPAN_NOTICE("You start to remove the lockout."))
-		override_being_removed = TRUE
-		while(remaining_time > 20)
-			if(!do_after(user, 20 SECONDS, INTERRUPT_ALL|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE, numticks = 20))
-				to_chat(user, SPAN_WARNING("You fail to remove the lockout!"))
-				override_being_removed = FALSE
-				return
-			if(!dropship_control_lost)
-				to_chat(user, SPAN_NOTICE("The lockout is already removed."))
-				break
-			remaining_time = timeleft(door_control_cooldown) / 10 - 20
-			if(remaining_time > 0)
-				to_chat(user, SPAN_NOTICE("You partially bypass the lockout, only [remaining_time] seconds left."))
-				door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), remaining_time SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
-	override_being_removed = FALSE
-	if(dropship_control_lost)
-		remove_door_lock()
-		to_chat(user, SPAN_NOTICE("You successfully removed the lockout!"))
-		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+		lockdown_minesweeper.tgui_interact(user)
 
 	if(!shuttle.is_hijacked)
 		tgui_interact(user)
@@ -264,6 +254,26 @@
 			to_chat(xeno, "The shuttle is launching.")
 			return
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/minesweeper_lost(source, mob/user)
+	to_chat(user, SPAN_WARNING("The controls lock down for 10 seconds as you make a mistake."))
+
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/proc/minesweeper_won(source, mob/user)
+	var/picked_component = pick(dropship_components)
+	LAZYREMOVE(dropship_components, picked_component)
+	to_chat(user, SPAN_WARNING("You [pick("try to ", "attempt ", "succesfully ", "")]fix some of the issues as [picked_component] [pick("goes back online!", "starts responding!", "start to produce sensible output!", "begins to work!")]"))
+	minesweeper_score += 30
+	if(minesweeper_score == 60)
+		to_chat(user, SPAN_WARNING("Half way there!"))
+	if(minesweeper_score >= 120)
+		user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+			SPAN_BOLDWARNING("You have successfully taken back the control over the dropshisp."))
+		ui_interact(user)
+		dropship_components = initial(dropship_components)
+		minesweeper_score = 0
+		remove_door_lock()
+		playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
+
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/attack_alien(mob/living/carbon/xenomorph/xeno)
 	// if the shuttleid is null or the shuttleid references a shuttle that has been removed from play, pick one
@@ -304,6 +314,8 @@
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+		RegisterSignal(lockdown_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost))
+		RegisterSignal(lockdown_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won))
 		if(GLOB.almayer_orbital_cannon)
 			GLOB.almayer_orbital_cannon.is_disabled = TRUE
 			addtimer(CALLBACK(GLOB.almayer_orbital_cannon, TYPE_PROC_REF(/obj/structure/orbital_cannon, enable)), 10 MINUTES, TIMER_UNIQUE)
@@ -391,6 +403,7 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	if(door_control_cooldown)
 		deltimer(door_control_cooldown)
+		UnregisterSignal(lockdown_minesweeper, list(COMSIG_MINESWEEPER_LOST, COMSIG_MINESWEEPER_WON))
 		door_control_cooldown = null
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.is_hijacked)

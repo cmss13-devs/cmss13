@@ -6,7 +6,7 @@
 #define EVACUATION_TIME_LOCK 1 HOURS
 #define DISTRESS_TIME_LOCK 6 MINUTES
 #define SHUTTLE_TIME_LOCK 15 MINUTES
-#define SHUTTLE_LOCK_COOLDOWN 10 MINUTES
+#define SHUTTLE_LOCK_COOLDOWN 15 MINUTES
 #define MONORAIL_LOCK_COOLDOWN 3 MINUTES
 #define SHUTTLE_LOCK_TIME_LOCK 1 MINUTES
 #define EVACUATION_AUTOMATIC_DEPARTURE (10 MINUTES) //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.

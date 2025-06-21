@@ -14,10 +14,17 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	var/shuttle_type = 0
 	var/skip_time_lock = 0 // Allows admins to var edit the time lock away.
 	var/obj/structure/dropship_equipment/selected_equipment //the currently selected equipment installed on the shuttle this console controls.
+	///a minesweeper game PO plays if alamo is locked
+	var/obj/structure/machinery/computer/arcade/minesweeper/lockdown_minesweeper
+	///each cleared field equals to 30 (score)seconds cleared, at 300 score shuttle is unlocked.
+	var/minesweeper_score = 0
+	///fluff components the dropship has, each cleared field gets one of these clared.
+	var/list/dropship_components = list("left engine controller", "right engine controller", "flight panel", "surface controls", "security controls", "hydraulics controls", "fuel distribution", "autopilot controls", "weapons controls", "APU")
 	var/list/shuttle_equipments = list() //list of the equipments on the shuttle this console controls
 	var/can_abort_flyby = TRUE
 	var/abort_timer = 100 //10 seconds
 	var/link = 0 // Does this terminal activate the transport system?
+
 
 	///Has it been admin-disabled?
 	var/disabled = FALSE
@@ -27,6 +34,12 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 /obj/structure/machinery/computer/shuttle_control/Initialize()
 	. = ..()
 	GLOB.shuttle_controls += src
+	lockdown_minesweeper = new(src)
+	lockdown_minesweeper.quiet_game = TRUE
+	lockdown_minesweeper.name = "Dropship Troubleshooting"
+	//lockdown_minesweeper.loc = src
+	RegisterSignal(lockdown_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost))
+	RegisterSignal(lockdown_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won))
 
 /obj/structure/machinery/computer/shuttle_control/Destroy()
 	GLOB.shuttle_controls -= src
@@ -80,15 +93,9 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		if(shuttle.queen_locked)
 			if(onboard && skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on [src]."),
-					SPAN_NOTICE("You try to take back the control over the shuttle. It will take around 3 minutes."))
-				if(do_after(user, 3 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-					shuttle.last_locked = world.time
-					shuttle.queen_locked = 0
-					shuttle.last_door_override = world.time
-					shuttle.door_override = 0
-					user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
-						SPAN_NOTICE("You have successfully taken back the control over the dropship."))
-					ui_interact(user)
+					SPAN_NOTICE("You try to take back the control over the shuttle. It will take some time..."))
+				lockdown_minesweeper.tgui_interact(user)
+
 				return
 			else
 				if(world.time < shuttle.last_locked + SHUTTLE_LOCK_COOLDOWN)
@@ -347,6 +354,29 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if(unacidable)
 		return //unacidable shuttle consoles are also immune to explosions.
 	..()
+
+
+/obj/structure/machinery/computer/shuttle_control/proc/minesweeper_lost(mob/user)
+	var/datum/shuttle/ferry/shuttle = get_shuttle()
+	to_chat(user, SPAN_WARNING("The controls lock down for 10 seconds as you make a mistake."))
+
+
+/obj/structure/machinery/computer/shuttle_control/proc/minesweeper_won(mob/user)
+	var/datum/shuttle/ferry/shuttle = get_shuttle()
+	var/picked_component = pick(dropship_components)
+	LAZYREMOVE(dropship_components, picked_component)
+	to_chat(user, SPAN_BOLDNOTICE("You [pick("try to ", "attempt ", "succesfully ", "")]fix some of the issues as [picked_component] [pick("goes back online", "starts responding", "start to produce sensible output", "begins to work")]"))
+	minesweeper_score += 30
+	if(minesweeper_score >= 90)
+		shuttle.last_locked = world.time
+		shuttle.queen_locked = 0
+		shuttle.last_door_override = world.time
+		shuttle.door_override = 0
+		user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
+			SPAN_BOLDWARNING("You have successfully taken back the control over the dropship."))
+		ui_interact(user)
+		dropship_components = initial(dropship_components)
+		minesweeper_score = 0
 
 
 

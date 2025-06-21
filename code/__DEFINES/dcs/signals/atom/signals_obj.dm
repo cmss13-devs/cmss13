@@ -64,3 +64,9 @@
 // from /obj/item/device/binoculars/range/designator/acquire_target()
 #define COMSIG_DESIGNATOR_LASE "comsig_designator_lase"
 #define COMSIG_DESIGNATOR_LASE_OFF "comsig_designator_lase_off"
+
+//from /obj/structure/machinery/computer/arcade/minesweeper/proc/lose_game()
+#define COMSIG_MINESWEEPER_LOST "comsig_minesweeper_won"
+
+//from /obj/structure/machinery/computer/arcade/minesweeper/proc/check_win_condition()
+#define COMSIG_MINESWEEPER_WON "comsig_minesweeper_lost"

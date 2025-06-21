@@ -254,7 +254,6 @@
 			for(var/columns in 1 to field_boundaries[1])
 				for(var/rows in 1 to field_boundaries[2])
 					if(field[columns][rows]["unique_cell_id"] == params["id"])
-						//to_world("matched cell at [field[columns][rows]["unique_cell_id"]] ")
 						if(field[columns][rows]["state"] != CELL_CLOSED)
 							return
 						open_cell(columns, rows, ui.user)
@@ -274,7 +273,7 @@
 			else
 				if(!quiet_game)
 					to_chat(ui.user, SPAN_WARNING("You have to wait before forfeiting this field again."))
-	playsound(loc, get_sfx("keyboard"), 10, 1)
+	playsound(ui.user, get_sfx("keyboard"), 10, 1)
 
 /obj/structure/machinery/computer/arcade/minesweeper/ui_data(mob/user)
 	. = ..()
@@ -300,11 +299,10 @@
 			for(var/adjacent_cell_rows in 1 to field_boundaries[2])
 				if(field[adjacent_cell_collumn][adjacent_cell_rows]["unique_cell_id"] in adjacent_fields)
 					if(rows - adjacent_cell_rows  > 1 || rows - adjacent_cell_rows < -1)
-						//to_world("skipped [field[adjacent_cell_collumn][adjacent_cell_rows]["unique_cell_id"]] because it wasnt bordering")
 						continue
 					if(field[adjacent_cell_collumn][adjacent_cell_rows]["cell_type"] == LANDMINE || field[adjacent_cell_collumn][adjacent_cell_rows]["state"] == CELL_OPEN )
 						continue //dont want to auto open a landmine or get infinite loop lmao
-					open_cell(adjacent_cell_collumn, adjacent_cell_rows)//recursive open a
+					open_cell(adjacent_cell_collumn, adjacent_cell_rows)//recursive open
 	if(field[columns][rows]["cell_type"] == LANDMINE)
 		lose_game(user)
 
@@ -354,7 +352,6 @@
 					break
 		picked_cell["cell_type"] = LANDMINE
 		increment_neighbour_cells(picked_cell["unique_cell_id"], picked_row)
-		to_world("planted mine at [picked_cell["unique_cell_id"]]")
 
 /obj/structure/machinery/computer/arcade/minesweeper/proc/increment_neighbour_cells(cell_id, origin_row)
 	var/list/cells_to_increment = list(cell_id-diagonal_spot, cell_id-diagonal_spot+1, cell_id-diagonal_spot+2, cell_id-1, cell_id+1, cell_id+diagonal_spot-1, cell_id+diagonal_spot-2, cell_id+diagonal_spot)
@@ -362,14 +359,12 @@
 		for(var/rows in 1 to field_boundaries[2])
 			if(field[columns][rows]["unique_cell_id"] in cells_to_increment)
 				if(origin_row - rows > 1 ||origin_row  - rows < -1)
-					//to_world("skipped [field[columns][rows]["unique_cell_id"]] because it wasnt bordering")
 					continue
 				if(field[columns][rows]["cell_type"] == CLEAR)
 					field[columns][rows]["cell_type"] = 0
 				if(field[columns][rows]["cell_type"] == LANDMINE)
 					continue
 				field[columns][rows]["cell_type"]++
-				//to_world("incremented [field[columns][rows]["unique_cell_id"]] ID by 1 and is currently at:[field[columns][rows]["cell_type"]]")
 
 /obj/structure/machinery/computer/arcade/minesweeper/proc/initiate_list()
 	var/list/temp_field = new/list(field_boundaries[1],field_boundaries[2])

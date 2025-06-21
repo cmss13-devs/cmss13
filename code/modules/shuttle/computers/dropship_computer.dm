@@ -193,10 +193,10 @@
 		if(shuttle.is_hijacked)
 			to_chat(user, SPAN_WARNING("The shuttle is not responding due to an unauthorized access attempt."))
 			return
-		var/remaining_time = timeleft(door_control_cooldown) / 10
-		to_chat(user, SPAN_WARNING("The shuttle is not responding and all systems appear offline. In large text it says the lockout will be automatically removed in [remaining_time] seconds."))
+		to_chat(user, SPAN_WARNING("The shuttle is not responding and all systems appear offline."))
 		if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
 			return
+		to_chat(user, SPAN_WARNING("You start to troubleshoot and restart all the systems..."))
 		lockdown_minesweeper.tgui_interact(user)
 
 	if(!shuttle.is_hijacked)
@@ -255,19 +255,20 @@
 			return
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/minesweeper_lost(source, mob/user)
-	to_chat(user, SPAN_WARNING("The controls lock down for 10 seconds as you make a mistake."))
+	to_chat(user, SPAN_WARNING("The controls lock down for 10 seconds as they reset..."))
 
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/minesweeper_won(source, mob/user)
 	var/picked_component = pick(dropship_components)
 	LAZYREMOVE(dropship_components, picked_component)
 	to_chat(user, SPAN_WARNING("You [pick("try to ", "attempt ", "succesfully ", "")]fix some of the issues as [picked_component] [pick("goes back online!", "starts responding!", "start to produce sensible output!", "begins to work!")]"))
+	to_chat(user, SPAN_NOTICE("Loading next portion in 10 seconds..."))
 	minesweeper_score += 30
 	if(minesweeper_score == 60)
 		to_chat(user, SPAN_WARNING("Half way there!"))
 	if(minesweeper_score >= 120)
 		user.visible_message(SPAN_NOTICE("[src] blinks with blue lights."),
-			SPAN_BOLDWARNING("You have successfully taken back the control over the dropshisp."))
+			SPAN_BOLDWARNING("You have successfully taken back the control over the dropship!"))
 		ui_interact(user)
 		dropship_components = initial(dropship_components)
 		minesweeper_score = 0
@@ -403,13 +404,13 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	if(door_control_cooldown)
 		deltimer(door_control_cooldown)
-		UnregisterSignal(lockdown_minesweeper, list(COMSIG_MINESWEEPER_LOST, COMSIG_MINESWEEPER_WON))
 		door_control_cooldown = null
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(shuttle.is_hijacked)
 		return
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 	dropship_control_lost = FALSE
+	UnregisterSignal(lockdown_minesweeper, list(COMSIG_MINESWEEPER_LOST, COMSIG_MINESWEEPER_WON))
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)

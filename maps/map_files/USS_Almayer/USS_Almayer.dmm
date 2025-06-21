@@ -11723,6 +11723,13 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/securestorage)
+"aDS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/hanger)
 "aDT" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
@@ -25038,6 +25045,15 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bjT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/hanger)
 "bjU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/node_s_w,
@@ -25708,6 +25724,13 @@
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/offices)
+"blo" = (
+/obj/structure/machinery/light,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/hanger)
 "blp" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -25736,6 +25759,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/cryo_cells)
+"blr" = (
+/obj/structure/machinery/light,
+/obj/structure/barricade/handrail{
+	dir = 4;
+	layer = 3.1;
+	pixel_x = 1
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/hanger)
 "bls" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
@@ -163288,29 +163320,29 @@ aJh
 aJh
 aBf
 aBf
-baA
-amY
-and
-and
-and
-and
-and
-and
-bcf
-bcf
-bcf
-bcf
-bcf
-bcf
-bcf
-and
-bcf
-bcf
-bcf
-bcf
 and
 amY
-baA
+and
+and
+and
+and
+and
+and
+bcf
+bcf
+bcf
+bcf
+bcf
+bcf
+bcf
+and
+bcf
+bcf
+bcf
+bcf
+and
+amY
+and
 aBf
 aBf
 bwT
@@ -165142,7 +165174,7 @@ aJh
 bnP
 aBf
 baA
-aJd
+blo
 eXq
 aho
 aho
@@ -165370,7 +165402,7 @@ acL
 acL
 acL
 bbU
-aBf
+aDS
 baA
 baA
 bwT
@@ -165576,7 +165608,7 @@ and
 bcf
 bcf
 bbW
-aBf
+bjT
 aBf
 baA
 bwT
@@ -165760,7 +165792,7 @@ aJh
 bnQ
 baA
 baA
-aJd
+blr
 eXq
 aho
 aho
@@ -167201,7 +167233,7 @@ aJh
 aJh
 bnP
 baA
-baA
+bhv
 aBc
 aDe
 aDe
@@ -167305,7 +167337,7 @@ byA
 bnP
 aBf
 baA
-baA
+bce
 bnG
 bce
 bma

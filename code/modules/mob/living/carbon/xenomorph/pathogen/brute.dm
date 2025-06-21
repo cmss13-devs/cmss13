@@ -72,6 +72,10 @@
 	bubble_icon = "pathogenroyal"
 	aura_strength = 3
 
+/mob/living/carbon/xenomorph/pathogen/brute/Initialize()
+	. = ..()
+	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
+
 /datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute
 	name = "Arm Whack"
 	blunt_stab = TRUE

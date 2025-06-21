@@ -835,7 +835,7 @@
 	if(isnull(new_xeno))
 		return FALSE
 
-	if(!SSticker.mode.transfer_xeno(xeno_client.mob, new_xeno))
+	if(!SSticker.mode.transfer_xeno(xeno_client.mob, new_xeno, TRUE))
 		qdel(new_xeno)
 		return FALSE
 
@@ -874,7 +874,7 @@
 	if(isnull(new_xeno))
 		return FALSE
 
-	if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
+	if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno, TRUE))
 		qdel(new_xeno)
 		return FALSE
 	new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly burrows out of \the [spawning_turf]!"),

@@ -391,8 +391,6 @@
 		populate_field_with_mines()
 
 #undef	FIELD_SMALL
-#undef	FIELD_MEDIUM
-#undef	FIELD_LARGE
 #undef	LANDMINE
 #undef	CLEAR
 #undef	CELL_CLOSED

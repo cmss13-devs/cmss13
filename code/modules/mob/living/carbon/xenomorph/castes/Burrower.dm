@@ -361,6 +361,10 @@
 		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
 		return
 
+	if(SSticker?.mode?.hardcore)
+		to_chat(xenomorph, SPAN_XENOWARNING("A certain presence is preventing us from digging tunnels here."))
+		return
+
 	if(!turf.can_dig_xeno_tunnel() || !is_ground_level(turf.z))
 		to_chat(xenomorph, SPAN_XENOWARNING("We scrape around, but we can't seem to dig through that kind of floor."))
 		return

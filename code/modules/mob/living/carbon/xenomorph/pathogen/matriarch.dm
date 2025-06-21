@@ -45,7 +45,9 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
 		/datum/action/xeno_action/onclick/rend, // Macro 1
-		/datum/action/xeno_action/activable/blight_wave, // Macro 2
+		/datum/action/xeno_action/activable/rav_spikes, // Macro 2
+		/datum/action/xeno_action/onclick/spike_shed, // Macro 3
+		/datum/action/xeno_action/activable/blight_wave, // Macro 4
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
@@ -72,10 +74,122 @@
 	bubble_icon = "pathogenroyal"
 	counts_for_slots = FALSE
 
+/mob/living/carbon/xenomorph/pathogen/matriarch/Initialize()
+	. = ..()
+	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
+
+/mob/living/carbon/xenomorph/pathogen/matriarch/proc/check_block(mob/queen, turf/new_loc)
+	SIGNAL_HANDLER
+	if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
+		return
+	for(var/mob/living/carbon/xenomorph/xeno in new_loc.contents)
+		if(xeno.stat == DEAD)
+			continue
+		if(xeno.pass_flags.flags_pass & (PASS_MOB_THRU_XENO|PASS_MOB_THRU) || xeno.flags_pass_temp & PASS_MOB_THRU)
+			continue
+		if(xeno.hivenumber == hivenumber && !(queen.client?.prefs?.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF))
+			xeno.KnockDown((5 DECISECONDS) / GLOBAL_STATUS_MULTIPLIER)
+			playsound(src, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 
 
 /datum/behavior_delegate/pathogen_base/matriarch
 	name = "Base Matriarch Behavior Delegate"
+
+	// Shard config
+	var/max_shards = 300
+	var/shard_gain_onlife = 5
+	var/shards_per_projectile = 10
+	var/shards_per_slash = 15
+	var/armor_buff_per_fifty_shards = 2.50
+	var/shard_lock_duration = 150
+	var/shard_lock_speed_mod = 0.45
+
+	// Shard state
+	var/shards = 0
+	var/shards_locked = FALSE //are we locked at 0 shards?
+
+	// Armor buff state
+	var/times_armor_buffed = 0
+
+/datum/behavior_delegate/pathogen_base/matriarch/append_to_stat()
+	. = list()
+	. += "Bone Shards: [shards]/[max_shards]"
+	. += "Shards Armor Bonus: [times_armor_buffed*armor_buff_per_fifty_shards]"
+
+/datum/behavior_delegate/pathogen_base/matriarch/proc/lock_shards()
+	if (!bound_xeno)
+		return
+
+	to_chat(bound_xeno, SPAN_XENODANGER("You have shed your spikes and cannot gain any more for [shard_lock_duration/10] seconds!"))
+
+	bound_xeno.speed_modifier -= shard_lock_speed_mod
+	bound_xeno.recalculate_speed()
+
+	shards = 0
+	shards_locked = TRUE
+	addtimer(CALLBACK(src, PROC_REF(unlock_shards)), shard_lock_duration)
+
+/datum/behavior_delegate/pathogen_base/matriarch/proc/unlock_shards()
+	if (!bound_xeno)
+		return
+
+	to_chat(bound_xeno, SPAN_XENODANGER("You feel your ability to gather shards return!"))
+
+	bound_xeno.speed_modifier += shard_lock_speed_mod
+	bound_xeno.recalculate_speed()
+	shards_locked = FALSE
+
+// Return true if we have enough shards, false otherwise
+/datum/behavior_delegate/pathogen_base/matriarch/proc/check_shards(amount)
+	if (!amount)
+		return FALSE
+	else
+		return (shards >= amount)
+
+/datum/behavior_delegate/pathogen_base/matriarch/proc/use_shards(amount)
+	if (!amount)
+		return
+	shards = max(0, shards - amount)
+
+/datum/behavior_delegate/pathogen_base/matriarch/on_life()
+
+	if (!shards_locked)
+		shards = min(max_shards, shards + shard_gain_onlife)
+
+	var/armor_buff_count = shards/50 //0-6
+	bound_xeno.armor_modifier -= times_armor_buffed * armor_buff_per_fifty_shards
+	bound_xeno.armor_modifier += armor_buff_count * armor_buff_per_fifty_shards
+	bound_xeno.recalculate_armor()
+	times_armor_buffed = armor_buff_count
+
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+	var/percentage_shards = round((shards / max_shards) * 100, 10)
+	if(percentage_shards)
+		holder.overlays += image('icons/mob/hud/hud.dmi', "xenoenergy[percentage_shards]")
+
+	if(percentage_shards >= 50)
+		bound_xeno.small_explosives_stun = FALSE
+		bound_xeno.add_filter("hedge_unstunnable", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+	else
+		bound_xeno.small_explosives_stun = TRUE
+		bound_xeno.remove_filter("hedge_unstunnable", 1, list("type" = "outline", "color" = "#421313", "size" = 1))
+	return
+
+/datum/behavior_delegate/pathogen_base/matriarch/handle_death(mob/M)
+	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
+	holder.overlays.Cut()
+
+/datum/behavior_delegate/pathogen_base/matriarch/on_hitby_projectile()
+	if (!shards_locked)
+		shards = min(max_shards, shards + shards_per_projectile)
+	return
+
+/datum/behavior_delegate/pathogen_base/matriarch/melee_attack_additional_effects_self()
+	if (!shards_locked)
+		shards = min(max_shards, shards + shards_per_slash)
+	return
 
 
 
@@ -87,7 +201,7 @@
 	macro_path = /datum/action_xeno_action/verb/verb_doom
 	xeno_cooldown = 45 SECONDS
 	plasma_cost = 50
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 	var/daze_length_seconds = 1
 	var/slow_length_seconds = 4
@@ -173,6 +287,7 @@
 	smoke_type = /obj/effect/particle_effect/smoke/blight
 
 /obj/effect/particle_effect/smoke/blight
+	name = "blight"
 	opacity = FALSE
 	color = "#000000"
 	icon = 'icons/effects/effects.dmi'
@@ -192,6 +307,8 @@
 	if(creature.stat == DEAD)
 		return FALSE
 	if(issynth(creature))
+		return FALSE
+	if(can_not_harm(creature))
 		return FALSE
 
 	var/mob/living/carbon/xenomorph/xeno_creature
@@ -244,3 +361,17 @@
 		human_creature.temporary_slowdown = max(human_creature.temporary_slowdown, 4) //One tick every two second
 		human_creature.recalculate_move_delay = TRUE
 	return TRUE
+
+/obj/effect/particle_effect/smoke/blight/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)
+	if(!istype(attempt_harm_mob))
+		return FALSE
+
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
+
+	if(!hive)
+		return FALSE
+
+	if(HAS_TRAIT(attempt_harm_mob, TRAIT_HAULED))
+		return TRUE
+
+	return hive.is_ally(attempt_harm_mob)

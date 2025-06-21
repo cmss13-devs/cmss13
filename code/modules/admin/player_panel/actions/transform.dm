@@ -158,15 +158,15 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	name = PATHOGEN_CREATURE_POPPER,
 	key = /mob/living/carbon/xenomorph/pathogen/popper,
 	color = "white"
+	)
 	),
+
+	"Pathogen Creatures (Standard)" = list(
 	list(
 	name = PATHOGEN_CREATURE_SPRINTER,
 	key = /mob/living/carbon/xenomorph/pathogen/sprinter,
 	color = "white"
-	)
 	),
-
-	"Pathogen Creatures (Major)" = list(
 	list(
 	name = PATHOGEN_CREATURE_NEOMORPH,
 	key = /mob/living/carbon/xenomorph/pathogen/neomorph,
@@ -176,7 +176,10 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	name = PATHOGEN_CREATURE_BLIGHT,
 	key = /mob/living/carbon/xenomorph/pathogen/blight,
 	color = "white"
+	)
 	),
+
+	"Pathogen Creatures (Major)" = list(
 	list(
 	name = PATHOGEN_CREATURE_BRUTE,
 	key = /mob/living/carbon/xenomorph/pathogen/brute,
@@ -185,6 +188,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	list(
 	name = PATHOGEN_CREATURE_VENATOR,
 	key = /mob/living/carbon/xenomorph/pathogen/venator,
+	color="white"
+	),
+	list(
+	name = PATHOGEN_CREATURE_MATRIARCH,
+	key = /mob/living/carbon/xenomorph/pathogen/matriarch,
 	color="white"
 	)
 	),

@@ -1,0 +1,37 @@
+@use 'sass:meta';
+
+$light: #a747eb;
+$dark: #140321;
+
+@use '../../base.scss' with (
+  $color-bg: $dark,
+  $color-fg: $light
+);
+
+@use '../crt.scss';
+
+.theme-crtxeno {
+  @extend %theme-crt;
+
+  @keyframes xenoConfirmFlicker {
+    0% {
+      background-color: $light;
+      color: $dark;
+    }
+    50% {
+      background-color: $dark;
+      color: $light;
+    }
+    100% {
+      background-color: $light;
+      color: $dark;
+    }
+  }
+
+  .Button.ConfirmButton {
+    animation: xenoConfirmFlicker 5s infinite;
+    &:hover {
+      animation: none;
+    }
+  }
+}

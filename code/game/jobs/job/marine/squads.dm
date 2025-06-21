@@ -516,13 +516,13 @@
 
 	var/mob_role = GET_DEFAULT_ROLE(target_mob.job)
 	switch(mob_role)
-		if(JOB_SQUAD_ENGI)
+		if(JOB_SQUAD_ENGI, JOB_UPP_ENGI, JOB_PMC_ENGINEER)
 			assignment = JOB_SQUAD_ENGI
 			id_card.claimedgear = FALSE
-		if(JOB_SQUAD_MEDIC)
+		if(JOB_SQUAD_MEDIC, JOB_UPP_MEDIC, JOB_PMC_MEDIC)
 			assignment = JOB_SQUAD_MEDIC
 			id_card.claimedgear = FALSE
-		if(JOB_SQUAD_SPECIALIST)
+		if(JOB_SQUAD_SPECIALIST, JOB_UPP_SPECIALIST, JOB_PMC_SNIPER)
 			assignment = JOB_SQUAD_SPECIALIST
 		if(JOB_SQUAD_TEAM_LEADER)
 			assignment = JOB_SQUAD_TEAM_LEADER
@@ -539,19 +539,23 @@
 			SStracking.set_leader(tracking_id, target_mob)
 			SStracking.start_tracking("marine_sl", target_mob)
 
-		if(JOB_UPP_ENGI)
-			assignment = JOB_SQUAD_ENGI
-			id_card.claimedgear = FALSE
-		if(JOB_UPP_MEDIC)
-			assignment = JOB_SQUAD_MEDIC
-			id_card.claimedgear = FALSE
-		if(JOB_UPP_SPECIALIST)
-			assignment = JOB_SQUAD_SPECIALIST
 		if(JOB_UPP_LEADER)
 			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_UPP_LEADER) //field promoted SL
 				var/old_lead = squad_leader
 				demote_squad_leader() //replaced by the real one
 				SStracking.start_tracking(tracking_id, old_lead)
+			assignment = squad_type + " Leader"
+			squad_leader = target_mob
+			SStracking.set_leader(tracking_id, target_mob)
+			SStracking.start_tracking("marine_sl", target_mob)
+
+		if(JOB_PMC_LEADER, JOB_PMC_LEAD_INVEST, JOB_DS_SL)
+			if(squad_leader)
+				var/def_role = GET_DEFAULT_ROLE(squad_leader.job)
+				if((def_role != JOB_PMC_LEADER) && (def_role != JOB_PMC_LEAD_INVEST) && (def_role != JOB_DS_SL)) //field promoted SL
+					var/old_lead = squad_leader
+					demote_squad_leader() //replaced by the real one
+					SStracking.start_tracking(tracking_id, old_lead)
 			assignment = squad_type + " Leader"
 			squad_leader = target_mob
 			SStracking.set_leader(tracking_id, target_mob)

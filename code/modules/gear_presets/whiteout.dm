@@ -13,6 +13,9 @@
 	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 	var/new_bubble_icon = "machine"
 
+	auto_squad_name = "Taskforce White"
+	always_squad = TRUE
+
 /datum/equipment_preset/pmc/w_y_whiteout/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_GLOBAL)
@@ -253,6 +256,9 @@
 	minimap_background = "background_pmc"
 	assignment = JOB_DS_CU
 	job_title = JOB_DS_CU
+
+	auto_squad_name = null
+	always_squad = FALSE
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species("W-Y Combat Android (Weaker)")

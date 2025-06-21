@@ -7,6 +7,7 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/lv",
         "/datum/equipment_preset/survivor/doctor/lv",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
         "/datum/equipment_preset/survivor/chaplain/lv",
         "/datum/equipment_preset/survivor/engineer/lv",
         "/datum/equipment_preset/survivor/corporate/lv",

@@ -642,7 +642,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "beret_badge"
 
 /obj/item/clothing/head/beret/marine/mp
-	name = "\improper USCM MP beret"
+	name = "\improper USCM military police beret"
 	icon_state = "beretred"
 	desc = "A beret with the USCM Military Police insignia emblazoned on it."
 	icon = 'icons/obj/items/clothing/hats/berets.dmi'
@@ -652,7 +652,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	black_market_value = 25
 
 /obj/item/clothing/head/beret/marine/mp/warden
-	name = "\improper USCM MP warden peaked cap"
+	name = "\improper USCM warden mitary police peaked cap"
 	icon_state = "warden"
 	desc = "A peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. It is typically used by Wardens on USCM ships."
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -661,7 +661,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 
 /obj/item/clothing/head/beret/marine/mp/cmp
-	name = "\improper USCM chief MP beret"
+	name = "\improper USCM chief military police beret"
 	desc = "A beret with the USCM Military Police First Lieutenant insignia emblazoned on it. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -671,7 +671,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	black_market_value = 30
 
 /obj/item/clothing/head/beret/marine/mp/mppeaked
-	name = "\improper USCM MP peaked cap"
+	name = "\improper USCM military police peaked cap"
 	desc = "A peaked cap worn by the USCM's Military Police. Something about it reminds you of an event you once read about in a history book."
 	icon_state = "mppeaked"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
@@ -680,7 +680,7 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	)
 
 /obj/item/clothing/head/beret/marine/mp/mpcap
-	name = "\improper USCM MP ball-cap"
+	name = "\improper USCM military police ball-cap"
 	desc = "A ball-cap, typically worn by the more casual of the USCM's Military Police."
 	icon_state = "mpcap"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'

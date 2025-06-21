@@ -17,8 +17,6 @@
 
 	var/datum/hive_status/linked_hive
 
-	plane = FLOOR_PLANE
-
 	/// Tells the structure if they are being deleted because of hijack
 	var/hijack_delete = FALSE
 

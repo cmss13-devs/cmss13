@@ -11723,11 +11723,6 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/securestorage)
-"aDS" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open_space,
-/area/almayer/middeck/hanger)
 "aDT" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
@@ -25043,13 +25038,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"bjT" = (
-/obj/structure/blocker/forcefield/human{
-	alpha = 0
-	},
-/obj/structure/platform/metal/kutjevo_smooth,
-/turf/open_space,
-/area/almayer/middeck/hanger)
 "bjU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/node_s_w,
@@ -25720,17 +25708,6 @@
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/offices)
-"blo" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/hanger)
 "blp" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -25759,30 +25736,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/cryo_cells)
-"blr" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/hanger)
 "bls" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
 /area/almayer/living/basketball)
-"blt" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/hanger)
 "blu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -25871,6 +25828,9 @@
 	icon_state = "S";
 	layer = 3.3
 	},
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
 "blG" = (
@@ -25936,6 +25896,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -26078,6 +26041,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -26333,18 +26299,6 @@
 /obj/item/reagent_container/food/snacks/hotchili,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/shipboard/brig/cic_hallway)
-"bmA" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/hanger)
 "bmB" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -26479,36 +26433,10 @@
 	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
-"bmR" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/hanger)
 "bmS" = (
 /obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
-"bmT" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/hanger)
 "bmU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -26560,22 +26488,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
-"bmZ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/hanger)
 "bna" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/node_n_w,
@@ -26915,17 +26827,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/hanger)
-"bnK" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -32829,13 +32730,6 @@
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bAT" = (
-/obj/structure/blocker/forcefield/human{
-	alpha = 0
-	},
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open_space,
-/area/almayer/middeck/hanger)
 "bAU" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
@@ -32843,14 +32737,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
-"bAV" = (
-/obj/effect/attach_point/weapon/dropship1/right_wing,
-/obj/structure/blocker/forcefield/human{
-	alpha = 0
-	},
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/turf/open_space,
-/area/almayer/middeck/hanger)
 "bAW" = (
 /obj/effect/attach_point/weapon/dropship1/left_fore,
 /obj/structure/blocker/forcefield/human{
@@ -32883,13 +32769,6 @@
 /obj/structure/blocker/forcefield/human{
 	alpha = 0
 	},
-/turf/open_space,
-/area/almayer/middeck/hanger)
-"bBa" = (
-/obj/structure/blocker/forcefield/human{
-	alpha = 0
-	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "bBb" = (
@@ -163511,7 +163390,6 @@ aJh
 aJh
 aJh
 bjc
-bnK
 aLn
 aJp
 aHI
@@ -163522,20 +163400,21 @@ aHI
 aHI
 aHI
 aHI
-aHO
-aHI
-aHI
-aHI
-aHI
-aHI
-aHI
-aHI
 aHI
 aHO
 aHI
-aDS
+aHI
+aHI
+aHI
+aHI
+aHI
+aHI
+aHI
+aHO
+aHI
+aHI
+aFt
 adj
-blo
 baz
 bwT
 bwT
@@ -163614,7 +163493,6 @@ aJh
 aJh
 aJh
 baA
-baA
 bhv
 aJo
 azJ
@@ -163625,20 +163503,21 @@ azJ
 azJ
 azJ
 azJ
-bya
-bya
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
 azJ
 bya
+bya
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+bya
+azJ
 azJ
 aFh
 aiB
-baA
 aBf
 bwT
 bwT
@@ -163717,7 +163596,6 @@ aJh
 aJh
 aJh
 baA
-baA
 bhv
 aJo
 azJ
@@ -163739,9 +163617,10 @@ azJ
 azJ
 azJ
 azJ
+azJ
+azJ
 aFh
 aiB
-baA
 aBf
 bwT
 bwT
@@ -163820,7 +163699,6 @@ aJh
 aJh
 aJh
 baA
-baA
 bhv
 aJo
 azJ
@@ -163842,9 +163720,10 @@ azJ
 azJ
 azJ
 azJ
+azJ
+azJ
 aFh
 aiB
-baA
 baA
 bwT
 bwT
@@ -163923,13 +163802,13 @@ aJh
 aJh
 aJh
 baA
-baA
 anS
 aJo
 azJ
 azJ
 azJ
 azJ
+azJ
 bAR
 bAR
 bAR
@@ -163943,11 +163822,11 @@ bAR
 bAR
 bAR
 bAR
+azJ
 azJ
 azJ
 aFh
 aiB
-baA
 baA
 bwT
 bwT
@@ -164026,9 +163905,9 @@ aJh
 aJh
 aJh
 aBf
-baA
 anS
 aJo
+azJ
 azJ
 azJ
 bAW
@@ -164048,9 +163927,9 @@ bAR
 bAR
 azJ
 azJ
-bjT
+azJ
+aFh
 aiB
-baA
 aBf
 bwT
 bwT
@@ -164129,9 +164008,9 @@ aJh
 aJh
 aJh
 aBf
-aBf
 anS
 aJo
+azJ
 azJ
 azJ
 bAX
@@ -164151,9 +164030,9 @@ bAR
 bAR
 bAR
 azJ
-bjT
+azJ
+aFh
 aiB
-baA
 aBf
 bwT
 bwT
@@ -164232,31 +164111,31 @@ aJh
 aJh
 aJh
 aBf
-aBf
 anS
-bBa
-bAR
-bAR
-bAR
-bAR
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+aJo
 azJ
 bAR
 bAR
-bjT
+bAR
+bAR
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+bAR
+bAR
+azJ
+aFh
 aiB
-baA
 aBf
 bwT
 bwT
@@ -164335,15 +164214,15 @@ aJh
 aJh
 aJh
 aBf
-aBf
 anS
-bBa
-bAR
-azJ
+aJo
 azJ
 bAR
 azJ
 azJ
+bAR
+azJ
+azJ
 azJ
 azJ
 azJ
@@ -164356,10 +164235,10 @@ azJ
 azJ
 azJ
 bAR
+azJ
 azJ
 aFh
 aiB
-aBf
 aBf
 bwT
 bwT
@@ -164438,31 +164317,31 @@ aJh
 aJh
 aJh
 aBf
-aBf
 anS
-bBa
-bAR
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+aJo
 azJ
 bAR
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+bAR
+azJ
 azJ
 aFh
 aiB
-aBf
 aBf
 bwT
 bwT
@@ -164541,15 +164420,15 @@ aJh
 aJh
 aJh
 baA
-aBf
 bhv
-bBa
-bAR
-azJ
+aJo
 azJ
 bAR
 azJ
 azJ
+bAR
+azJ
+azJ
 azJ
 azJ
 azJ
@@ -164562,10 +164441,10 @@ azJ
 azJ
 azJ
 bAR
+azJ
 azJ
 aFh
 aiB
-aBf
 aBf
 bwT
 bwT
@@ -164644,31 +164523,31 @@ aJh
 aJh
 aJh
 baA
-aBf
 bhv
-bBa
-bAR
-bAR
-bAR
-bAR
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+aJo
 azJ
 bAR
 bAR
-bjT
+bAR
+bAR
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+bAR
+bAR
+azJ
+aFh
 bbH
-aBf
 aBf
 bwT
 bwT
@@ -164747,9 +164626,9 @@ aJh
 aJh
 aJh
 baA
-baA
 bhv
 aJo
+azJ
 azJ
 azJ
 bAY
@@ -164769,9 +164648,9 @@ bAR
 bAR
 bAR
 azJ
-bjT
+azJ
+aFh
 bbH
-aBf
 aBf
 bwT
 bwT
@@ -164850,9 +164729,9 @@ aJh
 aJh
 aJh
 baA
-baA
 bhv
 aJo
+azJ
 azJ
 azJ
 bAZ
@@ -164872,9 +164751,9 @@ bAR
 bAR
 azJ
 azJ
-bjT
+azJ
+aFh
 bbH
-aBf
 aBf
 bwT
 bwT
@@ -164953,13 +164832,13 @@ aJh
 aJh
 aJh
 aBf
-baA
 bhv
 aJo
 azJ
 azJ
 azJ
 azJ
+azJ
 bAR
 bAR
 bAR
@@ -164973,11 +164852,11 @@ bAR
 bAR
 bAR
 bAR
+azJ
 azJ
 azJ
 aFh
 bbH
-aBf
 baA
 bwT
 bwT
@@ -165056,7 +164935,6 @@ aJh
 aJh
 aJh
 aBf
-baA
 bhv
 aJo
 azJ
@@ -165078,9 +164956,10 @@ azJ
 azJ
 azJ
 azJ
+azJ
+azJ
 aFh
 bbH
-aBf
 baA
 bwT
 bwT
@@ -165159,9 +165038,9 @@ aJh
 aJh
 aJh
 bnL
-bmT
 bnI
 aBc
+aDe
 aDe
 aDe
 aDe
@@ -165181,9 +165060,9 @@ azJ
 azJ
 azJ
 azJ
+azJ
 aFh
 bbH
-baA
 baA
 bwT
 bwT
@@ -165284,9 +165163,9 @@ azJ
 azJ
 azJ
 azJ
+azJ
 aFh
 aiB
-baA
 baA
 bwT
 bwT
@@ -165387,9 +165266,9 @@ aDe
 aDe
 aDe
 aDe
+aDe
 aFi
 adj
-blr
 aDa
 bwT
 bwT
@@ -165799,9 +165678,9 @@ aHI
 aHI
 aHI
 aHI
+aHI
 aFt
 bbI
-blt
 blk
 bwT
 bwT
@@ -165902,9 +165781,9 @@ azJ
 azJ
 azJ
 azJ
+azJ
 aFh
 bbH
-aBf
 baA
 bwT
 bwT
@@ -165983,9 +165862,9 @@ aJh
 aJh
 aJh
 bnM
-bmT
 bnI
 aJp
+aHI
 aHI
 aHI
 aHI
@@ -166005,9 +165884,9 @@ azJ
 azJ
 azJ
 azJ
+azJ
 aFh
 bbH
-aBf
 baA
 bwT
 bwT
@@ -166086,7 +165965,6 @@ aJh
 aJh
 aJh
 baA
-baA
 bhv
 aJo
 azJ
@@ -166108,9 +165986,10 @@ azJ
 azJ
 azJ
 azJ
+azJ
+azJ
 aFh
 bbH
-aBf
 baA
 bwT
 bwT
@@ -166189,13 +166068,13 @@ aJh
 aJh
 aJh
 baA
-baA
 bhv
 aJo
 azJ
 azJ
 azJ
 azJ
+azJ
 bAR
 bAR
 bAR
@@ -166209,11 +166088,11 @@ bAR
 bAR
 bAR
 bAR
+azJ
 azJ
 azJ
 aFh
 bbH
-aBf
 baA
 bwT
 bwT
@@ -166292,9 +166171,9 @@ aJh
 aJh
 aJh
 aBf
-baA
 bhv
 aJo
+azJ
 azJ
 azJ
 bAW
@@ -166314,9 +166193,9 @@ bAR
 bAR
 azJ
 azJ
-bjT
+bAR
+aFh
 bbH
-aBf
 baA
 bwT
 bwT
@@ -166395,9 +166274,9 @@ aJh
 aJh
 aJh
 aBf
-baA
 bhv
 aJo
+azJ
 azJ
 azJ
 bAX
@@ -166417,9 +166296,9 @@ bAR
 bAR
 bAR
 azJ
-bjT
+bAR
+aFh
 bbH
-aBf
 aBf
 bwT
 bwT
@@ -166498,31 +166377,31 @@ aJh
 aJh
 aJh
 aBf
-aBf
 bhv
-bBa
-bAR
-bAR
-bAR
-bAR
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+aJo
 azJ
 bAR
 bAR
-bjT
+bAR
+bAR
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+bAR
+bAR
+bAR
+aFh
 bbH
-aBf
 aBf
 bwT
 bwT
@@ -166601,15 +166480,15 @@ aJh
 aJh
 aJh
 aBf
-aBf
 bhv
-bBa
-bAR
-azJ
+aJo
 azJ
 bAR
 azJ
 azJ
+bAR
+azJ
+azJ
 azJ
 azJ
 azJ
@@ -166622,10 +166501,10 @@ azJ
 azJ
 azJ
 bAR
+azJ
 azJ
 aFh
 bbH
-baA
 aBf
 bwT
 bwT
@@ -166704,31 +166583,31 @@ aJh
 aJh
 aJh
 aBf
-aBf
 bhv
-bBa
-bAR
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+aJo
 azJ
 bAR
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+bAR
+azJ
 azJ
 aFh
 bbH
-baA
 aBf
 bwT
 bwT
@@ -166807,15 +166686,15 @@ aJh
 aJh
 aJh
 aBf
-aBf
 bhv
-bBa
-bAR
-azJ
+aJo
 azJ
 bAR
 azJ
 azJ
+bAR
+azJ
+azJ
 azJ
 azJ
 azJ
@@ -166828,10 +166707,10 @@ azJ
 azJ
 azJ
 bAR
+azJ
 azJ
 aFh
 bbH
-aBf
 aBf
 bwT
 bwT
@@ -166910,31 +166789,31 @@ aJh
 aJh
 aJh
 aBf
-aBf
 bhv
-bBa
-bAR
-bAR
-bAR
-bAR
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
-azJ
+aJo
 azJ
 bAR
 bAR
-bjT
+bAR
+bAR
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+bAR
+bAR
+bAR
+aFh
 bbH
-aBf
 aBf
 bwT
 bwT
@@ -167013,9 +166892,9 @@ aJh
 aJh
 aJh
 aBf
-aBf
 bhv
 aJo
+azJ
 azJ
 azJ
 bAY
@@ -167035,9 +166914,9 @@ bAR
 bAR
 bAR
 azJ
-bjT
+bAR
+aFh
 aiB
-baA
 aBf
 bwT
 bwT
@@ -167116,9 +166995,9 @@ aJh
 aJh
 aJh
 baA
-baA
 bhv
 aJo
+azJ
 azJ
 azJ
 bAZ
@@ -167138,9 +167017,9 @@ bAR
 bAR
 azJ
 azJ
-bjT
+bAR
+aFh
 aiB
-baA
 aZh
 bwT
 bwT
@@ -167219,31 +167098,31 @@ aJh
 aJh
 aJh
 bnN
-bnK
 aLn
-aBc
-aDe
-aDe
-aDe
-aDe
-bAT
-bAT
-bAV
-aDe
-aDe
-aDe
-aDe
-aDe
-bAT
-bAT
-bAT
-bAT
-bAT
-aDe
-aDe
-aFi
+aJo
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+azJ
+aFh
 adj
-blr
 aDa
 bwT
 bwT
@@ -167323,30 +167202,30 @@ aJh
 bnP
 baA
 baA
-baA
-bnG
-bce
-bce
-bce
-acL
-acL
-acL
-bnc
-acL
-acL
-acL
-bce
-bce
-ajR
-bce
-bce
-bce
-bce
-bce
-bce
-ajR
-baA
-baA
+aBc
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aDe
+aFi
+aiB
 aBf
 blh
 bwT
@@ -167427,28 +167306,28 @@ bnP
 aBf
 baA
 baA
-blx
-baA
-aze
-bax
-bax
-bax
-aBf
-bmA
-aBf
-bmZ
-bmT
-bmR
-baA
-bmA
-aBf
+bnG
+bce
 bma
 blN
 blN
 blF
-baA
-blz
-baA
+acL
+bnc
+bce
+bma
+blN
+blF
+bce
+ajR
+bce
+bma
+blN
+blN
+blF
+bce
+ajR
+bce
 baA
 aBf
 blh

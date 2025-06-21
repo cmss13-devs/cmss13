@@ -8,7 +8,7 @@
 	skills = /datum/skills/civilian/survivor/clf
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	assignment = JOB_CLF
-	rank = JOB_CLF
+	job_title = JOB_CLF
 	role_comm_title = "GRL"
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
@@ -41,7 +41,7 @@
 	name = "CLF Survivor Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_LEADER
-	rank = JOB_CLF_LEADER
+	job_title = JOB_CLF_LEADER
 	role_comm_title = "LDR"
 	skills = /datum/skills/civilian/survivor/clf/leader
 	minimap_icon = "clf_sl"
@@ -84,7 +84,7 @@
 	name = "CLF Survivor Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_MEDIC
-	rank = JOB_CLF_MEDIC
+	job_title = JOB_CLF_MEDIC
 	role_comm_title = "MED"
 	minimap_icon = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
@@ -132,7 +132,7 @@
 	name = "CLF Survivor Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_ENGI
-	rank = JOB_CLF_ENGI
+	job_title = JOB_CLF_ENGI
 	role_comm_title = "TECH"
 
 	minimap_icon = "clf_engi"
@@ -184,7 +184,7 @@
 	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = FALSE
 	assignment = JOB_CLF_SYNTH
-	rank = JOB_CLF_SYNTH
+	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 	minimap_background = "background_clf"

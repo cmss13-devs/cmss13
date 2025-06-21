@@ -11,7 +11,7 @@
 
 /datum/equipment_preset/dutch/New()
 	..()
-	rank = assignment
+	job_title = assignment
 
 /datum/equipment_preset/dutch/load_name(mob/living/carbon/human/new_human, randomise)
 	new_human.gender = pick(60;MALE,40;FEMALE)

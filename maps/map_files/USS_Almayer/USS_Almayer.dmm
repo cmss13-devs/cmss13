@@ -9888,7 +9888,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_x = 3;
 	pixel_y = 10
 	},
@@ -13989,7 +13989,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -8
 	},
 /turf/open/floor/almayer,
@@ -19360,7 +19360,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "bMg" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 8;
 	vent_tag = "Synth Bay"
 	},
@@ -22184,7 +22184,7 @@
 	pixel_y = 13;
 	density = 0
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_y = 30;
 	pixel_x = 9
 	},
@@ -23390,14 +23390,14 @@
 /area/almayer/hallways/upper/aft_hallway)
 "cNH" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment{
-	id = "Containment Cell 4";
-	name = "\improper Containment Cell 4"
+	id = "CL_Containment";
+	name = "\improper Containment Cell"
 	},
 /obj/structure/machinery/door/airlock/almayer/research/glass/reinforced{
 	dir = 1;
-	id = "Containment Cell 4";
+	id = "CL_Containment";
 	locked = 1;
-	name = "\improper Containment Cell 4"
+	name = "\improper Containment Cell"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment/cell/cl)
@@ -23895,7 +23895,7 @@
 "cXF" = (
 /obj/structure/machinery/flasher{
 	alpha = 1;
-	id = "Containment Cell 4";
+	id = "CL_Containment";
 	layer = 2.1;
 	name = "Mounted Flash";
 	pixel_x = -15;
@@ -24129,9 +24129,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/lifeboat_pumps/north2)
 "dbM" = (
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	id = "RoomDivider"
-	},
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
 "dbX" = (
@@ -26932,11 +26930,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/lobby)
 "epJ" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
 /obj/structure/disposalpipe/junction{
 	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -29151,7 +29149,7 @@
 	},
 /area/almayer/medical/containment/cell/cl)
 "flf" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 1;
 	vent_tag = "Records"
 	},
@@ -29278,12 +29276,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/upper_medical)
-"fnH" = (
-/obj/structure/pipes/vents/pump{
-	dir = 1
-	},
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "fnI" = (
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
@@ -30473,11 +30465,20 @@
 /area/almayer/command/airoom)
 "fQS" = (
 /obj/structure/bed/chair/comfy/orange,
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/machinery/flasher{
+	alpha = 0;
+	id = "CL_Security";
+	layer = 2.1;
+	name = "Ceiling Flash";
+	pixel_x = -15;
+	pixel_y = 30;
+	mouse_opacity = 0
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -31833,9 +31834,6 @@
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "gyI" = (
-/obj/structure/machinery/computer/skills{
-	req_one_access_txt = "200"
-	},
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/tool/pen/clicky{
 	pixel_x = 14;
@@ -31845,6 +31843,7 @@
 	pixel_x = 14;
 	pixel_y = 6
 	},
+/obj/structure/machinery/computer/wy_intranet/liaison,
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "gyN" = (
@@ -39093,10 +39092,12 @@
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/hallways/lower/port_midship_hallway)
 "jDO" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
 /obj/structure/machinery/light,
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	dir = 8;
+	vent_tag = "WY Liaison Quarters";
+	network_id = "CL_Security"
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "jEA" = (
@@ -39405,10 +39406,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering/starboard)
-"jML" = (
-/obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/wood/ship,
-/area/almayer/command/corporateliaison)
 "jMQ" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -40702,14 +40699,6 @@
 /obj/item/ashtray/bronze{
 	pixel_x = 2;
 	pixel_y = 9
-	},
-/obj/structure/machinery/door_control/cl/office/window{
-	pixel_x = 6;
-	pixel_y = 4
-	},
-/obj/structure/machinery/door_control/cl/office/door{
-	pixel_x = 6;
-	pixel_y = -3
 	},
 /obj/item/spacecash/c500{
 	pixel_x = -10;
@@ -43587,7 +43576,7 @@
 "lzt" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/screwdriver,
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -7;
 	pixel_y = 12
 	},
@@ -46271,9 +46260,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "mLe" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
 /obj/structure/sign/safety/bathunisex{
 	pixel_x = 8;
 	pixel_y = -32
@@ -47153,9 +47139,23 @@
 /obj/structure/transmitter/rotary{
 	name = "CL Office Telephone";
 	phone_category = "Offices";
-	phone_id = "CL Office"
+	phone_id = "CL Office";
+	pixel_x = 5;
+	pixel_y = 5
 	},
 /obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/door_control/cl/office/door{
+	pixel_y = 3;
+	pixel_x = -5
+	},
+/obj/structure/machinery/door_control/cl/office/window{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/structure/machinery/door_control/cl/office/evac{
+	pixel_x = -5;
+	pixel_y = -3
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "neZ" = (
@@ -48394,7 +48394,7 @@
 /obj/structure/bed/chair/comfy/ares{
 	dir = 1
 	},
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	vent_tag = "Core Chamber"
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -48456,26 +48456,13 @@
 /area/almayer/medical/medical_science)
 "nFc" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/door_display/research_cell{
-	dir = 4;
-	id = "Containment Cell 4";
-	name = "Control Panel";
-	pixel_x = -17;
-	req_access_txt = "200";
-	pixel_y = 9
-	},
 /obj/item/storage/photo_album,
 /obj/structure/machinery/computer/cameras/containment/hidden{
 	dir = 4;
-	pixel_x = -17;
-	pixel_y = -5
+	pixel_x = -17
 	},
 /obj/item/device/camera_film{
 	pixel_x = -3
-	},
-/obj/structure/machinery/door_control/cl/office/divider{
-	pixel_x = 7;
-	pixel_y = -7
 	},
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliaison)
@@ -50763,7 +50750,7 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/command/cichallway)
 "oBD" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 8;
 	vent_tag = "Access Hall"
 	},
@@ -51986,7 +51973,7 @@
 /area/almayer/shipboard/brig/cryo)
 "pax" = (
 /obj/effect/step_trigger/clone_cleaner,
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 8;
 	vent_tag = "Reception"
 	},
@@ -57174,13 +57161,10 @@
 	pixel_y = 3
 	},
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/door_control/cl/office/evac{
-	pixel_x = -5;
-	pixel_y = 4
-	},
-/obj/structure/machinery/door_control/cl/quarter/windows{
-	pixel_x = -5;
-	pixel_y = -3
+/obj/structure/pipes/vents/pump/no_boom/gas{
+	dir = 1;
+	vent_tag = "WY Liaison Office";
+	network_id = "CL_Security"
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -64563,7 +64547,7 @@
 /obj/effect/spawner/prop_gun/m41aMK1{
 	pixel_y = 7
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	pixel_x = -10;
 	pixel_y = 1
 	},
@@ -72291,7 +72275,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
 "xwU" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
+/obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 1;
 	vent_tag = "Comms"
 	},
@@ -72352,7 +72336,7 @@
 	pixel_x = -5;
 	pixel_y = 20
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	layer = 4.2;
 	pixel_x = 3;
 	pixel_y = 16
@@ -73580,17 +73564,17 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/south1)
 "xZk" = (
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	layer = 4.2;
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	layer = 4.2;
 	pixel_x = -10;
 	pixel_y = 10
 	},
-/obj/item/stack/repairable/gunlube{
+/obj/item/prop/helmetgarb/gunoil{
 	layer = 4.2;
 	pixel_x = 4;
 	pixel_y = 9
@@ -106498,9 +106482,9 @@ kVV
 vQR
 vQR
 epJ
-jML
-jML
-fnH
+eAN
+eAN
+eAN
 dbM
 rLv
 pRy
@@ -108121,7 +108105,7 @@ fKh
 eYn
 nQA
 nQA
-vEG
+eAN
 mlP
 eAN
 eAN
@@ -108324,7 +108308,7 @@ fKh
 wvo
 nQA
 nQA
-vEG
+eAN
 pBG
 skR
 oxc
@@ -108527,7 +108511,7 @@ fKh
 lDa
 eAN
 eAN
-vEG
+eAN
 pBG
 pBG
 pBG
@@ -108730,7 +108714,7 @@ pBG
 aGs
 eAN
 eAN
-vEG
+eAN
 vrJ
 xOs
 kOH

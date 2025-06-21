@@ -360,6 +360,10 @@
 	//putting the organ in for research
 	if(organ_value != 0)
 		var/obj/item/organ/xeno/organ = new() //give
+		if(hivenumber == XENO_HIVE_PATHOGEN)
+			organ = new /obj/item/organ/xeno/pathogen()
+		else
+			organ = new()
 		organ.forceMove(src)
 		organ.research_value = organ_value
 		organ.caste_origin = caste_type
@@ -594,14 +598,17 @@
 	if(!HAS_TRAIT(src, TRAIT_NO_COLOR))
 		color = in_hive.color
 
-	var/age_display = show_age_prefix ? age_prefix : ""
-	var/name_display = ""
-	// Rare easter egg
-	if(nicknumber == 666)
-		number_decorator = "Infernal "
-	if(show_name_numbers)
-		name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
-	name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
+	if(!HAS_TRAIT(src, TRAIT_PATHOGEN_OVERMIND))
+		var/age_display = show_age_prefix ? age_prefix : ""
+		var/name_display = ""
+		// Rare easter egg
+		if(nicknumber == 666)
+			number_decorator = "Infernal "
+		if(show_name_numbers)
+			name_display = show_only_numbers ? " ([nicknumber])" : " ([name_client_prefix][nicknumber][name_client_postfix])"
+		name = "[name_prefix][number_decorator][age_display][caste.display_name || caste.caste_type][name_display]"
+	else
+		name = "Overmind ([full_designation])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -860,6 +867,9 @@
 	// Update the hive status UI
 	new_hive.hive_ui.update_all_xeno_data()
 
+	if(new_hivenumber == XENO_HIVE_PATHOGEN)
+		make_pathogen_speaker()
+
 	return TRUE
 
 
@@ -1029,6 +1039,8 @@
 		SPAN_NOTICE("We extinguish ourselves."), null, 5)
 
 /mob/living/carbon/xenomorph/proc/get_organ_icon()
+	if(hivenumber == XENO_HIVE_PATHOGEN)
+		return "m_heart_t[tier]"
 	return "heart_t[tier]"
 
 /mob/living/carbon/xenomorph/resist_restraints()

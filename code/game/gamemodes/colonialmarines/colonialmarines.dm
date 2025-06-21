@@ -481,7 +481,7 @@
 			for(var/hivenumber in GLOB.hive_datum)
 				hive = GLOB.hive_datum[hivenumber]
 				hive.evolution_without_ovipositor = FALSE
-				if(hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)
+				if(!hive.allow_no_queen_evo && hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)
 					to_chat(hive.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")

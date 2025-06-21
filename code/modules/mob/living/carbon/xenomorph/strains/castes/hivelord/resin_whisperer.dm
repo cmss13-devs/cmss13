@@ -78,7 +78,7 @@
 
 	/// Check if the target is a resin door and open or close it
 
-	if(istype(target_atom, /obj/structure/mineral_door/resin))
+	if(istype(target_atom, /obj/structure/mineral_door/resin) && owner.a_intent != INTENT_HARM)
 		// Either we can't remotely reinforce the door, or its already reinforced
 		if(!thick || istype(target_atom, /obj/structure/mineral_door/resin/thick))
 			var/obj/structure/mineral_door/resin/resin_door = target_atom

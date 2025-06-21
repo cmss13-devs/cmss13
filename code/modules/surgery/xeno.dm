@@ -76,7 +76,7 @@
 		playsound(victim, "acid_sizzle", 25, TRUE)
 		animation_flash_color(victim, "#FF0000")
 		//Having acid spray everywhere *but* the floor makes no sense, but this can be removed if research gets too messy.
-		target.add_splatter_floor(get_turf(target.loc)) 
+		target.add_splatter_floor(get_turf(target.loc))
 
 /datum/surgery_step/xenomorph/open_exoskeleton
 	name = "Pry exoskeleton open"
@@ -156,7 +156,7 @@
 			SPAN_NOTICE("You sever the connective tissue that holds the [target.caste_type]'s alien organ in place using [tool]."))
 	else
 		user.visible_message(
-			SPAN_NOTICE("[user] gleefully rips the [target.caste_type]'s connective tissue apart using [tool]".),
+			SPAN_NOTICE("[user] gleefully rips the [target.caste_type]'s connective tissue apart using [tool]."),
 			SPAN_NOTICE("You gleefully rip the [target.caste_type]'s connective tissue apart using [tool]."))
 
 /datum/surgery_step/xenomorph/severe_connections/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

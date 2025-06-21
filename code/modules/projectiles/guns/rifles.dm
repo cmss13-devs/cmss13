@@ -2385,9 +2385,9 @@
 	)
 	icon_state = "l42a3"
 	item_state = "l42a3"
-	reload_sound = 'sound/weapons/handling/l42_reload.ogg'
-	unload_sound = 'sound/weapons/handling/l42_unload.ogg'
-	fire_sound = 'sound/weapons/gun_carbine.ogg'
+	reload_sound = 'sound/weapons/handling/rmcdmr_reload.ogg'
+	unload_sound = 'sound/weapons/handling/rmcdmr_unload.ogg'
+	fire_sound = "gun_l64"
 	current_mag = /obj/item/ammo_magazine/rifle/l64
 
 	attachable_allowed = list(

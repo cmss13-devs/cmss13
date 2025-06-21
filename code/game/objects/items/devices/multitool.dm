@@ -29,6 +29,13 @@
 
 	var/list/encryption_keys = list()
 
+	var/obj/structure/machinery/fob/terminal/linked_terminal
+
+/obj/item/device/multitool/Destroy()
+	. = ..()
+	if(linked_terminal)
+		linked_terminal.linked_multitools -= src
+
 /obj/item/device/multitool/proc/load_encryption_key(key, obj/object)
 	encryption_keys[key] = WEAKREF(object)
 

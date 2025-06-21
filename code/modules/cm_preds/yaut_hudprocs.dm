@@ -452,8 +452,8 @@
 		return FALSE
 	call_combi_internal(usr)
 
-/mob/living/carbon/human/proc/call_combi_internal(mob/caller, forced = FALSE)
-	for(var/datum/effects/tethering/tether in caller.effects_list)
+/mob/living/carbon/human/proc/call_combi_internal(mob/user, forced = FALSE)
+	for(var/datum/effects/tethering/tether in user.effects_list)
 		if(istype(tether.tethered.affected_atom, /obj/item/weapon/yautja/chained))
 			var/obj/item/weapon/yautja/chained/stick = tether.tethered.affected_atom
 			stick.recall()

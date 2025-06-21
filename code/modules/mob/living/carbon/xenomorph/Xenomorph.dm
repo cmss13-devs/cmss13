@@ -312,6 +312,9 @@
 
 	bubble_icon = "alien"
 
+	/// Hugger and Larva emote cooldown.
+	var/last_roar_time = 0
+
 	/////////////////////////////////////////////////////////////////////
 	//
 	// Phero related vars

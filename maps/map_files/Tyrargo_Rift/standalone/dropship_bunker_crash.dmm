@@ -211,14 +211,13 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "ar" = (
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 1
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
 	},
-/obj/structure/shuttle/part/dropship2/transparent/upper_right_wing{
-	dir = 8;
-	name = "Tychon"
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirt/brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central)
 "as" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -811,6 +810,26 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
+"bA" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
+"bB" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts/central)
+"bC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 7;
+	pixel_x = 3
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts/central)
 "bD" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 8;
@@ -823,6 +842,83 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/tyrargo/indoors/tychon)
+"bE" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 10;
+	pixel_y = -7
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts/central)
+"bF" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts/central)
+"bG" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 6;
+	pixel_y = -7;
+	dir = 1
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/tyrargo/outdoors/outskirts/central)
+"bH" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts/central)
+"bI" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/flora/wood/trunk2{
+	pixel_x = -10;
+	pixel_y = -8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/central)
+"bJ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
+"bK" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/central)
+"bL" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
 "bP" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
@@ -2896,8 +2992,8 @@ sJ
 aW
 aL
 aq
-ZP
-ZP
+bF
+bA
 "}
 (23,1,1) = {"
 aP
@@ -2918,8 +3014,8 @@ Ja
 QI
 aL
 ar
-ZP
-ZP
+bG
+bB
 "}
 (24,1,1) = {"
 SR
@@ -2939,9 +3035,9 @@ lJ
 GZ
 Bw
 ED
-Lh
-FT
-ZP
+bK
+bH
+bC
 "}
 (25,1,1) = {"
 SR
@@ -2961,9 +3057,9 @@ QI
 lJ
 aA
 av
-ad
-ZP
-ZP
+bL
+bI
+bE
 "}
 (26,1,1) = {"
 zg
@@ -2984,8 +3080,8 @@ GZ
 mQ
 ad
 ZP
-ZP
-ZP
+bJ
+ad
 "}
 (27,1,1) = {"
 ml

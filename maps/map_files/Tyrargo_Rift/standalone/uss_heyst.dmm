@@ -353,6 +353,28 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
+"aS" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
+"aT" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "aU" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
@@ -604,6 +626,9 @@
 	name = "dirt"
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "df" = (
@@ -1094,7 +1119,10 @@
 "hF" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "hG" = (
 /obj/structure/prop/almayer/name_stencil{
@@ -1636,6 +1664,9 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
 	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "me" = (
@@ -1908,6 +1939,9 @@
 	pixel_x = 7
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "of" = (
@@ -2550,6 +2584,9 @@
 	pixel_x = -25;
 	pixel_y = 4
 	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "uE" = (
@@ -2614,6 +2651,9 @@
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
@@ -3186,6 +3226,9 @@
 	name = "dirt"
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "zv" = (
@@ -3680,6 +3723,9 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
 	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "EA" = (
@@ -4139,6 +4185,9 @@
 	},
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
+	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
@@ -5496,6 +5545,9 @@
 	color = "#140400";
 	name = "dirt"
 	},
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "XQ" = (
@@ -6016,7 +6068,7 @@ AT
 AT
 AT
 sN
-sN
+aS
 vh
 Jk
 Jk
@@ -6083,7 +6135,7 @@ aF
 AT
 AT
 AT
-YF
+aT
 uC
 kc
 yG

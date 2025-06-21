@@ -206,7 +206,6 @@
 	icon_state = "test_square_red"
 	},
 /obj/structure/closet/crate/explosives,
-/obj/item/weapon/gun/launcher/rocket/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,
 /obj/item/explosive/grenade/high_explosive/upp,

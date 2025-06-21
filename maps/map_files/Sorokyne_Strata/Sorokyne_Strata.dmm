@@ -576,7 +576,6 @@
 	pixel_x = 7;
 	pixel_y = 10;
 	emp_proof = 1;
-	explo_proof = 1;
 	name = "Checkpoint - Secure Lockdown Release Control Button - Main Door";
 	id = "checkpoint_main"
 	},
@@ -584,7 +583,6 @@
 	pixel_x = 7;
 	pixel_y = -1;
 	emp_proof = 1;
-	explo_proof = 1;
 	name = "Checkpoint - Secure Lockdown Release Control Button - Side Door";
 	id = "checkpoint_main_2"
 	},
@@ -4932,7 +4930,6 @@
 /obj/structure/machinery/door_control/brbutton/alt{
 	pixel_y = -18;
 	emp_proof = 1;
-	explo_proof = 1;
 	name = "Landing Zone - Secure Lockdown Button";
 	id = "LZ1";
 	needs_power = 0
@@ -6259,7 +6256,6 @@
 	pixel_x = -7;
 	pixel_y = 10;
 	emp_proof = 1;
-	explo_proof = 1;
 	name = "Landing Zone - Secure Lockdown Button";
 	id = "LZ1"
 	},
@@ -24117,16 +24113,14 @@
 	name = "Checkpoint - Secure Lockdown Release Control Button";
 	pixel_x = 7;
 	pixel_y = 10;
-	emp_proof = 1;
-	explo_proof = 1
+	emp_proof = 1
 	},
 /obj/structure/machinery/door_control{
 	id = "checkpoint_small_2";
 	name = "Checkpoint - Secure Lockdown Release Control Button";
 	pixel_x = 7;
 	pixel_y = 3;
-	emp_proof = 1;
-	explo_proof = 1
+	emp_proof = 1
 	},
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_x = -4;
@@ -36462,7 +36456,7 @@
 /area/strata/interior/administration)
 "cfX" = (
 /obj/structure/largecrate/random,
-/obj/item/storage/belt/grenade/large/full,
+/obj/item/storage/belt/grenade/full,
 /turf/open/asphalt/cement,
 /area/strata/interior/outpost/engi)
 "cfY" = (
@@ -42429,7 +42423,6 @@
 	pixel_x = -6;
 	pixel_y = 8;
 	emp_proof = 1;
-	explo_proof = 1;
 	name = "Checkpoint - Secure Lockdown Release Control Button - Main Doors";
 	id = "checkpoint_main"
 	},

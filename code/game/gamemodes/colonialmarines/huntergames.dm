@@ -265,7 +265,7 @@
 	return 1
 
 /datum/equipment_preset/survivor/civilian/huntergames
-	name = "Survivor - Civilian"
+	name = "Hunter Games - Survivor - Civilian"
 	assignment = "Civilian"
 	skills = /datum/skills/huntergames
 	access = list()

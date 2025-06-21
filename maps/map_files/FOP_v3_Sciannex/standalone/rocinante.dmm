@@ -206,6 +206,11 @@
 /obj/item/ammo_box/magazine/misc/mre/wy,
 /turf/open/floor/almayer/green/north,
 /area/fiorina/station/clf_ship)
+"aG" = (
+/obj/structure/machinery/light,
+/obj/item/defenses/handheld/planted_flag/clf,
+/turf/open/floor/plating/platingdmg3,
+/area/fiorina/station/clf_ship)
 "aI" = (
 /turf/open/floor/almayer/blue/southwest,
 /area/fiorina/station/clf_ship)
@@ -383,11 +388,6 @@
 /obj/structure/platform_decoration/metal/almayer/east,
 /turf/open/floor/prison/cell_stripe/west,
 /area/fiorina/station/park)
-"fD" = (
-/obj/structure/machinery/light,
-/obj/item/defenses/handheld/planted_flag/clf,
-/turf/open/floor/plating/platingdmg3,
-/area/fiorina/station/clf_ship)
 "fS" = (
 /turf/open/floor/almayer/emerald/west,
 /area/fiorina/station/clf_ship)
@@ -2266,7 +2266,7 @@ xH
 BS
 am
 Nv
-fD
+aG
 rJ
 Pc
 Pr

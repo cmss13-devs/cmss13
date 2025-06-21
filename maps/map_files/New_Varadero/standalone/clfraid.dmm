@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/platingdmg1,
+/area/varadero/interior/research)
 "ab" = (
 /obj/structure/barricade/sandbags/wired,
 /obj/structure/barricade/sandbags/wired{
@@ -399,10 +403,6 @@
 "ko" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/burnt_platingdmg3,
-/area/varadero/interior/research)
-"ky" = (
-/obj/item/flag/plantable/clf,
-/turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "kB" = (
 /obj/structure/barricade/sandbags/wired{
@@ -2629,7 +2629,7 @@ XU
 fG
 NS
 Cu
-ky
+aa
 eQ
 sD
 tZ

@@ -184,3 +184,57 @@
   - balance: Allows IMP ammo rack to carry filled sandbags
   realforest2001:
   - code_imp: Changed the backend of crew manifest labelling from equipment presets.
+2025-06-18:
+  Zenith, Tsurupeta, dimdimich1996, Crowford, Amory, BOBAMA:
+  - rscadd: added AK-4047 Rifle
+  - rscadd: added SOF insert
+  - rscadd: changed + added many survivors to be completely unique.
+  - code_imp: changed how weather sirens work.
+  - soundadd: added new sounds to AK-4047 and Jungle ambience.
+  - imageadd: added many new sprites for survivors, map objects & map visuals in general.
+  - mapadd: added new northern checkpoint area + small cave area.
+  - maptweak: massively changed Soro's visuals, snow gone, pure jungle + much more
+      UPP theming.
+2025-06-19:
+  Blundir:
+  - rscadd: added wy commando deathsquad variation for admins
+  - balance: returned wy commando ert into rotation, tweaked the gear of it
+  DarkLordCabbage:
+  - qol: SEAtech vendor now comes stocked with a few flashlights
+  - qol: synths now have custom surgery messages, i.e. carbon fibre skeleton instead
+      of bone
+  - bugfix: fixed synth k9s being unable to get their head reattached
+  - code_imp: head reattachment surgery checks for IS_SYNTH instead of a species list
+  Detective-Google:
+  - config: config added for maintainer color, maintainers being anyone with R_PROFILER.
+      this layers above R_ADMIN color and below R_COLOR custom colors.
+  - bugfix: chain gauntlets no longer speed up all preds while sprinting
+  Drathek:
+  - qol: Xeno preference and click drag override are enabled by default for new connects
+  MistChristmas:
+  - bugfix: CIA Skills include Antag for the items they can buy that require it.
+  realforest2001:
+  - rscadd: Added a follow category for people infected with xeno larva.
+2025-06-21:
+  Detective-Google:
+  - bugfix: survivors no longer randomly spawn as synth paramedics
+  Generalcamo:
+  - bugfix: Autodoc consoles now inherit the skill requirements of their connected
+      machine.
+  MeH0y:
+  - balance: loader pamphlet now gives engineering level 1
+  Nihisohel:
+  - rscadd: Yautja capes can now be converted into accessories
+  - bugfix: Yautja clothings can hold more accessories
+  Zenith, AmoryBlaine:
+  - rscadd: Added new civilian default preset with various tweaks to the old ones
+  - rscadd: Added EMT, KMCC Miner & Firefighter survivors to Solaris, LV & Trijent
+  - rscadd: Added random rare item to  /civilian & /civilian/unique roles.
+  - imageadd: added various new apparel sprites and replaced many legacy clothing
+      sprites.
+  - imageadd: added comfy bedrolls and bedsheets for bedrolls.
+  cuberound:
+  - balance: applies 1 second fire delay instead of 2 seconds (same as normal tesla)
+      on micro tesla as intended
+  kiVts:
+  - rscadd: Shooting target on target range should be more useful now.

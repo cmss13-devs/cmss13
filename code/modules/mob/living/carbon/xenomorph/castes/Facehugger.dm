@@ -256,7 +256,14 @@
 		if(!client.attempt_talking())
 			return FALSE
 
-	roar_and_delay()
+	// Otherwise, ""roar""!
+	var/current_time = world.time
+	if(current_time - last_roar_time < 1 SECONDS)
+		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		return FALSE
+
+	last_roar_time = current_time
+	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 
 /mob/living/carbon/xenomorph/facehugger/get_status_tab_items()

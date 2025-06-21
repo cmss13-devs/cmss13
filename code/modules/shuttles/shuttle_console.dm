@@ -357,7 +357,6 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 
 /obj/structure/machinery/computer/shuttle_control/proc/minesweeper_lost(mob/user)
-	var/datum/shuttle/ferry/shuttle = get_shuttle()
 	to_chat(user, SPAN_WARNING("The controls lock down for 10 seconds as you make a mistake."))
 
 

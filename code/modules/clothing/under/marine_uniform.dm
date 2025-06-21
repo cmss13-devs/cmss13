@@ -1331,6 +1331,16 @@
 	flags_jumpsuit = FALSE
 	suit_restricted = null
 
+/obj/item/clothing/under/marine/ua_riot/police
+	name = "\improper United American police uniform"
+	desc = "A version of the Standard uniform worn by US Marines and Army personnel, this one dyed a navy blue, often worn by police officers in high intensity situations."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
+	)
+	icon_state = "police_riot"
+	worn_state = "police_riot"
+
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"
 	desc = "An ill-fitting, slightly stained uniform for a pizza delivery pilot. Smells of cheese."

@@ -219,11 +219,12 @@
 
 	if(length(GLOB.hunter_primaries))
 		picked = get_turf(pick_n_take(GLOB.hunter_primaries))
+	else if(length(GLOB.hunter_secondaries))
+		picked = get_turf(pick_n_take(GLOB.hunter_secondaries))
+	else if(length(GLOB.survivor_spawns_by_priority))
+		picked = get_turf(pick_n_take(GLOB.survivor_spawns_by_priority))
 	else
-		if(length(GLOB.hunter_secondaries))
-			picked = get_turf(pick_n_take(GLOB.hunter_secondaries))
-		else
-			message_admins("There were no spawn points available for a contestant.")
+		message_admins("There were no spawn points available for a contestant.")
 
 	if(QDELETED(picked)) //???
 		message_admins("Warning, null picked spawn in spawn_contestant")
@@ -246,66 +247,183 @@
 		H.mind = new(H.key)
 		H.mind_initialize()
 
-	H.name = H.real_name
+//	H.name = H.real_name
 
-	H.skills = null //no restriction on what the contestants can do
+	var/jobs = list(
+	/datum/equipment_preset/survivor/civilian/huntergames,
+	)
 
-	H.KnockDown(15)
-	H.Stun(15)
-	H.nutrition = NUTRITION_NORMAL
+	arm_equipment(H, pick(jobs), FALSE, TRUE)
 
-	var/randjob = rand(0,10)
-	switch(randjob)
-		if(0) //colonial marine
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-		if(1) //MP
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-		if(2) //Commander!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/command(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
-		if(3) //CL
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(4) //pmc!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/pmc(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-			H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc(H), WEAR_FACE)
-		if(5) //Merc!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
-			if(prob(50))
-				H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-			else
-				M.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-			if(prob(75))
-				M.equip_to_slot_or_del(new /obj/item/clothing/shoes/leather(M), WEAR_FEET)
-			else
-				M.equip_to_slot_or_del(new /obj/item/clothing/shoes/magboots(M), WEAR_FEET)
-		if(6)//BEARS!!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/bear(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-			H.remove_language(LANGUAGE_ENGLISH)
-			H.add_language(LANGUAGE_RUSSIAN)
-		if(7) //Assassin!
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(8) //Corporate guy
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/wcoat(H), WEAR_JACKET)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
-		if(9) //Colonial Marshal
-			H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
-			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+	H.skills = /datum/skills/huntergames //almost no restriction on what the contestants can do
 
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight/flare(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general(H), WEAR_R_STORE)
+	H.nutrition = NUTRITION_MAX
 
 	//Give them some information
 	spawn(4)
 		to_chat(H, "<h2>There can be only one!!</h2>")
-		to_chat(H, "Use the flare in your pocket to light the way!")
 	return 1
+
+/datum/equipment_preset/survivor/civilian/huntergames
+	name = "Survivor - Civilian"
+	assignment = "Civilian"
+	skills = /datum/skills/huntergames
+	access = list()
+
+/datum/equipment_preset/survivor/civilian/huntergames/load_gear(mob/living/carbon/human/new_human)
+	access = get_access(ACCESS_LIST_GLOBAL)
+
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		add_ice_colony_survivor_equipment(new_human)
+
+	var/random_civilian_backpack= rand(1,11)
+	switch(random_civilian_backpack)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(new_human), WEAR_BACK)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm/blue(new_human), WEAR_BACK)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm/red_line(new_human), WEAR_BACK)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm/orange_line(new_human), WEAR_BACK)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm/green(new_human), WEAR_BACK)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
+		if(7)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black(new_human), WEAR_BACK)
+		if(8)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/blue(new_human), WEAR_BACK)
+		if(9)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack(new_human), WEAR_BACK)
+		if(10)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/industrial(new_human), WEAR_BACK)
+		if(11)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+
+	var/obj/item/clothing/suit/storage/jacket_to_equip
+	var/random_civilian_jacket = rand(1, 13)
+
+	switch(random_civilian_jacket)
+		if(1)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/webbing(new_human)
+		if(2)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/jacket/marine/vest/tan(new_human)
+		if(3)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/jacket/marine/vest(new_human)
+		if(4)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/jacket/marine/vest/grey(new_human)
+		if(5)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/jacket/marine/bomber/red(new_human)
+		if(6)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/jacket/marine/bomber/grey(new_human)
+		if(7)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/jacket/marine/bomber(new_human)
+		if(8)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_brown(new_human)
+		if(9)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_blue(new_human)
+		if(10)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/snow_suit/hybrisa/polyester_jacket_red(new_human)
+		if(11)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/apron/overalls(new_human)
+		if(12)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/apron/overalls/red(new_human)
+		if(13)
+			jacket_to_equip = new /obj/item/clothing/suit/storage/apron/overalls/tan(new_human)
+
+	if(jacket_to_equip)
+		if(prob(55))
+			qdel(jacket_to_equip)
+		else
+			new_human.equip_to_slot_or_del(jacket_to_equip, WEAR_JACKET)
+
+	var/random_civilian_uniform = rand(1,24)
+	switch(random_civilian_uniform)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/white(new_human), WEAR_BODY)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/black(new_human), WEAR_BODY)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/darkred(new_human), WEAR_BODY)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/green(new_human), WEAR_BODY)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/lightred(new_human), WEAR_BODY)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/brown(new_human), WEAR_BODY)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/lightbrown(new_human), WEAR_BODY)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/grey(new_human), WEAR_BODY)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/color/yellow(new_human), WEAR_BODY)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blue(new_human), WEAR_BODY)
+		if(7)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/brown(new_human), WEAR_BODY)
+		if(8)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/orange(new_human), WEAR_BODY)
+		if(9)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility(new_human), WEAR_BODY)
+		if(10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/blue(new_human), WEAR_BODY)
+		if(11)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown(new_human), WEAR_BODY)
+		if(12)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray(new_human), WEAR_BODY)
+		if(13)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/red(new_human), WEAR_BODY)
+		if(14)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/yellow(new_human), WEAR_BODY)
+		if(15)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(new_human), WEAR_BODY)
+		if(16)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear(new_human), WEAR_BODY)
+		if(17)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/blue(new_human), WEAR_BODY)
+		if(18)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/green(new_human), WEAR_BODY)
+		if(19)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/khaki(new_human), WEAR_BODY)
+		if(20)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/workwear/pink(new_human), WEAR_BODY)
+		if(21)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/orange(new_human), WEAR_BODY)
+		if(22)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/gray_blu(new_human), WEAR_BODY)
+		if(23)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/r_bla(new_human), WEAR_BODY)
+		if(24)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/tshirt/w_br(new_human), WEAR_BODY)
+
+	var/random_civilian_shoe = rand(1,11)
+	switch(random_civilian_shoe)
+		if(1)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
+		if(2)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+		if(3)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(new_human), WEAR_FEET)
+		if(4)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(new_human), WEAR_FEET)
+		if(5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+		if(6)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/yellow(new_human), WEAR_FEET)
+		if(7)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/green(new_human), WEAR_FEET)
+		if(8)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/red(new_human), WEAR_FEET)
+		if(9)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/blue(new_human), WEAR_FEET)
+		if(10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(new_human), WEAR_FEET)
+		if(11)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
 
 /datum/game_mode/huntergames/proc/loop_package()
 	while(finished == 0)

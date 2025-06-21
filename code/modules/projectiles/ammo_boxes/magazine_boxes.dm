@@ -1191,3 +1191,44 @@
 
 /obj/item/ammo_box/magazine/mar50/empty
 	empty = TRUE
+
+//-----------------------l54 Pistol Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/l54
+	name = "magazine box (L54 x 16)"
+	icon_state = "base_l54"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_reg"
+	overlay_gun_type = "_l54"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/l54
+
+/obj/item/ammo_box/magazine/l54/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/ap
+	name = "magazine box (AP L54 x 16)"
+	overlay_ammo_type = "_ap"
+	overlay_content = "_ap"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/ap
+
+/obj/item/ammo_box/magazine/l54/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/hp
+	name = "magazine box (HP L54 x 16)"
+	overlay_ammo_type = "_hp"
+	overlay_content = "_hp"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/hp
+
+/obj/item/ammo_box/magazine/l54/hp/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/incen
+	name = "magazine box (Incen L54 x 16)"
+	overlay_ammo_type = "_incen"
+	overlay_content = "_incen"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/incendiary
+
+/obj/item/ammo_box/magazine/l54/incen/empty
+	empty = TRUE

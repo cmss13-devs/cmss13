@@ -573,3 +573,17 @@
 
 /obj/structure/shuttle/part/upp_sof_alt/transparent
 	opacity = FALSE
+
+// CLF Ship Cosmetic
+
+/obj/structure/shuttle/part/dropship_clf
+	name = "\improper UD-9M 'Dogbite'"
+	desc = "The UD-9M 'Dogbite' is a repurposed utility dropship, originally designed for short-haul cargo operations across colonial systems. Stolen and heavily modified by the Colonial Liberation Front, it's now a rugged smuggler and strike craft, capable of dropping a full fireteam through tight patrol nets. Its hull is scarred with gunfire, rust, and graffiti — a patchwork of rebellion held together by grit and stolen parts."
+	icon = 'icons/turf/CLF_dropship.dmi'
+	icon_state = "1"
+
+/obj/structure/shuttle/part/dropship_clf/ex_act(severity, direction)
+	return FALSE
+
+/obj/structure/shuttle/part/dropship_clf/transparent
+	opacity = FALSE

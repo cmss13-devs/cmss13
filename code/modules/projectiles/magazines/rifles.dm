@@ -655,6 +655,11 @@
 	ammo_band_icon_empty = "+rmcdmr_band_e"
 	ammo_band_color = AMMO_BAND_COLOR_IMPACT
 
+/obj/item/ammo_magazine/rifle/l64/ap
+	name = "\improper L64 armor-piercing magazine (8.88x51mm)"
+	desc = "An armor-piercing 8.88x51mm L23 assault rifle magazine."
+	default_ammo = /datum/ammo/bullet/rifle/l64/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //--------------------------------------------------------
 //XM51 BREACHING SHOTGUN

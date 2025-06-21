@@ -2415,15 +2415,8 @@
 	)
 
 	accepted_ammo = list(
-		/obj/item/ammo_magazine/rifle/l42a,
-		/obj/item/ammo_magazine/rifle/l42a/ap,
-		/obj/item/ammo_magazine/rifle/l42a/le,
-		/obj/item/ammo_magazine/rifle/l42a/rubber,
-		/obj/item/ammo_magazine/rifle/l42a/heap,
-		/obj/item/ammo_magazine/rifle/l42a/penetrating,
-		/obj/item/ammo_magazine/rifle/l42a/toxin,
-		/obj/item/ammo_magazine/rifle/l42a/extended,
-		/obj/item/ammo_magazine/rifle/l42a/incendiary,
+		/obj/item/ammo_magazine/rifle/l64
+		/obj/item/ammo_magazine/rifle/l64/ap,
 	)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
@@ -2473,10 +2466,7 @@
 	SC.flags_attach_features &= ~ATTACH_REMOVABLE
 	SC.Attach(src)
 	update_attachable(SC.slot)
-	var/obj/item/attachable/stock/carbine/l42a3/marksman/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+
 
 //-------------------------------------------------------
 

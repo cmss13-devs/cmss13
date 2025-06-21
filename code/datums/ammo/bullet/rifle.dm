@@ -291,5 +291,11 @@
 
 	name = "8.88x51 squash-head bullet"
 
-/datum/ammo/bullet/rifle/ap/l64
+	damage = 40
+	penetration = ARMOR_PENETRATION_TIER_1
+
+/datum/ammo/bullet/rifle/l64/ap
 	name = "8.88x51 armour piercing squash-head bullet"
+
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_8

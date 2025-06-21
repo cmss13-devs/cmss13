@@ -312,13 +312,21 @@
 	flags_ammo_behavior = AMMO_SKIPS_ALIENS|AMMO_HITS_TARGET_TURF|AMMO_SNIPER //sniper as we want good acc
 	name = "M5510 Laser-Guided Rocket"
 	icon_state = "brute"
+	///Chance per tile to spawn smoke
 	var/smoke_chance = 30
+	///Chance per tile to spawn sparks
 	var/spark_chance = 30
+	///Chance per tile to spawn flame tile
 	var/fire_chance = 30
+	///Chance for impacted object to be thrown
 	var/throw_chance = 20
+	///Damage in central area
 	var/structure_damage = 1200
+	///Lower bound of damage on left and right blast edge
 	var/edge_lower_dmg = 400
+	///Lower bound of damage on left and right blast edge
 	var/edge_upper_dmg = 700
+	///blast length, creates 3 wide 5x5 box fallowed by 3 wide blast
 	var/max_distance = 7
 
 /datum/ammo/rocket/brute/on_hit_mob(mob/mob, obj/projectile/projectile)
@@ -366,7 +374,7 @@
 				INVOKE_ASYNC(src, PROC_REF(detonate),left_turf, initial_location, cleared_locations,edge)
 				cleared_locations |= right_turf
 				cleared_locations |= left_turf
-		sleep(1)
+		sleep(1) //for effect of traveling blastwave rather then instant action in whole impact area
 
 
 /datum/ammo/rocket/brute/proc/detonate(turf/location, turf/initial_location, list/detonated_locations, edge = FALSE)

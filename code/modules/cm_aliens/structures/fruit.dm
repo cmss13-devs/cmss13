@@ -195,9 +195,9 @@
 /obj/effect/alien/resin/fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text dont get carried to other subtypes from parent.
 	. = ..()
 	if(ishuman(user))
-		. += "A volleyball sized resin growth. Its translucent insides radiate faint green light. It appears to be loosely attached to the weeds below."
+		. += "[SPAN_NOTICE("A volleyball sized resin growth. Its translucent insides radiate faint green light. It appears to be loosely attached to the weeds below.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will instantly restore [SPAN_NOTICE("75")] health. It provides no regeneration over time."
+		. += "[SPAN_NOTICE("We sense eating this fruit will instantly restore [SPAN_BOLDNOTICE("75")] health. It provides no regeneration over time.")]"
 
 //Greater
 
@@ -228,9 +228,9 @@
 /obj/effect/alien/resin/fruit/greater/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "A basketball sized resin growth. Its translucent insides radiate faint green light. It appears to be loosely attached to the weeds below."
+		. += "[SPAN_NOTICE("A basketball sized resin growth. Its translucent insides radiate faint green light. It appears to be loosely attached to the weeds below.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will instantly restore [SPAN_NOTICE("75")] health, then regenerate [SPAN_NOTICE("20")] health per second, totaling to [SPAN_NOTICE("100")] health over [SPAN_NOTICE("5")] seconds."
+		. += "[SPAN_NOTICE("We sense eating this fruit will instantly restore [SPAN_BOLDNOTICE("75")] health, then regenerate [SPAN_BOLDNOTICE("20")] health per second, totaling to [SPAN_BOLDNOTICE("100")] health over [SPAN_BOLDNOTICE("5")] seconds.")]"
 
 //Unstable
 /obj/effect/alien/resin/fruit/unstable
@@ -264,9 +264,9 @@
 /obj/effect/alien/resin/fruit/unstable/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "A basketball sized resin growth. Its translucent insides radiate faint turquoise light. It appears to be loosely attached to the weeds below."
+		. += "[SPAN_NOTICE("A basketball sized resin growth. Its translucent insides radiate faint turquoise light. It appears to be loosely attached to the weeds below.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will grant an [SPAN_NOTICE("overshield")] equal to [SPAN_NOTICE("30%")] of our max health, capped at [SPAN_NOTICE("200")]. After [SPAN_NOTICE("60")] seconds the shield starts to decay by [SPAN_NOTICE("10")] per second. We also regenerate [SPAN_NOTICE("75")] health across [SPAN_NOTICE("15")] seconds, healing [SPAN_NOTICE("5")] per second."
+		. += "[SPAN_NOTICE("We sense eating this fruit will grant an [SPAN_BOLDNOTICE("overshield")] equal to [SPAN_BOLDNOTICE("30%")] of our max health, capped at [SPAN_BOLDNOTICE("200")]. After [SPAN_BOLDNOTICE("60")] seconds the shield starts to decay by [SPAN_BOLDNOTICE("10")] per second. We also regenerate [SPAN_BOLDNOTICE("75")] health across [SPAN_BOLDNOTICE("15")] seconds, healing [SPAN_BOLDNOTICE("5")] per second.")]"
 
 //Spore
 /obj/effect/alien/resin/fruit/spore
@@ -316,9 +316,9 @@
 /obj/effect/alien/resin/fruit/spore/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "A basketball sized resin growth. Its translucent insides radiate faint orange light. It appears to be loosely attached to the weeds below."
+		. += "[SPAN_NOTICE("A basketball sized resin growth. Its translucent insides radiate faint orange light. It appears to be loosely attached to the weeds below.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will reduce ability cooldown by [SPAN_NOTICE("5%")] per slash, up to [SPAN_NOTICE("25%")] on next ability cast. The casting cooldown effect of fruit persist for [SPAN_NOTICE("60")] seconds. While rooted, it passively emits weak recovery pheromones around itself."
+		. += "[SPAN_NOTICE("We sense eating this fruit will reduce ability cooldown by [SPAN_BOLDNOTICE("5%")] per slash, up to [SPAN_BOLDNOTICE("25%")] on next ability cast. The casting cooldown effect of fruit persist for [SPAN_BOLDNOTICE("60")] seconds. While rooted, it passively emits weak recovery pheromones around itself.")]"
 
 /obj/effect/alien/resin/fruit/speed
 	name = XENO_FRUIT_SPEED
@@ -351,9 +351,9 @@
 /obj/effect/alien/resin/fruit/speed/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "A basketball sized resin growth. Its translucent insides radiate faint purple light. It appears to be loosely attached to the weeds below."
+		. += "[SPAN_NOTICE("A basketball sized resin growth. Its translucent insides radiate faint purple light. It appears to be loosely attached to the weeds below.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will increase our speed by [SPAN_NOTICE("0.4")]. The effect lasts for [SPAN_NOTICE("15")] seconds."
+		. += "[SPAN_NOTICE("We sense eating this fruit will increase our speed by [SPAN_BOLDNOTICE("+40%")]. The effect lasts for [SPAN_BOLDNOTICE("15")] seconds.")]"
 
 /obj/effect/alien/resin/fruit/plasma
 	name = XENO_FRUIT_PLASMA
@@ -384,9 +384,9 @@
 /obj/effect/alien/resin/fruit/plasma/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "A basketball sized resin growth. Its translucent insides radiate faint blue light. It appears to be loosely attached to the weeds below."
+		. += "[SPAN_NOTICE("A basketball sized resin growth. Its translucent insides radiate faint blue light. It appears to be loosely attached to the weeds below.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense that eating this fruit will regenerate [SPAN_NOTICE("48")] plasma every [SPAN_NOTICE("3")] seconds, up to a total of [SPAN_NOTICE("240")] plasma."
+		. += "[SPAN_NOTICE("We sense that eating this fruit will regenerate [SPAN_BOLDNOTICE("48")] plasma every [SPAN_BOLDNOTICE("3")] seconds, up to a total of [SPAN_BOLDNOTICE("240")] plasma.")]"
 
 /obj/item/reagent_container/food/snacks/resin_fruit
 	name = XENO_FRUIT_LESSER
@@ -395,6 +395,7 @@
 	icon_state = "fruit_lesser_item"
 	w_class = SIZE_MEDIUM
 	storage_cost = SIZE_LARGE
+	layer = BUSH_LAYER
 	bitesize = 2
 	var/mob/living/carbon/xenomorph/bound_xeno //Drone linked to this fruit
 	var/fruit_type = /obj/effect/alien/resin/fruit
@@ -513,8 +514,7 @@
 	F.picked = TRUE
 	var/pick_delay = F.consume_delay
 	if(istype(src.strain, /datum/xeno_strain/gardener))
-		pick_delay /= 2
-	// Decrease time by half, if strain is gardener
+		pick_delay /= 2 //Decrease time by half, if strain is gardener
 	if(!do_after(src, pick_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		F.picked = FALSE
 		return
@@ -544,9 +544,9 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/lesser/get_examine_text(mob/user) //Need new subtype, so text dont get carried to other subtypes from parent.
 	. = ..()
 	if(ishuman(user))
-		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will instantly restore [SPAN_NOTICE("75")] health. It provides no regeneration over time."
+		. += "[SPAN_NOTICE("We sense eating this fruit will instantly restore [SPAN_BOLDNOTICE("75")] health. It provides no regeneration over time.")]"
 
 /obj/item/reagent_container/food/snacks/resin_fruit/greater
 	name = XENO_FRUIT_GREATER
@@ -561,9 +561,9 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/greater/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will instantly restore [SPAN_NOTICE("75")] health, then regenerate [SPAN_NOTICE("20")] health per second, totaling to [SPAN_NOTICE("100")] health over [SPAN_NOTICE("5")] seconds."
+		. += "[SPAN_NOTICE("We sense eating this fruit will instantly restore [SPAN_BOLDNOTICE("75")] health, then regenerate [SPAN_BOLDNOTICE("20")] health per second, totaling to [SPAN_BOLDNOTICE("100")] health over [SPAN_BOLDNOTICE("5")] seconds.")]"
 
 /obj/item/reagent_container/food/snacks/resin_fruit/unstable
 	name = XENO_FRUIT_UNSTABLE
@@ -579,9 +579,9 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/unstable/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will grant an [SPAN_NOTICE("overshield")] equal to [SPAN_NOTICE("30%")] of our max health, capped at [SPAN_NOTICE("200")]. After [SPAN_NOTICE("60")] seconds the shield starts to decay by [SPAN_NOTICE("10")] per second. We also regenerate [SPAN_NOTICE("75")] health across [SPAN_NOTICE("15")] seconds, healing [SPAN_NOTICE("5")] per second."
+		. += "[SPAN_NOTICE("We sense eating this fruit will grant an [SPAN_BOLDNOTICE("overshield")] equal to [SPAN_BOLDNOTICE("30%")] of our max health, capped at [SPAN_BOLDNOTICE("200")]. After [SPAN_BOLDNOTICE("60")] seconds the shield starts to decay by [SPAN_BOLDNOTICE("10")] per second. We also regenerate [SPAN_BOLDNOTICE("75")] health across [SPAN_BOLDNOTICE("15")] seconds, healing [SPAN_BOLDNOTICE("5")] per second.")]"
 
 /obj/item/reagent_container/food/snacks/resin_fruit/spore
 	name = XENO_FRUIT_SPORE
@@ -596,9 +596,9 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/spore/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will reduce ability cooldown by [SPAN_NOTICE("5%")] per slash, up to [SPAN_NOTICE("25%")] on next ability cast. The casting cooldown effect of fruit persist for [SPAN_NOTICE("60")] seconds. While rooted, it passively emits weak recovery pheromones around itself."
+		. += "[SPAN_NOTICE("We sense eating this fruit will reduce ability cooldown by [SPAN_BOLDNOTICE("5%")] per slash, up to [SPAN_BOLDNOTICE("25%")] on next ability cast. The casting cooldown effect of fruit persist for [SPAN_BOLDNOTICE("60")] seconds. While rooted, it passively emits weak recovery pheromones around itself.")]"
 
 /obj/item/reagent_container/food/snacks/resin_fruit/speed
 	name = XENO_FRUIT_SPEED
@@ -613,9 +613,9 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/speed/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense eating this fruit will increase our speed by [SPAN_NOTICE("0.4")]. The effect lasts for [SPAN_NOTICE("15")] seconds."
+		. += "[SPAN_NOTICE("We sense eating this fruit will increase our speed by [SPAN_BOLDNOTICE("+40%")]. The effect lasts for [SPAN_BOLDNOTICE("15")] seconds.")]"
 
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma
 	name = XENO_FRUIT_PLASMA
@@ -629,6 +629,6 @@
 /obj/item/reagent_container/food/snacks/resin_fruit/plasma/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user))
-		. += "It looks unappetizing... maybe the eggheads would want to study it instead."
+		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We sense that eating this fruit will regenerate [SPAN_NOTICE("48")] plasma every [SPAN_NOTICE("3")] seconds, up to a total of [SPAN_NOTICE("240")] plasma."
+		. += "[SPAN_NOTICE("We sense that eating this fruit will regenerate [SPAN_BOLDNOTICE("48")] plasma every [SPAN_BOLDNOTICE("3")] seconds, up to a total of [SPAN_BOLDNOTICE("240")] plasma.")]"

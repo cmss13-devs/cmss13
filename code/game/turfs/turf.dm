@@ -26,6 +26,9 @@
 
 /turf
 	icon = 'icons/turf/floors/floors.dmi'
+
+	///How much explosive power is needed to breach, null is unbreachable
+	var/breach_resistance
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?
@@ -213,7 +216,12 @@
 	. = ..()
 
 /turf/ex_act(severity)
+	//if(breach_resistance && severity >= breach_resistance)
+	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
 	return 0
+
+/turf/proc/breach_floor(severity)
+	ChangeTurf(/turf/open_space)
 
 /turf/proc/update_icon() //Base parent. - Abby
 	return

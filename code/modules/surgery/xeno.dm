@@ -156,7 +156,7 @@
 			SPAN_NOTICE("You sever the connective tissue that holds the [target.caste_type]'s alien organ in place using [tool]."))
 	else
 		user.visible_message(
-			SPAN_NOTICE("[user] gleefully rips the [target.caste_type]'s connective tissue apart using [tool]"),
+			SPAN_NOTICE("[user] gleefully rips the [target.caste_type]'s connective tissue apart using [tool]".),
 			SPAN_NOTICE("You gleefully rip the [target.caste_type]'s connective tissue apart using [tool]."))
 
 /datum/surgery_step/xenomorph/severe_connections/failure(mob/living/carbon/human/user, mob/living/carbon/xenomorph/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)

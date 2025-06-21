@@ -6,6 +6,10 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
+"ab" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/clf_lz)
 "am" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
 /turf/open/floor/almayer,
@@ -1626,7 +1630,7 @@ cf
 zp
 EW
 vZ
-RN
+ab
 Pp
 EW
 Ql

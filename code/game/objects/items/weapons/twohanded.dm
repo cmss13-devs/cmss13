@@ -376,13 +376,13 @@
 	var/move_delay_addition = 1.5
 
 /obj/item/weapon/twohanded/breacher/synth/pickup(mob/user)
+	. = ..()
 	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
 		to_chat(user, SPAN_HIGHDANGER("You barely manage to lift [src] above your knees. This thing will probably be useless to you."))
 		user.apply_effect(3, EYE_BLUR)
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 
 		return
-	..()
 
 /obj/item/weapon/twohanded/breacher/synth/proc/handle_movedelay(mob/living/M, list/movedata)
 	SIGNAL_HANDLER

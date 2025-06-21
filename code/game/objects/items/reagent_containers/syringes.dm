@@ -37,7 +37,7 @@
 
 
 /obj/item/reagent_container/syringe/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/syringe/dropped(mob/user)
@@ -311,7 +311,7 @@
 	update_icon()
 
 /obj/item/reagent_container/ld50_syringe/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/ld50_syringe/dropped(mob/user)

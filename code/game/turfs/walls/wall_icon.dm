@@ -77,8 +77,8 @@
 	for(var/turf/T in orange(src, 1))
 		var/success = 0
 		for(var/obj/O in T)
-			for(var/b_type in blend_objects)
-				if(istype(O, b_type))
+			for(var/blood_type in blend_objects)
+				if(istype(O, blood_type))
 					success = TRUE
 				for(var/nb_type in noblend_objects)
 					if(istype(O, nb_type))

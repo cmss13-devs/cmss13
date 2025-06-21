@@ -70,14 +70,6 @@
 	reference_package = /datum/supply_packs/ammo_shell_box_flechette
 	cost = ASRS_VERY_LOW_WEIGHT
 
-/datum/supply_packs_asrs/ammo_shell_box_breaching
-	reference_package = /datum/supply_packs/ammo_shell_box_breaching
-	cost = ASRS_VERY_LOW_WEIGHT
-
-/datum/supply_packs_asrs/ammo_xm51
-	reference_package = /datum/supply_packs/ammo_xm51
-	cost = ASRS_VERY_LOW_WEIGHT
-
 /datum/supply_packs_asrs/ammo_smartgun
 	reference_package = /datum/supply_packs/ammo_smartgun
 

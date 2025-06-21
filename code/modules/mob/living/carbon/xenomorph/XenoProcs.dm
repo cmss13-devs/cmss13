@@ -443,7 +443,7 @@
 	hauled_mob = null
 
 // Releasing a hauled mob
-/mob/living/carbon/xenomorph/proc/release_haul(stuns_human = FALSE)
+/mob/living/carbon/xenomorph/proc/release_haul(stuns = FALSE)
 	deltimer(haul_timer)
 	var/mob/living/carbon/human/luggage = hauled_mob?.resolve()
 	if(!luggage)
@@ -454,8 +454,9 @@
 	SPAN_XENOWARNING("We release [luggage] from our grip!"), null, 5)
 	playsound(src, 'sound/voice/alien_growl1.ogg', 15)
 	log_interact(src, luggage, "[key_name(src)] released [key_name(luggage)] at [get_area_name(loc)]")
-	if(stuns_human)
+	if(stuns)
 		luggage.adjust_effect(2, STUN)
+		adjust_effect(2, STUN)
 	UnregisterSignal(luggage, COMSIG_MOB_DEATH)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null

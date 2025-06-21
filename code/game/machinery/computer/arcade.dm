@@ -1,6 +1,4 @@
 #define FIELD_SMALL list(8,8)
-#define FIELD_MEDIUM list(8,9)
-#define FIELD_LARGE list(12,13)
 #define LANDMINE -1
 #define	CLEAR -2
 #define CELL_CLOSED "closed"

@@ -26,7 +26,7 @@
 	///each cleared field equals to 30 (score)seconds cleared, at 300 score shuttle is unlocked.
 	var/minesweeper_score = 0
 	///fluff components the dropship has, each cleared field gets one of these clared.
-	var/list/dropship_components = list("Left engine controller", "Right engine controller", "Flight panel", "Surface controls", "Security controls", "Hydraulics controls", "Fuel distribution", "Autopilot controls", "Weapons controls", "APU")
+	var/list/dropship_components = list("left engine controller", "right engine controller", "flight panel", "surface controls", "security controls", "hydraulics controls", "fuel distribution", "autopilot controls", "weapons controls", "APU")
 
 	// If the computer is on the dropship or remotely accessing it
 	var/is_remote = FALSE

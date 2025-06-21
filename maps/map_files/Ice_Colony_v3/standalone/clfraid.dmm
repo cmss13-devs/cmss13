@@ -396,6 +396,10 @@
 /obj/item/ammo_magazine/smg/fp9000,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
+"iK" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/corsat/cargo,
+/area/shiva/interior/colony/clf_shuttle)
 "iP" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
@@ -3031,7 +3035,7 @@ vh
 Kx
 hZ
 hs
-hs
+iK
 ai
 kI
 Kx

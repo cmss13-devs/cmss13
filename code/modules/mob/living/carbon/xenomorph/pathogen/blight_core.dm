@@ -173,8 +173,11 @@
 	var/mob/living/carbon/xenomorph/overmind_mob
 	/// What was the name of the creature now acting as overmind?
 	var/list/overmind_stored_stuff = list()
+
 	/// Is the overmind in a state of strength? (Has the core been alive a while)
 	var/overmind_strengthened = TRUE
+	var/overmind_timer
+	var/overmind_timer_duration = 600 SECONDS
 
 	var/list/overmind_abilities = list(
 		/datum/action/xeno_action/onclick/exit_overmind,
@@ -213,6 +216,9 @@
 
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
+
+	if(is_mainship_level(z))
+		overmind_timer_duration = 120 SECONDS
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
@@ -258,6 +264,10 @@
 		. = ..()
 
 /obj/effect/alien/resin/special/pylon/pathogen_core/Destroy()
+	if(overmind_timer)
+		deltimer(overmind_timer)
+	overmind_timer = null
+
 	if(linked_hive)
 		visible_message(SPAN_XENOHIGHDANGER("The mycelial roof withers away as \the [src] dies!"), max_distance = WEED_RANGE_CORE)
 		linked_hive.hive_location = null

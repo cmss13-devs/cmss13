@@ -153,7 +153,6 @@
 	shards = max(0, shards - amount)
 
 /datum/behavior_delegate/pathogen_base/matriarch/on_life()
-
 	if (!shards_locked)
 		shards = min(max_shards, shards + shard_gain_onlife)
 

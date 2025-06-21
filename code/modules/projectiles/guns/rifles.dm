@@ -2405,7 +2405,6 @@
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/lasersight,
 		/obj/item/attachable/scope,
-		/obj/item/attachable/stock/carbine/l42a3,
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/scope/mini/nsg23,
 		/obj/item/attachable/scope/variable_zoom/twe,
@@ -2415,7 +2414,7 @@
 	)
 
 	accepted_ammo = list(
-		/obj/item/ammo_magazine/rifle/l64
+		/obj/item/ammo_magazine/rifle/l64,
 		/obj/item/ammo_magazine/rifle/l64/ap,
 	)
 
@@ -2424,7 +2423,7 @@
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 
 /obj/item/weapon/gun/rifle/l42a3/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 19, "rail_x" = 13, "rail_y" = 22, "under_x" = 20, "under_y" = 16, "stock_x" = 22, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 40, "muzzle_y" = 19, "rail_x" = 18, "rail_y" = 22, "under_x" = 30, "under_y" = 16, "stock_x" = 22, "stock_y" = 10)
 
 /obj/item/weapon/gun/rifle/l42a3/set_gun_config_values()
 	..()
@@ -2438,14 +2437,12 @@
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
 
-/obj/item/weapon/gun/rifle/l42a3/training
-	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
 
 /obj/item/weapon/gun/rifle/l42a3/marksman
 	name = "\improper L64A3 battle rifle"
 	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces.  Reliable and deadly."
 
-	current_mag = /obj/item/ammo_magazine/rifle/l42a/ap
+	current_mag = /obj/item/ammo_magazine/rifle/l64/ap
 
 	random_spawn_chance = 100 //L42A3 always spawns with attachments
 	random_spawn_muzzle = list(

@@ -132,7 +132,7 @@
 		to_chat(X, SPAN_WARNING("We cannot put them down here."))
 		return
 
-	X.release_haul(TRUE)
+	X.release_haul(FALSE)
 
 	return ..()
 

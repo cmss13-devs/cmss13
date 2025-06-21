@@ -152,7 +152,7 @@
 				var/hit_sound = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
 				playsound(loc, hit_sound, 25, 1)
 			if(prob(max(4*(100*xeno.getBruteLoss()/xeno.maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
-				xeno.release_haul(stuns=FALSE)
+				xeno.release_haul(stuns_human = FALSE)
 		else
 			for(var/mob/mobs_can_hear in hearers(4, xeno))
 				if(mobs_can_hear.client)

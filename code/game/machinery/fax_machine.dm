@@ -615,7 +615,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			return
 		if(!(receiver.inoperable()))
 
-			flick("[initial(icon_state)]receive", receiver)
+			flick("[initial(receiver.icon_state)]receive", receiver)
 
 			playsound(receiver.loc, "sound/machines/fax.ogg", 15)
 			// give the sprite some time to flick
@@ -791,7 +791,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	needs_power = FALSE
 	use_power = USE_POWER_NONE
 	health = 150
-	sub_name = "CC (portable)"
+	department = FAX_DEPARTMENT_ALMAYER
+	target_department = FAX_DEPARTMENT_PRESS
+	sub_name = "Correspondent (portable)"
 	var/obj/item/device/fax_backpack/faxbag
 
 /obj/structure/machinery/faxmachine/backpack/New(loc, portable_id_tag)

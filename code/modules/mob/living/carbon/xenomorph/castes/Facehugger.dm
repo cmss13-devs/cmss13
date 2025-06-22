@@ -71,6 +71,7 @@
 	var/next_facehug_goal = FACEHUG_TIER_1
 	/// Whether a hug was performed successfully
 	var/hug_successful = FALSE
+	var/last_roar_time = 0
 
 /mob/living/carbon/xenomorph/facehugger/Login()
 	var/last_ckey_inhabited = persistent_ckey

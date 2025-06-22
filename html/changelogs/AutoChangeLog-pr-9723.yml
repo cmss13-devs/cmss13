@@ -1,0 +1,4 @@
+author: "Lagomorphica"
+delete-after: True
+changes:
+  - balance: "FORECON major now spawns with their chosen sidearm"

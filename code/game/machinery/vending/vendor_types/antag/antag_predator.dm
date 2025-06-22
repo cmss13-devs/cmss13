@@ -172,20 +172,6 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return FALSE
 	return TRUE
 
-/obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
-	if(!allowed(user))
-		if(display)
-			to_chat(user, SPAN_WARNING("Access denied."))
-			vend_fail()
-		return FALSE
-
-	if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
-		if(display)
-			to_chat(user, SPAN_WARNING("This machine isn't for you."))
-			vend_fail()
-		return FALSE
-	return TRUE
-
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(isthrall(user))
 		return TRUE

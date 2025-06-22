@@ -63,8 +63,8 @@
 // Paramedic
 
 /obj/item/clothing/under/hybrisa/paramedic
-	name = "\improper Nova Medica - EMT - Paramedic uniform"
-	desc = "A set of Nova-Medica EMT - Paramedic fatigues, this one is green."
+	name = "\improper EMT - Paramedic uniform"
+	desc = "A set of EMT - Paramedic fatigues, this one is green."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
@@ -81,8 +81,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/hybrisa/paramedic/red
-	name = "\improper Nova Medica - EMT - Paramedic uniform"
-	desc = "A set of Nova-Medica EMT - Paramedic fatigues, this one is red."
+	name = "\improper EMT - Paramedic uniform"
+	desc = "A set of EMT - Paramedic fatigues, this one is red."
 	icon_state = "paramedic_redblack_uniform"
 	worn_state = "paramedic_redblack_uniform"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -741,8 +741,8 @@
 // EMT - Paramedic
 
 /obj/item/clothing/suit/hybrisa/EMT_green_utility
-	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
-	desc = "A set of Nova-Medica EMT - Paramedic utility fatigues, this one is green."
+	name = "\improper EMT - Paramedic utility fatigues"
+	desc = "A set of EMT - Paramedic utility fatigues, this one is green."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -752,8 +752,8 @@
 	uniform_restricted = null
 
 /obj/item/clothing/suit/hybrisa/EMT_red_utility
-	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
-	desc = "A set of Nova-Medica EMT - Paramedic utility fatigues, this one is red."
+	name = "\improper EMT - Paramedic utility fatigues"
+	desc = "A set of EMT - Paramedic utility fatigues, this one is red."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',

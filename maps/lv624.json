@@ -14,7 +14,9 @@
         "/datum/equipment_preset/survivor/security/lv",
         "/datum/equipment_preset/survivor/colonial_marshal/lv",
         "/datum/equipment_preset/survivor/goon",
-        "/datum/equipment_preset/survivor/civilian"
+        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/civilian_unique"
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
     "announce_text": "Получен автоматический сигнал бедствия с археологического объекта \"Лазарь Лэндинг\" на пограничной планете LV-624. Для расследования сложившейся ситуации, с ###SHIPNAME### в ближайшее время будет отправлена оперативная группа реагирования.",

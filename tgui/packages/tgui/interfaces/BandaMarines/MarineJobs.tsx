@@ -368,6 +368,9 @@ const JOBS_RU = {
 
   // Observer role
   Observer: 'Наблюдатель',
+
+  // Other
+  Infected: 'Зараженные',
 };
 
 export function JobsRu(value: string) {

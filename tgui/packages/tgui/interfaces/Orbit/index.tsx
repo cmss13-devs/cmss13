@@ -405,6 +405,7 @@ const ObservableContent = () => {
     marines = [],
     survivors = [],
     xenos = [],
+    infected = [],
     ert_members = [],
     upp = [],
     clf = [],
@@ -452,6 +453,11 @@ const ObservableContent = () => {
         color="good"
         section={survivors}
         title={JobsRu('Survivors')}
+      />
+      <ObservableSection
+        color="red"
+        section={infected}
+        title={JobsRu('Infected')}
       />
       <ObservableSection
         color="average"

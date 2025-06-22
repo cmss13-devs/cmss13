@@ -1,6 +1,0 @@
-author: "DarkLordCabbage"
-delete-after: True
-changes:
-  - qol: "synths now have custom surgery messages, i.e. carbon fibre skeleton instead of bone"
-  - bugfix: "fixed synth k9s being unable to get their head reattached"
-  - code_imp: "head reattachment surgery checks for IS_SYNTH instead of a species list"

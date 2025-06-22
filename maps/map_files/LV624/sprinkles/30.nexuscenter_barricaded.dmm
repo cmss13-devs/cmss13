@@ -119,7 +119,7 @@
 	dir = 4;
 	flipped = 1
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "av" = (
@@ -765,7 +765,7 @@
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "Ie" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/lv624/lazarus/main_hall)
 "Ii" = (

@@ -89,8 +89,6 @@
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
-	QDEL_LIST(GLOB.hunter_primaries)
-	QDEL_LIST(GLOB.hunter_secondaries)
 	QDEL_LIST(GLOB.melee_weapon)
 	QDEL_LIST(GLOB.good_items)
 

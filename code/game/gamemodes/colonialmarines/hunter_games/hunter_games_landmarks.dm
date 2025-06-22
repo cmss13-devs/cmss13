@@ -28,27 +28,7 @@
 
 
 // Contestant Spawning
-/obj/effect/landmark/hunter_primary
-	name = "hunter_games_primary"
+/obj/effect/landmark/start/hunter_games
+	name = JOB_HUNTER_GAMES
 	icon_state = "hunter_primary"
-
-/obj/effect/landmark/hunter_primary/Initialize(mapload, ...)
-	. = ..()
-	GLOB.hunter_primaries += src
-
-/obj/effect/landmark/hunter_primary/Destroy()
-	GLOB.hunter_primaries -= src
-	return ..()
-
-// Backup Contesting Spawning (?)
-/obj/effect/landmark/hunter_secondary
-	name = "hunter_games_secondary"
-	icon_state = "hunter_secondary"
-
-/obj/effect/landmark/hunter_secondary/Initialize(mapload, ...)
-	. = ..()
-	GLOB.hunter_secondaries += src
-
-/obj/effect/landmark/hunter_secondary/Destroy()
-	GLOB.hunter_secondaries -= src
-	return ..()
+	job = /datum/job/hunter_games

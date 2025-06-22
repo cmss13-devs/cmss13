@@ -1,4 +1,4 @@
-
+/*
 //Digging through this is a pain. I'm leaving it mostly alone until a full rework takes place.
 // that day may well be today.
 
@@ -263,3 +263,4 @@
 		else
 			obj_type = HUNTER_OKAY_ITEM
 			new obj_type(location)
+*/

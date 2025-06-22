@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(spawned_contestants)
 
 	languages = list()
 
-//	flags = EQUIPMENT_PRESET_STUB
+	flags = EQUIPMENT_PRESET_STUB
 
 // Contestants get a random language; we tower of babel in this mf.
 /datum/equipment_preset/hunter_games/load_languages(mob/living/carbon/human/new_human, client/mob_client)
@@ -49,12 +49,13 @@ GLOBAL_LIST_EMPTY(spawned_contestants)
 
 /datum/equipment_preset/hunter_games/civilian
 	name = "Hunter Games - Hunted Survivor - Civilian"
-	assignment = "Hunted Civilian"
+	assignment = JOB_HUNTER_GAMES
+	job_title = JOB_HUNTER_GAMES
 	origin_override = ORIGIN_CIVILIAN
 
-//	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
-/datum/equipment_preset/civilian/hunter_games/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/hunter_games/civilian/load_gear(mob/living/carbon/human/new_human)
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])

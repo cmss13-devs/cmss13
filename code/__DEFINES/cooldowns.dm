@@ -2,6 +2,9 @@
 #define COOLDOWN_IDLOCK_TEXTALERT "mob_idlock_textalert"
 #define COOLDOWN_HIJACK_BARRAGE "gamemode_explosive_barrage"
 #define COOLDOWN_HIJACK_GROUND_CHECK "gamemode_ground_check"
+/// hunter games, cooldown for assessing remaining living candidates.
+#define COOLDOWN_HUNTER_GAMES_GROUND_CHECK "hunter_games_ground_check"
+
 #define COOLDOWN_ITEM_HOOD_SOUND "item_hood_sound"
 #define COOLDOWN_LIGHT "cooldown_light"
 

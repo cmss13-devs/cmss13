@@ -1304,11 +1304,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	if(!istype(SSticker.mode,/datum/game_mode/huntergames))
+	if(!istype(SSticker.mode,/datum/game_mode/hunter_games))
 		to_chat(src, SPAN_INFO("Wrong game mode. You have to be observing a Hunter Games round."))
 		return
 
-	var/datum/game_mode/huntergames/mode = SSticker.mode
+	var/datum/game_mode/hunter_games/mode = SSticker.mode
 
 	if(!mode.waiting_for_drop_votes)
 		to_chat(src, SPAN_INFO("There's no drop vote currently in progress. Wait for a supply drop to be announced!"))

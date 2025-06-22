@@ -41,8 +41,6 @@ GLOBAL_LIST_EMPTY(xeno_tunnels)
 GLOBAL_LIST_EMPTY(melee_weapon) // melee weapon spawner used in hunter games
 GLOBAL_LIST_EMPTY(good_items)
 GLOBAL_LIST_EMPTY_TYPED(structure_spawners, /obj/effect/landmark/structure_spawner)
-GLOBAL_LIST_EMPTY(hunter_primaries)
-GLOBAL_LIST_EMPTY(hunter_secondaries)
 
 GLOBAL_LIST_EMPTY(monkey_spawns)
 

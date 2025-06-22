@@ -28,6 +28,7 @@
 
 #define is_pathogen_creature(A) (istype(A, /mob/living/carbon/xenomorph)) && (istype(A?:caste, /datum/caste_datum/pathogen))
 #define isbloodburster(A) (istype(A, /mob/living/carbon/xenomorph/pathogen/bloodburster))
+#define ismatriarch(A) (istype(A, /mob/living/carbon/xenomorph/pathogen/matriarch))
 
 /// Returns true/false based on if the xenomorph can harm the passed carbon mob.
 /mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)

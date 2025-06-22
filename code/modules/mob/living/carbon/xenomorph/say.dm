@@ -142,6 +142,8 @@
 					else if(istype(xeno))
 						if(IS_XENO_LEADER(xeno))
 							broadcast_tier = "leader"
+						if(ismatriarch(xeno))
+							broadcast_tier = "royal"
 
 					ghostrend = get_hivemind_render(hive.hivenumber, broadcast_tier, message, "[src.name][track]")
 
@@ -158,6 +160,8 @@
 					if(IS_XENO_LEADER(xeno))
 						broadcast_tier = "leader"
 					if(xeno.is_hive_ruler())
+						broadcast_tier = "royal"
+					if(ismatriarch(xeno))
 						broadcast_tier = "royal"
 
 				rendered = get_hivemind_render(hive.hivenumber, broadcast_tier, message, "[src.name][overwatch_insert]")

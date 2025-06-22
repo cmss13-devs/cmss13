@@ -19,19 +19,19 @@
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/matriarch
 
 	deevolves_to = list()
-	caste_desc = "Rage, rage, and rage some more."
+	caste_desc = "Fury and death..."
 	evolves_to = list()
 
 	heal_resting = 1.6
 	is_intelligent = TRUE
 
-	minimap_icon = "venator"
+	minimap_icon = "matriarch"
 	evolution_allowed = FALSE
 
 /mob/living/carbon/xenomorph/pathogen/matriarch
 	caste_type = PATHOGEN_CREATURE_MATRIARCH
 	name = PATHOGEN_CREATURE_MATRIARCH
-	desc = "A wandering ball of death."
+	desc = "Nothing will survive..."
 	icon_size = 48
 	icon_state = "Venator Walking"
 	plasma_types = list()
@@ -69,7 +69,7 @@
 
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
-	speaking_noise = "neo_talk"
+	speaking_noise = "pathogen_talk"
 
 	mob_size = MOB_SIZE_BIG
 	acid_blood_damage = 0

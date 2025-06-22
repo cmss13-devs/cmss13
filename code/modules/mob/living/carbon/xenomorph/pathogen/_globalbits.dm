@@ -112,7 +112,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_plant_weeds
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 1 SECONDS
-	ability_primacy = XENO_PRIMARY_ACTION_1
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 	plant_on_semiweedable = TRUE
 	node_type = /obj/effect/alien/weeds/node/pathogen
@@ -120,6 +120,7 @@
 /datum/action/xeno_action/onclick/plant_weeds/pathogen/popper
 	name = "Spread Blight (100)"
 	plasma_cost = 100
+	ability_primacy = XENO_PRIMARY_ACTION_1
 
 //####################################################################
 //####################################################################

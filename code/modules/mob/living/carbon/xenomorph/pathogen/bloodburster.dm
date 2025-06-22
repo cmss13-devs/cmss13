@@ -53,7 +53,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/activable/pounce/runner,
+		/datum/action/xeno_action/activable/pounce/runner, // Macro 1
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(

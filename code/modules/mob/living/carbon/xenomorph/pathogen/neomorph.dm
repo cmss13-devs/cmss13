@@ -42,8 +42,8 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/pounce/runner/neomorph,
-		/datum/action/xeno_action/activable/headbite,
+		/datum/action/xeno_action/activable/pounce/runner/neomorph, // Macro 1
+		/datum/action/xeno_action/activable/headbite/neomorph, // Macro 2
 		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -93,3 +93,6 @@
 	freeze_self = TRUE // Should we freeze ourselves after the lunge?
 	freeze_time = 5
 	can_be_shield_blocked = TRUE // Some legacy stuff, self explanatory
+
+/datum/action/xeno_action/activable/headbite/neomorph
+	ability_primacy = XENO_PRIMARY_ACTION_2

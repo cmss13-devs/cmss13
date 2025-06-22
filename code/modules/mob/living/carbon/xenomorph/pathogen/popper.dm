@@ -39,8 +39,8 @@
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper,
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/plant_weeds/pathogen/popper,
 		/datum/action/xeno_action/onclick/place_spore_sac,
 		/datum/action/xeno_action/onclick/release_spores,
 		/datum/action/xeno_action/onclick/tacmap,

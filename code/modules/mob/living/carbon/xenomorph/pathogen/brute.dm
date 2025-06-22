@@ -3,7 +3,7 @@
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
-	melee_damage_upper = XENO_DAMAGE_TIER_7
+	melee_damage_upper = XENO_DAMAGE_TIER_6
 	melee_vehicle_damage = XENO_DAMAGE_TIER_8
 	max_health = XENO_HEALTH_TIER_14
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
@@ -44,9 +44,9 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute,
-		/datum/action/xeno_action/onclick/crusher_stomp/pathogen_brute,
-		/datum/action/xeno_action/activable/oppressor_punch,
-		/datum/action/xeno_action/onclick/crusher_shield,
+		/datum/action/xeno_action/onclick/crusher_stomp/pathogen_brute, // Macro 1
+		/datum/action/xeno_action/activable/oppressor_punch, // Macro 2
+		/datum/action/xeno_action/onclick/crusher_shield, // Macro 3
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP

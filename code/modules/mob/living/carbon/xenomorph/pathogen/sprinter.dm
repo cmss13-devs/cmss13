@@ -55,9 +55,9 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/activable/pounce/runner,
-		/datum/action/xeno_action/activable/runner_skillshot,
-		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+		/datum/action/xeno_action/activable/pounce/runner, // Macro 1
+		/datum/action/xeno_action/activable/runner_skillshot, // Macro 2
+		/datum/action/xeno_action/onclick/toggle_long_range/runner, // Macro 3
 		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)

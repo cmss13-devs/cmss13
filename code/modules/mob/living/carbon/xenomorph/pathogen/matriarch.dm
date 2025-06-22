@@ -2,14 +2,14 @@
 	caste_type = PATHOGEN_CREATURE_MATRIARCH
 	tier = 4
 
-	melee_damage_lower = XENO_DAMAGE_TIER_7
-	melee_damage_upper = XENO_DAMAGE_TIER_7
+	melee_damage_lower = XENO_DAMAGE_TIER_6
+	melee_damage_upper = XENO_DAMAGE_TIER_8
 	melee_vehicle_damage = XENO_DAMAGE_TIER_8
 	max_health = XENO_HEALTH_KING
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_PLASMA_TIER_10
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_5
-	armor_deflection = XENO_ARMOR_TIER_3
+	armor_deflection = XENO_ARMOR_TIER_4
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_1
 
@@ -35,16 +35,18 @@
 	icon_size = 48
 	icon_state = "Venator Walking"
 	plasma_types = list()
-	pixel_x = -8
-	old_x = -8
+	pixel_x = -16
+	old_x = -16
 	tier = 4
 	organ_value = 15000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
+		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
-		/datum/action/xeno_action/onclick/rend, // Macro 1
+		/datum/action/xeno_action/onclick/shatter, // Macro 1
 		/datum/action/xeno_action/activable/rav_spikes, // Macro 2
 		/datum/action/xeno_action/onclick/spike_shed, // Macro 3
 		/datum/action/xeno_action/activable/blight_wave, // Macro 4
@@ -62,8 +64,8 @@
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_48x48.dmi'
-	weed_food_states = list("Venator_1","Venator_2","Venator_3")
-	weed_food_states_flipped = list("Venator_1","Venator_2","Venator_3")
+	weed_food_states = list("Matriarch_1","Matriarch_2","Matriarch_3")
+	weed_food_states_flipped = list("Matriarch_1","Matriarch_2","Matriarch_3")
 
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
@@ -73,6 +75,7 @@
 	acid_blood_damage = 0
 	bubble_icon = "pathogenroyal"
 	counts_for_slots = FALSE
+	aura_strength = 5
 
 /mob/living/carbon/xenomorph/pathogen/matriarch/Initialize()
 	. = ..()
@@ -98,7 +101,7 @@
 
 	// Shard config
 	var/max_shards = 300
-	var/shard_gain_onlife = 5
+	var/shard_gain_onlife = 3
 	var/shards_per_projectile = 10
 	var/shards_per_slash = 15
 	var/armor_buff_per_fifty_shards = 2.50
@@ -374,3 +377,57 @@
 		return TRUE
 
 	return hive.is_ally(attempt_harm_mob)
+
+
+
+
+/datum/action/xeno_action/onclick/shatter
+	name = "Shatter"
+	action_icon_state = "butchering"
+	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	plasma_cost = 100
+	xeno_cooldown = 45 SECONDS
+	var/shatter_range = 1
+	var/shatter_damage = 35
+
+/datum/action/xeno_action/onclick/shatter/use_ability(atom/A)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+
+	if(!xeno.check_state())
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] sweeps its huge arm in a wide circle!"),
+	SPAN_XENOWARNING("We sweep our huge arm in a wide circle!"))
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	xeno.spin_circle()
+
+	for(var/mob/living/carbon/human in orange(shatter_range, get_turf(xeno)))
+		if (!isxeno_human(human) || xeno.can_not_harm(human))
+			continue
+		if(human.stat == DEAD)
+			continue
+		if(HAS_TRAIT(human, TRAIT_NESTED))
+			continue
+		step_away(human, xeno, shatter_range, 2)
+		xeno.flick_attack_overlay(human, "punch")
+		human.last_damage_data = create_cause_data(xeno.caste_type, xeno)
+		human.apply_armoured_damage(get_xeno_damage_slash(xeno, shatter_damage), ARMOR_MELEE, BRUTE)
+		shake_camera(human, 2, 1)
+
+		if(human.mob_size < MOB_SIZE_BIG)
+			human.apply_effect(get_xeno_stun_duration(human, 2), WEAKEN)
+
+		to_chat(human, SPAN_XENOWARNING("You are struck by [xeno]'s huge arm!"))
+		playsound(human,'sound/weapons/alien_claw_block.ogg', 50, 1)
+
+	apply_cooldown()
+	return ..()

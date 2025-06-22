@@ -41,10 +41,10 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/lurker_invisibility/blight,
-		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/lurker_invisibility/blight, // Macro 1
+		/datum/action/xeno_action/activable/pounce/lurker, // Macro 2
 		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)

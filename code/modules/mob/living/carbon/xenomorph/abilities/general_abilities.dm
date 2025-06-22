@@ -536,7 +536,7 @@
 	hivenumber = xeno.hive.hivenumber
 	RegisterSignal(xeno.hive, COMSIG_HIVE_NEW_QUEEN, PROC_REF(handle_new_queen))
 
-	if(!xeno.hive.living_xeno_queen)
+	if(!xeno.hive.allow_no_queen_actions && !xeno.hive.living_xeno_queen)
 		hide_from(xeno)
 		return
 

@@ -3,7 +3,7 @@
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
-	melee_damage_upper = XENO_DAMAGE_TIER_6
+	melee_damage_upper = XENO_DAMAGE_TIER_7
 	melee_vehicle_damage = XENO_DAMAGE_TIER_7
 	max_health = XENO_HEALTH_TIER_12
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
@@ -44,7 +44,7 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
-		/datum/action/xeno_action/activable/venator_abduct,
+		/datum/action/xeno_action/activable/venator_abduct, // Macro 1
 		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)

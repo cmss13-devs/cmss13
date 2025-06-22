@@ -26,7 +26,7 @@
 	if(!master)
 		return
 
-	master?.terminal = null
+	master.terminal = null
 	master = null
 
 /obj/structure/machinery/power/terminal/hide(i)

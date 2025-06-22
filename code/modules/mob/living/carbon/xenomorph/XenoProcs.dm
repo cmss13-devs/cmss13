@@ -462,50 +462,52 @@
 
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle
-	for(var/obj/O in current_turf)
-		if(check_blockers && istype(O, /obj/effect/build_blocker))
-			var/obj/effect/build_blocker/bb = O
+	for(var/obj/object_target in current_turf)
+		if(check_blockers && istype(object_target, /obj/effect/build_blocker))
+			var/obj/effect/build_blocker/bb = object_target
 			if(!silent)
 				to_chat(src, SPAN_WARNING("This is too close to \a [bb.linked_structure]!"))
 			return
 		if(check_doors)
-			if(istype(O, /obj/structure/machinery/door))
+			if(istype(object_target, /obj/structure/machinery/door))
 				if(!silent)
-					to_chat(src, SPAN_WARNING("[O] is blocking the resin! There's not enough space to build that here."))
+					to_chat(src, SPAN_WARNING("[object_target] is blocking the resin! There's not enough space to build that here."))
 				return
-		if(istype(O, /obj/item/clothing/mask/facehugger))
-			if(!silent)
-				to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
-			return
-		if(istype(O, /obj/effect/alien/egg))
+		if(istype(object_target, /obj/item/clothing/mask/facehugger))
+			var/obj/item/clothing/mask/facehugger/hugger = object_target
+			if(hugger.stat != DEAD)
+				if(!silent)
+					to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
+				return
+		if(istype(object_target, /obj/effect/alien/egg))
 			if(!silent)
 				to_chat(src, SPAN_WARNING("There's already an egg."))
 			return
-		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/effect/alien/resin))
+		if(istype(object_target, /obj/structure/mineral_door) || istype(object_target, /obj/effect/alien/resin))
 			has_obstacle = TRUE
 			break
-		if(istype(O, /obj/structure/ladder))
+		if(istype(object_target, /obj/structure/ladder))
 			has_obstacle = TRUE
 			break
-		if(istype(O, /obj/structure/fence))
+		if(istype(object_target, /obj/structure/fence))
 			has_obstacle = TRUE
 			break
-		if(istype(O, /obj/structure/tunnel))
+		if(istype(object_target, /obj/structure/tunnel))
 			has_obstacle = TRUE
 			break
-		if(istype(O, /obj/structure/bed))
-			if(istype(O, /obj/structure/bed/chair/dropship/passenger))
-				var/obj/structure/bed/chair/dropship/passenger/P = O
+		if(istype(object_target, /obj/structure/bed))
+			if(istype(object_target, /obj/structure/bed/chair/dropship/passenger))
+				var/obj/structure/bed/chair/dropship/passenger/P = object_target
 				if(P.chair_state != DROPSHIP_CHAIR_BROKEN)
 					has_obstacle = TRUE
 					break
-			else if(istype(O, /obj/structure/bed/nest) && ignore_nest)
+			else if(istype(object_target, /obj/structure/bed/nest) && ignore_nest)
 				continue
 			else
 				has_obstacle = TRUE
 				break
 
-		if(O.density && !(O.flags_atom & ON_BORDER))
+		if(object_target.density && !(object_target.flags_atom & ON_BORDER))
 			has_obstacle = TRUE
 			break
 

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - qol: "First 15 seconds of the game no longer offers a larva queue position estimation on the lobby since other players are still observing and the estimation relies on currently valid candidates."

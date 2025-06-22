@@ -562,7 +562,7 @@
 
 	tracked_queen = new_queen
 
-	if(!hive.allow_no_queen_actions && !tracked_queen?.ovipositor)
+	if(!checked_hive.allow_no_queen_actions && !tracked_queen?.ovipositor)
 		hide_from(owner)
 
 	RegisterSignal(tracked_queen, COMSIG_QUEEN_MOUNT_OVIPOSITOR, PROC_REF(handle_mount_ovipositor))

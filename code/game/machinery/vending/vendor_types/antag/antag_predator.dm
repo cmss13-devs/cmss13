@@ -172,6 +172,20 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return FALSE
 	return TRUE
 
+/obj/structure/machinery/cm_vending/clothing/yautja/hunter/elder/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(!allowed(user))
+		if(display)
+			to_chat(user, SPAN_WARNING("Access denied."))
+			vend_fail()
+		return FALSE
+
+	if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
+		if(display)
+			to_chat(user, SPAN_WARNING("This machine isn't for you."))
+			vend_fail()
+		return FALSE
+	return TRUE
+
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
 	if(isthrall(user))
 		return TRUE
@@ -181,7 +195,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 				to_chat(user, SPAN_WARNING("Access denied."))
 				vend_fail()
 			return FALSE
-	if(isyautja(user))
+	if(!isthrall(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		vend_fail()
 	return FALSE
@@ -220,7 +234,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_elder_left"
-	req_access = list(ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
+	req_access = list(ACCESS_YAUTJA_ELITE)
 	vendor_role = list(JOB_PREDATOR)
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA

@@ -94884,7 +94884,6 @@
 /area/tyrargo/outdoors/outskirts_road/central)
 "eGy" = (
 /obj/structure/platform/stone/soro/north,
-/obj/structure/platform/stone/soro/north,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
 	},

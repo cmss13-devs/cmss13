@@ -40,7 +40,7 @@
 	ambience_exterior = AMBIENCE_TYRARGO_CITY
 
 /area/tyrargo/oob/outdoors
-	ceiling = CEILING_NO_PROTECTION
+	ceiling_muffle = FALSE
 
 // Landing Zone One
 
@@ -598,6 +598,7 @@
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	requires_power = FALSE
 	unoviable_timer = FALSE
+	ceiling_muffle = FALSE
 
 // USS Heyst
 

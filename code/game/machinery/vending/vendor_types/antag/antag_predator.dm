@@ -257,6 +257,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall
 	name = "\improper Yautja Thrall Gear Rack"
+	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_left"
 	show_points = FALSE
@@ -279,6 +280,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall
 	name = "\improper Yautja Blooded Thrall Gear Rack"
+	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_left"
 	show_points = FALSE

@@ -686,7 +686,20 @@
 	set category = "Preferences.Ghost"
 	set desc = "Use to change which HUDs you want to have by default when you become an observer."
 
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD", "Faction UPP HUD", "Faction Wey-Yu HUD", "Faction RESS HUD", "Faction CLF HUD"))
+	var/list/hud_options = list(
+		"Medical HUD" = MOB_HUD_MEDICAL_OBSERVER,
+		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
+		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
+		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
+		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
+		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,
+		"Faction TWE HUD" = MOB_HUD_FACTION_TWE,
+		"Faction CLF HUD" = MOB_HUD_FACTION_CLF,
+		"Faction WO HUD" = MOB_HUD_FACTION_WO,
+		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
+	)
+
+	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
 	if(!hud_choice)
 		return
 	prefs.observer_huds[hud_choice] = !prefs.observer_huds[hud_choice]
@@ -697,32 +710,13 @@
 	if(!isobserver(usr))
 		return
 	var/mob/dead/observer/observer_user = usr
-	var/datum/mob_hud/H
-	switch(hud_choice)
-		if("Medical HUD")
-			H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-		if("Security HUD")
-			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-		if("Squad HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
-		if("Xeno Status HUD")
-			H = GLOB.huds[MOB_HUD_XENO_STATUS]
-		if("Faction UPP HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_UPP]
-		if("Faction Wey-Yu HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_WY]
-		if("Faction TWE HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_TWE]
-		if("Faction CLF HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_CLF]
-		if("Faction WO HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_WO]
+	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
 
 	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
 	if(observer_user.HUD_toggled[hud_choice])
-		H.add_hud_to(observer_user, observer_user)
+		hud.add_hud_to(observer_user, observer_user)
 	else
-		H.remove_hud_from(observer_user, observer_user)
+		hud.remove_hud_from(observer_user, observer_user)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"

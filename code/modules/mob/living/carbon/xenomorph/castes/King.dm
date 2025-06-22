@@ -408,7 +408,7 @@
 			item.throw_atom(throwtarget, 2, SPEED_REALLY_FAST, owner, TRUE)
 
 	for(var/obj/structure/structure in orange(1, owner))
-		structure.ex_act(1000, get_dir(owner, structure))
+		INVOKE_ASYNC(structure, TYPE_PROC_REF(/atom, ex_act), 1000, get_dir(owner, structure))
 
 	for(var/mob/living in range(7, owner))
 		shake_camera(living, 15, 1)

@@ -374,7 +374,7 @@
 			transfer_label_component(HMG)
 			var/datum/component/label/label = GetComponent(/datum/component/label)
 			if(label)
-				label.remove_label()
+				label.clear_label()
 			gun_mounted = FALSE
 			gun_rounds = 0
 			gun_health = 0

@@ -243,3 +243,8 @@
   - qol: First 15 seconds of the game no longer offers a larva queue position estimation
       on the lobby since other players are still observing and the estimation relies
       on currently valid candidates.
+2025-06-23:
+  Lagomorphica:
+  - balance: FORECON major now spawns with their chosen sidearm
+  realforest2001:
+  - rscadd: Added a Yautja Council icon for the clan hud.

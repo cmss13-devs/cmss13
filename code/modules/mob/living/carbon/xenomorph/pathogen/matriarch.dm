@@ -318,9 +318,18 @@
 	if(isyautja(creature) && prob(75))
 		return FALSE
 
+	var/block_chance = 0
 	if(creature.wear_mask && (creature.wear_mask.flags_inventory & BLOCKGASEFFECT))
-		return FALSE
+		block_chance += 30
+		if(creature.wear_mask.flags_inventory & SPOREPROOF)
+			return FALSE
+
 	if(human_creature && (human_creature.head && (human_creature.head.flags_inventory & BLOCKGASEFFECT)))
+		block_chance += 30
+		if(human_creature.head.flags_inventory & SPOREPROOF)
+			return FALSE
+
+	if(prob(block_chance))
 		return FALSE
 
 	var/effect_amt = floor(6 + amount*6)

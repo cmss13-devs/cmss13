@@ -150,10 +150,11 @@
 	if(hide)
 		hide.post_attack()
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
+/mob/living/carbon/xenomorph/pathogen/bloodburster/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (pass_flags_container)
-		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
+	if (pass_flags)
+		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
+		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 
 /mob/living/carbon/xenomorph/pathogen/bloodburster/cause_unbearable_pain(mob/living/carbon/victim)

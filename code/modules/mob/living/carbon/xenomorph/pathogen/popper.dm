@@ -74,6 +74,12 @@
 	aura_strength = 2
 	counts_for_slots = FALSE
 
+/mob/living/carbon/xenomorph/pathogen/popper/initialize_pass_flags(datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_pass = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
+		PF.flags_can_pass_all = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
+
 /mob/living/carbon/xenomorph/pathogen/popper/death(cause, gibbed)
 	. = ..()
 	new /obj/effect/pathogen/spore_cloud(loc)

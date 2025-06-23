@@ -208,6 +208,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	/// Tower has been taken over by xenos, is not usable
 	var/corrupted = FALSE
+	/// minesweeper game for changing the frequency
+	var/obj/structure/machinery/computer/arcade/minesweeper/frequency_change_minesweeper
 
 	/// Held image for the current overlay on the tower from xeno corruption
 	var/image/corruption_image
@@ -220,6 +222,11 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, PROC_REF(register_with_turf))
 	register_with_turf()
+	frequency_change_minesweeper = new(src)
+	frequency_change_minesweeper.quiet_game = TRUE
+	frequency_change_minesweeper.name = "Frequency Debug"
+	RegisterSignal(frequency_change_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost))
+	RegisterSignal(frequency_change_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/get_examine_text(mob/user)
 	. = ..()
@@ -263,34 +270,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		if(inoperable() || (health <= initial(health) * 0.5))
 			to_chat(user, SPAN_WARNING("\The [src.name] needs repairs to have frequencies added to its software!"))
 			return
-		var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
-		if(choice == "Wipe communication frequencies")
-			freq_listening.Cut()
-			to_chat(user, SPAN_NOTICE("You wipe the preexisting frequencies from \the [src]."))
-			return
-		else if(choice == "Add your faction's frequencies")
-			if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				return
-			switch(user.faction)
-				if(FACTION_SURVIVOR)
-					freq_listening |= COLONY_FREQ
-					if(FACTION_MARINE in user.faction_group) //FORECON survivors
-						freq_listening |= SOF_FREQ
-				if(FACTION_CLF)
-					freq_listening |= CLF_FREQS
-				if(FACTION_UPP)
-					freq_listening |= UPP_FREQS
-				if(FACTION_WY,FACTION_PMC)
-					freq_listening |= PMC_FREQS
-				if(FACTION_TWE)
-					freq_listening |= RMC_FREQ
-				if(FACTION_YAUTJA)
-					to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
-					return
-				else
-					freq_listening |= DEPT_FREQS
-			to_chat(user, SPAN_NOTICE("You add your faction's communication frequencies to \the [src]'s comm list."))
-			return
+		frequency_change_minesweeper.tgui_interact(user)
+		to_chat(user, SPAN_NOTICE("You flip [src] maintenance panel open and start to work on the frequency values..."))
 	. = ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/power_change()
@@ -305,6 +286,41 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	..()
 	if(inoperable())
 		handle_xeno_acquisition(get_turf(src))
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/minesweeper_lost(source, mob/user)
+	to_chat(user, SPAN_WARNING("Something is not right. You decide to start over."))
+
+/obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/minesweeper_won(source, mob/user)
+	to_chat(user, SPAN_NOTICE("You're in! You can now modify the frequncy data."))
+	SStgui.close_uis(frequency_change_minesweeper)
+	var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
+	if(choice == "Wipe communication frequencies")
+		freq_listening.Cut()
+		to_chat(user, SPAN_NOTICE("You wipe the preexisting frequencies from \the [src]."))
+		return
+	else if(choice == "Add your faction's frequencies")
+		if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			return
+		switch(user.faction)
+			if(FACTION_SURVIVOR)
+				freq_listening |= COLONY_FREQ
+				if(FACTION_MARINE in user.faction_group) //FORECON survivors
+					freq_listening |= SOF_FREQ
+			if(FACTION_CLF)
+				freq_listening |= CLF_FREQS
+			if(FACTION_UPP)
+				freq_listening |= UPP_FREQS
+			if(FACTION_WY,FACTION_PMC)
+				freq_listening |= PMC_FREQS
+			if(FACTION_TWE)
+				freq_listening |= RMC_FREQ
+			if(FACTION_YAUTJA)
+				to_chat(user, SPAN_WARNING("You decide to leave the human machine alone."))
+				return
+			else
+				freq_listening |= DEPT_FREQS
+		to_chat(user, SPAN_NOTICE("You add your faction's communication frequencies to \the [src]'s comm list."))
+		return
 
 /// Handles xenos corrupting the tower when weeds touch the turf it is located on
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/handle_xeno_acquisition(turf/weeded_turf)

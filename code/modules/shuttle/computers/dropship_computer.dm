@@ -51,7 +51,6 @@
 	lockdown_minesweeper = new(src)
 	lockdown_minesweeper.quiet_game = TRUE
 	lockdown_minesweeper.name = "Dropship Troubleshooting"
-	//lockdown_minesweeper.loc = src
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/Destroy()
 	. = ..()

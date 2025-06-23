@@ -573,6 +573,7 @@
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/soldier
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	CO_equipment = /datum/equipment_preset/survivor/upp/spacesecurity
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -583,6 +584,7 @@
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/sapper
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	CO_equipment = /datum/equipment_preset/survivor/upp/spacesecurity
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -593,6 +595,7 @@
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	CO_equipment = /datum/equipment_preset/survivor/upp/spacesecurity
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -603,6 +606,7 @@
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/specialist
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	CO_equipment = /datum/equipment_preset/survivor/upp/spacesecurity
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
@@ -613,6 +617,7 @@
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/squad_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
+	CO_equipment = /datum/equipment_preset/survivor/upp/spacesecurity
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")

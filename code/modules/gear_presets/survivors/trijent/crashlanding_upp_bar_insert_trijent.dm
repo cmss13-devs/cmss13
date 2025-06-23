@@ -175,6 +175,61 @@
 	..()
 
 //it's used on all of the above in their spawner.
+
+/datum/equipment_preset/survivor/upp/spacesecurity // CO SURVIVOR
+	name = "Survivor - UPP Ministry of Space Security Officer"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = "MSS Officer"
+	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0)
+	job_title = JOB_UPP_LT_OFFICER
+	faction = FACTION_UPP
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
+	role_comm_title = "173/RECON MSS"
+	minimap_icon = "upp_lt"
+	minimap_background = "background_upp"
+	idtype = /obj/item/card/id/dogtag/upp
+	skills = /datum/skills/military/survivor/upp_mss
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+	)
+
+/datum/equipment_preset/survivor/upp/spacesecurity/load_gear(mob/living/carbon/human/new_human)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/officer, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/support, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet, WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP/recon, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/t73/leader, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/t73, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/t73, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/t73, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/t73, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/t73, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/t73, WEAR_IN_BELT)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/carbine, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/droppouch, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/upp, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/upp, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/toy/plush/bee, WEAR_IN_ACCESSORY) // REMEMBER WHAT YOU'RE FIGHTING FOR
+	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/megaphone, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp(new_human), WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/airborne, WEAR_ACCESSORY)
+
+
 /datum/equipment_preset/synth/survivor/upp
 	name = "Survivor - Synthetic - UPP Synth"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -190,6 +245,7 @@
 	role_comm_title = "173/RECON Syn"
 	minimap_background = "background_upp"
 	minimap_icon = "upp_synth"
+
 
 /datum/equipment_preset/synth/survivor/upp/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/UPP/medic/uniform = new()

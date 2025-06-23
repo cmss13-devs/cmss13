@@ -19,6 +19,9 @@
         "/datum/equipment_preset/survivor/civilian_unique",
         "/datum/equipment_preset/survivor/hybrisa/fire_fighter"
     ],
+    "CO_survivor_types": [
+    "/datum/equipment_preset/survivor/trijent/cosurvivor"
+    ],
     "defcon_triggers": [
         3300,
         2100,

@@ -28,7 +28,7 @@
 			mob_to_report = checked_mob
 			festivizer_hits_total_max = life_grab_stat(checked_mob)
 
-	if(!mob_to_report || !festivizer_hits_total_max)
+	if(!mob_to_report || festivizer_hits_total_max < min_required)
 		return null
 
 	var/name = mob_to_report.real_name

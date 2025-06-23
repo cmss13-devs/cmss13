@@ -1805,10 +1805,6 @@
 "DK" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
-	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/exterior/far_north_outpost)
 "Ef" = (

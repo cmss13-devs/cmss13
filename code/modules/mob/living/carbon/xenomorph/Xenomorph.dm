@@ -522,6 +522,8 @@
 
 /mob/living/carbon/xenomorph/proc/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	SIGNAL_HANDLER
+	if(tier == 4 || is_hive_ruler())
+		return COMPONENT_SCREECH_ACT_CANCEL
 	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 

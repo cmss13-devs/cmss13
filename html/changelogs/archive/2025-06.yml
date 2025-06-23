@@ -238,3 +238,8 @@
       on micro tesla as intended
   kiVts:
   - rscadd: Shooting target on target range should be more useful now.
+2025-06-22:
+  Drathek:
+  - qol: First 15 seconds of the game no longer offers a larva queue position estimation
+      on the lobby since other players are still observing and the estimation relies
+      on currently valid candidates.

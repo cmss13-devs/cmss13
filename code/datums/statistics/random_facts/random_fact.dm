@@ -38,7 +38,7 @@
 		return null
 
 	var/list/list_to_check = shuffle(GLOB.round_statistics.death_stats_list)
-	for(var/datum/entity/statistic/death/death as anything in GLOB.round_statistics.death_stats_list)
+	for(var/datum/entity/statistic/death/death as anything in list_to_check)
 		if(death.is_xeno)
 			if(!check_xeno)
 				continue

@@ -1,4 +1,0 @@
-author: "Detective-Google"
-delete-after: True
-changes:
-  - config: "config added for maintainer color, maintainers being anyone with R_PROFILER. this layers above R_ADMIN color and below R_COLOR custom colors."

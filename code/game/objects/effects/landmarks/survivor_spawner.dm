@@ -41,7 +41,6 @@
 	icon_state = "surv_clf"
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf
-	synth_equipment = /datum/equipment_preset/synth/survivor/clf
 	CO_equipment = /datum/equipment_preset/survivor/clf //to prevent NV CO from spawning as a CO
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
@@ -57,7 +56,6 @@
 	icon_state = "surv_clf"
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/leader
-	synth_equipment = /datum/equipment_preset/synth/survivor/clf
 	CO_equipment = /datum/equipment_preset/survivor/clf/leader
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
@@ -73,7 +71,6 @@
 	icon_state = "surv_clf"
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/engineer
-	synth_equipment = /datum/equipment_preset/synth/survivor/clf
 	CO_equipment = /datum/equipment_preset/survivor/clf/engineer
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
@@ -89,7 +86,6 @@
 	icon_state = "surv_clf"
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/medic
-	synth_equipment = /datum/equipment_preset/synth/survivor/clf
 	CO_equipment = /datum/equipment_preset/survivor/clf/medic
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\

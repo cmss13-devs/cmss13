@@ -1,6 +1,6 @@
 /datum/caste_datum/pathogen/popper
 	caste_type = PATHOGEN_CREATURE_POPPER
-	tier = 1
+	tier = 0
 
 	melee_damage_lower = 10
 	melee_damage_upper = 10

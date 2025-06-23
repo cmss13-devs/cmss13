@@ -172,34 +172,6 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 		return FALSE
 	return TRUE
 
-/obj/structure/machinery/cm_vending/clothing/yautja/thrall/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
-	if(isthrall(user))
-		return TRUE
-	if(!hacked || ignore_hack)
-		if(!allowed(user))
-			if(display)
-				to_chat(user, SPAN_WARNING("Access denied."))
-				vend_fail()
-			return FALSE
-	if(!isthrall(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
-		vend_fail()
-	return FALSE
-
-/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
-	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-		return TRUE
-	if(!hacked || ignore_hack)
-		if(!allowed(user))
-			if(display)
-				to_chat(user, SPAN_WARNING("Access denied."))
-				vend_fail()
-			return FALSE
-	if(isyautja(user))
-		to_chat(user, SPAN_WARNING("Access denied."))
-		vend_fail()
-	return FALSE
-
 /obj/structure/machinery/cm_vending/clothing/yautja/hunter/left_centre
 	icon_state = "pred_vendor_lcenter"
 
@@ -240,6 +212,20 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 
+/obj/structure/machinery/cm_vending/clothing/yautja/young_blood/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(!allowed(user))
+		if(display)
+			to_chat(user, SPAN_WARNING("Access denied."))
+			vend_fail()
+		return FALSE
+
+	if(LAZYLEN(vendor_role) && !vendor_role.Find(user.job))
+		if(display)
+			to_chat(user, SPAN_WARNING("This machine isn't for you."))
+			vend_fail()
+		return FALSE
+	return TRUE
+
 /obj/structure/machinery/cm_vending/clothing/yautja/young_blood/left_centre
 	icon_state = "pred_vendor_lcenter"
 
@@ -263,6 +249,20 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
 
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(isthrall(user))
+		return TRUE
+	if(!hacked || ignore_hack)
+		if(!allowed(user))
+			if(display)
+				to_chat(user, SPAN_WARNING("Access denied."))
+				vend_fail()
+			return FALSE
+	if(!isthrall(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
+		vend_fail()
+	return FALSE
+
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/left_centre
 	icon_state = "pred_vendor_lcenter"
 
@@ -285,6 +285,20 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	icon_state = "pred_vendor_left"
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA
+
+/obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/can_access_to_vend(mob/user, display = TRUE, ignore_hack = FALSE)
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+		return TRUE
+	if(!hacked || ignore_hack)
+		if(!allowed(user))
+			if(display)
+				to_chat(user, SPAN_WARNING("Access denied."))
+				vend_fail()
+			return FALSE
+	if(isyautja(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
+		vend_fail()
+	return FALSE
 
 /obj/structure/machinery/cm_vending/clothing/yautja/thrall/blooded_thrall/left
 	icon_state = "pred_vendor_blooded_left"

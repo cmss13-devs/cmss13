@@ -244,7 +244,7 @@
 			to_chat(attacking_xeno, SPAN_WARNING("We have attempted to dissolve \the [src] too recently! Wait a bit!")) // no spammy
 			return XENO_NO_DELAY_ACTION
 
-		else if(warn && world.time > XENOMORPH_PRE_SETUP_CUTOFF)
+		else if(warn)
 			if((alert(attacking_xeno, "Are you sure that you want to dissolve the blight core?", , "Yes", "No") != "Yes"))
 				return XENO_NO_DELAY_ACTION
 

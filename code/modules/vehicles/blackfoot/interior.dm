@@ -181,7 +181,6 @@
 	anchored = TRUE
 	pixel_y = 0
 	pixel_x = -20
-	volume = 50
 	volume = 15
 	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
 	var/list/current_listeners = list()
@@ -336,8 +335,8 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-/obj/structure/bed/chair/vehicle/blackfoot/buckle_mob(mob/M, mob/user)
-	if (!ismob(M) || (get_dist(src, user) > 1) || user.stat || buckled_mob || M.buckled || !isturf(user.loc))
+/obj/structure/bed/chair/vehicle/blackfoot/buckle_mob(mob/target, mob/user)
+	if (!ismob(target) || (get_dist(src, user) > 1) || user.stat || buckled_mob || target.buckled || !isturf(user.loc))
 		return
 
 	if (user.is_mob_incapacitated() || HAS_TRAIT(user, TRAIT_IMMOBILIZED) || HAS_TRAIT(user, TRAIT_FLOORED))
@@ -351,19 +350,19 @@
 	if (iszombie(user))
 		return
 
-	if(M.loc != loc)
-		M.forceMove(loc) //buckle if you're right next to it
+	if(target.loc != loc)
+		target.forceMove(loc) //buckle if you're right next to it
 
-		. = buckle_mob(M)
+		return buckle_mob(target)
 
-	if (M.mob_size <= MOB_SIZE_XENO)
-		if ((M.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(M, TRAIT_OPPOSABLE_THUMBS)))
-			do_buckle(M, user)
+	if (target.mob_size <= MOB_SIZE_XENO)
+		if ((target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(target, TRAIT_OPPOSABLE_THUMBS)))
+			do_buckle(target, user)
 			return
-	if ((M.mob_size > MOB_SIZE_HUMAN))
-		to_chat(user, SPAN_WARNING("[M] is too big to buckle in."))
+	if ((target.mob_size > MOB_SIZE_HUMAN))
+		to_chat(user, SPAN_WARNING("[target] is too big to buckle in."))
 		return
-	do_buckle(M, user)
+	do_buckle(target, user)
 
 /obj/structure/bed/chair/vehicle/blackfoot/afterbuckle(mob/user)
 	. = ..()

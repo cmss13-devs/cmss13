@@ -30,7 +30,7 @@
 		return
 
 	var/obj/vehicle/multitile/blackfoot/blackfoot = vehicle
-	
+
 	blackfoot.interior = new(blackfoot)
 	blackfoot.interior_map = interior_type
 	INVOKE_ASYNC(blackfoot, TYPE_PROC_REF(/obj/vehicle/multitile, do_create_interior))
@@ -51,7 +51,7 @@
 	if(!blackfoot_owner.back_door || !blackfoot_owner.back_door.open)
 		to_chat(user, SPAN_WARNING("You should probably open the rear door before firing."))
 		return
-	
+
 	if(ammo && ammo.current_rounds <= 0)
 		reload(user)
 		return
@@ -64,15 +64,15 @@
 		to_chat(usr, SPAN_WARNING("\The [name] has no remaining backup clips."))
 		return
 
-	var/obj/item/ammo_magazine/A = LAZYACCESS(backup_clips, 1)
-	if(!A)
+	var/obj/item/ammo_magazine/new_magazine = LAZYACCESS(backup_clips, 1)
+	if(!new_magazine)
 		to_chat(user, SPAN_DANGER("Something went wrong! Ahelp and ask for a developer! Code: HP_RLDHP"))
 		return
 
 	ammo.forceMove(get_turf(src))
 	ammo.update_icon()
-	ammo = A
-	LAZYREMOVE(backup_clips, A)
+	ammo = new_magazine
+	LAZYREMOVE(backup_clips, new_magazine)
 
 	to_chat(user, SPAN_NOTICE("You reload \the [name]."))
 

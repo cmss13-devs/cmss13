@@ -140,17 +140,17 @@
 	. = ..()
 
 /obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
-	var/datum/role_reserved_slots/RRS = new
-	RRS.category_name = "Crewmen"
-	RRS.roles = list(JOB_OPERATIONS_PILOT)
-	RRS.total = 1
-	role_reserved_slots += RRS
+	var/datum/role_reserved_slots/reserved_slot = new
+	reserved_slot.category_name = "Crewmen"
+	reserved_slot.roles = list(JOB_OPERATIONS_PILOT)
+	reserved_slot.total = 1
+	role_reserved_slots += reserved_slot
 
-	RRS = new
-	RRS.category_name = "Crew"
-	RRS.roles = list(JOB_DROPSHIP_CREW_CHIEF)
-	RRS.total = 1
-	role_reserved_slots += RRS
+	reserved_slot = new
+	reserved_slot.category_name = "Crew"
+	reserved_slot.roles = list(JOB_DROPSHIP_CREW_CHIEF)
+	reserved_slot.total = 1
+	role_reserved_slots += reserved_slot
 
 /obj/vehicle/multitile/blackfoot/can_install_hardpoint(obj/item/hardpoint/hardpoint, mob/user)
 	if(interior.get_passengers())
@@ -291,7 +291,7 @@
 			break
 
 		below_turf = SSmapping.get_turf_below(below_turf)
-	
+
 	forceMove(below_turf)
 	cell_explosion(below_turf, 400, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("blackfoot crash"))
 	qdel(shadow_holder)
@@ -300,7 +300,7 @@
 /obj/vehicle/multitile/blackfoot/before_move(direction)
 	if(back_door.open)
 		update_rear_view()
-	
+
 	if(state != STATE_FLIGHT && state != STATE_VTOL)
 		return
 
@@ -314,7 +314,7 @@
 	while(SSmapping.get_turf_below(shadow_turf))
 		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
 			break
-		
+
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)
 
 	shadow_holder.dir = dir
@@ -329,7 +329,7 @@
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 		))
 		return
-	
+
 	add_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -411,7 +411,7 @@
 			/obj/vehicle/multitile/proc/switch_hardpoint,
 		))
 		return
-	
+
 	remove_verb(M.client, list(
 		/obj/vehicle/multitile/proc/get_status_info,
 		/obj/vehicle/multitile/proc/toggle_door_lock,
@@ -448,7 +448,7 @@
 /obj/vehicle/multitile/blackfoot/give_seated_mob_actions(mob/seated_mob)
 	if(seats[VEHICLE_DRIVER] != seated_mob)
 		return
-	
+
 	give_action(seated_mob, /datum/action/human_action/vehicle_unbuckle/blackfoot)
 
 /obj/vehicle/multitile/blackfoot/Collided(atom/movable/collided_atom)
@@ -608,7 +608,7 @@
 	var/turf/top_turf = SSmapping.get_turf_above(get_turf(src))
 	while(SSmapping.get_turf_above(top_turf))
 		top_turf = SSmapping.get_turf_above(top_turf)
-	
+
 	forceMove(top_turf)
 
 	var/turf/shadow_turf = SSmapping.get_turf_below(get_turf(src))
@@ -616,7 +616,7 @@
 	while(SSmapping.get_turf_below(shadow_turf))
 		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
 			break
-		
+
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)
 	shadow_holder = new(shadow_turf)
 	shadow_holder.icon_state = "[get_sprite_state()]_shadow"
@@ -667,7 +667,7 @@
 			break
 
 		below_turf = SSmapping.get_turf_below(below_turf)
-	
+
 	forceMove(below_turf)
 	qdel(shadow_holder)
 	flags_atom &= ~NO_ZFALL

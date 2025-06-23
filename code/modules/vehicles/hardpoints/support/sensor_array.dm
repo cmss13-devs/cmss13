@@ -26,9 +26,9 @@
 	if(!blackfoot_owner)
 		return
 
-	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[blackfoot_owner.get_sprite_state()]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	var/image/icon = image(icon = disp_icon, icon_state = "[disp_icon_state]_[blackfoot_owner.get_sprite_state()]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
 
-	return I
+	return icon
 
 /obj/item/hardpoint/support/sensor_array/proc/toggle(mode)
 	if(!active)

@@ -31,9 +31,9 @@
 	if(!blackfoot_owner)
 		return
 
-	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[blackfoot_owner.get_sprite_state()]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	var/image/icon = image(icon = disp_icon, icon_state = "[disp_icon_state]_[blackfoot_owner.get_sprite_state()]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
 
-	return I
+	return icon
 
 /obj/item/hardpoint/primary/chimera_launchers/try_fire(atom/target, mob/living/user, params)
 	if(safety)
@@ -52,14 +52,14 @@
 		to_chat(usr, SPAN_WARNING("\The [name] has no remaining backup clips."))
 		return
 
-	var/obj/item/ammo_magazine/A = LAZYACCESS(backup_clips, 1)
-	if(!A)
+	var/obj/item/ammo_magazine/new_magazine = LAZYACCESS(backup_clips, 1)
+	if(!new_magazine)
 		to_chat(user, SPAN_DANGER("Something went wrong! Ahelp and ask for a developer! Code: HP_RLDHP"))
 		return
 
 	ammo.forceMove(get_turf(src))
 	ammo.update_icon()
-	ammo = A
-	LAZYREMOVE(backup_clips, A)
+	ammo = new_magazine
+	LAZYREMOVE(backup_clips, new_magazine)
 
 	to_chat(user, SPAN_NOTICE("You reload \the [name]."))

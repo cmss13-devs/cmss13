@@ -202,7 +202,7 @@
 	name = "Blight Wave"
 	action_icon_state = "screech"
 	macro_path = /datum/action_xeno_action/verb/verb_doom
-	xeno_cooldown = 45 SECONDS
+	xeno_cooldown = 90 SECONDS
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_4
 

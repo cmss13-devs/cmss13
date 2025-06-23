@@ -513,8 +513,6 @@
 			xeno_announcement(SPAN_XENOANNOUNCE("Something unusual is growing at [get_area_name(loc)]."), cur_hive_num, XENO_GENERAL_ANNOUNCE)
 
 /obj/effect/alien/resin/matriarch_cocoon/process(delta_time)
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-
 	if(hatched)
 		STOP_PROCESSING(SSobj, src)
 		return

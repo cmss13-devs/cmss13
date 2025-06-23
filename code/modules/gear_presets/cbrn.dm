@@ -7,7 +7,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	auto_squad_name = SQUAD_CBRN
 	ert_squad = TRUE
-	skills = /datum/skills/pmc //More trained than the average rifleman
+	skills = /datum/skills/cbrnrifleman //More trained than the average rifleman
 
 /datum/equipment_preset/uscm/cbrn/New()
 	. = ..()
@@ -63,7 +63,7 @@
 	job_title = JOB_SQUAD_ENGI
 	role_comm_title = "ComTech"
 	minimap_icon = "engi"
-	skills = /datum/skills/pmc/engineer
+	skills = /datum/skills/cbrntech
 
 /datum/equipment_preset/uscm/cbrn/engineer/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -104,7 +104,7 @@
 	job_title = JOB_SQUAD_MEDIC
 	role_comm_title = "HM"
 	minimap_icon = "medic"
-	skills = /datum/skills/pmc/medic
+	skills = /datum/skills/cbrnmedic
 
 /datum/equipment_preset/uscm/cbrn/medic/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -143,7 +143,7 @@
 	job_title = JOB_SQUAD_TEAM_LEADER
 	role_comm_title = "TL"
 	minimap_icon = "tl"
-	skills = /datum/skills/pmc/SL
+	skills = /datum/skills/cbrnlead
 
 /datum/equipment_preset/uscm/cbrn/leader/load_gear(mob/living/carbon/human/new_human)
 	. = ..()

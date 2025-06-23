@@ -587,7 +587,7 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/cmb)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/cmb, /obj/item/clothing/under/CM_uniform)
 	item_state_slots = list(WEAR_JACKET = "cmb_heavy_armor")
 
 /obj/item/clothing/suit/storage/marine/veteran/cmb/light

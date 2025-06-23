@@ -156,6 +156,8 @@
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
+/mob/living/carbon/xenomorph/pathogen/bloodburster/alter_ghost(mob/dead/observer/ghost)
+	ghost.icon_state = PATHOGEN_CREATURE_BURSTER
 
 /mob/living/carbon/xenomorph/pathogen/bloodburster/cause_unbearable_pain(mob/living/carbon/victim)
 	if(loc != victim)

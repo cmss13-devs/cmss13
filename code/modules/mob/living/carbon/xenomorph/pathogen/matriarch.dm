@@ -49,7 +49,7 @@
 		/datum/action/xeno_action/onclick/shatter, // Macro 1
 		/datum/action/xeno_action/activable/rav_spikes, // Macro 2
 		/datum/action/xeno_action/onclick/spike_shed, // Macro 3
-		/datum/action/xeno_action/activable/blight_wave, // Macro 4
+		/datum/action/xeno_action/onclick/blight_wave, // Macro 4
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
@@ -102,9 +102,9 @@
 
 	// Shard config
 	var/max_shards = 300
-	var/shard_gain_onlife = 3
-	var/shards_per_projectile = 10
-	var/shards_per_slash = 15
+	var/shard_gain_onlife = 2
+	var/shards_per_projectile = 7
+	var/shards_per_slash = 10
 	var/armor_buff_per_fifty_shards = 2.50
 	var/shard_lock_duration = 150
 	var/shard_lock_speed_mod = 0.45
@@ -198,7 +198,7 @@
 
 
 /// Screech which puts out lights in a 7 tile radius, slows and dazes.
-/datum/action/xeno_action/activable/blight_wave
+/datum/action/xeno_action/onclick/blight_wave
 	name = "Blight Wave"
 	action_icon_state = "screech"
 	macro_path = /datum/action_xeno_action/verb/verb_doom
@@ -209,7 +209,7 @@
 	var/daze_length_seconds = 1
 	var/slow_length_seconds = 4
 
-/datum/action/xeno_action/activable/blight_wave/use_ability(atom/target)
+/datum/action/xeno_action/onclick/blight_wave/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
@@ -284,7 +284,7 @@
 	smoke_type = /obj/effect/particle_effect/smoke/blight
 
 /obj/effect/particle_effect/smoke/blight
-	name = "blight"
+	name = "blight cloud"
 	opacity = FALSE
 	color = "#000000"
 	icon = 'icons/effects/effects.dmi'
@@ -366,23 +366,44 @@
 	if(human_creature)
 		human_creature.temporary_slowdown = max(human_creature.temporary_slowdown, 4) //One tick every two second
 		human_creature.recalculate_move_delay = TRUE
+		if(prob(1)) //Very rare chance to infect
+			attempt_infection(human_creature)
 	return TRUE
 
 /obj/effect/particle_effect/smoke/blight/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)
 	if(!istype(attempt_harm_mob))
 		return FALSE
-
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
-
 	if(!hive)
 		return FALSE
-
 	if(HAS_TRAIT(attempt_harm_mob, TRAIT_HAULED))
 		return TRUE
-
 	return hive.is_ally(attempt_harm_mob)
 
+/obj/effect/particle_effect/smoke/blight/proc/attempt_infection(mob/living/carbon/human/target)
+	var/embryos = 0
+	for(var/obj/item/alien_embryo/embryo in target) // already got one, stops doubling up
+		if(embryo.hivenumber == XENO_HIVE_PATHOGEN)
+			embryos++
+		else
+			qdel(embryo)
+	if(!embryos)
+		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo/bloodburster(target)
+		GLOB.player_embryo_list += embryo
 
+		if(target.species)
+			target.species.larva_impregnated(embryo)
+
+		target.visible_message(SPAN_DANGER("[target] inhales [src] as they walk through it!"), SPAN_HIGHDANGER("You inhale [src] as you walk through it!"))
+		var/area/breath_area = get_area(src)
+		if(breath_area)
+			notify_ghosts(header = "Infected", message = "[target] has been infected with pathogen spores at [breath_area]!", source = target, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[target]</b> has been infected with pathogen spores at \the <b>[breath_area]</b>"))
+		else
+			notify_ghosts(header = "Infected", message = "[target] has been infected with pathogen spores!", source = target, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[target]</b> has been infected with pathogen spores"))
+		return TRUE
+	return FALSE
 
 
 /datum/action/xeno_action/onclick/shatter

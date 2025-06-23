@@ -644,6 +644,7 @@
 
 #define PATHOGEN_STRUCTURE_CORE "blight core"
 #define PATHOGEN_STRUCTURE_COCOON "mycelial cocoon"
+#define PATHOGEN_STRUCTURE_COCOON_BIG "huge mycelial cocoon"
 
 #define RESIN_TRAP_EMPTY 0
 #define RESIN_TRAP_HUGGER 1

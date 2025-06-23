@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_8
 
-	attack_delay = 1.7 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 1.7
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/blight
@@ -26,7 +26,7 @@
 
 	minimap_icon = "blight"
 
-/mob/living/carbon/xenomorph/blight
+/mob/living/carbon/xenomorph/pathogen/blight
 	caste_type = PATHOGEN_CREATURE_BLIGHT
 	name = PATHOGEN_CREATURE_BLIGHT
 	desc = "A sleek and stealthy hunter, always watching."
@@ -41,10 +41,10 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/onclick/lurker_invisibility/blight,
-		/datum/action/xeno_action/activable/pounce/lurker,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
+		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/onclick/lurker_invisibility/blight, // Macro 1
+		/datum/action/xeno_action/activable/pounce/lurker, // Macro 2
 		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -67,13 +67,9 @@
 
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
-	speaking_noise = "neo_talk"
+	speaking_noise = "pathogen_talk"
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
-
-/mob/living/carbon/xenomorph/blight/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	make_pathogen_speaker()
 
 /datum/behavior_delegate/pathogen_base/blight
 	name = "Base Blight Behavior Delegate"

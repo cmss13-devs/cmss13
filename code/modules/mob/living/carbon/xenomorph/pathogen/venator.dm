@@ -3,7 +3,7 @@
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
-	melee_damage_upper = XENO_DAMAGE_TIER_6
+	melee_damage_upper = XENO_DAMAGE_TIER_7
 	melee_vehicle_damage = XENO_DAMAGE_TIER_7
 	max_health = XENO_HEALTH_TIER_12
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_5
 
-	attack_delay = 0 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 0
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/venator
@@ -28,7 +28,7 @@
 	minimap_icon = "venator"
 	evolution_allowed = FALSE
 
-/mob/living/carbon/xenomorph/venator
+/mob/living/carbon/xenomorph/pathogen/venator
 	caste_type = PATHOGEN_CREATURE_VENATOR
 	name = PATHOGEN_CREATURE_VENATOR
 	desc = "A wandering ball of death."
@@ -44,7 +44,7 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
-		/datum/action/xeno_action/activable/venator_abduct,
+		/datum/action/xeno_action/activable/venator_abduct, // Macro 1
 		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -65,15 +65,11 @@
 
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
-	speaking_noise = "neo_talk"
+	speaking_noise = "pathogen_talk"
 
 	mob_size = MOB_SIZE_BIG
 	acid_blood_damage = 0
 	bubble_icon = "pathogenroyal"
-
-/mob/living/carbon/xenomorph/venator/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	make_pathogen_speaker()
 
 /datum/action/xeno_action/activable/tail_stab/pathogen_t3
 	name = "Spike Lash"

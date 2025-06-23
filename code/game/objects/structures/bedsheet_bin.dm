@@ -82,6 +82,28 @@ LINEN BINS
 /obj/item/bedsheet/colorable
 	icon_state = "sheetce"
 
+/obj/item/bedsheet/bedroll
+	icon_state = "bedroll_sheet"
+
+/obj/item/bedsheet/bedroll/blue
+	icon_state = "bedroll_sheet"
+	color = "#8cb9e2"
+
+/obj/item/bedsheet/bedroll/red
+	icon_state = "bedroll_sheet"
+	color = "#df4f4f"
+
+/obj/item/bedsheet/bedroll/pink
+	icon_state = "bedroll_sheet"
+	color = "#eaa8b2"
+
+/obj/item/bedsheet/bedroll/green
+	icon_state = "bedroll_sheet"
+	color = "#b3e290"
+
+/obj/item/bedsheet/bedroll/yellow
+	icon_state = "bedroll_sheet"
+	color = "#e2df90"
 
 /obj/structure/bedsheetbin
 	name = "linen bin"

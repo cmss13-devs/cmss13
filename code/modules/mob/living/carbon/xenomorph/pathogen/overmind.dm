@@ -81,6 +81,8 @@
 	linked_hive.add_hive_leader(overmind_mob)
 	overmind_mob.lock_evolve = TRUE
 
+	overmind_timer = addtimer(CALLBACK(src, PROC_REF(strengthen_overmind)), 600 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+
 	// Remove their abilities
 	for(var/datum/action/xeno_action/action in overmind_mob.actions)
 		action.remove_from(overmind_mob)
@@ -102,6 +104,15 @@
 
 	return TRUE
 
+/obj/effect/alien/resin/special/pylon/pathogen_core/proc/strengthen_overmind()
+	overmind_strengthened = TRUE
+	if(overmind_mob)
+		to_chat(overmind_mob, SPAN_PATHOGEN_ANNOUNCE("Your blight core has grown stronger! New abilities are now possible."))
+
+		for(var/path in overmind_abilities_strong)
+			give_action(overmind_mob, path)
+	return TRUE
+
 /obj/effect/alien/resin/special/pylon/pathogen_core/proc/unset_overmind()
 	if(!overmind_mob)
 		return FALSE
@@ -112,6 +123,10 @@
 	overmind_mob.add_abilities()
 
 	// Removes the mob from the core
+
+	if(overmind_timer)
+		deltimer(overmind_timer)
+	overmind_timer = null
 
 	REMOVE_TRAIT(overmind_mob, TRAIT_IMMOBILIZED, OVERMIND_TRAIT)
 	REMOVE_TRAIT(overmind_mob, TRAIT_PATHOGEN_OVERMIND, OVERMIND_TRAIT)

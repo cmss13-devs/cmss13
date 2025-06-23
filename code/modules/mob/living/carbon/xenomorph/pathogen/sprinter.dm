@@ -29,7 +29,7 @@
 
 	minimap_icon = "sprinter"
 
-/mob/living/carbon/xenomorph/sprinter
+/mob/living/carbon/xenomorph/pathogen/sprinter
 	caste_type = PATHOGEN_CREATURE_SPRINTER
 	name = PATHOGEN_CREATURE_SPRINTER
 	desc = "A small white alien that looks like it could run fairly quickly..."
@@ -55,9 +55,9 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/xenohide,
-		/datum/action/xeno_action/activable/pounce/runner,
-		/datum/action/xeno_action/activable/runner_skillshot,
-		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+		/datum/action/xeno_action/activable/pounce/runner, // Macro 1
+		/datum/action/xeno_action/activable/runner_skillshot, // Macro 2
+		/datum/action/xeno_action/onclick/toggle_long_range/runner, // Macro 3
 		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -76,20 +76,16 @@
 
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
-	speaking_noise = "neo_talk"
+	speaking_noise = "pathogen_talk"
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
 
-/mob/living/carbon/xenomorph/sprinter/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	make_pathogen_speaker()
-
-/mob/living/carbon/xenomorph/sprinter/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
+/mob/living/carbon/xenomorph/pathogen/sprinter/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
 	if (pass_flags_container)
 		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
 
-/mob/living/carbon/xenomorph/sprinter/recalculate_actions()
+/mob/living/carbon/xenomorph/pathogen/sprinter/recalculate_actions()
 	. = ..()
 	pull_multiplier *= 0.85
 	if(is_zoomed)

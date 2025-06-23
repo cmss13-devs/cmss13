@@ -13,7 +13,7 @@
 	evasion = XENO_EVASION_LOW
 	speed = XENO_SPEED_TIER_9
 
-	attack_delay = 2 // VERY high slash damage, but attacks relatively slowly
+	attack_delay = 2
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/neomorph
@@ -26,7 +26,7 @@
 
 	minimap_icon = "neomorph"
 
-/mob/living/carbon/xenomorph/neomorph
+/mob/living/carbon/xenomorph/pathogen/neomorph
 	caste_type = PATHOGEN_CREATURE_NEOMORPH
 	name = PATHOGEN_CREATURE_NEOMORPH
 	desc = "A sleek, fast alien with sharp claws."
@@ -42,8 +42,8 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
-		/datum/action/xeno_action/activable/pounce/runner/neomorph,
-		/datum/action/xeno_action/activable/headbite,
+		/datum/action/xeno_action/activable/pounce/runner/neomorph, // Macro 1
+		/datum/action/xeno_action/activable/headbite/neomorph, // Macro 2
 		/datum/action/xeno_action/onclick/blight_slash,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -66,13 +66,9 @@
 
 	AUTOWIKI_SKIP(TRUE)
 	hivenumber = XENO_HIVE_PATHOGEN
-	speaking_noise = "neo_talk"
+	speaking_noise = "pathogen_talk"
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
-
-/mob/living/carbon/xenomorph/neomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
-	. = ..()
-	make_pathogen_speaker()
 
 /datum/behavior_delegate/pathogen_base/neomorph
 	name = "Base Neomorph Behavior Delegate"
@@ -97,3 +93,6 @@
 	freeze_self = TRUE // Should we freeze ourselves after the lunge?
 	freeze_time = 5
 	can_be_shield_blocked = TRUE // Some legacy stuff, self explanatory
+
+/datum/action/xeno_action/activable/headbite/neomorph
+	ability_primacy = XENO_PRIMARY_ACTION_2

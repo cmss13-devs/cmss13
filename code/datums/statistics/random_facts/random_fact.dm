@@ -47,7 +47,7 @@
 				continue
 		var/datum/entity/player/player_record = DB_ENTITY(/datum/entity/player, death.player_id)
 		if(!player_record)
-			debug_log("player_entity lookup failed for '[death.player_id]' during [type]'s find_death_to_report")
+			debug_log("/datum/entity/player lookup failed for '[death.player_id]' during [type]'s find_death_to_report")
 			continue
 		if(!(player_record.ckey in GLOB.directory))
 			continue // Not connected anymore

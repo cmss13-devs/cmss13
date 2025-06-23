@@ -1805,6 +1805,10 @@
 "DK" = (
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8;
+	faction_group = list("CLF")
+	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/exterior/far_north_outpost)
 "Ef" = (
@@ -1901,7 +1905,9 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
 "Ho" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF")
+	},
 /turf/open/floor/strata/floor3,
 /area/strata/exterior/far_north_outpost)
 "HF" = (

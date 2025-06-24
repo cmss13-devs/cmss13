@@ -392,6 +392,18 @@
 	desc = "A trendy-looking satchel."
 	icon_state = "satchel-norm"
 
+/obj/item/storage/backpack/satchel/norm/blue
+	icon_state = "satchel-chem"
+
+/obj/item/storage/backpack/satchel/norm/red_line
+	icon_state = "satchel-med"
+
+/obj/item/storage/backpack/satchel/norm/orange_line
+	icon_state = "satchel-eng"
+
+/obj/item/storage/backpack/satchel/norm/green
+	icon_state = "satchel_hyd"
+
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"
 	desc = "A tough satchel with extra pockets."
@@ -480,7 +492,7 @@
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
 	)
-	can_hold = list(/obj/item/ammo_box, /obj/item/stack/folding_barricade)
+	can_hold = list(/obj/item/ammo_box, /obj/item/stack/folding_barricade, /obj/item/stack/sandbags, /obj/item/stack/sandbags_empty)
 	max_w_class = SIZE_MASSIVE
 	throw_range = 0
 	xeno_types = null
@@ -557,7 +569,23 @@
 	name = "\improper USCM expedition chestrig"
 	desc = "A heavy-duty IMP based chestrig, can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
 	icon_state = "intel_chestrig"
-	max_storage_space = 20
+
+/obj/item/storage/backpack/marine/satchel/intel/expeditionsatchel
+	name = "\improper USCM lightweight expedition satchel"
+	desc = "A heavy-duty IMP based satchel, reinforced with kevlar so it doesn't rip. Can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
+	icon_state = "intel_satchel"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	item_state_slots = list(
+		WEAR_BACK = "intel_satchel",
+		WEAR_R_HAND = "marinesatch",
+		WEAR_L_HAND = "marinesatch",
+	)
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/classic_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
@@ -1250,6 +1278,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 /obj/item/storage/backpack/lightpack/five_slot
 	max_storage_space = 15
 
+/obj/item/storage/backpack/lightpack/black
+	name = "\improper lightweight combat pack"
+	desc = "A small, lightweight pack for expeditions and short-range operations."
+	icon_state = "ERT_satchel_black"
+
+/obj/item/storage/backpack/lightpack/black/five_slot
+	max_storage_space = 15
+
+/obj/item/storage/backpack/lightpack/black/medic
+	name = "\improper lightweight medic combat pack"
+	desc = "A small, lightweight medic pack for expeditions and short-range operations."
+	icon_state = "ERT_satchel_medic_black"
+
+/obj/item/storage/backpack/lightpack/black/medic/five_slot
+	max_storage_space = 15
+
 /obj/item/storage/backpack/marine/engineerpack/ert
 	name = "\improper lightweight technician welderpack"
 	desc = "A small, lightweight pack for expeditions and short-range operations. Features a small fueltank for quick blowtorch refueling."
@@ -1263,6 +1307,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_fuel = 180
 
 /obj/item/storage/backpack/marine/engineerpack/ert/four_slot
+	max_fuel = 100
+	max_storage_space = 12
+
+/obj/item/storage/backpack/marine/engineerpack/ert/black
+	icon_state = "ERT_satchel_welder_black"
+	max_storage_space = 20
+
+/obj/item/storage/backpack/marine/engineerpack/ert/black/four_slot
 	max_fuel = 100
 	max_storage_space = 12
 

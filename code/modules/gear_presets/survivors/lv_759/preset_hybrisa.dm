@@ -70,6 +70,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/steward(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/royal_marine(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack(new_human), WEAR_BACK)
+	add_survivor_rare_item(new_human)
 	add_survivor_weapon_civilian(new_human)
 	..()
 
@@ -118,6 +119,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit/blazer(new_human), WEAR_BODY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/blue(new_human), WEAR_BACK)
+	add_survivor_rare_item(new_human)
 	add_survivor_weapon_civilian(new_human)
 	..()
 
@@ -848,7 +850,7 @@
 	name = "Survivor - Hybrisa - Weyland-Yutani - Corporate Security Guard"
 	assignment = "Weyland-Yutani - Corporate Security Guard"
 	assignment = JOB_WY_GOON
-	rank = JOB_WY_GOON
+	job_title = JOB_WY_GOON
 	minimap_icon = "goon_standard"
 	minimap_background = "background_goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

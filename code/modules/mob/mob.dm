@@ -237,6 +237,7 @@
 
 
 /mob/proc/Life(delta_time)
+	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
@@ -477,6 +478,9 @@
 		return
 
 	if(throwing || is_mob_incapacitated())
+		return
+
+	if(HAS_TRAIT(src, TRAIT_HAULED))
 		return
 
 	if(pulling)

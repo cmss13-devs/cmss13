@@ -10,7 +10,7 @@
 	max_w_class = SIZE_LARGE
 	storage_slots = 1
 	max_storage_space = 4
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW|STORAGE_ALLOW_WHILE_HAULED
 	///Icon/item states change based on contents; this stores base icon state.
 	var/base_icon
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'

@@ -31,7 +31,7 @@
 	latejoin_larva_drop_early = 0
 	corpses_to_spawn = 0
 
-	votable = FALSE
+	votable = TRUE
 	vote_cycle = 15 // approx. once a day, if it wins the vote
 //	probability = 10  is this percent? I have no clue I can't figure out what this does.
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'

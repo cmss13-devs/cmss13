@@ -60,6 +60,7 @@
 /datum/game_mode/hunter_games/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
 
+
 /////////////////////
 ///// PRE SETUP /////
 /////////////////////
@@ -170,7 +171,7 @@
 		round_finished = MODE_HUNTER_GAMES_LAST_STANDING
 		return
 
-	else if(yautja_count <= 0 && length(GLOB.yautja_mob_list) >= 4) // yautja_count only includes living yautja, yautja_mob_list includes all. If >3 yautja join and all die, this triggers.
+	else if(yautja_count <= 0 && length(predators) >= 4) // yautja_count only includes living yautja, yautja_mob_list includes all. If >3 yautja join and all die, this triggers.
 		round_finished = MODE_HUNTER_GAMES_YAUTJA_DEATH // The contestants managed to kill their yautja capturers and earn their freedom, truly.
 		return
 // would like to figure out an intelligent way to make the above check not include cryoed, not sure yet.

@@ -30,5 +30,6 @@
 // Contestant Spawning
 /obj/effect/landmark/start/hunter_games
 	name = JOB_HUNTER_GAMES
-	icon_state = "hunter_primary"
+	icon_state = "hunter_secondary"
 	job = /datum/job/hunter_games
+

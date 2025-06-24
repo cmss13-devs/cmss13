@@ -85,7 +85,7 @@
 		XENO_STRUCTURE_PYLON = 2,
 	)
 
-	var/global/list/hive_structure_types = list(
+	var/list/hive_structure_types = list(
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
@@ -1654,6 +1654,10 @@
 	hive_structures_limit = list(
 		PATHOGEN_STRUCTURE_CORE = 1,
 		PATHOGEN_STRUCTURE_COCOON = 3,
+	)
+
+	hive_structure_types = list(
+		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
 	)
 
 /datum/hive_status/pathogen/get_xeno_counts()

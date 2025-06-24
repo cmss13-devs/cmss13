@@ -109,7 +109,7 @@
 		if(entrance_used) //if we are at a door, throw it in, else do nothing.
 			user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door of the [src]."),
 			SPAN_WARNING("You take position to throw [nade] through the door of the [src]."))
-			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				return
 			if(mob_x != user.x - x || mob_y != user.y - y)
 				return

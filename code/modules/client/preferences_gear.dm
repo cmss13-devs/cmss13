@@ -166,8 +166,12 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/glasses/regular/hippie
 
 /datum/gear/eyewear/aviators
-	display_name = "Aviator shades"
+	display_name = "Aviator shades, gold"
 	path = /obj/item/clothing/glasses/sunglasses/aviator
+
+/datum/gear/eyewear/aviators/silver
+	display_name = "Aviator shades, silver"
+	path = /obj/item/clothing/glasses/sunglasses/aviator/silver
 
 /datum/gear/eyewear/new_bimex/black
 	display_name = "BiMex tactical shades, black"
@@ -450,6 +454,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/helmet_garb/helmet_gasmask
 	display_name = "M5 integrated gasmask"
 	path = /obj/item/prop/helmetgarb/helmet_gasmask
+
+/datum/gear/helmet_garb/gunoil
+	display_name = "Gun oil"
+	path = /obj/item/prop/helmetgarb/gunoil
 
 /datum/gear/helmet_garb/netting
 	display_name = "Helmet netting"
@@ -1246,6 +1254,24 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/civilian/patch/clf
 	display_name = "Colonial Liberation Front shoulder patch"
 	path = /obj/item/clothing/accessory/patch/clf_patch
+
+/datum/gear/civilian/patch/hyperdyne
+	display_name = "Hyperdyne Corporation shoulder patch"
+	path = /obj/item/clothing/accessory/patch/hyperdyne_patch
+
+// Misc Headwear
+
+/datum/gear/civilian/headwear
+	fluff_cost = 2
+	slot = WEAR_HEAD
+
+/datum/gear/civilian/headwear/cowboy_hat
+	display_name = "cowboy hat, brown"
+	path = /obj/item/clothing/head/cowboy
+
+/datum/gear/civilian/headwear/cowboy_hat/light
+	display_name = "cowboy hat, light-brown"
+	path = /obj/item/clothing/head/cowboy/light
 
 // Cheap Civilian shades - colorful!
 

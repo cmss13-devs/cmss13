@@ -2218,6 +2218,7 @@
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\bloodburster.dm"
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\brute.dm"
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\matriarch.dm"
+#include "code\modules\mob\living\carbon\xenomorph\pathogen\matriarch_cocoon.dm"
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\neomorph.dm"
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\overmind.dm"
 #include "code\modules\mob\living\carbon\xenomorph\pathogen\popper.dm"

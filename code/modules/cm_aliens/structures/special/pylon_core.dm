@@ -317,7 +317,7 @@
 		SPAN_XENODANGER("We emerge from [src] and awaken from our slumber. For the Hive!"))
 		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. [ADMIN_JMP(src)]")
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
-		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
+		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno, TRUE))
 			qdel(new_xeno)
 			return FALSE
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva awakened from slumber!"))

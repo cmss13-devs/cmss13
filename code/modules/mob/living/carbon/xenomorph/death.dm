@@ -57,7 +57,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 						new_xeno.set_hive_and_update(hivenumber)
 
 						new_xeno.generate_name()
-						if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
+						if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno, TRUE))
 							qdel(new_xeno)
 							break
 

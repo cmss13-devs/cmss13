@@ -39,7 +39,7 @@
 /mob/living/carbon/relaymove(mob/user, direction)
 	if(user.is_mob_incapacitated(TRUE))
 		return
-	if(!chestburst && (status_flags & XENO_HOST) && (islarva(user) || is_pathogen_creature(user)))
+	if(!chestburst && (status_flags & XENO_HOST) && (islarva(user) || isbloodburster(user)))
 		var/mob/living/carbon/xenomorph/larva_burst = user
 		larva_burst.chest_burst(src)
 

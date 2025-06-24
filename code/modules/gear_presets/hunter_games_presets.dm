@@ -15,6 +15,10 @@ GLOBAL_LIST_EMPTY(spawned_contestants)
 	/// How many contestants have been spawned total
 	var/static/total_spawned = 0
 
+/datum/job/hunter_games/spawn_in_player(mob/new_player/new_player)
+	. = ..()
+	total_spawned++
+
 
 /datum/equipment_preset/hunter_games
 	name = "Hunter Games - Hunted Survivor"
@@ -30,13 +34,17 @@ GLOBAL_LIST_EMPTY(spawned_contestants)
 	faction = null // No factions for these guys, every man for himself
 	faction_group = null
 
-	languages = list()
-
 	flags = EQUIPMENT_PRESET_STUB
+
+// Give contestants global access to the colony; all the doors being locked isn't a very interesting challenge.
+/datum/equipment_preset/hunter_games/New()
+	. = ..()
+
+	access = get_access(ACCESS_LIST_GLOBAL)
 
 // Contestants get a random language; we tower of babel in this mf.
 /datum/equipment_preset/hunter_games/load_languages(mob/living/carbon/human/new_human, client/mob_client)
-	new_human.set_languages(pick(ALL_HUMAN_LANGUAGES))
+	new_human.set_languages(list(pick(ALL_HUMAN_LANGUAGES)))
 
 /datum/equipment_preset/hunter_games/load_vanity(mob/living/carbon/human/new_human, client/mob_client)
 	return // We don't want people spawning in guns, food, knives, and other advantages here.
@@ -56,7 +64,6 @@ GLOBAL_LIST_EMPTY(spawned_contestants)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 
 /datum/equipment_preset/hunter_games/civilian/load_gear(mob/living/carbon/human/new_human)
-	access = get_access(ACCESS_LIST_GLOBAL)
 
 	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(new_human)
@@ -208,3 +215,5 @@ GLOBAL_LIST_EMPTY(spawned_contestants)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/hunter_games/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight/on(new_human), WEAR_R_STORE)
+	// I noticed players would kinda just stand there not realizing the game had even loaded without a pre-existing light, so now it spawns a lit one in their pocket.

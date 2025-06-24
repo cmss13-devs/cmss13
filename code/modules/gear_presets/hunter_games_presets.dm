@@ -15,9 +15,11 @@ GLOBAL_LIST_EMPTY(spawned_contestants)
 	/// How many contestants have been spawned total
 	var/static/total_spawned = 0
 
+
 /datum/job/hunter_games/spawn_in_player(mob/new_player/new_player)
 	. = ..()
 	total_spawned++
+	GLOB.spawned_contestants += new_player
 
 
 /datum/equipment_preset/hunter_games

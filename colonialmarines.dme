@@ -839,7 +839,6 @@
 #include "code\game\gamemodes\round_modifiers.dm"
 #include "code\game\gamemodes\colonialmarines\colonialmarines.dm"
 #include "code\game\gamemodes\colonialmarines\hunter_games.dm"
-#include "code\game\gamemodes\colonialmarines\huntergames.dm"
 #include "code\game\gamemodes\colonialmarines\whiskey_outpost.dm"
 #include "code\game\gamemodes\colonialmarines\xenovsxeno.dm"
 #include "code\game\gamemodes\colonialmarines\hunter_games\hunter_games_landmarks.dm"

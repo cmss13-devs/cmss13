@@ -39,10 +39,10 @@
 	// IBs are off and all splints are nanosplints, but you can't be revived-- permadeath helps discourage teams stomping.
 	hardcore = TRUE
 	starting_round_modifiers = list(
-									/datum/gamemode_modifier/permadeath,
-									/datum/gamemode_modifier/disable_ib,
-									/datum/gamemode_modifier/indestructible_splints,
-									)
+		/datum/gamemode_modifier/permadeath,
+		/datum/gamemode_modifier/disable_ib,
+		/datum/gamemode_modifier/indestructible_splints,
+	)
 
 	/// Time between spectator voted supply drops
 	var/drop_time = 8 MINUTES

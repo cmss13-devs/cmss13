@@ -238,3 +238,19 @@
       on micro tesla as intended
   kiVts:
   - rscadd: Shooting target on target range should be more useful now.
+2025-06-22:
+  Drathek:
+  - qol: First 15 seconds of the game no longer offers a larva queue position estimation
+      on the lobby since other players are still observing and the estimation relies
+      on currently valid candidates.
+2025-06-23:
+  Lagomorphica:
+  - balance: FORECON major now spawns with their chosen sidearm
+  realforest2001:
+  - rscadd: Added a Yautja Council icon for the clan hud.
+2025-06-24:
+  DarkLordCabbage:
+  - spellcheck: fixed burrowed larva being referred to as pooled in a hijack msg
+  stalkerino:
+  - rscadd: Adds a CO survivor CMB Marshal on Solaris Ridge
+  - rscadd: CMB armor can now be equipped on colonial marshal uniforms

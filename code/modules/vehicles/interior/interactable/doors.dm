@@ -58,9 +58,9 @@
 		interior.exit(M)
 	return XENO_NO_DELAY_ACTION
 
-/obj/structure/interior_exit/vehicle/attackby(obj/item/O, mob/user)
-	if(istype(O, /obj/item/explosive/grenade))
-		var/obj/item/explosive/grenade/nade = O
+/obj/structure/interior_exit/vehicle/attackby(obj/item/object, mob/user)
+	if(istype(object, /obj/item/explosive/grenade))
+		var/obj/item/explosive/grenade/nade = object
 		if(nade.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(nade, user))
 			to_chat(user, SPAN_WARNING("\The [nade.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
 			// Let staff know, in case someone's actually about to try to grief
@@ -69,7 +69,7 @@
 
 		user.visible_message(SPAN_WARNING("[user] takes position to throw [nade] through the door."),
 		SPAN_WARNING("You take position to throw [nade] through the door."))
-		if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
 
 		user.visible_message(SPAN_WARNING("[user] throws [nade] through the door!"),

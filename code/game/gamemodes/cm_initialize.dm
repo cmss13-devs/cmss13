@@ -804,7 +804,7 @@ Additional game mode variables.
 
 	return TRUE
 
-/datum/game_mode/proc/transfer_xeno(xeno_candidate, mob/living/new_xeno, verify = FALSE)
+/datum/game_mode/proc/transfer_xeno(mob/xeno_candidate, mob/living/new_xeno, verify = FALSE)
 	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
 

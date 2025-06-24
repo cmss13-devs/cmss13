@@ -20979,7 +20979,7 @@
 /turf/open/floor/corsat/red/east,
 /area/corsat/gamma/security)
 "bCD" = (
-/obj/item/storage/belt/gun/m4a3/vp78{
+/obj/item/storage/belt/gun/m4a3/wy/vp78{
 	desc = "The M276 is the standard load-bearing equipment of the TGMC. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the VP78 comfortably secure. It also contains side pouches that can store XX magazines.";
 	name = "M276 pattern VP78 holster rig"
 	},
@@ -28007,7 +28007,7 @@
 /area/corsat/sigma/biodome)
 "ejD" = (
 /obj/structure/surface/table/almayer,
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},

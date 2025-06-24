@@ -281,6 +281,7 @@
 	hitsound = "swing_hit"
 
 	var/detonating = FALSE
+	var/gib_user = TRUE
 	var/wielded_attack_verb = list("charged")
 	var/wielded_hitsound = null
 	var/unwielded_attack_verb = list("whacked")
@@ -331,17 +332,20 @@
 	detonating = TRUE
 	playsound(user, 'sound/items/Wirecutter.ogg', 50, 1)
 
-	sleep(3)
+	addtimer(CALLBACK(src, PROC_REF(lungemine_detonate), target, user), 0.3 SECONDS)
 
+/obj/item/weapon/twohanded/lungemine/proc/lungemine_detonate(atom/target, mob/user)
 	var/turf/epicenter = get_turf(target)
-	target.ex_act(400, null, src, user, 100)
 	cell_explosion(epicenter, detonation_force, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
+	if(gib_user)
+		user.gib()
 	qdel(src)
 
 /obj/item/weapon/twohanded/lungemine/damaged
 	name = "damaged lunge mine"
 	desc = "A crude but intimidatingly bulky shaped explosive charge, fixed to the end of a pole. To use it, one must grasp it firmly in both hands, and thrust the prongs of the shaped charge into the target. That the resulting explosion occurs directly in front of the user's face was not an apparent concern of the designer. A true hero's weapon. This one seems pretty badly damaged, you probably shouldn't even pick it up from the ground."
 	detonation_force = 50
+	gib_user = FALSE
 
 /obj/item/weapon/twohanded/breacher
 	name = "\improper D2 Breaching Hammer"
@@ -372,13 +376,13 @@
 	var/move_delay_addition = 1.5
 
 /obj/item/weapon/twohanded/breacher/synth/pickup(mob/user)
+	. = ..()
 	if(!(HAS_TRAIT(user, TRAIT_SUPER_STRONG)))
 		to_chat(user, SPAN_HIGHDANGER("You barely manage to lift [src] above your knees. This thing will probably be useless to you."))
 		user.apply_effect(3, EYE_BLUR)
 		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
 
 		return
-	..()
 
 /obj/item/weapon/twohanded/breacher/synth/proc/handle_movedelay(mob/living/M, list/movedata)
 	SIGNAL_HANDLER

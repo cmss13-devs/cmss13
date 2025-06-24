@@ -63,6 +63,7 @@ type Data = {
   can_launch_obs: BooleanLike;
   ob_cooldown?: number;
   ob_loaded: BooleanLike;
+  ob_safety: Boolean;
   supply_cooldown: number;
   operator: string;
 };
@@ -513,11 +514,12 @@ const SquadMonitor = (props) => {
       <Input
         fluid
         placeholder="Search.."
+        m="0"
         mb="4px"
         value={marineSearch}
         onInput={(e, value) => setMarineSearch(value)}
       />
-      <Section m="2px" pb="2px" fill scrollable>
+      <Section m="0" pb="2px" fill scrollable>
         <Table>
           <Table.Row bold fontSize="14px">
             <Table.Cell textAlign="center">Name</Table.Cell>
@@ -742,6 +744,9 @@ const OrbitalBombardment = (props) => {
   if (data.ob_cooldown) {
     ob_status = 'Cooldown - ' + data.ob_cooldown / 10 + ' seconds';
     ob_color = 'yellow';
+  } else if (data.ob_safety) {
+    ob_status = 'Cannon Safety Engaged';
+    ob_color = 'red';
   } else if (!data.ob_loaded) {
     ob_status = 'Not chambered';
     ob_color = 'red';
@@ -793,8 +798,8 @@ const OrbitalBombardment = (props) => {
             <Button
               fontSize="20px"
               width="100%"
-              icon="bomb"
-              color="red"
+              icon={data.ob_safety ? 'ban' : 'bomb'}
+              color={data.ob_safety ? 'transperant' : 'red'}
               onClick={() => act('dropbomb', { x: OBX, y: OBY, z: OBZ })}
             >
               Fire

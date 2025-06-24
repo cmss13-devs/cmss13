@@ -249,8 +249,8 @@
 
 	attachable_allowed = list()
 
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	flags_gun_features = GUN_WIELDED_FIRING_ONLY
-
 	flags_item = TWOHANDED
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
@@ -304,9 +304,24 @@
 //folded version of the sadar
 /obj/item/prop/folded_anti_tank_sadar
 	name = "\improper M83 SADAR (folded)"
-	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the Z key."
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the in-hand activation key, default 'Z'."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
+	)
 	icon_state = "m83a2_folded"
+	item_state = "m83a2_folded"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/rocket_launchers_righthand.dmi'
+	)
+
+	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
 	w_class = SIZE_MEDIUM
 	garbage = FALSE
 
@@ -334,30 +349,28 @@
 //UPP Rocket Launcher
 
 /obj/item/weapon/gun/launcher/rocket/upp
-	name = "\improper HJRA-12 Handheld Anti-Tank Grenade Launcher"
-	desc = "The HJRA-12 Handheld Anti-Tank Grenade Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	name = "\improper HJRA-12 Handheld Anti-Tank Rocket Launcher"
+	desc = "The HJRA-12 Handheld Anti-Tank Rocket Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/rocket_launchers.dmi'
 	icon_state = "hjra12"
 	item_state = "hjra12"
-	skill_locked = FALSE
+	skill_locked = TRUE
 	current_mag = /obj/item/ammo_magazine/rocket/upp/at
+	unacidable = TRUE
+	explo_proof = TRUE
 
-	attachable_allowed = list(/obj/item/attachable/upp_rpg_breech)
+	pixel_x = -7
+	hud_offset = -7
 
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
-	flags_item = TWOHANDED
+	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/launcher/rocket/upp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = -6, "stock_y" = 16, "special_x" = 37, "special_y" = 16)
 
 /obj/item/weapon/gun/launcher/rocket/upp/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/upp_rpg_breech/S = new(src)
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachables()
-
 	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
 	Integrated.hidden = TRUE
 	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE

@@ -1,10 +1,9 @@
 /datum/equipment_preset/uscm/forecon
 	assignment = JOB_SQUAD_MARINE
-	rank = JOB_SQUAD_MARINE
+	job_title = JOB_SQUAD_MARINE
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "FORECON"
-	rank = JOB_MARINE
 	faction_group = list(FACTION_MARINE)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	auto_squad_name = SQUAD_FORECON
@@ -83,7 +82,7 @@
 /datum/equipment_preset/uscm/forecon/standard
 	name = "USCM Reconnaissance Marine"
 	assignment = JOB_FORECON_RIFLEMAN
-	rank = JOB_SQUAD_MARINE
+	job_title = JOB_SQUAD_MARINE
 	role_comm_title = "RFN"
 	minimap_icon = ""
 	skills = /datum/skills/military/survivor/forecon_standard
@@ -120,7 +119,7 @@
 /datum/equipment_preset/uscm/forecon/tech
 	name = "USCM Reconnaissance Support Technician"
 	assignment = JOB_FORECON_SUPPORT
-	rank = JOB_SQUAD_TECH
+	job_title = JOB_SQUAD_TECH
 	role_comm_title = "SuppTech"
 	minimap_icon = "engi"
 	skills = /datum/skills/military/survivor/forecon_techician
@@ -162,7 +161,7 @@
 /datum/equipment_preset/uscm/forecon/marksman
 	name = "USCM Reconnaissance Designated Marksman"
 	assignment = JOB_FORECON_MARKSMAN
-	rank = JOB_SQUAD_SPECIALIST
+	job_title = JOB_SQUAD_SPECIALIST
 	role_comm_title = "DMR"
 	minimap_icon = "spec"
 	skills = /datum/skills/military/survivor/forecon_marksman
@@ -206,7 +205,7 @@
 /datum/equipment_preset/uscm/forecon/smartgunner
 	name = "USCM Reconnaissance Smartgunner"
 	assignment = JOB_FORECON_SMARTGUNNER
-	rank = JOB_SQUAD_SMARTGUN
+	job_title = JOB_SQUAD_SMARTGUN
 	role_comm_title = "SG"
 	minimap_icon = "smartgunner"
 	skills = /datum/skills/military/survivor/forecon_smartgunner
@@ -248,7 +247,7 @@
 /datum/equipment_preset/uscm/forecon/squad_leader
 	name = "USCM Reconnaissance Squad Leader"
 	assignment = JOB_FORECON_SL
-	rank = JOB_SQUAD_LEADER
+	job_title = JOB_SQUAD_LEADER
 	role_comm_title = "SL"
 	skills = /datum/skills/military/survivor/forecon_squad_leader
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)

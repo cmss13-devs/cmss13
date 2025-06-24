@@ -102,12 +102,11 @@
 /turf/open/floor/corsat/red/west,
 /area/adminlevel/ert_station/weyland_station)
 "cr" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/shower{
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "cw" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -128,14 +127,17 @@
 /turf/open/floor/corsat/whitetan,
 /area/adminlevel/ert_station/weyland_station)
 "cU" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 27;
+	pixel_x = -8
+	},
 /turf/open/floor/corsat/blue/northwest,
 /area/adminlevel/ert_station/weyland_station)
 "cW" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "cX" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food{
@@ -223,14 +225,13 @@
 /obj/structure/machinery/shower{
 	pixel_y = 21
 	},
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/light/double/blue{
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "ei" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -586,16 +587,6 @@
 	},
 /turf/open/floor/corsat/blue,
 /area/adminlevel/ert_station/weyland_station)
-"jE" = (
-/obj/structure/machinery/shower{
-	pixel_y = 21
-	},
-/obj/effect/decal/strata_decals/catwalk/prison,
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/corsat/damaged1,
-/area/adminlevel/ert_station/weyland_station)
 "jK" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -610,11 +601,10 @@
 /turf/open/floor/corsat/green/east,
 /area/adminlevel/ert_station/weyland_station)
 "kr" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "ky" = (
 /obj/structure/closet/secure_closet/engineering_personal,
@@ -675,11 +665,10 @@
 /turf/open/floor/corsat/green,
 /area/adminlevel/ert_station/weyland_station)
 "lo" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "lq" = (
 /obj/structure/bed{
@@ -780,12 +769,11 @@
 /turf/open/floor/corsat/yellow/northeast,
 /area/adminlevel/ert_station/weyland_station)
 "mv" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/shower{
 	dir = 4
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/strata/multi_tiles/west,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "mx" = (
 /obj/structure/barricade/handrail/wire{
@@ -835,11 +823,10 @@
 /turf/open/floor/corsat/yellow/southwest,
 /area/adminlevel/ert_station/weyland_station)
 "nI" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "nJ" = (
 /obj/item/roller,
@@ -1065,12 +1052,11 @@
 /turf/open/floor/corsat/whitetan,
 /area/adminlevel/ert_station/weyland_station)
 "rc" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/light/double/blue,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/corsat/damaged1,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "ro" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -1083,7 +1069,6 @@
 /turf/open/floor/corsat/plate,
 /area/adminlevel/ert_station/weyland_station)
 "rD" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
 	pixel_x = 10;
@@ -1092,7 +1077,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "rF" = (
 /obj/structure/bed/chair{
@@ -2377,9 +2362,8 @@
 /turf/open/floor/corsat/tan/north,
 /area/adminlevel/ert_station/weyland_station)
 "LF" = (
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "Ma" = (
 /turf/open/floor/corsat/blue/northeast,
@@ -2624,11 +2608,10 @@
 /obj/structure/machinery/shower{
 	pixel_y = 21
 	},
-/obj/effect/decal/strata_decals/catwalk/prison,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/adminlevel/ert_station/weyland_station)
 "Qc" = (
 /obj/structure/machinery/light/double/blue{
@@ -4798,7 +4781,7 @@ fX
 fX
 fX
 fX
-jE
+Qb
 RG
 RG
 rc

@@ -126,3 +126,78 @@
 
 	log_admin("[key_name(usr)] changed the ship map to [VM.map_name].")
 	message_admins("[key_name_admin(usr)] changed the ship map to [VM.map_name].")
+
+/datum/admins/proc/prep_events()
+	set category = "Server"
+	set name = "M: Prepare Events"
+
+	var/list/maprotatechoices = list()
+	var/datum/map_config/VM
+	var/chosenmap
+	var/list/mode_list
+
+	if(!check_rights(R_SERVER))
+		return
+
+	message_admins("[key_name_admin(usr)] has run the prep_events verb.")
+//
+	var/accept = tgui_alert(usr, "Are you sure you want to prepare events? This will restart the server!!!! additionally it will change the current master mode!!!!", "Prepare Events", list("Yes", "No"))
+	if(accept != "Yes")
+		return
+//
+	mode_list = config.modes
+	mode_list += "Cancel"
+	var/modeset = tgui_input_list(usr, "current mode: [GLOB.master_mode]", "Mode Selection", mode_list)
+
+// Override ground map
+	var/accept_mapchange = tgui_alert(usr, "Do you wish to change the next ground map?", "Prepare Events", list("Yes", "No"))
+	if(accept_mapchange == "Yes")
+		for(var/map in config.maplist[GROUND_MAP])
+			VM = config.maplist[GROUND_MAP][map]
+			var/mapname = VM.map_name
+			if(VM == config.defaultmaps[GROUND_MAP])
+				mapname += " (Default)"
+
+			if(VM.config_min_users > 0 || VM.config_max_users > 0)
+				mapname += " \["
+				if(VM.config_min_users > 0)
+					mapname += "[VM.config_min_users]"
+				else
+					mapname += "0"
+				mapname += "-"
+				if(VM.config_max_users > 0)
+					mapname += "[VM.config_max_users]"
+				else
+					mapname += "inf"
+				mapname += "\]"
+
+			maprotatechoices[mapname] = VM
+
+		chosenmap = tgui_input_list(usr, "Choose a ground map to change to", "Change Ground Map", maprotatechoices)
+
+		if(!chosenmap)
+			to_chat(usr, SPAN_WARNING("Failed to select a ground map, aborting changes and restart."))
+			return
+
+// All changes should happen here incase of failure
+	//Change gamemode
+	if(modeset != "Cancel" && !!modeset)
+		GLOB.master_mode = modeset
+		message_admins("[key_name_admin(usr)] set the mode as [GLOB.master_mode] via event prep.")
+		to_world(SPAN_NOTICE("<b><i>The mode for next round is: [GLOB.master_mode]!</i></b>"))
+		SSticker.save_mode(GLOB.master_mode)
+
+	//Change map
+	if(chosenmap)
+		VM = maprotatechoices[chosenmap]
+		log_admin("[key_name(usr)] changed the map to [VM.map_name].")
+		message_admins("[key_name_admin(usr)] changed the map to [VM.map_name].")
+
+		if(!SSmapping.changemap(VM, GROUND_MAP))
+			to_chat(usr, SPAN_WARNING("Failed to change the ground map, aborting changes and restart."))
+			return
+
+//	Restarts the world provided no issues occur above.
+	log_admin("[key_name(usr)] initiated a reboot.")
+	sleep(100)
+	world.Reboot()

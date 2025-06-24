@@ -28,6 +28,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(tier == 1 && hive.allow_queen_evolve && !hive.living_xeno_queen)
 		castes_available |= XENO_CASTE_QUEEN
 
+	// Allow drones to evo into any T2 before first drop
+	if(caste_type == XENO_CASTE_DRONE && !SSobjectives.first_drop_complete)
+		castes_available = caste.early_evolves_to.Copy()
+
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste
@@ -194,6 +198,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	transfer_observers_to(new_xeno)
 	new_xeno._status_traits = _status_traits
 
+	// Freshly evolved xenos emerge standing.
+	// This resets density and resting status traits.
+	set_body_position(STANDING_UP)
+
 	qdel(src)
 	new_xeno.xeno_jitter(25)
 
@@ -255,7 +263,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We must be at full health to evolve."))
 		return FALSE
 
-	if(agility || fortify || crest_defense)
+	if(agility || fortify || crest_defense || stealth)
 		to_chat(src, SPAN_WARNING("We cannot evolve while in this stance."))
 		return FALSE
 
@@ -286,6 +294,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 	if(tier == 0 || tier == 4)
 		to_chat(src, SPAN_XENOWARNING("We can't transmute."))
+		return
+	if(agility || fortify || crest_defense || stealth)
+		to_chat(src, SPAN_XENOWARNING("We can't transmute while in this stance."))
 		return
 	if(lock_evolve)
 		if(banished)

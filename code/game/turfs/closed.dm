@@ -286,8 +286,9 @@
 	icon = 'icons/turf/shuttle.dmi'
 	layer = ABOVE_TURF_LAYER
 
-/turf/closed/shuttle/is_weedable()
-	return FULLY_WEEDABLE
+/turf/closed/shuttle/Initialize(mapload)
+	. = ..()
+	is_weedable = FULLY_WEEDABLE
 
 /turf/closed/shuttle/dropship
 	icon = 'icons/turf/walls/walls.dmi'
@@ -319,6 +320,22 @@
 	icon_state = "0,0"
 
 /turf/closed/shuttle/twe_dropship/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_sof
+	name = "\improper UPP-DS-3 'Voron'"
+	icon = 'icons/turf/upp_sof_dropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_sof_alt
+	name = "\improper UPP-DS-3 'Volk'"
+	icon = 'icons/turf/upp_sof_alt_dropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof_alt/transparent
 	opacity = FALSE
 
 /turf/closed/shuttle/dropship3

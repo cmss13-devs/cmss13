@@ -13,7 +13,7 @@ export class TimeDisplay extends Component {
   timer: NodeJS.Timeout | null;
   last_seen_value?: number;
   state: { value: number };
-  props: { readonly auto?: string; readonly value: number };
+  declare props: { readonly auto?: string; readonly value: number };
   constructor(props) {
     super(props);
     this.timer = null;

@@ -109,7 +109,7 @@
 	master_object.add_fingerprint(user)
 	//Checks that it's in the user's inventory somewhere - not safe with items inside storage without additional checks on master_object's end.
 	if(user.contains(master_object))
-		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents))
+		if((mods && mods[ALT_CLICK] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents))
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]

@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 
 export type OrbitData = {
   auto_observe: BooleanLike;
@@ -6,6 +6,7 @@ export type OrbitData = {
   marines: Observable[];
   survivors: Observable[];
   xenos: Observable[];
+  infected: Observable[];
   ert_members: Observable[];
   responders: Observable[];
   upp: Observable[];
@@ -36,6 +37,7 @@ export type Observable = {
   health?: number;
   icon?: string;
   job?: string;
+  mutiny_status?: string;
   background_color?: string;
   background_icon?: string;
   full_name: string;

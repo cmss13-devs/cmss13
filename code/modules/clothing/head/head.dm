@@ -383,6 +383,7 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/misc.dmi',
 	)
+	flags_obj = OBJ_IS_HELMET_GARB
 
 GLOBAL_LIST_INIT(allowed_hat_items, list(
 	/obj/item/storage/fancy/cigarettes/emeraldgreen = PREFIX_HAT_GARB_OVERRIDE,
@@ -554,6 +555,16 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"
 	flags_atom = FPRINT|NO_GAMEMODE_SKIN
+
+/obj/item/clothing/head/cmcap/boonie/fisherman
+	name = "\improper fisherman's boonie hat"
+	desc = "A floppy boonie hat with hooks, lines, and sinkers tucked around the band—clearly the choice of a seasoned angler. Offers shade from the sun and some rain protection."
+	icon_state = "booniehat_fisher"
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	)
 
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM Commanding officer cap"
@@ -902,6 +913,26 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/beret/SOF_beret
+	name = "\improper SOF beret"
+	desc = "A finely crafted beret worn by members of the UPP Space Operations Forces. It signifies service in the void, from deep-space missions to planetary operations, and is a mark of discipline and camaraderie among its wearers."
+	icon_state = "SOF_beret"
+	item_state = "SOF_beret"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
+	)
+
+/obj/item/clothing/head/beret/army_beret
+	name = "\improper UPP reservist beret"
+	desc = "A well-made beret worn by reservists of the UPP armed forces. It signifies their continued commitment to the cause, even while not on active duty, and serves as a symbol of unity and service."
+	icon_state = "army_beret"
+	item_state = "army_beret"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UPP.dmi'
+	)
+
 /obj/item/clothing/head/CMB
 	name = "\improper Colonial Marshal Bureau cap"
 	desc = "A dark cap enscribed with the powerful letters of 'MARSHAL' representing justice, authority, and protection in the outer rim. The laws of the Earth stretch beyond the Sol."
@@ -987,27 +1018,17 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	icon_state = "bucket"
 
 /obj/item/clothing/head/general
-	name = "\improper armored General cap"
-	desc = "A sturdy general officer's cap. More protective than it seems. Please don't ditch this for a helmet like a punk."
+	name = "\improper USCM officer peaked service cap"
+	desc = "A standard issue officer service cap, worn by USCM commissioned officers on official visits."
 	icon_state = "general_helmet"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/UA.dmi',
 	)
-	siemens_coefficient = 2
-	flags_armor_protection = BODY_FLAG_HEAD
-	armor_melee = CLOTHING_ARMOR_HIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS
+
 
 /obj/item/clothing/head/durag
 	name = "durag"

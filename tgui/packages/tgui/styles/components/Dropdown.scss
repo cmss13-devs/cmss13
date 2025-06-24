@@ -28,7 +28,7 @@
   float: right;
   padding-left: 0.35em;
   width: 1.2em;
-  border-left: base.em(1px) solid rgba(0, 0, 0, 0.25);
+  border-left: base.em(1px) solid hsla(0, 0%, 0%, 0.25);
 
   .Icon {
     vertical-align: middle;
@@ -41,9 +41,9 @@
   align-items: center;
   max-height: base.em(200px);
   border-radius: 0 0 base.em(2px) base.em(2px);
-  color: #fff;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, 0.75);
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 0%);
+  background-color: hsla(0, 0%, 0%, 0.75);
 }
 
 .Dropdown__menu-scroll {
@@ -58,12 +58,12 @@
   transition: background-color 100ms ease-out;
 
   &.selected {
-    background-color: rgba(255, 255, 255, 0.5) !important;
+    background-color: hsla(0, 0%, 100%, 0.5) !important;
     transition: background-color 0ms;
   }
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: hsla(0, 0%, 100%, 0.2);
     transition: background-color 0ms;
   }
 }

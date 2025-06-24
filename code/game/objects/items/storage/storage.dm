@@ -67,14 +67,14 @@
 			add_fingerprint(usr)
 
 /obj/item/storage/clicked(mob/user, list/mods)
-	if(!mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
+	if(!mods[SHIFT_CLICK] && mods[MIDDLE_CLICK] && CAN_PICKUP(user, src))
 		handle_mmb_open(user)
 		return TRUE
 
 	//Allow alt-clicking to remove items directly from storage.
 	//Does so by passing the alt mod back to do_click(), which eventually delivers it to attack_hand().
 	//This ensures consistent click behaviour between alt-click and left-mouse drawing.
-	if(mods["alt"]  && loc == user && !user.get_active_hand())
+	if(mods[ALT_CLICK]  && loc == user && !user.get_active_hand())
 		return FALSE
 
 	return ..()
@@ -309,7 +309,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		var/obj/item/I = user.get_active_hand()
 		var/user_carried_master = user.contains(master)
 		// Placing something in the storage screen
-		if(I && !mods["alt"] && !mods["shift"] && !mods["ctrl"]) //These mods should be caught later on and either examine or do nothing.
+		if(I && !mods[ALT_CLICK] && !mods[SHIFT_CLICK] && !mods[CTRL_CLICK]) //These mods should be caught later on and either examine or do nothing.
 			if(world.time <= user.next_move && !user_carried_master) //Click delay doesn't apply to clicking items in your first-layer inventory.
 				return TRUE
 			user.next_move = world.time
@@ -318,7 +318,7 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 			return TRUE
 
 		// examining or taking something out of the storage screen by clicking on item border overlay
-		var/list/screen_loc_params = splittext(mods["screen-loc"], ",")
+		var/list/screen_loc_params = splittext(mods[SCREEN_LOC], ",")
 		var/list/screen_loc_X = splittext(screen_loc_params[1],":")
 		var/click_x = text2num(screen_loc_X[1])*32+text2num(screen_loc_X[2]) - 144
 
@@ -465,6 +465,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		var/obj/item/tool/hand_labeler/L = W
 		if(L.mode)
 			return 0
+
+	if(istype(W, /obj/item/tool/yautja_cleaner) && user.a_intent == INTENT_HARM) //Cleaner both needs to be able to melt containers and be stored within them.
+		return
 
 	if(W.heat_source && !(W.flags_item & IGNITING_ITEM))
 		to_chat(usr, SPAN_ALERT("[W] is ignited, you can't store it!"))
@@ -638,10 +641,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	return handle_item_insertion(W, prevent_warning, user)
 
 /obj/item/storage/attack_hand(mob/user, mods)
-	if(HAS_TRAIT(user, TRAIT_HAULED))
+	if(HAS_TRAIT(user, TRAIT_HAULED) && !HAS_FLAG(storage_flags, STORAGE_ALLOW_WHILE_HAULED))
 		return
 	if (loc == user)
-		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
+		if((mods && mods[ALT_CLICK] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]

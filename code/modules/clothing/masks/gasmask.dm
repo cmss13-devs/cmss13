@@ -45,7 +45,6 @@
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/WY.dmi'
 	)
-	anti_hug = 3
 	vision_impair = VISION_IMPAIR_NONE
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -125,3 +124,17 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/TWE.dmi'
 	)
 	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+
+//= UPP =\\
+
+/obj/item/clothing/mask/gas/upp_pfb
+	name = "\improper ShMB/4 gasmask"
+	desc = "The standard issue gasmask utilized by the UPP Armed Collective and many UPP civilian organizations."
+	icon_state = "pfb"
+	item_state = "pfb"
+	icon = 'icons/obj/items/clothing/masks/masks_by_faction/UPP.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks_by_faction/UPP.dmi'
+	)
+	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR

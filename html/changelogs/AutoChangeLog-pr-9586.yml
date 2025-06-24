@@ -1,0 +1,5 @@
+author: "stalkerino"
+delete-after: True
+changes:
+  - rscadd: "Adds a CO survivor CMB Marshal on Solaris Ridge"
+  - rscadd: "CMB armor can now be equipped on colonial marshal uniforms"

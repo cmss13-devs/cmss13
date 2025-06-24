@@ -491,7 +491,7 @@
 	/// Candidates
 	var/list/mob/living/carbon/xenomorph/candidates = list()
 	/// Time to hatch
-	var/time_to_hatch = 10 MINUTES
+	var/time_to_hatch = 15 MINUTES
 	/// Stage of hatching
 	var/stage = 0
 
@@ -569,10 +569,10 @@
 
 	time_to_hatch -= delta_time SECONDS
 
-	if(!stage && time_to_hatch < 10 MINUTES)
+	if(!stage && time_to_hatch < 15 MINUTES)
 		icon_state = "growing"
 		stage = STAGE_GROWING
-	else if (stage == STAGE_GROWING && time_to_hatch <= 5 MINUTES)
+	else if (stage == STAGE_GROWING && time_to_hatch <= 7.5 MINUTES)
 		announce_halfway()
 		stage = STAGE_HALFWAY
 	else if (stage == STAGE_HALFWAY && time_to_hatch <= 1 MINUTES)

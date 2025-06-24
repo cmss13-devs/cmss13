@@ -800,8 +800,9 @@ Additional game mode variables.
 		return FALSE
 
 	if(verify)
-		var/confirm = tgui_alert(xeno_candidate, "Do your wish to become [new_xeno]?", "Confirm Join Xeno", list("Yes","No"), 2 SECONDS)
-		if(confirm != "Yes")
+		var/confirm = tgui_alert(xeno_candidate, "Do your wish to become [new_xeno]?", "Confirm Join Xeno", list("Yes","No"), 5 SECONDS)
+		playsound_client(xeno_candidate?.client, 'sound/machines/pda_ping.ogg', src, 50, 0)
+		if(confirm == "No")
 			return FALSE
 
 	var/datum/mind/xeno_candidate_mind

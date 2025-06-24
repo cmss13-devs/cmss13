@@ -231,8 +231,9 @@
 	// cooldown to prevent from spam-generating a bunch of fields.
 	COOLDOWN_DECLARE(field_generation)
 
-/obj/structure/machinery/computer/arcade/minesweeper/Initialize()
+/obj/structure/machinery/computer/arcade/minesweeper/Initialize(mapload, list/field_boundaries = list(8,8))
 	. = ..()
+	src.field_boundaries = field_boundaries
 	initiate_list()
 
 /obj/structure/machinery/computer/arcade/minesweeper/attack_hand(mob/user)
@@ -328,13 +329,13 @@
 		return
 	game_state = LOST
 	SEND_SIGNAL(src, COMSIG_MINESWEEPER_LOST, user)
+	addtimer(CALLBACK(src, PROC_REF(initiate_list)), 10 SECONDS)
 	for(var/columns in 1 to field_boundaries[1])
 		for(var/rows in 1 to field_boundaries[2])
 			if(field[columns][rows]["cell_type"] == LANDMINE)
 				field[columns][rows]["state"] = CELL_OPEN
 	if(!quiet_game)
 		to_chat(user, SPAN_WARNING("Boom! You lost. New field in 10 seconds!"))
-	addtimer(CALLBACK(src, PROC_REF(initiate_list)), 10 SECONDS)
 
 
 

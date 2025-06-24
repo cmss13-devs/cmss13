@@ -22,7 +22,7 @@ export const Minesweeper = () => {
   const { boundaries, difficulty, field, game_state } = data;
 
   return (
-    <Window width={650} height={650} theme="weyland">
+    <Window width={650} height={850} theme="weyland">
       <Window.Content scrollable>
         <Button
           style={{
@@ -39,8 +39,10 @@ export const Minesweeper = () => {
               {fieldC.map((cell, rowIndex) => (
                 <div key={rowIndex}>
                   <Button
-                    height={boundaries[1] / 1.5}
-                    width
+                    style={{
+                      aspectRatio: '1',
+                      width: '100%',
+                    }}
                     fluid
                     backgroundColor={
                       cell.cell_type === -1 && cell.state === 'open '

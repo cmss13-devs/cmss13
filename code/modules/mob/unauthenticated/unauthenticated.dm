@@ -63,6 +63,9 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 /// Polls the database to see if our access code has been validated
 /mob/unauthenticated/proc/check_logged_in(code)
+	if(new_ckey)
+		return
+
 	var/datum/view_record/authentication_request/request = locate() in DB_VIEW(
 		/datum/view_record/authentication_request,
 		DB_AND(

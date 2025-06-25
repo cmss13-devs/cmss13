@@ -358,7 +358,7 @@
 /obj/effect/alien/weeds/node/gardener/get_examine_text(mob/user)
 	. = ..()
 	if(isxeno(user) || isobserver(user))
-		. += "We sense that this weeds will benefit our resin fruits, increasing growth speed by [SPAN_NOTICE("20%")]."
+		. += SPAN_NOTICE("We sense that this weeds will benefit our resin fruits, increasing growth speed by [SPAN_BOLDNOTICE("20%")].")
 
 /datum/action/xeno_action/verb/verb_plant_gardening_weeds()
 	set category = "Alien"

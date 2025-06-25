@@ -166,6 +166,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 		"mainwindow.fullscreen_browser.is-visible" = "false",
 	))
 
+	to_close << browse(null, "window=authwindow")
 
 /mob/unauthenticated/tgui_interact(mob/user, datum/tgui/ui)
 	. = ..()

@@ -25,6 +25,8 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 /mob/unauthenticated/Login()
 	. = ..()
 
+	client.acquire_dpi()
+
 	var/static/datum/preferences/dummy_preferences
 	if(!dummy_preferences)
 		dummy_preferences = new()
@@ -185,6 +187,11 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 			list("name" = key, "url" = config_options[key])
 		)
 
+/mob/unauthenticated/ui_data(mob/user)
+	. = ..()
+
+	.["token"] = access_code
+
 /mob/unauthenticated/ui_state(mob/user)
 	return GLOB.always_state
 
@@ -196,9 +203,23 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 			if(!access_code)
 				create_access_code_entity()
 
-			client << link("[CONFIG_GET(keyed_list/auth_urls)[params["auth_option"]]]?code=[access_code]")
+			client << browse("<!DOCTYPE html><html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta http-equiv='X-UA-Compatible' content='IE=edge'><script>location.href = '[CONFIG_GET(keyed_list/auth_urls)[params["auth_option"]]]?code=[access_code]'</script></head><body></body></html>", "window=authwindow;titlebar=0;can_resize=0;size=[700 * client.window_scaling]x[700 * client.window_scaling]")
 
 			INVOKE_ASYNC(src, PROC_REF(check_logged_in))
+			return TRUE
+
+		if("close_browser")
+			client << browse(null, "window=authwindow")
+			return TRUE
+
+		if("open_ext_browser")
+			if(!access_code)
+				create_access_code_entity()
+
+			client << link("[CONFIG_GET(keyed_list/auth_urls)[params["auth_option"]]]?code=[access_code]")
+			INVOKE_ASYNC(src, PROC_REF(check_logged_in))
+			return TRUE
+
 		if("recall_code")
 			if(!COOLDOWN_FINISHED(src, recall_code_cooldown))
 				return

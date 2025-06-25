@@ -271,4 +271,4 @@
 	blooding_name = "Experienced Youngblood Party (Three members)"
 	time_required_for_job = 20 HOURS
 	youngblood_time = 10 HOURS
-	youngblood_time_required_for_job = 2 HOURS
+	youngblood_time_required_for_job = 3 HOURS

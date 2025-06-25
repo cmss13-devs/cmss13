@@ -68,6 +68,7 @@
 /////////////////////
 
 /datum/game_mode/hunter_games/pre_setup()
+	. = ..()
 	// No xenos, so no tunnels.
 	QDEL_LIST(GLOB.xeno_tunnels)
 	QDEL_LIST(GLOB.ammo_magazine_list)
@@ -85,7 +86,7 @@
 	for(var/good_item in GLOB.good_items) // Spawn some rare, upgraded goodies.
 		place_drop(get_turf(good_item), DROP_GOOD_ITEM)
 
-	return ..()
+	return
 
 //////////////////////
 ///// POST SETUP /////

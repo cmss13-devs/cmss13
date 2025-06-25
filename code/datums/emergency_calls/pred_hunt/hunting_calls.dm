@@ -180,6 +180,7 @@
 	name = "Template"
 	var/blooding_name
 	var/youngblood_time
+	var/youngblood_time_required_for_job
 	probability = 0
 	mob_max = 3
 	mob_min = 1
@@ -196,11 +197,14 @@
 		if(check_timelock(youngblood_candidate.current?.client, JOB_YOUNGBLOOD_ROLES_LIST, youngblood_time))
 			to_chat(youngblood_candidate.current, SPAN_WARNING("You did not qualify for the ERT beacon because you have already reached the maximum time allowed for Youngblood, please consider applying for Predator on the forums."))
 			continue
+		if(!check_timelock(youngblood_candidate.current?.client, JOB_YOUNGBLOOD_ROLES_LIST, youngblood_time_required_for_job))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You did not qualify for the ERT beacon because you do not have enough experience as a youngblood. You need [round((youngblood_time_required_for_job / 18000) / 2)] hours as youngblood for the [name] beacon."))
+			continue
 		if(check_timelock(youngblood_candidate.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_job) && (youngblood_candidate.current?.client.get_total_xeno_playtime() >= time_required_for_job))
 			youngblood_candidates_clean.Add(youngblood_candidate)
 			continue
 		if(youngblood_candidate.current)
-			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role [round(time_required_for_job / 18000)] hours on both squad roles and xenomorph roles."))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role [round((time_required_for_job / 18000) / 2)] hours on both squad roles and xenomorph roles."))
 	return youngblood_candidates_clean
 
 
@@ -253,15 +257,18 @@
 	blooding_name = "Inexperienced Youngblood Party (Three members)"
 	time_required_for_job = 5 HOURS
 	youngblood_time = 2 HOURS
+	youngblood_time_required_for_job = 0 HOURS
 
 /datum/emergency_call/young_bloods/intermediate
 	name = "Hunting Grounds - Intermediate Youngblood Party" //For players who have played a few rounds as youngblood
 	blooding_name = "Intermediate Youngblood Party (Three members)"
 	time_required_for_job = 10 HOURS
 	youngblood_time = 5 HOURS
+	youngblood_time_required_for_job = 1 HOURS
 
 /datum/emergency_call/young_bloods/experienced //Regular youngblood party
 	name = "Hunting Grounds - Experienced Youngblood Party"
 	blooding_name = "Experienced Youngblood Party (Three members)"
 	time_required_for_job = 20 HOURS
 	youngblood_time = 10 HOURS
+	youngblood_time_required_for_job = 2 HOURS

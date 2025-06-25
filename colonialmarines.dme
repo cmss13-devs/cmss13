@@ -1990,6 +1990,7 @@
 #include "code\modules\mapping\space_management\space_reservation.dm"
 #include "code\modules\mapping\space_management\traits.dm"
 #include "code\modules\mapping\space_management\zlevel_manager.dm"
+#include "code\modules\maptext_alerts\misc_alert.dm"
 #include "code\modules\maptext_alerts\screen_alerts.dm"
 #include "code\modules\maptext_alerts\text_blurbs.dm"
 #include "code\modules\mentor\looc_toggle.dm"

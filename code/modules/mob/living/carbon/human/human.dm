@@ -1770,6 +1770,68 @@
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, play_opening_sequence))
+
+/mob/living/carbon/human/proc/play_opening_sequence()
+	var/mob/living/carbon/human/human
+	if(SSticker.intro_sequence && !is_ground_level(z))
+		sleeping = 11
+		addtimer(CALLBACK(src, PROC_REF(play_screen_text), "HYPERSLEEP MONITOR<br><br>SYSTEM STATUS<br>LIFE SUPPORT:ONLINE<br>THAWING SYSTEMS:ONLINE<br>IMMUNIZATION:COMPLETE<br>OCCUPANT REM:NOMINAL", /atom/movable/screen/text/screen_text/hypersleep_status), 1.25 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(play_manifest)), 13 SECONDS)
+		overlay_fullscreen_timer(13 SECONDS, 10, "roundstart1", /atom/movable/screen/fullscreen/black)
+		overlay_fullscreen_timer(20 SECONDS, 10, "roundstartcrt1", /atom/movable/screen/fullscreen/crt)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_intro.ogg', src, 90), 12 SECONDS)
+
+/mob/living/carbon/human/proc/play_manifest()
+	var/human_manifest
+	var/time_to_remove = 5 SECONDS
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_beep.ogg', src, 80), time_to_remove - 2 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_opening.ogg', src, 80), time_to_remove)
+	overlay_fullscreen_timer(time_to_remove, 10, "roundstart2", /atom/movable/screen/fullscreen/black)
+	overlay_fullscreen_timer(time_to_remove, 10, "roundstartcrt2", /atom/movable/screen/fullscreen/crt)
+	overlay_fullscreen_timer(time_to_remove + 2 SECONDS, 20, "roundstart_fade", /atom/movable/screen/fullscreen/spawning_in)
+	var/alert_type = /atom/movable/screen/text/screen_text/picture/starting
+	var/platoon_name
+	var/squad_name
+	switch(faction)
+		if(FACTION_MARINE)
+			platoon_name = "2nd Bat. 'Falling Falcons"
+			alert_type = /atom/movable/screen/text/screen_text/picture/starting
+			if(assigned_squad)
+				switch(assigned_squad.name)
+					if(SQUAD_MARINE_1)
+						squad_name = "Alpha Squad"
+					if(SQUAD_MARINE_2)
+						squad_name = "Bravo Squad"
+					if(SQUAD_MARINE_3)
+						squad_name = "Charlie Squad"
+					if(SQUAD_MARINE_4)
+						squad_name = "Delta Squad"
+					if(SQUAD_MARINE_5)
+						squad_name = "Echo Squad"
+					if(SQUAD_MARINE_CRYO)
+						squad_name = "Foxtrot Squad"
+					if(SQUAD_MARINE_INTEL)
+						squad_name = "Intel Squad"
+		if(FACTION_UPP)
+			alert_type = /atom/movable/screen/text/screen_text/picture/starting/upp
+			squad_name = "Red Dawn"
+
+
+	if(assigned_squad)
+		for(var/mob/living/carbon/human/human as anything in assigned_squad.marines_list)
+			if(human.z != ZTRAIT_GROUND)
+				if(human.faction == faction)
+					time_to_remove += 1.5 SECONDS
+					var/obj/item/card/id/card = human.get_idcard()
+					var/datum/paygrade/account_paygrade = "UNKWN"
+					if(card)
+						account_paygrade = GLOB.paygrades[card.paygrade]
+					human_manifest += "[human.name]...[account_paygrade.prefix]/A[rand(01,99)]/TQ[rand(0,10)].0.[rand(100000,999999)]<br>"
+	sleeping = (time_to_remove)/10
+
+	play_screen_text("<u>[SSmapping.configs[SHIP_MAP].map_name]<br></u>" + "[platoon_name]<br>" + "[squad_name]<br><br>" + human_manifest, alert_type)
+
 
 /mob/living/carbon/human/point_to_atom(atom/A, turf/T)
 	if(isitem(A))

@@ -180,6 +180,7 @@ GLOBAL_LIST_INIT(admin_verbs_server, list(
 	/client/proc/cmd_debug_del_all,
 	/datum/admins/proc/togglejoin,
 	/client/proc/toggle_cdn,
+	/datum/admins/proc/toggle_intro,
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug, list(

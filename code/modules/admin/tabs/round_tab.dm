@@ -217,6 +217,19 @@
 		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
 		return FALSE
 
+/datum/admins/proc/toggle_intro()
+	set name = "Toggle Intro Sequence"
+	set desc = "Toggle whether the cryosleep intro sequence plays"
+	set category = "Server.Round"
+
+	if(SSticker.current_state != GAME_STATE_PREGAME)
+		to_chat(usr, "<font color='red'>Error: Toggle Intro Sequence: Game has already started or has not finished setting up.</font>")
+		return
+	else
+		SSticker.intro_sequence = !SSticker.intro_sequence
+		message_admins("[SPAN_NOTICE("[key_name(usr)] [SSticker.intro_sequence ? "has enabled the cryo intro sequence" : "disabled the cryo intro sequence"].")]")
+		return
+
 /client/proc/toggle_cdn()
 	set name = "Toggle CDN"
 	set category = "Server"

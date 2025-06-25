@@ -451,8 +451,9 @@
 				return
 
 			CreateGeneralRecord()
-			to_chat(user, SPAN_NOTICE("You successfully created new general record"))
+			to_chat(user, SPAN_NOTICE("You successfully created a new general record."))
 			msg_admin_niche("[key_name_admin(user)] created new general record at [get_location_in_text(user)] [ADMIN_JMP(loc)].")
+			update_static_data_for_all_viewers()
 
 			return TRUE
 

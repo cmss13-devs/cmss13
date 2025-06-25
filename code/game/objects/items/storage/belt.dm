@@ -2430,7 +2430,7 @@
 
 /obj/item/storage/belt/gun/iasf_para_belt
 	name = "\improper IASF paratrooper belt"
-	desc = "A sturdy belt fitted with a black leather holster for a Webley revolver. A large utility pouch and several smaller compartments provide ample space for extra .455 speedloaders and field essentials—standard gear for IASF airborne forces dropping into hostile territory."
+	desc = "A sturdy belt fitted with a black leather holster designed for IASF Paratroopers. A large utility pouch and several smaller compartments provide ample space for extra ammunition and field essentials—standard gear for IASF airborne forces dropping into hostile territory."
 	icon_state = "iasf_pistol_para"
 	item_state = "iasf_pistol_para"
 	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
@@ -2441,8 +2441,10 @@
 	)
 	storage_slots = 8
 	can_hold = list(
-		/obj/item/weapon/gun/revolver/m44/custom/webley,
+		/obj/item/weapon/gun/revolver,
 		/obj/item/ammo_magazine/revolver,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/ammo_magazine/pistol,
 	)
 	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 	holster_slots = list(
@@ -2462,20 +2464,14 @@
 
 /obj/item/storage/belt/gun/iasf_para_belt/custom
 	name = "\improper IASF custom paratrooper belt"
-	desc = "A modified IASF paratrooper belt featuring a black leather holster with gold inlay, originally designed for a Webley revolver but reworked to fit a custom L54 pistol. A large utility pouch and smaller compartments provide space for .455 speedloaders, L54 magazines, and other field essentials—standard kit for airborne troops in hostile territory."
+	desc = "A modified IASF paratrooper belt featuring a black leather holster with gold inlay, a large utility pouch and several smaller compartments provide ample space for extra ammunition and field essentials—standard gear for IASF airborne forces dropping into hostile territory."
 	icon_state = "iasf_pistol_para_custom"
 	item_state = "iasf_pistol_para_custom"
-	can_hold = list(
-		/obj/item/weapon/gun/revolver/m44/custom/webley,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/weapon/gun/pistol/l54,
-		/obj/item/ammo_magazine/pistol/l54,
-	)
 
 /obj/item/storage/belt/gun/iasf_para_belt/custom/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54/custom())
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54_custom())
 	for(var/i in 1 to storage_slots - 1)
-		new /obj/item/ammo_magazine/pistol/l54(src)
+		new /obj/item/ammo_magazine/pistol/l54_custom(src)
 
 /obj/item/storage/belt/gun/smartgunner
 	name = "\improper M802 pattern smartgunner sidearm rig"
@@ -2794,6 +2790,16 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/device/healthanalyzer(src)
+
+/obj/item/storage/belt/medical/rmc/survivor/fill_preset_inventory()
+	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
+	new /obj/item/storage/pill_bottle/packet/kelotane(src)
+	new /obj/item/storage/pill_bottle/packet/tramadol(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
 	new /obj/item/device/healthanalyzer(src)
 
 /obj/item/storage/belt/gun/l905

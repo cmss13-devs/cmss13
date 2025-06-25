@@ -37,10 +37,12 @@
 	taskbar_icon = 'icons/taskbar/gml_hgames.png'
 
 	// IBs are off and all splints are nanosplints, but you can't be revived-- permadeath helps discourage teams stomping.
+	// Embeds disabled as well; testing showed having your weapon get stuck in someone was unsatisfying for both parties.
 	hardcore = TRUE
 	starting_round_modifiers = list(
 		/datum/gamemode_modifier/permadeath,
 		/datum/gamemode_modifier/disable_ib,
+		/datum/gamemode_modifier/disable_embed,
 		/datum/gamemode_modifier/indestructible_splints,
 	)
 
@@ -66,8 +68,6 @@
 /////////////////////
 
 /datum/game_mode/hunter_games/pre_setup()
-	. = ..()
-
 	// No xenos, so no tunnels.
 	QDEL_LIST(GLOB.xeno_tunnels)
 	QDEL_LIST(GLOB.ammo_magazine_list)
@@ -84,6 +84,8 @@
 
 	for(var/good_item in GLOB.good_items) // Spawn some rare, upgraded goodies.
 		place_drop(get_turf(good_item), DROP_GOOD_ITEM)
+
+	return ..()
 
 //////////////////////
 ///// POST SETUP /////

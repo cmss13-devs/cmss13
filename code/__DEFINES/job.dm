@@ -68,6 +68,8 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_RESEARCH_ROLES_LIST list(JOB_RESEARCHER)
 
 #define JOB_CORPORATE_LIAISON "Corporate Liaison"
+/// Jobs that are part of the USCM, but have a primary faction that is not USCM.
+#define USCM_SHARED_JOBS list(JOB_CORPORATE_LIAISON, JOB_RESEARCHER)
 
 #define JOB_COMBAT_REPORTER "Combat Correspondent"
 #define JOB_CIVIL_ROLES    /datum/timelock/civil

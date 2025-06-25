@@ -1103,10 +1103,10 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/vehiclehangar)
 "acL" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "acM" = (
@@ -1312,15 +1312,15 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/operating_room_three)
 "adj" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -3806,7 +3806,7 @@
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "aiB" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -4362,9 +4362,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/morgue)
 "ajR" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -4372,6 +4369,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -5360,11 +5360,6 @@
 /turf/open_space,
 /area/almayer/middeck/maintenance/sp)
 "amY" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
@@ -5372,6 +5367,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -5400,10 +5398,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cryo_cells)
 "and" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
@@ -5697,14 +5693,11 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/living/basketball)
 "anS" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "anT" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /obj/structure/sign/safety/intercom{
 	pixel_x = 15;
 	pixel_y = 32
@@ -5713,6 +5706,9 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "anU" = (
@@ -6029,16 +6025,14 @@
 /turf/open/floor/almayer/sterile_green_corner/west,
 /area/almayer/medical/containment)
 "aoL" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/structure/sign/safety/restrictedarea{
 	pixel_x = 8;
 	pixel_y = 32
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "aoM" = (
@@ -11723,13 +11717,6 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/securestorage)
-"aDS" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/hanger)
 "aDT" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
@@ -14363,7 +14350,6 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/living/offices/flight)
 "aLn" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
@@ -14372,6 +14358,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
 "aLo" = (
@@ -14392,13 +14379,13 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "aLq" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "aLr" = (
@@ -14723,7 +14710,7 @@
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aMj" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -14799,16 +14786,16 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "aMu" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/bow)
 "aMv" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -14870,12 +14857,10 @@
 /turf/open/floor/plating,
 /area/almayer/engineering/airmix)
 "aMF" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/bow)
 "aMG" = (
@@ -14970,7 +14955,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "aMX" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -14983,23 +14968,21 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
 "aMZ" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/structure/machinery/light/red{
 	dir = 4;
 	light_color = "#BB3F3F"
 	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aNa" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
@@ -15029,10 +15012,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aNf" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
@@ -15054,12 +15035,10 @@
 /turf/open_space,
 /area/almayer/shipboard/navigation)
 "aNk" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
-/obj/structure/barricade/handrail,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aNl" = (
@@ -15081,7 +15060,7 @@
 /turf/open_space,
 /area/almayer/shipboard/navigation)
 "aNp" = (
-/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aNq" = (
@@ -15153,14 +15132,14 @@
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aNA" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault,
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/obj/structure/barricade/handrail,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/bow)
 "aNB" = (
-/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/bow)
 "aNC" = (
@@ -15416,10 +15395,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
 "aOj" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
@@ -15438,10 +15415,10 @@
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOn" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
 "aOo" = (
@@ -15503,10 +15480,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/telecomms)
 "aOt" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aOu" = (
@@ -15608,13 +15585,13 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aOJ" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/case,
 /obj/structure/largecrate/random/mini{
 	pixel_y = 6
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
@@ -15650,12 +15627,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/starboard_point_defense)
 "aOO" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aOP" = (
@@ -15755,11 +15730,11 @@
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aPd" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/barricade/handrail/novault{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aPe" = (
@@ -15843,16 +15818,16 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/alpha)
 "aPp" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aPq" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aPr" = (
@@ -16010,11 +15985,6 @@
 /turf/closed/wall/almayer,
 /area/almayer/squads/alpha)
 "aPL" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -16024,12 +15994,12 @@
 	layer = 3.3
 	},
 /obj/structure/largecrate/random/barrel/medical,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aPM" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -16038,6 +16008,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
@@ -16220,7 +16193,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "aQl" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -16982,10 +16955,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
 "aSg" = (
-/obj/structure/barricade/handrail{
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/bow)
 "aSh" = (
@@ -17133,7 +17106,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aSw" = (
-/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aSx" = (
@@ -17143,15 +17116,15 @@
 /turf/open/floor/almayer/bluefull,
 /area/almayer/living/captain_mess)
 "aSy" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "aSz" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault,
+/obj/structure/barricade/handrail/novault{
 	dir = 4
 	},
-/obj/structure/barricade/handrail,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "aSA" = (
@@ -17184,17 +17157,17 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "aSF" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "aSG" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "aSH" = (
@@ -17242,10 +17215,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aSM" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "aSN" = (
@@ -17302,13 +17275,13 @@
 /turf/open_space,
 /area/almayer/middeck/req)
 "aSW" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aSX" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -17338,13 +17311,12 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
 "aTb" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "aTc" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
@@ -17352,6 +17324,7 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
 "aTd" = (
@@ -17436,23 +17409,23 @@
 /turf/open/floor/almayer/green/northeast,
 /area/almayer/living/offices)
 "aTo" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "aTp" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
@@ -17469,7 +17442,7 @@
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/living/offices)
 "aTs" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -17608,10 +17581,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aTL" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -18180,12 +18153,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "aUR" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aUS" = (
@@ -18306,11 +18277,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "aVj" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -18319,6 +18285,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -18426,7 +18395,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aVv" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -18435,12 +18403,13 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "aVw" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aVx" = (
@@ -18457,9 +18426,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aVy" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -18468,14 +18434,17 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "aVz" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aVA" = (
@@ -19050,7 +19019,7 @@
 /turf/open_space,
 /area/almayer/middeck/briefing)
 "aWP" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -19079,13 +19048,11 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aWS" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/briefing)
@@ -19099,10 +19066,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/alpha)
 "aWU" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -19149,10 +19114,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aWY" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aWZ" = (
@@ -21244,16 +21209,13 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bbH" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "bbI" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -21261,6 +21223,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -21351,18 +21316,13 @@
 	icon_state = "W";
 	layer = 3.3
 	},
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/bow)
 "bbU" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -21371,6 +21331,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -21381,11 +21344,6 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
 "bbW" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -21394,6 +21352,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -21453,18 +21414,9 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bce" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/hanger)
-"bcf" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "bcg" = (
@@ -21999,10 +21951,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "bdp" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/bow)
@@ -22325,13 +22275,11 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/chemistry)
 "bek" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "bel" = (
@@ -22454,8 +22402,8 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/squads/bravo)
 "bex" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bey" = (
@@ -22572,10 +22520,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "beK" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
@@ -22768,7 +22714,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bfg" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -22947,7 +22893,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "bfG" = (
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -22980,11 +22926,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bfM" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "bfN" = (
@@ -23051,8 +22997,8 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
 "bfU" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "bfV" = (
@@ -23137,8 +23083,8 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/req)
 "bgg" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "bgh" = (
@@ -23210,7 +23156,7 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/middeck/engineer)
 "bgq" = (
-/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
 "bgr" = (
@@ -23587,12 +23533,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "bhb" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "bhc" = (
@@ -23605,10 +23549,10 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "bhd" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "bhe" = (
@@ -23639,16 +23583,13 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/living/cryo_cells)
 "bhh" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "bhi" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -23656,6 +23597,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	layer = 3.3
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
@@ -23767,21 +23711,21 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bhu" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bhv" = (
-/obj/structure/barricade/handrail,
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "bhw" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "bhx" = (
@@ -23838,10 +23782,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "bhC" = (
-/obj/structure/barricade/handrail{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bhD" = (
@@ -24026,11 +23970,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
 "bhZ" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -24039,6 +23978,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -24639,12 +24581,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
 "bjd" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
 "bje" = (
@@ -25047,10 +24987,8 @@
 /area/almayer/hallways/hangar)
 "bjT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
@@ -25726,7 +25664,7 @@
 /area/almayer/living/offices)
 "blo" = (
 /obj/structure/machinery/light,
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -25761,10 +25699,8 @@
 /area/almayer/living/cryo_cells)
 "blr" = (
 /obj/structure/machinery/light,
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
+/obj/structure/barricade/handrail/novault{
+	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
@@ -25772,6 +25708,14 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer,
 /area/almayer/living/basketball)
+"blt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/novault,
+/obj/structure/barricade/handrail/novault{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/hanger)
 "blu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -25860,7 +25804,7 @@
 	icon_state = "S";
 	layer = 3.3
 	},
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -25929,7 +25873,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -26074,7 +26018,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/barricade/handrail{
+/obj/structure/barricade/handrail/novault{
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -26542,9 +26486,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
 "bnc" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -26553,6 +26494,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -26822,9 +26766,6 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "bnG" = (
-/obj/structure/barricade/handrail{
-	dir = 8
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 3.3
@@ -26832,6 +26773,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -26843,7 +26787,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
 "bnI" = (
-/obj/structure/barricade/handrail,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -26852,6 +26795,7 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/structure/barricade/handrail/novault,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
 "bnJ" = (
@@ -27183,18 +27127,15 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "bou" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/secure,
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "bov" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/secure,
@@ -27202,15 +27143,18 @@
 	pixel_y = 16;
 	layer = 3.5
 	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "bow" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/case,
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "box" = (
@@ -28492,12 +28436,12 @@
 /turf/open/floor/almayer/test_floor5,
 /area/almayer/squads/req)
 "brk" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/case/double,
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "brl" = (
@@ -29400,11 +29344,11 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/medical)
 "btk" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/barrel/medical,
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "btl" = (
@@ -29456,24 +29400,24 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "btt" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/case,
+/obj/structure/barricade/handrail/novault{
+	dir = 1
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "btu" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/case,
 /obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 6;
 	pixel_y = 3
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
@@ -29504,19 +29448,14 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/gym)
 "bty" = (
-/obj/structure/barricade/handrail{
-	dir = 4;
-	layer = 3.1;
-	pixel_x = 1
-	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/largecrate/random/barrel/medical,
+/obj/structure/barricade/handrail/novault{
+	dir = 4
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "btz" = (
-/obj/structure/barricade/handrail{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -29527,6 +29466,9 @@
 	},
 /obj/vehicle/powerloader{
 	dir = 8
+	},
+/obj/structure/barricade/handrail/novault{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
@@ -163137,7 +163079,7 @@ bce
 bce
 bbU
 acL
-acL
+blt
 aBc
 bwT
 bwT
@@ -163328,18 +163270,18 @@ and
 and
 and
 and
-bcf
-bcf
-bcf
-bcf
-bcf
-bcf
-bcf
+bjT
+bjT
+bjT
+bjT
+bjT
+bjT
+bjT
 and
-bcf
-bcf
-bcf
-bcf
+bjT
+bjT
+bjT
+bjT
 and
 amY
 and
@@ -165402,7 +165344,7 @@ acL
 acL
 acL
 bbU
-aDS
+acL
 baA
 baA
 bwT
@@ -165599,14 +165541,14 @@ and
 and
 and
 and
-bcf
-bcf
-bcf
-bcf
-bcf
+bjT
+bjT
+bjT
+bjT
+bjT
 and
-bcf
-bcf
+bjT
+bjT
 bbW
 bjT
 aBf

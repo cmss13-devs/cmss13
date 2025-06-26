@@ -172,7 +172,6 @@ const infectedSplitter = (members: Array<Observable>) => {
   const mutatedHive: Array<Observable> = [];
   const otherHives: Array<Observable> = [];
   const yautjaHive: Array<Observable> = [];
-  const pathogenHive: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.area_name?.includes('Thunderdome')) {

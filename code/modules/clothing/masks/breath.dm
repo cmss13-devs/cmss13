@@ -446,6 +446,11 @@
 	item_state = "neckerchief_black"
 	original_state = "neckerchief_black"
 
+/obj/item/clothing/mask/neckerchief/brown
+	icon_state = "neckerchief_brown"
+	item_state = "neckerchief_brown"
+	original_state = "neckerchief_brown"
+
 /obj/item/clothing/mask/neckerchief/yellow
 	icon_state = "neckerchief_bravo"
 	item_state = "neckerchief_bravo"

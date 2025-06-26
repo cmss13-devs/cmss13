@@ -5,6 +5,10 @@
 	unslashable = TRUE
 	health = 0
 	var/datum/powernet/powernet = null
+
+	/// Reference to a power terminal, used to connect SMES and APCs to the grid.
+	var/obj/structure/machinery/power/terminal/terminal = null
+
 	var/directwired = 1 // by default, power machines are connected by a cable in a neighbouring turf
 							// if set to 0, requires a 0-X cable on this turf
 	use_power = USE_POWER_NONE

@@ -268,7 +268,7 @@
 
 //=ROYAL MARINES=\\
 
-/obj/item/clothing/shoes/royal_marine
+/obj/item/clothing/shoes/marine/royal_marine
 	name = "\improper L10 pattern combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
 	icon_state = "rmc_boots"
@@ -295,7 +295,7 @@
 	)
 	flags_atom = NO_NAME_OVERRIDE
 
-/obj/item/clothing/shoes/royal_marine/knife
+/obj/item/clothing/shoes/marine/royal_marine/knife
 	spawn_item_type = /obj/item/attachable/bayonet/rmc
 
 /obj/item/clothing/shoes/dress/rmc

@@ -90,7 +90,6 @@
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
 		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery,
-		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
 	)
 
 	var/list/list/hive_structures = list() //Stringref list of structures that have been built
@@ -1647,8 +1646,8 @@
 	hive_orders = "Kill everyone and everything."
 
 	free_slots = list(
-		/datum/caste_datum/pathogen/neomorph = 6,
-		/datum/caste_datum/pathogen/blight = 4,
+		/datum/caste_datum/pathogen/neomorph = 3,
+		/datum/caste_datum/pathogen/blight = 3,
 		/datum/caste_datum/pathogen/brute = 1,
 		/datum/caste_datum/pathogen/venator = 2,
 	)

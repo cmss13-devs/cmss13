@@ -1775,7 +1775,7 @@
 /mob/living/carbon/human/proc/play_opening_sequence()
 	if(SSticker.intro_sequence && loc && (istype(loc, /obj/structure/machinery/cryopod)))
 		if(ishuman_strict(src))
-			sleeping = 11
+			Sleeping(11)
 			addtimer(CALLBACK(src, PROC_REF(play_screen_text), "HYPERSLEEP MONITOR<br><br>SYSTEM STATUS<br>LIFE SUPPORT:ONLINE<br>THAWING SYSTEMS:ONLINE<br>IMMUNIZATION:COMPLETE<br>OCCUPANT REM:NOMINAL", /atom/movable/screen/text/screen_text/hypersleep_status), 1.25 SECONDS)
 			addtimer(CALLBACK(src, PROC_REF(play_manifest)), 13 SECONDS)
 			overlay_fullscreen_timer(13 SECONDS, 10, "roundstart1", /atom/movable/screen/fullscreen/black)
@@ -1832,7 +1832,7 @@
 	overlay_fullscreen_timer(time_to_remove + 2 SECONDS, 20, "roundstart_fade", /atom/movable/screen/fullscreen/spawning_in)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_beep.ogg', src, 80), time_to_remove - 1 SECONDS)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_opening.ogg', src, 80), time_to_remove)
-	sleeping = (time_to_remove - 4 SECONDS)/10
+	Sleeping((time_to_remove - 4 SECONDS)/10)
 
 	play_screen_text("<u>[SSmapping.configs[SHIP_MAP].map_name]<br></u>" + "[platoon_name]<br>" + "[squad_name] <br><br>" + human_manifest, alert_type)
 

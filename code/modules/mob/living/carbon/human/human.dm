@@ -1774,12 +1774,13 @@
 
 /mob/living/carbon/human/proc/play_opening_sequence()
 	if(SSticker.intro_sequence && loc && (istype(loc, /obj/structure/machinery/cryopod)))
-		sleeping = 11
-		addtimer(CALLBACK(src, PROC_REF(play_screen_text), "HYPERSLEEP MONITOR<br><br>SYSTEM STATUS<br>LIFE SUPPORT:ONLINE<br>THAWING SYSTEMS:ONLINE<br>IMMUNIZATION:COMPLETE<br>OCCUPANT REM:NOMINAL", /atom/movable/screen/text/screen_text/hypersleep_status), 1.25 SECONDS)
-		addtimer(CALLBACK(src, PROC_REF(play_manifest)), 13 SECONDS)
-		overlay_fullscreen_timer(13 SECONDS, 10, "roundstart1", /atom/movable/screen/fullscreen/black)
-		overlay_fullscreen_timer(13 SECONDS, 10, "roundstartcrt1", /atom/movable/screen/fullscreen/crt)
-		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_intro.ogg', src, 90), 12 SECONDS)
+		if(ishuman_strict(src))
+			sleeping = 11
+			addtimer(CALLBACK(src, PROC_REF(play_screen_text), "HYPERSLEEP MONITOR<br><br>SYSTEM STATUS<br>LIFE SUPPORT:ONLINE<br>THAWING SYSTEMS:ONLINE<br>IMMUNIZATION:COMPLETE<br>OCCUPANT REM:NOMINAL", /atom/movable/screen/text/screen_text/hypersleep_status), 1.25 SECONDS)
+			addtimer(CALLBACK(src, PROC_REF(play_manifest)), 13 SECONDS)
+			overlay_fullscreen_timer(13 SECONDS, 10, "roundstart1", /atom/movable/screen/fullscreen/black)
+			overlay_fullscreen_timer(13 SECONDS, 10, "roundstartcrt1", /atom/movable/screen/fullscreen/crt)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_intro.ogg', src, 90), 12 SECONDS)
 
 /mob/living/carbon/human/proc/play_manifest()
 	var/human_manifest
@@ -1812,7 +1813,7 @@
 			var/datum/paygrade/account_paygrade = "UNKWN"
 			if(card)
 				account_paygrade = GLOB.paygrades[card.paygrade]
-			human_manifest += "[assigned_squad.squad_leader.name]...[account_paygrade.prefix]/A[rand(01,99)]/TQ[rand(0,10)].0.[rand(100000,999999)]<br>"
+			human_manifest += "[assigned_squad.squad_leader.name]...[account_paygrade.prefix]/B. Type: [assigned_squad.squad_leader.blood_type]/TQ[rand(0,10)].0.[rand(100000,999999)]<br>"
 
 		for(var/mob/living/carbon/human/human as anything in assigned_squad.marines_list)
 			if(human != assigned_squad.squad_leader && players_on_manifest <= 6)
@@ -1820,7 +1821,7 @@
 				var/datum/paygrade/account_paygrade = "UNKWN"
 				if(card)
 					account_paygrade = GLOB.paygrades[card.paygrade]
-				human_manifest += "[human.name]...[account_paygrade.prefix]/A[rand(01,99)]/TQ[rand(0,10)].0.[rand(100000,999999)]<br>"
+				human_manifest += "[human.name]...[account_paygrade.prefix]/B. Type:[human.blood_type]/TQ[rand(0,10)].0.[rand(100000,999999)]<br>"
 				players_on_manifest++
 	sleeping = (time_to_remove - 7 SECONDS)/10
 

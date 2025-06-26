@@ -2878,7 +2878,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/obj/item/weapon/gun/attached_gun = loc
 
-	if(!(attached_gun.flags_item & WIELDED))
+	if(!(flags_attach_features & ATTACH_WIELD_OVERRIDE) && !(attached_gun.flags_item & WIELDED))
 		to_chat(user, SPAN_WARNING("You must wield [attached_gun] to fire [src]!"))
 		return
 

@@ -69,8 +69,6 @@
 	/// If hit limit of larva from pylons
 	var/hit_larva_pylon_limit = FALSE
 
-	var/see_humans_on_tacmap = FALSE
-
 	var/list/hive_inherant_traits
 
 	// Cultist Info
@@ -130,6 +128,11 @@
 
 	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
+
+	/// Can this hive see humans on the tacmap
+	var/see_humans_on_tacmap = FALSE
+	/// Does the queen need to be on ovi for xenos to see
+	var/tacmap_requires_queen_ovi = TRUE
 
 	var/list/available_nicknumbers = list()
 
@@ -1191,6 +1194,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
@@ -1205,6 +1209,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	see_humans_on_tacmap = TRUE
+	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1246,6 +1252,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1275,6 +1282,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions

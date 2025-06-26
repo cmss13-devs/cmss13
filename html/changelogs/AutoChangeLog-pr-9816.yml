@@ -1,0 +1,4 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - bugfix: "Changed description of spore fruit duration time from 60s to correct 90s."

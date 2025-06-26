@@ -1,0 +1,6 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - rscadd: "Added blood splatters when you do xeno dissection, added a few more improvised tool messages"
+  - spellcheck: "fixed a bunch of spelling and grammatical errors in xeno dissection"
+  - code_imp: "Removed unused to_patient and first step failure code in xeno dissection."

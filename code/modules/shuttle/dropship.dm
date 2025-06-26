@@ -573,3 +573,15 @@
 
 /obj/structure/shuttle/part/upp_sof_alt/transparent
 	opacity = FALSE
+
+/obj/structure/shuttle/part/dropshipomaha
+	name = "\improper Omaha"
+	icon = 'icons/turf/mohawk/mohawk-walls.dmi'
+	icon_state= "1,0"
+	opacity = TRUE
+
+/obj/structure/shuttle/part/dropshipomaha/ex_act(severity, direction)
+	return FALSE
+
+/obj/structure/shuttle/part/dropshipomaha/transparent
+	opacity = FALSE

@@ -1669,6 +1669,7 @@
 		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
 	)
 
+	tacmap_requires_queen_ovi = FALSE
 	var/max_poppers = 8
 
 /datum/hive_status/pathogen/get_xeno_counts()

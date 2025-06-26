@@ -455,7 +455,8 @@
 	. = ..()
 	make_pathogen_speaker()
 /mob/living/carbon/xenomorph/bloodburster/do_evolve()
-
+	do_pathogen_evolve()
+	return
 
 /mob/living/carbon/xenomorph/popper/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()

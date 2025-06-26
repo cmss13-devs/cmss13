@@ -5,7 +5,7 @@
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_PMC_STANDARD
-	rank = JOB_PMC_STANDARD
+	job_title = JOB_PMC_STANDARD
 	faction = FACTION_PMC
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR, FACTION_PMC)
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
@@ -82,7 +82,7 @@
 /datum/equipment_preset/survivor/pmc/medic
 	name = "Survivor - PMC Medic"
 	assignment = JOB_PMC_MEDIC
-	rank = JOB_PMC_MEDIC
+	job_title = JOB_PMC_MEDIC
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CM"
 	skills = /datum/skills/civilian/survivor/pmc/medic
@@ -128,7 +128,7 @@
 /datum/equipment_preset/survivor/pmc/engineer
 	name = "Survivor - PMC Engineer"
 	assignment = JOB_PMC_ENGINEER
-	rank = JOB_PMC_ENGINEER
+	job_title = JOB_PMC_ENGINEER
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TEC"
 	skills = /datum/skills/civilian/survivor/pmc/engineer
@@ -168,7 +168,7 @@
 /datum/equipment_preset/survivor/pmc/pmc_leader
 	name = "Survivor - PMC Leader"
 	assignment = JOB_PMC_LEADER
-	rank = JOB_PMC_LEADER
+	job_title = JOB_PMC_LEADER
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 	skills = /datum/skills/civilian/survivor/pmc/lead
@@ -211,7 +211,7 @@
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Colony Supervisor"
-	rank = JOB_EXECUTIVE_SUPERVISOR
+	job_title = JOB_EXECUTIVE_SUPERVISOR
 	minimap_icon = "exec_super"
 	role_comm_title = "Supervisor"
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
@@ -279,7 +279,7 @@
 	skills = /datum/skills/synthetic
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
-	rank = JOB_PMC_SYNTH
+	job_title = JOB_PMC_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
 	skills = /datum/skills/synthetic

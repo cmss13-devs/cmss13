@@ -294,7 +294,7 @@
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 			if(linked_hive.hijack_burrowed_left < 1)
 				linked_hive.hijack_burrowed_surge = FALSE
-				xeno_message(SPAN_XENOANNOUNCE("The hive's power wanes. We will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)
+				xeno_message(SPAN_XENOANNOUNCE("The hive's power wanes. We will no longer gain burrowed larva over time."), 3, linked_hive.hivenumber)
 
 	// Hive core can repair itself over time
 	if(health < maxhealth && last_healed <= world.time)

@@ -33,7 +33,7 @@
 
 // LANGUAGE SHIT
 /mob/living/carbon/xenomorph/proc/make_pathogen_speaker()
-	set_languages(list(LANGUAGE_PATHOGEN, LANGUAGE_PATHOGEN_MIND, LANGUAGE_XENOMORPH))
+	set_languages(list(LANGUAGE_PATHOGEN, LANGUAGE_PATHOGEN_MIND))
 	langchat_color = "#c2c38d"
 	speaking_key = "-"
 

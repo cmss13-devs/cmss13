@@ -206,22 +206,34 @@
 	else if(iscarbon(crosser))
 		var/mob/living/carbon/human/human_passer = crosser
 		if(istype(human_passer) && linked_cloud)
-			if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || isyautja(human_passer) || issynth(human_passer)) //Predators are too stealthy to trigger the clouds.
-				return
+			if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || issynth(human_passer)) //Predators are too stealthy to trigger the clouds.
+				return FALSE
+			if(isyautja(human_passer))
+				linked_cloud.attempt_yautja_inhale(human_passer)
+				return TRUE
 			linked_cloud.attempt_inhale(human_passer)
+			return TRUE
 
 /obj/effect/pathogen/spore_cloud/Crossed(atom/movable/crosser)
 	if(!ishuman(crosser))
-		return
+		return FALSE
 	var/mob/living/carbon/human/human_passer = crosser
-	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || isyautja(human_passer) || issynth(human_passer)) //Predators are too stealthy to trigger the clouds.
-		return
+	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || issynth(human_passer)) //Predators are too stealthy to trigger the clouds.
+		return FALSE
+	if(isyautja(human_passer))
+		if(attempt_yautja_inhale(human_passer))
+			return TRUE
+		return FALSE
 	if(attempt_inhale(human_passer))
-		addtimer(CALLBACK(src, PROC_REF(decay)), 1 SECONDS)
+		return TRUE
+	return FALSE
 
 /obj/effect/pathogen/spore_cloud/proc/attempt_inhale(mob/living/carbon/human/human_passer)
 	if(inhaling) // Can't be inhaled by more than one person.
 		return FALSE
+	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || isyautja(human_passer) || issynth(human_passer))
+		return FALSE
+
 	inhaling = TRUE
 
 	var/obj/item/mask = human_passer.wear_mask
@@ -249,11 +261,63 @@
 			qdel(embryo)
 	if(!embryos)
 		icon_state = "motes_inject"
+		addtimer(CALLBACK(src, PROC_REF(decay)), 1 SECONDS)
 		var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo/bloodburster(human_passer)
 		GLOB.player_embryo_list += embryo
 
 		if(human_passer.species)
 			human_passer.species.larva_impregnated(embryo)
+
+		human_passer.visible_message(SPAN_DANGER("[human_passer] inhales [src] as they walk through it!"), SPAN_HIGHDANGER("You inhale [src] as you walk through it!"))
+		var/area/breath_area = get_area(src)
+		if(breath_area)
+			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores at [breath_area]!", source = human_passer, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[human_passer]</b> has been infected with pathogen spores at \the <b>[breath_area]</b>"))
+		else
+			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores!", source = human_passer, action = NOTIFY_ORBIT)
+			to_chat(src, SPAN_DEADSAY("<b>[human_passer]</b> has been infected with pathogen spores"))
+		return TRUE
+	inhaling = FALSE
+	return FALSE
+
+/obj/effect/pathogen/spore_cloud/proc/attempt_yautja_inhale(mob/living/carbon/human/human_passer)
+	if(inhaling) // Can't be inhaled by more than one person.
+		return FALSE
+	if(!can_hug(human_passer, XENO_HIVE_PATHOGEN) || !isyautja(human_passer))
+		return FALSE
+	if(!inhaling) // ########### STOPS THE PROC DOING ANYTHING FOR NOW
+		return FALSE
+
+	inhaling = TRUE
+
+	var/obj/item/mask = human_passer.wear_mask
+	var/obj/item/helmet = human_passer.head
+	if(mask)
+		if(mask.flags_inventory & SPOREPROOF)
+			inhaling = FALSE
+			return FALSE
+		if(prob(80) && (mask.flags_inventory & BLOCKGASEFFECT))
+			inhaling = FALSE
+			return FALSE
+	if(helmet)
+		if(helmet.flags_inventory & SPOREPROOF)
+			inhaling = FALSE
+			return FALSE
+		if(prob(80) && (helmet.flags_inventory & BLOCKGASEFFECT))
+			inhaling = FALSE
+			return FALSE
+
+	var/embryos = 0
+	for(var/obj/item/alien_embryo/embryo in human_passer) // already got one, stops doubling up
+		if(embryo.hivenumber == XENO_HIVE_PATHOGEN)
+			embryos++
+		else
+			qdel(embryo)
+	if(!embryos)
+		icon_state = "motes_inject"
+		addtimer(CALLBACK(src, PROC_REF(decay)), 1 SECONDS)
+
+		// TO DO SOMETHING HERE
 
 		human_passer.visible_message(SPAN_DANGER("[human_passer] inhales [src] as they walk through it!"), SPAN_HIGHDANGER("You inhale [src] as you walk through it!"))
 		var/area/breath_area = get_area(src)

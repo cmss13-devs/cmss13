@@ -1801,7 +1801,6 @@
 			if(assigned_squad)
 				squad_name = assigned_squad.name
 
-
 	if(assigned_squad)
 		if(assigned_squad.squad_leader)
 			players_on_manifest++

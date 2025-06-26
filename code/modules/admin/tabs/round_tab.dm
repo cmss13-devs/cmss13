@@ -222,8 +222,8 @@
 	set desc = "Toggle whether the cryosleep intro sequence plays"
 	set category = "Server.Round"
 
-	if(SSticker.current_state != GAME_STATE_PREGAME)
-		to_chat(usr, "<font color='red'>Error: Toggle Intro Sequence: Game has already started or has not finished setting up.</font>")
+	if(SSticker.current_state == GAME_STATE_STARTUP)
+		to_chat(usr, "<font color='red'>Error: Toggle Intro Sequence: Game has not finished setting up.</font>")
 		return
 	else
 		SSticker.intro_sequence = !SSticker.intro_sequence

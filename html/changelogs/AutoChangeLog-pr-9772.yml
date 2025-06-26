@@ -1,0 +1,5 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - code_imp: "Corrected many cases where code would override the built in var caller"
+  - code_imp: "Corrected a couple usages of usr in yaut bracer code"

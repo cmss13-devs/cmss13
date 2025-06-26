@@ -161,6 +161,10 @@
 		to_chat(xeno, SPAN_XENOWARNING("This is too close to a contaminant!"))
 		return FALSE
 
+	if(locate(/obj/effect/pathogen/spore_sac) in range(2, src))
+		to_chat(xeno, SPAN_XENOWARNING("This is too close to an existing spore sac!"))
+		return FALSE
+
 	for(var/mob/living/body in src)
 		if(body.stat == DEAD)
 			to_chat(xeno, SPAN_XENOWARNING("The body is in the way!"))

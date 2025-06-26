@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - qol: "Xeno preference and click drag override are enabled by default for new connects"

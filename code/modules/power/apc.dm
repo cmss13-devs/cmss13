@@ -86,7 +86,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/locked = 1
 	var/coverlocked = 1
 	var/aidisabled = 0
-	var/obj/structure/machinery/power/terminal/terminal = null
 	var/lastused_light = 0
 	var/lastused_equip = 0
 	var/lastused_environ = 0

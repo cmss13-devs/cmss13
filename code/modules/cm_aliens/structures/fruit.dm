@@ -318,7 +318,7 @@
 	if(ishuman(user))
 		. += "[SPAN_NOTICE("A basketball sized resin growth. Its translucent insides radiate faint orange light. It appears to be loosely attached to the weeds below.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "[SPAN_NOTICE("We sense eating this fruit will reduce ability cooldown by [SPAN_BOLDNOTICE("5%")] per slash, up to [SPAN_BOLDNOTICE("25%")] on next ability cast. The casting cooldown effect of fruit persist for [SPAN_BOLDNOTICE("60")] seconds. While rooted, it passively emits weak recovery pheromones around itself.")]"
+		. += "[SPAN_NOTICE("We sense eating this fruit will reduce ability cooldown by [SPAN_BOLDNOTICE("5%")] per slash, up to [SPAN_BOLDNOTICE("25%")] on next ability cast. The casting cooldown effect of fruit persist for [SPAN_BOLDNOTICE("90")] seconds. While rooted, it passively emits weak recovery pheromones around itself.")]"
 
 /obj/effect/alien/resin/fruit/speed
 	name = XENO_FRUIT_SPEED
@@ -598,7 +598,7 @@
 	if(ishuman(user))
 		. += "[SPAN_NOTICE("It looks unappetizing... maybe the eggheads would want to study it instead.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "[SPAN_NOTICE("We sense eating this fruit will reduce ability cooldown by [SPAN_BOLDNOTICE("5%")] per slash, up to [SPAN_BOLDNOTICE("25%")] on next ability cast. The casting cooldown effect of fruit persist for [SPAN_BOLDNOTICE("60")] seconds. While rooted, it passively emits weak recovery pheromones around itself.")]"
+		. += "[SPAN_NOTICE("We sense eating this fruit will reduce ability cooldown by [SPAN_BOLDNOTICE("5%")] per slash, up to [SPAN_BOLDNOTICE("25%")] on next ability cast. The casting cooldown effect of fruit persist for [SPAN_BOLDNOTICE("90")] seconds. While rooted, it passively emits weak recovery pheromones around itself.")]"
 
 /obj/item/reagent_container/food/snacks/resin_fruit/speed
 	name = XENO_FRUIT_SPEED

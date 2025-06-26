@@ -260,7 +260,7 @@
 	button.icon_state = "template"
 
 
-/mob/living/carbon/xenomorph/pathogen/do_evolve()
+/mob/living/carbon/xenomorph/proc/do_pathogen_evolve()
 	if(!evolve_checks())
 		return
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
@@ -444,6 +444,52 @@
 	SEND_SIGNAL(src, COMSIG_XENO_EVOLVE_TO_NEW_CASTE, new_xeno)
 
 
-/mob/living/carbon/xenomorph/pathogen/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+/mob/living/carbon/xenomorph/bloodburster/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	. = ..()
 	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/bloodburster/do_evolve()
+
+
+/mob/living/carbon/xenomorph/popper/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/popper/do_evolve()
+	do_pathogen_evolve()
+	return
+
+/mob/living/carbon/xenomorph/sprinter/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/sprinter/do_evolve()
+	do_pathogen_evolve()
+	return
+
+/mob/living/carbon/xenomorph/neomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/neomorph/do_evolve()
+	do_pathogen_evolve()
+	return
+
+/mob/living/carbon/xenomorph/blight/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/blight/do_evolve()
+	do_pathogen_evolve()
+	return
+
+/mob/living/carbon/xenomorph/venator/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
+	. = ..()
+	make_pathogen_speaker()
+/mob/living/carbon/xenomorph/venator/do_evolve()
+	do_pathogen_evolve()
+	return
+
+// Brute & Matriarch Init handled in their own files.
+
+/mob/living/carbon/xenomorph/brute/do_evolve()
+	do_pathogen_evolve()
+	return
+/mob/living/carbon/xenomorph/matriarch/do_evolve()
+	do_pathogen_evolve()
+	return

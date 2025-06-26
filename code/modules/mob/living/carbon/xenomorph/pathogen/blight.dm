@@ -26,7 +26,7 @@
 
 	minimap_icon = "blight"
 
-/mob/living/carbon/xenomorph/pathogen/blight
+/mob/living/carbon/xenomorph/blight
 	caste_type = PATHOGEN_CREATURE_BLIGHT
 	name = PATHOGEN_CREATURE_BLIGHT
 	desc = "A sleek and stealthy hunter, always watching."

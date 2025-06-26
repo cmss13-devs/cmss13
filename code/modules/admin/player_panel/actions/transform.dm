@@ -151,12 +151,12 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	"Pathogen Creatures (Minor)" = list(
 	list(
 	name = PATHOGEN_CREATURE_BURSTER,
-	key = /mob/living/carbon/xenomorph/pathogen/bloodburster,
+	key = /mob/living/carbon/xenomorph/bloodburster,
 	color = "white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_POPPER,
-	key = /mob/living/carbon/xenomorph/pathogen/popper,
+	key = /mob/living/carbon/xenomorph/popper,
 	color = "white"
 	)
 	),
@@ -164,17 +164,17 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	"Pathogen Creatures (Standard)" = list(
 	list(
 	name = PATHOGEN_CREATURE_SPRINTER,
-	key = /mob/living/carbon/xenomorph/pathogen/sprinter,
+	key = /mob/living/carbon/xenomorph/sprinter,
 	color = "white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_NEOMORPH,
-	key = /mob/living/carbon/xenomorph/pathogen/neomorph,
+	key = /mob/living/carbon/xenomorph/neomorph,
 	color = "white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_BLIGHT,
-	key = /mob/living/carbon/xenomorph/pathogen/blight,
+	key = /mob/living/carbon/xenomorph/blight,
 	color = "white"
 	)
 	),
@@ -182,17 +182,17 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	"Pathogen Creatures (Major)" = list(
 	list(
 	name = PATHOGEN_CREATURE_BRUTE,
-	key = /mob/living/carbon/xenomorph/pathogen/brute,
+	key = /mob/living/carbon/xenomorph/brute,
 	color = "white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_VENATOR,
-	key = /mob/living/carbon/xenomorph/pathogen/venator,
+	key = /mob/living/carbon/xenomorph/venator,
 	color="white"
 	),
 	list(
 	name = PATHOGEN_CREATURE_MATRIARCH,
-	key = /mob/living/carbon/xenomorph/pathogen/matriarch,
+	key = /mob/living/carbon/xenomorph/matriarch,
 	color="white"
 	)
 	),

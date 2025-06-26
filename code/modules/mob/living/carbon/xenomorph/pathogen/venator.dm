@@ -28,7 +28,7 @@
 	minimap_icon = "venator"
 	evolution_allowed = FALSE
 
-/mob/living/carbon/xenomorph/pathogen/venator
+/mob/living/carbon/xenomorph/venator
 	caste_type = PATHOGEN_CREATURE_VENATOR
 	name = PATHOGEN_CREATURE_VENATOR
 	desc = "A wandering ball of death."

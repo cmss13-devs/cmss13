@@ -28,7 +28,7 @@
 	minimap_icon = "matriarch"
 	evolution_allowed = FALSE
 
-/mob/living/carbon/xenomorph/pathogen/matriarch
+/mob/living/carbon/xenomorph/matriarch
 	caste_type = PATHOGEN_CREATURE_MATRIARCH
 	name = PATHOGEN_CREATURE_MATRIARCH
 	desc = "Nothing will survive..."
@@ -78,12 +78,13 @@
 	aura_strength = 5
 	langchat_height = 64
 
-/mob/living/carbon/xenomorph/pathogen/matriarch/Initialize()
+/mob/living/carbon/xenomorph/matriarch/Initialize()
 	. = ..()
+	make_pathogen_speaker()
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
 
-/mob/living/carbon/xenomorph/pathogen/matriarch/proc/check_block(mob/queen, turf/new_loc)
+/mob/living/carbon/xenomorph/matriarch/proc/check_block(mob/queen, turf/new_loc)
 	SIGNAL_HANDLER
 	if(body_position == LYING_DOWN || stat == UNCONSCIOUS)
 		return
@@ -457,11 +458,11 @@
 	apply_cooldown()
 	return ..()
 
-/mob/living/carbon/xenomorph/pathogen/matriarch/death(cause, gibbed)
+/mob/living/carbon/xenomorph/matriarch/death(cause, gibbed)
 	notify_ghosts(header = "Matriarch Death", message = "The Pathogen Matriarch has been slain!", source = src, action = NOTIFY_ORBIT)
 	xeno_message(SPAN_XENOANNOUNCE("A sudden tremor ripples through the confluence... the Matriarch has been slain! Vengeance!"), 3, XENO_HIVE_PATHOGEN)
 
 	return ..()
 
-/mob/living/carbon/xenomorph/pathogen/matriarch/is_xeno_grabbable()
+/mob/living/carbon/xenomorph/matriarch/is_xeno_grabbable()
 	return TRUE

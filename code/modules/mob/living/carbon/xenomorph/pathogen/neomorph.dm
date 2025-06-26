@@ -26,7 +26,7 @@
 
 	minimap_icon = "neomorph"
 
-/mob/living/carbon/xenomorph/pathogen/neomorph
+/mob/living/carbon/xenomorph/neomorph
 	caste_type = PATHOGEN_CREATURE_NEOMORPH
 	name = PATHOGEN_CREATURE_NEOMORPH
 	desc = "A sleek, fast alien with sharp claws."

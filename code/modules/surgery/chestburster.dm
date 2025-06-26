@@ -169,7 +169,7 @@
 
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/xenomorph/larva/larva = locate() in target //the larva was fully grown, ready to burst.
-		var/mob/living/carbon/xenomorph/pathogen/bloodburster/burster = locate() in target
+		var/mob/living/carbon/xenomorph/bloodburster/burster = locate() in target
 		if(larva)
 			larva.forceMove(target.loc)
 			qdel(embryo)

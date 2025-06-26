@@ -29,7 +29,7 @@
 
 	minimap_icon = "bloodburster"
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster
+/mob/living/carbon/xenomorph/bloodburster
 	caste_type = PATHOGEN_CREATURE_BURSTER
 	name = PATHOGEN_CREATURE_BURSTER
 	desc = "What the hell is THAT..."
@@ -78,7 +78,7 @@
 
 	var/bloody_state = LARVA_STATE_BLOODY
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster/Life()
+/mob/living/carbon/xenomorph/bloodburster/Life()
 	// Check if no longer bloody or mature
 	if(bloody_state == LARVA_STATE_BLOODY && evolution_stored >= evolution_threshold / 2)
 		bloody_state = LARVA_STATE_NORMAL
@@ -88,7 +88,7 @@
 		generate_name()
 	return ..()
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster/generate_name()
+/mob/living/carbon/xenomorph/bloodburster/generate_name()
 	if(!nicknumber)
 		generate_and_set_nicknumber()
 
@@ -121,7 +121,7 @@
 		var/datum/hive_status/hive_status = hive
 		hive_status.hive_ui.update_xeno_info()
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster/update_icons()
+/mob/living/carbon/xenomorph/bloodburster/update_icons()
 	var/state = "" //Icon convention, two different sprite sets
 
 	if(bloody_state == LARVA_STATE_BLOODY)
@@ -150,16 +150,16 @@
 	if(hide)
 		hide.post_attack()
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster/initialize_pass_flags(datum/pass_flags_container/pass_flags)
+/mob/living/carbon/xenomorph/bloodburster/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
 	if (pass_flags)
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster/alter_ghost(mob/dead/observer/ghost)
+/mob/living/carbon/xenomorph/bloodburster/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon_state = PATHOGEN_CREATURE_BURSTER
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster/cause_unbearable_pain(mob/living/carbon/victim)
+/mob/living/carbon/xenomorph/bloodburster/cause_unbearable_pain(mob/living/carbon/victim)
 	if(loc != victim)
 		return
 	victim.emote("scream")
@@ -171,7 +171,7 @@
 
 
 
-/mob/living/carbon/xenomorph/pathogen/bloodburster/chest_burst(mob/living/carbon/victim)
+/mob/living/carbon/xenomorph/bloodburster/chest_burst(mob/living/carbon/victim)
 	set waitfor = 0
 	if(victim.chestburst || loc != victim)
 		return
@@ -205,7 +205,7 @@
 
 	victim.spawn_gibs()
 
-	for(var/mob/living/carbon/xenomorph/pathogen/bloodburster/burster_embryo in victim)
+	for(var/mob/living/carbon/xenomorph/bloodburster/burster_embryo in victim)
 		var/datum/hive_status/hive = GLOB.hive_datum[burster_embryo.hivenumber]
 		burster_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		burster_embryo.grant_spawn_protection(1 SECONDS)

@@ -29,7 +29,7 @@
 
 	minimap_icon = "sprinter"
 
-/mob/living/carbon/xenomorph/pathogen/sprinter
+/mob/living/carbon/xenomorph/sprinter
 	caste_type = PATHOGEN_CREATURE_SPRINTER
 	name = PATHOGEN_CREATURE_SPRINTER
 	desc = "A small white alien that looks like it could run fairly quickly..."
@@ -80,12 +80,12 @@
 	acid_blood_damage = 0
 	bubble_icon = "pathogen"
 
-/mob/living/carbon/xenomorph/pathogen/sprinter/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
+/mob/living/carbon/xenomorph/sprinter/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)
 	..()
 	if (pass_flags_container)
 		pass_flags_container.flags_pass |= PASS_FLAGS_CRAWLER
 
-/mob/living/carbon/xenomorph/pathogen/sprinter/recalculate_actions()
+/mob/living/carbon/xenomorph/sprinter/recalculate_actions()
 	. = ..()
 	pull_multiplier *= 0.85
 	if(is_zoomed)

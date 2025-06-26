@@ -624,19 +624,19 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(XENO_CASTE_KING)
 			M = /mob/living/carbon/xenomorph/king
 		if(PATHOGEN_CREATURE_BURSTER)
-			M = /mob/living/carbon/xenomorph/pathogen/bloodburster
+			M = /mob/living/carbon/xenomorph/bloodburster
 		if(PATHOGEN_CREATURE_POPPER)
-			M = /mob/living/carbon/xenomorph/pathogen/popper
+			M = /mob/living/carbon/xenomorph/popper
 		if(PATHOGEN_CREATURE_SPRINTER)
-			M = /mob/living/carbon/xenomorph/pathogen/sprinter
+			M = /mob/living/carbon/xenomorph/sprinter
 		if(PATHOGEN_CREATURE_NEOMORPH)
-			M = /mob/living/carbon/xenomorph/pathogen/neomorph
+			M = /mob/living/carbon/xenomorph/neomorph
 		if(PATHOGEN_CREATURE_BLIGHT)
-			M = /mob/living/carbon/xenomorph/pathogen/blight
+			M = /mob/living/carbon/xenomorph/blight
 		if(PATHOGEN_CREATURE_VENATOR)
-			M = /mob/living/carbon/xenomorph/pathogen/venator
+			M = /mob/living/carbon/xenomorph/venator
 		if(PATHOGEN_CREATURE_BRUTE)
-			M = /mob/living/carbon/xenomorph/pathogen/brute
+			M = /mob/living/carbon/xenomorph/brute
 	return M
 
 

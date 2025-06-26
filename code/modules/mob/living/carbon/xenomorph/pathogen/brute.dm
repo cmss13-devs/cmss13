@@ -27,7 +27,7 @@
 	minimap_icon = "brute"
 	evolution_allowed = FALSE
 
-/mob/living/carbon/xenomorph/pathogen/brute
+/mob/living/carbon/xenomorph/brute
 	caste_type = PATHOGEN_CREATURE_BRUTE
 	name = PATHOGEN_CREATURE_BRUTE
 	desc = "A lumbering tank on legs."
@@ -72,8 +72,9 @@
 	bubble_icon = "pathogenroyal"
 	aura_strength = 3
 
-/mob/living/carbon/xenomorph/pathogen/brute/Initialize()
+/mob/living/carbon/xenomorph/brute/Initialize()
 	. = ..()
+	make_pathogen_speaker()
 	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
 
 /datum/action/xeno_action/activable/tail_stab/pathogen_t3/brute

@@ -344,7 +344,7 @@
 
 	QDEL_LIST(blockers)
 
-	var/mob/living/carbon/xenomorph/pathogen/matriarch/matriarch = new(get_turf(src), null, hivenumber)
+	var/mob/living/carbon/xenomorph/matriarch/matriarch = new(get_turf(src), null, hivenumber)
 	if(chosen_candidate?.mob)
 		var/mob/old_mob = chosen_candidate.mob
 		old_mob.mind.transfer_to(matriarch)
@@ -388,7 +388,7 @@
 	if(is_pathogen_creature(user) && istype(O, /obj/item/grab))
 		var/obj/item/grab/G = O
 		if(ismatriarch(G.grabbed_thing))
-			var/mob/living/carbon/xenomorph/pathogen/matriarch/corpse = G.grabbed_thing
+			var/mob/living/carbon/xenomorph/matriarch/corpse = G.grabbed_thing
 			if(do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && (corpse.stat == DEAD))
 				qdel(corpse)
 				resurrect()

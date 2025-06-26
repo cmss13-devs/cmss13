@@ -2063,14 +2063,6 @@
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/south_west)
-"agd" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts_road/east)
-"age" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/tyrargo/outdoors/outskirts/east)
 "agf" = (
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -23962,6 +23954,10 @@
 /obj/structure/flora/wood/stick1,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
+"bdc" = (
+/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/central)
 "bdd" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -23975,6 +23971,17 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
+"bde" = (
+/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/east)
+"bdf" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/central)
 "bdg" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -24013,6 +24020,12 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1/no_mans_land)
+"bdk" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
 "bdl" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -53168,10 +53181,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/apartment/south_upper)
-"cCO" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts_road/east)
 "cCP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe,
@@ -165129,7 +165138,7 @@ bBg
 bBg
 bBg
 bBg
-abV
+bBg
 bBg
 bBg
 bBg
@@ -165320,7 +165329,7 @@ bCb
 etP
 bBg
 bBg
-abV
+bBg
 bBg
 bBg
 bBg
@@ -165497,7 +165506,7 @@ bBg
 bBg
 etV
 bCb
-bBD
+bdc
 bBD
 bBD
 bBD
@@ -165665,13 +165674,13 @@ eEP
 eEN
 eEJ
 etU
-abV
+bBg
 bBg
 bCH
 eEl
 bCH
 bBg
-abV
+bBg
 bBg
 bBg
 eDU
@@ -165686,7 +165695,7 @@ bBE
 bBE
 bBE
 bBE
-bBD
+bdc
 dEg
 etP
 bBg
@@ -165849,13 +165858,13 @@ bpC
 eEO
 etU
 eEG
-bLq
+bdk
 bBg
 bBg
 bBg
 bOH
 bOy
-bCb
+bdf
 etP
 bBg
 bLq
@@ -166028,7 +166037,7 @@ bBg
 eDU
 bBg
 bBg
-abV
+bBg
 bBg
 bBg
 bBg
@@ -166396,7 +166405,7 @@ bBg
 bBg
 cMt
 brf
-bBg
+abV
 bBg
 etV
 bBv
@@ -166426,7 +166435,7 @@ bBE
 bBw
 bBg
 bBg
-abV
+bBg
 bBg
 bBh
 bBg
@@ -166608,7 +166617,7 @@ aJG
 aJD
 aOc
 bBw
-bBg
+abV
 bBg
 bBg
 bEL
@@ -167128,7 +167137,7 @@ bRM
 bzi
 bzi
 bzy
-agh
+bwE
 bwE
 bIq
 bzi
@@ -167313,7 +167322,7 @@ bRh
 bQY
 bzy
 bwE
-bwE
+agh
 dTb
 bzi
 bMj
@@ -167529,7 +167538,7 @@ bBD
 bBw
 bBg
 bBg
-bBg
+abV
 bBg
 bBg
 bIR
@@ -168265,7 +168274,7 @@ byQ
 byF
 bwE
 bwE
-cCO
+bBn
 bBn
 euJ
 bov
@@ -170288,7 +170297,7 @@ bzi
 bzi
 byQ
 byQ
-agd
+bBl
 diI
 diI
 bJW
@@ -170837,7 +170846,7 @@ byA
 byA
 bLY
 bwE
-bwE
+agh
 bwE
 bwE
 bKG
@@ -171199,7 +171208,7 @@ bzi
 byQ
 bzy
 eta
-byQ
+bde
 bMs
 aVR
 aOB
@@ -171383,7 +171392,7 @@ byQ
 byQ
 euk
 bEx
-age
+bzi
 bMH
 bMt
 eCD

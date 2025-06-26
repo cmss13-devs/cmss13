@@ -1785,11 +1785,6 @@
 /mob/living/carbon/human/proc/play_manifest()
 	var/human_manifest
 	var/time_to_remove = 17 SECONDS
-	overlay_fullscreen_timer(time_to_remove, 10, "roundstart2", /atom/movable/screen/fullscreen/black)
-	overlay_fullscreen_timer(time_to_remove, 10, "roundstartcrt2", /atom/movable/screen/fullscreen/crt)
-	overlay_fullscreen_timer(time_to_remove + 2 SECONDS, 20, "roundstart_fade", /atom/movable/screen/fullscreen/spawning_in)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_beep.ogg', src, 80), time_to_remove - 1 SECONDS)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_opening.ogg', src, 80), time_to_remove)
 	var/alert_type = /atom/movable/screen/text/screen_text/picture/starting
 	var/platoon_name
 	var/squad_name
@@ -1805,6 +1800,7 @@
 			alert_type = /atom/movable/screen/text/screen_text/picture/starting/upp
 			if(assigned_squad)
 				squad_name = assigned_squad.name
+
 
 	if(assigned_squad)
 		if(assigned_squad.squad_leader)
@@ -1823,7 +1819,21 @@
 					account_paygrade = GLOB.paygrades[card.paygrade]
 				human_manifest += "[human.name]...[account_paygrade.prefix]/B. Type:[human.blood_type]/TQ[rand(0,10)].0.[rand(100000,999999)]<br>"
 				players_on_manifest++
-	sleeping = (time_to_remove - 7 SECONDS)/10
+	else
+		time_to_remove = 10 SECONDS
+		var/obj/item/card/id/card = get_idcard()
+		var/datum/paygrade/account_paygrade = "UNKWN"
+		if(card)
+			account_paygrade = GLOB.paygrades[card.paygrade]
+		human_manifest += "[name]...[account_paygrade.prefix]/B. Type:[blood_type]/TQ[rand(0,10)].0.[rand(100000,999999)]<br>"
+		players_on_manifest++
+
+	overlay_fullscreen_timer(time_to_remove, 10, "roundstart2", /atom/movable/screen/fullscreen/black)
+	overlay_fullscreen_timer(time_to_remove, 10, "roundstartcrt2", /atom/movable/screen/fullscreen/crt)
+	overlay_fullscreen_timer(time_to_remove + 2 SECONDS, 20, "roundstart_fade", /atom/movable/screen/fullscreen/spawning_in)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_beep.ogg', src, 80), time_to_remove - 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(playsound_client), src.client, 'sound/effects/cryo_opening.ogg', src, 80), time_to_remove)
+	sleeping = (time_to_remove - 4 SECONDS)/10
 
 	play_screen_text("<u>[SSmapping.configs[SHIP_MAP].map_name]<br></u>" + "[platoon_name]<br>" + "[squad_name] <br><br>" + human_manifest, alert_type)
 

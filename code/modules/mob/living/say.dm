@@ -3,7 +3,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":h" = RADIO_CHANNEL_DEPARTMENT, ".h" = RADIO_CHANNEL_DEPARTMENT, "#h" = RADIO_CHANNEL_DEPARTMENT,
 	":w" = RADIO_MODE_WHISPER, ".w" = RADIO_MODE_WHISPER, "#w" = RADIO_MODE_WHISPER,
 	":+" = RADIO_CHANNEL_SPECIAL, ".+" = RADIO_CHANNEL_SPECIAL, "#+" = RADIO_CHANNEL_SPECIAL, //activate radio-specific special functions
-	":x" = RADIO_CHANNEL_HYPERDYNE, "#x" = RADIO_CHANNEL_HYPERDYNE, // ".x" is Reserved for Xenomorph Language
+	":x" = RADIO_CHANNEL_HYPERDYNE, ".x" = RADIO_CHANNEL_HYPERDYNE, "#x" = RADIO_CHANNEL_HYPERDYNE,
 
 	":m" = RADIO_CHANNEL_MEDSCI, ".m" = RADIO_CHANNEL_MEDSCI, "#m" = RADIO_CHANNEL_UPP_MED,
 	":n" = RADIO_CHANNEL_ENGI, ".n" = RADIO_CHANNEL_ENGI, "#n" = RADIO_CHANNEL_UPP_ENGI,
@@ -25,8 +25,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
 	":q" = RADIO_CHANNEL_ROYAL_MARINE, ".q" = RADIO_CHANNEL_ROYAL_MARINE,
 	":r" = RADIO_CHANNEL_PROVOST, ".r" = RADIO_CHANNEL_PROVOST, "#r" = RADIO_CHANNEL_YAUTJA,
-	":s" = RADIO_CHANNEL_CIA, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER, // ".s" is Reserved for Sainja Language
-	// ".l" is Reserved for Tactical Sign Language
+	":s" = RADIO_CHANNEL_CIA, ".s" = RADIO_CHANNEL_CIA, "#s" = RADIO_CHANNEL_YAUTJA_OVERSEER,
+
 	":I" = RADIO_CHANNEL_INTERCOM, ".I" = RADIO_CHANNEL_INTERCOM, "#I" = RADIO_CHANNEL_INTERCOM,
 	":H" = RADIO_CHANNEL_DEPARTMENT, ".H" = RADIO_CHANNEL_DEPARTMENT, "#H" = RADIO_CHANNEL_DEPARTMENT,
 	":W" = RADIO_MODE_WHISPER, ".W" = RADIO_MODE_WHISPER, "#W" = RADIO_MODE_WHISPER,
@@ -52,7 +52,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":Q" = RADIO_CHANNEL_ROYAL_MARINE, ".Q" = RADIO_CHANNEL_ROYAL_MARINE,
 	":R" = RADIO_CHANNEL_PROVOST, ".R" = RADIO_CHANNEL_PROVOST, "#R" = RADIO_CHANNEL_YAUTJA,
 	":S" = RADIO_CHANNEL_CIA, ".S" = RADIO_CHANNEL_CIA, "#S" = RADIO_CHANNEL_YAUTJA_OVERSEER,
-)) // Refer to \code\modules\mob\language\languages.dm for deconflicting Language specific chars.
+))
 
 /proc/channel_to_prefix(channel)
 	var/channel_key

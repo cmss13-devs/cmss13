@@ -107,6 +107,12 @@
 	if(istype(turf_area,/area/shuttle/drop1/lz1) || istype(turf_area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(owner))
 		to_chat(popper, SPAN_WARNING("We sense this is not a suitable area for creating a spore sac."))
 		return
+	if(isnull(turf_area) || !(turf_area.is_resin_allowed))
+		if(!turf_area || turf_area.flags_area & AREA_UNWEEDABLE)
+			to_chat(popper, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
+			return
+		to_chat(popper, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return
 	if(!target_turf.check_spore_sac_placement(popper))
 		return
 	if(!popper.check_plasma(plasma_cost))

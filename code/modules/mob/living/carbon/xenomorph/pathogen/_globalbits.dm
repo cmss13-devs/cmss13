@@ -154,9 +154,9 @@
 	// State
 	var/next_slash_buffed = FALSE
 
-#define BLIGHT_TOUCH_DELAY 4 SECONDS
+#define BLIGHT_TOUCH_DELAY 6 SECONDS
 
-/datum/behavior_delegate/pathogen_base/venator/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
+/datum/behavior_delegate/pathogen_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!next_slash_buffed)
 		return original_damage
 
@@ -177,7 +177,7 @@
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add blight into our attack, [carbon_target] is about to fall over paralyzed!"))
 		to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel like you're about to fall over, as [bound_xeno] slashes you with its blight coated claws!"))
 		carbon_target.sway_jitter(times = 3, steps = floor(BLIGHT_TOUCH_DELAY/3))
-		carbon_target.apply_effect(6, DAZE)
+		carbon_target.Daze(8)
 		addtimer(CALLBACK(src, PROC_REF(blight_slash), carbon_target), BLIGHT_TOUCH_DELAY)
 		next_slash_buffed = FALSE
 	if(!next_slash_buffed)

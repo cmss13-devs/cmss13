@@ -146,4 +146,8 @@
 		if (XS.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
 			shield_total += XS.amount
 
-	. += "Shield: [shield_total]"
+	. += "Personal Shield: [shield_total]"
+
+	var/datum/hive_status/pathogen/hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
+	if(hive)
+		. += "Pathogen Poppers: [hive.get_popper_num()]/[hive.max_poppers]"

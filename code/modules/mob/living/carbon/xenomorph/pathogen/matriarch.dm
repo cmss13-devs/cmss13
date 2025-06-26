@@ -122,6 +122,10 @@
 	. += "Bone Shards: [shards]/[max_shards]"
 	. += "Shards Armor Bonus: [times_armor_buffed*armor_buff_per_fifty_shards]"
 
+	var/datum/hive_status/pathogen/hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
+	if(hive)
+		. += "Pathogen Poppers: [hive.get_popper_num()]/[hive.max_poppers]"
+
 /datum/behavior_delegate/pathogen_base/matriarch/proc/lock_shards()
 	if (!bound_xeno)
 		return
@@ -204,11 +208,16 @@
 	action_icon_state = "screech"
 	macro_path = /datum/action_xeno_action/verb/verb_doom
 	xeno_cooldown = 90 SECONDS
-	plasma_cost = 50
+	plasma_cost = 200
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 	var/daze_length_seconds = 1
 	var/slow_length_seconds = 4
+
+/datum/action/xeno_action/onclick/blight_wave/overmind
+	xeno_cooldown = 120 SECONDS
+	plasma_cost = 400
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/onclick/blight_wave/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner

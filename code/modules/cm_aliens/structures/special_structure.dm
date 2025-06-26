@@ -22,6 +22,7 @@
 	/// Whether or not this has a forced hive
 	var/forced_hive = FALSE
 	var/failed_build = FALSE
+	var/broadcast_destroy = TRUE
 
 /obj/effect/alien/resin/special/Initialize(mapload, hive_ref)
 	. = ..()
@@ -44,7 +45,7 @@
 /obj/effect/alien/resin/special/Destroy()
 	if(linked_hive)
 		linked_hive.remove_special_structure(src)
-		if(linked_hive.living_xeno_queen && !failed_build)
+		if(linked_hive.living_xeno_queen && !failed_build && broadcast_destroy)
 			xeno_message("Hive: \A [name] has been destroyed at [sanitize_area(get_area_name(src))]!", 3, linked_hive.hivenumber)
 	linked_hive = null
 	STOP_PROCESSING(SSfastobj, src)

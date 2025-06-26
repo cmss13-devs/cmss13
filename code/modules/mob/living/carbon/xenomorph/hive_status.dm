@@ -1661,6 +1661,8 @@
 		PATHOGEN_STRUCTURE_CORE = /datum/construction_template/xenomorph/pathogen_core,
 	)
 
+	var/max_poppers = 8
+
 /datum/hive_status/pathogen/get_xeno_counts()
 	// Every caste is manually defined here so you get
 	var/list/xeno_counts = list(
@@ -1677,7 +1679,7 @@
 			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(xeno.caste && xeno.counts_for_slots)
+		if(xeno.caste)
 			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
 
 	return xeno_counts
@@ -1689,3 +1691,20 @@
 	xeno_message(SPAN_XENOANNOUNCE("The confluence location has been set as \the [A]."), 3, hivenumber)
 	hive_location = C
 	hive_ui.update_hive_location()
+
+/datum/hive_status/pathogen/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
+	if(HAS_TRAIT(src, TRAIT_NO_HIVE_DELAY))
+		return FALSE
+
+	var/danger_mobs = 0
+	for(var/mob/living/carbon/xenomorph/mob in totalXenos)
+		if(ispopper(mob) || !mob.counts_for_roundend)
+			continue
+		if(mob == living_xeno_queen)
+			continue
+		danger_mobs++
+
+	if(!danger_mobs)
+		return FALSE
+
+	return TRUE

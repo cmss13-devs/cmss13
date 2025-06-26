@@ -174,8 +174,10 @@
 	/// What was the name of the creature now acting as overmind?
 	var/list/overmind_stored_stuff = list()
 
+	var/last_overmind_key
+
 	/// Is the overmind in a state of strength? (Has the core been alive a while)
-	var/overmind_strengthened = TRUE
+	var/overmind_strengthened = FALSE
 	var/overmind_timer
 	var/overmind_timer_duration = 600 SECONDS
 
@@ -187,16 +189,19 @@
 		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/eye,
-		/datum/action/xeno_action/activable/queen_heal, //first macro
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/activable/queen_heal/pathogen_mind, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //fourth macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fifth macro
-		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/blight_wave/overmind,
 		)
 
 	var/list/overmind_abilities_strong = list(
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/blight_wave/overmind,
+		// /datum/action/xeno_action/activable/queen_heal/pathogen_mind gets strengthened by the proc too, allowing cross-map heals.
 		)
 
 	protection_level = TURF_PROTECTION_OB
@@ -236,7 +241,10 @@
 /obj/effect/alien/resin/special/pylon/pathogen_core/attack_alien(mob/living/carbon/xenomorph/attacking_xeno)
 	if((attacking_xeno.a_intent == INTENT_HELP) && (attacking_xeno.hivenumber == linked_hive.hivenumber) && allowed_to_overmind(attacking_xeno))
 		if(tgui_alert(attacking_xeno, "Do you seek to become the Mycelial Overmind?", "Become Overmind?", list("Yes", "No"), 5 SECONDS) == "Yes")
-			admin_request_overmind(attacking_xeno)
+			if(last_overmind_key == attacking_xeno.key)
+				make_overmind(attacking_xeno)
+			else
+				admin_request_overmind(attacking_xeno)
 			return XENO_NO_DELAY_ACTION
 
 	if(!overmind_mob && attacking_xeno.a_intent != INTENT_HELP && attacking_xeno.can_destroy_special() && attacking_xeno.hivenumber == linked_hive.hivenumber)
@@ -309,3 +317,7 @@
 
 #undef PYLON_REPAIR_TIME
 #undef PYLON_WEEDS_REGROWTH_TIME
+
+/datum/action/xeno_action/activable/queen_heal/pathogen_mind
+	name = "Heal Pathogen Creature (600)"
+	cross_map_heal = FALSE

@@ -74,6 +74,8 @@
 	aura_strength = 2
 	counts_for_slots = FALSE
 
+	counts_for_roundend = FALSE
+
 /mob/living/carbon/xenomorph/popper/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -217,6 +219,8 @@
 	forced_hive = TRUE
 	hivenumber = XENO_HIVE_PATHOGEN
 
+	broadcast_destroy = FALSE
+
 	var/growth_state = POPPER_COCOON_GROWING
 	var/mature_time
 
@@ -268,6 +272,8 @@
 /obj/effect/alien/resin/special/popper_cocoon/healthcheck()
 	if(health > 0)
 		return
+	if(growth_state == POPPER_COCOON_DEAD)
+		return // Already dead.
 
 	flick("cocoon_pop", src)
 	STOP_PROCESSING(SSobj, src)
@@ -275,10 +281,16 @@
 	growth_state = POPPER_COCOON_DEAD
 
 	xeno_message("Confluence: \A [name] has been destroyed at [sanitize_area(get_area_name(src))]!", 3, XENO_HIVE_PATHOGEN)
+	addtimer(CALLBACK(src, PROC_REF(decay)), 30 SECONDS)
 
 /obj/effect/alien/resin/special/popper_cocoon/proc/hatch(mob/dead/observer/user)
 	if(growth_state != POPPER_COCOON_GROWN) // No dooubling up
 		to_chat(user, SPAN_WARNING("There is no Popper left in this cocoon!"))
+		return FALSE
+
+	var/datum/hive_status/pathogen/hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
+	if(!hive.has_popper_slot())
+		to_chat(user, SPAN_WARNING("The Mycelial Confluence cannot support another Popper at this time!"))
 		return FALSE
 
 	growth_state = POPPER_COCOON_HATCHED
@@ -311,6 +323,8 @@
 	return TRUE
 
 /obj/effect/alien/resin/special/popper_cocoon/proc/decay()
+	if(growth_state == POPPER_COCOON_HATCHED)
+		xeno_message("Confluence: \A [name] has decayed after hatching!", 2, XENO_HIVE_PATHOGEN)
 	if(mature_time)
 		deltimer(mature_time)
 	mature_time = null
@@ -353,18 +367,26 @@
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a Popper until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
 		return FALSE
 
+	if(!has_popper_slot())
+		to_chat(user, SPAN_WARNING("The Mycelial Confluence cannot support another Popper at this time!"))
+		return FALSE
+
 	if(!user.client)
 		return FALSE
 
 	return TRUE
 
 /datum/game_mode/proc/attempt_to_join_as_pathogen_popper(mob/xeno_candidate)
-	var/datum/hive_status/hive
+	var/datum/hive_status/pathogen/hive
 
 	hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
 
 	if(length(hive.totalXenos) <= 0)
 		to_chat(xeno_candidate, SPAN_WARNING("The confluence isn't active at this point for you to join."))
+		return FALSE
+
+	if(!hive.has_popper_slot())
+		to_chat(xeno_candidate, SPAN_WARNING("The Mycelial Confluence cannot support another Popper at this time!"))
 		return FALSE
 
 
@@ -399,3 +421,14 @@
 	selected_structure.hatch(xeno_candidate)
 	return TRUE
 
+/datum/hive_status/proc/has_popper_slot()
+	return FALSE
+
+/datum/hive_status/proc/get_popper_num()
+	var/list/count = get_xeno_counts()
+	return count[1][PATHOGEN_CREATURE_POPPER]
+
+/datum/hive_status/pathogen/has_popper_slot()
+	if(get_popper_num() >= max_poppers)
+		return FALSE
+	return TRUE

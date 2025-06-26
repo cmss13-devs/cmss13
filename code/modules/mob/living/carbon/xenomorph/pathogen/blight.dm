@@ -139,6 +139,10 @@
 	var/time_left = timeleft(lurker_invisibility_action.cooldown_timer_id) / 10
 	. += "Invisibility Recharge: [time_left] second\s."
 
+	var/datum/hive_status/pathogen/hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
+	if(hive)
+		. += "Pathogen Poppers: [hive.get_popper_num()]/[hive.max_poppers]"
+
 /datum/behavior_delegate/pathogen_base/blight/on_collide(atom/movable/movable_atom)
 	. = ..()
 

@@ -202,6 +202,14 @@
 	human_target.Stun(2)
 	to_chat(human_target, SPAN_XENOHIGHDANGER("You fall over, paralyzed by the blight!"))
 
+/datum/behavior_delegate/pathogen_base/append_to_stat()
+	. = list()
+
+	var/datum/hive_status/pathogen/hive = GLOB.hive_datum[XENO_HIVE_PATHOGEN]
+	if(hive)
+		. += "Pathogen Poppers: [hive.get_popper_num()]/[hive.max_poppers]"
+
+// ################## Blight slash ##################
 /datum/action/xeno_action/verb/verb_blight_slash()
 	set category = "Alien"
 	set name = "Blight Slash"
@@ -209,7 +217,6 @@
 	var/action_name = "Blight Slash"
 	handle_xeno_macro(src,action_name)
 
-// Blight slash
 /datum/action/xeno_action/onclick/blight_slash
 	name = "Blight Slash"
 	action_icon_state = "lurker_inject_neuro"

@@ -81,7 +81,8 @@
 	linked_hive.add_hive_leader(overmind_mob)
 	overmind_mob.lock_evolve = TRUE
 
-	overmind_timer = addtimer(CALLBACK(src, PROC_REF(strengthen_overmind)), 600 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
+	if(!overmind_strengthened)
+		overmind_timer = addtimer(CALLBACK(src, PROC_REF(strengthen_overmind)), 600 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 
 	// Remove their abilities
 	for(var/datum/action/xeno_action/action in overmind_mob.actions)
@@ -108,6 +109,10 @@
 	overmind_strengthened = TRUE
 	if(overmind_mob)
 		to_chat(overmind_mob, SPAN_PATHOGEN_ANNOUNCE("Your blight core has grown stronger! New abilities are now possible."))
+		to_chat(overmind_mob, SPAN_PATHOGEN_QUEEN("Along with your new powers, your heal can now be used at incredible distances."))
+
+		var/datum/action/xeno_action/activable/queen_heal/pathogen_mind/heal = get_action(overmind_mob, /datum/action/xeno_action/activable/queen_heal/pathogen_mind)
+		heal.cross_map_heal = TRUE
 
 		for(var/path in overmind_abilities_strong)
 			give_action(overmind_mob, path)
@@ -161,8 +166,10 @@
 	overmind_mob.set_resin_build_order(overmind_mob.caste.resin_build_order)
 	overmind_mob.extra_build_dist = initial(overmind_mob.extra_build_dist)
 
+	last_overmind_key = overmind_mob.key
 	overmind_mob.lock_evolve = FALSE
 	overmind_mob = null
+
 
 	return TRUE
 

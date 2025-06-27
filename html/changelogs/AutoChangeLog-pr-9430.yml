@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - balance: "applies 1 second fire delay instead of 2 seconds (same as normal tesla) on micro tesla as intended"

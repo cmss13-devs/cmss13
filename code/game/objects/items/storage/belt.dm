@@ -688,6 +688,26 @@
 	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/explosive/grenade/flashbang(src)
 
+/obj/item/storage/belt/security/MP/WY
+	name = "\improper M276-C corporate security rig"
+	desc = "A Weyland-Yutani adaptation of the M276 load-bearing equipment, designed for corporate security forces. This modular black rig features multiple pouches for carrying restraints, ammunition, and a mix of lethal and non-lethal equipment for maintaining order."
+
+/obj/item/storage/belt/security/MP/WY/full/fill_preset_inventory()
+	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/device/flash(src)
+	new /obj/item/weapon/baton(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/device/clue_scanner(src)
+
+/obj/item/storage/belt/security/MP/WY/full/synth/fill_preset_inventory()
+	new /obj/item/explosive/grenade/flashbang(src)
+	new /obj/item/device/flash(src)
+	new /obj/item/weapon/baton(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/device/clue_scanner(src)
+	new /obj/item/restraint/handcuffs(src)
+
 /obj/item/storage/belt/marine
 	name = "\improper M276 pattern ammo load rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This is the standard variant, designed for bulk ammunition-carrying operations."
@@ -2408,6 +2428,51 @@
 	for(var/i in 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/webley(src)
 
+/obj/item/storage/belt/gun/iasf_para_belt
+	name = "\improper IASF paratrooper belt"
+	desc = "A sturdy belt fitted with a black leather holster designed for IASF Paratroopers. A large utility pouch and several smaller compartments provide ample space for extra ammunition and field essentials—standard gear for IASF airborne forces dropping into hostile territory."
+	icon_state = "iasf_pistol_para"
+	item_state = "iasf_pistol_para"
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	storage_slots = 8
+	can_hold = list(
+		/obj/item/weapon/gun/revolver,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/weapon/gun/pistol,
+		/obj/item/ammo_magazine/pistol,
+	)
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	holster_slots = list(
+		"1" = list(
+			"icon_x" = -1,
+			"icon_y" = -3))
+
+/obj/item/storage/belt/gun/iasf_para_belt/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley())
+	for(var/i in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/webley(src)
+
+/obj/item/storage/belt/gun/iasf_para_belt/webley_near_empty/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley())
+	for(var/i = 1 to 3)
+		new /obj/item/ammo_magazine/revolver/webley(src)
+
+/obj/item/storage/belt/gun/iasf_para_belt/custom
+	name = "\improper IASF custom paratrooper belt"
+	desc = "A modified IASF paratrooper belt featuring a black leather holster with gold inlay, a large utility pouch and several smaller compartments provide ample space for extra ammunition and field essentials—standard gear for IASF airborne forces dropping into hostile territory."
+	icon_state = "iasf_pistol_para_custom"
+	item_state = "iasf_pistol_para_custom"
+
+/obj/item/storage/belt/gun/iasf_para_belt/custom/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54_custom())
+	for(var/i in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/l54_custom(src)
+
 /obj/item/storage/belt/gun/smartgunner
 	name = "\improper M802 pattern smartgunner sidearm rig"
 	desc = "The M802 is a limited-issue mark of USCM load-bearing equipment, designed to carry smartgun ammunition and a sidearm."
@@ -2727,6 +2792,16 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 	new /obj/item/device/healthanalyzer(src)
 
+/obj/item/storage/belt/medical/rmc/survivor/fill_preset_inventory()
+	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
+	new /obj/item/storage/pill_bottle/packet/kelotane(src)
+	new /obj/item/storage/pill_bottle/packet/tramadol(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/device/healthanalyzer(src)
+
 /obj/item/storage/belt/gun/l905
 	name = "\improper L905 gunbelt"
 	desc = "Finely-tooled leather, a L905, and six magazines. More than enough for the standard RMC commando."
@@ -2768,3 +2843,26 @@
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/upp())
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/upp(src)
+
+/obj/item/storage/belt/gun/l54
+	name = "\improper pistol belt"
+	desc = "A dark brown leather pistol belt commonly issued to NSPA officers. Although designed for the L54 service pistol, it accommodates most sidearms along with spare magazines. Standard issue across TWE law enforcement, military, and security forces."
+	icon_state = "l54_holster"
+	item_state = "l54_holster"
+	icon = 'icons/obj/items/clothing/belts/belts_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_faction/TWE.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	storage_slots = 7
+	can_hold = list(
+		/obj/item/weapon/gun/pistol,
+		/obj/item/ammo_magazine/pistol,
+	)
+
+/obj/item/storage/belt/gun/l54/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/l54())
+	for(var/i in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/pistol/l54(src)

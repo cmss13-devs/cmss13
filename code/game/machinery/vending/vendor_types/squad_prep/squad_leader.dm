@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("Essential SL Kit", 0, /obj/effect/essentials_set/leader, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("SQUAD KIT (CHOOSE 1, for yourself or your squad)", 0, null, null, null),
-		list("XM51 Breaching Scattergun", 0, /obj/item/storage/box/guncase/xm51, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
+		list("JTAC Radio Kit", 0, /obj/item/storage/box/kit/mini_jtac, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Heavy Pulse Rifle", 0, /obj/item/storage/box/guncase/lmg, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M240 Pyrotechnician Support Kit", 0, /obj/item/storage/box/kit/mini_pyro, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),
 		list("M2C Heavy Machine Gun", 0, /obj/item/storage/box/guncase/m2c, MARINE_CAN_BUY_KIT, VENDOR_ITEM_REGULAR),

@@ -168,7 +168,7 @@ for it but just ignore it.
 
 	return null
 
-///parses the language code (e.g. $3) from text, such as that supplied to say.
+///parses the language code (e.g. !3) from text, such as that supplied to say.
 ///returns the stripped message
 /mob/proc/strip_language(message)
 	if(length(message) >= 2)
@@ -179,7 +179,7 @@ for it but just ignore it.
 
 	return message
 
-///parses the language code (e.g. $3) from text, such as that supplied to say.
+///parses the language code (e.g. !3) from text, such as that supplied to say.
 ///returns the language object only if the code corresponds to a language that src can speak, otherwise null.
 /mob/proc/parse_language(message)
 	if(length(message) >= 2)

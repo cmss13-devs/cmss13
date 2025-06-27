@@ -60,7 +60,7 @@ export function getPrefix(
   }
   let adjusted;
   let languagePrefixCheck = value.charAt(0);
-  if ((languagePrefixCheck = '$')) {
+  if ((languagePrefixCheck = '!')) {
     adjusted = value
       .slice(0, 3)
       ?.toLowerCase() as keyof typeof LANGUAGE_PREFIXES;

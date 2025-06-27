@@ -1,10 +1,18 @@
+///Minesweeper Field boundaries
 #define FIELD_SMALL list(8,8)
+/// if an individual cell is a landmine
 #define LANDMINE -1
+/// if an individual cell is CLEAR (No numbers either)
 #define	CLEAR -2
+/// if an individual cell is closed
 #define CELL_CLOSED "closed"
+/// if an individual cell is open
 #define CELL_OPEN "open"
+/// if game state / player is currently playing
 #define PLAYING "0"
+///if minesweeper game was LOST
 #define LOST "1"
+/// game_state minesweeper was WON
 #define WON "2"
 
 /obj/structure/machinery/computer/arcade
@@ -231,7 +239,7 @@
 	// cooldown to prevent from spam-generating a bunch of fields.
 	COOLDOWN_DECLARE(field_generation)
 
-/obj/structure/machinery/computer/arcade/minesweeper/Initialize(mapload, list/field_boundaries = list(8,8))
+/obj/structure/machinery/computer/arcade/minesweeper/Initialize(mapload, list/field_boundaries = FIELD_SMALL)
 	. = ..()
 	src.field_boundaries = field_boundaries
 	initiate_list()

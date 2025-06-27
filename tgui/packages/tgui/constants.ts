@@ -92,19 +92,14 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
   {
-    name: "Dutch's Dozen",
-    freq: 1210,
+    name: 'Yautja Overseer',
+    freq: 1206,
     color: '#1ecc43',
   },
   {
-    name: 'CIA',
-    freq: 1212,
-    color: '#e6754c',
-  },
-  {
-    name: 'Hyperdyne',
-    freq: 1213,
-    color: '#ff711a',
+    name: "Dutch's Dozen",
+    freq: 1210,
+    color: '#1ecc43',
   },
   {
     name: 'VAI',
@@ -115,6 +110,11 @@ export const RADIO_CHANNELS = [
     name: 'CMB',
     freq: 1220,
     color: '#1b748c',
+  },
+  {
+    name: 'CIA',
+    freq: 1225,
+    color: '#e6754c',
   },
   {
     name: 'WY',
@@ -215,6 +215,11 @@ export const RADIO_CHANNELS = [
     name: 'LSTN BUG B',
     freq: 1291,
     color: '#d65d95',
+  },
+  {
+    name: 'Hyperdyne',
+    freq: 1331,
+    color: '#ff711a',
   },
   {
     name: 'Common',

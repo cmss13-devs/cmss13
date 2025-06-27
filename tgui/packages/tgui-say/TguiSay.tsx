@@ -27,6 +27,7 @@ type ByondProps = {
   lightMode: BooleanLike;
   scale: BooleanLike;
   extraChannels: Array<Channel>;
+  languages: Array<string>;
 };
 
 export function TguiSay() {
@@ -47,6 +48,7 @@ export function TguiSay() {
   const [lightMode, setLightMode] = useState(false);
   const [value, setValue] = useState('');
   const [extraChannels, setExtraChennels] = useState<Array<Channel>>([]);
+  const [languages, setLanguages] = useState<Array<string>>([]);
 
   const position = useRef([window.screenX, window.screenY]);
   const isDragging = useRef(false);
@@ -173,12 +175,11 @@ export function TguiSay() {
 
     const newPrefix = getPrefix(newValue) || currentPrefix;
     // Handles switching prefixes
-    if (newPrefix && newPrefix !== currentPrefix) {
-      if (RADIO_PREFIXES[newPrefix]) {
-        setButtonContent(RADIO_PREFIXES[newPrefix]?.label);
-      }
-      if (LANGUAGE_PREFIXES[newPrefix]) {
-        setButtonContent(LANGUAGE_PREFIXES[newPrefix]?.label);
+    if (canChangePrefix(newPrefix)) {
+      if (RADIO_PREFIXES[newPrefix!]) {
+        setButtonContent(RADIO_PREFIXES[newPrefix!]?.label);
+      } else if (LANGUAGE_PREFIXES[newPrefix!]) {
+        setButtonContent(LANGUAGE_PREFIXES[newPrefix!]?.label);
       }
       setCurrentPrefix(newPrefix);
       newValue = newValue.slice(3);
@@ -195,6 +196,34 @@ export function TguiSay() {
     }
 
     setValue(newValue);
+  }
+
+  function canChangePrefix(newPrefix: string | null) {
+    if (!newPrefix || newPrefix === currentPrefix) {
+      return false;
+    }
+
+    if (RADIO_PREFIXES[newPrefix]) {
+      return true;
+    }
+
+    const newLanguage = LANGUAGE_PREFIXES[newPrefix];
+    if (newLanguage) {
+      // Do we know this language?
+      if (!languages.includes(newLanguage.id)) {
+        return false;
+      }
+
+      // Are we on the default channel with no prefix?
+      if (
+        !channelIterator.current.isSay() ||
+        (currentPrefix && RADIO_PREFIXES[currentPrefix])
+      ) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   function handleKeyDown(
@@ -253,6 +282,7 @@ export function TguiSay() {
     setMaxLength(data.maxLength);
     setLightMode(!!data.lightMode);
     setExtraChennels(data.extraChannels);
+    setLanguages(data.languages);
     scale.current = !!data.scale;
   }
 

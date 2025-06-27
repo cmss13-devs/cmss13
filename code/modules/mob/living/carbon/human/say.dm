@@ -1,7 +1,7 @@
 /mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
-		.["message_and_language"] = copytext(message, 2)
+		.["message_and_language"] = trim_left(copytext(message, 2))
 		.["modes"] += "headset"
 		return
 
@@ -16,7 +16,7 @@
 				i--
 				break
 			.["modes"] += GLOB.department_radio_keys[":[lowertext(current_channel)]"]
-		.["message_and_language"] = copytext(message, i+1)
+		.["message_and_language"] = trim_left(copytext(message, i+1))
 		var/multibroadcast_cooldown = 0
 		for(var/obj/item/device/radio/headset/headset in list(wear_l_ear, wear_r_ear))
 			if(world.time - headset.last_multi_broadcast < headset.multibroadcast_cooldown)
@@ -32,7 +32,7 @@
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
 		var/channel_prefix = lowertext(copytext(message, 1, 3))
 		if(channel_prefix in GLOB.department_radio_keys)
-			.["message_and_language"] = copytext(message, 3)
+			.["message_and_language"] = trim_left(copytext(message, 3))
 			.["modes"] += GLOB.department_radio_keys[channel_prefix]
 			return
 

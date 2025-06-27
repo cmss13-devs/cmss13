@@ -113,8 +113,9 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	if(!code)
 		notify_unauthenticated_menu()
 
-	if(world.IsBanned(new_ckey, client.address, client.computer_id, real_bans_only = TRUE))
-		unauthenticated_menu.send_message("banned")
+	var/banned = world.IsBanned(new_ckey, client.address, client.computer_id, real_bans_only = TRUE)
+	if(banned)
+		unauthenticated_menu.send_message("banned", banned)
 		QDEL_IN(client, 10 SECONDS)
 		return FALSE
 

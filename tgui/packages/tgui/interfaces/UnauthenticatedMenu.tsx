@@ -19,7 +19,7 @@ type MenuData = {
 export const UnauthenticatedMenu = () => {
   const { act } = useBackend();
 
-  const [banned, setIsBanned] = useState(false);
+  const [banned, setIsBanned] = useState<string>();
   const [browserOpened, setBrowserOpened] = useState(false);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export const UnauthenticatedMenu = () => {
       }
     });
 
-    Byond.subscribeTo('banned', () => setIsBanned(true));
+    Byond.subscribeTo('banned', (payload) => setIsBanned(payload.reason));
   }, []);
 
   return (
@@ -74,7 +74,7 @@ export const UnauthenticatedMenu = () => {
             <Stack align="center">
               <Stack.Item>
                 {banned ? (
-                  <Banned />
+                  <Banned reason={banned} />
                 ) : (
                   <Authentication setBrowserOpened={setBrowserOpened} />
                 )}
@@ -147,13 +147,15 @@ const Option = (props: {
   );
 };
 
-const Banned = () => {
+const Banned = (props: { readonly reason: string }) => {
+  const { reason } = props;
   return (
     <Section title="Authenticate">
       <Stack vertical>
         <Stack.Item>
           You are banned, and cannot currently log into the game.
         </Stack.Item>
+        <Stack.Item>Reason: {reason}</Stack.Item>
         <Stack.Item>
           You will be automatically disconnected in ten seconds.
         </Stack.Item>

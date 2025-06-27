@@ -313,6 +313,7 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	inherent_verbs = list(
@@ -345,8 +346,8 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
-		/datum/action/xeno_action/onclick/shift_spits,
-		//second macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	// Abilities they get when they've successfully aged.
@@ -875,7 +876,7 @@
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
 		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro
-		/datum/action/xeno_action/onclick/queen_tacmap,
+		/datum/action/xeno_action/onclick/tacmap, // keeps placement the same
 		/datum/action/xeno_action/onclick/eye,
 	)
 
@@ -928,10 +929,11 @@
 		overwatch(observed_xeno, TRUE)
 	zoom_out()
 
+	if(hive.tacmap_requires_queen_ovi)
+		remove_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
+
 	set_resin_build_order(GLOB.resin_build_order_drone) // This needs to occur before we update the abilities so we can update the choose resin icon
 	give_combat_abilities()
-
-	remove_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
 
 	REMOVE_TRAIT(src, TRAIT_ABILITY_NO_PLASMA_TRANSFER, TRAIT_SOURCE_ABILITY("Ovipositor"))
 	REMOVE_TRAIT(src, TRAIT_ABILITY_OVIPOSITOR, TRAIT_SOURCE_ABILITY("Ovipositor"))

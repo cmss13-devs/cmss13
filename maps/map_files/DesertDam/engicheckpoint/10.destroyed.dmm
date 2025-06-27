@@ -573,6 +573,7 @@
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/shotgun/double,
 /turf/open/floor/interior/wood,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "KE" = (

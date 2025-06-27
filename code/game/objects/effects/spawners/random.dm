@@ -610,10 +610,13 @@
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
 		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/shotgun/double = null,
+		/obj/item/weapon/gun/shotgun/double/sawn = null,
+		/obj/item/weapon/gun/shotgun/double/with_stock = null,
+		/obj/item/weapon/gun/shotgun/double/with_stock = null,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
 		/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
-		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
-		/obj/item/weapon/gun/shotgun/double/with_stock = null
+		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action
 		)
 
 /obj/effect/spawner/random/gun/civ/lowchance

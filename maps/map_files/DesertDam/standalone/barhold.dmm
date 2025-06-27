@@ -596,7 +596,7 @@
 /area/desert_dam/building/bar/bar)
 "FH" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/double,
 /turf/open/floor/carpet7_3/west,
 /area/desert_dam/building/bar/bar)
 "FI" = (

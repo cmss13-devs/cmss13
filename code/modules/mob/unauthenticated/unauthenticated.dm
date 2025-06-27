@@ -63,6 +63,15 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 #undef ACCESS_CODE_LENGTH
 
+/mob/unauthenticated/process()
+	if(!client)
+		return PROCESS_KILL
+
+	if(new_ckey)
+		return PROCESS_KILL
+
+	INVOKE_ASYNC(src, PROC_REF(check_logged_in))
+
 /// Polls the database to see if our access code has been validated
 /mob/unauthenticated/proc/check_logged_in(code)
 	if(new_ckey)
@@ -78,8 +87,6 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	)
 
 	if(!request)
-		if(!code)
-			addtimer(CALLBACK(src, PROC_REF(check_logged_in)), 5 SECONDS)
 		return
 
 	if(request.external_username)
@@ -113,10 +120,13 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 	message_admins("Non-BYOND user [new_ckey] (previously [key]) has been authenticated via [request.authentication_method].")
 
+	STOP_PROCESSING(SSauthentication, src)
+
 	log_in()
 
 /// Switches the clients ckey, and continues the logging in
 /mob/unauthenticated/proc/log_in()
+
 	// Grab our client from the directory based on the *old* Guest ckey
 	var/client/user = GLOB.directory[ckey]
 	GLOB.directory -= ckey
@@ -206,7 +216,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 			client << browse("<!DOCTYPE html><html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><meta http-equiv='X-UA-Compatible' content='IE=edge'><script>location.href = '[CONFIG_GET(keyed_list/auth_urls)[params["auth_option"]]]?code=[access_code]'</script></head><body></body></html>", "window=authwindow;titlebar=0;can_resize=0;size=[700 * client.window_scaling]x[700 * client.window_scaling]")
 
-			INVOKE_ASYNC(src, PROC_REF(check_logged_in))
+			START_PROCESSING(SSauthentication, src)
 			return TRUE
 
 		if("close_browser")
@@ -218,7 +228,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 				create_access_code_entity()
 
 			client << link("[CONFIG_GET(keyed_list/auth_urls)[params["auth_option"]]]?code=[access_code]")
-			INVOKE_ASYNC(src, PROC_REF(check_logged_in))
+			START_PROCESSING(SSauthentication, src)
 			return TRUE
 
 		if("recall_code")

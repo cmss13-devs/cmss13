@@ -26,9 +26,16 @@
     },
     {
 		"type": "map_insert",
-		"landmark": "clfadmin",
+		"landmark": "clfspaceport",
 		"chance": 1.0,
-		"path": "standalone/clfadmin.dmm",
+		"path": "standalone/clfspaceport.dmm",
+		"when": { "lvevent": "clfraid" }
+    },
+    {
+		"type": "map_insert",
+		"landmark": "clfspaceport_queen",
+		"chance": 1.0,
+		"path": "standalone/clfspaceport_queen.dmm",
 		"when": { "lvevent": "clfraid" }
     },
     {
@@ -37,5 +44,12 @@
 		"chance": 0.28,
 		"path": "standalone/twe_airbase.dmm",
         "when": { "lvevent": "none" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "iasf_souter_airbase_survivors",
+		"chance": 1.0,
+		"path": "standalone/twe_airbase_survivors.dmm",
+        "when": { "lvevent": "twe_iasf" }
 	}
 ]

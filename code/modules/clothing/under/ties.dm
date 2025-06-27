@@ -664,6 +664,11 @@
 	desc = "A fire-resistant shoulder patch, depicting the logo of Marine Space Force III, Herculis, deployed throughout the Anglo-Japanese arm from the outer veil to the ICSC Network, this patch is often worn by any general assigned to the MSF Herculis, US Space Command and UA Allied Command Generals often have their own patches."
 	icon_state = "msfpatch"
 
+/obj/item/clothing/accessory/patch/hyperdyne_patch
+	name = "Hyperdyne Corporation patch"
+	desc = "A sleek corporate patch bearing the logo of the Hyperdyne Corporation—one of the most powerful conglomerates. Known for synthetic production, AI research, and deep-space logistics. Wearing this patch implies loyalty to profit over people."
+	icon_state = "hyperdynepatch"
+
 // Misc
 
 /obj/item/clothing/accessory/dogtags
@@ -811,6 +816,12 @@
 	icon_state = "webbing_black"
 	item_state = "webbing_black"
 
+/obj/item/clothing/accessory/storage/webbing/iasf
+	name = "IASF airborne webbing"
+	desc = "A durable harness system issued to IASF airborne forces, designed to distribute weight evenly for comfort and mobility. Fitted with reinforced pouches for carrying essential gear during high-risk insertions."
+	icon_state = "webbing_twe"
+	item_state = "webbing_twe"
+
 /obj/item/clothing/accessory/storage/webbing/five_slots
 	hold = /obj/item/storage/internal/accessory/webbing/five_slots
 
@@ -894,8 +905,6 @@
 		/obj/item/weapon/gun/smg/nailgun/compact,
 		/obj/item/device/defibrillator/synthetic,
 		/obj/item/stack/rods,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunkit,
 	)
 
 /obj/item/storage/internal/accessory/tool_webbing/small

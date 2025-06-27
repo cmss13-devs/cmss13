@@ -6,12 +6,13 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/nun(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/nun_hood(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(new_human), WEAR_JACKET)
+	add_survivor_rare_item(new_human)
 	..()
 
 /datum/equipment_preset/survivor/security/trijent
 	name = "Survivor - Trijent Security Guard"
 	assignment = JOB_WY_SEC
-	rank = JOB_WY_SEC
+	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
 	minimap_icon = "cmp"
 	faction = FACTION_WY

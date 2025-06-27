@@ -322,6 +322,22 @@
 /turf/closed/shuttle/twe_dropship/transparent
 	opacity = FALSE
 
+/turf/closed/shuttle/upp_sof
+	name = "\improper UPP-DS-3 'Voron'"
+	icon = 'icons/turf/upp_sof_dropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_sof_alt
+	name = "\improper UPP-DS-3 'Volk'"
+	icon = 'icons/turf/upp_sof_alt_dropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof_alt/transparent
+	opacity = FALSE
+
 /turf/closed/shuttle/dropship3
 	name = "\improper Saipan"
 	icon = 'icons/turf/dropship3.dmi'
@@ -446,14 +462,36 @@
 /turf/closed/shuttle/transit/r_end
 	icon_state = "swall8"
 
-// Hybrisa Shuttles
+// Hybrisa Shuttles & Dropships
 
-/turf/closed/shuttle/dropship2/WY/HorizonRunner
+/turf/closed/shuttle/dropship4/WY
+	icon = 'icons/turf/dropship4.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship4/WY/HorizonRunner
 	name = "\improper WY-LWI Horizon Runner HR-150"
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport."
-	icon = 'icons/turf/dropship4.dmi'
+	icon_state = "1"
 
-/turf/closed/shuttle/dropship2/WY/StarGlider
+/turf/closed/shuttle/dropship4/WY/HorizonRunner/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship4/WY/StarGlider
 	name = "\improper WY-LWI StarGlider SG-200"
 	desc = "The WY-LWI StarGlider SG-200, a product of the collaborative ingenuity between Weyland Yutani and Lunnar-Welsun Industries, This small dropship is designed for short-range commercial transport."
-	icon = 'icons/turf/dropship4.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship4/WY/StarGlider/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship5/CLF
+	icon = 'icons/turf/CLF_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship5/CLF/Fire
+	name = "\improper UD-9M 'Dogbite'"
+	desc = "The UD-9M 'Dogbite' is a repurposed utility dropship, originally designed for short-haul cargo operations across colonial systems. Stolen and heavily modified by the Colonial Liberation Front, it's now a rugged smuggler and strike craft, capable of dropping a full fireteam through tight patrol nets. Its hull is scarred with gunfire, rust, and graffiti — a patchwork of rebellion held together by grit and stolen parts."
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent
+	opacity = FALSE

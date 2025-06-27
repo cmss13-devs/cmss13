@@ -110,11 +110,11 @@
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
 "at" = (
-/obj/item/flag/plantable/clf,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
 "au" = (
-/obj/item/defenses/handheld/planted_flag/clf,
+/obj/item/flag/plantable/clf,
 /turf/open/floor/corsat/cargo,
 /area/shiva/interior/colony/clf_shuttle)
 "aC" = (
@@ -3039,7 +3039,7 @@ vh
 Kx
 hZ
 hs
-at
+au
 ai
 kI
 Kx
@@ -3096,7 +3096,7 @@ Kx
 hs
 hs
 fX
-au
+at
 hs
 Kx
 GL

@@ -18,15 +18,12 @@
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
 			return emote(lowertext(copytext(message, 2)), intentional = TRUE)
 
-	var/hivemind_speak = copytext(message, 1, 2)
-	switch(hivemind_speak)
-		if (";")
-		if (".")
-		if ("#")
-		if (",")
-		if (":")
-		else
-			hivemind_speak = null
+	var/hivemind_speak = FALSE
+	var/prefix = copytext(message, 1, 2)
+	if(prefix ==";" || prefix == "." || prefix == "#" || prefix == ":" || prefix == ",")
+		hivemind_speak = TRUE
+	else
+		hivemind_speak = FALSE
 	if(hivemind_speak && can_hivemind_speak)
 		if (findtext_char(message, " ") < 4)
 			message = capitalize(trim(copytext(message, 3)))

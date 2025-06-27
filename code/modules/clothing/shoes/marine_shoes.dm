@@ -66,6 +66,31 @@
 /obj/item/clothing/shoes/marine/urban/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/terrain
+	name = "marine combat boots, terrain-specific"
+
+/obj/item/clothing/shoes/marine/terrain/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon_state = "marine_jungle"
+			desc = "Don't go walkin' slow, the devil's on the loose."
+		if("classic")
+			icon_state = "marine"
+		if("desert")
+			icon_state = "marine_brown"
+			desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are brown."
+		if("urban")
+			icon_state = "marine_grey_alt"
+			desc = "Don't go walkin' slow, the devil's on the loose."
+		if("snow")
+			icon_state = "marine_grey"
+			desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are grey."
+	name = "marine combat boots"
+
+/obj/item/clothing/shoes/marine/terrain/knife
+	spawn_item_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/marine/monkey
 	name = "monkey combat boots"
 	desc = "A sturdy pair of combat boots, the reflection of the polished leather reflects your true self."

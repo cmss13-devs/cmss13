@@ -39,6 +39,26 @@
 	name = "urban combat netting"
 	icon_state = "netting_urban"
 
+/obj/item/prop/helmetgarb/netting/terrain
+	icon_state = "netting_terrain"
+	flags_atom = FPRINT
+
+/obj/item/prop/helmetgarb/netting/terrain/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			name = "jungle combat netting"
+			icon_state = "netting_jungle"
+		if("desert")
+			name = "desert combat netting"
+			icon_state = "netting_desert"
+		if("urban")
+			name = "urban combat netting"
+			icon_state = "netting_urban"
+		else
+			name = "combat netting"
+			icon_state = "netting"
+
 /obj/item/prop/helmetgarb/spent_buckshot
 	name = "spent buckshot"
 	desc = "Three spent rounds of good ol' buckshot. You know they used to paint these green? Strange times."
@@ -100,6 +120,25 @@
 /obj/item/prop/helmetgarb/raincover/urban
 	name = "urban raincover"
 	icon_state = "raincover_urban"
+
+/obj/item/prop/helmetgarb/raincover/terrain
+	icon_state = "raincover_terrain"
+
+/obj/item/prop/helmetgarb/raincover/terrain/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			name = "jungle raincover"
+			icon_state = "raincover_jungle"
+		if("desert")
+			name = "desert raincover"
+			icon_state = "raincover_desert"
+		if("urban")
+			name = "urban raincover"
+			icon_state = "raincover_urban"
+		else
+			name = "raincover"
+			icon_state = "raincover"
 
 /obj/item/prop/helmetgarb/rabbitsfoot
 	name = "Rabbit's Foot"

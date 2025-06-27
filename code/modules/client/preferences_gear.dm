@@ -475,6 +475,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Urban Helmet netting"
 	path = /obj/item/prop/helmetgarb/netting/urban
 
+/datum/gear/helmet_garb/netting/terrain
+	display_name = "Helmet netting, terrain-specific"
+	path = /obj/item/prop/helmetgarb/netting/terrain
+
 /datum/gear/helmet_garb/lucky_feather
 	display_name = "Lucky feather, red"
 	path = /obj/item/prop/helmetgarb/lucky_feather
@@ -514,6 +518,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/helmet_garb/raincover/urban
 	display_name = "Urban Rain cover"
 	path = /obj/item/prop/helmetgarb/raincover/urban
+
+/datum/gear/helmet_garb/raincover/terrain
+	display_name = "Rain cover, terrain-specific"
+	path = /obj/item/prop/helmetgarb/raincover/terrain
 
 /datum/gear/helmet_garb/rabbits_foot
 	display_name = "Rabbit's foot"
@@ -1158,6 +1166,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/misc/urban_boots
 	display_name = "Urban pattern combat boots"
 	path = /obj/item/clothing/shoes/marine/urban
+	fluff_cost = 2
+
+/datum/gear/misc/terrain_boots
+	display_name = "combat boots, terrain-specific"
+	path = /obj/item/clothing/shoes/marine/terrain
 	fluff_cost = 2
 
 /datum/gear/misc/grey_gloves

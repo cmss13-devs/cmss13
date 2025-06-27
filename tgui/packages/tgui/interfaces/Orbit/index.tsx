@@ -388,6 +388,16 @@ const weyyuSplitter = (members: Array<Observable>) => {
   return squads;
 };
 
+const hyperdyneSplitter = (members: Array<Observable>) => {
+
+  const other: Array<Observable> = [];
+
+  const squads = [
+    buildSquadObservable('Corporate', 'Orange', other),
+  ];
+  return squads;
+};
+
 /**
  * The primary content display for points of interest.
  * Renders a scrollable section replete with subsections for each
@@ -406,7 +416,9 @@ const ObservableContent = () => {
     upp = [],
     clf = [],
     wy = [],
+    hyperdyne = [],
     twe = [],
+    iasf = [],
     freelancer = [],
     mercenary = [],
     contractor = [],
@@ -471,10 +483,21 @@ const ObservableContent = () => {
         title="Weyland Yutani"
         splitter={weyyuSplitter}
       />
+      <GroupedObservable
+        color="orange"
+        section={hyperdyne}
+        title="Hyperdyne Corporation"
+        splitter={hyperdyneSplitter}
+      />
       <ObservableSection
         color="red"
         section={twe}
         title="Royal Marines Commando"
+      />
+      <ObservableSection
+        color="red"
+        section={iasf}
+        title="Imperial Armed Space Force"
       />
       <ObservableSection
         color="orange"

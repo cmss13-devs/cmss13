@@ -58,7 +58,9 @@
 	var/list/upp = list()
 	var/list/clf = list()
 	var/list/wy = list()
+	var/list/hyperdyne = list()
 	var/list/twe = list()
+	var/list/iasf = list()
 	var/list/freelancer = list()
 	var/list/contractor = list()
 	var/list/mercenary = list()
@@ -176,6 +178,8 @@
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
+				else if(human.faction in FACTION_LIST_HYPERDYNE)
+					hyperdyne += list(serialized)
 				else if(isyautja(human))
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
@@ -188,6 +192,8 @@
 					clf += list(serialized)
 				else if(human.faction in FACTION_LIST_TWE)
 					twe += list(serialized)
+				else if(human.faction in FACTION_LIST_SURVIVOR_IASF)
+					iasf += list(serialized)
 				else if(human.faction in FACTION_LIST_FREELANCER)
 					freelancer += list(serialized)
 				else if(human.faction in FACTION_LIST_CONTRACTOR)
@@ -217,7 +223,9 @@
 	data["upp"] = upp
 	data["clf"] = clf
 	data["wy"] = wy
+	data["hyperdyne"] = hyperdyne
 	data["twe"] = twe
+	data["iasf"] = iasf
 	data["responders"] = responders
 	data["freelancer"] = freelancer
 	data["contractor"] = contractor

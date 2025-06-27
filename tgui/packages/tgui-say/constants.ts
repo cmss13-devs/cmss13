@@ -396,7 +396,7 @@ export const LANGUAGE_PREFIXES = {
     label: 'Hivemind',
   },
   '$_ ': {
-    id: 'primative',
-    label: 'Primative',
+    id: 'primitive',
+    label: 'Primitive',
   },
 } as const;

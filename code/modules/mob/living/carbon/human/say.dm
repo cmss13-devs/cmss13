@@ -51,7 +51,7 @@
 		.["language"] = parsed_language
 		.["message"] = copytext(message_and_language, 3)
 	else
-		.["message"] = message_and_language
+		.["message"] = strip_language(message_and_language)
 
 /mob/living/carbon/human/say(message)
 

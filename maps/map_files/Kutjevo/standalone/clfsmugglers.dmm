@@ -1,7 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 1
 	},
 /turf/open/auto_turf/sand/layer1,
@@ -211,7 +210,6 @@
 /area/kutjevo/exterior/stonyfields)
 "iN" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached,
@@ -516,7 +514,6 @@
 /area/kutjevo/interior/colony/clf_shuttle)
 "AT" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
@@ -759,13 +756,6 @@
 	},
 /turf/open/floor/almayer/blue/northwest,
 /area/kutjevo/interior/colony/clf_shuttle)
-"Nw" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 1;
-	faction_group = list("CLF")
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/clf_lz)
 "NE" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_2";
@@ -1246,7 +1236,7 @@ qx
 Kn
 lX
 Ix
-Nw
+aa
 cf
 cf
 cf

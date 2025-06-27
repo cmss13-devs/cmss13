@@ -3,7 +3,7 @@
 	mob_max = 1
 	mob_min = 1
 	probability = 0
-	objectives = "Assist the USCM forces"
+	objectives = "Окажите поддержку силам КМП."
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 	spawn_max_amount = TRUE

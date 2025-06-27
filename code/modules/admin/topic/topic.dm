@@ -1856,7 +1856,7 @@
 
 	if(href_list["ccdeny"]) // CentComm-deny. The distress call is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["ccdeny"])
-		marine_announcement("The distress signal has not received a response, the launch tubes are now recalibrating.", "Distress Beacon", logging = ARES_LOG_SECURITY)
+		marine_announcement("Сигнал бедствия не получил ответа. Запущена рекалибровка пусковой установки.", "Сигнал бедствия", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied a distress beacon, requested by [key_name_admin(ref_person)]", 1)
 
@@ -1925,7 +1925,7 @@
 		//Can no longer request a nuke
 		GLOB.ares_datacore.nuke_available = FALSE
 
-		marine_announcement("A nuclear device has been authorized by High Command and will be delivered to requisitions via ASRS.", "NUCLEAR ORDNANCE AUTHORIZED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		marine_announcement("Ядерное устройство было авторизовано Верховным командованием КМП и будет доставлено в Requisitions через систему ASRS.", "ЯДЕРНЫЙ АРСЕНАЛ ОДОБРЕН", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has authorized \a [nuketype], requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has authorized \a [nuketype], requested by [key_name_admin(ref_person)]")
 
@@ -1933,13 +1933,13 @@
 		var/mob/ref_person = locate(href_list["nukedeny"])
 		if(!istype(ref_person))
 			return FALSE
-		marine_announcement("Your request for nuclear ordnance deployment has been reviewed and denied by USCM High Command for operational security and colonial preservation reasons. Have a good day.", "NUCLEAR ORDNANCE DENIED", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
+		marine_announcement("Ваш запрос на размещение ядерного устройства был рассмотрен и отклонен Верховным командованием КМП по соображениям эксплуатационной безопасности и сохранения колониального наследия. Хорошего дня.", "ЯДЕРНЫЙ АРСЕНАЛ ОТКЛОНЕН", 'sound/misc/notice2.ogg', logging = ARES_LOG_MAIN)
 		log_game("[key_name_admin(usr)] has denied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has dnied nuclear ordnance, requested by [key_name_admin(ref_person)]")
 
 	if(href_list["sddeny"]) // CentComm-deny. The self-destruct is denied, without any further conditions
 		var/mob/ref_person = locate(href_list["sddeny"])
-		marine_announcement("The self-destruct request has not received a response, ARES is now recalculating statistics.", "Self-Destruct System", logging = ARES_LOG_SECURITY)
+		marine_announcement("Запрос на самоуничтожение не получил ответа, ARES сейчас проводит перерасчёт показателей.", "Система Самоуничтожения", logging = ARES_LOG_SECURITY)
 		log_game("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]")
 		message_admins("[key_name_admin(usr)] has denied self-destruct, requested by [key_name_admin(ref_person)]", 1)
 
@@ -2224,7 +2224,7 @@
 					target_fax.langchat_speech("beeps with a priority message", get_mobs_in_view(GLOB.world_view_size, target_fax), GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small", "emote"))
 					target_fax.visible_message("[SPAN_BOLD(target_fax)] beeps with a priority message.")
 					if(target_fax.radio_alert_tag != null)
-						ai_silent_announcement("COMMUNICATIONS REPORT: Fax Machine [target_fax.machine_id_tag], [target_fax.sub_name ? "[target_fax.sub_name]" : ""], now receiving priority fax.", "[target_fax.radio_alert_tag]")
+						ai_silent_announcement("ОТЧЁТНАЯ СИСТЕМА КОММУНИКАЦИЙ: Факс-машина [target_fax.machine_id_tag], [target_fax.sub_name ? "[target_fax.sub_name]" : ""], теперь получает приоритетные факсы.", "[target_fax.radio_alert_tag]")
 
 			to_chat(src.owner, "Message reply to transmitted successfully.")
 			message_admins(SPAN_STAFF_IC("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(target_human)]"), 1)

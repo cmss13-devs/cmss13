@@ -16,7 +16,8 @@ mkdir -p \
 	$1/config \
     $1/strings \
 	$1/nano \
-	$1/map_config
+	$1/map_config \
+	$1/modular
 
 if [ -d ".git" ]; then
   mkdir -p $1/.git/logs
@@ -31,6 +32,7 @@ cp -r strings/* $1/strings/
 cp -r config/* $1/config/
 cp -r nano/* $1/nano/
 cp -r map_config/* $1/map_config/
+cp -r modular/* $1/modular/
 
 #remove .dm files from _maps
 

@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-	<a href="https://discord.gg/cmss13">
+	<a href="https://discord.gg/ss220">
 		<picture>
 			<source media="(prefers-color-scheme: dark)" srcset=".github/assets/discord-light.png">
 			<source media="(prefers-color-scheme: light)" srcset=".github/assets/discord-dark.png">

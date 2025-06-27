@@ -1,0 +1,74 @@
+# Uncategorized books
+# books, notes, manuals, pamphlets <- everything character wears
+
+["vehicle training manual"]
+nominative = "руководство по эксплуатации ТС"
+genitive = "руководства по эксплуатации ТС"
+dative = "руководству по эксплуатации ТС"
+accusative = "руководство по эксплуатации ТС"
+instrumental = "руководством по эксплуатации ТС"
+prepositional = "руководстве по эксплуатации ТС"
+gender = "male"
+
+["JTAC Pamphlet"] # Unique Vendor Name
+nominative = "инструкция для JTAC"
+
+["JTAC instructional pamphlet"]
+nominative = "инструкция для JTAC"
+genitive = "инструкции для JTAC"
+dative = "инструкции для JTAC"
+accusative = "инструкцию для JTAC"
+instrumental = "инструкцией для JTAC"
+prepositional = "инструкции для JTAC"
+gender = "female"
+
+["Engineering Pamphlet"] # Unique Vendor Name
+nominative = "инструкция для инженера"
+
+["engineer instructional pamphlet"]
+nominative = "инструкция для инженера"
+genitive = "инструкции для инженера"
+dative = "инструкции для инженера"
+accusative = "инструкцию для инженера"
+instrumental = "инструкцией для инженера"
+prepositional = "инструкции для инженера"
+gender = "female"
+
+["heavy machinegunner instructional pamphlet"]
+nominative = "руководство по эксплуатации пулемёта"
+genitive = "руководства по эксплуатации пулемёта"
+dative = "руководству по эксплуатации пулемёта"
+accusative = "руководство по эксплуатации пулемёта"
+instrumental = "руководством по эксплуатации пулемёта"
+prepositional = "руководстве по эксплуатации пулемёта"
+gender = "neuter"
+
+["Powerloader Certifcation"] # Unique Vendor Name
+nominative = "руководство по эксплуатации погрузчика «Caterpillar»"
+
+["powerloader instructional pamphlet"]
+nominative = "руководство по эксплуатации погрузчика «Caterpillar»"
+genitive = "руководства по эксплуатации погрузчика «Caterpillar»"
+dative = "руководству по эксплуатации погрузчика «Caterpillar»"
+accusative = "руководство по эксплуатации погрузчика «Caterpillar»"
+instrumental = "руководством по эксплуатации погрузчика «Caterpillar»"
+prepositional = "руководстве по эксплуатации погрузчика «Caterpillar»"
+gender = "neuter"
+
+["Loader instructional pamphlet"]
+nominative = "инструкция для заряжающего"
+genitive = "инструкции для заряжающего"
+dative = "инструкции для заряжающему"
+accusative = "инструкцию для заряжающего"
+instrumental = "инструкцией для заряжающим"
+prepositional = "инструкции для заряжающем"
+gender = "male"
+
+["Spotter instructional pamphlet"]
+nominative = "инструкция для корректировщика огня"
+genitive = "инструкции для корректировщика огня"
+dative = "инструкции для корректировщика огня"
+accusative = "инструкцию для корректировщика огня"
+instrumental = "инструкцией для корректировщика огня"
+prepositional = "инструкции для корректировщика огня"
+gender = "female"

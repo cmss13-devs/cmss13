@@ -1,6 +1,6 @@
-// Landmarks used for hunter games mode setup.
+//! Landmarks used for hunter games mode setup.
 
-// Weapon spawning
+/// Spawns a generic, relatively middling melee weapon.
 /obj/effect/landmark/melee_weapon
 	name = "melee_weapon"
 	icon_state = "item_crap"
@@ -13,7 +13,8 @@
 	GLOB.melee_weapon -= src
 	return ..()
 
-// Better Stuff, Rarer
+
+/// Spawns a random bit of hunter games loot, ranging from benign to pretty powerful.
 /obj/effect/landmark/good_item
 	name = "good_item"
 	icon_state = "item_good"
@@ -27,7 +28,7 @@
 	return ..()
 
 
-// Contestant Spawning
+/// Hunter Games contestant spawning
 /obj/effect/landmark/start/hunter_games
 	name = JOB_HUNTER_GAMES
 	icon_state = "hunter_secondary"

@@ -188,7 +188,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_WO_SQUAD_SPECIALIST "Dust Raider Squad Weapons Specialist"
 #define JOB_WO_SQUAD_LEADER "Dust Raider Squad Leader"
 
-//-------------Hunter Games roles---------------//
+//------- Hunter Games roles -------//
 #define JOB_HUNTER_GAMES "Hunted Survivor"
 
 //-------- PMC --------//

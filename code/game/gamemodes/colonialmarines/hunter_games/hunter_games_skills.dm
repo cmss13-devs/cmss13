@@ -1,5 +1,6 @@
 /// Skillsets for the hunter games mode
 
+/// Hunter games survivor contestant.
 /datum/skills/hunter_games // hardy, crafty, but not especially good shots. No MP cheese.
 	name = "Hunted"
 	skills = list(

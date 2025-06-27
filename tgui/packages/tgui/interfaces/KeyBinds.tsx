@@ -87,7 +87,9 @@ export const KeyBinds = (props) => {
                     <Flex.Item grow>
                       <Input
                         value={searchTerm}
-                        onInput={(_, value) => setSearchTerm(value)}
+                        onInput={(_, value) =>
+                          setSearchTerm(value.toLowerCase())
+                        }
                         placeholder="Search..."
                         fluid
                       />

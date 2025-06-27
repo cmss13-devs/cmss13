@@ -1,6 +1,6 @@
 //Autodoc
 /obj/structure/machinery/medical_pod/autodoc
-	name = "\improper autodoc emergency medical system"
+	name = "autodoc emergency medical system"
 	desc = "An emergency surgical device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon. <br>It still requires someone with medical knowledge to program the treatments correctly; for this reason, colonies that use these often have paramedics trained in autodoc operation."
 	icon_state = "autodoc_open"
 
@@ -51,6 +51,12 @@
 
 /obj/structure/machinery/medical_pod/autodoc/go_out()
 	. = ..()
+	surgery = FALSE
+	heal_brute = FALSE
+	heal_burn = FALSE
+	heal_toxin = FALSE
+	filtering = FALSE
+	blood_transfer = FALSE
 	surgery_todo_list = list()
 	stop_processing()
 	if(connected)
@@ -68,12 +74,6 @@
 	if(surgery)
 		visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> malfunctions as [usr] aborts the surgery in progress.")
 		occupant.take_limb_damage(rand(30,50),rand(30,50))
-		surgery = FALSE
-		heal_brute = 0
-		heal_burn = 0
-		heal_toxin = 0
-		filtering = 0
-		blood_transfer = 0
 		// message_admins for now, may change to message_admins later
 		message_admins("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
 		return TRUE
@@ -106,9 +106,8 @@
 
 /obj/structure/machinery/medical_pod/autodoc/power_change(area/master_area = null)
 	..()
-	if(stat & NOPOWER)
+	if((stat & NOPOWER) && occupant)
 		visible_message("\The [src] engages the safety override, ejecting the occupant.")
-		surgery = 0
 		go_out()
 		return
 
@@ -135,7 +134,6 @@
 	if(occupant)
 		if(occupant.stat == DEAD)
 			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Patient has expired.")
-			surgery = 0
 			go_out()
 			return
 		if(surgery)
@@ -554,7 +552,6 @@
 
 	patient.pain.recalculate_pain()
 	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
-	surgery = 0
 	SStgui.close_uis(connected)
 	go_out()
 
@@ -604,7 +601,7 @@
 
 //Auto Doc console that links up to it.
 /obj/structure/machinery/autodoc_console
-	name = "\improper autodoc medical system control console"
+	name = "autodoc medical system control console"
 	desc = "The control interface used to operate the adjoining autodoc. Requires training to use properly."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
@@ -676,8 +673,8 @@
 		to_chat(user, "This console seems to be powered down.")
 		return
 
-	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+	if(connected.skilllock && !skillcheck(user, SKILL_SURGERY, connected.skilllock))
+		to_chat(user, SPAN_WARNING("The interface looks too complicated for you. You're going to need someone trained in the usage of \the [connected.name]!"))
 		return
 
 	tgui_interact(user)

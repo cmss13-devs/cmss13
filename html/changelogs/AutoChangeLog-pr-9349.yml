@@ -1,0 +1,6 @@
+author: "Ben10083"
+delete-after: True
+changes:
+  - balance: "APCs in SSV Rostock now use a UPP subtype that only allows UPP engineers access"
+  - bugfix: "UPP hull windows now act like USMC hull windows and cannot be destroyed"
+  - maptweak: "Additional cameras added to SSV Rostock Prisoner Holding"

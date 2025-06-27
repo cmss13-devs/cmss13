@@ -53,6 +53,7 @@
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
+	var/list/infected = list()
 	var/list/ert_members = list()
 	var/list/upp = list()
 	var/list/clf = list()
@@ -166,6 +167,9 @@
 				if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
 
+				if(human.status_flags & XENO_HOST)
+					infected += list(serialized)
+
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)
 				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
@@ -208,6 +212,7 @@
 	data["marines"] = marines
 	data["survivors"] = survivors
 	data["xenos"] = xenos
+	data["infected"] = infected
 	data["ert_members"] = ert_members
 	data["upp"] = upp
 	data["clf"] = clf

@@ -324,17 +324,6 @@ GLOBAL_LIST_EMPTY(vending_products)
 			if(user)
 				to_chat(user, SPAN_WARNING("\The [H] has something inside it. Empty it before restocking."))
 			return FALSE
-	// repair item handling
-	else if(istype(item_to_stock, /obj/item/stack/repairable/gunkit))
-		var/obj/item/stack/repairable/stack = item_to_stock
-		if(stack.amount != 5)
-			to_chat(user, SPAN_WARNING("\The [stack] isn't full. You need to fill it before you can restock it."))
-			return
-	else if(istype(item_to_stock, /obj/item/stack/repairable/gunlube))
-		var/obj/item/stack/repairable/stack = item_to_stock
-		if(stack.amount != 10)
-			to_chat(user, SPAN_WARNING("The [stack] isn't full. You need to fill it before you can restock it."))
-			return
 	return TRUE //Item IS good to restock!
 
 //------------MAINTENANCE PROCS---------------
@@ -756,7 +745,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/obj/item/device/multitool/MT = W
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
+			to_chat(user, SPAN_WARNING("You do not understand how to tweak access requirements in [src]."))
 			return FALSE
 		if(stat != WORKING)
 			to_chat(user, SPAN_WARNING("[src] must be in working condition and powered for you to hack it."))

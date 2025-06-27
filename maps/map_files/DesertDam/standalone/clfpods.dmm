@@ -895,9 +895,9 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 1
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -905,9 +905,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 8
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1170,9 +1170,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 8
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1666,9 +1666,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 1;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 1
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1809,6 +1809,26 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
+"Oe" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "Oq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/whitegreen/northwest,
@@ -1980,6 +2000,25 @@
 /obj/item/explosive/grenade/incendiary/molotov{
 	pixel_x = -10;
 	pixel_y = 2
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"TK" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/merge_conflict_marker{
+	name = "---Merge Conflict Marker---";
+	
+	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
+	},
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	faction_group = list("CLF");
+	dir = 4
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -3052,12 +3091,12 @@ bR
 Yc
 oW
 Nc
-wT
+TK
 Jt
 wT
 Jt
 Jt
-Nc
+Oe
 Jt
 bi
 bc

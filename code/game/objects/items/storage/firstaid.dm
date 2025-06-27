@@ -36,6 +36,7 @@
 		/obj/item/roller,
 		/obj/item/bodybag,
 		/obj/item/reagent_container/blood,
+		/obj/item/tool/surgery/FixOVein,
 	)
 	storage_flags = STORAGE_FLAGS_BOX
 	required_skill_for_nest_opening = SKILL_MEDICAL
@@ -288,7 +289,7 @@
 	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
 	new /obj/item/storage/box/czsp/medic_upgraded_kits/full(src)
 	new /obj/item/stack/medical/splint/nano(src)
-	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
 	new /obj/item/storage/syringe_case/commando(src)
 	new /obj/item/storage/surgical_case/elite/commando(src)
 	new /obj/item/roller/surgical(src)
@@ -415,7 +416,7 @@
 /obj/item/storage/syringe_case/commando
 
 /obj/item/storage/syringe_case/commando/fill_preset_inventory()
-	new /obj/item/reagent_container/hypospray/autoinjector/ultrazine( src )
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/inaprovaline( src )
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
 

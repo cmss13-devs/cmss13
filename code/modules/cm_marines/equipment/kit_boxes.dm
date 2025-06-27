@@ -159,7 +159,6 @@
 	else
 		new /obj/item/device/binoculars/range/designator/scout(src)
 
-
 /obj/item/storage/box/spec/pyro
 	name = "\improper Pyrotechnician equipment case"
 	desc = "A large case containing M240-T incinerator unit, M35 pyrotechnician armor and helmet, Broiler-T flexible refueling system and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
@@ -180,7 +179,6 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/device/binoculars(src)
 
-
 /obj/item/storage/box/spec/heavy_grenadier
 	name = "\improper Heavy Grenadier equipment case"
 	desc = "A large case containing a heavy-duty multi-shot Armat Systems M92 grenade launcher, M3-G4 grenadier armor and helmet, significant amount of various M40 grenades and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
@@ -192,6 +190,30 @@
 	new /obj/item/storage/belt/grenade/large/full(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
 	new /obj/item/storage/backpack/marine/grenadepack(src)
+	new /obj/item/clothing/gloves/marine/M3G(src)
+	new /obj/item/clothing/suit/storage/marine/M3G(src)
+	new /obj/item/clothing/head/helmet/marine/grenadier(src)
+	new /obj/item/weapon/gun/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/ammo_magazine/pistol/vp78(src)
+	new /obj/item/device/binoculars(src)
+
+/obj/item/storage/box/spec/sharp_operator
+	name = "\improper SHARP Operator equipment case"
+	desc = "A large case containing a P9 SHARP rifle, M3-G4 Grenadier armor and helmet, and various pieces of additional equipment.\nDrag this sprite onto yourself to open it up!"
+	kit_overlay = "grenadier"
+
+/obj/item/storage/box/spec/sharp_operator/fill_preset_inventory()
+	new /obj/item/weapon/gun/rifle/sharp(src)
+	new /obj/item/storage/belt/marine/sharp(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/explosive(src)
+	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
+	new /obj/item/ammo_magazine/rifle/sharp/flechette(src)
+	new /obj/item/ammo_magazine/rifle/sharp/incendiary(src)
+	new /obj/item/ammo_magazine/rifle/sharp/incendiary(src)
 	new /obj/item/clothing/gloves/marine/M3G(src)
 	new /obj/item/clothing/suit/storage/marine/M3G(src)
 	new /obj/item/clothing/head/helmet/marine/grenadier(src)
@@ -234,7 +256,7 @@
 	new /obj/item/mortar_shell/flare(src)
 	new /obj/item/tool/wrench(src)
 	new /obj/item/device/binoculars/range(src)
-	new /obj/item/device/binoculars/range(src)
+	new /obj/item/device/binoculars/range/designator(src)
 
 
 //-----------------SPEC KIT BOX------------------
@@ -624,6 +646,7 @@
 	new /obj/item/storage/box/evidence(src)
 	new /obj/item/restraint/handcuffs(src)
 	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src) //unskilled defib in the event that the handler dies
 
 /obj/item/storage/box/kit/k9_handler/corpsman
 	name = "\improper Medical K9 handler Kit"
@@ -637,6 +660,7 @@
 	new /obj/item/device/binoculars(src)
 	new /obj/item/pamphlet/skill/k9_handler(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
+	new /obj/item/device/defibrillator/synthetic/noskill(src)
 
 /obj/item/storage/box/kit/engineering_supply_kit
 	name = "\improper Engineering Supply Kit"

@@ -257,7 +257,7 @@ export const RADIO_CHANNELS = [
     color: '#779cc2',
   },
   {
-    name: 'Medsci',
+    name: 'MedSci',
     freq: 1482,
     color: '#008160',
   },

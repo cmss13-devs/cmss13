@@ -11,7 +11,6 @@ export type OrbitData = {
   responders: Observable[];
   upp: Observable[];
   twe: Observable[];
-  iasf: Observable[];
   clf: Observable[];
   wy: Observable[];
   hyperdyne: Observable[];

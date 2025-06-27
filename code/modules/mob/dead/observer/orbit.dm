@@ -60,7 +60,6 @@
 	var/list/wy = list()
 	var/list/hyperdyne = list()
 	var/list/twe = list()
-	var/list/iasf = list()
 	var/list/freelancer = list()
 	var/list/contractor = list()
 	var/list/mercenary = list()
@@ -172,6 +171,9 @@
 				if(human.status_flags & XENO_HOST)
 					infected += list(serialized)
 
+				if(issurvivorjob(human.job) || (FACTION_SURVIVOR in human.faction_group))
+					survivors += list(serialized)
+
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)
 				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
@@ -192,8 +194,6 @@
 					clf += list(serialized)
 				else if(human.faction in FACTION_LIST_TWE)
 					twe += list(serialized)
-				else if(human.faction in FACTION_LIST_SURVIVOR_IASF)
-					iasf += list(serialized)
 				else if(human.faction in FACTION_LIST_FREELANCER)
 					freelancer += list(serialized)
 				else if(human.faction in FACTION_LIST_CONTRACTOR)
@@ -206,8 +206,6 @@
 					dutch += list(serialized)
 				else if(human.faction in FACTION_LIST_MARINE)
 					marines += list(serialized)
-				else if(issurvivorjob(human.job))
-					survivors += list(serialized)
 				else
 					humans += list(serialized)
 				continue
@@ -225,7 +223,6 @@
 	data["wy"] = wy
 	data["hyperdyne"] = hyperdyne
 	data["twe"] = twe
-	data["iasf"] = iasf
 	data["responders"] = responders
 	data["freelancer"] = freelancer
 	data["contractor"] = contractor

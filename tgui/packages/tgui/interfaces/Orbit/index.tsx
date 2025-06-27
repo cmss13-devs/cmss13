@@ -388,12 +388,25 @@ const weyyuSplitter = (members: Array<Observable>) => {
   return squads;
 };
 
-const hyperdyneSplitter = (members: Array<Observable>) => {
-
+const tweSplitter = (members: Array<Observable>) => {
+  const iasf: Array<Observable> = [];
+  const commando: Array<Observable> = [];
   const other: Array<Observable> = [];
 
+  members.forEach((x) => {
+    if (x.job?.includes('IASF')) {
+      iasf.push(x);
+    } else if (x.job?.includes('RMC')) {
+      commando.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
   const squads = [
-    buildSquadObservable('Corporate', 'Orange', other),
+    buildSquadObservable('Imperial Armed Space Force', 'Orange', iasf),
+    buildSquadObservable('Royal Marines Commando', 'red', commando),
+    buildSquadObservable('Other', 'grey', other),
   ];
   return squads;
 };
@@ -418,7 +431,6 @@ const ObservableContent = () => {
     wy = [],
     hyperdyne = [],
     twe = [],
-    iasf = [],
     freelancer = [],
     mercenary = [],
     contractor = [],
@@ -483,21 +495,16 @@ const ObservableContent = () => {
         title="Weyland Yutani"
         splitter={weyyuSplitter}
       />
-      <GroupedObservable
+      <ObservableSection
         color="orange"
         section={hyperdyne}
         title="Hyperdyne Corporation"
-        splitter={hyperdyneSplitter}
       />
-      <ObservableSection
+      <GroupedObservable
         color="red"
         section={twe}
-        title="Royal Marines Commando"
-      />
-      <ObservableSection
-        color="red"
-        section={iasf}
-        title="Imperial Armed Space Force"
+        title="Three World Empire"
+        splitter={tweSplitter}
       />
       <ObservableSection
         color="orange"

@@ -63,12 +63,6 @@
 	var/atom/oldloc = loc
 	var/old_dir = dir
 
-	var/static/list/too_often = list()
-	if(too_often[src] == world.time)
-		stack_trace("DEBUG: Moving a lot")
-
-	too_often[src] = world.time
-
 	. = ..()
 	if (flags_atom & DIRLOCK)
 		setDir(old_dir)

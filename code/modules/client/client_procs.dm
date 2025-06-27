@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	// we should interrupt this here, now
 	if(IsGuestKey(key) && length(CONFIG_GET(keyed_list/auth_urls)) && !check_localhost_status())
-		mob = new /mob/unauthenticated()
+		mob = new /mob/unauthenticated(locate(1, 1, 1))
 		return mob
 
 	PreLogin()

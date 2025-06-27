@@ -1087,6 +1087,7 @@
 /obj/item/storage/backpack/general_belt,
 /obj/item/storage/backpack/general_belt,
 /obj/item/storage/backpack/general_belt,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "qU" = (

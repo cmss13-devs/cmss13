@@ -285,3 +285,5 @@
 	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/l54_custom
+	penetration= ARMOR_PENETRATION_TIER_3

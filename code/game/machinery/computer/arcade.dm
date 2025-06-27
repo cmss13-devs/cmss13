@@ -277,7 +277,7 @@
 				game_state = LOST
 				COOLDOWN_START(src, field_generation, 30 SECONDS)
 				if(!quiet_game)
-					to_chat(ui.user, SPAN_WARNING("Forfeited the field! you're on 30 second cooldown to forgeit again."))
+					to_chat(ui.user, SPAN_WARNING("Forfeited the field! you're on 30 second cooldown to forfeit again."))
 				return TRUE
 			else
 				if(!quiet_game)

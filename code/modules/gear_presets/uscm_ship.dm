@@ -37,6 +37,7 @@
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_DATABASE,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -170,6 +171,7 @@
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
@@ -382,6 +384,7 @@
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_MAIN)
+	access |= ACCESS_MARINE_DATABASE_ADMIN
 
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -405,7 +408,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_GENERAL, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SO
 	job_title = JOB_SO
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
@@ -454,6 +457,7 @@
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_MAIN)
+	access |= ACCESS_MARINE_DATABASE_ADMIN
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -501,7 +505,9 @@
 	. = ..()
 	access = list(
 		ACCESS_MARINE_SENIOR,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_DATABASE_ADMIN,
 		ACCESS_MARINE_ASO,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_BRIG,

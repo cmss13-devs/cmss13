@@ -1834,7 +1834,7 @@
 	)
 	icon_state = "rmc_uniform"
 	worn_state = "rmc_uniform"
-	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/veteran/royal_marine/tl
 	icon_state = "rmc_uniform_teaml"
@@ -1855,10 +1855,27 @@
 	)
 	icon_state = "rmc_uniform_service"
 	worn_state = "rmc_uniform_service"
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/royal_marine/black
 	icon_state = "rmc_uniform_service_alt"
 	worn_state = "rmc_uniform_service_alt"
+
+// IASF
+
+/obj/item/clothing/under/marine/veteran/royal_marine/iasf
+	name = "IASF No.8 combat uniform"
+	desc = "Standard issue No.8 Pattern BDU used by the Imperial Armed Space Force. Identical in cut and protection to the Royal Marine Commando variant, but issued in woodland camouflage. Lightweight Kevlar mesh offers limited protection against shrapnel and close-quarters threats."
+	icon_state = "iasf_uniform"
+	worn_state = "iasf_uniform"
+
+/obj/item/clothing/under/marine/officer/royal_marine/iasf
+	name = "IASF No.2 service uniform"
+	desc = "A formal No.2 service uniform worn by IASF officers. Features the same upper torso cut as the No.8 BDU, but paired with pressed khaki trousers. Issued for inspections, ceremonial duties, or when deployed in an advisory role."
+	icon_state = "iasf_uniform_service"
+	worn_state = "iasf_uniform_service"
+
+// CBRN
 
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"

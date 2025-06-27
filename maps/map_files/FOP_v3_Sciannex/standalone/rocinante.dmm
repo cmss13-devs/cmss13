@@ -209,6 +209,7 @@
 "aG" = (
 /obj/structure/machinery/light,
 /obj/item/defenses/handheld/planted_flag/clf,
+/obj/item/flag/plantable/clf,
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
 "aI" = (

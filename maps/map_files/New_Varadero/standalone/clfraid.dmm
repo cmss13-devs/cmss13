@@ -10,6 +10,10 @@
 	},
 /turf/open/floor/shiva/purplefull/west,
 /area/varadero/interior/research)
+"ac" = (
+/obj/item/defenses/handheld/planted_flag/clf,
+/turf/open/floor/shiva/purplefull/west,
+/area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/tile/plasteel{
@@ -2724,7 +2728,7 @@ Gp
 Sn
 Nw
 qf
-hG
+ac
 ll
 Sq
 FN

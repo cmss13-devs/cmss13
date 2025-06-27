@@ -783,6 +783,7 @@
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/clf_lz)
 "NR" = (

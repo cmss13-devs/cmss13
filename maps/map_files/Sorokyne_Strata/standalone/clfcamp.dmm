@@ -687,6 +687,7 @@
 	pixel_x = -5;
 	pixel_y = 7
 	},
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/clf_dorms)
 "bM" = (

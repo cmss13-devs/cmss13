@@ -335,67 +335,67 @@ export const RADIO_PREFIXES = {
 } as const;
 
 export const LANGUAGE_PREFIXES = {
-  '$0 ': {
+  '!0 ': {
     id: 'scandinavian',
     label: 'Scandinavian',
   },
-  '$1 ': {
+  '!1 ': {
     id: 'english',
     label: 'English',
   },
-  '$2 ': {
+  '!2 ': {
     id: 'japanese',
     label: 'Japanese',
   },
-  '$3 ': {
+  '!3 ': {
     id: 'russian',
     label: 'Russian',
   },
-  '$4 ': {
+  '!4 ': {
     id: 'german',
     label: 'German',
   },
-  '$5 ': {
+  '!5 ': {
     id: 'spanish',
     label: 'Spanish',
   },
-  '$6 ': {
+  '!6 ': {
     id: 'apollo',
     label: 'Apollo',
   },
-  '$7 ': {
+  '!7 ': {
     id: 'telepathy',
     label: 'Telepathy',
   },
-  '$8 ': {
+  '!8 ': {
     id: 'chinese',
     label: 'Chinese',
   },
-  '$9 ': {
+  '!9 ': {
     id: 'french',
     label: 'French',
   },
-  '$x ': {
+  '!x ': {
     id: 'xenomorph',
     label: 'Xenomporph',
   },
-  '$l ': {
+  '!l ': {
     id: 'tatical',
     label: 'Tacitical Sign',
   },
-  '$s ': {
+  '!s ': {
     id: 'sainja',
     label: 'Sainja',
   },
-  '$h ': {
+  '!h ': {
     id: 'hellhound',
     label: 'Hellhound',
   },
-  '$q ': {
+  '!q ': {
     id: 'hivemind',
     label: 'Hivemind',
   },
-  '$_ ': {
+  '!_ ': {
     id: 'primitive',
     label: 'Primitive',
   },

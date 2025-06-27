@@ -103,3 +103,6 @@
 
 /// From /mob/living/carbon/xenomorph/proc/handle_ai_shot()
 #define COMSIG_XENO_HANDLE_AI_SHOT "xeno_handle_ai_shot"
+
+/// From /mob/living/carbon/human/death(cause, gibbed)
+#define COMSIG_XENO_REVEAL_TACMAP "xeno_reveal_tacmap"

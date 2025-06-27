@@ -1,4 +1,0 @@
-author: "Detective-Google"
-delete-after: True
-changes:
-  - bugfix: "if a SMES' terminal is deleted, now it can be replaced properly instead of being forever bricked."

@@ -9,6 +9,7 @@
  * Guns are replaced with melee weapons.
  */
 
+
 /// Supply drop quality defines. passed as an arg to place_drop()
 
 /// The melee weapons scattered around everywhere.
@@ -16,19 +17,31 @@
 /// Some rarer, fancy stuff placed around.
 #define DROP_GOOD_ITEM "drop_good_item"
 
+
+/// Supply drop type defines, passed as an arg to place_drop()
+
+/// spawn the item directly on the supplied turf
+#define HUNTER_DROP_RAW "hunter_drop_raw"
+/// spawn the item in a crate directly on the supplied turf
+#define HUNTER_DROP_CRATE "hunter_drop_crate"
+/// drop the item in a drop pod to the supplied turf
+#define HUNTER_DROP_POD "hunter_drop_pod"
+
+
 /proc/check_hunter_games() // abbreviated gamemode checker for hunter games
 	if(SSticker.mode == GAMEMODE_HUNTER_GAMES || GLOB.master_mode == GAMEMODE_HUNTER_GAMES)
 		return TRUE
 	return FALSE
 
+
 /datum/game_mode/hunter_games
 	name = GAMEMODE_HUNTER_GAMES
-	config_tag = "Hunter Games"
+	config_tag = GAMEMODE_HUNTER_GAMES
 	required_players = 2 // Generally intended as a lowpop mode.
 	flags_round_type = MODE_NO_LATEJOIN|MODE_PREDATOR|MODE_NEW_SPAWN
 
 	latejoin_larva_drop = 0
-	latejoin_larva_drop_early = 0
+	latejoin_larva_drop_early = 0 // Sets these to 0 just in case.
 	corpses_to_spawn = 0
 
 	votable = TRUE
@@ -48,16 +61,22 @@
 
 	/// Time between spectator voted supply drops
 	var/drop_time = 8 MINUTES
-	/// ???
+	/// Whether or not we're taking in spectator votes
 	var/waiting_for_drop_votes = FALSE
-	/// ???
+	/// Whether spectator supply drops are enabled.
+	var/drops_disabled = TRUE
+	/// world.time of the last supply drop
+	var/last_drop
+	/// The list of votes for supply drops.
 	var/list/supply_votes = list()
-	/// Snapshot of contestant # made during each win check.
+
+	/// Snapshot of contestant count made during each win check.
 	var/last_tally
 
 
 /datum/game_mode/hunter_games/get_roles_list()
 	return GLOB.ROLES_HUNTER_GAMES
+
 
 /datum/game_mode/hunter_games/announce()
 	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("The current map is - [SSmapping.configs[GROUND_MAP].map_name]!"))
@@ -84,7 +103,7 @@
 		place_drop(get_turf(melee_spawner), DROP_MELEE_WEAPON)
 
 	for(var/good_item in GLOB.good_items) // Spawn some rare, upgraded goodies.
-		place_drop(get_turf(good_item), DROP_GOOD_ITEM)
+		place_drop(get_turf(good_item), DROP_GOOD_ITEM, HUNTER_DROP_CRATE)
 
 	return
 
@@ -95,9 +114,12 @@
 /datum/game_mode/hunter_games/post_setup()
 	. = ..()
 
+	drops_disabled = FALSE // start doing supply drops now
+	last_drop = world.time // start the supply drop timer as if one is launched as the game starts
+
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE) //This will allow anyone to use cool guns.
 	addtimer(CALLBACK(src, PROC_REF(hunter_games_announce)), 10 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(hunter_games_announce_yautja)), 20 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(hunter_games_announce_yautja)), 20 SECONDS) // give yautja a little time to join from the menu too.
 
 
 /datum/game_mode/hunter_games/proc/hunter_games_announce()
@@ -107,6 +129,7 @@
 	to_world("Be the <B>last survivor</b> and <B>win glory</B>! Fight in any way you can! Team up or be a loner, it's up to you.")
 	to_world("Be warned though - if someone hasn't died in 3 minutes, the watching hunters get irritated!")
 	sound_to(world, 'sound/effects/siren.ogg')
+
 
 /datum/game_mode/hunter_games/proc/hunter_games_announce_yautja()
 	set waitfor = FALSE
@@ -132,7 +155,65 @@
 
 	if((++round_checkwin >= 10) && GLOB.round_should_check_for_win) //Only check win conditions every 10 cycles, skip if round end checks disabled.
 		check_win()
+		supply_check() // handles the supply drop logic
 		round_checkwin = 0
+
+
+/** /datum/game_mode/hunter_games/proc/supply_check()
+ *
+ * called by game_mode/hunter_games/process() every 10 cycles.
+ * checks for whether drops are disabled (game is pre or postgame)
+ * afterwards, check if it's been long enough since the supply drop
+ * if it has, start a vote prompt for spectators and a timer to catch the results and spawn the drop.
+ */
+/datum/game_mode/hunter_games/proc/supply_check()
+	if(drops_disabled) // Do nothing pre or post game or if admins set the drops to be disabled after it starts
+		return
+
+	var/next_drop = last_drop + drop_time
+	if(!(world.time >= next_drop))// If it hasn't been drop_time since the last drop, return
+		return
+	last_drop = world.time
+
+	to_world(SPAN_ROUNDBODY("Your captors have decided it is time to bestow a gift upon the scurrying humans."))
+	to_world(SPAN_ROUNDBODY("One lucky contestant should prepare for a supply drop soon."))
+	sound_to(world, 'sound/effects/alert.ogg')
+
+	for(var/mob/dead/spectator in GLOB.dead_mob_list)
+		to_chat(spectator, SPAN_ROUNDBODY("Now is your chance to vote for a supply drop beneficiary! Go to Ghost tab, click <b>Spectator Vote!</b>"))
+
+	waiting_for_drop_votes = TRUE
+
+	addtimer(CALLBACK(src, PROC_REF(supply_finish)), 15 SECONDS)
+
+
+/** /datum/game_mode/hunter_games/proc/supply_finish()
+ *
+ * called by game_mode/hunter_games/supply_check after starting a vote
+ * called after a 15 second timer to give candidates time to vote.
+ * if there's no votes, no drop
+ * otherwise, pick from a list of candidates that have been voted for, cannot pick a candidate with no votes, and having more votes makes you more likely to get the reward.
+ * calls place_drop() to spawn an item from the hunter games pool and deploys it via drop pod near the candidate if they get picked and don't die before it arrives.
+ */
+/datum/game_mode/hunter_games/proc/supply_finish()
+	waiting_for_drop_votes = FALSE
+	if(!length(supply_votes))
+		to_world(SPAN_ROUNDBODY("The votes are tallied and... Nobody got anything!"))
+		supply_votes = list()
+		return
+
+	var/mob/living/carbon/human/winner = pick(supply_votes) // More votes = higher chance to win, but still up to chance.
+	if(winner.stat != CONSCIOUS)
+		to_world(SPAN_ROUNDBODY("The votes have been tallied, and the supply drop recipient is dead or dying. <B>Bummer.</b>"))
+		return
+
+	to_world(SPAN_ROUNDBODY("The votes have been tallied, and the supply drop recipient is <B>[winner.real_name]</B>! Congrats!"))
+	to_world(SPAN_ROUNDBODY("The package will shortly be dropped off at: [get_area(winner.loc)]."))
+	sound_to(world, 'sound/effects/alert.ogg')
+
+	supply_votes = list()
+	var/turf/drop_zone = locate(winner.x + rand(-2,2),winner.y + rand(-2,2),winner.z)
+	place_drop(drop_zone, DROP_GOOD_ITEM, HUNTER_DROP_POD)
 
 
 //////////////////////////////////////////
@@ -143,7 +224,7 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
-	if(ROUND_TIME < 2 MINUTES)
+	if(ROUND_TIME < 5 MINUTES) // Catch all for weirdness in spawn order, or other weird conditions that might cause there to be 0 contestants during setup.
 		return
 
 	var/list/counted_players = count_participants()
@@ -167,26 +248,27 @@
 		return
 
 	if(last_tally <= 0)
-		round_finished = MODE_HUNTER_GAMES_NO_WINNER
+		round_finished = MODE_HUNTER_GAMES_NO_WINNER // Everyone died, nobody wins.
 		return
 
 	if(last_tally == 1)
-		round_finished = MODE_HUNTER_GAMES_LAST_STANDING
+		round_finished = MODE_HUNTER_GAMES_LAST_STANDING // One living human remains, they win.
 		return
 
-	else if(yautja_count <= 0 && length(predators) >= 4) // yautja_count only includes living yautja, yautja_mob_list includes all. If >3 yautja join and all die, this triggers.
+	else if(yautja_count <= 0 && length(predators) >= 4) // yautja_count only includes living yautja, predators includes all. If >3 yautja join and all die, this triggers.
 		round_finished = MODE_HUNTER_GAMES_YAUTJA_DEATH // The contestants managed to kill their yautja capturers and earn their freedom, truly.
 		return
 // would like to figure out an intelligent way to make the above check not include cryoed, not sure yet.
 
+
 /datum/game_mode/hunter_games/proc/count_participants()
 	var/human_count = 0
 	var/yautja_count = 0
-	var/xeno_count = 0
+	var/xeno_count = 0 // unused for now, but maybe xenos could be introduced later? dynamic infection with only melee could be interesting.
 	var/list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_RESERVED)) // Which levels are valid for contestants are filtered by trait.
 
 	for(var/mob/living/carbon/potential_contestant in GLOB.alive_mob_list)
-		if(!potential_contestant.stat == CONSCIOUS)
+		if(potential_contestant.stat != CONSCIOUS)
 			continue
 
 		if(!(potential_contestant.z in z_levels))
@@ -228,6 +310,7 @@
 
 /datum/game_mode/hunter_games/declare_completion()
 	. = ..()
+	drops_disabled = TRUE // no more supply drops once the game ends
 	announce_ending()
 	var/musical_track
 	var/end_icon = "draw"

@@ -34,7 +34,6 @@
 	/obj/item/weapon/twohanded/breacher, \
 	/obj/item/weapon/ice_axe, \
 	/obj/item/weapon/harpoon, \
-	/obj/item/weapon/straight_razor, \
 	/obj/item/tool/crowbar/tactical, \
 	/obj/item/tool/kitchen/knife/butcher, \
 	/obj/item/tool/kitchen/knife, \
@@ -225,20 +224,19 @@
  * Spawn a loot item on the provided turf
  *
  * args:
- * turf/spawn_turf - The turf to place the weapon on, required
+ * spawn_loc - The place to place the drop, required
  * type - the type of item to place at the location, defaults to DROP_MELEE_WEAPON
+ * drop_type - the method used to place the drop, default HUNTER_DROP_RAW which places it directly on the provided loc.
  */
 
-/datum/game_mode/hunter_games/proc/place_drop(turf/spawn_turf, type = DROP_MELEE_WEAPON)
+/datum/game_mode/hunter_games/proc/place_drop(spawn_loc, type = DROP_MELEE_WEAPON, drop_type = HUNTER_DROP_RAW)
+	var/obj/item/picked = /obj/item/toy/bikehorn
 	switch(type)
 		if(DROP_MELEE_WEAPON)
-			var/picked = pick(HUNTER_MELEE_ITEM)
-			new picked(spawn_turf)
+			picked = pick(HUNTER_MELEE_ITEM)
 
 		if(DROP_GOOD_ITEM)
 			var/rng = rand(0, 100)
-			var/picked = /obj/item/toy/bikehorn
-
 			switch(rng)
 				if(0 to 49) // 50% chance of a decent item.
 					picked = pick(HUNTER_OKAY_ITEM)
@@ -247,6 +245,19 @@
 				if(90 to 100) // 10% chance of something wacky.
 					picked = pick(HUNTER_BEST_ITEM)
 
-			var/obj/structure/closet/crate/explosives/crate = new(spawn_turf)
+	switch(drop_type)
+		if(HUNTER_DROP_RAW)
+			new picked(spawn_loc)
+		if(HUNTER_DROP_CRATE)
+			var/obj/structure/closet/crate/explosives/crate = new(spawn_loc)
 			new picked(crate)
+		if(HUNTER_DROP_POD)
+			var/obj/structure/droppod/hunter_games/pod = new
+			new picked(pod)
+			pod.launch(spawn_loc)
 
+
+/obj/structure/droppod/hunter_games/open() // no pre-existing type that has the behavior we want
+	. = ..()
+	for(var/atom/movable/content as anything in contents)
+		content.forceMove(loc)

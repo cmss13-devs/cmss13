@@ -1,10 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 1
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/clf_lz)
 "am" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
 /turf/open/floor/almayer,
@@ -756,6 +750,12 @@
 	},
 /turf/open/floor/almayer/blue/northwest,
 /area/kutjevo/interior/colony/clf_shuttle)
+"Nw" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/clf_lz)
 "NE" = (
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_2";
@@ -1236,7 +1236,7 @@ qx
 Kn
 lX
 Ix
-aa
+Nw
 cf
 cf
 cf
@@ -1474,7 +1474,7 @@ Kn
 qx
 lX
 Ix
-aa
+Nw
 cf
 cf
 zp

@@ -245,8 +245,20 @@ export const RADIO_PREFIXES = {
     label: 'Hive',
   },
   '#r ': {
-    id: 'yatuja',
-    label: 'Yatuja',
+    id: 'yautja',
+    label: 'Yautja',
+  },
+  ':s ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '.s ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '#s ': {
+    id: 'yautja',
+    label: 'Yautja Ovr.',
   },
   ':t ': {
     id: 'intel',
@@ -285,6 +297,14 @@ export const RADIO_PREFIXES = {
     label: 'UPP Cmd.',
   },
   ':x ': {
+    id: 'hyperdyne',
+    label: 'Hyperdyne',
+  },
+  '.x ': {
+    id: 'hyperdyne',
+    label: 'Hyperdyne',
+  },
+  '#x ': {
     id: 'hyperdyne',
     label: 'Hyperdyne',
   },

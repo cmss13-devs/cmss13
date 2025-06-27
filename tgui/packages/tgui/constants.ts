@@ -97,6 +97,16 @@ export const RADIO_CHANNELS = [
     color: '#1ecc43',
   },
   {
+    name: 'CIA',
+    freq: 1212,
+    color: '#e6754c',
+  },
+  {
+    name: 'Hyperdyne',
+    freq: 1213,
+    color: '#ff711a',
+  },
+  {
     name: 'VAI',
     freq: 1215,
     color: '#e3580e',

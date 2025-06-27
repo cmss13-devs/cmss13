@@ -7,7 +7,12 @@ import { dragStartHandler } from 'tgui/drag';
 
 import { type Channel, ChannelIterator } from './ChannelIterator';
 import { ChatHistory } from './ChatHistory';
-import { LineLength, RADIO_PREFIXES, WindowSize } from './constants';
+import {
+  LANGUAGE_PREFIXES,
+  LineLength,
+  RADIO_PREFIXES,
+  WindowSize,
+} from './constants';
 import { getPrefix, windowClose, windowOpen, windowSet } from './helpers';
 import { byondMessages } from './timers';
 
@@ -35,7 +40,7 @@ export function TguiSay() {
   // You lose the granulatity and add a lot of boilerplate.
   const [buttonContent, setButtonContent] = useState('');
   const [currentPrefix, setCurrentPrefix] = useState<
-    keyof typeof RADIO_PREFIXES | null
+    keyof typeof RADIO_PREFIXES | keyof typeof LANGUAGE_PREFIXES | null
   >(null);
   const [maxLength, setMaxLength] = useState(1024);
   const [size, setSize] = useState(WindowSize.Small);
@@ -169,7 +174,12 @@ export function TguiSay() {
     const newPrefix = getPrefix(newValue) || currentPrefix;
     // Handles switching prefixes
     if (newPrefix && newPrefix !== currentPrefix) {
-      setButtonContent(RADIO_PREFIXES[newPrefix]?.label);
+      if (RADIO_PREFIXES[newPrefix]) {
+        setButtonContent(RADIO_PREFIXES[newPrefix]?.label);
+      }
+      if (LANGUAGE_PREFIXES[newPrefix]) {
+        setButtonContent(LANGUAGE_PREFIXES[newPrefix]?.label);
+      }
       setCurrentPrefix(newPrefix);
       newValue = newValue.slice(3);
       iterator.set('Say');

@@ -342,6 +342,11 @@
 	INVOKE_ASYNC(src,PROC_REF(prime), null, projectile)
 
 /datum/ammo/rocket/brute/proc/prime(atom/atom, obj/projectile/projectile)
+	if(istype(projectile.firer,/mob/living/carbon))
+		var/mob/living/carbon/firer = projectile.firer
+		firer.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(projectile.firer)] fired [name] on [atom]</font>"
+		msg_admin_niche("[key_name(firer, firer.client)] fired [src.name] on [atom.name] at ([atom.x],[atom.y],[atom.z]) [ADMIN_JMP(atom)] ")
+		log_game("[key_name(firer)] fired [src.name] on [atom.name] at ([atom.x],[atom.y],[atom.z])")
 	var/angle = projectile.angle
 	var/right_angle = (angle + 90 ) % 360
 	var/left_angle = (angle -90) % 360

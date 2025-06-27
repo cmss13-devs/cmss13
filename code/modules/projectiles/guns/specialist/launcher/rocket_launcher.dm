@@ -421,6 +421,7 @@
 	skill_locked = TRUE
 	var/f_aiming_time = 4 SECONDS
 	var/aiming = FALSE
+
 /obj/item/weapon/gun/launcher/rocket/brute/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 8, "rail_y" = 17, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
@@ -477,11 +478,7 @@
 
 	if(do_after(user, f_aiming_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(!QDELETED(target))
-			.=..()
-			if(.)
-				user.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(user)] fired [name] on [target]</font>"
-				msg_admin_niche("[key_name(user, user.client)] fired [src.name] on [target.name] at ([target.x],[target.y],[target.z] [ADMIN_JMP(target)] ")
-				log_game("[key_name(user)] fired [src.name] on [target.name] at ([target.x],[target.y],[target.z])")
+			. = ..()
 
 	target.overlays -= lockon_icon
 	target.overlays -= lockon_direction_icon
@@ -491,4 +488,4 @@
 /obj/item/weapon/gun/launcher/rocket/brute/make_rocket(mob/user, drop_override = 0, empty = 1)
 	if(empty)
 		return
-	.=..()
+	. = ..()

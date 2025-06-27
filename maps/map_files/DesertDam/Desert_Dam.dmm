@@ -4112,6 +4112,13 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/north)
+"amD" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
 "amE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -67878,6 +67885,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "whV" = (
@@ -141471,7 +141479,7 @@ lTn
 fTc
 cJj
 aMG
-eVk
+amD
 kgv
 kgv
 kgv

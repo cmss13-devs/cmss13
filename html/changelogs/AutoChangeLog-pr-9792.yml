@@ -1,4 +1,0 @@
-author: "JackieEstegado"
-delete-after: True
-changes:
-  - bugfix: "Breaching charges no longer explode in unexpected directions."

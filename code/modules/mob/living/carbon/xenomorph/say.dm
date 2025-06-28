@@ -20,18 +20,17 @@
 
 	var/hivemind_speak = FALSE
 	var/prefix = copytext(message, 1, 2)
-	if(prefix ==";" || prefix == "." || prefix == "#" || prefix == ":" || prefix == ",")
+	if(prefix == ";")
+		message = capitalize(trim_left(copytext(message, 2)))
 		hivemind_speak = TRUE
-	else
-		hivemind_speak = FALSE
-	if(hivemind_speak && can_hivemind_speak)
-		if (findtext_char(message, " ") < 4)
-			message = capitalize(trim(copytext(message, 3)))
-		else
-			message = capitalize(trim(copytext(message, 2)))
-		if(!message)
-			return
+	else if(prefix == "." || prefix == "#" || prefix == ":" || prefix == ",")
+		message = capitalize(trim_left(copytext(message, 3)))
+		hivemind_speak = TRUE
 
+	if(!message)
+		return
+
+	if(hivemind_speak && can_hivemind_speak)
 		// Automatic punctuation
 		if(client?.prefs?.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
 			if(!(copytext(message, -1) in ENDING_PUNCT))
@@ -43,13 +42,14 @@
 	var/datum/language/speaking = parse_language(message)
 	if(speaking)
 		verb = speaking.speech_verb
-		message = capitalize(trim(copytext(message,3)))
+		message = capitalize(trim_left(copytext(message, 3)))
 	else
-		speaking = GLOB.all_languages[LANGUAGE_XENOMORPH]
+		speaking = get_default_language()
 		verb = speaking.speech_verb
-		message = capitalize(trim(strip_language(message)))
+		message = capitalize(trim_left(strip_language(message)))
 
-	if(!(speaking.flags & HIVEMIND) && HAS_TRAIT(src, TRAIT_LISPING)) // Xenomorphs can lisp too. :) Only if they're not speaking in hivemind.
+	// Xenomorphs can lisp too. :) Only if they're not speaking in hivemind.
+	if((!(speaking.flags & HIVEMIND) || !can_hivemind_speak) && HAS_TRAIT(src, TRAIT_LISPING))
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)
@@ -62,6 +62,9 @@
 	if(client?.prefs?.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
 		if(!(copytext(message, -1) in ENDING_PUNCT))
 			message += "."
+	if((speaking.flags & HIVEMIND) && can_hivemind_speak)
+		hivemind_talk(message)
+		return
 
 	if(speaking_noise)
 		playsound(loc, speaking_noise, 25, 1)

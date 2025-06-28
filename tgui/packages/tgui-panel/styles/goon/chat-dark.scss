@@ -1305,6 +1305,12 @@ em {
   font-size: 150%;
 }
 
+.announce_header_beige {
+  color: hsl(62, 25%, 71%);
+  font-weight: bold;
+  font-size: 150%;
+}
+
 .announce_header_admin {
   color: hsl(240, 84%, 71%);
   font-weight: bold;
@@ -1398,6 +1404,30 @@ em {
 
 .scandinavian {
   color: hsl(178, 65%, 34%);
+}
+
+.pathogen {
+  color: hsl(61, 31%, 66%);
+}
+
+.pathogenleader {
+  color: hsl(61, 31%, 66%);
+  font-style: italic;
+  font-size: 125%;
+}
+
+.pathogenqueen {
+  color: hsl(61, 31%, 66%);
+  font-style: italic;
+  font-weight: bold;
+  font-size: 125%;
+}
+
+.pathogenannounce {
+  color: hsl(61, 31%, 66%);
+  font-style: italic;
+  font-weight: bold;
+  font-size: 175%;
 }
 
 .french {

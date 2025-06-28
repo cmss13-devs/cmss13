@@ -590,7 +590,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
-			dat += "<b>Widescreen:</b> <a href='?_src_=prefs;preference=widescreen'><b>[widescreen ? "Enabled" : "Disabled"]</b></a><br>"
+			dat += "<b>Widescreen:</b> <a href='byond://?_src_=prefs;preference=widescreen'><b>[widescreen ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Ambient Occlusion:</b> <a href='byond://?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='byond://?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>Adaptive Zoom:</b> <a href='byond://?_src_=prefs;preference=adaptive_zoom'>[adaptive_zoom ? "[adaptive_zoom * 2]x" : "Disabled"]</a><br>"

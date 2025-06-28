@@ -1,5 +1,7 @@
 GLOBAL_LIST_EMPTY(permitted_guests)
 
+GENERAL_PROTECT_DATUM(/mob/unauthenticated)
+
 /mob/unauthenticated
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
@@ -35,6 +37,12 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 	display_unauthenticated_menu()
 
+/mob/unauthenticated/Logout()
+	. = ..()
+
+	QDEL_NULL(unauthenticated_menu)
+	qdel(src)
+
 /mob/unauthenticated/set_logged_in_mob()
 	return FALSE
 
@@ -50,7 +58,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 	access_entity.save()
 	access_entity.detach()
 
-#define ACCESS_CODE_LENGTH 20
+#define ACCESS_CODE_LENGTH 40
 
 /// Creates a base 62 access code
 /mob/unauthenticated/proc/generate_access_code()
@@ -112,6 +120,7 @@ GLOBAL_LIST_EMPTY(permitted_guests)
 
 	if(!code)
 		notify_unauthenticated_menu()
+		sleep(1)
 
 	var/banned = world.IsBanned(new_ckey, client.address, client.computer_id, real_bans_only = TRUE, guest_bypass_with_ext_auth = FALSE)
 	if(banned)

@@ -14,12 +14,13 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(copytext(message, 1, 2) == "*")
+	var/prefix = copytext(message, 1, 2)
+	if(prefix == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
 			return emote(lowertext(copytext(message, 2)), intentional = TRUE)
 
 	var/hivemind_speak = FALSE
-	var/prefix = copytext(message, 1, 2)
+
 	if(prefix == ";")
 		message = capitalize(trim_left(copytext(message, 2)))
 		hivemind_speak = TRUE

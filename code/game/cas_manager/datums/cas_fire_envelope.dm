@@ -215,7 +215,7 @@
 		M.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 		M.sync_lighting_plane_alpha()
 	if(linked_console.upgraded == MATRIX_WIDE)
-		M.client?.change_view(7, M)
+		M.client?.view_size.reset_to_default()
 	else
 		return
 

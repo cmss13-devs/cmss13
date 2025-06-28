@@ -433,6 +433,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		stat_panel.send_message("changelog_read", FALSE)
 
+	view_size = new(src, get_screen_size(prefs.widescreen))
+	view_size.update_pixel_format()
+	view_size.update_zoom_mode()
+	fit_viewport()
+
 	update_fullscreen()
 
 	var/file = file2text("config/donators.txt")
@@ -450,8 +455,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		tooltips = new(src)
 
 	load_player_data()
-
-	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
 

@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	else
 		new_xeno.key = key
 		if(new_xeno.client)
-			new_xeno.client.change_view(GLOB.world_view_size)
+			new_xeno.client.view_size.reset_to_default()
 
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
@@ -429,7 +429,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	else
 		new_xeno.key = key
 		if(new_xeno.client)
-			new_xeno.client.change_view(GLOB.world_view_size)
+			new_xeno.client.view_size.reset_to_default()
 			new_xeno.client.pixel_x = 0
 			new_xeno.client.pixel_y = 0
 

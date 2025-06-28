@@ -280,6 +280,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
 
+	/// Whether this client is using widescreen
+	var/widescreen = TRUE
+
+	/// The client's preferred scaling method
+	var/pixel_size = PIXEL_SCALING_AUTO
+	var/scaling_method = SCALING_METHOD_NORMAL
+
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
 
@@ -583,6 +590,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<div id='column2'>"
 			dat += "<h2><b><u>Game Settings:</u></b></h2>"
+			dat += "<b>Widescreen:</b> <a href='?_src_=prefs;preference=widescreen'><b>[widescreen ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Ambient Occlusion:</b> <a href='byond://?_src_=prefs;preference=ambientocclusion'><b>[toggle_prefs & TOGGLE_AMBIENT_OCCLUSION ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='byond://?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			dat += "<b>Adaptive Zoom:</b> <a href='byond://?_src_=prefs;preference=adaptive_zoom'>[adaptive_zoom ? "[adaptive_zoom * 2]x" : "Disabled"]</a><br>"
@@ -2033,6 +2041,27 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 				if("change_menu")
 					current_menu = href_list["menu"]
+
+				if("widescreen")
+					widescreen = !widescreen
+					user.client.view_size.set_default(get_screen_size(widescreen))
+					user.client.fit_viewport()
+
+				if("pixel_size")
+					var/index = GLOB.pixel_size_options.Find(pixel_size) + 1
+					if(index > length(GLOB.pixel_size_options))
+						index = 1
+					pixel_size = GLOB.pixel_size_options[index]
+
+					user.client.view_size.apply()
+
+				if("scaling_method")
+					var/index = GLOB.scaling_options.Find(scaling_method) + 1
+					if(index > length(GLOB.scaling_options))
+						index = 1
+					scaling_method = GLOB.scaling_options[index]
+
+					user.client.view_size.update_zoom_mode()
 
 				if("yautja")
 					if(!owner.check_whitelist_status(WHITELIST_PREDATOR))

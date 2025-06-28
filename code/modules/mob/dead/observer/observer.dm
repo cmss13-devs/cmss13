@@ -499,7 +499,7 @@ Works together with spawning an observer, noted above.
 
 	if(ghost.client)
 		ghost.client.init_verbs()
-		ghost.client.change_view(GLOB.world_view_size) //reset view range to default
+		ghost.client.view_size.reset_to_default() //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
 		ghost.set_lighting_alpha_from_pref(ghost.client)
@@ -863,14 +863,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle Zoom"
 	set category = "Ghost.Settings"
 
-	if(client)
-		// Check the current zoom level and toggle to the next level cyclically
-		if (client.view == GLOB.world_view_size)
-			client.change_view(14)
-		else if (client.view == 14)
-			client.change_view(28)
-		else
-			client.change_view(GLOB.world_view_size)
+	if(!client)
+		return
+	// Check the current zoom level and toggle to the next level cyclically
+	if (client.view == client.view_size.default) // If we're currently at the default, zoom one level
+		client.view_size.set_view_radius_to(14)
+	else if (client.view_size.width == 29) // If we're at zoom level 1, zoom again
+		client.view_size.set_view_radius_to(28)
+	else // Otherwise, reset.
+		client.view_size.reset_to_default()
 
 
 /mob/dead/observer/verb/toggle_darkness()
@@ -1438,7 +1439,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		var/client/observer_client = nearby_observer.client
 		// We check observer view range specifically to also show the message to zoomed out ghosts. Double check Z as get_dist goes thru levels.
 		if((observer_client?.prefs?.toggles_chat & CHAT_DEAD) \
-			&& src.z == nearby_observer.z && get_dist(src, nearby_observer) <= observer_client.view)
+			&& src.z == nearby_observer.z && (nearby_observer in view(observer_client)))
 			to_chat(observer_client, SPAN_DEADSAY("<b>[src]</b> points to [A] [nearby_observer.format_jump(A)]"))
 	return TRUE
 

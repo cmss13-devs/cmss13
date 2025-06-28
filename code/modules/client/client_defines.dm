@@ -131,5 +131,8 @@
 	///datum that controls the displaying and hiding of tooltips
 	var/datum/tooltip/tooltips
 
+	/// the view size of the client
+	var/datum/view_data/view_size
+
 	/// If this client has any windows scaling applied
 	var/window_scaling

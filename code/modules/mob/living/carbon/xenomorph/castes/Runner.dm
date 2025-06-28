@@ -46,7 +46,7 @@
 	base_pixel_x = 0
 	base_pixel_y = -20
 	pull_speed = -0.5
-	viewsize = 9
+	viewsize = 4
 	organ_value = 500 //worthless
 
 	mob_size = MOB_SIZE_XENO_SMALL

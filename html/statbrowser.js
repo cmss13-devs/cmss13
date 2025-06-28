@@ -139,37 +139,37 @@ let clientButtons = {
 	"Icons": [
 		{
 			name: "Stretch to fit",
-			command: ".winset \"mapwindow.map.icon-size=0\"",
+			command: ".set_pixel_size 0",
 			active: "icon-size",
 			value: "0"
 		},
 		{
 			name: "256x256 (4x)",
-			command: ".winset \"mapwindow.map.icon-size=256\"",
+			command: ".set_pixel_size 4",
 			active: "icon-size",
 			value: "256"
 		},
 		{
 			name: "128x128 (3x)",
-			command: ".winset \"mapwindow.map.icon-size=128\"",
+			command: ".set_pixel_size 3",
 			active: "icon-size",
 			value: "128"
 		},
 		{
 			name: "96x96 (2.5x)",
-			command: ".winset \"mapwindow.map.icon-size=96\"",
+			command: ".set_pixel_size 2.5",
 			active: "icon-size",
 			value: "96"
 		},
 		{
 			name: "64x64 (2x)",
-			command: ".winset \"mapwindow.map.icon-size=64\"",
+			command: ".set_pixel_size 2",
 			active: "icon-size",
 			value: "64"
 		},
 		{
 			name: "32x32",
-			command: ".winset \"mapwindow.map.icon-size=32\"",
+			command: ".set_pixel_size 1",
 			active: "icon-size",
 			value: "32"
 		},
@@ -184,19 +184,19 @@ let clientButtons = {
 	"Rendering": [
 		{
 			name: "Nearest Neighbour",
-			command: ".winset \"mapwindow.map.zoom-mode=distort\"",
+			command: ".set_scaling_method distort",
 			active: "zoom-mode",
 			value: "distort"
 		},
 		{
 			name: "Point Sampling",
-			command: ".winset \"mapwindow.map.zoom-mode=normal\"",
+			command: ".set_scaling_method normal",
 			active: "zoom-mode",
 			value: "normal"
 		},
 		{
 			name: "Bilinear",
-			command: ".winset \"mapwindow.map.zoom-mode=blur\"",
+			command: ".set_scaling_method blur",
 			active: "zoom-mode",
 			value: "blur"
 		},

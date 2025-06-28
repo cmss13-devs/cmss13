@@ -347,3 +347,16 @@
   - balance: Hives with "allow_no_queen_actions" (notably Feral, Yautuja, and Forsaken)
       hives can now always view tacmap.
   - balance: Forsaken hive is capable of seeing humans on tacmap.
+2025-06-28:
+  Ben10083:
+  - balance: APCs in SSV Rostock now use a UPP subtype that only allows UPP engineers
+      access
+  - bugfix: UPP hull windows now act like USMC hull windows and cannot be destroyed
+  - maptweak: Additional cameras added to SSV Rostock Prisoner Holding
+  Detective-Google:
+  - maptweak: removes UPP RPG and GL spec belt from sorokyne
+  Thwomper, cuberound:
+  - rscadd: M6H-BRUTE, a anti-structure laser-guided rocket launcher, as well as a
+      specialized back holster and ammo to ComTech as an alternative equipment choice
+      to sentry guns.
+  - rscdel: XM-51 Breaching Scattergun no longer available in Marine supply.

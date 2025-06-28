@@ -15,7 +15,7 @@ SUBSYSTEM_DEF(predships)
 	load_new(CLAN_SHIP_PUBLIC)
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/predships/proc/init_spawnpoint(obj/effect/landmark/clan_spawn/SP)
+/datum/controller/subsystem/predships/proc/init_spawnpoint(obj/effect/landmark/yautja_spawn/SP)
 	LAZYADD(spawnpoints, get_turf(SP))
 
 /datum/controller/subsystem/predships/proc/get_clan_spawnpoints(clan_id)
@@ -34,12 +34,6 @@ SUBSYSTEM_DEF(predships)
 
 /datum/controller/subsystem/predships/proc/load_new(initiating_clan_id)
 	RETURN_TYPE(/list)
-	if(isnum(initiating_clan_id))
-		initiating_clan_id = "[initiating_clan_id]"
-	if(!ship_template || !initiating_clan_id)
-		return NONE
-	if(initiating_clan_id in managed_z)
-		return managed_z[initiating_clan_id]
 	var/datum/space_level/level = ship_template.load_new_z()
 	if(level)
 		var/new_z = level.z_value
@@ -47,5 +41,3 @@ SUBSYSTEM_DEF(predships)
 		for(var/turf/spawnpoint in spawnpoints)
 			if(spawnpoint?.z == new_z)
 				new_spawns += spawnpoint
-		managed_z[initiating_clan_id] = list(level, new_spawns)
-	return managed_z[initiating_clan_id]

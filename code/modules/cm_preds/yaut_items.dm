@@ -405,65 +405,94 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	var/mob/living/carbon/human/H = user
 	var/ship_to_tele = list("Yautja Ship" = -1, "Human Ship" = "Human")
 
-	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
-		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
-		return
-
 	if(H.faction == FACTION_YAUTJA_YOUNG)
 		to_chat(user, SPAN_WARNING("You have not been shown how to use the relay beacon, best not fiddle with it."))
 		return
 
-	if(H.client && H.client.clan_info)
-		var/datum/entity/clan_player/clan_info = H.client.clan_info
-		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
-			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
-			for(var/datum/view_record/clan_view/CV in CPV)
-				if(!SSpredships.is_clanship_loaded(CV?.clan_id))
-					continue
-				ship_to_tele += list("[CV.name]" = "[CV.clan_id]: [CV.name]")
-		if(SSpredships.is_clanship_loaded(clan_info?.clan_id))
-			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
+	if(HAS_TRAIT(H, TRAIT_YAUTJA_TECH) || should_block_game_interaction(H))
 
-	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
-	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
-		return // Checking ship is valid
+		var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
 
-	// Getting an arrival point
-	var/turf/target_turf
-	if(clan == "Human")
-		var/obj/effect/landmark/yautja_teleport/pickedYT = pick(GLOB.mainship_yautja_teleports)
-		target_turf = get_turf(pickedYT)
+		// Getting an arrival point
+		var/turf/target_turf
+		if(clan == "Human")
+			var/obj/effect/landmark/yautja_teleport/pickedYT = pick(GLOB.mainship_yautja_teleports)
+			target_turf = get_turf(pickedYT)
+		else
+			var/obj/effect/landmark/yautja_spawn/picked_destination = pick(GLOB.yautja_ship_spawn)
+			target_turf = get_turf(picked_destination)
+		if(!istype(target_turf))
+			return
+
+		// Let's go
+		playsound(src,'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
+		timer = 1
+		user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
+
+		if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			// Display fancy animation for you and the person you might be pulling (Legacy)
+			SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+			user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
+			var/tele_time = animation_teleport_quick_out(user)
+			var/mob/living/M = user.pulling
+			if(istype(M)) // Pulled person
+				SEND_SIGNAL(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
+				M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
+				animation_teleport_quick_out(M)
+
+			sleep(tele_time) // Animation delay
+			user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled
+
+			// Undo animations
+			animation_teleport_quick_in(user)
+			if(istype(M) && !QDELETED(M))
+				animation_teleport_quick_in(M)
+			timer = 0
+		else
+			addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
 	else
-		target_turf = SAFEPICK(SSpredships.get_clan_spawnpoints(clan))
-	if(!istype(target_turf))
-		return
+		#define TELEPORT_HUMAN_SHIP "Human Ship"
+		#define TELEPORT_YAUTJA_SHIP "Yautja Ship"
 
-	// Let's go
-	playsound(src,'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
-	timer = 1
-	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
+		to_chat(user, SPAN_WARNING("You start messing around with the alien device...going against the scream in your gut."))
+		if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			var/teleport_location = pick(TELEPORT_HUMAN_SHIP, TELEPORT_YAUTJA_SHIP)
+			var/turf/target_turf
+			var/tele_time = animation_teleport_quick_out(user)
+			var/list/targets = list()
 
-	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		// Display fancy animation for you and the person you might be pulling (Legacy)
-		SEND_SIGNAL(user, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
-		var/tele_time = animation_teleport_quick_out(user)
-		var/mob/living/M = user.pulling
-		if(istype(M)) // Pulled person
-			SEND_SIGNAL(M, COMSIG_MOB_EFFECT_CLOAK_CANCEL)
-			M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
-			animation_teleport_quick_out(M)
 
-		sleep(tele_time) // Animation delay
-		user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled
+			switch(teleport_location)
+				if(TELEPORT_YAUTJA_SHIP)
+					var/obj/effect/landmark/yautja_spawn/destination = pick(GLOB.yautja_ship_spawn)
+					target_turf = get_turf(destination)
 
-		// Undo animations
-		animation_teleport_quick_in(user)
-		if(istype(M) && !QDELETED(M))
-			animation_teleport_quick_in(M)
-		timer = 0
-	else
-		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
+				if(TELEPORT_HUMAN_SHIP)
+					var/obj/effect/landmark/yautja_teleport/destination = pick(GLOB.mainship_yautja_teleports)
+					target_turf = get_turf(destination)
+
+			for(var/mob/living/mobs_in_range in range(3, get_turf(H))) // Make a list because for some reason it wouldnt work any other way.
+				if(mobs_in_range.stat != DEAD)
+					targets.Add(mobs_in_range)
+
+			for(var/mob/targetz in targets) // I think this will resut in some shenangians, we'll see what happens. I couldnt get tis to work any other way other then making a list.
+
+				animation_teleport_quick_out(targetz)
+				sleep(tele_time) // Animation delay
+				targetz.forceMove(target_turf)
+				animation_teleport_quick_in(targetz)
+
+				user.visible_message(SPAN_DANGER("[targetz] dissapear in a puff of smoke!"))
+
+			qdel(src)
+			user.visible_message(SPAN_DANGER("The alien device decays into dust and ash as it breaks from the usage!"))
+
+		#undef TELEPORT_HUMAN_SHIP
+		#undef TELEPORT_YAUTJA_SHIP
+
+
+
+
 
 /obj/item/device/yautja_teleporter/verb/add_tele_loc()
 	set name = "Add Teleporter Destination"

@@ -243,7 +243,8 @@ Additional game mode variables.
 	var/datum/entity/clan_player/clan_info = pred_candidate?.client?.clan_info
 	clan_info?.sync()
 	SSpredships.load_new(clan_id)
-	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
+	var/obj/effect/landmark/yautja_spawn/picked_spawn = pick(GLOB.yautja_ship_spawn)
+	var/turf/spawn_point = get_turf(picked_spawn)
 	if(!isturf(spawn_point))
 		log_debug("Failed to find spawn point for pred ship in transform_predator - clan_id=[clan_id]")
 		to_chat(pred_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))

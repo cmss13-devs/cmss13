@@ -268,6 +268,19 @@
 	GLOB.xeno_hive_spawns -= src
 	return ..()
 
+/obj/effect/landmark/yautja_spawn
+	name = "yautja_spawn"
+	icon_state = "clan_spawn"
+
+/obj/effect/landmark/yautja_spawn/Initialize(mapload, ...)
+	. = ..()
+	GLOB.yautja_ship_spawn += src
+
+/obj/effect/landmark/yautja_spawn/Destroy()
+	GLOB.yautja_ship_spawn -= src
+	return ..()
+
+
 /obj/effect/landmark/yautja_teleport
 	name = "yautja_teleport"
 	icon_state = "hunter_teleport"

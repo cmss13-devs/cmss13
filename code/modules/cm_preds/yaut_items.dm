@@ -490,10 +490,6 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		#undef TELEPORT_HUMAN_SHIP
 		#undef TELEPORT_YAUTJA_SHIP
 
-
-
-
-
 /obj/item/device/yautja_teleporter/verb/add_tele_loc()
 	set name = "Add Teleporter Destination"
 	set desc = "Adds this location to the teleporter."

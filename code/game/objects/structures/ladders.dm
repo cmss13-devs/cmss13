@@ -14,6 +14,8 @@
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
 	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
+	var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
+
 
 /obj/structure/ladder/Initialize(mapload, ...)
 	. = ..()
@@ -77,7 +79,6 @@
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
 	if(up && down)
-		var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
 		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
 		if(ladder_dest == "up")
 			ladder_dest = up

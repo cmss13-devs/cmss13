@@ -1,0 +1,6 @@
+author: "MistChristmas, Drathek"
+delete-after: True
+changes:
+  - rscadd: "Languages use '!' prefix instead of sharing prefixes with Radio Channels. Provost channel changed to '#l'."
+  - code_imp: "Re-org RADIO_PREFIXES, langauges, and department radio keys into mostly alphabetical order. Remove Uppercase instances. Add missing colours for tgui say."
+  - qol: "Languages pop up in TGUI-say if you switch to them whilst not being on a radio channel"

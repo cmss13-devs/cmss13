@@ -21808,6 +21808,9 @@
 	pixel_x = -10;
 	pixel_y = 14
 	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_1)
 "aYK" = (
@@ -26636,9 +26639,6 @@
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/landing_zone_2)
 "biW" = (
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 4
-	},
 /obj/structure/prop/tyrargo/large_tents/supply,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
@@ -29865,7 +29865,13 @@
 	pixel_y = -1
 	},
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bpx" = (
 /obj/structure/blocker/invisible_wall,
@@ -29906,7 +29912,13 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/turf/open/gm/dirt/brown/variant_2,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bpB" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -38212,7 +38224,10 @@
 /obj/structure/prop/rock/black_ground{
 	dir = 6
 	},
-/turf/open/auto_turf/strata_grass,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown,
 /area/tyrargo/outdoors/outskirts/central)
 "bIo" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -38543,6 +38558,9 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "bJi" = (
@@ -49331,6 +49349,21 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
+"coI" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 4;
+	pixel_y = 2;
+	dir = 4
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/landing_zone_2/road)
 "coJ" = (
 /obj/structure/platform/stone/kutjevo/west,
 /obj/structure/platform/stone/kutjevo,
@@ -66856,6 +66889,9 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_16";
 	pixel_y = 35
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "8"
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
@@ -90420,14 +90456,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/west)
-"euD" = (
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	pixel_x = -5;
-	pixel_y = -5
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
 "euE" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -93278,12 +93306,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
-"eBL" = (
-/obj/structure/flora/grass/temperate{
-	icon_state = "13"
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
 "eBM" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "8"
@@ -94251,6 +94273,9 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "eEs" = (
@@ -94299,15 +94324,15 @@
 /area/tyrargo/landing_zone_1)
 "eEz" = (
 /obj/structure/platform/stone/soro,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "eEA" = (
 /obj/structure/platform/stone/soro,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
-	},
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 4
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
@@ -94316,7 +94341,6 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
 	},
-/obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/gm/dirt/brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "eEC" = (
@@ -96418,6 +96442,386 @@
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central)
+"eJR" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/tyrargo/landing_zone_2/road)
+"eJS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/landing_zone_2/road)
+"eJT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/tyrargo/landing_zone_2/road)
+"eJU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/gm/dirt/brown/variant_3,
+/area/tyrargo/landing_zone_2/road)
+"eJV" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/landing_zone_2/road)
+"eJW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/tyrargo/landing_zone_2/road)
+"eJX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 2;
+	pixel_y = 17
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/tyrargo/landing_zone_2/road)
+"eJY" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/landing_zone_2/road)
+"eJZ" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/landing_zone_2/east_trench)
+"eKa" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -8
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -8
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts_road/west)
+"eKb" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts_road/west)
+"eKc" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -8
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts_road/west)
+"eKd" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown/variant_3,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKe" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKf" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -8
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/tyrargo/outdoors/outskirts_road/west)
+"eKg" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 9;
+	pixel_y = -13
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKh" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKi" = (
+/obj/structure/flora/tree/tyrargo/tree_3{
+	pixel_x = -17;
+	pixel_y = 8
+	},
+/obj/structure/flora/wood/stick4{
+	pixel_x = -2;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKj" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -8
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts_road/west)
+"eKk" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKl" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/flora/wood/stick2,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKm" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts_road/west)
+"eKn" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/west)
+"eKo" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts_road/east)
+"eKp" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKq" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -7;
+	pixel_y = 15
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/outdoors/outskirts_road/east)
+"eKr" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/tyrargo/outdoors/outskirts_road/east)
+"eKs" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/tyrargo/outdoors/outskirts_road/east)
+"eKt" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts_road/east)
+"eKu" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts_road/east)
+"eKv" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 4;
+	pixel_x = -2
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts_road/east)
+"eKw" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKx" = (
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/east)
+"eKy" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKz" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/structure/flora/wood/stick1,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKA" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts_road/central)
+"eKB" = (
+/obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/flora/grass/temperate{
+	icon_state = "13"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
+"eKC" = (
+/obj/structure/flora/wood/trunk2,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central)
+"eKD" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/turf/open/gm/dirt/brown/variant_3,
+/area/tyrargo/outdoors/outskirts/central)
+"eKE" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts/central)
+"eKF" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/tyrargo/outdoors/outskirts/central)
+"eKG" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/tyrargo/outdoors/outskirts/central)
 "eKH" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/north,
 /obj/structure/platform/metal/hybrisa/metalplatform3/west,
@@ -96426,6 +96830,132 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
+"eKI" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/east)
+"eKJ" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/tyrargo/outdoors/outskirts/central)
+"eKK" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/central/landing_zone)
+"eKL" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1";
+	layer = 2.9
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_1)
+"eKM" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/tyrargo/landing_zone_1)
+"eKN" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_1)
+"eKO" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/coast/dirt/beachcorner/south_west,
+/area/tyrargo/landing_zone_1)
+"eKP" = (
+/obj/item/reagent_container/food/drinks/flask/canteen{
+	pixel_y = -3;
+	pixel_x = 7
+	},
+/turf/open/gm/coast/dirt/beachcorner/south_east,
+/area/tyrargo/landing_zone_1)
+"eKQ" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/tyrargo/landing_zone_1)
+"eKR" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/turf/open/gm/coast/dirt/beachcorner,
+/area/tyrargo/landing_zone_1)
+"eKS" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/item/clothing/shoes/marine/army/knife{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/turf/open/gm/coast/dirt/beachcorner/north_east,
+/area/tyrargo/landing_zone_1)
+"eKT" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_1)
+"eKU" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -8;
+	pixel_y = 10
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_1)
+"eKV" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/landing_zone_1)
+"eKW" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/landing_zone_1)
+"eKX" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_1)
+"eKY" = (
+/obj/structure/flora/grass/temperate{
+	icon_state = "30"
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_1)
 "eMV" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob)
@@ -154382,7 +154912,7 @@ bKe
 bJN
 euR
 bIt
-bIs
+eKY
 bMz
 bMz
 bPq
@@ -156592,9 +157122,9 @@ bIs
 bIs
 bIs
 bIs
-aWk
+eKU
 aYJ
-bIs
+eKN
 bPK
 aYe
 aXS
@@ -156775,12 +157305,12 @@ bPe
 bIJ
 bQD
 aZk
-bIs
-bIs
-bIs
-bIs
-bIs
-euL
+eKX
+eKV
+eKR
+eKO
+euR
+eKL
 bKe
 bPj
 aXB
@@ -156960,10 +157490,10 @@ bIs
 bIH
 aZl
 aZh
-bIs
-bKt
-bIs
-bIJ
+eKW
+eKS
+eKP
+eKM
 bIt
 bKL
 aXI
@@ -157144,10 +157674,10 @@ bIs
 bQE
 bIH
 bIs
-bIs
-bIs
-bIs
-bIs
+eJc
+eKT
+eKQ
+euP
 bMz
 bPr
 aVr
@@ -157572,7 +158102,7 @@ byp
 bFU
 byp
 byp
-byp
+eKn
 byp
 byp
 byp
@@ -158518,7 +159048,7 @@ baY
 byp
 byp
 byp
-byp
+eKb
 byp
 bAz
 bxA
@@ -158700,12 +159230,12 @@ blG
 bBL
 byp
 byp
-byp
-byp
-byp
-byp
-byp
-byp
+eKj
+eKf
+eKc
+eKa
+aTY
+aTY
 byp
 bxB
 byp
@@ -158873,7 +159403,7 @@ bDt
 bxV
 bDj
 byp
-byp
+eKn
 byp
 bxA
 bxA
@@ -158883,7 +159413,7 @@ blH
 bDj
 bAz
 byp
-byp
+eKm
 byp
 byp
 bxB
@@ -159393,7 +159923,7 @@ eGu
 bAR
 bmh
 bxi
-bzf
+eKz
 bwt
 bxr
 bxE
@@ -160586,12 +161116,12 @@ cLa
 cLb
 cLa
 cLa
+eJY
+eJX
 cLd
 cLd
-cLd
-cLd
-cLa
-cLa
+eIh
+coI
 cLa
 cLd
 aRG
@@ -160772,9 +161302,9 @@ esb
 cLa
 cLa
 cLa
-cLd
-cLd
-cLp
+eJW
+eJT
+eJR
 cLa
 cLd
 cLa
@@ -160934,7 +161464,7 @@ bsJ
 bsJ
 bsJ
 bsJ
-bsJ
+exY
 erW
 cLa
 cLJ
@@ -160957,8 +161487,8 @@ esb
 cLa
 cLa
 cLa
-cLd
-cLd
+eJU
+eJS
 cLd
 cLd
 esq
@@ -161117,7 +161647,7 @@ bsJ
 bsJ
 bsJ
 bsJ
-bsJ
+erW
 biW
 sGF
 cLG
@@ -161141,7 +161671,7 @@ bti
 esb
 cLa
 bhN
-cLd
+eJV
 cLa
 cLd
 cLg
@@ -161749,7 +162279,7 @@ byv
 bwR
 bPR
 arh
-arg
+eKK
 eEB
 eEv
 eEp
@@ -163255,7 +163785,7 @@ arg
 bAt
 bwt
 bAR
-bxi
+eKe
 bpH
 bwt
 bwt
@@ -164177,7 +164707,7 @@ cou
 bwt
 bIa
 bpK
-bHK
+eKA
 bpu
 bpn
 cou
@@ -164731,7 +165261,7 @@ bIb
 bHQ
 esT
 bxi
-bxi
+eKy
 bIN
 bIy
 bIy
@@ -164749,7 +165279,7 @@ bwt
 bwt
 etH
 bwD
-bIy
+eKp
 ebF
 edw
 ebu
@@ -165289,7 +165819,7 @@ esT
 bIO
 bIN
 bIN
-bIN
+eKw
 bIN
 bIy
 bIy
@@ -165506,9 +166036,9 @@ dYt
 dHq
 bBT
 esT
+eKe
 bxi
-bxi
-bxi
+eKk
 bxi
 bAQ
 bwt
@@ -165633,8 +166163,8 @@ bBg
 bBg
 cMt
 bBg
-bBg
-bBg
+bCH
+bCH
 bBg
 bBg
 eCa
@@ -165693,7 +166223,7 @@ bwt
 esT
 bws
 bxi
-bxi
+eKg
 bxi
 esZ
 bwt
@@ -165815,11 +166345,11 @@ bRG
 bBg
 bBg
 bBg
-bBg
-bBg
-bBg
-bBg
-bBg
+hCg
+bCH
+bCH
+eKJ
+bCH
 bBg
 bBg
 bBg
@@ -165876,9 +166406,9 @@ bBg
 bBg
 aTE
 bwt
-etL
-bxi
-bxi
+eKl
+eKh
+eKd
 bzf
 bwt
 bAq
@@ -166000,10 +166530,10 @@ bBg
 bBg
 bBg
 bBg
-bBg
-bBg
+bCH
+eEl
 bRG
-bBg
+bCH
 euH
 bBg
 bCo
@@ -166803,7 +167333,7 @@ bxi
 blA
 bxi
 bvW
-bvW
+eJZ
 bzw
 aOR
 bvY
@@ -167165,7 +167695,7 @@ bBD
 bLf
 bBg
 bBg
-bBa
+eKi
 bwt
 dil
 blA
@@ -167668,8 +168198,8 @@ bEL
 bBg
 bBg
 bCo
-bBg
-bBg
+eCZ
+bBh
 bBg
 bIc
 bHc
@@ -167851,10 +168381,10 @@ bBg
 eFD
 bEL
 euH
-bBg
-bBg
-bBh
-bBg
+etV
+eKG
+etP
+eCZ
 bHL
 bHc
 bHc
@@ -168036,10 +168566,10 @@ bRG
 eFD
 bBg
 bJh
-bBg
-bBg
+eGn
+eKF
 bIn
-bBg
+eCB
 bHL
 bHc
 bHc
@@ -168220,10 +168750,10 @@ bBg
 bBh
 bBg
 bJi
-euD
-bBg
-bBg
-bBg
+eBZ
+eGn
+eKD
+eKB
 bBg
 bHL
 bHv
@@ -168405,9 +168935,9 @@ bBg
 bBg
 aNW
 bBg
-bBg
-bIo
-eBL
+eCe
+eKE
+etP
 bBg
 bBg
 bBg
@@ -168588,11 +169118,11 @@ bBg
 bIR
 bBg
 bJi
+bIo
 bBg
-bBg
-bBg
+bpC
+eKC
 bCp
-bBg
 bBg
 bBg
 bCp
@@ -168822,7 +169352,7 @@ bBG
 etO
 bBl
 bxi
-bxi
+eKe
 bxi
 bxi
 bzf
@@ -169152,7 +169682,7 @@ bGp
 bGp
 bGp
 bGp
-bBl
+eKx
 bBl
 bBP
 bId
@@ -169710,9 +170240,9 @@ bBz
 bBk
 bBl
 bBl
-bBl
-bJW
-bBl
+eKv
+eKt
+eKr
 bBl
 bBl
 bBl
@@ -169895,9 +170425,9 @@ bEm
 bBm
 bBl
 bBl
-bBl
-bBl
-bBl
+eKu
+eKs
+eKq
 diI
 bBl
 bBl
@@ -170278,7 +170808,7 @@ diH
 dbE
 cXm
 cYD
-diH
+eKo
 cXc
 cXa
 bBm
@@ -171531,7 +172061,7 @@ bBl
 bBl
 etM
 bxj
-etw
+eKI
 dnV
 bzi
 bzi

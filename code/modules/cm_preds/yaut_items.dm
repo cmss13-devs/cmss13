@@ -455,37 +455,40 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 		#define TELEPORT_YAUTJA_SHIP "Yautja Ship"
 
 		to_chat(user, SPAN_WARNING("You start messing around with the alien device...going against the scream in your gut."))
-		if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-			var/teleport_location = pick(TELEPORT_HUMAN_SHIP, TELEPORT_YAUTJA_SHIP)
-			var/turf/target_turf
-			var/tele_time = animation_teleport_quick_out(user)
-			var/list/targets = list()
+		if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(user, SPAN_WARNING("You were interrupted!"))
+			return
+
+		var/teleport_location = pick(TELEPORT_HUMAN_SHIP, TELEPORT_YAUTJA_SHIP)
+		var/turf/target_turf
+		var/tele_time = animation_teleport_quick_out(user)
+		var/list/targets = list()
 
 
-			switch(teleport_location)
-				if(TELEPORT_YAUTJA_SHIP)
-					var/obj/effect/landmark/yautja_spawn/destination = pick(GLOB.yautja_ship_spawn)
-					target_turf = get_turf(destination)
+		switch(teleport_location)
+			if(TELEPORT_YAUTJA_SHIP)
+				var/obj/effect/landmark/yautja_spawn/destination = pick(GLOB.yautja_ship_spawn)
+				target_turf = get_turf(destination)
 
-				if(TELEPORT_HUMAN_SHIP)
-					var/obj/effect/landmark/yautja_teleport/destination = pick(GLOB.mainship_yautja_teleports)
-					target_turf = get_turf(destination)
+			if(TELEPORT_HUMAN_SHIP)
+				var/obj/effect/landmark/yautja_teleport/destination = pick(GLOB.mainship_yautja_teleports)
+				target_turf = get_turf(destination)
 
-			for(var/mob/living/mobs_in_range in range(3, get_turf(H))) // Make a list because for some reason it wouldnt work any other way.
-				if(mobs_in_range.stat != DEAD)
-					targets.Add(mobs_in_range)
+		for(var/mob/living/mobs_in_range in range(3, get_turf(H))) // Make a list because for some reason it wouldnt work any other way.
+			if(mobs_in_range.stat != DEAD)
+				targets.Add(mobs_in_range)
 
-			for(var/mob/targetz in targets) // I think this will resut in some shenangians, we'll see what happens. I couldnt get tis to work any other way other then making a list.
+		for(var/mob/targetz in targets) // I think this will resut in some shenangians, we'll see what happens. I couldnt get tis to work any other way other then making a list.
 
-				animation_teleport_quick_out(targetz)
-				sleep(tele_time) // Animation delay
-				targetz.forceMove(target_turf)
-				animation_teleport_quick_in(targetz)
+			animation_teleport_quick_out(targetz)
+			sleep(tele_time) // Animation delay
+			targetz.forceMove(target_turf)
+			animation_teleport_quick_in(targetz)
 
-				user.visible_message(SPAN_DANGER("[targetz] dissapear in a puff of smoke!"))
+			user.visible_message(SPAN_DANGER("[targetz] dissapear in a puff of smoke!"))
 
-			qdel(src)
-			user.visible_message(SPAN_DANGER("The alien device decays into dust and ash as it breaks from the usage!"))
+		qdel(src)
+		user.visible_message(SPAN_DANGER("The alien device decays into dust and ash as it breaks from the usage!"))
 
 		#undef TELEPORT_HUMAN_SHIP
 		#undef TELEPORT_YAUTJA_SHIP

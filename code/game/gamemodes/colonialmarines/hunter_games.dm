@@ -150,7 +150,8 @@
 /datum/game_mode/hunter_games/process()
 	. = ..() // parent just returns false, so effectively . = FALSE
 
-	if(--round_started > 0)
+	if(round_started > 0)
+		--round_started
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if((++round_checkwin >= 10) && GLOB.round_should_check_for_win) //Only check win conditions every 10 cycles, skip if round end checks disabled.
@@ -271,19 +272,19 @@
 		if(potential_contestant.stat != CONSCIOUS)
 			continue
 
-		if(!(potential_contestant.z in z_levels))
-			continue
-
 		if(should_block_game_interaction(potential_contestant))
-			continue
-
-		if(isxeno(potential_contestant))
-			xeno_count++
 			continue
 
 		if(!ishuman_strict(potential_contestant)) // Preds counted separately.
 			if(isyautja(potential_contestant))
 				yautja_count++
+			continue
+
+		if(!(potential_contestant.z in z_levels))
+			continue
+
+		if(isxeno(potential_contestant))
+			xeno_count++
 			continue
 
 		human_count++ //Add them to the amount of people who're alive.

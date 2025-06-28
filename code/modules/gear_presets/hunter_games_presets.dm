@@ -6,7 +6,8 @@ GLOBAL_LIST_EMPTY(spawned_contestants)
 	title = "Hunted Survivor"
 	disp_title = JOB_HUNTER_GAMES
 	// For the roundstart precount, then gets further limited by set_spawn_positions.
-	total_positions = -1
+	total_positions = 999 // however many people are online.
+	spawn_positions = 999
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
 

@@ -1,10 +1,10 @@
 /// Objects for the hunter games mode
 
-/obj/item/storage/pouch/survival/hunter_games // missing the knife, radio, and light
+/obj/item/storage/pouch/survival/hunter_games // missing the knife, radio, and light, + painkillers
 	name = "survival pouch"
 	desc = "It's all you woke up with..."
 	icon_state = "tools"
-	storage_slots = 4
+	storage_slots = 5
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/tool/crowbar,
@@ -16,6 +16,7 @@
 /obj/item/storage/pouch/survival/hunter_games/full/fill_preset_inventory()
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
+	new /obj/item/storage/pill_bottle/packet/oxycodone(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/splint(src)
 

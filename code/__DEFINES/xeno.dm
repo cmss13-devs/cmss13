@@ -179,10 +179,10 @@
 #define XENO_PYLON_DESTRUCTION_DELAY (5 MINUTES)
 
 /// Evolution boost during hijack
-#define XENO_HIJACK_EVILUTION_BUFF 10
+#define XENO_HIJACK_EVILUTION_BUFF 50
 
 /// For how long the buff lasts
-#define XENO_HIJACK_EVILUTION_TIME (3 MINUTES)
+#define XENO_HIJACK_EVILUTION_TIME (45 SECONDS)
 
 /// If this is marine to xeno ratio during hijack, xenos see marines on tacmap
 #define HIJACK_RATIO_FOR_TACMAP 0.8

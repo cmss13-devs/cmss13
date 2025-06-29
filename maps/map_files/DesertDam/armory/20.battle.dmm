@@ -1,0 +1,444 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"bx" = (
+/obj/structure/closet/l3closet/security,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison/floor_marked,
+/area/desert_dam/building/security/armory)
+"cq" = (
+/turf/open/floor/prison/darkred2/southeast,
+/area/desert_dam/building/security/armory)
+"dU" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null;
+	opened = 1
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"iV" = (
+/turf/open/floor/prison/darkred2/north,
+/area/desert_dam/building/security/armory)
+"ks" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/launcher/grenade/m81{
+	pixel_y = 2
+	},
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"lQ" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/building/security/armory)
+"mJ" = (
+/obj/structure/closet/l3closet/security,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/prison/floor_marked,
+/area/desert_dam/building/security/armory)
+"mY" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null;
+	opened = 1
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/desert_dam/building/security/armory)
+"nB" = (
+/turf/open/floor/prison/darkred2/east,
+/area/desert_dam/building/security/armory)
+"pZ" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/handful/shotgun/beanbag,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"rf" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/platingdmg3,
+/area/desert_dam/building/security/armory)
+"ri" = (
+/turf/closed/wall/r_wall/prison,
+/area/desert_dam/building/security/armory)
+"rB" = (
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"ss" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"uQ" = (
+/obj/item/ammo_magazine/revolver/cmb{
+	pixel_y = -5
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/desert_dam/building/security/armory)
+"vU" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/packet/baton_slug,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"wd" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/item/stack/cable_coil{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/desert_dam/building/security/armory)
+"wy" = (
+/turf/open/floor/prison/floor_marked,
+/area/desert_dam/building/security/armory)
+"yy" = (
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"zl" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/desert_dam/building/security/armory)
+"AR" = (
+/obj/structure/surface/rack,
+/obj/item/explosive/plastic/breaching_charge/rubber,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"DO" = (
+/turf/open/floor/prison/darkredcorners2/east,
+/area/desert_dam/building/security/armory)
+"Eo" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/packet/m15/rubber,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"Eq" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/revolver/cmb,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"Et" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkred2,
+/area/desert_dam/building/security/armory)
+"Fe" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"Ff" = (
+/turf/template_noop,
+/area/template_noop)
+"Fk" = (
+/turf/open/floor/prison/darkred2,
+/area/desert_dam/building/security/armory)
+"FK" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	name = "\improper Armoury";
+	welded = 1
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"Gv" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/building/security/staffroom)
+"Hx" = (
+/obj/item/frame/rack,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"It" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/flashbangs{
+	pixel_x = 3;
+	pixel_y = -2
+	},
+/obj/item/storage/box/flashbangs,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"JT" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null;
+	opened = 1
+	},
+/obj/item/clothing/head/helmet/riot/vintage_riot,
+/turf/open/floor/prison/darkred2/west,
+/area/desert_dam/building/security/armory)
+"Kc" = (
+/obj/structure/surface/rack,
+/obj/item/storage/box/nade_box/tear_gas,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"Kq" = (
+/obj/structure/machinery/flasher/portable,
+/turf/open/floor/prison/floor_marked,
+/area/desert_dam/building/security/armory)
+"KH" = (
+/obj/item/weapon/shield/riot{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/platingdmg1,
+/area/desert_dam/building/security/armory)
+"MK" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/obj/effect/spawner/random/gun/cmb/highchance,
+/turf/open/floor/prison/darkredcorners2/north,
+/area/desert_dam/building/security/armory)
+"Od" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null;
+	opened = 1
+	},
+/obj/item/clothing/suit/armor/riot,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"Oj" = (
+/turf/open/floor/prison/darkred2/northeast,
+/area/desert_dam/building/security/armory)
+"OJ" = (
+/obj/structure/surface/rack,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"QR" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = 12
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_y = 32;
+	layer = 3.6;
+	pixel_x = -4
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/desert_dam/building/security/armory)
+"Rp" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/darkredcorners2/west,
+/area/desert_dam/building/security/staffroom)
+"SO" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null;
+	opened = 1
+	},
+/obj/item/ammo_magazine/handful/shotgun/slug,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"Tz" = (
+/turf/closed/wall/r_wall/prison,
+/area/desert_dam/building/security/staffroom)
+"Vh" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/prison/floor_marked,
+/area/desert_dam/building/security/armory)
+"Wg" = (
+/obj/item/weapon/gun/revolver/cmb{
+	pixel_y = 7
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+"Xb" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null;
+	opened = 1
+	},
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/armory)
+"XS" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
+/turf/open/floor/prison/floor_marked,
+/area/desert_dam/building/security/armory)
+"XV" = (
+/turf/open/floor/prison/darkredcorners2/southwest,
+/area/desert_dam/building/security/staffroom)
+"XY" = (
+/turf/open/floor/plating,
+/area/desert_dam/building/security/armory)
+"YX" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
+
+(1,1,1) = {"
+Ff
+Ff
+ri
+ri
+ri
+ri
+FK
+ri
+ri
+ri
+"}
+(2,1,1) = {"
+Ff
+Ff
+ri
+mY
+JT
+DO
+YX
+Fk
+dU
+ri
+"}
+(3,1,1) = {"
+Ff
+Rp
+ri
+rf
+KH
+rB
+rB
+Fk
+Od
+ri
+"}
+(4,1,1) = {"
+Ff
+Gv
+lQ
+XY
+yy
+Hx
+pZ
+Fk
+OJ
+ri
+"}
+(5,1,1) = {"
+Ff
+XV
+ri
+wd
+MK
+rB
+rB
+Et
+ri
+ri
+"}
+(6,1,1) = {"
+Ff
+Ff
+ri
+XS
+QR
+Fe
+Eq
+Fk
+It
+ri
+"}
+(7,1,1) = {"
+Ff
+Ff
+ri
+mJ
+uQ
+Wg
+rB
+Fk
+Xb
+ri
+"}
+(8,1,1) = {"
+Ff
+Ff
+ri
+bx
+iV
+Fe
+Hx
+Fk
+SO
+ri
+"}
+(9,1,1) = {"
+Ff
+Ff
+ri
+ri
+zl
+rB
+rB
+Et
+ri
+ri
+"}
+(10,1,1) = {"
+Ff
+Ff
+ri
+wy
+iV
+Eo
+AR
+Fk
+Kc
+ri
+"}
+(11,1,1) = {"
+Ff
+Ff
+ri
+wy
+iV
+rB
+rB
+Fk
+ks
+ri
+"}
+(12,1,1) = {"
+Ff
+Ff
+ri
+Vh
+Oj
+nB
+nB
+cq
+vU
+ri
+"}
+(13,1,1) = {"
+Ff
+Ff
+ri
+ri
+ri
+Kq
+Kq
+Kq
+ri
+ri
+"}
+(14,1,1) = {"
+Ff
+Ff
+Tz
+ss
+ri
+ri
+ri
+ri
+ri
+ss
+"}

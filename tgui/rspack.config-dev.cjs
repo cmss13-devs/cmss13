@@ -78,14 +78,13 @@ module.exports = (env = {}, argv) => {
         },
         {
           test: /\.(png|jpg)$/,
-          use: [
+          oneOf: [
             {
-              loader: require.resolve('url-loader'),
-              options: {
-                esModule: false,
-                outputPath: 'assets/',
-                publicPath: '/assets/',
-              },
+              issuer: /\.(s)?css$/,
+              type: 'asset/inline',
+            },
+            {
+              type: 'asset/resource',
             },
           ],
         },
@@ -97,16 +96,7 @@ module.exports = (env = {}, argv) => {
               type: 'asset/inline',
             },
             {
-              use: [
-                {
-                  loader: require.resolve('url-loader'),
-                  options: {
-                    esModule: false,
-                    outputPath: 'assets/',
-                    publicPath: '/assets/',
-                  },
-                },
-              ],
+              type: 'asset/resource',
             },
           ],
         },

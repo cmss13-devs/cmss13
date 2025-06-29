@@ -1,8 +1,6 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF")
-	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/spaceport/cargo)
 "ai" = (
@@ -1186,8 +1184,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "pN" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -1979,8 +1976,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/floor/strata/blue3/east,
 /area/lv759/indoors/spaceport/docking_bay_2)
@@ -3353,9 +3349,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Xw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF")
-	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "XC" = (

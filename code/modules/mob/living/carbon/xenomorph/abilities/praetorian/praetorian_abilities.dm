@@ -289,8 +289,6 @@
 	spray_type = ACID_SPRAY_LINE
 	spray_distance = 7
 	spray_effect_type = /obj/effect/xenomorph/spray/praetorian
-	activation_delay = TRUE
-	activation_delay_length = 5
 
 ///////////////////////// VALKYRIE PRAE
 

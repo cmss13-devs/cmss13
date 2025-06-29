@@ -26,6 +26,7 @@
 	/// The maximum amount of lesser drone spawns this pylon can hold
 	var/lesser_drone_spawn_limit = 5
 
+	plane = GAME_PLANE
 	layer = WINDOW_LAYER
 
 /obj/effect/alien/resin/special/pylon/endgame/update_icon()

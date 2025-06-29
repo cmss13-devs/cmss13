@@ -20,8 +20,6 @@
 	var/plasma_stored = 0
 	var/plasma_required_to_repair = 300
 
-	plane = FLOOR_PLANE
-
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
 	. = ..()
 	node = place_node()

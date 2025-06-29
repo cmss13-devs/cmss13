@@ -89,13 +89,21 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	sleep(2 SECONDS)
 	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
 	to_world(SPAN_ROLE_HEADER("FUN FACTS"))
-	var/list/fact_types = subtypesof(/datum/random_fact)
+	var/list/fact_types = shuffle(subtypesof(/datum/random_fact))
+	var/facts_so_far = 0
 	for(var/fact_type as anything in fact_types)
-		var/datum/random_fact/fact_human = new fact_type(set_check_human = TRUE, set_check_xeno = FALSE)
-		fact_human.announce()
+		var/datum/random_fact/fact_human = new fact_type(check_human=TRUE, check_xeno=FALSE)
+		if(fact_human.announce())
+			facts_so_far++
+		if(facts_so_far >= MAX_FACTION_FACTS_TO_ANNOUNCE)
+			break
+	facts_so_far = 0
 	for(var/fact_type as anything in fact_types)
-		var/datum/random_fact/fact_xeno = new fact_type(set_check_human = FALSE, set_check_xeno = TRUE)
-		fact_xeno.announce()
+		var/datum/random_fact/fact_xeno = new fact_type(check_human=FALSE, check_xeno=TRUE)
+		if(fact_xeno.announce())
+			facts_so_far++
+		if(facts_so_far >= MAX_FACTION_FACTS_TO_ANNOUNCE)
+			break
 	to_chat_spaced(world, margin_top = 0, html = SPAN_ROLE_BODY("|______________________|"))
 
 //===================================================\\

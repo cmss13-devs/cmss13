@@ -402,6 +402,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 /client/proc/PostLogin()
+	var/static/list/logged_in = list()
+	if(REF(client) in logged_in)
+		stack_trace("Debug: same client logging in twice")
+
+	logged_in |= REF(client)
+
 	add_verb(src, collect_client_verbs())
 
 	acquire_dpi()

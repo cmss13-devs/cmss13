@@ -1,8 +1,0 @@
-author: "Zenith, AmoryBlaine"
-delete-after: True
-changes:
-  - rscadd: "Added new civilian default preset with various tweaks to the old ones"
-  - rscadd: "Added EMT, KMCC Miner & Firefighter survivors to Solaris, LV & Trijent"
-  - rscadd: "Added random rare item to  /civilian & /civilian/unique roles."
-  - imageadd: "added various new apparel sprites and replaced many legacy clothing sprites."
-  - imageadd: "added comfy bedrolls and bedsheets for bedrolls."

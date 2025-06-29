@@ -1,5 +1,4 @@
 import { toFixed } from 'common/math';
-import { capitalize } from 'common/string';
 import { useDispatch, useSelector } from 'tgui/backend';
 import {
   Button,
@@ -13,7 +12,6 @@ import {
 import { updateSettings } from '../actions';
 import { selectSettings } from '../selectors';
 
-const TabsViews = ['default', 'classic', 'scrollable'];
 const LinkedToChat = () => (
   <NoticeBox color="red">Unlink Stat Panel from chat!</NoticeBox>
 );
@@ -28,20 +26,6 @@ export function SettingsStatPanel(props) {
       <Stack fill vertical>
         <Stack.Item>
           <LabeledList>
-            <LabeledList.Item label="Tabs" verticalAlign="middle">
-              {TabsViews.map((view) => (
-                <Button
-                  key={view}
-                  color="transparent"
-                  selected={statTabsStyle === view}
-                  onClick={() =>
-                    dispatch(updateSettings({ statTabsStyle: view }))
-                  }
-                >
-                  {capitalize(view)}
-                </Button>
-              ))}
-            </LabeledList.Item>
             <LabeledList.Item label="Font size">
               <Stack.Item grow>
                 {statLinked ? (

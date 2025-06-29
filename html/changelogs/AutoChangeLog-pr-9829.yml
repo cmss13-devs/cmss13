@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "CIA sleepy pens now have 15 chloral hydrate instead of 30, preventing overdoses. Happy kidnapping!"

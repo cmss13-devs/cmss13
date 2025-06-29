@@ -27,6 +27,12 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 /mob/unauthenticated/Login()
 	. = ..()
 
+	var/static/list/logged_in = list()
+	if(REF(client) in logged_in)
+		stack_trace("Debug: same client logging in twice")
+
+	logged_in |= REF(client)
+
 	client.acquire_dpi()
 
 	var/static/datum/preferences/dummy_preferences

@@ -75,7 +75,7 @@
 /turf/open/floor/wall_thermite,
 /area/bigredv2/outside/medical)
 "gx" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/medical)
@@ -456,7 +456,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/medical)
 "st" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "sA" = (
@@ -895,7 +895,7 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/medical)
 "Gh" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/medical)
 "Gn" = (
@@ -968,7 +968,7 @@
 "IZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "Ja" = (
@@ -1011,7 +1011,7 @@
 /area/bigredv2/outside/medical)
 "JF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/medical)
 "JH" = (
@@ -1098,7 +1098,7 @@
 "MZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/medical)
 "Ng" = (

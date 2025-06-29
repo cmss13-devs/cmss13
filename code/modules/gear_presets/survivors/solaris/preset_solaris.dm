@@ -92,6 +92,15 @@
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/marshal
 	skills = /datum/skills/cmb/co_survivor
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+	)
 
 /datum/equipment_preset/survivor/solaris_ridge/co_survivor/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform, WEAR_BODY)

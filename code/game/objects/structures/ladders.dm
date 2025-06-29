@@ -14,6 +14,8 @@
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
 	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
+	var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
+
 
 /obj/structure/ladder/Initialize(mapload, ...)
 	. = ..()
@@ -73,17 +75,17 @@
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
+
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
 	if(up && down)
-		ladder_dir_name = alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel")
-		if(ladder_dir_name == "Cancel")
-			return
-		ladder_dir_name = lowertext(ladder_dir_name)
-		if(ladder_dir_name == "up")
+		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+		if(ladder_dest == "up")
 			ladder_dest = up
-		else
+			ladder_dir_name = ("up")
+		if(ladder_dest == "down")
 			ladder_dest = down
+			ladder_dir_name = ("down")
 	else if(up)
 		ladder_dir_name = "up"
 		ladder_dest = up
@@ -91,7 +93,10 @@
 		ladder_dir_name = "down"
 		ladder_dest = down
 	else
-		return //just in case
+		return FALSE //just in case
+
+	if(!ladder_dest)
+		return
 
 	step(user, get_dir(user, src))
 	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),

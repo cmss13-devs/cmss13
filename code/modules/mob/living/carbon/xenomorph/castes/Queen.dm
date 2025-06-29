@@ -32,8 +32,6 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/queen
 
-	spit_delay = 25
-
 	tackle_min = 2
 	tackle_max = 6
 	tackle_chance = 55

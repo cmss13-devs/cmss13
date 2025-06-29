@@ -811,7 +811,6 @@
 		spitting = FALSE
 		return
 
-	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )

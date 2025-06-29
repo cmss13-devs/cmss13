@@ -360,3 +360,19 @@
       specialized back holster and ammo to ComTech as an alternative equipment choice
       to sentry guns.
   - rscdel: XM-51 Breaching Scattergun no longer available in Marine supply.
+2025-06-29:
+  DarkLordCabbage:
+  - balance: Changes the pylon layer, preventing it from being hidden behind stuff
+      like lockers.
+  - rscadd: Added the sterile mask to the character customization gear menu
+  MistChristmas, Drathek:
+  - rscadd: Languages use '!' prefix instead of sharing prefixes with Radio Channels.
+      Provost channel changed to '#l'.
+  - code_imp: Re-org RADIO_PREFIXES, langauges, and department radio keys into mostly
+      alphabetical order. Remove Uppercase instances. Add missing colours for tgui
+      say.
+  - qol: Languages pop up in TGUI-say if you switch to them whilst not being on a
+      radio channel
+  Red-byte3D:
+  - bugfix: CIA sleepy pens now have 15 chloral hydrate instead of 30, preventing
+      overdoses. Happy kidnapping!

@@ -20,498 +20,6 @@ export enum LineLength {
  * label - string. button label.
  */
 export const RADIO_PREFIXES = {
-  ':m ': {
-    id: 'medsci',
-    label: 'MedSci',
-  },
-  ':n ': {
-    id: 'engi',
-    label: 'Engi',
-  },
-  ':g ': {
-    id: 'ship',
-    label: 'Ship',
-  },
-  ':v ': {
-    id: 'command',
-    label: 'Cmd.',
-  },
-  ':a ': {
-    id: 'alpha',
-    label: 'Alpha',
-  },
-  ':b ': {
-    id: 'bravo',
-    label: 'Bravo',
-  },
-  ':c ': {
-    id: 'charlie',
-    label: 'Charl.',
-  },
-  ':d ': {
-    id: 'delta',
-    label: 'Delta',
-  },
-  ':e ': {
-    id: 'echo',
-    label: 'Echo',
-  },
-  ':f ': {
-    id: 'foxtrot',
-    label: 'Foxtr.',
-  },
-  ':p ': {
-    id: 'security',
-    label: 'MP',
-  },
-  ':u ': {
-    id: 'req',
-    label: 'Req',
-  },
-  ':j ': {
-    id: 'jtac',
-    label: 'JTAC',
-  },
-  ':t ': {
-    id: 'intel',
-    label: 'Int',
-  },
-  ':y ': {
-    id: 'wy',
-    label: 'W-Y',
-  },
-  ':o ': {
-    id: 'colony',
-    label: 'Colony',
-  },
-  ':z ': {
-    id: 'highcom',
-    label: 'HC',
-  },
-  ':k ': {
-    id: 'sof',
-    label: 'SOF',
-  },
-  ':q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  ':M ': {
-    id: 'medsci',
-    label: 'MedSci',
-  },
-  ':N ': {
-    id: 'engi',
-    label: 'Engi',
-  },
-  ':G ': {
-    id: 'ship',
-    label: 'Ship',
-  },
-  ':V ': {
-    id: 'command',
-    label: 'Cmd.',
-  },
-  ':A ': {
-    id: 'alpha',
-    label: 'Alpha',
-  },
-  ':B ': {
-    id: 'bravo',
-    label: 'Bravo',
-  },
-  ':C ': {
-    id: 'charlie',
-    label: 'Charl.',
-  },
-  ':D ': {
-    id: 'delta',
-    label: 'Delta',
-  },
-  ':E ': {
-    id: 'echo',
-    label: 'Echo',
-  },
-  ':F ': {
-    id: 'foxtrot',
-    label: 'Foxtr.',
-  },
-  ':P ': {
-    id: 'security',
-    label: 'MP',
-  },
-  ':U ': {
-    id: 'req',
-    label: 'Req',
-  },
-  ':J ': {
-    id: 'jtac',
-    label: 'JTAC',
-  },
-  ':T ': {
-    id: 'intel',
-    label: 'Int',
-  },
-  ':Y ': {
-    id: 'wy',
-    label: 'W-Y',
-  },
-  ':O ': {
-    id: 'colony',
-    label: 'Colony',
-  },
-  ':Z ': {
-    id: 'highcom',
-    label: 'HC',
-  },
-  ':K ': {
-    id: 'sof',
-    label: 'SOF',
-  },
-  ':Q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  '.m ': {
-    id: 'medsci',
-    label: 'MedSci',
-  },
-  '.n ': {
-    id: 'engi',
-    label: 'Engi',
-  },
-  '.g ': {
-    id: 'ship',
-    label: 'Ship',
-  },
-  '.v ': {
-    id: 'command',
-    label: 'Cmd.',
-  },
-  '.a ': {
-    id: 'alpha',
-    label: 'Alpha',
-  },
-  '.b ': {
-    id: 'bravo',
-    label: 'Bravo',
-  },
-  '.c ': {
-    id: 'charlie',
-    label: 'Charl.',
-  },
-  '.d ': {
-    id: 'delta',
-    label: 'Delta',
-  },
-  '.e ': {
-    id: 'echo',
-    label: 'Echo',
-  },
-  '.f ': {
-    id: 'foxtrot',
-    label: 'Foxtr.',
-  },
-  '.p ': {
-    id: 'security',
-    label: 'MP',
-  },
-  '.u ': {
-    id: 'req',
-    label: 'Req',
-  },
-  '.j ': {
-    id: 'jtac',
-    label: 'JTAC',
-  },
-  '.t ': {
-    id: 'intel',
-    label: 'Int',
-  },
-  '.y ': {
-    id: 'wy',
-    label: 'W-Y',
-  },
-  '.o ': {
-    id: 'colony',
-    label: 'Colony',
-  },
-  '.z ': {
-    id: 'highcom',
-    label: 'HC',
-  },
-  '.k ': {
-    id: 'sof',
-    label: 'SOF',
-  },
-  '.q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  '.M ': {
-    id: 'medsci',
-    label: 'MedSci',
-  },
-  '.N ': {
-    id: 'engi',
-    label: 'Engi',
-  },
-  '.G ': {
-    id: 'ship',
-    label: 'Ship',
-  },
-  '.V ': {
-    id: 'command',
-    label: 'Cmd.',
-  },
-  '.A ': {
-    id: 'alpha',
-    label: 'Alpha',
-  },
-  '.B ': {
-    id: 'bravo',
-    label: 'Bravo',
-  },
-  '.C ': {
-    id: 'charlie',
-    label: 'Charl.',
-  },
-  '.D ': {
-    id: 'delta',
-    label: 'Delta',
-  },
-  '.E ': {
-    id: 'echo',
-    label: 'Echo',
-  },
-  '.F ': {
-    id: 'foxtrot',
-    label: 'Foxtr.',
-  },
-  '.P ': {
-    id: 'security',
-    label: 'MP',
-  },
-  '.U ': {
-    id: 'req',
-    label: 'Req',
-  },
-  '.J ': {
-    id: 'jtac',
-    label: 'JTAC',
-  },
-  '.T ': {
-    id: 'intel',
-    label: 'Int',
-  },
-  '.Y ': {
-    id: 'wy',
-    label: 'W-Y',
-  },
-  '.O ': {
-    id: 'colony',
-    label: 'Colony',
-  },
-  '.Z ': {
-    id: 'highcom',
-    label: 'HC',
-  },
-  '.K ': {
-    id: 'sof',
-    label: 'SOF',
-  },
-  '.Q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  '#m ': {
-    id: 'upp-med',
-    label: 'UPP Med',
-  },
-  '#n ': {
-    id: 'upp-engi',
-    label: 'UPP Engi',
-  },
-  '#g ': {
-    id: 'clf',
-    label: 'clf',
-  },
-  '#v ': {
-    id: 'upp-cmd',
-    label: 'UPP Cmd.',
-  },
-  '#a ': {
-    id: 'clf-med',
-    label: 'CLF Med',
-  },
-  '#b ': {
-    id: 'clf-engi',
-    label: 'CLF Engi',
-  },
-  '#c ': {
-    id: 'clf-cmd',
-    label: 'CLF Cmd.',
-  },
-  '#d ': {
-    id: 'clf-cct',
-    label: 'CLF CCT',
-  },
-  '#e ': {
-    id: 'pmc-engi',
-    label: 'PMC Engi',
-  },
-  '#f ': {
-    id: 'pmc-med',
-    label: 'PMC Med',
-  },
-  '#p ': {
-    id: 'pmc',
-    label: 'PMC',
-  },
-  '#u ': {
-    id: 'upp',
-    label: 'UPP',
-  },
-  '#j ': {
-    id: 'upp-cct',
-    label: 'UPP CCT',
-  },
-  '#t ': {
-    id: 'upp-kdo',
-    label: 'UPP Kdo',
-  },
-  '#y ': {
-    id: 'wy',
-    label: 'W-Y',
-  },
-  '#o ': {
-    id: 'pmc-cct',
-    label: 'PMC CCT',
-  },
-  '#z ': {
-    id: 'pmc-cmd',
-    label: 'PMC Cmd.',
-  },
-  '#k ': {
-    id: 'specops',
-    label: 'SpecOps',
-  },
-  '#q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  '#M ': {
-    id: 'upp-med',
-    label: 'UPP Med',
-  },
-  '#N ': {
-    id: 'upp-engi',
-    label: 'UPP Engi',
-  },
-  '#G ': {
-    id: 'clf',
-    label: 'clf',
-  },
-  '#V ': {
-    id: 'upp-cmd',
-    label: 'UPP Cmd.',
-  },
-  '#A ': {
-    id: 'clf-med',
-    label: 'CLF Med',
-  },
-  '#B ': {
-    id: 'clf-engi',
-    label: 'CLF Engi',
-  },
-  '#C ': {
-    id: 'clf-cmd',
-    label: 'CLF Cmd.',
-  },
-  '#D ': {
-    id: 'clf-cct',
-    label: 'CLF CCT',
-  },
-  '#E ': {
-    id: 'pmc-engi',
-    label: 'PMC Engi',
-  },
-  '#F ': {
-    id: 'pmc-med',
-    label: 'PMC Med',
-  },
-  '#P ': {
-    id: 'pmc',
-    label: 'PMC',
-  },
-  '#U ': {
-    id: 'upp',
-    label: 'UPP',
-  },
-  '#J ': {
-    id: 'upp-cct',
-    label: 'UPP CCT',
-  },
-  '#T ': {
-    id: 'upp-kdo',
-    label: 'UPP Kdo',
-  },
-  '#Y ': {
-    id: 'wy',
-    label: 'W-Y',
-  },
-  '#O ': {
-    id: 'pmc-cct',
-    label: 'PMC CCT',
-  },
-  '#Z ': {
-    id: 'pmc-cmd',
-    label: 'PMC Cmd.',
-  },
-  '#K ': {
-    id: 'specops',
-    label: 'SpecOps',
-  },
-  '#Q ': {
-    id: 'hive',
-    label: 'Hive',
-  },
-  ':W ': {
-    id: 'whisper',
-    label: 'Whisper',
-  },
-  '.W ': {
-    id: 'whisper',
-    label: 'Whisper',
-  },
-  '#W ': {
-    id: 'whisper',
-    label: 'Whisper',
-  },
-  ':w ': {
-    id: 'whisper',
-    label: 'Whisper',
-  },
-  '.w ': {
-    id: 'whisper',
-    label: 'Whisper',
-  },
-  '#w ': {
-    id: 'whisper',
-    label: 'Whisper',
-  },
-  ':H ': {
-    id: 'department',
-    label: 'Depart.',
-  },
-  '.H ': {
-    id: 'department',
-    label: 'Depart.',
-  },
-  '#H ': {
-    id: 'department',
-    label: 'Depart.',
-  },
   ':h ': {
     id: 'department',
     label: 'Depart.',
@@ -523,54 +31,6 @@ export const RADIO_PREFIXES = {
   '#h ': {
     id: 'department',
     label: 'Depart.',
-  },
-  ':l ': {
-    id: 'comms',
-    label: 'L Hand',
-  },
-  '.l ': {
-    id: 'comms',
-    label: 'L Hand',
-  },
-  '#l ': {
-    id: 'comms',
-    label: 'L Hand',
-  },
-  ':L ': {
-    id: 'comms',
-    label: 'L Hand',
-  },
-  '.L ': {
-    id: 'comms',
-    label: 'L Hand',
-  },
-  '#L ': {
-    id: 'comms',
-    label: 'L Hand',
-  },
-  ':r ': {
-    id: 'comms',
-    label: 'R Hand',
-  },
-  '.r ': {
-    id: 'comms',
-    label: 'R Hand',
-  },
-  '#r ': {
-    id: 'comms',
-    label: 'R Hand',
-  },
-  ':R ': {
-    id: 'comms',
-    label: 'R Hand',
-  },
-  '.R ': {
-    id: 'comms',
-    label: 'R Hand',
-  },
-  '#R ': {
-    id: 'comms',
-    label: 'R Hand',
   },
   ':i ': {
     id: 'comms',
@@ -584,16 +44,359 @@ export const RADIO_PREFIXES = {
     id: 'comms',
     label: 'Intercom',
   },
-  ':I ': {
+  ':l ': {
     id: 'comms',
-    label: 'Intercom',
+    label: 'L Hand',
   },
-  '.I ': {
+  '.l ': {
     id: 'comms',
-    label: 'Intercom',
+    label: 'L Hand',
   },
-  '#I ': {
+  ':r ': {
     id: 'comms',
-    label: 'Intercom',
+    label: 'R Hand',
+  },
+  '.r ': {
+    id: 'comms',
+    label: 'R Hand',
+  },
+  ':w ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  '.w ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  '#w ': {
+    id: 'whisper',
+    label: 'Whisper',
+  },
+  ':a ': {
+    id: 'alpha',
+    label: 'Alpha',
+  },
+  '.a ': {
+    id: 'alpha',
+    label: 'Alpha',
+  },
+  '#a ': {
+    id: 'clf-med',
+    label: 'CLF Med',
+  },
+  ':b ': {
+    id: 'bravo',
+    label: 'Bravo',
+  },
+  '.b ': {
+    id: 'bravo',
+    label: 'Bravo',
+  },
+  '#b ': {
+    id: 'clf-engi',
+    label: 'CLF Engi',
+  },
+  ':c ': {
+    id: 'charlie',
+    label: 'Charl.',
+  },
+  '.c ': {
+    id: 'charlie',
+    label: 'Charl.',
+  },
+  '#c ': {
+    id: 'clf-cmd',
+    label: 'CLF Cmd.',
+  },
+  ':d ': {
+    id: 'delta',
+    label: 'Delta',
+  },
+  '.d ': {
+    id: 'delta',
+    label: 'Delta',
+  },
+  '#d ': {
+    id: 'clf-cct',
+    label: 'CLF CCT',
+  },
+  ':e ': {
+    id: 'echo',
+    label: 'Echo',
+  },
+  '.e ': {
+    id: 'echo',
+    label: 'Echo',
+  },
+  '#e ': {
+    id: 'pmc-engi',
+    label: 'PMC Engi',
+  },
+  ':f ': {
+    id: 'foxtrot',
+    label: 'Foxtr.',
+  },
+  '.f ': {
+    id: 'foxtrot',
+    label: 'Foxtr.',
+  },
+  '#f ': {
+    id: 'pmc-med',
+    label: 'PMC Med',
+  },
+  ':g ': {
+    id: 'ship',
+    label: 'Ship',
+  },
+  '.g ': {
+    id: 'ship',
+    label: 'Ship',
+  },
+  '#g ': {
+    id: 'clf',
+    label: 'CLF',
+  },
+  ':j ': {
+    id: 'jtac',
+    label: 'JTAC',
+  },
+  '.j ': {
+    id: 'jtac',
+    label: 'JTAC',
+  },
+  '#j ': {
+    id: 'upp-cct',
+    label: 'UPP CCT',
+  },
+  ':k ': {
+    id: 'sof',
+    label: 'SOF',
+  },
+  '.k ': {
+    id: 'sof',
+    label: 'SOF',
+  },
+  '#k ': {
+    id: 'specops',
+    label: 'SpecOps',
+  },
+  '#l ': {
+    id: 'provost',
+    label: 'Provost',
+  },
+  ':m ': {
+    id: 'medsci',
+    label: 'MedSci',
+  },
+  '.m ': {
+    id: 'medsci',
+    label: 'MedSci',
+  },
+  '#m ': {
+    id: 'upp-med',
+    label: 'UPP Med',
+  },
+  ':n ': {
+    id: 'engi',
+    label: 'Engi',
+  },
+  '.n ': {
+    id: 'engi',
+    label: 'Engi',
+  },
+  '#n ': {
+    id: 'upp-engi',
+    label: 'UPP Engi',
+  },
+  ':o ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  '.o ': {
+    id: 'colony',
+    label: 'Colony',
+  },
+  '#o ': {
+    id: 'pmc-cct',
+    label: 'PMC CCT',
+  },
+  ':p ': {
+    id: 'security',
+    label: 'MP',
+  },
+  '.p ': {
+    id: 'security',
+    label: 'MP',
+  },
+  '#p ': {
+    id: 'pmc',
+    label: 'PMC',
+  },
+  ':q ': {
+    id: 'hive',
+    label: 'Hive',
+  },
+  '.q ': {
+    id: 'hive',
+    label: 'Hive',
+  },
+  '#q ': {
+    id: 'hive',
+    label: 'Hive',
+  },
+  '#r ': {
+    id: 'yautja',
+    label: 'Yautja',
+  },
+  ':s ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '.s ': {
+    id: 'cia',
+    label: 'CIA',
+  },
+  '#s ': {
+    id: 'yautja',
+    label: 'Yautja Ovr.',
+  },
+  ':t ': {
+    id: 'intel',
+    label: 'Int',
+  },
+  '.t ': {
+    id: 'intel',
+    label: 'Int',
+  },
+  '#t ': {
+    id: 'upp-kdo',
+    label: 'UPP Kdo',
+  },
+  ':u ': {
+    id: 'req',
+    label: 'Req',
+  },
+  '.u ': {
+    id: 'req',
+    label: 'Req',
+  },
+  '#u ': {
+    id: 'upp',
+    label: 'UPP',
+  },
+  ':v ': {
+    id: 'command',
+    label: 'Cmd.',
+  },
+  '.v ': {
+    id: 'command',
+    label: 'Cmd.',
+  },
+  '#v ': {
+    id: 'upp-cmd',
+    label: 'UPP Cmd.',
+  },
+  ':x ': {
+    id: 'hyperdyne',
+    label: 'Hyperdyne',
+  },
+  '.x ': {
+    id: 'hyperdyne',
+    label: 'Hyperdyne',
+  },
+  '#x ': {
+    id: 'hyperdyne',
+    label: 'Hyperdyne',
+  },
+  ':y ': {
+    id: 'wy',
+    label: 'W-Y',
+  },
+  '.y ': {
+    id: 'wy',
+    label: 'W-Y',
+  },
+  '#y ': {
+    id: 'wy',
+    label: 'W-Y',
+  },
+  ':z ': {
+    id: 'highcom',
+    label: 'HC',
+  },
+  '.z ': {
+    id: 'highcom',
+    label: 'HC',
+  },
+  '#z ': {
+    id: 'pmc-cmd',
+    label: 'PMC Cmd.',
+  },
+} as const;
+
+export const LANGUAGE_PREFIXES = {
+  '!0 ': {
+    id: 'scandinavian',
+    label: 'Scandinavian',
+  },
+  '!1 ': {
+    id: 'english',
+    label: 'English',
+  },
+  '!2 ': {
+    id: 'japanese',
+    label: 'Japanese',
+  },
+  '!3 ': {
+    id: 'russian',
+    label: 'Russian',
+  },
+  '!4 ': {
+    id: 'german',
+    label: 'German',
+  },
+  '!5 ': {
+    id: 'spanish',
+    label: 'Spanish',
+  },
+  '!6 ': {
+    id: 'apollo',
+    label: 'Apollo',
+  },
+  '!7 ': {
+    id: 'telepathy',
+    label: 'Telepathy',
+  },
+  '!8 ': {
+    id: 'chinese',
+    label: 'Chinese',
+  },
+  '!9 ': {
+    id: 'french',
+    label: 'French',
+  },
+  '!x ': {
+    id: 'xenomorph',
+    label: 'Xenomporph',
+  },
+  '!l ': {
+    id: 'tatical',
+    label: 'Tacitical Sign',
+  },
+  '!s ': {
+    id: 'sainja',
+    label: 'Sainja',
+  },
+  '!h ': {
+    id: 'hellhound',
+    label: 'Hellhound',
+  },
+  '!q ': {
+    id: 'hivemind',
+    label: 'Hivemind',
+  },
+  '!_ ': {
+    id: 'primitive',
+    label: 'Primitive',
   },
 } as const;

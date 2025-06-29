@@ -48,23 +48,13 @@
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates)
 		return FALSE
-	if(!ismob(user))
-		return FALSE
-
 	var/mob/user_mob = user
-	if(!user_mob.client)
-		return FALSE
-
 	if(iscarbon(user_mob))
 		var/mob/living/carbon/user_carbon = user_mob
 		if(!user_carbon.handcuffed)
 			SwitchState()
-			return TRUE
 	else
 		SwitchState()
-		return TRUE
-
-	return FALSE
 
 /obj/structure/mineral_door/proc/SwitchState()
 	if(open)

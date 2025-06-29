@@ -1,0 +1,4 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - balance: "Changes the pylon layer, preventing it from being hidden behind stuff like lockers."

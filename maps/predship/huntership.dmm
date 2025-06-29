@@ -3571,7 +3571,7 @@
 	dir = 4;
 	layer = 3
 	},
-/obj/effect/landmark/clan_spawn,
+/obj/effect/landmark/yautja_spawn,
 /obj/structure/prop/ice_colony/tiger_rug{
 	icon_state = "Plain";
 	color = "#52443b";
@@ -4268,7 +4268,7 @@
 /area/yautja)
 "ov" = (
 /obj/effect/hunter/bridge_border/brown,
-/obj/effect/landmark/clan_spawn,
+/obj/effect/landmark/yautja_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "oy" = (
@@ -7372,7 +7372,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 8
 	},
-/obj/effect/landmark/clan_spawn,
+/obj/effect/landmark/yautja_spawn,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "zt" = (
@@ -9537,7 +9537,7 @@
 	pixel_y = 27;
 	anchored = 1
 	},
-/obj/effect/landmark/clan_spawn,
+/obj/effect/landmark/yautja_spawn,
 /obj/item/device/flashlight/lantern/yautja{
 	pixel_x = 3;
 	pixel_y = 15
@@ -10213,7 +10213,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 8
 	},
-/obj/effect/landmark/clan_spawn,
+/obj/effect/landmark/yautja_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "IT" = (
@@ -10982,7 +10982,7 @@
 	pixel_y = 36;
 	anchored = 1
 	},
-/obj/effect/landmark/clan_spawn,
+/obj/effect/landmark/yautja_spawn,
 /turf/open/shuttle/dropship/predship/tile/hunter_tile_6/north,
 /area/yautja)
 "LJ" = (
@@ -13173,7 +13173,7 @@
 /obj/effect/hunter/bridge_border/brown/corner{
 	dir = 4
 	},
-/obj/effect/landmark/clan_spawn,
+/obj/effect/landmark/yautja_spawn,
 /obj/item/device/flashlight/lantern/yautja{
 	pixel_x = -3;
 	pixel_y = -2
@@ -13564,7 +13564,7 @@
 /obj/effect/hunter/bridge_border/brown{
 	dir = 1
 	},
-/obj/effect/landmark/clan_spawn,
+/obj/effect/landmark/yautja_spawn,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_alt,
 /area/yautja)
 "Uv" = (

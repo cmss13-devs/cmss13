@@ -13,6 +13,7 @@ export type OrbitData = {
   twe: Observable[];
   clf: Observable[];
   wy: Observable[];
+  hyperdyne: Observable[];
   freelancer: Observable[];
   contractor: Observable[];
   mercenary: Observable[];

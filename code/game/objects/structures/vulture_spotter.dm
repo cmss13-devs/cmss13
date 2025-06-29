@@ -109,7 +109,7 @@
 	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Vulture spotter"))
 	user.reset_view(null)
 	user.Move(get_step(src, reverse_direction(src.dir)))
-	user.client?.change_view(GLOB.world_view_size, src)
+	user.client?.view_size.reset_to_default()
 	user.setDir(dir) //set the direction of the player to the direction the gun is facing
 	update_pixels(FALSE)
 	remove_action(user, /datum/action/vulture_tripod_unscope)

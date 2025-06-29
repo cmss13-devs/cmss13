@@ -377,7 +377,7 @@
 /client/proc/change_view(new_size, atom/source)
 	if(SEND_SIGNAL(mob, COMSIG_MOB_CHANGE_VIEW, new_size) & COMPONENT_OVERRIDE_VIEW)
 		return TRUE
-	view = mob.check_view_change(new_size, source)
+	view = new_size
 	apply_clickcatcher()
 	mob.reload_fullscreens()
 
@@ -432,18 +432,19 @@
 
 
 /proc/getviewsize(view)
-	var/viewX
-	var/viewY
 	if(isnum(view))
-		var/totalviewrange = 1 + 2 * view
-		viewX = totalviewrange
-		viewY = totalviewrange
+		var/totalviewrange = (view < 0 ? -1 : 1) + 2 * view
+		return list(totalviewrange, totalviewrange)
 	else
 		var/list/viewrangelist = splittext(view,"x")
-		viewX = text2num(viewrangelist[1])
-		viewY = text2num(viewrangelist[2])
-	return list(viewX, viewY)
+		return list(text2num(viewrangelist[1]), text2num(viewrangelist[2]))
 
+
+///Return the center turf of the user's view
+/proc/get_view_center(mob/user)
+	var/x_offset = round(user.client.pixel_x / 32)
+	var/y_offset = round(user.client.pixel_y / 32)
+	return locate(user.x + x_offset, user.y + y_offset, user.z)
 
 #if DEBUG_CLICK_RATE
 /obj/item/clickrate_test

@@ -995,8 +995,8 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod = WIELD_DELAY_FAST
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
-	var/zoom_offset = 11
-	var/zoom_viewsize = 12
+	var/zoom_offset = 9
+	var/zoom_viewsize = 6
 	var/allows_movement = 0
 	var/accuracy_scoped_buff
 	var/delay_scoped_nerf
@@ -1110,15 +1110,15 @@ Defined in conflicts.dm of the #defines folder.
 		return
 	if(zoom_level == ZOOM_LEVEL_2X)
 		zoom_level = ZOOM_LEVEL_4X
-		zoom_offset = 11
-		zoom_viewsize = 12
+		zoom_offset = 9
+		zoom_viewsize = 6
 		allows_movement = 0
 		to_chat(usr, SPAN_NOTICE("Zoom level switched to 4x"))
 		return
 	else
 		zoom_level = ZOOM_LEVEL_2X
 		zoom_offset = 6
-		zoom_viewsize = 7
+		zoom_viewsize = 3
 		allows_movement = 1
 		to_chat(usr, SPAN_NOTICE("Zoom level switched to 2x"))
 		return
@@ -1171,7 +1171,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc_lore = "A light-duty optic, designated as the AN/PVQ-45 2x Optic. Suited towards short to medium-range engagements. Users are advised to zero it often, as the first mass-production batch had a tendency to drift in one direction or another with sustained use."
 	slot = "rail"
 	zoom_offset = 6
-	zoom_viewsize = 7
+	zoom_viewsize = 3
 	allows_movement = TRUE
 	aim_speed_mod = 0
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
@@ -1219,14 +1219,12 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "An ARMAT S4 telescoping eye piece, custom-tuned by W-Y scientists to be as ergonomic as possible."
 	icon_state = "miniscope_nsg23"
 	attach_icon = "miniscope_nsg23_a"
-	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
 /obj/item/attachable/scope/mini/xm88
 	name = "XS-9 targeting relay"
 	desc = "An ARMAT XS-9 optical interface. Unlike a traditional scope, this rail-mounted device features no telescoping lens. Instead, the firearm's onboard targeting system relays data directly to the optic for the system operator to reference in realtime."
 	icon_state = "boomslang-scope"
-	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
 /obj/item/attachable/scope/mini/xm88/New()
@@ -1263,7 +1261,7 @@ Defined in conflicts.dm of the #defines folder.
 	/// How far in the perpendicular axis the scope can move in either direction
 	var/perpendicular_scope_range = 7
 	/// How far in each direction the scope should see. Default human view size is 7
-	var/scope_viewsize = 7
+	var/scope_viewsize = 3
 	/// The current X position of the scope within the sniper's view box. 0 is center
 	var/scope_offset_x = 0
 	/// The current Y position of the scope within the sniper's view box. 0 is center

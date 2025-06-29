@@ -280,7 +280,7 @@
 	if(!.)
 		return
 
-	if(user.client.view > 7)
+	if(user.client && user.client.view != user.client.view_size.default)
 		to_chat(user, SPAN_WARNING("You cannot use [src] while using optics."))
 		return FALSE
 
@@ -305,7 +305,7 @@
 
 /obj/item/device/helmet_visor/night_vision/proc/change_view(mob/user, new_size)
 	SIGNAL_HANDLER
-	if(new_size > 7) // cannot use binos with NVO
+	if(new_size != user?.client.view_size.default) // cannot use binos with NVO
 		var/obj/item/clothing/head/helmet/marine/attached_helmet = loc
 		if(!istype(attached_helmet))
 			return

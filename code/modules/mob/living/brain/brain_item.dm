@@ -73,4 +73,4 @@
 		else
 			target.key = brainmob.key
 			if(target.client)
-				target.client.change_view(GLOB.world_view_size)
+				target.client.view_size.reset_to_default()

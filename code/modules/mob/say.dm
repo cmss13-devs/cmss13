@@ -91,7 +91,7 @@
 		if(isobserver(M) && !orbiting)
 			var/mob/dead/observer/observer = M
 			var/turf/their_turf = get_turf(M)
-			if(alpha && observer.ghostvision && my_turf.z == their_turf.z && get_dist(my_turf, their_turf) <= observer.client.view)
+			if(alpha && observer.ghostvision && my_turf.z == their_turf.z && (my_turf in view(observer.client)))
 				langchat_listeners += observer
 
 		if(M.stat == DEAD)

@@ -43,7 +43,7 @@
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(GLOB.world_view_size, vehicle)
+			M.client.view_size.reset_to_default()
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -53,11 +53,11 @@
 			return
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
-			M.client.change_view(8, vehicle)
+			M.client.view_size.add(2)
 
 /obj/structure/bed/chair/comfy/vehicle/clicked(mob/user, list/mods) // If you're buckled, you can shift-click on the seat in order to return to camera-view
 	if(user == buckled_mob && mods[SHIFT_CLICK] && !user.is_mob_incapacitated())
-		user.client.change_view(8, vehicle)
+		user.client.view_size.add(2)
 		vehicle.set_seated_mob(seat, user)
 		return TRUE
 	else
@@ -180,7 +180,7 @@
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(GLOB.world_view_size, vehicle)
+			M.client.view_size.reset_to_default()
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 	else
@@ -191,9 +191,9 @@
 		if(M && M.client)
 			if(istype(vehicle, /obj/vehicle/multitile/apc))
 				var/obj/vehicle/multitile/apc/APC = vehicle
-				M.client.change_view(APC.gunner_view_buff, vehicle)
+				M.client.view_size.add(APC.gunner_view_buff)
 			else
-				M.client.change_view(8, vehicle)
+				M.client.view_size.add(2)
 
 /obj/structure/bed/chair/comfy/vehicle/gunner/armor/update_icon()
 	overlays.Cut()
@@ -260,7 +260,7 @@
 		M.unset_interaction()
 		vehicle.set_seated_mob(seat, null)
 		if(M.client)
-			M.client.change_view(GLOB.world_view_size, vehicle)
+			M.client.view_size.reset_to_default()
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 			M.reset_view()
@@ -270,7 +270,7 @@
 			return
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
-			M.client.change_view(8, vehicle)
+			M.client.view_size.add(2)
 
 		if(vehicle.health < initial(vehicle.health) / 2)
 			to_chat(M, SPAN_WARNING("\The [vehicle] is too damaged to operate the Firing Port Weapon!"))

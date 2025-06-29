@@ -21,7 +21,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/devices_righthand.dmi',
 	)
 	var/tile_offset = 11
-	var/viewsize = 12
+	var/viewsize = 10
 	var/hvh_tile_offset = 6 //same as miniscopes
 	var/hvh_zoom_viewsize = 7
 

@@ -94,6 +94,7 @@
 	// Create the strain datum and apply it to the xeno.
 	var/datum/xeno_strain/strain_instance = new chosen_strain()
 	if(strain_instance._add_to_xeno(src))
+		overlays -= acid_overlay
 		xeno_jitter(1.5 SECONDS)
 		// If it applied successfully, add it to the logs.
 		log_strain("[name] purchased strain '[strain_instance.type]'")

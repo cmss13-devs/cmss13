@@ -163,8 +163,47 @@
 	name = "Circuit board (ASRS console)"
 	build_path = /obj/structure/machinery/computer/supply/asrs
 
+	var/obj/structure/machinery/computer/arcade/minesweeper/black_market_minesweeper
+	var/obj/structure/machinery/computer/arcade/minesweeper/lockout_minesweeper
 	var/contraband_enabled = FALSE
 	var/black_market_lock = FALSE
+
+/obj/item/circuitboard/computer/supplycomp/Initialize(mapload, ...)
+	. = ..()
+	lockout_minesweeper = new(src, list(6,6))
+	lockout_minesweeper.difficulty = 6
+	lockout_minesweeper.quiet_game = TRUE
+	lockout_minesweeper.name = "[src] Debug menu"
+	black_market_minesweeper = new(src, list(9,9))
+	black_market_minesweeper.difficulty = 13
+	black_market_minesweeper.quiet_game = TRUE
+	black_market_minesweeper.name = "[src] Debug menu"
+	RegisterSignal(black_market_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost_enabling_bm))
+	RegisterSignal(black_market_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won_enabling_bm))
+	RegisterSignal(lockout_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost_locking_bm))
+	RegisterSignal(lockout_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won_locking_bm))
+
+/obj/item/circuitboard/computer/supplycomp/proc/minesweeper_lost_enabling_bm(source, mob/user)
+	to_chat(user, SPAN_WARNING("What? This doesn't make any sense. You start over."))
+
+/obj/item/circuitboard/computer/supplycomp/proc/minesweeper_won_enabling_bm(source, mob/user)
+	to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
+	if(!contraband_enabled)
+		to_chat(user, SPAN_WARNING("You amplify the broadcasting function, and a red light starts blinking on and off on the board. Put it back in?"))
+		contraband_enabled = TRUE
+	else
+		to_chat(user, SPAN_WARNING("You weaken the broadcasting function, and the red light stops blinking, turning off. It's probably good now."))
+		contraband_enabled = FALSE
+	SStgui.close_uis(black_market_minesweeper)
+
+/obj/item/circuitboard/computer/supplycomp/proc/minesweeper_lost_locking_bm(source, mob/user)
+	to_chat(user, SPAN_WARNING("You try to fix the tampering done to [src], but it seems harder than usuall."))
+
+/obj/item/circuitboard/computer/supplycomp/proc/minesweeper_won_locking_bm(source, mob/user)
+	playsound(user, 'sound/machines/ping.ogg', 25)
+	black_market_lock = TRUE
+	contraband_enabled = FALSE
+	SStgui.close_uis(lockout_minesweeper)
 
 /obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supply/asrs/SC)
 	if (..(SC))
@@ -193,18 +232,11 @@
 
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_BLACKMARKET_HACKER))
 		to_chat(user, SPAN_WARNING("You start messing around with the electronics of [src]..."))
-		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
-				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
-				return
-			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
-			if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-				if(!contraband_enabled)
-					to_chat(user, SPAN_WARNING("You amplify the broadcasting function with \the [tool], and a red light starts blinking on and off on the board. Put it back in?"))
-					contraband_enabled = TRUE
-				else
-					to_chat(user, SPAN_WARNING("You weaken the broadcasting function with \the [tool], and the red light stops blinking, turning off. It's probably good now."))
-					contraband_enabled = FALSE
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+			to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
+			return
+		black_market_minesweeper.tgui_interact(user)
+
 
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_TRADEBAND))
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
@@ -214,24 +246,11 @@
 		if(black_market_lock)
 			to_chat(user, SPAN_NOTICE("[src] has already been reset."))
 			return
-
-		if(user.action_busy)
-			to_chat(user, "You are too busy with other actions to fix any tampering.")
-			return
-
-		playsound(tool, 'sound/machines/lockenable.ogg', 25)
+		lockout_minesweeper.tgui_interact(user)
+		playsound(user, 'sound/machines/lockenable.ogg', 25)
 		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),
 		SPAN_NOTICE("You begin to fix any tampering to [src]."))
-		tool.icon_state = "[tool.icon_state]_on"
 
-		if(!do_after(user, 15 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, tool, INTERRUPT_ALL))
-			tool.icon_state = initial(tool.icon_state)
-			return
-
-		playsound(tool, 'sound/machines/ping.ogg', 25)
-		black_market_lock = TRUE
-		contraband_enabled = FALSE
-		tool.icon_state = initial(tool.icon_state)
 
 	else ..()
 

@@ -1,0 +1,218 @@
+"ah" = (/turf/closed/shuttle/dropship1{icon_state = "7,9"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"as" = (/turf/closed/shuttle/dropship1{icon_state = "0,2"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"aX" = (/turf/closed/shuttle/dropship1{icon_state = "0,12"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"cm" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,18"; name = "\improper Omaha"},/area/space)
+"cq" = (/turf/closed/shuttle/dropship1{icon_state = "8,13"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"dv" = (/turf/closed/shuttle/dropship1{icon_state = "0,13"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"dA" = (/obj/structure/machinery/computer/shuttle/dropship/flight{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'; icon_state = "left-window"},/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "6,21"; name = "\improper Omaha"},/area/space)
+"dT" = (/obj/structure/shuttle/part/dropship1/transparent/lower_right_wing{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'; icon_state = "wingpoint-right"; pixel_y = -16},/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "14,14"; name = "\improper Omaha"},/area/space)
+"ea" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "1,15"; name = "\improper Omaha"},/area/space)
+"ek" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "4,3"; name = "\improper Omaha"},/area/space)
+"fb" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "14,17"; name = "\improper Omaha"},/area/space)
+"fj" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "4,20"; name = "\improper Omaha"},/area/space)
+"fs" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "10,0"; name = "\improper Omaha"},/area/space)
+"gg" = (/turf/closed/shuttle/dropship1{icon_state = "0,14"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"gi" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "1,18"; name = "\improper Omaha"},/area/space)
+"gG" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "13,16"; name = "\improper Omaha"},/area/space)
+"hv" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "15,16"; name = "\improper Omaha"},/area/space)
+"hI" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "9,1"; name = "\improper Omaha"},/area/space)
+"hV" = (/obj/structure/shuttle/part/dropship1/transparent/outer_left_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-left"},/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "4,18"; name = "\improper Omaha"},/area/space)
+"ie" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "8,1"; name = "\improper Omaha"},/area/space)
+"if" = (/turf/closed/shuttle/dropship1{icon_state = "2,11"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"kO" = (/turf/closed/shuttle/dropship1{icon_state = "8,12"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"kW" = (/turf/closed/shuttle/dropship1{icon_state = "6,0"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"mh" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "13,14"; name = "\improper Omaha"},/area/space)
+"ml" = (/turf/closed/shuttle/dropship1{icon_state = "2,16"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"mq" = (/turf/closed/shuttle/dropship1{icon_state = "8,2"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"mA" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "12,20"; name = "\improper Omaha"},/area/space)
+"mQ" = (/turf/closed/shuttle/dropship1{icon_state = "1,1"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"nB" = (/obj/structure/machinery/computer/shuttle/dropship/flight{icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'; icon_state = "flight-controls"; pixel_x = -17; layer = 3; pixel_y = -14},/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down{icon = 'icons/turf/mohawk/mohawk-floors.dmi'; icon_state = "mohawk-floor"},/area/space)
+"nU" = (/turf/closed/shuttle/dropship1{icon_state = "4,11"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"oa" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,9"; name = "\improper Omaha"},/area/space)
+"oi" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "15,17"; name = "\improper Omaha"},/area/space)
+"on" = (/turf/closed/shuttle/dropship1{icon_state = "8,4"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"oq" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "16,16"; name = "\improper Omaha"},/area/space)
+"ox" = (/obj/structure/machinery/computer/shuttle/dropship/flight{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'; icon_state = "rightwindow"},/obj/structure/machinery/computer/dropship_weapons/dropship1{icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'; icon_state = "system-monitor"; layer = 3; pixel_x = -17; pixel_y = -8},/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down{icon = 'icons/turf/mohawk/mohawk-floors.dmi'; icon_state = "mohawk-floor-grated"},/area/space)
+"oH" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,13"; name = "\improper Omaha"},/area/space)
+"pg" = (/turf/closed/shuttle/dropship1{icon_state = "3,0"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"pA" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "16,15"; name = "\improper Omaha"},/area/space)
+"pI" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "13,19"; name = "\improper Omaha"},/area/space)
+"qX" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "14,18"; name = "\improper Omaha"},/area/space)
+"qY" = (/turf/closed/shuttle/dropship1{icon_state = "6,2"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"rq" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,8"; name = "\improper Omaha"},/area/space)
+"rH" = (/turf/closed/shuttle/dropship1{icon_state = "2,2"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"rR" = (/turf/closed/shuttle/dropship1{icon_state = "1,11"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"se" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "6,1"; name = "\improper Omaha"},/area/space)
+"sN" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "1,16"; name = "\improper Omaha"},/area/space)
+"tg" = (/turf/closed/shuttle/dropship1{icon_state = "7,15"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"tk" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "2,18"; name = "\improper Omaha"},/area/space)
+"tG" = (/turf/closed/shuttle/dropship1{icon_state = "1,2"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"tR" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "0,15"; name = "\improper Omaha"},/area/space)
+"uk" = (/turf/closed/shuttle/dropship1{icon_state = "1,0"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"uB" = (/turf/closed/shuttle/dropship1{icon_state = "8,14"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"vH" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "6,0"; name = "\improper Omaha"},/area/space)
+"vY" = (/obj/structure/machinery/computer/shuttle/dropship/flight{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "mohawk-windshield-32x32"},/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "8,22"; name = "\improper Omaha"},/area/space)
+"wb" = (/turf/closed/shuttle/dropship1{icon_state = "7,1"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"xp" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "5,20"; name = "\improper Omaha"},/area/space)
+"xT" = (/turf/closed/shuttle/dropship1{icon_state = "3,16"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"xX" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "0,17"; name = "\improper Omaha"},/area/space)
+"yf" = (/turf/closed/shuttle/dropship1{icon_state = "7,11"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"yy" = (/turf/closed/shuttle/dropship1{icon_state = "8,15"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"yE" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,11"; name = "\improper Omaha"},/area/space)
+"yF" = (/turf/closed/shuttle/dropship1{icon_state = "4,0"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"zb" = (/turf/closed/shuttle/dropship1{icon_state = "7,16"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"zi" = (/turf/closed/shuttle/dropship1{icon_state = "1,15"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"zw" = (/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down{icon = 'icons/turf/mohawk/mohawk-floors.dmi'; icon_state = "mohawk-external"},/area/space)
+"zF" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "5,0"; name = "\improper Omaha"},/area/space)
+"Af" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "8,0"},/area/space)
+"AC" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "14,15"; name = "\improper Omaha"},/area/space)
+"Ba" = (/turf/closed/shuttle/dropship1{icon_state = "2,9"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Bn" = (/turf/closed/shuttle/dropship1{icon_state = "0,9"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"BA" = (/obj/structure/shuttle/part/dropship1/transparent/outer_right_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-right"},/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "12,18"; name = "\improper Omaha"},/area/space)
+"BQ" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "7,1"; name = "\improper Omaha"},/area/space)
+"Cq" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "12,19"; name = "\improper Omaha"},/area/space)
+"CS" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "12,3"; name = "\improper Omaha"},/area/space)
+"Da" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,20"; name = "\improper Omaha"},/area/space)
+"Dp" = (/turf/closed/shuttle/dropship1{icon_state = "0,15"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Ds" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,17"; name = "\improper Omaha"},/area/space)
+"Du" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "9,22"; name = "\improper Omaha"},/area/space)
+"EJ" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "10,22"; name = "\improper Omaha"},/area/space)
+"Fz" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "2,15"; name = "\improper Omaha"},/area/space)
+"FC" = (/turf/closed/shuttle/dropship1{icon_state = "7,12"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"FL" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "6,22"; name = "\improper Omaha"},/area/space)
+"Gl" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "15,18"; name = "\improper Omaha"},/area/space)
+"Gw" = (/turf/closed/shuttle/dropship1{icon_state = "5,16"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Hn" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "9,0"},/area/space)
+"Iy" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "13,15"; name = "\improper Omaha"},/area/space)
+"IB" = (/turf/closed/shuttle/dropship1{icon_state = "1,12"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"IK" = (/obj/structure/shuttle/part/dropship1/transparent/inner_left_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-left"},/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "5,19"; name = "\improper Omaha"},/area/space)
+"IY" = (/obj/structure/shuttle/part/dropship1/transparent/inner_right_weapons{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield.dmi'; icon_state = "hardpoint-right"},/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "11,19"; name = "\improper Omaha"},/area/space)
+"Jc" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "7,22"; name = "\improper Omaha"},/area/space)
+"JL" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "10,1"; name = "\improper Omaha"},/area/space)
+"JY" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "14,19"; name = "\improper Omaha"},/area/space)
+"KX" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "10,21"; name = "\improper Omaha"},/area/space)
+"Le" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,16"; name = "\improper Omaha"},/area/space)
+"LF" = (/turf/closed/shuttle/dropship1{icon_state = "2,0"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Mi" = (/turf/template_noop,/area/space)
+"MC" = (/turf/closed/shuttle/dropship1{icon_state = "6,11"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"MN" = (/obj/structure/machinery/computer/cameras/dropship/one{icon = 'icons/obj/structures/machinery/mohawk/mohawk-controls.dmi'; icon_state = "weapons-console"; layer = 3; pixel_x = -16; pixel_y = -6},/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down{icon = 'icons/turf/mohawk/mohawk-floors.dmi'; icon_state = "mohawk-floor-grated"},/area/space)
+"Nd" = (/turf/closed/shuttle/dropship1{icon_state = "8,5"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Ne" = (/turf/closed/shuttle/dropship1{icon_state = "1,9"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Ns" = (/turf/closed/shuttle/dropship1{icon_state = "0,3"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"NE" = (/turf/closed/shuttle/dropship1{icon_state = "6,16"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"NI" = (/obj/structure/shuttle/part/dropship1/transparent/lower_left_wing{icon = 'icons/obj/structures/machinery/mohawk/mohawk-windshield-64x64.dmi'; icon_state = "wingpoint-left"; pixel_x = -32; pixel_y = -16},/turf/template_noop,/area/space)
+"NP" = (/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down{icon = 'icons/turf/mohawk/mohawk-floors.dmi'; icon_state = "mohawk-floor"},/area/space)
+"NW" = (/turf/closed/shuttle/dropship1{icon_state = "7,2"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Os" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "5,1"; name = "\improper Omaha"},/area/space)
+"Oy" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "2,20"; name = "\improper Omaha"},/area/space)
+"OI" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "13,20"; name = "\improper Omaha"},/area/space)
+"PI" = (/turf/open/space/basic,/area/space)
+"Qc" = (/turf/closed/shuttle/dropship1{icon_state = "8,9"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Qs" = (/turf/closed/shuttle/dropship1{icon_state = "6,9"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"QP" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,10"; name = "\improper Omaha"},/area/space)
+"QY" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,19"; name = "\improper Omaha"},/area/space)
+"Re" = (/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down{icon = 'icons/turf/mohawk/mohawk-floors.dmi'; icon_state = "mohawk-floor-grated"},/area/space)
+"Rl" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "13,18"; name = "\improper Omaha"},/area/space)
+"Rz" = (/turf/closed/shuttle/dropship1{icon_state = "2,17"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"RQ" = (/turf/closed/shuttle/dropship1{icon_state = "4,12"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Sh" = (/turf/closed/shuttle/dropship1{icon_state = "6,17"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Tg" = (/turf/closed/shuttle/dropship1{icon_state = "6,18"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Tn" = (/turf/closed/shuttle/dropship1{icon_state = "2,18"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Tq" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "14,16"; name = "\improper Omaha"},/area/space)
+"Ts" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "1,17"; name = "\improper Omaha"},/area/space)
+"TB" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "2,17"; name = "\improper Omaha"},/area/space)
+"TF" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "2,19"; name = "\improper Omaha"},/area/space)
+"UQ" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "16,17"; name = "\improper Omaha"},/area/space)
+"UW" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "14,20"; name = "\improper Omaha"},/area/space)
+"Vw" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "7,0"; name = "\improper Omaha"},/area/space)
+"Vy" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "15,15"; name = "\improper Omaha"},/area/space)
+"VL" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "11,20"; name = "\improper Omaha"},/area/space)
+"Wo" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "13,17"; name = "\improper Omaha"},/area/space)
+"WA" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "11,0"; name = "\improper Omaha"},/area/space)
+"WS" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,15"; name = "\improper Omaha"},/area/space)
+"Xp" = (/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down{icon = 'icons/turf/mohawk/mohawk-floors.dmi'; icon_state = "mohawk-cargo"},/area/space)
+"Yr" = (/turf/closed/shuttle/dropship1{icon_state = "8,3"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"YP" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "0,16"; name = "\improper Omaha"},/area/space)
+"YV" = (/turf/closed/shuttle/dropship1{icon_state = "5,0"; icon = 'icons/turf/mohawk/mohawk-walls.dmi'; name = "\improper Omaha"},/area/space)
+"Zu" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "2,16"; name = "\improper Omaha"},/area/space)
+"ZN" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "4,19"; name = "\improper Omaha"},/area/space)
+"ZR" = (/turf/closed/shuttle/dropship2/transparent{icon = 'icons/turf/mohawk/mohawk-facade.dmi'; icon_state = "3,14"; name = "\improper Omaha"},/area/space)
+
+(1,1,1) = {"
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+"}
+(1,1,2) = {"
+MiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMiMi
+MiMiMiMiMiMiFLJcvYDuEJMiMiMiMiMiMi
+MiMiMiMiMiMidAMNnBoxKXMiMiMiMiMiMi
+MiMiOyDafjxpTnNPNPNPTgVLmAOIUWMiMi
+MiMiTFQYZNIKRzNPReNPShIYCqpIJYMiMi
+MigitkcmhVTnmlxTNPGwNEzbBARlqXGlMi
+xXTsTBDsDpziReNPReNPRetgyyWofboiUQ
+YPsNZuLeggReNPNPReNPNPReuBgGTqhvoq
+tReaFzWSdvReNPNPReNPNPRecqIyACVypA
+MiMiNIZRaXIBReNPRQNPReFCkOmhdTMiMi
+MiMiMioHzwrRifNPnUNPMCyfzwMiMiMiMi
+MiMiMioHzwReNPNPReNPNPRezwMiMiMiMi
+MiMiMiyEBnNeBaNPNPNPQsahQcMiMiMiMi
+MiMiMiQPNsReNPReNPReNPReNdMiMiMiMi
+MiMiMioaNsReNPMiMiMiNPReNdMiMiMiMi
+MiMiMirqNsReNPMiMiMiNPReNdMiMiMiMi
+MiMiMiMiNsReNPMiMiMiNPReNdMiMiMiMi
+MiMiMiMiNsReNPMiMiMiNPReonMiMiMiMi
+MiMiMiMiNsReNPReNPReNPReYrMiMiMiMi
+MiMiMiMiastGrHReNPReqYNWmqMiMiMiMi
+MiMiMiMiekmQXpReNPReXpwbCSMiMiMiMi
+MiMiMiMiMiukLFpgyFYVkWkWMiMiMiMiMi
+MiMiMiMiMiOsseBQiehIJLJLMiMiMiMiMi
+MiMiMiMiMizFvHVwAfHnfsWAMiMiMiMiMi
+"}
+(1,1,3) = {"
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+PIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPIPI
+"}

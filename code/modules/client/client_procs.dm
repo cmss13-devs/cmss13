@@ -403,10 +403,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 /client/proc/PostLogin()
 	var/static/list/logged_in = list()
-	if(REF(client) in logged_in)
+	if(REF(src) in logged_in)
 		stack_trace("Debug: same client logging in twice")
 
-	logged_in |= REF(client)
+	logged_in |= REF(src)
 
 	add_verb(src, collect_client_verbs())
 

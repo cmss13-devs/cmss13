@@ -58,6 +58,7 @@
 	max_w_class = SIZE_MEDIUM
 	cant_hold = list( //Prevent inventory bloat
 		/obj/item/storage/firstaid,
+		/obj/item/storage/toolkit,
 		/obj/item/storage/bible,
 		/obj/item/storage/box,
 	)

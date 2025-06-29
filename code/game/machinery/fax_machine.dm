@@ -691,7 +691,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/corporate/liaison/almayer
 	department = FAX_DEPARTMENT_ALMAYER
 	sub_name = "W-Y Liaison"
-	radio_alert_tag = ":Y"
+	radio_alert_tag = ":y"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = FAX_DEPARTMENT_WY_HC
@@ -729,7 +729,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	name = "\improper USCM Provost Fax Machine"
 	department = FAX_DEPARTMENT_ALMAYER_BRIG
 	target_department = FAX_DEPARTMENT_PROVOST
-	radio_alert_tag = ":P"
+	radio_alert_tag = ":p"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/brig/chief
 	sub_name = "Chief MP"

@@ -212,6 +212,11 @@
 
 ////////// BASE PRAE
 
+/datum/action/xeno_action/activable/xeno_spit/praetorian
+	name = "Spit Acid"
+	xeno_cooldown = 2 SECONDS
+
+
 /datum/action/xeno_action/activable/pounce/base_prae_dash
 	name = "Dash"
 	action_icon_state = "prae_dash"

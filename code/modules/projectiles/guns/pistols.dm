@@ -944,7 +944,6 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/suppressor, //Muzzle
 		/obj/item/attachable/suppressor/sleek,
-		/obj/item/attachable/compensator,
 		/obj/item/attachable/compensator/m10, // Special M10 compensator
 		/obj/item/attachable/compensator/m10/spiked, // Special M10 compensator - Melee version
 		/obj/item/attachable/extended_barrel,
@@ -962,7 +961,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	current_mag = /obj/item/ammo_magazine/pistol/m10
 
 /obj/item/weapon/gun/pistol/m10/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 11, "rail_y" = 21, "under_x" = 21, "under_y" = 16, "stock_x" = 25, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 21, "under_x" = 21, "under_y" = 16, "stock_x" = 25, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/m10/set_gun_config_values()
 	..()

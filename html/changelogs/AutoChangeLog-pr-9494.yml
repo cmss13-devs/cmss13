@@ -1,0 +1,5 @@
+author: "TheKillfish"
+delete-after: True
+changes:
+  - code_imp: "Xeno Spit now uses xeno_cooldown var, like a normal ability."
+  - rscdel: "Deletes now-useless vars related to Xeno Spit cooldown"

@@ -157,9 +157,9 @@
 	if(SSticker?.mode)
 		GM = SSticker.mode
 		if(H.persistent_ckey in GM.predators)
-			GM.predators[H.persistent_ckey]["Status"] = status
+			GM.predators[H.username()]["Status"] = status
 		else
-			GM.predators[H.persistent_ckey] = list("Name" = H.real_name, "Status" = status)
+			GM.predators[H.username()] = list("Name" = H.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()

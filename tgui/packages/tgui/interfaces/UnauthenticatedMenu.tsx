@@ -1,4 +1,3 @@
-import { storage } from 'common/storage';
 import { useEffect, useState } from 'react';
 
 import { useBackend } from '../backend';
@@ -24,17 +23,22 @@ export const UnauthenticatedMenu = () => {
 
   useEffect(() => {
     Byond.subscribeTo('logged_in', (payload: { access_code: string }) => {
-      storage.set('access_code', {
-        time: Date.now(),
-        code: payload.access_code,
-      });
+      window.serverStorage.setItem(
+        'access_code',
+        JSON.stringify({
+          time: Date.now(),
+          code: payload.access_code,
+        }),
+      );
     });
 
-    storage.get('access_code').then((value: { time: number; code: string }) => {
-      if (value.time > Date.now() - MAX_TIMEOUT) {
-        act('recall_code', { code: value.code });
+    const code = window.serverStorage.getItem('access_code');
+    if (code) {
+      const json = JSON.parse(code);
+      if (json.time > Date.now() - MAX_TIMEOUT) {
+        act('recall_code', { code: json.code });
       }
-    });
+    }
 
     Byond.subscribeTo('banned', (payload) => setIsBanned(payload.reason));
   }, []);

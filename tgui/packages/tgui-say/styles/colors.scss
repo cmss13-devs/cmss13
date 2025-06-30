@@ -40,6 +40,10 @@ $pmc: hsl(184, 57%, 55%);
 $clf: hsl(249, 40%, 65%);
 $upp: hsl(359, 32%, 43%);
 $colony: hsl(300, 50%, 40%);
+$cia: hsl(16, 75%, 60%);
+$provost: hsl(355, 93%, 32%);
+$yautja: hsl(133, 74%, 46%);
+$hyperdyne: hsl(23, 100%, 55%);
 
 $_channel_map: (
   'say': $say,
@@ -75,6 +79,7 @@ $_channel_map: (
   'upp-engi': $upp,
   'upp-cmd': $upp,
   'upp-kdo': $upp,
+  'upp-cct': $upp,
   'upp': $upp,
   'clf-med': $clf,
   'clf-engi': $clf,
@@ -87,6 +92,10 @@ $_channel_map: (
   'pmc-cmd': $pmc,
   'specops': $pmc,
   'pmc': $pmc,
+  'cia': $cia,
+  'provost': $provost,
+  'yautja': $yautja,
+  'hyperdyne': $hyperdyne,
 );
 
 $channel_keys: map.keys($_channel_map) !default;

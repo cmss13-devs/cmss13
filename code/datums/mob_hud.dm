@@ -16,6 +16,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
 	MOB_HUD_FACTION_HC = new /datum/mob_hud/faction/hyperdyne(),
 	MOB_HUD_FACTION_TWE = new /datum/mob_hud/faction/twe(),
+	MOB_HUD_FACTION_IASF = new /datum/mob_hud/faction/iasf(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
 	MOB_HUD_FACTION_PMC = new /datum/mob_hud/faction/pmc(),
 	MOB_HUD_FACTION_CMB = new /datum/mob_hud/faction/cmb(),
@@ -215,6 +216,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 /datum/mob_hud/faction/twe
 	faction_to_check = FACTION_TWE
+
+/datum/mob_hud/faction/iasf
+	faction_to_check = FACTION_IASF
 
 /datum/mob_hud/faction/clf
 	faction_to_check = FACTION_CLF
@@ -708,8 +712,13 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	set waitfor = FALSE
 
 	var/image/holder = hud_list[HUNTER_CLAN]
+	var/new_icon_state = "predhud"
+	if(client?.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+		new_icon_state = "leaderhud"
+	else if(client?.check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+		new_icon_state = "councilhud"
 
-	holder.icon_state = "predhud"
+	holder.icon_state = new_icon_state
 
 	if(client && client.clan_info && client.clan_info.clan_id)
 		var/datum/entity/clan/player_clan = GET_CLAN(client.clan_info.clan_id)
@@ -793,6 +802,7 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 /mob/living/carbon/human/hud_set_holocard()
 	var/image/holder = hud_list[HOLOCARD_HUD]
 	holder.icon_state = holo_card_color ? "holo_card_[holo_card_color]" : "hudblank"
+	SEND_SIGNAL(src, COMSIG_HUMAN_TRIAGE_CARD_UPDATED)
 
 // Vampire Execute HUD
 /mob/living/carbon/human/proc/update_execute_hud()

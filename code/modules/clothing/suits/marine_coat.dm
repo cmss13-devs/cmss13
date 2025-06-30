@@ -527,3 +527,57 @@
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
 	)
+
+// TWE - IASF - Imperial Armed Space Force
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_co
+	name = "\improper IASF Commanding Officer’s service jacket"
+	desc = "A service jacket typically worn by Commanding Officers of the IASF. Reinforced with lightweight Kevlar shards, it offers limited protection against stabbing weapons and small arms fire while maintaining a formal yet practical design for airborne leadership in the field."
+	icon_state = "iasf_service_co"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_co/alt
+	icon_state = "iasf_service_co_alt"
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_combat_jacket
+	name = "\improper IASF combat jacket"
+	desc = "A rugged, all-weather combat jacket issued to the Imperial Armed Space Force. Designed for versatility, it serves as both a field garment and a lightweight layer of protection. Reinforced with ballistic fibers and treated for weather resistance, it offers limited defense against shrapnel and small arms fire while keeping paratroopers comfortable in harsh conditions. Its deep green color and durable fabric make it a staple for both active deployment and off-duty wear."
+	has_buttons = TRUE
+	icon_state = "iasf_jacket"
+	initial_icon_state = "iasf_jacket"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+	)
+
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+
+	allowed = list (
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/weapon/gun,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/crew_monitor,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
+		/obj/item/device/motiondetector,
+	)
+	min_cold_protection_temperature = T0C
+	siemens_coefficient = 0.7
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)

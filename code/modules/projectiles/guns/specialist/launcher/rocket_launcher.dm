@@ -452,8 +452,8 @@
 	if(aiming)
 		return
 
-	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
-		user.visible_message(SPAN_WARNING("Invalid target!"))
+	if(!(istype(target, /obj/structure) || istype(target, /turf/closed/wall)))
+		to_chat(user, SPAN_WARNING("The launcher beeps twice. Invalid target!"))
 		return
 
 	var/list/turf/path = get_line(user, target, include_start_atom = FALSE)

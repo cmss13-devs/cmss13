@@ -629,6 +629,12 @@ Defined in conflicts.dm of the #defines folder.
 	if(!istype(attaching_gun, /obj/item/weapon/gun))
 		return ..()
 	attaching_gun.hitsound = 'sound/weapons/spike_thunk.ogg'
+	melee_mod = 20
+	sharp = IS_SHARP_ITEM_SIMPLE
+	force = MELEE_FORCE_STRONG
+	hitsound = 'sound/weapons/spike_thunk.ogg'
+	attack_verb = list("bashed", "bludgeoned", "cracked", "smashed", "crushed", "pummeled", "spiked", "rammed")
+	attack_speed = 9
 	return ..()
 
 /obj/item/attachable/compensator/m10/spiked/Detach(mob/user, obj/item/weapon/gun/detaching_gun)
@@ -1985,9 +1991,6 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/pistol/collapsible/New()
 	..()
 	select_gamemode_skin(type)
-
-/obj/item/attachable/stock/pistol/collapsible/New()
-	..()
 	//it makes stuff much better when two-handed
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_3
 	recoil_mod = -RECOIL_AMOUNT_TIER_4

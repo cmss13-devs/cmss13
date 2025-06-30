@@ -1,6 +1,5 @@
-/datum/action/xeno_action/activable/xeno_spit/praetorian
-	name = "Spit Acid"
-	xeno_cooldown = 2 SECONDS
+//// Abilities PRIMARILY used by Praetorian.
+
 
 ////////// VANGUARD ABILITIES
 
@@ -212,6 +211,11 @@
 	var/daze_duration_buffed = 2
 
 ////////// BASE PRAE
+
+/datum/action/xeno_action/activable/xeno_spit/praetorian
+	name = "Spit Acid"
+	xeno_cooldown = 2 SECONDS
+
 
 /datum/action/xeno_action/activable/pounce/base_prae_dash
 	name = "Dash"

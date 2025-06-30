@@ -285,6 +285,8 @@
 // GUN TRAITS
 #define TRAIT_GUN_SILENCED "t_gun_silenced"
 
+#define TRAIT_GUN_SILENCED_ALT "t_gun_silenced_alt" // Different sound
+
 #define TRAIT_GUN_BIPODDED "t_gun_bipodded"
 
 #define TRAIT_GUN_LIGHT_FORCE_DEACTIVATED "t_gun_light_deactivated"

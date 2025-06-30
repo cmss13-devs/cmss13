@@ -1764,15 +1764,19 @@
 		new_player.mind.transfer_to(target, TRUE)
 		new_player.mind.setup_human_stats()
 
+	if(SSticker.intro_sequence)
+		if(is_late_join && !target.client.prefs.latejoin_cryo_intro && ROUND_TIME > 1 MINUTES)
+			return
+		else
+			addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, play_opening_sequence)), 2)
+			target.Root(1) // prevents the player from moving/exiting pod before opening sequence starts
+
 	target.sec_hud_set_ID()
 	target.hud_set_squad()
 
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, regenerate_icons))
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_body), 1, 0)
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob/living/carbon/human, update_hair))
-	if(SSticker.intro_sequence)
-		addtimer(CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon/human, play_opening_sequence)), 2)
-		target.Root(1)
 
 /mob/living/carbon/human/proc/play_opening_sequence()
 	if(loc && (istype(loc, /obj/structure/machinery/cryopod)))

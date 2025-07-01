@@ -10,6 +10,7 @@
 
 	logging_ckey = client.ckey
 	persistent_ckey = client.ckey
+	persistent_username = username()
 
 	if(client.player_data)
 		client.player_data.playtime_start = world.time

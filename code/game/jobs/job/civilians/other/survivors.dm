@@ -11,11 +11,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	late_joinable = FALSE
 	job_options = SURVIVOR_VARIANT_LIST
 	var/intro_text
-	var/synthetic_intro_text
-	var/CO_intro_text
 	var/story_text
-	var/synthetic_story_text
-	var/CO_story_text
 	/// Whether or not the survivor is an inherently hostile to marines.
 	var/hostile = FALSE
 	/// How many survs have been spawned total
@@ -85,19 +81,19 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	H.name = H.get_visible_name()
 
 	if(length(picked_spawner.intro_text))
-		if(picked_spawner.synth_equipment)
-			intro_text = picked_spawner.synthetic_story_text
-		if(picked_spawner.CO_equipment)
-			intro_text = picked_spawner.CO_story_text
-		else
-			intro_text = picked_spawner.story_text
+		if(picked_spawner.synth_equipment && picked_spawner.synthetic_intro_text != null)
+			intro_text = picked_spawner.synthetic_intro_text
+		else if(picked_spawner.CO_equipment && picked_spawner.CO_intro_text != null)
+			intro_text = picked_spawner.CO_intro_text
+		else if(picked_spawner.equipment)
+			intro_text = picked_spawner.intro_text
 
 	if(picked_spawner.story_text)
-		if(picked_spawner.synth_equipment)
+		if(picked_spawner.synth_equipment && picked_spawner.synthetic_story_text != null)
 			story_text = picked_spawner.synthetic_story_text
-		if(picked_spawner.CO_equipment)
+		else if(picked_spawner.CO_equipment && picked_spawner.CO_story_text != null)
 			story_text = picked_spawner.CO_story_text
-		else
+		else if(picked_spawner.equipment)
 			story_text = picked_spawner.story_text
 
 	if(picked_spawner.hostile && !picked_spawner.synth_equipment)
@@ -109,12 +105,6 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(intro_text)
 		for(var/line in intro_text)
 			to_chat(survivor, line)
-	if(synthetic_intro_text)
-		for(var/line in synthetic_intro_text)
-			to_chat(survivor, line)
-	if(CO_intro_text)
-		for(var/line in CO_intro_text)
-			to_chat(survivor, line)
 	else
 		to_chat(survivor, "<h2>You are a survivor!</h2>")
 		to_chat(survivor, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
@@ -124,12 +114,6 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(story_text)
 		to_chat(survivor, story_text)
 		survivor.mind.memory += story_text
-	if(synthetic_story_text)
-		for(var/line in synthetic_intro_text)
-			to_chat(survivor, line)
-	if(CO_story_text)
-		for(var/line in CO_intro_text)
-			to_chat(survivor, line)
 	else
 		tell_survivor_story(survivor)
 

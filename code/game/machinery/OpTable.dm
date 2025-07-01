@@ -94,7 +94,7 @@
 		return
 
 	if(!H.has_limb("head"))
-		to_chat(user, SPAN_WARNING("They patient has no head."))
+		to_chat(user, SPAN_WARNING("The patient has no head."))
 		return
 
 	if(!anes_tank)
@@ -112,7 +112,7 @@
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
 	if(!H.has_limb("head"))
-		to_chat(user, SPAN_WARNING("They patient has no head."))
+		to_chat(user, SPAN_WARNING("The patient has no head."))
 		return
 
 	if(H.wear_mask)

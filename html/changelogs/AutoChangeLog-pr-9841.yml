@@ -1,0 +1,4 @@
+author: "Zenith"
+delete-after: True
+changes:
+  - bugfix: "Fixes a mistake from a previous PR that had overwritten a RMC helmet for the spec."

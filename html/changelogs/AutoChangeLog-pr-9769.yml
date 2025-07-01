@@ -1,0 +1,4 @@
+author: "Zenith"
+delete-after: True
+changes:
+  - rscadd: "Adds Paramedic survivors to appropriate maps, adds civilian/unique presets to NV, replaced NV \"Miner\" with \"KMCC\" preset."

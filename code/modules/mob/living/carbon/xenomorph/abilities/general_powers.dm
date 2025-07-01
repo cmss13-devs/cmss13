@@ -595,6 +595,10 @@
 			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a light!"))
 			return FALSE
 
+		if(locate(/obj/structure/flora/jungle/vines) in src)
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole under the vines!"))
+			return FALSE
+
 	if(!xeno.check_alien_construction(src, check_doors = TRUE))
 		return FALSE
 
@@ -807,7 +811,6 @@
 		spitting = FALSE
 		return
 
-	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )

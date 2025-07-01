@@ -55,8 +55,8 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	synthetic_intro_text = list("<h2>You are a captured colony synthetic in service of the CLF!</h2>",\
-	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>,\"
-	"<span class ='notice'>While you are not entirely loyal due to programming choices, until the USCMC arrives, they are your best chance of survival.</span>,\"
+	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class ='notice'>While you are not entirely loyal due to programming choices, until the USCMC arrives, they are your best chance of survival.</span>",\
 	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
 	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. Your colony "
 	roundstart_damage_min = 3

@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Base prae acid spray no longer has a windup"

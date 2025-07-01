@@ -240,6 +240,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Gas mask"
 	path = /obj/item/clothing/mask/gas
 
+/datum/gear/mask/surgical
+	display_name = "Sterile mask"
+	path = /obj/item/clothing/mask/surgical
+
 /datum/gear/mask/scarf_black
 	display_name = "Scarf, black"
 	path = /obj/item/clothing/mask/tornscarf/black
@@ -781,6 +785,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/storage/box/upp
 	slot = WEAR_IN_BACK
 	fluff_cost = 4
+
+/datum/gear/weapon/l54_pistol
+	display_name = "L54 Pistol" // TWE service pistol - same stats as the m4a3
+	path = /obj/item/weapon/gun/pistol/l54
+	allowed_origins = USCM_ORIGINS
 
 /datum/gear/weapon/m4a3_custom
 	display_name = "M4A3 Custom Pistol"
@@ -1328,6 +1337,13 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 /datum/gear/eyewear/sunglasses/hippie_shades/bloodred
 	display_name = "Suntex-Sightware rounded shades, bloodred"
 	path = /obj/item/clothing/glasses/sunglasses/hippie/bloodred
+
+// Headband
+
+/datum/gear/civilian/headwear/headband_rebel
+	display_name = "CLF headband"
+	path = /obj/item/clothing/head/headband/rebel
+	fluff_cost = 2
 
 // Civilian shoes
 

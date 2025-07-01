@@ -1,0 +1,8 @@
+2025-07-01:
+  Drathek:
+  - rscadd: Fun facts are now randomized (meaning just mentions first player meeting
+      a minimum is mentioned - not a top stat) and are only displayed for currently
+      connected players
+  TheKillfish:
+  - code_imp: Xeno Spit now uses xeno_cooldown var, like a normal ability.
+  - rscdel: Deletes now-useless vars related to Xeno Spit cooldown

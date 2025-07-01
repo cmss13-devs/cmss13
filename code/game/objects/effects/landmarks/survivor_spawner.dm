@@ -59,7 +59,7 @@
 	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class ='notice'>While you are not entirely loyal due to not being reprogrammed, until another response team arrives, they are your best chance of survival.</span>",\
 	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
-	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. The colony was overrun by a xenomorph infestation roughly two weeks ago, managing to take down a ship that you had assumed was sent to rescue you and killing the rest of your CMB team. Crashing into a mountainside, you and the survivors with you went to assist them - and, although only you made it, you were pressed into helping them at the end of a gun. Despite this, they are still your best chance of survival while you wait for a more organized rescue team to arrive, and you should endeavour to keep them safe - for now."
+	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. The colony was overrun by a xenomorph infestation weeks ago, managing to take down a ship that you had assumed was sent to rescue you and killing the rest of your CMB team. Spotting it as it crashed into the mountainside, you and the survivors with you went to assist them - and, although only you made it, you were pressed into helping them at the end of a gun. Despite this, they are still your best chance of survival while you wait for a more organized rescue team to arrive, and you should endeavour to keep them safe - for now."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -80,7 +80,7 @@
 	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class ='notice'>While you are not entirely loyal due to programming choices, until the USCMC arrives, they are your best chance of survival.</span>",\
 	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
-	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. Your colony was overrun by a xenomorph infestation roughly two weeks ago, managing to take down a ship that you had assumed was sent to rescue you. Crashing into a mountainside, you and your employer went to assist - and, although only you made it, you were pressed into helping them at the end of a gun. Despite this, they are still your best chance of survival while you wait for a more organized rescue team to arrive, and you should endeavour to keep them safe - for now."
+	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. Your colony was overrun by a xenomorph infestation weeks ago, managing to take down a ship that you had assumed was sent to rescue you. Crashing into a mountainside, you and your employer went to assist - and, although only you made it, you were pressed into helping them at the end of a gun. Despite this, they are still your best chance of survival while you wait for a more organized rescue team to arrive, and you should endeavour to keep them safe - for now."
 	roundstart_damage_min = 2
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -101,7 +101,7 @@
 	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class ='notice'>While you are not entirely loyal due to programming choices, until the USCMC arrives, they are your best chance of survival.</span>",\
 	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
-	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. Your colony was overrun by a xenomorph infestation roughly two weeks ago, managing to take down a ship that you had assumed was sent to rescue you. Crashing into a mountainside, you and the survivors with you went to assist - and, although only you made it, you were pressed into helping them at the end of a gun. Despite this, they are still your best chance of survival while you wait for a more organized rescue team to arrive, and you should endeavour to keep them safe - for now."
+	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. Your colony was overrun by a xenomorph infestation weeks ago, managing to take down a ship that you had assumed was sent to rescue you. Crashing into a mountainside, you and the survivors with you went to assist - and, although only you made it, you were pressed into helping them at the end of a gun. Despite this, they are still your best chance of survival while you wait for a more organized rescue team to arrive, and you should endeavour to keep them safe - for now."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -122,7 +122,7 @@
 	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class ='notice'>While you are not entirely loyal due to programming choices, until the USCMC arrives, they are your best chance of survival.</span>",\
 	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
-	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. Your colony was overrun by a xenomorph infestation roughly two weeks ago, managing to take down a ship that you had assumed was sent to rescue you. Crashing into a mountainside, you and the survivors with you went to assist - and, although only you made it, you were pressed into helping them at the end of a gun. Despite this, they are still your best chance of survival while you wait for a more organized rescue team to arrive, and you should endeavour to keep them safe - for now."
+	synthetic_story_text = "You are a colony synthetic that has been pressed into the service of the CLF. Your colony was overrun by a xenomorph infestation weeks ago, managing to take down a ship that you had assumed was sent to rescue you. Crashing into a mountainside, you and the survivors with you went to assist - and, although only you made it, you were pressed into helping them at the end of a gun. Despite this, they are still your best chance of survival while you wait for a more organized rescue team to arrive, and you should endeavour to keep them safe - for now."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -166,14 +166,14 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted in the ship being abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. The cell leader ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your cell hang by a thread, stuck on an unknown world surrounded by unknown enemies."
-	synthetic_story_text = "You are a member of the CMB from Oxley's Butte, the closest settlement to the dam. You and your team moved to the dam shortly after contact ceased, and you quickly found yourselves overrun and cut off from being able to return to the city. As your team was picked off one by one, you saw escape pods land on the fringes of the colony - and as you headed to meet them, you were met with the barrel of a gun, forced into service with the CLF."
+	synthetic_story_text = "You are a member of a CMB team from Oxley's Butte, the closest settlement to the dam. You and your team moved to the dam shortly after contact ceased, and you quickly found yourselves overrun and cut off from being able to return to the city. As your team was picked off one by one, you saw escape pods land on the fringes of the colony - and as you headed to meet them, you were met with the barrel of a gun, forced into service with the CLF."
 
 /obj/effect/landmark/survivor_spawner/clf_lead/trijent
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted you ordering the ship to be abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After ordering some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. You ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your men hang by a thread, stuck on an unknown world surrounded by unknown enemies."
-	synthetic_story_text = "You are a private synthetic who was under the employment of one of the Trijent Dam workers. Weeks ago, you and your employer were caught in the midst of a xenomorph outbreak, having to resort to hiding in lockers and fleeing from them, holding out as long as you could. Eventually, escape pods landed on the planet, and seeking to increase your numbers, you went towards them, hiding nearby - and eventually, both of you were pulled out and met with the barrel of a gun. You were forced into service with the CLF, and so far, it seems to be your best chance for survival."
+	synthetic_story_text = "You are a private synthetic who was under the employ of one of the Trijent Dam workers. Weeks ago, you and your employer were caught in the midst of a xenomorph outbreak, having to resort to hiding in lockers and fleeing from them, holding out as long as you could. Eventually, escape pods landed on the planet, and seeking to increase your numbers, you went towards them, hiding nearby - and eventually, both of you were pulled out and met with the barrel of a gun. You were forced into service with the CLF, and so far, it seems to be your best chance for survival."
 
 /obj/effect/landmark/survivor_spawner/clf_engi/trijent
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
@@ -187,16 +187,17 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Your ship, due to poor maintenance, suffered a complete system failure that resulted in the ship being abandoned. Your pods catastrophically failed, and you appear to have landed on the nearest planet. At first, the colony appeared mostly abandoned, save for a company rat you found hiding in a supply locker. After some enhanced interrogation, you learned that there has been some sort of outbreak of dangerous creatures. The cell leader ordered everyone to hunker down, and you successfully repelled a wave of the creatures after suffering many casualties. You and your cell hang by a thread, stuck on an unknown world surrounded by unknown enemies."
-	synthetic_story_text = "You are a doctor from the nearest settlement to Trijent Dam, Oxley's Butte. Called out to assist with a minor surgery, you found yourself splattered with blood and in the midst of a xenomorph outbreak when your patient chestburst on the operating table. Seeing escape pods land, you and the survivor with you moved towards them in hopes of finding more medical supplies - although all you found was members of the CLF, greeting you with the end of a gun, and forcing you into service with them."
+	synthetic_story_text = "You are a doctor from the nearest settlement to Trijent Dam, Oxley's Butte. Called out to assist with a minor surgery, you found yourself splattered with blood and in the midst of a xenomorph outbreak when your patient chestburst on the operating table. Seeing escape pods land, you and the survivor with you moved towards them in hopes of finding more medical supplies - although all you found were members of the CLF, greeting you with the end of a gun, and forcing you into service with them."
 
 //Fiorina CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/fiorina
+	synth_equipment = /datum/equipment_preset/synth/survivor/icc_synth
 	intro_text = list("<h2>You are a survivor of an attempted prison break!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. You have discovered that one of your comrades is being held temporarily at the Science Annex of the infamous Fiorina Prison. The plan was simple: Ram your ship straight into the station and shoot your way through, relying on the element of surprise. However, the station security was already on high alert, and responded quickly. You beat them back, but now it's quiet... too quiet..."
-	synthetic_story_text = "You are a member of the CMB sent to investigate Fiorina Science Annex for possible breaches of the law. Midway through your investigation, a ship rammed itself directly into the side of the station - and in doing so, released whatever experiments they were working on. Making a fighting retreat, most of your squad was picked off either by the prisoners or the xenomorphs, and ultimately you were forced into service with the very insurgents who rammed into the station."
+	synthetic_story_text = "You are a member of a CMB team sent to investigate Fiorina Science Annex for possible breaches of human rights. Midway through your investigation, a ship rammed itself directly into the side of the station - and in doing so, released whatever experiments they were working on. Making a fighting retreat, most of your squad was picked off either by the prisoners or the xenomorphs, and ultimately you were forced into service with the very insurgents who rammed into the station."
 
 /obj/effect/landmark/survivor_spawner/clf_lead/fiorina
 	intro_text = list("<h2>You are a survivor of an attempted prison break!</h2>",\
@@ -224,10 +225,12 @@
 //Shiva's CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/shivas
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a survivor of a CLF raid!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. After a rough landing that disabled your strike craft, your cell successfully launched a raid against the corporate parasitic scum lording over this colony. However, the expected response from security forces never arrived, and the colony soon fell silent. Strange noises have been heard coming from the darkness that no one can identify, and the cell lead has ordered everyone to hold here until further orders."
+	synthetic_story_text = "You are a Weyland-Yutani private security synthetic. A craft crash-landed onto the fringes of the colony, and a CLF cell launched a raid against the panic room, eliminating the colony administrator. When you attempted to contact security forces, you found the communication equipment damaged and inoperable - and slowly, it was overrun by xenomorphs. While you tried to avoid contact, eventually the CLF cell managed to find and capture you - and now, you are forced into service for them at the end of a gun."
 
 /obj/effect/landmark/survivor_spawner/clf_lead/shivas
 	intro_text = list("<h2>You are a survivor of a CLF raid!</h2>",\

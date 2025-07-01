@@ -386,6 +386,14 @@
 	if(A.layer >= FLY_LAYER)//anything above that shouldn't be pounceable (hud stuff)
 		return
 
+	if(A.z != X.z)
+
+		if (!do_after(X, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			return
+
+		X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+
+
 	if(!isturf(X.loc))
 		to_chat(X, SPAN_XENOWARNING("We can't [action_text] from here!"))
 		return

@@ -26806,6 +26806,13 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
+"bGR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken3,
+/area/bigredv2/outside/dorms)
+"bGS" = (
+/turf/open/floor/wood/wood_broken6,
+/area/bigredv2/outside/dorms)
 "bGT" = (
 /obj/structure/barricade/handrail,
 /obj/effect/decal/warning_stripes{
@@ -29396,6 +29403,17 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/bigredv2/outside/ne)
+"bNA" = (
+/turf/open/floor/wood/wood_broken2,
+/area/bigredv2/outside/dorms)
+"bNB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken5,
+/area/bigredv2/outside/dorms)
+"bNC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken4,
+/area/bigredv2/outside/dorms)
 "bNE" = (
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/dark,
@@ -172581,7 +172599,7 @@ dcV
 aNC
 aNC
 bzV
-atY
+bNA
 bMt
 bvC
 aNC
@@ -172796,7 +172814,7 @@ bGc
 bFI
 bFp
 uBC
-szt
+bNd
 szt
 atY
 atY
@@ -173018,7 +173036,7 @@ atY
 eBW
 eBW
 tYq
-szt
+bGR
 aNC
 sjf
 jUO
@@ -173667,7 +173685,7 @@ xZU
 atY
 aEG
 atY
-atY
+bGS
 atY
 bMr
 wzZ
@@ -173885,7 +173903,7 @@ szt
 eBW
 eBW
 eBW
-atY
+bGS
 atY
 wzZ
 aRU
@@ -174532,7 +174550,7 @@ bgl
 bBF
 jWB
 lXI
-szt
+bNC
 szt
 atY
 atY
@@ -174750,7 +174768,7 @@ bBF
 wBs
 aNC
 aNC
-szt
+bNB
 atY
 bMu
 szt

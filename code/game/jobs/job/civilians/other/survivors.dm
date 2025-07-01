@@ -11,7 +11,11 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	late_joinable = FALSE
 	job_options = SURVIVOR_VARIANT_LIST
 	var/intro_text
+	var/synthetic_intro_text
+	var/CO_intro_text
 	var/story_text
+	var/synthetic_story_text
+	var/CO_story_text
 	/// Whether or not the survivor is an inherently hostile to marines.
 	var/hostile = FALSE
 	/// How many survs have been spawned total
@@ -81,12 +85,22 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	H.name = H.get_visible_name()
 
 	if(length(picked_spawner.intro_text))
-		intro_text = picked_spawner.intro_text
+		if(picked_spawner.synth_equipment)
+			intro_text = picked_spawner.synthetic_story_text
+		if(picked_spawner.CO_equipment)
+			intro_text = picked_spawner.CO_story_text
+		else
+			intro_text = picked_spawner.story_text
 
 	if(picked_spawner.story_text)
-		story_text = picked_spawner.story_text
+		if(picked_spawner.synth_equipment)
+			story_text = picked_spawner.synthetic_story_text
+		if(picked_spawner.CO_equipment)
+			story_text = picked_spawner.CO_story_text
+		else
+			story_text = picked_spawner.story_text
 
-	if(picked_spawner.hostile)
+	if(picked_spawner.hostile && !picked_spawner.synth_equipment)
 		hostile = TRUE
 
 	new /datum/cm_objective/move_mob/almayer/survivor(H)
@@ -94,6 +108,12 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 /datum/job/civilian/survivor/generate_entry_message(mob/living/carbon/human/survivor)
 	if(intro_text)
 		for(var/line in intro_text)
+			to_chat(survivor, line)
+	if(synthetic_intro_text)
+		for(var/line in synthetic_intro_text)
+			to_chat(survivor, line)
+	if(CO_intro_text)
+		for(var/line in CO_intro_text)
 			to_chat(survivor, line)
 	else
 		to_chat(survivor, "<h2>You are a survivor!</h2>")
@@ -104,6 +124,12 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	if(story_text)
 		to_chat(survivor, story_text)
 		survivor.mind.memory += story_text
+	if(synthetic_story_text)
+		for(var/line in synthetic_intro_text)
+			to_chat(survivor, line)
+	if(CO_story_text)
+		for(var/line in CO_intro_text)
+			to_chat(survivor, line)
 	else
 		tell_survivor_story(survivor)
 

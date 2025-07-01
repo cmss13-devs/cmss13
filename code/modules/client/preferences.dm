@@ -306,7 +306,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// Sends messages in chat when the Xeno Action's cooldown is complete and adds cooldown timers in stat panel
 	var/show_cooldown_messages = FALSE
 
-	/// Toggles whether the marine gets the cryo intro if they latejoin 5 mins after roundstart
+	/// Toggles whether the marine gets the cryo intro if they latejoin 1 minute after roundstart
 	var/latejoin_cryo_intro = TRUE
 
 /datum/preferences/New(client/C)

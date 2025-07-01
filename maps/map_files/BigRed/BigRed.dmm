@@ -1683,7 +1683,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor/dark,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "ags" = (
 /turf/open/floor/asteroidwarning/northeast,
@@ -1745,7 +1745,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/darkblue2/northeast,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "agF" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony{
@@ -2083,6 +2083,7 @@
 /area/bigredv2/outside/nw)
 "ahU" = (
 /obj/structure/machinery/camera/autoname,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "ahV" = (
@@ -2450,6 +2451,7 @@
 	},
 /obj/structure/barricade/handrail,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/warnwhite/southeast,
 /area/bigredv2/outside/s)
 "ajp" = (
@@ -2676,6 +2678,7 @@
 /area/bigredv2/outside/marshal_office)
 "akd" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/almayer_hull,
 /area/bigredv2/outside/s)
 "ake" = (
@@ -3222,6 +3225,10 @@
 "amf" = (
 /obj/structure/prop/server_equipment/yutani_server,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "amg" = (
@@ -3258,6 +3265,12 @@
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/item/clipboard{
+	pixel_y = 3
+	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = -2
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -3886,6 +3899,10 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"aor" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet13_5/west,
+/area/bigredv2/outside/admin_building)
 "aos" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -4530,6 +4547,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
+/obj/structure/barricade/wooden,
 /turf/open/floor,
 /area/bigredv2/outside/nw)
 "aqF" = (
@@ -5991,6 +6009,9 @@
 	desc = "A bewildering tangle of machinery and pipes.";
 	name = "coolant feed"
 	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
 "avG" = (
@@ -6021,6 +6042,9 @@
 "avK" = (
 /obj/structure/cryofeed/right{
 	name = "\improper coolant feed"
+	},
+/obj/structure/machinery/light{
+	dir = 4
 	},
 /turf/open/floor/podhatchfloor,
 /area/bigredv2/outside/admin_building)
@@ -6144,18 +6168,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkblue2/southwest,
-/area/bigredv2/outside/admin_building)
-"awi" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkblue2,
-/area/bigredv2/outside/admin_building)
-"awj" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkblue2,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "awk" = (
 /obj/structure/machinery/medical_pod/sleeper,
@@ -6165,11 +6178,6 @@
 /obj/structure/machinery/sleep_console,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
-"awm" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/dark,
-/area/bigredv2/outside/admin_building)
 "awn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
@@ -6221,7 +6229,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/darkblue2/southwest,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "awy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -6229,7 +6237,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/darkblue2/east,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "awz" = (
 /obj/item/ashtray/bronze{
@@ -6313,7 +6321,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/turf/open/floor/darkblue2/west,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "awM" = (
 /turf/closed/wall/solaris/reinforced/hull,
@@ -6333,11 +6341,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
-"awR" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkblue2/east,
-/area/bigredv2/outside/admin_building)
 "awS" = (
 /obj/structure/machinery/door_control{
 	id = "Medical";
@@ -6352,7 +6355,7 @@
 "awU" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/darkblue2/west,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "awV" = (
 /obj/effect/decal/cleanable/blood,
@@ -6365,12 +6368,16 @@
 	dir = 8
 	},
 /obj/structure/window,
-/turf/open/floor/dark,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "awX" = (
 /obj/structure/surface/table,
 /obj/structure/window,
-/turf/open/floor/dark,
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "awY" = (
 /obj/structure/bed/chair{
@@ -6398,7 +6405,7 @@
 	pixel_x = -1;
 	pixel_y = 14
 	},
-/turf/open/floor/darkblue2/northwest,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "axc" = (
 /obj/structure/surface/table,
@@ -6408,7 +6415,7 @@
 /obj/structure/machinery/computer/emails{
 	dir = 4
 	},
-/turf/open/floor/dark,
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "axd" = (
 /obj/structure/bed/chair{
@@ -6429,7 +6436,7 @@
 	pixel_x = -1;
 	pixel_y = 14
 	},
-/turf/open/floor/darkblue2/northwest,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "axg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -6439,13 +6446,7 @@
 /obj/structure/window{
 	dir = 8
 	},
-/turf/open/floor/darkblue2/north,
-/area/bigredv2/outside/admin_building)
-"axh" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/darkblue2/north,
+/turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "axi" = (
 /obj/structure/machinery/light,
@@ -6790,6 +6791,8 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
+/obj/effect/landmark/corpsespawner/colonist,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/dorms)
 "ayt" = (
@@ -7087,16 +7090,6 @@
 "azz" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/engineering)
-"azA" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	layer = 3;
-	name = "????";
-	stat = 2
-	},
-/turf/open/floor/almayer_hull,
-/area/bigredv2/outside/s)
 "azB" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -7143,6 +7136,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "azI" = (
@@ -7609,6 +7603,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "aBd" = (
@@ -7636,6 +7632,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/spawner/random/tool,
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "aBh" = (
@@ -7703,6 +7701,11 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "aBp" = (
@@ -7738,6 +7741,7 @@
 "aBt" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/bigredv2/outside/filtration_plant)
 "aBu" = (
@@ -7841,6 +7845,11 @@
 	icon_state = "NW-out";
 	pixel_y = 1;
 	pixel_x = -1
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
 	},
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
@@ -8055,9 +8064,15 @@
 /area/bigredv2/outside/virology)
 "aCD" = (
 /obj/effect/spawner/random/toolbox,
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/bigredv2/outside/filtration_plant)
 "aCE" = (
+/obj/item/weapon/gun/flamer/survivor{
+	pixel_y = 11;
+	pixel_x = -9
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/bigredv2/outside/filtration_plant)
 "aCF" = (
@@ -8088,12 +8103,11 @@
 /area/bigredv2/outside/filtration_plant)
 "aCJ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/effect/spawner/random/toolbox,
+/obj/item/stack/sheet/wood,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/filtration_plant)
 "aCK" = (
@@ -8233,6 +8247,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "aDe" = (
@@ -8242,13 +8257,16 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
 "aDf" = (
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
-/obj/effect/spawner/random/toolbox,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_x = -1
 	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "aDg" = (
@@ -8413,12 +8431,13 @@
 	icon_state = "SW-out";
 	pixel_x = -1
 	},
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "aDF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table,
-/obj/effect/spawner/random/tool,
+/obj/item/stack/sheet/wood,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "aDG" = (
@@ -8460,6 +8479,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/darkyellowcorners2/north,
 /area/bigredv2/outside/filtration_plant)
 "aDL" = (
@@ -8531,6 +8551,7 @@
 /area/bigredv2/outside/dorms)
 "aDV" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/darkyellowcorners2/east,
 /area/bigredv2/outside/filtration_plant)
 "aDW" = (
@@ -8609,7 +8630,7 @@
 /area/bigredv2/caves/eta/living)
 "aEk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "aEl" = (
@@ -8749,15 +8770,6 @@
 "aEF" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves/lambda/research)
-"aEG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table,
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/darkyellow2,
-/area/bigredv2/outside/filtration_plant)
 "aEH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -8786,6 +8798,7 @@
 	pixel_y = 1;
 	pixel_x = -1
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "aEK" = (
@@ -8798,6 +8811,8 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "aEM" = (
@@ -9061,6 +9076,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "aFE" = (
@@ -9089,6 +9105,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "aFJ" = (
@@ -9096,6 +9113,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/item/stack/rods,
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "aFK" = (
@@ -9137,6 +9155,9 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
 	pixel_x = -1
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
 	},
 /turf/open/floor/darkyellowcorners2,
 /area/bigredv2/outside/filtration_plant)
@@ -9355,6 +9376,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "aGu" = (
@@ -9461,6 +9485,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/darkbrown2/southwest,
 /area/bigredv2/outside/cargo)
 "aGL" = (
@@ -9515,6 +9540,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "aGS" = (
@@ -9583,6 +9609,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "aHc" = (
@@ -9610,6 +9637,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "aHh" = (
@@ -9620,6 +9648,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "aHi" = (
@@ -9628,9 +9657,36 @@
 	icon_state = "SW-out";
 	pixel_x = -1
 	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
 "aHj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/largecrate/supply{
+	pixel_x = 6
+	},
+/turf/open/floor/darkyellow2/north,
+/area/bigredv2/outside/filtration_plant)
+"aHk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/supply{
+	layer = 3.1;
+	pixel_y = 17;
+	pixel_x = -5
+	},
+/turf/open/floor/darkyellow2/north,
+/area/bigredv2/outside/filtration_plant)
+"aHl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 1
@@ -9640,21 +9696,12 @@
 	icon_state = "facehugger_impregnated";
 	layer = 3;
 	name = "????";
-	stat = 2
+	stat = 2;
+	pixel_y = 4;
+	pixel_x = -7
 	},
-/turf/open/floor/darkyellow2/north,
-/area/bigredv2/outside/filtration_plant)
-"aHk" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/floor/darkyellow2/north,
-/area/bigredv2/outside/filtration_plant)
-"aHl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/barricade/wooden{
+	dir = 4
 	},
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
@@ -9700,6 +9747,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/filtration_plant)
 "aHu" = (
@@ -10043,10 +10091,12 @@
 /area/bigredv2/outside/office_complex)
 "aIu" = (
 /obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "aIv" = (
 /obj/structure/bed,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "aIw" = (
@@ -10094,6 +10144,13 @@
 "aIE" = (
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/hydroponics)
+"aIF" = (
+/obj/structure/bed/chair/comfy/blue{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet,
+/area/bigredv2/outside/admin_building)
 "aIG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -10526,6 +10583,7 @@
 "aJT" = (
 /obj/structure/filingcabinet/medical,
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "aJU" = (
@@ -10625,6 +10683,11 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/circuitboard/airalarm{
+	pixel_y = 6;
+	pixel_x = -5
+	},
+/obj/item/circuitboard/firealarm,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
 "aKi" = (
@@ -10731,6 +10794,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/largecrate/supply,
 /turf/open/floor/warnwhite/west,
 /area/bigredv2/outside/admin_building)
 "aKC" = (
@@ -10774,12 +10838,24 @@
 	pixel_x = -1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/outside/admin_building)
 "aKI" = (
 /obj/structure/machinery/processor,
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/hydroponics)
+"aKJ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/bigredv2/outside/admin_building)
 "aKK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
@@ -10816,7 +10892,7 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken4,
 /area/bigredv2/outside/office_complex)
 "aKO" = (
 /obj/structure/bed/chair/wood/normal{
@@ -10942,7 +11018,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken5,
 /area/bigredv2/outside/office_complex)
 "aLi" = (
 /obj/structure/closet/jcloset,
@@ -10966,6 +11042,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/stack/rods,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "aLl" = (
@@ -10983,13 +11060,14 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken6,
 /area/bigredv2/outside/office_complex)
 "aLn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/warnwhite/west,
 /area/bigredv2/outside/admin_building)
 "aLo" = (
@@ -11010,6 +11088,9 @@
 "aLq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/largecrate/supply{
+	layer = 2.9
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
@@ -11032,6 +11113,7 @@
 	pixel_x = -1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/outside/admin_building)
 "aLu" = (
@@ -11154,6 +11236,7 @@
 "aLN" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/tool/pen/blue/clicky,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "aLO" = (
@@ -11214,8 +11297,11 @@
 	pixel_y = 7
 	},
 /obj/item/ashtray/bronze{
-	pixel_x = 6;
+	pixel_x = 7;
 	pixel_y = -2
+	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_x = 5
 	},
 /turf/open/floor/carpet,
 /area/bigredv2/outside/office_complex)
@@ -11285,6 +11371,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/warnwhite/west,
 /area/bigredv2/outside/admin_building)
 "aMi" = (
@@ -11292,6 +11379,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
 "aMj" = (
@@ -11320,6 +11408,14 @@
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/yellowfull,
 /area/bigredv2/outside/hydroponics)
+"aMo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/grimy,
+/area/bigredv2/outside/admin_building)
 "aMp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cheesie,
@@ -11401,6 +11497,7 @@
 	pixel_x = -1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/outside/admin_building)
 "aMA" = (
@@ -11703,6 +11800,10 @@
 	pixel_x = -5;
 	pixel_y = 7
 	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_x = 7;
+	pixel_y = 4
+	},
 /turf/open/floor/grimy,
 /area/bigredv2/outside/office_complex)
 "aNA" = (
@@ -11716,6 +11817,7 @@
 	pixel_x = -5;
 	pixel_y = -2
 	},
+/obj/item/stack/rods,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/office_complex)
 "aNC" = (
@@ -11807,6 +11909,9 @@
 "aNT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random/mini{
 	pixel_x = 1
 	},
 /turf/open/floor/warnwhite/west,
@@ -12046,6 +12151,14 @@
 "aOF" = (
 /turf/open_space,
 /area/bigredv2/landing/console2)
+"aOG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/grimy,
+/area/bigredv2/outside/admin_building)
 "aOH" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/bigredv2/outside/e)
@@ -12266,7 +12379,7 @@
 	icon_state = "S"
 	},
 /obj/structure/bed/chair/comfy,
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken4,
 /area/bigredv2/outside/office_complex)
 "aPp" = (
 /obj/effect/decal/warning_stripes{
@@ -12435,6 +12548,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/warnwhite/west,
 /area/bigredv2/outside/admin_building)
 "aPS" = (
@@ -12458,6 +12572,9 @@
 	pixel_x = -1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/largecrate/random/mini{
+	pixel_x = 1
+	},
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/outside/admin_building)
 "aPV" = (
@@ -12722,7 +12839,14 @@
 "aQI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/wood,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 1;
+	health = 25000;
+	pixel_y = 15;
+	layer = 3.1
+	},
+/turf/open/floor/wood/wood_broken3,
 /area/bigredv2/outside/office_complex)
 "aQJ" = (
 /obj/structure/machinery/light{
@@ -12751,7 +12875,7 @@
 	pixel_x = 7;
 	pixel_y = 16
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken3,
 /area/bigredv2/outside/office_complex)
 "aQL" = (
 /obj/structure/surface/table,
@@ -12845,6 +12969,13 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 1;
+	health = 25000;
+	pixel_y = 15;
+	layer = 3.1
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "aRc" = (
@@ -12879,7 +13010,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken6,
 /area/bigredv2/outside/office_complex)
 "aRh" = (
 /obj/structure/machinery/door_control{
@@ -12913,6 +13044,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/wood,
 /area/bigredv2/outside/office_complex)
 "aRm" = (
@@ -12971,7 +13103,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken,
 /area/bigredv2/outside/office_complex)
 "aRu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -13182,6 +13314,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/warnwhite/west,
 /area/bigredv2/outside/admin_building)
 "aSb" = (
@@ -13196,6 +13329,8 @@
 	pixel_x = -1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/wooden,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/outside/admin_building)
 "aSc" = (
@@ -13255,7 +13390,8 @@
 "aSj" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Private Office";
-	dir = 1
+	dir = 1;
+	locked = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/delivery,
@@ -13502,6 +13638,7 @@
 	pixel_x = -1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/largecrate/supply,
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "aSW" = (
@@ -13534,11 +13671,9 @@
 	pixel_x = -1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
-"aTa" = (
-/turf/open/floor/plating,
-/area/bigredv2/outside/admin_building)
 "aTb" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open_space,
@@ -13713,12 +13848,19 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/supply{
+	layer = 3.1;
+	pixel_y = 19;
+	pixel_x = 3
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "aTB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Office Complex";
-	dir = 1
+	dir = 1;
+	welded = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13998,12 +14140,18 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/powerloader_wreckage/jd,
 /turf/open/floor/warnwhite/west,
 /area/bigredv2/outside/admin_building)
 "aUw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/admin_building)
@@ -14031,6 +14179,7 @@
 	pixel_x = -1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/largecrate/supply,
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "aUA" = (
@@ -14119,6 +14268,10 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/item/prop/helmetgarb/spent_buckshot{
+	pixel_x = -13;
+	pixel_y = -11
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
@@ -14310,6 +14463,14 @@
 "aVo" = (
 /turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/c)
+"aVp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/grimy,
+/area/bigredv2/outside/admin_building)
 "aVq" = (
 /turf/open/mars/mars_dirt_12,
 /area/bigredv2/outside/e)
@@ -14609,6 +14770,12 @@
 	},
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
+	},
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/supply{
+	layer = 3.1;
+	pixel_y = 19;
+	pixel_x = 3
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
@@ -15246,7 +15413,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken5,
 /area/bigredv2/outside/admin_building)
 "aYl" = (
 /obj/item/cell/hyper/empty,
@@ -15641,10 +15808,12 @@
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "aZA" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "aZB" = (
 /obj/structure/bed/chair/comfy/black,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "aZC" = (
@@ -15655,6 +15824,9 @@
 /obj/item/ashtray/bronze{
 	pixel_x = 3;
 	pixel_y = -2
+	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 6
 	},
 /turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
@@ -15712,7 +15884,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken7,
 /area/bigredv2/outside/admin_building)
 "aZO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15743,6 +15915,7 @@
 "aZT" = (
 /obj/structure/surface/table,
 /obj/structure/prop/server_equipment/laptop/on,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "aZU" = (
@@ -16188,6 +16361,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet7_3/west,
 /area/bigredv2/outside/admin_building)
 "bbm" = (
@@ -16195,6 +16369,7 @@
 /obj/structure/machinery/computer/med_data/laptop{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "bbn" = (
@@ -16207,6 +16382,13 @@
 /obj/structure/bed/chair/comfy/blue,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"bbp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "bbq" = (
 /turf/open/floor/almayer_hull/outerhull_dir/west,
@@ -16392,7 +16574,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken,
 /area/bigredv2/outside/admin_building)
 "bbR" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -16578,13 +16760,16 @@
 	pixel_y = 9;
 	pixel_x = 4
 	},
+/obj/item/tool/pen/blue/clicky{
+	pixel_y = 11
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bcs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
 /obj/structure/machinery/computer3/laptop/secure_data,
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken6,
 /area/bigredv2/outside/admin_building)
 "bct" = (
 /obj/structure/barricade/wooden{
@@ -16689,12 +16874,14 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/admin_building)
 "bcH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bcI" = (
@@ -17036,6 +17223,7 @@
 /area/bigredv2/outside/cargo)
 "bdO" = (
 /obj/structure/machinery/vending/coffee,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "bdP" = (
@@ -17833,16 +18021,6 @@
 	},
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/office_complex)
-"bgl" = (
-/obj/item/clothing/mask/facehugger{
-	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
-	icon_state = "facehugger_impregnated";
-	layer = 3;
-	name = "????";
-	stat = 2
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/office_complex)
 "bgm" = (
 /obj/structure/janitorialcart,
 /obj/effect/decal/cleanable/dirt,
@@ -18063,6 +18241,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	dir = 4
+	},
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/supply{
+	layer = 3.1;
+	pixel_y = 17;
+	pixel_x = -2
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -18970,6 +19154,7 @@
 /area/bigredv2/outside/admin_building)
 "bju" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/darkred2/east,
 /area/bigredv2/outside/admin_building)
 "bjv" = (
@@ -19141,9 +19326,15 @@
 /area/bigredv2/outside/admin_building)
 "bjW" = (
 /obj/structure/machinery/light,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
 /turf/open/floor/warnwhite,
 /area/bigredv2/outside/admin_building)
 "bjX" = (
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/warnwhite,
 /area/bigredv2/outside/admin_building)
 "bjY" = (
@@ -19151,6 +19342,7 @@
 /area/bigredv2/outside/s)
 "bjZ" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/warnwhite,
 /area/bigredv2/outside/admin_building)
 "bka" = (
@@ -19162,6 +19354,11 @@
 "bkc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
 /turf/open/floor/warnwhite,
 /area/bigredv2/outside/admin_building)
 "bkd" = (
@@ -19412,6 +19609,12 @@
 /area/bigredv2/outside/admin_building)
 "bkX" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/obj/structure/barricade/wooden,
 /turf/open/floor/warnwhite/north,
 /area/bigredv2/outside/admin_building)
 "bkY" = (
@@ -21326,6 +21529,7 @@
 "bqG" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/outside/admin_building)
 "bqH" = (
@@ -21969,6 +22173,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
 /area/bigredv2/outside/dorms)
+"bsw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/grimy,
+/area/bigredv2/outside/admin_building)
 "bsx" = (
 /turf/open/floor/darkgreen2/west,
 /area/bigredv2/outside/bar)
@@ -22737,6 +22949,7 @@
 	pixel_y = 1;
 	pixel_x = -1
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
 "buL" = (
@@ -23035,6 +23248,11 @@
 "bvC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light,
+/obj/structure/surface/table,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_15";
+	pixel_y = 10
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "bvD" = (
@@ -23519,6 +23737,11 @@
 /turf/open/floor,
 /area/bigredv2/caves/eta/storage)
 "bxg" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
 /turf/open/floor/darkgreencorners2,
 /area/bigredv2/outside/dorms)
 "bxh" = (
@@ -24426,6 +24649,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/dark,
 /area/bigredv2/outside/dorms)
 "bAm" = (
@@ -24778,6 +25002,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/bigredv2/outside/dorms)
 "bBz" = (
@@ -25787,6 +26012,7 @@
 	icon_state = "SW-out";
 	pixel_x = -1
 	},
+/obj/item/stack/sheet/wood,
 /turf/open/floor/dark,
 /area/bigredv2/outside/dorms)
 "bEW" = (
@@ -25932,6 +26158,7 @@
 	pixel_x = 1;
 	pixel_y = 1
 	},
+/obj/structure/bed/chair/comfy,
 /turf/open/floor/darkgreencorners2/west,
 /area/bigredv2/outside/dorms)
 "bFq" = (
@@ -26065,6 +26292,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/surface/table,
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	pixel_y = 11
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/dorms)
 "bFI" = (
@@ -26073,6 +26305,10 @@
 	pixel_x = 1
 	},
 /obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/surface/table,
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 11
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/dorms)
 "bFJ" = (
@@ -26093,6 +26329,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/bigredv2/outside/dorms)
 "bFM" = (
+/obj/item/weapon/gun/revolver/cmb,
 /turf/open/floor/darkgreen2/east,
 /area/bigredv2/outside/dorms)
 "bFN" = (
@@ -26186,8 +26423,9 @@
 /area/bigredv2/outside/dorms)
 "bGb" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/surface/table,
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 11
 	},
 /turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/dorms)
@@ -26198,12 +26436,20 @@
 	pixel_x = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/surface/table,
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 11
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/dorms)
 "bGd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	pixel_y = 11
 	},
 /turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/dorms)
@@ -26215,6 +26461,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/dorms)
 "bGf" = (
@@ -26228,6 +26475,13 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_x = -1
+	},
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 3;
+	name = "????";
+	stat = 2
 	},
 /turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/dorms)
@@ -26358,6 +26612,7 @@
 /area/bigredv2/outside/dorms)
 "bGx" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/darkgreen2/northwest,
 /area/bigredv2/outside/dorms)
 "bGy" = (
@@ -26366,6 +26621,11 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/obj/item/weapon/gun/pistol/highpower,
 /turf/open/floor/darkgreencorners2/north,
 /area/bigredv2/outside/dorms)
 "bGz" = (
@@ -26376,6 +26636,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/item/stack/sheet/wood,
 /turf/open/floor/darkgreen2/west,
 /area/bigredv2/outside/dorms)
 "bGA" = (
@@ -26439,6 +26700,7 @@
 	name = "????";
 	stat = 2
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/medical)
 "bGK" = (
@@ -26476,26 +26738,6 @@
 /area/bigredv2/outside/s)
 "bGQ" = (
 /obj/structure/surface/table,
-/obj/item/device/flashlight/lamp{
-	pixel_y = 2;
-	pixel_x = 3
-	},
-/turf/open/floor/wood,
-/area/bigredv2/outside/dorms)
-"bGR" = (
-/obj/structure/surface/table,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/trash/tray{
-	pixel_y = 8
-	},
-/obj/item/trash/tray{
-	pixel_y = 12
-	},
-/turf/open/floor/wood,
-/area/bigredv2/outside/dorms)
-"bGS" = (
-/obj/structure/surface/table,
-/obj/effect/decal/cleanable/dirt,
 /obj/item/device/flashlight/lamp{
 	pixel_y = 2;
 	pixel_x = 3
@@ -26637,6 +26879,11 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
 /turf/open/floor/darkgreencorners2,
 /area/bigredv2/outside/dorms)
 "bHk" = (
@@ -26741,7 +26988,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken4,
 /area/bigredv2/outside/dorms)
 "bHv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -26761,12 +27008,22 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/wood,
+/obj/item/trash/tray{
+	pixel_y = 8
+	},
+/obj/item/trash/tray{
+	pixel_y = 12
+	},
+/turf/open/floor/wood/wood_broken5,
 /area/bigredv2/outside/dorms)
 "bHy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
+	},
+/obj/structure/surface/table,
+/obj/structure/machinery/computer/emails{
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
@@ -26774,11 +27031,36 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.1
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/dorms)
 "bHA" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper Dormitories Bedroom"
+	name = "\improper Dormitories Bedroom";
+	locked = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -26806,6 +27088,12 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/dorms)
 "bHE" = (
@@ -26823,6 +27111,11 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
 	pixel_x = -1
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
 	},
 /turf/open/floor/darkgreen2/north,
 /area/bigredv2/outside/dorms)
@@ -26850,7 +27143,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken,
 /area/bigredv2/outside/general_offices)
 "bHK" = (
 /obj/structure/bed,
@@ -27314,7 +27607,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken6,
 /area/bigredv2/outside/general_offices)
 "bIT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27323,7 +27616,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken2,
 /area/bigredv2/outside/general_offices)
 "bIU" = (
 /obj/structure/surface/table,
@@ -27451,6 +27744,66 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/darkgreen2/east,
 /area/bigredv2/outside/space_port)
+"bJn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/grimy,
+/area/bigredv2/outside/admin_building)
+"bJo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/grimy,
+/area/bigredv2/outside/admin_building)
+"bJp" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"bJq" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"bJr" = (
+/obj/item/stack/rods,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/c)
+"bJs" = (
+/obj/effect/landmark/corpsespawner/doctor,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/c)
+"bJt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/grimy,
+/area/bigredv2/outside/dorms)
+"bJu" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJv" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJw" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJx" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJy" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "solarpanel1"
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/outside/s)
 "bJz" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -27459,6 +27812,52 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
+"bJA" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/s)
+"bJB" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJC" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJD" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/s)
+"bJE" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/s)
+"bJF" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJG" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/bigredv2/outside/s)
+"bJH" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 3;
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/white,
+/area/bigredv2/outside/s)
 "bJJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal{
@@ -27467,17 +27866,473 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
+"bJK" = (
+/obj/structure/fence,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJL" = (
+/obj/item/stack/rods,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJM" = (
+/obj/structure/fence,
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/bigredv2/outside/s)
+"bJN" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 1;
+	name = "\improper Atmospherics Condenser";
+	welded = 1
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/filtration_plant)
+"bJO" = (
+/obj/item/tool/wirecutters,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bJP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/filtration_plant)
 "bJQ" = (
 /turf/open/mars/mars_dirt_10,
 /area/bigredv2/outside/n)
+"bJR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/darkyellow2,
+/area/bigredv2/outside/filtration_plant)
 "bJS" = (
 /obj/structure/largecrate/random/barrel/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
+"bJT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"bJU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/darkyellow2/west,
+/area/bigredv2/outside/filtration_plant)
+"bJV" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bJW" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/item/stack/rods,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bJX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"bJY" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
 "bJZ" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
 /area/bigredv2/outside/space_port_lz2)
+"bKa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"bKb" = (
+/obj/structure/window_frame/solaris/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Filtration Plant";
+	name = "\improper Filtration Plant Shutters";
+	dir = 4
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/filtration_plant)
+"bKc" = (
+/obj/effect/decal/heavy_cable/node_n_e_s,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bKd" = (
+/obj/item/stack/rods{
+	pixel_y = 8;
+	pixel_x = -3
+	},
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bKe" = (
+/obj/item/stack/rods{
+	pixel_y = -10
+	},
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bKf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/item/stack/rods,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bKg" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bKh" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bKi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/spawner/random/toolbox,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"bKj" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/bigredv2/outside/s)
+"bKk" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/bigredv2/outside/s)
+"bKl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = -11;
+	pixel_y = 9
+	},
+/turf/open/floor/darkyellow2,
+/area/bigredv2/outside/filtration_plant)
+"bKm" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bKn" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/s)
+"bKo" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/bigredv2/outside/s)
+"bKp" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/surface/table,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bKq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/supply{
+	layer = 3.1;
+	pixel_y = 17;
+	pixel_x = -2
+	},
+/turf/open/floor/darkyellow2,
+/area/bigredv2/outside/filtration_plant)
+"bKr" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/darkyellow2,
+/area/bigredv2/outside/filtration_plant)
+"bKs" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bKt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/filtration_plant)
+"bKu" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	name = "\improper Atmospherics Condenser";
+	welded = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/bigredv2/outside/filtration_plant)
+"bKv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/largecrate/supply{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"bKw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/supply{
+	layer = 3.1;
+	pixel_y = 19;
+	pixel_x = -5
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"bKx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/filtration_plant)
+"bKy" = (
+/obj/structure/surface/table,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"bKz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/stack/rods,
+/turf/open/floor/darkyellow2/north,
+/area/bigredv2/outside/filtration_plant)
+"bKA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"bKB" = (
+/obj/structure/window_frame/solaris/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Filtration Plant";
+	name = "\improper Filtration Plant Shutters"
+	},
+/turf/open/floor/delivery,
+/area/bigredv2/outside/filtration_plant)
+"bKC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"bKD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"bKE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/warnwhite/west,
+/area/bigredv2/outside/admin_building)
+"bKF" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/admin_building)
+"bKG" = (
+/obj/structure/window_frame/solaris/reinforced,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/office_complex)
+"bKH" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/random/mini{
+	pixel_x = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/admin_building)
+"bKI" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/grimy,
+/area/bigredv2/outside/office_complex)
+"bKJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/turf/open/floor/wood,
+/area/bigredv2/outside/office_complex)
+"bKK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken6,
+/area/bigredv2/outside/cargo)
+"bKL" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/admin_building)
+"bKM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/warnwhite/east,
+/area/bigredv2/outside/admin_building)
+"bKN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/wood/wood_broken7,
+/area/bigredv2/outside/office_complex)
+"bKO" = (
+/turf/open/floor/wood/wood_broken6,
+/area/bigredv2/outside/cargo)
+"bKP" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/admin_building)
+"bKQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/filingcabinet/medical{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/obj/structure/filingcabinet/medical{
+	density = 0;
+	pixel_x = 7;
+	pixel_y = 16
+	},
+/turf/open/floor/wood/wood_broken7,
+/area/bigredv2/outside/office_complex)
+"bKR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/weapon/gun/revolver/cmb{
+	pixel_y = 14;
+	pixel_x = -13
+	},
+/turf/open/floor/white,
+/area/bigredv2/outside/admin_building)
+"bKS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/structure/surface/table,
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bKT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/surface/table,
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bKU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/filingcabinet/medical{
+	pixel_x = -7
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
 "bKV" = (
 /obj/effect/decal/cleanable/blood{
 	dir = 4;
@@ -27485,29 +28340,368 @@
 	},
 /turf/open/asphalt/cement/cement12,
 /area/bigredv2/outside/lambda_cave_cas)
+"bKW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bKX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
 "bKY" = (
 /obj/structure/fence,
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/outside/filtration_cave_cas)
+"bKZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bLa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/item/prop/helmetgarb/spent_buckshot{
+	pixel_y = 11;
+	pixel_x = -10
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bLb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/admin_building)
+"bLc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/weapon/gun/revolver/cmb{
+	pixel_y = 7;
+	pixel_x = -4
+	},
+/turf/open/floor/warnwhite/east,
+/area/bigredv2/outside/admin_building)
+"bLd" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/supply,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/office_complex)
+"bLe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bLf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/filingcabinet/medical{
+	pixel_x = -7
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/office_complex)
+"bLg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/office_complex)
+"bLh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 1;
+	health = 25000;
+	pixel_y = 15;
+	layer = 3.1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/office_complex)
 "bLi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"bLj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = -9;
+	pixel_x = 9
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/office_complex)
+"bLk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/office_complex)
+"bLl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/obj/structure/filingcabinet/medical{
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/medical{
+	pixel_x = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bLm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/filingcabinet/medical{
+	pixel_x = -7
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bLn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bLo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/filingcabinet/medical{
+	pixel_x = -7
+	},
+/obj/structure/filingcabinet/medical{
+	pixel_x = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bLp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_box/magazine/shotgun/buckshot/empty{
+	pixel_x = 11;
+	pixel_y = -8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"bLq" = (
+/obj/structure/machinery/door/airlock/almayer/command/colony{
+	name = "\improper Operations";
+	dir = 1;
+	welded = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/admin_building)
+"bLr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"bLs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply,
+/obj/structure/largecrate/supply{
+	layer = 3.1;
+	pixel_y = 17;
+	pixel_x = 11
+	},
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"bLt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"bLu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply,
+/turf/open/floor,
+/area/bigredv2/outside/cargo)
+"bLv" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor,
+/area/bigredv2/outside/nw)
+"bLw" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/nw)
+"bLx" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/nw)
+"bLy" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/item/stack/sheet/wood{
+	layer = 2.9
+	},
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/nw)
+"bLz" = (
+/obj/structure/largecrate/supply,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
 "bLA" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves_se)
+"bLB" = (
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/item/stack/sheet/wood{
+	layer = 2.9
+	},
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/nw)
+"bLC" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/floor4,
+/area/bigredv2/outside/nw)
+"bLD" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
 "bLE" = (
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering/reactor)
+"bLF" = (
+/obj/structure/barricade/deployable,
+/turf/open/floor/floor4,
+/area/bigredv2/outside/nw)
 "bLG" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
+"bLH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/obj/structure/barricade/deployable,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLI" = (
+/obj/item/ammo_magazine/rifle/l42a{
+	current_rounds = 0;
+	pixel_y = 15;
+	pixel_x = -10
+	},
+/turf/open/floor/floor4,
+/area/bigredv2/outside/nw)
+"bLJ" = (
+/obj/structure/bed/bedroll{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLK" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLM" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/l42a{
+	current_mag = null
+	},
+/turf/open/floor/floor4,
+/area/bigredv2/outside/nw)
 "bLO" = (
 /obj/item/trash/sosjerky{
 	pixel_x = 8;
@@ -27515,22 +28709,629 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/w)
+"bLP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/l42a{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLQ" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLR" = (
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLS" = (
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
+"bLU" = (
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLV" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bLX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/warnwhite/north,
+/area/bigredv2/outside/admin_building)
+"bLY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/obj/structure/barricade/wooden,
+/turf/open/floor/warnwhite/north,
+/area/bigredv2/outside/admin_building)
+"bLZ" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/admin_building)
 "bMa" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/virology)
+"bMb" = (
+/obj/item/stack/sheet/wood,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/outside/nw)
+"bMc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/bed/bedroll{
+	dir = 10
+	},
+/turf/open/floor/floor4,
+/area/bigredv2/outside/nw)
+"bMd" = (
+/obj/item/ammo_magazine/rifle/l42a{
+	pixel_x = -12;
+	pixel_y = 7
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bMe" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/floor4,
+/area/bigredv2/outside/nw)
 "bMf" = (
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/filtration_plant)
+"bMg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/darkred2/west,
+/area/bigredv2/outside/admin_building)
+"bMh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/l42a{
+	current_mag = null
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bMi" = (
+/obj/item/ammo_magazine/rifle/l42a{
+	pixel_x = -8;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bMj" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -12;
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bMk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bMl" = (
+/obj/structure/barricade/deployable{
+	dir = 1
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bMm" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 10;
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/dark,
+/area/bigredv2/outside/nw)
+"bMn" = (
+/obj/structure/window_frame/solaris/reinforced,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/admin_building)
+"bMo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/whitegreen/west,
+/area/bigredv2/outside/medical)
+"bMp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bMq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/item/trash/ceramic_plate{
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bMr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/item/trash/sosjerky{
+	pixel_y = 6
+	},
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bMs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/item/trash/semki,
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bMt" = (
+/obj/structure/surface/table,
+/obj/item/trash/snack_bowl,
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bMu" = (
+/obj/item/weapon/gun/pistol/mod88,
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bMv" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bMw" = (
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bMx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bMy" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
 "bMz" = (
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/ne)
+"bMA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/item/weapon/gun/pistol/mod88,
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bMB" = (
+/obj/structure/platform/metal/kutjevo_smooth,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 3;
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/darkgreen2,
+/area/bigredv2/outside/dorms)
+"bMC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/surface/table,
+/obj/structure/largecrate/random/barrel/true_random{
+	pixel_y = 11
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bMD" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	pixel_y = 11
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/dorms)
+"bME" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bMF" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/darkgreen2/west,
+/area/bigredv2/outside/dorms)
+"bMG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken3,
+/area/bigredv2/outside/general_offices)
+"bMH" = (
+/turf/open/floor/wood/wood_broken6,
+/area/bigredv2/outside/general_offices)
+"bMI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	pixel_y = 11
+	},
+/turf/open/floor/darkgreen2/north,
+/area/bigredv2/outside/dorms)
 "bMJ" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating/platebotc,
 /area/bigredv2/outside/space_port)
+"bMK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bML" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken2,
+/area/bigredv2/outside/general_offices)
+"bMM" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Dormitories Bedroom";
+	locked = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/dorms)
+"bMN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bMO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1
+	},
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bMP" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/dorms)
+"bMQ" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/wood/wood_broken,
+/area/bigredv2/outside/general_offices)
+"bMR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/wood_broken4,
+/area/bigredv2/outside/general_offices)
+"bMS" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken5,
+/area/bigredv2/outside/general_offices)
+"bMT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/outside/medical)
+"bMU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/turf/open/floor/darkgreen2/east,
+/area/bigredv2/outside/dorms)
+"bMV" = (
+/turf/open/floor/wood/wood_broken7,
+/area/bigredv2/outside/general_offices)
+"bMW" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/outside/medical)
+"bMX" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 3;
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/wood/wood_broken2,
+/area/bigredv2/outside/dorms)
+"bMY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood/wood_broken6,
+/area/bigredv2/outside/dorms)
+"bMZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/bedsheet/brown{
+	layer = 3.1
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/brown{
+	pixel_y = 13
+	},
+/turf/open/floor/wood/wood_broken7,
+/area/bigredv2/outside/dorms)
+"bNa" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 4;
+	health = 25000
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/dorms)
+"bNb" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/dorms)
+"bNc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken4,
+/area/bigredv2/outside/general_offices)
+"bNd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken,
+/area/bigredv2/outside/dorms)
+"bNe" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/wooden{
+	desc = "This barricade is heavily reinforced. Nothing short of blasting it open seems like it'll do the trick, that or melting the breams supporting it...";
+	dir = 8;
+	health = 25000
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/dorms)
+"bNf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood/wood_broken3,
+/area/bigredv2/outside/general_offices)
+"bNg" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken3,
+/area/bigredv2/outside/dorms)
+"bNh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bNi" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/surface/table,
+/obj/item/device/flashlight/lamp{
+	pixel_y = 6;
+	pixel_x = 3
+	},
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bNj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table,
+/obj/structure/bed/chair/comfy{
+	dir = 8;
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
+"bNk" = (
+/obj/structure/window_frame/solaris/reinforced,
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/dorms)
 "bNl" = (
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/lambda/xenobiology)
+"bNm" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/bigredv2/outside/ne)
+"bNn" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/bigredv2/outside/n)
+"bNo" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/bigredv2/outside/n)
+"bNp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken7,
+/area/bigredv2/outside/general_offices)
+"bNq" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken2,
+/area/bigredv2/outside/general_offices)
+"bNr" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken3,
+/area/bigredv2/outside/general_offices)
+"bNs" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood/wood_broken7,
+/area/bigredv2/outside/general_offices)
+"bNt" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken6,
+/area/bigredv2/outside/general_offices)
+"bNu" = (
+/turf/open/floor/wood/wood_broken3,
+/area/bigredv2/outside/general_offices)
+"bNv" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/turf/open/floor/wood/wood_broken4,
+/area/bigredv2/outside/general_offices)
+"bNw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood/wood_broken5,
+/area/bigredv2/outside/general_offices)
+"bNx" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/turf/open/floor/wood/wood_broken,
+/area/bigredv2/outside/general_offices)
+"bNy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/wood/wood_broken,
+/area/bigredv2/outside/general_offices)
+"bNz" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/bigredv2/outside/ne)
 "bNE" = (
 /obj/structure/closet/secure_closet/brig,
 /turf/open/floor/dark,
@@ -28222,7 +30023,8 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Dormitories";
-	welded = 1
+	welded = 1;
+	locked = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -28896,6 +30698,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "dbO" = (
@@ -28913,6 +30716,9 @@
 "dcV" = (
 /obj/structure/platform/metal/kutjevo_smooth,
 /obj/structure/machinery/light,
+/obj/structure/bed/chair/comfy{
+	layer = 2.9
+	},
 /turf/open/floor/darkgreen2,
 /area/bigredv2/outside/dorms)
 "ddr" = (
@@ -29634,6 +31440,9 @@
 /area/bigredv2/outside/library)
 "dMd" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/obj/structure/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/darkred2/north,
 /area/bigredv2/outside/admin_building)
 "dME" = (
@@ -29745,6 +31554,7 @@
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "dQY" = (
@@ -29776,9 +31586,6 @@
 "dSx" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/bigredv2/outside/s)
-"dSL" = (
-/turf/open/floor/asteroidfloor/north,
-/area/bigredv2/outside/bar)
 "dTi" = (
 /obj/item/stack/sheet/wood,
 /turf/open/mars_cave/mars_cave_9,
@@ -30650,14 +32457,6 @@
 /turf/open/floor/darkpurplecorners2/east,
 /area/bigredv2/caves/lambda/breakroom)
 "eJI" = (
-/obj/item/prop{
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi';
-	icon_state = "m41ae2";
-	name = "M41AE2 Heavy Pulse Rifle";
-	desc = "A large claw mark across this weapon indicates it is inoperable.";
-	pixel_x = 4;
-	pixel_y = 7
-	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
@@ -31905,6 +33704,7 @@
 /area/bigredv2/outside/space_port)
 "fST" = (
 /obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "fSY" = (
@@ -32390,6 +34190,7 @@
 	pixel_x = -7;
 	pixel_y = 13
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "gqH" = (
@@ -33022,6 +34823,7 @@
 	pixel_x = 17;
 	pixel_y = 16
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "gVF" = (
@@ -33564,7 +35366,8 @@
 "hxl" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	name = "\improper Operations";
-	dir = 1
+	dir = 1;
+	locked = 1
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/admin_building)
@@ -33673,6 +35476,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/item/tool/pen/blue/clicky,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/admin_building)
 "hCl" = (
@@ -33849,7 +35653,8 @@
 "hIX" = (
 /obj/structure/machinery/door/airlock/almayer/command/colony{
 	name = "\improper Operations";
-	dir = 1
+	dir = 1;
+	welded = 1
 	},
 /turf/open/floor/delivery,
 /area/bigredv2/outside/admin_building)
@@ -34009,6 +35814,7 @@
 	pixel_x = -3;
 	pixel_y = 12
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "hSZ" = (
@@ -34194,11 +36000,6 @@
 /area/bigredv2/caves_sw)
 "idb" = (
 /obj/structure/surface/table,
-/obj/item/ammo_magazine/rifle/lmg/heap{
-	pixel_x = -8;
-	pixel_y = -2;
-	max_rounds = 0
-	},
 /obj/item/clothing/mask/cigarette/cigar{
 	pixel_x = 9;
 	pixel_y = 5
@@ -34623,6 +36424,7 @@
 	pixel_x = -3;
 	pixel_y = 11
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "ity" = (
@@ -34733,6 +36535,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "iyC" = (
@@ -35258,7 +37061,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/turf/open/floor/dark,
+/turf/open/floor/grimy,
 /area/bigredv2/outside/admin_building)
 "jbq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -35385,7 +37188,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 8
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken4,
 /area/bigredv2/outside/general_offices)
 "jjL" = (
 /obj/structure/machinery/light,
@@ -36753,6 +38556,10 @@
 	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply{
+	pixel_x = -6;
+	pixel_y = -4
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/nw)
 "knL" = (
@@ -36902,6 +38709,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	name = "Bar APC"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "kuu" = (
@@ -38549,10 +40357,6 @@
 /area/bigredv2/outside/nw)
 "mcd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_box/rounds/empty{
-	pixel_x = 3;
-	pixel_y = -6
-	},
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
@@ -39986,6 +41790,7 @@
 	pixel_x = -6;
 	pixel_y = -8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "ntF" = (
@@ -40489,6 +42294,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	name = "Control Center APC"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/admin_building)
 "nSP" = (
@@ -41293,7 +43099,7 @@
 	},
 /obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken7,
 /area/bigredv2/outside/cargo)
 "oEz" = (
 /obj/item/clothing/under/color/lightbrown{
@@ -42935,7 +44741,7 @@
 	pixel_y = 19
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken,
 /area/bigredv2/outside/cargo)
 "qby" = (
 /turf/open/floor/bcircuit,
@@ -44082,7 +45888,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/turf/open/floor/wood,
+/turf/open/floor/wood/wood_broken6,
 /area/bigredv2/outside/general_offices)
 "qYB" = (
 /obj/structure/sink{
@@ -45110,7 +46916,8 @@
 "rPe" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Dormitories";
-	dir = 1
+	dir = 1;
+	locked = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -45958,10 +47765,6 @@
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/clothing/head/helmet/marine/desert{
-	pixel_x = 10;
-	pixel_y = 7
-	},
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
 "suR" = (
@@ -48834,6 +50637,9 @@
 	pixel_y = 25
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply{
+	pixel_x = 5
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/nw)
 "vfI" = (
@@ -49968,6 +51774,7 @@
 	pixel_y = 16
 	},
 /obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/bigredv2/outside/admin_building)
 "wfm" = (
@@ -51722,6 +53529,7 @@
 	pixel_x = 7
 	},
 /obj/structure/surface/table/woodentable,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "xJX" = (
@@ -117787,11 +119595,11 @@ aNK
 wdn
 bdo
 aof
-cXG
-aOO
-aOO
-aOO
-aOO
+aKJ
+avA
+avA
+avA
+avA
 cXG
 aOO
 apC
@@ -117991,10 +119799,10 @@ aHF
 aHF
 apC
 axf
-vEs
-aOM
-aOM
-aOM
+awU
+bJn
+bbp
+aMo
 awh
 awg
 rwr
@@ -118004,9 +119812,9 @@ kWr
 aOM
 aUb
 asT
-aZC
-aZC
-baG
+pMr
+pMr
+aIF
 aZC
 baG
 aZC
@@ -118207,12 +120015,12 @@ fRY
 fRY
 fRY
 apC
-avL
-aOM
-aOM
-aOM
-aYL
-awi
+bQe
+bcc
+bJo
+ole
+aOG
+awh
 awg
 nkk
 eUf
@@ -118227,8 +120035,8 @@ aIY
 bbj
 caN
 kCL
-aOO
-aOO
+avA
+avA
 apC
 aHD
 aBR
@@ -118425,11 +120233,11 @@ tWg
 tWg
 aMF
 agr
-aOM
-aOM
-aOM
-aYL
-awi
+bcc
+bJo
+tBD
+aOG
+awh
 aof
 aof
 aof
@@ -118444,8 +120252,8 @@ aZC
 aZU
 aZC
 bcF
-aOO
-aOO
+avA
+avA
 apD
 aHD
 aBR
@@ -118641,12 +120449,12 @@ fRY
 eZM
 fRY
 kmm
-aPS
-aOM
-aOM
-aOM
-aYL
-awi
+bJq
+bcc
+bJo
+eoU
+aOG
+awh
 aof
 aof
 aof
@@ -118661,8 +120469,8 @@ aZC
 aZC
 aZC
 bcG
-aOO
-aOO
+avA
+avA
 apD
 aHD
 aBR
@@ -118861,9 +120669,9 @@ apC
 axg
 axc
 awW
-aYL
-aYL
-awj
+bsw
+aVp
+bQe
 aof
 avF
 avF
@@ -118872,14 +120680,14 @@ aNL
 aOM
 aUb
 aof
-aOO
-aOO
-aOO
+avA
+avA
+avA
 aOO
 aOO
 bcH
-aOO
-aOO
+avA
+avA
 apC
 aHD
 aBR
@@ -119075,12 +120883,12 @@ aHF
 aHF
 aHF
 apC
-axh
+bJq
 jbf
 awX
-aYL
-aYL
-aYL
+aWA
+aWA
+bQe
 baI
 aWD
 aWD
@@ -119288,16 +121096,16 @@ rgf
 arR
 awO
 alu
-aHF
-aHF
+bJr
+baa
 aHF
 apC
 agE
-avH
-awR
-awR
+bJp
+baJ
+baJ
 awy
-awm
+baJ
 agp
 avH
 avH
@@ -119506,8 +121314,8 @@ axB
 jSL
 alu
 aHF
-aHF
-aHF
+bJs
+bJr
 apC
 aof
 awg
@@ -119723,8 +121531,8 @@ alu
 alu
 alu
 aHF
-aHF
-aHF
+bJr
+baa
 apC
 aof
 jSS
@@ -120177,7 +121985,7 @@ aYS
 aOM
 aZX
 aof
-aOO
+avA
 bbV
 bcL
 aOO
@@ -120811,7 +122619,7 @@ aBR
 aBR
 aMc
 aof
-aUd
+biC
 aXM
 aPS
 aOM
@@ -120830,9 +122638,9 @@ aZX
 aof
 dQS
 aZA
-bcN
+aor
 kIv
-aOO
+avA
 apC
 aHD
 beY
@@ -121250,8 +123058,8 @@ aXL
 aPS
 aOM
 aof
-aTa
-aTa
+fPB
+fPB
 aof
 oWe
 aOM
@@ -121262,11 +123070,11 @@ aNL
 aOM
 szi
 aof
-aNQ
+avY
 aOO
 aOO
-aOO
-aOO
+avA
+avA
 apC
 aHD
 aWJ
@@ -121467,8 +123275,8 @@ aOM
 aPS
 aOM
 aRZ
-aTa
-aTa
+fPB
+fPB
 aRZ
 aVU
 aWE
@@ -121479,11 +123287,11 @@ aYV
 aOM
 szi
 aof
-aOO
+avA
 bbY
 bcO
-aOO
-aOO
+avA
+avA
 apC
 aHD
 aIn
@@ -125568,7 +127376,7 @@ awq
 awq
 tdz
 awq
-axM
+bJt
 aws
 amn
 oTG
@@ -127744,7 +129552,7 @@ aAI
 anJ
 anJ
 anJ
-agG
+btv
 ahq
 anJ
 anJ
@@ -127961,7 +129769,7 @@ nih
 qpk
 sqt
 anJ
-agG
+btv
 iyr
 nkD
 nmb
@@ -128183,7 +129991,7 @@ gqF
 gVn
 agG
 ntw
-agG
+btv
 aJr
 aEO
 coT
@@ -128611,7 +130419,7 @@ ako
 aAJ
 gbA
 apo
-dSL
+apo
 anJ
 anJ
 anJ
@@ -159004,17 +160812,17 @@ mJx
 mJx
 mJx
 aRX
+bLx
+bLw
+bLw
+bLw
+bLw
 pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
+bLw
+bLw
+bLw
+bLw
+bLw
 pDn
 pDn
 pDn
@@ -159223,6 +161031,7 @@ mJx
 aRX
 pDn
 pDn
+bLw
 pDn
 pDn
 pDn
@@ -159230,8 +161039,7 @@ pDn
 pDn
 pDn
 pDn
-pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -159440,7 +161248,7 @@ mJx
 aRX
 pDn
 pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -159655,17 +161463,17 @@ mJx
 mJx
 mJx
 aRX
+bLw
+bLw
+bMb
+pDn
+bLw
 pDn
 pDn
 pDn
 pDn
 pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -160089,16 +161897,16 @@ mJx
 mJx
 mJx
 aRX
+bLw
+bLw
+bLw
+bLw
+bLw
 pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
-pDn
+bLw
+bLw
+bLx
+bLw
 pDn
 pDn
 pDn
@@ -160306,15 +162114,15 @@ mJx
 mJx
 mJx
 aRX
+bLw
 pDn
+bLw
 pDn
+bLw
 pDn
+bLw
 pDn
-pDn
-pDn
-pDn
-pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -160525,13 +162333,13 @@ mJx
 aRX
 pDn
 pDn
+bLw
 pDn
+bLw
 pDn
+bLw
 pDn
-pDn
-pDn
-pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -160747,8 +162555,8 @@ utO
 utO
 utO
 utO
-utO
-dkO
+bLB
+bLy
 pDn
 pDn
 pDn
@@ -160961,8 +162769,8 @@ jYB
 gVZ
 vfB
 bbr
-bbr
-bbr
+bLL
+bLL
 aKm
 hJv
 lKl
@@ -161175,12 +162983,12 @@ mJx
 mJx
 mTT
 gVZ
-bbr
-bbr
-aKm
-aKm
-aKm
-aKm
+bLL
+bLL
+bLU
+bLR
+bLM
+bLz
 bbr
 bbr
 lKl
@@ -161204,15 +163012,15 @@ cUN
 juK
 aPO
 amf
-biq
-aZu
-aZu
-aZu
+bKC
+bKD
+bKD
+bKD
 amf
 abZ
-biq
-aZO
-bei
+bKC
+bKA
+bKy
 aPO
 mSi
 mSi
@@ -161391,14 +163199,14 @@ mJx
 mJx
 mJx
 pdj
-vfB
-bbr
-svb
+bMj
+bLL
+bMc
 oce
 oce
 oce
 oce
-oce
+bLC
 bbr
 vUh
 nBV
@@ -161608,15 +163416,15 @@ mJx
 mJx
 mJx
 pdj
-bbr
-bbr
+bMk
+bMh
 aKm
-aKm
+bLV
 svb
 oce
 aKm
-aKm
-aKm
+bLz
+bLz
 bbr
 nBV
 pDn
@@ -161825,14 +163633,14 @@ mJx
 mJx
 mJx
 pdj
-aKm
-aKm
-aKm
+bMl
+bMi
+bMd
 aKm
 svb
 svb
-aKm
-aKm
+bLz
+bLD
 bbr
 bbr
 nBV
@@ -162042,14 +163850,14 @@ mJx
 mJx
 mJx
 pdj
-knK
-bbr
-oce
+bMm
+bLL
+bMe
 oce
 svb
-svb
-oce
-oce
+bLN
+bLI
+bLF
 bbr
 oMr
 nBV
@@ -162260,13 +164068,13 @@ mJx
 mJx
 esy
 uTZ
-bbr
-bbr
+bLL
+bLL
 aKm
 aKm
-bbr
-aKm
-bbr
+bLP
+bLJ
+bLH
 bbr
 rLh
 rBp
@@ -162479,10 +164287,10 @@ aRX
 kmg
 uTZ
 knK
-bbr
-aKm
-aKm
-aKm
+bLW
+bLS
+bLQ
+bLK
 oMr
 rLh
 rBp
@@ -162707,9 +164515,9 @@ aqV
 aqG
 aqE
 rms
-aZO
-aZO
-aZO
+bLu
+bLs
+bLr
 aZO
 aZu
 aZO
@@ -162922,11 +164730,11 @@ pDn
 pDn
 aqV
 aqI
-aqF
+bLv
 bdg
 bgU
-aZO
-aZO
+bLt
+bLr
 aZu
 aZu
 anR
@@ -163128,10 +164936,10 @@ vsz
 vsz
 aRX
 pDn
-pDn
-pDn
-pDn
-pDn
+bLw
+bLw
+bLw
+bLw
 pDn
 pDn
 pDn
@@ -163349,7 +165157,7 @@ pDn
 pDn
 pDn
 pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -163566,7 +165374,7 @@ pDn
 pDn
 pDn
 pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -163588,7 +165396,7 @@ aTl
 abZ
 rfQ
 pLB
-dKt
+bKK
 aPO
 huq
 aKA
@@ -163780,10 +165588,10 @@ vsz
 aRX
 pDn
 pDn
-pDn
-pDn
-pDn
-pDn
+bLw
+bLx
+bLw
+bLw
 pDn
 pDn
 pDn
@@ -164213,11 +166021,11 @@ vsz
 vsz
 aRX
 pDn
+bLw
+bLw
+bLw
 pDn
-pDn
-pDn
-pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -164238,7 +166046,7 @@ aUr
 aTo
 abZ
 oEw
-fXZ
+bKO
 fXZ
 aPO
 huq
@@ -164430,11 +166238,11 @@ vsz
 vsz
 aRX
 pDn
+bLw
 pDn
+bLw
 pDn
-pDn
-pDn
-pDn
+bLw
 pDn
 pDn
 pDn
@@ -164649,8 +166457,8 @@ aRX
 pDn
 pDn
 pDn
-pDn
-pDn
+bLw
+bLw
 pDn
 pDn
 pDn
@@ -164841,7 +166649,7 @@ kMt
 wWn
 qoQ
 alu
-axC
+bMW
 alu
 alu
 bFT
@@ -165058,8 +166866,8 @@ jgg
 afX
 tbS
 alu
-axC
-ayV
+bMW
+bMT
 alu
 eYv
 bFy
@@ -165275,8 +167083,8 @@ uZo
 wIR
 tbS
 alu
-axC
-ayV
+bMW
+bMT
 alu
 wdl
 bFD
@@ -165492,8 +167300,8 @@ dIn
 enR
 tbS
 alu
-axC
-ayV
+bMW
+bMT
 alu
 vAe
 bFy
@@ -165710,7 +167518,7 @@ sxg
 bOR
 uST
 bGZ
-ayV
+bMT
 alu
 eYv
 bFy
@@ -165771,11 +167579,11 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
+bJF
+bJx
+bJx
+bJx
+bJu
 krR
 azz
 azz
@@ -165951,7 +167759,7 @@ vsz
 vsz
 mIc
 xqb
-bkX
+bLX
 bjZ
 xqb
 hMW
@@ -165988,11 +167796,11 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
+bKm
+bJy
+bJD
+bJy
+bJv
 krR
 azz
 azz
@@ -166156,7 +167964,7 @@ eYT
 iaR
 iaR
 pMQ
-buE
+bFX
 bul
 owc
 aRU
@@ -166168,7 +167976,7 @@ vsz
 vsz
 mIc
 xqb
-bkX
+bLX
 bjZ
 xqb
 hMW
@@ -166205,11 +168013,11 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
+bKm
+bJA
+bJE
+bJA
+bJv
 krR
 azz
 azz
@@ -166373,7 +168181,7 @@ eBp
 afp
 afp
 uit
-arR
+bGr
 buf
 owc
 aRU
@@ -166385,7 +168193,7 @@ vsz
 qHf
 owp
 apC
-bkX
+bLY
 bkc
 apC
 iFP
@@ -166422,11 +168230,11 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
+bKm
+bJy
+bJD
+bJy
+bJv
 krR
 azz
 azz
@@ -166577,7 +168385,7 @@ tHH
 tHH
 nZd
 alX
-axC
+bMW
 ayV
 alu
 bFW
@@ -166590,7 +168398,7 @@ eue
 xxS
 xxS
 hQh
-aqw
+auL
 buf
 owc
 aRU
@@ -166639,11 +168447,11 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
+bKm
+bJA
+bJE
+bJA
+bJv
 krR
 azz
 azz
@@ -166794,8 +168602,8 @@ tHH
 tHH
 nZd
 alX
-axC
-ayV
+bMW
+bMT
 alu
 alu
 bui
@@ -166807,7 +168615,7 @@ bwy
 oiO
 oiO
 bvG
-aqw
+ouo
 buf
 alX
 pJa
@@ -166818,9 +168626,9 @@ aNE
 wsX
 apC
 qnZ
-aXL
-aOM
-aYL
+bMg
+bLZ
+bLT
 bjF
 jzX
 bYw
@@ -166856,11 +168664,11 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
+bKm
+bJy
+bJD
+bJy
+bJv
 krR
 azz
 azz
@@ -167073,11 +168881,11 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
+bKn
+bJB
+bJB
+bJB
+bJw
 krR
 azz
 azz
@@ -167244,7 +169052,7 @@ bvb
 buH
 buq
 aGw
-aGw
+bMo
 naR
 bqe
 bqe
@@ -167290,12 +169098,12 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
-krR
+bJF
+bJx
+bJx
+bJx
+bJu
+bJC
 azz
 azz
 azz
@@ -167507,11 +169315,11 @@ abC
 abC
 abC
 xRx
-krR
-krR
-krR
-krR
-krR
+bKm
+bJy
+bJD
+bJy
+bJv
 krR
 azz
 azz
@@ -167681,7 +169489,7 @@ gPd
 alX
 alX
 xqb
-xqb
+bMn
 xqb
 apC
 apC
@@ -167724,13 +169532,13 @@ abC
 abC
 abC
 xRx
+bKm
+bJA
+bJE
+bJA
+bJv
 krR
-krR
-krR
-krR
-krR
-krR
-krR
+bKd
 azz
 azz
 azz
@@ -167941,13 +169749,13 @@ abC
 abC
 abC
 xRx
+bKm
+bJy
+bJD
+bJy
+bJv
 krR
-krR
-krR
-krR
-krR
-krR
-krR
+bKe
 krR
 azz
 azz
@@ -168158,13 +169966,13 @@ abC
 abC
 abC
 xRx
+bKm
+bJA
+bJE
+bJA
+bJv
 krR
-krR
-krR
-krR
-krR
-krR
-krR
+bJK
 krR
 krR
 azz
@@ -168375,13 +170183,13 @@ abC
 abC
 abC
 xRx
+bKm
+bJy
+bJD
+bJy
+bJv
 krR
-krR
-krR
-krR
-krR
-krR
-krR
+bJK
 krR
 krR
 krR
@@ -168592,15 +170400,15 @@ abC
 abC
 abC
 sHP
+bKo
+bKk
+bKk
+bKk
+bKj
 hQT
+bJM
 hQT
-hQT
-hQT
-hQT
-hQT
-hQT
-hQT
-krR
+bJC
 krR
 krR
 azz
@@ -169037,8 +170845,8 @@ abC
 abC
 xRx
 krR
-krR
-krR
+bJO
+bJK
 krR
 krR
 krR
@@ -169255,8 +171063,8 @@ abC
 xRx
 krR
 krR
-krR
-krR
+bJL
+bJC
 krR
 krR
 krR
@@ -169472,12 +171280,12 @@ abC
 sHP
 hQT
 hQT
-hQT
-krR
-krR
-krR
-krR
-krR
+bJM
+bJF
+bJx
+bJx
+bJx
+bJu
 bRm
 abC
 abC
@@ -169690,11 +171498,11 @@ abC
 abC
 abC
 abC
-xRx
-krR
-krR
-krR
-krR
+bJG
+bJy
+bJD
+bJy
+bJv
 bRm
 abC
 abC
@@ -169907,11 +171715,11 @@ abC
 abC
 abC
 abC
-xRx
-krR
-krR
-krR
-krR
+bJG
+bJA
+bJE
+bJA
+bJv
 bRm
 abC
 abC
@@ -170124,11 +171932,11 @@ abC
 abC
 abC
 abC
-xRx
-krR
-azA
-krR
-krR
+bJG
+bJy
+bJD
+bJy
+bJv
 bRm
 abC
 abC
@@ -170341,11 +172149,11 @@ abC
 abC
 abC
 abC
-xRx
-krR
-krR
-krR
-krR
+bJG
+bJA
+bJE
+bJA
+bJv
 bRm
 abC
 abC
@@ -170486,7 +172294,7 @@ wzZ
 wzZ
 wzZ
 aNC
-bvL
+bMI
 bFH
 aNC
 aNC
@@ -170558,11 +172366,11 @@ abC
 abC
 abC
 abC
-xRx
-krR
-krR
-krR
-krR
+bJG
+bJy
+bJD
+bJy
+bJv
 bRm
 abC
 abC
@@ -170704,13 +172512,13 @@ bHe
 kxr
 aNC
 bGb
-bFH
+bMC
 dcV
 aNC
 aNC
 bzV
 atY
-atY
+bMt
 bvC
 aNC
 aNC
@@ -170775,11 +172583,11 @@ okB
 okB
 okB
 okB
-krR
-krR
-krR
-krR
-krR
+bJH
+bJB
+bJB
+bJB
+bJw
 bRm
 abC
 abC
@@ -170916,10 +172724,10 @@ bIz
 bIj
 aNC
 iHc
-szt
+bNd
 iCI
 bGK
-bGw
+bMM
 bGc
 bFI
 bFp
@@ -170928,8 +172736,8 @@ szt
 szt
 atY
 atY
-szt
-szt
+bMs
+bMp
 aNC
 gfc
 ghU
@@ -170970,7 +172778,7 @@ aNT
 aMh
 aLn
 aKB
-aIk
+bKE
 aJp
 aIk
 aIk
@@ -170985,8 +172793,8 @@ xBo
 xBo
 xBo
 xBo
-aBr
-aBr
+bKb
+bKb
 aBr
 xBo
 xBo
@@ -170995,7 +172803,7 @@ ajN
 ajA
 krR
 krR
-krR
+bJC
 krR
 bRm
 abC
@@ -171134,16 +172942,16 @@ bIk
 aNC
 kHR
 mhF
-bve
+bMX
 bGM
 aNC
 bGd
-bBz
+bMD
 bto
 eYn
 szt
-aro
-aru
+atY
+eBW
 eBW
 tYq
 szt
@@ -171179,15 +172987,15 @@ aIl
 eSN
 xqb
 aUw
+bLb
 aIl
-aIl
-aJu
-aKj
-aKj
+bKR
+bKP
+bKL
 aMi
 aLq
-aKj
-aKj
+bKH
+bKF
 aJu
 aIl
 aIl
@@ -171203,8 +173011,8 @@ xBo
 aDI
 aDo
 aCJ
-aBs
-aBs
+bJU
+bJU
 aAt
 azX
 xBo
@@ -171356,14 +173164,14 @@ aNC
 aNC
 bGe
 bBz
-bto
+bMA
 eYn
 atY
-aro
-aru
+atY
+eBW
 eBW
 tYq
-szt
+bMq
 wzZ
 aRU
 vsz
@@ -171394,13 +173202,13 @@ bcZ
 aYw
 aYw
 aXa
-aVR
+bLq
 aUx
-aIo
+bLc
 aIo
 aSb
 aPU
-aIo
+bKM
 aMz
 aLt
 aKH
@@ -171419,13 +173227,13 @@ oiJ
 aEb
 aDK
 aDw
+bKf
 aBV
-aBV
-aAy
+bJV
 aAx
 aAc
-tIv
-oiJ
+bJP
+bJN
 ajH
 ajn
 aiY
@@ -171576,11 +173384,11 @@ bFJ
 bto
 eYn
 atY
-aro
-aru
+azM
 eBW
 eBW
-szt
+eBW
+bMp
 wzZ
 aRU
 vsz
@@ -171638,12 +173446,12 @@ aDL
 aBV
 aAy
 aAy
-aAy
+bJW
 aAy
 aAd
-nlJ
+bJR
 noT
-azC
+bJI
 ajn
 ajf
 hQT
@@ -171783,7 +173591,7 @@ tHH
 tHH
 nZd
 wzZ
-bGM
+bNg
 bHv
 hwq
 bGO
@@ -171797,7 +173605,7 @@ atY
 atY
 atY
 atY
-szt
+bMr
 wzZ
 aRU
 vsz
@@ -171859,7 +173667,7 @@ aBt
 aAD
 aAe
 azH
-oiJ
+bJN
 ajI
 ajo
 ajg
@@ -172065,7 +173873,7 @@ xBo
 aGR
 aDc
 aBL
-aEG
+aFS
 xBo
 xBo
 aDP
@@ -172282,7 +174090,7 @@ azD
 aGS
 aDc
 aBL
-aEH
+bKl
 xBo
 xBo
 xBo
@@ -172433,11 +174241,11 @@ tHH
 tHH
 tHH
 nZd
-wzZ
-iHc
+bNk
+bNh
 bHx
-bHe
-bGR
+szt
+szt
 aNC
 bGj
 bBF
@@ -172495,10 +174303,10 @@ jYC
 vsz
 vsz
 lGK
-azD
-aGS
-aDc
-aBL
+bKB
+bKz
+bKs
+bKp
 aEI
 xBo
 xBo
@@ -172651,10 +174459,10 @@ tHH
 tHH
 nZd
 wzZ
-bGM
+bNi
 bHy
-iCI
-bGS
+bMY
+szt
 aNC
 bGj
 bBF
@@ -172723,7 +174531,7 @@ aDS
 aDA
 aCX
 aCg
-aAx
+bJX
 aAH
 aAh
 azI
@@ -172868,9 +174676,9 @@ tHH
 tHH
 nZd
 wzZ
-kHR
+bNj
 bHz
-szt
+bMZ
 aNC
 aNC
 bGj
@@ -172880,7 +174688,7 @@ aNC
 aNC
 szt
 atY
-atY
+bMu
 szt
 aNC
 aNC
@@ -172938,11 +174746,11 @@ xBo
 aEk
 aDT
 aDC
-aDc
+bKg
 aCD
-aBL
+bJY
 aBc
-wvK
+bJT
 nlJ
 azD
 bRm
@@ -173083,7 +174891,7 @@ fhy
 tHH
 tHH
 tHH
-nZd
+bNn
 aNC
 aNC
 bHA
@@ -173092,7 +174900,7 @@ aNC
 bGx
 bGk
 bBG
-wBs
+bMB
 aNC
 aNC
 qwI
@@ -173148,16 +174956,16 @@ vsz
 lGK
 azD
 aHg
-aGs
+bKt
 aBL
 aES
 xBo
 aEl
 fBo
-aDC
-aDc
+bKi
+bKh
 aCE
-aBL
+bJY
 aBg
 wvK
 azL
@@ -173365,7 +175173,7 @@ vsz
 lGK
 azD
 aHg
-aGs
+bKt
 aFK
 aEI
 xBo
@@ -173373,8 +175181,8 @@ aEm
 aDV
 aDE
 aDd
-aBY
-aAD
+bKc
+bKa
 aBh
 aAr
 azR
@@ -173523,7 +175331,7 @@ bHM
 bHC
 bHh
 bvE
-bGf
+bMN
 bwF
 bFL
 bwF
@@ -173740,9 +175548,9 @@ bGh
 lyG
 bBF
 lyG
-bEX
-bwJ
-bFr
+bMO
+bMK
+bME
 bFr
 bEU
 bBz
@@ -173805,8 +175613,8 @@ aEV
 xBo
 xBo
 xBo
-aBr
-aBr
+bKb
+bKb
 xBo
 aBr
 aBr
@@ -173951,7 +175759,7 @@ fhy
 tHH
 tHH
 tHH
-nZd
+bNn
 wzZ
 qZB
 rCM
@@ -173962,9 +175770,9 @@ djW
 djW
 djW
 bEV
-bBD
-lyG
-lyG
+bMx
+bMv
+bMv
 lyG
 art
 weN
@@ -174016,7 +175824,7 @@ vsz
 lGK
 xBo
 xBo
-aGu
+bKu
 xBo
 xBo
 xBo
@@ -174179,8 +175987,8 @@ ruT
 ruT
 jDh
 uJk
-bBF
-lyG
+bMy
+bMw
 bxg
 wCE
 bvI
@@ -174233,8 +176041,8 @@ vsz
 lGK
 xBo
 aHj
-bnl
-nlJ
+bKv
+bKq
 xBo
 afL
 cbj
@@ -174450,7 +176258,7 @@ vsz
 lGK
 xBo
 aHk
-bnh
+bKw
 aki
 xBo
 afL
@@ -174667,8 +176475,8 @@ vsz
 lGK
 xBo
 aHl
-bpo
-boe
+bKx
+bKr
 xBo
 afL
 cbj
@@ -175040,7 +176848,7 @@ nZd
 wzZ
 bGj
 bHD
-bBz
+bNa
 bGT
 hAV
 qQX
@@ -175250,18 +177058,18 @@ jNM
 jlr
 jlr
 jlr
-jlr
+bNo
 jlr
 jlr
 qNk
 aNC
 jCj
-bHD
-bBz
+bNe
+bNb
 bGU
 bGz
 bGm
-xjS
+bMF
 xjS
 bEX
 bBD
@@ -175476,7 +177284,7 @@ arH
 bHE
 bHi
 bAm
-bwF
+bMP
 bGn
 bvE
 bvE
@@ -175519,7 +177327,7 @@ gbG
 aUQ
 aWl
 aKg
-aKg
+bLd
 aSG
 aSd
 gbG
@@ -175684,7 +177492,7 @@ nZd
 akL
 nDP
 chK
-nwe
+bNp
 akL
 rEb
 sXd
@@ -175692,7 +177500,7 @@ akL
 akL
 bHF
 bHj
-bGA
+bMU
 bGA
 bGo
 bFM
@@ -175900,7 +177708,7 @@ tHH
 nZd
 jYZ
 xOp
-nwe
+bNt
 bGB
 qrX
 apU
@@ -176127,7 +177935,7 @@ bHN
 bHG
 bHl
 akL
-dtw
+bMQ
 gYT
 arw
 akL
@@ -176162,16 +177970,16 @@ jUO
 skZ
 skZ
 skZ
-bgl
-bgd
+bgc
+aNU
 bfL
 skZ
 skZ
 skZ
 skZ
-aUA
-aTF
-aSY
+bLl
+bLe
+bKS
 skZ
 aQr
 bgd
@@ -176331,11 +178139,11 @@ tHH
 tHH
 tHH
 tHH
-nZd
+bNn
 akL
 bJa
-xlD
-azc
+bNu
+bMS
 qrX
 bIC
 bIn
@@ -176345,7 +178153,7 @@ bHH
 bHm
 qrX
 bGB
-nwe
+bML
 bFN
 akL
 odN
@@ -176386,9 +178194,9 @@ skZ
 skZ
 aXh
 skZ
-aUB
-aIt
-aSd
+bLm
+bLf
+bKT
 skZ
 aQs
 bgd
@@ -176551,7 +178359,7 @@ tHH
 nZd
 jYZ
 uOF
-aiv
+bNv
 dtw
 akL
 afh
@@ -176603,9 +178411,9 @@ skZ
 aXF
 aXi
 skZ
-aLG
-aIt
-aSd
+bLn
+bLg
+bKU
 skZ
 skZ
 skZ
@@ -176780,7 +178588,7 @@ bHn
 akL
 yim
 chK
-nwe
+bMG
 akL
 aNI
 qDK
@@ -176820,11 +178628,11 @@ skZ
 aXF
 aXk
 aWn
-aLG
-aIt
-aSd
+bLo
+bLh
+bKW
 skZ
-aQx
+bKQ
 aOm
 skZ
 aLK
@@ -176986,7 +178794,7 @@ nZd
 akL
 aDM
 ipk
-azc
+bNq
 qrX
 apU
 qii
@@ -176995,7 +178803,7 @@ lpf
 uGT
 apk
 qrX
-bGD
+bMR
 nwe
 dtw
 jYZ
@@ -177037,9 +178845,9 @@ skZ
 aXF
 aXp
 skZ
-aLG
-aIt
-aJl
+bLp
+bLj
+bKX
 skZ
 aQC
 aOS
@@ -177201,7 +179009,7 @@ tHH
 tHH
 nZd
 jYZ
-xOp
+bNy
 tot
 bGB
 akL
@@ -177429,7 +179237,7 @@ bHP
 uGT
 bHo
 qrX
-azc
+bMS
 xlD
 xlD
 akL
@@ -177635,7 +179443,7 @@ aao
 aao
 nZd
 akL
-xlD
+bMV
 tbu
 azc
 qrX
@@ -177690,7 +179498,7 @@ aXp
 skZ
 aUL
 aTP
-aJl
+bKZ
 skZ
 aPk
 aPk
@@ -177865,7 +179673,7 @@ rNG
 akL
 bGE
 nwe
-xlD
+bMH
 akL
 aNI
 qDK
@@ -178124,7 +179932,7 @@ aXv
 skZ
 aUQ
 aTT
-aSd
+bLa
 skZ
 skZ
 skZ
@@ -178287,7 +180095,7 @@ aPN
 sHH
 akL
 aDM
-nwe
+bNw
 azc
 qrX
 bIC
@@ -178340,7 +180148,7 @@ aXs
 skZ
 skZ
 aUQ
-aIt
+bLk
 aSd
 skZ
 aQK
@@ -178939,7 +180747,7 @@ nZd
 akL
 ayx
 ioT
-azc
+bNr
 qrX
 bIJ
 bIo
@@ -178947,7 +180755,7 @@ bHZ
 qrX
 bGD
 nwe
-xlD
+bMV
 jYZ
 aNI
 qDK
@@ -179152,7 +180960,7 @@ aPN
 aPN
 aPN
 aPN
-nZd
+bNn
 jYZ
 dtw
 jjz
@@ -179212,7 +181020,7 @@ aIt
 aSd
 skZ
 aQx
-aPo
+bKN
 aNz
 aLX
 aLk
@@ -179432,8 +181240,8 @@ aQC
 aLU
 aMV
 aLW
-bgu
-gbG
+bKI
+bKG
 aFG
 aFG
 aFG
@@ -179589,7 +181397,7 @@ aao
 nZd
 akL
 uOF
-aiv
+bNx
 azc
 qrX
 aoB
@@ -179598,7 +181406,7 @@ apU
 qrX
 bGB
 tot
-nwe
+bML
 jYZ
 aNI
 qDK
@@ -179865,7 +181673,7 @@ skZ
 aRt
 aPz
 aLU
-bgf
+bKJ
 skZ
 skZ
 aFG
@@ -180031,7 +181839,7 @@ bIq
 bHY
 akL
 bum
-nwe
+bNc
 xlD
 akL
 aNI
@@ -180241,13 +182049,13 @@ nZd
 akL
 nwe
 nwe
-azc
+bNs
 qrX
 bIC
 bIq
 bHV
 qrX
-bGD
+bNf
 xlD
 dtw
 jYZ
@@ -180892,7 +182700,7 @@ nZd
 akL
 xOp
 qYq
-azc
+bMS
 qrX
 bIM
 cHo
@@ -181322,7 +183130,7 @@ aao
 aao
 aao
 tQw
-xLz
+bNz
 akL
 akL
 akL
@@ -181547,7 +183355,7 @@ aRV
 aRV
 aRV
 aRV
-aRV
+bNm
 aRV
 eJm
 qDK

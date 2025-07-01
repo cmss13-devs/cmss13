@@ -3910,11 +3910,6 @@
 "aol" = (
 /turf/open/floor/rampbottom,
 /area/bigredv2/outside/marshal_office)
-"aom" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/suit/storage/lawyer/bluejacket,
-/turf/open/floor/wood,
-/area/bigredv2/outside/marshal_office)
 "aon" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -126379,7 +126374,7 @@ akS
 adW
 amA
 ani
-aom
+agO
 aoX
 apb
 acr
@@ -174556,7 +174551,7 @@ azr
 azr
 azr
 azr
-kcM
+bNI
 bRm
 aCF
 aCF

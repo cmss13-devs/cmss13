@@ -235,7 +235,7 @@
 	dir = 1;
 	name = "\improper Synth Prep"
 	},
-/turf/open/space/basic,
+/turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
 "aM" = (
 /obj/effect/decal/cleanable/blood/writing{
@@ -288,9 +288,6 @@
 	pixel_y = 30
 	},
 /turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
-"aU" = (
-/turf/open/space/basic,
 /area/whiskey_outpost/inside/cic)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
@@ -16750,7 +16747,7 @@ mT
 mT
 mT
 ak
-aU
+fx
 aL
 ak
 mT

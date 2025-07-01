@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 			intro_text = picked_spawner.synthetic_intro_text
 		else if(picked_spawner.CO_equipment && picked_spawner.CO_intro_text != null)
 			intro_text = picked_spawner.CO_intro_text
-		else if(picked_spawner.equipment)
+		else
 			intro_text = picked_spawner.intro_text
 
 	if(picked_spawner.story_text)
@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 			story_text = picked_spawner.synthetic_story_text
 		else if(picked_spawner.CO_equipment && picked_spawner.CO_story_text != null)
 			story_text = picked_spawner.CO_story_text
-		else if(picked_spawner.equipment)
+		else
 			story_text = picked_spawner.story_text
 
 	if(picked_spawner.hostile && !picked_spawner.synth_equipment)

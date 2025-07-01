@@ -6170,6 +6170,27 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
+"awi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark,
+/area/bigredv2/outside/office_complex)
+"awj" = (
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/outside/cargo)
 "awk" = (
 /obj/structure/machinery/medical_pod/sleeper,
 /turf/open/floor/white,
@@ -6178,6 +6199,10 @@
 /obj/structure/machinery/sleep_console,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
+"awm" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/floor4,
+/area/bigredv2/outside/nw)
 "awn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
@@ -6341,6 +6366,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/white,
 /area/bigredv2/outside/medical)
+"awR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor,
+/area/bigredv2/outside/hydroponics)
 "awS" = (
 /obj/structure/machinery/door_control{
 	id = "Medical";
@@ -6448,6 +6481,10 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
+"axh" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/whitegreencorner/north,
+/area/bigredv2/outside/medical)
 "axi" = (
 /obj/structure/machinery/light,
 /turf/open/floor,
@@ -7090,6 +7127,12 @@
 "azz" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/engineering)
+"azA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/dark,
+/area/bigredv2/outside/bar)
 "azB" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -8770,6 +8813,10 @@
 "aEF" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves/lambda/research)
+"aEG" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/wood,
+/area/bigredv2/outside/dorms)
 "aEH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -10322,6 +10369,7 @@
 	dir = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/darkbrown2/northwest,
 /area/bigredv2/outside/cargo)
 "aJj" = (
@@ -13674,6 +13722,14 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
+"aTa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/white,
+/area/bigredv2/outside/medical)
 "aTb" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
 /turf/open_space,
@@ -18021,6 +18077,10 @@
 	},
 /turf/open/floor/redcorner/west,
 /area/bigredv2/outside/office_complex)
+"bgl" = (
+/obj/effect/landmark/survivor_spawner,
+/turf/open/floor/darkgreen2/north,
+/area/bigredv2/outside/dorms)
 "bgm" = (
 /obj/structure/janitorialcart,
 /obj/effect/decal/cleanable/dirt,
@@ -22998,6 +23058,7 @@
 /area/bigredv2/outside/lz2_south_cas)
 "buS" = (
 /obj/effect/decal/heavy_cable/node_s_w,
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
 "buT" = (
@@ -23163,6 +23224,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/carpet,
 /area/bigredv2/outside/hydroponics)
 "bvq" = (
@@ -27298,6 +27360,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/whitegreen/west,
 /area/bigredv2/outside/medical)
 "bIg" = (
@@ -28678,6 +28741,7 @@
 /obj/structure/bed/bedroll{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawner,
 /turf/open/floor/dark,
 /area/bigredv2/outside/nw)
 "bLK" = (
@@ -163203,7 +163267,7 @@ bMj
 bLL
 bMc
 oce
-oce
+awm
 oce
 oce
 bLC
@@ -164522,7 +164586,7 @@ aZO
 aZu
 aZO
 amo
-aEa
+awj
 aEa
 wRl
 aEa
@@ -168615,7 +168679,7 @@ bwy
 oiO
 oiO
 bvG
-ouo
+axh
 buf
 alX
 pJa
@@ -170124,7 +170188,7 @@ alX
 pod
 rjZ
 bGu
-bFj
+aTa
 bFA
 bFn
 alu
@@ -173601,7 +173665,7 @@ bBD
 bwq
 xZU
 atY
-atY
+aEG
 atY
 atY
 atY
@@ -174464,7 +174528,7 @@ bHy
 bMY
 szt
 aNC
-bGj
+bgl
 bBF
 jWB
 lXI
@@ -177728,7 +177792,7 @@ bAG
 aEc
 mwJ
 bvT
-bod
+azA
 jDz
 bsy
 bsy
@@ -179280,7 +179344,7 @@ skZ
 aXs
 skZ
 aUK
-aMA
+awi
 aTe
 skZ
 aPk
@@ -183161,7 +183225,7 @@ btC
 bsV
 bsl
 bqr
-aEU
+awR
 aJb
 bmL
 bow

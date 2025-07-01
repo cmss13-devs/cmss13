@@ -1,0 +1,5 @@
+author: "FebrezeNinja"
+delete-after: True
+changes:
+  - bugfix: "Medical's fax machine now properly alerts :m on receipt of priority fax."
+  - bugfix: "Changes other department fax machines to correspond with #9804"

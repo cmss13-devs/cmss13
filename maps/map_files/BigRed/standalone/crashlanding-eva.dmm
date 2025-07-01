@@ -479,8 +479,9 @@
 /area/bigredv2/outside/general_offices)
 "cj" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -542,8 +543,9 @@
 	},
 /area/bigredv2/outside/general_offices)
 "cE" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -665,8 +667,9 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/general_offices)
 "hf" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/plating/wood,
 /area/bigredv2/outside/general_offices)
@@ -746,8 +749,9 @@
 /turf/open/floor/plating/wood,
 /area/bigredv2/outside/general_offices)
 "mL" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/plating/wood_broken3,
 /area/bigredv2/outside/general_offices)
@@ -765,8 +769,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
 "nW" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
@@ -813,7 +818,9 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/general_offices)
 "rg" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "rk" = (
@@ -1110,7 +1117,9 @@
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/general_offices)
 "Pb" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/general_offices)
 "Pg" = (
@@ -1195,8 +1204,9 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
 "Xl" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/plating/wood_broken2,
 /area/bigredv2/outside/general_offices)
@@ -1216,7 +1226,8 @@
 /turf/open/floor/wood,
 /area/bigredv2/outside/general_offices)
 "YL" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
 	dir = 4
 	},
 /obj/structure/surface/rack,

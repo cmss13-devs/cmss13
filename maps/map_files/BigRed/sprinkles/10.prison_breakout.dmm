@@ -61,13 +61,15 @@
 /area/bigredv2/outside/marshal_office)
 "ax" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "ay" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
 	dir = 4
 	},
 /turf/open/floor/freezerfloor,
@@ -154,7 +156,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "bh" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
 "bi" = (
@@ -292,8 +296,9 @@
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/marshal_office)
 "bY" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -327,7 +332,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "ci" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "cj" = (
@@ -391,8 +398,9 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "cy" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
@@ -546,8 +554,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "dg" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/redfull/northwest,
 /area/bigredv2/outside/marshal_office)
@@ -616,7 +625,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "gL" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
@@ -687,8 +698,9 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "jo" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /obj/item/weapon/baton/cattleprod{
 	pixel_x = 11;
@@ -712,8 +724,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "kG" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
@@ -928,7 +941,9 @@
 /turf/open/floor/redcorner/east,
 /area/bigredv2/outside/marshal_office)
 "wL" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/bcircuit,
 /area/bigredv2/outside/marshal_office)
 "xk" = (
@@ -1112,14 +1127,17 @@
 /area/bigredv2/outside/marshal_office)
 "Io" = (
 /obj/structure/closet/l3closet/security,
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
 "IR" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/effect/decal/cleanable/blood,
 /obj/item/shard,
@@ -1318,7 +1336,8 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/marshal_office)
 "VX" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7";
 	dir = 4
 	},
 /obj/structure/bed,
@@ -1338,8 +1357,9 @@
 /area/bigredv2/outside/marshal_office)
 "YT" = (
 /obj/structure/surface/rack,
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /obj/item/ammo_magazine/revolver/cmb{
 	pixel_y = -7;

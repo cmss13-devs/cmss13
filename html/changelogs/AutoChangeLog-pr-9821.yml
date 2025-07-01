@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Predator taps aka TRAIT_INTERFERENCE now stops xenos from devolving and transmuting, so they dont bug themselves out forever."

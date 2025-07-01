@@ -406,6 +406,10 @@
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
+"abC" = (
+/obj/structure/machinery/power/apc/no_power/east,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/n)
 "abD" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
@@ -48200,7 +48204,6 @@
 /area/bigredv2/caves/mining)
 "smH" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/asteroidwarning,
 /area/bigredv2/outside/n)
 "smO" = (
@@ -128972,7 +128975,7 @@ acP
 acP
 acP
 agq
-ahe
+abC
 ahe
 ahe
 ahe

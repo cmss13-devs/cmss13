@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "ab" = (
 /turf/open/floor/asteroidwarning/east,
 /area/bigredv2/outside/space_port)
@@ -9,12 +13,24 @@
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"ae" = (
+/obj/structure/prop/structure_lattice{
+	layer = 3.1;
+	pixel_y = 12
+	},
+/obj/structure/prop/structure_lattice,
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port)
 "af" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Spaceport"
 	},
 /turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
+"ag" = (
+/obj/structure/prop/structure_lattice,
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "ah" = (
 /turf/open/floor/dark,
@@ -261,10 +277,6 @@
 /obj/structure/cargo_container/arious/right,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"bs" = (
-/obj/structure/cargo_container/grant/right,
-/turf/open/floor/plating/plating_catwalk,
-/area/bigredv2/outside/space_port)
 "ch" = (
 /obj/structure/cargo_container/arious/rightmid,
 /obj/effect/decal/warning_stripes{
@@ -279,17 +291,18 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "fU" = (
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/prop/structure_lattice,
+/obj/structure/prop/structure_lattice{
+	layer = 3.1;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "ii" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-in"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/space_port)
-"kN" = (
-/obj/structure/cargo_container/grant/left,
-/turf/open/floor/plating/plating_catwalk,
 /area/bigredv2/outside/space_port)
 "lo" = (
 /obj/effect/decal/warning_stripes{
@@ -376,10 +389,6 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
-"NH" = (
-/obj/structure/cargo_container/grant/rightmid,
-/turf/open/floor/plating/plating_catwalk,
-/area/bigredv2/outside/space_port)
 "OZ" = (
 /obj/effect/landmark/hunter_primary,
 /obj/effect/decal/warning_stripes{
@@ -439,7 +448,7 @@ aV
 ac
 ii
 lo
-fU
+ag
 fU
 ii
 lo
@@ -458,8 +467,8 @@ aV
 ac
 tu
 Ta
-fU
-fU
+ac
+ac
 yg
 mx
 ac
@@ -477,8 +486,8 @@ aV
 ac
 Aw
 dg
-fU
-fU
+ac
+ac
 Aw
 KQ
 bl
@@ -496,8 +505,8 @@ aW
 ac
 ac
 ac
-fU
-fU
+ac
+ac
 ac
 aC
 bm
@@ -515,8 +524,8 @@ aX
 ac
 ii
 lo
-fU
-fU
+aa
+ac
 ii
 lo
 bn
@@ -534,8 +543,8 @@ aY
 ac
 yg
 xP
-fU
-fU
+ac
+aa
 yg
 Ta
 ac
@@ -553,8 +562,8 @@ aV
 ac
 Aw
 dg
-fU
-kN
+ac
+ac
 Aw
 dg
 ac
@@ -572,8 +581,8 @@ aV
 ac
 bg
 ac
-fU
-NH
+ac
+ac
 ac
 ac
 ac
@@ -591,8 +600,8 @@ aV
 ac
 ii
 lo
-fU
-bs
+ac
+ac
 ii
 lo
 ac
@@ -610,8 +619,8 @@ aV
 ac
 yg
 Ta
-fU
-fU
+ac
+ac
 yg
 Ta
 ac
@@ -629,8 +638,8 @@ aV
 ac
 Aw
 OZ
-fU
-fU
+ac
+ac
 Aw
 tf
 ac
@@ -648,8 +657,8 @@ aV
 ac
 ac
 ac
-fU
-fU
+ac
+ac
 ac
 ac
 bi
@@ -667,8 +676,8 @@ aV
 bd
 ii
 lo
-fU
-fU
+ac
+ac
 Ww
 In
 bj
@@ -686,8 +695,8 @@ aV
 be
 yZ
 Ta
-fU
-fU
+ac
+ac
 yg
 ch
 bk
@@ -705,8 +714,8 @@ aV
 ac
 yf
 dg
-fU
-fU
+ag
+ae
 Aw
 DA
 ac
@@ -724,8 +733,8 @@ aV
 ac
 aC
 ac
-fU
-fU
+ac
+ac
 ac
 ac
 ac

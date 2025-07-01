@@ -3736,6 +3736,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
+"anC" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "admin_pmc"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/admin_building)
 "anD" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
@@ -3752,6 +3758,12 @@
 	},
 /turf/open/floor/cult,
 /area/bigredv2/outside/marshal_office)
+"anG" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "medbay-passage"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/admin_building)
 "anH" = (
 /obj/structure/bed/chair,
 /turf/open/floor/grimy,
@@ -3971,6 +3983,12 @@
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"aow" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "medbay-v3"
+	},
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/c)
 "aox" = (
 /obj/structure/machinery/suit_storage_unit/carbon_unit,
 /obj/structure/machinery/camera/autoname,
@@ -4001,6 +4019,12 @@
 "aoB" = (
 /turf/open/floor/dark,
 /area/bigredv2/outside/general_offices)
+"aoC" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "crashlanding-eva"
+	},
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/bar)
 "aoD" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/virology)
@@ -4322,6 +4346,21 @@
 /obj/structure/bed/chair,
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
+"apL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "dorms_party"
+	},
+/turf/open/floor,
+/area/bigredv2/outside/dorms)
+"apM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "tcomms_open"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "apN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4334,6 +4373,12 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/general_offices)
+"apP" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "prison_breakout"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/marshal_office)
 "apQ" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
@@ -30669,6 +30714,38 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer_hull,
 /area/bigredv2/outside/n)
+"bPH" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz1entrance_v2"
+	},
+/turf/open/mars,
+/area/bigredv2/outside/nw)
+"bPI" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave/mars_cave_6,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"bPJ" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/outside/lz1_telecomm_cas)
+"bPK" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz1containers_scramble"
+	},
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/space_port)
+"bPL" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz1cave_flank"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/space_port)
+"bPM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "lz1north_mining"
+	},
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/space_port)
 "bPY" = (
 /obj/structure/surface/table,
 /obj/item/trash/kepler{
@@ -106490,7 +106567,7 @@ aao
 aao
 aao
 aao
-aao
+apM
 aao
 aao
 aPP
@@ -106703,14 +106780,14 @@ acA
 acA
 ahN
 acA
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
+bPI
+csE
+xmy
+xmy
+xmy
+xmy
+xmy
+xmy
 xmy
 xmy
 xmy
@@ -106920,14 +106997,14 @@ ahd
 aix
 all
 akl
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
+bPJ
+xmy
+xmy
+csE
+sQw
+xmy
+xmy
+xmy
 xmy
 xmy
 xmy
@@ -107137,14 +107214,14 @@ ahd
 ahd
 all
 acA
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
+bPJ
+xmy
+xmy
+xmy
+sGi
+xmy
+xmy
+xmy
 xmy
 xmy
 csE
@@ -107354,14 +107431,14 @@ aas
 aas
 all
 acA
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
+bPJ
+xmy
+xmy
+xmy
+xmy
+csE
+csE
+xmy
 csE
 csE
 xmy
@@ -107571,15 +107648,15 @@ ahd
 aaZ
 all
 acA
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
+bPJ
 xmy
+xmy
+xmy
+xmy
+xmy
+xmy
+xmy
+lrH
 xmy
 xmy
 xmy
@@ -107789,13 +107866,13 @@ aas
 all
 acA
 aao
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
+xmy
+xmy
+xmy
+xmy
+xmy
+xmy
+xmy
 gda
 xmy
 xmy
@@ -108007,12 +108084,12 @@ all
 akl
 aao
 aao
-aPP
-aPP
-aPP
-aPP
-aPP
-aPP
+eOd
+eOd
+eOd
+eOd
+eOd
+eOd
 eOd
 aao
 aao
@@ -111697,7 +111774,7 @@ iFr
 wra
 hby
 meb
-aeI
+bPH
 aeI
 jHK
 aeI
@@ -111895,7 +111972,7 @@ acw
 acw
 aam
 aam
-aam
+bPK
 aam
 aam
 aam
@@ -112961,7 +113038,7 @@ wcs
 aae
 aae
 aae
-aae
+bPM
 aah
 pXM
 aaU
@@ -115798,7 +115875,7 @@ aae
 aae
 aae
 aae
-aae
+bPL
 aae
 aae
 aaq
@@ -116714,7 +116791,7 @@ alu
 alu
 alu
 alu
-aHD
+aow
 aCM
 aBR
 aMc
@@ -119510,7 +119587,7 @@ tJl
 acp
 acp
 acp
-acp
+apP
 sgd
 oEY
 aGy
@@ -120863,7 +120940,7 @@ apC
 apC
 apC
 apC
-apC
+anC
 aHF
 aHD
 aBR
@@ -121275,7 +121352,7 @@ alu
 aHF
 aHF
 aHF
-apC
+anG
 axf
 awU
 bJn
@@ -125817,7 +125894,7 @@ ayY
 axG
 ayY
 ayY
-aFN
+apL
 asJ
 asJ
 aua
@@ -129944,7 +130021,7 @@ mbz
 anJ
 anJ
 anJ
-anJ
+aoC
 amn
 amn
 amn

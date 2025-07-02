@@ -109,6 +109,10 @@
 			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
 			ladder_dest.add_fingerprint(user)
 			user.trainteleport(ladder_dest.loc)
+
+			var/obj/structure/ladder/secondary_ladder = locate(/obj/structure/ladder) in get_turf(user)
+			if(secondary_ladder && ((ladder_dir_name == "up" && secondary_ladder.up) || (ladder_dir_name == "down" && secondary_ladder.down)))
+				INVOKE_ASYNC(secondary_ladder, PROC_REF(attack_hand), user)
 	busy = FALSE
 	add_fingerprint(user)
 

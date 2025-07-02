@@ -64,6 +64,3 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(client, COMSIG_CLIENT_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_MOB_LOGGED_IN)
-
-	var/datum/highlight_keywords_payload/payload = new(src)
-	client.tgui_panel.window.send_message("settings/updateHighlightKeywords", payload.to_list())

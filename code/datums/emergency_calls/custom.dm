@@ -19,7 +19,7 @@
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
 
-	if(!players_to_offer.len)
+	if(!length(players_to_offer))
 		return // No more players
 
 	var/mob/living/carbon/human/H = pick(players_to_offer)

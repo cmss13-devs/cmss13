@@ -27,17 +27,9 @@
 	name = "Shoulder-length Hair"
 	icon_state = "hair_long_shoulder"
 
-/datum/sprite_accessory/hair/longalt
-	name = "Shoulder-length Hair Alt"
-	icon_state = "hair_longfringe"
-
 /datum/sprite_accessory/hair/longer
 	name = "Long Hair"
 	icon_state = "hair_vlong"
-
-/datum/sprite_accessory/hair/longeralt
-	name = "Long Hair Alt"
-	icon_state = "hair_vlongfringe"
 
 /datum/sprite_accessory/hair/longest
 	name = "Very Long Hair"
@@ -759,4 +751,72 @@
 /datum/sprite_accessory/hair/gentlebraid
 	name = "Gentle Braid"
 	icon_state = "hair_braid3"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/close_cut
+	name = "Closecut"
+	icon_state = "hair_close_cut"
+	gender = MALE
+
+/datum/sprite_accessory/hair/shortbangs2
+	name = "Short Bangs 2"
+	icon_state = "hair_short_bangs"
+
+/datum/sprite_accessory/hair/bangs
+	name = "Long Bangs"
+	icon_state = "hair_bangs"
+
+/datum/sprite_accessory/hair/bangsreversed
+	name = "Long Bangs (Reversed)"
+	icon_state = "hair_reversed_bangs"
+
+/datum/sprite_accessory/hair/flowey
+	name = "Flowey Sides"
+	icon_state = "hair_flowey_sides"
+
+/datum/sprite_accessory/hair/twirly
+	name = "Twirly Hair"
+	icon_state = "hair_twirly"
+
+/datum/sprite_accessory/hair/ponytail9
+	name = "Ponytail 9"
+	icon_state = "hair_ponytail_9"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/ponytail10
+	name = "Ponytail 10"
+	icon_state = "hair_top_ponytail"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/firecracker
+	name = "Firecracker"
+	icon_state = "hair_firecracker"
+
+/datum/sprite_accessory/hair/slimtop
+	name = "Slim Top"
+	icon_state = "hair_slim_top"
+	gender = MALE
+
+/datum/sprite_accessory/hair/bun3
+	name = "Double Bun"
+	icon_state = "hair_space_buns"
+
+/datum/sprite_accessory/hair/diagonalbangs
+	name = "Diagonal Bangs"
+	icon_state = "hair_diagonal_bangs"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/bobcutovereye
+	name = "Bobcut Overeye"
+	icon_state = "hair_bobcut_overeye"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/shorthime
+	name = "Hime Cut Short"
+	icon_state = "hair_short_hime"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/emofringe
+	name = "Emo Fringe"
+	icon_state = "hair_emo_fringe"
 	gender = FEMALE

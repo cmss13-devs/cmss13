@@ -2,8 +2,8 @@
 	name = "revival jelly"
 	singular_name = "revival jelly"
 	desc = "A weird jelly, capable of bringing a dead Xenomorph back to life."
-
 	icon_state = "royal_jelly"
+	icon = 'icons/obj/items/Marine_Research.dmi'
 
 	stack_id = "royal jelly"
 

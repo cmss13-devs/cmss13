@@ -18,16 +18,16 @@
 /obj/structure/machinery/power/terminal/Initialize()
 	. = ..()
 	var/turf/T = src.loc
-	if(level==1) hide(T.intact_tile)
+	if(level==1)
+		hide(T.intact_tile)
 
 /obj/structure/machinery/power/terminal/Destroy()
-	if(master)
-		if(istype(master, /obj/structure/machinery/power/apc))
-			var/obj/structure/machinery/power/apc/A = master
-			A.terminal = null
-		master = null
 	. = ..()
+	if(!master)
+		return
 
+	master.terminal = null
+	master = null
 
 /obj/structure/machinery/power/terminal/hide(i)
 	if(i)

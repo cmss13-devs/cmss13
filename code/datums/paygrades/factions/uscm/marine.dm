@@ -231,3 +231,13 @@
 	ranking = 25
 	pay_multiplier = 7
 	officer_grade = GRADE_FLAG
+
+//Historical Background: Combat Dogs were given the lowest officer rank possible, they have no notional command but if someone were to abuse the animal, the offender could be charged with assaulting an officer.
+/datum/paygrade/marine/k9
+	paygrade = PAY_SHORT_SYN_K9
+	name = "Second Lieutenant Combat Lifesaver"
+	prefix = "2ndLt Combat Lifesaver"
+	rank_pin = /obj/item/clothing/accessory/ranks/marine/o1
+	ranking = 12
+	pay_multiplier = 0
+	officer_grade = GRADE_OFFICER

@@ -7,7 +7,7 @@
 #define HDPT_TURRET  "turret"
 #define HDPT_SPECIAL "special" //special pre-installed hardpoints with unique behaviour
 
-#define HDPT_LAYER_WHEELS   1
+#define HDPT_LAYER_WHEELS   0.01 // so it appears below xenomorphs and other mobs
 #define HDPT_LAYER_SUPPORT  2
 #define HDPT_LAYER_ARMOR 3
 #define HDPT_LAYER_TURRET   4
@@ -44,9 +44,6 @@
 #define INTERIOR_BOUND_SIZE 25 //How big we want each vehicle interior instance to be, including padding
 
 #define HDPT_OFFSET_EMPTY list(NORTH = list(0, 0), SOUTH = list(0, 0), EAST = list(0, 0), WEST = list(0, 0))
-
-/// Toggle between Shift click and MMB click for gunner
-#define VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER (1<<0)
 
 /// Vehicle Classes (for future)
 #define VEHICLE_CLASS_WEAK (1<<1) //light unarmored vehicles like colony vehicles/trucks/vans

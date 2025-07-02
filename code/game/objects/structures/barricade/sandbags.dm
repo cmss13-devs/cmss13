@@ -43,21 +43,25 @@
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_4
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_4
+		damage_state = BARRICADE_DMG_NONE
 		stack_amount = 4
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_3 && build_stage != BARRICADE_SANDBAG_3)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_3
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_3
+		damage_state = BARRICADE_DMG_SLIGHT
 		stack_amount = 3
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_2 && build_stage != BARRICADE_SANDBAG_2)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_2
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_2
+		damage_state = BARRICADE_DMG_MODERATE
 		stack_amount = 2
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_1 && build_stage != BARRICADE_SANDBAG_1)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_1
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_1
+		damage_state = BARRICADE_DMG_HEAVY
 		stack_amount = 1
 	if(changed && is_wired)
 		maxhealth += 50
@@ -71,7 +75,7 @@
 	if(istype(W, /obj/item/tool/shovel) && user.a_intent != INTENT_HARM)
 		var/obj/item/tool/shovel/ET = W
 		if(!ET.folded)
-			user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 			SPAN_NOTICE("You start disassembling [src]."))
 			if(do_after(user, ET.shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 				user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),
@@ -87,7 +91,7 @@
 			to_chat(user, SPAN_WARNING("You can't stack more on [src]."))
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] starts adding more [SB] to [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] starts adding more [SB] to [src]."),
 			SPAN_NOTICE("You start adding sandbags to [src]."))
 		for(var/i = build_stage to BARRICADE_SANDBAG_5)
 			if(build_stage >= BARRICADE_SANDBAG_5 || !do_after(user, 5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, src) || build_stage >= BARRICADE_SANDBAG_5 || SB.amount == 0)
@@ -95,7 +99,7 @@
 			SB.use(1)
 			increment_build_stage()
 			update_icon()
-		user.visible_message(SPAN_NOTICE("[user] finishes stacking [SB] onto [src]."), \
+		user.visible_message(SPAN_NOTICE("[user] finishes stacking [SB] onto [src]."),
 			SPAN_NOTICE("You stack [SB] onto [src]."))
 		return
 	else

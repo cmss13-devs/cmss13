@@ -54,13 +54,13 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							slots_free += ui_datum.ui_storage1
 						if(!H.r_store)
 							slots_free += ui_datum.ui_storage2
-					if(slots_free.len)
+					if(length(slots_free))
 						halitem.screen_loc = pick(slots_free)
 						halitem.layer = 50
 						switch(rand(1,6))
 							if(1) //revolver
-								halitem.icon = 'icons/obj/items/weapons/guns/legacy/old_bayguns.dmi'
-								halitem.icon_state = "revolver"
+								halitem.icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/revolvers.dmi'
+								halitem.icon_state = "m44r"
 								halitem.name = "Revolver"
 							if(2) //c4
 								halitem.icon = 'icons/obj/items/assemblies.dmi'
@@ -69,11 +69,11 @@ Gunshots/explosions/opening doors/less rare audio (done)
 								if(prob(25))
 									halitem.icon_state = "c4small_1"
 							if(3) //sword
-								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/melee/swords.dmi'
 								halitem.icon_state = "sword1"
 								halitem.name = "Sword"
 							if(4) //stun baton
-								halitem.icon = 'icons/obj/items/weapons/weapons.dmi'
+								halitem.icon = 'icons/obj/items/weapons/melee/non_lethal.dmi'
 								halitem.icon_state = "stunbaton"
 								halitem.name = "Stun Baton"
 							if(5) //emag
@@ -97,7 +97,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					var/list/possible_points = list()
 					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
-					if(possible_points.len)
+					if(length(possible_points))
 						var/turf/open/floor/target = pick(possible_points)
 
 						switch(rand(1,3))
@@ -124,22 +124,31 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				//Strange audio
 				//to_chat(src, "Strange Audio")
 				switch(rand(1,12))
-					if(1) src << 'sound/machines/airlock.ogg'
+					if(1)
+						src << 'sound/machines/airlock.ogg'
 					if(2)
 						if(prob(50))src << 'sound/effects/Explosion1.ogg'
-						else src << 'sound/effects/Explosion2.ogg'
-					if(3) src << 'sound/effects/explosionfar.ogg'
-					if(4) src << 'sound/effects/Glassbr1.ogg'
-					if(5) src << 'sound/effects/Glassbr2.ogg'
-					if(6) src << 'sound/effects/Glassbr3.ogg'
-					if(7) src << 'sound/machines/twobeep.ogg'
-					if(8) src << 'sound/machines/windowdoor.ogg'
+						else
+							src << 'sound/effects/Explosion2.ogg'
+					if(3)
+						src << 'sound/effects/explosionfar.ogg'
+					if(4)
+						src << 'sound/effects/Glassbr1.ogg'
+					if(5)
+						src << 'sound/effects/Glassbr2.ogg'
+					if(6)
+						src << 'sound/effects/Glassbr3.ogg'
+					if(7)
+						src << 'sound/machines/twobeep.ogg'
+					if(8)
+						src << 'sound/machines/windowdoor.ogg'
 					if(9)
 						//To make it more realistic, I added two gunshots (enough to kill)
 						src << 'sound/weapons/Gunshot.ogg'
 						spawn(rand(10,30))
 							src << 'sound/weapons/Gunshot.ogg'
-					if(10) src << 'sound/weapons/smash.ogg'
+					if(10)
+						src << 'sound/weapons/smash.ogg'
 					if(11)
 						//Same as above, but with tasers.
 						src << 'sound/weapons/Taser.ogg'
@@ -161,7 +170,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					var/list/possible_points = list()
 					for(var/turf/open/floor/F in view(src,GLOB.world_view_size))
 						possible_points += F
-					if(possible_points.len)
+					if(length(possible_points))
 						var/turf/open/floor/target = pick(possible_points)
 						switch(rand(1,3))
 							if(1)
@@ -171,9 +180,11 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	// if(5)
 	// halbody = image('xcomalien.dmi',target,"chryssalid",TURF_LAYER)
 
-						if(client) client.images += halbody
+						if(client)
+							client.images += halbody
 						spawn(rand(50,80)) //Only seen for a brief moment.
-							if(client) client.images -= halbody
+							if(client)
+								client.images -= halbody
 							halbody = null
 			if(71 to 72)
 				//Fake death
@@ -203,18 +214,18 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		"Play Charades","Oxygen","Inject BeAcOs","Ninja Lizards","Limit Break","Build Sentry")
 
 		if(mid_txts)
-			while(mid_txts.len)
+			while(length(mid_txts))
 				var/mid_txt = pick(mid_txts)
 				mocktxt += mid_txt
 				mid_txts -= mid_txt
 
-		while(buttons.len)
+		while(length(buttons))
 
 			var/button = pick(buttons)
 
 			var/button_txt = pick(possible_txt)
 
-			mocktxt += "<a href='?src=\ref[src];[button]'>[button_txt]</a><br>"
+			mocktxt += "<a href='byond://?src=\ref[src];[button]'>[button_txt]</a><br>"
 
 			buttons -= button
 			possible_txt -= button_txt
@@ -314,7 +325,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					my_target << sound(pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
 					my_target.show_message(SPAN_DANGER("<B>[my_target] has been attacked with [weapon_name] by [src.name] </B>"), SHOW_MESSAGE_VISIBLE)
 					my_target.halloss += 8
-					if(prob(20)) my_target.AdjustEyeBlur(3)
+					if(prob(20))
+						my_target.AdjustEyeBlur(3)
 					if(prob(33))
 						if(!locate(/obj/effect/overlay) in my_target.loc)
 							fake_blood(my_target)
@@ -351,14 +363,16 @@ GLOBAL_LIST_INIT(non_fakeattack_weapons, list(/obj/item/device/aicard,\
 	var/clone_weapon = null
 
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(H.stat) continue
+		if(H.stat)
+			continue
 // possible_clones += H
 		clone = H
 		break //changed the code a bit. Less randomised, but less work to do. Should be ok, world.contents aren't stored in any particular order.
 
-// if(!possible_clones.len) return
+// if(!length(possible_clones)) return
 // clone = pick(possible_clones)
-	if(!clone) return
+	if(!clone)
+		return
 
 	//var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(outside_range(target))
 	var/obj/effect/fake_attacker/F = new/obj/effect/fake_attacker(target.loc)

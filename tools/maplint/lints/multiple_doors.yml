@@ -1,0 +1,4 @@
+/obj/structure/machinery/door:
+  banned_neighbors:
+    /obj/structure/machinery/door:
+      identical: true

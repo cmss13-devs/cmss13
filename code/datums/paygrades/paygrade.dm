@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(co_paygrades, list(
 				GLOB.uscm_officer_paygrades += paygrade
 			if(officer_grade >= GRADE_FLAG)
 				GLOB.uscm_highcom_paygrades += paygrade
-		if(FACTION_WEYLAND,FACTION_PMC)
+		if(FACTION_WY,FACTION_PMC)
 			if(officer_grade >= GRADE_FLAG)
 				GLOB.wy_highcom_paygrades += paygrade
 

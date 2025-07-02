@@ -4,11 +4,11 @@
 	icon_state = "8"
 	item_state = "armor"
 	armor_laser = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
+	unacidable = TRUE
 	allowed = list(
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
@@ -32,8 +32,9 @@
 /obj/item/clothing/suit/storage/marine/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
 	. = ..()
 
-	if(equipping_mob.back)
-		to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] while wearing a backpack."))
+	if(equipping_mob.back && !(equipping_mob.back.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE))
+		if(!disable_warning)
+			to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] while wearing a backpack."))
 		return FALSE
 
 /obj/item/clothing/suit/storage/marine/smartgunner/equipped(mob/user, slot, silent)
@@ -46,6 +47,9 @@
 	SIGNAL_HANDLER
 
 	if(slot != WEAR_BACK)
+		return
+
+	if(equipping_item.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE)
 		return
 
 	. = COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP

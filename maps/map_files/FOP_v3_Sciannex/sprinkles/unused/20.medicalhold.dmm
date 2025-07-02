@@ -1,0 +1,904 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aG" = (
+/obj/structure/bed/chair{
+	layer = 2.7;
+	dir = 4
+	},
+/turf/open/floor/prison/whitegreen,
+/area/template_noop)
+"aZ" = (
+/obj/structure/bed/roller,
+/obj/structure/machinery/iv_drip{
+	pixel_y = 19
+	},
+/obj/item/bedsheet/medical,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"bl" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/whitegreen/east,
+/area/template_noop)
+"bm" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottom"
+	},
+/obj/structure/inflatable/door,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"bs" = (
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"bv" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"bN" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"cO" = (
+/obj/structure/machinery/door/airlock/almayer/marine{
+	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi';
+	icon_state = "door_open"
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"dg" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"dp" = (
+/turf/open/floor/prison/whitegreen/east,
+/area/template_noop)
+"dK" = (
+/obj/structure/machinery/medical_pod/sleeper,
+/turf/open/floor/prison/whitegreen/southeast,
+/area/template_noop)
+"eb" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"eO" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/prison/whitegreen,
+/area/template_noop)
+"fn" = (
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreen,
+/area/template_noop)
+"go" = (
+/obj/structure/sign/prop3{
+	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
+	},
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/template_noop)
+"gC" = (
+/obj/structure/largecrate/supply/medicine/medkits,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"ir" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/prison/whitegreen/west,
+/area/template_noop)
+"it" = (
+/turf/open/floor/prison/whitegreen/northeast,
+/area/template_noop)
+"iK" = (
+/obj/structure/janitorialcart,
+/turf/open/floor/prison,
+/area/template_noop)
+"jy" = (
+/turf/open/floor/prison/whitegreen/west,
+/area/template_noop)
+"kE" = (
+/turf/closed/wall/prison,
+/area/template_noop)
+"kG" = (
+/obj/structure/inflatable/popped/door,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"kK" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"kY" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft"
+	},
+/obj/structure/inflatable/door,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"kZ" = (
+/obj/structure/inflatable/door,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"lm" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottom"
+	},
+/obj/structure/inflatable/popped,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"nj" = (
+/obj/structure/bed/chair/janicart,
+/turf/open/floor/prison,
+/area/template_noop)
+"no" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastright,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 7;
+	pixel_y = 14
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"nx" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/limb,
+/turf/open/floor/prison/whitegreencorner/east,
+/area/template_noop)
+"nJ" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"nR" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/prison/whitegreen/north,
+/area/template_noop)
+"nX" = (
+/obj/structure/bed/roller,
+/obj/structure/machinery/iv_drip{
+	pixel_y = 19
+	},
+/obj/item/bedsheet/medical,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"of" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/obj/item/storage/beer_pack{
+	pixel_y = 6;
+	layer = 3.1
+	},
+/turf/open/floor/prison/whitegreen/southeast,
+/area/template_noop)
+"oy" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"ph" = (
+/obj/structure/inflatable/door,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"pR" = (
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreen/east,
+/area/template_noop)
+"qb" = (
+/obj/structure/inflatable/popped,
+/turf/open/floor/prison/whitegreen/east,
+/area/template_noop)
+"qe" = (
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreen/west,
+/area/template_noop)
+"qS" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"sk" = (
+/obj/structure/bed/roller,
+/obj/structure/machinery/iv_drip{
+	pixel_y = 19
+	},
+/obj/item/bedsheet/medical,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"tE" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"tL" = (
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreencorner,
+/area/template_noop)
+"uE" = (
+/turf/open/floor/prison/whitegreen/southwest,
+/area/template_noop)
+"uG" = (
+/obj/effect/decal/prints{
+	pixel_y = -10
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"uU" = (
+/obj/item/storage/pill_bottle/tramadol/skillless,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"vA" = (
+/obj/structure/inflatable/popped,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"xC" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/book/manual/surgery{
+	pixel_y = 4
+	},
+/obj/item/storage/surgical_tray,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"xY" = (
+/obj/structure/largecrate/random/case/double{
+	pixel_y = 8;
+	pixel_x = -5
+	},
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -4;
+	pixel_x = -5
+	},
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -17;
+	pixel_x = -5
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"zm" = (
+/obj/structure/machinery/optable,
+/obj/item/bedsheet/rainbow,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/whitegreen,
+/area/template_noop)
+"zG" = (
+/turf/open/floor/prison/whitegreencorner/west,
+/area/template_noop)
+"Be" = (
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"BS" = (
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/prison/whitegreen/north,
+/area/template_noop)
+"Cr" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = 6;
+	pixel_y = -11;
+	layer = 2.8
+	},
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = -13;
+	pixel_y = -4;
+	layer = 2.9
+	},
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = 6;
+	pixel_y = 6;
+	layer = 2.7
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"CA" = (
+/obj/structure/extinguisher_cabinet,
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/template_noop)
+"Df" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/prison/whitegreen/west,
+/area/template_noop)
+"Es" = (
+/obj/item/reagent_container/glass/bucket/mopbucket,
+/obj/item/tool/mop,
+/turf/open/floor/prison,
+/area/template_noop)
+"EB" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	layer = 2.7
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"ES" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomleft"
+	},
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"EZ" = (
+/obj/structure/machinery/shower{
+	pixel_y = 13
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"Gl" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/phone{
+	pixel_x = -3;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"GI" = (
+/obj/structure/stairs/perspective,
+/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/almayer/east,
+/obj/structure/inflatable/door,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"GL" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/vials/random,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"GT" = (
+/obj/structure/machinery/cryo_cell,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"Hq" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomleft"
+	},
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreen/northwest,
+/area/template_noop)
+"Hw" = (
+/obj/item/ammo_casing{
+	icon_state = "cartridge_1"
+	},
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"HS" = (
+/obj/structure/inflatable/door,
+/turf/open/floor/prison/whitegreen/east,
+/area/template_noop)
+"IK" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/largecrate/random/barrel{
+	pixel_x = -8;
+	layer = 3.1
+	},
+/obj/structure/largecrate/random/barrel{
+	pixel_x = 13;
+	layer = 3.1
+	},
+/obj/structure/largecrate/random/barrel{
+	pixel_x = 3;
+	pixel_y = -8;
+	layer = 3.1
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/template_noop)
+"JJ" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/prison/whitegreen/north,
+/area/template_noop)
+"JL" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreen,
+/area/template_noop)
+"JW" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottom"
+	},
+/obj/structure/inflatable/popped,
+/turf/open/floor/prison/whitegreen/west,
+/area/template_noop)
+"Kk" = (
+/obj/structure/machinery/door/airlock/almayer/marine{
+	icon = 'icons/obj/structures/doors/prepdoor_charlie.dmi'
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Kp" = (
+/obj/structure/largecrate/random,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottomright"
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_y = 13
+	},
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"Ky" = (
+/obj/structure/inflatable/popped/door,
+/turf/open/floor/prison/whitegreencorner,
+/area/template_noop)
+"KF" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"KJ" = (
+/obj/structure/inflatable/door,
+/turf/open/floor/prison/whitegreencorner/east,
+/area/template_noop)
+"Mi" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/prison/whitegreen/southwest,
+/area/template_noop)
+"NV" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/obj/structure/largecrate/supply/medicine/blood,
+/turf/open/floor/prison/whitegreen/east,
+/area/template_noop)
+"Od" = (
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/template_noop)
+"Ou" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2.7
+	},
+/obj/effect/decal/cleanable/mucus{
+	pixel_x = -16
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"OH" = (
+/obj/structure/largecrate/random/case/double{
+	pixel_y = 8
+	},
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -4
+	},
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -18
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"Pa" = (
+/obj/structure/largecrate/supply/weapons/pistols,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"Pd" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/prison/whitegreen/southwest,
+/area/template_noop)
+"Pt" = (
+/obj/structure/inflatable/popped/door,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"PE" = (
+/obj/structure/machinery/door/airlock/prison_hatch/autoname{
+	dir = 1
+	},
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"PS" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalbottom"
+	},
+/obj/structure/inflatable,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"PV" = (
+/obj/structure/inflatable/popped,
+/turf/open/floor/prison/whitegreencorner/west,
+/area/template_noop)
+"QG" = (
+/turf/open/floor/prison/whitegreen/north,
+/area/template_noop)
+"Ro" = (
+/obj/structure/machinery/shower{
+	pixel_y = 13
+	},
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/template_noop)
+"RG" = (
+/obj/structure/largecrate/supply/medicine/iv,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"Sz" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/largecrate/random/barrel,
+/obj/structure/largecrate/random/barrel{
+	pixel_x = 16;
+	layer = 3.1;
+	pixel_y = -4
+	},
+/turf/open/floor/prison/whitegreen/north,
+/area/template_noop)
+"Tb" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	layer = 2.7
+	},
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"TF" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft"
+	},
+/obj/structure/inflatable,
+/turf/open/floor/prison/whitegreen/north,
+/area/template_noop)
+"TV" = (
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"UI" = (
+/turf/open/floor/prison/whitegreen,
+/area/template_noop)
+"US" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft"
+	},
+/obj/structure/inflatable,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"Va" = (
+/obj/structure/extinguisher_cabinet,
+/turf/closed/wall/prison,
+/area/template_noop)
+"Vp" = (
+/turf/open/floor/prison/whitegreen/northwest,
+/area/template_noop)
+"VD" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison/whitegreen,
+/area/template_noop)
+"WP" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaldir"
+	},
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"WY" = (
+/obj/structure/inflatable,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"Xl" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft"
+	},
+/obj/structure/inflatable/popped/door,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+"Yy" = (
+/obj/structure/largecrate/supply/supplies/mre,
+/turf/open/floor/prison/whitegreenfull/southwest,
+/area/template_noop)
+"Yz" = (
+/obj/structure/window/framed/prison/cell,
+/turf/open/floor/plating/prison,
+/area/template_noop)
+"Zg" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited,
+/turf/closed/wall/prison,
+/area/template_noop)
+"Zp" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/machinery/defenses/bell_tower/md,
+/turf/open/floor/prison/sterile_white/southwest,
+/area/template_noop)
+
+(1,1,1) = {"
+Hw
+oy
+bs
+bv
+WP
+Be
+Vp
+nx
+zG
+uE
+Kp
+kE
+Gl
+no
+Va
+kE
+kE
+kE
+"}
+(2,1,1) = {"
+kE
+kE
+kE
+go
+Hq
+qe
+KJ
+kG
+WY
+PV
+JW
+ir
+qe
+qe
+Df
+Mi
+Pa
+kE
+"}
+(3,1,1) = {"
+bN
+Be
+kE
+kE
+IK
+TV
+TV
+TV
+TV
+TV
+lm
+TV
+TV
+TV
+TV
+eO
+Yy
+kE
+"}
+(4,1,1) = {"
+GL
+Be
+eb
+GI
+JJ
+TV
+Zp
+nJ
+kK
+TV
+bm
+TV
+TV
+TV
+kK
+UI
+kE
+kE
+"}
+(5,1,1) = {"
+Be
+oy
+kE
+kE
+Sz
+dg
+TV
+TV
+TV
+TV
+bm
+kK
+TV
+TV
+TV
+VD
+kE
+kE
+"}
+(6,1,1) = {"
+kE
+kE
+kE
+kE
+nR
+dg
+TV
+TV
+TV
+Cr
+PS
+EB
+EB
+EB
+TV
+JL
+xC
+Od
+"}
+(7,1,1) = {"
+iK
+kE
+Ro
+ES
+TF
+Xl
+kY
+US
+US
+Zg
+Zg
+aZ
+TV
+aZ
+TV
+PV
+jy
+Pd
+"}
+(8,1,1) = {"
+nj
+kE
+EZ
+Be
+QG
+TV
+TV
+uG
+tE
+kE
+kE
+sk
+TV
+aZ
+TV
+kZ
+nJ
+UI
+"}
+(9,1,1) = {"
+Es
+kE
+GT
+Be
+QG
+TV
+kK
+KF
+RG
+Zg
+Zg
+aZ
+TV
+nX
+TV
+Ky
+TV
+zm
+"}
+(10,1,1) = {"
+kE
+kE
+GT
+Be
+BS
+OH
+TV
+TV
+TV
+gC
+WY
+Ou
+Tb
+Tb
+dg
+fn
+uU
+UI
+"}
+(11,1,1) = {"
+kE
+Be
+Be
+Be
+QG
+xY
+dg
+TV
+TV
+TV
+kZ
+TV
+TV
+kK
+dg
+tL
+dp
+dK
+"}
+(12,1,1) = {"
+PE
+ph
+Be
+qS
+QG
+kK
+TV
+TV
+TV
+TV
+vA
+TV
+TV
+TV
+TV
+aG
+CA
+Od
+"}
+(13,1,1) = {"
+kE
+Be
+Pt
+bs
+it
+bl
+pR
+pR
+pR
+pR
+pR
+NV
+qb
+HS
+pR
+of
+Od
+Od
+"}
+(14,1,1) = {"
+Od
+Kk
+cO
+Kk
+Od
+Od
+Yz
+Yz
+Yz
+Yz
+Yz
+Od
+cO
+Kk
+Kk
+Od
+Od
+Od
+"}

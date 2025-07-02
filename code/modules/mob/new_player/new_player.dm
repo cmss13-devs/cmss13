@@ -1,72 +1,36 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
 /mob/new_player
-	var/ready = FALSE
-	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
-
 	invisibility = 101
-
 	density = FALSE
 	anchored = TRUE
+	sight = BLIND
 	universal_speak = TRUE
 	stat = DEAD
 
+	var/ready = FALSE
+	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
+	///The last message for this player with their larva queue information
+	var/larva_queue_cached_message
+	///The time when the larva_queue_cached_message should be considered stale
+	var/larva_queue_message_stale_time
+
+	/// The window that we display the main menu in
+	var/datum/tgui_window/lobby_window
+
+	/// The message that we are displaying to the user. If a list, each list element is displayed on its own line
+	var/lobby_confirmation_message
+
+	/// The callback that we will execute when the user confirms the message
+	var/datum/callback/execute_on_confirm
+
 /mob/new_player/Initialize()
 	. = ..()
-	GLOB.new_player_list += src
 	GLOB.dead_mob_list -= src
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 
 /mob/new_player/Destroy()
 	if(ready)
 		GLOB.readied_players--
-	GLOB.new_player_list -= src
 	return ..()
-
-/mob/new_player/verb/new_player_panel()
-	set src = usr
-	if(client && client.player_entity)
-		client.player_entity.update_panel_data(null)
-		new_player_panel_proc()
-
-
-/mob/new_player/proc/new_player_panel_proc(refresh = FALSE)
-	if(!client)
-		return
-
-	var/tempnumber = rand(1, 999)
-	var/postfix_text = (client.xeno_postfix) ? ("-"+client.xeno_postfix) : ""
-	var/prefix_text = (client.xeno_prefix) ? client.xeno_prefix : "XX"
-	var/xeno_text = "[prefix_text]-[tempnumber][postfix_text]"
-	var/round_start = !SSticker || !SSticker.mode || SSticker.current_state <= GAME_STATE_PREGAME
-
-	var/output = "<div align='center'>Welcome,"
-	output +="<br><b>[(client.prefs && client.prefs.real_name) ? client.prefs.real_name : client.key]</b>"
-	output +="<br><b>[xeno_text]</b>"
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=tutorial'>Tutorial</A></p>"
-	output += "<p><span style='color: #15d512; font-family: Courier New, cursive, sans-serif; font-style: italic;'><a href='byond://?src=\ref[src];lobby_choice=battlepass'>Battlepass</A></span></p>"
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_preferences'>Setup Character</A></p>"
-
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=show_playtimes'>View Playtimes</A></p>"
-
-	if(round_start)
-		output += "<p>\[ [ready? "<b>Ready</b>":"<a href='byond://?src=\ref[src];lobby_choice=ready'>Ready</a>"] | [ready? "<a href='byond://?src=\ref[src];lobby_choice=unready'>Not Ready</a>":"<b>Not Ready</b>"] \]</p>"
-		output += "<b>Be Xenomorph:</b> [(client.prefs && (client.prefs.get_job_priority(JOB_XENOMORPH))) ? "Yes" : "No"]"
-
-	else
-		output += "<a href='byond://?src=\ref[src];lobby_choice=manifest'>View the Crew Manifest</A><br><br>"
-		output += "<a href='byond://?src=\ref[src];lobby_choice=hiveleaders'>View Hive Leaders</A><br><br>"
-		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join'>Join the USCM!</A></p>"
-		output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_xeno'>Join the Hive!</A></p>"
-		if(SSticker.mode.flags_round_type & MODE_PREDATOR)
-			if(SSticker.mode.check_predator_late_join(src,0)) output += "<p><a href='byond://?src=\ref[src];lobby_choice=late_join_pred'>Join the Hunt!</A></p>"
-
-	output += "<p><a href='byond://?src=\ref[src];lobby_choice=observe'>Observe</A></p>"
-
-	output += "</div>"
-	if (refresh)
-		close_browser(src, "playersetup")
-	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 500 : 610];can_close=0;can_minimize=0")
-	return
 
 /mob/new_player/Topic(href, href_list[])
 	. = ..()
@@ -76,80 +40,72 @@
 		return
 
 	switch(href_list["lobby_choice"])
-		if("show_preferences")
-			// Otherwise the preview dummy will runtime
-			// because atoms aren't initialized yet
-			if(SSticker.current_state < GAME_STATE_PREGAME)
-				to_chat(src, "Game is still starting up, please wait")
+		if("SelectedJob")
+			if(!GLOB.enter_allowed)
+				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 				return
-			if(!SSentity_manager.ready)
-				to_chat(src, "DB is still starting up, please wait")
-				return
-			client.prefs.ShowChoices(src)
-			return 1
 
-		if("show_playtimes")
-			if(!SSentity_manager.ready)
-				to_chat(src, "DB is still starting up, please wait")
-				return
-			if(client.player_data)
-				client.player_data.tgui_interact(src)
-			return 1
+			AttemptLateSpawn(href_list["job_selected"])
+			return
 
-		if("ready")
-			if( (SSticker.current_state <= GAME_STATE_PREGAME) && !ready) // Make sure we don't ready up after the round has started
-				ready = TRUE
-				GLOB.readied_players++
+/mob/new_player/var/datum/tutorial_menu/tutorial_menu
 
-			new_player_panel_proc()
+/mob/new_player/proc/tutorial_menu()
+	if(SSticker.current_state <= GAME_STATE_SETTING_UP)
+		to_chat(src, SPAN_WARNING("Please wait for the round to start before entering a tutorial."))
+		return
 
-		if("unready")
-			if((SSticker.current_state <= GAME_STATE_PREGAME) && ready) // Make sure we don't ready up after the round has started
-				ready = FALSE
-				GLOB.readied_players--
+	if(SSticker.current_state == GAME_STATE_FINISHED)
+		to_chat(src, SPAN_WARNING("The round has ended. Please wait for the next round to enter a tutorial."))
+		return
 
-			new_player_panel_proc()
+	if(SSticker.tutorial_disabled)
+		to_chat(src, SPAN_WARNING("Tutorials are currently disabled because something broke, sorry!"))
+		return
 
-		if("refresh")
-			new_player_panel_proc(TRUE)
+	if(!tutorial_menu)
+		tutorial_menu = new(src)
+	tutorial_menu.ui_interact(src)
 
-		if("observe")
-			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
-				to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
-				return
-			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
-				if(!client)
-					return TRUE
-				if(!client.prefs?.preview_dummy)
-					client.prefs.update_preview_icon()
-				var/mob/dead/observer/observer = new /mob/dead/observer(get_turf(pick(GLOB.latejoin)), client.prefs.preview_dummy)
-				observer.set_lighting_alpha_from_pref(client)
-				spawning = TRUE
-				observer.started_as_observer = TRUE
+/mob/new_player/proc/attempt_observe()
+	if(src != usr)
+		return
+	if(!client)
+		return
+	if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
+		to_chat(src, SPAN_WARNING("The game is still setting up, please try again later."))
+		return
 
-				close_spawn_windows()
+	if(!client.prefs?.preview_dummy)
+		client.prefs.update_preview_icon()
+	var/mob/dead/observer/observer = new(get_turf(pick(GLOB.observer_starts + GLOB.latejoin)), client.prefs.preview_dummy)
+	observer.set_lighting_alpha_from_pref(client)
+	spawning = TRUE
+	observer.started_as_observer = TRUE
 
-				var/obj/effect/landmark/observer_start/O = SAFEPICK(GLOB.observer_starts)
-				if(istype(O))
-					to_chat(src, SPAN_NOTICE("Now teleporting."))
-					observer.forceMove(O.loc)
-				else
-					to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
-				observer.icon = 'icons/mob/humans/species/r_human.dmi'
-				observer.icon_state = "anglo_example"
-				observer.alpha = 127
+	close_spawn_windows()
 
-				if(client.prefs.be_random_name)
-					client.prefs.real_name = random_name(client.prefs.gender)
-				observer.real_name = client.prefs.real_name
-				observer.name = observer.real_name
+	var/obj/effect/landmark/observer_start/spawn_point = SAFEPICK(GLOB.observer_starts)
+	if(istype(spawn_point))
+		to_chat(src, SPAN_NOTICE("Now teleporting."))
+		observer.forceMove(spawn_point.loc)
+	else
+		to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verbs to jump if needed."))
+	observer.icon = 'icons/mob/humans/species/r_human.dmi'
+	observer.icon_state = "anglo_example"
+	observer.alpha = 127
 
-				mind.transfer_to(observer, TRUE)
+	if(client.prefs.be_random_name)
+		client.prefs.real_name = random_name(client.prefs.gender)
+	observer.real_name = client.prefs.real_name
+	observer.name = observer.real_name
 
-				if(observer.client)
-					observer.client.change_view(GLOB.world_view_size)
+	mind.transfer_to(observer, TRUE)
 
-				observer.set_huds_from_prefs()
+	if(observer.client)
+		observer.client.change_view(GLOB.world_view_size)
+
+	observer.set_huds_from_prefs()
 
 				qdel(src)
 				return TRUE
@@ -214,15 +170,6 @@
 		if("tutorial")
 			tutorial_menu()
 
-		if("battlepass")
-			if(!client?.owned_battlepass)
-				return
-
-			if(!SSbattlepass.initialized)
-				to_chat(src, SPAN_WARNING("Please wait for battlepasses to initialize first."))
-				return
-
-			client.owned_battlepass.ui_interact(src)
 		else
 			new_player_panel()
 
@@ -252,8 +199,12 @@
 	if(!GLOB.enter_allowed)
 		to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
 		return
-	if(!GLOB.RoleAuthority.assign_role(src, player_rank, 1))
-		to_chat(src, alert("[rank] is not available. Please try another."))
+
+	if(!client?.prefs.update_slot(player_rank.title))
+		return
+
+	if(!GLOB.RoleAuthority.assign_role(src, player_rank, latejoin = TRUE))
+		to_chat(src, SPAN_WARNING("[rank] is not available. Please try another."))
 		return
 
 	spawning = TRUE
@@ -261,7 +212,8 @@
 
 	var/mob/living/carbon/human/character = create_character(TRUE) //creates the human and transfers vars and mind
 	GLOB.RoleAuthority.equip_role(character, player_rank, late_join = TRUE)
-	EquipCustomItems(character)
+	if(character.ckey in GLOB.donator_items)
+		to_chat(character, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
 
 	if((GLOB.security_level > SEC_LEVEL_BLUE || SShijack.hijack_status) && player_rank.gets_emergency_kit)
 		to_chat(character, SPAN_HIGHDANGER("As you stagger out of hypersleep, the sleep bay blares: '[SShijack.evac_status ? "VESSEL UNDERGOING EVACUATION PROCEDURES, SELF DEFENSE KIT PROVIDED" : "VESSEL IN HEIGHTENED ALERT STATUS, SELF DEFENSE KIT PROVIDED"]'."))
@@ -272,13 +224,18 @@
 	SSticker.mode.latejoin_update(player_rank)
 	SSticker.mode.update_gear_scale()
 
-	for(var/datum/squad/sq in GLOB.RoleAuthority.squads)
-		if(sq)
-			sq.max_engineers = engi_slot_formula(GLOB.clients.len)
-			sq.max_medics = medic_slot_formula(GLOB.clients.len)
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(target_squad)
+			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
+			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
 
-	if(SSticker.mode.latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= SSticker.mode.latejoin_larva_drop)
-		SSticker.mode.latejoin_larva_used += SSticker.mode.latejoin_larva_drop
+	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
+
+	if (ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+		latejoin_larva_drop = SSticker.mode.latejoin_larva_drop_early
+
+	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
+		SSticker.mode.latejoin_larva_used += latejoin_larva_drop
 		var/datum/hive_status/hive
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
@@ -303,14 +260,14 @@
 	qdel(src)
 
 
-/mob/new_player/proc/LateChoices()
+/mob/new_player/proc/late_choices()
 	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
 	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
 	var/mins = (mills % 36000) / 600
 	var/hours = mills / 36000
 
 	var/dat = "<html><body onselectstart='return false;'><center>"
-	dat += "Round Duration: [round(hours)]h [round(mins)]m<br>"
+	dat += "Round Duration: [floor(hours)]h [floor(mins)]m<br>"
 
 	if(SShijack)
 		switch(SShijack.evac_status)
@@ -322,7 +279,7 @@
 
 	for(var/i in GLOB.RoleAuthority.roles_for_mode)
 		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
-		if(!GLOB.RoleAuthority.check_role_entry(src, J, TRUE))
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction = FACTION_NEUTRAL))
 			continue
 		var/active = 0
 		// Only players with the job assigned and AFK for less than 10 minutes count as active
@@ -361,10 +318,73 @@
 			dat += "<hr>Marines:<br>"
 			roles_show ^= FLAG_SHOW_MARINES
 
-		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
+		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;antag=0;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
 
 	dat += "</center>"
-	show_browser(src, dat, "Late Join", "latechoices", "size=420x700")
+	show_browser(src, dat, "Late Join", "latechoices", width = 420, height = 700)
+
+/mob/new_player/proc/late_choices_upp()
+	var/mills = world.time // 1/10 of a second, not real milliseconds but whatever
+	//var/secs = ((mills % 36000) % 600) / 10 //Not really needed, but I'll leave it here for refrence... or something
+	var/mins = (mills % 36000) / 600
+	var/hours = mills / 36000
+
+	var/dat = "<html><body onselectstart='return false;'><center>"
+	dat += "Round Duration: [floor(hours)]h [floor(mins)]m<br>"
+
+	if(SShijack)
+		switch(SShijack.evac_status)
+			if(EVACUATION_STATUS_INITIATED)
+				dat += "<font color='red'><b>The [MAIN_SHIP_NAME] is being evacuated.</b></font><br>"
+
+	dat += "Choose from the following open positions:<br>"
+	var/roles_show = FLAG_SHOW_ALL_JOBS
+
+	for(var/i in GLOB.RoleAuthority.roles_for_mode)
+		var/datum/job/J = GLOB.RoleAuthority.roles_for_mode[i]
+		if(!GLOB.RoleAuthority.check_role_entry(src, J, latejoin = TRUE, faction = FACTION_UPP))
+			continue
+		var/active = 0
+		// Only players with the job assigned and AFK for less than 10 minutes count as active
+		for(var/mob/M in GLOB.player_list)
+			if(M.client && M.job == J.title)
+				active++
+		if(roles_show & FLAG_SHOW_CIC && GLOB.ROLES_CIC_ANTAG.Find(J.title))
+			dat += "Command:<br>"
+			roles_show ^= FLAG_SHOW_CIC
+
+		else if(roles_show & FLAG_SHOW_AUXIL_SUPPORT && GLOB.ROLES_AUXIL_SUPPORT_ANTAG.Find(J.title))
+			dat += "<hr>Auxiliary Combat Support:<br>"
+			roles_show ^= FLAG_SHOW_AUXIL_SUPPORT
+
+		else if(roles_show & FLAG_SHOW_MISC && GLOB.ROLES_MISC_ANTAG.Find(J.title))
+			dat += "<hr>Other:<br>"
+			roles_show ^= FLAG_SHOW_MISC
+
+		else if(roles_show & FLAG_SHOW_POLICE && GLOB.ROLES_POLICE_ANTAG.Find(J.title))
+			dat += "<hr>Military Police:<br>"
+			roles_show ^= FLAG_SHOW_POLICE
+
+		else if(roles_show & FLAG_SHOW_ENGINEERING && GLOB.ROLES_ENGINEERING_ANTAG.Find(J.title))
+			dat += "<hr>Engineering:<br>"
+			roles_show ^= FLAG_SHOW_ENGINEERING
+
+		else if(roles_show & FLAG_SHOW_REQUISITION && GLOB.ROLES_REQUISITION_ANTAG.Find(J.title))
+			dat += "<hr>Requisitions:<br>"
+			roles_show ^= FLAG_SHOW_REQUISITION
+
+		else if(roles_show & FLAG_SHOW_MEDICAL && GLOB.ROLES_MEDICAL_ANTAG.Find(J.title))
+			dat += "<hr>Medbay:<br>"
+			roles_show ^= FLAG_SHOW_MEDICAL
+
+		else if(roles_show & FLAG_SHOW_MARINES && GLOB.ROLES_MARINES_ANTAG.Find(J.title))
+			dat += "<hr>Marines:<br>"
+			roles_show ^= FLAG_SHOW_MARINES
+
+		dat += "<a href='byond://?src=\ref[src];lobby_choice=SelectedJob;antag=1;job_selected=[J.title]'>[J.disp_title] ([J.current_positions]) (Active: [active])</a><br>"
+
+	dat += "</center>"
+	show_browser(src, dat, "Late Join", "latechoices", width = 420, height = 700)
 
 
 /mob/new_player/proc/create_character(is_late_join = FALSE)
@@ -387,9 +407,8 @@
 /mob/new_player/proc/ViewManifest()
 	var/dat = "<html><body>"
 	dat += "<h4><center>Crew Manifest:</center></h4>"
-	dat += GLOB.data_core.get_manifest(FALSE, TRUE)
 
-	show_browser(src, dat, "Crew Manifest", "manifest", "size=450x750")
+	GLOB.crew_manifest.open_ui(src)
 
 /mob/new_player/proc/ViewHiveLeaders()
 	if(!GLOB.hive_leaders_tgui)
@@ -433,6 +452,9 @@
 	close_browser(src, "latechoices") //closes late choices window
 	close_browser(src, "playersetup") //closes the player setup window
 	src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // Stops lobby music.
+
+	client?.prefs.close_all_pickers()
+
 	if(src.open_uis)
 		for(var/datum/nanoui/ui in src.open_uis)
 			if(ui.allowed_user_stat == -1)
@@ -462,7 +484,7 @@
 
 	var/time_remaining = SSticker.GetTimeLeft()
 	if(time_remaining > 0)
-		. += "Time To Start: [round(time_remaining)]s"
+		. += "Time To Start: [floor(time_remaining)]s[SSticker.delay_start ? " (DELAYED)" : ""]"
 	else if(time_remaining == -10)
 		. += "Time To Start: DELAYED"
 	else

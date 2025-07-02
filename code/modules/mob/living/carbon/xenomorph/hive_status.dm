@@ -69,8 +69,6 @@
 	/// If hit limit of larva from pylons
 	var/hit_larva_pylon_limit = FALSE
 
-	var/see_humans_on_tacmap = FALSE
-
 	var/list/hive_inherant_traits
 
 	// Cultist Info
@@ -131,7 +129,27 @@
 	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
 
+	/// Can this hive see humans on the tacmap
+	var/see_humans_on_tacmap = FALSE
+	/// Does the queen need to be on ovi for xenos to see
+	var/tacmap_requires_queen_ovi = TRUE
+
 	var/list/available_nicknumbers = list()
+
+
+	/// Hive buffs
+	var/buff_points = HIVE_STARTING_BUFFPOINTS
+	var/max_buff_points = HIVE_MAX_BUFFPOINTS
+
+	/// List of references to the currently active hivebuffs
+	var/list/active_hivebuffs
+	/// List of references to used hivebuffs
+	var/list/used_hivebuffs
+	/// List of references to used hivebuffs currently on cooldown
+	var/list/cooldown_hivebuffs
+
+	/// List of references to hive pylons active in the game world
+	var/list/active_endgame_pylons
 
 	/*Stores the image()'s for the xeno evolution radial menu
 	To add an image for your caste - add an icon to icons/mob/xenos/radial_xenos.dmi
@@ -139,6 +157,9 @@
 	The name of the icon should be the same as the XENO_CASTE_ define for that caste eg. #define XENO_CASTE_DRONE "Drone"
 	*/
 	var/static/list/evolution_menu_images
+
+	/// Has a King hatchery
+	var/has_hatchery = FALSE
 
 /datum/hive_status/New()
 	hive_ui = new(src)
@@ -150,6 +171,10 @@
 		internal_faction = name
 	for(var/number in 1 to 999)
 		available_nicknumbers += number
+	LAZYINITLIST(active_hivebuffs)
+	LAZYINITLIST(used_hivebuffs)
+	LAZYINITLIST(active_endgame_pylons)
+
 	if(hivenumber != XENO_HIVE_NORMAL)
 		return
 
@@ -190,9 +215,25 @@
 	var/castes = castes_available.Join(", ")
 	xeno_message(SPAN_XENOANNOUNCE("The Hive is now strong enough to support: [castes]"))
 	xeno_maptext("The Hive can now support: [castes]", "Hive Strengthening")
+	evo_screech()
 
+/datum/hive_status/proc/evo_screech()
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		if(!is_ground_level(current_mob.z))
+			continue
 
-// Adds a xeno to this hive
+		if(!current_mob.client)
+			continue
+
+		playsound_client(current_mob.client, get_sfx("evo_screech"), current_mob.loc, 70, "minor")
+
+		if(ishuman(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear a distant screech and feel your insides freeze up...  something new is with you in this colony."))
+
+		if(issynth(current_mob))
+			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
+
+/// Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)
 	if(!X || !istype(X))
 		return
@@ -229,7 +270,7 @@
 	// Xenos are a fuckfest of cross-dependencies of different datums that are initialized at different times
 	// So don't even bother trying updating UI here without large refactors
 
-// Removes the xeno from the hive
+/// Removes the xeno from the hive
 /datum/hive_status/proc/remove_xeno(mob/living/carbon/xenomorph/xeno, hard = FALSE, light_mode = FALSE)
 	if(!xeno || !istype(xeno))
 		return
@@ -292,15 +333,15 @@
 	//No leaders for a Hive without a Queen!
 	queen_leader_limit = living_xeno_queen ? 4 : 0
 
-	if (xeno_leader_list.len > queen_leader_limit)
+	if (length(xeno_leader_list) > queen_leader_limit)
 		var/diff = 0
-		for (var/i in queen_leader_limit + 1 to xeno_leader_list.len)
+		for (var/i in queen_leader_limit + 1 to length(xeno_leader_list))
 			if(!open_xeno_leader_positions.Remove(i))
 				remove_hive_leader(xeno_leader_list[i])
 			diff++
 		xeno_leader_list.len -= diff // Changing the size of xeno_leader_list needs to go at the end or else it won't iterate through the list properly
-	else if (xeno_leader_list.len < queen_leader_limit)
-		for (var/i in xeno_leader_list.len + 1 to queen_leader_limit)
+	else if (length(xeno_leader_list) < queen_leader_limit)
+		for (var/i in length(xeno_leader_list) + 1 to queen_leader_limit)
 			open_xeno_leader_positions += i
 			xeno_leader_list.len++
 
@@ -309,7 +350,7 @@
 /datum/hive_status/proc/add_hive_leader(mob/living/carbon/xenomorph/xeno)
 	if(!xeno)
 		return FALSE //How did this even happen?
-	if(!open_xeno_leader_positions.len)
+	if(!length(open_xeno_leader_positions))
 		return FALSE //Too many leaders already (no available xeno leader positions)
 	if(xeno.hive_pos != NORMAL_XENO)
 		return FALSE //Already on the list
@@ -342,7 +383,7 @@
 
 	// Need to maintain ascending order of open_xeno_leader_positions
 	for (var/i in 1 to queen_leader_limit)
-		if (i > open_xeno_leader_positions.len || open_xeno_leader_positions[i] > leader_num)
+		if (i > length(open_xeno_leader_positions) || open_xeno_leader_positions[i] > leader_num)
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
 
@@ -380,61 +421,109 @@
 	hive_ui.update_xeno_keys()
 
 /datum/hive_status/proc/handle_xeno_leader_pheromones()
-	for(var/mob/living/carbon/xenomorph/L in xeno_leader_list)
-		L.handle_xeno_leader_pheromones()
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		xeno.handle_xeno_leader_pheromones()
+
+/// Returns a count of xenos that can potentially evolve to queen (larva and tier 1 that aren't job banned)
+/datum/hive_status/proc/get_potential_queen_count()
+	var/potential_queens = 0
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(xeno.stat == DEAD)
+			continue
+		switch(xeno.tier)
+			if(0)
+				if(!islarva(xeno) || ispredalienlarva(xeno))
+					continue
+				if(xeno.client && xeno.ckey && !jobban_isbanned(xeno, XENO_CASTE_QUEEN))
+					potential_queens++
+			if(1)
+				if(isnull(xeno.caste.evolves_to) || !length(xeno.caste.evolves_to))
+					continue
+				if(xeno.client && xeno.ckey && !jobban_isbanned(xeno, XENO_CASTE_QUEEN))
+					potential_queens++
+	return potential_queens
 
 /*
  * Helper procs for the Hive Status UI
  * These are all called by the hive status UI manager to update its data
  */
 
-// Returns a list of how many of each caste of xeno there are, sorted by tier
+/// Returns a list of how many of each caste of xeno there are, sorted by tier
 /datum/hive_status/proc/get_xeno_counts()
 	// Every caste is manually defined here so you get
 	var/list/xeno_counts = list(
 		// Yes, Queen is technically considered to be tier 0
-		list(XENO_CASTE_LARVA = 0, "Queen" = 0),
+		list(XENO_CASTE_LARVA = 0, XENO_CASTE_QUEEN = 0),
 		list(XENO_CASTE_DRONE = 0, XENO_CASTE_RUNNER = 0, XENO_CASTE_SENTINEL = 0, XENO_CASTE_DEFENDER = 0),
 		list(XENO_CASTE_HIVELORD = 0, XENO_CASTE_BURROWER = 0, XENO_CASTE_CARRIER = 0, XENO_CASTE_LURKER = 0, XENO_CASTE_SPITTER = 0, XENO_CASTE_WARRIOR = 0),
 		list(XENO_CASTE_BOILER = 0, XENO_CASTE_CRUSHER = 0, XENO_CASTE_PRAETORIAN = 0, XENO_CASTE_RAVAGER = 0)
 	)
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		//don't show xenos in the thunderdome when admins test stuff.
-		if(should_block_game_interaction(X))
-			var/area/A = get_area(X)
-			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(X.caste && X.counts_for_slots)
-			xeno_counts[X.caste.tier+1][X.caste.caste_type]++
+		if(xeno.caste && xeno.counts_for_slots)
+			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
 
 	return xeno_counts
 
-// Returns a sorted list of some basic info (stuff that's needed for sorting) about all the xenos in the hive
-// The idea is that we sort this list, and use it as a "key" for all the other information (especially the nicknumber)
-// in the hive status UI. That way we can minimize the amount of sorts performed by only calling this when xenos are created/disposed
+/// Returns the full minimap icon as base64 string.
+/datum/hive_status/proc/get_xeno_icons()
+	// Must match hardcoded xeno counts order.
+	var/list/xeno_icons = list(
+		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = "", XENO_CASTE_PREDALIEN_LARVA = "", XENO_CASTE_HELLHOUND = ""),
+		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = "", XENO_CASTE_PREDALIEN = ""),
+		list(XENO_CASTE_HIVELORD = "", XENO_CASTE_BURROWER = "", XENO_CASTE_CARRIER = "", XENO_CASTE_LURKER = "", XENO_CASTE_SPITTER = "", XENO_CASTE_WARRIOR = ""),
+		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "")
+	)
+
+	for(var/caste in GLOB.xeno_datum_list)
+		var/datum/caste_datum/caste_datum = GLOB.xeno_datum_list[caste]
+
+		// Special castes like king will not show up.
+		if(caste_datum.tier < 0 || caste_datum.tier >= length(xeno_icons) || !(caste_datum.caste_type in xeno_icons[caste_datum.tier+1]))
+			continue
+
+		xeno_icons[caste_datum.tier+1][caste_datum.caste_type] = GLOB.minimap_icons[caste_datum.minimap_icon]
+
+	return xeno_icons
+
+/// Returns the default minimap icon background, as specified on drone caste.
+/datum/hive_status/proc/get_xeno_background()
+	var/datum/caste_datum/drone = GLOB.xeno_datum_list[XENO_CASTE_DRONE]
+
+	return GLOB.minimap_icons[drone.minimap_background]
+
+/**
+ * Returns a sorted list of some basic info (stuff that's needed for sorting) about all the xenos in the hive
+ * The idea is that we sort this list, and use it as a "key" for all the other information (especially the nicknumber)
+ * in the hive status UI. That way we can minimize the amount of sorts performed by only calling this when xenos are created/disposed
+ */
 /datum/hive_status/proc/get_xeno_keys()
 	var/list/xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(should_block_game_interaction(X))
-			var/area/A = get_area(X)
-			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(!(X in GLOB.living_xeno_list))
+		if(!(xeno in GLOB.living_xeno_list))
 			continue
 
 		// This looks weird, but in DM adding List A to List B actually adds each item in List B to List A, not List B itself.
 		// Having a nested list like this sort of tricks it into adding the list instead.
 		// In this case this results in an array of different 'xeno' dictionaries, rather than just a dictionary.
 		xenos += list(list(
-			"nicknumber" = X.nicknumber,
-			"tier" = X.tier, // This one is only important for sorting
-			"is_leader" = (IS_XENO_LEADER(X)),
-			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
-			"caste_type" = X.caste_type
+			"nicknumber" = xeno.nicknumber,
+			"tier" = xeno.tier, // This one is only important for sorting
+			"is_leader" = (IS_XENO_LEADER(xeno)),
+			"is_queen" = istype(xeno.caste, /datum/caste_datum/queen),
+			"caste_type" = xeno.caste_type
 		))
 
 	// Make it all nice and fancy by sorting the list before returning it
@@ -443,11 +532,13 @@
 		return sorted_keys
 	return xenos
 
-// This sorts the xeno info list by multiple criteria. Prioritized in order:
-// 1. Queen
-// 2. Leaders
-// 3. Tier
-// It uses a slightly modified insertion sort to accomplish this
+/**
+ * This sorts the xeno info list by multiple criteria. Prioritized in order:
+ * 1. Queen
+ * 2. Leaders
+ * 3. Tier
+ * It uses a slightly modified insertion sort to accomplish this
+ */
 /datum/hive_status/proc/sort_xeno_keys(list/xenos)
 	if(!length(xenos))
 		return
@@ -496,25 +587,25 @@
 
 	return sorted_list
 
-// Returns a list with some more info about all xenos in the hive
+/// Returns a list with some more info about all xenos in the hive
 /datum/hive_status/proc/get_xeno_info()
 	var/list/xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(should_block_game_interaction(X))
-			var/area/A = get_area(X)
-			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		var/xeno_name = X.name
+		var/xeno_name = xeno.name
 		// goddamn fucking larvas with their weird ass maturing system
 		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
-		if(istype(X, /mob/living/carbon/xenomorph/larva))
-			xeno_name = "Larva ([X.nicknumber])"
-		xenos["[X.nicknumber]"] = list(
+		if(istype(xeno, /mob/living/carbon/xenomorph/larva))
+			xeno_name = "Larva ([xeno.nicknumber])"
+		xenos["[xeno.nicknumber]"] = list(
 			"name" = xeno_name,
-			"strain" = X.get_strain_name(),
-			"ref" = "\ref[X]"
+			"strain" = xeno.get_strain_name(),
+			"ref" = "\ref[xeno]"
 		)
 
 	return xenos
@@ -527,28 +618,33 @@
 	hive_location = C
 	hive_ui.update_hive_location()
 
-// Returns a list of xeno healths and locations
+/// Returns a list of xeno healths and locations
 /datum/hive_status/proc/get_xeno_vitals()
 	var/list/xenos = list()
 
-	for(var/mob/living/carbon/xenomorph/X in totalXenos)
-		if(should_block_game_interaction(X))
-			var/area/A = get_area(X)
-			if(!(A.flags_atom & AREA_ALLOW_XENO_JOIN))
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(should_block_game_interaction(xeno))
+			var/area/cur_area = get_area(xeno)
+			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(!(X in GLOB.living_xeno_list))
+		if(!(xeno in GLOB.living_xeno_list))
 			continue
 
-		var/area/A = get_area(X)
+		var/area/cur_area = get_area(xeno)
 		var/area_name = "Unknown"
-		if(A)
-			area_name = A.name
+		if(cur_area)
+			area_name = cur_area.name
 
-		xenos["[X.nicknumber]"] = list(
-			"health" = round((X.health / X.maxHealth) * 100, 1),
+		var/plasma_percent = -1
+		if(xeno.plasma_max != 0)
+			plasma_percent = round((xeno.plasma_stored / xeno.plasma_max) * 100, 1)
+
+		xenos["[xeno.nicknumber]"] = list(
+			"health" = round((xeno.health / xeno.maxHealth) * 100, 1),
+			"plasma" = plasma_percent,
 			"area" = area_name,
-			"is_ssd" = (!X.client)
+			"is_ssd" = (!xeno.client)
 		)
 
 	return xenos
@@ -558,7 +654,7 @@
 #define OPEN_SLOTS "open_slots"
 #define GUARANTEED_SLOTS "guaranteed_slots"
 
-// Returns an assoc list of open slots and guaranteed slots left
+/// Returns an assoc list of open slots and guaranteed slots left
 /datum/hive_status/proc/get_tier_slots()
 	var/list/slots = list(
 		TIER_3 = list(
@@ -595,16 +691,16 @@
 				slots[TIER_3][GUARANTEED_SLOTS][initial(current_caste.caste_type)] = slots_free - slots_used
 
 	var/burrowed_factor = min(stored_larva, sqrt(4*stored_larva))
-	var/effective_total = round(burrowed_factor)
+	var/effective_total = floor(burrowed_factor)
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(xeno.counts_for_slots)
 			effective_total++
 
 	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, ceil(0.20*effective_total/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_2][OPEN_SLOTS] = max(0, ceil(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 
@@ -626,7 +722,7 @@
 /datum/hive_status/proc/has_structure(structure_name)
 	if(!structure_name)
 		return FALSE
-	if(hive_structures[structure_name] && hive_structures[structure_name].len)
+	if(LAZYLEN(hive_structures[structure_name]))
 		return TRUE
 	return FALSE
 
@@ -636,7 +732,7 @@
 	var/name_ref = initial(S.template.name)
 	if(!hive_constructions[name_ref])
 		hive_constructions[name_ref] = list()
-	if(hive_constructions[name_ref].len >= hive_structures_limit[name_ref])
+	if(length(hive_constructions[name_ref]) >= hive_structures_limit[name_ref])
 		return FALSE
 	hive_constructions[name_ref] += src
 	return TRUE
@@ -654,7 +750,7 @@
 	var/name_ref = initial(S.name)
 	if(!hive_structures[name_ref])
 		hive_structures[name_ref] = list()
-	if(hive_structures[name_ref].len >= hive_structures_limit[name_ref])
+	if(length(hive_structures[name_ref]) >= hive_structures_limit[name_ref])
 		return FALSE
 	hive_structures[name_ref] += S
 	return TRUE
@@ -667,9 +763,9 @@
 	return TRUE
 
 /datum/hive_status/proc/has_special_structure(name_ref)
-	if(!name_ref || !hive_structures[name_ref] || !hive_structures[name_ref].len)
+	if(!name_ref || !LAZYLEN(hive_structures[name_ref]))
 		return 0
-	return hive_structures[name_ref].len
+	return length(hive_structures[name_ref])
 
 /datum/hive_status/proc/abandon_on_hijack()
 	var/area/hijacked_dropship = get_area(living_xeno_queen)
@@ -686,9 +782,6 @@
 		if(get_area(xeno) != hijacked_dropship && xeno.loc && is_ground_level(xeno.loc.z))
 			if(isfacehugger(xeno) || islesserdrone(xeno))
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(xeno.stomach_contents.len)
-					xeno.devour_timer = 0
-					xeno.handle_stomach_contents()
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
@@ -696,9 +789,8 @@
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
-				if(xeno.stomach_contents.len)
-					xeno.devour_timer = 0
-					xeno.handle_stomach_contents()
+				if(xeno.hauled_mob?.resolve())
+					xeno.release_haul(xeno.hauled_mob.resolve())
 				qdel(xeno)
 			stored_larva++
 			continue
@@ -726,9 +818,13 @@
 		if(is_mainship_level(turf?.z))
 			shipside_humans_weighted_count += GLOB.RoleAuthority.calculate_role_weight(job)
 	hijack_burrowed_surge = TRUE
-	hijack_burrowed_left = max(Ceiling(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
+	hijack_burrowed_left = max(ceil(shipside_humans_weighted_count * 0.5) - xenos_count, 5)
 	hivecore_cooldown = FALSE
 	xeno_message(SPAN_XENOBOLDNOTICE("The weeds have recovered! A new hive core can be built!"),3,hivenumber)
+
+	// No buffs in hijack
+	for(var/datum/hivebuff/buff in active_hivebuffs)
+		buff._on_cease()
 
 /datum/hive_status/proc/free_respawn(client/C)
 	stored_larva++
@@ -761,9 +857,10 @@
 		spawning_area = hive_location
 	else if(living_xeno_queen)
 		spawning_area = living_xeno_queen
-	else for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
-		if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
-			spawning_area = xenomorpheus
+	else
+		for(var/mob/living/carbon/xenomorpheus as anything in totalXenos)
+			if(islarva(xenomorpheus) || isxeno_builder(xenomorpheus)) //next to xenos that should be in a safe spot
+				spawning_area = xenomorpheus
 	if(!spawning_area)
 		spawning_area = pick(totalXenos) // FUCK IT JUST GO ANYWHERE
 	var/list/turf_list
@@ -833,25 +930,41 @@
 		if(cycled_xeno.counts_for_slots)
 			countable_xeno_iterator++
 
-	playable_hugger_limit = max(Floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
+	playable_hugger_limit = max(floor(countable_xeno_iterator / playable_hugger_max_divisor), playable_hugger_minimum)
 
 /datum/hive_status/proc/can_spawn_as_hugger(mob/dead/observer/user)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
 		return FALSE
+
 	if(jobban_isbanned(user, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return FALSE
+
 	if(world.time < hugger_timelock)
 		to_chat(user, SPAN_WARNING("The hive cannot support facehuggers yet..."))
 		return FALSE
-	if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
-		var/time_left = round((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until 3 minutes have passed ([time_left] seconds remaining)."))
-		return FALSE
-	if(totalXenos.len <= 0)
+
+	if(!user.bypass_time_of_death_checks_hugger)
+		var/mob/living/carbon/human/original_human = user.mind?.original
+		if(istype(original_human) && !original_human.undefibbable && !original_human.chestburst && HAS_TRAIT_FROM(original_human, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE))
+			to_chat(user, SPAN_WARNING("You cannot become a facehugger until you are no longer alive in a nest."))
+			return FALSE
+
+		if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
+			var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+			return FALSE
+
+		if(world.time - user.timeofdeath < JOIN_AS_FACEHUGGER_DELAY)
+			var/time_left = floor((user.timeofdeath + JOIN_AS_FACEHUGGER_DELAY - world.time) / 10)
+			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [JOIN_AS_FACEHUGGER_DELAY / 600] minutes have passed ([time_left] seconds remaining)."))
+			return FALSE
+
+	if(length(totalXenos) <= 0)
 		//This is to prevent people from joining as Forsaken Huggers on the pred ship
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
+
 	for(var/mob_name in banished_ckeys)
 		if(banished_ckeys[mob_name] == user.ckey)
 			to_chat(user, SPAN_WARNING("You are banished from the [name], you may not rejoin unless the Queen re-admits you or dies."))
@@ -875,6 +988,13 @@
 
 	return TRUE
 
+/datum/hive_status/proc/get_current_playable_facehugger_count()
+	var/count = 0
+	for(var/mob/mob as anything in totalXenos)
+		if(isfacehugger(mob))
+			count++
+	return count
+
 /datum/hive_status/proc/spawn_as_hugger(mob/dead/observer/user, atom/A)
 	var/mob/living/carbon/xenomorph/facehugger/hugger = new /mob/living/carbon/xenomorph/facehugger(A.loc, null, hivenumber)
 	user.mind.transfer_to(hugger, TRUE)
@@ -882,6 +1002,7 @@
 	playsound(hugger, 'sound/effects/xeno_newlarva.ogg', 25, TRUE)
 	hugger.generate_name()
 	hugger.timeofdeath = user.timeofdeath // Keep old death time
+	msg_admin_niche("[key_name(hugger)] has joined as a facehugger at ([A.x],[A.y],[A.z]).")
 
 /datum/hive_status/proc/update_lesser_drone_limit()
 	var/countable_xeno_iterator = 0
@@ -889,7 +1010,7 @@
 		if(cycled_xeno.counts_for_slots)
 			countable_xeno_iterator++
 
-	lesser_drone_limit = max(Floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
+	lesser_drone_limit = max(floor(countable_xeno_iterator / playable_lesser_drones_max_divisor), lesser_drone_minimum)
 
 /datum/hive_status/proc/can_spawn_as_lesser_drone(mob/dead/observer/user, obj/effect/alien/resin/special/pylon/spawning_pylon)
 	if(!GLOB.hive_datum || ! GLOB.hive_datum[hivenumber])
@@ -899,12 +1020,27 @@
 		to_chat(user, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return FALSE
 
-	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
-		var/time_left = round((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
-		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until 30 seconds have passed ([time_left] seconds remaining)."))
+	for(var/mob_name in banished_ckeys)
+		if(banished_ckeys[mob_name] == user.ckey)
+			to_chat(user, SPAN_WARNING("You are banished from the [src], you may not rejoin unless the Queen re-admits you or dies."))
+			return FALSE
+
+	var/mob/living/carbon/human/original_human = user.mind?.original
+	if(istype(original_human) && !original_human.undefibbable && !original_human.chestburst && HAS_TRAIT_FROM(original_human, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE))
+		to_chat(user, SPAN_WARNING("You cannot become a lesser drone until you are no longer alive in a nest."))
 		return FALSE
 
-	if(totalXenos.len <= 0)
+	if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
+		var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
+		return FALSE
+
+	if(world.time - user.timeofdeath < JOIN_AS_LESSER_DRONE_DELAY)
+		var/time_left = floor((user.timeofdeath + JOIN_AS_LESSER_DRONE_DELAY - world.time) / 10)
+		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [JOIN_AS_LESSER_DRONE_DELAY / 10] seconds have passed ([time_left] seconds remaining)."))
+		return FALSE
+
+	if(length(totalXenos) <= 0)
 		to_chat(user, SPAN_WARNING("The hive has fallen, you can't join it!"))
 		return FALSE
 
@@ -932,7 +1068,7 @@
 
 	return TRUE
 
-// Get amount of real xenos, don't count lessers/huggers
+/// Get amount of real xenos, don't count lessers/huggers
 /datum/hive_status/proc/get_real_total_xeno_count()
 	var/count = 0
 	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
@@ -940,7 +1076,7 @@
 			count++
 	return count
 
-// Checks if we hit larva limit
+/// Checks if we hit larva limit
 /datum/hive_status/proc/check_if_hit_larva_from_pylon_limit()
 	var/groundside_humans_weighted_count = 0
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
@@ -957,9 +1093,12 @@
 	return hit_larva_pylon_limit
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
-/datum/hive_status/proc/increase_larva_after_burst()
+/datum/hive_status/proc/increase_larva_after_burst(is_nested)
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
 	partial_larva += extra_per_burst
+	if(is_nested)
+		var/extra_per_nested_burst = CONFIG_GET(number/extra_larva_per_nested_burst)
+		partial_larva += extra_per_nested_burst
 	convert_partial_larva_to_full_larva()
 
 ///Called after times when partial larva are added to process them to stored larva
@@ -980,6 +1119,7 @@
 	need_round_end_check = TRUE
 
 	var/list/defectors = list()
+	var/list/datum/weakref/personal_allies = list()
 
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/xenomorph/xeno)
 	. = ..()
@@ -1053,6 +1193,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
@@ -1067,6 +1208,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	see_humans_on_tacmap = TRUE
+	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1102,11 +1245,13 @@
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
 
+	ui_color = "#135029"
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1136,6 +1281,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions
@@ -1192,8 +1338,8 @@
 	reporting_id = "renegade"
 	hivenumber = XENO_HIVE_RENEGADE
 	prefix = "Renegade "
-	color = "#9c7a4d"
-	ui_color ="#80705c"
+	color = "#ffae00"
+	ui_color ="#ad732c"
 
 	dynamic_evolution = FALSE
 	allow_queen_evolve = FALSE
@@ -1254,9 +1400,9 @@
 
 	if(living_xeno_queen)
 		if(allies[faction])
-			xeno_message(SPAN_XENOANNOUNCE("Your Queen set up an alliance with [faction]!"), 3, hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("Our Queen set up an alliance with [faction]!"), 3, hivenumber)
 		else
-			xeno_message(SPAN_XENOANNOUNCE("Your Queen broke the alliance with [faction]!"), 3, hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("Our Queen broke the alliance with [faction]!"), 3, hivenumber)
 
 	for(var/number in GLOB.hive_datum)
 		var/datum/hive_status/target_hive = GLOB.hive_datum[number]
@@ -1279,7 +1425,7 @@
 	if(!(faction in FACTION_LIST_HUMANOID))
 		return
 
-	for(var/mob/living/carbon/xenomorph/xeno in totalXenos) // handle defecting xenos on betrayal
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos) // handle defecting xenos on betrayal
 		if(!xeno.iff_tag)
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
@@ -1292,14 +1438,14 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(tgui_alert(xeno, "Your Queen has broken the alliance with the [faction]. The device inside your carapace begins to suppress your connection with the Hive. Do you remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
+	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and our service to the Queen continues."))
 			return
 		defectors += xeno
 		xeno.set_hive_and_update(XENO_HIVE_RENEGADE)
 		to_chat(xeno, SPAN_XENOANNOUNCE("You lost the connection with your Hive. Now you have no Queen, only your masters."))
-		to_chat(xeno, SPAN_NOTICE("Our instincts have changed, we seem compelled to protect [english_list(xeno.iff_tag.faction_groups, "no one")]."))
+		to_chat(xeno, SPAN_NOTICE("Your instincts have changed, you seem compelled to protect [english_list(xeno.iff_tag.faction_groups, "no one")]."))
 		return
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the Hive!"))
 	xeno.adjustBruteLoss(50)
@@ -1307,26 +1453,123 @@
 	xeno.iff_tag = null
 
 /datum/hive_status/corrupted/proc/handle_defectors(faction)
-	for(var/mob/living/carbon/xenomorph/xeno in totalXenos)
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
 		if(!xeno.iff_tag)
 			continue
 		if(xeno in defectors)
 			continue
 		if(!(faction in xeno.iff_tag.faction_groups))
 			continue
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("You rip out [xeno.iff_tag]! For the hive!"))
+		xeno.visible_message(SPAN_XENOWARNING("[xeno] rips out [xeno.iff_tag]!"), SPAN_XENOWARNING("We rip out [xeno.iff_tag]! For the hive!"))
 		xeno.adjustBruteLoss(50)
 		xeno.iff_tag.forceMove(get_turf(xeno))
 		xeno.iff_tag = null
 	if(!length(defectors))
 		return
 
-	xeno_message(SPAN_XENOANNOUNCE("You sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
 	defectors.Cut()
+
+/datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)
+	personal_allies += WEAKREF(ally)
+	ally.status_flags |= CORRUPTED_ALLY
+	ally.med_hud_set_status()
+	xeno_message(SPAN_XENOANNOUNCE("Our Queen proclaimed [ally] our ally! We must not harm them."), 3, hivenumber)
+
+/datum/hive_status/corrupted/proc/remove_personal_ally(datum/weakref/ally_ref)
+	personal_allies -= ally_ref
+	var/mob/living/ally = ally_ref.resolve()
+	if(ally)
+		ally.status_flags &= ~CORRUPTED_ALLY
+		ally.med_hud_set_status()
+	xeno_message(SPAN_XENOANNOUNCE("Our Queen has declared that [ally] is no longer our ally!"), 3, hivenumber)
+
+/datum/hive_status/corrupted/proc/clear_personal_allies(death = FALSE)
+	for(var/datum/weakref/ally_ref in personal_allies)
+		var/mob/living/ally = ally_ref.resolve()
+		if(!ally)
+			continue
+		ally.status_flags &= ~CORRUPTED_ALLY
+		ally.med_hud_set_status()
+	personal_allies.Cut()
+	if(!death)
+		xeno_message(SPAN_XENOANNOUNCE("Our Queen has broken all personal alliances with the talls! Favoritism is no more."), 3, hivenumber)
+		return
+	xeno_message(SPAN_XENOWARNING("With the death of the Queen, her friends no longer matter to us."), 3, hivenumber)
+
+/datum/hive_status/corrupted/is_ally(mob/living/living_mob)
+	if(living_mob.status_flags & CORRUPTED_ALLY)
+		return TRUE
+	return ..()
 
 /datum/hive_status/proc/override_evilution(evil, override)
 	if(SSxevolution)
 		SSxevolution.override_power(hivenumber, evil, override)
+
+/datum/hive_status/corrupted/on_queen_death()
+	..()
+	if(!length(personal_allies))
+		return
+	clear_personal_allies(TRUE)
+
+
+/// Get a list of hivebuffs which can be bought now.
+/datum/hive_status/proc/get_available_hivebuffs()
+	var/list/potential_hivebuffs = subtypesof(/datum/hivebuff)
+
+	// First check if we any pylons which are capable of supporting hivebuffs
+	if(!LAZYLEN(active_endgame_pylons))
+		return
+
+	for(var/datum/hivebuff/possible_hivebuff as anything in potential_hivebuffs)
+		// Round isn't old enough yet
+		if(ROUND_TIME < initial(possible_hivebuff.roundtime_to_enable))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		if(initial(possible_hivebuff.number_of_required_pylons) > LAZYLEN(active_endgame_pylons))
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		// Prevent the same lineage of buff in active hivebuffs (e.g. no minor and major health allowed)
+		var/already_active = FALSE
+		for(var/datum/hivebuff/buff as anything in active_hivebuffs)
+			if(istype(buff, possible_hivebuff))
+				already_active = TRUE
+				break
+			if(ispath(possible_hivebuff, buff.type))
+				already_active = TRUE
+				break
+		if(already_active)
+			potential_hivebuffs -= possible_hivebuff
+			continue
+
+		//If this buff isn't combineable, check if any other active hivebuffs aren't combineable
+		if(!initial(possible_hivebuff.is_combineable))
+			var/found_conflict = FALSE
+			for(var/datum/hivebuff/active_hivebuff in active_hivebuffs)
+				if(!active_hivebuff.is_combineable)
+					found_conflict = TRUE
+					break
+			if(found_conflict)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+		// If the buff is not reusable check against used hivebuffs.
+		if(!initial(possible_hivebuff.is_reusable))
+			if(locate(possible_hivebuff) in used_hivebuffs)
+				potential_hivebuffs -= possible_hivebuff
+				continue
+
+	return potential_hivebuffs
+
+/datum/hive_status/proc/attempt_apply_hivebuff(datum/hivebuff/hivebuff, mob/living/purchasing_player, obj/effect/alien/resin/special/pylon/endgame/purchased_pylon)
+	var/datum/hivebuff/new_buff = new hivebuff(src)
+	if(!new_buff._on_engage(purchasing_player, purchased_pylon))
+		qdel(new_buff)
+		return FALSE
+	return TRUE
+
 
 //Xeno Resin Mark Shit, the very best place for it too :0)
 //Defines at the bottom of this list here will show up at the top in the mark menu
@@ -1388,3 +1631,4 @@
 	name = "Attack"
 	desc = "Attack the enemy here!"
 	icon_state = "attack"
+

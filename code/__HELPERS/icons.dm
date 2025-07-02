@@ -238,7 +238,8 @@ world
 	if(gray)
 		MapColors(255/gray,0,0, 0,255/gray,0, 0,0,255/gray, 0,0,0)
 		Blend(tone, ICON_MULTIPLY)
-	else SetIntensity(0)
+	else
+		SetIntensity(0)
 	if(255-gray)
 		upper.Blend(rgb(gray,gray,gray), ICON_SUBTRACT)
 		upper.MapColors((255-TONE[1])/(255-gray),0,0,0, 0,(255-TONE[2])/(255-gray),0,0, 0,0,(255-TONE[3])/(255-gray),0, 0,0,0,0, 0,0,0,1)
@@ -273,7 +274,8 @@ world
  */
 
 /proc/ReadRGB(rgb)
-	if(!rgb) return
+	if(!rgb)
+		return
 
 	// interpret the HSV or HSVA value
 	var/i=1,start=1
@@ -282,19 +284,25 @@ world
 	var/digits=0
 	for(i=start, i<=length(rgb), ++i)
 		ch = text2ascii(rgb, i)
-		if(ch < 48 || (ch > 57 && ch < 65) || (ch > 70 && ch < 97) || ch > 102) break
+		if(ch < 48 || (ch > 57 && ch < 65) || (ch > 70 && ch < 97) || ch > 102)
+			break
 		++digits
-		if(digits == 8) break
+		if(digits == 8)
+			break
 
 	var/single = digits < 6
-	if(digits != 3 && digits != 4 && digits != 6 && digits != 8) return
-	if(digits == 4 || digits == 8) usealpha = 1
+	if(digits != 3 && digits != 4 && digits != 6 && digits != 8)
+		return
+	if(digits == 4 || digits == 8)
+		usealpha = 1
 	for(i=start, digits>0, ++i)
 		ch = text2ascii(rgb, i)
-		if(ch >= 48 && ch <= 57) ch -= 48
+		if(ch >= 48 && ch <= 57)
+			ch -= 48
 		else if(ch >= 65 && ch <= 70) ch -= 55
 		else if(ch >= 97 && ch <= 102) ch -= 87
-		else break
+		else
+			break
 		--digits
 		switch(which)
 			if(0)
@@ -317,7 +325,8 @@ world
 				else if(!(digits & 1)) ++which
 			if(3)
 				alpha = (alpha << 4)|ch
-				if(single) alpha |= alpha << 4
+				if(single)
+					alpha |= alpha << 4
 
 	. = list(r, g, b)
 	if(usealpha) . += alpha
@@ -332,7 +341,7 @@ world
 /proc/getFlatIcon(image/appearance, defdir, deficon, defstate, defblend, start = TRUE, no_anim = FALSE, appearance_flags = FALSE)
 	// Loop through the underlays, then overlays, sorting them into the layers list
 	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) \
-		for (var/i in 1 to process.len) { \
+		for (var/i in 1 to length(process)) { \
 			var/image/current = process[i]; \
 			if (!current) { \
 				continue; \
@@ -347,7 +356,7 @@ world
 				} \
 				current_layer = base_layer + appearance.layer + current_layer / 1000; \
 			} \
-			for (var/index_to_compare_to in 1 to layers.len) { \
+			for (var/index_to_compare_to in 1 to length(layers)) { \
 				var/compare_to = layers[index_to_compare_to]; \
 				if (current_layer < layers[compare_to]) { \
 					layers.Insert(index_to_compare_to, current); \
@@ -403,7 +412,7 @@ world
 
 	var/curblend = appearance.blend_mode || defblend
 
-	if(appearance.overlays.len || appearance.underlays.len)
+	if(length(appearance.overlays) || length(appearance.underlays))
 		var/icon/flat = icon(flat_template)
 		// Layers will be a sorted list of icons/overlays, based on the order in which they are displayed
 		var/list/layers = list()
@@ -505,7 +514,8 @@ world
 
 		if(no_anim)
 			//Clean up repeated frames
-			var/icon/cleaned = new /icon()
+			// Done this way otherwise Width() and Height() would always be 0 for this icon
+			var/icon/cleaned = icon('icons/effects/effects.dmi', "nothing")
 			cleaned.Insert(flat, "", SOUTH, 1, 0)
 			return cleaned
 		else
@@ -529,7 +539,8 @@ world
 /proc/getIconMask(atom/A)//By yours truly. Creates a dynamic mask for a mob/whatever. /N
 	var/icon/alpha_mask = new(A.icon,A.icon_state)//So we want the default icon and icon state of A.
 	for(var/I in A.overlays)//For every image in overlays. var/image/I will not work, don't try it.
-		if(I:layer>A.layer) continue//If layer is greater than what we need, skip it.
+		if(I:layer>A.layer)
+			continue//If layer is greater than what we need, skip it.
 		var/icon/image_overlay = new(I:icon,I:icon_state)//Blend only works with icon objects.
 		//Also, icons cannot directly set icon_state. Slower than changing variables but whatever.
 		alpha_mask.Blend(image_overlay,ICON_OR)//OR so they are lumped together in a nice overlay.
@@ -556,22 +567,21 @@ world
 /proc/sort_atoms_by_layer(list/atoms)
 	// Comb sort icons based on levels
 	var/list/result = atoms.Copy()
-	var/gap = result.len
+	var/gap = length(result)
 	var/swapped = 1
 	while (gap > 1 || swapped)
 		swapped = 0
 		if(gap > 1)
-			gap = round(gap / 1.3) // 1.3 is the emperic comb sort coefficient
+			gap = floor(gap / 1.3) // 1.3 is the emperic comb sort coefficient
 		if(gap < 1)
 			gap = 1
-		for(var/i = 1; gap + i <= result.len; i++)
+		for(var/i = 1; gap + i <= length(result); i++)
 			var/atom/l = result[i] //Fucking hate
 			var/atom/r = result[gap+i] //how lists work here
 			if(l.layer > r.layer) //no "result[i].layer" for me
 				result.Swap(i, gap + i)
 				swapped = 1
 	return result
-
 
 /image/proc/flick_overlay(atom/A, duration) //originally code related to goonPS. This isn't the original code, but has the same effect
 	A.overlays.Add(src)
@@ -582,7 +592,7 @@ world
 		A.overlays.Remove(src)
 
 /mob/proc/flick_heal_overlay(time, color = "#00FF00") //used for warden and queen healing
-	var/image/I = image('icons/mob/mob.dmi', src, "heal_overlay")
+	var/image/I = image('icons/mob/do_afters.dmi', src, "heal_overlay")
 	switch(icon_size)
 		if(48)
 			I.pixel_x = 8
@@ -748,6 +758,12 @@ world
 
 	icon2collapse = icon(icon2collapse, icon_state, dir, frame, moving)
 
+	var/width = icon2collapse.Width()
+	var/height = icon2collapse.Height()
+	if(width != height)
+		var/new_dimension = min(width, height)
+		center_icon(icon2collapse, new_dimension, new_dimension)
+
 	var/list/name_and_ref = generate_and_hash_rsc_file(icon2collapse, icon_path)//pretend that tuples exist
 
 	var/rsc_ref = name_and_ref[1] //weird object thats not even readable to the debugger, represents a reference to the icons rsc entry
@@ -880,6 +896,50 @@ world
 
 	return image_to_center
 
+/**
+ * Centers an icon.
+ *
+ * Arguments:
+ * * icon - The icon to center
+ * * final_width - The width to crop to. Will use Width() if <= 0
+ * * final_height - The height to crop to. Will use Height() if <= 0
+ */
+/proc/center_icon(icon/icon, final_width, final_height)
+	var/width = icon.Width() || world.icon_size
+	var/height = icon.Height() || world.icon_size
+
+	if(final_width <= 0)
+		final_width = width
+	if(final_height <= 0)
+		final_height = height
+
+	var/left = INFINITY
+	var/right = 0
+	var/bottom = INFINITY
+	var/top = 0
+
+	// Find the inner dimensions (non-alpha pixels)
+	for(var/x in 1 to width)
+		for(var/y in 1 to height)
+			if(icon.GetPixel(x, y))
+				left = min(x, left)
+				right = max(x, right)
+				bottom = min(y, bottom)
+				top = max(y, top)
+
+	if(!right)
+		// Fully transparent
+		icon.Crop(1, 1, final_width, final_height)
+		return icon
+
+	var/inner_width = right - left
+	var/inner_height = top - bottom
+	var/left_padding = left - floor((final_width - inner_width) * 0.5)
+	var/bottom_padding = bottom - floor((final_height - inner_height) * 0.5)
+
+	icon.Crop(left_padding, bottom_padding, left_padding + final_width - 1, bottom_padding + final_height - 1)
+	return icon
+
 //For creating consistent icons for human looking simple animals
 /proc/get_flat_human_icon(icon_id, equipment_preset_dresscode, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override)
 	var/static/list/humanoid_icon_cache = list()
@@ -919,8 +979,9 @@ world
 		// From /datum/preferences/proc/copy_appearance_to
 		body.age = original.age
 		body.gender = original.gender
-		body.ethnicity = original.ethnicity
+		body.skin_color = original.skin_color
 		body.body_type = original.body_type
+		body.body_size = original.body_size
 
 		body.r_eyes = original.r_eyes
 		body.g_eyes = original.g_eyes

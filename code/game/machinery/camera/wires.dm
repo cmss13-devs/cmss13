@@ -117,10 +117,10 @@
 		var/is_uncut = src.wires & WireColorToFlag[wires[wiredesc]]
 		t1 += "[wiredesc] wire: "
 		if(!is_uncut)
-			t1 += "<a href='?src=\ref[src];wires=[wires[wiredesc]]'>Mend</a>"
+			t1 += "<a href='byond://?src=\ref[src];wires=[wires[wiredesc]]'>Mend</a>"
 		else
-			t1 += "<a href='?src=\ref[src];wires=[wires[wiredesc]]'>Cut</a> "
-			t1 += "<a href='?src=\ref[src];pulse=[wires[wiredesc]]'>Pulse</a> "
+			t1 += "<a href='byond://?src=\ref[src];wires=[wires[wiredesc]]'>Cut</a> "
+			t1 += "<a href='byond://?src=\ref[src];pulse=[wires[wiredesc]]'>Pulse</a> "
 		t1 += "<br>"
 
 	t1 += "<br>\n[(src.view_range == initial(view_range) ? "The focus light is on." : "The focus light is off.")]"
@@ -128,7 +128,7 @@
 	t1 += "<br>\n[(light_disabled ? "The camera light is off." : "The camera light is on.")]"
 	t1 += "<br>\n[(alarm_on ? "The alarm light is on." : "The alarm light is off.")]"
 
-	t1 += "<p><a href='?src=\ref[src];close2=1'>Close</a></p>\n"
+	t1 += "<p><a href='byond://?src=\ref[src];close2=1'>Close</a></p>\n"
 	show_browser(user, t1, "Camera Access Panel", "wires")
 
 

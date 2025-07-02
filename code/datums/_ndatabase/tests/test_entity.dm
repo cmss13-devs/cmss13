@@ -50,7 +50,7 @@
 	SSentity_manager.filter_then(/datum/entity/test_entity, DB_COMP("value", DB_EQUALS, value), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(log_filter)))
 
 /proc/log_filter(list/datum/entity/elist)
-	to_world("got [elist.len] items")
+	to_world("got [length(elist)] items")
 
 /proc/log_sync(datum/entity/test_entity/ET)
 	to_world("id:[ET.id] = name: [ET.name], description: [ET.description], value: [ET.value]")

@@ -4430,7 +4430,7 @@ var exec = (executable, args = [], options = {}) => {
         const error = new ExitCode(code);
         error.code = code;
         error.signal = signal;
-      reject(error);
+        reject(error);
         return;
       }
       resolve({

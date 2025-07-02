@@ -5,8 +5,6 @@
 #define UPLOAD_LIMIT 10485760 //Restricts client uploads to the server to 10MB //Boosted this thing. What's the worst that can happen?
 #define MIN_CLIENT_VERSION 0 //Just an ambiguously low version for now, I don't want to suddenly stop people playing.
 									//I would just like the code ready should it ever need to be used.
-#define GOOD_BYOND_MAJOR 513
-#define GOOD_BYOND_MINOR 1500
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -45,7 +43,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
-	/client/proc/toggle_middle_mouse_click,
+	/client/proc/toggle_auto_shove,
+	/client/proc/toggle_ammo_display_type,
 	/client/proc/toggle_ability_deactivation,
 	/client/proc/toggle_clickdrag_override,
 	/client/proc/toggle_dualwield,
@@ -55,6 +54,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_admin_sound_types,
 	/client/proc/receive_random_tip,
 	/client/proc/set_eye_blur_type,
+	/client/proc/set_flash_type,
+	/client/proc/set_crit_type,
+	/client/proc/set_flashing_lights_pref,
+	/client/proc/toggle_leadership_spoken_orders,
 ))
 
 /client/proc/reduce_minute_count()
@@ -187,39 +190,21 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		var/datum/entity/player/P = get_player_from_key(key)
 		P.add_note(add, FALSE, NOTE_MERIT)
 
-	if(href_list["add_wl_info_1"])
-		var/key = href_list["add_wl_info_1"]
-		var/add = input("Add Commander Note") as null|message
+	if(href_list["add_wl_info"])
+		var/key = href_list["add_wl_info"]
+		var/add = input("Add Whitelist Note") as null|message
 		if(!add)
 			return
 
 		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_COMMANDER)
-
-	if(href_list["add_wl_info_2"])
-		var/key = href_list["add_wl_info_2"]
-		var/add = input("Add Synthetic Note") as null|message
-		if(!add)
-			return
-
-		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_SYNTHETIC)
-
-	if(href_list["add_wl_info_3"])
-		var/key = href_list["add_wl_info_3"]
-		var/add = input("Add Yautja Note") as null|message
-		if(!add)
-			return
-
-		var/datum/entity/player/P = get_player_from_key(key)
-		P.add_note(add, FALSE, NOTE_YAUTJA)
+		P.add_note(add, FALSE, NOTE_WHITELIST)
 
 	if(href_list["remove_wl_info"])
 		var/key = href_list["remove_wl_info"]
 		var/index = text2num(href_list["remove_index"])
 
 		var/datum/entity/player/P = get_player_from_key(key)
-		P.remove_note(index)
+		P.remove_note(index, whitelist = TRUE)
 
 	switch(href_list["_src_"])
 		if("admin_holder")
@@ -283,7 +268,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//Helps prevent multiple files being uploaded at once. Or right after eachother.
 	var/time_to_wait = fileaccess_timer - world.time
 	if(time_to_wait > 0)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [round(time_to_wait/10)] seconds.</font>")
+		to_chat(src, "<font color='red'>Error: AllowUpload(): Spam prevention. Please wait [floor(time_to_wait/10)] seconds.</font>")
 		return 0
 	fileaccess_timer = world.time + FTPDELAY */
 	return 1
@@ -302,6 +287,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
+		winset(src, "", "browser-options=byondstorage")
+
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
 	stat_panel.subscribe(src, PROC_REF(on_stat_panel_message))
@@ -314,19 +302,19 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	var/static/next_external_rsc = 0
 	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
 	if(length(external_rsc_urls))
-		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
+		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
 	player_entity = setup_player_entity(ckey)
 
 	if(check_localhost_status())
 		var/datum/admins/admin = new("!localhost!", RL_HOST, ckey)
-		admin.associate(src)
+		admin.associate(src, force = TRUE)
 
 	//Admin Authorisation
-	admin_holder = GLOB.admin_datums[ckey]
-	if(admin_holder)
-		admin_holder.associate(src)
+	var/holder = GLOB.admin_datums[ckey]
+	if(holder)
+		INVOKE_ASYNC(holder, TYPE_PROC_REF(/datum/admins, associate), src)
 
 	add_pref_verbs()
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
@@ -362,14 +350,34 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		INVOKE_ASYNC(src, /client/proc/set_macros)
 
 	// Version check below if we ever need to start checking against BYOND versions again.
+	var/breaking_version = CONFIG_GET(number/client_error_version)
+	var/breaking_build = CONFIG_GET(number/client_error_build)
+	var/warn_version = CONFIG_GET(number/client_warn_version)
+	var/warn_build = CONFIG_GET(number/client_warn_build)
 
-	/*if((byond_version < world.byond_version) || ((byond_version == world.byond_version) && (byond_build < world.byond_build)))
-		src << "<span class='warning'>Your version of Byond (v[byond_version].[byond_build]) differs from the server (v[world.byond_version].[world.byond_build]). You may experience graphical glitches, crashes, or other errors. You will be disconnected until your version matches or exceeds the server version.<br> \
-		Direct Download (Windows Installer): http://www.byond.com/download/build/[world.byond_version]/[world.byond_version].[world.byond_build]_byond.exe <br> \
-		Other versions (search for [world.byond_build] or higher): http://www.byond.com/download/build/[world.byond_version]</span>"
+	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
+		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
+		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
+		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
+		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
+		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 		qdel(src)
-		return*/
-	//hardcode for now
+		return
+
+	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
+		if(CONFIG_GET(flag/client_warn_popup))
+			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
+			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
+			msg += "Your version: [byond_version].[byond_build]<br>"
+			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
+			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
+			src << browse(msg, "window=warning_popup")
+		else
+			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
+			to_chat(src, CONFIG_GET(string/client_warn_message))
+			to_chat(src, "Your version: [byond_version].[byond_build]")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
+			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
 
 	if (num2text(byond_build) in GLOB.blacklisted_builds)
 		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
@@ -380,12 +388,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		qdel(src)
 		return
 
-	//do this check after the blacklist check to avoid confusion
-	if((byond_version < GOOD_BYOND_MAJOR) || ((byond_version == GOOD_BYOND_MAJOR) && (byond_build < GOOD_BYOND_MINOR)))
-		to_chat(src, FONT_SIZE_HUGE(SPAN_BOLDNOTICE("YOUR BYOND VERSION IS NOT WELL SUITED FOR THIS SERVER. Download latest BETA build or you may suffer random crashes or disconnects.")))
-
 	// Initialize tgui panel
 	stat_panel.initialize(
+		assets = list(
+			get_asset_datum(/datum/asset/simple/namespaced/fontawesome),
+			get_asset_datum(/datum/asset/simple/namespaced/sevastopol),
+			get_asset_datum(/datum/asset/simple/namespaced/chakrapetch),
+		),
 		inline_html = file("html/statbrowser.html"),
 		inline_js = file("html/statbrowser.js"),
 		inline_css = file("html/statbrowser.css"),
@@ -410,7 +419,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			CEI.show_player_event_info(src)
 
 	connection_time = world.time
+
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
+	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
+
+	acquire_dpi()
 
 	send_assets()
 
@@ -418,13 +431,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
+		stat_panel.send_message("changelog_read", FALSE)
 
-	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
-		toggle_fullscreen(TRUE)
-	else
-		toggle_fullscreen(FALSE)
-
+	update_fullscreen()
 
 	var/file = file2text("config/donators.txt")
 	var/lines = splittext(file, "\n")
@@ -445,6 +454,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = GLOB.world_view_size
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGGED_IN, src)
+
+	if(CONFIG_GET(flag/ooc_country_flags))
+		spawn if(src)
+			ip2country(address, src)
 
 	//////////////
 	//DISCONNECT//
@@ -491,11 +504,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /// Handles login-related logging and associated notifications
 /client/proc/notify_login()
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[byond_version].[byond_build]")
-	if(CLIENT_IS_STAFF(src) && !CLIENT_IS_STEALTHED(src))
-		message_admins("Admin login: [key_name(src)]")
-
-		var/list/adm = get_admin_counts(R_MOD)
-		REDIS_PUBLISH("byond.access", "type" = "login", "key" = src.key, "remaining" = length(adm["total"]), "afk" = length(adm["afk"]))
 
 	if(CONFIG_GET(flag/log_access))
 		for(var/mob/M in GLOB.player_list)
@@ -504,22 +512,24 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if( (M.lastKnownIP == address) )
 					matches += "IP ([address])"
 				if( (connection != "web") && (M.computer_id == computer_id) )
-					if(matches) matches += " and "
+					if(matches)
+						matches += " and "
 					matches += "ID ([computer_id])"
 					spawn() alert("You have logged in already with another key this round, please log out of this one NOW or risk being banned!")
 				if(matches)
 					if(M.client)
-						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as <A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(M)]</A>.")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
 					else
-						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
+						message_admins("<font color='red'><B>Notice: </B>[SPAN_BLUE("<A href='byond://?src=\ref[usr];priv_msg=[src.ckey]'>[key_name_admin(src)]</A> has the same [matches] as [key_name_admin(M)] (no longer logged in).")]", 1)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 
 //checks if a client is afk
 //3000 frames = 5 minutes
 /client/proc/is_afk(duration=3000)
-	if(inactivity > duration) return inactivity
+	if(inactivity > duration)
+		return inactivity
 	return 0
 
 //send resources to the client. It's here in its own proc so we can move it around easiliy if need be
@@ -530,6 +540,15 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
+
+/client/proc/acquire_dpi()
+	set waitfor = FALSE
+
+	// Remove with 516
+	if(byond_version < 516)
+		return
+
+	window_scaling = text2num(winget(src, null, "dpi"))
 
 /proc/setup_player_entity(ckey)
 	if(!ckey)
@@ -542,13 +561,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	GLOB.player_entities["[ckey]"] = P
 	// P.setup_save(ckey)
 	return P
-
-/proc/save_player_entities()
-	for(var/key_ref in GLOB.player_entities)
-		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
-		// P.save_statistics()
-	log_debug("STATISTICS: Statistics saving complete.")
-	message_admins("STATISTICS: Statistics saving complete.")
 
 /client/proc/clear_chat_spam_mute(warn_level = 1, message = FALSE, increase_warn = FALSE)
 	if(talked > warn_level)
@@ -638,7 +650,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 /client/proc/check_panel_loaded()
 	if(stat_panel.is_ready())
 		return
-	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
+	to_chat(src, SPAN_USERDANGER("Statpanel failed to load, click <a href='byond://?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel "))
 
 /**
  * Handles incoming messages from the stat-panel TGUI.
@@ -689,30 +701,35 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[say]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(COMMS_CHANNEL)
 					if(prefs.tgui_say)
 						var/radio = tgui_say_create_open_command(COMMS_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[radio]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(ME_CHANNEL)
 					if(prefs.tgui_say)
 						var/me = tgui_say_create_open_command(ME_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[me]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(OOC_CHANNEL)
 					if(prefs.tgui_say)
 						var/ooc = tgui_say_create_open_command(OOC_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[ooc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(LOOC_CHANNEL)
 					if(prefs.tgui_say)
 						var/looc = tgui_say_create_open_command(LOOC_CHANNEL)
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=[looc]")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=looc")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(ADMIN_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MOD))
 						if(prefs.tgui_say)
@@ -722,6 +739,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=asay")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(MENTOR_CHANNEL)
 					if(admin_holder?.check_for_rights(R_MENTOR))
 						if(prefs.tgui_say)
@@ -731,15 +749,21 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 							winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=mentorsay")
 					else
 						winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=")
+					winset(src, "tgui_say.browser", "focus=true")
 				if(WHISPER_CHANNEL)
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
+					winset(src, "tgui_say.browser", "focus=true")
 
-/client/proc/toggle_fullscreen(new_value)
-	if(new_value)
-		winset(src, "mainwindow", "is-maximized=false;can-resize=false;titlebar=false;menu=menu")
+/client/proc/update_fullscreen()
+	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+		winset(src, "mainwindow", "is-fullscreen=true;menu=")
 	else
-		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
-	winset(src, "mainwindow", "is-maximized=true")
+		winset(src, "mainwindow", "is-fullscreen=false;menu=menu")
+
+	if(prefs.adaptive_zoom)
+		adaptive_zoom()
+	else if(prefs.auto_fit_viewport)
+		fit_viewport()
 
 /// Attempts to make the client orbit the given object, for administrative purposes.
 /// If they are not an observer, will try to aghost them.
@@ -887,6 +911,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if((flag_to_check & WHITELIST_JOE) && CLIENT_IS_STAFF(src))
 		return TRUE
 
+	if((flag_to_check & WHITELIST_FAX_RESPONDER) && CLIENT_IS_STAFF(src))
+		return TRUE
+
 	if(!player_data)
 		load_player_data()
 	if(!player_data)
@@ -913,3 +940,61 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 
 	return FALSE
+
+/client/proc/set_right_click_menu_mode(shift_only)
+	if(shift_only)
+		winset(src, "mapwindow.map", "right-click=true")
+		winset(src, "ShiftUp", "is-disabled=false")
+		winset(src, "Shift", "is-disabled=false")
+	else
+		winset(src, "mapwindow.map", "right-click=false")
+		winset(src, "default.Shift", "is-disabled=true")
+		winset(src, "default.ShiftUp", "is-disabled=true")
+
+GLOBAL_VAR(ooc_rank_dmi)
+GLOBAL_LIST_INIT(ooc_rank_iconstates, setup_ooc_rank_icons())
+GLOBAL_LIST_INIT(community_awards, get_community_awards())
+
+/proc/setup_ooc_rank_icons()
+	var/ooc_dmi_path = "config/ooc.dmi"
+	if(!fexists(ooc_dmi_path))
+		return list()
+	GLOB.ooc_rank_dmi = icon(file(ooc_dmi_path))
+	return icon_states(GLOB.ooc_rank_dmi)
+
+/proc/get_community_awards()
+	var/list/awards_file = file2list("config/community_awards.txt")
+	var/list/processed_awards = list()
+	for(var/awardee in awards_file)
+		if(!length(awardee))
+			return FALSE
+		if(copytext(awardee,1,2) == "#")
+			continue
+
+		//Split the line at every "-"
+		var/list/split_awardee = splittext(awardee, "-")
+		if(!length(split_awardee))
+			return FALSE
+
+		//ckey is before the first "-"
+		var/ckey = ckey(split_awardee[1])
+		if(!ckey)
+			continue
+		processed_awards[ckey] = list()
+
+		//given_awards follows the first "-"
+		var/list/given_awards = list()
+		if(!(length(split_awardee) >= 2))
+			continue
+		given_awards = split_awardee.Copy(2)
+		for(var/the_award in given_awards)
+			processed_awards[ckey] += ckeyEx(the_award)
+
+	return processed_awards
+
+/client/proc/find_community_award_icons()
+	if(GLOB.community_awards[ckey])
+		var/full_prefix = ""
+		for(var/award in GLOB.community_awards[ckey])
+			full_prefix += "[icon2html(GLOB.ooc_rank_dmi, GLOB.clients, award)]"
+		return full_prefix

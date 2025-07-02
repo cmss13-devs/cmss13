@@ -42,7 +42,8 @@
 			return FALSE //If we are not in an item, do nothing more.
 
 		var/obj/item/master_item = master_object
-		if(master_item.flags_item & NODROP) return
+		if(master_item.flags_item & NODROP)
+			return
 
 		if(!istype(over_object, /atom/movable/screen))
 			return TRUE
@@ -61,10 +62,13 @@
 						else
 							user.drop_inv_item_on_ground(master_item)
 							user.put_in_r_hand(master_item)
-						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_r_hand(master_item)
+
+					if(master_item.light_on)
+						master_item.turn_light(toggle_on = FALSE)
+					return
 				if("l_hand")
 					if(master_item.time_to_unequip)
 						user.visible_message(SPAN_NOTICE("[user] starts taking off \the [master_item]."))
@@ -73,10 +77,13 @@
 						else
 							user.drop_inv_item_on_ground(master_item)
 							user.put_in_l_hand(master_item)
-						return
 					else
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_l_hand(master_item)
+
+					if(master_item.light_on)
+						master_item.turn_light(toggle_on = FALSE)
+					return
 			master_item.add_fingerprint(user)
 			return FALSE
 	return FALSE
@@ -102,7 +109,7 @@
 	master_object.add_fingerprint(user)
 	//Checks that it's in the user's inventory somewhere - not safe with items inside storage without additional checks on master_object's end.
 	if(user.contains(master_object))
-		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents))
+		if((mods && mods[ALT_CLICK] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents))
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]

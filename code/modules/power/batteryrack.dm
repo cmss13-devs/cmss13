@@ -80,7 +80,8 @@
 
 /obj/structure/machinery/power/smes/batteryrack/updateicon()
 	overlays.Cut()
-	if(stat & BROKEN) return
+	if(stat & BROKEN)
+		return
 
 	if (outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
@@ -94,11 +95,11 @@
 
 
 /obj/structure/machinery/power/smes/batteryrack/chargedisplay()
-	return round(4 * charge/(capacity ? capacity : 5e6))
+	return floor(4 * charge/(capacity ? capacity : 5e6))
 
 
 /obj/structure/machinery/power/smes/batteryrack/attackby(obj/item/W as obj, mob/user as mob) //these can only be moved by being reconstructed, solves having to remake the powernet.
-	..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
+	. = ..() //SMES attackby for now handles screwdriver, cable coils and wirecutters, no need to repeat that here
 	if(open_hatch)
 		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 			if (charge < (capacity / 100))
@@ -149,7 +150,8 @@
 
 /obj/structure/machinery/power/smes/batteryrack/makeshift/updateicon()
 	overlays.Cut()
-	if(stat & BROKEN) return
+	if(stat & BROKEN)
+		return
 
 	if (outputting)
 		overlays += image('icons/obj/structures/machinery/power.dmi', "gsmes_outputting")
@@ -214,7 +216,8 @@
 
 #define SMESRATE 0.05 // rate of internal charge to external power
 /obj/structure/machinery/power/smes/batteryrack/makeshift/process()
-	if(stat & BROKEN) return
+	if(stat & BROKEN)
+		return
 
 	//store machine state to see if we need to update the icon overlays
 	var/last_disp = chargedisplay()
@@ -246,7 +249,7 @@
 		if(charge < 0.0001)
 			outputting = 0 // stop output if charge falls to zero
 
-	overcharge_percent = round((charge / capacity) * 100)
+	overcharge_percent = floor((charge / capacity) * 100)
 	if (overcharge_percent > 115) //115% is the minimum overcharge for anything to happen
 		overcharge_consequences()
 

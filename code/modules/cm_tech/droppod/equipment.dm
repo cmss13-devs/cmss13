@@ -27,11 +27,22 @@
 		equipment_to_spawn.forceMove(loc)
 
 /obj/structure/droppod/equipment/sentry/spawn_equipment(equipment, mob/M)
-	var/obj/structure/machinery/defenses/sentry/S = ..()
-	S.owner_mob = M
-	return S
+	var/obj/structure/machinery/defenses/sentry/sentry = ..()
+	sentry.owner_mob = M
+	return sentry
 
 /obj/structure/droppod/equipment/sentry/move_equipment()
 	..()
-	var/obj/structure/machinery/defenses/sentry/S = equipment_to_spawn
-	S.power_on()
+	var/obj/structure/machinery/defenses/sentry/sentry = equipment_to_spawn
+	sentry.power_on()
+
+/obj/structure/droppod/equipment/sentry_holder/spawn_equipment(equipment, mob/M)
+	var/obj/structure/machinery/sentry_holder/holder = ..()
+	var/obj/structure/machinery/defenses/sentry/sentry = holder.deployed_turret
+	sentry.owner_mob = M
+	return holder
+
+/obj/structure/droppod/equipment/sentry_holder/move_equipment()
+	..()
+	var/obj/structure/machinery/sentry_holder/holder = equipment_to_spawn
+	holder.deploy_sentry()

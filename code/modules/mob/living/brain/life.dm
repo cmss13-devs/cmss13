@@ -34,7 +34,8 @@
 
 
 /mob/living/brain/proc/handle_temperature_damage(exposed_temperature)
-	if(status_flags & GODMODE) return
+	if(status_flags & GODMODE)
+		return
 
 	if(exposed_temperature > bodytemperature)
 		var/discomfort = min( abs(exposed_temperature - bodytemperature)/100, 1.0)
@@ -50,7 +51,8 @@
 
 	reagent_move_delay_modifier = 0
 
-	if(reagents) reagents.metabolize(src, delta_time=delta_time)
+	if(reagents)
+		reagents.metabolize(src, delta_time=delta_time)
 
 	confused = max(0, confused - 1)
 	// decrement dizziness counter, clamped to 0

@@ -167,7 +167,7 @@ nanoui is used to open and update nano browser uis
 	else if (allowed_user_stat == -1 || user == src_object)
 		set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 	else if (isSilicon(user))
-		if (src_object in view(7, user)) // robots can see and interact with things they can see within 7 tiles
+		if (src_object in dview(7, user)) // robots can see and interact with things they can see within 7 tiles
 			set_status(STATUS_INTERACTIVE, push_update) // interactive (green visibility)
 		else
 			set_status(STATUS_DISABLED, push_update) // no updates, completely disabled (red visibility)
@@ -386,7 +386,7 @@ nanoui is used to open and update nano browser uis
 		head_content += "<link rel='stylesheet' type='text/css' href='[SSassets.transport.get_asset_url(file)]'> "
 
 	var/template_data_json = "{}" // An empty JSON object
-	if (templates.len > 0)
+	if (length(templates) > 0)
 		template_data_json = strip_improper(json_encode(templates))
 
 	var/url_parameters_json = json_encode(list("src" = "\ref[src]"))

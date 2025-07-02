@@ -68,6 +68,7 @@ export const DmTarget = new Juke.Target({
     "html/**",
     "icons/**",
     "interface/**",
+    "tgui/public/tgui.html",
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
@@ -173,28 +174,37 @@ export const YarnTarget = new Juke.Target({
 export const TgFontTarget = new Juke.Target({
   dependsOn: [YarnTarget],
   inputs: [
-    'tgui/.yarn/install-target',
-    'tgui/packages/tgfont/**/*.+(js|cjs|svg)',
-    'tgui/packages/tgfont/package.json',
+    "tgui/.yarn/install-target",
+    "tgui/packages/tgfont/**/*.+(js|cjs|svg)",
+    "tgui/packages/tgfont/package.json",
   ],
   outputs: [
-    'tgui/packages/tgfont/dist/tgfont.css',
-    'tgui/packages/tgfont/dist/tgfont.eot',
-    'tgui/packages/tgfont/dist/tgfont.woff2',
+    "tgui/packages/tgfont/dist/tgfont.css",
+    "tgui/packages/tgfont/dist/tgfont.eot",
+    "tgui/packages/tgfont/dist/tgfont.woff2",
   ],
   executes: async () => {
-    await yarn('tgfont:build');
-    fs.copyFileSync('tgui/packages/tgfont/dist/tgfont.css', 'tgui/packages/tgfont/static/tgfont.css');
-    fs.copyFileSync('tgui/packages/tgfont/dist/tgfont.eot', 'tgui/packages/tgfont/static/tgfont.eot');
-    fs.copyFileSync('tgui/packages/tgfont/dist/tgfont.woff2', 'tgui/packages/tgfont/static/tgfont.woff2');
-  }
+    await yarn("tgfont:build");
+    fs.copyFileSync(
+      "tgui/packages/tgfont/dist/tgfont.css",
+      "tgui/packages/tgfont/static/tgfont.css"
+    );
+    fs.copyFileSync(
+      "tgui/packages/tgfont/dist/tgfont.eot",
+      "tgui/packages/tgfont/static/tgfont.eot"
+    );
+    fs.copyFileSync(
+      "tgui/packages/tgfont/dist/tgfont.woff2",
+      "tgui/packages/tgfont/static/tgfont.woff2"
+    );
+  },
 });
 
 export const TguiTarget = new Juke.Target({
   dependsOn: [YarnTarget],
   inputs: [
     "tgui/.yarn/install-target",
-    "tgui/webpack.config.js",
+    "tgui/rspack.config.cjs",
     "tgui/**/package.json",
     "tgui/packages/**/*.+(js|jsx|cjs|ts|tsx|scss)",
   ],
@@ -256,6 +266,20 @@ export const TguiBenchTarget = new Juke.Target({
   executes: () => yarn("tgui:bench"),
 });
 
+export const TguiPrettierFix = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:prettier-fix'),
+});
+
+export const TguiEslintFix = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:eslint-fix'),
+});
+
+export const TguiFix = new Juke.Target({
+  dependsOn: [TguiPrettierFix, TguiEslintFix],
+});
+
 export const TestTarget = new Juke.Target({
   dependsOn: [DmTestTarget, TguiTestTarget],
 });
@@ -303,8 +327,6 @@ export const CleanTarget = new Juke.Target({
   dependsOn: [TguiCleanTarget],
   executes: async () => {
     Juke.rm("*.{dmb,rsc}");
-    Juke.rm("*.mdme*");
-    Juke.rm("*.m.*");
     Juke.rm("maps/templates.dm");
   },
 });

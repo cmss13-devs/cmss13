@@ -3,6 +3,7 @@
 
 	// Data to pass when rendering the UI (not static)
 	var/total_xenos
+	var/list/xeno_icons
 	var/list/xeno_counts
 	var/list/tier_slots
 	var/list/xeno_vitals
@@ -12,6 +13,7 @@
 	var/burrowed_larva
 	var/evilution_level
 	var/pylon_status
+	var/xeno_background
 
 	var/data_initialized = FALSE
 
@@ -99,6 +101,13 @@
 	if(send_update)
 		SStgui.update_uis(src)
 
+/datum/hive_status_ui/proc/update_xeno_icons(send_update = TRUE)
+	xeno_icons = assoc_hive.get_xeno_icons()
+	xeno_background = assoc_hive.get_xeno_background()
+
+	if(send_update)
+		SStgui.update_uis(src)
+
 // Updates all data except burrowed larva
 /datum/hive_status_ui/proc/update_all_xeno_data(send_update = TRUE)
 	update_xeno_counts(FALSE)
@@ -106,6 +115,7 @@
 	update_xeno_keys(FALSE)
 	update_xeno_info(FALSE)
 	update_pylon_status(FALSE)
+	update_xeno_icons(FALSE)
 
 	if(send_update)
 		SStgui.update_uis(src)
@@ -121,10 +131,10 @@
 /datum/hive_status_ui/proc/update_pylon_status(send_update = TRUE)
 	if(assoc_hive.get_structure_count(XENO_STRUCTURE_PYLON) < 1)
 		pylon_status = ""
-	else if(assoc_hive.hit_larva_pylon_limit)
-		pylon_status = "The hive's power has surpassed what the pylons can provide."
+	else if(assoc_hive.buff_points >= assoc_hive.max_buff_points)
+		pylon_status = "Royal resin has reached its maximum capacity of [assoc_hive.max_buff_points], spend it!"
 	else
-		pylon_status = "Pylons are strengthening our numbers!"
+		pylon_status = "Pylons are providing us with royal resin! Current royal resin: [assoc_hive.buff_points]."
 	if(send_update)
 		SStgui.update_uis(src)
 
@@ -143,6 +153,7 @@
 /datum/hive_status_ui/ui_data(mob/user)
 	. = list()
 	.["total_xenos"] = total_xenos
+	.["xeno_icons"] = xeno_icons
 	.["xeno_counts"] = xeno_counts
 	.["tier_slots"] = tier_slots
 	.["xeno_keys"] = xeno_keys
@@ -155,6 +166,7 @@
 	.["burrowed_larva"] = burrowed_larva
 	.["evilution_level"] = evilution_level
 	.["pylon_status"] = pylon_status
+	.["xeno_background"] = xeno_background
 
 	var/mob/living/carbon/xenomorph/queen/Q = user
 	.["is_in_ovi"] = istype(Q) && Q.ovipositor
@@ -201,7 +213,7 @@
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
 			A?.use_ability_wrapper(xenoTarget)
 
 		if("heal")
@@ -214,7 +226,7 @@
 			if(xenoSrc.stat == DEAD)
 				return
 
-			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
+			var/datum/action/xeno_action/A = get_action(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
 			A?.use_ability_wrapper(xenoTarget, TRUE)
 
 		if("overwatch")

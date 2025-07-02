@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(tracking)
 
 /datum/controller/subsystem/tracking/proc/setup_trackers(mob/mob, tracked_group)
 	if(!tracked_group)
-		tracked_group = "tracked_[tracked_mobs.len]"
+		tracked_group = "tracked_[length(tracked_mobs)]"
 
 	tracked_mobs[tracked_group] = list()
 	leaders[tracked_group] = mob

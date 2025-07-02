@@ -1,10 +1,11 @@
 /obj/item/ammo_magazine/hardpoint/tank_glauncher
 	name = "M92T Grenade Launcher Magazine"
-	desc = "A secondary armament grenade magazine."
+	desc = "A magazine loaded with M40 grenades. Used to reload the magazine fed M92T Grenade launcher."
 	caliber = "grenade"
 	icon_state = "glauncher_2"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/vehicles.dmi'
 	w_class = SIZE_LARGE
-	default_ammo = /datum/ammo/grenade_container
+	default_ammo = /datum/ammo/grenade_container/tank_glauncher
 	max_rounds = 10
 	gun_type = /obj/item/hardpoint/secondary/grenade_launcher
 

@@ -27,6 +27,10 @@
 #define RL_EVERYTHING (R_BUILDMODE|R_ADMIN|R_BAN|R_SERVER|R_DEBUG|R_PERMISSIONS|R_POSSESS|R_STEALTH|R_COLOR|R_VAREDIT|R_EVENT|R_SOUNDS|R_NOLOCK|R_SPAWN|R_MOD|R_MENTOR)
 /// Truely everything
 #define RL_HOST (RL_EVERYTHING|R_HOST|R_PROFILER)
+
+#define RL_HARMLESS (R_MENTOR|R_COLOR|R_NOLOCK)
+
+
 // 512.1430 increases maximum bit flags from 16 to 24, so the following flags should be available for future changes:
 //=================================================
 
@@ -34,6 +38,7 @@
 #define CLIENT_IS_STAFF(cli) (cli?.admin_holder?.rights & (R_MOD|R_ADMIN))
 #define CLIENT_IS_MENTOR(cli) CLIENT_HAS_RIGHTS(cli, R_MENTOR)
 #define CLIENT_IS_STEALTHED(cli) (CLIENT_HAS_RIGHTS(cli, R_STEALTH) && cli.prefs?.toggles_admin & ADMIN_STEALTHMODE)
+#define CLIENT_IS_AFK_SAFE(cli) (CLIENT_IS_STAFF(cli) && cli.prefs?.toggles_admin & ADMIN_AFK_SAFE)
 
 #define AHOLD_IS_MOD(ahold) (ahold && (ahold.rights & R_MOD))
 #define AHOLD_IS_ADMIN(ahold) (ahold && (ahold.rights & R_ADMIN))

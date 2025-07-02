@@ -72,7 +72,7 @@
 			close_browser(user, "spaceheater")
 			user.unset_interaction()
 	else
-		..()
+		. = ..()
 	return
 
 /obj/structure/machinery/space_heater/attack_hand(mob/user as mob)
@@ -94,10 +94,10 @@
 
 		dat += "Set Temperature: "
 
-		dat += "<A href='?src=\ref[src];op=temp;val=-5'>-</A>"
+		dat += "<A href='byond://?src=\ref[src];op=temp;val=-5'>-</A>"
 
 		dat += " [set_temperature]K ([set_temperature-T0C]&deg;C)"
-		dat += "<A href='?src=\ref[src];op=temp;val=5'>+</A><BR>"
+		dat += "<A href='byond://?src=\ref[src];op=temp;val=5'>+</A><BR>"
 
 		user.set_interaction(src)
 		show_browser(user, dat, "Space Heater Control Panel", "spaceheater")
@@ -127,7 +127,7 @@
 				var/value = text2num(href_list["val"])
 
 				// limit to 0-90 degC
-				set_temperature = dd_range(T0C, T0C + 90, set_temperature + value)
+				set_temperature = clamp(set_temperature + value, T0C, T0C + 90)
 
 			if("cellremove")
 				if(open && cell && !usr.get_active_hand())
@@ -162,7 +162,7 @@
 		if(isturf(loc) && cell && cell.charge)
 			for(var/mob/living/carbon/human/H in range(2, src))
 				if(H.bodytemperature < T20C)
-					H.bodytemperature += min(round(T20C - H.bodytemperature)*0.7, 25)
+					H.bodytemperature += min(floor(T20C - H.bodytemperature)*0.7, 25)
 					H.recalculate_move_delay = TRUE
 
 

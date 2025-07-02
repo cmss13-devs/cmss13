@@ -2,11 +2,11 @@
 	return (mob_size < MOB_SIZE_BIG && caste.can_vent_crawl)
 
 /mob/living/carbon/xenomorph/ventcrawl_carry()
-	if(stomach_contents.len)
-		for(var/mob/living/carbon/human/H in stomach_contents)
-			if(!isspeciesmonkey(H))
-				to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl with [H] inside you!"))
-				return FALSE
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(user)
+		if(!isspeciesmonkey(user))
+			to_chat(src, SPAN_XENOWARNING("You cannot ventcrawl while hauling [user]!"))
+			return FALSE
 	return TRUE
 
 /mob/living/carbon/xenomorph/can_inject()
@@ -27,12 +27,12 @@
 /mob/living/carbon/xenomorph/proc/get_plasma_percentage()
 	if(plasma_max<=0)
 		return 100
-	return round(plasma_stored * 100 / plasma_max)
+	return floor(plasma_stored * 100 / plasma_max)
 
 /mob/living/carbon/xenomorph/proc/get_armor_integrity_percentage()
 	if(armor_deflection<=0)
 		return 100
-	return round(armor_integrity * 100 / armor_integrity_max)
+	return floor(armor_integrity * 100 / armor_integrity_max)
 
 /**
  * Returns the name of the xeno's strain, if it has one.
@@ -76,3 +76,13 @@
 
 /mob/living/carbon/xenomorph/alter_ghost(mob/dead/observer/ghost)
 	ghost.icon_state = "[get_strain_icon()] [caste.caste_type] Running"
+
+/// Returns an associated list of the caste of xenos provided, to a generic image of the xeno
+/mob/living/carbon/xenomorph/proc/collect_xeno_images(list/list_of_xenos)
+	var/returned_list = list()
+
+	for(var/caste in list_of_xenos)
+		var/image/xeno_image = hive.evolution_menu_images[caste]
+		returned_list[caste] = xeno_image
+
+	return returned_list

@@ -1,0 +1,715 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"cn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"cs" = (
+/obj/structure/surface/rack,
+/obj/item/device/motiondetector/hacked,
+/turf/open/floor/shiva/purplefull/west,
+/area/shiva/interior/colony/research_hab)
+"cO" = (
+/obj/structure/surface/rack,
+/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil/random,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"ei" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva/purplefull/north,
+/area/shiva/interior/colony/research_hab)
+"fs" = (
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"gl" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/pill_bottle/bicaridine,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"hG" = (
+/turf/open/floor/shiva/purplefull/north,
+/area/shiva/interior/colony/research_hab)
+"ip" = (
+/obj/structure/closet/crate/secure/weyland,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"iw" = (
+/obj/structure/closet/crate,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/cp_camp)
+"ju" = (
+/turf/closed/wall/shiva/prefabricated/blue,
+/area/shiva/interior/colony/research_hab)
+"jV" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/labcoat/researcher,
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"jW" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"kA" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/storage/pill_bottle/kelotane/skillless,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"lA" = (
+/turf/open/floor/shiva/multi_tiles/east,
+/area/shiva/interior/colony/research_hab)
+"lM" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "labs_ice_1";
+	name = "\improper Research Shutters"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"lX" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"mj" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"ni" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/storage/pill_bottle/bicaridine/skillless,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"nn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/purplefull/west,
+/area/shiva/interior/colony/research_hab)
+"nQ" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/flask/weylandyutani,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"oA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/shiva/prefabricated/orange,
+/area/shiva/interior/colony/research_hab)
+"oM" = (
+/turf/closed/wall/shiva/prefabricated/orange,
+/area/shiva/interior/colony/research_hab)
+"pr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"pC" = (
+/obj/structure/closet/radiation,
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"pI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/purplefull/east,
+/area/shiva/interior/colony/research_hab)
+"qr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_x = -6
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"qH" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/shiva/purplefull/west,
+/area/shiva/interior/colony/research_hab)
+"rA" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"rN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/snow,
+/obj/item/stack/snow,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"rX" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_x = 6
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"sj" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+	req_access_txt = "100";
+	name = "\improper Omicron Field Gear Storage"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles/east,
+/area/shiva/interior/colony/research_hab)
+"sS" = (
+/obj/structure/closet/crate,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"sV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles/east,
+/area/shiva/interior/colony/research_hab)
+"tr" = (
+/obj/structure/closet/radiation,
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"tL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"tO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"uJ" = (
+/turf/open/floor/shiva/purplefull/east,
+/area/shiva/interior/colony/research_hab)
+"vf" = (
+/obj/structure/window/framed/shiva,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"vZ" = (
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"wX" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/storage/pill_bottle/inaprovaline/skillless,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"yZ" = (
+/turf/open/floor/shiva/purplefull/west,
+/area/shiva/interior/colony/research_hab)
+"zg" = (
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/turf/open/floor/shiva/yellowfull,
+/area/shiva/interior/colony/research_hab)
+"AC" = (
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"DE" = (
+/turf/open/auto_turf/ice/layer2,
+/area/shiva/interior/caves/cp_camp)
+"DO" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic2/autoname{
+	req_access_txt = "100"
+	},
+/turf/open/floor/shiva/purplefull/west,
+/area/shiva/interior/colony/research_hab)
+"GL" = (
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"Hk" = (
+/obj/structure/closet/radiation,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"Hm" = (
+/turf/open/auto_turf/snow/layer0,
+/area/shiva/interior/caves/cp_camp)
+"HR" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door_control/brbutton/alt{
+	id = "labs_ice_1"
+	},
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/colony/research_hab)
+"IK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"JH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"JI" = (
+/obj/structure/surface/rack,
+/obj/item/stack/rods,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"JO" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/floor3,
+/area/shiva/interior/colony/research_hab)
+"KS" = (
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"Lg" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/labcoat/researcher,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"Lk" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/shoes/snow,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"Ot" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "hangar_ice_2";
+	pixel_y = 28
+	},
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/item/clothing/suit/storage/snow_suit,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"Ov" = (
+/obj/structure/machinery/space_heater,
+/turf/open/floor/shiva/purplefull/west,
+/area/shiva/interior/colony/research_hab)
+"OW" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/labcoat/researcher,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"Pf" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "hangar_ice_2";
+	pixel_y = 28
+	},
+/obj/item/tool/shovel/snow,
+/obj/structure/surface/rack,
+/obj/item/tool/shovel/snow,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"Qg" = (
+/turf/closed/wall/shiva/ice,
+/area/shiva/interior/colony/research_hab)
+"Qz" = (
+/obj/structure/machinery/door/airlock/almayer/engineering/colony{
+	dir = 8;
+	name = "\improper Omicron Field Gear Storage";
+	req_access_txt = "100"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"Ra" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/crap_item,
+/obj/structure/machinery/alarm{
+	dir = 4;
+	pixel_x = -24
+	},
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"Rd" = (
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/plating,
+/area/shiva/interior/colony/research_hab)
+"Ro" = (
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/interior/caves/cp_camp)
+"SV" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/effect/spawner/random/attachment,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"Vp" = (
+/obj/structure/surface/table,
+/obj/item/storage/fancy/crayons{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/obj/effect/spawner/random/bomb_supply,
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"Vv" = (
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/interior/caves/cp_camp)
+"Wd" = (
+/obj/structure/closet/secure_closet/medical3{
+	req_access = null
+	},
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/explosive/grenade/custom/cleaner,
+/obj/item/storage/pill_bottle/dexalin/skillless,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+"Xo" = (
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"XI" = (
+/obj/structure/closet/radiation,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/shiva/purplefull,
+/area/shiva/interior/colony/research_hab)
+"Yz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"YD" = (
+/turf/open/auto_turf/ice/layer0,
+/area/shiva/interior/caves/cp_camp)
+"YI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/glass/colony{
+	dir = 1;
+	req_access_txt = "100";
+	name = "\improper Omicron Field Gear Storage"
+	},
+/turf/open/floor/shiva,
+/area/shiva/interior/colony/research_hab)
+"YZ" = (
+/obj/structure/machinery/disposal,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/shiva/multi_tiles,
+/area/shiva/interior/colony/research_hab)
+
+(1,1,1) = {"
+Qg
+Qg
+Qg
+ju
+JI
+AC
+AC
+tO
+AC
+fs
+ju
+ju
+ju
+ju
+"}
+(2,1,1) = {"
+Vv
+Qg
+Qg
+ju
+rA
+AC
+tO
+AC
+tO
+sS
+ju
+ju
+ju
+ni
+"}
+(3,1,1) = {"
+YD
+Qg
+Qg
+ju
+cO
+AC
+AC
+AC
+tO
+ip
+ju
+ju
+ju
+kA
+"}
+(4,1,1) = {"
+Vv
+iw
+ju
+ju
+ju
+ju
+mj
+mj
+ju
+ju
+ju
+ju
+ju
+Wd
+"}
+(5,1,1) = {"
+Ro
+HR
+ju
+Pf
+nQ
+rN
+cn
+cn
+qr
+YZ
+ju
+ju
+ju
+wX
+"}
+(6,1,1) = {"
+Hm
+Vv
+lM
+Yz
+cn
+KS
+KS
+cn
+KS
+SV
+ju
+ju
+ju
+ju
+"}
+(7,1,1) = {"
+Vv
+Ro
+lM
+IK
+KS
+cn
+cn
+cn
+cn
+SV
+ju
+Lg
+OW
+ju
+"}
+(8,1,1) = {"
+DE
+Vv
+lM
+Yz
+cn
+KS
+cn
+KS
+KS
+nn
+DO
+sV
+sV
+DO
+"}
+(9,1,1) = {"
+Vv
+Vv
+lM
+IK
+KS
+KS
+KS
+cn
+cn
+KS
+yZ
+lA
+sV
+yZ
+"}
+(10,1,1) = {"
+ju
+ju
+ju
+Ot
+Lk
+tL
+cn
+KS
+rX
+nn
+oM
+Lg
+jV
+oM
+"}
+(11,1,1) = {"
+ju
+ju
+ju
+ju
+ju
+ju
+cn
+YI
+oA
+Qz
+oM
+oM
+oM
+oM
+"}
+(12,1,1) = {"
+ju
+ju
+ju
+pC
+Hk
+tr
+cn
+Xo
+oM
+yZ
+yZ
+yZ
+oM
+zg
+"}
+(13,1,1) = {"
+ju
+ju
+Ra
+Xo
+KS
+KS
+KS
+JH
+sj
+GL
+sV
+JO
+oM
+zg
+"}
+(14,1,1) = {"
+ju
+ju
+lX
+KS
+cn
+cn
+cn
+Xo
+sV
+pr
+lA
+pr
+oM
+zg
+"}
+(15,1,1) = {"
+ju
+ju
+Xo
+Xo
+XI
+pC
+Xo
+Vp
+oM
+nn
+yZ
+yZ
+oM
+zg
+"}
+(16,1,1) = {"
+ju
+qH
+pI
+Ov
+oM
+oM
+Qz
+oM
+oM
+GL
+lA
+GL
+oM
+oM
+"}
+(17,1,1) = {"
+jW
+hG
+cn
+ei
+vf
+KS
+KS
+KS
+KS
+KS
+cn
+KS
+Rd
+GL
+"}
+(18,1,1) = {"
+oM
+cs
+uJ
+Ov
+vf
+KS
+KS
+cn
+KS
+vZ
+KS
+KS
+gl
+GL
+"}

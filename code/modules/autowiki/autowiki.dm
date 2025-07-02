@@ -23,6 +23,26 @@
 
 	for (var/datum/autowiki/autowiki_type as anything in subtypesof(/datum/autowiki))
 		var/datum/autowiki/autowiki = new autowiki_type
+
+		if(autowiki.generate_multiple)
+			var/output = autowiki.generate_multiple()
+
+			if (!islist(output))
+				CRASH("[autowiki_type] does not generate a proper output when generate_multiple is set!")
+
+			for(var/list in output)
+				total_output += json_encode(list) + "\n"
+
+			if(!autowiki.page)
+				continue
+
+			var/list/all_page_names = list()
+			for(var/list in output)
+				all_page_names += autowiki.include_template(list["title"])
+
+			total_output += json_encode(list("title" = autowiki.page, "text" = all_page_names.Join(" "))) + "\n"
+			continue
+
 		var/output = autowiki.generate()
 
 		if (!istext(output))

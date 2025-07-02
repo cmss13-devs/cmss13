@@ -3,195 +3,135 @@
 /turf/closed/wall/r_wall/bunker,
 /area/event)
 "b" = (
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "c" = (
 /obj/effect/landmark/start/engineering,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "d" = (
 /obj/effect/landmark/start/working_joe,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "e" = (
 /obj/effect/landmark/start/requisition,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "h" = (
 /obj/effect/landmark/start/police,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "k" = (
 /obj/effect/landmark/start/liaison,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "l" = (
 /obj/effect/landmark/start/marine/medic,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "n" = (
 /obj/effect/landmark/start/professor,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "q" = (
 /obj/effect/landmark/start/warden,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "r" = (
 /obj/effect/landmark/start/maint,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "s" = (
 /obj/effect/landmark/late_join,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "t" = (
 /obj/effect/landmark/start/marine/engineer,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "u" = (
 /obj/effect/landmark/start/otech,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "v" = (
 /obj/effect/landmark/start/marine,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "x" = (
 /obj/effect/landmark/start/captain,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "z" = (
-/obj/effect/landmark/start/pilot,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/obj/effect/landmark/start/pilot/dropship_pilot,
+/turf/open/floor/almayer/plating,
 /area/event)
 "A" = (
 /obj/effect/landmark/start/cargo,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "C" = (
 /obj/effect/landmark/start/bridge,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "D" = (
 /obj/effect/landmark/start/warrant,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "F" = (
 /obj/effect/landmark/start/marine/tl,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "G" = (
 /obj/effect/landmark/start/marine/spec,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "I" = (
 /obj/effect/landmark/start/synthetic,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "J" = (
 /obj/effect/landmark/start/executive,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "L" = (
 /obj/effect/landmark/start/researcher,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
+/area/event)
+"M" = (
+/obj/effect/landmark/start/pilot/cas_pilot,
+/turf/open/floor/almayer/plating,
 /area/event)
 "N" = (
 /obj/effect/landmark/start/nurse,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "P" = (
 /obj/effect/landmark/start/doctor,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "Q" = (
 /obj/effect/landmark/start/senior,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "R" = (
 /obj/effect/landmark/start/marine/smartgunner,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "T" = (
 /obj/effect/landmark/start/marine/leader,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "U" = (
 /obj/effect/landmark/start/intel,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "V" = (
 /obj/effect/landmark/start/crew_chief,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 "W" = (
 /obj/effect/landmark/start/chef,
-/turf/open/floor/almayer{
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating,
 /area/event)
 
 (1,1,1) = {"
@@ -289,7 +229,7 @@ a
 A
 l
 L
-b
+M
 b
 b
 b

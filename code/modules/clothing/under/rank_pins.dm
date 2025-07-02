@@ -4,9 +4,15 @@
 	gender = PLURAL
 	desc = "A set of rank pins, used to denote the paygrade of someone within the military."
 	icon_state = "ranks_enlisted"
+	icon = 'icons/obj/items/clothing/accessory/ranks.dmi'
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/ranks.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/ranks.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/ranks.dmi'
+	)
 	var/rank = "Private"
 	var/rank_short = PAY_SHORT_ME1
-	slot = ACCESSORY_SLOT_RANK
+	worn_accessory_slot = ACCESSORY_SLOT_RANK
 	high_visibility = TRUE
 	gender = PLURAL
 	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED

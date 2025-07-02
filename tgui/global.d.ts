@@ -42,36 +42,6 @@ type ByondType = {
   windowId: string;
 
   /**
-   * True if javascript is running in BYOND.
-   */
-  IS_BYOND: boolean;
-
-  /**
-   * Version of Trident engine of Internet Explorer. Null if N/A.
-   */
-  TRIDENT: number | null;
-
-  /**
-   * True if browser is IE8 or lower.
-   */
-  IS_LTE_IE8: boolean;
-
-  /**
-   * True if browser is IE9 or lower.
-   */
-  IS_LTE_IE9: boolean;
-
-  /**
-   * True if browser is IE10 or lower.
-   */
-  IS_LTE_IE10: boolean;
-
-  /**
-   * True if browser is IE11 or lower.
-   */
-  IS_LTE_IE11: boolean;
-
-  /**
    * If `true`, unhandled errors and common mistakes result in a blue screen
    * of death, which stops this window from handling incoming messages and
    * closes the active instance of tgui datum if there was one.
@@ -163,6 +133,11 @@ type ByondType = {
   parseJson(text: string): any;
 
   /**
+   * Downloads a blob, platform-agnostic
+   */
+  saveBlob(blob: Blob, filename: string, ext: string): void;
+
+  /**
    * Sends a message to `/datum/tgui_window` which hosts this window instance.
    */
   sendMessage(type: string, payload?: any): void;
@@ -188,6 +163,27 @@ type ByondType = {
    * Loads a script into the document.
    */
   loadJs(url: string): void;
+
+  /**
+   * Maps icons to their ref
+   */
+  iconRefMap: Record<string, string>;
+
+  /**
+   * The ByondCSS stylesheet to load into ByondUI components
+   */
+  styleSheet: string;
+
+  /**
+   * The external URL for the IndexedDB IFrame to use as the origin
+   */
+  storageCdn: string;
+
+  /**
+   * If this tgui window exists in the IE11 trident browser.
+   * TODO: Remove with 516
+   */
+  TRIDENT: boolean;
 };
 
 /**

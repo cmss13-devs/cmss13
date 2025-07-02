@@ -13,14 +13,15 @@
 	chemclass = CHEM_CLASS_RARE
 
 
-/datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/blood/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	var/datum/reagent/blood/self = src
 	src = null
 	if(self.data_properties && self.data_properties["viruses"])
 		for(var/datum/disease/D in self.data_properties["viruses"])
 			//var/datum/disease/virus = new D.type(0, D, 1)
 			// We don't spread.
-			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS) continue
+			if(D.spread_type == SPECIAL || D.spread_type == NON_CONTAGIOUS)
+				continue
 
 			if(method == TOUCH)
 				M.contract_disease(D)
@@ -29,10 +30,12 @@
 
 
 /datum/reagent/blood/reaction_turf(turf/T, volume)//splash the blood all over the place
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	var/datum/reagent/blood/self = src
 	src = null
-	if(!(volume >= 3)) return
+	if(!(volume >= 3))
+		return
 
 	T.add_blood(self.color)
 
@@ -85,7 +88,7 @@
 	color = "#C81040" // rgb: 200, 16, 64
 	properties = list(PROPERTY_CURING = 4)
 
-/datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/vaccine/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(has_species(M,"Horror"))
 		return
 	var/datum/reagent/vaccine/self = src
@@ -115,7 +118,8 @@
 	intensitymod = -3
 
 /datum/reagent/water/reaction_turf(turf/T, volume)
-	if(!istype(T)) return
+	if(!istype(T))
+		return
 	src = null
 	if(volume >= 3)
 		T.wet_floor(FLOOR_WET_WATER)
@@ -124,7 +128,7 @@
 	src = null
 	O.extinguish()
 
-/datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, volume)//Splashing people with water can help put them out!
+/datum/reagent/water/reaction_mob(mob/living/M, method=TOUCH, volume, permeable)//Splashing people with water can help put them out!
 	if(!istype(M, /mob/living))
 		return
 	if(method == TOUCH)
@@ -168,7 +172,7 @@
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 6)
+	properties = list(PROPERTY_PAINKILLING = 3)
 
 /datum/reagent/serotrotium
 	name = "Serotrotium"
@@ -254,7 +258,7 @@
 	color = "#484848" // rgb: 72, 72, 72
 	overdose = REAGENTS_OVERDOSE
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_NEUROTOXIC = 4)
+	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_NEUROCRYOGENIC = 1, PROPERTY_DISRUPTING = 1)
 
 /datum/reagent/sulfur
 	name = "Sulfur"
@@ -310,7 +314,7 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_TOXIC = 1)
+	properties = list(PROPERTY_TOXIC = 1, PROPERTY_NEUTRALIZING = 1)
 
 /datum/reagent/sodium
 	name = "Sodium"
@@ -380,7 +384,7 @@
 	reagent_state = SOLID
 	color = "#C7C7C7" // rgb: 199,199,199
 	chemclass = CHEM_CLASS_BASIC
-	properties = list(PROPERTY_CARCINOGENIC = 2)
+	properties = list(PROPERTY_CARCINOGENIC = 2, PROPERTY_HEMORRAGING = 1)
 
 /datum/reagent/thermite
 	name = "Thermite"
@@ -517,7 +521,7 @@
 	if(volume >= 1 && istype(T))
 		T.clean_cleanables()
 
-/datum/reagent/space_cleaner/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/space_cleaner/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		if(C.r_hand)
@@ -592,7 +596,7 @@
 	reagent_state = LIQUID
 	color = "#535E66" // rgb: 83, 94, 102
 
-/datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/xenomicrobes/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	src = null
 	if((prob(10) && method==TOUCH) || method==INGEST)
 		M.contract_disease(new /datum/disease/xeno_transformation(0),1)
@@ -612,6 +616,15 @@
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	chemclass = CHEM_CLASS_UNCOMMON
+
+/datum/reagent/foaming_agent/stabilized
+	name = "Stabilized metallic foam"
+	id = "stablefoam"
+	description = "Stabilized metallic foam that solidifies when exposed to an open flame"
+	reagent_state = LIQUID
+	color = "#d4b8d1"
+	chemclass = CHEM_CLASS_UNCOMMON
+	properties = list(PROPERTY_TOXIC = 8)
 
 /datum/reagent/nicotine
 	name = "Nicotine"
@@ -664,15 +677,17 @@
 	custom_metabolism = 100 //disappears immediately
 	properties = list(PROPERTY_RAVENING = 1)
 
-/datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume)
+/datum/reagent/blackgoo/reaction_mob(mob/M, method=TOUCH, volume, permeable)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.species.name == "Human")
 			H.contract_disease(new /datum/disease/black_goo)
 
 /datum/reagent/blackgoo/reaction_turf(turf/T, volume)
-	if(!istype(T)) return
-	if(volume < 3) return
+	if(!istype(T))
+		return
+	if(volume < 3)
+		return
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 		new /obj/effect/decal/cleanable/blackgoo(T)
 
@@ -689,6 +704,40 @@
 	burncolor = "#D05006"
 	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
+
+/datum/reagent/napalm/sticky
+	name = "Sticky-Napalm"
+	id = "stickynapalm"
+	description = "A custom napalm mix, stickier and lasts longer but lower damage"
+	reagent_state = LIQUID
+	color = "#f8e3b2"
+	burncolor = "#f8e3b2"
+	burn_sprite = "dynamic"
+	intensitymod = -1.5
+	durationmod = -5
+	radiusmod = -0.5
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_2,
+		PROPERTY_DURATION = BURN_TIME_TIER_5,
+		PROPERTY_RADIUS = 5,
+	)
+
+/datum/reagent/napalm/high_damage
+	name = "High-Combustion Napalm Fuel"
+	id = "highdamagenapalm"
+	description = "A custom napalm mix, higher damage but not as sticky"
+	reagent_state = LIQUID
+	color = "#c51c1c"
+	burncolor = "#c51c1c"
+	burn_sprite = "dynamic"
+	intensitymod = -4.5
+	durationmod = -1
+	radiusmod = -0.5
+	properties = list(
+		PROPERTY_INTENSITY = BURN_LEVEL_TIER_8,
+		PROPERTY_DURATION = BURN_TIME_TIER_1,
+		PROPERTY_RADIUS = 5,
+	)
 
 // This is the regular flamer fuel and pyro regular flamer fuel.
 /datum/reagent/napalm/ut
@@ -800,13 +849,7 @@
 	chemfiresupp = TRUE
 	burncolor = "#ff9300"
 	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9)
-
-/datum/reagent/chlorinetrifluoride/on_mob_life(mob/living/M) // Not a good idea, instantly messes you up from the inside out.
-	. = ..()
-	M.adjust_fire_stacks(max(M.fire_stacks, 15))
-	M.IgniteMob(TRUE)
-	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
+	properties = list(PROPERTY_CORROSIVE = 8, PROPERTY_TOXIC = 6, PROPERTY_OXIDIZING = 9, PROPERTY_IGNITING = 1)
 
 /datum/reagent/methane
 	name = "Methane"
@@ -979,7 +1022,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_TOXIC = 1, PROPERTY_HALLUCINOGENIC = 6)
+	properties = list(PROPERTY_NEUROTOXIC = 4, PROPERTY_EXCRETING = 2, PROPERTY_HALLUCINOGENIC = 6)
 
 /datum/reagent/plasma/antineurotoxin
 	name = "Anti-Neurotoxin"
@@ -1026,3 +1069,21 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
+
+/datum/reagent/forensic_spray
+	name = "Forensic Spray"
+	id = "forensic_spray"
+	description = "A dye-containing spray that binds to the skin oils left behind by fingerprints."
+	reagent_state = LIQUID
+	color = "#79847a"
+	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/forensic_spray/reaction_obj(obj/reacting_on, volume)
+	if(!istype(reacting_on, /obj/effect/decal/prints))
+		return
+
+	var/obj/effect/decal/prints/reacting_prints = reacting_on
+	reacting_prints.set_visiblity(TRUE)
+
+	addtimer(CALLBACK(reacting_prints, TYPE_PROC_REF(/obj/effect/decal/prints, set_visiblity), FALSE), 1 MINUTES, TIMER_UNIQUE|TIMER_OVERRIDE)

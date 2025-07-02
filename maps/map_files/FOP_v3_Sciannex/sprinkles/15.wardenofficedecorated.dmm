@@ -77,7 +77,7 @@
 /area/template_noop)
 "R" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/weapon/unathiknife{
+/obj/item/weapon/yautja/duelknife{
 	name = "ceremonial knife";
 	pixel_x = 7;
 	pixel_y = -2
@@ -93,9 +93,7 @@
 	dir = 1;
 	pixel_y = 21
 	},
-/obj/structure/machinery/power/apc{
-	dir = 8
-	},
+/obj/structure/machinery/power/apc/power/west,
 /turf/open/floor/wood,
 /area/template_noop)
 "T" = (

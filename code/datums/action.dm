@@ -8,6 +8,8 @@
 	var/atom/movable/screen/action_button/button = null
 	var/mob/owner
 	var/cooldown = 0 // By default an action has no cooldown
+	/// The time when this ability can be used again
+	var/ability_used_time = 0
 	var/cost = 0 // By default an action has no cost -> will be utilized by skill actions/xeno actions
 	var/action_flags = 0 // Check out __game.dm for flags
 	/// Whether the action is hidden from its owner
@@ -40,10 +42,18 @@
 	return ..()
 
 /datum/action/proc/update_button_icon()
-	return
+	if(!action_cooldown_check())
+		button.color = rgb(120,120,120,200)
+	else
+		button.color = rgb(255,255,255,255)
 
 /datum/action/proc/action_activate()
-	return
+	SHOULD_CALL_PARENT(TRUE)
+
+	if(cooldown)
+		enter_cooldown()
+
+	SEND_SIGNAL(src, COMSIG_ACTION_ACTIVATED)
 
 /// handler for when a keybind signal is received by the action, calls the action_activate proc asynchronous
 /datum/action/proc/keybind_activation()
@@ -54,9 +64,21 @@
 /datum/action/proc/can_use_action()
 	if(hidden)
 		return FALSE
+	if(!owner)
+		return FALSE
 
-	if(owner)
-		return TRUE
+	return action_cooldown_check()
+
+/// Returns TRUE if cooldown is over
+/datum/action/proc/action_cooldown_check()
+	return ability_used_time <= world.time
+
+/datum/action/proc/enter_cooldown(amount = cooldown)
+	ability_used_time = world.time + amount
+
+	update_button_icon()
+
+	addtimer(CALLBACK(src, PROC_REF(update_button_icon)), amount)
 
 /datum/action/proc/set_name(new_name)
 	name = new_name
@@ -116,6 +138,8 @@
 /datum/action/proc/remove_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ACTION_REMOVED, L)
+	if(listen_signal)
+		UnregisterSignal(L, listen_signal)
 	L.handle_remove_action(src)
 	owner = null
 
@@ -158,6 +182,10 @@
 	hidden = FALSE
 	L.update_action_buttons()
 
+/proc/get_action(mob/action_mob, action_path)
+	for(var/datum/action/action in action_mob.actions)
+		if(istype(action, action_path))
+			return action
 
 /datum/action/item_action
 	name = "Use item"
@@ -181,16 +209,13 @@
 	holder_item = null
 	return ..()
 
-/datum/action/item_action/action_activate()
-	if(target)
-		var/obj/item/I = target
-		I.ui_action_click(owner, holder_item)
-
 /datum/action/item_action/can_use_action()
 	if(ishuman(owner) && !owner.is_mob_incapacitated())
 		var/mob/living/carbon/human/human = owner
 		if(human.body_position == STANDING_UP)
 			return TRUE
+	if((HAS_TRAIT(owner, TRAIT_OPPOSABLE_THUMBS)) && !owner.is_mob_incapacitated())
+		return TRUE
 
 /datum/action/item_action/update_button_icon()
 	button.overlays.Cut()
@@ -202,6 +227,17 @@
 /datum/action/item_action/toggle/New(Target)
 	..()
 	name = "Toggle [target]"
+	button.name = name
+
+/datum/action/item_action/toggle/action_activate()
+	. = ..()
+	if(target)
+		var/obj/item/I = target
+		I.ui_action_click(owner, holder_item)
+
+/datum/action/item_action/toggle/use/New(target)
+	. = ..()
+	name = "Use [target]"
 	button.name = name
 
 //This is the proc used to update all the action buttons.

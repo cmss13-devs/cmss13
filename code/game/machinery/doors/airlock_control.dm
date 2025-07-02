@@ -30,9 +30,11 @@
 
 	if (!can_radio()) return //no radio
 
-	if(!signal || signal.encryption) return
+	if(!signal || signal.encryption)
+		return
 
-	if(id_tag != signal.data["tag"] || !signal.data["command"]) return
+	if(id_tag != signal.data["tag"] || !signal.data["command"])
+		return
 
 	cur_command = signal.data["command"]
 	start_processing()
@@ -122,31 +124,11 @@
 
 		radio_connection.post_signal(src, signal, range = AIRLOCK_CONTROL_RANGE, filter = RADIO_AIRLOCK)
 
-
-/obj/structure/machinery/door/airlock/open(surpress_send)
-	. = ..()
-	if(!surpress_send) send_status()
-
-
-/obj/structure/machinery/door/airlock/close(surpress_send)
-	. = ..()
-	if(!surpress_send) send_status()
-
-
 /obj/structure/machinery/door/airlock/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
 	if(new_frequency)
 		frequency = new_frequency
 		radio_connection = SSradio.add_object(src, frequency, RADIO_AIRLOCK)
-
-
-/obj/structure/machinery/door/airlock/Initialize()
-	. = ..()
-	if(frequency)
-		set_frequency(frequency)
-
-	update_icon()
-	start_processing()
 
 /obj/structure/machinery/airlock_sensor
 	icon = 'icons/obj/structures/machinery/airlock_machines.dmi'
@@ -255,7 +237,7 @@
 	if (istype(I, /obj/item/card/id))
 		attack_hand(user)
 		return
-	..()
+	. = ..()
 
 /obj/structure/machinery/access_button/attack_hand(mob/user)
 	add_fingerprint(usr)

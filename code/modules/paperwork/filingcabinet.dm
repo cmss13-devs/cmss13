@@ -12,7 +12,7 @@
 /obj/structure/filingcabinet
 	name = "filing cabinet"
 	desc = "A large cabinet with drawers."
-	icon = 'icons/obj/structures/props/misc.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 	icon_state = "filingcabinet"
 	density = TRUE
 	anchored = TRUE
@@ -49,7 +49,7 @@
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
 	if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
-		..()
+		. = ..()
 	else
 		for(var/allowed_type in allowed_types)
 			if(istype(P, allowed_type))
@@ -64,16 +64,16 @@
 				to_chat(user, SPAN_NOTICE("You can't put [P] in [src]!"))
 
 /obj/structure/filingcabinet/attack_hand(mob/user as mob)
-	if(contents.len <= 0)
+	if(length(contents) <= 0)
 		to_chat(user, SPAN_NOTICE("\The [src] is empty."))
 		return
 
 	user.set_interaction(src)
 	var/dat = "<center><table>"
 	for(var/obj/item/P in src)
-		dat += "<tr><td><a href='?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
+		dat += "<tr><td><a href='byond://?src=\ref[src];retrieve=\ref[P]'>[P.name]</a></td></tr>"
 	dat += "</table></center>"
-	show_browser(user, dat, name, "filingcabinet", "size=350x300")
+	show_browser(user, dat, name, "filingcabinet", width = 350, height = 300)
 
 	return
 
@@ -147,7 +147,7 @@
 				P.info = "<CENTER><B>Medical Record</B></CENTER><BR>"
 				P.info += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nSex: [G.fields["sex"]]<BR>\nAge: [G.fields["age"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
 
-				P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [M.fields["b_type"]]<BR>\n<BR>\nMinor Disabilities: [M.fields["mi_dis"]]<BR>\nDetails: [M.fields["mi_dis_d"]]<BR>\n<BR>\nMajor Disabilities: [M.fields["ma_dis"]]<BR>\nDetails: [M.fields["ma_dis_d"]]<BR>\n<BR>\nAllergies: [M.fields["alg"]]<BR>\nDetails: [M.fields["alg_d"]]<BR>\n<BR>\nCurrent Diseases: [M.fields["cdi"]] (per disease info placed in log/comment section)<BR>\nDetails: [M.fields["cdi_d"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+				P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [M.fields["blood_type"]]<BR>\n<BR>\nMinor Disabilities: [M.fields["minor_disability"]]<BR>\nDetails: [M.fields["minor_disability_details"]]<BR>\n<BR>\nMajor Disabilities: [M.fields["major_disability"]]<BR>\nDetails: [M.fields["major_disability_details"]]<BR>\n<BR>\nAllergies: [M.fields["allergies"]]<BR>\nDetails: [M.fields["allergies_details"]]<BR>\n<BR>\nCurrent Diseases: [M.fields["diseases"]] (per disease info placed in log/comment section)<BR>\nDetails: [M.fields["diseases_details"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
 				var/counter = 1
 				while(M.fields["com_[counter]"])
 					P.info += "[M.fields["com_[counter]"]]<BR>"

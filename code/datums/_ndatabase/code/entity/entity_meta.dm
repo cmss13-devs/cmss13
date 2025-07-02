@@ -81,6 +81,8 @@
 		if(invalidate)
 			ET.invalidate()
 
+	ET.post_creation()
+
 	return ET
 
 /datum/entity_meta/proc/make_new_by_key(key_value)

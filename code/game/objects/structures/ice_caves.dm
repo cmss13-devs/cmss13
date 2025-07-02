@@ -35,28 +35,6 @@
 	icon_state = "Intersection"
 
 
-//Thin Ice Secret Wall
-/turf/closed/ice/thin/secret
-	desc = "There is something inside..."
-
-/turf/closed/ice/thin/secret/single
-	icon_state = "Single"
-
-/turf/closed/ice/thin/secret/end
-	icon_state = "End"
-
-/turf/closed/ice/thin/secret/straight
-	icon_state = "Straight"
-
-/turf/closed/ice/thin/secret/corner
-	icon_state = "Corner"
-
-/turf/closed/ice/thin/secret/junction
-	icon_state = "T-Junction"
-
-/turf/closed/ice/thin/secret/intersection
-	icon_state = "Intersection"
-
 //ROCK WALLS------------------------------//
 /obj/structure/ice/ice_rock
 	name = "Icy rock"

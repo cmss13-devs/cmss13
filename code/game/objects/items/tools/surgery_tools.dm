@@ -3,6 +3,10 @@
 // Surgery Tools
 /obj/item/tool/surgery
 	icon = 'icons/obj/items/surgery_tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	/// reduced
 	attack_speed = 4
 
@@ -92,10 +96,16 @@
 	name = "scalpel"
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+	)
 	flags_atom = FPRINT|CONDUCT
 	force = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
+	demolition_mod = 0.1
 	w_class = SIZE_TINY
 	throwforce = 5
 	flags_item = CAN_DIG_SHRAPNEL
@@ -217,21 +227,23 @@
 	///How much bone gel is needed to mend bones
 	var/mend_bones_fix_cost = 5
 
-/obj/item/tool/surgery/bonegel/update_icon()
+/obj/item/tool/surgery/bonegel/update_icon(mob/user)
 	. = ..()
-	if(remaining_gel >= 100)
-		icon_state = base_icon_state
-		return
-	if(remaining_gel > 50)
-		icon_state = "[base_icon_state]_75"
-		return
-	if(remaining_gel > 25)
-		icon_state = "[base_icon_state]_50"
-		return
-	if(remaining_gel > 0)
-		icon_state = "[base_icon_state]_25"
-		return
-	icon_state = "[base_icon_state]_0"
+	switch(remaining_gel)
+		if(100 to INFINITY)
+			icon_state = base_icon_state
+		if(60 to 99)
+			icon_state = "[base_icon_state]_75"
+		if(30 to 59)
+			icon_state = "[base_icon_state]_50"
+		if(5 to 29)
+			icon_state = "[base_icon_state]_25"
+		if(0 to 4)
+			icon_state = "[base_icon_state]_0"
+
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
@@ -320,6 +332,7 @@
 	name = "\proper surgical line"
 	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
 	icon_state = "line_brute"
+	item_state = "line_brute"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL
@@ -338,6 +351,7 @@
 	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the color is \
 		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
 	icon_state = "line_burn"
+	item_state = "line_burn"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL
@@ -531,8 +545,8 @@ t. optimisticdude
 					to_chat(usr, "This is difficult, you probably shouldn't move")
 					return
 				to_chat(usr, "You've cut through the outer layers of Chitin")
-				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
-				new /obj/item/XenoBio/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
+				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
+				new /obj/item/oldresearch/Chitin(T.loc) //This will be 1-3 Chitin eventually (depending on tier)
 				T.butchery_progress++
 				active = 0
 		if(1)
@@ -541,7 +555,7 @@ t. optimisticdude
 					to_chat(usr, "This is difficult, you probably shouldn't move.")
 					return
 				to_chat(usr, "You've cut into the chest cavity and retreived a sample of blood.")
-				new /obj/item/XenoBio/Blood(T.loc)//This will be a sample of blood eventually
+				new /obj/item/oldresearch/Blood(T.loc)//This will be a sample of blood eventually
 				T.butchery_progress++
 				active = 0
 		if(2)
@@ -551,7 +565,7 @@ t. optimisticdude
 					return
 				//to_chat(usr, "You've cut out an intact organ.")
 				to_chat(usr, "You've cut out some Biomass...")
-				new /obj/item/XenoBio/Resin(T.loc)//This will be an organ eventually, based on the caste.
+				new /obj/item/oldresearch/Resin(T.loc)//This will be an organ eventually, based on the caste.
 				T.butchery_progress++
 				active = 0
 		if(3)
@@ -561,6 +575,6 @@ t. optimisticdude
 					return
 				to_chat(usr, "You scrape out the remaining biomass.")
 				active = 0
-				new /obj/item/XenoBio/Resin(T.loc)
+				new /obj/item/oldresearch/Resin(T.loc)
 				new /obj/effect/decal/remains/xeno(T.loc)
 				qdel(T)

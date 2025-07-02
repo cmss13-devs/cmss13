@@ -7,3 +7,5 @@
 		SSbattlepass.xeno_battlepass_earners |= client.ckey
 	if(SSticker.mode)
 		SSticker.mode.xenomorphs |= mind
+	if(selected_ability)
+		set_selected_ability(null)

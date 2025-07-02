@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(projectiles)
 	 */
 
 /datum/controller/subsystem/projectiles/stat_entry(msg)
-	msg = " | #Proj: [projectiles.len]"
+	msg = " | #Proj: [length(projectiles)]"
 	return ..()
 
 /datum/controller/subsystem/projectiles/Initialize(start_timeofday)
@@ -41,8 +41,8 @@ SUBSYSTEM_DEF(projectiles)
 	if(!resumed)
 		flying = projectiles.Copy()
 		flying -= sleepers
-	while(flying.len)
-		var/obj/projectile/projectile = flying[flying.len]
+	while(length(flying))
+		var/obj/projectile/projectile = flying[length(flying)]
 		flying.len--
 		var/delta_time = wait * world.tick_lag * (1 SECONDS)
 		handle_projectile_flight(projectile, delta_time)

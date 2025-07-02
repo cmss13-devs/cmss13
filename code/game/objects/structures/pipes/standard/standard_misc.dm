@@ -110,6 +110,7 @@
 /obj/structure/pipes/standard/cap/hidden/supply/no_boom
 	name = "reinforced supply pipe endcap"
 	explodey = FALSE
+	color = PIPE_COLOR_PURPLE
 
 
 /obj/structure/pipes/standard/tank
@@ -120,6 +121,7 @@
 	dir = SOUTH
 	valid_directions = list(SOUTH)
 	density = TRUE
+	layer = OBJ_LAYER
 	var/actual_icon_state = "air"
 
 /obj/structure/pipes/standard/tank/New()

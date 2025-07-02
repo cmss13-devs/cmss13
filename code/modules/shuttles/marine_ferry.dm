@@ -44,7 +44,7 @@
 	if(!LAZYLEN(locs_land))
 		return TRUE
 
-	if(!main_doors.len && !controls.len)
+	if(!length(main_doors) && !length(controls))
 		var/turf/T_src = pick(locs_dock)
 		var/list/turfs = get_shuttle_turfs(T_src, info_datums)
 		for(var/turf/T in turfs)
@@ -56,11 +56,13 @@
 
 	for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in main_doors)
 		for(var/obj/vehicle/multitile/M in D.loc)
-			if(M) return 0
+			if(M)
+				return 0
 
-		for(var/turf/T in D.locate_filler_turfs())
+		for(var/turf/T in D.locs)
 			for(var/obj/vehicle/multitile/M in T)
-				if(M) return 0
+				if(M)
+					return 0
 
 		//No return 1 here in case future elevators have multiple multi_tile doors
 
@@ -119,13 +121,15 @@
 				return .
 			if (skip_docking_checks() || docking_controller.can_launch())
 				if (move_time) long_jump()
-				else short_jump()
+				else
+					short_jump()
 
 				process_state = WAIT_ARRIVE
 
 		if (FORCE_LAUNCH)
 			if (move_time) long_jump()
-			else short_jump()
+			else
+				short_jump()
 
 			process_state = WAIT_ARRIVE
 
@@ -143,16 +147,17 @@
 /datum/shuttle/ferry/marine/long_jump(area/departing, area/destination, area/interim, travel_time, direction)
 	set waitfor = 0
 
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
 	for(var/obj/structure/dropship_equipment/fuel/cooling_system/CS in equipments)
-		recharging = round(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
+		recharging = floor(recharging * SHUTTLE_COOLING_FACTOR_RECHARGE) //cooling system reduces recharge time
 		break
 
 	//START: Heavy lifting backend
@@ -164,7 +169,7 @@
 	var/int_rot = locs_move[T_int]
 	var/turf/T_trg
 	var/trg_rot
-	if(!locs_land.len) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
+	if(!length(locs_land)) // We check here as well to make sure that the order of operations/lag/changing it after launch. Wont mess this up.
 		transit_gun_mission = 1
 
 	if(transit_gun_mission)//gun mission makes you land back where you started.
@@ -194,7 +199,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
+				travel_time  = floor(travel_time / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer increases travel time
 				break
 	else
 		if(transit_optimized)
@@ -205,7 +210,7 @@
 		for(var/X in equipments)
 			var/obj/structure/dropship_equipment/E = X
 			if(istype(E, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-				travel_time  = round(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
+				travel_time  = floor(travel_time * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL) //fuel enhancer reduces travel time
 				break
 
 	//START: Heavy lifting backend
@@ -218,8 +223,8 @@
 
 	if(!queen_locked)
 		for(var/turf/T in turfs_src)
-			var/mob/living/carbon/xenomorph/X = locate(/mob/living/carbon/xenomorph) in T
-			if(X && X.stat != DEAD)
+			var/mob/living/carbon/xenomorph/xeno = locate(/mob/living/carbon/xenomorph) in T
+			if((xeno && xeno.stat != DEAD) && !(FACTION_MARINE in xeno.iff_tag?.faction_groups))
 				var/name = "Unidentified Lifesigns"
 				var/input = "Unidentified lifesigns detected onboard. Recommendation: lockdown of exterior access ports, including ducting and ventilation."
 				shipwide_ai_announcement(input, name, 'sound/AI/unidentified_lifesigns.ogg', ares_logging = ARES_LOG_SECURITY)
@@ -250,7 +255,8 @@
 
 	close_doors(turfs_int) // adding this for safety.
 
-	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+	// Ever a flyby is possible this way it needs to check for such
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED) && is_ground_level(destination?.z)) //Launching on first drop.
 		SSticker.mode.ds_first_drop()
 
 	in_transit_time_left = travel_time
@@ -321,10 +327,11 @@
 /datum/shuttle/ferry/marine/proc/long_jump_crash()
 	set waitfor = 0
 
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 
@@ -349,8 +356,10 @@
 			for(var/turf/TU in SSoldshuttle.shuttle_controller.locs_crash[target_section])
 				if(istype(get_area(TU), /area/almayer/hallways/hangar))
 					crash_turfs += TU
-			if(crash_turfs.len) T_trg = pick(crash_turfs)
-			else message_admins("no crash turf found in Almayer Hangar, contact coders.")
+			if(length(crash_turfs))
+				T_trg = pick(crash_turfs)
+			else
+				message_admins("no crash turf found in Almayer Hangar, contact coders.")
 			break
 
 	if(!istype(T_src) || !istype(T_int) || !istype(T_trg))
@@ -439,7 +448,8 @@
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
 	for(var/obj/structure/machinery/power/apc/A in GLOB.machines) //break APCs
-		if(A.z != T_trg.z) continue
+		if(A.z != T_trg.z)
+			continue
 		if(prob(A.crash_break_probability))
 			A.overload_lighting()
 			A.set_broken()
@@ -534,7 +544,8 @@
 
 /datum/shuttle/ferry/marine/short_jump()
 
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	//START: Heavy lifting backend
 
@@ -605,18 +616,21 @@
 
 	for(i in L)
 		T = i
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 
 		//Just so marines can't land with shutters down and turtle the rasputin
 		for(var/obj/structure/machinery/door/poddoor/shutters/P in T)
-			if(!istype(P)) continue
+			if(!istype(P))
+				continue
 			if(P.density)
 				INVOKE_ASYNC(P, TYPE_PROC_REF(/obj/structure/machinery/door, close))
 				//No break since transit shutters are the same parent type
 
 		if (iselevator)
 			for(var/obj/structure/machinery/door/airlock/A in T)
-				if(!istype(A)) continue
+				if(!istype(A))
+					continue
 				if(A.locked)
 					A.unlock()
 				if(A.density)
@@ -638,17 +652,20 @@
 
 	for(i in L)
 		T = i
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 
 		if(istype(T, /turf/closed/wall))
 			var/turf/closed/wall/W = T
-			if(prob(20)) W.thermitemelt()
+			if(prob(20))
+				W.thermitemelt()
 			else if(prob(25)) W.take_damage(W.damage_cap) //It should leave a girder
 			continue
 
 		//Just so marines can't land with shutters down and turtle the rasputin
 		for(var/obj/structure/machinery/door/poddoor/shutters/P in T)
-			if(!istype(P)) continue
+			if(!istype(P))
+				continue
 			if(P.density)
 				spawn(0)
 					P.open()
@@ -674,11 +691,13 @@
 
 	for(i in L)
 		T = i
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 
 		for(j in T)
 			M = j
-			if(!istype(M)) continue
+			if(!istype(M))
+				continue
 			shake_camera(M, 30, 1)
 
 /* QUICK INHERITANCE THING FOR ELEVATORS
@@ -711,11 +730,13 @@
 		// that would make this already relatively expensive and inefficent even more so
 		// --MadSnailDisease
 		for(var/obj/vehicle/multitile/M in E.loc)
-			if(M) return 0
+			if(M)
+				return 0
 
 		for(var/turf/T in E.locs) //For some reason elevators use different multidoor code, this should work though
 			for(var/obj/vehicle/multitile/M in T)
-				if(M) return 0
+				if(M)
+					return 0
 
 		//No return 1 here in case future elevators have multiple multi_tile doors
 

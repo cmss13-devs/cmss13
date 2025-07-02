@@ -20,8 +20,8 @@
 			handle_xeno_macro_actionqueue(xeno, action)
 
 		else
-			log_debug("Xeno action [action.ability_name] is misconfigured. Code: XENO_ACTION_MACRO_1")
-			log_admin("Xeno action [action.ability_name] is misconfigured. Tell the devs. Code: XENO_ACTION_MACRO_1")
+			log_debug("Xeno action [action.name] is misconfigured. Code: XENO_ACTION_MACRO_1")
+			log_admin("Xeno action [action.name] is misconfigured. Tell the devs. Code: XENO_ACTION_MACRO_1")
 
 
 /proc/handle_xeno_macro_click(mob/living/carbon/xenomorph/xeno, datum/action/xeno_action/action)
@@ -47,8 +47,8 @@
 	xeno.queued_action = action
 	to_chat(xeno, SPAN_WARNING("Your next click will use [action.name]!"))
 
-	if(xeno.client)
-		xeno.client.mouse_pointer_icon = file("icons/mob/hud/mecha_mouse.dmi")
+	if(xeno.client?.prefs?.custom_cursors)
+		xeno.client.mouse_pointer_icon = 'icons/mob/hud/mecha_mouse.dmi'
 
 
 /mob/living/carbon/xenomorph/verb/xeno_primary_action_one()

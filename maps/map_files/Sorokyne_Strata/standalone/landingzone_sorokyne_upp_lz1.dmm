@@ -1,0 +1,4354 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -15;
+	pixel_y = -3;
+	layer = 4.11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ab" = (
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/deep_jungle/north)
+"ac" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -22;
+	pixel_y = -9
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ad" = (
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/strata/exterior/deep_jungle/north)
+"ae" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_y = -10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"af" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -12;
+	pixel_y = -5
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"ag" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -1;
+	pixel_y = -3;
+	dir = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"ah" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"ai" = (
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/exterior/deep_jungle/north)
+"aj" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -17;
+	pixel_y = -14
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ak" = (
+/turf/open/gm/dirt/brown/variant_5,
+/area/strata/exterior/deep_jungle/north)
+"al" = (
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/strata/exterior/deep_jungle/north)
+"am" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -14;
+	pixel_y = -14
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"an" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -22;
+	pixel_y = -9
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ao" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -13;
+	pixel_y = 7;
+	layer = 4.11
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ap" = (
+/obj/effect/landmark/xeno_spawn,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"aq" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -25;
+	pixel_y = 23
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ar" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -17;
+	pixel_y = -2;
+	layer = 4.11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"as" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -15;
+	pixel_y = 6
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"at" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -11;
+	pixel_y = -8;
+	layer = 4.11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"au" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "pointybush_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"av" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/deep_jungle/north)
+"aw" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"ax" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/effect/landmark/monkey_spawn,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"ay" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"az" = (
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aA" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"aB" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"aC" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/research)
+"aD" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_x = 5
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_x = -6
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/speck{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aE" = (
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/trash/upp_mre,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aF" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aG" = (
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"aH" = (
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"aI" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = 16
+	},
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aJ" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"aK" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"aL" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"aM" = (
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/interior/research)
+"aN" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"aO" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -17;
+	pixel_y = -6
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"aP" = (
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"aQ" = (
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"aR" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"aS" = (
+/obj/structure/barricade/handrail/strata,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"aT" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"aU" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer0,
+/area/strata/interior/research)
+"aV" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush3";
+	pixel_x = -17;
+	pixel_y = -4;
+	layer = 4.11
+	},
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"aW" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680";
+	icon_state = "pipe-c";
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"aY" = (
+/obj/docking_port/stationary/marine_dropship/upp{
+	name = "Research Base Landing Zone"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"aZ" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"ba" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"bb" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"bc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"bd" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"be" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow_red";
+	dir = 1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bi" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"bj" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bk" = (
+/obj/structure/largecrate/random/barrel/brown,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bm" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"bn" = (
+/obj/structure/largecrate/random/case/double,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bp" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bq" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/explosive_mines,
+/obj/item/storage/box/explosive_mines,
+/obj/item/storage/box/explosive_mines,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"br" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/weapon/gun/rifle/type71/carbine,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bs" = (
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"bt" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"bu" = (
+/obj/structure/largecrate/random/barrel/brown,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow_red"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bw" = (
+/obj/item/trash/upp_mre{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"bx" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"by" = (
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"bz" = (
+/obj/item/storage/box/mre/upp{
+	pixel_x = -9;
+	pixel_y = 10
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"bA" = (
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = 5;
+	pixel_y = 15
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp/empty{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bB" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bC" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bD" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bE" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bF" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bG" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/tool/stamp,
+/obj/item/paper_bin,
+/obj/item/device/megaphone,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bH" = (
+/obj/item/storage/box/mre/upp{
+	pixel_x = 3;
+	pixel_y = -8
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"bI" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bJ" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bK" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bL" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"bM" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bN" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -2;
+	pixel_y = -12
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bO" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -17;
+	pixel_y = -4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"bP" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bQ" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"bR" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bS" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bT" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"bU" = (
+/turf/open/asphalt/cement/cement14,
+/area/strata/interior/research)
+"bV" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680";
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"bW" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bX" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"bY" = (
+/obj/structure/sign/banners/upp_flag{
+	pixel_y = 31
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_magazine/rifle/type71{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"bZ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"ca" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"cb" = (
+/obj/structure/prop/hybrisa/misc/urinal/dark,
+/turf/closed/wall/strata_outpost,
+/area/strata/interior/research)
+"cc" = (
+/obj/structure/machinery/vending/coffee,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"cf" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"ch" = (
+/obj/structure/machinery/telecomms/relay/preset/tower/all{
+	pixel_x = 11;
+	pixel_y = 20
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/tcomms,
+/area/strata/interior/research)
+"cU" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"cY" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/masks,
+/obj/item/storage/box/masks,
+/obj/structure/sign/banners/upp_flag{
+	pixel_y = 31
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"dg" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"dw" = (
+/obj/item/lightstick/red/spoke/planted{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/strata/red2,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"dC" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"dF" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"dT" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"eg" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"ex" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"eD" = (
+/obj/structure/mirror{
+	pixel_y = 34;
+	pixel_x = -1
+	},
+/obj/structure/sink{
+	pixel_y = 23
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"eH" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"eS" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"fe" = (
+/obj/structure/window/framed/strata/reinforced,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"fk" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/weapon/gun/pistol/t73,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"fv" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"fD" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/strata/interior/out_of_bounds)
+"fF" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"fG" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"fZ" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"ga" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/strata/interior/research)
+"gc" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/obj/item/tool/kitchen/utensil/pfork,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"gd" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"ge" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680";
+	icon_state = "pipe-c";
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"gr" = (
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"gQ" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 1
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/research)
+"hx" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/asphalt/cement/cement9,
+/area/strata/interior/research)
+"hC" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 1
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"hS" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_magazine/rifle/type71,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"hT" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"ig" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/computer/communications,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"iq" = (
+/obj/structure/machinery/vending/snack{
+	pixel_x = 2
+	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 33;
+	pixel_x = -6
+	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 37;
+	pixel_x = 5
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"it" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "sunnybush_1"
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"iE" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"iK" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"iM" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"iN" = (
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"jn" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"ju" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	req_one_access = null
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"jI" = (
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"jR" = (
+/obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"ka" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_x = 6;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/stew{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"kc" = (
+/obj/item/storage/firstaid/adv,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"kd" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"ky" = (
+/obj/structure/mirror,
+/turf/closed/wall/strata_outpost,
+/area/strata/interior/research)
+"kI" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"li" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"lm" = (
+/turf/closed/wall/strata_outpost,
+/area/strata/interior/research)
+"ly" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"lF" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"lS" = (
+/obj/structure/bookcase,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"lY" = (
+/obj/structure/machinery/power/monitor{
+	name = "Main Power Grid Monitoring"
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"me" = (
+/obj/item/lightstick/red/spoke/planted{
+	layer = 3.1;
+	pixel_y = 13
+	},
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/strata/red2,
+/area/strata/exterior/deep_jungle/north)
+"mf" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/mask/gas/upp_pfb,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"mi" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"mx" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/ids,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"mF" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/interior/research)
+"mV" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"nl" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"nt" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"oj" = (
+/obj/structure/bookcase{
+	icon_state = "book-5"
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"om" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"oz" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "fullgrass_1"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"oJ" = (
+/obj/structure/platform/metal/strata/north,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/strata/interior/research)
+"oL" = (
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"oS" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"oV" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"pf" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"pl" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"pA" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/asphalt/cement/cement2,
+/area/strata/interior/research)
+"pN" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"qm" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"qx" = (
+/turf/open/asphalt/cement/cement12,
+/area/strata/interior/research)
+"qN" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"rs" = (
+/obj/structure/barricade/metal/wired,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"sf" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/computer/cameras,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"sk" = (
+/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"sy" = (
+/obj/structure/closet/fireaxecabinet,
+/turf/closed/wall/strata_outpost,
+/area/strata/interior/research)
+"sG" = (
+/obj/structure/sink{
+	dir = 4;
+	pixel_x = 11
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"tc" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"tq" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/strata/exterior/deep_jungle/north)
+"tB" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"tD" = (
+/obj/structure/machinery/light/small,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"tK" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/paper_bin{
+	pixel_y = 7;
+	pixel_x = -7
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"ud" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"uq" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	icon_state = "pointybush_1";
+	pixel_x = -4;
+	pixel_y = -5
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"vn" = (
+/obj/structure/bedsheetbin,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"vz" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"wi" = (
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"ww" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"wB" = (
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"wL" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"wM" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"wP" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_sn_full_cap"
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"wY" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"xo" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"xL" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"xO" = (
+/turf/closed/wall/wood,
+/area/strata/interior/wooden_ruins)
+"xU" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"xY" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/faxmachine{
+	target_department = "UPP High Command";
+	name = "UPP Fax Machine";
+	department = "FOB Fax";
+	network = "UPP Encrypted Network"
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"yp" = (
+/turf/open/asphalt/cement/cement15,
+/area/strata/interior/research)
+"ys" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/strata/exterior/deep_jungle/north)
+"yu" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/research)
+"yF" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"yP" = (
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/research)
+"zc" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"zl" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"zm" = (
+/obj/structure/sign/banners/upp_flag{
+	pixel_y = 31;
+	pixel_x = -16
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/weapon/gun/rifle/type71/carbine,
+/obj/item/weapon/gun/rifle/type71/carbine{
+	pixel_y = 7
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"zt" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/interior/research)
+"zu" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"zB" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk{
+	pixel_x = -8;
+	pixel_y = 15
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/condensed_milk{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/rice{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/rice{
+	pixel_x = 4;
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/vegetables{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/vegetables{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"zU" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/meat{
+	pixel_x = -5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/meat{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/food/drinks/cans/food/upp/buckwheat{
+	pixel_x = 1;
+	pixel_y = -15
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"zV" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"Ab" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	dir = 2;
+	req_access = null
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"Af" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/strata/grey_multi_tiles/southwest,
+/area/strata/interior/research)
+"Ai" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"At" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"Aw" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"AJ" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/suit/storage/webbing/brown,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/interior/research)
+"AO" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	color = "#858680"
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"Bs" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = -1
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"BW" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/attachments,
+/obj/item/storage/box/attachments,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"Cm" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"Dc" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"Dw" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"Dz" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/tcomms,
+/area/strata/interior/research)
+"DS" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/strata/fake_wood,
+/area/strata/interior/research)
+"EF" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/device/flashlight/lamp,
+/obj/item/phone{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"ET" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"Fa" = (
+/turf/open/asphalt/cement/cement4,
+/area/strata/interior/research)
+"Fi" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/interior/research)
+"Fl" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/toy/deck,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"Fr" = (
+/obj/item/stack/rods,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"FR" = (
+/turf/template_noop,
+/area/template_noop)
+"Ge" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"GE" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/weapon/gun/rifle/type71/carbine{
+	pixel_y = 7
+	},
+/obj/item/weapon/gun/rifle/type71/carbine,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"GJ" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"Hm" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/strata/exterior/deep_jungle/north)
+"HV" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/gm/dirt/brown/variant_5/south,
+/area/strata/exterior/deep_jungle/north)
+"Ix" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"IA" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"ID" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/pill_bottle/bicaridine,
+/obj/item/tool/crowbar,
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"IK" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"Jj" = (
+/obj/structure/fence/dark,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"Jm" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"Jy" = (
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"Kr" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"Ky" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"KA" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"KG" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/holobadge,
+/obj/item/storage/box/holobadge,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"KH" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 1
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/interior/research)
+"KL" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/tool{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"Ln" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/paper_bin,
+/obj/item/tool/pen/blue,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"Lt" = (
+/obj/structure/closet/secure_closet/security/soro,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"Lw" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"LL" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/mre/upp{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"LQ" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/toy/deck,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"LZ" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/obj/item/storage/box/mre/upp,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"Mc" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP"
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"MI" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/machinery/vending/sovietsoda{
+	pixel_x = -8
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"MY" = (
+/obj/structure/largecrate/random/barrel/blue,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"No" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/toolbox{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"Od" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/machinery/light,
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"Ol" = (
+/obj/structure/machinery/shower{
+	dir = 8
+	},
+/obj/structure/window/reinforced/tinted{
+	color = "#969696";
+	dir = 1
+	},
+/obj/structure/window/reinforced/tinted{
+	color = "#969696"
+	},
+/obj/structure/machinery/door/window/eastright{
+	dir = 8
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"Ps" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"Pw" = (
+/obj/structure/machinery/vending/coffee{
+	pixel_x = -4
+	},
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"Qd" = (
+/obj/structure/machinery/washing_machine,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"Qy" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"Rp" = (
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"RG" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/strata/interior/research)
+"RO" = (
+/obj/structure/machinery/computer/cameras,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"Sc" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 8;
+	req_one_access = null
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/interior/research)
+"Sr" = (
+/obj/item/storage/firstaid/adv,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"Sy" = (
+/obj/item/device/flashlight/lamp,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"SF" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 2;
+	req_one_access = null
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"SV" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"Tw" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/item/paper_bin,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"Tz" = (
+/obj/structure/window/framed/strata,
+/turf/open/floor/plating,
+/area/strata/interior/research)
+"TB" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"TK" = (
+/obj/structure/machinery/door/airlock/almayer/generic/rusted_white{
+	dir = 1
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"TY" = (
+/obj/effect/spawner/random/tool,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"Ue" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp{
+	pixel_x = -5;
+	pixel_y = 11
+	},
+/obj/item/ammo_box/magazine/misc/mre/upp,
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = 15
+	},
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"Um" = (
+/obj/structure/machinery/space_heater,
+/obj/structure/sign/poster/upp{
+	pixel_y = 33
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"UI" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/obj/structure/machinery/light,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"UJ" = (
+/obj/structure/machinery/computer/cameras{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/turf/open/floor/strata/red1,
+/area/strata/interior/research)
+"UQ" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"UX" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"Vi" = (
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"Vx" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/ammo_magazine/rifle/type71,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/obj/item/ammo_magazine/rifle/type71,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"VF" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/research)
+"VN" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"VQ" = (
+/obj/structure/disposalpipe/segment{
+	color = "#858680"
+	},
+/obj/item/stack/rods,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/strata/interior/research)
+"VU" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/old_tunnels)
+"WM" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	pixel_x = -8;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/deep_jungle/north)
+"Xk" = (
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"XT" = (
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/deep_jungle/north)
+"Yo" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony{
+	dir = 2;
+	req_one_access = null
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/research)
+"YE" = (
+/obj/structure/machinery/light,
+/turf/open/floor/strata/white_cyan2/west,
+/area/strata/interior/research)
+"YK" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"YP" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/pill_bottle/bicaridine,
+/obj/item/tool/crowbar,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/item/clothing/mask/gas/upp_pfb,
+/obj/item/clothing/mask/gas/upp_pfb,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/research)
+"YY" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/storage/firstaid/adv,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"Zg" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+"Zj" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#98a3ab"
+	},
+/obj/item/storage/box/pizza,
+/turf/open/floor/strata/floor2,
+/area/strata/interior/research)
+"Zy" = (
+/obj/item/stool,
+/turf/open/floor/strata/blue1,
+/area/strata/interior/research)
+"ZS" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/research)
+
+(1,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+pl
+bN
+bE
+oz
+iN
+iN
+dw
+pl
+iN
+pl
+gd
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(2,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+bN
+bN
+bE
+bE
+iN
+iN
+pl
+mF
+fe
+fe
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(3,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+xO
+pl
+pl
+bN
+iN
+iN
+iN
+bC
+fe
+tc
+xL
+oL
+oL
+tD
+lm
+ud
+ET
+mF
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(4,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+it
+bN
+iN
+iN
+iN
+bD
+fe
+fF
+yP
+yP
+yP
+oL
+SF
+Vi
+Vi
+mF
+FR
+FR
+lm
+lm
+lm
+lm
+lm
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(5,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+bO
+pl
+iN
+iN
+iN
+bE
+fe
+fF
+zu
+Lw
+yP
+bi
+lm
+sG
+vz
+mF
+FR
+FR
+lm
+Ue
+zB
+Kr
+lm
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(6,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+pl
+iN
+iN
+bE
+UI
+mF
+Tz
+mF
+bq
+yP
+Xk
+mF
+ky
+lm
+mF
+mF
+mF
+lm
+Jm
+aE
+aD
+lm
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(7,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+pl
+iN
+bE
+bE
+VU
+VN
+VN
+mF
+zm
+yP
+Xk
+iM
+Jy
+om
+Jy
+om
+aP
+iM
+Jy
+aF
+KA
+lm
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(8,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+mF
+mF
+mF
+mF
+mF
+ZS
+bJ
+bJ
+Rp
+mF
+Tz
+mF
+br
+yP
+Xk
+mF
+lm
+lm
+mF
+lm
+lm
+lm
+lm
+Jy
+MY
+lm
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(9,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+mF
+gc
+Dc
+fk
+Tz
+by
+bc
+bc
+by
+Tz
+kc
+LL
+bs
+yP
+bi
+lm
+jR
+bd
+lm
+YY
+Fl
+YY
+lm
+zt
+lm
+lm
+dF
+dF
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(10,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+mF
+Um
+yu
+cf
+Tz
+oL
+bc
+bc
+oL
+Tz
+RO
+gQ
+yP
+yP
+oL
+SF
+Xk
+Xk
+lm
+cY
+wi
+aJ
+Yo
+wi
+wi
+mF
+mF
+mF
+mF
+dF
+GJ
+GJ
+GJ
+XT
+XT
+dF
+dF
+dF
+FR
+FR
+FR
+FR
+"}
+(11,1,1) = {"
+FR
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+mF
+Lt
+oL
+iE
+Tz
+bL
+bc
+bc
+by
+Tz
+Sy
+UJ
+iE
+oL
+bi
+mF
+BW
+ww
+lm
+KG
+aQ
+Xk
+lm
+Cm
+wi
+lm
+tB
+mf
+mF
+dF
+uq
+GJ
+GJ
+ad
+ab
+dF
+dF
+dF
+FR
+FR
+FR
+FR
+"}
+(12,1,1) = {"
+dF
+lm
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+mF
+Sc
+mF
+mF
+bM
+Xk
+Xk
+Xk
+mF
+mF
+mF
+mF
+Fi
+KH
+mF
+RG
+lm
+mF
+dg
+wi
+wi
+lm
+aG
+wi
+Yo
+Xk
+Zg
+fe
+at
+GJ
+GJ
+GJ
+XT
+GJ
+GJ
+GJ
+GJ
+FR
+FR
+FR
+FR
+"}
+(13,1,1) = {"
+dF
+lm
+YP
+ID
+YP
+mF
+wi
+wi
+wi
+wi
+bj
+zl
+wi
+bF
+bj
+bj
+bF
+wi
+wi
+zl
+wi
+bj
+bj
+zl
+xU
+wi
+wi
+wi
+wi
+wi
+lm
+lm
+lm
+lm
+Xk
+Zg
+fe
+GJ
+as
+aq
+dT
+ad
+XT
+GJ
+GJ
+GJ
+FR
+FR
+FR
+FR
+"}
+(14,1,1) = {"
+dF
+lm
+Xk
+Xk
+Xk
+Yo
+Xk
+dC
+dC
+dC
+dC
+dC
+dC
+dC
+ge
+Xk
+Xk
+Xk
+dC
+dC
+dC
+dC
+dC
+dC
+dC
+dC
+aW
+Xk
+wi
+wi
+lm
+oL
+fG
+oL
+oL
+Od
+mF
+GJ
+GJ
+GJ
+GJ
+ad
+XT
+GJ
+GJ
+dT
+FR
+FR
+FR
+FR
+"}
+(15,1,1) = {"
+dF
+lm
+hS
+cU
+Vx
+mF
+Xk
+aR
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aR
+by
+by
+by
+aR
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aZ
+aR
+Xk
+aK
+Yo
+oL
+yP
+yP
+DS
+eS
+fe
+au
+GJ
+GJ
+GJ
+ad
+XT
+GJ
+dF
+dF
+dF
+FR
+FR
+FR
+"}
+(16,1,1) = {"
+dF
+mF
+mF
+mF
+mF
+mF
+bW
+bS
+YK
+YK
+ba
+ba
+SV
+ba
+aS
+by
+by
+li
+SV
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aS
+Xk
+wi
+lm
+At
+eg
+EF
+At
+rs
+fe
+GJ
+GJ
+GJ
+GJ
+XT
+GJ
+GJ
+dF
+dF
+dF
+FR
+FR
+FR
+"}
+(17,1,1) = {"
+dF
+mF
+sk
+No
+KL
+Jj
+bX
+kd
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+kd
+Xk
+wi
+lm
+Tz
+Tz
+mF
+fe
+fe
+mF
+wM
+XT
+GJ
+ad
+GJ
+GJ
+dF
+dF
+dF
+dF
+dF
+dF
+FR
+"}
+(18,1,1) = {"
+dF
+mF
+sk
+ca
+by
+by
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+mF
+pA
+bU
+mF
+XT
+al
+Hm
+XT
+GJ
+XT
+ad
+GJ
+me
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+"}
+(19,1,1) = {"
+dF
+mF
+IK
+oL
+by
+by
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+oV
+Fa
+qx
+wP
+ad
+al
+av
+XT
+GJ
+ab
+ad
+GJ
+GJ
+tq
+dF
+dF
+dF
+dF
+dF
+dF
+"}
+(20,1,1) = {"
+dF
+mF
+sk
+oL
+zc
+Jj
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+bt
+dC
+dC
+aA
+al
+XT
+HV
+XT
+al
+XT
+XT
+GJ
+GJ
+ys
+dF
+dF
+dF
+bT
+bT
+TB
+"}
+(21,1,1) = {"
+mF
+mF
+mF
+Tz
+Tz
+mF
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+bt
+dC
+dC
+eH
+al
+al
+aw
+al
+GJ
+al
+XT
+ah
+GJ
+GJ
+GJ
+GJ
+nt
+ax
+bT
+TB
+"}
+(22,1,1) = {"
+mF
+xY
+tK
+Mc
+Ln
+Tz
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+aY
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+bt
+dC
+dC
+Ix
+ad
+XT
+aw
+al
+XT
+al
+al
+ai
+XT
+XT
+GJ
+GJ
+nt
+bT
+bT
+TB
+"}
+(23,1,1) = {"
+mF
+lF
+wi
+zV
+hC
+Tz
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+oV
+Fa
+qx
+aB
+al
+ab
+ay
+XT
+GJ
+GJ
+am
+GJ
+XT
+ad
+XT
+GJ
+xo
+dF
+dF
+dF
+"}
+(24,1,1) = {"
+mF
+Bs
+wi
+mF
+Tz
+mF
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+mF
+hx
+yp
+mF
+ai
+XT
+Hm
+ad
+ai
+dT
+GJ
+aj
+GJ
+XT
+ab
+GJ
+GJ
+dF
+dF
+dF
+"}
+(25,1,1) = {"
+mF
+mi
+wi
+mF
+pf
+by
+bX
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+mF
+Tz
+Tz
+mF
+fe
+fe
+mF
+pN
+GJ
+ar
+an
+GJ
+ae
+XT
+GJ
+GJ
+dT
+dF
+dF
+dF
+"}
+(26,1,1) = {"
+mF
+cc
+wB
+Ab
+wi
+by
+bX
+bb
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+Xk
+wi
+mF
+Aw
+hT
+IA
+xL
+iK
+fe
+qN
+GJ
+dT
+ao
+dT
+GJ
+ad
+GJ
+GJ
+dF
+dF
+dF
+dF
+"}
+(27,1,1) = {"
+mF
+mF
+mF
+mF
+wi
+by
+bX
+kd
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+jI
+bb
+kd
+Xk
+aK
+Yo
+oL
+yP
+yu
+yP
+eS
+fe
+GJ
+dT
+GJ
+GJ
+GJ
+XT
+XT
+GJ
+GJ
+dF
+dF
+dF
+dF
+"}
+(28,1,1) = {"
+FR
+FR
+FR
+mF
+GE
+by
+bX
+bS
+gr
+YK
+ba
+ba
+ba
+ba
+ba
+qm
+by
+li
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+ba
+aS
+Xk
+wi
+lm
+aH
+oL
+oL
+oL
+kI
+mF
+GJ
+GJ
+GJ
+GJ
+XT
+fZ
+GJ
+GJ
+dF
+dF
+dF
+dF
+dF
+"}
+(29,1,1) = {"
+FR
+FR
+FR
+mF
+bY
+by
+Xk
+aT
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+aT
+by
+by
+by
+aT
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+Ps
+aT
+Xk
+wi
+sy
+lm
+lm
+lm
+ly
+Zg
+fe
+Dw
+GJ
+GJ
+XT
+ad
+XT
+me
+dF
+dF
+dF
+dF
+dF
+dF
+"}
+(30,1,1) = {"
+FR
+FR
+FR
+mF
+bZ
+by
+wi
+bc
+Xk
+Xk
+Xk
+Xk
+Xk
+Xk
+gr
+bc
+gr
+bc
+gr
+bx
+Xk
+Xk
+Xk
+Xk
+Xk
+Xk
+bc
+wi
+wi
+wi
+Af
+ga
+ga
+Yo
+Xk
+Zg
+fe
+GJ
+GJ
+GJ
+XT
+XT
+GJ
+GJ
+dF
+dF
+dF
+dF
+dF
+dF
+"}
+(31,1,1) = {"
+FR
+FR
+FR
+mF
+GE
+bL
+wi
+bc
+be
+bg
+bh
+bg
+be
+by
+oL
+bc
+gr
+bc
+oL
+by
+bu
+bn
+bh
+bg
+be
+Xk
+bc
+wi
+wi
+aL
+oJ
+Dz
+ch
+lm
+oS
+Jy
+mF
+dF
+qN
+GJ
+GJ
+XT
+GJ
+GJ
+dF
+dF
+dF
+dF
+dF
+dF
+"}
+(32,1,1) = {"
+FR
+FR
+FR
+mF
+mF
+mF
+mV
+bc
+bv
+bR
+bn
+bP
+bf
+by
+gr
+bc
+gr
+bc
+gr
+by
+bv
+bh
+bk
+bh
+bf
+Xk
+bc
+wi
+wi
+aL
+oJ
+Dz
+Dz
+lm
+lm
+ju
+mF
+dF
+dF
+GJ
+GJ
+ad
+GJ
+GJ
+dF
+dF
+dF
+dF
+dF
+dF
+"}
+(33,1,1) = {"
+FR
+FR
+lm
+cb
+wi
+lm
+sf
+AO
+be
+bg
+bR
+bg
+be
+by
+oL
+bc
+gr
+bc
+oL
+by
+be
+bo
+bl
+bg
+be
+Xk
+bc
+wi
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+Jy
+mF
+dF
+dF
+dF
+GJ
+ad
+af
+GJ
+GJ
+dF
+dF
+dF
+dF
+dF
+"}
+(34,1,1) = {"
+FR
+FR
+lm
+eD
+Jy
+TK
+by
+bc
+Xk
+Xk
+Xk
+Xk
+Xk
+Xk
+gr
+bc
+gr
+bc
+gr
+Xk
+Xk
+Xk
+Xk
+Xk
+Xk
+Xk
+bc
+wi
+Zj
+lm
+aC
+aC
+aC
+aC
+lm
+az
+mF
+mF
+mF
+mF
+ap
+XT
+XT
+GJ
+dT
+dF
+dF
+dF
+dF
+dF
+"}
+(35,1,1) = {"
+FR
+FR
+lm
+fv
+Ol
+lm
+mx
+bV
+dC
+dC
+dC
+dC
+VQ
+dC
+dC
+wi
+wi
+wi
+dC
+dC
+dC
+dC
+dC
+dC
+dC
+dC
+ge
+wi
+lY
+lm
+lm
+lm
+sy
+lm
+lm
+Jy
+Jy
+Jy
+Jy
+SF
+GJ
+ak
+ab
+GJ
+GJ
+aa
+dF
+dF
+dF
+dF
+"}
+(36,1,1) = {"
+FR
+FR
+lm
+lm
+lm
+lm
+ig
+wi
+wi
+wL
+wi
+wi
+aQ
+wi
+bK
+wi
+wi
+wi
+wi
+wi
+wi
+wi
+UX
+wi
+wi
+wi
+wi
+UX
+aK
+SF
+jn
+Jy
+Jy
+Jy
+Ge
+Jy
+Jy
+Jy
+Jy
+SF
+GJ
+ai
+ag
+GJ
+GJ
+dF
+dF
+dF
+dF
+dF
+"}
+(37,1,1) = {"
+FR
+FR
+FR
+FR
+FR
+FR
+lm
+mF
+mF
+lm
+LZ
+zU
+bB
+wi
+wi
+wi
+Tw
+bB
+Ky
+lm
+Tz
+Tz
+lm
+lm
+AJ
+AJ
+AJ
+lm
+lm
+lm
+lm
+aI
+Ge
+Jy
+LQ
+mF
+mF
+mF
+mF
+mF
+wY
+GJ
+WM
+GJ
+ac
+dF
+dF
+dF
+dF
+dF
+"}
+(38,1,1) = {"
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+lm
+UQ
+Vi
+Vi
+Vi
+Vi
+Vi
+Fr
+Vi
+Vi
+YE
+lm
+lS
+oj
+lm
+lm
+lm
+lm
+lm
+lm
+dF
+dF
+lm
+Jy
+jn
+Jy
+ex
+mF
+dF
+dF
+dF
+dF
+dF
+GJ
+GJ
+dF
+dF
+dF
+fD
+dF
+dF
+dF
+"}
+(39,1,1) = {"
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+lm
+MI
+Vi
+Qy
+Vi
+Vi
+Vi
+Vi
+Vi
+Vi
+Vi
+Ai
+Zy
+Zy
+lm
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+lm
+nl
+mF
+mF
+mF
+mF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+dF
+FR
+dF
+dF
+dF
+FR
+"}
+(40,1,1) = {"
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+lm
+iq
+Vi
+bw
+Vi
+bG
+ka
+Ai
+bH
+Vi
+bw
+Vi
+Vi
+wB
+bm
+Ge
+aM
+VF
+aN
+aM
+aN
+aM
+VF
+Ge
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+dF
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(41,1,1) = {"
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+lm
+Pw
+bQ
+bQ
+oj
+lm
+lm
+lm
+bI
+yF
+bA
+bz
+bw
+bp
+lm
+FR
+aN
+aM
+aM
+aM
+aM
+aN
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(42,1,1) = {"
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+lm
+lm
+lm
+lm
+lm
+lm
+FR
+lm
+lm
+lm
+lm
+Qd
+vn
+Qd
+lm
+FR
+FR
+Sr
+aN
+aU
+aN
+aO
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}
+(43,1,1) = {"
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+lm
+lm
+lm
+lm
+lm
+FR
+FR
+FR
+TY
+aV
+aN
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+FR
+"}

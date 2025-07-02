@@ -20,6 +20,7 @@
 	var/total_time_alive
 	var/total_damage_taken
 	var/total_revives_done = 0
+	var/total_ib_fixed = 0
 
 	var/total_brute = 0
 	var/total_burn = 0
@@ -53,6 +54,7 @@
 		"total_time_alive" = DB_FIELDTYPE_BIGINT,
 		"total_damage_taken" = DB_FIELDTYPE_INT,
 		"total_revives_done" = DB_FIELDTYPE_INT,
+		"total_ib_fixed" = DB_FIELDTYPE_INT,
 
 		"total_brute" = DB_FIELDTYPE_INT,
 		"total_burn" = DB_FIELDTYPE_INT,
@@ -114,13 +116,13 @@
 		SEND_SIGNAL(cause_mob, COMSIG_MOB_KILL_TOTAL_INCREASED, src, cause_data)
 
 	if(getBruteLoss())
-		new_death.total_brute = round(getBruteLoss())
+		new_death.total_brute = floor(getBruteLoss())
 	if(getFireLoss())
-		new_death.total_burn = round(getFireLoss())
+		new_death.total_burn = floor(getFireLoss())
 	if(getOxyLoss())
-		new_death.total_oxy = round(getOxyLoss())
+		new_death.total_oxy = floor(getOxyLoss())
 	if(getToxLoss())
-		new_death.total_tox = round(getToxLoss())
+		new_death.total_tox = floor(getToxLoss())
 
 	new_death.time_of_death = world.time
 
@@ -133,6 +135,7 @@
 	new_death.total_time_alive = life_time_total
 	new_death.total_damage_taken = life_damage_taken_total
 	new_death.total_revives_done = life_revives_total
+	new_death.total_ib_fixed = life_ib_total
 
 	if(GLOB.round_statistics)
 		GLOB.round_statistics.track_death(new_death)

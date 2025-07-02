@@ -18,9 +18,9 @@ SUBSYSTEM_DEF(item_cleanup)
 		//Do nothing for the first 35 minutes to preserve the colony look for the first drop
 		return
 
-	var/to_delete = items_to_clean_up.len * percentage_of_garbage_to_delete
+	var/to_delete = length(items_to_clean_up) * percentage_of_garbage_to_delete
 	var/deleted = 0
-	var/total_items = items_to_clean_up.len //save total before we start deleting stuff
+	var/total_items = length(items_to_clean_up) //save total before we start deleting stuff
 	for (var/atom/o in items_to_clean_up)
 		if(QDELETED(o))
 			items_to_clean_up -= o
@@ -34,27 +34,37 @@ SUBSYSTEM_DEF(item_cleanup)
 			break
 
 	//We transfer items from the global garbage list onto the next iteration list
-	while(!isnull(GLOB.item_cleanup_list) && GLOB.item_cleanup_list.len > 0)
-		addToListNoDupe(items_to_clean_up, GLOB.item_cleanup_list[GLOB.item_cleanup_list.len])
-		GLOB.item_cleanup_list -= GLOB.item_cleanup_list[GLOB.item_cleanup_list.len]
+	while(!isnull(GLOB.item_cleanup_list) && length(GLOB.item_cleanup_list) > 0)
+		addToListNoDupe(items_to_clean_up, GLOB.item_cleanup_list[length(GLOB.item_cleanup_list)])
+		GLOB.item_cleanup_list -= GLOB.item_cleanup_list[length(GLOB.item_cleanup_list)]
 
 	log_debug("item_cleanup deleted [deleted] garbage out of total [total_items]")
 
-/datum/controller/subsystem/item_cleanup/proc/delete_almayer()
-	//Should only be called for Whiskey Outpost!
+/datum/controller/subsystem/item_cleanup/proc/delete_almayer(ensure_observer_landmark_ground = TRUE)
 	delete_z_level(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP))
+	if(ensure_observer_landmark_ground && !length(GLOB.observer_starts))
+		var/turf/center = SSmapping.get_ground_center()
+		new /obj/effect/landmark/observer_start(center)
 
-/datum/controller/subsystem/item_cleanup/proc/delete_surface()
+/datum/controller/subsystem/item_cleanup/proc/delete_surface(ensure_observer_landmark_ship = TRUE)
 	//Should only be called when lag is really bad and everyone is off the surface, including the dropships
 	delete_z_level(SSmapping.levels_by_trait(ZTRAIT_GROUND))
+	if(ensure_observer_landmark_ship && !length(GLOB.observer_starts))
+		var/turf/center = SSmapping.get_mainship_center()
+		new /obj/effect/landmark/observer_start(center)
 
 /datum/controller/subsystem/item_cleanup/proc/delete_z_level(list/z_levels)
 	set background = 1
-	for(var/obj/o in world)
-		if(QDELETED(o) || isnull(o.loc))
+	for(var/obj/thing in world)
+		if(QDELETED(thing) || isnull(thing.loc))
 			continue
-		if(o.loc.z in z_levels) //item is on the proper Z-level
-			qdel(o)
+		if(thing.loc.z in z_levels) //obj is on the proper Z-level
+			qdel(thing)
+	for(var/mob/moob as anything in GLOB.living_mob_list)
+		if(QDELETED(moob) || isnull(moob.loc))
+			continue
+		if(moob.loc.z in z_levels) //living mob is on the proper Z-level
+			qdel(moob)
 
 /proc/add_to_garbage(atom/a)
 	addToListNoDupe(GLOB.item_cleanup_list, a)

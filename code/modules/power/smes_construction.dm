@@ -39,7 +39,7 @@
 			capacity += C.ChargeCapacity
 			input_level_max += C.IOCapacity
 			output_level_max += C.IOCapacity
-		charge = between(0, charge, capacity)
+		charge = clamp(charge, 0, capacity)
 		return 1
 	else
 		return 0
@@ -187,7 +187,8 @@
 	// If parent returned 1:
 	// - Hatch is open, so we can modify the SMES
 	// - No action was taken in parent function (terminal de/construction atm).
-	if (..())
+	. = ..()
+	if (.)
 
 		// Charged above 1% and safeties are enabled.
 		if((charge > (capacity/100)) && safeties_enabled && !HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
@@ -199,7 +200,7 @@
 			return
 
 		// Probability of failure if safety circuit is disabled (in %)
-		var/failure_probability = round((charge / capacity) * 100)
+		var/failure_probability = floor((charge / capacity) * 100)
 
 		// If failure probability is below 5% it's usually safe to do modifications
 		if (failure_probability < 5)

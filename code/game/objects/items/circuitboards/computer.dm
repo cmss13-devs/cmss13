@@ -26,6 +26,12 @@
 	if (..(C))
 		network = C.network
 
+/obj/item/circuitboard/computer/cameras/tv
+	name = "Circuit board (Television Set)"
+	build_path = /obj/structure/machinery/computer/cameras/wooden_tv/broadcast
+	network = list(CAMERA_NET_CORRESPONDENT)
+	req_access = list()
+
 /obj/item/circuitboard/computer/cameras/engineering
 	name = "Circuit board (Engineering Camera Monitor)"
 	build_path = /obj/structure/machinery/computer/cameras/engineering
@@ -135,7 +141,11 @@
 
 /obj/item/circuitboard/computer/ordercomp
 	name = "Circuit board (Supply ordering console)"
-	build_path = /obj/structure/machinery/computer/ordercomp
+	build_path = /obj/structure/machinery/computer/supply
+
+/obj/item/circuitboard/computer/ordercomp/upp
+	name = "Circuit board (UPP Supply ordering console)"
+	build_path = /obj/structure/machinery/computer/supply/upp
 
 /obj/item/circuitboard/computer/supply_drop_console
 	name = "Circuit board (Supply Drop Console)"
@@ -145,19 +155,23 @@
 	name = "Circuit board (Supply Drop Console)"
 	build_path = /obj/structure/machinery/computer/supply_drop_console/limited
 
+/obj/item/circuitboard/computer/supplycomp/upp
+	name = "Circuit board (General Supply Storage console)"
+	build_path = /obj/structure/machinery/computer/supply/asrs/upp
+
 /obj/item/circuitboard/computer/supplycomp
 	name = "Circuit board (ASRS console)"
-	build_path = /obj/structure/machinery/computer/supplycomp
+	build_path = /obj/structure/machinery/computer/supply/asrs
 
 	var/contraband_enabled = FALSE
 	var/black_market_lock = FALSE
 
-/obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supplycomp/SC)
+/obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supply/asrs/SC)
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
 		SC.lock_black_market(black_market_lock)
 
-/obj/item/circuitboard/computer/supplycomp/disassemble(obj/structure/machinery/computer/supplycomp/SC)
+/obj/item/circuitboard/computer/supplycomp/disassemble(obj/structure/machinery/computer/supply/asrs/SC)
 	if(SC.can_order_contraband)
 		contraband_enabled = TRUE
 	if(SC.black_market_lockout)
@@ -165,6 +179,12 @@
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
 		SC.lock_black_market(black_market_lock)
+
+//No black market under communism
+/obj/item/circuitboard/computer/supplycomp/upp/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens."))
+		return
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
@@ -174,7 +194,7 @@
 	else if(HAS_TRAIT(tool, TRAIT_TOOL_BLACKMARKET_HACKER))
 		to_chat(user, SPAN_WARNING("You start messing around with the electronics of [src]..."))
 		if(do_after(user, 8 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 				to_chat(user, SPAN_WARNING("You have no idea what you're doing."))
 				return
 			to_chat(user, SPAN_WARNING("Huh? You find a processor bus with the letters 'B.M.' written in white crayon over it. You start fiddling with it."))
@@ -200,7 +220,7 @@
 			return
 
 		playsound(tool, 'sound/machines/lockenable.ogg', 25)
-		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),\
+		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),
 		SPAN_NOTICE("You begin to fix any tampering to [src]."))
 		tool.icon_state = "[tool.icon_state]_on"
 
@@ -217,16 +237,16 @@
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
 	name = "Circuit board (vehicle ASRS console)"
-	build_path = /obj/structure/machinery/computer/supplycomp/vehicle
+	build_path = /obj/structure/machinery/computer/supply/asrs/vehicle
 	var/spent = FALSE //so that they can't just reconstruct the console to get another APC
 	var/tank_unlocked = FALSE
 
-/obj/item/circuitboard/computer/supplycomp/vehicle/construct(obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+/obj/item/circuitboard/computer/supplycomp/vehicle/construct(obj/structure/machinery/computer/supply/asrs/vehicle/SCV)
 	if (..(SCV))
 		SCV.spent = spent
 		SCV.tank_unlocked = tank_unlocked
 
-/obj/item/circuitboard/computer/supplycomp/vehicle/disassemble(obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+/obj/item/circuitboard/computer/supplycomp/vehicle/disassemble(obj/structure/machinery/computer/supply/asrs/vehicle/SCV)
 	if (..(SCV))
 		spent = SCV.spent
 		tank_unlocked = SCV.tank_unlocked
@@ -279,7 +299,7 @@
 			return
 		var/list/tempnetwork = splittext(input, ",")
 		tempnetwork = difflist(tempnetwork,GLOB.RESTRICTED_CAMERA_NETWORKS,1)
-		if(tempnetwork.len < 1)
+		if(length(tempnetwork) < 1)
 			to_chat(usr, "No network found please hang up and try your call again.")
 			return
 		network = tempnetwork

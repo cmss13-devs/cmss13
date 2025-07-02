@@ -90,9 +90,10 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 
 	GLOB.STUI?.debug.Add("\[[time]]DEBUG: [text]")
 	GLOB.STUI?.processing |= STUI_LOG_DEBUG
-	for(var/client/C in GLOB.admins)
-		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
-			to_chat(C, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
+	for(var/client/client in GLOB.admins)
+		if(CLIENT_IS_STAFF(client))
+			if(client.prefs.toggles_chat & CHAT_DEBUGLOGS)
+				to_chat(client, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
 
 
 /proc/log_game(text)
@@ -125,11 +126,11 @@ GLOBAL_VAR_INIT(log_end, world.system_type == UNIX ? ascii2text(13) : "")
 	GLOB.STUI.admin.Add("\[[time]]OVERWATCH: [text]")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
-/proc/log_idmod(obj/item/card/id/target_id, msg)
+/proc/log_idmod(obj/item/card/id/target_id, msg, changer)
 	var/time = time_stamp()
 	if (CONFIG_GET(flag/log_idmod))
-		WRITE_LOG(GLOB.world_game_log, "ID MOD: [msg]")
-		LOG_REDIS("idmod", "\[[time]\] [msg]")
+		WRITE_LOG(GLOB.world_game_log, "ID MOD: ([changer]) [msg]")
+		LOG_REDIS("idmod", "\[[time]\] ([changer]) [msg]")
 	target_id.modification_log += "\[[time]]: [msg]"
 
 /proc/log_vote(text)

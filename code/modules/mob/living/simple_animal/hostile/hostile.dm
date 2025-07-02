@@ -1,24 +1,27 @@
 /mob/living/simple_animal/hostile
 	faction = "hostile"
+	stop_automated_movement_when_pulled = 0
+	black_market_value = KILL_MENDOZA
+	dead_black_market_value = 25
 	var/stance = HOSTILE_STANCE_IDLE //Used to determine behavior
-	var/mob/living/target_mob
+	/// Weakref to our current living mob target
+	var/datum/weakref/target_mob_ref
 	var/attack_same = 0
 	var/ranged = 0
 	var/rapid = 0
 	var/projectiletype
 	var/projectilesound
 	var/casingtype
-	var/move_to_delay = 4 //delay for the automated movement.
+	/// The delay for the automated movement
+	var/move_to_delay = 4
+	/// List of weakrefs of our friend mobs
 	var/list/friends = list()
 	var/break_stuff_probability = 10
-	stop_automated_movement_when_pulled = 0
-	black_market_value = KILL_MENDOZA
-	dead_black_market_value = 25
-	var/destroy_surroundings = 1
+	var/destroy_surroundings = TRUE
 
 /mob/living/simple_animal/hostile/Destroy()
 	friends = null
-	target_mob = null
+	target_mob_ref = null
 	return ..()
 
 /mob/living/simple_animal/hostile/proc/FindTarget()
@@ -51,19 +54,20 @@
 	return T
 
 /mob/living/simple_animal/hostile/proc/evaluate_target(mob/living/target)
-	if(target.faction == src.faction && !attack_same)
+	if(target.stat)
 		return FALSE
-	else if(target in friends)
+	if((target.faction == faction || (target.faction in faction_group)) && !attack_same)
 		return FALSE
-	else
-		if(!target.stat)
-			return target
+	if(WEAKREF(target) in friends)
+		return FALSE
+	return target
 
 /mob/living/simple_animal/hostile/proc/Found(atom/A)
 	return
 
 /mob/living/simple_animal/hostile/proc/MoveToTarget()
-	stop_automated_movement = 1
+	stop_automated_movement = TRUE
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!target_mob || SA_attackable(target_mob))
 		stance = HOSTILE_STANCE_IDLE
 	if(target_mob in ListTargets(10))
@@ -71,8 +75,8 @@
 		walk_to(src, target_mob, 1, move_to_delay)
 
 /mob/living/simple_animal/hostile/proc/AttackTarget()
-
-	stop_automated_movement = 1
+	stop_automated_movement = TRUE
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!target_mob || SA_attackable(target_mob))
 		LoseTarget()
 		return 0
@@ -84,22 +88,22 @@
 		return 1
 
 /mob/living/simple_animal/hostile/proc/AttackingTarget()
+	var/mob/living/target_mob = target_mob_ref?.resolve()
 	if(!Adjacent(target_mob))
 		return
 	if(isliving(target_mob))
-		var/mob/living/L = target_mob
-		L.attack_animal(src)
-		src.animation_attack_on(L)
-		src.flick_attack_overlay(L, "slash")
-		playsound(src.loc, "alien_claw_flesh", 25, 1)
-		return L
-	if(istype(target_mob,/obj/structure/machinery/bot))
-		var/obj/structure/machinery/bot/B = target_mob
-		B.attack_animal(src)
+		target_mob.attack_animal(src)
+		animation_attack_on(target_mob)
+		flick_attack_overlay(target_mob, "slash")
+		playsound(loc, "alien_claw_flesh", 25, 1)
+		return target_mob
+	if(istype(target_mob, /obj/structure/machinery/bot))
+		var/obj/structure/machinery/bot/bot = target_mob
+		bot.attack_animal(src)
 
 /mob/living/simple_animal/hostile/proc/LoseTarget()
 	stance = HOSTILE_STANCE_IDLE
-	target_mob = null
+	target_mob_ref = null
 	walk(src, 0)
 
 /mob/living/simple_animal/hostile/proc/LostTarget()
@@ -113,11 +117,11 @@
 
 /mob/living/simple_animal/hostile/death()
 	. = ..()
-	if(!.) return //was already dead
+	if(!.)
+		return //was already dead
 	walk(src, 0)
 
 /mob/living/simple_animal/hostile/Life(delta_time)
-
 	. = ..()
 	if(!.)
 		walk(src, 0)
@@ -128,7 +132,7 @@
 	if(!stat && mobility_flags & MOBILITY_MOVE)
 		switch(stance)
 			if(HOSTILE_STANCE_IDLE)
-				target_mob = FindTarget()
+				target_mob_ref = WEAKREF(FindTarget())
 
 			if(HOSTILE_STANCE_ATTACK)
 				if(destroy_surroundings)

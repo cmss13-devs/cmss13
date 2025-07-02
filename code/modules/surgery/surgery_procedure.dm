@@ -73,6 +73,7 @@
 		if(!user.action_busy) //Otherwise, assume it's the same person.
 			to_chat(user, SPAN_WARNING("Someone is already performing surgery on [target]'s [affected_limb.display_name]!"))
 			return FALSE
+
 		return TRUE //So that you don't poke them with a tool you're already using.
 
 	if(user.action_busy)
@@ -94,6 +95,12 @@
 		to_chat(user, SPAN_WARNING("[user == target ? "You need" : "[target] needs"] to be lying down for this operation!"))
 		return FALSE
 
+	for(var/mob/living/potential_blocker in get_turf(target))
+		if(potential_blocker == user || potential_blocker == target)
+			continue
+		to_chat(user, SPAN_WARNING("You can't operate when you don't have enough space! Remove everybody else."))
+		return FALSE
+
 	if(user == target)
 		if(!self_operable)
 			to_chat(user, SPAN_WARNING("You can't perform this operation on yourself!"))
@@ -102,7 +109,6 @@
 			to_chat(user, SPAN_WARNING("You can't perform surgery on the same \
 				[user.zone_selected == "r_hand"||user.zone_selected == "l_hand" ? "hand":"arm"] you're using!"))
 			return FALSE
-
 	var/datum/surgery_step/current_step = GLOB.surgery_step_list[steps[status]]
 	if(current_step)
 		if(current_step.attempt_step(user, target, user.zone_selected, tool, src, repeating)) //First, try this step.

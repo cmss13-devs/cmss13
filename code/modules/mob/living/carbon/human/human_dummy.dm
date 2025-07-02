@@ -82,17 +82,19 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_TUTORIAL)
 	anchored = TRUE
 
-// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
-/mob/living/carbon/human/dummy/professor_dummy/Initialize(mapload)
+/mob/living/carbon/human/realistic_dummy/Initialize() // Now comes pre-fitted with Marine gear!! Tutorial realism increased by 400%!!!
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_LANDED, PROC_REF(destroy_upon_hijack))
+	status_flags |= FAKESOUL
+	create_hud()
+	arm_equipment(src, /datum/equipment_preset/uscm/tutorial_rifleman)
 
-/mob/living/carbon/human/dummy/professor_dummy/proc/destroy_upon_hijack()
-	SIGNAL_HANDLER
+/mob/living/carbon/human/realistic_dummy/updatehealth()
+	. = ..()
+	if(health >= 70)
+		SEND_SIGNAL(src, COMSIG_HUMAN_HM_TUTORIAL_TREATED)
 
-	visible_message(SPAN_WARNING("The [src] suddenly disintegrates!"))
-	dust(create_cause_data("hijack autodelete"))
-
-/mob/living/carbon/human/dummy/professor_dummy/Destroy()
-	UnregisterSignal(src, COMSIG_GLOB_HIJACK_LANDED)
-	return ..()
+/// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
+/mob/living/carbon/human/professor_dummy/Initialize()
+	. = ..()
+	create_hud()
+	arm_equipment(src, /datum/equipment_preset/other/professor_dummy)

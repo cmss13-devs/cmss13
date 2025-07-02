@@ -1,0 +1,36 @@
+2025-07-01:
+  Drathek:
+  - rscadd: Fun facts are now randomized (meaning just mentions first player meeting
+      a minimum is mentioned - not a top stat) and are only displayed for currently
+      connected players
+  TheKillfish:
+  - code_imp: Xeno Spit now uses xeno_cooldown var, like a normal ability.
+  - rscdel: Deletes now-useless vars related to Xeno Spit cooldown
+2025-07-02:
+  Drathek:
+  - balance: Base prae acid spray no longer has a windup
+  FebrezeNinja:
+  - bugfix: Medical's fax machine now properly alerts :m on receipt of priority fax.
+  - bugfix: 'Changes other department fax machines to correspond with #9804'
+  Red-byte3D:
+  - bugfix: Predator taps aka TRAIT_INTERFERENCE now stops xenos from devolving and
+      transmuting, so they dont bug themselves out forever.
+  - imageadd: Radial icons for up and down.
+  - rscadd: Radial menu for ladders, being presented for going up and down has never
+      looked better
+  - bugfix: Praetorian strains now properly get their acid removed
+  - bugfix: Your patients now need a head if you want to attach the anasthetic mask
+      on them
+  Zenith:
+  - bugfix: Fixes a mistake from a previous PR that had overwritten a RMC helmet for
+      the spec.
+  - rscadd: Adds Paramedic survivors to appropriate maps, adds civilian/unique presets
+      to NV, replaced NV "Miner" with "KMCC" preset.
+  ihatethisengine:
+  - balance: HPR doesn't require bipod for full auto, no longer spawns with one
+  matttheficus, harryob:
+  - ui: XM88 custom crosshair is now blue.
+  stalkerino:
+  - bugfix: fixes access for CO surv on solaris ridge and radio
+  tallfission:
+  - bugfix: large general pouch can no longer hold engineering toolkits

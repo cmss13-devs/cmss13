@@ -6,6 +6,7 @@
 	anchored = TRUE
 	animate_movement = 1
 	can_buckle = TRUE
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	// The mobs that are in each position/seat of the vehicle
 	var/list/mob/seats = list(
@@ -37,14 +38,21 @@
 // Standard procs
 //-------------------------------------------
 
+/obj/vehicle/Destroy(force)
+	. = ..()
+	if(!QDELETED(cell))
+		QDEL_NULL(cell)
+
 /obj/vehicle/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/vehicle/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated()) return
-	if(seats[VEHICLE_DRIVER] != user) return
+	if(user.is_mob_incapacitated())
+		return
+	if(seats[VEHICLE_DRIVER] != user)
+		return
 
 	if(world.time > l_move_time + move_delay)
 		if(on && powered && cell && cell.charge < charge_use)
@@ -84,17 +92,18 @@
 	else if(W.force)
 		switch(W.damtype)
 			if("fire")
-				health -= W.force * fire_dam_coeff
+				health -= W.force * W.demolition_mod * fire_dam_coeff
 			if("brute")
-				health -= W.force * brute_dam_coeff
-		playsound(src.loc, "smash.ogg", 25, 1)
+				health -= W.force * W.demolition_mod * brute_dam_coeff
+		playsound(loc, "smash.ogg", 25, 1)
 		user.visible_message(SPAN_DANGER("[user] hits [src] with [W]."),SPAN_DANGER("You hit [src] with [W]."))
 		healthcheck()
 	else
 		..()
 
 /obj/vehicle/attack_animal(mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 	health -= M.melee_damage_upper
 	src.visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
@@ -159,10 +168,11 @@
 
 	// Checked here because we want to be able to null the mob in a seat
 	if(!istype(M))
-		return
+		return FALSE
 
 	M.forceMove(src)
 	M.set_interaction(src)
+	return TRUE
 
 /obj/vehicle/proc/turn_on()
 	if(stat)
@@ -246,7 +256,6 @@
 /obj/vehicle/proc/RunOver(mob/living/carbon/human/H)
 	return //write specifics for different vehicles
 
-
 /obj/vehicle/afterbuckle(mob/M)
 	. = ..()
 	if(. && buckled_mob == M)
@@ -257,8 +266,6 @@
 		M.pixel_y = initial(buckled_mob.pixel_y)
 		M.old_y = initial(buckled_mob.pixel_y)
 
-/obj/vehicle/afterbuckle(mob/M)
-	. = ..()
 	if(seats[VEHICLE_DRIVER] == null)
 		seats[VEHICLE_DRIVER] = M
 

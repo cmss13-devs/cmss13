@@ -20,10 +20,10 @@
 	power_machine = TRUE
 	throwpass = FALSE
 
-	///Whether the reactor is functional
-	var/is_on = TRUE
 	///Whether the reactor is on the ship
 	var/is_ship_reactor = FALSE
+	///Whether the reactor is guaranteed to be fully repaired
+	var/is_reserved_level = FALSE
 	///If the generator is overloaded
 	var/overloaded = FALSE //Only possible during hijack once fuel is at 100%
 
@@ -65,6 +65,9 @@
 			if(6) //16%
 				buildstate = BUILDSTATE_DAMAGE_WRENCH
 
+	if(!buildstate && is_reserved_level(z))
+		buildstate = BUILDSTATE_FUNCTIONAL
+
 	if(require_fusion_cell) //Set up fuel cell if needed
 		fusion_cell = new /obj/item/fuel_cell/used(src)
 		fusion_cell.fuel_amount = fusion_cell.max_fuel_amount
@@ -79,6 +82,11 @@
 
 /obj/structure/machinery/power/reactor/LateInitialize() //Need to wait for powernets to start existing first
 	. = ..()
+
+	if(QDELETED(src))
+		return
+	if(powernet)
+		return
 
 	if(!connect_to_network()) //Make sure its connected to a powernet
 		CRASH("[src] has failed to connect to a power network. Check that it has been mapped correctly.")
@@ -135,7 +143,7 @@
 		if(overloaded)
 			. += SPAN_INFO("It is overloaded.")
 			return
-		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			. += SPAN_INFO("You could overload its safeties with a multitool.")
 
 /obj/structure/machinery/power/reactor/power_change()
@@ -237,7 +245,7 @@
 	if(overloaded)
 		xeno.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
-		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], stopping its overload process!"), \
+		xeno.visible_message(SPAN_DANGER("[xeno] [xeno.slashes_verb] [src], stopping its overload process!"),
 		SPAN_DANGER("You [xeno.slash_verb] [src], stopping its overload process!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 		set_overloading(FALSE)
 		return
@@ -339,15 +347,15 @@
 		if(!is_ship_reactor)
 			return
 
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			return
 
-		to_chat(user, SPAN_WARNING("You start [overloaded ? "overloading" : "restoring"] the safeties on [src]."))
+		to_chat(user, SPAN_WARNING("You start [overloaded ? "restoring" : "overloading"] the safeties on [src]."))
 		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 			return
 
 		if(inoperable())
-			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be overloaded."))
+			to_chat(user, SPAN_WARNING("[src] needs to be working and have external power in order to be [overloaded ? "restored" : "overloaded"]."))
 			return
 
 		set_overloading(!overloaded)
@@ -441,7 +449,7 @@
 
 	var/repair_time = 20 SECONDS
 	repair_time *= user.get_skill_duration_multiplier(SKILL_ENGINEER)
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		repair_time += 5 SECONDS
 
 	to_chat(user, SPAN_NOTICE("You start repairing [src] with [tool]."))
@@ -468,6 +476,11 @@
 	is_on = FALSE
 	power_generation_max = 100000 //100,000W at full capacity
 	original_fail_rate = 10
+
+/obj/structure/machinery/power/reactor/rostock
+	name = "\improper RDS-168 fusion reactor"
+	desc = "A RDS-168 Fusion Reactor."
+
 
 #undef BUILDSTATE_FUNCTIONAL
 #undef BUILDSTATE_DAMAGE_WELD

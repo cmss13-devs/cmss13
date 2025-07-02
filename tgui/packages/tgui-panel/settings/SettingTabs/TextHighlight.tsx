@@ -29,9 +29,20 @@ export function TextHighlightSettings(props) {
   const highlightSettings = useSelector(selectHighlightSettings);
   const dispatch = useDispatch();
 
+  let [highlightKeywords, setHighlightKeywords] = useState(
+    highlightSettings.highlightKeywords ?? [],
+  );
+
+  Byond.subscribeTo('settings/updateHighlightKeywords', (payload) =>
+    setHighlightKeywords(Object.entries(payload)),
+  );
+
   return (
     <Section fill scrollable height="250px">
       <Stack vertical>
+        <Stack.Item>
+          <KeywordMenu highlightKeywords={highlightKeywords} />
+        </Stack.Item>
         {highlightSettings.map((id, i) => (
           <TextHighlightSetting
             key={i}
@@ -72,27 +83,32 @@ const KeywordMenu = (props) => {
     highlightKeywords != null && highlightKeywords.length != 0;
 
   return (
-    <Stack.Item>
-      <Collapsible title="Keywords">
-        {keywordsExist ? (
-          <LabeledList>
+    <Collapsible title="Keywords">
+      {keywordsExist ? (
+        <Box px="0.75rem">
+          <Box color="label">
+            Instances of the following triggers (e.g. $fullName$) in highlight
+            strings will be replaced with the coresponding value, if available.
+          </Box>
+          <Flex wrap={true}>
             {highlightKeywords.map(([trigger, replacement]) => {
               trigger = '$' + trigger + '$';
               return (
-                <LabeledList.Item label={trigger}>
-                  {replacement as string}
-                </LabeledList.Item>
+                <Flex.Item width="33%" mt="0.75rem">
+                  <Box>{trigger}</Box>
+                  <Box color="label">{replacement as string}</Box>
+                </Flex.Item>
               );
             })}
-          </LabeledList>
-        ) : (
-          <Box>
-            Keywords unavailable. Occupy a character to generate highlight
-            keywords.
-          </Box>
-        )}
-      </Collapsible>
-    </Stack.Item>
+          </Flex>
+        </Box>
+      ) : (
+        <Box color="label">
+          Keywords unavailable. Occupy a character to generate highlight
+          keywords.
+        </Box>
+      )}
+    </Collapsible>
   );
 };
 
@@ -107,11 +123,6 @@ function TextHighlightSetting(props) {
     matchWord,
     matchCase,
   } = highlightSettingById[id];
-  let [highlightKeywords, setHighlightKeywords] = useState(Object.entries({}));
-
-  Byond.subscribeTo('settings/updateHighlightKeywords', (payload) =>
-    setHighlightKeywords(Object.entries(payload)),
-  );
 
   return (
     <Stack.Item {...rest}>
@@ -131,7 +142,6 @@ function TextHighlightSetting(props) {
             Delete
           </Button>
         </Stack.Item>
-        <KeywordMenu highlightKeywords={highlightKeywords} />
         <Stack.Item>
           <Button.Checkbox
             checked={highlightWholeMessage}

@@ -23,12 +23,17 @@ import {
   selectHighlightSettingById,
   selectHighlightSettings,
 } from '../selectors';
+import { useEffect } from 'react';
 
 export function TextHighlightSettings(props) {
   const highlightSettings = useSelector(selectHighlightSettings);
   const dispatch = useDispatch();
 
   const highlightKeywords = useSelector(selectHighlightKeywords);
+  // Ensures the *current* values are retroactively highlighted.
+  useEffect(() => {
+    dispatch(rebuildChat());
+  }, highlightKeywords);
 
   return (
     <Section fill scrollable height="250px">

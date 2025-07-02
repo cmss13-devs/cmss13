@@ -1270,6 +1270,9 @@
 "adT" = (
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/maint)
+"adU" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/desert_dam/building/water_treatment_two/equipment)
 "adV" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -179927,8 +179930,8 @@ wnM
 tSa
 niX
 mif
-mif
-mif
+adU
+adU
 mif
 mif
 mNA

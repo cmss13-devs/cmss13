@@ -1,4 +1,0 @@
-author: "tallfission"
-delete-after: True
-changes:
-  - bugfix: "large general pouch can no longer hold engineering toolkits"

@@ -369,9 +369,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dw" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF")
-	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dy" = (
@@ -941,8 +939,7 @@
 "nW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -1877,8 +1874,7 @@
 /area/bigredv2/caves/mining)
 "DI" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 4;
-	faction_group = list("CLF")
+	dir = 4
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
@@ -1890,8 +1886,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/burger,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -2345,8 +2340,7 @@
 	pixel_x = 6
 	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 4;
-	faction_group = list("CLF")
+	dir = 4
 	},
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
@@ -2952,8 +2946,7 @@
 /area/bigredv2/caves/mining)
 "Tw" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)

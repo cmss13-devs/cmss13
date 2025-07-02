@@ -101,7 +101,7 @@
 	. = ..()
 	if(get_dist(src, user) <= 4)
 		if(sortTag)
-			. += SPAN_NOTICE("It is labeled \"[sortTag]\"")
+			. += SPAN_NOTICE("There's a sorting tag with the destination set to \"[sortTag]\"")
 		if(examtext)
 			. += SPAN_NOTICE("It has a note attached which reads, \"[examtext]\"")
 
@@ -206,7 +206,7 @@
 	. = ..()
 	if(get_dist(src, user) <= 4)
 		if(sortTag)
-			. += SPAN_NOTICE("It is labeled \"[sortTag]\"")
+			. += SPAN_NOTICE("There's a sorting tag with the destination set to \"[sortTag]\"")
 		if(examtext)
 			. += SPAN_NOTICE("It has a note attached which reads, \"[examtext]\"")
 
@@ -339,23 +339,22 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
-/obj/item/device/destTagger/proc/openwindow(mob/user)
+/obj/item/device/destTagger/proc/openwindow(mob/user as mob)
 	var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
-	for(var/i = 1, i <= length(GLOB.tagger_locations), i++)
-		dat += "<td><a href='byond://?src=\ref[src];nextTag=[GLOB.tagger_locations[i]]'>[GLOB.tagger_locations[i]]</a></td>"
+	for(var/i = 1 to length(GLOB.tagger_locations))
+		var/encoded_tag = html_encode(GLOB.tagger_locations[i])
+		dat += "<td><a href='byond://?src=\ref[src];nextTag=[encoded_tag]'>[encoded_tag]</a></td>"
 
 		if (i%4==0)
 			dat += "</tr><tr>"
 
 	dat += "</tr></table><br>Current Selection: [currTag ? currTag : "None"]</tt>"
-
-	user << browse(HTML_SKELETON(dat), "window=destTagScreen;size=450x350")
+	show_browser(user, dat, "Whiskey Outpost Destination Tagger")
 	onclose(user, "destTagScreen")
 
-/obj/item/device/destTagger/attack_self(mob/user)
-	..()
+/obj/item/device/destTagger/attack_self(mob/user as mob)
 	openwindow(user)
 
 /obj/item/device/destTagger/Topic(href, href_list)

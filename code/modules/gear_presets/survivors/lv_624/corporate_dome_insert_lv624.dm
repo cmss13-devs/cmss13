@@ -55,7 +55,7 @@
 	name = "Survivor - Corporate Security Goon Medic"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_MEDIC
-	rank = JOB_WY_GOON_MEDIC
+	job_title = JOB_WY_GOON_MEDIC
 	skills = /datum/skills/civilian/survivor/goon/medic
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL)
 	minimap_icon = "goon_med"
@@ -82,7 +82,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/robust(new_human), WEAR_R_HAND) //pills packs splints and analyzer
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/corporate/no_lock, WEAR_J_STORE)
 
@@ -92,7 +92,7 @@
 	name = "Survivor - Corporate Security Goon Technician"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_TECH
-	rank = JOB_WY_GOON_TECH
+	job_title = JOB_WY_GOON_TECH
 	skills = /datum/skills/civilian/survivor/goon/tech
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_ENGINEERING)
 	minimap_icon = "goon_engi"
@@ -115,7 +115,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(new_human), WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_R_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/corporate/no_lock, WEAR_J_STORE)
 
@@ -125,7 +125,7 @@
 	name = "Survivor - Corporate Security Goon Lead"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = JOB_WY_GOON_LEAD
-	rank = JOB_WY_GOON_LEAD
+	job_title = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/goon/lead
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_ENGINEERING, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL, ACCESS_WY_MEDICAL, ACCESS_WY_ENGINEERING)
@@ -148,7 +148,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/nsg23(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/nsg23(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/wy/mod88_near_empty, WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/wy, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full/black, WEAR_R_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/nsg23/no_lock/stripped, WEAR_J_STORE)
 
@@ -159,7 +159,7 @@
 	name = "Survivor - Synthetic - Corporate Security Goon Synthetic"
 	idtype = /obj/item/card/id/silver/cl
 	assignment = JOB_WY_GOON_SYNTH
-	rank = JOB_WY_GOON_SYNTH
+	job_title = JOB_WY_GOON_SYNTH
 	minimap_icon = "goon_synth"
 	role_comm_title = "WY Syn"
 	equipment_to_spawn = list(

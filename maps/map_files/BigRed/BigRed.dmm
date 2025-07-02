@@ -8530,6 +8530,20 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
+"aDh" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/bigredv2/secondfloor/rooftops)
 "aDi" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/engine,
@@ -20739,6 +20753,20 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
+"bmv" = (
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -12;
+	pixel_y = 25
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 10;
+	pixel_y = 25
+	},
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/secondfloor/rooftops)
 "bmw" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/structure/machinery/light/double/blue{
@@ -21337,10 +21365,6 @@
 /area/bigredv2/outside/engineering)
 "bol" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	light_color = "#a7dbc7"
-	},
 /turf/open/floor/red/north,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bom" = (
@@ -28530,6 +28554,10 @@
 "bIZ" = (
 /obj/effect/decal/cleanable/blood{
 	layer = 3
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/red/north,
 /area/bigredv2/secondfloor/indoors/dorms)
@@ -174082,14 +174110,14 @@ bRo
 bMs
 bMp
 aEc
-gfc
+bmv
 ghU
 ghU
-nPR
+aDh
 ghU
 ghU
 ghU
-nPR
+aDh
 bQd
 eJJ
 blL

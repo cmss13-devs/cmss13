@@ -289,13 +289,6 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"aU" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -593,6 +586,13 @@
 "bW" = (
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
+"bX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/cic)
 "bY" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/spray/cleaner{
@@ -18570,7 +18570,7 @@ hw
 iS
 jq
 iS
-aU
+bX
 mo
 mM
 nw

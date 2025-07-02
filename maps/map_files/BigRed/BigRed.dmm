@@ -1535,6 +1535,11 @@
 /obj/structure/ladder/multiz,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"afL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/white,
+/area/bigredv2/secondfloor/indoors/dorms)
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
@@ -2051,6 +2056,11 @@
 	},
 /turf/open/floor/darkpurple2,
 /area/bigredv2/caves/lambda/xenobiology)
+"ahG" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/warnwhite/southeast,
+/area/bigredv2/secondfloor/indoors/dorms)
 "ahH" = (
 /turf/open/floor/darkpurple2,
 /area/bigredv2/caves/lambda/breakroom)
@@ -4271,14 +4281,7 @@
 /area/bigredv2/outside/general_store)
 "apv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/reinforced,
-/obj/item/trash/tray{
-	pixel_y = 9
-	},
-/obj/item/reagent_container/food/drinks/coffee{
-	pixel_x = 5;
-	pixel_y = -1
-	},
+/obj/structure/ladder/multiz,
 /turf/open/floor/red,
 /area/bigredv2/secondfloor/indoors/dorms)
 "apw" = (
@@ -7290,6 +7293,7 @@
 /area/bigredv2/outside/medical)
 "azy" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/redcorner/west,
 /area/bigredv2/secondfloor/indoors/dorms)
 "azz" = (
@@ -8526,9 +8530,6 @@
 	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/library)
-"aDh" = (
-/turf/open/floor/red/west,
-/area/bigredv2/secondfloor/indoors/dorms)
 "aDi" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/engine,
@@ -8748,6 +8749,13 @@
 "aDM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/reinforced,
+/obj/item/trash/tray{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 5;
+	pixel_y = -1
+	},
 /turf/open/floor/red/east,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aDN" = (
@@ -10830,6 +10838,11 @@
 	},
 /turf/open/floor/bluegrid/damaged3,
 /area/bigredv2/caves/lambda/research)
+"aJN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/red/north,
+/area/bigredv2/secondfloor/indoors/dorms)
 "aJO" = (
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7"
@@ -12174,7 +12187,7 @@
 	name = "????";
 	stat = 2
 	},
-/turf/open/floor/white,
+/turf/open/floor/redcorner/north,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aNF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13359,7 +13372,7 @@
 /obj/item/device/camera,
 /obj/structure/machinery/light/double/blue,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/redfull/northwest,
+/turf/open/floor/red/southwest,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aQZ" = (
 /obj/structure/machinery/vending/security,
@@ -13683,7 +13696,7 @@
 "aRT" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/restraint/handcuffs,
-/turf/open/floor/redfull/northwest,
+/turf/open/floor/red/southeast,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aRU" = (
 /obj/effect/decal/cleanable/dirt,
@@ -14543,7 +14556,7 @@
 /area/bigredv2/secondfloor/indoors/dorms)
 "aUo" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/red,
+/turf/open/floor/red/southeast,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aUp" = (
 /obj/structure/largecrate/random/case/double,
@@ -15565,7 +15578,7 @@
 /obj/structure/machinery/computer/cameras/wooden_tv{
 	dir = 4
 	},
-/turf/open/floor/redfull/northwest,
+/turf/open/floor/red/west,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aXh" = (
 /obj/structure/prop/almayer/computers/sensor_computer3,
@@ -16921,7 +16934,7 @@
 /area/bigredv2/outside/admin_building)
 "bbq" = (
 /obj/structure/surface/table/reinforced,
-/turf/open/floor,
+/turf/open/floor/red/east,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bbr" = (
 /obj/effect/decal/cleanable/dirt,
@@ -20388,7 +20401,7 @@
 	name = "Lambda Checkpoint Exterior";
 	pixel_x = null
 	},
-/turf/open/floor/redfull/northwest,
+/turf/open/floor/red/northwest,
 /area/bigredv2/secondfloor/indoors/dorms)
 "blu" = (
 /turf/open/floor/asteroidwarning/northeast,
@@ -20706,7 +20719,11 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/recharger,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/redfull/northwest,
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
+	},
+/turf/open/floor/red/north,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bms" = (
 /obj/structure/machinery/autolathe,
@@ -20722,11 +20739,6 @@
 /obj/structure/surface/table,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
-"bmv" = (
-/obj/structure/surface/table/reinforced,
-/obj/item/pizzabox/vegetable,
-/turf/open/floor/redfull/northwest,
-/area/bigredv2/secondfloor/indoors/dorms)
 "bmw" = (
 /obj/structure/closet/secure_closet/engineering_chief,
 /obj/structure/machinery/light/double/blue{
@@ -20772,13 +20784,6 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
-"bmE" = (
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	light_color = "#a7dbc7"
-	},
-/turf/open/floor/red/north,
-/area/bigredv2/secondfloor/indoors/dorms)
 "bmF" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/dark,
@@ -21332,6 +21337,10 @@
 /area/bigredv2/outside/engineering)
 "bol" = (
 /obj/structure/surface/table/reinforced,
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/red/north,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bom" = (
@@ -22167,7 +22176,7 @@
 "bqC" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/storage/donut_box,
-/turf/open/floor/redfull/northwest,
+/turf/open/floor/red/northeast,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bqD" = (
 /obj/structure/barricade/handrail,
@@ -24349,6 +24358,9 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/warnwhite,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bwF" = (
@@ -25841,7 +25853,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/turf/open/floor/warnwhite,
+/turf/open/floor/white,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bBG" = (
 /obj/effect/decal/warning_stripes{
@@ -27258,15 +27270,13 @@
 /area/bigredv2/secondfloor/indoors/dorms)
 "bGa" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double/blue{
-	light_color = "#a7dbc7"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
 	pixel_y = 1;
 	pixel_x = -1
 	},
-/turf/open/floor/warnwhite,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/white,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bGb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -27492,12 +27502,9 @@
 /turf/open/floor/darkgreen2/west,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bGA" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	id = "lambda-exterior-lvl2";
-	name = "Lambda Checkpoint Exterior"
-	},
-/turf/open/floor/delivery,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/warnwhite,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bGB" = (
 /obj/structure/machinery/light/double/blue{
@@ -27510,12 +27517,8 @@
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/outside/n)
 "bGD" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	id = "lambda-exterior-lvl2";
-	name = "Lambda Checkpoint Exterior"
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/delivery,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bGE" = (
@@ -28188,22 +28191,9 @@
 	},
 /turf/open/floor/warnwhite/north,
 /area/bigredv2/secondfloor/indoors/dorms)
-"bIj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light/double/blue{
-	dir = 1;
-	light_color = "#a7dbc7"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	pixel_x = -1
-	},
-/turf/open/floor/warnwhite/north,
-/area/bigredv2/secondfloor/indoors/dorms)
 "bIk" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/floor/warnwhite/north,
+/turf/closed/wall/mineral/bone_resin,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bIl" = (
 /obj/effect/decal/cleanable/blood{
@@ -28514,7 +28504,34 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/warnwhite/west,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bIW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/guncabinet/wy,
+/obj/item/weapon/gun/smg/m39/corporate/no_lock,
+/turf/open/floor/red/northwest,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bIX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/white,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bIY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/reinforced,
+/obj/item/pizzabox/vegetable,
+/turf/open/floor/red/west,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bIZ" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/turf/open/floor/red/north,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bJa" = (
 /obj/structure/surface/table,
@@ -28543,6 +28560,9 @@
 	stat = 2
 	},
 /turf/open/floor/wood,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bJd" = (
+/turf/closed/wall/mineral/bone_resin,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bJe" = (
 /obj/structure/surface/table,
@@ -29650,6 +29670,10 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/secondfloor/indoors/operations)
+"bMa" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/white,
+/area/bigredv2/secondfloor/indoors/dorms)
 "bMb" = (
 /obj/item/stack/sheet/wood,
 /obj/item/stack/sheet/wood,
@@ -29882,6 +29906,16 @@
 /obj/item/stack/sheet/metal,
 /turf/open/floor/darkgreen2/west,
 /area/bigredv2/secondfloor/indoors/dorms)
+"bMG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/warnwhite/north,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bMH" = (
+/turf/closed/wall/mineral/bone_resin,
+/area/bigredv2/secondfloor/rooftops)
 "bMI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -48078,6 +48112,7 @@
 /area/bigredv2/caves/mining)
 "rGD" = (
 /obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/ladder/multiz,
 /turf/open/floor/red/north,
 /area/bigredv2/outside/lambda_cave_cas)
 "rGP" = (
@@ -187718,11 +187753,11 @@ aCF
 aCF
 aCF
 mIc
-odN
+aEc
 bHO
 bmk
 buN
-odN
+aEc
 ajg
 aCF
 aCF
@@ -188369,11 +188404,11 @@ aCF
 aCF
 aCF
 mIc
-odN
+aEc
 bmo
 bmk
 buN
-odN
+aEc
 ajg
 aCF
 aCF
@@ -188809,15 +188844,15 @@ bHl
 bwo
 aEc
 aEc
-odN
-odN
+aEc
+aEc
+aEc
 aEc
 aEc
 aEc
 odN
-odN
 aEc
-odN
+aEc
 odN
 aEc
 kcM
@@ -189027,14 +189062,14 @@ bwq
 odN
 blt
 aXg
-bQR
+bIY
 aRV
+aEc
 aEc
 aEc
 aOH
 aKs
 aFG
-aDh
 azw
 aEc
 aEc
@@ -189248,10 +189283,10 @@ aWC
 aRX
 aQV
 aEc
+aEc
 aPK
 aNC
 aGD
-atl
 azy
 asC
 apj
@@ -189453,20 +189488,20 @@ bPP
 bPP
 bPP
 bPP
-bPP
+bMH
 aEc
-bIi
+bMG
 bHH
 bBF
-odN
-bmv
+bsv
+bQZ
 aXA
 aWM
 aTU
 aQV
 aEc
-aPL
-bmk
+aEc
+aJN
 atl
 atl
 atl
@@ -189669,20 +189704,20 @@ bPP
 bPP
 bPP
 bPP
-bPP
-bPP
-aEc
-bIj
+bMH
+bMH
+bJd
+bJd
 bHI
 bGa
-aEc
-bmE
+bsv
+bQZ
 aZS
 aWM
 aTZ
 aQY
 aEc
-aPL
+bIW
 aNE
 bmk
 atl
@@ -189886,14 +189921,14 @@ bPP
 bPP
 bPP
 bPP
-bPP
-bPP
-aEc
+bMH
+bMH
+bJd
 bIk
-bmk
-buN
-bsv
-aXf
+bJd
+bJd
+aEc
+bIZ
 aXA
 aWM
 bQR
@@ -190104,12 +190139,12 @@ bPP
 bPP
 bPP
 bPP
-bPP
-aEc
-bGD
+bMH
+bJd
+bJd
+bJd
 bGA
-bGA
-aEc
+odN
 bol
 aWM
 aXf
@@ -190121,7 +190156,7 @@ aNH
 aJb
 bmk
 bmk
-bmk
+afL
 apW
 aEc
 kcM
@@ -190322,9 +190357,9 @@ bPP
 bPP
 bPP
 bPP
-aEc
-bHU
-bmk
+bJd
+bJd
+atl
 buN
 odN
 bqC
@@ -190541,8 +190576,8 @@ bPP
 bPP
 aEc
 bGD
-bGA
-bGD
+grU
+bsx
 aEc
 aqB
 aqB
@@ -190984,7 +191019,7 @@ brd
 bIJ
 bIF
 bmk
-bIE
+bIX
 brd
 brd
 brh
@@ -191193,7 +191228,7 @@ bPP
 aEc
 bIl
 atl
-atl
+bMa
 bsx
 bqR
 bIA
@@ -191206,7 +191241,7 @@ bIA
 aKq
 aDZ
 aCC
-arj
+ahG
 pkQ
 aEc
 bPP

@@ -2,9 +2,12 @@ import { useDispatch, useSelector } from 'tgui/backend';
 import {
   Box,
   Button,
+  Collapsible,
   ColorBox,
   Divider,
+  Flex,
   Input,
+  LabeledList,
   Section,
   Stack,
   TextArea,
@@ -20,6 +23,7 @@ import {
   selectHighlightSettingById,
   selectHighlightSettings,
 } from '../selectors';
+import { useState } from 'react';
 
 export function TextHighlightSettings(props) {
   const highlightSettings = useSelector(selectHighlightSettings);
@@ -62,6 +66,36 @@ export function TextHighlightSettings(props) {
   );
 }
 
+const KeywordMenu = (props) => {
+  let { highlightKeywords } = props;
+  let keywordsExist =
+    highlightKeywords != null && highlightKeywords.length != 0;
+
+  return (
+    <Stack.Item>
+      <Collapsible title="Keywords">
+        {keywordsExist ? (
+          <LabeledList>
+            {highlightKeywords.map(([trigger, replacement]) => {
+              trigger = '$' + trigger + '$';
+              return (
+                <LabeledList.Item label={trigger}>
+                  {replacement as string}
+                </LabeledList.Item>
+              );
+            })}
+          </LabeledList>
+        ) : (
+          <Box>
+            Keywords unavailable. Occupy a character to generate highlight
+            keywords.
+          </Box>
+        )}
+      </Collapsible>
+    </Stack.Item>
+  );
+};
+
 function TextHighlightSetting(props) {
   const { id, ...rest } = props;
   const highlightSettingById = useSelector(selectHighlightSettingById);
@@ -73,6 +107,11 @@ function TextHighlightSetting(props) {
     matchWord,
     matchCase,
   } = highlightSettingById[id];
+  let [highlightKeywords, setHighlightKeywords] = useState(Object.entries({}));
+
+  Byond.subscribeTo('settings/updateHighlightKeywords', (payload) =>
+    setHighlightKeywords(Object.entries(payload)),
+  );
 
   return (
     <Stack.Item {...rest}>
@@ -92,6 +131,7 @@ function TextHighlightSetting(props) {
             Delete
           </Button>
         </Stack.Item>
+        <KeywordMenu highlightKeywords={highlightKeywords} />
         <Stack.Item>
           <Button.Checkbox
             checked={highlightWholeMessage}

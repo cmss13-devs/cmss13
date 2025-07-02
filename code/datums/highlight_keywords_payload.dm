@@ -17,6 +17,7 @@
 
 	name_full = mob.real_name
 	job_full = mob.get_role_name()
+	job_comm_title = mob.comm_title
 
 	if(ishuman(mob))
 		var/first_name_end = findtext(name_full, " ")

@@ -63,8 +63,8 @@
 // Paramedic
 
 /obj/item/clothing/under/hybrisa/paramedic
-	name = "\improper Nova Medica - EMT - Paramedic uniform"
-	desc = "A set of Nova-Medica EMT - Paramedic fatigues, this one is green."
+	name = "\improper EMT - Paramedic uniform"
+	desc = "A set of EMT - Paramedic fatigues, this one is green."
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
@@ -81,8 +81,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/under/hybrisa/paramedic/red
-	name = "\improper Nova Medica - EMT - Paramedic uniform"
-	desc = "A set of Nova-Medica EMT - Paramedic fatigues, this one is red."
+	name = "\improper EMT - Paramedic uniform"
+	desc = "A set of EMT - Paramedic fatigues, this one is red."
 	icon_state = "paramedic_redblack_uniform"
 	worn_state = "paramedic_redblack_uniform"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -622,7 +622,6 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
 	slowdown = 1
 	flags_inventory = NOPRESSUREDMAGE
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
@@ -645,6 +644,15 @@
 		return
 
 	return COMPONENT_NO_IGNITE
+
+// UPP firefighter
+
+/obj/item/clothing/suit/storage/marine/light/vest/fire_light/upp
+	name = "T-20 fire response coat"
+	desc = "A rugged, no-frills fire-resistant overcoat issued to UPP industrial and emergency crews. Based on the PyroTex LT design but using cheaper, domestically produced materials, it offers basic protection against heat and debris at the cost of weight and comfort."
+	icon_state = "upp_firefighter_alt"
+	item_state = "upp_firefighter_alt"
+	uniform_restricted = FALSE
 
 // Kelland Mining
 
@@ -688,7 +696,6 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
 
 /obj/item/clothing/suit/storage/marine/light/vest/hybrisa_kelland_alt
 	name = "\improper Kelland-Mining utility uniform"
@@ -730,13 +737,12 @@
 		/obj/item/storage/belt/gun/m39,
 		/obj/item/storage/belt/gun/xm51,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_PONCHO)
 
 // EMT - Paramedic
 
 /obj/item/clothing/suit/hybrisa/EMT_green_utility
-	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
-	desc = "A set of Nova-Medica EMT - Paramedic utility fatigues, this one is green."
+	name = "\improper EMT - Paramedic utility fatigues"
+	desc = "A set of EMT - Paramedic utility fatigues, this one is green."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -746,8 +752,8 @@
 	uniform_restricted = null
 
 /obj/item/clothing/suit/hybrisa/EMT_red_utility
-	name = "\improper Nova Medica - EMT - Paramedic utility fatigues"
-	desc = "A set of Nova-Medica EMT - Paramedic utility fatigues, this one is red."
+	name = "\improper EMT - Paramedic utility fatigues"
+	desc = "A set of EMT - Paramedic utility fatigues, this one is red."
 	icon = 'icons/obj/items/clothing/suits/hazard.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/hazard.dmi',
@@ -852,11 +858,10 @@
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/vest/hybrisa/civilian_vest
 	name = "armored vest"
-	desc = "An civilian, unmarked armored vest that protects against some damage."
+	desc = "An general-use, unmarked armored vest that protects against some damage."
 	icon_state = "generic_ballistic_armor"
 	item_state = "generic_ballistic_armor"
 	uniform_restricted = null
@@ -868,7 +873,6 @@
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 // Hazard Vests
 
@@ -1024,8 +1028,8 @@
 	new /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest(src)
 	new /obj/item/clothing/under/hybrisa/nspa_officer(src)
 	new /obj/item/storage/backpack/security(src)
-	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/storage/belt/gun/l54(src)
 
 // Miner Closet
 
@@ -1078,6 +1082,11 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
+/obj/item/clothing/under/hybrisa/nspa_officer/warm_weather
+	desc = "A short-sleeved olive-green button-up shirt with matching trousers and black webbing straps; a standard NSPA warm weather patrol uniform, issued for use in hotter climates across the Neroid Sector, inspired by historic colonial policing attire for a practical yet sharp look."
+	icon_state = "nspa_police_warm"
+	worn_state = "nspa_police_warm"
+
 // Suits & Armor
 
 /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest
@@ -1098,7 +1107,6 @@
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_jacket
 	name = "\improper NSPA police jacket"

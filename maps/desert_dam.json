@@ -5,6 +5,7 @@
     "webmap_url": "Trijent",
     "survivor_types": [
         "/datum/equipment_preset/survivor/doctor/trijent",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
         "/datum/equipment_preset/survivor/scientist/trijent",
         "/datum/equipment_preset/survivor/roughneck",
         "/datum/equipment_preset/survivor/chaplain/trijent",
@@ -15,7 +16,9 @@
         "/datum/equipment_preset/survivor/trucker/trijent",
         "/datum/equipment_preset/survivor/security/trijent",
         "/datum/equipment_preset/survivor/corporate/trijent",
-        "/datum/equipment_preset/survivor/civilian"
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/civilian_unique",
+        "/datum/equipment_preset/survivor/hybrisa/fire_fighter"
     ],
     "defcon_triggers": [
         3300,

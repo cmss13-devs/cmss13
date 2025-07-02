@@ -1,4 +1,0 @@
-author: "ihatethisengine"
-delete-after: True
-changes:
-  - balance: "HPR doesn't require bipod for full auto, no longer spawns with one"

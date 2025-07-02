@@ -7,7 +7,6 @@ import {
   Divider,
   Flex,
   Input,
-  LabeledList,
   Section,
   Stack,
   TextArea,
@@ -20,22 +19,16 @@ import {
   updateHighlightSetting,
 } from '../actions';
 import {
+  selectHighlightKeywords,
   selectHighlightSettingById,
   selectHighlightSettings,
 } from '../selectors';
-import { useState } from 'react';
 
 export function TextHighlightSettings(props) {
   const highlightSettings = useSelector(selectHighlightSettings);
   const dispatch = useDispatch();
 
-  let [highlightKeywords, setHighlightKeywords] = useState(
-    highlightSettings.highlightKeywords ?? [],
-  );
-
-  Byond.subscribeTo('settings/updateHighlightKeywords', (payload) =>
-    setHighlightKeywords(Object.entries(payload)),
-  );
+  const highlightKeywords = useSelector(selectHighlightKeywords);
 
   return (
     <Section fill scrollable height="250px">

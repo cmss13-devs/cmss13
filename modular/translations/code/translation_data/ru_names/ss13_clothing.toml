@@ -1,0 +1,24 @@
+# Uncategorized clothing
+# Uniform, suit, head, gloves, boots, belts, backpack <- everything character wears
+
+# MARK: backpacks
+
+["medical backpack"]
+nominative = "медицинский рюкзак"
+genitive = "медицинского рюкзака"
+dative = "медицинскому рюкзаку"
+accusative = "медицинский рюкзак"
+instrumental = "медицинским рюкзаком"
+prepositional = "медицинском рюкзаке"
+gender = "male"
+
+# MARK: satchels
+
+["medical satchel"]
+nominative = "медицинская сумка"
+genitive = "медицинской сумки"
+dative = "медицинской сумке"
+accusative = "медицинскую сумку"
+instrumental = "медицинской сумкой"
+prepositional = "медицинской сумке"
+gender = "female"

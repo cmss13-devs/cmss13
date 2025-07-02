@@ -567,7 +567,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 								vend_fail()
 								return FALSE
 
-							var/p_name = itemspec[1]
+							var/p_name = itemspec["english_name"] || itemspec[1] // SS220 - EDIT FIX REDEEM SPEC BOXES
 							if(!(p_name in GLOB.specialist_set_name_dict))
 								return
 
@@ -817,7 +817,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 //-----------TGUI PROCS------------------------
 /obj/structure/machinery/cm_vending/ui_static_data(mob/user)
 	. = list()
-	.["vendor_name"] = name
+	.["vendor_name"] = capitalize(declent_ru(NOMINATIVE)) // SS220 - EDIT ADDITTION
 	.["vendor_type"] = "base"
 	.["theme"] = vendor_theme
 	if(vend_flags & VEND_FACTION_THEMES)
@@ -1311,6 +1311,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			"prod_cost" = p_cost,
 			"image" = imgid,
 			"image_size" = image_size,
+			"prod_name_en" = myprod["english_name"] || p_name, // BANDAMARINES EDIT ADD - Vendor Translate
 		)
 
 		if (is_category == 1)

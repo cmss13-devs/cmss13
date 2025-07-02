@@ -8,7 +8,7 @@
 	mob_max = 15
 	mob_min = 1
 	probability = 0
-	objectives = "Assist the USCM forces"
+	objectives = "Окажите поддержку силам КМП."
 	max_heavies = 4
 	max_medics = 2
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
@@ -21,7 +21,7 @@
 	leaders = cryo_squad.roles_in[JOB_SQUAD_LEADER]
 	. = ..()
 	if(length(members))
-		shipwide_ai_announcement("Successfully deployed [length(members)] Foxtrot marines.")
+		shipwide_ai_announcement("Было успешно развернуто [length(members)] морпехов Фокстрота.")
 
 /datum/emergency_call/cryo_squad_equipped/create_member(datum/mind/M, turf/override_spawn_loc)
 	set waitfor = 0

@@ -1,5 +1,5 @@
-#define STANDARD_VARIANT "Working Joe"
-#define HAZMAT_VARIANT "Hazmat Joe"
+#define STANDARD_VARIANT JOB_WORKING_JOE_RU // SS220 EDIT TRANSLATE
+#define HAZMAT_VARIANT JOB_HAZMAT_JOE_RU // SS220 EDIT TRANSLATE
 
 /datum/job/civilian/working_joe
 	title = JOB_WORKING_JOE
@@ -14,7 +14,7 @@
 	gear_preset = /datum/equipment_preset/synth/working_joe
 	gets_emergency_kit = FALSE
 
-	job_options = list(STANDARD_VARIANT = "JOE", HAZMAT_VARIANT = "HAZ")
+	job_options = list(STANDARD_VARIANT = "ДЖО", HAZMAT_VARIANT = "ХАЗ")
 	var/standard = TRUE
 
 /datum/job/civilian/working_joe/check_whitelist_status(mob/user)

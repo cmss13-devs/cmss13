@@ -22,7 +22,7 @@
 
 	sleep(100)
 	if(announce)
-		marine_announcement("Abnormal activity detected in the ship power system. As a precaution, power must be shut down for an indefinite duration.", "Critical Power Failure", 'sound/AI/poweroff.ogg')
+		marine_announcement("Обнаружена аномальная активность в системе энергоснабжения корабля. В качестве меры предосторожности питание должно быть отключено на неопределенный срок.", "Аварийное отключение электроэнергии", 'sound/AI/poweroff.ogg')
 
 /proc/power_restore(announce = 1)
 	for(var/obj/structure/machinery/power/smes/S in GLOB.machines)
@@ -40,7 +40,7 @@
 
 	sleep(100)
 	if(announce)
-		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
+		marine_announcement("Энергоснабжение восстановлено. Причина: Неизвестна.", "Системы электроснабжения восстановлена", 'sound/AI/poweron.ogg')
 
 /proc/power_restore_quick(announce = 1)
 
@@ -55,7 +55,7 @@
 
 	sleep(100)
 	if(announce)
-		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
+		marine_announcement("Энергоснабжение восстановлено. Причина: Неизвестна.", "Системы электроснабжения восстановлена", 'sound/AI/poweron.ogg')
 
 /proc/power_restore_everything(announce = 1)
 
@@ -72,7 +72,7 @@
 
 	sleep(100)
 	if(announce)
-		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
+		marine_announcement("Энергоснабжение восстановлено. Причина: Неизвестна.", "Системы электроснабжения восстановлена", 'sound/AI/poweron.ogg')
 
 /proc/power_restore_ship_reactors(announce = TRUE)
 	for(var/obj/structure/machinery/power/reactor/reactor in GLOB.machines)

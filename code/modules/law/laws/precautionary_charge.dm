@@ -1,17 +1,17 @@
 /datum/law/precautionary_charge
 	brig_time = PERMABRIG_SENTENCE
-	conditions = "Not inclusive for execution criteria."
+	conditions = "Не включено в критерии казни."
 
 /datum/law/precautionary_charge/discretionary_arrest
-	name = "Discretionary Detainment"
-	desc = "A discretionary charge used by Commanding Officers to detain personnel for any reason, for the safety and benefit of the operation or security. The duration of this charge is variable and may be pardoned/lifted at any time by the Commanding Officer."
-	conditions = "Not inclusive for execution criteria. May only be appealed to the Acting Commander or Provost/USCM HC."
+	name = "Дискреционное задержание"
+	desc = "Это дискреционный приговор, используемый командующим офицером для задержания персонала по любой причине в целях обеспечения безопасности и охраны. Срок действия этого обвинения является переменным и может быть помилован/отменен в любое время командующим командиром."
+	conditions = "Не включено в критерии казни. Может быть обжаловано только у исполняющего обязанности командира судна или Главным управлением Военной Полициии/ВК КМП."
 
 /datum/law/precautionary_charge/insanity
-	name = "Insanity"
-	desc = "Acting in such a manner which makes the offender not sound clear of mind. The subject, once cleared to be of sound mind, may be released from this particular charge. Excepting in cases of Suicide/Attempted Suicide, only the CMO/Synthetic may declare someone insane."
+	name = "Безумие"
+	desc = "Поступок, совершая который, преступник не может быть в здравом уме. После того как субъект будет признан находящимся в здравом уме, с него может быть снято это обвинение. За исключением случаев самоубийства/попытки самоубийства, только Главврач/Синтетик может признать человека невменяемым."
 
 /datum/law/precautionary_charge/prisoner_of_war
-	name = "Prisoner of War"
-	desc = "Being a member of a legitimate and recognised faction currently hostile to the USCM."
-	conditions = "Execution is forbidden barring exceptional circumstances."
+	name = "Военнопленный"
+	desc = "Быть членом легитимной и признанной фракции, в настоящее время враждебной КМП."
+	conditions = "Казнь запрещена, за исключением исключительных обстоятельств."

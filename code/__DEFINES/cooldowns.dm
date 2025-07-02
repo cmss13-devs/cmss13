@@ -10,6 +10,10 @@
 //Define for ship alt
 #define COOLDOWN_ALTITUDE_CHANGE "altitude_change"
 
+// BANDASTATION EDIT ADDITION - Bump Attacks
+#define COOLDOWN_BUMP_ATTACK "bump_attack"
+// BANDASTATION EDIT END
+
 
 //// COOLDOWN SYSTEMS
 /*

@@ -29,6 +29,7 @@
 		message = copytext_char(message,3) // SS220 EDIT - RU fix
 	else
 		speaking = get_default_language()
+		message = strip_language(message)
 
 	whisper_say(message, speaking, alt_name)
 

@@ -8,13 +8,16 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/nv",
         "/datum/equipment_preset/survivor/doctor/nv",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
         "/datum/equipment_preset/survivor/chaplain/nv",
         "/datum/equipment_preset/survivor/engineer/nv",
         "/datum/equipment_preset/survivor/trucker/nv",
         "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison/nv",
         "/datum/equipment_preset/survivor/security/nv",
         "/datum/equipment_preset/survivor/beachbum",
-        "/datum/equipment_preset/survivor/miner"
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/civilian_unique",
+        "/datum/equipment_preset/survivor/hybrisa/kelland_miner"
     ],
 	"CO_survivor_types": [
         "/datum/equipment_preset/survivor/new_varadero/commander"

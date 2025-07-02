@@ -332,8 +332,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	owner = C
 	macros.owner = C
 
-	C.tgui_say?.load()
-
 /datum/preferences/Del()
 	. = ..()
 

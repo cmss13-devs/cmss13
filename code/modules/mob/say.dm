@@ -168,14 +168,25 @@ for it but just ignore it.
 
 	return null
 
-//parses the language code (e.g. :j) from text, such as that supplied to say.
-//returns the language object only if the code corresponds to a language that src can speak, otherwise null.
+///parses the language code (e.g. !3) from text, such as that supplied to say.
+///returns the stripped message
+/mob/proc/strip_language(message)
+	if(length(message) >= 2)
+		var/language_prefix = lowertext(copytext(message, 1, 3))
+		var/datum/language/lang = GLOB.all_languages[GLOB.language_keys[language_prefix]]
+		if(lang)
+			return copytext(message, 3)
+
+	return message
+
+///parses the language code (e.g. !3) from text, such as that supplied to say.
+///returns the language object only if the code corresponds to a language that src can speak, otherwise null.
 /mob/proc/parse_language(message)
 	if(length(message) >= 2)
-		var/language_prefix = lowertext(copytext_char(message, 1 ,3)) // SS220 EDIT - RU fix
-		var/datum/language/L = GLOB.all_languages[GLOB.language_keys[language_prefix]]
-		if (can_speak(L))
-			return L
+		var/language_prefix = lowertext(copytext_char(message, 1, 3)) // SS220 EDIT - RU fix
+		var/datum/language/lang = GLOB.all_languages[GLOB.language_keys[language_prefix]]
+		if (can_speak(lang))
+			return lang
 
 	return null
 

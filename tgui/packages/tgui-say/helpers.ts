@@ -1,5 +1,5 @@
 import type { Channel } from './ChannelIterator';
-import { RADIO_PREFIXES, WindowSize } from './constants';
+import { LANGUAGE_PREFIXES, RADIO_PREFIXES, WindowSize } from './constants';
 
 /**
  * Once byond signals this via keystroke, it
@@ -49,22 +49,26 @@ function setWindowVisibility(visible: boolean, scale: boolean): void {
   });
 }
 
-const CHANNEL_REGEX = /^[:.#№][a-zA-Zfа-яёА-ЯЁ0-9_]\s/; // BANDAMARINES EDIT
+const CHANNEL_REGEX = /^[!:.#№][a-zA-Zfа-яёА-ЯЁ0-9_]\w\s/; // BANDAMARINES EDIT
 
 /** Tests for a channel prefix, returning it or none */
 export function getPrefix(
   value: string,
-): keyof typeof RADIO_PREFIXES | undefined {
+): keyof typeof RADIO_PREFIXES | keyof typeof LANGUAGE_PREFIXES | undefined {
   if (!value || value.length < 3 || !CHANNEL_REGEX.test(value)) {
     return;
   }
+  let adjusted;
+  let languagePrefixCheck = value.charAt(0);
+  if ((languagePrefixCheck = '!')) {
+    adjusted = value
+      .slice(0, 3)
+      ?.toLowerCase() as keyof typeof LANGUAGE_PREFIXES;
+  } else {
+    adjusted = value.slice(0, 3)?.toLowerCase() as keyof typeof RADIO_PREFIXES;
+  }
 
-  let adjusted = value
-    .slice(0, 3)
-    ?.toLowerCase()
-    ?.replace('.', ':') as keyof typeof RADIO_PREFIXES;
-
-  if (!RADIO_PREFIXES[adjusted]) {
+  if (!RADIO_PREFIXES[adjusted] && !LANGUAGE_PREFIXES[adjusted]) {
     return;
   }
 

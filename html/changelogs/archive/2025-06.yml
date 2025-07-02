@@ -347,3 +347,32 @@
   - balance: Hives with "allow_no_queen_actions" (notably Feral, Yautuja, and Forsaken)
       hives can now always view tacmap.
   - balance: Forsaken hive is capable of seeing humans on tacmap.
+2025-06-28:
+  Ben10083:
+  - balance: APCs in SSV Rostock now use a UPP subtype that only allows UPP engineers
+      access
+  - bugfix: UPP hull windows now act like USMC hull windows and cannot be destroyed
+  - maptweak: Additional cameras added to SSV Rostock Prisoner Holding
+  Detective-Google:
+  - maptweak: removes UPP RPG and GL spec belt from sorokyne
+  Thwomper, cuberound:
+  - rscadd: M6H-BRUTE, a anti-structure laser-guided rocket launcher, as well as a
+      specialized back holster and ammo to ComTech as an alternative equipment choice
+      to sentry guns.
+  - rscdel: XM-51 Breaching Scattergun no longer available in Marine supply.
+2025-06-29:
+  DarkLordCabbage:
+  - balance: Changes the pylon layer, preventing it from being hidden behind stuff
+      like lockers.
+  - rscadd: Added the sterile mask to the character customization gear menu
+  MistChristmas, Drathek:
+  - rscadd: Languages use '!' prefix instead of sharing prefixes with Radio Channels.
+      Provost channel changed to '#l'.
+  - code_imp: Re-org RADIO_PREFIXES, langauges, and department radio keys into mostly
+      alphabetical order. Remove Uppercase instances. Add missing colours for tgui
+      say.
+  - qol: Languages pop up in TGUI-say if you switch to them whilst not being on a
+      radio channel
+  Red-byte3D:
+  - bugfix: CIA sleepy pens now have 15 chloral hydrate instead of 30, preventing
+      overdoses. Happy kidnapping!

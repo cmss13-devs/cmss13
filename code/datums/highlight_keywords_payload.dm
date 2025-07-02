@@ -17,9 +17,13 @@
 
 	name_full = mob.real_name
 	job_full = mob.get_role_name()
-	job_comm_title = mob.comm_title
 
 	if(ishuman(mob))
+		// mob.comm_title is unset when this code runs, presumably set after.
+		var/datum/job/job = GLOB.joblist[mob.job]
+		job_comm_title = job.get_comm_title()
+
+		// Name stuff.
 		var/first_name_end = findtext(name_full, " ")
 		name_first = copytext(name_full, 1, first_name_end)
 

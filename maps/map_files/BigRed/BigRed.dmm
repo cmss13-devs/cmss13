@@ -5761,10 +5761,6 @@
 	},
 /turf/open/floor/darkpurplecorners2,
 /area/bigredv2/caves/lambda/breakroom)
-"auE" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/asteroidwarning/west,
-/area/bigredv2/outside/n)
 "auF" = (
 /turf/open/floor/asteroidwarning/northeast,
 /area/bigredv2/outside/nw)
@@ -7236,10 +7232,6 @@
 	},
 /turf/open/floor/redcorner,
 /area/bigredv2/outside/marshal_office)
-"azK" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/mars,
-/area/bigredv2/outside/n)
 "azL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
@@ -7517,7 +7509,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
 /turf/open/mars,
-/area/bigredv2/outside/n)
+/area/bigredv2/outside/c)
 "aAB" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "gib6"
@@ -122919,9 +122911,9 @@ alF
 axF
 asf
 ayz
-akw
-alF
-alF
+aNw
+aMg
+aMg
 axW
 aBR
 ixB
@@ -123136,9 +123128,9 @@ acP
 aqO
 aqO
 ayG
-acP
-azK
-acP
+aBR
+aKk
+aBR
 aBR
 aBR
 aBR
@@ -123353,9 +123345,9 @@ rPq
 aqO
 aqO
 ayM
-acP
+aBR
 aAA
-acP
+aBR
 aBR
 aBR
 aBR
@@ -123570,9 +123562,9 @@ ahe
 ayP
 qEm
 ayP
-ahe
-auE
-ahe
+aFM
+aCN
+aFM
 aFM
 aCN
 aCN

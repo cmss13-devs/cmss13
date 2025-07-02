@@ -927,9 +927,9 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(ishuman_strict(victim))
 		var/mob/living/carbon/human/human_victim = victim
 		if (stun_modifier > 0)
-			human_victim.KnockDown(4 * height * stun_modifier)
-			human_victim.Stun(4 * height * stun_modifier)
-			human_victim.Slow(6 * height * stun_modifier)
+			human_victim.KnockDown(3 * height * stun_modifier)
+			human_victim.Stun(3 * height * stun_modifier)
+			human_victim.Slow(5 * height * stun_modifier)
 
 		if (damage_modifier > 0)
 			var/total_damage = ((20 * height) ** 1.3) * damage_modifier

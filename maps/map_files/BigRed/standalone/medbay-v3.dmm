@@ -719,9 +719,6 @@
 /area/bigredv2/outside/medical)
 "Cm" = (
 /obj/structure/surface/table,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
 /obj/item/storage/box/beakers,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/whitepurplecorner/north,

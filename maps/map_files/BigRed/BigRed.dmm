@@ -1535,13 +1535,6 @@
 /obj/structure/ladder/multiz,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
-"afL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 32
-	},
-/turf/open/floor/dark,
-/area/bigredv2/outside/space_port)
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
@@ -2055,12 +2048,6 @@
 "ahF" = (
 /obj/structure/closet/hydrant{
 	pixel_y = -32
-	},
-/turf/open/floor/darkpurple2,
-/area/bigredv2/caves/lambda/xenobiology)
-"ahG" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
 	},
 /turf/open/floor/darkpurple2,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -7388,6 +7375,11 @@
 /area/bigredv2/outside/marshal_office)
 "azK" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
 /turf/open/floor/white,
 /area/bigredv2/secondfloor/indoors/dorms)
 "azL" = (
@@ -8313,6 +8305,11 @@
 	light_color = "#a7dbc7";
 	dir = 4
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1;
+	pixel_x = -1
+	},
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aCD" = (
@@ -8830,6 +8827,10 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/eta/living)
 "aDZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aEa" = (
@@ -8916,9 +8917,6 @@
 /turf/open/floor/whitepurple/southeast,
 /area/bigredv2/caves/lambda/research)
 "aEq" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -30
-	},
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -10832,13 +10830,6 @@
 	},
 /turf/open/floor/bluegrid/damaged3,
 /area/bigredv2/caves/lambda/research)
-"aJN" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/darkpurple2,
-/area/bigredv2/caves/lambda/research)
 "aJO" = (
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7"
@@ -11033,10 +11024,18 @@
 /obj/effect/decal/cleanable/blood{
 	layer = 3
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
 /turf/open/floor/warnwhite/west,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aKq" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aKr" = (
@@ -13689,6 +13688,11 @@
 "aRU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 1;
+	pixel_y = 1
+	},
 /turf/open/floor/warnwhite/west,
 /area/bigredv2/secondfloor/indoors/dorms)
 "aRV" = (
@@ -22278,6 +22282,10 @@
 	name = "????";
 	stat = 2
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1
+	},
 /turf/open/floor/warnwhite/east,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bqS" = (
@@ -28294,6 +28302,29 @@
 	},
 /turf/open/floor/whitegreen/east,
 /area/bigredv2/secondfloor/indoors/medical)
+"bIy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/white,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bIz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/warnwhite/west,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bIA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/warnwhite/east,
+/area/bigredv2/secondfloor/indoors/dorms)
 "bIB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double/blue{
@@ -28331,6 +28362,21 @@
 	},
 /turf/open/floor/whitegreen/northeast,
 /area/bigredv2/secondfloor/indoors/medical)
+"bIE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/white,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bIF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/white,
+/area/bigredv2/secondfloor/indoors/dorms)
 "bIG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -28339,11 +28385,28 @@
 	},
 /turf/open/floor/darkgreen2/north,
 /area/bigredv2/secondfloor/indoors/dorms)
+"bIH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/turf/open/floor/warnwhite/east,
+/area/bigredv2/secondfloor/indoors/dorms)
 "bII" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/caves/mining)
+"bIJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/bigredv2/secondfloor/indoors/dorms)
 "bIK" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
@@ -28444,6 +28507,14 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
+/area/bigredv2/secondfloor/indoors/dorms)
+"bIV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/warnwhite/west,
 /area/bigredv2/secondfloor/indoors/dorms)
 "bJa" = (
 /obj/structure/surface/table,
@@ -42378,9 +42449,6 @@
 /area/bigredv2/outside/c)
 "mEx" = (
 /obj/structure/surface/table,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
 /obj/item/storage/box/beakers{
 	pixel_y = -1;
 	pixel_x = 4
@@ -49259,9 +49327,6 @@
 /area/bigredv2/caves_east)
 "sBB" = (
 /obj/structure/machinery/light/built,
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
-	},
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
@@ -114465,7 +114530,7 @@ uzv
 aae
 aaA
 aiL
-afL
+aaP
 abf
 aaP
 aaP
@@ -142915,7 +142980,7 @@ aeW
 afC
 agf
 agU
-ahG
+ahC
 adZ
 aao
 aao
@@ -146425,7 +146490,7 @@ aGi
 awA
 anL
 aIS
-aJN
+aJQ
 anI
 anI
 fgD
@@ -190696,16 +190761,16 @@ bmo
 bmk
 aVj
 grU
-bjE
-bjE
-bmk
-bjE
+bIV
+bIz
+bHl
+bIz
 aRU
 bjE
 bjE
-bjE
+bIz
 aKp
-bjE
+bIz
 azK
 azs
 aqD
@@ -190913,17 +190978,17 @@ bFZ
 atl
 bmk
 bsx
+bIE
+brd
+brd
+bIJ
+bIF
 bmk
-bmk
-bmk
-aVj
-bmk
-bmk
-bmk
-bmk
-bmk
-atl
-atl
+bIE
+brd
+brd
+brh
+bIy
 atl
 arj
 aEc
@@ -191131,13 +191196,13 @@ atl
 atl
 bsx
 bqR
-aOF
-aOF
-aOF
-aOF
+bIA
+bIA
+bIA
+bIH
 aPN
 aOF
-aOF
+bIA
 aKq
 aDZ
 aCC

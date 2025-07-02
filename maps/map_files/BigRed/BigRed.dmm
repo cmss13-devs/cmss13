@@ -117,9 +117,6 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "aaA" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 32
-	},
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/space_port)
 "aaB" = (
@@ -1538,6 +1535,13 @@
 /obj/structure/ladder/multiz,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"afL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 32
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/space_port)
 "afM" = (
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/outside/space_port)
@@ -113747,7 +113751,7 @@ uzv
 aae
 aaA
 aiL
-aaP
+afL
 abf
 aaP
 aaP

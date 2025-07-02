@@ -98,6 +98,10 @@
 	name = "Engineering Upper Stairwell"
 	icon_state = "purple"
 
+/area/desert_dam/interior/dam_interior/upper_walkway
+	name = "Engineering Upper Walkway"
+	icon_state = "yellow"
+
 /area/desert_dam/interior/dam_interior/break_room/upper
 	name = "Engineering Upper Breakroom"
 	icon_state = "purple"
@@ -302,6 +306,11 @@
 
 /area/desert_dam/building/substation/southwest/solar
 	name = "Southwest Substation Solar Power Monitering"
+
+/area/desert_dam/building/substation/southwest/solar/walkway
+	name = "Southwest Substation Solar Power Monitering Walkway"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "yellow"
 
 /area/desert_dam/building/substation/west
 	name = "Command Substation"
@@ -624,6 +633,26 @@
 /area/desert_dam/building/hydroponics/hydroponics_breakroom
 	name = "Hydroponics Breakroom"
 	icon_state = "red"
+
+/area/desert_dam/building/hydroponics/stairwell
+	name = "Hydroponics Stairwell"
+	icon_state = "purple"
+
+/area/desert_dam/building/hydroponics/maint
+	name = "Hydroponics Maintenance"
+	icon_state = "yellow"
+
+/area/desert_dam/building/hydroponics/growroom
+	name = "Hydroponics Upper Storage"
+	icon_state = "green"
+
+/area/desert_dam/building/hydroponics/offices
+	name = "Hydroponics Offices"
+	icon_state = "bluenew"
+
+/area/desert_dam/building/hydroponics/walkway
+	name = "Hydroponics Walkway"
+	icon_state = "yellow"
 
 //Water Treatment Plant 1
 /area/desert_dam/building/water_treatment_one

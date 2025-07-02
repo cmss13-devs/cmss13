@@ -61,6 +61,7 @@
 	pixel_x = -1;
 	pixel_y = 34
 	},
+/obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "ex" = (
@@ -104,6 +105,10 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "iT" = (
 /obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun{
+	pixel_y = 6
+	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "iV" = (
@@ -149,8 +154,10 @@
 	dir = 4
 	},
 /obj/item/device/multitool{
-	pixel_x = 4
+	pixel_x = -11;
+	pixel_y = 2
 	},
+/obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "op" = (
@@ -173,8 +180,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "qI" = (
-/obj/structure/surface/table/reinforced,
-/obj/item/device/radio,
+/obj/structure/machinery/floodlight,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "sh" = (
@@ -199,6 +205,8 @@
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "wq" = (
+/obj/effect/spawner/random/toolbox,
+/obj/structure/surface/table/reinforced,
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "wB" = (
@@ -289,6 +297,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/screwdriver,
+/obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "BV" = (
@@ -352,8 +361,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Fo" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/tool,
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Fq" = (
@@ -388,7 +396,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "JU" = (
-/obj/structure/closet/secure_closet/engineering_welding,
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "KV" = (
@@ -430,19 +438,32 @@
 	dir = 1
 	},
 /obj/item/ammo_magazine/smg/nailgun{
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/smg/nailgun{
 	pixel_y = 4
+	},
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_y = 4;
+	pixel_x = 4
+	},
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun{
+	pixel_x = 4
 	},
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Oy" = (
 /obj/structure/surface/table/reinforced,
-/obj/effect/spawner/random/technology_scanner{
-	pixel_x = 5
-	},
 /obj/item/clothing/head/hardhat/white{
 	pixel_x = -8;
 	pixel_y = 10
 	},
+/obj/item/device/radio,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "OE" = (
@@ -450,8 +471,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Pa" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox,
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "Pd" = (

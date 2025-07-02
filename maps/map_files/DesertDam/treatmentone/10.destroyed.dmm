@@ -1396,9 +1396,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "Go" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
+/turf/closed/wall/r_wall/unmeltable,
 /area/desert_dam/building/water_treatment_one/hallway)
 "Gx" = (
 /obj/structure/machinery/washing_machine,

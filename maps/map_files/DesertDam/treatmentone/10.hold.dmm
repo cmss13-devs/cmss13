@@ -1746,9 +1746,7 @@
 /area/desert_dam/building/water_treatment_one/garage)
 "XX" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/hangar{
-	name = "reinforced metal wall"
-	},
+/turf/closed/wall/r_wall/unmeltable,
 /area/desert_dam/building/water_treatment_one/hallway)
 "XZ" = (
 /obj/structure/machinery/light{

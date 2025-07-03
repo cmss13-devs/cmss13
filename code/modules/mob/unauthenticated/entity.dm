@@ -1,6 +1,8 @@
 
 /datum/entity/authentication_request
 	var/access_code
+	var/ip
+	var/cid
 	var/time
 
 	var/approved = FALSE
@@ -13,6 +15,8 @@
 	table_name = "authentication_requests"
 	field_types = list(
 		"access_code" = DB_FIELDTYPE_STRING_MEDIUM,
+		"ip" = DB_FIELDTYPE_STRING_MEDIUM,
+		"cid" = DB_FIELDTYPE_STRING_MEDIUM,
 		"time" = DB_FIELDTYPE_DATE,
 		"approved" = DB_FIELDTYPE_INT,
 		"authentication_method" = DB_FIELDTYPE_STRING_MEDIUM,
@@ -22,6 +26,8 @@
 
 /datum/view_record/authentication_request
 	var/access_code
+	var/ip
+	var/cid
 	var/time
 
 	var/approved
@@ -34,6 +40,8 @@
 	destination_entity = /datum/view_record/authentication_request
 	fields = list(
 		"access_code",
+		"ip",
+		"cid",
 		"time",
 		"approved",
 		"authentication_method",

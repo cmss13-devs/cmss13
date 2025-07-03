@@ -54,6 +54,8 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 
 	var/datum/entity/authentication_request/access_entity = DB_ENTITY(/datum/entity/authentication_request)
 	access_entity.access_code = access_code
+	access_entity.ip = client.address
+	access_entity.cid = "[client.computer_id]"
 	access_entity.time = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
 	access_entity.save()
 	access_entity.detach()
@@ -91,6 +93,8 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 			DB_COMP("access_code", DB_EQUALS, code ? code : access_code),
 			DB_COMP("time", DB_GREATER, time2text(world.timeofday - 3 HOURS, "YYYY-MM-DD hh:mm:ss")),
 			DB_COMP("approved", DB_EQUALS, TRUE),
+			DB_COMP("ip", DB_EQUALS, client.address),
+			DB_COMP("cid", DB_EQUALS, "[client.computer_id]")
 		)
 	)
 

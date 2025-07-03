@@ -681,7 +681,7 @@ world
 	return FALSE
 
 /// Asks the user for an icon (either from file or as a path) and offers to customize it if possible (e.g. setting icon_state)
-/proc/pick_and_customize_icon(mob/user, old_value, pick_only=FALSE)
+/proc/pick_and_customize_icon(mob/user, pick_only=FALSE)
 	var/icon/icon_result = null
 	if(!user)
 		user = usr

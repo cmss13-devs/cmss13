@@ -1,5 +1,8 @@
 /mob/living/Logout()
 	..()
+
+	clear_alert(ALERT_MULTI_Z)
+
 	if (mind)
 		if(!key) //key and mind have become separated.
 			mind.active = 0 //This is to stop say, a mind.transfer_to call on a corpse causing a ghost to re-enter its body.

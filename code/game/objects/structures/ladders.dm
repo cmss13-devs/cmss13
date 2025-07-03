@@ -78,7 +78,6 @@
 		return
 
 	var/ladder_dir_name
-	var/obj/structure/ladder/ladder_dest
 
 	if(!length(direction_selection))
 		direction_selection = list()
@@ -88,16 +87,12 @@
 
 	if(length(direction_selection) > 1)
 		var/selected_ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
-		var/static/regex/ladder_regex = regex(@"(up|down) \(x([1-9])+\)")
+		var/static/regex/ladder_regex = regex(@"(up|down) \(x([0-9])+\)")
 
-		if(selected_ladder_dest == "up")
-			ladder_dest = up
-			ladder_dir_name = ("up")
-		if(selected_ladder_dest == "down")
-			ladder_dest = down
-			ladder_dir_name = ("down")
+		if(selected_ladder_dest == "up" || selected_ladder_dest == "down")
+			ladder_dir_name = selected_ladder_dest
 
-		if(!ladder_dest)
+		if(!ladder_dir_name)
 			ladder_regex.Find(selected_ladder_dest)
 
 			var/direction = ladder_regex.group[1]
@@ -106,36 +101,46 @@
 				return
 
 			var/list/obj/structure/ladder/ladders = get_ladders_recursive(direction)
-			ladder_dest = ladders[total]
 
-			if(!ladder_dest)
-				return
+			move_to(user, direction)
 
-			ladder_dir_name = direction
+			for(var/i in 1 to text2num(total) - 1)
+				if(!ladders[i].move_to(user, direction))
+					break
 
 	else if(up)
 		ladder_dir_name = "up"
-		ladder_dest = up
 	else if(down)
 		ladder_dir_name = "down"
-		ladder_dest = down
 	else
 		return FALSE //just in case
 
-	if(!ladder_dest)
+	if(!ladder_dir_name)
 		return
 
+	move_to(user, ladder_dir_name)
+
+/obj/structure/ladder/proc/move_to(mob/living/user, direction)
+	var/obj/structure/ladder/destination_ladder
+
+	if(direction == "up")
+		destination_ladder = up
+	else
+		destination_ladder = down
+
 	step(user, get_dir(user, src))
-	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
-	SPAN_NOTICE("You start climbing [ladder_dir_name] [src]."))
+	user.visible_message(SPAN_NOTICE("[user] starts climbing [direction] [src]."),
+	SPAN_NOTICE("You start climbing [direction] [src]."))
 	busy = TRUE
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && user.body_position != LYING_DOWN && !user.buckled && !user.anchored)
-			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
-			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
-			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
-			ladder_dest.add_fingerprint(user)
-			user.trainteleport(ladder_dest.loc)
+			visible_message(SPAN_NOTICE("[user] climbs [direction] [src].")) //Hack to give a visible message to the people here without duplicating user message
+			user.visible_message(SPAN_NOTICE("[user] climbs [direction] [src]."),
+			SPAN_NOTICE("You climb [direction] [src]."))
+			destination_ladder.add_fingerprint(user)
+			user.trainteleport(destination_ladder.loc)
+
+			. = TRUE
 
 	busy = FALSE
 	add_fingerprint(user)
@@ -319,22 +324,21 @@
 	var/list/selection = list()
 
 	for(var/i in 1 to length(ladder_list))
-		var/obj/structure/ladder/ladder = ladder_list[i]
-
 		var/direction_name = direction
-		var/icon/direction_icon = icon('icons/mob/radial.dmi', "radial_ladder_[direction]")
+		var/image/direction_icon = image('icons/mob/radial.dmi', icon_state = "radial_ladder_[direction]")
 
 		if(i > 1)
 			direction_name += " (x[i])"
+			direction_icon = image('icons/effects/effects.dmi', icon_state = "nothing")
 
-			var/shift = floor(world.icon_size / (i * 4))
-			direction_icon.Shift(EAST, -shift)
+			var/total_range = world.icon_size / 3
+			var/gap = total_range / (i - 1)
 
-			for(var/arrow_number in 1 to i)
-				var/icon/new_icon = icon('icons/mob/radial.dmi', "radial_ladder_[direction]")
-				new_icon.Shift(EAST, -shift + (shift * arrow_number))
+			for(var/arrow_number in 0 to i - 1)
+				var/image/new_icon = image('icons/mob/radial.dmi', icon_state = "radial_ladder_[direction]")
+				new_icon.transform = matrix().Translate((gap * arrow_number) - (total_range / 2), 0)
 
-				direction_icon.Insert(new_icon)
+				direction_icon.overlays += new_icon
 
 		selection[direction_name] = direction_icon
 

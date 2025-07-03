@@ -14,7 +14,8 @@
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
 	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
-	var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
+
+	var/list/direction_selection
 
 
 /obj/structure/ladder/Initialize(mapload, ...)
@@ -78,14 +79,40 @@
 
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
-	if(up && down)
-		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
-		if(ladder_dest == "up")
+
+	if(!length(direction_selection))
+		direction_selection = list()
+
+		direction_selection += get_ladder_images("up",  get_ladders_recursive("up"))
+		direction_selection += get_ladder_images("down", get_ladders_recursive("down"))
+
+	if(length(direction_selection) > 1)
+		var/selected_ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+		var/static/regex/ladder_regex = regex(@"(up|down) \(x([1-9])+\)")
+
+		if(selected_ladder_dest == "up")
 			ladder_dest = up
 			ladder_dir_name = ("up")
-		if(ladder_dest == "down")
+		if(selected_ladder_dest == "down")
 			ladder_dest = down
 			ladder_dir_name = ("down")
+
+		if(!ladder_dest)
+			ladder_regex.Find(selected_ladder_dest)
+
+			var/direction = ladder_regex.group[1]
+			var/total = ladder_regex.group[2]
+			if(!direction || !total)
+				return
+
+			var/list/obj/structure/ladder/ladders = get_ladders_recursive(direction)
+			ladder_dest = ladders[total]
+
+			if(!ladder_dest)
+				return
+
+			ladder_dir_name = direction
+
 	else if(up)
 		ladder_dir_name = "up"
 		ladder_dest = up
@@ -110,9 +137,6 @@
 			ladder_dest.add_fingerprint(user)
 			user.trainteleport(ladder_dest.loc)
 
-			var/obj/structure/ladder/secondary_ladder = locate(/obj/structure/ladder) in get_turf(user)
-			if(secondary_ladder && ((ladder_dir_name == "up" && secondary_ladder.up) || (ladder_dir_name == "down" && secondary_ladder.down)))
-				INVOKE_ASYNC(secondary_ladder, TYPE_PROC_REF(/atom, attack_hand), user)
 	busy = FALSE
 	add_fingerprint(user)
 
@@ -271,6 +295,50 @@
 			step_away(F,src,rand(1, 5))
 	else
 		return attack_hand(user)
+
+/obj/structure/ladder/proc/get_ladders_recursive(direction = "up")
+	var/obj/structure/ladder/new_ladder
+
+	if(direction == "up" && up)
+		new_ladder = up
+	else if (direction == "down" && down)
+		new_ladder = down
+
+	if(!new_ladder)
+		return
+
+	var/list/obj/structure/ladder/ladder_list = list(new_ladder)
+
+	while((direction == "up" && new_ladder.up) || (direction == "down" && new_ladder.down))
+		new_ladder = direction == "up" ? new_ladder.up : new_ladder.down
+		ladder_list += new_ladder
+
+	return ladder_list
+
+/obj/structure/ladder/proc/get_ladder_images(direction = "up", list/obj/structure/ladder/ladder_list)
+	var/list/selection = list()
+
+	for(var/i in 1 to length(ladder_list))
+		var/obj/structure/ladder/ladder = ladder_list[i]
+
+		var/direction_name = direction
+		var/icon/direction_icon = icon('icons/mob/radial.dmi', "radial_ladder_[direction]")
+
+		if(i > 1)
+			direction_name += " (x[i])"
+
+			var/shift = floor(world.icon_size / (i * 4))
+			direction_icon.Shift(EAST, -shift)
+
+			for(var/arrow_number in 1 to i)
+				var/icon/new_icon = icon('icons/mob/radial.dmi', "radial_ladder_[direction]")
+				new_icon.Shift(EAST, -shift + (shift * arrow_number))
+
+				direction_icon.Insert(new_icon)
+
+		selection[direction_name] = direction_icon
+
+	return selection
 
 /obj/structure/ladder/fragile_almayer //goes away on hijack
 	name = "rickety ladder"

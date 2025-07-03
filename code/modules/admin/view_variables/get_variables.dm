@@ -236,7 +236,7 @@
 				return
 
 		if(VV_ICON)
-			.["value"] = input("Pick icon:", "Icon") as null|icon
+			.["value"] = pick_and_customize_icon(pick_only=TRUE)
 			if(.["value"] == null)
 				.["class"] = null
 				return

@@ -372,7 +372,7 @@
 /area/lv522/atmos/east_reactor/south)
 "abr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/item/storage/backpack/marine/satchel/scout_cloak,
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak,
 /turf/open/floor/corsat/marked,
 /area/lv522/atmos/east_reactor/south)
 "abs" = (

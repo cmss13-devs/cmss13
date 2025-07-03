@@ -692,6 +692,9 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(!internal_transmitter)
 		return
 
+	if(istype(src, /obj/item/storage/backpack/marine/satchel/rto/scout_cloak))
+		return
+
 	if(!internal_transmitter.attached_to \
 		|| internal_transmitter.attached_to.loc != internal_transmitter)
 		icon_state = "[base_icon]_ear"
@@ -905,8 +908,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	..()
 
 // Scout Cloak
-/obj/item/storage/backpack/marine/satchel/scout_cloak
-	name = "\improper M68 Thermal Cloak"
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak
+	name = "\improper Thermal Cloak"
 	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard USCM ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high maneuverability and adaptability to many environments."
 	icon_state = "scout_cloak"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
@@ -925,9 +928,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/camo_on_sound = 'sound/effects/cloak_scout_on.ogg'
 	var/camo_off_sound = 'sound/effects/cloak_scout_off.ogg'
 
-	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
+	phone_category = PHONE_MARINE
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	actions_types = list(/datum/action/item_action/specialist/toggle_cloak, /datum/action/item_action/rto_pack/use_phone)
+
+
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	if(flags_atom & NO_GAMEMODE_SKIN)
 		return
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
@@ -936,17 +942,18 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		else
 			icon_state = "scout_cloak"
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/dropped(mob/user)
+
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/dropped(mob/user)
 	if(ishuman(user) && !issynth(user))
 		deactivate_camouflage(user, FALSE)
 
 	. = ..()
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/attack_self(mob/user)
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/attack_self(mob/user)
 	..()
 	camouflage()
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/verb/camouflage()
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/verb/camouflage()
 	set name = "Activate Cloak"
 	set desc = "Activate your cloak's camouflage."
 	set category = "Scout"
@@ -997,7 +1004,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	cloak_cooldown = world.time + 0.8 SECONDS
 	return TRUE
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/wrapper_fizzle_camouflage()
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/proc/wrapper_fizzle_camouflage()
 	SIGNAL_HANDLER
 	var/mob/wearer = src.loc
 	wearer.visible_message(SPAN_DANGER("[wearer]'s [fluff_item] fizzles out!"), SPAN_DANGER("Your [fluff_item] fizzles out!"))
@@ -1006,7 +1013,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	sparks.start()
 	deactivate_camouflage(wearer, TRUE, TRUE)
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(mob/living/carbon/human/H, anim = TRUE, forced)
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/proc/deactivate_camouflage(mob/living/carbon/human/H, anim = TRUE, forced)
 	SIGNAL_HANDLER
 	if(!istype(H))
 		return FALSE
@@ -1044,14 +1051,14 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	addtimer(CALLBACK(src, PROC_REF(allow_shooting), H), 1.5 SECONDS)
 
 // This proc is to cancel priming grenades in /obj/item/explosive/grenade/attack_self()
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/cloak_grenade_callback(mob/user)
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/proc/cloak_grenade_callback(mob/user)
 	SIGNAL_HANDLER
 
 	if(!allowed_stealth_shooting)
 		to_chat(user, SPAN_WARNING("Your cloak prevents you from priming the grenade!"))
 		return COMPONENT_GRENADE_PRIME_CANCEL
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/allow_shooting(mob/living/carbon/human/H)
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/proc/allow_shooting(mob/living/carbon/human/H)
 	if(camo_active && !allow_gun_usage && !allowed_stealth_shooting)
 		return
 	H.allow_gun_usage = TRUE
@@ -1074,10 +1081,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /datum/action/item_action/specialist/toggle_cloak/action_activate()
 	. = ..()
-	var/obj/item/storage/backpack/marine/satchel/scout_cloak/SC = holder_item
+	var/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/SC = holder_item
 	SC.camouflage()
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/wy_invis_droid
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/wy_invis_droid
 	name = "M7X Mark II optical camouflage powerpack"
 	desc = "A heavy-duty powerpack carried by Weyland-Yutani combat androids. Powers the reverse-engineered optical camouflage system utilized by M7X Mark II Apesuit."
 	icon_state = "invis_android_powerpack"
@@ -1489,7 +1496,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_fuel = 180
 	max_storage_space = 12
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/upp
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"
 	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units."
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
@@ -1498,7 +1505,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	max_storage_space = 21
 	camo_alpha = 10
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/upp/weak
+/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/upp/weak
 	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units. This one is less effective than normal."
 	actions_types = null
 

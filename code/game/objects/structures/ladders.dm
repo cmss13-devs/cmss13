@@ -120,6 +120,7 @@
 
 	move_to(user, ladder_dir_name)
 
+/// Does the work of actually moving the move up/down
 /obj/structure/ladder/proc/move_to(mob/living/user, direction)
 	var/obj/structure/ladder/destination_ladder
 
@@ -301,6 +302,7 @@
 	else
 		return attack_hand(user)
 
+/// Returns all the ladders above/below this ladder
 /obj/structure/ladder/proc/get_ladders_recursive(direction = "up")
 	var/obj/structure/ladder/new_ladder
 
@@ -320,6 +322,7 @@
 
 	return ladder_list
 
+/// Formats the ladders above/below for radial images
 /obj/structure/ladder/proc/get_ladder_images(direction = "up", list/obj/structure/ladder/ladder_list)
 	var/list/selection = list()
 

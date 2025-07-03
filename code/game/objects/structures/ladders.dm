@@ -80,10 +80,7 @@
 	var/ladder_dir_name
 
 	if(!length(direction_selection))
-		direction_selection = list()
-
-		direction_selection += get_ladder_images("up",  get_ladders_recursive("up"))
-		direction_selection += get_ladder_images("down", get_ladders_recursive("down"))
+		direction_selection = get_ladder_images()
 
 	if(length(direction_selection) > 1)
 		var/selected_ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
@@ -323,27 +320,30 @@
 	return ladder_list
 
 /// Formats the ladders above/below for radial images
-/obj/structure/ladder/proc/get_ladder_images(direction = "up", list/obj/structure/ladder/ladder_list)
+/obj/structure/ladder/proc/get_ladder_images()
 	var/list/selection = list()
 
-	for(var/i in 1 to length(ladder_list))
-		var/direction_name = direction
-		var/image/direction_icon = image('icons/mob/radial.dmi', icon_state = "radial_ladder_[direction]")
+	for(var/direction in list("up", "down"))
+		var/list/obj/structure/ladder/ladder_list = get_ladders_recursive(direction)
 
-		if(i > 1)
-			direction_name += " (x[i])"
-			direction_icon = image('icons/effects/effects.dmi', icon_state = "nothing")
+		for(var/i in 1 to length(ladder_list))
+			var/direction_name = direction
+			var/image/direction_icon = image('icons/mob/radial.dmi', icon_state = "radial_ladder_[direction]")
 
-			var/total_range = world.icon_size / 3
-			var/gap = total_range / (i - 1)
+			if(i > 1)
+				direction_name += " (x[i])"
+				direction_icon = image('icons/effects/effects.dmi', icon_state = "nothing")
 
-			for(var/arrow_number in 0 to i - 1)
-				var/image/new_icon = image('icons/mob/radial.dmi', icon_state = "radial_ladder_[direction]")
-				new_icon.transform = matrix().Translate((gap * arrow_number) - (total_range / 2), 0)
+				var/total_range = world.icon_size / 3
+				var/gap = total_range / (i - 1)
 
-				direction_icon.overlays += new_icon
+				for(var/arrow_number in 0 to i - 1)
+					var/image/new_icon = image('icons/mob/radial.dmi', icon_state = "radial_ladder_[direction]")
+					new_icon.transform = matrix().Translate((gap * arrow_number) - (total_range / 2), 0)
 
-		selection[direction_name] = direction_icon
+					direction_icon.overlays += new_icon
+
+			selection[direction_name] = direction_icon
 
 	return selection
 

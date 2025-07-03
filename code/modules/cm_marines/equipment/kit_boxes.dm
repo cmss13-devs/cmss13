@@ -149,7 +149,7 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/weapon/gun/rifle/m4ra_custom(src)
-	new /obj/item/storage/backpack/marine/satchel/rto/scout_cloak(src)
+	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
 	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)

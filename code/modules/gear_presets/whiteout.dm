@@ -170,7 +170,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/elite, WEAR_J_STORE)
 	// back
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/rto/scout_cloak/wy_invis_droid, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/wy_invis_droid, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)
@@ -393,7 +393,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/stack/nanopaste, WEAR_IN_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/elite, WEAR_J_STORE)
 	// back
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/rto/scout_cloak/wy_invis_droid, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/wy_invis_droid, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BACK)

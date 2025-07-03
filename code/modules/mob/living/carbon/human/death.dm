@@ -112,8 +112,8 @@
 				notify_ghosts(header = "Last Human", message = "There is only one person left: [last_living_human.real_name]!", source = last_living_human, action = NOTIFY_ORBIT)
 			//disable delaycloaks
 			var/mob/living/carbon/human/delayer = last_living_human
-			if(istype(delayer.back, /obj/item/storage/backpack/marine/satchel/rto/scout_cloak))
-				var/obj/item/storage/backpack/marine/satchel/rto/scout_cloak/delayer_cloak = delayer.back
+			if(istype(delayer.back, /obj/item/storage/backpack/marine/satchel/scout_cloak))
+				var/obj/item/storage/backpack/marine/satchel/scout_cloak/delayer_cloak = delayer.back
 				if(delayer_cloak.camo_active)
 					delayer_cloak.deactivate_camouflage(delayer)
 				if((delayer_cloak.cloak_cooldown - world.time) < 30 MINUTES)

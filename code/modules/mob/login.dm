@@ -65,3 +65,5 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(client, COMSIG_CLIENT_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_MOB_LOGGED_IN)
+	if(client?.prefs.main_cursor)
+		client?.mouse_pointer_icon = 'icons/effects/mouse_pointer/glove_crosshair.dmi'

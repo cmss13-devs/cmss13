@@ -567,16 +567,24 @@
 	do_toggle_custom_cursors()
 
 /client/proc/do_toggle_custom_cursors(mob/user)
-	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No", "Enable Main Cursor", "Disable Main Cursor"))
 	if(!result)
 		return
-	if(result == "Yes")
-		prefs.custom_cursors = TRUE
-		to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
-	else
-		prefs.custom_cursors = FALSE
-		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
-		mouse_pointer_icon = initial(mouse_pointer_icon)
+	switch(result)
+		if("Yes")
+			prefs.custom_cursors = TRUE
+			to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+		if("No")
+			prefs.custom_cursors = FALSE
+			to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+			mouse_pointer_icon = initial(mouse_pointer_icon)
+		if("Enable Main Cursor")
+			prefs.main_cursor = TRUE
+			to_chat(src, SPAN_NOTICE("Your main cursor will now be customized."))
+		if("Disable Main Cursor")
+			to_chat(src, SPAN_NOTICE("Your main cursor will no longer be customized."))
+			prefs.main_cursor = FALSE
+
 
 	prefs.save_preferences()
 

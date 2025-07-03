@@ -29,7 +29,15 @@
 	data["bound1"] = islist(bound1) ? bound1 : list(bound1,bound1,bound1) //float OR list(x, y, z)
 	data["bound2"] = islist(bound2) ? bound2 : list(bound2,bound2,bound2) //float OR list(x, y, z)
 	data["gravity"] = gravity //list(x, y, z)
-	data["gradient"] = gradient //gradient array list(number, string, number, string, "loop", "space"=COLORSPACE_RGB)
+
+	var/list/tgui_grad_list = list()
+	for(var/entry in gradient)
+		if(entry == "space")
+			tgui_grad_list += list(list("[entry]" = gradient[entry])) // package this thing else json encoding breaks
+			continue
+		tgui_grad_list += entry
+	data["gradient"] = tgui_grad_list //gradient array list(number, string, number, string, "loop", "space"=COLORSPACE_RGB)
+
 	data["transform"] = transform //list(a, b, c, d, e, f) OR list(xx,xy,xz, yx,yy,yz, zx,zy,zz) OR list(xx,xy,xz, yx,yy,yz, zx,zy,zz, cx,cy,cz) OR list(xx,xy,xz,xw, yx,yy,yz,yw, zx,zy,zz,zw, wx,wy,wz,ww)
 
 	//applied on spawn
@@ -102,6 +110,7 @@
 	data["target_name"] = target.name
 	if(!target.particles)
 		target.particles = new /particles
+		target.particles.gradient = list(0, "red", 1, "#ffffff", "loop", "space"=COLORSPACE_RGB) // TODO: Remove this
 	data["particle_data"] = target.particles.return_ui_representation(user)
 	return data
 
@@ -131,11 +140,15 @@
 			. = TRUE
 			target.particles.datum_flags |= DF_VAR_EDITED
 			if(!target.particles.transform)
-				target.particles.transform = new /list(new_size)
+				target.particles.transform = list()
+				for(var/i in 1 to new_size)
+					target.particles.transform += 0
 				return
 			var/size = length(target.particles.transform)
 			if(size < new_size)
-				target.particles.transform += new /list(new_size-size)
+				target.particles.transform = list()
+				for(var/i in 1 to new_size-size)
+					target.particles.transform += 0
 				return
 			//transform is not cast as a list
 			var/list/holder =  target.particles.transform
@@ -162,7 +175,7 @@
 						var_value[3] = var_value[1]
 					var_value = generator(arglist(var_value))
 				if(P_DATA_ICON_ADD)
-					var_value = input("Pick icon:", "Icon") as null|icon
+					var_value = pick_and_customize_icon(ui.user, pick_only=TRUE)
 					if(!var_value)
 						return FALSE
 					var/list/new_values = list()
@@ -190,6 +203,13 @@
 					for(var/file in owner.icon)
 						if("[file]" == mod_data[1])
 							owner.icon[file] = mod_data[2]
+					target.particles.datum_flags |= DF_VAR_EDITED
+					return TRUE
+				if(P_DATA_GRADIENT)
+					var/list/new_grad_list = list()
+					for(var/entry in var_value)
+						new_grad_list += entry // Unpackage nested lists
+					owner.gradient = new_grad_list
 					target.particles.datum_flags |= DF_VAR_EDITED
 					return TRUE
 

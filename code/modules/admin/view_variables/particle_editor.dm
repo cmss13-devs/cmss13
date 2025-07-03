@@ -139,20 +139,11 @@
 				return FALSE
 			. = TRUE
 			target.particles.datum_flags |= DF_VAR_EDITED
-			if(!target.particles.transform)
+			if(!target.particles.transform || length(target.particles.transform) != new_size)
 				target.particles.transform = list()
 				for(var/i in 1 to new_size)
 					target.particles.transform += 0
 				return
-			var/size = length(target.particles.transform)
-			if(size < new_size)
-				target.particles.transform = list()
-				for(var/i in 1 to new_size-size)
-					target.particles.transform += 0
-				return
-			//transform is not cast as a list
-			var/list/holder =  target.particles.transform
-			holder.Cut(new_size)
 		if("edit")
 			var/particles/owner = target.particles
 			var/param_var_name = params["var"]

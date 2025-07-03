@@ -251,25 +251,24 @@ export const EntryTransform = (props: EntryTransformProps) => {
           />
         </Stack.Item>
         <Stack.Item>
-          {transform &&
-            transform.map((value, index) => (
-              <NumberInput
-                animated
-                key={index}
-                value={value}
-                minValue={0}
-                maxValue={1}
-                step={1}
-                onDrag={(value) =>
-                  act('edit', {
-                    var: var_name,
-                    new_value: transform!.map((x, i) =>
-                      i === index ? value : x,
-                    ),
-                  })
-                }
-              />
-            ))}
+          {transform?.map((value, index) => (
+            <NumberInput
+              animated
+              key={index}
+              value={value}
+              minValue={0}
+              maxValue={1}
+              step={1}
+              onDrag={(value) =>
+                act('edit', {
+                  var: var_name,
+                  new_value: transform!.map((x, i) =>
+                    i === index ? value : x,
+                  ),
+                })
+              }
+            />
+          ))}
         </Stack.Item>
       </Stack>
     </LabeledList.Item>

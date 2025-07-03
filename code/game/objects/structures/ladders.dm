@@ -86,6 +86,9 @@
 		var/selected_ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
 		var/static/regex/ladder_regex = regex(@"(up|down) \(x([0-9])+\)")
 
+		if(!selected_ladder_dest)
+			return
+
 		if(selected_ladder_dest == "up" || selected_ladder_dest == "down")
 			ladder_dir_name = selected_ladder_dest
 
@@ -104,6 +107,8 @@
 			for(var/i in 1 to text2num(total) - 1)
 				if(!ladders[i].move_to(user, direction))
 					break
+
+		return
 
 	else if(up)
 		ladder_dir_name = "up"

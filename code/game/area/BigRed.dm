@@ -736,3 +736,7 @@
 /area/bigredv2/secondfloor/indoors/office
 	name = "\improper Solaris Ridge Second Story - Offices"
 	icon_state = "explored"
+
+/area/bigredv2/secondfloor/indoors/sec
+	name = "\improper Solaris Ridge Second Story - Marshal Office"
+	icon_state = "explored"

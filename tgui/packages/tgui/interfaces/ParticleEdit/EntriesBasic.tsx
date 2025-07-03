@@ -183,9 +183,11 @@ export const EntryGradient = (props: EntryGradientProps) => {
                     act('edit', {
                       var: var_name,
                       var_mod: P_DATA_GRADIENT,
-                      new_value: gradient!.map((x, i) =>
-                        i === index ? value : x,
-                      ),
+                      new_value: gradient!.map((x, i) => {
+                        const floatNum = parseFloat(value);
+                        const result = isNaN(floatNum) ? value : floatNum;
+                        return i === index ? result : x;
+                      }),
                     })
                   }
                 />

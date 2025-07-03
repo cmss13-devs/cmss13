@@ -968,10 +968,10 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	set_burst_amount(0)
 	set_fire_delay(FIRE_DELAY_TIER_12)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_4
-	fa_max_scatter = SCATTER_AMOUNT_TIER_10 + 0.5
+	fa_max_scatter = SCATTER_AMOUNT_TIER_7
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
-	scatter = SCATTER_AMOUNT_TIER_3
+	scatter = SCATTER_AMOUNT_TIER_5
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_6

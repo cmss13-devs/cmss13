@@ -1,5 +1,5 @@
 // Unlikely to come up in normal gameplay.
-#define EMPTY_VALUE ".EMPTY."
+#define EMPTY_VALUE null
 
 /datum/highlight_keywords_payload
 	var/name_full = EMPTY_VALUE

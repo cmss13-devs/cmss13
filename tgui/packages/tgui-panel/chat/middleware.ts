@@ -12,8 +12,8 @@ import {
   importSettings,
   loadSettings,
   removeHighlightSetting,
+  updateHighlightKeywords,
   updateHighlightSetting,
-  updateHighlightKeywords as updateHighlightKeywords,
   updateSettings,
 } from '../settings/actions';
 import { selectSettings } from '../settings/selectors';

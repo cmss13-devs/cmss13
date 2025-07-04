@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'tgui/backend';
 import {
   Box,
@@ -9,6 +10,7 @@ import {
   Input,
   Section,
   Stack,
+  Tabs,
   TextArea,
 } from 'tgui/components';
 
@@ -23,7 +25,6 @@ import {
   selectHighlightSettingById,
   selectHighlightSettings,
 } from '../selectors';
-import { useEffect } from 'react';
 
 export function TextHighlightSettings(props) {
   const highlightSettings = useSelector(selectHighlightSettings);
@@ -77,28 +78,63 @@ export function TextHighlightSettings(props) {
 
 const KeywordMenu = (props) => {
   let { highlightKeywords } = props;
-  let keywordsExist =
-    highlightKeywords != null && highlightKeywords.length != 0;
+  let keywordsExist = highlightKeywords !== null;
+
+  const [tabIndex, setTabIndex] = useState(0);
+  // Name, color, contents.
+  const tabs: Array<[string, string, Array<string>]> = [
+    ['Global', 'white', ['fullName']],
+    [
+      'Human',
+      'good',
+      ['firstName', 'lastName', 'middleName', 'fullJob', 'jobCommTitle'],
+    ],
+    ['Xenomorph', 'xeno', ['xenoPrefix', 'xenoNumber', 'xenoPostfix']],
+  ];
+  let [_tabTitle, tabColor, selectedTabEntries] = tabs[tabIndex];
 
   return (
     <Collapsible title="Keywords">
       {keywordsExist ? (
-        <Box px="0.75rem">
+        <Box>
           <Box color="label">
             Instances of the following triggers (e.g. $fullName$) in highlight
             strings will be replaced with the coresponding value, if available.
           </Box>
-          <Flex wrap={true}>
-            {highlightKeywords.map(([trigger, replacement]) => {
-              trigger = '$' + trigger + '$';
+          {/* Tab selection. */}
+          <Tabs px="0.75rem" mb="0">
+            {tabs.map(([title, _tabEntries], i) => (
+              <Tabs.Tab
+                key={i}
+                selected={i === tabIndex}
+                color={tabColor}
+                onClick={() => setTabIndex(i)}
+              >
+                {title}
+              </Tabs.Tab>
+            ))}
+          </Tabs>
+          {/* Tab contents. */}
+          <Flex wrap backgroundColor="hsl(0, 0%, 11%)" p="0.75rem" pb="0">
+            {selectedTabEntries.map((keywordName, index) => {
+              const [trigger, replacement] = [
+                '$' + keywordName + '$',
+                highlightKeywords[keywordName],
+              ];
+
               return (
-                <Flex.Item width="33%" mt="0.75rem">
+                <Flex.Item width="33%" mb="0.75rem" key="index">
                   <Box>{trigger}</Box>
-                  <Box color="label">{replacement as string}</Box>
+                  <Box color="label">
+                    {/* Em-dash if value is null. */}
+                    {replacement ?? '-'}
+                  </Box>
                 </Flex.Item>
               );
             })}
           </Flex>
+
+          <Divider />
         </Box>
       ) : (
         <Box color="label">

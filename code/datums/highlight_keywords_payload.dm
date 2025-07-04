@@ -24,7 +24,7 @@
 
 		var/last_name_start = findlasttext(name_full, " ")
 		if (last_name_start != 0)
-			name_last = copytext(name_full, last_name_start + 1)
+			name_last = copytext(name_full, last_name_start)
 			// If there is more than one space in the name, this triggers.
 			// Note that this will contains everything between the first and
 			// last names, so names like "John von Neumann" will trigger it.
@@ -74,18 +74,19 @@
 
 /datum/highlight_keywords_payload/proc/to_list()
 	return list(
-		fullName = sanitize_field(name_full),
-		firstName = sanitize_field(name_first),
-		middleName = sanitize_field(name_middle),
-		lastName = sanitize_field(name_last),
-		fullJob = sanitize_field(job_full),
-		jobCommTitle = sanitize_field(job_comm_title),
-		xenoPrefix = sanitize_field(xeno_prefix),
-		xenoNumber = sanitize_field(xeno_number),
-		xenoPostfix = sanitize_field(xeno_postfix)
+		// Includes ''.
+		fullName = name_full,
+		firstName = format_field(name_first),
+		middleName = format_field(name_middle),
+		lastName = format_field(name_last),
+		fullJob = format_field(job_full),
+		jobCommTitle = format_field(job_comm_title),
+		xenoPrefix = format_field(xeno_prefix),
+		xenoNumber = format_field(xeno_number),
+		xenoPostfix = format_field(xeno_postfix)
 	)
 
-/proc/sanitize_field(input)
-	for (var/bad_char in list("'", "$"))
-		input = replacetext(input, bad_char, "")
+/proc/format_field(input)
+	for (var/bad_char in list("'", "\"", "$"))
+		input = replacetext(trim_right(trim_left(input)), bad_char, "")
 	return input

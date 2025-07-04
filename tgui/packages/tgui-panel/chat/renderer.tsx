@@ -270,7 +270,7 @@ class ChatRenderer {
           if (!trigger || !replacement || line.length < trigger.length + 2) {
             continue;
           }
-          line = line.replaceAll(`$${trigger}$`, replacement as string);
+          line = line.replaceAll('$' + trigger + '$', replacement as string);
         }
 
         // Regex expression syntax is /[exp]/

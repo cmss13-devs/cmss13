@@ -210,67 +210,68 @@ const KeywordMenu = (props) => {
   const [_tabTitle, tabColor, selectedTabEntries] = tabs[tabIndex];
 
   return (
-    <Flex direction="horizontal">
-      <Flex.Item grow>
-        <Collapsible title="Keywords">
-          {keywordsExist ? (
-            <React.Fragment>
+    <React.Fragment>
+      <Flex direction="horizontal">
+        <Flex.Item grow>
+          <Collapsible title="Keywords">
+            {keywordsExist ? (
+              <React.Fragment>
+                <Box color="label">
+                  Instances of the following triggers (e.g. $fullName$) in
+                  highlight strings will be replaced with the coresponding
+                  value, if available.
+                </Box>
+                {/* Tab selection. */}
+                <Tabs px="0.75rem" mb="0">
+                  {tabs.map(([title, _tabEntries], i) => (
+                    <Tabs.Tab
+                      key={i}
+                      selected={i === tabIndex}
+                      color={tabColor}
+                      onClick={() => setTabIndex(i)}
+                    >
+                      {title}
+                    </Tabs.Tab>
+                  ))}
+                </Tabs>
+                {/* Tab contents. */}
+                <Flex wrap backgroundColor="hsl(0, 0%, 11%)" p="0.75rem" pb="0">
+                  {selectedTabEntries.map((keywordName, index) => {
+                    const [trigger, replacement] = [
+                      '$' + keywordName + '$',
+                      // Em-dash if value is null/empty.
+                      highlightKeywords[keywordName] || '-',
+                    ];
+
+                    return (
+                      <Flex.Item width="33%" mb="0.75rem" key="index">
+                        <Box>{trigger}</Box>
+                        <Box color="label">{replacement}</Box>
+                      </Flex.Item>
+                    );
+                  })}
+                </Flex>
+              </React.Fragment>
+            ) : (
               <Box color="label">
-                Instances of the following triggers (e.g. $fullName$) in
-                highlight strings will be replaced with the coresponding value,
-                if available.
+                Keywords unavailable. Occupy a character to generate highlight
+                keywords.
               </Box>
-              {/* Tab selection. */}
-              <Tabs px="0.75rem" mb="0">
-                {tabs.map(([title, _tabEntries], i) => (
-                  <Tabs.Tab
-                    key={i}
-                    selected={i === tabIndex}
-                    color={tabColor}
-                    onClick={() => setTabIndex(i)}
-                  >
-                    {title}
-                  </Tabs.Tab>
-                ))}
-              </Tabs>
-              {/* Tab contents. */}
-              <Flex wrap backgroundColor="hsl(0, 0%, 11%)" p="0.75rem" pb="0">
-                {selectedTabEntries.map((keywordName, index) => {
-                  const [trigger, replacement] = [
-                    '$' + keywordName + '$',
-                    // Em-dash if value is null/empty.
-                    highlightKeywords[keywordName] || '-',
-                  ];
-
-                  return (
-                    <Flex.Item width="33%" mb="0.75rem" key="index">
-                      <Box>{trigger}</Box>
-                      <Box color="label">{replacement}</Box>
-                    </Flex.Item>
-                  );
-                })}
-              </Flex>
-
-              <Divider />
-            </React.Fragment>
-          ) : (
-            <Box color="label">
-              Keywords unavailable. Occupy a character to generate highlight
-              keywords.
-            </Box>
-          )}
-        </Collapsible>
-      </Flex.Item>
-      {/* Refresh button. */}
-      <Flex.Item ml="0.5rem">
-        <Button
-          color="transparent"
-          tooltip="Refresh keywords"
-          tooltipPosition="left"
-          icon="refresh"
-          onClick={() => Byond.sendMessage('refresh_keywords')}
-        />
-      </Flex.Item>
-    </Flex>
+            )}
+          </Collapsible>
+        </Flex.Item>
+        {/* Refresh button. */}
+        <Flex.Item ml="0.5rem">
+          <Button
+            color="transparent"
+            tooltip="Refresh keywords"
+            tooltipPosition="left"
+            icon="refresh"
+            onClick={() => Byond.sendMessage('refresh_keywords')}
+          />
+        </Flex.Item>
+      </Flex>
+      <Divider />
+    </React.Fragment>
   );
 };

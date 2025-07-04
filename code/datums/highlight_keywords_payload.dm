@@ -73,13 +73,18 @@
 
 /datum/highlight_keywords_payload/proc/to_list()
 	return list(
-		fullName = name_full,
-		firstName = name_first,
-		middleName = name_middle,
-		lastName = name_last,
-		fullJob = job_full,
-		jobCommTitle = job_comm_title,
-		xenoPrefix = xeno_prefix,
-		xenoNumber = xeno_number,
-		xenoPostfix = xeno_postfix
+		fullName = sanitize_field(name_full),
+		firstName = sanitize_field(name_first),
+		middleName = sanitize_field(name_middle),
+		lastName = sanitize_field(name_last),
+		fullJob = sanitize_field(job_full),
+		jobCommTitle = sanitize_field(job_comm_title),
+		xenoPrefix = sanitize_field(xeno_prefix),
+		xenoNumber = sanitize_field(xeno_number),
+		xenoPostfix = sanitize_field(xeno_postfix)
 	)
+
+/proc/sanitize_field(input)
+	for (var/bad_char in list("\"", "$"))
+		input = replacetext(input, bad_char, "")
+	return input

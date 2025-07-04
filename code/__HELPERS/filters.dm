@@ -22,7 +22,6 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"size" = 1
 		)
 	),
-	// Not implemented fully
 	// Needs either a proper matrix editor, or just a hook to our existing one
 	// Issue is filterrific assumes variables will have the same value type if they share the same name, which this violates
 	// Gotta refactor this sometime
@@ -69,7 +68,7 @@ GLOBAL_LIST_INIT(master_filter_info, list(
 			"render_source" = "",
 			"flags" = FILTER_OVERLAY,
 			"color" = "",
-			"transform" = null,
+			"transform" = TRANSFORM_MATRIX_IDENTITY,
 			"blend_mode" = BLEND_DEFAULT
 		),
 		"flags" = list(

@@ -81,7 +81,7 @@ type MasterFilter = {
       render_source: string;
       flags: number;
       color: string;
-      transform: null | number;
+      transform: null | number[];
       blend_mode: number;
     };
     enums: {
@@ -173,6 +173,14 @@ type FilterEntryProps = {
   readonly filterType: string;
 };
 
+type FilterEntryTransformProps = {
+  readonly name: string;
+  readonly value: number[];
+  readonly hasValue: boolean;
+  readonly filterName: string;
+  readonly filterType: string;
+};
+
 export type Data = {
   filter_info: MasterFilter;
   target_name: string;
@@ -239,6 +247,35 @@ const FilterFloatEntry = (props: FilterEntryProps) => {
         onChange={(value) => setStep(value)}
       />
     </>
+  );
+};
+
+const FilterTransformEntry = (props: FilterEntryProps) => {
+  const { name, value, hasValue, filterName, filterType } = props;
+  const { act } = useBackend();
+
+  return (
+    <Box>
+      {value?.map((current_value: number, current_index: number) => (
+        <NumberInput
+          key={current_index}
+          value={current_value}
+          minValue={0}
+          maxValue={1}
+          step={1}
+          onDrag={(new_value) =>
+            act('modify_filter_value', {
+              name: filterName,
+              new_data: {
+                [name]: value!.map((x: number, i: number) =>
+                  i === current_index ? new_value : x,
+                ),
+              },
+            })
+          }
+        />
+      ))}
+    </Box>
   );
 };
 
@@ -371,6 +408,7 @@ const FilterDataEntry = (props: FilterEntryProps) => {
     icon: <FilterIconEntry {...props} />,
     flags: <FilterFlagsEntry {...props} />,
     enum: <FilterEnumEntry {...props} />,
+    transform: <FilterTransformEntry {...props} />,
   };
 
   const filterEntryMap = {
@@ -391,7 +429,7 @@ const FilterDataEntry = (props: FilterEntryProps) => {
     alpha: 'int',
     space: 'enum',
     blend_mode: 'enum',
-    // transform
+    transform: 'transform',
   };
 
   return (
@@ -481,7 +519,7 @@ const FilterEntry = (props: {
   );
 };
 
-export const Filteriffic = (props) => {
+export const Filteriffic = (props: any) => {
   const { act, data } = useBackend<Data>();
   const name = data.target_name || 'Unknown Object';
   const filters = data.target_filter_data || {};

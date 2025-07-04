@@ -902,9 +902,6 @@
 		if(evasion > 0)
 			. -= evasion
 
-/mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/projectile/P)
-	return FALSE // just stop them getting hit by projectiles completely
-
 
 /obj/projectile/proc/play_hit_effect(mob/hit_mob)
 	if(ammo.sound_hit)
@@ -1043,6 +1040,7 @@
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
 			var/obj/item/large_shrapnel/large_embed = new P.ammo.shrapnel_type
+			var/embed_sound = pick('sound/effects/crackandbleed.ogg', 'sound/effects/pierce3.ogg')
 			if(istype(large_embed))
 				large_embed.on_embed(src, organ)
 			if(istype(new_embed))
@@ -1060,6 +1058,7 @@
 				if(!stat && pain.feels_pain)
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
+					playsound(src, embed_sound, 75, 1)
 	SEND_SIGNAL(P, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
 
 //Deal with xeno bullets.

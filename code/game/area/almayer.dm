@@ -15,6 +15,7 @@
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
 	flags_area = AREA_NOSECURECADES
+	weather_enabled = FALSE
 
 	///Whether this area is used for hijack evacuation progress
 	var/hijack_evacuation_area = FALSE

@@ -136,7 +136,6 @@ class ChatRenderer {
   scrollTracking: boolean;
   handleScroll: (type: any) => void;
   ensureScrollTracking: () => void;
-  highlightKeywords: Map<String, String>;
   highlightParsers:
     | {
         highlightWords: string;

@@ -85,6 +85,6 @@
 	)
 
 /proc/sanitize_field(input)
-	for (var/bad_char in list("\"", "$"))
+	for (var/bad_char in list("'", "$"))
 		input = replacetext(input, bad_char, "")
 	return input

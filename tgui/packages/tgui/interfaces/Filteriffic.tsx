@@ -173,14 +173,6 @@ type FilterEntryProps = {
   readonly filterType: string;
 };
 
-type FilterEntryTransformProps = {
-  readonly name: string;
-  readonly value: number[];
-  readonly hasValue: boolean;
-  readonly filterName: string;
-  readonly filterType: string;
-};
-
 export type Data = {
   filter_info: MasterFilter;
   target_name: string;

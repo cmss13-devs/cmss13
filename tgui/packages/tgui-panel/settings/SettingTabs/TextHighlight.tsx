@@ -191,7 +191,7 @@ const KeywordMenu = (props) => {
   // Ensures the *current* values are retroactively highlighted.
   useEffect(() => {
     dispatch(rebuildChat());
-  }, highlightKeywords);
+  }, [highlightKeywords]);
 
   const keywordsExist = highlightKeywords !== null;
 

@@ -203,9 +203,13 @@ const KeywordMenu = (props) => {
     [
       'Human',
       'good',
-      ['firstName', 'lastName', 'middleName', 'fullJob', 'jobCommTitle'],
+      ['firstName', 'lastName', 'middleName', 'jobCommTitle', 'fullJob'],
     ],
-    ['Xenomorph', 'xeno', ['xenoPrefix', 'xenoNumber', 'xenoPostfix']],
+    [
+      'Xenomorph',
+      'xeno',
+      ['xenoPrefix', 'xenoNumber', 'xenoPostfix', 'fullJob'],
+    ],
   ];
   const [_tabTitle, tabColor, selectedTabEntries] = tabs[tabIndex];
 

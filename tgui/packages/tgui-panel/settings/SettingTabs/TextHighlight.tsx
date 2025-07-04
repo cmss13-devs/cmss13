@@ -246,7 +246,9 @@ const KeywordMenu = (props) => {
                     return (
                       <Flex.Item width="33%" mb="0.75rem" key="index">
                         <Box>{trigger}</Box>
-                        <Box color="label">{replacement}</Box>
+                        <Box color="label" style={{ userSelect: 'none' }}>
+                          {replacement}
+                        </Box>
                       </Flex.Item>
                     );
                   })}

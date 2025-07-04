@@ -198,7 +198,7 @@ export function settingsReducer(
     case updateHighlightKeywords.type: {
       const nextState = {
         ...state,
-        highlightKeywords: Object.entries(payload),
+        highlightKeywords: payload,
       };
 
       return nextState;

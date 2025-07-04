@@ -265,11 +265,13 @@ class ChatRenderer {
       // Organize each highlight entry into regex expressions and words
       for (let line of lines) {
         // This comes before all the existing processing.
-        for (const [trigger, replacement] of highlightKeywords) {
+        for (const [trigger, replacement] of Object.entries(
+          highlightKeywords,
+        )) {
           if (!trigger || !replacement || line.length < trigger.length + 2) {
             continue;
           }
-          line = line.replaceAll(`$${trigger}$`, replacement);
+          line = line.replaceAll(`$${trigger}$`, replacement as string);
         }
 
         // Regex expression syntax is /[exp]/

@@ -23,7 +23,6 @@
 		var/datum/job/job = GLOB.joblist[mob.job]
 		job_comm_title = job.get_comm_title()
 
-		// Name stuff.
 		var/first_name_end = findtext(name_full, " ")
 		name_first = copytext(name_full, 1, first_name_end)
 
@@ -32,10 +31,13 @@
 			name_last = copytext(name_full, last_name_start + 1)
 			// If there is more than one space in the name, this triggers.
 			// Note that this will contains everything between the first and
-			// last names.
+			// last names, so names like "John von Neumann" will trigger it.
 			if (first_name_end != last_name_start)
 				name_middle = copytext(name_full, first_name_end, last_name_start)
 	else if(isxeno(mob))
+		// This is a more involved way of extracting the xeno's information,
+		// compared to checking the user's settings, but this works if they
+		// have changed their settings or are playing a different xeno.
 		var/dynamic_name_start = findlasttext(name_full, "(")
 		var/dynamic_name_end = findlasttext(name_full, ")")
 		// Get the "XX-123-YY" part of "Forsaken Prime Runner (XX-123-YY)".

@@ -186,8 +186,8 @@ function TextHighlightSetting(props) {
 }
 
 const KeywordMenu = (props) => {
+  const { dispatch } = props;
   const highlightKeywords = useSelector(selectHighlightKeywords);
-  const dispatch = useDispatch();
   // Ensures the *current* values are retroactively highlighted.
   useEffect(() => {
     dispatch(rebuildChat());

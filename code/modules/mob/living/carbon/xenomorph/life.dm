@@ -303,8 +303,8 @@ Make sure their actual health updates immediately.*/
 
 
 /mob/living/carbon/xenomorph/proc/handle_environment()
-	var/turf/T = loc
-	if(!T || !istype(T))
+	var/turf/current_turf = loc
+	if(!current_turf || !istype(current_turf))
 		return
 
 	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire) ? recovery_aura : 0

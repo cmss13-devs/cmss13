@@ -3,13 +3,9 @@
 	density = TRUE
 	opacity = TRUE
 
-/turf/closed/attack_alien(mob/user)
-	attack_hand(user)
 
-/turf/closed/attack_hand(mob/user)
-	if(user.a_intent == INTENT_HARM)
-		return
 
+/turf/closed/proc/climb_up(mob/user)
 	var/turf/above_current = SSmapping.get_turf_above(get_turf(src))
 	var/turf/above_user = SSmapping.get_turf_above(get_turf(user))
 
@@ -60,6 +56,20 @@
 	user.forceMove(above_current)
 	return
 
+/turf/closed/attack_alien(mob/user)
+	attack_hand(user)
+
+/turf/closed/attack_hand(mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return
+	climb_up(user)
+
+/turf/closed/Enter(atom/movable/mover, atom/forget)
+	. = ..()
+	if(!mover.move_intentionally || !istype(mover,/mob/living))
+		return
+	var/mob/living/climber = mover
+	climb_up(climber)
 
 /turf/closed/insert_self_into_baseturfs()
 	return

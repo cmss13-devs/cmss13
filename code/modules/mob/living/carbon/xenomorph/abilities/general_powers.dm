@@ -417,7 +417,7 @@
 
 	//everyone gets (extra) timer to pounce up
 	if(A.z > X.z)
-		if (!do_after(X, 0.7 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE))
+		if (!do_after(X, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 
 

@@ -133,16 +133,20 @@
 			target.particles.datum_flags |= DF_VAR_EDITED
 			. = TRUE
 		if("transform_size")
-			var/list/values = list("Simple Matrix" = 6, "Complex Matrix" = 12, "Projection Matrix" = 16)
-			var/new_size = values[params["new_value"]]
+			var/list/matrix_size = list("Simple Matrix" = 6, "Complex Matrix" = 12, "Projection Matrix" = 16)
+			var/new_size = matrix_size[params["new_value"]]
 			if(!new_size)
 				return FALSE
 			. = TRUE
 			target.particles.datum_flags |= DF_VAR_EDITED
 			if(!target.particles.transform || length(target.particles.transform) != new_size)
-				target.particles.transform = list()
-				for(var/i in 1 to new_size)
-					target.particles.transform += 0
+				switch(new_size)
+					if(6)
+						target.particles.transform = TRANSFORM_MATRIX_IDENTITY
+					if(12)
+						target.particles.transform = TRANSFORM_COMPLEX_MATRIX_IDENTITY
+					if(16)
+						target.particles.transform = TRANSFORM_PROJECTION_MATRIX_IDENTITY
 				return
 		if("edit")
 			var/particles/owner = target.particles

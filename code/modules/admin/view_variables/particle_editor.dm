@@ -110,7 +110,6 @@
 	data["target_name"] = target.name
 	if(!target.particles)
 		target.particles = new /particles
-		target.particles.gradient = list(0, "red", 1, "#ffffff", "loop", "space"=COLORSPACE_RGB) // TODO: Remove this
 	data["particle_data"] = target.particles.return_ui_representation(user)
 	return data
 

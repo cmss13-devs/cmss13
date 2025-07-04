@@ -141,7 +141,7 @@
 			if(!target.particles.transform || length(target.particles.transform) != new_size)
 				switch(new_size)
 					if(6)
-						target.particles.transform = TRANSFORM_MATRIX_IDENTITY
+						target.particles.transform = list(1,0,0, 1,0,0) // TRANSFORM_MATRIX_IDENTITY seems wrong for only particles?
 					if(12)
 						target.particles.transform = TRANSFORM_COMPLEX_MATRIX_IDENTITY
 					if(16)

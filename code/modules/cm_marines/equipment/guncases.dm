@@ -491,7 +491,9 @@
 	new /obj/item/ammo_magazine/pistol/m10/drum(src)
 	new /obj/item/attachable/reddot/small(src)
 	new /obj/item/attachable/suppressor/sleek(src)
-	new /obj/item/attachable/stock/pistol/collapsible(src)
+	new /obj/item/attachable/extended_barrel/vented(src)
+	new /obj/item/attachable/lasersight/micro(src)
+	new /obj/item/attachable/stock/m10_solid(src)
 	new /obj/item/storage/belt/gun/m10(src)
 
 /obj/item/storage/box/guncase/m10_melee_kit
@@ -503,12 +505,14 @@
 
 /obj/item/storage/box/guncase/m10_melee_kit/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/m10(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap(src)
 	new /obj/item/ammo_magazine/pistol/m10/ap/extended(src)
 	new /obj/item/ammo_magazine/pistol/m10/ap/extended(src)
+	new /obj/item/ammo_magazine/pistol/m10/ap/extended(src)
+	new /obj/item/ammo_magazine/pistol/m10/ap/drum(src)
 	new /obj/item/ammo_magazine/pistol/m10/ap/drum(src)
 	new /obj/item/ammo_magazine/pistol/m10/ap/drum(src)
 	new /obj/item/attachable/reddot/small(src)
+	new /obj/item/attachable/lasersight/micro(src)
 	new /obj/item/attachable/compensator/m10/spiked(src)
+	new /obj/item/attachable/stock/pistol/collapsible(src)
 	new /obj/item/storage/belt/gun/m10(src)

@@ -947,8 +947,11 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 		/obj/item/attachable/compensator/m10, // Special M10 compensator
 		/obj/item/attachable/compensator/m10/spiked, // Special M10 compensator - Melee version
 		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/extended_barrel/vented,
 		/obj/item/attachable/heavy_barrel,
-		/obj/item/attachable/stock/pistol/collapsible //Stock
+		/obj/item/attachable/stock/pistol/collapsible, //Stock
+		/obj/item/attachable/stock/m10_solid,
+		/obj/item/attachable/lasersight/micro //Underbarrel
 	)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
 	start_automatic = TRUE
@@ -961,7 +964,7 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	current_mag = /obj/item/ammo_magazine/pistol/m10
 
 /obj/item/weapon/gun/pistol/m10/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 21, "under_x" = 21, "under_y" = 16, "stock_x" = 25, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 19,"rail_x" = 11, "rail_y" = 21, "under_x" = 18, "under_y" = 15, "stock_x" = 25, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/m10/set_gun_config_values()
 	..()
@@ -970,11 +973,11 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_4
 	fa_max_scatter = SCATTER_AMOUNT_TIER_7
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_5
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_5
 
 //-------------------------------------------------------
 /*

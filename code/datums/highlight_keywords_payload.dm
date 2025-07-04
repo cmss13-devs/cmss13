@@ -19,10 +19,6 @@
 	job_full = mob.get_role_name()
 
 	if(ishuman(mob))
-		// mob.comm_title is unset when this code runs, presumably set after.
-		var/datum/job/job = GLOB.joblist[mob.job]
-		job_comm_title = job.get_comm_title()
-
 		var/first_name_end = findtext(name_full, " ")
 		name_first = copytext(name_full, 1, first_name_end)
 
@@ -34,6 +30,9 @@
 			// last names, so names like "John von Neumann" will trigger it.
 			if (first_name_end != last_name_start)
 				name_middle = copytext(name_full, first_name_end, last_name_start)
+
+		// If this is called before the human is *equipped* it will be null.
+		job_comm_title = mob.comm_title
 	else if(isxeno(mob))
 		// This is a more involved way of extracting the xeno's information,
 		// compared to checking the user's settings, but this works if they

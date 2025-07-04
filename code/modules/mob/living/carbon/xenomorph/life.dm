@@ -304,6 +304,9 @@ Make sure their actual health updates immediately.*/
 
 /mob/living/carbon/xenomorph/proc/handle_environment()
 	var/turf/T = loc
+	if(!T || !istype(T))
+		return
+
 	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
 	if(caste && !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
@@ -312,9 +315,6 @@ Make sure their actual health updates immediately.*/
 			updatehealth() //Make sure their actual health updates immediately
 			if(prob(20))
 				to_chat(src, SPAN_WARNING("You feel a searing heat!"))
-
-	if(!T || !istype(T))
-		return
 
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())

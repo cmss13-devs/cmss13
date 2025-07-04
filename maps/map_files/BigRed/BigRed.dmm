@@ -33704,7 +33704,10 @@
 /area/bigredv2/caves/lambda/xenobiology)
 "bXf" = (
 /obj/structure/surface/table,
-/obj/item/trash/popcorn,
+/obj/item/trash/popcorn{
+	pixel_y = 13
+	},
+/obj/effect/spawner/random/powercell,
 /turf/open/floor/red/west,
 /area/bigredv2/secondfloor/indoors/sec)
 "bXg" = (
@@ -33716,7 +33719,7 @@
 "bXh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
-/obj/effect/spawner/random/powercell,
+/obj/item/clothing/suit/storage/hazardvest/yellow,
 /turf/open/floor/red/west,
 /area/bigredv2/secondfloor/indoors/sec)
 "bXi" = (

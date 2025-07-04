@@ -35,7 +35,7 @@ export function TextHighlightSettings(props) {
     <Section fill scrollable height="250px">
       <Stack vertical>
         <Stack.Item>
-          <KeywordMenu dispatch={dispatch} />
+          <KeywordMenu />
         </Stack.Item>
         {highlightSettings.map((id, i) => (
           <TextHighlightSetting
@@ -186,12 +186,7 @@ function TextHighlightSetting(props) {
 }
 
 const KeywordMenu = (props) => {
-  const { dispatch } = props;
   const highlightKeywords = useSelector(selectHighlightKeywords);
-  // Ensures the *current* values are retroactively highlighted.
-  useEffect(() => {
-    dispatch(rebuildChat());
-  }, [highlightKeywords]);
 
   const keywordsExist = highlightKeywords !== null;
 

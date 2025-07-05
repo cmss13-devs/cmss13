@@ -3434,6 +3434,9 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/grimy,
 /area/bigredv2/outside/marshal_office)
+"amC" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/secondfloor/indoors/lz1)
 "amD" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars,
@@ -10489,6 +10492,17 @@
 	},
 /turf/open/floor/dark,
 /area/bigredv2/secondfloor/indoors/office)
+"aIJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/secondfloor/indoors/lz1)
 "aIK" = (
 /turf/open/floor/darkpurple2/north,
 /area/bigredv2/caves/lambda/research)
@@ -30691,18 +30705,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/bigredv2/secondfloor/rooftops)
-"bOJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer/plate,
-/area/bigredv2/secondfloor/indoors/lz1)
 "bOK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -34346,6 +34348,70 @@
 "bYF" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/bigredv2/outside/virology)
+"bYG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/secondfloor/indoors/lz1)
+"bYH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail,
+/turf/open/floor/almayer_hull,
+/area/bigredv2/secondfloor/indoors/lz1)
+"bYI" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/secondfloor/indoors/lz1)
+"bYJ" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/secondfloor/indoors/lz1)
+"bYK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1;
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/plate,
+/area/bigredv2/secondfloor/indoors/lz1)
+"bYL" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/almayer_hull,
+/area/bigredv2/secondfloor/indoors/lz1)
 "bYW" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/darkyellow2/north,
@@ -159316,9 +159382,9 @@ aTb
 fnq
 asD
 btZ
-btZ
-btZ
-btZ
+bYL
+bYL
+bYL
 btZ
 arY
 arS
@@ -159532,7 +159598,7 @@ jMY
 aTb
 fnq
 asD
-btZ
+arY
 fbs
 fJP
 asm
@@ -159749,7 +159815,7 @@ fJP
 iyC
 fnq
 asD
-btZ
+arY
 skP
 gmj
 asy
@@ -162790,8 +162856,8 @@ aTV
 aTV
 aTV
 aTV
-aTV
-jso
+fHd
+pWb
 bSo
 hJz
 bRO
@@ -163007,10 +163073,10 @@ aTV
 aTV
 aTV
 aTV
-aTV
 jso
-bSo
-hJz
+bYI
+aIJ
+aIJ
 bRO
 bPP
 bPP
@@ -163224,11 +163290,11 @@ aTV
 aTV
 aTV
 aTV
-aTV
 jso
-bSo
+bYJ
+hJz
 uut
-bRO
+amC
 bPP
 bPP
 bPP
@@ -163441,11 +163507,11 @@ aTV
 aTV
 aTV
 aTV
-aTV
 jso
-bSo
-uut
-bRO
+bYJ
+hJz
+amC
+amC
 bPP
 bPP
 aCF
@@ -163658,11 +163724,11 @@ aTV
 fHd
 gmj
 gmj
-gmj
-pWb
-bSo
-uut
-bRO
+eqe
+bYJ
+hJz
+bYG
+amC
 aCF
 aCF
 aCF
@@ -163876,10 +163942,10 @@ jso
 bOM
 bOL
 bOL
-bOL
+bYK
 bOK
-bOJ
-bRO
+amC
+amC
 aCF
 aCF
 aCF
@@ -164095,8 +164161,8 @@ hJz
 hJz
 hJz
 hJz
-uut
-bRO
+amC
+amC
 aCF
 aCF
 aCF
@@ -164312,8 +164378,8 @@ hJz
 hJz
 hJz
 hJz
-hJz
-bRO
+btZ
+amC
 aCF
 aCF
 aCF
@@ -164529,8 +164595,8 @@ hJz
 hJz
 hJz
 hJz
-hJz
-bRO
+arY
+tSo
 aCF
 aCF
 aCF
@@ -164746,8 +164812,8 @@ hJz
 hJz
 hJz
 hJz
-hJz
-bRO
+arY
+tSo
 aCF
 aCF
 aCF
@@ -164963,8 +165029,8 @@ hJz
 hJz
 hJz
 hJz
-hJz
-bRO
+arY
+tSo
 aCF
 aCF
 aCF
@@ -165180,8 +165246,8 @@ hJz
 hJz
 hJz
 hJz
-hJz
-bRO
+btZ
+amC
 aCF
 aCF
 aCF
@@ -165397,8 +165463,8 @@ hJz
 hJz
 hJz
 hJz
-hJz
-bRO
+amC
+amC
 aCF
 aCF
 aCF
@@ -165614,8 +165680,8 @@ hJz
 hJz
 hJz
 hJz
-hJz
-bRO
+amC
+amC
 aCF
 aCF
 aCF
@@ -165831,8 +165897,8 @@ hJz
 hJz
 hJz
 hJz
-hJz
-bRO
+amC
+amC
 aCF
 aCF
 aCF
@@ -166048,8 +166114,8 @@ hJz
 hJz
 hJz
 hJz
-uut
-bRO
+bYG
+amC
 aCF
 aCF
 aCF
@@ -166265,8 +166331,8 @@ hJz
 hJz
 hJz
 hJz
-uut
-bRO
+xSI
+amC
 aCF
 aCF
 aCF
@@ -166482,8 +166548,8 @@ hJz
 hJz
 hJz
 hJz
-uut
-bRO
+bYH
+tSo
 aCF
 aCF
 aCF
@@ -166699,8 +166765,8 @@ hJz
 hJz
 hJz
 hJz
-uut
-bRO
+bYH
+tSo
 aCF
 aCF
 aCF
@@ -166916,8 +166982,8 @@ hJz
 hJz
 hJz
 hJz
-uut
-bRO
+bYH
+tSo
 aCF
 aCF
 aCF
@@ -167133,8 +167199,8 @@ hJz
 hJz
 hJz
 uut
-uut
-bRO
+xSI
+amC
 aCF
 aCF
 aCF
@@ -167350,8 +167416,8 @@ hJz
 hJz
 uut
 uut
-uut
-bRO
+bYG
+amC
 aCF
 aCF
 aCF
@@ -167567,8 +167633,8 @@ bRO
 bRO
 bRO
 bRO
-bRO
-bRO
+amC
+amC
 aCF
 aCF
 aCF

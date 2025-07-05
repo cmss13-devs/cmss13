@@ -1,0 +1,589 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"an" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "csplatter1"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"fS" = (
+/obj/effect/spawner/random/gun/corporate,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"gD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"js" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"jt" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/sand_overlay/sand1,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"km" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"ld" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"lB" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl4";
+	pixel_x = -7;
+	pixel_y = 4
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"mW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"nO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"oI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"pg" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"pI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"pT" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal11"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"rp" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"st" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/obj/structure/closet/crate/secure/weyland,
+/obj/item/ammo_box/magazine/misc/mre/pmc,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"tu" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"uA" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2";
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"vp" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"wb" = (
+/obj/structure/tent/med,
+/obj/item/prop/alien/hugger,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"xW" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"xY" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"yi" = (
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"yl" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"zw" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"zE" = (
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -8;
+	pixel_y = -5
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"zP" = (
+/obj/structure/largecrate/random,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Ab" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"As" = (
+/obj/item/device/radio{
+	pixel_x = -7;
+	pixel_y = 17
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Bh" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached18,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"BN" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2";
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Dd" = (
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Dq" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 4;
+	pixel_y = -9
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Fv" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"FG" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"HY" = (
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Iv" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Jr" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Jy" = (
+/obj/structure/desertdam/decals/road_stop{
+	dir = 1;
+	icon_state = "stop_decal5"
+	},
+/obj/item/prop/colony/usedbandage{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Ka" = (
+/obj/structure/bed/medevac_stretcher,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Lf" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"MP" = (
+/obj/structure/surface/rack,
+/obj/item/storage/surgical_tray,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Nm" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl2";
+	pixel_y = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"OD" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/sand_overlay/sand1,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Qe" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"QS" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Ri" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/asphalt/tile,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Rk" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 50;
+	icon_state = "folding_3"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Su" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"SQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Tp" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal10"
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Tz" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/landmark/corpsespawner/wygoon,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Up" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"UY" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl2";
+	pixel_y = 8
+	},
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Vc" = (
+/obj/structure/bed/portable_surgery,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "csplatter1"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Wa" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Wm" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"Zq" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal8"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"ZF" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal9"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"ZS" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"ZU" = (
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"ZZ" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2";
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+
+(1,1,1) = {"
+rp
+xY
+vp
+Iv
+HY
+HY
+HY
+tu
+mW
+gD
+oI
+"}
+(2,1,1) = {"
+rp
+Bh
+Dd
+Tp
+xW
+Wm
+Lf
+Zq
+HY
+pg
+oI
+"}
+(3,1,1) = {"
+rp
+Bh
+Dd
+ZF
+zw
+ZS
+ZS
+Ab
+UY
+HY
+km
+"}
+(4,1,1) = {"
+rp
+Bh
+Dd
+Iv
+ZU
+HY
+HY
+tu
+SQ
+nO
+jt
+"}
+(5,1,1) = {"
+rp
+Bh
+Ri
+pI
+fS
+HY
+yi
+Dq
+an
+HY
+OD
+"}
+(6,1,1) = {"
+rp
+Bh
+Dd
+Su
+Nm
+ZZ
+Tz
+QS
+lB
+HY
+OD
+"}
+(7,1,1) = {"
+rp
+rp
+Dd
+ZF
+Jr
+yl
+yl
+st
+As
+Rk
+Fv
+"}
+(8,1,1) = {"
+rp
+rp
+Dd
+BN
+HY
+HY
+MP
+uA
+wb
+HY
+oI
+"}
+(9,1,1) = {"
+rp
+rp
+Dd
+Iv
+Ka
+HY
+Vc
+Jy
+HY
+HY
+oI
+"}
+(10,1,1) = {"
+rp
+rp
+rp
+js
+ld
+Qe
+Wa
+FG
+ld
+Qe
+pT
+"}
+(11,1,1) = {"
+rp
+rp
+rp
+rp
+rp
+zE
+zP
+rp
+rp
+Up
+rp
+"}

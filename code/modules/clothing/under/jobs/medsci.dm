@@ -247,7 +247,7 @@
 	item_state_slots = list(WEAR_BODY = "scrubspurple")
 
 /obj/item/clothing/under/rank/medical/olive
-	name = "olive greenmedical scrubs"
+	name = "olive green medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in olive green."
 	icon_state = "scrubsolive"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'

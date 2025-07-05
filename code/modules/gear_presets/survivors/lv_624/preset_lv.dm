@@ -64,6 +64,7 @@
 /datum/equipment_preset/survivor/doctor/lv
 	name = "Survivor - LV-624 Emergency Medical Technician"
 	assignment = "LV-624 Emergency Medical Technician"
+	skills = /datum/skills/civilian/survivor/paramedic
 
 /datum/equipment_preset/survivor/doctor/lv/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/colonist/workwear/blue/uniform = new()

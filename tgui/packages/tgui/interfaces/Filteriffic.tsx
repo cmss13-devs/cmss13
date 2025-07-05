@@ -345,7 +345,7 @@ const FilterFlagsEntry = (props: FilterEntryProps) => {
   const { act, data } = useBackend<Data>();
 
   const filterInfo = data.filter_info;
-  const flags: { string: number } = filterInfo[filterType]['flags'];
+  const flags: Record<string, number> = filterInfo[filterType]['flags'];
   return Object.entries(flags).map(([flagName, bitField]) => (
     <Button.Checkbox
       checked={value & bitField}
@@ -369,7 +369,7 @@ const FilterEnumEntry = (props: FilterEntryProps) => {
   const { act, data } = useBackend<Data>();
 
   const filterInfo = data.filter_info;
-  const enums: { string: number } = filterInfo[filterType]['enums'];
+  const enums: Record<string, number> = filterInfo[filterType]['enums'];
   return Object.entries(enums).map(([enumName, enumNumber]) => (
     <Button.Checkbox
       checked={value === enumNumber}

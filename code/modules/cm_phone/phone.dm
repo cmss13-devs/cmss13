@@ -549,6 +549,11 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(user, COMSIG_LIVING_SPEAK)
 
 	set_raised(FALSE, user)
+	if(istype(attached_to.loc, /obj/item/clothing/head/helmet/marine/radio_helmet/scout))
+		if(attached_to != loc)
+			attached_to.recall_phone()
+
+
 
 /obj/item/phone/on_enter_storage(obj/item/storage/S)
 	. = ..()

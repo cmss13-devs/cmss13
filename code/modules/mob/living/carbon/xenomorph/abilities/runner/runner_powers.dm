@@ -183,12 +183,13 @@
 	behavior_delegate.caboom_last_proc = 0
 	xeno.set_effect(behavior_delegate.caboom_timer*2, SUPERSLOW)
 
+	START_PROCESSING(SSfasteffects, src)
+
 	xeno.say(";FOR THE HIVE!!!")
 	return ..()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/cancel_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
-
 	if(!istype(xeno))
 		return
 	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
@@ -205,3 +206,19 @@
 	xeno.adjust_effect(behavior_delegate.caboom_timer * -2 - (behavior_delegate.caboom_timer - behavior_delegate.caboom_left + 2) * xeno.life_slow_reduction * 0.5, SUPERSLOW)
 
 	to_chat(xeno, SPAN_XENOWARNING("We remove all our explosive acid before it combusted."))
+
+	STOP_PROCESSING(SSfasteffects, src)
+	button.set_maptext()
+
+/datum/action/xeno_action/activable/acider_for_the_hive/process(delta_time)
+	return update_caboom_maptext()
+
+/datum/action/xeno_action/activable/acider_for_the_hive/proc/update_caboom_maptext()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/runner_acider/delegate = xeno.behavior_delegate
+	if(!istype(delegate) || !delegate.caboom_trigger || delegate.caboom_left <= 0)
+		button.set_maptext()
+		return PROCESS_KILL
+
+	button.set_maptext(SMALL_FONTS_COLOR(7, delegate.caboom_left, "#e69d00"), 19, 2)
+	return

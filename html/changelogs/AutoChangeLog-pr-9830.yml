@@ -1,0 +1,5 @@
+author: "Zenith"
+delete-after: True
+changes:
+  - bugfix: "added both Hyperdyne & the IASF to the follow menu."
+  - imageadd: "addeded iasf background icon & swapped around CO squad_menu icon to gold."

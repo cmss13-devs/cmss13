@@ -34,7 +34,7 @@
 /datum/chem_property/negative/toxic
 	name = PROPERTY_TOXIC
 	code = "TXC"
-	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health or severe illness."
+	description = "Poisonous substance which causes harm on contact with or through absorption by organic tissues, resulting in bad health, severe illness, or plant death."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = -1
@@ -60,20 +60,6 @@
 	if(istype(O,/obj/effect/plantsegment))
 		if(prob(50))
 			qdel(O)
-		return
-	if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
-		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
-
-		if(!tray.seed)
-			return
-		tray.health -= rand(30,50)
-		if(tray.pestlevel > 0)
-			tray.pestlevel -= 2
-		if(tray.weedlevel > 0)
-			tray.weedlevel -= 3
-		tray.toxins += 4
-		tray.check_level_sanity()
-		tray.update_icon()
 
 /datum/chem_property/negative/toxic/reaction_mob(mob/living/M, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(M))
@@ -83,10 +69,17 @@
 		return
 	C.apply_damage(potency, TOX)  // applies potency toxin damage
 
+/datum/chem_property/negative/toxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.health += -1.5*(potency*2)*volume
+	processing_tray.toxins += (potency*2)*volume
+
 /datum/chem_property/negative/corrosive
 	name = PROPERTY_CORROSIVE
 	code = "CRS"
-	description = "Damages or destroys other substances on contact through a chemical reaction. Causes chemical burns on contact with living tissue."
+	description = "Damages or destroys other substances on contact through a chemical reaction. Causes chemical burns on contact with living tissue. Reduces pest and weed populations."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = 1 //has a combat use
@@ -167,10 +160,21 @@
 			to_chat(M, SPAN_WARNING("\The [O] melts."))
 		qdel(O)
 
+/datum/chem_property/negative/corrosive/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.weedlevel > 0)
+		processing_tray.weedlevel += -1*(potency*2)*volume
+	if(processing_tray.pestlevel > 0)
+		processing_tray.pestlevel += -1*(potency*2)*volume
+
+
+
 /datum/chem_property/negative/biocidic
 	name = PROPERTY_BIOCIDIC
 	code = "BCD"
-	description = "Ruptures cell membranes on contact, destroying most types of organic tissue."
+	description = "Ruptures cell membranes on contact, destroying most types of organic tissue. Reduces pest and weed populations."
 	rarity = PROPERTY_COMMON
 	starter = TRUE
 	value = -1
@@ -184,6 +188,15 @@
 
 /datum/chem_property/negative/biocidic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_VHIGH * potency)
+
+/datum/chem_property/negative/biocidic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if(processing_tray.weedlevel > 0)
+		processing_tray.weedlevel += -1*(potency*2)*volume
+	if(processing_tray.pestlevel > 0)
+		processing_tray.pestlevel += -1*(potency*2)*volume
 
 /datum/chem_property/negative/paining
 	name = PROPERTY_PAINING
@@ -244,9 +257,9 @@
 /datum/chem_property/negative/hemorrhaging
 	name = PROPERTY_HEMORRAGING
 	code = "HMR"
-	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system."
+	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system. Persistant mutagen to plants."
 	rarity = PROPERTY_UNCOMMON
-	value = 2
+	value = 1
 	cost_penalty = FALSE
 
 /datum/chem_property/negative/hemorrhaging/process(mob/living/M, potency = 1, delta_time)
@@ -285,10 +298,18 @@
 /datum/chem_property/negative/hemorrhaging/reaction_mob(mob/M, method = TOUCH, volume, potency)
 	M.AddComponent(/datum/component/status_effect/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
 
+/datum/chem_property/negative/hemorrhaging/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += -0.2*(potency*2)*volume
+	processing_tray.mutation_mod+= 0.2*(potency*2)*volume
+
+
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC
 	code = "CRG"
-	description = "Penetrates the cell nucleus causing direct damage to the deoxyribonucleic acid in cells resulting in cancer and abnormal cell proliferation. In extreme cases causing hyperactive apoptosis and potentially atrophy."
+	description = "Penetrates the cell nucleus causing direct damage to the deoxyribonucleic acid in cells resulting in cancer, abnormal cell proliferation, and mutation in plants. In extreme cases causing hyperactive apoptosis, potentially atrophy."
 	rarity = PROPERTY_COMMON
 
 /datum/chem_property/negative/carcinogenic/process(mob/living/M, potency = 1, delta_time)
@@ -301,10 +322,18 @@
 /datum/chem_property/negative/carcinogenic/process_critical(mob/living/M, potency = 1)
 	M.take_limb_damage(POTENCY_MULTIPLIER_MEDIUM * potency)//Hyperactive apoptosis
 
+/datum/chem_property/negative/carcinogenic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 1.5*(potency*2)*volume
+	processing_tray.mutation_level += 10*(potency*2)*volume + processing_tray.mutation_mod
+
+
 /datum/chem_property/negative/hepatotoxic
 	name = PROPERTY_HEPATOTOXIC
 	code = "HPT"
-	description = "Damages hepatocytes in the liver, resulting in liver deterioration and eventually liver failure."
+	description = "Damages hepatocytes in the liver, resulting in liver deterioration and eventually liver failure. Prevents some negative mutations in plants."
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/negative/hepatotoxic/process(mob/living/M, potency = 1, delta_time)
@@ -319,26 +348,40 @@
 /datum/chem_property/negative/hepatotoxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, TOX)
 
+//Applies mutation cancel onto hydrotray plants, negative affects like increasing consumption and lowering life
+/datum/chem_property/negative/hepatotoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Plant Cancer"] > potency*-2)
+		processing_tray.mutation_controller["Plant Cancer"] = potency*-2
+	if (processing_tray.mutation_controller["Gluttony"] > potency*-2)
+		processing_tray.mutation_controller["Gluttony"] = potency*-2
+
 /datum/chem_property/negative/intravenous
 	name = PROPERTY_INTRAVENOUS
 	code = "INV"
 	description = "Due to chemical composition, this chemical can only be administered intravenously."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_METABOLITE
-	max_level = 1
+
+/datum/chem_property/negative/intravenous/pre_process(mob/living/M)
+	return list(REAGENT_BOOST = level)
 
 /datum/chem_property/negative/intravenous/reset_reagent()
 	holder.flags = initial(holder.flags)
+	holder.custom_metabolism = initial(holder.custom_metabolism)
 	return ..()
 
 /datum/chem_property/negative/intravenous/update_reagent()
 	holder.flags |= REAGENT_NOT_INGESTIBLE
+	holder.custom_metabolism = holder.custom_metabolism * (level)
 	return ..()
 
 /datum/chem_property/negative/nephrotoxic
 	name = PROPERTY_NEPHROTOXIC
 	code = "NPT"
-	description = "Causes deterioration and damage to podocytes in the kidney resulting in potential kidney failure."
+	description = "Causes deterioration and damage to podocytes in the kidney resulting in potential kidney failure. Prevents the tolerance to light, weeds, and toxins from mutating in plants."
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/negative/nephrotoxic/process(mob/living/M, potency = 1, delta_time)
@@ -353,10 +396,22 @@
 /datum/chem_property/negative/nephrotoxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, TOX)
 
+//Applies mutation cancel onto hydrotray plants, prevents tolerance adjustment, parasitic and carnivorus
+/datum/chem_property/negative/nephrotoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Light Tolerance"] > potency*-2)
+		processing_tray.mutation_controller["Light Tolerance"] = potency*-2
+	if (processing_tray.mutation_controller["Weed Tolerance"] > potency*-2)
+		processing_tray.mutation_controller["Weed Tolerance"] = potency*-2
+	if (processing_tray.mutation_controller["Toxin Tolerance"] > potency*-2)
+		processing_tray.mutation_controller["Toxin Tolerance"] = potency*-2
+
 /datum/chem_property/negative/pneumotoxic
 	name = PROPERTY_PNEUMOTOXIC
 	code = "PNT"
-	description = "Toxic substance which causes damage to connective tissue that forms the support structure (the interstitium) of the alveoli in the lungs."
+	description = "Toxic substance which causes damage to connective tissue that forms the support structure (the interstitium) of the alveoli in the lungs. Prevents growth speed and health from mutation in plants."
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/negative/pneumotoxic/process(mob/living/M, potency = 1, delta_time)
@@ -371,10 +426,25 @@
 /datum/chem_property/negative/pneumotoxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
+//Applies mutation cancel onto hydrotray plants, prevents plant life, yield, grow times and repeat harvest mutation
+/datum/chem_property/negative/pneumotoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Endurance"] > potency*-2)
+		processing_tray.mutation_controller["Endurance"] = potency*-2
+	if (processing_tray.mutation_controller["Production"] > potency*-2)
+		processing_tray.mutation_controller["Production"] = potency*-2
+	if (processing_tray.mutation_controller["Lifespan"] > potency*-2)
+		processing_tray.mutation_controller["Lifespan"] = potency*-2
+	if (processing_tray.mutation_controller["Maturity"] > potency*-2)
+		processing_tray.mutation_controller["Maturity"] = potency*-2
+
+
 /datum/chem_property/negative/oculotoxic
 	name = PROPERTY_OCULOTOXIC
 	code = "OCT"
-	description = "Damages the photoreceptive cells in the eyes impairing neural transmissions to the brain, resulting in loss of sight or blindness."
+	description = "Damages the photoreceptive cells in the eyes impairing neural transmissions to the brain, resulting in loss of sight or blindness. Prevents potency from mutation in plants."
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/negative/oculotoxic/process(mob/living/M, potency = 1, delta_time)
@@ -392,10 +462,22 @@
 /datum/chem_property/negative/oculotoxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_LOW * potency, BRAIN)
 
+//Applies mutation cancel onto hydrotray plants, prevents potency, glowing or flowers mutations
+/datum/chem_property/negative/oculotoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Potency"] > potency*-2)
+		processing_tray.mutation_controller["Potency"] = potency*-2
+	if (processing_tray.mutation_controller["Bioluminecence"] > potency*-2)
+		processing_tray.mutation_controller["Bioluminecence"] = potency*-2
+	if (processing_tray.mutation_controller["Flowers"] > potency*-2)
+		processing_tray.mutation_controller["Flowers"] = potency*-2
+
 /datum/chem_property/negative/cardiotoxic
 	name = PROPERTY_CARDIOTOXIC
 	code = "CDT"
-	description = "Attacks cardiomyocytes when passing through the heart in the bloodstream. This disrupts the cardiac cycle and can lead to cardiac arrest."
+	description = "Attacks cardiomyocytes when passing through the heart in the bloodstream. This disrupts the cardiac cycle and can lead to cardiac arrest. Prevents produced chemicals from mutation in plants."
 	rarity = PROPERTY_COMMON
 
 /datum/chem_property/negative/cardiotoxic/process(mob/living/M, potency = 1, delta_time)
@@ -410,10 +492,22 @@
 /datum/chem_property/negative/cardiotoxic/process_critical(mob/living/M, potency = 1)
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
+//Applies mutation cancel onto hydrotray plants, prevents new chems from being added
+/datum/chem_property/negative/cardiotoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["New Chems"] > potency*-2)
+		processing_tray.mutation_controller["New Chems"] = potency*-2
+	if (processing_tray.mutation_controller["New Chems2"] > potency*-2)
+		processing_tray.mutation_controller["New Chems2"] = potency*-2
+	if (processing_tray.mutation_controller["New Chems3"] > potency*-2)
+		processing_tray.mutation_controller["New Chems3"] = potency*-2
+
 /datum/chem_property/negative/neurotoxic
 	name = PROPERTY_NEUROTOXIC
 	code = "NRT"
-	description = "Breaks down neurons causing widespread damage to the central nervous system and brain functions. Exposure may cause disorientation or unconsciousness to affected persons."
+	description = "Breaks down neurons causing widespread damage to the central nervous system and brain functions. Exposure may cause disorientation or unconsciousness to affected persons. Prevents species mutation in plants."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_STIMULANT
 	cost_penalty = FALSE
@@ -442,10 +536,18 @@
 		var/mob/living/carbon/xenomorph/xeno = M
 		xeno.AddComponent(/datum/component/status_effect/daze, volume * potency * POTENCY_MULTIPLIER_LOW, 30)
 
+//Applies mutation cancel onto hydrotray plants, prevents species mutation
+/datum/chem_property/negative/neurotoxic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	if (processing_tray.mutation_controller["Mutate Species"] > potency*-2)
+		processing_tray.mutation_controller["Mutate Species"] = potency*-2
+
 /datum/chem_property/negative/hypermetabolic
 	name = PROPERTY_HYPERMETABOLIC
 	code = "EMB"
-	description = "Takes less time for this chemical to metabolize, resulting in it being in the bloodstream for less time per unit."
+	description = "Takes less time for this chemical to metabolize, resulting in it being in the bloodstream for less time per unit. Accelerates plant growth."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
 
@@ -456,6 +558,14 @@
 /datum/chem_property/negative/hypermetabolic/update_reagent()
 	holder.custom_metabolism = holder.custom_metabolism * (1 + POTENCY_MULTIPLIER_VLOW * level)
 	..()
+
+/datum/chem_property/negative/hypermetabolic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.metabolism_adjust += clamp(-20*potency, 0, -130)
+
+
 
 /datum/chem_property/negative/addictive
 	name = PROPERTY_ADDICTIVE
@@ -488,7 +598,7 @@
 	description = "The chemical shows parasitic behavior towards live erythrocytes (red blood cells) in order to produce more of itself."
 	rarity = PROPERTY_DISABLED
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
-	value = 1
+	value = 2
 
 /datum/chem_property/negative/hemositic/pre_process(mob/living/M)
 	if(ishuman(M))
@@ -501,8 +611,12 @@
 		return
 	..()
 	var/mob/living/carbon/C = M
-	C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_VHIGH * potency, 0)
-	holder.volume++
+	if(M.nutrition >= NUTRITION_LOW)
+		C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_HIGH * potency, 0)
+		holder.volume++
+	else
+		C.blood_volume = max(C.blood_volume - POTENCY_MULTIPLIER_LOW * potency, 0)
+
 
 /datum/chem_property/negative/hemositic/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!iscarbon(M))

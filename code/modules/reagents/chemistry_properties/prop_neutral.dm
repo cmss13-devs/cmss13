@@ -35,12 +35,27 @@
 /datum/chem_property/neutral/excreting
 	name = PROPERTY_EXCRETING
 	code = "EXT"
-	description = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine."
+	description = "Excretes all chemicals contained in the blood stream by using the kidneys to turn it into urine. Upregulates chemical production in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 
 /datum/chem_property/neutral/excreting/pre_process(mob/living/M)
 	return list(REAGENT_PURGE = level)
+
+/datum/chem_property/neutral/excreting/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 1.5*(potency*2)*volume
+	processing_tray.weedlevel += 1*(potency*2)*volume
+	processing_tray.potency_counter += 5*(potency*2)*volume
+	if (processing_tray.potency_counter >= 100 && rand(0,potency*2) > 0)
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.potency += rand(1,potency*2)
+		processing_tray.seed.nutrient_consumption += 0.3*(potency*2)
+		c_turf.visible_message(SPAN_NOTICE("\The [processing_tray.seed.display_name] rustles as its branches bow"))
+		processing_tray.potency_counter = 0
 
 /datum/chem_property/neutral/nutritious
 	name = PROPERTY_NUTRITIOUS
@@ -67,6 +82,17 @@
 /datum/chem_property/neutral/nutritious/update_reagent()
 	holder.nutriment_factor += level
 	..()
+
+/datum/chem_property/neutral/nutritious/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.weedlevel += 0.5*(potency*2)*volume
+	processing_tray.pestlevel += 0.5*(potency*2)*volume
+	processing_tray.nutrilevel += 0.5*(potency*2)*volume
+	processing_tray.plant_health += 0.5*(potency*2)*volume
+	processing_tray.yield_mod += 0.05*(potency*2)*volume
+
 
 /datum/chem_property/neutral/ketogenic
 	name = PROPERTY_KETOGENIC
@@ -336,7 +362,7 @@
 /datum/chem_property/neutral/fluffing
 	name = PROPERTY_FLUFFING
 	code = "FLF"
-	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth."
+	description = "Accelerates cell division in the hair follicles resulting in random and excessive hairgrowth. Found to increase yeilds in plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
 	value = 0
@@ -360,6 +386,17 @@
 /datum/chem_property/neutral/fluffing/process_critical(mob/living/M, potency = 1, delta_time)
 	to_chat(M, SPAN_WARNING("You feel like something is penetrating your skull!"))
 	M.apply_damage(0.5 * potency * delta_time, BRAIN) //Hair growing into brain
+
+/datum/chem_property/neutral/fluffing/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.yield_mod += 0.2*(potency*2)*volume
+	processing_tray.nutrilevel += -0.5*(potency*2)*volume
+	var/water_added = 0
+	var/water_input = -0.1*(potency*2)*volume
+	water_added += water_input
+	processing_tray.waterlevel += water_input
 
 /datum/chem_property/neutral/allergenic
 	name = PROPERTY_ALLERGENIC
@@ -486,10 +523,10 @@
 /datum/chem_property/neutral/hypometabolic
 	name = PROPERTY_HYPOMETABOLIC
 	code = "OMB"
-	description = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit."
+	description = "Takes longer for this chemical to metabolize, resulting in it being in the bloodstream for more time per unit. Slows down metabolism of plants."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_METABOLITE
-	value = 2
+	value = 3
 
 /datum/chem_property/neutral/hypometabolic/reset_reagent()
 	holder.custom_metabolism = initial(holder.custom_metabolism)
@@ -498,6 +535,12 @@
 /datum/chem_property/neutral/hypometabolic/update_reagent()
 	holder.custom_metabolism = max(holder.custom_metabolism / (1 + 0.35 * level), 0.005)
 	..()
+
+/datum/chem_property/neutral/hypometabolic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.metabolism_adjust += clamp(20*potency, 0, 130)
 
 /datum/chem_property/neutral/sedative
 	name = PROPERTY_SEDATIVE

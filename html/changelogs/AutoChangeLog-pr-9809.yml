@@ -1,4 +1,0 @@
-author: "stalkerino"
-delete-after: True
-changes:
-  - bugfix: "fixes access for CO surv on solaris ridge and radio"

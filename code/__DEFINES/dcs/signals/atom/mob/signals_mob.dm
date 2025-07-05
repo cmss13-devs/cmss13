@@ -186,6 +186,8 @@
 
 #define COMSIG_MOB_NESTED "mob_nested"
 
+#define COMSIG_MOB_KILL_TOTAL_INCREASED "mob_kill_total_increased"
+
 /// From /obj/item/roller/proc/deploy_roller() : (mob/user, obj/structure/bed/roller/roller)
 #define COMSIG_MOB_ITEM_ROLLER_DEPLOYED "mob_roller_deployed"
 

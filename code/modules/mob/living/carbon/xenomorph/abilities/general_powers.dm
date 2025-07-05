@@ -78,7 +78,7 @@
 
 	playsound(xeno.loc, "alien_resin_build", 25)
 	apply_cooldown()
-	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE)
+	SEND_SIGNAL(xeno, COMSIG_XENO_PLANT_RESIN_NODE, xeno)
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()

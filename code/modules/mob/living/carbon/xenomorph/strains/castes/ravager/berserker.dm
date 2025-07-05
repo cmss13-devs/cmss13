@@ -71,6 +71,7 @@
 			bound_xeno.add_filter("berserker_rage", 1, list("type" = "outline", "color" = "#000000ff", "size" = 1))
 			rage_lock()
 			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We feel a euphoric rush as we reach max rage! We are LOCKED at max Rage!"))
+			SEND_SIGNAL(bound_xeno, COMSIG_XENO_RAGE_MAX)
 
 	// HP vamp
 	if(!bound_xeno.on_fire)

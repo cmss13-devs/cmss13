@@ -4,6 +4,7 @@
 	total_positions = 8
 	spawn_positions = 8
 	allow_additional = 1
+	marine_sided = TRUE
 
 /datum/job/marine/generate_entry_message(mob/living/carbon/human/current_human)
 	if(current_human.assigned_squad)

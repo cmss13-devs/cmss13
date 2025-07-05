@@ -97505,18 +97505,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/upper/external)
-"eMB" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southwest,
-/area/tyrargo/outdoors/colony_streets/north_east)
-"eMC" = (
-/turf/open/floor/almayer_hull/outerhull_dir,
-/area/tyrargo/outdoors/colony_streets/north_east)
-"eMD" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
-/area/tyrargo/outdoors/colony_streets/north_east)
-"eME" = (
-/turf/open/floor/almayer_hull,
-/area/tyrargo/outdoors/colony_streets/north_east)
 "eMF" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
@@ -232647,7 +232635,7 @@ cGh
 cGh
 aDb
 cFK
-eMB
+cWw
 cWw
 cWw
 cWw
@@ -232831,7 +232819,7 @@ cGq
 cGh
 aDc
 cFK
-eMC
+cWw
 cWw
 cWw
 cWw
@@ -233015,7 +233003,7 @@ cFS
 cFS
 dTC
 cFB
-eMC
+cWw
 cWw
 cWw
 cWw
@@ -233199,7 +233187,7 @@ cGh
 aDh
 cFB
 cFB
-eMC
+cWw
 cWw
 cWw
 cWw
@@ -233382,8 +233370,8 @@ cGh
 cFS
 cGi
 cFB
-eME
-eMC
+cWw
+cWw
 cWw
 cWw
 cWw
@@ -233567,7 +233555,7 @@ cFS
 aDi
 cFB
 cFB
-eMC
+cWw
 cWw
 cWw
 cWw
@@ -233751,7 +233739,7 @@ cGh
 cFS
 aDd
 cFB
-eMC
+cWw
 cWw
 cWw
 cWw
@@ -233935,7 +233923,7 @@ cGh
 aDj
 aDc
 cFK
-eMC
+cWw
 cWw
 cWw
 cWw
@@ -234119,7 +234107,7 @@ cGh
 cFS
 cFS
 cFK
-eMD
+cWw
 cWw
 cWw
 cWw

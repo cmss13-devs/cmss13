@@ -1,4 +1,30 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/admin/upper/external)
+"ab" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent5"
+	},
+/turf/open/floor/almayer_hull,
+/area/tyrargo/indoors/admin/upper/external)
+"ac" = (
+/obj/structure/cable/heavyduty{
+	icon_state = "1-2"
+	},
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = -12;
+	pixel_y = 23
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/admin/upper/external)
 "aN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/floor/prison/floor_plate,
@@ -1037,8 +1063,8 @@ jM
 ki
 Yg
 Yg
-ki
-HU
+Yg
+um
 "}
 (5,1,1) = {"
 IO
@@ -1060,7 +1086,7 @@ Sg
 Yg
 Sg
 IN
-HU
+aa
 "}
 (6,1,1) = {"
 IO
@@ -1104,7 +1130,7 @@ ki
 Yg
 oQ
 oQ
-um
+oQ
 "}
 (8,1,1) = {"
 IO
@@ -1638,9 +1664,9 @@ sL
 IO
 IO
 sL
-sL
-sL
-sL
+zP
+zP
+zP
 sL
 IO
 sL
@@ -1731,7 +1757,7 @@ IO
 IO
 IO
 IO
-GG
+ac
 NS
 NS
 NS
@@ -1753,13 +1779,13 @@ IO
 IO
 IO
 IO
-IO
 GG
 Mc
 Mc
 Mc
 Mc
-NS
+Mc
+ab
 oQ
 NS
 NS

@@ -6,11 +6,13 @@
 	can_buckle = FALSE
 	foldabletype = /obj/item/stool
 
+/*
 /obj/structure/bed/stool/diner
 	icon_state = "stool_diner"
 	anchored = TRUE
 	can_buckle = FALSE
 	foldabletype = /obj/item/stool/diner
+*/
 
 /obj/item/stool
 	name = "stool"
@@ -25,10 +27,11 @@
 	throwforce = 12
 	w_class = SIZE_HUGE
 
-/obj/item/stool/diner
+/* /obj/item/stool/diner
 	name = "diner stool"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "stool_diner"
+*/
 
 /obj/item/stool/proc/deploy_stool(mob/user)
 	new /obj/structure/bed/stool(get_turf(user))

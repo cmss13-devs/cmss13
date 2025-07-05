@@ -28,9 +28,9 @@
 
 /obj/structure/prop/souto_land/streamer/blue
 	name = "orange streamers"
-	icon = 'icons/obj/structures/props/banners.dmi'
-	icon_state = "bStreamerflags"
+	//icon = 'icons/obj/structures/props/banners.dmi'
+	//icon_state = "bStreamerflags"
 
 /obj/structure/prop/souto_land/pole/blue
-	icon = 'icons/obj/structures/props/banners.dmi'
-	icon_state = "bStreamerpole"
+	//icon = 'icons/obj/structures/props/banners.dmi'
+	//icon_state = "bStreamerpole"

@@ -778,8 +778,8 @@
 /turf/closed/wall/diner/hull
 	name = "heavy reinforced hull"
 	desc = "A highly reinforced metal wall used to separate rooms and make up the station."
-	hull = TRUE
 	icon_state = "diner_h"
+	turf_flags = TURF_HULL
 
 //Xenomorph's Resin Walls
 

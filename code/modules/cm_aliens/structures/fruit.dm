@@ -219,7 +219,7 @@
 	if(recipient && !QDELETED(recipient))
 		recipient.gain_health(heal_amount)
 		//Every second, heal them for 20.
-		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
+		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1, from_fruit = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
 		recipient.balloon_alert(recipient, "our flesh mends, and the regeneration quickens!", text_color = "#17991B")
 	if(do_consume)
@@ -255,7 +255,7 @@
 	if(mature && recipient && !QDELETED(recipient))
 		recipient.add_xeno_shield(clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
 		//Every second, heal them for 5.
-		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
+		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1, from_fruit = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel our defense being bolstered, and begin to slowly regenerate."))
 		recipient.balloon_alert(recipient, "our regeneration quickens and carapace thickens!", text_color = "#179973")
 	if(do_consume)

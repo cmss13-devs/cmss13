@@ -275,10 +275,8 @@
 		return FALSE
 	var/turf/target_turf = get_turf(A)
 
-	if(target_turf.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
-		return
-	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
+
+	if(!X.hive.living_xeno_queen)
 		to_chat(X, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))
 		return
 

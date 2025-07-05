@@ -366,7 +366,6 @@
 	hijack.fire()
 	GLOB.alt_ctrl_disabled = TRUE
 
-	marine_announcement("Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.", "Dropship Alert", 'sound/AI/hijack.ogg', logging = ARES_LOG_SECURITY)
 	log_ares_flight("Unknown", "Unscheduled dropship departure detected from operational area. Hijack likely. Shutting down autopilot.")
 	addtimer(CALLBACK(src, PROC_REF(hijack_general_quarters)), 10 SECONDS)
 	var/mob/living/carbon/xenomorph/xeno = user

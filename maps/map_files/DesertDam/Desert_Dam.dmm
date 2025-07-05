@@ -1268,6 +1268,10 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/maint)
 "adT" = (
+/obj/structure/largecrate/random/mini/small_case/b{
+	pixel_x = -7;
+	pixel_y = 10
+	},
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/maint)
 "adU" = (
@@ -1279,15 +1283,22 @@
 	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
+"adW" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating,
+/area/desert_dam/building/hydroponics/maint)
 "adX" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt,
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/maint)
 "adY" = (
 /obj/structure/machinery/power/apc/no_power/north,
+/obj/item/storage/bag/trash,
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/maint)
 "adZ" = (
@@ -1622,6 +1633,14 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/upper_hallway)
+"afb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/desert_dam/building/hydroponics/maint)
 "afc" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
@@ -34708,10 +34727,6 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/bar_valley_dam)
-"iMe" = (
-/obj/structure/machinery/door/airlock/almayer/maint/colony,
-/turf/open/space/basic,
-/area/desert_dam/building/medical/maint/south)
 "iMf" = (
 /obj/effect/decal/sand_overlay/sand2{
 	dir = 9
@@ -70080,11 +70095,11 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/morgue)
 "wxR" = (
-/obj/structure/machinery/computer/operating,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/surface/table,
+/obj/structure/machinery/computer/med_data/laptop,
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_isolation)
 "wxW" = (
@@ -170821,7 +170836,7 @@ eYI
 bPV
 cHr
 cHr
-iMe
+upB
 cHr
 fDF
 fDF
@@ -182917,7 +182932,7 @@ uCT
 uCT
 uCT
 uCT
-hor
+qaR
 hor
 hor
 hor
@@ -213205,7 +213220,7 @@ aed
 aea
 aPG
 adS
-aPl
+afb
 adT
 aPg
 adQ
@@ -213674,7 +213689,7 @@ aPY
 aPI
 aPg
 adY
-adT
+adW
 adS
 aOw
 aOQ

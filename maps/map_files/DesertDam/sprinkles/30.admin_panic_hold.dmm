@@ -532,15 +532,6 @@
 	},
 /turf/open/floor/prison/blue/east,
 /area/desert_dam/building/administration/upper_hallway)
-"YJ" = (
-/obj/structure/machinery/door_control{
-	id = "panicroom";
-	name = "Panic Room";
-	pixel_x = 22;
-	pixel_y = 1
-	},
-/turf/open/floor/prison/bright_clean2,
-/area/desert_dam/building/administration/upper_hallway)
 
 (1,1,1) = {"
 nU
@@ -702,7 +693,7 @@ Hy
 ow
 fD
 kl
-YJ
+Jy
 Jy
 ab
 nU

@@ -41,3 +41,13 @@
       up on Hybrisa specifically.
   - imageadd: added stain & goo icons, which were previously only var edits, now should
       work as originally intended.
+2025-07-05:
+  Detective-Google:
+  - bugfix: Fixed the ritual knife onmob sprite.
+  - admin: Logging for BEs is updated
+  stalkerino:
+  - balance: disables cade anchoring on almayer, except sandbags
+  - rscadd: Barricades and handrails now properly layer even when unanchored, and
+      instead pixel shift when unanchored
+  - bugfix: Barricades can no longer be pushed behind a blocking atom/mob
+  - bugfix: Added missing bitfields for AREA_YAUTJA flags

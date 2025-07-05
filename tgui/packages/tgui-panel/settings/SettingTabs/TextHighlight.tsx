@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import React from 'react';
 import { useDispatch, useSelector } from 'tgui/backend';
 import {
@@ -194,27 +194,19 @@ const KeywordMenu = (props) => {
   // Tab information defined here.
   // [name, color, contents]
   const tabs: Array<[string, string, Array<string>]> = [
-    ['Global', 'white', ['fullName']],
-    [
-      'Human',
-      'good',
-      ['firstName', 'lastName', 'middleName', 'jobCommTitle', 'fullJob'],
-    ],
-    [
-      'Xenomorph',
-      'xeno',
-      ['xenoPrefix', 'xenoNumber', 'xenoPostfix', 'fullJob'],
-    ],
+    ['Global', 'white', ['fullName', 'fullJob']],
+    ['Human', 'good', ['firstName', 'lastName', 'middleName', 'jobCommTitle']],
+    ['Xenomorph', 'xeno', ['xenoPrefix', 'xenoNumber', 'xenoPostfix']],
   ];
   const [_tabTitle, tabColor, selectedTabEntries] = tabs[tabIndex];
 
   return (
-    <React.Fragment>
+    <>
       <Flex direction="horizontal">
         <Flex.Item grow>
           <Collapsible title="Keywords">
             {keywordsExist ? (
-              <React.Fragment>
+              <>
                 <Box color="label">
                   Instances of the following triggers (e.g. $fullName$) in
                   highlight strings will be replaced with the coresponding
@@ -252,7 +244,7 @@ const KeywordMenu = (props) => {
                     );
                   })}
                 </Flex>
-              </React.Fragment>
+              </>
             ) : (
               <Box color="label">
                 Keywords unavailable. Occupy a character to generate highlight
@@ -273,6 +265,6 @@ const KeywordMenu = (props) => {
         </Flex.Item>
       </Flex>
       <Divider />
-    </React.Fragment>
+    </>
   );
 };

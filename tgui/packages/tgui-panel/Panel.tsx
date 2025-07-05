@@ -4,19 +4,19 @@
  * @license MIT
  */
 
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'tgui/backend';
 import { Button, Section, Stack } from 'tgui/components';
 import { Pane } from 'tgui/layouts';
 
 import { NowPlayingWidget, useAudio } from './audio';
 import { ChatPanel, ChatTabs } from './chat';
+import { rebuildChat } from './chat/actions';
 import { useGame } from './game';
 import { Notifications } from './Notifications';
 import { PingIndicator } from './ping';
 import { ReconnectButton } from './reconnect';
 import { SettingsPanel, useSettings } from './settings';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'tgui/backend';
-import { rebuildChat } from './chat/actions';
 import { selectHighlightKeywords } from './settings/selectors';
 
 export const Panel = (props) => {

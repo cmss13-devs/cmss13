@@ -275,6 +275,9 @@
 		return FALSE
 	var/turf/target_turf = get_turf(A)
 
+	if(!SSmapping.same_z_map(X.loc.z, target_turf.loc.z))
+		to_chat(X, SPAN_XENOWARNING("Our mind cannot reach that far."))
+		return
 
 	if(!X.hive.living_xeno_queen)
 		to_chat(X, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))

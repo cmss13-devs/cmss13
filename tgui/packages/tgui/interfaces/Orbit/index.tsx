@@ -210,44 +210,6 @@ const infectedSplitter = (members: Array<Observable>) => {
   return squads;
 };
 
-const infectedSplitter = (members: Array<Observable>) => {
-  const tdomeHive: Array<Observable> = [];
-  const primeHive: Array<Observable> = [];
-  const corruptedHive: Array<Observable> = [];
-  const forsakenHive: Array<Observable> = [];
-  const mutatedHive: Array<Observable> = [];
-  const otherHives: Array<Observable> = [];
-  const yautjaHive: Array<Observable> = [];
-
-  members.forEach((x) => {
-    if (x.area_name?.includes('Thunderdome')) {
-      tdomeHive.push(x);
-    } else if (x.embryo_hivenumber?.includes('normal')) {
-      primeHive.push(x);
-    } else if (x.embryo_hivenumber?.includes('corrupted')) {
-      corruptedHive.push(x);
-    } else if (x.embryo_hivenumber?.includes('forsaken')) {
-      forsakenHive.push(x);
-    } else if (x.embryo_hivenumber?.includes('mutated')) {
-      mutatedHive.push(x);
-    } else if (x.embryo_hivenumber?.includes('yautja')) {
-      yautjaHive.push(x);
-    } else {
-      otherHives.push(x);
-    }
-  });
-  const squads = [
-    buildSquadObservable('Thunderdome', 'xeno', tdomeHive),
-    buildSquadObservable('Prime', 'xeno', primeHive),
-    buildSquadObservable('Corrupted', 'green', corruptedHive),
-    buildSquadObservable('Forsaken', 'grey', forsakenHive),
-    buildSquadObservable('Mutated', 'pink', mutatedHive),
-    buildSquadObservable('Other', 'light-grey', otherHives),
-    buildSquadObservable('Yautja', 'green', yautjaHive),
-  ];
-  return squads;
-};
-
 const marineSplitter = (members: Array<Observable>) => {
   const mutineers: Array<Observable> = [];
   const loyalists: Array<Observable> = [];

@@ -52,6 +52,7 @@ structure:
 	//always powered
 	requires_power = FALSE
 	unlimited_power = TRUE
+	unoviable_timer = FALSE // Queens can do ovi stuff in event areas, namely USS runtime.
 
 //no dynamic lighting, unpowered.
 /area/event/unpowered

@@ -1,4 +1,3 @@
-import { map } from 'common/collections';
 import { toFixed } from 'common/math';
 import { numberOfDecimalDigits } from 'common/math';
 import { useState } from 'react';
@@ -346,8 +345,8 @@ const FilterFlagsEntry = (props: FilterEntryProps) => {
   const { act, data } = useBackend<Data>();
 
   const filterInfo = data.filter_info;
-  const flags = filterInfo[filterType]['flags'];
-  return map(flags, (bitField: number, flagName) => (
+  const flags: { string: number } = filterInfo[filterType]['flags'];
+  return Object.entries(flags).map(([flagName, bitField]) => (
     <Button.Checkbox
       checked={value & bitField}
       onClick={() =>
@@ -370,8 +369,8 @@ const FilterEnumEntry = (props: FilterEntryProps) => {
   const { act, data } = useBackend<Data>();
 
   const filterInfo = data.filter_info;
-  const enums = filterInfo[filterType]['enums'];
-  return map(enums, (enumNumber: number, enumName) => (
+  const enums: { string: number } = filterInfo[filterType]['enums'];
+  return Object.entries(enums).map(([enumName, enumNumber]) => (
     <Button.Checkbox
       checked={value === enumNumber}
       onClick={() =>

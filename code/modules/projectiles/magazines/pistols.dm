@@ -225,7 +225,7 @@
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but also shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------
@@ -275,7 +275,7 @@
 /obj/item/ammo_magazine/pistol/t73_impact
 	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
 	desc = "A high-impact 7.62x25mm Tokarev pistol magazine. The bullets are tipped with a tungsten-lead alloy to stagger absolutely anything they hit. Point towards dissidents."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/upp
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag_impact"

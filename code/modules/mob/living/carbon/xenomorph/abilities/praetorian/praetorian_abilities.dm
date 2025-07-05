@@ -212,6 +212,11 @@
 
 ////////// BASE PRAE
 
+/datum/action/xeno_action/activable/xeno_spit/praetorian
+	name = "Spit Acid"
+	xeno_cooldown = 2 SECONDS
+
+
 /datum/action/xeno_action/activable/pounce/base_prae_dash
 	name = "Dash"
 	action_icon_state = "prae_dash"
@@ -289,8 +294,6 @@
 	spray_type = ACID_SPRAY_LINE
 	spray_distance = 7
 	spray_effect_type = /obj/effect/xenomorph/spray/praetorian
-	activation_delay = TRUE
-	activation_delay_length = 5
 
 ///////////////////////// VALKYRIE PRAE
 

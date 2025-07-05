@@ -235,7 +235,6 @@
 	/// Caste-based spit windup
 	var/spit_windup = FALSE
 	/// Caste-based spit windup duration (if applicable)
-	var/spit_delay = 0
 	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
 	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos

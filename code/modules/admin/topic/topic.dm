@@ -1031,7 +1031,7 @@
 			else
 				M.key = H.key
 				if(M.client)
-					M.client.change_view(GLOB.world_view_size)
+					M.client.view_size.reset_to_default()
 
 			if(M.skills)
 				qdel(M.skills)

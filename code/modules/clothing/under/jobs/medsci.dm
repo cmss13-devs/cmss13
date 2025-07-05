@@ -203,7 +203,7 @@
 	item_state_slots = list(WEAR_BODY = "medical")
 
 /obj/item/clothing/under/rank/medical/lightblue
-	name = "medical scrubs"
+	name = "light blue medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in light blue."
 	icon_state = "scrubslightblue"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -214,7 +214,7 @@
 	item_state_slots = list(WEAR_BODY = "scrubslightblue")
 
 /obj/item/clothing/under/rank/medical/blue
-	name = "medical scrubs"
+	name = "blue medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in formal blue."
 	icon_state = "scrubsblue"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -225,7 +225,7 @@
 	item_state_slots = list(WEAR_BODY = "scrubsblue")
 
 /obj/item/clothing/under/rank/medical/green
-	name = "medical scrubs"
+	name = "green medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in jade green."
 	icon_state = "scrubsgreen"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -236,8 +236,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsgreen")
 
 /obj/item/clothing/under/rank/medical/purple
-	name = "medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in berry red."
+	name = "purple medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in amaranth purple."
 	icon_state = "scrubspurple"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -247,7 +247,7 @@
 	item_state_slots = list(WEAR_BODY = "scrubspurple")
 
 /obj/item/clothing/under/rank/medical/olive
-	name = "medical scrubs"
+	name = "olive greenmedical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in olive green."
 	icon_state = "scrubsolive"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -258,7 +258,7 @@
 	item_state_slots = list(WEAR_BODY = "scrubsolive")
 
 /obj/item/clothing/under/rank/medical/grey
-	name = "medical scrubs"
+	name = "grey medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in mundane grey."
 	icon_state = "scrubsgrey"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -269,7 +269,7 @@
 	item_state_slots = list(WEAR_BODY = "scrubsgrey")
 
 /obj/item/clothing/under/rank/medical/orange
-	name = "medical scrubs"
+	name = "brig medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in prisoner orange."
 	icon_state = "scrubsorange"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
@@ -278,3 +278,25 @@
 	)
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsorange")
+
+/obj/item/clothing/under/rank/medical/brown
+	name = "brown medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are a ruddy brown."
+	icon_state = "scrubsbrown"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
+	)
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubsbrown")
+
+/obj/item/clothing/under/rank/medical/cmo
+	name = "Chief Medical Officer's medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green with a big C on the front and back."
+	icon_state = "scrubscmo"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
+	)
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubscmo")

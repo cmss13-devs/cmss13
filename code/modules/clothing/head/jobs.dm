@@ -103,16 +103,32 @@
 	icon_state = "surgcap_purple"
 
 /obj/item/clothing/head/surgery/blue
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is baby blue."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is dark blue."
 	icon_state = "surgcap_blue"
+
+/obj/item/clothing/head/surgery/lightblue
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a baby blue."
+	icon_state = "surgcap_lightblue"
 
 /obj/item/clothing/head/surgery/green
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is dark green."
 	icon_state = "surgcap_green"
 
+/obj/item/clothing/head/surgery/olive
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is olive green"
+	icon_state = "surgcap_olive"
+
 /obj/item/clothing/head/surgery/orange
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is orange."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a rusty orange--not to be confused with prisoner orange!"
 	icon_state = "surgcap_orange"
+
+	/obj/item/clothing/head/surgery/grey
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a drab grey."
+	icon_state = "surgcap_grey"
+
+/obj/item/clothing/head/surgery/cmo
+	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. This one matches the green on standard scrubs and the Chief's labcoat."
+	icon_state = "surgcap_cmo"
 
 //Detective
 

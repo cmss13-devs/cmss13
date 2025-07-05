@@ -240,7 +240,6 @@
 		XENO_CASTE_DRONE,
 		XENO_CASTE_HIVELORD,
 		XENO_CASTE_WARRIOR,
-		XENO_CASTE_RAVAGER,
 	)
 	sound_effect = list('sound/voice/alien_queen_command.ogg')
 	command_announcement = list("Our garrison forces are reaching seventy percent casualties, we are losing our grip on LV-624. It appears that vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We're counting on you to keep holding.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")

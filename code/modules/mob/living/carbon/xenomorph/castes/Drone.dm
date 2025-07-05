@@ -90,3 +90,9 @@
 
 /mob/living/carbon/xenomorph/drone/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
 	death(cause, 1)
+
+// AI code
+
+
+/mob/living/carbon/xenomorph/drone/init_movement_handler()
+	return new /datum/xeno_ai_movement/drone(src)

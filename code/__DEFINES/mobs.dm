@@ -188,12 +188,14 @@
 #define SQUEEZE_UNDER_VEHICLES (1<<1)  // Only the van is supported as of now.
 #define EASY_SURGERY (1<<2)  // Surgeries on this mob don't require advanced skills.
 #define SURGERY_MODE_ON (1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
-#define GIVING (1<<4) // Is currently trying to give an item to someone
+#define MUTINEER (1<<4)  // Part of the Mutiny Gang
 #define NOBIOSCAN (1<<5)
-#define HAS_SPAWNED_PET (1<<6) // Has spawned their special pet.
-#define MUTINY_MUTINEER (1<<7)  // Part of the Mutiny Gang
-#define MUTINY_LOYALIST (1<<8) // Allied with command.
-#define MUTINY_NONCOMBAT (1<<9) // NON COMBATANT.
+#define GIVING (1<<6) // Is currently trying to give an item to someone
+#define HAS_SPAWNED_PET (1<<7) // Has spawned their special pet.
+#define MUTINY_MUTINEER (1<<8)  // Part of the Mutiny Gang
+#define MUTINY_LOYALIST (1<<9) // Allied with command.
+#define MUTINY_NONCOMBAT (1<<10) // NON COMBATANT.
+#define AI_CONTROLLED (1<<11) // Controled by a xenomorph AI
 
 //=================================================
 

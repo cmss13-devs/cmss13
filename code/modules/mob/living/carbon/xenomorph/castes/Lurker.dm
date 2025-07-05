@@ -119,7 +119,7 @@
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis_action = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if (lurker_invis_action)
-		lurker_invis_action.invisibility_off(0, TRUE, TRUE) // Full cooldown, no lingering speed
+		lurker_invis_action.invisibility_off(0, TRUE, FALSE)
 
 /datum/behavior_delegate/lurker_base/proc/decloak_handler(mob/source)
 	SIGNAL_HANDLER
@@ -242,7 +242,7 @@
 	if(found)
 		var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invis = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 		if(lurker_invis && xeno.stealth)
-			lurker_invis.invisibility_off(0, FALSE, FALSE) // Full cooldown on successful pounce
+			lurker_invis.invisibility_off(0, FALSE, TRUE) // Full cooldown on successful pounce, no lingering speed
 			to_chat(xeno, SPAN_XENODANGER("We use our invisibility to empower our pounce!"))
 
 
@@ -337,6 +337,9 @@
 
 	if(instantly_decrease_speed)
 		xeno.speed_modifier += speed_buff
+		xeno.pull_multiplier += 0.75
+		if(!refund_multiplier) // fullcloak pounces and slash out of cloak only
+			addtimer(CALLBACK(src, PROC_REF(reset_pull)), 2.5 SECONDS)
 		xeno.recalculate_speed()
 	else
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/action/xeno_action/onclick/lurker_invisibility, remove_speed), xeno), lingering_speed_buff)
@@ -360,6 +363,10 @@
 	if(owner.client?.prefs.show_cooldown_messages)
 		to_chat(owner, SPAN_XENOHIGHDANGER("We are ready to use our invisibility again!"))
 	..()
+
+/datum/action/xeno_action/onclick/lurker_invisibility/proc/reset_pull()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.pull_multiplier -= 0.75
 
 /datum/action/xeno_action/onclick/lurker_assassinate/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

@@ -634,6 +634,25 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else if(HAS_TRAIT(attacking_item, TRAIT_TOOL_MULTITOOL))
 		return attack_hand(user)
 
+	else if(istype(attacking_item, /obj/item/weapon/twohanded/fireaxe))
+		var/pry_delay = 3 SECONDS
+		if(arePowerSystemsOn())
+			to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
+		else if(locked)
+			to_chat(user, SPAN_WARNING("The airlock's bolts prevent it from being forced."))
+		else if(welded)
+			to_chat(user, SPAN_WARNING("The airlock is welded shut."))
+		else if(!operating)
+			spawn(0)
+				if(density)
+					to_chat(user, SPAN_NOTICE("You start forcing the airlock open with [attacking_item]."))
+					if(do_after(user, pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+						open(1)
+				else
+					to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with [attacking_item]."))
+					if(do_after(user, pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+						close(1)
+
 	else if(isgun(attacking_item))
 		var/obj/item/weapon/gun/gun_item = attacking_item
 		for(var/slot in gun_item.attachments)

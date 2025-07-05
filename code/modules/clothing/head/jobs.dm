@@ -124,7 +124,8 @@
 	icon_state = "surgcap_olive"
 
 /obj/item/clothing/head/surgery/brown
-	name = "brown surgical cap"	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a rusty brown."
+	name = "brown surgical cap"
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a rusty brown."
 	icon_state = "surgcap_brown"
 
 /obj/item/clothing/head/surgery/grey
@@ -134,7 +135,7 @@
 
 /obj/item/clothing/head/surgery/cmo
 	name = "Chief Medical Officer's surgical cap"
-	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. This one matches the CMO's lab coat."
+	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. This one matches the CMO's labcoat."
 	icon_state = "surgcap_cmo"
 
 //Detective

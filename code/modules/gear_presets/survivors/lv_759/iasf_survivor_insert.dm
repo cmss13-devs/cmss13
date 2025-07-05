@@ -11,7 +11,7 @@
 	faction = FACTION_IASF
 	faction_group = FACTION_LIST_SURVIVOR_IASF
 	minimap_icon = "rmc_rifleman"
-	minimap_background = "background_twe"
+	minimap_background = "background_iasf"
 	role_comm_title = "24/PARA"
 	idtype = /obj/item/card/id/dogtag
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -153,7 +153,7 @@
 	name = "Survivor - IASF Dropship Pilot"
 	assignment = "IASF - Dropship Pilot"
 	job_title = JOB_TWE_IASF_PARA_PILOT
-	minimap_icon = "rmc_marksman"
+	minimap_icon = "pilot"
 	paygrades = list(PAY_SHORT_IASFE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/iasf/pilot
 
@@ -207,7 +207,7 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "24/PARA Syn"
-	minimap_background = "background_twe"
+	minimap_background = "background_iasf"
 	minimap_icon = "synth"
 
 /datum/equipment_preset/synth/survivor/iasf_synth/load_gear(mob/living/carbon/human/new_human)
@@ -253,7 +253,7 @@
 	paygrades = list(PAY_SHORT_IASFO5 = JOB_PLAYTIME_TIER_0)
 	job_title = JOB_TWE_IASF_PARA_COMMANDER
 	minimap_icon = "rmc_commander"
-	minimap_background = "background_twe"
+	minimap_background = "background_iasf"
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "IASF CDR"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

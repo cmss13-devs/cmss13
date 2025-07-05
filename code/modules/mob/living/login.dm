@@ -12,3 +12,5 @@
 			remove_ventcrawl()
 			update_pipe_icons(A)
 
+	if(client?.prefs.main_cursor)
+		client?.mouse_pointer_icon = 'icons/effects/mouse_pointer/glove_crosshair.dmi'

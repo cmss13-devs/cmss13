@@ -514,7 +514,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	for(var/cardinal in GLOB.cardinals)
 		var/obj/structure/machinery/cryopod/pod = locate() in get_step(new_human, cardinal)
-		if(pod)
+		if(pod && !pod.occupant)
 			pod.go_in_cryopod(new_human, silent = TRUE)
 			break
 

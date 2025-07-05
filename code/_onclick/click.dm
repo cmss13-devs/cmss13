@@ -384,7 +384,7 @@
 	if(prefs.adaptive_zoom)
 		INVOKE_ASYNC(src, PROC_REF(adaptive_zoom))
 	else if(prefs.auto_fit_viewport)
-		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
+		INVOKE_ASYNC(src, PROC_REF(fit_viewport))
 
 /client/proc/get_adaptive_zoom_factor()
 	if(!prefs.adaptive_zoom)

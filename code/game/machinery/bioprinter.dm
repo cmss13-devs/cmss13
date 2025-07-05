@@ -11,7 +11,7 @@
 	icon_state = "bioprinter"
 
 	var/working = FALSE
-	var/stored_metal = 0
+	var/stored_metal = 500
 	var/max_metal = 500
 	var/global/list/products
 	var/print_time // time at which an organ will be printed

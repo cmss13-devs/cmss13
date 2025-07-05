@@ -509,7 +509,7 @@ const PowerLevel = () => {
   const { data } = useBackend<SentryData>();
   return (
     <ProgressBar
-      width="75px"
+      width="100px"
       minValue={0}
       maxValue={data.electrical.max_charge}
       value={data.electrical.charge}

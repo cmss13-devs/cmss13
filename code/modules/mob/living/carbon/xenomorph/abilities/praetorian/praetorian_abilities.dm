@@ -330,7 +330,6 @@
 	var/armor_buffs_speed_target = FALSE
 	var/rage_cost = 75
 
-
 /datum/action/xeno_action/activable/high_gallop
 	name = "High Gallop"
 	action_icon_state = "prae_tail_trip"

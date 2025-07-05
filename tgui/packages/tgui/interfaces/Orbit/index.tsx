@@ -134,6 +134,7 @@ const xenoSplitter = (members: Array<Observable>) => {
   const mutatedHive: Array<Observable> = [];
   const otherHives: Array<Observable> = [];
   const yautjaHive: Array<Observable> = [];
+  const pathogenHive: Array<Observable> = [];
 
   members.forEach((x) => {
     if (x.area_name?.includes('Thunderdome')) {
@@ -148,6 +149,8 @@ const xenoSplitter = (members: Array<Observable>) => {
       mutatedHive.push(x);
     } else if (x.hivenumber?.includes('yautja')) {
       yautjaHive.push(x);
+    } else if (x.hivenumber?.includes('pathogen')) {
+      pathogenHive.push(x);
     } else {
       otherHives.push(x);
     }
@@ -160,6 +163,49 @@ const xenoSplitter = (members: Array<Observable>) => {
     buildSquadObservable('Mutated', 'pink', mutatedHive),
     buildSquadObservable('Other', 'light-grey', otherHives),
     buildSquadObservable('Yautja', 'green', yautjaHive),
+    buildSquadObservable('Pathogen', 'white', pathogenHive),
+  ];
+  return squads;
+};
+
+const infectedSplitter = (members: Array<Observable>) => {
+  const tdomeHive: Array<Observable> = [];
+  const primeHive: Array<Observable> = [];
+  const corruptedHive: Array<Observable> = [];
+  const forsakenHive: Array<Observable> = [];
+  const mutatedHive: Array<Observable> = [];
+  const otherHives: Array<Observable> = [];
+  const yautjaHive: Array<Observable> = [];
+  const pathogenHive: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.area_name?.includes('Thunderdome')) {
+      tdomeHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('normal')) {
+      primeHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('corrupted')) {
+      corruptedHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('forsaken')) {
+      forsakenHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('mutated')) {
+      mutatedHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('yautja')) {
+      yautjaHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('pathogen')) {
+      pathogenHive.push(x);
+    } else {
+      otherHives.push(x);
+    }
+  });
+  const squads = [
+    buildSquadObservable('Thunderdome', 'xeno', tdomeHive),
+    buildSquadObservable('Prime', 'xeno', primeHive),
+    buildSquadObservable('Corrupted', 'green', corruptedHive),
+    buildSquadObservable('Forsaken', 'grey', forsakenHive),
+    buildSquadObservable('Mutated', 'pink', mutatedHive),
+    buildSquadObservable('Other', 'light-grey', otherHives),
+    buildSquadObservable('Yautja', 'green', yautjaHive),
+    buildSquadObservable('Pathogen', 'white', pathogenHive),
   ];
   return squads;
 };
@@ -442,7 +488,12 @@ const ObservableContent = () => {
         splitter={xenoSplitter}
       />
       <ObservableSection color="good" section={survivors} title="Survivors" />
-      <ObservableSection color="red" section={infected} title="Infected" />
+      <GroupedObservable
+        color="red"
+        section={infected}
+        title="Infected"
+        splitter={infectedSplitter}
+      />
       <ObservableSection
         color="average"
         section={ert_members}

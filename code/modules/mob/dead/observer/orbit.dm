@@ -104,6 +104,11 @@
 			ghosts += list(serialized)
 			continue
 
+		if(poi_mob.status_flags & XENO_HOST)
+			var/obj/item/alien_embryo/embryo = (locate(/obj/item/alien_embryo) in poi_mob)
+			serialized["embryo_hivenumber"] = embryo.hivenumber
+			infected += list(serialized)
+
 		if(poi_mob.stat == DEAD)
 			dead += list(serialized)
 			continue
@@ -166,9 +171,6 @@
 
 				if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
-
-				if(human.status_flags & XENO_HOST)
-					infected += list(serialized)
 
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)

@@ -17,7 +17,7 @@
 
 	data["disk"] = loaded_disk
 
-	if(loaded_disk && loaded_disk.genes.len)
+	if(loaded_disk && length(loaded_disk.genes))
 		data["sourceName"] = loaded_disk.genesource
 
 		for(var/datum/plantgene/P in loaded_disk.genes)
@@ -33,7 +33,7 @@
 		data["degradation"] = seed.modified
 	else
 		data["seed"] = FALSE
-		data["degradation"] = FALSE
+		data["degradation"] = 0
 
 	return data
 

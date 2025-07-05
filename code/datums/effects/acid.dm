@@ -41,7 +41,7 @@
 
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD)
+		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD || HAS_TRAIT(H, TRAIT_HAULED))
 			return FALSE
 
 	. = ..()
@@ -95,7 +95,8 @@
 	acid_goopiness--
 	if(acid_goopiness <= 0)
 		return TRUE
-	else return FALSE
+	else
+		return FALSE
 
 /datum/effects/acid/proc/handle_weather()
 	SIGNAL_HANDLER

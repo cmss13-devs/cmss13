@@ -1,5 +1,5 @@
 /obj/item/hardpoint/support/artillery_module
-	name = "Artillery Module"
+	name = "\improper Artillery Module"
 	desc = "Allows the user to look far into the distance."
 
 	icon_state = "artillery"
@@ -56,7 +56,8 @@
 		if(!ismob(C.seats[seat]))
 			continue
 		var/mob/user = C.seats[seat]
-		if(!user.client) continue
+		if(!user.client)
+			continue
 		user.client.change_view(GLOB.world_view_size, owner)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0

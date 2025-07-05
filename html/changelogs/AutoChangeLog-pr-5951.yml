@@ -1,4 +1,0 @@
-author: "Segrain"
-delete-after: True
-changes:
-  - bugfix: "Professor Dummy in CMO's office now works properly."

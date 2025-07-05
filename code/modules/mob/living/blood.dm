@@ -110,9 +110,9 @@
 		//An even amount of each plasma and blood type
 		if(plasma == PLASMA_EGG)
 			//Preserve hive_number for the possible larva
-			O.reagents.add_reagent(plasma, amount / plasmas.len, list("hive_number" = hivenumber))
+			O.reagents.add_reagent(plasma, amount / length(plasmas), list("hive_number" = hivenumber))
 		else
-			O.reagents.add_reagent(plasma, amount / plasmas.len)
+			O.reagents.add_reagent(plasma, amount / length(plasmas))
 
 	blood_volume = max(0, blood_volume - amount)
 	return 1
@@ -142,7 +142,7 @@
 	for(var/datum/disease/D in viruses)
 		blood_data["viruses"] += D.Copy()
 
-	if(resistances && resistances.len)
+	if(LAZYLEN(resistances))
 		blood_data["resistances"] = resistances.Copy()
 
 	return blood_data
@@ -298,15 +298,3 @@
 	if(!XB)
 		XB = new(T)
 		XB.color = get_blood_color()
-
-
-/mob/living/silicon/robot/add_splatter_floor(turf/T, small_drip, b_color)
-	if(!T)
-		T = get_turf(src)
-
-	if(!T.can_bloody)
-		return
-
-	var/obj/effect/decal/cleanable/blood/oil/O = locate() in T.contents
-	if(!O)
-		O = new(T)

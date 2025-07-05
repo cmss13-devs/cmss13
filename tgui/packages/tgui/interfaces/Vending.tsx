@@ -1,8 +1,19 @@
 import { classes } from 'common/react';
 import { capitalizeAll } from 'common/string';
-import { useBackend, useLocalState } from 'tgui/backend';
-import { Box, Button, Icon, LabeledList, NoticeBox, Section, Stack, Table } from 'tgui/components';
+import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
+import {
+  Box,
+  Button,
+  Icon,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Stack,
+  Table,
+} from 'tgui/components';
 import { Window } from 'tgui/layouts';
+
 import { ElectricalPanel } from './common/ElectricalPanel';
 
 type VendingData = {
@@ -71,9 +82,8 @@ export const Vending = (props) => {
   const { data } = useBackend<VendingData>();
   const { categories } = data;
 
-  const [selectedCategory, setSelectedCategory] = useLocalState<string>(
-    'selectedCategory',
-    Object.keys(categories)[0]
+  const [selectedCategory, setSelectedCategory] = useState<string>(
+    Object.keys(categories)[0],
   );
 
   const inventory = getInventory();
@@ -87,7 +97,7 @@ export const Vending = (props) => {
           return false;
         }
       });
-    })
+    }),
   );
 
   return (
@@ -173,7 +183,8 @@ const ProductDisplay = (props: {
             ${(user && user.cash) || 0} <Icon name="coins" color="gold" />
           </Box>
         )
-      }>
+      }
+    >
       <Table>
         {inventory
           .filter((product) => {
@@ -245,7 +256,8 @@ const ProductStock = (props) => {
         (remaining <= 0 && 'bad') ||
         (remaining <= product.max_amount / 2 && 'average') ||
         'good'
-      }>
+      }
+    >
       {remaining} left
     </Box>
   );
@@ -265,17 +277,18 @@ const ProductButton = (props) => {
       tooltip={denied ? 'Access Denied' : ''}
       onClick={() =>
         act('vend', {
-          'ref': product.ref,
+          ref: product.ref,
         })
-      }>
+      }
+    >
       {product.category === 'Premium' ? 'COIN' : price}
     </Button>
   );
 };
 
 const CATEGORY_COLORS = {
-  'Contraband': 'red',
-  'Premium': 'yellow',
+  Contraband: 'red',
+  Premium: 'yellow',
 };
 
 const CategorySelector = (props: {
@@ -287,7 +300,7 @@ const CategorySelector = (props: {
 
   return (
     <Section>
-      <Stack grow>
+      <Stack fill>
         <Stack.Item>
           {Object.entries(categories).map(([name, category]) => (
             <Button
@@ -295,7 +308,8 @@ const CategorySelector = (props: {
               selected={name === selectedCategory}
               color={CATEGORY_COLORS[name]}
               icon={category.icon}
-              onClick={() => onSelect(name)}>
+              onClick={() => onSelect(name)}
+            >
               {name}
             </Button>
           ))}

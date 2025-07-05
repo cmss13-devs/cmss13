@@ -7,6 +7,51 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
+/proc/elder_overseer_message(text = "", title_text = "Elder Overseer", elder_user = "AutomatedMessage") // you can override the title_text if you want.
+	for(var/mob/living/carbon/human/hunter as anything in GLOB.yautja_mob_list)
+		if(!hunter.client)
+			continue
+		if(hunter.stat == DEAD)
+			continue
+		text = "[SPAN_YAUTJABOLDBIG("<b>[text]<b>")]"
+		hunter.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>[title_text]</u></span><br>" + text, /atom/movable/screen/text/screen_text/command_order/yautja, override_color = "#af0614")
+		var/elder_picked = pick('sound/voice/pred_elder_overseer_1.ogg', 'sound/voice/pred_elder_overseer_2.ogg', 'sound/voice/pred_elder_overseer_3.ogg', 'sound/voice/pred_elder_overseer_4.ogg')
+		playsound_client(hunter.client, elder_picked, 25)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat_spaced), hunter, "[SPAN_YAUTJABOLDBIG("Overseer Message Log")]<br><br>[SPAN_YAUTJABOLDBIG("[title_text]")]<br><br>[SPAN_YAUTJABOLD(text)]", MESSAGE_TYPE_RADIO), 12 SECONDS)
+	if(elder_user != "AutomatedMessage")
+		message_admins("[elder_user] has created a Yautja Elder Overseer message")
+		log_admin("[elder_user] created a predator council message: [text]")
+
+/client/proc/pred_council_message()
+	set name = "Yautja Overseer Report"
+	set category = "OOC.Whitelist"
+
+	if(!check_whitelist_status(WHITELIST_YAUTJA_COUNCIL))
+		to_chat(src, SPAN_WARNING("Only the Yautja Council may use this command."))
+		return
+
+	var/is_living_yautja = FALSE
+	if(isyautja(mob) && !mob.stat)
+		is_living_yautja = TRUE
+
+	if(!(is_living_yautja || (isHellhound(mob) && !mob.stat) || isobserver(mob)))
+		to_chat(src, SPAN_WARNING("You must be a Yautja related mob (and conscious) or a ghost to use this command."))
+		return
+
+	var/message_personal = "Send a message to all living hunters."
+	var/message_impersonal = "This is a message from the Yautja Elder Overseer. They are not your character. Use this to direct big groups of Yautja when needed and to stop/prevent honor code breaches."
+	var/title_personal = "What will you say?"
+	var/title_impersonal = "What Will The Elder Say?"
+
+	var/input = tgui_input_text(src, is_living_yautja ? message_personal : message_impersonal, is_living_yautja ? title_personal : title_impersonal)
+	if(!input)
+		return FALSE
+	if(is_living_yautja)
+		elder_overseer_message(input, mob.real_name, "[key_name(src)]")
+		return TRUE
+	elder_overseer_message(input, elder_user = "[key_name(src)]")
+	return TRUE
+
 /mob/living/carbon/human/proc/message_thrall(msg)
 	if(!hunter_data.thrall)
 		return
@@ -161,10 +206,10 @@
 				if(xeno_victim && isturf(T.loc))
 					visible_message(SPAN_DANGER("[src] flenses the last of [victim]'s exoskeleton, revealing only bones!."), SPAN_NOTICE("You flense the last of [victim]'s exoskeleton clean off!"))
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
-					var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
-					xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-					xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
-					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+					var/obj/item/skull/skull = new xeno_victim.skull(xeno_victim.loc)
+					var/obj/item/pelt/pelt = new xeno_victim.pelt(xeno_victim.loc)
+					pelt.name = "[xeno_victim.real_name] pelt"
+					skull.name = "[xeno_victim.real_name] skull"
 				else if(victim && isturf(T.loc))
 					visible_message(SPAN_DANGER("[src] reaches down and rips out \the [T]'s spinal cord and skull!."), SPAN_NOTICE("You firmly grip the revealed spinal column and rip [T]'s head off!"))
 					if(!(victim.get_limb("head").status & LIMB_DESTROYED))
@@ -220,121 +265,20 @@
 
 /area/yautja
 	name = "\improper Yautja Ship"
-	icon_state = "teleporter"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "hunter"
 	//music = "signal"
 	ambience_exterior = AMBIENCE_YAUTJA
 	ceiling = CEILING_METAL
 	requires_power = FALSE
-	base_lighting_alpha = 255
+	base_lighting_alpha = 155
+	base_lighting_color = "#ffc49c"
+	flags_area = AREA_YAUTJA_GROUNDS
 
-/mob/living/carbon/human/proc/pred_buy()
-	set category = "Yautja.Misc"
-	set name = "Claim Equipment"
-	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
+/area/yautja/lower_deck
+	name = "\improper Yautja Ship - Lower Deck"
+	base_lighting_alpha = 105
 
-	if(hunter_data.claimed_equipment)
-		to_chat(src, SPAN_WARNING("You've already claimed your equipment."))
-		return
-
-	if(is_mob_incapacitated() || body_position != STANDING_UP || buckled)
-		to_chat(src, SPAN_WARNING("You're not able to do that right now."))
-		return
-
-	if(!isyautja(src))
-		to_chat(src, SPAN_WARNING("How did you get this verb?"))
-		return
-
-	if(!istype(get_area(src), /area/yautja))
-		to_chat(src, SPAN_WARNING("Not here. Only on the ship."))
-		return
-
-	var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
-	if(!istype(bracers))
-		to_chat(src, SPAN_WARNING("You need to be wearing your bracers to do this."))
-		return
-
-	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.", "Sure?", "Begin the Hunt", "No, not now")
-	if(sure != "Begin the Hunt")
-		return
-
-	var/list/melee = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_WHIP = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "whip"),YAUTJA_GEAR_SWORD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "clansword"),YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_STICK = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "combistick"), YAUTJA_GEAR_SCIMS = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "scim"))
-	var/list/other = list(YAUTJA_GEAR_LAUNCHER = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "spikelauncher"), YAUTJA_GEAR_PISTOL = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "plasmapistol"), YAUTJA_GEAR_DISC = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "disc"), YAUTJA_GEAR_FULL_ARMOR = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "fullarmor_ebony"), YAUTJA_GEAR_SHIELD = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "shield"), YAUTJA_GEAR_DRONE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "falcon_drone"))
-	var/list/restricted = list(YAUTJA_GEAR_LAUNCHER, YAUTJA_GEAR_PISTOL, YAUTJA_GEAR_FULL_ARMOR, YAUTJA_GEAR_SHIELD, YAUTJA_GEAR_DRONE) //Can only select them once each.
-
-	var/list/secondaries = list()
-	var/total_secondaries = 2
-
-	var/use_radials = src.client.prefs?.no_radials_preference ? FALSE : TRUE
-	var/main_weapon = use_radials ? show_radial_menu(src, src, melee) : tgui_input_list(usr, "Which weapon shall you use on your hunt?:", "Melee Weapon", melee)
-
-	if(main_weapon == YAUTJA_GEAR_SCYTHE)
-		var/list/scythe_variants = list(YAUTJA_GEAR_SCYTHE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe"), YAUTJA_GEAR_SCYTHE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "predscythe_alt"))
-		main_weapon = use_radials ? show_radial_menu(src, src, scythe_variants) : tgui_input_list(usr, "Which variant of the war scythe?:", "Melee Weapon", scythe_variants)
-
-	if(main_weapon == YAUTJA_GEAR_GLAIVE)
-		var/list/glaive_variants = list(YAUTJA_GEAR_GLAIVE = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive"), YAUTJA_GEAR_GLAIVE_ALT = image(icon = 'icons/obj/items/hunter/pred_gear.dmi', icon_state = "glaive_alt"))
-		main_weapon = use_radials ? show_radial_menu(src, src, glaive_variants) : tgui_input_list(usr, "Which variant of the war glaive?:", "Melee Weapon", glaive_variants)
-
-	if(!main_weapon)
-		return
-	for(var/i = 1 to total_secondaries)
-		var/secondary = use_radials ? show_radial_menu(src, src, other) : tgui_input_list(usr, "Which secondary gear shall you take?", "Item [i] (of [total_secondaries])", other)
-		if(!secondary)
-			return
-		secondaries += secondary
-		if(secondary in restricted)
-			other -= secondary
-
-	bracers = gloves
-	if(!istype(bracers))
-		to_chat(src, SPAN_WARNING("You need to be wearing your bracers to do this."))
-		return
-
-	if(hunter_data.claimed_equipment)
-		to_chat(src, SPAN_WARNING("You've already claimed your equipment."))
-		return
-
-	hunter_data.claimed_equipment = TRUE
-
-	switch(main_weapon)
-		if(YAUTJA_GEAR_GLAIVE)
-			equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive(src.loc), WEAR_J_STORE, disable_warning = TRUE)
-		if(YAUTJA_GEAR_GLAIVE_ALT)
-			equip_to_slot_if_possible(new /obj/item/weapon/twohanded/yautja/glaive/alt(src.loc), WEAR_J_STORE, disable_warning = TRUE)
-		if(YAUTJA_GEAR_WHIP)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/chain(src.loc), WEAR_J_STORE, disable_warning = TRUE)
-		if(YAUTJA_GEAR_SWORD)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/sword(src.loc), WEAR_J_STORE, disable_warning = TRUE)
-		if(YAUTJA_GEAR_SCYTHE)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe(src.loc), WEAR_J_STORE, disable_warning = TRUE)
-		if(YAUTJA_GEAR_SCYTHE_ALT)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/scythe/alt(src.loc), WEAR_J_STORE, disable_warning = TRUE)
-		if(YAUTJA_GEAR_STICK)
-			equip_to_slot_if_possible(new /obj/item/weapon/yautja/combistick(src.loc), WEAR_J_STORE, disable_warning = TRUE)
-		if(YAUTJA_GEAR_SCIMS)
-			if(bracers.wristblades_deployed)
-				bracers.wristblades_internal(usr, TRUE)
-			qdel(bracers.left_wristblades)
-			qdel(bracers.right_wristblades)
-			bracers.left_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
-			bracers.right_wristblades = new /obj/item/weapon/wristblades/scimitar(bracers)
-
-	for(var/choice in secondaries)
-		switch(choice)
-			if(YAUTJA_GEAR_LAUNCHER)
-				equip_to_slot_if_possible(new /obj/item/weapon/gun/launcher/spike(src.loc), WEAR_IN_BELT, disable_warning = TRUE)
-			if(YAUTJA_GEAR_PISTOL)
-				equip_to_slot_if_possible(new /obj/item/weapon/gun/energy/yautja/plasmapistol(src.loc), WEAR_IN_BELT, disable_warning = TRUE)
-			if(YAUTJA_GEAR_DISC)
-				equip_to_slot_if_possible(new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc), WEAR_IN_BELT, disable_warning = TRUE)
-			if(YAUTJA_GEAR_FULL_ARMOR)
-				if(wear_suit)
-					drop_inv_item_on_ground(wear_suit)
-				equip_to_slot_if_possible(new /obj/item/clothing/suit/armor/yautja/hunter/full(src.loc, 0, src.client.prefs.predator_armor_material), WEAR_JACKET, disable_warning = TRUE)
-			if(YAUTJA_GEAR_SHIELD)
-				equip_to_slot_if_possible(new /obj/item/weapon/shield/riot/yautja(src.loc), WEAR_BACK, disable_warning = TRUE)
-			if(YAUTJA_GEAR_DRONE)
-				equip_to_slot_if_possible(new /obj/item/falcon_drone(src.loc), WEAR_R_EAR, disable_warning = TRUE)
-
-	remove_verb(src, /mob/living/carbon/human/proc/pred_buy)
-	remove_action(src, /datum/action/predator_action/claim_equipment)
+/area/yautja/hangar
+	name = "\improper Yautja Ship - Hangar"
+	base_lighting_alpha = 180

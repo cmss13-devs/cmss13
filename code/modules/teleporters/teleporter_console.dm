@@ -175,7 +175,7 @@
 	if(SSmapping.configs[GROUND_MAP].map_name != MAP_CORSAT) // Bad style, but I'm leaving it here for now until someone wants to add a teleporter to another map
 		return
 
-	if(GLOB.teleporters.len) // already made the damn thing
+	if(length(GLOB.teleporters)) // already made the damn thing
 		return
 
 	var/datum/teleporter/corsat/teleporter = new

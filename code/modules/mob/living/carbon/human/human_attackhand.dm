@@ -4,6 +4,9 @@
 	if(..())
 		return TRUE
 
+	if(HAS_TRAIT(attacking_mob, TRAIT_HAULED))
+		return
+
 	SEND_SIGNAL(attacking_mob, COMSIG_LIVING_ATTACKHAND_HUMAN, src)
 
 	if((attacking_mob != src) && check_shields(0, attacking_mob.name))
@@ -16,10 +19,10 @@
 			if(on_fire && attacking_mob != src)
 				adjust_fire_stacks(-10, min_stacks = 0)
 				playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
-				attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"), \
+				attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] tries to put out the fire on [src]!"),
 					SPAN_WARNING("You try to put out the fire on [src]!"), null, 5)
 				if(fire_stacks <= 0)
-					attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"), \
+					attacking_mob.visible_message(SPAN_DANGER("[attacking_mob] has successfully extinguished the fire on [src]!"),
 						SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 				return 1
 
@@ -28,12 +31,10 @@
 				help_shake_act(attacking_mob)
 				return 1
 
-			if(attacking_mob.head && (attacking_mob.head.flags_inventory & COVERMOUTH) || attacking_mob.wear_mask && (attacking_mob.wear_mask.flags_inventory & COVERMOUTH) && !(attacking_mob.wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(attacking_mob, SPAN_NOTICE("<B>Remove your mask!</B>"))
+			if(species.flags & IS_SYNTHETIC)
+				to_chat(attacking_mob, SPAN_DANGER("Your hands compress the metal chest uselessly... "))
 				return 0
-			if(head && (head.flags_inventory & COVERMOUTH) || wear_mask && (wear_mask.flags_inventory & COVERMOUTH) && !(wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(attacking_mob, SPAN_NOTICE("<B>Remove [src.gender==MALE?"his":"her"] mask!</B>"))
-				return 0
+
 			if(cpr_attempt_timer >= world.time)
 				to_chat(attacking_mob, SPAN_NOTICE("<B>CPR is already being performed on [src]!</B>"))
 				return 0
@@ -60,9 +61,11 @@
 						revive_grace_period += 7 SECONDS
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> performs <b>CPR</b> on <b>[src]</b>."),
 							SPAN_HELPFUL("You perform <b>CPR</b> on <b>[src]</b>."))
+						balloon_alert(attacking_mob, "you perform cpr")
 					else
 						attacking_mob.visible_message(SPAN_NOTICE("<b>[attacking_mob]</b> fails to perform CPR on <b>[src]</b>."),
 							SPAN_HELPFUL("You <b>fail</b> to perform <b>CPR</b> on <b>[src]</b>. Incorrect rhythm. Do it <b>slower</b>."))
+						balloon_alert(attacking_mob, "incorrect rhythm. do it slower")
 					cpr_cooldown = world.time + 7 SECONDS
 			cpr_attempt_timer = 0
 			return 1
@@ -143,18 +146,17 @@
 						chance = !hand ? 40 : 20
 
 					if (prob(chance))
-						visible_message(SPAN_DANGER("[attacking_mob] accidentally makes [src]'s [held_weapon.name] go off during the struggle!"), SPAN_DANGER("You accidentally make [src]'s [held_weapon.name] go off during the struggle!"), null, 5)
+						visible_message(SPAN_DANGER("[attacking_mob] accidentally discharges [src]'s [held_weapon.name] during the struggle!"), SPAN_DANGER("[attacking_mob] accidentally discharges your [held_weapon.name] during the struggle!"), null, 5)
 						var/list/turfs = list()
-						for(var/turf/T in view())
-							turfs += T
+						for(var/turf/turfs_to_discharge in view())
+							turfs += turfs_to_discharge
 						var/turf/target = pick(turfs)
 						count_niche_stat(STATISTICS_NICHE_DISCHARGE)
+						held_weapon.Fire(target, src)
 
-						attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."
+						attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally discharged <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."
 						attacking_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(src)]</b> accidentally fired <b>[held_weapon.name]</b> in [get_area(src)] triggered by <b>[key_name(attacking_mob)]</b>."
-						msg_admin_attack("[key_name(src)] accidentally fired <b>[held_weapon.name]</b> in [get_area(attacking_mob)] ([attacking_mob.loc.x],[attacking_mob.loc.y],[attacking_mob.loc.z]) triggered by <b>[key_name(attacking_mob)]</b>.", attacking_mob.loc.x, attacking_mob.loc.y, attacking_mob.loc.z)
-
-						return held_weapon.afterattack(target,src)
+						msg_admin_ff("[key_name(src)][ADMIN_JMP(src)] [ADMIN_PM(src)] accidentally discharged <b>[held_weapon.name]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]) triggered by <b>[key_name(attacking_mob)][ADMIN_JMP(attacking_mob)] [ADMIN_PM(attacking_mob)]</b>.")
 
 			var/disarm_chance = rand(1, 100)
 			var/attacker_skill_level = attacking_mob.skills ? attacking_mob.skills.get_skill_level(SKILL_CQC) : SKILL_CQC_MAX // No skills, so assume max
@@ -191,12 +193,6 @@
 /mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
 	//Target is us
 	if(src == M)
-		if(holo_card_color) //if we have a triage holocard printed on us, we remove it.
-			holo_card_color = null
-			update_targeted()
-			visible_message(SPAN_NOTICE("[src] removes the holo card on [gender==MALE?"himself":"herself"]."), \
-				SPAN_NOTICE("You remove the holo card on yourself."), null, 3)
-			return
 		check_for_injuries()
 		return
 
@@ -213,18 +209,21 @@
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
-			set_resting(FALSE)
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
+			if(is_dizzy)
+				to_chat(M, SPAN_WARNING("[src] looks dizzy. Maybe you should let [t_him] rest a bit longer."))
+			else
+				set_resting(FALSE)
+		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"),
 			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 	else if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
-		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"), \
+		M.visible_message(SPAN_NOTICE("[M] shakes [src], trying to shake [t_him] out of his stupor!"),
 			SPAN_NOTICE("You shake [src], trying to shake [t_him] out of his stupor!"), null, 4)
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
 			H.species.hug(H, src, H.zone_selected)
 		else
-			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"), \
+			M.visible_message(SPAN_NOTICE("[M] pats [src] on the back to make [t_him] feel better!"),
 				SPAN_NOTICE("You pat [src] on the back to make [t_him] feel better!"), null, 4)
 			playsound(src.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 5)
 		return
@@ -236,7 +235,7 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 /mob/living/carbon/human/proc/check_for_injuries()
-	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
+	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."),
 	SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
 	var/list/limb_message = list()
@@ -312,4 +311,4 @@
 			limb_message += "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]"
 		else
 			limb_message += "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]"
-	to_chat(src, examine_block(limb_message.Join("\n")))
+	to_chat(src, boxed_message(limb_message.Join("\n")))

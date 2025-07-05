@@ -3,6 +3,7 @@
 	desc = "It's used to monitor rooms."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
 	icon_state = "autocam_editor"
+	needs_power = FALSE
 	use_power = USE_POWER_ACTIVE
 	idle_power_usage = 5
 	active_power_usage = 10
@@ -10,7 +11,6 @@
 
 	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
-	var/c_tag_order = 999
 	var/status = 1
 	anchored = TRUE
 	var/panel_open = FALSE // 0 = Closed / 1 = Open
@@ -35,12 +35,11 @@
 
 	var/colony_camera_mapload = TRUE
 
-	/// If this camera should have innate EMP-proofing
-	var/emp_proof = FALSE
-
 	///Autonaming
 	var/autoname = FALSE
 	var/autonumber = 0 //camera number in area
+
+	var/list/owner_factions = FACTION_LIST_NEUTRAL
 
 GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 /obj/structure/machinery/camera/Initialize(mapload, ...)
@@ -53,13 +52,13 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 	if(colony_camera_mapload && mapload && is_ground_level(z))
 		network = list(CAMERA_NET_COLONY)
 
-	if(!src.network || src.network.len < 1)
+	if(LAZYLEN(src.network) < 1)
 		if(loc)
 			error("[src.name] in [get_area(src)] (x:[src.x] y:[src.y] z:[src.z]) has errored. [src.network?"Empty network list":"Null network list"]")
 		else
 			error("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
-		ASSERT(src.network.len > 0)
+		ASSERT(length(src.network) > 0)
 
 	set_pixel_location()
 	update_icon()
@@ -70,7 +69,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		var/area/my_area = get_area(src)
 		if(my_area)
 			for(var/obj/structure/machinery/camera/autoname/current_camera in GLOB.machines)
-				if(current_camera == src) 
+				if(current_camera == src)
 					continue
 				var/area/current_camera_area = get_area(current_camera)
 				if(current_camera_area.type != my_area.type)
@@ -101,10 +100,14 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/set_pixel_location()
 	switch(dir)
-		if(NORTH) pixel_y = -18
-		if(SOUTH) pixel_y = 40
-		if(EAST) pixel_x = -27
-		if(WEST) pixel_x = 27
+		if(NORTH)
+			pixel_y = -18
+		if(SOUTH)
+			pixel_y = 40
+		if(EAST)
+			pixel_x = -27
+		if(WEST)
+			pixel_x = 27
 
 /obj/structure/machinery/camera/emp_act(severity)
 	. = ..()
@@ -190,9 +193,12 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 			info = X.info
 		to_chat(U, "You hold \a [itemname] up to the camera ...")
 		for(var/mob/living/silicon/ai/O in GLOB.alive_mob_list)
-			if(!O.client) continue
-			if(U.name == "Unknown") to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
-			else to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
+			if(!O.client)
+				continue
+			if(U.name == "Unknown")
+				to_chat(O, "<b>[U]</b> holds \a [itemname] up to one of your cameras ...")
+			else
+				to_chat(O, "<b><a href='byond://?src=\ref[O];track2=\ref[O];track=\ref[U]'>[U]</a></b> holds \a [itemname] up to one of your cameras ...")
 			show_browser(O, info, itemname, itemname)
 		for(var/mob/O in GLOB.player_list)
 			if (istype(O.interactee, /obj/structure/machinery/computer/cameras))
@@ -201,7 +207,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 					to_chat(O, "[U] holds \a [itemname] up to one of the cameras ...")
 					show_browser(O, info, itemname, itemname)
 	else
-		..()
+		. = ..()
 	return
 
 /obj/structure/machinery/camera/proc/toggle_cam_status(mob/user, silent)
@@ -264,9 +270,11 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 //Return a working camera that can see a given mob
 //or null if none
 /proc/seen_by_camera(mob/M)
-	for(var/obj/structure/machinery/camera/C in oview(4, M))
+	FOR_DOVIEW(var/obj/structure/machinery/camera/C, 4, M, HIDE_INVISIBLE_OBSERVER)
 		if(C.can_use()) // check if camera disabled
+			FOR_DOVIEW_END
 			return C
+	FOR_DOVIEW_END
 	return null
 
 /proc/near_range_camera(mob/M)
@@ -299,6 +307,25 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 		SPAN_NOTICE("You weld [src]."))
 		return 1
 	return 0
+
+/obj/structure/machinery/camera/correspondent
+	network = list(CAMERA_NET_CORRESPONDENT)
+	invisibility = INVISIBILITY_ABSTRACT
+	invuln = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	colony_camera_mapload = FALSE
+	var/obj/item/device/broadcasting/linked_broadcasting
+
+/obj/structure/machinery/camera/correspondent/Initialize(mapload, obj/item/device/broadcasting/camera_item)
+	. = ..()
+	if(!camera_item)
+		return INITIALIZE_HINT_QDEL
+	linked_broadcasting = camera_item
+	c_tag = linked_broadcasting.get_broadcast_name()
+
+/obj/structure/machinery/camera/overwatch
+	network = list(CAMERA_NET_OVERWATCH)
 
 /obj/structure/machinery/camera/mortar
 	alpha = 0
@@ -349,3 +376,7 @@ GLOBAL_LIST_EMPTY_TYPED(all_cameras, /obj/structure/machinery/camera)
 
 /obj/structure/machinery/camera/cas/isXRay()
 	return TRUE
+
+/obj/structure/machinery/camera/overwatch
+	name = "overwatch camera"
+	network = list(CAMERA_NET_OVERWATCH)

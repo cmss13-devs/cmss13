@@ -105,3 +105,26 @@
 		return UI_DISABLED
 	// Otherwise, we got nothing.
 	return UI_CLOSE
+
+/**
+ * public
+ *
+ * Check if in view. Can interact only if adjacent, updates within max distance, otherwise closes
+ *
+ * required src_object atom/movable The object which owns the UI.
+ *
+ * return UI_state The state of the UI.
+ */
+/mob/living/proc/shared_living_ui_in_view(atom/movable/src_object, viewcheck = TRUE, max_distance = 7)
+	// If the object is obscured, close it.
+	if(viewcheck && !(src_object in view(src)))
+		return UI_CLOSE
+	var/dist = get_dist(src_object, src)
+	// Open and interact if 1-0 tiles away.
+	if(dist <= 1)
+		return UI_INTERACTIVE
+	// View only if within distance.
+	else if(dist <= max_distance)
+		return UI_UPDATE
+	// Otherwise, we got nothing.
+	return UI_CLOSE

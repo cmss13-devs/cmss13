@@ -13,9 +13,7 @@
 	},
 /area/template_noop)
 "aW" = (
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "bh" = (
 /turf/closed/wall/strata_ice/jungle{
@@ -31,21 +29,15 @@
 /area/template_noop)
 "bC" = (
 /obj/item/tool/wet_sign,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "eF" = (
 /obj/structure/largecrate/random/barrel/red,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "fE" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "fI" = (
 /obj/structure/machinery/light/small{
@@ -73,9 +65,7 @@
 	pixel_y = 7;
 	pixel_x = -1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "fN" = (
 /obj/structure/largecrate/random/barrel{
@@ -96,9 +86,7 @@
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "gi" = (
 /obj/structure/girder/displaced,
@@ -106,9 +94,7 @@
 /area/template_noop)
 "hP" = (
 /obj/structure/inflatable,
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "iT" = (
 /obj/structure/barricade/metal/wired{
@@ -118,9 +104,7 @@
 	pixel_x = -15;
 	pixel_y = 2
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "iU" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -134,9 +118,7 @@
 "kA" = (
 /obj/structure/bed/chair/dropship/pilot,
 /obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "kO" = (
 /obj/structure/machinery/light/small{
@@ -145,9 +127,7 @@
 	pixel_y = 10
 	},
 /obj/structure/largecrate/supply/weapons/pistols,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "kR" = (
 /obj/structure/machinery/light/small{
@@ -159,9 +139,7 @@
 	pixel_y = 29;
 	pixel_x = 5
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "lI" = (
 /obj/structure/largecrate/random/barrel{
@@ -212,7 +190,7 @@
 /turf/closed/shuttle/ert,
 /area/template_noop)
 "nV" = (
-/obj/structure/machinery/power/apc,
+/obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/almayer,
 /area/template_noop)
 "od" = (
@@ -251,9 +229,7 @@
 /area/template_noop)
 "qn" = (
 /obj/structure/largecrate/random/barrel/blue,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "qI" = (
 /turf/closed/shuttle/ert{
@@ -284,9 +260,7 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "tp" = (
 /turf/open/floor/almayer,
@@ -304,9 +278,7 @@
 /area/template_noop)
 "vI" = (
 /obj/structure/closet/secure_closet/engineering_personal,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "wO" = (
 /turf/closed/shuttle/ert{
@@ -380,10 +352,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
+/turf/open/organic/grass/astroturf,
 /area/template_noop)
 "EW" = (
 /turf/closed/shuttle/ert{
@@ -393,15 +362,10 @@
 /area/template_noop)
 "Fd" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "FV" = (
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
+/turf/open/organic/grass/astroturf,
 /area/template_noop)
 "Gu" = (
 /obj/structure/prop/structure_lattice{
@@ -412,9 +376,7 @@
 	layer = 3.1;
 	pixel_y = 10
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate"
-	},
+/turf/open/floor/prison/floor_plate,
 /area/template_noop)
 "Hb" = (
 /obj/structure/machinery/light/small{
@@ -462,18 +424,13 @@
 	icon_state = "fullgrass_2";
 	name = "Fiberbush(tm) tubers"
 	},
-/turf/open/organic/grass{
-	desc = "It'll get in your shoes no matter what you do.";
-	name = "astroturf"
-	},
+/turf/open/organic/grass/astroturf,
 /area/template_noop)
 "JP" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname{
 	dir = 1
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "Ki" = (
 /obj/effect/landmark/survivor_spawner,
@@ -490,9 +447,7 @@
 /obj/item/clothing/head/soft/ferret{
 	pixel_y = 7
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "Ky" = (
 /obj/structure/bed,
@@ -553,9 +508,7 @@
 /obj/item/device/healthanalyzer{
 	pixel_y = -9
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "ON" = (
 /turf/closed/shuttle/ert{
@@ -574,9 +527,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/template_noop)
 "QZ" = (
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "Sh" = (
 /obj/structure/machinery/light/small{
@@ -597,10 +548,7 @@
 /area/template_noop)
 "TS" = (
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
-/turf/open/floor/almayer{
-	dir = 5;
-	icon_state = "plating"
-	},
+/turf/open/floor/almayer/plating/northeast,
 /area/template_noop)
 "Uh" = (
 /turf/closed/shuttle/ert{
@@ -621,9 +569,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "Vh" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
@@ -633,9 +579,7 @@
 /obj/structure/machinery/defenses/sentry/premade/dumb{
 	dir = 4
 	},
-/turf/open/floor/almayer{
-	icon_state = "plate"
-	},
+/turf/open/floor/almayer/plate,
 /area/template_noop)
 "VD" = (
 /obj/structure/bed,

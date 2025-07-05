@@ -11,6 +11,7 @@
 	var/last_fired = 0
 	var/tesla_range = TESLA_COIL_RANGE
 	var/fire_delay = TESLA_COIL_FIREDELAY
+	var/attack_defenses = TRUE
 	handheld_type = /obj/item/defenses/handheld/tesla_coil
 	disassemble_time = 10
 	health = 150
@@ -20,7 +21,7 @@
 	has_camera = FALSE
 
 	choice_categories = list(
-		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, FACTION_WEYLAND, FACTION_HUMAN),
+		SENTRY_CATEGORY_IFF = list(FACTION_MARINE, SENTRY_FACTION_WEYLAND, SENTRY_FACTION_HUMAN),
 	)
 
 	selected_categories = list(
@@ -70,7 +71,7 @@
 /obj/structure/machinery/defenses/tesla_coil/proc/get_target()
 	targets = list()
 
-	for(var/mob/living/M in oview(tesla_range, src))
+	FOR_DOVIEW(var/mob/living/M, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
 		if(M.stat == DEAD)
 			continue
 		if(HAS_TRAIT(M, TRAIT_CHARGING))
@@ -81,10 +82,15 @@
 			continue
 
 		targets += M
+	FOR_DOVIEW_END
 
-	for(var/obj/structure/machinery/defenses/D in oview(tesla_range, src))
+	if(!attack_defenses)
+		return
+
+	FOR_DOVIEW(var/obj/structure/machinery/defenses/D, tesla_range, src, HIDE_INVISIBLE_OBSERVER)
 		if(D.turned_on)
 			targets += D
+	FOR_DOVIEW_END
 
 /obj/structure/machinery/defenses/tesla_coil/proc/fire(atoms)
 	if(!(world.time - last_fired >= fire_delay) || !turned_on)
@@ -157,6 +163,17 @@
 
 	. = ..()
 
+// For mapping
+/obj/structure/machinery/defenses/tesla_coil/premade
+	turned_on = TRUE
+	static = TRUE
+
+/obj/structure/machinery/defenses/tesla_coil/premade/attackby(obj/item/O, mob/user)
+	return
+
+/obj/structure/machinery/defenses/tesla_coil/premade/smart
+	attack_defenses = FALSE
+
 #define TESLA_COIL_STUN_FIRE_DELAY 3 SECONDS
 #define TESLA_COIL_STUN_EFFECT 1
 /obj/structure/machinery/defenses/tesla_coil/stun
@@ -175,12 +192,13 @@
 	M.set_effect(TESLA_COIL_DAZE_EFFECT * 1.5, DAZE) // 1.5x as effective as normal tesla
 
 #undef TESLA_COIL_STUN_FIRE_DELAY
-#define TESLA_COIL_MICRO_FIRE_DELAY 10
+#define TESLA_COIL_MICRO_FIRE_DELAY 1 SECONDS
 /obj/structure/machinery/defenses/tesla_coil/micro
 	name = "\improper 25S micro tesla coil"
 	desc = "A perfected way of producing high-voltage, low-current and high-frequency electricity. Minor modifications allow it to only hit hostile targets with a devastating shock. This one is smaller and more lightweight."
 	handheld_type = /obj/item/defenses/handheld/tesla_coil/micro
 	disassemble_time = 0.5 SECONDS
+	fire_delay = TESLA_COIL_MICRO_FIRE_DELAY
 	density = FALSE
 	defense_type = "Micro"
 

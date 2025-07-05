@@ -34,7 +34,8 @@
 	var/ambience_muffle = MUFFLE_HIGH
 
 /datum/shuttle/proc/short_jump(area/origin, area/destination)
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	//it would be cool to play a sound here
 	moving_status = SHUTTLE_WARMUP
@@ -47,11 +48,12 @@
 		moving_status = SHUTTLE_IDLE
 
 /datum/shuttle/proc/long_jump(area/departing, area/destination, area/interim, travel_time, direction)
-	if(moving_status != SHUTTLE_IDLE) return
+	if(moving_status != SHUTTLE_IDLE)
+		return
 
 	moving_status = SHUTTLE_WARMUP
 	if(transit_optimized)
-		recharging = round(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
+		recharging = floor(recharge_time * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE) //Optimized flight plan means less recharge time
 	else
 		recharging = recharge_time //Prevent the shuttle from moving again until it finishes recharging
 	spawn(warmup_time)
@@ -87,7 +89,8 @@
 
 /* Pseudo-code. Auto-bolt shuttle airlocks when in motion.
 /datum/shuttle/proc/toggle_doors(close_doors, bolt_doors, area/whatArea)
-	if(!whatArea) return <-- logic checks!
+	if(!whatArea)
+		return <-- logic checks!
 		for(all doors in whatArea)
 			if(door.id is the same as src.id)
 				if(close_doors)

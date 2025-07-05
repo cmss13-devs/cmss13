@@ -208,7 +208,8 @@
 					if("Specific number")
 						var/number = tgui_input_number(usr,"How many properties?")
 						R.gen_tier = tgui_input_number(usr,"Enter the generation tier. This will affect how potent the properties can be. Must be between 1-5.", "generation tier", 1, 5, 1)
-						if(number > 10) number = 10
+						if(number > 10)
+							number = 10
 						for(var/i=1,i<=number,i++)
 							R.add_property()
 						response = alert(usr,"Done. What do you want customized next?","Custom reagent [target]","Add property","Randomize non property vars","Finish")
@@ -286,7 +287,7 @@
 						response = alert(usr,"What do you want customized?","Custom reaction [target]","Add component","Add catalyst","Finish")
 					else
 						return
-			if(R.required_reagents.len < 3)
+			if(length(R.required_reagents) < 3)
 				to_chat(usr,SPAN_WARNING("You need to add at least 3 components excluding catalysts. The reaction has not been saved."))
 				return
 			//Save our reaction

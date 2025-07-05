@@ -23,6 +23,7 @@ sound/music/walkman/*/*.ogg
 sound/music/walkman/*.txt
 icons/custom/*
 maps/**/backup
+maps/templates.dm
 *.before
 __pycache__
 test_environment.txt

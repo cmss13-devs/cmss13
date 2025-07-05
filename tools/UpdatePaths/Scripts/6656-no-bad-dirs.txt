@@ -1,0 +1,11 @@
+/obj/@SUBTYPES{dir=0} : /obj/@SUBTYPES{@OLD;dir=@SKIP;}
+/mob/@SUBTYPES{dir=0} : /mob/@SUBTYPES{@OLD;dir=@SKIP;}
+/turf/@SUBTYPES{dir=0} : /turf/@SUBTYPES{@OLD;dir=@SKIP;}
+
+/obj/@SUBTYPES{dir=3} : /obj/@SUBTYPES{@OLD;dir=@SKIP;}
+/mob/@SUBTYPES{dir=3} : /mob/@SUBTYPES{@OLD;dir=@SKIP;}
+/turf/@SUBTYPES{dir=3} : /turf/@SUBTYPES{@OLD;dir=@SKIP;}
+
+/obj/@SUBTYPES{dir=7} : /obj/@SUBTYPES{@OLD;dir=@SKIP;}
+/mob/@SUBTYPES{dir=7} : /mob/@SUBTYPES{@OLD;dir=@SKIP;}
+/turf/@SUBTYPES{dir=7} : /turf/@SUBTYPES{@OLD;dir=@SKIP;}

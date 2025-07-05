@@ -124,10 +124,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 
 	var/shuttle_state
 	switch(shuttle.moving_status)
-		if(SHUTTLE_IDLE) shuttle_state = "idle"
-		if(SHUTTLE_WARMUP) shuttle_state = "warmup"
-		if(SHUTTLE_INTRANSIT) shuttle_state = "in_transit"
-		if(SHUTTLE_CRASHED) shuttle_state = "crashed"
+		if(SHUTTLE_IDLE)
+			shuttle_state = "idle"
+		if(SHUTTLE_WARMUP)
+			shuttle_state = "warmup"
+		if(SHUTTLE_INTRANSIT)
+			shuttle_state = "in_transit"
+		if(SHUTTLE_CRASHED)
+			shuttle_state = "crashed"
 
 	var/shuttle_status
 	switch (shuttle.process_state)
@@ -188,8 +192,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 		"gun_mission_allowed" = shuttle.can_do_gun_mission,
 		"shuttle_status_message" = shuttle_status_message,
 		"recharging" = shuttle.recharging,
-		"recharging_seconds" = round(shuttle.recharging/10),
-		"flight_seconds" = round(shuttle.in_transit_time_left/10),
+		"recharging_seconds" = floor(shuttle.recharging/10),
+		"flight_seconds" = floor(shuttle.in_transit_time_left/10),
 		"can_return_home" = shuttle.transit_gun_mission && shuttle.moving_status == SHUTTLE_INTRANSIT && shuttle.in_transit_time_left>abort_timer,
 		"recharge_time" = effective_recharge_time,
 		"recharge_status" = recharge_status,
@@ -231,14 +235,14 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			return
 		//Comment to test
 		if(!skip_time_lock && world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK && istype(shuttle, /datum/shuttle/ferry/marine))
-			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [round((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
+			to_chat(usr, SPAN_WARNING("The shuttle is still undergoing pre-flight fueling and cannot depart yet. Please wait another [floor((SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK-world.time)/600)] minutes before trying again."))
 			return
 		if(SSticker.mode.active_lz != src && !onboard && isqueen(usr))
 			to_chat(usr, SPAN_WARNING("The shuttle isn't responding to prompts, it looks like this isn't the primary shuttle."))
 			return
 		if(istype(shuttle, /datum/shuttle/ferry/marine))
 			var/datum/shuttle/ferry/marine/s = shuttle
-			if(!s.locs_land.len && !s.transit_gun_mission)
+			if(!length(s.locs_land) && !s.transit_gun_mission)
 				to_chat(usr, SPAN_WARNING("There is no suitable LZ for this shuttle. Flight configuration changed to fire-mission."))
 				s.transit_gun_mission = 1
 		if(shuttle.moving_status == SHUTTLE_IDLE) //Multi consoles, hopefully this will work
@@ -325,7 +329,8 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 				to_chat(M, SPAN_WARNING("Hrm, that didn't work. Maybe try the one on the ship?"))
 				return
 			else
-				if(is_ground_level(z)) shuttle.transit_gun_mission = 0 //remote launch always do transport flight.
+				if(is_ground_level(z))
+					shuttle.transit_gun_mission = 0 //remote launch always do transport flight.
 				shuttle.launch(src)
 				if(onboard && !shuttle.iselevator)
 					M.count_niche_stat(STATISTICS_NICHE_FLIGHT)
@@ -357,7 +362,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_DROPSHIP
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/Initialize()
@@ -381,7 +386,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_DROPSHIP
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/Initialize()
@@ -396,6 +401,78 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	onboard = 1
 	density = TRUE
 
+/obj/structure/machinery/computer/shuttle_control/dropship3
+	name = "\improper 'Saipan' dropship console"
+	desc = "The remote controls for the 'Saipan' Dropship."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship3/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_SAIPAN
+
+/obj/structure/machinery/computer/shuttle_control/dropship3/onboard
+	name = "\improper 'Saipan' flight controls"
+	desc = "The flight controls for the 'Saipan' Dropship."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console"
+	onboard = 1
+	density = TRUE
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp
+	name = "\improper 'Morana' dropship console"
+	desc = "The remote controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_UPP_FLIGHT, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_MORANA
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp/onboard
+	name = "\improper 'Morana' flight controls"
+	desc = "The flight controls for the 'Morana' Dropship. Named after the slavic goddess of death and rebirth."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console_upp"
+	onboard = 1
+	density = TRUE
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2
+	name = "\improper 'Devana' dropship console"
+	desc = "The remote controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
+	icon = 'icons/obj/structures/machinery/computer.dmi'
+	icon_state = "shuttle"
+
+	shuttle_type = SHUTTLE_DROPSHIP
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	req_one_access = list(ACCESS_UPP_FLIGHT, ACCESS_UPP_LEADERSHIP)
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2/Initialize()
+	. = ..()
+	shuttle_tag = DROPSHIP_DEVANA
+
+/obj/structure/machinery/computer/shuttle_control/dropship_upp2/onboard
+	name = "\improper 'Devana' flight controls"
+	desc = "The flight controls for the 'Devana' Dropship. Named after the slavic goddess of nature, hunting and the moon."
+	icon = 'icons/obj/structures/machinery/shuttle-parts.dmi'
+	icon_state = "console_upp"
+	onboard = 1
+	density = TRUE
+
 //Elevator control console
 
 /obj/structure/machinery/computer/shuttle_control/ice_colony
@@ -406,7 +483,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_ELEVATOR
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	density = FALSE
 	req_access = null
 
@@ -440,7 +517,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	shuttle_type = SHUTTLE_ELEVATOR
 	unslashable = TRUE
 	unacidable = TRUE
-	exproof = 1
+	explo_proof = TRUE
 	density = FALSE
 	req_access = null
 

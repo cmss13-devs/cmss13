@@ -3,6 +3,7 @@
 	desc = "A suit that protects against minor chemical spills."
 	icon_state = "labcoat"
 	item_state = "labcoat" //Is this even used for anything?
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list(
@@ -16,13 +17,29 @@
 		/obj/item/reagent_container/pill,
 		/obj/item/storage/pill_bottle,
 		/obj/item/paper,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/tool/surgery/synthgraft,
+		/obj/item/tool/surgery/hemostat,
+		/obj/item/tool/surgery/cautery,
+		/obj/item/tool/surgery/retractor,
+		/obj/item/tool/surgery/surgicaldrill,
+		/obj/item/tool/surgery/circular_saw,
+		/obj/item/tool/surgery/scalpel,
+		/obj/item/tool/surgery/FixOVein,
+		/obj/item/tool/surgery/bonesetter,
+		/obj/item/roller,
+		/obj/item/tool/surgery/bonegel,
+		/obj/item/stack/nanopaste,
+		/obj/item/reagent_container/blood,
+		/obj/item/reagent_container/spray/cleaner,
 
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
@@ -43,9 +60,13 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	var/buttoned = TRUE
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi'
+	)
+
 
 /obj/item/clothing/suit/storage/labcoat/verb/toggle()
 	set name = "Toggle Labcoat Buttons"
@@ -93,12 +114,6 @@
 	icon_state = "green_labcoat"
 	item_state = "green_labcoat"
 
-/obj/item/clothing/suit/storage/labcoat/cmo
-	name = "chief medical officer's labcoat"
-	desc = "Bluer than the standard model."
-	icon_state = "labcoat_cmo"
-	item_state = "labcoat_cmo"
-
 /obj/item/clothing/suit/storage/labcoat/mad
 	name = "The Mad's labcoat"
 	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
@@ -134,15 +149,29 @@
 	icon_state = "labcoat_tox"
 
 /obj/item/clothing/suit/storage/labcoat/officer
-	//name = "Medical officer's labcoat"
+	name = "Chief Medical Officer's labcoat"
+	desc = "A green sleek long labcoat, designed to distinguish a higher ranking medical personnel. Fabric has a better protection against chemical hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/labcoat/researcher
 	name = "researcher's labcoat"
 	desc = "A high-quality labcoat, seemingly worn by scholars and researchers alike. It has a distinct leathery feel to it, and goads you towards adventure."
 	icon_state = "sciencecoat"
 	item_state = "sciencecoat"
+
+/obj/item/clothing/suit/storage/labcoat/wy
+	name = "W-Y researcher's labcoat"
+	desc = "A high-quality corporate labcoat, seemingly worn by science consultants and researchers alike. Built using robust materials for engaging dangerous experiments."
+	icon_state = "wy_rc_labcoat"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+	)
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/chef/classic/medical
 	name = "medical's apron"
@@ -151,7 +180,12 @@
 /obj/item/clothing/suit/storage/snow_suit
 	name = "snow suit"
 	desc = "A standard snow suit. It can protect the wearer from extreme cold."
-	icon = 'icons/obj/items/clothing/suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
+	)
 	icon_state = "snowsuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
@@ -166,7 +200,6 @@
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	blood_overlay_type = "armor"
 	siemens_coefficient = 0.7
-	valid_accessory_slots = list(ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/snow_suit/doctor
 	name = "doctor's snow suit"
@@ -185,7 +218,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/weapon/baton,
-		/obj/item/handcuffs,
+		/obj/item/restraint/handcuffs,
 		/obj/item/device/binoculars,
 		/obj/item/attachable/bayonet,
 		/obj/item/storage/belt/gun/m4a3,
@@ -244,7 +277,7 @@
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka
 	name = "Parent Parka"
-	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. WY branded Parka"
+	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. W-Y branded Parka"
 
 /obj/item/clothing/suit/storage/snow_suit/survivor/parka/red
 	name = "Security Parka"
@@ -271,6 +304,7 @@
 	desc = "A winter coat made in some desolate snowplanet. This wintercoat was made from the fur of local wildlife which donated their fur for the greater good of UPP!"
 	icon_state = "sovietcoat"
 	item_state = "sovietcoat"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UPP.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -298,11 +332,19 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UPP.dmi'
+	)
+
 
 /obj/item/clothing/suit/storage/snow_suit/liaison
 	name = "liaison's winter coat"
 	desc = "A Weyland-Yutani winter coat. Only the best comfort for the liaison in a cold environment."
 	icon_state = "snowsuit_liaison"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/WY.dmi'
+	)
 
 /obj/item/clothing/suit/storage/snow_suit/liaison/modified
 	name = "modified liaison's winter coat"
@@ -321,3 +363,15 @@
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman,
 	)
+
+/obj/item/clothing/suit/storage/labcoat/brown
+	icon_state = "labcoat_brown"
+	item_state = "labcoat_brown"
+
+/obj/item/clothing/suit/storage/labcoat/short
+	icon_state = "labcoat_short"
+	item_state = "labcoat_short"
+
+/obj/item/clothing/suit/storage/labcoat/long
+	icon_state = "labcoat_long"
+	item_state = "labcoat_long"

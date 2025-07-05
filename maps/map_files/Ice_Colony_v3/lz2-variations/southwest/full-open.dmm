@@ -6,18 +6,14 @@
 /turf/open/auto_turf/snow/layer4,
 /area/shiva/exterior/cp_lz2)
 "s" = (
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "z" = (
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "B" = (
 /obj/item/weapon/gun/boltaction,
-/turf/open/floor/shiva{
-	dir = 1
-	},
+/turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "E" = (
 /obj/effect/spawner/random/tool,

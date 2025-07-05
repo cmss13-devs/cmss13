@@ -1,7 +1,7 @@
 //*****************************Coin********************************/
 
 /obj/item/coin
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/economy.dmi'
 	name = "Coin"
 	icon_state = "coin"
 	flags_atom = FPRINT|CONDUCT
@@ -30,6 +30,10 @@
 /obj/item/coin/silver/falcon
 	name = "falling falcons challenge coin"
 	desc = "A small coin, bearing the falling falcons insignia."
+
+/obj/item/coin/silver/cia
+	name = "silver coin"
+	desc = "A coin of silver. It bears an eagle on the heads side."
 
 /obj/item/coin/copper
 	name = "copper coin"
@@ -86,7 +90,7 @@
 			to_chat(user, SPAN_NOTICE("There already is a string attached to this coin."))
 			return
 		if (CC.use(1))
-			overlays += image('icons/obj/items/items.dmi',"coin_string_overlay")
+			overlays += image('icons/obj/items/economy.dmi',"coin_string_overlay")
 			string_attached = 1
 			to_chat(user, SPAN_NOTICE("You attach a string to the coin."))
 		else
@@ -113,7 +117,7 @@
 		comment = "tails"
 	else if(result == 2)
 		comment = "heads"
-	user.visible_message(SPAN_NOTICE("[user] has thrown \the [src]. It lands on [comment]! "), \
+	user.visible_message(SPAN_NOTICE("[user] has thrown \the [src]. It lands on [comment]! "),
 						SPAN_NOTICE("You throw \the [src]. It lands on [comment]! "))
 
 

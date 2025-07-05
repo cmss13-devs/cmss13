@@ -3,7 +3,7 @@
 	real_name = "imaginary friend"
 	desc = "A wonderful yet fake friend."
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	stat = DEAD // Keep hearing ghosts and other IFs
 	invisibility = INVISIBILITY_MAXIMUM
@@ -120,6 +120,8 @@
 		if(LIGHTING_PLANE_ALPHA_VISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 		if(LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+			lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+		if(LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE)
 			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 		else
 			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
@@ -146,25 +148,21 @@
 	set category = "Imaginary Friend"
 	set name = "Toggle HUD"
 
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD", "Faction UPP HUD", "Faction Wey-Yu HUD", "Faction RESS HUD", "Faction CLF HUD"))
-	var/datum/mob_hud/hud
-	switch(hud_choice)
-		if("Medical HUD")
-			hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-		if("Security HUD")
-			hud = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-		if("Squad HUD")
-			hud = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
-		if("Xeno Status HUD")
-			hud = GLOB.huds[MOB_HUD_XENO_STATUS]
-		if("Faction UPP HUD")
-			hud = GLOB.huds[MOB_HUD_FACTION_UPP]
-		if("Faction Wey-Yu HUD")
-			hud = GLOB.huds[MOB_HUD_FACTION_WY]
-		if("Faction TWE HUD")
-			hud = GLOB.huds[MOB_HUD_FACTION_TWE]
-		if("Faction CLF HUD")
-			hud = GLOB.huds[MOB_HUD_FACTION_CLF]
+	var/list/hud_options = list(
+		"Medical HUD" = MOB_HUD_MEDICAL_OBSERVER,
+		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
+		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
+		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
+		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
+		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,
+		"Faction TWE HUD" = MOB_HUD_FACTION_TWE,
+		"Faction CLF HUD" = MOB_HUD_FACTION_CLF,
+		"Faction WO HUD" = MOB_HUD_FACTION_WO,
+		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
+	)
+
+	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
+	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
 
 	if(hud_choice in current_huds)
 		hud.remove_hud_from(src, src)
@@ -280,6 +278,7 @@
 	action_icon_state = "joinmob"
 
 /datum/action/innate/imaginary_orbit/action_activate()
+	. = ..()
 	var/mob/camera/imaginary_friend/friend = owner
 	friend.recall()
 
@@ -288,6 +287,7 @@
 	action_icon_state = "hidemob"
 
 /datum/action/innate/imaginary_hide/action_activate()
+	. = ..()
 	var/mob/camera/imaginary_friend/friend = owner
 	if(friend.hidden)
 		friend.hidden = FALSE

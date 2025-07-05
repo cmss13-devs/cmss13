@@ -5,6 +5,11 @@
 /obj/item/tank
 	name = "tank"
 	icon = 'icons/obj/items/tank.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tanks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi'
+	)
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_MEDIUM
@@ -61,7 +66,7 @@
 		if(pressure>0)
 			to_chat(user, SPAN_NOTICE("Pressure: [round(pressure,0.1)] kPa"))
 			to_chat(user, SPAN_NOTICE("[gas_type]: 100%"))
-			to_chat(user, SPAN_NOTICE("Temperature: [round(temperature-T0C)]&deg;C"))
+			to_chat(user, SPAN_NOTICE("Temperature: [floor(temperature-T0C)]&deg;C"))
 		else
 			to_chat(user, SPAN_NOTICE("Tank is empty!"))
 		src.add_fingerprint(user)
@@ -84,12 +89,12 @@
 /obj/item/tank/ui_data(mob/user)
 	var/list/data = list()
 
-	data["tankPressure"] = round(pressure)
-	data["tankMaxPressure"] = round(pressure_full)
-	data["ReleasePressure"] = round(distribute_pressure)
-	data["defaultReleasePressure"] = round(TANK_DEFAULT_RELEASE_PRESSURE)
-	data["maxReleasePressure"] = round(TANK_MAX_RELEASE_PRESSURE)
-	data["minReleasePressure"] = round(TANK_MIN_RELEASE_PRESSURE)
+	data["tankPressure"] = floor(pressure)
+	data["tankMaxPressure"] = floor(pressure_full)
+	data["ReleasePressure"] = floor(distribute_pressure)
+	data["defaultReleasePressure"] = floor(TANK_DEFAULT_RELEASE_PRESSURE)
+	data["maxReleasePressure"] = floor(TANK_MAX_RELEASE_PRESSURE)
+	data["minReleasePressure"] = floor(TANK_MIN_RELEASE_PRESSURE)
 
 	var/mask_connected = FALSE
 	var/using_internal = FALSE
@@ -122,7 +127,7 @@
 				src.distribute_pressure = TANK_MIN_RELEASE_PRESSURE
 			else if(text2num(tgui_pressure) != null)
 				pressure = text2num(tgui_pressure)
-			src.distribute_pressure = min(max(round(src.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
+			src.distribute_pressure = min(max(floor(src.distribute_pressure), 0), TANK_MAX_RELEASE_PRESSURE)
 			. = TRUE
 
 		if("valve")

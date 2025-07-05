@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(lighting)
 
 
 /datum/controller/subsystem/lighting/stat_entry()
-	. = ..("ShCalcs:[total_shadow_calculations]|SourcQ:[static_sources_queue.len]|CcornQ:[corners_queue.len]|ObjQ:[objects_queue.len]|HybrQ:[mask_queue.len]")
+	. = ..("ShCalcs:[total_shadow_calculations]|SourcQ:[length(static_sources_queue)]|CcornQ:[length(corners_queue)]|ObjQ:[length(objects_queue)]|HybrQ:[length(mask_queue)]")
 
 /datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
 	MC_SPLIT_TICK_INIT(3)

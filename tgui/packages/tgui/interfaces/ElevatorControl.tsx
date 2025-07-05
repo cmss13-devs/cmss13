@@ -1,7 +1,7 @@
-import { useBackend } from '../backend';
-import { Box, Button, Flex, Stack } from '../components';
-import { Window } from '../layouts';
-import { logger } from '../logging';
+import { useBackend } from 'tgui/backend';
+import { Box, Button, Flex, Stack } from 'tgui/components';
+import { Window } from 'tgui/layouts';
+import { logger } from 'tgui/logging';
 
 interface Destination {
   id: string;
@@ -101,7 +101,8 @@ const ElevatorButton = (props: ElevatorButtonProps) => {
           color="yellow"
           className="pushButtonOuter"
           disabled={data.mode !== 'idle' || props.id === data.docked_at.id}
-          onClick={props.onClick}>
+          onClick={props.onClick}
+        >
           <span className="pushButton" />
         </Button>
       </Flex.Item>
@@ -131,7 +132,7 @@ export const ElevatorControl = (props) => {
                     onClick={() => {
                       logger.info(x.id);
                       act('button-push');
-                      act('move', { 'target': x.id });
+                      act('move', { target: x.id });
                     }}
                   />
                 </Flex.Item>

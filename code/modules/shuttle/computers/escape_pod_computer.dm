@@ -22,6 +22,9 @@
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/attack_hand(mob/user)
 	if(..())
 		return
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("Access denied!"))
+		return
 	tgui_interact(user)
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/tgui_interact(mob/user, datum/tgui/ui)
@@ -86,6 +89,7 @@
 			. = TRUE
 
 /obj/structure/machinery/computer/shuttle/escape_pod_panel/liaison
+	req_access = list(ACCESS_WY_GENERAL)
 	launch_without_evac = TRUE
 
 //=========================================================================================
@@ -207,7 +211,8 @@
 	xeno_attack_delay(user)
 	visible_message(SPAN_WARNING("[user] begins to pry \the [src]'s cover!"), null, null, 3)
 	playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
-	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) go_out() //Force the occupant out.
+	if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		go_out() //Force the occupant out.
 	being_forced = !being_forced
 	return XENO_NO_DELAY_ACTION
 

@@ -12,7 +12,7 @@ SUBSYSTEM_DEF(power)
 	var/list/currentrun_areas = list()
 
 /datum/controller/subsystem/power/stat_entry(msg)
-	msg = "PN:[GLOB.powernets.len]|PM:[GLOB.power_machines.len]|A:[GLOB.active_areas.len]"
+	msg = "PN:[length(GLOB.powernets)]|PM:[length(GLOB.power_machines)]|A:[length(GLOB.active_areas)]"
 	return ..()
 
 
@@ -29,8 +29,8 @@ SUBSYSTEM_DEF(power)
 
 	// First we reset the powernets.
 	// This is done first because we want the power machinery to have acted last on the powernet between intervals.
-	while(currentrun_powerents.len)
-		var/datum/powernet/Powernet = currentrun_powerents[currentrun_powerents.len]
+	while(length(currentrun_powerents))
+		var/datum/powernet/Powernet = currentrun_powerents[length(currentrun_powerents)]
 		currentrun_powerents.len--
 		if(Powernet)
 			Powernet.process()
@@ -39,8 +39,8 @@ SUBSYSTEM_DEF(power)
 
 
 	// Next we let the power machines operate, this way until the next tick it will be as if they have all done their work.
-	while (currentrun_power_machines.len)
-		var/datum/X = currentrun_power_machines[currentrun_power_machines.len]
+	while (length(currentrun_power_machines))
+		var/datum/X = currentrun_power_machines[length(currentrun_power_machines)]
 		currentrun_power_machines.len--
 		if (!X || QDELETED(X))
 			continue

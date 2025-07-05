@@ -10,18 +10,12 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/incendiary,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/warhead/incendiary,
 	)
 
 	name = "OB Incendiary Crate"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
-	containername = "OB Ammo Crate (Incendiary x2)"
+	containername = "OB Ammo Crate (Incendiary)"
 	buyable = 0
 	group = "Operations"
 
@@ -33,18 +27,12 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/explosive,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/warhead/explosive,
 	)
 
 	name = "OB HE Crate"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
-	containername = "OB Ammo Crate (HE x2)"
+	containername = "OB Ammo Crate (HE)"
 	buyable = 0
 	group = "Operations"
 
@@ -56,18 +44,12 @@
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/ob_fuel,
 		/obj/structure/ob_ammo/warhead/cluster,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/ob_fuel,
-		/obj/structure/ob_ammo/warhead/cluster,
 	)
 
 	name = "OB Cluster Crate"
 	cost = 0
 	containertype = /obj/structure/closet/crate/secure/ob
-	containername = "OB Ammo Crate (Cluster x2)"
+	containername = "OB Ammo Crate (Cluster)"
 	buyable = 0
 	group = "Operations"
 
@@ -91,14 +73,20 @@
 	group = "Operations"
 
 /datum/supply_packs/nuclearbomb
-	name = "Decrypted Operational Nuke"
+	name = "Decrypted Operational Blockbuster"
+	contains = list(
+		/obj/item/book/manual/nuclear,
+	)
 	cost = 0
 	containertype = /obj/structure/machinery/nuclearbomb
 	buyable = 0
 	group = "Operations"
 
 /datum/supply_packs/technuclearbomb
-	name = "Encrypted Operational Nuke"
+	name = "Encrypted Operational Blockbuster"
+	contains = list(
+		/obj/item/book/manual/nuclear,
+	)
 	cost = 0
 	containertype = /obj/structure/machinery/nuclearbomb/tech
 	buyable = 0

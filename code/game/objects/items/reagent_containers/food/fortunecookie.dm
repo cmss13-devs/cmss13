@@ -41,6 +41,7 @@
 	name = "fortune cookie"
 	desc = "A golden brown fortune cookie. Some say the paper inside even has the ability to predict the future, whatever that means."
 	icon_state = "fortune_cookie"
+	icon = 'icons/obj/items/food/mre_food/USCM.dmi'
 	filling_color = "#E8E79E"
 	//If the cookie has been broken open
 	var/cookie_broken = FALSE

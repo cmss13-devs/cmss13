@@ -3,14 +3,14 @@
 
 //Adjusts the speed of a xenomorph the component is on. Humans will take or heal stamina damage.
 
-/datum/component/speed_modifier
+/datum/component/status_effect/speed_modifier
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	var/speed_modifier = 0
 	var/speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS)
 	var/max_buildup = 10
 	var/increase_speed = FALSE
 
-/datum/component/speed_modifier/Initialize(speed_modifier, increase_speed = FALSE, speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), max_buildup = 10)
+/datum/component/status_effect/speed_modifier/Initialize(speed_modifier, increase_speed = FALSE, speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), max_buildup = 10)
 	if(!isxeno_human(parent))
 		return COMPONENT_INCOMPATIBLE
 	. = ..()
@@ -19,7 +19,7 @@
 	src.max_buildup = max_buildup
 	src.increase_speed = increase_speed
 
-/datum/component/speed_modifier/InheritComponent(datum/component/speed_modifier/C, i_am_original, speed_modifier)
+/datum/component/status_effect/speed_modifier/InheritComponent(datum/component/status_effect/speed_modifier/C, i_am_original, speed_modifier)
 	. = ..()
 	if(!C)
 		src.speed_modifier += speed_modifier
@@ -28,7 +28,12 @@
 
 	src.speed_modifier = min(src.speed_modifier, max_buildup)
 
-/datum/component/speed_modifier/process(delta_time)
+/datum/component/status_effect/speed_modifier/process(delta_time)
+	var/atom/parent_atom = parent
+	if(has_immunity)
+		parent_atom.remove_filter("speed_modifier")
+		return ..()
+
 	if(!parent)
 		qdel(src)
 	speed_modifier = max(speed_modifier - speed_modifier_dissipation * delta_time, 0)
@@ -47,15 +52,14 @@
 	var/intensity = speed_modifier/max_buildup
 	color += num2text(MAX_ALPHA*intensity, 2, 16)
 
-	var/atom/A = parent
-	A.add_filter("speed_modifier", 2, list("type" = "outline", "color" = color, "size" = 1))
+	parent_atom.add_filter("speed_modifier", 2, list("type" = "outline", "color" = color, "size" = 1))
 
-/datum/component/speed_modifier/RegisterWithParent()
+/datum/component/status_effect/speed_modifier/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
 	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY, PROC_REF(apply_speed_modifier))
 	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, PROC_REF(stat_append))
 
-/datum/component/speed_modifier/UnregisterFromParent()
+/datum/component/status_effect/speed_modifier/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)
 	UnregisterSignal(parent, list(
 		COMSIG_XENO_MOVEMENT_DELAY,
@@ -64,15 +68,20 @@
 	var/atom/A = parent
 	A.remove_filter("speed_modifier")
 
-/datum/component/speed_modifier/proc/stat_append(mob/M, list/L)
+/datum/component/status_effect/speed_modifier/proc/stat_append(mob/M, list/L)
 	SIGNAL_HANDLER
+	if(has_immunity)
+		L += "Slow immunity: [grace_period]/[initial(grace_period)]"
+		return
 	if(!increase_speed)
 		L += "Slow: [speed_modifier]/[max_buildup]"
 	else
 		L += "Speed Boost: [speed_modifier]/[max_buildup]"
 
-/datum/component/speed_modifier/proc/apply_speed_modifier(mob/living/carbon/xenomorph/X, list/speeds)
+/datum/component/status_effect/speed_modifier/proc/apply_speed_modifier(mob/living/carbon/xenomorph/X, list/speeds)
 	SIGNAL_HANDLER
+	if(has_immunity)
+		return
 	if(!increase_speed)
 		speeds["speed"] += speed_modifier * 0.075
 	else //increasing speed is more effective than decreasing speed

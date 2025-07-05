@@ -13,7 +13,7 @@ export const globalEvents = new EventEmitter();
 let ignoreWindowFocus = false;
 
 export const setupGlobalEvents = (
-  options: { ignoreWindowFocus?: boolean } = {}
+  options: { ignoreWindowFocus?: boolean } = {},
 ): void => {
   ignoreWindowFocus = !!options.ignoreWindowFocus;
 };
@@ -21,7 +21,7 @@ export const setupGlobalEvents = (
 // Window focus
 // --------------------------------------------------------
 
-let windowFocusTimeout;
+let windowFocusTimeout: ReturnType<typeof setTimeout> | null;
 let windowFocused = true;
 
 // Pretend to always be in focus.
@@ -50,7 +50,7 @@ const setWindowFocus = (value: boolean, delayed?: boolean) => {
 
 let focusStolenBy: HTMLElement | null = null;
 
-export const canStealFocus = (node) => {
+export const canStealFocus = (node: HTMLElement) => {
   const tag = String(node.tagName).toLowerCase();
   return tag === 'input' || tag === 'textarea';
 };
@@ -86,7 +86,7 @@ export const removeScrollableNode = (node: HTMLElement) => {
   }
 };
 
-const focusNearestTrackedParent = (node) => {
+const focusNearestTrackedParent = (node: HTMLElement | null) => {
   if (focusStolenBy || !windowFocused) {
     return;
   }
@@ -101,7 +101,7 @@ const focusNearestTrackedParent = (node) => {
       node.focus();
       return;
     }
-    node = node.parentNode;
+    node = node.parentElement;
   }
 };
 
@@ -122,7 +122,6 @@ window.addEventListener('focusin', (e) => {
   setWindowFocus(true);
   if (canStealFocus(e.target as HTMLElement)) {
     stealFocus(e.target as HTMLElement);
-    return;
   }
 });
 
@@ -143,7 +142,7 @@ window.addEventListener('beforeunload', (e) => {
 // Key events
 // --------------------------------------------------------
 
-const keyHeldByCode = {};
+const keyHeldByCode: Record<number, boolean> = {};
 
 export class KeyEvent {
   event: KeyboardEvent;
@@ -210,10 +209,10 @@ export class KeyEvent {
 
 // IE8: Keydown event is only available on document.
 document.addEventListener('keydown', (e) => {
-  if (canStealFocus(e.target)) {
+  if (canStealFocus(e.target as HTMLElement)) {
     return;
   }
-  const code = e.code;
+  const code = e.keyCode;
   const key = new KeyEvent(e, 'keydown', keyHeldByCode[code]);
   globalEvents.emit('keydown', key);
   globalEvents.emit('key', key);
@@ -221,10 +220,10 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.addEventListener('keyup', (e) => {
-  if (canStealFocus(e.target)) {
+  if (canStealFocus(e.target as HTMLElement)) {
     return;
   }
-  const code = e.code;
+  const code = e.keyCode;
   const key = new KeyEvent(e, 'keyup');
   globalEvents.emit('keyup', key);
   globalEvents.emit('key', key);

@@ -5,7 +5,7 @@
 
 // define when you wanna decorate
 /datum/decorator/christmas/is_active_decor()
-	return is_month(12) && (is_day(21) || is_day(22) || is_day(23) || is_day(24) || is_day(25) || is_day(26))
+	return is_month(12) && (is_day(24) || is_day(25))
 
 // define who is being decorated
 /datum/decorator/christmas/queen/get_decor_types()
@@ -47,15 +47,19 @@
 		return
 	helmet.name = "\improper USCM [helmet.specialty] santa hat"
 	helmet.desc = "Ho ho ho, Merry Christmas!"
-	helmet.icon = 'icons/obj/items/clothing/hats.dmi'
-	helmet.icon_override = 'icons/mob/humans/onmob/head_0.dmi'
-	helmet.flags_inv_hide = HIDEEARS|HIDEALLHAIR
+	helmet.icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	helmet.item_icons[WEAR_HEAD] = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	helmet.item_icons[WEAR_L_HAND] = 'icons/mob/humans/onmob/inhands/clothing/hats_lefthand.dmi'
+	helmet.item_icons[WEAR_R_HAND] = 'icons/mob/humans/onmob/inhands/clothing/hats_righthand.dmi'
+	helmet.flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	helmet.flags_marine_helmet = NO_FLAGS
-	helmet.flags_atom |= NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	helmet.flags_atom |= NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	if(prob(50))
 		helmet.icon_state = "santa_hat_red"
+		helmet.item_state = "santa_hat_red"
 	else
 		helmet.icon_state = "santa_hat_green"
+		helmet.item_state = "santa_hat_green"
 	helmet.update_icon()
 
 // barricade definition. Also only a single definition

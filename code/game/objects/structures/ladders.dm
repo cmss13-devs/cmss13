@@ -1,7 +1,7 @@
 /obj/structure/ladder
 	name = "ladder"
 	desc = "A sturdy metal ladder."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder11"
 	var/id = null
 	var/height = 0 //The 'height' of the ladder. higher numbers are considered physically higher
@@ -14,6 +14,8 @@
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
 	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
+	var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
+
 
 /obj/structure/ladder/Initialize(mapload, ...)
 	. = ..()
@@ -68,26 +70,33 @@
 		icon_state = "ladder00"
 
 /obj/structure/ladder/attack_hand(mob/living/user)
-	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored) return
+	if(user.stat || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || user.buckled || user.anchored)
+		return
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
+
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
 	if(up && down)
-		ladder_dir_name = alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel")
-		if(ladder_dir_name == "Cancel")
-			return
-		ladder_dir_name = lowertext(ladder_dir_name)
-		if(ladder_dir_name == "up") ladder_dest = up
-		else ladder_dest = down
+		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+		if(ladder_dest == "up")
+			ladder_dest = up
+			ladder_dir_name = ("up")
+		if(ladder_dest == "down")
+			ladder_dest = down
+			ladder_dir_name = ("down")
 	else if(up)
 		ladder_dir_name = "up"
 		ladder_dest = up
 	else if(down)
 		ladder_dir_name = "down"
 		ladder_dest = down
-	else return //just in case
+	else
+		return FALSE //just in case
+
+	if(!ladder_dest)
+		return
 
 	step(user, get_dir(user, src))
 	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
@@ -193,15 +202,18 @@
 			if(ladder_dir_name == "Cancel")
 				return
 			ladder_dir_name = lowertext(ladder_dir_name)
-			if(ladder_dir_name == "up") ladder_dest = up
-			else ladder_dest = down
+			if(ladder_dir_name == "up")
+				ladder_dest = up
+			else
+				ladder_dest = down
 		else if(up)
 			ladder_dir_name = "up"
 			ladder_dest = up
 		else if(down)
 			ladder_dir_name = "down"
 			ladder_dest = down
-		else return //just in case
+		else
+			return //just in case
 
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [G.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
@@ -231,15 +243,18 @@
 			if(ladder_dir_name == "Cancel")
 				return
 			ladder_dir_name = lowertext(ladder_dir_name)
-			if(ladder_dir_name == "up") ladder_dest = up
-			else ladder_dest = down
+			if(ladder_dir_name == "up")
+				ladder_dest = up
+			else
+				ladder_dest = down
 		else if(up)
 			ladder_dir_name = "up"
 			ladder_dest = up
 		else if(down)
 			ladder_dir_name = "down"
 			ladder_dest = down
-		else return //just in case
+		else
+			return //just in case
 
 		user.visible_message(SPAN_WARNING("[user] takes position to throw [F] [ladder_dir_name] [src]."),
 		SPAN_WARNING("You take position to throw [F] [ladder_dir_name] [src]."))
@@ -269,9 +284,22 @@
 /obj/structure/prop/broken_ladder
 	name = "rickety ladder"
 	desc = "Well, it was only a matter of time."
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/ladders.dmi'
 	icon_state = "ladder00"
 	anchored = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
 	layer = LADDER_LAYER
+
+/obj/structure/ladder/multiz/LateInitialize()
+	. = ..()
+
+	up = locate(/obj/structure/ladder) in SSmapping.get_turf_above(get_turf(src))
+	down = locate(/obj/structure/ladder) in SSmapping.get_turf_below(get_turf(src))
+
+	update_icon()
+
+/obj/structure/ladder/yautja
+	name = "ladder"
+	desc = "A sturdy metal ladder, made from an unknown metal, adorned with glowing runes."
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

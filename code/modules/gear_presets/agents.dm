@@ -16,8 +16,8 @@
 		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_STOWAWAY
-	rank = JOB_STOWAWAY
-	paygrade = "???"
+	job_title = JOB_STOWAWAY
+	paygrades = list("???" = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "???"
 	skills = /datum/skills/civilian/survivor
 
@@ -68,8 +68,8 @@
 		ACCESS_UPP_LEADERSHIP,
 	)
 	assignment = JOB_UPP_REPRESENTATIVE
-	rank = JOB_UPP_REPRESENTATIVE
-	paygrade = PAY_SHORT_CREP
+	job_title = JOB_UPP_REPRESENTATIVE
+	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UPP Rep."
 	skills = /datum/skills/civilian/survivor
 
@@ -104,8 +104,8 @@
 		ACCESS_TWE_LEADERSHIP,
 	)
 	assignment = JOB_TWE_REPRESENTATIVE
-	rank = JOB_TWE_REPRESENTATIVE
-	paygrade = PAY_SHORT_CREP
+	job_title = JOB_TWE_REPRESENTATIVE
+	paygrades = list(PAY_SHORT_CREP = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TWE Rep."
 	skills = /datum/skills/civilian/survivor
 

@@ -1,10 +1,7 @@
-/datum/law/major_law
-	severity = MAJOR_CRIME
-
 /datum/law/major_law/damage_to_government_property
 	name = "Damage to Government Property"
 	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a major level, such as destroying/dismantling multiple walls or windows."
-	special_punishment = "Repairation"
+	special_punishment = "Reparation"
 	brig_time = 10
 
 /datum/law/major_law/disorderly_conduct
@@ -20,7 +17,7 @@
 /datum/law/major_law/contraband
 	name = "Contraband"
 	desc = "Possessing, or distributing controlled substances or unauthorized items or weapons as defined in Standard Operating Procedure or impairing, intoxicating or addictive drugs such as Mindbreaker, this does not include custom mixes or dosages of medicinal drugs."
-	special_punishment = "Contraband Confiscation"
+	special_punishment = "Confiscation of Contraband"
 	brig_time = 15
 
 /datum/law/major_law/insubordination
@@ -38,9 +35,15 @@
 	desc = "Failure to perform one’s role to an acceptable standard. For example, a Commanding Officer failing to properly organize and ensure their personnel are given orders, failing to follow proper procedure in detriment of one’s duties, or ship crew leaving the ship without authorization from the Commanding Officer or their Department Head. Any officer who commits a crime may be charged with Neglect of Duty in addition to the appropriate crimes."
 	brig_time = 15
 
+/datum/law/major_law/listening_bugs
+	name = "Unauthorized use of a Listening Device"
+	desc = "Using a listening device against SOP in a secure area such as the CIC. Use of listening devices tied to foreign governments or terror organisations is also considered subterfuge."
+	special_punishment = "Listening Device Confiscation"
+	brig_time = 15
+
 /datum/law/major_law/subterfuge
 	name = "Subterfuge"
-	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the individual is working against USCM."
+	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the individual is working against USCM. Use of listening devices tied to foreign governments or terror organisations in secure areas is also considered subterfuge."
 	special_punishment = "Termination of ID/Discharge to planet"
 	brig_time = 15
 

@@ -93,7 +93,7 @@
 			else if(dir & (EAST|WEST))
 				valid_directions = list(EAST, WEST)
 	else
-		..()
+		. = ..()
 
 /obj/structure/pipes/binary/circulator/verb/rotate_clockwise()
 	set category = "Object"

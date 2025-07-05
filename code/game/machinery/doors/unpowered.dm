@@ -11,7 +11,7 @@
 /obj/structure/machinery/door/unpowered/attackby(obj/item/I as obj, mob/user as mob)
 	if(src.locked)
 		return
-	..()
+	. = ..()
 	return
 
 /obj/structure/machinery/door/unpowered/shuttle

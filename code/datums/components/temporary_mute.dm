@@ -56,7 +56,7 @@
 	SIGNAL_HANDLER
 
 	if(!nolog)
-		log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to say the following before their spawn mute ended: [message] (CKEY: [user.key]) (JOB: [user.job])")
+		msg_admin_niche("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to say the following before their spawn mute ended: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 	if(on_speak_message)
 		to_chat(parent, SPAN_BOLDNOTICE(on_speak_message))
 	return COMPONENT_OVERRIDE_SPEAK
@@ -64,7 +64,7 @@
 /datum/component/temporary_mute/proc/on_hivemind(mob/user, message)
 	SIGNAL_HANDLER
 
-	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to hivemind the following before their spawn mute ended: [message] (CKEY: [user.key]) (JOB: [user.job])")
+	msg_admin_niche("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to hivemind the following before their spawn mute ended: [message] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 	if(on_speak_message)
 		to_chat(parent, SPAN_BOLDNOTICE(on_speak_message))
 	return COMPONENT_OVERRIDE_HIVEMIND_TALK
@@ -78,7 +78,7 @@
 	if(!param && !istype(current_emote, /datum/emote/custom))
 		return
 
-	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to emote the following before their spawn mute ended: [param] (CKEY: [user.key]) (JOB: [user.job])")
+	msg_admin_niche("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to emote the following before their spawn mute ended: [param] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 	if(on_emote_message)
 		to_chat(parent, SPAN_BOLDNOTICE(on_emote_message))
 	return COMPONENT_OVERRIDE_EMOTE
@@ -86,7 +86,7 @@
 /datum/component/temporary_mute/proc/on_point(mob/user, atom/target)
 	SIGNAL_HANDLER
 
-	log_say("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to point at the following before their spawn mute ended: [target] (CKEY: [user.key]) (JOB: [user.job])")
+	msg_admin_niche("[user.name != "Unknown" ? user.name : "([user.real_name])"] attempted to point at the following before their spawn mute ended: [target] (CKEY: [user.key]) (JOB: [user.job]) (AREA: [get_area_name(user)])")
 	if(on_emote_message)
 		to_chat(parent, SPAN_BOLDNOTICE(on_emote_message))
 	return COMPONENT_OVERRIDE_POINT

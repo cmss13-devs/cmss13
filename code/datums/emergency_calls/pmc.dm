@@ -1,5 +1,5 @@
 
-//Weyland-Yutani commandos. Friendly to USCM, hostile to xenos.
+//Weyland-Yutani PMCs. Friendly to USCM, hostile to xenos.
 /datum/emergency_call/pmc
 	name = "Weyland-Yutani PMC (Squad)"
 	mob_max = 6
@@ -95,7 +95,7 @@
 	mob_min = 2
 	probability = 0
 	max_medics = 2
-	max_smartgunners = 1
+	max_smartgunners = 0
 	var/checked_objective = FALSE
 
 /datum/emergency_call/pmc/chem_retrieval/New()
@@ -119,13 +119,11 @@
 		check_objective_info()
 
 	var/mob/living/carbon/human/H = new(spawn_loc)
-	H.key = M.key
-	if(H.client)
-		H.client.change_view(GLOB.world_view_size)
+	M.transfer_to(H, TRUE)
 
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Squad Leader!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Lead Investigator!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
@@ -133,8 +131,8 @@
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_med_investigator, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Heavy Gunner!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Crowd Control Specialist!"))
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_riot_control, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Detainer!"))
 		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
@@ -142,8 +140,11 @@
 	print_backstory(H)
 
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
+
 /obj/effect/landmark/ert_spawns/distress_pmc
 	name = "Distress_PMC"
+	icon_state = "spawn_distress_pmc"
 
 /obj/effect/landmark/ert_spawns/distress_pmc/item
 	name = "Distress_PMCitem"
+	icon_state = "distress_item"

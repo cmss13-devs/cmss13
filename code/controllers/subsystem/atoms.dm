@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(atoms)
 
 	processing_late_loaders = TRUE
 
-	for(var/I = 1; I <= late_loaders.len; I++)
+	for(var/I = 1; I <= length(late_loaders); I++)
 		var/atom/A = late_loaders[I]
 		//I hate that we need this
 		if(QDELETED(A))
@@ -70,7 +70,7 @@ SUBSYSTEM_DEF(atoms)
 		A.LateInitialize()
 
 	#ifdef TESTING
-	testing("Late initialized [late_loaders.len] atoms")
+	testing("Late initialized [length(late_loaders)] atoms")
 	#endif
 	late_loaders.Cut()
 	processing_late_loaders = FALSE
@@ -87,10 +87,10 @@ SUBSYSTEM_DEF(atoms)
 	var/list/mapload_arg = list(TRUE)
 	if(atoms)
 		#ifdef TESTING
-		count = atoms.len
+		count = length(atoms)
 		#endif
 
-		for(var/I in 1 to atoms.len)
+		for(var/I in 1 to length(atoms))
 			var/atom/A = atoms[I]
 			if(!(A.flags_atom & INITIALIZED))
 				CHECK_TICK

@@ -150,7 +150,8 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
 		var/price = prices[typepath]
-		if(isnull(amount)) amount = 1
+		if(isnull(amount))
+			amount = 1
 
 		var/obj/item/temp_path = typepath
 		var/datum/data/vending_product/product = new /datum/data/vending_product()
@@ -207,7 +208,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 			update_icon()
 			return TRUE
-		else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		else if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
 			return FALSE
 		else if(stat & BROKEN)
@@ -234,7 +235,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(HAS_TRAIT(item, TRAIT_TOOL_WIRECUTTERS))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
 			return FALSE
 		else if(stat == WORKING && panel_open)
@@ -254,7 +255,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
 	else if(istype(item, /obj/item/stack/cable_coil))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
 			return FALSE
 		var/obj/item/stack/cable_coil/CC = item
@@ -277,7 +278,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(istype(item, /obj/item/stack/sheet/metal))
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src.name]."))
 			return FALSE
 		var/obj/item/stack/sheet/metal/M = item
@@ -298,10 +299,12 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
 	else if(HAS_TRAIT(item, TRAIT_TOOL_WRENCH))
-		if(!wrenchable) return
+		if(!wrenchable)
+			return
 
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-			if(!src) return
+			if(!src)
+				return
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			switch (anchored)
 				if (0)
@@ -333,10 +336,11 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		tgui_interact(user)
 		return
 
-	..()
+	. = ..()
 
 /obj/structure/machinery/vending/proc/scan_card(obj/item/card/card)
-	if(!currently_vending) return
+	if(!currently_vending)
+		return
 	if (istype(card, /obj/item/card/id))
 		visible_message(SPAN_INFO("[usr] swipes a card through [src]."))
 		var/datum/money_account/CH = get_account(card.associated_account_number)
@@ -728,7 +732,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 
 	var/list/wire_descriptions = get_wire_descriptions()
 	var/list/panel_wires = list()
-	for(var/wire = 1 to wire_descriptions.len)
+	for(var/wire = 1 to length(wire_descriptions))
 		panel_wires += list(list("desc" = wire_descriptions[wire], "cut" = isWireCut(wire)))
 
 	.["electrical"] = list(
@@ -898,7 +902,7 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 		seconds_electrified--
 
 	//Pitch to the people!  Really sell it!
-	if(((last_slogan + slogan_delay) <= world.time) && (slogan_list.len > 0) && (!shut_up) && prob(5))
+	if(((last_slogan + slogan_delay) <= world.time) && (length(slogan_list) > 0) && (!shut_up) && prob(5))
 		var/slogan = pick(slogan_list)
 		speak(slogan)
 		last_slogan = world.time
@@ -918,13 +922,6 @@ GLOBAL_LIST_EMPTY_TYPED(total_vending_machines, /obj/structure/machinery/vending
 	for(var/mob/mob in hearers(src, null))
 		mob.show_message("<span class='game say'><span class='name'>[src]</span> beeps, \"[message]\"</span>", SHOW_MESSAGE_AUDIBLE)
 	return
-
-/obj/structure/machinery/vending/power_change()
-	..()
-	if(stat & NOPOWER)
-		addtimer(CALLBACK(src, PROC_REF(update_icon)), rand(1, 15))
-		return
-	update_icon()
 
 //Oh no we're malfunctioning!  Dump out some product and break.
 /obj/structure/machinery/vending/proc/malfunction()

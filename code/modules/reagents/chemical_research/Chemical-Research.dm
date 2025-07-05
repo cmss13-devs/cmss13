@@ -3,6 +3,8 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 /datum/chemical_data
 	var/rsc_credits = 0
 	var/clearance_level = 1
+	///credits gained from survivor clearance cards
+	var/credits_gained = 0
 	var/clearance_x_access = FALSE
 	var/reached_x_access = FALSE
 	var/has_new_properties = FALSE
@@ -87,8 +89,8 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		if(P.category & PROPERTY_TYPE_UNADJUSTABLE || P.category & PROPERTY_TYPE_ANOMALOUS)
 			continue
 		property_names += P.name
-	for(var/name in research_property_data)
-		property_names -= name
+	for(var/datum/chem_property/property in research_property_data)
+		property_names -= property.name
 	if(LAZYLEN(property_names))
 		has_new_properties = TRUE
 		for(var/name in property_names)
@@ -115,7 +117,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		return FALSE
 	//Make the chem storage scale with number of dispensers
 	storage.recharge_rate += 5
-	storage.max_energy += 50
+	storage.max_energy += 100
 	storage.energy = storage.max_energy
 	return storage
 
@@ -125,7 +127,7 @@ GLOBAL_DATUM_INIT(chemical_data, /datum/chemical_data, new)
 		return FALSE
 	//Make the chem storage scale with number of dispensers
 	storage.recharge_rate -= 5
-	storage.max_energy -= 50
+	storage.max_energy -= 100
 	storage.energy = storage.max_energy
 	return TRUE
 

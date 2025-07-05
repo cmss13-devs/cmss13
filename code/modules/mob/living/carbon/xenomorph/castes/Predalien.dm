@@ -30,12 +30,14 @@
 	minimap_icon = "predalien"
 
 /mob/living/carbon/xenomorph/predalien
+	AUTOWIKI_SKIP(TRUE)
+
 	caste_type = XENO_CASTE_PREDALIEN
 	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
-	icon = 'icons/mob/xenos/predalien.dmi'
-	icon_xeno = 'icons/mob/xenos/predalien.dmi'
-	icon_xenonid = 'icons/mob/xenos/predalien.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
+	icon_xenonid = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_state = "Predalien Walking"
 	speaking_noise = 'sound/voice/predalien_click.ogg'
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -47,13 +49,14 @@
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
 	tier = 1
+	organ_value = 20000
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
 	show_age_prefix = FALSE
 	small_explosives_stun = FALSE
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/feralrush,
@@ -67,23 +70,33 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Predalien_1","Predalien_2","Predalien_3")
 	weed_food_states_flipped = list("Predalien_1","Predalien_2","Predalien_3")
+
 	var/smashing = FALSE
+	/// If the pred alert/player notif should happen when the predalien spawns
+	var/should_announce_spawn = TRUE
 
 
 
 /mob/living/carbon/xenomorph/predalien/Initialize(mapload, mob/living/carbon/xenomorph/oldxeno, h_number)
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(announce_spawn)), 3 SECONDS)
-	hunter_data.dishonored = TRUE
-	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
-	hunter_data.dishonored_set = src
-	hud_set_hunter()
+	if(should_announce_spawn)
+		addtimer(CALLBACK(src, PROC_REF(announce_spawn)), 3 SECONDS)
+		hunter_data.dishonored = TRUE
+		hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
+		hunter_data.dishonored_set = src
+		hud_set_hunter()
 
 	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
+
+/mob/living/carbon/xenomorph/predalien/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	death(cause, gibbed = TRUE)
 
 /mob/living/carbon/xenomorph/predalien/proc/announce_spawn()
 	if(!loc)
 		return FALSE
+
+	elder_overseer_message("An abomination has been detected at [get_area_name(loc)]. Exterminate it immediately. Heavy Armory unlocked.")
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 
 	to_chat(src, {"
 <span class='role_body'>|______________________|</span>
@@ -96,10 +109,29 @@ You must still listen to the queen.
 "})
 	emote("roar")
 
+/mob/living/carbon/xenomorph/predalien/get_organ_icon()
+	return "heart_t3"
+
 
 /mob/living/carbon/xenomorph/predalien/resist_fire()
-		..()
-		SetKnockDown(0.1 SECONDS)
+	..()
+	SetKnockDown(0.1 SECONDS)
+
+/mob/living/carbon/xenomorph/predalien/get_examine_text(mob/user)
+	. = ..()
+	var/datum/behavior_delegate/predalien_base/predalienkills = behavior_delegate
+	. += "It has [predalienkills.kills] kills to its name!"
+
+/mob/living/carbon/xenomorph/predalien/tutorial
+	AUTOWIKI_SKIP(TRUE)
+
+	should_announce_spawn = FALSE
+
+/mob/living/carbon/xenomorph/predalien/tutorial/gib(datum/cause_data/cause = create_cause_data("gibbing", src))
+	death(cause, gibbed = TRUE)
+
+/mob/living/carbon/xenomorph/predalien/noannounce /// To not alert preds
+	should_announce_spawn = FALSE
 
 /datum/behavior_delegate/predalien_base
 	name = "Base Predalien Behavior Delegate"
@@ -123,12 +155,3 @@ You must still listen to the queen.
 			original_damage *= 1.5
 
 	return original_damage + kills * 2.5
-
-/mob/living/carbon/xenomorph/predalien/get_examine_text(mob/user)
-	. = ..()
-	var/datum/behavior_delegate/predalien_base/predalienkills = behavior_delegate
-	var/kills = predalienkills.kills
-	. += "It has [kills] kills to its name!"
-
-
-

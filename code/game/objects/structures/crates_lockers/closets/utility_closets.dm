@@ -23,7 +23,7 @@
 	. = ..()
 
 #ifndef UNIT_TESTS
-	switch (pickweight(list("small" = 55, "aid" = 25, "tank" = 10, "both" = 10, "nothing" = 0, "delete" = 0)))
+	switch (pick_weight(list("small" = 55, "aid" = 25, "tank" = 10, "both" = 10, "nothing" = 1, "delete" = 1)))
 #else
 	var/test = "both"
 	switch (test) // We don't want randomness in tests

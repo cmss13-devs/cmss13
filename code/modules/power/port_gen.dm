@@ -33,7 +33,7 @@ tank [un]loading stuff
 turn on/off
 
 /obj/structure/machinery/power/port_gen/get_examine_text(mob/user)
-display round(lastgen) and phorontank amount
+display floor(lastgen) and phorontank amount
 
 */
 
@@ -168,8 +168,8 @@ display round(lastgen) and phorontank amount
 			temp_rating += SP.rating
 	for(var/obj/item/CP in component_parts)
 		temp_reliability += CP.reliability
-	reliability = min(round(temp_reliability / 4), 100)
-	power_gen = round(initial(power_gen) * (max(2, temp_rating) / 2))
+	reliability = min(floor(temp_reliability / 4), 100)
+	power_gen = floor(initial(power_gen) * (max(2, temp_rating) / 2))
 
 /obj/structure/machinery/power/port_gen/pacman/get_examine_text(mob/user)
 	. = ..()
@@ -196,8 +196,8 @@ display round(lastgen) and phorontank amount
 	var/temp = min(needed_sheets, sheet_left)
 	needed_sheets -= temp
 	sheet_left -= temp
-	sheets -= round(needed_sheets)
-	needed_sheets -= round(needed_sheets)
+	sheets -= floor(needed_sheets)
+	needed_sheets -= floor(needed_sheets)
 	if (sheet_left <= 0 && sheets > 0)
 		sheet_left = 1 - needed_sheets
 		sheets--
@@ -305,16 +305,16 @@ display round(lastgen) and phorontank amount
 
 	var/dat = text("<b>[name]</b><br>")
 	if (active)
-		dat += text("Generator: <A href='?src=\ref[src];action=disable'>On</A><br>")
+		dat += text("Generator: <A href='byond://?src=\ref[src];action=disable'>On</A><br>")
 	else
-		dat += text("Generator: <A href='?src=\ref[src];action=enable'>Off</A><br>")
-	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='?src=\ref[src];action=eject'>Eject</A><br>")
+		dat += text("Generator: <A href='byond://?src=\ref[src];action=enable'>Off</A><br>")
+	dat += text("[capitalize(sheet_name)]: [sheets] - <A href='byond://?src=\ref[src];action=eject'>Eject</A><br>")
 	var/stack_percent = round(sheet_left * 100, 1)
 	dat += text("Current stack: [stack_percent]% <br>")
-	dat += text("Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='?src=\ref[src];action=higher_power'>+</A><br>")
+	dat += text("Power output: <A href='byond://?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='byond://?src=\ref[src];action=higher_power'>+</A><br>")
 	dat += text("Power current: [(powernet == null ? "Unconnected" : "[avail()]")]<br>")
 	dat += text("Heat: [heat]<br>")
-	dat += "<br><A href='?src=\ref[src];action=close'>Close</A>"
+	dat += "<br><A href='byond://?src=\ref[src];action=close'>Close</A>"
 	user << browse("[dat]", "window=port_gen")
 	onclose(user, "port_gen")
 

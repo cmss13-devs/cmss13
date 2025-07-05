@@ -49,7 +49,7 @@
 				<tr>
 					<td>Global Variables</td>
 					<td width='50%'>
-						<div align='center'><a href='?_src_=glob_vars;refresh=1'>Refresh</a></div>
+						<div align='center'><a href='byond://?_src_=glob_vars;refresh=1'>Refresh</a></div>
 					</td>
 				</tr>
 			</table></div>
@@ -66,7 +66,7 @@
 					</td>
 
 					<td width='80%'>
-						<input type='text' id='filter' name='filter_text' value='' onkeyup='updateSearch()' style='width:100%;'>
+						<input type='search' id='filter' name='filter_text' value='' onkeyup='updateSearch()' onblur='updateSearch()' style='width:100%;'>
 					</td>
 				</tr>
 			</table>
@@ -112,21 +112,17 @@
 
 	html += "</body></html>"
 
-	show_browser(usr, html, "View Global Variables", "global_variables", "size=475x650")
+	show_browser(usr, html, "View Global Variables", "global_variables", width = 475, height = 650)
 
 	return
 
 /client/proc/debug_global_variable(name, value, level)
 	var/html = ""
-	var/change = 0
 	//to make the value bold if changed
 	if(!(admin_holder.rights & R_DEBUG))
 		return html
 
-	html += "<li style='backgroundColor:white'><a href='?_src_=glob_vars;varnameedit=[name]'>E</a><a href='?_src_=glob_vars;varnamechange=[name]'>C</a> "
-	if(value != initial(global.vars[name]))
-		html += "<font color='#B300B3'>"
-		change = 1
+	html += "<li style='backgroundColor:white'><a href='byond://?_src_=glob_vars;varnameedit=[name]'>E</a><a href='byond://?_src_=glob_vars;varnamechange=[name]'>C</a> "
 
 	if (isnull(value))
 		html += "[name] = <span class='value'>null</span>"
@@ -150,17 +146,17 @@
 
 	else if (istype(value, /datum))
 		var/datum/D = value
-		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
+		html += "<a href='byond://?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [D.type]"
 
 	else if (istype(value, /client))
 		var/client/C = value
-		html += "<a href='?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
+		html += "<a href='byond://?_src_=vars;Vars=\ref[value]'>[name] \ref[value]</a> = [C] [C.type]"
 
 	else if (istype(value, /list))
 		var/list/L = value
-		html += "[name] = /list ([L.len])"
+		html += "[name] = /list ([length(L)])"
 
-		if (L.len > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || L.len > 500))
+		if (length(L) > 0 && !(name == "underlays" || name == "overlays" || name == "vars" || length(L) > 500))
 			// not sure if this is completely right...
 			html += "<ul>"
 			var/index = 1
@@ -175,8 +171,6 @@
 
 	else
 		html += "[name] = <span class='value'>[value]</span>"
-	if(change)
-		html += "</font>"
 
 	html += "</li>"
 
@@ -217,7 +211,7 @@
 			to_chat(src, "A variable with this name ([param_var_name]) doesn't exist among global variables")
 			return
 
-		if(param_var_name in locked && !check_rights(R_DEBUG))
+		if((param_var_name in locked) && !check_rights(R_DEBUG))
 			return
 
 		variable = param_var_name
@@ -273,10 +267,11 @@
 		names = sortList(names)
 
 		variable = tgui_input_list(usr, "Which var?","Var", names)
-		if(!variable) return
+		if(!variable)
+			return
 		var_value = global.vars[variable]
 
-		if(variable in locked && !check_rights(R_DEBUG))
+		if((variable in locked) && !check_rights(R_DEBUG))
 			return
 
 	if(!autodetect_class)
@@ -353,7 +348,6 @@
 		if(admin_holder && admin_holder.marked_datum)
 			possible_classes += "marked datum"
 		possible_classes += "edit referenced object"
-		possible_classes += "restore to default"
 
 		class = tgui_input_list(usr, "What kind of variable?","Variable Type", possible_classes)
 		if(!class)
@@ -365,45 +359,49 @@
 			mod_list(global.vars[variable])
 			return
 
-		if("restore to default")
-			global.vars[variable] = initial(global.vars[variable])
-
 		if("edit referenced object")
 			return .(global.vars[variable])
 
 		if("text")
 			var/var_new = input("Enter new text:","Text",global.vars[variable]) as null|text
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("num")
 			var/var_new = tgui_input_real_number(usr, "Enter new number:", "Num", global.vars[variable])
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("type")
 			var/var_new = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("reference")
 			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob|obj|turf|area in world
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("mob reference")
 			var/var_new = input("Select reference:","Reference",global.vars[variable]) as null|mob in GLOB.mob_list
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("file")
 			var/var_new = input("Pick file:","File",global.vars[variable]) as null|file
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("icon")
 			var/var_new = input("Pick icon:","Icon",global.vars[variable]) as null|icon
-			if(var_new==null) return
+			if(var_new==null)
+				return
 			global.vars[variable] = var_new
 
 		if("matrix")

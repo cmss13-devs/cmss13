@@ -50,14 +50,15 @@
 	if(holder)
 		var/dmglevel = 4
 
-		if (round(amount/8) > 0)
+		if (floor(amount/8) > 0)
 			dmglevel = 1
-		else if (round(amount/4) > 0)
+		else if (floor(amount/4) > 0)
 			dmglevel = 2
-		else if (round(amount/2) > 0)
+		else if (floor(amount/2) > 0)
 			dmglevel = 3
 
-		if(dmglevel<4) holder.ex_act(dmglevel)
+		if(dmglevel<4)
+			holder.ex_act(dmglevel)
 
 
 
@@ -85,8 +86,10 @@
 
 /datum/effect_system/expl_particles/set_up(n = 10, c = 0, turf/loca)
 	number = n
-	if(istype(loca, /turf/)) location = loca
-	else location = get_turf(loca)
+	if(istype(loca, /turf/))
+		location = loca
+	else
+		location = get_turf(loca)
 
 /datum/effect_system/expl_particles/start()
 	var/i = 0
@@ -124,8 +127,10 @@
 	number = 1
 
 /datum/effect_system/explosion/set_up(n = 1, c = 0, turf/loca)
-	if(istype(loca, /turf/)) location = loca
-	else location = get_turf(loca)
+	if(istype(loca, /turf/))
+		location = loca
+	else
+		location = get_turf(loca)
 
 /datum/effect_system/explosion/start()
 	new/obj/effect/particle_effect/explosion( location )

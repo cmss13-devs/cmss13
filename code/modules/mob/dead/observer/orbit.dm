@@ -105,17 +105,24 @@
 			ghosts += list(serialized)
 			continue
 
+		var/add_to_infected = FALSE
 		if(poi_mob.status_flags & XENO_HOST)
 			var/obj/item/alien_embryo/embryo = (locate(/obj/item/alien_embryo) in poi_mob)
 			serialized["embryo_hivenumber"] = embryo.hivenumber
-			infected += list(serialized)
+			add_to_infected = TRUE
 
 		if(poi_mob.stat == DEAD)
+			serialized["icon"] = "whiteout" //Skull for the dead
 			dead += list(serialized)
+			if(add_to_infected)
+				infected += list(serialized)
 			continue
 
 		if(poi_mob.ckey == null)
+			serialized["icon"] = "unknown" //No soul
 			npcs += list(serialized)
+			if(add_to_infected)
+				infected += list(serialized)
 			continue
 
 		if(isliving(poi_mob))
@@ -132,6 +139,8 @@
 					serialized["hivenumber"] = xeno.hivenumber
 					serialized["area_name"] = get_area_name(xeno)
 				xenos += list(serialized)
+				if(add_to_infected)
+					infected += list(serialized)
 				continue
 
 			if(ishuman(player))
@@ -175,6 +184,9 @@
 
 				if(issurvivorjob(human.job) || (FACTION_SURVIVOR in human.faction_group))
 					survivors += list(serialized)
+
+				if(add_to_infected)
+					infected += list(serialized)
 
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)

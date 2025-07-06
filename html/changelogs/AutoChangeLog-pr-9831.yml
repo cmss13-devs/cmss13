@@ -1,4 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - ui: "Sentry Computer's CRT theme won't scroll away."

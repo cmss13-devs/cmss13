@@ -93,33 +93,24 @@ Contains most of the procs that are called when a mob is attacked by something
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/check_shields(attack_text = "the attack", direction, is_projectile = FALSE)
+///Attacking direction is determined by get_dir(DEFENDER, ATTACKER)
+/mob/living/carbon/human/proc/check_shields(attack_text = "the attack", attacking_direction, is_projectile = FALSE, custom_response = FALSE)
 	var/block_effect = /obj/effect/block
 	var/owner_turf = get_turf(src)
+	var/obj/item/weapon/shield/solid_shield
 	if(l_hand && istype(l_hand, /obj/item/weapon))
 		var/obj/item/weapon/possible_shield = l_hand
-
-		if(istype(possible_shield,/obj/item/weapon/shield)) // Activable shields
-			var/obj/item/weapon/shield/solid_shield = possible_shield
-			var/block_chance = solid_shield.shield_chance
-			if(is_projectile)
-				block_chance = (block_chance * solid_shield.shield_projectile_mult)
-
-			if(prob(block_chance))
-				new block_effect(owner_turf)
-				playsound(src, solid_shield.shield_sound, 70, vary = TRUE)
-				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [solid_shield.name]!</B>"), null, null, 5)
-				if(solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
-					solid_shield.lower_shield(src)
-				return TRUE
 
 		if(possible_shield.shield_type && possible_shield.shield_chance)
 			var/block_chance = possible_shield.shield_chance
 			if(is_projectile)
 				block_chance = (block_chance * possible_shield.shield_projectile_mult)
 			var/shield_type = possible_shield.shield_type
-			if(!direction)
+			if(!attacking_direction)
 				shield_type = SHIELD_ABSOLUTE
+
+			if(istype(possible_shield,/obj/item/weapon/shield)) // Activable shields
+				solid_shield = possible_shield
 
 			///If the shield needs two hands, but it's only held in one, then it's not very effective.
 			if(!(possible_shield.flags_item & WIELDED))
@@ -134,48 +125,48 @@ Contains most of the procs that are called when a mob is attacked by something
 					if(prob(block_chance))
 						new block_effect(owner_turf)
 						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
-						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						if(!custom_response)
+							visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						if(solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
+							solid_shield.lower_shield(src)
 						return TRUE
 
 				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
 					var/appropriate_dir = FALSE
 					var/facing_dir = dir
-					for(var/opposite_dir in reverse_nearby_direction(direction))
-						if(facing_dir == opposite_dir)
+					//message_admins("SHIELD DEBUG: Facing Direction - [dir2text(facing_dir)], Attacking Direction - [dir2text(attacking_direction)]")
+					for(var/catchment_dir in facing_nearby_direction(facing_dir))
+						if(attacking_direction == catchment_dir)
 							appropriate_dir = TRUE
+							//message_admins("SHIELD DEBUG: Appropriate Direction - [dir2text(catchment_dir)]")
 							break
 					if(appropriate_dir && prob(block_chance))
 						new block_effect(owner_turf)
 						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
-						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						if(!custom_response)
+							visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						if(solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
+							solid_shield.lower_shield(src)
 						return TRUE
 
 			// We cannot return FALSE on fail here, because we haven't checked r_hand yet. Dual-wielding shields perhaps!
 
+	solid_shield = null
 	if(r_hand && istype(r_hand, /obj/item/weapon))
 		var/obj/item/weapon/possible_shield = r_hand
-
-		if(istype(possible_shield,/obj/item/weapon/shield)) // Activable shields
-			var/obj/item/weapon/shield/solid_shield = possible_shield
-			var/block_chance = solid_shield.shield_chance
-			if(is_projectile)
-				block_chance = (block_chance * solid_shield.shield_projectile_mult)
-
-			if(prob(solid_shield.shield_chance))
-				new block_effect(owner_turf)
-				playsound(src, solid_shield.shield_sound, 70, vary = TRUE)
-				visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [solid_shield.name]!</B>"), null, null, 5)
-				if(solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
-					solid_shield.lower_shield(src)
-				return TRUE
 
 		if(possible_shield.shield_type && possible_shield.shield_chance)
 			var/block_chance = possible_shield.shield_chance
 			if(is_projectile)
 				block_chance = (block_chance * possible_shield.shield_projectile_mult)
 			var/shield_type = possible_shield.shield_type
-			if(!direction)
-				shield_type = SHIELD_ABSOLUTE
+
+			if(shield_type == SHIELD_DIRECTIONAL || shield_type == SHIELD_DIRECTIONAL_TWOHANDS)
+				if(!attacking_direction)
+					shield_type = SHIELD_ABSOLUTE
+
+			if(istype(possible_shield,/obj/item/weapon/shield)) // Activable shields
+				solid_shield = possible_shield
 
 			///If the shield needs two hands, but it's only held in one, then it's not very effective.
 			if(!(possible_shield.flags_item & WIELDED))
@@ -190,30 +181,40 @@ Contains most of the procs that are called when a mob is attacked by something
 					if(prob(block_chance))
 						new block_effect(owner_turf)
 						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
-						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						if(!custom_response)
+							visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						if(solid_shield && solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
+							solid_shield.lower_shield(src)
 						return TRUE
 
 				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
 					var/appropriate_dir = FALSE
 					var/facing_dir = dir
-					for(var/opposite_dir in reverse_nearby_direction(direction))
-						if(facing_dir == opposite_dir)
+					//message_admins("SHIELD DEBUG: Facing Direction - [dir2text(facing_dir)], Attacking Direction - [dir2text(attacking_direction)]")
+					for(var/catchment_dir in facing_nearby_direction(facing_dir))
+						if(attacking_direction == catchment_dir)
 							appropriate_dir = TRUE
+							//message_admins("SHIELD DEBUG: Appropriate Direction - [dir2text(catchment_dir)]")
 							break
 					if(appropriate_dir && prob(block_chance))
 						new block_effect(owner_turf)
 						playsound(src, possible_shield.shield_sound, 70, vary = TRUE)
-						visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						if(!custom_response)
+							visible_message(SPAN_DANGER("<B>[src] blocks [attack_text] with the [possible_shield.name]!</B>"), null, null, 5)
+						if(solid_shield && solid_shield.shield_readied) // User activated his shield before the attack. Lower if it blocks.
+							solid_shield.lower_shield(src)
 						return TRUE
 
 	if(back && istype(back, /obj/item/weapon/shield))
-		var/obj/item/weapon/shield/solid_shield = back
-		if(solid_shield.blocks_on_back && prob(20))
-			visible_message(SPAN_DANGER("<B>The [solid_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+		var/obj/item/weapon/shield/back_shield = back
+		if(back_shield.blocks_on_back && prob(20))
+			if(!custom_response)
+				visible_message(SPAN_DANGER("<B>The [back_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
 			return TRUE
 
 	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
-		visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), null, null, 5)
+		if(!custom_response)
+			visible_message(SPAN_DANGER("<B>[src] withstands [attack_text] with their [wear_suit.name]!</B>"), null, null, 5)
 		return TRUE
 	return FALSE
 
@@ -240,7 +241,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return FALSE
 	var/hit_area = affecting.display_name
 
-	if((user != src) && !(I.flags_item & UNBLOCKABLE) && check_shields("the [I.name]", I.dir))
+	if((user != src) && !(I.flags_item & UNBLOCKABLE) && check_shields("the [I.name]", get_dir(src, user)))
 		return FALSE
 
 	if(LAZYLEN(I.attack_verb))
@@ -350,7 +351,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		return
 	O.throwing = FALSE //it hit, so stop moving
 
-	if ((!launch_meta_valid || LM.thrower != src) && check_shields("[O]", O.dir, TRUE))
+	if ((!launch_meta_valid || LM.thrower != src) && check_shields("[O]", get_dir(src, LM.thrower), TRUE))
 		return
 
 	var/obj/limb/affecting = get_limb(zone)

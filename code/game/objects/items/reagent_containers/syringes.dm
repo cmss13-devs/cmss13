@@ -250,9 +250,9 @@
 	msg_admin_attack("[key_name(user)] attacked [key_name(target)] with [src.name] (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
+		var/mob/living/carbon/human/human_target = target
 		var/target_zone = rand_zone(check_zone(user.zone_selected, target))
-		var/obj/limb/affecting = H.get_limb(target_zone)
+		var/obj/limb/affecting = human_target.get_limb(target_zone)
 
 		if (!affecting)
 			return
@@ -261,21 +261,21 @@
 			return
 		var/hit_area = affecting.display_name
 
-		if((user != target) && !(flags_item & UNBLOCKABLE) && H.check_shields("the [src.name]", user.dir))
+		if((user != human_target) && !(flags_item & UNBLOCKABLE) && human_target.check_shields("the [src.name]", get_dir(human_target, user)))
 			return
 
-		if (target != user && target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
+		if (human_target != user && human_target.getarmor(target_zone, ARMOR_MELEE) > 5 && prob(50))
 			for(var/mob/O in viewers(GLOB.world_view_size, user))
-				O.show_message(text(SPAN_DANGER("<B>[user] tries to stab [target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B>")), SHOW_MESSAGE_VISIBLE)
+				O.show_message(text(SPAN_DANGER("<B>[user] tries to stab [human_target] in \the [hit_area] with [src.name], but the attack is deflected by armor!</B>")), SHOW_MESSAGE_VISIBLE)
 			user.temp_drop_inv_item(src)
 			qdel(src)
 			return
 
 		for(var/mob/O in viewers(GLOB.world_view_size, user))
-			O.show_message(text(SPAN_DANGER("<B>[user] stabs [target] in \the [hit_area] with [src.name]!</B>")), SHOW_MESSAGE_VISIBLE)
+			O.show_message(text(SPAN_DANGER("<B>[user] stabs [human_target] in \the [hit_area] with [src.name]!</B>")), SHOW_MESSAGE_VISIBLE)
 
 		if(affecting.take_damage(3))
-			target:UpdateDamageIcon()
+			human_target:UpdateDamageIcon()
 
 	else
 		for(var/mob/O in viewers(GLOB.world_view_size, user))

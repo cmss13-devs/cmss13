@@ -106,7 +106,7 @@
 
 /obj/item/weapon/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
 	var/stun_sound = pick('sound/weapons/baton.ogg', 'sound/effects/woodstave.ogg')
-	if(!(flags_item & UNBLOCKABLE) && target.check_shields("[user]'s [name]", user.dir))
+	if(!(flags_item & UNBLOCKABLE) && target.check_shields("[user]'s [name]", get_dir(target, user)))
 		return FALSE
 	// Visuals and sound
 	playsound(target, stun_sound, 50, TRUE, 7)

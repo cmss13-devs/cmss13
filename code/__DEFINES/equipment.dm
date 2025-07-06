@@ -619,6 +619,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 
 /// Grades of protection against projectiles, including thrown items.
 
+#define PROJECTILE_BLOCK_PERC_NONE 0
 #define PROJECTILE_BLOCK_PERC_20 0.2
 #define PROJECTILE_BLOCK_PERC_30 0.3
 #define PROJECTILE_BLOCK_PERC_40 0.4

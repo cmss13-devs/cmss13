@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Fixes some brute message being sent to everyone instead of self"

@@ -13,8 +13,8 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 
-	passive_block = 15
-	readied_block = 30
+	passive_block = SHIELD_CHANCE_LOW
+	readied_block = SHIELD_CHANCE_HIGH
 
 	blocks_on_back = FALSE
 

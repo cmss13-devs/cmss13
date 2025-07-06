@@ -20,7 +20,7 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	attack_speed = 9
 
-	shield_chance = 15
+	shield_chance = SHIELD_CHANCE_LOW
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_NONE
 	shield_type = SHIELD_DIRECTIONAL
 	shield_sound = 'sound/items/parry.ogg'
@@ -30,7 +30,7 @@
 	desc = "What are you standing around staring at this for? Get to killing!"
 	icon_state = "claymore"
 	item_state = "claymore"
-	shield_chance = 20
+	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/sword/ceremonial
 	name = "Ceremonial Sword"
@@ -67,7 +67,7 @@
 	icon_state = "arnold-machete"
 	item_state = "arnold-machete"
 	force = MELEE_FORCE_TIER_11
-	shield_chance = 35
+	shield_chance = SHIELD_CHANCE_EXTRAHIGH
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_50
 
 /obj/item/weapon/sword/hefa
@@ -76,7 +76,7 @@
 	item_state = "hefasword"
 	desc = "A blade known to be used by the Order of the HEFA, this highly dangerous blade blows up in a shower of shrapnel on impact."
 	attack_verb = list("bapped", "smacked", "clubbed")
-	shield_chance = 25
+	shield_chance = SHIELD_CHANCE_MEDHIGH
 
 	var/primed = FALSE
 
@@ -118,7 +118,7 @@
 	icon_state = "katana"
 	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
-	shield_chance = 35
+	shield_chance = SHIELD_CHANCE_EXTRAHIGH
 
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
@@ -126,7 +126,7 @@
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
 	force = MELEE_FORCE_WEAK
 	throwforce = 7
-	shield_chance = 20
+	shield_chance = SHIELD_CHANCE_MED
 
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"

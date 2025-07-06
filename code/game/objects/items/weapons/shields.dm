@@ -1,9 +1,9 @@
 /obj/item/weapon/shield
 	name = "shield"
 	var/base_icon_state = "shield"
-	var/passive_block = 15
+	var/passive_block = SHIELD_CHANCE_LOW
 	var/passive_projectile_mult = PROJECTILE_BLOCK_PERC_30
-	var/readied_block = 30
+	var/readied_block = SHIELD_CHANCE_HIGH
 	var/readied_projectile_mult = PROJECTILE_BLOCK_PERC_50
 	var/readied_slowdown = SLOWDOWN_ARMOR_VERY_LIGHT // Walking around in a readied shield stance slows you! The armor defs are a useful existing reference point.
 	var/shield_readied = FALSE
@@ -70,8 +70,8 @@
 	base_icon_state = "riot"
 	flags_equip_slot = SLOT_BACK
 	force = 15
-	passive_block = 20
-	readied_block = 40
+	passive_block = SHIELD_CHANCE_MED
+	readied_block = SHIELD_CHANCE_VHIGH
 	readied_slowdown = SLOWDOWN_ARMOR_LIGHT
 	throwforce = 5
 	throw_speed = SPEED_FAST
@@ -89,7 +89,7 @@
 	var/bash_cooldown = 0 //shield bash cooldown. based on world.time
 
 	shield_type = SHIELD_DIRECTIONAL
-	shield_chance = 40
+	shield_chance = SHIELD_CHANCE_VHIGH
 
 /obj/item/weapon/shield/riot/attack_self(mob/user)
 	..()
@@ -115,8 +115,8 @@
 	icon_state = "eshield0" // eshield1 for expanded
 	flags_atom = FPRINT|QUICK_DRAWABLE|CONDUCT|NOBLOODY
 	force = 3
-	passive_block = 50 // Shield activation takes over functionality, and no slowdown.
-	readied_block = 50
+	passive_block = SHIELD_CHANCE_5050 // Shield activation takes over functionality, and no slowdown.
+	readied_block = SHIELD_CHANCE_5050
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_80
 	throwforce = 5
 	throw_speed = SPEED_FAST
@@ -134,9 +134,9 @@
 	icon_state = "riotmetal"
 	item_state = "riotmetal"
 	base_icon_state = "riotmetal"
-	passive_block = 40
+	passive_block = SHIELD_CHANCE_VHIGH
 	passive_projectile_mult = PROJECTILE_BLOCK_PERC_45
-	readied_block = 60
+	readied_block = SHIELD_CHANCE_SUPER
 	readied_projectile_mult = PROJECTILE_BLOCK_PERC_70
 
 /obj/item/weapon/shield/riot/ballistic //FOR THE ROYAL MARINE SPEC DO NOT TOUCH SMELLY MAN
@@ -146,7 +146,7 @@
 	icon_state = "ballisticshield"
 	item_state = "ballisticshield"
 	base_icon_state = "ballisticshield"
-	passive_block = 60
+	passive_block = SHIELD_CHANCE_SUPER
 	passive_projectile_mult = PROJECTILE_BLOCK_PERC_60
-	readied_block = 90
+	readied_block = SHIELD_CHANCE_GODLY
 	readied_projectile_mult = PROJECTILE_BLOCK_PERC_80

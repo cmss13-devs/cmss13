@@ -497,10 +497,10 @@
 	attack_verb = list("speared", "stabbed", "impaled")
 
 	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
-	shield_chance = 30
+	shield_chance = SHIELD_CHANCE_HIGH
 	shield_projectile_mult = PROJECTILE_BLOCK_PERC_40
 	///The stored chance for when unfolded.
-	var/active_shield_chance = 30
+	var/active_shield_chance = SHIELD_CHANCE_HIGH
 
 	var/force_wielded = MELEE_FORCE_TIER_6
 	var/force_unwielded = MELEE_FORCE_TIER_2

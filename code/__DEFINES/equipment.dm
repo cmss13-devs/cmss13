@@ -617,7 +617,19 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define SHIELD_ABSOLUTE 3
 #define SHIELD_ABSOLUTE_TWOHANDS 4
 
-/// Grades of protection against projectiles, including thrown items.
+// Percentage base chance of blocking
+#define SHIELD_CHANCE_NONE 0
+#define SHIELD_CHANCE_LOW 15
+#define SHIELD_CHANCE_MED 20
+#define SHIELD_CHANCE_MEDHIGH 25
+#define SHIELD_CHANCE_HIGH 30
+#define SHIELD_CHANCE_EXTRAHIGH 35
+#define SHIELD_CHANCE_VHIGH 40
+#define SHIELD_CHANCE_5050 50
+#define SHIELD_CHANCE_SUPER 60
+#define SHIELD_CHANCE_GODLY 90
+
+// Grades of protection against projectiles, including thrown items.
 
 #define PROJECTILE_BLOCK_PERC_NONE 0
 #define PROJECTILE_BLOCK_PERC_20 0.2

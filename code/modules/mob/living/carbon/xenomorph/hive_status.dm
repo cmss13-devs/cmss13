@@ -1688,7 +1688,7 @@
 			if(!(cur_area.flags_atom & AREA_ALLOW_XENO_JOIN))
 				continue
 
-		if(xeno.caste)
+		if(xeno.caste && xeno.counts_for_slots)
 			xeno_counts[xeno.caste.tier+1][xeno.caste.caste_type]++
 
 	return xeno_counts

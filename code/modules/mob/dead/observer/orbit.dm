@@ -112,12 +112,14 @@
 			add_to_infected = TRUE
 
 		if(poi_mob.stat == DEAD)
+			serialized["icon"] = "whiteout" //Skull for the dead
 			dead += list(serialized)
 			if(add_to_infected)
 				infected += list(serialized)
 			continue
 
 		if(poi_mob.ckey == null)
+			serialized["icon"] = "unknown" //No soul
 			npcs += list(serialized)
 			if(add_to_infected)
 				infected += list(serialized)

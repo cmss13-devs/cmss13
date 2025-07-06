@@ -615,7 +615,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			return
 		if(!(receiver.inoperable()))
 
-			flick("[initial(icon_state)]receive", receiver)
+			flick("[initial(receiver.icon_state)]receive", receiver)
 
 			playsound(receiver.loc, "sound/machines/fax.ogg", 15)
 			// give the sprite some time to flick
@@ -691,7 +691,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 /obj/structure/machinery/faxmachine/corporate/liaison/almayer
 	department = FAX_DEPARTMENT_ALMAYER
 	sub_name = "W-Y Liaison"
-	radio_alert_tag = ":Y"
+	radio_alert_tag = ":y"
 
 /obj/structure/machinery/faxmachine/corporate/highcom
 	department = FAX_DEPARTMENT_WY_HC
@@ -729,7 +729,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	name = "\improper USCM Provost Fax Machine"
 	department = FAX_DEPARTMENT_ALMAYER_BRIG
 	target_department = FAX_DEPARTMENT_PROVOST
-	radio_alert_tag = ":P"
+	radio_alert_tag = ":p"
 
 /obj/structure/machinery/faxmachine/uscm/almayer/brig/chief
 	sub_name = "Chief MP"
@@ -791,14 +791,18 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	needs_power = FALSE
 	use_power = USE_POWER_NONE
 	health = 150
+	department = FAX_DEPARTMENT_ALMAYER
+	target_department = FAX_DEPARTMENT_PRESS
+	sub_name = "Correspondent (portable)"
 	var/obj/item/device/fax_backpack/faxbag
 
 /obj/structure/machinery/faxmachine/backpack/New(loc, portable_id_tag)
-	. = ..()
 	if(portable_id_tag)
 		machine_id_tag = portable_id_tag
+		identity_name = sub_name ? "[sub_name], [machine_id_tag]" : machine_id_tag
 		fixed_id_tag = TRUE
 		GLOB.fax_network.all_faxcodes[machine_id_tag] = src
+	return ..()
 
 ///The wearable and deployable part of the fax machine backpack
 /obj/item/device/fax_backpack

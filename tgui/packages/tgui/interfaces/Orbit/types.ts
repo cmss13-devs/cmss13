@@ -13,6 +13,7 @@ export type OrbitData = {
   twe: Observable[];
   clf: Observable[];
   wy: Observable[];
+  hyperdyne: Observable[];
   freelancer: Observable[];
   contractor: Observable[];
   mercenary: Observable[];
@@ -45,6 +46,7 @@ export type Observable = {
   orbiters?: number;
   ref: string;
   hivenumber: string;
+  embryo_hivenumber: string;
   area_name: string;
 };
 

@@ -917,7 +917,7 @@
 
 /obj/item/weapon/gun/smg/p90/twe
 	name = "\improper FN-TWE P90 submachinegun"
-	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts the AP variation of the 5.7×28mm rounds."
+	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts 5.7×28mm rounds."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/smgs.dmi'
 	icon_state = "p90_twe"
 	item_state = "p90_twe"

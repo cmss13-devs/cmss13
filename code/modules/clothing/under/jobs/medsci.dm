@@ -204,7 +204,7 @@
 
 /obj/item/clothing/under/rank/medical/lightblue
 	name = "light blue medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in light blue."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. Typically worn by nurses, these are in light blue."
 	icon_state = "scrubslightblue"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -215,7 +215,7 @@
 
 /obj/item/clothing/under/rank/medical/blue
 	name = "blue medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in formal blue."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. Typically worn by doctors, These are in formal navy blue."
 	icon_state = "scrubsblue"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -226,7 +226,7 @@
 
 /obj/item/clothing/under/rank/medical/green
 	name = "green medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in jade green."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. Typically worn by surgeons, These are in jade green."
 	icon_state = "scrubsgreen"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -268,6 +268,28 @@
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsgrey")
 
+/obj/item/clothing/under/rank/medical/black
+	name = "black medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. Typically worn by morticians and chaplains, these are black as coal."
+	icon_state = "scrubsblack"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
+	)
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubsblack")
+
+/obj/item/clothing/under/rank/medical/white
+	name = "white medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are white as snow."
+	icon_state = "scrubswhite"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
+	)
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubswhite")
+
 /obj/item/clothing/under/rank/medical/orange
 	name = "brig medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. These are in prisoner orange."
@@ -278,6 +300,17 @@
 	)
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsorange")
+
+/obj/item/clothing/under/rank/medical/pharmacist
+	name = "pharmacist medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. Typically worn by pharmacists, these are white with orange shoulder pads."
+	icon_state = "scrubspharm"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
+	)
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubspharm")
 
 /obj/item/clothing/under/rank/medical/brown
 	name = "brown medical scrubs"
@@ -292,7 +325,7 @@
 
 /obj/item/clothing/under/rank/medical/cmo
 	name = "Chief Medical Officer's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green with a big C on the front and back."
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are jade green and adorned with peach stripes."
 	icon_state = "scrubscmo"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(

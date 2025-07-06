@@ -100,37 +100,47 @@
 
 /obj/item/clothing/head/surgery/purple
 	name = "purple surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is deep purple."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is amaranth purple."
 	icon_state = "surgcap_purple"
 
 /obj/item/clothing/head/surgery/blue
 	name = "blue surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is dark blue."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, This one is navy blue."
 	icon_state = "surgcap_blue"
 
 /obj/item/clothing/head/surgery/lightblue
 	name = "light blue surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a baby blue."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by nurses, this one is a baby blue."
 	icon_state = "surgcap_lightblue"
 
 /obj/item/clothing/head/surgery/green
 	name = "green surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is dark green."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by surgeons, one is jade green."
 	icon_state = "surgcap_green"
 
 /obj/item/clothing/head/surgery/olive
 	name = "olive surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is olive green"
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is olive green."
 	icon_state = "surgcap_olive"
 
 /obj/item/clothing/head/surgery/brown
 	name = "brown surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a rusty brown."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a rusty brown color."
 	icon_state = "surgcap_brown"
 
 /obj/item/clothing/head/surgery/grey
 	name = "grey surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a drab grey."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a mundane grey color."
+	icon_state = "surgcap_grey"
+
+/obj/item/clothing/head/surgery/white
+	name = "white surgical cap"
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is snow white."
+	icon_state = "surgcap_brown"
+
+/obj/item/clothing/head/surgery/black
+	name = "grey surgical cap"
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by morticians, this one is a black as coal."
 	icon_state = "surgcap_grey"
 
 /obj/item/clothing/head/surgery/cmo

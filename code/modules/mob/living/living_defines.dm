@@ -137,6 +137,7 @@
 
 	/// icon for weed_food states
 	var/weed_food_icon = 'icons/mob/xenos/weeds.dmi'
+	var/mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
 	/// icon_states for weed_food (needs to be the same length as weed_food_states_flipped)
 	var/list/weed_food_states = list("human_1","human_2","human_3","human_4","human_5")
 	/// flipped icon_states for weed_food (needs to be the same length as weed_food_states)

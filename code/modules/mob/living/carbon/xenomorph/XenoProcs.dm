@@ -153,7 +153,7 @@
 		if(is_mob_incapacitated() || body_position == LYING_DOWN || buckled || evolving || !isturf(loc))
 			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
-		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
+		else if(!is_hive_ruler() && observed_xeno)
 			to_chat(src, SPAN_WARNING("We cannot do this in our current state."))
 			return FALSE
 	else
@@ -344,7 +344,10 @@
 
 	if (pounceAction.freeze_self)
 		if(pounceAction.freeze_play_sound)
-			playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
+			if(istype(hive, /datum/hive_status/pathogen))
+				playsound(loc, "pathogen_pounce", 60, 1)
+			else
+				playsound(loc, rand(0, 100) < 95 ? 'sound/voice/alien_pounce.ogg' : 'sound/voice/alien_pounce2.ogg', 25, 1)
 		ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Pounce"))
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, PROC_REF(unfreeze_pounce)), pounceAction.freeze_time, TIMER_STOPPABLE)
 	pounceAction.additional_effects(M)
@@ -556,7 +559,7 @@
 	if(!hive)
 		return
 	var/mob/living/carbon/xenomorph/queen/Q = hive.living_xeno_queen
-	if(!Q || !Q.ovipositor || hive_pos == NORMAL_XENO || !Q.current_aura || !SSmapping.same_z_map(Q.loc.z, loc.z)) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
+	if(!Q || (!hive.allow_no_queen_actions && !Q.ovipositor) || hive_pos == NORMAL_XENO || !Q.current_aura || !SSmapping.same_z_map(Q.loc.z, loc.z)) //We are no longer a leader, or the Queen attached to us has dropped from her ovi, disabled her pheromones or even died
 		leader_aura_strength = 0
 		leader_current_aura = ""
 		to_chat(src, SPAN_XENOWARNING("Our pheromones wane. The Queen is no longer granting us her pheromones."))

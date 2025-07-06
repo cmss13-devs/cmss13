@@ -539,7 +539,7 @@ CIA
 CBRN
 ---------------------
 */
-/datum/skills/cbrnrifleman
+/datum/skills/cbrn_rifleman
 	name = "CBRN Rifleman"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
@@ -551,7 +551,7 @@ CBRN
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 	)
 
-/datum/skills/cbrntech
+/datum/skills/cbrn_tech
 	name = "CBRN Combat Technician"
 	skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
@@ -566,7 +566,7 @@ CBRN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 	)
 
-/datum/skills/cbrnmedic
+/datum/skills/cbrn_medic
 	name = "CBRN Medical Technician"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
@@ -579,7 +579,7 @@ CBRN
 		SKILL_JTAC = SKILL_JTAC_BEGINNER,
 	)
 
-/datum/skills/cbrnlead
+/datum/skills/cbrn_lead
 	name = "CBRN Fireteam Leader"
 	skills = list(
 		SKILL_POLICE = SKILL_POLICE_SKILLED,

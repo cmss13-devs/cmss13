@@ -2,7 +2,9 @@
 	name = "shield"
 	var/base_icon_state = "shield"
 	var/passive_block = 15
+	var/passive_projectile_mult = PROJECTILE_BLOCK_PERC_30
 	var/readied_block = 30
+	var/readied_projectile_mult = PROJECTILE_BLOCK_PERC_50
 	var/readied_slowdown = SLOWDOWN_ARMOR_VERY_LIGHT // Walking around in a readied shield stance slows you! The armor defs are a useful existing reference point.
 	var/shield_readied = FALSE
 	var/blocks_on_back = FALSE
@@ -19,6 +21,7 @@
 	if(H.shield_slowdown != current_shield_slowdown)
 		H.recalculate_move_delay = TRUE
 	shield_chance = readied_block
+	shield_projectile_mult = readied_projectile_mult
 
 /obj/item/weapon/shield/proc/lower_shield(mob/user as mob)
 	user.visible_message(SPAN_BLUE("\The [user] lowers \the [src]."))
@@ -39,6 +42,7 @@
 	if(H.shield_slowdown != current_shield_slowdown)
 		H.recalculate_move_delay = TRUE
 	shield_chance = passive_block
+	shield_projectile_mult = passive_projectile_mult
 
 /obj/item/weapon/shield/proc/toggle_shield(mob/user as mob)
 	if(shield_readied)
@@ -113,6 +117,7 @@
 	force = 3
 	passive_block = 50 // Shield activation takes over functionality, and no slowdown.
 	readied_block = 50
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_80
 	throwforce = 5
 	throw_speed = SPEED_FAST
 	throw_range = 4
@@ -130,7 +135,9 @@
 	item_state = "riotmetal"
 	base_icon_state = "riotmetal"
 	passive_block = 40
+	passive_projectile_mult = PROJECTILE_BLOCK_PERC_45
 	readied_block = 60
+	readied_projectile_mult = PROJECTILE_BLOCK_PERC_70
 
 /obj/item/weapon/shield/riot/ballistic //FOR THE ROYAL MARINE SPEC DO NOT TOUCH SMELLY MAN
 	name = "FBS-B Ballistic shield"
@@ -140,4 +147,6 @@
 	item_state = "ballisticshield"
 	base_icon_state = "ballisticshield"
 	passive_block = 60
+	passive_projectile_mult = PROJECTILE_BLOCK_PERC_60
 	readied_block = 90
+	readied_projectile_mult = PROJECTILE_BLOCK_PERC_80

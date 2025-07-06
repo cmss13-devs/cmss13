@@ -214,7 +214,7 @@
 	wieldsound = 'sound/weapons/saberon.ogg'
 	unwieldsound = 'sound/weapons/saberoff.ogg'
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = NOSHIELD|TWOHANDED
+	flags_item = UNBLOCKABLE|TWOHANDED
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
@@ -260,7 +260,7 @@
 	throw_speed = SPEED_VERY_FAST
 	edge = 1
 	sharp = IS_SHARP_ITEM_SIMPLE
-	flags_item = NOSHIELD|TWOHANDED
+	flags_item = TWOHANDED
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 

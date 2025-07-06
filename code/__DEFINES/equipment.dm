@@ -67,7 +67,7 @@
 /// when an item has this it produces no "X has been hit by Y with Z" message with the default handler
 #define NOBLUDGEON (1<<1)
 /// weapon not affected by shield (does nothing currently)
-#define NOSHIELD (1<<2)
+#define UNBLOCKABLE (1<<2)
 /// Deletes on drop instead of falling on the floor.
 #define DELONDROP (1<<3)
 /// The item is twohanded.
@@ -613,9 +613,21 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 /// Blocks attacks with directional scaling.
 #define SHIELD_DIRECTIONAL 1
 #define SHIELD_DIRECTIONAL_TWOHANDS 2
-// Blocks attacks from all directions equally.
+/// Blocks attacks from all directions equally.
 #define SHIELD_ABSOLUTE 3
 #define SHIELD_ABSOLUTE_TWOHANDS 4
+
+/// Grades of protection against projectiles, including thrown items.
+
+#define PROJECTILE_BLOCK_PERC_20 0.2
+#define PROJECTILE_BLOCK_PERC_30 0.3
+#define PROJECTILE_BLOCK_PERC_40 0.4
+#define PROJECTILE_BLOCK_PERC_45 0.45
+#define PROJECTILE_BLOCK_PERC_50 0.5
+#define PROJECTILE_BLOCK_PERC_60 0.6
+#define PROJECTILE_BLOCK_PERC_70 0.7
+#define PROJECTILE_BLOCK_PERC_80 0.8
+#define PROJECTILE_BLOCK_PERC_100 1
 
 ///Get appropriate SLOT_IN_X for given slot
 /proc/slot_to_in_storage_slot(slot)

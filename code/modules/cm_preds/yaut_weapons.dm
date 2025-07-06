@@ -60,7 +60,7 @@
 	w_class = SIZE_HUGE
 	edge = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
-	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
+	flags_item = NODROP|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
@@ -498,6 +498,7 @@
 
 	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
 	shield_chance = 30
+	shield_projectile_mult = PROJECTILE_BLOCK_PERC_40
 	///The stored chance for when unfolded.
 	var/active_shield_chance = 30
 
@@ -961,7 +962,7 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 
-	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
+	flags_item = UNBLOCKABLE|TWOHANDED|ITEM_PREDATOR|ADJACENT_CLICK_DELAY
 	unacidable = TRUE
 	flags_equip_slot = SLOT_BACK
 	w_class = SIZE_LARGE
@@ -975,7 +976,7 @@
 	desc = "A spear of exquisite design, used by an ancient civilisation."
 	icon_state = "spearhunter"
 	item_state = "spearhunter"
-	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
 	sharp = IS_SHARP_ITEM_SIMPLE
@@ -1095,7 +1096,7 @@
 	throwforce = MELEE_FORCE_WEAK
 	icon_state = "glaive_alt"
 	item_state = "glaive_alt"
-	flags_item = NOSHIELD|TWOHANDED|ADJACENT_CLICK_DELAY
+	flags_item = TWOHANDED|ADJACENT_CLICK_DELAY
 
 /obj/item/weapon/twohanded/yautja/glaive/longaxe
 	name = "longaxe"

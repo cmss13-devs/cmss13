@@ -17,7 +17,7 @@
 	throw_range = 5
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = NOSHIELD
+	flags_item = UNBLOCKABLE
 
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	sharp = IS_SHARP_ITEM_BIG
@@ -53,7 +53,7 @@
 	throw_range = 5
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|QUICK_DRAWABLE|NOBLOODY
-	flags_item = NOSHIELD
+	flags_item = UNBLOCKABLE
 
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG

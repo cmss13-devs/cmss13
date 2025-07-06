@@ -4,6 +4,7 @@
 	hitsound = "swing_hit"
 	flags_atom = FPRINT|QUICK_DRAWABLE
 	var/shield_chance = 0
+	var/shield_projectile_mult = PROJECTILE_BLOCK_PERC_20
 	var/shield_type = SHIELD_NONE
 	var/shield_sound = 'sound/items/block_shield.ogg'
 

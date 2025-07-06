@@ -148,6 +148,7 @@
 				var/obj/item/card/id/id_card = human.get_idcard()
 				var/datum/species/human_species = human.species
 				var/max_health = human_species.total_health != human.maxHealth ? human_species.total_health : human.maxHealth
+				var/is_survivor = FALSE
 				serialized["health"] = floor(player.health / max_health * 100)
 
 				serialized["job"] = id_card?.assignment ? id_card.assignment : human.job
@@ -184,6 +185,7 @@
 
 				if(issurvivorjob(human.job) || (FACTION_SURVIVOR in human.faction_group))
 					survivors += list(serialized)
+					is_survivor = TRUE
 
 				if(add_to_infected)
 					infected += list(serialized)
@@ -220,7 +222,7 @@
 					dutch += list(serialized)
 				else if(human.faction in FACTION_LIST_MARINE)
 					marines += list(serialized)
-				else
+				else if(!is_survivor)
 					humans += list(serialized)
 				continue
 			if(isanimal(player))

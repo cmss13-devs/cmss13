@@ -2143,12 +2143,11 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 /obj/item/weapon/gun/animation_spin(speed, loop_amount, clockwise, sections, angular_offset, pixel_fuzz)
 	var/icon/spin_32 = icon(icon, icon_state)
-	var/icon/current_icon = icon(icon, icon_state)
 	spin_32.Crop(1,1,44,32)
 	spin_32.Scale(38, 32)
 	icon = spin_32
 	. = ..()
-	addtimer(VARSET_CALLBACK(src, icon, current_icon), (speed*loop_amount)-0.8)
+	addtimer(VARSET_CALLBACK(src, icon, initial(icon)), (speed*loop_amount)-0.8)
 
 /obj/item/weapon/gun/ex_act(severity, explosion_direction)
 	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")

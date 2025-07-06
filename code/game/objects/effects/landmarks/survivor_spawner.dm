@@ -260,6 +260,7 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. You and the rest of your team have been smuggling in this sector for years. After nearly running out of fuel running away from a patrol, you just barely managed to coast to a stop at the standard pickup and dropoff zone at the refinery. However, the crew that usually meets you was nowhere to be found, and the colony was dead silent. Not knowing what else to do, you started loading and unloading cargo as usual and setting up a perimeter just in case. Now, after dark, you've started hearing strange noises coming from the colony..."
+	synthetic_story_text = "You are a synthetic that was attached to a CMB team. Your team had received reports of illicit cargo being smuggled through a nearby colony, and while your vessel was patrolling, you spotted them heading for a colony refinery. However, upon landing, your team found only the grisly remains of the colonist. Before you could get back aboard your ship, you were already cut off from it and forced to flee - eventually seperating from your team and being forced into service with the very smugglers you were chasing at the end of a gun."
 	roundstart_damage_min = 0
 	roundstart_damage_max = 0
 	roundstart_damage_times = 0
@@ -269,15 +270,18 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. You and your team have been smuggling in this sector for years. After nearly running out of fuel running away from a patrol, you just barely managed to coast to a stop at the standard pickup and dropoff zone at the refinery. However, the crew that usually meets you was nowhere to be found, and the colony was dead silent. Not knowing what else to do, you ordered the team to start loading and unloading cargo as usual and to set up a perimeter just in case. Now, after dark, you've started hearing strange noises coming from the colony..."
+	synthetic_story_text = "You are a privately owned synthetic at the refinery. Your employer was scheduled to pick up a new shipment of cargo from a group of smugglers, however your colony was overrun by xenomorphs and your employer killed while you awaited them to rendezvous with you. Your contacts were slightly off schedule and seemed to struggle to land - their engines cutting out as they did and forcing them to coast to the dropoff zone. Now, you are stuck with them - at least until rescue arrives, or some other method of getting off of this planet."
 	roundstart_damage_min = 0
 	roundstart_damage_max = 0
 	roundstart_damage_times = 0
 
 /obj/effect/landmark/survivor_spawner/clf_engi/kutjevo
+	synth_equipment = /datum/equipment_preset/synth/survivor/radiation_synth
 	intro_text = list("<h2>You are a CLF member running a smuggling operation!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. You and the rest of your team have been smuggling in this sector for years. After nearly running out of fuel running away from a patrol, you just barely managed to coast to a stop at the standard pickup and dropoff zone at the refinery. However, the crew that usually meets you was nowhere to be found, and the colony was dead silent. Not knowing what else to do, you started loading and unloading cargo as usual and setting up a perimeter just in case. Now, after dark, you've started hearing strange noises coming from the colony..."
+	synthetic_story_text = "You are the synthetic reactor technician at the refinery. Weeks ago, your colony was overrun by alien lifeforms. You had managed to avoid them so far by sticking to the outskirts of the colony, however you saw a ship landing nearby. Assuming that it could be rescue, you pushed towards it, barely avoiding detection. Unfortunately, however, the ones who had landed were no rescue team, and they were stuck in the same predicament as you, now. Despite your attempts to explain, they forced you into service with them at the end of a gun."
 	roundstart_damage_min = 0
 	roundstart_damage_max = 0
 	roundstart_damage_times = 0
@@ -287,6 +291,7 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. You and the rest of your team have been smuggling in this sector for years. After nearly running out of fuel running away from a patrol, you just barely managed to coast to a stop at the standard pickup and dropoff zone at the refinery. However, the crew that usually meets you was nowhere to be found, and the colony was dead silent. Not knowing what else to do, you started loading and unloading cargo as usual and setting up a perimeter just in case. Now, after dark, you've started hearing strange noises coming from the colony..."
+	synthetic_story_text = "You are a synthetic surgeon at the refinery. Weeks ago, the colonial medical bay was overwhelmed with casualties, the majority sporting deep gouged cuts. While you were attempting to stabilize one of your patients, one of the creatures erupted from your chest, and you were forced to leave with the survivors, abandoning the wounded. Seeing a vessel landing near the edge of the colony, you attempted to lead your group to it, however they lost sight of you and you were forced to go alone. Upon arrival, you found yourself face-to-face with a gun, and the option to help, or die."
 	roundstart_damage_min = 0
 	roundstart_damage_max = 0
 	roundstart_damage_times = 0

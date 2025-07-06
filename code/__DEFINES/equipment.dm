@@ -619,6 +619,7 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 
 // Percentage base chance of blocking
 #define SHIELD_CHANCE_NONE 0
+#define SHIELD_CHANCE_VLOW 5
 #define SHIELD_CHANCE_LOW 15
 #define SHIELD_CHANCE_MED 20
 #define SHIELD_CHANCE_MEDHIGH 25

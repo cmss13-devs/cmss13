@@ -207,10 +207,17 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	if(back && istype(back, /obj/item/weapon/shield))
 		var/obj/item/weapon/shield/back_shield = back
-		if(back_shield.blocks_on_back && prob(20))
-			if(!custom_response)
-				visible_message(SPAN_DANGER("<B>The [back_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
-			return TRUE
+		if(back_shield.blocks_on_back)
+			var/appropriate_dir = FALSE
+			var/facing_dir = dir
+			for(var/catchment_dir in facing_nearby_direction(reverse_direction(facing_dir)))
+				if(attacking_direction == catchment_dir)
+					appropriate_dir = TRUE
+					break
+			if(appropriate_dir && prob(back_shield.passive_block))
+				if(!custom_response)
+					visible_message(SPAN_DANGER("<B>The [back_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+				return TRUE
 
 	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
 		if(!custom_response)

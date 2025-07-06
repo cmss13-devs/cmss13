@@ -12,6 +12,9 @@
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	flags_item = TWOHANDED
 
+	shield_type = SHIELD_DIRECTIONAL_TWOHANDS
+	shield_chance = 25
+
 /obj/item/weapon/twohanded/update_icon()
 	return
 
@@ -110,6 +113,9 @@
 	icon = 'icons/mob/hud/human_midnight.dmi'
 	name = "offhand"
 	flags_item = DELONDROP|TWOHANDED|WIELDED|CANTSTRIP
+
+	shield_type = SHIELD_NONE
+	shield_chance = 0
 
 /obj/item/weapon/twohanded/offhand/unwield(mob/user)
 	if(flags_item & WIELDED)
@@ -220,8 +226,8 @@
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 
-	shield_type = SHIELD_ABSOLUTE
-	shield_chance = 33
+	shield_type = SHIELD_ABSOLUTE_TWOHANDS
+	shield_chance = 40
 
 /obj/item/weapon/twohanded/dualsaber/attack(target as mob, mob/living/user as mob)
 	..()
@@ -263,6 +269,7 @@
 	flags_item = TWOHANDED
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
+	shield_chance = 20
 
 /obj/item/weapon/twohanded/lungemine
 	name = "lunge mine"
@@ -278,6 +285,8 @@
 	force_wielded = 1
 	attack_verb = list("whacked")
 	hitsound = "swing_hit"
+	shield_chance = 0
+	shield_type = SHIELD_NONE
 
 	var/detonating = FALSE
 	var/gib_user = TRUE
@@ -372,6 +381,7 @@
 	item_state = "syn_breacher"
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	really_heavy = TRUE
+	shield_chance = 30
 	var/move_delay_addition = 1.5
 
 /obj/item/weapon/twohanded/breacher/synth/pickup(mob/user)

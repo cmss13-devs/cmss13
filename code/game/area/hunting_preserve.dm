@@ -21,11 +21,11 @@
 	icon_state = "north"
 
 /area/yautja_grounds/jungle/north_east
-	name = "\improper Yautja Hunting Grounds Jungle south east"
+	name = "\improper Yautja Hunting Grounds Jungle north east"
 	icon_state = "northeast"
 
 /area/yautja_grounds/jungle/north_west
-	name = "\improper Yautja Hunting Grounds Jungle south west"
+	name = "\improper Yautja Hunting Grounds Jungle north west"
 	icon_state = "northwest"
 
 /area/yautja_grounds/jungle/east

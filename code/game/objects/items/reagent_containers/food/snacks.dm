@@ -2217,7 +2217,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/meatbread
 	name = "meatbread loaf"
-	desc = "The culinary base of every self-respecting eloquen/tg/entleman."
+	desc = "The culinary base of every self-respecting eloquent gentleman."
 	icon_state = "meatbread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/meatbreadslice

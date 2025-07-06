@@ -1,20 +1,3 @@
-/datum/supply_packs/repairkits
-	name = "Firearms Maintenance and Restoration crate (x3 Firearms Kits, x5 Lubricants)"
-	contains = list(
-		/obj/item/stack/repairable/gunkit,
-		/obj/item/stack/repairable/gunkit,
-		/obj/item/stack/repairable/gunkit,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunlube,
-		/obj/item/stack/repairable/gunlube,
-	)
-	cost = 20
-	containertype = /obj/structure/closet/crate/supply
-	containername = "firearms maintenance crate"
-	group = "Weapons"
-
 /datum/supply_packs/m56_hmg
 	name = "M56D Heavy Machine Gun (x1)"
 	contains = list(
@@ -68,17 +51,6 @@
 	cost = 30
 	containertype = /obj/structure/closet/crate/weapon
 	containername = "MOU-53 Break Action Shotgun Crate"
-	group = "Weapons"
-
-/datum/supply_packs/xm51
-	name = "XM51 Breaching Scattergun Crate (x2)"
-	contains = list(
-		/obj/item/storage/box/guncase/xm51,
-		/obj/item/storage/box/guncase/xm51,
-	)
-	cost = 30
-	containertype = /obj/structure/closet/crate/weapon
-	containername = "XM51 Breaching Scattergun Crate"
 	group = "Weapons"
 
 /datum/supply_packs/smartpistol

@@ -23,7 +23,7 @@
 	med_hud_set_armor()
 	med_hud_set_status()
 
-	if(health <= health_threshold_dead || (species.has_organ["brain"] && !has_brain()))
+	if(health <= human_health_threshold_dead || (species.has_organ["brain"] && !has_brain()))
 		death(last_damage_data)
 		blinded = TRUE
 		silent = 0

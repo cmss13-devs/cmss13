@@ -4,7 +4,7 @@
 		return FALSE
 
 	var/mob/living/carbon/affected_mob = affected_atom
-	if(affected_mob.health > affected_mob.health_threshold_crit)
+	if(affected_mob.health > affected_mob.human_health_threshold_crit)
 		qdel(src)
 		return FALSE
 

@@ -1150,6 +1150,10 @@ Additional game mode variables.
 			to_chat(joe_candidate, SPAN_WARNING("You are not whitelisted! You may apply on the forums to be whitelisted as a synth."))
 		return
 
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_wj_spawns))
+		to_chat(joe_candidate, SPAN_WARNING("Working Joes are disabled from spawning!"))
+		return FALSE
+
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_wj_respawns) && (joe_candidate.ckey in joes)) // No joe respawns if already a joe before
 		to_chat(joe_candidate, SPAN_WARNING("Working Joe respawns are disabled!"))
 		return FALSE

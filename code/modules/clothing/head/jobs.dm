@@ -136,12 +136,12 @@
 /obj/item/clothing/head/surgery/white
 	name = "white surgical cap"
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is snow white."
-	icon_state = "surgcap_brown"
+	icon_state = "surgcap_white"
 
 /obj/item/clothing/head/surgery/black
 	name = "grey surgical cap"
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by morticians, this one is a black as coal."
-	icon_state = "surgcap_grey"
+	icon_state = "surgcap_black"
 
 /obj/item/clothing/head/surgery/cmo
 	name = "Chief Medical Officer's surgical cap"

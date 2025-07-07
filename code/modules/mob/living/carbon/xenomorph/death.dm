@@ -136,7 +136,7 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 				if(xeno.client)
 					to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! Go out fighting, kill them all!"))
 					xeno.rejuvenate()
-					xeno.hardcore = TRUE
+					xeno.can_heal = FALSE
 				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [xeno.name].", source = xeno, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)

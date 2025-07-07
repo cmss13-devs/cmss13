@@ -186,7 +186,7 @@
 
 /obj/item/device/internal_implant/rejuv/proc/check_revive(mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER
-	if((M.health - damagedata["damage"]) <= HEALTH_THRESHOLD_CRIT)
+	if((M.health - damagedata["damage"]) <= health_threshold_crit)
 		UnregisterSignal(M, list(
 			COMSIG_MOB_TAKE_DAMAGE,
 			COMSIG_HUMAN_TAKE_DAMAGE,

@@ -46,7 +46,7 @@
 	item_state = "thrallarmor_bone"
 	item_state_slots = list(WEAR_JACKET = "thrallarmor_bone")
 
-///Thrall Greaves & Matieral Types
+///Thrall Greaves & Material Types
 /obj/item/clothing/shoes/yautja/thrall
 	name = "alien greaves"
 	desc = "Greaves made from scraps of cloth and a strange alloy. They feel cold with an alien weight. They have been adapted for compatibility with human equipment."

@@ -178,7 +178,7 @@
 					synthetics += list(serialized)
 
 				if(human.status_flags & XENO_HOST)
-					infected += list(serialized)
+					infected |= list(serialized) // BANDAMARINES TEMP FIX
 
 				if(issurvivorjob(human.job) || (FACTION_SURVIVOR in human.faction_group))
 					survivors += list(serialized)

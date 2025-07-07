@@ -98,10 +98,6 @@
 	)
 	flags_inv_hide = HIDETOPHAIR
 
-/obj/item/clothing/head/surgery/purple
-	name = "purple surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is amaranth purple."
-	icon_state = "surgcap_purple"
 
 /obj/item/clothing/head/surgery/blue
 	name = "blue surgical cap"
@@ -110,7 +106,7 @@
 
 /obj/item/clothing/head/surgery/lightblue
 	name = "light blue surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by nurses, this one is a baby blue."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by nurses, this one is baby blue."
 	icon_state = "surgcap_lightblue"
 
 /obj/item/clothing/head/surgery/green
@@ -118,6 +114,26 @@
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by surgeons, one is jade green."
 	icon_state = "surgcap_green"
 
+/obj/item/clothing/head/surgery/black
+	name = "black surgical cap"
+	desc = "A cap morticians and surgeons wear while making autopsies, rather than during operations. Keeps their hair from dropping and interfering with incision scans. This one is a black as coal."
+	icon_state = "surgcap_black"
+
+/obj/item/clothing/head/surgery/pharmacist
+	name = "pharmacist's surgical cap"
+	desc = "A cap surgeons wear during operations and for pharmacists to protect their hair from chemical mishaps. Keeps their hair from tickling your internal organs. It's white with an orange rim."
+	icon_state = "surgcap_pharm"
+
+
+/obj/item/clothing/head/surgery/cmo
+	name = "Chief Medical Officer's surgical cap"
+	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. It's green with peach stripes to match their green labcoat."
+	icon_state = "surgcap_cmo"
+
+/obj/item/clothing/head/surgery/purple
+	name = "purple surgical cap"
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is amaranth purple."
+	icon_state = "surgcap_purple"
 /obj/item/clothing/head/surgery/olive
 	name = "olive surgical cap"
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is olive green."
@@ -137,16 +153,6 @@
 	name = "white surgical cap"
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is snow white."
 	icon_state = "surgcap_white"
-
-/obj/item/clothing/head/surgery/black
-	name = "grey surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by morticians, this one is a black as coal."
-	icon_state = "surgcap_black"
-
-/obj/item/clothing/head/surgery/cmo
-	name = "Chief Medical Officer's surgical cap"
-	desc = "A striped cap the Chief Medical Officer wears during operations. Keeps their hair from tickling your internal organs. This one matches the CMO's labcoat."
-	icon_state = "surgcap_cmo"
 
 //Detective
 

@@ -139,7 +139,7 @@
 	if(master.stat == DEAD)
 		to_chat(master, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(master.health < master.health_threshold_crit)
+	if(master.health < master.human_health_threshold_crit)
 		to_chat(master, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
 		return
 	if(master.stat)

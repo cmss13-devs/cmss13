@@ -281,7 +281,7 @@
 				P.trigger(target)
 				target.reagents.remove_reagent(R.id, 1)
 				break
-	if(target.health > health_threshold_dead)
+	if(target.health > target.health_threshold_dead)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: [fluff_revive_message]."))
 		msg_admin_niche("[key_name_admin(user)] successfully revived [key_name_admin(target)] with [src].")
 		playsound(get_turf(src), sound_success, 25, 0)

@@ -59,6 +59,15 @@
 	build_type = /obj/effect/alien/resin/special/eggmorph
 	build_icon_state = "eggmorph_preview"
 
+
+/datum/construction_template/xenomorph/plasma_silo
+
+	name = XENO_STRUCTURE_PLASMA_SILO
+	description = "Gives out small bursts of plasma, replenishing the reserves of the sisters around it."
+	build_type = /obj/effect/alien/resin/special/plasma_silo
+	build_icon_state = "recovery_plasma"
+
+
 /datum/construction_template/xenomorph/recovery
 	name = XENO_STRUCTURE_RECOVERY
 	description = "Hastily recovers the strength of sisters resting around it."

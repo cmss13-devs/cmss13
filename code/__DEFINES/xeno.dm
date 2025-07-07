@@ -637,6 +637,7 @@
 #define XENO_STRUCTURE_PYLON "hive pylon"
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
+#define XENO_STRUCTURE_PLASMA_SILO "plasma silo"
 #define XENO_STRUCTURE_NEST  "thick resin nest"
 
 #define RESIN_TRAP_EMPTY 0

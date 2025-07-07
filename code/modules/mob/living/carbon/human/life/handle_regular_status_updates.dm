@@ -38,7 +38,7 @@
 		if(regular_update && ((getOxyLoss() > 50)))
 			apply_effect(3, PARALYZE)
 
-		if((src.species.flags & HAS_HARDCRIT) && HEALTH_THRESHOLD_CRIT > health)
+		if((src.species.flags & HAS_HARDCRIT) && health_threshold_crit > health)
 			var/already_in_crit = FALSE
 			for(var/datum/effects/crit/C in effects_list)
 				already_in_crit = TRUE

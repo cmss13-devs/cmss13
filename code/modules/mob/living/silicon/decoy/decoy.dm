@@ -35,7 +35,7 @@
 	..()
 	if(stat == DEAD)
 		return FALSE
-	if(health <= HEALTH_THRESHOLD_DEAD && stat != DEAD)
+	if(health <= health_threshold_dead && stat != DEAD)
 		death()
 
 /mob/living/silicon/decoy/updatehealth()

@@ -126,9 +126,9 @@
 	icon_state = "labcoat_gen"
 
 /obj/item/clothing/suit/storage/labcoat/chemist
-	name = "Chemist labcoat"
-	desc = "A suit that protects against minor chemical spills. Has an orange stripe on the shoulder."
-	icon_state = "labcoat_chem"
+	name = "Pharmacist labcoat"
+	desc = "A suit that protects against minor chemical spills. Has an orange stripe on the shoulders."
+	icon_state = "labcoat_pharm"
 
 /obj/item/clothing/suit/storage/labcoat/virologist
 	name = "Virologist labcoat"

@@ -1,7 +1,0 @@
-author: "SpypigDev"
-delete-after: True
-changes:
-  - rscadd: "record classification levels, and access restrictions"
-  - ui: "converts the medical records system to tgui"
-  - code_imp: "cleans up a bunch of back end records code"
-  - code_imp: "fixed up and separated access defines for the Almayers database"

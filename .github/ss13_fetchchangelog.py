@@ -69,7 +69,7 @@ def main():
 		return
 
 	with open(os.path.join(args.ymlDir, "{}-{}.yml".format(os.environ["GITHUB_ACTOR"], os.environ["GITHUB_SHA"])), 'w') as file:
-		yaml.dump(pr_data, file, default_flow_style=False)
+		yaml.dump(pr_data, file, default_flow_style=False, allow_unicode=True)
 
 if __name__ == '__main__':
 	main()

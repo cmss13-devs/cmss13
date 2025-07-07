@@ -92,9 +92,7 @@
 
 			attacking_xeno.flick_attack_overlay(src, "slash")
 			var/obj/limb/affecting
-			affecting = get_limb(rand_zone(attacking_xeno.zone_selected, 70))
-			if(!affecting) //No organ, just get a random one
-				affecting = get_limb(rand_zone(null, 0))
+			affecting = get_limb(rand_zone(null, 0)) //Grab a random organ
 			if(!affecting) //Still nothing??
 				affecting = get_limb("chest") //Gotta have a torso?!
 

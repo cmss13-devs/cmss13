@@ -134,14 +134,9 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
 				// Tell the xeno she is the last one, heal her and make her fight to the death
 				if(xeno.client)
-					to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! KILL THEM ALL!"))
+					to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! Go out fighting, kill them all!"))
 					xeno.rejuvenate()
 					xeno.hardcore = TRUE
-					if(isqueen(src))
-						var/mob/living/carbon/xenomorph/queen/queen = owner
-						if(queen.queen_aged == FALSE)
-							queen.queen_aged = TRUE
-							queen.make_combat_effective()
 				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [xeno.name].", source = xeno, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)

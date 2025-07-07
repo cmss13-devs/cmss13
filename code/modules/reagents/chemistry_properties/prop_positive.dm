@@ -710,7 +710,7 @@
 		return
 
 	if(revivetimerid)
-		if(dead.health <= dead.health_threshold_dead) //If the mob got damaged to below the threshold while the timer was ticking then we reset
+		if(dead.health <= dead.human_health_threshold_dead) //If the mob got damaged to below the threshold while the timer was ticking then we reset
 			deltimer(revivetimerid)
 			revivetimerid = null
 		return
@@ -721,7 +721,7 @@
 			property.trigger(affected_mob)
 			affected_mob.reagents.remove_reagent(electrogenetic_reagent.id, 1)
 			break
-	if(dead.health > dead.health_threshold_dead)
+	if(dead.health > dead.human_health_threshold_dead)
 		revivetimerid = addtimer(CALLBACK(dead, TYPE_PROC_REF(/mob/living/carbon/human, handle_revive)), 5 SECONDS, TIMER_STOPPABLE)
 		if(!COOLDOWN_FINISHED(src, revive_notif))
 			return
@@ -732,7 +732,7 @@
 		if(ghost?.client)
 			playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
 			to_chat(ghost, SPAN_BOLDNOTICE("Your heart is struggling to pump! There is a chance you might get up!(Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)"))
-	else if ((potency >= 1) && dead.health <= dead.health_threshold_dead) //heals on all level above 1. This is however, minimal.
+	else if ((potency >= 1) && dead.health <= dead.human_health_threshold_dead) //heals on all level above 1. This is however, minimal.
 		to_chat(dead, SPAN_NOTICE("You feel a faint spark in your chest."))
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BRUTE)
 		dead.apply_damage(-potency * POTENCY_MULTIPLIER_VLOW, BURN)

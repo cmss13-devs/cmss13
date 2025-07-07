@@ -503,7 +503,7 @@
 // If this proc causes issues you can probably disable it until then.
 /mob/living/carbon/update_stat()
 	if(stat != DEAD)
-		if(health <= health_threshold_dead)
+		if(health <= human_health_threshold_dead)
 			death()
 			return
 		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))

@@ -4,10 +4,10 @@
 HEALTH_THRESHOLD_SOFTCRIT 0
 
 ## level of health at which a mob becomes unconscious (crit)
-health_threshold_crit -50
+human_health_threshold_crit -50
 
 ## level of health at which a mob becomes dead
-health_threshold_dead -100
+human_health_threshold_dead -100
 
 ## Determines whether bones can be broken through excessive damage to the organ
 ## 0 means bones can't break, 1 means they can

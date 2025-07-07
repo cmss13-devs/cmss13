@@ -70,7 +70,7 @@
 		return FALSE
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy))
 		for(var/mob/living/carbon/human/closed_mob in get_turf(src))
-			if((closed_mob.stat == DEAD || closed_mob.health < closed_mob.health_threshold_crit) && !closed_mob.get_target_lock(user.faction_group) && !(closed_mob.status_flags & PERMANENTLY_DEAD)&& !(closed_mob.status_flags & PERMANENTLY_DEAD))
+			if((closed_mob.stat == DEAD || closed_mob.health < closed_mob.human_health_threshold_crit) && !closed_mob.get_target_lock(user.faction_group) && !(closed_mob.status_flags & PERMANENTLY_DEAD)&& !(closed_mob.status_flags & PERMANENTLY_DEAD))
 				return FALSE
 	return TRUE
 

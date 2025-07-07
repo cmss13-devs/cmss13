@@ -22,8 +22,8 @@
 		hardcore = TRUE //For WO disposing of corpses
 
 	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/more_crit))
-		health_threshold_dead = -150
-		health_threshold_crit = -100
+		human_health_threshold_dead = -150
+		human_health_threshold_crit = -100
 
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -420,7 +420,7 @@
 	if(href_list["item"])
 		if(!usr.is_mob_incapacitated() && Adjacent(usr))
 			if(href_list["item"] == "id")
-				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(usr.faction_group))
+				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < human_health_threshold_crit) && !get_target_lock(usr.faction_group))
 					to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 					return
 				if(istype(wear_id, /obj/item/card/id/dogtag) && (undefibbable || !skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED)))
@@ -445,7 +445,7 @@
 			if(!usr.action_busy || skillcheck(usr, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				var/slot = href_list["item"]
 				var/obj/item/what = get_item_by_slot(slot)
-				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(usr.faction_group))
+				if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < human_health_threshold_crit) && !get_target_lock(usr.faction_group))
 					if(!MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_strip_essentials) || (what in list(head, wear_suit, w_uniform, shoes)))
 						to_chat(usr, SPAN_WARNING("You can't strip a crit or dead member of another faction!"))
 						return
@@ -457,7 +457,7 @@
 
 	if(href_list["sensor"])
 		if(!usr.action_busy && !usr.is_mob_incapacitated() && Adjacent(usr))
-			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < health_threshold_crit) && !get_target_lock(usr.faction_group))
+			if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (stat == DEAD || health < human_health_threshold_crit) && !get_target_lock(usr.faction_group))
 				to_chat(usr, SPAN_WARNING("You can't tweak the sensors of a crit or dead member of another faction!"))
 				return
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has had their sensors toggled by [key_name(usr)]</font>")

@@ -166,6 +166,44 @@ const xenoSplitter = (members: Array<Observable>) => {
   return squads;
 };
 
+const infectedSplitter = (members: Array<Observable>) => {
+  const tdomeHive: Array<Observable> = [];
+  const primeHive: Array<Observable> = [];
+  const corruptedHive: Array<Observable> = [];
+  const forsakenHive: Array<Observable> = [];
+  const mutatedHive: Array<Observable> = [];
+  const otherHives: Array<Observable> = [];
+  const yautjaHive: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.area_name?.includes('Thunderdome')) {
+      tdomeHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('normal')) {
+      primeHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('corrupted')) {
+      corruptedHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('forsaken')) {
+      forsakenHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('mutated')) {
+      mutatedHive.push(x);
+    } else if (x.embryo_hivenumber?.includes('yautja')) {
+      yautjaHive.push(x);
+    } else {
+      otherHives.push(x);
+    }
+  });
+  const squads = [
+    buildSquadObservable(CastesRu('Thunderdome'), 'xeno', tdomeHive),
+    buildSquadObservable(CastesRu('Prime'), 'xeno', primeHive),
+    buildSquadObservable(CastesRu('Corrupted'), 'green', corruptedHive),
+    buildSquadObservable(CastesRu('Forsaken'), 'grey', forsakenHive),
+    buildSquadObservable(CastesRu('Mutated'), 'pink', mutatedHive),
+    buildSquadObservable(CastesRu('Other'), 'light-grey', otherHives),
+    buildSquadObservable(CastesRu('Yautja'), 'green', yautjaHive),
+  ];
+  return squads;
+};
+
 const marineSplitter = (members: Array<Observable>) => {
   const mutineers: Array<Observable> = [];
   const loyalists: Array<Observable> = [];
@@ -386,8 +424,31 @@ const weyyuSplitter = (members: Array<Observable>) => {
     buildSquadObservable(JobsRu('PMCs'), 'white', pmc),
     buildSquadObservable(JobsRu('Goons'), 'orange', goons),
     buildSquadObservable(JobsRu('Corporate'), 'white', other),
-    buildSquadObservable('W-Y Commando', 'white', wycommando),
+    buildSquadObservable(JobsRu('W-Y Commando'), 'white', wycommando),
     buildSquadObservable(JobsRu('Whiteout'), 'red', whiteout),
+  ];
+  return squads;
+};
+
+const tweSplitter = (members: Array<Observable>) => {
+  const iasf: Array<Observable> = [];
+  const commando: Array<Observable> = [];
+  const other: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.job?.includes('IASF')) {
+      iasf.push(x);
+    } else if (x.job?.includes('RMC')) {
+      commando.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
+  const squads = [
+    buildSquadObservable(JobsRu('Imperial Armed Space Force'), 'Orange', iasf),
+    buildSquadObservable(JobsRu('Royal Marines Commando'), 'red', commando),
+    buildSquadObservable(JobsRu('Other'), 'grey', other),
   ];
   return squads;
 };
@@ -410,6 +471,7 @@ const ObservableContent = () => {
     upp = [],
     clf = [],
     wy = [],
+    hyperdyne = [],
     twe = [],
     freelancer = [],
     mercenary = [],
@@ -454,10 +516,11 @@ const ObservableContent = () => {
         section={survivors}
         title={JobsRu('Survivors')}
       />
-      <ObservableSection
+      <GroupedObservable
         color="red"
         section={infected}
         title={JobsRu('Infected')}
+        splitter={infectedSplitter}
       />
       <ObservableSection
         color="average"
@@ -488,9 +551,15 @@ const ObservableContent = () => {
         splitter={weyyuSplitter}
       />
       <ObservableSection
+        color="orange"
+        section={hyperdyne}
+        title="Hyperdyne Corporation"
+      />
+      <GroupedObservable
         color="red"
         section={twe}
-        title={JobsRu('Royal Marines Commando')}
+        title={JobsRu('Three World Empire')}
+        splitter={tweSplitter}
       />
       <ObservableSection
         color="orange"

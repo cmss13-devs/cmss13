@@ -697,7 +697,7 @@
 		message = copytext_char(message,2) // SS220 EDIT - RU fix
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext_char(message, 1 ,3) // SS220 EDIT - RU fix
+		var/channel_prefix = lowertext(copytext_char(message, 1, 3)) // SS220 EDIT - RU fix
 		message_mode = GLOB.department_radio_keys[channel_prefix]
 
 	if(copytext_char(message,1,2) == ":") // SS220 EDIT - RU fix

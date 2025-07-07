@@ -82,7 +82,7 @@
 		return "headset"
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext_char(message, 1 ,3) // SS220 EDIT - RU fix
+		var/channel_prefix = lowertext(copytext_char(message, 1, 3)) // SS220 EDIT - RU fix
 		channel_prefix = GLOB.department_radio_keys[channel_prefix]
 		if(channel_prefix)
 			return channel_prefix

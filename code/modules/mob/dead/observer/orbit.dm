@@ -58,6 +58,7 @@
 	var/list/upp = list()
 	var/list/clf = list()
 	var/list/wy = list()
+	var/list/hyperdyne = list()
 	var/list/twe = list()
 	var/list/freelancer = list()
 	var/list/contractor = list()
@@ -103,6 +104,11 @@
 		if(isobserver(poi_mob))
 			ghosts += list(serialized)
 			continue
+
+		if(poi_mob.status_flags & XENO_HOST)
+			var/obj/item/alien_embryo/embryo = (locate(/obj/item/alien_embryo) in poi_mob)
+			serialized["embryo_hivenumber"] = embryo.hivenumber
+			infected += list(serialized)
 
 		if(poi_mob.stat == DEAD)
 			dead += list(serialized)
@@ -170,12 +176,17 @@
 				if(human.status_flags & XENO_HOST)
 					infected += list(serialized)
 
+				if(issurvivorjob(human.job) || (FACTION_SURVIVOR in human.faction_group))
+					survivors += list(serialized)
+
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)
 				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
+				else if(human.faction in FACTION_LIST_HYPERDYNE)
+					hyperdyne += list(serialized)
 				else if(human.faction in FACTION_LIST_YAUTJA)
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
@@ -200,8 +211,6 @@
 					dutch += list(serialized)
 				else if(human.faction in FACTION_LIST_MARINE)
 					marines += list(serialized)
-				else if(issurvivorjob(human.job))
-					survivors += list(serialized)
 				else
 					humans += list(serialized)
 				continue
@@ -217,6 +226,7 @@
 	data["upp"] = upp
 	data["clf"] = clf
 	data["wy"] = wy
+	data["hyperdyne"] = hyperdyne
 	data["twe"] = twe
 	data["responders"] = responders
 	data["freelancer"] = freelancer

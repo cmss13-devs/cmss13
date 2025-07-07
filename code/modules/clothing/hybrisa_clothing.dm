@@ -1028,8 +1028,8 @@
 	new /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest(src)
 	new /obj/item/clothing/under/hybrisa/nspa_officer(src)
 	new /obj/item/storage/backpack/security(src)
-	new /obj/item/storage/belt/security(src)
 	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/storage/belt/gun/l54(src)
 
 // Miner Closet
 
@@ -1081,6 +1081,11 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/under/hybrisa/nspa_officer/warm_weather
+	desc = "A short-sleeved olive-green button-up shirt with matching trousers and black webbing straps; a standard NSPA warm weather patrol uniform, issued for use in hotter climates across the Neroid Sector, inspired by historic colonial policing attire for a practical yet sharp look."
+	icon_state = "nspa_police_warm"
+	worn_state = "nspa_police_warm"
 
 // Suits & Armor
 

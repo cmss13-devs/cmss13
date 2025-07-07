@@ -383,14 +383,17 @@
 
 /obj/item/storage/backpack/satchel/blue
 	icon_state = "satchel_blue"
+	item_state = "satchel_blue"
 
 /obj/item/storage/backpack/satchel/black
 	icon_state = "satchel_black"
+	item_state = "satchel_black"
 
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
 	desc = "A trendy-looking satchel."
 	icon_state = "satchel-norm"
+	item_state = "satchel-sec"
 
 /obj/item/storage/backpack/satchel/norm/blue
 	icon_state = "satchel-chem"
@@ -408,41 +411,49 @@
 	name = "industrial satchel"
 	desc = "A tough satchel with extra pockets."
 	icon_state = "satchel-eng"
+	item_state = "satchel-eng"
 
 /obj/item/storage/backpack/satchel/med
 	name = "medical satchel"
 	desc = "A sterile satchel used in medical departments."
 	icon_state = "satchel-med"
+	item_state = "satchel-med"
 
 /obj/item/storage/backpack/satchel/vir
 	name = "virologist satchel"
 	desc = "A sterile satchel with virologist colors."
 	icon_state = "satchel-vir"
+	item_state = "satchel-vir"
 
 /obj/item/storage/backpack/satchel/chem
 	name = "chemist satchel"
 	desc = "A sterile satchel with chemist colors."
 	icon_state = "satchel-chem"
+	item_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/gen
 	name = "geneticist satchel"
 	desc = "A sterile satchel with geneticist colors."
 	icon_state = "satchel-gen"
+	item_state = "satchel-gen"
 
 /obj/item/storage/backpack/satchel/tox
 	name = "scientist satchel"
 	desc = "Useful for holding research materials."
 	icon_state = "satchel-tox"
+	item_state = "satchel-tox"
 
 /obj/item/storage/backpack/satchel/sec //Universal between USCM MPs & Colony, should be split at some point.
 	name = "security satchel"
 	desc = "A robust satchel composed of two drop pouches and a large internal pocket. Made of a stiff fabric, it isn't very comfy to wear."
 	icon_state = "satchel-sec"
+	item_state = "satchel-sec"
 
 /obj/item/storage/backpack/satchel/hyd
 	name = "hydroponics satchel"
 	desc = "A green satchel for plant-related work."
 	icon_state = "satchel_hyd"
+	item_state = "satchel_hyd"
 
 //==========================// MARINE BACKPACKS\\================================\\
 //=======================================================================\\
@@ -905,7 +916,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	unacidable = TRUE
 	explo_proof = TRUE
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
-	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	var/camo_active = FALSE
 	var/camo_alpha = 10
 	var/allow_gun_usage = FALSE
@@ -918,8 +928,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
-	. = ..()
-	if(!(flags_atom & NO_GAMEMODE_SKIN))
+	if(flags_atom & NO_GAMEMODE_SKIN)
 		return
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("urban")
@@ -1072,6 +1081,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "M7X Mark II optical camouflage powerpack"
 	desc = "A heavy-duty powerpack carried by Weyland-Yutani combat androids. Powers the reverse-engineered optical camouflage system utilized by M7X Mark II Apesuit."
 	icon_state = "invis_android_powerpack"
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
@@ -1483,6 +1493,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper V86 Thermal Cloak"
 	desc = "A thermo-optic camouflage cloak commonly used by UPP commando units."
 	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP/commando) //Need to wear UPP commando armor to equip this.
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 	max_storage_space = 21
 	camo_alpha = 10

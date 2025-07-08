@@ -1,10 +1,6 @@
 /// Multiplier for Stun/KD/KO/etc durations in new backend, due to old system being based on life ticks
 #define GLOBAL_STATUS_MULTIPLIER 20 // each in-code unit is worth 20ds of duration
 
-// Crit and Dead thresholds until the mob reaches crit or dies.
-GLOBAL_VAR_INIT(health_threshold_dead, -100)
-GLOBAL_VAR_INIT(health_threshold_crit, -50)
-
 //Some mob defines below
 #define AI_CAMERA_LUMINOSITY 6
 

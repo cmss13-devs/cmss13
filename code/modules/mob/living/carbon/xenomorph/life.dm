@@ -460,6 +460,10 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "no_direction")
+		if(tracked_marker_z_level > loc.z)
+			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "up")
+		if(tracked_marker_z_level < loc.z)
+			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "down")
 
 /mob/living/carbon/xenomorph/updatehealth()
 	if(status_flags & GODMODE)

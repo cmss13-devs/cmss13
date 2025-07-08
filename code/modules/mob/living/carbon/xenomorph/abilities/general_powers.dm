@@ -279,7 +279,7 @@
 		to_chat(X, SPAN_XENOWARNING("Our mind cannot reach that far."))
 		return
 
-	if(!X.hive.living_xeno_queen)
+	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
 		to_chat(X, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))
 		return
 

@@ -150,7 +150,7 @@
 
 /obj/item/clothing/suit/storage/labcoat/officer
 	name = "Chief Medical Officer's labcoat"
-	desc = "A green sleek long labcoat, designed to distinguish a higher ranking medical personnel. Fabric has a better protection against chemical hazards."
+	desc = "A green, sleek, long, and sturdy labcoat, designed to distinguish a higher ranking medical personnel. The fabric provides protection against chemical and biological hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
 	armor_bio = CLOTHING_ARMOR_MEDIUM
@@ -365,13 +365,20 @@
 	)
 
 /obj/item/clothing/suit/storage/labcoat/brown
+	name = "brown labcoat"
+	desc = "A suit that protects against minor chemical spills. This one is brown."
 	icon_state = "labcoat_brown"
 	item_state = "labcoat_brown"
 
 /obj/item/clothing/suit/storage/labcoat/short
+	name = "high-cut labcoat"
+	desc = "A suit that protects against minor chemical spills. This one exposes the legs a little more."
 	icon_state = "labcoat_short"
 	item_state = "labcoat_short"
 
 /obj/item/clothing/suit/storage/labcoat/long
+	name = "low-cut labcoat"
+	desc = "A suit that protects against minor chemical spills. This one drapes down quite low."
 	icon_state = "labcoat_long"
 	item_state = "labcoat_long"
+

@@ -268,6 +268,17 @@
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsgrey")
 
+/obj/item/clothing/under/rank/medical/brown
+	name = "brown medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against biohazards. These are a ruddy brown."
+	icon_state = "scrubsbrown"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
+	)
+	flags_jumpsuit = FALSE
+	item_state_slots = list(WEAR_BODY = "scrubsbrown")
+
 /obj/item/clothing/under/rank/medical/black
 	name = "black medical scrubs"
 	desc = "They're made of a special fiber that provides minor protection against biohazards. Typically worn by morticians and chaplains, these are black as coal."
@@ -311,17 +322,6 @@
 	)
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubspharm")
-
-/obj/item/clothing/under/rank/medical/brown
-	name = "brown medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against biohazards. These are a ruddy brown."
-	icon_state = "scrubsbrown"
-	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
-	item_icons = list(
-		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/medical.dmi',
-	)
-	flags_jumpsuit = FALSE
-	item_state_slots = list(WEAR_BODY = "scrubsbrown")
 
 /obj/item/clothing/under/rank/medical/cmo
 	name = "Chief Medical Officer's medical scrubs"

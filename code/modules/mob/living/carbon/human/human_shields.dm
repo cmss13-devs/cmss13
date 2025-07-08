@@ -56,20 +56,26 @@
 			if(istype(left_hand_weapon, /obj/item/weapon/shield)) // Activable shields
 				left_hand_shield = left_hand_weapon
 
-	if(r_hand && istype(r_hand, /obj/item/weapon))
-		right_hand_weapon = r_hand
-		if(right_hand_weapon.shield_chance && right_hand_weapon.shield_type)
-			right_hand_type = right_hand_weapon.shield_type
-			right_hand_proj_mult = right_hand_weapon.shield_projectile_mult
-			right_hand_base_chance = right_hand_weapon.shield_chance
+	if(!left_hand_shield) // Don't want to be sharing a dedicated shield and a weapon's block, else numbers could theoretically go over 100
+		if(r_hand && istype(r_hand, /obj/item/weapon))
+			right_hand_weapon = r_hand
+			if(right_hand_weapon.shield_chance && right_hand_weapon.shield_type)
+				right_hand_type = right_hand_weapon.shield_type
+				right_hand_proj_mult = right_hand_weapon.shield_projectile_mult
+				right_hand_base_chance = right_hand_weapon.shield_chance
 
-			if(!(right_hand_weapon.flags_item & WIELDED))
-				if(right_hand_type == SHIELD_ABSOLUTE_TWOHANDS)
-					right_hand_base_chance = (right_hand_base_chance / 2)
-				if(left_hand_type == SHIELD_DIRECTIONAL_TWOHANDS)
-					right_hand_base_chance = (right_hand_base_chance / 3)
-			if(istype(right_hand_weapon, /obj/item/weapon/shield)) // Activable shields
-				right_hand_shield = right_hand_weapon
+				if(!(right_hand_weapon.flags_item & WIELDED))
+					if(right_hand_type == SHIELD_ABSOLUTE_TWOHANDS)
+						right_hand_base_chance = (right_hand_base_chance / 2)
+					if(left_hand_type == SHIELD_DIRECTIONAL_TWOHANDS)
+						right_hand_base_chance = (right_hand_base_chance / 3)
+				if(istype(right_hand_weapon, /obj/item/weapon/shield)) // Activable shields
+					right_hand_shield = right_hand_weapon
+	if(right_hand_shield)
+		left_hand_weapon = null
+		left_hand_type = 0
+		left_hand_base_chance = 0
+		left_hand_proj_mult = 0
 
 	/// Here we want to check for absolute first, and then directional. If one shield has absolute and the other doesn't, we still treat the total block as absolute.
 	var/checking_type

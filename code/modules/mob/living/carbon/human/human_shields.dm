@@ -8,18 +8,27 @@
 	if(back && istype(back, /obj/item/weapon/shield))
 		var/obj/item/weapon/shield/back_shield = back
 		if(back_shield.blocks_on_back)
-			var/appropriate_dir = FALSE
-			var/facing_dir = dir
-			for(var/catchment_dir in facing_nearby_direction(reverse_direction(facing_dir)))
-				if(attacking_direction == catchment_dir)
-					appropriate_dir = TRUE
-					break
-			if(appropriate_dir && prob(back_shield.passive_block))
-				if(!custom_response)
-					visible_message(SPAN_DANGER("<B>The [back_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
-				new block_effect(owner_turf)
-				playsound(src, back_shield.shield_sound, 70, vary = TRUE)
-				return TRUE
+			switch(back_shield.shield_type)
+				if(SHIELD_DIRECTIONAL, SHIELD_DIRECTIONAL_TWOHANDS)
+					var/appropriate_dir = FALSE
+					var/facing_dir = dir
+					for(var/catchment_dir in facing_nearby_direction(reverse_direction(facing_dir)))
+						if(attacking_direction == catchment_dir)
+							appropriate_dir = TRUE
+							break
+					if(appropriate_dir && prob(back_shield.passive_block))
+						if(!custom_response)
+							visible_message(SPAN_DANGER("<B>The [back_shield] on [src]'s back blocks [attack_text]!</B>"), null, null, 5)
+						new block_effect(owner_turf)
+						playsound(src, back_shield.shield_sound, 70, vary = TRUE)
+						return TRUE
+				if(SHIELD_ABSOLUTE, SHIELD_ABSOLUTE_TWOHANDS)
+					if(prob(back_shield.passive_block))
+						if(!custom_response)
+							visible_message(SPAN_DANGER("<B>[src] is protected from [attack_text] by the [back_shield]!</B>"), null, null, 5)
+						new block_effect(owner_turf)
+						playsound(src, back_shield.shield_sound, 70, vary = TRUE)
+						return TRUE
 
 	if(attack_text == "the pounce" && wear_suit && wear_suit.flags_inventory & BLOCK_KNOCKDOWN)
 		if(!custom_response)

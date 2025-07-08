@@ -441,7 +441,7 @@ Make sure their actual health updates immediately.*/
 
 	ML.overlays.Cut()
 
-	if(tracked_marker_z_level != loc.z) //different z levels
+	if(!SSmapping.same_z_map(tracked_marker_z_level, loc.z)) //different z levels
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "z_direction")

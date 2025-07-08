@@ -417,6 +417,8 @@ Make sure their actual health updates immediately.*/
 		if(exterior)
 			tracking_atom = exterior
 
+	locator.overlays.Cut()
+
 	if( !SSmapping.same_z_map(tracking_atom.loc.z, loc.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		locator.icon_state = "trackondirect"
 	else
@@ -425,6 +427,10 @@ Make sure their actual health updates immediately.*/
 		if(our_area.fake_zlevel == target_area.fake_zlevel)
 			locator.setDir(Get_Compass_Dir(src, tracking_atom))
 			locator.icon_state = "trackon"
+			if(tracking_atom.loc.z > loc.z)
+				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "up")
+			if(tracking_atom.loc.z < loc.z)
+				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "down")
 		else
 			locator.icon_state = "trackondirect"
 

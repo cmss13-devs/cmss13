@@ -1268,6 +1268,9 @@
 		TRACKER_ESL = /datum/squad/marine/echo,
 		TRACKER_FSL = /datum/squad/marine/cryo
 	)
+
+	hud_used.locate_leader.overlays.Cut()
+
 	switch(tracker_setting)
 		if(TRACKER_SL)
 			if(assigned_squad)
@@ -1281,6 +1284,10 @@
 			else
 				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
 				hud_used.locate_leader.icon_state = "trackon_lz"
+				if(C.loc.z > loc.z)
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
+				if(C.loc.z < loc.z)
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
 			return
 		if(TRACKER_FTL)
 			if(assigned_squad)
@@ -1329,6 +1336,10 @@
 	else
 		hud_used.locate_leader.setDir(Get_Compass_Dir(src, tracking_atom))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
+		if(tracking_atom.loc.z > loc.z)
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
+		if(tracking_atom.loc.z < loc.z)
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
 
 /mob/living/carbon/proc/locate_nearest_nuke()
 	if(!GLOB.bomb_set)

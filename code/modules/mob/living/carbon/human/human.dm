@@ -1337,9 +1337,9 @@
 		hud_used.locate_leader.setDir(Get_Compass_Dir(src, tracking_atom))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
 		if(tracking_atom.loc.z > loc.z)
-			hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "up")
 		if(tracking_atom.loc.z < loc.z)
-			hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "down")
 
 /mob/living/carbon/proc/locate_nearest_nuke()
 	if(!GLOB.bomb_set)

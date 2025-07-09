@@ -10,8 +10,8 @@
 	var/acid_multiplier = 1
 	/// How 'goopy' the acid is. Each value is one stop drop roll.
 	var/acid_goopiness = 1
-	/// If it's been enhanced by a spit combo.
-	var/acid_enhanced = FALSE
+	/// If it's been enhanced by a spit combo to level 2 or by despoiler up to 3
+	var/acid_level = 1
 
 /datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
 	..(A, from, last_dmg_source, zone)
@@ -80,13 +80,22 @@
 		O.update_icon()
 	return ..()
 
-/datum/effects/acid/proc/enhance_acid()
-	duration = 40
-	damage_in_total_human = 50
-	acid_multiplier = 1.5
-	acid_goopiness++
-	acid_enhanced = TRUE
-	mob_icon_state_path = "human_acid_enhanced"
+/datum/effects/acid/proc/enhance_acid(super_acid = FALSE)
+	if(!super_acid && acid_level >= 2 || acid_level >= 3)
+		return
+
+	acid_goopiness ++
+	acid_level ++
+	if(acid_level == 2)
+		duration = 40
+		damage_in_total_human = 50
+		acid_multiplier = 1.5
+		mob_icon_state_path = "human_acid_enhanced"
+	else
+		duration = 80
+		damage_in_total_human = 50
+		mob_icon_state_path = "human_acid_enhanced_super" //need sprite adjustments here
+
 	if(ishuman(affected_atom))
 		var/mob/living/carbon/human/affected_human = affected_atom
 		affected_human.update_effects()

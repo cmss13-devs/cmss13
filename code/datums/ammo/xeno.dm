@@ -219,6 +219,28 @@
 	else
 		PAS.increment_stack_count()
 
+/datum/ammo/xeno/acid/despoiler
+	name = "corrosive Spit"
+	icon_state = "xeno_acid_normal"
+	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
+	accuracy = HIT_ACCURACY_TIER_5
+	accurate_range = 32
+	max_range = 4
+	damage = 35
+	shell_speed = AMMO_SPEED_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_6
+
+/datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/M, obj/projectile/P)
+	. = ..()
+	if(. == FALSE)
+		return
+	var/datum/effects/acid/acid_effect = locate() in M.effects_list
+	if(acid_effect)
+		acid_effect.enhance_acid(super_acid = TRUE)
+		return
+
+	new /datum/effects/acid/(M, P.firer)
+
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"
 	icon_state = "neuro_glob"

@@ -89,7 +89,7 @@
 		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
 		XENO_STRUCTURE_RECOVERY = /datum/construction_template/xenomorph/recovery,
-		XENO_STRUCTURE_PLASMA_SILO = /datum/construction_template/xenomorph/plasma_silo
+		XENO_STRUCTURE_PLASMA_SILO = /datum/construction_template/xenomorph/plasma_tree
 	)
 
 	var/list/list/hive_structures = list() //Stringref list of structures that have been built

@@ -1,7 +1,7 @@
-/obj/effect/alien/resin/special/plasma_silo
+/obj/effect/alien/resin/special/plasma_tree
 
 	name = XENO_STRUCTURE_PLASMA_SILO
-	desc = "A warm, soothing light source that pulsates with a faint hum."
+	desc = "A tree shaped node that has liquid plasma dripping around it."
 	health = 400
 	icon_state =  "recovery_plasma"
 	var/replenish_amount = 75
@@ -9,20 +9,20 @@
 	var/last_replenished
 
 
-/obj/effect/alien/resin/special/plasma_silo/Initialize(mapload, hive_ref)
+/obj/effect/alien/resin/special/plasma_tree/Initialize(mapload, hive_ref)
 	. = ..()
 	update_minimap_icon()
 
-/obj/effect/alien/resin/special/plasma_silo/proc/update_minimap_icon()
+/obj/effect/alien/resin/special/plasma_tree/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
 	SSminimaps.add_marker(src, z, get_minimap_flag_for_faction(linked_hive?.hivenumber), "recovery_node")
 
-/obj/effect/alien/resin/special/plasma_silo/get_examine_text(mob/user)
+/obj/effect/alien/resin/special/plasma_tree/get_examine_text(mob/user)
 	. = ..()
 	if((isxeno(user) || isobserver(user)) && linked_hive)
 		. += "Recovers the [SPAN_BLUE("plasma")] of adjacent Xenomorphs."
 
-/obj/effect/alien/resin/special/plasma_silo/process()
+/obj/effect/alien/resin/special/plasma_tree/process()
 	update_minimap_icon()
 
 

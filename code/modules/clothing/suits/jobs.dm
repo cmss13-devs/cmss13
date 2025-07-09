@@ -136,6 +136,10 @@
 		/obj/item/tool/pen,
 	)
 
+/obj/item/clothing/suit/chef/classic/stain
+	icon_state = "apronchef_stain"
+	item_state = "apronchef_stain"
+
 //Detective
 /obj/item/clothing/suit/storage/CMB/trenchcoat
 	name = "\improper tan trench-coat"
@@ -228,8 +232,6 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
@@ -240,11 +242,19 @@
 	name = "red jacket"
 	desc = "A red forensics technician jacket."
 	icon_state = "forensics_red"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/suit/storage/forensics/blue
 	name = "blue jacket"
 	desc = "A blue forensics technician jacket."
 	icon_state = "forensics_blue"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
@@ -291,7 +301,6 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
 	)
@@ -315,29 +324,53 @@
 	item_state = "hazard_black"
 
 //Lawyer
-/obj/item/clothing/suit/storage/lawyer
+/obj/item/clothing/suit/storage/jacket/marine/lawyer
+	desc = "A snappy dress jacket."
 	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
 	)
-
-/obj/item/clothing/suit/storage/lawyer/bluejacket
-	name = "Blue Suit Jacket"
-	desc = "A snappy dress jacket."
-	icon_state = "suitjacket_blue_open"
-	item_state = "suitjacket_blue_open"
-	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
-
-/obj/item/clothing/suit/storage/lawyer/purpjacket
-	name = "Purple Suit Jacket"
-	desc = "A snappy dress jacket."
-	icon_state = "suitjacket_purp"
-	item_state = "suitjacket_purp"
+	has_buttons = TRUE
 	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket
+	name = "blue suit-jacket"
+	icon_state = "suitjacket_blue"
+	initial_icon_state = "suitjacket_blue"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/purpjacket
+	name = "purple suit-jacket"
+	icon_state = "suitjacket_purp"
+	initial_icon_state = "suitjacket_purp"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/redjacket
+	name = "red suit-jacket"
+	icon_state = "suitjacket_red"
+	initial_icon_state = "suitjacket_red"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/blackjacket
+	name = "black suit-jacket"
+	icon_state = "suitjacket_black"
+	initial_icon_state = "suitjacket_black"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/comedian
+	name = "bright red suit-jacket"
+	icon_state = "suitjacket_comedian"
+	initial_icon_state = "suitjacket_comedian"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/brown
+	name = "brown suit-jacket"
+	icon_state = "suitjacket_brown"
+	initial_icon_state = "suitjacket_brown"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/light_brown
+	name = "light-brown suit-jacket"
+	icon_state = "suitjacket_lightbrown"
+	initial_icon_state = "suitjacket_lightbrown"
 
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker
@@ -371,8 +404,6 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	var/zip_unzip = FALSE
 	actions_types = list(/datum/action/item_action/toggle)
 	item_icons = list(

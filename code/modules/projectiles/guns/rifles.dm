@@ -127,7 +127,6 @@
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip, /obj/item/attachable/stock/rifle/collapsible)
 
 /obj/item/weapon/gun/rifle/m41a/army
-	current_mag = /obj/item/ammo_magazine/rifle/heap/empty
 	starting_attachment_types = list(/obj/item/attachable/reddot, /obj/item/attachable/attached_gun/grenade, /obj/item/attachable/stock/rifle/collapsible)
 
 /obj/item/weapon/gun/rifle/m41a/army/full
@@ -1908,7 +1907,6 @@
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/suppressor, /obj/item/attachable/angledgrip)
 
 /obj/item/weapon/gun/rifle/m4ra/army
-	current_mag = /obj/item/ammo_magazine/rifle/m4ra/heap/empty
 	starting_attachment_types = list(/obj/item/attachable/reddot, /obj/item/attachable/extended_barrel, /obj/item/attachable/angledgrip)
 
 /obj/item/weapon/gun/rifle/m4ra/army/full

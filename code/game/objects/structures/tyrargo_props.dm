@@ -7,8 +7,7 @@
 	anchored = TRUE
 	unslashable = FALSE
 	health = 100
-//	layer = BELOW_MOB_LAYER
-	layer = XENO_HIDING_LAYER
+	layer = ATMOS_PIPE_LAYER
 
 /obj/structure/prop/tyrargo/boards/boards_1
 	icon_state = "boards_2"

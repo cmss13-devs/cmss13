@@ -1,0 +1,80 @@
+2025-07-01:
+  Drathek:
+  - rscadd: Fun facts are now randomized (meaning just mentions first player meeting
+      a minimum is mentioned - not a top stat) and are only displayed for currently
+      connected players
+  TheKillfish:
+  - code_imp: Xeno Spit now uses xeno_cooldown var, like a normal ability.
+  - rscdel: Deletes now-useless vars related to Xeno Spit cooldown
+2025-07-02:
+  Drathek:
+  - balance: Base prae acid spray no longer has a windup
+  FebrezeNinja:
+  - bugfix: Medical's fax machine now properly alerts :m on receipt of priority fax.
+  - bugfix: 'Changes other department fax machines to correspond with #9804'
+  Red-byte3D:
+  - bugfix: Predator taps aka TRAIT_INTERFERENCE now stops xenos from devolving and
+      transmuting, so they dont bug themselves out forever.
+  - imageadd: Radial icons for up and down.
+  - rscadd: Radial menu for ladders, being presented for going up and down has never
+      looked better
+  - bugfix: Praetorian strains now properly get their acid removed
+  - bugfix: Your patients now need a head if you want to attach the anasthetic mask
+      on them
+  Zenith:
+  - bugfix: Fixes a mistake from a previous PR that had overwritten a RMC helmet for
+      the spec.
+  - rscadd: Adds Paramedic survivors to appropriate maps, adds civilian/unique presets
+      to NV, replaced NV "Miner" with "KMCC" preset.
+  ihatethisengine:
+  - balance: HPR doesn't require bipod for full auto, no longer spawns with one
+  matttheficus, harryob:
+  - ui: XM88 custom crosshair is now blue.
+  stalkerino:
+  - bugfix: fixes access for CO surv on solaris ridge and radio
+  tallfission:
+  - bugfix: large general pouch can no longer hold engineering toolkits
+2025-07-03:
+  Zenith00000:
+  - bugfix: fixes sand & mud_corners & edges, stops them from being deleted from explosions.
+  - maptweak: various very minor tweaks to Hybrisa & Soro, with lot's of decal tidying
+      up on Hybrisa specifically.
+  - imageadd: added stain & goo icons, which were previously only var edits, now should
+      work as originally intended.
+2025-07-05:
+  Detective-Google:
+  - bugfix: Fixed the ritual knife onmob sprite.
+  - admin: Logging for BEs is updated
+  stalkerino:
+  - balance: disables cade anchoring on almayer, except sandbags
+  - rscadd: Barricades and handrails now properly layer even when unanchored, and
+      instead pixel shift when unanchored
+  - bugfix: Barricades can no longer be pushed behind a blocking atom/mob
+  - bugfix: Added missing bitfields for AREA_YAUTJA flags
+2025-07-06:
+  Drathek:
+  - bugfix: Fixed a few cases of capitalized channels not working
+  FebrezeNinja:
+  - bugfix: Fixed a typo in the fax sprite sheet
+  - bugfix: Fixed the portable fax machine's identification being random every time
+      it was deployed
+  - bugfix: Fixed the portable fax causing sprites to temporarily morph
+  - qol: Moved the portable fax to the USS Almayer department and gave it a name.
+  Jesters-Ballad:
+  - qol: Spotter's spotting changed to Spec Ability 2 for smoother use of both spotting
+      and cloaking as a spotter.
+  MistChristmas:
+  - ui: Sentry Computer's CRT theme won't scroll away.
+  Red-byte3D:
+  - bugfix: Fixes some brute message being sent to everyone instead of self
+  SRG3124, Thwomper:
+  - rscadd: Added four new jackets for the CC to wear.
+  - bugfix: fixed the RMC Service Obj sprite being different from it's worn sprite
+  Zenith:
+  - bugfix: added both Hyperdyne & the IASF to the follow menu.
+  - imageadd: addeded iasf background icon & swapped around CO squad_menu icon to
+      gold.
+  nyozzl:
+  - rscadd: Added mess tent
+  realforest2001:
+  - rscadd: Infected follow category is now split between hives.

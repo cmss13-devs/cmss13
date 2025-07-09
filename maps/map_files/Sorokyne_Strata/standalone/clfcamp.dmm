@@ -1321,8 +1321,7 @@
 /area/strata/exterior/far_north_outpost)
 "mz" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+	dir = 8
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)

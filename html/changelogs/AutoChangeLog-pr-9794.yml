@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Fun facts are now randomized (meaning just mentions first player meeting a minimum is mentioned - not a top stat) and are only displayed for currently connected players"

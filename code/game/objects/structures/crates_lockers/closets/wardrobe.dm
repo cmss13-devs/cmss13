@@ -249,7 +249,7 @@
 	new /obj/item/clothing/suit/storage/labcoat/pharmacist(src)
 	return
 
-obj/structure/closet/wardrobe/pharmchem
+/obj/structure/closet/wardrobe/pharmchem
 	name = "pharmaceutical chemist wardrobe"
 	icon_state = "orange"
 	icon_closed = "orange"
@@ -267,7 +267,7 @@ obj/structure/closet/wardrobe/pharmchem
 	new /obj/item/clothing/suit/storage/labcoat/pharmacist(src)
 	return
 
-obj/structure/closet/wardrobe/morgue
+/obj/structure/closet/wardrobe/morgue
 	name = "morgue wardrobe"
 	icon_state = "black"
 	icon_closed = "black"

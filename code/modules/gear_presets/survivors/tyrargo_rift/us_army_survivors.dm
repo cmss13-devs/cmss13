@@ -181,6 +181,19 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/v2/blue(new_human), WEAR_EYES)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/keffiyeh/black(new_human), WEAR_FACE)
 
+/datum/equipment_preset/survivor/army/proc/spawn_fluff_item(mob/living/carbon/human/new_human)
+	var/i = rand(1,5)
+	switch(i)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/spirit(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/matches(new_human), WEAR_IN_BACK)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/souto/classic(new_human), WEAR_IN_BACK)
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/space_mountain_wind(new_human), WEAR_IN_BACK)
+		if (4)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/chocolatebar(new_human), WEAR_IN_BACK)
+
 
 
 /datum/equipment_preset/survivor/army/standard
@@ -195,6 +208,7 @@
 	spawn_random_headgear(new_human)
 	add_army_weapon_pistol(new_human)
 	add_army_weapon(new_human)
+	spawn_fluff_item(new_human)
 	spawn_pouch(new_human)
 
 ///*****************************//
@@ -212,8 +226,11 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/insulated(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/army/engi(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/keffiyeh/black(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/v2/blue(new_human), WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack(new_human), WEAR_IN_BACK)
 	add_army_weapon(new_human)
+	spawn_fluff_item(new_human)
 	spawn_pouch(new_human)
 
 /datum/equipment_preset/survivor/army/medic
@@ -228,12 +245,14 @@
 	..()
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto/army/medic(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/keffiyeh/black(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/mgoggles/v2/blue(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/molle/backpack/army(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
+	spawn_fluff_item(new_human)
 	add_army_weapon(new_human)
 	spawn_pouch(new_human)
 
@@ -248,6 +267,7 @@
 /datum/equipment_preset/survivor/army/marksman/load_gear(mob/living/carbon/human/new_human)
 	..()
 	add_army_weapon_pistol(new_human)
+	spawn_fluff_item(new_human)
 	spawn_pouch(new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/black/army(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/big/new_bimex/black(new_human), WEAR_EYES)
@@ -275,6 +295,7 @@
 	spawn_random_headgear(new_human)
 	add_army_weapon(new_human)
 	spawn_pouch(new_human)
+	spawn_fluff_item(new_human)
 
 /datum/equipment_preset/survivor/army/sl
 	name = "Survivor - US Army Squad Leader"
@@ -291,6 +312,7 @@
 	add_army_weapon_pistol(new_human)
 	add_army_weapon(new_human)
 	spawn_pouch(new_human)
+	spawn_fluff_item(new_human)
 
 ///*****************************//
 /// Army Commander ///
@@ -338,6 +360,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/tequila(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/cavalry(new_human), WEAR_HEAD)
 	spawn_pouch(new_human)
+	spawn_fluff_item(new_human)
 
 ///*****************************//
 /// Army Synthetic ///
@@ -372,6 +395,8 @@
 	preset_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 	preset_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded(preset_human), WEAR_IN_BACK)
 	preset_human.equip_to_slot_or_del(new /obj/item/device/radio(preset_human), WEAR_IN_BACK)
+	preset_human.equip_to_slot_or_del(new /obj/item/tool/weldingtool(preset_human), WEAR_IN_BACK)
+	preset_human.equip_to_slot_or_del(new /obj/item/stack/cable_coil(preset_human), WEAR_IN_BACK)
 	preset_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/army/knife(preset_human), WEAR_FEET)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_suture_and_graft(preset_human), WEAR_WAIST)
 	preset_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(preset_human), WEAR_R_HAND)

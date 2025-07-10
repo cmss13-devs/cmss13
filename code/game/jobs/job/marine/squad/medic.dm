@@ -32,11 +32,6 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/medic
 
-AddTimelock(/datum/job/marine/medic, list(
-	JOB_MEDIC_ROLES = 1 HOURS,
-	JOB_SQUAD_ROLES = 1 HOURS
-))
-
 /obj/effect/landmark/start/marine/medic
 	name = JOB_SQUAD_MEDIC
 	icon_state = "medic_spawn"

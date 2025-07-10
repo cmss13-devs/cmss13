@@ -23,10 +23,6 @@
 			total_positions_so_far = positions
 	return positions
 
-AddTimelock(/datum/job/command/intel, list(
-	JOB_SQUAD_ROLES = 5 HOURS
-))
-
 /obj/effect/landmark/start/intel
 	name = JOB_INTEL
 	icon_state = "io_spawn"

@@ -34,10 +34,6 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/spec
 
-AddTimelock(/datum/job/marine/specialist, list(
-	JOB_SQUAD_ROLES = 5 HOURS
-))
-
 /obj/effect/landmark/start/marine/spec
 	name = JOB_SQUAD_SPECIALIST
 	icon_state = "spec_spawn"

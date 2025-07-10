@@ -26,11 +26,6 @@
 	total_positions = 2
 	spawn_positions = 2
 
-// Dropship Roles is both DP, GP and DCC combined to not force people to backtrack
-AddTimelock(/datum/job/command/pilot/cas_pilot, list(
-	JOB_DROPSHIP_ROLES = 2 HOURS
-))
-
 /obj/effect/landmark/start/pilot/cas_pilot
 	name = JOB_CAS_PILOT
 	icon_state = "cas_spawn"

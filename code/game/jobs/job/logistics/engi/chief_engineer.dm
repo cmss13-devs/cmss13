@@ -18,10 +18,6 @@
 /datum/job/logistics/engineering/get_active_player_on_job()
 	return active_chief_engineer
 
-AddTimelock(/datum/job/logistics/engineering, list(
-	JOB_ENGINEER_ROLES = 10 HOURS,
-))
-
 /obj/effect/landmark/start/engineering
 	name = JOB_CHIEF_ENGINEER
 	icon_state = "ce_spawn"

@@ -22,12 +22,6 @@
 /datum/job/civilian/professor/get_active_player_on_job()
 	return active_cmo
 
-AddTimelock(/datum/job/civilian/professor, list(
-	JOB_DOCTOR_ROLES = 10 HOURS,
-	JOB_MEDIC_ROLES = 10 HOURS,
-	JOB_RESEARCH_ROLES = 5 HOURS,
-))
-
 /obj/effect/landmark/start/professor
 	name = JOB_CMO
 	icon_state = "cmo_spawn"

@@ -26,10 +26,6 @@
 		total_positions_so_far = positions
 	return positions
 
-AddTimelock(/datum/job/logistics/otech, list(
-	JOB_ENGINEER_ROLES = 1 HOURS
-))
-
 /obj/effect/landmark/start/otech
 	name = JOB_ORDNANCE_TECH
 	icon_state = "ot_spawn"

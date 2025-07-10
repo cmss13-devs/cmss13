@@ -32,10 +32,6 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/engineer
 
-AddTimelock(/datum/job/marine/engineer, list(
-	JOB_SQUAD_ROLES = 1 HOURS
-))
-
 /obj/effect/landmark/start/marine/engineer
 	name = JOB_SQUAD_ENGI
 	icon_state = "engi_spawn"

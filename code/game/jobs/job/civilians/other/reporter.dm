@@ -35,6 +35,3 @@ This could be the story of the sector! 'Brave Marines responding to dangerous di
 	icon_state = "cc_spawn"
 	job = /datum/job/civilian/reporter
 
-AddTimelock(/datum/job/civilian/reporter, list(
-	JOB_HUMAN_ROLES = 10 HOURS,
-))

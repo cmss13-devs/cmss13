@@ -17,10 +17,6 @@
 	SIGNAL_HANDLER
 	active_warden = null
 
-AddTimelock(/datum/job/command/warden, list(
-	JOB_POLICE_ROLES = 10 HOURS
-))
-
 /obj/effect/landmark/start/warden
 	name = JOB_WARDEN
 	icon_state = "mw_spawn"

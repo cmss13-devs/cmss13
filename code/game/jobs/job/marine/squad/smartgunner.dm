@@ -28,10 +28,6 @@
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/wo/marine/sg
 
-AddTimelock(/datum/job/marine/smartgunner, list(
-	JOB_SQUAD_ROLES = 5 HOURS
-))
-
 /obj/effect/landmark/start/marine/smartgunner
 	name = JOB_SQUAD_SMARTGUN
 	icon_state = "smartgunner_spawn"

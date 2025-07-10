@@ -19,11 +19,6 @@
 /datum/job/command/warrant/get_active_player_on_job()
 	return active_cmp
 
-AddTimelock(/datum/job/command/warrant, list(
-	JOB_POLICE_ROLES = 15 HOURS,
-	JOB_COMMAND_ROLES = 5 HOURS
-))
-
 /obj/effect/landmark/start/warrant
 	name = JOB_CHIEF_POLICE
 	icon_state = "cmp_spawn"

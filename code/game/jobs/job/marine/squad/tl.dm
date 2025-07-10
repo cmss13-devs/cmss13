@@ -11,10 +11,6 @@
 	. = ..()
 	spawning_human.important_radio_channels += JTAC_FREQ
 
-AddTimelock(/datum/job/marine/tl, list(
-	JOB_SQUAD_ROLES = 8 HOURS
-))
-
 /obj/effect/landmark/start/marine/tl
 	name = JOB_SQUAD_TEAM_LEADER
 	icon_state = "tl_spawn"

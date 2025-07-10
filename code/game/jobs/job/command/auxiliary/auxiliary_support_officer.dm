@@ -20,13 +20,6 @@
 /datum/job/command/auxiliary_officer/get_active_player_on_job()
 	return active_auxiliary_officer
 
-AddTimelock(/datum/job/command/auxiliary_officer, list(
-	JOB_SQUAD_ROLES = 5 HOURS,
-	JOB_REQUISITION_ROLES = 5 HOURS,
-	JOB_ENGINEER_ROLES = 5 HOURS,
-	JOB_AUXILIARY_ROLES = 5 HOURS,
-))
-
 /obj/effect/landmark/start/auxiliary_officer
 	name = JOB_AUXILIARY_OFFICER
 	icon_state = "aso_spawn"

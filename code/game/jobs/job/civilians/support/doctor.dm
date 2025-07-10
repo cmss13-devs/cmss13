@@ -51,10 +51,6 @@
 		total_positions_so_far = positions
 	return positions
 
-AddTimelock(/datum/job/civilian/doctor, list(
-	JOB_MEDIC_ROLES = 1 HOURS
-))
-
 /obj/effect/landmark/start/doctor
 	name = JOB_DOCTOR
 	icon_state = "doc_spawn"

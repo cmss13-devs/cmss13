@@ -228,7 +228,7 @@
 	if(owner.mind && owner.skills)
 		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
-	var/damage = armor_damage_reduction(GLOB.marine_bone_break, burn*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+	var/damage = armor_damage_reduction(GLOB.marine_eschar, burn*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
 
 	if(burn_dam > min_eschar_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*2))
 		eschar()

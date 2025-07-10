@@ -4987,7 +4987,7 @@
 	pixel_y = -27
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "anX" = (
 /obj/item/prop{
@@ -5002,7 +5002,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/colony_streets/west)
 "anY" = (
 /obj/structure/prop/rock/black_ground{
@@ -5112,12 +5112,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/vehicles/tank/miltruck/wheeled/cover{
 	dir = 8;
-	pixel_x = 1;
-	pixel_y = -22
+	pixel_y = -23
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt/cement/cement12,
+/turf/closed/wall/strata_ice/dirty,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aon" = (
 /obj/effect/decal/cleanable/dirt,
@@ -9386,7 +9385,7 @@
 	dir = 4
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/colony_streets/west)
 "axZ" = (
 /obj/effect/decal/hybrisa/road/lines1,
@@ -13770,7 +13769,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor/interior/wood/alt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aIX" = (
 /obj/structure/machinery/power/apc/power/east{
@@ -14127,7 +14126,7 @@
 	anchored = 1
 	},
 /obj/structure/blocker/invisible_wall,
-/turf/open/floor/interior/wood/alt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aJL" = (
 /obj/structure/barricade/sandbags/weak_wired{
@@ -15464,7 +15463,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "aMN" = (
 /obj/structure/barricade/sandbags/weak_wired{
@@ -33246,22 +33245,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
-"bxb" = (
-/obj/structure/flora/tree/tyrargo{
-	layer = 5.97
-	},
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -26;
-	pixel_y = 11;
-	layer = 5.96
-	},
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -7;
-	pixel_y = 16;
-	layer = 5.95
-	},
-/turf/open/auto_turf/snow/brown_base/layer3,
-/area/tyrargo/landing_zone_2/no_tunnel)
 "bxc" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -37185,7 +37168,7 @@
 "bFZ" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "bGa" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -39543,7 +39526,7 @@
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bLR" = (
 /obj/structure/blocker/invisible_wall,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bLS" = (
 /obj/structure/barricade/sandbags/weak_wired{
@@ -40402,7 +40385,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bOt" = (
 /obj/item/prop{
@@ -40418,7 +40401,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bOu" = (
 /obj/structure/flora/tree/tyrargo{
@@ -41097,7 +41080,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "bPT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -49667,7 +49650,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt/cement/cement12,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cpz" = (
 /obj/effect/decal/cleanable/dirt,
@@ -50802,7 +50785,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "ctj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -53166,7 +53149,7 @@
 "cBI" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "cBJ" = (
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -55693,7 +55676,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/colony_streets/west)
 "cJY" = (
 /turf/open/gm/river/desert/shallow_edge/northwest,
@@ -106470,8 +106453,8 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/apartment/south_upper)
 "uGc" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate{
-	layer = 4
+/obj/effect/decal/strata_decals/catwalk/prison{
+	icon = 'icons/turf/floors/hybrisafloors.dmi'
 	},
 /turf/open/floor/shiva/radiator_tile2,
 /area/tyrargo/indoors/engineering/ground)
@@ -163181,7 +163164,7 @@ egD
 eeC
 eqU
 eqU
-bxb
+bsC
 bwK
 bwx
 buX
@@ -163362,11 +163345,11 @@ bzC
 bzt
 byY
 ejC
-ejo
-egB
+bvb
+buZ
 eqU
 eqU
-bxb
+bsC
 bke
 bww
 bsJ
@@ -163550,7 +163533,7 @@ eqU
 bsx
 bxC
 eqU
-dky
+bsB
 bwJ
 buX
 bsJ
@@ -164102,7 +164085,7 @@ egB
 eqU
 bxC
 eqU
-bxb
+bsC
 bwM
 bsE
 bsJ
@@ -177840,7 +177823,7 @@ cqG
 aoL
 aoC
 aon
-aon
+cpy
 aof
 cph
 cph

@@ -111,7 +111,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "aau" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/tyrargo/indoors/security/ground)
 "aav" = (
@@ -131,7 +133,9 @@
 /turf/open/floor/strata/green3,
 /area/tyrargo/indoors/market/ground)
 "aaA" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/strata/green4/west,
 /area/tyrargo/indoors/market/ground)
 "aaB" = (
@@ -230,6 +234,7 @@
 "aaW" = (
 /obj/structure/surface/rack,
 /obj/item/engi_upgrade_kit,
+/obj/structure/machinery/light/double,
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/tyrargo/indoors/engineering/ground)
 "aaX" = (
@@ -395,11 +400,12 @@
 /turf/open/floor/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "abv" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/item/paper/crumpled{
 	pixel_y = -3
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
 	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/tyrargo/indoors/engineering/ground)
@@ -472,9 +478,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/ground)
 "abG" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/largecrate/random/barrel/yellow{
 	pixel_x = 3;
 	pixel_y = 3
@@ -483,7 +486,11 @@
 	pixel_x = 4;
 	pixel_y = 11
 	},
-/turf/open/floor/prison/darkyellow2,
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/closed/wall/hybrisa/colony/engineering,
 /area/tyrargo/indoors/engineering/ground)
 "abH" = (
 /turf/open/floor/corsat/green,
@@ -2759,7 +2766,8 @@
 	icon_state = "trash_16"
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -3131,7 +3139,8 @@
 "aiH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1/west,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -3685,7 +3694,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor_full,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -6481,7 +6491,8 @@
 "arc" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/gararge/ground)
@@ -8416,7 +8427,9 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
 "avh" = (
@@ -8757,7 +8770,8 @@
 	pixel_y = 15
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
@@ -9843,11 +9857,7 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ayR" = (
 /obj/effect/decal/hybrisa/road/roadmiddle,
-/obj/item/trash/cigbutt{
-	pixel_x = -13;
-	pixel_y = 9
-	},
-/turf/open/asphalt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayS" = (
 /obj/structure/desertdam/decals/road_edge{
@@ -10252,7 +10262,9 @@
 	pixel_y = -4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "azP" = (
@@ -10873,7 +10885,8 @@
 	pixel_y = 4
 	},
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/ground)
@@ -11157,7 +11170,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /obj/effect/landmark/corpsespawner/hybrisa/civilian,
 /turf/open/floor/prison/green/east,
@@ -11183,7 +11197,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/folding_barricade,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
@@ -11213,7 +11228,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_container/blood/empty,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/green/west,
 /area/tyrargo/indoors/admin/ground)
@@ -11445,7 +11461,9 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/admin/upper)
 "aDf" = (
@@ -11956,7 +11974,9 @@
 /area/tyrargo/indoors/security/ground)
 "aEv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/darkred2/west,
 /area/tyrargo/indoors/security/ground)
 "aEw" = (
@@ -12124,7 +12144,9 @@
 /area/tyrargo/indoors/market/ground)
 "aES" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/strata/green3,
 /area/tyrargo/indoors/market/ground)
 "aET" = (
@@ -12541,7 +12563,8 @@
 	color = "#b7b8b2"
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/darkred2/west,
 /area/tyrargo/indoors/security/ground)
@@ -18330,7 +18353,8 @@
 /area/tyrargo/landing_zone_2)
 "aSn" = (
 /obj/structure/prop/vehicles/tank/miltruck/base{
-	dir = 8
+	dir = 8;
+	pixel_y = 2
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -18376,7 +18400,7 @@
 	pixel_x = 1
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/landing_zone_2)
 "aSs" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -18392,7 +18416,7 @@
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/landing_zone_2)
 "aSt" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -24059,7 +24083,7 @@
 	dir = 8
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/landing_zone_2)
 "bcR" = (
 /obj/structure/flora/tree/tyrargo_small/tree_stump{
@@ -25020,7 +25044,7 @@
 	pixel_x = -4
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass,
+/turf/closed/wall/strata_ice/jungle,
 /area/tyrargo/landing_zone_2)
 "beV" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25061,7 +25085,7 @@
 	dir = 8
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/landing_zone_2)
 "beZ" = (
 /obj/structure/reagent_dispensers/fueltank/spacecraft,
@@ -25085,7 +25109,7 @@
 	anchored = 1
 	},
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass,
+/turf/closed/wall/strata_ice/jungle,
 /area/tyrargo/landing_zone_2)
 "bfb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -32234,7 +32258,7 @@
 "bul" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass,
+/turf/closed/wall/strata_ice/jungle,
 /area/tyrargo/landing_zone_2)
 "bum" = (
 /obj/structure/blocker/invisible_wall,
@@ -41949,9 +41973,6 @@
 "bRH" = (
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/east_trench)
-"bRI" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
-/area/tyrargo/outdoors/colony_exterior/west)
 "bRJ" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1
@@ -47285,7 +47306,8 @@
 "chk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/darkred2/west,
 /area/tyrargo/indoors/security/ground)
@@ -47406,7 +47428,9 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/tyrargo/outdoors/outskirts/east)
 "chD" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1/north,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "chE" = (
@@ -47437,7 +47461,9 @@
 /area/tyrargo/indoors/sewer_treatment/ground)
 "chL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "chM" = (
@@ -47778,14 +47804,16 @@
 "ciT" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1/east,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "ciU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/darkred2/west,
 /area/tyrargo/indoors/security/ground)
@@ -47887,7 +47915,8 @@
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "cjj" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -47901,7 +47930,8 @@
 "cjl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor1,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -47983,7 +48013,8 @@
 /area/tyrargo/outdoors/colony_exterior/south_west)
 "cjy" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -48622,7 +48653,9 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "clm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall)
 "cln" = (
@@ -48785,13 +48818,11 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/west)
-"clK" = (
-/turf/closed/wall/strata_outpost,
-/area/tyrargo/indoors/engineering/ground)
 "clL" = (
 /obj/structure/closet/bodybag,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/carpet/carpetgreendeco,
 /area/tyrargo/indoors/apartment/south_ground)
@@ -49032,7 +49063,8 @@
 /area/tyrargo/oob)
 "cmE" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
@@ -49060,7 +49092,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_exterior/west)
 "cmK" = (
-/obj/structure/window/framed/strata/reinforced,
+/obj/structure/window/framed/hybrisa/colony/engineering,
 /turf/open/floor/plating,
 /area/tyrargo/indoors/engineering/ground)
 "cmL" = (
@@ -49221,7 +49253,7 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "cnq" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/tyrargo/indoors/engineering/ground)
 "cnr" = (
 /obj/structure/blocker/invisible_wall,
@@ -49253,10 +49285,7 @@
 /turf/open/asphalt/cement/cement2,
 /area/tyrargo/outdoors/colony_streets/west)
 "cnx" = (
-/turf/closed/wall/r_wall/bunker/floodgate{
-	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
-	name = "bunker superdense wall"
-	},
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/tyrargo/outdoors/colony_exterior/west)
 "cny" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -49563,7 +49592,8 @@
 "coC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/apartment/north_ground)
@@ -49578,7 +49608,9 @@
 /area/tyrargo/indoors/apartment/north_ground)
 "coF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_ground)
 "coG" = (
@@ -49725,8 +49757,9 @@
 /turf/open/asphalt/cement/cement2,
 /area/tyrargo/outdoors/colony_exterior/west)
 "coW" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
 	},
 /turf/open/floor/prison/ramptop/north,
 /area/tyrargo/indoors/engineering/ground)
@@ -49960,7 +49993,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/indoors/engineering/ground)
 "cpL" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/double{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellow2,
@@ -51131,7 +51164,9 @@
 "ctF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "ctG" = (
@@ -51302,10 +51337,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2/no_tunnel)
 "cuh" = (
-/turf/closed/wall/r_wall/bunker/floodgate{
-	desc = "A huge chunk of reinforced metal used to separate rooms. This one appears to be specially reinforced.";
-	name = "bunker superdense wall"
-	},
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "cui" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -51343,7 +51375,8 @@
 /area/tyrargo/outdoors/colony_streets/north)
 "cun" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/ground)
@@ -51354,7 +51387,8 @@
 "cup" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/floor_plate,
@@ -51561,7 +51595,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/bar/ground)
@@ -51574,7 +51609,8 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cvc" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
@@ -51966,7 +52002,8 @@
 "cwu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
@@ -52032,7 +52069,8 @@
 "cwF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
@@ -52073,7 +52111,9 @@
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/tyrargo/indoors/comms/ground)
 "cwM" = (
@@ -52421,7 +52461,8 @@
 "cxK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/tilelightbeige,
 /area/tyrargo/indoors/admin/ground)
@@ -52980,7 +53021,8 @@
 "czM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -53026,7 +53068,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/sewer_treatment/upper)
 "czW" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/tyrargo/indoors/sewer_treatment/upper)
 "czX" = (
@@ -53065,7 +53109,8 @@
 /area/tyrargo/indoors/sewer_treatment/upper)
 "cAe" = (
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -53123,7 +53168,8 @@
 /area/tyrargo/indoors/sewer_treatment/upper)
 "cAs" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -53136,7 +53182,8 @@
 /area/tyrargo/indoors/sewer_treatment/upper)
 "cAv" = (
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/darkbrown2/west,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -53234,7 +53281,8 @@
 /area/tyrargo/indoors/sewer_treatment/upper)
 "cAO" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/darkbrown2,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -53259,7 +53307,8 @@
 /area/tyrargo/outdoors/walkway_access/sewer_apart)
 "cAU" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -53273,7 +53322,8 @@
 /area/tyrargo/outdoors/walkway_access/sewer_apart)
 "cAX" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -53398,7 +53448,7 @@
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/indoors/engineering/upper)
 "cBB" = (
-/obj/structure/window/framed/strata/reinforced,
+/obj/structure/window/framed/hybrisa/colony/engineering,
 /turf/open/floor/plating,
 /area/tyrargo/indoors/engineering/upper)
 "cBC" = (
@@ -53440,7 +53490,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_upper)
@@ -53526,8 +53577,9 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cBY" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
 	},
 /turf/open/floor/prison/yellow/northwest,
 /area/tyrargo/indoors/engineering/upper)
@@ -53672,8 +53724,9 @@
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "cCy" = (
-/obj/structure/machinery/light{
-	dir = 4
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
 	},
 /turf/open/floor/prison/yellow/east,
 /area/tyrargo/indoors/engineering/upper)
@@ -53848,7 +53901,8 @@
 /area/tyrargo/indoors/apartment/south_upper)
 "cDn" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/tyrargo/indoors/apartment/south_upper)
@@ -53924,7 +53978,9 @@
 /area/tyrargo/indoors/apartment/north_upper)
 "cDG" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/tyrargo/indoors/apartment/north_upper)
 "cDH" = (
@@ -54168,7 +54224,8 @@
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "cEx" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/yellow/west,
 /area/tyrargo/indoors/engineering/upper)
@@ -54200,7 +54257,9 @@
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "cED" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "cEE" = (
@@ -54492,7 +54551,9 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/bar/upper)
 "cFX" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/bar/upper)
@@ -54500,7 +54561,9 @@
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/bar/upper)
 "cFZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/bar/upper)
@@ -54604,14 +54667,16 @@
 /area/tyrargo/indoors/admin/upper/external)
 "cGy" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/admin/upper)
 "cGz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/admin/upper)
@@ -54648,13 +54713,15 @@
 /area/tyrargo/indoors/bar/upper)
 "cGI" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/wood/greywood,
 /area/tyrargo/indoors/bar/upper)
 "cGJ" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/wood/blackwood,
@@ -54781,7 +54848,8 @@
 /area/tyrargo/oob)
 "cHh" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/upper)
@@ -54805,7 +54873,8 @@
 /area/tyrargo/indoors/admin/upper)
 "cHm" = (
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/upper)
@@ -55457,7 +55526,9 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
 "cJb" = (
@@ -57031,7 +57102,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cMN" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/hybrisa/colony/engineering,
 /area/tyrargo/indoors/engineering/ground)
 "cMO" = (
 /obj/structure/barricade/sandbags/weak_wired{
@@ -57227,7 +57298,8 @@
 /area/tyrargo/outdoors/colony_streets/east)
 "cNq" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /obj/structure/bed/chair/comfy/hybrisa/black{
 	dir = 1;
@@ -57267,7 +57339,8 @@
 /area/tyrargo/oob)
 "cNu" = (
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /obj/structure/bed/chair/comfy/hybrisa/black{
 	dir = 1;
@@ -57369,7 +57442,9 @@
 /area/tyrargo/oob)
 "cNL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/green/southwest,
 /area/tyrargo/indoors/mall)
 "cNM" = (
@@ -57541,7 +57616,9 @@
 "cOn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/strata/red2,
 /area/tyrargo/indoors/mall)
 "cOo" = (
@@ -57946,7 +58023,9 @@
 /area/tyrargo/indoors/mall)
 "cPq" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cPr" = (
@@ -58194,7 +58273,8 @@
 	pixel_y = -12
 	},
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall)
@@ -58395,7 +58475,8 @@
 "cQY" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	pixel_y = 17
+	pixel_y = 17;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/tyrargo/indoors/mall)
@@ -58826,7 +58907,8 @@
 /area/tyrargo/indoors/mall/upper)
 "cSx" = (
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /obj/structure/flora/pottedplant{
 	desc = "It is made of Fiberbush(tm). It contains asbestos. Studies say that greenery calms the mind due to some sort evolved mechanism in the brain. This plant is not calming.";
@@ -58839,7 +58921,8 @@
 /area/tyrargo/indoors/mall/upper)
 "cSy" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
 /area/tyrargo/indoors/mall/upper)
@@ -59146,7 +59229,8 @@
 /area/tyrargo/indoors/mall/upper)
 "cTg" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/wood/darkerwood,
@@ -59221,7 +59305,9 @@
 /area/tyrargo/indoors/mall/upper)
 "cTp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/strata/orange_tile,
 /area/tyrargo/indoors/mall/upper)
 "cTq" = (
@@ -59231,7 +59317,9 @@
 /area/tyrargo/indoors/mall/upper)
 "cTr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/strata/cyan2,
 /area/tyrargo/indoors/mall/upper)
 "cTs" = (
@@ -59417,7 +59505,8 @@
 /area/tyrargo/outdoors/outskirts/east)
 "cTU" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
@@ -59467,7 +59556,8 @@
 "cUb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
@@ -59631,7 +59721,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/mall/upper/external)
 "cUC" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/blue,
 /area/tyrargo/indoors/mall/upper)
 "cUD" = (
@@ -59700,7 +59792,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cUM" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall/upper)
 "cUN" = (
@@ -61635,7 +61729,9 @@
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/tyrargo/underground/sewer/south)
 "cZZ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /obj/effect/blocker/water,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/power_substation)
@@ -61741,7 +61837,8 @@
 /area/tyrargo/underground/sewer/south)
 "dan" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/floor_plate,
@@ -69544,7 +69641,9 @@
 /obj/structure/machinery/cm_vending/sorted/boozeomat{
 	pixel_x = -5
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373"
+	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/underground/mall)
 "dtJ" = (
@@ -70133,7 +70232,7 @@
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
 "dvf" = (
-/turf/closed/wall/strata_outpost,
+/turf/closed/wall/hybrisa/colony/engineering,
 /area/tyrargo/underground/engineering)
 "dvg" = (
 /turf/open/floor/strata/floor3,
@@ -71395,7 +71494,8 @@
 "dyr" = (
 /obj/structure/closet/hybrisa,
 /obj/item/clothing/under/swimsuit/red,
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373";
 	dir = 1
 	},
 /turf/open/floor/hybrisa/wood/redwood,
@@ -74163,7 +74263,9 @@
 /turf/open/floor/light/off/red,
 /area/tyrargo/indoors/mall)
 "dFb" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/green/southeast,
 /area/tyrargo/indoors/mall)
 "dFc" = (
@@ -75608,7 +75710,9 @@
 /area/tyrargo/underground/mall)
 "dIw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/underground/mall)
 "dIx" = (
@@ -76005,7 +76109,8 @@
 "dJA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/underground/mall)
@@ -76157,7 +76262,9 @@
 /area/tyrargo/underground/apartment)
 "dJU" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/tile/tilered,
 /area/tyrargo/underground/mall)
 "dJV" = (
@@ -76347,7 +76454,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dKt" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dKu" = (
@@ -76481,7 +76590,8 @@
 /area/tyrargo/underground/apartment)
 "dKN" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/tilered,
 /area/tyrargo/underground/mall)
@@ -77338,7 +77448,8 @@
 	pixel_x = 32
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
@@ -77995,7 +78106,8 @@
 "dOe" = (
 /obj/structure/machinery/light{
 	dir = 8;
-	pixel_y = 17
+	pixel_y = 17;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
@@ -78009,7 +78121,9 @@
 /area/tyrargo/indoors/mall)
 "dOh" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "dOi" = (
@@ -79034,7 +79148,8 @@
 /area/tyrargo/underground/engineering)
 "dQX" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/bar/ground)
@@ -79685,7 +79800,9 @@
 /area/tyrargo/underground/mall)
 "dSA" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/blue,
 /area/tyrargo/underground/mall)
 "dSB" = (
@@ -80069,7 +80186,8 @@
 "dTB" = (
 /obj/structure/device/broken_piano,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/carpet/pink,
 /area/tyrargo/indoors/apartment/south_ground)
@@ -80621,11 +80739,13 @@
 /turf/open/floor/prison/darkyellow2,
 /area/tyrargo/underground/sewer/south)
 "dVa" = (
-/obj/structure/machinery/light,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9";
 	pixel_y = 3;
 	pixel_x = -5
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373"
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/mall)
@@ -80640,12 +80760,14 @@
 /area/tyrargo/underground/apartment)
 "dVd" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
 "dVe" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373";
 	dir = 8
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
@@ -80654,15 +80776,17 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/underground/mall)
 "dVg" = (
-/obj/structure/machinery/light{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373";
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/underground/mall)
 "dVh" = (
@@ -80677,18 +80801,22 @@
 /area/tyrargo/underground/apartment)
 "dVi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373"
+	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/underground/mall)
 "dVj" = (
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /obj/effect/blocker/water,
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/underground/mall)
 "dVk" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373";
 	dir = 1
 	},
 /turf/open/floor/hybrisa/wood/redwood,
@@ -81178,7 +81306,9 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/mall)
 "dWB" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373"
+	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/tyrargo/underground/mall)
 "dWC" = (
@@ -81299,16 +81429,18 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/underground/mall)
 "dWQ" = (
-/obj/structure/machinery/light{
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373";
 	dir = 1
 	},
 /turf/open/floor/hybrisa/tile/tileblackcheckered,
 /area/tyrargo/underground/mall)
 "dWR" = (
-/obj/structure/machinery/light{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373";
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tileblackcheckered,
 /area/tyrargo/underground/mall)
 "dWS" = (
@@ -81337,10 +81469,12 @@
 /turf/open/floor/hybrisa/tile/tileblackcheckered,
 /area/tyrargo/underground/mall)
 "dWW" = (
-/obj/structure/machinery/light,
 /obj/item/trash/cigbutt{
 	pixel_x = -9;
 	pixel_y = 4
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#FF7373"
 	},
 /turf/open/floor/hybrisa/tile/tileblackcheckered,
 /area/tyrargo/underground/mall)
@@ -97700,7 +97834,9 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/admin/upper/external)
 "eLR" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/tyrargo/indoors/admin/upper)
 "eLS" = (
@@ -99351,6 +99487,143 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_exterior/north)
+"eQo" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
+/area/tyrargo/oob)
+"eQp" = (
+/obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/turf/open/floor/plating,
+/area/tyrargo/underground/engineering)
+"eQq" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -24;
+	pixel_y = 2;
+	layer = 5.94
+	},
+/obj/structure/flora/tree/tyrargo{
+	pixel_x = -6;
+	pixel_y = 6;
+	layer = 5.93
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/tyrargo/oob)
+"eQr" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -24;
+	pixel_y = 2;
+	layer = 5.94
+	},
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -8;
+	pixel_y = 9;
+	layer = 5.93
+	},
+/turf/closed/wall/strata_ice/jungle,
+/area/tyrargo/oob)
+"eQs" = (
+/obj/structure/prop/vehicles/tank/miltruck/base{
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/cargo_container/kelland/left,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/landing_zone_2)
+"eQt" = (
+/obj/structure/cargo_container/kelland/right,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/landing_zone_2)
+"eQu" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/strata_ice/rock,
+/area/tyrargo/landing_zone_2)
+"eQv" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/largecrate/empty/case/double,
+/turf/closed/wall/strata_ice/rock,
+/area/tyrargo/landing_zone_2)
+"eQw" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/largecrate/random/case/small,
+/turf/closed/wall/strata_ice/rock,
+/area/tyrargo/landing_zone_2)
+"eQx" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -14;
+	pixel_y = 3;
+	layer = 5.97
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/outdoors/outskirts/east)
+"eQy" = (
+/obj/structure/desertdam/decals/road_edge{
+	pixel_y = -3;
+	pixel_x = -12
+	},
+/obj/structure/prop/vehicles/tank/miltruck/base{
+	dir = 4;
+	pixel_y = -24;
+	pixel_x = 1
+	},
+/obj/item/prop{
+	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
+	icon_state = "M56D";
+	name = "M56D heavy machine gun nest";
+	pixel_x = 6;
+	pixel_y = 17;
+	anchored = 1;
+	layer = 3.03
+	},
+/obj/item/prop{
+	desc = "Empty and useless now.";
+	icon = 'icons/obj/items/casings.dmi';
+	icon_state = "cartridge_10_1";
+	name = "spent casings";
+	dir = 6;
+	pixel_y = 7;
+	pixel_x = 8
+	},
+/turf/closed/wall/strata_ice/rock,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eQz" = (
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/item/ammo_magazine/m56d{
+	pixel_y = 9;
+	current_rounds = 2;
+	layer = 3.03
+	},
+/turf/closed/wall/strata_ice/rock,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eQA" = (
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/tyrargo/indoors/engineering/upper)
+"eQB" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall/upper)
+"eQC" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/outdoors/walkway_access/museum_central)
+"eQD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall/upper)
+"eQE" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
+/area/tyrargo/indoors/engineering/upper)
+"eQF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/plating,
+/area/tyrargo/indoors/mall/upper)
 "eRa" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -99369,7 +99642,8 @@
 	pixel_x = 1
 	},
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -99976,7 +100250,9 @@
 /area/tyrargo/indoors/saipan)
 "gbl" = (
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/gararge/ground)
 "ged" = (
@@ -100016,7 +100292,8 @@
 	dir = 8
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/north,
 /area/tyrargo/indoors/apartment/north_ground)
@@ -100848,7 +101125,8 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /obj/item/ammo_magazine/rifle/lmg/heap{
 	current_rounds = 0
@@ -102177,7 +102455,8 @@
 "kUK" = (
 /obj/structure/bed/chair/wood/wings,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/carpet/pink,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -102571,9 +102850,8 @@
 /area/tyrargo/oob)
 "lPX" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/platform/metal/hybrisa/metalplatform1/north,
-/turf/open_space,
-/area/tyrargo/outdoors/colony_streets/north)
+/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/area/tyrargo/indoors/mall/upper/external)
 "lQs" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	icon_state = "sandbag_0";
@@ -102957,7 +103235,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/carpet/carpetpatternblue,
 /area/tyrargo/indoors/apartment/south_upper)
@@ -104399,7 +104678,8 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "oRj" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /obj/effect/landmark/ammo_spawn/m41a_ammo_med,
 /turf/open/floor/almayer/plating_striped/north,
@@ -104520,7 +104800,9 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
 "phm" = (
@@ -106545,7 +106827,8 @@
 "tfw" = (
 /obj/structure/dispenser,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/metal/zbrownfloor_corner/west,
 /area/tyrargo/indoors/sewer_treatment/ground)
@@ -106589,7 +106872,8 @@
 	dir = 1
 	},
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/tyrargo/indoors/apartment/south_upper)
@@ -107461,7 +107745,8 @@
 	},
 /obj/structure/barricade/deployable,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/tile/tilegreen,
 /area/tyrargo/indoors/apartment/south_ground)
@@ -107627,11 +107912,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/west)
-"uYD" = (
-/obj/structure/platform/metal/hybrisa/metalplatform1,
-/obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/west,
-/turf/open_space,
-/area/tyrargo/outdoors/colony_streets/north)
 "uZh" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8";
@@ -108916,7 +109196,8 @@
 	pixel_x = 6
 	},
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/south_ground)
@@ -108995,7 +109276,8 @@
 "xdp" = (
 /obj/structure/surface/table/woodentable/poor,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/hybrisa/wood,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -132640,7 +132922,7 @@ bsw
 bsw
 bsw
 bsw
-bta
+eQo
 bsw
 bsw
 bsw
@@ -132797,7 +133079,7 @@ dXQ
 edz
 dXE
 cNk
-bta
+eQo
 dvf
 dvf
 dvf
@@ -132825,7 +133107,7 @@ dvf
 dvf
 dvf
 dvf
-bta
+eQo
 bsw
 bsw
 bsw
@@ -132981,7 +133263,7 @@ dXQ
 dDR
 dXE
 cNk
-bta
+eQo
 dvf
 dQY
 dQU
@@ -133165,7 +133447,7 @@ dXR
 edz
 dDO
 cNk
-bta
+eQo
 dPz
 dPL
 dPL
@@ -133349,7 +133631,7 @@ dXR
 edz
 cNn
 cNk
-bta
+eQo
 dDp
 dzQ
 dzE
@@ -133533,7 +133815,7 @@ cNA
 edz
 dXF
 cNk
-bta
+eQo
 dDp
 dzR
 dzF
@@ -133717,7 +133999,7 @@ dXS
 dDS
 dDP
 dDH
-bta
+eQo
 dPz
 dQa
 dQa
@@ -133734,7 +134016,7 @@ dzG
 dzG
 dPE
 dPy
-dvr
+eQp
 dyy
 dPt
 dRz
@@ -133901,7 +134183,7 @@ dDU
 dDT
 dXG
 dDI
-bta
+eQo
 dPz
 dQu
 dzH
@@ -134085,7 +134367,7 @@ dXT
 bgQ
 cNr
 dDJ
-bta
+eQo
 dvf
 dDe
 dzI
@@ -134105,7 +134387,7 @@ dzj
 dvf
 dvf
 dvf
-dvr
+eQp
 dvf
 dvp
 dwC
@@ -134481,7 +134763,7 @@ dwo
 dvO
 dOQ
 dvf
-bta
+eQo
 bta
 bta
 bta
@@ -134665,7 +134947,7 @@ dwp
 dvP
 dOR
 dOG
-bta
+eQo
 dWt
 dWt
 dWt
@@ -134849,7 +135131,7 @@ dOX
 dvK
 dvv
 dOH
-bta
+eQo
 dWt
 dWt
 dWt
@@ -135033,7 +135315,7 @@ dwp
 dvQ
 dOR
 dOI
-bta
+eQo
 dWt
 dWS
 dua
@@ -135217,7 +135499,7 @@ dwr
 dvR
 dvw
 dvf
-bta
+eQo
 dtm
 duu
 dua
@@ -135381,9 +135663,9 @@ dPU
 dPP
 dCx
 dvf
-bta
-bta
-bta
+eQo
+eQo
+eQo
 dvf
 dAJ
 dPV
@@ -135401,7 +135683,7 @@ dwo
 dvS
 dOS
 dvf
-bta
+eQo
 dtm
 duu
 dua
@@ -135585,7 +135867,7 @@ dwp
 dvT
 dvu
 dOJ
-bta
+eQo
 dtm
 dtm
 dtm
@@ -135769,7 +136051,7 @@ dOX
 dOU
 dOT
 dOK
-bta
+eQo
 dtm
 dtm
 dtm
@@ -135953,7 +136235,7 @@ dwp
 dvU
 dvu
 dOL
-bta
+eQo
 bgC
 dtr
 bgC
@@ -136137,7 +136419,7 @@ dwr
 dvR
 dvt
 dvf
-bta
+eQo
 dtm
 dWt
 dWt
@@ -155974,7 +156256,7 @@ aVH
 dVu
 dVs
 bsy
-bsC
+bKX
 buU
 eqU
 eqU
@@ -156158,8 +156440,8 @@ bKe
 rwL
 dkK
 dkJ
-bsz
-bsB
+eqU
+beh
 buV
 eqU
 eqU
@@ -156284,7 +156566,7 @@ bta
 dly
 dly
 dly
-adH
+eqU
 bsy
 bsA
 eqU
@@ -156468,7 +156750,7 @@ cug
 cug
 aQt
 dly
-adH
+eqU
 bsz
 bsy
 eqU
@@ -156527,7 +156809,7 @@ eJc
 eJc
 dkG
 dkC
-aVf
+eqU
 aUT
 bsy
 bvb
@@ -156614,8 +156896,8 @@ exN
 btv
 btv
 exM
-btr
-bsN
+eQu
+eQs
 cfd
 erJ
 cug
@@ -156652,7 +156934,7 @@ bsJ
 cug
 aQt
 dly
-adH
+eqU
 bsy
 bsz
 eqU
@@ -156798,8 +157080,8 @@ exN
 btv
 btv
 exM
-btr
-bsN
+eQv
+eQt
 bsN
 bsN
 bsL
@@ -156836,7 +157118,7 @@ bsJ
 bsJ
 cug
 dly
-adH
+eqU
 bsA
 bsy
 eqU
@@ -156982,7 +157264,7 @@ btv
 btv
 btv
 btv
-exL
+eQw
 btr
 btr
 btr
@@ -157020,7 +157302,7 @@ bsJ
 bhp
 cug
 dly
-adH
+eqU
 bsA
 bsA
 eqU
@@ -157204,7 +157486,7 @@ dcA
 bsJ
 cug
 dlz
-adH
+eqU
 bsy
 bsx
 eqU
@@ -157388,7 +157670,7 @@ erU
 bsJ
 cug
 dlz
-adH
+eqU
 bsz
 bsy
 eqU
@@ -157572,7 +157854,7 @@ bsJ
 bsX
 cug
 dly
-aQt
+eqU
 bsy
 bsz
 eqU
@@ -157756,7 +158038,7 @@ bsJ
 bsJ
 cug
 dly
-aQt
+eqU
 bsA
 bsy
 eqU
@@ -157940,7 +158222,7 @@ bsJ
 bsJ
 cug
 dly
-aQt
+eqU
 bsA
 bsA
 eqU
@@ -158124,7 +158406,7 @@ bsJ
 bsJ
 cug
 dly
-aQt
+eqU
 bsy
 bsA
 eqU
@@ -158308,7 +158590,7 @@ bsJ
 bsJ
 cug
 dlz
-adH
+eqU
 bsz
 bsy
 eqU
@@ -158492,7 +158774,7 @@ bsJ
 sZl
 cug
 dlz
-adH
+eqU
 bsy
 bsz
 eqU
@@ -158676,7 +158958,7 @@ bsJ
 bsJ
 cug
 dly
-adH
+eqU
 bsA
 bsy
 eqU
@@ -158860,7 +159142,7 @@ btf
 bsJ
 cug
 dly
-adH
+eqU
 bsA
 bsA
 eqU
@@ -159044,7 +159326,7 @@ bsJ
 bsJ
 cug
 dly
-adH
+eqU
 bsy
 bsx
 eqU
@@ -159228,7 +159510,7 @@ bsX
 bsJ
 cug
 dlz
-adH
+eqU
 bsz
 bsy
 eqU
@@ -159412,7 +159694,7 @@ bsJ
 bsJ
 cug
 dlz
-adH
+eqU
 bsy
 bsz
 eqU
@@ -159596,7 +159878,7 @@ bsJ
 bsJ
 cyc
 dlz
-adH
+eqU
 bsA
 bsy
 eqU
@@ -159780,7 +160062,7 @@ bsJ
 bsJ
 cug
 dlz
-adH
+eqU
 bsA
 bsA
 eqU
@@ -159964,7 +160246,7 @@ bsJ
 bsJ
 bad
 dly
-adH
+eqU
 bsy
 bsA
 eqU
@@ -160148,7 +160430,7 @@ exA
 btb
 erJ
 dly
-adH
+eqU
 bsz
 bsy
 eqU
@@ -160332,7 +160614,7 @@ erM
 exp
 asz
 dlz
-adH
+eqU
 bsy
 bsz
 eqU
@@ -160516,7 +160798,7 @@ exC
 exq
 dkq
 cwR
-adH
+eqU
 bsA
 bsy
 eqU
@@ -160700,7 +160982,7 @@ exD
 agd
 bKI
 dlz
-adH
+eqU
 bsA
 bsA
 eqU
@@ -160884,7 +161166,7 @@ exE
 exs
 dks
 dly
-adH
+eqU
 bsy
 bsx
 eqU
@@ -161068,7 +161350,7 @@ bsN
 ext
 cLI
 dly
-adH
+eqU
 bsz
 bsy
 eqU
@@ -161252,7 +161534,7 @@ bsN
 exu
 exk
 dlz
-adH
+eqU
 bsy
 bsz
 eqU
@@ -161436,7 +161718,7 @@ exC
 asG
 dkr
 dlz
-adH
+eqU
 bsA
 bsy
 eqU
@@ -161620,7 +161902,7 @@ awu
 exv
 dkt
 dly
-adH
+eqU
 bsA
 bsA
 eqU
@@ -161804,7 +162086,7 @@ exF
 asH
 exl
 dlz
-adH
+eqU
 bsy
 bsA
 eqU
@@ -161988,7 +162270,7 @@ axA
 asI
 asA
 dlz
-adH
+eqU
 bsz
 bsy
 eqU
@@ -162172,7 +162454,7 @@ exG
 exw
 exm
 dly
-adH
+eqU
 bsy
 bsz
 eqU
@@ -162356,7 +162638,7 @@ erW
 exx
 exn
 dlz
-adH
+eqU
 bsA
 bsy
 eqU
@@ -162540,7 +162822,7 @@ exH
 exy
 exn
 dlz
-adH
+eqU
 bsA
 bsA
 eqU
@@ -162724,7 +163006,7 @@ age
 exz
 exo
 dly
-adH
+eqU
 bsy
 bsA
 eqU
@@ -163828,7 +164110,7 @@ bsJ
 bsX
 cug
 dly
-adH
+eqU
 bsA
 bsx
 eqU
@@ -164012,7 +164294,7 @@ buF
 bsJ
 cug
 dly
-adH
+eqU
 bsA
 bsy
 eqU
@@ -164196,7 +164478,7 @@ buF
 bsT
 cug
 dly
-adH
+eqU
 bsy
 bsz
 eqU
@@ -164380,7 +164662,7 @@ buF
 btd
 cug
 dlz
-adH
+eqU
 bsz
 bsy
 eqU
@@ -164564,7 +164846,7 @@ buF
 btd
 dkw
 dly
-adH
+eqU
 bsz
 bsA
 eqU
@@ -164748,7 +165030,7 @@ bti
 dcz
 cug
 dly
-adH
+eqU
 bsy
 bsA
 eqU
@@ -164932,8 +165214,8 @@ bsJ
 bsJ
 cug
 dly
-adH
-bsA
+eqU
+eQq
 bsy
 eqU
 eqU
@@ -165116,7 +165398,7 @@ bdq
 bsX
 cug
 dlz
-adH
+eqU
 bsA
 bsz
 eqU
@@ -165300,7 +165582,7 @@ bdq
 bsX
 cug
 dlz
-adH
+eqU
 bsy
 bsy
 eqU
@@ -165484,8 +165766,8 @@ aCa
 bsJ
 cug
 dlz
-adH
-bsz
+eqU
+blX
 bsA
 eqU
 eqU
@@ -165668,7 +165950,7 @@ aCa
 bsJ
 cug
 dly
-adH
+eqU
 bsy
 bsx
 eqU
@@ -165852,8 +166134,8 @@ aCa
 bsJ
 aQt
 dly
-adH
-bsA
+eqU
+eQq
 bsy
 eqU
 eqU
@@ -166036,8 +166318,8 @@ bsO
 aQt
 aQt
 dly
-adH
-bsA
+eqU
+eQq
 bsz
 eqU
 eqU
@@ -166220,8 +166502,8 @@ bsO
 aQt
 aQt
 dly
-adH
-bsy
+eqU
+eQr
 bsy
 eqU
 eqU
@@ -176058,8 +176340,8 @@ bwE
 bwE
 bwE
 bFm
-bBp
-bAi
+bBo
+eQx
 aPG
 eqU
 ero
@@ -176241,7 +176523,7 @@ bwE
 bmk
 bFm
 byA
-bCC
+bBo
 bCq
 aPG
 bOk
@@ -176792,7 +177074,7 @@ cHL
 cnx
 cnx
 cnx
-bRI
+cnF
 bOM
 bPx
 anm
@@ -178809,7 +179091,7 @@ cnb
 cMN
 cMN
 oMv
-clK
+cMN
 acf
 cMN
 cMN
@@ -178818,7 +179100,7 @@ cMN
 abI
 abB
 idN
-clK
+cMN
 cnq
 cnq
 cmJ
@@ -179003,7 +179285,7 @@ cnG
 abB
 abB
 pYq
-clK
+cMN
 cnq
 cnq
 cmJ
@@ -179188,9 +179470,9 @@ mbh
 gBd
 dnN
 abv
-clK
 cMN
-cMN
+cnq
+cnq
 aku
 aks
 ckP
@@ -179373,7 +179655,7 @@ jAh
 acV
 tSv
 abq
-clK
+cMN
 cMN
 cMN
 akt
@@ -179558,7 +179840,7 @@ acV
 acV
 aCI
 abn
-clK
+cMN
 cMN
 cMN
 cMN
@@ -180097,7 +180379,7 @@ cmK
 srb
 srb
 srb
-clK
+cMN
 acj
 akv
 aca
@@ -180281,7 +180563,7 @@ cmK
 srb
 srb
 srb
-clK
+cMN
 dRu
 cnI
 abS
@@ -180293,8 +180575,8 @@ rlZ
 rlZ
 rlZ
 abs
-clK
-clK
+cMN
+cMN
 abj
 cms
 cmk
@@ -180465,19 +180747,19 @@ cmK
 srb
 srb
 srb
-clK
+cMN
 ack
 abO
 abO
 abO
 abO
 abM
-clK
+cMN
 cnt
 abz
 cmK
 cMN
-clK
+cMN
 abl
 cmA
 gaY
@@ -180645,18 +180927,18 @@ acJ
 dFl
 acJ
 wzA
-clK
+cMN
 srb
 srb
 srb
-clK
-bta
-bta
-bta
-bta
-bta
-bta
-clK
+cMN
+eQo
+eQo
+eQo
+eQo
+eQo
+eQo
+cMN
 ade
 cjt
 cjs
@@ -180839,8 +181121,8 @@ lXq
 iUX
 jUm
 cnY
-clK
-clK
+cMN
+cMN
 abD
 abA
 xNG
@@ -188179,7 +188461,7 @@ azw
 azk
 cse
 hFN
-cro
+eQy
 cro
 cqQ
 efV
@@ -188363,7 +188645,7 @@ eOS
 csE
 bXQ
 cqC
-crz
+eQz
 cqC
 aPs
 cev
@@ -222968,19 +223250,19 @@ cWp
 cWp
 cWp
 cWp
-cBz
-cBz
+eQA
+eQA
 cBB
-cBz
-cBz
+eQA
+eQA
 cWp
 cWp
-cBz
-cBz
+eQA
+eQA
 cBB
 cBB
-cBz
-cBz
+eQA
+eQA
 cWp
 cWp
 cWp
@@ -223151,29 +223433,29 @@ cWp
 cWp
 cWp
 cWp
-cBz
-cBz
+eQA
+eQA
 aet
 aex
 aet
-cBz
-cBz
-cBz
-cBz
+eQA
+eQE
+eQE
+eQA
 amv
 amz
 amx
 amv
-cBz
-cBz
+eQA
+eQA
 cWp
 cWp
 cWp
-cBz
-cBz
-cBz
-cBz
-cBz
+eQA
+eQA
+eQA
+eQA
+eQA
 cWq
 cWq
 cWq
@@ -223333,9 +223615,9 @@ asU
 asQ
 asN
 cEI
-cBz
-cBz
-cBz
+eQA
+eQA
+eQA
 cCD
 lnr
 lnr
@@ -223349,11 +223631,11 @@ lnr
 lnr
 lnr
 amt
-cBz
-cBz
-cBz
-cBz
-cBz
+eQA
+eQA
+eQA
+eQA
+eQA
 cBY
 alR
 alN
@@ -223516,8 +223798,8 @@ cEX
 asV
 asR
 asO
-cBz
-cBz
+eQA
+eQA
 cCD
 cEx
 pbo
@@ -223533,7 +223815,7 @@ cBN
 cBN
 cBN
 cBE
-cBz
+eQA
 cCD
 lnr
 aeq
@@ -223700,7 +223982,7 @@ cFe
 dkk
 asP
 asP
-cBz
+eQA
 amO
 cCE
 cCs
@@ -223884,7 +224166,7 @@ cFf
 cEX
 asS
 asP
-cBz
+eQA
 amP
 cCh
 cBN
@@ -224092,7 +224374,7 @@ cBF
 ame
 alV
 aeh
-cBz
+eQA
 eMr
 cWr
 cWr
@@ -224620,7 +224902,7 @@ cEX
 asP
 djv
 asP
-cBz
+eQA
 amS
 cCE
 cEy
@@ -224644,7 +224926,7 @@ cCs
 cBL
 cBN
 alQ
-cBz
+eQA
 eMs
 cWn
 cWn
@@ -224804,7 +225086,7 @@ cEY
 cER
 cER
 asP
-cBz
+eQA
 amT
 cEz
 aDq
@@ -224821,14 +225103,14 @@ cBz
 aef
 cBL
 aeb
-cBz
-cBz
+eQA
+eQA
 amq
 amk
 cBL
 alW
 cBE
-cBz
+eQA
 eMs
 cWn
 cWn
@@ -224988,9 +225270,9 @@ cFf
 cEX
 asP
 cER
-cBz
-cBz
-cBz
+eQA
+eQA
+eQA
 cCE
 cBL
 aeE
@@ -225006,13 +225288,13 @@ aeg
 cBN
 aeb
 adZ
-cBz
+eQA
 cCy
 aml
 mIH
 mIH
 cBF
-cBz
+eQA
 eMs
 cWn
 cWn
@@ -225173,8 +225455,8 @@ cEY
 cEL
 cEL
 cEL
-cBz
-cBz
+eQA
+eQA
 cCE
 cEt
 aec
@@ -225190,13 +225472,13 @@ pbo
 cBZ
 aeb
 aea
-cBz
-cBz
-cBz
-cBz
+eQA
+eQA
+eQA
+eQA
 cBB
 cBB
-cBz
+eQA
 eMs
 cWn
 cWn
@@ -225358,7 +225640,7 @@ cUW
 cUW
 cEY
 cER
-cBz
+eQA
 cEz
 cCy
 aDq
@@ -225374,7 +225656,7 @@ aeh
 cCy
 cBF
 ams
-cBz
+eQA
 cER
 cEL
 cEL
@@ -225542,9 +225824,9 @@ cUW
 cUW
 cUW
 cEX
-cBz
-cBz
-cBz
+eQA
+eQA
+eQA
 cBB
 cBB
 cEo
@@ -225555,10 +225837,10 @@ cDO
 jkB
 cBB
 cBB
-cBz
-cBz
-cBz
-cBz
+eQA
+eQA
+eQA
+eQA
 eMs
 cWn
 cWn
@@ -231438,7 +231720,7 @@ jGO
 cWU
 cWU
 uNi
-uYD
+cUa
 cDU
 cDp
 cDs
@@ -232350,12 +232632,12 @@ cUl
 cUP
 cUE
 cMv
-cOx
+cXP
 cUl
 aay
 cRu
 cRu
-cRu
+eQF
 cUh
 cRD
 cMv
@@ -232544,7 +232826,7 @@ cRu
 cOx
 cMv
 cOx
-cOa
+eQD
 cOa
 cOa
 cOw
@@ -233266,7 +233548,7 @@ cWA
 cMv
 cOw
 cVj
-cOK
+cXU
 cOx
 cUH
 cOx
@@ -233644,7 +233926,7 @@ cOx
 cOK
 cNO
 cOx
-cOx
+cXP
 cOK
 cNO
 cOw
@@ -233653,7 +233935,7 @@ cNN
 cOa
 cOa
 cNN
-cNN
+eQB
 cTq
 cTn
 cMV
@@ -234007,7 +234289,7 @@ cUT
 cUK
 cUA
 cOw
-cOw
+cXT
 cOw
 cMv
 aay
@@ -234018,7 +234300,7 @@ cMv
 cTW
 cTP
 cOa
-cNN
+eQB
 cNN
 cNN
 cOx
@@ -235121,7 +235403,7 @@ cOx
 cMv
 cOx
 cTQ
-cOK
+cXU
 cOa
 cTx
 uZE
@@ -236042,7 +236324,7 @@ cWu
 cDU
 cDs
 cDs
-cDs
+eQC
 cDd
 cWt
 cWo
@@ -236960,7 +237242,7 @@ cWo
 cWo
 cWu
 cDU
-cDs
+eQC
 cDs
 cEV
 cDd

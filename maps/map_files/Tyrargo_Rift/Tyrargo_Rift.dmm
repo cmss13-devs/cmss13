@@ -8236,6 +8236,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/east)
 "auK" = (
@@ -9402,6 +9403,7 @@
 	pixel_x = 5;
 	pixel_y = -3
 	},
+/obj/item/stack/barbed_wire,
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors/colony_streets/east)
 "axJ" = (
@@ -9432,6 +9434,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -8
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "axO" = (
@@ -9750,7 +9753,7 @@
 	pixel_y = 24
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/mask/gas/swat,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayE" = (
@@ -9760,6 +9763,7 @@
 	pixel_y = 22;
 	pixel_x = 2
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayF" = (
@@ -9768,6 +9772,7 @@
 	icon_state = "trash_14";
 	pixel_y = 12
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayG" = (
@@ -9789,6 +9794,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayJ" = (
@@ -9868,6 +9874,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayT" = (
@@ -9939,12 +9946,14 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azc" = (
@@ -9953,6 +9962,7 @@
 	dir = 1;
 	pixel_y = -1
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/kutjevo/tan/alt_edge,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azd" = (
@@ -10045,6 +10055,7 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azn" = (
@@ -10056,6 +10067,7 @@
 	pixel_x = -14;
 	pixel_y = -2
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azo" = (
@@ -10170,14 +10182,15 @@
 	light_power = 2;
 	pixel_y = 26
 	},
-/turf/open/asphalt/cement,
-/area/tyrargo/outdoors/colony_streets/north_east)
-"azC" = (
 /obj/structure/closet/bodybag{
 	pixel_x = -2;
 	pixel_y = 10
 	},
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"azC" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azD" = (
@@ -13665,9 +13678,7 @@
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 4
 	},
-/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
-	dir = 4
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/east)
 "aIs" = (
@@ -13820,6 +13831,7 @@
 	name = "\improper Up semiotic";
 	desc = "Semiotic Standard denoting the nearby presence of something going upwards."
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/hybrisa/street/roadlines3,
 /area/tyrargo/indoors/museum_storage/ground)
 "aIN" = (
@@ -13842,12 +13854,14 @@
 	name = "\improper Up semiotic";
 	desc = "Semiotic Standard denoting the nearby presence of something going upwards."
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/hybrisa/street/roadlines3,
 /area/tyrargo/indoors/museum_storage/ground)
 "aIP" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
 "aIQ" = (
@@ -29449,6 +29463,7 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/outdoors/colony_streets/east)
 "bol" = (
@@ -41973,6 +41988,13 @@
 "bRH" = (
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/east_trench)
+"bRI" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/east)
 "bRJ" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1
@@ -48559,6 +48581,7 @@
 /area/tyrargo/outdoors/colony_streets/east)
 "clb" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/east)
 "clc" = (
@@ -48584,6 +48607,7 @@
 	icon_state = "stop_decal5"
 	},
 /obj/structure/machinery/light/spot,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
 "clf" = (
@@ -48818,6 +48842,11 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/west)
+"clK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/east)
 "clL" = (
 /obj/structure/closet/bodybag,
 /obj/structure/machinery/light{
@@ -50462,6 +50491,7 @@
 	pixel_y = -1;
 	pixel_x = 16
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "crq" = (
@@ -50549,6 +50579,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	pixel_y = -12;
 	pixel_x = 16
+	},
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
@@ -53632,6 +53665,7 @@
 	icon_state = "stop_decal5";
 	pixel_x = -2
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
 "cCk" = (
@@ -57170,6 +57204,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -8
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "cMX" = (
@@ -57294,6 +57329,7 @@
 	dir = 5;
 	pixel_x = -15
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "cNq" = (
@@ -57772,12 +57808,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/mall/upper)
-"cOL" = (
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0
-	},
-/turf/open/floor/prison,
-/area/tyrargo/indoors/mall)
 "cOM" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
@@ -57819,12 +57849,6 @@
 	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
-"cOQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic,
-/obj/item/prop/colony/used_flare,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/indoors/mall)
 "cOR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -57852,6 +57876,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall)
 "cOV" = (
@@ -57864,6 +57889,7 @@
 	icon_state = "trash_16";
 	pixel_y = 15
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "cOX" = (
@@ -57903,6 +57929,7 @@
 /area/tyrargo/indoors/mall)
 "cPc" = (
 /obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/indoors/mall)
 "cPd" = (
@@ -58558,6 +58585,7 @@
 /area/tyrargo/indoors/mall)
 "cRn" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/tyrargo/indoors/mall)
 "cRo" = (
@@ -66385,6 +66413,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "dlH" = (
@@ -66437,15 +66466,12 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors/colony_streets/east)
 "dlM" = (
-/obj/structure/prop/hybrisa/misc/fire/firebarrel{
-	pixel_y = 3;
-	pixel_x = 6
-	},
+/obj/structure/prop/hybrisa/misc/firebarreloff,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "dlN" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stack/barbed_wire,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/east)
 "dlO" = (
@@ -66454,6 +66480,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sandbags,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/east)
 "dlP" = (
@@ -66889,9 +66916,7 @@
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmJ" = (
 /obj/effect/decal/hybrisa/road/roadmiddle,
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmK" = (
@@ -66910,6 +66935,7 @@
 	light_color = "#96DED1";
 	light_range = 1
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmM" = (
@@ -67039,11 +67065,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/tyrargo/watchtower,
 /turf/open/hybrisa/street/sidewalk,
-/area/tyrargo/outdoors/colony_streets/north_east)
-"dng" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/vehicles/Meridian/Cop,
-/turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dnh" = (
 /obj/structure/barricade/handrail/hybrisa/road/wood/blue{
@@ -67771,6 +67792,7 @@
 	pixel_y = 9;
 	pixel_x = -4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dpg" = (
@@ -67814,6 +67836,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dpl" = (
@@ -68120,14 +68143,11 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dpK" = (
-/obj/structure/barricade/handrail/hybrisa/road/wood/blue{
-	pixel_x = 1;
-	pixel_y = 3
-	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dpL" = (
-/obj/structure/barricade/handrail/hybrisa/road/wood/blue,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dpM" = (
@@ -68381,6 +68401,7 @@
 	pixel_y = -32;
 	pixel_x = -15
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
 "dqg" = (
@@ -74273,8 +74294,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/indoors/mall)
 "dFd" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/asphalt/cement,
-/area/tyrargo/indoors/mall)
+/area/tyrargo/outdoors/colony_streets/east)
 "dFe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/wooden{
@@ -78123,6 +78145,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
 	light_color = "#A7DBB6"
+	},
+/obj/item/ammo_magazine/rifle/heap{
+	current_rounds = 0
 	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
@@ -86206,6 +86231,7 @@
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal5"
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
 "eii" = (
@@ -86249,6 +86275,7 @@
 	dir = 8;
 	icon_state = "stop_decal5"
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
 "eim" = (
@@ -97701,22 +97728,22 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "eLt" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "vent5"
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_x = -1
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/prison/green/southwest,
 /area/tyrargo/indoors/security/upper)
 "eLu" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "vent3"
-	},
-/turf/open/floor/almayer_hull,
-/area/tyrargo/indoors/market/upper)
-"eLv" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "solarpanel1"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/market/upper)
+"eLv" = (
+/obj/effect/decal/heavy_cable/node_s_w,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/market/upper)
 "eLw" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
@@ -97727,15 +97754,25 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/sewer_treatment/upper/external)
 "eLx" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble,
-/turf/open/floor/almayer_hull,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/prison/cell_stripe/west,
 /area/tyrargo/indoors/market/upper)
 "eLy" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "solarpanel2";
-	pixel_y = -9
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
-/turf/open/floor/almayer_hull,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/market/upper)
 "eLz" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
@@ -97884,17 +97921,14 @@
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "solarpanel1"
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/comms/upper)
 "eMb" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
 /area/tyrargo/indoors/gararge/upper/external)
 "eMc" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "solarpanel2";
-	pixel_y = -9
-	},
-/turf/open/floor/almayer_hull,
+/obj/effect/decal/heavy_cable/node_s_e,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/comms/upper)
 "eMd" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
@@ -99203,6 +99237,7 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "ePv" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/east)
 "ePw" = (
@@ -99624,6 +99659,125 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating,
 /area/tyrargo/indoors/mall/upper)
+"eQG" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQH" = (
+/obj/effect/decal/hybrisa/road/roadmiddle{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQI" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQJ" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/auto_turf/sand_white/layer0,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQL" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = 16
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQM" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = 7
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/sand_white/layer0,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQN" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/hybrisa/street/cement3,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQQ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQS" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQT" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQU" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3";
+	pixel_y = -12
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQW" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement/cement13,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQY" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement/cement1,
+/area/tyrargo/outdoors/colony_streets/east)
+"eQZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall)
 "eRa" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -99634,6 +99788,435 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
+"eRb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/mall)
+"eRc" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/hybrisa/carpet/carpetgreen,
+/area/tyrargo/indoors/mall)
+"eRd" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/corsat/marked,
+/area/tyrargo/indoors/mall)
+"eRe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/strata/green3/west,
+/area/tyrargo/indoors/mall)
+"eRf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"eRg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_9"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"eRh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/hybrisa/carpet/carpetgreen,
+/area/tyrargo/indoors/mall)
+"eRi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall)
+"eRj" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/hybrisa/street/roadlines3,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRk" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/hybrisa/street/roadlines3,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRl" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/hybrisa/street/roadlines3,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRm" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRn" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRo" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRp" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRq" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	dir = 8;
+	icon_state = "stop_decal5"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRr" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRs" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRt" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
+"eRu" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/kutjevo/tan,
+/area/tyrargo/indoors/mall)
+"eRv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/kutjevo/tan/multi_tiles/west,
+/area/tyrargo/indoors/mall)
+"eRw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRx" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRy" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice3";
+	pixel_x = 1;
+	pixel_y = 24
+	},
+/obj/structure/barricade/handrail/hybrisa/road/wood/blue{
+	pixel_x = -2;
+	pixel_y = -3
+	},
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/hybrisa/street/cement3,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRA" = (
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRB" = (
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRC" = (
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/hybrisa/street/cement3,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRE" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRF" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/hybrisa/street/cement3,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	name = "access barrier";
+	pixel_y = -2
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	name = "access barrier";
+	pixel_y = -2
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRJ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRK" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt/cement/cement14,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRN" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt/cement/cement12,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRO" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRQ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt/cement/cement3,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRS" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/asphalt/cement,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eRT" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/asphalt/cement/cement4,
+/area/tyrargo/outdoors/colony_exterior/north_east)
+"eRU" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/tyrargo/indoors/security/upper)
+"eRV" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "windsock";
+	pixel_x = 6;
+	pixel_y = -1
+	},
+/turf/open/floor/almayer_hull,
+/area/tyrargo/indoors/security/upper)
+"eRW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3;
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_x = -1
+	},
+/turf/open/floor/prison/green/north,
+/area/tyrargo/indoors/security/upper)
+"eRX" = (
+/obj/effect/decal/heavy_cable/node_s_e,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/security/upper)
+"eRY" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/security/upper)
+"eRZ" = (
+/obj/effect/decal/heavy_cable/node_s_w,
+/obj/effect/decal/heavy_cable/node_north,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/security/upper)
+"eSa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3;
+	pixel_x = -1
+	},
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent5";
+	pixel_y = 6
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/security/upper)
+"eSb" = (
+/turf/open/floor/prison/green,
+/area/tyrargo/indoors/security/upper)
+"eSc" = (
+/turf/open/floor/prison/green/southeast,
+/area/tyrargo/indoors/security/upper)
+"eSd" = (
+/obj/effect/decal/heavy_cable/node_n_w,
+/obj/effect/decal/heavy_cable/node_n_e,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/security/upper)
+"eSe" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/tyrargo/indoors/market/upper)
+"eSf" = (
+/obj/structure/platform/metal/almayer/north,
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/tyrargo/indoors/market/upper)
+"eSg" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/tyrargo/indoors/market/upper)
+"eSh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3;
+	pixel_x = -1
+	},
+/turf/open/floor/prison/green/west,
+/area/tyrargo/indoors/security/upper)
+"eSi" = (
+/turf/open/floor/prison,
+/area/tyrargo/indoors/security/upper)
+"eSj" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/security/upper)
+"eSk" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/tyrargo/indoors/market/upper)
+"eSl" = (
+/turf/open/floor/prison/green/east,
+/area/tyrargo/indoors/security/upper)
+"eSm" = (
+/obj/effect/decal/heavy_cable/node_s_e,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/market/upper)
+"eSn" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/market/upper)
+"eSo" = (
+/obj/effect/decal/heavy_cable/node_s_e,
+/obj/effect/decal/heavy_cable/node_s_w,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/market/upper)
+"eSp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/green/north,
+/area/tyrargo/indoors/security/upper)
+"eSq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/green/northeast,
+/area/tyrargo/indoors/security/upper)
+"eSr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 2
+	},
+/turf/open/floor/prison/green/west,
+/area/tyrargo/indoors/security/upper)
+"eSs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/darkbrown2,
+/area/tyrargo/indoors/market/upper)
+"eSt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/turf/open/floor/prison/cell_stripe/west,
+/area/tyrargo/indoors/market/upper)
+"eSu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/darkbrown2/north,
+/area/tyrargo/indoors/market/upper)
+"eSv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/prison/cell_stripe/east,
+/area/tyrargo/indoors/market/upper)
+"eSw" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/tyrargo/indoors/market/upper)
+"eSx" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/tyrargo/indoors/market/upper)
+"eSy" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/almayer_hull/outerhull_dir/north,
+/area/tyrargo/indoors/market/upper)
+"eSz" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent3"
+	},
+/turf/open/floor/prison/blue/southeast,
+/area/tyrargo/indoors/sewer_treatment/upper/external)
+"eSA" = (
+/turf/open/floor/prison/blue/east,
+/area/tyrargo/indoors/sewer_treatment/upper/external)
+"eSB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer_hull/outerhull_dir/west,
+/area/tyrargo/indoors/sewer_treatment/upper/external)
 "eSC" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -99647,6 +100230,51 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/indoors/apartment/north_upper)
+"eSD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/prison/blue/east,
+/area/tyrargo/indoors/sewer_treatment/upper/external)
+"eSE" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "vent3";
+	pixel_y = 10
+	},
+/turf/open/floor/prison/blue/northeast,
+/area/tyrargo/indoors/sewer_treatment/upper/external)
+"eSF" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/tyrargo/indoors/comms/upper)
+"eSG" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "flagpole";
+	layer = 4.11;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer/plating_stripedcorner/west,
+/area/tyrargo/indoors/comms/upper)
+"eSH" = (
+/turf/open/floor/almayer/plating_stripedcorner/east,
+/area/tyrargo/indoors/comms/upper)
+"eSI" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/comms/upper)
+"eSJ" = (
+/obj/effect/decal/heavy_cable/node_s_w,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/tyrargo/indoors/comms/upper)
+"eSK" = (
+/turf/open/floor/almayer/plating_stripedcorner/north,
+/area/tyrargo/indoors/comms/upper)
+"eSL" = (
+/obj/structure/prop/invuln/ice_prefab/roof_greeble{
+	icon_state = "flagpole";
+	pixel_x = 15;
+	pixel_y = 18
+	},
+/turf/open/floor/almayer/plating_stripedcorner,
+/area/tyrargo/indoors/comms/upper)
 "eTG" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -101445,6 +102073,7 @@
 "iHk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "iKu" = (
@@ -104323,6 +104952,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ooW" = (
@@ -107291,6 +107921,8 @@
 	pixel_x = 7
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/east)
 "tPn" = (
@@ -108282,6 +108914,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
 	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/asphalt/cement_sunbleached,
 /area/tyrargo/outdoors/colony_streets/east)
 "vBC" = (
@@ -109286,6 +109919,7 @@
 	pixel_y = -6
 	},
 /obj/item/ammo_casing/bullet,
+/obj/item/clothing/mask/gas/swat,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "xdB" = (
@@ -189955,7 +190589,7 @@ cPo
 alY
 ceS
 ceX
-dOg
+eRe
 dOg
 ceX
 ceS
@@ -190118,7 +190752,7 @@ voV
 csi
 hoj
 crA
-hoj
+eRy
 ayD
 xzV
 alY
@@ -190137,10 +190771,10 @@ cPM
 cPv
 alY
 alY
-ceS
+efJ
 cOU
 cfc
-cfc
+eRb
 ceX
 ceS
 cOs
@@ -190299,11 +190933,11 @@ ctl
 csR
 csR
 azm
-dpj
-cqq
-crz
+eRH
+eRE
+eRA
 dnh
-dng
+cqS
 alY
 alY
 dEV
@@ -190321,11 +190955,11 @@ cPN
 alY
 alY
 cPi
-ceS
-ceX
-cfc
-ceQ
-ceQ
+efJ
+efH
+efR
+efG
+eQZ
 cOA
 cOt
 alY
@@ -190484,10 +191118,10 @@ csS
 azy
 azn
 dpk
-cqq
-crz
+eRF
+eRB
 dpK
-cqS
+eRw
 alY
 dEV
 cCB
@@ -190507,8 +191141,8 @@ alY
 cPj
 cPb
 ceX
-ceX
-ceQ
+eRf
+efN
 alY
 alY
 alY
@@ -190666,7 +191300,7 @@ cto
 azW
 csS
 azz
-cpF
+eRJ
 dpj
 cqq
 crz
@@ -190689,9 +191323,9 @@ cPP
 cPx
 alY
 ckm
-ceS
+cQE
 ceX
-ceX
+cPh
 dOh
 bta
 cOB
@@ -190851,13 +191485,13 @@ azW
 csS
 eOS
 azo
-dpj
+eRI
 ayV
 crz
 dpf
 cqS
 cQD
-cRw
+eRu
 cRm
 cRm
 cRo
@@ -190874,9 +191508,9 @@ cPy
 alY
 cPl
 ceS
-ceX
-cOQ
-cOL
+eRi
+efH
+efU
 bta
 cOB
 els
@@ -191036,12 +191670,12 @@ csp
 dmL
 dpq
 csj
-cqq
-crz
+dpK
+eRC
 dpg
 dpd
 cev
-cRw
+eRu
 cRm
 cRw
 cRo
@@ -191059,7 +191693,7 @@ alY
 dSW
 ceS
 ceX
-ceX
+efH
 dqf
 bta
 cOB
@@ -191220,12 +191854,12 @@ ctm
 azA
 dpr
 cse
-cqq
+dpK
 dmJ
 dmI
 cqS
 aOT
-cRA
+eRv
 cRn
 cRx
 cRp
@@ -191241,9 +191875,9 @@ cPR
 cPA
 alY
 ceS
-ceS
+cQE
 cOV
-cOR
+eRg
 ceS
 bta
 cOB
@@ -191407,7 +192041,7 @@ aza
 ayW
 crC
 crp
-cqQ
+eRx
 alY
 cRf
 cRo
@@ -191424,11 +192058,11 @@ cPP
 cPS
 cPz
 alY
-cON
-cON
+eRc
+eRc
 cOV
-cOv
-cON
+eRh
+eRc
 bta
 cOB
 els
@@ -191608,11 +192242,11 @@ cPQ
 cPT
 cPB
 alY
-cev
+eRd
 cPc
 aOT
-cev
-cev
+eRd
+eRd
 alY
 alY
 alY
@@ -191769,12 +192403,12 @@ ctC
 aAg
 azV
 csS
-cpF
-cpF
+eRK
+eRK
 azc
-cpv
-cpG
-cpv
+eRG
+eRD
+eRz
 dmG
 alY
 alY
@@ -192168,9 +192802,9 @@ diR
 diN
 diM
 anV
-cln
-dFd
-dFd
+eQN
+eQQ
+eQN
 dFd
 cln
 cln
@@ -192324,7 +192958,7 @@ dlq
 csR
 csG
 csk
-cqq
+dpL
 crD
 cqq
 cqq
@@ -192353,8 +192987,8 @@ diM
 diM
 cmY
 ePv
-ckB
-ckB
+eQR
+eQO
 cln
 cln
 clY
@@ -192535,16 +193169,16 @@ axV
 diO
 diO
 diL
-diL
-axE
-cmF
+eQX
+eQV
+eQS
 cld
 cld
-clo
-clo
+eQK
 clo
 amX
-clo
+clK
+clK
 dlI
 dlH
 aIj
@@ -192721,14 +193355,14 @@ cmZ
 cmZ
 cmZ
 auJ
-yfj
+eQT
 cmn
 cmn
-reM
+eQL
 cla
-cla
+eQG
 clb
-cla
+eQG
 dlJ
 aIo
 aIk
@@ -192903,17 +193537,17 @@ bLu
 bLu
 cmu
 clE
-clE
-clE
-yfj
+aIr
+eQH
+eQU
+eQP
 cmn
-cmn
-reM
-clE
-clE
+eQL
 clE
 aIr
-clE
+eQH
+aIr
+bRI
 aIp
 aIl
 aIh
@@ -193087,16 +193721,16 @@ cmu
 cla
 cla
 cmu
-cla
-cla
-yfj
+eQG
+eQI
+eQU
 ehI
 cmn
-reM
+eQL
 cla
-cla
-cla
-cla
+eQG
+eQI
+eQG
 dlK
 aIo
 aIm
@@ -193271,12 +193905,12 @@ cmG
 cmG
 cmG
 clp
-clp
-cmG
+dlN
+eQW
 cmG
 hnS
 ehG
-cme
+eQM
 sWo
 dlO
 tOG
@@ -193454,16 +194088,16 @@ auP
 clo
 axV
 clo
-cmF
-clo
-cmF
+eQY
+clK
+eQS
 jeT
 fJQ
 cmf
 clF
 ehC
 clF
-clF
+eQJ
 vBx
 dlL
 bok
@@ -194523,13 +195157,13 @@ cxO
 cuJ
 cuI
 cuI
-cvT
+eRT
+eRO
+eRQ
 eje
 eje
-eje
-eje
-eje
-ejd
+eRO
+eRM
 crb
 eOQ
 eiR
@@ -194544,11 +195178,11 @@ aIq
 aaX
 aHL
 aIq
+eRm
 aIq
 aIq
 aIq
-aIq
-aIq
+eRm
 aIq
 aIq
 aIq
@@ -194708,13 +195342,13 @@ bta
 bta
 cuI
 cvT
-cpF
-cqz
-cqz
+eRS
+eRR
+eRP
 cqz
 iHk
-cse
-crb
+eRN
+eRL
 eOQ
 eiR
 crG
@@ -195097,9 +195731,9 @@ aJv
 cpm
 ckE
 eil
-coH
-coH
-coH
+eRo
+eRq
+eRo
 cle
 ckE
 ckE
@@ -195286,7 +195920,7 @@ aIq
 aIq
 eih
 aIM
-axQ
+cDi
 eif
 bta
 aIA
@@ -195465,12 +196099,12 @@ eiw
 eiw
 cma
 aIq
+eRm
 aIq
-aIq
-aIq
+eRm
 eih
+eRk
 cDi
-axQ
 acb
 bta
 cmR
@@ -195648,13 +196282,13 @@ mgY
 eio
 eio
 cma
-aIq
-aIq
-aIq
+eRt
+eRt
+eRr
 aIP
-eih
-axQ
-axQ
+eRn
+eRl
+eRj
 acb
 bta
 cmR
@@ -195832,12 +196466,12 @@ mgY
 cpl
 aJf
 ckE
-aIq
-aIq
-aIq
-aHL
-eih
-axQ
+eRt
+eRt
+eRs
+eRp
+eRn
+eRl
 axQ
 acb
 bta
@@ -196016,13 +196650,13 @@ eit
 cpl
 cpl
 ckE
+eRm
 aIq
 aIq
 aIq
-aIq
-eih
-axQ
-cDi
+eRn
+eRl
+eRj
 acb
 bta
 cmR
@@ -196200,13 +196834,13 @@ eiu
 cpl
 cpl
 cma
+eRt
 aIq
 aIq
-aIq
-aIq
+eRm
 eih
-axQ
-axQ
+eRk
+cDi
 acb
 bta
 ehV
@@ -196384,13 +197018,13 @@ eiu
 cpl
 cpl
 cma
-aIq
+eRt
 aIq
 aIq
 aIq
 eih
 aIO
-axQ
+cDi
 acp
 bta
 ehV
@@ -222664,9 +223298,9 @@ cVG
 cVG
 cVG
 cHR
-cHu
-cHu
-cHu
+eSK
+eSG
+cHR
 cHu
 cHo
 cVG
@@ -222848,9 +223482,9 @@ cVG
 cVG
 cVG
 cHR
-cHu
-cHu
-cHu
+eSL
+eSH
+cHR
 cHu
 cHo
 cVG
@@ -223032,8 +223666,8 @@ cHQ
 cIf
 cHt
 cIf
-cHu
-cHu
+cHt
+cHt
 cHu
 cIf
 cHo
@@ -225241,8 +225875,8 @@ cVG
 cVG
 cVG
 cHR
-cHu
-cHu
+cHv
+cHv
 cHo
 cVG
 cVG
@@ -225609,8 +226243,8 @@ cVG
 cVG
 cVG
 cHR
-eMc
-eMa
+eSI
+eSF
 cHo
 cVG
 cVG
@@ -225793,8 +226427,8 @@ cVG
 cVG
 cVG
 cHR
-cHu
-cHu
+eSI
+eSF
 cHo
 cVG
 cVG
@@ -225977,8 +226611,8 @@ cVG
 cVG
 cVG
 cHR
-cHu
-cHu
+eSJ
+eMa
 cHo
 cVG
 cVG
@@ -226161,8 +226795,8 @@ cVG
 cVG
 cVG
 cHR
-cHu
-cHu
+cHt
+cHt
 cHo
 cVG
 cVG
@@ -228991,8 +229625,8 @@ eMf
 czt
 czt
 czt
-czt
-czt
+czL
+czL
 czt
 czt
 czt
@@ -229172,14 +229806,14 @@ cWe
 cWe
 cWe
 cAQ
-czC
-czC
-djs
-eLw
-czC
-czC
-eLw
-czC
+czw
+eSE
+eSD
+eSA
+eSA
+eSA
+eSz
+cAQ
 czC
 djr
 czC
@@ -229357,12 +229991,12 @@ cWe
 cWe
 cAR
 czC
-czC
-czC
-djr
-djr
-czC
-czC
+czB
+czB
+eSB
+eSB
+czB
+czB
 czC
 czC
 czC
@@ -231951,12 +232585,12 @@ cWe
 cWe
 cWe
 cWe
-czZ
-czu
-czu
-czu
-czu
-czr
+eSw
+czA
+czA
+czA
+czA
+eSe
 cWf
 cWf
 cWf
@@ -232135,12 +232769,12 @@ cWe
 cWe
 cWe
 cWe
-czZ
-czu
+eSx
+eSt
 eLx
-czu
+eSm
 eLu
-czr
+eSf
 cWf
 cWf
 cWf
@@ -232319,12 +232953,12 @@ cWe
 cWe
 cWe
 cWe
-czZ
-czu
-czu
-czu
-czu
-czr
+eSx
+eSu
+eSs
+eSn
+eSk
+eSf
 cWf
 cWf
 cWf
@@ -232503,12 +233137,12 @@ cWe
 cWe
 cWe
 cWe
-czZ
-czu
-czu
-czu
-czu
-czr
+eSx
+eSu
+eSs
+eSo
+eLu
+eSf
 cWf
 cWf
 cWf
@@ -232687,12 +233321,12 @@ cWe
 cWe
 cWe
 cWe
-czZ
-czu
-czu
-czu
-czu
-czr
+eSx
+eSu
+eSs
+eSn
+eSk
+eSf
 cWf
 cWf
 cWf
@@ -232871,12 +233505,12 @@ cWe
 cWe
 cWe
 cWe
-czZ
-czu
-czu
-czu
-czu
-czr
+eSx
+eSu
+eSs
+eSk
+eSk
+eSf
 cWf
 cWf
 cWf
@@ -233055,12 +233689,12 @@ cWe
 cWe
 cWe
 cWe
-czZ
-czu
-czu
-czu
-czu
-czr
+eSx
+eSu
+eSs
+eSo
+eLu
+eSf
 cWf
 cWf
 cWf
@@ -233239,12 +233873,12 @@ cWe
 cWe
 cWe
 cWe
-czZ
-czu
-eLy
-eLv
-czu
-czr
+eSx
+eSu
+eSs
+eSn
+eSk
+eSf
 cWf
 cWf
 cWf
@@ -233423,12 +234057,12 @@ cjc
 cjc
 cjc
 cjc
-czZ
-czu
-eLy
-eLv
-czu
-czr
+eSx
+eSu
+eSs
+eSn
+eSk
+eSf
 cWf
 cWf
 cWf
@@ -233607,12 +234241,12 @@ cjc
 cjc
 cjc
 cjc
-czZ
-czu
-czu
-czu
-czu
-czr
+eSx
+eSu
+eSs
+eSo
+eLu
+eSf
 cWf
 cWf
 cWf
@@ -233791,12 +234425,12 @@ cjc
 cjc
 cjc
 cjc
-czZ
-czu
-eLy
-eLv
-czu
-czr
+eSx
+eSu
+eSs
+eSk
+eSk
+eSf
 cWf
 cWf
 cWf
@@ -233975,12 +234609,12 @@ cjc
 cjc
 cjc
 cjc
-czZ
-czu
-eLy
-eLv
-czu
-czr
+eSx
+eSu
+eSs
+eSn
+eSk
+eSf
 cWf
 cWf
 cWf
@@ -234159,12 +234793,12 @@ cjc
 cjc
 cjc
 cjc
-czZ
-czu
-czu
-czu
-czu
-czr
+eSx
+eSu
+eSs
+eSo
+eLu
+eSf
 cWf
 cWf
 cWf
@@ -234343,12 +234977,12 @@ cjc
 cjc
 cjc
 cjc
-czZ
-czu
-eLy
-eLv
-czu
-czr
+eSx
+eSu
+eSs
+eSn
+eSk
+eSf
 cWf
 cWf
 cWf
@@ -234527,12 +235161,12 @@ cjc
 cjc
 cjc
 cjc
-czZ
-czu
+eSx
+eSv
 eLy
 eLv
-czu
-czr
+eLu
+eSf
 cWf
 cWf
 cWf
@@ -234711,12 +235345,12 @@ cjc
 cjc
 cjc
 cjc
-czZ
-czu
-czu
-czu
-czu
-czr
+eSy
+czR
+czR
+czR
+czR
+eSg
 cWf
 cWf
 cWf
@@ -238210,11 +238844,11 @@ czh
 czh
 czi
 czi
-czi
-czi
-czi
-czi
-czi
+czk
+czk
+czk
+czk
+czk
 czi
 czf
 cWf
@@ -238393,13 +239027,13 @@ czi
 czi
 czi
 czi
-czi
+czf
+eRU
+eSh
+eSh
 eLt
-czi
-czi
-eLt
-czi
-czi
+eRW
+czj
 czf
 cWf
 cWf
@@ -238577,13 +239211,13 @@ tRd
 tRd
 czi
 czi
-czi
-czi
-czi
-czi
-czi
-czi
-czi
+czf
+eSp
+eSi
+eSi
+eSb
+eRX
+eRU
 czf
 cWf
 cWf
@@ -238761,13 +239395,13 @@ tRd
 czi
 czi
 czi
-czi
-czi
-czi
-czi
-czi
-czi
-czi
+czf
+eSp
+eSi
+eSi
+eSc
+eRY
+czj
 czf
 cWf
 cWf
@@ -238945,13 +239579,13 @@ czi
 czi
 czi
 czi
-czi
-eLt
-czi
-czi
-eLt
-czi
-czi
+czf
+eSq
+eSl
+eSc
+eRX
+eRZ
+eRU
 czf
 cWf
 cWf
@@ -239129,13 +239763,13 @@ czi
 czi
 czi
 czi
-czi
-czi
-czi
-czi
-czi
-czi
-czi
+czf
+eSr
+eRX
+eSj
+eSd
+eSa
+czj
 czf
 cWf
 cWf
@@ -239314,12 +239948,12 @@ czk
 czk
 czi
 czi
-czi
-czi
-czi
-czi
-czi
-czi
+czh
+eRU
+czh
+eRU
+czh
+eRV
 czg
 cWf
 cWf
@@ -240558,7 +241192,7 @@ lJn
 aKT
 eji
 cBR
-eji
+ejk
 cCc
 cCc
 eji

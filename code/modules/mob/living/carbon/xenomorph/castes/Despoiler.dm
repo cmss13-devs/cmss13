@@ -115,7 +115,7 @@
 		to_chat(target_carbon, SPAN_XENOHIGHDANGER("You feel a burning pain as [bound_xeno] slashes you, covering you in acid!"))
 		var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
 		if(acid_effect)
-			acid_effect.enhance_acid()
+			acid_effect.enhance_acid(super_acid = TRUE)
 			return original_damage
 
 		new /datum/effects/acid/(target_carbon)

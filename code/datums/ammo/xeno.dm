@@ -239,7 +239,7 @@
 		return
 	var/datum/effects/acid/acid_effect = locate() in M.effects_list
 	if(acid_effect)
-		acid_effect.enhance_acid(super_acid = TRUE)
+		acid_effect.enhance_acid(super_acid = FALSE)
 		return
 
 	new /datum/effects/acid/(M, P.firer)

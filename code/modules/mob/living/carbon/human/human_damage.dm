@@ -121,43 +121,6 @@
 	else
 		heal_overall_damage(0, -amount)
 
-
-/mob/living/carbon/human/proc/adjustBruteLossByPart(amount, organ_name, obj/damage_source = null)
-	if(amount > 0)
-		var/brute_mod = get_brute_mod()
-		if(brute_mod)
-			amount *= brute_mod
-
-	for(var/X in limbs)
-		var/obj/limb/O = X
-		if(O.name == organ_name)
-			if(amount > 0)
-				O.take_damage(amount, 0, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
-			else
-				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
-				O.heal_damage(-amount, 0, O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-			break
-
-
-
-/mob/living/carbon/human/proc/adjustFireLossByPart(amount, organ_name, obj/damage_source = null)
-	if(amount > 0)
-		var/burn_mod = get_burn_mod()
-		if(burn_mod)
-			amount *= burn_mod
-
-	for(var/X in limbs)
-		var/obj/limb/O = X
-		if(O.name == organ_name)
-			if(amount > 0)
-				O.take_damage(0, amount, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
-			else
-				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
-				O.heal_damage(0, -amount, O.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-			break
-
-
-
 /mob/living/carbon/human/getCloneLoss()
 	if(species && species.flags & (IS_SYNTHETIC|NO_CLONE_LOSS))
 		cloneloss = 0
@@ -243,10 +206,10 @@
 ////////////////////////////////////////////
 
 //Returns a list of damaged limbs
-/mob/living/carbon/human/proc/get_damaged_limbs(brute, burn, chemical = FALSE)
+/mob/living/carbon/human/proc/get_damaged_limbs(brute, burn)
 	var/list/obj/limb/parts = list()
 	for(var/obj/limb/O in limbs)
-		if((brute && O.brute_dam) || ((burn && O.burn_dam) && !(chemical && O.burn_dam <= burn_chemical_threshold && !O.is_salved())))
+		if((brute && O.brute_dam) || ((burn && O.burn_dam) && !(O.burn_dam <= burn_chemical_threshold && !O.is_salved())))
 			parts += O
 	return parts
 
@@ -264,15 +227,15 @@
 //Heals ONE external organ, organ gets randomly selected from damaged ones.
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
-/mob/living/carbon/human/heal_limb_damage(brute, burn, chemical = FALSE)
-	var/list/obj/limb/parts = get_damaged_limbs(brute,burn,chemical)
+/mob/living/carbon/human/heal_limb_damage(brute, burn)
+	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
 	if(!length(parts))
 		return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
 		apply_damage(-brute, BRUTE, picked)
 	if(burn != 0)
-		apply_damage(-burn, BURN, picked, chemical = chemical)
+		apply_damage(-burn, BURN, picked)
 	UpdateDamageIcon()
 	updatehealth()
 
@@ -298,7 +261,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 
 //Heal MANY limbs, in random order
 /mob/living/carbon/human/heal_overall_damage(brute, burn, robo_repair = FALSE)
-	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
+	var/list/obj/limb/parts = get_damaged_limbs(brute, burn)
 
 	var/update = 0
 	while(length(parts) && (brute>0 || burn>0) )

@@ -1694,6 +1694,18 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid(new_human), WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/splint/random_amount(new_human), WEAR_IN_L_STORE)
 
+/datum/equipment_preset/corpse/tyrargo/us_army_trooper/proc/spawn_fluff_item(mob/living/carbon/human/new_human)
+	var/i = rand(1,5)
+	switch(i)
+		if (1)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/fancy/cigarettes/spirit(new_human), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/matches(new_human), WEAR_IN_BACK)
+		if (2)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/souto/classic(new_human), WEAR_IN_BACK)
+		if (3)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/cans/space_mountain_wind(new_human), WEAR_IN_BACK)
+		if (4)
+			new_human.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/chocolatebar(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/corpse/tyrargo/us_army_trooper/load_gear(mob/living/carbon/human/new_human)
 	var/choice = rand(1,12)
@@ -1711,6 +1723,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/army(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/sof/survivor_army(new_human), WEAR_L_EAR)
 	spawn_pouch(new_human)
+	spawn_fluff_item(new_human)
 
 	switch(choice)
 		if(1 to 5)

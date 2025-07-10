@@ -13633,6 +13633,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
+"aIG" = (
+/obj/structure/barricade/hesco{
+	dir = 1
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/landing_zone_2)
 "aIH" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9";
@@ -24764,6 +24770,9 @@
 	icon_state = "trash_14";
 	pixel_y = 14
 	},
+/obj/structure/barricade/hesco{
+	dir = 4
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
 "beJ" = (
@@ -29645,7 +29654,10 @@
 "boT" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "boU" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/west,
@@ -33245,6 +33257,14 @@
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2)
+"bxb" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/decal/strata_decals/mud_corner,
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bxc" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -37780,6 +37800,17 @@
 	name = "bunker superdense wall"
 	},
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"bHm" = (
+/obj/structure/flora/tree/tyrargo_small/tree_stump{
+	pixel_x = -23;
+	pixel_y = 4;
+	layer = 3
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bHn" = (
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -41414,9 +41445,6 @@
 /turf/open/gm/dirt/brown,
 /area/tyrargo/landing_zone_1)
 "bQM" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 1
-	},
 /obj/effect/decal/strata_decals/mud_corner,
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -55146,12 +55174,10 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/army_staging)
 "cIZ" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 6
-	},
 /obj/structure/barricade/deployable{
 	dir = 1
 	},
+/obj/effect/decal/strata_decals/mud_corner,
 /turf/open/gm/dirt/brown/variant_6,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "cJa" = (
@@ -56181,7 +56207,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/road)
 "cLm" = (
-/obj/effect/decal/strata_decals/mud_corner,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
 	},
@@ -56235,7 +56260,6 @@
 /area/tyrargo/landing_zone_2/road)
 "cLt" = (
 /obj/item/ammo_casing/bullet,
-/obj/effect/decal/strata_decals/mud_corner,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
 	},
@@ -66730,15 +66754,14 @@
 	},
 /obj/effect/decal/cleanable/generic,
 /obj/item/reagent_container/blood/empty,
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 9
-	},
-/obj/effect/decal/strata_decals/mud_corner,
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 8;
 	pixel_y = -9;
 	layer = 2.8;
 	pixel_x = 1
+	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
 	},
 /turf/open/gm/dirt/brown,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
@@ -85612,9 +85635,6 @@
 "ehX" = (
 /obj/item/reagent_container/blood/empty,
 /obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
-	},
-/obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
 	},
 /turf/open/gm/dirt/brown/variant_1,
@@ -98507,6 +98527,15 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/east)
+"eOU" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 1
+	},
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/trr{
+	pixel_x = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts_road/central)
 "ePO" = (
 /obj/effect/decal/siding{
 	icon_state = "siding10"
@@ -104040,13 +104069,10 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 4
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
 	},
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 1
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirt/brown/variant_5/east,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "qcb" = (
 /obj/item/ammo_casing/bullet,
@@ -106761,18 +106787,13 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 6
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 1
-	},
 /obj/structure/prop/tyrargo/boards/boards_2{
 	dir = 4;
 	layer = 2.1;
 	pixel_y = -6;
 	pixel_x = 3
 	},
+/obj/effect/decal/strata_decals/mud_corner,
 /turf/open/gm/dirt/brown/variant_3,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "vii" = (
@@ -108214,7 +108235,6 @@
 	dir = 5;
 	pixel_y = 13
 	},
-/obj/effect/decal/strata_decals/mud_corner,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
 	},
@@ -158333,7 +158353,7 @@ bpd
 etk
 arR
 bwi
-bBr
+bHm
 bxJ
 byh
 byk
@@ -158518,7 +158538,7 @@ bwS
 bGb
 boT
 qbN
-bFv
+bxb
 bzl
 bxJ
 bEF
@@ -162077,7 +162097,7 @@ cLo
 cLa
 erZ
 beI
-bsJ
+dmP
 bsJ
 buF
 buF
@@ -162262,7 +162282,7 @@ cLo
 bsU
 bsJ
 doj
-bsJ
+aIG
 buF
 buP
 buF
@@ -162446,7 +162466,7 @@ aUc
 biG
 bsJ
 bsJ
-bsJ
+aIG
 buF
 buF
 buF
@@ -162630,7 +162650,7 @@ aUc
 bwf
 bsJ
 bsJ
-bsJ
+aIG
 buF
 buF
 buF
@@ -163105,7 +163125,7 @@ dZp
 bIz
 dYJ
 bIN
-bzf
+eOU
 bAt
 bwt
 bxY

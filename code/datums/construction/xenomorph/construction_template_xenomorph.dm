@@ -62,7 +62,7 @@
 
 /datum/construction_template/xenomorph/plasma_tree
 
-	name = XENO_STRUCTURE_PLASMA_SILO
+	name = XENO_STRUCTURE_PLASMA_TREE
 	description = "Gives out small bursts of plasma, replenishing the reserves of the sisters around it."
 	build_type = /obj/effect/alien/resin/special/plasma_tree
 	build_icon_state = "recovery_plasma"

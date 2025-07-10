@@ -267,6 +267,7 @@ class ChatRenderer {
         for (const [trigger, replacement] of Object.entries(
           highlightKeywords,
         )) {
+          // Skip if line cannot possibly fit the trigger and accompanying $$.
           if (!trigger || !replacement || line.length < trigger.length + 2) {
             continue;
           }

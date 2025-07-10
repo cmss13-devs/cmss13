@@ -1,6 +1,8 @@
 // Unlikely to come up in normal gameplay.
 #define EMPTY_VALUE null
 
+// Make sure to update `KeywordMenu` in TextHighlight.tsx to show users what
+// keywords they can use.
 /datum/highlight_keywords_payload
 	var/name_full = EMPTY_VALUE
 	var/name_first = EMPTY_VALUE
@@ -50,17 +52,14 @@
 
 			// 123-XX
 			if (name_components[1] == nicknumber)
-				message_admins("AAA")
 				xeno_number = name_components[1]
 				xeno_postfix = name_components[2]
 			// XX-123
 			else if (name_components[2] == nicknumber)
-				message_admins("BBB")
 				xeno_prefix = name_components[1]
 				xeno_number = name_components[2]
 			// XX-YY
 			else {
-				message_admins("CCC")
 				xeno_prefix = name_components[1]
 				xeno_postfix = name_components[2]
 			}
@@ -74,7 +73,7 @@
 
 /datum/highlight_keywords_payload/proc/to_list()
 	return list(
-		// Includes ''.
+		// Includes '' surrounding nickname.
 		fullName = name_full,
 		firstName = format_field(name_first),
 		middleName = format_field(name_middle),

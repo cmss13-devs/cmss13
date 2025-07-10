@@ -328,7 +328,7 @@
 	if(M.bodytemperature < BODYTEMP_CRYO_LIQUID_THRESHOLD)
 		M.adjustCloneLoss(-1)
 		M.apply_damage(-1, OXY)
-		M.heal_limb_damage(1,1) //cryoxadone can heal untreated burns fully
+		M.heal_limb_damage(1,1)
 		M.apply_damage(-1, TOX)
 
 /datum/reagent/medical/clonexadone

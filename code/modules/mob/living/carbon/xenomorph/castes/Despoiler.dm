@@ -33,7 +33,7 @@
 	name = XENO_CASTE_DESPOILER
 	desc = "A huge, looming beast of an alien."
 	icon_size = 64
-	icon_state = "Praetorian Walking"
+	icon_state = "Despoiler Walking"
 	plasma_types = list(PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
 	pixel_x = -16
 	old_x = -16
@@ -53,7 +53,7 @@
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
-	icon_xeno = 'icons/mob/xenos/castes/tier_3/praetorian.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_3/despoiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/praetorian.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'

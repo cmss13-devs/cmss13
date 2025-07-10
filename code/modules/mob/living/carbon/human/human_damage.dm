@@ -246,7 +246,7 @@
 /mob/living/carbon/human/proc/get_damaged_limbs(brute, burn, chemical = FALSE)
 	var/list/obj/limb/parts = list()
 	for(var/obj/limb/O in limbs)
-		if((brute && O.brute_dam) || ((burn && O.burn_dam) && !(chemical && O.burn_dam <= 5 && !O.is_salved())))
+		if((brute && O.brute_dam) || ((burn && O.burn_dam) && !(chemical && O.burn_dam <= burn_chemical_threshold && !O.is_salved())))
 			parts += O
 	return parts
 
@@ -272,7 +272,7 @@
 	if(brute != 0)
 		apply_damage(-brute, BRUTE, picked)
 	if(burn != 0)
-		apply_damage(-burn, BURN, picked)
+		apply_damage(-burn, BURN, picked, chemical = chemical)
 	UpdateDamageIcon()
 	updatehealth()
 

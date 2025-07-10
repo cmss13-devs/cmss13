@@ -5,22 +5,27 @@
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_3
 	melee_vehicle_damage = XENO_DAMAGE_TIER_4
-	max_health = XENO_HEALTH_TIER_8
+	max_health = XENO_HEALTH_TIER_9
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_6
-	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
+	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_3
+	speed = XENO_SPEED_TIER_5
 
 	deevolves_to = list(XENO_CASTE_SPITTER)
 
 
 	tackle_min = 4
 	tackle_max = 6
+	tackle_chance = 25
+	tacklestrength_min = 3
+	tacklestrength_max = 4
+
 	behavior_delegate_type = /datum/behavior_delegate/despoiler_base
 	minimap_icon = "xenoqueen"
 	spit_types = list(/datum/ammo/xeno/acid/despoiler)
+	minimum_evolve_time = 15 MINUTES
 
 
 /mob/living/carbon/xenomorph/despoiler
@@ -57,6 +62,7 @@
 
 	skull = /obj/item/skull/praetorian
 	pelt = /obj/item/pelt/praetorian
+
 
 /datum/action/xeno_action/onclick/despoiler_empower_slash/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

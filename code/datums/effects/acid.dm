@@ -123,3 +123,11 @@
 		//but since we dont want to check every process if we're in weather etc...
 		//its just a one permenant time stat change
 
+/datum/effects/acid/proc/adjust_armor(armor, armor_type)
+	if(!(armor_type == BRUTE || armor_type == BURN))
+		return armor
+
+	if(acid_level != 3)
+		return armor
+	return max(0, armor - 15)
+

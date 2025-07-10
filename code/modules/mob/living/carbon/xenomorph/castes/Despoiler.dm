@@ -98,7 +98,7 @@
 /datum/behavior_delegate/despoiler_base
 	name = "Base Despoiler Behavior Delegate"
 
-	var/next_slash_buffed = TRUE
+	var/next_slash_buffed = FALSE
 
 /datum/behavior_delegate/despoiler_base/melee_attack_modify_damage(original_damage, mob/living/carbon/target_carbon)
 	if (!isxeno_human(target_carbon))

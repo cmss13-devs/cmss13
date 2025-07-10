@@ -821,10 +821,10 @@
 
 /obj/effect/particle_effect/smoke/decomposing_enzymes
 	opacity = FALSE
-	color = "#73921d"
+	color = "#ddfc6d"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	time_to_live = 3 SECONDS
+	time_to_live = 6
 	spread_speed = 1
 	alpha = 60
 	var/remove_chem = 8

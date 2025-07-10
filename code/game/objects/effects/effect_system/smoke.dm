@@ -819,6 +819,28 @@
 /datum/effect_system/smoke_spread/king_doom
 	smoke_type = /obj/effect/particle_effect/smoke/king
 
+/obj/effect/particle_effect/smoke/decomposing_enzymes
+	opacity = FALSE
+	color = "#73921d"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	time_to_live = 3 SECONDS
+	spread_speed = 1
+	alpha = 60
+	var/remove_chem = 8
+
+/obj/effect/particle_effect/smoke/decomposing_enzymes/affect(mob/living/carbon/affected_mob)
+	. = ..()
+	apply_neuro(affected_mob, 0, remove_chem, TRUE, TRUE, TRUE, FALSE)
+	var/datum/effects/acid/acid_effect = locate() in affected_mob.effects_list
+	if(!acid_effect)
+		return
+	acid_effect.enhance_acid(super_acid = FALSE)
+
+
+/datum/effect_system/smoke_spread/decomposing_enzymes
+	smoke_type = /obj/effect/particle_effect/smoke/decomposing_enzymes
+
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn
 

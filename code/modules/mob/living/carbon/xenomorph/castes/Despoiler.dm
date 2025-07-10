@@ -13,6 +13,8 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_3
 
+	deevolves_to = list(XENO_CASTE_SPITTER)
+
 
 	tackle_min = 4
 	tackle_max = 6
@@ -42,6 +44,7 @@
 		/datum/action/xeno_action/activable/tail_stab/despoiler,
 		/datum/action/xeno_action/activable/xeno_spit/despoiler,
 		/datum/action/xeno_action/onclick/despoiler_empower_slash,
+		/datum/action/xeno_action/activable/decomposing_enzymes,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -107,7 +110,7 @@
 		var/datum/effects/acid/acid_effect = locate() in target_carbon.effects_list
 		if(acid_effect)
 			acid_effect.enhance_acid(super_acid = TRUE)
-			return
+			return original_damage
 
 		new /datum/effects/acid/(target_carbon)
 
@@ -119,4 +122,18 @@
 	if(!acid_effect)
 		return
 	target.apply_armoured_damage(get_xeno_damage_acid(target, acid_effect.acid_level * 15), ARMOR_BIO, BURN, limb ? limb.name : "chest")
+
+/datum/action/xeno_action/activable/decomposing_enzymes/use_ability(atom/target)
+	. = ..()
+
+	var/mob/living/carbon/xenomorph/xeno = owner
+	XENO_ACTION_CHECK_USE_PLASMA(xeno)
+
+	playsound(xeno, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a raspy guttural roar!"))
+	xeno.create_shriekwave()
+
+	var/datum/effect_system/smoke_spread/decomposing_enzymes/smoke_gas = new()
+	smoke_gas.set_up(3, 0, get_turf(xeno), null, 6)
+	smoke_gas.start()
 

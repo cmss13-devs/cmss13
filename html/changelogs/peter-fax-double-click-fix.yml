@@ -1,0 +1,9 @@
+# Fix for fax machine double-click vulnerability
+# GitHub Issue: https://github.com/cmss13-devs/cmss13/issues/9953
+
+author: peter
+
+delete-after: True
+
+changes: 
+  - bugfix: "Fixed ability to bypass fax machine cooldown by rapidly clicking the SEND button, preventing duplicate transmissions."

@@ -30,6 +30,7 @@ type Data = {
   can_send_priority: BooleanLike;
   is_priority_fax: BooleanLike;
   is_single_sending: BooleanLike;
+  sending_fax: BooleanLike;
 };
 
 export const FaxMachine = () => {
@@ -192,6 +193,7 @@ const ConfirmSend = (props) => {
     nextfaxtime,
     can_send_priority,
     is_priority_fax,
+    sending_fax,
   } = data;
 
   const timeLeft = nextfaxtime - worldtime;
@@ -211,16 +213,20 @@ const ConfirmSend = (props) => {
           </Button>
         </Stack.Item>
         <Stack.Item grow>
-          {(timeLeft < 0 && (
+          {(timeLeft < 0 && !sending_fax && (
             <Button
               icon="paper-plane"
               fluid
               onClick={() => act('send')}
-              disabled={timeLeft > 0 || !paper || !authenticated}
+              disabled={timeLeft > 0 || !paper || !authenticated || sending_fax}
             >
               {paper ? 'Send' : 'No paper loaded!'}
             </Button>
-          )) || (
+          )) || sending_fax ? (
+            <Button icon="hourglass-half" fluid disabled={1}>
+              Transmission in progress...
+            </Button>
+          ) : (
             <Button icon="window-close" fluid disabled={1}>
               {'Transmitters realigning, ' + timeLeft / 10 + ' seconds left.'}
             </Button>
@@ -233,7 +239,7 @@ const ConfirmSend = (props) => {
               fluid
               onClick={() => act('toggle_priority')}
               color={is_priority_fax ? 'green' : 'red'}
-              disabled={!paper || !can_send_priority || !authenticated}
+              disabled={!paper || !can_send_priority || !authenticated || sending_fax}
               tooltip="Toggle priority alert."
             />
           </Stack.Item>

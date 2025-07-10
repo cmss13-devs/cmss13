@@ -85,6 +85,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	///storer var for cooldown on sending faxes
 	var/fax_cooldown = 300
 	COOLDOWN_DECLARE(send_cooldown)
+	/// Whether or not the machine is currently sending a fax (prevents double-clicking)
+	var/sending_fax = FALSE
 	/// Whether or not the next fax to be sent is a priority one.
 	var/is_priority_fax = FALSE
 	/// If this machine can send priority faxes.
@@ -317,6 +319,7 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 	data["can_send_priority"] = can_send_priority
 	data["is_priority_fax"] = is_priority_fax
 	data["is_single_sending"] = single_sending
+	data["sending_fax"] = sending_fax
 
 
 	return data
@@ -354,6 +357,10 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 				to_chat(user, SPAN_NOTICE("No paper loaded."))
 				return
 
+			if(sending_fax)
+				to_chat(user, SPAN_WARNING("Fax transmission already in progress."))
+				return
+
 			if(single_sending && (target_machine == "Undefined") && !(target_department == FAX_DEPARTMENT_SPECIFIC_CODE))
 				to_chat(user, SPAN_WARNING("No target machine selected!"))
 				return
@@ -370,13 +377,19 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 					to_chat(user, SPAN_NOTICE("\The [src] is jammed!"))
 					return
 
+			sending_fax = TRUE
 			copy_fax_paper()
 
-			outgoing_fax_message(user, is_priority_fax)
-			is_priority_fax = FALSE
-
-			COOLDOWN_START(src, send_cooldown, fax_cooldown)
-			to_chat(user, "Message transmitted successfully.")
+			try
+				outgoing_fax_message(user, is_priority_fax)
+				is_priority_fax = FALSE
+				COOLDOWN_START(src, send_cooldown, fax_cooldown)
+				to_chat(user, "Message transmitted successfully.")
+			catch(var/exception/e)
+				to_chat(user, SPAN_WARNING("Transmission failed: [e.name]"))
+				log_runtime(e)
+			finally
+				sending_fax = FALSE
 			. = TRUE
 
 		if("ejectpaper")

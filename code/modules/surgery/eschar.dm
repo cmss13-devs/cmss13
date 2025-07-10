@@ -49,8 +49,8 @@
 	name = "Repair Eschar On Limb"
 	desc = "repair the eschar on limb"
 	tools = list(
-		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/stack/medical/advanced/ointment = SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/stack/medical/advanced/ointment/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/stack/medical/ointment = SURGERY_TOOL_MULT_AWFUL,
 	)
 	time = 3 SECONDS

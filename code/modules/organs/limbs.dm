@@ -26,6 +26,8 @@
 
 	var/min_broken_damage = 30
 
+	var/min_eschar_damage = 30
+
 	var/list/datum/autopsy_data/autopsy_data = list()
 	var/list/trace_chemicals = list() // traces of chemicals in the organ,
 									  // links chemical IDs to number of ticks for which they'll stay in the blood
@@ -214,6 +216,23 @@
 
 	if(brute_dam > min_broken_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*2))
 		fracture()
+
+/obj/limb/proc/take_damage_eschar(burn)
+	if(!owner)
+		return
+
+	if(owner.stat == DEAD) //no eschar on dead
+		return
+
+	var/armor = owner.getarmor_organ(src, ARMOR_BIO)
+	if(owner.mind && owner.skills)
+		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
+
+	var/damage = armor_damage_reduction(GLOB.marine_bone_break, burn*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+
+	if(burn_dam > min_eschar_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*2))
+		eschar()
+
 /**
  * Describes how limbs (body parts) of human mobs get damage applied.
  *
@@ -302,6 +321,9 @@
 
 	if(CONFIG_GET(flag/bones_can_break) && !(status & (LIMB_SYNTHSKIN)))
 		take_damage_bone_break(brute)
+
+	if(CONFIG_GET(flag/flesh_can_eschar) && !(status & (LIMB_SYNTHSKIN)))
+		take_damage_eschar(burn)
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
 		if(owner.pain.feels_pain)
@@ -477,7 +499,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(!is_ff && type != BURN && !(status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 		take_damage_internal_bleeding(damage)
 
-	if(!(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
+	if((type != BURN) && !(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
 		to_chat(owner, SPAN_HIGHDANGER("The splint on your [display_name] comes apart!"))
@@ -1164,6 +1186,47 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		owner.visible_message(
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
 			SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
+
+/obj/limb/proc/eschar()
+	if(status & (LIMB_ESCHAR|LIMB_DESTROYED|LIMB_UNCALIBRATED_PROSTHETIC|LIMB_SYNTHSKIN))
+		return //we already have eschar or can not take it
+
+	//robot limb part
+	if(status & (LIMB_ROBOT))
+		owner.visible_message(
+			SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
+			SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
+			SPAN_HIGHDANGER("You hear electrical sparking!"))
+		var/datum/effect_system/spark_spread/spark_system = new()
+		spark_system.set_up(5, 0, owner)
+		spark_system.attach(owner)
+		spark_system.start()
+		QDEL_IN(spark_system, 1 SECONDS)
+
+		status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+		if(parent)
+			if(parent.status & LIMB_ROBOT)
+				parent.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+		for(var/obj/limb/l as anything in children)
+			if(l.status & LIMB_ROBOT)
+				l.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+		start_processing()
+		return
+
+	//flesh limb part
+	owner.visible_message(
+		SPAN_WARNING("You hear flesh on [owner] shizzling!"),
+		SPAN_HIGHDANGER("Your [display_name] feels burned!"),
+		SPAN_HIGHDANGER("Your stomach turns as the flesh on your [display_name] chars!"))
+	status |= LIMB_ESCHAR
+	owner.pain.apply_pain(PAINT_ESCHAR)
+	broken_description = pick("eschar")
+	start_processing()
+
+
+
+
+
 
 /obj/limb/proc/robotize(surgery_in_progress, uncalibrated, synth_skin)
 	if(synth_skin)

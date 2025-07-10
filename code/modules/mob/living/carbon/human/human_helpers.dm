@@ -377,6 +377,12 @@
 			return TRUE
 	return FALSE
 
+/mob/living/carbon/human/proc/has_eschar_limbs()
+	for(var/obj/limb/L in limbs)
+		if(L.status & LIMB_ESCHAR)
+			return TRUE
+	return FALSE
+
 /mob/living/carbon/human/proc/has_foreign_object()
 	for(var/obj/limb/L in limbs)
 		if(LAZYLEN(L.implants) > 0)

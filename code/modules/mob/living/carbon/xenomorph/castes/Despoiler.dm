@@ -143,3 +143,5 @@
 	smoke_gas.set_up(3, 0, get_turf(xeno), null, 6)
 	smoke_gas.start()
 
+	apply_cooldown()
+

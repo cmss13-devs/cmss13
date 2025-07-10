@@ -7,7 +7,10 @@
 	macro_path = /datum/action/xeno_action/verb/verb_crippling_strike
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 10 SECONDS
-	plasma_cost = 20
+	xeno_cooldown = 12 SECONDS
+	plasma_cost = 100
 
 	var/buff_duration = 50
+
+/datum/action/xeno_action/activable/tail_stab/despoiler
+	name = "Finishing Stab"

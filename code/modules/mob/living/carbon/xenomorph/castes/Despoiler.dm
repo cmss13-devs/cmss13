@@ -39,7 +39,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/tail_stab,
+		/datum/action/xeno_action/activable/tail_stab/despoiler,
 		/datum/action/xeno_action/activable/xeno_spit/despoiler,
 		/datum/action/xeno_action/onclick/despoiler_empower_slash,
 		/datum/action/xeno_action/onclick/tacmap,
@@ -111,5 +111,12 @@
 
 		new /datum/effects/acid/(target_carbon)
 
-
 	return original_damage
+
+/datum/action/xeno_action/activable/tail_stab/despoiler/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb, apply_behavior_delagate = FALSE)
+	. = ..()
+	var/datum/effects/acid/acid_effect = locate() in target.effects_list
+	if(!acid_effect)
+		return
+	target.apply_armoured_damage(get_xeno_damage_acid(target, acid_effect.acid_level * 15), ARMOR_BIO, BURN, limb ? limb.name : "chest")
+

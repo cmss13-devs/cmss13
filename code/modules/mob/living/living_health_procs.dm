@@ -503,10 +503,11 @@
 		return COMPONENT_NO_IGNITE
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
-/mob/living/proc/heal_limb_damage(brute, burn)
+/mob/living/proc/heal_limb_damage(brute, burn, chemical = FALSE)
 	apply_damage(-brute, BRUTE)
 	apply_damage(-burn, BURN)
 	src.updatehealth()
+
 
 // damage ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/take_limb_damage(brute, burn)

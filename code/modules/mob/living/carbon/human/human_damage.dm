@@ -243,10 +243,10 @@
 ////////////////////////////////////////////
 
 //Returns a list of damaged limbs
-/mob/living/carbon/human/proc/get_damaged_limbs(brute, burn)
+/mob/living/carbon/human/proc/get_damaged_limbs(brute, burn, chemical = FALSE)
 	var/list/obj/limb/parts = list()
 	for(var/obj/limb/O in limbs)
-		if((brute && O.brute_dam) || (burn && O.burn_dam))
+		if((brute && O.brute_dam) || ((burn && O.burn_dam) && !(chemical && O.burn_dam <= 5 && !O.is_salved())))
 			parts += O
 	return parts
 
@@ -264,8 +264,8 @@
 //Heals ONE external organ, organ gets randomly selected from damaged ones.
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
-/mob/living/carbon/human/heal_limb_damage(brute, burn)
-	var/list/obj/limb/parts = get_damaged_limbs(brute,burn)
+/mob/living/carbon/human/heal_limb_damage(brute, burn, chemical = FALSE)
+	var/list/obj/limb/parts = get_damaged_limbs(brute,burn,chemical)
 	if(!length(parts))
 		return
 	var/obj/limb/picked = pick(parts)

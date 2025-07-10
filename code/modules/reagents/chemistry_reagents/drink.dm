@@ -61,7 +61,7 @@
 	if(!.)
 		return
 	if(M.getFireLoss() && prob(20))
-		M.heal_limb_damage(0,1)
+		M.heal_limb_damage(0,1, TRUE)
 
 
 /datum/reagent/drink/limejuice

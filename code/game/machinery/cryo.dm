@@ -233,7 +233,7 @@
 					occupant.apply_damage(max(-1, -20/occupant.getToxLoss()), TOX)
 				var/heal_brute = occupant.getBruteLoss() ? min(1, 20/occupant.getBruteLoss()) : 0
 				var/heal_fire = occupant.getFireLoss() ? min(1, 20/occupant.getFireLoss()) : 0
-				occupant.heal_limb_damage(heal_brute,heal_fire)
+				occupant.heal_limb_damage(heal_brute,heal_fire) //cryo can heal untreated burns fully
 
 	// Chemical healing if cryo meds are involved
 	if(beaker && occupant.reagents && beaker.reagents)

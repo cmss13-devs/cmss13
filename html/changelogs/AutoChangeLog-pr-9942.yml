@@ -1,0 +1,4 @@
+author: "matttheficus"
+delete-after: True
+changes:
+  - bugfix: "Field Doctor now counts hours towards the Doctor Roles timelock."

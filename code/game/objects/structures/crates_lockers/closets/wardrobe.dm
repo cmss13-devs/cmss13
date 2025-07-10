@@ -245,10 +245,45 @@
 	new /obj/item/clothing/under/rank/chemist(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/white(src)
-	new /obj/item/clothing/suit/storage/labcoat/chemist(src)
-	new /obj/item/clothing/suit/storage/labcoat/chemist(src)
+	new /obj/item/clothing/suit/storage/labcoat/pharmacist(src)
+	new /obj/item/clothing/suit/storage/labcoat/pharmacist(src)
 	return
 
+obj/structure/closet/wardrobe/pharmchem
+	name = "pharmaceutical chemist wardrobe"
+	icon_state = "orange"
+	icon_closed = "orange"
+	icon_opened = "orange_open"
+
+/obj/structure/closet/wardrobe/pharmchem/Initialize()
+	. = ..()
+	new /obj/item/clothing/under/rank/medical/pharmacist(src)
+	new /obj/item/clothing/under/rank/medical/pharmacist(src)
+	new /obj/item/clothing/head/surgery/pharmacist(src)
+	new /obj/item/clothing/head/surgery/pharmacist(src)
+	new /obj/item/clothing/shoes/white(src)
+	new /obj/item/clothing/shoes/white(src)
+	new /obj/item/clothing/suit/storage/labcoat/pharmacist(src)
+	new /obj/item/clothing/suit/storage/labcoat/pharmacist(src)
+	return
+
+obj/structure/closet/wardrobe/morgue
+	name = "morgue wardrobe"
+	icon_state = "black"
+	icon_closed = "black"
+	icon_opened = "black_open"
+
+/obj/structure/closet/wardrobe/morgue/Initialize()
+	. = ..()
+	new /obj/item/clothing/under/rank/medical/mortician(src)
+	new /obj/item/clothing/under/rank/medical/mortician(src)
+	new /obj/item/clothing/head/surgery/mortician(src)
+	new /obj/item/clothing/head/surgery/mortician(src)
+	new /obj/item/clothing/shoes/morgue(src)
+	new /obj/item/clothing/shoes/morgue(src)
+	new /obj/item/clothing/suit/storage/labcoat(src)
+	new /obj/item/clothing/suit/storage/labcoat(src)
+	return
 
 /obj/structure/closet/wardrobe/genetics_white
 	name = "genetics wardrobe"
@@ -304,7 +339,8 @@
 	new /obj/item/clothing/under/rank/medical/olive(src)
 	new /obj/item/clothing/under/rank/medical/grey(src)
 	new /obj/item/clothing/under/rank/medical/white(src)
-	new /obj/item/clothing/under/rank/medical/black(src)
+	new /obj/item/clothing/under/rank/medical/mortician(src)
+	new /obj/item/clothing/under/rank/medical/pharmacist(src)
 	new /obj/item/clothing/head/surgery/green(src)
 	new /obj/item/clothing/head/surgery/blue(src)
 	new /obj/item/clothing/head/surgery/lightblue(src)
@@ -313,11 +349,13 @@
 	new /obj/item/clothing/head/surgery/olive(src)
 	new /obj/item/clothing/head/surgery/grey(src)
 	new /obj/item/clothing/head/surgery/white(src)
-	new /obj/item/clothing/head/surgery/black(src)
+	new /obj/item/clothing/head/surgery/mortician(src)
+	new /obj/item/clothing/head/surgery/pharmacist(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/suit/storage/labcoat(src)
 	new /obj/item/clothing/suit/storage/labcoat(src)
+	new /obj/item/clothing/suit/storage/labcoat/pharmacist(src)
 	new /obj/item/clothing/mask/surgical(src)
 	new /obj/item/clothing/mask/surgical(src)
 	return

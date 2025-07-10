@@ -56,7 +56,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_doctor, list(
 		list("Lab Coat", 0, /obj/item/clothing/suit/storage/labcoat, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, High-Cut", 0, /obj/item/clothing/suit/storage/labcoat/short, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Lab Coat, Low-Cut", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
-		list("Lab Coat, Pharmaceutical Chemist", 0, /obj/item/clothing/suit/storage/labcoat/long, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
+		list("Lab Coat, Pharmaceutical Chemist", 0, /obj/item/clothing/suit/storage/labcoat/pharmacist, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("Medical's apron", 0, /obj/item/clothing/suit/chef/classic/medical, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 
 		list("SNOW GEAR (SNOW USE ONLY)", 0, null, null, null),

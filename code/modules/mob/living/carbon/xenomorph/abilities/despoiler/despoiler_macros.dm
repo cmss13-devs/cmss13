@@ -1,4 +1,4 @@
-/datum/action/xeno_action/verb/despoiler_empower_slash()
+/datum/action/xeno_action/verb/corrosive_slash()
 	set category = "Alien"
 	set name = "Empower Slashes"
 	set hidden = TRUE

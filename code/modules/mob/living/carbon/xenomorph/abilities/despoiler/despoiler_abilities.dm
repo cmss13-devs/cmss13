@@ -3,10 +3,10 @@
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 75
 
-/datum/action/xeno_action/onclick/despoiler_empower_slash
+/datum/action/xeno_action/onclick/corrosive_slash
 	name = "Crippling Strike"
 	action_icon_state = "lurker_inject_neuro"
-	macro_path = /datum/action/xeno_action/verb/despoiler_empower_slash
+	macro_path = /datum/action/xeno_action/verb/corrosive_slash
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
 	xeno_cooldown = 12 SECONDS

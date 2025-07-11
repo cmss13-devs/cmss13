@@ -34,7 +34,7 @@
 	desc = "A huge, looming beast of an alien."
 	icon_size = 64
 	icon_state = "Despoiler Walking"
-	plasma_types = list(PLASMA_NEUROTOXIN,PLASMA_PURPLE)
+	plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_PURPLE)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG
@@ -49,7 +49,7 @@
 		/datum/action/xeno_action/activable/tail_stab/despoiler,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/activable/xeno_spit/despoiler,
-		/datum/action/xeno_action/onclick/despoiler_empower_slash,
+		/datum/action/xeno_action/onclick/corrosive_slash,
 		/datum/action/xeno_action/onclick/decomposing_enzymes,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
@@ -65,7 +65,7 @@
 	pelt = /obj/item/pelt/praetorian
 
 
-/datum/action/xeno_action/onclick/despoiler_empower_slash/use_ability(atom/targeted_atom)
+/datum/action/xeno_action/onclick/corrosive_slash/use_ability(atom/targeted_atom)
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))
@@ -88,7 +88,7 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/onclick/despoiler_empower_slash/proc/unbuff_slash()
+/datum/action/xeno_action/onclick/corrosive_slash/proc/unbuff_slash()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if (!istype(xeno))
 		return

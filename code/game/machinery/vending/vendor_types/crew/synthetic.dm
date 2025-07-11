@@ -207,7 +207,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/under/rank/medical/white
 
 /datum/gear/synthetic/uscm/medical_black
-	path = /obj/item/clothing/under/rank/medical/mortician
+	path = /obj/item/clothing/under/rank/medical/morgue
 
 /datum/gear/synthetic/uscm/standard_synth
 	path = /obj/item/clothing/under/rank/synthetic
@@ -461,7 +461,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	path = /obj/item/clothing/head/surgery/white
 
 /datum/gear/synthetic/headwear/surgcap_black
-	path = /obj/item/clothing/head/surgery/mortician
+	path = /obj/item/clothing/head/surgery/morgue
 
 /datum/gear/synthetic/headwear/beanie
 	path = /obj/item/clothing/head/beanie

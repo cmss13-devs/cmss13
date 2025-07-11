@@ -279,9 +279,9 @@
 	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsbrown")
 
-/obj/item/clothing/under/rank/medical/mortician
-	name = "mortician's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Typically worn by morticians, these are black as coal."
+/obj/item/clothing/under/rank/medical/morgue
+	name = "morgue medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Typically worn by surgeons while they make autopsies, these are black as coal."
 	icon_state = "scrubsblack"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(

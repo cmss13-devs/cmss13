@@ -113,9 +113,9 @@
 	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. Typically worn by surgeons, one is jade green."
 	icon_state = "surgcap_green"
 
-/obj/item/clothing/head/surgery/mortician
-	name = "mortician's surgical cap"
-	desc = "A cap morticians and surgeons wear while making autopsies, rather than during operations. Keeps their hair from dropping and interfering with incision scans. This one is a black as coal."
+/obj/item/clothing/head/surgery/morgue
+	name = "morgue surgical cap"
+	desc = "A cap surgeons wear while making autopsies, rather than during operations. Keeps their hair from dropping and interfering with incision scans. This one is a black as coal."
 	icon_state = "surgcap_morgue"
 
 /obj/item/clothing/head/surgery/pharmacist

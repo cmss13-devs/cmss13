@@ -14,16 +14,36 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "g" = (

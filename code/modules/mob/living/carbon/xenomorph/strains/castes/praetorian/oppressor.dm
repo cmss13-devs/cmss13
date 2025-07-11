@@ -118,12 +118,12 @@
 			if(istype(structure, /obj/structure/barricade))
 				var/obj/structure/barricade/cade = structure
 				var/cade_facing = cade.dir
-				if(cade_facing == turn(facing, 180)) // Facing toward us
+				if(cade_facing == turn(facing, 180))
 					blocked = TRUE
-				else if(cade_facing == facing) // Facing away
+				else if(cade_facing == facing)
 					allow_one_more_step = TRUE
-				continue // Cade facing perpendicular doesn't block or allow
-			blocked = TRUE // Other dense/opaque structures block
+				continue
+			blocked = TRUE
 		if(blocked)
 			break
 

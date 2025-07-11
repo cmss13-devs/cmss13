@@ -60,10 +60,6 @@
 	},
 /turf/open/floor/prison/green/north,
 /area/tyrargo/indoors/admin/ground)
-"cs" = (
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/indoors/admin/ground)
 "cA" = (
 /turf/open/floor/plating,
 /area/tyrargo/indoors/admin/ground)
@@ -177,7 +173,6 @@
 /area/tyrargo/indoors/admin/ground)
 "gf" = (
 /obj/structure/bed/roller,
-/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "gn" = (
@@ -625,10 +620,10 @@
 /area/tyrargo/indoors/admin/ground)
 "uv" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/objective_landmark/close,
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "uz" = (
@@ -1182,11 +1177,6 @@
 /obj/structure/bed/roller,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/floor_plate,
-/area/tyrargo/indoors/admin/ground)
-"Os" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/prison/green/east,
 /area/tyrargo/indoors/admin/ground)
 "Ot" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1747,7 +1737,7 @@ lP
 lP
 dz
 UX
-cs
+XS
 tG
 Mm
 "}
@@ -2150,7 +2140,7 @@ Mm
 (28,1,1) = {"
 Bt
 Sg
-Os
+mP
 iU
 OX
 Gm

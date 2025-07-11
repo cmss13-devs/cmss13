@@ -691,6 +691,12 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
+"bI" = (
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 60
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/tyrargo/indoors/heyst)
 "bJ" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -701,6 +707,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts_road/central)
+"bK" = (
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
+/turf/open/floor/almayer/plating_striped/east,
+/area/tyrargo/indoors/heyst)
 "bL" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -7;
@@ -712,6 +724,20 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
+"bM" = (
+/obj/effect/landmark/ammo_spawn/smg_ammo,
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst)
+"bN" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
+/turf/open/floor/almayer,
+/area/tyrargo/indoors/heyst)
 "bO" = (
 /obj/structure/machinery/light_construct{
 	dir = 8
@@ -1266,7 +1292,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "gU" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
 	},
@@ -2201,6 +2226,9 @@
 /obj/structure/machinery/light_construct{
 	dir = 8
 	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
 /turf/open/floor/almayer,
 /area/tyrargo/indoors/heyst)
 "oD" = (
@@ -2484,10 +2512,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/tyrargo/indoors/heyst)
 "rB" = (
-/obj/structure/prop/vehicles/tank/miltruck/base{
-	dir = 4;
-	pixel_y = 2
-	},
 /obj/structure/largecrate/random{
 	layer = 3.1
 	},
@@ -3277,14 +3301,6 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "yl" = (
@@ -3595,13 +3611,6 @@
 "AE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
-/area/tyrargo/indoors/heyst)
-"AK" = (
-/obj/structure/prop/vehicles/tank/apc/base/destroyed{
-	dir = 8;
-	pixel_y = 19
-	},
-/turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/indoors/heyst)
 "AP" = (
 /obj/effect/decal/warning_stripes{
@@ -4804,6 +4813,9 @@
 /turf/open/floor/almayer,
 /area/tyrargo/indoors/heyst)
 "NB" = (
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/almayer/orange/west,
 /area/tyrargo/indoors/heyst)
 "NC" = (
@@ -4935,7 +4947,6 @@
 /obj/structure/largecrate/random{
 	layer = 3.1
 	},
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -6883,7 +6894,7 @@ um
 bO
 QU
 eg
-Gi
+bM
 Gi
 ze
 KV
@@ -7252,7 +7263,7 @@ uu
 cD
 EA
 ji
-EA
+bI
 VZ
 DQ
 XJ
@@ -7320,7 +7331,7 @@ ef
 He
 Zp
 Ix
-AK
+EA
 aN
 TG
 TG
@@ -7506,7 +7517,7 @@ nw
 aE
 yF
 hx
-pZ
+bK
 jX
 pZ
 PZ
@@ -7835,7 +7846,7 @@ sx
 sx
 HT
 CU
-nw
+bN
 Gi
 Gi
 LY

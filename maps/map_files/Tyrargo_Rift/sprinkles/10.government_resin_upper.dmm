@@ -25,6 +25,19 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/upper/external)
+"ad" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20
+	},
+/turf/open/floor/strata/floor3,
+/area/tyrargo/indoors/admin/upper)
 "aN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/floor/prison/floor_plate,
@@ -80,7 +93,7 @@
 	pixel_x = 8;
 	pixel_y = 20
 	},
-/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/admin/upper)
 "dQ" = (
@@ -460,7 +473,6 @@
 	icon_state = "trash_8";
 	pixel_y = -12
 	},
-/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/admin/upper)
 "yG" = (
@@ -614,7 +626,7 @@
 	pixel_x = 8;
 	pixel_y = 20
 	},
-/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/admin/upper)
 "Hv" = (
@@ -637,7 +649,7 @@
 	layer = 3.1;
 	pixel_y = 12
 	},
-/obj/effect/landmark/objective_landmark/close,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/strata/floor3,
 /area/tyrargo/indoors/admin/upper)
 "HR" = (
@@ -1670,7 +1682,7 @@ zP
 sL
 IO
 sL
-dK
+ad
 DG
 Kj
 ZR

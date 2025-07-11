@@ -380,11 +380,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg2,
 /area/tyrargo/indoors/gararge/upper/external)
-"FG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/objective_landmark/close,
-/turf/open/floor/hybrisa/tile/tilegreen,
-/area/tyrargo/indoors/admin/upper)
 "FL" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -920,7 +915,7 @@ NI
 NI
 RF
 EJ
-FG
+kJ
 rt
 gp
 Na

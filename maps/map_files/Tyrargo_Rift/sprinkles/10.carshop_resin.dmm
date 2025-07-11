@@ -190,12 +190,12 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/gararge/ground)
 "hX" = (
-/obj/structure/prop/vehicles/tank/apc/base/destroyed{
-	dir = 8;
-	pixel_y = -11
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/apc/destroyed{
+	dir = 8;
+	pixel_y = -13
+	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/gararge/ground)
 "ir" = (

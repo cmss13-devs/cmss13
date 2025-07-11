@@ -21,7 +21,7 @@
 
 /datum/action/xeno_action/onclick/decomposing_enzymes
 	name = "Decomposing Enzymes"
-	action_icon_state = "decmposing_enzymes"
+	action_icon_state = "decomposing_enzymes"
 	macro_path = /datum/action_xeno_action/verb/decomposing_enzymes
 	xeno_cooldown = 18 SECONDS
 	plasma_cost = 50

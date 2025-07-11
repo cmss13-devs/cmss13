@@ -640,7 +640,7 @@
 	icon_overlay = "_seadeep"
 
 /turf/open/gm/river/desert/tyrargo/deep/no_slowdown
-	base_river_slowdown = 0
+	base_river_slowdown = 1
 
 /turf/open/gm/river/desert/tyrargo/deep/covered
 	covered = TRUE

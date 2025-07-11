@@ -128,7 +128,7 @@
 	var/datum/effects/acid/acid_effect = locate() in target.effects_list
 	if(!acid_effect)
 		return
-	target.apply_armoured_damage(get_xeno_damage_acid(target, acid_effect.acid_level * 15), ARMOR_BIO, BURN, limb ? limb.name : "chest")
+	target.apply_armoured_damage(acid_effect.acid_level * 25, ARMOR_BIO, BURN, limb ? limb.name : "chest", acid_effect.acid_level * 10 )
 
 /datum/action/xeno_action/onclick/decomposing_enzymes/use_ability(atom/target)
 	. = ..()

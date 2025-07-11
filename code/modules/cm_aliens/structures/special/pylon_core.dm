@@ -263,6 +263,8 @@
 	// Handle spawning larva if core is connected to a hive
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/worm in range(2, src))
+			if(world.time - worm.time_of_birth <= 6 SECONDS)
+				continue
 			if((!worm.ckey || worm.stat == DEAD) && worm.burrowable && (worm.hivenumber == linked_hive.hivenumber) && !QDELETED(worm))
 				visible_message(SPAN_XENODANGER("[worm] quickly burrows into \the [src]."))
 				if(!worm.banished)

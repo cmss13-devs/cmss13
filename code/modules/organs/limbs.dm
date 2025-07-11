@@ -228,7 +228,7 @@
 	if(owner.mind && owner.skills)
 		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
-	var/damage = armor_damage_reduction(GLOB.marine_eschar, burn*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+	var/damage = armor_damage_reduction(GLOB.marine_eschar, burn*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-burn_dam) / max_damage) : 100)
 
 	if(burn_dam > min_eschar_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*2))
 		eschar()
@@ -1374,6 +1374,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	cavity = "thoracic cavity"
 	max_damage = 200
 	min_broken_damage = 30
+	min_eschar_damage = 30
 	body_part = BODY_FLAG_CHEST
 	vital = 1
 	encased = "ribcage"
@@ -1387,6 +1388,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	cavity = "abdominal cavity"
 	max_damage = 200
 	min_broken_damage = 30
+	min_eschar_damage = 30
 	body_part = BODY_FLAG_GROIN
 	vital = 1
 	splint_icon_amount = 1
@@ -1403,12 +1405,14 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	display_name = "leg"
 	max_damage = 35
 	min_broken_damage = 20
+	min_eschar_damage = 20
 
 /obj/limb/foot
 	name = "foot"
 	display_name = "foot"
 	max_damage = 30
 	min_broken_damage = 20
+	min_eschar_damage = 20
 	can_bleed_internally = FALSE
 
 /obj/limb/arm
@@ -1416,12 +1420,14 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	display_name = "arm"
 	max_damage = 35
 	min_broken_damage = 20
+	min_eschar_damage = 20
 
 /obj/limb/hand
 	name = "hand"
 	display_name = "hand"
 	max_damage = 30
 	min_broken_damage = 20
+	min_eschar_damage = 20
 	can_bleed_internally = FALSE
 
 /obj/limb/arm/l_arm
@@ -1507,6 +1513,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	cavity = "cranial cavity"
 	max_damage = 60
 	min_broken_damage = 30
+	min_eschar_damage = 30
 	body_part = BODY_FLAG_HEAD
 	vital = 1
 	encased = "skull"

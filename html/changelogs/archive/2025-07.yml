@@ -81,3 +81,6 @@
 2025-07-10:
   Red-byte3D:
   - code_imp: Xenomorph markers can now be put into different z levels
+2025-07-11:
+  matttheficus:
+  - bugfix: Field Doctor now counts hours towards the Doctor Roles timelock.

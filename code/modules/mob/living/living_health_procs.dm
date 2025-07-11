@@ -39,7 +39,7 @@
 /mob/living/getFireLoss()
 	return fireloss
 
-/mob/living/proc/adjustFireLoss(amount)
+/mob/living/proc/adjustFireLoss(amount, chemical = FALSE)
 	if(status_flags & GODMODE)
 		return 0 //godmode
 	fireloss = min(max(fireloss + amount, 0),(maxHealth*2))
@@ -503,9 +503,9 @@
 		return COMPONENT_NO_IGNITE
 
 // heal ONE limb, organ gets randomly selected from damaged ones.
-/mob/living/proc/heal_limb_damage(brute, burn)
+/mob/living/proc/heal_limb_damage(brute, burn, chemical = FALSE)
 	apply_damage(-brute, BRUTE)
-	apply_damage(-burn, BURN)
+	apply_damage(-burn, BURN, chemical = chemical)
 	src.updatehealth()
 
 

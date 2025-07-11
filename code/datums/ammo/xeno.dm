@@ -224,7 +224,7 @@
 
 /datum/ammo/xeno/acid/despoiler
 	name = "corrosive Spit"
-	icon_state = "Xeno_acid_strong"
+	icon_state = "xeno_acid_strong"
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32

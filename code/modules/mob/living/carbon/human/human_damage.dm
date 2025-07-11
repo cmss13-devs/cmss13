@@ -401,13 +401,8 @@ This function restores all limbs.
 		return FALSE
 
 	var/armor = getarmor(target_limb, armour_type)
-	var/datum/effects/acid/acid_effect = locate() in effects_list
-	if(acid_effect)
-		armor = acid_effect.adjust_armor(armor, damage_type)
 
 	var/armour_config = GLOB.marine_ranged
-	if(armour_type == ARMOR_MELEE)
-		armour_config = GLOB.marine_melee
 
 	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
 	apply_damage(modified_damage, damage_type, target_limb)

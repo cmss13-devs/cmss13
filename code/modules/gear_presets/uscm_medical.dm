@@ -104,7 +104,7 @@
 
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist
-	name = "USCM Pharmaceutical Chemist"
+	name = "USCM Pharmaceutical Physician"
 	assignment = JOB_PHARMACIST
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/pharmacist/load_gear(mob/living/carbon/human/new_human)
@@ -115,19 +115,6 @@
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/pharmacist(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
-
-/datum/equipment_preset/uscm_ship/uscm_medical/doctor/mortician
-	name = "USCM Mortician"
-	assignment = JOB_MORTICIAN
-
-/datum/equipment_preset/uscm_ship/uscm_medical/doctor/mortician/load_gear(mob/living/carbon/human/new_human)
-	var/back_item = /obj/item/storage/backpack/marine/satchel
-	if (new_human.client?.prefs && new_human.client.prefs.backbag == 1)
-		back_item = /obj/item/storage/backpack/marine
-
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/mortician(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/morgue(new_human), WEAR_FEET)
 
 
 //*****************************************************************************************************/
@@ -178,7 +165,7 @@
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
-		back_item = /obj/item/storage/backpack/marine
+		back_item = /obj/item/storage/backpack/marine/
 
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/lightblue(new_human), WEAR_BODY)

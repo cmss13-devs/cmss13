@@ -126,7 +126,7 @@
 	icon_state = "labcoat_gen"
 
 /obj/item/clothing/suit/storage/labcoat/pharmacist
-	name = "Pharmaceutical Chemist's lab coat"
+	name = "Pharmaceutical Physician's lab coat"
 	desc = "A suit that protects against minor chemical spills. Has an orange stripe on each shoulder."
 	icon_state = "labcoat_pharm"
 

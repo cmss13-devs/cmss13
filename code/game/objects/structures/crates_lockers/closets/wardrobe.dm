@@ -250,7 +250,7 @@
 	return
 
 /obj/structure/closet/wardrobe/pharmchem
-	name = "pharmaceutical chemist wardrobe"
+	name = "pharmaceutical physician wardrobe"
 	icon_state = "orange"
 	icon_closed = "orange"
 	icon_opened = "orange_open"

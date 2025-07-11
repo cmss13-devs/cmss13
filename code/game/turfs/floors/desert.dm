@@ -629,7 +629,7 @@
 	icon_overlay = "_seashallow"
 
 /turf/open/gm/river/desert/tyrargo/no_slowdown
-	base_river_slowdown = 0
+	base_river_slowdown = 1
 
 /turf/open/gm/river/desert/tyrargo/covered
 	covered = TRUE

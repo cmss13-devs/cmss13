@@ -804,15 +804,9 @@ Additional game mode variables.
 
 	return TRUE
 
-/datum/game_mode/proc/transfer_xeno(mob/xeno_candidate, mob/living/new_xeno, verify = FALSE)
+/datum/game_mode/proc/transfer_xeno(mob/xeno_candidate, mob/living/new_xeno)
 	if(!xeno_candidate || !isxeno(new_xeno) || QDELETED(new_xeno))
 		return FALSE
-
-	if(verify)
-		var/confirm = tgui_alert(xeno_candidate, "Do your wish to become [new_xeno]?", "Confirm Join Xeno", list("Yes","No"), 5 SECONDS)
-		playsound_client(xeno_candidate?.client, 'sound/machines/pda_ping.ogg', src, 50, 0)
-		if(confirm == "No")
-			return FALSE
 
 	var/datum/mind/xeno_candidate_mind
 	if(ismind(xeno_candidate))

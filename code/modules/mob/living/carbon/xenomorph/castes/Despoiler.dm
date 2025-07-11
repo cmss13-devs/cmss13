@@ -11,7 +11,7 @@
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
 	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
-	speed = XENO_SPEED_TIER_5
+	speed = XENO_SPEED_TIER_6
 
 	deevolves_to = list(XENO_CASTE_SPITTER)
 
@@ -47,9 +47,10 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/despoiler,
+		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/activable/xeno_spit/despoiler,
 		/datum/action/xeno_action/onclick/despoiler_empower_slash,
-		/datum/action/xeno_action/activable/decomposing_enzymes,
+		/datum/action/xeno_action/onclick/decomposing_enzymes,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -129,7 +130,7 @@
 		return
 	target.apply_armoured_damage(get_xeno_damage_acid(target, acid_effect.acid_level * 15), ARMOR_BIO, BURN, limb ? limb.name : "chest")
 
-/datum/action/xeno_action/activable/decomposing_enzymes/use_ability(atom/target)
+/datum/action/xeno_action/onclick/decomposing_enzymes/use_ability(atom/target)
 	. = ..()
 
 	var/mob/living/carbon/xenomorph/xeno = owner

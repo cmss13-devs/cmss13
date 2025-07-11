@@ -31,6 +31,7 @@
 
 	var/is_weyland = FALSE
 	var/authenticated = FALSE
+	var/mob/maybe_authenticated_user
 
 /obj/structure/machinery/computer/card/wey_yu
 	is_weyland = TRUE
@@ -42,14 +43,26 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
+	var/datum/weakref/id_weakref = id_card.registered_ref
+	if (id_weakref && id_weakref.resolve() && id_weakref.resolve() != user)
+		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Incorrect user for the given ID!\"")
+		return FALSE
+
 	if(check_access(id_card))
 		authenticated = TRUE
+		maybe_authenticated_user = user
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
 		update_static_data(user)
 		return TRUE
 
 	visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
 	return FALSE
+
+/obj/structure/machinery/computer/card/proc/verify_current_user_is_authenticated_user(mob/user)
+	if (!authenticated)
+		return FALSE
+
+	return user == maybe_authenticated_user
 
 /obj/structure/machinery/computer/card/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -86,8 +99,12 @@
 					user_id_card.forceMove(loc)
 				user_id_card = null
 		if("PRG_logout")
+			if (!verify_current_user_is_authenticated_user(user))
+				return
+
 			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 			authenticated = FALSE
+			maybe_authenticated_user = null
 			if(ishuman(user))
 				user_id_card.forceMove(user.loc)
 				if(!user.get_active_hand())
@@ -99,7 +116,7 @@
 		if("PRG_print")
 			if(!printing)
 				if(params["mode"])
-					if(!authenticated || !target_id_card)
+					if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 						return
 
 					printing = TRUE
@@ -166,7 +183,7 @@
 						return TRUE
 			return FALSE
 		if("PRG_terminate")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			target_id_card.assignment = "Terminated"
@@ -175,7 +192,7 @@
 			message_admins("[user.real_name] terminated the ID of [target_id_card.registered_name].", key_name_admin(user))
 			return TRUE
 		if("PRG_edit")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			var/new_name = strip_html(params["name"])
@@ -185,7 +202,7 @@
 			target_id_card.registered_name = new_name
 			return TRUE
 		if("PRG_assign")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 			var/target = params["assign_target"]
 			if(!target)
@@ -213,7 +230,7 @@
 			message_admins("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment '[target_id_card.assignment]'.")
 			return TRUE
 		if("PRG_access")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			var/access_type = params["access_target"]
@@ -237,7 +254,7 @@
 					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted access '[get_access_desc(access_type)]'. </font>", key_name_admin(user))
 				return TRUE
 		if("PRG_grantall")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			target_id_card.access |= (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
@@ -245,7 +262,7 @@
 			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted the ID all access and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyall")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			var/list/access = target_id_card.access
@@ -254,7 +271,7 @@
 			log_idmod(target_id_card, "<font color='red'> [user.real_name] removed all accesses and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_grantregion")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			if(params["region"] == "Faction (IFF system)")
@@ -269,7 +286,7 @@
 			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted all [additions] accesses. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyregion")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			if(params["region"] == "Faction (IFF system)")
@@ -284,7 +301,7 @@
 			log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked all [additions] accesses. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_account")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			var/account = text2num(params["account"])

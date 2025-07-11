@@ -223,7 +223,7 @@
 		PAS.increment_stack_count()
 
 /datum/ammo/xeno/acid/despoiler
-	name = "corrosive Spit"
+	name = "corrosive spit"
 	icon_state = "xeno_acid_strong"
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5

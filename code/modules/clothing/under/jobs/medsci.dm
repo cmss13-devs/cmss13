@@ -203,8 +203,8 @@
 	item_state_slots = list(WEAR_BODY = "medical")
 
 /obj/item/clothing/under/rank/medical/lightblue
-	name = "light blue medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Typically worn by nurses, these are in baby blue."
+	name = "nurse's medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Associated with nurses, are in a calming sky blue."
 	icon_state = "scrubslightblue"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -214,8 +214,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubslightblue")
 
 /obj/item/clothing/under/rank/medical/blue
-	name = "blue medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Typically worn by doctors, These are in formal navy blue."
+	name = "doctor's medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Doctors without specialties wear these. These are in a professional navy blue."
 	icon_state = "scrubsblue"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -225,8 +225,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsblue")
 
 /obj/item/clothing/under/rank/medical/green
-	name = "green medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Typically worn by surgeons, These are in jade green."
+	name = "surgeon's medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Associated with surgeons, these are in a soothing surgery green."
 	icon_state = "scrubsgreen"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -237,7 +237,7 @@
 
 /obj/item/clothing/under/rank/medical/purple
 	name = "purple medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. These are in amaranth purple."
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Fancy doctors like to wear these are wine-colored scrubs."
 	icon_state = "scrubspurple"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -248,7 +248,7 @@
 
 /obj/item/clothing/under/rank/medical/olive
 	name = "olive green medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. These are in olive green."
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Doctors without specialties wear these to calm and ground patients. These are in olive green."
 	icon_state = "scrubsolive"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -259,7 +259,7 @@
 
 /obj/item/clothing/under/rank/medical/grey
 	name = "grey medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. These are in mundane grey."
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Doctors without specialties wear these to calm patients and to keep professional. These are neutral grey."
 	icon_state = "scrubsgrey"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -270,7 +270,7 @@
 
 /obj/item/clothing/under/rank/medical/brown
 	name = "brown medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. These are a ruddy brown."
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Doctors without specialties wear these to calm and ground patients. These are a ruddy brown."
 	icon_state = "scrubsbrown"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -281,7 +281,7 @@
 
 /obj/item/clothing/under/rank/medical/morgue
 	name = "morgue medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Typically worn by surgeons while they make autopsies, these are black as coal."
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. They're worn by doctors who are making autopsies. These are black as coal. Morbid."
 	icon_state = "scrubsblack"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -292,7 +292,7 @@
 
 /obj/item/clothing/under/rank/medical/white
 	name = "white medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. These are white as snow."
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Cherished by all doctors who enjoy cleanliness, these are white as snow."
 	icon_state = "scrubswhite"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -313,8 +313,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubsorange")
 
 /obj/item/clothing/under/rank/medical/pharmacist
-	name = "pharmaceutical chemist's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Typically worn by pharmacists, these are white with orange shoulder stripes."
+	name = "pharmaceutical physician's medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. Doctors with a specialty in pharmaceuticals wear these. These are white with orange shoulder stripes."
 	icon_state = "scrubspharm"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(
@@ -324,8 +324,8 @@
 	item_state_slots = list(WEAR_BODY = "scrubspharm")
 
 /obj/item/clothing/under/rank/medical/cmo
-	name = "Chief Medical Officer's medical scrubs"
-	desc = "They're made of a special fiber that provides minor protection against bio-hazards. These are jade green and adorned with peach stripes."
+	name = "chief medical officer's medical scrubs"
+	desc = "They're made of a special fiber that provides minor protection against bio-hazards. These are jade green and adorned with peach stripes that denote the wearer is the Chief Medical Officer."
 	icon_state = "scrubscmo"
 	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/medical.dmi'
 	item_icons = list(

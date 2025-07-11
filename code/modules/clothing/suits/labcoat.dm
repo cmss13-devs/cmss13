@@ -126,12 +126,12 @@
 	icon_state = "labcoat_gen"
 
 /obj/item/clothing/suit/storage/labcoat/pharmacist
-	name = "Pharmaceutical Physician's lab coat"
+	name = "pharmaceutical physician's lab coat"
 	desc = "A suit that protects against minor chemical spills. Has an orange stripe on each shoulder."
 	icon_state = "labcoat_pharm"
 
 /obj/item/clothing/suit/storage/labcoat/virologist
-	name = "Virologist's lab coat"
+	name = "virologist's lab coat"
 	desc = "A suit that protects against minor chemical spills. Offers slightly more protection against bio-hazards than the standard model. Has a green stripe on the shoulder."
 	icon_state = "labcoat_vir"
 	armor_melee = CLOTHING_ARMOR_NONE
@@ -144,12 +144,12 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
 /obj/item/clothing/suit/storage/labcoat/science
-	name = "Scientist's lab coat"
+	name = "scientist's lab coat"
 	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
 	icon_state = "labcoat_tox"
 
 /obj/item/clothing/suit/storage/labcoat/officer
-	name = "Chief Medical Officer's lab coat"
+	name = "chief medical officer's lab coat"
 	desc = "A green, sleek, long, and sturdy lab coat, designed to distinguish a higher ranking medical personnel. The fabric provides protection against chemical and biological hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
@@ -365,19 +365,19 @@
 	)
 
 /obj/item/clothing/suit/storage/labcoat/brown
-	name = "brownlab coat"
+	name = "brown lab coat"
 	desc = "A suit that protects against minor chemical spills. This one is brown."
 	icon_state = "labcoat_brown"
 	item_state = "labcoat_brown"
 
 /obj/item/clothing/suit/storage/labcoat/short
-	name = "high-cutlab coat"
+	name = "high-cut lab coat"
 	desc = "A suit that protects against minor chemical spills. This one exposes the legs a little more."
 	icon_state = "labcoat_short"
 	item_state = "labcoat_short"
 
 /obj/item/clothing/suit/storage/labcoat/long
-	name = "low-cutlab coat"
+	name = "low-cut lab coat"
 	desc = "A suit that protects against minor chemical spills. This one drapes down quite low."
 	icon_state = "labcoat_long"
 	item_state = "labcoat_long"

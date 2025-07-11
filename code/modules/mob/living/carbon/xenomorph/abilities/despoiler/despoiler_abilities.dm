@@ -5,7 +5,7 @@
 
 /datum/action/xeno_action/onclick/corrosive_slash
 	name = "Crippling Strike"
-	action_icon_state = "lurker_inject_neuro"
+	action_icon_state = "corrosive_slash"
 	macro_path = /datum/action/xeno_action/verb/corrosive_slash
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	action_type = XENO_ACTION_ACTIVATE
@@ -15,13 +15,13 @@
 	var/buff_duration = 50
 
 /datum/action/xeno_action/activable/tail_stab/despoiler
-	name = "Finishing Stab"
+	name = "Finishing Acid Stab"
 	charge_time = 3 SECONDS
 
 
 /datum/action/xeno_action/onclick/decomposing_enzymes
-	name = "Decomposition Enzymes"
-	action_icon_state = "screech"
+	name = "Decomposing Enzymes"
+	action_icon_state = "decmposing_enzymes"
 	macro_path = /datum/action_xeno_action/verb/decomposing_enzymes
 	xeno_cooldown = 18 SECONDS
 	plasma_cost = 50

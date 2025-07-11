@@ -877,8 +877,8 @@
 	if(isnull(new_xeno))
 		return FALSE
 
-	var/confirm = tgui_alert(xeno_candidate, "Do your wish to become [new_xeno]?", "Confirm Join Xeno", list("Yes","No"), 5 SECONDS)
 	playsound_client(xeno_candidate?.client, 'sound/machines/pda_ping.ogg', src, 50, 0)
+	var/confirm = tgui_alert(xeno_candidate, "Do your wish to become [new_xeno]?", "Confirm Join Xeno", list("Yes","No"), 5 SECONDS)
 	if(confirm == "No")
 		qdel(new_xeno)
 		return FALSE

@@ -1,6 +1,7 @@
 /datum/action/xeno_action/activable/xeno_spit/despoiler
 	xeno_cooldown = 5 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_1
+	plasma_cost = 75
 
 /datum/action/xeno_action/onclick/despoiler_empower_slash
 	name = "Crippling Strike"

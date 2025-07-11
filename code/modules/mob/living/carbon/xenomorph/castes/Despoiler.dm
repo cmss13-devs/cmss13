@@ -34,7 +34,7 @@
 	desc = "A huge, looming beast of an alien."
 	icon_size = 64
 	icon_state = "Despoiler Walking"
-	plasma_types = list(PLASMA_PHEROMONE,PLASMA_NEUROTOXIN)
+	plasma_types = list(PLASMA_NEUROTOXIN,PLASMA_PURPLE)
 	pixel_x = -16
 	old_x = -16
 	mob_size = MOB_SIZE_BIG

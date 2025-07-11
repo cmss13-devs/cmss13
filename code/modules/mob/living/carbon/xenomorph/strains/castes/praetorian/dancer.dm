@@ -108,7 +108,7 @@
 		var/mob/living/carbon/human/Hu = target_carbon
 		Hu.update_xeno_hostile_hud()
 
-	// Hmm todayvisible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
+	// Hmm today visible_message(SPAN_DANGER("\The [dancer_user] violently slices [target_atom] with its tail[buffed?" twice":""]!"),
 	dancer_user.face_atom(target_atom)
 
 	var/damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
@@ -117,7 +117,6 @@
 					SPAN_DANGER("We slice [target_atom] with our tail[buffed?" twice":""]!"))
 
 	if(buffed)
-		// Do two attacks instead of one
 		dancer_user.animation_attack_on(target_atom)
 		dancer_user.flick_attack_overlay(target_atom, "tail")
 		dancer_user.emote("roar") // Feedback for the player that we got the magic double impale
@@ -125,7 +124,6 @@
 		target_carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 		playsound(target_carbon, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
 
-		// Reroll damage
 		damage = get_xeno_damage_slash(target_carbon, rand(dancer_user.melee_damage_lower, dancer_user.melee_damage_upper))
 		var/list/attack_data = list(
 			"attacker" = dancer_user,
@@ -167,7 +165,6 @@
 	if(!istype(behavior))
 		return
 
-	//Activate dodge mechanics
 	behavior.dodge_activated = TRUE
 	button.icon_state = "template_active"
 	to_chat(dodge_user, SPAN_XENOHIGHDANGER("We can now dodge through mobs!"))
@@ -176,10 +173,8 @@
 	dodge_user.add_temp_pass_flags(PASS_MOB_THRU)
 	dodge_user.recalculate_speed()
 
-	//Start afterimage sequence
 	INVOKE_ASYNC(src, PROC_REF(create_afterimage_sequence), dodge_user, duration)
 
-	//Set a timer to remove effects AFTER the full duration of the ability
 	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
 
 	apply_cooldown()
@@ -249,7 +244,6 @@
 	if(!afterimage_location)
 		return
 
-	//Apply directional offset based on the player's direction
 	var/directional_offset_x = 0
 	var/directional_offset_y = 0
 
@@ -263,7 +257,6 @@
 		if(WEST)
 			directional_offset_x = 16
 
-	//Create the afterimage at the current position with the offset
 	var/obj/effect/overlay/afterimage = new /obj/effect/overlay/afterimage(afterimage_location)
 	afterimage.icon = dodge_user.icon
 	afterimage.icon_state = dodge_user.icon_state
@@ -271,11 +264,10 @@
 	afterimage.layer = dodge_user.layer
 	afterimage.dir = dodge_user.dir
 	afterimage.alpha = 200
-	afterimage.mouse_opacity = 0 // Non-interactive
+	afterimage.mouse_opacity = 0
 	afterimage.pixel_x = dodge_user.pixel_x + directional_offset_x
 	afterimage.pixel_y = dodge_user.pixel_y + directional_offset_y
 
-	//Trigger the fade-out effect for the afterimage
 	addtimer(CALLBACK(afterimage, TYPE_PROC_REF(/obj/effect/overlay/afterimage, fade_out_afterimage)))
 
 /obj/effect/overlay/afterimage/proc/fade_out_afterimage()

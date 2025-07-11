@@ -600,7 +600,7 @@
 
 /obj/item/storage/backpack/marine/satchel
 	name = "\improper USCM satchel"
-	desc = "A heavy-duty satchel carried by some USCM marines and support personnel."
+	desc = "A heavy-duty satchel carried by some Marines of the USCM and support personnel."
 	icon_state = "marinesatch"
 	worn_accessible = TRUE
 	storage_slots = null

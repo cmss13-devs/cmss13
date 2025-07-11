@@ -14,28 +14,40 @@
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aad" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "aae" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "aaf" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/underground/bunker/south)
 "aag" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/south)
 "aah" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/north)
 "aai" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/north)
 "aaj" = (
@@ -56,7 +68,9 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_exterior/south_east)
 "aan" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aao" = (
@@ -107,7 +121,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/oob)
 "aat" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "aau" = (
@@ -143,7 +159,9 @@
 /area/tyrargo/indoors/market/ground)
 "aaC" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aaD" = (
@@ -166,7 +184,9 @@
 /area/tyrargo/indoors/sewer_treatment/upper)
 "aaJ" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/west)
 "aaK" = (
@@ -218,7 +238,9 @@
 /area/tyrargo/indoors/apartment/south_ground)
 "aaT" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/hybrisa/street/roadlines4,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aaU" = (
@@ -255,7 +277,9 @@
 /area/tyrargo/indoors/engineering/ground)
 "aba" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "abb" = (
@@ -284,7 +308,7 @@
 /area/tyrargo/landing_zone_2/no_tunnel)
 "abg" = (
 /obj/structure/prop/vehicles/tank/longstreet/ballistic/destroyed{
-	pixel_y = -34;
+	pixel_y = -33;
 	pixel_x = -48;
 	dir = 1;
 	layer = 2.8
@@ -297,7 +321,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "abh" = (
 /obj/item/ammo_casing/bullet,
@@ -586,7 +610,9 @@
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/underground/museum_carpark)
 "abV" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "abW" = (
@@ -2117,10 +2143,6 @@
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
-"agh" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/east)
 "agi" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -2191,14 +2213,30 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "ago" = (
@@ -3363,7 +3401,9 @@
 /area/tyrargo/indoors/sewer_treatment/ground)
 "ajp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ajq" = (
@@ -4580,11 +4620,6 @@
 /obj/effect/decal/hybrisa/road/lines1,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
-"amX" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_1,
-/turf/open/asphalt/cement/cement1,
-/area/tyrargo/outdoors/colony_streets/east)
 "amY" = (
 /obj/structure/prop/rock/black_ground{
 	icon_state = "black_ground_alt"
@@ -5734,7 +5769,9 @@
 "apr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/barbed_wire,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "aps" = (
@@ -8124,6 +8161,10 @@
 "auy" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/truck/broken{
+	dir = 8;
+	pixel_y = -28
+	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "auz" = (
@@ -9858,11 +9899,15 @@
 "ayQ" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/hybrisa/road/roadmiddle,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ayR" = (
 /obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayS" = (
@@ -9946,7 +9991,6 @@
 	pixel_x = -10;
 	pixel_y = 13
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "azb" = (
@@ -12903,12 +12947,12 @@
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aGF" = (
 /obj/effect/decal/hybrisa/road/lines3,
-/obj/structure/prop/vehicles/tank/truck/base{
-	dir = 4;
-	pixel_y = -21
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/truck{
+	dir = 4;
+	pixel_y = -23
+	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aGG" = (
@@ -13861,7 +13905,6 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2"
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/ground)
 "aIQ" = (
@@ -15595,7 +15638,9 @@
 "aMK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aML" = (
@@ -16045,14 +16090,30 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/almayer/black/west,
 /area/tyrargo/underground/bunker/south)
 "aND" = (
@@ -16842,16 +16903,36 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aPh" = (
@@ -17020,7 +17101,9 @@
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aPx" = (
@@ -17513,12 +17596,6 @@
 "aQt" = (
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/landing_zone_2/no_tunnel)
-"aQu" = (
-/obj/item/device/flashlight/flare/on{
-	fuel_rate = 5
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/tyrargo/outdoors/outskirts/fsb_north)
 "aQv" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
@@ -17715,7 +17792,9 @@
 	pixel_x = -1;
 	pixel_y = 17
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aQO" = (
@@ -18365,14 +18444,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2)
-"aSn" = (
-/obj/structure/prop/vehicles/tank/miltruck/base{
-	dir = 8;
-	pixel_y = 2
-	},
-/obj/effect/decal/hybrisa/dirt,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/landing_zone_2)
 "aSo" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/prop/colony/usedbandage{
@@ -18582,7 +18653,9 @@
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/landing_zone_2)
 "aSL" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north)
 "aSM" = (
@@ -19160,9 +19233,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
 "aTM" = (
-/obj/structure/prop/vehicles/tank/miltruck/base/destroyed{
-	pixel_x = -8
-	},
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	color = "#FF7700";
 	icon = 'icons/effects/fire.dmi';
@@ -19181,6 +19251,10 @@
 	pixel_y = 10;
 	light_color = "#FF7700";
 	pixel_x = 3
+	},
+/obj/structure/prop/vehicles/tank/miltruck{
+	pixel_y = -15;
+	pixel_x = -32
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
@@ -21705,7 +21779,9 @@
 /area/tyrargo/landing_zone_1/west_trench)
 "aYl" = (
 /obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "aYm" = (
@@ -22637,17 +22713,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
-"aZY" = (
-/obj/structure/prop/vehicles/tank/truck/base/broken{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -35;
-	pixel_y = -15
-	},
-/obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aZZ" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
@@ -23092,7 +23157,9 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /obj/structure/barricade/sandbags/wired{
 	icon_state = "sandbag_0";
 	color = "#a98c7c";
@@ -24097,6 +24164,10 @@
 	dir = 8
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	pixel_x = -32;
+	pixel_y = -15
+	},
 /turf/closed/wall/strata_ice/rock,
 /area/tyrargo/landing_zone_2)
 "bcR" = (
@@ -24193,7 +24264,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bdc" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "bdd" = (
@@ -24209,15 +24282,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
-"bde" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/east)
 "bdf" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "bdg" = (
@@ -24258,12 +24329,6 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1/no_mans_land)
-"bdk" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/obj/effect/spawner/gibspawner/xeno,
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/central)
 "bdl" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -24790,13 +24855,13 @@
 /turf/open/floor/hybrisa/tile/blacktileshiny,
 /area/tyrargo/indoors/mall)
 "beo" = (
-/obj/structure/prop/vehicles/tank/miltruck/base/destroyed{
-	pixel_x = -25;
-	pixel_y = -1
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	pixel_y = -2;
+	pixel_x = -23
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/oob)
 "bep" = (
@@ -25023,12 +25088,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
-"beQ" = (
-/obj/structure/prop/vehicles/tank/miltruck/base{
-	pixel_y = -16
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/tyrargo/landing_zone_2)
 "beR" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/ramptop/east,
@@ -25038,13 +25097,6 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor/prison/ramptop/east,
-/area/tyrargo/landing_zone_2)
-"beT" = (
-/obj/structure/platform/metal/hybrisa/metalplatform3/west,
-/obj/structure/prop/vehicles/tank/miltruck/base{
-	dir = 1
-	},
-/turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2)
 "beU" = (
 /obj/structure/blocker/invisible_wall,
@@ -25058,6 +25110,10 @@
 	pixel_x = -4
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	dir = 1;
+	pixel_x = -32
+	},
 /turf/closed/wall/strata_ice/jungle,
 /area/tyrargo/landing_zone_2)
 "beV" = (
@@ -25767,7 +25823,9 @@
 /turf/open/floor/coagulation/icon0_0,
 /area/tyrargo/indoors/sewer_treatment/lower)
 "bgF" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "bgG" = (
@@ -26470,13 +26528,12 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/oob)
 "bia" = (
-/obj/structure/prop/vehicles/tank/truck/base{
-	dir = 4;
-	pixel_y = -25;
-	pixel_x = 1
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/truck{
+	dir = 4;
+	pixel_y = -23
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/landing_zone_2/no_tunnel)
 "bib" = (
@@ -26534,13 +26591,6 @@
 	layer = 5.75
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
-/area/tyrargo/oob)
-"big" = (
-/obj/structure/prop/vehicles/tank/miltruck/base{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/turf/open/auto_turf/strata_grass,
 /area/tyrargo/oob)
 "bih" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -27424,7 +27474,9 @@
 	pixel_x = -10;
 	pixel_y = -5
 	},
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkj" = (
@@ -27664,14 +27716,30 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 30
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkM" = (
@@ -28005,13 +28073,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/west)
-"blv" = (
-/obj/structure/prop/vehicles/tank/truck/base/broken{
-	dir = 4;
-	layer = 3.1
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts_road/central)
 "blw" = (
 /obj/structure/platform/stone/kutjevo/east,
 /obj/structure/platform/stone/kutjevo,
@@ -28085,6 +28146,11 @@
 	pixel_y = 7
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/vehicles/tank/truck/broken{
+	dir = 4;
+	pixel_y = -32;
+	layer = 4
+	},
 /turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts_road/central)
 "blC" = (
@@ -28111,23 +28177,19 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
-"blF" = (
-/obj/structure/prop/vehicles/tank/miltruck/base/destroyed,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt"
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts_road/west)
 "blG" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	pixel_x = -40;
-	pixel_y = 5
+	pixel_y = -3
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
+	},
+/obj/structure/prop/vehicles/tank/miltruck{
+	pixel_y = -15;
+	pixel_x = -32
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/west)
@@ -28155,20 +28217,6 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/almayer/black2/southwest,
 /area/tyrargo/indoors/bunker/central_south)
-"blK" = (
-/obj/structure/blocker/invisible_wall,
-/obj/effect/decal/hybrisa/tiretrack{
-	pixel_x = -8
-	},
-/obj/effect/decal/hybrisa/tiretrack{
-	pixel_x = -8
-	},
-/obj/effect/decal/hybrisa/tiretrack{
-	pixel_x = -8
-	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts_road/west)
 "blL" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -28177,7 +28225,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "blM" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/security/ground)
 "blN" = (
@@ -28703,7 +28753,9 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bmN" = (
@@ -28820,7 +28872,9 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bmX" = (
@@ -29023,7 +29077,9 @@
 /obj/structure/largecrate/random{
 	layer = 3.1
 	},
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -30345,10 +30401,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bpV" = (
-/obj/structure/prop/vehicles/tank/truck/base/broken{
-	pixel_x = -31;
-	dir = 1
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -7;
@@ -30367,6 +30419,10 @@
 	pixel_y = -1
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/truck/broken{
+	dir = 1;
+	pixel_x = -32
+	},
 /turf/closed/wall/strata_ice/jungle,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bpW" = (
@@ -30434,7 +30490,6 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/obj/structure/blocker/forcefield/vehicles,
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bqe" = (
@@ -30981,12 +31036,24 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "bro" = (
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
@@ -31734,6 +31801,10 @@
 "bsM" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	dir = 8;
+	pixel_y = -31
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
 "bsN" = (
@@ -35881,6 +35952,10 @@
 	pixel_y = 22
 	},
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	dir = 4;
+	pixel_y = -34
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "bCH" = (
@@ -36207,7 +36282,9 @@
 	pixel_y = 4;
 	layer = 4
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "bDv" = (
@@ -36645,7 +36722,9 @@
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bEA" = (
 /obj/item/prop/colony/used_flare,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bEB" = (
@@ -37280,7 +37359,9 @@
 "bFQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "bFR" = (
@@ -37912,12 +37993,11 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts_road/east)
 "bHf" = (
-/obj/structure/prop/vehicles/tank/apc/base/destroyed{
-	dir = 1;
-	pixel_x = -33
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/apc/destroyed{
+	pixel_x = -32
+	},
 /turf/closed/wall/strata_ice/dirty/rock,
 /area/tyrargo/outdoors/colony_streets/east)
 "bHg" = (
@@ -38384,13 +38464,6 @@
 	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
-"bIp" = (
-/obj/effect/landmark/xeno_npc_spawn/high_chance_spawn,
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
-	},
-/turf/open/auto_turf/strata_grass,
-/area/tyrargo/outdoors/outskirts/east)
 "bIq" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -38623,7 +38696,9 @@
 	pixel_x = 1;
 	pixel_y = 8
 	},
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bIZ" = (
@@ -40693,7 +40768,10 @@
 /area/tyrargo/outdoors/outskirts/east)
 "bOE" = (
 /obj/structure/prop/turret{
-	dir = 8
+	dir = 8;
+	pixel_x = 16;
+	pixel_y = -3;
+	bound_width = 32
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -41298,16 +41376,10 @@
 /area/tyrargo/outdoors/outskirts/east)
 "bPV" = (
 /obj/structure/prop/hybrisa/misc/fire/fire2{
-	pixel_x = -47;
+	pixel_x = -33;
 	pixel_y = 19;
 	explo_proof = 1;
 	unacidable = 1
-	},
-/obj/structure/cable/orange{
-	icon_state = "4-9";
-	level = 2;
-	pixel_y = -7;
-	pixel_x = -4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
@@ -44112,16 +44184,36 @@
 	opened = 1
 	},
 /obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 30
+	},
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXx" = (
@@ -44474,16 +44566,36 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "bYs" = (
@@ -45592,16 +45704,36 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/north)
 "cbM" = (
@@ -48927,7 +49059,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "cma" = (
 /obj/structure/window/framed/strata/reinforced,
@@ -49713,7 +49845,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
 	},
-/turf/open/gm/dirt/brown,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "coO" = (
 /obj/effect/decal/cleanable/dirt,
@@ -49980,15 +50112,33 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/corsat/squares,
 /area/tyrargo/underground/bunker/north)
 "cpF" = (
@@ -50491,7 +50641,6 @@
 	pixel_y = -1;
 	pixel_x = 16
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "crq" = (
@@ -50680,14 +50829,6 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4";
 	pixel_y = 4
-	},
-/turf/open/hybrisa/street/asphalt,
-/area/tyrargo/outdoors/colony_streets/north_east)
-"crR" = (
-/obj/effect/decal/hybrisa/road/lines2,
-/obj/structure/prop/vehicles/tank/truck/base/broken{
-	dir = 8;
-	layer = 3.2
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
@@ -51381,7 +51522,9 @@
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "cuj" = (
 /obj/structure/prop/turret{
-	dir = 1
+	dir = 1;
+	pixel_x = -16;
+	bound_width = 32
 	},
 /obj/structure/cable/orange{
 	icon_state = "5-6";
@@ -52249,16 +52392,36 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
 /obj/effect/landmark/ammo_spawn/smg_ammo,
 /obj/effect/landmark/ammo_spawn/vp78_ammo,
 /turf/open/auto_turf/strata_grass,
@@ -52288,7 +52451,7 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "cxe" = (
 /obj/structure/prop/hybrisa/misc/fire/fire2{
-	pixel_x = -47;
+	pixel_x = -63;
 	pixel_y = 19;
 	explo_proof = 1;
 	unacidable = 1
@@ -53625,7 +53788,9 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "cCb" = (
@@ -53898,11 +54063,6 @@
 /obj/structure/barricade/handrail/wire,
 /turf/open/floor/strata/multi_tiles/west,
 /area/tyrargo/outdoors/walkway_access/museum_central)
-"cDe" = (
-/obj/structure/blocker/invisible_wall,
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/asphalt/cement/cement12,
-/area/tyrargo/outdoors/colony_streets/south_west)
 "cDf" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/plating/platingdmg3,
@@ -55803,15 +55963,13 @@
 	pixel_x = -16;
 	pixel_y = 7
 	},
+/obj/structure/prop/vehicles/tank/truck/broken{
+	dir = 8;
+	pixel_y = -32
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/army_staging)
 "cJC" = (
-/obj/structure/prop/vehicles/tank/truck/base/broken{
-	dir = 8;
-	layer = 3.2;
-	pixel_x = -26;
-	pixel_y = -27
-	},
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4;
 	pixel_x = -9;
@@ -56266,7 +56424,8 @@
 /obj/structure/prop/hybrisa/vehicles/Ambulance{
 	dir = 1;
 	pixel_x = 8;
-	pixel_y = -1
+	pixel_y = -1;
+	bound_height = 32
 	},
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -57808,6 +57967,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/mall/upper)
+"cOL" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	pixel_x = -37
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/oob)
 "cOM" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 4;
@@ -57849,6 +58016,13 @@
 	},
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall)
+"cOQ" = (
+/obj/structure/prop/vehicles/tank/truck/broken{
+	dir = 8;
+	pixel_y = -20
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/oob/outdoors)
 "cOR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -58220,7 +58394,9 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/indoors/mall)
 "cPZ" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/mall)
 "cQa" = (
@@ -58429,7 +58605,9 @@
 /turf/open/floor/strata/green2,
 /area/tyrargo/indoors/mall)
 "cQN" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/floor/strata/green2,
 /area/tyrargo/indoors/mall)
 "cQO" = (
@@ -58479,6 +58657,7 @@
 "cQU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/prop/colony/used_flare,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall/upper)
 "cQV" = (
@@ -58616,7 +58795,9 @@
 /area/tyrargo/indoors/mall/upper)
 "cRt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 10
 	},
@@ -59423,8 +59604,7 @@
 /area/tyrargo/indoors/mall/upper)
 "cTD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/mall/upper)
 "cTE" = (
@@ -62300,7 +62480,7 @@
 	name = "dirt"
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "dbm" = (
 /obj/effect/decal/cleanable/dirt,
@@ -62314,7 +62494,7 @@
 	},
 /obj/structure/blocker/forcefield/vehicles,
 /obj/effect/decal/grass_overlay/grass1/dark,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "dbo" = (
 /obj/effect/decal/cleanable/dirt,
@@ -62358,7 +62538,7 @@
 	dir = 8
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "dbs" = (
 /obj/structure/fence/dark,
@@ -62559,7 +62739,9 @@
 /area/tyrargo/underground/museum_carpark)
 "dbS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/no_tunnel)
 "dbT" = (
@@ -62987,16 +63169,36 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/east)
 "dcV" = (
@@ -63010,15 +63212,33 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 30
+	},
 /turf/open/asphalt/cement/cement1,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dcX" = (
@@ -63696,7 +63916,9 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "deI" = (
 /obj/structure/surface/table/almayer,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "deJ" = (
@@ -63856,7 +64078,8 @@
 /obj/structure/prop/hybrisa/vehicles/Ambulance{
 	dir = 1;
 	pixel_x = 8;
-	pixel_y = -1
+	pixel_y = -1;
+	bound_height = 32
 	},
 /obj/structure/bed/roller,
 /turf/open/hybrisa/street/cement3,
@@ -64364,13 +64587,13 @@
 /area/tyrargo/outdoors/colony_streets/south_east)
 "dgw" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/vehicles/tank/truck/base{
-	dir = 1;
-	pixel_y = -5
-	},
 /obj/item/tool/warning_cone{
 	pixel_y = 21;
 	pixel_x = -5
+	},
+/obj/structure/prop/vehicles/tank/truck{
+	dir = 1;
+	pixel_y = -7
 	},
 /turf/open/hybrisa/street/sidewalk/east,
 /area/tyrargo/outdoors/colony_streets/south_east)
@@ -65905,15 +66128,33 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "dkp" = (
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 20
+	},
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
 	icon_state = "sandbag_0"
@@ -66189,8 +66430,12 @@
 "dkY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "dkZ" = (
@@ -66220,7 +66465,9 @@
 	pixel_y = -12
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
 "dld" = (
@@ -66235,7 +66482,9 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/west)
 "dlf" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
 "dlg" = (
@@ -66274,7 +66523,9 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
 "dlm" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/west)
@@ -66407,6 +66658,7 @@
 "dlF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_1,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/east)
 "dlG" = (
@@ -66836,7 +67088,9 @@
 "dmD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/green,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dmE" = (
@@ -67066,6 +67320,12 @@
 /obj/structure/prop/tyrargo/watchtower,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/north_east)
+"dng" = (
+/obj/effect/decal/hybrisa/road/road_stop{
+	icon_state = "stop_decal5"
+	},
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/ground)
 "dnh" = (
 /obj/structure/barricade/handrail/hybrisa/road/wood/blue{
 	pixel_x = 5
@@ -67600,7 +67860,9 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "doD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/vehicles/Ambulance,
+/obj/structure/prop/hybrisa/vehicles/Ambulance{
+	bound_height = 32
+	},
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "doE" = (
@@ -67792,7 +68054,6 @@
 	pixel_y = 9;
 	pixel_x = -4
 	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dpg" = (
@@ -71485,7 +71746,9 @@
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dyo" = (
@@ -75697,17 +75960,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/tyrargo/underground/apartment)
-"dIs" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/vehicles/tank/truck/base/broken{
-	pixel_x = -29;
-	pixel_y = -32;
-	dir = 1;
-	layer = 6
-	},
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/hybrisa/tile/tileblue,
-/area/tyrargo/underground/apartment)
 "dIt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/cigbutt{
@@ -76170,7 +76422,9 @@
 	layer = 5
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/floor/corsat,
 /area/tyrargo/underground/mall)
 "dJG" = (
@@ -76210,7 +76464,9 @@
 /area/tyrargo/underground/apartment)
 "dJL" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dJM" = (
@@ -76547,7 +76803,9 @@
 "dKD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dKE" = (
@@ -76654,7 +76912,9 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dKU" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 5
 	},
@@ -82231,10 +82491,6 @@
 /turf/open/gm/dirt/brown,
 /area/tyrargo/outdoors/outskirts_road/central)
 "dYK" = (
-/obj/structure/prop/vehicles/tank/miltruck/base{
-	dir = 4;
-	pixel_y = 2
-	},
 /obj/structure/largecrate/random{
 	layer = 3.1
 	},
@@ -82251,14 +82507,30 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_med,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_med,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 40
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "dYM" = (
@@ -82428,7 +82700,9 @@
 /area/tyrargo/indoors/power_substation_outskirt)
 "dZg" = (
 /obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/power_substation_outskirt)
 "dZh" = (
@@ -82685,7 +82959,9 @@
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
 	},
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central)
 "dZI" = (
@@ -83261,7 +83537,9 @@
 /area/tyrargo/indoors/power_substation_outskirt)
 "eaS" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/tyrargo/indoors/power_substation_outskirt)
 "eaT" = (
@@ -83351,7 +83629,9 @@
 /obj/item/tool/wirecutters{
 	pixel_y = 26
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/indoors/power_substation_outskirt)
 "ebe" = (
@@ -86385,15 +86665,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/north_east)
-"eiD" = (
-/obj/structure/prop/vehicles/tank/truck/base/broken{
-	dir = 8;
-	layer = 3.2
-	},
-/obj/structure/platform/stone/kutjevo/west,
-/obj/structure/platform/stone/kutjevo,
-/turf/open/auto_turf/sand_white/layer0,
-/area/tyrargo/oob)
 "eiE" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/sidewalk,
@@ -86566,13 +86837,13 @@
 	icon_state = "road_edge_decal4";
 	pixel_y = 4
 	},
-/obj/structure/prop/vehicles/tank/miltruck/base/destroyed{
-	dir = 1;
-	pixel_x = -26;
-	pixel_y = -15
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	dir = 1;
+	pixel_x = -23;
+	pixel_y = -1
+	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "eiV" = (
@@ -86611,6 +86882,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/truck/broken{
+	dir = 8;
+	pixel_y = -32
+	},
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "eiY" = (
@@ -94461,7 +94736,9 @@
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "eDl" = (
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 10;
 	pixel_y = -7
@@ -97856,12 +98133,16 @@
 "eLO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "eLP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "eLQ" = (
@@ -97883,7 +98164,9 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/admin/upper/external)
 "eLT" = (
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/north_east_usasf/weedkiller)
 "eLU" = (
@@ -98087,7 +98370,9 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/upper/external)
 "eMB" = (
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/central)
 "eMC" = (
@@ -98173,7 +98458,9 @@
 	pixel_x = -3;
 	pixel_y = 9
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_south)
 "eML" = (
@@ -98187,7 +98474,9 @@
 /area/tyrargo/outdoors/outskirts/central)
 "eMM" = (
 /obj/item/ammo_casing/bullet,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
@@ -98207,16 +98496,22 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "eMP" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "eMQ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "eMR" = (
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/comms/ground)
 "eMS" = (
@@ -98225,7 +98520,9 @@
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "eMT" = (
@@ -98235,7 +98532,9 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/west_trench)
 "eMU" = (
@@ -98244,7 +98543,9 @@
 	pixel_y = -6
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "eMV" = (
@@ -98266,28 +98567,40 @@
 /area/tyrargo/outdoors/outskirts/east_trench)
 "eMY" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "eMZ" = (
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_1/north_trench)
 "eNa" = (
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "eNb" = (
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "eNc" = (
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "eNd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m4ra_ext_ammo_high,
+/obj/effect/landmark/ammo_spawn/m4ra_ext_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/east_trench)
 "eNe" = (
@@ -99237,7 +99550,6 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "ePv" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/east)
 "ePw" = (
@@ -99556,10 +99868,6 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/tyrargo/oob)
 "eQs" = (
-/obj/structure/prop/vehicles/tank/miltruck/base{
-	dir = 8;
-	pixel_y = 3
-	},
 /obj/structure/cargo_container/kelland/left,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_2)
@@ -99570,6 +99878,10 @@
 "eQu" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	dir = 8;
+	pixel_y = -32
+	},
 /turf/closed/wall/strata_ice/rock,
 /area/tyrargo/landing_zone_2)
 "eQv" = (
@@ -99600,11 +99912,6 @@
 	pixel_y = -3;
 	pixel_x = -12
 	},
-/obj/structure/prop/vehicles/tank/miltruck/base{
-	dir = 4;
-	pixel_y = -24;
-	pixel_x = 1
-	},
 /obj/item/prop{
 	desc = "A M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. This one is no longer functional.";
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/hmg.dmi';
@@ -99624,6 +99931,12 @@
 	pixel_y = 7;
 	pixel_x = 8
 	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/miltruck{
+	dir = 4;
+	pixel_y = -30
+	},
 /turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "eQz" = (
@@ -99633,6 +99946,8 @@
 	current_rounds = 2;
 	layer = 3.03
 	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/strata_ice/rock,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "eQA" = (
@@ -99788,11 +100103,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
-"eRb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
-/turf/open/floor/plating/plating_catwalk/prison,
-/area/tyrargo/indoors/mall)
 "eRc" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/floor/hybrisa/carpet/carpetgreen,
@@ -99920,12 +100230,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/outdoors/colony_streets/north_east)
-"eRA" = (
-/obj/effect/decal/hybrisa/road/roadmiddle,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/asphalt,
-/area/tyrargo/outdoors/colony_streets/north_east)
 "eRB" = (
 /obj/effect/decal/hybrisa/road/roadmiddle,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -99963,15 +100267,6 @@
 	pixel_y = -2
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
-/turf/open/asphalt/cement/cement12,
-/area/tyrargo/outdoors/colony_streets/north_east)
-"eRI" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
-	name = "access barrier";
-	pixel_y = -2
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "eRJ" = (
@@ -100275,6 +100570,127 @@
 	},
 /turf/open/floor/almayer/plating_stripedcorner,
 /area/tyrargo/indoors/comms/upper)
+"eSM" = (
+/obj/effect/decal/hybrisa/road/roadmiddle,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/asphalt,
+/area/tyrargo/outdoors/colony_streets/north_east)
+"eSN" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/east)
+"eSO" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/east)
+"eSP" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	pixel_x = -38;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/outdoors/outskirts/central/landing_zone)
+"eSQ" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/fire/fire1{
+	color = "#ffa700";
+	layer = 7;
+	pixel_y = -4;
+	light_color = "#FF7700";
+	pixel_x = 4
+	},
+/turf/open/floor/prison/floor_marked,
+/area/tyrargo/outdoors/outskirts/central/landing_zone)
+"eSR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/tyrargo/boards/boards_1{
+	dir = 8;
+	pixel_y = -2;
+	pixel_x = 3;
+	layer = 2.1
+	},
+/obj/item/device/flashlight/flare/on{
+	fuel_rate = 5
+	},
+/turf/open/floor/interior/wood/alt,
+/area/tyrargo/outdoors/outskirts/fsb_north)
+"eSS" = (
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/east)
+"eST" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/central)
+"eSU" = (
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
+/turf/open/auto_turf/strata_grass,
+/area/tyrargo/outdoors/outskirts/east)
+"eSV" = (
+/obj/effect/decal/grass_overlay/grass1/dark,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 80
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/tyrargo/outdoors/outskirts/east)
+"eSW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/strata/cyan2,
+/area/tyrargo/indoors/mall/upper)
+"eSX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/mall/upper)
+"eSY" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall/upper)
+"eSZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall/upper)
+"eTa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt"
+	},
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall/upper)
+"eTb" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor/prison,
+/area/tyrargo/indoors/mall/upper)
+"eTc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
+/turf/open/hybrisa/street/asphalt,
+/area/tyrargo/indoors/museum_storage/upper)
 "eTG" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -101066,12 +101482,24 @@
 	pixel_y = 4;
 	layer = 4
 	},
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /obj/structure/closet/crate/ammo{
 	name = "soft-point munitions crate";
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
@@ -101337,14 +101765,30 @@
 	desc = "Crate filled with soft-point ammo. Typically used when fighting onboard space stations, or when there's nothing better to use.";
 	opened = 1
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
-/obj/effect/landmark/ammo_spawn/m41a_ext_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
-/obj/effect/landmark/ammo_spawn/m4ra_ammo_high,
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_ext_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 30
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 60
+	},
+/obj/effect/landmark/ammo_spawn/m4ra_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north)
 "gUQ" = (
@@ -101838,7 +102282,9 @@
 	pixel_y = 2
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
 "icY" = (
@@ -102352,7 +102798,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
-/turf/open/auto_turf/strata_grass,
+/turf/closed/wall/strata_ice/jungle,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "jpq" = (
 /obj/structure/stairs/multiz/up{
@@ -104059,10 +104505,6 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/landing_zone_1)
 "mRz" = (
-/obj/structure/prop/vehicles/tank/apc/base/destroyed{
-	dir = 8;
-	pixel_y = -16
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -104070,6 +104512,10 @@
 	},
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
+	},
+/obj/structure/prop/vehicles/tank/apc/destroyed{
+	dir = 8;
+	pixel_y = -12
 	},
 /turf/open/gm/dirt/brown,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
@@ -104536,12 +104982,13 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
 "nJl" = (
-/obj/structure/prop/vehicles/tank/truck/base{
-	dir = 8;
-	pixel_y = -24
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/truck{
+	dir = 8;
+	pixel_y = -29;
+	pixel_x = 1
+	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
 "nJx" = (
@@ -104687,7 +105134,9 @@
 	current_rounds = 45
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/ammo_spawn/m41a_ammo_low,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 20
+	},
 /turf/open/floor/almayer/blackcorner/east,
 /area/tyrargo/indoors/bunker/central_south)
 "nWX" = (
@@ -105311,7 +105760,9 @@
 	dir = 8;
 	light_color = "#A7DBB6"
 	},
-/obj/effect/landmark/ammo_spawn/m41a_ammo_med,
+/obj/effect/landmark/ammo_spawn/m41a_random_spawn{
+	spawn_chance = 60
+	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/tyrargo/indoors/comms/ground)
 "oRD" = (
@@ -107027,12 +107478,12 @@
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "shl" = (
-/obj/structure/prop/vehicles/tank/apc/base/destroyed{
-	dir = 8;
-	pixel_y = -11
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/apc/destroyed{
+	dir = 8;
+	pixel_y = -13
+	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/gararge/ground)
 "siO" = (
@@ -109122,12 +109573,12 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/colony_streets/north)
 "vOZ" = (
-/obj/structure/prop/vehicles/tank/apc/base{
-	dir = 4;
-	pixel_y = -12
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/apc/destroyed{
+	dir = 4;
+	pixel_y = -18
+	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/tyrargo/outdoors/colony_streets/south_west)
 "vPs" = (
@@ -109385,7 +109836,9 @@
 	pixel_x = 5;
 	pixel_y = 6
 	},
-/obj/effect/landmark/xeno_npc_spawn,
+/obj/effect/landmark/xeno_npc_spawn{
+	spawn_chance = 0
+	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "wkt" = (
@@ -109782,7 +110235,8 @@
 	name = "Destroyed TC-3T static telecommunications tower";
 	explo_proof = 1;
 	unacidable = 1;
-	density = 1
+	density = 1;
+	anchored = 1
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/prison/floor_marked,
@@ -141090,7 +141544,7 @@ dPX
 dJd
 dGs
 dIE
-dIs
+dIE
 dIj
 dIb
 dPr
@@ -156363,7 +156817,7 @@ bsA
 bsB
 bsx
 bFo
-bFo
+cOQ
 bFp
 bFd
 eqU
@@ -156547,7 +157001,7 @@ bsA
 bsC
 bAl
 cnU
-aZY
+cnU
 byS
 byS
 bzU
@@ -156621,7 +157075,7 @@ bsZ
 bsZ
 bsZ
 bsZ
-big
+bsZ
 btq
 bsZ
 bsZ
@@ -156805,7 +157259,7 @@ biR
 biR
 biR
 biR
-biR
+cOL
 bsO
 buk
 buk
@@ -159552,7 +160006,7 @@ btr
 btr
 btr
 btr
-beQ
+btr
 btr
 btr
 btr
@@ -159745,7 +160199,7 @@ bsW
 bsN
 bsN
 bsM
-aSn
+asF
 bsN
 bsV
 bsN
@@ -161392,7 +161846,7 @@ bsJ
 bsJ
 vEd
 mEH
-beT
+mEH
 mEH
 beG
 beA
@@ -162463,7 +162917,7 @@ bCu
 bxz
 bxz
 bxz
-blF
+bzX
 bxz
 baY
 byp
@@ -162645,7 +163099,7 @@ blO
 aUn
 aUn
 aUn
-blK
+aUn
 bnb
 blG
 bBL
@@ -164232,7 +164686,7 @@ eBG
 rFd
 qBR
 pLW
-bOG
+eSQ
 wSR
 cCv
 aYc
@@ -164417,7 +164871,7 @@ bPk
 hYh
 pLW
 bOG
-bOG
+eSP
 mOi
 cTy
 evw
@@ -170853,7 +171307,7 @@ bpC
 eEO
 etU
 eEG
-bdk
+bLq
 bBg
 bBg
 bBg
@@ -171221,7 +171675,7 @@ bBg
 bBg
 bBh
 bBg
-bCz
+eST
 bCb
 bCb
 bIe
@@ -171304,7 +171758,7 @@ bwt
 bwt
 dil
 blB
-blv
+bxi
 ety
 bvN
 blo
@@ -171400,7 +171854,7 @@ bBg
 bBg
 cMt
 brf
-abV
+bBg
 bBg
 etV
 bBv
@@ -171584,7 +172038,7 @@ bBg
 bBh
 bQs
 bBg
-bCz
+eST
 brd
 aRa
 bBD
@@ -172317,7 +172771,7 @@ bRh
 bQY
 bzy
 bwE
-agh
+eSU
 dTb
 bzi
 bMj
@@ -174158,9 +174612,9 @@ bNz
 bzy
 bxw
 bwE
-agh
+bwE
 cRW
-bIq
+eSV
 byQ
 bzi
 aQZ
@@ -175271,7 +175725,7 @@ bzi
 csq
 bMG
 aOm
-aQu
+bMr
 cuj
 bMF
 bME
@@ -175632,13 +176086,13 @@ bye
 bxk
 bwE
 bwE
-agh
 bwE
+eSU
 etw
 byQ
 bzi
 bMT
-aQB
+eSR
 bOo
 bMr
 edA
@@ -175657,7 +176111,7 @@ bwE
 bwE
 bLX
 bFF
-euk
+eSN
 bwE
 bwE
 css
@@ -175841,7 +176295,7 @@ byA
 byA
 bLY
 bwE
-agh
+bwE
 bwE
 bwE
 bKG
@@ -176019,7 +176473,7 @@ bzi
 bNz
 byQ
 euU
-eta
+eSO
 eBJ
 bMs
 bMm
@@ -176203,7 +176657,7 @@ bzi
 byQ
 bzy
 eta
-bde
+byQ
 bMs
 aVR
 aOB
@@ -176374,7 +176828,7 @@ bwE
 bPG
 bFF
 byQ
-byQ
+eSS
 bIr
 bzi
 bzi
@@ -176557,7 +177011,7 @@ bQd
 bwE
 bxw
 bwE
-bIp
+etw
 bFF
 bOZ
 bFF
@@ -186559,7 +187013,7 @@ dKc
 ckH
 tFt
 cfq
-cDe
+cgc
 eOD
 aHQ
 wyc
@@ -190774,7 +191228,7 @@ alY
 efJ
 cOU
 cfc
-eRb
+cfc
 ceX
 ceS
 cOs
@@ -190934,8 +191388,8 @@ csR
 csR
 azm
 eRH
-eRE
-eRA
+cqq
+eRC
 dnh
 cqS
 alY
@@ -191302,8 +191756,8 @@ csS
 azz
 eRJ
 dpj
-cqq
-crz
+eRE
+eSM
 dpL
 ayE
 alY
@@ -191485,7 +191939,7 @@ azW
 csS
 eOS
 azo
-eRI
+dpj
 ayV
 crz
 dpf
@@ -192802,7 +193256,7 @@ diR
 diN
 diM
 anV
-eQN
+cln
 eQQ
 eQN
 dFd
@@ -193176,7 +193630,7 @@ cld
 cld
 eQK
 clo
-amX
+clo
 clK
 clK
 dlI
@@ -193362,7 +193816,7 @@ eQL
 cla
 eQG
 clb
-eQG
+cla
 dlJ
 aIo
 aIk
@@ -193537,7 +193991,7 @@ bLu
 bLu
 cmu
 clE
-aIr
+clE
 eQH
 eQU
 eQP
@@ -193546,7 +194000,7 @@ eQL
 clE
 aIr
 eQH
-aIr
+clE
 bRI
 aIp
 aIl
@@ -193721,7 +194175,7 @@ cmu
 cla
 cla
 cmu
-eQG
+cla
 eQI
 eQU
 ehI
@@ -193730,7 +194184,7 @@ eQL
 cla
 eQG
 eQI
-eQG
+cla
 dlK
 aIo
 aIm
@@ -195902,7 +196356,7 @@ bta
 bta
 aHJ
 eiX
-crR
+eiT
 crI
 eiH
 eiF
@@ -195914,10 +196368,10 @@ eis
 ckE
 ckE
 ckE
+eRr
+eRr
 aIq
-aIq
-aIq
-aIq
+eRr
 eih
 aIM
 cDi
@@ -196102,7 +196556,7 @@ aIq
 eRm
 aIq
 eRm
-eih
+dng
 eRk
 cDi
 acb
@@ -196284,7 +196738,7 @@ eio
 cma
 eRt
 eRt
-eRr
+aIq
 aIP
 eRn
 eRl
@@ -196652,8 +197106,8 @@ cpl
 ckE
 eRm
 aIq
-aIq
-aIq
+eRr
+eRr
 eRn
 eRl
 eRj
@@ -197010,7 +197464,7 @@ eiV
 acY
 eiJ
 auy
-eiD
+ads
 ckE
 ckE
 aJn
@@ -235118,7 +235572,7 @@ cMv
 cTX
 cNN
 cTJ
-cNN
+eSY
 cNO
 cNO
 cOx
@@ -235301,10 +235755,10 @@ cOx
 cMv
 cTY
 cOa
-cOa
+cTQ
 cTD
-cOx
-cPk
+eSX
+eSW
 cPk
 cTr
 cMv
@@ -235483,11 +235937,11 @@ cOx
 cXP
 cUe
 cMv
-cOw
-cNN
-cOa
-cOa
-cOx
+cXO
+eTb
+eSZ
+cTD
+eSX
 cMv
 cMv
 cMv
@@ -235667,9 +236121,9 @@ cOw
 cXQ
 cOx
 cMv
-cOw
+cXO
 cQU
-cTJ
+eTa
 cTE
 cOa
 uZE
@@ -235852,9 +236306,9 @@ cOw
 cOx
 dTp
 cOx
-cOa
+eQD
 cOK
-cOa
+cTE
 cOa
 uZE
 cTd
@@ -236037,7 +236491,7 @@ cOx
 cMv
 cOx
 cTQ
-cXU
+cOK
 cOa
 cTx
 uZE
@@ -241004,7 +241458,7 @@ cBc
 cBc
 cBc
 aKS
-cBR
+eTc
 ejk
 cDu
 cBR

@@ -112,8 +112,8 @@
 
 
 //Disarming
-/obj/item/explosive/mine/attackby(obj/item/W, mob/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
+/obj/item/explosive/mine/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
 				return

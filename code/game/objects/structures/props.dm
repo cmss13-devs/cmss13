@@ -846,9 +846,7 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 
-/obj/structure/prop/vehicles/tank/truck/base
-
-/obj/structure/prop/vehicles/tank/truck/base/broken
+/obj/structure/prop/vehicles/tank/truck/broken
 	icon_state = "van_broken"
 
 /obj/structure/prop/vehicles/tank/truck/alt
@@ -870,9 +868,8 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 
-/obj/structure/prop/vehicles/tank/apc/base
 
-/obj/structure/prop/vehicles/tank/apc/base/destroyed
+/obj/structure/prop/vehicles/tank/apc/destroyed
 	icon_state = "apc_destroyed"
 
 /obj/structure/prop/vehicles/tank/apc/med
@@ -893,9 +890,7 @@
 	unacidable = TRUE
 	explo_proof = TRUE
 
-/obj/structure/prop/vehicles/tank/miltruck/base
-
-/obj/structure/prop/vehicles/tank/miltruck/base/destroyed
+/obj/structure/prop/vehicles/tank/miltruck/destroyed
 	icon_state = "track_destroyed"
 
 /obj/structure/prop/vehicles/tank/miltruck/wheeled
@@ -974,9 +969,7 @@
 // Hull
 // Base Armor
 
-/obj/structure/prop/vehicles/tank/longstreet/base
-
-/obj/structure/prop/vehicles/tank/longstreet/base/destroyed
+/obj/structure/prop/vehicles/tank/longstreet/destroyed
 
 	icon_state = "tank_base_destroyed"
 
@@ -1080,14 +1073,12 @@
 /obj/structure/prop/vehicles/tank/longstreet/secondary/towlauncher/destroyed
 	icon_state = "m56cupola_destroyed"
 
-/obj/structure/prop/vehicles/tank/longstreet/module/
-	icon_state = "warray_base"
-
 // Module
 
-/obj/structure/prop/vehicles/tank/longstreet/module/warray
+/obj/structure/prop/vehicles/tank/longstreet/module
+	icon_state = "warray_base"
 
-/obj/structure/prop/vehicles/tank/longstreet/module/warray/destroyed
+/obj/structure/prop/vehicles/tank/longstreet/module/destroyed
 	icon_state = "warray_destroyed"
 
 /obj/structure/prop/vehicles/tank/longstreet/module/odrive

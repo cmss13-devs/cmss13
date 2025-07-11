@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1;
+	light_color = "#A7DBB6"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/admin/ground)
 "ac" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
@@ -34,7 +42,8 @@
 /area/tyrargo/indoors/admin/ground)
 "bs" = (
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/ground)
@@ -122,7 +131,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_container/blood/empty,
 /obj/structure/machinery/light{
-	dir = 4
+	dir = 4;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/green/west,
 /area/tyrargo/indoors/admin/ground)
@@ -468,13 +478,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/tyrargo/indoors/admin/ground)
-"qC" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/indoors/admin/ground)
 "qE" = (
 /obj/item/stack/sheet/metal,
 /obj/item/ammo_casing/bullet,
@@ -620,10 +623,11 @@
 /area/tyrargo/indoors/admin/ground)
 "uv" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/structure/machinery/light{
+	dir = 4;
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "uz" = (
@@ -644,7 +648,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/light{
-	dir = 8
+	dir = 8;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/green/east,
 /area/tyrargo/indoors/admin/ground)
@@ -690,13 +695,6 @@
 	pixel_y = 4
 	},
 /turf/open/floor/prison/green/southeast,
-/area/tyrargo/indoors/admin/ground)
-"wH" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "wI" = (
 /obj/item/stack/medical/advanced/ointment,
@@ -865,7 +863,9 @@
 "DE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "DG" = (
@@ -1039,7 +1039,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/folding_barricade,
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
@@ -1098,9 +1099,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/structure/prop/hybrisa/misc/blood/blood3{
 	pixel_y = 4
-	},
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/admin/ground)
@@ -1261,7 +1259,9 @@
 	pixel_y = -4
 	},
 /obj/effect/decal/cleanable/blood,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
 "RC" = (
@@ -2055,7 +2055,7 @@ fj
 vS
 JH
 uO
-qC
+aa
 Ca
 Is
 cl
@@ -2104,7 +2104,7 @@ dk
 ar
 lP
 lP
-Is
+aa
 HB
 OG
 Bt
@@ -2126,7 +2126,7 @@ AR
 Op
 lP
 kN
-wH
+YH
 uW
 Gi
 lP

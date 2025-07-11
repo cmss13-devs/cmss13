@@ -9852,12 +9852,11 @@
 	icon_state = "road_edge_decal3";
 	pixel_y = -4
 	},
-/obj/structure/prop/vehicles/tank/apc/med{
-	pixel_y = -1;
-	pixel_x = -32
-	},
 /obj/structure/blocker/invisible_wall,
 /obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/apc/med/destroyed{
+	pixel_x = -31
+	},
 /turf/closed/wall/strata_ice/dirty/rock,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "ayK" = (
@@ -51830,10 +51829,6 @@
 	icon_state = "siding2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1;
-	light_color = "#A7DBB6"
-	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/bar/ground)
 "cvb" = (
@@ -64400,6 +64395,10 @@
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/outdoors/colony_streets/south_east)
+"dfQ" = (
+/obj/item/weapon/gun/smg/m39/army/heap,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
 "dfR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/invisible_wall,
@@ -98278,14 +98277,6 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/comms/upper)
-"eMd" = (
-/obj/structure/prop/invuln/ice_prefab/roof_greeble{
-	icon_state = "smokestack";
-	pixel_y = -4;
-	pixel_x = 17
-	},
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
-/area/tyrargo/indoors/gararge/upper/external)
 "eMe" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "flagpole"
@@ -100454,9 +100445,17 @@
 /obj/effect/decal/heavy_cable/node_n_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/security/upper)
+"eSe" = (
+/obj/item/weapon/gun/rifle/m4ra/army/full,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
 "eSf" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt,
 /area/tyrargo/indoors/market/upper)
+"eSg" = (
+/obj/item/clothing/accessory/patch/army/infantry,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
 "eSh" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -100552,9 +100551,18 @@
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/market/upper)
+"eSw" = (
+/obj/item/clothing/accessory/patch/army/armor,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
 "eSx" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/north,
 /area/tyrargo/indoors/market/upper)
+"eSy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/accessory/patch/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
 "eSz" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent3"
@@ -100810,11 +100818,89 @@
 "eTu" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/southeast,
 /area/tyrargo/indoors/gararge/upper/external)
+"eTv" = (
+/obj/item/clothing/suit/storage/marine/medium/rto/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTw" = (
+/obj/item/storage/backpack/molle/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/backpack/molle/backpack/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTy" = (
+/obj/item/weapon/gun/rifle/m41a/army/full,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTz" = (
+/obj/item/clothing/head/helmet/marine/rto/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTA" = (
+/obj/item/clothing/head/helmet/marine/rto/army/engi,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTB" = (
+/obj/item/clothing/head/helmet/marine/rto/army/medic,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/rifle/lmg/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTD" = (
+/obj/item/clothing/gloves/marine/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTE" = (
+/obj/item/clothing/shoes/marine/army/knife,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/head/beret/cm/black/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
 "eTG" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
+"eTH" = (
+/obj/item/clothing/head/beret/marine/commander/black/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTI" = (
+/obj/item/weapon/gun/pistol/vp78/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTJ" = (
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/suit/storage/marine/medium/rto/army{
+	pixel_y = 1
+	},
+/obj/item/clothing/head/helmet/marine/rto/army{
+	pixel_y = 11
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob)
+"eTK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1;
+	light_color = "#A7DBB6"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/bar/ground)
 "eUR" = (
 /obj/structure/girder,
 /turf/open/floor/corsat/marked,
@@ -180073,7 +180159,7 @@ bsZ
 bsZ
 bsZ
 buq
-bta
+eQo
 csW
 aSN
 cyk
@@ -180257,7 +180343,7 @@ bsZ
 bsZ
 btM
 bgC
-bta
+eQo
 ctH
 mYw
 ctX
@@ -180441,7 +180527,7 @@ bsZ
 bsZ
 bui
 btW
-bta
+eQo
 csW
 iQB
 csY
@@ -181727,7 +181813,7 @@ bsZ
 btF
 btW
 buc
-bta
+eQo
 csW
 aSN
 ctX
@@ -181911,7 +181997,7 @@ btF
 buc
 btW
 bgC
-bta
+eQo
 ctH
 mYw
 ctX
@@ -182095,7 +182181,7 @@ btI
 buc
 btW
 btW
-bta
+eQo
 csW
 iQB
 csY
@@ -182205,7 +182291,7 @@ bfN
 cft
 afC
 cfl
-bsO
+eQo
 btW
 buc
 buc
@@ -182389,7 +182475,7 @@ cga
 bfN
 jab
 cfs
-bsO
+eQo
 bgC
 btW
 buc
@@ -182573,7 +182659,7 @@ cfy
 cfy
 mKj
 cfl
-bsO
+eQo
 btW
 btW
 buc
@@ -182831,7 +182917,7 @@ bsZ
 bui
 buc
 btW
-bta
+eQo
 csW
 aSN
 cta
@@ -183015,7 +183101,7 @@ apn
 buc
 btW
 bgC
-bta
+eQo
 ctH
 mYw
 cyH
@@ -183199,7 +183285,7 @@ bsZ
 bui
 btW
 btW
-bta
+eQo
 csW
 iQB
 baV
@@ -183309,7 +183395,7 @@ cfy
 cfy
 afC
 cfl
-bsO
+eQo
 buc
 buc
 buc
@@ -183493,7 +183579,7 @@ cgb
 cfy
 jab
 cfs
-bsO
+eQo
 bgC
 btW
 buc
@@ -183677,7 +183763,7 @@ cfy
 cfy
 mKj
 cfl
-bsO
+eQo
 btW
 btW
 buc
@@ -183935,7 +184021,7 @@ bsZ
 btF
 buc
 btW
-bta
+eQo
 csW
 aSN
 cyk
@@ -184119,7 +184205,7 @@ bsZ
 bui
 btW
 bgC
-bta
+eQo
 ctH
 mYw
 cyl
@@ -184303,7 +184389,7 @@ bsZ
 btI
 buc
 buc
-bta
+eQo
 csW
 iQB
 cta
@@ -184322,7 +184408,7 @@ eLa
 cta
 eQc
 csK
-cvk
+eTK
 bqP
 ctL
 ddt
@@ -184413,7 +184499,7 @@ cfy
 cfy
 afC
 cfl
-bsO
+eQo
 btW
 buc
 buc
@@ -184597,7 +184683,7 @@ cfy
 cfy
 jab
 cfs
-bsO
+eQo
 bgC
 btW
 buc
@@ -184781,7 +184867,7 @@ cfy
 cfy
 mKj
 cfl
-bsO
+eQo
 buc
 btW
 buc
@@ -185039,7 +185125,7 @@ bsZ
 bui
 buc
 btW
-bta
+eQo
 cyU
 cyQ
 bKl
@@ -185223,7 +185309,7 @@ bsZ
 btI
 buc
 bgC
-bta
+eQo
 cyZ
 cyR
 cvJ
@@ -185407,7 +185493,7 @@ bsZ
 bsZ
 bui
 btW
-bta
+eQo
 cyU
 cyS
 cyI
@@ -186143,7 +186229,7 @@ bsZ
 bsZ
 bui
 btW
-bta
+eQo
 cyU
 cyQ
 cyv
@@ -186327,7 +186413,7 @@ bsZ
 btF
 btW
 bgC
-bta
+eQo
 cyZ
 cyR
 cyD
@@ -186511,7 +186597,7 @@ bsZ
 bcZ
 aZX
 arB
-bta
+eQo
 cyU
 cyS
 cyK
@@ -188719,7 +188805,7 @@ dpS
 bsZ
 btF
 btW
-bta
+eQo
 cyU
 cyQ
 cyD
@@ -188903,7 +188989,7 @@ bsZ
 apn
 btW
 bgC
-bta
+eQo
 cyZ
 cyR
 cyK
@@ -189087,7 +189173,7 @@ bsZ
 bsZ
 buq
 buc
-bta
+eQo
 cyU
 cyS
 cyK
@@ -189565,7 +189651,7 @@ bmP
 cfD
 cfJ
 cfB
-bsO
+eQo
 btW
 btW
 buc
@@ -189749,7 +189835,7 @@ cgd
 cfQ
 cfK
 cfC
-bsO
+eQo
 bgC
 btW
 buc
@@ -189823,7 +189909,7 @@ bsZ
 bsZ
 bui
 buc
-bta
+eQo
 cyU
 cyQ
 cyK
@@ -189933,7 +190019,7 @@ cfr
 cfQ
 cfL
 cfB
-bsO
+eQo
 buc
 eqU
 eqU
@@ -190007,7 +190093,7 @@ bsZ
 apn
 btW
 bgC
-bta
+eQo
 cyZ
 cyR
 cyK
@@ -190191,7 +190277,7 @@ bsZ
 bsZ
 bui
 btW
-bta
+eQo
 cyU
 cyS
 cyK
@@ -190669,7 +190755,7 @@ cfr
 cfQ
 cfJ
 cfB
-bsO
+eQo
 eqU
 buc
 buc
@@ -190853,7 +190939,7 @@ cfr
 aZS
 cfK
 cfC
-bsO
+eQo
 bgC
 btW
 buc
@@ -190927,7 +191013,7 @@ bsZ
 apn
 btW
 btW
-bta
+eQo
 cza
 cyV
 cuI
@@ -191037,7 +191123,7 @@ cfr
 cfQ
 cfL
 cfB
-bsO
+eQo
 buc
 btW
 buc
@@ -191111,7 +191197,7 @@ bsZ
 bsZ
 bui
 bgC
-bta
+eQo
 czb
 cyW
 cuI
@@ -191295,7 +191381,7 @@ bsZ
 bsZ
 bui
 btW
-bta
+eQo
 cza
 cyX
 cuI
@@ -191773,7 +191859,7 @@ bmI
 cfW
 cfJ
 cfB
-bsO
+eQo
 btW
 btW
 buc
@@ -191957,7 +192043,7 @@ cfQ
 cfA
 cfK
 cfC
-bsO
+eQo
 bgC
 btW
 buc
@@ -192031,7 +192117,7 @@ bsZ
 btI
 btW
 btW
-bta
+eQo
 cza
 cyV
 cuI
@@ -192141,7 +192227,7 @@ bmP
 ath
 cfL
 cfB
-bsO
+eQo
 btW
 btW
 buc
@@ -192215,7 +192301,7 @@ bsZ
 bsZ
 buq
 bgC
-bta
+eQo
 czb
 cyW
 cuJ
@@ -192399,7 +192485,7 @@ bsZ
 bsZ
 bui
 buc
-bta
+eQo
 cza
 cyX
 cuI
@@ -192877,7 +192963,7 @@ aEr
 jez
 cfJ
 cfB
-bsO
+eQo
 btW
 buc
 bsZ
@@ -193061,7 +193147,7 @@ aEs
 jez
 cfK
 cfC
-bsO
+eQo
 bgC
 btW
 buc
@@ -193135,7 +193221,7 @@ bsZ
 apn
 buc
 btW
-bta
+eQo
 cza
 cyV
 cuJ
@@ -193245,7 +193331,7 @@ aEt
 jez
 cfL
 cfB
-bsO
+eQo
 buc
 buc
 bsZ
@@ -193319,7 +193405,7 @@ bsZ
 bsZ
 buq
 bgC
-bta
+eQo
 czb
 cyW
 baq
@@ -193503,7 +193589,7 @@ bsZ
 apn
 buc
 btW
-bta
+eQo
 cza
 cyX
 cuJ
@@ -193981,7 +194067,7 @@ abK
 jez
 cfJ
 cfB
-bsO
+eQo
 buc
 buc
 buc
@@ -194165,7 +194251,7 @@ cgg
 jez
 cfK
 cfC
-bsO
+eQo
 bgC
 btW
 buc
@@ -194239,7 +194325,7 @@ bsZ
 bsZ
 btM
 buc
-bta
+eQo
 bta
 cyV
 cuJ
@@ -194349,7 +194435,7 @@ jez
 jez
 cfL
 cfB
-bsO
+eQo
 btW
 btW
 buc
@@ -194423,7 +194509,7 @@ bsZ
 bsZ
 buq
 bta
-bta
+eQo
 czb
 cyW
 cuJ
@@ -194607,7 +194693,7 @@ bsZ
 bsZ
 buq
 btW
-bta
+eQo
 bta
 cyX
 cuJ
@@ -195085,7 +195171,7 @@ aEw
 jez
 ate
 cfB
-bsO
+eQo
 buc
 buc
 bsZ
@@ -195269,7 +195355,7 @@ aau
 jez
 atf
 cfC
-bsO
+eQo
 bgC
 btW
 buc
@@ -195453,7 +195539,7 @@ aEy
 jez
 atg
 cfB
-bsO
+eQo
 buc
 btW
 bsZ
@@ -196189,7 +196275,7 @@ jez
 jez
 cfJ
 cfB
-bsO
+eQo
 btW
 btW
 bsZ
@@ -196287,9 +196373,9 @@ btW
 btW
 bta
 bta
+eTD
 bgD
-bgD
-bgD
+eSg
 cMY
 bta
 bta
@@ -196373,7 +196459,7 @@ jez
 kLc
 atf
 cfC
-bsO
+eQo
 bgC
 buc
 bsZ
@@ -196471,9 +196557,9 @@ btW
 btW
 btW
 bta
+eTE
 bgD
-bgD
-bgD
+eSw
 cMY
 bta
 bta
@@ -196557,7 +196643,7 @@ eOZ
 eOZ
 atg
 cfB
-bsO
+eQo
 buc
 bsZ
 bsZ
@@ -196656,8 +196742,8 @@ btW
 btW
 bta
 cMY
-bgD
-cMY
+eTz
+eSy
 bgD
 cts
 cEc
@@ -196839,9 +196925,9 @@ bsZ
 bsZ
 btW
 bta
-cMY
-bgD
-bgD
+eTF
+eTA
+eTv
 bgD
 eCi
 cEd
@@ -197023,9 +197109,9 @@ bsZ
 bsZ
 bsZ
 bta
-bgD
-bgD
-bgD
+eTH
+eTB
+eTw
 cMY
 bta
 cEs
@@ -197209,8 +197295,8 @@ bsZ
 bta
 bgD
 cMY
-cMY
-bgD
+eTx
+dfQ
 cts
 cEu
 dFs
@@ -197293,7 +197379,7 @@ cfQ
 cfZ
 ate
 cfB
-bsO
+eQo
 buc
 buc
 bsZ
@@ -197391,10 +197477,10 @@ bsZ
 bsZ
 bsZ
 bta
-bgD
-cMY
-bgD
-bgD
+eTI
+eTC
+eTy
+eSe
 cts
 cEv
 eja
@@ -197477,7 +197563,7 @@ cfD
 cfA
 atf
 cfC
-bsO
+eQo
 bta
 btW
 bsZ
@@ -197575,7 +197661,7 @@ bsZ
 bsZ
 bsZ
 bta
-bgD
+eTJ
 cMY
 bgD
 bgD
@@ -197661,7 +197747,7 @@ cfA
 cfD
 cfL
 cfB
-bsO
+eQo
 btW
 buc
 bsZ
@@ -226451,10 +226537,10 @@ cVG
 cVG
 cVG
 cVG
-cHR
+cHS
 cHv
 cHv
-cHo
+cHp
 cVG
 cVG
 cVG
@@ -227371,10 +227457,10 @@ cVG
 cVG
 cVG
 cVG
-cHR
+cHQ
 cHt
 cHt
-cHo
+cHn
 cVG
 cVG
 cVG
@@ -228476,7 +228562,7 @@ cVG
 cVG
 cVG
 cVG
-eMd
+cIc
 eMb
 cVG
 cVG

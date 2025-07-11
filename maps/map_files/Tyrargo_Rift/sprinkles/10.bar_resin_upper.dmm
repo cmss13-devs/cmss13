@@ -1,4 +1,26 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northeast,
+/area/tyrargo/indoors/bar/upper/external)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northwest,
+/area/tyrargo/indoors/bar/upper/external)
+"ac" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northeast,
+/area/tyrargo/indoors/bar/upper/external)
+"ad" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northwest,
+/area/tyrargo/indoors/bar/upper/external)
+"ae" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southeast,
+/area/tyrargo/indoors/bar/upper/external)
+"af" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southwest,
+/area/tyrargo/indoors/bar/upper/external)
 "aT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer_hull/outerhull_dir,
@@ -177,7 +199,7 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
-/turf/open/floor/almayer_hull,
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northwest,
 /area/tyrargo/indoors/bar/upper/external)
 "ww" = (
 /obj/effect/decal/cleanable/dirt,
@@ -223,8 +245,10 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/bar/upper/external)
 "DJ" = (
-/obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/bar/upper)
 "DS" = (
@@ -242,10 +266,11 @@
 /turf/open/floor/strata/fake_wood,
 /area/tyrargo/indoors/bar/upper)
 "Fw" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1;
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/indoors/bar/upper)
 "Ge" = (
@@ -474,14 +499,14 @@ tk
 dz
 dz
 hN
-xn
+ae
 bU
 bU
 DS
 DS
 Bv
 Bv
-Db
+ac
 oD
 tk
 tk
@@ -489,7 +514,7 @@ tk
 (4,1,1) = {"
 dz
 Yu
-xn
+ae
 bU
 bU
 Sm
@@ -498,7 +523,7 @@ Sm
 Bv
 Bv
 Bv
-xn
+aT
 oD
 JR
 "}
@@ -562,7 +587,7 @@ Sm
 Sm
 Sm
 bU
-xn
+aa
 oD
 kx
 "}
@@ -578,7 +603,7 @@ Eh
 Eh
 Eh
 bU
-xn
+ab
 rC
 tk
 "}
@@ -594,7 +619,7 @@ NX
 NX
 NX
 DS
-Db
+OX
 tk
 tk
 "}
@@ -610,8 +635,8 @@ fj
 WX
 fj
 DS
-Db
-rC
+OX
+OX
 JR
 "}
 (12,1,1) = {"
@@ -706,7 +731,7 @@ fj
 WX
 DJ
 bU
-xn
+ab
 rC
 tk
 "}
@@ -754,7 +779,7 @@ xE
 xE
 xE
 bU
-Db
+ac
 oD
 tk
 "}
@@ -825,7 +850,7 @@ tk
 (25,1,1) = {"
 dz
 ww
-xn
+af
 bU
 bU
 Sm
@@ -842,14 +867,14 @@ tk
 Vc
 JQ
 pn
-xn
+af
 bU
 bU
 DS
 DS
 bU
 bU
-Db
+ad
 rC
 tk
 tk

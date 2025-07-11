@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light{
+	dir = 1;
+	light_color = "#A7DBB6"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/indoors/bar/ground)
 "af" = (
 /obj/effect/decal/siding,
 /turf/closed/wall/mineral/bone_resin,
@@ -50,7 +58,9 @@
 /obj/effect/decal/siding{
 	icon_state = "siding4"
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
 "bO" = (
@@ -666,8 +676,10 @@
 /obj/effect/decal/siding{
 	icon_state = "siding8"
 	},
-/obj/structure/machinery/light,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/machinery/light{
+	light_color = "#A7DBB6"
+	},
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
 "LG" = (
@@ -727,9 +739,6 @@
 	icon_state = "siding2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/indoors/bar/ground)
 "NN" = (
@@ -840,7 +849,8 @@
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "SX" = (
 /obj/structure/machinery/light{
-	dir = 1
+	dir = 1;
+	light_color = "#A7DBB6"
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/bar/ground)
@@ -1359,7 +1369,7 @@ Pb
 (24,1,1) = {"
 KI
 Ul
-Dz
+aa
 IF
 Vj
 Gq

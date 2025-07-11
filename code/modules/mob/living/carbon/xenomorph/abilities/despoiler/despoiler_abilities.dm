@@ -1,5 +1,5 @@
 /datum/action/xeno_action/activable/xeno_spit/despoiler
-	cooldown = 5 SECONDS
+	xeno_cooldown = 5 SECONDS
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
 /datum/action/xeno_action/onclick/despoiler_empower_slash

@@ -26,7 +26,8 @@
 	/// The maximum amount of lesser drone spawns this pylon can hold
 	var/lesser_drone_spawn_limit = 5
 
-	plane = FLOOR_PLANE
+	plane = GAME_PLANE
+	layer = WINDOW_LAYER
 
 /obj/effect/alien/resin/special/pylon/endgame/update_icon()
 	if(protection_level == TURF_PROTECTION_OB)
@@ -234,6 +235,8 @@
 	var/spawn_cooldown = 30 SECONDS
 	var/surge_cooldown = 90 SECONDS
 	var/surge_incremental_reduction = 3 SECONDS
+
+	plane = FLOOR_PLANE
 
 	protection_level = TURF_PROTECTION_OB
 

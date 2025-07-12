@@ -628,9 +628,9 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	orient2hud()
 	for(var/mob/player in can_see_content())
 		show_to(player)
-	if(W.maptext && (storage_flags & STORAGE_CONTENT_NUM_DISPLAY))
-		W.maptext = ""
-	W.on_exit_storage(src)
+	if(item.maptext && (storage_flags & STORAGE_CONTENT_NUM_DISPLAY))
+		item.maptext = ""
+	item.on_exit_storage(src)
 	update_icon()
 
 //This proc is called when you want to place an item into the storage item.

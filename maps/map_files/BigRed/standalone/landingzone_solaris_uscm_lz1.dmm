@@ -208,7 +208,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/space_port)
 "dR" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars/mars_dirt_3,
 /area/bigredv2/outside/nw)
 "ee" = (
@@ -253,7 +253,7 @@
 /turf/open/mars_cave,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "fe" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/nw)
 "ff" = (
@@ -301,7 +301,7 @@
 /turf/open/mars,
 /area/space)
 "gy" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4
 	},
@@ -439,7 +439,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/nw)
 "kq" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "kr" = (
@@ -569,7 +569,7 @@
 /turf/open/mars_cave/mars_cave_6,
 /area/bigredv2/outside/lz1_telecomm_cas)
 "mY" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "na" = (
@@ -714,7 +714,7 @@
 /area/bigredv2/outside/space_port)
 "qM" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/darkgreen2/southwest,
 /area/bigredv2/outside/space_port)
 "qQ" = (
@@ -879,7 +879,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "uq" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/mars,
 /area/bigredv2/outside/nw)
 "uz" = (
@@ -1112,7 +1112,7 @@
 /turf/open/mars,
 /area/space)
 "Av" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
 "Aw" = (
@@ -1268,7 +1268,7 @@
 /turf/open/floor/asteroidwarning,
 /area/bigred/ground/garage_workshop)
 "DG" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-in"
 	},
@@ -1363,7 +1363,7 @@
 /area/bigredv2/outside/space_port)
 "EZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
 "Ff" = (
@@ -1411,7 +1411,7 @@
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "FT" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/space_port)
 "FU" = (
@@ -1419,7 +1419,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/bigredv2/outside/nw)
 "Gb" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
 "Gn" = (

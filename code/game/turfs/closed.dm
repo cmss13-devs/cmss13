@@ -3,13 +3,9 @@
 	density = TRUE
 	opacity = TRUE
 
-/turf/closed/attack_alien(mob/user)
-	attack_hand(user)
 
-/turf/closed/attack_hand(mob/user)
-	if(user.a_intent == INTENT_HARM)
-		return
 
+/turf/closed/proc/climb_up(mob/user)
 	var/turf/above_current = SSmapping.get_turf_above(get_turf(src))
 	var/turf/above_user = SSmapping.get_turf_above(get_turf(user))
 
@@ -31,8 +27,27 @@
 		return
 
 	user.visible_message(SPAN_WARNING("[user] starts climbing up [src]."), SPAN_WARNING("You start climbing up [src]."))
+	var/climb_up_time = 1 SECONDS
+	if(isxeno(user))
+		var/mob/living/carbon/xenomorph/xeno = user
+		climb_up_time = 1.5 SECONDS
+		if(xeno.mob_size >= MOB_SIZE_BIG)
+			climb_up_time = 5 SECONDS
 
-	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(ishuman(user))
+		climb_up_time = 7 SECONDS
+		if(istype(src,/turf/closed/wall))
+			var/turf/closed/wall/wall = src
+			if(length(wall.hiding_humans))
+				var/human
+				for(var/mob/living/boosting_human in wall.hiding_humans)
+					if(boosting_human.loc == user.loc && user != boosting_human)
+						human = boosting_human
+						break
+				if(human)
+					climb_up_time = 3 SECONDS
+					user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
+	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 
@@ -41,6 +56,20 @@
 	user.forceMove(above_current)
 	return
 
+/turf/closed/attack_alien(mob/user)
+	attack_hand(user)
+
+/turf/closed/attack_hand(mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return
+	climb_up(user)
+
+/turf/closed/Enter(atom/movable/mover, atom/forget)
+	. = ..()
+	if(!mover.move_intentionally || !istype(mover,/mob/living))
+		return
+	var/mob/living/climber = mover
+	climb_up(climber)
 
 /turf/closed/insert_self_into_baseturfs()
 	return

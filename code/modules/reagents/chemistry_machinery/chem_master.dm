@@ -84,9 +84,7 @@
 			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
 			return
 
-		loaded_pill_bottles += bottle
-		if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
-			loaded_pill_bottles_to_fill += bottle
+		add_pill_bottle(bottle)
 
 		user.drop_inv_item_to_loc(bottle, src)
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
@@ -108,16 +106,23 @@
 		playsound(loc, "rustle", 25, TRUE, 3)
 
 		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
-			if (length(loaded_pill_bottles_to_fill) == 0)
-				loaded_pill_bottles_to_fill += bottle
-
 			if(length(loaded_pill_bottles) >= max_bottles_count)
 				to_chat(user, SPAN_WARNING("[src.name] is fully loaded by pill bottles."))
 				return
+			add_pill_bottle(bottle)
 			box.forced_item_removal(bottle)
-			loaded_pill_bottles += bottle
 
 		SStgui.update_uis(src)
+
+/obj/structure/machinery/chem_master/proc/add_pill_bottle(obj/item/storage/pill_bottle/bottle)
+	if(!bottle)
+		return
+
+	loaded_pill_bottles += bottle
+
+	if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
+		loaded_pill_bottles_to_fill += bottle
+
 
 /obj/structure/machinery/chem_master/proc/transfer_chemicals(obj/dest, obj/source, amount, reagent_id)
 	if(istype(source))

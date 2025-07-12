@@ -96,7 +96,6 @@
 		if(!box)
 			return
 
-		to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box.name] into the [src.name]..."),
 		SPAN_NOTICE("You start to empty the [box.name] into the [src.name]..."))
 

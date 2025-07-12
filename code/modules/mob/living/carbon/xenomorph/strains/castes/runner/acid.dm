@@ -149,6 +149,8 @@
 	var/acid_range = acid_amount / caboom_acid_ratio
 	var/max_burn_damage = acid_amount / caboom_burn_damage_ratio
 	var/burn_range = acid_amount / caboom_burn_range_ratio
+	if(acid_amount >= max_acid)
+		SEND_SIGNAL(bound_xeno, COMSIG_XENO_FTH_MAX_ACID)
 
 	for(var/barricades in dview(acid_range, bound_xeno))
 		if(istype(barricades, /obj/structure/barricade))

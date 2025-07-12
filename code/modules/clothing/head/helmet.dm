@@ -602,7 +602,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	// the human sprite is the only thing that reliably renders things, so
 	// we have to add overlays to that.
 	helmet_overlays = list() // Rebuild our list every time
-	if(length(pockets?.contents) && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+	if(pockets && pockets.contents.len && (flags_marine_helmet & HELMET_GARB_OVERLAY))
 		var/list/above_band_layer = list()
 		var/list/below_band_layer = list()
 		var/has_helmet_band = FALSE
@@ -625,6 +625,12 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	if(active_visor)
 		helmet_overlays += overlay_image(active_visor.helmet_overlay_icon, active_visor.helmet_overlay, color, RESET_COLOR)
+
+	if(helmet_fire_overlay_icon)
+		overlays += helmet_fire_overlay_icon
+
+	if(helmet_fire_overlay_icon)
+		overlays += helmet_fire_overlay_icon
 
 	if(ismob(loc))
 		var/mob/moob = loc

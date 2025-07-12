@@ -652,12 +652,14 @@
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
 				GLOB.round_statistics.current_map.total_xeno_majors++
+			SSbattlepass.give_sides_points(3, 5)
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++
 				GLOB.round_statistics.current_map.total_marine_majors++
+			SSbattlepass.give_sides_points(5, 3)
 		if(MODE_INFESTATION_X_MINOR)
 			var/list/living_player_list = count_humans_and_xenos(get_affected_zlevels())
 			end_icon = "xeno_minor"
@@ -685,16 +687,19 @@
 				musical_track = pick('sound/theme/neutral_melancholy1.ogg')
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_xeno_victories++
+			SSbattlepass.give_sides_points(3, 4)
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_marine_victories++
+			SSbattlepass.give_sides_points(4, 3)
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
 			if(GLOB.round_statistics && GLOB.round_statistics.current_map)
 				GLOB.round_statistics.current_map.total_draws++
+			SSbattlepass.give_sides_points(3, 3)
 		else
 			end_icon = "draw"
 			musical_track = 'sound/theme/neutral_hopeful2.ogg'
@@ -717,6 +722,7 @@
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()
 	declare_fun_facts()
+	SSbattlepass.save_battlepasses()
 
 
 	add_current_round_status_to_end_results("Round End")

@@ -16,9 +16,12 @@
 
 	var/key_name = key_name(facehugger)
 	var/did_hug = FALSE
+	var/client/hugging_client = facehugger.client
 	if(facehugger.pounce_distance <= 1 && can_hug(L, facehugger.hivenumber))
 		did_hug = facehugger.handle_hug(L)
 	log_attack("[key_name] [did_hug ? "successfully hugged" : "tried to hug"] [key_name(L)] (Pounce Distance: [facehugger.pounce_distance]) at [get_location_in_text(L)]")
+	if(did_hug && hugging_client)
+		SEND_SIGNAL(hugging_client.mob, COMSIG_XENO_FACEHUGGED_HUMAN) //handle_hug deletes the hugger
 
 /datum/action/xeno_action/activable/pounce/facehugger/use_ability()
 	for(var/obj/structure/machinery/door/airlock/current_airlock in get_turf(owner))

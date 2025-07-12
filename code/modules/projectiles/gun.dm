@@ -1497,7 +1497,7 @@ and you're good to go.
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, dual_wield) //We add any damage effects that we need.
 
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
-		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob)
+		SEND_SIGNAL(user, COMSIG_BULLET_DIRECT_HIT, attacked_mob, src)
 		simulate_recoil(1, user)
 
 

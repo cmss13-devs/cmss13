@@ -84,3 +84,6 @@
 2025-07-11:
   matttheficus:
   - bugfix: Field Doctor now counts hours towards the Doctor Roles timelock.
+2025-07-12:
+  jupyterkat:
+  - imageadd: added sharp operator hud icon and map icon

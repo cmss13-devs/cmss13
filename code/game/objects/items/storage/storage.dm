@@ -618,6 +618,21 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		user.update_inv_r_hand()
 	W.mouse_opacity = initial(W.mouse_opacity)
 
+///Call this proc to just remove item from storage list.
+/obj/item/storage/proc/forced_item_removal(obj/item/W as obj) // ITEM, JUST PERISH FROM THE REALITY ITSELF
+	for(var/mob/M in can_see_content())
+		if(M.client)
+			M.client.remove_from_screen(W)
+	LAZYREMOVE(contents, W)
+
+	orient2hud()
+	for(var/mob/M in can_see_content())
+		show_to(M)
+	if(W.maptext && (storage_flags & STORAGE_CONTENT_NUM_DISPLAY))
+		W.maptext = ""
+	W.on_exit_storage(src)
+	update_icon()
+
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
 	..()

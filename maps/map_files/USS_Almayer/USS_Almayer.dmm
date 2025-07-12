@@ -16665,7 +16665,7 @@
 /area/almayer/living/briefing)
 "bos" = (
 /obj/structure/coatrack,
-/obj/item/clothing/head/helmet/marine/pilottex{
+/obj/item/clothing/head/helmet/marine/pilot/tex{
 	pixel_x = -2;
 	pixel_y = 11
 	},

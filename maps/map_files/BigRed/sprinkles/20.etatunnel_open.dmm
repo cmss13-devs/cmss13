@@ -32,7 +32,8 @@
 /turf/open/mars_cave/mars_cave_15,
 /area/bigredv2/outside/lz2_south_cas)
 "fK" = (
-/obj/structure/machinery/light/double{
+/obj/structure/machinery/light/red{
+	light_color = "#FF0000";
 	dir = 1
 	},
 /turf/open/mars_cave/mars_cave_7,
@@ -75,7 +76,8 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/lz2_south_cas)
 "ki" = (
-/obj/structure/machinery/light/double{
+/obj/structure/machinery/light/red{
+	light_color = "#FF0000";
 	dir = 4
 	},
 /turf/open/floor/plating/platingdmg3/west,
@@ -132,7 +134,9 @@
 "sJ" = (
 /obj/item/clothing/suit/storage/CMB,
 /obj/structure/closet/secure_closet/marshal,
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/red{
+	light_color = "#FF0000"
+	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "sV" = (
@@ -275,7 +279,9 @@
 /turf/closed/wall/wood,
 /area/bigredv2/outside/lz2_south_cas)
 "JW" = (
-/obj/structure/machinery/light/double,
+/obj/structure/machinery/light/red{
+	light_color = "#FF0000"
+	},
 /turf/open/mars_cave/mars_cave_5,
 /area/bigredv2/outside/lz2_south_cas)
 "KI" = (

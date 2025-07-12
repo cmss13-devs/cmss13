@@ -619,15 +619,15 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	W.mouse_opacity = initial(W.mouse_opacity)
 
 ///Call this proc to just remove item from storage list.
-/obj/item/storage/proc/forced_item_removal(obj/item/W as obj)
-	for(var/mob/M in can_see_content())
-		if(M.client)
-			M.client.remove_from_screen(W)
-	LAZYREMOVE(contents, W)
+/obj/item/storage/proc/forced_item_removal(obj/item/item as obj)
+	for(var/mob/player in can_see_content())
+		if(player.client)
+			player.client.remove_from_screen(item)
+	LAZYREMOVE(contents, item)
 
 	orient2hud()
-	for(var/mob/M in can_see_content())
-		show_to(M)
+	for(var/mob/player in can_see_content())
+		show_to(player)
 	if(W.maptext && (storage_flags & STORAGE_CONTENT_NUM_DISPLAY))
 		W.maptext = ""
 	W.on_exit_storage(src)

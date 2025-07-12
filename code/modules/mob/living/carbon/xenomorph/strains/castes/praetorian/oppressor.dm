@@ -168,10 +168,14 @@
 		targets_added += target_turf_mob
 
 	for(var/mob/living/targets in targets_added)
-		if(target_turf_mob)
+		if(hit_obstacle)
 			targets.Stun(1)
 			targets.KnockDown(1)
+			to_chat(targets, SPAN_XENODANGER("You lose your footing as you're slammed into another person!"))
+			to_chat(abduct_user, SPAN_XENODANGER("We use our tail to slam our enemies together!"))
 		else
+			to_chat(targets, SPAN_XENODANGER("You are swept off your feet as [abduct_user]'s tail throws you around!"))
+			to_chat(abduct_user, SPAN_XENODANGER("We spring our tail and throw them around!"))
 			targets.Stun(0.7)
 			targets.KnockDown(0.7)
 

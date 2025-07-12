@@ -22,6 +22,7 @@
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel
 	var/fire_resistance = 30 //to prevent highly controlled massive explosions
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL
+	mouse_pointer = 'icons/effects/mouse_pointer/item_icon/grenades/HEDP.dmi'
 
 /obj/item/explosive/grenade/high_explosive/New()
 	..()

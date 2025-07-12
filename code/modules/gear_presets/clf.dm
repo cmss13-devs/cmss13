@@ -46,6 +46,12 @@
 	new_human.g_eyes = 62
 	new_human.b_eyes = 19
 
+/datum/equipment_preset/clf/load_traits(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	if(!HAS_TRAIT(new_human, TRAIT_IRON_TEETH))
+		var/datum/character_trait/character_trait = GLOB.character_traits[/datum/character_trait/biology/iron_teeth]
+		character_trait.apply_trait(new_human, src)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/soldier

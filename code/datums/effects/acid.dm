@@ -120,7 +120,7 @@
 		//its just a one permenant time stat change
 
 /datum/effects/acid/proc/adjust_armor(armor, armor_type)
-	if(!(armor_type == BRUTE || armor_type == BURN))
+	if(!(armor_type == ARMOR_MELEE || armor_type == ARMOR_BIO))
 		return armor
 
 	if(acid_level != 3)

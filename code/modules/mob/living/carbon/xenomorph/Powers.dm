@@ -128,13 +128,13 @@
 					return SECRETE_RESIN_FAIL
 
 				if(a_intent == INTENT_HARM)
+					construct_target.visible_message(SPAN_XENONOTICE("[construct_target] shudders and withdraws back into the weeds!"))
+					playsound(target.loc, "alien_resin_break", 25)
 					construct_target.health -= initial(construct_target.health) * 2
 					construct_target.healthcheck()
-					construct_target.visible_message(SPAN_XENONOTICE("[construct_target] shudders and withdraws back into the weeds!"))
-					playsound(construct_target.loc, "alien_resin_break", 25)
 				else
 					construct_target.template.add_crystal(src)
-				return SECRETE_RESIN_INTERRUPT
+				return SECRETE_RESIN_FAIL
 
 			// In practice, Membrane and Wall are treated as the same, but future modularity is good, so they are identified as seperate things
 			if(RESIN_WALL to RESIN_WALL_MEMBRANE)
@@ -147,14 +147,14 @@
 					to_chat(src, SPAN_XENOWARNING("[resin_wall] is too weak to be worth deconstructing."))
 					return SECRETE_RESIN_FAIL
 
-				if(!deconstruct_windup(target, src))
-					return
+				if(!deconstruct_windup(target))
+					return SECRETE_RESIN_FAIL
 
 				resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] crumbles!"))
 				to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_wall]!"))
+				playsound(target.loc, "alien_resin_break", 25)
 				resin_wall.dismantle_wall()
-				playsound(resin_wall.loc, "alien_resin_break", 25)
-				return TRUE
+				return SECRETE_RESIN_FAIL
 
 			if(RESIN_DOOR)
 				var/obj/structure/mineral_door/resin/resin_door = target
@@ -162,14 +162,14 @@
 					to_chat(src, SPAN_XENOWARNING("We cannot deconstruct what doesn't belong to our hive!"))
 					return SECRETE_RESIN_FAIL
 
-				if(!deconstruct_windup())
-					return
+				if(!deconstruct_windup(target))
+					return SECRETE_RESIN_FAIL
 
 				resin_door.visible_message(SPAN_XENONOTICE("[resin_door] crumbles!"))
 				to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_door]!"))
+				playsound(target.loc, "alien_resin_move", 25)
 				resin_door.Dismantle(1)
-				playsound(resin_door.loc, "alien_resin_move", 25)
-				return TRUE
+				return SECRETE_RESIN_FAIL
 
 	if(!resin_construct.can_build_here(current_turf, src))
 		return SECRETE_RESIN_FAIL
@@ -211,7 +211,7 @@
 	if(!succeeded)
 		return SECRETE_RESIN_INTERRUPT
 
-	if (!resin_construct.can_build_here(current_turf, src))
+	if(!resin_construct.can_build_here(current_turf, src))
 		return SECRETE_RESIN_FAIL
 
 	if(use_plasma)
@@ -239,6 +239,7 @@
 
 	return SECRETE_RESIN_SUCCESS
 
+#undef RESIN_CONSTRUCT
 #undef RESIN_DOOR
 #undef RESIN_WALL
 #undef RESIN_WALL_MEMBRANE

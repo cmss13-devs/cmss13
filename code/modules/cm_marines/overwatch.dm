@@ -804,7 +804,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 						concurrent.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 					disconnect_holder()
 					cam = null
-				else if(user.client.view != GLOB.world_view_size)
+				else if(usr.client.view_size.get_client_view_size() != usr.client.view_size.default)
 					to_chat(user, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					for(var/datum/weakref/user_ref in concurrent_users)

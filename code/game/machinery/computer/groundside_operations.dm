@@ -332,7 +332,7 @@
 					disconnect_holder()
 					cam = null
 					usr.reset_view(null)
-				else if(usr.client.view != GLOB.world_view_size)
+				else if(usr.client.view_size.is_zooming())
 					to_chat(usr, SPAN_WARNING("You're too busy peering through binoculars."))
 				else
 					if(cam)

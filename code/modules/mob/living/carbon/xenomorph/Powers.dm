@@ -152,7 +152,7 @@
 
 				resin_wall.visible_message(SPAN_XENONOTICE("[resin_wall] crumbles!"))
 				to_chat(src, SPAN_XENONOTICE("We deconstruct [resin_wall]!"))
-				playsound(target.loc, "alien_resin_break", 25)
+				playsound(get_turf(target), "alien_resin_break", 25)
 				resin_wall.dismantle_wall()
 				return SECRETE_RESIN_FAIL
 

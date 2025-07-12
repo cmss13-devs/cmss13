@@ -23,10 +23,8 @@ jobs:
           key: ${{ runner.os }}-spacemandmm-${{ hashFiles('dependencies.sh') }}
           restore-keys: |
             ${{ runner.os }}-spacemandmm-
-      - name: Setup Node
-        uses: ./.github/actions/setup_node
-        with:
-          restore-yarn-cache: true
+      - name: Setup Bun
+        uses: ./.github/actions/setup_bun
       - name: Restore Bootstrap cache
         uses: actions/cache@v4
         with:
@@ -55,7 +53,7 @@ jobs:
           bash tools/ci/check_misc.sh
           tools/bootstrap/python tools/ci/validate_dme.py < colonialmarines.dme
           tools/bootstrap/python -m tools.maplint.source --github
-          tools/build/build --ci lint tgui-test
+          tools/build/build.sh --ci lint tgui-test
           tools/bootstrap/python -m dmi.test
           tools/bootstrap/python -m mapmerge2.dmm_test
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
@@ -95,7 +93,7 @@ jobs:
       - name: Compile All Maps
         run: |
           source $HOME/BYOND/byond/bin/byondsetup
-          tools/build/build --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
+          tools/build/build.sh --ci dm -DCIBUILDING -DCITESTING -DALL_MAPS
 
   find_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )

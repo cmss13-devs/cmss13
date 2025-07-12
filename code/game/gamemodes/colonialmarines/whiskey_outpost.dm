@@ -645,10 +645,10 @@
 			supply_drop = 6
 			to_chat(usr, SPAN_NOTICE("SHARP ammo will now drop!"))
 		if("Pyrotechnician tanks")
-			supply_drop = 6
+			supply_drop = 7
 			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
 		if("Scout ammo")
-			supply_drop = 7
+			supply_drop = 8
 			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
 		else
 			return

@@ -93,6 +93,8 @@
 
 	if(istype(inputed_item, /obj/item/storage/box/pillbottles))
 		var/obj/item/storage/box/pillbottles/box = inputed_item
+		if(!box)
+			return
 
 		to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box.name] into the [src.name]..."),
@@ -106,6 +108,8 @@
 		playsound(loc, "rustle", 25, TRUE, 3)
 
 		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
+			if(!bottle)
+				continue
 			if(length(loaded_pill_bottles) >= max_bottles_count)
 				to_chat(user, SPAN_WARNING("[src.name] is fully loaded by pill bottles."))
 				return

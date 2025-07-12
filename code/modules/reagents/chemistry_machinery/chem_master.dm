@@ -104,7 +104,7 @@
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return
 
-		playsound(loc, "rustle", 25, TRUE, 3)
+		playsound(user.loc, "rustle", 25, TRUE, 3)
 
 		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
 			if(!bottle)

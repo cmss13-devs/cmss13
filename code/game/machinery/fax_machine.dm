@@ -347,6 +347,9 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 			. = TRUE
 
 		if("send")
+			if(!COOLDOWN_FINISHED(src, send_cooldown))
+				return
+
 			if(!original_fax)
 				to_chat(user, SPAN_NOTICE("No paper loaded."))
 				return
@@ -379,6 +382,8 @@ GLOBAL_DATUM_INIT(fax_network, /datum/fax_network, new)
 		if("ejectpaper")
 			if(!original_fax)
 				to_chat(user, SPAN_NOTICE("No paper loaded."))
+				return
+
 			if(!ishuman(user))
 				to_chat(user, SPAN_NOTICE("You can't do that."))
 				return

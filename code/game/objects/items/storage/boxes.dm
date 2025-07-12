@@ -541,8 +541,9 @@
 
 	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_GATHER_SIMULTAENOUSLY
 	can_hold = list(
-		/obj/item/storage/pill_bottle
+		/obj/item/storage/pill_bottle,
 	)
+
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle( src )

@@ -1811,6 +1811,11 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/extended(src)
 
+/obj/item/storage/belt/gun/m39/corporate/no_lock/full/extended/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/corporate/no_lock(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/m39/extended(src)
+
 /obj/item/storage/belt/gun/m39/full/whiteout/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact/heap(src))
 	for(var/i = 1 to storage_slots - 1)

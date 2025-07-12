@@ -182,7 +182,7 @@ CIVILIAN
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
-/datum/skills/cmb/co_survivor // PMC Nightmare Variant of CMB CO Survivor for Solaris Ridge
+/datum/skills/civilian/survivor/pmc/co_survivor // PMC Nightmare Variant of CMB CO Survivor for Solaris Ridge
 	name = "Survivor PMC Field Operations Leader"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_EXPERT,

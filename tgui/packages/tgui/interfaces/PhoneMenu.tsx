@@ -90,8 +90,9 @@ const GeneralPanel = (props) => {
             <Tabs vertical>
               {transmitters.map((val) => {
                 if (
-                  val.phone_category !== currentCategory ||
-                  !val.phone_id.toLowerCase().match(currentSearch)
+                  !currentSearch.includes('\\') &&
+                  (val.phone_category !== currentCategory ||
+                    !val.phone_id.toLowerCase().match(currentSearch))
                 ) {
                   return;
                 }

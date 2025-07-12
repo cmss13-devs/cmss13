@@ -174,7 +174,6 @@
 	if(current_mag)
 		if(current_mag.current_rounds > 0)
 			if(current_mag.chamber_contents[current_mag.chamber_position] == "bullet")
-				current_mag.current_rounds-- //Subtract the round from the mag.
 				in_chamber = create_bullet(ammo, initial(name))
 				apply_traits(in_chamber)
 				return in_chamber
@@ -189,6 +188,8 @@
 /obj/item/weapon/gun/revolver/reload_into_chamber(mob/user)
 	in_chamber = null
 	if(current_mag)
+		if(current_mag.current_rounds > 0)
+			current_mag.current_rounds-- // Subtract the round from the mag only after firing is confirmed
 		current_mag.chamber_contents[current_mag.chamber_position] = "blank" //We shot the bullet.
 		rotate_cylinder()
 		return 1

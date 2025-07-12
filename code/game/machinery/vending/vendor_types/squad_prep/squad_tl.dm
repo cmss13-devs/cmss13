@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 		list("RESTRICTED FIREARMS", 0, null, null, null),
 		list("VP78 Pistol", 10, /obj/item/storage/box/guncase/vp78, null, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smart Pistol", 15, /obj/item/storage/box/guncase/smartpistol, null, VENDOR_ITEM_REGULAR),
-		list("M79 Grenade Launcher", 30, /obj/item/storage/box/guncase/m79, null, VENDOR_ITEM_REGULAR),
+		list("M85A1 Grenade Launcher", 30, /obj/item/storage/box/guncase/m85a1, null, VENDOR_ITEM_REGULAR),
 
 		list("ARMORS", 0, null, null, null),
 		list("M3 B12 Pattern Marine Armor", 30, /obj/item/clothing/suit/storage/marine/medium/leader, null, VENDOR_ITEM_REGULAR),

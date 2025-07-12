@@ -387,6 +387,8 @@
 
 	S["show_cooldown_messages"] >> show_cooldown_messages
 
+	S["latejoin_cryo_intro"] >> latejoin_cryo_intro
+
 	//Sanitize
 	ooccolor = sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -480,6 +482,8 @@
 	loadout_slot_names = sanitize_islist(loadout_slot_names, list())
 
 	show_cooldown_messages = sanitize_integer(show_cooldown_messages, FALSE, TRUE, FALSE)
+
+	latejoin_cryo_intro = sanitize_integer(latejoin_cryo_intro, FALSE, TRUE, TRUE)
 
 	check_keybindings()
 	S["key_bindings"] << key_bindings
@@ -635,6 +639,8 @@
 	S["window_scale"] << window_scale
 
 	S["show_cooldown_messages"] << show_cooldown_messages
+
+	S["latejoin_cryo_intro"] << latejoin_cryo_intro
 
 	return TRUE
 

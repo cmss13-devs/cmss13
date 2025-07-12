@@ -173,6 +173,10 @@
 
 #define CINEMATIC_LAYER 21
 
+#define INTRO_PLANE 2001
+#define INTRO_LAYER 26
+#define ABOVE_INTRO_LAYER 27
+
 /// for areas, so they appear above everything else on map file.
 #define AREAS_LAYER 999
 

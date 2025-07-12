@@ -53,7 +53,8 @@
 	if(istype(A, /obj/item/tool/surgery) || istype(A, /obj/item/reagent_container/pill))
 		to_chat(user, SPAN_WARNING("That wouldn't be sanitary."))
 		return
-	if(istype(A, /obj/vehicle/multitile) || (istype(A, /obj/structure) && !istype(A, /obj/structure/closet/crate))) // disallow naming structures and vehicles, but not crates!
+	//disallow naming structures and vehicles, but not crates!
+	if(istype(A, /obj/vehicle/multitile) || (istype(A, /obj/structure) && !istype(A, /obj/structure/closet/crate) && !istype(A, /obj/structure/closet/coffin/woodencrate)))
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
 	if(isturf(A))

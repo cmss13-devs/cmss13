@@ -81,7 +81,7 @@
 	if (istype(behavior))
 		behavior.next_slash_buffed = TRUE
 
-	to_chat(xeno, SPAN_XENOHIGHDANGER("Our slashes will apply accid!"))
+	to_chat(xeno, SPAN_XENOHIGHDANGER("Our slashes will apply acid!"))
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)
 
@@ -99,7 +99,7 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("Out power weakens, out slashes will no longer apply acid!"))
+	to_chat(xeno, SPAN_XENODANGER("Our power weakens, out slashes will no longer apply acid!"))
 
 
 /datum/behavior_delegate/despoiler_base
@@ -137,7 +137,7 @@
 	XENO_ACTION_CHECK_USE_PLASMA(xeno)
 
 	playsound(xeno, 'sound/voice/deep_alien_screech2.ogg', 75, 0, status = 0)
-	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] emits a raspy guttural roar!"))
+	xeno.visible_message(SPAN_XENOHIGHDANGER("[xeno] begins to exude a carrion gas!"))
 	xeno.create_shriekwave()
 
 	var/datum/effect_system/smoke_spread/decomposing_enzymes/smoke_gas = new()

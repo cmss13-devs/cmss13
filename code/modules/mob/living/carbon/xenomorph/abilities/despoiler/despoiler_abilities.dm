@@ -4,7 +4,7 @@
 	plasma_cost = 75
 
 /datum/action/xeno_action/onclick/corrosive_slash
-	name = "Crippling Strike"
+	name = "Corrosive Slash"
 	action_icon_state = "corrosive_slash"
 	macro_path = /datum/action/xeno_action/verb/corrosive_slash
 	ability_primacy = XENO_PRIMARY_ACTION_2

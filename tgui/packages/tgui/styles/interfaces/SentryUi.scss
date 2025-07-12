@@ -87,6 +87,11 @@ $large-text: 1.5rem;
     font-family: monospace;
     font-weight: bold;
     font-size: 1.4rem;
+    span {
+      font-family: Verdana, monospace;
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
   }
 
   .SentryCard {

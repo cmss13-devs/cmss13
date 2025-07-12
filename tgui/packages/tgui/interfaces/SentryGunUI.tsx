@@ -515,7 +515,7 @@ const PowerLevel = () => {
       value={data.electrical.charge}
     >
       {((data.electrical.charge / data.electrical.max_charge) * 100).toFixed(2)}{' '}
-      %
+      <span>%</span>
     </ProgressBar>
   );
 };

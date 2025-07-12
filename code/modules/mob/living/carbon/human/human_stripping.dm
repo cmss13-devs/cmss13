@@ -207,9 +207,9 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	if(!ishuman(source))
 		return
 	var/mob/living/carbon/human/sourcemob = source
-	if (!istype(tag))
+	if(!istype(tag))
 		return
-	if (!sourcemob.undefibbable && (!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED) || sourcemob.stat != DEAD))
+	if(!sourcemob.undefibbable && sourcemob.is_revivable() && (!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED) || sourcemob.stat != DEAD))
 		return
 	return tag.dogtag_taken ? null : "retrieve_tag"
 
@@ -224,7 +224,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		return
 	if(!istype(sourcemob.wear_id, /obj/item/card/id/dogtag))
 		return
-	if (!sourcemob.undefibbable && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+	if(!sourcemob.undefibbable && sourcemob.is_revivable() && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		return
 	var/obj/item/card/id/dogtag/tag = sourcemob.wear_id
 	if(tag.dogtag_taken)

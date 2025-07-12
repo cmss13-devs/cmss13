@@ -770,4 +770,5 @@ rules:
   simple-import-sort/exports: error
 
   ## Typescript
-  "@typescript-eslint/consistent-type-imports": [error, { fixStyle: inline-type-imports }]
+  '@typescript-eslint/consistent-type-imports':
+    [error, { fixStyle: inline-type-imports }]

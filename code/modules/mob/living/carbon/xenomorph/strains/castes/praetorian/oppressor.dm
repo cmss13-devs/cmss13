@@ -18,7 +18,7 @@
 		/datum/action/xeno_action/activable/tail_stab/tail_seize,
 		/datum/action/xeno_action/activable/prae_abduct,
 		/datum/action/xeno_action/activable/oppressor_punch,
-		/datum/action/xeno_action/activable/tail_lash,
+		/datum/action/xeno_action/activable/send_back,
 	)
 
 	behavior_delegate_type = /datum/behavior_delegate/oppressor_praetorian
@@ -79,11 +79,9 @@
 	xeno_attack_delay(stabbing_xeno)
 	return ..()
 
-/datum/action/xeno_action/activable/prae_abduct/use_ability(atom/atom)
+/datum/action/xeno_action/activable/prae_abduct/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/abduct_user = owner
-
-	if(!atom || atom.layer >= FLY_LAYER || !isturf(abduct_user.loc))
-		return
+	throw_turf = targetted_atom
 
 	if(!action_cooldown_check() || abduct_user.action_busy)
 		return
@@ -94,123 +92,112 @@
 	if(!check_plasma_owner())
 		return
 
-	// Build our turflist
-	var/list/turf/turflist = list()
-	var/list/telegraph_atom_list = list()
-	var/facing = get_dir(abduct_user, atom)
-	var/turf/turf = abduct_user.loc
-	var/turf/temp = abduct_user.loc
-	for(var/distance in 0 to max_distance)
-		temp = get_step(turf, facing)
-		if(facing in GLOB.diagonals) // check if it goes through corners
-			var/reverse_face = GLOB.reverse_dir[facing]
-			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
-			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
-			if((!back_left || back_left.density) && (!back_right || back_right.density))
+	if(!ability_used_once)
+		ability_used_once = TRUE
+
+		if(!targetted_atom || targetted_atom.layer >= FLY_LAYER || !isturf(abduct_user.loc))
+			return
+
+		var/turf/turfs_get = get_line(abduct_user, targetted_atom, FALSE)
+
+		for(var/turf/turfs in turfs_get)
+
+			if(turfs.density)
 				break
-		if(!temp || temp.density || temp.opacity)
-			break
 
-		var/blocked = FALSE
-		for(var/obj/structure/structure in temp)
-			if(structure.opacity || ((istype(structure, /obj/structure/barricade) || istype(structure, /obj/structure/girder) && structure.density || istype(structure, /obj/structure/machinery/door)) && structure.density))
-				blocked = TRUE
+			var/blocked = FALSE
+			for(var/obj/structure/structure in turfs)
+
+				if(structure.opacity || ((istype(structure, /obj/structure/barricade) || istype(structure, /obj/structure/girder) && structure.density || istype(structure, /obj/structure/machinery/door)) && structure.density))
+					blocked = TRUE
+					break
+
+			if(blocked)
 				break
-		if(blocked)
-			break
 
-		turf = temp
+			for (var/mob/living/carbon/target in turfs)
 
-		if (turf in turflist)
-			break
+				if(target.stat == DEAD)
+					continue
 
-		turflist += turf
-		facing = get_dir(turf, atom)
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turf, windup)
+				if(abduct_user.can_not_harm(target))
+					continue
 
-	if(!length(turflist))
-		to_chat(abduct_user, SPAN_XENOWARNING("We don't have any room to do our abduction!"))
-		return
+				if(target.mob_size > MOB_SIZE_BIG)
+					continue
 
-	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s segmented tail starts coiling..."), SPAN_XENODANGER("We begin coiling our tail, aiming towards \the [atom]..."))
+				if(!isxeno_human(target))
+					continue
+
+				if(HAS_TRAIT(target, TRAIT_NESTED))
+					continue
+
+				targets_added += target
+
+				ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+
+				tail_beam = abduct_user.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 2 SECONDS, 8)
+				var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
+				target.overlays += tail_image
+
+
+			to_chat(abduct_user, SPAN_NOTICE("We launch our tail towards [targetted_atom]"))
+			abduct_user.emote("roar")
+			turfs_get += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
+			to_chat(target, SPAN_DANGER("We are rooted by [abduct_user]'s tail!"))
+
+		addtimer(CALLBACK(src, PROC_REF(reset_ability)), 2 SECONDS)
+
+
+		return ..()
+	else
+		throw_targets()
+
+
+		return TRUE
+
+
+/datum/action/xeno_action/activable/prae_abduct/proc/throw_targets()
+	var/mob/living/carbon/xenomorph/abduct_user = owner
+	var/turf/thrown_turf = get_turf(throw_turf)
+	var/hit_obstacle = FALSE
+	var/mob/living/carbon/target_turf_mob = locate() in thrown_turf
+
+	if(target_turf_mob || !get_dist(target_turf_mob, targets_added) > 3)
+		hit_obstacle = TRUE
+		targets_added += target_turf_mob
+
+	for(var/mob/living/targets in targets_added)
+		if(target_turf_mob)
+			targets.Stun(1)
+			targets.KnockDown(1)
+		else
+			targets.Stun(0.7)
+			targets.KnockDown(0.7)
+
+
+		REMOVE_TRAIT(targets, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+		abduct_user.throw_carbon(targets, get_dir(targets, throw_turf), 3, SPEED_VERY_FAST, immobilize = FALSE)
+
+
+
+		targets_added -= targets
+
+	ability_used_once = FALSE
 	abduct_user.emote("roar")
-
-	var/throw_target_turf = get_step(abduct_user, facing)
-
-	ADD_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-	if(!do_after(abduct_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, numticks = 1))
-		to_chat(abduct_user, SPAN_XENOWARNING("You relax your tail."))
-		apply_cooldown()
-
-		for (var/obj/effect/xenomorph/xeno_telegraph/xenotelegraph in telegraph_atom_list)
-			telegraph_atom_list -= xenotelegraph
-			qdel(xenotelegraph)
-
-		REMOVE_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-
-		return
-
-	if(!check_and_use_plasma_owner())
-		return
-
-	REMOVE_TRAIT(abduct_user, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-
-	playsound(get_turf(abduct_user), 'sound/effects/bang.ogg', 25, 0)
-	abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user] suddenly uncoils its tail, firing it towards [atom]!"), SPAN_XENODANGER("We uncoil our tail, sending it out towards \the [atom]!"))
-
-	var/list/targets = list()
-	for (var/turf/target_turf in turflist)
-		for (var/mob/living/carbon/target in target_turf)
-			if(!isxeno_human(target) || abduct_user.can_not_harm(target) || target.is_dead() || target.is_mob_incapacitated(TRUE) || target.mob_size >= MOB_SIZE_BIG)
-				continue
-
-			targets += target
-	if (LAZYLEN(targets) == 1)
-		abduct_user.balloon_alert(abduct_user, "our tail catches and slows one target!", text_color = "#51a16c")
-	else if (LAZYLEN(targets) == 2)
-		abduct_user.balloon_alert(abduct_user, "our tail catches and roots two targets!", text_color = "#51a16c")
-	else if (LAZYLEN(targets) >= 3)
-		abduct_user.balloon_alert(abduct_user, "our tail catches and stuns [LAZYLEN(targets)] targets!", text_color = "#51a16c")
-
+	qdel(tail_beam)
 	apply_cooldown()
 
-	for (var/mob/living/carbon/target in targets)
-		abduct_user.visible_message(SPAN_XENODANGER("\The [abduct_user]'s hooked tail coils itself around [target]!"), SPAN_XENODANGER("Our hooked tail coils itself around [target]!"))
 
-		target.apply_effect(0.2, WEAKEN)
+/datum/action/xeno_action/activable/prae_abduct/proc/reset_ability()
+	var/list/targets_to_remove = targets_added
+	for(var/mob/living/targets in targets_to_remove)
 
-		if (LAZYLEN(targets) == 1)
-			new /datum/effects/xeno_slow(target, abduct_user, null, null, 2.5 SECONDS)
-			target.apply_effect(1, SLOW)
-		else if (LAZYLEN(targets) == 2)
-			ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-			if (ishuman(target))
-				var/mob/living/carbon/human/target_human = target
-				target_human.update_xeno_hostile_hud()
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(unroot_human), target, TRAIT_SOURCE_ABILITY("Abduct")), get_xeno_stun_duration(target, 2.5 SECONDS))
-			to_chat(target, SPAN_XENOHIGHDANGER("[abduct_user] has pinned you to the ground! You cannot move!"))
+		REMOVE_TRAIT(targets, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+		targets_added -= targets
 
-			target.set_effect(2, DAZE)
-		else if (LAZYLEN(targets) >= 3)
-			target.apply_effect(get_xeno_stun_duration(target, 1.3), WEAKEN)
-			to_chat(target, SPAN_XENOHIGHDANGER("You are slammed into the other victims of [abduct_user]!"))
-
-
-		shake_camera(target, 10, 1)
-
-		var/obj/effect/beam/tail_beam = abduct_user.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 0.5 SECONDS, 8)
-		var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
-		target.overlays += tail_image
-
-		target.throw_atom(throw_target_turf, get_dist(throw_target_turf, target)-1, SPEED_VERY_FAST)
-
-		qdel(tail_beam) // hook beam catches target, throws them back, is deleted (throw_atom has sleeps), then hook beam catches another target, repeat
-		addtimer(CALLBACK(src, /datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay, target, tail_image), 0.5 SECONDS) //needed so it can actually be seen as it gets deleted too quickly otherwise.
-
-	return ..()
-
-/datum/action/xeno_action/activable/prae_abduct/proc/remove_tail_overlay(mob/living/carbon/human/overlayed_human, image/tail_image)
-	overlayed_human.overlays -= tail_image
+	ability_used_once = FALSE
+	apply_cooldown()
 
 /datum/action/xeno_action/activable/oppressor_punch/use_ability(atom/target_atom)
 	var/mob/living/carbon/xenomorph/oppressor_user = owner
@@ -268,98 +255,88 @@
 
 	shake_camera(target_carbon, 2, 1)
 	var/datum/action/xeno_action/activable/prae_abduct/abduct_action = get_action(oppressor_user, /datum/action/xeno_action/activable/prae_abduct)
-	var/datum/action/xeno_action/activable/tail_lash/tail_lash_action = get_action(oppressor_user, /datum/action/xeno_action/activable/tail_lash)
+	var/datum/action/xeno_action/activable/send_back/send_back_action = get_action(oppressor_user, /datum/action/xeno_action/activable/send_back)
 	if(abduct_action && !abduct_action.action_cooldown_check())
 		abduct_action.reduce_cooldown(5 SECONDS)
-	if(tail_lash_action && !tail_lash_action.action_cooldown_check())
-		tail_lash_action.reduce_cooldown(5 SECONDS)
+	if(send_back_action && !send_back_action.action_cooldown_check())
+		send_back_action.reduce_cooldown(5 SECONDS)
 
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/tail_lash/use_ability(atom/atoms)
-	var/mob/living/carbon/xenomorph/lash_user = owner
-
-	if (!istype(lash_user) || !lash_user.check_state() || !action_cooldown_check())
+/datum/action/xeno_action/activable/send_back/use_ability(atom/target_atom)
+	if(!action_cooldown_check())
 		return
 
-	if(!atoms || atoms.layer >= FLY_LAYER || !isturf(lash_user.loc))
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!isliving(target_atom))
 		return
 
-	if (!check_plasma_owner())
+	var/mob/living/target_living = target_atom
+
+	if(xeno.can_not_harm(target_living))
 		return
 
-	// Transient turf list
-	var/list/target_turfs = list()
-	var/list/temp_turfs = list()
-	var/list/telegraph_atom_list = list()
-
-	// Code to get a 2x3 area of turfs
-	var/turf/root = get_turf(lash_user)
-	var/facing = Get_Compass_Dir(lash_user, atoms)
-	var/turf/infront = get_step(root, facing)
-	var/turf/left = get_step(root, turn(facing, 90))
-	var/turf/right = get_step(root, turn(facing, -90))
-	var/turf/infront_left = get_step(root, turn(facing, 45))
-	var/turf/infront_right = get_step(root, turn(facing, -45))
-	temp_turfs += infront
-	if(!(!infront || infront.density) && !(!left || left.density))
-		temp_turfs += infront_left
-	if(!(!infront || infront.density) && !(!right || right.density))
-		temp_turfs += infront_right
-
-	for(var/turf/turfs_to_check in temp_turfs)
-		if (!istype(turfs_to_check))
-			continue
-
-		if (turfs_to_check.density)
-			continue
-
-		target_turfs += turfs_to_check
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(turfs_to_check, windup)
-
-		var/turf/next_turf = get_step(turfs_to_check, facing)
-		if (!istype(next_turf) || next_turf.density)
-			continue
-
-		target_turfs += next_turf
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/lash(next_turf, windup)
-
-	if(!length(target_turfs))
-		to_chat(lash_user, SPAN_XENOWARNING("We don't have any room to do our tail lash!"))
+	if(!xeno.Adjacent(target_living))
+		to_chat(xeno, SPAN_XENODANGER("They have to be closer to us!"))
 		return
 
-	if(!do_after(lash_user, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
-		to_chat(lash_user, SPAN_XENOWARNING("We cancel our tail lash."))
-
-		for(var/obj/effect/xenomorph/xeno_telegraph/tail_telegraph in telegraph_atom_list)
-			telegraph_atom_list -= tail_telegraph
-			qdel(tail_telegraph)
+	if(!xeno.check_state())
 		return
 
-	if(!action_cooldown_check() || !check_and_use_plasma_owner())
-		return
+	xeno.setDir(get_cardinal_dir(xeno, target_living))
 
+	var/dir_to_fling = get_dir(target_living, xeno)
+	var/turfs_travelled = 1
+	var/turf/open/turf_to_fling_to = get_turf(xeno)
+	move_loop:
+		for(var/i in 1 to 2)
+			var/turf/maybe_viable = get_step(turf_to_fling_to, dir_to_fling)
+			if(!istype(maybe_viable, /turf/open))
+				break
+
+			for(var/obj/thing in maybe_viable.contents)
+				if(thing.density)
+					break move_loop
+
+			turf_to_fling_to = maybe_viable
+			turfs_travelled++
+
+	target_living.forceMove(turf_to_fling_to)
+	target_living.Stun(1)
+	xeno.Root(1)
+
+	target_living.apply_armoured_damage(fling_damage)
+
+	var/old_layer = target_living.layer
+	var/old_pixel_x = target_living.pixel_x
+	var/old_pixel_y = target_living.pixel_y
+	target_living.layer = ABOVE_XENO_LAYER
+	switch(xeno.dir)
+		if(NORTH)
+			target_living.pixel_y = 32 * turfs_travelled
+			animate(target_living, 0.6 SECONDS, pixel_y = old_pixel_y)
+		if(EAST)
+			target_living.pixel_x = 32 * turfs_travelled
+			animate(target_living, 0.3 SECONDS, pixel_y = 44, pixel_x = (16 * turfs_travelled))
+			animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
+		if(SOUTH)
+			target_living.pixel_y = -32 * turfs_travelled
+			animate(target_living, 0.6 SECONDS, pixel_y = old_pixel_y)
+		if(WEST)
+			target_living.pixel_x = -32 * turfs_travelled
+			animate(target_living, 0.3 SECONDS, pixel_y = 44, pixel_x = (-16 * turfs_travelled))
+			animate(0.3 SECONDS, pixel_y = old_pixel_y, pixel_x = old_pixel_x)
+
+	addtimer(CALLBACK(src, PROC_REF(end_fling), target_living, old_layer, old_pixel_x, old_pixel_y), 0.6 SECONDS)
 	apply_cooldown()
-
-	lash_user.visible_message(SPAN_XENODANGER("[lash_user] lashes its tail furiously, hitting everything in front of it!"), SPAN_XENODANGER("We lash our tail furiously, hitting everything in front of us!"))
-	lash_user.spin_circle()
-	lash_user.emote("tail")
-
-	for (var/turf/targets_in_turf in target_turfs)
-		for (var/mob/living/carbon/possible_targets in targets_in_turf)
-			if (possible_targets.stat == DEAD)
-				continue
-
-			if(!isxeno_human(possible_targets) || lash_user.can_not_harm(possible_targets))
-				continue
-
-			if(possible_targets.mob_size >= MOB_SIZE_BIG)
-				continue
-
-			lash_user.throw_carbon(possible_targets, facing, fling_dist)
-
-			possible_targets.apply_effect(get_xeno_stun_duration(possible_targets, 0.5), WEAKEN)
-			new /datum/effects/xeno_slow(possible_targets, lash_user, ttl = get_xeno_stun_duration(possible_targets, 2.5 SECONDS))
-
 	return ..()
+
+/datum/action/xeno_action/activable/send_back/proc/end_fling(mob/living/target_living, original_layer, old_px, old_py)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	target_living.SetStun(0)
+	xeno.SetRoot(0)
+	target_living.layer = original_layer
+	target_living.pixel_x = old_px
+	target_living.pixel_y = old_py

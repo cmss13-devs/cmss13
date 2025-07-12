@@ -126,6 +126,10 @@
 	// Config
 	var/max_distance = 6
 	var/windup = 8 DECISECONDS
+	var/ability_used_once = FALSE
+	var/list/targets_added = list()
+	var/throw_turf
+	var/obj/effect/beam/tail_beam
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"
@@ -139,31 +143,13 @@
 	// Configurables
 	var/damage = 20
 
-
-// This one is more tightly coupled than I'd like, but oh well
-// unused
-/*datum/action/xeno_action/onclick/crush
-	name = "Crush"
-	action_icon_state = "prae_crush"
-	action_text = "crush"
-	macro_path = /datum/action/xeno_action/verb/verb_crush
-	action_type = XENO_ACTION_ACTIVATE
-	xeno_cooldown = 10 SECONDS
-	plasma_cost = 80*/
-
-// Tail lash
-/datum/action/xeno_action/activable/tail_lash
-	name = "Tail Lash"
-	action_icon_state = "prae_tail_lash"
-	macro_path = /datum/action/xeno_action/verb/verb_crush
+/datum/action/xeno_action/activable/send_back
+	name = "Send back"
+	action_icon_state = "fling"
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 13 SECONDS
-	plasma_cost = 80
-
-	// Config
-	var/fling_dist = 3
-	var/windup = 2 DECISECONDS
+	xeno_cooldown = 10 SECONDS
+	plasma_cost = 100
+	var/fling_damage = 50
 
 ////////// Dancer Abilities
 

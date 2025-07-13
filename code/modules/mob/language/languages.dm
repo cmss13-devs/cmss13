@@ -228,7 +228,7 @@
 	ask_verb = "sings"
 	exclaim_verb = "sings"
 	color = "alien"
-	key = "0"
+	key = "b"
 	flags = RESTRICTED|HIVEMIND
 
 /datum/language/corticalborer/broadcast(mob/living/carbon/speaker, message, speaker_mask, death)

@@ -36834,8 +36834,15 @@
 /area/desert_dam/building/substation/northeast)
 "jFI" = (
 /obj/structure/surface/rack,
-/obj/item/circuitboard/airlock,
 /obj/effect/landmark/crap_item,
+/obj/item/explosive/grenade/custom/metal_foam{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/obj/item/explosive/grenade/custom/metal_foam{
+	pixel_x = 6;
+	pixel_y = -1
+	},
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "jFS" = (
@@ -69921,12 +69928,7 @@
 /area/desert_dam/building/water_treatment_one/hallway)
 "wuf" = (
 /obj/structure/surface/rack,
-/obj/item/explosive/grenade/custom/metal_foam{
-	pixel_x = 5
-	},
-/obj/item/explosive/grenade/custom/metal_foam{
-	pixel_x = -5
-	},
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/engine_west_wing)
 "wul" = (

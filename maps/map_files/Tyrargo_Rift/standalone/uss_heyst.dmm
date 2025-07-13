@@ -33,19 +33,19 @@
 /turf/closed/wall/r_wall/bunker,
 /area/tyrargo/indoors/bunker/central_south)
 "ag" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
 "ah" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
 "ai" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -68,25 +68,25 @@
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/bunker/central_south)
 "ak" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
 "al" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
 "am" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "an" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -97,13 +97,13 @@
 	pixel_y = 9;
 	layer = 3
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "ap" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -127,25 +127,25 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
 "at" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "au" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
 "av" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -162,7 +162,7 @@
 /turf/closed/wall/almayer,
 /area/tyrargo/indoors/heyst)
 "ax" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -213,7 +213,7 @@
 	name = "\improper North traffic signal";
 	desc = "A traffic signal denoting the nearby presence of something to the North."
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -233,19 +233,19 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/east)
 "aC" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
 "aD" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -255,13 +255,13 @@
 /turf/open/floor/plating,
 /area/tyrargo/indoors/heyst)
 "aF" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "aG" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -283,7 +283,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "aI" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -292,7 +292,7 @@
 /obj/structure/barricade/hesco{
 	dir = 1
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -302,16 +302,16 @@
 	icon_state = "fullgrass_1";
 	layer = 2.9
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "aL" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -323,32 +323,32 @@
 /turf/closed/wall/almayer,
 /area/tyrargo/indoors/heyst)
 "aO" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/east)
 "aP" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "aQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "aR" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -360,7 +360,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -405,16 +405,16 @@
 /turf/open/auto_turf/snow/brown_base/layer1,
 /area/tyrargo/outdoors/outskirts/central)
 "aX" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/central)
 "aY" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /obj/structure/prop/colorable_rock/colorable{
@@ -431,7 +431,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/tyrargo/outdoors/outskirts_road/east)
 "bb" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /obj/structure/prop/colorable_rock/colorable{
@@ -443,7 +443,7 @@
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/central)
 "bc" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /obj/structure/prop/colorable_rock/colorable{
@@ -458,7 +458,7 @@
 /obj/structure/prop/rock/black_ground{
 	icon_state = "black_ground_alt"
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -473,7 +473,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/central)
 "bf" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -485,7 +485,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bh" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/gm/dirt/dark_brown/variant_2,
@@ -495,7 +495,7 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -544,25 +544,25 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bq" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/gm/dirt/dark_brown/variant_3,
 /area/tyrargo/outdoors/outskirts/central)
 "br" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/central)
 "bs" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/gm/dirt/dark_brown/variant_1,
 /area/tyrargo/outdoors/outskirts/central)
 "bt" = (
-/obj/effect/decal/strata_decals/mud_corner,
+/obj/effect/decal/strata_decals/tyrargo_mud_corner,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bu" = (
@@ -577,23 +577,23 @@
 /turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst)
 "bv" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
 	},
 /obj/structure/flora/wood/stick2,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bw" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
 	},
 /turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/central)
 "bx" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /obj/structure/flora/grass/temperate{
@@ -602,13 +602,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "by" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bz" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 4
 	},
 /obj/structure/prop/colorable_rock/colorable{
@@ -625,14 +625,14 @@
 /turf/open/gm/dirt/dark_brown/variant_5/west,
 /area/tyrargo/outdoors/outskirts/central)
 "bA" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
 	},
-/obj/effect/decal/strata_decals/mud_corner,
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner,
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
 	},
 /turf/open/gm/dirt/dark_brown/variant_5/west,
@@ -650,16 +650,16 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bD" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 8
 	},
 /turf/open/gm/dirt/dark_brown/variant_1,
 /area/tyrargo/outdoors/outskirts/central)
 "bE" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /obj/structure/flora/wood/stick4,
@@ -683,7 +683,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "bH" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 1
 	},
 /obj/structure/flora/grass/temperate{
@@ -1001,7 +1001,7 @@
 	dir = 1;
 	pixel_x = -15
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/gm/dirt/dark_brown,
@@ -1292,10 +1292,10 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/east)
 "gU" = (
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -2463,7 +2463,7 @@
 	density = 0;
 	name = "pole signal"
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -2634,7 +2634,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -2814,7 +2814,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -3337,7 +3337,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -3957,7 +3957,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -4204,7 +4204,7 @@
 	pixel_y = 4;
 	pixel_x = 1
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -4489,7 +4489,7 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -4673,7 +4673,7 @@
 /obj/item/weapon/gun/rifle/m4ra{
 	current_mag = null
 	},
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 10
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -5057,7 +5057,7 @@
 "Qj" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/hybrisa/bloodtrail,
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -5460,7 +5460,7 @@
 	opened = 1
 	},
 /obj/item/ammo_magazine/rifle/lmg/holo_target,
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -5923,7 +5923,7 @@
 /area/tyrargo/outdoors/outskirts/east)
 "YQ" = (
 /obj/item/storage/firstaid/regular,
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -6002,7 +6002,7 @@
 /area/tyrargo/indoors/bunker/central_south)
 "ZF" = (
 /obj/item/ammo_magazine/rifle/m4ra/heap/empty,
-/obj/effect/decal/strata_decals/mud_corner{
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 9
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,

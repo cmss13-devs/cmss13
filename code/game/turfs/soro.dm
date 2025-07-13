@@ -33,22 +33,22 @@
 
 /turf/open/gm/dirt/dark_brown
 	name = "dark dirt"
-	icon = 'icons/turf/floors/ground_map_dirt.dmi'
-	icon_state = "forest"
+	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
+	icon_state = "desert"
 	baseturfs = /turf/open/gm/dirt/dark_brown
 	minimap_color = MINIMAP_DIRT
 
 /turf/open/gm/dirt/dark_brown/variant_1
-	icon_state = "forest0"
+	icon_state = "desert0"
 
 /turf/open/gm/dirt/dark_brown/variant_2
-	icon_state = "forest1"
+	icon_state = "desert1"
 
 /turf/open/gm/dirt/dark_brown/variant_3
-	icon_state = "forest2"
+	icon_state = "desert2"
 
 /turf/open/gm/dirt/dark_brown/variant_5
-	icon_state = "forest3"
+	icon_state = "desert3"
 
 /turf/open/gm/dirt/dark_brown/variant_5/east
 	dir = EAST
@@ -60,7 +60,7 @@
 	dir = WEST
 
 /turf/open/gm/dirt/dark_brown/variant_6
-	icon_state = "forest_dug"
+	icon_state = "desert_dug"
 
 /turf/open/gm/road
 	name = "dirt road"
@@ -154,6 +154,7 @@
 	dir = 8
 
 /turf/open/gm/coast/dirt/forestdir
+	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestbeach"
 	baseturfs = /turf/open/gm/coast
 
@@ -167,6 +168,7 @@
 	dir = 8
 
 /turf/open/gm/coast/dirt/forestbeachcorner
+	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestbeachcorner"
 
 /turf/open/gm/coast/dirt/forestbeachcorner/north_west
@@ -181,6 +183,7 @@
 	dir = 8
 
 /turf/open/gm/coast/dirt/forestbeachcorner2
+	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestbeachcorner2"
 
 /turf/open/gm/coast/dirt/forestbeachcorner2/north_west
@@ -217,9 +220,9 @@
 	walltype = WALL_STRATA_ICE_DIRTY
 
 /turf/open/gm/river/soro
-	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 
 /turf/open/gm/river/tyrargo
-	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
 	icon_state = "forestseashallow"
 	icon_overlay = "forestriverwater"

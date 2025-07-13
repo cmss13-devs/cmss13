@@ -7,6 +7,14 @@
 	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/bar/ground)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/effect/decal/grass_overlay/grass1/dark,
+/turf/open/asphalt/cement/cement2,
+/area/tyrargo/outdoors/colony_exterior/north_west)
 "af" = (
 /obj/effect/decal/siding,
 /turf/closed/wall/mineral/bone_resin,
@@ -224,7 +232,7 @@
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "mF" = (
-/turf/open/auto_turf/strata_grass,
+/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "mI" = (
 /obj/effect/decal/cleanable/dirt,
@@ -489,6 +497,9 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "CM" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_exterior/north)
 "CY" = (
@@ -571,6 +582,9 @@
 /area/tyrargo/indoors/bar/ground)
 "GO" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 8
+	},
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_exterior/north)
 "HE" = (
@@ -624,6 +638,9 @@
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/bar/ground)
 "Jb" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
 /turf/open/asphalt/cement/cement2,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "Jt" = (
@@ -691,6 +708,7 @@
 /area/tyrargo/outdoors/colony_streets/north_west)
 "LM" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/asphalt/cement/cement2,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "LO" = (
@@ -705,7 +723,7 @@
 /turf/open/floor/wood,
 /area/tyrargo/indoors/bar/ground)
 "LU" = (
-/turf/open/auto_turf/strata_grass,
+/turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_exterior/north)
 "LY" = (
 /turf/closed/wall/strata_outpost/reinforced/hull,
@@ -942,6 +960,7 @@
 /area/tyrargo/indoors/bar/ground)
 "Yt" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "YE" = (
@@ -1016,7 +1035,7 @@ bC
 "}
 (2,1,1) = {"
 mF
-LM
+ab
 Jt
 LY
 Ul

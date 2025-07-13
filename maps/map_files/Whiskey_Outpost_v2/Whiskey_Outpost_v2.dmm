@@ -289,14 +289,6 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"aU" = (
-/obj/structure/machinery/cm_vending/clothing/marine/delta{
-	density = 0;
-	pixel_x = 16
-	},
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/bluefull,
-/area/whiskey_outpost/outside/lane/two_north)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -676,19 +668,23 @@
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_west,
 /area/whiskey_outpost/inside/caves/caverns/west)
 "ci" = (
-/obj/structure/machinery/vending/walkman,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
-"cj" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
+	density = 0;
+	pixel_x = 16
 	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/bluefull,
+/area/whiskey_outpost/outside/lane/two_north)
+"cj" = (
+/obj/structure/machinery/cm_vending/clothing/marine/bravo{
+	density = 0;
+	pixel_x = -16
+	},
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/orangefull,
+/area/whiskey_outpost/outside/lane/three_north)
 "ck" = (
-/obj/structure/machinery/cm_vending/gear/engi,
-/obj/structure/machinery/light/small,
+/obj/structure/machinery/vending/walkman,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "cl" = (
@@ -747,9 +743,12 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "cv" = (
-/obj/effect/landmark/start/whiskey/engineer,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
 /turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
+/area/whiskey_outpost/inside/cic)
 "cw" = (
 /obj/structure/barricade/metal/wired,
 /turf/open/gm/dirt,
@@ -803,7 +802,8 @@
 /turf/open/floor/prison/kitchen,
 /area/whiskey_outpost/inside/cic)
 "cF" = (
-/obj/structure/machinery/cm_vending/clothing/engi,
+/obj/structure/machinery/cm_vending/gear/engi,
+/obj/structure/machinery/light/small,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "cG" = (
@@ -814,7 +814,7 @@
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
 "cH" = (
-/obj/structure/machinery/cm_vending/gear/engi,
+/obj/effect/landmark/start/whiskey/engineer,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "cI" = (
@@ -892,27 +892,20 @@
 /turf/open/floor/whitegreencorner,
 /area/whiskey_outpost/inside/hospital)
 "cU" = (
+/obj/structure/machinery/cm_vending/clothing/engi,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
+"cV" = (
+/obj/structure/machinery/cm_vending/gear/engi,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
+"cW" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
-"cV" = (
-/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
-/obj/structure/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
-"cW" = (
-/obj/structure/machinery/cm_vending/clothing/marine/bravo{
-	density = 0;
-	pixel_x = -16
-	},
-/obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/orangefull,
-/area/whiskey_outpost/outside/lane/three_north)
 "cX" = (
 /obj/structure/machinery/optable,
 /obj/structure/machinery/light/small{
@@ -933,6 +926,13 @@
 /obj/structure/machinery/optable,
 /turf/open/floor/whitegreenfull,
 /area/whiskey_outpost/inside/hospital/triage)
+"db" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
 "dc" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison/cell_stripe,
@@ -18641,7 +18641,7 @@ hw
 iS
 jq
 iS
-cj
+cv
 mo
 mM
 nw
@@ -23367,7 +23367,7 @@ Ck
 Sm
 Sm
 Oq
-aU
+ci
 UZ
 VM
 mT
@@ -25714,7 +25714,7 @@ kG
 lJ
 kG
 Ys
-ci
+ck
 pq
 rB
 eC
@@ -27002,7 +27002,7 @@ Pm
 Qy
 Qy
 Pm
-cW
+cj
 SO
 Pm
 Ve
@@ -28333,11 +28333,11 @@ fr
 fr
 Ys
 pq
+cW
+cU
+cV
 cU
 cF
-cH
-cF
-ck
 pq
 mT
 mT
@@ -28536,10 +28536,10 @@ fr
 sI
 oB
 jM
-cv
-cv
-cv
-cv
+cH
+cH
+cH
+cH
 pq
 mT
 mT
@@ -28738,10 +28738,10 @@ fr
 sI
 Ys
 jM
-cv
-cv
-cv
-cv
+cH
+cH
+cH
+cH
 pq
 mT
 oE
@@ -28939,11 +28939,11 @@ fr
 fr
 Ys
 pq
+db
+cU
 cV
+cU
 cF
-cH
-cF
-ck
 pq
 mT
 oE

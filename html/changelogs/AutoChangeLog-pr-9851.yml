@@ -1,5 +1,0 @@
-author: "SRG3124, Thwomper"
-delete-after: True
-changes:
-  - rscadd: "Added four new jackets for the CC to wear."
-  - bugfix: "fixed the RMC Service Obj sprite being different from it's worn sprite"

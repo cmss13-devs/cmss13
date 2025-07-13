@@ -69934,7 +69934,9 @@
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/tyrargo/oob)
 "dtr" = (
-/obj/structure/mineral_door/wood,
+/obj/structure/mineral_door/wood{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/oob)
 "dts" = (

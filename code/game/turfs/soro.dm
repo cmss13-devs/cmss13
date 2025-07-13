@@ -220,7 +220,7 @@
 	walltype = WALL_STRATA_ICE_DIRTY
 
 /turf/open/gm/river/soro
-	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
 
 /turf/open/gm/river/tyrargo
 	icon = 'icons/turf/floors/tyrargo_map_dirt.dmi'

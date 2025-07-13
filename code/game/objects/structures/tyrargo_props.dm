@@ -7,7 +7,8 @@
 	anchored = TRUE
 	unslashable = FALSE
 	health = 100
-	layer = ATMOS_PIPE_LAYER
+	layer = CATWALK_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/structure/prop/tyrargo/boards/boards_1
 	icon_state = "boards_2"

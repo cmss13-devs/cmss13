@@ -140,13 +140,12 @@
 				var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
 				target.overlays += tail_image
 
-
-			to_chat(abduct_user, SPAN_NOTICE("We launch our tail towards [targetted_atom]"))
-			abduct_user.emote("roar")
 			turfs_get += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
-			to_chat(target, SPAN_DANGER("We are rooted by [abduct_user]'s tail!"))
 
+		to_chat(abduct_user, SPAN_NOTICE("We launch our tail towards [targetted_atom]"))
+		abduct_user.emote("roar")
 		addtimer(CALLBACK(src, PROC_REF(reset_ability)), 2 SECONDS)
+		to_chat(targets_added, SPAN_DANGER("We are rooted by [abduct_user]'s tail!"))
 
 
 		return ..()

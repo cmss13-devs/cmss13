@@ -289,6 +289,14 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
+"aU" = (
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
+	density = 0;
+	pixel_x = 16
+	},
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/bluefull,
+/area/whiskey_outpost/outside/lane/two_north)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -897,6 +905,14 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
+"cW" = (
+/obj/structure/machinery/cm_vending/clothing/marine/bravo{
+	density = 0;
+	pixel_x = -16
+	},
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/orangefull,
+/area/whiskey_outpost/outside/lane/three_north)
 "cX" = (
 /obj/structure/machinery/optable,
 /obj/structure/machinery/light/small{
@@ -23351,7 +23367,7 @@ Ck
 Sm
 Sm
 Oq
-UZ
+aU
 UZ
 VM
 mT
@@ -26986,7 +27002,7 @@ Pm
 Qy
 Qy
 Pm
-SO
+cW
 SO
 Pm
 Ve

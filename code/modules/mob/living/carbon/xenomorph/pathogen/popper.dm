@@ -76,11 +76,11 @@
 
 	counts_for_roundend = FALSE
 
-/mob/living/carbon/xenomorph/popper/initialize_pass_flags(datum/pass_flags_container/PF)
+/mob/living/carbon/xenomorph/popper/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (PF)
-		PF.flags_pass = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
-		PF.flags_can_pass_all = PASS_MOB_IS_XENO|PASS_MOB_THRU_XENO
+	if(pass_flags)
+		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
+		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 /mob/living/carbon/xenomorph/popper/death(cause, gibbed)
 	. = ..()

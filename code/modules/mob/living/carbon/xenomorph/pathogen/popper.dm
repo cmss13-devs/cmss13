@@ -20,6 +20,7 @@
 
 	caste_desc = "A fast, powerful combatant."
 	evolves_to = list()
+	evolution_allowed = FALSE
 
 	heal_resting = 1
 
@@ -28,7 +29,7 @@
 /mob/living/carbon/xenomorph/popper
 	caste_type = PATHOGEN_CREATURE_POPPER
 	name = PATHOGEN_CREATURE_POPPER
-	desc = "A sleek, fast alien with sharp claws."
+	desc = "A crawling bag of spores. What nightmare are you living in?"
 	icon_size = 32
 	icon_state = "Popper Walking"
 	plasma_types = list()

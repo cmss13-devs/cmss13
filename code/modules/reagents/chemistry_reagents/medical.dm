@@ -278,7 +278,7 @@
 	id = "adrenaline"
 	description = "A natural muscle and heart stimulant. Useful for restarting the heart. Overdosing may stress the heart and cause tissue damage."
 	reagent_state = LIQUID
-	color = "FFE703" // Yellow-ish
+	color = "#ffe073" // Yellow-ish
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)

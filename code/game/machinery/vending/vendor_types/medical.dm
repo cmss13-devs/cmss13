@@ -239,18 +239,19 @@
 	var/chem_refill_volume_max = 600
 	/// A list of item types that allow reagent refilling
 	var/list/chem_refill = list(
+		/obj/item/reagent_container/hypospray/autoinjector/antitoxin,
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine,
 		/obj/item/reagent_container/hypospray/autoinjector/dexalinp,
 		/obj/item/reagent_container/hypospray/autoinjector/adrenaline,
 		/obj/item/reagent_container/hypospray/autoinjector/inaprovaline,
+		/obj/item/reagent_container/hypospray/autoinjector/peridaxon,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane,
 		/obj/item/reagent_container/hypospray/autoinjector/oxycodone,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol,
 		/obj/item/reagent_container/hypospray/autoinjector/tricord,
 
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-
+		/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
@@ -482,17 +483,19 @@
 		list("AUTOINJECTORS", -1, null, null),
 		list("Autoinjector (Bicaridine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/bicaridine, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Dexalin+)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/dexalinp, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Dylovene)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Epinephrine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/adrenaline, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Inaprovaline)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Kelotane)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/kelotane, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Peridaxon)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Oxycodone)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/oxycodone, VENDOR_ITEM_REGULAR),
 		list("Autoinjector (Tramadol)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tramadol, VENDOR_ITEM_REGULAR),
-		list("Autoinjector (Tricord)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
+		list("Autoinjector (Tricordrazine)", floor(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/tricord, VENDOR_ITEM_REGULAR),
 
 		list("LIQUID BOTTLES", -1, null, null),
 		list("Bottle (Bicaridine)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/bicaridine, VENDOR_ITEM_REGULAR),
-		list("Bottle (Dylovene)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Dexalin)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/dexalin, VENDOR_ITEM_REGULAR),
+		list("Bottle (Dylovene)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/antitoxin, VENDOR_ITEM_REGULAR),
 		list("Bottle (Inaprovaline)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Bottle (Kelotane)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/kelotane, VENDOR_ITEM_REGULAR),
 		list("Bottle (Oxycodone)", floor(scale * 3), /obj/item/reagent_container/glass/bottle/oxycodone, VENDOR_ITEM_REGULAR),
@@ -505,7 +508,8 @@
 		list("Pill Bottle (Dylovene)", floor(scale * 4), /obj/item/storage/pill_bottle/antitox, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Inaprovaline)", floor(scale * 4), /obj/item/storage/pill_bottle/inaprovaline, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Kelotane)", floor(scale * 4), /obj/item/storage/pill_bottle/kelotane, VENDOR_ITEM_REGULAR),
-		list("Pill Bottle (Peridaxon)", floor(scale * 3), /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Oxycodone)", floor(scale * 4), /obj/item/storage/pill_bottle/oxycodone, VENDOR_ITEM_REGULAR),
+		list("Pill Bottle (Peridaxon)", floor(scale * 4), /obj/item/storage/pill_bottle/peridaxon, VENDOR_ITEM_REGULAR),
 		list("Pill Bottle (Tramadol)", floor(scale * 4), /obj/item/storage/pill_bottle/tramadol, VENDOR_ITEM_REGULAR),
 
 		list("MEDICAL UTILITIES", -1, null, null),

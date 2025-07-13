@@ -1037,6 +1037,31 @@
 	matter = list("plastic" = 2000, "glass" = 2000)
 	flags_item = NOBLUDGEON
 
+
+/obj/item/storage/pouch/pressurized_reagent_canister/bicaridine
+	name = "Pressurized Reagent Canister Pouch (Bicaridine)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with Bicaridine."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/kelotane
+	name = "Pressurized Reagent Canister Pouch (Kelotane)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with Kelotane."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine
+	name = "Pressurized Reagent Canister Pouch (Tricordrazine)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with Tricordrazine."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/oxycodone
+	name = "Pressurized Reagent Canister Pouch (Field Anesthetic)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with Oxycodone."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord
+	name = "Pressurized Reagent Canister Pouch (Tricordrazine Revival Mix)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Tricordrazine."
+
+/obj/item/storage/pouch/pressurized_reagent_canister/revival_peri
+	name = "Pressurized Reagent Canister Pouch (Peridaxon Revival Mix)"
+	desc = "A pressurized reagent canister pouch. It is used to refill custom injectors, and can also store one. May be refilled with a reagent tank or a Chemical Dispenser. This one came pre-filled with equal-parts Epinephrine, Inaprovaline, and Peridaxon."
+
 /obj/item/storage/pouch/pressurized_reagent_canister/Initialize()
 	. = ..()
 	inner = new /obj/item/reagent_container/glass/pressurized_canister()

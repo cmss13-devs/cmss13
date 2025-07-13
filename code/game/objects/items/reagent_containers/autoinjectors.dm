@@ -120,6 +120,15 @@
 	display_maptext = TRUE
 	maptext_label = "D+"
 
+/obj/item/reagent_container/hypospray/autoinjector/dexalinp
+	name = "dexalin plus autoinjector"
+	chemname = "dexalinp"
+	desc = "An autoinjector loaded with 3 uses of Dexalin+, designed to immediately oxygenate the entire body."
+	amount_per_transfer_from_this = 1
+	volume = 3
+	display_maptext = TRUE
+	maptext_label = "D+"
+
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
 	name = "anesthetic autoinjector"
 	chemname = "anesthetic"
@@ -207,6 +216,21 @@
 	amount_per_transfer_from_this = 15
 	uses_left = 1
 
+/obj/item/reagent_container/hypospray/autoinjector/antitoxin
+	name = "dylovene autoinjector"
+	chemname = "anti_toxin"
+	desc = "An auto-injector loaded with 3 uses of Dylovene, a common toxin damage medicine."
+	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Dy"
+
+/obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless
+	name = "bicaridine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Dylovene, a common toxin damage medicine.  Doesn't require any training to use."
+	icon_state = "emptyskill"
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 /obj/item/reagent_container/hypospray/autoinjector/meralyne
 	name = "meralyne autoinjector"
 	desc = "An auto-injector loaded with 3 uses of Meralyne, an advanced brute and circulatory damage medicine."
@@ -235,6 +259,15 @@
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "In"
+
+/obj/item/reagent_container/hypospray/autoinjector/peridaxon
+	name = "peridaxon autoinjector"
+	chemname = "peridaxon"
+	desc = "An auto-injector loaded with 3 uses of Peridaxon, an emergency medicine used to stop most symptoms of organ damage. Does not fix organ damage."
+	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
+	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+	display_maptext = TRUE
+	maptext_label = "Pr"
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
 	name = "emergency autoinjector (CAUTION)"

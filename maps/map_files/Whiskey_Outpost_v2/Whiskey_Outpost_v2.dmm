@@ -289,10 +289,6 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"aU" = (
-/obj/effect/alien/weeds/node,
-/turf/open/auto_turf/hybrisa_auto_turf/layer1,
-/area/whiskey_outpost/inside/caves/deep)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -534,7 +530,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/bunker)
 "bM" = (
-/obj/effect/landmark/queen_spawn,
+/obj/effect/alien/weeds/node,
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/whiskey_outpost/inside/caves/deep)
 "bN" = (
@@ -544,10 +540,8 @@
 /turf/open/floor/white,
 /area/whiskey_outpost/inside/hospital)
 "bO" = (
-/obj/effect/timed_event/scrapeaway{
-	time = 70
-	},
-/turf/closed/wall/mineral/bone_resin,
+/obj/effect/landmark/queen_spawn,
+/turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/whiskey_outpost/inside/caves/deep)
 "bP" = (
 /obj/structure/disposalpipe/segment{
@@ -591,12 +585,11 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/north)
 "bX" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
+/obj/effect/timed_event/scrapeaway{
+	time = 70
 	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/cic)
+/turf/closed/wall/mineral/bone_resin,
+/area/whiskey_outpost/inside/caves/deep)
 "bY" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/spray/cleaner{
@@ -679,12 +672,15 @@
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "cj" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/cic)
+"ck" = (
 /obj/structure/machinery/cm_vending/gear/engi,
 /obj/structure/machinery/light/small,
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
-"ck" = (
-/obj/effect/landmark/start/whiskey/engineer,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "cl" = (
@@ -743,7 +739,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "cv" = (
-/obj/structure/machinery/cm_vending/clothing/engi,
+/obj/effect/landmark/start/whiskey/engineer,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "cw" = (
@@ -799,7 +795,7 @@
 /turf/open/floor/prison/kitchen,
 /area/whiskey_outpost/inside/cic)
 "cF" = (
-/obj/structure/machinery/cm_vending/gear/engi,
+/obj/structure/machinery/cm_vending/clothing/engi,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "cG" = (
@@ -810,10 +806,7 @@
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
 "cH" = (
-/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
+/obj/structure/machinery/cm_vending/gear/engi,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "cI" = (
@@ -891,6 +884,13 @@
 /turf/open/floor/whitegreencorner,
 /area/whiskey_outpost/inside/hospital)
 "cU" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
+"cV" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comtech_tools,
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -18625,7 +18625,7 @@ hw
 iS
 jq
 iS
-bX
+cj
 mo
 mM
 nw
@@ -25043,10 +25043,10 @@ ce
 ce
 ce
 ce
-bO
-bO
-bO
-bO
+bX
+bX
+bX
+bX
 bJ
 bJ
 bJ
@@ -25244,15 +25244,15 @@ ce
 ce
 ce
 ce
-bO
-bO
-bO
-bO
-bO
+bX
+bX
+bX
+bX
+bX
 bJ
 bJ
 bJ
-bM
+bO
 bJ
 bJ
 bI
@@ -25447,10 +25447,10 @@ ce
 ce
 ce
 ce
-bO
-bO
-bO
-bO
+bX
+bX
+bX
+bX
 bJ
 bJ
 bJ
@@ -25658,7 +25658,7 @@ bJ
 bJ
 bJ
 bJ
-aU
+bM
 bI
 "}
 (74,1,1) = {"
@@ -28317,11 +28317,11 @@ fr
 fr
 Ys
 pq
-cH
-cv
+cU
 cF
-cv
-cj
+cH
+cF
+ck
 pq
 mT
 mT
@@ -28520,10 +28520,10 @@ fr
 sI
 oB
 jM
-ck
-ck
-ck
-ck
+cv
+cv
+cv
+cv
 pq
 mT
 mT
@@ -28722,10 +28722,10 @@ fr
 sI
 Ys
 jM
-ck
-ck
-ck
-ck
+cv
+cv
+cv
+cv
 pq
 mT
 oE
@@ -28923,11 +28923,11 @@ fr
 fr
 Ys
 pq
-cU
-cv
+cV
 cF
-cv
-cj
+cH
+cF
+ck
 pq
 mT
 oE

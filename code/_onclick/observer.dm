@@ -116,21 +116,19 @@
 		user.forceMove(get_turf(target))
 
 /obj/structure/ladder/attack_ghost(mob/user as mob)
+	var/obj/structure/ladder/ladder_dest
 	if(up && down)
-		switch( alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
-			if("Up")
-				user.forceMove(get_turf(up))
-			if("Down")
-				user.forceMove(get_turf(down))
-			if("Cancel")
-				return
-
+		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = FALSE))
+		if(ladder_dest == "up")
+			user.forceMove(get_turf(up))
+		if(ladder_dest == "down")
+			user.forceMove(get_turf(down))
 	else if(up)
 		user.forceMove(get_turf(up))
-
 	else if(down)
 		user.forceMove(get_turf(down))
-
+	else
+		return FALSE //just in case
 // -------------------------------------------
 // This was supposed to be used by adminghosts
 // I think it is a *terrible* idea

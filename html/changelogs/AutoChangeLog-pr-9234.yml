@@ -1,6 +1,0 @@
-author: "tallfission"
-delete-after: True
-changes:
-  - balance: "Synthetic reset keys now spawn on all in-rotation groundmaps"
-  - balance: "A synthetic reset key starts in the Almayer's medical bay, in one of the backrooms"
-  - maptweak: "Fiorina Science Annex has 2% more powercreep (synthetic vest)"

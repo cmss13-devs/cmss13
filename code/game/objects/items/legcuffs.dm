@@ -110,7 +110,7 @@
 	return FALSE
 
 /obj/item/restraint/legcuffs/xeno_restraints/attack(mob/living/carbon/target_mob, mob/user as mob)
-	if(!istype(C, /mob/living/carbon/xenomorph))
+	if(!istype(target_mob, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_DANGER("The cuffs do not fit!"))
 		return
 	if(!target_mob.legcuffed)

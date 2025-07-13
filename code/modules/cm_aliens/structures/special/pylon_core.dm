@@ -317,7 +317,6 @@
 		var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
 		if(isnull(new_xeno))
 			return FALSE
-
 		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from [src]!"),
 		SPAN_XENODANGER("We emerge from [src] and awaken from our slumber. For the Hive!"))
 		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. [ADMIN_JMP(src)]")
@@ -338,6 +337,10 @@
 		if(new_xeno.client)
 			if(new_xeno.client.prefs.toggles_flashing & FLASH_POOLSPAWN)
 				window_flash(new_xeno.client)
+
+		if(!can_spawn_larva()) // TEMP CHECK
+			qdel(new_xeno)
+			return FALSE
 
 		linked_hive.stored_larva--
 		linked_hive.hive_ui.update_burrowed_larva()

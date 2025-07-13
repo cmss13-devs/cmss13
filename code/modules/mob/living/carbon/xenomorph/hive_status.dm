@@ -1675,7 +1675,7 @@
 /datum/hive_status/pathogen/get_xeno_counts()
 	// Every caste is manually defined here so you get
 	var/list/xeno_counts = list(
-		list(PATHOGEN_CREATURE_BURSTER = 0, PATHOGEN_CREATURE_POPPER = 0),
+		list(PATHOGEN_CREATURE_BURSTER = 0),
 		list(PATHOGEN_CREATURE_SPRINTER = 0),
 		list(PATHOGEN_CREATURE_NEOMORPH = 0, PATHOGEN_CREATURE_BLIGHT = 0),
 		list(PATHOGEN_CREATURE_BRUTE = 0, PATHOGEN_CREATURE_VENATOR = 0)

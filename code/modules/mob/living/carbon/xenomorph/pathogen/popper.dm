@@ -36,7 +36,7 @@
 	tier = 0
 	base_pixel_x = 0
 	base_pixel_y = -20
-	organ_value = 10000
+	organ_value = 0
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,

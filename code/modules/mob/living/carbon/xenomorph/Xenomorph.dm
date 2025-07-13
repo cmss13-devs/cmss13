@@ -358,7 +358,7 @@
 
 	//putting the organ in for research
 	if(organ_value != 0)
-		var/obj/item/organ/xeno/organ = new() //give
+		var/obj/item/organ/xeno/organ //give
 		if(hivenumber == XENO_HIVE_PATHOGEN)
 			organ = new /obj/item/organ/xeno/pathogen()
 		else

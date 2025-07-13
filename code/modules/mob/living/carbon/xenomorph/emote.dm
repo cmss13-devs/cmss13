@@ -13,7 +13,7 @@
 	if(is_pathogen_creature(user) && pathogen_sound)
 		. = pathogen_sound
 
-	if(isbloodburster(user) && bloodburster_sound)
+	if((isbloodburster(user) || ispopper(user)) && bloodburster_sound)
 		. = bloodburster_sound
 
 	if(ispredalien(user) && predalien_sound)

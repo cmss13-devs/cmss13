@@ -248,7 +248,7 @@
 				victim_human.internal_organs_by_name -= i
 				victim_human.internal_organs -= O
 		victim.death(cause) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
-		victim.chestburst = 2
+		victim.chestburst = 3
 		victim.update_burst()
 
 /obj/item/alien_embryo/bloodburster

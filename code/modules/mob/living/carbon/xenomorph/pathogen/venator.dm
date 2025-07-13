@@ -38,7 +38,7 @@
 	pixel_x = -8
 	old_x = -8
 	tier = 3
-	organ_value = 10000
+	organ_value = 8000
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,

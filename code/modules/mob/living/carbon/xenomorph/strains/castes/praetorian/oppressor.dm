@@ -171,11 +171,7 @@
 		if(hit_obstacle)
 			targets.Stun(1)
 			targets.KnockDown(1)
-			to_chat(targets, SPAN_XENODANGER("You lose your footing as you're slammed into another person!"))
-			to_chat(abduct_user, SPAN_XENODANGER("We use our tail to slam our enemies together!"))
 		else
-			to_chat(targets, SPAN_XENODANGER("You are swept off your feet as [abduct_user]'s tail throws you around!"))
-			to_chat(abduct_user, SPAN_XENODANGER("We spring our tail and throw them around!"))
 			targets.Stun(0.7)
 			targets.KnockDown(0.7)
 
@@ -183,9 +179,14 @@
 		REMOVE_TRAIT(targets, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 		abduct_user.throw_carbon(targets, get_dir(targets, throw_turf), 3, SPEED_VERY_FAST, immobilize = FALSE)
 
+	if(hit_obstacle)
+		to_chat(targets_added, SPAN_XENODANGER("You lose your footing as you're slammed into another person!"))
+		to_chat(abduct_user, SPAN_XENODANGER("We use our tail to slam our enemies together!"))
+	else
+		to_chat(targets_added, SPAN_XENODANGER("You are swept off your feet as [abduct_user]'s tail throws you around!"))
+		to_chat(abduct_user, SPAN_XENODANGER("We spring our tail and throw them around!"))
 
 
-		targets_added -= targets
 
 	ability_used_once = FALSE
 	abduct_user.emote("roar")

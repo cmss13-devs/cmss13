@@ -52,6 +52,7 @@
 		/obj/item/stack/medical/advanced/ointment = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/stack/medical/advanced/ointment/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/stack/medical/ointment = SURGERY_TOOL_MULT_AWFUL,
+		/obj/item/tool/surgery/synthgraft = SURGERY_TOOL_MULT_IDEAL,
 	)
 	time = 3 SECONDS
 

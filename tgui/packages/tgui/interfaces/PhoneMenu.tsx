@@ -3,7 +3,7 @@ import { useBackend } from 'tgui/backend';
 import { Button, Input, Section, Stack, Tabs } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { SEARCH_REGEX } from './helpers';
+import { replaceRegexChars } from './helpers';
 
 type Data = {
   availability: number;
@@ -92,8 +92,10 @@ const GeneralPanel = (props) => {
             <Tabs vertical>
               {transmitters.map((val) => {
                 if (
-                  currentSearch && !SEARCH_REGEX.test(currentSearch)
-                    ? !val.phone_id.toLowerCase().match(currentSearch)
+                  currentSearch
+                    ? !val.phone_id
+                        .toLowerCase()
+                        .match(replaceRegexChars(currentSearch))
                     : val.phone_category !== currentCategory
                 ) {
                   return;

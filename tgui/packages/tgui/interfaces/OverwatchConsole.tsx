@@ -15,7 +15,7 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { SEARCH_REGEX } from './helpers';
+import { replaceRegexChars } from './helpers';
 
 type MarineData = {
   name: string;
@@ -566,9 +566,11 @@ const SquadMonitor = (props) => {
             marines
               .sort(sortByRole)
               .filter((marine) => {
-                if (marineSearch && !SEARCH_REGEX.test(marineSearch)) {
+                if (marineSearch) {
                   const searchableString = String(marine.name).toLowerCase();
-                  return searchableString.match(new RegExp(marineSearch, 'i'));
+                  return searchableString.match(
+                    new RegExp(replaceRegexChars(marineSearch), 'i'),
+                  );
                 }
                 return marine;
               })

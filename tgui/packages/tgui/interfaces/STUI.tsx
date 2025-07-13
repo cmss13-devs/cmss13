@@ -11,7 +11,7 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { SEARCH_REGEX } from './helpers';
+import { replaceRegexChars } from './helpers';
 
 type STUIData = {
   tabs: Array<string>;
@@ -93,9 +93,7 @@ const RenderLogs = (props: {
           (x) =>
             x
               .toLowerCase()
-              .match(
-                searchTerm && !SEARCH_REGEX.test(searchTerm) ? searchTerm : '',
-              ) !== null,
+              .match(searchTerm ? replaceRegexChars(searchTerm) : '') !== null,
         )
         .map((log, i) => (
           <RenderLog log={log} key={i} logsfontnumber={logsfontnumber} />

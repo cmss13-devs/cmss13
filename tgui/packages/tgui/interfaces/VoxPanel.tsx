@@ -12,7 +12,7 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { SEARCH_REGEX } from './helpers';
+import { replaceRegexChars } from './helpers';
 
 const PAGES = [
   {
@@ -291,9 +291,7 @@ const SoundList = (props) => {
               {Object.keys(glob_vox_types[voxType])
                 .filter((val) =>
                   val.match(
-                    currentSearch && !SEARCH_REGEX.test(currentSearch)
-                      ? currentSearch
-                      : '',
+                    currentSearch ? replaceRegexChars(currentSearch) : '',
                   ),
                 )
                 .map((val) => (

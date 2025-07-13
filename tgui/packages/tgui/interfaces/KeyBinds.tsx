@@ -5,7 +5,7 @@ import { Box, Button, Dropdown, Flex, Input, Section } from 'tgui/components';
 import { globalEvents } from 'tgui/events';
 import { Window } from 'tgui/layouts';
 
-import { SEARCH_REGEX } from './helpers';
+import { replaceRegexChars } from './helpers';
 import type { ButtonProps } from './MfdPanels/types';
 
 const KEY_MODS = {
@@ -60,8 +60,8 @@ export const KeyBinds = (props) => {
       : glob_keybinds[selectedTab];
 
   const filteredKeybinds = keybinds_to_use.filter((val) =>
-    searchTerm && !SEARCH_REGEX.test(searchTerm)
-      ? val.full_name.toLowerCase().match(searchTerm)
+    searchTerm
+      ? val.full_name.toLowerCase().match(replaceRegexChars(searchTerm))
       : '',
   );
 

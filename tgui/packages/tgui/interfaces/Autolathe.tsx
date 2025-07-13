@@ -16,7 +16,7 @@ import { Window } from 'tgui/layouts';
 import { createLogger } from 'tgui/logging';
 
 import { ElectricalPanel } from './common/ElectricalPanel';
-import { SEARCH_REGEX } from './helpers';
+import { replaceRegexChars } from './helpers';
 
 type PrintData = {
   name: string;
@@ -170,9 +170,9 @@ const PrintablesSection = (props) => {
   const filteredPrintables = printables.filter(
     (val) =>
       (val.recipe_category === currentCategory || currentCategory === 'All') &&
-      (currentSearch && SEARCH_REGEX.test(currentSearch)
+      (currentSearch
         ? ''
-        : val.name.toLowerCase().match(currentSearch)),
+        : val.name.toLowerCase().match(replaceRegexChars(currentSearch))),
   );
 
   return (

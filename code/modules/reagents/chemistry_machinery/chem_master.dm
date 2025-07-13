@@ -77,7 +77,10 @@
 		update_icon()
 		return
 
-	if(istype(inputed_item, /obj/item/storage/pill_bottle) && pill_maker)
+	if(!pill_maker)
+		return
+
+	if(istype(inputed_item, /obj/item/storage/pill_bottle))
 		var/obj/item/storage/pill_bottle/bottle = inputed_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)

@@ -992,7 +992,7 @@
 	icon_state = "bed_dingy"
 
 /obj/structure/bed/hybrisa
-	icon_state = "bunk bed"
+	icon_state = ""
 	buckling_y = 8
 
 /obj/structure/bed/hybrisa/prisonbed

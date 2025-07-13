@@ -1,7 +1,7 @@
 /datum/equipment_preset/survivor/security/corsat
 	name = "Survivor - CORSAT Security Guard"
 	assignment = JOB_WY_SEC
-	rank = JOB_WY_SEC
+	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
 	minimap_icon = "cmp"
 	idtype = /obj/item/card/id/silver/cl

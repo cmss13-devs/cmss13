@@ -197,6 +197,11 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/shiva/floor3,
 /area/shiva/exterior/lz2_fortress)
+"aaM" = (
+/obj/structure/surface/table,
+/obj/item/device/defibrillator/synthetic,
+/turf/open/floor/shiva/north,
+/area/shiva/interior/garage)
 "aaN" = (
 /obj/item/weapon/gun/flamer/survivor,
 /obj/structure/surface/rack,
@@ -207,11 +212,6 @@
 /obj/item/explosive/plastic,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/exterior/cp_colony_grounds)
-"aaQ" = (
-/obj/effect/spider/stickyweb,
-/obj/item/clothing/head/helmet/marine/sof,
-/turf/open/auto_turf/ice/layer1,
-/area/shiva/interior/caves/right_spiders)
 "aaR" = (
 /obj/effect/spider/stickyweb,
 /obj/item/clothing/under/marine/veteran/marsoc,
@@ -13623,11 +13623,11 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/research_hab)
 "kZK" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_magazine/handful/shotgun/buckshot{
 	pixel_x = 4;
 	pixel_y = -16
 	},
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
 /area/shiva/interior/bar)
 "las" = (
@@ -19130,14 +19130,15 @@
 /turf/open/gm/river,
 /area/shiva/exterior/cp_lz2)
 "rUD" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
-	desc = "Shhhh, he's sleeping.";
-	pixel_x = 3;
-	pixel_y = -10
-	},
 /obj/item/bedsheet{
 	pixel_x = 3;
 	pixel_y = -7
+	},
+/obj/item/weapon/gun/shotgun/double/sawn{
+	name = "\improper sawn-off Sleepyhead Rival 78";
+	desc = "Shhhh, he's sleeping.";
+	pixel_x = 3;
+	pixel_y = -10
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
@@ -46428,7 +46429,7 @@ qep
 arX
 ktd
 azg
-kjt
+aaM
 kjt
 ver
 ver
@@ -54348,7 +54349,7 @@ ecj
 aaz
 gkv
 ecj
-aaQ
+imk
 aaR
 ecj
 ecj

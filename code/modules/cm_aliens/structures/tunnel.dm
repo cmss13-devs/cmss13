@@ -218,21 +218,21 @@
 /obj/structure/tunnel/attack_larva(mob/living/carbon/xenomorph/M)
 	. = attack_alien(M)
 
-/obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/M)
-	if(!istype(M) || M.is_mob_incapacitated(TRUE))
+/obj/structure/tunnel/attack_alien(mob/living/carbon/xenomorph/user)
+	if(!istype(user) || user.is_mob_incapacitated(TRUE))
 		return XENO_NO_DELAY_ACTION
 
-	if(M.hivenumber != hivenumber)
-		if(M.mob_size < MOB_SIZE_BIG)
-			to_chat(M, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
+	if(user.hivenumber != hivenumber)
+		if(user.mob_size < MOB_SIZE_BIG)
+			to_chat(user, SPAN_XENOWARNING("We aren't large enough to collapse this tunnel!"))
 			return XENO_NO_DELAY_ACTION
 
-		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),
+		user.visible_message(SPAN_XENODANGER("[user] begins to fill [src] with dirt."),
 		SPAN_XENONOTICE("We begin to fill [src] with dirt using our massive claws."), max_distance = 3)
-		xeno_attack_delay(M)
+		xeno_attack_delay(user)
 
-		if(!do_after(M, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL_OUT_OF_RANGE, max_dist = 1))
-			to_chat(M, SPAN_XENOWARNING("We decide not to cave the tunnel in."))
+		if(!do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL_OUT_OF_RANGE, max_dist = 1))
+			to_chat(user, SPAN_XENOWARNING("We decide not to cave the tunnel in."))
 			return XENO_NO_DELAY_ACTION
 
 		src.visible_message(SPAN_XENODANGER("[src] caves in!"), max_distance = 3)
@@ -240,46 +240,61 @@
 
 		return XENO_NO_DELAY_ACTION
 
-	if(M.anchored)
-		to_chat(M, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
+	if(user.action_busy)
+		to_chat(user, SPAN_WARNING("We are already busy with something."))
+		return XENO_NO_DELAY_ACTION
+
+	if(user.anchored)
+		to_chat(user, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
+		return XENO_NO_DELAY_ACTION
+
+	if(user.hauled_mob)
+		to_chat(user, SPAN_WARNING("We can't tunnel and haul someone at the same time."))
+		user.balloon_alert(user, "we're hauling someone!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return XENO_NO_DELAY_ACTION
 
 	if(!length(hive.tunnels))
-		to_chat(M, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
+		to_chat(user, SPAN_WARNING("[src] doesn't seem to lead anywhere."))
 		return XENO_NO_DELAY_ACTION
 
 	if(length(contents) > 2)
-		to_chat(M, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
+		to_chat(user, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
 		return XENO_NO_DELAY_ACTION
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
 
-	if(M.banished)
-		return
-
-	if(M.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
-		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
-	else if(islarva(M)) //Larva can zip through near-instantly, they are wormlike after all
-		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
-
-	if(M.mob_size >= MOB_SIZE_BIG)
-		M.visible_message(SPAN_XENONOTICE("[M] begins heaving their huge bulk down into [src]."),
-			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
-	else
-		M.visible_message(SPAN_XENONOTICE("[M] begins crawling down into [src]."),
-			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
-
-	xeno_attack_delay(M)
-	if(!do_after(M, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
-		to_chat(M, SPAN_WARNING("Our crawling was interrupted!"))
+	if(user.banished)
 		return XENO_NO_DELAY_ACTION
 
-	if(length(hive.tunnels)) //Make sure other tunnels exist
-		M.forceMove(src) //become one with the tunnel
-		to_chat(M, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
-		pick_tunnel(M)
+	if(user.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
+		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
+	else if(islarva(user)) //Larva can zip through near-instantly, they are wormlike after all
+		tunnel_time = TUNNEL_ENTER_LARVA_DELAY
+
+	if(user.mob_size >= MOB_SIZE_BIG)
+		user.visible_message(SPAN_XENONOTICE("[user] begins heaving their huge bulk down into [src]."),
+			SPAN_XENONOTICE("We begin heaving our monstrous bulk into [src] (<i>[tunnel_desc]</i>)."))
 	else
-		to_chat(M, SPAN_WARNING("[src] ended unexpectedly, so we return back up."))
+		user.visible_message(SPAN_XENONOTICE("[user] begins crawling down into [src]."),
+			SPAN_XENONOTICE("We begin crawling down into [src] (<i>[tunnel_desc]</i>)."))
+
+	xeno_attack_delay(user)
+	if(!do_after(user, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("Our crawling was interrupted!"))
+		return XENO_NO_DELAY_ACTION
+
+	if(user.hauled_mob)
+		to_chat(user, SPAN_WARNING("We can't tunnel and haul someone at the same time."))
+		user.balloon_alert(user, "we're hauling someone!", text_color = "#7d32bb", delay = 1 SECONDS)
+		return XENO_NO_DELAY_ACTION
+
+	if(!length(hive.tunnels)) //Make sure other tunnels exist
+		to_chat(user, SPAN_WARNING("[src] doesn't seem to lead anywhere anymore."))
+		return XENO_NO_DELAY_ACTION
+
+	user.forceMove(src) //become one with the tunnel
+	to_chat(user, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
+	pick_tunnel(user)
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/tunnel/maint_tunnel

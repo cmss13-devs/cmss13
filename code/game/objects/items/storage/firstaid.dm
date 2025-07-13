@@ -7,7 +7,7 @@
 
 //---------FIRST AID KITS---------
 /obj/item/storage/firstaid
-	name = "first-aid kit"
+	name = "first aid kit"
 	desc = "It's an emergency medical kit for those serious boo-boos. With medical training you can fit this in a backpack."
 	icon = 'icons/obj/items/storage/medical.dmi'
 	item_icons = list(
@@ -70,7 +70,7 @@
 		open(user)
 
 /obj/item/storage/firstaid/fire
-	name = "fire first-aid kit"
+	name = "fire first aid kit"
 	desc = "It's an emergency medical kit for when the dropship ammo storage <i>-spontaneously-</i> burns down. With medical training you can fit this in a backpack."
 	icon_state = "ointment"
 	item_state = "firstaid-ointment"
@@ -127,7 +127,7 @@
 	return
 
 /obj/item/storage/firstaid/toxin
-	name = "toxin first-aid kit"
+	name = "toxin first aid kit"
 	desc = "It's an emergency medical kit containing lifesaving anti-toxic medication. With medical training you can fit this in a backpack."
 	icon_state = "antitoxin"
 	item_state = "firstaid-toxin"
@@ -145,7 +145,7 @@
 	return
 
 /obj/item/storage/firstaid/o2
-	name = "oxygen deprivation first-aid kit"
+	name = "oxygen deprivation first aid kit"
 	desc = "A box full of reoxygenating goodies. With medical training you can fit this in a backpack."
 	icon_state = "o2"
 	item_state = "firstaid-o2"
@@ -163,8 +163,8 @@
 	return
 
 /obj/item/storage/firstaid/adv
-	name = "advanced first-aid kit"
-	desc = "Contains more effective methods of medical treatment than a basic first-aid kit, such as burn and trauma kits. With medical training you can fit this in a backpack."
+	name = "advanced first aid kit"
+	desc = "Contains more effective methods of medical treatment than a basic first aid kit, such as burn and trauma kits. With medical training you can fit this in a backpack."
 	icon_state = "advfirstaid"
 	item_state = "firstaid-advanced"
 
@@ -305,7 +305,7 @@
 	new /obj/item/roller(src)
 
 /obj/item/storage/firstaid/rad
-	name = "radiation first-aid kit"
+	name = "radiation first aid kit"
 	desc = "Contains treatment for radiation exposure. With medical training you can fit this in a backpack."
 	icon_state = "purplefirstaid"
 
@@ -430,7 +430,7 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline( src )
 
 /obj/item/storage/box/czsp/first_aid
-	name = "first-aid combat support kit"
+	name = "first aid combat support kit"
 	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "medicbox"
@@ -929,7 +929,7 @@
 
 /obj/item/storage/pill_bottle/imialky
 	name = "\improper Imidazoline-Alkysine pill bottle"
-	desc = "A pill bottle filled with Imidazoline-Alkysine combo pills to treat brain and eye damage at the same time."
+	desc = "A pill bottle filled with Imidazoline-Alkysine combo pills to treat brain and eye damage simultaneously."
 	icon_state = "pill_canister9"
 	pill_type_to_fill = /obj/item/reagent_container/pill/imialky
 	maptext_label = "IA"

@@ -120,7 +120,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_prae_abduct
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 15 SECONDS
+	xeno_cooldown = 10 SECONDS
 	plasma_cost = 180
 
 	// Config
@@ -144,7 +144,7 @@
 	var/damage = 20
 
 /datum/action/xeno_action/activable/send_back
-	name = "Send back"
+	name = "Send Back"
 	action_icon_state = "fling"
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 10 SECONDS

@@ -78,3 +78,21 @@
   - rscadd: Added mess tent
   realforest2001:
   - rscadd: Infected follow category is now split between hives.
+2025-07-10:
+  Red-byte3D:
+  - code_imp: Xenomorph markers can now be put into different z levels
+2025-07-11:
+  matttheficus:
+  - bugfix: Field Doctor now counts hours towards the Doctor Roles timelock.
+2025-07-12:
+  jupyterkat:
+  - imageadd: added sharp operator hud icon and map icon
+2025-07-13:
+  Red-byte3D:
+  - rscadd: Adds in more radial menus for ladders including grenade throwing, looking
+      up and ghosts
+  tallfission:
+  - balance: Synthetic reset keys now spawn on all in-rotation groundmaps
+  - balance: A synthetic reset key starts in the Almayer's medical bay, in one of
+      the backrooms
+  - maptweak: Fiorina Science Annex has 2% more powercreep (synthetic vest)

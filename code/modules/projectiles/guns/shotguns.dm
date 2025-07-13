@@ -1309,8 +1309,8 @@ can cause issues with ammo types getting mixed up during the burst.
 
 //-------------------------------------------------------
 
-/obj/item/weapon/gun/shotgun/pump/m37a4
-	name = "\improper M37A4 pump shotgun"
+/obj/item/weapon/gun/shotgun/pump/m37a
+	name = "\improper M37A1-A3 pump shotgun"
 	desc = "An Armat Battlefield Systems modern take on an all-time classic, combining close range firepower with long-term reliability. Requires a pump, which is a Unique Action."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "m37a"

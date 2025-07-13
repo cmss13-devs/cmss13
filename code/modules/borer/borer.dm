@@ -422,12 +422,6 @@ GLOBAL_DATUM_INIT(brainlink, /datum/borer_brainlink, new)
 /mob/living/carbon/cortical_borer/can_ventcrawl()
 	return TRUE
 
-/mob/living/carbon/cortical_borer/initialize_pass_flags(datum/pass_flags_container/PF)
-	..()
-	if (PF)
-		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
-		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
-
 /mob/living/carbon/cortical_borer/get_status_tab_items()
 	. = ..()
 

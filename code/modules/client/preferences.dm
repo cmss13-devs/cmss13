@@ -240,6 +240,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/xeno_postfix = ""
 	var/xeno_name_ban = FALSE
 	var/xeno_vision_level_pref = XENO_VISION_LEVEL_MID_NVG
+	var/larva_join_default = "Yes"
 	var/playtime_perks = TRUE
 	var/show_queen_name = FALSE
 
@@ -507,6 +508,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Enable Playtime Perks:</b> <a href='byond://?_src_=prefs;preference=playtime_perks'><b>[playtime_perks? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Show Queen Name:</b> <a href='byond://?_src_=prefs;preference=show_queen_name'><b>[show_queen_name? "Yes" : "No"]</b></a><br>"
 			dat += "<b>Default Xeno Night Vision Level:</b> <a href='byond://?_src_=prefs;preference=xeno_vision_level_pref;task=input'><b>[xeno_vision_level_pref]</b></a><br>"
+			dat += "<b>Default Join as Larva Option:</b> <a href='byond://?_src_=prefs;preference=larva_join_default;task=input'><b>[larva_join_default]</b></a><br>"
 
 			var/tempnumber = rand(1, 999)
 			var/postfix_text = xeno_postfix ? ("-"+xeno_postfix) : ""
@@ -1242,6 +1244,14 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					if(!choice)
 						return
 					xeno_vision_level_pref = choice
+				if("larva_join_default")
+					var/new_default = "Yes"
+					switch(larva_join_default)
+						if("Yes")
+							new_default = "No"
+						if("No")
+							new_default = "Yes"
+					larva_join_default = new_default
 				if("ghost_vision_pref")
 					var/static/list/vision_level_choices = list(GHOST_VISION_LEVEL_NO_NVG, GHOST_VISION_LEVEL_MID_NVG, GHOST_VISION_LEVEL_HIGH_NVG, GHOST_VISION_LEVEL_FULL_NVG)
 					var/choice = tgui_input_list(user, "Choose your default ghost vision level", "Vision level", vision_level_choices)

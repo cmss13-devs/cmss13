@@ -313,6 +313,7 @@
 	S["playtime_perks"] >> playtime_perks
 	S["show_queen_name"] >> show_queen_name
 	S["xeno_vision_level_pref"] >> xeno_vision_level_pref
+	S["larva_join_default"] >> larva_join_default
 	S["view_controller"] >> View_MC
 	S["observer_huds"] >> observer_huds
 	S["pref_special_job_options"] >> pref_special_job_options
@@ -421,6 +422,7 @@
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	show_queen_name = sanitize_integer(show_queen_name, FALSE, TRUE, FALSE)
 	xeno_vision_level_pref = sanitize_inlist(xeno_vision_level_pref, list(XENO_VISION_LEVEL_NO_NVG, XENO_VISION_LEVEL_MID_NVG, XENO_VISION_LEVEL_HIGH_NVG, XENO_VISION_LEVEL_FULL_NVG), XENO_VISION_LEVEL_MID_NVG)
+	larva_join_default = sanitize_inlist(larva_join_default, list("Yes", "No"), "Yes")
 	hear_vox = sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 	no_radials_preference = sanitize_integer(no_radials_preference, FALSE, TRUE, FALSE)
@@ -563,6 +565,7 @@
 	S["xeno_postfix"] << xeno_postfix
 	S["xeno_name_ban"] << xeno_name_ban
 	S["xeno_vision_level_pref"] << xeno_vision_level_pref
+	S["larva_join_default"] << larva_join_default
 	S["playtime_perks"] << playtime_perks
 	S["show_queen_name"] << show_queen_name
 

@@ -20,14 +20,12 @@
 	desc = "An incendiary magazine of 10x28mm sniper rifle ammo. An aimed shot with it will temporarily blind the target and light them heavily on fire."
 	default_ammo = /datum/ammo/bullet/sniper/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_INSUBSTANTIAL
 
 /obj/item/ammo_magazine/sniper/flak
 	name = "\improper M42A flak magazine (10x28mm)"
 	desc = "A flak magazine of 10x28mm sniper rifle ammo. An aimed shot with it will temporarily slow the target, as well as inflicting backlash to anyone nearby."
 	default_ammo = /datum/ammo/bullet/sniper/flak
 	ammo_band_color = AMMO_BAND_COLOR_IMPACT
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_INSUBSTANTIAL
 
 //XM43E1 Magazine
 /obj/item/ammo_magazine/sniper/anti_materiel
@@ -81,7 +79,6 @@
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/impact
 	name = "\improper A19 HV high impact magazine (10x24mm)"
@@ -90,7 +87,6 @@
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 //-------------------------------------------------------
 //SMARTGUN
@@ -113,7 +109,6 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM //youre loading essentially uranium bullets, so it's gonna jam more often
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
 /obj/item/ammo_magazine/smartgun/holo_targetting
@@ -122,9 +117,7 @@
 	icon_state = "m56_drum" //PLACEHOLDER
 	default_ammo = /datum/ammo/bullet/smartgun/holo_target
 	gun_type = /obj/item/weapon/gun/smartgun/rmc
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
-
 //-------------------------------------------------------
 //Flare gun. Close enough?
 /obj/item/ammo_magazine/internal/flare
@@ -148,7 +141,7 @@
 	w_class = SIZE_MEDIUM
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket
-	gun_type = /obj/item/weapon/gun/launcher/rocket
+	gun_type = /obj/item/weapon/gun/launcher/rocket/m5
 	flags_magazine = NO_FLAGS
 
 /obj/item/ammo_magazine/rocket/attack_self(mob/user)
@@ -249,6 +242,13 @@
 	icon_state = "wp_rocket"
 	default_ammo = /datum/ammo/rocket/wp
 	desc = "A rocket tube loaded with a white phosphorus incendiary warhead. Has two damaging factors. On hit disperses X-Variant Napthal (blue flames) in a 4-meter radius circle, ignoring cover, while simultaneously bursting into highly heated shrapnel that ignites targets within slightly bigger area."
+
+/obj/item/ammo_magazine/rocket/brute
+	name = "\improper M5510 Laser-Guided Rocket"
+	icon_state = "brute_rocket"
+	default_ammo = /datum/ammo/rocket/brute
+	gun_type = /obj/item/weapon/gun/launcher/rocket/brute
+	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an ellipical radius of several meters. These rockets are known to have reduced lethality to personel, but will put just about any ol' backwater mud-hut right into orbit."
 
 /obj/item/ammo_magazine/rocket/custom
 	name = "\improper 84mm custom rocket"
@@ -365,7 +365,8 @@
 
 /obj/item/ammo_magazine/rocket/upp
 	name = "\improper HJRA-12 High-Explosive Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard high-explosive rocket for use against light vehicles or as an anti-personnel grenade."
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is a standard high-explosive rocket for use against light vehicles or as an anti-personnel grenade."
+
 	caliber = "88mm"
 	icon_state = "hjra_explosive"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/rocket_launchers.dmi'
@@ -383,7 +384,8 @@
 
 /obj/item/ammo_magazine/rocket/upp/at
 	name = "\improper HJRA-12 Anti-Tank Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard anti-tank rocket designed to disable or destroy hostile armored vehicles."
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is a standard anti-tank rocket designed to disable or destroy hostile armored vehicles."
+
 	caliber = "88mm"
 	icon_state = "hjra_tank"
 
@@ -394,7 +396,7 @@
 
 /obj/item/ammo_magazine/rocket/upp/incen
 	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is an extreme-intensity incendiary rocket."
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is an extreme-intensity incendiary rocket."
 	desc_lore = "This incendiary rocket uses an experimental chemical designated 'R-189' by the UPP. It is designed to melt through fortifications and bunkers but is most commonly used in an anti-personnel role due to over-issuing and the tempeartures after use in its intended role leaving behind a cloud of super-heated air, preventing troops' advance."
 	caliber = "88mm"
 	icon_state = "hjra_incen"

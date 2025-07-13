@@ -339,6 +339,8 @@
 		dismantle_wall(FALSE, TRUE)
 		if(!istype(src, /turf/closed/wall/resin))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
+		else
+			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/resin, cause_data)
 	else
 		if(istype(src, /turf/closed/wall/resin))
 			exp_damage *= RESIN_EXPLOSIVE_MULTIPLIER

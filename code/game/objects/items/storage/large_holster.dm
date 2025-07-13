@@ -75,7 +75,7 @@
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat,
 		/obj/item/weapon/gun/shotgun/double/mou53,
-		/obj/item/weapon/gun/shotgun/pump/m37a4
+		/obj/item/weapon/gun/shotgun/pump/m37a4,
 	)
 	flags_atom = FPRINT // has gamemode skin
 

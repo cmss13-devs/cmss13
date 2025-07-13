@@ -428,3 +428,6 @@
 
 /obj/structure/machinery/medical_pod/sleeper/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	available_chemicals = list("thwei", "inaprovaline", "oxycodone", "anti_toxin", "dexalinp", "tricordrazine", "alkysine", "imidazoline")
+	emergency_chems = list("thwei", "inaprovaline", "oxycodone", "anti_toxin", "dexalinp", "tricordrazine", "bicaridine", "kelotane", "meralyne", "dermaline", "alkysine", "imidazoline")
+	upgraded = TRUE

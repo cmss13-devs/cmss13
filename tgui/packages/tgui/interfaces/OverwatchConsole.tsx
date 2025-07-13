@@ -15,6 +15,8 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { SEARCH_REGEX } from './helpers';
+
 type MarineData = {
   name: string;
   state: string;
@@ -564,7 +566,7 @@ const SquadMonitor = (props) => {
             marines
               .sort(sortByRole)
               .filter((marine) => {
-                if (marineSearch && !marineSearch.includes('\\')) {
+                if (marineSearch && !SEARCH_REGEX.test(marineSearch)) {
                   const searchableString = String(marine.name).toLowerCase();
                   return searchableString.match(new RegExp(marineSearch, 'i'));
                 }

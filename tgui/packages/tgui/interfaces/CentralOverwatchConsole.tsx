@@ -16,6 +16,7 @@ import {
 } from '../components';
 import { ButtonConfirm } from '../components/Button';
 import { Window } from '../layouts';
+import { SEARCH_REGEX } from './helpers';
 
 type MarineData = {
   name: string;
@@ -1055,7 +1056,7 @@ const SquadMonitor = (props) => {
                 marines
                   .sort(sortByRole)
                   .filter((marine) => {
-                    if (marineSearch) {
+                    if (marineSearch && !SEARCH_REGEX.test(marineSearch)) {
                       const searchableString = String(
                         marine.name,
                       ).toLowerCase();

@@ -3,6 +3,8 @@ import { useBackend } from 'tgui/backend';
 import { Button, Input, Section, Stack, Tabs } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { SEARCH_REGEX } from './helpers';
+
 type Data = {
   availability: number;
   last_caller: string | null;
@@ -29,7 +31,6 @@ export const PhoneMenu = (props) => {
 const GeneralPanel = (props) => {
   const { act, data } = useBackend<Data>();
   const { availability, last_caller } = data;
-  const SEARCH_REGEX = /[-':.#]\w\s/;
   const available_transmitters = Object.keys(data.available_transmitters);
   const transmitters = data.transmitters.filter((val1) =>
     available_transmitters.includes(val1.phone_id),
@@ -91,9 +92,9 @@ const GeneralPanel = (props) => {
             <Tabs vertical>
               {transmitters.map((val) => {
                 if (
-                  (currentSearch && SEARCH_REGEX.test(currentSearch)) ||
-                  val.phone_category !== currentCategory ||
-                  !val.phone_id.toLowerCase().match(currentSearch)
+                  currentSearch && !SEARCH_REGEX.test(currentSearch)
+                    ? !val.phone_id.toLowerCase().match(currentSearch)
+                    : val.phone_category !== currentCategory
                 ) {
                   return;
                 }

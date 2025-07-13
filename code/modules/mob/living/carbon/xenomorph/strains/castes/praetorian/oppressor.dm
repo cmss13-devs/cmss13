@@ -162,9 +162,11 @@
 	var/hit_obstacle = FALSE
 	var/mob/living/carbon/target_turf_mob = locate() in thrown_turf
 
-	if(target_turf_mob || !get_dist(target_turf_mob, targets_added) > 3)
+	if(target_turf_mob)
+		target_turf_mob.Stun(1)
+		target_turf_mob.KnockDown(1)
 		hit_obstacle = TRUE
-		targets_added += target_turf_mob
+
 
 	for(var/mob/living/targets in targets_added)
 		if(hit_obstacle)
@@ -180,7 +182,7 @@
 
 	if(hit_obstacle)
 		to_chat(targets_added, SPAN_XENODANGER("You lose your footing as you're slammed into another person!"))
-		to_chat(abduct_user, SPAN_XENODANGER("We use our tail to slam our enemies together!"))
+		to_chat(abduct_user, SPAN_XENODANGER("We use our tail to slam [length(targets_added)] of them together!"))
 	else
 		to_chat(targets_added, SPAN_XENODANGER("You are swept off your feet as [abduct_user]'s tail throws you around!"))
 		to_chat(abduct_user, SPAN_XENODANGER("We spring our tail and throw them around!"))

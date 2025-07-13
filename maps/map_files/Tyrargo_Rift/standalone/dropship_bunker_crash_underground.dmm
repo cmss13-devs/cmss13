@@ -90,7 +90,7 @@
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/north)
 "A" = (
-/turf/closed/wall/rock,
+/turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/oob)
 "B" = (
 /obj/structure/prop/hybrisa/boulders/smallboulderdark,

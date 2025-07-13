@@ -125,7 +125,7 @@
 /turf/open/floor/corsat/plate,
 /area/tyrargo/underground/bunker/south)
 "H" = (
-/turf/closed/wall/rock,
+/turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/oob)
 "J" = (
 /obj/effect/decal/cleanable/dirt,

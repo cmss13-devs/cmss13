@@ -217,7 +217,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
 	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central)
 "as" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -797,7 +797,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
 	},
-/turf/open/gm/dirt/brown/variant_3,
+/turf/open/gm/dirt/dark_brown/variant_3,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bz" = (
 /obj/structure/prop/rock/black_ground{
@@ -820,7 +820,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
 	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central)
 "bC" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -828,7 +828,7 @@
 	pixel_y = 7;
 	pixel_x = 3
 	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central)
 "bD" = (
 /obj/structure/bed/chair/vehicle{
@@ -853,7 +853,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
 	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central)
 "bF" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -865,7 +865,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central)
 "bG" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -874,13 +874,13 @@
 	pixel_y = -7;
 	dir = 1
 	},
-/turf/open/gm/dirt/brown/variant_1,
+/turf/open/gm/dirt/dark_brown/variant_1,
 /area/tyrargo/outdoors/outskirts/central)
 "bH" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
 	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central)
 "bI" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -927,6 +927,12 @@
 /obj/structure/largecrate/supply/ammo/m39/half,
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/tyrargo/indoors/tychon)
+"bN" = (
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/outdoors/outskirts/central/landing_zone)
+"bO" = (
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bP" = (
 /obj/structure/barricade/sandbags/weak_wired{
 	dir = 8;
@@ -1074,7 +1080,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
 	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "fR" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -1159,8 +1165,8 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/tyrargo/indoors/tychon)
 "lR" = (
-/obj/structure/platform/stone/kutjevo/north,
-/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "md" = (
@@ -1605,9 +1611,9 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "xh" = (
-/obj/structure/platform/stone/kutjevo/north,
-/obj/structure/platform/stone/kutjevo/west,
-/obj/structure/platform/stone/kutjevo/east,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "yM" = (
@@ -1754,7 +1760,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
 	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "Bv" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -1777,7 +1783,7 @@
 /turf/open/auto_turf/strata_grass,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "BJ" = (
-/turf/closed/wall/rock/brown,
+/turf/closed/wall/strata_ice/forest/rock/dirty,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "BV" = (
 /turf/open/auto_turf/snow/brown_base/layer3,
@@ -1849,7 +1855,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 9
 	},
-/turf/open/gm/dirt/brown,
+/turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "Db" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -1984,7 +1990,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
 	},
-/turf/open/gm/dirt/brown,
+/turf/open/gm/dirt/dark_brown,
 /area/tyrargo/oob)
 "Gw" = (
 /obj/item/prop/colony/usedbandage{
@@ -2500,8 +2506,8 @@
 	},
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "ZM" = (
-/obj/structure/platform/stone/kutjevo/north,
-/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
 "ZP" = (
@@ -2714,7 +2720,7 @@ Pq
 Si
 zq
 JX
-oX
+bN
 ZM
 "}
 (10,1,1) = {"
@@ -2758,7 +2764,7 @@ aW
 aw
 as
 aj
-JX
+bO
 lR
 "}
 (12,1,1) = {"

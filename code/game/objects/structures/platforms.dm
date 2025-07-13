@@ -252,6 +252,12 @@
 /obj/structure/platform/stone/stair_cut/soro_right
 	icon_state = "strata_rock_platform_stair_alt"
 
+/obj/structure/platform/stone/stair_cut/tyrargo_left
+	icon_state = "tyrargo_rock_platform_stair"
+
+/obj/structure/platform/stone/stair_cut/tyrargo_right
+	icon_state = "tyrargo_rock_platform_stair_alt"
+
 /obj/structure/platform/stone/stair_cut/kutjevo_left
 	icon_state = "kutjevo_rock_stair"
 
@@ -419,6 +425,32 @@
 /obj/structure/platform/stone/mineral/west
 	dir = WEST
 
+// Tyrargo Rock
+
+/obj/structure/platform/stone/tyrargo
+	name = "rock edge"
+	desc = "A solid chunk of desolate rocks. Looks like you could climb it."
+	icon_state = "tyrargo_rock_platform"
+
+/obj/structure/platform/stone/tyrargo/north
+	dir = NORTH
+/obj/structure/platform/stone/tyrargo/east
+	dir = EAST
+/obj/structure/platform/stone/tyrargo/west
+	dir = WEST
+
+//--//
+
+/obj/structure/platform/stone/mineral
+	icon_state = "stone"
+
+/obj/structure/platform/stone/mineral/north
+	dir = NORTH
+/obj/structure/platform/stone/mineral/east
+	dir = EAST
+/obj/structure/platform/stone/mineral/west
+	dir = WEST
+
 
 /obj/structure/platform/stone/sandstone
 	name = "sandstone platform"
@@ -571,6 +603,20 @@
 /obj/structure/platform_decoration/stone/soro/east
 	dir = EAST
 /obj/structure/platform_decoration/stone/soro/west
+	dir = WEST
+
+//TYRARGO
+
+/obj/structure/platform_decoration/stone/tyrargo
+	name = "rock corner"
+	desc = "Solid chunks of desolate rocks."
+	icon_state = "tyrargo_rock_platform_deco"
+
+/obj/structure/platform_decoration/stone/tyrargo/north
+	dir = NORTH
+/obj/structure/platform_decoration/stone/tyrargo/east
+	dir = EAST
+/obj/structure/platform_decoration/stone/tyrargo/west
 	dir = WEST
 
 

@@ -911,6 +911,9 @@
 		RESEARCH_UPGRADE_TIER_4,
 	)
 
+/obj/structure/machinery/autodoc_console/upgraded
+	upgrades = list(1=1, 2=2, 3=3, 4=4)
+
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"
 	desc = "A much more expensive model of autodoc modified with an A.I. diagnostic unit. The result is a much simpler, point-and-click interface that anyone, regardless of training, can use. Often employed in autodoc systems deployed to military front lines for soldiers to use."

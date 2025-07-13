@@ -54,6 +54,29 @@
 	addtimer(CALLBACK(src, PROC_REF(update_icon)), 0)
 	starting_maxhealth = maxhealth
 
+/obj/structure/barricade/metal/Initialize(mapload, mob/user)
+	. = ..()
+	var/area/area = get_area(src)
+	if(area.flags_area & AREA_NOSECURECADES && !mapload)
+		anchored = FALSE
+		build_state = BARRICADE_BSTATE_MOVABLE
+		to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+
+/obj/structure/barricade/plasteel/Initialize(mapload, mob/user)
+	. = ..()
+	var/area/area = get_area(src)
+	if(area.flags_area & AREA_NOSECURECADES && !mapload)
+		anchored = FALSE
+		build_state = BARRICADE_BSTATE_MOVABLE
+		to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+
+/obj/structure/barricade/deployable/Initialize(mapload, mob/user)
+	. = ..()
+	var/area/area = get_area(src)
+	if(area.flags_area & AREA_NOSECURECADES && !mapload)
+		anchored = FALSE
+		to_chat(user, SPAN_WARNING("[src] does not properly secure on this surface!"))
+
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
 	if (pass_flags)
@@ -92,14 +115,17 @@
 				layer = initial(layer) - 0.01
 			else
 				layer = initial(layer)
-		if(!anchored)
-			layer = initial(layer)
 	else
 		if(can_change_dmg_state)
 			icon_state = "[barricade_type]_closed_[damage_state]"
 		else
 			icon_state = "[barricade_type]_closed"
 		layer = OBJ_LAYER
+
+	// Pixelshift to indicate anchored state
+	pixel_y = initial(pixel_y)
+	if(!anchored)
+		pixel_y += 2
 
 	if(upgraded)
 		switch(upgraded)
@@ -131,7 +157,21 @@
 	..()
 
 /obj/structure/barricade/Collided(atom/movable/atom_movable)
-	..()
+	// Similar behavior to /atom/movable/Collided(atom/movable/AM) but we account for something in our same location
+	if(isliving(atom_movable) && !anchored)
+		var/blocked = FALSE
+		for(var/atom/movable/other_moveable as anything in loc)
+			if(other_moveable == src || other_moveable == atom_movable)
+				continue
+			if(!other_moveable.density || !other_moveable.can_block_movement)
+				continue
+			blocked = TRUE
+			break
+		if(!blocked)
+			var/target_dir = get_dir(atom_movable, src) || dir
+			var/turf/target_turf = get_step(loc, target_dir)
+			Move(target_turf)
+	SEND_SIGNAL(src, COMSIG_STRUCTURE_COLLIDED, atom_movable)
 
 	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable

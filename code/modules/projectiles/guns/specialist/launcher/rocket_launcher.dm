@@ -453,13 +453,13 @@
 		return
 
 	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
-		user.visible_message(SPAN_WARNING("Invalid target!"))
+		to_chat(user, SPAN_WARNING("Invalid target!"))
 		return
 
 	var/list/turf/path = get_line(user, target, include_start_atom = FALSE)
 	for(var/turf/turf_path in path)
 		if(turf_path.opacity && turf_path != target)
-			user.visible_message(SPAN_WARNING("Target obscured!"))
+			to_chat(user, SPAN_WARNING("Target obscured!"))
 			return
 	aiming = TRUE
 	var/beam = "laser_beam_guided"

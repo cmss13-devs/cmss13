@@ -35,6 +35,8 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste
+		if(!GLOB.xeno_datum_list[caste].can_play_caste(client))
+			castes_available -= caste
 
 	if(!length(castes_available))
 		to_chat(src, SPAN_WARNING("The Hive is not capable of supporting any castes we can evolve to yet."))

@@ -20897,10 +20897,10 @@
 /area/desert_dam/building/medical/west_wing_hallway)
 "dyM" = (
 /obj/structure/surface/table,
-/obj/item/tool/weedkiller/D24,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/explosive/grenade/custom/antiweed,
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_isolation)
 "dyP" = (

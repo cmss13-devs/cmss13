@@ -130,7 +130,7 @@
 	id = "tricordrazine"
 	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
 	reagent_state = LIQUID
-	color = "#8DB18D" // rgb: 142, 194, 141   color changed to differentiate from kelotane and dermaline. The color is literally its two ingredients' colors mixed 50/50.
+	color = "#e06fff" // rgb: 224, 111, 255   color changed to differentiate from kelotane and dermaline. Hopefully, it makes Unga pinker.
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON

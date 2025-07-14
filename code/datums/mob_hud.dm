@@ -353,6 +353,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 
 	holder2.icon_state = null
 	if(has_brain_worms())
+		holder2.icon = 'icons/mob/hud/wormhud.dmi'
 		var/worm_icon = "hudbrainwormhost"
 		switch(borer.generation)
 			if(0)
@@ -549,6 +550,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		var/mob/living/carbon/cortical_borer/brainworm = has_brain_worms()
 		holder5.icon_state = null
 		if(brainworm)
+			holder5.icon = 'icons/mob/hud/wormhud.dmi'
 			var/worm_icon = "hudbrainwormhost"
 			switch(brainworm.generation)
 				if(0)

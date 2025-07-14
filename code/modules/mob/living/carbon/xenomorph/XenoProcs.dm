@@ -112,11 +112,6 @@
 		. += ""
 
 	if(hive)
-		if(hive.hive_orders)
-			. += "Hive Orders: [hive.hive_orders]"
-		else
-			. += "Hive Orders: -"
-
 		if(!hive.living_xeno_queen)
 			. += "Queen's Location: NO QUEEN"
 		else if(!(caste_type == XENO_CASTE_QUEEN))
@@ -144,6 +139,11 @@
 			. += "Construction Placement: NOBODY"
 		else
 			. += "Special Structure Destruction: QUEEN"
+
+		if(hive.hive_orders)
+			. += "Hive Orders: [hive.hive_orders]"
+		else
+			. += "Hive Orders: -"
 
 	. += ""
 

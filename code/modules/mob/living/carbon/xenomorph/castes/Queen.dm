@@ -526,7 +526,7 @@
 	recalculate_health()
 	generate_name()
 
-/// Matures the queen either permnantly or temporarily
+/// Matures the queen either permanently or temporarily
 /mob/living/carbon/xenomorph/queen/proc/make_combat_effective(temporary=FALSE)
 	if(temporary)
 		if(timeleft(queen_age_timer_id) <= XENO_QUEEN_TEMP_AGE_DURATION)

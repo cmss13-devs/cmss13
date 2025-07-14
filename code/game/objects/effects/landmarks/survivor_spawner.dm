@@ -299,80 +299,121 @@
 //Soro CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/soro
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Your Cell Lead has requested for an extraction from HQ, hopefully they arrive in time..."
+	synthetic_intro_text = list("<h2>You are a UPP synthetic advising the CLF!</h2>",\
+	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class ='notice'>While you are sticking with them as it is your best chance of survival, it is your duty to deny collaboration between the UPP and the CLF.</span>",\
+	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
+	synthetic_story_text = "You are a member of the UPP 121st Special Reconnaissance Detachment, the SOF's primary reconnaissance group in the Bau Sau sector. You were assigned to this colony to act as an advisor and trainer for local guerilla forces in order to undermine the USCMC, and the United Americas as a whole. However, over the past few weeks, the encampment you have been stationed at has come under siege from xenomorphs. Your comrades are unaware of what they are, thus so far, but you are. In the event of rescue, it is your job to deny your involvement with the CLF, as the political rammifications could be enough to spark war."
 
 /obj/effect/landmark/survivor_spawner/clf_lead/soro
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Unbeknownst to your men, your request for extraction from HQ has been denied..."
+	synthetic_intro_text = list("<h2>You are a UPP synthetic advising the CLF!</h2>",\
+	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class ='notice'>While you are sticking with them as it is your best chance of survival, it is your duty to deny collaboration between the UPP and the CLF.</span>",\
+	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
+	synthetic_story_text = "You are a member of the UPP 121st Special Reconnaissance Detachment, the SOF's primary reconnaissance group in the Bau Sau sector. You were assigned to this colony to act as an advisor and trainer for local guerilla forces in order to undermine the USCMC, and the United Americas as a whole. However, over the past few weeks, the encampment you have been stationed at has come under siege from xenomorphs. Your comrades are unaware of what they are, thus so far, but you are. In the event of rescue, it is your job to deny your involvement with the CLF, as the political rammifications could be enough to spark war."
 
 /obj/effect/landmark/survivor_spawner/clf_engi/soro
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Your Cell Lead has requested for an extraction from HQ, hopefully they arrive in time..."
+	synthetic_intro_text = list("<h2>You are a UPP synthetic advising the CLF!</h2>",\
+	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class ='notice'>While you are sticking with them as it is your best chance of survival, it is your duty to deny collaboration between the UPP and the CLF.</span>",\
+	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
+	synthetic_story_text = "You are a member of the UPP 121st Special Reconnaissance Detachment, the SOF's primary reconnaissance group in the Bau Sau sector. You were assigned to this colony to act as an advisor and trainer for local guerilla forces in order to undermine the USCMC, and the United Americas as a whole. However, over the past few weeks, the encampment you have been stationed at has come under siege from xenomorphs. Your comrades are unaware of what they are, thus so far, but you are. In the event of rescue, it is your job to deny your involvement with the CLF, as the political rammifications could be enough to spark war."
 
 /obj/effect/landmark/survivor_spawner/clf_medic/soro
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("<h2>You are a CLF member in a covert camp!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Your cell has been training and negotiating for more equipment with the UPP for a few weeks now. However, recently some sort of dangerous creatures have invaded the nearby colony, and the radios have fallen silent. The creatures then attacked your encampment, resulting in multiple casualties. Your Cell Lead has requested for an extraction from HQ, hopefully they arrive in time..."
+	synthetic_intro_text = list("<h2>You are a UPP synthetic advising the CLF!</h2>",\
+	"<span class ='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class ='notice'>While you are sticking with them as it is your best chance of survival, it is your duty to deny collaboration between the UPP and the CLF.</span>",\
+	"<span class ='danger'>Your primary objective is to heal up and survive. Follow your whitelisted roles guidelines. If you want to assault the hive - wait until at least drones can evolve.</span>")
+	synthetic_story_text = "You are a member of the UPP 121st Special Reconnaissance Detachment, the SOF's primary reconnaissance group in the Bau Sau sector. You were assigned to this colony to act as an advisor and trainer for local guerilla forces in order to undermine the USCMC, and the United Americas as a whole. However, over the past few weeks, the encampment you have been stationed at has come under siege from xenomorphs. Your comrades are unaware of what they are, thus so far, but you are. In the event of rescue, it is your job to deny your involvement with the CLF, as the political rammifications could be enough to spark war."
 
 //Varadero CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/varadero
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which you and your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
+	synthetic_story_text = "You are a security synthetic that was assigned to escort and protect a Latin America Colonial Navy Commodore expressing the interests of Weyland-Yutani on the New Varadero colony weeks ago. After landing, the colony was quickly overwhelmed by creatures from the archaelogical dig sites to the south of the colony, and you had barely managed to keep the Commodore alive. A ship eventually crash landed onto the colony, and in hopes of rescue, you went - only to be met with the muzzle of a gun, and with the Commodores life ending. Now forced into service, you will have to work with them until rescue arrives."
 
 /obj/effect/landmark/survivor_spawner/clf_lead/varadero
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
+	synthetic_story_text = "You are a security synthetic that was assigned to escort and protect a Latin America Colonial Navy Commodore expressing the interests of Weyland-Yutani on the New Varadero colony weeks ago. After landing, the colony was quickly overwhelmed by creatures from the archaelogical dig sites to the south of the colony, and you had barely managed to keep the Commodore alive. A ship eventually crash landed onto the colony, and in hopes of rescue, you went - only to be met with the muzzle of a gun, and with the Commodores life ending. Now forced into service, you will have to work with them until rescue arrives."
 
 /obj/effect/landmark/survivor_spawner/clf_engi/varadero
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which you and your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
+	synthetic_story_text = "You are a security synthetic that was assigned to escort and protect a Latin America Colonial Navy Commodore expressing the interests of Weyland-Yutani on the New Varadero colony weeks ago. After landing, the colony was quickly overwhelmed by creatures from the archaelogical dig sites to the south of the colony, and you had barely managed to keep the Commodore alive. A ship eventually crash landed onto the colony, and in hopes of rescue, you went - only to be met with the muzzle of a gun, and with the Commodores life ending. Now forced into service, you will have to work with them until rescue arrives."
 
 /obj/effect/landmark/survivor_spawner/clf_medic/varadero
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Your cell was en route to a UA outpost when your shuttle suffered a critical systems failure and crashed. Almost immediately, you were beset upon by unknown hostile creatures, which you and your team barely managed to beat back, not without taking serious losses. Defenses are prepared for the second assault, but you don't know how much longer you can hold out..."
+	synthetic_story_text = "You are a security synthetic that was assigned to escort and protect a Latin America Colonial Navy Commodore expressing the interests of Weyland-Yutani on the New Varadero colony weeks ago. After landing, the colony was quickly overwhelmed by creatures from the archaelogical dig sites to the south of the colony, and you had barely managed to keep the Commodore alive. A ship eventually crash landed onto the colony, and in hopes of rescue, you went - only to be met with the muzzle of a gun, and with the Commodores life ending. Now forced into service, you will have to work with them until rescue arrives."
 
 //Prospera CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/hybrisa
+	synth_equipment = /datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a soldier fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
+	synthetic_story_text = "You are a executive bodyguard synthetic that was assigned to escort and protect a Weyland-Yutani executive within the Hybrisa Prospera colony. While most of the security forces of the colony were diverted to the laboratory, an assault was launched against the office you were in - and unfortunately, your employer was killed in the crossfire. Being reactivated shortly after, you quickly realized the city had gone quiet - and at the edge of your vision, you can see them lurking in the darkness. Your only hope to survive now is to cooperate."
 
 /obj/effect/landmark/survivor_spawner/clf_lead/hybrisa
+
+	synth_equipment = /datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are the leader of a squad fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, you ordered your cell to launch an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
+	synthetic_story_text = "You are a executive bodyguard synthetic that was assigned to escort and protect a Weyland-Yutani executive within the Hybrisa Prospera colony. While most of the security forces of the colony were diverted to the laboratory, an assault was launched against the office you were in - and unfortunately, your employer was killed in the crossfire. Being reactivated shortly after, you quickly realized the city had gone quiet - and at the edge of your vision, you can see them lurking in the darkness. Your only hope to survive now is to cooperate."
 
 /obj/effect/landmark/survivor_spawner/clf_engi/hybrisa
+	synth_equipment = /datum/equipment_preset/synth/survivor/hybrisa/engineer_survivor
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are an engineer fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
+	synthetic_story_text = "You are a synthetic engineer on the Hybrisa Prospera colony. Called in to advise expansion plans during a Weyland-Yutani meeting, your time was quickly cut short when a CLF cell launched an assault on the offices in which you were hosted. Killing most of the personnel with you, you found yourself spared, as leverage - for now. As the city grew quiet and more and more of them disappeared outside, they opted to take their chances, forcing you to help them at the end of a gun."
 
 /obj/effect/landmark/survivor_spawner/clf_medic/hybrisa
+	synth_equipment = /datum/equipment_preset/synth/survivor/hybrisa/paramedic
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
+	synthetic_story_text = "You are a synthetic doctor on the Hybrisa Prospera colony. You were called to the office building during a corporate meeting to assist with a case of food poisoning, however upon your arrival, you were followed in past security by a CLF cell - who quickly took control of the building, executing those whom they decried as against their liberation attempts. You were spared as leverage, and for your skills - however, slowly, you have seen shapes moving in the dark - and so have your captors, deciding to force you to help them at the end of a gun."
 
 //Weyland-Yutani Survivors//
 
@@ -384,6 +425,7 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Liaison stationed on LV-624 from Weyland-Yutani. You were tipped off about some very peculiar looking eggs recovered from the alien temple North-East of the colony. Being the smart Executive the Company hired you to be, you decided to prepare your office for the worst when the first 'facehugger' was born in the vats of the Research Dome. Turned out, you were right, everyone who called you crazy and called these the new 'synthetics' is now dead, you along with your Corporate Security detail are the only survivors due to your paranoia. The xenomorph onslaught was relentless, a fuel tank was shot by one of the Officers, leading to the destruction of a part of the dome, along with a lot of the defences being melted. You must survive and find a way to contact Weyland-Yutani."
+	synthetic_story_text = "You are a corporate security synthetic stationed on LV-624. Your employer received a tip regarding anomalous objects in one of the north-eastern restricted zones, and they almost immediately went into a panic - preparing their office for the worst of it when a facehugger was first reported. It turned out they were right, though, ultimately - and regardless of who has been lost in your attempts to survive so far, you know that you must stick with the Corporate Security detail, survive, and find a way to contact Weyland-Yutani to inform them of what has happened."
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
@@ -395,6 +437,7 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Security Officer stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from the Marshals Offices to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and alot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
+	synthetic_story_text = "You are a corporate security synthetic stationed on LV-624. Your employer received a tip regarding anomalous objects in one of the north-eastern restricted zones, and they almost immediately went into a panic - preparing their office for the worst of it when a facehugger was first reported. It turned out they were right, though, ultimately - and regardless of who has been lost in your attempts to survive so far, you know that you must stick with the Corporate Security detail, survive, and find a way to contact Weyland-Yutani to inform them of what has happened."
 
 	spawn_priority = SPAWN_PRIORITY_MEDIUM
 
@@ -406,6 +449,7 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Security Medic stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from the Medbay to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and alot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
+	synthetic_story_text = "You are a corporate security synthetic stationed on LV-624. Your employer received a tip regarding anomalous objects in one of the north-eastern restricted zones, and they almost immediately went into a panic - preparing their office for the worst of it when a facehugger was first reported. It turned out they were right, though, ultimately - and regardless of who has been lost in your attempts to survive so far, you know that you must stick with the Corporate Security detail, survive, and find a way to contact Weyland-Yutani to inform them of what has happened."
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
@@ -417,6 +461,7 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Security Technician stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to bring supplies from Engineering to their office, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and alot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
+	synthetic_story_text = "You are a corporate security synthetic stationed on LV-624. Your employer received a tip regarding anomalous objects in one of the north-eastern restricted zones, and they almost immediately went into a panic - preparing their office for the worst of it when a facehugger was first reported. It turned out they were right, though, ultimately - and regardless of who has been lost in your attempts to survive so far, you know that you must stick with the Corporate Security detail, survive, and find a way to contact Weyland-Yutani to inform them of what has happened."
 
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
@@ -428,6 +473,7 @@
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
 	story_text = "You are a Corporate Security Lead stationed on LV-624 from Weyland-Yutani. Suddenly one day you were pulled aside by the Corporate Liaison and told to organize the security forces present, and fast. You began fortifying the Corporate Dome and was told by the Executive that something big will ravage the entire colony, excluding you. Turns out, the Liaison was right, these so called 'xenomorphs' broke containment from the Research Dome and began destroying the entire colony. Once they came for the Dome and tried to kill all of you, you barely managed to hold them off even after losing one Officer and alot of the defences. The Liaison said they will soon find a way to contact Weyland-Yutani and to remain steadfast until rescue arrives."
+	synthetic_story_text = "You are a corporate security synthetic stationed on LV-624. Your employer received a tip regarding anomalous objects in one of the north-eastern restricted zones, and they almost immediately went into a panic - preparing their office for the worst of it when a facehugger was first reported. It turned out they were right, though, ultimately - and regardless of who has been lost in your attempts to survive so far, you know that you must stick with the Corporate Security detail, survive, and find a way to contact Weyland-Yutani to inform them of what has happened."
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
@@ -439,6 +485,7 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
 	story_text = "You are a PMC from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	synthetic_story_text = "You are a PMC synthetic from Weyland-Yutani. Your teams ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony relating to an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry, the engine failed and you were violently jolted out of your seat, barely managing to avoid destruction as it impacted the ground. Most of your squadmates perished in the impact, although you observed how some of them were taken by xenomorphs to a secondary location, and how some of them managed to escape. You need to see if you can find them, find out what happened to the colony, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -453,6 +500,7 @@
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
 	story_text = "You are a PMC medic from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	synthetic_story_text = "You are a PMC synthetic from Weyland-Yutani. Your teams ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony relating to an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry, the engine failed and you were violently jolted out of your seat, barely managing to avoid destruction as it impacted the ground. Most of your squadmates perished in the impact, although you observed how some of them were taken by xenomorphs to a secondary location, and how some of them managed to escape. You need to see if you can find them, find out what happened to the colony, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -467,6 +515,7 @@
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
 	story_text = "You are a PMC engineer from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	synthetic_story_text = "You are a PMC synthetic from Weyland-Yutani. Your teams ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony relating to an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry, the engine failed and you were violently jolted out of your seat, barely managing to avoid destruction as it impacted the ground. Most of your squadmates perished in the impact, although you observed how some of them were taken by xenomorphs to a secondary location, and how some of them managed to escape. You need to see if you can find them, find out what happened to the colony, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -481,6 +530,7 @@
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
 	story_text = "You are a PMC team leader from Weyland-Yutani. Your ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your squadmates lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You need to find out what happened to the colony, see if you can find any of your squadmates, and find a way to contact Weyland-Yutani."
+	synthetic_story_text = "You are a PMC synthetic from Weyland-Yutani. Your teams ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony relating to an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry, the engine failed and you were violently jolted out of your seat, barely managing to avoid destruction as it impacted the ground. Most of your squadmates perished in the impact, although you observed how some of them were taken by xenomorphs to a secondary location, and how some of them managed to escape. You need to see if you can find them, find out what happened to the colony, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -495,6 +545,7 @@
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
 	story_text = "You are an Assistant Manager from Weyland-Yutani. You were being escorted onboard a PMC ship to Solaris Ridge. On the way, the ship received a distress signal from the colony about an attack. Worried that it might be a CLF attack, the pilot set full speed for the colony. However, during atmospheric entry the engine failed and you fell unconscious from the G-Forces. You wake up wounded... and see that the ship has crashed onto the colony. Your PMC escorts lie dead beside you, but there's some missing. Perhaps they survived and moved elsewhere? You must get up and find a way to contact Weyland-Yutani."
+synthetic_story_text = "You are a PMC synthetic from Weyland-Yutani. Your teams ship was enroute to Solaris Ridge to escort an Assistant Manager. On the way, your ship received a distress signal from the colony relating to an attack. Worried that it might be a CLF attack, your pilot set full speed for the colony. However, during atmospheric entry, the engine failed and you were violently jolted out of your seat, barely managing to avoid destruction as it impacted the ground. Most of your squadmates perished in the impact, although you observed how some of them were taken by xenomorphs to a secondary location, and how some of them managed to escape. You need to see if you can find them, find out what happened to the colony, and find a way to contact Weyland-Yutani."
 	roundstart_damage_min = 3
 	roundstart_damage_max = 10
 	roundstart_damage_times = 2
@@ -506,6 +557,7 @@
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_commando
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
+	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are the last living security element on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")

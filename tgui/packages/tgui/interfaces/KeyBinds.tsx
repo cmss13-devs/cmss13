@@ -59,10 +59,10 @@ export const KeyBinds = (props) => {
       ? getAllKeybinds(glob_keybinds)
       : glob_keybinds[selectedTab];
 
-  const filteredKeybinds = keybinds_to_use.filter((val) =>
-    searchTerm
-      ? val.full_name.toLowerCase().match(replaceRegexChars(searchTerm))
-      : '',
+  const filteredKeybinds = keybinds_to_use.filter(
+    (val) =>
+      !searchTerm ||
+      val.full_name.toLowerCase().match(replaceRegexChars(searchTerm)),
   );
 
   return (

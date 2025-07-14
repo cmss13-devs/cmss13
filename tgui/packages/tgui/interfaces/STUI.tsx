@@ -89,11 +89,12 @@ const RenderLogs = (props: {
   return (
     <Section fill scrollable>
       {logs
-        .filter(
-          (x) =>
-            x
-              .toLowerCase()
-              .match(searchTerm ? replaceRegexChars(searchTerm) : '') !== null,
+        .filter((x) =>
+          x
+            .toLowerCase()
+            .match(
+              searchTerm ? replaceRegexChars(searchTerm.toLowerCase()) : '',
+            ),
         )
         .map((log, i) => (
           <RenderLog log={log} key={i} logsfontnumber={logsfontnumber} />

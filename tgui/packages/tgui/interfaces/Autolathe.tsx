@@ -170,9 +170,8 @@ const PrintablesSection = (props) => {
   const filteredPrintables = printables.filter(
     (val) =>
       (val.recipe_category === currentCategory || currentCategory === 'All') &&
-      (currentSearch
-        ? ''
-        : val.name.toLowerCase().match(replaceRegexChars(currentSearch))),
+      (!currentSearch ||
+        val.name.toLowerCase().match(replaceRegexChars(currentSearch))),
   );
 
   return (

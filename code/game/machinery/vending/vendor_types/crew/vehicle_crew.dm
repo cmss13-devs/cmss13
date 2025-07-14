@@ -232,7 +232,7 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_arc, list(
 		list("M10 Auto Pistol", 2, /obj/item/weapon/gun/pistol/m10, VENDOR_ITEM_REGULAR),
 		list("88 Mod 4 Combat Pistol", 2, /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M44 Combat Revolver", 2, /obj/item/weapon/gun/revolver/m44, VENDOR_ITEM_REGULAR),
-		list("M4A3 Service Pistol", 2, /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
+		list("M4A4 Service Pistol", 2, /obj/item/weapon/gun/pistol/m4a3/m4a4, VENDOR_ITEM_REGULAR),
 		list("M82F Flare Gun", 2, /obj/item/weapon/gun/flare, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),

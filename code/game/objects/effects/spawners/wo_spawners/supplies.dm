@@ -89,9 +89,9 @@
 	stuff = list(/obj/item/weapon/gun/revolver/m44)
 
 /obj/effect/landmark/wo_supplies/guns/common/m4a3
-	icon_state = "m4a3"
+	icon_state = "m4a4"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
-	stuff = list(/obj/item/weapon/gun/pistol/m4a3)
+	stuff = list(/obj/item/weapon/gun/pistol/m4a3/m4a4)
 
 /obj/effect/landmark/wo_supplies/guns/rare
 	amount = list(1,2)

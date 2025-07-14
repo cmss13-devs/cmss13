@@ -389,7 +389,7 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	var/num_guns = 3
 	var/num_mags = 3
 	var/list/stuff = list(
-					/obj/item/weapon/gun/pistol/m4a3 = /obj/item/ammo_magazine/pistol,
+					/obj/item/weapon/gun/pistol/m4a3/m4a4 = /obj/item/ammo_magazine/pistol,
 					/obj/item/weapon/gun/pistol/m4a3 = /obj/item/ammo_magazine/pistol,
 					/obj/item/weapon/gun/revolver/m44 = /obj/item/ammo_magazine/revolver,
 					/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,

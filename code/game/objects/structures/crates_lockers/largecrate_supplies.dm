@@ -121,8 +121,8 @@
 
 /obj/structure/largecrate/supply/weapons/pistols
 	name = "sidearm weapons chest (x20)"
-	desc = "A weapons chest containing eight M44 revolvers, and twelve M4A3 service pistols."
-	supplies = list(/obj/item/weapon/gun/revolver/m44 = 6, /obj/item/weapon/gun/pistol/m4a3 = 12)
+	desc = "A weapons chest containing eight M44 revolvers, and twelve M4A4 service pistols."
+	supplies = list(/obj/item/weapon/gun/revolver/m44 = 6, /obj/item/weapon/gun/pistol/m4a3/m4a4 = 12)
 
 /obj/structure/largecrate/supply/weapons/flamers
 	name = "\improper M240A1 incinerator weapons chest (x4)"

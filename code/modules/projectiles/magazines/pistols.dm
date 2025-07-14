@@ -225,7 +225,7 @@
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but also shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------
@@ -275,7 +275,7 @@
 /obj/item/ammo_magazine/pistol/t73_impact
 	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
 	desc = "A high-impact 7.62x25mm Tokarev pistol magazine. The bullets are tipped with a tungsten-lead alloy to stagger absolutely anything they hit. Point towards dissidents."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/upp
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag_impact"
@@ -438,3 +438,69 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	bonus_overlay = "m10_drum_overlay"
 	max_rounds = 92
 	gun_type = /obj/item/weapon/gun/pistol/m10
+
+//-------------------------------------------------------
+/*
+
+L54 service pistol
+
+*/
+
+/obj/item/ammo_magazine/pistol/l54
+	name = "\improper L54 magazine (9mm)"
+	desc = "A pistol magazine that fits the L54."
+	caliber = "9mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/pistols.dmi'
+	icon_state = "l54"
+	max_rounds = 12
+	w_class = SIZE_SMALL
+	default_ammo = /datum/ammo/bullet/pistol
+	gun_type = /obj/item/weapon/gun/pistol/l54
+	ammo_band_icon = "+l54_band"
+	ammo_band_icon_empty = "+l54_band_e"
+
+/obj/item/ammo_magazine/pistol/l54_custom
+	name = "\improper L54-S magazine (.9x20mm)"
+	desc = "A modified L54 pistol magazine loaded with proprietary .9x20mm ammunition. Incompatible with standard 9mm weapons or magazines."
+	caliber = "9mm (special)"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/pistols.dmi'
+	icon_state = "l54"
+	max_rounds = 12
+	w_class = SIZE_SMALL
+	default_ammo = /datum/ammo/bullet/pistol/l54_custom
+	gun_type = /obj/item/weapon/gun/pistol/l54_custom
+	ammo_band_icon = "+l54_band"
+	ammo_band_icon_empty = "+l54_band_e"
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_VELOCITY
+
+/obj/item/ammo_magazine/pistol/l54/hp
+	name = "\improper L54 hollowpoint magazine (9mm)"
+	desc = "A pistol magazine for the L54. This one contains hollowpoint bullets, which have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
+	default_ammo = /datum/ammo/bullet/pistol/hollow
+	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
+
+/obj/item/ammo_magazine/pistol/l54/ap
+	name = "\improper L54 AP magazine (9mm)"
+	desc = "A pistol magazine for the L54. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armored targets, and noticeably less on unarmored or lightly-armored targets."
+	default_ammo = /datum/ammo/bullet/pistol/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/pistol/l54/rubber
+	name = "\improper L54 Rubber magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/rubber
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
+
+/obj/item/ammo_magazine/pistol/l54/incendiary
+	name = "\improper L54 incendiary magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+
+/obj/item/ammo_magazine/pistol/l54/penetrating
+	name = "\improper L54 wall-penetrating magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
+	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
+
+/obj/item/ammo_magazine/pistol/l54/toxin
+	name = "\improper L54 toxin magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
+	ammo_band_color = AMMO_BAND_COLOR_TOXIN

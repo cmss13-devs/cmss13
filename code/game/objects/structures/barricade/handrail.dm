@@ -222,7 +222,7 @@
 					return
 	. = ..()
 
-/obj/structure/barricade/handrail/novault
+/obj/structure/barricade/handrail/no_vault
 	autoclimb = FALSE
 
 /obj/structure/barricade/handrail/type_b

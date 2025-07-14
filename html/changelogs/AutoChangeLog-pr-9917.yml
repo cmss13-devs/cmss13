@@ -1,0 +1,5 @@
+author: "lanse12"
+delete-after: True
+changes:
+  - qol: "face slot bayonet can now be equipped with keybinds"
+  - balance: "clf survs spawn with the iron teeth trait and guerillas spawn with bayonets in their mouths"

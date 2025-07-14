@@ -1,0 +1,4 @@
+author: "Zenith"
+delete-after: True
+changes:
+  - imageadd: "replaced shiva_floor.dmi icons with new updated, modern CM style icons."

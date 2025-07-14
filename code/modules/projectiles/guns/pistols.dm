@@ -93,6 +93,9 @@
 	item_state = "m4a4"
 	current_mag = /obj/item/ammo_magazine/pistol
 
+/obj/item/weapon/gun/pistol/m4a3/m4a4/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 17)
+
 /obj/item/weapon/gun/pistol/m4a3/training
 	current_mag = /obj/item/ammo_magazine/pistol/rubber
 

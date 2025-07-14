@@ -207,6 +207,8 @@
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
 		return
+	if(target_turf.z > starting.z)
+		starting = locate(starting.x, starting.y, target.z)
 	firer = F
 
 	if(F && !(projectile_flags & PROJECTILE_SHRAPNEL))

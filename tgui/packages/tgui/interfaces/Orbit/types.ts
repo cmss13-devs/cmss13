@@ -48,6 +48,8 @@ export type Observable = {
   hivenumber: string;
   embryo_hivenumber: string;
   area_name: string;
+  in_ground?: number;
+  in_ship?: number;
 };
 
 export type SquadObservable = {

@@ -1,0 +1,8 @@
+author: "Zenith"
+delete-after: True
+changes:
+  - soundadd: "added some sounds for the CLF large flags"
+  - imageadd: "added new CLF hand-held flags"
+  - imageadd: "added new CLF large flags"
+  - imageadd: "added new CLF sentry sprites"
+  - maptweak: "added large CLF and some handheld CLF flags to each CLF insert."

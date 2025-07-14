@@ -73,8 +73,8 @@
 
 /mob/living/carbon/xenomorph/say_understands(mob/other, datum/language/speaking = null)
 	if(!istype(speaking, /datum/language/pathogen))
-		if(isxeno(other))
-			return 1
+		if(isxeno(other) && !is_pathogen_creature(other))
+			return TRUE
 	return ..()
 
 

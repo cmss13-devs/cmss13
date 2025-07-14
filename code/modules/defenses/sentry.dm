@@ -479,6 +479,7 @@
 	name = "\improper UA-577 Gauss Turret"
 	immobile = TRUE
 	turned_on = TRUE
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
 	icon_state = "premade" //for the map editor only
 	faction_group = FACTION_LIST_MARINE
 	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo

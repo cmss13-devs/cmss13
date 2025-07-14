@@ -69,8 +69,6 @@
 	/// If hit limit of larva from pylons
 	var/hit_larva_pylon_limit = FALSE
 
-	var/see_humans_on_tacmap = FALSE
-
 	var/list/hive_inherant_traits
 
 	// Cultist Info
@@ -130,6 +128,11 @@
 
 	var/datum/tacmap/drawing/xeno/tacmap
 	var/minimap_type = MINIMAP_FLAG_XENO
+
+	/// Can this hive see humans on the tacmap
+	var/see_humans_on_tacmap = FALSE
+	/// Does the queen need to be on ovi for xenos to see
+	var/tacmap_requires_queen_ovi = TRUE
 
 	var/list/available_nicknumbers = list()
 
@@ -472,8 +475,8 @@
 /datum/hive_status/proc/get_xeno_icons()
 	// Must match hardcoded xeno counts order.
 	var/list/xeno_icons = list(
-		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = ""),
-		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = ""),
+		list(XENO_CASTE_LARVA = "", XENO_CASTE_QUEEN = "", XENO_CASTE_PREDALIEN_LARVA = "", XENO_CASTE_HELLHOUND = ""),
+		list(XENO_CASTE_DRONE = "", XENO_CASTE_RUNNER = "", XENO_CASTE_SENTINEL = "", XENO_CASTE_DEFENDER = "", XENO_CASTE_PREDALIEN = ""),
 		list(XENO_CASTE_HIVELORD = "", XENO_CASTE_BURROWER = "", XENO_CASTE_CARRIER = "", XENO_CASTE_LURKER = "", XENO_CASTE_SPITTER = "", XENO_CASTE_WARRIOR = ""),
 		list(XENO_CASTE_BOILER = "", XENO_CASTE_CRUSHER = "", XENO_CASTE_PRAETORIAN = "", XENO_CASTE_RAVAGER = "")
 	)
@@ -1089,9 +1092,12 @@
 	return hit_larva_pylon_limit
 
 ///Called by /obj/item/alien_embryo when a host is bursting to determine extra larva per burst
-/datum/hive_status/proc/increase_larva_after_burst()
+/datum/hive_status/proc/increase_larva_after_burst(is_nested)
 	var/extra_per_burst = CONFIG_GET(number/extra_larva_per_burst)
 	partial_larva += extra_per_burst
+	if(is_nested)
+		var/extra_per_nested_burst = CONFIG_GET(number/extra_larva_per_nested_burst)
+		partial_larva += extra_per_nested_burst
 	convert_partial_larva_to_full_larva()
 
 ///Called after times when partial larva are added to process them to stored larva
@@ -1186,6 +1192,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
 	name = "Forsaken Hive"
@@ -1200,6 +1207,8 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	see_humans_on_tacmap = TRUE
+	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1241,6 +1250,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 	need_round_end_check = TRUE
 
@@ -1270,6 +1280,7 @@
 	allow_no_queen_evo = TRUE
 	allow_queen_evolve = FALSE
 	latejoin_burrowed = FALSE
+	tacmap_requires_queen_ovi = FALSE
 
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions

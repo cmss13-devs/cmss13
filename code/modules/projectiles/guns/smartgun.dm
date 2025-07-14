@@ -35,11 +35,6 @@
 	auto_retrieval_slot = WEAR_J_STORE
 	start_semiauto = FALSE
 	start_automatic = TRUE
-	can_jam = TRUE
-	initial_jam_chance = GUN_JAM_CHANCE_INSUBSTANTIAL
-	unjam_chance = GUN_UNJAM_CHANCE_FAIR
-	durability_loss = GUN_DURABILITY_LOSS_SMARTGUN
-	jam_threshold = GUN_DURABILITY_MEDIUM
 
 	ammo = /datum/ammo/bullet/smartgun
 	actions_types = list(
@@ -115,10 +110,6 @@
 	QDEL_NULL(MD)
 	QDEL_NULL(battery)
 	. = ..()
-
-/obj/item/weapon/gun/smartgun/cock(mob/user)
-	to_chat(user, SPAN_WARNING("You can't manually unload a smartgun's chamber!"))
-	return
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -420,10 +411,7 @@
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
 		return
-	if(jammed)
-		jam_unique_action(user)
-	else
-		toggle_ammo_type(usr)
+	toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	secondary_toggled = !secondary_toggled
@@ -743,11 +731,10 @@
 // action end \\
 
 /obj/item/weapon/gun/smartgun/co/pickup(user)
+	. = ..()
 	if(!linked_human)
 		src.name_after_co(user, src)
 		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
-	..()
-
 
 /obj/item/weapon/gun/smartgun/co/proc/name_after_co(mob/living/carbon/human/H, obj/item/weapon/gun/smartgun/co/I)
 	linked_human = H

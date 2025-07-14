@@ -344,13 +344,14 @@
 /datum/ammo/rocket/brute/proc/prime(atom/atom, obj/projectile/projectile)
 	if(istype(projectile.firer, /mob/living/carbon))
 		var/mob/living/carbon/firer = projectile.firer
-		firer.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(projectile.firer)] fired [name] at [atom]</font>"
 		if(atom)
-			log_game("[key_name(firer)] fired [name] on [atom.name] at ([atom.x],[atom.y],[atom.z])")
-			msg_admin_niche("[key_name(firer, TRUE)] fired [name] on [atom.name] at ([atom.x],[atom.y],[atom.z]) [ADMIN_JMP(atom)] ")
+			log_game("[key_name(firer)] fired [name] targeting [atom], at [AREACOORD(atom)]")
+			msg_admin_niche("[key_name(firer, TRUE)] fired [name] targeting [atom], at [ADMIN_VERBOSEJMP(atom)]")
+			firer.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(firer)] fired [name] targeting [atom], at [AREACOORD(atom)]</font>"
 		else
-			log_game("[key_name(firer)] fired [name] at [get_area(firer)]")
-			msg_admin_niche("[key_name(firer, TRUE)] fired [name] at [get_area(firer)]")
+			log_game("[key_name(firer)] fired [name] at [AREACOORD(projectile)]")
+			msg_admin_niche("[key_name(firer, TRUE)] fired [name] at [ADMIN_VERBOSEJMP(projectile)]")
+			firer.attack_log += "\[[time_stamp()]\] <font color='red'> [key_name(firer)] fired [name] at [AREACOORD(projectile)]</font>"
 	var/angle = projectile.angle
 	var/right_angle = (angle + 90 ) % 360
 	var/left_angle = (angle -90) % 360

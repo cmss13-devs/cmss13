@@ -92,46 +92,47 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(recipes_sublist && recipe_list[recipes_sublist] && istype(recipe_list[recipes_sublist], /datum/stack_recipe_list))
 		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
 		recipe_list = srl.recipes
-	var/t1 = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.amount)
+	var/html_doc = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.amount)
 	for(var/i = 1; i <= length(recipe_list), i++)
-		var/E = recipe_list[i]
-		if(isnull(E))
-			t1 += "<hr>"
+		var/single_receipt = recipe_list[i]
+		if(isnull(single_receipt))
+			html_doc += "<hr>"
 			continue
 
 		if(i > 1 && !isnull(recipe_list[i-1]))
-			t1+="<br>"
+			html_doc +="<br>"
 
-		if(istype(E, /datum/stack_recipe_list))
-			var/datum/stack_recipe_list/srl = E
+		if(istype(single_receipt, /datum/stack_recipe_list))
+			var/datum/stack_recipe_list/srl = single_receipt
 			if(src.amount >= srl.req_amount)
-				t1 += "<a href='byond://?src=\ref[src];sublist=[i]'>[srl.title] ([srl.req_amount] [src.singular_name]\s)</a>"
+				html_doc += "<a href='byond://?src=\ref[src];sublist=[i]'>[srl.title] ([srl.req_amount] [src.singular_name]\s)</a>"
 			else
-				t1 += "[srl.title] ([srl.req_amount] [src.singular_name]\s)<br>"
+				html_doc += "[srl.title] ([srl.req_amount] [src.singular_name]\s)<br>"
 
-		if(istype(E, /datum/stack_recipe))
-			var/datum/stack_recipe/R = E
-			var/max_multiplier = floor(src.amount / R.req_amount)
+		if(istype(single_receipt, /datum/stack_recipe))
+			var/datum/stack_recipe/single_receipt_stack = single_receipt
+			var/max_multiplier = floor(src.amount / single_receipt_stack.req_amount)
 			var/title
 			var/can_build = 1
 			can_build = can_build && (max_multiplier > 0)
-			if(R.res_amount > 1)
-				title += "[R.res_amount]x [R.title]\s"
+			if(single_receipt_stack.res_amount > 1)
+				title += "[single_receipt_stack.res_amount]x [R.title]\s"
 			else
-				title += "[R.title]"
-			title+= " ([R.req_amount] [src.singular_name]\s)"
+				title += "[single_receipt_stack.title]"
+			title+= " ([single_receipt_stack.req_amount] [src.singular_name]\s)"
 			if(can_build)
-				t1 += text("<A href='byond://?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
+				html_doc += text("<A href='byond://?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
 			else
-				t1 += text("[]", title)
+				html_doc += text("[]", title)
 				continue
-			if(R.max_res_amount>1 && max_multiplier > 1)
-				t1 += " |"
-				t1 += "<input type='number' value='[min(max_multiplier, 5)]' max='[min(max_multiplier, 20)]' min='[min(max_multiplier, 1)]' step='1' id='making_count' style='width:35px' />"
-				t1 += "<a href=\"javascript:location.href='byond://?src=\ref[src];make=[i];multiplier=' + document.getElementById('making_count').value\">x</a>"
+			if(single_receipt_stack.max_res_amount>1 && max_multiplier > 1)
+				max_multiplier = min(max_multiplier, floor(single_receipt_stack.max_res_amount/single_receipt_stack.res_amount))
+				html_doc += " |"
+				html_doc += "<input type='number' value='[min(max_multiplier, 5)]' max='[min(max_multiplier, 20)]' min='[min(max_multiplier, 1)]' step='1' id='making_count' style='width:35px' />"
+				html_doc += "<a href=\"javascript:location.href='byond://?src=\ref[src];make=[i];multiplier=' + document.getElementById('making_count').value\">x</a>"
 
-	t1 += "</TT></body></HTML>"
-	show_browser(user, t1, "Construction using [src]", "stack", width = 440, height = 500)
+	html_doc += "</TT></body></HTML>"
+	show_browser(user, html_doc, "Construction using [src]", "stack", width = 440, height = 500)
 	return
 
 /obj/item/stack/Topic(href, href_list)

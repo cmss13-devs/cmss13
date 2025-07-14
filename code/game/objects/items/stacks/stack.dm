@@ -126,14 +126,9 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				t1 += text("[]", title)
 				continue
 			if(R.max_res_amount>1 && max_multiplier > 1)
-				max_multiplier = min(max_multiplier, floor(R.max_res_amount/R.res_amount))
 				t1 += " |"
-				var/list/multipliers = list(5, 10, 25)
-				for (var/n in multipliers)
-					if (max_multiplier>=n)
-						t1 += " <A href='byond://?src=\ref[src];make=[i];multiplier=[n]'>[n*R.res_amount]x</A>"
-				if(!(max_multiplier in multipliers))
-					t1 += " <A href='byond://?src=\ref[src];make=[i];multiplier=[max_multiplier]'>[max_multiplier*R.res_amount]x</A>"
+				t1 += "<input type='number' value='[min(max_multiplier, 5)]' max='[min(max_multiplier, 20)]' min='[min(max_multiplier, 1)]' step='1' id='making_count' style='width:35px' />"
+				t1 += "<a href=\"javascript:location.href='byond://?src=\ref[src];make=[i];multiplier=' + document.getElementById('making_count').value\">x</a>"
 
 	t1 += "</TT></body></HTML>"
 	show_browser(user, t1, "Construction using [src]", "stack", width = 440, height = 500)
@@ -158,11 +153,11 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			recipes_list = srl.recipes
 		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
 		var/multiplier = text2num(href_list["multiplier"])
+
 		if(multiplier != multiplier) // isnan
 			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with NaN")
 			return
-		if(!isnum(multiplier)) // this used to block nan...
-			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
+		if(!isnum(multiplier))
 			return
 		multiplier = floor(multiplier)
 		if(multiplier < 1)

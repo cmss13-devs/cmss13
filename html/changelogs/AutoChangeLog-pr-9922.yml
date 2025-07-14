@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscdel: "Dropship walls and other solid turfs cannot be weeded. This does not affect dropship internals."

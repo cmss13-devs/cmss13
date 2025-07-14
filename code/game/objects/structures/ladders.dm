@@ -147,7 +147,10 @@
 	user.reset_view(null)
 
 //Peeking up/down
-/obj/structure/ladder/MouseDrop(over_object, src_location, over_location, mob/user)
+/obj/structure/ladder/MouseDrop(over_object, src_location, over_location, mob/living/user)
+	//Are we capable of looking?
+	if(user.is_mob_incapacitated() || get_dist(user, src) > 1 || user.blinded || user.body_position == LYING_DOWN || !user.client)
+		return
 
 	var/obj/structure/ladder/looking_at
 	if(up && down)

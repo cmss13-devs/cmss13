@@ -35,3 +35,14 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "sticky"
 	path_to_spawn = /obj/effect/alien/resin/sticky
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall_reinforced
+	name = "Distress Xeno reinforced wall spawner"
+	icon_state = "wall_r"
+	path_to_spawn = /turf/closed/wall/resin/thick
+	is_turf = TRUE
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door_reinforced
+	name = "Distress Xeno reinforced door spawner"
+	icon_state = "door_r"
+	path_to_spawn = /obj/structure/mineral_door/resin/thick

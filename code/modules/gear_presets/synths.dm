@@ -129,6 +129,7 @@
 	job_title = JOB_SYNTH_SURVIVOR
 	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = TRUE
+	origin_override = ORIGIN_CIVILIAN
 
 	var/list/equipment_to_spawn = list(
 		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/joe,

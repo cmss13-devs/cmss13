@@ -1,0 +1,4 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - bugfix: "fixed a bug where dog tags couldn't be retrieved from bursted/headless bodies until 5 minutes had passed."

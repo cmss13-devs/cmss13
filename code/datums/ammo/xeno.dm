@@ -186,7 +186,6 @@
 	max_range = 8
 	damage = 30
 	shell_speed = AMMO_SPEED_TIER_2
-	added_spit_delay = 0
 
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"

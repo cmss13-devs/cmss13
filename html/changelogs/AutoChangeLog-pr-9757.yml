@@ -1,6 +1,0 @@
-author: "private-tristan"
-delete-after: True
-changes:
-  - rscadd: "During hijack, xenos can now view tacmap when the queen is off ovipositor when xenos outnumber marines by 20%."
-  - balance: "Hives with \"allow_no_queen_actions\" (notably Feral, Yautuja, and Forsaken) hives can now always view tacmap."
-  - balance: "Forsaken hive is capable of seeing humans on tacmap."

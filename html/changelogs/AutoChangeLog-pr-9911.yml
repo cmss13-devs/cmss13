@@ -1,0 +1,4 @@
+author: "DarkLordCabbage"
+delete-after: True
+changes:
+  - balance: "Changes one of the XO's timelock requirements from being 20 hours of ASO or SO to just 20 hours of SO"

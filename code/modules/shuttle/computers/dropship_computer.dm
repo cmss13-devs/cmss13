@@ -300,7 +300,7 @@
 		return
 
 	// door controls being overridden
-	if(!dropship_control_lost && do_after(xeno, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+	if(!dropship_control_lost && do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
 		update_icon()

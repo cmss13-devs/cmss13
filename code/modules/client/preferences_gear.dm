@@ -240,6 +240,10 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	display_name = "Gas mask"
 	path = /obj/item/clothing/mask/gas
 
+/datum/gear/mask/surgical
+	display_name = "Sterile mask"
+	path = /obj/item/clothing/mask/surgical
+
 /datum/gear/mask/scarf_black
 	display_name = "Scarf, black"
 	path = /obj/item/clothing/mask/tornscarf/black

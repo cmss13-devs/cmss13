@@ -116,10 +116,10 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			var/can_build = 1
 			can_build = can_build && (max_multiplier > 0)
 			if(single_receipt_stack.res_amount > 1)
-				title += "[single_receipt_stack.res_amount]x [R.title]\s"
+				title += "[single_receipt_stack.res_amount]x [single_receipt_stack.title]\s"
 			else
 				title += "[single_receipt_stack.title]"
-			title+= " ([single_receipt_stack.req_amount] [src.singular_name]\s)"
+			title += " ([single_receipt_stack.req_amount] [src.singular_name]\s)"
 			if(can_build)
 				html_doc += text("<A href='byond://?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
 			else
@@ -128,8 +128,11 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			if(single_receipt_stack.max_res_amount>1 && max_multiplier > 1)
 				max_multiplier = min(max_multiplier, floor(single_receipt_stack.max_res_amount/single_receipt_stack.res_amount))
 				html_doc += " |"
-				html_doc += "<input type='number' value='[min(max_multiplier, 5)]' max='[min(max_multiplier, 20)]' min='[min(max_multiplier, 1)]' step='1' id='making_count' style='width:35px' />"
-				html_doc += "<a href=\"javascript:location.href='byond://?src=\ref[src];make=[i];multiplier=' + document.getElementById('making_count').value\">x</a>"
+				html_doc += "<input type='number' value='[min(max_multiplier, 5)]' max='[min(max_multiplier, 20)]'"
+				html_doc += "min='[min(max_multiplier, 1)]' step='1' id='input_number' style='width:35px'"
+				html_doc += "onchange=\"if(this.value===''||this.value<1)this.value=1;if(this.value>[max_multiplier])this.value=[max_multiplier]\"/>"
+
+				html_doc += "<a href=\"javascript:location.href='byond://?src=\ref[src];make=[i];multiplier=' + document.getElementById('input_number').value\">x</a>"
 
 	html_doc += "</TT></body></HTML>"
 	show_browser(user, html_doc, "Construction using [src]", "stack", width = 440, height = 500)

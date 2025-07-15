@@ -353,7 +353,7 @@
 			old_mob.free_for_ghosts(TRUE)
 	else
 		matriarch.free_for_ghosts(TRUE)
-	playsound(src, 'sound/voice/alien_queen_command.ogg', 75, 0)
+	playsound(src, 'sound/pathogen_creatures/pathogen_matriarch_birth.ogg', 75, 0)
 
 	chosen_candidate = null
 

@@ -130,6 +130,7 @@
 	var/list/targets_added = list()
 	var/throw_turf
 	var/obj/effect/beam/tail_beam
+	var/hit_obstacle = FALSE
 
 /datum/action/xeno_action/activable/oppressor_punch
 	name = "Dislocate"

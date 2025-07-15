@@ -791,17 +791,18 @@
  * * shake_camera - whether to shake the thrown mob camera on throw
  * * immobilize - if TRUE the mob will be immobilized during the throw, ensuring it doesn't move and break it
  */
-/mob/living/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE)
+/mob/living/proc/throw_carbon(mob/living/carbon/target, direction, distance, speed = SPEED_VERY_FAST, shake_camera = TRUE, immobilize = TRUE, list/end_throw_callbacks, list/collision_callbacks)
 	if(!direction)
 		direction = get_dir(src, target)
 	var/turf/target_destination = get_ranged_target_turf(target, direction, distance)
 
-	var/list/end_throw_callbacks
+	if(!islist(end_throw_callbacks))
+		end_throw_callbacks = list()
 	if(immobilize)
-		end_throw_callbacks = list(CALLBACK(src, PROC_REF(throw_carbon_end), target))
+		end_throw_callbacks += CALLBACK(src, PROC_REF(throw_carbon_end), target)
 		ADD_TRAIT(target, TRAIT_IMMOBILIZED, XENO_THROW_TRAIT)
 
-	target.throw_atom(target_destination, distance, speed, src, spin = TRUE, end_throw_callbacks = end_throw_callbacks)
+	target.throw_atom(target_destination, distance, speed, src, spin = TRUE, end_throw_callbacks=end_throw_callbacks, collision_callbacks=collision_callbacks)
 	if(shake_camera)
 		shake_camera(target, 10, 1)
 

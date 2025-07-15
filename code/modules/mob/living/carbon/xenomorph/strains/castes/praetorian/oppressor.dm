@@ -150,16 +150,24 @@
 
 		return ..()
 	else
-		throw_targets()
-
-
+		initial_throw()
+		apply_cooldown()
 		return TRUE
 
+
+/datum/action/xeno_action/activable/prae_abduct/proc/initial_throw()
+	var/mob/living/carbon/xenomorph/abduct_user = owner
+	for(var/mob/living/targets in targets_added)
+
+		var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(throw_targets)))
+		abduct_user.throw_carbon(targets, get_dir(targets, throw_turf), 3, SPEED_VERY_FAST, immobilize = FALSE, collision_callbacks = collision_callbacks)
+		if(collision_callbacks)
+			targets.Stun(1)
+			targets.KnockDown(1)
 
 /datum/action/xeno_action/activable/prae_abduct/proc/throw_targets()
 	var/mob/living/carbon/xenomorph/abduct_user = owner
 	var/turf/thrown_turf = get_turf(throw_turf)
-	var/hit_obstacle = FALSE
 	var/mob/living/carbon/target_turf_mob = locate() in thrown_turf
 
 	if(target_turf_mob)
@@ -169,16 +177,11 @@
 
 
 	for(var/mob/living/targets in targets_added)
-		if(hit_obstacle)
-			targets.Stun(1)
-			targets.KnockDown(1)
-		else
-			targets.Stun(0.7)
-			targets.KnockDown(0.7)
-
+		targets.Stun(0.7)
+		targets.KnockDown(0.7)
+		playsound(targets,'sound/weapons/alien_claw_block.ogg', 75, 1)
 
 		REMOVE_TRAIT(targets, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-		abduct_user.throw_carbon(targets, get_dir(targets, throw_turf), 3, SPEED_VERY_FAST, immobilize = FALSE)
 
 	if(hit_obstacle)
 		to_chat(targets_added, SPAN_XENODANGER("You lose your footing as you're slammed into another person!"))

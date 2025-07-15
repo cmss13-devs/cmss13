@@ -1020,7 +1020,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "Use Phone"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/structures/phone.dmi', button, "rpb_phone")
+	var/image/IMG = image('icons/obj/structures/phone.dmi', button, "scout_microphone")
 	button.overlays += IMG
 
 /datum/action/item_action/radio_helmet/use_phone/action_activate()
@@ -1037,6 +1037,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	internal_transmitter.enabled = FALSE
 	internal_transmitter.networks_receive = networks_receive
 	internal_transmitter.networks_transmit = networks_transmit
+	internal_transmitter.outring_loop.start_sound = 'sound/machines/telephone/scout_ring.ogg'
+	internal_transmitter.outring_loop.mid_sounds = 'sound/machines/telephone/scout_ring_outgoing.ogg'
+	internal_transmitter.hangup_loop.start_sound = 'sound/machines/telephone/scout_hang_up.ogg'
+	internal_transmitter.hangup_loop.mid_sounds = 'sound/machines/telephone/scout_hang_up.ogg'
+	internal_transmitter.busy_loop.start_sound = 'sound/machines/telephone/scout_remote_hangup.ogg'
+	internal_transmitter.busy_loop.mid_sounds = 'sound/machines/telephone/scout_hang_up.ogg'
+	internal_transmitter.call_sound = 'sound/machines/telephone/scout_ring.ogg'
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
 	GLOB.radio_packs += src
 

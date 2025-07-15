@@ -40,6 +40,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/datum/looping_sound/telephone/busy/busy_loop
 	var/datum/looping_sound/telephone/hangup/hangup_loop
 	var/datum/looping_sound/telephone/ring/outring_loop
+	var/call_sound = 'sound/machines/telephone/telephone_ring.ogg'
 
 /obj/structure/transmitter/hidden
 	do_not_disturb = PHONE_DND_FORCED
@@ -308,7 +309,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 		if(attached_to.loc == src)
 			if(next_ring < world.time)
-				playsound(loc, 'sound/machines/telephone/telephone_ring.ogg', 75)
+				playsound(loc, call_sound, 75)
 				visible_message(SPAN_WARNING("[src] rings vigorously!"))
 				next_ring = world.time + 3 SECONDS
 
@@ -321,7 +322,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		var/obj/item/phone/P = T.attached_to
 
 		if(P && attached_to.loc == src && P.loc == T && next_ring < world.time)
-			playsound(get_turf(attached_to), 'sound/machines/telephone/telephone_ring.ogg', 20, FALSE, 14)
+			playsound(get_turf(attached_to), call_sound, 20, FALSE, 14)
 			visible_message(SPAN_WARNING("[src] rings vigorously!"))
 			next_ring = world.time + 3 SECONDS
 

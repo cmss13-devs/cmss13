@@ -140,6 +140,7 @@
 #define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
 #define XENO_HIVE_PATHOGEN "xeno_hive_pathogen"
+#define FACTION_PATHOGEN "Pathogen Confluence"
 
 #define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"
 

@@ -444,7 +444,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			revive_enabled = check_tod() && is_revivable()
 
 		var/holder2_set = 0
-		if(hivenumber)
+		if(iswalker(src))
+			holder4.icon_state = "hudalien_walker"
+		else if(hivenumber)
 			holder4.icon_state = "hudalien"
 
 			if(GLOB.hive_datum[hivenumber])

@@ -1634,7 +1634,7 @@
 	icon_state = "attack"
 
 /datum/hive_status/pathogen
-	name = "Pathogen Confluence"
+	name = FACTION_PATHOGEN
 	reporting_id = "pathogen"
 	hivenumber = XENO_HIVE_PATHOGEN
 	prefix = ""

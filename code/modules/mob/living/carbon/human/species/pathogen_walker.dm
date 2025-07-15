@@ -31,6 +31,9 @@
 
 	has_species_tab_items = TRUE
 
+	speech_sounds = list('sound/pathogen_creatures/pathogen_talk1.ogg','sound/pathogen_creatures/pathogen_talk2.ogg','sound/pathogen_creatures/pathogen_talk3.ogg')
+	speech_chance = 100
+
 	var/list/to_revive = list()
 	var/list/revive_times = list()
 
@@ -42,8 +45,8 @@
 /datum/species/pathogen_walker/handle_post_spawn(mob/living/carbon/human/zombie)
 	zombie.set_languages(list(LANGUAGE_PATHOGEN))
 
-	zombie.faction = "Pathogen Confluence"
-	zombie.faction_group = list("Pathogen Confluence")
+	zombie.faction = FACTION_PATHOGEN
+	zombie.faction_group = list(FACTION_PATHOGEN)
 
 	if(zombie.l_hand)
 		zombie.drop_inv_item_on_ground(zombie.l_hand, FALSE, TRUE)
@@ -66,8 +69,10 @@
 	zombie.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws/no_infect(zombie), WEAR_L_HAND, TRUE)
 	zombie.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(zombie), WEAR_EYES, TRUE)
 
-	var/datum/mob_hud/Hu = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-	Hu.add_hud_to(zombie, zombie)
+	var/datum/mob_hud/zom_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
+	zom_hud.add_hud_to(zombie, zombie)
+	zom_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+	zom_hud.add_hud_to(zombie, zombie)
 
 	return ..()
 
@@ -76,8 +81,10 @@
 /datum/species/pathogen_walker/post_species_loss(mob/living/carbon/human/zombie)
 	..()
 	remove_from_revive(zombie)
-	var/datum/mob_hud/Hu = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-	Hu.remove_hud_from(zombie, zombie)
+	var/datum/mob_hud/zom_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
+	zom_hud.remove_hud_from(zombie, zombie)
+	zom_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+	zom_hud.remove_hud_from(zombie, zombie)
 
 
 /datum/species/pathogen_walker/handle_unique_behavior(mob/living/carbon/human/zombie)

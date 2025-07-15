@@ -1089,9 +1089,12 @@
 	fill_with("kelotane")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone/Initialize()
-	new /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small/(src)
 	. = ..()
 	fill_with("oxycodone")
+
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
+	. = ..()
+	fill_with("tricordrazine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/revival_tricord/Initialize()
 	. = ..()
@@ -1122,10 +1125,6 @@
 		A.update_uses_left()
 		A.update_icon()
 	update_icon()
-
-/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine/Initialize()
-	. = ..()
-	fill_with("tricordrazine")
 
 /obj/item/storage/pouch/pressurized_reagent_canister/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/reagent_container/glass/pressurized_canister))
@@ -1221,12 +1220,11 @@
 	if(length(contents))
 		overlays += "+[icon_state]_full"
 	if(inner)
-		var/obj/item/reagent_container/glass/pressurized_canister/inner
 		overlays += "+[icon_state]_loaded"
-		if(inner.reagents && inner.reagents.total_volume)
+		if(inner.reagents?.total_volume)
 			var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "+[icon_state]-0")
 
-			var/percent = floor((inner.reagents.maximum_volume / inner.reagents.total_volume) * 100)
+			var/percent = floor((inner.reagents.total_volume / inner.reagents.maximum_volume) * 100)
 			switch(percent)
 				if(0)
 					filling.icon_state = null
@@ -1239,7 +1237,7 @@
 				if(76 to INFINITY)
 					filling.icon_state = "+[icon_state]-100"
 
-			filling.color = mix_color_from_reagents(reagents.reagent_list)
+			filling.color = mix_color_from_reagents(inner.reagents.reagent_list)
 			overlays += filling
 
 

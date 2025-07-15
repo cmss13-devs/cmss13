@@ -921,7 +921,11 @@
 /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
 	name = "Leg Pouch (Black)"
 	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
+	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch_black"
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/legpouch.dmi',
+	)
 	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/accessory/storage/tool_webbing/small

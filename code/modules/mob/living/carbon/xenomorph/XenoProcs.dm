@@ -473,10 +473,6 @@
 				if(!silent)
 					to_chat(src, SPAN_WARNING("[O] is blocking the resin! There's not enough space to build that here."))
 				return
-		if(istype(O, /obj/item/clothing/mask/facehugger))
-			if(!silent)
-				to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
-			return
 		if(istype(O, /obj/effect/alien/egg))
 			if(!silent)
 				to_chat(src, SPAN_WARNING("There's already an egg."))

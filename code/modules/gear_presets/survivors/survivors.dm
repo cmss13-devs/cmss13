@@ -197,7 +197,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	job_title = JOB_CMB
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
-	origin_override = ORIGIN_BASE
+	origin_override = ORIGIN_USCM
 	role_comm_title = "CMB DEP"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

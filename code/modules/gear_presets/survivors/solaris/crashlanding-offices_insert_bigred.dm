@@ -14,7 +14,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_icon = "pmc_gun"
 	minimap_background = "background_pmc"
-	origin_override = ORIGIN_BASE
+	origin_override = ORIGIN_USCM
 
 	access = list(
 		ACCESS_WY_GENERAL,
@@ -287,7 +287,7 @@
 	preset_generation_support = FALSE
 	minimap_icon = "pmc_syn"
 	minimap_background = "background_pmc"
-	origin_override = ORIGIN_BASE
+	origin_override = ORIGIN_USCM
 
 /datum/equipment_preset/synth/survivor/pmc/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_GEN_THREE)

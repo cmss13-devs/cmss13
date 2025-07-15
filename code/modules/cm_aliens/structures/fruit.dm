@@ -291,7 +291,7 @@
 		for(var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
 			if(E.effect_source == "spore")
 				qdel(E)
-		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 90 SECONDS, "spore")
+		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 90 SECONDS, "spore", from_fruit = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel a frenzy coming onto us! Our abilities will cool off faster as we slash!"))
 		recipient.balloon_alert(recipient, "we feel a frenzy coming onto us!", text_color = "#994617", delay = 1 SECONDS)
 	if(do_consume)
@@ -342,7 +342,7 @@
 
 /obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
-		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENOWARNING("We feel the effects of the [name] wane..."))
+		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENOWARNING("We feel the effects of the [name] wane..."), from_fruit = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("The [name] invigorates us to move faster!"))
 		recipient.balloon_alert(recipient, "we feel invigorated to run faster!", text_color = "#5B248C", delay = 1 SECONDS)
 	if(do_consume)
@@ -373,7 +373,7 @@
 /obj/effect/alien/resin/fruit/plasma/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && recipient.plasma_max > 0 && !QDELETED(recipient))
 		//With the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds.
-		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas)
+		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas, from_fruit = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("The [name] boosts our plasma regeneration!"))
 		recipient.balloon_alert(recipient, "we feel our plasma rapidly regenerate!", text_color = "#287A90")
 	if(do_consume)

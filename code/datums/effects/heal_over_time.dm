@@ -5,7 +5,6 @@
 	var/total_heal_amount = 0
 	var/ticks_between_heals = 1
 	var/heal_each_process = 0
-	var/from_fruit = FALSE
 
 /datum/effects/heal_over_time/New(atom/A, heal_amount = 0, healing_time = 5, time_between_heals = 1, limb_name = null, from_fruit = FALSE)
 	..(A, null, null, limb_name)
@@ -38,7 +37,7 @@
 /datum/effects/heal_over_time/Destroy()
 	if(affected_atom)
 		var/mob/living/carbon/xenomorph/xeno = affected_atom
-		if(from_fruit)
+		if(istype(xeno) && from_fruit)
 			xeno.balloon_alert(xeno, "our regeneration speed returns to normal.", text_color = "#17991b80")
 			playsound(xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 	return ..()

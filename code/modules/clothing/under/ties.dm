@@ -886,10 +886,39 @@
 	hold = /obj/item/storage/internal/accessory/tool_webbing
 	icon_state = "vest_brown"
 
-/obj/item/clothing/accessory/storage/black_vest/brown_legpouch
-	name = "Leg Pouch"
-	desc = "A brown kevlar pouch that is usually attached on the side of your leg."
-	icon_state = "legpouch"
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch
+	name = "Leg Pouch (Camouflage)
+	desc = "A camo conforming leg pouch commissioned for the USCM. It's attached to your leg."
+
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch/Initialize()
+	. = ..()
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin(type)
+
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/jungle.dmi'
+			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/classic.dmi'
+			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/desert.dmi'
+			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/snow.dmi'
+			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/urban.dmi'
+			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/urban.dmi'
+
+/obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
+	name = "Leg Pouch (Black)"
+	desc = "A black leg pouch commissioned for the USCM. It's attached to your leg."
+	icon_state = "leg_pouch_black"
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/accessory/storage/tool_webbing/small
 	name = "Small Tool Webbing"

@@ -1,7 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Removed depreciated url-loader for tgui"
-  - bugfix: "Fixed tgui kitchen sink theme and tab stories"
-  - bugfix: "Fixed issue with pngs not properly inlining with rspack"
-  - bugfix: "Fixed clean build scripts not actually cleaning rspack"

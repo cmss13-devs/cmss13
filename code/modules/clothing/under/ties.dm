@@ -920,7 +920,7 @@
 			icon_state = "u_leg_pouch"
 
 /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
-	name = "Leg Pouch (Black)"
+	name = "Black Leg Pouch"
 	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch_black"

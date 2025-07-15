@@ -312,6 +312,12 @@
 			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 		stop_playing_launch_announcement_alarm()
 
+		if(dropship.mode == SHUTTLE_IGNITING) //cancel the launch
+			var/obj/docking_port/stationary/marine_dropship/landing_port = dropship.get_docked()
+			if(istype(landing_port))
+				landing_port.turn_off_landing_lights()
+			dropship.mode = SHUTTLE_IDLE
+
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)
 		message_admins("[key_name(xeno)] has locked the dropship '[dropship]'", xeno.x, xeno.y, xeno.z)

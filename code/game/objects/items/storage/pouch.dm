@@ -1221,11 +1221,26 @@
 	if(length(contents))
 		overlays += "+[icon_state]_full"
 	if(inner)
-		//tint the inner display based on what chemical is inside
-		var/image/I = image(icon, icon_state="+[icon_state]_loaded")
-		if(inner.reagents)
-			I.color = mix_color_from_reagents(inner.reagents.reagent_list)
-		overlays += I
+		var/obj/item/reagent_container/glass/pressurized_canister/inner
+		overlays += "+[icon_state]_loaded"
+		if(inner.reagents && inner.reagents.total_volume)
+			var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "+[icon_state]-0")
+
+			var/percent = floor((inner.reagents.maximum_volume / inner.reagents.total_volume) * 100)
+			switch(percent)
+				if(0)
+					filling.icon_state = null
+				if(1 to 25)
+					filling.icon_state = "+[icon_state]-25"
+				if(25 to 50)
+					filling.icon_state = "+[icon_state]-50"
+				if(51 to 75)
+					filling.icon_state = "+[icon_state]-75"
+				if(76 to INFINITY)
+					filling.icon_state = "+[icon_state]-100"
+
+			filling.color = mix_color_from_reagents(reagents.reagent_list)
+			overlays += filling
 
 
 /obj/item/storage/pouch/pressurized_reagent_canister/empty(mob/user)

@@ -1217,6 +1217,7 @@
 
 /obj/item/storage/pouch/pressurized_reagent_canister/update_icon()
 	overlays.Cut()
+
 	if(length(contents))
 		overlays += "+[icon_state]_full"
 	if(inner)
@@ -1230,7 +1231,7 @@
 					filling.icon_state = null
 				if(1 to 25)
 					filling.icon_state = "+[icon_state]-25"
-				if(25 to 50)
+				if(26 to 50)
 					filling.icon_state = "+[icon_state]-50"
 				if(51 to 75)
 					filling.icon_state = "+[icon_state]-75"

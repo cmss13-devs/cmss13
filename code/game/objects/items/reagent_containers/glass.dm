@@ -579,18 +579,29 @@
 	. = ..()
 	update_icon()
 
-/obj/item/reagent_container/glass/pressurized_canister/attackby(obj/item/I, mob/user)
-	return
+/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
+	update_icon()
+
+/obj/item/reagent_container/glass/pressurized_canister/pickup(mob/user)
+	. = ..()
+	update_icon()
+
+/obj/item/reagent_container/glass/pressurized_canister/dropped(mob/user)
+	..()
+	update_icon()
+
+/obj/item/reagent_container/glass/pressurized_canister/attack_hand()
+	..()
+	update_icon()
 
 /obj/item/reagent_container/glass/pressurized_canister/afterattack(obj/target, mob/user, flag)
 	if(!istype(target, /obj/structure/reagent_dispensers))
 		return
 	. = ..()
 
-/obj/item/reagent_container/glass/pressurized_canister/on_reagent_change()
-	update_icon()
+/obj/item/reagent_container/glass/pressurized_canister/update_icon() 	 //Canister now has a clear indicator on what's inside and how much.
+	overlays.Cut()
 
-/obj/item/reagent_container/glass/pressurized_canister/update_icon() //Canister now has a clear indicator on what's inside and how much.
 	if(reagents && reagents.total_volume)
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]-0")
 
@@ -598,6 +609,7 @@
 		switch(percent)
 			if(0)
 				filling.icon_state = null
+				overlays.Cut()
 			if(1 to 25)
 				filling.icon_state = "[icon_state]-25"
 			if(26 to 50)

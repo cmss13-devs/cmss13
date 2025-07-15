@@ -506,9 +506,12 @@
 	name = "Mycotoxin Injection"
 
 /datum/action/xeno_action/activable/tail_stab/mycotoxin/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
 	var/target = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		carbon_target.reagents.add_reagent("mycotoxin", 6)
 		carbon_target.reagents.set_source_mob(owner, /datum/reagent/toxin/mycotoxin)
+		to_chat(carbon_target, SPAN_HIGHDANGER("You are injected with a powerful mycotoxin by [stabbing_xeno]!"))
+		to_chat(stabbing_xeno, SPAN_PATHOGEN_QUEEN("You have injected [carbon_target] with mycotoxin! If they perish with this toxin in their body they will rise again at your service!"))
 		return TRUE

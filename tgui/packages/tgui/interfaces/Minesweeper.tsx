@@ -21,14 +21,14 @@ export const Minesweeper = () => {
 
   const { boundaries, difficulty, field, game_state } = data;
   const ColoredMineList = [
-    'blue',
-    'green',
-    'red',
-    'dark purple',
-    'maroon',
-    'cyan',
-    'purple',
-    'grey',
+    '#1d1dcfff',
+    '#008000',
+    '#ad0000ff',
+    '#652d6eff',
+    '#740000ff',
+    '#00aaaaff',
+    '#800080',
+    '#2e2d2dff',
   ];
   return (
     <Window width={350} height={420} theme="weyland">

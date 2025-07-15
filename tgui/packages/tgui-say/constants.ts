@@ -381,7 +381,7 @@ export const LANGUAGE_PREFIXES = {
   },
   '!l ': {
     id: 'tactical sign language',
-    label: 'Tacitical Sign',
+    label: 'Tactical Sign',
   },
   '!s ': {
     id: 'sainja',

@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed the possibility of fax machines sending faxes on cooldown and ejecting paper when there is no paper"

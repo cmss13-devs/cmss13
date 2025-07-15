@@ -222,6 +222,9 @@
 					return
 	. = ..()
 
+/obj/structure/barricade/handrail/no_vault
+	autoclimb = FALSE
+
 /obj/structure/barricade/handrail/type_b
 	icon_state = "handrail_b_0"
 

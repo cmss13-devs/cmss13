@@ -174,6 +174,10 @@
 	sharp = 1
 	attack_verb = list("slashed", "torn", "scraped", "gashed", "ripped")
 	pry_capable = IS_PRY_CAPABLE_FORCE
+	var/infectious = TRUE
+
+/obj/item/weapon/zombie_claws/no_infect
+	infectious = FALSE
 
 /obj/item/weapon/zombie_claws/attack(mob/living/target, mob/living/carbon/human/user)
 	if(iszombie(target))
@@ -184,7 +188,7 @@
 		return FALSE
 	playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
 
-	if(ishuman_strict(target))
+	if(infectious && ishuman_strict(target))
 		var/mob/living/carbon/human/human = target
 
 		if(locate(/datum/disease/black_goo) in human.viruses)
@@ -195,7 +199,7 @@
 				target.AddDisease(new /datum/disease/black_goo)
 				to_chat(user, SPAN_XENOWARNING("<b>You sense your target is now infected.</b>"))
 
-	target.apply_effect(2, SLOW)
+	target.Stun(2)
 
 /obj/item/weapon/zombie_claws/afterattack(obj/O as obj, mob/user as mob, proximity)
 	if(get_dist(src, O) > 1)
@@ -293,6 +297,8 @@
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
 	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
+/obj/item/clothing/glasses/zombie_eyes/pathogen
+	name = "pathogen walker eyes"
 
 /obj/item/storage/fancy/blackgoo
 	icon = 'icons/obj/items/black_goo_stuff.dmi'

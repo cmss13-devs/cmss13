@@ -2094,6 +2094,7 @@
 #include "code\modules\mob\living\carbon\human\species\emote-synth_k9.dm"
 #include "code\modules\mob\living\carbon\human\species\human.dm"
 #include "code\modules\mob\living\carbon\human\species\monkey.dm"
+#include "code\modules\mob\living\carbon\human\species\pathogen_walker.dm"
 #include "code\modules\mob\living\carbon\human\species\species.dm"
 #include "code\modules\mob\living\carbon\human\species\synth_k9.dm"
 #include "code\modules\mob\living\carbon\human\species\synthetic.dm"

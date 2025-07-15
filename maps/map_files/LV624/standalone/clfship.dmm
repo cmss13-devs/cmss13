@@ -102,6 +102,10 @@
 /obj/structure/largecrate/supply,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_west_caves)
+"at" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/almayer/bluecorner/east,
+/area/lv624/lazarus/crashed_ship)
 "au" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -493,6 +497,7 @@
 /obj/item/ammo_magazine/rifle/m16{
 	pixel_x = -4
 	},
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "gF" = (
@@ -2872,7 +2877,7 @@ lr
 xF
 lr
 lr
-bL
+at
 QQ
 VB
 Qf

@@ -46,6 +46,7 @@
 	zombie.set_languages(list(LANGUAGE_PATHOGEN))
 
 	zombie.faction = FACTION_PATHOGEN
+	zombie.hivenumber = XENO_HIVE_PATHOGEN
 	zombie.faction_group = list(FACTION_PATHOGEN)
 
 	if(zombie.l_hand)

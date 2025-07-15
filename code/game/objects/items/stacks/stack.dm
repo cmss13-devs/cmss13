@@ -130,7 +130,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 				html_doc += " |"
 				html_doc += "<input type='number' value='[min(max_multiplier, 5)]' max='[min(max_multiplier, 20)]'"
 				html_doc += "min='[min(max_multiplier, 1)]' step='1' id='input_number' style='width:35px'"
-				html_doc += "onchange=\"if(this.value===''||this.value<1)this.value=1;if(this.value>[max_multiplier])this.value=[max_multiplier]\"/>"
+				html_doc += "onchange=\"if (this.value === '' || this.value < 1) this.value=1; else if (this.value > [max_multiplier]) this.value=[max_multiplier]\"/>"
 
 				html_doc += "<a href=\"javascript:location.href='byond://?src=\ref[src];make=[i];multiplier=' + document.getElementById('input_number').value\">x</a>"
 

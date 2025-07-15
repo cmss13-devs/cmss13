@@ -887,36 +887,40 @@
 	icon_state = "vest_brown"
 
 /obj/item/clothing/accessory/storage/black_vest/leg_pouch
-	name = "Leg Pouch (Camouflage)
-	desc = "A camo conforming leg pouch commissioned for the USCM. It's attached to your leg."
+	name = "Leg Pouch"
+	desc = "A camo conforming leg pouch usually worn by hunters, military and people who dream of being military."
+	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
+	icon_state = "leg_pouch"
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/legpouch.dmi',
+	)
+	flags_atom = MAP_COLOR_INDEX
 
 /obj/item/clothing/accessory/storage/black_vest/leg_pouch/Initialize()
 	. = ..()
-	if(!(flags_atom & NO_GAMEMODE_SKIN))
-		select_gamemode_skin(type)
+	select_gamemode_skin(/obj/item/clothing/accessory/storage/black_vest/leg_pouch)
+	inv_overlay = image("icon" = inv_overlay_icon, "icon_state" = "[icon_state]")
+	update_icon()
 
 /obj/item/clothing/accessory/storage/black_vest/leg_pouch/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
 	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
 		if("jungle")
-			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/jungle.dmi'
-			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/jungle.dmi'
+			icon_state = "j_leg_pouch"
 		if("classic")
-			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/classic.dmi'
-			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/classic.dmi'
+			icon_state = "c_leg_pouch"
 		if("desert")
-			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/desert.dmi'
-			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/desert.dmi'
+			icon_state = "d_leg_pouch"
 		if("snow")
-			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/snow.dmi'
-			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/snow.dmi'
+			icon_state = "s_leg_pouch"
 		if("urban")
-			icon = 'icons/obj/items/clothing/accessory/webbings_by_map/urban.dmi'
-			item_icons[WEAR_ACCESSORY] = 'icons/mob/humans/onmob/clothing/accessory/webbings_by_map/urban.dmi'
+			icon_state = "u_leg_pouch"
 
 /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
 	name = "Leg Pouch (Black)"
-	desc = "A black leg pouch commissioned for the USCM. It's attached to your leg."
+	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
 	icon_state = "leg_pouch_black"
 	flags_atom = NO_GAMEMODE_SKIN
 

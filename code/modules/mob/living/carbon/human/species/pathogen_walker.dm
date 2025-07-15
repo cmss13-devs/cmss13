@@ -74,6 +74,8 @@
 	zom_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	zom_hud.add_hud_to(zombie, zombie)
 
+	to_chat(zombie, SPAN_PATHOGEN_ANNOUNCE("You have become a [SPECIES_PATHO_WALKER], an undead creation held together by mycelial spores. You serve the [FACTION_PATHOGEN] and its Overmind."))
+
 	return ..()
 
 

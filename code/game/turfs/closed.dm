@@ -286,10 +286,6 @@
 	icon = 'icons/turf/shuttle.dmi'
 	layer = ABOVE_TURF_LAYER
 
-/turf/closed/shuttle/Initialize(mapload)
-	. = ..()
-	is_weedable = FULLY_WEEDABLE
-
 /turf/closed/shuttle/dropship
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rasputin1"

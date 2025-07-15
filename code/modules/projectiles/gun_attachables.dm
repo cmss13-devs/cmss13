@@ -1824,7 +1824,7 @@ Defined in conflicts.dm of the #defines folder.
 	hud_offset_mod = 6 //*Very* long sprite.
 
 /obj/item/attachable/stock/shotgun/synth/New()
-
+	..()
 
 /obj/item/attachable/stock/double
 	name = "\improper double barrel shotgun stock"

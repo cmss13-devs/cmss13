@@ -891,6 +891,7 @@
 	desc = "A camo conforming leg pouch usually worn by hunters, military and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch"
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/legpouch.dmi',
 	)
@@ -923,6 +924,7 @@
 	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
 	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
 	icon_state = "leg_pouch_black"
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/legpouch.dmi',
 	)

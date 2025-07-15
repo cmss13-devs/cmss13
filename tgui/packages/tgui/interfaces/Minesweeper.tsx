@@ -20,9 +20,18 @@ export const Minesweeper = () => {
   const { act, data } = useBackend<Data>();
 
   const { boundaries, difficulty, field, game_state } = data;
-
+  const ColoredMineList = [
+    'blue',
+    'green',
+    'red',
+    'dark purple',
+    'maroon',
+    'cyan',
+    'purple',
+    'grey',
+  ];
   return (
-    <Window width={650} height={850} theme="weyland">
+    <Window width={350} height={420} theme="weyland">
       <Window.Content scrollable>
         <Button
           style={{
@@ -63,12 +72,17 @@ export const Minesweeper = () => {
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
                       }}
+                      color={
+                        cell.cell_type > 0
+                          ? ColoredMineList[cell.cell_type - 1]
+                          : null
+                      }
                     >
                       {cell.state === 'open' ? (
                         cell.cell_type === -1 ? (
-                          <Icon ml={0.5} size={2} name="land-mine-on" />
+                          <Icon ml={1} size={2} name="land-mine-on" />
                         ) : cell.cell_type === -2 ? null : (
-                          <h2>{cell.cell_type}</h2>
+                          <h1 style={{ fontSize: '30px' }}>{cell.cell_type}</h1>
                         )
                       ) : null}
                     </Box>

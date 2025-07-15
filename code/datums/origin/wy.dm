@@ -1,6 +1,6 @@
 /datum/origin/wy
 	name = ORIGIN_WY
-	desc = "You were born on a prestigious Weyland-Yutani colony and have decided to work your way towards the corporate ladder."
+	desc = "You were born on a Weyland-Yutani colony and have decided to work your way towards the corporate ladder."
 
 /datum/origin/wy/sec
 	name = ORIGIN_WY_SEC

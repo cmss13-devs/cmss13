@@ -286,7 +286,7 @@
 			playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
 		return XENO_NONCOMBAT_ACTION
 
-	if(!is_ground_level(z))
+	if(!is_ground_level(z) && dropship.mode != SHUTTLE_CALL)
 		// "you" rather than "we" for this one since non-queen castes will have returned above.
 		to_chat(xeno, SPAN_NOTICE("Lights flash from the terminal but you can't comprehend their meaning."))
 		playsound(loc, 'sound/machines/terminal_error.ogg', KEYBOARD_SOUND_VOLUME, TRUE)
@@ -312,11 +312,29 @@
 			MODE_SET_MODIFIER(/datum/gamemode_modifier/lz_weeding, TRUE)
 		stop_playing_launch_announcement_alarm()
 
-		if(dropship.mode == SHUTTLE_IGNITING) //cancel the launch
+		if(dropship.mode == SHUTTLE_IGNITING)
 			var/obj/docking_port/stationary/marine_dropship/landing_port = dropship.get_docked()
-			if(istype(landing_port))
-				landing_port.turn_off_landing_lights()
-			dropship.mode = SHUTTLE_IDLE
+			if(is_ground_level(landing_port) && dropship.check_dock(landing_port))
+				dropship.destination = landing_port
+
+		if(dropship.mode == SHUTTLE_CALL)
+			var/obj/docking_port/stationary/marine_dropship/landing_port = dropship.previous
+			if(landing_port && is_ground_level(landing_port) && dropship.check_dock(landing_port))
+				dropship.destination = landing_port
+			else
+				for(var/obj/docking_port/stationary/dock in compatible_landing_zones) //try to find another landing zone if previous is occupied
+					if(!is_ground_level(dock)) continue
+					var/dock_reserved = FALSE
+					for(var/obj/docking_port/mobile/other_shuttle in SSshuttle.mobile)
+						if(dock == other_shuttle.destination)
+							dock_reserved = TRUE
+							break
+					if(dock_reserved)
+						continue
+					if(dropship.check_dock(dock))
+						dropship.destination = dock
+						break
+
 
 		to_chat(xeno, SPAN_XENONOTICE("You override the doors."))
 		xeno_message(SPAN_XENOANNOUNCE("The doors of the metal bird have been overridden! Rejoice!"), 3, xeno.hivenumber)

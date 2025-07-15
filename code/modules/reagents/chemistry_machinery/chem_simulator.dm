@@ -345,7 +345,7 @@
 			if(mode != MODE_CREATE)
 				return
 			if(!target_property)
-				to_chat(usr, SPAN_WARNING("Target property not selected!"))
+				to_chat(ui.user, SPAN_WARNING("Target property not selected!"))
 				return
 			if(GLOB.chemical_data.clearance_level <= 2)
 				level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4))

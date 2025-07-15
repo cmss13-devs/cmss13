@@ -77,7 +77,11 @@
 	if(!xeno || xeno != user)
 		return
 
-	var/obj/effect/alien/weeds/turf_weeds = locate() in xeno.loc
+	var/turf/Turf = get_turf(xeno)
+	if(!Turf)
+		return
+
+	var/obj/effect/alien/weeds/turf_weeds = locate() in Turf
 	if(!turf_weeds)
 		return
 

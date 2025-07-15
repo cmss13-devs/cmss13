@@ -1,6 +1,6 @@
 /datum/xeno_strain/designer
 	name = HIVELORD_DESIGNER
-	description = "You give up direct resin building, and lose some plasma and health, but gain stronger pheromones and longer vision. You can place up to 36 design nodes: speed nodes boost building by 50%, cost nodes reduce plasma cost by 50%, and construct nodes allow anyone to donate plasma to build weedbound resin walls or doors, even on semi-weedable surfaces. You can mark nodes as walls or doors, remotely thicken structures, control doors, and remove nodes. Using Greater Resin Surge turns all design nodes into weaker reflective walls for temporary hive defense. Your tackle is slightly stronger, causing longer knockdowns."
+	description = "You give up direct resin building, lose some plasma and health, but gain stronger pheromones and longer vision. You can place up to 36 design nodes: speed nodes boost building by 50%, cost nodes reduce plasma cost by 50%, and construct nodes allow anyone to donate plasma to build weedbound resin walls or doors, even on semi-weedable surfaces. You can mark nodes as walls or doors, remotely thicken structures, control doors, and remove nodes. Using Greater Resin Surge turns all design nodes into weaker reflective walls for temporary hive defense. Your tackle is slightly stronger, causing longer knockdowns."
 	flavor_description = "You are hive's designer, while you no longer build with your own claws, your influence shapes the very foundation of the swarm, allowing it to expand and adapt beyond limits."
 	icon_state_prefix = "Designer"
 
@@ -38,8 +38,8 @@
 	hivelord.viewsize = WHISPERER_VIEWRANGE
 	hivelord.health_modifier -= XENO_HEALTH_MOD_LARGE
 	hivelord.phero_modifier += XENO_PHERO_MOD_LARGE
-	hivelord.speed_modifier += XENO_SPEED_TIER_3 // Lost 30% plasma in sac, you lost some weight
-	hivelord.plasmapool_modifier = 0.7 // -30% plasma pool
+	hivelord.speed_modifier += XENO_SPEED_TIER_3 //Lost 30% plasma in sac, you lost some weight
+	hivelord.plasmapool_modifier = 0.7 //-30% plasma pool
 	hivelord.tacklestrength_min = 5
 	hivelord.tacklestrength_max = 6
 	hivelord.recalculate_everything()
@@ -52,7 +52,7 @@
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
 		if(istype(action, /datum/action/xeno_action/active_toggle/toggle_speed))
 			action.ability_primacy = XENO_NOT_PRIMARY_ACTION
-			break // Stop looking for other ones
+			break //Stop looking for other ones
 
 /datum/behavior_delegate/hivelord_designer
 	name = "Hivelord Designer Behavior Delegate"
@@ -145,14 +145,12 @@
 	bound_weed = weeds
 	hivenumber = xeno.hivenumber
 
-	// Register deletion signals for both
 	RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
 	RegisterSignal(bound_xeno, COMSIG_PARENT_QDELETING, PROC_REF(on_xeno_expire))
 
 	set_hive_data(src, hivenumber)
 	. = ..()
 
-	// Initial check if hivenumbers don't match, delete immediately
 	if(bound_weed.hivenumber != bound_xeno.hivenumber)
 		qdel(src)
 
@@ -163,33 +161,24 @@
 	if(hive)
 		hive.designer_marks += src
 		if(mark_meaning)
-			var/icon_state_to_use = mark_meaning.icon_state
-			if(istype(src, /obj/effect/alien/resin/design/speed_node))
-				icon_state_to_use += "_speed"
-			else if(istype(src, /obj/effect/alien/resin/design/cost_node))
-				icon_state_to_use += "_cost"
+			var/icon_state_to_use = get_marker_icon_state()
+			if(icon_state_to_use)
+				choosenMark = image(icon, src, icon_state_to_use, ABOVE_HUD_LAYER, "pixel_y" = 5)
+				choosenMark.plane = ABOVE_HUD_PLANE
+				choosenMark.appearance_flags = RESET_COLOR
 
-			choosenMark = image(icon, src, icon_state_to_use, ABOVE_HUD_LAYER, "pixel_y" = 5)
-			choosenMark.plane = ABOVE_HUD_PLANE
-			choosenMark.appearance_flags = RESET_COLOR
-
-			for(xeno in hive.totalXenos)
-				if(xeno.client)
-					xeno.client.images += choosenMark
-					xeno.hud_set_design_marks()
-					refresh_marker()
+				for(xeno in hive.totalXenos)
+					if(xeno.client)
+						xeno.client.images += choosenMark
+						xeno.hud_set_design_marks()
+						refresh_marker()
 
 /obj/effect/alien/resin/design/proc/refresh_marker()
 	if(!choosenMark || !mark_meaning)
 		return
 
 	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
-		if(istype(src, /obj/effect/alien/resin/design/speed_node))
-			choosenMark.icon_state = mark_meaning.icon_state + "_speed"
-		else if(istype(src, /obj/effect/alien/resin/design/cost_node))
-			choosenMark.icon_state = mark_meaning.icon_state + "_cost"
-		else
-			choosenMark.icon_state = mark_meaning.icon_state
+		choosenMark.icon_state = mark_meaning.icon_state
 
 /obj/effect/alien/resin/design/Destroy()
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
@@ -207,6 +196,11 @@
 	bound_weed = null
 	choosenMark = null
 	return ..()
+
+/obj/effect/alien/resin/design/proc/get_marker_icon_state()
+	if(!mark_meaning)
+		return null
+	return mark_meaning.icon_state
 
 /obj/effect/alien/resin/design/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -241,24 +235,52 @@
 	icon_state = "static_speednode"
 	plasma_cost = 50
 
+/obj/effect/alien/resin/design/speed_node/refresh_marker()
+	if(!choosenMark || !mark_meaning)
+		return
+
+	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
+		choosenMark.icon_state = mark_meaning.icon_state + "_speed"
+	else
+		..()
+
+/obj/effect/alien/resin/design/speed_node/get_marker_icon_state()
+	if(!mark_meaning)
+		return null
+	return mark_meaning.icon_state + "_speed"
+
 /obj/effect/alien/resin/design/speed_node/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this node looks like it has a big green oozing bulb at its center, making the weeds under it twitch..."
+		. += "[SPAN_NOTICE("On closer examination, this node looks like it has a big green oozing bulb at its center, making the weeds under it twitch...")]"
 	if(isxeno(user) || isobserver(user))
-		. += "You sense that building on top of this node will speed up your construction speed by [SPAN_NOTICE("50%")]."
+		. += "[SPAN_NOTICE("You sense that building on top of this node will speed up your construction speed by [SPAN_BOLDNOTICE("50%")].")]"
 
 /obj/effect/alien/resin/design/cost_node
 	name = "Design Flexible Node (60)"
 	icon_state = "static_costnode"
 	plasma_cost = 60
 
+/obj/effect/alien/resin/design/cost_node/refresh_marker()
+	if(!choosenMark || !mark_meaning)
+		return
+
+	if(bound_xeno.selected_design_mark == /datum/design_mark/resin_wall || bound_xeno.selected_design_mark == /datum/design_mark/resin_door)
+		choosenMark.icon_state = mark_meaning.icon_state + "_cost"
+	else
+		..()
+
+/obj/effect/alien/resin/design/cost_node/get_marker_icon_state()
+	if(!mark_meaning)
+		return null
+	return mark_meaning.icon_state + "_cost"
+
 /obj/effect/alien/resin/design/cost_node/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this node looks like its made of smaller blue bulbs grown together, making the weeds under them look soft and squishy."
+		. += "[SPAN_NOTICE("On closer examination, this node looks like its made of smaller blue bulbs grown together, making the weeds under them look soft and squishy.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "You sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_NOTICE("50%")]."
+		. += "[SPAN_NOTICE("You sense that building on top of this node will decrease plasma cost of basic resin structures by [SPAN_BOLDNOTICE("50%")]")]."
 
 /obj/effect/alien/resin/design/construct_node
 	name = "Design Construct Node (70)"
@@ -365,7 +387,7 @@
 			begin_construction(xeno)
 			return
 
-		// Do NOT call attack_hand here — that bypasses destruction.
+		//Do NOT call attack_hand here — that bypasses destruction
 		to_chat(user, SPAN_NOTICE("You examine the node curiously, but nothing happens."))
 		return
 
@@ -373,9 +395,8 @@
 
 /obj/effect/alien/resin/design/construct_node/attack_alien(mob/living/carbon/xenomorph/xeno)
 	if(xeno.a_intent != INTENT_HARM)
-		return attack_hand(xeno) // Delegate to attack_hand for non-harm intents
+		return attack_hand(xeno)
 	else
-		// Use normal damaging behavior if intent is harm
 		return ..()
 
 /obj/effect/alien/resin/design/construct_node/proc/get_total_plasma_cost(mob/living/carbon/xenomorph/xeno)
@@ -438,14 +459,14 @@
 /obj/effect/alien/resin/design/construct_node/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this node looks like big blub composed of smaller purple glowing cups, pumping some strange liquid trough weeds."
+		. += "[SPAN_NOTICE("On closer examination, this node looks like big blub composed of smaller purple glowing cups, pumping some strange liquid trough weeds.")]"
 	if(isxeno(user) || isobserver(user))
 		var/mob/living/carbon/xenomorph/xeno = user
 		var/total_plasma_cost = get_total_plasma_cost(xeno)
-		. += "You sense that feeding [SPAN_NOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_NOTICE("[mark_meaning]")], you also heard that using plasma fruit works too."
+		. += "[SPAN_NOTICE("You sense that feeding [SPAN_BOLDNOTICE("[total_plasma_cost]")] plasma with our hand to this node will secrete a [SPAN_BOLDNOTICE("[mark_meaning]")], you also heard that using plasma fruit works too.")]"
 
-//Should not be upgradable because its not "stable" but special actions should create thick variant.
-/turf/closed/wall/resin/weedbound // don't use this variant, use subtypes.
+//Should not be upgradable because its not "stable" but special actions should create thick variant
+/turf/closed/wall/resin/weedbound //NEVER use this variant, use subtypes
 	name = "weedbound resin wall"
 	desc = "An oddly solidified resin wall with a layered pattern that reminds you of flower buds."
 	icon_state = "weedboundresin"
@@ -466,16 +487,15 @@
 		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 		bound_weed = null
 
-	var/turf/T = get_turf(src)
-	if(T)
+	var/turf/Turf = get_turf(src)
+	if(Turf)
 		visible_message(SPAN_ALERT("The weedbound wall collapses into a puddle of sticky slime."))
-		var/type_path = /obj/effect/alien/resin/sticky/weak_nutriplasm
-		if(istype(src, /turf/closed/wall/resin/weedbound/thick))
-			type_path = /obj/effect/alien/resin/sticky/strong_nutriplasm
-
-		new type_path(T)
+		spawn_nutriplasm(Turf)
 
 	return ..()
+
+/turf/closed/wall/resin/weedbound/proc/spawn_nutriplasm(turf/Turf)
+	return
 
 /turf/closed/wall/resin/weedbound/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -487,12 +507,12 @@
 	addtimer(CALLBACK(src, PROC_REF(check_weed_replacement)), 1 DECISECONDS)
 
 /turf/closed/wall/resin/weedbound/proc/check_weed_replacement()
-	var/turf/T = get_turf(src)
-	if(!T)
+	var/turf/Turf = get_turf(src)
+	if(!Turf)
 		ScrapeAway()
 		return
 
-	var/obj/effect/alien/weeds/new_weed = locate(/obj/effect/alien/weeds) in T
+	var/obj/effect/alien/weeds/new_weed = locate(/obj/effect/alien/weeds) in Turf
 
 	if(new_weed && new_weed.hivenumber == old_hivenumber)
 		bound_weed = new_weed
@@ -501,12 +521,15 @@
 		playsound(src, "alien_resin_break", 25)
 		ScrapeAway()
 
+/turf/closed/wall/resin/weedbound/normal/spawn_nutriplasm(turf/Turf)
+	new /obj/effect/alien/resin/sticky/weak_nutriplasm(Turf)
+
 /turf/closed/wall/resin/weedbound/normal/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this strange wall appears to have merged with the resin below to hold itself together."
+		. += "[SPAN_NOTICE("On closer examination, this strange wall appears to have merged with the resin below to hold itself together.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "You sense that this resin wall will collapse if the weeds it is merged with disappear."
+		. += "[SPAN_NOTICE("You sense that this resin wall will collapse if the weeds it is merged with disappear.")]"
 
 /turf/closed/wall/resin/weedbound/thick
 	name = "thick weedbound resin wall"
@@ -515,14 +538,17 @@
 	damage_cap = HEALTH_WALL_XENO_THICK
 	walltype = WALL_THICK_WEEDBOUND_RESIN
 
+/turf/closed/wall/resin/weedbound/thick/spawn_nutriplasm(turf/Turf)
+	new /obj/effect/alien/resin/sticky/strong_nutriplasm(Turf)
+
 /turf/closed/wall/resin/weedbound/thick/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this strange darker wall appears to have merged with the resin below to hold itself together."
+		. += "[SPAN_NOTICE("On closer examination, this strange darker wall appears to have merged with the resin below to hold itself together.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "You sense that this thick resin wall will collapse if the weeds it is merged with disappear."
+		. += "[SPAN_NOTICE("You sense that this thick resin wall will collapse if the weeds it is merged with disappear.")]"
 
-/obj/structure/mineral_door/resin/weedbound //don't use this variant, use subtypes.
+/obj/structure/mineral_door/resin/weedbound //NEVER use this variant, use subtypes
 	name = "weedbound resin door"
 	desc = "A weird resin door that solidified strangely, forming a petal-like pattern."
 	icon_state = "weedbound resin"
@@ -544,15 +570,15 @@
 		UnregisterSignal(bound_weed, COMSIG_PARENT_QDELETING)
 		bound_weed = null
 
-	var/turf/T = get_turf(src)
-	if(T)
+	var/turf/Turf = get_turf(src)
+	if(Turf)
 		visible_message(SPAN_ALERT("The weedbound wall collapses into a puddle of sticky slime."))
-		var/type_path = /obj/effect/alien/resin/sticky/weak_nutriplasm
-		if(istype(src, /turf/closed/wall/resin/weedbound/thick) || istype(src, /obj/structure/mineral_door/resin/weedbound/thick))
-			type_path = /obj/effect/alien/resin/sticky/strong_nutriplasm
-		new type_path(T)
+		spawn_nutriplasm(Turf)
 
 	return ..()
+
+/obj/structure/mineral_door/resin/weedbound/proc/spawn_nutriplasm(turf/Turf)
+	return
 
 /obj/structure/mineral_door/resin/weedbound/proc/on_weed_expire()
 	SIGNAL_HANDLER
@@ -564,12 +590,12 @@
 	addtimer(CALLBACK(src, PROC_REF(check_weed_replacement)), 1 DECISECONDS)
 
 /obj/structure/mineral_door/resin/weedbound/proc/check_weed_replacement()
-	var/turf/T = get_turf(src)
-	if(!T)
+	var/turf/Turf = get_turf(src)
+	if(!Turf)
 		Dismantle()
 		return
 
-	var/obj/effect/alien/weeds/new_weed = locate(/obj/effect/alien/weeds) in T
+	var/obj/effect/alien/weeds/new_weed = locate(/obj/effect/alien/weeds) in Turf
 
 	if(new_weed && new_weed.hivenumber == old_hivenumber)
 		bound_weed = new_weed
@@ -578,12 +604,15 @@
 		playsound(src, "alien_resin_break", 25)
 		Dismantle()
 
+/obj/structure/mineral_door/resin/weedbound/normal/spawn_nutriplasm(turf/Turf)
+	new /obj/effect/alien/resin/sticky/weak_nutriplasm(Turf)
+
 /obj/structure/mineral_door/resin/weedbound/normal/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this strange door appears to have merged with the resin below to hold itself together."
+		. += "[SPAN_NOTICE("On closer examination, this strange door appears to have merged with the resin below to hold itself together.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "You sense that this resin door will collapse if the weeds it is merged with disappear."
+		. += "[SPAN_NOTICE("You sense that this resin door will collapse if the weeds it is merged with disappear.")]"
 
 /obj/structure/mineral_door/resin/weedbound/thick
 	name = "thick weedbound resin door"
@@ -593,12 +622,15 @@
 	health = HEALTH_DOOR_XENO_THICK
 	hardness = 1.9
 
+/obj/structure/mineral_door/resin/weedbound/thick/spawn_nutriplasm(turf/Turf)
+	new /obj/effect/alien/resin/sticky/strong_nutriplasm(Turf)
+
 /obj/structure/mineral_door/resin/weedbound/thick/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this strange darker door appears to have merged with the resin below to hold itself together."
+		. += "[SPAN_NOTICE("On closer examination, this strange darker door appears to have merged with the resin below to hold itself together.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "You sense that this thick resin door will collapse if the weeds it is merged with disappear."
+		. += "[SPAN_NOTICE("You sense that this thick resin door will collapse if the weeds it is merged with disappear.")]"
 
 /obj/effect/alien/resin/sticky/weak_nutriplasm
 	name = "thin sticky nutriplasm"
@@ -609,9 +641,9 @@
 /obj/effect/alien/resin/sticky/weak_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this thin sticky substance remainds you of sticky resin."
+		. += "[SPAN_NOTICE("On closer examination, this thin sticky substance remainds you of sticky resin.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We stare at thin nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin."
+		. += "[SPAN_NOTICE("We stare at thin nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin.")]"
 
 /obj/effect/alien/resin/sticky/strong_nutriplasm
 	name = "sticky nutriplasm"
@@ -622,9 +654,9 @@
 /obj/effect/alien/resin/sticky/strong_nutriplasm/get_examine_text(mob/user)
 	. = ..()
 	if(ishuman(user) || isyautja(user))
-		. += "On closer examination, this thick sticky substance remainds you of sticky resin."
+		. += "[SPAN_NOTICE("On closer examination, this thick sticky substance remainds you of sticky resin.")]"
 	if(isxeno(user) || isobserver(user))
-		. += "We stare at thick nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin."
+		. += "[SPAN_NOTICE("We stare at thick nutriplasm, the remains from weedbound resin, it sound delicious but you remember, its just different sticky resin.")]"
 
 /obj/effect/alien/resin/design/upgrade
 	name = "Thicken Resin (60)"
@@ -686,7 +718,7 @@
 
 /datum/action/xeno_action/activable/greater_resin_surge/proc/replace_nodes()
 	var/mob/living/carbon/xenomorph/xeno = owner
-	for(var/obj/effect/alien/resin/design/node in xeno.current_design.Copy()) // use Copy() to safely modify the list
+	for(var/obj/effect/alien/resin/design/node in xeno.current_design.Copy())
 		if(get_dist(xeno, node) > 7)
 			continue
 
@@ -710,15 +742,13 @@
 		xeno.current_design -= node
 
 /datum/action/xeno_action/activable/greater_resin_surge/proc/create_animation_overlay(turf/target_turf, animation_type)
-	if(!istype(target_turf, /turf)) // Ensure the target is a valid turf
+	if(!istype(target_turf, /turf))
 		return
 
-	if(!ispath(animation_type, /obj/effect/resin_construct/fastweak)) // Ensure a valid path
+	if(!ispath(animation_type, /obj/effect/resin_construct/fastweak))
 		return
-	//Spawn an animation effect
 	var/obj/effect/resin_construct/fastweak/animation = new animation_type(target_turf)
 
-	// Schedule deletion of the animation after 1 second
 	addtimer(CALLBACK(animation, TYPE_PROC_REF(/obj/effect/resin_construct/fastweak, delete_animation), 1 SECONDS))
 
 /obj/effect/resin_construct/fastweak/proc/delete_animation()
@@ -805,7 +835,7 @@
 				to_chat(xeno, SPAN_XENOWARNING("[wall] does not belong to our hive!"))
 				return
 
-			if(wall.upgrading_now) // <--- Prevent spam
+			if(wall.upgrading_now) //<--- Prevent spam and waste of plasma
 				to_chat(xeno, SPAN_WARNING("This wall is already being reinforced!"))
 				return
 
@@ -858,7 +888,7 @@
 				new /obj/structure/mineral_door/resin/thick(oldloc, door.hivenumber)
 			else
 				if(xeno.try_toggle_resin_door(door))
-					if(!check_and_use_plasma_owner(0)) // No plasma cost for remote opening
+					if(!check_and_use_plasma_owner())
 						return TRUE
 					return
 				return
@@ -874,11 +904,11 @@
 			SPAN_XENONOTICE("We start to channel nutrients towards [target_atom], using [plasma_cost] plasma."), null, 5)
 		playsound(target_atom, "alien_resin_build", 25)
 
-		target_atom.add_hiddenprint(xeno) // Tracks who reinforced it for admins
+		target_atom.add_hiddenprint(xeno) //Tracks who reinforced it for admins
 		return TRUE
 
 	if(xeno.try_toggle_resin_door(target_atom))
-		if(!check_and_use_plasma_owner(0)) // No plasma cost for remote opening
+		if(!check_and_use_plasma_owner())
 			return TRUE
 		return
 
@@ -901,30 +931,30 @@
 		playsound(xeno.loc, "alien_resin_move2", 25)
 		return
 
-	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined.
+	if(length(xeno.current_design) >= xeno.max_design_nodes) //Check if there are more nodes than lenght that was defined
 		to_chat(xeno, SPAN_XENOWARNING("We cannot sustain another node, one will wither away to allow this one to live!"))
-		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list.
-		xeno.current_design.Remove(old_design) //Removes first node stored inside list.
+		var/obj/effect/alien/resin/design/old_design = xeno.current_design[1] //Check with node is first for deletion on list
+		xeno.current_design.Remove(old_design) //Removes first node stored inside list
 		qdel(old_design) //Delete node.
 
 	var/selected_design = xeno.selected_design
 
-	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/speed_node)) //Check path you selected from list.
+	if(ispath(xeno.selected_design, /obj/effect/alien/resin/design/speed_node)) //Check path you selected from list
 		if(!is_turf_clean(target_turf, check_resin_doors = TRUE))
 			to_chat(src, SPAN_WARNING("There's something built here already."))
 			return
-		var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno) //Create "Animation" overlay.
+		var/obj/speed_warn = new /obj/effect/resin_construct/speed_node(target_turf, src, xeno) //Create "Animation" overlay
 		if(!do_after(xeno, 0.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD) || selected_design != xeno.selected_design)
-			qdel(speed_warn) //Delete "Animation" overlay after defined time.
+			qdel(speed_warn) //Delete "Animation" overlay after defined time
 			return
-		qdel(speed_warn) //Delete again just in case overlay don't get deleted.
-		if(!is_turf_clean(target_turf)) // Recheck the turf again just in case
+		qdel(speed_warn) //Delete again just in case overlay don't get deleted
+		if(!is_turf_clean(target_turf)) //Recheck the turf again just in case
 			to_chat(xeno, SPAN_XENOWARNING("Something else has taken root here before us."))
 			return
 		if(!check_and_use_plasma_owner(plasma_cost))
 			return
 		xeno.visible_message(SPAN_XENONOTICE("\The [xeno] channel nutrients and shape it into a node!"))
-		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list.
+		var/obj/effect/alien/resin/design/design = new xeno.selected_design(target_weeds.loc, target_weeds, xeno) //Create node you selected from list
 		if(!design)
 			to_chat(xeno, SPAN_XENOHIGHDANGER("Couldn't find node to place! Contact a coder!"))
 			return
@@ -990,7 +1020,7 @@
 
 	var/obj/structure/mineral_door/resin/resin_door = target_atom
 
-	if(resin_door.hivenumber != src.hivenumber)
+	if(resin_door.hivenumber != hivenumber)
 		to_chat(src, SPAN_XENOWARNING("This door does not belong to our hive!"))
 		return TRUE
 
@@ -1046,7 +1076,7 @@
 	if(xeno && !xeno.buckled && !xeno.is_mob_incapacitated())
 		return TRUE
 
-/datum/action/xeno_action/onclick/toggle_design_icons/use_ability(atom/A)
+/datum/action/xeno_action/onclick/toggle_design_icons/use_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
 
 	if (!istype(xeno))

@@ -501,3 +501,14 @@
 /mob/living/carbon/xenomorph/matriarch/do_evolve()
 	do_pathogen_evolve()
 	return
+
+/datum/action/xeno_action/activable/tail_stab/mycotoxin
+	name = "Mycotoxin Injection"
+
+/datum/action/xeno_action/activable/tail_stab/mycotoxin/use_ability(atom/affected_atom)
+	var/target = ..()
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		carbon_target.reagents.add_reagent("mycotoxin", 6)
+		carbon_target.reagents.set_source_mob(owner, /datum/reagent/toxin/mycotoxin)
+		return TRUE

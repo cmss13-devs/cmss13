@@ -45,7 +45,7 @@
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/plant_weeds/pathogen,
 		/datum/action/xeno_action/onclick/emit_pheromones,
-		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
+		/datum/action/xeno_action/activable/tail_stab/mycotoxin,
 		/datum/action/xeno_action/onclick/shatter, // Macro 1
 		/datum/action/xeno_action/activable/rav_spikes, // Macro 2
 		/datum/action/xeno_action/onclick/spike_shed, // Macro 3

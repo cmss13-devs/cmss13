@@ -19,7 +19,7 @@
 			var/obj/structure/closet/crate/weapon/W = new(drop_spawn)
 			switch(pick_n_take(choices))
 				if(0)
-					new /obj/item/weapon/gun/pistol/m4a3/m4a4(W)
+					new /obj/item/weapon/gun/pistol/m4a3(W)
 					new /obj/item/weapon/gun/pistol/m1911(W)
 					new /obj/item/attachable/burstfire_assembly(W)
 					new /obj/item/attachable/compensator(W)

@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(cm_vending_guns_intelligence_officer, list(
 		list("SIDEARMS", -1, null, null),
 		list("88 Mod 4 Combat Pistol", 4, /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M44 Combat Revolver", 4, /obj/item/weapon/gun/revolver/m44, VENDOR_ITEM_REGULAR),
-		list("M4A4 Service Pistol", 4, /obj/item/weapon/gun/pistol/m4a3/m4a4, VENDOR_ITEM_REGULAR),
+		list("M4A3 Service Pistol", 4, /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", -1, null, null),
 		list("88M4 AP Magazine (9mm)", 20, /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),

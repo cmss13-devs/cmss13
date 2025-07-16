@@ -30,7 +30,7 @@
 	value = 1
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, potency = 1)
-	M.heal_limb_damage(0, potency, chemical = (potency >= CREATE_MAX_TIER_1))
+	M.heal_limb_damage(0, potency, chemical = TRUE)
 	if(potency > CREATE_MAX_TIER_1)
 		M.heal_limb_damage(0, potency * POTENCY_MULTIPLIER_LOW, chemical = TRUE)
 

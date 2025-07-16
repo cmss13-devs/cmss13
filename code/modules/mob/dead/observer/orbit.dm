@@ -222,7 +222,7 @@
 					dutch += list(serialized)
 				else if(human.faction in FACTION_LIST_MARINE)
 					marines += list(serialized)
-				else if(!is_survivor)
+				else if(!is_survivor && !issynth(human))
 					humans += list(serialized)
 				continue
 			if(isanimal(player))

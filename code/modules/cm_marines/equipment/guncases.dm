@@ -200,10 +200,10 @@
 
 //------------
 /obj/item/storage/box/guncase/pumpshotgun
-	name = "\improper M37A2 Pump Shotgun case"
-	desc = "A gun case containing the M37A2 Pump Shotgun."
+	name = "\improper M37A1 Pump Shotgun case"
+	desc = "A gun case containing the M37A1 Pump Shotgun."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/shotgun/pump, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump/m37a, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
 
 /obj/item/storage/box/guncase/pumpshotgun/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)

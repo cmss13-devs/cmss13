@@ -1,0 +1,5 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - rscadd: "Synthetic Survivors now gain access to the civilian only section of the loadout gear and are able to spawn with it. Wear those Weyland or Hyperdyne patches proudly! Disclaimer, this does not apply to all of their variants."
+  - bugfix: "Fixed PMC,CMB and FORECON survivors having the civilian origin, they now have the closest appropriate origin instead."

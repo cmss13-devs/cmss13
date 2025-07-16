@@ -508,9 +508,16 @@ DEFINES in setup.dm, referenced here.
 /mob/living/carbon/human/proc/can_unholster_from_storage_slot(obj/item/storage/slot)
 	if(isnull(slot))
 		return FALSE
-	if(slot == shoes)//Snowflakey check for shoes and uniform
+
+	//Snowflakey check for shoes, face, and uniform
+	if(slot == shoes)
 		if(shoes.stored_item && isweapon(shoes.stored_item))
 			return shoes
+		return FALSE
+
+	if(slot == wear_mask)
+		if(wear_mask && isweapon(wear_mask))
+			return wear_mask
 		return FALSE
 
 	if(slot == w_uniform)
@@ -602,8 +609,8 @@ DEFINES in setup.dm, referenced here.
 			to_chat(src, SPAN_DANGER("You are unable to equip that."))
 	else //empty hand, start checking slots and holsters
 
-		//default order: suit, belt, back, pockets, uniform, shoes
-		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes")
+		//default order: suit, belt, back, pockets, uniform, shoes, wear_mask
+		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes", "wear_mask")
 
 		var/obj/item/slot_selected
 

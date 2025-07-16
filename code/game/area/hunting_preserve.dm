@@ -4,7 +4,7 @@
 	name = "\improper Yautja Hunting Grounds"
 	icon_state = "green"
 	weather_enabled = FALSE
-	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS
+	flags_area = AREA_YAUTJA_HANGABLE|AREA_NOTUNNEL|AREA_AVOID_BIOSCAN|AREA_YAUTJA_GROUNDS|AREA_YAUTJA_HUNTING_GROUNDS
 	resin_construction_allowed = FALSE
 	can_build_special = FALSE
 	is_resin_allowed = TRUE
@@ -12,7 +12,6 @@
 /area/yautja_grounds/jungle
 	name = "\improper Yautja Hunting Grounds Jungle Central"
 	icon_state = "central"
-	flags_area = AREA_YAUTJA_HANGABLE
 	ambience_exterior = AMBIENCE_JUNGLEMOON
 	soundscape_playlist = SCAPE_PL_JUNGLE_MOON
 	soundscape_interval = 60
@@ -22,11 +21,11 @@
 	icon_state = "north"
 
 /area/yautja_grounds/jungle/north_east
-	name = "\improper Yautja Hunting Grounds Jungle south east"
+	name = "\improper Yautja Hunting Grounds Jungle north east"
 	icon_state = "northeast"
 
 /area/yautja_grounds/jungle/north_west
-	name = "\improper Yautja Hunting Grounds Jungle south west"
+	name = "\improper Yautja Hunting Grounds Jungle north west"
 	icon_state = "northwest"
 
 /area/yautja_grounds/jungle/east

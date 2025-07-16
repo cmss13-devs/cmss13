@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - balance: "Queen now matures on hijack launch so there isn't reason for delay"

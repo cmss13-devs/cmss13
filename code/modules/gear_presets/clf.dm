@@ -2,7 +2,7 @@
 	name = FACTION_CLF
 	languages = list(LANGUAGE_JAPANESE, LANGUAGE_ENGLISH)
 	assignment = JOB_CLF
-	rank = FACTION_CLF
+	job_title = FACTION_CLF
 	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
@@ -46,13 +46,19 @@
 	new_human.g_eyes = 62
 	new_human.b_eyes = 19
 
+/datum/equipment_preset/clf/load_traits(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	if(!HAS_TRAIT(new_human, TRAIT_IRON_TEETH))
+		var/datum/character_trait/character_trait = GLOB.character_traits[/datum/character_trait/biology/iron_teeth]
+		character_trait.apply_trait(new_human, src)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/soldier
 	name = "CLF Soldier"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF
-	rank = JOB_CLF
+	job_title = JOB_CLF
 	role_comm_title = "GRL"
 
 	minimap_icon = "clf_mil"
@@ -162,7 +168,7 @@
 	name = "CLF Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_ENGI
-	rank = JOB_CLF_ENGI
+	job_title = JOB_CLF_ENGI
 	role_comm_title = "TECH"
 
 	minimap_icon = "clf_engi"
@@ -291,7 +297,7 @@
 	name = "CLF Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_MEDIC
-	rank = JOB_CLF_MEDIC
+	job_title = JOB_CLF_MEDIC
 	role_comm_title = "MED"
 	minimap_icon = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
@@ -452,7 +458,7 @@
 	name = "CLF Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_SPECIALIST
-	rank = JOB_CLF_SPECIALIST
+	job_title = JOB_CLF_SPECIALIST
 	role_comm_title = "SPC"
 
 	minimap_icon = "clf_spec"
@@ -581,7 +587,7 @@
 	name = "CLF Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_LEADER
-	rank = JOB_CLF_LEADER
+	job_title = JOB_CLF_LEADER
 	role_comm_title = "LDR"
 
 	minimap_icon = "clf_sl"
@@ -737,7 +743,7 @@
 
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
-	rank = JOB_CLF_SYNTH
+	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 
@@ -988,7 +994,7 @@
 	name = "CLF Cell Commander"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COMMANDER
-	rank = JOB_CLF_COMMANDER
+	job_title = JOB_CLF_COMMANDER
 	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMDR"
 

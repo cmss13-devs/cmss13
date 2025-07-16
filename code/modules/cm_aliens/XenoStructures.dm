@@ -1167,6 +1167,8 @@
 
 	for(var/mob/living/carbon/xenomorph/candidate in votes)
 		if(votes[candidate] > primary_votes)
+			secondary_votes = primary_votes
+			secondary_candidate = primary_candidate
 			primary_votes = votes[candidate]
 			primary_candidate = candidate
 		else if(votes[candidate] > secondary_votes)

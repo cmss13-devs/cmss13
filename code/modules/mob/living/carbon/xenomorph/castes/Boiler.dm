@@ -18,7 +18,6 @@
 
 	evolution_allowed = FALSE
 	deevolves_to = list(XENO_CASTE_SPITTER)
-	spit_delay = 30 SECONDS
 	caste_desc = "Gross!"
 	acid_level = 3
 	caste_luminosity = 2
@@ -51,7 +50,6 @@
 	tier = 3
 	gib_chance = 100
 	drag_delay = 6 //pulling a big dead xeno is hard
-	spit_delay  = 30 SECONDS
 	tileoffset = 3
 	viewsize = 7
 

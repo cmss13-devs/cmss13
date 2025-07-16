@@ -675,11 +675,11 @@
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
-									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["b_type"]]")
-									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
-									to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
-									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
-									to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
+									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["blood_type"]]")
+									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["minor_disability"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["minor_disability_details"]]")
+									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["major_disability"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["major_disability_details"]]")
 									to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
 									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
 									read = 1
@@ -871,20 +871,21 @@
 
 	if(!internal_organs_by_name)
 		return EYE_PROTECTION_WELDING
-	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
-	if(I)
-		if(I.cut_away)
+	var/datum/internal_organ/eyes/eyes_organ = internal_organs_by_name["eyes"]
+	if(eyes_organ)
+		if(eyes_organ.cut_away)
 			return EYE_PROTECTION_WELDING
-		if(I.robotic == ORGAN_ROBOT)
+		if(eyes_organ.robotic == ORGAN_ROBOT)
 			return EYE_PROTECTION_WELDING
 	else
 		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
-		var/obj/item/clothing/C = head
-		number += C.eye_protection
+		var/obj/item/clothing/cloth_item = head
+		number += cloth_item.eye_protection
 	if(istype(wear_mask, /obj/item/clothing))
-		number += wear_mask.eye_protection
+		var/obj/item/clothing/cloth_item = head
+		number += cloth_item.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
 

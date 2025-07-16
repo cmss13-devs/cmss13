@@ -217,7 +217,7 @@ CIVILIAN
 
 /datum/skills/civilian/survivor/clf/combat_engineer
 	name = "Survivor CLF Engineer"
-	skills = list(
+	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
@@ -229,8 +229,8 @@ CIVILIAN
 	)
 
 /datum/skills/civilian/survivor/clf/combat_medic
-	name = "CLF Medic"
-	skills = list(
+	name = "Survivor CLF Medic"
+	additional_skills = list(
 		SKILL_FIREMAN = SKILL_FIREMAN_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
@@ -240,7 +240,7 @@ CIVILIAN
 
 /datum/skills/civilian/survivor/clf/leader
 	name = "Survivor CLF Leader"
-	skills = list(
+	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_ENGINEER = SKILL_ENGINEER_NOVICE, // to use their C4
@@ -377,6 +377,15 @@ CIVILIAN
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+	)
+
+/datum/skills/civilian/survivor/uscm_recruiter
+	name = "Survivor USCM Recruiter"
+	additional_skills = list(
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+		SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED,
 	)
 
 /datum/skills/civilian/fax_responder

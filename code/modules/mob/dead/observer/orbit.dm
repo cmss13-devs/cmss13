@@ -124,6 +124,10 @@
 
 		if(isliving(poi_mob))
 			var/mob/living/player = poi_mob
+
+			serialized["in_ground"] = is_ground_level(player.z)
+			serialized["in_ship"] = is_mainship_level(player.z)
+
 			serialized["health"] = floor(player.health / player.maxHealth * 100)
 
 			if(isxeno(player))

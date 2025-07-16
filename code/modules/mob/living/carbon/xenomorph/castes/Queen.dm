@@ -1,4 +1,6 @@
 #define XENO_QUEEN_AGE_TIME (10 MINUTES)
+#define XENO_QUEEN_TEMP_AGE_DURATION (1 MINUTES)
+#define XENO_QUEEN_TEMP_AGE_EXTENSION (15 SECONDS)
 #define XENO_QUEEN_DEATH_DELAY (5 MINUTES)
 #define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
 
@@ -358,8 +360,12 @@
 	skull = /obj/item/skull/queen
 	pelt = /obj/item/pelt/queen
 
+	/// Whether queen has completed normal maturity
 	var/queen_aged = FALSE
+	/// Normal maturity timer
 	var/queen_age_timer_id = TIMER_ID_NULL
+	/// Temporary maturity timer
+	var/queen_age_temp_timer_id = TIMER_ID_NULL
 
 	bubble_icon = "alienroyal"
 
@@ -431,9 +437,8 @@
 		// Also update the choose_resin icon since it resets
 		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
 			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
-			if(choose_resin_ability)
-				choose_resin_ability.update_button_icon(selected_resin)
-				break // Don't need to keep looking
+			choose_resin_ability.update_button_icon(selected_resin)
+			break // Don't need to keep looking
 
 	if(hive.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, PROC_REF(make_combat_effective)), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -509,18 +514,53 @@
 		return FALSE
 	update_living_queens()
 
-/mob/living/carbon/xenomorph/queen/proc/make_combat_effective()
-	queen_aged = TRUE
-	if(queen_age_timer_id != TIMER_ID_NULL)
-		deltimer(queen_age_timer_id)
-		queen_age_timer_id = TIMER_ID_NULL
+/// Signal handler for COMSIG_XENO_TAKE_DAMAGE intended to extend temporary maturity by XENO_QUEEN_TEMP_AGE_EXTENSION up to XENO_QUEEN_TEMP_AGE_DURATION
+/mob/living/carbon/xenomorph/queen/proc/on_take_damage(owner, damage_data, damage_type)
+	SIGNAL_HANDLER
+	if(queen_age_temp_timer_id == TIMER_ID_NULL)
+		CRASH("[src] called on_take_damage when not temporarily mature!")
+	var/new_duration = min(timeleft(queen_age_temp_timer_id) + XENO_QUEEN_TEMP_AGE_EXTENSION, XENO_QUEEN_TEMP_AGE_DURATION)
+	queen_age_temp_timer_id = addtimer(CALLBACK(src, PROC_REF(refresh_combat_effective)), new_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
 
-	give_combat_abilities()
+/// Performs all updates to abilities, name, and health depending on maturity
+/mob/living/carbon/xenomorph/queen/proc/refresh_combat_effective()
+	if(queen_age_temp_timer_id != TIMER_ID_NULL && isnull(timeleft(queen_age_temp_timer_id)))
+		queen_age_temp_timer_id = TIMER_ID_NULL
+		UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
+
+	refresh_combat_abilities()
 	recalculate_actions()
 	recalculate_health()
 	generate_name()
 
-/mob/living/carbon/xenomorph/queen/proc/give_combat_abilities()
+/// Matures the queen either permanently or temporarily
+/mob/living/carbon/xenomorph/queen/proc/make_combat_effective(temporary=FALSE)
+	if(temporary)
+		if(timeleft(queen_age_timer_id) <= XENO_QUEEN_TEMP_AGE_DURATION)
+			// Just give them full maturity
+			temporary = FALSE
+		else
+			var/already_temp_mature = queen_age_temp_timer_id != TIMER_ID_NULL
+			if(!already_temp_mature)
+				RegisterSignal(src, COMSIG_XENO_TAKE_DAMAGE, PROC_REF(on_take_damage))
+			queen_age_temp_timer_id = addtimer(CALLBACK(src, PROC_REF(refresh_combat_effective)), XENO_QUEEN_TEMP_AGE_DURATION, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
+			if(already_temp_mature)
+				return
+
+	if(!temporary)
+		queen_aged = TRUE
+		if(queen_age_timer_id != TIMER_ID_NULL)
+			deltimer(queen_age_timer_id)
+			queen_age_timer_id = TIMER_ID_NULL
+		if(queen_age_temp_timer_id != TIMER_ID_NULL)
+			deltimer(queen_age_temp_timer_id)
+			queen_age_temp_timer_id = TIMER_ID_NULL
+			UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
+
+	refresh_combat_effective()
+
+/// When not on ovipositor, refreshes all mobile_abilities including mobile_aged_abilities if applicable
+/mob/living/carbon/xenomorph/queen/proc/refresh_combat_abilities()
 	if(ovipositor)
 		return
 
@@ -529,12 +569,11 @@
 		// Also update the choose_resin icon since it resets
 		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
 			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
-			if(choose_resin_ability)
-				choose_resin_ability.update_button_icon(selected_resin)
+			choose_resin_ability.update_button_icon(selected_resin)
 
 	var/list/abilities_to_give = mobile_abilities.Copy()
 
-	if(!queen_aged)
+	if(!queen_aged && queen_age_temp_timer_id == TIMER_ID_NULL)
 		abilities_to_give -= mobile_aged_abilities
 
 	for(var/path in abilities_to_give)
@@ -543,7 +582,7 @@
 
 /mob/living/carbon/xenomorph/queen/recalculate_health()
 	. = ..()
-	if(!queen_aged)
+	if(!queen_aged && queen_age_temp_timer_id == TIMER_ID_NULL)
 		maxHealth *= YOUNG_QUEEN_HEALTH_MULTIPLIER
 
 	if(health > maxHealth)
@@ -584,6 +623,16 @@
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
 
+		// Grant temporary maturity if near the hive_location for early game
+		if(!queen_aged)
+			var/near_hive = hive?.hive_location && (get_area(hive.hive_location) == get_area(src) || get_dist(hive.hive_location, src) <= 10)
+			if(near_hive && ROUND_TIME < XENO_QUEEN_AGE_TIME * 2 && !is_mob_incapacitated(TRUE))
+				make_combat_effective(temporary=TRUE)
+			else if(queen_age_temp_timer_id != TIMER_ID_NULL)
+				var/alert_time = timeleft(queen_age_temp_timer_id) - XENO_QUEEN_TEMP_AGE_EXTENSION * 0.5
+				if(alert_time >= 0 && alert_time < delta_time SECONDS) // Only display once at a threshold within delta_time
+					balloon_alert(src, "our maturity wanes soon!", text_color = "#7d32bb")
+
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
@@ -592,8 +641,11 @@
 	. += "Зарытых грудоломов: [stored_larvae]"
 	. += "Лидеры: [xeno_leader_num] / [hive?.queen_leader_limit]"
 	. += "Королевская смола: [hive?.buff_points]"
-	if(!queen_aged && queen_age_timer_id != TIMER_ID_NULL)
-		. += "Взросление: [time2text(timeleft(queen_age_timer_id), "mm:ss")] осталось"
+	if(!queen_aged)
+		if(queen_age_timer_id != TIMER_ID_NULL)
+			. += "Взросление: [time2text(timeleft(queen_age_timer_id), "mm:ss")] осталось"
+		if(queen_age_temp_timer_id != TIMER_ID_NULL)
+			. += "Временная зрелость: [time2text(timeleft(queen_age_temp_timer_id), "mm:ss")] осталось"
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
 	set category = "Alien"
@@ -857,8 +909,7 @@
 		// Also update the choose_resin icon since it resets
 		if(istype(action, /datum/action/xeno_action/onclick/choose_resin))
 			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
-			if(choose_resin_ability)
-				choose_resin_ability.update_button_icon(selected_resin)
+			choose_resin_ability.update_button_icon(selected_resin)
 
 	var/list/immobile_abilities = list(
 		// These already have their placement locked in:
@@ -934,7 +985,7 @@
 	zoom_out()
 
 	set_resin_build_order(GLOB.resin_build_order_drone) // This needs to occur before we update the abilities so we can update the choose resin icon
-	give_combat_abilities()
+	refresh_combat_abilities()
 
 	remove_verb(src, /mob/living/carbon/xenomorph/proc/xeno_tacmap)
 
@@ -1001,3 +1052,9 @@
 	point.color = "#a800a8"
 
 	visible_message("<b>[src]</b> points to [target_atom]", null, null, 5)
+
+#undef XENO_QUEEN_AGE_TIME
+#undef XENO_QUEEN_TEMP_AGE_DURATION
+#undef XENO_QUEEN_TEMP_AGE_EXTENSION
+#undef XENO_QUEEN_DEATH_DELAY
+#undef YOUNG_QUEEN_HEALTH_MULTIPLIER

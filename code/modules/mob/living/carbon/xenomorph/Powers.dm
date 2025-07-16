@@ -197,9 +197,11 @@
 		to_chat(src, SPAN_NOTICE("Прежде чем сделать метку, нужно придать ей смысл."))
 		hive.mark_ui.open_mark_menu(src)
 		return FALSE
-	if(target_turf.z != src.z)
-		to_chat(src, SPAN_NOTICE("У нас нет психического присутствия в этом мире."))
-		return FALSE
+
+	if(!SSmapping.same_z_map(z, target_turf.loc.z))
+		to_chat(src, SPAN_XENOWARNING("Наш разум не может достичь так далеко."))
+		return
+
 	if(!(istype(target_turf)) || target_turf.density)
 		return FALSE
 	for(var/atom/movable/AM  in target_turf.contents)

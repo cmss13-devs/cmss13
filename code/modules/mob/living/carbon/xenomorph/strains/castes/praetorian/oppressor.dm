@@ -92,6 +92,10 @@
 	if(!check_plasma_owner())
 		return
 
+	if(!tail_image)
+		tail_image = image('icons/effects/status_effects.dmi', "hooked")
+
+
 	if(!ability_used_once)
 		ability_used_once = TRUE
 
@@ -137,7 +141,6 @@
 				ADD_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
 
 				tail_beam = abduct_user.beam(target, "oppressor_tail", 'icons/effects/beam.dmi', 2 SECONDS, 8)
-				var/image/tail_image = image('icons/effects/status_effects.dmi', "hooked")
 				target.overlays += tail_image
 
 			turfs_get += new /obj/effect/xenomorph/xeno_telegraph/abduct_hook(turfs, windup)
@@ -157,53 +160,56 @@
 
 /datum/action/xeno_action/activable/prae_abduct/proc/initial_throw()
 	var/mob/living/carbon/xenomorph/abduct_user = owner
-	for(var/mob/living/targets in targets_added)
+	var/list/collision_callbacks = list(/mob/living/carbon = CALLBACK(src, PROC_REF(handle_abduct_collision)))
+	var/list/end_throw_callbacks = list(CALLBACK(src, PROC_REF(handle_abduct_end_throw)))
+	throw_count = 0
+	for(var/mob/living/target as anything in targets_added)
+		abduct_user.throw_carbon(target, get_dir(target, throw_turf), secondary_throw_distance, SPEED_VERY_FAST, immobilize=FALSE, collision_callbacks=collision_callbacks, end_throw_callbacks=end_throw_callbacks)
 
-		var/list/collision_callbacks = list(/mob/living/carbon/human = CALLBACK(src, PROC_REF(throw_targets)))
-		abduct_user.throw_carbon(targets, get_dir(targets, throw_turf), 3, SPEED_VERY_FAST, immobilize = FALSE, collision_callbacks = collision_callbacks)
-		if(collision_callbacks)
-			targets.Stun(1)
-			targets.KnockDown(1)
-
-/datum/action/xeno_action/activable/prae_abduct/proc/throw_targets()
+/// Callback for other carbons that get collided with in abduct
+/datum/action/xeno_action/activable/prae_abduct/proc/handle_abduct_collision(mob/living/carbon/collided)
 	var/mob/living/carbon/xenomorph/abduct_user = owner
-	var/turf/thrown_turf = get_turf(throw_turf)
-	var/mob/living/carbon/target_turf_mob = locate() in thrown_turf
+	if(!abduct_user.can_not_harm(collided))
+		targets_collided += collided
+		collided.Stun(0.7) // We can't knockdown here else they're no longer a collide target	to_chat(collided, SPAN_XENODANGER("You lose your footing as you're slammed into someone!"))
+		playsound(collided, 'sound/weapons/alien_claw_block.ogg', 75, 1)
 
-	if(target_turf_mob)
-		target_turf_mob.Stun(1)
-		target_turf_mob.KnockDown(1)
-		hit_obstacle = TRUE
+/// Callback for the end of an abduct for a carbon
+/datum/action/xeno_action/activable/prae_abduct/proc/handle_abduct_end_throw()
+	if(++throw_count < length(targets_added))
+		return // Still other throws processing - we want the last
 
+	var/affected_count = 0
+	for(var/mob/living/target as anything in targets_added)
+		if(!(target in targets_collided))
+			target.Stun(0.7)
+			target.KnockDown(0.7)
+			to_chat(targets_added, SPAN_XENODANGER("You are swept off your feet as [owner]'s tail throws you around!"))
+			playsound(target, 'sound/weapons/alien_claw_block.ogg', 75, 1)
+			affected_count++
+	for(var/mob/living/target as anything in targets_collided)
+		target.KnockDown(0.7) // We could also just do all effects/chat/sound here instead of some in handle_abduct_collision
+		affected_count++
 
-	for(var/mob/living/targets in targets_added)
-		targets.Stun(0.7)
-		targets.KnockDown(0.7)
-		playsound(targets,'sound/weapons/alien_claw_block.ogg', 75, 1)
+	if(length(targets_collided))
+		to_chat(owner, SPAN_XENODANGER("We use our tail to slam [affected_count] of them together!"))
 
-		REMOVE_TRAIT(targets, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-
-	if(hit_obstacle)
-		to_chat(targets_added, SPAN_XENODANGER("You lose your footing as you're slammed into another person!"))
-		to_chat(abduct_user, SPAN_XENODANGER("We use our tail to slam [length(targets_added)] of them together!"))
 	else
-		to_chat(targets_added, SPAN_XENODANGER("You are swept off your feet as [abduct_user]'s tail throws you around!"))
-		to_chat(abduct_user, SPAN_XENODANGER("We spring our tail and throw them around!"))
+		to_chat(owner, SPAN_XENODANGER("We spring our tail and throw them around!"))
 
-
-
-	ability_used_once = FALSE
-	abduct_user.emote("roar")
 	qdel(tail_beam)
 	apply_cooldown()
+	owner.emote("roar")
+
+	reset_ability()
 
 
 /datum/action/xeno_action/activable/prae_abduct/proc/reset_ability()
-	var/list/targets_to_remove = targets_added
-	for(var/mob/living/targets in targets_to_remove)
-
-		REMOVE_TRAIT(targets, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
-		targets_added -= targets
+	for(var/mob/living/target in targets_added)
+		REMOVE_TRAIT(target, TRAIT_IMMOBILIZED, TRAIT_SOURCE_ABILITY("Abduct"))
+		target.overlays -= tail_image
+	targets_added.len = 0
+	targets_collided.len = 0
 
 	ability_used_once = FALSE
 	apply_cooldown()

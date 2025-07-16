@@ -125,9 +125,13 @@
 
 	// Config
 	var/max_distance = 6
+	var/secondary_throw_distance = 3
 	var/windup = 8 DECISECONDS
 	var/ability_used_once = FALSE
 	var/list/targets_added = list()
+	var/list/targets_collided = list()
+	var/throw_count = 0
+	var/static/image/tail_image
 	var/throw_turf
 	var/obj/effect/beam/tail_beam
 	var/hit_obstacle = FALSE

@@ -144,3 +144,21 @@
   - bugfix: ASB ammunition for Pyro Spec and Scout Spec now drop the correct contents.
   - rscdel: Dropship walls and other solid turfs cannot be weeded. This does not affect
       dropship internals.
+2025-07-16:
+  MistChristmas:
+  - bugfix: Tactical Sign Language not registering for TGUI
+  - ui: Sentry computer % sign for power level uses a different font that looks better.
+      Radio menu gets a little more formatting
+  Unknownity:
+  - rscadd: Synthetic Survivors now gain access to the civilian only section of the
+      loadout gear and are able to spawn with it. Wear those Weyland or Hyperdyne
+      patches proudly! Disclaimer, this does not apply to all of their variants.
+  - bugfix: Fixed PMC,CMB and FORECON survivors having the civilian origin, they now
+      have the closest appropriate origin instead.
+  realforest2001:
+  - balance: Locking the dropship as Queen now takes 5 seconds.
+  stalkerino, zenith:
+  - rscadd: adds the leg pouch from pve as a 5 slot webbing resprite
+  - rscadd: gives co the intel satchel, and chestrig  option rather than only the
+      backpack
+  - rscadd: gives insulated black gloves option to POs too

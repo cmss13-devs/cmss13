@@ -161,7 +161,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if(multiplier != multiplier) // isnan
 			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with NaN")
 			return
-		if(!isnum(multiplier))
+		if(!isnum(multiplier)) // this used to block nan...
+			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
 			return
 		multiplier = floor(multiplier)
 		if(multiplier < 1)

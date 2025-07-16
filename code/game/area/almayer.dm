@@ -984,7 +984,7 @@
 /area/almayer/middeck/maintenance/saft
 	name = "\improper Middle Deck Maintenance - Starboard-Aft"
 
-/area/almayer/middeck/maintenance/saft
+/area/almayer/middeck/maintenance/paft
 	name = "\improper Middle Deck Maintenance - Port-Aft"
 
 //Admin Lower Level

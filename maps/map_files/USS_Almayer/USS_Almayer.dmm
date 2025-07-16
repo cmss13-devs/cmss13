@@ -246,7 +246,7 @@
 /area/almayer/hallways/hangar)
 "aaI" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "aaJ" = (
 /turf/closed/wall/almayer,
@@ -1675,7 +1675,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "aee" = (
 /obj/structure/closet/emcloset,
@@ -4376,6 +4376,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
 "ajS" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/hallways/upper/fore_hallway)
 "ajT" = (
@@ -4726,7 +4727,7 @@
 /turf/open_space,
 /area/almayer/stair_clone/upper/port_fore)
 "alg" = (
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "alh" = (
 /obj/structure/largecrate/random/case/small,
@@ -5798,9 +5799,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
-"aoi" = (
-/turf/open/floor/almayer,
-/area/almayer/shipboard/navigation)
 "aoj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -5923,7 +5921,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "aoz" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "aoA" = (
 /obj/structure/machinery/light,
@@ -6799,7 +6797,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "aqJ" = (
 /turf/open/floor/almayer/red/northeast,
@@ -7650,13 +7648,13 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "asI" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "asJ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -7680,12 +7678,12 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "asM" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "asN" = (
 /obj/structure/machinery/computer/crew,
@@ -8069,7 +8067,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "auj" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras/almayer,
@@ -13675,7 +13673,7 @@
 "aJs" = (
 /obj/effect/decal/heavy_cable/node_n_w_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aJt" = (
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/saft)
@@ -14098,6 +14096,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
 "aKB" = (
@@ -14286,6 +14285,7 @@
 /area/almayer/maint/hull/upper/u_a_s)
 "aLg" = (
 /obj/structure/stairs/multiz/down,
+/obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/starboard_aft)
 "aLh" = (
@@ -15076,7 +15076,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aNr" = (
 /obj/effect/landmark/start/researcher,
 /obj/effect/landmark/late_join/researcher,
@@ -15105,7 +15105,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/power/apc/almayer/east,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/almayer/plating,
 /area/almayer/shipboard/navigation)
 "aNv" = (
 /obj/structure/surface/table/almayer,
@@ -15327,7 +15327,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aOb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/true_random,
@@ -15396,7 +15396,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aOj" = (
 /obj/structure/barricade/handrail/no_vault{
 	dir = 4
@@ -15646,7 +15646,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aOQ" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/mineral/phoron/medium_stack{
@@ -16220,7 +16220,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aQp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/warning_stripes{
@@ -16317,7 +16317,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aQB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -16457,7 +16457,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aQV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -16497,7 +16497,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aQY" = (
 /obj/structure/machinery/door/airlock/almayer/maint,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -16524,7 +16524,7 @@
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aRb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -16533,7 +16533,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aRc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
@@ -16576,7 +16576,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aRg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -16903,7 +16903,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aRX" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 4
@@ -16947,7 +16947,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aSe" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -16956,7 +16956,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aSg" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /obj/structure/barricade/handrail/no_vault{
@@ -17530,7 +17530,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aTH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -17545,7 +17545,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aTI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -17557,7 +17557,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aTJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -17569,7 +17569,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aTK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -17715,7 +17715,7 @@
 "aTX" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/almayer/plate,
 /area/almayer/middeck/maintenance/sf)
 "aTY" = (
 /obj/structure/bed/chair/office/dark{
@@ -17879,7 +17879,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aUs" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
@@ -17893,7 +17893,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aUt" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
@@ -17924,7 +17924,7 @@
 	},
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aUw" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/living/captain_mess)
@@ -17989,7 +17989,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aUB" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
@@ -18027,7 +18027,7 @@
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aUG" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -18263,7 +18263,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/node_n_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aVi" = (
 /obj/structure/machinery/light/red{
 	dir = 8;
@@ -18504,7 +18504,7 @@
 /area/almayer/middeck/briefing)
 "aVI" = (
 /obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/lower/port_fore)
 "aVJ" = (
 /obj/effect/decal/warning_stripes{
@@ -18798,7 +18798,7 @@
 	dir = 2
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aWl" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -18908,7 +18908,7 @@
 	},
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aWz" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -18979,7 +18979,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "aWI" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -18987,7 +18987,7 @@
 	},
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "aWJ" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -19163,7 +19163,7 @@
 	},
 /obj/structure/surface/rack,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXe" = (
 /turf/open/floor/almayer/red/north,
 /area/almayer/lifeboat_pumps/south1)
@@ -19186,7 +19186,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXj" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer/plate,
@@ -19202,16 +19202,16 @@
 	pixel_x = -4
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/static_tank/water,
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXn" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/almayer/reinforced,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXo" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plating,
@@ -19225,7 +19225,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXq" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -19244,12 +19244,12 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -19327,7 +19327,7 @@
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/decal/heavy_cable/node_s_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXD" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment,
@@ -19348,7 +19348,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -19372,7 +19372,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -19467,7 +19467,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -19478,7 +19478,7 @@
 	layer = 3.3
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -19513,7 +19513,7 @@
 	icon_state = "SE-out"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -19532,7 +19532,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -19552,7 +19552,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -19564,7 +19564,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aXZ" = (
 /turf/open_space,
 /area/almayer/stair_clone/upper/starboard_aft)
@@ -19605,7 +19605,7 @@
 	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aYh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -19616,8 +19616,8 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/turf/open/floor/almayer/plate,
+/area/almayer/middeck/maintenance/paft)
 "aYi" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -19628,7 +19628,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aYk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -19690,7 +19690,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aYr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -19786,7 +19786,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aYC" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -19894,7 +19894,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aYM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -19933,7 +19933,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aYQ" = (
 /obj/structure/sink{
 	pixel_y = 24
@@ -19955,7 +19955,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aYT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/node_n_w_e,
@@ -20096,7 +20096,7 @@
 	},
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "aZk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -20104,7 +20104,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "aZl" = (
 /obj/structure/surface/rack,
 /obj/structure/surface/rack{
@@ -20130,7 +20130,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "aZn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -20286,7 +20286,7 @@
 	icon_state = "SE-out"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "aZE" = (
 /obj/structure/stairs{
 	dir = 8;
@@ -20621,7 +20621,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bap" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -20645,7 +20645,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "baq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -20780,7 +20780,7 @@
 /obj/effect/decal/heavy_cable/node_s_e,
 /obj/effect/decal/heavy_cable/node_s_w,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "baM" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8
@@ -20825,7 +20825,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "baU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
@@ -21045,7 +21045,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bbr" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -21075,7 +21075,7 @@
 	icon_state = "SE-out"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bbu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -21093,7 +21093,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bbw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -21109,7 +21109,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bbx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -21128,7 +21128,7 @@
 	icon_state = "SE-out"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bby" = (
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/shipboard/starboard_point_defense)
@@ -21270,7 +21270,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bbN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -21295,7 +21295,7 @@
 	icon_state = "E"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bbP" = (
 /obj/effect/decal/heavy_cable/node_s_w_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -25730,10 +25730,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
-"blv" = (
-/obj/effect/decal/heavy_cable/node_n_w_e,
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
 "blw" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -26771,7 +26767,7 @@
 "bnE" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/plating/plating_catwalk/no_build,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/middeck/medical)
 "bnF" = (
 /obj/effect/decal/cleanable/dirt,
@@ -26979,19 +26975,19 @@
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bob" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/case,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "boc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bod" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/secure,
@@ -26999,7 +26995,7 @@
 	pixel_y = 15
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "boe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -27010,7 +27006,7 @@
 	},
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bof" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flash,
@@ -27433,7 +27429,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
@@ -27447,7 +27443,7 @@
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -27456,7 +27452,7 @@
 	},
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -27465,17 +27461,17 @@
 	},
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/vehicle/train/cargo/engine,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bps" = (
 /obj/structure/barricade/handrail/hybrisa/road/plastic,
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpt" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lattice_prop{
@@ -27483,12 +27479,12 @@
 	pixel_y = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/plastic,
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -27517,7 +27513,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/barricade/handrail/hybrisa/road/plastic{
@@ -27527,7 +27523,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpz" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/pillbottles{
@@ -27601,7 +27597,7 @@
 	pixel_y = -16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpC" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
@@ -27629,7 +27625,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -27650,7 +27646,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bpF" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -27992,13 +27988,13 @@
 	pixel_y = -16
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bqn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bqo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -28071,7 +28067,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bqs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -28084,7 +28080,7 @@
 	},
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bqt" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/prop/invuln/lattice_prop{
@@ -28128,9 +28124,8 @@
 	pixel_x = 16;
 	pixel_y = 16
 	},
-/obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bqw" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	access_modified = 1;
@@ -30199,7 +30194,7 @@
 	},
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "buR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -30208,7 +30203,7 @@
 	},
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "buS" = (
 /obj/structure/machinery/cm_vending/gear/engi,
 /turf/open/floor/almayer/plate,
@@ -30306,7 +30301,7 @@
 /obj/effect/decal/heavy_cable/node_s_w,
 /obj/structure/largecrate/random/case,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bve" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/decal/warning_stripes{
@@ -30330,7 +30325,7 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bvh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -30340,7 +30335,7 @@
 	layer = 3.5
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bvi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -30356,12 +30351,12 @@
 	layer = 3.5
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bvj" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bvk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -30390,7 +30385,7 @@
 	density = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/sp)
 "bvm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -30645,7 +30640,7 @@
 "bvW" = (
 /obj/structure/prop/static_tank/water,
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bvX" = (
 /obj/structure/window/framed/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -30663,7 +30658,7 @@
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bvZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/bronze{
@@ -30671,19 +30666,19 @@
 	pixel_y = -4
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bwa" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bwb" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bwc" = (
 /obj/structure/barricade/handrail{
 	dir = 8
@@ -30699,7 +30694,7 @@
 	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bwe" = (
 /obj/structure/window/framed/almayer,
 /turf/open/floor/almayer/plate,
@@ -30744,13 +30739,13 @@
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bwj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bwk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -30759,7 +30754,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bwl" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -30990,7 +30985,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/saft)
+/area/almayer/middeck/maintenance/paft)
 "bwP" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	dir = 4;
@@ -31101,7 +31096,7 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/almayer/plate,
 /area/almayer/middeck/maintenance/sp)
 "bxd" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -31200,7 +31195,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/almayer/plate,
 /area/almayer/middeck/maintenance/pb)
 "bxr" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -31217,15 +31212,6 @@
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
-"bxu" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/middeck/maintenance/aft)
-"bxv" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/heavy_cable/cable_vertical,
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/aft)
 "bxw" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -31250,7 +31236,7 @@
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bxz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -31302,7 +31288,7 @@
 	},
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bxE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -31403,13 +31389,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
-"bxQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
 "bxR" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/prop/invuln/lattice_prop{
@@ -31455,7 +31434,7 @@
 	icon_state = "SE-out"
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bxV" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -31466,7 +31445,7 @@
 	density = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bxW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -31485,7 +31464,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/aft)
+/area/almayer/middeck/maintenance/paft)
 "bxY" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{
@@ -31579,7 +31558,7 @@
 "byf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/almayer/west,
-/turf/open/floor/almayer/no_build/plating,
+/turf/open/floor/almayer/plating,
 /area/almayer/middeck/req)
 "byg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -31660,7 +31639,7 @@
 "bys" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/plating/plating_catwalk/no_build,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/middeck/briefing)
 "byt" = (
 /obj/structure/surface/rack,
@@ -31680,7 +31659,7 @@
 "byv" = (
 /obj/structure/machinery/power/apc/almayer/north,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/plating_catwalk/no_build,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/middeck/maintenance/bow)
 "byw" = (
 /obj/effect/decal/warning_stripes{
@@ -31698,7 +31677,7 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/power/apc/almayer/north,
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/almayer/plate,
 /area/almayer/middeck/hanger)
 "byz" = (
 /turf/closed/wall/almayer/aicore/hull,
@@ -31716,7 +31695,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/almayer/plate,
 /area/almayer/middeck/maintenance/sb)
 "byC" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -32726,6 +32705,9 @@
 /obj/structure/largecrate/random/barrel/blue,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
+"bAT" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/middeck/maintenance/paft)
 "bAU" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
@@ -32733,6 +32715,9 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/briefing)
+"bAV" = (
+/turf/closed/wall/almayer/outer,
+/area/almayer/middeck/maintenance/paft)
 "bAW" = (
 /obj/effect/attach_point/weapon/dropship1/left_fore,
 /turf/closed/wall/almayer/outer/internal,
@@ -32755,6 +32740,11 @@
 /obj/effect/attach_point/weapon/dropship1/right_fore,
 /turf/closed/wall/almayer/outer/internal,
 /area/almayer/middeck/hanger)
+"bBa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
 "bBb" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/decal/cleanable/dirt,
@@ -34392,6 +34382,14 @@
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
+"bEo" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
 "bEp" = (
 /obj/structure/filingcabinet,
 /obj/structure/sign/safety/galley{
@@ -34400,6 +34398,15 @@
 	},
 /turf/open/floor/almayer/green/northeast,
 /area/almayer/squads/req)
+"bEq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
 "bEr" = (
 /obj/structure/surface/rack,
 /obj/item/tool/weldpack,
@@ -34412,6 +34419,13 @@
 /obj/item/tool/extinguisher,
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
+"bEt" = (
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
+"bEu" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
 "bEv" = (
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/shipboard/brig/general_equipment)
@@ -34427,6 +34441,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/shipboard/weapon_room)
+"bEy" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
+"bEz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
 "bEA" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -34437,6 +34460,26 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bEB" = (
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/maintenance/paft)
+"bEC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/maintenance/paft)
+"bED" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEE" = (
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/maintenance/paft)
 "bEF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -34447,6 +34490,53 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/squads/alpha)
+"bEH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEI" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
+"bEJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEM" = (
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
 "bEN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -34471,6 +34561,21 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bEP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEQ" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
 "bER" = (
 /obj/structure/machinery/light,
 /obj/structure/medical_supply_link/green,
@@ -34483,12 +34588,98 @@
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
+"bET" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/turf/open/floor/almayer/no_build/test_floor4,
+/area/almayer/middeck/maintenance/paft)
+"bEU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEV" = (
+/obj/structure/ladder/multiz,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/maintenance/paft)
+"bEW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEX" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
+"bEY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bEZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
 "bFa" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/almayer/red,
 /area/almayer/shipboard/weapon_room)
+"bFb" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
+"bFc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFe" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/true_random,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
 "bFg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -34496,6 +34687,24 @@
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_floor2,
 /area/almayer/command/airoom)
+"bFh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
 "bFj" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -34522,6 +34731,34 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
+"bFm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_y = 16
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/node_s_w_e,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
+"bFo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
 "bFp" = (
 /obj/structure/barricade/handrail{
 	dir = 8;
@@ -34529,6 +34766,26 @@
 	},
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/living/cryo_cells)
+"bFq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
 "bFr" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
@@ -34540,6 +34797,76 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/almayer/orange/east,
 /area/almayer/engineering/upper_engineering/starboard)
+"bFu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_y = 0
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFw" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFx" = (
+/obj/effect/decal/heavy_cable/node_s_w_e,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/paft)
+"bFy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
+"bFz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/paft)
 "bFA" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
@@ -34555,6 +34882,32 @@
 	},
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/hallways/lower/starboard_midship_hallway)
+"bFC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/plate,
+/area/almayer/middeck/maintenance/aft)
+"bFD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/almayer/middeck/engineer)
+"bFE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/structure/machinery/power/apc/almayer/south,
+/turf/open/floor/almayer/plate,
+/area/almayer/middeck/maintenance/saft)
+"bFF" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/upper/fore_hallway)
 "bFJ" = (
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
 /turf/open/floor/plating,
@@ -35018,7 +35371,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
 "bKb" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -35514,7 +35867,7 @@
 "bNo" = (
 /obj/structure/bed/chair/office/dark,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
 "bNq" = (
 /obj/structure/surface/table/almayer,
@@ -38855,7 +39208,7 @@
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "cAa" = (
 /obj/structure/machinery/power/apc/almayer/south,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/lower/starboard_fore)
 "cAy" = (
 /obj/structure/closet/secure_closet/guncabinet/red/mp_armory_shotgun,
@@ -40065,7 +40418,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/kutjevo_smooth,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "cYQ" = (
 /obj/effect/decal/heavy_cable/node_s_e,
@@ -42038,7 +42391,7 @@
 	pixel_x = 32;
 	pixel_y = -32
 	},
-/turf/open/floor/almayer/no_build,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "dQp" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -42594,7 +42947,7 @@
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "edo" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/almayer/no_build,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "edv" = (
 /obj/structure/bed/sofa/south/white/left,
@@ -48667,7 +49020,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "gDp" = (
 /obj/structure/machinery/light{
@@ -50845,7 +51198,7 @@
 /area/almayer/engineering/upper_engineering)
 "hwH" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/north,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "hxe" = (
 /obj/structure/disposalpipe/segment{
@@ -51806,7 +52159,7 @@
 	pixel_x = 32;
 	pixel_y = -32
 	},
-/turf/open/floor/almayer/no_build,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "hTF" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm{
@@ -53747,7 +54100,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
 "iLs" = (
 /obj/structure/machinery/light{
@@ -55305,7 +55658,7 @@
 /area/almayer/medical/containment/cell)
 "jlN" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/east,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "jlQ" = (
 /obj/structure/window/framed/almayer,
@@ -55637,7 +55990,7 @@
 "jsa" = (
 /obj/structure/machinery/power/apc/almayer/west,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/no_build,
+/turf/open/floor/almayer,
 /area/almayer/stair_clone/upper/port_aft)
 "jss" = (
 /obj/structure/bed/chair/comfy{
@@ -56966,7 +57319,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "jYa" = (
 /obj/structure/machinery/vending/hydroseeds,
@@ -57842,7 +58195,7 @@
 /area/almayer/hallways/hangar)
 "kqy" = (
 /obj/structure/platform_decoration/metal/kutjevo_smooth/east,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "kqB" = (
 /obj/structure/prop/holidays/string_lights{
@@ -59123,15 +59476,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
-"kQu" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/no_build,
-/area/almayer/shipboard/brig/processing)
 "kRd" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -62190,7 +62534,7 @@
 /area/almayer/maint/upper/u_f_s)
 "mjt" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer/no_build,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "mjy" = (
 /obj/structure/machinery/conveyor_switch{
@@ -69403,7 +69747,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/lower/port_fore)
 "oVo" = (
 /turf/open/floor/almayer/plate,
@@ -77134,7 +77478,7 @@
 /area/almayer/maint/upper/u_a_p)
 "sai" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "saL" = (
 /obj/structure/machinery/door/airlock/almayer/generic/corporate{
@@ -78007,7 +78351,7 @@
 /area/almayer/underdeck/req)
 "srR" = (
 /obj/structure/machinery/light,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/lower/starboard_fore)
 "srT" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -78078,7 +78422,7 @@
 /area/almayer/shipboard/port_missiles)
 "sta" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/shipboard/navigation)
 "str" = (
 /obj/structure/sign/safety/ladder{
@@ -78628,9 +78972,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_a_p)
-"sEz" = (
-/turf/open/floor/almayer/no_build,
-/area/almayer/shipboard/brig/starboard_hallway)
 "sEC" = (
 /obj/structure/platform/metal/almayer/north,
 /obj/structure/platform/metal/almayer/east,
@@ -78982,7 +79323,7 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/hallways/lower/starboard_midship_hallway)
 "sNO" = (
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "sNP" = (
 /obj/structure/largecrate/supply/floodlights,
@@ -79045,7 +79386,7 @@
 /obj/structure/disposalpipe/down/almayer{
 	dir = 2;
 	id = "ares_vault_out";
-	name = "wycomms"
+	name = "aicore"
 	},
 /turf/closed/wall/almayer/outer/internal,
 /area/almayer/command/airoom)
@@ -83037,7 +83378,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "uuT" = (
 /obj/structure/pipes/vents/scrubber{
@@ -85974,7 +86315,7 @@
 /area/almayer/shipboard/brig/chief_mp_office)
 "vzk" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer/no_build,
+/turf/open/floor/almayer,
 /area/almayer/shipboard/brig/processing)
 "vzp" = (
 /turf/open/floor/almayer/research/containment/entrance,
@@ -86870,7 +87211,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/lower/vehiclehangar)
 "vQe" = (
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/lower/starboard_fore)
 "vQq" = (
 /obj/structure/barricade/handrail,
@@ -87577,9 +87918,6 @@
 /obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
-"wdF" = (
-/turf/open/floor/almayer/no_build,
-/area/almayer/shipboard/brig/processing)
 "wdG" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -88318,7 +88656,7 @@
 	pixel_x = 8;
 	pixel_y = -32
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "wrT" = (
 /obj/structure/surface/table/almayer,
@@ -92817,7 +93155,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/lifeboat_pumps/north2)
 "ydA" = (
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/lower/port_fore)
 "ydE" = (
 /obj/effect/decal/warning_stripes{
@@ -160800,7 +161138,7 @@ aMj
 aMj
 aMN
 azA
-aoi
+bfT
 azA
 azA
 azA
@@ -160808,7 +161146,7 @@ anA
 ayw
 ayw
 ayw
-aoi
+bfT
 azA
 aMN
 aSg
@@ -161007,13 +161345,13 @@ aMF
 alU
 bIn
 bJY
-aoi
+bfT
 bfI
 bLp
 bMP
 bNa
 bfI
-aoi
+bfT
 bNo
 bNt
 alU
@@ -173484,9 +173822,9 @@ asm
 asm
 asm
 asm
-bxu
-bxu
-bxu
+aWl
+aWl
+aWl
 aHs
 aHs
 aHs
@@ -173587,8 +173925,8 @@ brm
 bqS
 asm
 asm
-bxw
-bxL
+aXu
+aXO
 baL
 bnW
 aYm
@@ -173690,9 +174028,9 @@ bvo
 bvo
 bvm
 aUJ
-aZg
-bbp
-aZg
+aYo
+aYy
+aYo
 bva
 aYY
 aYY
@@ -173793,8 +174131,8 @@ bro
 aZw
 bqy
 asm
-bxv
-bxM
+aXv
+aXQ
 bvd
 bvc
 aYm
@@ -174001,7 +174339,7 @@ bcs
 asm
 aWH
 bbq
-bxv
+aXv
 aHs
 aHs
 aHs
@@ -174102,9 +174440,9 @@ aZw
 bqV
 bcs
 asm
-bxv
+aXv
 bbq
-bxv
+aXv
 aHs
 aHs
 aHs
@@ -174205,9 +174543,9 @@ bqV
 bqX
 asm
 asm
-bxv
+aXv
 bbq
-bxv
+aXv
 aHs
 aHs
 aHs
@@ -174310,7 +174648,7 @@ asm
 asm
 bvl
 bbt
-baK
+aXB
 aHs
 aHs
 aHs
@@ -174411,9 +174749,9 @@ byf
 brc
 asm
 asm
-bxv
+aXv
 bbq
-bxw
+aXu
 aHs
 aHs
 aHs
@@ -174514,9 +174852,9 @@ aZw
 bvt
 bqA
 asm
-bxv
-bbv
-bxw
+aXv
+aOo
+aXu
 aHs
 aHs
 aHs
@@ -174617,9 +174955,9 @@ aIm
 bvu
 bqB
 asm
-bxw
+aXu
 bbw
-bxw
+aXu
 aHs
 aHs
 aHs
@@ -174722,7 +175060,7 @@ bqC
 asm
 bbM
 bbx
-bxx
+aXw
 aHs
 aHs
 aHs
@@ -174823,9 +175161,9 @@ asm
 bvv
 bqD
 asm
-bxw
+aXu
 bbq
-bxv
+aXv
 aHs
 aHs
 aHs
@@ -174926,9 +175264,9 @@ bru
 bvu
 bvn
 asm
-bxw
+aXu
 bbq
-bxv
+aXv
 aHs
 aHs
 aHs
@@ -175029,7 +175367,7 @@ aIm
 bvu
 bqG
 asm
-bxw
+aXu
 bbq
 bvh
 aHs
@@ -175132,7 +175470,7 @@ brw
 bvx
 bvo
 aUJ
-bxT
+aYY
 bbt
 bvi
 aHs
@@ -175235,7 +175573,7 @@ aIm
 bqE
 asm
 asm
-bxw
+aXu
 bbq
 bvj
 aHs
@@ -175338,9 +175676,9 @@ brx
 asm
 asm
 asm
-bxw
+aXu
 bbq
-bxw
+aXu
 aHs
 aHs
 aHs
@@ -175441,9 +175779,9 @@ aIm
 bdc
 asm
 asm
-bxw
+aXu
 bbw
-bxw
+aXu
 aHs
 aHs
 aHs
@@ -175508,7 +175846,7 @@ aJM
 aJM
 aJM
 byz
-daz
+npq
 aij
 ahy
 ahc
@@ -175546,7 +175884,7 @@ bqI
 asm
 bbM
 bbx
-baK
+aXB
 aHs
 aHs
 aHs
@@ -175611,12 +175949,12 @@ bwI
 bwI
 bwI
 aQd
-npq
 daz
 daz
 daz
 daz
 daz
+daz
 aQd
 aQd
 aQd
@@ -175625,7 +175963,7 @@ aQd
 aQd
 aQd
 aQd
-lmz
+aQd
 asm
 asm
 asm
@@ -175647,24 +175985,24 @@ aZw
 aIm
 bqJ
 aUJ
-bxw
+bEI
 bbv
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 aUF
 aUF
 aUF
@@ -175728,7 +176066,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -175750,39 +176088,39 @@ brz
 aIm
 asm
 asm
-bxv
+bBa
 bbv
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aXz
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEI
 aXR
 aXC
 aWk
-aXq
-aVS
-bpn
+bED
+bEu
+bEq
 bpr
 bpq
 bpp
 bpo
-bpl
+bEo
 aJs
 buQ
-bwI
+bAT
 aHs
 aHs
 bwH
@@ -175831,7 +176169,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -175853,39 +176191,39 @@ asm
 asm
 asm
 asm
-bxv
+bBa
 bbv
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXU
-aXE
+bEH
 aWk
-aXq
-aXf
+bED
+bEt
 bpt
-aXk
+bEy
 asH
 aXi
-aXf
+bEt
 bpm
-aVa
+bBa
 buR
-bwI
+bAT
 aHs
 aHs
 bwH
@@ -175934,7 +176272,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -175959,36 +176297,36 @@ asm
 bqv
 bqr
 bqm
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
 aXC
 aWk
 aXr
-aXg
-bpn
-aXg
+bEz
+bEq
+bEz
 asL
 aNq
-aVS
-bpn
+bEu
+bEq
 aVh
-bwJ
-bwJ
+bAV
+bAV
 bwH
 bwH
 bwH
@@ -176037,7 +176375,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176059,38 +176397,38 @@ aHF
 asm
 asm
 asm
-bxv
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
+bBa
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 aXF
 aXF
 aXF
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwJ
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -176140,7 +176478,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176162,38 +176500,38 @@ aHF
 asm
 asm
 asm
-bxv
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
+bBa
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 aYj
 aXW
 aUr
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwJ
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -176243,7 +176581,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176265,38 +176603,38 @@ aHF
 asm
 asm
 asm
-bxv
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bBa
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXS
-aXz
-bwI
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
+bEI
+bAT
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -176346,7 +176684,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176368,29 +176706,29 @@ aHF
 asm
 asm
 asm
-bbM
-bbt
-baK
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aXz
+bFw
+bFq
+bEK
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEI
 aXS
-aXz
-bwI
-bwJ
+bEI
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -176449,7 +176787,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176471,29 +176809,29 @@ aHF
 asm
 asm
 asm
-bxw
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
+bEI
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 bpE
 bpD
 bpB
-bwI
-bwJ
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -176552,7 +176890,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176574,29 +176912,29 @@ aHF
 asm
 asm
 asm
-bxw
+bEI
 bbv
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXS
-aVa
-bwI
-bwJ
+bBa
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -176655,7 +176993,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176677,29 +177015,29 @@ asm
 asm
 asm
 asm
-bxw
+bEI
 bbv
-bxv
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bBa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aVa
-bwI
-bwJ
+bBa
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -176758,7 +177096,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176780,29 +177118,29 @@ blS
 blI
 blD
 aUK
-bxT
-bbx
-bxx
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bFe
+bFu
+bEJ
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aVa
-bwI
-bwJ
+bBa
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -176861,7 +177199,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176883,29 +177221,29 @@ blT
 blK
 blE
 asm
-blv
+aJs
 bbv
-bxv
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aXG
+bBa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEJ
 aXX
-aXG
-bwI
-bwJ
+bEJ
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -176964,7 +177302,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -176986,29 +177324,29 @@ aUX
 asm
 asm
 asm
-bxw
-bbq
-bxv
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bEI
+bFo
+bBa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aVa
-bwI
-bwJ
+bBa
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -177067,7 +177405,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177089,29 +177427,29 @@ aZw
 aUU
 asm
 asm
-bxw
-bbq
-bxv
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bEI
+bFo
+bBa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aVa
-bwI
-bwJ
+bBa
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -177170,7 +177508,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177192,29 +177530,29 @@ aZw
 aZw
 bcy
 asm
-bbM
-bbt
-bxx
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bFw
+bFq
+bEJ
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aXz
-bwI
-bwJ
+bEI
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -177273,7 +177611,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177295,29 +177633,29 @@ brB
 aZw
 bqK
 asm
-bxw
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwM
+bEI
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEK
 bwO
 aXH
-bwI
-bwJ
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -177376,7 +177714,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177398,29 +177736,29 @@ aIm
 aZw
 bqM
 asm
-bxw
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aXz
+bEI
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEI
 aXS
-aXz
-bwI
-bwJ
+bEI
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -177479,7 +177817,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177501,33 +177839,33 @@ aIm
 aUV
 asm
 asm
-bxw
+bEI
 bbv
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXS
-aXz
-bwI
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
+bEI
+bAT
+bAV
+bAV
+bAV
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -177582,7 +177920,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177604,33 +177942,33 @@ asm
 asm
 asm
 asm
-bxT
-bbx
-baK
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bFe
+bFu
+bEK
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aXz
-bwI
+bEI
+bAT
 bwi
 bwb
 bvY
-bwJ
-bwJ
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -177667,7 +178005,7 @@ aJt
 aQO
 aZn
 bjz
-aZn
+bFE
 bwI
 bwI
 bwI
@@ -177685,7 +178023,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177707,33 +178045,33 @@ blU
 blL
 asm
 asm
-bxv
+bBa
 bbv
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 aYh
 aXX
-bwM
-aQO
-aXo
-aJt
+bEK
+bEE
+bEC
+bEB
 bvZ
 aXl
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -177788,7 +178126,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177810,33 +178148,33 @@ bcB
 bcB
 bcB
 aUK
-bxv
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bBa
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aXz
-bwI
-aXo
-aJt
-aJt
-aJt
-bwJ
+bEI
+bAT
+bEC
+bEB
+bEB
+bEB
+bAV
 aaa
 aaa
 aaa
@@ -177891,7 +178229,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -177913,33 +178251,33 @@ bdX
 bde
 asm
 asm
-bxv
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bBa
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aVa
-bwI
-aXo
-aXo
-aJt
+bBa
+bAT
+bEC
+bEC
+bEB
 bvW
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -177994,7 +178332,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -178017,32 +178355,32 @@ asm
 asm
 asm
 bbO
-bbt
-baK
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bFq
+bEK
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aVa
-bwI
+bBa
+bAT
 bpx
-aXo
+bEC
 aXm
 bvW
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -178097,7 +178435,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -178120,32 +178458,32 @@ blM
 asm
 asm
 bob
-bbq
-bxw
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aXG
+bFo
+bEI
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEJ
 aXX
 aUs
-bwI
+bAT
 bpx
-aXo
+bEC
 aXm
-bwI
-bwJ
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -178200,7 +178538,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -178223,32 +178561,32 @@ aIm
 bqN
 asm
 boc
-bbq
-bxv
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aVa
+bFo
+bBa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bBa
 aXR
-aVa
-bwI
+bBa
+bAT
 bpx
 bwd
 aXn
-bwI
-bwJ
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -178303,7 +178641,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -178327,31 +178665,31 @@ bqN
 asm
 bod
 boa
-bxv
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aXz
+bBa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEI
 aXR
-aVa
-bwI
+bBa
+bAT
 bpy
 bwd
 aXn
-bwI
-bwJ
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -178406,7 +178744,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -178429,32 +178767,32 @@ aIm
 bqN
 asm
 boe
-bbt
-bxx
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aXz
+bFq
+bEJ
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEI
 aXS
-aVa
-bwI
+bBa
+bAT
 bpx
-aXo
+bEC
 bpu
-bwI
-bwJ
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -178509,7 +178847,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -178531,33 +178869,33 @@ aIm
 aIm
 bqO
 asm
-bxw
-bbq
-bxv
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aYk
+bEI
+bFo
+bBa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEY
 aXY
-aXJ
-bwI
+bEL
+bAT
 bwj
-aXo
+bEC
 bpu
 bps
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -178612,7 +178950,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -178636,31 +178974,31 @@ asm
 asm
 aWI
 bbv
-bxv
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aHD
-aHD
-aHD
-bwI
+bBa
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEM
+bEM
+bEM
+bAT
 bwk
-aXo
+bEC
 bpu
 bps
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -178715,7 +179053,7 @@ bwI
 bwI
 bwI
 bwI
-asm
+bwI
 asm
 asm
 asm
@@ -178737,33 +179075,33 @@ asm
 asm
 asm
 asm
-bxu
-bxu
-bxu
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwL
-bwI
-bwI
+aUF
+aUF
+aUF
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bET
+bAT
+bAT
 aXs
-aXo
-aXo
-aJt
-bwJ
+bEC
+bEC
+bEB
+bAV
 aaa
 aaa
 aaa
@@ -178818,7 +179156,7 @@ aVS
 aUa
 aXg
 bpn
-bbc
+aXg
 bbX
 aSe
 bbc
@@ -178840,33 +179178,33 @@ aSe
 aSe
 aSe
 aWJ
-bbP
-bxL
-baY
-aWk
-aXg
-aXg
-aXg
-bao
-aXg
-aXg
-aVS
+bFx
 aXS
-aVS
-bpn
-aXg
+bFn
+aWk
+bEz
+bEz
+bEz
+bao
+bEz
+bEz
+bEu
+aXS
+bEu
+bEq
+bEz
 asH
-aYx
-bwI
+bFc
+bAT
 aui
-atP
+bEU
 asI
-bwI
-aXo
-aJt
-aJt
-aJt
-bwJ
+bAT
+bEC
+bEB
+bEB
+bEB
+bAV
 aaa
 aaa
 aaa
@@ -178921,7 +179259,7 @@ aXE
 bji
 aXE
 bpJ
-aZg
+aXE
 aWJ
 baK
 baK
@@ -178943,33 +179281,33 @@ bxT
 bxT
 aZg
 bbX
-aZg
-bbp
-aZg
+bEH
+bFv
+bEH
 aWk
-aZn
-aZn
-aXE
+bFe
+bFe
+bEH
 bap
-aXE
-aXE
-aXE
+bEH
+bEH
+bEH
 aZD
-aZn
-bpJ
-aXE
+bFe
+bFd
+bEH
 aYL
-aYx
-aQO
-auH
-aYa
-aXK
-aQO
-aXo
-aJt
+bFc
+bEE
+bEZ
+bEV
+bEP
+bEE
+bEC
+bEB
 bwa
-bwJ
-bwJ
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -179024,7 +179362,7 @@ aXg
 aWa
 aXg
 bpl
-aSe
+aVS
 aWJ
 bcG
 aSe
@@ -179046,33 +179384,33 @@ bcG
 aSe
 bcG
 aWJ
-bbc
+bEz
 bqs
 bqn
 aWk
 aWy
-aVS
-aXg
+bEu
+bEz
 bao
-aXg
-aXg
-aXg
+bEz
+bEz
+bEz
 aUA
-aXg
-bpl
-aVS
+bEz
+bEo
+bEu
 asH
-aYx
-bwI
+bFc
+bAT
 aui
-atQ
-atf
-bwI
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
+bEW
+bEQ
+bAT
+bAV
+bAV
+bAV
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -179127,7 +179465,7 @@ bwI
 bwI
 bwI
 bwI
-aDb
+bwI
 aHH
 bog
 bog
@@ -179149,29 +179487,29 @@ bog
 bog
 bog
 aHH
-aDb
-bxO
-aDb
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwL
-bwI
-bwI
-bwJ
+bAT
+bET
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bET
+bAT
+bAT
+bAV
 aaa
 aaa
 aaa
@@ -179230,7 +179568,7 @@ bwI
 bwI
 bwI
 bwI
-aDb
+bwI
 aHH
 bum
 bug
@@ -179253,28 +179591,28 @@ bdh
 bcI
 aHH
 bxU
-bxP
+bEU
 bxy
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-aRN
-aXq
-aVS
-bpl
-aVS
-aOT
-aPW
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bFf
+bED
+bEu
+bEo
+bEu
+bEX
+bFb
 aOP
 aOi
 aOa
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -179333,7 +179671,7 @@ bwI
 bwI
 bwI
 bwI
-aDb
+bwI
 aHH
 bcJ
 bdh
@@ -179356,28 +179694,28 @@ bdh
 bcJ
 aHH
 bxV
-bxw
-bxz
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
+bEI
+asL
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 aTG
-aRO
+bFh
 aQU
-aYk
+bEY
 aQA
-aOT
+bEX
 aQo
-aPW
-aOT
-aXK
-bwJ
-bwJ
+bFb
+bEX
+bEP
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -179436,7 +179774,7 @@ bwI
 bwI
 bwI
 bwI
-aDb
+bwI
 aHH
 bcJ
 bbG
@@ -179458,29 +179796,29 @@ brD
 brd
 bqP
 aHH
-bxW
-bxw
-bxz
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
+bED
+bEI
+asL
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 aTH
 aRW
 aQX
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -179539,7 +179877,7 @@ bwI
 bwI
 bwI
 bwI
-aDb
+bwI
 aHH
 bcJ
 bbG
@@ -179561,21 +179899,21 @@ bcI
 bbG
 bcJ
 aHH
-bxW
-bxw
+bED
+bEI
 aZj
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-auH
-aXz
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEZ
+bEI
 asL
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -179642,7 +179980,7 @@ bwI
 bwI
 bwI
 bwI
-aDb
+bwI
 aHH
 bcJ
 bbG
@@ -179665,20 +180003,20 @@ bbG
 bcJ
 aHH
 bxX
-bxQ
+bEY
 bxD
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-bwI
-auH
-aXz
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
+bEZ
+bEI
 aRa
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -179745,7 +180083,7 @@ biD
 bhW
 bwI
 bwI
-aDb
+bwI
 aHH
 bvI
 biv
@@ -179767,21 +180105,21 @@ bbN
 bdn
 bbb
 aHH
-aDb
-bxO
-aDb
-bwI
-bwI
-bwI
-bwI
-bwI
+bAT
+bET
+bAT
+bAT
+bAT
+bAT
+bAT
+bAT
 aXd
 aUv
 aUv
 aTI
-aXz
-aXK
-bwJ
+bEI
+bEP
+bAV
 aaa
 aaa
 aaa
@@ -179848,7 +180186,7 @@ bpl
 big
 bhW
 aRN
-baU
+aYx
 aHH
 bcJ
 bbG
@@ -179870,21 +180208,21 @@ bdZ
 bbG
 bcJ
 aHH
-bar
-bxP
+bFy
+bEU
 aZk
 aYP
-aRO
-aRO
-aYp
-atP
+bFh
+bFh
+bFm
+bEU
 aXp
-aVS
-aVS
+bEu
+bEu
 aXS
-aXz
+bEI
 aRb
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -179951,7 +180289,7 @@ bpl
 aVS
 aXK
 aYx
-baU
+aYx
 aHH
 bcJ
 biw
@@ -179973,21 +180311,21 @@ bbN
 aSm
 bcI
 aHH
-bas
-bxG
-bxG
-aPW
-aOT
-aOT
-aPW
-aVS
-aVS
-aVS
-aVS
+bEZ
+bEX
+bEX
+bFb
+bEX
+bEX
+bFb
+bEu
+bEu
+bEu
+bEu
 aTJ
 aSd
 aRf
-bwJ
+bAV
 aaa
 aaa
 aaa
@@ -180054,7 +180392,7 @@ biH
 aVJ
 bhY
 aYx
-baU
+aYx
 aHH
 aHH
 bdo
@@ -180076,21 +180414,21 @@ bdo
 bdo
 aHH
 aHH
-bav
-bad
+bFz
+bEW
 aZm
 aYS
-atQ
+bEW
 aYB
 aYq
 aYg
-aYk
-aVJ
-aYk
+bEY
+bFi
+bEY
 aRf
 aSf
-bwJ
-bwJ
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -180157,8 +180495,8 @@ bwI
 bwI
 bwI
 bwI
-baU
-baU
+aYx
+aYx
 aHH
 aHH
 aHH
@@ -180178,22 +180516,22 @@ aHH
 aHH
 aHH
 aHH
-baU
-baU
-aDb
-aDb
-bwI
-bwI
-bwI
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
+bFc
+bFc
+bAT
+bAT
+bAT
+bAT
+bAT
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
+bAV
 aaa
 aaa
 aaa
@@ -180254,12 +180592,12 @@ aaa
 bdH
 bdH
 bdH
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bxP
 aHH
@@ -180285,10 +180623,10 @@ bxO
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 bdH
 bdH
 bdH
@@ -180357,12 +180695,12 @@ aaa
 bdH
 bdH
 bdH
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bgE
 aHH
@@ -180388,10 +180726,10 @@ bxP
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 bdH
 bdH
 bdH
@@ -180460,12 +180798,12 @@ aaa
 bdH
 bdH
 bdH
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bxw
 aHH
@@ -180491,10 +180829,10 @@ bbm
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 bdH
 bdH
 bdH
@@ -180563,12 +180901,12 @@ aaa
 aaa
 aaa
 aaa
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bbm
 aHH
@@ -180594,10 +180932,10 @@ bbA
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 bdH
 bdH
 bdH
@@ -180666,12 +181004,12 @@ aaa
 aaa
 aaa
 aaa
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bcS
 aHH
@@ -180697,10 +181035,10 @@ bbm
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 aaa
 aaa
 aaa
@@ -180769,12 +181107,12 @@ aaa
 aaa
 aaa
 aaa
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bbm
 aHH
@@ -180800,10 +181138,10 @@ bad
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 aaa
 aaa
 aaa
@@ -180872,19 +181210,19 @@ aaa
 aaa
 aaa
 aaa
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bad
 aHH
 aHH
 bip
 brR
-brE
+bFD
 aHH
 bfB
 brR
@@ -180903,10 +181241,10 @@ bxO
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 aaa
 aaa
 aaa
@@ -180975,12 +181313,12 @@ aaa
 aaa
 aaa
 aaa
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bgT
 bbB
@@ -181006,10 +181344,10 @@ bbB
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 aaa
 aaa
 aaa
@@ -181078,12 +181416,12 @@ aaa
 aaa
 aaa
 aaa
-bwJ
-bwI
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
+aDb
 aDb
 bxw
 bxz
@@ -181109,10 +181447,10 @@ bxz
 aDb
 aDb
 aDb
-bwI
-bwI
-bwI
-bwJ
+aDb
+aDb
+aDb
+bxH
 aaa
 aaa
 aaa
@@ -181181,12 +181519,12 @@ aaa
 aaa
 aaa
 aaa
-bwJ
-bwJ
-bwI
-bwI
-bwI
-bwI
+bxH
+bxH
+aDb
+aDb
+aDb
+aDb
 aDb
 bgE
 bbE
@@ -181212,10 +181550,10 @@ bxz
 aDb
 aDb
 aDb
-bwI
-bwI
-bwJ
-bwJ
+aDb
+aDb
+bxH
+bxH
 aaa
 aaa
 aaa
@@ -181285,11 +181623,11 @@ aaa
 aaa
 aaa
 bdH
-bwJ
-bwI
-bwI
-bwI
-bwI
+bxH
+aDb
+aDb
+aDb
+aDb
 aDb
 bxw
 bbF
@@ -181315,9 +181653,9 @@ bbD
 aDb
 aDb
 aDb
-bwI
-bwI
-bwJ
+aDb
+aDb
+bxH
 aaa
 aaa
 aaa
@@ -181388,11 +181726,11 @@ aaa
 aaa
 aaa
 bdH
-bwJ
-bwJ
-bwJ
-bwJ
-bwJ
+bxH
+bxH
+bxH
+bxH
+bxH
 bxH
 bbm
 bbF
@@ -181418,9 +181756,9 @@ bbE
 bxH
 bxH
 bxH
-bwJ
-bwJ
-bwJ
+bxH
+bxH
+bxH
 aaa
 aaa
 aaa
@@ -181927,7 +182265,7 @@ aHH
 aSC
 aSC
 aHH
-bxP
+bFC
 bcT
 bcn
 bxH
@@ -190774,12 +191112,12 @@ bKI
 xhU
 xhU
 jCX
-sEz
+cQG
 iNh
-wdF
-wdF
-wdF
-wdF
+pyj
+pyj
+pyj
+pyj
 cMl
 icZ
 xkd
@@ -190876,7 +191214,7 @@ cQG
 ugw
 cwC
 cwC
-sEz
+cQG
 cwC
 uun
 oRk
@@ -191190,8 +191528,8 @@ vrM
 tpn
 pUD
 bju
-wdF
-wdF
+pyj
+pyj
 wSm
 dPT
 kVZ
@@ -191600,11 +191938,11 @@ cmM
 hAf
 cNI
 bbi
-wdF
-wdF
-wdF
-wdF
-kQu
+pyj
+pyj
+pyj
+pyj
+wSm
 cqM
 xkd
 qFu
@@ -200891,9 +201229,9 @@ bmT
 bmT
 bmT
 bmT
-aKH
-aKH
-aKH
+bFF
+bFF
+bFF
 bmT
 vIo
 vIo

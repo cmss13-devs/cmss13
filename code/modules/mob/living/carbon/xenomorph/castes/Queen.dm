@@ -580,6 +580,7 @@
 					if(length(T.contents) <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
+			overlays -= acid_overlay
 
 /mob/living/carbon/xenomorph/queen/get_status_tab_items()
 	. = ..()

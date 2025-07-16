@@ -5,7 +5,7 @@ on:
 
 jobs:
   labeler:
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted]
     steps:
     - uses: actions/labeler@v5
       with:

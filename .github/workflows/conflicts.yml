@@ -10,7 +10,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted]
     steps:
       - uses: eps1lon/actions-label-merge-conflict@v2.1.0
         with:

@@ -6,7 +6,7 @@ on:
 jobs:
   generate_documentation:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
-    runs-on: [self-hosted, linux, x64]
+    runs-on: [self-hosted]
     concurrency: gen-docs
     steps:
       - uses: actions/checkout@v3

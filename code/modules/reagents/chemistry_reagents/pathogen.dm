@@ -38,7 +38,7 @@
 /datum/chem_property/special/mycotainted
 	name = PROPERTY_MYCOTAINTED
 	code = "MYC"
-	description = "Takes less time for this chemical to metabolize, resulting in it being in the bloodstream for less time per unit."
+	description = "Tainted by mycelial spores, surely this can't be a good thing."
 	category = PROPERTY_TYPE_ANOMALOUS
 
 /datum/chem_property/special/mycotainted/process_dead(mob/living/affected_mob, potency = 1, delta_time)

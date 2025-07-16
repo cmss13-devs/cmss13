@@ -1,0 +1,6 @@
+author: "stalkerino, zenith"
+delete-after: True
+changes:
+  - rscadd: "adds the leg pouch from pve as a 5 slot webbing resprite"
+  - rscadd: "gives co the intel satchel, and chestrig  option rather than only the backpack"
+  - rscadd: "gives insulated black gloves option to POs too"

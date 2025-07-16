@@ -10,7 +10,7 @@
 	max_w_class = SIZE_LARGE
 	storage_slots = 1
 	max_storage_space = 4
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW
+	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD|STORAGE_ALLOW_QUICKDRAW|STORAGE_ALLOW_WHILE_HAULED
 	///Icon/item states change based on contents; this stores base icon state.
 	var/base_icon
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
@@ -63,7 +63,7 @@
 		playsound(src, drawSound, 15, TRUE)
 
 /obj/item/storage/large_holster/m37
-	name = "\improper L44 M37A2 scabbard"
+	name = "\improper L44 shotgun scabbard"
 	desc = "A large leather holster fitted for USCM-issue shotguns. It has harnesses that allow it to be secured to the back for easy storage."
 	icon_state = "m37_holster"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
@@ -75,6 +75,7 @@
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat,
 		/obj/item/weapon/gun/shotgun/double/mou53,
+		/obj/item/weapon/gun/shotgun/pump/m37a,
 	)
 	flags_atom = FPRINT // has gamemode skin
 
@@ -169,7 +170,7 @@
 
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
-	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
+	desc = "A large, old-styled scabbard used to carry a ceremonial sword."
 	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	item_icons = list(
 		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
@@ -245,8 +246,7 @@
 	handle_item_insertion(new /obj/item/weapon/gun/smg/m39())
 
 /obj/item/storage/large_holster/m39/full/elite/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite())
-
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39/elite/compact())
 
 /obj/item/storage/large_holster/fuelpack
 	name = "\improper Broiler-T flexible refueling system"
@@ -258,11 +258,11 @@
 	var/obj/item/ammo_magazine/flamer_tank/large/B/fuelB
 	var/obj/item/ammo_magazine/flamer_tank/large/X/fuelX
 	var/obj/item/ammo_magazine/flamer_tank/large/active_fuel
-	var/obj/item/weapon/gun/flamer/M240T/linked_flamer
+	var/obj/item/weapon/gun/flamer/m240/spec/linked_flamer
 	var/toggling = FALSE
 	var/image/flamer_overlay
 	actions_types = list(/datum/action/item_action/specialist/toggle_fuel)
-	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
+	can_hold = list(/obj/item/weapon/gun/flamer/m240/spec)
 
 /obj/item/storage/large_holster/fuelpack/Initialize()
 	. = ..()
@@ -386,7 +386,7 @@
 		switch_fuel(A, user)
 		return
 
-	var/obj/item/weapon/gun/flamer/M240T/F = A
+	var/obj/item/weapon/gun/flamer/m240/spec/F = A
 	if(istype(F) && !(F.fuelpack))
 		F.link_fuelpack(user)
 		if(F.current_mag && !(F.current_mag in list(fuel,fuelB,fuelX)))
@@ -468,3 +468,35 @@
 	if (!istype(FP))
 		return
 	FP.toggle_fuel()
+
+/obj/item/storage/belt/gun/brutepack
+	name = "\improper M271A2 Pattern Launcher Rig"
+	desc = "A special-issue harness designed to allow the user to freely and securely holster a M6H-BRUTE launcher system on their back without impeding movement, while also having several other integrated storage packs for additional ammo and equipment."
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	icon_state = "bruterig"
+	map_specific_decoration = FALSE
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
+	flags_equip_slot = SLOT_BACK //yes we are belt subtype that is worn on back
+	storage_slots = 7
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/weapon/gun/launcher/rocket/brute,
+	)
+	bypass_w_limit = list(/obj/item/weapon/gun/launcher/rocket/brute)
+
+
+/obj/item/storage/belt/gun/brutepack/update_icon()
+	. = ..()
+	var/mob/living/carbon/human/user = loc
+	if(istype(user))
+		user.update_inv_back()
+
+/obj/item/storage/belt/gun/brutepack/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/launcher/rocket/brute())
+	new /obj/item/ammo_magazine/rocket/brute(src)
+	new /obj/item/ammo_magazine/rocket/brute(src)
+	new /obj/item/ammo_magazine/rocket/brute(src)
+

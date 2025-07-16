@@ -1,7 +1,7 @@
 /datum/equipment_preset/fax_responder
 	name = "Fax Responder"
 	assignment = "Fax Responder"
-	rank = "Fax Responder"
+	job_title = "Fax Responder"
 
 	role_comm_title = "Resp."
 
@@ -72,12 +72,12 @@
 /datum/equipment_preset/fax_responder/uscm
 	name = "Fax Responder - USCM HC"
 	assignment = JOB_FAX_RESPONDER_USCM_HC
-	rank = JOB_FAX_RESPONDER_USCM_HC
+	job_title = JOB_FAX_RESPONDER_USCM_HC
 	faction_group = list(FACTION_FAX, FACTION_MARINE)
 
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_3)
 	idtype = /obj/item/card/id/gold
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIG, ACCESS_MARINE_AI)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE_ADMIN, ACCESS_MARINE_GENERAL, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIG, ACCESS_MARINE_AI)
 	headset_type = /obj/item/device/radio/headset/almayer/highcom
 	idtype = /obj/item/card/id/gold
 
@@ -90,12 +90,13 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/provost, WEAR_R_EAR)
 	. = ..()
 
 /datum/equipment_preset/fax_responder/uscm/provost
 	name = "Fax Responder - USCM Provost"
 	assignment = JOB_FAX_RESPONDER_USCM_PVST
-	rank = JOB_FAX_RESPONDER_USCM_PVST
+	job_title = JOB_FAX_RESPONDER_USCM_PVST
 	faction_group = list(FACTION_FAX, FACTION_MARINE)
 	idtype = /obj/item/card/id/provost
 
@@ -103,7 +104,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/chief(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/provost/chief(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/provost(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/mp/provost/chief(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
@@ -111,6 +112,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/red(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/provost, WEAR_R_EAR)
 	. = ..()
 
 //*****************************************************************************************************/
@@ -118,7 +120,7 @@
 /datum/equipment_preset/fax_responder/wey_yu
 	name = "Fax Responder - WY"
 	assignment = JOB_FAX_RESPONDER_WY
-	rank = JOB_FAX_RESPONDER_WY
+	job_title = JOB_FAX_RESPONDER_WY
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_WY, FACTION_WY_DEATHSQUAD, FACTION_PMC)
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_3)
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_WY_COLONIAL, ACCESS_WY_EXEC, ACCESS_WY_GENERAL, ACCESS_WY_LEADERSHIP)
@@ -131,6 +133,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/black(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -139,7 +142,7 @@
 /datum/equipment_preset/fax_responder/upp
 	name = "Fax Responder - UPP"
 	assignment = JOB_FAX_RESPONDER_UPP
-	rank = JOB_FAX_RESPONDER_UPP
+	job_title = JOB_FAX_RESPONDER_UPP
 	faction_group = list(FACTION_FAX, FACTION_UPP)
 	paygrades = list(PAY_SHORT_UO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_UO3 = JOB_PLAYTIME_TIER_1, PAY_SHORT_UO4 = JOB_PLAYTIME_TIER_3)
 	headset_type = /obj/item/device/radio/headset/distress/UPP/kdo/command
@@ -161,6 +164,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/green(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -170,7 +174,7 @@
 /datum/equipment_preset/fax_responder/twe
 	name = "Fax Responder - TWE"
 	assignment = JOB_FAX_RESPONDER_TWE
-	rank = JOB_FAX_RESPONDER_TWE
+	job_title = JOB_FAX_RESPONDER_TWE
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_TWE)
 	headset_type = /obj/item/device/radio/headset/distress/royal_marine
 	idtype = /obj/item/card/id/gold
@@ -184,6 +188,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -192,7 +197,7 @@
 /datum/equipment_preset/fax_responder/clf
 	name = "Fax Responder - CLF"
 	assignment = JOB_FAX_RESPONDER_CLF
-	rank = JOB_FAX_RESPONDER_CLF
+	job_title = JOB_FAX_RESPONDER_CLF
 	faction_group = list(FACTION_FAX, FACTION_CLF)
 	headset_type = /obj/item/device/radio/headset/distress/CLF/command
 	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
@@ -209,6 +214,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/black(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -217,7 +223,7 @@
 /datum/equipment_preset/fax_responder/cmb
 	name = "Fax Responder - CMB"
 	assignment = JOB_FAX_RESPONDER_CMB
-	rank = JOB_FAX_RESPONDER_CMB
+	job_title = JOB_FAX_RESPONDER_CMB
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_MARSHAL)
 	headset_type = /obj/item/device/radio/headset/distress/CMB
 	idtype = /obj/item/card/id/marshal
@@ -238,6 +244,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/red(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()
 
@@ -246,7 +253,7 @@
 /datum/equipment_preset/fax_responder/press
 	name = "Fax Responder - Press"
 	assignment = JOB_FAX_RESPONDER_PRESS
-	rank = JOB_FAX_RESPONDER_PRESS
+	job_title = JOB_FAX_RESPONDER_PRESS
 	faction_group = list(FACTION_FAX, FACTION_MARINE, FACTION_COLONIST)
 	headset_type = /obj/item/device/radio/headset/almayer/reporter
 	idtype = /obj/item/card/id/silver/cl
@@ -263,5 +270,6 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/notepad/blue(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/multicolor/fountain, WEAR_R_EAR)
 
 	..()

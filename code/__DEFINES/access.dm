@@ -4,7 +4,7 @@ It's best not to mess with the numbers of the regular access levels because
 most of them are tied into map-placed objects. This should be reworked in the future.*/
 //WE NEED TO REWORK THIS ONE DAY.  Access levels make me cry - Apophis
 #define ACCESS_MARINE_SENIOR 1
-#define ACCESS_MARINE_DATABASE 2
+#define ACCESS_MARINE_GENERAL 2
 #define ACCESS_MARINE_BRIG 3
 #define ACCESS_MARINE_ARMORY 4
 #define ACCESS_MARINE_CMO 5
@@ -45,6 +45,11 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 #define ACCESS_MARINE_ASO 37
 #define ACCESS_MARINE_CHAPLAIN 38
 #define ACCESS_MARINE_FIELD_DOC 39
+
+/// Grants access to Marine record databases
+#define ACCESS_MARINE_DATABASE 40
+/// Grants administrator access to Marine record databases
+#define ACCESS_MARINE_DATABASE_ADMIN 41
 
 // AI Core Accesses
 /// Used in temporary passes

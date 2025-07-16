@@ -136,7 +136,7 @@
 /datum/ammo/proc/on_pointblank(mob/living/L, obj/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
 	return
 
-/datum/ammo/proc/on_hit_obj(obj/O, obj/projectile/P) //Special effects when hitting objects.
+/datum/ammo/proc/on_hit_obj(obj/target_object, obj/projectile/proj_hit) //Special effects when hitting objects.
 	SHOULD_NOT_SLEEP(TRUE)
 	return
 

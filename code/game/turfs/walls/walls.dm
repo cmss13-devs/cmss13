@@ -5,6 +5,7 @@
 	icon_state = "0"
 	opacity = TRUE
 	layer = WALL_LAYER
+	is_weedable = FULLY_WEEDABLE
 	/// 1 = Can't be deconstructed by tools or thermite. Used for Sulaco walls
 	var/walltype = WALL_METAL
 	/// when walls smooth with one another, the type of junction each wall is.
@@ -50,6 +51,8 @@
 
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
+	is_weedable = initial(is_weedable) //so we can spawn weeds on the wall
+
 	// Defer updating based on neighbors while we're still loading map
 	if(mapload && . != INITIALIZE_HINT_QDEL)
 		return INITIALIZE_HINT_LATELOAD
@@ -57,6 +60,7 @@
 	update_connections(TRUE)
 	if(. != INITIALIZE_HINT_LATELOAD)
 		update_icon()
+
 
 /turf/closed/wall/LateInitialize()
 	. = ..()
@@ -172,7 +176,7 @@
 	if(direction == NORTH)
 		hiding_human.add_filter("cutout", 1, alpha_mask_filter(icon = icon('icons/effects/effects.dmi', "cutout")))
 	ADD_TRAIT(hiding_human, TRAIT_UNDENSE, WALL_HIDING_TRAIT)
-	RegisterSignal(hiding_human, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED, COMSIG_HUMAN_ANIMATING), PROC_REF(unhide_human), hiding_human)
+	RegisterSignal(hiding_human, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED, COMSIG_MOB_ANIMATING), PROC_REF(unhide_human), hiding_human)
 	..()
 
 /turf/closed/wall/proc/unhide_human(mob/living/carbon/human/to_unhide)
@@ -187,8 +191,7 @@
 	to_unhide.apply_effect(1, SUPERSLOW)
 	to_unhide.apply_effect(2, SLOW)
 	hiding_humans -= to_unhide
-	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED))
-	UnregisterSignal(to_unhide, list(COMSIG_HUMAN_ANIMATING))
+	UnregisterSignal(to_unhide, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_MOB_RESISTED, COMSIG_MOB_ANIMATING))
 	to_chat(to_unhide, SPAN_WARNING("You couldn't sit still so you stop leaning on the wall!"))
 	to_unhide.remove_filter("cutout")
 
@@ -336,6 +339,8 @@
 		dismantle_wall(FALSE, TRUE)
 		if(!istype(src, /turf/closed/wall/resin))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
+		else
+			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/resin, cause_data)
 	else
 		if(istype(src, /turf/closed/wall/resin))
 			exp_damage *= RESIN_EXPLOSIVE_MULTIPLIER

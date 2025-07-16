@@ -375,6 +375,7 @@
 		to_chat(user, SPAN_NOTICE("TARGET ACQUIRED. LASER TARGETING IS ONLINE. DON'T MOVE."))
 		var/obj/effect/overlay/temp/laser_target/LT = new (TU, las_name, user, tracking_id)
 		laser = LT
+		SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE)
 
 		var/turf/userloc = get_turf(user)
 		msg_admin_niche("Laser target [las_name] has been designated by [key_name(user, 1)] at ([TU.x], [TU.y], [TU.z]). [ADMIN_JMP(userloc)]")
@@ -384,6 +385,7 @@
 		while(laser)
 			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				QDEL_NULL(laser)
+				SEND_SIGNAL(src, COMSIG_DESIGNATOR_LASE_OFF)
 				break
 
 //IMPROVED LASER DESIGNATER, faster cooldown, faster target acquisition, can be found only in scout spec kit
@@ -425,7 +427,7 @@
 		overlays += cas_laser_overlay
 
 /datum/action/item_action/specialist/spotter_target
-	ability_primacy = SPEC_PRIMARY_ACTION_1
+	ability_primacy = SPEC_PRIMARY_ACTION_2
 	var/minimum_laze_distance = 2
 
 /datum/action/item_action/specialist/spotter_target/New(mob/living/user, obj/item/holder)

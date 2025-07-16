@@ -4,7 +4,7 @@
 
 /obj/item/ammo_magazine/sniper
 	name = "\improper M42A marksman magazine (10x28mm Caseless)"
-	desc = "A magazine of sniper rifle ammo. An aimed shot with it will deal significant damage."
+	desc = "A magazine of 10x28mm caseless sniper rifle ammo. An aimed shot with it will deal significant damage."
 	caliber = "10x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
 	icon_state = "m42c" //PLACEHOLDER
@@ -17,13 +17,13 @@
 
 /obj/item/ammo_magazine/sniper/incendiary
 	name = "\improper M42A incendiary magazine (10x28mm)"
-	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily blind the targe and kindle the blaze further."
+	desc = "An incendiary magazine of 10x28mm sniper rifle ammo. An aimed shot with it will temporarily blind the target and light them heavily on fire."
 	default_ammo = /datum/ammo/bullet/sniper/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 /obj/item/ammo_magazine/sniper/flak
 	name = "\improper M42A flak magazine (10x28mm)"
-	desc = "A magazine of sniper rifle ammo. An aimed shot with it will temporarily slow the target and minimize the backlash."
+	desc = "A flak magazine of 10x28mm sniper rifle ammo. An aimed shot with it will temporarily slow the target, as well as inflicting backlash to anyone nearby."
 	default_ammo = /datum/ammo/bullet/sniper/flak
 	ammo_band_color = AMMO_BAND_COLOR_IMPACT
 
@@ -52,7 +52,7 @@
 
 /obj/item/ammo_magazine/sniper/svd
 	name = "\improper Type-88 Magazine (7.62x54mmR)"
-	desc = "A large caliber magazine for the Type-88 designated marksman rifle."
+	desc = "A large-caliber 7.62x54mmR magazine for the Type-88 designated marksman rifle."
 	caliber = "7.62x54mmR"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/marksman_rifles.dmi'
 	icon_state = "type88mag"
@@ -64,7 +64,7 @@
 
 /obj/item/ammo_magazine/rifle/m4ra/custom
 	name = "\improper A19 HV magazine (10x24mm)"
-	desc = "A magazine of A19 high velocity rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
+	desc = "A high-velocity 10x24mm magazine of A19 rounds for use in the M4RA custom battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
 	icon_state = "a19"
 	default_ammo = /datum/ammo/bullet/rifle/m4ra
 	max_rounds = 18
@@ -74,7 +74,7 @@
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/incendiary
 	name = "\improper A19 HV incendiary magazine (10x24mm)"
-	desc = "A magazine of A19 HV incendiary rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+	desc = "An incendiary magazine of A19 HV rounds for use in the M4RA battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/incendiary
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
@@ -82,7 +82,7 @@
 
 /obj/item/ammo_magazine/rifle/m4ra/custom/impact
 	name = "\improper A19 HV high impact magazine (10x24mm)"
-	desc = "A magazine of A19 HV high impact rounds for use in the M4RA battle rifle. The M4RA battle rifle is the only gun that can chamber these rounds."
+	desc = "A high-impact magazine of A19 rounds for use in the M4RA battle rifle. The M4RA custom battle rifle is the only gun that can chamber these rounds."
 	default_ammo = /datum/ammo/bullet/rifle/m4ra/impact
 	max_rounds = 18
 	gun_type = /obj/item/weapon/gun/rifle/m4ra_custom
@@ -92,6 +92,7 @@
 //SMARTGUN
 /obj/item/ammo_magazine/smartgun
 	name = "smartgun drum"
+	desc = "A 10x28mm 500-round drum magazine for use in the M56 Smartgun."
 	caliber = "10x28mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/machineguns.dmi'
 	icon_state = "m56_drum"
@@ -103,7 +104,7 @@
 
 /obj/item/ammo_magazine/smartgun/dirty
 	name = "irradiated smartgun drum"
-	desc = "What at first glance appears to be a standard 500 round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
+	desc = "What at first glance appears to be a standard 500-round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56D or M56T smartguns, and is marked with a red X."
 	icon_state = "m56_drum_dirty"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/WY/machineguns.dmi'
 	default_ammo = /datum/ammo/bullet/smartgun/dirty
@@ -112,7 +113,7 @@
 
 /obj/item/ammo_magazine/smartgun/holo_targetting
 	name = "holotargetting smartgun drum"
-	desc = "Holotargetting rounds for use in the royal marines commando L56A2 smartgun."
+	desc = "A 10x28mm holotargetting drum magazine for use in the Royal Marines Commando L56A2 Smartgun."
 	icon_state = "m56_drum" //PLACEHOLDER
 	default_ammo = /datum/ammo/bullet/smartgun/holo_target
 	gun_type = /obj/item/weapon/gun/smartgun/rmc
@@ -130,7 +131,7 @@
 
 /obj/item/ammo_magazine/rocket
 	name = "\improper 84mm high explosive rocket"
-	desc = "A rocket tube loaded with a HE warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter-wide area for a short time. Has decreased effect on heavily armored targets."
+	desc = "A rocket tube loaded with a high-explosive warhead. Deals high damage to soft targets on direct hit and stuns most targets in a 5-meter-wide area for a short time. Has decreased effect on heavily armored targets."
 	caliber = "rocket"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "rocket"
@@ -140,7 +141,7 @@
 	w_class = SIZE_MEDIUM
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket
-	gun_type = /obj/item/weapon/gun/launcher/rocket
+	gun_type = /obj/item/weapon/gun/launcher/rocket/m5
 	flags_magazine = NO_FLAGS
 
 /obj/item/ammo_magazine/rocket/attack_self(mob/user)
@@ -156,54 +157,54 @@
 	else
 		to_chat(user, "Not with a missile inside!")
 
-/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
-	if(!istype(M) || !istype(user) || get_dist(user, M) > 1)
+/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/demoman, mob/living/carbon/human/user)
+	if(!istype(demoman) || !istype(user) || get_dist(user, demoman) > 1)
 		return
-	var/obj/item/weapon/gun/launcher/in_hand = M.get_active_hand()
+	var/obj/item/weapon/gun/launcher/in_hand = demoman.get_active_hand()
 	if(!in_hand || !istype(in_hand))
-		to_chat(user, SPAN_WARNING("[M] isn't holding a rocket launcher in their active hand!"))
+		to_chat(user, SPAN_WARNING("[demoman] isn't holding a rocket launcher in their active hand!"))
 		return
 	if(!in_hand.current_mag)
-		to_chat(user, SPAN_WARNING("[M]'s [in_hand] is already loaded!"))
+		to_chat(user, SPAN_WARNING("[demoman]'s [in_hand] is already loaded!"))
 		return
 	if(!istype(in_hand, gun_type))
-		to_chat(user, SPAN_WARNING("[src] doesn't fit into [M]'s [in_hand.name]!")) // using name here because otherwise it puts an odd 'the' in front
+		to_chat(user, SPAN_WARNING("[src] doesn't fit into [demoman]'s [in_hand.name]!")) // using name here because otherwise it puts an odd 'the' in front
 		return
-	var/obj/item/weapon/twohanded/offhand/off_hand = M.get_inactive_hand()
+	var/obj/item/weapon/twohanded/offhand/off_hand = demoman.get_inactive_hand()
 	if(!off_hand || !istype(off_hand))
-		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
+		to_chat(user, SPAN_WARNING("\the [demoman] needs to be wielding \the [in_hand] in order to reload!"))
 		return
-	if(!skillcheck(M, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
+	if(!skillcheck(demoman, SKILL_FIREARMS, SKILL_FIREARMS_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't know how to reload \the [in_hand]!"))
 		return
-	if(M.dir != user.dir || M.loc != get_step(user, user.dir))
-		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
+	if(demoman.dir != user.dir || demoman.loc != get_step(user, user.dir))
+		to_chat(user, SPAN_WARNING("You must be standing behind \the [demoman] in order to reload it!"))
 		return
 	if(in_hand.current_mag.current_rounds > 0)
 		to_chat(user, SPAN_WARNING("\the [in_hand] is already loaded!"))
 		return
 	if(user.action_busy)
 		return
-	to_chat(user, SPAN_NOTICE("You begin reloading \the [M]'s [in_hand]! Hold still..."))
-	if(!do_after(user,(in_hand.current_mag.reload_delay / 2), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	to_chat(user, SPAN_NOTICE("You begin reloading \the [demoman]'s [in_hand]! Hold still..."))
+	if(!do_after(user,(in_hand.current_mag.reload_delay / 2), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, demoman, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 		return
-	if(off_hand != M.get_inactive_hand())
-		to_chat(user, SPAN_WARNING("\the [M] needs to be wielding \the [in_hand] in order to reload!"))
+	if(off_hand != demoman.get_inactive_hand())
+		to_chat(user, SPAN_WARNING("\the [demoman] needs to be wielding \the [in_hand] in order to reload!"))
 		return
-	if(M.dir != user.dir)
-		to_chat(user, SPAN_WARNING("You must be standing behind \the [M] in order to reload it!"))
+	if(demoman.dir != user.dir)
+		to_chat(user, SPAN_WARNING("You must be standing behind \the [demoman] in order to reload it!"))
 		return
 	user.drop_inv_item_on_ground(src)
 	qdel(in_hand.current_mag)
 	in_hand.replace_ammo(user,src)
 	in_hand.current_mag = src
 	forceMove(in_hand)
-	to_chat(user, SPAN_NOTICE("You load \the [src] into \the [M]'s [in_hand]."))
+	to_chat(user, SPAN_NOTICE("You load \the [src] into \the [demoman]'s [in_hand]."))
 	if(in_hand.reload_sound)
-		playsound(M, in_hand.reload_sound, 25, 1)
+		playsound(demoman, in_hand.reload_sound, 25, 1)
 	else
-		playsound(M,'sound/machines/click.ogg', 25, 1)
+		playsound(demoman,'sound/machines/click.ogg', 25, 1)
 
 	return 1
 
@@ -211,7 +212,7 @@
 	if(current_rounds <= 0)
 		name = "\improper 84mm spent rocket tube"
 		icon_state = "rocket_e"
-		desc = "Spent rocket tube for M5 RPG rocket launcher. Activate in hand to disassemble for metal."
+		desc = "A spent rocket tube for M5 RPG rocket launcher. Activate in hand to disassemble for metal."
 		add_to_garbage(src)
 	else
 		icon_state = initial(icon_state)
@@ -234,17 +235,24 @@
 	name = "\improper 84mm anti-armor rocket"
 	icon_state = "ap_rocket"
 	default_ammo = /datum/ammo/rocket/ap
-	desc = "A rocket tube loaded with an AP warhead. Capable of piercing heavily armored targets. Deals very little to no splash damage. Inflicts guaranteed stun to most targets. Has high accuracy within 7 meters."
+	desc = "A rocket tube loaded with an armor-piercing warhead. Capable of piercing heavily armored targets. Deals very little to no splash damage. Inflicts guaranteed stun to most targets. Has high accuracy within 7 meters."
 
 /obj/item/ammo_magazine/rocket/wp
 	name = "\improper 84mm white-phosphorus rocket"
 	icon_state = "wp_rocket"
 	default_ammo = /datum/ammo/rocket/wp
-	desc = "Rocket tube loaded with WP warhead. Has two damaging factors. On hit disperses X-Variant Napthal (blue flames) in a 4-meter radius circle, ignoring cover, while simultaneously bursting into highly heated shrapnel that ignites targets within slightly bigger area."
+	desc = "A rocket tube loaded with a white phosphorus incendiary warhead. Has two damaging factors. On hit disperses X-Variant Napthal (blue flames) in a 4-meter radius circle, ignoring cover, while simultaneously bursting into highly heated shrapnel that ignites targets within slightly bigger area."
+
+/obj/item/ammo_magazine/rocket/brute
+	name = "\improper M5510 Laser-Guided Rocket"
+	icon_state = "brute_rocket"
+	default_ammo = /datum/ammo/rocket/brute
+	gun_type = /obj/item/weapon/gun/launcher/rocket/brute
+	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an ellipical radius of several meters. These rockets are known to have reduced lethality to personel, but will put just about any ol' backwater mud-hut right into orbit."
 
 /obj/item/ammo_magazine/rocket/custom
 	name = "\improper 84mm custom rocket"
-	desc = "An 84mm custom rocket."
+	desc = "A rocket tube loaded with a custom warhead."
 	icon_state = "custom_rocket"
 	default_ammo = /datum/ammo/rocket/custom
 	matter = list("metal" = 7500) //2 sheets
@@ -342,7 +350,7 @@
 
 /obj/item/ammo_magazine/rocket/anti_tank
 	name = "\improper 84mm Anti-Tank Rocket"
-	desc = "An anti-armor rocket specifically modified for penetration of armored vehicle hulls."
+	desc = "An anti-armor rocket specifically designed for penetration of armored vehicle hulls."
 	caliber = "rocket"
 	icon_state = "at_rocket"
 
@@ -357,7 +365,8 @@
 
 /obj/item/ammo_magazine/rocket/upp
 	name = "\improper HJRA-12 High-Explosive Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard High-Explosive rocket for anti-personal or light-vehicle use."
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is a standard high-explosive rocket for use against light vehicles or as an anti-personnel grenade."
+
 	caliber = "88mm"
 	icon_state = "hjra_explosive"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/rocket_launchers.dmi'
@@ -375,7 +384,8 @@
 
 /obj/item/ammo_magazine/rocket/upp/at
 	name = "\improper HJRA-12 Anti-Tank Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is a standard Anti-Tank rocket designed to disable or destroy hostile vehicles."
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is a standard anti-tank rocket designed to disable or destroy hostile armored vehicles."
+
 	caliber = "88mm"
 	icon_state = "hjra_tank"
 
@@ -386,7 +396,8 @@
 
 /obj/item/ammo_magazine/rocket/upp/incen
 	name = "\improper HJRA-12 Extreme-Intensity Incendiary Rocket"
-	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Grenade Launcher. This one is an extreme-intensity incendiary rocket, using an experimental chemical designated R-189 by the UPP, it is designed to melt through fortified positions and bunkers but is most commonly used in an anti-personnal role due to over-issuing and the tempatures after use in its intended role leaving the tempature of the air incompatible with human life."
+	desc = "A rocket for the UPP standard-issue HJRA-12 Handheld Anti-Tank Rocket Launcher. This one is an extreme-intensity incendiary rocket."
+	desc_lore = "This incendiary rocket uses an experimental chemical designated 'R-189' by the UPP. It is designed to melt through fortifications and bunkers but is most commonly used in an anti-personnel role due to over-issuing and the tempeartures after use in its intended role leaving behind a cloud of super-heated air, preventing troops' advance."
 	caliber = "88mm"
 	icon_state = "hjra_incen"
 

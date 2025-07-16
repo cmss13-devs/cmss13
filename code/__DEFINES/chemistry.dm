@@ -186,6 +186,7 @@
 #define PROPERTY_ANTIPARASITIC "anti-parasitic"
 #define PROPERTY_ELECTROGENETIC "electrogenetic"
 #define PROPERTY_ORGANSTABILIZE "organ-stabilizing"
+#define PROPERTY_CRITICALSTABILIZE "critical-stabilizing"
 //Rare Combo, made by combining other properties
 #define PROPERTY_DEFIBRILLATING "defibrillating"
 #define PROPERTY_THANATOMETABOL "thanatometabolizing"
@@ -300,6 +301,7 @@
 #define POTENCY_MULTIPLIER_MEDIUM 2
 #define POTENCY_MULTIPLIER_HIGH 3
 #define POTENCY_MULTIPLIER_VHIGH 5
+#define POTENCY_MULTIPLIER_VVHIGH 6
 #define POTENCY_MULTIPLIER_HIGHEXTREMEINTER 7.5
 #define POTENCY_MULTIPLIER_EXTREME 10
 

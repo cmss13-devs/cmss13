@@ -42,6 +42,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf //to prevent NV CO from spawning as a CO
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -57,6 +58,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/leader
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -72,6 +74,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/engineer
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -87,6 +90,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/medic
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -376,7 +380,7 @@
 
 /obj/effect/landmark/survivor_spawner/bigred_crashed_pmc
 	icon_state = "surv_wy"
-	equipment = /datum/equipment_preset/survivor/pmc
+	equipment = /datum/equipment_preset/survivor/pmc/standard
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
@@ -446,13 +450,13 @@
 
 //Shivas Panic Room Survivors//
 
-/obj/effect/landmark/survivor_spawner/shivas_panic_room_pmc
+/obj/effect/landmark/survivor_spawner/shivas_panic_room_commando
 	icon_state = "surv_wy"
-	equipment = /datum/equipment_preset/survivor/pmc/shivas
+	equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
 	intro_text = list("<h2>You are the last living security element on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
-	story_text = "You are a mercenary stationed on 'Ifrit' by Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. While you were assigned to protecting the people taking shelter in the Panic Room, the rest of your team was spread out throughout the colony. You have not seen any of them since. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
+	story_text = "You are a commando stationed on 'Ifrit' by Weyland-Yutani. This whole outbreak has been a giant mess, you and all other Company personnel ran to the Operations Panic Room, until you heard shooting outside and closed the shutters. You are running low on food, water and ammunition for the weapons. While you were assigned to protecting the people taking shelter in the Panic Room, the rest of your team was spread out throughout the colony. You have not seen any of them since. In their attempts at trying to breach in, the so called 'xenomorphs' have tried attacking the shutters, but to no avail. They will soon try again. You must survive and find a way to contact Weyland-Yutani."
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 
@@ -563,6 +567,11 @@
 	equipment = /datum/equipment_preset/survivor/forecon/squad_leader
 	spawn_priority = SPAWN_PRIORITY_HIGH
 
+// Trijent UPP insert
+
+/obj/effect/landmark/survivor_spawner/upp
+	icon_state = "surv_upp"
+
 /obj/effect/landmark/survivor_spawner/upp/soldier
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/soldier
@@ -611,4 +620,117 @@
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south east, which was carrying additional weapons</span>")
 	story_text = "Your orders were simple, Recon the site, ascertain if there is a biological weapons program in the area, and if so to secure the colony and retrieve a sample. However your team failed to account for an active anti-air battery near the area. Both your craft and your sister ship crashed. Barely having a chance to catch your breath, you found yourself being assailed by vile xenomorphs! You and your team have barely held your ground, at the cost of four of your own, but more are coming and ammo is low. You believe an American rescue force is en route."
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/// IASF ///
+
+/obj/effect/landmark/survivor_spawner/twe
+	icon_state = "surv_twe"
+
+/obj/effect/landmark/survivor_spawner/twe/iasf/paratrooper
+	equipment = /datum/equipment_preset/survivor/iasf/paratrooper
+	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
+	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
+	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
+	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
+	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/twe/iasf/engi
+	equipment = /datum/equipment_preset/survivor/iasf/engi
+	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
+	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
+	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
+	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
+	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+
+/obj/effect/landmark/survivor_spawner/twe/iasf/medic
+	equipment = /datum/equipment_preset/survivor/iasf/medic
+	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
+	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
+	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
+	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
+	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/twe/iasf/pilot
+	equipment = /datum/equipment_preset/survivor/iasf/pilot
+	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
+	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
+	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
+	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
+	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/twe/iasf/squad_leader
+	equipment = /datum/equipment_preset/survivor/iasf/squad_leader
+	synth_equipment = /datum/equipment_preset/synth/survivor/iasf_synth
+	CO_equipment = /datum/equipment_preset/survivor/hybrisa/iasf_commander
+	intro_text = list("<h2 style='color:#2F3E66; font-size:125%;'>You are a member of the IASF Parachute Regiment!</h2>",\
+	"<span class='notice' style='color:#A6A6A6;'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger' style='color:#7F2F2B;'>Your primary objective is to survive.</span>")
+	story_text = "<p style='font-size:95%; color:#A6A6A6;'>Outpost Souter was your final posting before withdrawal. With Weyland-Yutani buying out Hybrisa, the TWE began pulling its forces off-world — the IASF included. Your Regiment was standing down, preparing to hand over control during the transition. Then the outbreak hit. You've spent the last weeks barely holding the outpost together, repelling wave after wave while sheltering what few survivors you could. Now, only your squad remains. The outpost is falling apart, the armoury's dry, and the dropship in the hangar still has no fuel. A distress signal was sent over a week ago. All you can do now is hold your ground — and pray someone answers.</p>"
+	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
+
+/// Soro UPP - SOF - Survivors
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/soldier
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_LOW
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/sapper
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/sapper
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/medic
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/medic
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_MEDIUM
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/specialist
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
+/obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader
+	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader
+	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
+	intro_text = list("You are a member of a UPP SOF QRF team!",\
+	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the south west, which was carrying additional weapons</span>")
+	story_text = "<span style='color:#607c4c; font-size:95%;'>You are part of an SOF QRF team—of the Union of Progressive Peoples, deployed alongside the CEC to build garrisons on distant worlds. On the return trip from the frontier, you receive a distress signal from the Union colony of 'Sorokyne Strata' on the planet 'Thermae I' (LV-976). Your team is sent to investigate.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Intel suggests CANC separatists or a UA/3WE incursion, but as you touch down in the hangar, something feels wrong. No welcome party. No usual hustle of a working colony. Nothing to suggest an incursion of any kind.</span><br><br>\
+<span style='color:#607c4c; font-size:95%;'>Your mission is clear—find out what happened to your supply ship and comrades, retrieve your equipment, and uncover the truth of what really happened to the colony.</span>"
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH

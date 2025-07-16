@@ -162,11 +162,13 @@
 	name = "identification holo-badge"
 	desc = "A plain, mass produced holo-badge."
 	icon_state = "data"
+	item_state = "card-id"
 
 /obj/item/card/id/lanyard
 	name = "identification holo-lanyard"
 	desc = "A crude holo-lanyard. As cheap as they come."
 	icon_state = "lanyard"
+	item_state = "lanyard"
 
 /obj/item/card/id/silver
 	name = "identification holo-badge"
@@ -178,6 +180,7 @@
 	name = "corporate doctor badge"
 	desc = "A corporate holo-badge. It is fingerprint locked with clearance level 3 access. It is commonly held by corporate doctors."
 	icon_state = "clearance"
+	item_state = "silver_id"
 	var/credits_to_give = 15 //gives the equivalent clearance access in credits
 
 /obj/item/card/id/silver/clearance_badge/scientist
@@ -189,19 +192,21 @@
 	name = "corporate liaison badge"
 	desc = "A corporate holo-badge in unique corporate orange and white. It is fingerprint locked with clearance level 5 access. It is commonly held by corporate liaisons."
 	icon_state = "cl"
+	item_state = "cl_id"
 	credits_to_give = 42
 
 /obj/item/card/id/silver/clearance_badge/manager
 	name = "corporate manager badge"
 	desc = "A corporate holo-badge in standard corporate orange and white. It has a unique uncapped bottom. It is fingerprint locked with 5-X clearance level. Commonly held by corporate managers."
 	icon_state = "pmc"
+	item_state = "cl_id"
 	credits_to_give = 47
 
 /obj/item/card/id/pizza
 	name = "pizza guy badge"
 	desc = "It reads: 'Pizza-guy local union No. 217','We always deliver!'"
 	icon_state = "pizza"
-	item_state = "gold_id"
+	item_state = "card-id"
 
 /obj/item/card/id/souto
 	name = "Souto Man"
@@ -225,27 +230,41 @@
 	name = "corporate holo-badge"
 	desc = "A corporate holo-badge. It's a unique Corporate orange and white."
 	icon_state = "cl"
+	item_state = "cl_id"
+
+/obj/item/card/id/silver/cl/hyperdyne
+	name = "corporate holo-badge"
+	desc = "A corporate holo-badge. It's a unique Corporate orange and black."
+	icon_state = "hyperdyne"
 
 /obj/item/card/id/gold/council
 	name = "identification holo-badge"
-	desc = "A real bronze gold Colonel's holo-badge. Commands respect, authority, and it makes an excellent paperweight."
+	desc = "A real bronze gold Colonel's holo-badge. Commands respect, authority, and it makes for an excellent paperweight."
 	icon_state = "commodore"
+	item_state = "commodore_id"
 
 /obj/item/card/id/pmc
 	name = "\improper PMC holo-badge"
 	desc = "A corporate holo-badge. It has a unique uncapped bottom."
 	icon_state = "pmc"
-	registered_name = "The Corporation"
+	item_state = "cl_id"
+	registered_name = "The Weyland-Yutani Corporation"
 	assignment = "Corporate Mercenary"
 
 /obj/item/card/id/pmc/New()
 	access = get_access(ACCESS_LIST_WY_ALL)
 	..()
 
+/obj/item/card/id/pmc/commando
+	name = "\improper W-Y Commando holo-badge"
+	assignment = "Corporate Commando"
+	icon_state = "commando"
+
 /obj/item/card/id/pmc/ds
 	name = "\improper Corporate holo-badge"
-	desc = "It lists a callsign and a blood type. Issued to Whiteout protocol teams only."
+	desc = "It lists a callsign and a series number. Issued to Whiteout protocol teams only."
 	icon_state = "ds"
+	item_state = "ds_id"
 
 /obj/item/card/id/marshal
 	name = "\improper CMB marshal gold badge"
@@ -272,6 +291,7 @@
 	name = "\improper NSPA silver badge"
 	desc = "The silver badge which represents that the wearer is a NSPA Constable. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "nspa_silver"
+	id_type = "Badge"
 	item_state = "silver_id"
 	paygrade = PAY_SHORT_CST
 
@@ -279,6 +299,7 @@
 	name = "\improper NSPA silver & gold badge"
 	desc = "The silver with gold accents badge which represents that the wearer is a NSPA Senior Constable to Sergeant. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "nspa_silverandgold"
+	id_type = "Badge"
 	item_state = "silver_id"
 	paygrade = PAY_SHORT_SGT
 
@@ -286,15 +307,23 @@
 	name = "\improper NSPA gold badge"
 	desc = "A gold badge signifying that the wearer is one of the higher ranks of the NSPA, usually Inspectors and above. It is a sign of justice, authority, and protection. Protecting those who can't. This badge represents a commitment to a sworn oath always kept."
 	icon_state = "nspa_gold"
+	id_type = "Badge"
 	item_state = "gold_id"
 	paygrade = PAY_SHORT_CINSP
+
+/obj/item/card/id/PaP
+	name = "PaP identification holo-badge"
+	desc = "A standard-issue holo-badge for personnel within the UPP's People's Armed Police. It displays the officer's rank and affiliation."
+	icon_state = "data"
+	paygrade = PAY_SHORT_PAP_MLTS
 
 /obj/item/card/id/general
 	name = "general officer holo-badge"
 	desc = "Top brass of the top brass. Issued to only the most dedicated."
 	icon_state = "general"
-	registered_name = "The USCM"
-	assignment = "General"
+	item_state = "general_id"
+	registered_name = "The United States Colonial Marines"
+	assignment = "High Command Officer"
 
 /obj/item/card/id/general/New()
 	access = get_access(ACCESS_LIST_MARINE_ALL)
@@ -303,8 +332,9 @@
 	name = "provost holo-badge"
 	desc = "Issued to members of the Provost Office."
 	icon_state = "provost"
-	registered_name = "Provost Office"
-	assignment = "Provost"
+	item_state = "provost_id"
+	registered_name = "United States Colonial Marines Provost Office"
+	assignment = "Provost Staff"
 
 /obj/item/card/id/provost/New()
 	access = get_access(ACCESS_LIST_MARINE_ALL)

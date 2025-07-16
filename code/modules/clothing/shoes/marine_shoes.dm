@@ -84,6 +84,13 @@
 /obj/item/clothing/shoes/marine/upp/knife
 	spawn_item_type = /obj/item/attachable/bayonet/upp
 
+/obj/item/clothing/shoes/marine/upp/black
+	icon_state = "marine"
+	item_state = "marine"
+
+/obj/item/clothing/shoes/marine/upp/black/knife
+	spawn_item_type = /obj/item/attachable/bayonet/upp
+
 /obj/item/clothing/shoes/marine/joe
 	name = "biohazard boots"
 	desc = "A pair of somewhat cheaply made biohazard boots. Tomorrow, Together."
@@ -153,10 +160,10 @@
 		icon_state = initial(icon_state)
 
 /obj/item/clothing/shoes/veteran/pmc/knife
-	spawn_item_type = /obj/item/attachable/bayonet
+	spawn_item_type = /obj/item/attachable/bayonet/wy
 
 /obj/item/clothing/shoes/veteran/pmc/commando
-	name = "\improper PMC commando boots"
+	name = "\improper W-Y commando boots"
 	desc = "A pair of heavily armored, acid-resistant boots."
 
 	armor_bio = CLOTHING_ARMOR_HIGH
@@ -164,7 +171,23 @@
 	unacidable = TRUE
 
 /obj/item/clothing/shoes/veteran/pmc/commando/knife
-	spawn_item_type = /obj/item/attachable/bayonet
+	spawn_item_type = /obj/item/attachable/bayonet/wy
+
+/obj/item/clothing/shoes/veteran/pmc/combat_android
+	name = "\improper M7X greaves"
+	desc = "A pair of heavily armored, acid-resistant boots, made to complete the M7X Apesuit."
+	icon_state = "droid_boots"
+	item_state = "droid_boots"
+	armor_bio = CLOTHING_ARMOR_HIGH
+	siemens_coefficient = 0.2
+	unacidable = TRUE
+	spawn_item_type = /obj/item/attachable/bayonet/wy
+
+/obj/item/clothing/shoes/veteran/pmc/combat_android/dark
+	name = "\improper M7X Mark II greaves"
+	desc = "A pair of heavily armored, optical camouflaged, acid-resistant boots, made to complete the M7X Mark II Apesuit."
+	icon_state = "invis_droid_boots"
+	item_state = "invis_droid_boots"
 
 /obj/item/clothing/shoes/veteran/pmc/van_bandolier
 	name = "hiking boots"
@@ -178,6 +201,13 @@
 	item_state = "cbrn"
 	armor_rad = CLOTHING_ARMOR_GIGAHIGHPLUS
 	armor_bio = CLOTHING_ARMOR_GIGAHIGHPLUS
+	spawn_item_type = /obj/item/attachable/bayonet
+
+/obj/item/clothing/shoes/marine/cbrn_non_armored
+	name = "\improper M2 MOPP boots"
+	desc = "M2 MOPP boots are designed to shield the wearer from contact with hazardous substances and potential infection vectors in contaminated environments. These older boots offer basic resistance to punctures and environmental threats, but lack the advanced durability and radiation shielding of later models. Users should inspect these boots regularly for signs of wear or damage."
+	icon_state = "cbrn"
+	item_state = "cbrn"
 	spawn_item_type = /obj/item/attachable/bayonet
 
 /obj/item/clothing/shoes/marine/corporate
@@ -238,7 +268,7 @@
 
 //=ROYAL MARINES=\\
 
-/obj/item/clothing/shoes/royal_marine
+/obj/item/clothing/shoes/marine/royal_marine
 	name = "\improper L10 pattern combat boots"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. Used by the three world empires royal marines commando units."
 	icon_state = "rmc_boots"
@@ -265,7 +295,7 @@
 	)
 	flags_atom = NO_NAME_OVERRIDE
 
-/obj/item/clothing/shoes/royal_marine/knife
+/obj/item/clothing/shoes/marine/royal_marine/knife
 	spawn_item_type = /obj/item/attachable/bayonet/rmc
 
 /obj/item/clothing/shoes/dress/rmc

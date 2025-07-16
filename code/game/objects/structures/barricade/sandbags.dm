@@ -20,11 +20,6 @@
 	if(direction)
 		setDir(direction)
 
-	if(dir == SOUTH)
-		pixel_y = -7
-	else if(dir == NORTH)
-		pixel_y = 7
-
 	..(loc, user)
 
 	for(var/i = 1 to amount-1)
@@ -32,6 +27,11 @@
 
 /obj/structure/barricade/sandbags/update_icon()
 	..()
+
+	if(dir == SOUTH)
+		pixel_y = -7
+	else if(dir == NORTH)
+		pixel_y = 7
 
 	icon_state = "sandbag[build_stage]"
 	if(dir > 2)
@@ -43,21 +43,25 @@
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_4
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_4
+		damage_state = BARRICADE_DMG_NONE
 		stack_amount = 4
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_3 && build_stage != BARRICADE_SANDBAG_3)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_3
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_3
+		damage_state = BARRICADE_DMG_SLIGHT
 		stack_amount = 3
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_2 && build_stage != BARRICADE_SANDBAG_2)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_2
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_2
+		damage_state = BARRICADE_DMG_MODERATE
 		stack_amount = 2
 	if(health <= BARRICADE_SANDBAG_TRESHOLD_1 && build_stage != BARRICADE_SANDBAG_1)
 		changed = TRUE
 		build_stage = BARRICADE_SANDBAG_1
 		maxhealth = BARRICADE_SANDBAG_TRESHOLD_1
+		damage_state = BARRICADE_DMG_HEAVY
 		stack_amount = 1
 	if(changed && is_wired)
 		maxhealth += 50

@@ -14,7 +14,8 @@
 	var/idtype = /obj/item/card/id
 	var/list/access = list()
 	var/assignment
-	var/rank
+	var/job_title
+	var/manifest_title
 	var/list/paygrades = list("???")
 	var/role_comm_title
 	var/minimum_age
@@ -53,6 +54,9 @@
 
 
 /datum/equipment_preset/New()
+	if(!manifest_title)
+		manifest_title = job_title
+
 	uniform_sets = list(
 		UNIFORM_VEND_UTILITY_UNIFORM = utility_under,
 		UNIFORM_VEND_UTILITY_JACKET = utility_over,
@@ -102,7 +106,7 @@
 	if(!mob_client || new_human.client != mob_client)
 		playtime = JOB_PLAYTIME_TIER_1
 	else
-		playtime = get_job_playtime(mob_client, rank)
+		playtime = get_job_playtime(mob_client, job_title)
 		if((playtime >= JOB_PLAYTIME_TIER_1) && !mob_client.prefs.playtime_perks)
 			playtime = JOB_PLAYTIME_TIER_1
 	var/final_paygrade
@@ -111,7 +115,7 @@
 		if(required_time - playtime > 0)
 			break
 		final_paygrade = current_paygrade
-	if(rank == JOB_SQUAD_MARINE && final_paygrade == PAY_SHORT_ME3)
+	if(job_title == JOB_SQUAD_MARINE && final_paygrade == PAY_SHORT_ME3)
 		if(GLOB.data_core.leveled_riflemen > GLOB.data_core.leveled_riflemen_max)
 			return PAY_SHORT_ME2
 		else
@@ -145,7 +149,7 @@
 	ID.faction = faction
 	ID.faction_group = faction_group.Copy()
 	ID.assignment = assignment
-	ID.rank = rank
+	ID.rank = manifest_title
 	ID.registered_name = new_human.real_name
 	ID.registered_ref = WEAKREF(new_human)
 	ID.registered_gid = new_human.gid
@@ -158,7 +162,7 @@
 	if(new_human.mind)
 		new_human.mind.name = new_human.real_name
 		// Bank account details handled in generate_money_account()
-	new_human.job = rank
+	new_human.job = job_title
 	new_human.comm_title = role_comm_title
 
 /datum/equipment_preset/proc/load_languages(mob/living/carbon/human/new_human, client/mob_client)
@@ -222,7 +226,7 @@
 				qdel(R)
 
 	if(flags & EQUIPMENT_PRESET_MARINE)
-		var/playtime = get_job_playtime(new_human.client, rank)
+		var/playtime = get_job_playtime(new_human.client, job_title)
 		var/medal_type
 
 		switch(playtime)
@@ -305,7 +309,6 @@
 	name = "*strip*"
 	flags = EQUIPMENT_PRESET_EXTRA
 	idtype = null
-
 
 /datum/equipment_preset/proc/spawn_rebel_uniform(mob/living/carbon/human/new_human)
 	if(!istype(new_human))
@@ -1127,3 +1130,33 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/t73(new_human), WEAR_WAIST)
 		if (4)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp(new_human), WEAR_WAIST)
+
+/datum/equipment_preset/proc/add_survivor_rare_item(mob/living/carbon/human/new_human)
+	var/random_rare_item = rand(1,444)
+	switch(random_rare_item)
+		if(1 to 4) // 2%
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717(new_human), WEAR_IN_BACK)
+		if(5 to 8) // 2%
+			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact(new_human), WEAR_IN_BACK)
+		if(9 to 16) // 4%
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/flamer_tank/survivor(new_human), WEAR_IN_BACK)
+		if(17 to 26) // 5%
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive(new_human), WEAR_IN_BACK)
+		if(27 to 38) // 6%
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/bruise_pack/upgraded(new_human), WEAR_IN_BACK)
+		if(39 to 54) // 8%
+			new_human.equip_to_slot_or_del(new /obj/item/stack/medical/advanced/ointment/upgraded(new_human), WEAR_IN_BACK)
+		if(55 to 74) // 10%
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
+		if(75 to 104) // 15%
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+		if(105 to 144) // 20%
+			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15(new_human), WEAR_IN_BACK)
+		if(145 to 194) // 25%
+			new_human.equip_to_slot_or_del(new /obj/item/cell/hyper(new_human), WEAR_IN_BACK)
+		if(195 to 254) // 30%
+			new_human.equip_to_slot_or_del(new /obj/item/attachable/flashlight/grip(new_human), WEAR_IN_BACK)
+		if(255 to 324) // 35%
+			new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack (new_human), WEAR_IN_BACK)
+		if(325 to 444) // 45%
+			new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/civ(new_human), WEAR_IN_BACK)

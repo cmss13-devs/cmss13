@@ -10,6 +10,7 @@
 
 // Weyland Yutani Categories
 #define CARDCON_DEPARTMENT_CORP_LEAD "Corporate Leadership"
+#define CARDCON_DEPARTMENT_COMMANDOS "Corporate Commandos"
 #define CARDCON_DEPARTMENT_CORP_SECURITY "Corporate Security"
 #define CARDCON_DEPARTMENT_CORPORATE "Corporate Employees"
 #define CARDCON_DEPARTMENT_PMC "PMC Combat Ops"
@@ -300,6 +301,7 @@
 	if(is_weyland)
 		departments = list(
 			CARDCON_DEPARTMENT_CORP_LEAD = ROLES_WY_LEADERSHIP,
+			CARDCON_DEPARTMENT_COMMANDOS = ROLES_WY_COMMANDOS,
 			CARDCON_DEPARTMENT_CORP_SECURITY = ROLES_WY_GOONS,
 			CARDCON_DEPARTMENT_CORPORATE = ROLES_WY_CORPORATE,
 			CARDCON_DEPARTMENT_PMC = ROLES_WY_PMC,
@@ -1033,25 +1035,24 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,
 
-				// 200-229: Visitors
+				// 200-231: Visitors
 				JOB_UPP_REPRESENTATIVE = 201,
 				JOB_TWE_REPRESENTATIVE = 201,
-				JOB_TIS_SA = 210,
-				JOB_TIS_IO = 211,
 				JOB_PMC_DIRECTOR = 220,
 				JOB_PMC_LEADER = 220,
 				JOB_PMC_LEAD_INVEST = 220,
 				JOB_PMC_SYNTH = 221,
-				JOB_PMC_XENO_HANDLER = 221,
 				JOB_PMC_SNIPER = 222,
 				JOB_PMC_GUNNER = 223,
 				JOB_PMC_MEDIC = 224,
 				JOB_PMC_INVESTIGATOR = 224,
 				JOB_PMC_ENGINEER = 225,
 				JOB_PMC_STANDARD = 226,
-				JOB_PMC_DOCTOR = 227,
-				JOB_WY_GOON_LEAD = 228,
-				JOB_WY_GOON = 229,
+				JOB_PMC_DETAINER = 227,
+				JOB_PMC_CROWD_CONTROL = 228,
+				JOB_PMC_DOCTOR = 229,
+				JOB_WY_GOON_LEAD = 230,
+				JOB_WY_GOON = 231,
 
 				// Appear at bottom of squad list
 				JOB_MARINE_RAIDER_SL = 130,
@@ -1071,13 +1072,18 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 					"[squad_name][JOB_SQUAD_SPECIALIST]" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Scout)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Sniper)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (Heavy Sniper)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Demo)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Grenadier)" = (squad_number + 2),
+					"[squad_name][JOB_SQUAD_SPECIALIST] (SHARP Operator)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SPECIALIST] (Pyro)" = (squad_number + 2),
 					"[squad_name][JOB_SQUAD_SMARTGUN]" = (squad_number + 3),
 					"[squad_name][JOB_SQUAD_ENGI]" = (squad_number + 4),
 					"[squad_name][JOB_SQUAD_MEDIC]" = (squad_number + 5),
-					"[squad_name][JOB_SQUAD_MARINE]" = (squad_number + 6),
+					"[squad_name]Loader" = (squad_number + 6),
+					"[squad_name]Spotter" = (squad_number + 6),
+					"[squad_name]Mortar Operator" = (squad_number + 6),
+					"[squad_name][JOB_SQUAD_MARINE]" = (squad_number + 7),
 				)
 				squad_number += 10
 		if(FACTION_WY, FACTION_PMC)
@@ -1099,17 +1105,16 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SENIOR_EXECUTIVE = 22,
 				JOB_EXECUTIVE = 23,
 				JOB_JUNIOR_EXECUTIVE = 24,
-				// 30-39: Security
+				// 30-38: Security
 				JOB_WY_GOON_LEAD = 30,
 				JOB_WY_GOON_MEDIC = 31,
 				JOB_WY_GOON_TECH = 32,
 				JOB_WY_GOON = 33,
-				// 40-49: MedSci
-				JOB_PMC_SYNTH = 40,
+				// 39-49: MedSci
+				JOB_PMC_SYNTH = 39,
 				JOB_WY_RESEARCH_LEAD = 40,
-				JOB_PMC_XENO_HANDLER = 41,
-				JOB_PMC_DOCTOR = 42,
-				JOB_WY_RESEARCHER = 43,
+				JOB_PMC_DOCTOR = 41,
+				JOB_WY_RESEARCHER = 42,
 				// 50-59: Engineering & Vehicle Crew
 				JOB_PMC_CREWMAN = 51,
 				JOB_PMC_ENGINEER = 52,
@@ -1117,6 +1122,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PMC_LEAD_INVEST = 60,
 				JOB_PMC_INVESTIGATOR = 61,
 				JOB_PMC_DETAINER = 62,
+				JOB_PMC_CROWD_CONTROL = 63,
 
 				// 70-79 PMCs Combat Team
 				JOB_PMC_LEADER = 70,
@@ -1124,6 +1130,12 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PMC_GUNNER = 72,
 				JOB_PMC_MEDIC = 73,
 				JOB_PMC_STANDARD = 75,
+
+				// 70-79 W-Y Commando Combat Team
+				JOB_WY_COMMANDO_STANDARD = 70,
+				JOB_WY_COMMANDO_LEADER= 71,
+				JOB_WY_COMMANDO_GUNNER = 72,
+				JOB_WY_COMMANDO_DOGCATHER = 73,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,

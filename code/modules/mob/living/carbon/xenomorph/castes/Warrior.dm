@@ -67,20 +67,31 @@
 	skull = /obj/item/skull/warrior
 	pelt = /obj/item/pelt/warrior
 
+/datum/behavior_delegate/warrior_base
+	name = "Base Warrior Behavior Delegate"
+
+	var/lifesteal_percent = 7
+	var/max_lifesteal = 9
+	var/lifesteal_range =  3 // Marines within 3 tiles of range will give the warrior extra health
+	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
+	var/color = "#6c6f24"
+	var/emote_cooldown = 0
 	var/lunging = FALSE // whether or not the warrior is currently lunging (holding) a target
 
 /mob/living/carbon/xenomorph/warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
 
 /mob/living/carbon/xenomorph/warrior/stop_pulling()
-	if(isliving(pulling) && lunging)
-		lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
+	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
+	if(isliving(pulling) && warrior_delegate.lunging)
+		warrior_delegate.lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
 		var/mob/living/lunged = pulling
 		lunged.set_effect(0, STUN)
 		lunged.set_effect(0, WEAKEN)
 	return ..()
 
 /mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/movable_atom, lunge)
+	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
 	if (!check_state())
 		return FALSE
 
@@ -110,26 +121,18 @@
 				return // Grab was broken, probably as Stun side effect (eg. target getting knocked away from a manned M56D)
 			visible_message(SPAN_XENOWARNING("[src] grabs [living_mob] by the throat!"),
 			SPAN_XENOWARNING("We grab [living_mob] by the throat!"))
-			lunging = TRUE
+			warrior_delegate.lunging = TRUE
 			addtimer(CALLBACK(src, PROC_REF(stop_lunging)), get_xeno_stun_duration(living_mob, 2) SECONDS + 1 SECONDS)
 
 /mob/living/carbon/xenomorph/warrior/proc/stop_lunging(world_time)
-	lunging = FALSE
+	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
+	warrior_delegate.lunging = FALSE
 
 /mob/living/carbon/xenomorph/warrior/hitby(atom/movable/movable_atom)
 	if(ishuman(movable_atom))
 		return
 	..()
 
-/datum/behavior_delegate/warrior_base
-	name = "Base Warrior Behavior Delegate"
-
-	var/lifesteal_percent = 7
-	var/max_lifesteal = 9
-	var/lifesteal_range =  3 // Marines within 3 tiles of range will give the warrior extra health
-	var/lifesteal_lock_duration = 20 // This will remove the glow effect on warrior after 2 seconds
-	var/color = "#6c6f24"
-	var/emote_cooldown = 0
 
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_target(mob/living/carbon/carbon)
 	..()
@@ -164,6 +167,16 @@
 		addtimer(CALLBACK(src, PROC_REF(lifesteal_lock)), lifesteal_lock_duration/2)
 
 	bound_xeno.gain_health(clamp(final_lifesteal / 100 * (bound_xeno.maxHealth - bound_xeno.health), 20, 40))
+
+/datum/behavior_delegate/warrior_base/override_intent(mob/living/carbon/target_carbon)
+	. = ..()
+	if(!isxeno_human(target_carbon))
+		return
+
+
+	if(lunging && target_carbon)
+		return INTENT_HARM
+
 
 /datum/behavior_delegate/warrior_base/proc/lifesteal_lock()
 	bound_xeno.remove_filter("empower_rage")
@@ -392,7 +405,7 @@
 
 	punch_user.visible_message(SPAN_XENOWARNING("[punch_user] hits [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"),
 	SPAN_XENOWARNING("We hit [carbon] in the [target_limb ? target_limb.display_name : "chest"] with a devastatingly powerful punch!"))
-	var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
+	var/sound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg',)
 	playsound(carbon, sound, 50, 1)
 	do_base_warrior_punch(carbon, target_limb)
 	apply_cooldown()

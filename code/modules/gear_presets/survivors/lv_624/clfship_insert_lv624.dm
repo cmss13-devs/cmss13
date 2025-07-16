@@ -8,7 +8,7 @@
 	skills = /datum/skills/civilian/survivor/clf
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	assignment = JOB_CLF
-	rank = JOB_CLF
+	job_title = JOB_CLF
 	role_comm_title = "GRL"
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
@@ -28,6 +28,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
@@ -36,14 +37,20 @@
 
 	..()
 
+/datum/equipment_preset/survivor/clf/load_traits(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	if(!HAS_TRAIT(new_human, TRAIT_IRON_TEETH))
+		var/datum/character_trait/character_trait = GLOB.character_traits[/datum/character_trait/biology/iron_teeth]
+		character_trait.apply_trait(new_human, src)
+
 //lead
 /datum/equipment_preset/survivor/clf/leader
 	name = "CLF Survivor Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_LEADER
-	rank = JOB_CLF_LEADER
+	job_title = JOB_CLF_LEADER
 	role_comm_title = "LDR"
-	skills = /datum/skills/clf/leader
+	skills = /datum/skills/civilian/survivor/clf/leader
 	minimap_icon = "clf_sl"
 
 /datum/equipment_preset/survivor/clf/leader/load_gear(mob/living/carbon/human/new_human)
@@ -53,7 +60,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine(new_human), WEAR_WAIST)
@@ -84,11 +90,11 @@
 	name = "CLF Survivor Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_MEDIC
-	rank = JOB_CLF_MEDIC
+	job_title = JOB_CLF_MEDIC
 	role_comm_title = "MED"
 	minimap_icon = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/clf/combat_medic
+	skills = /datum/skills/civilian/survivor/clf/combat_medic
 
 /datum/equipment_preset/survivor/clf/medic/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_rebel_equipment(new_human)
@@ -107,7 +113,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full/with_defib_and_analyzer(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/medic(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/custom/ied(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
@@ -132,12 +137,12 @@
 	name = "CLF Survivor Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_ENGI
-	rank = JOB_CLF_ENGI
+	job_title = JOB_CLF_ENGI
 	role_comm_title = "TECH"
 
 	minimap_icon = "clf_engi"
 
-	skills = /datum/skills/clf/combat_engineer
+	skills = /datum/skills/civilian/survivor/clf/combat_engineer
 
 /datum/equipment_preset/survivor/clf/engineer/load_gear(mob/living/carbon/human/new_human)
 
@@ -156,7 +161,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/welding, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/attachable/bayonet/upp(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BELT)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge, WEAR_IN_BELT)
@@ -182,8 +186,9 @@
 	faction = FACTION_CLF
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	skills = /datum/skills/colonial_synthetic
+	preset_generation_support = FALSE
 	assignment = JOB_CLF_SYNTH
-	rank = JOB_CLF_SYNTH
+	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 	minimap_background = "background_clf"

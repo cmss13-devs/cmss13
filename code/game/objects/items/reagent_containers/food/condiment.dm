@@ -22,7 +22,7 @@
 	if(M == user)
 		to_chat(M, SPAN_NOTICE("You swallow some of contents of [src]."))
 
-	else if(istype(M, /mob/living/carbon/human))
+	else if(istype(M, /mob/living/carbon))
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
@@ -120,7 +120,7 @@
 			if("cornoil")
 				name = "Corn Oil"
 				desc = "A delicious oil used in cooking. Made from corn."
-				icon_state = "oliveoil"
+				icon_state = "cornoil"
 				center_of_mass = "x=16;y=6"
 			if("sugar")
 				name = "Sugar"

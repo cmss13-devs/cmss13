@@ -210,9 +210,7 @@
 
 /turf/open/floor/plating/almayer/no_build
 	allow_construction = FALSE
-
-/turf/open/floor/plating/almayer/no_build/is_weedable()
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/plating/airless
 	icon_state = "plating"
@@ -1886,9 +1884,7 @@
 	desc = "There seems to be an awful lot of machinery down below..."
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "black"
-
-/turf/open/floor/almayer/empty/is_weedable()
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/almayer/empty/ex_act(severity) //Should make it indestructible
 	return
@@ -2152,9 +2148,7 @@
 	name = "hull"
 	turf_flags = TURF_HULL
 	allow_construction = FALSE
-
-/turf/open/floor/almayer_hull/is_weedable()
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/floor/almayer_hull/outerhull_dir
 	icon_state = "outerhull_dir"
@@ -2184,6 +2178,77 @@
 
 //////////////////////////////////////////////////////////////////////
 
+//Outerhull UPP
+
+/turf/open/floor/upp_hull_rostock
+	icon = 'icons/turf/walls/upp_hull.dmi'
+	icon_state = "outerhull_upp_rostock"
+	name = "hull"
+	turf_flags = TURF_HULL
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir
+	icon_state = "outerhull_dir_upp_rostock"
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/upp_hull_rostock/outerhull_dir/northwest
+	dir = NORTHWEST
+
+
+//Outerhull Reskin Almayer UPP
+
+/turf/open/floor/upp_hull
+	icon = 'icons/turf/walls/upp_hull.dmi'
+	icon_state = "outerhull_upp"
+	name = "hull"
+	turf_flags = TURF_HULL
+
+/turf/open/floor/upp_hull/outerhull_dir
+	icon_state = "outerhull_dir_upp"
+
+/turf/open/floor/upp_hull/outerhull_dir/southwest
+	dir = SOUTHWEST
+
+/turf/open/floor/upp_hull/outerhull_dir/north
+	dir = NORTH
+
+/turf/open/floor/upp_hull/outerhull_dir/east
+	dir = EAST
+
+/turf/open/floor/upp_hull/outerhull_dir/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/upp_hull/outerhull_dir/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/upp_hull/outerhull_dir/west
+	dir = WEST
+
+/turf/open/floor/upp_hull/outerhull_dir/northwest
+	dir = NORTHWEST
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////
 
 
 

@@ -28,6 +28,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /area/supply/station/upp
 	name = "Supply Shuttle UPP"
 
+
+
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"

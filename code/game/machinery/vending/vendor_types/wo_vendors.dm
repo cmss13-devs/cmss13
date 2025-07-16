@@ -127,7 +127,7 @@
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("M4RA Battle Rifle", floor(scale * 10), /obj/item/weapon/gun/rifle/m4ra, VENDOR_ITEM_REGULAR),
-		list("M37A2 Pump Shotgun", floor(scale * 15), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
+		list("M37A1 Pump Shotgun", floor(scale * 15), /obj/item/weapon/gun/shotgun/pump/m37a, VENDOR_ITEM_REGULAR),
 		list("M39 Submachine Gun", floor(scale * 30), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK1", floor(scale * 30), /obj/item/weapon/gun/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK2", floor(scale * 30), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),
@@ -188,6 +188,11 @@
 		list("84mm Anti-Armor Rocket", floor(scale * 1), /obj/item/ammo_magazine/rocket/ap, VENDOR_ITEM_REGULAR),
 		list("84mm High-Explosive Rocket", floor(scale * 1), /obj/item/ammo_magazine/rocket, VENDOR_ITEM_REGULAR),
 		list("84mm White-Phosphorus Rocket", floor(scale * 1), /obj/item/ammo_magazine/rocket/wp, VENDOR_ITEM_REGULAR),
+
+		list("EXTRA SHARP AMMUNITION", -1, null, null, null),
+		list("SHARP 9X-E Sticky Explosive Dart magazine (darts)", round(scale * 1.5), /obj/item/ammo_magazine/rifle/sharp/explosive, null, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-T Sticky incendiary Dart magazine (darts)", round(scale * 1), /obj/item/ammo_magazine/rifle/sharp/incendiary, null, VENDOR_ITEM_REGULAR),
+		list("SHARP 9X-F Flechette Dart Magazine (darts)", round(scale * 1), /obj/item/ammo_magazine/rifle/sharp/flechette, null, VENDOR_ITEM_REGULAR),
 
 		list("EXTRA GRENADES", -1, null, null, null),
 		list("M40 HEDP Grenade Pack (x6)", floor(scale * 1.5), /obj/effect/essentials_set/hedp_6_pack, VENDOR_ITEM_REGULAR),

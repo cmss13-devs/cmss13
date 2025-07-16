@@ -119,7 +119,7 @@
 	dat += "<b>By order of The Provost Office,</b><br><br>"
 	dat += "<p>The defendant named in this missive is to surrender themselves into Military Police custody on the following charges:</p>"
 	dat += "<p><span class=\"paper_field\"></span></p>"
-	dat += "<hr style=\"margin-bottom:-40px; margin-top:-10px;\">"
+	dat += "<hr style=\"margin-bottom:3px; margin-top:3px;\">"
 	dat += "<p>Should the defendant fail to submit to arrest they are to be further charged with Resisting Arrest and may face additional disciplinary action during a court marshal at a later date.</p>"
 	dat += "<hr style=\"margin-bottom:3px; margin-top:3px;\">"
 	dat += "<b>Defendant</b><br>"

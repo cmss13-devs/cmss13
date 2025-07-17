@@ -55,6 +55,8 @@
 				continue
 			if(turf.density)
 				continue
+			if(istype(turf, /turf/open/space))
+				continue
 			var/found_dense = FALSE
 			for(var/atom/turf_atom in turf)
 				if(turf_atom.density && turf_atom.can_block_movement)

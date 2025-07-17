@@ -1,5 +1,6 @@
 #define PLANTED_FLAG_BUFF 4 // CO level aura plus one
 #define PLANTED_FLAG_RANGE 7
+#define PLANTED_FLAG_RANGE_EXTENDED 11
 
 /obj/structure/machinery/defenses/planted_flag
 	name = "\improper JIMA planted flag"
@@ -145,7 +146,7 @@
 	hack_time = 25 SECONDS
 	health = 300
 	health_max = 300
-	area_range = 11
+	area_range = PLANTED_FLAG_RANGE_EXTENDED
 	handheld_type = /obj/item/defenses/handheld/planted_flag/wy
 	defense_type = "WY"
 	selected_categories = list(
@@ -166,7 +167,7 @@
 	disassemble_time = 5 SECONDS
 	health = 300
 	health_max = 300
-	area_range = 11
+	area_range = PLANTED_FLAG_RANGE_EXTENDED
 	handheld_type = /obj/item/defenses/handheld/planted_flag/upp
 	defense_type = "UPP"
 	selected_categories = list(
@@ -174,6 +175,22 @@
 	)
 
 	faction = FACTION_UPP
+
+/obj/structure/machinery/defenses/planted_flag/clf
+	name = "CLF planted flag"
+	desc = "A planted flag with the iconic CLF flag plastered all over it, you feel a burst of energy by its mere sight."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	disassemble_time = 5 SECONDS
+	health = 300
+	health_max = 300
+	area_range = PLANTED_FLAG_RANGE_EXTENDED
+	handheld_type = /obj/item/defenses/handheld/planted_flag/clf
+	defense_type = "CLF"
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_CLF,
+	)
+
+	faction = FACTION_CLF
 
 /obj/item/storage/backpack/jima
 	name = "JIMA frame mount"

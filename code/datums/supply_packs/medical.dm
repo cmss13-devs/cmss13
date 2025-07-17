@@ -112,7 +112,7 @@
 	group = "Medical"
 
 /datum/supply_packs/surgery
-	name = "surgery crate(tray, anesthetic, surgeon gear)"
+	name = "surgery crate (tray, anesthetic, surgeon gear)"
 	contains = list(
 		/obj/item/storage/surgical_tray,
 		/obj/item/clothing/mask/breath/medical,

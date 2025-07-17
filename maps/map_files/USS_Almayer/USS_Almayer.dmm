@@ -26651,9 +26651,10 @@
 	},
 /obj/structure/closet/crate/medical{
 	name = "field doctor's personal crate";
-	desc = "A medical crate for field doctors to take with them to the FOB.";
-	desc_lore = A field doctor, tired of relying on stealing empty roller bed crates to carry the entirety of the medical bay to the FOB, sacrificed an entire month's worth of pay for all field doctors to have their own personal medical crate every shift. This anonymous doctor is hailed a hero among corpman.
+	desc = "A medical crate for field doctors to take with them to the FOB."
 	},
+/obj/item/tool/wrench,
+/obj/item/tool/crowbar,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "eiE" = (

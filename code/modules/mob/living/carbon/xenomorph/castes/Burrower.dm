@@ -144,6 +144,7 @@
 		return
 	// TODO Make immune to all damage here.
 	to_chat(src, SPAN_XENOWARNING("We burrow ourselves into the ground."))
+	stop_looking_multiz()
 	invisibility = 101
 	alpha = 100
 	anchored = TRUE

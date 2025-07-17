@@ -144,11 +144,14 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	. = ..()
 	recipes = GLOB.runedsandstone_recipes
 
-/obj/item/stack/sheet/mineral/sandstone/runed/attack_self(mob/user)
-	..()
+/obj/item/stack/sheet/mineral/sandstone/runed/tgui_interact(mob/user, datum/tgui/ui) // yautja is real?????? no way
+	if(!isyautja(user))
+		return
 
-	if(isyautja(user))
-		list_recipes(user)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "StackReceipts", "Constructions from the [src.name]")
+		ui.open()
 
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"

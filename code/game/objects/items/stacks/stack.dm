@@ -78,108 +78,52 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	. = ..()
 	. += "There are [amount] [singular_name]\s in the stack."
 
-/obj/item/stack/attack_self(mob/user)
-	..()
-	list_recipes(user)
+/obj/item/stack/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "StackReceipts", "Constructions from the [src.name]")
+		ui.open()
 
-/obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
-	if(!recipes)
-		return
-	if(!src || amount <= 0)
-		close_browser(user, "stack")
-	user.set_interaction(src) //for correct work of onclose
-	var/list/recipe_list = recipes
-	if(recipes_sublist && recipe_list[recipes_sublist] && istype(recipe_list[recipes_sublist], /datum/stack_recipe_list))
-		var/datum/stack_recipe_list/srl = recipe_list[recipes_sublist]
-		recipe_list = srl.recipes
-	var/html_doc = text("<HTML><HEAD><title>Constructions from []</title></HEAD><body><TT>Amount Left: []<br>", src, src.amount)
-	for(var/i = 1; i <= length(recipe_list), i++)
-		var/single_receipt = recipe_list[i]
-		if(isnull(single_receipt))
-			html_doc += "<hr>"
-			continue
-
-		if(i > 1 && !isnull(recipe_list[i-1]))
-			html_doc +="<br>"
-
-		if(istype(single_receipt, /datum/stack_recipe_list))
-			var/datum/stack_recipe_list/srl = single_receipt
-			if(src.amount >= srl.req_amount)
-				html_doc += "<a href='byond://?src=\ref[src];sublist=[i]'>[srl.title] ([srl.req_amount] [src.singular_name]\s)</a>"
-			else
-				html_doc += "[srl.title] ([srl.req_amount] [src.singular_name]\s)<br>"
-
-		if(istype(single_receipt, /datum/stack_recipe))
-			var/datum/stack_recipe/single_receipt_stack = single_receipt
-			var/max_multiplier = floor(src.amount / single_receipt_stack.req_amount)
-			var/title
-			var/can_build = 1
-			can_build = can_build && (max_multiplier > 0)
-			if(single_receipt_stack.res_amount > 1)
-				title += "[single_receipt_stack.res_amount]x [single_receipt_stack.title]\s"
-			else
-				title += "[single_receipt_stack.title]"
-			title += " ([single_receipt_stack.req_amount] [src.singular_name]\s)"
-			if(can_build)
-				html_doc += text("<A href='byond://?src=\ref[src];sublist=[recipes_sublist];make=[i];multiplier=1'>[title]</A>  ")
-			else
-				html_doc += text("[]", title)
-				continue
-			if(single_receipt_stack.max_res_amount>1 && max_multiplier > 1)
-				max_multiplier = min(max_multiplier, floor(single_receipt_stack.max_res_amount/single_receipt_stack.res_amount))
-				html_doc += " |"
-				html_doc += "<input type='number' value='[min(max_multiplier, 5)]' max='[min(max_multiplier, 20)]'"
-				html_doc += "min='[min(max_multiplier, 1)]' step='1' id='input_number' style='width:35px'"
-				html_doc += "onchange=\"if (this.value === '' || this.value < 1) this.value=1; else if (this.value > [max_multiplier]) this.value=[max_multiplier]\"/>"
-
-				html_doc += "<a href=\"javascript:location.href='byond://?src=\ref[src];make=[i];multiplier=' + document.getElementById('input_number').value\">x</a>"
-
-	html_doc += "</TT></body></HTML>"
-	show_browser(user, html_doc, "Construction using [src]", "stack", width = 440, height = 500)
-	return
-
-/obj/item/stack/Topic(href, href_list)
-	..()
+/obj/item/stack/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
 	if((usr.is_mob_restrained() || usr.stat || usr.get_active_hand() != src))
 		return
+	var/multiplier = params["multiplier"]
+	var/id = params["id"]
 
-	if(href_list["sublist"] && !href_list["make"])
-		list_recipes(usr, text2num(href_list["sublist"]))
-
-	if(href_list["make"])
+	if(action == "make")
 		if(amount < 1)
 			qdel(src) //Never should happen
-			return
+			return FALSE
 
 		var/list/recipes_list = recipes
-		if(href_list["sublist"])
-			var/datum/stack_recipe_list/srl = recipes_list[text2num(href_list["sublist"])]
-			recipes_list = srl.recipes
-		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
-		var/multiplier = text2num(href_list["multiplier"])
+		var/datum/stack_recipe/R = recipes_list[id]
+
+		if(!R) // Oh no
+			return FALSE
 
 		if(multiplier != multiplier) // isnan
 			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with NaN")
-			return
+			return FALSE
 		if(!isnum(multiplier)) // this used to block nan...
 			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
-			return
+			return FALSE
 		multiplier = floor(multiplier)
 		if(multiplier < 1)
-			return  //href exploit protection
+			return FALSE  //href exploit protection
 		if(R.skill_lvl)
 			if(ishuman(usr) && !skillcheck(usr, R.skill_req, R.skill_lvl))
 				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
-				return
+				return FALSE
 		if(amount < R.req_amount * multiplier)
 			if(R.req_amount * multiplier > 1)
 				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.req_amount*multiplier] [R.title]\s!"))
 			else
 				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.title]!"))
-			return
+			return FALSE
 
 		if(check_one_per_turf(R,usr))
-			return
+			return FALSE
 
 		if(R.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
@@ -187,48 +131,48 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			var/area/area = get_area(usr)
 			if(!OT.allow_construction || !area.allow_construction)
 				to_chat(usr, SPAN_WARNING("The [R.title] must be constructed on a proper surface!"))
-				return
+				return FALSE
 
 			if(AC)
 				to_chat(usr, SPAN_WARNING("The [R.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
-				return
+				return FALSE
 
 			var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in usr.loc
 			if(tunnel)
 				to_chat(usr, SPAN_WARNING("The [R.title] cannot be constructed on a tunnel!"))
-				return
+				return FALSE
 
 			if(R.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
 				for(var/obj/object in usr.loc)
 					if(object.density || istype(object, /obj/structure/machinery/door/airlock))
 						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [R.title]!"))
-						return
+						return FALSE
 
 		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
 			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))
-			return
+			return FALSE
 
 		if(R.time)
 			if(usr.action_busy)
-				return
+				return FALSE
 			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
 			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."),
 				SPAN_NOTICE("You start assembling \a [R.title]."))
 			if(!do_after(usr, max(R.time * time_mult, R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				return
+				return FALSE
 
 			//check again after some time has passed
 			if(amount < R.req_amount * multiplier)
-				return
+				return FALSE
 
 			if(check_one_per_turf(R,usr))
-				return
+				return FALSE
 
 		var/atom/new_item
 		if(ispath(R.result_type, /turf))
 			var/turf/current_turf = get_turf(usr)
 			if(!current_turf)
-				return
+				return FALSE
 			new_item = current_turf.ChangeTurf(R.result_type)
 		else
 			new_item = new R.result_type(usr.loc, usr)
@@ -268,8 +212,71 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			for (var/obj/item/found_item in new_item)
 				qdel(found_item)
 		//BubbleWrap END
-	if(src && usr.interactee == src) //do not reopen closed window
-		INVOKE_ASYNC(src, PROC_REF(interact), usr)
+
+	return TRUE
+
+/obj/item/stack/attack_self(mob/user)
+	..()
+
+	tgui_interact(usr)
+	user.set_interaction(src)
+
+/obj/item/stack/ui_data(mob/user)
+	if(!src || amount <= 0)
+		return
+
+	. = ..()
+
+
+	.["stack_name"] = src.name
+	.["stack_amount"] = src.amount
+	.["stack_receipts"] = list()
+
+	var/list/recipe_list = recipes
+	var/empty_line_next = FALSE
+
+	for(var/i = 1; i <= length(recipe_list), i++)
+		var/single_receipt = recipe_list[i]
+		if(isnull(single_receipt))
+			empty_line_next = TRUE
+			continue
+
+		if(!istype(single_receipt, /datum/stack_recipe))
+			continue
+
+		var/datum/stack_recipe/single_receipt_stack = single_receipt
+
+		if(!single_receipt_stack)
+			continue
+
+
+		var/max_multiplier = min(20, floor(src.amount / single_receipt_stack.req_amount))
+		var/can_build = 1
+		can_build = can_build && (max_multiplier > 0)
+
+		var/icon_state = null
+		var/icon = null
+
+		var/obj/result_thing = single_receipt_stack.result_type
+		if (result_thing)
+			icon_state = result_thing.icon_state
+			icon = result_thing.icon
+
+		LAZYADD(.["stack_receipts"], list(list(
+			"id" = i,
+			"title" = single_receipt_stack.title,
+			"singular_name" = src.singular_name,
+			"req_amount" = single_receipt_stack.req_amount,
+			"is_multi" = single_receipt_stack.max_res_amount > 1 && max_multiplier > 1,
+			"maximum_to_build" = max_multiplier,
+			"can_build" = can_build,
+			"amount_to_build" = 5,
+			"empty_line_next" = empty_line_next,
+			"icon_state" = icon_state,
+			"icon" = icon
+		)))
+		empty_line_next = FALSE
+
 
 /obj/item/stack/proc/check_one_per_turf(datum/stack_recipe/R, mob/user)
 	switch(R.one_per_turf)

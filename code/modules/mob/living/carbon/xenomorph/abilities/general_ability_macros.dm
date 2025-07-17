@@ -53,14 +53,12 @@
 		action_name = "Secrete Resin (200)"
 	handle_xeno_macro(src, action_name)
 
-/* Resolve this line once structures are resolved.
-/datum/action/xeno_action/verb/verb_morph_resin()
+/datum/action/xeno_action/verb/verb_coerce_resin()
 	set category = "Alien"
-	set name = "Resin Morph"
+	set name = "Coerce Resin"
 	set hidden = TRUE
-	var/action_name = "Resin Morph (125)"
+	var/action_name = "Coerce Resin (150)"
 	handle_xeno_macro(src, action_name)
-*/
 
 /datum/action/xeno_action/verb/verb_corrosive_acid()
 	set category = "Alien"

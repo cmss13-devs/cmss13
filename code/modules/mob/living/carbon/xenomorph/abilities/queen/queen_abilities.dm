@@ -98,6 +98,7 @@
 
 	care_about_adjacency = FALSE
 	build_speed_mod = 1.2
+	needs_weeds = FALSE
 
 	var/boosted = FALSE
 
@@ -116,10 +117,6 @@
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/give_to(mob/L)
 	. = ..()
 	SSticker.OnRoundstart(CALLBACK(src, PROC_REF(apply_queen_build_boost)))
-
-// queenos don't need weeds under them to build on ovi
-/datum/action/xeno_action/activable/secrete_resin/remote/queen/can_remote_build()
-	return TRUE
 
 /datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/apply_queen_build_boost()
 	var/boost_duration = 30 MINUTES

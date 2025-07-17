@@ -1001,6 +1001,13 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/sausage
 
+/datum/recipe/sausageraw
+	items = list(
+		/obj/item/reagent_container/food/snacks/rawmeatball,
+		/obj/item/reagent_container/food/snacks/rawcutlet,
+	)
+	result = /obj/item/reagent_container/food/snacks/sausage
+
 /datum/recipe/fishfingers
 	items = list(
 		/obj/item/reagent_container/food/snacks/flour,

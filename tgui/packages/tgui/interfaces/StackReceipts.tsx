@@ -53,6 +53,7 @@ export const StackReceipts = () => {
                 localReceipts.map((receipt, index) => (
                   <Stack key={index} justify="space-between">
                     <Stack.Item width="100%">
+                      {receipt.empty_line_next ? <hr /> : ''}
                       {receipt.icon && receipt.icon_state ? (
                         <DmIcon
                           icon={receipt.icon}
@@ -117,10 +118,11 @@ export const StackReceipts = () => {
                       ) : (
                         ''
                       )}
-                      {receipt.empty_line_next ? <hr /> : ''}
                     </Stack.Item>
                   </Stack>
                 ))}
+
+              <hr />
             </Box>
           </Stack>
         </Section>

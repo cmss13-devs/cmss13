@@ -32,11 +32,38 @@ type StackData = {
 
 export const StackReceipts = () => {
   const { act, data } = useBackend<StackData>();
-  const { stack_amount, stack_name } = data;
+  let { stack_amount, stack_name } = data;
 
   const [localReceipts, setLocalReceipts] = useState(() =>
     data.stack_receipts.map((r) => ({ ...r })),
   );
+
+  const handleBuildClick = (
+    receipt: Receipt,
+    index: number,
+    multiplier: number,
+  ) => {
+    const cost = receipt.req_amount * multiplier;
+    if (cost > stack_amount) return;
+
+    act('make', {
+      multiplier,
+      id: receipt.id,
+    });
+
+    stack_amount -= cost;
+
+    const updated = localReceipts.map((r, i) => {
+      const maxAllowed = Math.min(20, Math.floor(stack_amount / r.req_amount));
+      const clamped = Math.max(1, Math.min(r.amount_to_build, maxAllowed));
+      return {
+        ...r,
+        amount_to_build: clamped,
+      };
+    });
+
+    setLocalReceipts(updated);
+  };
 
   return (
     <Window width={440} height={500}>
@@ -53,7 +80,11 @@ export const StackReceipts = () => {
                 localReceipts.map((receipt, index) => (
                   <Stack key={index} justify="space-between">
                     <Stack.Item width="100%">
-                      {receipt.empty_line_next ? <hr /> : ''}
+                      {receipt.empty_line_next ? (
+                        <hr style={{ position: 'relative', top: '6px' }} />
+                      ) : (
+                        ''
+                      )}
                       {receipt.icon && receipt.icon_state ? (
                         <DmIcon
                           icon={receipt.icon}
@@ -64,7 +95,7 @@ export const StackReceipts = () => {
                         />
                       ) : (
                         ''
-                      )}
+                      )}{' '}
                       <Button
                         disabled={
                           !(
@@ -72,12 +103,9 @@ export const StackReceipts = () => {
                             stack_amount >= receipt.req_amount
                           )
                         }
-                        onClick={() =>
-                          act('make', {
-                            multiplier: 1,
-                            id: receipt.id,
-                          })
-                        }
+                        onClick={() => {
+                          handleBuildClick(receipt, index, 1);
+                        }}
                       >
                         {receipt.title}
                         {` (${receipt.req_amount} ${receipt.singular_name}${receipt.req_amount > 1 ? 's' : ''})`}
@@ -105,12 +133,13 @@ export const StackReceipts = () => {
                             }}
                           />
                           <Button
-                            onClick={() =>
-                              act('make', {
-                                multiplier: receipt.amount_to_build,
-                                id: receipt.id,
-                              })
-                            }
+                            onClick={() => {
+                              handleBuildClick(
+                                receipt,
+                                index,
+                                receipt.amount_to_build,
+                              );
+                            }}
                           >
                             x
                           </Button>
@@ -122,7 +151,7 @@ export const StackReceipts = () => {
                   </Stack>
                 ))}
 
-              <hr />
+              <hr style={{ position: 'relative', top: '6px' }} />
             </Box>
           </Stack>
         </Section>

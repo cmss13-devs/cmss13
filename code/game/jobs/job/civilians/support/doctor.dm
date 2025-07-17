@@ -1,8 +1,8 @@
-//job options for doctors surgeon pharmacy technician(preparation of medecine and distribution)
+//job options for doctors
 
 #define DOCTOR_VARIANT "Doctor"
-#define SURGEON_VARIANT "Surgeon"
 #define PHARMACIST_VARIANT "Pharmaceutical Physician"
+#define SURGEON_VARIANT "Surgeon"
 
 // Doctor
 /datum/job/civilian/doctor

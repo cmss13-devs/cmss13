@@ -14423,7 +14423,7 @@
 /area/bigredv2/outside/engineering)
 "bpE" = (
 /obj/structure/surface/rack,
-/obj/item/device/analyzer,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bpF" = (

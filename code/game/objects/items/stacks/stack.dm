@@ -97,9 +97,9 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			return FALSE
 
 		var/list/recipes_list = recipes
-		var/datum/stack_recipe/R = recipes_list[id]
+		var/datum/stack_recipe/recipe = recipes_list[id]
 
-		if(!R) // Oh no
+		if(!recipe) // Oh no
 			return FALSE
 
 		if(multiplier != multiplier) // isnan
@@ -111,79 +111,79 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		multiplier = floor(multiplier)
 		if(multiplier < 1)
 			return FALSE  //href exploit protection
-		if(R.skill_lvl)
-			if(ishuman(usr) && !skillcheck(usr, R.skill_req, R.skill_lvl))
+		if(recipe.skill_lvl)
+			if(ishuman(usr) && !skillcheck(usr, recipe.skill_req, recipe.skill_lvl))
 				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
 				return FALSE
-		if(amount < R.req_amount * multiplier)
-			if(R.req_amount * multiplier > 1)
-				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.req_amount*multiplier] [R.title]\s!"))
+		if(amount < recipe.req_amount * multiplier)
+			if(recipe.req_amount * multiplier > 1)
+				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [recipe.req_amount*multiplier] [recipe.title]\s!"))
 			else
-				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [R.title]!"))
+				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [recipe.title]!"))
 			return FALSE
 
-		if(check_one_per_turf(R,usr))
+		if(check_one_per_turf(recipe, usr))
 			return FALSE
 
-		if(R.on_floor && istype(usr.loc, /turf/open))
+		if(recipe.on_floor && istype(usr.loc, /turf/open))
 			var/turf/open/OT = usr.loc
 			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
 			var/area/area = get_area(usr)
 			if(!OT.allow_construction || !area.allow_construction)
-				to_chat(usr, SPAN_WARNING("The [R.title] must be constructed on a proper surface!"))
+				to_chat(usr, SPAN_WARNING("The [recipe.title] must be constructed on a proper surface!"))
 				return FALSE
 
 			if(AC)
-				to_chat(usr, SPAN_WARNING("The [R.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
+				to_chat(usr, SPAN_WARNING("The [recipe.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
 				return FALSE
 
 			var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in usr.loc
 			if(tunnel)
-				to_chat(usr, SPAN_WARNING("The [R.title] cannot be constructed on a tunnel!"))
+				to_chat(usr, SPAN_WARNING("The [recipe.title] cannot be constructed on a tunnel!"))
 				return FALSE
 
-			if(R.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
+			if(recipe.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
 				for(var/obj/object in usr.loc)
 					if(object.density || istype(object, /obj/structure/machinery/door/airlock))
-						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [R.title]!"))
+						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [recipe.title]!"))
 						return FALSE
 
-		if((R.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
-			to_chat(usr, SPAN_WARNING("The [R.title] must be built on snow!"))
+		if((recipe.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
+			to_chat(usr, SPAN_WARNING("The [recipe.title] must be built on snow!"))
 			return FALSE
 
-		if(R.time)
+		if(recipe.time)
 			if(usr.action_busy)
 				return FALSE
 			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
-			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."),
-				SPAN_NOTICE("You start assembling \a [R.title]."))
-			if(!do_after(usr, max(R.time * time_mult, R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [recipe.title]."),
+				SPAN_NOTICE("You start assembling \a [recipe.title]."))
+			if(!do_after(usr, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return FALSE
 
 			//check again after some time has passed
-			if(amount < R.req_amount * multiplier)
+			if(amount < recipe.req_amount * multiplier)
 				return FALSE
 
-			if(check_one_per_turf(R,usr))
+			if(check_one_per_turf(recipe,usr))
 				return FALSE
 
 		var/atom/new_item
-		if(ispath(R.result_type, /turf))
+		if(ispath(recipe.result_type, /turf))
 			var/turf/current_turf = get_turf(usr)
 			if(!current_turf)
 				return FALSE
-			new_item = current_turf.ChangeTurf(R.result_type)
+			new_item = current_turf.ChangeTurf(recipe.result_type)
 		else
-			new_item = new R.result_type(usr.loc, usr)
+			new_item = new recipe.result_type(usr.loc, usr)
 
 		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [new_item]."),
 		SPAN_NOTICE("You assemble \a [new_item]."))
 		new_item.setDir(usr.dir)
-		if(R.max_res_amount > 1)
+		if(recipe.max_res_amount > 1)
 			var/obj/item/stack/new_stack = new_item
-			new_stack.amount = R.res_amount * multiplier
-		amount -= R.req_amount * multiplier
+			new_stack.amount = recipe.res_amount * multiplier
+		amount -= recipe.req_amount * multiplier
 		update_icon()
 
 		if(amount <= 0)

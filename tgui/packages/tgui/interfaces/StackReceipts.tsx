@@ -81,11 +81,9 @@ export const StackReceipts = () => {
                         {receipt.title}
                         {` (${receipt.req_amount} ${receipt.singular_name}${receipt.req_amount > 1 ? 's' : ''})`}
                       </Button>
-                      {receipt.is_multi && receipt.req_amount < stack_amount
-                        ? ' |'
-                        : ''}
                       {receipt.is_multi && receipt.req_amount < stack_amount ? (
                         <>
+                          {' |'}
                           <NumberInput
                             value={receipt.amount_to_build}
                             maxValue={Math.min(

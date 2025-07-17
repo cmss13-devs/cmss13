@@ -95,8 +95,9 @@ export const StackReceipts = () => {
                         />
                       ) : (
                         ''
-                      )}{' '}
+                      )}
                       <Button
+                        left="8px"
                         disabled={
                           !(
                             receipt.can_build &&
@@ -111,7 +112,7 @@ export const StackReceipts = () => {
                         {` (${receipt.req_amount} ${receipt.singular_name}${receipt.req_amount > 1 ? 's' : ''})`}
                       </Button>
                       {receipt.is_multi && receipt.req_amount < stack_amount ? (
-                        <>
+                        <span style={{ marginLeft: '8px' }}>
                           {' |'}
                           <NumberInput
                             value={receipt.amount_to_build}
@@ -143,7 +144,7 @@ export const StackReceipts = () => {
                           >
                             x
                           </Button>
-                        </>
+                        </span>
                       ) : (
                         ''
                       )}

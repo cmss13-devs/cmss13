@@ -877,6 +877,8 @@
 			return EYE_PROTECTION_WELDING
 		if(eyes_organ.robotic == ORGAN_ROBOT)
 			return EYE_PROTECTION_WELDING
+	else
+		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
 		var/obj/item/clothing/cloth_item = head

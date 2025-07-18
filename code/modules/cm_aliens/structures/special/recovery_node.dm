@@ -1,5 +1,5 @@
 /obj/effect/alien/resin/special/plasma_tree
-	name = XENO_STRUCTURE_PLASMA_SILO
+	name = XENO_STRUCTURE_PLASMA_TREE
 	desc = "A tree shaped node that has liquid plasma dripping around it."
 	health = 400
 	icon_state =  "recovery_plasma"

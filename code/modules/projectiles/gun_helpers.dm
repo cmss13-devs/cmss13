@@ -302,6 +302,8 @@ DEFINES in setup.dm, referenced here.
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
 			return
+		if(magazine.loc != user && !istype(magazine.loc, /obj/item/storage))
+			return
 		if(flags_gun_features & GUN_INTERNAL_MAG)
 			to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
 			return

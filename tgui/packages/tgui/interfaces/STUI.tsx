@@ -11,6 +11,8 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { replaceRegexChars } from './helpers';
+
 type STUIData = {
   tabs: Array<string>;
   logs: Map<string, Array<string>>;
@@ -87,7 +89,13 @@ const RenderLogs = (props: {
   return (
     <Section fill scrollable>
       {logs
-        .filter((x) => x.toLowerCase().match(searchTerm) !== null)
+        .filter((x) =>
+          x
+            .toLowerCase()
+            .match(
+              searchTerm ? replaceRegexChars(searchTerm.toLowerCase()) : '',
+            ),
+        )
         .map((log, i) => (
           <RenderLog log={log} key={i} logsfontnumber={logsfontnumber} />
         ))}

@@ -1,0 +1,4 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - bugfix: "Tac reload now only works if the magazine is in your hand or inventory."

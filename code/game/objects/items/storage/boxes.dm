@@ -532,8 +532,6 @@
 	new /obj/item/device/assembly/mousetrap( src )
 
 /obj/item/storage/box/pillbottles
-	//multiplier to time required to empty the box into chem master
-	var/time_to_empty = 3
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
 	icon_state = "pillbox"
@@ -543,6 +541,9 @@
 	can_hold = list(
 		/obj/item/storage/pill_bottle,
 	)
+
+	//multiplier to time required to empty the box into chem master
+	var/time_to_empty = 3
 
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()

@@ -619,7 +619,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	W.mouse_opacity = initial(W.mouse_opacity)
 
 ///Call this proc to just remove item from storage list.
-/obj/item/storage/proc/forced_item_removal(obj/item/item as obj)
+/obj/item/storage/proc/forced_item_removal(obj/item/item)
 	for(var/mob/player in can_see_content())
 		if(player.client)
 			player.client.remove_from_screen(item)

@@ -99,8 +99,8 @@
 		if(!box)
 			return
 
-		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box.name] into the [src.name]..."),
-		SPAN_NOTICE("You start to empty the [box.name] into the [src.name]..."))
+		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box.name] into the [name]..."),
+		SPAN_NOTICE("You start to empty the [box.name] into the [name]..."))
 
 		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
 
@@ -113,7 +113,7 @@
 			if(!bottle)
 				continue
 			if(length(loaded_pill_bottles) >= max_bottles_count)
-				to_chat(user, SPAN_WARNING("[src.name] is fully loaded by pill bottles."))
+				to_chat(user, SPAN_WARNING("[name] is fully loaded by pill bottles."))
 				return
 			add_pill_bottle(bottle)
 			box.forced_item_removal(bottle)

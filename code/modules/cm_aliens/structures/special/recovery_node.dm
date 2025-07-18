@@ -102,5 +102,3 @@
 		return
 
 	picked_candidate.gain_health(heal_amount)
-
-

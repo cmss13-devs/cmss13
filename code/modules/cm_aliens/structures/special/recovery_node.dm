@@ -1,13 +1,10 @@
 /obj/effect/alien/resin/special/plasma_tree
-
 	name = XENO_STRUCTURE_PLASMA_SILO
 	desc = "A tree shaped node that has liquid plasma dripping around it."
 	health = 400
 	icon_state =  "recovery_plasma"
 	var/replenish_amount = 75
-	var/replenish_cooldown = 3 SECONDS
-	var/last_replenished
-
+	COOLDOWN_DECLARE(last_replenish)
 
 /obj/effect/alien/resin/special/plasma_tree/Initialize(mapload, hive_ref)
 	. = ..()
@@ -25,8 +22,7 @@
 /obj/effect/alien/resin/special/plasma_tree/process()
 	update_minimap_icon()
 
-
-	if(last_replenished && world.time < last_replenished + replenish_cooldown)
+	if(!COOLDOWN_FINISHED(src, last_replenish))
 		return
 
 	var/list/plasma_candidates = list()
@@ -39,21 +35,16 @@
 			continue
 
 		plasma_candidates += xeno_in_range
-	last_replenished = world.time
+	COOLDOWN_START(src, last_replenish, 3 SECONDS)
 
 	if(!length(plasma_candidates))
 		return
 
 	var/mob/living/carbon/xenomorph/picked_candidate = pick(plasma_candidates)
-	picked_candidate.visible_message(SPAN_HELPFUL("\The [picked_candidate] glows as a warm aura envelops them."),
+	picked_candidate.visible_message(SPAN_HELPFUL("[picked_candidate] glows as a warm aura envelops them."),
 			SPAN_HELPFUL("We feel a warm aura envelop us."))
 
-	if(!do_after(picked_candidate, replenish_cooldown, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		return
-
 	picked_candidate.gain_plasma(replenish_amount)
-
-
 
 //Recovery Node - Heals xenomorphs around it
 

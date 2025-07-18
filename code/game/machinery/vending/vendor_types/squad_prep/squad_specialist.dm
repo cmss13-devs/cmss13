@@ -104,7 +104,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 			break
 	if(!itemspec)
 		// Fallback
-		human_user.put_in_any_hand_if_possible(new chosen_set.kit_typepath, FALSE)
+		var/type_path = chosen_set::kit_typepath
+		human_user.put_in_any_hand_if_possible(new type_path, FALSE)
 		CRASH("Failed to locate [chosen_set::name] for [user] in GLOB.cm_vending_gear_spec!")
 	if(!handle_vend(itemspec, human_user))
 		return

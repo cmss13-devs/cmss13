@@ -442,11 +442,18 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 
 	var/has_access = can_access_to_vend(user)
-	if (!has_access)
+	if(!has_access)
 		return
+
+	// Try to automatically vend spec kit if it was already assigned automatically if needed
+	automatic_vend(user)
 
 	user.set_interaction(src)
 	tgui_interact(user)
+
+/// Handles any automatic vending
+/obj/structure/machinery/cm_vending/proc/automatic_vend(mob/user)
+	return
 
 /// Handles redeeming coin tokens.
 /obj/structure/machinery/cm_vending/proc/redeem_token(obj/item/coin/marine/token, mob/user)

@@ -1475,10 +1475,8 @@
 /area/tyrargo/indoors/saipan)
 "aex" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/device/defibrillator/synthetic/hyperdyne/noskill,
-/obj/item/device/defibrillator/synthetic/hyperdyne/noskill{
-	pixel_x = 3;
-	pixel_y = 7
+/obj/item/device/defibrillator/synthetic{
+	pixel_y = 2
 	},
 /turf/open/floor/prison/yellowfull,
 /area/tyrargo/indoors/engineering/upper)
@@ -6214,8 +6212,10 @@
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "aqh" = (
-/obj/item/weapon/gun/shotgun/pump,
 /obj/item/ammo_casing/shell,
+/obj/item/weapon/gun/shotgun/pump{
+	pixel_y = 5
+	},
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "aqi" = (
@@ -14544,16 +14544,15 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/item/weapon/gun/shotgun/pump{
-	pixel_x = -4;
-	pixel_y = -7
-	},
-/obj/item/weapon/gun/shotgun/pump{
-	pixel_x = 6;
-	pixel_y = 9
-	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/weapon/gun/shotgun/pump/m37a{
+	pixel_y = -8
+	},
+/obj/item/weapon/gun/shotgun/pump/m37a{
+	pixel_y = 6;
+	pixel_x = 9
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "aJZ" = (
@@ -23982,7 +23981,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
 "bcs" = (
-/obj/item/weapon/gun/shotgun/pump,
+/obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
@@ -41024,7 +41023,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump{
+/obj/item/weapon/gun/shotgun/pump/m37a{
 	pixel_x = -1;
 	pixel_y = -10
 	},
@@ -53535,7 +53534,7 @@
 	name = "spent casings";
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump,
+/obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
@@ -59033,7 +59032,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
-/obj/item/weapon/gun/shotgun/pump{
+/obj/item/weapon/gun/shotgun/pump/m37a{
 	pixel_x = -1;
 	pixel_y = -10
 	},
@@ -60945,7 +60944,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/east)
 "cXf" = (
-/obj/item/weapon/gun/shotgun/pump,
+/obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -71130,7 +71129,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
-/obj/item/toy/blink,
+/obj/item/device/defibrillator/synthetic{
+	pixel_y = 2
+	},
 /turf/open/shuttle/escapepod/west,
 /area/tyrargo/underground/apartment)
 "dww" = (
@@ -77446,7 +77447,7 @@
 /area/tyrargo/underground/apartment)
 "dMe" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump,
+/obj/item/weapon/gun/shotgun/pump/m37a,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/underground/apartment)
 "dMf" = (
@@ -82804,7 +82805,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/corpsespawner/engineer,
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/shotgun/pump{
+/obj/item/weapon/gun/shotgun/pump/m37a{
 	pixel_x = -1;
 	pixel_y = -10
 	},
@@ -98494,7 +98495,7 @@
 	icon_state = "trash_14";
 	pixel_y = 6
 	},
-/obj/item/weapon/gun/shotgun/pump{
+/obj/item/weapon/gun/shotgun/pump/m37a{
 	pixel_x = -1;
 	pixel_y = -10
 	},
@@ -106727,7 +106728,7 @@
 	pixel_y = -3;
 	pixel_x = -12
 	},
-/obj/item/weapon/gun/shotgun/pump,
+/obj/item/weapon/gun/shotgun/pump/m37a,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ofF" = (
@@ -109809,7 +109810,7 @@
 "tRc" = (
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
-/obj/item/weapon/gun/shotgun/pump,
+/obj/item/weapon/gun/shotgun/pump/m37a,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/cleanable/dirt,

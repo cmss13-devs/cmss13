@@ -1,5 +1,5 @@
 /turf/open/hunter_temple
-	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
+	icon = 'icons/turf/floors/hunter_temple.dmi'
 	icon_state = "base_tile"
 
 /turf/open/hunter_temple/mossy

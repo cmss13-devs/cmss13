@@ -250,10 +250,14 @@
 	set name = "Look Up"
 	set category = "IC"
 
-	if(observed_atom)
-		var/atom/to_delete = observed_atom
-		observed_atom = null
-		qdel(to_delete)
+	stop_looking_multiz()
+
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		to_chat(src, SPAN_WARNING("We cannot look up here, we are burrowed!"))
+		return
+
+	if(!isturf(loc))
+		to_chat(src, SPAN_WARNING("You cannot look up here."))
 		return
 
 	var/turf/above = locate(x, y, z+1)
@@ -265,3 +269,10 @@
 	var/mob/hologram/look_up/observed_hologram = new(above, src)
 
 	observed_atom = observed_hologram
+
+/mob/living/proc/stop_looking_multiz()
+	if(!observed_atom)
+		return
+	var/atom/to_delete = observed_atom
+	observed_atom = null
+	qdel(to_delete)

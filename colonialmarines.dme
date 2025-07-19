@@ -706,7 +706,6 @@
 #include "code\datums\statistics\entities\xeno_stats.dm"
 #include "code\datums\statistics\random_facts\christmas_fact.dm"
 #include "code\datums\statistics\random_facts\damage_fact.dm"
-#include "code\datums\statistics\random_facts\friendlyfire_fact.dm"
 #include "code\datums\statistics\random_facts\ib_fact.dm"
 #include "code\datums\statistics\random_facts\kills_fact.dm"
 #include "code\datums\statistics\random_facts\random_fact.dm"

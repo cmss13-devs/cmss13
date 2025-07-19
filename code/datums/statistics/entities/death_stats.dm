@@ -14,9 +14,8 @@
 	var/cause_role_name
 	var/cause_faction_name
 
-	var/total_steps = 0
+	var/total_steps
 	var/total_kills = 0
-	//var/total_friendly_fire = 0
 	var/time_of_death
 	var/total_time_alive
 	var/total_damage_taken

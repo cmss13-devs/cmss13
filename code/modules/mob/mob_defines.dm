@@ -113,7 +113,6 @@
 	var/life_steps_total = 0
 	var/life_kills_total = 0
 	var/life_damage_taken_total = 0
-	//var/life_friendly_fire_total
 	var/life_revives_total = 0
 	var/life_ib_total = 0
 	var/festivizer_hits_total = 0

@@ -1,7 +1,7 @@
 /datum/random_fact/steps
 	statistic_name = "calories"
 	statistic_verb = "burned"
-	min_required = 50
+	min_required = 10
 
 /datum/random_fact/steps/life_grab_stat(mob/fact_mob)
 	return (fact_mob.life_steps_total * 0.05)

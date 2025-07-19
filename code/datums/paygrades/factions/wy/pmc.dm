@@ -69,6 +69,13 @@
 	pay_multiplier = 3.5
 	officer_grade = GRADE_OFFICER
 
+/datum/paygrade/pmc/field_op_leader
+	paygrade = PAY_SHORT_PMC_FOL
+	name = "Field Operations Leader"
+	prefix = "FOL."
+	pay_multiplier = 6
+	officer_grade = GRADE_FLAG
+
 /datum/paygrade/pmc/director
 	paygrade = PAY_SHORT_PMC_DIR
 	name = "Site Director"

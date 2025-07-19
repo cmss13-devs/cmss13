@@ -589,42 +589,12 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	_item_removal(W, new_location, user)
 	return TRUE
 
-///Separate proc because remove_from_storage isn't guaranteed to finish. Can be called directly if the target atom exists and is an item. Updates icon when done.
-/obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location, mob/user)
-	for(var/mob/M in can_see_content())
-		if(M.client)
-			M.client.remove_from_screen(W)
-
-	if(new_location)
-		if(ismob(new_location))
-			W.pickup(new_location)
-		W.forceMove(new_location)
-	else
-		var/turf/T = get_turf(src)
-		if(T)
-			W.forceMove(T)
-		else
-			W.moveToNullspace()
-
-	orient2hud()
-	for(var/mob/M in can_see_content())
-		show_to(M)
-	if(W.maptext && (storage_flags & STORAGE_CONTENT_NUM_DISPLAY))
-		W.maptext = ""
-	W.on_exit_storage(src)
-	update_icon()
-	if(user)
-		user.update_inv_l_hand()
-		user.update_inv_r_hand()
-	W.mouse_opacity = initial(W.mouse_opacity)
-
-///Call this proc to just remove item from storage list.
-/obj/item/storage/proc/forced_item_removal(obj/item/item)
+/obj/item/storage/proc/remove_item_from_screen(obj/item/item)
 	for(var/mob/player in can_see_content())
 		if(player.client)
 			player.client.remove_from_screen(item)
-	LAZYREMOVE(contents, item)
 
+/obj/item/storage/proc/redraw_items_on_screen(obj/item/item)
 	orient2hud()
 	for(var/mob/player in can_see_content())
 		show_to(player)
@@ -632,6 +602,34 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 		item.maptext = ""
 	item.on_exit_storage(src)
 	update_icon()
+
+///Separate proc because remove_from_storage isn't guaranteed to finish. Can be called directly if the target atom exists and is an item. Updates icon when done.
+/obj/item/storage/proc/_item_removal(obj/item/item as obj, atom/new_location, mob/user)
+	remove_item_from_screen(item)
+
+	if(new_location)
+		if(ismob(new_location))
+			item.pickup(new_location)
+		item.forceMove(new_location)
+	else
+		var/turf/turf = get_turf(src)
+		if(turf)
+			item.forceMove(turf)
+		else
+			item.moveToNullspace()
+
+	redraw_items_on_screen(item)
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
+	item.mouse_opacity = initial(item.mouse_opacity)
+
+///Call this proc to just remove item from storage list.
+/obj/item/storage/proc/forced_item_removal(obj/item/item)
+	remove_item_from_screen(item)
+	LAZYREMOVE(contents, item)
+
+	redraw_items_on_screen(item)
 
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)

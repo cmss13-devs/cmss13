@@ -611,7 +611,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/cbrn_non_armored(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/cbrn_non_armored(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/mop(new_human), WEAR_R_HAND)
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/bugkiller(new_human), WEAR_WAIST)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap(new_human), WEAR_HEAD)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp(new_human), WEAR_ACCESSORY)
 		if(3) // Fire Protection
@@ -639,7 +638,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/lightstick/red(new_human), WEAR_R_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
-			new_human.equip_to_slot_or_del(new /obj/item/defenses/handheld/planted_flag/upp(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/prop/tableflag/upp(new_human.back), WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/full(new_human), WEAR_L_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp(new_human), WEAR_ACCESSORY)
 		if(5) // Bartender
@@ -666,7 +665,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/tool/kitchen/utensil/fork(new_human), WEAR_R_HAND)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/tool/kitchen/knife/butcher(new_human), WEAR_L_HAND)
-	add_survivor_rare_item(new_human)
 	..()
 
 // Engineer

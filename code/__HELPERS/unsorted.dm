@@ -624,6 +624,7 @@ GLOBAL_DATUM(emote_indicator_highfive, /image)
 GLOBAL_DATUM(emote_indicator_fistbump, /image)
 GLOBAL_DATUM(emote_indicator_headbutt, /image)
 GLOBAL_DATUM(emote_indicator_tailswipe, /image)
+GLOBAL_DATUM(emote_indicator_wallboosting, /image)
 GLOBAL_DATUM(emote_indicator_rock_paper_scissors, /image)
 GLOBAL_DATUM(emote_indicator_rock, /image)
 GLOBAL_DATUM(emote_indicator_paper, /image)
@@ -712,6 +713,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
 			GLOB.emote_indicator_tailswipe.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_tailswipe
+	else if(busy_type == EMOTE_ICON_WALLBOOSTING)
+		if(!GLOB.emote_indicator_wallboosting)
+			GLOB.emote_indicator_wallboosting = image('icons/mob/do_afters.dmi', null, "emote_wallboosting", "pixel_x" = 22)
+			GLOB.emote_indicator_wallboosting.layer = FLY_LAYER
+			GLOB.emote_indicator_wallboosting.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_wallboosting
 	else if(busy_type == ACTION_RED_POWER_UP)
 		if(!GLOB.action_red_power_up)
 			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
@@ -736,6 +743,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.action_purple_power_up.layer = FLY_LAYER
 			GLOB.action_purple_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_purple_power_up
+
 
 
 /*

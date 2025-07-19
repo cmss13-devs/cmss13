@@ -33,23 +33,29 @@
 		climb_up_time = 1.5 SECONDS
 		if(xeno.mob_size >= MOB_SIZE_BIG)
 			climb_up_time = 5 SECONDS
-
+	var/mob/living/human
 	if(ishuman(user))
 		climb_up_time = 7 SECONDS
 		if(istype(src,/turf/closed/wall))
 			var/turf/closed/wall/wall = src
 			if(length(wall.hiding_humans))
-				var/human
+
 				for(var/mob/living/boosting_human in wall.hiding_humans)
 					if(boosting_human.loc == user.loc && user != boosting_human)
 						human = boosting_human
+						human.flags_emote |= EMOTING_WALL_BOOSTING
 						break
 				if(human)
 					climb_up_time = 3 SECONDS
 					user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
 	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		if(human)
+			human.flags_emote &= ~EMOTING_WALL_BOOSTING
 		return
+
+	if(human)
+		human.flags_emote &= ~EMOTING_WALL_BOOSTING
 
 	user.visible_message(SPAN_WARNING("[user] climbs up [src]."), SPAN_WARNING("You climb up [src]."))
 

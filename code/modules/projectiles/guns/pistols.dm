@@ -420,30 +420,28 @@
 
 
 //-------------------------------------------------------
-//PIZZACHIMP PROTECTION
+//W62 'Whisper' //.22 plinker made by Spearhead Armory
 
 /obj/item/weapon/gun/pistol/holdout
-	name = "holdout pistol"
-	desc = "A tiny pistol meant for hiding in hard-to-reach areas. Best not ask where it came from."
+	name = "W62 'Whisper' pistol"
+	desc = "A small plinker in .22LR made by Spearhead. Designed for target shooting or quietly dealing with interplanetary vermin. Integrally suppressed and has tritium paint on the ironsights as standard."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
-	icon_state = "holdout"
-	item_state = "holdout"
-
+	icon_state = "whisper"
+	item_state = "whisper"
 	fire_sound = 'sound/weapons/gun_pistol_holdout.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/holdout
-	w_class = SIZE_TINY
+	w_class = SIZE_SMALL
 	force = 2
 	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
 		/obj/item/attachable/flashlight,
-		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/lasersight,
-		/obj/item/attachable/burstfire_assembly,
 	)
 
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 17, "under_y" = 15, "stock_x" = 22, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 25, "muzzle_y" = 20,"rail_x" = 6, "rail_y" = 20, "under_x" = 20, "under_y" = 17, "stock_x" = 22, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/holdout/set_gun_config_values()
 	..()
@@ -455,11 +453,56 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
-/obj/item/weapon/gun/pistol/holdout/flashlight/handle_starting_attachment()
+/obj/item/weapon/gun/pistol/holdout/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/flashlight/flashlight = new(src)
-	flashlight.Attach(src)
-	update_attachable(flashlight.slot)
+	var/obj/item/attachable/suppressor/S = new(src)
+	S.hidden = TRUE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+/obj/item/weapon/gun/pistol/holdout/custom
+	name = "W62 'Whisper' custom pistol"
+	desc = "A small plinker in .22LR made by Spearhead. Designed for target shooting or quietly dealing with interplanetary vermin. This one is custom fitted with ivory grip plates and a bluesteel finish."
+	icon_state = "whisperc"
+	item_state = "whisperc"
+
+
+//-------------------------------------------------------
+//AC71 'Action' // .380 ACP pocket pistol made by Spearhead Armory
+
+/obj/item/weapon/gun/pistol/action
+	name = "AC71 'Action' holdout pistol"
+	desc = "A .380 ACP pistol made by Spearhead Armory. Often used by the marshals as a backup weapon."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/pistols.dmi'
+	icon_state = "action"
+	item_state = "action"
+	fire_sound = 'sound/weapons/gun_pistol_380acp.ogg'
+	current_mag = /obj/item/ammo_magazine/pistol/action
+	w_class = SIZE_TINY
+	force = 4
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/extended_barrel,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+	)
+
+/obj/item/weapon/gun/pistol/action/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_11)
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_6
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+
+/obj/item/weapon/gun/pistol/action/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 24, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 18, "under_x" = 17, "under_y" = 14, "stock_x" = 22, "stock_y" = 17)
 
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL

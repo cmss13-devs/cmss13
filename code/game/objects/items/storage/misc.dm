@@ -140,6 +140,36 @@
 	new /obj/item/ammo_magazine/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
 
+/obj/item/storage/box/action
+	name = "AC71 'Action' storing case"
+	desc = "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "m43case"
+	w_class = SIZE_SMALL
+	max_w_class = SIZE_TINY
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/pistol/action, /obj/item/ammo_magazine/pistol/action)
+
+/obj/item/storage/box/action/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/action(src)
+	new /obj/item/ammo_magazine/pistol/action(src)
+	new /obj/item/ammo_magazine/pistol/action(src)
+
+/obj/item/storage/box/plinker
+	name = "W62 'Whisper' storing case"
+	desc = "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "m43case"
+	w_class = SIZE_MEDIUM
+	max_w_class = SIZE_SMALL
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/pistol/holdout, /obj/item/ammo_magazine/pistol/holdout)
+
+/obj/item/storage/box/plinker/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
+
 /obj/item/storage/box/co2_knife
 	name = "M8 cartridge bayonet packaging"
 	desc = "Contains one M8 Cartridge Bayonet and two sister CO2 cartridges. Thanks for being a dedicated Boots magazine subscriber!"

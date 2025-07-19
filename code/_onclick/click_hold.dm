@@ -98,6 +98,9 @@
 
 /client/MouseDrop(datum/src_object, datum/over_object, src_location, over_location, src_control, over_control, params)
 	. = ..()
+	if(HAS_TRAIT(usr, TRAIT_HAULED))
+		if(!isweapon(src_object) && !isgun(src_object))
+			return
 	if(over_object)
 		SEND_SIGNAL(over_object, COMSIG_ATOM_DROPPED_ON, src_object, src)
 

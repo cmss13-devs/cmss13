@@ -22,8 +22,13 @@
 /datum/job/antag/xenos/spawn_in_player(mob/new_player/NP)
 	. = ..()
 	var/mob/living/carbon/human/H = .
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/turf/turf = get_turf(H)
 
-	transform_to_xeno(H, XENO_HIVE_NORMAL)
+	if(SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED && is_ground_level(turf?.z))
+		hivenumber = XENO_HIVE_FORSAKEN //Set to forsaken hive if hijack is active and on ground level
+
+	transform_to_xeno(H, hivenumber)
 
 /datum/job/antag/xenos/proc/transform_to_xeno(mob/living/carbon/human/human_to_transform, hive_index)
 	var/datum/mind/new_xeno = human_to_transform.mind

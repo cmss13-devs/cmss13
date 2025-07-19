@@ -1116,6 +1116,29 @@
 	forceMove(current_structure.loc)
 	return TRUE
 
+/**
+ * Figures out if the Xeno is standing on weeds.
+ * * If non_specific is true, the proc will only check if they are on weeds.
+ * * If hive_strict is true, the proc will require the weeds belong to their hive.
+ * * If neither are true, the proc will check if the weeds belong to an allied hive.
+*/
+/mob/living/carbon/xenomorph/proc/standing_on_weeds(non_specific = FALSE, hive_strict = FALSE)
+	var/obj/effect/alien/weeds/turf_weeds = locate() in loc
+	if(!turf_weeds)
+		return FALSE
+
+	if(non_specific)
+		return TRUE
+
+	if(hive_strict && turf_weeds.linked_hive.hivenumber == hivenumber)
+		return TRUE
+
+	// Hive must be true because if there is no hive then there is no allied hive data.
+	else if(hive && HIVE_ALLIED_TO_HIVE(hive, turf_weeds.linked_hive))
+		return TRUE
+
+	return FALSE
+
 ///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
 /mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()
 	if(!hive)

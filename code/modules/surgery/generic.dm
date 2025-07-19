@@ -4,6 +4,9 @@
 // INCISION SURGERIES //
 //////////////////////////////////////////////////////////////////
 
+var/chest_overlay
+var/skull_overlay
+
 /datum/surgery/open_incision
 	name = "Open Incision"
 	priority = SURGERY_PRIORITY_MAXIMUM
@@ -254,11 +257,18 @@
 			h_his = "her"
 
 	switch(target_zone)
+		if("chest")
+			target.overlays -= chest_overlay
+			chest_overlay = image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays += chest_overlay
 		if("head")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s head open with \the [tool], exposing [h_his] skull."),
 				SPAN_NOTICE("[user] holds the incision on your head open with \the [tool], exposing your skull."),
 				SPAN_NOTICE("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull."))
+			target.overlays -= skull_overlay
+			skull_overlay = image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays += skull_overlay
 		if("groin")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera."),
@@ -348,6 +358,11 @@
 		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
+	switch(target_zone)
+		if("head")
+			target.overlays -= skull_overlay
+		if("chest")
+			target.overlays -= chest_overlay
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
@@ -479,6 +494,15 @@
 		SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
 		SPAN_NOTICE("[user] uses \the [tool] to hold your [surgery.affected_limb.encased] open, exposing your [brain ? "brain" : "vital organs"]."),
 		SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
+	switch(target_zone)
+		if("head")
+			target.overlays -= skull_overlay
+			skull_overlay = image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+			target.overlays += skull_overlay
+		if("chest")
+			target.overlays -= chest_overlay
+			chest_overlay = image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
+			target.overlays += chest_overlay
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
@@ -543,6 +567,15 @@
 		SPAN_NOTICE("You close [target]'s [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes your [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes [target]'s [surgery.affected_limb.encased]."))
+	switch(target_zone)
+		if("head")
+			target.overlays -= skull_overlay
+			skull_overlay = image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays += skull_overlay
+		if("chest")
+			target.overlays -= chest_overlay
+			chest_overlay = image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays += chest_overlay
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	log_interact(user, target, "[key_name(user)] closed [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")

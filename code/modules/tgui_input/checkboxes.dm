@@ -29,6 +29,9 @@
 		return null
 
 	var/datum/tgui_checkbox_input/input = new(user, message, title, items, min_checked, max_checked, timeout, theme, ui_state)
+	if(input.invalid)
+		qdel(input)
+		return
 	input.tgui_interact(user)
 	input.wait()
 	if (input)
@@ -67,6 +70,9 @@
 		return null
 
 	var/datum/tgui_checkbox_input/async/input = new(user, message, title, items, min_checked, max_checked, callback, timeout, theme, ui_state)
+	if(input.invalid)
+		qdel(input)
+		return
 	input.tgui_interact(user)
 
 /// Window for tgui_input_checkboxes
@@ -93,15 +99,32 @@
 	var/datum/ui_state/state
 	/// String field for the theme to use
 	var/ui_theme
+	/// Whether the tgui list input is invalid or not (i.e. due to all list entries being null)
+	var/invalid = FALSE
 
 /datum/tgui_checkbox_input/New(mob/user, message, title, list/items, min_checked, max_checked, timeout, theme = null, ui_state)
 	src.title = title
 	src.message = message
-	src.items = items.Copy()
+	src.items = list()
 	src.min_checked = min_checked
 	src.max_checked = max_checked
 	src.state = ui_state
 	src.ui_theme = theme
+
+	//var/list/repeat_items = list()
+	// Gets rid of illegal characters
+	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"})
+
+	for(var/i in items)
+		if(!i)
+			continue
+		var/string_key = whitelistedWords.Replace("[i]", "")
+		//avoids duplicated keys E.g: when areas have the same name
+		//string_key = avoid_assoc_duplicate_keys(string_key, repeat_items)
+		src.items += string_key
+
+	if(!length(src.items))
+		invalid = TRUE
 
 	if (timeout)
 		src.timeout = timeout

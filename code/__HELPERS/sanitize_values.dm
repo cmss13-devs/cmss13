@@ -30,16 +30,20 @@
 		return default
 	if(LAZYLEN(List))return List[1]
 
-/proc/sanitize_list(list/List, list/filter = list(null), default = list())
+/// Cleans up the provided List by ensuring it has nothing in filter and only items in allow (if allow is non-null)
+/// Default is used if List is not a list. No work is performed if filter and allow are not lists.
+/proc/sanitize_list(list/List, list/filter = list(null), list/allow = null, default = list())
 	if(!islist(List))
 		return default
-	if(!islist(filter))
+	if(!islist(filter) && !islist(allow))
 		return List
 	. = list()
-	for(var/E in List)
-		if(E in filter)
+	for(var/current in List)
+		if(islist(filter) && (current in filter))
 			continue
-		. += E
+		if(islist(allow) && !(current in allow))
+			continue
+		. += current
 
 //more specialised stuff
 /proc/sanitize_gender(gender,neuter=0,plural=0, default="male")

@@ -534,6 +534,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(!istype(H))
 		return
 
+	if(!can_be_raised)
+		return
+
 	if(!to_raise)
 		raised = FALSE
 		item_state = "rpb_phone"

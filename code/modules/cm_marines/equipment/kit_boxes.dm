@@ -135,7 +135,7 @@
 
 /obj/item/storage/box/spec/scout/fill_preset_inventory()
 	new /obj/item/clothing/suit/storage/marine/M3S(src)
-	new /obj/item/clothing/head/helmet/marine/scout(src)
+	new /obj/item/clothing/head/helmet/marine/radio_helmet/scout(src)
 	new /obj/item/clothing/glasses/night/M4RA(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)
 	new /obj/item/ammo_magazine/rifle/m4ra/custom(src)

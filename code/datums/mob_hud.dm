@@ -28,6 +28,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
 	MOB_HUD_SPYCAMS = new /datum/mob_hud/spy_cams(),
+	MOB_HUD_MYCOTOXIN = new /datum/mob_hud/pathogen_myco(),
 	))
 
 /datum/mob_hud
@@ -164,7 +165,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/xeno_infection
 	hud_icons = list(STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST)
 
-
+/datum/mob_hud/pathogen_myco
+	hud_icons = list(STATUS_HUD_MYCO)
 
 /datum/mob_hud/new_player
 	hud_icons = list(NEW_PLAYER_HUD)
@@ -408,15 +410,18 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	holder2.overlays.Cut()
 	var/image/holder3 = hud_list[STATUS_HUD_XENO_INFECTION]
 	var/image/holder4 = hud_list[STATUS_HUD_XENO_CULTIST]
+	var/image/holder5 = hud_list[STATUS_HUD_MYCO]
 
 	holder2.color = null
 	holder3.color = null
 	holder4.color = null
+	holder5.color = null
 
 	holder2.alpha = alpha
 	holder3.alpha = alpha
 
 	holder4.icon_state = "hudblank"
+	holder5.icon_state = "hudblank"
 
 	if(species && species.flags & IS_SYNTHETIC)
 		holder3.icon_state = "hudsynth" // xenos have less awareness of synth status
@@ -491,12 +496,15 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 							holder2.icon_state = "huddeaddnr"
 							holder3.icon_state = "huddead"
 							holder2_set = 1
+						if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
+							holder5.icon_state = "hudalien_mycoready"
 						return
 					else if(!G.client)
 						holder.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
 						holder2.overlays += image('icons/mob/hud/hud.dmi', "hudnoclient")
 				if(world.time > timeofdeath + revive_grace_period - 1 MINUTES)
 					holder.icon_state = "huddeadalmost"
+					holder5.icon_state = "hudalien_mycoready"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadalmost"
 						holder3.icon_state = "huddead"

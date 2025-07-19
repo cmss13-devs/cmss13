@@ -44,6 +44,7 @@
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab/pathogen_t3,
+		/datum/action/xeno_action/activable/mycotoxin,
 		/datum/action/xeno_action/activable/venator_abduct, // Macro 1
 		/datum/action/xeno_action/activable/prae_impale/venator, //Macro 2
 		/datum/action/xeno_action/activable/venator_savage, // Macro 3

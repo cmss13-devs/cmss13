@@ -45,13 +45,16 @@
 	if(!ishuman(affected_mob))
 		return FALSE
 	var/mob/living/carbon/human/dead = affected_mob
-	var/revivable = dead.check_tod() && dead.is_revivable()
+	var/revivable = dead.is_revivable(TRUE)//We don't need a heart.
 	if(!revivable)
 		return FALSE
 
 	dead.revive(TRUE)
+	addtimer(CALLBACK(src, PROC_REF(make_walker), dead), 1 SECONDS)
+	return TRUE
+
+/datum/chem_property/special/mycotainted/proc/make_walker(mob/living/carbon/human/dead)
 	dead.set_species(SPECIES_PATHO_WALKER)
 	var/datum/species/pathogen_walker/walker = GLOB.all_species[SPECIES_PATHO_WALKER]
 	walker.handle_alert_ghost(dead)
-	dead.reagents.clear_reagents()
 	return TRUE

@@ -28,6 +28,7 @@
 #define XENO_EXECUTE "28" // Execute thershold, vampire
 #define NEW_PLAYER_HUD "29" //Makes it easy to see new players.
 #define SPYCAM_HUD "30" //Remote control spy cameras.
+#define STATUS_HUD_MYCO "31"
 
 //data HUD (medhud, sechud) defines
 #define MOB_HUD_SECURITY_BASIC 1
@@ -56,6 +57,7 @@
 #define MOB_HUD_EXECUTE 24
 #define MOB_HUD_NEW_PLAYER 25
 #define MOB_HUD_SPYCAMS 26
+#define MOB_HUD_MYCOTOXIN 27
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"

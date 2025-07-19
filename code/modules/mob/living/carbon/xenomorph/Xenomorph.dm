@@ -821,6 +821,10 @@
 	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
 
+	if(is_pathogen_creature(src))
+		MH = GLOB.huds[MOB_HUD_MYCOTOXIN]
+		MH.add_hud_to(src, src)
+
 // Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
 /mob/living/carbon/xenomorph/transfer_observers_to(atom/target)
 	for(var/mob/dead/observer/observer as anything in observers)

@@ -43,7 +43,7 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		if(isnull(name) || isnull(rank))
 			continue
 
-		if(record_entry.fields["mob_faction"] != FACTION_MARINE && rank != JOB_CORPORATE_LIAISON)
+		if(record_entry.fields["mob_faction"] != FACTION_MARINE && !(rank in USCM_SHARED_JOBS))
 			continue
 
 		var/entry_dept = null

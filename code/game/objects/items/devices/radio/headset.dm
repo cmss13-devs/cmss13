@@ -512,6 +512,7 @@
 	desc = "A headset used by medbay's skilled researchers. Channels are as follows: :m - medical, :t - intel."
 	icon_state = "med_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/medres)
+	additional_hud_types = list(MOB_HUD_FACTION_WY)
 
 /obj/item/device/radio/headset/almayer/ct
 	name = "supply radio headset"

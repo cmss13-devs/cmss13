@@ -604,7 +604,7 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 	update_icon()
 
 ///Separate proc because remove_from_storage isn't guaranteed to finish. Can be called directly if the target atom exists and is an item. Updates icon when done.
-/obj/item/storage/proc/_item_removal(obj/item/item as obj, atom/new_location, mob/user)
+/obj/item/storage/proc/_item_removal(obj/item/item, atom/new_location, mob/user)
 	remove_item_from_screen(item)
 
 	if(new_location)

@@ -303,6 +303,11 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		var/datum/mob_hud/execute = GLOB.huds[MOB_HUD_EXECUTE]
 		execute.remove_hud_from(src, src)
 
+	if(is_pathogen_creature(src))
+		var/datum/mob_hud/myco = GLOB.huds[MOB_HUD_MYCOTOXIN]
+		myco.remove_hud_from(src, src)
+
+
 
 
 /mob/proc/refresh_huds(mob/source_mob)

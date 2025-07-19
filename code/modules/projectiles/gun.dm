@@ -27,7 +27,7 @@
 	light_system = DIRECTIONAL_LIGHT
 
 	///A custom mouse pointer icon to use when wielded
-	var/mouse_pointer = 'icons/effects/mouse_pointer/rifle_mouse.dmi'
+	mouse_pointer = 'icons/effects/mouse_pointer/rifle_mouse.dmi'
 
 	var/accepted_ammo = list()
 	///Determines what kind of bullet is created when the gun is unloaded - used to match rounds to magazines. Set automatically when reloading.
@@ -807,13 +807,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/handle_view(client/user, atom/target)
 	SIGNAL_HANDLER
 	update_mouse_pointer(user.mob, flags_item & WIELDED)
-
-///Turns the mouse cursor into a crosshair if new_cursor is set to TRUE. If set to FALSE, returns the cursor to its initial icon.
-/obj/item/weapon/gun/proc/update_mouse_pointer(mob/user, new_cursor)
-	if(!user.client?.prefs.custom_cursors)
-		return
-
-	user.client.mouse_pointer_icon = new_cursor ? mouse_pointer : initial(user.client.mouse_pointer_icon)
 
 //----------------------------------------------------------
 			// \\

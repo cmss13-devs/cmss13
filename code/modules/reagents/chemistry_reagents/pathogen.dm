@@ -32,8 +32,10 @@
 	description = "A deadly neurotoxin produced by an unknown fungus."
 	reagent_state = LIQUID
 	color = "#003333" // rgb: 0, 51, 51
-	properties = list(PROPERTY_TOXIC = 2, PROPERTY_HEMORRAGING = 2, PROPERTY_HEPATOTOXIC = 2, PROPERTY_HEMOLYTIC = 1, PROPERTY_HYPOXEMIC = 1, PROPERTY_MYCOTAINTED = 1)
+	properties = list(PROPERTY_TOXIC = 5, PROPERTY_HEMORRAGING = 5, PROPERTY_HEPATOTOXIC = 5, PROPERTY_HEMOLYTIC = 3, PROPERTY_HYPOXEMIC = 3, PROPERTY_MYCOTAINTED = 1)
 	flags = REAGENT_NO_GENERATION|REAGENT_SCANNABLE
+	overdose = 0.1
+	overdose_critical = 0.1
 
 /datum/chem_property/special/mycotainted
 	name = PROPERTY_MYCOTAINTED

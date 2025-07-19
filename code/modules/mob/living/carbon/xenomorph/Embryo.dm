@@ -253,7 +253,7 @@
 
 	if(hive)
 		hive.add_xeno(new_xeno)
-		if(!affected_mob.first_xeno && hive.hive_location)
+		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob))
 			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
 

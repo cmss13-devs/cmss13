@@ -43,11 +43,11 @@
 
 /obj/structure/lz_sign/sorokyne_sign
 	name = "Sorokyne landing sign"
-	desc = "A large sign that reads 'Sorokyne - СОРОКІНО - POP. 110' The Company logo is proudly emblazoned in the corner. Don't eat the resin coated snow."
+	desc = "A large sign that reads 'Sorokyne - СОРОКІНО - POP. 110' The UPP 'Star' logo is proudly emblazoned in the corner."
 	icon_state = "sorokyne_sign_1"
 
 /obj/structure/lz_sign/sorokyne_sign/interior
-	desc = "A large sign that reads 'Sorokyne - СОРОКІНО - POP. 110' The Company logo is proudly emblazoned in the corner. Someone has crudely written 'FUCK OFF' in teal paint across the majority of the sign."
+	desc = "A large sign that reads 'Sorokyne - СОРОКІНО - POP. 110' The UPP 'Star' is proudly emblazoned in the corner. Someone has crudely written 'FUCK OFF' in teal paint across the majority of the sign."
 	icon_state = "sorokyne_sign_2"
 
 /obj/structure/lz_sign/new_varadero

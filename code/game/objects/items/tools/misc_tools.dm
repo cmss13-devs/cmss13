@@ -68,9 +68,9 @@
 		return
 
 	var/datum/component/label/labelcomponent = A.GetComponent(/datum/component/label)
-	if(labelcomponent)
+	if(labelcomponent && labelcomponent.has_label())
 		if(labelcomponent.label_name == label)
-			to_chat(user, SPAN_WARNING("It already has the same label."))
+			to_chat(user, SPAN_WARNING("The label already says \"[label]\"."))
 			return
 
 	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."),
@@ -365,7 +365,7 @@
 /obj/item/tool/pen/sleepypen/Initialize()
 	. = ..()
 	create_reagents(30)
-	reagents.add_reagent("chloralhydrate", 22)
+	reagents.add_reagent("chloralhydrate", 15)
 
 /obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)
 	if(!(istype(M,/mob)))

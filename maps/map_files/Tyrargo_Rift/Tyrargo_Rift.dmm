@@ -1,16 +1,16 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aab" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aac" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "aad" = (
@@ -4624,6 +4624,13 @@
 /obj/effect/decal/hybrisa/road/lines1,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"amX" = (
+/obj/effect/blocker/water,
+/obj/structure/prop/hybrisa/misc/graffiti/graffiti4{
+	layer = 2.9
+	},
+/turf/open/floor/prison/darkyellow2/north,
+/area/tyrargo/underground/sewer/south)
 "amY" = (
 /obj/structure/prop/rock/black_ground{
 	icon_state = "black_ground_alt"
@@ -9361,6 +9368,7 @@
 	name = "dirt"
 	},
 /obj/item/ammo_casing/bullet,
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_4,
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "axw" = (
@@ -13617,9 +13625,9 @@
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
-/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo/north,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4;
 	layer = 4;
@@ -13640,7 +13648,7 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/prop/ice_colony/ground_wire{
 	layer = 4.1;
 	pixel_x = 6
@@ -13655,7 +13663,7 @@
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/prop/ice_colony/ground_wire{
 	layer = 4.1;
 	pixel_x = 6
@@ -13663,8 +13671,8 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "aIi" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
@@ -13688,8 +13696,8 @@
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/east)
 "aIk" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 4;
 	layer = 4.1;
@@ -13706,7 +13714,7 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer0,
 /area/tyrargo/outdoors/colony_streets/east)
 "aIl" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/tyrargo/north,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1;
 	layer = 4.1;
@@ -13719,8 +13727,8 @@
 /area/tyrargo/outdoors/colony_streets/east)
 "aIm" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/east,
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
 	},
@@ -15481,9 +15489,9 @@
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "aMl" = (
@@ -20255,23 +20263,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/central)
-"aVv" = (
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -23;
-	pixel_y = 15;
-	layer = 5.99
-	},
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -14;
-	pixel_y = 3
-	},
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -9;
-	pixel_y = 19;
-	layer = 5.98
-	},
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/outdoors/outskirts/central/landing_zone)
 "aVw" = (
 /obj/structure/prop/tyrargo/boards/boards_1,
 /obj/structure/prop/tyrargo/boards{
@@ -21583,6 +21574,10 @@
 	color = "#a98c7c";
 	pixel_x = 4;
 	pixel_y = 3
+	},
+/obj/structure/barricade/sandbags/weak_wired{
+	icon_state = "sandbag_0";
+	pixel_y = -6
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_1)
@@ -28459,13 +28454,6 @@
 	},
 /turf/closed/wall/strata_ice/forest,
 /area/tyrargo/oob)
-"blY" = (
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -14;
-	pixel_y = 3
-	},
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/landing_zone_1)
 "blZ" = (
 /obj/structure/flora/tree/tyrargo/tree_3{
 	pixel_x = -17;
@@ -29482,6 +29470,12 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
+"bnY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_4,
+/turf/open/hybrisa/street/sidewalk/north,
+/area/tyrargo/oob)
 "bnZ" = (
 /obj/structure/flora/bush/snow,
 /turf/open/auto_turf/snow/brown_base/layer2,
@@ -39075,20 +39069,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_2)
-"bJJ" = (
-/obj/structure/flora/tree/tyrargo,
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -26;
-	pixel_y = 11;
-	layer = 5.9
-	},
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -7;
-	pixel_y = 16;
-	layer = 5.89
-	},
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/landing_zone_1)
 "bJK" = (
 /obj/structure/flora/tree/tyrargo{
 	pixel_x = -23;
@@ -39567,13 +39547,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/landing_zone_1)
-"bKZ" = (
-/obj/structure/flora/tree/tyrargo/tree_2{
-	pixel_x = -14;
-	pixel_y = 3
-	},
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/outdoors/outskirts/central/landing_zone)
 "bLa" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -39949,9 +39922,6 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/landing_zone_2/strip)
-"bMe" = (
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/landing_zone_1/no_tunnel)
 "bMf" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -43607,7 +43577,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVz" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
 "bVA" = (
@@ -44344,12 +44314,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXF" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXG" = (
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/platform_decoration/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXH" = (
@@ -44474,13 +44444,13 @@
 /turf/open/asphalt/cement/cement4,
 /area/tyrargo/outdoors/colony_exterior/north_east)
 "bXT" = (
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXU" = (
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXV" = (
@@ -44494,11 +44464,11 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXW" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXX" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_connection)
 "bXY" = (
@@ -45348,9 +45318,9 @@
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "car" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
@@ -45360,8 +45330,8 @@
 /turf/open/floor/corsat/box,
 /area/tyrargo/underground/bunker/south)
 "cat" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cau" = (
@@ -45432,9 +45402,9 @@
 /turf/open/floor/corsat/marked,
 /area/tyrargo/underground/bunker/north)
 "caE" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -45442,8 +45412,8 @@
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caF" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
@@ -45451,18 +45421,18 @@
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caG" = (
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform_decoration/stone/tyrargo/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caH" = (
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caI" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform_decoration/stone/tyrargo/north,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caJ" = (
@@ -45495,7 +45465,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)
 "caP" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
@@ -45503,7 +45473,7 @@
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caR" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caS" = (
@@ -45524,19 +45494,19 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/bunker/north)
 "caW" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caX" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/tyrargo/north,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "caY" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform_decoration/stone/tyrargo/east,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
@@ -45622,8 +45592,8 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/north)
 "cbj" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
@@ -45684,9 +45654,9 @@
 /turf/open/floor/corsat/darkgreen/east,
 /area/tyrargo/underground/bunker/north)
 "cbu" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
@@ -45916,9 +45886,9 @@
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform_decoration/stone/tyrargo/east,
+/obj/structure/platform_decoration/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "ccf" = (
@@ -45926,25 +45896,25 @@
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/north,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "ccg" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/north,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cch" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate{
 	layer = 4
 	},
-/obj/structure/platform/stone/hybrisa/rockdark,
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "cci" = (
@@ -45973,9 +45943,9 @@
 	layer = 4
 	},
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/north)
 "ccm" = (
@@ -47284,24 +47254,6 @@
 	},
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_exterior/south_east)
-"cgn" = (
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -14;
-	pixel_y = 3;
-	layer = 5.97
-	},
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -8;
-	pixel_y = 19;
-	layer = 5.95
-	},
-/obj/structure/flora/tree/tyrargo{
-	pixel_x = -26;
-	pixel_y = 11;
-	layer = 5.96
-	},
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/outdoors/outskirts/central/landing_zone)
 "cgo" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/tyrargo/indoors/security/ground)
@@ -48073,9 +48025,7 @@
 /turf/open/floor/hybrisa/metal/zbrownfloor1/west,
 /area/tyrargo/indoors/sewer_treatment/ground)
 "ciY" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/prop/invuln/rope{
 	pixel_x = -7
 	},
@@ -49016,9 +48966,6 @@
 /obj/effect/decal/remains/robot,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/tyrargo/indoors/apartment/north_ground)
-"clC" = (
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/landing_zone_1)
 "clD" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/plating,
@@ -51297,9 +51244,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/colony_exterior/north_west)
 "ctf" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/east,
 /obj/structure/prop/invuln/rope{
 	pixel_x = 8;
 	pixel_y = -16
@@ -51423,10 +51368,6 @@
 "ctC" = (
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
-"ctD" = (
-/obj/structure/flora/tree/tyrargo,
-/turf/closed/wall/strata_ice/forest,
-/area/tyrargo/landing_zone_1)
 "ctE" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/tyrargo/indoors/admin/ground)
@@ -57233,6 +57174,16 @@
 /obj/effect/landmark/lv624/fog_blocker/long,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
+"cMk" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/lz_sign/tyrargo_sign{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 2;
+	light_range = 4
+	},
+/turf/open/auto_turf/snow/brown_base/layer2,
+/area/tyrargo/landing_zone_1)
 "cMl" = (
 /obj/structure/flora/grass/temperate{
 	icon_state = "9";
@@ -63646,17 +63597,17 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/east)
 "ddO" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "ddP" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "ddQ" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/south)
 "ddR" = (
@@ -70150,7 +70101,6 @@
 /area/tyrargo/oob)
 "duf" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/effect/landmark/corpsespawner/colonist,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/tyrargo/oob)
@@ -74720,9 +74670,7 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "dFt" = (
-/obj/structure/platform/stone/hybrisa/rockdark{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -74730,12 +74678,8 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
 	},
-/obj/structure/platform/stone/hybrisa/rockdark{
-	layer = 1
-	},
-/obj/structure/platform/stone/hybrisa/rockdark/east{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/east,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -74756,17 +74700,13 @@
 /turf/open/auto_turf/hybrisa_auto_turf/layer2,
 /area/tyrargo/indoors/bar/ground)
 "dFx" = (
-/obj/structure/platform_decoration/stone/hybrisa/rockdark,
+/obj/structure/platform_decoration/stone/tyrargo,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north)
 "dFy" = (
-/obj/structure/platform/stone/hybrisa/rockdark{
-	layer = 1
-	},
-/obj/structure/platform/stone/hybrisa/rockdark/east{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/east,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -74780,24 +74720,18 @@
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/bar/ground)
 "dFB" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north{
-	layer = 1
-	},
-/obj/structure/platform/stone/hybrisa/rockdark/west{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north)
 "dFC" = (
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/platform_decoration/stone/tyrargo/east,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north)
 "dFD" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/east,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -74807,9 +74741,7 @@
 	pixel_y = -12
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/platform/stone/hybrisa/rockdark/west{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2{
 	pixel_x = -1;
 	pixel_y = -2;
@@ -74825,9 +74757,7 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/outdoors/colony_streets/north)
 "dFF" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/east,
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
@@ -84613,49 +84543,45 @@
 /turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/security/ground)
 "ecX" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "ecY" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/east,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "ecZ" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "eda" = (
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
+/obj/structure/platform_decoration/stone/tyrargo/north,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edb" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edc" = (
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/platform_decoration/stone/tyrargo/east,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edd" = (
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/west,
+/obj/structure/platform_decoration/stone/tyrargo/west,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "ede" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/east{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/east,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
@@ -84702,15 +84628,15 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
 "edi" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
-/obj/structure/platform/stone/hybrisa/rockdark/west,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/north,
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edj" = (
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/north,
-/obj/structure/platform_decoration/stone/hybrisa/rockdark/east,
+/obj/structure/platform_decoration/stone/tyrargo/north,
+/obj/structure/platform_decoration/stone/tyrargo/east,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
@@ -84727,15 +84653,13 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "edl" = (
-/obj/structure/platform_decoration/stone/hybrisa/rockdark,
+/obj/structure/platform_decoration/stone/tyrargo,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "edm" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east{
-	layer = 1
-	},
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform/stone/tyrargo,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
@@ -84771,7 +84695,7 @@
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/outdoors/colony_streets/south_east)
 "eds" = (
-/obj/structure/platform/stone/hybrisa/rockdark/north,
+/obj/structure/platform/stone/tyrargo/north,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/south_east)
@@ -86574,8 +86498,8 @@
 	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/structure/prop/tyrargo/traffic_signal{
-	pixel_y = 5
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_1{
+	pixel_y = 4
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
@@ -87566,8 +87490,8 @@
 /turf/open/floor/corsat,
 /area/tyrargo/underground/oob_area)
 "ekz" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/west,
+/obj/structure/platform/stone/tyrargo,
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
 	light_range = 1;
@@ -87586,12 +87510,12 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/oob_area)
 "ekC" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/oob_area)
 "ekD" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
-/obj/structure/platform/stone/hybrisa/rockdark,
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform/stone/tyrargo,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/oob_area)
 "ekE" = (
@@ -87606,7 +87530,7 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/underground/oob_area)
 "ekG" = (
-/obj/structure/platform/stone/hybrisa/rockdark/east,
+/obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/oob_area)
 "ekH" = (
@@ -91966,18 +91890,27 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "ewa" = (
 /obj/structure/platform/stone/tyrargo/north,
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 1
+	},
+/turf/open/gm/dirt/dark_brown,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "ewb" = (
 /obj/structure/platform/stone/tyrargo/north,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 8
 	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/dark_brown/variant_2,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "ewc" = (
 /obj/structure/prop/rock/black_ground{
@@ -94297,6 +94230,7 @@
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
+/obj/structure/prop/tyrargo/traffic_signal/traffic_signal_4,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob)
 "eBR" = (
@@ -100706,20 +100640,12 @@
 /area/tyrargo/outdoors/outskirts/east)
 "eSP" = (
 /obj/structure/blocker/invisible_wall,
-/obj/structure/prop/hybrisa/misc/fire/fire2{
-	pixel_x = -38;
-	pixel_y = 14
-	},
-/turf/open/floor/prison/floor_marked,
-/area/tyrargo/outdoors/outskirts/central/landing_zone)
-"eSQ" = (
-/obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/misc/fire/fire1{
 	color = "#ffa700";
 	layer = 7;
-	pixel_y = -4;
+	pixel_y = 15;
 	light_color = "#FF7700";
-	pixel_x = 4
+	pixel_x = -8
 	},
 /turf/open/floor/prison/floor_marked,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
@@ -112029,9 +111955,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/engineering/ground)
 "xJe" = (
-/obj/structure/platform/stone/hybrisa/rockdark/west{
-	layer = 1
-	},
+/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open_space,
 /area/tyrargo/outdoors/colony_streets/north)
@@ -146119,7 +146043,7 @@ dtL
 dtV
 dWx
 dtC
-cLP
+amX
 dWf
 dqS
 daI
@@ -163362,7 +163286,7 @@ bIs
 aWq
 bIs
 bIs
-bLk
+cMk
 bIH
 bML
 bIs
@@ -163920,8 +163844,8 @@ bIs
 bIH
 bMo
 bJn
-clC
-blY
+eqU
+anf
 bJn
 bIH
 bIs
@@ -164103,10 +164027,10 @@ dkD
 dkG
 dkD
 dkD
-bMe
-clC
-ctD
-clC
+eqU
+eqU
+aTn
+eqU
 bKY
 bIH
 bIs
@@ -164288,10 +164212,10 @@ dkF
 bMB
 bsy
 bvb
-bJJ
-clC
-ctD
-blY
+buZ
+eqU
+aTn
+anf
 bJn
 bIH
 bIs
@@ -164474,8 +164398,8 @@ bsB
 bsx
 erd
 erc
-aVv
-bKZ
+bsx
+anf
 arh
 arh
 arh
@@ -164659,7 +164583,7 @@ erC
 bsw
 bsw
 bsz
-cgn
+bsB
 bxd
 bJp
 bJU
@@ -165019,8 +164943,8 @@ bJM
 bJM
 bFX
 arh
-arh
-com
+dkG
+dkC
 cjh
 aVf
 erD
@@ -165389,7 +165313,7 @@ bCs
 bEi
 arh
 bJp
-com
+dkC
 eqU
 eqU
 aUT
@@ -166113,7 +166037,7 @@ eBG
 rFd
 qBR
 pLW
-eSQ
+bOG
 wSR
 cCv
 aYc
@@ -169593,7 +169517,7 @@ bsw
 bsw
 bsC
 buT
-bKH
+bsO
 awm
 awm
 bFX
@@ -169777,7 +169701,7 @@ bsw
 eqU
 bsC
 buT
-bKH
+bsO
 bCR
 bCR
 bQN
@@ -197219,8 +197143,8 @@ bta
 bta
 bta
 bta
-bta
-bta
+cuI
+cuI
 cuI
 eUk
 eRS
@@ -199668,7 +199592,7 @@ fSA
 ehk
 ehg
 iES
-ezY
+bnY
 aaG
 eqj
 egR

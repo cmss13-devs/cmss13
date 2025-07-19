@@ -523,10 +523,6 @@
 	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
 /area/tyrargo/indoors/tychon)
-"aX" = (
-/obj/structure/largecrate/supply/ammo/m41a/half,
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
-/area/tyrargo/indoors/tychon)
 "aY" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
@@ -609,17 +605,6 @@
 /obj/item/device/m56d_post,
 /obj/item/ammo_magazine/m56d,
 /obj/item/ammo_magazine/m56d,
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
-/area/tyrargo/indoors/tychon)
-"bh" = (
-/obj/structure/largecrate/supply/medicine/medkits,
-/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
-/area/tyrargo/indoors/tychon)
-"bi" = (
-/obj/effect/attach_point/crew_weapon/dropship3/floor{
-	attach_id = 7
-	},
-/obj/structure/dropship_equipment/sentry_holder,
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
 /area/tyrargo/indoors/tychon)
 "bj" = (
@@ -953,6 +938,10 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
+"bT" = (
+/obj/structure/largecrate/supply/ammo/m41a/half,
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/tyrargo/indoors/tychon)
 "bU" = (
 /obj/structure/flora/tree/tyrargo,
 /obj/structure/flora/tree/tyrargo/tree_2{
@@ -967,6 +956,21 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
+"bV" = (
+/obj/item/storage/backpack/marine/satchel/rto/small{
+	pixel_x = 7;
+	pixel_y = 19
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/tyrargo/indoors/tychon)
+"bW" = (
+/obj/structure/dropship_equipment/sentry_holder,
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/tyrargo/indoors/tychon)
+"bX" = (
+/obj/structure/largecrate/supply/medicine/medkits,
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/tyrargo/indoors/tychon)
 "cM" = (
 /obj/structure/flora/tree/tyrargo{
 	pixel_x = -23;
@@ -2799,7 +2803,7 @@ xe
 mN
 md
 Yg
-bh
+sJ
 sJ
 QI
 ax
@@ -2823,7 +2827,7 @@ Fb
 sJ
 oL
 sJ
-QI
+bT
 ay
 XD
 al
@@ -2841,9 +2845,9 @@ JX
 bu
 bs
 aI
-QI
+bW
 Cx
-aX
+sJ
 Yg
 aW
 aw
@@ -2865,7 +2869,7 @@ af
 aI
 bD
 sJ
-bi
+oL
 sJ
 QI
 aw
@@ -2906,7 +2910,7 @@ mQ
 WF
 yM
 aI
-QI
+bX
 Ai
 Gx
 Bv
@@ -2954,7 +2958,7 @@ QI
 sJ
 md
 Pt
-QI
+bV
 sJ
 QI
 Ve

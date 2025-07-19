@@ -228,8 +228,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	. = ..()
 
 
-	.["stack_name"] = src.name
-	.["stack_amount"] = src.amount
+	.["stack_name"] = name
+	.["stack_amount"] = amount
 	.["stack_receipts"] = list()
 
 	var/list/recipe_list = recipes
@@ -250,7 +250,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			continue
 
 
-		var/max_multiplier = min(20, floor(src.amount / single_receipt_stack.req_amount))
+		var/max_multiplier = min(20, floor(amount / single_receipt_stack.req_amount))
 		var/can_build = 1
 		can_build = can_build && (max_multiplier > 0)
 
@@ -265,7 +265,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		LAZYADD(.["stack_receipts"], list(list(
 			"id" = i,
 			"title" = single_receipt_stack.title,
-			"singular_name" = src.singular_name,
+			"singular_name" = singular_name,
 			"req_amount" = single_receipt_stack.req_amount,
 			"is_multi" = single_receipt_stack.max_res_amount > 1 && max_multiplier > 1,
 			"maximum_to_build" = max_multiplier,

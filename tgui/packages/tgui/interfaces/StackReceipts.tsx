@@ -53,11 +53,14 @@ export const StackReceipts = () => {
 
     stack_amount -= cost;
 
-    const updated = localReceipts.map((r, i) => {
-      const maxAllowed = Math.min(20, Math.floor(stack_amount / r.req_amount));
-      const clamped = Math.max(1, Math.min(r.amount_to_build, maxAllowed));
+    const updated = localReceipts.map((rec) => {
+      const maxAllowed = Math.min(
+        20,
+        Math.floor(stack_amount / rec.req_amount),
+      );
+      const clamped = Math.max(1, Math.min(rec.amount_to_build, maxAllowed));
       return {
-        ...r,
+        ...rec,
         amount_to_build: clamped,
       };
     });

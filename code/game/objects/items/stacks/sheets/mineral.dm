@@ -148,10 +148,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	if(!isyautja(user))
 		return
 
-	ui = SStgui.try_update_ui(user, src, ui)
-	if(!ui)
-		ui = new(user, src, "StackReceipts", "Constructions from the [src.name]")
-		ui.open()
+	..()
 
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"

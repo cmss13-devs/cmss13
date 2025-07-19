@@ -94,6 +94,12 @@
 			if(amount != 0) //can add negative numbers too!
 				message_admins("[key_name_admin(usr)] added [amount] research credits.")
 				GLOB.chemical_data.update_credits(amount)
+		if("reroll_contracts")
+			var/confirm = tgui_alert(usr, "This will immediately reroll the contract chemicals, Confirm?", "Reroll Contracts", list("Yes", "No"), 30 SECONDS)
+			if(confirm != "Yes")
+				return
+			GLOB.chemical_data.reroll_chemicals()
+			message_admins("[key_name_admin(usr)] rerolled research contracts.")
 
 		if("xenothumbs")
 			var/grant = tgui_alert(owner, "Do you wish to grant or revoke Xenomorph firearms permits?", "Give or Take", list("Grant", "Revoke", "Cancel"))

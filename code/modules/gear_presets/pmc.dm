@@ -6,6 +6,7 @@
 	idtype = /obj/item/card/id/pmc
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
+	origin_override = ORIGIN_WY_PMC
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	minimap_background = "background_pmc"
 	var/human_versus_human = FALSE

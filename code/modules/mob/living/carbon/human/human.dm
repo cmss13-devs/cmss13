@@ -861,34 +861,35 @@
 /mob/living/carbon/human/ui_state(mob/user)
 	return GLOB.not_incapacitated_state
 
-///get_eye_protection()
-///Returns a number between -1 to 2
+/// Gets a value between EYE_PROTECTION_NEGATIVE (-1) and EYE_PROTECTION_WELDING (3) based on whether there are eyes
+/// to blind or how much clothing protects them
 /mob/living/carbon/human/get_eye_protection()
-	var/number = 0
+	var/number = EYE_PROTECTION_NONE
 
 	if(species && !species.has_organ["eyes"])
 		return EYE_PROTECTION_WELDING //No eyes, can't hurt them.
 
 	if(!internal_organs_by_name)
 		return EYE_PROTECTION_WELDING
-	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
-	if(I)
-		if(I.cut_away)
+	var/datum/internal_organ/eyes/eyes_organ = internal_organs_by_name["eyes"]
+	if(eyes_organ)
+		if(eyes_organ.cut_away)
 			return EYE_PROTECTION_WELDING
-		if(I.robotic == ORGAN_ROBOT)
+		if(eyes_organ.robotic == ORGAN_ROBOT)
 			return EYE_PROTECTION_WELDING
 	else
 		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
-		var/obj/item/clothing/C = head
-		number += C.eye_protection
+		var/obj/item/clothing/cloth_item = head
+		number += cloth_item.eye_protection
 	if(istype(wear_mask, /obj/item/clothing))
-		number += wear_mask.eye_protection
+		var/obj/item/clothing/cloth_item = wear_mask
+		number += cloth_item.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
 
-	return number
+	return clamp(number, EYE_PROTECTION_NEGATIVE, EYE_PROTECTION_WELDING)
 
 
 /mob/living/carbon/human/abiotic(full_body = 0)

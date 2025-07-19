@@ -101,6 +101,8 @@
 #define PLASMA_NEUROTOXIN "neurotoxinplasma"
 #define PLASMA_ROYAL "royalplasma"
 
+#define BLOOD_BLIGHT "blightfluid"
+
 // Flags for Reagent
 
 /// Used to restrict recipes in the generator from employing all reagents of this type
@@ -137,6 +139,7 @@
 #define PROPERTY_NEUROTOXIC "neurotoxic"
 #define PROPERTY_HYPERMETABOLIC "hypermetabolic"
 #define PROPERTY_IGNITING "igniting"
+#define PROPERTY_MYCOTAINTED "mycotainted"
 //Neutral
 #define PROPERTY_NUTRITIOUS "nutritious"
 #define PROPERTY_KETOGENIC "ketogenic"

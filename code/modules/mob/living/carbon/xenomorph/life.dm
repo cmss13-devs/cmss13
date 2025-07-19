@@ -560,6 +560,6 @@ Make sure their actual health updates immediately.*/
 		return TRUE //weeds, yes!
 	if(need_weeds)
 		return FALSE //needs weeds, doesn't have any
-	if(hive && hive.living_xeno_queen && !is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z))
+	if((hive && !hive.allow_no_queen_actions) && hive.living_xeno_queen && (!is_mainship_level(hive.living_xeno_queen.loc.z) && is_mainship_level(loc.z)))
 		return FALSE //We are on the ship, but the Queen isn't
 	return TRUE //we have off-weed healing, and either we're on Almayer with the Queen, or we're on non-Almayer, or the Queen is dead, good enough!

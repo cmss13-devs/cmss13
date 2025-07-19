@@ -139,9 +139,12 @@
 #define XENO_HIVE_YAUTJA "xeno_hive_yautja"
 #define XENO_HIVE_RENEGADE "xeno_hive_renegade"
 
+#define XENO_HIVE_PATHOGEN "xeno_hive_pathogen"
+#define FACTION_PATHOGEN "Pathogen Confluence"
+
 #define XENO_HIVE_TUTORIAL "xeno_hive_tutorial"
 
-#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_RENEGADE, XENO_HIVE_TUTORIAL)
+#define ALL_XENO_HIVES list(XENO_HIVE_NORMAL, XENO_HIVE_CORRUPTED, XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA, XENO_HIVE_FERAL, XENO_HIVE_TAMED, XENO_HIVE_MUTATED, XENO_HIVE_FORSAKEN, XENO_HIVE_YAUTJA, XENO_HIVE_RENEGADE, XENO_HIVE_TUTORIAL, XENO_HIVE_PATHOGEN)
 
 //=================================================
 
@@ -194,6 +197,7 @@
 #define MUTINY_MUTINEER (1<<7)  // Part of the Mutiny Gang
 #define MUTINY_LOYALIST (1<<8) // Allied with command.
 #define MUTINY_NONCOMBAT (1<<9) // NON COMBATANT.
+#define BLOOD_BURSTING (1<<10) // Being chestburst by a bloodburster.
 
 //=================================================
 
@@ -354,6 +358,7 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define SPECIES_SYNTHETIC_K9 "Synthetic K9"
 #define SPECIES_MONKEY "Monkey"
 #define SPECIES_ZOMBIE "Zombie"
+#define SPECIES_PATHO_WALKER "Pathogen Walker"
 
 #define ALL_LIMBS list("head","chest","groin","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 #define MOVEMENT_LIMBS list("l_leg", "l_foot", "r_leg", "r_foot")

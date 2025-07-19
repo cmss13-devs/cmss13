@@ -1037,16 +1037,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	internal_transmitter.enabled = FALSE
 	internal_transmitter.networks_receive = networks_receive
 	internal_transmitter.networks_transmit = networks_transmit
-	internal_transmitter.outring_loop.start_sound = 'sound/machines/telephone/scout_ring.ogg'
-	internal_transmitter.outring_loop.start_length = 2 SECONDS
+	internal_transmitter.outring_loop.start_length = 0 SECONDS
+	internal_transmitter.outring_loop.start_sound = null
 	internal_transmitter.outring_loop.mid_sounds = 'sound/machines/telephone/scout_ring_outgoing.ogg'
-	internal_transmitter.outring_loop.mid_length = 13 SECONDS
+	internal_transmitter.outring_loop.mid_length = 3 SECONDS
 	internal_transmitter.hangup_loop.start_sound = 'sound/machines/telephone/scout_hang_up.ogg'
-	internal_transmitter.hangup_loop.mid_sounds = 'sound/machines/telephone/scout_hang_up.ogg'
+	internal_transmitter.hangup_loop.mid_sounds = null
 	internal_transmitter.busy_loop.start_sound = 'sound/machines/telephone/scout_remote_hangup.ogg'
-	internal_transmitter.busy_loop.mid_sounds = 'sound/machines/telephone/scout_hang_up.ogg'
+	internal_transmitter.busy_loop.mid_sounds = null
 	internal_transmitter.call_sound = 'sound/machines/telephone/scout_ring.ogg'
 	internal_transmitter.attached_to.icon_state = "scout_microphone"
+	internal_transmitter.attached_to.item_state = ""
+	internal_transmitter.attached_to.name = "helmet microphone"
+	internal_transmitter.attached_to.desc = "A small microphone attached to the helmet, used to communicate with the internal radio transmitter."
 	internal_transmitter.pickup_sound = 'sound/machines/telephone/scout_pick_up.ogg'
 	internal_transmitter.attached_to.can_be_raised = FALSE
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
@@ -1116,7 +1119,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/radio_helmet/scout
 	name = "\improper M3-S light helmet"
 	icon_state = "scout_helmet"
-	desc = "A custom helmet designed for USCM Scouts."
+	desc = "A custom helmet designed for USCM Scouts. Has a built-in small microphone for long-range communications."
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE

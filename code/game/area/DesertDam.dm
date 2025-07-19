@@ -18,6 +18,7 @@
 	icon_state = "purple"
 	minimap_color = MINIMAP_AREA_RESEARCH
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/desert_dam/interior/lab_northeast/east_lab_lobby
 	name = "East Lab Lobby"
@@ -42,6 +43,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_maintenence
 	name = "East Lab Maintenence"
 	icon_state = "maintcentral"
+	unoviable_timer = TRUE
 
 /area/desert_dam/interior/lab_northeast/east_lab_containment
 	name = "East Lab Containment"
@@ -74,6 +76,7 @@
 //Dam Interior
 /area/desert_dam/interior/dam_interior
 	minimap_color = MINIMAP_AREA_ENGI
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/desert_dam/interior/dam_interior/engine_room
 	name = "Engineering Generator Room"
@@ -85,6 +88,22 @@
 
 /area/desert_dam/interior/dam_interior/smes_main
 	name = "Engineering Main Substation"
+	icon_state = "purple"
+
+/area/desert_dam/interior/dam_interior/lower_stairwell
+	name = "Engineering Lower Stairwell"
+	icon_state = "purple"
+
+/area/desert_dam/interior/dam_interior/upper_stairwell
+	name = "Engineering Upper Stairwell"
+	icon_state = "purple"
+
+/area/desert_dam/interior/dam_interior/upper_walkway
+	name = "Engineering Upper Walkway"
+	icon_state = "yellow"
+
+/area/desert_dam/interior/dam_interior/break_room/upper
+	name = "Engineering Upper Breakroom"
 	icon_state = "purple"
 
 /area/desert_dam/interior/dam_interior/smes_backup
@@ -118,6 +137,7 @@
 /area/desert_dam/interior/dam_interior/west_tunnel
 	name = "Engineering Western Tunnel"
 	icon_state = "yellow"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/desert_dam/interior/dam_interior/central_tunnel
 	name = "Engineering Central Tunnel"
@@ -126,6 +146,7 @@
 /area/desert_dam/interior/dam_interior/south_tunnel
 	name = "Engineering Southern Tunnel"
 	icon_state = "purple"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/desert_dam/interior/dam_interior/northeastern_tunnel
 	name = "Engineering Northeastern Tunnel"
@@ -144,6 +165,18 @@
 	icon_state = "hangar"
 	linked_lz = DROPSHIP_LZ1
 
+/area/desert_dam/interior/dam_interior/hanger/roof
+	name = "Engineering Hangar Roof"
+	icon_state = "hangar"
+
+/area/desert_dam/interior/dam_interior/hanger/waiting
+	name = "Engineering Hangar Gate"
+	icon_state = "purple"
+
+/area/desert_dam/interior/dam_interior/hanger/control
+	name = "Engineering Hangar Air Traffic Control"
+	icon_state = "blue"
+
 /area/desert_dam/interior/dam_interior/hangar_storage
 	name = "Engineering Hangar Storage"
 	icon_state = "storage"
@@ -155,6 +188,18 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage
 	name = "Engineering Primary Tool Storage"
 	icon_state = "blue"
+
+/area/desert_dam/interior/dam_interior/primary_tool_storage/upper
+	name = "Engineering Upper Primary Tool Storage"
+
+/area/desert_dam/interior/dam_interior/primary_tool_storage/solar
+	name = "Engineering Solar Power Monitering"
+	icon_state = "yellow"
+
+/area/desert_dam/interior/dam_interior/primary_tool_storage/server
+	name = "Engineering Server Room"
+	icon_state = "green"
+
 
 /area/desert_dam/interior/dam_interior/tech_storage
 	name = "Engineering Secure Tech Storage"
@@ -183,14 +228,17 @@
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance
 	name = "Engineering North Tunnel Entrance"
 	icon_state = "yellow"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance
 	name = "Engineering East Tunnel Entrance"
 	icon_state = "yellow"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance
 	name = "Engineering South Tunnel Entrance"
 	icon_state = "red"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/desert_dam/interior/dam_interior/garage
 	name = "Garage"
@@ -205,11 +253,15 @@
 	soundscape_interval = 25
 	sound_environment = SOUND_ENVIRONMENT_AUDITORIUM
 	minimap_color = MINIMAP_AREA_CAVES
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/desert_dam/interior/caves/east_caves
 	name = "Eastern Caves"
 	icon_state = "red"
-	unoviable_timer = FALSE
+
+/area/desert_dam/interior/caves/west_caves
+	name = "Western Caves"
+	icon_state = "red"
 
 /area/desert_dam/interior/caves/central_caves
 	name = "Central Caves"
@@ -219,7 +271,6 @@
 /area/desert_dam/interior/caves/temple
 	name = "Sand Temple"
 	icon_state = "green"
-	unoviable_timer = FALSE
 
 //BUILDING
 //areas not under rock
@@ -252,6 +303,14 @@
 /area/desert_dam/building/substation/southwest
 	name = "Command Substation"
 	icon_state = "southwestern_ss"
+
+/area/desert_dam/building/substation/southwest/solar
+	name = "Southwest Substation Solar Power Monitering"
+
+/area/desert_dam/building/substation/southwest/solar/walkway
+	name = "Southwest Substation Solar Power Monitering Walkway"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "yellow"
 
 /area/desert_dam/building/substation/west
 	name = "Command Substation"
@@ -297,6 +356,50 @@
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ1
 
+/area/desert_dam/building/administration/gate
+	name = "Administration Departures Gate"
+	icon_state = "purple"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/breakroom
+	name = "Administration Breakroom"
+	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/stairwell
+	name = "Administration Stairwell"
+	icon_state = "purple"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/stairwell/upper
+	name = "Administration Upper Stairwell"
+
+/area/desert_dam/building/administration/upper_hallway
+	name = "Administration Upper Hallway"
+	icon_state = "purple"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/panic_room
+	name = "Administration Panic Room"
+	icon_state = "blue"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/janitor
+	name = "Administration Janitor Closet"
+	icon_state = "blue"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/maint
+	name = "Administration Maintenance"
+	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ1
+
+/area/desert_dam/building/administration/balcony
+	name = "Administration Balcony"
+	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ1
+	ceiling = CEILING_NONE
+
 
 //Bar
 /area/desert_dam/building/bar/bar
@@ -317,6 +420,7 @@
 	name = "DO NOT USE"
 	icon_state = "purple"
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/desert_dam/building/cafeteria/cafeteria
 	name = "Cafeteria"
@@ -340,6 +444,7 @@
 	name = "DO NOT USE"
 	icon_state = "purple"
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/desert_dam/building/dorms/hallway_northwing
 	name = "Dormitory North Wing"
@@ -371,8 +476,12 @@
 	name = "Medical Emergency Room"
 	icon_state = "medbay"
 
-/area/desert_dam/building/medical/treatment_room
-	name = "Medical Treatment Room"
+/area/desert_dam/building/medical/helipad_triage
+	name = "Medical Helipad Intake"
+	icon_state = "medbay"
+
+/area/desert_dam/building/medical/outgoing
+	name = "Medical Outgoing"
 	icon_state = "medbay2"
 
 /area/desert_dam/building/medical/lobby
@@ -394,6 +503,26 @@
 /area/desert_dam/building/medical/east_wing_hallway
 	name = "Medical East Wing"
 	icon_state = "medbay"
+
+/area/desert_dam/building/medical/upper_hallway
+	name = "Medical Upper Wing"
+	icon_state = "medbay"
+
+/area/desert_dam/building/medical/stairwell
+	name = "Medical Southern Stairwell"
+	icon_state = "medbay2"
+
+/area/desert_dam/building/medical/stairwell/north
+	name = "Medical Northern Stairwell"
+	icon_state = "medbay2"
+
+/area/desert_dam/building/medical/stairwell/upper
+	name = "Medical Upper Southern Stairwell"
+	icon_state = "medbay2"
+
+/area/desert_dam/building/medical/stairwell/upper_north
+	name = "Medical Upper Northern Stairwell"
+	icon_state = "medbay2"
 
 /area/desert_dam/building/medical/primary_storage
 	name = "Medical Primary Storage"
@@ -431,6 +560,10 @@
 	name = "Medical Office Two"
 	icon_state = "blue"
 
+/area/desert_dam/building/medical/office3
+	name = "Medical Office Shared"
+	icon_state = "blue"
+
 /area/desert_dam/building/medical/virology_wing
 	name = "Medical Virology Wing"
 	icon_state = "medbay3"
@@ -443,6 +576,21 @@
 	name = "Medical"
 	icon_state = "medbay2"
 
+/area/desert_dam/building/medical/maint
+	name = "Maint"
+	icon_state = "yellow"
+
+/area/desert_dam/building/medical/maint/north
+	name = "Medical Northern Maintenance"
+
+/area/desert_dam/building/medical/maint/south
+	name = "Medical Southern Maintenance"
+
+/area/desert_dam/building/medical/maint/east
+	name = "Medical Eastern Maintenance"
+
+/area/desert_dam/building/medical/maint/cent
+	name = "Medical Central Maintenance"
 
 //Warehouse
 /area/desert_dam/building/warehouse/warehouse
@@ -457,6 +605,11 @@
 
 /area/desert_dam/building/warehouse/breakroom
 	name = "Warehouse Breakroom"
+	icon_state = "green"
+	linked_lz = DROPSHIP_LZ2
+
+/area/desert_dam/building/warehouse/office
+	name = "Warehouse Overlook Office"
 	icon_state = "green"
 	linked_lz = DROPSHIP_LZ2
 
@@ -480,6 +633,26 @@
 /area/desert_dam/building/hydroponics/hydroponics_breakroom
 	name = "Hydroponics Breakroom"
 	icon_state = "red"
+
+/area/desert_dam/building/hydroponics/stairwell
+	name = "Hydroponics Stairwell"
+	icon_state = "purple"
+
+/area/desert_dam/building/hydroponics/maint
+	name = "Hydroponics Maintenance"
+	icon_state = "yellow"
+
+/area/desert_dam/building/hydroponics/growroom
+	name = "Hydroponics Upper Storage"
+	icon_state = "green"
+
+/area/desert_dam/building/hydroponics/offices
+	name = "Hydroponics Offices"
+	icon_state = "bluenew"
+
+/area/desert_dam/building/hydroponics/walkway
+	name = "Hydroponics Walkway"
+	icon_state = "yellow"
 
 //Water Treatment Plant 1
 /area/desert_dam/building/water_treatment_one
@@ -512,6 +685,10 @@
 
 /area/desert_dam/building/water_treatment_one/control_room
 	name = "Water Treatment One Control Room"
+	icon_state = "yellow"
+
+/area/desert_dam/building/water_treatment_one/overlook
+	name = "Water Treatment One Observation Room"
 	icon_state = "yellow"
 
 /area/desert_dam/building/water_treatment_one/purification
@@ -547,6 +724,10 @@
 	name = "Water Treatment Two Control Room"
 	icon_state = "yellow"
 
+/area/desert_dam/building/water_treatment_two/overlook
+	name = "Water Treatment Two Observation"
+	icon_state = "yellow"
+
 /area/desert_dam/building/water_treatment_two/purification
 	name = "Water Treatment Two Purification"
 	icon_state = "green"
@@ -554,6 +735,9 @@
 /area/desert_dam/building/water_treatment_two/floodgate_control
 	name = "Water Treatment Two Floodgate Control"
 	icon_state = "green"
+
+/area/desert_dam/building/water_treatment_two/floodgate_control/lobby
+	name = "Water Treatment Two Floodgate Control Lobby"
 
 
 //Library UNUSED
@@ -578,11 +762,11 @@
 	icon_state = "sec_prison"
 
 /area/desert_dam/building/security/marshals_office
-	name = "Security Marshal's Office"
+	name = "Security Chief's Office"
 	icon_state = "sec_hos"
 
 /area/desert_dam/building/security/armory
-	name = "Security Armory"
+	name = "Security Armoury"
 	icon_state = "armory"
 
 /area/desert_dam/building/security/warden
@@ -641,6 +825,59 @@
 	name = "Security Staffroom"
 	icon_state = "security"
 
+/area/desert_dam/building/security/maint
+	name = "Security Maintenance"
+	icon_state = "yellow"
+
+/area/desert_dam/building/security/maint/north
+	name = "Security Northern Maintenance"
+
+/area/desert_dam/building/security/maint/South
+	name = "Security Southern Maintenance"
+
+/area/desert_dam/building/security/maint/north
+	name = "Security Northern Maintenance"
+
+/area/desert_dam/building/security/maint/west
+	name = "Security Western Maintenance"
+
+/area/desert_dam/building/security/maint/east
+	name = "Security Eastern Maintenance"
+
+/area/desert_dam/building/security/maint/central
+	name = "Security Central Maintenance"
+
+/area/desert_dam/building/security/stairwell
+	name = "Security Stairwell"
+	icon_state = "purple"
+
+/area/desert_dam/building/security/stairwell/upper
+	name = "Security Upper Stairwell"
+
+/area/desert_dam/building/security/workshop
+	name = "Security Workshop"
+	icon_state = "yellow"
+
+/area/desert_dam/building/security/riot_armory
+	name = "Security Riot Armoury"
+	icon_state = "armory"
+
+/area/desert_dam/building/security/waiting
+	name = "Security Visitation Waiting"
+	icon_state = "green"
+
+/area/desert_dam/building/security/yard
+	name = "Security Recreation Yard"
+	icon_state = "red"
+
+/area/desert_dam/building/security/upper_hallway
+	name = "Security Upper Hallway"
+	icon_state = "purple"
+
+/area/desert_dam/building/security/break_room
+	name = "Security Breakroom"
+	icon_state = "red"
+
 //Church
 /area/desert_dam/building/church
 	name = "Church"
@@ -652,6 +889,7 @@
 	name = "DO NOT USE"
 	icon_state = "purple"
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/desert_dam/building/mining/workshop
 	name = "Mining Workshop"
@@ -683,6 +921,26 @@
 /area/desert_dam/exterior/rock
 	name = "Rock"
 	icon_state = "cave"
+
+/area/desert_dam/exterior/rock/level1
+	name = "Lower Rock"
+
+/area/desert_dam/exterior/rock/level3
+	name = "Upper Rock"
+
+/area/desert_dam/exterior/rock/level4
+	name = "Mountain Rock"
+
+/area/desert_dam/exterior/rock/level5
+	name = "Upper Mountain Rock"
+
+/area/desert_dam/exterior/roof
+	name = "Lower Roof"
+	always_unpowered = 1
+	icon_state = "dark128"
+
+/area/desert_dam/exterior/roof/level4
+	name = "Upper Roof"
 
 //Landing Pad for the Alamo. THIS IS NOT THE SHUTTLE AREA
 /area/desert_dam/exterior/landing_pad_one
@@ -789,6 +1047,7 @@
 	name = "Civilian Valley"
 	icon_state = "valley_south_excv"
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/desert_dam/exterior/valley/valley_medical
 	name = "Medical Valley"
@@ -803,6 +1062,7 @@
 	name = "Crash Site Valley"
 	icon_state = "yellow"
 	unoviable_timer = FALSE
+	ceiling = CEILING_UNDERGROUND_METAL_BLOCK_CAS
 
 /area/desert_dam/exterior/valley/north_valley_dam
 	name = "North Dam Valley"

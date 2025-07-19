@@ -217,6 +217,13 @@
 /obj/item/clothing/shoes/marine/corporate/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/cmb
+	name = "rugged boots"
+	desc = "Generic boots typically used by law enforcement types out on the frontier. Functional and stylish."
+
+/obj/item/clothing/shoes/marine/cmb/knife
+	spawn_item_type = /obj/item/attachable/bayonet
+
 /obj/item/clothing/shoes/marine/ress
 	name = "armored sandals"
 	icon_state = "sandals"

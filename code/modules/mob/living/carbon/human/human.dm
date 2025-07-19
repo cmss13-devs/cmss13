@@ -1233,6 +1233,12 @@
 			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
 				flavor_text += flavor_texts[T]
 				flavor_text += "\n\n"
+
+	// Variable inserts
+	flavor_text = replacetext(flavor_text, "%bloodtype%", blood_type)
+	flavor_text = replacetext(flavor_text, "%rank%", get_paygrade())
+	flavor_text = replacetext(flavor_text, "%name%", name)
+
 	return ..()
 
 
@@ -1693,6 +1699,10 @@
 	set category = "IC"
 
 	var/HTML = "<body>"
+	HTML += "You may include %bloodtype% %rank% or %name% as inserts."
+	HTML += "<br>"
+	HTML += "The %rank% will include a space after if applicable."
+	HTML += "<br>"
 	HTML += "<tt>"
 	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
@@ -1724,7 +1734,7 @@
 	HTML += "<hr />"
 	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
-	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 300)
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 430)
 
 /mob/living/carbon/human/throw_item(atom/target)
 	if(!throw_allowed)

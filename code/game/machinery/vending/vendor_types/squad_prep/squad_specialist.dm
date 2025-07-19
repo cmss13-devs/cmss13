@@ -97,15 +97,15 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 	var/datum/specialist_set/chosen_set = get_specialist_set(user)
 	if(!chosen_set)
 		return
+	var/kit_path = chosen_set::kit_typepath
 	var/list/itemspec
 	for(var/list/entry as anything in GLOB.cm_vending_gear_spec)
-		if(entry[1] == chosen_set::name)
+		if(entry[3] == kit_path)
 			itemspec = entry
 			break
 	if(!itemspec)
 		// Fallback
-		var/type_path = chosen_set::kit_typepath
-		human_user.put_in_any_hand_if_possible(new type_path, FALSE)
+		human_user.put_in_any_hand_if_possible(new kit_path, FALSE)
 		CRASH("Failed to locate [chosen_set::name] for [user] in GLOB.cm_vending_gear_spec!")
 	if(!handle_vend(itemspec, human_user))
 		return

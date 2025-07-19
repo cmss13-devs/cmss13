@@ -249,13 +249,13 @@
 	new /obj/item/clothing/suit/storage/labcoat/pharmacist(src)
 	return
 
-/obj/structure/closet/wardrobe/pharmchem
+/obj/structure/closet/wardrobe/pharmacist
 	name = "pharmaceutical physician wardrobe"
 	icon_state = "orange"
 	icon_closed = "orange"
 	icon_opened = "orange_open"
 
-/obj/structure/closet/wardrobe/pharmchem/Initialize()
+/obj/structure/closet/wardrobe/pharmacist/Initialize()
 	. = ..()
 	new /obj/item/clothing/under/rank/medical/pharmacist(src)
 	new /obj/item/clothing/under/rank/medical/pharmacist(src)

@@ -13,8 +13,8 @@
 	flags_item = ITEM_PREDATOR
 	flags_equip_slot = SLOT_BACK
 
-	passive_block = 15
-	readied_block = 30
+	passive_block = SHIELD_CHANCE_LOW
+	readied_block = SHIELD_CHANCE_HIGH
 
 	blocks_on_back = FALSE
 
@@ -46,11 +46,11 @@
 		M.apply_effect(5, SLOW)
 
 /obj/item/weapon/shield/riot/yautja/attackby(obj/item/attacking_item, mob/user)
-	if(cooldown < world.time - 25)
+	if(bash_cooldown < world.time - 25)
 		if(istype(attacking_item, /obj/item/weapon) && (attacking_item.flags_item & ITEM_PREDATOR))
 			user.visible_message(SPAN_WARNING("[user] bashes [src] with [attacking_item]!"))
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 25, 1)
-			cooldown = world.time
+			bash_cooldown = world.time
 	else
 		..()
 

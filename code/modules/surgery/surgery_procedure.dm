@@ -34,6 +34,10 @@
 	///How much training is needed to do this surgery?
 	var/required_surgery_skill = SKILL_SURGERY_TRAINED
 
+	//used for surgery overlays
+	var/chest_overlay
+	var/skull_overlay
+
 	var/step_in_progress = FALSE
 	///The step the surgery is currently on. When status > number of steps, the surgery ends.
 	var/status = 1

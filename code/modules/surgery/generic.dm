@@ -4,9 +4,6 @@
 // INCISION SURGERIES //
 //////////////////////////////////////////////////////////////////
 
-var/chest_overlay
-var/skull_overlay
-
 /datum/surgery/open_incision
 	name = "Open Incision"
 	priority = SURGERY_PRIORITY_MAXIMUM

@@ -1,0 +1,8 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - rscadd: "Added missing implementations for transform and enumerations in Filteriffic"
+  - bugfix: "Fixed multiple crash causes in Filteriffic e.g. opening displacement at all"
+  - bugfix: "Fixed multiple crash causes in particle editor e.g. touching gradients or transform at all"
+  - qol: "When picking icons in VV Filteriffic or Particle editor, you can now specify just a dmi path, and in the case of Filteriffic customize the icon paramters"
+  - code_imp: "Moved matrix identities to a define file and ported a filter qdel check from TG"

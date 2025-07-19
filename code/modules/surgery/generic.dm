@@ -245,7 +245,7 @@
 	target.custom_pain("It feels like the skin on your [surgery.affected_limb.display_name] is on fire!", 1)
 	log_interact(user, target, "[key_name(user)] began retracting skin in [key_name(target)]'s [surgery.affected_limb.display_name].")
 
-/datum/surgery_step/retract_skin/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/retract_skin/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery,  chest_overlay, skull_overlay)
 	var/h_his = "their" //[tool] doesn't have a gender.
 	switch(target.gender)
 		if(MALE)
@@ -350,7 +350,7 @@
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being burned!", 1)
 	log_interact(user, target, "[key_name(user)] began cauterizing an incision in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
-/datum/surgery_step/cauterize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/cauterize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, chest_overlay, skull_overlay)
 	user.affected_message(target,
 		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
@@ -476,7 +476,7 @@
 /datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
-/datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery,  chest_overlay, skull_overlay)
 	user.affected_message(target,
 		SPAN_NOTICE("You start forcing [target]'s [surgery.affected_limb.encased] open with \the [tool]."),
 		SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with \the [tool]."),
@@ -485,7 +485,7 @@
 	target.custom_pain("Something hurts horribly in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began opening [key_name(target)]'s [surgery.affected_limb.encased], possibly beginning [surgery].")
 
-/datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, chest_overlay, skull_overlay)
 	var/brain = surgery.affected_limb.body_part == BODY_FLAG_HEAD ? TRUE : FALSE
 	user.affected_message(target,
 		SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
@@ -559,7 +559,7 @@
 	target.custom_pain("Something hurts horribly in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began closing [key_name(target)]'s [surgery.affected_limb.encased], attempting to begin [surgery].")
 
-/datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+/datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery,  chest_overlay, skull_overlay)
 	user.affected_message(target,
 		SPAN_NOTICE("You close [target]'s [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes your [surgery.affected_limb.encased]."),

@@ -125,7 +125,7 @@
 	dat += "<b>Notes or Comments:</b><br><span class=\"paper_field\"></span><br><br>"
 	dat += "<b>Representative Signature:</b> <span class=\"paper_field\"></span><br>"
 	dat += "</div> <!-- /message-body-text -->"
-	dat += "<hr style=\"margin-bottom:-3px; margin-top:3px;\">"
+	dat += "<hr style=\"margin-bottom:3px; margin-top:3px;\">"
 	dat += "<div class=\"message-signature-text\">"
 	dat += "<p class=\"signature-title\">PR301b Function</p>"
 	dat += "<p>"

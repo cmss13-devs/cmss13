@@ -33,9 +33,9 @@
 			msg += SPAN_XENOWARNING("It doesn't seem responsive.\n")
 		if(isreaper(user))
 			if(is_revivable(TRUE) && check_tod())
-				msg += "<span style='color: red;'>This creature is not harvestable.\n</span>"
+				msg += "<span style='color: purple;'>This creature is not harvestable.\n</span>"
 			else
-				msg += "<span style='color: red;'>This creature is harvestable.\n</span>"
+				msg += "<span style='font-weight: bold; color: red;'>This creature is harvestable.\n</span>"
 
 
 		msg += "</span>"

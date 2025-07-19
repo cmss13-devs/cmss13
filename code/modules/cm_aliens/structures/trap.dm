@@ -234,7 +234,7 @@
 			set_state()
 			var/obj/item/clothing/mask/facehugger/F = new (loc, hivenumber)
 			xeno.put_in_active_hand(F)
-			to_chat(xeno, SPAN_XENONOTICE("You remove the facehugger from [src]."))
+			to_chat(xeno, SPAN_XENONOTICE("We remove the facehugger from [src]."))
 			return XENO_NONCOMBAT_ACTION
 		else
 			to_chat(xeno, SPAN_XENONOTICE("[src] is occupied by a child."))
@@ -248,10 +248,10 @@
 		var/mob/living/carbon/xenomorph/reaper/reaper = xeno
 
 		if(reaper.flesh_plasma < 100)
-			to_chat(reaper, SPAN_XENOWARNING("You do not have enough flesh plasma for this, you need [100 - reaper.flesh_plasma] more."))
+			to_chat(reaper, SPAN_XENOWARNING("We do not have enough flesh plasma for this, we need [100 - reaper.flesh_plasma] more."))
 			return XENO_NO_DELAY_ACTION
 
-		to_chat(reaper, SPAN_XENONOTICE("You begin charging the resin trap with toxic mist."))
+		to_chat(reaper, SPAN_XENONOTICE("We begin charging the resin trap with toxic mist."))
 		xeno_attack_delay(reaper)
 		if(!do_after(reaper, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 			return XENO_NO_DELAY_ACTION
@@ -270,10 +270,10 @@
 		set_state(RESIN_TRAP_MIST)
 		cause_data = create_cause_data("resin mist trap", reaper)
 		reaper.visible_message(SPAN_XENOWARNING("\The [reaper] pressurises the resin trap with toxic mist!"), \
-		SPAN_XENOWARNING("You pressurise the resin trap with toxic mist!"), null, 5)
+		SPAN_XENOWARNING("We pressurise the resin trap with toxic mist!"), null, 5)
 
 	if(!xeno.acid_level)
-		to_chat(xeno, SPAN_XENONOTICE("You can't secrete any acid into \the [src]"))
+		to_chat(xeno, SPAN_XENONOTICE("We can't secrete any acid into \the [src]"))
 		return XENO_NO_DELAY_ACTION
 
 	if(trap_acid_level >= xeno.acid_level)
@@ -284,10 +284,10 @@
 		var/mob/living/carbon/xenomorph/boiler/boiler = xeno
 
 		if(!boiler.check_plasma(200))
-			to_chat(boiler, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+			to_chat(boiler, SPAN_XENOWARNING("We must produce more plasma before doing this."))
 			return XENO_NO_DELAY_ACTION
 
-		to_chat(xeno, SPAN_XENONOTICE("You begin charging the resin trap with acid gas."))
+		to_chat(xeno, SPAN_XENONOTICE("We begin charging the resin trap with acid gas."))
 		xeno_attack_delay(xeno)
 		if(!do_after(boiler, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 			return XENO_NO_DELAY_ACTION
@@ -309,7 +309,7 @@
 		set_state(RESIN_TRAP_GAS)
 		cause_data = create_cause_data("resin gas trap", boiler)
 		boiler.visible_message(SPAN_XENOWARNING("\The [boiler] pressurises the resin trap with acid gas!"),
-		SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
+		SPAN_XENOWARNING("We pressurise the resin trap with acid gas!"), null, 5)
 	else
 		//Non-boiler acid types
 		var/acid_cost = 70
@@ -319,10 +319,10 @@
 			acid_cost = 200
 
 		if (!xeno.check_plasma(acid_cost))
-			to_chat(xeno, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+			to_chat(xeno, SPAN_XENOWARNING("We must produce more plasma before doing this."))
 			return XENO_NO_DELAY_ACTION
 
-		to_chat(xeno, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
+		to_chat(xeno, SPAN_XENONOTICE("We begin charging the resin trap with acid."))
 		xeno_attack_delay(xeno)
 		if(!do_after(xeno, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 			return XENO_NO_DELAY_ACTION
@@ -341,7 +341,7 @@
 			set_state(RESIN_TRAP_ACID1 + xeno.acid_level - 1)
 
 		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] pressurises the resin trap with acid!"),
-		SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+		SPAN_XENOWARNING("We pressurise the resin trap with acid!"), null, 5)
 	return XENO_NO_DELAY_ACTION
 
 
@@ -358,18 +358,18 @@
 	if(!(istype(W, /obj/item/clothing/mask/facehugger) && isxeno(user)))
 		return ..()
 	if(trap_type != RESIN_TRAP_EMPTY)
-		to_chat(user, SPAN_XENOWARNING("You can't put a hugger in this trap!"))
+		to_chat(user, SPAN_XENOWARNING("We can't put a hugger in this trap!"))
 		return
 	var/obj/item/clothing/mask/facehugger/FH = W
 	if(FH.stat == DEAD)
-		to_chat(user, SPAN_XENOWARNING("You can't put a dead facehugger in [src]."))
+		to_chat(user, SPAN_XENOWARNING("We can't put a dead facehugger in [src]."))
 	else
 		var/mob/living/carbon/xenomorph/xeno = user
 		if (!istype(xeno))
 			return
 
 		if (xeno.hivenumber != hivenumber)
-			to_chat(user, SPAN_XENOWARNING("This resin trap doesn't belong to your hive!"))
+			to_chat(user, SPAN_XENOWARNING("This resin trap doesn't belong to our hive!"))
 			return
 
 		if (FH.hivenumber != hivenumber)
@@ -380,7 +380,7 @@
 			return
 
 		set_state(RESIN_TRAP_HUGGER)
-		to_chat(user, SPAN_XENONOTICE("You place a facehugger in [src]."))
+		to_chat(user, SPAN_XENONOTICE("We place a facehugger in [src]."))
 		qdel(FH)
 
 /obj/effect/alien/resin/trap/healthcheck()

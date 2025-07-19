@@ -818,13 +818,14 @@
 	if(!xeno.check_state())
 		return
 
-	if(!check_and_use_plasma_owner())
+	if(!check_plasma_owner())
 		return
 
 	if(xeno.flesh_plasma < flesh_plasma_cost)
 		to_chat(xeno, SPAN_XENOWARNING("We don't have enough flesh plasma, we need [flesh_plasma_cost - xeno.flesh_plasma] more!"))
 		return
 
+	use_plasma_owner()
 	var/datum/cause_data/cause_data = create_cause_data("reaper mist", owner)
 	cloud.set_up(4, 0, get_turf(xeno), null, 10, new_cause_data = cause_data)
 	cloud.start()

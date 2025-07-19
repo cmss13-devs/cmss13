@@ -48,6 +48,7 @@
 	zombie.faction = FACTION_PATHOGEN
 	zombie.hivenumber = XENO_HIVE_PATHOGEN
 	zombie.faction_group = list(FACTION_PATHOGEN)
+	zombie.job = SPECIES_PATHO_WALKER
 
 	if(zombie.l_hand)
 		zombie.drop_inv_item_on_ground(zombie.l_hand, FALSE, TRUE)
@@ -64,10 +65,10 @@
 	if(zombie.wear_mask)
 		zombie.drop_inv_item_on_ground(zombie.wear_mask, FALSE, TRUE)
 
-	var/obj/item/weapon/zombie_claws/no_infect/ZC = new(zombie)
+	var/obj/item/weapon/zombie_claws/no_infect/pathogen/ZC = new(zombie)
 	ZC.icon_state = "claw_r"
 	zombie.equip_to_slot_or_del(ZC, WEAR_R_HAND, TRUE)
-	zombie.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws/no_infect(zombie), WEAR_L_HAND, TRUE)
+	zombie.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws/no_infect/pathogen(zombie), WEAR_L_HAND, TRUE)
 	zombie.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(zombie), WEAR_EYES, TRUE)
 
 	var/datum/mob_hud/zom_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]

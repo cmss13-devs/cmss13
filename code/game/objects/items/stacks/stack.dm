@@ -81,7 +81,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 /obj/item/stack/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "StackReceipts", "Constructions from the [src.name]")
+		ui = new(user, src, "StackReceipts", "Constructions from the [name]")
 		ui.open()
 
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

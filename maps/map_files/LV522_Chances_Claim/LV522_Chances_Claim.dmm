@@ -2331,7 +2331,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/item/weapon/gun/launcher/grenade/m81/m79,
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/outdoors/colony_streets/north_street)
 "beb" = (

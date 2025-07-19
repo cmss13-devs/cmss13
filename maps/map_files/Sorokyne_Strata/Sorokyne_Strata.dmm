@@ -33618,7 +33618,7 @@
 /area/strata/exterior/marsh/center)
 "bVv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/launcher/grenade/m81/m79,
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1,
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood/wood_broken2,
 /area/strata/interior/wooden_ruins)

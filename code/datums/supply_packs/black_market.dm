@@ -693,7 +693,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/weapon/baton/cattleprod,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 		/obj/item/storage/box/packet/m15/rubber,
-		/obj/item/storage/box/guncase/m79,
+		/obj/item/storage/box/guncase/m85a1,
 		/obj/item/clothing/head/helmet/marine/MP,
 		/obj/item/prop/helmetgarb/riot_shield,
 	)

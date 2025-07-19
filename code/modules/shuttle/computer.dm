@@ -462,10 +462,10 @@
 	if(xeno.caste && xeno.caste.is_intelligent)
 		var/obj/docking_port/mobile/crashable/lifeboat/lifeboat = SSshuttle.getShuttle(shuttleId)
 		if(lifeboat.status == LIFEBOAT_LOCKED)
-			to_chat(xeno, SPAN_WARNING("We already wrested away control of this metal bird."))
+			to_chat(xeno, SPAN_WARNING("We already wrested away control of this lifeboat."))
 			return XENO_NO_DELAY_ACTION
 		if(lifeboat.mode == SHUTTLE_CALL)
-			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+			to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
 			return XENO_NO_DELAY_ACTION
 
 		xeno_attack_delay(xeno)
@@ -473,7 +473,7 @@
 			if(lifeboat.status == LIFEBOAT_LOCKED)
 				return XENO_NO_DELAY_ACTION
 			if(lifeboat.mode == SHUTTLE_CALL)
-				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the metal bird mid-flight."))
+				to_chat(xeno, SPAN_WARNING("Too late, you cannot stop the lifeboat mid-flight."))
 				return XENO_NO_DELAY_ACTION
 			lifeboat.status = LIFEBOAT_LOCKED
 			lifeboat.available = FALSE
@@ -482,7 +482,7 @@
 			lifeboat.playing_launch_announcement_alarm = FALSE
 			var/obj/docking_port/stationary/lifeboat_dock/lifeboat_dock = lifeboat.get_docked()
 			lifeboat_dock.open_dock()
-			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the metal birds! They shall not escape!"), 3, xeno.hivenumber)
+			xeno_message(SPAN_XENOANNOUNCE("We have wrested away control of one of the lifeboats! They shall not escape!"), 3, xeno.hivenumber)
 			launch_initiated = FALSE
 			remaining_time = initial(remaining_time)
 		return XENO_NO_DELAY_ACTION

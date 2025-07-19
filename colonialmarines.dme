@@ -2452,6 +2452,7 @@
 #include "code\modules\shuttle\computer.dm"
 #include "code\modules\shuttle\docking.dm"
 #include "code\modules\shuttle\dropship.dm"
+#include "code\modules\shuttle\dropship_airlock.dm"
 #include "code\modules\shuttle\dropship_hijack.dm"
 #include "code\modules\shuttle\helpers.dm"
 #include "code\modules\shuttle\on_move.dm"

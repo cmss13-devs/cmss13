@@ -369,6 +369,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc/backpack/rto_broken, WEAR_BACK)
 	//storage items
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/plasteel/med_small_stack(new_human), WEAR_IN_BACK) // There is a chance PMC CO replaces PMC Engi during spawn.
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/flashlight/grip(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/reflex, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39/corporate/no_lock/full/extended, WEAR_WAIST)

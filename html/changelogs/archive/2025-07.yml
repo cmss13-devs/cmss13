@@ -100,3 +100,101 @@
   Drathek:
   - bugfix: Fixed the possibility of fax machines sending faxes on cooldown and ejecting
       paper when there is no paper
+2025-07-15:
+  DarkLordCabbage:
+  - balance: Changes one of the XO's timelock requirements from being 20 hours of
+      ASO or SO to just 20 hours of SO
+  - bugfix: fixed a bug where dog tags couldn't be retrieved from bursted/headless
+      bodies until 5 minutes had passed.
+  - balance: adds dexalin plus and oxycodone to the pressurized reagent canister chem
+      dispensers.
+  - qol: trying to use a hand labeler on closed crates no longer opens them
+  - bugfix: fixed being unable to label wooden crates
+  Detective-Google:
+  - maptweak: USS runtime testing map has been expanded for multiz testing
+  - bugfix: BRUTE rockets no longer malfunction at max range.
+  Drathek:
+  - code_imp: Removed depreciated url-loader for tgui
+  - bugfix: Fixed tgui kitchen sink theme and tab stories
+  - bugfix: Fixed issue with pngs not properly inlining with rspack
+  - bugfix: Fixed clean build scripts not actually cleaning rspack
+  FebrezeNinja:
+  - qol: Cryo Cell's auto-eject now waits for Toxin damage to heal
+  MistChristmas, Drathek:
+  - bugfix: fixed TGUI search crashes
+  Thwomper:
+  - rscadd: New M37A1 sprites as Marine standard issue shotgun.
+  Venuska1117:
+  - balance: Healer Drone "Sacrifice" ability now extinguish and remove debuffs.
+  Zenith:
+  - soundadd: added some sounds for the CLF large flags
+  - imageadd: added new CLF hand-held flags
+  - imageadd: added new CLF large flags
+  - imageadd: added new CLF sentry sprites
+  - maptweak: added large CLF and some handheld CLF flags to each CLF insert.
+  - rscadd: Adds many new clothing into the CL's wardrobe.
+  - imageadd: replaced shiva_floor.dmi icons with new updated, modern CM style icons.
+  lanse12:
+  - qol: face slot bayonet can now be equipped with keybinds
+  - balance: clf survs spawn with the iron teeth trait and guerillas spawn with bayonets
+      in their mouths
+  mullenpaul:
+  - ui: added z-level filter buttons to orbit menu
+  realforest2001:
+  - bugfix: ASB ammunition for Pyro Spec and Scout Spec now drop the correct contents.
+  - rscdel: Dropship walls and other solid turfs cannot be weeded. This does not affect
+      dropship internals.
+2025-07-16:
+  MistChristmas:
+  - bugfix: Tactical Sign Language not registering for TGUI
+  - ui: Sentry computer % sign for power level uses a different font that looks better.
+      Radio menu gets a little more formatting
+  Unknownity:
+  - rscadd: Synthetic Survivors now gain access to the civilian only section of the
+      loadout gear and are able to spawn with it. Wear those Weyland or Hyperdyne
+      patches proudly! Disclaimer, this does not apply to all of their variants.
+  - bugfix: Fixed PMC,CMB and FORECON survivors having the civilian origin, they now
+      have the closest appropriate origin instead.
+  realforest2001:
+  - balance: Locking the dropship as Queen now takes 5 seconds.
+  stalkerino, zenith:
+  - rscadd: adds the leg pouch from pve as a 5 slot webbing resprite
+  - rscadd: gives co the intel satchel, and chestrig  option rather than only the
+      backpack
+  - rscadd: gives insulated black gloves option to POs too
+2025-07-17:
+  Drathek:
+  - balance: Queen now matures on hijack launch so there isn't reason for delay
+  - balance: Early game queen is now temporarily mature when near the hive core (1
+      minute timer that refreshes while close or when getting shot)
+  - code_imp: Added missing undefs for queen and removed a few redundant checks for
+      refreshing the choose resin ability
+2025-07-19:
+  Drathek:
+  - bugfix: Fix db backend for playtime sometimes recording the gamemode type instead
+      of mob type
+  Red-byte3D:
+  - bugfix: Tac reload now only works if the magazine is in your hand or inventory.
+  - bugfix: You will now only put items on conveyor belts when not on harm intent.
+2025-07-20:
+  Drathek:
+  - rscadd: Added flavor text inserts for bloodtype, rank, and name.
+  - bugfix: Fixed a runtime with lessers on death
+  - rscadd: Added missing implementations for transform and enumerations in Filteriffic
+  - bugfix: Fixed multiple crash causes in Filteriffic e.g. opening displacement at
+      all
+  - bugfix: Fixed multiple crash causes in particle editor e.g. touching gradients
+      or transform at all
+  - qol: When picking icons in VV Filteriffic or Particle editor, you can now specify
+      just a dmi path, and in the case of Filteriffic customize the icon paramters
+  - code_imp: Moved matrix identities to a define file and ported a filter qdel check
+      from TG
+  - rscadd: Fun facts can now have whitelist/blacklists for role and faction. Namely
+      this now prevents lessers and huggers from generating fun facts, and larva from
+      generating kills fun facts (burst)
+  - bugfix: Fixed various eye protection runtimes
+  - code_imp: Death statistics are no longer deleted since GLOB.round_statistics holds
+      on to them
+  Red-byte3D:
+  - bugfix: You can now fire underbarrel extuingishers on flamers when they are not
+      loaded again

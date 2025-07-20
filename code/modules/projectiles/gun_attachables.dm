@@ -1870,7 +1870,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 		scatter_unwielded_mod =  SCATTER_AMOUNT_TIER_8
 		aim_speed_mod = CONFIG_GET(number/slowdown_med)
-		hud_offset_mod = 4
+		hud_offset_mod = 5
 		icon_state = "m37a_stock_on"
 		attach_icon = "m37a_stock_on"
 		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
@@ -1884,7 +1884,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = 0
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
-		hud_offset_mod = 3
+		hud_offset_mod = 1
 		icon_state = "m37a_stock"
 		attach_icon = "m37a_stock"
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay

@@ -13,7 +13,6 @@ import { Window } from 'tgui/layouts';
 type Receipt = {
   id: number;
   title: string;
-  singular_name: string;
   req_amount: number;
   is_multi: boolean;
   maximum_to_build: number;
@@ -28,6 +27,7 @@ type StackData = {
   stack_receipts: Receipt[];
   stack_name: string;
   stack_amount: number;
+  singular_name: string;
 };
 
 export const StackReceipts = () => {
@@ -78,7 +78,7 @@ export const StackReceipts = () => {
             <>
               <>Construction using the {stack_name}</>
               <br />
-              <small style={{ fontWeight: 'normal', top: '100px' }}>
+              <small style={{ fontWeight: 'normal' }}>
                 Amount left: {stack_amount}
               </small>
             </>
@@ -125,7 +125,7 @@ export const StackReceipts = () => {
                         }}
                       >
                         {receipt.title}
-                        {` (${receipt.req_amount} ${receipt.singular_name}${receipt.req_amount > 1 ? 's' : ''})`}
+                        {` (${receipt.req_amount} ${data.singular_name}${receipt.req_amount > 1 ? 's' : ''})`}
                       </Button>
                       {receipt.is_multi && receipt.req_amount < stack_amount ? (
                         <span style={{ marginLeft: '8px' }}>

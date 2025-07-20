@@ -184,9 +184,9 @@ GLOBAL_VAR_INIT(cas_tracking_id_increment, 0) //this var used to assign unique t
 
 		if(M.client && M.client.player_data)
 			if(M.stat == DEAD)
-				record_playtime(M.client.player_data, JOB_OBSERVER, type)
+				record_playtime(M.client.player_data, JOB_OBSERVER, M.type)
 			else
-				record_playtime(M.client.player_data, M.job, type)
+				record_playtime(M.client.player_data, M.job, M.type)
 
 /datum/game_mode/proc/show_end_statistics(icon_state)
 	GLOB.round_statistics.update_panel_data()

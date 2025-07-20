@@ -1,10 +1,18 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/defenses/handheld/planted_flag/clf,
+/turf/open/floor/shiva/purplefull/west,
+/area/varadero/interior/research)
 "ab" = (
 /obj/structure/barricade/sandbags/wired,
 /obj/structure/barricade/sandbags/wired{
 	dir = 8
 	},
 /turf/open/floor/shiva/purplefull/west,
+/area/varadero/interior/research)
+"ac" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
@@ -1138,7 +1146,6 @@
 /area/varadero/interior/maintenance/research)
 "At" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 4
 	},
 /turf/open/floor/shiva/floor3,
@@ -1149,7 +1156,6 @@
 	pixel_y = 6
 	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -1210,7 +1216,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1542,7 +1547,6 @@
 	pixel_y = 24
 	},
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 4
 	},
 /turf/open/floor/plating/icefloor/asteroidplating,
@@ -2625,7 +2629,7 @@ XU
 fG
 NS
 Cu
-Nw
+ac
 eQ
 sD
 tZ
@@ -2720,7 +2724,7 @@ Gp
 Sn
 Nw
 qf
-hG
+aa
 ll
 Sq
 FN

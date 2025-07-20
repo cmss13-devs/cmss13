@@ -20,8 +20,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/med_small_stack(new_human.back), WEAR_IN_BACK)
 
 	var/random_utility_jumpsuit= rand(1,2)
 	switch(random_utility_jumpsuit)
@@ -62,8 +60,6 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup/brown(new_human), WEAR_FEET)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt(new_human), WEAR_ACCESSORY)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
-			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/upp/alt, WEAR_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 		if(25)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/radiation(new_human), WEAR_HEAD)
@@ -283,7 +279,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/labcoat/brown(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/patch/cec_patch(new_human), WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/upp(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/upp_pfb(new_human.back), WEAR_IN_BACK)
 
 	var/random_scientist_satchel= rand(1,3)

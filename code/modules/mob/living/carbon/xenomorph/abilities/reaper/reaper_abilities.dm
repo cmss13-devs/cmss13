@@ -21,23 +21,11 @@
 
 	var/range = 2
 
-/datum/action/xeno_action/activable/flesh_harvest
-	name = "Flesh Harvest"
-	action_icon_state = "flesh_harvest"
-	macro_path = /datum/action/xeno_action/verb/verb_flesh_harvest
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 1 SECONDS
-	no_cooldown_msg = TRUE
-
-	var/harvest_gain = 30
-	var/affect_living = FALSE // Option to let it be used on living, because why not?
-
 /datum/action/xeno_action/activable/replenish
 	name = "Replenish"
 	action_icon_state = "warden_heal"
 	macro_path = /datum/action/xeno_action/verb/verb_replenish
-	ability_primacy = XENO_PRIMARY_ACTION_4
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 5 SECONDS
 	plasma_cost = 100
@@ -52,7 +40,7 @@
 	action_icon_state = "gas_mine"
 	macro_path = /datum/action/xeno_action/verb/verb_mist
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_5
+	ability_primacy = XENO_PRIMARY_ACTION_4
 	xeno_cooldown = 20 SECONDS
 	plasma_cost = 100
 

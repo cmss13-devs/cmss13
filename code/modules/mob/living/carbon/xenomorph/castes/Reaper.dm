@@ -67,9 +67,8 @@
 		/datum/action/xeno_action/activable/retrieve_hugger_egg,
 		/datum/action/xeno_action/onclick/set_hugger_reserve_reaper,
 		/datum/action/xeno_action/activable/reap, //second macro
-		/datum/action/xeno_action/activable/flesh_harvest, //third macro
-		/datum/action/xeno_action/activable/replenish, //fourth macro
-		/datum/action/xeno_action/onclick/emit_mist, //fifth macro
+		/datum/action/xeno_action/activable/replenish, //third macro
+		/datum/action/xeno_action/onclick/emit_mist, //fourth macro
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 
@@ -90,8 +89,6 @@
 	var/eggs_max = 0
 
 	// Reaper vars
-	var/harvesting = FALSE // So you can't harvest multiple corpses at once
-
 	var/flesh_plasma = 0
 	var/flesh_plasma_max = 600
 
@@ -353,21 +350,26 @@
 /datum/behavior_delegate/base_reaper
 	name = "Base Reaper Behavior Delegate"
 
-	var/passive_flesh_regen = 1 // Base value for passive regen, this is not modified by abilities
-	var/passive_flesh_multi= 1
-	var/passive_multi_max = 10
-	var/pause_decay = FALSE
-	var/pause_dur = 5 SECONDS
-	var/unpause_incoming = FALSE
+	var/passive_flesh_regen = 1 /// Base value for passive flesh plasma generation, this is not modified by abilities.
+	var/passive_flesh_multi= 1 /// Multiplier for passive flesh plasma generation, modified by abilities.
+	var/passive_multi_max = 10 /// What is the maximum amount you can passively generate?
+	var/passive_pause_decay = FALSE /// As passive generation decays over time, is it paused?
+	var/passive_pause_dur = 5 SECONDS /// How long is the passive generation decay going to be paused for?
+	var/passive_pause_timer_id = TIMER_ID_NULL
+
+	var/corpse_buildup /// Bonus flesh plasma generated when corpses are nearby, building up when corpses are nearby.
+	var/maximum_corpse_buildup = 20 /// The maximum amount of flesh plasma you can gain from being around dead bodies.
+	var/nearby_corpse_range = 3 /// Within how many tiles of you do corpses need to be for you to generate flesh plasma off them.
 
 /datum/behavior_delegate/base_reaper/proc/mult_decay()
-	if(pause_decay == FALSE && passive_flesh_multi > 1)
+	if(passive_pause_decay == FALSE && passive_flesh_multi > 1)
 		modify_passive_mult(-1)
 
-/datum/behavior_delegate/base_reaper/proc/unpause_decay()
-	pause_decay = FALSE
-	unpause_incoming = FALSE
-	pause_dur = 5 SECONDS
+/datum/behavior_delegate/base_reaper/proc/initiate_passive_decay_pause()
+	passive_pause_decay = TRUE
+	if(passive_pause_timer_id != TIMER_ID_NULL)
+		deltimer(passive_pause_timer_id)
+	passive_pause_timer_id = addtimer(VARSET_CALLBACK(src, passive_pause_decay, FALSE), passive_pause_dur)
 
 /datum/behavior_delegate/base_reaper/proc/modify_passive_mult(amount)
 	passive_flesh_multi += amount
@@ -380,17 +382,42 @@
 	modify_passive_mult(2)
 
 /datum/behavior_delegate/base_reaper/on_kill_mob()
-	if(!unpause_incoming == TRUE)
-		pause_decay = TRUE
+	initiate_passive_decay_pause()
+
+/datum/behavior_delegate/base_reaper/append_to_stat()
+	. = list()
+	. += "Acid: [corpse_buildup]"
 
 /datum/behavior_delegate/base_reaper/on_life()
 	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno
-	reaper.modify_flesh_plasma(passive_flesh_regen * passive_flesh_multi)
+
+	var/corpses_nearby = FALSE
+	var/obj/effect/alien/weeds/our_weeds = locate() in reaper.loc
+	if(our_weeds && our_weeds.hivenumber == reaper.hivenumber) // We must be on our weeds belonging to our hive to generate flesh plasma from nearby corpses
+		for(var/mob/living/carbon/dead_mob in view(nearby_corpse_range, reaper))
+			if(corpse_buildup == maximum_corpse_buildup) // No need to search more at max, but do need to specify that there's corpses around
+				corpses_nearby = TRUE
+				break
+
+			if(dead_mob.stat != DEAD)
+				continue
+
+			var/obj/effect/alien/weeds/their_weeds = locate() in dead_mob.loc
+			if(!their_weeds || (their_weeds && their_weeds.hivenumber != reaper.hivenumber))
+				continue
+
+			corpses_nearby = TRUE
+			corpse_buildup += 1
+
+	if(corpse_buildup > 0 && !corpses_nearby)
+		corpse_buildup =- 5
+		if(corpse_buildup < 0)
+			corpse_buildup = 0
+
+	corpses_nearby = FALSE
+	reaper.modify_flesh_plasma(corpse_buildup + passive_flesh_regen * passive_flesh_multi)
 
 	mult_decay()
-	if(pause_decay == TRUE && unpause_incoming == FALSE)
-		unpause_incoming = TRUE
-		addtimer(CALLBACK(src, PROC_REF(unpause_decay)), pause_dur)
 
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
@@ -452,35 +479,6 @@
 		to_chat(xeno, SPAN_WARNING("They are too far away!"))
 		return
 
-	if(istype(target, /obj/effect/alien/weeds) && xeno.Adjacent(target)) // To get at weed fooded corpses, can be used to restart weed growth
-		var/obj/effect/alien/weeds/target_weeds = target
-		var/target_weeds_loc = target.loc
-		var/obj/effect/alien/weeds/node/target_weeds_node = null
-		var/target_weeds_hive = target_weeds.hivenumber
-		if(target_weeds.parent)
-			target_weeds_node = target_weeds.parent
-		playsound(target_weeds.loc, "alien_resin_break", 25)
-		qdel(target_weeds)
-		apply_cooldown()
-		if(target_weeds_node)
-			if((target_weeds_hive == xeno.hivenumber)) // If our hive, weeds are pruned; pruned weeds can restart spreading, pruned nodes get a bit funky but otherwise work
-				xeno.visible_message(SPAN_DANGER("[xeno] prunes [target_weeds]!"),
-				SPAN_DANGER("We prune [target_weeds]!"))
-				sleep(0.5 SECONDS) // Necessary so any weed food actually stops being weed food
-				if(istype(target_weeds, /obj/effect/alien/weeds/node))
-					new /obj/effect/alien/weeds/node(target_weeds_loc, target_weeds_node, xeno)
-				if(!istype(target_weeds, /obj/effect/alien/weeds/weedwall/window) && !istype(target_weeds, /obj/effect/alien/weeds/weedwall/frame)) // These are a bit fucky, so don't regrow
-					if(istype(target_weeds, /obj/effect/alien/weeds/weedwall))
-						new /obj/effect/alien/weeds/weedwall(target_weeds_loc)
-					else
-						new /obj/effect/alien/weeds(target_weeds_loc, target_weeds_node, TRUE, TRUE)
-					playsound(target_weeds_loc, "alien_resin_build", 5)
-			else // If not our hive, just destroy!
-				xeno.visible_message(SPAN_DANGER("[xeno] forcefully uproots [target_weeds]!"),
-				SPAN_DANGER("We uproot [target_weeds]!"))
-		target_weeds_node = null
-		return
-
 	if(!check_and_use_plasma_owner())
 		return
 
@@ -517,166 +515,11 @@
 	var/damage = (xeno.melee_damage_upper + xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 	carbon.apply_effect(1, DAZE)
-	reaper.pause_decay = TRUE
+	reaper.initiate_passive_decay_pause()
 	reaper.modify_passive_mult(1)
 	shake_camera(target, 2, 1)
 	apply_cooldown()
 	return ..()
-
-/datum/action/xeno_action/activable/flesh_harvest/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-	var/mob/living/carbon/carbon = target
-	var/mob/living/carbon/human/victim = carbon
-
-	if(!action_cooldown_check())
-		return
-
-	if(!iscarbon(carbon))
-		return
-
-	if(!xeno.check_state())
-		return
-
-	var/distance = get_dist(xeno, target)
-	if((distance > 2) && !xeno.Adjacent(target))
-		return
-
-	if(xeno.harvesting == TRUE)
-		to_chat(xeno, SPAN_XENOWARNING("We are already harvesting!"))
-		return
-
-	if(isxeno(carbon))
-		return
-
-	if(issynth(carbon))
-		to_chat(xeno, SPAN_XENOWARNING("This one is a fake, we get nothing from it!"))
-		return
-
-	if(affect_living != TRUE)
-		if(carbon.stat != DEAD)
-			to_chat(xeno, SPAN_XENOWARNING("This one still lives, they are not suitable."))
-			return
-
-		if(victim.is_revivable(TRUE) && victim.check_tod())
-			to_chat(xeno, SPAN_XENOWARNING("This one still pulses with life, they are not suitable."))
-			return
-
-	if(victim.status_flags & XENO_HOST)
-		for(var/obj/item/alien_embryo/embryo in victim)
-			if(HIVE_ALLIED_TO_HIVE(xeno.hivenumber, embryo.hivenumber))
-				to_chat(xeno, SPAN_XENOWARNING("A sister is still growing inside this one, we should refrain from harvesting them yet."))
-				return
-
-	var/obj/limb/target_limb = victim.get_limb(check_zone(xeno.zone_selected))
-	if(ishuman(carbon) && !target_limb || (target_limb.status & LIMB_DESTROYED))
-		to_chat(xeno, SPAN_XENOWARNING("There is nothing to harvest!"))
-		return
-
-	xeno.face_atom(carbon)
-	var/obj/limb/limb = target_limb
-	switch(limb.name)
-		if("head")
-			to_chat(xeno, SPAN_XENOWARNING("This part is not worth harvesting!"))
-			return
-		if("chest", "groin")
-			burst_chest(victim, affect_living)
-		if("l_arm")
-			do_harvest(victim, limb)
-		if("l_hand")
-			limb = carbon.get_limb("l_arm")
-			do_harvest(victim, limb)
-		if("r_arm")
-			do_harvest(victim, limb)
-		if("r_hand")
-			limb = carbon.get_limb("r_arm")
-			do_harvest(victim, limb)
-		if("l_leg")
-			do_harvest(victim, limb)
-		if("l_foot")
-			limb = carbon.get_limb("l_leg")
-			do_harvest(victim, limb)
-		if("r_leg")
-			do_harvest(victim, limb)
-		if("r_foot")
-			limb = carbon.get_limb("r_leg")
-			do_harvest(victim, limb)
-
-	apply_cooldown()
-	return ..()
-
-/datum/action/xeno_action/activable/flesh_harvest/proc/do_harvest(mob/living/carbon/carbon, obj/limb/limb)
-	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-	var/mob/living/carbon/human/victim = carbon
-	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
-
-	var/limb_remove_end = pick('sound/scp/firstpersonsnap.ogg','sound/scp/firstpersonsnap2.ogg')
-	var/limb_remove_start = pick('sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg')
-
-	xeno.harvesting = TRUE
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] reaches down and grabs [victim]s [limb.display_name], twisting and pulling at it!"), \
-	SPAN_XENONOTICE("We begin to harvest the [limb.display_name]!"))
-
-	playsound(victim, limb_remove_start, 50, TRUE)
-	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		if(!xeno.Adjacent(victim))
-			to_chat(xeno, SPAN_XENOWARNING("Our harvest was interrupted!"))
-			xeno.harvesting = FALSE
-			return
-
-	playsound(xeno, limb_remove_end, 25, TRUE)
-	if(limb.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]s [limb.display_name] with a final violent motion and drops it!"), \
-		SPAN_XENOWARNING("We harvest the [limb.display_name], but it's a useless fake!"))
-		limb.droplimb(FALSE, FALSE, "flesh harvest")
-	else
-		xeno.visible_message(SPAN_XENOWARNING("[xeno] wrenches off [victim]s [limb.display_name] with a final violent motion and swallows it whole!"), \
-		SPAN_XENOWARNING("We harvest the [limb.display_name]!"))
-		limb.droplimb(FALSE, TRUE, "flesh harvest")
-		xeno.modify_flesh_plasma(harvest_gain)
-	reaper.pause_decay = TRUE
-	xeno.harvesting = FALSE
-
-/datum/action/xeno_action/activable/flesh_harvest/proc/burst_chest(mob/living/carbon/carbon, burst_living = FALSE)
-	var/mob/living/carbon/xenomorph/reaper/xeno = owner
-	var/mob/living/carbon/human/victim = carbon
-	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
-
-	if(victim.chestburst)
-		to_chat(xeno, SPAN_XENOWARNING("There is nothing to harvest!"))
-		return
-
-	xeno.harvesting = TRUE
-	xeno.visible_message(SPAN_XENONOTICE("[xeno] gently lifts [victim]!"), \
-	SPAN_XENONOTICE("We prepare our inner jaw to harvest [victim]s chest organs!"))
-
-	if(do_after(xeno, 3 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		if(!xeno.Adjacent(victim))
-			to_chat(xeno, SPAN_XENOWARNING("Our harvest was interrupted!"))
-			xeno.harvesting = FALSE
-			return
-
-	if(ishuman(victim))
-		var/mob/living/carbon/human/victim_human = victim
-		var/datum/internal_organ/organ
-		var/internal
-		for(internal in list("heart","lungs")) // Ripped from Embryo code for vibes, with single letter vars murdered (I wish I found this months sooner)
-			organ = victim_human.internal_organs_by_name[internal]
-			victim_human.internal_organs_by_name -= internal
-			victim_human.internal_organs -= organ
-	if(burst_living == TRUE && victim.stat != DEAD)
-		var/datum/cause_data/cause = create_cause_data("reaper living burst chest", src)
-		victim.last_damage_data = cause
-		victim.death(cause)
-	xeno.animation_attack_on(carbon)
-	xeno.flick_attack_overlay(carbon, "bite")
-	playsound(victim, 'sound/weapons/alien_bite2.ogg', 50, TRUE)
-	xeno.visible_message(SPAN_XENOWARNING("[xeno]s inner jaw shoots out of its mouth, gouging a large hole in [victim]s chest!"), \
-	SPAN_XENOWARNING("We plunge our inner jaw into [victim]s chest and harvest their organs!"))
-	victim.chestburst = 2
-	victim.update_burst()
-	xeno.modify_flesh_plasma(harvest_gain * 2)
-	reaper.pause_decay = TRUE
-	xeno.harvesting = FALSE
 
 /datum/action/xeno_action/activable/replenish/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner

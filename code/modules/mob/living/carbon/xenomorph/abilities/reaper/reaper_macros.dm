@@ -12,13 +12,6 @@
 	var/action_name = "Haul Corpse"
 	handle_xeno_macro(src, action_name)
 
-/datum/action/xeno_action/verb/verb_flesh_harvest()
-	set category = "Alien"
-	set name = "Flesh Harvest"
-	set hidden = TRUE
-	var/action_name = "Flesh Harvest"
-	handle_xeno_macro(src, action_name)
-
 /datum/action/xeno_action/verb/verb_replenish()
 	set category = "Alien"
 	set name = "Replenish"

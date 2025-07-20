@@ -117,15 +117,15 @@
 		else if(!(caste_type == XENO_CASTE_QUEEN))
 			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
 
-		if(HAS_FLAG(hive.hive_flags, XENO_SLASH_ANY))
-			. += "Slashing: FORBIDDEN"
-		else if(HAS_FLAG(hive.hive_flags, XENO_SLASH_INFECTED))
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_SLASH_ALLOW_ALL))
+			. += "Slashing: PERMITTED"
+		else if (HAS_FLAG(hive.hive_flags, XENO_SLASH_ANY))
 			. += "Slashing: RESTRICTED AGAINST INFECTED"
 		else
-			. += "Slashing: PERMITTED"
+			. += "Slashing: FORBIDDEN"
 
 		var/str_builder = "NOBODY"
-		if ((hive.hive_flags & XENO_CONSTRUCTION_ALLOW_ALL) == XENO_CONSTRUCTION_ALLOW_ALL)
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_CONSTRUCTION_ALLOW_ALL))
 			str_builder = "ANYONE"
 		else
 			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
@@ -137,7 +137,7 @@
 		. += "Special Structure Placement: [str_builder]"
 		
 		str_builder = "NOBODY"
-		if ((hive.hive_flags & XENO_DECONSTRUCTION_ALLOW_ALL) == XENO_DECONSTRUCTION_ALLOW_ALL)
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_ALLOW_ALL))
 			str_builder = "ANYONE"
 		else
 			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN))
@@ -148,7 +148,7 @@
 				str_builder += "LEADERS"
 		. += "Special Structure Destruction: [str_builder]"
 
-		if(hive.hive_flags & XENO_UNNESTING_RESTRICTED)
+		if (HAS_FLAG(hive.hive_flags, XENO_UNNESTING_RESTRICTED))
 			. += "Unnesting: BUILDERS"
 		else
 			. += "Unnesting: ANYONE"

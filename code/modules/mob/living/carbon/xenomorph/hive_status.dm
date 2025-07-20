@@ -12,7 +12,7 @@
 	var/egg_planting_range = 15
 
 	/// Toggles for the hive that are reset on queen death
-	var/hive_flags = XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
+	var/hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
 	
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
@@ -1147,7 +1147,7 @@
 	color = "#828296"
 	ui_color = "#828296"
 
-	hive_flags = NONE
+	hive_flags = parent_type::hive_flags & ~(XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL)
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE

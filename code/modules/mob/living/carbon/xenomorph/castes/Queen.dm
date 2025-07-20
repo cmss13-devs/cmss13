@@ -663,7 +663,7 @@
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	var/choice = tgui_input_list(usr, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Infected Hosts", "Forbidden"), theme="hive_status")
+	var/choice = tgui_input_list(src, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Infected Hosts", "Forbidden"), theme="hive_status")
 	if(!choice)
 		return
 
@@ -672,17 +672,16 @@
 	if(choice == "Allowed")
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), 2, hivenumber)
-		hive.hive_flags &= ~(XENO_SLASH_ANY|XENO_SLASH_INFECTED)
+		hive.hive_flags |= XENO_SLASH_ALLOW_ALL
 	else if(choice == "Restricted - Infected Hosts")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing of infected hosts."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. You can no longer slash infected hosts."), 2, hivenumber)
-		hive.hive_flags &= ~XENO_SLASH_ANY
-		hive.hive_flags |= XENO_SLASH_INFECTED
+		hive.hive_flags &= ~XENO_SLASH_INFECTED
+		hive.hive_flags |= XENO_SLASH_ANY
 	else if(choice == "Forbidden")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing entirely."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), 2, hivenumber)
-		hive.hive_flags &= ~XENO_SLASH_INFECTED
-		hive.hive_flags |= XENO_SLASH_ANY
+		hive.hive_flags &= ~XENO_SLASH_ALLOW_ALL
 
 /mob/living/carbon/xenomorph/proc/construction_toggle()
 	set name = "Permit/Disallow Construction Placement"
@@ -697,7 +696,7 @@
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	var/choice = tgui_input_list(usr, "Choose which level of construction placement freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"), theme="hive_status")
+	var/choice = tgui_input_list(src, "Choose which level of construction placement freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"), theme="hive_status")
 
 	if(!choice)
 		return
@@ -732,7 +731,7 @@
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	var/choice = tgui_input_list(usr, "Choose which level of destruction freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"), theme="hive_status")
+	var/choice = tgui_input_list(src, "Choose which level of destruction freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"), theme="hive_status")
 
 	if(!choice)
 		return
@@ -771,11 +770,10 @@
 	if(hive.hive_flags & XENO_UNNESTING_RESTRICTED)
 		to_chat(src, SPAN_XENONOTICE("You have allowed everyone to unnest hosts."))
 		xeno_message("The Queen has allowed everyone to unnest hosts.", hivenumber = src.hivenumber)
-		hive.hive_flags &= ~XENO_UNNESTING_RESTRICTED
 	else
 		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
 		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.", hivenumber = src.hivenumber)
-		hive.hive_flags |= XENO_UNNESTING_RESTRICTED
+	TOGGLE_BITFIELD(hive.hive_flags, XENO_UNNESTING_RESTRICTED)
 
 /mob/living/carbon/xenomorph/queen/handle_screech_act(mob/self, mob/living/carbon/xenomorph/queen/queen)
 	return COMPONENT_SCREECH_ACT_CANCEL

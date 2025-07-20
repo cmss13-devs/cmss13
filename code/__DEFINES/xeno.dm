@@ -111,16 +111,22 @@
 #define COOLDOWN_TOGGLE_DECONSTRUCTION "cooldown_toggle_deconstruction"
 #define COOLDOWN_TOGGLE_UNNESTING "cooldown_toggle_unnesting"
 
+/// Whether you can slash non-infected
 #define XENO_SLASH_ANY (1<<0)
+/// Whether you can slash infected
 #define XENO_SLASH_INFECTED (1<<1)
+/// Multi-flag to indicate all slashing is allowed
+#define XENO_SLASH_ALLOW_ALL (XENO_SLASH_ANY|XENO_SLASH_INFECTED)
 #define XENO_UNNESTING_RESTRICTED (1<<2)
 #define XENO_CONSTRUCTION_NORMAL (1<<3)
 #define XENO_CONSTRUCTION_LEADERS (1<<4)
 #define XENO_CONSTRUCTION_QUEEN (1<<5)
+/// Multi-flag to indicate all construction is allowed
 #define XENO_CONSTRUCTION_ALLOW_ALL (XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS|XENO_CONSTRUCTION_NORMAL)
 #define XENO_DECONSTRUCTION_NORMAL (1<<6)
 #define XENO_DECONSTRUCTION_LEADERS (1<<7)
 #define XENO_DECONSTRUCTION_QUEEN (1<<8)
+/// Multi-flag to indicate all deconstruction is allowed
 #define XENO_DECONSTRUCTION_ALLOW_ALL (XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS|XENO_DECONSTRUCTION_NORMAL)
 
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,

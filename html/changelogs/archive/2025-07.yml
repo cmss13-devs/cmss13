@@ -169,3 +169,32 @@
       minute timer that refreshes while close or when getting shot)
   - code_imp: Added missing undefs for queen and removed a few redundant checks for
       refreshing the choose resin ability
+2025-07-19:
+  Drathek:
+  - bugfix: Fix db backend for playtime sometimes recording the gamemode type instead
+      of mob type
+  Red-byte3D:
+  - bugfix: Tac reload now only works if the magazine is in your hand or inventory.
+  - bugfix: You will now only put items on conveyor belts when not on harm intent.
+2025-07-20:
+  Drathek:
+  - rscadd: Added flavor text inserts for bloodtype, rank, and name.
+  - bugfix: Fixed a runtime with lessers on death
+  - rscadd: Added missing implementations for transform and enumerations in Filteriffic
+  - bugfix: Fixed multiple crash causes in Filteriffic e.g. opening displacement at
+      all
+  - bugfix: Fixed multiple crash causes in particle editor e.g. touching gradients
+      or transform at all
+  - qol: When picking icons in VV Filteriffic or Particle editor, you can now specify
+      just a dmi path, and in the case of Filteriffic customize the icon paramters
+  - code_imp: Moved matrix identities to a define file and ported a filter qdel check
+      from TG
+  - rscadd: Fun facts can now have whitelist/blacklists for role and faction. Namely
+      this now prevents lessers and huggers from generating fun facts, and larva from
+      generating kills fun facts (burst)
+  - bugfix: Fixed various eye protection runtimes
+  - code_imp: Death statistics are no longer deleted since GLOB.round_statistics holds
+      on to them
+  Red-byte3D:
+  - bugfix: You can now fire underbarrel extuingishers on flamers when they are not
+      loaded again

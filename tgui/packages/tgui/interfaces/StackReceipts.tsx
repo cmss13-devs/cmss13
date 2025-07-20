@@ -71,12 +71,13 @@ export const StackReceipts = () => {
   return (
     <Window width={440} height={500}>
       <Window.Content>
-        <Section fill scrollable title={'Construction using the ' + stack_name}>
+        <Section
+          fill
+          scrollable
+          title={'Construction using the ' + stack_name}
+          underTitle={'Amount left: ' + stack_amount}
+        >
           <Stack fill vertical>
-            <Box>
-              Amount left: {stack_amount}
-              <hr color="#4972a2" />
-            </Box>
             <Box width="100%">
               {localReceipts.length > 0 &&
                 localReceipts.map((receipt, index) => (

@@ -374,7 +374,8 @@
 	new_human.equip_to_slot_or_del(new /obj/item/attachable/reflex, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m39/corporate/no_lock/full/extended, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full/wy(new_human), WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert/wy(new_human), WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_advanced(new_human), WEAR_R_STORE) //In case a medic doesn't spawn.
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact, WEAR_R_STORE) //In case a medic doesn't spawn.
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crew_monitor, WEAR_IN_BACK)
 	//eyewear
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/sensor(new_human), WEAR_EYES)

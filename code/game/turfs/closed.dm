@@ -33,22 +33,33 @@
 		climb_up_time = 1.5 SECONDS
 		if(xeno.mob_size >= MOB_SIZE_BIG)
 			climb_up_time = 5 SECONDS
+<<<<<<< Updated upstream
 	var/mob/living/human
+=======
+	var/mob/living/carbon/human
+>>>>>>> Stashed changes
 	if(ishuman(user))
 		climb_up_time = 7 SECONDS
 		if(istype(src,/turf/closed/wall))
 			var/turf/closed/wall/wall = src
 			if(length(wall.hiding_humans))
 
+<<<<<<< Updated upstream
 				for(var/mob/living/boosting_human in wall.hiding_humans)
 					if(boosting_human.loc == user.loc && user != boosting_human)
+=======
+				for(var/mob/living/carbon/boosting_human in wall.hiding_humans)
+					if(boosting_human.loc == user.loc && user != boosting_human && !(boosting_human.flags_emote & EMOTING_WALL_BOOSTING))
+>>>>>>> Stashed changes
 						human = boosting_human
 						human.flags_emote |= EMOTING_WALL_BOOSTING
 						break
 				if(human)
 					climb_up_time = 3 SECONDS
+					INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(do_after), human, 3 SECONDS, INTERRUPT_MOVED, EMOTE_ICON_WALLBOOSTING)
 					user.visible_message(SPAN_WARNING("[user] is being boosted up [src] by [human]."), SPAN_WARNING("[human] tries to boost you up."))
-	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+
+	if(!do_after(user, climb_up_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		if(human)
 			human.flags_emote &= ~EMOTING_WALL_BOOSTING

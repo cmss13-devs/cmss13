@@ -620,6 +620,7 @@ GLOBAL_DATUM(busy_indicator_medical, /image)
 GLOBAL_DATUM(busy_indicator_build, /image)
 GLOBAL_DATUM(busy_indicator_friendly, /image)
 GLOBAL_DATUM(busy_indicator_hostile, /image)
+GLOBAL_DATUM(busy_indicator_climbing, /image)
 GLOBAL_DATUM(emote_indicator_highfive, /image)
 GLOBAL_DATUM(emote_indicator_fistbump, /image)
 GLOBAL_DATUM(emote_indicator_headbutt, /image)
@@ -665,6 +666,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.busy_indicator_hostile.layer = FLY_LAYER
 			GLOB.busy_indicator_hostile.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_hostile
+	else if(busy_type == BUSY_ICON_CLIMBING)
+		if(!GLOB.busy_indicator_climbing)
+			GLOB.busy_indicator_climbing = image('icons/mob/do_afters.dmi', null, "busy_climbing", "pixel_y" = 22)
+			GLOB.busy_indicator_climbing.layer = FLY_LAYER
+			GLOB.busy_indicator_climbing.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_climbing
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
 		if(!GLOB.emote_indicator_highfive)
 			GLOB.emote_indicator_highfive = image('icons/mob/do_afters.dmi', null, "emote_highfive", "pixel_y" = 22)
@@ -715,7 +722,11 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		return GLOB.emote_indicator_tailswipe
 	else if(busy_type == EMOTE_ICON_WALLBOOSTING)
 		if(!GLOB.emote_indicator_wallboosting)
+<<<<<<< Updated upstream
 			GLOB.emote_indicator_wallboosting = image('icons/mob/do_afters.dmi', null, "emote_wallboosting", "pixel_x" = 22)
+=======
+			GLOB.emote_indicator_wallboosting = image('icons/mob/do_afters.dmi', null, "emote_wallboosting", "pixel_y" = 22)
+>>>>>>> Stashed changes
 			GLOB.emote_indicator_wallboosting.layer = FLY_LAYER
 			GLOB.emote_indicator_wallboosting.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_wallboosting

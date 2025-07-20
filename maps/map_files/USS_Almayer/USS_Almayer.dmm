@@ -15292,8 +15292,8 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/closet/wardrobe/pharmacist,
-/turf/open/floor/almayer/dark_sterile,
+/obj/structure/reagent_dispensers/fueltank/custom,
+/turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "bcC" = (
 /obj/structure/reagent_dispensers/fueltank/custom,
@@ -22276,7 +22276,11 @@
 /area/almayer/medical/upper_medical)
 "coa" = (
 /obj/structure/machinery/light,
-/obj/structure/closet/wardrobe/morgue,
+/obj/structure/closet/cabinet/hybrisa/metal/alt{
+	pixel_x = 1;
+	name = "morgue cabinet";
+	storage_capacity = 100
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
 "cod" = (
@@ -27752,7 +27756,6 @@
 	pixel_x = -8;
 	pixel_y = 28
 	},
-/obj/structure/reagent_dispensers/fueltank/custom,
 /turf/open/floor/almayer/sterile_green_side/north,
 /area/almayer/medical/chemistry)
 "eFK" = (

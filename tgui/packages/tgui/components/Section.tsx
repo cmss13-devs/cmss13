@@ -23,8 +23,6 @@ type Props = Partial<{
   scrollableHorizontal: boolean;
   /** Title of the section. */
   title: ReactNode;
-  /** Text under title (Renders only when title is set). */
-  underTitle: ReactNode;
   /** id to assosiate with the parent div element used by this section, for uses with procs like getElementByID */
   container_id: string;
   /** @member Callback function for the `scroll` event */
@@ -75,13 +73,11 @@ export const Section = forwardRef(
       scrollable,
       scrollableHorizontal,
       title,
-      underTitle,
       container_id,
       ...rest
     } = props;
 
     const hasTitle = canRender(title) || canRender(buttons);
-    const hasUnderTitle = canRender(underTitle) && canRender(title);
 
     /** We want to be able to scroll on hover, but using focus will steal it from inputs */
     useEffect(() => {
@@ -113,12 +109,6 @@ export const Section = forwardRef(
         {hasTitle && (
           <div className="Section__title">
             <span className="Section__titleText">{title}</span>
-            {hasUnderTitle && (
-              <>
-                <br />
-                <span className="Section__underTitleText">{underTitle}</span>
-              </>
-            )}
             <div className="Section__buttons">{buttons}</div>
           </div>
         )}

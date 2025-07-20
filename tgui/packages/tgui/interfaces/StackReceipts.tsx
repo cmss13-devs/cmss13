@@ -74,8 +74,15 @@ export const StackReceipts = () => {
         <Section
           fill
           scrollable
-          title={'Construction using the ' + stack_name}
-          underTitle={'Amount left: ' + stack_amount}
+          title={
+            <>
+              <>Construction using the + {stack_name}</>
+              <br />
+              <small style={{ fontWeight: 'normal', top: '100px' }}>
+                Amount left: {stack_amount}
+              </small>
+            </>
+          }
         >
           <Stack fill vertical>
             <Box width="100%">

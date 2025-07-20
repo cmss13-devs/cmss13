@@ -722,11 +722,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		return GLOB.emote_indicator_tailswipe
 	else if(busy_type == EMOTE_ICON_WALLBOOSTING)
 		if(!GLOB.emote_indicator_wallboosting)
-<<<<<<< Updated upstream
-			GLOB.emote_indicator_wallboosting = image('icons/mob/do_afters.dmi', null, "emote_wallboosting", "pixel_x" = 22)
-=======
 			GLOB.emote_indicator_wallboosting = image('icons/mob/do_afters.dmi', null, "emote_wallboosting", "pixel_y" = 22)
->>>>>>> Stashed changes
 			GLOB.emote_indicator_wallboosting.layer = FLY_LAYER
 			GLOB.emote_indicator_wallboosting.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_wallboosting

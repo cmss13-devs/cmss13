@@ -459,24 +459,17 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")
-		/*if(tracked_marker_z_level > loc.z) I am missing icons...
+		if(tracked_marker_z_level > loc.z)
 			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "up")
 		if(tracked_marker_z_level < loc.z)
-<<<<<<< Updated upstream
-			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "down")*/
-
-=======
 			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "down")
->>>>>>> Stashed changes
+
+
 	else //same z level, different fake z levels (decks of almayer)
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "no_direction")
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 /mob/living/carbon/xenomorph/updatehealth()
 	if(status_flags & GODMODE)
 		health = maxHealth

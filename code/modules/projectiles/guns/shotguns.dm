@@ -1344,6 +1344,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/shotgun_choke,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/stock/shotgun,
 	)
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube

@@ -85,3 +85,8 @@
 	name = "Tyrargo Rift - Firebase Charlie Landing Zone one sign"
 	desc = "A medium sized sign, illuminated by red lights, designating this area as firebase charlie."
 	icon_state = "tyrargo_sign_1"
+
+/obj/structure/lz_sign/tyrargo_sign/lz2
+	name = "Tyrargo Rift - USASF Airbase Anderson Landing Zone two sign"
+	desc = "A larve  sign that designates this area as being a USASF airbase."
+	icon_state = "tyrargo_sign_2"

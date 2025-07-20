@@ -20263,6 +20263,10 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/central)
+"aVv" = (
+/obj/structure/lz_sign/tyrargo_sign/lz2,
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/landing_zone_2)
 "aVw" = (
 /obj/structure/prop/tyrargo/boards/boards_1,
 /obj/structure/prop/tyrargo/boards{
@@ -25706,6 +25710,7 @@
 "bgm" = (
 /obj/structure/platform_decoration/stone/tyrargo/north,
 /obj/structure/platform/stone/tyrargo,
+/obj/structure/platform_decoration/stone/tyrargo/east,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "bgn" = (
@@ -26120,6 +26125,9 @@
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	pixel_x = -32
 	},
+/obj/structure/platform_decoration/stone/tyrargo/west,
+/obj/structure/platform_decoration/stone/tyrargo/north,
+/obj/structure/platform_decoration/stone/tyrargo/east,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "bhr" = (
@@ -26166,6 +26174,7 @@
 /obj/structure/prop/hybrisa/misc/fire/fire2{
 	pixel_x = -32
 	},
+/obj/structure/platform_decoration/stone/tyrargo,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "bhv" = (
@@ -26665,14 +26674,15 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "bik" = (
-/obj/structure/platform/stone/tyrargo/west,
 /obj/structure/platform/stone/tyrargo/north,
 /obj/structure/platform/stone/tyrargo,
+/obj/structure/platform/stone/tyrargo/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "bil" = (
 /obj/structure/platform/stone/tyrargo/north,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/structure/platform_decoration/stone/tyrargo,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "bim" = (
@@ -28453,6 +28463,11 @@
 	layer = 5.94
 	},
 /turf/closed/wall/strata_ice/forest,
+/area/tyrargo/oob)
+"blY" = (
+/obj/structure/platform/stone/tyrargo/east,
+/obj/structure/platform_decoration/stone/tyrargo/north,
+/turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "blZ" = (
 /obj/structure/flora/tree/tyrargo/tree_3{
@@ -32460,6 +32475,8 @@
 /turf/closed/wall/strata_ice/forest/rock/dirty,
 /area/tyrargo/oob)
 "bux" = (
+/obj/structure/platform_decoration/stone/tyrargo/east,
+/obj/structure/platform_decoration/stone/tyrargo/west,
 /turf/open/auto_turf/sand_white/layer0,
 /area/tyrargo/oob)
 "buy" = (
@@ -39069,6 +39086,13 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_2)
+"bJJ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/landing_zone_2/east_trench)
 "bJK" = (
 /obj/structure/flora/tree/tyrargo{
 	pixel_x = -23;
@@ -39547,6 +39571,15 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/landing_zone_1)
+"bKZ" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bLa" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
@@ -39922,6 +39955,13 @@
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/strata_ice/forest/rock,
 /area/tyrargo/landing_zone_2/strip)
+"bMe" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts/east)
 "bMf" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -47254,6 +47294,13 @@
 	},
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/outdoors/colony_exterior/south_east)
+"cgn" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "cgo" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/tyrargo/indoors/security/ground)
@@ -48966,6 +49013,13 @@
 /obj/effect/decal/remains/robot,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/tyrargo/indoors/apartment/north_ground)
+"clC" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts/central)
 "clD" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/plating,
@@ -51368,6 +51422,13 @@
 "ctC" = (
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/indoors/admin/ground)
+"ctD" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts_road/central)
 "ctE" = (
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/tyrargo/indoors/admin/ground)
@@ -57175,7 +57236,6 @@
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "cMk" = (
-/obj/effect/decal/cleanable/blood/xeno,
 /obj/structure/lz_sign/tyrargo_sign{
 	light_color = "#FF0000";
 	light_on = 1;
@@ -63583,6 +63643,13 @@
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/south_west)
+"ddL" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts/central/landing_zone)
 "ddM" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -8
@@ -63731,6 +63798,14 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
+"def" = (
+/obj/item/prop/colony/used_flare,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts/east)
 "deg" = (
 /obj/effect/landmark/lv624/fog_blocker/long,
 /obj/effect/decal/grass_overlay/grass1/dark,
@@ -90575,6 +90650,10 @@
 /area/tyrargo/outdoors/outskirts/river)
 "esK" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -5;
+	pixel_y = 16
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/landing_zone_2)
 "esL" = (
@@ -160037,7 +160116,7 @@ bxJ
 bBJ
 bBJ
 bdb
-bxJ
+cgn
 bxJ
 bxJ
 bxJ
@@ -160785,7 +160864,7 @@ bxJ
 byh
 bBJ
 bBJ
-bzn
+bKZ
 bxJ
 bxJ
 etk
@@ -161121,7 +161200,7 @@ bxJ
 bxJ
 bxJ
 bxJ
-bxJ
+cgn
 bxJ
 bxJ
 bxJ
@@ -165235,7 +165314,7 @@ cLa
 cLg
 bsJ
 buF
-buF
+aVv
 bsJ
 bus
 bhX
@@ -165518,7 +165597,7 @@ euA
 bmh
 bzf
 bwt
-bwt
+ctD
 bxY
 bxE
 bzD
@@ -167897,7 +167976,7 @@ arg
 arg
 arg
 arg
-arg
+ddL
 arg
 aMT
 aMT
@@ -168830,7 +168909,7 @@ bpU
 bxi
 bpG
 bwt
-bwt
+ctD
 bxY
 bxE
 bxE
@@ -170916,7 +170995,7 @@ bxe
 eNQ
 bvk
 bvk
-bvk
+bJJ
 bvx
 esR
 bvW
@@ -171123,7 +171202,7 @@ buc
 btW
 bil
 buu
-buu
+blY
 bic
 bsZ
 bsZ
@@ -171981,7 +172060,7 @@ bBg
 bBh
 bBg
 bBg
-bBg
+clC
 ebl
 eba
 eaN
@@ -172178,7 +172257,7 @@ dZc
 bBD
 bBw
 bBg
-bBg
+clC
 bBg
 bBg
 bCH
@@ -174040,7 +174119,7 @@ bvW
 esH
 bvx
 bvk
-bvk
+bJJ
 bwT
 bfG
 bfw
@@ -174389,7 +174468,7 @@ bBg
 bBg
 bBg
 bBg
-bBg
+clC
 bBg
 bBn
 bBj
@@ -177345,7 +177424,7 @@ bAj
 bAh
 bzx
 bwE
-bwE
+bMe
 bQd
 eHL
 bQd
@@ -177435,7 +177514,7 @@ bzi
 bzy
 bye
 bxk
-bwE
+bMe
 bwE
 bwE
 eSU
@@ -178198,7 +178277,7 @@ bMt
 eCD
 bzy
 bwE
-bye
+def
 bwE
 bwE
 dpz
@@ -178742,7 +178821,7 @@ bOd
 bwE
 bwE
 bwE
-bwE
+bMe
 aPa
 bDp
 cYP

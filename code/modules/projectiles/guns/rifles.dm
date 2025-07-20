@@ -2373,7 +2373,7 @@
 
 //L42A3 Battle Rifle
 
-/obj/item/weapon/gun/rifle/l42a3
+/obj/item/weapon/gun/rifle/l64a3
 	name = "\improper L64A3 battle rifle"
 	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces. valued for its reliability."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/marksman_rifles.dmi'
@@ -2422,10 +2422,10 @@
 	wield_delay = WIELD_DELAY_VERY_FAST
 	aim_slowdown = SLOWDOWN_ADS_QUICK
 
-/obj/item/weapon/gun/rifle/l42a3/set_gun_attachment_offsets()
+/obj/item/weapon/gun/rifle/l64a3/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 17, "rail_y" = 22, "under_x" = 27, "under_y" = 14, "stock_x" = 22, "stock_y" = 10)
 
-/obj/item/weapon/gun/rifle/l42a3/set_gun_config_values()
+/obj/item/weapon/gun/rifle/l64a3/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_9)
 	set_burst_amount(0)
@@ -2438,7 +2438,7 @@
 	scatter = SCATTER_AMOUNT_TIER_8
 
 
-/obj/item/weapon/gun/rifle/l42a3/marksman
+/obj/item/weapon/gun/rifle/l64a3/marksman
 	name = "\improper L64A3 battle rifle"
 	desc = "A lightweight designated marksman rifle developed by Howatomo Precision Machining for the Royal Marines and Imperial Armed Space Forces.  Reliable and deadly."
 
@@ -2453,11 +2453,11 @@
 		/obj/item/attachable/bipod,
 	)
 
-/obj/item/weapon/gun/rifle/l42a3/marksman/set_gun_config_values()
+/obj/item/weapon/gun/rifle/l64a3/marksman/set_gun_config_values()
 	..()
 	set_fire_delay(FIRE_DELAY_TIER_11)
 
-/obj/item/weapon/gun/rifle/l42a3/marksman/handle_starting_attachment() //Adds Marksman DMR's standard attachments.
+/obj/item/weapon/gun/rifle/l64a3/marksman/handle_starting_attachment() //Adds Marksman DMR's standard attachments.
 	..()
 	var/obj/item/attachable/scope/variable_zoom/twe/SC = new(src)
 	SC.flags_attach_features &= ~ATTACH_REMOVABLE

@@ -650,7 +650,7 @@
 	w_class = SIZE_MEDIUM
 	max_rounds = 25
 	default_ammo = /datum/ammo/bullet/rifle/l64
-	gun_type = /obj/item/weapon/gun/rifle/l42a3
+	gun_type = /obj/item/weapon/gun/rifle/l64a3
 
 
 /obj/item/ammo_magazine/rifle/l64/ap

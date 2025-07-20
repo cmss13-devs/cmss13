@@ -58,7 +58,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		return
 	user.visible_message(SPAN_WARNING("[user] starts climbing down."), SPAN_WARNING("You start climbing down."))
 
-	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, climb_down_time, INTERRUPT_ALL, BUSY_ICON_CLIMBING))
 		to_chat(user, SPAN_WARNING("You were interrupted!"))
 		return
 

@@ -33,24 +33,17 @@
 		climb_up_time = 1.5 SECONDS
 		if(xeno.mob_size >= MOB_SIZE_BIG)
 			climb_up_time = 5 SECONDS
-<<<<<<< Updated upstream
-	var/mob/living/human
-=======
+
 	var/mob/living/carbon/human
->>>>>>> Stashed changes
 	if(ishuman(user))
 		climb_up_time = 7 SECONDS
 		if(istype(src,/turf/closed/wall))
 			var/turf/closed/wall/wall = src
 			if(length(wall.hiding_humans))
 
-<<<<<<< Updated upstream
-				for(var/mob/living/boosting_human in wall.hiding_humans)
-					if(boosting_human.loc == user.loc && user != boosting_human)
-=======
+
 				for(var/mob/living/carbon/boosting_human in wall.hiding_humans)
 					if(boosting_human.loc == user.loc && user != boosting_human && !(boosting_human.flags_emote & EMOTING_WALL_BOOSTING))
->>>>>>> Stashed changes
 						human = boosting_human
 						human.flags_emote |= EMOTING_WALL_BOOSTING
 						break

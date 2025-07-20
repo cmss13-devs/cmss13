@@ -1,7 +1,0 @@
-author: "FebrezeNinja"
-delete-after: True
-changes:
-  - bugfix: "Fixed a typo in the fax sprite sheet"
-  - bugfix: "Fixed the portable fax machine's identification being random every time it was deployed"
-  - bugfix: "Fixed the portable fax causing sprites to temporarily morph"
-  - qol: "Moved the portable fax to the USS Almayer department and gave it a name."

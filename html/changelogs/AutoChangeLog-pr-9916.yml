@@ -1,0 +1,4 @@
+author: "Zenith"
+delete-after: True
+changes:
+  - bugfix: "fixed some preset issues with radios spawning in nullspace on the SOF insert for Soro."

@@ -123,6 +123,7 @@
 			open()
 		else
 			flick("door_deny", src)
+			playsound(loc, 'sound/machines/door_access_denied.ogg', 33, FALSE, 2, VOLUME_SFX)
 	return
 
 /obj/structure/machinery/door/attack_remote(mob/user)
@@ -145,6 +146,7 @@
 		return
 	if(density)
 		flick("door_deny", src)
+		playsound(loc, 'sound/machines/door_access_denied.ogg', 66, 1, 2, VOLUME_SFX)
 
 /obj/structure/machinery/door/attackby(obj/item/I, mob/user)
 	if(!(I.flags_item & NOBLUDGEON))

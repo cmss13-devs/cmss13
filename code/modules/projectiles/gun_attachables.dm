@@ -1859,6 +1859,8 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = 0
 	wield_delay_mod = WIELD_DELAY_NONE
 
+	select_gamemode_skin(type)
+
 /obj/item/attachable/stock/shotgun/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
 		accuracy_mod = HIT_ACCURACY_MULT_TIER_4

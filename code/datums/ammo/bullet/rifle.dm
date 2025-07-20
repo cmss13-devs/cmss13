@@ -62,6 +62,13 @@
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_8
 
+
+/datum/ammo/bullet/rifle/practice_ap
+	name = "practice rifle bullet"
+
+	damage = 30
+	penetration = 1
+
 // Basically AP but better. Focused at taking out armour temporarily
 /datum/ammo/bullet/rifle/ap/toxin
 	name = "toxic rifle bullet"

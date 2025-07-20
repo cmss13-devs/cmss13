@@ -55,6 +55,13 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
+/obj/item/ammo_magazine/rifle/training_ap
+	name = "\improper M41A Training magazine (10x24mm)"
+	desc = "An Training 10x24mm assault rifle magazine."
+	desc_lore = "Those magazines house a training bullet, While the projectile is still very real, they use less gunpowder, resulting in less recoil punch and barely any damage on actual targets. They're also act as Armor Piercing on shooting targets."
+	default_ammo = /datum/ammo/bullet/rifle/practice_ap
+	ammo_band_color = AMMO_BAND_COLOR_TRAINING
+
 /obj/item/ammo_magazine/rifle/le
 	name = "\improper M41A LE magazine (10x24mm)"
 	desc = "An armor-shredding 10x24mm assault rifle magazine."

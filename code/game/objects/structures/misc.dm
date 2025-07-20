@@ -89,6 +89,7 @@
 	var/list/practice_mode = PRACTICE_LEVEL_LOW
 	///health of the target mode
 	var/practice_health = 230
+
 /obj/structure/target/Initialize(mapload, ...)
 	. = ..()
 	icon_state = pick("target_a", "target_q")
@@ -102,9 +103,13 @@
 
 /obj/structure/target/bullet_act(obj/projectile/bullet)
 	. = ..()
+	var/damage_dealt = 0
 	if(practice_health <= 0 || !anchored)
 		return
-	var/damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.damage, practice_mode[2], bullet.ammo.penetration))
+	if(istype(bullet.ammo, /datum/ammo/bullet/rifle/practice_ap))
+		damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.damage, practice_mode[2], ARMOR_PENETRATION_TIER_8))
+	else
+		damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.damage, practice_mode[2], bullet.ammo.penetration))
 	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 	practice_health -= damage_dealt
 	animation_flash_color(src, "#FF0000", 1)

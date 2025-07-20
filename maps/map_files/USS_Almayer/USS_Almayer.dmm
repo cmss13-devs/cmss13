@@ -15432,7 +15432,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
 "bdw" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/shooting_range,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/living/cryo_cells)
 "bdy" = (
@@ -18557,7 +18557,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "bFs" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/shooting_range,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/living/cryo_cells)
 "bFt" = (
@@ -21144,7 +21144,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/living/cryo_cells)
 "ccd" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/shooting_range,
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/living/cryo_cells)
 "ccg" = (
@@ -37921,7 +37921,7 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/squads/req)
 "jeQ" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/shooting_range,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/living/cryo_cells)
 "jeR" = (

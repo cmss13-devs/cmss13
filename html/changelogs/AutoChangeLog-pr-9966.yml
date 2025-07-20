@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Added flavor text inserts for bloodtype, rank, and name."

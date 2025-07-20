@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Fun facts can now have whitelist/blacklists for role and faction. Namely this now prevents lessers and huggers from generating fun facts, and larva from generating kills fun facts (burst)"

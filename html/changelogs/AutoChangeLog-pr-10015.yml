@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Death statistics are no longer deleted since GLOB.round_statistics holds on to them"

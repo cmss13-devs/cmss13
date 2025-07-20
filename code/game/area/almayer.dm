@@ -14,6 +14,8 @@
 	// soundscape_playlist = list('sound/effects/xylophone1.ogg', 'sound/effects/xylophone2.ogg', 'sound/effects/xylophone3.ogg')
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE
+	flags_area = AREA_NOSECURECADES
+	weather_enabled = FALSE
 
 	///Whether this area is used for hijack evacuation progress
 	var/hijack_evacuation_area = FALSE

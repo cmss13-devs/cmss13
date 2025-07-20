@@ -119,7 +119,7 @@
 
 		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_SLASH_ALLOW_ALL))
 			. += "Slashing: PERMITTED"
-		else if (HAS_FLAG(hive.hive_flags, XENO_SLASH_ANY))
+		else if (HAS_FLAG(hive.hive_flags, XENO_SLASH_NORMAL))
 			. += "Slashing: RESTRICTED AGAINST INFECTED"
 		else
 			. += "Slashing: FORBIDDEN"
@@ -135,7 +135,7 @@
 			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
 				str_builder += "LEADERS"
 		. += "Special Structure Placement: [str_builder]"
-		
+
 		str_builder = "NOBODY"
 		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_ALLOW_ALL))
 			str_builder = "ANYONE"

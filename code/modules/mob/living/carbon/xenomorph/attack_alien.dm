@@ -74,7 +74,7 @@
 						attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
 						SPAN_XENONOTICE("We nibble [src], as queen forbade slashing of infected hosts!"))
 						return XENO_ATTACK_ACTION
-				else if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_ANY))
+				else if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
 					attacking_xeno.animation_attack_on(src)
 					attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
 					SPAN_XENONOTICE("We nibble [src], as queen forbade slashing!"))

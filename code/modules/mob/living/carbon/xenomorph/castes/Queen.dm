@@ -729,7 +729,7 @@
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing of infected hosts."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. You can no longer slash infected hosts."), 2, hivenumber)
 		hive.hive_flags &= ~XENO_SLASH_INFECTED
-		hive.hive_flags |= XENO_SLASH_ANY
+		hive.hive_flags |= XENO_SLASH_NORMAL
 	else if(choice == "Forbidden")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing entirely."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), 2, hivenumber)

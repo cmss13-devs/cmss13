@@ -112,11 +112,11 @@
 #define COOLDOWN_TOGGLE_UNNESTING "cooldown_toggle_unnesting"
 
 /// Whether you can slash non-infected
-#define XENO_SLASH_ANY (1<<0)
+#define XENO_SLASH_NORMAL (1<<0)
 /// Whether you can slash infected
 #define XENO_SLASH_INFECTED (1<<1)
 /// Multi-flag to indicate all slashing is allowed
-#define XENO_SLASH_ALLOW_ALL (XENO_SLASH_ANY|XENO_SLASH_INFECTED)
+#define XENO_SLASH_ALLOW_ALL (XENO_SLASH_NORMAL|XENO_SLASH_INFECTED)
 #define XENO_UNNESTING_RESTRICTED (1<<2)
 #define XENO_CONSTRUCTION_NORMAL (1<<3)
 #define XENO_CONSTRUCTION_LEADERS (1<<4)

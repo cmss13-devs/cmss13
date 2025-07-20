@@ -76,7 +76,7 @@ export const StackReceipts = () => {
           scrollable
           title={
             <>
-              <>Construction using the + {stack_name}</>
+              <>Construction using the {stack_name}</>
               <br />
               <small style={{ fontWeight: 'normal', top: '100px' }}>
                 Amount left: {stack_amount}

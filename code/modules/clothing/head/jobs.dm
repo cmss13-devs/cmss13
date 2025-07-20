@@ -100,7 +100,7 @@
 
 /obj/item/clothing/head/surgery/blue
 	name = "blue surgical cap"
-	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, These are in a soothing surgery green."
+	desc = "A cap doctors wear during operations. Keeps their hair from tickling your internal organs. Typically worn by doctors, this one is in 'blueberry'."
 	icon_state = "surgcap_blue"
 
 /obj/item/clothing/head/surgery/lightblue
@@ -130,7 +130,7 @@
 
 /obj/item/clothing/head/surgery/purple
 	name = "purple surgical cap"
-	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is amaranth purple."
+	desc = "A cap surgeons wear during operations. Keeps their hair from tickling your internal organs. This one is a rich wine color."
 	icon_state = "surgcap_purple"
 
 /obj/item/clothing/head/surgery/olive

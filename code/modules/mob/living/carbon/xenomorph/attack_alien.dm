@@ -58,25 +58,27 @@
 				return XENO_NO_DELAY_ACTION
 
 			if(attacking_xeno.caste && !attacking_xeno.caste.is_intelligent)
-				if(HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_ANY))
+				var/embryo_allied = FALSE
+				if(status_flags & XENO_HOST)
+					for(var/obj/item/alien_embryo/embryo in src)
+						if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
+							embryo_allied = TRUE
+							break
+
+				if(embryo_allied)
+					if(HAS_TRAIT(src, TRAIT_NESTED))
+						to_chat(attacking_xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
+						return XENO_NO_DELAY_ACTION
+					if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
+						attacking_xeno.animation_attack_on(src)
+						attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+						SPAN_XENONOTICE("We nibble [src], as queen forbade slashing of infected hosts!"))
+						return XENO_ATTACK_ACTION
+				else if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_ANY))
 					attacking_xeno.animation_attack_on(src)
 					attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
 					SPAN_XENONOTICE("We nibble [src], as queen forbade slashing!"))
 					return XENO_ATTACK_ACTION
-
-				else if(HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_INFECTED) && (status_flags & XENO_HOST))
-					for(var/obj/item/alien_embryo/embryo in src)
-						if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
-							attacking_xeno.animation_attack_on(src)
-							attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
-							SPAN_XENONOTICE("We nibble [src], as queen forbade slashing of infected hosts!"))
-							return XENO_ATTACK_ACTION
-
-				else if(HAS_TRAIT(src, TRAIT_NESTED) && (status_flags & XENO_HOST))
-					for(var/obj/item/alien_embryo/embryo in src)
-						if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
-							to_chat(attacking_xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
-							return XENO_NO_DELAY_ACTION
 
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s slash is blocked by [src]'s shield!"),

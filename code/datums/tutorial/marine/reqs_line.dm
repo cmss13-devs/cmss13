@@ -67,7 +67,7 @@
 		/obj/item/attachable/attached_gun/shotgun = list("U7", "Underbarrel", "Underbarrel Shotgun", "Mini Shotgun", "UBS"),
 		/obj/item/attachable/verticalgrip = list("VG", "Vert Grip", "Vertical Grip"),
 		/obj/item/attachable/stock/rifle = list("Solid Stock", "M41 stock", "M41 Solid Stock"),
-		/obj/item/attachable/stock/shotgun = list("M37 Stock", "Wooden stock"),
+		/obj/item/attachable/stock/shotgun/collapsible/collapsible = list("M37A2 Stock", "wire stock"),
 		/* GEAR */
 		/obj/item/weapon/gun/shotgun/pump = list("M37", "shotgun"),
 		/obj/item/weapon/gun/smg/m39 = list("M39", "SMG"),

@@ -1828,8 +1828,8 @@ Defined in conflicts.dm of the #defines folder.
 
 
 /obj/item/attachable/stock/shotgun/collapsible
-	name = "\improper M41A folding stock"
-	desc = "The standard back end of any gun starting with . Compatible with the M41A series, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle."
+	name = "\improper M37A2 Collapsible Stock"
+	desc = "A wire stock for the M37A2, used to help with recoil control."
 	slot = "stock"
 	melee_mod = 5
 	size_mod = 1

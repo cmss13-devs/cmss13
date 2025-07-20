@@ -1861,16 +1861,16 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/shotgun/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
-		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
-		recoil_mod = -RECOIL_AMOUNT_TIER_5
-		scatter_mod = -SCATTER_AMOUNT_TIER_9
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
 		//it makes stuff worse when one handed
 		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
-		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+		scatter_unwielded_mod =  SCATTER_AMOUNT_TIER_8
 		aim_speed_mod = CONFIG_GET(number/slowdown_med)
-		hud_offset_mod = 5
+		hud_offset_mod = 4
 		icon_state = "m37a_stock_on"
 		attach_icon = "m37a_stock_on"
 		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
@@ -1886,7 +1886,7 @@ Defined in conflicts.dm of the #defines folder.
 		aim_speed_mod = 0
 		hud_offset_mod = 3
 		icon_state = "m37a_stock"
-		attach_icon = "m37a_stock_a"
+		attach_icon = "m37a_stock"
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()

@@ -71,12 +71,11 @@ export const StackReceipts = () => {
   return (
     <Window width={440} height={500}>
       <Window.Content>
-        <Section fill scrollable>
+        <Section fill scrollable title={'Construction using the ' + stack_name}>
           <Stack fill vertical>
             <Box>
-              <h1>Construction using the {stack_name}</h1>
               Amount left: {stack_amount}
-              <hr />
+              <hr color="#4972a2" />
             </Box>
             <Box width="100%">
               {localReceipts.length > 0 &&
@@ -84,7 +83,13 @@ export const StackReceipts = () => {
                   <Stack key={index} justify="space-between">
                     <Stack.Item width="100%">
                       {receipt.empty_line_next ? (
-                        <hr style={{ position: 'relative', top: '6px' }} />
+                        <hr
+                          style={{
+                            position: 'relative',
+                            top: '6px',
+                          }}
+                          color="#4972a2"
+                        />
                       ) : (
                         ''
                       )}
@@ -155,7 +160,10 @@ export const StackReceipts = () => {
                   </Stack>
                 ))}
 
-              <hr style={{ position: 'relative', top: '6px' }} />
+              <hr
+                style={{ position: 'relative', top: '6px' }}
+                color="#4972a2"
+              />
             </Box>
           </Stack>
         </Section>

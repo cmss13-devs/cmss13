@@ -1816,7 +1816,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M37A2 synth stock"
 	desc = "A non-standard heavy stock for the M37A2 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
 	slot = "m37a_stock"
-	icon_state = "m37a_stock"
+	icon_state = "m37alt_stock"
 	flags_attach_features = NO_FLAGS
 	wield_delay_mod = WIELD_DELAY_FAST
 	pixel_shift_x = 15
@@ -1884,7 +1884,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_unwielded_mod = 0
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
-		hud_offset_mod = 1
+		hud_offset_mod = 5
 		icon_state = "m37a_stock"
 		attach_icon = "m37a_stock"
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay

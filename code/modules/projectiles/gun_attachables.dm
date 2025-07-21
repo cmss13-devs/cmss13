@@ -1812,21 +1812,6 @@ Defined in conflicts.dm of the #defines folder.
 
 	select_gamemode_skin(type)
 
-/obj/item/attachable/stock/shotgun/synth
-	name = "\improper M37A2 synth stock"
-	desc = "A non-standard heavy stock for the M37A2 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
-	slot = "stock"
-	icon_state = "m37alt_stock"
-	flags_attach_features = NO_FLAGS
-	wield_delay_mod = WIELD_DELAY_FAST
-	pixel_shift_x = 15
-	pixel_shift_y = 0
-	hud_offset_mod = 6 //*Very* long sprite.
-
-/obj/item/attachable/stock/shotgun/synth/New()
-	..()
-
-
 /obj/item/attachable/stock/shotgun/collapsible
 	name = "\improper M37A2 Collapsible Stock"
 	desc = "A wire stock for the M37A2, used to help with recoil control."

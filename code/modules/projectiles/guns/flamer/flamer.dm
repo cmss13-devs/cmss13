@@ -105,13 +105,6 @@
 		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
 
-/obj/item/weapon/gun/flamer/able_to_fire(mob/user)
-	. = ..()
-	if(.)
-		if(!current_mag || !current_mag.current_rounds)
-			click_empty(user)
-			return NONE
-
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
 		'sound/weapons/gun_flamethrower1.ogg',

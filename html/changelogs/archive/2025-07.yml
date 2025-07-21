@@ -198,3 +198,9 @@
   Red-byte3D:
   - bugfix: You can now fire underbarrel extuingishers on flamers when they are not
       loaded again
+2025-07-21:
+  Zenith:
+  - bugfix: fixed some preset issues with radios spawning in nullspace on the SOF
+      insert for Soro.
+  tallfission:
+  - imageadd: rolled sleeve icons for CMB SWAT uniforms

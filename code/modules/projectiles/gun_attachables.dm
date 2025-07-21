@@ -1812,7 +1812,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	select_gamemode_skin(type)
 
-/obj/item/attachable/stock/shotgun/collapsible
+/obj/item/attachable/stock/shotty/collapsible
 	name = "\improper M37A2 Collapsible Stock"
 	desc = "A wire stock for the M37A2, used to help with recoil control."
 	slot = "stock"
@@ -1830,7 +1830,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 
-/obj/item/attachable/stock/shotgun/collapsible/New()
+/obj/item/attachable/stock/shotty/collapsible/New()
 	..()
 
 	//rifle stock starts collapsed so we zero out everything
@@ -1845,7 +1845,7 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod = WIELD_DELAY_NONE
 
 
-/obj/item/attachable/stock/shotgun/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
+/obj/item/attachable/stock/shotty/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
 		accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 		recoil_mod = -RECOIL_AMOUNT_TIER_4

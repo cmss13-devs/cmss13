@@ -109189,7 +109189,9 @@
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
 	},
-/obj/item/weapon/gun/launcher/grenade/m81/m79,
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1{
+	pixel_y = 4
+	},
 /turf/open/asphalt/cement/cement12,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "sPH" = (

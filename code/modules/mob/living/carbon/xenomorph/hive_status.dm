@@ -1,5 +1,5 @@
 /datum/hive_status
-	var/name = "Normal Hive"
+	var/name = FACTION_XENOMORPH
 
 	// Used for the faction of the xenomorph. Not recommended to modify.
 	var/internal_faction
@@ -101,7 +101,7 @@
 
 	var/list/allies = list()
 	/// The list of factions this hive is forbidden to ally with.
-	var/list/banned_allies = list(FACTION_PATHOGEN)
+	var/list/banned_allies = list(FACTION_XENOMORPH_TUTORIAL, FACTION_PATHOGEN)
 	/// Admin override var.
 	var/allow_banned_allies = FALSE
 
@@ -1113,7 +1113,7 @@
 		stored_larva++
 
 /datum/hive_status/corrupted
-	name = "Corrupted Hive"
+	name = FACTION_XENOMORPH_CORRPUTED
 	reporting_id = "corrupted"
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
@@ -1140,7 +1140,7 @@
 	return FALSE
 
 /datum/hive_status/alpha
-	name = "Alpha Hive"
+	name = FACTION_XENOMORPH_ALPHA
 	reporting_id = "alpha"
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
@@ -1151,7 +1151,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/bravo
-	name = "Bravo Hive"
+	name = FACTION_XENOMORPH_BRAVO
 	reporting_id = "bravo"
 	hivenumber = XENO_HIVE_BRAVO
 	prefix = "Bravo "
@@ -1162,7 +1162,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/charlie
-	name = "Charlie Hive"
+	name = FACTION_XENOMORPH_CHARLIE
 	reporting_id = "charlie"
 	hivenumber = XENO_HIVE_CHARLIE
 	prefix = "Charlie "
@@ -1173,7 +1173,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/delta
-	name = "Delta Hive"
+	name = FACTION_XENOMORPH_DELTA
 	reporting_id = "delta"
 	hivenumber = XENO_HIVE_DELTA
 	prefix = "Delta "
@@ -1184,7 +1184,7 @@
 	dynamic_evolution = FALSE
 
 /datum/hive_status/feral
-	name = "Feral Hive"
+	name = FACTION_XENOMORPH_FERAL
 	reporting_id = "feral"
 	hivenumber = XENO_HIVE_FERAL
 	prefix = "Feral "
@@ -1201,7 +1201,7 @@
 	tacmap_requires_queen_ovi = FALSE
 
 /datum/hive_status/forsaken
-	name = "Forsaken Hive"
+	name = FACTION_XENOMORPH_FORSAKEN
 	reporting_id = "forsaken"
 	hivenumber = XENO_HIVE_FORSAKEN
 	prefix = "Forsaken "
@@ -1222,7 +1222,7 @@
 	return FALSE
 
 /datum/hive_status/tutorial
-	name = "Tutorial Hive"
+	name = FACTION_XENOMORPH_TUTORIAL
 	reporting_id = "tutorial"
 	hivenumber = XENO_HIVE_TUTORIAL
 	prefix = "Inquisitive "
@@ -1245,7 +1245,7 @@
 	return FALSE
 
 /datum/hive_status/yautja
-	name = "Hellhound Pack"
+	name = FACTION_XENOMORPH_HELLHOUNDS
 	reporting_id = "hellhounds"
 	hivenumber = XENO_HIVE_YAUTJA
 	internal_faction = FACTION_YAUTJA
@@ -1264,7 +1264,7 @@
 	return FALSE
 
 /datum/hive_status/mutated
-	name = "Mutated Hive"
+	name = FACTION_XENOMORPH_MUTATED
 	reporting_id = "mutated"
 	hivenumber = XENO_HIVE_MUTATED
 	prefix = "Mutated "
@@ -1275,7 +1275,7 @@
 	latejoin_burrowed = FALSE
 
 /datum/hive_status/corrupted/tamed
-	name = "Tamed Hive"
+	name = FACTION_XENOMORPH_TAMED
 	reporting_id = "tamed"
 	hivenumber = XENO_HIVE_TAMED
 	prefix = "Tamed "
@@ -1658,7 +1658,7 @@
 	larva_gestation_multiplier = 1.5
 
 	// Pathogen cannot ally with xenos, and really shouldn't ally with anyone
-	banned_allies = list("Normal Hive", "Alpha Hive", "Bravo Hive", "Charlie Hive", "Delta Hive", "Feral Hive", "Forsaken Hive", "Tutorial Hive", "Hellhound Pack", "Mutated Hive", "Tamed Hive", "Corrupted Hive")
+	banned_allies = list(FACTION_XENOMORPH, FACTION_XENOMORPH_ALPHA, FACTION_XENOMORPH_BRAVO, FACTION_XENOMORPH_CHARLIE, FACTION_XENOMORPH_DELTA, FACTION_XENOMORPH_FERAL, FACTION_XENOMORPH_FORSAKEN, FACTION_XENOMORPH_TUTORIAL, FACTION_XENOMORPH_HELLHOUNDS, FACTION_XENOMORPH_MUTATED, FACTION_XENOMORPH_TAMED, FACTION_XENOMORPH_CORRPUTED)
 
 	hive_orders = "Kill everyone and everything."
 

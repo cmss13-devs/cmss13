@@ -100,6 +100,10 @@
 	var/list/tunnels = list()
 
 	var/list/allies = list()
+	/// The list of factions this hive is forbidden to ally with.
+	var/list/banned_allies = list(FACTION_PATHOGEN)
+	/// Admin override var.
+	var/allow_banned_allies = FALSE
 
 	var/list/resin_marks = list()
 
@@ -1395,6 +1399,8 @@
 /datum/hive_status/proc/change_stance(faction, should_ally)
 	if(faction == name)
 		return
+	if(!allow_banned_allies && should_ally && (faction in banned_allies))
+		return
 	if(allies[faction] == should_ally)
 		return
 	allies[faction] = should_ally
@@ -1650,6 +1656,9 @@
 	destruction_allowed = NORMAL_XENO
 
 	larva_gestation_multiplier = 1.5
+
+	// Pathogen cannot ally with xenos, and really shouldn't ally with anyone
+	banned_allies = list("Normal Hive", "Alpha Hive", "Bravo Hive", "Charlie Hive", "Delta Hive", "Feral Hive", "Forsaken Hive", "Tutorial Hive", "Hellhound Pack", "Mutated Hive", "Tamed Hive", "Corrupted Hive")
 
 	hive_orders = "Kill everyone and everything."
 

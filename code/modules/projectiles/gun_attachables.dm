@@ -1818,8 +1818,8 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "stock"
 	melee_mod = 5
 	size_mod = 1
-	icon_state = "m37a_stock"
-	attach_icon = "m37a_stock"
+	icon_state = "37stock"
+	attach_icon = "37stock"
 	pixel_shift_x = 40
 	pixel_shift_y = 14
 	hud_offset_mod = 3
@@ -1857,8 +1857,8 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod =  SCATTER_AMOUNT_TIER_8
 		aim_speed_mod = CONFIG_GET(number/slowdown_med)
 		hud_offset_mod = 5
-		icon_state = "m37a_stock_on"
-		attach_icon = "m37a_stock_on"
+		icon_state = "37stock_on"
+		attach_icon = "37stock_on"
 		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
 
 	else
@@ -1871,13 +1871,13 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
 		hud_offset_mod = 5
-		icon_state = "m37a_stock"
-		attach_icon = "m37a_stock"
+		icon_state = "37stock"
+		attach_icon = "37stock"
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
-	select_gamemode_skin(type)
+
 
 /obj/item/attachable/stock/double
 	name = "\improper double barrel shotgun stock"

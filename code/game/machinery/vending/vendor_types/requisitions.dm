@@ -432,7 +432,7 @@
 		list("Vertical Grip", 9.5, /obj/item/attachable/verticalgrip, VENDOR_ITEM_REGULAR),
 
 		list("STOCK", -1, null, null),
-		list("M37A2 Collapsible Stock", 4.5, /obj/item/attachable/stock/shotgun/collapsible, VENDOR_ITEM_REGULAR),
+		list("M37A2 Collapsible Stock", 4.5, /obj/item/attachable/stock/shotty/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Arm Brace", 4.5, /obj/item/attachable/stock/smg/collapsible/brace, VENDOR_ITEM_REGULAR),
 		list("M39 Folding Stock", 4.5, /obj/item/attachable/stock/smg/collapsible, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 4.5, /obj/item/attachable/stock/smg, VENDOR_ITEM_REGULAR),

@@ -39,8 +39,8 @@
 	else
 		state = 5
 	update_icon()
-	sleep(200)
 	playsound(src, 'sound/machines/washing_machine_cycle.ogg', 22, 1, 2, VOLUME_SFX)
+	sleep(200)
 
 	for(var/atom/movable/A in contents)
 		A.clean_blood()

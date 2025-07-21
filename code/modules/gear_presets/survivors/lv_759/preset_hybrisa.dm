@@ -856,6 +856,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	origin_override = ORIGIN_WY_SEC
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/goon
 	idtype = /obj/item/card/id/silver/cl

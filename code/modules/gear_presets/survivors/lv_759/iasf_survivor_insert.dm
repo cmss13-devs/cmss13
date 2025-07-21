@@ -10,7 +10,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	faction = FACTION_IASF
 	faction_group = FACTION_LIST_SURVIVOR_IASF
-	origin_override = ORIGIN_BASE
+	origin_override = ORIGIN_TWE
 	minimap_icon = "rmc_rifleman"
 	minimap_background = "background_iasf"
 	role_comm_title = "24/PARA"
@@ -204,7 +204,7 @@
 	job_title = JOB_TWE_IASF_PARA_SYNTH
 	faction = FACTION_IASF
 	faction_group = FACTION_LIST_SURVIVOR_IASF
-	origin_override = ORIGIN_BASE
+	origin_override = ORIGIN_TWE
 	skills = /datum/skills/colonial_synthetic
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/dogtag

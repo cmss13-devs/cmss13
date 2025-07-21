@@ -1815,7 +1815,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/shotgun/synth
 	name = "\improper M37A2 synth stock"
 	desc = "A non-standard heavy stock for the M37A2 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
-	slot = "m37a_stock"
+	slot = "stock"
 	icon_state = "m37alt_stock"
 	flags_attach_features = NO_FLAGS
 	wield_delay_mod = WIELD_DELAY_FAST
@@ -1859,7 +1859,6 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = 0
 	wield_delay_mod = WIELD_DELAY_NONE
 
-	select_gamemode_skin(type)
 
 /obj/item/attachable/stock/shotgun/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
@@ -1893,6 +1892,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
+	select_gamemode_skin(type)
 
 /obj/item/attachable/stock/double
 	name = "\improper double barrel shotgun stock"

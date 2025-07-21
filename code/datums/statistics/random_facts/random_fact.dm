@@ -14,6 +14,14 @@
 	var/prob_check_dead = 50
 	/// The min stat required to be noted
 	var/min_required = 1
+	/// Any factions to filter for this statistic
+	var/list/faction_filter = list("Tutorial Hive")
+	/// Whether the faction_filter is a blacklist (otherwise whitelist)
+	var/list/faction_filter_blacklist = TRUE
+	/// Any roles to filter for this statistic
+	var/list/role_filter = list(XENO_CASTE_FACEHUGGER, XENO_CASTE_LESSER_DRONE)
+	/// Whether the role_filter is a blacklist (otherwise whitelist)
+	var/list/role_filter_blacklist = TRUE
 
 /datum/random_fact/New(check_human=TRUE, check_xeno=TRUE)
 	. = ..()
@@ -26,6 +34,38 @@
 	if(message)
 		to_world(SPAN_CENTERBOLD(message))
 		return TRUE
+	return FALSE
+
+/// Returns TRUE if the provided datum/entity/statistic/death is ignored via faction/role filters
+/datum/random_fact/proc/check_death_ignored(datum/entity/statistic/death/entry)
+	if(entry.faction_name in faction_filter)
+		if(faction_filter_blacklist)
+			return TRUE
+	else if(!faction_filter_blacklist)
+		return TRUE
+
+	if(entry.role_name in role_filter)
+		if(role_filter_blacklist)
+			return TRUE
+	else if(!role_filter_blacklist)
+		return TRUE
+
+	return FALSE
+
+/// Returns TRUE if the provided mob is ignored via faction/role filters
+/datum/random_fact/proc/check_mob_ignored(mob/target)
+	if(target.faction in faction_filter)
+		if(faction_filter_blacklist)
+			return TRUE
+	else if(!faction_filter_blacklist)
+		return TRUE
+
+	if(target.get_role_name() in role_filter)
+		if(role_filter_blacklist)
+			return TRUE
+	else if(!role_filter_blacklist)
+		return TRUE
+
 	return FALSE
 
 /// Returns the /datum/entity/statistic/death for a random still connected player that has min_required for this stat
@@ -45,6 +85,8 @@
 		else
 			if(!check_human)
 				continue
+		if(check_death_ignored(death))
+			continue
 		var/datum/entity/player/player_record = DB_ENTITY(/datum/entity/player, death.player_id)
 		if(!player_record)
 			debug_log("/datum/entity/player lookup failed for '[death.player_id]' during [type]'s find_death_to_report")
@@ -66,6 +108,8 @@
 	list_to_check = shuffle(list_to_check)
 
 	for(var/mob/living/carbon/checked_mob as anything in list_to_check)
+		if(check_mob_ignored(checked_mob))
+			continue
 		if(!(checked_mob.persistent_ckey in GLOB.directory))
 			continue // We don't care about NPCs or people disconnected
 		if(life_grab_stat(checked_mob) >= min_required)

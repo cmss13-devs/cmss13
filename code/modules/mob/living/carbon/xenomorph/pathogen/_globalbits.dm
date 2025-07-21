@@ -509,7 +509,7 @@
 	charge_time = 2 SECONDS
 	xeno_cooldown = 60 SECONDS
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
-	var/stab_range = 1
+	var/stab_range = 2
 	plasma_cost = 100
 	var/matriarch_stab = FALSE
 
@@ -517,7 +517,8 @@
 	name = "Mycotoxin Injection (150)"
 	plasma_cost = 150
 	matriarch_stab = TRUE
-	stab_range = 2
+	xeno_cooldown = 120 SECONDS
+	stab_range = 3
 
 /datum/action/xeno_action/activable/mycotoxin/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/stabbing_xeno = owner
@@ -635,7 +636,7 @@
 
 	stabbing_xeno.animation_attack_on(target)
 	stabbing_xeno.flick_attack_overlay(target, "tail")
-
+	var/message = "You have injected [target] with mycotoxin! If they perish with this toxin in their body they will rise again at your service!"
 	if(matriarch_stab) // Only the Matriarch can inject into a living target.
 		var/damage = (stabbing_xeno.melee_damage_upper + stabbing_xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER) * TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
@@ -651,13 +652,14 @@
 			target.apply_effect(1, DAZE)
 		shake_camera(target, 2, 1)
 
-	target.reagents.add_reagent("mycotoxin", 6)
-	target.reagents.set_source_mob(owner, /datum/reagent/toxin/mycotoxin)
-	to_chat(target, SPAN_HIGHDANGER("You are injected with a powerful mycotoxin by [stabbing_xeno]!"))
-	var/message = "You have injected [target] with mycotoxin! If they perish with this toxin in their body they will rise again at your service!"
-	if(!matriarch_stab)
+		target.reagents.add_reagent("mycotoxin_e", 4)
+		target.reagents.set_source_mob(owner, /datum/reagent/toxin/mycotoxin/enhanced)
+	else
+		target.reagents.add_reagent("mycotoxin", 6)
+		target.reagents.set_source_mob(owner, /datum/reagent/toxin/mycotoxin)
 		message = "You have injected [target] with mycotoxin! They will rise again in service to the Overmind!"
 
+	to_chat(target, SPAN_HIGHDANGER("You are injected with a powerful mycotoxin by [stabbing_xeno]!"))
 	to_chat(stabbing_xeno, SPAN_PATHOGEN_QUEEN(message))
 
 	target.handle_blood_splatter(get_dir(owner.loc, target.loc))

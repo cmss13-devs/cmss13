@@ -8763,7 +8763,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
 	sub_name = "CIC";
-	radio_alert_tag = ":V"
+	radio_alert_tag = ":v"
 	},
 /obj/structure/machinery/computer/cameras/almayer_brig{
 	desc = "Used to access the various cameras in the security brig.";
@@ -11438,7 +11438,7 @@
 	density = 0;
 	can_block_movement = 0;
 	sub_name = "Aux Support Officer";
-	radio_alert_tag = ":V"
+	radio_alert_tag = ":v"
 	},
 /turf/open/floor/almayer/blue/southwest,
 /area/almayer/living/auxiliary_officer_office)
@@ -11838,7 +11838,7 @@
 	density = 0;
 	can_block_movement = 0;
 	sub_name = "Executive Officer";
-	radio_alert_tag = ":P"
+	radio_alert_tag = ":p"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/numbertwobunks)
@@ -17780,6 +17780,10 @@
 	},
 /obj/item/weapon/pole/wooden_cane{
 	pixel_y = 3
+	},
+/obj/item/device/defibrillator/synthetic{
+	pixel_y = -3;
+	pixel_x = 3
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
@@ -27533,7 +27537,7 @@
 	desc = "The beloved fax machine of the Requisitions department for all your equipment-requesting needs";
 	sub_name = "Requisitions";
 	gender = "female";
-	radio_alert_tag = ":U"
+	radio_alert_tag = ":u"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
@@ -45455,7 +45459,7 @@
 	name = "Commanding Officer's Fax Machine";
 	pixel_x = -4;
 	pixel_y = 3;
-	radio_alert_tag = ":P"
+	radio_alert_tag = ":p"
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -59850,6 +59854,7 @@
 	pixel_x = 3;
 	pixel_y = -2
 	},
+/obj/item/folded_tent/mess,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "ssU" = (
@@ -64103,7 +64108,7 @@
 	desc = "The not-so-beloved fax machine of the Medical department, for when you need to keep the local newspaper updated with the freshest mortuaries";
 	sub_name = "Medical";
 	gender = "female";
-	radio_alert_tag = ":U";
+	radio_alert_tag = ":m";
 	pixel_y = 3;
 	pixel_x = -3
 	},
@@ -69321,7 +69326,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm/almayer{
 	sub_name = "Intel Office";
-	radio_alert_tag = ":T";
+	radio_alert_tag = ":t";
 	pixel_y = 3
 	},
 /turf/open/floor/almayer/silver/northwest,

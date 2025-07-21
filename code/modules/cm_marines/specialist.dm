@@ -206,6 +206,7 @@
 	name = "SHARP Operator Set"
 	role_name = "SHARP Operator"
 	skill_to_give = SKILL_SPEC_GRENADIER
+	rank_icon = "spec_sharp"
 	kit_typepath = /obj/item/storage/box/spec/sharp_operator
 	incompatible_sets = list(
 		/datum/specialist_set/grenadier,

@@ -196,6 +196,7 @@ Standart Survivors :	/datum/equipment_preset/survivor/scientist,
 	job_title = JOB_CMB
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
+	origin_override = ORIGIN_CMB
 	role_comm_title = "CMB DEP"
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -301,6 +302,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	job_title = JOB_EXECUTIVE
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
+	origin_override = ORIGIN_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,
@@ -393,6 +395,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/headset(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
+	add_survivor_rare_item(new_human)
 	add_survivor_weapon_civilian(new_human)
 	add_ice_colony_survivor_equipment(new_human)
 	..()
@@ -469,6 +472,7 @@ Everything bellow is a parent used as a base for one or multiple maps.
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC)
+	origin_override = ORIGIN_USCM
 
 /datum/equipment_preset/survivor/uscm/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

@@ -42,8 +42,7 @@
 // Called whenever the weather SS decides to start an event, but
 // warn_time deciseconds before it actually starts
 // (think weather sirens on sorokyne)
-/datum/weather_ss_map_holder/proc/weather_warning(event_type)
-	var/datum/weather_event/incoming_event = event_type
+/datum/weather_ss_map_holder/proc/weather_warning(datum/weather_event/incoming_event)
 	var/weather_name = initial(incoming_event.display_name)
 	var/list/ground_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND))
 	for(var/mob/living/carbon/human/affected_human in GLOB.alive_human_list)

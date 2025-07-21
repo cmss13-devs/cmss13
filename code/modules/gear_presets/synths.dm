@@ -129,6 +129,7 @@
 	job_title = JOB_SYNTH_SURVIVOR
 	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = TRUE
+	origin_override = ORIGIN_CIVILIAN
 
 	var/list/equipment_to_spawn = list(
 		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/joe,
@@ -171,6 +172,7 @@
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	minimap_icon = "wy_syn"
 	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
 
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
@@ -623,6 +625,7 @@
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_background = "background_cmb"
 	minimap_icon = "cmb_syn"
+	origin_override = ORIGIN_CMB
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
@@ -649,6 +652,7 @@
 	job_title = JOB_WY_SEC_SYNTH
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
+	origin_override = ORIGIN_WY_SEC
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,

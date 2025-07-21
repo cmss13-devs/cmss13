@@ -53,10 +53,12 @@
 	var/list/marines = list()
 	var/list/survivors = list()
 	var/list/xenos = list()
+	var/list/infected = list()
 	var/list/ert_members = list()
 	var/list/upp = list()
 	var/list/clf = list()
 	var/list/wy = list()
+	var/list/hyperdyne = list()
 	var/list/twe = list()
 	var/list/freelancer = list()
 	var/list/contractor = list()
@@ -103,6 +105,11 @@
 			ghosts += list(serialized)
 			continue
 
+		if(poi_mob.status_flags & XENO_HOST)
+			var/obj/item/alien_embryo/embryo = (locate(/obj/item/alien_embryo) in poi_mob)
+			serialized["embryo_hivenumber"] = embryo.hivenumber
+			infected += list(serialized)
+
 		if(poi_mob.stat == DEAD)
 			dead += list(serialized)
 			continue
@@ -113,6 +120,10 @@
 
 		if(isliving(poi_mob))
 			var/mob/living/player = poi_mob
+
+			serialized["in_ground"] = is_ground_level(player.z)
+			serialized["in_ship"] = is_mainship_level(player.z)
+
 			serialized["health"] = floor(player.health / player.maxHealth * 100)
 
 			if(isxeno(player))
@@ -166,12 +177,20 @@
 				if(issynth(human) && !isinfiltratorsynthetic(human))
 					synthetics += list(serialized)
 
+				if(human.status_flags & XENO_HOST)
+					infected += list(serialized)
+
+				if(issurvivorjob(human.job) || (FACTION_SURVIVOR in human.faction_group))
+					survivors += list(serialized)
+
 				if(human.job in FAX_RESPONDER_JOB_LIST)
 					responders += list(serialized)
 				else if(SSticker.mode.is_in_endgame == TRUE && !is_mainship_level(human.z) && !(human.faction in FACTION_LIST_ERT_ALL) && !(isyautja(human)))
 					escaped += list(serialized)
 				else if(human.faction in FACTION_LIST_WY)
 					wy += list(serialized)
+				else if(human.faction in FACTION_LIST_HYPERDYNE)
+					hyperdyne += list(serialized)
 				else if(isyautja(human))
 					predators += list(serialized)
 				else if(human.faction in FACTION_LIST_ERT_OTHER)
@@ -196,8 +215,6 @@
 					dutch += list(serialized)
 				else if(human.faction in FACTION_LIST_MARINE)
 					marines += list(serialized)
-				else if(issurvivorjob(human.job))
-					survivors += list(serialized)
 				else
 					humans += list(serialized)
 				continue
@@ -208,10 +225,12 @@
 	data["marines"] = marines
 	data["survivors"] = survivors
 	data["xenos"] = xenos
+	data["infected"] = infected
 	data["ert_members"] = ert_members
 	data["upp"] = upp
 	data["clf"] = clf
 	data["wy"] = wy
+	data["hyperdyne"] = hyperdyne
 	data["twe"] = twe
 	data["responders"] = responders
 	data["freelancer"] = freelancer

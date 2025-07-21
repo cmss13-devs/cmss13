@@ -16,7 +16,7 @@
 
 	available_strains = list()
 	behavior_delegate_type = /datum/behavior_delegate/pathogen_base/sprinter
-	evolves_to = list(PATHOGEN_CREATURE_BLIGHT)
+	evolves_to = list(PATHOGEN_CREATURE_NEOMORPH, PATHOGEN_CREATURE_BLIGHT)
 	deevolves_to = list(PATHOGEN_CREATURE_BURSTER)
 
 	tackle_min = 4

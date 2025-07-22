@@ -13,6 +13,8 @@
 	paygrades = list(PAY_SHORT_CDNM = JOB_PLAYTIME_TIER_0)
 	var/new_bubble_icon = "machine"
 
+	remove_tts = TRUE // BANDAMARINES ADD
+
 /datum/equipment_preset/pmc/w_y_whiteout/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_GLOBAL)

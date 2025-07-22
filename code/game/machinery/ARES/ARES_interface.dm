@@ -364,7 +364,7 @@
 				return FALSE
 			if(GLOB.security_level < SEC_LEVEL_RED)
 				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
-			shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+			shipwide_ai_announcement("ВНИМАНИЕ!\n\nБОЕВАЯ ГОТОВНОСТЬ НОМЕР ОДИН. ВСЕМУ ЛИЧНОМУ СОСТАВУ ЗАНЯТЬ БОЕВЫЕ ПОСТЫ.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 			log_game("[key_name(user)] has called for general quarters via ARES.")
 			message_admins("[key_name_admin(user)] has called for general quarters via ARES.")
 			log_ares_security("General Quarters", "Called for general quarters via ARES.", last_login)
@@ -453,8 +453,8 @@
 			to_chat(user, SPAN_NOTICE("A nuclear ordnance request has been sent to USCM High Command for the following reason: [reason]"))
 			log_ares_security("Nuclear Ordnance Request", "Sent a request for nuclear ordnance for the following reason: [reason]", last_login)
 			if(ares_can_interface())
-				ai_silent_announcement("[last_login] has sent a request for nuclear ordnance to USCM High Command.", ".V")
-				ai_silent_announcement("Reason given: [reason].", ".V")
+				ai_silent_announcement("[last_login] направил запрос на ядерный арсенал Верховному командованию КМП.", ".V")
+				ai_silent_announcement("Причина: [reason].", ".V")
 			COOLDOWN_START(datacore, ares_nuclear_cooldown, COOLDOWN_COMM_DESTRUCT)
 			return TRUE
 

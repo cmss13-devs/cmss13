@@ -78,30 +78,35 @@
 	desc = "A weird, pulsating node."
 	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
 	hivenumber = XENO_HIVE_PATHOGEN
+	spread_on_semiweedable = TRUE
 
 /obj/effect/alien/weeds/pathogen
 	name = "mycelium blight"
 	desc = "A mycelium growth of strange origins..."
 	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
 	hivenumber = XENO_HIVE_PATHOGEN
+	spread_on_semiweedable = TRUE
 
 /obj/effect/alien/weeds/weedwall/pathogen
 	name = "mycelium blight"
 	desc = "A mycelium growth of strange origins..."
 	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
 	hivenumber = XENO_HIVE_PATHOGEN
+	spread_on_semiweedable = TRUE
 
 /obj/effect/alien/weeds/weedwall/window/pathogen
 	name = "mycelium blight"
 	desc = "A mycelium growth of strange origins..."
 	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
 	hivenumber = XENO_HIVE_PATHOGEN
+	spread_on_semiweedable = TRUE
 
 /obj/effect/alien/weeds/weedwall/frame/pathogen
 	name = "mycelium blight"
 	desc = "A mycelium growth of strange origins..."
 	icon = 'icons/mob/pathogen/pathogen_weeds.dmi'
 	hivenumber = XENO_HIVE_PATHOGEN
+	spread_on_semiweedable = TRUE
 
 // Ability
 

@@ -1227,7 +1227,7 @@
 			legs_exposed = 0
 		if(C.flags_bodypart_hidden & BODY_FLAG_FEET)
 			feet_exposed = 0
-		if(istype(C, /obj/item/clothing/suit/marine))
+		if(istype(C, /obj/item/clothing/suit/storage/marine))
 			armor_on = 1
 		if(istype(C, /obj/item/clothing/head/helmet/marine))
 			helmet_on = 1

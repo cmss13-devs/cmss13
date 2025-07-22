@@ -76,7 +76,9 @@ export const FlavorTextEditor = (props) => {
           <Section
             fill
             title={
-              'Edit ' + category + ' flavor text (Shift+Enter for new line)'
+              'Edit ' +
+              category +
+              ' flavor text (Shift+Enter for new line, %bloodtype%, %rank%, or %name% will be replaced with your bloodtype, rank, or name.)'
             }
             buttons={
               <>

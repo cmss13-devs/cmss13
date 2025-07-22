@@ -92,21 +92,22 @@
 		UnregisterSignal(linked_target, COMSIG_PARENT_QDELETING)
 		linked_target = null
 	network_invalidated = TRUE
-	var/deconstructed_index = sorted_list.Find(get_turf(deleted_rail))
-	if(deconstructed_index > MAX_RAILS_IN_NETWORK/2)
-		for(var/rail_up_for_deletion_turf in deconstructed_index+1 to MAX_RAILS_IN_NETWORK)
-			var/obj/structure/shooting_target_rail/rail_up_for_deletion = locate(/obj/structure/shooting_target_rail) in sorted_list[rail_up_for_deletion_turf]
-			qdel(rail_up_for_deletion)
-		if(LAZYACCESS(sorted_list, deconstructed_index-1))
-			var/obj/structure/shooting_target_rail/rail_update_icon = locate(/obj/structure/shooting_target_rail) in sorted_list[deconstructed_index-1]
-			rail_update_icon.update_icon()
-	else
-		for(var/rail_up_for_deletion_turf in 1 to deconstructed_index-1)
-			var/obj/structure/shooting_target_rail/rail_up_for_deletion = locate(/obj/structure/shooting_target_rail) in sorted_list[rail_up_for_deletion_turf]
-			qdel(rail_up_for_deletion)
-		if(LAZYACCESS(sorted_list, deconstructed_index+1))
-			var/obj/structure/shooting_target_rail/rail_update_icon = locate(/obj/structure/shooting_target_rail) in sorted_list[deconstructed_index+1]
-			rail_update_icon.update_icon()
+	if(length(sorted_list))
+		var/deconstructed_index = sorted_list.Find(get_turf(deleted_rail))
+		if(deconstructed_index > MAX_RAILS_IN_NETWORK/2)
+			for(var/rail_up_for_deletion_turf in deconstructed_index+1 to MAX_RAILS_IN_NETWORK)
+				var/obj/structure/shooting_target_rail/rail_up_for_deletion = locate(/obj/structure/shooting_target_rail) in sorted_list[rail_up_for_deletion_turf]
+				qdel(rail_up_for_deletion)
+			if(LAZYACCESS(sorted_list, deconstructed_index-1))
+				var/obj/structure/shooting_target_rail/rail_update_icon = locate(/obj/structure/shooting_target_rail) in sorted_list[deconstructed_index-1]
+				rail_update_icon.update_icon()
+		else
+			for(var/rail_up_for_deletion_turf in 1 to deconstructed_index-1)
+				var/obj/structure/shooting_target_rail/rail_up_for_deletion = locate(/obj/structure/shooting_target_rail) in sorted_list[rail_up_for_deletion_turf]
+				qdel(rail_up_for_deletion)
+			if(LAZYACCESS(sorted_list, deconstructed_index+1))
+				var/obj/structure/shooting_target_rail/rail_update_icon = locate(/obj/structure/shooting_target_rail) in sorted_list[deconstructed_index+1]
+				rail_update_icon.update_icon()
 	network_invalidated = FALSE
 
 

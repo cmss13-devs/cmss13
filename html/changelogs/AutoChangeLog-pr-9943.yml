@@ -1,0 +1,4 @@
+author: "dadlips"
+delete-after: True
+changes:
+  - bugfix: "fixes the revolver iff scope bug"

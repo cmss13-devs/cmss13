@@ -64,3 +64,11 @@
 	var/datum/species/pathogen_walker/walker = GLOB.all_species[SPECIES_PATHO_WALKER]
 	walker.handle_alert_ghost(dead)
 	return TRUE
+
+/datum/chem_property/special/mycotainted/trigger()
+	SSticker.mode.get_specific_call(/datum/emergency_call/cbrn/pathogen, TRUE, TRUE, holder.name) // "Weyland-Yutani Goon (Chemical Investigation Squad)"
+	GLOB.chemical_data.update_credits(15)
+	message_admins("The research department has discovered Mycotainted traits in [holder.name] adding 15 bonus tech points.")
+	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
+	tree.add_points(15)
+	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")

@@ -85,10 +85,12 @@
 		in_motion = FALSE
 		linked_target.langchat_speech("Rail network was invalidated!", get_mobs_in_view(7, linked_target) , GLOB.all_languages, skip_language_check = TRUE)
 		playsound(linked_target.loc, 'sound/machines/buzz-sigh.ogg', 50, 1, 7)
-	walk(linked_target, 0)
-	linked_target.anchored = FALSE
-	UnregisterSignal(linked_target, COMSIG_SHOOTING_TARGET_DOWN)
-	UnregisterSignal(linked_target, COMSIG_PARENT_QDELETING)
+	if(linked_target)
+		walk(linked_target, 0)
+		linked_target.anchored = FALSE
+		UnregisterSignal(linked_target, COMSIG_SHOOTING_TARGET_DOWN)
+		UnregisterSignal(linked_target, COMSIG_PARENT_QDELETING)
+		linked_target = null
 	network_invalidated = TRUE
 	var/deconstructed_index = sorted_list.Find(get_turf(deleted_rail))
 	if(deconstructed_index > MAX_RAILS_IN_NETWORK/2)
@@ -104,7 +106,7 @@
 		var/obj/structure/shooting_target_rail/rail_update_icon = locate(/obj/structure/shooting_target_rail) in sorted_list[deconstructed_index+1]
 		rail_update_icon.update_icon()
 	network_invalidated = FALSE
-	linked_target = null
+
 
 /datum/target_rail_manager/proc/pause_movement(obj/shooting_target, seconds = PAUSE_TIME)
 	SIGNAL_HANDLER

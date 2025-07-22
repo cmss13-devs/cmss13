@@ -4625,7 +4625,7 @@
 /turf/open/floor/shiva/redfull/west,
 /area/shiva/interior/colony/medseceng)
 "aPi" = (
-/obj/item/paper/research_notes/bad{
+/obj/item/paper/research_notes/unique/tier_one{
 	pixel_x = 11;
 	pixel_y = 4
 	},
@@ -10205,7 +10205,7 @@
 /turf/open/floor/shiva/redfull,
 /area/shiva/interior/colony/medseceng)
 "hfm" = (
-/obj/item/paper/research_notes/good,
+/obj/item/paper/research_notes/unique/tier_three,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "hfw" = (
@@ -13650,7 +13650,7 @@
 "laD" = (
 /obj/structure/surface/table,
 /obj/item/paper/research_notes/grant,
-/obj/item/paper/research_notes/decent{
+/obj/item/paper/research_notes/unique/tier_two{
 	pixel_x = 4;
 	pixel_y = 6
 	},
@@ -20464,7 +20464,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "twc" = (
-/obj/item/paper/research_notes/decent,
+/obj/item/paper/research_notes/unique/tier_two,
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "twi" = (

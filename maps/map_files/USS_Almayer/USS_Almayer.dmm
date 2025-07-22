@@ -3806,6 +3806,25 @@
 /obj/item/reagent_container/food/snacks/mre_pack/meal1,
 /turf/open/floor/almayer/silver,
 /area/almayer/living/cafeteria_officer)
+"air" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/tool/wrench,
+/turf/open/floor/almayer/redcorner/east,
+/area/almayer/living/cryo_cells)
 "ais" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/wood/ship,
@@ -34654,6 +34673,22 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "hLI" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/tool/wrench,
 /turf/open/floor/almayer/red,
 /area/almayer/living/cryo_cells)
 "hLS" = (
@@ -121786,7 +121821,7 @@ bqc
 ubQ
 bqc
 lgy
-ccN
+air
 xYP
 rWL
 wLm

@@ -113,9 +113,21 @@
 	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
 	practice_health -= damage_dealt
 	animation_flash_color(src, "#FF0000", 1)
-	playsound(loc, get_sfx("ballistic_hit"), 20, TRUE, 7)
+	playsound(loc, get_sfx("ballistic_hit"), 30, TRUE, 7)
 	if(practice_health <= 0)
 		start_practice_health_reset()
+
+/obj/structure/target/attackby(obj/item/knife, mob/user)
+	. = ..()
+	if(knife.sharp >= IS_SHARP_ITEM_ACCURATE)
+		var/damage_dealt = 0
+		damage_dealt = floor(armor_damage_reduction(GLOB.xeno_melee, knife.force, practice_mode[2], ARMOR_PENETRATION_TIER_4))
+		langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
+		practice_health -= damage_dealt
+		animation_flash_color(src, "#FF0000", 1)
+		playsound(loc, playsound(loc, 'sound/weapons/slash.ogg', 25), 30, TRUE, 7)
+		if(practice_health <= 0)
+			start_practice_health_reset()
 
 /obj/structure/target/attack_hand(mob/user)
 	. = ..()
@@ -132,6 +144,7 @@
 	langchat_speech("[src] folds to the ground!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 	playsound(loc, 'sound/machines/chime.ogg', 50, TRUE, 7)
 	addtimer(CALLBACK(src, PROC_REF(raise_target)), 5 SECONDS)
+	SEND_SIGNAL(src, COMSIG_SHOOTING_TARGET_DOWN)
 
 /obj/structure/target/proc/raise_target()
 	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
@@ -147,6 +160,156 @@
 	icon_state = "target_q"
 	desc = "A shooting target with a threatening silhouette."
 	health = 6500
+
+/obj/structure/shooting_target_rail
+	name = "shooting range rail"
+	desc = "A rail for shooting target. When assembled, it will start to move back and forth on the track."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "monorail"
+	density = FALSE
+	anchored = TRUE
+	dir = WEST
+	layer = ATMOS_PIPE_LAYER + 0.01
+	var/datum/target_rail_manager/manager_reference = null
+	var/connected_direction = 4
+	var/list/obj/structure/shooting_target_rail/finalized_connection = list()
+
+/obj/structure/shooting_target_rail/get_examine_text(mob/user)
+	. = ..()
+	if(manager_reference)
+		. += SPAN_NOTICE("Network ID: [manager_reference.network_id]")
+		if(manager_reference.network_invalidated)
+			. += SPAN_WARNING("This rail network was invalidated and must be re-created to function.")
+			. += SPAN_WARNING("Disassemble all rails that were a part of it.")
+	else
+		. += SPAN_NOTICE("Not connected to any network!")
+	. += SPAN_HELPFUL("To place a shooting target on rails, hit a rail while dragging the target. Only one target is allowed on the entire track.")
+	. += SPAN_HELPFUL("Use an empty hand to pause the movement for 15 seconds. Use a wrench to disassemble.")
+
+/obj/structure/shooting_target_rail/Destroy()
+	LAZYREMOVE(manager_reference.complete_rail_list, src)
+	LAZYREMOVE(manager_reference.sorted_list, src)
+	if(LAZYACCESS(finalized_connection, 1))
+		finalized_connection[1].finalized_connection -= src
+	if(LAZYACCESS(finalized_connection, 2))
+		finalized_connection[2].finalized_connection -= src
+	if(!manager_reference.network_invalidated)
+		manager_reference.invalidate_network(src)
+	var/obj/item/shooting_target_rail/rail_item = new /obj/item/shooting_target_rail(loc)
+	rail_item.dir = pick(CARDINAL_ALL_DIRS)
+	. = ..()
+
+/obj/structure/shooting_target_rail/attack_hand(mob/user)
+	. = ..()
+	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+	manager_reference.pause_movement(manager_reference.linked_target, 15 SECONDS)
+	to_chat(user, SPAN_WARNING("You paused the track for 15 seconds."))
+
+/obj/structure/shooting_target_rail/attackby(obj/item/item_hit_with, mob/user)
+	if(istype(item_hit_with, /obj/item/grab))
+		var/obj/item/grab/grab_hit = item_hit_with
+		var/atom/dragged_atom = grab_hit.grabbed_thing
+		if(istype(dragged_atom, /obj/structure/target))
+			var/obj/structure/target/practice_target = dragged_atom
+			if(!isnull(manager_reference.linked_target))
+				to_chat(user, SPAN_WARNING("This network already has a linked target!"))
+				return
+			if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+			playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
+			to_chat(user, SPAN_NOTICE("You place [item_hit_with] on [src] suspension tracks"))
+			manager_reference.linked_target = practice_target
+			manager_reference.on_target_link(src)
+			return
+	if(HAS_TRAIT(item_hit_with, TRAIT_TOOL_WRENCH))
+		if(manager_reference.in_motion && !do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			return
+		qdel(src)
+		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
+
+
+/obj/structure/shooting_target_rail/Initialize(mapload, ...)
+	. = ..()
+	var/rails_found = 0
+	var/list/obj/structure/shooting_target_rail/located_secondary_rails = list()
+
+	for(var/direction in CARDINAL_DIRS)
+		var/turf/new_location = get_turf(get_step(src, direction))
+		var/obj/structure/shooting_target_rail/located_rail = locate(/obj/structure/shooting_target_rail) in new_location
+		if(located_rail && rails_found == 0)
+			if(length(located_rail.finalized_connection) >= 2)
+				continue //rail found already linked to both connections, abort.
+			if(!located_rail.manager_reference.allow_connection())
+				continue
+			manager_reference = located_rail.manager_reference
+			finalized_connection += located_rail
+			rails_found += 1
+			continue
+		if(located_rail && rails_found >= 1)
+			if(length(located_rail.finalized_connection) >= 2)
+				continue
+			if(!located_rail.manager_reference.allow_connection())
+				continue
+			if(located_rail.manager_reference == manager_reference) // we cant do loops, only back and forth
+				continue
+			located_secondary_rails += located_rail
+			rails_found += 1
+			continue
+	if(rails_found == 0)
+		manager_reference = new()
+		manager_reference.complete_rail_list += src
+		return
+	if(length(located_secondary_rails))
+		var/obj/structure/shooting_target_rail/picked_secondary_rail = pick(located_secondary_rails)
+		finalized_connection += picked_secondary_rail
+		if(picked_secondary_rail?.manager_reference)
+		//picked_secondary_rail.manager_reference = manager_reference
+			var/first_dir = get_dir(src, finalized_connection[1])
+			var/second_dir = get_dir(src, finalized_connection[2])
+			var/correct_dir = abs(first_dir + second_dir)
+			to_world("Direction from connecting two rails [dir2text(correct_dir)]")
+			connected_direction = correct_dir
+			finalized_connection[2].finalized_connection += src
+			finalized_connection[1].finalized_connection += src
+			finalized_connection[2].update_icon()
+			finalized_connection[1].update_icon()
+			SEND_SIGNAL(picked_secondary_rail.manager_reference, COMSIG_TARGET_RAIL_CONNECT_MANAGERS, manager_reference)
+		//signal update manager reference
+	else if(rails_found == 1)
+		var/correct_dir = get_dir(src, finalized_connection[1])
+		connected_direction = correct_dir
+		to_world("Single rail dir: [dir2text(correct_dir)]")
+		finalized_connection[1].finalized_connection += src
+		finalized_connection[1].update_icon()
+	update_icon()
+	RegisterSignal(manager_reference, COMSIG_TARGET_RAIL_CONNECT_MANAGERS, PROC_REF(update_manager_from_connect))
+	manager_reference.complete_rail_list += src
+
+/obj/structure/shooting_target_rail/proc/update_manager_from_connect(datum/target_rail_manager/new_manager)
+	SIGNAL_HANDLER
+	//we're the last rail on this network, qdel it.
+	manager_reference.complete_rail_list -= src
+	if(length(manager_reference) == 0)
+		qdel(manager_reference)
+	if(new_manager.allow_connection())
+		manager_reference = new_manager
+		manager_reference.complete_rail_list += src
+		update_icon()
+
+/obj/structure/shooting_target_rail/update_icon()
+	. = ..()
+	if(length(finalized_connection) >= 2)
+		if(!(get_dir(finalized_connection[1],finalized_connection[2]) in CARDINAL_DIRS))
+			var/first_dir = get_dir(src, finalized_connection[1])
+			var/second_dir = get_dir(src, finalized_connection[2])
+			connected_direction = abs(first_dir + second_dir)
+		else
+			connected_direction = get_dir(finalized_connection[1],finalized_connection[2])
+	else if (length(finalized_connection)  == 1)
+		connected_direction = get_dir(src, finalized_connection[1])
+	dir = connected_direction
+
 
 /obj/structure/monorail
 	name = "monorail track"

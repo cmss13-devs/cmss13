@@ -2743,7 +2743,7 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/rmc_f90/marksman(src)
 
-/obj/item/storage/belt/marine/rmc/l42a3/marksman/fill_preset_inventory()
+/obj/item/storage/belt/marine/rmc/l64a3/marksman/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/l64/ap(src)
 

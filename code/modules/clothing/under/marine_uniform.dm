@@ -974,6 +974,7 @@
 	worn_state = "pmc_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+	undershirt = TRUE
 	suit_restricted = list(
 		/obj/item/clothing/suit/storage/marine/veteran/pmc,
 		/obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc,

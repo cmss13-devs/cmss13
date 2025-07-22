@@ -74,8 +74,10 @@
 
 /datum/target_rail_manager/proc/target_unlink()
 	SIGNAL_HANDLER
-	UnregisterSignal(linked_target, COMSIG_PARENT_QDELETING)
-	linked_target = null
+	if(linked_target)
+		UnregisterSignal(linked_target, COMSIG_PARENT_QDELETING)
+		UnregisterSignal(linked_target, COMSIG_PARENT_QDELETING)
+		linked_target = null
 
 /datum/target_rail_manager/proc/invalidate_network(obj/structure/shooting_target_rail/deleted_rail)
 	if(network_invalidated)

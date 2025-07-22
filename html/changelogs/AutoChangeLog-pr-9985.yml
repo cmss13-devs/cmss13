@@ -1,0 +1,4 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - bugfix: "fixed bullets disappearing if you shoot the above or below zlevels from some angles"

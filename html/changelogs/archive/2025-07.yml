@@ -204,3 +204,16 @@
       insert for Soro.
   tallfission:
   - imageadd: rolled sleeve icons for CMB SWAT uniforms
+2025-07-22:
+  Blundir:
+  - rscadd: M79 been renamed and resprited into M85A1
+  Red-byte3D:
+  - bugfix: Lizards will no longer attack xenos in tunnels
+  Unknownity:
+  - bugfix: Fixed bugged survivor spawns due to origins.
+  - rscadd: Added three new origins, WY, TWE and the CMBs. WY has three sub origins,
+      the corporate default, goon security and the PMCs. Added the origins to the
+      respective gear presets that would have them.
+  jupyterkat:
+  - bugfix: fixed bullets disappearing if you shoot the above or below zlevels from
+      some angles

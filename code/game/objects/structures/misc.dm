@@ -163,7 +163,7 @@
 
 /obj/structure/shooting_target_rail
 	name = "shooting range rail"
-	desc = "A rail for shooting target. When assembled, it will start to move back and forth on the track."
+	desc = "A rail for making shooting targets move. When assembled, a placed shooting target will start to move back and forth on the track."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "monorail"
 	density = FALSE

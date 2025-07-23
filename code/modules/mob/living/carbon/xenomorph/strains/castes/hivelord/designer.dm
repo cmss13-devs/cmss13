@@ -480,7 +480,7 @@
 	. = ..()
 	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
 	if(!bound_weed)
-		ScrapeAway()
+		addtimer(CALLBACK(src, PROC_REF(check_weed_replacement)), 3 SECONDS)
 		return
 	if(bound_weed)
 		old_hivenumber = bound_weed.hivenumber
@@ -566,7 +566,7 @@
 	. = ..()
 	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
 	if(!bound_weed)
-		Dismantle()
+		addtimer(CALLBACK(src, PROC_REF(check_weed_replacement)), 3 SECONDS)
 		return
 	if(bound_weed)
 		old_hivenumber = bound_weed.hivenumber

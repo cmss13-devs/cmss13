@@ -4,6 +4,9 @@ on:
     types: [opened, reopened, synchronize, edited]
 jobs:
   label:
+    permissions:
+      contents: read
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: "Check for ACTION_ENABLER secret and pass true to output if it exists to be checked by later steps"
@@ -45,3 +48,20 @@ jobs:
           REPO: ${{ github.repository }}
           TOKEN: ${{ steps.app-token-generation.outputs.token }}
           PR_NUMBER: ${{ github.event.number }}
+
+      - name: size-label
+        if: steps.value_holder.outputs.ACTIONS_ENABLED
+        uses: "pascalgn/size-label-action@v0.5.5"
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token-generation.outputs.token }}
+          IGNORED: ".*\n!.gitignore\nyarn.lock/**"
+        with:
+          sizes: >
+            {
+              "0": "XS",
+              "20": "S",
+              "50": "M",
+              "200": "L",
+              "800": "XL",
+              "2000": "XXL"
+            }

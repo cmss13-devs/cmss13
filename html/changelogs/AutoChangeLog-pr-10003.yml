@@ -1,0 +1,4 @@
+author: "kiVts"
+delete-after: True
+changes:
+  - bugfix: "Patched a chemical simulator exploit"

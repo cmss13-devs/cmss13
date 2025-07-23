@@ -430,8 +430,11 @@
 	return FALSE
 
 /datum/hive_status/proc/get_popper_num()
-	var/list/count = get_xeno_counts()
-	return count[1][PATHOGEN_CREATURE_POPPER]
+	var/popper_num = 0
+	for(var/mob/living/carbon/xenomorph/xeno as anything in totalXenos)
+		if(ispopper(xeno))
+			popper_num++
+	return popper_num
 
 /datum/hive_status/pathogen/has_popper_slot()
 	if(get_popper_num() >= max_poppers)

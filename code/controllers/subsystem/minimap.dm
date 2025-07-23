@@ -1049,7 +1049,7 @@ SUBSYSTEM_DEF(minimaps)
 		return UI_CLOSE
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	if(!xeno.hive?.living_xeno_queen?.ovipositor && xeno.hive?.tacmap_requires_queen_ovi)
+	if(xeno.hive?.tacmap_requires_queen_ovi && !xeno.hive?.living_xeno_queen?.ovipositor)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE

@@ -250,7 +250,8 @@
 	set name = "Look Up"
 	set category = "IC"
 
-	stop_looking_multiz()
+	if(stop_looking_multiz())
+		return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_WARNING("We cannot look up here, we are burrowed!"))
@@ -272,7 +273,8 @@
 
 /mob/living/proc/stop_looking_multiz()
 	if(!observed_atom)
-		return
+		return FALSE
 	var/atom/to_delete = observed_atom
 	observed_atom = null
 	qdel(to_delete)
+	return TRUE

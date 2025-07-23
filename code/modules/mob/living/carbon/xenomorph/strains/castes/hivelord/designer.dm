@@ -564,6 +564,8 @@
 /obj/structure/mineral_door/resin/weedbound/Initialize()
 	. = ..()
 	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
+	if(!bound_weed)
+		Dismantle()
 	if(bound_weed)
 		old_hivenumber = bound_weed.hivenumber
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))

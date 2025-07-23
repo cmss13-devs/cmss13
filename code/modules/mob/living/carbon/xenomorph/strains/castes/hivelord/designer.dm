@@ -452,7 +452,7 @@
 	if(bound_weed.weed_strength >= WEED_LEVEL_HIVE)
 		thick_build = TRUE
 
-	if((xeno.caste_type in xeno.caste_construct_whitelist) && !istype(xeno.strain, /datum/xeno_strain/designer))
+	if((xeno.caste_type in XENO_CONSTRUCT_NODE_BOOST) && !istype(xeno.strain, /datum/xeno_strain/designer))
 		thick_build = TRUE
 
 	addtimer(CALLBACK(src, PROC_REF(complete_construction), Turf, mark_meaning, xeno), 4 SECONDS)
@@ -480,7 +480,7 @@
 	. = ..()
 	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
 	if(!bound_weed)
-		return INITIALIZE_HINT_QDEL
+		ScrapeAway()
 	if(bound_weed)
 		old_hivenumber = bound_weed.hivenumber
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))

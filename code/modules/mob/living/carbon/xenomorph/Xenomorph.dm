@@ -312,7 +312,6 @@
 	var/list/current_design = list()
 	var/max_design_nodes = 0
 	var/selected_design_mark
-	var/list/caste_construct_whitelist = list(XENO_CONSTRUCT_NODE_BOOST)
 
 	var/icon_xeno
 	var/icon_xenonid

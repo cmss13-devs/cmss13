@@ -217,3 +217,15 @@
   jupyterkat:
   - bugfix: fixed bullets disappearing if you shoot the above or below zlevels from
       some angles
+2025-07-23:
+  Red-byte3D:
+  - bugfix: Queens can now watch leaders through "watch leaders" properly.
+  - bugfix: Queens can now weed through the queen eye, the same map level they are
+      on regardless of z level.
+  dadlips:
+  - bugfix: fixes the revolver iff scope bug
+  jupyterkat:
+  - bugfix: you now stop looking up on zlevel transitions
+  - bugfix: you can no longer look up ladders from half a screen away
+  kiVts:
+  - bugfix: Patched a chemical simulator exploit

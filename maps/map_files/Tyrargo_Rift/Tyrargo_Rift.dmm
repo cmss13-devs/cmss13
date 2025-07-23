@@ -63821,6 +63821,19 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob/outdoors)
+"dei" = (
+/obj/structure/lz_sign/tyrargo_sign/lz2/alt,
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts_road/west)
+"dej" = (
+/obj/structure/lz_sign/tyrargo_sign/city{
+	light_on = 1;
+	light_power = 2;
+	light_range = 2;
+	light_color = "#40BFFF"
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/outdoors/outskirts/east)
 "dek" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -163990,7 +164003,7 @@ bxV
 bxz
 bxz
 bxz
-bxz
+dei
 bzX
 eIE
 bxz
@@ -177551,7 +177564,7 @@ bBl
 bBl
 bJE
 bBn
-bwE
+dej
 bwE
 bzO
 bFF

@@ -772,7 +772,7 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/place_design
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 0
 	var/max_reach = 10
 	var/design_toggle = TRUE
@@ -1120,7 +1120,7 @@
 	xeno_cooldown = 0
 	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/change_design/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

@@ -1,0 +1,6 @@
+author: "Venuska1117"
+delete-after: True
+changes:
+  - rscadd: "New Hivelord strain: Designer"
+  - rscadd: "New plasma type called \"Nutrient\" that can be used in research."
+  - code_imp: "Changed Hivelord resin walker ability from behavior_delegate to be ability only, now it consumes correctly 30 plasma every 2 seconds instead of 10 plasma every 2 seconds."

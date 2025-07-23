@@ -579,7 +579,7 @@
 				if(!chosen_cursor)
 					return
 				switch(chosen_cursor)
-					if("USCM")
+					if("USCM")// For anyone in the future who might add anything, all of the cursors need to be their own file. and the only icon inside it needs to be renamed to "all" for byond to work with it
 						prefs.chosen_pointer = 'icons/effects/mouse_pointer/uscm.dmi'
 					if("Xenomorph")
 						prefs.chosen_pointer = 'icons/effects/mouse_pointer/xeno.dmi'

@@ -481,6 +481,7 @@
 	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
 	if(!bound_weed)
 		ScrapeAway()
+		return
 	if(bound_weed)
 		old_hivenumber = bound_weed.hivenumber
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))
@@ -566,6 +567,7 @@
 	bound_weed = locate(/obj/effect/alien/weeds) in get_turf(src)
 	if(!bound_weed)
 		Dismantle()
+		return
 	if(bound_weed)
 		old_hivenumber = bound_weed.hivenumber
 		RegisterSignal(bound_weed, COMSIG_PARENT_QDELETING, PROC_REF(on_weed_expire))

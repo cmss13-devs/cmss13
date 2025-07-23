@@ -886,6 +886,50 @@
 	hold = /obj/item/storage/internal/accessory/tool_webbing
 	icon_state = "vest_brown"
 
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch
+	name = "Leg Pouch"
+	desc = "A camo conforming leg pouch usually worn by hunters, military and people who dream of being military."
+	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
+	icon_state = "leg_pouch"
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/legpouch.dmi',
+	)
+	flags_atom = MAP_COLOR_INDEX
+
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch/Initialize()
+	. = ..()
+	select_gamemode_skin(/obj/item/clothing/accessory/storage/black_vest/leg_pouch)
+	inv_overlay = image("icon" = inv_overlay_icon, "icon_state" = "[icon_state]")
+	update_icon()
+
+/obj/item/clothing/accessory/storage/black_vest/leg_pouch/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	if(flags_atom & MAP_COLOR_INDEX)
+		return
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon_state = "j_leg_pouch"
+		if("classic")
+			icon_state = "c_leg_pouch"
+		if("desert")
+			icon_state = "d_leg_pouch"
+		if("snow")
+			icon_state = "s_leg_pouch"
+		if("urban")
+			icon_state = "u_leg_pouch"
+
+/obj/item/clothing/accessory/storage/black_vest/black_leg_pouch
+	name = "Black Leg Pouch"
+	desc = "A black leg pouch usually worn by hunters, military and people who dream of being military."
+	icon = 'icons/obj/items/clothing/accessory/legpouch.dmi'
+	icon_state = "leg_pouch_black"
+	inv_overlay_icon = 'icons/obj/items/clothing/accessory/inventory_overlays/legpouch.dmi'
+	accessory_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/legpouch.dmi',
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+
 /obj/item/clothing/accessory/storage/tool_webbing/small
 	name = "Small Tool Webbing"
 	desc = "A brown synthcotton webbing that is similar in function to civilian tool aprons, but is more durable for field usage. This is the small low-budget version."

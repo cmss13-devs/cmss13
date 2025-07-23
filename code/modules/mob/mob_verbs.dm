@@ -250,7 +250,8 @@
 	set name = "Look Up"
 	set category = "IC"
 
-	if(stop_looking_multiz())
+	if(observed_atom)
+		qdel(observed_atom)
 		return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
@@ -270,11 +271,3 @@
 	var/mob/hologram/look_up/observed_hologram = new(above, src)
 
 	observed_atom = observed_hologram
-
-/mob/living/proc/stop_looking_multiz()
-	if(!observed_atom)
-		return FALSE
-	var/atom/to_delete = observed_atom
-	observed_atom = null
-	qdel(to_delete)
-	return TRUE

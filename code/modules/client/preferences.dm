@@ -280,6 +280,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
 	var/main_cursor = TRUE
+	var/chosen_pointer
 
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE

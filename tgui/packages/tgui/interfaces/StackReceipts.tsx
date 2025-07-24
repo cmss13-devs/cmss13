@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -33,11 +33,8 @@ type StackData = {
 
 export const StackReceipts = () => {
   const { act, data } = useBackend<StackData>();
-  let { stack_amount, stack_name } = data;
-
-  const [localReceipts, setLocalReceipts] = useState(() =>
-    data.stack_receipts.map((r) => ({ ...r })),
-  );
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const { stack_amount, stack_name } = data;
 
   const [receiptStack, setReceiptStack] = useState<Receipt[][]>([
     data.stack_receipts.map((r) => ({ ...r })),
@@ -48,43 +45,47 @@ export const StackReceipts = () => {
   const pluralize = (count: number, singular: string) =>
     count === 1 ? singular : `${singular}s`;
 
-  const handleBuildClick = (
-    receipt: Receipt,
-    index: number,
-    multiplier: number,
-  ) => {
-    const cost = (receipt.req_amount ?? 0) * multiplier;
-    if (cost > stack_amount) return;
-
+  const handleBuildClick = (receipt: Receipt, multiplier: number) => {
     act('make', {
       multiplier,
       id: receipt.id,
     });
+  };
 
-    stack_amount -= cost;
-
-    const updated = localReceipts.map((rec) => {
-      const maxAllowed = Math.min(
-        20,
-        Math.floor(stack_amount / (rec.req_amount ?? 1)),
-      );
-      const clamped = Math.max(
+  useEffect(() => {
+    const updated = receiptStack[receiptStack.length - 1].map((receipt) => {
+      const req = receipt.req_amount ?? 1;
+      const maxAllowed = Math.min(20, Math.floor(stack_amount / req));
+      const clampedAmount = Math.max(
         1,
-        Math.min(rec.amount_to_build ?? 0, maxAllowed),
+        Math.min(receipt.amount_to_build ?? 1, maxAllowed),
       );
+
       return {
-        ...rec,
-        amount_to_build: clamped,
+        ...receipt,
+        amount_to_build: clampedAmount,
       };
     });
 
-    setLocalReceipts(updated);
-  };
+    setReceiptStack((prev) => {
+      const last = prev[prev.length - 1];
+      const changed = last.some(
+        (r, i) => r.amount_to_build !== updated[i].amount_to_build,
+      );
+
+      if (!changed) return prev;
+
+      const newStack = [...prev];
+      newStack[newStack.length - 1] = updated;
+      return newStack;
+    });
+  }, [stack_amount, receiptStack.length]);
 
   return (
     <Window width={440} height={500}>
       <Window.Content>
         <Section
+          ref={scrollRef}
           fill
           scrollable
           title={
@@ -122,6 +123,10 @@ export const StackReceipts = () => {
                                 ...prev,
                                 receipt.stack_sub_receipts!,
                               ]);
+                              scrollRef.current?.scrollTo({
+                                top: 0,
+                                behavior: 'smooth',
+                              });
                             }}
                           >
                             {receipt.title}
@@ -149,7 +154,7 @@ export const StackReceipts = () => {
                               )
                             }
                             onClick={() => {
-                              handleBuildClick(receipt, index, 1);
+                              handleBuildClick(receipt, 1);
                             }}
                           >
                             {receipt.title}
@@ -172,19 +177,24 @@ export const StackReceipts = () => {
                                 stepPixelSize={3}
                                 width="30px"
                                 onChange={(value) => {
-                                  const updated = [...localReceipts];
-                                  updated[index] = {
-                                    ...updated[index],
-                                    amount_to_build: value,
-                                  };
-                                  setLocalReceipts(updated);
+                                  setReceiptStack((prev) => {
+                                    const newStack = [...prev];
+                                    const lastLevel = [
+                                      ...newStack[newStack.length - 1],
+                                    ];
+                                    lastLevel[index] = {
+                                      ...lastLevel[index],
+                                      amount_to_build: value,
+                                    };
+                                    newStack[newStack.length - 1] = lastLevel;
+                                    return newStack;
+                                  });
                                 }}
                               />
                               <Button
                                 onClick={() => {
                                   handleBuildClick(
                                     receipt,
-                                    index,
                                     receipt.amount_to_build ?? 0,
                                   );
                                 }}
@@ -204,7 +214,13 @@ export const StackReceipts = () => {
               {receiptStack.length > 1 && (
                 <Box width="100%" style={{ marginTop: '10px' }}>
                   <Button
-                    onClick={() => setReceiptStack((prev) => prev.slice(0, -1))}
+                    onClick={() => {
+                      setReceiptStack((prev) => prev.slice(0, -1));
+                      scrollRef.current?.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                      });
+                    }}
                   >
                     Back
                   </Button>

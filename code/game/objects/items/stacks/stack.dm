@@ -282,17 +282,19 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		"icon" = icon
 	)
 
+/obj/item/stack/ui_static_data(mob/user)
+	. = ..()
+
+	.["stack_name"] = name
+	.["singular_name"] = singular_name
+
 /obj/item/stack/ui_data(mob/user)
 	if (!src || amount <= 0)
 		return
 
 	. = ..()
-
-	.["stack_name"] = name
-	.["stack_amount"] = amount
-	.["singular_name"] = singular_name
 	.["stack_receipts"] = list()
-
+	.["stack_amount"] = amount
 
 	var/item_id = 1
 	var/empty_line_next = FALSE

@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - bugfix: "you can no longer look up ladders from half a screen away"

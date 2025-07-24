@@ -1844,6 +1844,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = 0
 	aim_speed_mod = 0
 	wield_delay_mod = WIELD_DELAY_NONE
+	select_gamemode_skin(/obj/item/attachable/stock/shotty)
 
 
 /obj/item/attachable/stock/synth/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
@@ -1858,8 +1859,7 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod =  SCATTER_AMOUNT_TIER_8
 		aim_speed_mod = CONFIG_GET(number/slowdown_med)
 		hud_offset_mod = 5
-		icon_state = "37stock_on"
-		attach_icon = "37stock_on"
+		select_gamemode_skin(/obj/item/attachable/stock/shotty)
 		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
 
 	else
@@ -1872,13 +1872,61 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
 		hud_offset_mod = 5
-		icon_state = "37stock"
-		attach_icon = "37stock"
+		select_gamemode_skin(/obj/item/attachable/stock/shotty)
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 
+/obj/item/attachable/stock/shotty/collapsible/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..() // We are forcing attach_icon skin
+	var/new_attach_icon
+	var/new_icon_state
+	if(stock_activated)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("jungle")
+				attach_icon = new_attach_icon ? new_attach_icon : initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : initial(icon_state) + "_on"
+				. = TRUE
+			if("snow")
+				attach_icon = new_attach_icon ? new_attach_icon : "s_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "s_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("desert")
+				attach_icon = new_attach_icon ? new_attach_icon : "d_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "d_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("classic")
+				attach_icon = new_attach_icon ? new_attach_icon : "c_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "c_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("urban")
+				attach_icon = new_attach_icon ? new_attach_icon : "u_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "u_" + initial(icon_state) + "_on"
+				. = TRUE
+	else
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("jungle")
+				attach_icon = new_attach_icon ? new_attach_icon : initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : initial(icon_state)
+				. = TRUE
+			if("snow")
+				attach_icon = new_attach_icon ? new_attach_icon : "s_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "s_" + initial(icon_state)
+				. = TRUE
+			if("desert")
+				attach_icon = new_attach_icon ? new_attach_icon : "d_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "d_" + initial(icon_state)
+				. = TRUE
+			if("classic")
+				attach_icon = new_attach_icon ? new_attach_icon : "c_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "c_" + initial(icon_state)
+				. = TRUE
+			if("urban")
+				attach_icon = new_attach_icon ? new_attach_icon : "u_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "u_" + initial(icon_state)
+				. = TRUE
+	return .
 
 /obj/item/attachable/stock/double
 	name = "\improper double barrel shotgun stock"

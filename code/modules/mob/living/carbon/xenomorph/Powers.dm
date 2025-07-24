@@ -440,6 +440,31 @@
 
 	return SECRETE_RESIN_SUCCESS
 
+#undef RESIN_CONSTRUCT
+#undef RESIN_DOOR
+#undef RESIN_WALL
+#undef RESIN_WALL_MEMBRANE
+#undef RESIN_FAST
+#undef RESIN_STICKY
+#undef RESIN_SPIKE
+#undef RESIN_ACIDPILLAR
+#undef RESIN_RECOVERY
+#undef RESIN_CLUSTER
+#undef RESIN_CORE
+#undef RESIN_PYLON
+#undef RESIN_EGGMORPH
+#undef RESIN_TRAP
+
+/mob/living/carbon/xenomorph/proc/deconstruct_windup(atom/target, delay = 2 SECONDS)
+	target.visible_message(SPAN_XENONOTICE("[target] starts to shudder!"))
+	to_chat(src, SPAN_XENOWARNING("We channel our focus on deconstructing [target]!"))
+	if(!do_after(src, delay, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))
+		target.visible_message(SPAN_XENONOTICE("[target] stops shuddering!"))
+		to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [target]!"))
+		return FALSE
+
+	return TRUE
+
 /mob/living/carbon/xenomorph/proc/remove_built_structure(atom/A)
 	SIGNAL_HANDLER
 	LAZYREMOVE(built_structures[A.type], A)

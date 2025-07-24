@@ -463,10 +463,10 @@
 /mob/living/carbon/xenomorph/proc/check_alien_construction(turf/current_turf, check_blockers = TRUE, silent = FALSE, check_doors = TRUE, ignore_nest = FALSE)
 	var/has_obstacle
 	for(var/obj/object_target in current_turf)
-		if(istype(object_target, /obj/effect/alien/resin/design/speed_node) || istype(O, /obj/effect/alien/resin/design/cost_node) || istype(O, /obj/effect/alien/resin/design/construct_node))
+		if(istype(object_target, /obj/effect/alien/resin/design/speed_node) || istype(object_target, /obj/effect/alien/resin/design/cost_node) || istype(object_target, /obj/effect/alien/resin/design/construct_node))
 			continue
-		if(check_blockers && istype(O, /obj/effect/build_blocker))
-			var/obj/effect/build_blocker/bb = O
+		if(check_blockers && istype(object_target, /obj/effect/build_blocker))
+			var/obj/effect/build_blocker/bb = object_target
 			if(!silent)
 				to_chat(src, SPAN_WARNING("This is too close to \a [bb.linked_structure]!"))
 			return

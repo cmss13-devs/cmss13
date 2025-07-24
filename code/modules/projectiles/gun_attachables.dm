@@ -1813,32 +1813,7 @@ Defined in conflicts.dm of the #defines folder.
 	select_gamemode_skin(type)
 
 
-/obj/item/attachable/stock/shotty
-	name = "\improper M37A2 synth stock"
-	desc = "A non-standard heavy stock for the M37A2 Shotgun. More cumbersome than the standard issue stakeout, but reduces recoil and improves accuracy. Allegedly makes a pretty good club in a fight too."
-	slot = "stock"
-	icon_state = "m37alt_stock"
-	flags_attach_features = NO_FLAGS
-	wield_delay_mod = WIELD_DELAY_FAST
-	pixel_shift_x = 15
-	pixel_shift_y = 0
-	hud_offset_mod = 6 //*Very* long sprite.
-
-/obj/item/attachable/stock/shotty/New()
-	..()
-	//it makes stuff much better when two-handed
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
-	recoil_mod = -RECOIL_AMOUNT_TIER_4
-	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
-	//it makes stuff much worse when one handed
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
-	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
-	//but at the same time you are slow when 2 handed
-	aim_speed_mod = CONFIG_GET(number/slowdown_med)
-
-/obj/item/attachable/stock/shotty/collapsible
+/obj/item/attachable/stock/synth/collapsible
 	name = "\improper M37A2 Collapsible Stock"
 	desc = "A wire stock for the M37A2, used to help with recoil control."
 	slot = "stock"
@@ -1856,7 +1831,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
 	attachment_action_type = /datum/action/item_action/toggle
 
-/obj/item/attachable/stock/shotty/collapsible/New()
+/obj/item/attachable/stock/synth/collapsible/New()
 	..()
 
 	//rifle stock starts collapsed so we zero out everything
@@ -1871,7 +1846,7 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod = WIELD_DELAY_NONE
 
 
-/obj/item/attachable/stock/shotty/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
+/obj/item/attachable/stock/synth/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
 	if(stock_activated)
 		accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 		recoil_mod = -RECOIL_AMOUNT_TIER_4

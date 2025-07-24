@@ -198,3 +198,41 @@
   Red-byte3D:
   - bugfix: You can now fire underbarrel extuingishers on flamers when they are not
       loaded again
+2025-07-21:
+  Zenith:
+  - bugfix: fixed some preset issues with radios spawning in nullspace on the SOF
+      insert for Soro.
+  tallfission:
+  - imageadd: rolled sleeve icons for CMB SWAT uniforms
+2025-07-22:
+  Blundir:
+  - rscadd: M79 been renamed and resprited into M85A1
+  Red-byte3D:
+  - bugfix: Lizards will no longer attack xenos in tunnels
+  Unknownity:
+  - bugfix: Fixed bugged survivor spawns due to origins.
+  - rscadd: Added three new origins, WY, TWE and the CMBs. WY has three sub origins,
+      the corporate default, goon security and the PMCs. Added the origins to the
+      respective gear presets that would have them.
+  jupyterkat:
+  - bugfix: fixed bullets disappearing if you shoot the above or below zlevels from
+      some angles
+2025-07-23:
+  Red-byte3D:
+  - bugfix: Queens can now watch leaders through "watch leaders" properly.
+  - bugfix: Queens can now weed through the queen eye, the same map level they are
+      on regardless of z level.
+  dadlips:
+  - bugfix: fixes the revolver iff scope bug
+  jupyterkat:
+  - bugfix: you now stop looking up on zlevel transitions
+  - bugfix: you can no longer look up ladders from half a screen away
+  kiVts:
+  - bugfix: Patched a chemical simulator exploit
+2025-07-24:
+  Venuska1117:
+  - rscadd: 'New Hivelord strain: Designer'
+  - rscadd: New plasma type called "Nutrient" that can be used in research.
+  - code_imp: Changed Hivelord resin walker ability from behavior_delegate to be ability
+      only, now it consumes correctly 30 plasma every 2 seconds instead of 10 plasma
+      every 2 seconds.

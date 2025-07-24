@@ -16,6 +16,7 @@ import {
 } from '../components';
 import { ButtonConfirm } from '../components/Button';
 import { Window } from '../layouts';
+import { replaceRegexChars } from './helpers';
 
 type MarineData = {
   name: string;
@@ -1060,7 +1061,7 @@ const SquadMonitor = (props) => {
                         marine.name,
                       ).toLowerCase();
                       return searchableString.match(
-                        new RegExp(marineSearch, 'i'),
+                        new RegExp(replaceRegexChars(marineSearch), 'i'),
                       );
                     }
                     return marine;

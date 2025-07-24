@@ -275,11 +275,12 @@
 		return FALSE
 	var/turf/target_turf = get_turf(A)
 
-	if(target_turf.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
+	if(!SSmapping.same_z_map(X.loc.z, target_turf.loc.z))
+		to_chat(X, SPAN_XENOWARNING("Our mind cannot reach that far."))
 		return
-	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))
+
+	if(!X.hive.living_xeno_queen || !SSmapping.same_z_map(X.hive.living_xeno_queen.z, X.z))
+		to_chat(X, SPAN_XENOWARNING("Our psychic link is gone, the Queen is either dead or too far away!"))
 		return
 
 	var/tally = 0
@@ -595,6 +596,10 @@
 			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a light!"))
 			return FALSE
 
+		if(locate(/obj/structure/flora/jungle/vines) in src)
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole under the vines!"))
+			return FALSE
+
 	if(!xeno.check_alien_construction(src, check_doors = TRUE))
 		return FALSE
 
@@ -807,7 +812,6 @@
 		spitting = FALSE
 		return
 
-	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )

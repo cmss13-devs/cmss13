@@ -147,8 +147,14 @@
 /obj/item/folded_tent/big
 	name = "folded USCM Big Tent"
 	icon_state = "big"
-	desc = "A standard USCM Tent. This one is just a bigger, general purpose version. Unfold in a suitable location for maximum FOB vibes. Mess Tech not included. ENTRANCE TO THE SOUTH."
+	desc = "A standard USCM Tent. This one is just a bigger, general purpose version. Unfold in a suitable location for maximum FOB vibes.. ENTRANCE TO THE SOUTH."
 	template_preset = "tent_big"
+
+/obj/item/folded_tent/mess
+	name = "folded USCM Mess Tent"
+	icon_state = "mess"
+	desc = "A standard USCM Mess Tent. This one comes equipped with a kitchen and dining utilities. Unfold in a suitable location to maximize meal handouts ENTRANCE TO THE SOUTH."
+	template_preset = "tent_mess"
 
 /obj/effect/overlay/temp/tent_deployment_error
 	icon = 'icons/effects/effects.dmi'

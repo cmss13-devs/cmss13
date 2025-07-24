@@ -349,13 +349,19 @@
 				resin_trap.healthcheck()
 				return TRUE
 
-	if(!resin_construct.can_build_here(current_turf, src))
-		return SECRETE_RESIN_FAIL
-
 	var/wait_time = resin_construct.build_time * caste.build_time_mult * add_build_mod
 
 	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
 	if(!alien_weeds || alien_weeds.secreting)
+		return SECRETE_RESIN_FAIL
+
+	for(var/obj/effect/alien/resin/design/speed_node/sn in current_turf.contents)
+		wait_time -= ((resin_construct.build_time * caste.build_time_mult) / 2)
+
+	for(var/obj/effect/alien/resin/design/cost_node/cn in current_turf.contents)
+		total_resin_cost -= (total_resin_cost / 2)
+
+	if(!resin_construct.can_build_here(current_turf, src))
 		return SECRETE_RESIN_FAIL
 
 	var/obj/warning
@@ -389,7 +395,16 @@
 	if(!succeeded)
 		return SECRETE_RESIN_INTERRUPT
 
-	if(!resin_construct.can_build_here(current_turf, src))
+	if(maybe_convert_to_weedbound(current_turf, resin_construct, thick))
+		if(use_plasma)
+			use_plasma(total_resin_cost)
+		if(message)
+			visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [resin_construct.construction_name]!"),
+				SPAN_XENONOTICE("We regurgitate some resin and shape it into \a [resin_construct.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
+			playsound(loc, "alien_resin_build", 25)
+		return SECRETE_RESIN_SUCCESS
+
+	if (!resin_construct.can_build_here(current_turf, src))
 		return SECRETE_RESIN_FAIL
 
 	if(use_plasma)
@@ -405,6 +420,9 @@
 			playsound(current_turf, "alien_resin_build", 25)
 
 	var/atom/new_resin = resin_construct.build(current_turf, hivenumber, src)
+	if(succeeded)
+		for(var/obj/effect/alien/resin/design/node in current_turf)
+			qdel(node)
 	if(resin_construct.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[resin_construct.build_path], new_resin)
 		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, PROC_REF(remove_built_structure))
@@ -421,31 +439,6 @@
 				msg_admin_niche("[src.ckey]/([src]) has built a closed resin structure, [new_resin.name], on top of a dead human, [enclosed_human.ckey]/([enclosed_human]), at [new_resin.x],[new_resin.y],[new_resin.z] [ADMIN_JMP(new_resin)]")
 
 	return SECRETE_RESIN_SUCCESS
-
-#undef RESIN_CONSTRUCT
-#undef RESIN_DOOR
-#undef RESIN_WALL
-#undef RESIN_WALL_MEMBRANE
-#undef RESIN_FAST
-#undef RESIN_STICKY
-#undef RESIN_SPIKE
-#undef RESIN_ACIDPILLAR
-#undef RESIN_RECOVERY
-#undef RESIN_CLUSTER
-#undef RESIN_CORE
-#undef RESIN_PYLON
-#undef RESIN_EGGMORPH
-#undef RESIN_TRAP
-
-/mob/living/carbon/xenomorph/proc/deconstruct_windup(atom/target, delay = 2 SECONDS)
-	target.visible_message(SPAN_XENONOTICE("[target] starts to shudder!"))
-	to_chat(src, SPAN_XENOWARNING("We channel our focus on deconstructing [target]!"))
-	if(!do_after(src, delay, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target))
-		target.visible_message(SPAN_XENONOTICE("[target] stops shuddering!"))
-		to_chat(src, SPAN_XENONOTICE("We stop focusing on deconstructing [target]!"))
-		return FALSE
-
-	return TRUE
 
 /mob/living/carbon/xenomorph/proc/remove_built_structure(atom/A)
 	SIGNAL_HANDLER
@@ -513,3 +506,36 @@
 			to_chat(X, SPAN_XENOANNOUNCE("[src.name] has declared: [NM.mark_meaning.desc] in [sanitize_area(current_area_name)]! (<a href='byond://?src=\ref[X];overwatch=1;target=\ref[NM]'>Watch</a>) (<a href='byond://?src=\ref[X];track=1;target=\ref[NM]'>Track</a>)"))
 			//this is killing the tgui chat and I dont know why
 	return TRUE
+
+/mob/living/carbon/xenomorph/proc/maybe_convert_to_weedbound(turf/current_turf, datum/resin_construction/resin_construct, thick = FALSE)
+	if(current_turf.is_weedable != SEMI_WEEDABLE)
+		return FALSE
+
+	var/obj/effect/alien/resin/design/the_node = null
+	for(var/obj/effect/alien/resin/design/node in current_turf)
+		the_node = node
+		break
+
+	if(!the_node)
+		return FALSE
+
+	if(istype(resin_construct, /datum/resin_construction/resin_turf/wall))
+		if(thick)
+			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/thick)
+		else
+			current_turf.PlaceOnTop(/turf/closed/wall/resin/weedbound/normal)
+
+		qdel(the_node)
+		return TRUE
+
+	else if(istype(resin_construct, /datum/resin_construction/resin_obj/door))
+		if(thick)
+			new /obj/structure/mineral_door/resin/weedbound/thick(current_turf)
+		else
+			new /obj/structure/mineral_door/resin/weedbound/normal(current_turf)
+
+		qdel(the_node)
+		return TRUE
+
+	to_chat(src, SPAN_XENOWARNING("This node only accepts sturdy walls or doors."))
+	return FALSE

@@ -299,7 +299,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M5 'Night Raider' bayonet"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "bayonet"
-	item_state = "combat_knife"
+	item_state = "combat_bayonet"
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
@@ -342,7 +342,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, it's dulled from heavy use."
 	icon_state = "upp_bayonet"
-	item_state = "combat_knife"
+	item_state = "upp_bayonet"
 	attach_icon = "upp_bayonet_a"
 
 /obj/item/attachable/bayonet/wy
@@ -351,6 +351,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper SA120 L7 bayonet"
 	desc = "The standard-issue bayonet of the W-Y Commandos and PMCs, has a better ergonomic carbon finish grip and corrosion proof blade."
 	icon_state = "wy_bayonet"
+	item_state = "wy_bayonet"
 	attach_icon = "wy_bayonet_a"
 	unacidable = TRUE
 
@@ -360,7 +361,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
 	icon_state = "upp_bayonet"
-	item_state = "combat_knife"
+	item_state = "upp_bayonet"
 	attach_icon = "upp_bayonet_a"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
@@ -382,7 +383,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, the L5 is balanced to also function as an effective throwing knife."
 	icon_state = "twe_bayonet"
-	item_state = "combat_knife"
+	item_state = "twe_bayonet"
 	attach_icon = "twe_bayonet_a"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_REALLY_FAST
@@ -395,7 +396,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper antique bayonet"
 	desc = "An antique-style bayonet, has a long blade, wooden handle with brass fittings, reflecting historical craftsmanship."
 	icon_state = "antique_bayonet"
-	item_state = "combat_knife"
+	item_state = "antique_bayonet"
 	attach_icon = "antique_bayonet_a"
 
 /obj/item/attachable/bayonet/rmc_replica
@@ -404,7 +405,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper L5 bayonet"
 	desc = "The standard-issue bayonet of the RMC, it's dulled from heavy use."
 	icon_state = "twe_bayonet"
-	item_state = "combat_knife"
+	item_state = "twe_bayonet"
 	attach_icon = "twe_bayonet_a"
 
 /obj/item/attachable/bayonet/custom
@@ -413,7 +414,7 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper M5 'Raven's Claw' tactical bayonet"
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool."
 	icon_state = "bayonet_custom"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom"
 	attach_icon = "bayonet_custom_a"
 
 /obj/item/attachable/bayonet/custom/red
@@ -421,7 +422,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a red grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_red"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_red"
 	attach_icon = "bayonet_custom_red_a"
 
 /obj/item/attachable/bayonet/custom/blue
@@ -429,7 +430,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a blue grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_blue"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_blue"
 	attach_icon = "bayonet_custom_blue_a"
 
 /obj/item/attachable/bayonet/custom/black
@@ -437,7 +438,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	desc = "A prototype bayonet-combat knife hybrid, engineered for close-quarters engagements and urban operations. Its rugged construction, quick-detach mechanism and deadly versatility make it a formidable tool. This version has been customized with a black grip and gold detailing, giving it a unique and distinctive appearance."
 	icon_state = "bayonet_custom_black"
-	item_state = "combat_knife"
+	item_state = "bayonet_custom_black"
 	attach_icon = "bayonet_custom_black_a"
 
 /obj/item/attachable/bayonet/tanto
@@ -446,14 +447,14 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper T9 tactical bayonet"
 	desc = "Preferred by TWE colonial military forces in the Neroid Sector, the T9 is designed for urban combat with a durable tanto blade and quick-attach system, reflecting traditional Japanese blade influences. Occasionally seen in the hands of Colonial Liberation Front (CLF) forces, often stolen from TWE detatchments and outposts across the sector."
 	icon_state = "bayonet_tanto"
-	item_state = "combat_knife"
+	item_state = "bayonet_tanto"
 	attach_icon = "bayonet_tanto_a"
 
 /obj/item/attachable/bayonet/tanto/blue
 	AUTOWIKI_SKIP(TRUE)
 
 	icon_state = "bayonet_tanto_alt"
-	item_state = "combat_knife"
+	item_state = "bayonet_tanto_alt"
 	attach_icon = "bayonet_tanto_alt_a"
 
 /obj/item/attachable/bayonet/van_bandolier
@@ -552,7 +553,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"
-	desc = "A modified choke for the M37A2 pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
+	desc = "A modified choke for a pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
 	slot = "muzzle"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "choke"
@@ -1998,6 +1999,69 @@ Defined in conflicts.dm of the #defines folder.
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 
+/obj/item/attachable/stock/rifle/collapsible/ak4047
+	name = "\improper AK-4047 folding stock"
+	desc =  "The standard back end of any gun starting with 'AK'. Compatible with the AK-4047 series, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle, just like its ancestors."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "ak4047_folding"
+	attach_icon = "ak4047_folding_a"
+	pixel_shift_x = 29
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/rifle/collapsible/ak4047/New()
+	..()
+
+	//rifle stock starts collapsed so we zero out everything
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+	recoil_unwielded_mod = 0
+	scatter_unwielded_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
+
+/obj/item/attachable/stock/rifle/collapsible/ak4047/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
+		recoil_mod = -RECOIL_AMOUNT_TIER_5
+		scatter_mod = -SCATTER_AMOUNT_TIER_9
+		//it makes stuff worse when one handed
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
+		hud_offset_mod = 5
+		icon_state = "ak4047_folding_on"
+		attach_icon = "ak4047_folding_a_on"
+		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 3
+		icon_state = "ak4047_folding"
+		attach_icon = "ak4047_folding_a"
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/xm177
 	name = "\improper collapsible M16 stock"
@@ -2057,8 +2121,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "car_folding"
 	attach_icon = "car_folding"
 	base_icon = "car_folding"
-
-
 
 /obj/item/attachable/stock/xm51
 	name = "\improper XM51 stock"

@@ -3364,7 +3364,7 @@
 /area/bigredv2/outside/marshal_office)
 "aom" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/suit/storage/lawyer/bluejacket,
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aon" = (
@@ -12992,7 +12992,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhL" = (
-/obj/item/stack/repairable/gunlube,
+/obj/item/prop/helmetgarb/gunoil,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhT" = (
@@ -14423,7 +14423,7 @@
 /area/bigredv2/outside/engineering)
 "bpE" = (
 /obj/structure/surface/rack,
-/obj/item/device/analyzer,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bpF" = (
@@ -19219,7 +19219,7 @@
 "dCb" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/weapon/gun/launcher/grenade/m81/m79{
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1{
 	pixel_x = -3;
 	pixel_y = -9
 	},
@@ -27331,10 +27331,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "mnu" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "mnv" = (
@@ -33026,11 +33026,11 @@
 /area/bigredv2/outside/medical)
 "rXy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
 	pixel_y = 12
 	},
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "rXJ" = (
@@ -38828,8 +38828,8 @@
 	pixel_y = 7
 	},
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "xNa" = (

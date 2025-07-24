@@ -42,17 +42,20 @@
 #define MOB_HUD_FACTION_OBSERVER 10
 #define MOB_HUD_FACTION_UPP 11
 #define MOB_HUD_FACTION_WY 12
-#define MOB_HUD_FACTION_TWE 13
-#define MOB_HUD_FACTION_CLF 14
-#define MOB_HUD_FACTION_PMC 15
-#define MOB_HUD_FACTION_CMB 16
-#define MOB_HUD_FACTION_NSPA 17
-#define MOB_HUD_FACTION_WO 18
-#define MOB_HUD_HUNTER 19
-#define MOB_HUD_HUNTER_CLAN 20
-#define MOB_HUD_EXECUTE 21
-#define MOB_HUD_NEW_PLAYER 22
-#define MOB_HUD_SPYCAMS 23
+#define MOB_HUD_FACTION_HC 13
+#define MOB_HUD_FACTION_TWE 14
+#define MOB_HUD_FACTION_IASF 15
+#define MOB_HUD_FACTION_CLF 16
+#define MOB_HUD_FACTION_PMC 17
+#define MOB_HUD_FACTION_CMB 18
+#define MOB_HUD_FACTION_NSPA 19
+#define MOB_HUD_FACTION_PAP 20
+#define MOB_HUD_FACTION_WO 21
+#define MOB_HUD_HUNTER 22
+#define MOB_HUD_HUNTER_CLAN 23
+#define MOB_HUD_EXECUTE 24
+#define MOB_HUD_NEW_PLAYER 25
+#define MOB_HUD_SPYCAMS 26
 
 //for SL/FTL/LZ targeting on locator huds
 #define TRACKER_SL "track_sl"
@@ -70,6 +73,7 @@
 #define TRACKER_DSL "_dsl" // Delta Squad Leader
 #define TRACKER_ESL "_esl" // Echo Squad Leader
 #define TRACKER_FSL "_fsl" // Cryo Squad Leader
+#define TRACKER_ISL "_isl" // Intel Squad Leader
 
 //for tracking the queen/hivecore on xeno locator huds
 #define TRACKER_QUEEN "Queen"

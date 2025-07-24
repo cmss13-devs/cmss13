@@ -235,7 +235,6 @@
 	/// Caste-based spit windup
 	var/spit_windup = FALSE
 	/// Caste-based spit windup duration (if applicable)
-	var/spit_delay = 0
 	var/tileoffset = 0 	// How much your view will be offset in the direction that you zoom?
 	var/viewsize = 0	//What size your view will be changed to when you zoom?
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
@@ -307,6 +306,13 @@
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
 
+	// Designer stuff
+	var/obj/effect/alien/resin/design/selected_design = null
+	var/list/available_design = list()
+	var/list/current_design = list()
+	var/max_design_nodes = 0
+	var/selected_design_mark
+
 	var/icon_xeno
 	var/icon_xenonid
 
@@ -344,7 +350,7 @@
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
-	var/atom/movable/vis_obj/xeno_wounds/wound_icon_holder
+	var/atom/movable/vis_obj/wound_icon_holder
 	var/atom/movable/vis_obj/xeno_pack/backpack_icon_holder
 	/// If TRUE, the xeno cannot slash anything
 	var/cannot_slash = FALSE
@@ -581,6 +587,7 @@
 
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
+	hud_set_design_marks()
 
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
@@ -806,6 +813,7 @@
 	hud_set_plasma()
 	hud_set_pheromone()
 	hud_set_marks()
+	hud_set_design_marks()
 
 
 	//and display them

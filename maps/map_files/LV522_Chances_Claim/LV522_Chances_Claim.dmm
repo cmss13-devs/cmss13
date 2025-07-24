@@ -2331,7 +2331,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/item/weapon/gun/launcher/grenade/m81/m79,
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/outdoors/colony_streets/north_street)
 "beb" = (
@@ -22621,7 +22621,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
 "meM" = (
-/obj/item/clothing/accessory/red,
+/obj/item/clothing/accessory/tie/red,
 /obj/item/clothing/under/liaison_suit/field{
 	pixel_x = -4;
 	pixel_y = 9

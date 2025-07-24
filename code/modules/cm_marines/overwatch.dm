@@ -97,6 +97,19 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	disconnect_holder()
 	return ..()
 
+/obj/structure/machinery/computer/overwatch/groundside_operations/Destroy()
+	for(var/datum/squad/root_squad in GLOB.RoleAuthority.squads)
+		root_squad.release_overwatch()
+		break
+	QDEL_NULL(tacmap)
+	GLOB.active_overwatch_consoles -= src
+	current_orbital_cannon = null
+	concurrent_users = null
+	if(!camera_holder)
+		return ..()
+	disconnect_holder()
+	return ..()
+
 /obj/structure/machinery/computer/overwatch/proc/connect_holder(new_holder)
 	camera_holder = new_holder
 	SEND_SIGNAL(camera_holder, COMSIG_OW_CONSOLE_OBSERVE_START, WEAKREF(src))
@@ -566,14 +579,21 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
 /obj/structure/machinery/computer/overwatch/ui_status(mob/user)
-	if(!(isatom(src)))
+
+	if(inoperable())
+		return UI_CLOSE
+
+	if(!ishumansynth_strict(user) || (user.stat == DEAD))
+		return UI_CLOSE
+
+	if((user.stat == UNCONSCIOUS) || !allowed(user))
+		return UI_DISABLED
+
+	if(get_dist(src, user) <= tgui_interaction_distance)
 		return UI_INTERACTIVE
 
-	var/dist = get_dist(src, user)
-	if(dist <= tgui_interaction_distance)
-		return UI_INTERACTIVE
-	else
-		return UI_CLOSE
+	// if none of the above were true, something is very wrong
+	return UI_CLOSE
 
 /obj/structure/machinery/computer/overwatch/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
@@ -1155,7 +1175,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/on_unset_interaction(mob/user)
 	..()
-	if(!isRemoteControlling(user))
+	if(!isRemoteControlling(user) && concurrent_users)
 		if(cam)
 			user.UnregisterSignal(cam, COMSIG_PARENT_QDELETING)
 		user.reset_view(null)

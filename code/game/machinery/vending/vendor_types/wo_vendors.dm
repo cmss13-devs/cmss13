@@ -101,6 +101,7 @@
 		list("M5 Integrated Gas Mask", floor(scale * 5), /obj/item/prop/helmetgarb/helmet_gasmask, VENDOR_ITEM_REGULAR),
 		list("M10 Helmet Netting", floor(scale * 5), /obj/item/prop/helmetgarb/netting, VENDOR_ITEM_REGULAR),
 		list("M10 Helmet Rain Cover", floor(scale * 5), /obj/item/prop/helmetgarb/raincover, VENDOR_ITEM_REGULAR),
+		list("Firearm Lubricant", floor(scale * 10), /obj/item/prop/helmetgarb/gunoil, VENDOR_ITEM_REGULAR),
 		list("USCM Flair", floor(scale * 10), /obj/item/prop/helmetgarb/flair_uscm, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons Shoulder Patch", floor(scale * 10), /obj/item/clothing/accessory/patch/falcon, VENDOR_ITEM_REGULAR),
 		list("Falling Falcons UA Shoulder Patch", floor(scale * 10), /obj/item/clothing/accessory/patch/falconalt, VENDOR_ITEM_REGULAR),
@@ -126,7 +127,7 @@
 	listed_products = list(
 		list("PRIMARY FIREARMS", -1, null, null),
 		list("M4RA Battle Rifle", floor(scale * 10), /obj/item/weapon/gun/rifle/m4ra, VENDOR_ITEM_REGULAR),
-		list("M37A2 Pump Shotgun", floor(scale * 15), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
+		list("M37A1 Pump Shotgun", floor(scale * 15), /obj/item/weapon/gun/shotgun/pump/m37a, VENDOR_ITEM_REGULAR),
 		list("M39 Submachine Gun", floor(scale * 30), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK1", floor(scale * 30), /obj/item/weapon/gun/rifle/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK2", floor(scale * 30), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_REGULAR),

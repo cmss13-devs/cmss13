@@ -31,6 +31,8 @@ type Props = Required<{
     className: BoxProps['className'];
     /** Makes the input field uneditable & non draggable to prevent user changes */
     disabled: BooleanLike;
+    /** Makes the input field focusable via tab */
+    tabbed: BooleanLike;
     /** Fill all available horizontal space. */
     fluid: BooleanLike;
     /** Input font size */
@@ -333,11 +335,22 @@ export class NumberInput extends Component<Props, State> {
         <input
           ref={this.inputRef}
           className="NumberInput__input"
+          tabIndex={!this.props.tabbed ? 0 : undefined}
           style={{
-            display: !editing ? 'none' : 'inline',
-            height: height,
-            lineHeight: lineHeight,
-            fontSize: fontSize,
+            opacity: editing ? 1 : 0,
+            pointerEvents: editing ? 'auto' : 'none',
+            position: 'absolute',
+            height,
+            lineHeight,
+            fontSize,
+            left: 0,
+            width: '100%',
+          }}
+          onFocus={() => {
+            this.setState({ editing: true });
+            requestAnimationFrame(() => {
+              this.inputRef.current?.select();
+            });
           }}
           onBlur={this.handleBlur}
           onKeyDown={this.handleKeyDown}

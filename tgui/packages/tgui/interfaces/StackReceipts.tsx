@@ -83,7 +83,7 @@ export const StackReceipts = () => {
 
   return (
     <Window width={440} height={500}>
-      <Window.Content>
+      <Window.Content className="StackReceipts">
         <Section
           ref={scrollRef}
           fill
@@ -117,6 +117,7 @@ export const StackReceipts = () => {
                       {receipt.stack_sub_receipts ? (
                         <Box style={{ marginTop: '16px' }}>
                           <Button
+                            className="StackButton"
                             left="40px"
                             onClick={() => {
                               setReceiptStack((prev) => [
@@ -146,6 +147,7 @@ export const StackReceipts = () => {
                             ''
                           )}
                           <Button
+                            className="StackButton"
                             left="8px"
                             disabled={
                               !(
@@ -165,6 +167,8 @@ export const StackReceipts = () => {
                             <span style={{ marginLeft: '8px' }}>
                               {' |'}
                               <NumberInput
+                                tabbed
+                                className="StackNumberInput"
                                 value={receipt.amount_to_build ?? 1}
                                 maxValue={Math.min(
                                   20,
@@ -198,6 +202,7 @@ export const StackReceipts = () => {
                                     receipt.amount_to_build ?? 0,
                                   );
                                 }}
+                                className="StackButton"
                               >
                                 x
                               </Button>
@@ -214,6 +219,7 @@ export const StackReceipts = () => {
               {receiptStack.length > 1 && (
                 <Box width="100%" style={{ marginTop: '10px' }}>
                   <Button
+                    className="StackButton"
                     onClick={() => {
                       setReceiptStack((prev) => prev.slice(0, -1));
                       scrollRef.current?.scrollTo({

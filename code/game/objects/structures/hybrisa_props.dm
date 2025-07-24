@@ -90,6 +90,7 @@
 		update_icon()
 
 // Armored Truck - Damage States
+
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck
 	name = "heavy-loader truck"
 	desc = "It's locked and seems to be broken down, forget driving this."
@@ -99,6 +100,7 @@
 	bound_width = 96
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = 85
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/Blue
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_blue.dmi'
@@ -181,6 +183,7 @@
 	bound_width = 64
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = 60
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Turquoise_Cargo
 	icon = 'icons/obj/structures/props/vehicles/small_truck_turquoise_cargo.dmi'
@@ -244,6 +247,7 @@
 	bound_width = 64
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = 20
 
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Hyperdyne
 	icon = 'icons/obj/structures/props/vehicles/box_van_hyperdyne.dmi'
@@ -877,6 +881,7 @@
 	icon = 'icons/obj/structures/tables_64x64.dmi'
 	icon_state = "table_pool"
 	health = 100
+	projectile_coverage = 10
 
 /obj/structure/prop/hybrisa/furniture/tables/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -1591,9 +1596,9 @@
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
 	icon = 'icons/obj/structures/props/hybrisa/trash_bins.dmi'
 	icon_state = "trashblue"
-	health = 150
+	health = 100
 	density = TRUE
-	projectile_coverage = 20
+	projectile_coverage = 10
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/trash/bullet_act(obj/projectile/P)
@@ -2534,7 +2539,7 @@
 	health = 1500
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
-	projectile_coverage = 20
+	projectile_coverage = 10
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
@@ -2586,7 +2591,7 @@
 	density = TRUE
 	anchored = TRUE
 	health = 15
-	projectile_coverage = 20
+	projectile_coverage = 10
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/firehydrant/Initialize(mapload, ...)

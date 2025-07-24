@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix db backend for playtime sometimes recording the gamemode type instead of mob type"

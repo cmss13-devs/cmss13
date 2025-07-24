@@ -143,6 +143,8 @@
 	minimap_color = MINIMAP_AREA_COLONY_STREETS
 	requires_power = FALSE
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/outdoors/colony_streets/north_west
 	name = "Colony Streets - North-West"
@@ -174,6 +176,8 @@
 	minimap_color = MINIMAP_AREA_JUNGLE
 	requires_power = FALSE
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/outdoors/colony_exterior/north_west
 	name = "Colony Exterior - North-West"
@@ -205,6 +209,8 @@
 	minimap_color = MINIMAP_AREA_CELL_HIGH
 	requires_power = FALSE
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/outdoors/walkway_access/power_sewer
 	name = "External Walkway - Power/Sewer"
@@ -232,6 +238,8 @@
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "quart"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/apartment/north_ground
 	name = "Standfeld Apartment Complex - North-Ground"
@@ -251,6 +259,8 @@
 	minimap_color = MINIMAP_AREA_CELL_VIP
 	icon_state = "bar"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/bar/ground
 	name = "Last Throw Bar - Ground"
@@ -269,6 +279,8 @@
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 	icon_state = "maint_engine"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/engineering/ground
 	name = "Sector F: Power Plant - Ground"
@@ -287,6 +299,8 @@
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 	icon_state = "explored"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/sewer_treatment/ground
 	name = "Sewer Treatment Plant - Ground"
@@ -308,6 +322,8 @@
 	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 	icon_state = "ai_upload"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/comms/ground
 	name = "Ancillery Communications System - Ground"
@@ -323,6 +339,8 @@
 	minimap_color = MINIMAP_AREA_CELL_MED
 	icon_state = "HH_Mines"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/gararge/ground
 	name = "Busters Car Repair - Ground"
@@ -343,6 +361,8 @@
 	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 	icon_state = "HH_Mines"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/mall/upper
 	name = "Tyrargo Wesfeld Mall - Upper"
@@ -358,6 +378,8 @@
 	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
 	icon_state = "storage"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/admin/ground
 	name = "Sector F: Government Administration - Ground"
@@ -370,12 +392,14 @@
 	ceiling = CEILING_NONE
 	requires_power = FALSE
 
-// Administration
+// Market
 
 /area/tyrargo/indoors/market
 	minimap_color = MINIMAP_AREA_COLONY_HOSPITAL
 	icon_state = "HH_Panic"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/market/ground
 	name = "Farmers Market - Ground"
@@ -391,6 +415,8 @@
 	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
 	icon_state = "HH_Basement"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/security/ground
 	name = "Sector F: Marshals Outpost - Ground"
@@ -406,6 +432,8 @@
 	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 	icon_state = "auxstorage"
 	unoviable_timer = FALSE
+	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
+	soundscape_interval = 40
 
 /area/tyrargo/indoors/museum_storage/ground
 	name = "Museum Carpark - Ground"

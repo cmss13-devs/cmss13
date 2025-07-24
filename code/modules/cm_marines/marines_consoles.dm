@@ -43,8 +43,7 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
-	var/datum/weakref/id_weakref = id_card.registered_ref
-	if (id_weakref && id_weakref.resolve() && id_weakref.resolve() != user)
+	if (id_card.registered_ref?.resolve() != user)
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Incorrect user for the given ID!\"")
 		return FALSE
 

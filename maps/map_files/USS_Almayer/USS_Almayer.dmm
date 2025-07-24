@@ -17781,6 +17781,10 @@
 /obj/item/weapon/pole/wooden_cane{
 	pixel_y = 3
 	},
+/obj/item/device/defibrillator/synthetic{
+	pixel_y = -3;
+	pixel_x = 3
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/lower_medical_medbay)
 "bym" = (
@@ -59862,6 +59866,7 @@
 	pixel_x = 3;
 	pixel_y = -2
 	},
+/obj/item/folded_tent/mess,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_p)
 "ssU" = (

@@ -84,134 +84,170 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		ui = new(user, src, "StackReceipts", "Constructions from the [name]")
 		ui.open()
 
+/obj/item/stack/proc/get_unified_stack_receipts()
+	var/list/uni_receipts = list()
+
+	for (var/i = 1; i <= length(recipes); i++)
+		var/receipt = recipes[i]
+		if (!receipt)
+			continue
+
+		if (istype(receipt, /datum/stack_recipe_list))
+			var/datum/stack_recipe_list/srl = receipt
+
+			for (var/j = 1; j <= length(srl.recipes); j++)
+				var/datum/stack_recipe/rec = srl.recipes[j]
+				if (!istype(rec, /datum/stack_recipe))
+					continue
+
+				LAZYADD(uni_receipts, rec)
+			LAZYADD(uni_receipts, srl)
+			continue
+
+		if (istype(receipt, /datum/stack_recipe))
+			var/datum/stack_recipe/rec = receipt
+			LAZYADD(uni_receipts, rec)
+
+	return uni_receipts
+
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if((usr.is_mob_restrained() || usr.stat || usr.get_active_hand() != src))
 		return
+
+	if(action != "make")
+		return FALSE
 	var/multiplier = params["multiplier"]
+
 	var/id = params["id"]
+	var/list/recipes_list = get_unified_stack_receipts()
+	if(!recipes_list || !length(recipes_list))
+		return FALSE
 
-	if(action == "make")
-		if(amount < 1)
-			qdel(src) //Never should happen
+	var/raw_recipe = recipes_list[id]
+
+	if (istype(raw_recipe, /datum/stack_recipe_list))
+		return FALSE
+
+	var/datum/stack_recipe/recipe = raw_recipe
+
+	if(!recipe) // Oh no
+		return FALSE
+
+	if(amount < 1)
+		qdel(src) //Never should happen
+		return FALSE
+
+	if(multiplier != multiplier) // isnan
+		message_admins("[key_name_admin(usr)] has attempted to multiply [src] with NaN")
+		return FALSE
+	if(!isnum(multiplier)) // this used to block nan...
+		message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
+		return FALSE
+	multiplier = floor(multiplier)
+	if(multiplier < 1)
+		return FALSE  //href exploit protection
+	if(recipe.skill_lvl)
+		if(ishuman(usr) && !skillcheck(usr, recipe.skill_req, recipe.skill_lvl))
+			to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
 			return FALSE
-
-		var/list/recipes_list = recipes
-		var/datum/stack_recipe/recipe = recipes_list[id]
-
-		if(!recipe) // Oh no
-			return FALSE
-
-		if(multiplier != multiplier) // isnan
-			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with NaN")
-			return FALSE
-		if(!isnum(multiplier)) // this used to block nan...
-			message_admins("[key_name_admin(usr)] has attempted to multiply [src] with !isnum")
-			return FALSE
-		multiplier = floor(multiplier)
-		if(multiplier < 1)
-			return FALSE  //href exploit protection
-		if(recipe.skill_lvl)
-			if(ishuman(usr) && !skillcheck(usr, recipe.skill_req, recipe.skill_lvl))
-				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
-				return FALSE
-		if(amount < recipe.req_amount * multiplier)
-			if(recipe.req_amount * multiplier > 1)
-				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [recipe.req_amount*multiplier] [recipe.title]\s!"))
-			else
-				to_chat(usr, SPAN_WARNING("You need more [name] to build \the [recipe.title]!"))
-			return FALSE
-
-		if(check_one_per_turf(recipe, usr))
-			return FALSE
-
-		if(recipe.on_floor && istype(usr.loc, /turf/open))
-			var/turf/open/OT = usr.loc
-			var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
-			var/area/area = get_area(usr)
-			if(!OT.allow_construction || !area.allow_construction)
-				to_chat(usr, SPAN_WARNING("The [recipe.title] must be constructed on a proper surface!"))
-				return FALSE
-
-			if(AC)
-				to_chat(usr, SPAN_WARNING("The [recipe.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
-				return FALSE
-
-			var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in usr.loc
-			if(tunnel)
-				to_chat(usr, SPAN_WARNING("The [recipe.title] cannot be constructed on a tunnel!"))
-				return FALSE
-
-			if(recipe.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
-				for(var/obj/object in usr.loc)
-					if(object.density || istype(object, /obj/structure/machinery/door/airlock))
-						to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [recipe.title]!"))
-						return FALSE
-
-		if((recipe.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
-			to_chat(usr, SPAN_WARNING("The [recipe.title] must be built on snow!"))
-			return FALSE
-
-		if(recipe.time)
-			if(usr.action_busy)
-				return FALSE
-			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
-			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [recipe.title]."),
-				SPAN_NOTICE("You start assembling \a [recipe.title]."))
-			if(!do_after(usr, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				return FALSE
-
-			//check again after some time has passed
-			if(amount < recipe.req_amount * multiplier)
-				return FALSE
-
-			if(check_one_per_turf(recipe,usr))
-				return FALSE
-
-		var/atom/new_item
-		if(ispath(recipe.result_type, /turf))
-			var/turf/current_turf = get_turf(usr)
-			if(!current_turf)
-				return FALSE
-			new_item = current_turf.ChangeTurf(recipe.result_type)
+	if(amount < recipe.req_amount * multiplier)
+		if(recipe.req_amount * multiplier > 1)
+			to_chat(usr, SPAN_WARNING("You need more [name] to build \the [recipe.req_amount*multiplier] [recipe.title]\s!"))
 		else
-			new_item = new recipe.result_type(usr.loc, usr)
+			to_chat(usr, SPAN_WARNING("You need more [name] to build \the [recipe.title]!"))
+		return FALSE
 
-		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [new_item]."),
-		SPAN_NOTICE("You assemble \a [new_item]."))
-		new_item.setDir(usr.dir)
-		if(recipe.max_res_amount > 1)
-			var/obj/item/stack/new_stack = new_item
-			new_stack.amount = recipe.res_amount * multiplier
-		amount -= recipe.req_amount * multiplier
-		update_icon()
+	if(check_one_per_turf(recipe, usr))
+		return FALSE
 
-		if(amount <= 0)
-			var/oldsrc = src
-			src = null //dont kill proc after qdel()
-			usr.drop_inv_item_on_ground(oldsrc)
-			qdel(oldsrc)
+	if(recipe.on_floor && istype(usr.loc, /turf/open))
+		var/turf/open/OT = usr.loc
+		var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc // for M2C HMG, look at smartgun_mount.dm
+		var/area/area = get_area(usr)
+		if(!OT.allow_construction || !area.allow_construction)
+			to_chat(usr, SPAN_WARNING("The [recipe.title] must be constructed on a proper surface!"))
+			return FALSE
 
-		if(istype(new_item,/obj/item/stack)) //floor stacking convenience
-			var/obj/item/stack/stack_item = new_item
-			for(var/obj/item/stack/found_item in usr.loc)
-				if(stack_item.stack_id == found_item.stack_id && stack_item != found_item)
-					var/diff = found_item.max_amount - found_item.amount
-					if (stack_item.amount < diff)
-						found_item.amount += stack_item.amount
-						qdel(stack_item)
-					else
-						stack_item.amount -= diff
-						found_item.amount += diff
-					break
+		if(AC)
+			to_chat(usr, SPAN_WARNING("The [recipe.title] cannot be built here!"))  //might cause some friendly fire regarding other items like barbed wire, shouldn't be a problem?
+			return FALSE
 
-		new_item?.add_fingerprint(usr)
+		var/obj/structure/tunnel/tunnel = locate(/obj/structure/tunnel) in usr.loc
+		if(tunnel)
+			to_chat(usr, SPAN_WARNING("The [recipe.title] cannot be constructed on a tunnel!"))
+			return FALSE
 
-		//BubbleWrap - so newly formed boxes are empty
-		if(isstorage(new_item))
-			for (var/obj/item/found_item in new_item)
-				qdel(found_item)
-		//BubbleWrap END
+		if(recipe.one_per_turf != ONE_TYPE_PER_BORDER) //all barricade-esque structures utilize this define and have their own check for object density. checking twice is unneeded.
+			for(var/obj/object in usr.loc)
+				if(object.density || istype(object, /obj/structure/machinery/door/airlock))
+					to_chat(usr, SPAN_WARNING("[object] is blocking you from constructing \the [recipe.title]!"))
+					return FALSE
+
+	if((recipe.flags & RESULT_REQUIRES_SNOW) && !(istype(usr.loc, /turf/open/snow) || istype(usr.loc, /turf/open/auto_turf/snow)))
+		to_chat(usr, SPAN_WARNING("The [recipe.title] must be built on snow!"))
+		return FALSE
+
+	if(recipe.time)
+		if(usr.action_busy)
+			return FALSE
+		var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
+		usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [recipe.title]."),
+			SPAN_NOTICE("You start assembling \a [recipe.title]."))
+		if(!do_after(usr, max(recipe.time * time_mult, recipe.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			return FALSE
+
+		//check again after some time has passed
+		if(amount < recipe.req_amount * multiplier)
+			return FALSE
+
+		if(check_one_per_turf(recipe,usr))
+			return FALSE
+
+	var/atom/new_item
+	if(ispath(recipe.result_type, /turf))
+		var/turf/current_turf = get_turf(usr)
+		if(!current_turf)
+			return FALSE
+		new_item = current_turf.ChangeTurf(recipe.result_type)
+	else
+		new_item = new recipe.result_type(usr.loc, usr)
+
+	usr.visible_message(SPAN_NOTICE("[usr] assembles \a [new_item]."),
+	SPAN_NOTICE("You assemble \a [new_item]."))
+	new_item.setDir(usr.dir)
+	if(recipe.max_res_amount > 1)
+		var/obj/item/stack/new_stack = new_item
+		new_stack.amount = recipe.res_amount * multiplier
+	amount -= recipe.req_amount * multiplier
+	update_icon()
+
+	if(amount <= 0)
+		var/oldsrc = src
+		src = null //dont kill proc after qdel()
+		usr.drop_inv_item_on_ground(oldsrc)
+		qdel(oldsrc)
+
+	if(istype(new_item,/obj/item/stack)) //floor stacking convenience
+		var/obj/item/stack/stack_item = new_item
+		for(var/obj/item/stack/found_item in usr.loc)
+			if(stack_item.stack_id == found_item.stack_id && stack_item != found_item)
+				var/diff = found_item.max_amount - found_item.amount
+				if (stack_item.amount < diff)
+					found_item.amount += stack_item.amount
+					qdel(stack_item)
+				else
+					stack_item.amount -= diff
+					found_item.amount += diff
+				break
+
+	new_item?.add_fingerprint(usr)
+
+	//BubbleWrap - so newly formed boxes are empty
+	if(isstorage(new_item))
+		for (var/obj/item/found_item in new_item)
+			qdel(found_item)
+	//BubbleWrap END
 
 	return TRUE
 
@@ -221,62 +257,77 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	tgui_interact(usr)
 	user.set_interaction(src)
 
+/obj/item/stack/proc/create_recipe_ui_data(datum/stack_recipe/rec, id, empty_line_next = FALSE)
+	var/max_build = min(20, floor(amount / rec.req_amount))
+	var/can_build = max_build > 0
+
+	var/icon_state = null
+	var/icon = null
+
+	if (rec.result_type)
+		var/obj/res = rec.result_type
+		icon_state = res.icon_state
+		icon = res.icon
+
+	return list(
+		"id" = id,
+		"title" = rec.title,
+		"req_amount" = rec.req_amount,
+		"is_multi" = rec.max_res_amount > 1 && max_build > 1,
+		"maximum_to_build" = max_build,
+		"can_build" = can_build,
+		"amount_to_build" = 5,
+		"empty_line_next" = empty_line_next,
+		"icon_state" = icon_state,
+		"icon" = icon
+	)
+
 /obj/item/stack/ui_data(mob/user)
-	if(!src || amount <= 0)
+	if (!src || amount <= 0)
 		return
 
 	. = ..()
-
 
 	.["stack_name"] = name
 	.["stack_amount"] = amount
 	.["singular_name"] = singular_name
 	.["stack_receipts"] = list()
 
-	var/list/recipe_list = recipes
+
+	var/item_id = 1
 	var/empty_line_next = FALSE
 
-	for(var/i = 1; i <= length(recipe_list), i++)
-		var/single_receipt = recipe_list[i]
-		if(isnull(single_receipt))
+	for (var/i = 1; i <= length(recipes); i++)
+		var/single = recipes[i]
+		if (isnull(single))
 			empty_line_next = TRUE
 			continue
 
-		if(!istype(single_receipt, /datum/stack_recipe))
+		if (istype(single, /datum/stack_recipe_list))
+			var/datum/stack_recipe_list/srl = single
+			var/list/sub = list()
+
+			for (var/j = 1; j <= length(srl.recipes); j++)
+				var/datum/stack_recipe/rec = srl.recipes[j]
+				if (!istype(rec, /datum/stack_recipe))
+					continue
+				LAZYADD(sub, list(create_recipe_ui_data(rec, item_id)))
+				item_id++
+
+			LAZYADD(.["stack_receipts"], list(list(
+				"id" = item_id,
+				"title" = srl.title,
+				"stack_sub_receipts" = sub
+			)))
+			item_id++
+			empty_line_next = FALSE
 			continue
 
-		var/datum/stack_recipe/single_receipt_stack = single_receipt
-
-		if(!single_receipt_stack)
-			continue
-
-
-		var/max_multiplier = min(20, floor(amount / single_receipt_stack.req_amount))
-		var/can_build = 1
-		can_build = can_build && (max_multiplier > 0)
-
-		var/icon_state = null
-		var/icon = null
-
-		var/obj/result_thing = single_receipt_stack.result_type
-		if (result_thing)
-			icon_state = result_thing.icon_state
-			icon = result_thing.icon
-
-		LAZYADD(.["stack_receipts"], list(list(
-			"id" = i,
-			"title" = single_receipt_stack.title,
-			"req_amount" = single_receipt_stack.req_amount,
-			"is_multi" = single_receipt_stack.max_res_amount > 1 && max_multiplier > 1,
-			"maximum_to_build" = max_multiplier,
-			"can_build" = can_build,
-			"amount_to_build" = 5,
-			"empty_line_next" = empty_line_next,
-			"icon_state" = icon_state,
-			"icon" = icon
-		)))
-		empty_line_next = FALSE
-
+		if (istype(single, /datum/stack_recipe))
+			var/datum/stack_recipe/rec = single
+			LAZYADD(.["stack_receipts"], list(create_recipe_ui_data(rec, item_id, empty_line_next)))
+			item_id++
+			empty_line_next = FALSE
 
 /obj/item/stack/proc/check_one_per_turf(datum/stack_recipe/R, mob/user)
 	switch(R.one_per_turf)

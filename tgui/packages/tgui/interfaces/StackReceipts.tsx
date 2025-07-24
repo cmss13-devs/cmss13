@@ -13,14 +13,15 @@ import { Window } from 'tgui/layouts';
 type Receipt = {
   id: number;
   title: string;
-  req_amount: number;
-  is_multi: boolean;
-  maximum_to_build: number;
-  can_build: boolean;
-  amount_to_build: number;
+  req_amount?: number;
+  is_multi?: boolean;
+  maximum_to_build?: number;
+  can_build?: boolean;
+  amount_to_build?: number;
   empty_line_next: boolean;
   icon?: string;
   icon_state?: string;
+  stack_sub_receipts?: Receipt[];
 };
 
 type StackData = {
@@ -38,12 +39,21 @@ export const StackReceipts = () => {
     data.stack_receipts.map((r) => ({ ...r })),
   );
 
+  const [receiptStack, setReceiptStack] = useState<Receipt[][]>([
+    data.stack_receipts.map((r) => ({ ...r })),
+  ]);
+
+  const currentReceipts = receiptStack[receiptStack.length - 1];
+
+  const pluralize = (count: number, singular: string) =>
+    count === 1 ? singular : `${singular}s`;
+
   const handleBuildClick = (
     receipt: Receipt,
     index: number,
     multiplier: number,
   ) => {
-    const cost = receipt.req_amount * multiplier;
+    const cost = (receipt.req_amount ?? 0) * multiplier;
     if (cost > stack_amount) return;
 
     act('make', {
@@ -56,9 +66,12 @@ export const StackReceipts = () => {
     const updated = localReceipts.map((rec) => {
       const maxAllowed = Math.min(
         20,
-        Math.floor(stack_amount / rec.req_amount),
+        Math.floor(stack_amount / (rec.req_amount ?? 1)),
       );
-      const clamped = Math.max(1, Math.min(rec.amount_to_build, maxAllowed));
+      const clamped = Math.max(
+        1,
+        Math.min(rec.amount_to_build ?? 0, maxAllowed),
+      );
       return {
         ...rec,
         amount_to_build: clamped,
@@ -76,8 +89,7 @@ export const StackReceipts = () => {
           scrollable
           title={
             <>
-              <>Construction using the {stack_name}</>
-              <br />
+              <Box>Construction using the {stack_name}</Box>
               <small style={{ fontWeight: 'normal' }}>
                 Amount left: {stack_amount}
               </small>
@@ -86,8 +98,8 @@ export const StackReceipts = () => {
         >
           <Stack fill vertical>
             <Box width="100%">
-              {localReceipts.length > 0 &&
-                localReceipts.map((receipt, index) => (
+              {currentReceipts.length > 0 &&
+                currentReceipts.map((receipt, index) => (
                   <Stack key={index} justify="space-between">
                     <Stack.Item width="100%">
                       {receipt.empty_line_next ? (
@@ -101,73 +113,103 @@ export const StackReceipts = () => {
                       ) : (
                         ''
                       )}
-                      {receipt.icon && receipt.icon_state ? (
-                        <DmIcon
-                          icon={receipt.icon}
-                          icon_state={receipt.icon_state}
-                          height="32px"
-                          width="32px"
-                          style={{ position: 'relative', top: '6px' }}
-                        />
-                      ) : (
-                        ''
-                      )}
-                      <Button
-                        left="8px"
-                        disabled={
-                          !(
-                            receipt.can_build &&
-                            stack_amount >= receipt.req_amount
-                          )
-                        }
-                        onClick={() => {
-                          handleBuildClick(receipt, index, 1);
-                        }}
-                      >
-                        {receipt.title}
-                        {` (${receipt.req_amount} ${data.singular_name}${receipt.req_amount > 1 ? 's' : ''})`}
-                      </Button>
-                      {receipt.is_multi && receipt.req_amount < stack_amount ? (
-                        <span style={{ marginLeft: '8px' }}>
-                          {' |'}
-                          <NumberInput
-                            value={receipt.amount_to_build}
-                            maxValue={Math.min(
-                              20,
-                              Math.floor(stack_amount / receipt.req_amount),
-                            )}
-                            minValue={1}
-                            step={1}
-                            stepPixelSize={3}
-                            width="30px"
-                            onChange={(value) => {
-                              const updated = [...localReceipts];
-                              updated[index] = {
-                                ...updated[index],
-                                amount_to_build: value,
-                              };
-                              setLocalReceipts(updated);
-                            }}
-                          />
+                      {receipt.stack_sub_receipts ? (
+                        <Box style={{ marginTop: '16px' }}>
                           <Button
+                            left="40px"
                             onClick={() => {
-                              handleBuildClick(
-                                receipt,
-                                index,
-                                receipt.amount_to_build,
-                              );
+                              setReceiptStack((prev) => [
+                                ...prev,
+                                receipt.stack_sub_receipts!,
+                              ]);
                             }}
                           >
-                            x
+                            {receipt.title}
                           </Button>
-                        </span>
+                        </Box>
                       ) : (
-                        ''
+                        <>
+                          {receipt.icon && receipt.icon_state ? (
+                            <DmIcon
+                              icon={receipt.icon}
+                              icon_state={receipt.icon_state}
+                              height="32px"
+                              width="32px"
+                              style={{ position: 'relative', top: '6px' }}
+                            />
+                          ) : (
+                            ''
+                          )}
+                          <Button
+                            left="8px"
+                            disabled={
+                              !(
+                                receipt.can_build &&
+                                stack_amount >= (receipt.req_amount ?? 0)
+                              )
+                            }
+                            onClick={() => {
+                              handleBuildClick(receipt, index, 1);
+                            }}
+                          >
+                            {receipt.title}
+                            {` (${receipt.req_amount} ${pluralize(receipt.req_amount ?? 0, data.singular_name)})`}
+                          </Button>
+                          {receipt.is_multi &&
+                          (receipt.req_amount ?? 0) < stack_amount ? (
+                            <span style={{ marginLeft: '8px' }}>
+                              {' |'}
+                              <NumberInput
+                                value={receipt.amount_to_build ?? 1}
+                                maxValue={Math.min(
+                                  20,
+                                  Math.floor(
+                                    stack_amount / (receipt.req_amount ?? 1),
+                                  ),
+                                )}
+                                minValue={1}
+                                step={1}
+                                stepPixelSize={3}
+                                width="30px"
+                                onChange={(value) => {
+                                  const updated = [...localReceipts];
+                                  updated[index] = {
+                                    ...updated[index],
+                                    amount_to_build: value,
+                                  };
+                                  setLocalReceipts(updated);
+                                }}
+                              />
+                              <Button
+                                onClick={() => {
+                                  handleBuildClick(
+                                    receipt,
+                                    index,
+                                    receipt.amount_to_build ?? 0,
+                                  );
+                                }}
+                              >
+                                x
+                              </Button>
+                            </span>
+                          ) : (
+                            ''
+                          )}
+                        </>
                       )}
                     </Stack.Item>
                   </Stack>
                 ))}
 
+              {receiptStack.length > 1 && (
+                <Box width="100%" style={{ marginTop: '10px' }}>
+                  <Button
+                    onClick={() => setReceiptStack((prev) => prev.slice(0, -1))}
+                  >
+                    Back
+                  </Button>
+                </Box>
+              )}
               <hr
                 style={{ position: 'relative', top: '6px' }}
                 color="#4972a2"

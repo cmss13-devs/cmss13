@@ -426,13 +426,13 @@
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 
 //M4A3 Service Pistol
-/obj/item/storage/box/guncase/m4a3
+/obj/item/storage/box/guncase/m4a4
 	name = "\improper M4A4 Service Pistol case"
 	desc = "A gun case containing an M4A4 Service Pistol."
 	storage_slots = 8
 	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/m4a3/m4a4, /obj/item/ammo_magazine/pistol)
 
-/obj/item/storage/box/guncase/m4a3/fill_preset_inventory()
+/obj/item/storage/box/guncase/m4a4/fill_preset_inventory()
 	new /obj/item/attachable/flashlight(src)
 	new /obj/item/weapon/gun/pistol/m4a3/m4a4(src)
 	new /obj/item/ammo_magazine/pistol(src)

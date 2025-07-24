@@ -56,9 +56,8 @@
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 /obj/item/ammo_magazine/rifle/training_ap
-	name = "\improper M41A Training magazine (10x24mm)"
-	desc = "An Training 10x24mm assault rifle magazine."
-	desc_lore = "Those magazines house a training bullet, While the projectile is still very real, they use less gunpowder, resulting in less recoil punch and barely any damage on actual targets. They're also act as Armor Piercing on shooting targets."
+	name = "\improper M41A training magazine (10x24mm)"
+	desc = "Those magazines house a training bullet, While the projectile is still very real, they use less gunpowder, resulting in way less stopping power on living targets, combined with less recoil punch. They're also act as Armor Piercing on shooting targets."
 	default_ammo = /datum/ammo/bullet/rifle/practice_ap
 	ammo_band_color = AMMO_BAND_COLOR_TRAINING
 
@@ -151,6 +150,13 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 25
 	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/rifle/m4ra/practice_ap
+	name = "\improper M4RA training magazine (10x24mm)"
+	desc = "Those magazines house a training bullet, While the projectile is still very real, they use less gunpowder, resulting in way less stopping power on living targets, combined with less recoil punch. They're also act as Armor Piercing on shooting targets."
+	default_ammo = /datum/ammo/bullet/rifle/practice_ap
+	max_rounds = 25
+	ammo_band_color = AMMO_BAND_COLOR_TRAINING
 
 /obj/item/ammo_magazine/rifle/m4ra/extended
 	name = "\improper M4RA extended magazine (10x24mm)"

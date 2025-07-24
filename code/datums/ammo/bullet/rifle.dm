@@ -66,7 +66,7 @@
 /datum/ammo/bullet/rifle/practice_ap
 	name = "practice rifle bullet"
 
-	damage = 30
+	damage = 8
 	penetration = 1
 
 // Basically AP but better. Focused at taking out armour temporarily

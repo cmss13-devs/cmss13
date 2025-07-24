@@ -474,11 +474,11 @@
 	wrenchable = FALSE
 	req_access = list(ACCESS_MARINE_SEA)
 	products = list(
-		/obj/item/ammo_magazine/smg/m39/rubber = 20,
+		/obj/item/ammo_magazine/rifle/training_ap = 20,
+		/obj/item/ammo_magazine/rifle/m4ra/practice_ap = 20,
+		/obj/item/ammo_magazine/smg/m39/practice_ap = 20,
 		/obj/item/ammo_magazine/pistol/rubber = 20,
 		/obj/item/ammo_magazine/pistol/mod88/rubber = 20,
-		/obj/item/ammo_magazine/rifle/rubber = 20,
-		/obj/item/ammo_magazine/rifle/m4ra/rubber = 20,
 		/obj/item/ammo_magazine/shotgun/beanbag = 20,
 		/obj/item/storage/firstaid/regular = 2,
 		/obj/item/storage/firstaid/fire = 2,

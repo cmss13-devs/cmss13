@@ -644,6 +644,10 @@
 		list("M4RA Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle/m4ra, VENDOR_ITEM_REGULAR),
 		list("M39 HV Magazine (10x20mm)", floor(scale * 15), /obj/item/ammo_magazine/smg/m39, VENDOR_ITEM_REGULAR),
 		list("M41A Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle, VENDOR_ITEM_REGULAR),
+
+		list("TRAINING AMMUNITION", -1, null, null),
+		list("M4RA Training Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle/m4ra/practice_ap, VENDOR_ITEM_REGULAR),
+		list("M39 Training Magazine (10x20mm)", floor(scale * 15), /obj/item/ammo_magazine/smg/m39/practice_ap, VENDOR_ITEM_REGULAR),
 		list("M41A Training Magazine (10x24mm)", floor(scale * 15), /obj/item/ammo_magazine/rifle/training_ap, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARMS", -1, null, null),

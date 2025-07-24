@@ -106,8 +106,10 @@
 	var/damage_dealt = 0
 	if(practice_health <= 0 || !anchored)
 		return
-	if(istype(bullet.ammo, /datum/ammo/bullet/rifle/practice_ap))
-		damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.damage, practice_mode[2], ARMOR_PENETRATION_TIER_8))
+	if(istype(bullet.ammo, /datum/ammo/bullet/rifle/practice_ap))//forgive me
+		damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, 30+rand(-2,2), practice_mode[2], ARMOR_PENETRATION_TIER_8))
+	if(istype(bullet.ammo, /datum/ammo/bullet/smg/practice_ap))
+		damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, 26+rand(-2,2), practice_mode[2], ARMOR_PENETRATION_TIER_6))
 	else
 		damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.damage, practice_mode[2], bullet.ammo.penetration))
 	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))

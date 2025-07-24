@@ -32,6 +32,13 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/bullet/smg/practice_ap
+	name = "training submachinegun bullet"
+
+	damage = 8
+	penetration = 1
+	shell_speed = AMMO_SPEED_TIER_4
+
 /datum/ammo/bullet/smg/heap
 	name = "high-explosive armor-piercing submachinegun bullet"
 

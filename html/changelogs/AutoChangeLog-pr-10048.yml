@@ -1,0 +1,4 @@
+author: "rattybag"
+delete-after: True
+changes:
+  - rscadd: "adds alt click to sinks and hydro trays"

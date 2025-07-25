@@ -65,3 +65,5 @@
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(client, COMSIG_CLIENT_MOB_LOGGED_IN, src)
 	SEND_SIGNAL(src, COMSIG_MOB_LOGGED_IN)
+	if(client?.prefs.main_cursor)
+		update_cursor()

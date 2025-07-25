@@ -144,7 +144,7 @@
 	requires_power = FALSE
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/outdoors/colony_streets/north_west
 	name = "Colony Streets - North-West"
@@ -177,7 +177,7 @@
 	requires_power = FALSE
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/outdoors/colony_exterior/north_west
 	name = "Colony Exterior - North-West"
@@ -210,7 +210,7 @@
 	requires_power = FALSE
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/outdoors/walkway_access/power_sewer
 	name = "External Walkway - Power/Sewer"
@@ -239,7 +239,7 @@
 	icon_state = "quart"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/indoors/apartment/north_ground
 	name = "Standfeld Apartment Complex - North-Ground"
@@ -260,7 +260,7 @@
 	icon_state = "bar"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/indoors/bar/ground
 	name = "Last Throw Bar - Ground"
@@ -280,7 +280,7 @@
 	icon_state = "maint_engine"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/indoors/engineering/ground
 	name = "Sector F: Power Plant - Ground"
@@ -300,7 +300,7 @@
 	icon_state = "explored"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/indoors/sewer_treatment/ground
 	name = "Sewer Treatment Plant - Ground"
@@ -323,7 +323,7 @@
 	icon_state = "ai_upload"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/indoors/comms/ground
 	name = "Ancillery Communications System - Ground"
@@ -340,7 +340,7 @@
 	icon_state = "HH_Mines"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/indoors/gararge/ground
 	name = "Busters Car Repair - Ground"
@@ -362,7 +362,7 @@
 	icon_state = "HH_Mines"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/indoors/mall/upper
 	name = "Tyrargo Wesfeld Mall - Upper"
@@ -379,7 +379,7 @@
 	icon_state = "storage"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 45
 
 /area/tyrargo/indoors/admin/ground
 	name = "Sector F: Government Administration - Ground"
@@ -399,7 +399,7 @@
 	icon_state = "HH_Panic"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 30
 
 /area/tyrargo/indoors/market/ground
 	name = "Farmers Market - Ground"
@@ -416,7 +416,7 @@
 	icon_state = "HH_Basement"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 30
 
 /area/tyrargo/indoors/security/ground
 	name = "Sector F: Marshals Outpost - Ground"
@@ -433,7 +433,7 @@
 	icon_state = "auxstorage"
 	unoviable_timer = FALSE
 	soundscape_playlist = SCAPE_PL_TYRARGO_ALERT
-	soundscape_interval = 40
+	soundscape_interval = 30
 
 /area/tyrargo/indoors/museum_storage/ground
 	name = "Museum Carpark - Ground"

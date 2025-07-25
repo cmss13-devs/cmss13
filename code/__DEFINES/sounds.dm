@@ -142,4 +142,4 @@
 #define AMBIENCE_TYRARGO_SEWER_CITY 'sound/ambience/tyrargo_sewer_ambience.ogg'
 
 #define SCAPE_PL_TYRARGO_SEWER list('sound/ambience/tyrargo_underground_1.ogg','sound/ambience/tyrargo_underground_2.ogg','sound/ambience/tyrargo_underground_3.ogg','sound/ambience/tyrargo_underground_4.ogg')
-#define SCAPE_PL_TYRARGO_ALERT list('sound/ambience/tyrargo_alert_1.ogg', 'sound/ambience/tyrargo_alert_2.ogg', 'sound/ambience/tyrargo_alert_3.ogg', 'sound/ambience/tyrargo_alert_4.ogg', 'sound/ambience/tyrargo_alert_5.ogg')
+#define SCAPE_PL_TYRARGO_ALERT list('sound/ambience/tyrargo_alert_1.ogg', 'sound/ambience/tyrargo_alert_2.ogg', 'sound/ambience/tyrargo_alert_3.ogg', 'sound/ambience/tyrargo_alert_4.ogg', 'sound/ambience/tyrargo_alert_5.ogg', 'sound/ambience/tyrargo_alert_6.ogg')

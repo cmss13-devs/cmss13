@@ -1,0 +1,5 @@
+author: "FishyFlaps2024"
+delete-after: True
+changes:
+  - rscadd: "Adds research access to ASO"
+  - rscadd: "Adds research skill to ASO"

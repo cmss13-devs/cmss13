@@ -236,3 +236,14 @@
   - code_imp: Changed Hivelord resin walker ability from behavior_delegate to be ability
       only, now it consumes correctly 30 plasma every 2 seconds instead of 10 plasma
       every 2 seconds.
+2025-07-25:
+  Willzadl:
+  - bugfix: requisition line tutorial now uses the brute warhead and m37a1 instead
+      of the XM51 mag and m37a2
+  thevandie:
+  - rscadd: Added two new pistols, the Action and Whisper
+  - rscdel: Removed the old holdout pistol and replaced it with the Action and Whisper
+  - soundadd: Added a new firing sound for the Action pistol
+  - imageadd: Added new sprites for the Whisper and Action pistols, including Inhands
+  - imageadd: Added a new sprite for the Action pistols magazines
+  - imagedel: Deleted the old Holdout Pistol sprite

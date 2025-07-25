@@ -211,6 +211,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/uscm/medical_black
 	path = /obj/item/clothing/under/rank/medical/morgue
 
+/datum/gear/synthetic/uscm/medical_pharmacist
+	path = /obj/item/clothing/under/rank/medical/pharmacist
+
 /datum/gear/synthetic/uscm/standard_synth
 	path = /obj/item/clothing/under/rank/synthetic
 

@@ -1,5 +1,0 @@
-author: "DarkLordCabbage"
-delete-after: True
-changes:
-  - qol: "trying to use a hand labeler on closed crates no longer opens them"
-  - bugfix: "fixed being unable to label wooden crates"

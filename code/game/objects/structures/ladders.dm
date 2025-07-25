@@ -30,7 +30,7 @@
 	. = ..()
 	. += SPAN_NOTICE("Drag-click to look up or down [src].")
 	if(isliving(user))
-		. += SPAN_NOTICE("Click [src] with unprimed grenades/flares to prime and toss it up or down the ladder.")
+		. += SPAN_NOTICE("Click [src] with unprimed grenades/flares to prime and toss it up or down.")
 
 /obj/structure/ladder/LateInitialize()
 	. = ..()

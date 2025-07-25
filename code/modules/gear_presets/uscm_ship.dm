@@ -528,6 +528,7 @@
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_KITCHEN,
 		ACCESS_PRESS,
+		ACCESS_MARINE_RESEARCH,
 	)
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/load_gear(mob/living/carbon/human/new_human)

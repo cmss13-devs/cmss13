@@ -1,5 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Queens can now watch leaders through \"watch leaders\" properly."
-  - bugfix: "Queens can now weed through the queen eye, the same map level they are on regardless of z level."

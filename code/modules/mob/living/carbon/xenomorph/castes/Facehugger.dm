@@ -46,10 +46,7 @@
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
 	can_hivemind_speak = FALSE
-	/// The lifetime hugs from this hugger
-	var/total_facehugs = 0
-	/// How many hugs the hugger needs to age
-	var/next_facehug_goal = FACEHUG_TIER_1
+
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
@@ -61,12 +58,20 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/xenos/facehugger.dmi'
-	icon_xenonid = 'icons/mob/xenonids/facehugger.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_0/facehugger.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/xenonid_crab.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_48x48.dmi'
 	weed_food_states = list("Facehugger_1","Facehugger_2","Facehugger_3")
 	weed_food_states_flipped = list("Facehugger_1","Facehugger_2","Facehugger_3")
+
+	/// The lifetime hugs from this hugger
+	var/total_facehugs = 0
+	/// How many hugs the hugger needs to age
+	var/next_facehug_goal = FACEHUG_TIER_1
+	/// Whether a hug was performed successfully
+	var/hug_successful = FALSE
+	var/last_roar_time = 0
 
 /mob/living/carbon/xenomorph/facehugger/Login()
 	var/last_ckey_inhabited = persistent_ckey
@@ -88,15 +93,14 @@
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-/mob/living/carbon/xenomorph/facehugger/Life(delta_time)
-	if(stat == DEAD)
-		return ..()
+/mob/living/carbon/xenomorph/facehugger/Logout()
+	. = ..()
 
-	if(!client && !aghosted && away_timer > XENO_FACEHUGGER_LEAVE_TIMER)
-		// Become a npc once again
-		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
-		qdel(src)
-	return ..()
+	if(stat == DEAD)
+		return
+
+	if(!aghosted)
+		gib()
 
 /mob/living/carbon/xenomorph/facehugger/update_icons()
 	. = ..()
@@ -141,7 +145,7 @@
 			to_chat(src, SPAN_WARNING("You can't infect \the [human]..."))
 			return
 		visible_message(SPAN_WARNING("\The [src] starts climbing onto \the [human]'s face..."), SPAN_XENONOTICE("You start climbing onto \the [human]'s face..."))
-		if(!do_after(src, FACEHUGGER_WINDUP_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		if(!do_after(src, FACEHUGGER_CLIMB_DURATION, INTERRUPT_ALL, BUSY_ICON_HOSTILE, human, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
 		if(human.body_position != LYING_DOWN)
 			to_chat(src, SPAN_WARNING("You can't reach \the [human], they need to be lying down."))
@@ -163,8 +167,21 @@
 		return
 	if(client)
 		client.player_data?.adjust_stat(PLAYER_STAT_FACEHUGS, STAT_CATEGORY_XENO, 1)
+	hug_successful = TRUE
+	timeofdeath = world.time
 	qdel(src)
 	return did_hug
+
+/mob/living/carbon/xenomorph/facehugger/ghostize(can_reenter_corpse, aghosted)
+	if(!aghosted && !can_reenter_corpse && !QDELETED(src) && stat != DEAD)
+		// Become a npc once again
+		new /obj/item/clothing/mask/facehugger(loc, hivenumber)
+		qdel(src)
+		return
+
+	var/mob/dead/observer/ghost = ..()
+	ghost?.bypass_time_of_death_checks_hugger = hug_successful
+	return ghost
 
 /mob/living/carbon/xenomorph/facehugger/age_xeno()
 	if(stat == DEAD || !caste || QDELETED(src) || !client)
@@ -239,6 +256,12 @@
 			return FALSE
 
 	// Otherwise, ""roar""!
+	var/current_time = world.time
+	if(current_time - last_roar_time < 1 SECONDS)
+		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		return FALSE
+
+	last_roar_time = current_time
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 
@@ -253,5 +276,5 @@
 	name = "Base Facehugger Behavior Delegate"
 
 /datum/behavior_delegate/facehugger_base/on_life()
-	if(bound_xeno.body_position == STANDING_UP && !(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
-		bound_xeno.adjustBruteLoss(1)
+	if(!(locate(/obj/effect/alien/weeds) in get_turf(bound_xeno)))
+		bound_xeno.adjustBruteLoss(2)

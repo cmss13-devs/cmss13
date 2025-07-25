@@ -117,6 +117,9 @@
 
 	penetration = ARMOR_PENETRATION_TIER_3
 
+/datum/ammo/bullet/revolver/small/cmb
+	damage = 60
+
 /datum/ammo/bullet/revolver/small/hollowpoint
 	name = "small hollowpoint revolver bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
@@ -133,6 +136,10 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
 
+/datum/ammo/bullet/revolver/mateba/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
@@ -143,10 +150,6 @@
 	name = ".454 heavy high-impact armor piercing revolver bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
 	damage = 45
-
-/datum/ammo/bullet/revolver/mateba/highimpact/New()
-	..()
-	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)

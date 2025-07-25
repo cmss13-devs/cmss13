@@ -24,6 +24,8 @@ SUBSYSTEM_DEF(events)
 		if(!E.typepath)
 			continue //don't want this one! leave it for the garbage collector
 		control += E //add it to the list of all events (controls)
+	if(isnull(GLOB.holidays))
+		fill_holidays()
 	reschedule()
 	return SS_INIT_SUCCESS
 
@@ -109,7 +111,7 @@ SUBSYSTEM_DEF(events)
 	var/normal = ""
 
 	for(var/datum/round_event_control/E in SSevents.control)
-		dat = "<BR><A href='?src=[REF(src)];[HrefToken()];force_event=[REF(E)]'>[E]</A>"
+		dat = "<BR><A href='byond://?src=[REF(src)];[HrefToken()];force_event=[REF(E)]'>[E]</A>"
 		normal += dat
 
 	dat = normal
@@ -128,3 +130,41 @@ SUBSYSTEM_DEF(events)
 	SSevents.can_fire = !SSevents.can_fire
 	message_admins("[usr.client] has toggled the events subsystem [SSevents.can_fire == 1 ? "on" : "off"]")
 	log_admin("[usr.client] has toggled the events subsystem [SSevents.can_fire == 1 ? "on" : "off"]")
+
+GLOBAL_LIST(holidays)
+
+/**
+ * Checks that the passed holiday is located in the global holidays list.
+ *
+ * Returns a holiday datum, or null if it's not that holiday.
+ */
+/proc/check_holidays(holiday_to_find)
+	if(isnull(GLOB.holidays) && !fill_holidays())
+		return // Failed to generate holidays, for some reason
+
+	return GLOB.holidays[holiday_to_find]
+
+/**
+ * Fills the holidays list if applicable, or leaves it an empty list.
+ */
+/proc/fill_holidays()
+	GLOB.holidays = list()
+	for(var/holiday_type in subtypesof(/datum/holiday))
+		var/datum/holiday/holiday = new holiday_type()
+		var/delete_holiday = TRUE
+		for(var/timezone in holiday.timezones)
+			var/time_in_timezone = world.realtime + timezone HOURS
+
+			var/YYYY = text2num(time2text(time_in_timezone, "YYYY")) // get the current year
+			var/MM = text2num(time2text(time_in_timezone, "MM")) // get the current month
+			var/DD = text2num(time2text(time_in_timezone, "DD")) // get the current day
+			var/DDD = time2text(time_in_timezone, "DDD") // get the current weekday
+
+			if(holiday.shouldCelebrate(DD, MM, YYYY, DDD))
+				GLOB.holidays[holiday.name] = holiday
+				delete_holiday = FALSE
+				break
+		if(delete_holiday)
+			qdel(holiday)
+
+	return TRUE

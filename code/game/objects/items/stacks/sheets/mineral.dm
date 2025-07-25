@@ -21,16 +21,32 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	new/datum/stack_recipe("sandstone wall", /turf/closed/wall/mineral/sandstone, 5, time = 50, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("sandstone floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
 	new/datum/stack_recipe("sandstone handrail (crenellations)", /obj/structure/barricade/handrail/sandstone, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
-	new/datum/stack_recipe("sandstone handrail (flat)", /obj/structure/barricade/handrail/sandstone/b, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS),
+	new/datum/stack_recipe("sandstone handrail (flat)", /obj/structure/barricade/handrail/sandstone/b, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
+	new/datum/stack_recipe("dark sandstone handrail (cren.)", /obj/structure/barricade/handrail/sandstone/dark, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS), \
+	new/datum/stack_recipe("dark sandstone handrail (flat)", /obj/structure/barricade/handrail/sandstone/b/dark, 2, time = 2 SECONDS, one_per_turf = ONE_TYPE_PER_BORDER, on_floor = 1, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED, min_time = 1 SECONDS),
 	))
 
 GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 	new/datum/stack_recipe("temple door", /obj/structure/machinery/door/airlock/sandstone/runed, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("temple wall", /turf/closed/wall/mineral/sandstone/runed, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("temple floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
+	new/datum/stack_recipe("dark temple door", /obj/structure/machinery/door/airlock/sandstone/runed/dark, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe_list("temple walls",list( \
+		new/datum/stack_recipe("temple wall", /turf/closed/wall/mineral/sandstone/runed, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("dark engraved wall", /turf/closed/wall/cult, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		), 5), \
+	new/datum/stack_recipe_list("temple floors",list( \
+		new/datum/stack_recipe("tan floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
+		new/datum/stack_recipe("engraved floor", /turf/open/floor/sandstone/cult, 1, on_floor = 1), \
+		new/datum/stack_recipe("dark red floor", /turf/open/floor/sandstone/red, 1, on_floor = 1), \
+		new/datum/stack_recipe("sun runed floor", /turf/open/floor/sandstone/red2, 1, on_floor = 1), \
+		new/datum/stack_recipe("square runed floor", /turf/open/floor/sandstone/red3, 1, on_floor = 1), \
+		), 1), \
 	new/datum/stack_recipe("brazier frame", /obj/structure/prop/brazier/frame, 5, time = 5 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("wall torch frame", /obj/item/prop/torch_frame, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("alien chair", /obj/structure/bed/chair/comfy/yautja, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("alien bed", /obj/structure/bed/alien/yautja, 3, time = 3 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("tan statue", /obj/structure/showcase/yautja, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("grey statue", /obj/structure/showcase/yautja/alt, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	))
 
 GLOBAL_LIST_INIT(silver_recipes, list ( \
@@ -102,7 +118,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	icon_state = "sheet-sandstone"
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
-
+	amount_sprites = TRUE
 	sheettype = "sandstone"
 	stack_id = "sandstone"
 
@@ -118,6 +134,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Sandstone is sand cemented into stone. A common building material for primitive civilizations, but it can still make a good enough wall. This one has strange runes embued into the brick."
 	singular_name = "runed sandstone brick"
 	icon_state = "sheet-runedsandstone"
+	amount_sprites = FALSE
 	black_market_value = 15
 
 /obj/item/stack/sheet/mineral/sandstone/runed/large_stack
@@ -189,8 +206,9 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
+	item_state = "sheet-plastic"
 	matter = list("plastic" = 2000)
-
+	amount_sprites = TRUE
 	perunit = 2000
 	stack_id = "plastic"
 	black_market_value = 0
@@ -207,6 +225,7 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	desc = "Plastic is a synthetic polymer, manufactured from organic and inorganic components into a malleable and light fabric. It can be used for a wide range of objects."
 	singular_name = "plastic sheet"
 	icon_state = "sheet-plastic"
+	item_state = "sheet-plastic"
 	perunit = 2000
 
 /obj/item/stack/sheet/mineral/gold

@@ -154,7 +154,8 @@
 		return
 
 	M.key = key
-	if(M.client) M.client.change_view(GLOB.world_view_size)
+	if(M.client)
+		M.client.change_view(GLOB.world_view_size)
 // M.Login() //wat
 	return
 
@@ -244,3 +245,29 @@
 				//so we must undo it here so the victim can move right away
 				M.client.next_movement = world.time
 			M.update_transform(TRUE)
+
+/mob/living/verb/look_up()
+	set name = "Look Up"
+	set category = "IC"
+
+	if(observed_atom)
+		qdel(observed_atom)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		to_chat(src, SPAN_WARNING("We cannot look up here, we are burrowed!"))
+		return
+
+	if(!isturf(loc))
+		to_chat(src, SPAN_WARNING("You cannot look up here."))
+		return
+
+	var/turf/above = locate(x, y, z+1)
+
+	if(!istransparentturf(above))
+		to_chat(src, SPAN_WARNING("You cannot look up here."))
+		return
+
+	var/mob/hologram/look_up/observed_hologram = new(above, src)
+
+	observed_atom = observed_hologram

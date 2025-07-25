@@ -124,7 +124,7 @@
 	if(istype(affected_atom, /obj/vehicle/multitile))
 		var/obj/vehicle/multitile/multitile_vehicle = affected_atom
 		multitile_vehicle.take_damage_type(20 / acid.acid_delay, "acid", src)
-		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at [multitile_vehicle]. It sizzles under the bubbling mess of acid!"), \
+		visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff at [multitile_vehicle]. It sizzles under the bubbling mess of acid!"),
 			SPAN_XENOWARNING("We vomit globs of vile stuff at [multitile_vehicle]. It sizzles under the bubbling mess of acid!"), null, 5)
 		playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 		QDEL_IN(acid, 20)
@@ -133,7 +133,7 @@
 	acid.add_hiddenprint(src)
 	acid.name += " ([affected_atom])"
 
-	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [affected_atom]. It begins to sizzle and melt under the bubbling mess of acid!"), \
+	visible_message(SPAN_XENOWARNING("[src] vomits globs of vile stuff all over [affected_atom]. It begins to sizzle and melt under the bubbling mess of acid!"),
 	SPAN_XENOWARNING("We vomit globs of vile stuff all over [affected_atom]. It begins to sizzle and melt under the bubbling mess of acid!"), null, 5)
 	playsound(loc, "sound/bullets/acid_impact1.ogg", 25)
 
@@ -183,12 +183,13 @@
 	behavior_delegate.caboom_last_proc = 0
 	xeno.set_effect(behavior_delegate.caboom_timer*2, SUPERSLOW)
 
+	START_PROCESSING(SSfasteffects, src)
+
 	xeno.say(";FOR THE HIVE!!!")
 	return ..()
 
 /datum/action/xeno_action/activable/acider_for_the_hive/proc/cancel_ability()
 	var/mob/living/carbon/xenomorph/xeno = owner
-
 	if(!istype(xeno))
 		return
 	var/datum/behavior_delegate/runner_acider/behavior_delegate = xeno.behavior_delegate
@@ -205,3 +206,19 @@
 	xeno.adjust_effect(behavior_delegate.caboom_timer * -2 - (behavior_delegate.caboom_timer - behavior_delegate.caboom_left + 2) * xeno.life_slow_reduction * 0.5, SUPERSLOW)
 
 	to_chat(xeno, SPAN_XENOWARNING("We remove all our explosive acid before it combusted."))
+
+	STOP_PROCESSING(SSfasteffects, src)
+	button.set_maptext()
+
+/datum/action/xeno_action/activable/acider_for_the_hive/process(delta_time)
+	return update_caboom_maptext()
+
+/datum/action/xeno_action/activable/acider_for_the_hive/proc/update_caboom_maptext()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	var/datum/behavior_delegate/runner_acider/delegate = xeno.behavior_delegate
+	if(!istype(delegate) || !delegate.caboom_trigger || delegate.caboom_left <= 0)
+		button.set_maptext()
+		return PROCESS_KILL
+
+	button.set_maptext(SMALL_FONTS_COLOR(7, delegate.caboom_left, "#e69d00"), 19, 2)
+	return

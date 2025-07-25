@@ -16,6 +16,10 @@
 
 /obj/item/toy
 	icon = 'icons/obj/items/toy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/toys_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/toys_righthand.dmi'
+	)
 	throwforce = 0
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
@@ -39,7 +43,8 @@
 	return
 
 /obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
 		to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [A]."))
@@ -91,7 +96,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	force = 0
-	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "syndballoon"
 	item_state = "syndballoon"
 	w_class = SIZE_LARGE
@@ -123,8 +128,11 @@
 /obj/item/toy/crayon
 	name = "crayon"
 	desc = "A colorful crayon. Please refrain from eating it or putting it in your nose."
-	icon = 'icons/obj/items/crayons.dmi'
+	icon = 'icons/obj/items/paint.dmi'
 	icon_state = "crayonred"
+	item_icons = list(
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/crayons.dmi',
+		)
 	w_class = SIZE_TINY
 	attack_verb = list("attacked", "colored")
 	black_market_value = 5
@@ -322,7 +330,10 @@
 	desc = "No bother to sink or swim when you can just float!"
 	icon_state = "inflatable"
 	item_state = "inflatable"
-	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts/misc.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/misc.dmi'
+	)
 	flags_equip_slot = SLOT_WAIST
 	black_market_value = 20
 
@@ -370,14 +381,14 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
-	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
-						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
+	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"),
+						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"),
 						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 /obj/item/toy/bikehorn
 	name = "bike horn"
 	desc = "A horn off of a bicycle."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "bike_horn"
 	item_state = "bike_horn"
 	throwforce = 3
@@ -402,7 +413,6 @@
 /obj/item/toy/bikehorn/rubberducky
 	name = "rubber ducky"
 	desc = "Rubber ducky you're so fine, you make bathtime lots of fuuun. Rubber ducky I'm awfully fooooond of yooooouuuu~" //thanks doohl
-	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "rubberducky"
 	item_state = "rubberducky"
 
@@ -481,7 +491,7 @@
 /obj/item/toy/plush
 	name = "generic plushie"
 	desc = "perfectly generic"
-	icon = 'icons/obj/items/plush.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 	icon_state = "debug"
 	w_class = SIZE_SMALL
 	COOLDOWN_DECLARE(last_hug_time)
@@ -499,13 +509,14 @@
 	name = "Farwa plush"
 	desc = "A Farwa plush doll. It's soft and comforting!"
 	icon_state = "farwa"
+	item_state = "farwaplush"
 	black_market_value = 25
 
 /obj/item/toy/plush/barricade
 	name = "plushie barricade"
 	desc = "Great for squeezing whenever you're scared. Or lightly hurt. Or in any other situation."
 	icon_state = "barricade"
-	item_state = "cade_plush"
+	item_state = "plushie_cade"
 
 /obj/item/toy/plush/shark //A few more generic plushies to increase the size of the plushie loot pool
 	name = "shark plush"
@@ -517,15 +528,20 @@
 	desc = "A cute toy that awakens the warrior spirit in the most reserved marine."
 	icon_state = "bee"
 
-/obj/item/toy/plush/moth
-	name = "moth plush"
-	desc = "A plush doll of a bug."
-	icon_state = "moth"
-
 /obj/item/toy/plush/rock
 	name = "rock plush"
 	desc = "It says it is a plush on the tag, at least."
 	icon_state = "rock"
+
+/obj/item/toy/plush/gnarp
+	name = "gnarp plush"
+	desc = "gnarp gnarp."
+	icon_state = "gnarp"
+
+/obj/item/toy/plush/gnarp/alt
+	name = "gnarp plush"
+	desc = "gnarp gnarp."
+	icon_state = "gnarp_alt"
 
 /obj/item/toy/plush/therapy
 	name = "therapy plush"
@@ -575,7 +591,8 @@
 		/obj/item/toy/plush/barricade,
 		/obj/item/toy/plush/bee,
 		/obj/item/toy/plush/shark,
-		/obj/item/toy/plush/moth,
+		/obj/item/toy/plush/gnarp,
+		/obj/item/toy/plush/gnarp/alt,
 		/obj/item/toy/plush/rock,
 	)
 	///Therapy plushies left separately to not flood the entire list
@@ -659,6 +676,3 @@
 		icon_state = "runner_beret"
 		return
 	icon_state = "runner"
-
-/obj/item/toy/plush/shark/alt
-	icon_state = "shark_alt"

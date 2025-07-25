@@ -2,9 +2,9 @@
 	name = "marine jacket"
 	//This really should not be spawned
 	desc = "What the hell is this doing here?"
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	blood_overlay_type = "coat"
@@ -31,6 +31,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/backpack/general_belt,
 
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
@@ -40,8 +41,6 @@
 		/obj/item/tool/pen,
 		/obj/item/storage/large_holster/machete,
 	)
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
 
 	//Buttons
 	var/has_buttons = FALSE
@@ -68,11 +67,30 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/Initialize()
 	. = ..()
-	if(!(flags_atom & NO_SNOW_TYPE))
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
 		select_gamemode_skin(type)
 		initial_icon_state = icon_state
 	if(has_buttons)
 		verbs += /obj/item/clothing/suit/storage/jacket/marine/proc/toggle
+
+/obj/item/clothing/suit/storage/jacket/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("jungle")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/jungle.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/jungle.dmi'
+		if("classic")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/classic.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/classic.dmi'
+		if("desert")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/desert.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/desert.dmi'
+		if("snow")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/snow.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/snow.dmi'
+		if("urban")
+			icon = 'icons/obj/items/clothing/suits/suits_by_map/urban.dmi'
+			item_icons[WEAR_JACKET] = 'icons/mob/humans/onmob/clothing/suits/suits_by_map/urban.dmi'
 
 //Marine service & tanker jacket + MP themed variants
 /obj/item/clothing/suit/storage/jacket/marine/service
@@ -81,30 +99,72 @@
 	has_buttons = TRUE
 	icon_state = "coat_officer"
 
+/obj/item/clothing/suit/storage/jacket/marine/pilot/armor
+	name = "\improper M70 flak jacket"
+	desc = "A flak jacket used by dropship pilots to protect themselves while flying in the cockpit. Excels in protecting the wearer against high-velocity solid projectiles."
+	icon_state = "pilot"
+	has_buttons = TRUE
+	initial_icon_state = "pilot"
+	blood_overlay_type = "armor"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	allowed = list(
+		/obj/item/weapon/gun/,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine/,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/backpack/general_belt,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+	)
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer/pilot)
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
+
 /obj/item/clothing/suit/storage/jacket/marine/pilot
 	name = "\improper M70B1 light flak jacket"
 	desc = "A light flak jacket used by dropship pilots to protect themselves while flying in the cockpit. This specific flak jacket has been designed for style and comfort over protection, and it shows. Don't get hit by any stray bullets!"
 	icon_state = "pilot_alt"
 	has_buttons = TRUE
-	flags_atom = NO_SNOW_TYPE
 	initial_icon_state = "pilot_alt"
 
 /obj/item/clothing/suit/storage/jacket/marine/RO
 	name = "quartermaster jacket"
 	desc = "A green jacket worn by USCM personnel. The back has the flag of the United Americas on it."
 	icon_state = "RO_jacket"
-	icon = 'icons/obj/items/clothing/suits.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/jacket/marine/service/mp
 	name = "military police service jacket"
 	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. This variant is also available to regular Marines, if they are willing to bear the shame."
 	has_buttons = TRUE
 	icon_state = "coat_mp"
-	flags_atom = NO_SNOW_TYPE
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 	initial_icon_state = "coat_mp"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/warden
@@ -112,7 +172,11 @@
 	desc = "A marine service jacket adopted for use by Military Wardens on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty Wardens. The jacket of choice for looking all night at a set of monitors, while cigarette butts pile around you."
 	has_buttons = TRUE
 	icon_state = "coat_warden"
-	flags_atom = NO_SNOW_TYPE
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 	initial_icon_state = "coat_warden"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/cmp
@@ -120,21 +184,33 @@
 	desc = "A marine service jacket adopted for use by Military Police personnel on board USCM ships. Ironically most ships require their MP departments to use full armor, making these barely used by on duty MPs. Very popular among those who want to inexplicably smell like donuts."
 	has_buttons = TRUE
 	icon_state = "coat_cmp"
-	flags_atom = NO_SNOW_TYPE
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 	initial_icon_state = "coat_cmp"
 
 /obj/item/clothing/suit/storage/jacket/marine/service/tanker
 	name = "tanker jacket"
 	desc = "A comfortable jacket provided to anyone expected to operate near or inside heavy machinery. Special material within the arms jams up any machinery it gets caught up in, protecting the wearer from injury."
 	has_buttons = TRUE
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 	icon_state = "jacket_tanker"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
 	initial_icon_state = "jacket_tanker"
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
 	name = "mess technician jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
 	icon_state = "chef_jacket"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -143,12 +219,16 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 
 /obj/item/clothing/suit/storage/jacket/marine/dress
 	name = "marine formal service jacket"
 	desc = "Smells like vanilla. Signifies prestige and power, if a little flashy."
 	icon_state = "coat_formal"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	initial_icon_state = "coat_formal"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
@@ -158,7 +238,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = TRUE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
@@ -166,8 +246,6 @@
 	desc = "Dress Jacket worn by Commanding Officers of the USCM."
 	icon_state = "co_jacket"
 	has_buttons = FALSE
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
 	name = "commanding officer bomber jacket"
@@ -191,26 +269,33 @@
 	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
 	icon_state = "co_suit"
 
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/patchless
+	name = "commanding officer's jacket"
+	desc = "A patchless version of the officer jacket, its presence is still domineering"
+	icon_state = "co_plain"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/commander
+
+	name = "commanding officer's jacket"
+	desc = "The thought of looking even at the rank pins scare you with a court martial"
+	icon_state = "co_falcon"
+
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon
 	name = "commanding officer falcon jacket"
 	desc = "A refurbished jacket liner tailor made for a senior officer. This liner has become more of a proper piece of attire, with a new layer of fabric, wrist cuffs, front pockets, and a custom embroidered falcon on the back. This jacket will keep its wearer warm no matter the circumstance, from a cool Sunday drive to chilly autumn's eve."
 	icon_state = "co_falcon"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/general
-	name = "general's jacket"
-	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a General. Has quite a few pockets."
-	icon = 'icons/obj/items/clothing/suits.dmi'
+	name = "USCM service 'A' officer service jacket"
+	desc = "A USCM Officer Service 'A' Jacket, often worn by Officers on official visits. Very fitting and neatly pressed for a job that needs to be well-done."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	icon_state = "general_jacket"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)
 	item_state = "general_jacket"
 	has_buttons = FALSE
 	storage_slots = 4
-	armor_melee = CLOTHING_ARMOR_HIGHPLUS
-	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
-	armor_bomb = CLOTHING_ARMOR_VERYHIGH
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	w_class = SIZE_MEDIUM
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/general/executive
@@ -224,7 +309,6 @@
 	has_buttons = FALSE
 	item_state = "bridge_coat"
 	icon_state = "bridge_coat"
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/bridge_coat_grey
 	name = "bridge coat"
@@ -232,7 +316,6 @@
 	has_buttons = FALSE
 	item_state = "bridge_coat_grey"
 	icon_state = "bridge_coat_grey"
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_MEDAL)
 
 /obj/item/clothing/suit/storage/jacket/marine/service/aso
 	name = "auxiliary support officer jacket"
@@ -247,26 +330,14 @@
 //=======================================================================\\
 
 /obj/item/clothing/suit/storage/jacket/marine/provost
-	name = "\improper Provost Jacket"
-	desc = "A crisp jacket with the Provost sigil."
+	name = "\improper USCM service 'A' officer winter service jacket"
+	desc = "A rarely-seen 'A' service jacket for USCM officers that do want to stay crisp and warm in a snowy warzone, this one coming in black."
 	icon_state = "provost_jacket"
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/chief
-	name = "\improper Provost Command Jacket"
-	desc = "A crisp jacket with the Provost sigil."
-	icon_state = "provostci_jacket"
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/coat
-	name = "\improper Provost Coat"
-	desc = "The crisp coat of a Provost Officer."
-	icon_state = "provost_coat"
-
-/obj/item/clothing/suit/storage/jacket/marine/provost/coat/marshal
-	name = "\improper Provost Marshal Coat"
-	icon_state = "provost_coat_marshal"
-
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 
 //=========================//DRESS BLUES\\================================\\
 //=======================================================================\\
@@ -274,12 +345,13 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/blues
 	name = "marine enlisted dress blues jacket"
 	desc = "The jacket of the legendary Marine dress blues, virtually unchanged since the 19th century. You're wearing history, Marine. Don't let your ancestors down."
-	icon = 'icons/mob/humans/onmob/contained/marinedressblues.dmi'
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	icon_state = "e_jacket"
 	item_state = "e_jacket"
 	has_buttons = FALSE
-	item_state_slots = null
-	contained_sprite = TRUE
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco
 	name = "marine NCO dress blues jacket"
@@ -300,7 +372,11 @@
 	desc = "A jacket for the most fashionable war correspondents."
 	icon_state = "cc_brown"
 	item_state = "cc_brown"
-	flags_atom = NO_SNOW_TYPE
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/reporter/green
@@ -315,7 +391,43 @@
 /obj/item/clothing/suit/storage/jacket/marine/reporter/blue
 	icon_state = "cc_blue"
 	item_state = "cc_blue"
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
+	)
 
+/obj/item/clothing/suit/storage/jacket/marine/correspondent
+	name = "green jacket"
+	desc = "A green jacket."
+	icon_state = "correspondent_green"
+	item_state = "correspondent_green"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/correspondent/blue
+	name = "blue jacket"
+	desc = "A blue jacket."
+	icon_state = "correspondent_blue"
+	item_state = "correspondent_blue"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/correspondent/tan
+	name = "tan jacket"
+	desc = "A tan jacket."
+	icon_state = "correspondent_tan"
+	item_state = "correspondent_tan"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/correspondent/brown
+	name = "brown jacket"
+	desc = "A brown jacket."
+	icon_state = "correspondent_brown"
+	item_state = "correspondent_brown"
+	has_buttons = FALSE
 
 //==================Corporate Liaison==================\\
 
@@ -324,7 +436,11 @@
 	desc = "A casual brown vest."
 	icon_state = "vest_brown"
 	item_state = "vest_brown"
-	flags_atom = NO_SNOW_TYPE
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/vest/tan
@@ -346,7 +462,11 @@
 	desc = "A khaki suit jacket."
 	icon_state = "corporate_ivy"
 	item_state = "corporate_ivy"
-	flags_atom = NO_SNOW_TYPE
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/corporate/formal
@@ -382,7 +502,11 @@
 	desc = "A khaki bomber jacket popular among stationeers and blue-collar workers everywhere."
 	icon_state = "jacket_khaki"
 	item_state = "jacket_khaki"
-	flags_atom = NO_SNOW_TYPE
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi'
+	)
+	flags_atom = NO_GAMEMODE_SKIN
 	has_buttons = FALSE
 
 /obj/item/clothing/suit/storage/jacket/marine/bomber/red
@@ -398,3 +522,96 @@
 	icon_state = "jacket_grey"
 	item_state = "jacket_grey"
 	has_buttons = FALSE
+
+// TWE - RMC - Royal Marine Commandos
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service
+	name = "\improper Royal Marine Commando service jacket"
+	desc = "A service jacket typically worn by officers of the RMC. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "rmc_service"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+	)
+	has_buttons = FALSE
+	flags_atom = NO_GAMEMODE_SKIN
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/co
+	name = "\improper Royal Marine Commando senior officer's service jacket"
+	desc = "A service jacket worn by the senior officers of the RMC. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "rmc_service_co"
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/black
+	name = "\improper Royal Marine Commando service jacket"
+	desc = "A service jacket typically worn by officers of the RMC. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "rmc_service_black"
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/co/black
+	name = "\improper Royal Marine Commando senior officer's service jacket"
+	desc = "A service jacket worn by the senior officers of the RMC. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "rmc_service_black_co"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber/rmc
+	name = "commanding officer bomber jacket"
+	desc = "A bomber jacket worn by RMC officers. A classic, stylish choice for those in the higher ranks."
+	has_buttons = TRUE
+	icon_state = "rmc_bomber"
+	initial_icon_state = "rmc_bomber"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+	)
+
+// TWE - IASF - Imperial Armed Space Force
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_co
+	name = "\improper IASF Commanding Officer’s service jacket"
+	desc = "A service jacket typically worn by Commanding Officers of the IASF. Reinforced with lightweight Kevlar shards, it offers limited protection against stabbing weapons and small arms fire while maintaining a formal yet practical design for airborne leadership in the field."
+	icon_state = "iasf_service_co"
+	has_buttons = FALSE
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_co/alt
+	icon_state = "iasf_service_co_alt"
+
+/obj/item/clothing/suit/storage/jacket/marine/rmc/service/iasf_combat_jacket
+	name = "\improper IASF combat jacket"
+	desc = "A rugged, all-weather combat jacket issued to the Imperial Armed Space Force. Designed for versatility, it serves as both a field garment and a lightweight layer of protection. Reinforced with ballistic fibers and treated for weather resistance, it offers limited defense against shrapnel and small arms fire while keeping paratroopers comfortable in harsh conditions. Its deep green color and durable fabric make it a staple for both active deployment and off-duty wear."
+	has_buttons = TRUE
+	icon_state = "iasf_jacket"
+	initial_icon_state = "iasf_jacket"
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/TWE.dmi'
+	)
+
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+
+	allowed = list (
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/weapon/baton,
+		/obj/item/restraint/handcuffs,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/mateba,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/weapon/gun,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/crew_monitor,
+		/obj/item/tool/pen,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/large_holster/katana,
+		/obj/item/device/motiondetector,
+	)
+	min_cold_protection_temperature = T0C
+	siemens_coefficient = 0.7
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)

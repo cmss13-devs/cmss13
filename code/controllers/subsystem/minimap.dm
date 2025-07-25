@@ -526,7 +526,7 @@ SUBSYSTEM_DEF(minimaps)
 		qdel(svg_store_overlay)
 		debug_log("SVG coordinates for [faction] are not implemented!")
 
-#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
+#define can_draw(faction, user) ((faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED)) || (faction == XENO_HIVE_NORMAL && isqueen(user)))
 
 /datum/controller/subsystem/minimaps/proc/fetch_tacmap_datum(zlevel, flags)
 	var/hash = "[zlevel]-[flags]"
@@ -678,6 +678,10 @@ SUBSYSTEM_DEF(minimaps)
 	minimap_flags = MINIMAP_FLAG_USCM
 	marker_flags = MINIMAP_FLAG_USCM
 
+/datum/action/minimap/upp
+	minimap_flags =  MINIMAP_FLAG_UPP
+	marker_flags = MINIMAP_FLAG_UPP
+
 /datum/action/minimap/observer
 	minimap_flags = MINIMAP_FLAG_ALL
 	marker_flags = NONE
@@ -688,6 +692,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/allowed_flags = MINIMAP_FLAG_USCM
 	/// by default the ground map - this picks the first level matching the trait. if it exists
 	var/targeted_ztrait = ZTRAIT_GROUND
+	/// the current z level within the z stack
+	var/target_z = 1
 	var/atom/owner
 
 	/// tacmap holder for holding the minimap
@@ -745,9 +751,9 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/tgui_interact(mob/user, datum/tgui/ui)
 	if(!map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[1])
+		if(!level[target_z])
 			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
+		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -763,22 +769,23 @@ SUBSYSTEM_DEF(minimaps)
 	if(faction == FACTION_NEUTRAL && isobserver(user))
 		faction = allowed_flags == MINIMAP_FLAG_XENO ? XENO_HIVE_NORMAL : FACTION_MARINE
 
-	if(is_xeno && xeno.hive.see_humans_on_tacmap && targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP)
-		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_PMC|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
-		targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
+	if(is_xeno && xeno.hive.see_humans_on_tacmap)
+		if(targeted_ztrait != ZTRAIT_MARINE_MAIN_SHIP && !xeno.hive.need_round_end_check)
+			targeted_ztrait = ZTRAIT_MARINE_MAIN_SHIP
+		allowed_flags |= MINIMAP_FLAG_USCM|MINIMAP_FLAG_WY|MINIMAP_FLAG_UPP|MINIMAP_FLAG_CLF
 		map_holder = null
 
 	new_current_map = get_unannounced_tacmap_data_png(faction)
 	old_map = get_tacmap_data_png(faction)
 	current_svg = get_tacmap_data_svg(faction)
 
-	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || is_xeno
+	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno
 
 	if(use_live_map && !map_holder)
 		var/level = SSmapping.levels_by_trait(targeted_ztrait)
-		if(!level[1])
+		if(!level[target_z])
 			return
-		map_holder = SSminimaps.fetch_tacmap_datum(level[1], allowed_flags)
+		map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
 
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -803,6 +810,11 @@ SUBSYSTEM_DEF(minimaps)
 		ui = new(user, src, "TacticalMap")
 		ui.open()
 
+/datum/tacmap/ui_data(mob/user)
+	. = ..()
+
+	.["mapRef"] = map_holder?.map_ref
+
 /datum/tacmap/drawing/ui_data(mob/user)
 	var/list/data = list()
 
@@ -824,15 +836,16 @@ SUBSYSTEM_DEF(minimaps)
 
 	data["lastUpdateTime"] = last_update_time
 	data["tacmapReady"] = world.time > tacmap_ready_time
+	data["mapRef"] = map_holder?.map_ref
 
 	return data
 
 /datum/tacmap/ui_static_data(mob/user)
 	var/list/data = list()
 
-	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["canViewTacmap"] = TRUE
+	data["canChangeZ"] = FALSE
 	data["canViewCanvas"] = FALSE
 	data["isxeno"] = FALSE
 
@@ -842,9 +855,9 @@ SUBSYSTEM_DEF(minimaps)
 	var/list/data = list()
 
 	data["canvasCooldownDuration"] = CANVAS_COOLDOWN_TIME
-	data["mapRef"] = map_holder?.map_ref
 	data["canDraw"] = FALSE
 	data["mapFallback"] = wiki_map_fallback
+	data["canChangeZ"] = TRUE
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
@@ -950,6 +963,32 @@ SUBSYSTEM_DEF(minimaps)
 		if("onDraw")
 			updated_canvas = FALSE
 
+		if("changeZ")
+			var/amount = params["amount"]
+			var/level = SSmapping.levels_by_trait(targeted_ztrait)
+			if(target_z+amount < 1 || target_z+amount > length(level) || !SSmapping.same_z_map(level[target_z], level[target_z+amount]))
+				return
+
+			target_z += amount
+
+			if(!level[target_z])
+				return
+
+			if(user.client)
+				user.client.clear_map(map_holder.map.name)
+			map_holder = SSminimaps.fetch_tacmap_datum(level[target_z], allowed_flags)
+			resend_current_map_png(user)
+			if(user.client)
+				user.client.register_map_obj(map_holder.map)
+
+			distribute_current_map_png(faction)
+			last_update_time = world.time
+
+			new_current_map = get_unannounced_tacmap_data_png(faction)
+			old_map = get_tacmap_data_png(faction)
+			current_svg = get_tacmap_data_svg(faction)
+
+
 		if("selectAnnouncement")
 			if(!drawing_allowed)
 				msg_admin_niche("[key_name(user)] made an unauthorized attempt to 'selectAnnouncement' the [faction] tacmap!")
@@ -988,7 +1027,7 @@ SUBSYSTEM_DEF(minimaps)
 			old_map = get_tacmap_data_png(faction)
 
 			toolbar_updated_selection = toolbar_color_selection
-			message_admins("[key_name(user)] has updated the <a href='?tacmaps_panel=1'>tactical map</a> for [faction].")
+			message_admins("[key_name(user)] has updated the <a href='byond://?tacmaps_panel=1'>tactical map</a> for [faction].")
 			updated_canvas = FALSE
 
 	return TRUE
@@ -1010,7 +1049,7 @@ SUBSYSTEM_DEF(minimaps)
 		return UI_CLOSE
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	if(!xeno.hive?.living_xeno_queen?.ovipositor)
+	if(!xeno.hive?.living_xeno_queen?.ovipositor && xeno.hive?.tacmap_requires_queen_ovi)
 		return UI_CLOSE
 
 	return UI_INTERACTIVE
@@ -1076,7 +1115,7 @@ SUBSYSTEM_DEF(minimaps)
 		if(FACTION_CLF)
 			return MINIMAP_FLAG_CLF
 		if(FACTION_PMC)
-			return MINIMAP_FLAG_PMC
+			return MINIMAP_FLAG_WY
 		if(FACTION_YAUTJA)
 			return MINIMAP_FLAG_YAUTJA
 		if(XENO_HIVE_CORRUPTED)

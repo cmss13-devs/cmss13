@@ -8,6 +8,7 @@
 	desc = "A basic blue apron."
 	icon_state = "apron"
 	item_state = "apron"
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	blood_overlay_type = "armor"
 	flags_armor_protection = 0
 	allowed = list (
@@ -23,22 +24,9 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
-//Captain
-/obj/item/clothing/suit/captunic
-	name = "captain's parade tunic"
-	desc = "Worn by a Captain to show their class."
-	icon_state = "captunic"
-	item_state = "bio_suit"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	flags_inv_hide = HIDEJUMPSUIT
-
-/obj/item/clothing/suit/captunic/capjacket
-	name = "captain's uniform jacket"
-	desc = "A less formal jacket for everyday captain use."
-	icon_state = "capjacket"
-	item_state = "bio_suit"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
-	flags_inv_hide = HIDEJUMPSUIT
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
+	)
 
 //Cultist
 /obj/item/clothing/suit/cultist_hoodie
@@ -87,10 +75,16 @@
 	desc = "Maximum piety in this star system."
 	icon_state = "nun"
 	item_state = "nun"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS
 	flags_inv_hide = HIDESHOES|HIDEJUMPSUIT
 	allowed = list(
 		/obj/item/weapon/gun,
+	)
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
 	)
 
 //Chef
@@ -99,8 +93,9 @@
 	desc = "An apron used by a high-class chef."
 	icon_state = "chef"
 	item_state = "chef"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
 	gas_transfer_coefficient = 0.90
-	permeability_coefficient = 0.50
+
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	allowed = list (
 		/obj/item/tool/kitchen/knife,
@@ -113,6 +108,9 @@
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
 	)
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 //Chef
 /obj/item/clothing/suit/chef/classic
@@ -120,6 +118,10 @@
 	desc = "A basic, dull, white chef's apron."
 	icon_state = "apronchef"
 	item_state = "apronchef"
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
+	)
 	blood_overlay_type = "armor"
 	flags_armor_protection = 0
 	allowed = list (
@@ -134,96 +136,53 @@
 		/obj/item/tool/pen,
 	)
 
-//Security
-/obj/item/clothing/suit/security/navyofficer
-	name = "security officer's jacket"
-	desc = "This jacket is for those special occasions when a security officer actually feels safe."
-	icon_state = "officerbluejacket"
-	item_state = "officerbluejacket"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-
-/obj/item/clothing/suit/security/navywarden
-	name = "warden's jacket"
-	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
-	icon_state = "wardenbluejacket"
-	item_state = "wardenbluejacket"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-
-/obj/item/clothing/suit/security/navyhos
-	name = "head of security's jacket"
-	desc = "This piece of clothing was specifically designed for asserting superior authority."
-	icon_state = "hosbluejacket"
-	item_state = "hosbluejacket"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+/obj/item/clothing/suit/chef/classic/stain
+	icon_state = "apronchef_stain"
+	item_state = "apronchef_stain"
 
 //Detective
-/obj/item/clothing/suit/storage/det_suit
-	name = "coat"
-	desc = "An 18th-century multi-purpose trenchcoat. Someone who wears this means serious business."
-	icon_state = "detective"
-	item_state = "det_suit"
-	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	allowed = list(
-		/obj/item/device/analyzer,
-		/obj/item/device/multitool,
-		/obj/item/device/pipe_painter,
-		/obj/item/device/radio,
-		/obj/item/device/t_scanner,
-		/obj/item/tool/crowbar,
-		/obj/item/tool/screwdriver,
-		/obj/item/tool/weldingtool,
-		/obj/item/tool/wirecutters,
-		/obj/item/tool/wrench,
-		/obj/item/clothing/mask/gas,
-
-		/obj/item/weapon/gun,
-		/obj/item/ammo_magazine,
-		/obj/item/ammo_casing,
-		/obj/item/weapon/baton,
-		/obj/item/restraint/handcuffs,
-		/obj/item/storage/fancy/cigarettes,
-		/obj/item/tool/lighter,
-		/obj/item/weapon/baton,
-		/obj/item/restraint/handcuffs,
-		/obj/item/device/binoculars,
-		/obj/item/attachable/bayonet,
-		/obj/item/storage/belt/gun/m4a3,
-		/obj/item/storage/belt/gun/m44,
-		/obj/item/storage/belt/gun/mateba,
-		/obj/item/storage/belt/gun/smartpistol,
-
-		/obj/item/device/flashlight,
-		/obj/item/device/healthanalyzer,
-		/obj/item/device/taperecorder,
-		/obj/item/device/radio,
-		/obj/item/tank/emergency_oxygen,
-		/obj/item/tool/crowbar,
-		/obj/item/tool/crew_monitor,
-		/obj/item/tool/pen,
-		/obj/item/storage/large_holster/machete,
-		/obj/item/storage/large_holster/katana,
-		/obj/item/device/motiondetector,
+/obj/item/clothing/suit/storage/CMB/trenchcoat
+	name = "\improper tan trench-coat"
+	desc = "A worn, tan, old style trench-coat. A classic of noir style apparel."
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
 	)
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
-	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
+	icon_state = "trench_tan"
+	item_state = "trench_tan"
+	uniform_restricted = null
 
-/obj/item/clothing/suit/storage/det_suit/black
+/obj/item/clothing/suit/storage/CMB/trenchcoat/brown
+
+	name = "\improper brown trench-coat"
+	desc = "A worn, brown, old style trench-coat. When a bum sees a dick coming, he don't stick around."
+	icon_state = "trench_brown"
+	item_state = "trench_brown"
+
+/obj/item/clothing/suit/storage/CMB/trenchcoat/grey
+	name = "\improper grey trench-coat"
+	desc = "A worn, brown, old style trench-coat. When a bum sees a dick coming, he don't stick around."
+	icon_state = "trench_grey"
+	item_state = "trench_grey"
+
+/obj/item/clothing/suit/storage/CMB/trenchcoat/police
+	name = "\improper tan police trench-coat"
+	desc = "A light tan coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."
+	icon_state = "detective"
+	item_state = "detective"
+
+/obj/item/clothing/suit/storage/CMB/trenchcoat/police/black
+	name = "\improper black police trench-coat"
+	desc = "A light black coat with a badge. Often worn by government officiated crime scene investigators rather than private sleuths, this suit strikes authority into those who see it."
 	icon_state = "detective2"
+	item_state = "detective2"
 
 //Forensics
 /obj/item/clothing/suit/storage/forensics
 	name = "jacket"
 	desc = "A forensics technician jacket."
 	item_state = "det_suit"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	allowed = list(
 		/obj/item/device/analyzer,
@@ -273,18 +232,29 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/suits_righthand.dmi',
+	)
 
 /obj/item/clothing/suit/storage/forensics/red
 	name = "red jacket"
 	desc = "A red forensics technician jacket."
 	icon_state = "forensics_red"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 /obj/item/clothing/suit/storage/forensics/blue
 	name = "blue jacket"
 	desc = "A blue forensics technician jacket."
 	icon_state = "forensics_blue"
+	icon = 'icons/obj/items/clothing/suits/coats_robes.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/coats_robes.dmi',
+	)
 
 //Engineering
 /obj/item/clothing/suit/storage/hazardvest
@@ -292,6 +262,7 @@
 	desc = "An orange high-visibility vest used in work zones."
 	icon_state = "hazard"
 	item_state = "hazard"
+	icon = 'icons/obj/items/clothing/suits/vests_aprons.dmi'
 	blood_overlay_type = "armor"
 	allowed = list (
 		/obj/item/device/analyzer,
@@ -330,7 +301,9 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST
-	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL)
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/vests_aprons.dmi',
+	)
 
 /obj/item/clothing/suit/storage/hazardvest/blue
 	name = "blue hazard vest"
@@ -351,59 +324,59 @@
 	item_state = "hazard_black"
 
 //Lawyer
-/obj/item/clothing/suit/storage/lawyer/bluejacket
-	name = "Blue Suit Jacket"
+/obj/item/clothing/suit/storage/jacket/marine/lawyer
 	desc = "A snappy dress jacket."
-	icon_state = "suitjacket_blue_open"
-	item_state = "suitjacket_blue_open"
-	blood_overlay_type = "coat"
+	icon = 'icons/obj/items/clothing/suits/jackets.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/jackets.dmi',
+	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
-/obj/item/clothing/suit/storage/lawyer/purpjacket
-	name = "Purple Suit Jacket"
-	desc = "A snappy dress jacket."
+	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
+	has_buttons = TRUE
+	blood_overlay_type = "coat"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket
+	name = "blue suit-jacket"
+	icon_state = "suitjacket_blue"
+	initial_icon_state = "suitjacket_blue"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/purpjacket
+	name = "purple suit-jacket"
 	icon_state = "suitjacket_purp"
-	item_state = "suitjacket_purp"
-	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	initial_icon_state = "suitjacket_purp"
 
-//Internal Affairs
-/obj/item/clothing/suit/storage/internalaffairs
-	name = "Internal Affairs Jacket"
-	desc = "A smooth black jacket."
-	icon_state = "ia_jacket_open"
-	item_state = "ia_jacket"
-	blood_overlay_type = "coat"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/redjacket
+	name = "red suit-jacket"
+	icon_state = "suitjacket_red"
+	initial_icon_state = "suitjacket_red"
 
-/obj/item/clothing/suit/storage/internalaffairs/verb/toggle()
-	set name = "Toggle Coat Buttons"
-	set category = "Object"
-	set src in usr
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/blackjacket
+	name = "black suit-jacket"
+	icon_state = "suitjacket_black"
+	initial_icon_state = "suitjacket_black"
 
-	if(usr.is_mob_incapacitated())
-		return 0
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/comedian
+	name = "bright red suit-jacket"
+	icon_state = "suitjacket_comedian"
+	initial_icon_state = "suitjacket_comedian"
 
-	switch(icon_state)
-		if("ia_jacket_open")
-			src.icon_state = "ia_jacket"
-			to_chat(usr, "You button up the jacket.")
-		if("ia_jacket")
-			src.icon_state = "ia_jacket_open"
-			to_chat(usr, "You unbutton the jacket.")
-		else
-			to_chat(usr, "You attempt to button-up the velcro on your [src], before promptly realising how retarded you are.")
-			return
-	update_clothing_icon() //so our overlays update
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/brown
+	name = "brown suit-jacket"
+	icon_state = "suitjacket_brown"
+	initial_icon_state = "suitjacket_brown"
+
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/light_brown
+	name = "light-brown suit-jacket"
+	icon_state = "suitjacket_lightbrown"
+	initial_icon_state = "suitjacket_lightbrown"
 
 //Windbreakers
 /obj/item/clothing/suit/storage/windbreaker
 	name = "windbreaker parent object"
 	desc = "This shouldn't be here..."
+	icon = 'icons/obj/items/clothing/suits/windbreakers.dmi'
 	blood_overlay_type = "armor"
 	allowed = list(
 		/obj/item/storage/fancy/cigarettes,
@@ -431,10 +404,11 @@
 		/obj/item/device/motiondetector,
 	)
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 	var/zip_unzip = FALSE
 	actions_types = list(/datum/action/item_action/toggle)
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/windbreakers.dmi',
+	)
 
 /obj/item/clothing/suit/storage/windbreaker/attack_self(mob/user) //Adds UI button
 	..()
@@ -492,7 +466,10 @@
 	name = "suspenders"
 	gender = PLURAL
 	desc = "They suspend pants."
-	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon = 'icons/obj/items/clothing/belts/misc.dmi'
 	icon_state = "suspenders"
 	blood_overlay_type = "armor"
 	flags_armor_protection = 0
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/belts/misc.dmi',
+	)

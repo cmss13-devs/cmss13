@@ -4,7 +4,7 @@
 	density = FALSE
 	anchored = TRUE
 	unacidable = 1
-	icon = 'icons/obj/structures/props/dropship_equipment.dmi'
+	icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 	icon_state = "sentry_system_installed"
 	active_power_usage = 5000
 	idle_power_usage = 1000
@@ -107,19 +107,15 @@
 	pixel_y = oy
 	icon_state = "[base_icon_state]_installed"
 
-/obj/structure/machinery/sentry_holder/Destroy()
-	QDEL_NULL(deployed_turret)
-
-	. = ..()
-
 /obj/structure/machinery/sentry_holder/colony
 	desc = "A box that deploys a sentry turret for protection of the residents in the area."
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony
 
 /obj/structure/machinery/sentry_holder/wy
-	health = 200
+	health = 400
+	icon = 'icons/obj/structures/props/sentry_holder_wy.dmi'
 	desc = "A box that deploys a sentry turret for protecting Weyland-Yutani personnel"
-	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/wy
+	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/colony/wy
 
 /obj/structure/machinery/sentry_holder/almayer
 	icon_state = "floor_sentry_installed"
@@ -131,6 +127,7 @@
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
 
 /obj/structure/machinery/sentry_holder/almayer/mini/aicore
+	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares
 
 /obj/structure/machinery/sentry_holder/almayer/mini/aicore/Initialize()
 	. = ..()

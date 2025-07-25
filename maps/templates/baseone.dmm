@@ -102,9 +102,8 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
-/obj/structure/machinery/computer/guestpass{
-	dir = 4;
-	reason = "Visitor"
+/obj/structure/machinery/computer/communications{
+	dir = 4
 	},
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -449,7 +448,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/bunker01/bedroom)
 "bt" = (
-/obj/structure/machinery/vending/cigarette/free,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /obj/structure/machinery/light{
 	dir = 1
 	},

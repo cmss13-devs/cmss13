@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-export const THEMES = ['light', 'dark'];
+export const THEMES = ['dark', 'light'];
 
 const COLOR_DARK_BG = '#202020';
 const COLOR_DARK_BG_DARKER = '#171717';
@@ -44,17 +44,6 @@ export const setClientTheme = (name) => {
       'outputwindow.text-color': '#000000',
       'mainwindow.background-color': 'none',
       'split.background-color': 'none',
-      // Buttons
-      'changelog.background-color': 'none',
-      'changelog.text-color': '#000000',
-      'rules.background-color': 'none',
-      'rules.text-color': '#000000',
-      'wiki.background-color': 'none',
-      'wiki.text-color': '#000000',
-      'forum.background-color': 'none',
-      'forum.text-color': '#000000',
-      'report-issue.background-color': 'none',
-      'report-issue.text-color': '#000000',
       // Status and verb tabs
       'output.background-color': 'none',
       'output.text-color': '#000000',
@@ -86,17 +75,6 @@ export const setClientTheme = (name) => {
       'outputwindow.text-color': COLOR_DARK_TEXT,
       'mainwindow.background-color': COLOR_DARK_BG,
       'split.background-color': COLOR_DARK_BG,
-      // Buttons
-      'changelog.background-color': '#494949',
-      'changelog.text-color': COLOR_DARK_TEXT,
-      'rules.background-color': '#494949',
-      'rules.text-color': COLOR_DARK_TEXT,
-      'wiki.background-color': '#494949',
-      'wiki.text-color': COLOR_DARK_TEXT,
-      'forum.background-color': '#494949',
-      'forum.text-color': COLOR_DARK_TEXT,
-      'report-issue.background-color': '#492020',
-      'report-issue.text-color': COLOR_DARK_TEXT,
       // Status and verb tabs
       'output.background-color': COLOR_DARK_BG_DARKER,
       'output.text-color': COLOR_DARK_TEXT,

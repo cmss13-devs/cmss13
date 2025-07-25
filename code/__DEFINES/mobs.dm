@@ -113,7 +113,7 @@
 #define CANROOT (1<<6)
 #define GODMODE (1<<12)
 #define FAKEDEATH (1<<13) //Replaces stuff like changeling.changeling_fakedeath
-//#define DISFIGURED (1<<14) //unused
+#define RECENTSPAWN (1<<14) // Temporarily invincible via GODMODE
 #define XENO_HOST (1<<15) //Tracks whether we're gonna be a baby alien's mummy.
 #define IMMOBILE_ACTION (1<<16) // If you are performing an action that prevents you from being pushed by your own people.
 #define PERMANENTLY_DEAD (1<<17)
@@ -121,6 +121,7 @@
 #define CANSLOW (1<<19)
 #define NO_PERMANENT_DAMAGE (1<<20)
 #define CORRUPTED_ALLY (1<<21)
+#define FAKESOUL (1<<22) // Lets things without souls pretend like they do
 
 // =============================
 // hive types
@@ -187,9 +188,12 @@
 #define SQUEEZE_UNDER_VEHICLES (1<<1)  // Only the van is supported as of now.
 #define EASY_SURGERY (1<<2)  // Surgeries on this mob don't require advanced skills.
 #define SURGERY_MODE_ON (1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
-#define MUTINEER (1<<4)  // Part of the Mutiny Gang
-#define GIVING (1<<5) // Is currently trying to give an item to someone
-#define NOBIOSCAN (1<<6)
+#define GIVING (1<<4) // Is currently trying to give an item to someone
+#define NOBIOSCAN (1<<5)
+#define HAS_SPAWNED_PET (1<<6) // Has spawned their special pet.
+#define MUTINY_MUTINEER (1<<7)  // Part of the Mutiny Gang
+#define MUTINY_LOYALIST (1<<8) // Allied with command.
+#define MUTINY_NONCOMBAT (1<<9) // NON COMBATANT.
 
 //=================================================
 
@@ -290,11 +294,11 @@
 #define PANDEMIC 2
 
 //emote flags
-#define EMOTING_HIGH_FIVE  1
-#define EMOTING_FIST_BUMP  2
-#define EMOTING_HEADBUTT   3
-#define EMOTING_TAIL_SWIPE 4
-#define EMOTING_ROCK_PAPER_SCISSORS 5
+#define EMOTING_HIGH_FIVE  (1<<0)
+#define EMOTING_FIST_BUMP  (1<<1)
+#define EMOTING_HEADBUTT   (1<<2)
+#define EMOTING_TAIL_SWIPE (1<<3)
+#define EMOTING_ROCK_PAPER_SCISSORS (1<<4)
 
 //forcesay types
 #define SUDDEN 0
@@ -313,24 +317,24 @@
 #define CAN_HOLD_ONE_HAND 2
 
 GLOBAL_LIST_INIT(default_onmob_icons, list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/items_lefthand_0.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
-		WEAR_WAIST = 'icons/mob/humans/onmob/belt.dmi',
-		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
-		WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
-		WEAR_EYES = 'icons/mob/humans/onmob/eyes.dmi',
-		WEAR_ID = 'icons/mob/mob.dmi',
-		WEAR_BODY = 'icons/mob/humans/onmob/uniform_0.dmi',
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi',
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_0.dmi',
-		WEAR_FEET = 'icons/mob/humans/onmob/feet.dmi',
-		WEAR_FACE = 'icons/mob/humans/onmob/mask.dmi',
-		WEAR_HANDCUFFED = 'icons/mob/mob.dmi',
-		WEAR_LEGCUFFED = 'icons/mob/mob.dmi',
-		WEAR_HANDS = 'icons/mob/humans/onmob/hands.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/suit_slot.dmi',
-		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/ties.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks.dmi',
+		WEAR_L_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/clothing/ears.dmi',
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/glasses.dmi',
+		WEAR_ID = 'icons/mob/humans/onmob/ids.dmi',
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/misc_ert_colony.dmi',
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/misc_ert.dmi',
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi',
+		WEAR_FEET = 'icons/mob/humans/onmob/clothing/feet.dmi',
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/masks.dmi',
+		WEAR_HANDCUFFED = 'icons/mob/humans/onmob/cuffs.dmi',
+		WEAR_LEGCUFFED = 'icons/mob/humans/onmob/cuffs.dmi',
+		WEAR_HANDS = 'icons/mob/humans/onmob/clothing/hands.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/misc.dmi',
+		WEAR_ACCESSORIES = 'icons/mob/humans/onmob/clothing/accessory/ties.dmi'
 		))
 
 GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
@@ -386,3 +390,12 @@ GLOBAL_LIST_INIT(default_xeno_onmob_icons, list(
 #define MOBILITY_FLAGS_LYING_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_CARBON_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
 #define MOBILITY_FLAGS_REST_CAPABLE_DEFAULT (MOBILITY_MOVE | MOBILITY_STAND | MOBILITY_REST | MOBILITY_LIEDOWN)
+
+/// Sleeps for X and will perform return if A is qdeleted or a dead mob.
+#define SLEEP_CHECK_DEATH(X, A) \
+	sleep(X); \
+	if(QDELETED(A)) return; \
+	if(ismob(A)) { \
+		var/mob/sleep_check_death_mob = A; \
+		if(sleep_check_death_mob.stat == DEAD) return; \
+	}

@@ -27,7 +27,8 @@
 		name_of_spawn = /obj/effect/landmark/ert_spawns/distress_wo
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()
 
-	if(!istype(spawn_loc)) return //Didn't find a useable spawn point.
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
 
 	var/mob/living/carbon/human/human = new(spawn_loc)
 
@@ -95,6 +96,7 @@
 
 /obj/effect/landmark/ert_spawns/distress_cryo
 	name = "Distress_Cryo"
+	icon_state = "marine_spawn_foxtrot"
 
 /datum/emergency_call/cryo_squad/tech
 	name = "Marine Cryo Reinforcements (Tech)"

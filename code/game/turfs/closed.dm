@@ -3,6 +3,45 @@
 	density = TRUE
 	opacity = TRUE
 
+/turf/closed/attack_alien(mob/user)
+	attack_hand(user)
+
+/turf/closed/attack_hand(mob/user)
+	if(user.a_intent == INTENT_HARM)
+		return
+
+	var/turf/above_current = SSmapping.get_turf_above(get_turf(src))
+	var/turf/above_user = SSmapping.get_turf_above(get_turf(user))
+
+	if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
+		return
+
+	while(above_current.density)
+		above_current = SSmapping.get_turf_above(get_turf(above_current))
+		above_user = SSmapping.get_turf_above(get_turf(above_user))
+
+		if(!istype(above_user, /turf/open_space) || istype(above_current, /turf/open_space) || !above_current || !above_user)
+			return
+
+	for(var/atom/possible_blocker in above_current)
+		if(possible_blocker.density)
+			return
+
+	if(user.action_busy)
+		return
+
+	user.visible_message(SPAN_WARNING("[user] starts climbing up [src]."), SPAN_WARNING("You start climbing up [src]."))
+
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		to_chat(user, SPAN_WARNING("You were interrupted!"))
+		return
+
+	user.visible_message(SPAN_WARNING("[user] climbs up [src]."), SPAN_WARNING("You climb up [src]."))
+
+	user.forceMove(above_current)
+	return
+
+
 /turf/closed/insert_self_into_baseturfs()
 	return
 
@@ -19,7 +58,7 @@
 /turf/closed/cordon
 	name = "world border"
 	icon = 'icons/turf/shuttle.dmi'
-	icon_state = "pclosed"
+	icon_state = "pwall"
 	layer = ABOVE_TURF_LAYER
 	baseturfs = /turf/closed/cordon
 
@@ -126,7 +165,7 @@
 	icon_state = "Corner"
 
 /turf/closed/ice/secret/junction
-	icon_state = "T-Junction"
+	icon_state = "T_Junction"
 
 /turf/closed/ice/secret/intersection
 	icon_state = "Intersection"
@@ -175,7 +214,7 @@
 	icon_state = "Corner"
 
 /turf/closed/ice/thin/secret/junction
-	icon_state = "T-Junction"
+	icon_state = "T_Junction"
 
 /turf/closed/ice/thin/secret/intersection
 	icon_state = "Intersection"
@@ -247,9 +286,6 @@
 	icon = 'icons/turf/shuttle.dmi'
 	layer = ABOVE_TURF_LAYER
 
-/turf/closed/shuttle/is_weedable()
-	return FULLY_WEEDABLE
-
 /turf/closed/shuttle/dropship
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rasputin1"
@@ -282,6 +318,22 @@
 /turf/closed/shuttle/twe_dropship/transparent
 	opacity = FALSE
 
+/turf/closed/shuttle/upp_sof
+	name = "\improper UPP-DS-3 'Voron'"
+	icon = 'icons/turf/upp_sof_dropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_sof_alt
+	name = "\improper UPP-DS-3 'Volk'"
+	icon = 'icons/turf/upp_sof_alt_dropship.dmi'
+	icon_state = "0,0"
+
+/turf/closed/shuttle/upp_sof_alt/transparent
+	opacity = FALSE
+
 /turf/closed/shuttle/dropship3
 	name = "\improper Saipan"
 	icon = 'icons/turf/dropship3.dmi'
@@ -295,6 +347,22 @@
 
 /turf/closed/shuttle/dropship3/tornado/typhoon
 	name = "\improper Typhoon"
+
+/turf/closed/shuttle/upp_dropship
+	name = "\improper Morana"
+	icon = 'icons/turf/upp_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/upp_dropship/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/upp_dropship2
+	name = "\improper Devana"
+	icon = 'icons/turf/upp_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/upp_dropship2/transparent
+	opacity = FALSE
 
 /turf/closed/shuttle/escapepod
 	name = "wall"
@@ -389,3 +457,37 @@
 
 /turf/closed/shuttle/transit/r_end
 	icon_state = "swall8"
+
+// Hybrisa Shuttles & Dropships
+
+/turf/closed/shuttle/dropship4/WY
+	icon = 'icons/turf/dropship4.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship4/WY/HorizonRunner
+	name = "\improper WY-LWI Horizon Runner HR-150"
+	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport."
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship4/WY/HorizonRunner/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship4/WY/StarGlider
+	name = "\improper WY-LWI StarGlider SG-200"
+	desc = "The WY-LWI StarGlider SG-200, a product of the collaborative ingenuity between Weyland Yutani and Lunnar-Welsun Industries, This small dropship is designed for short-range commercial transport."
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship4/WY/StarGlider/transparent
+	opacity = FALSE
+
+/turf/closed/shuttle/dropship5/CLF
+	icon = 'icons/turf/CLF_dropship.dmi'
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship5/CLF/Fire
+	name = "\improper UD-9M 'Dogbite'"
+	desc = "The UD-9M 'Dogbite' is a repurposed utility dropship, originally designed for short-haul cargo operations across colonial systems. Stolen and heavily modified by the Colonial Liberation Front, it's now a rugged smuggler and strike craft, capable of dropping a full fireteam through tight patrol nets. Its hull is scarred with gunfire, rust, and graffiti — a patchwork of rebellion held together by grit and stolen parts."
+	icon_state = "1"
+
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent
+	opacity = FALSE

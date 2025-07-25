@@ -116,7 +116,7 @@
 	return TRUE
 
 /obj/structure/machinery/chem_dispenser/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		replace_beaker(user)
@@ -285,14 +285,21 @@
 		"kelotane",
 		"anti_toxin",
 		"dexalin",
+		"dexalinp",
 		"inaprovaline",
 		"adrenaline",
 		"peridaxon",
 		"tramadol",
+		"oxycodone",
 		"tricordrazine",
 	)
-	
+
 	var/base_state = "mixer"
+
+/obj/structure/machinery/chem_dispenser/yauja
+
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
 
 /obj/structure/machinery/chem_dispenser/soda
 	icon_state = "soda_dispenser"
@@ -334,6 +341,10 @@
 		"soymilk",
 	)
 
+/obj/structure/machinery/chem_dispenser/soda/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
+
 /obj/structure/machinery/chem_dispenser/soda/beer
 	icon_state = "booze_dispenser"
 	name = "booze dispenser"
@@ -365,6 +376,10 @@
 		"patron",
 		"absinthe",
 	)
+
+/obj/structure/machinery/chem_dispenser/soda/beer/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	breakable = FALSE
 
 #undef DISPENSER_UNHACKABLE
 #undef DISPENSER_NOT_HACKED

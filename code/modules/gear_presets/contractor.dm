@@ -1,7 +1,7 @@
 /datum/equipment_preset/contractor
 	name = "Military Contractor"
 	faction = FACTION_CONTRACTOR
-	rank = JOB_CONTRACTOR
+	job_title = JOB_CONTRACTOR
 	idtype = /obj/item/card/id/data
 	faction = FACTION_CONTRACTOR
 	faction_group = list(FACTION_CONTRACTOR)
@@ -64,7 +64,7 @@
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "VAIPO Mercenary"
-	rank = JOB_CONTRACTOR_ST
+	job_title = JOB_CONTRACTOR_ST
 	skills = /datum/skills/contractor
 	faction = FACTION_CONTRACTOR
 
@@ -87,7 +87,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 
 	switch(choice)
@@ -173,7 +173,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Automatic Rifleman"
-	rank = JOB_CONTRACTOR_MG
+	job_title = JOB_CONTRACTOR_MG
 	skills = /datum/skills/contractor/heavy
 	faction = FACTION_CONTRACTOR
 
@@ -203,7 +203,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
@@ -235,7 +235,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Engineering Specialist"
-	rank = JOB_CONTRACTOR_ENGI
+	job_title = JOB_CONTRACTOR_ENGI
 	skills = /datum/skills/contractor/engi
 	faction = FACTION_CONTRACTOR
 
@@ -281,7 +281,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIMS Medical Specialist"
-	rank = JOB_CONTRACTOR_MEDIC
+	job_title = JOB_CONTRACTOR_MEDIC
 	skills = /datum/skills/contractor/medic
 	faction = FACTION_CONTRACTOR
 
@@ -327,7 +327,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Team Leader"
-	rank = JOB_CONTRACTOR_TL
+	job_title = JOB_CONTRACTOR_TL
 	skills = /datum/skills/contractor/leader
 	faction = FACTION_CONTRACTOR
 
@@ -368,6 +368,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/hacked/contractor, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/contractor/duty/synth
@@ -377,7 +378,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Support Synthetic"
-	rank = JOB_CONTRACTOR_SYN
+	job_title = JOB_CONTRACTOR_SYN
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 
@@ -420,12 +421,13 @@
 
 /datum/equipment_preset/contractor/duty/synth/load_gear(mob/living/carbon/human/new_human)
 	//back
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/black, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/a1/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK) //2
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/smokebomb, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 	//face
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
@@ -467,7 +469,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Mercenary"
-	rank = JOB_CONTRACTOR_COVST
+	job_title = JOB_CONTRACTOR_COVST
 	skills = /datum/skills/contractor
 	faction = FACTION_CONTRACTOR
 
@@ -475,7 +477,7 @@
 
 	var/choice = rand(1,10)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
@@ -493,7 +495,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/attachments(new_human), WEAR_IN_BACK)
 
@@ -576,13 +578,13 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Automatic Rifleman"
-	rank = JOB_CONTRACTOR_COVMG
+	job_title = JOB_CONTRACTOR_COVMG
 	skills = /datum/skills/contractor/heavy
 	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/heavy/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/lmg/ap, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/lmg/ap, WEAR_IN_ACCESSORY)
@@ -610,7 +612,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/MRE,WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/mre/fsr, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/lmg, WEAR_IN_BACK)
@@ -627,12 +629,12 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Engineering Specialist"
-	rank = JOB_CONTRACTOR_COVENG
+	job_title = JOB_CONTRACTOR_COVENG
 	skills = /datum/skills/contractor/engi
 	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/engi/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/tool_webbing/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
@@ -674,13 +676,13 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIMS Medical Specialist"
-	rank = JOB_CONTRACTOR_COVMED
+	job_title = JOB_CONTRACTOR_COVMED
 	skills = /datum/skills/contractor/medic
 	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/medic/load_gear(mob/living/carbon/human/new_human)
 	//clothing
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
@@ -721,14 +723,14 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Team Leader"
-	rank = JOB_CONTRACTOR_COVTL
+	job_title = JOB_CONTRACTOR_COVTL
 	skills = /datum/skills/contractor/leader
 	faction = FACTION_CONTRACTOR
 
 /datum/equipment_preset/contractor/covert/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/ua_civvies, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/gray, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/black_vest, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive, WEAR_IN_ACCESSORY)
@@ -772,7 +774,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Support Synthetic"
-	rank = JOB_CONTRACTOR_COVSYN
+	job_title = JOB_CONTRACTOR_COVSYN
 	skills = /datum/skills/synthetic
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
@@ -817,12 +819,13 @@
 
 /datum/equipment_preset/contractor/covert/synth/load_gear(mob/living/carbon/human/new_human)
 	//back
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/black, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/a1/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK) //1
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK) //2
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/smokebomb, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/synthetic, WEAR_IN_BACK)
 	//face
 	new_human.equip_to_slot_or_del(new headset_type, WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/experimental_mesons, WEAR_EYES)
@@ -830,7 +833,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof, WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_nvg/cosmetic, WEAR_IN_HELMET)
 	//body
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/wy_davisone, WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/utility/brown, WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/surg_vest/equipped, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/holobadge/cord, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/synvest, WEAR_JACKET)

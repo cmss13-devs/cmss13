@@ -16,7 +16,7 @@
 
 
 /turf/closed/wall/handle_vehicle_bump(obj/vehicle/multitile/V)
-	if(!hull && !(V.vehicle_flags & VEHICLE_CLASS_WEAK))
+	if(!(turf_flags & TURF_HULL) && !(V.vehicle_flags & VEHICLE_CLASS_WEAK))
 		take_damage(V.wall_ram_damage)
 		V.take_damage_type(10, "blunt", src)
 		playsound(V, 'sound/effects/metal_crash.ogg', 35)
@@ -258,12 +258,6 @@
 /obj/structure/prop/dam/torii/handle_vehicle_bump(obj/vehicle/multitile/V)
 	return FALSE
 
-/obj/structure/prop/dam/large_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
-	return FALSE
-
-/obj/structure/prop/dam/wide_boulder/handle_vehicle_bump(obj/vehicle/multitile/V)
-	return FALSE
-
 /obj/structure/flora/tree/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 		return FALSE
@@ -299,7 +293,8 @@
 	// Driver needs access
 		var/mob/living/driver = V.get_seat_mob(VEHICLE_DRIVER)
 		if(!requiresID() || (driver && allowed(driver)))
-			open(TRUE)
+			if(operating != DOOR_OPERATING_OPENING)
+				open(TRUE)
 			return FALSE
 	if(!unacidable)
 		visible_message(SPAN_DANGER("\The [V] pushes [src] over!"))
@@ -324,6 +319,17 @@
 	return FALSE
 
 /obj/structure/machinery/door/poddoor/almayer/handle_vehicle_bump(obj/vehicle/multitile/V)
+	if(!unacidable)
+		if(vehicle_resistant)
+			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+		else
+			visible_message(SPAN_DANGER("\The [V] crushes [src]!"))
+			playsound(V, 'sound/effects/metal_crash.ogg', 35)
+			qdel(src)
+	return FALSE
+
+/obj/structure/machinery/door/poddoor/hybrisa/handle_vehicle_bump(obj/vehicle/multitile/V)
 	if(!unacidable)
 		if(vehicle_resistant)
 			visible_message(SPAN_DANGER("\The [V] can't destroy [src]!"))
@@ -701,7 +707,8 @@
 	var/list/slots = V.get_activatable_hardpoints()
 	for(var/slot in slots)
 		var/obj/item/hardpoint/H = V.hardpoints[slot]
-		if(!H) continue
+		if(!H)
+			continue
 		H.livingmob_interact(src)
 
 	if(takes_damage)
@@ -772,7 +779,8 @@
 			var/list/slots = V.get_activatable_hardpoints()
 			for(var/slot in slots)
 				var/obj/item/hardpoint/H = V.hardpoints[slot]
-				if(!H) continue
+				if(!H)
+					continue
 				H.livingmob_interact(src)
 
 			var/mob_moved = step(src, V.last_move_dir)

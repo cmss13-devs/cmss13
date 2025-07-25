@@ -11,7 +11,7 @@
  */
 
 /obj/item/storage/donut_box
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/food/donuts.dmi'
 	icon_state = "donutbox"
 	name = "\improper Yum! donuts"
 	desc = "A box of mouth-watering \"<i>Yum!</i>\" brand donuts."
@@ -43,7 +43,7 @@
 	var/i = 0
 	for(var/obj/item/reagent_container/food/snacks/donut/D in contents)
 		i++
-		var/image/img = image('icons/obj/items/food.dmi', "[D.overlay_state]-[i]")
+		var/image/img = image('icons/obj/items/food/donuts.dmi', "[D.overlay_state]-[i]")
 		overlays += img
 
 /obj/item/storage/donut_box/empty
@@ -75,7 +75,7 @@
 
 /obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"
-	name = "general's mateba customization kit case"
+	name = "luxurious mateba customization kit case"
 	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is made for general-grade golden Matebas and comes with golden barrel attachments."
 
 /obj/item/storage/mateba_case/general/fill_preset_inventory()
@@ -89,7 +89,7 @@
 /obj/item/storage/beer_pack
 	name = "beer pack"
 	desc = "A pack of Aspen beer cans."
-	icon = 'icons/obj/items/drinkcans.dmi'
+	icon = 'icons/obj/items/food/drinkcans.dmi'
 	icon_state = "6_pack_6"
 	item_state = "souto_classic"
 	storage_slots = 6
@@ -139,6 +139,36 @@
 	new /obj/item/weapon/gun/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
+
+/obj/item/storage/box/action
+	name = "AC71 'Action' storing case"
+	desc = "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "m43case"
+	w_class = SIZE_SMALL
+	max_w_class = SIZE_TINY
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/pistol/action, /obj/item/ammo_magazine/pistol/action)
+
+/obj/item/storage/box/action/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/action(src)
+	new /obj/item/ammo_magazine/pistol/action(src)
+	new /obj/item/ammo_magazine/pistol/action(src)
+
+/obj/item/storage/box/plinker
+	name = "W62 'Whisper' storing case"
+	desc = "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "m43case"
+	w_class = SIZE_MEDIUM
+	max_w_class = SIZE_SMALL
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/pistol/holdout, /obj/item/ammo_magazine/pistol/holdout)
+
+/obj/item/storage/box/plinker/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
 
 /obj/item/storage/box/co2_knife
 	name = "M8 cartridge bayonet packaging"

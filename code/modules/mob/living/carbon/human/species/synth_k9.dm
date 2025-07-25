@@ -1,7 +1,6 @@
 //woof!
 /datum/species/synthetic/synth_k9
 	name = SPECIES_SYNTHETIC_K9
-	uses_skin_color = FALSE
 
 	slowdown = -1.75 //Faster than Human run, slower than rooney run
 

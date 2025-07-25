@@ -142,6 +142,7 @@
 /area/desert_dam/interior/dam_interior/hanger
 	name = "Engineering Hangar"
 	icon_state = "hangar"
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/interior/dam_interior/hangar_storage
 	name = "Engineering Hangar Storage"
@@ -236,6 +237,7 @@
 	name = "Command Substation"
 	icon_state = "northewestern_ss"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 /area/desert_dam/building/substation/northeast
 	name = "Command Substation"
@@ -689,6 +691,10 @@
 	linked_lz = DROPSHIP_LZ1
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	always_unpowered = FALSE
+	power_light = TRUE
+	power_equip = TRUE
+	power_environ = TRUE
 
 //Landing Pad for the Normandy. THIS IS NOT THE SHUTTLE AREA
 /area/desert_dam/exterior/landing_pad_two
@@ -697,6 +703,10 @@
 	linked_lz = DROPSHIP_LZ2
 	is_landing_zone = TRUE
 	minimap_color = MINIMAP_AREA_LZ
+	always_unpowered = FALSE
+	power_light = TRUE
+	power_equip = TRUE
+	power_environ = TRUE
 
 //Valleys
 //Near LZ
@@ -720,6 +730,10 @@
 	name = "Telecomms Valley"
 	icon_state = "valley_west"
 	linked_lz = DROPSHIP_LZ2
+
+/area/desert_dam/exterior/valley/valley_security
+	name = "Security Valley"
+	icon_state = "valley_west"
 
 // Generic bridge used in nightmare inserts... Can in fact be different places (sigh)
 /area/desert_dam/exterior/valley/valley_bridge

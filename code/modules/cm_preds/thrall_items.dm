@@ -9,6 +9,14 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
 	thrall = TRUE
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 	allowed = list(
 		/obj/item/weapon/gun/launcher/spike,
@@ -38,7 +46,7 @@
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
-		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/weapon/straight_razor,
 	)
@@ -55,6 +63,13 @@
 	name = "alien mesh suit"
 	color = "#b85440"
 	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight. It has been adapted for human physiology."
+
+/obj/item/clothing/gloves/yautja/thrall
+	name = "thrall bracers"
+	desc = "A pair of strange alien bracers, adapted for human biology."
+
+	color = "#b85440"
+	minimap_icon = "thrall"
 
 /obj/item/storage/box/bracer
 	name = "alien box"

@@ -23,6 +23,11 @@
 	med_hud_set_armor()
 	med_hud_set_status()
 
+	if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
+		death(last_damage_data)
+		blinded = TRUE
+		silent = 0
+		return
 
 
 /mob/living/carbon/human/adjustBrainLoss(amount)
@@ -177,7 +182,8 @@
 		if(prob(mut_prob))
 			var/list/obj/limb/candidates = list()
 			for(var/obj/limb/O in limbs)
-				if(O.status & (LIMB_ROBOT|LIMB_DESTROYED|LIMB_MUTATED|LIMB_SYNTHSKIN)) continue
+				if(O.status & (LIMB_ROBOT|LIMB_DESTROYED|LIMB_MUTATED|LIMB_SYNTHSKIN))
+					continue
 				candidates |= O
 			if(length(candidates))
 				var/obj/limb/O = pick(candidates)
@@ -279,7 +285,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //It automatically updates health status
 /mob/living/carbon/human/take_limb_damage(brute, burn, sharp = 0, edge = 0)
 	var/list/obj/limb/parts = get_damageable_limbs()
-	if(!length(parts)) return
+	if(!length(parts))
+		return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
 		apply_damage(brute, BRUTE, picked, sharp, edge)
@@ -308,7 +315,8 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		parts -= picked
 	updatehealth()
 
-	if(update) UpdateDamageIcon()
+	if(update)
+		UpdateDamageIcon()
 
 // damage MANY limbs, in random order
 /mob/living/carbon/human/take_overall_damage(brute, burn, used_weapon = null, limb_damage_chance = 80)
@@ -425,7 +433,8 @@ This function restores all limbs.
 		return TRUE
 
 	var/list/damagedata = list("damage" = damage)
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
+		return
 	damage = damagedata["damage"]
 
 	var/obj/limb/organ = null

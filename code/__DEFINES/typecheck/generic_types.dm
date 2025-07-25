@@ -14,6 +14,7 @@
 #define isclosedturf(A) (istype(A, /turf/closed))
 #define isweakref(D) (istype(D, /datum/weakref))
 #define isgenerator(A) (istype(A, /generator))
+#define istransparentturf(A) (HAS_TRAIT(A, TURF_Z_TRANSPARENT_TRAIT))
 
 
 //Byond type ids

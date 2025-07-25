@@ -52,14 +52,11 @@
 	area.power_change()
 
 /obj/structure/machinery/light_switch/power_change()
-
 	if(!otherarea)
-		if(powered(POWER_CHANNEL_LIGHT) || !src.needs_power)
+		if(powered(POWER_CHANNEL_LIGHT) || !needs_power)
 			stat &= ~NOPOWER
 		else
 			stat |= NOPOWER
-
-		updateicon()
 
 /obj/structure/machinery/light_switch/emp_act(severity)
 	. = ..()

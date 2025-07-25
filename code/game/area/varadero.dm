@@ -78,21 +78,19 @@
 	ceiling = CEILING_MAX
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 
 //landing zone computers
 
 /area/varadero/exterior/lz1_console
 	name = "New Varadero - Pontoon Dock"
 	requires_power = FALSE
-	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 	is_landing_zone = TRUE
 
 /area/varadero/exterior/lz1_console/two
 	name = "New Varadero - Palm Airfield"
 	requires_power = FALSE
-	is_resin_allowed = FALSE
 	minimap_color = MINIMAP_AREA_LZ
 
 //exterior areas
@@ -119,6 +117,7 @@
 
 /area/varadero/exterior/pontoon_beach/lz
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ1
 
 /area/varadero/exterior/eastbeach
 	name = "New Varadero - East Beach"
@@ -145,10 +144,16 @@
 
 /area/varadero/exterior/farocean
 	name = "New Varadero - Far Ocean"
-	is_resin_allowed = FALSE
 	flags_area = AREA_NOTUNNEL
 	icon_state = "varadero3"
 	minimap_color = MINIMAP_AREA_CONTESTED_ZONE
+
+/area/varadero/exterior/islands
+	name = "New Varadero - Islands"
+	icon_state = "varadero1"
+	allow_construction = FALSE
+	always_unpowered = 1
+
 
 //interior areas
 
@@ -171,7 +176,7 @@
 /area/varadero/interior/cargo
 	name = "New Varadero - Cargo"
 	icon_state = "req0"
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_ENGI
 
 /area/varadero/interior/hall_NW
@@ -181,7 +186,7 @@
 /area/varadero/interior/hall_N
 	name = "New Varadero - Hallway N"
 	icon_state = "hall2"
-	linked_lz = list(DROPSHIP_LZ1, DROPSHIP_LZ2)
+	linked_lz = DROPSHIP_LZ1
 
 /area/varadero/interior/hall_SE
 	name = "New Varadero - Hallway SE"
@@ -196,14 +201,13 @@
 /area/varadero/interior/morgue
 	name = "New Varadero - Morgue"
 	icon_state = "offices0"
-	linked_lz = DROPSHIP_LZ2
+	linked_lz = DROPSHIP_LZ1
 	minimap_color = MINIMAP_AREA_MEDBAY_CAVE
 
 /area/varadero/interior/medical
 	name = "New Varadero - Medical"
 	icon_state = "offices2"
 	minimap_color = MINIMAP_AREA_MEDBAY
-	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
 
 /area/varadero/interior/maintenance
 	name = "New Varadero - Central Maintenance"
@@ -218,7 +222,6 @@
 	name = "New Varadero - Research Maintenance"
 	icon_state = "tunnels1"
 	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
-	linked_lz = DROPSHIP_LZ1
 
 /area/varadero/interior/maintenance/security
 	name = "New Varadero - Sec. Maintenance"
@@ -276,13 +279,11 @@
 	name = "New Varadero - Basketball Court"
 	icon_state = "req4"
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
-	linked_lz = list(DROPSHIP_LZ2, DROPSHIP_LZ1)
 
 /area/varadero/interior/mess
 	name = "New Varadero - Mess Hall"
 	icon_state = "req2"
 	minimap_color = MINIMAP_AREA_COMMAND_CAVE
-	linked_lz = DROPSHIP_LZ2
 
 /area/varadero/interior/bunks
 	name = "New Varadero - Level 1 Quarters"
@@ -337,6 +338,10 @@
 	name = "New Varadero - Dig Site"
 	icon_state = "deepcaves3"
 
+/area/varadero/interior_protected/caves/makeshift_tent
+	name = "New Varadero - Makeshift Tent"
+	icon_state = "offices4"
+
 /area/varadero/interior_protected/caves/swcaves
 	name = "New Varadero - Southwest Caves"
 	icon_state = "deepcaves3"
@@ -352,3 +357,7 @@
 	icon_state = "predship"
 	minimap_color = MINIMAP_AREA_SHIP
 	unoviable_timer = FALSE
+
+/area/varadero/interior/research/clfship
+	name = "New Varadero - Unregistered Shuttle"
+	icon_state = "offices0"

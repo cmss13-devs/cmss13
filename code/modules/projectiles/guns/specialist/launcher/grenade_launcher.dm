@@ -7,6 +7,13 @@
 	throw_range = 10
 	force = 5
 
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/grenade_launchers.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/grenade_launchers.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/grenade_launchers_righthand.dmi'
+	)
+
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
 	reload_sound = 'sound/weapons/gun_shotgun_open2.ogg' //Played when inserting nade.
@@ -101,11 +108,11 @@
 	playsound(user, unload_sound, 30, 1)
 
 
-/obj/item/weapon/gun/launcher/grenade/attackby(obj/item/I, mob/user)
-	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
-		attach_to_gun(user,I)
+/obj/item/weapon/gun/launcher/grenade/attackby(obj/item/attacking_obj, mob/user)
+	if(istype(attacking_obj, /obj/item/attachable) && check_inactive_hand(user))
+		attach_to_gun(user, attacking_obj)
 		return
-	return cylinder.attackby(I, user)
+	return cylinder.attackby(attacking_obj, user)
 
 /obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
@@ -259,7 +266,7 @@
 /obj/item/weapon/gun/launcher/grenade/m92
 	name = "\improper M92 grenade launcher"
 	desc = "A heavy, 6-shot grenade launcher used by the Colonial Marines for area denial and big explosions."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
 	icon_state = "m92"
 	item_state = "m92"
 	unacidable = TRUE
@@ -296,7 +303,7 @@
 /obj/item/weapon/gun/launcher/grenade/m81
 	name = "\improper M81 grenade launcher"
 	desc = "A lightweight, single-shot low-angle grenade launcher used by the Colonial Marines for area denial and big explosions."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/grenade_launchers.dmi'
 	icon_state = "m81"
 	item_state = "m81" //needs a wield sprite.
 
@@ -313,33 +320,58 @@
 	..()
 	playsound(usr, unload_sound, 30, 1)
 
-/obj/item/weapon/gun/launcher/grenade/m81/riot/able_to_fire(mob/living/user)
+//-------------------------------------------------------
+//M84 GRENADE LAUNCHER
+
+/obj/item/weapon/gun/launcher/grenade/m84
+	name = "\improper M84 riot grenade launcher"
+	desc = "A lightweight, multiple-shot variant of the M81 grenade launcher retrofitted to launch non-lethal or concussive ammunition. Used by the Colonial Marines Military Police during riots."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/grenade_launchers.dmi'
+	icon_state = "m81"
+	item_state = "m81"
+	valid_munitions = list(
+		/obj/item/explosive/grenade/custom/teargas,
+		/obj/item/explosive/grenade/slug/baton,
+		/obj/item/explosive/grenade/smokebomb,
+		/obj/item/explosive/grenade/sebb,
+		/obj/item/explosive/grenade/smokebomb/airburst,
+		/obj/item/explosive/grenade/flashbang,
+		/obj/item/explosive/grenade/high_explosive/m15/rubber,
+	)
+	preload = /obj/item/explosive/grenade/slug/baton
+	disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien, /obj/item/explosive/grenade/incendiary/molotov)
+	actions_types = list(/datum/action/item_action/toggle_firing_level)
+
+	is_lobbing = TRUE
+	internal_slots = 3
+
+/obj/item/weapon/gun/launcher/grenade/m84/set_gun_config_values()
+	..()
+	set_fire_delay(FIRE_DELAY_TIER_4*4)
+
+/obj/item/weapon/gun/launcher/grenade/m84/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user))
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
 			return FALSE
 
-
-/obj/item/weapon/gun/launcher/grenade/m81/riot
-	name = "\improper M81 riot grenade launcher"
-	desc = "A lightweight, single-shot low-angle grenade launcher to launch tear gas grenades. Used by the Colonial Marines Military Police during riots."
-	valid_munitions = list(/obj/item/explosive/grenade/custom/teargas, /obj/item/explosive/grenade/slug/baton)
-	preload = /obj/item/explosive/grenade/custom/teargas
-
 //-------------------------------------------------------
-//M79 Grenade Launcher subtype of the M81
+//M85A1 Grenade Launcher subtype of the M81
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79//m79 variant for marines
-	name = "\improper M79 grenade launcher"
-	desc = "A heavy, low-angle 40mm grenade launcher. It's been in use since the Vietnam War, though this version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
-	icon_state = "m79"
-	item_state = "m79"
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1//m85a1 variant for marines
+	name = "\improper M85A1 grenade launcher"
+	desc = "A heavy, low-angle, break-action 40mm grenade launcher. Archaic in core design, inferior to more modern semi automatic M92, M95 grenade launchers and M94 impact launcher, but doesn't require a magnetic armature or an advanced expertice to operate, not to mention near flawless reliability, extremely low cost and low weight due to mostly being made out of polymer materials."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
+	icon_state = "m85a1"
+	item_state = "m85a1"
 	flags_equip_slot = SLOT_BACK
 	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
 	actions_types = list(/datum/action/item_action/toggle_firing_level)
+
+	pixel_x = -4
+	hud_offset = -4
 
 	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'
 	cocked_sound = 'sound/weapons/handling/m79_break_open.ogg'
@@ -351,21 +383,18 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/stock/m79,
 	)
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m79/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 18, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 11, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
-
-/obj/item/weapon/gun/launcher/grenade/m81/m79/set_bullet_traits()
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
 	))
+
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/m79
+	name = "\improper M79 grenade launcher"
+	desc = "A heavy, low-angle 40mm grenade launcher. Looks to be a hobbyist modification made to resemble a Vietnam War prop. This version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
+	icon_state = "m79"
+	icon_state = "m79"

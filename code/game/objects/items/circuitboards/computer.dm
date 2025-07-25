@@ -141,7 +141,11 @@
 
 /obj/item/circuitboard/computer/ordercomp
 	name = "Circuit board (Supply ordering console)"
-	build_path = /obj/structure/machinery/computer/ordercomp
+	build_path = /obj/structure/machinery/computer/supply
+
+/obj/item/circuitboard/computer/ordercomp/upp
+	name = "Circuit board (UPP Supply ordering console)"
+	build_path = /obj/structure/machinery/computer/supply/upp
 
 /obj/item/circuitboard/computer/supply_drop_console
 	name = "Circuit board (Supply Drop Console)"
@@ -151,19 +155,23 @@
 	name = "Circuit board (Supply Drop Console)"
 	build_path = /obj/structure/machinery/computer/supply_drop_console/limited
 
+/obj/item/circuitboard/computer/supplycomp/upp
+	name = "Circuit board (General Supply Storage console)"
+	build_path = /obj/structure/machinery/computer/supply/asrs/upp
+
 /obj/item/circuitboard/computer/supplycomp
 	name = "Circuit board (ASRS console)"
-	build_path = /obj/structure/machinery/computer/supplycomp
+	build_path = /obj/structure/machinery/computer/supply/asrs
 
 	var/contraband_enabled = FALSE
 	var/black_market_lock = FALSE
 
-/obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supplycomp/SC)
+/obj/item/circuitboard/computer/supplycomp/construct(obj/structure/machinery/computer/supply/asrs/SC)
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
 		SC.lock_black_market(black_market_lock)
 
-/obj/item/circuitboard/computer/supplycomp/disassemble(obj/structure/machinery/computer/supplycomp/SC)
+/obj/item/circuitboard/computer/supplycomp/disassemble(obj/structure/machinery/computer/supply/asrs/SC)
 	if(SC.can_order_contraband)
 		contraband_enabled = TRUE
 	if(SC.black_market_lockout)
@@ -171,6 +179,12 @@
 	if (..(SC))
 		SC.toggle_contraband(contraband_enabled)
 		SC.lock_black_market(black_market_lock)
+
+//No black market under communism
+/obj/item/circuitboard/computer/supplycomp/upp/attackby(obj/item/tool, mob/user)
+	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
+		to_chat(user, SPAN_WARNING("You try to pulse the circuit board, but nothing happens."))
+		return
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/tool, mob/user)
 	if(HAS_TRAIT(tool, TRAIT_TOOL_MULTITOOL))
@@ -206,7 +220,7 @@
 			return
 
 		playsound(tool, 'sound/machines/lockenable.ogg', 25)
-		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),\
+		user.visible_message(SPAN_NOTICE("[user] attaches [tool] to [src]."),
 		SPAN_NOTICE("You begin to fix any tampering to [src]."))
 		tool.icon_state = "[tool.icon_state]_on"
 
@@ -223,16 +237,16 @@
 
 /obj/item/circuitboard/computer/supplycomp/vehicle
 	name = "Circuit board (vehicle ASRS console)"
-	build_path = /obj/structure/machinery/computer/supplycomp/vehicle
+	build_path = /obj/structure/machinery/computer/supply/asrs/vehicle
 	var/spent = FALSE //so that they can't just reconstruct the console to get another APC
 	var/tank_unlocked = FALSE
 
-/obj/item/circuitboard/computer/supplycomp/vehicle/construct(obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+/obj/item/circuitboard/computer/supplycomp/vehicle/construct(obj/structure/machinery/computer/supply/asrs/vehicle/SCV)
 	if (..(SCV))
 		SCV.spent = spent
 		SCV.tank_unlocked = tank_unlocked
 
-/obj/item/circuitboard/computer/supplycomp/vehicle/disassemble(obj/structure/machinery/computer/supplycomp/vehicle/SCV)
+/obj/item/circuitboard/computer/supplycomp/vehicle/disassemble(obj/structure/machinery/computer/supply/asrs/vehicle/SCV)
 	if (..(SCV))
 		spent = SCV.spent
 		tank_unlocked = SCV.tank_unlocked

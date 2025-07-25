@@ -4,6 +4,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "reagent_analyzer"
 	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
+	health = STRUCTURE_HEALTH_REINFORCED
 
 	var/mob/last_used
 	var/obj/item/reagent_container/sample = null //Object containing our sample
@@ -109,7 +110,7 @@
 	else
 		var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 		report.name = "Analysis of ERROR"
-		report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
+		report.info += "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The [MAIN_SHIP_NAME], [time2text(world.timeofday, "MM/DD")]/[GLOB.game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
@@ -120,7 +121,7 @@
 
 	report.name = "Analysis of [name]"
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	report.info += "<center><img src = [asset.get_url_mappings()["wylogo.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
+	report.info += "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
 	if(sample_number)
 		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
 	report.generate(src, admin_spawned)

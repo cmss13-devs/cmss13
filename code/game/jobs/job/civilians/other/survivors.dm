@@ -1,5 +1,7 @@
 #define SURVIVOR_TO_TOTAL_SPAWN_RATIO 1/9
 
+GLOBAL_LIST_EMPTY(spawned_survivors)
+
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
 	selection_class = "job_special"
@@ -12,6 +14,8 @@
 	var/story_text
 	/// Whether or not the survivor is an inherently hostile to marines.
 	var/hostile = FALSE
+	/// How many survs have been spawned total
+	var/static/total_spawned = 0
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
@@ -32,9 +36,23 @@
 		"
 		to_chat_spaced(survivor, html = entrydisplay)
 
+/datum/job/civilian/survivor/can_play_role_in_scenario(client/client)
+	. = ..()
+	if(!.)
+		return .
+
+	if(SSnightmare.get_scenario_is_hostile_survivor())
+		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_HOSTILE)
+	else
+		return HAS_FLAG(client.prefs?.toggles_survivor, PLAY_SURVIVOR_NON_HOSTILE)
+
 /datum/job/civilian/survivor/spawn_in_player(mob/new_player/NP)
 	. = ..()
+	total_spawned++
+
 	var/mob/living/carbon/human/H = .
+
+	GLOB.spawned_survivors += WEAKREF(H)
 
 	var/list/potential_spawners = list()
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
@@ -44,6 +62,12 @@
 					potential_spawners += spawner
 			if(length(potential_spawners))
 				break
+	if(!length(potential_spawners))
+		// Generally this shouldn't happen since role authority shouldn't be rolling us for a survivor in a hostile scenario
+		message_admins("Failed to spawn_in_player [key_name_admin(H)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
+		H.send_to_lobby()
+		qdel(H)
+		return null
 	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
 	H.forceMove(get_turf(picked_spawner))
 
@@ -187,16 +211,29 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
-	if(length(CO_survivor_types))
+	var/list/CO_insert_survivor_types = SSmapping.configs[GROUND_MAP].CO_insert_survivor_types
+	if(length(CO_survivor_types) || length(CO_insert_survivor_types))
 		total_positions = 1
 		spawn_positions = 1
 	return spawn_positions
 
 /datum/job/civilian/survivor/commanding_officer/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
-	if(picked_spawner.CO_equipment)
+	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+	if(picked_spawner.CO_equipment) //insert with CO
 		arm_equipment(equipping_human, picked_spawner.CO_equipment, FALSE, TRUE)
 		return
-	else
-		var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
+	else if(length(CO_survivor_types)) //map with guarenteed CO slot
 		arm_equipment(equipping_human, pick(CO_survivor_types), FALSE, TRUE)
+		return
+	else //map that has an insert that enabled rolling for CO but the insert didn't fire and there is no default CO equipment, thus equip as a normal survivor
+		var/preferred_variant = ANY_SURVIVOR
+		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
+			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
+			if(MAX_SURVIVOR_PER_TYPE[preferred_variant] != -1 && SSticker.mode.survivors_by_type_amounts[preferred_variant] && SSticker.mode.survivors_by_type_amounts[preferred_variant] >= MAX_SURVIVOR_PER_TYPE[preferred_variant])
+				preferred_variant = ANY_SURVIVOR
+
+		var/list/survivor_types = preferred_variant != ANY_SURVIVOR && length(SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant]) ? SSmapping.configs[GROUND_MAP].survivor_types_by_variant[preferred_variant] : SSmapping.configs[GROUND_MAP].survivor_types
+		arm_equipment(equipping_human, pick(survivor_types), FALSE, TRUE)
+
+		SSticker.mode.survivors_by_type_amounts[preferred_variant] += 1
 		return

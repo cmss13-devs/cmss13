@@ -33,8 +33,8 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 /datum/authority/branch/role
 	var/name = "Role Authority"
 
-	var/list/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
-	var/list/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
+	var/list/datum/job/roles_by_path //Master list generated when role aithority is created, listing every role by path, including variable roles. Great for manually equipping with.
+	var/list/datum/job/roles_by_name //Master list generated when role authority is created, listing every default role by name, including those that may not be regularly selected.
 	var/list/roles_for_mode //Derived list of roles only for the game mode, generated when the round starts.
 	var/list/castes_by_path //Master list generated when role aithority is created, listing every caste by path.
 	var/list/castes_by_name //Master list generated when role authority is created, listing every default caste by name.
@@ -58,8 +58,6 @@ GLOBAL_VAR_INIT(players_preassigned, 0)
 											/datum/job/antag,
 											/datum/job/special,
 											/datum/job/special/provost,
-											/datum/job/special/uaac,
-											/datum/job/special/uaac/tis,
 											/datum/job/special/uscm,
 											)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
@@ -215,7 +213,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	else
 		chance = 20
 
-	if(prob(chance) && !Check_WO())
+	if((prob(chance) || SSnightmare.get_scenario_value("predator_round")) && !Check_WO())
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
@@ -342,7 +340,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/i = 0
 		var/j
 		while(++i < 3) //Get two passes.
-			if(!length(roles_to_iterate) || prob(65)) break //Base chance to become a marine when being assigned randomly, or there are no roles available.
+			if(!length(roles_to_iterate) || prob(65))
+				break //Base chance to become a marine when being assigned randomly, or there are no roles available.
 			j = pick(roles_to_iterate)
 			J = roles_to_iterate[j]
 
@@ -352,7 +351,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				continue
 
 			if(assign_role(M, J)) //Check to see if they can actually get it.
-				if(J.current_positions >= J.spawn_positions) roles_to_iterate -= j
+				if(J.current_positions >= J.spawn_positions)
+					roles_to_iterate -= j
 				return roles_to_iterate
 
 	//If they fail the two passes, or no regular roles are available, they become a marine regardless.
@@ -366,12 +366,14 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			J.current_positions++
 			return TRUE
 
-/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE)
+/datum/authority/branch/role/proc/check_role_entry(mob/new_player/M, datum/job/J, latejoin = FALSE, faction)
 	if(jobban_isbanned(M, J.title))
 		return FALSE
 	if(J.role_ban_alternative && jobban_isbanned(M, J.role_ban_alternative))
 		return FALSE
 	if(!J.can_play_role(M.client))
+		return FALSE
+	if(!J.can_play_role_in_scenario(M.client))
 		return FALSE
 	if(!J.check_whitelist_status(M))
 		return FALSE
@@ -379,6 +381,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		return FALSE
 	if(latejoin && !J.late_joinable)
 		return FALSE
+	if(faction && faction != J.faction_menu)
+		return FALSE
+
 	return TRUE
 
 /datum/authority/branch/role/proc/free_role(datum/job/J, latejoin = 1) //Want to make sure it's a job, and nothing like a MODE or special role.
@@ -442,6 +447,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	var/mob/living/carbon/human/new_human = new_mob
 
+	if(!late_join)
+		new_human.client?.prefs.update_slot(new_job.title, 10 SECONDS)
+
 	if(new_job.job_options && new_human?.client?.prefs?.pref_special_job_options[new_job.title])
 		new_job.handle_job_options(new_human.client.prefs.pref_special_job_options[new_job.title])
 
@@ -494,11 +502,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			join_turf = get_turf(pick(GLOB.spawns_by_squad_and_job[assigned_squad][new_job.type]))
 		else if(GLOB.spawns_by_job[new_job.type])
 			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.type]))
+		else if(GLOB.spawns_by_job[new_job.title])
+			join_turf = get_turf(pick(GLOB.spawns_by_job[new_job.title]))
 		else if(assigned_squad && GLOB.latejoin_by_squad[assigned_squad])
 			join_turf = get_turf(pick(GLOB.latejoin_by_squad[assigned_squad]))
 		else
 			join_turf = get_turf(pick(GLOB.latejoin))
 		new_human.forceMove(join_turf)
+
+	new_job.load_loadout(new_human)
 
 	for(var/cardinal in GLOB.cardinals)
 		var/obj/structure/machinery/cryopod/pod = locate() in get_step(new_human, cardinal)
@@ -543,9 +555,9 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
 			mixed_squads += squad
 
-	var/preferred_squad
-	if(human?.client?.prefs?.preferred_squad)
-		preferred_squad = human.client.prefs.preferred_squad
+	var/preferred_squad = human.client?.prefs?.preferred_squad
+	if(preferred_squad == "None")
+		preferred_squad = null
 
 	var/datum/squad/lowest
 	for(var/datum/squad/squad in mixed_squads)
@@ -553,24 +565,15 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 
-		if(preferred_squad == "None")
+		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
 			if(squad.put_marine_in_squad(human))
 				return
 
-		else if(squad.name == preferred_squad) //fav squad has a spot for us, no more searching needed.
-			if(squad.put_marine_in_squad(human))
-				return
-
-		if(!lowest)
+		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
 			lowest = squad
-
-		else if(slot_check)
-			if(squad.roles_in[slot_check] < lowest.roles_in[slot_check])
-				lowest = squad
-
-	if(!lowest || !lowest.put_marine_in_squad(human))
-		to_world("Warning! Bug in get_random_squad()!")
-		return
+	if(!lowest)
+		lowest = locate(/datum/squad/marine/cryo) in squads
+	lowest.put_marine_in_squad(human)
 	return
 
 /datum/authority/branch/role/proc/get_caste_by_text(name)
@@ -618,6 +621,8 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			M = /mob/living/carbon/xenomorph/predalien
 		if(XENO_CASTE_HELLHOUND)
 			M = /mob/living/carbon/xenomorph/hellhound
+		if(XENO_CASTE_KING)
+			M = /mob/living/carbon/xenomorph/king
 	return M
 
 

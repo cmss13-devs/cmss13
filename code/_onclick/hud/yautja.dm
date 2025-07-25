@@ -6,6 +6,9 @@
 	pred_power_icon.screen_loc = ui_predator_power
 	infodisplay += pred_power_icon
 
+/mob/living/carbon/human/yautja
+	skin_color = "tan"
+	body_type = "pred"
 
 /mob/living/carbon/human/yautja/create_hud()
 	if(client && !hud_used)

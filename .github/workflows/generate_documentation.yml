@@ -5,16 +5,18 @@ on:
     - master
 jobs:
   generate_documentation:
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     runs-on: ubuntu-latest
     concurrency: gen-docs
     steps:
       - uses: actions/checkout@v3
       - name: Setup cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/SpacemanDMM
-          key: ${{ runner.os }}-spacemandmm-${{ secrets.CACHE_PURGE_KEY }}
+          key: ${{ runner.os }}-spacemandmm-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-spacemandmm-
       - name: Install SpacemanDMM
         run: bash tools/ci/install_spaceman_dmm.sh dmdoc
       - name: Generate documentation

@@ -1,9 +1,88 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/stack/rods,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/office_complex)
+"ab" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/wall_thermite,
+/area/bigredv2/outside/office_complex)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/se)
+"ad" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/office_complex)
+"ae" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/wall_thermite,
+/area/bigredv2/outside/office_complex)
+"af" = (
+/obj/item/frame/table,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/office_complex)
+"ag" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/office_complex)
+"ah" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/office_complex)
 "ai" = (
 /turf/open/mars,
 /area/bigredv2/outside/e)
+"aj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/office_complex)
+"ak" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "wy5"
+	},
+/area/bigredv2/outside/office_complex)
+"al" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/office_complex)
+"am" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/nsg23{
+	current_rounds = 0
+	},
+/turf/open/floor/whiteyellowfull/east,
+/area/bigredv2/outside/office_complex)
+"an" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/weldingtool/simple,
+/turf/open/floor/whiteyellowfull/east,
+/area/bigredv2/outside/office_complex)
+"ao" = (
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating,
+/area/bigredv2/outside/office_complex)
 "ap" = (
 /turf/closed/wall/solaris,
+/area/bigredv2/outside/office_complex)
+"aq" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/office_complex)
+"ar" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "wy16"
+	},
 /area/bigredv2/outside/office_complex)
 "as" = (
 /obj/structure/window/framed/solaris,
@@ -13,15 +92,66 @@
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
+"at" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/office_complex)
+"au" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 8
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
+"av" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/stack/sheet/metal,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
+"aw" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/office_complex)
 "ax" = (
 /obj/structure/window_frame/solaris,
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
-"aC" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy20"
+"ay" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/structure/girder/displaced,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/office_complex)
+"az" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
 	},
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/office_complex)
+"aA" = (
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/office_complex)
+"aB" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "wy17"
+	},
+/area/bigredv2/outside/office_complex)
+"aC" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "aD" = (
 /turf/closed/shuttle/ert{
@@ -33,35 +163,96 @@
 	icon_state = "wy25"
 	},
 /area/bigredv2/outside/office_complex)
+"aF" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/office_complex)
+"aG" = (
+/obj/effect/landmark/crap_item,
+/obj/item/frame/rack,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/office_complex)
+"aH" = (
+/obj/item/frame/rack,
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/office_complex)
+"aI" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/office_complex)
+"aJ" = (
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
+	},
+/obj/effect/landmark/corpsespawner/wygoon,
+/obj/item/weapon/gun/pistol/m4a3/training{
+	name = "dented M4A3 service pistol"
+	},
+/obj/item/limb/leg/r_leg,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/c)
+"aK" = (
+/obj/structure/prop/invuln/fire,
+/turf/closed/shuttle/ert{
+	icon_state = "wy20"
+	},
+/area/bigredv2/outside/office_complex)
 "aL" = (
 /obj/effect/decal/mecha_wreckage/ripley/firefighter,
 /turf/open/floor/mech_bay_recharge_floor,
 /area/bigredv2/outside/office_complex)
+"aM" = (
+/obj/structure/girder/displaced,
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/bigredv2/outside/office_complex)
 "aN" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy21"
-	},
+/obj/structure/girder/displaced,
+/obj/item/stack/cable_coil,
+/turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "aO" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy22"
-	},
+/obj/item/stack/rods,
+/obj/structure/girder/displaced,
+/turf/open/floor/plating/platingdmg3,
+/area/bigredv2/outside/office_complex)
+"aP" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "aQ" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy23"
 	},
 /area/bigredv2/outside/office_complex)
+"aR" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating/panelscorched,
+/area/bigredv2/outside/office_complex)
+"aS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north{
+	name = "Interview Room APC"
+	},
+/turf/open/floor/platingdmg1,
+/area/bigredv2/outside/office_complex)
 "aT" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy18"
 	},
 /area/bigredv2/outside/office_complex)
+"aU" = (
+/obj/item/storage/belt/medical/lifesaver/wy,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
 	},
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "aX" = (
 /turf/closed/shuttle/ert{
@@ -98,17 +289,8 @@
 	icon_state = "wy16"
 	},
 /area/bigredv2/outside/office_complex)
-"bl" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_top_left,
-/area/bigredv2/outside/office_complex)
 "bm" = (
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
-/area/bigredv2/outside/office_complex)
-"bn" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_middle,
-/area/bigredv2/outside/office_complex)
-"bo" = (
-/turf/open/shuttle/dropship/can_surgery/light_grey_top_right,
 /area/bigredv2/outside/office_complex)
 "bq" = (
 /turf/closed/shuttle/ert{
@@ -202,6 +384,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cL" = (
+/obj/structure/prop/invuln/fire,
 /turf/closed/shuttle/ert{
 	icon_state = "leftengine_3";
 	opacity = 0
@@ -234,6 +417,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "cU" = (
+/obj/structure/prop/invuln/fire,
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_2";
 	opacity = 0
@@ -276,22 +460,12 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/office_complex)
-"dm" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy1"
-	},
-/area/bigredv2/outside/se)
 "dn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 2
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/se)
-"do" = (
-/turf/closed/shuttle/ert{
-	icon_state = "wy3"
-	},
-/area/bigredv2/outside/se)
+/area/bigredv2/outside/office_complex)
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
@@ -561,15 +735,12 @@
 	},
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
-"uL" = (
-/obj/item/weapon/gun/rifle/nsg23/no_lock,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
-/area/bigredv2/outside/office_complex)
 "va" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "ve" = (
+/obj/item/map/big_red_map,
 /turf/open/shuttle/dropship/can_surgery/light_grey_top,
 /area/bigredv2/outside/office_complex)
 "vl" = (
@@ -589,6 +760,7 @@
 	dir = 8
 	},
 /obj/item/limb/hand/l_hand,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_leader,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "wn" = (
@@ -624,7 +796,7 @@
 /area/bigredv2/outside/c)
 "xx" = (
 /obj/structure/surface/rack,
-/obj/item/map/big_red_map,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "xU" = (
@@ -657,7 +829,8 @@
 /area/bigredv2/outside/office_complex)
 "zq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Office Complex Janitor Room"
+	name = "\improper Office Complex Janitor Room";
+	welded = 1
 	},
 /turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
@@ -859,6 +1032,7 @@
 "HE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "HG" = (
@@ -931,18 +1105,7 @@
 /area/bigredv2/outside/office_complex)
 "LQ" = (
 /obj/structure/surface/rack,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
-/area/bigredv2/outside/office_complex)
-"Mb" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/blood,
-/obj/item/limb/leg/r_leg,
-/obj/item/weapon/gun/pistol/m4a3/training{
-	name = "dented M4A3 service pistol"
-	},
-/obj/effect/landmark/corpsespawner/wygoon,
+/obj/item/ammo_box/magazine/misc/mre/pmc,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Ml" = (
@@ -984,14 +1147,11 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/office_complex)
 "NZ" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/spawner/gibspawner/human,
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/clothing/under/marine/veteran/pmc,
-/obj/item/clothing/head/helmet/marine/veteran/pmc,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/black,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Oi" = (
@@ -1018,9 +1178,8 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "OX" = (
-/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "Pp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1054,6 +1213,8 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "Rd" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/wall_thermite,
 /area/bigredv2/outside/office_complex)
 "Sf" = (
@@ -1067,9 +1228,8 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "Sy" = (
-/obj/structure/surface/rack,
 /obj/item/xeno_restraints,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
 "SD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1121,7 +1281,7 @@
 /area/bigredv2/outside/office_complex)
 "Vg" = (
 /obj/effect/landmark/objective_landmark/medium,
-/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
+/turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "Vi" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1137,6 +1297,7 @@
 "VG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "Wb" = (
@@ -1177,11 +1338,15 @@
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "WV" = (
-/obj/structure/bed/chair/dropship/passenger{
-	dir = 4
+/obj/effect/decal/cleanable/blood{
+	dir = 1;
+	icon_state = "gib6"
 	},
-/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_engineer,
-/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "WZ" = (
 /obj/item/stack/rods,
@@ -1461,10 +1626,10 @@ Hq
 xr
 FV
 ap
-ap
-ap
-AF
-QD
+aq
+WA
+aF
+ay
 LN
 oE
 tG
@@ -1488,17 +1653,17 @@ Hq
 Vy
 FV
 SK
-SK
-ap
+aJ
 aC
-bj
+aC
+az
 bz
 bF
 bJ
-bj
-bz
-bF
-bJ
+ar
+aq
+Tb
+ao
 bj
 bz
 bF
@@ -1506,8 +1671,8 @@ cD
 cL
 cT
 dc
-Eq
-Tb
+ad
+aa
 Eq
 "}
 (11,1,1) = {"
@@ -1519,13 +1684,13 @@ SK
 WB
 aN
 WV
-Mb
+Tb
 hl
 Al
 KK
 Nc
 OX
-Al
+Tb
 ws
 hl
 hl
@@ -1534,7 +1699,7 @@ cM
 cM
 cM
 dg
-tG
+ab
 tG
 "}
 (12,1,1) = {"
@@ -1542,17 +1707,17 @@ XS
 ap
 ap
 ap
-aC
+aK
 aT
 aO
-bl
+Tb
 dz
 bc
 bc
 dB
 bc
 bc
-bc
+UB
 bc
 Bu
 dF
@@ -1561,21 +1726,21 @@ zH
 ws
 hl
 cE
-dm
+dg
 Is
 "}
 (13,1,1) = {"
 XS
 ap
 qk
-Eq
-aN
+aR
+aM
 Sy
-KK
-bm
-wO
+aG
+UB
+av
 ql
-oc
+au
 oc
 oc
 oc
@@ -1595,12 +1760,12 @@ Wt
 va
 Xm
 yI
-aC
-aO
-Al
-Al
+aq
+Eq
+aH
+Eq
 Vg
-hl
+aw
 qw
 ws
 hl
@@ -1615,7 +1780,7 @@ KK
 KK
 Wd
 cF
-do
+di
 ds
 "}
 (15,1,1) = {"
@@ -1625,15 +1790,15 @@ zl
 aD
 Ko
 aW
-uL
-bn
+UB
+UB
 NZ
 jx
 dE
 dE
 bc
 bc
-bc
+aU
 bc
 bc
 Gx
@@ -1651,8 +1816,8 @@ ba
 Hr
 aE
 aQ
-Al
-Al
+Tb
+UB
 vw
 wm
 wO
@@ -1669,7 +1834,7 @@ ue
 Fc
 UR
 cE
-dm
+dg
 Ct
 "}
 (17,1,1) = {"
@@ -1677,12 +1842,12 @@ ka
 ap
 MJ
 Tb
-aN
-KK
+aP
+aI
 Qr
 bm
 hl
-hl
+ws
 hl
 zH
 ZR
@@ -1707,7 +1872,7 @@ ap
 aE
 aX
 aQ
-bo
+AF
 bc
 bc
 uC
@@ -1723,7 +1888,7 @@ Eo
 ql
 oc
 cF
-do
+di
 jl
 "}
 (19,1,1) = {"
@@ -1733,8 +1898,8 @@ of
 of
 of
 Ym
-aN
-ql
+WA
+aA
 Fi
 oc
 Al
@@ -1746,11 +1911,11 @@ ql
 wO
 oc
 cF
-cN
+ak
 cN
 cN
 di
-Tk
+ac
 jl
 "}
 (20,1,1) = {"
@@ -1760,12 +1925,12 @@ ka
 Au
 Au
 qY
-aE
-bq
+aO
+aB
 bA
 bG
 bJ
-bq
+at
 bA
 bG
 bJ
@@ -1777,7 +1942,7 @@ cO
 cU
 dd
 Rd
-Tk
+ac
 Na
 "}
 (21,1,1) = {"
@@ -1801,10 +1966,10 @@ uw
 AF
 Cy
 JH
-Cy
-UB
-Rd
-Tk
+ah
+af
+ae
+ac
 Na
 "}
 (22,1,1) = {"
@@ -1818,7 +1983,7 @@ WB
 ap
 UB
 ap
-Cy
+aS
 nn
 Oi
 WB
@@ -1827,9 +1992,9 @@ Cy
 ap
 zv
 UB
-Kp
+al
 QD
-UB
+ag
 WB
 Tk
 Na
@@ -1855,7 +2020,7 @@ ap
 vH
 UB
 Fp
-Kp
+aj
 Cy
 dk
 Tk
@@ -1879,7 +2044,7 @@ ap
 Yd
 ie
 zq
-pu
+an
 Cy
 Cz
 Pv
@@ -1908,7 +2073,7 @@ UB
 Db
 UB
 zh
-pu
+am
 OH
 hU
 ap

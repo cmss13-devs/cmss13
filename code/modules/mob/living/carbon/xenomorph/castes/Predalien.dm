@@ -35,9 +35,9 @@
 	caste_type = XENO_CASTE_PREDALIEN
 	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
-	icon = 'icons/mob/xenos/predalien.dmi'
-	icon_xeno = 'icons/mob/xenos/predalien.dmi'
-	icon_xenonid = 'icons/mob/xenos/predalien.dmi'
+	icon = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
+	icon_xenonid = 'icons/mob/xenos/castes/tier_4/predalien.dmi'
 	icon_state = "Predalien Walking"
 	speaking_noise = 'sound/voice/predalien_click.ogg'
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -56,7 +56,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/feralrush,
@@ -70,6 +70,7 @@
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Predalien_1","Predalien_2","Predalien_3")
 	weed_food_states_flipped = list("Predalien_1","Predalien_2","Predalien_3")
+
 	var/smashing = FALSE
 	/// If the pred alert/player notif should happen when the predalien spawns
 	var/should_announce_spawn = TRUE
@@ -94,7 +95,7 @@
 	if(!loc)
 		return FALSE
 
-	yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(loc)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
+	elder_overseer_message("An abomination has been detected at [get_area_name(loc)]. Exterminate it immediately. Heavy Armory unlocked.")
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 
 	to_chat(src, {"

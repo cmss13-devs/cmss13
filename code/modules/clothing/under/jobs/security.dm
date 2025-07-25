@@ -13,6 +13,10 @@
 	name = "warden's jumpsuit"
 	icon_state = "warden"
 	item_state = "r_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
+	)
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -28,6 +32,10 @@
 	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
 	icon_state = "security"
 	item_state = "r_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
+	)
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -43,6 +51,10 @@
 	name = "dispatcher's uniform"
 	desc = "A dress shirt and khakis with a security patch sewn on."
 	icon_state = "dispatch"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
+	)
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -60,6 +72,10 @@
 	desc = "It's made of a slightly sturdier material, to allow for robust protection."
 	icon_state = "redshirt2"
 	item_state = "r_suit"
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
+	)
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -79,28 +95,18 @@
 	icon_state = "warden_corporate"
 	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/tactical
-	name = "tactical jumpsuit"
-	desc = "It's made of a slightly sturdier material than standard jumpsuits, to allow for robust protection."
-	icon_state = "swatunder"
-	armor_melee = CLOTHING_ARMOR_LOW
-	armor_bullet = CLOTHING_ARMOR_LOW
-	armor_laser = CLOTHING_ARMOR_NONE
-	armor_energy = CLOTHING_ARMOR_NONE
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
-	siemens_coefficient = 0.9
-
 /*
  * Detective
  */
-/obj/item/clothing/under/det
-	name = "hard-worn suit"
-	desc = "Someone who wears this means business."
-	icon_state = "detective"
-	item_state = "det"
+/obj/item/clothing/under/detective
+	name = "\improper detective suit pants"
+	desc = "A washed out white shirt with a black tie and brown slacks."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_department/security.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_department/security.dmi',
+	)
+	icon_state = "detective_brown"
+	worn_state = "detective_brown"
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -109,33 +115,15 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	siemens_coefficient = 0.9
 
-/obj/item/clothing/under/det/black
-	icon_state = "detective2"
+/obj/item/clothing/under/detective/neutral
+	name = "brown suit pants"
 
-/obj/item/clothing/under/det/slob
-	icon_state = "polsuit"
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-
-
-/*
- * Navy uniforms
- */
-
-/obj/item/clothing/under/rank/security/navyblue
-	name = "security officer's uniform"
-	desc = "The latest in fashionable security outfits."
-	icon_state = "officerblueclothes"
-	item_state = "officerblueclothes"
-	flags_jumpsuit = FALSE
-
-/obj/item/clothing/under/rank/head_of_security/navyblue
-	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
-	name = "head of security's uniform"
-	icon_state = "hosblueclothes"
-	item_state = "hosblueclothes"
-	flags_jumpsuit = FALSE
+/obj/item/clothing/under/detective/grey
+	name = "\improper grey suit pants"
+	desc = "A washed out white shirt with a red tie and black slacks."
+	icon_state = "detective_grey"
+	worn_state = "detective_grey"
 
 /obj/item/clothing/under/rank/warden/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."

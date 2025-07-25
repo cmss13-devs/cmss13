@@ -38,7 +38,7 @@
 							M.visible_message(SPAN_WARNING("\The [M] tried to open \the [backpack] on [src] but instead gets a tail swipe to the head!"))
 							return FALSE
 
-					M.visible_message(SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]"), \
+					M.visible_message(SPAN_NOTICE("\The [M] starts opening \the [backpack] on [src]"),
 					SPAN_NOTICE("You begin to open \the [backpack] on [src], so you can check its contents."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 					if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC)) //Timed opening.
 						to_chat(M, SPAN_WARNING("You were interrupted!"))
@@ -49,10 +49,10 @@
 					backpack.open(M)
 					return
 			if(stat == DEAD)
-				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."), \
+				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src], but nothing happens."),
 				SPAN_WARNING("You poke \the [src], but nothing happens."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 			else
-				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src]."), \
+				M.visible_message(SPAN_WARNING("\The [M] pokes \the [src]."),
 				SPAN_WARNING("You poke \the [src]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 
 		if(INTENT_GRAB)
@@ -80,7 +80,8 @@
 
 		if(INTENT_HARM)
 			var/datum/unarmed_attack/attack = M.species.unarmed
-			if(!attack.is_usable(M)) attack = M.species.secondary_unarmed
+			if(!attack.is_usable(M))
+				attack = M.species.secondary_unarmed
 			if(!attack.is_usable(M))
 				return 0
 
@@ -107,110 +108,116 @@
 
 //Hot hot Aliens on Aliens action.
 //Actually just used for eating people.
-/mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/M)
-	if (M.fortify || HAS_TRAIT(M, TRAIT_ABILITY_BURROWED))
+/mob/living/carbon/xenomorph/attack_alien(mob/living/carbon/xenomorph/xeno)
+	if (xeno.fortify || HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return XENO_NO_DELAY_ACTION
 
-	if(islarva(M)) //Larvas can't eat people
-		M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
+	if(islarva(xeno)) //Larvas can't eat people
+		xeno.visible_message(SPAN_DANGER("[xeno] nudges its head against \the [src]."),
 		SPAN_DANGER("We nudge our head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
 		return
 
-	switch(M.a_intent)
+	switch(xeno.a_intent)
 		if(INTENT_HELP)
 			if(on_fire)
-				extinguish_mob(M)
-			else if(M.zone_selected == "head")
-				M.attempt_headbutt(src)
+				extinguish_mob(xeno)
+			else if(flags_emote & EMOTING_HEADBUTT)
+				xeno.attempt_headbutt(src)
 				return XENO_NONCOMBAT_ACTION
-			else if(M.zone_selected == "groin")
-				M.attempt_tailswipe(src)
+			else if(flags_emote & EMOTING_TAIL_SWIPE)
+				xeno.attempt_tailswipe(src)
+				return XENO_NONCOMBAT_ACTION
+			else if(xeno.zone_selected == "head")
+				xeno.attempt_headbutt(src)
+				return XENO_NONCOMBAT_ACTION
+			else if(xeno.zone_selected == "groin")
+				xeno.attempt_tailswipe(src)
 				return XENO_NONCOMBAT_ACTION
 			else
-				M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its claws."), \
+				xeno.visible_message(SPAN_NOTICE("\The [xeno] caresses \the [src] with its claws."),
 				SPAN_NOTICE("We caress \the [src] with our claws."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 		if(INTENT_GRAB)
-			if(M == src || anchored)
+			if(xeno == src || anchored)
 				return XENO_NO_DELAY_ACTION
 
-			if(Adjacent(M)) //Logic!
-				M.start_pulling(src)
+			if(Adjacent(xeno)) //Logic!
+				xeno.start_pulling(src)
 
-				M.visible_message(SPAN_WARNING("[M] grabs \the [src]!"), \
+				xeno.visible_message(SPAN_WARNING("[xeno] grabs \the [src]!"),
 				SPAN_WARNING("You grab \the [src]!"), null, 5, CHAT_TYPE_XENO_FLUFF)
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 		if(INTENT_HARM)
-			if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
+			if(xeno.behavior_delegate && xeno.behavior_delegate.handle_slash(src))
 				return XENO_NO_DELAY_ACTION
 
 			if(stat == DEAD)
-				to_chat(M, SPAN_WARNING("[src] is dead, why would you want to touch it?"))
+				to_chat(xeno, SPAN_WARNING("[src] is dead, why would you want to touch it?"))
 				return XENO_NO_DELAY_ACTION
 
-			if(M.can_not_harm(src))
+			if(xeno.can_not_harm(src))
 				return XENO_NO_DELAY_ACTION
 
-			M.animation_attack_on(src)
+			xeno.animation_attack_on(src)
 
 			// copypasted from attack_alien.dm
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
-			M.track_slashes(M.caste_type) //Adds to slash stat.
-			var/damage = get_xeno_damage_slash(src, rand(M.melee_damage_lower, M.melee_damage_upper))
+			xeno.track_slashes(xeno.caste_type) //Adds to slash stat.
+			var/damage = get_xeno_damage_slash(src, rand(xeno.melee_damage_lower, xeno.melee_damage_upper))
 
-			if(M.behavior_delegate)
-				damage = M.behavior_delegate.melee_attack_modify_damage(damage, src)
+			if(xeno.behavior_delegate)
+				damage = xeno.behavior_delegate.melee_attack_modify_damage(damage, src)
 
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
-			if(M.frenzy_aura > 0)
-				damage += (M.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
+			if(xeno.frenzy_aura > 0)
+				damage += (xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 
 			//Somehow we will deal no damage on this attack
 			if(!damage)
-				playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-				M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
+				playsound(xeno.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+				xeno.visible_message(SPAN_DANGER("\The [xeno] lunges at [src]!"),
 				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				return XENO_ATTACK_ACTION
 
-			M.visible_message(SPAN_DANGER("\The [M] [slashes_verb] [src]!"), \
+			xeno.visible_message(SPAN_DANGER("\The [xeno] [slashes_verb] [src]!"),
 			SPAN_DANGER("You [slash_verb] [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-			last_damage_data = create_cause_data(initial(M.name), M)
-			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was [slash_verb]ed by [key_name(M)]</font>")
-			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
-			log_attack("[key_name(M)] [slash_verb]ed [key_name(src)]")
+			last_damage_data = create_cause_data(initial(xeno.name), xeno)
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was [slash_verb]ed by [key_name(xeno)]</font>")
+			xeno.attack_log += text("\[[time_stamp()]\] <font color='red'>[slash_verb]ed [key_name(src)]</font>")
+			log_attack("[key_name(xeno)] [slash_verb]ed [key_name(src)]")
 
-			M.flick_attack_overlay(src, "slash")
+			xeno.flick_attack_overlay(src, "slash")
 			if(custom_slashed_sound)
 				playsound(loc, custom_slashed_sound, 25, 1)
 			else
 				playsound(loc, slash_sound, 25, 1)
 			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 
-			if(M.behavior_delegate)
-				var/datum/behavior_delegate/MD = M.behavior_delegate
+			if(xeno.behavior_delegate)
+				var/datum/behavior_delegate/MD = xeno.behavior_delegate
 				MD.melee_attack_additional_effects_target(src)
 				MD.melee_attack_additional_effects_self()
 
-			SEND_SIGNAL(M, COMSIG_XENO_ALIEN_ATTACK, src)
+			SEND_SIGNAL(xeno, COMSIG_XENO_ALIEN_ATTACK, src)
 
 		if(INTENT_DISARM)
-			M.animation_attack_on(src)
-			M.flick_attack_overlay(src, "disarm")
-			var/is_shover_queen = isqueen(M)
-			var/can_resist_shove = M.hivenumber != src.hivenumber || ((isqueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
-			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(M)
-			if(can_mega_shove && !can_resist_shove || (mob_size < MOB_SIZE_XENO_SMALL && M.mob_size >= MOB_SIZE_XENO_SMALL))
+			xeno.animation_attack_on(src)
+			xeno.flick_attack_overlay(src, "disarm")
+			var/is_shover_queen = isqueen(xeno)
+			var/can_resist_shove = xeno.hivenumber != src.hivenumber || ((isqueen(src) || IS_XENO_LEADER(src)) && !is_shover_queen)
+			var/can_mega_shove = is_shover_queen || IS_XENO_LEADER(xeno)
+			if(can_mega_shove && !can_resist_shove || (mob_size < MOB_SIZE_XENO_SMALL && xeno.mob_size >= MOB_SIZE_XENO_SMALL))
 				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
+				xeno.visible_message(SPAN_WARNING("\The [xeno] shoves \the [src] out of her way!"),
 				SPAN_WARNING("We shove \the [src] out of our way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 				src.apply_effect(1, WEAKEN)
 			else
 				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
+				xeno.visible_message(SPAN_WARNING("\The [xeno] shoves \the [src]!"),
 				SPAN_WARNING("We shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
 
@@ -221,7 +228,7 @@
 			to_chat(src, SPAN_NOTICE("Too slow!"))
 			return
 		target.flags_emote &= ~EMOTING_HEADBUTT
-		visible_message(SPAN_NOTICE("[src] slams their head into [target]!"), \
+		visible_message(SPAN_NOTICE("[src] slams their head into [target]!"),
 			SPAN_NOTICE("We slam your head into [target]!"), null, 4)
 		playsound(src, pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg'), 50, 1)
 		animation_attack_on(target)
@@ -235,7 +242,7 @@
 		to_chat(src, "You just did an audible emote. Wait a while.")
 		return
 
-	visible_message(SPAN_NOTICE("[src] raises their head for a headbutt from [target]."), \
+	visible_message(SPAN_NOTICE("[src] raises their head for a headbutt from [target]."),
 		SPAN_NOTICE("We raise our head for a headbutt from [target]."), null, 4)
 	flags_emote |= EMOTING_HEADBUTT
 	if(do_after(src, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_HEADBUTT) && flags_emote & EMOTING_HEADBUTT)
@@ -249,7 +256,7 @@
 			to_chat(src, SPAN_NOTICE("Too slow!"))
 			return
 		target.flags_emote &= ~EMOTING_TAIL_SWIPE
-		visible_message(SPAN_NOTICE("[src] clashes their tail with [target]!"), \
+		visible_message(SPAN_NOTICE("[src] clashes their tail with [target]!"),
 			SPAN_NOTICE("We clash our tail with [target]!"), null, 4)
 		playsound(src, 'sound/weapons/alien_claw_block.ogg', 50, 1)
 		spin_circle()
@@ -263,7 +270,7 @@
 		to_chat(src, "You just did an audible emote. Wait a while.")
 		return
 
-	visible_message(SPAN_NOTICE("[src] raises their tail out for a swipe from [target]."), \
+	visible_message(SPAN_NOTICE("[src] raises their tail out for a swipe from [target]."),
 		SPAN_NOTICE("We raise our tail out for a tail swipe from [target]."), null, 4)
 	flags_emote |= EMOTING_TAIL_SWIPE
 	if(do_after(src, 50, INTERRUPT_ALL|INTERRUPT_EMOTE, EMOTE_ICON_TAILSWIPE) && flags_emote & EMOTING_TAIL_SWIPE)

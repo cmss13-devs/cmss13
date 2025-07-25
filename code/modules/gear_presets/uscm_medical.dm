@@ -26,16 +26,19 @@
 	idtype = /obj/item/card/id/silver
 	access = list(
 		ACCESS_MARINE_CMO,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_DATABASE_ADMIN,
 		ACCESS_MARINE_MEDBAY,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_SENIOR,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_CHEMISTRY,
 		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_FIELD_DOC,
 	)
 	assignment = JOB_CMO
-	rank = JOB_CMO
+	job_title = JOB_CMO
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
@@ -65,10 +68,11 @@
 	name = "USCM Doctor"
 
 	assignment = JOB_DOCTOR
-	rank = JOB_DOCTOR
+	job_title = JOB_DOCTOR
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Doc"
 	skills = /datum/skills/doctor
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
 	minimap_icon = list("doctor")
 	minimap_background = "background_medical"
@@ -100,11 +104,36 @@
 
 //*****************************************************************************************************/
 
+/datum/equipment_preset/uscm_ship/uscm_medical/field_doctor
+	name = "USCM Field Doctor"
+
+	assignment = JOB_FIELD_DOCTOR
+	job_title = JOB_FIELD_DOCTOR
+	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
+	role_comm_title = "Fld Doc"
+	skills = /datum/skills/doctor
+
+	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC)
+
+	minimap_icon = "field_doctor"
+	minimap_background = "background_medical"
+
+/datum/equipment_preset/uscm_ship/uscm_medical/field_doctor/load_gear(mob/living/carbon/human/new_human)
+	var/back_item = /obj/item/storage/backpack/marine/satchel
+	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+		back_item = /obj/item/storage/backpack/marine
+
+	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/green(new_human), WEAR_BODY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(new_human), WEAR_FEET)
+
+//*****************************************************************************************************/
+
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse
 	name = "USCM Nurse"
 
 	assignment = JOB_NURSE
-	rank = JOB_NURSE
+	job_title = JOB_NURSE
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1)
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
@@ -134,7 +163,7 @@
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = JOB_RESEARCHER
-	rank = JOB_RESEARCHER
+	job_title = JOB_RESEARCHER
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher

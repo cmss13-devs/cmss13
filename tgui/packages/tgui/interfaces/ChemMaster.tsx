@@ -1,6 +1,6 @@
+import type { BooleanLike } from 'common/react';
 import { useState } from 'react';
-
-import { useBackend, useSharedState } from '../backend';
+import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
@@ -12,17 +12,20 @@ import {
   NumberInput,
   Section,
   Stack,
-} from '../components';
-import { Window } from '../layouts';
+} from 'tgui/components';
+import { Window } from 'tgui/layouts';
+
+type PillBottleType = {
+  size: number;
+  max_size: number;
+  label?: string;
+  icon_state: string;
+  isNeedsToBeFilled: BooleanLike;
+};
 
 type ChemMasterData = {
-  is_connected: boolean;
-  pill_bottle?: {
-    size: number;
-    max_size: number;
-    label?: string;
-    icon_state: string;
-  };
+  is_connected: BooleanLike;
+  pill_bottles: PillBottleType[];
   color_pill: {
     icon: string;
     colors: { [key: string]: string };
@@ -33,15 +36,15 @@ type ChemMasterData = {
     reagents: Reagent[];
   };
   buffer?: Reagent[];
-  mode: boolean;
+  mode: BooleanLike;
   pill_or_bottle_icon: string;
   pill_icon_choices: number;
   bottle_icon_choices: number;
   bottlesprite: number;
   pillsprite: number;
-  is_pillmaker: boolean;
-  is_condiment: boolean;
-  is_vialmaker: boolean;
+  is_pillmaker: BooleanLike;
+  is_condiment: BooleanLike;
+  is_vialmaker: BooleanLike;
   internal_reagent_name: string;
 };
 
@@ -63,81 +66,83 @@ export const ChemMaster = () => {
   const [pillPicker, setPillPicker] = useState(false);
 
   return (
-    <Window width={550} height={550}>
+    <Window width={550} height={600}>
       <Window.Content className="ChemMaster">
-        <Section title="Status">
-          <Stack vertical>
-            <Stack.Item>
-              <Stack>
-                <Stack.Item>
-                  <Box>Beaker:</Box>
-                </Stack.Item>
-                <Stack.Item grow>
-                  {beaker ? (
-                    beaker.reagents_volume + 'u'
-                  ) : (
-                    <NoticeBox info>No beaker inserted.</NoticeBox>
-                  )}
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack.Item>
-              <PillBottle setPicker={setPillPicker} />
-            </Stack.Item>
-            <Stack.Item>
-              {beaker && !is_connected && (
-                <Button fluid onClick={() => act('connect')}>
-                  Connect Smartfridge
+        <Section fill scrollable>
+          <Section title="Status">
+            <Stack vertical>
+              <Stack.Item>
+                <Stack>
+                  <Stack.Item>
+                    <Box>Beaker:</Box>
+                  </Stack.Item>
+                  <Stack.Item grow>
+                    {beaker ? (
+                      beaker.reagents_volume + 'u'
+                    ) : (
+                      <NoticeBox info>No beaker inserted.</NoticeBox>
+                    )}
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              <Stack.Item>
+                <PillBottle setPicker={setPillPicker} />
+              </Stack.Item>
+              <Stack.Item>
+                {beaker && !is_connected && (
+                  <Button fluid onClick={() => act('connect')}>
+                    Connect Smartfridge
+                  </Button>
+                )}
+              </Stack.Item>
+            </Stack>
+          </Section>
+          {beaker && (
+            <Section
+              title="Beaker"
+              buttons={
+                <Button
+                  icon={'eject'}
+                  tooltip={'Remove beaker, and clear buffer.'}
+                  onClick={() => act('eject')}
+                >
+                  Eject
                 </Button>
+              }
+            >
+              {beaker.reagents ? (
+                <Reagents reagents={beaker.reagents} type={'beaker'} />
+              ) : (
+                <NoticeBox info>Beaker is empty.</NoticeBox>
               )}
-            </Stack.Item>
-          </Stack>
-        </Section>
-        {beaker && (
+            </Section>
+          )}
           <Section
-            title="Beaker"
+            title="Buffer"
             buttons={
               <Button
-                icon={'eject'}
-                tooltip={'Remove beaker, and clear buffer.'}
-                onClick={() => act('eject')}
+                icon={mode ? 'toggle-on' : 'toggle-off'}
+                onClick={() => act('toggle')}
               >
-                Eject
+                {mode ? 'To Beaker' : 'To Disposal'}
               </Button>
             }
           >
-            {beaker.reagents ? (
-              <Reagents reagents={beaker.reagents} type={'beaker'} />
+            {buffer?.length ? (
+              <Reagents reagents={buffer} type="buffer" />
             ) : (
-              <NoticeBox info>Beaker is empty.</NoticeBox>
+              <NoticeBox info>Buffer is empty.</NoticeBox>
             )}
           </Section>
-        )}
-        <Section
-          title="Buffer"
-          buttons={
-            <Button
-              icon={mode ? 'toggle-on' : 'toggle-off'}
-              onClick={() => act('toggle')}
-            >
-              {mode ? 'To Beaker' : 'To Disposal'}
-            </Button>
-          }
-        >
-          {buffer?.length ? (
-            <Reagents reagents={buffer} type="buffer" />
-          ) : (
-            <NoticeBox info>Buffer is empty.</NoticeBox>
+          <Glassware setPicker={setGlasswarePicker} />
+          {glasswarePicker && (
+            <GlasswarePicker
+              setPicker={setGlasswarePicker}
+              type={glasswarePicker}
+            />
           )}
+          {pillPicker && <PillPicker setPicker={setPillPicker} />}
         </Section>
-        <Glassware setPicker={setGlasswarePicker} />
-        {glasswarePicker && (
-          <GlasswarePicker
-            setPicker={setGlasswarePicker}
-            type={glasswarePicker}
-          />
-        )}
-        {pillPicker && <PillPicker setPicker={setPillPicker} />}
       </Window.Content>
     </Window>
   );
@@ -226,70 +231,105 @@ const PillBottle = (props: { readonly setPicker: (_) => void }) => {
 
   const { setPicker } = props;
 
-  const { pill_bottle, is_connected, color_pill } = data;
+  const { pill_bottles, is_connected, color_pill } = data;
 
   const [tag, setTag] = useState('');
 
   return (
     <Stack>
       <Stack.Item>
-        <Box>Pill Bottle:</Box>
+        <Box>Pill Bottle{pill_bottles.length > 1 ? 's' : ''}:</Box>
       </Stack.Item>
       <Stack.Item grow>
-        {pill_bottle ? (
-          <Stack justify="space-between">
-            <Stack.Item>
+        {pill_bottles.length ? (
+          pill_bottles.map((pill_bottle, index) => (
+            <Stack key={index} justify="space-between">
+              <Stack.Item>
+                <Stack>
+                  {pill_bottles.length > 1 && (
+                    <Stack.Item>
+                      <Button.Checkbox
+                        width="100%"
+                        checked={pill_bottle.isNeedsToBeFilled}
+                        onClick={() =>
+                          act('check_pill_bottle', {
+                            bottleIndex: index,
+                            value: !pill_bottle.isNeedsToBeFilled,
+                          })
+                        }
+                      >
+                        Fill bottle
+                      </Button.Checkbox>
+                    </Stack.Item>
+                  )}
+                  <Stack.Item>
+                    <Box>
+                      {pill_bottle.size} / {pill_bottle.max_size}
+                    </Box>
+                  </Stack.Item>
+                  <Stack.Item>
+                    {pill_bottle.label && <Box>({pill_bottle.label})</Box>}
+                  </Stack.Item>
+                </Stack>
+              </Stack.Item>
+              {index === 0 ? (
+                <Stack>
+                  <Stack.Item>
+                    <Button.Input
+                      onCommit={(_, value) => {
+                        act('label_pill', { text: value, bottleIndex: index });
+                      }}
+                    >
+                      <Icon name={'tag'} /> Label
+                    </Button.Input>
+                  </Stack.Item>
+                  <Stack.Item>
+                    <Button onClick={() => setPicker(true)} height="1.75rem">
+                      <DmIcon
+                        mt={-1.5}
+                        icon={color_pill.icon}
+                        icon_state={pill_bottle.icon_state}
+                      />
+                    </Button>
+                  </Stack.Item>
+                </Stack>
+              ) : (
+                <Stack>
+                  <Stack.Item>
+                    <DmIcon
+                      mt={-1.5}
+                      icon={color_pill.icon}
+                      icon_state={pill_bottle.icon_state}
+                    />
+                  </Stack.Item>
+                </Stack>
+              )}
               <Stack>
-                <Stack.Item>
-                  <Box>
-                    {pill_bottle.size} / {pill_bottle.max_size}
-                  </Box>
-                </Stack.Item>
-                <Stack.Item>
-                  {pill_bottle.label && <Box>({pill_bottle.label})</Box>}
-                </Stack.Item>
-              </Stack>
-            </Stack.Item>
-            <Stack>
-              <Stack.Item>
-                <Button.Input
-                  onCommit={(_, value) => {
-                    act('label_pill', { text: value });
-                  }}
-                >
-                  <Icon name={'tag'} /> Label
-                </Button.Input>
-              </Stack.Item>
-              <Stack.Item>
-                <Button onClick={() => setPicker(true)} height="1.75rem">
-                  <DmIcon
-                    mt={-1.5}
-                    icon={color_pill.icon}
-                    icon_state={pill_bottle.icon_state}
-                  />
-                </Button>
-              </Stack.Item>
-            </Stack>
-            <Stack>
-              {!!is_connected && (
+                {!!is_connected && (
+                  <Stack.Item>
+                    <Button
+                      icon={'arrow-up'}
+                      onClick={() =>
+                        act('transfer_pill', { bottleIndex: index })
+                      }
+                    >
+                      Transfer
+                    </Button>
+                  </Stack.Item>
+                )}
                 <Stack.Item>
                   <Button
-                    icon={'arrow-up'}
-                    onClick={() => act('transfer_pill')}
+                    icon={'eject'}
+                    onClick={() => act('eject_pill', { bottleIndex: index })}
                   >
-                    Transfer
+                    Eject
                   </Button>
                 </Stack.Item>
-              )}
-              <Stack.Item>
-                <Button icon={'eject'} onClick={() => act('eject_pill')}>
-                  Eject
-                </Button>
-              </Stack.Item>
+              </Stack>
             </Stack>
-          </Stack>
+          ))
         ) : (
-          <NoticeBox info>No pill bottle inserted.</NoticeBox>
+          <NoticeBox info>No pill bottles inserted.</NoticeBox>
         )}
       </Stack.Item>
     </Stack>
@@ -311,6 +351,7 @@ const Glassware = (props: { readonly setPicker: (type) => void }) => {
     bottlesprite,
     internal_reagent_name,
     buffer,
+    pill_bottles,
   } = data;
 
   const [numPills, setNumPills] = useSharedState('pillNum', 16);

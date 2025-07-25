@@ -17,7 +17,7 @@
 	available_strains = list(/datum/xeno_strain/acider)
 	behavior_delegate_type = /datum/behavior_delegate/runner_base
 	evolves_to = list(XENO_CASTE_LURKER)
-	deevolves_to = list("Larva")
+	deevolves_to = list(XENO_CASTE_LARVA)
 
 	tackle_min = 4
 	tackle_max = 5
@@ -35,7 +35,7 @@
 	caste_type = XENO_CASTE_RUNNER
 	name = XENO_CASTE_RUNNER
 	desc = "A small red alien that looks like it could run fairly quickly..."
-	icon = 'icons/mob/xenos/runner.dmi'
+	icon = 'icons/mob/xenos/castes/tier_1/runner.dmi'
 	icon_state = "Runner Walking"
 	icon_size = 64
 	layer = MOB_LAYER
@@ -53,7 +53,7 @@
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
-		/datum/action/xeno_action/onclick/regurgitate,
+		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/onclick/xenohide,
@@ -66,12 +66,15 @@
 		/mob/living/carbon/xenomorph/proc/vent_crawl,
 	)
 
-	icon_xeno = 'icons/mob/xenos/runner.dmi'
-	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
+	icon_xeno = 'icons/mob/xenos/castes/tier_1/runner.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_1/runner.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Runner_1","Runner_2","Runner_3")
 	weed_food_states_flipped = list("Runner_1","Runner_2","Runner_3")
+
+	skull = /obj/item/skull/runner
+	pelt = /obj/item/pelt/runner
 
 
 /mob/living/carbon/xenomorph/runner/initialize_pass_flags(datum/pass_flags_container/pass_flags_container)

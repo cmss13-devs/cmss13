@@ -3,7 +3,8 @@
 	set name = "Show/Hide Radio Chatter"
 	set category = "Preferences.Chat"
 	set desc = "Toggle seeing radio chatter from radios and speakers"
-	if(!admin_holder) return
+	if(!admin_holder)
+		return
 	prefs.toggles_chat ^= CHAT_RADIO
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_RADIO) ? "now" : "no longer"] see radio chatter from radios or speakers"))
@@ -12,7 +13,8 @@
 	set name = "Hear/Silence Adminhelps"
 	set category = "Preferences.Sound"
 	set desc = "Toggle hearing a notification when admin PMs are received"
-	if(!admin_holder) return
+	if(!admin_holder)
+		return
 	prefs.toggles_sound ^= SOUND_ADMINHELP
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."))
@@ -207,14 +209,10 @@
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
 
-	var/list/be_special_flags = list(
-		"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
-		"Agent" = BE_AGENT,
-	)
-	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", be_special_flags)
+	var/role = tgui_input_list(usr, "Toggle which candidacy?", "Select role", GLOB.be_special_flags)
 	if(!role)
 		return
-	var/role_flag = be_special_flags[role]
+	var/role_flag = GLOB.be_special_flags[role]
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
@@ -268,23 +266,26 @@
 	set desc = "Toggles a specific toggleable preference"
 
 	var/list/pref_buttons = list(
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ignore_self'>Toggle the Ability to Hurt Yourself</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ammo_display_type'>Toggle Semi-Auto Ammo Counter</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ignore_self'>Toggle the Ability to Hurt Yourself</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_help_intent_safety'>Toggle Help Intent Safety</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject'>Toggle Guns Auto-Ejecting Magazines</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_eject_to_hand'>Toggle Guns Auto-Ejecting Magazines to Your Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ammo_display_type'>Toggle Semi-Auto Ammo Counter</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_ability_deactivation'>Toggle Ability Deactivation</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_auto_shove'>Toggle Auto Shove</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_swap_hands'>Toggle Middle Mouse Swapping Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_vend_item_to_hand'>Toggle Vendors Vending to Hands</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/switch_item_animations'>Toggle Item Animations</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_admin_sound_types'>Toggle Admin Sound Types</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_eye_blur_type'>Set Eye Blur Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flash_type'>Set Flash Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_crit_type'>Set Crit Type</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/set_flashing_lights_pref'>Set Flashing Lights</a><br>",
+		"<a href='byond://?src=\ref[src];action=proccall;procpath=/client/proc/toggle_leadership_spoken_orders'>Toggle Leadership Spoken Orders</a><br>",
 	)
 
 	var/dat = ""
@@ -293,7 +294,7 @@
 
 	var/height = 50+24*length(pref_buttons)
 
-	show_browser(src, dat, "Toggle Preferences", "togglepreferences", "size=475x[height]")
+	show_browser(src, dat, "Toggle Preferences", "togglepreferences", width = 475, height = height)
 
 /client/proc/toggle_ignore_self() // Toggle whether anything will happen when you click yourself in non-help intent
 	prefs.toggle_prefs ^= TOGGLE_IGNORE_SELF
@@ -357,6 +358,14 @@
 		to_chat(src, SPAN_BOLDNOTICE("Your messages will no longer be automatically punctuated if they are not punctuated already."))
 	prefs.save_preferences()
 
+/client/proc/toggle_auto_shove()
+	prefs.toggle_prefs ^= TOGGLE_AUTO_SHOVE_OFF
+	if (prefs.toggle_prefs & TOGGLE_AUTO_SHOVE_OFF)
+		to_chat(src, SPAN_NOTICE("You will no longer automatically shove people in the way as the Queen or King."))
+	else
+		to_chat(src, SPAN_NOTICE("You will now automatically shove people in the way as the Queen or King."))
+	prefs.save_preferences()
+
 /client/proc/toggle_ability_deactivation() // Toggle whether the current ability can be deactivated when re-selected
 	prefs.toggle_prefs ^= TOGGLE_ABILITY_DEACTIVATION_OFF
 	if (prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
@@ -371,6 +380,15 @@
 		to_chat(src,SPAN_BOLDNOTICE( "Depressing the mouse button on disarm or harm intent will now click the target immediately, even if you hold it down -- unless you're click-dragging yourself, an ally, or an object in your inventory."))
 	else
 		to_chat(src,SPAN_BOLDNOTICE( "Click-dragging now blocks clicks from going through."))
+	prefs.save_preferences()
+
+/// Toggles whether activating marine leader orders will be spoken or not, on by default
+/client/proc/toggle_leadership_spoken_orders()
+	prefs.toggle_prefs ^= TOGGLE_LEADERSHIP_SPOKEN_ORDERS
+	if(prefs.toggle_prefs & TOGGLE_LEADERSHIP_SPOKEN_ORDERS)
+		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will no longer be verbally spoken."))
+	else
+		to_chat(src, SPAN_BOLDNOTICE("Your leadership orders will now be verbally spoken."))
 	prefs.save_preferences()
 
 ///Toggle whether dual-wielding fires both guns at once or swaps between them.
@@ -495,6 +513,17 @@
 		to_chat(src, SPAN_NOTICE("If in critical condition your vision will now be dark."))
 	prefs.save_preferences()
 
+/// Toggle in character preferences and toggle preferences to allow or disable flashing lights e.g. /obj/item/clothing/glasses/disco_fever and druggy status
+/client/proc/set_flashing_lights_pref()
+	var/result = tgui_alert(src, "Allow effects that could trigger epilepsy?", "Allow flashing lights?", list("Allow", "Disable"))
+	if(!result)
+		return
+	prefs.allow_flashing_lights_pref = result == "Allow"
+	to_chat(src, SPAN_NOTICE("Flashing lights (e.g. AR Goggles and Happy pills) are now [prefs.allow_flashing_lights_pref ? "allowed" : "disabled"]."))
+	if(!prefs.allow_flashing_lights_pref)
+		mob?.update_client_color_matrices() // Update immediately
+	prefs.save_preferences()
+
 /client/verb/toggle_tgui_say()
 	set name = "Toggle Say Input Style"
 	set category = "Preferences.UI"
@@ -538,15 +567,46 @@
 	do_toggle_custom_cursors()
 
 /client/proc/do_toggle_custom_cursors(mob/user)
-	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No", "Enable Main Cursor", "Disable Main Cursor"))
 	if(!result)
 		return
-	if(result == "Yes")
-		prefs.custom_cursors = TRUE
-		to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
-	else
-		prefs.custom_cursors = FALSE
-		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+	switch(result)
+		if("Yes")
+			prefs.custom_cursors = TRUE
+			to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+			if(result == "Yes")
+				var/chosen_cursor = tgui_alert(user, "Which type of custom cursor?", "Custom Cursors", list("USCM", "Xenomorph", "UPP", "PMC", "TWE"))
+				if(!chosen_cursor)
+					return
+				switch(chosen_cursor)
+					if("USCM")// For anyone in the future who might add anything, all of the cursors need to be their own file. and the only icon inside it needs to be renamed to "all" for byond to work with it
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/uscm.dmi'
+					if("Xenomorph")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/xeno.dmi'
+					if("UPP")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/upp.dmi'
+					if("PMC")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/wy.dmi'
+					if("TWE")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/twe.dmi'
+				prefs.save_preferences()
+				user.update_cursor()
+		if("No")
+			prefs.custom_cursors = FALSE
+			to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+			mouse_pointer_icon = initial(mouse_pointer_icon)
+			prefs.save_preferences()
+		if("Enable Main Cursor")
+			prefs.main_cursor = TRUE
+			to_chat(src, SPAN_NOTICE("Your main cursor will now be customized."))
+			prefs.save_preferences()
+		if("Disable Main Cursor")
+			to_chat(src, SPAN_NOTICE("Your main cursor will no longer be customized."))
+			prefs.main_cursor = FALSE
+			prefs.save_preferences()
+
+
+	prefs.save_preferences()
 
 /client/verb/toggle_auto_viewport_fit()
 	set name = "Toggle Auto Viewport Fit"
@@ -654,7 +714,20 @@
 	set category = "Preferences.Ghost"
 	set desc = "Use to change which HUDs you want to have by default when you become an observer."
 
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD", "Faction UPP HUD", "Faction Wey-Yu HUD", "Faction RESS HUD", "Faction CLF HUD"))
+	var/list/hud_options = list(
+		"Medical HUD" = MOB_HUD_MEDICAL_OBSERVER,
+		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
+		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
+		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
+		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
+		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,
+		"Faction TWE HUD" = MOB_HUD_FACTION_TWE,
+		"Faction CLF HUD" = MOB_HUD_FACTION_CLF,
+		"Faction WO HUD" = MOB_HUD_FACTION_WO,
+		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
+	)
+
+	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
 	if(!hud_choice)
 		return
 	prefs.observer_huds[hud_choice] = !prefs.observer_huds[hud_choice]
@@ -665,30 +738,13 @@
 	if(!isobserver(usr))
 		return
 	var/mob/dead/observer/observer_user = usr
-	var/datum/mob_hud/H
-	switch(hud_choice)
-		if("Medical HUD")
-			H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-		if("Security HUD")
-			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-		if("Squad HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
-		if("Xeno Status HUD")
-			H = GLOB.huds[MOB_HUD_XENO_STATUS]
-		if("Faction UPP HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_UPP]
-		if("Faction Wey-Yu HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_WY]
-		if("Faction TWE HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_TWE]
-		if("Faction CLF HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_CLF]
+	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
 
 	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
 	if(observer_user.HUD_toggled[hud_choice])
-		H.add_hud_to(observer_user, observer_user)
+		hud.add_hud_to(observer_user, observer_user)
 	else
-		H.remove_hud_from(observer_user, observer_user)
+		hud.remove_hud_from(observer_user, observer_user)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"

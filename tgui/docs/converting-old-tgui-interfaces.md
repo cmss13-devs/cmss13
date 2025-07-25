@@ -161,11 +161,11 @@ This is quite a bit higher concept than ractive's each statements, so feel free 
 Now for objects, there's a genuinely pretty gross syntax here. We apoligize, it's related to ie8 compatibility nonsense.
 
 ```jsx
-{map(fooObject, (value, key) => (
+{map((value, key) => (
   <Fragment>
     Key is {key}, value is {value}
   </Fragment>
-))}
+))(fooObject)}
 ```
 
 Again, sorry for this syntax. `fooObject` would be the object being iterated on, value would be the value of the iterated entry on the list, and key would be the key. the naming of value and key isn't important here, but knowing that it goes `value`, `key` in that order is important.
@@ -174,9 +174,9 @@ It is sometimes better to preemptively convert an object to array before
 the big return statement, like this:
 
 ```jsx
-const fooArray = map(fooObject, (value, key) => {
+const fooArray = map((value, key) => {
   return { key, value };
-});
+})(fooObject);
 ```
 
 Or if you just want to discard all keys, this will also work nicely:

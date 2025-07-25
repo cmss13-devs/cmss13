@@ -1,0 +1,27 @@
+@use '../base.scss';
+
+.SecurityRecords_CellStyle {
+  padding-top: 4px;
+  padding-bottom: 3px;
+  text-align: center;
+}
+
+.SecurityRecords_BoxStyle {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.SecurityRecords_SectionHeaderStyle {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.SecurityRecords_GrayItalicStyle {
+  font-size: 0.9rem;
+  color: gray;
+  font-style: italic;
+}
+
+.SecurityRecords_CursorPointer {
+  cursor: pointer;
+}

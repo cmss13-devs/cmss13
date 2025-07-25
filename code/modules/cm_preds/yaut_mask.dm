@@ -13,6 +13,7 @@
 	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
 	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
+	valid_accessory_slots = list(ACCESSORY_SLOT_YAUTJA_MASK)
 
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -77,9 +78,9 @@
 	LAZYSET(item_state_slots, WEAR_FACE, "pred_mask[mask_number]_[armor_material]")
 
 /obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
+	. = ..()
 	if(isyautja(user))
 		remove_from_missing_pred_gear(src)
-	..()
 
 /obj/item/clothing/mask/gas/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
@@ -120,7 +121,10 @@
 	update_zoom_action(src, usr)
 	if(zoom)
 		RegisterSignal(src, COMSIG_ITEM_UNZOOM, PROC_REF(update_zoom_action))
+		playsound(src, 'sound/effects/pred_zoom_on.ogg', 50, FALSE, 2)
 		return
+	else
+		playsound(src, 'sound/effects/pred_zoom_off.ogg', 50, FALSE, 2)
 
 /obj/item/clothing/mask/gas/yautja/proc/update_zoom_action(source, mob/living/user)
 	UnregisterSignal(src, COMSIG_ITEM_UNZOOM)
@@ -308,3 +312,11 @@
 
 /obj/item/clothing/mask/yautja_flavor/map_random
 	map_random = TRUE
+
+/obj/item/clothing/accessory/mask
+	name = "Mask Ornament"
+	desc = "An ornate addition to your mask"
+	icon = 'icons/obj/items/hunter/pred_mask_accessories.dmi'
+	accessory_icons = list(WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_mask_accessories.dmi')
+	icon_state = null
+	worn_accessory_slot = ACCESSORY_SLOT_YAUTJA_MASK

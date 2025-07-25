@@ -28,7 +28,11 @@
 	desc = "It's just an ordinary box."
 	icon_state = "box"
 	icon = 'icons/obj/items/storage/boxes.dmi'
-	item_state = "syringe_kit"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/storage_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/storage_righthand.dmi',
+	)
+	item_state = "box"
 	foldable = TRUE
 	storage_slots = null
 	max_w_class = SIZE_SMALL //Changed because of in-game abuse
@@ -70,6 +74,7 @@
 	name = "box of latex gloves"
 	desc = "Contains white gloves."
 	icon_state = "latex"
+	item_state = "latex"
 	can_hold = list(/obj/item/clothing/gloves/latex)
 	w_class = SIZE_SMALL
 
@@ -87,6 +92,7 @@
 	name = "box of sterile masks"
 	desc = "This box contains masks of sterility."
 	icon_state = "sterile"
+	item_state = "sterile"
 	can_hold = list(/obj/item/clothing/mask/surgical)
 	w_class = SIZE_SMALL
 
@@ -106,6 +112,7 @@
 	desc = "A biohazard alert warning is printed on the box"
 	can_hold = list(/obj/item/reagent_container/syringe)
 	icon_state = "syringe"
+	item_state = "syringe"
 	w_class = SIZE_SMALL
 
 /obj/item/storage/box/syringes/fill_preset_inventory()
@@ -121,6 +128,7 @@
 /obj/item/storage/box/beakers
 	name = "box of beakers"
 	icon_state = "beaker"
+	item_state = "beaker"
 	can_hold = list(/obj/item/reagent_container/glass/beaker)
 	w_class = SIZE_MEDIUM
 
@@ -136,6 +144,7 @@
 /obj/item/storage/box/sprays
 	name = "box of empty spray bottles"
 	icon_state = "spray"
+	item_state = "spray"
 	can_hold = list(/obj/item/reagent_container/spray)
 	w_class = SIZE_MEDIUM
 
@@ -153,6 +162,7 @@
 	desc = "<B>WARNING: These devices are extremely dangerous and can cause blindness or deafness in repeated use.</B>"
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "flashbang"
+	item_state = "flashbang"
 	can_hold = list(/obj/item/explosive/grenade/flashbang)
 	w_class = SIZE_MEDIUM
 
@@ -185,6 +195,7 @@
 	desc = "A box with 5 emp grenades."
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "emp"
+	item_state = "emp"
 
 /obj/item/storage/box/emps/fill_preset_inventory()
 	new /obj/item/explosive/grenade/empgrenade(src)
@@ -240,6 +251,20 @@
 	new /obj/item/clothing/glasses/regular(src)
 	new /obj/item/clothing/glasses/regular(src)
 
+/obj/item/storage/box/wycaps
+	name = "box of Company baseball caps"
+	desc = "This box contains seven Weyland Yutani brand baseball caps. Give them away at your leisure."
+	icon_state = "mre1"
+
+/obj/item/storage/box/wycaps/fill_preset_inventory()
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+	new /obj/item/clothing/head/cmcap/wy_cap(src)
+
 /obj/item/storage/box/drinkingglasses
 	name = "box of drinking glasses"
 	desc = "It has a picture of drinking glasses on it."
@@ -256,7 +281,7 @@
 	name = "Death Alarm Kit"
 	desc = "Box of stuff used to implant death alarms."
 	icon_state = "implant"
-	item_state = "syringe_kit"
+	item_state = "box"
 
 /obj/item/storage/box/cdeathalarm_kit/fill_preset_inventory()
 	new /obj/item/implanter(src)
@@ -294,11 +319,11 @@
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 	new /obj/item/reagent_container/food/drinks/sillycup( src )
 
-
 /obj/item/storage/box/donkpockets
 	name = "box of donk-pockets"
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
 	icon_state = "donk_kit"
+	item_state = "donk_kit"
 	can_hold = list(/obj/item/reagent_container/food/snacks)
 	w_class = SIZE_MEDIUM
 
@@ -310,11 +335,50 @@
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 	new /obj/item/reagent_container/food/snacks/donkpocket(src)
 
+/obj/item/storage/box/teabags
+	name = "box of Earl Grey tea bags"
+	desc = "A box of instant tea bags."
+	icon_state = "teabag_box"
+	item_state = "teabag_box"
+	can_hold = list(/obj/item/reagent_container/pill/teabag)
+	w_class = SIZE_SMALL
+	storage_slots = 8
+
+/obj/item/storage/box/teabags/fill_preset_inventory()
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+	new /obj/item/reagent_container/pill/teabag/earl_grey(src)
+
+/obj/item/storage/box/lemondrop
+	name = "box of Lemon Drop candies"
+	desc = "A box of lemon flavored hard candies."
+	icon_state = "lemon_drop_box"
+	item_state = "lemon_drop_box"
+	can_hold = list(/obj/item/reagent_container/food/snacks/lemondrop)
+	w_class = SIZE_SMALL
+	storage_slots = 8
+
+/obj/item/storage/box/lemondrop/fill_preset_inventory()
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+	new /obj/item/reagent_container/food/snacks/lemondrop(src)
+
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"
 	desc = "Drymate brand monkey cubes. Just add water!"
-	icon = 'icons/obj/items/food.dmi'
+	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "monkeycubebox"
+	item_state = "monkeycubebox"
 
 /obj/item/storage/box/monkeycubes/fill_preset_inventory()
 	for(var/i = 1; i <= 5; i++)
@@ -344,10 +408,16 @@
 	for(var/i = 1; i <= 5; i++)
 		new /obj/item/reagent_container/food/snacks/monkeycube/wrapped/neaeracube(src)
 
+/obj/item/storage/box/monkeycubes/yautja
+	name = "weird cube box"
+	desc = "Some box with unknown language label on it."
+	icon_state = "box_of_doom"
+
 /obj/item/storage/box/ids
 	name = "box of spare IDs"
 	desc = "Has so many empty IDs."
 	icon_state = "id"
+	item_state = "id"
 
 /obj/item/storage/box/ids/fill_preset_inventory()
 	new /obj/item/card/id(src)
@@ -363,6 +433,7 @@
 	name = "box of handcuffs"
 	desc = "A box full of handcuffs."
 	icon_state = "handcuff"
+	item_state = "handcuff"
 
 /obj/item/storage/box/handcuffs/fill_preset_inventory()
 	new /obj/item/restraint/handcuffs(src)
@@ -378,6 +449,7 @@
 	name = "box of legcuffs"
 	desc = "A box full of legcuffs."
 	icon_state = "handcuff"
+	item_state = "handcuff"
 
 /obj/item/storage/box/legcuffs/fill_preset_inventory()
 	new /obj/item/restraint/legcuffs(src)
@@ -391,7 +463,9 @@
 /obj/item/storage/box/zipcuffs
 	name = "box of zip cuffs"
 	desc = "A box full of zip cuffs."
+	w_class = SIZE_MEDIUM
 	icon_state = "handcuff"
+	item_state = "handcuff"
 
 /obj/item/storage/box/zipcuffs/fill_preset_inventory()
 	new /obj/item/restraint/handcuffs/zip(src)
@@ -414,7 +488,7 @@
 	desc = "A small box full of zip cuffs."
 	w_class = SIZE_MEDIUM
 
-/obj/item/storage/box/zipcuffs/fill_preset_inventory()
+/obj/item/storage/box/zipcuffs/small/fill_preset_inventory()
 	new /obj/item/restraint/handcuffs/zip(src)
 	new /obj/item/restraint/handcuffs/zip(src)
 	new /obj/item/restraint/handcuffs/zip(src)
@@ -447,6 +521,7 @@
 	name = "box of Pest-B-Gon mousetraps"
 	desc = "<B><FONT color='red'>WARNING:</FONT></B> <I>Keep out of reach of children</I>."
 	icon_state = "mousetraps"
+	item_state = "mousetraps"
 
 /obj/item/storage/box/mousetraps/fill_preset_inventory()
 	new /obj/item/device/assembly/mousetrap( src )
@@ -460,6 +535,7 @@
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
 	icon_state = "pillbox"
+	item_state = "pillbox"
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle( src )
@@ -485,9 +561,15 @@
 /obj/item/storage/box/matches
 	name = "matchbox"
 	desc = "A small box of 'Space-Proof' premium matches."
-	icon = 'icons/obj/items/cigarettes.dmi'
+	icon = 'icons/obj/items/smoking/matches.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/smoking.dmi'
+		)
 	icon_state = "matchbox"
-	item_state = "zippo"
+	item_state = "matchbox"
+	item_state_slots = list(WEAR_AS_GARB = "matches")
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_WAIST
 	flags_obj = parent_type::flags_obj|OBJ_IS_HELMET_GARB
@@ -499,14 +581,14 @@
 
 /obj/item/storage/box/matches/attackby(obj/item/tool/match/W as obj, mob/user as mob)
 	if(istype(W) && !W.heat_source && !W.burnt)
-		W.light_match()
+		W.light_match(user)
 
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"
 	icon = 'icons/obj/items/storage/boxes.dmi'
 	icon_state = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
-	item_state = "syringe_kit"
+	item_state = "light"
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 	can_hold = list(
 		/obj/item/light_bulb/tube,
@@ -522,6 +604,7 @@
 /obj/item/storage/box/lights/tubes
 	name = "box of replacement tubes"
 	icon_state = "lighttube"
+	item_state = "lighttube"
 	w_class = SIZE_MEDIUM
 
 /obj/item/storage/box/lights/tubes/fill_preset_inventory()
@@ -531,6 +614,7 @@
 /obj/item/storage/box/lights/mixed
 	name = "box of replacement lights"
 	icon_state = "lightmixed"
+	item_state = "lightmixed"
 
 /obj/item/storage/box/lights/mixed/fill_preset_inventory()
 	for(var/i = 0; i < 14; i++)
@@ -542,6 +626,7 @@
 /obj/item/storage/box/autoinjectors
 	name = "box of autoinjectors"
 	icon_state = "syringe"
+	item_state = "syringe"
 
 /obj/item/storage/box/autoinjectors/fill_preset_inventory()
 	for(var/i = 0; i < 7; i++)
@@ -564,6 +649,7 @@
 	name = "\improper Reebok shoe box"
 	desc = "A fancy shoe box with reflective surface and Weyland-Yutani logo on top, says 'Reebok Stompers' on the back."
 	icon_state = "stomper_box"
+	item_state = "stomper_box"
 	w_class = SIZE_MEDIUM
 	bypass_w_limit = /obj/item/clothing/shoes
 	max_storage_space = 3
@@ -586,6 +672,7 @@
 	desc = "A secure box holding five M20 anti-personnel proximity mines."
 	icon = 'icons/obj/items/storage/packets.dmi'
 	icon_state = "minebox"
+	item_state = "minebox"
 	w_class = SIZE_MEDIUM
 	max_storage_space = 10
 	can_hold = list(/obj/item/explosive/mine)
@@ -642,6 +729,7 @@
 	name = "\improper M40 HEDP grenade box"
 	desc = "A secure box holding 25 M40 High-Explosive Dual-Purpose grenades. High explosive, don't store near the flamer fuel."
 	icon_state = "nade_placeholder"
+	item_state = "nade_placeholder"
 	icon = 'icons/obj/items/storage/packets.dmi'
 	w_class = SIZE_LARGE
 	storage_slots = 25
@@ -651,10 +739,16 @@
 	var/model_icon = "model_m40"
 	var/type_icon = "hedp"
 	var/grenade_type = /obj/item/explosive/grenade/high_explosive
-	has_gamemode_skin = TRUE
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/jungle_righthand.dmi'
+	)
 
 /obj/item/storage/box/nade_box/Initialize()
 	. = ..()
+	if(!(flags_atom & NO_GAMEMODE_SKIN))
+		select_gamemode_skin()
 	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
 
 /obj/item/storage/box/nade_box/proc/try_forced_folding(datum/source, mob/user)
@@ -732,21 +826,23 @@
 	name = "\improper M07 training grenade box"
 	desc = "A secure box holding 25 M07 training grenades. Harmless and reusable."
 	icon_state = "train_nade_placeholder"
+	item_state = "train_nade_placeholder"
 	model_icon = "model_mo7"
 	type_icon = null
 	grenade_type = /obj/item/explosive/grenade/high_explosive/training
 	can_hold = list(/obj/item/explosive/grenade/high_explosive/training)
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/box/nade_box/tear_gas
 	name = "\improper M66 tear gas grenade box"
 	desc = "A secure box holding 25 M66 tear gas grenades. Used for riot control."
 	icon_state = "teargas_nade_placeholder"
+	item_state = "teargas_nade_placeholder"
 	model_icon = "model_m66"
 	type_icon = null
 	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
-	has_gamemode_skin = FALSE
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
 
 /obj/item/storage/box/nade_box/tear_gas/fill_preset_inventory()
 	..()
@@ -771,6 +867,7 @@
 	name = "box of lightsticks"
 	desc = "Contains blue lightsticks."
 	icon_state = "lightstick"
+	item_state = "lightstick"
 	can_hold = list(/obj/item/lightstick)
 
 /obj/item/storage/box/lightstick/fill_preset_inventory()
@@ -785,6 +882,7 @@
 /obj/item/storage/box/lightstick/red
 	desc = "Contains red lightsticks."
 	icon_state = "lightstick2"
+	item_state = "lightstick2"
 
 /obj/item/storage/box/lightstick/red/fill_preset_inventory()
 	new /obj/item/lightstick/red(src)
@@ -794,77 +892,6 @@
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
-
-/obj/item/storage/box/MRE
-	name = "\improper USCM MRE"
-	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
-	icon_state = "mealpack"
-	icon = 'icons/obj/items/storage/mre.dmi'
-	w_class = SIZE_SMALL
-	can_hold = list()
-	storage_slots = 7
-	max_w_class = 0
-	use_sound = "rip"
-	var/isopened = FALSE
-
-/obj/item/storage/box/MRE/fill_preset_inventory()
-	pickflavor()
-
-/obj/item/storage/box/MRE/proc/pickflavor()
-	var/main = pick("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")
-	var/second = pick("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
-	var/side = pick("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
-	var/desert = pick("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
-	name = "[initial(name)] ([main])"
-	//1 in 3 chance of getting a fortune cookie
-	var/cookie = rand(1,3)
-	var/matches_type = rand(1, 5)
-	if(cookie == 1)
-		storage_slots = 8
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, main)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, second)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, side)
-	new /obj/item/reagent_container/food/snacks/packaged_meal(src, desert)
-	new /obj/item/reagent_container/food/drinks/cans/waterbottle(src)
-	if(cookie == 1)
-		new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(src)
-	new /obj/item/storage/fancy/cigarettes/lucky_strikes_4(src)
-	switch(matches_type)
-		if(1)
-			new /obj/item/storage/fancy/cigar/matchbook(src)
-		if(2)
-			new /obj/item/storage/fancy/cigar/matchbook/koorlander(src)
-		if(3)
-			new /obj/item/storage/fancy/cigar/matchbook/exec_select(src)
-		if(4)
-			new /obj/item/storage/fancy/cigar/matchbook/wy_gold(src)
-		if(5)
-			new /obj/item/storage/fancy/cigar/matchbook/brown(src)
-
-/obj/item/storage/box/MRE/Initialize()
-	. = ..()
-	isopened = FALSE
-	icon_state = "mealpack"
-	RegisterSignal(src, COMSIG_ITEM_DROPPED, PROC_REF(try_forced_folding))
-
-/obj/item/storage/box/MRE/proc/try_forced_folding(datum/source, mob/user)
-	SIGNAL_HANDLER
-
-	if(!isturf(loc))
-		return
-
-	if(locate(/obj/item/reagent_container/food/snacks/packaged_meal) in src)
-		return
-
-	UnregisterSignal(src, COMSIG_ITEM_DROPPED)
-	storage_close(user)
-	to_chat(user, SPAN_NOTICE("You throw away [src]."))
-	qdel(src)
-
-/obj/item/storage/box/MRE/update_icon()
-	if(!isopened)
-		isopened = TRUE
-		icon_state = "mealpackopened"
 
 //food boxes for storage in bulk
 

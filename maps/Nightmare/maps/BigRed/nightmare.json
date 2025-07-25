@@ -1,9 +1,19 @@
 [
 	{ "type": "map_sprinkle", "path": "sprinkles/" },
-	{ "type": "pick",     "chance": 0.40, "choices": [
-		{ "type": "map_insert", "landmark": "crashlanding-offices", "path": "standalone/crashlanding-offices.dmm" },
-		{ "type": "map_insert", "landmark": "crashlanding-eva",   "path": "standalone/crashlanding-eva.dmm" }
-	]},
+    {
+		"type": "map_insert",
+		"landmark": "crashlanding-offices",
+		"chance": 1.0,
+		"path": "standalone/crashlanding-offices.dmm",
+		"when": { "lvevent": "pmccrash" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "crashlanding-eva",
+		"chance": 1.0,
+		"path": "standalone/crashlanding-eva.dmm",
+		"when": { "lvevent": "pmccrash" }
+	},
 	{ "type": "map_insert", "chance": 0.50, "landmark": "lambda-graveyard", "path": "standalone/lambda-graveyard.dmm" },
 	{ "type": "pick",     "chance": 0.50, "choices": [
 		{ "type": "map_insert", "landmark": "lambda-cave-mushroom", "path": "standalone/lambda-cave_mushroom.dmm" },
@@ -12,5 +22,33 @@
 	{ "type": "pick",     "chance": 0.50, "choices": [
 		{ "weight": 3, "type": "map_insert", "landmark": "medbay-passage", "path": "standalone/medbay-passage.dmm" },
 		{ "weight": 1, "type": "map_insert", "landmark": "medbay-v3",   "path": "standalone/medbay-v3.dmm" }
-	]}
+	]},
+	{
+		"type": "map_insert",
+		"landmark": "hvhupplz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_solaris_upp_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_solaris_uscm_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz2",
+		"chance": 1.0,
+		"path": "standalone/landingzone_solaris_uscm_lz2.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+    {
+		"type": "map_insert",
+		"landmark": "clfmining",
+		"chance": 1.0,
+		"path": "standalone/clfmining.dmm",
+		"when": { "lvevent": "clf" }
+	}
 ]

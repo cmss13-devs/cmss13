@@ -143,7 +143,8 @@
 
 /mob/living/simple_animal/cow/death()
 	. = ..()
-	if(!.) return //was already dead
+	if(!.)
+		return //was already dead
 	if(last_damage_data)
 		var/mob/user = last_damage_data.resolve_mob()
 		if(user)
@@ -151,7 +152,7 @@
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
-		M.visible_message(SPAN_WARNING("[M] tips over [src]."), \
+		M.visible_message(SPAN_WARNING("[M] tips over [src]."),
 			SPAN_NOTICE("You tip over [src]."))
 		apply_effect(30, WEAKEN)
 		icon_state = icon_dead
@@ -200,13 +201,13 @@
 		PF.flags_pass = PASS_UNDER
 
 /mob/living/simple_animal/chick/Life(delta_time)
-	. =..()
+	. = ..()
 	if(!.)
 		return
-	if(!stat)
+	if(stat == CONSCIOUS)
 		amount_grown += rand(1,2)
 		if(amount_grown >= 100)
-			new /mob/living/simple_animal/chicken(src.loc)
+			new /mob/living/simple_animal/chicken(loc)
 			qdel(src)
 
 GLOBAL_VAR_INIT(MAX_CHICKENS, 50)
@@ -236,12 +237,12 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 	mob_size = MOB_SIZE_SMALL
 
 /mob/living/simple_animal/chicken/New()
-	..()
 	if(!body_color)
 		body_color = pick( list("brown","black","white") )
 	icon_state = "chicken_[body_color]"
 	icon_living = "chicken_[body_color]"
 	icon_dead = "chicken_[body_color]_dead"
+	..()
 	pixel_x = rand(-6, 6)
 	pixel_y = rand(0, 10)
 	GLOB.chicken_count++
@@ -273,10 +274,10 @@ GLOBAL_VAR_INIT(chicken_count, 0)
 		..()
 
 /mob/living/simple_animal/chicken/Life(delta_time)
-	. =..()
+	. = ..()
 	if(!.)
 		return
-	if(!stat && prob(3) && eggsleft > 0)
+	if(stat == CONSCIOUS && prob(3) && eggsleft > 0)
 		visible_message("[src] [pick("lays an egg.","squats down and croons.","begins making a huge racket.","begins clucking raucously.")]")
 		eggsleft--
 		var/obj/item/reagent_container/food/snacks/egg/E = new(get_turf(src))

@@ -18,7 +18,7 @@
 /datum/game_mode/proc/request_ert(user, ares = FALSE)
 	if(!user)
 		return FALSE
-	message_admins("[key_name(user)] has requested a Distress Beacon! [ares ? SPAN_ORANGE("(via ARES)") : ""] ([SSticker.mode.ert_dispatched ? SPAN_RED("A random ERT was dispatched previously.") : SPAN_GREEN("No previous random ERT dispatched.")]) [CC_MARK(user)] (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[user]'>SEND</A>) (<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
+	message_admins("[key_name(user)] has requested a Distress Beacon! [ares ? SPAN_ORANGE("(via ARES)") : ""] ([SSticker.mode.ert_dispatched ? SPAN_RED("A random ERT was dispatched previously.") : SPAN_GREEN("No previous random ERT dispatched.")]) [CC_MARK(user)] (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];distress=\ref[user]'>SEND</A>) (<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];ccdeny=\ref[user]'>DENY</A>) [ADMIN_JMP_USER(user)] [CC_REPLY(user)]")
 	return TRUE
 
 //The distress call parent. Cannot be called itself due to "name" being a filtered target.
@@ -49,6 +49,21 @@
 	var/max_engineers = 1
 	var/max_heavies = 1
 	var/max_smartgunners = 1
+	///xeno roles
+	var/xeno_t3 = 0
+	var/xeno_t2 = 0
+	var/max_xeno_t3 = 1
+	var/max_xeno_t2 = 1
+	///Hunting Grounds
+	var/mercs = 0
+	var/royal_marines= 0
+	var/upp = 0
+	var/clf = 0
+	var/max_mercs = 1
+	var/max_royal_marines= 1
+	var/max_upp = 1
+	var/max_clf = 1
+
 	var/shuttle_id = MOBILE_SHUTTLE_ID_ERT1 //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = TRUE
 	var/spawn_max_amount = FALSE
@@ -73,8 +88,10 @@
 		return FALSE
 	for(var/S in total_calls)
 		var/datum/emergency_call/C= new S()
-		if(!C) continue
-		if(C.name == "name") continue //The default parent, don't add it
+		if(!C)
+			continue
+		if(C.name == "name")
+			continue //The default parent, don't add it
 		all_calls += C
 
 //Randomizes and chooses a call datum.
@@ -124,7 +141,7 @@
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)
 		if(M.client)
-			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
+			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("\n[ert_message]. &gt; <a href='byond://?src=\ref[M];joinresponseteam=1;'><b>Join Response Team</b></a> &lt; </span>")))
 			to_chat(M, SPAN_WARNING(FONT_SIZE_LARGE("You cannot join if you have Ghosted recently. Click the link in chat, or use the verb in the ghost tab to join.</span>\n")))
 
 			give_action(M, /datum/action/join_ert, src)

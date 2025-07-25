@@ -227,7 +227,7 @@
 		affected_mob.coughedtime = world.time + 2 SECONDS
 		if(ishuman(affected_mob)) //Humans only to avoid issues
 			if(issynth(affected_mob))
-				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
 				if(prob(50))
@@ -328,12 +328,21 @@
 	var/burn_damage = 40
 	var/applied_fire_stacks = 5
 	var/xeno_yautja_reduction = 0.75
+	var/reagent = new /datum/reagent/napalm/ut()
+
+/obj/effect/particle_effect/smoke/phosphorus/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, intensity, max_intensity)
+	burn_damage = min(burn_damage, max_intensity - intensity) // Applies reaction limits
+
+	. = ..()
 
 /obj/effect/particle_effect/smoke/phosphorus/weak
 	time_to_live = 2
 	smokeranking = SMOKE_RANK_MED
 	burn_damage = 30
 	xeno_yautja_reduction = 0.5
+
+/obj/effect/particle_effect/smoke/phosphorus/sharp
+	reagent = new /datum/reagent/napalm/blue()
 
 /obj/effect/particle_effect/smoke/phosphorus/Move()
 	. = ..()
@@ -357,7 +366,7 @@
 		if(affected_mob.coughedtime < world.time && !affected_mob.stat)
 			affected_mob.coughedtime = world.time + next_cough
 			if(issynth(affected_mob))
-				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+				affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 				SPAN_DANGER("Your skin is sloughing off!"))
 			else
 				affected_mob.emote("cough")
@@ -365,7 +374,6 @@
 	if(isyautja(affected_mob) || isxeno(affected_mob))
 		damage *= xeno_yautja_reduction
 
-	var/reagent = new /datum/reagent/napalm/ut()
 	affected_mob.burn_skin(damage)
 	affected_mob.adjust_fire_stacks(applied_fire_stacks, reagent)
 	affected_mob.IgniteMob()
@@ -538,7 +546,7 @@
 		return FALSE
 	if(isyautja(affected_mob) && prob(75))
 		return FALSE
-	if(HAS_TRAIT(affected_mob, TRAIT_NESTED) && affected_mob.status_flags & XENO_HOST)
+	if(HAS_TRAIT(affected_mob, TRAIT_NESTED) && affected_mob.status_flags & XENO_HOST || HAS_TRAIT(affected_mob, TRAIT_HAULED))
 		return FALSE
 
 	affected_mob.last_damage_data = cause_data
@@ -552,7 +560,7 @@
 	if(affected_mob.coughedtime < world.time && !affected_mob.stat && ishuman(affected_mob)) //Coughing/gasping
 		affected_mob.coughedtime = world.time + 1.5 SECONDS
 		if(issynth(affected_mob))
-			affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),\
+			affected_mob.visible_message(SPAN_DANGER("[affected_mob]'s skin is sloughing off!"),
 			SPAN_DANGER("Your skin is sloughing off!"))
 		else
 			if(prob(50))
@@ -595,7 +603,7 @@
 		return FALSE
 	if(isyautja(moob))
 		return FALSE
-	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST)
+	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST || HAS_TRAIT(moob, TRAIT_HAULED))
 		return FALSE
 
 	var/mob/living/carbon/human/human_moob
@@ -653,7 +661,7 @@
 		return FALSE
 	if(isyautja(moob) && prob(75))
 		return FALSE
-	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST)
+	if(HAS_TRAIT(moob, TRAIT_NESTED) && moob.status_flags & XENO_HOST || HAS_TRAIT(moob, TRAIT_HAULED))
 		return FALSE
 
 	var/mob/living/carbon/human/human_moob
@@ -772,8 +780,20 @@
 /datum/effect_system/smoke_spread/phosphorus
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus
 
+/datum/effect_system/smoke_spread/phosphorus/start(intensity, max_intensity)
+	if(holder)
+		location = get_turf(holder)
+	var/obj/effect/particle_effect/smoke/phosphorus/smoke = new smoke_type(location, amount+1, cause_data, intensity, max_intensity)
+	if(lifetime)
+		smoke.time_to_live = lifetime
+	if(smoke.amount > 0)
+		smoke.spread_smoke(direction)
+
 /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/weak
+
+/datum/effect_system/smoke_spread/phosphorus/sharp
+	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/sharp
 
 /datum/effect_system/smoke_spread/cn20
 	smoke_type = /obj/effect/particle_effect/smoke/cn20
@@ -782,6 +802,22 @@
 	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
 
 // XENO SMOKES
+
+/obj/effect/particle_effect/smoke/king
+	opacity = FALSE
+	color = "#000000"
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "sparks"
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = BELOW_OBJ_LAYER
+	time_to_live = 5
+	spread_speed = 1
+	pixel_x = 0
+	pixel_y = 0
+
+/datum/effect_system/smoke_spread/king_doom
+	smoke_type = /obj/effect/particle_effect/smoke/king
 
 /datum/effect_system/smoke_spread/xeno_acid
 	smoke_type = /obj/effect/particle_effect/smoke/xeno_burn

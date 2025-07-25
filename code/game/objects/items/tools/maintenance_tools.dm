@@ -14,10 +14,18 @@
 /*
  * Wrench
  */
+
+
+/obj/item/tool
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
+
 /obj/item/tool/wrench
 	name = "wrench"
 	desc = "A wrench with many common uses. Can be usually found in your hand."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "wrench"
 	pickup_sound = 'sound/handling/wrench_pickup.ogg'
 	drop_sound = 'sound/handling/wrench_drop.ogg'
@@ -38,7 +46,12 @@
 /obj/item/tool/screwdriver
 	name = "screwdriver"
 	desc = "You can be totally screwy with this."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/objects.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	icon_state = "screwdriver"
 	pickup_sound = 'sound/handling/multitool_pickup.ogg'
 	drop_sound = 'sound/handling/screwdriver_drop.ogg'
@@ -54,35 +67,35 @@
 	flags_item = CAN_DIG_SHRAPNEL
 	inherent_traits = list(TRAIT_TOOL_SCREWDRIVER)
 	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
+	/// If the item should be assigned a random color
+	var/random_color = TRUE
 
 
 /obj/item/tool/screwdriver/Initialize()
 	. = ..()
-	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
-		if ("red")
-			icon_state = "screwdriver2"
-			item_state = "screwdriver"
+	if(!random_color)
+		return
+	switch(pick("blue","red","green","yellow","orange","black"))
 		if ("blue")
 			icon_state = "screwdriver"
-			item_state = "screwdriver_blue"
-		if ("purple")
-			icon_state = "screwdriver3"
-			item_state = "screwdriver_purple"
-		if ("brown")
-			icon_state = "screwdriver4"
-			item_state = "screwdriver_brown"
+			item_state = "screwdriver"
+		if ("red")
+			icon_state = "screwdriver2"
+			item_state = "screwdriver2"
 		if ("green")
-			icon_state = "screwdriver5"
-			item_state = "screwdriver_green"
-		if ("cyan")
-			icon_state = "screwdriver6"
-			item_state = "screwdriver_cyan"
+			icon_state = "screwdriver3"
+			item_state = "screwdriver3"
 		if ("yellow")
-			icon_state = "screwdriver7"
-			item_state = "screwdriver_yellow"
+			icon_state = "screwdriver4"
+			item_state = "screwdriver4"
+		if ("orange")
+			icon_state = "screwdriver5"
+			item_state = "screwdriver5"
+		if ("black")
+			icon_state = "tac_screwdriver"
+			item_state = "tac_screwdriver"
 
-	if (prob(75))
-		src.pixel_y = rand(0, 16)
+
 	return
 
 
@@ -119,7 +132,7 @@
 	name = "wirecutters"
 	gender = PLURAL
 	desc = "This cuts wires."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "cutters"
 	item_state = "cutters"
 	pickup_sound = 'sound/handling/wirecutter_pickup.ogg'
@@ -142,11 +155,12 @@
 	name = "tactical wirecutters"
 	desc = "This heavy-duty pair seems more fit for cutting barbed wire, but it'll work splendidly on electrical wires."
 	icon_state = "tac_cutters"
+	item_state = "tac_cutters"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/restraint/adjustable/cable)))
-		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",\
-		"You cut \the [C]'s restraints with \the [src]!",\
+		user.visible_message("\The [usr] cuts \the [C]'s restraints with \the [src]!",
+		"You cut \the [C]'s restraints with \the [src]!",
 		"You hear cable being cut.")
 		C.handcuffed = null
 		C.handcuff_update()
@@ -160,7 +174,7 @@
 /obj/item/tool/weldingtool
 	name = "blowtorch"
 	desc = "A blowtorch for welding and cutting metals."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "welder"
 	pickup_sound = 'sound/handling/weldingtool_pickup.ogg'
 	drop_sound = 'sound/handling/weldingtool_drop.ogg'
@@ -245,7 +259,7 @@
 		if(limb.brute_dam && welding)
 			remove_fuel(1,user)
 			if(self_fixing)
-				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [limb.display_name]."), \
+				user.visible_message(SPAN_WARNING("\The [user] begins fixing some dents on their [limb.display_name]."),
 					SPAN_WARNING("You begin to carefully patch some dents on your [limb.display_name] so as not to void your warranty."))
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
@@ -253,7 +267,7 @@
 			limb.heal_damage(15, 0, TRUE)
 			human.pain.recalculate_pain()
 			human.UpdateDamageIcon()
-			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."), \
+			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [human]'s [limb.display_name] with \the [src]."),
 								SPAN_WARNING("You patch some dents on \the [human]'s [limb.display_name] with \the [src]."))
 			return
 		else
@@ -271,7 +285,7 @@
 		if(!welding)
 			target.reagents.trans_to(src, max_fuel)
 			weld_tick = 0
-			user.visible_message(SPAN_NOTICE("[user] refills [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] refills [src]."),
 			SPAN_NOTICE("You refill [src]."))
 			playsound(src.loc, 'sound/effects/refill.ogg', 25, 1, 3)
 		else
@@ -425,6 +439,11 @@
 /obj/item/tool/weldingtool/empty
 	starting_fuel = FALSE
 
+/obj/item/tool/weldingtool/screen
+	name = "shielded blowtorch"
+	desc = "A blowtorch, this one has a welding screen installed to prevent eye damage."
+	has_welding_screen = TRUE
+
 /obj/item/tool/weldingtool/largetank
 	name = "industrial blowtorch"
 	max_fuel = 60
@@ -455,10 +474,9 @@
 
 /obj/item/tool/weldingtool/simple
 	name = "\improper ME3 hand welder"
-	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field. Due to the small size and slow strength, its function is limited compared to a full-sized technician's blowtorch."
+	desc = "A compact, handheld welding torch used by the marines of the United States Colonial Marine Corps for cutting and welding jobs on the field."
 	max_fuel = 5
 	has_welding_screen = TRUE
-	inherent_traits = list(TRAIT_TOOL_SIMPLE_BLOWTORCH)
 	icon_state = "welder_b"
 
 /*
@@ -468,7 +486,7 @@
 /obj/item/tool/crowbar
 	name = "crowbar"
 	desc = "Used to remove floors and to pry open doors."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "crowbar"
 	pickup_sound = 'sound/handling/crowbar_pickup.ogg'
 	drop_sound = 'sound/handling/crowbar_drop.ogg'
@@ -486,7 +504,7 @@
 	preferred_storage = list(/obj/item/clothing/accessory/storage/tool_webbing = WEAR_ACCESSORY)
 
 /obj/item/tool/crowbar/red
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tools.dmi'
 	icon_state = "red_crowbar"
 	item_state = "red_crowbar"
 
@@ -502,6 +520,11 @@
 	desc = "A combination crowbar, wrench, and generally large bludgeoning device that comes in handy in emergencies. Can be used to disengage door jacks. Pretty hefty, though."
 	icon_state = "maintenance_jack"
 	item_state = "maintenance_jack"
+	item_icons = list(
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/tools.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi',
+	)
 	hitsound = "swing_hit"
 	w_class = SIZE_LARGE
 	force = MELEE_FORCE_STRONG
@@ -608,13 +631,13 @@
 
 	if(requires_skills_unbolt)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER)) //Engi 3 is much faster
-			user.visible_message(SPAN_DANGER("[user] begins to search for [attacked_door]'s bolts!"),\
+			user.visible_message(SPAN_DANGER("[user] begins to search for [attacked_door]'s bolts!"),
 			SPAN_NOTICE("You search for [attacked_door]'s bolts."))
 			if(!do_after(user, unskilled_unbolt_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL)) //Otherwise it takes an extra 15 seconds
 				to_chat(user, SPAN_WARNING("You fail to find the bolts on [attacked_door]."))
 				return
 
-	user.visible_message(SPAN_DANGER("[user] begins to disable [attacked_door]'s bolts!"),\
+	user.visible_message(SPAN_DANGER("[user] begins to disable [attacked_door]'s bolts!"),
 	SPAN_NOTICE("You start to disable [attacked_door]'s bolts."))
 	playsound(attacked_door, "pry", 25, TRUE)
 
@@ -622,7 +645,7 @@
 		to_chat(user, SPAN_WARNING("You decide not to disable the bolts on [attacked_door]."))
 		return
 
-	user.visible_message(SPAN_DANGER("[user] disables the bolts on [attacked_door]."),\
+	user.visible_message(SPAN_DANGER("[user] disables the bolts on [attacked_door]."),
 	SPAN_NOTICE("You unbolt [attacked_door]."))
 	attacked_door.unlock(TRUE)
 	return
@@ -654,14 +677,14 @@
 
 				user.visible_message(SPAN_DANGER("[user] forces [resin_door] open with [src]."),
 				SPAN_DANGER("You force [resin_door] open with [src]."))
-				resin_door.Open()
+				resin_door.open()
 				return
 
 	else if(istype(attacked_obj, /turf/open/floor))
 		var/turf/open/floor/flooring = attacked_obj
 
 		if(crowbar_mode && user.a_intent == INTENT_HELP) //Only pry flooring on help intent
-			if(flooring.hull_floor) //no interaction for hulls
+			if(flooring.turf_flags & TURF_HULL) //no interaction for hulls
 				return
 			if(flooring.weeds)
 				return attackby(src, user)
@@ -679,7 +702,10 @@ Welding backpack
 	name = "Welding kit"
 	desc = "A heavy-duty, portable welding fluid carrier."
 	flags_equip_slot = SLOT_BACK
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/tank.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/misc.dmi',
+	)
 	icon_state = "welderpack"
 	w_class = SIZE_LARGE
 	/// More robust liner I guess

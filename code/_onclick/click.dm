@@ -30,9 +30,9 @@
 	if ((A.flags_atom & NOINTERACT))
 		if (istype(A, /atom/movable/screen/click_catcher))
 			var/list/mods = params2list(params)
-			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
+			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.eye), client)
 			if (TU)
-				params += ";click_catcher=1"
+				params += CLICK_CATCHER_ADD_PARAM
 				do_click(TU, location, params)
 		return
 
@@ -49,7 +49,7 @@
 		clicked_something[mod] = TRUE
 
 	// Don't allow any other clicks while dragging something
-	if (mods["drag"])
+	if(mods[DRAG])
 		return
 
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -82,8 +82,10 @@
 		return
 
 	face_atom(A)
-	if(mods["middle"])
+
+	if(mods[MIDDLE_CLICK] || mods[BUTTON4] || mods[BUTTON5])
 		return
+
 	// Special type of click.
 	if (is_mob_restrained())
 		RestrainedClickOn(A)
@@ -144,22 +146,29 @@
 	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
-/mob/proc/click_adjacent(atom/A, obj/item/W, mods)
-	if(W)
-		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
-			next_move += W.attack_speed
-
-		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
+/mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)
+	if(HAS_TRAIT(src, TRAIT_HAULED))
+		if(!isstorage(targeted_atom) && !isclothing(targeted_atom) && !isweapon(targeted_atom) && !isgun(targeted_atom))
+			return
+	if(used_item)
+		var/attackby_result = targeted_atom.attackby(used_item, src, mods)
+		var/afterattack_result
+		if(!QDELETED(targeted_atom) && !(attackby_result & ATTACKBY_HINT_NO_AFTERATTACK))
 			// in case the attackby slept
-			if(!W)
-				UnarmedAttack(A, 1, mods)
+			if(!used_item)
+				if(!isitem(targeted_atom) && !issurface(targeted_atom))
+					next_move += 4
+				UnarmedAttack(targeted_atom, 1, mods)
 				return
 
-			W.afterattack(A, src, 1, mods)
+			afterattack_result = used_item.afterattack(targeted_atom, src, 1, mods)
+
+		if(used_item.attack_speed && !src.contains(targeted_atom) && (attackby_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (afterattack_result & ATTACKBY_HINT_UPDATE_NEXT_MOVE) || (used_item.flags_item & ADJACENT_CLICK_DELAY))
+			next_move += used_item.attack_speed
 	else
-		if(!isitem(A) && !issurface(A))
+		if(!isitem(targeted_atom) && !issurface(targeted_atom))
 			next_move += 4
-		UnarmedAttack(A, 1, mods)
+		UnarmedAttack(targeted_atom, 1, mods)
 
 /mob/proc/check_click_intercept(params,A)
 	//Client level intercept
@@ -188,16 +197,51 @@
 	* mob/RangedAttack(atom,params) - used only ranged, only used for tk and laser eyes but could be changed
 */
 
+/*
+	AI ClickOn()
+
+	Note currently ai is_mob_restrained() returns 0 in all cases,
+	therefore restrained code has been removed
+
+	The AI can double click to move the camera (this was already true but is cleaner),
+	or double click a mob to track them.
+
+	Note that AI have no need for the adjacency proc, and so this proc is a lot cleaner.
+*/
+
 /mob/proc/click(atom/A, list/mods)
-	return FALSE
+	if(!client || !client.remote_control)
+		return FALSE
+
+	if(mods[MIDDLE_CLICK])
+		A.AIMiddleClick(src)
+		return TRUE
+
+	if(mods[SHIFT_CLICK])
+		A.AIShiftClick(src)
+		return TRUE
+
+	if(mods[ALT_CLICK])
+		A.AIAltClick(src)
+		return TRUE
+
+	if(mods[CTRL_CLICK])
+		A.AICtrlClick(src)
+		return TRUE
+
+	if(world.time <= next_move)
+		return TRUE
+
+	A.attack_remote(src)
+	return TRUE
 
 /atom/proc/clicked(mob/user, list/mods)
-	if (mods["shift"] && !mods["middle"])
+	if (mods[SHIFT_CLICK] && !mods[MIDDLE_CLICK])
 		if(can_examine(user))
 			examine(user)
 		return TRUE
 
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && length(T.contents))
 			user.set_listed_turf(T)
@@ -209,7 +253,7 @@
 	if (..())
 		return TRUE
 
-	if (mods["ctrl"])
+	if (mods[CTRL_CLICK])
 		if (Adjacent(user) && user.next_move < world.time)
 			user.start_pulling(src)
 		return TRUE
@@ -226,7 +270,9 @@
 	in human click code to allow glove touches only at melee range.
 */
 /mob/proc/UnarmedAttack(atom/A, proximity_flag, click_parameters)
-	return
+	if(!client || !client.remote_control)
+		return FALSE
+	A.attack_remote(src)
 
 /*
 	Ranged unarmed attack:
@@ -237,7 +283,9 @@
 	animals lunging, etc.
 */
 /mob/proc/RangedAttack(atom/A, params)
-	return
+	if(!client || !client.remote_control)
+		return FALSE
+	A.attack_remote(src)
 
 /*
 	Restrained ClickOn
@@ -257,10 +305,12 @@
 // Simple helper to face what you clicked on, in case it should be needed in more than one place
 /mob/proc/face_atom(atom/A)
 
-	if( !A || !x || !y || !A.x || !A.y ) return
+	if( !A || !x || !y || !A.x || !A.y )
+		return
 	var/dx = A.x - x
 	var/dy = A.y - y
-	if(!dx && !dy) return
+	if(!dx && !dy)
+		return
 
 	var/direction
 	var/specific_direction

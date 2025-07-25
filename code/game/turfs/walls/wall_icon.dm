@@ -3,7 +3,6 @@
 #define cur_increment(v) floor((v-1)/8)+1
 
 /turf/closed/wall/update_icon()
-	..()
 	if(QDELETED(src))
 		return
 
@@ -78,8 +77,8 @@
 	for(var/turf/T in orange(src, 1))
 		var/success = 0
 		for(var/obj/O in T)
-			for(var/b_type in blend_objects)
-				if(istype(O, b_type))
+			for(var/blood_type in blend_objects)
+				if(istype(O, blood_type))
 					success = TRUE
 				for(var/nb_type in noblend_objects)
 					if(istype(O, nb_type))
@@ -114,7 +113,8 @@
 #define CORNER_CLOCKWISE 4
 
 /proc/dirs_to_corner_states(list/dirs)
-	if(!istype(dirs)) return
+	if(!istype(dirs))
+		return
 
 	var/list/ret = list(NORTHWEST, SOUTHEAST, NORTHEAST, SOUTHWEST)
 

@@ -3,6 +3,7 @@
 	desc = "A small disk used for carrying data on plant genetics."
 	icon = 'icons/obj/items/disk.dmi'
 	icon_state = "botanydisk"
+	item_state = "botanydisk"
 	w_class = SIZE_TINY
 	ground_offset_x = 5
 	ground_offset_y = 5

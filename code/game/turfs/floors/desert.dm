@@ -23,9 +23,7 @@
 /turf/open/desert/dirt
 	name = "desert"
 	icon_state = "desert1"
-
-/turf/open/desert/dirt/is_weedable()
-	return FULLY_WEEDABLE
+	is_weedable = FULLY_WEEDABLE
 
 /turf/open/desert/dirt/desert_transition_edge1
 	icon_state = "desert_transition_edge1"
@@ -82,24 +80,11 @@
 /turf/open/desert/dirt/rock1
 	icon_state = "rock1"
 
-//desert riverbed
-/turf/open/desert/riverbed/dirt1
-	name = "riverbed"
-	icon_state = "dirt1"
-//turf/open/desert/riverbed/dirt2
-// name = "riverbed"
-// icon_state = "dirt2"
-//turf/open/desert/riverbed/dirt3
-// name = "riverbed"
-// icon_state = "dirt3"
-
 //desert floor
 /turf/open/desert/rock
 	name = "rock"
 	icon_state = "rock1"
-
-/turf/open/desert/rock/is_weedable()
-	return FULLY_WEEDABLE
+	is_weedable = FULLY_WEEDABLE
 
 /turf/open/desert/rock/edge1
 	name = "desert"
@@ -179,6 +164,7 @@
 	icon_state = "shore1"
 	var/toxic = 0
 	supports_surgery = FALSE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/desert/desert_shore/update_icon()
 	..()
@@ -192,9 +178,6 @@
 		if(-1)
 			set_light(1)
 			icon = 'icons/turf/floors/desert_water_transition.dmi'
-
-/turf/open/desert/desert_shore/is_weedable()
-	return NOT_WEEDABLE
 
 /turf/open/desert/desert_shore/desert_shore1
 	name = "shore"
@@ -275,23 +258,29 @@
 
 //Desert Cave
 /turf/open/desert/cave
+	icon = 'icons/turf/floors/desertdam_map.dmi'
 	icon_state = "outer_cave_floor1"
+
 //desert floor to outer cave floor transition
 /turf/open/desert/cave/desert_into_outer_cave_floor
 	name = "cave"
 	icon_state = "outer_cave_transition1"
+
 //outer cave floor
 /turf/open/desert/cave/outer_cave_floor
 	name = "cave"
 	icon_state = "outer_cave_floor1"
+
 //outer to inner cave floor transition
 /turf/open/desert/cave/outer_cave_to_inner_cave
 	name = "cave"
 	icon_state = "outer_cave_to_inner1"
+
 //inner cave floor
 /turf/open/desert/cave/inner_cave_floor
 	name = "cave"
 	icon_state = "inner_cave_1"
+
 //inner cave shore
 /turf/open/desert/cave/cave_shore
 	name = "cave shore"
@@ -329,9 +318,7 @@
 	icon_overlay = "_shallow"
 	var/toxic = 0
 	default_name = "water"
-
-/turf/open/gm/river/desert/is_weedable()
-	return NOT_WEEDABLE
+	is_weedable = NOT_WEEDABLE
 
 /turf/open/gm/river/desert/update_icon()
 	..()
@@ -454,6 +441,7 @@
 
 /turf/open/desert/excavation
 	icon = 'icons/turf/floors/desert_excavation.dmi'
+	icon_state = null
 
 //Engineer Ship
 /turf/open/desert/excavation/component1

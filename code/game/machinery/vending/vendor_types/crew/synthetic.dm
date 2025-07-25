@@ -465,6 +465,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 /datum/gear/synthetic/headwear/surgcap_black
 	path = /obj/item/clothing/head/surgery/morgue
 
+/datum/gear/synthetic/headwear/surgcap_pharmacist
+	path = /obj/item/clothing/head/surgery/pharmacist
+
 /datum/gear/synthetic/headwear/beanie
 	path = /obj/item/clothing/head/beanie
 

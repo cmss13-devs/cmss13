@@ -9,6 +9,8 @@ $mandatory-color: hsl(39, 100%, 25%);
   .StackButton {
     background-color: rgba(colors.$primary, $button-bg-opacity);
     border: 2px solid colors.$primary;
+    white-space: nowrap;
+    white-space-collapse: nowrap;
     &:hover,
     &:focus {
       transition:

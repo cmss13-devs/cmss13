@@ -102,7 +102,7 @@ export const StackReceipts = () => {
               {currentReceipts.length > 0 &&
                 currentReceipts.map((receipt, index) => (
                   <Stack key={index} justify="space-between">
-                    <Stack.Item width="100%">
+                    <Stack.Item width="100%" style={{ whiteSpace: 'nowrap' }}>
                       {receipt.empty_line_next ? (
                         <hr
                           style={{
@@ -141,7 +141,11 @@ export const StackReceipts = () => {
                               icon_state={receipt.icon_state}
                               height="32px"
                               width="32px"
-                              style={{ position: 'relative', top: '6px' }}
+                              style={{
+                                position: 'relative',
+                                top: '6px',
+                                whiteSpace: 'nowrap',
+                              }}
                             />
                           ) : (
                             ''

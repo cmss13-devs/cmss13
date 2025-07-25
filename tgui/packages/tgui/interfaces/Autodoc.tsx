@@ -34,6 +34,7 @@ type HumanData = {
   bloodLevel: number;
   bloodMax: number;
   bloodPercent: number;
+  hasImport: BooleanLike;
 };
 
 type OccupantData = {
@@ -178,7 +179,7 @@ const AutodocDamage = (props) => {
 
 const AutodocControls = (props) => {
   const { act, data } = useBackend<Data>();
-  const { surgery } = data;
+  const { surgery, occupant } = data;
   return (
     <Section>
       <Flex justify="space-between">
@@ -194,24 +195,38 @@ const AutodocControls = (props) => {
           </Button>
         </Flex.Item>
         <Flex.Item>
-          <Button
-            onClick={() => act('clear')}
-            disabled={surgery}
-            icon="trash-can"
-            iconPosition="right"
-          >
-            Clear selected
-          </Button>
-        </Flex.Item>
-        <Flex.Item>
-          <Button
-            onClick={() => act('ejectify')}
-            icon={surgery ? 'triangle-exclamation' : 'user-slash'}
-            iconPosition="right"
-            backgroundColor={!!surgery && 'red'}
-          >
-            Eject patient
-          </Button>
+          <Flex justify="space-evenly" wrap="wrap">
+            <Flex.Item>
+              <Button
+                onClick={() => act('clear')}
+                disabled={surgery}
+                icon="trash-can"
+                iconPosition="right"
+              >
+                Clear selected
+              </Button>
+            </Flex.Item>
+            <Flex.Item>
+              <Button
+                onClick={() => act('ejectify')}
+                icon={surgery ? 'triangle-exclamation' : 'user-slash'}
+                iconPosition="right"
+                backgroundColor={!!surgery && 'red'}
+              >
+                Eject patient
+              </Button>
+            </Flex.Item>
+            <Flex.Item>
+              <Button
+                onClick={() => act('import')}
+                icon="file-import"
+                iconPosition="right"
+                disabled={surgery || !occupant.hasImport}
+              >
+                Import from latest bodyscan
+              </Button>
+            </Flex.Item>
+          </Flex>
         </Flex.Item>
       </Flex>
     </Section>

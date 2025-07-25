@@ -1,4 +1,0 @@
-author: "Willzadl"
-delete-after: True
-changes:
-  - bugfix: "requisition line tutorial now uses the brute warhead and m37a1 instead of the XM51 mag and m37a2"

@@ -5,12 +5,12 @@
 	mob_max = 1
 	mob_min = 1
 	probability = 0
-	objectives = "Get some good trophies. The more dangerous, the better!"
+	objectives = "Добудьте несколько хороших трофеев. Чем опаснее, тем лучше!"
 	hostility = TRUE
 
 /datum/emergency_call/van_bandolier/New()
 	. = ..()
-	arrival_message = "'Heard your distress call, [MAIN_SHIP_NAME]. It had best be something which will look good on my wall, eh? Tally ho!'"
+	arrival_message = "'Слышал ваш сигнал бедствия, [MAIN_SHIP_NAME]. Лучше бы это было что-то, что будет хорошо смотреться на моей стене, как думаете? Вперёд, ребята!'"
 
 /datum/emergency_call/van_bandolier/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

@@ -1,7 +1,7 @@
 /datum/emergency_call/cbrn
 	name = "CBRN (Squad)"
-	arrival_message = "Attention, this is the USS Kurtz, we have dispatched a CBRN squad to your ship per your distress call. Stand by for arrival."
-	objectives = "Handle the chemical, biological, radiological, or nuclear threat. Further orders may be provided."
+	arrival_message = "Внимание, говорит КСШ \"Курц\". Мы засекли ваш сигнал бедствия и направили отряд РХБЗ на ваш корабль. Ожидайте прибытия."
+	objectives = "Справьтесь с химической, биологической, радиационной или ядерной угрозой. Могут быть отданы дополнительные приказы."
 	home_base = /datum/lazy_template/ert/uscm_station
 	mob_min = 3
 	mob_max = 5
@@ -41,12 +41,12 @@
 
 /datum/emergency_call/cbrn/ert
 	name = "CBRN (Distress)"
-	arrival_message = "Attention, this is the USS Kurtz, we have dispatched a CBRN squad to your ship per your distress call. Stand by for arrival."
+	arrival_message = "Внимание, говорит КСШ \"Курц\". Мы засекли ваш сигнал бедствия и направили отряд РХБЗ на ваш корабль. Ожидайте прибытия."
 	probability = 10
 
 /datum/emergency_call/cbrn/ert/New()
 	..()
-	objectives = "Investigate the distress signal aboard the [MAIN_SHIP_NAME]."
+	objectives = "Расследуйте сигнал бедствия на борту корабля [MAIN_SHIP_NAME]."
 
 /datum/emergency_call/cbrn/specialists
 	name = "CBRN (Specialists)"
@@ -57,8 +57,8 @@
 
 /datum/emergency_call/cbrn/specialists/New()
 	var/cbrn_ship_name = "Unit [pick(GLOB.nato_phonetic_alphabet)]-[rand(1, 99)]"
-	arrival_message = "[MAIN_SHIP_NAME], CBRN [cbrn_ship_name] has been dispatched. Follow all orders provided by [cbrn_ship_name]."
-	objectives = "You are a specialist team in [cbrn_ship_name] dispatched to quell a threat to [MAIN_SHIP_NAME]. Further orders may be provided."
+	arrival_message = "[MAIN_SHIP_NAME], к вам был отправлен на подмогу [cbrn_ship_name] с отрядом РХБЗ. Выполняйте все приказы, отданные [cbrn_ship_name]."
+	objectives = "Вы - команда специалистов на корабле [cbrn_ship_name], направленная для устранения угрозы на [MAIN_SHIP_NAME]. Могут быть получены дополнительные приказы."
 
 /datum/emergency_call/cbrn/specialists/create_member(datum/mind/new_mind, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

@@ -23,6 +23,7 @@
 	if(!client.prefs.playtime_perks)
 		age = XENO_NORMAL
 
+	/* BANDASTATION EDIT START - Age Prefixes
 	switch(age)
 		if(XENO_YOUNG)
 			age_prefix = "Young "
@@ -36,6 +37,9 @@
 			age_prefix = "Ancient "
 		if(XENO_PRIME)
 			age_prefix = "Prime "
+	*/
+	age_prefix = caste.get_age_prefix(age)
+	// BANDASTATION EDIT END
 
 	hud_update() //update the age level insignia on our xeno hud.
 

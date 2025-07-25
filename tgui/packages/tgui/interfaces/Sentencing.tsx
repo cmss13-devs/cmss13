@@ -65,12 +65,14 @@ const MainMenu = (props) => {
       mt="-3rem"
       bold
     >
-      <Box fontFamily="monospace">Jurisdictional Automated System</Box>
+      <Box fontFamily="monospace">
+        Юрисдикционная Автоматизированная Система
+      </Box>
       <Box mb="2rem" fontFamily="monospace">
         WY-DOS Executive
       </Box>
       <Box fontFamily="monospace">Version 5.8.4</Box>
-      <Box fontFamily="monospace">Copyright © 2182, Weyland Yutani Corp.</Box>
+      <Box fontFamily="monospace">Copyright © 2182, Вейланд Ютани Корп.</Box>
 
       <Button
         width="30vw"
@@ -80,13 +82,13 @@ const MainMenu = (props) => {
         mt="5rem"
         onClick={() => act('new_report')}
       >
-        New Report
+        Новый отчет
       </Button>
       <Box fontSize="2rem" mt="1rem">
-        OR
+        ИЛИ
       </Box>
       <Box fontSize="1.5rem" mt="1rem">
-        scan an existing report
+        просканировать существующий отчет
       </Box>
     </Flex>
   );
@@ -110,37 +112,37 @@ const NewReport = (props) => {
             onClick={() => act('scrap_report')}
           />
 
-          <h1>Incident Report</h1>
+          <h1>Отчет об инциденте</h1>
 
           <Button
             icon="print"
             ml="auto"
             px="2rem"
             bold
-            tooltip={canExport ? '' : 'Missing suspect or charges'}
+            tooltip={canExport ? '' : 'Отсутствует обвиняемый или обвинения'}
             disabled={!canExport}
             onClick={() => act('export')}
           >
-            Export
+            Экспорт
           </Button>
         </Flex>
       </Section>
       <Section>
         <LabeledList>
-          <LabeledList.Item label="Suspect">
+          <LabeledList.Item label="Обвиняемый">
             <Button
               icon="pen"
               bold
-              tooltip="Hold an ID in your hand"
+              tooltip="Держите ID в руке"
               onClick={() => act('set_suspect')}
             >
               {suspect_name}
             </Button>
           </LabeledList.Item>
-          <LabeledList.Item label="Sentence">
-            {sentence !== '0 minutes' ? sentence : '--'}
+          <LabeledList.Item label="Заключение">
+            {sentence !== '0 минут' ? sentence : '--'}
           </LabeledList.Item>
-          <LabeledList.Item label="Summary">
+          <LabeledList.Item label="Описание">
             <Button icon="pen" onClick={() => act('edit_summary')} />
           </LabeledList.Item>
         </LabeledList>
@@ -172,7 +174,7 @@ const NewCharge = (props) => {
             mr="1rem"
             onClick={() => act('set_menu', { new_menu: 'incident_report' })}
           />
-          <h1>New Charge</h1>
+          <h1>Новое обвинение</h1>
         </Flex>
       </Section>
       <Section>
@@ -195,11 +197,11 @@ const NewCharge = (props) => {
                 {law.desc}
               </Box>
               <LabeledList>
-                <LabeledList.Item label="Sentence">
-                  {law.brig_time} minutes
+                <LabeledList.Item label="Заключение">
+                  {law.brig_time} минут
                 </LabeledList.Item>
                 {law.special_punishment && (
-                  <LabeledList.Item label="Extra">
+                  <LabeledList.Item label="Дополнительно">
                     {law.special_punishment}
                   </LabeledList.Item>
                 )}
@@ -214,7 +216,7 @@ const NewCharge = (props) => {
                 mt="1rem"
                 onClick={() => act('new_charge', { law: law.ref })}
               >
-                Add Charge
+                Добавить обвинение
               </Button>
             </Section>
           ))}
@@ -229,7 +231,7 @@ const Charges = (props) => {
   const { current_charges = [] } = data;
 
   return (
-    <Section title="Charges">
+    <Section title="Обвинения">
       <Flex direction="column">
         {!!current_charges.length && (
           <Flex
@@ -239,10 +241,10 @@ const Charges = (props) => {
             fontSize="1.25rem"
           >
             <Flex.Item bold width="9rem" shrink="0" mr="1rem">
-              Charge
+              Обвинение
             </Flex.Item>
             <Flex.Item grow bold>
-              Description
+              Описание
             </Flex.Item>
             <Flex.Item
               width="10rem"
@@ -251,7 +253,7 @@ const Charges = (props) => {
               pr="3rem"
               bold
             >
-              Extra
+              Дополнительно
             </Flex.Item>
           </Flex>
         )}
@@ -284,7 +286,7 @@ const Charges = (props) => {
             bold
             onClick={() => act('set_menu', { new_menu: 'new_charge' })}
           >
-            New Charge
+            Новое обвинение
           </Button>
         </Flex>
       </Flex>
@@ -297,7 +299,7 @@ const Evidence = (props) => {
   const { witnesses = [], evidence = [] } = data;
 
   return (
-    <Section title="Evidence">
+    <Section title="Доказательства">
       <Flex>
         {/* Witnesses */}
         <Flex direction="column" width="50%">
@@ -346,10 +348,10 @@ const Evidence = (props) => {
             width="50%"
             mx="auto"
             py=".25rem"
-            tooltip="Hold an ID in your hand"
+            tooltip="Держите ID в руке"
             onClick={() => act('add_witness')}
           >
-            Add Witness
+            Добавить свидетеля
           </Button>
         </Flex>
 
@@ -400,10 +402,10 @@ const Evidence = (props) => {
             width="50%"
             mx="auto"
             py=".25rem"
-            tooltip="Hold an object in your hand"
+            tooltip="Держите предмет в руке"
             onClick={() => act('add_evidence')}
           >
-            Add Evidence
+            Добавить доказательства
           </Button>
         </Flex>
       </Flex>

@@ -39,9 +39,9 @@
 
 		// Sentence.
 		if(incident.brig_sentence < PERMABRIG_SENTENCE)
-			data["sentence"] = "[incident.brig_sentence] minutes"
+			data["sentence"] = "[incident.brig_sentence] минут" //BANDAMARINES - Translate
 		else
-			data["sentence"] = "PERMA BRIGGED"
+			data["sentence"] = "ПЕРМА БРИГ" //BANDAMARINES - Translate
 
 		// Current charges.
 		var/list/current_charges = list()
@@ -81,13 +81,14 @@
 	var/list/data = list()
 
 	data["laws"] = list()
-	data["laws"] += list(create_law_data("Minor Laws", SSlaw_init.minor_law))
-	data["laws"] += list(create_law_data("Major Laws", SSlaw_init.major_law))
-	data["laws"] += list(create_law_data("Capital Laws", SSlaw_init.capital_law))
-	data["laws"] += list(create_law_data("Optional Laws", SSlaw_init.optional_law))
-	data["laws"] += list(create_law_data("Precautionary Laws", SSlaw_init.precautionary_law))
-	data["laws"] += list(create_law_data("Civilian Laws", SSlaw_init.civilian_law))
-
+	//BANDAMARINES - Translate - Begin
+	data["laws"] += list(create_law_data("Малозначительные", SSlaw_init.minor_law))
+	data["laws"] += list(create_law_data("Тяжкие", SSlaw_init.major_law))
+	data["laws"] += list(create_law_data("Особо тяжкие", SSlaw_init.capital_law))
+	data["laws"] += list(create_law_data("Опциональные", SSlaw_init.optional_law))
+	data["laws"] += list(create_law_data("Особые", SSlaw_init.precautionary_law))
+	data["laws"] += list(create_law_data("Гражданские", SSlaw_init.civilian_law))
+	//BANDAMARINES - Translate - End
 	return data
 
 /obj/structure/machinery/computer/sentencing/proc/create_law_data(label, list/laws)

@@ -46,7 +46,6 @@
 
 /obj/structure/machinery/medical_pod/autodoc/go_in(mob/patient)
 	. = ..()
-	start_processing()
 	if(ishuman(patient))
 		var/datum/data/record/patient_record = null
 		var/human_ref = WEAKREF(patient)
@@ -56,6 +55,7 @@
 				break
 		if(!isnull(patient_record))
 			generated_surgery_list = patient_record.fields["autodoc_data"]
+	start_processing()
 	if(connected)
 		connected.start_processing()
 

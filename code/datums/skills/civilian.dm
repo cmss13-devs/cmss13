@@ -379,6 +379,15 @@ CIVILIAN
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 	)
 
+/datum/skills/civilian/survivor/uscm_recruiter
+	name = "Survivor USCM Recruiter"
+	additional_skills = list(
+		SKILL_FIREMAN = SKILL_FIREMAN_SKILLED,
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+		SKILL_OVERWATCH = SKILL_OVERWATCH_TRAINED,
+	)
+
 /datum/skills/civilian/fax_responder
 	name = "Comms Relay Worker" //Used for fax responder presets, allowing use of appropriate HUDs and basics.
 	skills = list(

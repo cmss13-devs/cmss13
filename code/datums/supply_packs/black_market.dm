@@ -66,10 +66,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 /datum/supply_packs/contraband/seized/black_market_scanner
 	name = "black market scanner crate"
 	contains = list(/obj/item/device/black_market_scanner)
-	containername = "trash cart"
+	containername = "interesting wooden crate"
 	dollar_cost = 5
 	crate_heat = 0
-	containertype = /obj/structure/closet/crate/trashcart
+	containertype = /obj/structure/closet/coffin/woodencrate
 
 /datum/supply_packs/contraband/seized/confiscated_equipment
 	name = "seized foreign equipment crate"
@@ -179,6 +179,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 */
 
 // Rifles
+
+/datum/supply_packs/contraband/seized/ak4047
+	name = "AK-4047 pulse assault rifle crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/m16
 	name = "M16 rifle crate (x4 magazines included)"
@@ -680,7 +693,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/weapon/baton/cattleprod,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 		/obj/item/storage/box/packet/m15/rubber,
-		/obj/item/storage/box/guncase/m79,
+		/obj/item/storage/box/guncase/m85a1,
 		/obj/item/clothing/head/helmet/marine/MP,
 		/obj/item/prop/helmetgarb/riot_shield,
 	)
@@ -766,6 +779,18 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "shotgun shell box crate (Type 23, x100 8g flechette shells)"
 	dollar_cost = 115
 	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/flechette)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ak4047
+	name = "Magazine box (AK-4047, 12x regular mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/ak4047)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ak4047/ap
+	name = "Magazine box (AK-4047, 12x AP mags)"
+	dollar_cost = 80
+	contains = list(/obj/item/ammo_box/magazine/ak4047/ap)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/m16

@@ -675,11 +675,11 @@
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
-									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["b_type"]]")
-									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
-									to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
-									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
-									to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
+									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["blood_type"]]")
+									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["minor_disability"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["minor_disability_details"]]")
+									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["major_disability"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["major_disability_details"]]")
 									to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
 									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
 									read = 1
@@ -861,34 +861,35 @@
 /mob/living/carbon/human/ui_state(mob/user)
 	return GLOB.not_incapacitated_state
 
-///get_eye_protection()
-///Returns a number between -1 to 2
+/// Gets a value between EYE_PROTECTION_NEGATIVE (-1) and EYE_PROTECTION_WELDING (3) based on whether there are eyes
+/// to blind or how much clothing protects them
 /mob/living/carbon/human/get_eye_protection()
-	var/number = 0
+	var/number = EYE_PROTECTION_NONE
 
 	if(species && !species.has_organ["eyes"])
 		return EYE_PROTECTION_WELDING //No eyes, can't hurt them.
 
 	if(!internal_organs_by_name)
 		return EYE_PROTECTION_WELDING
-	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
-	if(I)
-		if(I.cut_away)
+	var/datum/internal_organ/eyes/eyes_organ = internal_organs_by_name["eyes"]
+	if(eyes_organ)
+		if(eyes_organ.cut_away)
 			return EYE_PROTECTION_WELDING
-		if(I.robotic == ORGAN_ROBOT)
+		if(eyes_organ.robotic == ORGAN_ROBOT)
 			return EYE_PROTECTION_WELDING
 	else
 		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
-		var/obj/item/clothing/C = head
-		number += C.eye_protection
+		var/obj/item/clothing/cloth_item = head
+		number += cloth_item.eye_protection
 	if(istype(wear_mask, /obj/item/clothing))
-		number += wear_mask.eye_protection
+		var/obj/item/clothing/cloth_item = wear_mask
+		number += cloth_item.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
 
-	return number
+	return clamp(number, EYE_PROTECTION_NEGATIVE, EYE_PROTECTION_WELDING)
 
 
 /mob/living/carbon/human/abiotic(full_body = 0)
@@ -1232,6 +1233,12 @@
 			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
 				flavor_text += flavor_texts[T]
 				flavor_text += "\n\n"
+
+	// Variable inserts
+	flavor_text = replacetext(flavor_text, "%bloodtype%", blood_type)
+	flavor_text = replacetext(flavor_text, "%rank%", get_paygrade())
+	flavor_text = replacetext(flavor_text, "%name%", name)
+
 	return ..()
 
 
@@ -1692,6 +1699,10 @@
 	set category = "IC"
 
 	var/HTML = "<body>"
+	HTML += "You may include %bloodtype% %rank% or %name% as inserts."
+	HTML += "<br>"
+	HTML += "The %rank% will include a space after if applicable."
+	HTML += "<br>"
 	HTML += "<tt>"
 	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
@@ -1723,7 +1734,7 @@
 	HTML += "<hr />"
 	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
-	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 300)
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 430)
 
 /mob/living/carbon/human/throw_item(atom/target)
 	if(!throw_allowed)

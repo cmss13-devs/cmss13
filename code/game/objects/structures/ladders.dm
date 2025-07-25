@@ -14,6 +14,8 @@
 	var/is_watching = 0
 	var/obj/structure/machinery/camera/cam
 	var/busy = FALSE //Ladders are wonderful creatures, only one person can use it at a time
+	var/static/list/direction_selection = list("up" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_up"), "down" = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_ladder_down"))
+
 
 /obj/structure/ladder/Initialize(mapload, ...)
 	. = ..()
@@ -73,17 +75,17 @@
 	if(busy)
 		to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 		return
+
 	var/ladder_dir_name
 	var/obj/structure/ladder/ladder_dest
 	if(up && down)
-		ladder_dir_name = alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel")
-		if(ladder_dir_name == "Cancel")
-			return
-		ladder_dir_name = lowertext(ladder_dir_name)
-		if(ladder_dir_name == "up")
+		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+		if(ladder_dest == "up")
 			ladder_dest = up
-		else
+			ladder_dir_name = ("up")
+		if(ladder_dest == "down")
 			ladder_dest = down
+			ladder_dir_name = ("down")
 	else if(up)
 		ladder_dir_name = "up"
 		ladder_dest = up
@@ -91,7 +93,10 @@
 		ladder_dir_name = "down"
 		ladder_dest = down
 	else
-		return //just in case
+		return FALSE //just in case
+
+	if(!ladder_dest)
+		return
 
 	step(user, get_dir(user, src))
 	user.visible_message(SPAN_NOTICE("[user] starts climbing [ladder_dir_name] [src]."),
@@ -142,43 +147,48 @@
 	user.reset_view(null)
 
 //Peeking up/down
-/obj/structure/ladder/MouseDrop(over_object, src_location, over_location)
-	if((over_object == usr && (in_range(src, usr))))
-		if(islarva(usr) || isobserver(usr) || usr.is_mob_incapacitated() || usr.blinded)
-			to_chat(usr, "You can't do that in your current state.")
+/obj/structure/ladder/MouseDrop(over_object, src_location, over_location, mob/user)
+	//Are we capable of looking?
+	if(usr.is_mob_incapacitated() || get_dist(usr, src) > 1 || usr.blinded ||  !usr.client)
+		return
+
+	if(isliving(usr))
+		var/mob/living/living_usr = usr
+		if(living_usr.body_position == LYING_DOWN)
 			return
-		if(is_watching)
-			to_chat(usr, "Someone's already looking through [src].")
-			return
-		if(up && down)
-			switch( alert("Look up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
-				if("Up")
-					usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
-					SPAN_NOTICE("You look up [src]!"))
-					is_watching = 2
-					usr.set_interaction(src)
 
-				if("Down")
-					usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
-					SPAN_NOTICE("You look down [src]!"))
-					is_watching = 1
-					usr.set_interaction(src)
-
-				if("Cancel")
-					return
-
-		else if(up)
+	var/obj/structure/ladder/looking_at
+	if(up && down)
+		looking_at = lowertext(show_radial_menu(usr, src, direction_selection, require_near = TRUE))
+		if(looking_at == "up")
+			looking_at = up
+			is_watching = 2
 			usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
 			SPAN_NOTICE("You look up [src]!"))
-			is_watching = 2
 			usr.set_interaction(src)
-
-
-		else if(down)
-			usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
-			SPAN_NOTICE("You look down [src]!"))
+		if(looking_at == "down")
+			looking_at = down
 			is_watching = 1
 			usr.set_interaction(src)
+			usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
+			SPAN_NOTICE("You look down [src]!"))
+	else if(up)
+		looking_at = up
+		is_watching = 2
+		usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
+		SPAN_NOTICE("You look up [src]!"))
+		usr.set_interaction(src)
+	else if(down)
+		looking_at = down
+		is_watching = 1
+		usr.set_interaction(src)
+		usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
+		SPAN_NOTICE("You look down [src]!"))
+	else
+		return FALSE //just in case
+
+	if(!looking_at)
+		return
 
 	add_fingerprint(usr)
 
@@ -193,14 +203,13 @@
 		var/ladder_dir_name
 		var/obj/structure/ladder/ladder_dest
 		if(up && down)
-			ladder_dir_name = alert("Throw up or down?", "Ladder", "Up", "Down", "Cancel")
-			if(ladder_dir_name == "Cancel")
-				return
-			ladder_dir_name = lowertext(ladder_dir_name)
-			if(ladder_dir_name == "up")
+			ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+			if(ladder_dest == "up")
 				ladder_dest = up
-			else
+				ladder_dir_name = ("up")
+			if(ladder_dest == "down")
 				ladder_dest = down
+				ladder_dir_name = ("down")
 		else if(up)
 			ladder_dir_name = "up"
 			ladder_dest = up
@@ -208,7 +217,10 @@
 			ladder_dir_name = "down"
 			ladder_dest = down
 		else
-			return //just in case
+			return FALSE //just in case
+
+		if(!ladder_dest)
+			return
 
 		if(G.antigrief_protection && user.faction == FACTION_MARINE && explosive_antigrief_check(G, user))
 			to_chat(user, SPAN_WARNING("\The [G.name]'s safe-area accident inhibitor prevents you from priming the grenade!"))
@@ -234,14 +246,13 @@
 		var/ladder_dir_name
 		var/obj/structure/ladder/ladder_dest
 		if(up && down)
-			ladder_dir_name = alert("Throw up or down?", "Ladder", "Up", "Down", "Cancel")
-			if(ladder_dir_name == "Cancel")
-				return
-			ladder_dir_name = lowertext(ladder_dir_name)
-			if(ladder_dir_name == "up")
+			ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = TRUE))
+			if(ladder_dest == "up")
 				ladder_dest = up
-			else
+				ladder_dir_name = ("up")
+			if(ladder_dest == "down")
 				ladder_dest = down
+				ladder_dir_name = ("down")
 		else if(up)
 			ladder_dir_name = "up"
 			ladder_dest = up
@@ -249,7 +260,11 @@
 			ladder_dir_name = "down"
 			ladder_dest = down
 		else
-			return //just in case
+			return FALSE //just in case
+
+
+		if(!ladder_dest)
+			return
 
 		user.visible_message(SPAN_WARNING("[user] takes position to throw [F] [ladder_dir_name] [src]."),
 		SPAN_WARNING("You take position to throw [F] [ladder_dir_name] [src]."))

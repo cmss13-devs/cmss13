@@ -110,9 +110,9 @@
 	supplies = list(/obj/item/weapon/gun/rifle/m41a = 10)
 
 /obj/structure/largecrate/supply/weapons/shotgun
-	name = "\improper M37A2 pump action shotgun weapons chest (x10)"
-	desc = "A weapons chest containing ten M37A2 pump shotguns."
-	supplies = list(/obj/item/weapon/gun/shotgun/pump = 10)
+	name = "\improper M37A1 pump action shotgun weapons chest (x10)"
+	desc = "A weapons chest containing ten M37A1 pump shotguns."
+	supplies = list(/obj/item/weapon/gun/shotgun/pump/m37a = 10)
 
 /obj/structure/largecrate/supply/weapons/m39
 	name = "\improper M39 sub machinegun weapons chest (x8)"
@@ -266,6 +266,11 @@
 	name = "\improper W-Y brand rations crate (x60)"
 	desc = "A supply crate containing sixty W-Y brand ration packets."
 	supplies = list(/obj/item/ammo_box/magazine/misc/mre/wy = 5)
+
+/obj/structure/largecrate/supply/supplies/mre/twe
+	name = "\improper TWE ORP rations crate (x60)"
+	desc = "A supply crate containing sixty TWE ORP ration packets."
+	supplies = list(/obj/item/ammo_box/magazine/misc/mre/twe = 5)
 
 /obj/structure/largecrate/supply/supplies/wy_emergency_food
 	name = "\improper WY emergency nutrition briquettes crate (x100)"

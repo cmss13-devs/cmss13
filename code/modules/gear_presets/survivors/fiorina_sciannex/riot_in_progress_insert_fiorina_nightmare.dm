@@ -22,7 +22,7 @@
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	assignment = "CMB Riot Control Officer"
 	idtype = /obj/item/card/id/deputy/riot
-	rank = JOB_CMB_RIOT
+	job_title = JOB_CMB_RIOT
 	skills = /datum/skills/cmb
 	minimap_icon = "deputy"
 
@@ -43,7 +43,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/tactical, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/molle, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/action, WEAR_IN_BACK)
 
 	switch(choice)
 		if(1 to 6)
@@ -95,7 +95,7 @@
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Riot Control Synthetic"
-	rank = JOB_CMB_RSYN
+	job_title = JOB_CMB_RSYN
 	languages = ALL_SYNTH_LANGUAGES
 	idtype = /obj/item/card/id/deputy/riot
 	skills = /datum/skills/synthetic/cmb

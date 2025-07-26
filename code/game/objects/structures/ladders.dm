@@ -29,7 +29,7 @@
 /obj/structure/ladder/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_NOTICE("Drag-click to look up or down [src].")
-	if(isliving(user))
+	if(ishuman(user))
 		. += SPAN_NOTICE("Click [src] with unprimed grenades/flares to prime and toss it up or down.")
 
 /obj/structure/ladder/LateInitialize()

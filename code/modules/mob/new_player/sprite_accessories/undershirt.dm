@@ -162,6 +162,6 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 
 /datum/sprite_accessory/undershirt/strapless_bra/black
 	name = "Strapless Bra (Black)"
-	icon_state = "strapless"
+	icon_state = "b_strapless"
 	gender = FEMALE
 	camo_conforming = FALSE

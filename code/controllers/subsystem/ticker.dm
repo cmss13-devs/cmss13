@@ -403,7 +403,8 @@ SUBSYSTEM_DEF(ticker)
 	if(!GLOB.RoleAuthority)
 		return
 
-	for(var/mob/new_player/player in GLOB.player_list)
+	var/list/random_players = shuffle(GLOB.player_list)
+	for(var/mob/new_player/player in random_players)
 		if(!player || !player.ready || !player.mind || !player.job)
 			continue
 
@@ -447,7 +448,8 @@ SUBSYSTEM_DEF(ticker)
 	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
 		return
 
-	for(var/mob/living/carbon/human/player in GLOB.human_mob_list)
+	var/list/random_players = shuffle(GLOB.human_mob_list)
+	for(var/mob/living/carbon/human/player in random_players)
 		if(player.mind)
 			if(player.job == JOB_CO)
 				captainless = FALSE

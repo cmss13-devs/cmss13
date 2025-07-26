@@ -539,7 +539,7 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 
 
 /* // Uncomment to debug chemical reaction list.
-/client/verb/debug_chemical_list()
+CLIENT_VERB(debug_chemical_list)
 
 	for (var/reaction in GLOB.chemical_reactions_filtered_list)
 		. += "GLOB.chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[GLOB.chemical_reactions_filtered_list[reaction]]\"\n"

@@ -27,7 +27,7 @@
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_PRAYER) ? "now" : "no longer"] see prayerchat."))
 
-/client/verb/toggle_observer_announcement_sounds()
+CLIENT_VERB(toggle_observer_announcement_sounds)
 	set name = "Hear/Silence Ghost Announcements"
 	set category = "Preferences.Sound"
 	set desc = "Toggle hearing a notification of announcements while being an observer."
@@ -35,7 +35,7 @@
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_OBSERVER_ANNOUNCEMENTS) ? "now" : "no longer"] hear announcement sounds as an observer."))
 
-/client/verb/toggle_fax_machine_sounds()
+CLIENT_VERB(toggle_fax_machine_sounds)
 	set name = "Hear/Silence Ghost Fax Machines"
 	set category = "Preferences.Sound"
 	set desc = "Toggle hearing a notification of faxes while being an observer."
@@ -43,7 +43,7 @@
 	prefs.save_preferences()
 	to_chat(usr, SPAN_BOLDNOTICE("You will [(prefs.toggles_sound & SOUND_FAX_MACHINE) ? "now" : "no longer"] hear a fax sounds as an observer."))
 
-/client/verb/toggletitlemusic()
+CLIENT_VERB(toggletitlemusic)
 	set name = "Hear/Silence LobbyMusic"
 	set category = "Preferences.Sound"
 	set desc = "Toggles hearing the GameLobby music"
@@ -57,7 +57,7 @@
 		to_chat(src, SPAN_BOLDNOTICE("You will no longer hear music in the game lobby."))
 		src << sound(null, repeat = 0, wait = 0, volume = 85, channel = SOUND_CHANNEL_LOBBY) // stop the jamsz
 
-/client/verb/togglerebootsound()
+CLIENT_VERB(togglerebootsound)
 	set name = "Hear/Silence Reboot Sound"
 	set category = "Preferences.Sound"
 	set desc = "Toggles hearing the server reboot sound effect."
@@ -65,13 +65,13 @@
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.toggles_sound & SOUND_REBOOT) ? "now" : "no longer"] hear server reboot sounds.")
 
-/client/verb/togglemidis()
+CLIENT_VERB(togglemidis)
 	set name = "Silence Current Admin Sound"
 	set category = "Preferences.Sound"
 	set desc = "Stops the current admin sound. You can also use the STOP icon in the player above tgchat."
 	tgui_panel?.stop_music()
 
-/client/verb/togglechat()
+CLIENT_VERB(togglechat)
 	set name = "Toggle Abovehead Chat"
 	set category = "Preferences.Chat"
 	set desc = "Toggles abovehead chat until you change body"
@@ -80,7 +80,7 @@
 	prefs.save_preferences()
 	to_chat(src,SPAN_BOLDNOTICE( "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head."))
 
-/client/verb/togglechatemotes()
+CLIENT_VERB(togglechatemotes)
 	set name = "Toggle Abovehead Chat Emotes"
 	set category = "Preferences.Chat"
 	set desc = "Toggles seeing emotes in abovehead chat"
@@ -89,7 +89,7 @@
 	prefs.save_preferences()
 	to_chat(src,SPAN_BOLDNOTICE( "You will [(prefs.toggles_langchat & LANGCHAT_SEE_EMOTES) ? "now" : "no longer"] see emotes in abovehead chat."))
 
-/client/verb/toggle_permission_errors()
+CLIENT_VERB(toggle_permission_errors)
 	set name = "Toggle Permission Errors"
 	set category = "Preferences.Chat"
 	set desc = "Toggles error messages due to missing permissions."
@@ -98,7 +98,7 @@
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.show_permission_errors) ? "now" : "no longer"] see permission error messages."))
 
-/client/verb/listen_ooc()
+CLIENT_VERB(listen_ooc)
 	set name = "Show/Hide OOC"
 	set category = "Preferences.Chat"
 	set desc = "Toggles seeing OutOfCharacter chat"
@@ -106,7 +106,7 @@
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_OOC) ? "now" : "no longer"] see messages on the OOC channel."))
 
-/client/verb/listen_looc()
+CLIENT_VERB(listen_looc)
 	set name = "Show/Hide LOOC"
 	set category = "Preferences.Chat"
 	set desc = "Toggles seeing Local OutOfCharacter chat"
@@ -115,7 +115,7 @@
 
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.toggles_chat & CHAT_LOOC) ? "now" : "no longer"] see messages on the LOOC channel."))
 
-/client/verb/Toggle_Soundscape() //All new ambience should be added here so it works with this verb until someone better at things comes up with a fix that isn't awful
+CLIENT_VERB(Toggle_Soundscape) //All new ambience should be added here so it works with this verb until someone better at things comes up with a fix that isn't awful
 	set name = "Hear/Silence Ambience"
 	set category = "Preferences.Sound"
 	set desc = "Toggles hearing ambient sound effects"
@@ -130,7 +130,7 @@
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_SOUNDSCAPE)
 
-/client/verb/toggle_roundstart_flash()
+CLIENT_VERB(toggle_roundstart_flash)
 	set name = "Toggle Roundstart Flash"
 	set category = "Preferences.TaskbarFlashing"
 	set desc = "Toggles the taskbar flashing when the round starts."
@@ -142,7 +142,7 @@
 	else
 		to_chat(src,  SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when the Tip of the Round is played right before the start of the round."))
 
-/client/verb/toggle_roundend_flash()
+CLIENT_VERB(toggle_roundend_flash)
 	set name = "Toggle Roundend Flash"
 	set category = "Preferences.TaskbarFlashing"
 	set desc = "Toggles the taskbar flashing when the round ends."
@@ -154,7 +154,7 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when the round ends."))
 
-/client/verb/toggle_corpserevive_flash()
+CLIENT_VERB(toggle_corpserevive_flash)
 	set name = "Toggle Revival Flash"
 	set category = "Preferences.TaskbarFlashing"
 	set desc = "Toggles the taskbar flashing when your corpse gets revived."
@@ -166,7 +166,7 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when your corpse gets revived."))
 
-/client/verb/toggle_unnest_flash()
+CLIENT_VERB(toggle_unnest_flash)
 	set name = "Toggle Unnest Flash"
 	set category = "Preferences.TaskbarFlashing"
 	set desc = "Toggles the taskbar flashing when you get unnested and can reenter your body."
@@ -178,7 +178,7 @@
 	else
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get unnested and can reenter your body."))
 
-/client/verb/toggle_newlarva_flash()
+CLIENT_VERB(toggle_newlarva_flash)
 	set name = "Toggle Larva Unpool Flash"
 	set category = "Preferences.TaskbarFlashing"
 	set desc = "Toggles the taskbar flashing when you get spawned in as a xeno larva from the spawn pool."
@@ -191,7 +191,7 @@
 		to_chat(src, SPAN_BOLDNOTICE( "The icon on your taskbar will no longer flash when you get spawned as a burrowed larva."))
 
 
-/client/verb/toggle_adminpm_flash()
+CLIENT_VERB(toggle_adminpm_flash)
 	set name = "Toggle Admin PM Flash"
 	set category = "Preferences.TaskbarFlashing"
 	set desc = "Toggles the taskbar flashing when you an admin messages you."
@@ -204,7 +204,7 @@
 		to_chat(src, SPAN_BOLDNOTICE("The icon on your taskbar will no longer flash when an admin messages you. Warning, use at own risk."))
 
 //be special
-/client/verb/toggle_be_special()
+CLIENT_VERB(toggle_be_special)
 	set name = "Toggle SpecialRole Candidacy"
 	set category = "Preferences"
 	set desc = "Toggles which special roles you would like to be a candidate for, during events."
@@ -217,7 +217,7 @@
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible)."))
 
-/client/verb/toggle_fullscreen_preference()
+CLIENT_VERB(toggle_fullscreen_preference)
 	set name = "Toggle Fullscreen Preference"
 	set category = "Preferences"
 	set desc = "Toggles whether the game window will be true fullscreen or normal."
@@ -226,7 +226,7 @@
 	prefs.save_preferences()
 	update_fullscreen()
 
-/client/verb/toggle_ambient_occlusion()
+CLIENT_VERB(toggle_ambient_occlusion)
 	set name = "Toggle Ambient Occlusion"
 	set category = "Preferences"
 	set desc = "Toggles whether the game will have ambient occlusion on."
@@ -238,7 +238,7 @@
 		return
 	plane_master.backdrop(src.mob)
 
-/client/verb/toggle_member_publicity()
+CLIENT_VERB(toggle_member_publicity)
 	set name = "Toggle Membership Publicity"
 	set category = "Preferences"
 	set desc = "Toggles if other players can see that you are a BYOND member (OOC logo)."
@@ -247,7 +247,7 @@
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("Others can[(prefs.toggle_prefs & TOGGLE_MEMBER_PUBLIC) ? "" : "'t"] now see if you are a BYOND member."))
 
-/client/verb/toggle_ooc_country_flag()
+CLIENT_VERB(toggle_ooc_country_flag)
 	set name = "Toggle Country Flag"
 	set category = "Preferences"
 	set desc = "Toggles if your country flag (based on what country your IP is connecting from) is displayed in OOC chat."
@@ -260,7 +260,7 @@
 	prefs.save_preferences()
 	to_chat(src, SPAN_BOLDNOTICE("Your country flag [(prefs.toggle_prefs & TOGGLE_OOC_FLAG) ? "will now" : "will now not"] appear before your name in OOC chat."))
 
-/client/verb/toggle_prefs() // Toggle whether anything will happen when you click yourself in non-help intent
+CLIENT_VERB(toggle_prefs) // Toggle whether anything will happen when you click yourself in non-help intent
 	set name = "Toggle Preferences"
 	set category = "Preferences"
 	set desc = "Toggles a specific toggleable preference"
@@ -524,7 +524,7 @@
 		mob?.update_client_color_matrices() // Update immediately
 	prefs.save_preferences()
 
-/client/verb/toggle_tgui_say()
+CLIENT_VERB(toggle_tgui_say)
 	set name = "Toggle Say Input Style"
 	set category = "Preferences.UI"
 	set desc = "Toggle your Input Style"
@@ -542,7 +542,7 @@
 	prefs.save_preferences()
 	update_special_keybinds()
 
-/client/verb/toggle_tgui_say_light_mode()
+CLIENT_VERB(toggle_tgui_say_light_mode)
 	set name = "Toggle Say Input Color"
 	set category = "Preferences.UI"
 	set desc = "Toggle your Input Color"
@@ -559,7 +559,7 @@
 	tgui_say?.load()
 	prefs.save_preferences()
 
-/client/verb/toggle_custom_cursors()
+CLIENT_VERB(toggle_custom_cursors)
 	set name = "Toggle Custom Cursors"
 	set category = "Preferences.UI"
 	set desc = "Toggle Custom Cursors"
@@ -608,7 +608,7 @@
 
 	prefs.save_preferences()
 
-/client/verb/toggle_auto_viewport_fit()
+CLIENT_VERB(toggle_auto_viewport_fit)
 	set name = "Toggle Auto Viewport Fit"
 	set category = "Preferences.UI"
 
@@ -620,7 +620,7 @@
 		to_chat(src, SPAN_NOTICE("No longer auto fitting viewport."))
 	prefs.save_preferences()
 
-/client/verb/toggle_adaptive_zooming()
+CLIENT_VERB(toggle_adaptive_zooming)
 	set name = "Toggle Adaptive Zooming"
 	set category = "Preferences.UI"
 

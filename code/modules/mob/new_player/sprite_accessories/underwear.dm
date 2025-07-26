@@ -95,3 +95,35 @@ GLOBAL_LIST_INIT_TYPED(underwear_f, /datum/sprite_accessory/underwear, setup_und
 	icon_state = "tanga"
 	gender = NEUTER
 	camo_conforming = TRUE
+
+
+/datum/sprite_accessory/underwear/boxers/black
+	name = "Boxers (Black)"
+	icon_state = "b_boxers"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/boxers/black
+	name = "Brief (Black)"
+	icon_state = "b_briefs"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/lowriders/black
+	name = "Lowriders (Black)"
+	icon_state = "b_lowriders"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/satin/black
+	name = "Satin (Black)"
+	icon_state = "b_satin"
+	gender = NEUTER
+	camo_conforming = FALSE
+
+/datum/sprite_accessory/underwear/tanga/black
+	name = "Tanga (Black)"
+	icon_state = "b_tanga"
+	gender = NEUTER
+	camo_conforming = FALSE
+

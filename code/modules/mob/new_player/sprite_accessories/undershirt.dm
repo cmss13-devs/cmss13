@@ -76,34 +76,52 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	gender = NEUTER
 
 	shown_under_uniform = TRUE
+	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/black
 	name = "Undershirt (Black)"
 	icon_state = "b_undershirt"
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/sleeveless
 	name = "Undershirt (Tan, Sleeveless)"
 	icon_state = "t_undershirt_sleeveless"
+	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/sleeveless/black
 	name = "Undershirt (Black, Sleeveless)"
 	icon_state = "b_undershirt_sleeveless"
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/rolled
 	name = "Undershirt (Tan, Rolled)"
 	icon_state = "t_rolled_undershirt"
+	camo_conforming = TRUE
+
+/datum/sprite_accessory/undershirt/undershirt/rolled/black
+	name = "Undershirt (Black, Rolled)"
+	icon_state = "b_rolled_undershirt"
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless
-	name = "Undershirt (Tan, Rolled Sleeveless)"
+	name = "Undershirt (Tan, Rolled, Sleeveless)"
 	icon_state = "t_rolled_undershirt_sleeveless"
+	camo_conforming = TRUE
+
+/datum/sprite_accessory/undershirt/undershirt/rolled_sleeveless/black
+	name = "Undershirt (Black, Rolled, Sleeveless)"
+	icon_state = "b_rolled_undershirt_sleeveless"
+	camo_conforming = FALSE
 
 /datum/sprite_accessory/undershirt/undershirt/long
 	name = "Undershirt (Tan, Long Sleeved)"
 	icon_state = "t_long_undershirt"
+	camo_conforming = TRUE
 
 /datum/sprite_accessory/undershirt/undershirt/long/black
 	name = "Undershirt (Black, Long Sleeved)"
 	icon_state = "b_long_undershirt"
+	camo_conforming = FALSE
 
 // Male
 /datum/sprite_accessory/undershirt/none
@@ -118,14 +136,32 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 	gender = FEMALE
 	camo_conforming = TRUE
 
+/datum/sprite_accessory/undershirt/bra/black
+	name = "Bra (Black)"
+	icon_state = "b_bra"
+	gender = FEMALE
+	camo_conforming = FALSE
+
 /datum/sprite_accessory/undershirt/sports_bra
 	name = "Sports Bra"
 	icon_state = "sports"
 	gender = FEMALE
 	camo_conforming = TRUE
 
+/datum/sprite_accessory/undershirt/sports_bra/black
+	name = "Sports Bra (Black)"
+	icon_state = "b_sports"
+	gender = FEMALE
+	camo_conforming = FALSE
+
 /datum/sprite_accessory/undershirt/strapless_bra
 	name = "Strapless Bra"
 	icon_state = "strapless"
 	gender = FEMALE
 	camo_conforming = TRUE
+
+/datum/sprite_accessory/undershirt/strapless_bra/black
+	name = "Strapless Bra (Black)"
+	icon_state = "strapless"
+	gender = FEMALE
+	camo_conforming = FALSE

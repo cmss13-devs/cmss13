@@ -111,6 +111,7 @@
 #define LEAPING (1<<4)
 #define PASSEMOTES (1<<5) //holders inside of mob that need to see emotes.
 #define CANROOT (1<<6)
+#define INCORPOREAL (1<<7)
 #define GODMODE (1<<12)
 #define FAKEDEATH (1<<13) //Replaces stuff like changeling.changeling_fakedeath
 #define RECENTSPAWN (1<<14) // Temporarily invincible via GODMODE

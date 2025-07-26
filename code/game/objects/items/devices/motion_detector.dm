@@ -230,6 +230,11 @@
 			continue //hasn't moved recently
 		if(M.get_target_lock(iff_signal))
 			continue
+		if(M.status_flags & INCORPOREAL)
+			ping_count++
+			if(human_user)
+				show_blip(human_user, M, "queen_eye")
+			continue
 
 		apply_debuff(M)
 		ping_count++

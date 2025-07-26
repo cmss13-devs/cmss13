@@ -282,6 +282,10 @@
 
 	var/list/castes_available = caste.evolves_to.Copy()
 
+	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
+	if(tier <= 1 && !hive.living_xeno_queen)
+		castes_available |= PATHOGEN_CREATURE_OVERMIND
+
 	for(var/caste in castes_available)
 		if(GLOB.xeno_datum_list[caste].minimum_evolve_time > ROUND_TIME)
 			castes_available -= caste
@@ -302,6 +306,9 @@
 	if(!castepick) //Changed my mind
 		return
 
+	if(castepick == PATHOGEN_CREATURE_OVERMIND && tgui_alert(src, "You are about to evolve into the overmind, which places its core on the tile you're on when evolving. This core cannot be moved and you cannot regress. Are you sure you would like to place your core here?", "Evolving to Overmind", list("Yes", "No"), FALSE) != "Yes")
+		return
+
 	if(SEND_SIGNAL(src, COMSIG_XENO_TRY_EVOLVE, castepick) & COMPONENT_OVERRIDE_EVOLVE)
 		return // Message will be handled by component
 
@@ -313,25 +320,7 @@
 	if(!evolve_checks())
 		return
 
-	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
-		if(hardcore)
-			to_chat(src, SPAN_WARNING("Nuh-uhh."))
-			return
-
-		if(SSticker.mode && hive.xeno_queen_timer > world.time)
-			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
-			return
-
-		var/required_plasma = min(500, plasma_max)
-		if(plasma_stored >= required_plasma)
-			if(hive.living_xeno_queen)
-				to_chat(src, SPAN_WARNING("There already is a living Queen."))
-				return
-		else
-			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
-			return
-
-	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
+	if(evolution_threshold && castepick != PATHOGEN_CREATURE_OVERMIND) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
 			to_chat(src, SPAN_WARNING("We must wait before evolving. Currently at: [evolution_stored] / [evolution_threshold]."))
 			return
@@ -343,11 +332,6 @@
 		to_chat(src, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))
 		return
 
-	// Used for restricting benos to evolve to drone/queen when they're the only potential queen
-	var/potential_queens = hive.get_potential_queen_count()
-
-	if(!can_evolve(castepick, potential_queens))
-		return
 	to_chat(src, SPAN_XENONOTICE("It looks like the hive can support our evolution to [SPAN_BOLD(castepick)]!"))
 
 	visible_message(SPAN_XENONOTICE("[src] begins to twist and contort."),
@@ -359,6 +343,10 @@
 	if(!do_after(src, 2.5 SECONDS, INTERRUPT_INCAPACITATED|INTERRUPT_CHANGED_LYING, BUSY_ICON_HOSTILE)) // Can evolve while moving, resist or rest to cancel it.
 		to_chat(src, SPAN_WARNING("We quiver, but nothing happens. Our evolution has ceased for now..."))
 		evolving = FALSE
+		return
+
+	if(hive.living_xeno_queen)
+		to_chat(src, SPAN_WARNING("Another creature has become the Overmind. We remain as we are, for now."))
 		return
 
 	evolving = FALSE

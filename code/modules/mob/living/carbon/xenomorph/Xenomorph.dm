@@ -762,9 +762,10 @@
 /mob/living/carbon/xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
 	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
 		return do_pull(AM, lunge, no_msg)
-
 	if(HAS_TRAIT(src,TRAIT_ABILITY_BURROWED))
 		return
+	if(status_flags & INCORPOREAL)
+		return FALSE //Incorporeal things can't grab or be grabbed.
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM

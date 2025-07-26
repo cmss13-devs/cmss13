@@ -98,3 +98,8 @@
 
 /// From /mob/living/carbon/human/death(cause, gibbed)
 #define COMSIG_XENO_REVEAL_TACMAP "xeno_reveal_tacmap"
+
+
+#define COMSIG_XENOMORPH_CORE_RETURN "xenomorph_core_return"
+#define COMSIG_XENOMORPH_HIVEMIND_CHANGE_FORM "xenomorph_hivemind_change_form"
+#define COMSIG_XENOMORPH_HIVEMIND_TELEPORT "xeno_hivemind_teleport"

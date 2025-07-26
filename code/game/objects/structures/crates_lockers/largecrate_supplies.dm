@@ -110,8 +110,8 @@
 	supplies = list(/obj/item/weapon/gun/rifle/m41a = 10)
 
 /obj/structure/largecrate/supply/weapons/shotgun
-	name = "\improper M37A1 pump action shotgun weapons chest (x10)"
-	desc = "A weapons chest containing ten M37A1 pump shotguns."
+	name = "\improper M37A2 pump action shotgun weapons chest (x10)"
+	desc = "A weapons chest containing ten M37A2 pump shotguns."
 	supplies = list(/obj/item/weapon/gun/shotgun/pump/m37a = 10)
 
 /obj/structure/largecrate/supply/weapons/m39

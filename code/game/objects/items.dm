@@ -163,6 +163,8 @@
 	var/ground_offset_y = 0
 	/// bypass any species specific OnMob overlay blockers
 	var/force_overlays_on = FALSE
+	/// This is for assigning "mouse cursor" it updates the cursor when a weapon with it is in_hand
+	var/icon/mouse_pointer
 
 	/// Special storages this item prioritizes
 	var/list/preferred_storage
@@ -407,6 +409,9 @@
 	if(drop_sound && (src.loc?.z))
 		playsound(src, drop_sound, dropvol, drop_vary)
 	src.do_drop_animation(user)
+	if(src.mouse_pointer)
+		if(user.client?.prefs.custom_cursors)
+			update_mouse_pointer(user, FALSE)
 
 	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
 
@@ -423,7 +428,19 @@
 	if(pickup_sound && !silent && src.loc?.z)
 		playsound(src, pickup_sound, pickupvol, pickup_vary)
 	do_pickup_animation(user)
+	if(src.mouse_pointer)
+		if(user.client?.prefs.custom_cursors)
+			update_mouse_pointer(user, TRUE)
 	return TRUE
+
+
+///Turns the mouse cursor into a crosshair if new_cursor is set to TRUE. If set to FALSE, returns the cursor to its initial icon.
+/obj/item/proc/update_mouse_pointer(mob/user, new_cursor)
+	if(!user.client?.prefs.custom_cursors)
+		return
+
+	user.client.mouse_pointer_icon = new_cursor ? mouse_pointer : initial(user.client.mouse_pointer_icon)
+
 
 ///Helper function for updating last_equipped_slot when item is drawn from storage
 /obj/item/proc/set_last_equipped_slot_of_storage(obj/item/storage/storage_item)

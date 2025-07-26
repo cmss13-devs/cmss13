@@ -1452,6 +1452,73 @@
 	assignment = "NSPA Constable"
 	xenovictim = TRUE
 
+/datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent
+
+	name = "Corpse - Trijent NSPA Constable"
+
+/datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/load_gear(mob/living/carbon/human/new_human)
+
+	var/choice = rand(1,16)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/restraint/handcuffs, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud/blue, WEAR_EYES)
+
+	switch(choice)
+		if(1 to 5)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_jacket, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+		if(6 to 7)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket, WEAR_JACKET)
+		if(8 to 10)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer/warm_weather, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/cmb, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/hybrisa/nspa_vest, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/slug, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic/breaching_charge/rubber, WEAR_IN_BACK)
+		if(10 to 12)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer/warm_weather, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/cmb, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_hazard_jacket, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+		if(12 to 14)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer/warm_weather, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/cmb, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap_goldandsilver, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest/nspa_hazard, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+		if(14 to 16)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/under/hybrisa/nspa_officer, WEAR_BODY)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup, WEAR_FEET)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/hybrisa/nspa_peaked_cap_gold, WEAR_HEAD)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB/hybrisa/nspa_formal_jacket, WEAR_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
+	..()
+
+/datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/burst
+
+	name = "Corpse - Burst - Trijent NSPA Constable"
+	assignment = "NSPA Constable"
+	xenovictim = TRUE
+
 // KMCC Mining
 
 /datum/equipment_preset/corpse/hybrisa/kelland_miner

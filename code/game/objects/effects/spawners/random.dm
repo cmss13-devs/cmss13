@@ -337,9 +337,11 @@
 /obj/effect/spawner/random/gun/spawn_item()
 	var/gunpath = pick(guns)
 	var/ammopath
-	if(istype(gunpath, /obj/item/weapon/gun/shotgun))
+	if(ispath(gunpath, /obj/item/weapon/gun/shotgun))
 		ammopath = pick(GLOB.shotgun_boxes_12g)
-	else if(istype(gunpath, /obj/item/weapon/gun/launcher/grenade))
+		mags_min = 1
+		mags_max = 2
+	else if(ispath(gunpath, /obj/item/weapon/gun/launcher/grenade))
 		ammopath = pick(GLOB.grenade_packets)
 	else
 		ammopath = guns[gunpath]
@@ -363,12 +365,11 @@
 		for(var/i in 0 to ammo_amount-1)
 			ammo = new ammopath(spawnloc)
 			if(scatter)
-				for(i=0, i<rand(1,3), i++)
-					var/direction = pick(GLOB.alldirs)
-					var/turf/turf = get_step(ammo, direction)
-					if(!turf || turf.density)
-						break
-					ammo.forceMove(turf)
+				var/direction = pick(GLOB.alldirs)
+				var/turf/turf = get_step(ammo, direction)
+				if(!turf || turf.density)
+					return
+				ammo.forceMove(turf)
 
 /*
 // the actual spawners themselves
@@ -461,7 +462,7 @@
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
 		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action,
-		/obj/item/weapon/gun/shotgun/merc = null,
+		/obj/item/weapon/gun/shotgun/double/with_stock = null,
 		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717 = null,
 	) //no ammotypes needed as it spawns random 12g boxes. Apart from the r4t. why is the r4t in the shotgun pool? fuck you, that's why.
 
@@ -490,7 +491,6 @@
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
-		/obj/item/weapon/gun/smg/pps43 = /obj/item/ammo_magazine/smg/pps43,
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
 		/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
@@ -517,8 +517,8 @@
 	guns = list(
 		/obj/item/weapon/gun/rifle/mar40/lmg = /obj/item/ammo_magazine/rifle/mar40/lmg,
 		/obj/item/weapon/gun/shotgun/merc = null,
-		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = /obj/item/prop/folded_anti_tank_sadar,
-		/obj/item/weapon/gun/rifle/m41a = /obj/item/ammo_magazine/rifle,
+		/obj/item/weapon/gun/launcher/rocket/anti_tank/disposable = null,
+		/obj/item/weapon/gun/flamer = null,
 		/obj/item/weapon/gun/shotgun/combat = null,
 		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78,
 		/obj/item/weapon/gun/launcher/grenade/m81/m85a1 = null
@@ -535,6 +535,101 @@
 /obj/effect/spawner/random/gun/special/highchance
 	spawn_nothing_percentage = 20
 	icon_state = "loot_special_80"
+
+/obj/effect/spawner/random/gun/cmb
+	name = "cmb gun loot spawner"
+	desc = "spawns a surv cmb gun and some ammo"
+	icon_state = "loot_cmb"
+	guns = list(
+		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
+		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
+		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
+		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
+		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
+		/obj/item/weapon/gun/smg/mp5 = /obj/item/ammo_magazine/smg/mp5,
+		/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
+		/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
+		/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
+		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb/m3717 = null,
+		/obj/item/weapon/gun/smg/mp5/mp5a5 = /obj/item/ammo_magazine/smg/mp5,
+		/obj/item/weapon/gun/revolver/cmb/custom = /obj/item/ammo_magazine/revolver/cmb
+
+
+		)
+
+/obj/effect/spawner/random/gun/cmb/lowchance
+	spawn_nothing_percentage = 80
+	icon_state = "loot_cmb_20"
+
+/obj/effect/spawner/random/gun/cmb/midchance
+	spawn_nothing_percentage = 50
+	icon_state = "loot_cmb_50"
+
+/obj/effect/spawner/random/gun/cmb/highchance
+	spawn_nothing_percentage = 20
+	icon_state = "loot_cmb_80"
+
+/obj/effect/spawner/random/gun/corporate
+	name = "corporate gun loot spawner"
+	desc = "spawns a surv corporate gun and some ammo"
+	icon_state = "loot_corporate"
+	guns = list(
+		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
+		/obj/item/weapon/gun/rifle/m41a/corporate/no_lock = /obj/item/ammo_magazine/rifle,
+		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23,
+		/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped = /obj/item/ammo_magazine/rifle/nsg23,
+		/obj/item/weapon/gun/smg/m39/corporate/no_lock = /obj/item/ammo_magazine/smg/m39,
+		/obj/item/weapon/gun/smg/m39/corporate/no_lock = /obj/item/ammo_magazine/smg/m39,
+		/obj/item/weapon/gun/smg/p90 = /obj/item/ammo_magazine/smg/p90,
+		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/weapon/gun/pistol/mod88 = /obj/item/ammo_magazine/pistol/mod88,
+		/obj/item/weapon/gun/pistol/vp78 = /obj/item/ammo_magazine/pistol/vp78
+		)
+
+/obj/effect/spawner/random/gun/corporate/lowchance
+	spawn_nothing_percentage = 80
+	icon_state = "loot_corporate_20"
+
+/obj/effect/spawner/random/gun/corporate/midchance
+	spawn_nothing_percentage = 50
+	icon_state = "loot_corporate_50"
+
+/obj/effect/spawner/random/gun/corporate/highchance
+	spawn_nothing_percentage = 20
+	icon_state = "loot_corporate_80"
+
+/obj/effect/spawner/random/gun/civ
+	name = "civilian gun loot spawner"
+	desc = "spawns a surv civ gun and some ammo"
+	mags_min = 1
+	mags_max = 3
+	icon_state = "loot_civ"
+	guns = list(
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/boltaction = /obj/item/ammo_magazine/rifle/boltaction,
+		/obj/item/weapon/gun/shotgun/double = null,
+		/obj/item/weapon/gun/shotgun/double/sawn = null,
+		/obj/item/weapon/gun/shotgun/double/with_stock = null,
+		/obj/item/weapon/gun/shotgun/double/with_stock = null,
+		/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb = null,
+		/obj/item/weapon/gun/revolver/cmb = /obj/item/ammo_magazine/revolver/cmb,
+		/obj/item/weapon/gun/lever_action/r4t = /obj/item/ammo_magazine/lever_action
+		)
+
+/obj/effect/spawner/random/gun/civ/lowchance
+	spawn_nothing_percentage = 80
+	icon_state = "loot_civ_20"
+
+/obj/effect/spawner/random/gun/civ/midchance
+	spawn_nothing_percentage = 50
+	icon_state = "loot_civ_50"
+
+/obj/effect/spawner/random/gun/civ/highchance
+	spawn_nothing_percentage = 20
+	icon_state = "loot_civ_80"
 
 /*
 // claymore spawners

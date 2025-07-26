@@ -10,7 +10,7 @@
         "/datum/equipment_preset/survivor/roughneck",
         "/datum/equipment_preset/survivor/chaplain/trijent",
         "/datum/equipment_preset/survivor/interstellar_commerce_commission_liaison",
-        "/datum/equipment_preset/survivor/colonial_marshal/trijent",
+        "/datum/equipment_preset/survivor/nspa/trijent",
         "/datum/equipment_preset/survivor/engineer/trijent",
         "/datum/equipment_preset/survivor/engineer/trijent/hydro",
         "/datum/equipment_preset/survivor/trucker/trijent",
@@ -19,6 +19,35 @@
         "/datum/equipment_preset/survivor/civilian",
         "/datum/equipment_preset/survivor/civilian_unique",
         "/datum/equipment_preset/survivor/hybrisa/fire_fighter"
+    ],
+    "synth_survivor_types": [
+        "/datum/equipment_preset/synth/survivor/doctor_synth",
+		"/datum/equipment_preset/synth/survivor/surgeon_synth",
+		"/datum/equipment_preset/synth/survivor/emt_synth_teal",
+		"/datum/equipment_preset/synth/survivor/emt_synth_red",
+		"/datum/equipment_preset/synth/survivor/scientist_synth",
+		"/datum/equipment_preset/synth/survivor/biohazard_synth",
+		"/datum/equipment_preset/synth/survivor/archaeologist_synth",
+		"/datum/equipment_preset/synth/survivor/engineer_synth",
+		"/datum/equipment_preset/synth/survivor/firefighter_synth",
+		"/datum/equipment_preset/synth/survivor/miner_synth",
+		"/datum/equipment_preset/synth/survivor/chef_synth",
+		"/datum/equipment_preset/synth/survivor/teacher_synth",
+		"/datum/equipment_preset/synth/survivor/surveyor_synth",
+		"/datum/equipment_preset/synth/survivor/freelancer_synth",
+		"/datum/equipment_preset/synth/survivor/trucker_synth",
+		"/datum/equipment_preset/synth/survivor/bartender_synth",
+		"/datum/equipment_preset/synth/survivor/fisher_synth",
+		"/datum/equipment_preset/synth/survivor/hydro_synth",
+		"/datum/equipment_preset/synth/survivor/journalist_synth",
+		"/datum/equipment_preset/synth/survivor/atc_synth",
+		"/datum/equipment_preset/synth/survivor/nspa_synth",
+		"/datum/equipment_preset/synth/survivor/wy/security_synth",
+		"/datum/equipment_preset/synth/survivor/wy/corporate_synth",
+		"/datum/equipment_preset/synth/survivor/detective_synth",
+		"/datum/equipment_preset/synth/survivor/icc_synth",
+		"/datum/equipment_preset/synth/survivor/pilot_synth",
+		"/datum/equipment_preset/synth/survivor/radiation_synth"
     ],
     "defcon_triggers": [
         3300,
@@ -33,7 +62,21 @@
     "monkey_types": [
         "stok"
     ],
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
     "nightmare_path": "maps/Nightmare/maps/DesertDam/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

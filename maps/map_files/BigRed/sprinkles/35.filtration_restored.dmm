@@ -31,8 +31,9 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
 "bf" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -86,7 +87,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "dk" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/darkyellow2/southeast,
 /area/bigredv2/outside/filtration_plant)
 "dP" = (
@@ -132,7 +135,9 @@
 /turf/open/floor/delivery,
 /area/bigredv2/outside/filtration_plant)
 "jh" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "kg" = (
@@ -175,8 +180,9 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/filtration_plant)
 "no" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -193,8 +199,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "nu" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/bot/north,
@@ -203,15 +210,18 @@
 /turf/open/floor/darkyellow2/southwest,
 /area/bigredv2/outside/filtration_plant)
 "oQ" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /obj/structure/largecrate/random,
 /turf/open/floor/darkyellow2/southeast,
 /area/bigredv2/outside/filtration_plant)
 "pd" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
@@ -280,7 +290,9 @@
 	name = "Airlock Shutters";
 	pixel_x = -32
 	},
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "tE" = (
@@ -323,7 +335,9 @@
 "vz" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "vF" = (
@@ -343,8 +357,9 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/filtration_plant)
 "wQ" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/filtration_plant)
@@ -507,7 +522,9 @@
 "Ji" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "Jo" = (
@@ -546,7 +563,9 @@
 /turf/open/mars/mars_dirt_6,
 /area/bigredv2/outside/se)
 "Mf" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "MH" = (
@@ -571,8 +590,9 @@
 /turf/open/floor/bot/north,
 /area/bigredv2/outside/filtration_plant)
 "Oq" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/darkyellow2/northeast,
 /area/bigredv2/outside/filtration_plant)
@@ -597,8 +617,9 @@
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/filtration_plant)
 "QM" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/machinery/light/double/blue{
+	dir = 1;
+	light_color = "#a7dbc7"
 	},
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/filtration_plant)
@@ -714,14 +735,18 @@
 /area/bigredv2/outside/filtration_plant)
 "XD" = (
 /obj/item/frame/table,
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/darkyellow2,
 /area/bigredv2/outside/filtration_plant)
 "XZ" = (
 /turf/open/floor/darkyellowcorners2/west,
 /area/bigredv2/outside/filtration_plant)
 "Yx" = (
-/obj/structure/machinery/light,
+/obj/structure/machinery/light/double/blue{
+	light_color = "#a7dbc7"
+	},
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/filtration_plant)
 "YC" = (

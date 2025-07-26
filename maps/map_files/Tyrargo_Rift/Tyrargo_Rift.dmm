@@ -6809,45 +6809,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement3,
 /area/tyrargo/oob)
-"arB" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.97;
-	pixel_y = 4
-	},
-/obj/item/prop/colony/used_flare,
-/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
-/area/tyrargo/oob)
 "arC" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/structure/prop/turret{
 	dir = 4
 	},
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.6;
-	pixel_y = 4
-	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/oob)
 "arD" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.6;
-	pixel_y = 4
-	},
 /turf/open/asphalt/cement/cement2,
 /area/tyrargo/oob)
 "arE" = (
@@ -6915,20 +6885,6 @@
 /turf/open/asphalt,
 /area/tyrargo/oob)
 "arI" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.6;
-	pixel_y = 4
-	},
-/obj/structure/barricade/sandbags/wired{
-	dir = 8;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.99;
-	pixel_x = -3
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /obj/structure/prop/turret{
@@ -24851,18 +24807,6 @@
 /turf/closed/wall/strata_ice/forest,
 /area/tyrargo/oob)
 "bej" = (
-/obj/structure/barricade/sandbags/wired{
-	dir = 1;
-	icon_state = "sandbag_0";
-	color = "#a98c7c";
-	layer = 2.6;
-	pixel_y = 4
-	},
-/obj/structure/barricade/sandbags/weak_wired{
-	dir = 4;
-	icon_state = "sandbag_0";
-	pixel_x = 4
-	},
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
@@ -40534,6 +40478,9 @@
 	dir = 4
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
+/obj/structure/sign/minefield/alt{
+	pixel_y = 5
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "bNQ" = (
@@ -86760,6 +86707,14 @@
 "eiD" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/southwest,
 /area/tyrargo/outdoors/outskirts/north_east_usasf)
+"eiE" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/sidewalk/northwest,
+/area/tyrargo/oob/outdoors)
 "eiF" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/sidewalk/north,
@@ -94853,6 +94808,7 @@
 /area/tyrargo/outdoors/colony_streets/west)
 "eDe" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/invisible_wall,
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/tyrargo/oob/outdoors)
 "eDf" = (
@@ -101555,6 +101511,14 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob/outdoors)
+"eVq" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/tyrargo/oob/outdoors)
 "eVr" = (
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
@@ -102780,6 +102744,7 @@
 /turf/open/hybrisa/street/sidewalk/west,
 /area/tyrargo/oob/outdoors)
 "eYA" = (
+/obj/item/stack/sandbags,
 /turf/open/floor/hybrisa/metal/grated/north,
 /area/tyrargo/oob/outdoors)
 "eYB" = (
@@ -102807,29 +102772,8 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/tyrargo/oob/outdoors)
 "eYF" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/sign/minefield{
-	pixel_y = 22
+/obj/structure/sign/minefield/alt{
+	pixel_y = 5
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -102846,7 +102790,7 @@
 /area/tyrargo/oob/outdoors)
 "eYI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/prop/colony/used_flare,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/oob/outdoors)
 "eYJ" = (
@@ -102868,149 +102812,190 @@
 /turf/closed/wall/strata_outpost/reinforced/hull,
 /area/tyrargo/oob)
 "eYM" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/sign/minefield{
-	pixel_y = 22
+/obj/structure/sign/minefield/alt{
+	pixel_y = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "eYN" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/sign/minefield{
-	pixel_y = 22
-	},
-/obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
 	},
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 1
 	},
+/obj/structure/sign/minefield/alt{
+	pixel_y = 5
+	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/oob)
 "eYO" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/sign/minefield{
-	pixel_y = 22
+/obj/structure/sign/minefield/alt{
+	pixel_y = 5
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
 "eYP" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/sign/minefield{
-	pixel_y = 22
+/obj/structure/sign/minefield/alt{
+	pixel_y = 5
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/landing_zone_1/no_mans_land)
 "eYQ" = (
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 13;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 8;
-	pixel_x = 14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/barricade/handrail/kutjevo{
-	dir = 4;
-	pixel_x = -14;
-	pixel_y = 16;
-	density = 0;
-	name = "pole signal"
-	},
-/obj/structure/sign/minefield{
-	pixel_y = 22
+/obj/structure/sign/minefield/alt{
+	pixel_y = 5
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/no_mans_land)
+"eYR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 1;
+	icon_state = "sandbag_0";
+	pixel_y = 4
+	},
+/turf/open/hybrisa/street/sidewalk/north,
+/area/tyrargo/oob/outdoors)
+"eYS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/tyrargo/oob/outdoors)
+"eYT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/tyrargo/oob/outdoors)
+"eYU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/vehicles/tank/miltruck/wheeled{
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/tyrargo/oob/outdoors)
+"eYV" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/tyrargo/oob/outdoors)
+"eYW" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassbb_2"
+	},
+/turf/open/auto_turf/snow/brown_base/layer3,
+/area/tyrargo/oob/outdoors)
+"eYX" = (
+/obj/effect/decal/grass_overlay/grass1/dark{
+	dir = 4
+	},
+/obj/structure/sign/minefield/alt{
+	pixel_y = 5
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud,
+/area/tyrargo/landing_zone_1/no_mans_land)
+"eYY" = (
+/obj/structure/barricade/sandbags/weak_wired{
+	dir = 8;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/sign/minefield{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/wood,
+/area/tyrargo/landing_zone_1/ceiling)
+"eYZ" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/tyrargo/oob/outdoors)
+"eZa" = (
+/turf/open/gm/dirt/dark_brown,
+/area/tyrargo/oob/outdoors)
+"eZb" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 8
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/tyrargo/oob/outdoors)
+"eZc" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_y = 5;
+	layer = 5.9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer1,
+/area/tyrargo/oob/outdoors)
+"eZd" = (
+/obj/structure/flora/tree/tyrargo/tree_2{
+	pixel_x = -28;
+	pixel_y = 5;
+	layer = 5.8
+	},
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 10
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0,
+/area/tyrargo/oob/outdoors)
+"eZe" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/dark_brown/variant_5/south,
+/area/tyrargo/oob/outdoors)
+"eZf" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 5
+	},
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 6
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/tyrargo/oob/outdoors)
+"eZg" = (
+/turf/open/gm/dirt/dark_brown/variant_5/south,
+/area/tyrargo/oob/outdoors)
+"eZh" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 6
+	},
+/turf/open/gm/dirt/dark_brown/variant_5/south,
+/area/tyrargo/oob/outdoors)
+"eZi" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 9
+	},
+/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/tyrargo/oob/outdoors)
+"eZj" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 1
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/tyrargo/oob/outdoors)
+"eZk" = (
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/tyrargo/oob/outdoors)
+"eZl" = (
+/obj/effect/landmark/lv624/fog_blocker/long,
+/obj/effect/decal/strata_decals/tyrargo_mud_corner{
+	dir = 1
+	},
+/turf/open/gm/dirt/dark_brown,
+/area/tyrargo/oob/outdoors)
 "faT" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /turf/open_space,
@@ -104569,16 +104554,6 @@
 	},
 /turf/open/floor/almayer/blackfull2,
 /area/tyrargo/indoors/bunker/central_south)
-"icY" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = 3
-	},
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 4
-	},
-/turf/open/asphalt/cement/cement3,
-/area/tyrargo/outdoors/colony_streets/north_west)
 "ida" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/pottedplant{
@@ -108754,13 +108729,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement9,
 /area/tyrargo/outdoors/colony_streets/north)
-"qsl" = (
-/obj/structure/barricade/sandbags/weak_wired{
-	icon_state = "sandbag_0";
-	pixel_y = 2
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/colony_streets/north_west)
 "qsu" = (
 /obj/effect/decal/siding{
 	icon_state = "siding2"
@@ -158330,7 +158298,7 @@ eUT
 eUT
 bLZ
 eJk
-bLI
+eYX
 bLx
 bLx
 bSz
@@ -159059,7 +159027,7 @@ aou
 aou
 bLx
 bMW
-dhp
+eYY
 qRe
 aXl
 aWe
@@ -188334,7 +188302,7 @@ eUi
 cEQ
 eUg
 cpj
-qsl
+cpi
 cqh
 sEZ
 dXu
@@ -188518,7 +188486,7 @@ cpb
 bta
 cpb
 eUe
-icY
+eUe
 nSi
 wFt
 csz
@@ -188674,7 +188642,7 @@ bsZ
 bsZ
 bcZ
 aZX
-arB
+arX
 eQo
 cyU
 cyS
@@ -198434,6 +198402,8 @@ bsZ
 eqw
 bta
 bta
+eZa
+eYZ
 eWF
 eWF
 eWF
@@ -198445,10 +198415,8 @@ eWF
 eWF
 eWF
 eWF
-eWF
-eWF
-eWF
-eWF
+bFn
+eYW
 bta
 bta
 bgD
@@ -198617,8 +198585,8 @@ bsY
 bta
 bta
 bta
-eWF
-eWF
+eZa
+eYZ
 eWF
 eWF
 eWF
@@ -198632,8 +198600,8 @@ eWF
 eWF
 eWF
 eWF
-eWF
-eWF
+bFn
+bGL
 bta
 bgD
 eTE
@@ -198800,14 +198768,14 @@ bsY
 bta
 bta
 bta
-eWF
-eWF
+eZb
+eYZ
 eWF
 eWF
 eWF
 bFo
 bFo
-bFo
+bFS
 bFo
 bFo
 bFo
@@ -198983,7 +198951,7 @@ bsP
 bta
 bta
 bta
-eWF
+eYZ
 eWF
 eWF
 eWF
@@ -199367,7 +199335,7 @@ eGV
 eXd
 bta
 bta
-bFo
+bFS
 eWj
 bFo
 bta
@@ -199719,7 +199687,7 @@ eWF
 eWF
 eWF
 bFo
-bFo
+bFS
 eWj
 bFo
 bta
@@ -199904,7 +199872,7 @@ eWF
 eWF
 bFo
 eWj
-eWj
+eZc
 bFo
 bta
 eHf
@@ -200085,9 +200053,9 @@ eWF
 eWF
 eWF
 eWF
-bFo
-bFo
-bFo
+eux
+eZf
+eZd
 eWj
 bFo
 bta
@@ -200108,7 +200076,7 @@ eVt
 eVt
 ezk
 eYG
-eXg
+eiE
 epV
 epV
 eYz
@@ -200264,14 +200232,14 @@ bsZ
 bta
 bta
 bta
+eYZ
 eWF
 eWF
-eWF
 bFo
-bFo
-bFo
-bFo
-bFo
+eux
+eZh
+eZg
+eZe
 eWj
 bFo
 bta
@@ -200292,7 +200260,7 @@ eDc
 eDc
 eqj
 eqv
-cHg
+eVq
 eYE
 eYC
 epX
@@ -200447,15 +200415,15 @@ bsZ
 bta
 bta
 bta
-eWF
-eWF
+eZj
+eZi
 eWF
 bFo
 bFo
 bta
 eES
 bta
-bFo
+eXP
 eWj
 bFo
 bta
@@ -200476,7 +200444,7 @@ eDc
 ezk
 eqj
 eYH
-adj
+eYR
 eCo
 eYD
 equ
@@ -200630,8 +200598,8 @@ bsZ
 bsZ
 bta
 bta
-eWF
-eWF
+eZa
+eYZ
 eWF
 bFo
 bFo
@@ -200658,8 +200626,8 @@ eYL
 eVw
 eqj
 eCE
-ezk
-eCE
+eYT
+eYS
 cHg
 eCo
 fSA
@@ -201025,8 +200993,8 @@ bta
 bFo
 bFo
 eVu
-eqv
-ezk
+eYV
+eYU
 eqv
 cHg
 eCo
@@ -201206,7 +201174,7 @@ bta
 bta
 bta
 bFo
-bFo
+bFS
 bFo
 eqt
 eYI
@@ -201365,10 +201333,12 @@ bsS
 bsI
 buL
 bta
+eZk
 eWF
 eWF
 eWF
-eWF
+bFo
+bFS
 bFo
 bFo
 bFo
@@ -201377,9 +201347,7 @@ bFo
 bFo
 bFo
 bFo
-bFo
-bFo
-bFo
+bFS
 bFo
 bFo
 bFo
@@ -201549,7 +201517,7 @@ eqU
 bOk
 eqD
 bta
-eWK
+eZl
 eWK
 eWK
 eWK

@@ -756,6 +756,34 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
+"bQ" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northeast,
+/area/tyrargo/outdoors/outskirts/central)
+"bR" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/northwest,
+/area/tyrargo/outdoors/outskirts/central)
+"bS" = (
+/obj/structure/platform/metal/almayer/north,
+/obj/structure/blocker/invisible_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/obj/structure/prop/vehicles/tank/apc/destroyed{
+	dir = 8;
+	pixel_y = -80
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/tyrargo/indoors/heyst)
+"bT" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst)
+"bU" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southeast,
+/area/tyrargo/outdoors/outskirts_road/central)
+"bV" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southwest,
+/area/tyrargo/outdoors/outskirts/central)
 "bZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt{
@@ -2085,10 +2113,6 @@
 /turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst)
 "ns" = (
-/obj/structure/prop/broken_ladder,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /obj/structure/machinery/light_construct{
 	dir = 4
 	},
@@ -2096,7 +2120,8 @@
 	pixel_x = 32;
 	pixel_y = 6
 	},
-/turf/open/floor/almayer/plate,
+/obj/structure/stairs/multiz/up,
+/turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/heyst)
 "nt" = (
 /obj/effect/decal/cleanable/blood/xeno,
@@ -4230,8 +4255,10 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/tyrargo/indoors/heyst)
 "Hg" = (
-/obj/structure/prop/broken_ladder,
-/turf/open/floor/plating/plating_catwalk,
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/turf/open/floor/almayer_hull,
 /area/tyrargo/indoors/heyst)
 "Hl" = (
 /obj/structure/surface/table/almayer,
@@ -6755,7 +6782,7 @@ JK
 TG
 TG
 aN
-VZ
+aN
 VZ
 jV
 TG
@@ -6823,7 +6850,7 @@ VZ
 aN
 aN
 aN
-Hg
+aN
 Hg
 aN
 aN
@@ -6909,16 +6936,16 @@ ac
 ac
 ac
 tS
+bU
 zQ
 zQ
-zQ
 wk
 wk
 wk
 wk
 wk
 wk
-wk
+bQ
 nF
 SK
 XJ
@@ -6987,7 +7014,7 @@ VZ
 aN
 aN
 aN
-wk
+bQ
 TG
 nF
 XJ
@@ -7325,7 +7352,7 @@ qn
 CE
 AE
 ef
-He
+bS
 Zp
 Ix
 EA
@@ -7664,7 +7691,7 @@ CH
 kU
 vd
 Ko
-kU
+bT
 UY
 fG
 ji
@@ -7803,7 +7830,7 @@ VZ
 aN
 aN
 GC
-wk
+bR
 xK
 NE
 XJ
@@ -7861,6 +7888,7 @@ XJ
 XJ
 XJ
 Of
+bV
 wk
 wk
 wk
@@ -7869,8 +7897,7 @@ wk
 wk
 wk
 wk
-wk
-wk
+bR
 NE
 XJ
 XJ
@@ -7911,7 +7938,7 @@ SK
 SK
 aN
 aN
-Hg
+aN
 Hg
 aN
 aN
@@ -7979,7 +8006,7 @@ SK
 SK
 xK
 aN
-VZ
+aN
 VZ
 aN
 xK

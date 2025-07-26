@@ -631,13 +631,17 @@
 // USS Heyst
 
 /area/tyrargo/indoors/heyst
-	name = "USS Heyst"
+	name = "USS Heyst - Mid Deck"
 	minimap_color = MINIMAP_SQUAD_ECHO
 	icon_state = "Holodeck"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
-	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+	ambience_exterior = AMBIENCE_TYRARGO_CITY
 	ceiling_muffle = FALSE
+	base_muffle = MUFFLE_MEDIUM
+
+/area/tyrargo/indoors/heyst/upper
+	name = "USS Heyst - Upper Deck"
 
 // ERT Spawn Area
 

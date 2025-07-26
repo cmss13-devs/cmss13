@@ -1384,6 +1384,27 @@
 	volume = RADIO_VOLUME_RAISED
 	multibroadcast_cooldown = HIGH_MULTIBROADCAST_COOLDOWN
 
+/obj/item/device/radio/headset/almayer/mcom/mech
+	name = "marine mech operator radio headset"
+	desc = "Used by USCM mechsuit operators, features a non-standard brace. Channels are as follows: :v - marine command, :n - engineering, :m - medbay, :u - requisitions"
+	initial_keys = list(/obj/item/device/encryptionkey/vc)
+	volume = RADIO_VOLUME_RAISED
+	multibroadcast_cooldown = HIGH_MULTIBROADCAST_COOLDOWN
+	misc_tracking = TRUE
+	locate_setting = TRACKER_CO
+
+	inbuilt_tracking_options = list(
+		"Commanding Officer" = TRACKER_CO,
+		"Executive Officer" = TRACKER_XO,
+		"Landing Zone" = TRACKER_LZ,
+		"Alpha SL" = TRACKER_ASL,
+		"Bravo SL" = TRACKER_BSL,
+		"Charlie SL" = TRACKER_CSL,
+		"Delta SL" = TRACKER_DSL,
+		"Echo SL" = TRACKER_ESL,
+		"Foxtrot SL" = TRACKER_FSL
+	)
+
 /obj/item/device/radio/headset/distress/UPP/recon
 	name = "\improper UPP headset"
 	desc = "A special headset used by recon elements of the UPP military."

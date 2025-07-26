@@ -10,7 +10,7 @@
 /area/bigredv2/outside/telecomm)
 "d" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/telecomm)
 "e" = (
@@ -40,7 +40,7 @@
 /turf/open/floor/damaged4/west,
 /area/bigredv2/outside/telecomm)
 "l" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/floor/damaged5/west,
 /area/bigredv2/outside/telecomm)
 "m" = (

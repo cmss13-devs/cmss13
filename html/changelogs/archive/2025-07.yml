@@ -247,3 +247,29 @@
   - imageadd: Added new sprites for the Whisper and Action pistols, including Inhands
   - imageadd: Added a new sprite for the Action pistols magazines
   - imagedel: Deleted the old Holdout Pistol sprite
+2025-07-26:
+  Drathek:
+  - bugfix: Fixed pheros helping banished xenos
+  - balance: Banishment damage now ignores armor
+  - code_imp: Cleaned up some of handle_pheromones
+  FishyFlaps2024:
+  - rscadd: Adds research access to ASO
+  - rscadd: Adds research skill to ASO
+  MistChristmas:
+  - bugfix: Nightmare disposal pipes no longer end up with null icon_states on load.
+  Red-byte3D:
+  - rscadd: You can now use a custom "glove" cursor from preferences by clicking the
+      "use custom cursors" in preferences tab. Theres a cursor for each faction
+  - bugfix: You can no longer paradrop to outside of the map.
+  Unknownity:
+  - rscadd: Adds an upgraded autodoc to the Yautja ship and upgrades their sleepers.
+  Venuska1117:
+  - bugfix: Swap Designer macros of Place Design and Change Design ability.
+  Willzadl:
+  - rscadd: Nested predators will now be stabilized
+  cuberound:
+  - bugfix: reduces AP GAU ammo spread to 3 tile from 4 as intended
+  jupyterkat:
+  - bugfix: look up is a toggle again
+  rattybag:
+  - rscadd: adds alt click to sinks and hydro trays

@@ -245,7 +245,7 @@
 	target.custom_pain("It feels like the skin on your [surgery.affected_limb.display_name] is on fire!", 1)
 	log_interact(user, target, "[key_name(user)] began retracting skin in [key_name(target)]'s [surgery.affected_limb.display_name].")
 
-/datum/surgery_step/retract_skin/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery,  chest_overlay, skull_overlay)
+/datum/surgery_step/retract_skin/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/h_his = "their" //[tool] doesn't have a gender.
 	switch(target.gender)
 		if(MALE)
@@ -255,17 +255,13 @@
 
 	switch(target_zone)
 		if("chest")
-			target.overlays -= chest_overlay
-			chest_overlay = image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-			target.overlays += chest_overlay
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 		if("head")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s head open with \the [tool], exposing [h_his] skull."),
 				SPAN_NOTICE("[user] holds the incision on your head open with \the [tool], exposing your skull."),
 				SPAN_NOTICE("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull."))
-			target.overlays -= skull_overlay
-			skull_overlay = image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-			target.overlays += skull_overlay
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 		if("groin")
 			user.affected_message(target,
 				SPAN_NOTICE("You hold the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera."),
@@ -350,16 +346,18 @@
 	target.custom_pain("Your [surgery.affected_limb.display_name] is being burned!", 1)
 	log_interact(user, target, "[key_name(user)] began cauterizing an incision in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
-/datum/surgery_step/cauterize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, chest_overlay, skull_overlay)
+/datum/surgery_step/cauterize/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You cauterize the incision on [target]'s [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on your [surgery.affected_limb.display_name]."),
 		SPAN_NOTICE("[user] cauterizes the incision on [target]'s [surgery.affected_limb.display_name]."))
 	switch(target_zone)
 		if("head")
-			target.overlays -= skull_overlay
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
 		if("chest")
-			target.overlays -= chest_overlay
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	surgery.affected_limb.remove_all_bleeding(TRUE, FALSE)
@@ -476,7 +474,7 @@
 /datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
 
-/datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery,  chest_overlay, skull_overlay)
+/datum/surgery_step/open_encased_step/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You start forcing [target]'s [surgery.affected_limb.encased] open with \the [tool]."),
 		SPAN_NOTICE("[user] begins to force your [surgery.affected_limb.encased] open with \the [tool]."),
@@ -485,7 +483,7 @@
 	target.custom_pain("Something hurts horribly in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began opening [key_name(target)]'s [surgery.affected_limb.encased], possibly beginning [surgery].")
 
-/datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery, chest_overlay, skull_overlay)
+/datum/surgery_step/open_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	var/brain = surgery.affected_limb.body_part == BODY_FLAG_HEAD ? TRUE : FALSE
 	user.affected_message(target,
 		SPAN_NOTICE("You use \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."),
@@ -493,13 +491,9 @@
 		SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
 	switch(target_zone)
 		if("head")
-			target.overlays -= skull_overlay
-			skull_overlay = image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
-			target.overlays += skull_overlay
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
 		if("chest")
-			target.overlays -= chest_overlay
-			chest_overlay = image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
-			target.overlays += chest_overlay
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
@@ -559,20 +553,18 @@
 	target.custom_pain("Something hurts horribly in your [surgery.affected_limb.display_name]!", 1)
 	log_interact(user, target, "[key_name(user)] began closing [key_name(target)]'s [surgery.affected_limb.encased], attempting to begin [surgery].")
 
-/datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery,  chest_overlay, skull_overlay)
+/datum/surgery_step/close_encased_step/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
 		SPAN_NOTICE("You close [target]'s [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes your [surgery.affected_limb.encased]."),
 		SPAN_NOTICE("[user] closes [target]'s [surgery.affected_limb.encased]."))
 	switch(target_zone)
 		if("head")
-			target.overlays -= skull_overlay
-			skull_overlay = image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
-			target.overlays += skull_overlay
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 		if("chest")
-			target.overlays -= chest_overlay
-			chest_overlay = image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
-			target.overlays += chest_overlay
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	log_interact(user, target, "[key_name(user)] closed [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")

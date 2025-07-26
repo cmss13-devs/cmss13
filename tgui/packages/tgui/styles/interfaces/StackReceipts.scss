@@ -11,6 +11,7 @@ $mandatory-color: hsl(39, 100%, 25%);
     border: 2px solid colors.$primary;
     white-space: nowrap;
     white-space-collapse: nowrap;
+    left: 6px;
     &:hover,
     &:focus {
       transition:
@@ -19,5 +20,11 @@ $mandatory-color: hsl(39, 100%, 25%);
       background-color: colors.$primary;
       color: white;
     }
+  }
+
+  .HrLine {
+    top: 6px;
+    position: relative;
+    color: colors.$primary;
   }
 }

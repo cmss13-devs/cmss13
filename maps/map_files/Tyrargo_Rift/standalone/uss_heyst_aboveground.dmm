@@ -1,4 +1,23 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/almayer/plate,
+/area/tyrargo/indoors/heyst/upper)
+"ab" = (
+/turf/open/floor/almayer/test_floor7,
+/area/tyrargo/indoors/heyst/upper)
+"ac" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/almayer/test_floor7,
+/area/tyrargo/indoors/heyst/upper)
+"ad" = (
+/obj/structure/largecrate/supply/ammo/m41a/half,
+/obj/structure/largecrate/supply/ammo/m41a/half{
+	pixel_x = 4;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/test_floor7,
+/area/tyrargo/indoors/heyst/upper)
 "ai" = (
 /obj/effect/decal/cleanable/dirt{
 	icon_state = "thermite";
@@ -53,7 +72,7 @@
 /area/tyrargo/indoors/heyst/upper)
 "cH" = (
 /obj/structure/machinery/computer3/laptop/secure_data,
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/test_floor7,
 /area/tyrargo/indoors/heyst/upper)
 "cM" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/northeast,
@@ -65,13 +84,6 @@
 /area/tyrargo/indoors/heyst/upper)
 "cT" = (
 /turf/open_space,
-/area/tyrargo/indoors/heyst/upper)
-"dc" = (
-/obj/effect/decal/cleanable/dirt{
-	icon_state = "thermite";
-	name = "impact"
-	},
-/turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst/upper)
 "dT" = (
 /obj/effect/decal/cleanable/dirt{
@@ -348,7 +360,7 @@
 	color = "#140400";
 	name = "dirt"
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/test_floor7,
 /area/tyrargo/indoors/heyst/upper)
 "vj" = (
 /obj/structure/barricade/handrail{
@@ -581,9 +593,6 @@
 	},
 /turf/open/floor/almayer/orange/east,
 /area/tyrargo/indoors/heyst/upper)
-"NL" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
-/area/tyrargo/indoors/heyst/upper)
 "NT" = (
 /obj/effect/landmark/ammo_spawn/m41a_random_spawn,
 /obj/effect/decal/heavy_cable/cable_horizontal,
@@ -686,9 +695,6 @@
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open_space,
 /area/tyrargo/indoors/heyst/upper)
-"RN" = (
-/turf/open/floor/almayer_hull/outerhull_dir/west,
-/area/tyrargo/indoors/heyst/upper)
 "RX" = (
 /turf/open_space,
 /area/tyrargo/outdoors/outskirts/central)
@@ -705,8 +711,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/tyrargo/indoors/heyst/upper)
 "SK" = (
-/obj/effect/decal/cleanable/generic,
 /obj/effect/landmark/ammo_spawn/m4ra_random_spawn,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
 /turf/open/floor/almayer/plate,
 /area/tyrargo/indoors/heyst/upper)
 "TH" = (
@@ -862,7 +871,7 @@ wY
 xl
 cT
 wY
-wY
+kE
 wY
 wY
 wY
@@ -950,12 +959,12 @@ Wt
 Wt
 xg
 Vy
-RN
-RN
-RN
-RN
-RN
-RN
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
 wY
 kE
 kE
@@ -1137,11 +1146,11 @@ Fk
 Da
 wj
 by
-rG
+ad
 uX
 rG
 ii
-rG
+aa
 TH
 Aw
 LF
@@ -1174,8 +1183,8 @@ jw
 wY
 Bt
 Bt
-rG
-rG
+ab
+ab
 if
 rG
 rG
@@ -1212,7 +1221,7 @@ Hw
 ii
 Bt
 cH
-rG
+ac
 rG
 pw
 Qt
@@ -1384,7 +1393,7 @@ Ob
 Ob
 ii
 SK
-dc
+gB
 wY
 yu
 Wt
@@ -1394,12 +1403,12 @@ Wt
 Wt
 qd
 uL
-NL
-NL
-NL
-NL
-NL
-NL
+uL
+uL
+uL
+uL
+uL
+uL
 wY
 kE
 kE
@@ -1454,7 +1463,7 @@ wY
 xl
 cT
 wY
-wY
+kE
 wY
 wY
 wY

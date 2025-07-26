@@ -784,6 +784,15 @@
 "bV" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/southwest,
 /area/tyrargo/outdoors/outskirts/central)
+"bW" = (
+/turf/open/floor/plating/panelscorched,
+/area/tyrargo/indoors/heyst)
+"bX" = (
+/turf/open/floor/plating/platingdmg3,
+/area/tyrargo/indoors/heyst)
+"bY" = (
+/turf/open/floor/plating/platingdmg2,
+/area/tyrargo/indoors/heyst)
 "bZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt{
@@ -803,6 +812,21 @@
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/east)
+"cc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg2,
+/area/tyrargo/indoors/heyst)
+"cd" = (
+/obj/structure/machinery/landinglight{
+	dir = 8
+	},
+/turf/open/floor/plating/panelscorched,
+/area/tyrargo/indoors/heyst)
+"ce" = (
+/obj/structure/window_frame/almayer,
+/obj/item/shard,
+/turf/open/floor/plating/panelscorched,
+/area/tyrargo/indoors/heyst)
 "cf" = (
 /obj/structure/prop/rock/black_ground{
 	dir = 5;
@@ -810,6 +834,15 @@
 	pixel_x = -14
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
+/area/tyrargo/outdoors/outskirts/central)
+"cg" = (
+/turf/open/floor/plating/platingdmg1,
+/area/tyrargo/indoors/heyst)
+"ch" = (
+/turf/open/floor/plating/panelscorched,
+/area/tyrargo/outdoors/outskirts/central)
+"ci" = (
+/turf/open/floor/plating/platingdmg3,
 /area/tyrargo/outdoors/outskirts/central)
 "cj" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
@@ -821,6 +854,9 @@
 	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/outskirts_road/central)
+"ck" = (
+/turf/open/floor/plating/platingdmg2,
+/area/tyrargo/outdoors/outskirts/central)
 "cn" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -4
@@ -3921,7 +3957,7 @@
 /area/tyrargo/outdoors/outskirts_road/central)
 "Eh" = (
 /obj/structure/largecrate/random/barrel/green,
-/turf/open/floor/plating,
+/turf/open/floor/plating/platingdmg3,
 /area/tyrargo/indoors/heyst)
 "Ei" = (
 /turf/closed/shuttle/escapepod{
@@ -5194,9 +5230,6 @@
 /obj/item/prop/colony/used_flare,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
-"RS" = (
-/turf/open/floor/almayer,
-/area/tyrargo/outdoors/outskirts/central)
 "RW" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -6845,7 +6878,7 @@ iX
 sx
 sx
 sx
-OD
+ce
 VZ
 aN
 aN
@@ -6912,7 +6945,7 @@ SK
 SK
 SK
 ek
-RS
+ch
 um
 um
 bO
@@ -7047,11 +7080,11 @@ SK
 SK
 SK
 SK
-Am
+ch
 op
-op
+bX
 gq
-op
+bW
 op
 op
 Ov
@@ -7182,12 +7215,12 @@ pc
 sx
 sx
 FY
-Am
-Am
+ch
+Hb
 op
 op
 op
-Ov
+cc
 op
 QX
 op
@@ -7250,8 +7283,8 @@ SK
 XJ
 aa
 SK
-Am
-op
+ch
+bX
 op
 op
 op
@@ -7260,7 +7293,7 @@ Ov
 Ov
 Ov
 Ov
-op
+bX
 op
 op
 dp
@@ -7324,7 +7357,7 @@ VK
 op
 gY
 op
-op
+bX
 op
 op
 op
@@ -7386,10 +7419,10 @@ Eq
 SK
 XJ
 SK
-Am
+ci
 Am
 op
-op
+cg
 op
 op
 op
@@ -7460,7 +7493,7 @@ op
 op
 op
 Ov
-op
+bW
 op
 op
 op
@@ -7522,7 +7555,7 @@ Eq
 SK
 XJ
 SK
-Am
+Hb
 Am
 op
 op
@@ -7531,10 +7564,10 @@ op
 Ov
 op
 op
-op
+bY
 Ov
 op
-op
+bW
 Ov
 En
 nw
@@ -7590,7 +7623,7 @@ eA
 vw
 lb
 zW
-Am
+ck
 Am
 op
 op
@@ -7659,7 +7692,7 @@ XJ
 XJ
 SK
 cQ
-Am
+Hb
 mX
 op
 op
@@ -7728,10 +7761,10 @@ pb
 SK
 SK
 SK
-Am
-Am
+ci
+ch
 Eh
-op
+bX
 op
 nS
 op
@@ -7799,7 +7832,7 @@ sx
 sx
 FY
 sx
-iJ
+cd
 iJ
 iJ
 Sm

@@ -26,6 +26,12 @@
 	GLOB.ladder_list += src
 	return INITIALIZE_HINT_LATELOAD
 
+/obj/structure/ladder/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_NOTICE("Drag-click to look up or down [src].")
+	if(ishuman(user))
+		. += SPAN_NOTICE("Click [src] with unprimed grenades/flares to prime and toss it up or down.")
+
 /obj/structure/ladder/LateInitialize()
 	. = ..()
 
@@ -146,11 +152,17 @@
 	is_watching = 0
 	user.reset_view(null)
 
+/obj/structure/ladder/proc/handle_move(mob/moved_mob, oldLoc, direct)
+	SIGNAL_HANDLER
+	moved_mob.unset_interaction()
+	UnregisterSignal(moved_mob, COMSIG_MOVABLE_MOVED)
+
 //Peeking up/down
 /obj/structure/ladder/MouseDrop(over_object, src_location, over_location, mob/user)
 	//Are we capable of looking?
-	if(usr.is_mob_incapacitated() || get_dist(usr, src) > 1 || usr.blinded ||  !usr.client)
+	if(usr.is_mob_incapacitated() || get_dist(usr, src) > 1 || usr.blinded || !usr.client)
 		return
+
 
 	if(isliving(usr))
 		var/mob/living/living_usr = usr
@@ -165,25 +177,28 @@
 			is_watching = 2
 			usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
 			SPAN_NOTICE("You look up [src]!"))
+			RegisterSignal(usr, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 			usr.set_interaction(src)
 		if(looking_at == "down")
 			looking_at = down
 			is_watching = 1
+			usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"), SPAN_NOTICE("You look down [src]!"))
+			RegisterSignal(usr, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 			usr.set_interaction(src)
-			usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
-			SPAN_NOTICE("You look down [src]!"))
 	else if(up)
 		looking_at = up
 		is_watching = 2
 		usr.visible_message(SPAN_NOTICE("[usr] looks up [src]!"),
 		SPAN_NOTICE("You look up [src]!"))
+		RegisterSignal(usr, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
 		usr.set_interaction(src)
 	else if(down)
 		looking_at = down
 		is_watching = 1
-		usr.set_interaction(src)
 		usr.visible_message(SPAN_NOTICE("[usr] looks down [src]!"),
 		SPAN_NOTICE("You look down [src]!"))
+		RegisterSignal(usr, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
+		usr.set_interaction(src)
 	else
 		return FALSE //just in case
 
@@ -275,6 +290,10 @@
 			F.forceMove(ladder_dest.loc)
 			F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 			step_away(F,src,rand(1, 5))
+			if(istype(W, /obj/item/device/flashlight/flare))
+				var/obj/item/device/flashlight/flare/the_flare = W
+				if(!the_flare.on)
+					the_flare.turn_on()
 	else
 		return attack_hand(user)
 

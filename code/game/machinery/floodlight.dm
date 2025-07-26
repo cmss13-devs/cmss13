@@ -85,3 +85,43 @@
 	icon_state = "floor_flood_1"
 	base_icon_state = "floor_flood"
 	density = FALSE
+
+/obj/structure/machinery/floodlight/landing/floor/almayer
+	light_power = 0.7
+
+/obj/structure/machinery/floodlight/landing/dropship_airlock
+	light_power = 2
+	on_light_range = 10
+	light_system = MOVABLE_LIGHT
+	light_color =  LIGHT_COLOR_BLUE
+	light_mask_type = /atom/movable/lighting_mask/rotating_toggleable
+	var/obj/docking_port/stationary/marine_dropship/airlock/inner/linked_inner = null
+	var/linked_inner_dropship_airlock_id = "generic"
+
+/obj/structure/machinery/floodlight/landing/dropship_airlock/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/floodlight/landing/dropship_airlock/LateInitialize()
+	. = ..()
+	for(var/obj/docking_port/stationary/marine_dropship/airlock/inner/inner_airlock in GLOB.dropship_airlock_docking_ports)
+		if(linked_inner_dropship_airlock_id == inner_airlock.dropship_airlock_id)
+			linked_inner = inner_airlock
+			linked_inner.floodlights += src
+
+/obj/structure/machinery/floodlight/landing/dropship_airlock/Destroy()
+	if(linked_inner)
+		linked_inner.floodlights -= src
+	. = ..()
+
+/obj/structure/machinery/floodlight/landing/dropship_airlock/proc/toggle_rotating()
+	if(istype(light.our_mask, /atom/movable/lighting_mask/rotating_toggleable))
+		var/atom/movable/lighting_mask/rotating_toggleable/rotating_mask = light.our_mask
+		playsound(src, 'sound/machines/switch.ogg', 100, vol_cat = VOLUME_SFX)
+		rotating_mask.toggle()
+
+/obj/structure/machinery/floodlight/landing/dropship_airlock/almayer_one
+	linked_inner_dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_ONE
+
+/obj/structure/machinery/floodlight/landing/dropship_airlock/almayer_two
+	linked_inner_dropship_airlock_id = ALMAYER_HANGAR_AIRLOCK_TWO

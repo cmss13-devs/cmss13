@@ -8,7 +8,7 @@
 
 	max_health = XENO_HEALTH_LESSER_DRONE
 
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
+	fire_immunity = FIRE_IMMUNITY_NO_IGNITE
 
 	minimap_icon = "overmind"
 
@@ -35,7 +35,7 @@
 	tier = 4
 
 	see_invisible = SEE_INVISIBLE_LIVING
-	invisibility = INVISIBILITY_MAXIMUM
+	invisibility = INVISIBILITY_LEVEL_TWO
 	sight = SEE_MOBS|SEE_TURFS|SEE_OBJS
 
 	counts_for_slots = FALSE
@@ -85,13 +85,14 @@
 	make_pathogen_speaker()
 	set_resin_build_order(GLOB.resin_build_order_pathogen_overmind)
 	extra_build_dist = IGNORE_BUILD_DISTANCE
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
 
 /mob/living/carbon/xenomorph/overmind/proc/set_stats_incorporeal()
 	if(pass_flags)
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-	invisibility = INVISIBILITY_MAXIMUM
+	invisibility = INVISIBILITY_LEVEL_TWO
 	aura_strength = 0
 	speed = XENO_SPEED_RUNNER
 
@@ -158,7 +159,7 @@
 		age_xeno()
 	full_designation = "[name_client_prefix][nicknumber][name_client_postfix]"
 
-	name = "Overseer ([full_designation])"
+	name = "Overmind ([full_designation])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -265,10 +266,10 @@
 /mob/living/carbon/xenomorph/overmind/Move(atom/newloc, direction, glide_size_override)
 	if(!COOLDOWN_FINISHED(src, cooldown_hivemind_manifestation))
 		return
-	if(!(status_flags & INCORPOREAL))
-		return ..()
 	if(!turf_weed_only(src, newloc))
 		return FALSE
+	if(!(status_flags & INCORPOREAL))
+		return ..()
 
 	abstract_move(newloc)
 
@@ -341,7 +342,7 @@
 	health = 600
 	icon = 'icons/mob/pathogen/overmind_core.dmi'
 	icon_state = "overmind_white"
-//	xeno_structure_flags = CRITICAL_STRUCTURE|DEPART_DESTRUCTION_IMMUNE
+
 	///The cooldown of the alert hivemind gets when a hostile is near it's core
 	COOLDOWN_DECLARE(cooldown_overmind_proxy_alert)
 	hivenumber = XENO_HIVE_PATHOGEN
@@ -352,7 +353,7 @@
 /obj/effect/alien/resin/overmind/Initialize(mapload)
 	. = ..()
 	new /obj/effect/alien/weeds/node/pylon/pathogen_core(loc)
-	set_light(7, 5, LIGHT_COLOR_PURPLE)
+	set_light(7, 5, LIGHT_COLOR_YELLOW)
 
 	for(var/turfs in RANGE_TURFS(OVERMIND_DETECTION_RANGE, src))
 		RegisterSignal(turfs, COMSIG_TURF_ENTERED, PROC_REF(overmind_proxy_alert))

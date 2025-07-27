@@ -81,8 +81,8 @@
 	if(!super_acid && acid_level >= 2 || acid_level >= 3)
 		return
 
-	acid_goopiness ++
-	acid_level ++
+	acid_goopiness++
+	acid_level++
 	if(acid_level == 2)
 		duration += 20
 		acid_multiplier = 1.5

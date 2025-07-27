@@ -1,0 +1,4 @@
+author: "private-tristan"
+delete-after: True
+changes:
+  - balance: "The last living xeno is now fully healed, but is unable to heal/rest at all. FIGHT AND DIE."

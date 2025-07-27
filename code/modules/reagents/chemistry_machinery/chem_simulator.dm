@@ -191,6 +191,8 @@
 	switch(action)
 		if("change_mode")
 			mode = params["mode_id"]
+			target_property = null
+			reference_property = null
 			update_costs()
 			if(mode == MODE_ADD)
 				target_property = null

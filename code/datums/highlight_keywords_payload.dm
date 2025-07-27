@@ -45,31 +45,38 @@
 		var/dynamic_name = copytext(name_full, dynamic_name_start + 1, dynamic_name_end)
 		var/list/name_components = splittext(dynamic_name, "-")
 
-		// "Normal" xeno name patterns.
-		if(name_components.len == 2) {
-			var/mob/living/carbon/xenomorph/xeno = mob
-			var/nicknumber = num2text(xeno.nicknumber)
+		switch(length(name_components))
+			if(1)
+				var/maybe_number = text2num(name_components[1])
+				if (isnull(maybe_number))
+					xeno_prefix = name_components[1]
+				else
+					xeno_number = name_components[1]
+			// "Normal" xeno name patterns.
+			if(2) {
+				var/mob/living/carbon/xenomorph/xeno = mob
+				var/nicknumber = num2text(xeno.nicknumber)
 
-			// 123-XX
-			if (name_components[1] == nicknumber)
-				xeno_number = name_components[1]
-				xeno_postfix = name_components[2]
-			// XX-123
-			else if (name_components[2] == nicknumber)
+				// 123-XX
+				if (name_components[1] == nicknumber)
+					xeno_number = name_components[1]
+					xeno_postfix = name_components[2]
+				// XX-123
+				else if (name_components[2] == nicknumber)
+					xeno_prefix = name_components[1]
+					xeno_number = name_components[2]
+				// XX-YY
+				else {
+					xeno_prefix = name_components[1]
+					xeno_postfix = name_components[2]
+				}
+			}
+			// XX-123-YY
+			if (3) {
 				xeno_prefix = name_components[1]
 				xeno_number = name_components[2]
-			// XX-YY
-			else {
-				xeno_prefix = name_components[1]
-				xeno_postfix = name_components[2]
+				xeno_postfix = name_components[3]
 			}
-		}
-		// XX-123-YY
-		else if (name_components.len == 3) {
-			xeno_prefix = name_components[1]
-			xeno_number = name_components[2]
-			xeno_postfix = name_components[3]
-		}
 
 /datum/highlight_keywords_payload/proc/to_list()
 	return list(

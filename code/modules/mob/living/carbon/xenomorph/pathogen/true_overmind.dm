@@ -15,6 +15,7 @@
 	aura_strength = 0
 
 	max_build_dist = 7
+	heal_standing = 1
 
 	evolves_to = list()
 	deevolves_to = list()
@@ -29,7 +30,7 @@
 	icon_state = "overmind_eye"
 	icon_xeno = 'icons/mob/pathogen/overmind.dmi'
 	icon_xenonid = 'icons/mob/pathogen/overmind.dmi'
-	status_flags = GODMODE | INCORPOREAL
+	status_flags = INCORPOREAL
 	density = FALSE
 	a_intent = INTENT_HELP
 	tier = 4
@@ -85,7 +86,7 @@
 	make_pathogen_speaker()
 	set_resin_build_order(GLOB.resin_build_order_pathogen_overmind)
 	extra_build_dist = IGNORE_BUILD_DISTANCE
-	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, PROC_REF(turf_weed_only))
+	RegisterSignal(src, COMSIG_CLIENT_MOB_MOVE, PROC_REF(turf_weed_only))
 
 /mob/living/carbon/xenomorph/overmind/proc/set_stats_incorporeal()
 	if(pass_flags)
@@ -216,9 +217,8 @@
 
 	var/obj/effect/alien/weeds/nearby_weeds = locate() in crossing_turf
 	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
-		var/obj/effect/alien/crossing_turf_weeds = locate() in crossing_turf
-		if(crossing_turf_weeds && !(crossing_turf_weeds.hivenumber == XENO_HIVE_PATHOGEN))
-			crossing_turf_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
+		if(!(nearby_weeds.hivenumber == XENO_HIVE_PATHOGEN))
+			nearby_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
 	return COMPONENT_TURF_DENY_MOVEMENT
@@ -255,12 +255,8 @@
 	setDir(SOUTH)
 
 /mob/living/carbon/xenomorph/overmind/proc/setBruteLoss(amount)
-	if(status_flags & GODMODE)
-		return FALSE
 	bruteloss = amount
 /mob/living/carbon/xenomorph/overmind/proc/setFireLoss(amount)
-	if(status_flags & GODMODE)
-		return FALSE
 	fireloss = amount
 
 /mob/living/carbon/xenomorph/overmind/Move(atom/newloc, direction, glide_size_override)

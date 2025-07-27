@@ -57,7 +57,7 @@
 				else
 					xeno_prefix = first_component
 			// "Normal" xeno name patterns.
-			if(2) {
+			if(2)
 				var/first_component = name_components[1]
 				var/second_component = name_components[2]
 
@@ -73,17 +73,15 @@
 					xeno_prefix = first_component
 					xeno_number = second_component
 				// XX-YY
-				else {
+				else
 					xeno_prefix = first_component
 					xeno_postfix = second_component
-				}
-			}
 			// XX-123-YY
-			if (3) {
+			if (3)
 				xeno_prefix = name_components[1]
 				xeno_number = name_components[2]
 				xeno_postfix = name_components[3]
-			}
+
 
 /datum/highlight_keywords_payload/proc/to_list()
 	return list(

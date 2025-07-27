@@ -233,16 +233,16 @@
 	shell_speed = AMMO_SPEED_TIER_1
 	scatter = SCATTER_AMOUNT_TIER_6
 
-/datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/xeno/acid/despoiler/on_hit_mob(mob/mob, obj/projectile/projectile)
 	. = ..()
 	if(. == FALSE)
 		return
-	var/datum/effects/acid/acid_effect = locate() in M.effects_list
+	var/datum/effects/acid/acid_effect = locate() in mob.effects_list
 	if(acid_effect)
 		acid_effect.enhance_acid(super_acid = FALSE)
 		return
 
-	new /datum/effects/acid/(M, P.firer)
+	new /datum/effects/acid/(mob, projectile.firer)
 
 /datum/ammo/xeno/boiler_gas
 	name = "glob of neuro gas"

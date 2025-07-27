@@ -47,28 +47,35 @@
 
 		switch(length(name_components))
 			if(1)
-				var/maybe_number = text2num(name_components[1])
-				if (isnull(maybe_number))
-					xeno_prefix = name_components[1]
+				var/first_component = name_components[1]
+
+				var/mob/living/carbon/xenomorph/xeno = mob
+				var/nicknumber = num2text(xeno.nicknumber)
+
+				if (first_component == nicknumber)
+					xeno_number = first_component
 				else
-					xeno_number = name_components[1]
+					xeno_prefix = first_component
 			// "Normal" xeno name patterns.
 			if(2) {
+				var/first_component = name_components[1]
+				var/second_component = name_components[2]
+
 				var/mob/living/carbon/xenomorph/xeno = mob
 				var/nicknumber = num2text(xeno.nicknumber)
 
 				// 123-XX
-				if (name_components[1] == nicknumber)
-					xeno_number = name_components[1]
-					xeno_postfix = name_components[2]
+				if (first_component == nicknumber)
+					xeno_number = first_component
+					xeno_postfix = second_component
 				// XX-123
-				else if (name_components[2] == nicknumber)
-					xeno_prefix = name_components[1]
-					xeno_number = name_components[2]
+				else if (second_component == nicknumber)
+					xeno_prefix = first_component
+					xeno_number = second_component
 				// XX-YY
 				else {
-					xeno_prefix = name_components[1]
-					xeno_postfix = name_components[2]
+					xeno_prefix = first_component
+					xeno_postfix = second_component
 				}
 			}
 			// XX-123-YY

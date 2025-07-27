@@ -47,6 +47,9 @@
 		qdel(src)
 		return FALSE
 
+	if((flags_embryo & FLAG_EMBRYO_PATHOGEN) && icon != 'icons/mob/pathogen/bloodburster.dmi')
+		icon = 'icons/mob/pathogen/bloodburster.dmi'
+
 	if(loc != affected_mob) //Our location is not the host
 		affected_mob.status_flags &= ~(XENO_HOST)
 		STOP_PROCESSING(SSobj, src)
@@ -60,15 +63,15 @@
 		if(ishuman(affected_mob))
 			var/mob/living/carbon/human/affected_human = affected_mob
 			if(world.time > affected_human.timeofdeath + affected_human.revive_grace_period) //Can't be defibbed.
-				var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
-				if(larva_embryo)
-					larva_embryo.chest_burst(affected_mob)
+				var/mob/living/carbon/xenomorph/embryo = locate() in affected_mob
+				if(embryo)
+					embryo.chest_burst(affected_mob)
 				qdel(src)
 				return FALSE
 		else
-			var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
-			if(larva_embryo)
-				larva_embryo.chest_burst(affected_mob)
+			var/mob/living/carbon/xenomorph/embryo = locate() in affected_mob
+			if(embryo)
+				embryo.chest_burst(affected_mob)
 			STOP_PROCESSING(SSobj, src)
 			return FALSE
 
@@ -159,9 +162,9 @@
 		if(7) // Stage 6 is while we are trying to find a candidate in become_larva
 			larva_autoburst_countdown--
 			if(!larva_autoburst_countdown)
-				var/mob/living/carbon/xenomorph/larva/larva_embryo = locate() in affected_mob
-				if(larva_embryo)
-					larva_embryo.chest_burst(affected_mob)
+				var/mob/living/carbon/xenomorph/embryo = locate() in affected_mob
+				if(embryo)
+					embryo.chest_burst(affected_mob)
 
 ///We look for a candidate. If found, we spawn the candidate as a larva
 ///Order of priority is bursted individual (if xeno is enabled), then player hugger, then random candidate, and then it's up for grabs and spawns braindead
@@ -244,12 +247,14 @@
 							break
 
 	// Spawn the larva
-	var/mob/living/carbon/xenomorph/larva/new_xeno
+	var/mob/living/carbon/xenomorph/new_xeno
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
+	if(flags_embryo & FLAG_EMBRYO_PATHOGEN)
+		new_xeno = new /mob/living/carbon/xenomorph/bloodburster(affected_mob)
 	else
-		new_xeno = new(affected_mob)
+		new_xeno = new /mob/living/carbon/xenomorph/larva(affected_mob)
 
 	if(hive)
 		hive.add_xeno(new_xeno)
@@ -287,7 +292,10 @@
 
 	stage = 7 // Begin the autoburst countdown
 
-/mob/living/carbon/xenomorph/larva/proc/cause_unbearable_pain(mob/living/carbon/victim)
+/mob/living/carbon/xenomorph/proc/cause_unbearable_pain(mob/living/carbon/victim)
+	return
+
+/mob/living/carbon/xenomorph/larva/cause_unbearable_pain(mob/living/carbon/victim)
 	if(loc != victim)
 		return
 	victim.emote("scream")
@@ -297,7 +305,10 @@
 	to_chat(victim, message)
 	addtimer(CALLBACK(src, PROC_REF(cause_unbearable_pain), victim), rand(1, 3) SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
-/mob/living/carbon/xenomorph/larva/proc/chest_burst(mob/living/carbon/victim)
+/mob/living/carbon/xenomorph/proc/chest_burst(mob/living/carbon/victim)
+	return
+
+/mob/living/carbon/xenomorph/larva/chest_burst(mob/living/carbon/victim)
 	set waitfor = 0
 	if(victim.chestburst || loc != victim)
 		return

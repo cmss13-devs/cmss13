@@ -14,7 +14,7 @@
 	var/list/egg_triggers = list()
 	var/status = EGG_GROWING //can be EGG_GROWING, EGG_GROWN, EGG_BURST, EGG_BURSTING, or EGG_DESTROYED; all mutually exclusive
 	var/on_fire = FALSE
-	var/hivenumber = XENO_HIVE_NORMAL
+	hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 	/// The weed strength that needs to be maintained in order for this egg to not decay; null disables check
 	var/weed_strength_required = WEED_LEVEL_HIVE

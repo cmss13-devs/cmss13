@@ -78,6 +78,7 @@
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_2/burrower.dmi'
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
+	mycelium_food_icon = 'icons/mob/pathogen/pathogen_weeds_64x64.dmi'
 	weed_food_states = list("Burrower_1","Burrower_2","Burrower_3")
 	weed_food_states_flipped = list("Burrower_1","Burrower_2","Burrower_3")
 

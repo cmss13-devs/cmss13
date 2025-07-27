@@ -870,6 +870,7 @@
 /obj/structure/machinery/autodoc_console/yautja
 	name = "medical pod console"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	upgrades = list(1=1, 2=2, 3=3, 4=4)
 
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"
@@ -877,6 +878,6 @@
 	skilllock = null
 
 /obj/structure/machinery/medical_pod/autodoc/yautja
-	name = "alien automated medical pod"
+	name = "automated medical pod"
 	desc = "An emergency surgical alien device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

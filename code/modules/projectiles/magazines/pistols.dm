@@ -283,18 +283,32 @@
 	gun_type = /obj/item/weapon/gun/pistol/kt42
 
 //-------------------------------------------------------
-//PIZZACHIMP PROTECTION
+//W62 'Whisper' (.22 LR)
 
 /obj/item/ammo_magazine/pistol/holdout
-	name = "tiny pistol magazine (.22)"
+	name = "W62 magazine (.22)"
 	desc = "A surprisingly small magazine, holding .22 bullets. No Kolibri, but it's getting there."
 	default_ammo = /datum/ammo/bullet/pistol/tiny
 	caliber = ".22"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
 	icon_state = "holdout"
-	max_rounds = 5
+	max_rounds = 10
 	w_class = SIZE_TINY
 	gun_type = /obj/item/weapon/gun/pistol/holdout
+
+//-------------------------------------------------------
+//AC71 (.380 ACP)
+
+/obj/item/ammo_magazine/pistol/action
+	name = "AC71 magazine (.380 ACP)"
+	desc = "A small mag holding 8 .380 ACP rounds."
+	default_ammo = /datum/ammo/bullet/pistol/tiny
+	caliber = ".380 ACP"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
+	icon_state = "action"
+	max_rounds = 8
+	w_class = SIZE_TINY
+	gun_type = /obj/item/weapon/gun/pistol/action
 
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL

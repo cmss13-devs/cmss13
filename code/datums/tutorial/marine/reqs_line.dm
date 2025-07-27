@@ -69,7 +69,7 @@
 		/obj/item/attachable/stock/rifle = list("Solid Stock", "M41 stock", "M41 Solid Stock"),
 		/obj/item/attachable/stock/shotgun = list("M37 Stock", "Wooden stock"),
 		/* GEAR */
-		/obj/item/weapon/gun/shotgun/pump = list("M37", "shotgun"),
+		/obj/item/weapon/gun/shotgun/pump/m37a = list("M37", "shotgun"),
 		/obj/item/weapon/gun/smg/m39 = list("M39", "SMG"),
 		/obj/item/weapon/gun/rifle/m4ra = list("M4RA", "M4RA Battle Rifle"),
 		/obj/item/weapon/gun/rifle/m41a = list("M41", "M41", "M41A", "Mk2", "M4 rifle"),
@@ -128,7 +128,7 @@
 		/obj/item/ammo_magazine/rifle/extended = list("Ext Mk2", "MK2 Extended", "Extended MK2 mag"),
 		/obj/item/ammo_magazine/smartgun = list("Smartgun drum", "SG drum"),
 		/obj/item/ammo_magazine/rifle/lmg = list("HPR mag", "Heavy pulse rifle mag", "M41AE2 box"),
-		/obj/item/ammo_magazine/rifle/xm51 = list("XM51 mag"),
+		/obj/item/ammo_magazine/rocket/brute = list("Brute warhead", "Brute rocket"),
 	)
 
 /datum/tutorial/marine/reqs_line/Destroy(force)

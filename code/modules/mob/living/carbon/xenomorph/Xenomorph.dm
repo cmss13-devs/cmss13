@@ -487,9 +487,9 @@
 	SStracking.start_tracking("hive_[src.hivenumber]", src)
 
 	//WO GAMEMODE
-	if(SSticker?.mode?.hardcore)  //Prevents healing and queen evolution
+	if(SSticker?.mode?.hardcore)  // WO toggles for healing and evolutions
 		hardcore = TRUE
-		can_heal = FALSE
+		can_heal = TRUE
 	time_of_birth = world.time
 
 	//Minimap

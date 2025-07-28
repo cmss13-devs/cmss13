@@ -95,7 +95,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		if (istype(receipt, /datum/stack_recipe_list))
 			var/datum/stack_recipe_list/srl = receipt
 
-			for (var/j = 1; j <= length(srl.recipes); j++)
+			for (var/j in 1 to length(srl.recipes))
 				var/datum/stack_recipe/rec = srl.recipes[j]
 				if (!istype(rec, /datum/stack_recipe))
 					continue

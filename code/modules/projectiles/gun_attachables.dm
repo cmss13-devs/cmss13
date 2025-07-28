@@ -558,7 +558,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/extended_barrel/vented/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_6
-	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
+	damage_mod = -BULLET_DAMAGE_MULT_TIER_2
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
 
 	damage_falloff_mod = -0.1

@@ -9,7 +9,7 @@
 		return
 
 	if(banished)
-		apply_armoured_damage(max(ceil(health / XENO_BANISHMENT_DMG_DIVISOR), 1))
+		apply_damage(max(ceil(health / XENO_BANISHMENT_DMG_DIVISOR), 1))
 
 	..()
 
@@ -96,20 +96,20 @@
 	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
 	//Now moved out of healthy only state, because crit xenos can def still be affected by pheros
 
-	if(!stat)
+	if(stat == CONSCIOUS)
 		var/use_current_aura = FALSE
 		var/use_leader_aura = FALSE
 		var/aura_center = src
 		if(aura_strength > 0) //Ignoring pheromone underflow
 			if(current_aura && plasma_stored > 5)
 				if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
-					var/mob/living/carbon/xenomorph/queen/Q = src
-					var/atom/phero_center = Q
-					if(Q.observed_xeno)
-						phero_center = Q.observed_xeno
+					var/mob/living/carbon/xenomorph/queen/queen = src
+					var/atom/phero_center = queen
+					if(queen.observed_xeno)
+						phero_center = queen.observed_xeno
 					if(!phero_center || !phero_center.loc)
 						return
-					if(SSmapping.same_z_map(phero_center.loc.z, Q.loc.z))//Only same map
+					if(SSmapping.same_z_map(phero_center.loc.z, queen.loc.z))//Only same map
 						use_current_aura = TRUE
 						aura_center = phero_center
 				else
@@ -119,13 +119,25 @@
 			use_leader_aura = TRUE
 
 		if(use_current_aura || use_leader_aura)
-			for(var/mob/living/carbon/xenomorph/Z as anything in GLOB.living_xeno_list)
-				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || !SSmapping.same_z_map(Z.z, z) || get_dist(aura_center, Z) > floor(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
+			for(var/mob/living/carbon/xenomorph/target as anything in GLOB.living_xeno_list)
+				if(target.ignores_pheromones)
+					continue
+				if(target.ignore_aura == current_aura)
+					continue
+				if(target.ignore_aura == leader_current_aura)
+					continue
+				if(!SSmapping.same_z_map(target.z, z))
+					continue
+				if(get_dist(aura_center, target) > floor(6 + aura_strength * 2))
+					continue
+				if(!HIVE_ALLIED_TO_HIVE(target.hivenumber, hivenumber))
+					continue
+				if(target.banished)
 					continue
 				if(use_leader_aura)
-					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
+					target.affected_by_pheromones(leader_current_aura, leader_aura_strength)
 				if(use_current_aura)
-					Z.affected_by_pheromones(current_aura, aura_strength)
+					target.affected_by_pheromones(current_aura, aura_strength)
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
@@ -323,7 +335,7 @@ Make sure their actual health updates immediately.*/
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
-			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
+			if(health < maxHealth && can_heal && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
 						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious

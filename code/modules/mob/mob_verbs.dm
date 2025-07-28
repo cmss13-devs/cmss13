@@ -261,7 +261,7 @@
 	set category = "IC"
 
 	if(observed_atom)
-		qdel(observed_atom)
+		QDEL_NULL(observed_atom)
 		return
 
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))

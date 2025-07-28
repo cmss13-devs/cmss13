@@ -157,7 +157,10 @@
 
 	var/pslash_delay = 0
 
-	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution, deactivates dchat death messages
+	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents queen evolution and deactivates dchat death messages
+
+	///Can the xeno rest and passively heal?
+	var/can_heal = TRUE
 
 	//Naming variables
 	var/caste_type = "Drone"
@@ -482,8 +485,9 @@
 	SStracking.start_tracking("hive_[src.hivenumber]", src)
 
 	//WO GAMEMODE
-	if(SSticker?.mode?.hardcore)
-		hardcore = 1 //Prevents healing and queen evolution
+	if(SSticker?.mode?.hardcore)  //Prevents healing and queen evolution
+		hardcore = TRUE
+		can_heal = FALSE
 	time_of_birth = world.time
 
 	//Minimap

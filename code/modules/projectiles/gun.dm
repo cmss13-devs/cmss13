@@ -247,6 +247,9 @@
 	/// Whether the weapon has expended it's "second wind" and lost its acid protection.
 	var/has_second_wind = TRUE
 
+	/// the icon for spinning the gun
+	var/temp_icon = null
+
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again
@@ -2142,13 +2145,19 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	update_icon()
 
 /obj/item/weapon/gun/animation_spin(speed, loop_amount, clockwise, sections, angular_offset, pixel_fuzz)
-	var/icon/spin_32 = icon(icon, icon_state)
-	var/icon/current_icon = icon(icon, icon_state)
-	spin_32.Crop(1,1,44,32)
-	spin_32.Scale(38, 32)
-	icon = spin_32
+	if(!temp_icon)
+		temp_icon = icon
+		var/icon/spin_32 = icon(icon, icon_state)
+		spin_32.Crop(1,1,44,32)
+		spin_32.Scale(38, 32)
+		icon = spin_32
+
 	. = ..()
-	addtimer(VARSET_CALLBACK(src, icon, current_icon), (speed*loop_amount)-0.8)
+	addtimer(CALLBACK(src, PROC_REF(icon_reset)),(speed*loop_amount)-0.8, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
+
+/obj/item/weapon/gun/proc/icon_reset()
+	icon = temp_icon
+	temp_icon = null
 
 /obj/item/weapon/gun/ex_act(severity, explosion_direction)
 	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")

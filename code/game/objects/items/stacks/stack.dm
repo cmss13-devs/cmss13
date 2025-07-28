@@ -121,7 +121,6 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	if(action != "make")
 		return FALSE
-	var/multiplier = params["multiplier"]
 
 	var/id = params["id"]
 	var/list/recipes_list = get_unified_stack_receipts()
@@ -137,6 +136,11 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	if(!recipe) // Oh no
 		return FALSE
+
+	var/multiplier = params["multiplier"]
+
+	if(recipe.max_res_amount <= 1)
+		multiplier = 1
 
 	if(multiplier != multiplier) // isnan
 		message_admins("[key_name_admin(ui.user)] has attempted to multiply [src] with NaN")
@@ -269,14 +273,16 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		icon_state = res.icon_state
 		icon = res.icon
 
+	var/is_multi = rec.max_res_amount > 1 && max_build > 1
+
 	return list(
 		"id" = id,
 		"title" = rec.title,
 		"req_amount" = rec.req_amount,
-		"is_multi" = rec.max_res_amount > 1 && max_build > 1,
+		"is_multi" = is_multi,
 		"maximum_to_build" = max_build,
 		"can_build" = can_build,
-		"amount_to_build" = 5,
+		"amount_to_build" = is_multi ? 5 : 1,
 		"empty_line_next" = empty_line_next,
 		"icon_state" = icon_state,
 		"icon" = icon

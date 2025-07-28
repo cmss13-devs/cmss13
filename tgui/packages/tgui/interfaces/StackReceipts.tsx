@@ -145,12 +145,23 @@ export const StackReceipts = () => {
                   receipt.can_build && stack_amount >= (receipt.req_amount ?? 1)
                 )
               }
-              onClick={() =>
-                handleBuildClick(receipt, receipt.amount_to_build ?? 1)
-              }
+              onClick={() => {
+                handleBuildClick(receipt, receipt.amount_to_build ?? 1);
+              }}
             >
-              {receipt.title} ({receipt.req_amount}{' '}
-              {pluralize(receipt.req_amount ?? 1, data.singular_name)})
+              {receipt.title} (
+              {(receipt.req_amount ?? 1) *
+                ((receipt.is_multi ?? false)
+                  ? (receipt.amount_to_build ?? 1)
+                  : 1)}{' '}
+              {pluralize(
+                (receipt.req_amount ?? 1) *
+                  ((receipt.is_multi ?? false)
+                    ? (receipt.amount_to_build ?? 1)
+                    : 1),
+                data.singular_name,
+              )}
+              )
             </Button>
             {receipt.is_multi && (receipt.req_amount ?? 1) < stack_amount ? (
               <span style={{ marginLeft: '8px' }}>

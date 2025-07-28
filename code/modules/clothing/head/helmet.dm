@@ -1063,9 +1063,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	. = ..()
 
 	if(internal_transmitter.inbound_call)
-		src.overlays += image('icons/obj/items/clothing/hats/overlays.dmi', "scout_helmet_beep")
+		overlays += image('icons/obj/items/clothing/hats/overlays.dmi', "scout_helmet_beep")
 	else
-		src.overlays -= image('icons/obj/items/clothing/hats/overlays.dmi', "scout_helmet_beep")
+		overlays -= image('icons/obj/items/clothing/hats/overlays.dmi', "scout_helmet_beep")
 /obj/item/clothing/head/helmet/marine/radio_helmet/forceMove(atom/dest)
 	. = ..()
 	if(isturf(dest))

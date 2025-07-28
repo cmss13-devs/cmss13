@@ -214,7 +214,7 @@ All ShuttleMove procs go here
 		shake_camera(src, shake_force, 1)
 
 /mob/living/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
-	stop_looking_multiz()
+	QDEL_NULL(observed_atom)
 	. = ..()
 
 /mob/living/lateShuttleMove(turf/oldT, list/movement_force, move_dir)

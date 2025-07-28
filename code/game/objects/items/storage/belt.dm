@@ -1823,7 +1823,7 @@
 	desc = "Special issue variant of the M276 - designed exclusively to securely hold a M10 Auto Pistol and eight spare magazines, allowing quick access in close-quarters situations. Ideal for defending against boarding threats, this belt supports rapid deployment of high-rate sidearms while maintaining stability in zero-G environments."
 	icon_state = "m10_armor"
 	flags_atom = FPRINT // has gamemode skin
-	storage_slots = 9
+	storage_slots = 8
 	max_w_class = 5
 	gun_has_gamemode_skin = TRUE
 	can_hold = list(

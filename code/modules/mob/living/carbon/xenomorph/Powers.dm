@@ -4,7 +4,7 @@
 
 	var/datum/resin_construction/resin_construct = GLOB.resin_constructions_list[selected_resin]
 
-	var/total_resin_cost = XENO_RESIN_BASE_COST + resin_construct.cost // Live, diet, shit code, repeat
+	var/total_resin_cost = resin_construct.cost // Live, diet, shit code, repeat
 
 	if(resin_construct.scaling_cost && use_plasma)
 		var/area/target_area = get_area(target)

@@ -107,7 +107,11 @@ export const StackReceipts = () => {
           whiteSpace: 'nowrap',
         }}
       >
-        {receipt.empty_line_next ? <hr className="HrLine" /> : ''}
+        {receipt.empty_line_next ? (
+          <hr className="HrLine" color="#4972a2" />
+        ) : (
+          ''
+        )}
         {receipt.stack_sub_receipts ? (
           <>
             {renderIcon(
@@ -225,7 +229,7 @@ export const StackReceipts = () => {
                   </Button>
                 </Box>
               )}
-              <hr className="HrLine" />
+              <hr className="HrLine" color="#4972a2" />
             </Box>
           </Stack>
         </Section>

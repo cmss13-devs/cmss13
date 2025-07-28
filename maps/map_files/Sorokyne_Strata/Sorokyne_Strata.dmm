@@ -4521,7 +4521,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /turf/open/floor/strata,
 /area/strata/interior/outpost/foyer)
@@ -9614,10 +9615,8 @@
 /area/strata/interior/mining_outpost)
 "aBo" = (
 /obj/effect/decal/strata_decals/catwalk/prison,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /obj/item/shard,
 /turf/open/floor/bcircuit,
@@ -9826,7 +9825,8 @@
 "aBX" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/darkyellowfull2,
@@ -10063,10 +10063,8 @@
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/mining_outpost)
 "aCL" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/cement/cement4,
 /area/strata/exterior/mining_outpost_exterior)
@@ -11544,7 +11542,8 @@
 "aHj" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating,
@@ -13036,6 +13035,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi)
 "aLH" = (
@@ -14679,7 +14679,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 8;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/canteen)
@@ -15377,10 +15378,8 @@
 /obj/item/hybrisa/misc/trash_bag_full_prop,
 /obj/item/hybrisa/misc/trash_bag_full_prop,
 /obj/item/trash/barcardine,
-/obj/effect/decal/cleanable/dirt/greenglow{
+/obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400";
-	name = "dirt";
-	alpha = 100;
 	pixel_x = 5;
 	pixel_y = 3
 	},
@@ -15439,10 +15438,8 @@
 	pixel_x = -5;
 	pixel_y = 3
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
+/obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400";
-	name = "dirt";
-	alpha = 100;
 	pixel_x = 1;
 	pixel_y = 3
 	},
@@ -21313,7 +21310,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 8;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -30119,10 +30117,8 @@
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -30142,10 +30138,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -30509,10 +30503,8 @@
 	pixel_x = -8;
 	pixel_y = 18
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/exterior/north_outpost)
@@ -30708,10 +30700,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/restricted)
 "bNK" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -31044,10 +31034,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -31190,10 +31178,8 @@
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
+/obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400";
-	name = "dirt";
-	alpha = 100;
 	pixel_y = -7
 	},
 /turf/open/floor/strata/floor3/east,
@@ -32133,10 +32119,8 @@
 "bRK" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/brown,
@@ -32387,10 +32371,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal11"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /obj/structure/bed/chair{
 	dir = 8;
@@ -32473,10 +32455,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal10"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/brown,
@@ -32610,10 +32590,8 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "bSU" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /obj/item/trash/cigbutt,
 /turf/open/asphalt/brown,
@@ -32813,10 +32791,8 @@
 	pixel_x = -13;
 	pixel_y = 11
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -32827,10 +32803,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal8"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -32911,10 +32885,8 @@
 	pixel_x = -9;
 	color = "#ab5252"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -32974,10 +32946,8 @@
 	icon_state = "road_edge_decal4"
 	},
 /obj/structure/cargo_container/upp_small/container_19/left,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -33648,7 +33618,7 @@
 /area/strata/exterior/marsh/center)
 "bVv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/launcher/grenade/m81/m79,
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1,
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood/wood_broken2,
 /area/strata/interior/wooden_ruins)
@@ -33914,10 +33884,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/shard,
@@ -33997,10 +33965,8 @@
 	},
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -34297,10 +34263,8 @@
 "bXl" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -34443,10 +34407,8 @@
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -34589,10 +34551,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal5"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -34647,10 +34607,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -34936,10 +34894,8 @@
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -35044,10 +35000,8 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal10"
 	},
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/asphalt/brown,
 /area/strata/interior/secure_checkpoint)
@@ -38040,7 +37994,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
-	icon_state = "p_stair_sn_full_cap"
+	icon_state = "p_stair_sn_full_cap";
+	layer = 2.41
 	},
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata,
@@ -39281,7 +39236,8 @@
 "emp" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/floor3/east,
@@ -39915,10 +39871,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/interior/bball_cave)
 "eWA" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/outpost/canteen)
@@ -40765,7 +40719,8 @@
 /area/strata/exterior/deep_jungle/east)
 "gcq" = (
 /obj/structure/stairs/perspective{
-	color = "#6e6e6e"
+	color = "#6e6e6e";
+	layer = 2.41
 	},
 /obj/structure/platform/metal/strata/west,
 /obj/structure/platform/metal/strata/east,
@@ -41143,14 +41098,14 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/obj/structure/stairs/perspective{
-	color = "#6e6e6e";
-	dir = 8;
-	icon_state = "p_stair_full"
-	},
 /obj/structure/sign/flag/upp{
 	pixel_y = 28;
 	layer = 2.7
+	},
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	icon_state = "p_stair_ew_full_cap";
+	layer = 2.41
 	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
@@ -41314,10 +41269,8 @@
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/lines3,
 /obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 10;
@@ -41671,7 +41624,8 @@
 "hjA" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
-	icon_state = "p_stair_sn_full_cap"
+	icon_state = "p_stair_sn_full_cap";
+	layer = 2.41
 	},
 /obj/structure/platform/metal/strata/west,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -43074,10 +43028,8 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/engi/drome)
 "iZI" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
+/obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400";
-	name = "dirt";
-	alpha = 100;
 	pixel_x = -5;
 	pixel_y = -8
 	},
@@ -44779,7 +44731,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 8;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
@@ -45251,7 +45204,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 1;
-	icon_state = "p_stair_sn_full_cap"
+	icon_state = "p_stair_sn_full_cap";
+	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/light{
@@ -46350,7 +46304,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 4;
-	icon_state = "p_stair_sn_full_cap"
+	icon_state = "p_stair_sn_full_cap";
+	layer = 2.41
 	},
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
@@ -46879,7 +46834,7 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	layer = 2.41
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
@@ -49137,10 +49092,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/med1)
 "qWw" = (
-/obj/effect/decal/cleanable/dirt/greenglow{
-	color = "#140400";
-	name = "dirt";
-	alpha = 100
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
 	},
 /turf/open/floor/strata/white_cyan3,
 /area/strata/interior/outpost/med)
@@ -50337,7 +50290,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 4;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -51297,7 +51251,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -52201,7 +52156,8 @@
 "uSa" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
@@ -52379,7 +52335,8 @@
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
 	dir = 1;
-	icon_state = "p_stair_full"
+	icon_state = "p_stair_full";
+	layer = 2.41
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/flight_control_exterior)

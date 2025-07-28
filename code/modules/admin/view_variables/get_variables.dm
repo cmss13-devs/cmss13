@@ -236,7 +236,7 @@
 				return
 
 		if(VV_ICON)
-			.["value"] = input("Pick icon:", "Icon") as null|icon
+			.["value"] = pick_and_customize_icon(pick_only=TRUE)
 			if(.["value"] == null)
 				.["class"] = null
 				return
@@ -328,7 +328,7 @@
 
 		if(VV_COLOR_MATRIX)
 			.["value"] = open_color_matrix_editor()
-			if(.["value"] == color_matrix_identity()) //identity is equivalent to null
+			if(.["value"] == COLOR_MATRIX_IDENTITY) //identity is equivalent to null
 				.["class"] = null
 
 		if(VV_INFINITY)

@@ -1,6 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - qol: "made it clear that you can throw nades and drag click to look into ladders on the examine text"
-  - qol: "unlit flares thrown up/down ladders are now lit"
-  - qol: "you now instantly stop looking at ladders when you move"

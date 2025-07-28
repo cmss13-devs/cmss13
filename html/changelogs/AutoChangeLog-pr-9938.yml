@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "reduces AP GAU ammo spread to 3 tile from 4 as intended"

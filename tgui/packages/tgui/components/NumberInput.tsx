@@ -336,7 +336,7 @@ export class NumberInput extends Component<Props, State> {
           <input
             ref={this.inputRef}
             className="NumberInput__input"
-            tabIndex={!this.props.tabbed ? 0 : undefined}
+            tabIndex={0}
             style={{
               opacity: editing ? 1 : 0,
               pointerEvents: editing ? 'auto' : 'none',

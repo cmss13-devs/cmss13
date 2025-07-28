@@ -21,16 +21,14 @@
 	var/datum/cause_data/cause_data
 	plane = FLOOR_PLANE
 
-/obj/effect/alien/resin/trap/Initialize(mapload, hive)
+/obj/effect/alien/resin/trap/Initialize(mapload, hive, mob/living/carbon/xenomorph/xeno)
 	. = ..()
-	if(!isxeno(builder))
-		return
-
 	if(hive)
 		hivenumber = hive
 
-	var/mob/living/carbon/xenomorph/xeno = builder
-	created_by = xeno.nicknumber
+	if(istype(xeno, /mob/living/carbon/xenomorph))
+		created_by = xeno.nicknumber
+
 	set_hive_data(src, hivenumber)
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))

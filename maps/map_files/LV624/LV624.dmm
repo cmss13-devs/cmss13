@@ -14399,7 +14399,7 @@
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 4
 	},
-/turf/closed/wall/cult/temple,
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/south_east_caves)
 "ecy" = (
 /obj/structure/prop/invuln/fire{
@@ -15078,6 +15078,9 @@
 /obj/item/storage/toolbox,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/colony/west_tcomms_road)
+"eVq" = (
+/turf/open/hunter_temple/corner/north,
+/area/lv624/ground/caves/east_caves)
 "eVH" = (
 /obj/structure/prop/hybrisa/fakeplatforms/platform4/deco{
 	dir = 1
@@ -15722,6 +15725,9 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/west_caves)
+"fOO" = (
+/turf/open/hunter_temple/corner/west,
+/area/lv624/ground/caves/east_caves)
 "fPi" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/mudcoast/north,
@@ -16177,6 +16183,10 @@
 "grZ" = (
 /turf/open/floor,
 /area/lv624/ground/barrens/central_barrens)
+"gsc" = (
+/obj/structure/machinery/big_computers,
+/turf/open/floor/white,
+/area/lv624/ground/caves/south_central_caves)
 "gsn" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal4"
@@ -16902,9 +16912,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/barrens/central_barrens)
 "hsc" = (
-/obj/structure/machinery/door/airlock/almayer/generic/glass{
-	dir = 1
-	},
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/white,
 /area/lv624/ground/barrens/central_barrens)
 "hst" = (
@@ -18172,9 +18180,11 @@
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "jkm" = (
-/obj/structure/machinery/botany/extractor,
-/turf/open/floor/white,
-/area/lv624/ground/caves/south_central_caves)
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/hunter_temple,
+/area/lv624/ground/caves/south_east_caves)
 "jku" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/prop/invuln/minecart_tracks{
@@ -19334,6 +19344,15 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/north_west_caves)
+"kKI" = (
+/obj/structure/machinery/botany/extractor{
+	pixel_x = 10
+	},
+/obj/structure/machinery/big_computers/computerwhite/computer2{
+	pixel_x = -7
+	},
+/turf/open/floor/white,
+/area/lv624/ground/caves/south_central_caves)
 "kKL" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -20229,8 +20248,9 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/south_east_caves)
 "lSN" = (
-/obj/effect/decal/grass_overlay/grass1/inner,
-/turf/closed/wall/cult/temple,
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/soro,
 /area/lv624/ground/caves/south_east_caves)
 "lSP" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -21938,6 +21958,12 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"ohY" = (
+/obj/structure/machinery/seed_extractor{
+	pixel_x = -5
+	},
+/turf/open/floor/white,
+/area/lv624/ground/caves/south_central_caves)
 "oiv" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy8"
@@ -23331,6 +23357,9 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/central_caves)
+"pWc" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/lazarus/crashed_ship_containers)
 "pWB" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer,
 /turf/open/floor/neutral,
@@ -23761,6 +23790,13 @@
 /obj/structure/machinery/body_scanconsole,
 /turf/open/floor/whitebluefull,
 /area/lv624/lazarus/medbay)
+"qJr" = (
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	name = "\improper Strange Temple";
+	color = "#474D51"
+	},
+/turf/open/hunter_temple,
+/area/lv624/ground/caves/south_east_caves)
 "qJx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -24229,6 +24265,13 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"rso" = (
+/obj/structure/morgue/sarcophagus{
+	pixel_x = 16;
+	pixel_y = -11
+	},
+/turf/open/hunter_temple/corner/east,
+/area/lv624/ground/caves/east_caves)
 "rtD" = (
 /obj/structure/flora/jungle/planttop1,
 /obj/structure/flora/jungle/vines/heavy,
@@ -25168,6 +25211,9 @@
 "sGN" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/grey_blue/south,
 /area/lv624/lazarus/robotics)
+"sGS" = (
+/turf/open/hunter_temple/corner,
+/area/lv624/ground/caves/east_caves)
 "sHT" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/grass/grass1,
@@ -49087,7 +49133,7 @@ uxL
 uxL
 aym
 aym
-csM
+hsc
 jaa
 jaa
 afk
@@ -49315,7 +49361,7 @@ azF
 uxL
 aym
 aym
-hsc
+aym
 jaa
 jaa
 ajD
@@ -49999,7 +50045,7 @@ uxL
 uxL
 aym
 bYs
-qMT
+aym
 jaa
 jaa
 ssK
@@ -52261,7 +52307,7 @@ uxL
 uxL
 uxL
 asX
-blQ
+kKI
 uxL
 uxL
 uxL
@@ -52489,7 +52535,7 @@ uxL
 uxL
 uxL
 asX
-jkm
+blQ
 uxL
 uxL
 uxL
@@ -52717,7 +52763,7 @@ uxL
 uxL
 uxL
 asX
-uxL
+ohY
 uxL
 uxL
 uxL
@@ -52945,7 +52991,7 @@ uxL
 uxL
 uxL
 asX
-uxL
+gsc
 uxL
 uxL
 eNE
@@ -58641,7 +58687,7 @@ whU
 uya
 uya
 uya
-uya
+pWc
 unp
 oZN
 uya
@@ -65480,15 +65526,15 @@ whU
 whU
 whU
 whU
-aaQ
-whU
-whU
-whU
-whU
-aed
 lSN
-agA
-agA
+whU
+whU
+whU
+unp
+vAT
+tqQ
+ajc
+ajc
 aed
 aed
 whU
@@ -65707,15 +65753,15 @@ whU
 whU
 whU
 whU
+lSN
 aaQ
-aaQ
-aaQ
+lSN
 whU
 whU
 ecn
-aed
-agA
-agA
+vAT
+tqQ
+ajc
 agA
 agA
 aed
@@ -65939,14 +65985,14 @@ aaQ
 aaQ
 srS
 whU
-aed
-aed
+unp
+unp
+jMD
+ajc
 agA
 agA
 agA
-agA
-agA
-agA
+ajc
 aed
 aed
 ahv
@@ -66150,8 +66196,8 @@ jAo
 nzw
 jAo
 nzw
-jAo
-jAo
+uLW
+uLW
 jAo
 jAo
 nzw
@@ -66168,10 +66214,10 @@ aaQ
 hjv
 aed
 aed
+aed
+ajc
 agA
-agA
-agA
-agA
+ajc
 agA
 agA
 agA
@@ -66377,10 +66423,10 @@ jAo
 nzw
 nzw
 nzw
-jAo
-nzw
-nzw
-nzw
+uLW
+uLW
+uLW
+uLW
 nzw
 nzw
 nzw
@@ -66396,9 +66442,9 @@ uHc
 mgO
 eMe
 wRb
-agA
-agA
-agA
+aed
+ajc
+ajc
 agA
 agA
 agA
@@ -66604,12 +66650,12 @@ jAo
 nzw
 jAo
 nzw
-jAo
-nzw
-nzw
-nzw
-nzw
-nzw
+uLW
+uLW
+rso
+sGS
+uLW
+uLW
 nzw
 nzw
 nzw
@@ -66832,12 +66878,12 @@ nzw
 nzw
 nzw
 nzw
-nzw
-nzw
-nzw
-nzw
-nzw
-nzw
+uLW
+uLW
+fOO
+eVq
+uLW
+uLW
 nzw
 nzw
 nzw
@@ -67061,10 +67107,10 @@ nzw
 nzw
 nzw
 nzw
-nzw
-nzw
-nzw
-nzw
+uLW
+uLW
+uLW
+uLW
 nzw
 nzw
 nzw
@@ -67080,15 +67126,15 @@ eGv
 jTP
 aaR
 wRb
-agA
-agA
-agA
-agA
-agA
-agA
-agA
-agA
-agA
+aed
+aed
+qJr
+aed
+aed
+aed
+aed
+aed
+aed
 afS
 rac
 cAZ
@@ -67290,8 +67336,8 @@ nzw
 nzw
 nzw
 nzw
-nzw
-nzw
+uLW
+uLW
 nzw
 nzw
 nzw
@@ -67308,7 +67354,7 @@ aaQ
 qtf
 aed
 aed
-agA
+aed
 agA
 agA
 agA
@@ -67766,10 +67812,10 @@ whU
 whU
 aed
 aed
-agA
-agA
-agA
-agA
+jkm
+jkm
+jkm
+jkm
 aed
 aed
 whU
@@ -67984,7 +68030,7 @@ pUm
 pUm
 pUm
 pUm
-aaQ
+lSN
 aaQ
 aaQ
 aaQ
@@ -68212,7 +68258,7 @@ pUm
 pUm
 pUm
 pUm
-aaQ
+lSN
 aaQ
 aaQ
 aaQ
@@ -68441,8 +68487,8 @@ pUm
 pUm
 pUm
 whU
-aaQ
-aaQ
+lSN
+lSN
 whU
 whU
 whU

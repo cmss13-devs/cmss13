@@ -1115,9 +1115,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	internal_transmitter.attack_hand(user)
 
 
-/obj/item/clothing/head/helmet/marine/radio_helmet/attackby(obj/item/W, mob/user)
-	if(internal_transmitter && internal_transmitter.attached_to == W)
-		internal_transmitter.attackby(W, user)
+/obj/item/clothing/head/helmet/marine/radio_helmet/attackby(obj/item/scout_phone, mob/user)
+	if(internal_transmitter && internal_transmitter.attached_to == scout_phone)
+		internal_transmitter.attackby(scout_phone, user)
 	else
 		. = ..()
 

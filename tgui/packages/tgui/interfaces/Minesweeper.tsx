@@ -33,10 +33,11 @@ export const Minesweeper = () => {
   return (
     <Window width={350} height={420} theme="weyland">
       <Window.Content scrollable>
+        <span>Total landmines:{difficulty}</span>
         <Button
           style={{
             position: 'relative',
-            left: '70%',
+            left: '25%',
           }}
           onClick={() => act('restart')}
         >

@@ -303,7 +303,7 @@
 		var/cell_id = field[columns][rows]["unique_cell_id"]
 		field[columns][rows]["state"] = CELL_OPEN
 		//opening adjacent NUMBER cells
-		var/list/adjacent_fields = list(cell_id - diagonal_spot+1, cell_id - 1, cell_id + 1, cell_id + diagonal_spot-1)
+		var/list/adjacent_fields = list(cell_id-diagonal_spot, cell_id-diagonal_spot+1, cell_id-diagonal_spot+2, cell_id-1, cell_id+1, cell_id+diagonal_spot-1, cell_id+diagonal_spot-2, cell_id+diagonal_spot)
 		for(var/adjacent_cell_collumn in 1 to field_boundaries[1])
 			for(var/adjacent_cell_rows in 1 to field_boundaries[2])
 				if(field[adjacent_cell_collumn][adjacent_cell_rows]["unique_cell_id"] in adjacent_fields)

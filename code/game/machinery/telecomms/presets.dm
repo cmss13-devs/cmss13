@@ -63,11 +63,12 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/telecomms/relay/preset/tower/update_state()
+/obj/structure/machinery/telecomms/relay/preset/tower/update_state(is_quiet = FALSE)
 	. = ..()
 	if(on)
-		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
-		msg_admin_niche("Portable communication relay started for Z-Level [src.z] [ADMIN_JMP(src)]")
+		if(!is_quiet)
+			playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
+			msg_admin_niche("Portable communication relay started for Z-Level [src.z] [ADMIN_JMP(src)]")
 
 		if(SSobjectives && SSobjectives.comms)
 			// This is the first time colony comms have been established.
@@ -105,7 +106,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
 	else
 		desc = initial(desc)
-	update_state()
+	update_state(TRUE)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/toggle_state(mob/user)
 	if(!toggled && (inoperable() || (health <= initial(health) / 2)))
@@ -225,7 +226,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	frequency_change_minesweeper = new(src)
 	frequency_change_minesweeper.quiet_game = TRUE
 	frequency_change_minesweeper.name = "Frequency Debug"
-	frequency_change_minesweeper.difficulty = 11
+	frequency_change_minesweeper.difficulty = 9
 	RegisterSignal(frequency_change_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost))
 	RegisterSignal(frequency_change_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won))
 

@@ -23,10 +23,13 @@
 
 /obj/effect/alien/resin/trap/Initialize(mapload, hive)
 	. = ..()
+	if(!isxeno(builder))
+		return
+
 	if(hive)
 		hivenumber = hive
 
-	var/mob/living/carbon/xenomorph/xeno
+	var/mob/living/carbon/xenomorph/xeno = builder
 	created_by = xeno.nicknumber
 	set_hive_data(src, hivenumber)
 	if(hivenumber == XENO_HIVE_NORMAL)

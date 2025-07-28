@@ -250,6 +250,7 @@
 
 	// Also give it some headstart, flying it now ahead of tick
 	var/delta_time = world.tick_lag * rand() * 0.4
+	ammo.on_bullet_firing(src, F, target, S)
 	if(process(delta_time))
 		return // Hit something already?!
 	time_carry -= delta_time // Substract headstart from next tick

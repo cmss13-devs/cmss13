@@ -66,8 +66,13 @@
 /datum/ammo/bullet/rifle/practice_ap
 	name = "practice rifle bullet"
 
-	damage = 8
-	penetration = 1
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_8
+
+/datum/ammo/bullet/rifle/practice_ap/on_bullet_firing(obj/projectile/fired_projectile, atom/bullet_firer, atom/target, atom/gun)
+	. = ..()
+	if(!istype(fired_projectile.original, /obj/structure/target))
+		fired_projectile.damage = 2
 
 // Basically AP but better. Focused at taking out armour temporarily
 /datum/ammo/bullet/rifle/ap/toxin

@@ -197,7 +197,7 @@
 	SStgui.close_uis(black_market_minesweeper)
 
 /obj/item/circuitboard/computer/supplycomp/proc/minesweeper_lost_locking_bm(source, mob/user)
-	to_chat(user, SPAN_WARNING("You try to fix the tampering done to [src], but it seems harder than usuall."))
+	to_chat(user, SPAN_WARNING("You try to fix the tampering done to [src], but it seems harder than usual."))
 
 /obj/item/circuitboard/computer/supplycomp/proc/minesweeper_won_locking_bm(source, mob/user)
 	playsound(user, 'sound/machines/ping.ogg', 25)

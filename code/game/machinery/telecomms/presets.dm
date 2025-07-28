@@ -291,7 +291,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	to_chat(user, SPAN_WARNING("Something is not right. You decide to start over."))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/minesweeper_won(source, mob/user)
-	to_chat(user, SPAN_NOTICE("You're in! You can now modify the frequncy data."))
+	to_chat(user, SPAN_NOTICE("You're in! You can now modify the frequency data."))
 	SStgui.close_uis(frequency_change_minesweeper)
 	var/choice = tgui_input_list(user, "What do you wish to do?", "TC-3T comms tower", list("Wipe communication frequencies", "Add your faction's frequencies"))
 	if(choice == "Wipe communication frequencies")

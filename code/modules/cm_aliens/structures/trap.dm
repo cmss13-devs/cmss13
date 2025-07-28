@@ -15,7 +15,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL //Hivenumber of the xeno that planted it OR the last Facehugger that was placed (essentially taking over the trap)
 	var/trap_type = RESIN_TRAP_EMPTY
 	var/armed = 0
-	var/createdby = null
+	var/created_by = null
 	var/list/notify_list = list() // list of xeno mobs to notify on trigger
 	var/datum/effect_system/smoke_spread/smoke_system
 	var/datum/cause_data/cause_data
@@ -26,7 +26,7 @@
 	if(hive)
 		hivenumber = hive
 
-	createdby = xeno.nicknumber
+	created_by = xeno.nicknumber
 	set_hive_data(src, hivenumber)
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))

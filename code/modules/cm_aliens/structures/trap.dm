@@ -21,11 +21,12 @@
 	var/datum/cause_data/cause_data
 	plane = FLOOR_PLANE
 
-/obj/effect/alien/resin/trap/Initialize(mapload, hive, mob/living/carbon/xenomorph/xeno)
+/obj/effect/alien/resin/trap/Initialize(mapload, hive)
 	. = ..()
 	if(hive)
 		hivenumber = hive
 
+	var/mob/living/carbon/xenomorph/xeno
 	created_by = xeno.nicknumber
 	set_hive_data(src, hivenumber)
 	if(hivenumber == XENO_HIVE_NORMAL)

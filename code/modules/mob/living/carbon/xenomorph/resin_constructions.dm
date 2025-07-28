@@ -21,18 +21,18 @@
 	/// Whether this construction gets more expensive the more saturated the area is
 	var/scaling_cost = FALSE
 
-/datum/resin_construction/proc/can_build_here(turf/Turf, mob/living/carbon/xenomorph/xeno)
-	var/mob/living/carbon/xenomorph/blocker = locate() in Turf
+/datum/resin_construction/proc/can_build_here(turf/turf, mob/living/carbon/xenomorph/xeno)
+	var/mob/living/carbon/xenomorph/blocker = locate() in turf
 	if(blocker && blocker != xeno && blocker.stat != DEAD)
 		to_chat(xeno, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return FALSE
 
-	if(!istype(Turf))
+	if(!istype(turf))
 		return FALSE
 
-	if(Turf.is_weedable < FULLY_WEEDABLE)
+	if(turf.is_weedable < FULLY_WEEDABLE)
 		var/has_node = FALSE
-		for(var/obj/effect/alien/resin/design/node in Turf)
+		for(var/obj/effect/alien/resin/design/node in turf)
 			has_node = TRUE
 			break
 
@@ -44,19 +44,19 @@
 			to_chat(xeno, SPAN_WARNING("This terrain is unsuitable for other resin secretions, only walls and doors can be built on this node."))
 			return FALSE
 
-	var/area/Area = get_area(Turf)
-	if(isnull(Area) || !(Area.is_resin_allowed))
-		if(!Area || Area.flags_area & AREA_UNWEEDABLE)
+	var/area/area = get_area(turf)
+	if(isnull(area) || !(area.is_resin_allowed))
+		if(!area || area.flags_area & AREA_UNWEEDABLE)
 			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return FALSE
 
-	if(!(Area.resin_construction_allowed)) //disable resin walls not weed, in special circumstances EG. Stairs and Dropship turfs
-		to_chat(xeno, SPAN_WARNING("You sense this is not a suitable area for expanding the hive."))
+	if(!(area.resin_construction_allowed)) //disable resin walls not weed, in special circumstances EG. Stairs and Dropship turfs
+		to_chat(xeno, SPAN_WARNING("We sense this is not a suitable area for expanding the hive."))
 		return FALSE
 
-	var/obj/effect/alien/weeds/alien_weeds = locate() in Turf
+	var/obj/effect/alien/weeds/alien_weeds = locate() in turf
 	if(!alien_weeds)
 		to_chat(xeno, SPAN_WARNING("You can only shape on weeds. Find some resin before you start building!"))
 		return FALSE
@@ -65,7 +65,7 @@
 		to_chat(xeno, SPAN_WARNING("\The [alien_weeds] block the construction of any structures!"))
 		return FALSE
 
-	var/obj/vehicle/Vehicle = locate() in Turf
+	var/obj/vehicle/Vehicle = locate() in turf
 	if(Vehicle)
 		to_chat(xeno, SPAN_WARNING("You cannot build under \the [Vehicle]!"))
 		return FALSE
@@ -74,34 +74,34 @@
 		to_chat(xeno, SPAN_WARNING("These weeds do not belong to your hive!"))
 		return FALSE
 
-	if(istype(Turf, /turf/closed/wall)) // Can't build in walls with no density
+	if(istype(turf, /turf/closed/wall)) // Can't build in walls with no density
 		to_chat(xeno, SPAN_WARNING("This area is too unstable to support a construction"))
 		return FALSE
 
-	if(!xeno.check_alien_construction(Turf, check_doors = !can_build_on_doors))
+	if(!xeno.check_alien_construction(turf, check_doors = !can_build_on_doors))
 		return FALSE
 
 	if(range_between_constructions)
-		for(var/info in long_range(range_between_constructions, Turf))
+		for(var/info in long_range(range_between_constructions, turf))
 			var/atom/Atom = info
 			if(Atom.type == build_path)
 				to_chat(xeno, SPAN_WARNING("This is too close to another similar structure!"))
 				return FALSE
 
 	if(is_trap)
-		if(istype(Area,/area/shuttle/drop1/lz1) || istype(Area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(xeno))
+		if(istype(area,/area/shuttle/drop1/lz1) || istype(area,/area/shuttle/drop2/lz2) || SSinterior.in_interior(xeno))
 			to_chat(xeno, SPAN_WARNING("We sense this is not a suitable area for creating a resin hole."))
 			return
-		alien_weeds = Turf.check_xeno_trap_placement(xeno)
+		alien_weeds = turf.check_xeno_trap_placement(xeno)
 		if(!alien_weeds)
 			return
 		if(istype(alien_weeds, /obj/effect/alien/weeds/node))
 			to_chat(xeno, SPAN_NOTICE("We start uprooting the node so we can put the resin hole in its place..."))
 			if(!do_after(xeno, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, INTERRUPT_ALL))
 				return
-			if(!Turf.check_xeno_trap_placement(xeno))
+			if(!turf.check_xeno_trap_placement(xeno))
 				return
-			var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(Turf)
+			var/obj/effect/alien/weeds/the_replacer = new /obj/effect/alien/weeds(turf)
 			the_replacer.hivenumber = xeno.hivenumber
 			the_replacer.linked_hive = xeno.hive
 			set_hive_data(the_replacer, xeno.hivenumber)
@@ -111,7 +111,7 @@
 				return
 			xeno.use_plasma(cost)
 			playsound(xeno.loc, "alien_resin_build", 25)
-			new /obj/effect/alien/resin/trap(Turf, xeno.hivenumber)
+			new /obj/effect/alien/resin/trap(turf, xeno.hivenumber)
 			to_chat(xeno, SPAN_XENONOTICE("We place a resin hole on the weeds, it still needs a sister to fill it with acid."))
 
 	return TRUE
@@ -243,13 +243,13 @@
 	build_path = /obj/structure/mineral_door/resin
 	build_animation_effect = /obj/effect/resin_construct/door
 
-/datum/resin_construction/resin_obj/door/can_build_here(turf/Turf, mob/living/carbon/xenomorph/xeno)
+/datum/resin_construction/resin_obj/door/can_build_here(turf/turf, mob/living/carbon/xenomorph/xeno)
 	if(!..())
 		return FALSE
 
 	var/wall_support = FALSE
 	for(var/Dir in GLOB.cardinals)
-		var/turf/turf_target = get_step(Turf, Dir)
+		var/turf/turf_target = get_step(turf, Dir)
 		if(turf_target)
 			if(turf_target.density)
 				wall_support = TRUE

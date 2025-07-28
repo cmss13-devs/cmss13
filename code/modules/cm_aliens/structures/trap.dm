@@ -132,12 +132,12 @@
 			icon_state = "trapgas"
 
 /obj/effect/alien/resin/trap/proc/burn_trap()
-	var/area/Area = get_area(src)
+	var/area/area = get_area(src)
 	facehugger_die()
 	clear_tripwires()
 	for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
 		if(xeno.hivenumber == hivenumber)
-			to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's facehugger traps at [Area.name] has been burnt!"))
+			to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's facehugger traps at [area.name] has been burnt!"))
 
 /obj/effect/alien/resin/trap/proc/get_spray_type(level)
 	switch(level)
@@ -152,12 +152,14 @@
 
 /obj/effect/alien/resin/trap/proc/trigger_trap(destroyed = FALSE)
 	set waitfor = 0
-	var/area/Area = get_area(src)
+	var/area/area = get_area(src)
 	var/trap_type_name = ""
 	switch(trap_type)
 		if(RESIN_TRAP_EMPTY)
 			trap_type_name = "empty"
 		if(RESIN_TRAP_HUGGER)
+
+
 			trap_type_name = "hugger"
 			var/obj/item/clothing/mask/facehugger/hugger = new (loc)
 			hugger.hivenumber = hivenumber
@@ -178,22 +180,22 @@
 			var/spray_type = get_spray_type(trap_type)
 
 			new spray_type(loc, cause_data, hivenumber)
-			for(var/turf/Turf in range(1,loc))
-				var/obj/effect/xenomorph/spray/Acidsplash = new spray_type(Turf, cause_data, hivenumber)
-				for(var/mob/living/carbon/Human in Turf)
+			for(var/turf/turf in range(1,loc))
+				var/obj/effect/xenomorph/spray/acid_splash = new spray_type(turf, cause_data, hivenumber)
+				for(var/mob/living/carbon/Human in turf)
 					if(Human.ally_of_hivenumber(hivenumber))
 						continue
-					Acidsplash.apply_spray(Human)
+					acid_splash.apply_spray(Human)
 			set_state()
 			clear_tripwires()
-	if(!Area)
+	if(!area)
 		return
 	for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
 		if(xeno.hivenumber == hivenumber)
 			if(destroyed)
-				to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [Area.name] has been destroyed!"))
+				to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [area.name] has been destroyed!"))
 			else
-				to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [Area.name] has been triggered!"))
+				to_chat(xeno, SPAN_XENOMINORWARNING("We sense one of our Hive's [trap_type_name] traps at [area.name] has been triggered!"))
 
 /obj/effect/alien/resin/trap/proc/clear_tripwires()
 	QDEL_NULL_LIST(tripwires)
@@ -212,8 +214,8 @@
 	if(trap_type == RESIN_TRAP_HUGGER)
 		if(xeno.caste.can_hold_facehuggers)
 			set_state()
-			var/obj/item/clothing/mask/facehugger/Hugger = new (loc, hivenumber)
-			xeno.put_in_active_hand(Hugger)
+			var/obj/item/clothing/mask/facehugger/hugger = new (loc, hivenumber)
+			xeno.put_in_active_hand(hugger)
 			to_chat(xeno, SPAN_XENONOTICE("You remove the facehugger from [src]."))
 			return XENO_NONCOMBAT_ACTION
 		else
@@ -233,34 +235,34 @@
 		return XENO_NO_DELAY_ACTION
 
 	if(isboiler(xeno))
-		var/mob/living/carbon/xenomorph/boiler/Boiler = xeno
+		var/mob/living/carbon/xenomorph/boiler/boiler = xeno
 
-		if(!Boiler.check_plasma(200))
-			to_chat(Boiler, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		if(!boiler.check_plasma(200))
+			to_chat(boiler, SPAN_XENOWARNING("You must produce more plasma before doing this."))
 			return XENO_NO_DELAY_ACTION
 
 		to_chat(xeno, SPAN_XENONOTICE("You begin charging the resin trap with acid gas."))
 		xeno_attack_delay(xeno)
-		if(!do_after(Boiler, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+		if(!do_after(boiler, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
 			return XENO_NO_DELAY_ACTION
 
 		if(trap_type != RESIN_TRAP_EMPTY)
 			return XENO_NO_DELAY_ACTION
 
-		if(!Boiler.check_plasma(200))
+		if(!boiler.check_plasma(200))
 			return XENO_NO_DELAY_ACTION
 
-		if(Boiler.ammo.type == /datum/ammo/xeno/boiler_gas)
+		if(boiler.ammo.type == /datum/ammo/xeno/boiler_gas)
 			smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
 		else
 			smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
 
 		setup_tripwires()
-		Boiler.use_plasma(200)
+		boiler.use_plasma(200)
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 		set_state(RESIN_TRAP_GAS)
-		cause_data = create_cause_data("resin gas trap", Boiler)
-		Boiler.visible_message(SPAN_XENOWARNING("\The [Boiler] pressurises the resin trap with acid gas!"),
+		cause_data = create_cause_data("resin gas trap", boiler)
+		boiler.visible_message(SPAN_XENOWARNING("\The [boiler] pressurises the resin trap with acid gas!"),
 		SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
 	else
 		//Non-boiler acid types
@@ -299,10 +301,10 @@
 
 /obj/effect/alien/resin/trap/proc/setup_tripwires()
 	clear_tripwires()
-	for(var/turf/Turf in orange(1,loc))
-		if(Turf.density)
+	for(var/turf/turf in orange(1,loc))
+		if(turf.density)
 			continue
-		var/obj/effect/trap_tripwire/new_tripwire = new /obj/effect/trap_tripwire(Turf)
+		var/obj/effect/trap_tripwire/new_tripwire = new /obj/effect/trap_tripwire(turf)
 		new_tripwire.linked_trap = src
 		tripwires += new_tripwire
 
@@ -340,9 +342,9 @@
 		trigger_trap()
 	..()
 
-/obj/effect/alien/resin/trap/Crossed(atom/Atom)
-	if(ismob(Atom) || isVehicleMultitile(Atom))
-		HasProximity(Atom)
+/obj/effect/alien/resin/trap/Crossed(atom/atom)
+	if(ismob(atom) || isVehicleMultitile(atom))
+		HasProximity(atom)
 
 /obj/effect/alien/resin/trap/Destroy()
 	QDEL_NULL_LIST(tripwires)
@@ -362,7 +364,7 @@
 		linked_trap = null
 	. = ..()
 
-/obj/effect/trap_tripwire/Crossed(atom/Atom)
+/obj/effect/trap_tripwire/Crossed(atom/atom)
 	if(!linked_trap)
 		qdel(src)
 		return
@@ -371,5 +373,5 @@
 		qdel(src)
 		return
 
-	if(ishuman(Atom) || isxeno(Atom) || isVehicleMultitile(Atom))
-		linked_trap.HasProximity(Atom)
+	if(ishuman(atom) || isxeno(atom) || isVehicleMultitile(atom))
+		linked_trap.HasProximity(atom)

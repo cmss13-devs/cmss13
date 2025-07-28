@@ -63,7 +63,7 @@ GLOBAL_LIST_EMPTY(ui_data_keybindings)
 
 			var/mods = sortList(params["key_mods"]).Join("+")
 
-			var/full_key = params["key"]
+			var/full_key = convert_ru_key_to_en_key(params["key"]) // BANDAMARINES EDIT - Fix hotkeys
 			if(mods)
 				full_key = "[mods]+[full_key]"
 

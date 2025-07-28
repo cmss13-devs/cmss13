@@ -46,7 +46,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 	. = ..()
 	var/temperature_change
 	if(GLOB.ship_temp >= OVERHEAT)
-		ai_silent_announcement("Attention: orbital correction no longer sustainable, moving to geo-synchronous orbit until engine cooloff.", ";", TRUE)
+		ai_silent_announcement("Внимание: Орбитальная корректировка более не устойчива, осуществляется переход на геосинхронную орбиту до охлаждения двигателя.", ";", TRUE)
 		GLOB.ship_alt = SHIP_ALT_HIGH
 		temperature_change = OVERHEAT_COOLING
 		for(var/mob/living/carbon/current_mob in GLOB.living_mob_list)
@@ -54,7 +54,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 				continue
 			current_mob.apply_effect(3, WEAKEN)
 			shake_camera(current_mob, 10, 2)
-		ai_silent_announcement("Attention performing high-G maneuverer", ";", TRUE)
+		ai_silent_announcement("Внимание: Выполняется манёвр с высокой перегрузкой.", ";", TRUE)
 	if(!temperature_change)
 		switch(GLOB.ship_alt)
 			if(SHIP_ALT_LOW)
@@ -71,7 +71,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			if(!is_mainship_level(current_mob.z))
 				continue
 			shake_camera(current_mob, 10, 1)
-		ai_silent_announcement("Performing Attitude Control", ";", TRUE)
+		ai_silent_announcement("Осуществление регулировки высоты.", ";", TRUE)
 
 //TGUI.... fun... years have gone by, I am dying of old age
 /obj/structure/machinery/computer/altitude_control_console/tgui_interact(mob/user, datum/tgui/ui)
@@ -128,7 +128,7 @@ GLOBAL_VAR_INIT(ship_alt, SHIP_ALT_MED)
 			continue
 		current_mob.apply_effect(3, WEAKEN)
 		shake_camera(current_mob, 10, 2)
-	ai_silent_announcement("Attention: Performing high-G manoeuvre", ";", TRUE)
+	ai_silent_announcement("Внимание: Выполняется манёвр с высокой перегрузкой.", ";", TRUE)
 
 #undef COOLING
 #undef OVERHEAT_COOLING

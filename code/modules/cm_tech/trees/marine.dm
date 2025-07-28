@@ -150,6 +150,6 @@ GLOBAL_LIST_EMPTY(tech_controls_marine)
 /datum/techtree/marine/on_tier_change(datum/tier/oldtier)
 	if(tier.tier < 2)
 		return //No need to announce tier updates for tier 1
-	var/name = "ALMAYER DEFCON LEVEL INCREASED"
-	var/input = "THREAT ASSESSMENT LEVEL INCREASED TO LEVEL [tier.tier].\n\nLEVEL [tier.tier] assets have been authorised to handle the situation."
+	var/name = "АЛМАЕР. DEFCON УРОВЕНЬ ПОВЫШЕН"
+	var/input = "УРОВЕНЬ УГРОЗЫ ПОВЫШЕН ДО ОТМЕТКИ [tier.tier].\n\nСредства УРОВНЯ [tier.tier] санкционированы для разрешения ситуации."
 	marine_announcement(input, name, 'sound/AI/commandreport.ogg', logging = ARES_LOG_NONE)

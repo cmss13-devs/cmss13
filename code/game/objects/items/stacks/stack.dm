@@ -69,16 +69,14 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	..()
 	update_icon()
 
-/obj/item/stack/Destroy()
-	if (usr && usr.interactee == src)
-		close_browser(src, "stack")
-	return ..()
-
 /obj/item/stack/get_examine_text(mob/user)
 	. = ..()
 	. += "There are [amount] [singular_name]\s in the stack."
 
 /obj/item/stack/tgui_interact(mob/user, datum/tgui/ui)
+	if(length(recipes) <= 0)
+		return
+
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "StackReceipts", "Constructions from the [name]")

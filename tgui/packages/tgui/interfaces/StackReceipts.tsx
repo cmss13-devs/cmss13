@@ -138,17 +138,19 @@ export const StackReceipts = () => {
               className="StackButton"
               disabled={
                 !(
-                  receipt.can_build && stack_amount >= (receipt.req_amount ?? 0)
+                  receipt.can_build && stack_amount >= (receipt.req_amount ?? 1)
                 )
               }
-              onClick={() => handleBuildClick(receipt, 1)}
+              onClick={() =>
+                handleBuildClick(receipt, receipt.amount_to_build ?? 1)
+              }
             >
               {receipt.title} ({receipt.req_amount}{' '}
-              {pluralize(receipt.req_amount ?? 0, data.singular_name)})
+              {pluralize(receipt.req_amount ?? 1, data.singular_name)})
             </Button>
-            {receipt.is_multi && (receipt.req_amount ?? 0) < stack_amount ? (
+            {receipt.is_multi && (receipt.req_amount ?? 1) < stack_amount ? (
               <span style={{ marginLeft: '8px' }}>
-                {' |'}
+                {' '}
                 <NumberInput
                   tabbed
                   className="StackNumberInput"
@@ -174,15 +176,6 @@ export const StackReceipts = () => {
                     });
                   }}
                 />
-                <Button
-                  onClick={() =>
-                    handleBuildClick(receipt, receipt.amount_to_build ?? 0)
-                  }
-                  className="StackButton"
-                  left="0px"
-                >
-                  x
-                </Button>
               </span>
             ) : (
               ''

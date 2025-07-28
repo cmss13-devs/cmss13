@@ -225,6 +225,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	frequency_change_minesweeper = new(src)
 	frequency_change_minesweeper.quiet_game = TRUE
 	frequency_change_minesweeper.name = "Frequency Debug"
+	frequency_change_minesweeper.difficulty = 11
 	RegisterSignal(frequency_change_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost))
 	RegisterSignal(frequency_change_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won))
 

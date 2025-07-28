@@ -6,6 +6,12 @@
 /obj/structure/machinery/prop/yautja/bubbler,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
+"ac" = (
+/obj/structure/machinery/medical_pod/autodoc/yautja{
+	pixel_y = 8
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
+/area/yautja)
 "ad" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
@@ -49,6 +55,12 @@
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow/on,
+/area/yautja)
+"ag" = (
+/obj/structure/machinery/autodoc_console/yautja{
+	pixel_y = 8
+	},
+/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "ah" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -16647,7 +16659,7 @@ aV
 jy
 ir
 VD
-ir
+ac
 VD
 rd
 VD
@@ -16749,7 +16761,7 @@ aV
 VD
 xC
 VD
-xC
+ag
 VD
 by
 VD

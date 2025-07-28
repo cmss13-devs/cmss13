@@ -169,3 +169,63 @@
       minute timer that refreshes while close or when getting shot)
   - code_imp: Added missing undefs for queen and removed a few redundant checks for
       refreshing the choose resin ability
+2025-07-19:
+  Drathek:
+  - bugfix: Fix db backend for playtime sometimes recording the gamemode type instead
+      of mob type
+  Red-byte3D:
+  - bugfix: Tac reload now only works if the magazine is in your hand or inventory.
+  - bugfix: You will now only put items on conveyor belts when not on harm intent.
+2025-07-20:
+  Drathek:
+  - rscadd: Added flavor text inserts for bloodtype, rank, and name.
+  - bugfix: Fixed a runtime with lessers on death
+  - rscadd: Added missing implementations for transform and enumerations in Filteriffic
+  - bugfix: Fixed multiple crash causes in Filteriffic e.g. opening displacement at
+      all
+  - bugfix: Fixed multiple crash causes in particle editor e.g. touching gradients
+      or transform at all
+  - qol: When picking icons in VV Filteriffic or Particle editor, you can now specify
+      just a dmi path, and in the case of Filteriffic customize the icon paramters
+  - code_imp: Moved matrix identities to a define file and ported a filter qdel check
+      from TG
+  - rscadd: Fun facts can now have whitelist/blacklists for role and faction. Namely
+      this now prevents lessers and huggers from generating fun facts, and larva from
+      generating kills fun facts (burst)
+  - bugfix: Fixed various eye protection runtimes
+  - code_imp: Death statistics are no longer deleted since GLOB.round_statistics holds
+      on to them
+  Red-byte3D:
+  - bugfix: You can now fire underbarrel extuingishers on flamers when they are not
+      loaded again
+2025-07-21:
+  Zenith:
+  - bugfix: fixed some preset issues with radios spawning in nullspace on the SOF
+      insert for Soro.
+  tallfission:
+  - imageadd: rolled sleeve icons for CMB SWAT uniforms
+2025-07-22:
+  Blundir:
+  - rscadd: M79 been renamed and resprited into M85A1
+  Red-byte3D:
+  - bugfix: Lizards will no longer attack xenos in tunnels
+  Unknownity:
+  - bugfix: Fixed bugged survivor spawns due to origins.
+  - rscadd: Added three new origins, WY, TWE and the CMBs. WY has three sub origins,
+      the corporate default, goon security and the PMCs. Added the origins to the
+      respective gear presets that would have them.
+  jupyterkat:
+  - bugfix: fixed bullets disappearing if you shoot the above or below zlevels from
+      some angles
+2025-07-23:
+  Red-byte3D:
+  - bugfix: Queens can now watch leaders through "watch leaders" properly.
+  - bugfix: Queens can now weed through the queen eye, the same map level they are
+      on regardless of z level.
+  dadlips:
+  - bugfix: fixes the revolver iff scope bug
+  jupyterkat:
+  - bugfix: you now stop looking up on zlevel transitions
+  - bugfix: you can no longer look up ladders from half a screen away
+  kiVts:
+  - bugfix: Patched a chemical simulator exploit

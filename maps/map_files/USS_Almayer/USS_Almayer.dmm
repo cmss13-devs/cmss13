@@ -5799,6 +5799,14 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/morgue)
+"aoi" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	icon_state = "almayer_pdoor";
+	id = "n_low_z1";
+	dir = 4
+	},
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/underdeck/req)
 "aoj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -14422,10 +14430,10 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLw" = (
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLx" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/cargo_arrow/north,
@@ -14437,32 +14445,32 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLz" = (
 /obj/structure/largecrate/supply,
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLA" = (
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLB" = (
 /obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLC" = (
 /obj/structure/largecrate/supply,
 /obj/item/toy/deck{
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLD" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLE" = (
 /obj/docking_port/stationary/emergency_response/external/hangar_starboard{
 	dwidth = 8
@@ -14477,11 +14485,11 @@
 	pixel_y = 2
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLG" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLH" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	access_modified = 1;
@@ -14489,7 +14497,7 @@
 	req_one_access_txt = "7;19"
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLI" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/bronze{
@@ -14514,7 +14522,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -14528,7 +14536,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLL" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/starboard_point_defense)
@@ -14544,19 +14552,19 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLO" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLP" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLQ" = (
 /obj/structure/machinery/door/airlock/almayer/maint/reinforced{
 	access_modified = 1;
@@ -14567,11 +14575,11 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLR" = (
 /obj/structure/largecrate/random/case,
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLS" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard{
@@ -14608,14 +14616,14 @@
 "aLU" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLV" = (
 /obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLW" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_point_defense)
@@ -14626,7 +14634,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "aLY" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -25730,6 +25738,9 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
+"blv" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/maint/hull/lower/lower_astronav)
 "blw" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -31195,6 +31206,10 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/middeck/maintenance/pb)
 "bxr" = (
@@ -31212,6 +31227,22 @@
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
+"bxu" = (
+/obj/structure/machinery/power/apc/almayer/north,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/lower_astronav)
+"bxv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/pb)
 "bxw" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /turf/open/floor/plating/plating_catwalk/no_build,
@@ -35123,7 +35154,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "bHu" = (
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -35365,7 +35396,7 @@
 "bJX" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "bJY" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 1
@@ -35495,7 +35526,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "bLi" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -64857,7 +64888,7 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/shipboard/navigation)
+/area/almayer/maint/hull/lower/lower_astronav)
 "neS" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/plate,
@@ -114685,11 +114716,11 @@ xHA
 xHA
 uio
 aDS
-dvW
-dvW
-dvW
-dvW
-dvW
+aoi
+aoi
+aoi
+aoi
+aoi
 aDS
 uED
 xHA
@@ -115303,11 +115334,11 @@ wdg
 glX
 ggv
 aDS
-dvW
-dvW
-dvW
-dvW
-dvW
+aoi
+aoi
+aoi
+aoi
+aoi
 aDS
 ggX
 llu
@@ -130029,19 +130060,19 @@ bBu
 amg
 amg
 bFa
-alU
-alU
-alU
-alU
-alU
-alU
-alU
-alU
-alU
-alU
-alU
-alU
-alU
+blv
+blv
+blv
+blv
+blv
+blv
+blv
+blv
+blv
+blv
+blv
+blv
+blv
 bOM
 amg
 amg
@@ -130132,8 +130163,8 @@ bBu
 amg
 amg
 bFj
-alU
-alU
+blv
+blv
 aLB
 aLB
 aLB
@@ -130143,8 +130174,8 @@ aLA
 aLA
 aLC
 aLz
-alU
-alU
+blv
+blv
 bON
 amg
 amg
@@ -130235,7 +130266,7 @@ bBv
 aMa
 tkq
 bFa
-alU
+blv
 neO
 aLB
 aLB
@@ -130247,7 +130278,7 @@ aLw
 aLA
 aLz
 aLv
-alU
+blv
 bOO
 tkq
 aLs
@@ -130441,8 +130472,8 @@ bBy
 aMc
 aoa
 ald
-alU
-aLw
+blv
+bxu
 aLw
 aLw
 aLw
@@ -130453,7 +130484,7 @@ aLw
 aLw
 aLw
 aLw
-alU
+blv
 akb
 aoa
 aLu
@@ -130544,7 +130575,7 @@ bBz
 aqu
 bEx
 bQt
-alU
+blv
 aLX
 aLA
 aLA
@@ -130556,7 +130587,7 @@ aLw
 aLA
 aLA
 aLy
-alU
+blv
 bPg
 bEx
 aqu
@@ -130647,8 +130678,8 @@ lsV
 amg
 ddz
 aLY
-alU
-alU
+blv
+blv
 aLA
 aLA
 aLA
@@ -130658,8 +130689,8 @@ aLw
 aLA
 aLA
 aLB
-alU
-alU
+blv
+blv
 bPh
 bPC
 amg
@@ -130750,9 +130781,9 @@ bBA
 bBA
 bBA
 bBA
-alU
-alU
-alU
+blv
+blv
+blv
 aLR
 aLA
 bLh
@@ -130760,7 +130791,7 @@ aLw
 aLw
 aLA
 aLA
-alU
+blv
 pzW
 pzW
 pzW
@@ -130855,7 +130886,7 @@ aiX
 aow
 bWJ
 nar
-alU
+blv
 aLU
 aLR
 bLh
@@ -130863,7 +130894,7 @@ aLw
 aLw
 aLA
 aLA
-alU
+blv
 xNM
 ikl
 eLp
@@ -130958,7 +130989,7 @@ aiX
 aox
 aoj
 nCR
-alU
+blv
 aLV
 aLU
 aLP
@@ -130966,7 +130997,7 @@ aLN
 aLA
 aLA
 aLD
-alU
+blv
 odt
 ikl
 qAy
@@ -131061,15 +131092,15 @@ aiX
 aoB
 jgl
 aiX
-alU
-alU
-alU
+blv
+blv
+blv
 aLQ
-alU
+blv
 aLH
-alU
-alU
-alU
+blv
+blv
+blv
 wrr
 kjw
 hBr
@@ -161641,7 +161672,7 @@ bdH
 bdH
 bdH
 bdH
-nBJ
+byx
 byx
 byx
 bhr
@@ -161673,7 +161704,7 @@ aZb
 aZb
 bwT
 bwN
-wid
+bwN
 bdH
 bdH
 bdH
@@ -167854,7 +167885,7 @@ aBf
 blh
 bwT
 bwT
-aTd
+bxv
 aTd
 bwT
 bwT
@@ -170588,7 +170619,7 @@ aaa
 aaa
 bdH
 bdH
-kyw
+bzb
 bzG
 bjj
 aJM
@@ -170648,7 +170679,7 @@ aXQ
 aXv
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 aaa
@@ -170691,7 +170722,7 @@ aaa
 aaa
 bdH
 bdH
-kyw
+bzb
 bzG
 bzl
 aJM
@@ -170751,7 +170782,7 @@ aQV
 aUt
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 aaa
@@ -170794,7 +170825,7 @@ aaa
 aaa
 bdH
 bdH
-kyw
+bzb
 bzi
 bzl
 aJM
@@ -170854,7 +170885,7 @@ aXQ
 aXv
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 aaa
@@ -170897,7 +170928,7 @@ aaa
 aaa
 bdH
 bdH
-kyw
+bzb
 bzi
 bzl
 aJM
@@ -170957,7 +170988,7 @@ aXQ
 aXv
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171000,7 +171031,7 @@ aaa
 aaa
 bdH
 bdH
-kyw
+bzb
 bzH
 bzm
 aJM
@@ -171060,7 +171091,7 @@ aXO
 aXv
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171103,7 +171134,7 @@ aaa
 aaa
 bdH
 bdH
-kyw
+bzb
 bzI
 bzn
 aJM
@@ -171163,7 +171194,7 @@ aYD
 aXB
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171206,7 +171237,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzJ
 bzj
 aJM
@@ -171266,7 +171297,7 @@ aXO
 aXu
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171309,7 +171340,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzJ
 bzj
 aJM
@@ -171369,7 +171400,7 @@ aXO
 aXu
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171412,7 +171443,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzK
 bzj
 aJM
@@ -171472,7 +171503,7 @@ aXO
 aXu
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171515,7 +171546,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzK
 bzi
 aJM
@@ -171575,7 +171606,7 @@ aYF
 aXy
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171618,7 +171649,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzK
 bzi
 aJM
@@ -171678,7 +171709,7 @@ aXQ
 aXu
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171721,7 +171752,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzL
 bzi
 aJM
@@ -171781,7 +171812,7 @@ aXQ
 aXu
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171824,7 +171855,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzM
 bzp
 aJM
@@ -171884,7 +171915,7 @@ aXQ
 aXu
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -171927,7 +171958,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzj
 bzl
 aJM
@@ -171987,7 +172018,7 @@ aYF
 aXB
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -172030,7 +172061,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzN
 bzq
 aJM
@@ -172090,7 +172121,7 @@ aXO
 aXu
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -172133,7 +172164,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzj
 bzr
 aJM
@@ -172193,7 +172224,7 @@ aXO
 aXv
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -172236,7 +172267,7 @@ bdH
 bdH
 bdH
 bdH
-kyw
+bzb
 bzj
 bzr
 aJM
@@ -172296,7 +172327,7 @@ aXQ
 aXv
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH
@@ -172339,7 +172370,7 @@ bdH
 aaa
 bdH
 bdH
-kyw
+bzb
 bzO
 bzs
 aJM
@@ -172399,7 +172430,7 @@ aYF
 aUt
 aHs
 aHs
-lyW
+bwH
 bdH
 bdH
 bdH

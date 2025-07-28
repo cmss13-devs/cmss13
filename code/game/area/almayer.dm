@@ -497,6 +497,9 @@
 /area/almayer/maint/hull/lower/p_bow
 	name = "\improper Lower Deck Port-Bow Hull"
 
+/area/almayer/maint/hull/lower/lower_astronav
+	name = "\improper Lower Deck Weapons Control Maintenance"
+
 /area/almayer/maint/hull/lower/s_bow
 	name = "\improper Lower Deck Starboard-Bow Hull"
 

@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("Recoil Compensator", 15, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),
 		list("M10 Compensator", 15, /obj/item/attachable/compensator/m10, null, VENDOR_ITEM_REGULAR),
 		list("Suppressor", 15, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
-		list("Suppressor, Compact", 15, /obj/item/attachable/suppressor/sleek, VENDOR_ITEM_REGULAR),
+		list("Suppressor, Compact", 15, /obj/item/attachable/suppressor/sleek, null, VENDOR_ITEM_REGULAR),
 ))
 
 /obj/structure/machinery/cm_vending/gear/commanding_officer

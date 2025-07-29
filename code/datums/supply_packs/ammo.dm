@@ -314,7 +314,7 @@
 	contains = list(
 		/obj/item/ammo_box/magazine/m10/extended,
 	)
-	cost = 40
+	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M10 extended magazines crate"
 	group = "Ammo"
@@ -324,7 +324,7 @@
 	contains = list(
 		/obj/item/ammo_box/magazine/m10/drum,
 	)
-	cost = 50
+	cost = 40
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper M10 drum magazines crate"
 	group = "Ammo"

@@ -474,45 +474,25 @@
 
 //------------ M10 - Special Kits ------------ //
 
-/obj/item/storage/box/guncase/m10_carbine_kit
-	name = "\improper M10 Carbine Kit"
-	desc = "A gun case containing the necessary attachments to assemble a M10 'Carbine' Kit. Comes with six magazines."
-	storage_slots = 10
+/obj/item/storage/box/guncase/m10_custom_kit
+	name = "\improper M10 auto-pistol case"
+	desc = "A gun case containing the necessary attachments to assemble a custom M10 auto-pistol. Comes with seven drum-magazines."
+	storage_slots = 14
 
-	can_hold = list(/obj/item/weapon/gun/pistol/m10, /obj/item/ammo_magazine/pistol/m10,)
+	can_hold = list(/obj/item/weapon/gun/pistol/m10, /obj/item/ammo_magazine/pistol/m10/drum, /obj/item/attachable/reddot/small, /obj/item/attachable/suppressor/sleek, /obj/item/attachable/compensator/m10/spiked, /obj/item/attachable/lasersight/micro, /obj/item/attachable/stock/m10_solid, /obj/item/storage/belt/gun/m10)
 
-/obj/item/storage/box/guncase/m10_carbine_kit/fill_preset_inventory()
+/obj/item/storage/box/guncase/m10_custom_kit/fill_preset_inventory()
 	new /obj/item/weapon/gun/pistol/m10(src)
-	new /obj/item/ammo_magazine/pistol/m10/extended(src)
-	new /obj/item/ammo_magazine/pistol/m10/extended(src)
-	new /obj/item/ammo_magazine/pistol/m10/extended(src)
+	new /obj/item/ammo_magazine/pistol/m10/drum(src)
+	new /obj/item/ammo_magazine/pistol/m10/drum(src)
+	new /obj/item/ammo_magazine/pistol/m10/drum(src)
+	new /obj/item/ammo_magazine/pistol/m10/drum(src)
 	new /obj/item/ammo_magazine/pistol/m10/drum(src)
 	new /obj/item/ammo_magazine/pistol/m10/drum(src)
 	new /obj/item/ammo_magazine/pistol/m10/drum(src)
 	new /obj/item/attachable/reddot/small(src)
 	new /obj/item/attachable/suppressor/sleek(src)
-	new /obj/item/attachable/extended_barrel/vented(src)
+	new /obj/item/attachable/compensator/m10/spiked(src)
 	new /obj/item/attachable/lasersight/micro(src)
 	new /obj/item/attachable/stock/m10_solid(src)
-	new /obj/item/storage/belt/gun/m10(src)
-
-/obj/item/storage/box/guncase/m10_melee_kit
-	name = "\improper M10 CQB 'Pummeler' Kit"
-	desc = "A gun case containing the necessary attachments to assemble a M10 'CQB' Kit. Comes with six AP magazines."
-	storage_slots = 10
-
-	can_hold = list(/obj/item/weapon/gun/pistol/m10, /obj/item/ammo_magazine/pistol/m10,)
-
-/obj/item/storage/box/guncase/m10_melee_kit/fill_preset_inventory()
-	new /obj/item/weapon/gun/pistol/m10(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap/extended(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap/extended(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap/extended(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap/drum(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap/drum(src)
-	new /obj/item/ammo_magazine/pistol/m10/ap/drum(src)
-	new /obj/item/attachable/reddot/small(src)
-	new /obj/item/attachable/lasersight/micro(src)
-	new /obj/item/attachable/compensator/m10/spiked(src)
-	new /obj/item/attachable/stock/pistol/collapsible(src)
 	new /obj/item/storage/belt/gun/m10(src)

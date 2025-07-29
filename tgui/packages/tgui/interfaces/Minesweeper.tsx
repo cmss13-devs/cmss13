@@ -51,7 +51,7 @@ export const Minesweeper = () => {
             left: '21%',
           }}
           tooltip={
-            'Uncover all clear tiles to win. Flagging is provided with right click. '
+            'Uncover all clear tiles to win. A number on the tile means there is a landmine somewhere next to it, including diagonally. Flagging is provided with right click. '
           }
           tooltipPosition="bottom"
         >

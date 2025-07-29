@@ -106,6 +106,29 @@
 		SPAN_NOTICE("You wash \a [I] using \the [src]."))
 
 
+/obj/structure/sink/clicked(mob/user, list/mods)
+	if(!mods[ALT_CLICK])
+		return ..()
+
+	var/obj/item/held_item = user.get_active_hand()
+	if(!held_item)
+		user.visible_message(SPAN_NOTICE("[user] runs their hand along \the [src]."))
+		return TRUE
+
+	// Check if it's a reagent container
+	var/obj/item/reagent_container/RG = held_item
+	if(!istype(RG) || !RG.is_open_container())
+		return TRUE
+
+	var/remaining_space = RG.volume - RG.reagents.total_volume
+	if(remaining_space > 0)
+		RG.reagents.add_reagent("water", remaining_space)
+		user.visible_message(SPAN_NOTICE("[user] fills \the [RG] completely using \the [src]."), SPAN_NOTICE("You fill \the [RG] completely using \the [src]."))
+	else
+		user.visible_message(SPAN_NOTICE("[user] tries to fill \the [RG] but it's already full."), SPAN_NOTICE("The [RG] is already full."))
+
+	return TRUE
+
 /obj/structure/sink/kitchen
 	name = "kitchen sink"
 	icon_state = "sink_alt"

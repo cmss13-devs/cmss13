@@ -254,6 +254,9 @@
 		ui = new(user, src, "Minesweeper", name)
 		ui.open()
 
+/obj/structure/machinery/computer/arcade/minesweeper/ui_state(mob/user)
+	return GLOB.human_adjacent_two_state
+
 /obj/structure/machinery/computer/arcade/minesweeper/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	switch(action)

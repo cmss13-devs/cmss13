@@ -226,7 +226,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	frequency_change_minesweeper = new(src)
 	frequency_change_minesweeper.quiet_game = TRUE
 	frequency_change_minesweeper.name = "Frequency Debug"
-	frequency_change_minesweeper.difficulty = 7
+	frequency_change_minesweeper.difficulty = 10
 	RegisterSignal(frequency_change_minesweeper, COMSIG_MINESWEEPER_LOST, PROC_REF(minesweeper_lost))
 	RegisterSignal(frequency_change_minesweeper, COMSIG_MINESWEEPER_WON, PROC_REF(minesweeper_won))
 
@@ -274,6 +274,9 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 			return
 		frequency_change_minesweeper.tgui_interact(user)
 		to_chat(user, SPAN_NOTICE("You flip [src] maintenance panel open and start to work on the frequency values..."))
+		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && frequency_change_minesweeper.difficulty == 10)
+			to_chat(user, SPAN_NOTICE("A few values were obviously standing out - you quickly tweak them, and the rest of the process should be easier."))
+			frequency_change_minesweeper.difficulty = 7
 	. = ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/power_change()
@@ -290,7 +293,8 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		handle_xeno_acquisition(get_turf(src))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/minesweeper_lost(source, mob/user)
-	to_chat(user, SPAN_WARNING("Something is not right. You decide to start over."))
+	to_chat(user, SPAN_WARNING("You tweak the wrong value!"))
+	shock(user, 100)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/minesweeper_won(source, mob/user)
 	to_chat(user, SPAN_NOTICE("You're in! You can now modify the frequency data."))

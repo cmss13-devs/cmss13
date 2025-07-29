@@ -831,7 +831,6 @@
 		if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
 			return
 
-		xeno_message(SPAN_PSYTALK("My children, i admire your success in this fight, as prize you will now get blessed with adaptability, use it wisely."))
 		xeno_maptext("My children, i admire your success in this fight, as prize you will now get blessed with adaptability, use it wisely.", "Queen Mother")
 
 		add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)

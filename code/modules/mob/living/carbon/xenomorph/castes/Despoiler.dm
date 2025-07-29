@@ -31,7 +31,7 @@
 /mob/living/carbon/xenomorph/despoiler
 	caste_type = XENO_CASTE_DESPOILER
 	name = XENO_CASTE_DESPOILER
-	desc = "A huge, looming beast of an alien."
+	desc = "An emaciated acidic terror, barely alive and constantly leaking acid."
 	icon_size = 64
 	icon_state = "Despoiler Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_PURPLE)

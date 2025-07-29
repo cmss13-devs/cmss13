@@ -101,7 +101,7 @@ export const Minesweeper = () => {
                     >
                       {cell.state === 'open' ? (
                         cell.cell_type === -1 ? (
-                          <Icon ml={1} size={2} name="land-mine-on" />
+                          <Icon ml={1} size={2} name="bug" />
                         ) : cell.cell_type === -2 ? null : (
                           <h1 style={{ fontSize: '30px' }}>{cell.cell_type}</h1>
                         )

@@ -1,3 +1,4 @@
+import { type BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import { Window } from 'tgui/layouts';
 
@@ -14,6 +15,7 @@ type Cell = {
   cell_type: number;
   state: string;
   unique_cell_id: number;
+  flagged: BooleanLike;
 };
 
 export const Minesweeper = () => {
@@ -33,15 +35,27 @@ export const Minesweeper = () => {
   return (
     <Window width={350} height={420} theme="weyland">
       <Window.Content scrollable>
-        <span>Total landmines:{difficulty}</span>
+        <Button>Total landmines: {difficulty}</Button>
         <Button
           style={{
             position: 'relative',
-            left: '25%',
+            left: '21%',
           }}
           onClick={() => act('restart')}
         >
           Restart...
+        </Button>
+        <Button
+          style={{
+            position: 'relative',
+            left: '21%',
+          }}
+          tooltip={
+            'Uncover all clear tiles to win. Flagging is provided with right click. '
+          }
+          tooltipPosition="bottom"
+        >
+          ?
         </Button>
         <Flex justify={'space-evenly'}>
           {field.map((fieldC, colIndex) => (
@@ -54,14 +68,20 @@ export const Minesweeper = () => {
                       width: '100%',
                     }}
                     fluid
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      act('flag', { id: cell.unique_cell_id });
+                    }}
                     backgroundColor={
                       cell.cell_type === -1 && cell.state === 'open '
                         ? '#FF0000'
                         : null
                     }
-                    onClick={() =>
-                      act('open_cell', { id: cell.unique_cell_id })
-                    }
+                    onClick={() => {
+                      if (!cell.flagged) {
+                        act('open_cell', { id: cell.unique_cell_id });
+                      }
+                    }}
                     disabled={
                       cell.state === 'open' || game_state === 1 ? true : false
                     }
@@ -85,6 +105,8 @@ export const Minesweeper = () => {
                         ) : cell.cell_type === -2 ? null : (
                           <h1 style={{ fontSize: '30px' }}>{cell.cell_type}</h1>
                         )
+                      ) : !!cell.flagged === true ? (
+                        <Icon ml={1} size={2} name="flag" color="#db0000ff" />
                       ) : null}
                     </Box>
                   </Button>

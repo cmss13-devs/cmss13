@@ -275,13 +275,16 @@
 				lose_game()
 				first_click_made = FALSE
 				game_state = LOST
-				COOLDOWN_START(src, field_generation, 30 SECONDS)
-				if(!quiet_game)
-					to_chat(ui.user, SPAN_WARNING("Forfeited the field! you're on 30 second cooldown to forfeit again."))
+				COOLDOWN_START(src, field_generation, 20 SECONDS)
+				to_chat(ui.user, SPAN_WARNING("Forfeited the field! New field in 10 seconds. you're on 20 second cooldown to forfeit again."))
 				return TRUE
 			else
-				if(!quiet_game)
-					to_chat(ui.user, SPAN_WARNING("You have to wait before forfeiting this field again."))
+				to_chat(ui.user, SPAN_WARNING("You have to wait before forfeiting this field again."))
+		if("flag")
+			for(var/columns in 1 to field_boundaries[1])
+				for(var/rows in 1 to field_boundaries[2])
+					if(field[columns][rows]["unique_cell_id"] == params["id"] && game_state == PLAYING)
+						field[columns][rows]["flagged"] = !field[columns][rows]["flagged"]
 	playsound(ui.user, get_sfx("keyboard"), 10, 1)
 
 /obj/structure/machinery/computer/arcade/minesweeper/ui_data(mob/user)
@@ -385,7 +388,8 @@
 			temp_field[columns][rows] += list(
 				"cell_type" = CLEAR,
 				"state" = CELL_CLOSED,
-				"unique_cell_id" = counter
+				"unique_cell_id" = counter,
+				"flagged" = FALSE
 				)
 			counter++
 	field = temp_field

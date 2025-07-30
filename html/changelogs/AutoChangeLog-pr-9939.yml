@@ -1,0 +1,4 @@
+author: "SRG3124, Geeves, Frans_Feiffer"
+delete-after: True
+changes:
+  - rscadd: "Added a Riot Visor for MP's"

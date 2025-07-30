@@ -279,6 +279,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
+	var/main_cursor = TRUE
+	var/chosen_pointer
 
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
@@ -330,8 +332,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
-
-	C.tgui_say?.load()
 
 /datum/preferences/Del()
 	. = ..()
@@ -943,6 +943,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 /datum/preferences/proc/SetFlavorText(mob/user)
 	var/HTML = "<body>"
 	HTML += "<tt>"
+	HTML += "You may include %bloodtype% %rank% or %name% as inserts."
+	HTML += "<br>"
+	HTML += "The %rank% will include a space after if applicable."
+	HTML += "<br>"
 	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
 	HTML += "<br>"
@@ -950,7 +954,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML +="<a href='byond://?src=\ref[user];preference=flavor_text;task=done'>Done</a>"
 	HTML += "<tt>"
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Set Flavor Text", "flavor_text", width = 400, height = 430)
+	show_browser(user, HTML, "Set Flavor Text", "flavor_text", width = 410, height = 430)
 	return
 
 /datum/preferences/proc/SetJob(mob/user, role, priority)

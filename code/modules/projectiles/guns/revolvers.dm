@@ -174,7 +174,6 @@
 	if(current_mag)
 		if(current_mag.current_rounds > 0)
 			if(current_mag.chamber_contents[current_mag.chamber_position] == "bullet")
-				current_mag.current_rounds-- //Subtract the round from the mag.
 				in_chamber = create_bullet(ammo, initial(name))
 				apply_traits(in_chamber)
 				return in_chamber
@@ -189,6 +188,8 @@
 /obj/item/weapon/gun/revolver/reload_into_chamber(mob/user)
 	in_chamber = null
 	if(current_mag)
+		if(current_mag.current_rounds > 0)
+			current_mag.current_rounds-- // Subtract the round from the mag only after firing is confirmed
 		current_mag.chamber_contents[current_mag.chamber_position] = "blank" //We shot the bullet.
 		rotate_cylinder()
 		return 1
@@ -445,9 +446,9 @@
 	set_burst_delay(FIRE_DELAY_TIER_12)
 
 
-/obj/item/weapon/gun/revolver/m44/custom/webley //Van Bandolier's Webley.
-	name = "\improper Webley Mk VI service pistol"
-	desc = "A heavy top-break revolver. Bakelite grips, and older than most nations. .455 was good enough for angry tribesmen and <i>les boche</i>, and by Gum it'll do for Colonial Marines and xenomorphs as well."
+/obj/item/weapon/gun/revolver/m44/custom/webley
+	name = "\improper Webley SRV-80"
+	desc = "A top-break revolver used by the Imperial Armed Space Force’s 24th Para Regiment, and sometimes seen in the hands of other TWE military forces. Fires .455 Magnum. Archaic, yes, but brutally effective. Vacuum-sealed internals, Bakelite-style grips, and a recoil like getting kicked by a mule. Still puts things down. Hard."
 	current_mag = /obj/item/ammo_magazine/internal/revolver/webley
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/revolvers.dmi'
 	icon_state = "webley"
@@ -455,6 +456,15 @@
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/attachable/bayonet/upp,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 	)
 
 /obj/item/weapon/gun/revolver/m44/custom/webley/set_gun_config_values()
@@ -462,6 +472,9 @@
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 
+/obj/item/weapon/gun/revolver/m44/custom/webley/IASF_webley
+	icon_state = "webley_black"
+	item_state = "m44r"
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.

@@ -293,7 +293,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		handle_xeno_acquisition(get_turf(src))
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/minesweeper_lost(source, mob/user)
-	to_chat(user, SPAN_WARNING("You tweak the wrong value!"))
+	to_chat(user, SPAN_WARNING("You tweak the wrong value! Next attempt in 5 seconds."))
 	shock(user, 100)
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/proc/minesweeper_won(source, mob/user)

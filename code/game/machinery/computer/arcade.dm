@@ -279,7 +279,7 @@
 				first_click_made = FALSE
 				game_state = LOST
 				COOLDOWN_START(src, field_generation, 20 SECONDS)
-				to_chat(ui.user, SPAN_WARNING("Forfeited the field! New field in 10 seconds. you're on 20 second cooldown to forfeit again."))
+				to_chat(ui.user, SPAN_WARNING("Forfeited the field! New field in 5 seconds. you're on 20 second cooldown to forfeit again."))
 				return TRUE
 			else
 				to_chat(ui.user, SPAN_WARNING("You have to wait before forfeiting this field again."))
@@ -331,10 +331,10 @@
 			if(field[cell_collumn][cell_rows]["state"] != CELL_OPEN && field[cell_collumn][cell_rows]["cell_type"] != LANDMINE)
 				return
 	if(!quiet_game)
-		to_chat(user, SPAN_WARNING("You won! New field in 10 seconds."))
+		to_chat(user, SPAN_WARNING("You won! New field in 5 seconds."))
 	game_state = WON
 	SEND_SIGNAL(src, COMSIG_MINESWEEPER_WON, user)
-	addtimer(CALLBACK(src, PROC_REF(initiate_list)), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(initiate_list)), 5 SECONDS)
 
 
 
@@ -343,13 +343,13 @@
 		return
 	game_state = LOST
 	SEND_SIGNAL(src, COMSIG_MINESWEEPER_LOST, user)
-	addtimer(CALLBACK(src, PROC_REF(initiate_list)), 10 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(initiate_list)), 5 SECONDS)
 	for(var/columns in 1 to field_boundaries[1])
 		for(var/rows in 1 to field_boundaries[2])
 			if(field[columns][rows]["cell_type"] == LANDMINE)
 				field[columns][rows]["state"] = CELL_OPEN
 	if(!quiet_game)
-		to_chat(user, SPAN_WARNING("Boom! You lost. New field in 10 seconds!"))
+		to_chat(user, SPAN_WARNING("Boom! You lost. New field in 5 seconds!"))
 
 
 

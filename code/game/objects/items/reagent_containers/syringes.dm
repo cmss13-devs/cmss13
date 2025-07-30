@@ -20,7 +20,8 @@
 	possible_transfer_amounts = list(5, 10, 15)
 	volume = 15
 	w_class = SIZE_TINY
-	flags_item = NOBLUDGEON | SLOT_EAR
+	flags_item = NOBLUDGEON
+	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	sharp = IS_SHARP_ITEM_SIMPLE
 	transparent = TRUE
 	reagent_desc_override = TRUE //uses display_contents

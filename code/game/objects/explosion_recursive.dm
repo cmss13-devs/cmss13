@@ -29,6 +29,12 @@ explosion resistance exactly as much as their health
 /proc/explosion_rec(turf/epicenter, power, falloff = 20, datum/cause_data/explosion_cause_data)
 	var/obj/effect/explosion/Controller = new /obj/effect/explosion(epicenter)
 	Controller.initiate_explosion(epicenter, power, falloff, explosion_cause_data)
+	var/above = SSmapping.get_turf_above(epicenter)
+	if(istype(above, /turf/open_space))
+		explosion_rec(above, power * 0.8, explosion_cause_data)
+	if(istype(epicenter, /turf/open_space))
+		var/below = SSmapping.get_turf_below(epicenter)
+		explosion_rec(below, power * 0.8, explosion_cause_data)
 
 
 /obj/effect/explosion

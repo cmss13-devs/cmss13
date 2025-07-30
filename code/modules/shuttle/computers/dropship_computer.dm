@@ -23,7 +23,7 @@
 
 	///a minesweeper game PO plays if DS is locked
 	var/obj/structure/machinery/computer/arcade/minesweeper/lockdown_minesweeper
-	///each cleared field equals to 30 (score)seconds cleared, at 300 score shuttle is unlocked.
+	///each cleared field equals to 30 (score)seconds cleared, at 90 score shuttle is unlocked.
 	var/minesweeper_score = 0
 	///fluff components the dropship has, each cleared field gets one of these clared.
 	var/list/dropship_components = list("left engine controller", "right engine controller", "flight panel", "surface controls", "security controls", "hydraulics controls", "fuel distribution", "autopilot controls", "weapons controls", "APU")

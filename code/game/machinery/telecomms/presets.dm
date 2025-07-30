@@ -276,7 +276,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 		to_chat(user, SPAN_NOTICE("You flip [src] maintenance panel open and start to work on the frequency values..."))
 		if(skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && frequency_change_minesweeper.difficulty == 10)
 			to_chat(user, SPAN_NOTICE("A few values were obviously standing out - you quickly tweak them, and the rest of the process should be easier."))
-			frequency_change_minesweeper.difficulty = 7
+			frequency_change_minesweeper.difficulty = 5
 	. = ..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/mapcomms/power_change()

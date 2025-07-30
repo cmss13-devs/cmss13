@@ -137,9 +137,6 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	var/multiplier = params["multiplier"]
 
-	if(recipe.max_res_amount <= 1)
-		multiplier = 1
-
 	if(multiplier != multiplier) // isnan
 		message_admins("[key_name_admin(ui.user)] has attempted to multiply [src] with NaN")
 		return FALSE
@@ -147,8 +144,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		message_admins("[key_name_admin(ui.user)] has attempted to multiply [src] with !isnum")
 		return FALSE
 	multiplier = floor(multiplier)
+
 	if(multiplier < 1)
 		return FALSE  //href exploit protection
+
+	if(recipe.max_res_amount == 1)
+		multiplier = 1
+
 	if(recipe.skill_lvl)
 		if(ishuman(ui.user) && !skillcheck(ui.user, recipe.skill_req, recipe.skill_lvl))
 			to_chat(ui.user, SPAN_WARNING("You are not trained to build this..."))

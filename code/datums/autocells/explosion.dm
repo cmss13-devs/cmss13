@@ -247,7 +247,7 @@ as having entered the turf.
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, initial_call = TRUE)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -261,24 +261,32 @@ as having entered the turf.
 		else
 			stack_trace("cell_explosion called without cause_data.")
 			explosion_cause_data = create_cause_data("Explosion")
-
 	falloff = max(falloff, power/100)
 
-	var/obj/causing_obj = explosion_cause_data?.resolve_cause()
-	var/mob/causing_mob = explosion_cause_data?.resolve_mob()
-	msg_admin_attack("Explosion with Power: [power], Falloff: [falloff], Shape: [falloff_shape],[causing_obj ? " from [causing_obj]" : ""][causing_mob ? " by [key_name(causing_mob)]" : ""] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
+	if(initial_call) //stuff that is supposed to happen just one, calls epxlosion on lower and hiver level
+		var/above = SSmapping.get_turf_above(epicenter)
+		if(istype(above, /turf/open_space))
+			cell_explosion(above, power * 0.8, falloff, falloff_shape, direction, explosion_cause_data, initial_call = FALSE)
+		if(istype(epicenter, /turf/open_space))
+			var/below = SSmapping.get_turf_below(epicenter)
+			cell_explosion(below, power * 0.8, falloff, falloff_shape, direction, explosion_cause_data, initial_call = FALSE)
 
-	playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
+		var/obj/causing_obj = explosion_cause_data?.resolve_cause()
+		var/mob/causing_mob = explosion_cause_data?.resolve_mob()
+		msg_admin_attack("Explosion with Power: [power], Falloff: [falloff], Shape: [falloff_shape],[causing_obj ? " from [causing_obj]" : ""][causing_mob ? " by [key_name(causing_mob)]" : ""] in [epicenter.loc.name] ([epicenter.x],[epicenter.y],[epicenter.z]).", epicenter.x, epicenter.y, epicenter.z)
 
-	if(power >= 300) //Make BIG BOOMS
-		playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
-	else
-		playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
+		playsound(epicenter, 'sound/effects/explosionfar.ogg', 100, 1, round(power^2,1))
+
+		if(power >= 300) //Make BIG BOOMS
+			playsound(epicenter, "bigboom", 80, 1, max(round(power,1),7))
+		else
+			playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
+		if(power > EXPLOSION_MAX_POWER)
+			log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of [EXPLOSION_MAX_POWER].")
+			power = EXPLOSION_MAX_POWER
 
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
-	if(power > EXPLOSION_MAX_POWER)
-		log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of [EXPLOSION_MAX_POWER].")
-		power = EXPLOSION_MAX_POWER
+
 
 	// something went wrong :(
 	if(QDELETED(E))

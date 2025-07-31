@@ -171,7 +171,7 @@
 /obj/structure/shooting_target_rail
 	name = "shooting range rail"
 	desc = "A rail for making shooting targets move. When assembled, a placed shooting target will start to move back and forth on the track."
-	icon = 'icons/obj/structures/rail.dmi'
+	icon = 'icons/obj/structures/shooting_rail.dmi'
 	icon_state = "rail"
 	density = FALSE
 	anchored = TRUE

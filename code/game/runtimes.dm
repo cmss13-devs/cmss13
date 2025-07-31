@@ -51,18 +51,21 @@ GLOBAL_REAL_VAR(total_runtimes)
 
 	var/depth = 1
 	var/list/datum/static_callee/error_callees = list()
-	for(var/callee/called = caller, called, called = called.caller)
-		error_callees += clone_callee(called)
-		depth++
 
-		if(depth > MAXIMUM_STACK_DEPTH)
-			break
-	reverse_range(error_callees)
+	try
+		for(var/callee/called = caller, called, called = called.caller)
+			error_callees += clone_callee(called)
+			depth++
 
-	SSsentry.envelopes += new /datum/error_envelope(
-		E.name,
-		error_callees,
-	)
+			if(depth > MAXIMUM_STACK_DEPTH)
+				break
+		reverse_range(error_callees)
+
+		SSsentry.envelopes += new /datum/error_envelope(
+			E.name,
+			error_callees,
+		)
+	catch
 
 	// Single error logging to STUI
 	var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]"

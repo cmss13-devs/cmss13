@@ -1,3 +1,5 @@
+#define MAXIMUM_STACK_DEPTH 10
+
 /*
 	Custom runtime handling
 */
@@ -47,9 +49,14 @@ GLOBAL_REAL_VAR(total_runtimes)
 		return
 	runtime_hashes[hash] = 1
 
+	var/depth = 1
 	var/list/datum/static_callee/error_callees = list()
 	for(var/callee/called = caller, called, called = called.caller)
 		error_callees += clone_callee(called)
+		depth++
+
+		if(depth > MAXIMUM_STACK_DEPTH)
+			break
 	reverse_range(error_callees)
 
 	SSsentry.envelopes += new /datum/error_envelope(
@@ -94,3 +101,5 @@ GLOBAL_REAL_VAR(total_runtimes)
 		to_clone.usr,
 		to_clone.name,
 	)
+
+#undef MAXIMUM_STACK_DEPTH

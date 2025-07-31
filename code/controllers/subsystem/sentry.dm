@@ -70,6 +70,7 @@ SUBSYSTEM_DEF(sentry)
 
 	envelopes = list()
 
+/// Generates a 32 character hex UUID, as random as BYOND will be
 /datum/controller/subsystem/sentry/proc/get_uuid()
 	var/uuid = ""
 	for(var/i in 1 to 32)
@@ -86,11 +87,3 @@ SUBSYSTEM_DEF(sentry)
 
 	src.error = error
 	src.stacktrace = stacktrace
-
-/datum/controller/subsystem/sentry/proc/divide_zero(do_it = TRUE, yep = "mhm")
-	var/my_important_maths = (5012312 + rand(1, 5)) / (0 + 0)
-
-	pass(my_important_maths)
-
-/client/verb/cause_a_problem()
-	SSsentry.divide_zero(FALSE, "nah")

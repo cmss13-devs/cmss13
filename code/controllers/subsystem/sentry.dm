@@ -65,8 +65,7 @@ SUBSYSTEM_DEF(sentry)
 
 		var/assembled = "[header]\n[event_header]\n[event]\n"
 
-		to_chat(world, "assembled: [assembled]")
-		to_chat(world, rustg_http_request_blocking(RUSTG_HTTP_METHOD_POST, CONFIG_GET(string/sentry_endpoint), assembled, headers, null))
+		 rustg_http_request_blocking(RUSTG_HTTP_METHOD_POST, CONFIG_GET(string/sentry_endpoint), assembled, headers, null)
 
 	envelopes = list()
 

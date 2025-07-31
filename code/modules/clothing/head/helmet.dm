@@ -626,12 +626,6 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	if(active_visor)
 		helmet_overlays += overlay_image(active_visor.helmet_overlay_icon, active_visor.helmet_overlay, color, RESET_COLOR)
 
-	if(helmet_fire_overlay_icon)
-		overlays += helmet_fire_overlay_icon
-
-	if(helmet_fire_overlay_icon)
-		overlays += helmet_fire_overlay_icon
-
 	if(ismob(loc))
 		var/mob/moob = loc
 		moob.update_inv_head()

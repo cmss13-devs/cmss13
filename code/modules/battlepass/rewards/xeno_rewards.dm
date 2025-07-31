@@ -23,7 +23,7 @@
 			return "vanguardPrae"
 		if(/datum/xeno_strain/dancer)
 			return "dancerPrae"
-		if(/datum/xeno_strain/warden)
+		if(/datum/xeno_strain/valkyrie)
 			return "wardenPrae"
 		if(/datum/xeno_strain/oppressor)
 			return "oppPrae"

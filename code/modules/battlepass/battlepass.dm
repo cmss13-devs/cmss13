@@ -136,8 +136,12 @@
 /// Check if it's been 24h since daily challenges were last assigned
 /datum/battlepass/proc/check_daily_challenge_reset()
 	// Clients can connect before the SS is initialized
+	reset_daily_challenges() //REMOVE ME!
 	if(!SSbattlepass?.initialized)
 		return
+
+
+
 
 	// 86400 seconds (24*60^2) is one day
 	if((daily_challenges_last_updated + (24 * 60 * 60)) <= rustg_unix_timestamp())

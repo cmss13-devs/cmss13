@@ -107,87 +107,7 @@
 
 	observer.set_huds_from_prefs()
 
-				qdel(src)
-				return TRUE
-
-		if("late_join")
-
-			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
-				return
-
-			if(SSticker.mode.flags_round_type & MODE_NO_LATEJOIN)
-				to_chat(src, SPAN_WARNING("Sorry, you cannot late join during [SSticker.mode.name]. You have to start at the beginning of the round. You may observe or try to join as an alien, if possible."))
-				return
-
-			if(client.player_data?.playtime_loaded && (client.get_total_human_playtime() < CONFIG_GET(number/notify_new_player_age)) && !length(client.prefs.completed_tutorials))
-				if(tgui_alert(src, "You have little playtime and haven't completed any tutorials. Would you like to go to the tutorial menu?", "Tutorial", list("Yes", "No")) == "Yes")
-					tutorial_menu()
-					return
-
-			LateChoices()
-
-		if("late_join_xeno")
-			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
-				return
-
-			if(alert(src,"Are you sure you want to attempt joining as a xenomorph?","Confirmation","Yes","No") == "Yes" )
-				if(SSticker.mode.check_xeno_late_join(src))
-					var/mob/new_xeno = SSticker.mode.attempt_to_join_as_xeno(src, 0)
-					if(new_xeno && !istype(new_xeno, /mob/living/carbon/xenomorph/larva))
-						SSticker.mode.transfer_xeno(src, new_xeno)
-						close_spawn_windows()
-
-		if("late_join_pred")
-			if(SSticker.current_state != GAME_STATE_PLAYING || !SSticker.mode)
-				to_chat(src, SPAN_WARNING("The round is either not ready, or has already finished..."))
-				return
-
-			if(alert(src,"Are you sure you want to attempt joining as a predator?","Confirmation","Yes","No") == "Yes" )
-				if(SSticker.mode.check_predator_late_join(src,0))
-					close_spawn_windows()
-					SSticker.mode.attempt_to_join_as_predator(src)
-				else
-					to_chat(src, SPAN_WARNING("You are no longer able to join as predator."))
-					new_player_panel()
-
-		if("manifest")
-			ViewManifest()
-
-		if("hiveleaders")
-			ViewHiveLeaders()
-
-		if("SelectedJob")
-
-			if(!GLOB.enter_allowed)
-				to_chat(usr, SPAN_WARNING("There is an administrative lock on entering the game! (The dropship likely crashed into the Almayer. This should take at most 20 minutes.)"))
-				return
-
-			AttemptLateSpawn(href_list["job_selected"])
-			return
-
-		if("tutorial")
-			tutorial_menu()
-
-		else
-			new_player_panel()
-
-/mob/new_player/proc/tutorial_menu()
-	if(SSticker.current_state <= GAME_STATE_SETTING_UP)
-		to_chat(src, SPAN_WARNING("Please wait for the round to start before entering a tutorial."))
-		return
-
-	if(SSticker.current_state == GAME_STATE_FINISHED)
-		to_chat(src, SPAN_WARNING("The round has ended. Please wait for the next round to enter a tutorial."))
-		return
-
-	if(SSticker.tutorial_disabled)
-		to_chat(src, SPAN_WARNING("Tutorials are currently disabled because something broke, sorry!"))
-		return
-
-	var/datum/tutorial_menu/menu = new(src)
-	menu.ui_interact(src)
+	qdel(src)
 
 /mob/new_player/proc/AttemptLateSpawn(rank)
 	var/datum/job/player_rank = GLOB.RoleAuthority.roles_for_mode[rank]
@@ -256,7 +176,6 @@
 				msg_sea("NEW PLAYER: <b>[key_name(character, 0, 1, 0)]</b> only has [(round(client.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(character)] - Current location: [get_area(character)]")
 
 	character.client.init_verbs()
-	SSbattlepass.marine_battlepass_earners |= character.client.ckey
 	qdel(src)
 
 

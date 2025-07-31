@@ -1878,7 +1878,7 @@ Defined in conflicts.dm of the #defines folder.
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 
-/obj/item/attachable/stock/synth/collapsible//collapsible/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+/obj/item/attachable/stock/synth/collapsible/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
 	. = ..() // We are forcing attach_icon skin
 	var/new_attach_icon
 	var/new_icon_state

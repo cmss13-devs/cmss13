@@ -6,7 +6,7 @@
 #if (DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD) && !defined(SPACEMAN_DMM) && !defined(OPENDREAM)
 //Don't forget to update this part
 #error Your version of BYOND is too out-of-date to compile this project. Go to https://www.byond.com/download and update.
-#error You need version 516.1655 or higher
+#error You need version 516.1661 or higher
 #endif
 
 // So we want to have compile time guarantees these methods exist on local type, unfortunately 515 killed the .proc/procname and .verb/verbname syntax so we have to use nameof()

@@ -67,7 +67,7 @@
 	sorted_list.Cut()
 	sorted_list = AStar(get_turf(rail_ends[1]), get_turf(rail_ends[2]), /turf/proc/adjacent_turf_with_rails, /turf/proc/Distance, 0, 30) //right over here
 	START_PROCESSING(SSfastobj, src)
-	current_rail = sorted_list.Find(dragged_rail)
+	current_rail = sorted_list.Find(get_turf(dragged_rail))
 	RegisterSignal(linked_target, COMSIG_SHOOTING_TARGET_DOWN, PROC_REF(pause_movement))
 	RegisterSignal(linked_target, COMSIG_PARENT_QDELETING, PROC_REF(target_unlink))
 	in_motion = TRUE

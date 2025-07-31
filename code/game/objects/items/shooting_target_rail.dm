@@ -1,7 +1,7 @@
 /obj/item/shooting_target_rail
 	name = "Target Rail"
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "monorail"
+	icon = 'icons/obj/structures/rail.dmi'
+	icon_state = "rail"
 	desc = "a rail that is used to place a shooting target on top. Once wrenched and a proper track is formed, allows practice target to move back and forth."
 
 /obj/item/shooting_target_rail/attackby(obj/item/wrench, mob/user)

@@ -80,7 +80,7 @@
 	name = "shooting target"
 	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo wont have any effect."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
-	icon_state = "target_a"
+	icon_state = "full_target"
 	density = FALSE
 	health = 10000
 	wrenchable = TRUE
@@ -89,10 +89,10 @@
 	var/list/practice_mode = PRACTICE_LEVEL_LOW
 	///health of the target mode
 	var/practice_health = 230
+	var/is_on_carriage
 
 /obj/structure/target/Initialize(mapload, ...)
 	. = ..()
-	icon_state = pick("target_a", "target_q")
 
 /obj/structure/target/get_examine_text(mob/user)
 	. = ..()
@@ -100,6 +100,11 @@
 	. += SPAN_NOTICE("It appears to be at [floor(max(1, practice_health)/practice_mode[1]*100)]% health.")
 	if(practice_health <= 0)
 		. += SPAN_WARNING("[src] is currently rebooting!")
+	if(!is_on_carriage)
+		. += SPAN_HELPFUL("The target first needs to be placed on a target carriage. Place the target on the carriage by dragging and clicking on the carriage.")
+	else
+		. += SPAN_HELPFUL("With the target on carriage, place it onto the tracks. [src] will immediatly spring into motion upon installing.")
+
 
 /obj/structure/target/bullet_act(obj/projectile/bullet)
 	. = ..()
@@ -136,9 +141,14 @@
 		user.visible_message(SPAN_NOTICE("[user] adjusted the difficulty of [src]."), SPAN_NOTICE("You adjusted the difficulty of [src] to [lowertext(picked_option)]"))
 
 /obj/structure/target/proc/start_practice_health_reset()
-	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)
-	animate(transform = matrix(270, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
-	langchat_speech("[src] folds to the ground!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	if(!is_on_carriage)
+		animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)
+		animate(transform = matrix(270, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
+		langchat_speech("[src] folds to the ground!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	else
+		langchat_speech("[src] folds back on carriage!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+		animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)
+		animate(transform = matrix(8, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
 	playsound(loc, 'sound/machines/chime.ogg', 50, TRUE, 7)
 	addtimer(CALLBACK(src, PROC_REF(raise_target)), 5 SECONDS)
 	SEND_SIGNAL(src, COMSIG_SHOOTING_TARGET_DOWN)
@@ -161,8 +171,8 @@
 /obj/structure/shooting_target_rail
 	name = "shooting range rail"
 	desc = "A rail for making shooting targets move. When assembled, a placed shooting target will start to move back and forth on the track."
-	icon = 'icons/obj/structures/structures.dmi'
-	icon_state = "monorail"
+	icon = 'icons/obj/structures/rail.dmi'
+	icon_state = "rail"
 	density = FALSE
 	anchored = TRUE
 	dir = WEST
@@ -180,7 +190,7 @@
 			. += SPAN_WARNING("Disassemble all rails that were a part of it.")
 	else
 		. += SPAN_NOTICE("Not connected to any network!")
-	. += SPAN_HELPFUL("To place a shooting target on rails, hit a rail while dragging the target. Only one target is allowed on the entire track.")
+	. += SPAN_HELPFUL("To place a shooting target on rails: place a shooting target on moving carriage. Place carriage on tracks. Only one target is allowed on the entire track.")
 	. += SPAN_HELPFUL("Use an empty hand to pause the movement for 15 seconds. Use a wrench to disassemble.")
 
 /obj/structure/shooting_target_rail/Destroy()
@@ -200,6 +210,8 @@
 	. = ..()
 	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
+	if(!manager_reference.in_motion)
+		to_chat(user, SPAN_WARNING("[src] is not in motion to pause it!"))
 	manager_reference.pause_movement(manager_reference.linked_target, 15 SECONDS)
 	to_chat(user, SPAN_WARNING("You paused the track for 15 seconds."))
 
@@ -209,13 +221,16 @@
 		var/atom/dragged_atom = grab_hit.grabbed_thing
 		if(istype(dragged_atom, /obj/structure/target))
 			var/obj/structure/target/practice_target = dragged_atom
+			if(!practice_target.is_on_carriage)
+				to_chat(user, SPAN_WARNING("Place a target on a carriage first!"))
+				return
 			if(!isnull(manager_reference.linked_target))
 				to_chat(user, SPAN_WARNING("This network already has a linked target!"))
 				return
 			if(!do_after(user, 6 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
 			playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
-			to_chat(user, SPAN_NOTICE("You place [item_hit_with] on [src] suspension tracks"))
+			to_chat(user, SPAN_NOTICE("You place [practice_target] on [src] suspension tracks"))
 			manager_reference.linked_target = practice_target
 			manager_reference.on_target_link(src)
 			return
@@ -265,7 +280,6 @@
 			var/first_dir = get_dir(src, finalized_connection[1])
 			var/second_dir = get_dir(src, finalized_connection[2])
 			var/correct_dir = abs(first_dir + second_dir)
-			to_world("Direction from connecting two rails [dir2text(correct_dir)]")
 			connected_direction = correct_dir
 			finalized_connection[2].finalized_connection += src
 			finalized_connection[1].finalized_connection += src
@@ -276,7 +290,6 @@
 	else if(rails_found == 1)
 		var/correct_dir = get_dir(src, finalized_connection[1])
 		connected_direction = correct_dir
-		to_world("Single rail dir: [dir2text(correct_dir)]")
 		finalized_connection[1].finalized_connection += src
 		finalized_connection[1].update_icon()
 	update_icon()
@@ -297,6 +310,7 @@
 /obj/structure/shooting_target_rail/update_icon()
 	. = ..()
 	if(length(finalized_connection) >= 2)
+		icon_state = "rail"
 		if(!(get_dir(finalized_connection[1],finalized_connection[2]) in CARDINAL_DIRS))
 			var/first_dir = get_dir(src, finalized_connection[1])
 			var/second_dir = get_dir(src, finalized_connection[2])
@@ -304,9 +318,31 @@
 		else
 			connected_direction = get_dir(finalized_connection[1],finalized_connection[2])
 	else if (length(finalized_connection)  == 1)
+		icon_state ="rail_end"
 		connected_direction = get_dir(src, finalized_connection[1])
 	dir = connected_direction
 
+/obj/structure/shooting_carriage
+	name = "Shooting range carriage"
+	desc = "A motorized carriage to be placed on shooting range tracks. Place a shooting target on it before placing on tracks."
+	icon = 'icons/obj/structures/props/target_dummies.dmi'
+	icon_state = "target_carriage"
+	anchored = FALSE
+
+/obj/structure/shooting_carriage/attackby(obj/item/item_hit_with, mob/user)
+	if(istype(item_hit_with, /obj/item/grab))
+		var/obj/item/grab/grab_hit = item_hit_with
+		var/atom/dragged_atom = grab_hit.grabbed_thing
+		if(istype(dragged_atom, /obj/structure/target))
+			var/obj/structure/target/practice_target = dragged_atom
+			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+			playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
+			practice_target.forceMove(get_turf(src))
+			practice_target.underlays += icon(icon, icon_state)
+			practice_target.is_on_carriage = TRUE
+			qdel(src)
+			return
 
 /obj/structure/monorail
 	name = "monorail track"

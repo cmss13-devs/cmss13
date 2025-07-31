@@ -47,6 +47,16 @@ GLOBAL_REAL_VAR(total_runtimes)
 		return
 	runtime_hashes[hash] = 1
 
+	var/list/datum/static_callee/error_callees = list()
+	for(var/callee/called = caller, called, called = called.caller)
+		error_callees += clone_callee(called)
+	reverse_range(error_callees)
+
+	SSsentry.envelopes += new /datum/error_envelope(
+		E.name,
+		error_callees,
+	)
+
 	// Single error logging to STUI
 	var/text = "\[[time_stamp()]]RUNTIME: [E.name] - [E.file]@[E.line]"
 	if(GLOB?.STUI?.runtime)
@@ -56,3 +66,31 @@ GLOBAL_REAL_VAR(total_runtimes)
 		stui_init_runtimes.Add(text)
 
 	log_runtime("runtime error: [E.name]\n[E.desc]")
+
+/datum/static_callee
+	var/list/_args
+	var/file
+	var/line
+	var/proc
+	var/_src
+	var/_usr
+	var/name
+
+/datum/static_callee/New(list/_args, file, line, proc, _src, _usr, name)
+	src._args = _args.Copy()
+	src.file = file
+	src.line = line
+	src._src = _src // sigh
+	src._usr = _usr
+	src.name = name
+
+/proc/clone_callee(callee/to_clone) as /datum/static_callee
+	return new /datum/static_callee(
+		to_clone.args,
+		to_clone.file,
+		to_clone.line,
+		to_clone.proc,
+		to_clone.src,
+		to_clone.usr,
+		to_clone.name,
+	)

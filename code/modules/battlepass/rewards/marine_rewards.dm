@@ -32,7 +32,7 @@
 		return FALSE
 
 	marine_armor.flags_marine_armor &= ~ARMOR_SQUAD_OVERLAY
-	marine_armor.flags_atom |= NO_SNOW_TYPE
+	marine_armor.flags_atom |= NO_GAMEMODE_SKIN
 	marine_armor.armor_variation = FALSE
 	marine_armor.icon = 'code/modules/battlepass/rewards/sprites/armorobj.dmi'
 	marine_armor.icon_state = "diamond_armor"
@@ -45,7 +45,7 @@
 	marine_armor.update_clothing_icon()
 
 	if(target_human.shoes)
-		target_human.shoes.flags_atom |= NO_SNOW_TYPE
+		target_human.shoes.flags_atom |= NO_GAMEMODE_SKIN
 		target_human.shoes.icon = 'code/modules/battlepass/rewards/sprites/armorobj.dmi'
 		target_human.shoes.icon_state = "diamond_boots"
 		target_human.shoes.item_icons = list(
@@ -62,7 +62,7 @@
 
 	if(istype(target_human.head, /obj/item/clothing/head/helmet/marine))
 		var/obj/item/clothing/head/helmet/marine/marine_helmet = target_human.head
-		target_human.head.flags_atom |= NO_SNOW_TYPE
+		target_human.head.flags_atom |= NO_GAMEMODE_SKIN
 		marine_helmet.flags_marine_helmet = NONE
 		marine_helmet.icon = 'code/modules/battlepass/rewards/sprites/armorobj.dmi'
 		marine_helmet.icon_state = "diamond_helmet"

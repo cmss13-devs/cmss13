@@ -1,15 +1,3 @@
-/client
-	/// Reference to the client's battlepass
-	var/datum/battlepass/owned_battlepass
-
-/client/New()
-	. = ..()
-	init_battlepass()
-
-/client/Destroy()
-	save_battlepass()
-	return ..()
-
 /client/proc/init_battlepass()
 	if(fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/battlepass.sav"))
 		load_battlepass()

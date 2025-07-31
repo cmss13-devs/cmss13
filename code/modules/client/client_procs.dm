@@ -459,6 +459,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		spawn if(src)
 			ip2country(address, src)
 
+	init_battlepass()
+
+
 	//////////////
 	//DISCONNECT//
 	//////////////
@@ -473,6 +476,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	return ..()
 
 /client/Destroy()
+	save_battlepass()
 	QDEL_NULL(soundOutput)
 	QDEL_NULL(obj_window)
 	if(prefs)

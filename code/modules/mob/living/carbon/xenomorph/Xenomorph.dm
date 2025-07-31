@@ -68,6 +68,7 @@
 
 	var/static/list/walking_state_cache = list()
 	var/has_walking_icon_state = FALSE
+	var/has_halo = FALSE as num
 
 	//////////////////////////////////////////////////////////////////
 	//

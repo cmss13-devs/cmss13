@@ -11,9 +11,6 @@
 
 	return TRUE
 
-/mob/living/carbon/xenomorph
-	var/has_halo = FALSE as num
-
 /mob/living/carbon/xenomorph/proc/get_halo_iconname()
 	return lowertext(caste_type)
 

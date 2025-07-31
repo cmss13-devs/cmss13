@@ -288,7 +288,7 @@
 		user.track_life_saved(user.job)
 		if(!user.statistic_exempt && ishuman(target))
 			user.life_revives_total++
-		SEND_SIGNAL(user, COMSIG_HUMAN_USED_DEFIB, H)
+		SEND_SIGNAL(user, COMSIG_HUMAN_USED_DEFIB, target)
 		target.handle_revive()
 		if(heart)
 			heart.take_damage(rand(min_heart_damage_dealt, max_heart_damage_dealt), TRUE) // Make death and revival leave lasting consequences

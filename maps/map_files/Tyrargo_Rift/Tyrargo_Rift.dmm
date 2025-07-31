@@ -8595,8 +8595,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /obj/structure/closet/crate/green,
-/obj/item/storage/box/mre/us_army,
-/obj/item/storage/box/mre/us_army,
+/obj/item/storage/box/mre,
+/obj/item/storage/box/mre,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
 "avv" = (
@@ -29139,7 +29139,7 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -15
 	},
-/obj/item/storage/box/mre/us_army,
+/obj/item/storage/box/mre,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
 "bnt" = (
@@ -110882,7 +110882,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/item/storage/box/mre/us_army,
+/obj/item/storage/box/mre,
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "swU" = (

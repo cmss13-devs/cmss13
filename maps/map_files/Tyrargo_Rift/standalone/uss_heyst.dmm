@@ -5162,7 +5162,6 @@
 /obj/structure/prop/tyrargo/boards/boards_1{
 	pixel_x = -15
 	},
-/obj/item/storage/box/mre/us_army,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts_road/central)
 "QU" = (
@@ -7180,7 +7179,7 @@ CH
 kU
 vd
 vd
-kU
+vd
 UY
 to
 sG

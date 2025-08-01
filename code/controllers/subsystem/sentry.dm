@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(sentry)
 	var/list/datum/error_envelope/envelopes = list()
 
 	var/static/list/characters = splittext("abcdef012345679", "")
+	var/list/hashed_context = list()
 
 /datum/controller/subsystem/sentry/fire(resumed)
 	var/static/list/headers = list(
@@ -39,12 +40,32 @@ SUBSYSTEM_DEF(sentry)
 				parsed_args["argument #[index]"] = arg
 				index++
 
+			var/pre_context, context, post_context
+
+			var/hash = "[called.file]:[called.line]"
+			if(hash in hashed_context)
+				pre_context = hashed_context[hash][1]
+				context = hashed_context[hash][2]
+				post_context = hashed_context[hash][3]
+			else
+				var/list/file_lines = splittext(rustg_file_read(called.file), "\n")
+
+				pre_context = file_lines.Copy(called.line - 5, called.line)
+				context = file_lines[called.line]
+
+				var/total_post_context = clamp(called.line + 6, 0, length(file_lines))
+				post_context = file_lines.Copy(called.line + 1, total_post_context)
+
+				hashed_context[hash] = list(pre_context, context, post_context)
+
 			stacktrace += list(list(
 				"filename" = called.file,
 				"function" = replacetext(called.name, " ", "_"),
 				"lineno" = called.line,
 				"vars" = parsed_args,
-				"source_link" = "https://github.com/cmss13-devs/cmss13/blob/[git_revision]/[called.file]#L[called.line]"
+				"pre_context" = pre_context,
+				"context_line" = context,
+				"post_context" = post_context,
 			))
 
 		var/list/event_parts = list(

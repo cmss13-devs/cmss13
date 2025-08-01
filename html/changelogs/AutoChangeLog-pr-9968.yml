@@ -1,0 +1,4 @@
+author: "FourkhanDaKhan"
+delete-after: True
+changes:
+  - bugfix: "the ID modification console does not allow modification from other users"

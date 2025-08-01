@@ -90,6 +90,7 @@ GLOBAL_REAL_VAR(total_runtimes)
 	src._args = _args.Copy()
 	src.file = file
 	src.line = line
+	src.proc = proc
 	src._src = _src // sigh
 	src._usr = _usr
 	src.name = name

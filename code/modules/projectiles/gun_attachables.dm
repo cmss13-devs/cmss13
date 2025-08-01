@@ -1844,7 +1844,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = 0
 	aim_speed_mod = 0
 	wield_delay_mod = WIELD_DELAY_NONE
-	select_gamemode_skin(/obj/item/attachable/stock/synth/collapsible/)
+	select_gamemode_skin(type)
 
 
 /obj/item/attachable/stock/synth/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
@@ -1859,7 +1859,7 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod =  SCATTER_AMOUNT_TIER_8
 		aim_speed_mod = CONFIG_GET(number/slowdown_med)
 		hud_offset_mod = 5
-		select_gamemode_skin(/obj/item/attachable/stock/synth/collapsible/)
+		select_gamemode_skin(type)
 		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
 
 	else
@@ -1872,7 +1872,7 @@ Defined in conflicts.dm of the #defines folder.
 		scatter_unwielded_mod = 0
 		aim_speed_mod = 0
 		hud_offset_mod = 5
-		select_gamemode_skin(/obj/item/attachable/stock/synth/collapsible/)
+		select_gamemode_skin(type)
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()

@@ -43,6 +43,13 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
+	if (id_card.registered_ref?.resolve() != user)
+		visible_message("[SPAN_BOLD("[user]")] starts fidgeting with the ID console.")
+
+		if (!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Incorrect user for the given ID!\"")
+			return FALSE
+
 	if(check_access(id_card))
 		authenticated = TRUE
 		maybe_authenticated_user = user

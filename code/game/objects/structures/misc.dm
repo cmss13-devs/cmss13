@@ -91,9 +91,6 @@
 	var/practice_health = 230
 	var/is_on_carriage
 
-/obj/structure/target/Initialize(mapload, ...)
-	. = ..()
-
 /obj/structure/target/get_examine_text(mob/user)
 	. = ..()
 	. += SPAN_BOLDNOTICE("It seems to have a control panel on it.")
@@ -157,16 +154,6 @@
 	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
 	langchat_speech("[src] raises back into position!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 	practice_health = practice_mode[1]
-
-/obj/structure/target/syndicate
-	icon_state = "target_s"
-	desc = "A shooting target that looks like a hostile agent."
-	health = 7500
-
-/obj/structure/target/alien
-	icon_state = "target_q"
-	desc = "A shooting target with a threatening silhouette."
-	health = 6500
 
 /obj/structure/shooting_target_rail
 	name = "shooting range rail"

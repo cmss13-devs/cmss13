@@ -43,10 +43,6 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
-	if (id_card.registered_ref?.resolve() != user)
-		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Incorrect user for the given ID!\"")
-		return FALSE
-
 	if(check_access(id_card))
 		authenticated = TRUE
 		maybe_authenticated_user = user
@@ -98,9 +94,6 @@
 					user_id_card.forceMove(loc)
 				user_id_card = null
 		if("PRG_logout")
-			if (!verify_current_user_is_authenticated_user(user))
-				return
-
 			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 			authenticated = FALSE
 			maybe_authenticated_user = null

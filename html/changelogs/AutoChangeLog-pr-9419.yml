@@ -1,0 +1,4 @@
+author: "Kyogon"
+delete-after: True
+changes:
+  - imageadd: "added a new queen sprite"

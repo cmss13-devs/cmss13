@@ -66,6 +66,7 @@ SUBSYSTEM_DEF(sentry)
 				"pre_context" = pre_context,
 				"context_line" = context,
 				"post_context" = post_context,
+				"source_link" = "https://github.com/cmss13-devs/cmss13/blob/[git_revision]/[called.file]#L[called.line]"
 			))
 
 		var/list/event_parts = list(

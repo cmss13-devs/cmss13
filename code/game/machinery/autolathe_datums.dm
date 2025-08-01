@@ -500,4 +500,4 @@
 
 /datum/autolathe/recipe/medilathe/research_glasses
 	name = "Reagent scanner HUD goggles"
-	pathe = /obj/item/clothing/glasses/science
+	path = /obj/item/clothing/glasses/science

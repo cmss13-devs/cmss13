@@ -11,7 +11,8 @@
 #define RESIN_CORE 11
 #define RESIN_PYLON 12
 #define RESIN_EGGMORPH 13
-#define RESIN_TRAP 14
+#define RESIN_TREE 14
+#define RESIN_TRAP 15
 
 /mob/living/carbon/xenomorph/proc/build_resin(atom/target, thick = FALSE, message = TRUE, use_plasma = TRUE, add_build_mod = 1)
 	if(!selected_resin)
@@ -76,6 +77,8 @@
 		structure_kind = RESIN_PYLON
 	else if(istype(target, /obj/effect/alien/resin/special/eggmorph))
 		structure_kind = RESIN_EGGMORPH
+	else if(istype(target, /obj/effect/alien/resin/special/plasma_tree))
+		structure_kind = RESIN_TREE
 	else if(istype(target, /obj/effect/alien/resin/trap))
 		structure_kind = RESIN_TRAP
 
@@ -331,6 +334,26 @@
 				eggmorph.healthcheck()
 				return TRUE
 
+			if(RESIN_TREE)
+				var/obj/effect/alien/resin/special/plasma_tree/plasma_tree = target
+				if(!can_deconstruct)
+					return SECRETE_RESIN_FAIL
+
+				if(hivenumber != plasma_tree.linked_hive.hivenumber)
+					return SECRETE_RESIN_FAIL
+
+				if(!can_destroy_special())
+					return SECRETE_RESIN_FAIL
+
+				if(!deconstruct_windup(target, 4 SECONDS))
+					return SECRETE_RESIN_FAIL
+
+				plasma_tree.visible_message(SPAN_XENONOTICE("[plasma_tree] crumbles!"))
+				playsound(target.loc, "alien_resin_break", 25)
+				plasma_tree.health -= initial(plasma_tree.health) * 2
+				plasma_tree.healthcheck()
+				return TRUE
+
 			if(RESIN_TRAP)
 				var/obj/effect/alien/resin/trap/resin_trap = target
 				if(!can_deconstruct)
@@ -453,6 +476,7 @@
 #undef RESIN_CORE
 #undef RESIN_PYLON
 #undef RESIN_EGGMORPH
+#undef RESIN_TREE
 #undef RESIN_TRAP
 
 /mob/living/carbon/xenomorph/proc/deconstruct_windup(atom/target, delay = 2 SECONDS)

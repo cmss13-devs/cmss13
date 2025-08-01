@@ -56,9 +56,11 @@ SUBSYSTEM_DEF(sentry)
 
 				hashed_context[hash] = list(pre_context, context, post_context)
 
+			var/procpath/proc_path = called.proc
+
 			stacktrace += list(list(
 				"filename" = called.file,
-				"function" = replacetext(called.name, " ", "_"),
+				"function" = proc_path.type,
 				"lineno" = called.line,
 				"vars" = parsed_args,
 				"pre_context" = pre_context,

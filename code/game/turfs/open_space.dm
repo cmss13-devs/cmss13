@@ -52,7 +52,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		if(xeno_victim.mob_size >= MOB_SIZE_BIG)
 			climb_down_time = 3 SECONDS
 		else
-			climb_down_time = 1.5 SECONDS
+			climb_down_time = 1 SECONDS
 
 	if(user.action_busy)
 		return

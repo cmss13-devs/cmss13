@@ -1,4 +1,0 @@
-author: "Willzadl"
-delete-after: True
-changes:
-  - rscadd: "Nested predators will now be stabilized"

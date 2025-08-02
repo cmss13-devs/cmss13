@@ -64,6 +64,11 @@
 	modifier_name = "Disable Internal Bleeding"
 	modifier_desc = "Prevents mobs from getting internal bleeding when injured."
 
+/// Disables embedding in /obj/limb/proc/embed()
+/datum/gamemode_modifier/disable_embed
+	modifier_name = "Disable Embedding"
+	modifier_desc = "Prevents mobs from having objects embedded in them."
+
 /datum/gamemode_modifier/disable_long_range_sentry
 	modifier_name = "Disable Long Range Sentry Upgrades"
 	modifier_desc = "Prevents sentries from upgrading to long range variants. Applies to DMR and Long-Range Plasma upgrades."

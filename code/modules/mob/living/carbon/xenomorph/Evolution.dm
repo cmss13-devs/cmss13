@@ -71,10 +71,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		return
 
 	if(castepick == XENO_CASTE_QUEEN) //Special case for dealing with queenae
-		if(hardcore)
-			to_chat(src, SPAN_WARNING("Nuh-uhh."))
-			return
-
 		if(SSticker.mode && hive.xeno_queen_timer > world.time)
 			to_chat(src, SPAN_WARNING("We must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
 			return
@@ -87,6 +83,13 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		else
 			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
 			return
+
+	if(hardcore)
+		if(castepick != XENO_CASTE_QUEEN) //Prevent evolutions into T2s and T3s in WO
+			to_chat(src, SPAN_WARNING ("The Hive can only support evolving into Queens!"))
+			return
+		on_mob_jump()
+		forceMove(get_turf(pick(GLOB.queen_spawns)))
 
 	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)
@@ -240,10 +243,6 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
 		return FALSE
 
-	if(hardcore)
-		to_chat(src, SPAN_WARNING("Nuh-uh."))
-		return FALSE
-
 	if(lock_evolve)
 		if(banished)
 			to_chat(src, SPAN_WARNING("We are banished and cannot reach the hivemind."))
@@ -365,6 +364,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		else
 			to_chat(src, SPAN_WARNING("We can't deevolve."))
 		return FALSE
+
+	if(hardcore)
+		to_chat(src, SPAN_WARNING("We can't deevolve."))
+		return
 
 	var/alleged_queens = hive.get_potential_queen_count()
 	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))

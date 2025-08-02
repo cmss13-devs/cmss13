@@ -196,4 +196,8 @@ interface Window {
   Byond: ByondType;
   __store__: Store<unknown, AnyAction>;
   __augmentStack__: (store: Store) => StackAugmentor;
+
+  hubStorage: Storage;
+  domainStorage: Storage;
+  serverStorage: Storage;
 }

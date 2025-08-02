@@ -111,22 +111,29 @@
 #define COOLDOWN_TOGGLE_DECONSTRUCTION "cooldown_toggle_deconstruction"
 #define COOLDOWN_TOGGLE_UNNESTING "cooldown_toggle_unnesting"
 
-/// Whether you can slash non-infected
+/// Whether you can harm non-infected
 #define XENO_SLASH_NORMAL (1<<0)
-/// Whether you can slash infected
+/// Whether you can harm infected
 #define XENO_SLASH_INFECTED (1<<1)
-/// Multi-flag to indicate all slashing is allowed
+/// Multi-flag to indicate all harming is allowed
 #define XENO_SLASH_ALLOW_ALL (XENO_SLASH_NORMAL|XENO_SLASH_INFECTED)
+/// Whether only drone castes can unnest hosts
 #define XENO_UNNESTING_RESTRICTED (1<<2)
+/// Whether normal xenos can make special structures
 #define XENO_CONSTRUCTION_NORMAL (1<<3)
+/// Whether leader xenos can make special structures
 #define XENO_CONSTRUCTION_LEADERS (1<<4)
+/// Whether queen can make special structures
 #define XENO_CONSTRUCTION_QUEEN (1<<5)
-/// Multi-flag to indicate all construction is allowed
+/// Multi-flag to indicate all special structures construction is allowed
 #define XENO_CONSTRUCTION_ALLOW_ALL (XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS|XENO_CONSTRUCTION_NORMAL)
+/// Whether normal xenos can destroy special structures
 #define XENO_DECONSTRUCTION_NORMAL (1<<6)
+/// Whether leader xenos can destroy special structures
 #define XENO_DECONSTRUCTION_LEADERS (1<<7)
+/// Whether queen can destroy special structures
 #define XENO_DECONSTRUCTION_QUEEN (1<<8)
-/// Multi-flag to indicate all deconstruction is allowed
+/// Multi-flag to indicate all special structures deconstruction is allowed
 #define XENO_DECONSTRUCTION_ALLOW_ALL (XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS|XENO_DECONSTRUCTION_NORMAL)
 
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,

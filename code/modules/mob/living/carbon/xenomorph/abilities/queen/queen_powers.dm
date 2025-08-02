@@ -351,10 +351,10 @@
 			queen_order()
 	return ..()
 
-/datum/action/xeno_action/onclick/manage_hive/use_ability(atom/Atom)
+/datum/action/xeno_action/onclick/manage_hive/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/queen/queen_manager = owner
 	plasma_cost = 0
-	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Purchase Buffs")
+	var/list/options = list("Banish (500)", "Re-Admit (100)", "De-evolve (500)", "Reward Jelly (500)", "Exchange larva for evolution (100)", "Permissions", "Purchase Buffs")
 	if(queen_manager.hive.hivenumber == XENO_HIVE_CORRUPTED)
 		var/datum/hive_status/corrupted/hive = queen_manager.hive
 		options += "Add Personal Ally"
@@ -362,7 +362,7 @@
 			options += "Remove Personal Ally"
 			options += "Clear Personal Allies"
 
-	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management",  options, theme="hive_status")
+	var/choice = tgui_input_list(queen_manager, "Manage The Hive", "Hive Management", options, theme="hive_status")
 	switch(choice)
 		if("Banish (500)")
 			banish()
@@ -380,9 +380,24 @@
 			remove_personal_ally()
 		if("Clear Personal Allies")
 			clear_personal_allies()
+		if("Permissions")
+			permissions()
 		if("Purchase Buffs")
 			purchase_buffs()
 	return ..()
+
+/datum/action/xeno_action/onclick/manage_hive/proc/permissions()
+	var/mob/living/carbon/xenomorph/queen/xeno = owner
+	var/choice = tgui_input_list(xeno, "Choose what hive permissions to change.", "Hive Permissions", list("Harming", "Construction", "Deconstruction", "Unnesting"), theme="hive_status")
+	switch(choice)
+		if("Harming")
+			xeno.claw_toggle()
+		if("Construction")
+			xeno.construction_toggle()
+		if("Deconstruction")
+			xeno.destruction_toggle()
+		if("Unnesting")
+			xeno.unnesting_toggle()
 
 /datum/action/xeno_action/onclick/manage_hive/proc/purchase_buffs()
 	var/mob/living/carbon/xenomorph/queen/xeno = owner

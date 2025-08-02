@@ -13,7 +13,10 @@
 
 	/// Toggles for the hive that are reset on queen death
 	var/hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
-	
+
+	/// Whether hive_flags are locked (as in cannot be changed by a queen)
+	var/hive_flags_locked = FALSE
+
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list

@@ -11,7 +11,7 @@
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
 	var/egg_planting_range = 15
 
-	/// Toggles for the hive that are reset on queen death
+	/// Toggles for the hive that are reset on queen death unless hive_flags_locked
 	var/hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
 
 	/// Whether hive_flags are locked (as in cannot be changed by a queen)

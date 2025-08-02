@@ -1,4 +1,0 @@
-author: "Willzadl"
-delete-after: True
-changes:
-  - bugfix: "fixed chanterelle box not having a proper name in the galley vendor"

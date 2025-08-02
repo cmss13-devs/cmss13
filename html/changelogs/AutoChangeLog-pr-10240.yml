@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - bugfix: "alt iff now does not care about people on the same z as you if you're shooting at a turf above"

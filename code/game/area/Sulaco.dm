@@ -24,7 +24,7 @@
 	name = "\improper Dropship Alamo"
 	icon_state = "shuttlered"
 	base_muffle = MUFFLE_HIGH
-	base_lighting_alpha = 255
+	base_lighting_alpha = 0
 	is_resin_allowed = FALSE
 
 /area/shuttle/drop1/LV624
@@ -80,7 +80,7 @@
 	name = "\improper Dropship Normandy"
 	icon_state = "shuttle"
 	base_muffle = MUFFLE_HIGH
-	base_lighting_alpha = 255
+	base_lighting_alpha = 0
 	is_resin_allowed = FALSE
 
 /area/shuttle/drop2/LV624

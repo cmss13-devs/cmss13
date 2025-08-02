@@ -316,10 +316,13 @@
 
 
 /atom/movable/screen/alert/multi_z/proc/update_alert(mob/user)
-	var/turf/above = locate(user.x, user.y, (user.z + 1))
+	if(!isturf(user.loc))
+		return
+	
+	var/turf/above = SSmapping.get_turf_above(user)
 
 	if(istype(user, /mob/living/carbon/xenomorph))
-		if(istransparentturf(above))
+		if(above && istransparentturf(above))
 			icon_state = "uphint1_xeno"
 			desc = "There's an open space above you, Click the alert to look up."
 		else
@@ -327,7 +330,7 @@
 			desc = "There's nothing to look up at right now."
 
 	else
-		if(istransparentturf(above))
+		if(above && istransparentturf(above))
 			icon_state = "uphint1"
 			desc = "There's an open space above you, Click the alert to look up."
 		else

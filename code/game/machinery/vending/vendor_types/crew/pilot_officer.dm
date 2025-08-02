@@ -115,9 +115,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_pilot_officer, list(
 		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("GLASSES (CHOOSE 1)", 0, null, null, null),
-		list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Aviator Shades, Gold", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Aviator Shades, Silver", 0, /obj/item/clothing/glasses/sunglasses/aviator/silver, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 		list("Sunglasses", 0, /obj/item/clothing/glasses/sunglasses, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+
+		list("FLIGHT VISOR (CHOOSE 1)", 0, null, null, null),
+		list("MK30 Flight Visor, Black", 0, /obj/item/device/helmet_visor/po_visor, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Purple", 0, /obj/item/device/helmet_visor/po_visor/purple, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Light-Blue", 0, /obj/item/device/helmet_visor/po_visor/lightblue, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Red", 0, /obj/item/device/helmet_visor/po_visor/red, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Dark-Blue", 0, /obj/item/device/helmet_visor/po_visor/darkblue, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Yellow", 0, /obj/item/device/helmet_visor/po_visor/yellow, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
@@ -209,9 +218,19 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
 		list("Black Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("GLASSES (CHOOSE 1)", 0, null, null, null),
-		list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Aviator Shades, Gold", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Aviator Shades, Silver", 0, /obj/item/clothing/glasses/sunglasses/aviator/silver, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
+		list("Medical Visor", 0, /obj/item/device/helmet_visor/medical/advanced, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_RECOMMENDED),
 		list("Sunglasses", 0, /obj/item/clothing/glasses/sunglasses, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+
+		list("FLIGHT VISOR (CHOOSE 1)", 0, null, null, null),
+		list("MK30 Flight Visor, Black", 0, /obj/item/device/helmet_visor/po_visor, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Purple", 0, /obj/item/device/helmet_visor/po_visor/purple, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Light-Blue", 0, /obj/item/device/helmet_visor/po_visor/lightblue, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Red", 0, /obj/item/device/helmet_visor/po_visor/red, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Dark-Blue", 0, /obj/item/device/helmet_visor/po_visor/darkblue, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
+		list("MK30 Flight Visor, Yellow", 0, /obj/item/device/helmet_visor/po_visor/yellow, MARINE_CAN_BUY_PILOT_VISOR, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),

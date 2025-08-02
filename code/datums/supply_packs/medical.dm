@@ -139,6 +139,8 @@
 		/obj/item/clothing/mask/breath/medical,
 		/obj/item/storage/box/masks,
 		/obj/item/storage/box/gloves,
+		/obj/item/tool/wrench
+		/obj/item/tool/crowbar
 	)
 	cost = 35 //that tent is expensive, man. Only order this crate if the old tent was destroyed.
 	containertype = /obj/structure/closet/crate/secure/medical

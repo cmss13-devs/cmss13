@@ -719,19 +719,27 @@
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	var/choice = tgui_input_list(src, "Choose which level of harming hosts to permit to your hive.", "Harming", list("Allowed", "Restricted - Infected Hosts", "Forbidden"), theme="hive_status")
+	var/current_setting = null
+	if(CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_SLASH_ALLOW_ALL))
+		current_setting = "Allowed"
+	else if(!(hive.hive_flags & XENO_SLASH_INFECTED) && (hive.hive_flags & XENO_SLASH_NORMAL))
+		current_setting = "Restricted - Infected Hosts"
+	else if(!(hive.hive_flags & XENO_SLASH_ALLOW_ALL))
+		current_setting = "Forbidden"
+
+	var/choice = tgui_input_list(src, "Choose which level of harming hosts to permit to your hive.", "Harming", list("Forbidden", "Restricted - Infected Hosts", "Allowed"), theme="hive_status", default=current_setting)
 	if(!choice)
 		return
 
 	if(choice == "Allowed")
-		if(CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_SLASH_ALLOW_ALL))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already allow harming."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You allow harming."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), hivenumber=hivenumber)
 		hive.hive_flags |= XENO_SLASH_ALLOW_ALL
 	else if(choice == "Restricted - Infected Hosts")
-		if(!(hive.hive_flags & XENO_SLASH_INFECTED) && (hive.hive_flags & XENO_SLASH_NORMAL))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already forbid harming of infected hosts."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You forbid harming of infected hosts."))
@@ -739,7 +747,7 @@
 		hive.hive_flags &= ~XENO_SLASH_INFECTED
 		hive.hive_flags |= XENO_SLASH_NORMAL
 	else if(choice == "Forbidden")
-		if(!(hive.hive_flags & XENO_SLASH_ALLOW_ALL))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already forbid harming entirely."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You forbid harming entirely."))
@@ -769,19 +777,27 @@
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	var/choice = tgui_input_list(src, "Choose which level of construction placement freedom to permit to your hive.", "Construction", list("Queen", "Leaders", "Anyone"), theme="hive_status")
+	var/current_setting = null
+	if(CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_CONSTRUCTION_ALLOW_ALL))
+		current_setting = "Anyone"
+	else if(!(hive.hive_flags & XENO_CONSTRUCTION_NORMAL) && CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS))
+		current_setting = "Leaders"
+	else if(!(hive.hive_flags & (XENO_CONSTRUCTION_LEADERS|XENO_CONSTRUCTION_NORMAL)) && (hive.hive_flags & XENO_CONSTRUCTION_QUEEN))
+		current_setting = "Queen"
+
+	var/choice = tgui_input_list(src, "Choose which level of construction placement freedom to permit to your hive.", "Construction", list("Queen", "Leaders", "Anyone"), theme="hive_status", default=current_setting)
 	if(!choice)
 		return
 
 	if(choice == "Anyone")
-		if(CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_CONSTRUCTION_ALLOW_ALL))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already allow construction placement to all builder castes."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
 		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!", hivenumber=hivenumber)
 		hive.hive_flags |= XENO_CONSTRUCTION_ALLOW_ALL
 	else if(choice == "Leaders")
-		if(!(hive.hive_flags & XENO_CONSTRUCTION_NORMAL) && CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already restrict construction placement to leaders only."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You restrict construction placement to leaders only."))
@@ -789,7 +805,7 @@
 		hive.hive_flags &= ~XENO_CONSTRUCTION_NORMAL
 		hive.hive_flags |= XENO_CONSTRUCTION_QUEEN|XENO_CONSTRUCTION_LEADERS
 	else if(choice == "Queen")
-		if(!(hive.hive_flags & (XENO_CONSTRUCTION_LEADERS|XENO_CONSTRUCTION_NORMAL)) && (hive.hive_flags & XENO_CONSTRUCTION_QUEEN))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already forbid construction placement entirely."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You forbid construction placement entirely."))
@@ -820,19 +836,27 @@
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	var/choice = tgui_input_list(src, "Choose which level of destruction freedom to permit to your hive.", "Deconstruction", list("Queen", "Leaders", "Anyone"), theme="hive_status")
+	var/current_setting = null
+	if(CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_ALLOW_ALL))
+		current_setting = "Anyone"
+	else if(!(hive.hive_flags & XENO_DECONSTRUCTION_NORMAL) && CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS))
+		current_setting = "Leaders"
+	else if(!(hive.hive_flags & (XENO_DECONSTRUCTION_LEADERS|XENO_DECONSTRUCTION_NORMAL)) && (hive.hive_flags & XENO_DECONSTRUCTION_QUEEN))
+		current_setting = "Queen"
+
+	var/choice = tgui_input_list(src, "Choose which level of destruction freedom to permit to your hive.", "Deconstruction", list("Queen", "Leaders", "Anyone"), theme="hive_status", default=current_setting)
 	if(!choice)
 		return
 
 	if(choice == "Anyone")
-		if(CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_ALLOW_ALL))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already allow special structure destruction to all builder castes and leaders."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))
 		xeno_message("The Queen has <b>permitted</b> the destruction of special structures to all builder castes and leaders!", hivenumber=hivenumber)
 		hive.hive_flags |= XENO_DECONSTRUCTION_ALLOW_ALL
 	else if(choice == "Leaders")
-		if(!(hive.hive_flags & XENO_DECONSTRUCTION_NORMAL) && CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already restrict special structure destruction to leaders only."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You restrict special structure destruction to leaders only."))
@@ -840,7 +864,7 @@
 		hive.hive_flags &= ~XENO_DECONSTRUCTION_NORMAL
 		hive.hive_flags |= XENO_DECONSTRUCTION_QUEEN|XENO_DECONSTRUCTION_LEADERS
 	else if(choice == "Queen")
-		if(!(hive.hive_flags & (XENO_DECONSTRUCTION_LEADERS|XENO_DECONSTRUCTION_NORMAL)) && (hive.hive_flags & XENO_DECONSTRUCTION_QUEEN))
+		if(current_setting == choice)
 			to_chat(src, SPAN_XENOWARNING("You already forbid special structure destruction entirely."))
 			return
 		to_chat(src, SPAN_XENONOTICE("You forbid special structure destruction entirely."))
@@ -870,7 +894,13 @@
 		to_chat(src, SPAN_WARNING("You must wait a bit before you can toggle this again."))
 		return
 
-	var/choice = tgui_input_list(src, "Choose which level of unnesting freedom to permit to your hive.", "Unnesting", list("Drone castes", "Anyone"), theme="hive_status")
+	var/current_setting = null
+	if(!(hive.hive_flags & XENO_UNNESTING_RESTRICTED))
+		current_setting = "Anyone"
+	else if(hive.hive_flags & XENO_UNNESTING_RESTRICTED)
+		current_setting = "Drone castes"
+
+	var/choice = tgui_input_list(src, "Choose which level of unnesting freedom to permit to your hive.", "Unnesting", list("Drone castes", "Anyone"), theme="hive_status", default=current_setting)
 	if(!choice)
 		return
 

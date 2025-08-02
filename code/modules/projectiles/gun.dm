@@ -229,6 +229,8 @@
 	var/gun_firemode = GUN_FIREMODE_SEMIAUTO
 	///List of allowed firemodes.
 	var/list/gun_firemode_list = list()
+	///If dual wield is forbidden.
+	var/akimbo_forbidden = FALSE
 	///How many bullets the gun fired while bursting/auto firing
 	var/shots_fired = 0
 	/// Currently selected target to fire at. Set with set_target()
@@ -1167,8 +1169,8 @@ and you're good to go.
 
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
-	if(!reflex && !dual_wield && user)
-		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
+	if(!reflex && !dual_wield && !akimbo_forbidden && user)
+		if(istype(akimbo) && !akimbo.akimbo_forbidden && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/fire_return = handle_fire(target, user, params, reflex, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
@@ -1181,11 +1183,13 @@ and you're good to go.
 /obj/item/weapon/gun/proc/handle_fire(atom/target, mob/living/user, params, reflex = FALSE, dual_wield, check_for_attachment_fire, akimbo, fired_by_akimbo)
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
-
+	var/is_dual_wield = dual_wield
 	var/atom/original_target = target //This is for burst mode, in case the target changes per scatter chance in between fired bullets.
 
 	if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
 		return TRUE
+	if(akimbo_forbidden)
+		is_dual_wield = FALSE
 
 	//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
 	var/obj/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
@@ -1196,7 +1200,7 @@ and you're good to go.
 
 	var/original_scatter = projectile_to_fire.scatter
 	var/original_accuracy = projectile_to_fire.accuracy
-	apply_bullet_scatter(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
+	apply_bullet_scatter(projectile_to_fire, user, reflex, is_dual_wield) //User can be passed as null.
 
 	curloc = get_turf(user)
 	if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.
@@ -1257,7 +1261,7 @@ and you're good to go.
 		if(before_fire_cancel & COMPONENT_HARD_CANCEL_GUN_BEFORE_FIRE)
 			return NONE
 
-	apply_bullet_effects(projectile_to_fire, user, reflex, dual_wield) //User can be passed as null.
+	apply_bullet_effects(projectile_to_fire, user, reflex, is_dual_wield) //User can be passed as null.
 	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
 	projectile_to_fire.firer = user
@@ -1266,7 +1270,7 @@ and you're good to go.
 
 	play_firing_sounds(projectile_to_fire, user)
 
-	simulate_recoil(dual_wield, user, target)
+	simulate_recoil(is_dual_wield, user, target)
 
 	//This is where the projectile leaves the barrel and deals with projectile code only.
 	//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -1286,7 +1290,7 @@ and you're good to go.
 
 	shots_fired++
 
-	if(dual_wield && !fired_by_akimbo)
+	if(is_dual_wield && !fired_by_akimbo)
 		switch(user?.client?.prefs?.dual_wield_pref)
 			if(DUAL_WIELD_FIRE)
 				INVOKE_ASYNC(akimbo, PROC_REF(Fire), target, user, params, 0, TRUE)
@@ -1441,8 +1445,8 @@ and you're good to go.
 
 	//Dual wielding. Do we have a gun in the other hand and is it the same category?
 	var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
-	if(!dual_wield && user)
-		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
+	if(!dual_wield && user && !akimbo_forbidden)
+		if(istype(akimbo) && !akimbo_forbidden && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
 			dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
 
 	var/bullets_to_fire = 1

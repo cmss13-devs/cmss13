@@ -205,6 +205,7 @@
 	if(thealert.timeout)
 		addtimer(CALLBACK(src, PROC_REF(alert_timeout), thealert, category), thealert.timeout)
 		thealert.timeout = world.time + thealert.timeout - world.tick_lag
+	thealert.alert_post_setup(src)
 	return thealert
 
 /mob/proc/alert_timeout(atom/movable/screen/alert/alert, category)
@@ -252,6 +253,11 @@
 	. = ..()
 	closeToolTip(usr)
 
+/// Called by throw_alert(), passes the mob throw_alert() is being called on as an arg. Parent proc, does nothing.
+/atom/movable/screen/alert/proc/alert_post_setup(mob/user)
+	SIGNAL_HANDLER
+	return
+
 /atom/movable/screen/alert/notify_action
 	name = "Notification"
 	desc = "A new notification. You can enter it."
@@ -283,6 +289,51 @@
 			GLOB.uscm_tacmap_status.tgui_interact(ghost_user)
 		if(NOTIFY_XENO_TACMAP)
 			GLOB.xeno_tacmap_status.tgui_interact(ghost_user)
+
+
+/atom/movable/screen/alert/multi_z
+	name = "Look Up"
+	desc = "There's an open space above you, Click the alert to look up."
+	icon_state = "uphint1"
+	click_master = FALSE
+
+
+/atom/movable/screen/alert/multi_z/clicked()
+	. = ..()
+	if(!.)
+		return
+
+	var/mob/living/living_owner = owner
+	living_owner.look_up()
+
+
+/atom/movable/screen/alert/multi_z/alert_post_setup(mob/user)
+	. = ..()
+
+	if(istype(user, /mob/living/))
+		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(update_alert))
+	update_alert(user)
+
+
+/atom/movable/screen/alert/multi_z/proc/update_alert(mob/user)
+	var/turf/above = locate(user.x, user.y, (user.z + 1))
+
+	if(istype(user, /mob/living/carbon/xenomorph))
+		if(istransparentturf(above))
+			icon_state = "uphint1_xeno"
+			desc = "There's an open space above you, Click the alert to look up."
+		else
+			icon_state = "uphint0_xeno"
+			desc = "There's nothing to look up at right now."
+
+	else
+		if(istransparentturf(above))
+			icon_state = "uphint1"
+			desc = "There's an open space above you, Click the alert to look up."
+		else
+			icon_state = "uphint0"
+			desc = "There's nothing to look up at right now."
+
 
 /atom/movable/screen/alert/buckled
 	name = "Buckled"

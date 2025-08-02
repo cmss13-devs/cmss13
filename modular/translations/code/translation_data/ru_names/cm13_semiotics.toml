@@ -216,6 +216,15 @@ instrumental = "«АвтоДок»"
 prepositional = "«АвтоДок»"
 gender = "neuter"
 
+["autodoc semiotic"]
+nominative = "«АвтоДок»"
+genitive = "«АвтоДок»"
+dative = "«АвтоДок»"
+accusative = "«АвтоДок»"
+instrumental = "«АвтоДок»"
+prepositional = "«АвтоДок»"
+gender = "neuter"
+
 ["reception semiotic"]
 nominative = "«Стойка регистрации»"
 genitive = "«Стойка регистрации»"
@@ -269,3 +278,21 @@ accusative = "санузел"
 instrumental = "санузлом"
 prepositional = "санузле"
 gender = "male"
+
+["refrigerated biological storage semiotic"]
+nominative = "холодильное хранилище биологического материала"
+genitive = "холодильного хранилища биологического материала"
+dative = "холодильному хранилищу биологического материала"
+accusative = "холодильное хранилище биологического материала"
+instrumental = "холодильным хранилищем биологического материала"
+prepositional = "холодильном хранилище биологического материала"
+gender = "neuter"
+
+["medical cryostasis vault semiotic"]
+nominative = "медицинское криостазное хранилище"
+genitive = "медицинского криостазного хранилища"
+dative = "медицинскому криостазному хранилищу"
+accusative = "медицинское криостазное хранилище"
+instrumental = "медицинским криостазным хранилищем"
+prepositional = "медицинском криостазном хранилище"
+gender = "neuter"

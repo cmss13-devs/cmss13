@@ -42,7 +42,7 @@
 #define CORPORATE_SURVIVOR_RU "Выживший Корпорат"
 #define HOSTILE_SURVIVOR_RU "Враждебный Выживший" //AKA Marine Killers assuming they survive. Will do cultist survivor at some point.
 
-#define JOB_CMO_RU "Главрач"
+#define JOB_CMO_RU "Главврач"
 #define JOB_DOCTOR_RU "Доктор"
 #define JOB_SURGEON_RU "Хирург"
 #define JOB_FIELD_DOCTOR_RU "Полевой врач"

@@ -52,6 +52,15 @@ instrumental = "брони морпеха M3 с подгонкой"
 prepositional = "броне морпеха M3 с подгонкой"
 gender = "female"
 
+["M3 pattern officer armor"]
+nominative = "броня офицера M3"
+genitive = "брони офицера M3"
+dative = "броне офицера M3"
+accusative = "броню офицера M3"
+instrumental = "брони офицера M3"
+prepositional = "броне офицера M3"
+gender = "female"
+
 ["Heavy Armor"] # Unique Vendor Name
 nominative = "тяжёлая броня"
 
@@ -153,3 +162,12 @@ accusative = "броню M35 огнемётчика"
 instrumental = "бронёй M35 огнемётчика"
 prepositional = "броне M35 огнемётчика"
 gender = "female"
+
+["M3-VL pattern ballistics vest"]
+nominative = "бронежилет M3-VL"
+genitive = "бронежилета M3-VL"
+dative = "бронежилету M3-VL"
+accusative = "бронежилет M3-VL"
+instrumental = "бронежилетом M3-VL"
+prepositional = "бронежилете M3-VL"
+gender = "male"

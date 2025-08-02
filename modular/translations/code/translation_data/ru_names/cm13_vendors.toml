@@ -83,6 +83,9 @@ nominative = "ГРАЖДАНСКАЯ ЭКИПИРОВКА (ВОЗЬМИТЕ ВС
 ["COMBAT EQUIPMENT (TAKE ALL)"]
 nominative = "БОЕВАЯ ЭКИПИРОВКА (ВОЗЬМИТЕ ВСЁ)"
 
+["COMBAT EQUIPMENT (COMBAT USE ONLY)"]
+nominative = "БОЕВАЯ ЭКИПИРОВКА (ВОЗЬМИТЕ ВСЁ)"
+
 ["COMBAT HELMET (CHOOSE 1)"]
 nominative = "ШЛЕМЫ (ВОЗЬМИТЕ 1)"
 
@@ -284,6 +287,36 @@ nominative = "ДОПОЛНИТЕЛЬНЫЕ БОЕПРИПАСЫ ГРАНАТОМ
 ["EXTRA FLAMETHROWER TANKS"]
 nominative = "ДОПОЛНИТЕЛЬНЫЕ БОЕПРИПАСЫ ОГНЕМЁТЧИКА"
 
+["FLASKS"]
+nominative = "ФЛЯГИ"
+
+["PREPARED MEALS"]
+nominative = "ГОТОВЫЕ БЛЮДА"
+
+["FIELD SUPPLIES"]
+nominative = "ПРИПАСЫ"
+
+["AUTOINJECTORS"]
+nominative = "ИНЖЕКТОРЫ"
+
+["LIQUID BOTTLES"]
+nominative = "СОСУДЫ С РЕАГЕНТАМИ"
+
+["PILL BOTTLES"]
+nominative = "БАНКИ С ТАБЛЕТКАМИ"
+
+["MEDICAL UTILITIES"]
+nominative = "МЕДИЦИНСКОЕ СНАРЯЖЕНИЕ"
+
+["MEDICAL SET (MANDATORY)"]
+nominative = "МЕДИЦИНСКИЙ НАБОР (ОБЯЗАТЕЛЬНО)"
+
+["SNOW GEAR (SNOW USE ONLY)"]
+nominative = "ЗИМНЕЕ СНАРЯЖЕНИЕ"
+
+["Spare Equipment"]
+nominative = "РЕЗЕРВНАЯ ЭКИПИРОВКА"
+
 # MARK: unique stuff names in vendors
 
 ["Medical HUD Glasses"]
@@ -311,13 +344,10 @@ nominative = "перчатки солдата"
 nominative = "стандартная экипировка морпеха"
 
 ["Essential Engineer Set"]
-nominative = "вспомогательное снаряжение инженера"
+nominative = "обязательный инженерный набор"
 
-["FLASKS"]
-nominative = "ФЛЯГИ"
-
-["PREPARED MEALS"]
-nominative = "ГОТОВЫЕ БЛЮДА"
+["Essential Medical Set"]
+nominative = "обязательный медицинский набор"
 
 # MARK: base
 
@@ -688,4 +718,22 @@ dative = "торговому автомату «Rec-Vend»"
 accusative = "торговый автомат «Rec-Vend»"
 instrumental = "торговым автоматом «Rec-Vend»"
 prepositional = "торговом автомате «Rec-Vend»"
+gender = "male"
+
+["pressurized chemical dispenser"]
+nominative = "раздатчик медицинских реагентов"
+genitive = "раздатчика медицинских реагентов"
+dative = "раздатчику медицинских реагентов"
+accusative = "раздатчик медицинских реагентов"
+instrumental = "раздатчиком медицинских реагентов"
+prepositional = "раздатчике медицинских реагентов"
+gender = "male"
+
+["Wey-Med Plus"]
+nominative = "раздатчик «Вей-Мед+»"
+genitive = "раздатчика «Вей-Мед+»"
+dative = "раздатчику «Вей-Мед+»"
+accusative = "раздатчик «Вей-Мед+»"
+instrumental = "раздатчиком «Вей-Мед+»"
+prepositional = "раздатчике «Вей-Мед+»"
 gender = "male"

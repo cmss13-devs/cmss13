@@ -312,3 +312,42 @@ accusative = "большой подсумок-патронташ для дроб
 instrumental = "большим подсумок-патронташем для дробовика"
 prepositional = "большом подсумок-патронташе для дробовика"
 gender = "male"
+
+["Pressurized Reagent Canister Pouch (Bicaridine)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Bicaridine)"
+
+["Pressurized Reagent Canister Pouch (Kelotane)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Kelotane)"
+
+["Pressurized Reagent Canister Pouch (Revival Mix - Tricordrazine)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Epinephrine, Inaprovaline, Tricordrazine)"
+
+["Pressurized Reagent Canister Pouch (Revival Mix - Peridaxon)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Epinephrine, Inaprovaline, Peridaxon)"
+
+["Pressurized Reagent Canister Pouch (Tricordrazine)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Tricordrazine)"
+
+["Pressurized Reagent Canister Pouch (EMPTY)"] # Unique Vendor Name
+nominative = "подсумок с капсулой для реагентов (Пустой)"
+
+["Pressurized Reagent Canister Pouch"]
+nominative = "подсумок с капсулой для реагентов"
+genitive = "подсумка с капсулой для реагентов"
+dative = "подсумку с капсулой для реагентов"
+accusative = "подсумок с капсулой для реагентов"
+instrumental = "подсумком с капсулой для реагентов"
+prepositional = "подсумке с капсулой для реагентов"
+gender = "male"
+
+["Vial Pouch (Full)"] # Unique Vendor Name
+nominative = "подсумок для пробирок (полный)"
+
+["vial pouch"]
+nominative = "подсумок для пробирок"
+genitive = "подсумка для пробирок"
+dative = "подсумку для пробирок"
+accusative = "подсумок для пробирок"
+instrumental = "подсумком для пробирок"
+prepositional = "подсумке для пробирок"
+gender = "male"

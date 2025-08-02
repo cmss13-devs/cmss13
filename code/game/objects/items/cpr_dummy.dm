@@ -9,8 +9,8 @@
 
 /obj/item/cpr_dummy/get_examine_text(mob/user)
 	. = ..()
-	. += "Successful CPRs: [SPAN_GREEN(successful_cprs)]."
-	. += "Failed CPRs: [SPAN_RED(failed_cprs)]."
+	. += "Успешные СЛР: [SPAN_GREEN(successful_cprs)]." // SS220 - EDIT ADDITTION
+	. += "Проваленные СЛР: [SPAN_RED(failed_cprs)]." // SS220 - EDIT ADDITTION
 
 /obj/item/cpr_dummy/update_icon()
 	if(anchored)

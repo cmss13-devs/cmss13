@@ -668,6 +668,15 @@ instrumental = "шевроном Соединённых Америк"
 prepositional = "шевроне Соединённых Америк"
 gender = "male"
 
+["Field Medic patch"]
+nominative = "шеврон полевого медика"
+genitive = "шеврона полевого медика"
+dative = "шеврону полевого медика"
+accusative = "шеврон полевого медика"
+instrumental = "шевроном полевого медика"
+prepositional = "шевроне полевого медика"
+gender = "male"
+
 ["Attachable Dogtags"]
 nominative = "шнур для жетона"
 genitive = "шнура для жетона"
@@ -684,4 +693,141 @@ dative = "краске для всего тела"
 accusative = "краску для всего тела"
 instrumental = "краской для всего тела"
 prepositional = "краске для всего тела"
+gender = "female"
+
+# MARK: medals
+
+["bronze medal"]
+nominative = "бронзовая медаль"
+genitive = "бронзовой медали"
+dative = "бронзовой медали"
+accusative = "бронзовую медаль"
+instrumental = "бронзовой медалью"
+prepositional = "бронзовой медали"
+gender = "female"
+
+["distinguished conduct medal"]
+nominative = "медаль «За выдающиеся заслуги»"
+genitive = "медали «За выдающиеся заслуги»"
+dative = "медали «За выдающиеся заслуги»"
+accusative = "медаль «За выдающиеся заслуги»"
+instrumental = "медалью «За выдающиеся заслуги»"
+prepositional = "медали «За выдающиеся заслуги»"
+gender = "female"
+
+["bronze heart medal"]
+nominative = "медаль «Бронзовое сердце»"
+genitive = "медали «Бронзовое сердце»"
+dative = "медали «Бронзовое сердце»"
+accusative = "медаль «Бронзовое сердце»"
+instrumental = "медалью «Бронзовое сердце»"
+prepositional = "медали «Бронзовое сердце»"
+gender = "female"
+
+["nobel sciences award"]
+nominative = "Нобелевская научная премия"
+genitive = "Нобелевской научной премии"
+dative = "Нобелевской научной премии"
+accusative = "Нобелевскую научную премию"
+instrumental = "Нобелевской научной премией"
+prepositional = "Нобелевской научной премии"
+gender = "female"
+
+["silver medal"]
+nominative = "серебряная медаль"
+genitive = "серебряной медали"
+dative = "серебряной медали"
+accusative = "серебряную медаль"
+instrumental = "серебряной медалью"
+prepositional = "серебряной медали"
+gender = "female"
+
+["medal of valor"]
+nominative = "медаль «За воинскую доблесть»"
+genitive = "медали «За воинскую доблесть»"
+dative = "медали «За воинскую доблесть»"
+accusative = "медаль «За воинскую доблесть»"
+instrumental = "медалью «За воинскую доблесть»"
+prepositional = "медали «За воинскую доблесть»"
+gender = "female"
+
+["robust security award"]
+nominative = "награда «За выдающуюся защиту»"
+genitive = "награды «За выдающуюся защиту»"
+dative = "награде «За выдающуюся защиту»"
+accusative = "награду «За выдающуюся защиту»"
+instrumental = "наградой «За выдающуюся защиту»"
+prepositional = "награде «За выдающуюся защиту»"
+gender = "female"
+
+["gold medal"]
+nominative = "золотая медаль"
+genitive = "золотой медали"
+dative = "золотой медали"
+accusative = "золотую медаль"
+instrumental = "золотой медалью"
+prepositional = "золотой медали"
+gender = "female"
+
+["medal of captaincy"]
+nominative = "медаль капитана"
+genitive = "медали капитана"
+dative = "медали капитана"
+accusative = "медаль капитана"
+instrumental = "медалью капитана"
+prepositional = "медали капитана"
+gender = "female"
+
+["medal of exceptional heroism"]
+nominative = "медаль «За исключительный героизм»"
+genitive = "медали «За исключительный героизм»"
+dative = "медали «За исключительный героизм»"
+accusative = "медаль «За исключительный героизм»"
+instrumental = "медалью «За исключительный героизм»"
+prepositional = "медали «За исключительный героизм»"
+gender = "female"
+
+["platinum medal"]
+nominative = "платиновая медаль"
+genitive = "платиновой медали"
+dative = "платиновой медали"
+accusative = "платиновую медаль"
+instrumental = "платиновой медалью"
+prepositional = "платиновой медали"
+gender = "female"
+
+["bronze service medal"]
+nominative = "бронзовая медаль «За отличие в службе»"
+genitive = "бронзовой медали «За отличие в службе»"
+dative = "бронзовой медали «За отличие в службе»"
+accusative = "бронзовую медаль «За отличие в службе»"
+instrumental = "бронзовой медалью «За отличие в службе»"
+prepositional = "бронзовой медали «За отличие в службе»"
+gender = "female"
+
+["silver service medal"]
+nominative = "серебряная медаль «За отличие в службе»"
+genitive = "серебряной медали «За отличие в службе»"
+dative = "серебряной медали «За отличие в службе»"
+accusative = "серебряную медаль «За отличие в службе»"
+instrumental = "серебряной медалью «За отличие в службе»"
+prepositional = "серебряной медали «За отличие в службе»"
+gender = "female"
+
+["gold service medal"]
+nominative = "золотая медаль «За отличие в службе»"
+genitive = "золотой медали «За отличие в службе»"
+dative = "золотой медали «За отличие в службе»"
+accusative = "золотую медаль «За отличие в службе»"
+instrumental = "золотой медалью «За отличие в службе»"
+prepositional = "золотой медали «За отличие в службе»"
+gender = "female"
+
+["platinum service medal"]
+nominative = "платиновая медаль «За отличие в службе»"
+genitive = "платиновой медали «За отличие в службе»"
+dative = "платиновой медали «За отличие в службе»"
+accusative = "платиновую медаль «За отличие в службе»"
+instrumental = "платиновой медалью «За отличие в службе»"
+prepositional = "платиновой медали «За отличие в службе»"
 gender = "female"

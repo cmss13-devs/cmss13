@@ -81,7 +81,7 @@ const JOBS_RU = {
   'Hostile Survivor': 'Враждебный Выживший',
 
   // Medical roles
-  'Chief Medical Officer': 'Главрач',
+  'Chief Medical Officer': 'Главврач',
   Doctor: 'Доктор',
   Surgeon: 'Хирург',
   'Field Doctor': 'Полевой врач',

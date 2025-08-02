@@ -1,0 +1,21 @@
+# Uncategorized decor
+# Any stuff that serves mostly to add atmosphere. Even if it can be interacted
+
+["sleeper"]
+nominative = "слипер"
+genitive = "слипера"
+dative = "слиперу"
+accusative = "слипер"
+instrumental = "слипером"
+prepositional = "слипере"
+gender = "male"
+
+["sleeper console"]
+nominative = "консоль слипера"
+genitive = "консоли слипера"
+dative = "консоли слипера"
+accusative = "консоль слипера"
+instrumental = "консолью слипера"
+prepositional = "консоли слипера"
+gender = "female"
+

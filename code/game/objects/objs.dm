@@ -105,6 +105,10 @@
 /obj/item/proc/get_examine_line(mob/user)
 	if(blood_color)
 		. = SPAN_WARNING("[icon2html(src, user)] <font color='[blood_color]'>окровавленн[genderize_ru(gender, "ый", "ая", "ое", "ые")]</font> [declent_ru(ACCUSATIVE)]")
+	// SS220 - START ADDITTION
+	else if(istype(src, /obj/item/clothing/accessory/medal) || istype(src, /obj/item/clothing/accessory/ranks))
+		. = "[icon2html(src, user)] [declent_ru(INSTRUMENTAL)]"
+	// SS220 - END ADDITTION
 	else
 		. = "[icon2html(src, user)] [declent_ru(ACCUSATIVE)]"
 

@@ -33,17 +33,17 @@ export const ChemDispenser = (props) => {
   return (
     <Window width={435} height={620}>
       <Window.Content scrollable>
-        <Section title="Status">
+        <Section title="Статус">
           <LabeledList>
-            <LabeledList.Item label="Energy">
+            <LabeledList.Item label="Заряд">
               <ProgressBar value={data.energy / data.maxEnergy}>
-                {toFixed(data.energy) + ' energy'}
+                {toFixed(data.energy) + ' энергии'}
               </ProgressBar>
             </LabeledList.Item>
           </LabeledList>
         </Section>
         <Section
-          title="Dispense"
+          title="Реагенты"
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}
@@ -78,7 +78,7 @@ export const ChemDispenser = (props) => {
           </Box>
         </Section>
         <Section
-          title="Beaker"
+          title="Ёмкость"
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}
@@ -91,7 +91,7 @@ export const ChemDispenser = (props) => {
         >
           <LabeledList>
             <LabeledList.Item
-              label="Beaker"
+              label="Заполнено"
               buttons={
                 !!data.isBeakerLoaded && (
                   <Button
@@ -99,7 +99,7 @@ export const ChemDispenser = (props) => {
                     disabled={!data.isBeakerLoaded}
                     onClick={() => act('eject')}
                   >
-                    Eject
+                    Извлечь
                   </Button>
                 )
               }
@@ -110,19 +110,19 @@ export const ChemDispenser = (props) => {
                     initial={0}
                     value={data.beakerCurrentVolume || 0}
                   />
-                  /{data.beakerMaxVolume} units
+                  /{data.beakerMaxVolume} единиц
                 </>
-              )) || <NoticeBox info>No beaker loaded!</NoticeBox>}
+              )) || <NoticeBox info>Ёмкость не обнаружена!</NoticeBox>}
             </LabeledList.Item>
-            <LabeledList.Item label="Contents">
+            <LabeledList.Item label="Состав">
               <Box color="label">
-                {(!data.isBeakerLoaded && 'N/A') ||
+                {(!data.isBeakerLoaded && 'Н/Д') ||
                   (beakerContents.length === 0 && 'Nothing')}
               </Box>
               {beakerContents.map((chemical) => (
                 <Box key={chemical.name} color="label">
-                  <AnimatedNumber initial={0} value={chemical.volume} /> units
-                  of {chemical.name}
+                  <AnimatedNumber initial={0} value={chemical.volume} />
+                  &nbsp;единиц {chemical.name}
                 </Box>
               ))}
             </LabeledList.Item>

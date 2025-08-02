@@ -145,6 +145,15 @@ instrumental = "кофе-машиной"
 prepositional = "кофе-машине"
 gender = "female"
 
+["coffee machine"]
+nominative = "кофе-машина"
+genitive = "кофе-машины"
+dative = "кофе-машине"
+accusative = "кофе-машину"
+instrumental = "кофе-машиной"
+prepositional = "кофе-машине"
+gender = "female"
+
 ["disposal unit"]
 nominative = "урна"
 genitive = "урны"
@@ -379,6 +388,15 @@ instrumental = "шкафчиком врача"
 prepositional = "шкафчике врача"
 gender = "male"
 
+["Field Doctor's locker"]
+nominative = "шкафчик полевого врача"
+genitive = "шкафчика полевого врача"
+dative = "шкафчику полевого врача"
+accusative = "шкафчик полевого врача"
+instrumental = "шкафчиком полевого врача"
+prepositional = "шкафчике полевого врача"
+gender = "male"
+
 ["Operating Table"]
 nominative = "операционный стол"
 genitive = "операционного стола"
@@ -496,6 +514,15 @@ instrumental = "постером ККМП"
 prepositional = "постере ККМП"
 gender = "male"
 
+["Dirty Magazine"]
+nominative = "липкий журнал"
+genitive = "липкого журнала"
+dative = "липкому журналу"
+accusative = "липкий журнал"
+instrumental = "липким журналом"
+prepositional = "липком журнале"
+gender = "male"
+
 ["Personal Computer"]
 nominative = "персональный компьютер"
 genitive = "персонального компьютера"
@@ -576,3 +603,57 @@ accusative = "красный занавес"
 instrumental = "красным занавесом"
 prepositional = "красном занавесе"
 gender = "male"
+
+["medilink supply port"]
+nominative = "канал снабжения медицинского оборудования"
+genitive = "канала снабжения медицинского оборудования"
+dative = "каналу снабжения медицинского оборудования"
+accusative = "канал снабжения медицинского оборудования"
+instrumental = "каналом снабжения медицинского оборудования"
+prepositional = "канале снабжения медицинского оборудования"
+gender = "male"
+
+["ship-grade camera"]
+nominative = "поворотная камера"
+genitive = "поворотной камеры"
+dative = "поворотной камере"
+accusative = "поворотную камеру"
+instrumental = "поворотной камерой"
+prepositional = "поворотной камере"
+gender = "female"
+
+["autodoc emergency medical system"]
+nominative = "система экстренной медицинской помощи «АвтоДок»"
+genitive = "системы экстренной медицинской помощи «АвтоДок»"
+dative = "системе экстренной медицинской помощи «АвтоДок»"
+accusative = "систему экстренной медицинской помощи «АвтоДок»"
+instrumental = "системой экстренной медицинской помощи «АвтоДок»"
+prepositional = "системе экстренной медицинской помощи «АвтоДок»"
+gender = "female"
+
+["autodoc medical system control console"]
+nominative = "консоль системы экстренной медицинской помощи «АвтоДок»"
+genitive = "консоли системы экстренной медицинской помощи «АвтоДок»"
+dative = "консоли системы экстренной медицинской помощи «АвтоДок»"
+accusative = "консоль системы экстренной медицинской помощи «АвтоДок»"
+instrumental = "консолью системы экстренной медицинской помощи «АвтоДок»"
+prepositional = "консоли системы экстренной медицинской помощи «АвтоДок»"
+gender = "female"
+
+["body scanner"]
+nominative = "медицинский анализатор"
+genitive = "медицинского анализатора"
+dative = "медицинскому анализатору"
+accusative = "медицинский анализатор"
+instrumental = "медицинским анализатором"
+prepositional = "медицинском анализаторе"
+gender = "male"
+
+["body scanner console"]
+nominative = "консоль медицинского анализатора"
+genitive = "консоли медицинского анализатора"
+dative = "консоли медицинского анализатора"
+accusative = "консоль медицинского анализатора"
+instrumental = "консолью медицинского анализатора"
+prepositional = "консоли медицинского анализатора"
+gender = "female"

@@ -8,115 +8,115 @@
 
 /datum/paygrade/marine/e1
 	name = "Рядовой"
-	prefix = "Ряд"
+	prefix = "Ряд."
 
 /datum/paygrade/marine/e2	// Медики, техники, каргонцы, повышенные рядовые
-	name = "Рядовой Первого Класса"
-	prefix = "РядПк"
+	name = "Рядовой 1 класса"
+	prefix = "Ряд. 1 класса"
 
 /datum/paygrade/marine/e3	// Промежуточный, повышение
-	name = "Младший Капрал"
-	prefix = "МлКпл"
+	name = "Младший капрал"
+	prefix = "Мл.к-л"
 
 /datum/paygrade/marine/e4	// Выдается крювманам, SG, ФТЛ, Спекам, корреспонденту, военной полиции
 	name = "Капрал"
-	prefix = "Кпл"
+	prefix = "К-л"
 
 /datum/paygrade/marine/e5	// Выдается сквадным, Вардену
 	name = "Сержант"
-	prefix = "Серж"
+	prefix = "С-т"
 
 /datum/paygrade/marine/e6	// Промежуточный
-	name = "Старший Сержант"
-	prefix = "СтСерж"
+	name = "Штаб-сержант"
+	prefix = "Ш/с-т"
 
 /datum/paygrade/marine/e7	// Квартирмейстер, советник
-	name = "Орудийный-Сержант"
-	prefix = "Орд-Серж"
+	name = "Комендор-сержант"
+	prefix = "К/с-т"
 
 /datum/paygrade/marine/e8	// Синты-поддержки, старшие квартирмейстеры
-	name = "Мастер-Сержант"
-	prefix = "Мст-Серж"
+	name = "Мастер-сержант"
+	prefix = "М/с-т"
 
 /datum/paygrade/marine/e8e	// Ивент, щитспавн-советники
-	name = "Младший Лейтенант"
-	prefix = "МлЛейт"
+	name = "Первый сержант"
+	prefix = "П/с-т"
 
 /datum/paygrade/marine/e9	// Ивент, щитспавн
-	name = "Капитан"
-	prefix = "Капитан"
+	name = "Старший комендор-сержант"
+	prefix = "Ст.К/с-т"
 
 /datum/paygrade/marine/e9e	// Ивент, щитспавн
-	name = "Майор"
-	prefix = "Майор"
+	name = "Сержант-майор"
+	prefix = "С-м"
 
 /datum/paygrade/marine/e9c	// Не используется
-	name = "Майор Корпуса Колонильных Морпехов"
-	prefix = "Майор ККМ"
+	name = "Сержант-майор Корпуса Морпехов"
+	prefix = "С-м КМ"
 
 // COMMISSIONED PAYGRADES
 
 /datum/paygrade/marine/o1	// Офицеры: Медбей, ГСБ, СЕ, Пилоты, ИО,
-	name = "Лейтенант"
-	prefix = "Лейт"
+	name = "Второй лейтенант"
+	prefix = "В/Л-т"
 
 /datum/paygrade/marine/o2	// Офицеры поддержки, FAX'еры
-	name = "Старший Лейтенант"
-	prefix = "Старлей"
+	name = "Первый лейтенант"
+	prefix = "П/л-т"
 
 /datum/paygrade/marine/o3	// XO (Executive), Офицер, повышенный офицер поддержки
 	name = "Капитан"
-	prefix = "Капитан"
+	prefix = "К-н"
 
 /datum/paygrade/marine/o4	// CO (Commanding), ВЛ
 	name = "Майор"
-	prefix = "Майор"
+	prefix = "М-р"
 
 /datum/paygrade/marine/o5	// CO+, щитспавн
-	name = "Подполковник"
-	prefix = "Подполк"
+	name = "Лейтенант полковник"
+	prefix = "Л-т/п-к"
 
 //Platoon Commander
 /datum/paygrade/marine/o6	// CO++, щитспавн, ивент
 	name = "Полковник"
-	prefix = "Полк"
+	prefix = "П-к"
 
 /datum/paygrade/marine/o6e	// Ивент
-	name = "Старший Полковник"
-	prefix = "СтПолк"
+	name = "Старший полковник"
+	prefix = "Ст.п-к"
 
 /datum/paygrade/marine/o6c	// Ивент
-	name = "Полковник Дивизии"
-	prefix = "ПолкДив"
+	name = "Полковник дивизии"
+	prefix = "Див.п-к"
 
 //High Command	----  Ивенты
 /datum/paygrade/marine/o7
-	name = "Генерал-Бригадир"
-	prefix = "Ген-Бриг"
+	name = "Бригадный генерал"
+	prefix = "Бриг.ген."
 
 /datum/paygrade/marine/o8
-	name = "Генерал-Майор"
-	prefix = "Ген-Майор"
+	name = "Генерал-майор"
+	prefix = "Ген.м-р"
 
 /datum/paygrade/marine/o9
-	name = "Генерал-Лейтенант"
-	prefix = "Ген-Лейт"
+	name = "Генерал-лейтенант"
+	prefix = "Ген.л-т"
 
 /datum/paygrade/marine/o10
 	name = "Генерал"
-	prefix = "Ген"
+	prefix = "Ген."
 
 /datum/paygrade/marine/o10c
-	name = "Помощник коменданта Корпуса Морской Пехоты"
-	prefix = "ПомККМП"
+	name = "Заместитель коменданта Корпуса Морпехов"
+	prefix = "Зам.к-т КМП"
 
 /datum/paygrade/marine/o10s
-	name = "Комендант Корпуса Морской Пехота"
-	prefix = "ККМП"
+	name = "Комендант Корпуса Морпехов"
+	prefix = "К-т КМП"
 
 // Historical Background: Боевым собакам присвоено самое низкое офицерское звание из возможных,
 // у них нет формального командования, но если кто-то жестоко обращался с животным,
 // нарушителю могло быть предъявлено обвинение в нападении на офицера
 /datum/paygrade/marine/k9	// Ивент
-	name = "Младший лейтенант, Боевой Спаситель"
-	prefix = "МлЛейт, Боевой Спаситель"
+	name = "Второй лейтенант, боевой санитар"
+	prefix = "В/л-т, боевой санитар"

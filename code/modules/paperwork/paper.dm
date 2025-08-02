@@ -747,30 +747,31 @@
 			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
 		C = GLOB.chemical_reagents_list["[random_chem]"]
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
+	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Официальный документ Вейланд-Ютани</B><BR>Запись об эксперименте</I><HR><H2>" // SS220 - EDIT ADDITTION
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[C.id]
-			name = "Synthesis of [C.name]"
+			name = "Синтез [C.name]а" // SS220 ADDICTION
 			icon_state = "paper_wy_partial_report"
 			txt += "[name] </H2></center>"
-			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
+			txt += "В ходе эксперимента <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> химическое соединение, получившее название «[C.name]», было успешно синтезировано по ниже указанной формуле:<BR>\n<BR>\n" // SS220 - EDIT ADDITTION
+
 			for(var/I in G.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 				var/U = G.required_reagents[I]
-				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n" // SS220 - EDIT ADDITTION
 			if(LAZYLEN(G.required_catalysts))
-				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
+				txt += "<BR>\nИспользуемые катализаторы: <BR>\n<BR>\n" // SS220 - EDIT ADDITTION
 				for(var/I in G.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
 					var/U = G.required_catalysts[I]
-					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
+					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n" // SS220 - EDIT ADDITTION
 			if(full_report)
-				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
-				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+				txt += "<BR>Вещество оказывает следующие эффекты воздействия на организм:<BR><font size = \"2.5\">[C.description]\n" // SS220 - EDIT ADDITTION
+				txt += "<BR>Передозировка наступает при превышении [C.overdose] единиц вещества в организме.</font><BR>\n" // SS220 - EDIT ADDITTION
 				icon_state = "paper_wy_full_report"
 			else
-				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
+				txt += "<BR>\nВ настоящее время проводятся испытания для выявления химических свойств.<BR>\n" // SS220 - EDIT ADDITTION
 			var/is_volatile = FALSE
 			if(C.chemfiresupp)
 				is_volatile = TRUE
@@ -780,22 +781,22 @@
 						is_volatile = TRUE
 						break
 			if(is_volatile)
-				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
-			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+				txt += "<BR><B>\nПРЕДУПРЕЖДЕНИЕ: НЕСТАБИЛЬНЫЙ РЕАГЕНТ. СМЕШИВАЙТЕ ОСТОРОЖНО.</B><BR>\n" // SS220 - EDIT ADDITTION
+			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 - EDIT ADDITTION
 		if("test")
-			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
+			name = "Эксперимент [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]" // SS220 - EDIT ADDITTION
 			icon_state = "paper_wy_synthesis"
 			txt += "Note for [name]</H2></center>"
 			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
-			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 - EDIT ADDITTION
 		if("grant")
 			if(!grant)
 				grant = rand(2,4)
 			icon_state = "paper_wy_grant"
-			name = "Research Grant"
-			txt += "Weyland-Yutani Research Grant</H2></center>"
+			name = "Грант на исследования" // SS220 - EDIT ADDITTION
+			txt += "Грант на исследования Вейланд-Ютани</H2></center>" // SS220 - EDIT ADDITTION
 			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
-			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+			txt += "<BR>\n<HR> - <I>Вейланд-Ютани</I>" // SS220 - EDIT ADDITTION
 	info = txt
 
 /obj/item/paper/research_notes/bad

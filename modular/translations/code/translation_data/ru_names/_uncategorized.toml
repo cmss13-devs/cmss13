@@ -2897,10 +2897,6 @@ gender = "female"
 
 # MARK: Drinks
 
-["Dr. Gibb"]
-nominative = "Доктор Гибб"
-gender = "male"
-
 ["Star-kist"]
 nominative = "Стар-Кист"
 gender = "male"
@@ -2924,14 +2920,6 @@ gender = "male"
 ["24-Volt Energy"]
 nominative = "24-Вольт Энержи"
 gender = "male"
-
-["Thirteen Loko"]
-nominative = "13 Локо"
-gender = "neuter"
-
-["Nuka Cola"]
-nominative = "Нюка Кола"
-gender = "female"
 
 ["Monkey Energy"]
 nominative = "Манки Энержи"
@@ -3300,15 +3288,6 @@ accusative = "сухой Сол"
 instrumental = "сухим Солом"
 prepositional = "сухом Соле"
 gender = "male"
-
-["Space Cola"]
-nominative = "космическая кола"
-genitive = "космической колы"
-dative = "космической коле"
-accusative = "космическую колу"
-instrumental = "космической колой"
-prepositional = "космической коле"
-gender = "female"
 
 ["T-Borg's tonic water"]
 nominative = "тоник Ти-Борга"
@@ -6913,15 +6892,6 @@ instrumental = "медицинской курьерской сумкой"
 prepositional = "медицинской курьерской сумке"
 gender = "female"
 
-["medical radio headset"]
-nominative = "медицинская гарнитура"
-genitive = "медицинской гарнитуры"
-dative = "медицинской гарнитуре"
-accusative = "медицинскую гарнитуру"
-instrumental = "медицинской гарнитурой"
-prepositional = "медицинской гарнитуре"
-gender = "female"
-
 ["virologist's jumpsuit"]
 nominative = "комбинезон вирусолога"
 genitive = "комбинезона вирусолога"
@@ -7481,15 +7451,6 @@ accusative = "анализатор травм"
 instrumental = "анализатором травм"
 prepositional = "анализаторе травм"
 gender = "male"
-
-["ointment"]
-nominative = "мазь"
-genitive = "мази"
-dative = "мазе"
-accusative = "мазь"
-instrumental = "мазью"
-prepositional = "мазе"
-gender = "female"
 
 ["bone gel"]
 nominative = "костный гель"
@@ -13903,15 +13864,6 @@ gender = "female"
 ["Plasma"] # Unique Design Name
 nominative = "Плазма"
 
-["plasma"]
-nominative = "плазма"
-genitive = "плазмы"
-dative = "плазме"
-accusative = "плазму"
-instrumental = "плазмой"
-prepositional = "плазме"
-gender = "female"
-
 [silver]
 nominative = "серебро"
 genitive = "серебра"
@@ -14286,15 +14238,6 @@ accusative = "перчатки капитана"
 instrumental = "перчатками капитана"
 prepositional = "перчатках капитана"
 gender = "plural"
-
-["medal of captaincy"]
-nominative = "медаль капитанства"
-genitive = "медали капитанства"
-dative = "медали капитанства"
-accusative = "медаль капитанства"
-instrumental = "медалью капитанства"
-prepositional = "медали капитанства"
-gender = "female"
 
 ["captain's garment bag"]
 nominative = "сумка для одежды капитана"

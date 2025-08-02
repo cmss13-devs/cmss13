@@ -3,99 +3,99 @@
 // ENLISTED PAYGRADES
 
 /datum/paygrade/navy/e1
-	name = "Матрос-призывник"
-	prefix = "МТ-Прз"
+	name = "Матрос-рекрут"
+	prefix = "Мат.рек."
 
 /datum/paygrade/navy/e2
-	name = "Матрос"
-	prefix = "МТ"
+	name = "Младший матрос"
+	prefix = "Мл.мат."
 
 /datum/paygrade/navy/e3
-	name = "Старший Матрос"
-	prefix = "СтМТ"
+	name = "Матрос"
+	prefix = "Мат."
 
 /datum/paygrade/navy/e4
-	name = "Старшина 2-й статьи"
-	prefix = "СТАР2"
+	name = "Петти-офицер 3 класса"
+	prefix = "П/оф-р 3 класса"
 
 /datum/paygrade/navy/e5
-	name = "Старшина 1-й статьи"
-	prefix = "СТАР1"
+	name = "Петти-офицер 2 класса"
+	prefix = "П/оф-р 2 класса"
 
 /datum/paygrade/navy/e6
-	name = "Главный Старшина"
-	prefix = "ГлСтар"
+	name = "Петти-офицер 1 класса"
+	prefix = "П/оф-р 1 класса"
 
 /datum/paygrade/navy/e7
-	name = "Главный корабельный старшина"
-	prefix = "ГКСТАР"
+	name = "Чиф-петти-офицер"
+	prefix = "Ч-П/оф-р"
 
 /datum/paygrade/navy/e8
-	name = "Мичман"
-	prefix = "Мичм"
+	name = "Старший чиф-петти-офицер"
+	prefix = "Ст.Ч-П/оф-р"
 
 /datum/paygrade/navy/e8c
-	name = "Старший Мичман"
-	prefix = "СтМичм"
+	name = "Главный старший чиф-петти-офицер"
+	prefix = "Г/ст.Ч-П/оф-р"
 
 /datum/paygrade/navy/e9
-	name = "Младший Лейтенант"
-	prefix = "МлЛейт"
+	name = "Мастер чиф-петти-офицер"
+	prefix = "М-р.Ч-П/оф-р"
 
 /datum/paygrade/navy/e9c
-	name = "Лейтенант"
-	prefix = "Лейт"
+	name = "Главный мастер чиф-петти-офицер"
+	prefix = "Г/м-р.Ч-П/оф-р"
 
 // COMMISSIONED PAYGRADES
 
 /datum/paygrade/navy/o1
-	name = "Мичман"
-	prefix = "Мич"
+	name = "Энсин"
+	prefix = "Э-н"
 
 /datum/paygrade/navy/o2
-	name = "Старший Мичман"
-	prefix = "СтМич"
+	name = "Младший лейтенант"
+	prefix = "Мл.л-т"
 
 /datum/paygrade/navy/o3
 	name = "Лейтенант"
-	prefix = "Лейт"
+	prefix = "Л-т"
 
 /datum/paygrade/navy/o4
-	name = "Старший Лейтенант"
-	prefix = "Старлей"
+	name = "Лейтенант-коммандер"
+	prefix = "Л-т.кмдр."
 
 /datum/paygrade/navy/o5
-	name = "Капитан-Лейтенант"
-	prefix = "Кап-Лейт"
+	name = "Коммандер"
+	prefix = "Кмдр."
 
 /datum/paygrade/navy/o6
 	name = "Капитан"
-	prefix = "Кап"
+	prefix = "К-н"
 
 /datum/paygrade/navy/o6e
-	name = "Капитан 3-го ранга"
-	prefix = "КАП3"
+	name = "Коммодор"
+	prefix = "Км-р"
 
 /datum/paygrade/navy/o6c
-	name = "Капитан 2-го ранга"
-	prefix = "КАП2"
+	name = "Старший коммодор"
+	prefix = "Ст.Км-р"
 
 /datum/paygrade/navy/o7
-	name = "Капитан 1-го ранга"
-	prefix = "КАП1"
+	name = "Контр-адмирал младшего ранга"
+	prefix = "К-адм. мл.ранга"
 
 /datum/paygrade/navy/o8
-	name = "Контр-Адмирал"
-	prefix = "КАДМ"
+	name = "Контр-адмирал старшего ранга"
+	prefix = "К-адм. ст.ранга"
 
 /datum/paygrade/navy/o9
-	name = "Вице-Адмирал"
-	prefix = "ВАДМ"
+	name = "Вице-адмирал"
+	prefix = "В-адм."
 
 /datum/paygrade/navy/o10
 	name = "Адмирал"
-	prefix = "АДМ"
+	prefix = "Адм."
 
 /datum/paygrade/navy/o10c
-	name = "Адмирал Флота"
-	prefix = "АДМФЛТ"
+	name = "Начальник ВМО"
+	prefix = "Нач.ВМО"

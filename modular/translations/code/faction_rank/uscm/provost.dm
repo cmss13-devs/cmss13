@@ -4,24 +4,24 @@
 
 /datum/paygrade/provost/inspector
 	name = "Инспектор"
-	prefix = "ИНСП"
+	prefix = "Ин-р"
 
 /datum/paygrade/provost/inspector/chief
-	name = "Старший Инспектор"
-	prefix = "ГЛВ.ИНСП"
+	name = "Инспектор-офицер"
+	prefix = "Ин-р оф-р"
 
 /datum/paygrade/provost/marshal/deputy
-	name = "Заместитель Маршала"
-	prefix = "ЗАМ.МРШЛ"
+	name = "Маршал-наместник"
+	prefix = "М-л/нам."
 
 /datum/paygrade/provost/marshal
 	name = "Маршал"
-	prefix = "МРШЛ"
+	prefix = "М-л"
 
 /datum/paygrade/provost/sectormarshal
-	name = "Секторальный Маршал"
-	prefix = "СЕКТ.МРШЛ"
+	name = "Секторный маршал"
+	prefix = "С/м-л"
 
 /datum/paygrade/provost/chiefmarshal
-	name = "Главный Маршал"
-	prefix = "ГЛВ.МРШЛ"
+	name = "Начальник-маршал"
+	prefix = "Нач.м-л"

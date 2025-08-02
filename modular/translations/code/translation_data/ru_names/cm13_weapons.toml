@@ -187,6 +187,9 @@ gender = "male"
 ["Mod 88 pistol"] # Unique Vendor Name
 nominative = "боевой пистолет 88M4"
 
+["Mod 88 Pistol"] # Unique Vendor Name - command officers
+nominative = "боевой пистолет 88M4"
+
 ["88 Mod 4 combat pistol"]
 nominative = "боевой пистолет 88M4"
 genitive = "боевого пистолета 88M4"
@@ -199,6 +202,9 @@ gender = "male"
 ["M44 revolver"] # Unique Vendor Name
 nominative = "боевой револьвер M44"
 
+["M44 Revolver"] # Unique Vendor Name - command officers
+nominative = "боевой револьвер M44"
+
 ["M44 combat revolver"]
 nominative = "боевой револьвер M44"
 genitive = "боевого револьвера M44"
@@ -207,6 +213,9 @@ accusative = "боевой револьвер M44"
 instrumental = "боевым револьвером M44"
 prepositional = "боевом револьвере M44"
 gender = "male"
+
+["M4A3 Pistol"] # Unique Vendor Name - command officers
+nominative = "служебный пистолет M4A3"
 
 ["M4A3 service pistol"]
 nominative = "служебный пистолет M4A3"
@@ -228,6 +237,9 @@ accusative = "сигнальную ракетницу M82F"
 instrumental = "сигнальной ракетницей M82F"
 prepositional = "сигнальной ракетнице M82F"
 gender = "female"
+
+["VP78 Pistol"] # Unique Vendor Name - command officers
+nominative = "пистолет VP78"
 
 ["VP78 pistol"]
 nominative = "пистолет VP78"

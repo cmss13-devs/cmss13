@@ -36,6 +36,18 @@ instrumental = "униформой ККМП санитара"
 prepositional = "униформе ККМП санитара"
 gender = "female"
 
+["Doctor Uniform"]
+nominative = "униформа врача"
+
+["medical doctor's uniform"]
+nominative = "униформа врача"
+genitive = "униформы врача"
+dative = "униформе врача"
+accusative = "униформу врача"
+instrumental = "униформой врача"
+prepositional = "униформе врача"
+gender = "female"
+
 ["UPP fatigues"]
 nominative = "униформа СПН"
 genitive = "униформы СПН"
@@ -61,6 +73,15 @@ dative = "униформе СПН сапёра"
 accusative = "униформу СПН сапёра"
 instrumental = "униформой СПН сапёра"
 prepositional = "униформе СПН сапёра"
+gender = "female"
+
+["doctor's snow suit"]
+nominative = "зимняя куртка врача"
+genitive = "зимней куртки врача"
+dative = "зимней куртке врача"
+accusative = "зимнюю куртку врача"
+instrumental = "зимней курткой врача"
+prepositional = "зимней куртке врача"
 gender = "female"
 
 ["M68 Thermal Cloak"]
@@ -326,6 +347,24 @@ dative = "чёрному разгрузочному жилету"
 accusative = "чёрный разгрузочный жилет"
 instrumental = "чёрным разгрузочным жилетом"
 prepositional = "чёрном разгрузочном жилете"
+gender = "male"
+
+["surgical webbing vest"]
+nominative = "разгрузочный жилет хирурга"
+genitive = "разгрузочного жилета хирурга"
+dative = "разгрузочному жилету хирурга"
+accusative = "разгрузочный жилет хирурга"
+instrumental = "разгрузочным жилетом хирурга"
+prepositional = "разгрузочном жилете хирурга"
+gender = "male"
+
+["blue surgical webbing vest"]
+nominative = "синий разгрузочный жилет хирурга"
+genitive = "синего разгрузочного жилета хирурга"
+dative = "синему разгрузочному жилету хирурга"
+accusative = "синий разгрузочный жилет хирурга"
+instrumental = "синим разгрузочным жилетом хирурга"
+prepositional = "синем разгрузочном жилете хирурга"
 gender = "male"
 
 ["Knife Webbing"] # Unique Vendor Name
@@ -774,6 +813,15 @@ instrumental = "шлемом М10 морпеха"
 prepositional = "шлеме М10 морпеха"
 gender = "male"
 
+["M10 pattern officer helmet"]
+nominative = "шлем М10 офицера"
+genitive = "шлема М10 офицера"
+dative = "шлему М10 офицера"
+accusative = "шлем М10 офицера"
+instrumental = "шлемом М10 офицера"
+prepositional = "шлеме М10 офицера"
+gender = "male"
+
 ["M10 Pattern Technician Helmet"] # Unique Vendor Name
 nominative = "шлем М10 техника"
 
@@ -885,6 +933,33 @@ instrumental = "шлемом M35 огнемётчика"
 prepositional = "шлеме M35 огнемётчика"
 gender = "male"
 
+["patrol cap"]
+nominative = "кепка патрульного"
+genitive = "кепки патрульного"
+dative = "кепке патрульного"
+accusative = "кепку патрульного"
+instrumental = "кепкой патрульного"
+prepositional = "кепке патрульного"
+gender = "female"
+
+["USCM boonie hat"]
+nominative = "шляпа путешественника ККМП"
+genitive = "шляпы путешественника ККМП"
+dative = "шляпе путешественника ККМП"
+accusative = "шляпу путешественника ККМП"
+instrumental = "шляпой путешественника ККМП"
+prepositional = "шляпе путешественника ККМП"
+gender = "female"
+
+["surgical cap"]
+nominative = "хирургическая шапочка"
+genitive = "хирургической шапочки"
+dative = "хирургической шапочке"
+accusative = "хирургическую шапочку"
+instrumental = "хирургической шапочкой"
+prepositional = "хирургической шапочке"
+gender = "female"
+
 # MARK: masks
 
 ["heat absorbent coif"]
@@ -915,4 +990,43 @@ dative = "тактическому противогазу M5"
 accusative = "тактический противогаз M5"
 instrumental = "тактическим противогазом M5"
 prepositional = "тактическом противогазе M5"
+gender = "male"
+
+["medical's apron"]
+nominative = "медицинский фартук"
+genitive = "медицинского фартука"
+dative = "медицинскому фартуку"
+accusative = "медицинский фартук"
+instrumental = "медицинским фартуком"
+prepositional = "медицинском фартуке"
+gender = "male"
+
+["Snow Scarf"] # Unique Vendor Name
+nominative = "зимний шарф"
+
+["tactical scarf"]
+nominative = "тактический шарф"
+genitive = "тактического шарфа"
+dative = "тактическому шарфу"
+accusative = "тактический шарф"
+instrumental = "тактическим шарфом"
+prepositional = "тактическом шарфе"
+gender = "male"
+
+["Chief Medical Officer's Peaked Cap"]
+nominative = "фуражка главного врача"
+genitive = "фуражки главного врача"
+dative = "фуражке главного врача"
+accusative = "фуражку главного врача"
+instrumental = "фуражкой главного врача"
+prepositional = "фуражке главного врача"
+gender = "female"
+
+["Chief Medical Officer's labcoat"]
+nominative = "лабораторный халат главного врача"
+genitive = "лабораторного халата главного врача"
+dative = "лабораторному халату главного врача"
+accusative = "лабораторный халат главного врача"
+instrumental = "лабораторным халатом главного врача"
+prepositional = "лабораторном халате главного врача"
 gender = "male"

@@ -488,3 +488,11 @@
 	result = "eggplasma"
 	required_reagents = list("blood" = 10, "eggplasma" = 1)
 	result_amount = 2
+
+/datum/chemical_reaction/borer_cure
+	name = "Anti-Enzyme"
+	id = "borercure"
+	result = "borercure"
+	required_reagents = list("borerenzyme" = 2, "anti_toxin" = 4)
+	result_amount = 3
+	mob_react = FALSE

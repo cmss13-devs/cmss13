@@ -141,8 +141,8 @@
 		/obj/item/storage/box/gloves,
 	)
 	cost = 35 //that tent is expensive, man. Only order this crate if the old tent was destroyed.
-	containertype = /obj/structure/closet/crate/secure/surgery
-	containername = "field doctor crate"
+	containertype = /obj/structure/closet/crate/secure/medical
+	containername = "field doctor's replacement personal crate"
 	access = ACCESS_MARINE_MEDBAY
 	group = "Medical"
 

@@ -26649,12 +26649,11 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
-/obj/structure/closet/crate/medical{
-	name = "field doctor's personal crate";
-	desc = "A medical crate for field doctors to take with them to the FOB."
-	},
 /obj/item/tool/wrench,
 /obj/item/tool/crowbar,
+/obj/structure/closet/crate/secure/medical{
+	desc = "A secure medical crate for field doctors to take with them to the FOB."
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "eiE" = (

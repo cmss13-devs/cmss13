@@ -44,6 +44,13 @@ em {font-style: normal; font-weight: bold;}
 .centradio {color: #5C5C8A;}
 .airadio {color: #FF00FF;}
 
+.unionradio { color: #D4AF37; }
+.milguardradio { color: #A0522D; }
+.milpolradio { color: #1E3A8A; }
+.portradio { color: #B8135B; }
+.medradio { color: #328C5A; }
+.industryradio { color: #B81D13; }
+
 .secradio {color: #A30000;}
 .engradio {color: #A66300;}
 .medradio {color: #008160;}

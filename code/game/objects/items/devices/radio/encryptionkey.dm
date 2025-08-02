@@ -346,3 +346,35 @@
 	name = "\improper Mortar Crew Radio Encryption Key"
 	icon_state = "eng_key"
 	channels = list(RADIO_CHANNEL_ENGI = TRUE, RADIO_CHANNEL_JTAC = TRUE, RADIO_CHANNEL_INTEL = TRUE, RADIO_CHANNEL_REQ = TRUE)
+
+// Protestors
+
+	/obj/item/device/encryptionkey/union
+	name = "\improper Union Council Radio Encryption Key"
+	icon_state = "stripped_key"
+	channels = list(RADIO_CHANNEL_COLONY = TRUE, RADIO_CHANNEL_UNION = TRUE)
+
+	/obj/item/device/encryptionkey/milg
+	name = "\improper Militia Guard Radio Encryption Key"
+	icon_state = "stripped_key"
+	channels = list(RADIO_CHANNEL_COLONY = TRUE, RADIO_CHANNEL_MILG = TRUE, RADIO_CHANNEL_MILP = TRUE)
+
+	/obj/item/device/encryptionkey/milp
+	name = "\improper Militia Police Radio Encryption Key"
+	icon_state = "stripped_key"
+	channels = list(RADIO_CHANNEL_COLONY = TRUE, RADIO_CHANNEL_MILP = TRUE)
+
+	/obj/item/device/encryptionkey/sp
+	name = "\improper Spaceport Radio Encryption Key"
+	icon_state = "stripped_key"
+	channels = list(RADIO_CHANNEL_COLONY = TRUE, RADIO_CHANNEL_SP = TRUE)
+
+	/obj/item/device/encryptionkey/md
+	name = "\improper Medical Radio Encryption Key"
+	icon_state = "stripped_key"
+	channels = list(RADIO_CHANNEL_COLONY = TRUE, RADIO_CHANNEL_MD = TRUE)
+
+	/obj/item/device/encryptionkey/sp
+	name = "\improper Industry Radio Encryption Key"
+	icon_state = "stripped_key"
+	channels = list(RADIO_CHANNEL_COLONY = TRUE, RADIO_CHANNEL_IND = TRUE)

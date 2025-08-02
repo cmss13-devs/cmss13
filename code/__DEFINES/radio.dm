@@ -45,6 +45,14 @@
 #define RADIO_CHANNEL_CLF_MED "CLF Med"
 #define RADIO_CHANNEL_CLF_ENGI "CLF Engi"
 
+//Protestors
+#define RADIO_CHANNEL_UNION "Union Command"
+#define RADIO_CHANNEL_MILG "Militia Guard"
+#define RADIO_CHANNEL_MILP "Militia Police"
+#define RADIO_CHANNEL_SP "Spaceport"
+#define RADIO_CHANNEL_MD "Medical"
+#define RADIO_CHANNEL_IND "Industry"
+
 //UPP Comms
 #define RADIO_CHANNEL_UPP_GEN "UPP"
 #define RADIO_CHANNEL_UPP_CMD "UPP Command"

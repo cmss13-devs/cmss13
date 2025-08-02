@@ -118,6 +118,15 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 
 #define HDC_FREQ 1331
 
+// Protest channels (hijacking hyperdyne lol)
+
+#define UNION_FREQ 1332
+#define MILG_FREQ 1333
+#define MILP_FREQ 1334
+#define SP_FREQ 1335
+#define MD_FREQ 1336
+#define IND_FREQ 1337
+
 //General Radio
 #define MIN_FREQ 1460 // ------------------------------------------------------
 #define PUB_FREQ 1461
@@ -198,6 +207,13 @@ GLOBAL_LIST_INIT(radiochannels, list(
 	RADIO_CHANNEL_COLONY = COLONY_FREQ,
 
 	RADIO_CHANNEL_HYPERDYNE = HDC_FREQ,
+
+	RADIO_CHANNEL_UNION = UNION_FREQ,
+	RADIO_CHANNEL_MILG = MILG_FREQ,
+	RADIO_CHANNEL_MILP = MILP_FREQ,
+	RADIO_CHANNEL_SP = SP_FREQ,
+	RADIO_CHANNEL_MD = MD_FREQ,
+	RADIO_CHANNEL_IND = IND_FREQ,
 
 	RADIO_CHANNEL_WY = WY_FREQ,
 	RADIO_CHANNEL_PMC_GEN = PMC_FREQ,
@@ -330,6 +346,12 @@ SUBSYSTEM_DEF(radio)
 		"[FAX_USCM_HC_FREQ]" = "aiprivradio",
 		"[FAX_USCM_PVST_FREQ]" = "aiprivradio",
 		"[HDC_FREQ]" = "hdcradio",
+		"[UNION_FREQ]" = "unionradio",
+		"[MILG_FREQ]" = "milguardradio",
+		"[MILP_FREQ]" = "milpolradio",
+		"[SP_FREQ]" = "portradio",
+		"[MD_FREQ]" = "medradio",
+		"[IND_FREQ]" = "industryradio",
 	)
 
 /datum/controller/subsystem/radio/proc/add_object(obj/device as obj, new_frequency as num, filter = null as text|null)

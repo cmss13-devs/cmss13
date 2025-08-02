@@ -1,0 +1,29 @@
+2025-08-02:
+  FourkhanDaKhan:
+  - bugfix: the ID modification console does not allow modification from other users
+  Kyogon:
+  - imageadd: added a new queen sprite
+  Red-byte3D:
+  - balance: New xenomorph special structure "Plasma Tree"
+  - rscadd: Adds a new xenomorph special structure named the "Plasma Tree" it replenishes
+      plasma to nearby xenos every few seconds, works like the recovery node.
+  - code_imp: Made "health" and "plasma" span their own color on examine for both
+      structures
+  - bugfix: Unreloadable sadar's are no longer re-loadable
+  SRG3124:
+  - rscadd: Added UA Riot police Uniform and headgear.
+  SRG3127, Thwomper:
+  - rscadd: Added M37A2 Collapsible stock.
+  - rscdel: Removed the old M37 stock from vendors and replaced it with the M37 Collapsible
+      stock.
+  Willzadl:
+  - bugfix: fixed chanterelle box not having a proper name in the galley vendor
+  dryramen, chaussettes for original sprites:
+  - imageadd: add new suitskirts sprites
+  jupyterkat:
+  - bugfix: alt iff now does not care about people on the same z as you if you're
+      shooting at a turf above
+  realforest2001:
+  - bugfix: Fixed the messed up margins in prefab paperwork.
+  wgtjunior743:
+  - rscadd: ABR-40 variant name.

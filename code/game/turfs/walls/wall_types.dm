@@ -783,6 +783,7 @@
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
+	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
 
@@ -1355,7 +1356,6 @@
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
-
 /turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()
 	if(mapload)
@@ -1363,6 +1363,18 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
+/turf/closed/wall/resin/reflective/weak
+	name = "weakened reflective wall"
+	desc = "Weird slime with strange hardened fragments solidified into a wall. It looks like it last for moment before it will collapse."
+	damage_cap = HEALTH_WALL_XENO_REFLECTIVE_WEAK
+	var/duration = 13 SECONDS
+
+/turf/closed/wall/resin/reflective/weak/Initialize(mapload, ...)
+	. = ..()
+	if(mapload)
+		ScrapeAway()
+		return
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 /turf/closed/wall/resin/can_be_dissolved()
 	return FALSE

@@ -49,6 +49,10 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
+"ah" = (
+/obj/item/flag/plantable/clf,
+/turf/open/auto_turf/snow/brown_base/layer0,
+/area/strata/exterior/far_north_outpost)
 "ai" = (
 /obj/structure/sign/poster/clf{
 	pixel_y = 32
@@ -683,6 +687,7 @@
 	pixel_x = -5;
 	pixel_y = 7
 	},
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/clf_dorms)
 "bM" = (
@@ -3038,7 +3043,7 @@ cs
 zq
 zq
 zq
-zq
+ah
 bs
 fR
 Ky

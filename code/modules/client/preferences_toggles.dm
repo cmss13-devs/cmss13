@@ -567,16 +567,44 @@
 	do_toggle_custom_cursors()
 
 /client/proc/do_toggle_custom_cursors(mob/user)
-	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No", "Enable Main Cursor", "Disable Main Cursor"))
 	if(!result)
 		return
-	if(result == "Yes")
-		prefs.custom_cursors = TRUE
-		to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
-	else
-		prefs.custom_cursors = FALSE
-		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
-		mouse_pointer_icon = initial(mouse_pointer_icon)
+	switch(result)
+		if("Yes")
+			prefs.custom_cursors = TRUE
+			to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+			if(result == "Yes")
+				var/chosen_cursor = tgui_alert(user, "Which type of custom cursor?", "Custom Cursors", list("USCM", "Xenomorph", "UPP", "PMC", "TWE"))
+				if(!chosen_cursor)
+					return
+				switch(chosen_cursor)
+					if("USCM")// For anyone in the future who might add anything, all of the cursors need to be their own file. and the only icon inside it needs to be renamed to "all" for byond to work with it
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/uscm.dmi'
+					if("Xenomorph")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/xeno.dmi'
+					if("UPP")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/upp.dmi'
+					if("PMC")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/wy.dmi'
+					if("TWE")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/twe.dmi'
+				prefs.save_preferences()
+				user.update_cursor()
+		if("No")
+			prefs.custom_cursors = FALSE
+			to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+			mouse_pointer_icon = initial(mouse_pointer_icon)
+			prefs.save_preferences()
+		if("Enable Main Cursor")
+			prefs.main_cursor = TRUE
+			to_chat(src, SPAN_NOTICE("Your main cursor will now be customized."))
+			prefs.save_preferences()
+		if("Disable Main Cursor")
+			to_chat(src, SPAN_NOTICE("Your main cursor will no longer be customized."))
+			prefs.main_cursor = FALSE
+			prefs.save_preferences()
+
 
 	prefs.save_preferences()
 

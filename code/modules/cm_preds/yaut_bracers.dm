@@ -1277,8 +1277,8 @@
 
 	var/list/heard = get_mobs_in_view(7, user)
 	for(var/mob/heard_mob in heard)
-		if(M.ear_deaf)
-			heard -= M
+		if(heard_mob.ear_deaf)
+			heard -= heard_mob
 
 	var/image/translator_bubble = image('icons/mob/effects/talk.dmi', src, "pred_translator", TYPING_LAYER)
 	user.show_speech_bubble(heard, looping_bubble = TRUE, animated = FALSE, speech_bubble = translator_bubble)
@@ -1312,10 +1312,10 @@
 	var/voice_name = "A strange voice"
 	if(user.name == user.real_name && user.alpha == initial(user.alpha))
 		voice_name = "<b>[user.name]</b>"
-	for(var/mob/Q as anything in heard)
-		if(Q.stat && !isobserver(Q))
+	for(var/mob/heard_human as anything in heard)
+		if(heard_human.stat && !isobserver(heard_human))
 			continue //Unconscious
-		to_chat(Q, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[message]'</span>")
+		to_chat(heard_human, "[SPAN_INFO("[voice_name] says,")] <span class='[span_class]'>'[message]'</span>")
 
 /obj/item/clothing/gloves/yautja/hunter/verb/bracername()
 	set name = "Toggle Bracer Name"

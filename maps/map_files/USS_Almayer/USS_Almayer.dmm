@@ -3806,6 +3806,25 @@
 /obj/item/reagent_container/food/snacks/mre_pack/meal1,
 /turf/open/floor/almayer/silver,
 /area/almayer/living/cafeteria_officer)
+"air" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/tool/wrench,
+/turf/open/floor/almayer/redcorner/east,
+/area/almayer/living/cryo_cells)
 "ais" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/wood/ship,
@@ -15432,7 +15451,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
 "bdw" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/shooting_range,
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/living/cryo_cells)
 "bdy" = (
@@ -18557,7 +18576,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/pilotbunks)
 "bFs" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/shooting_range,
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/living/cryo_cells)
 "bFt" = (
@@ -21144,7 +21163,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/living/cryo_cells)
 "ccd" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/shooting_range,
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/living/cryo_cells)
 "ccg" = (
@@ -34654,6 +34673,22 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "hLI" = (
+/obj/structure/closet/coffin/woodencrate,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/shooting_target_rail,
+/obj/item/tool/wrench,
 /turf/open/floor/almayer/red,
 /area/almayer/living/cryo_cells)
 "hLS" = (
@@ -37921,7 +37956,7 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/squads/req)
 "jeQ" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/shooting_range,
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/living/cryo_cells)
 "jeR" = (
@@ -121786,7 +121821,7 @@ bqc
 ubQ
 bqc
 lgy
-ccN
+air
 xYP
 rWL
 wLm

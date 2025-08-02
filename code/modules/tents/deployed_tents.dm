@@ -57,7 +57,7 @@
 	var/mob/subject_mob = subject
 	RegisterSignal(subject_mob, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED), PROC_REF(mob_moved), override = TRUE) // Must override because we can't know if mob was already inside tent without keeping an awful ref list
 	subject_mob.RegisterSignal(src, COMSIG_PARENT_QDELETING, TYPE_PROC_REF(/mob, tent_deletion_clean_up), override = TRUE)
-	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject_mob.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = INVISIBILITY_MAXIMUM
 	if(ishuman(subject))
 		RegisterSignal(subject, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS, PROC_REF(cold_protection), override = TRUE)
@@ -74,7 +74,7 @@
 /obj/structure/tent/proc/mob_exited_tent(mob/subject)
 	UnregisterSignal(subject, list(COMSIG_MOVABLE_TURF_ENTERED, COMSIG_GHOST_MOVED, COMSIG_HUMAN_COLD_PROTECTION_APPLY_MODIFIERS))
 	subject.UnregisterSignal(src, COMSIG_PARENT_QDELETING)
-	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used.plane_masters["[ROOF_PLANE]"]
+	var/atom/movable/screen/plane_master/roof/roof_plane = subject.hud_used?.plane_masters["[ROOF_PLANE]"]
 	roof_plane?.invisibility = 0
 
 /mob/proc/tent_deletion_clean_up(obj/structure/tent/deleting_tent)

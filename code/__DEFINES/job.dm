@@ -478,6 +478,36 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 //-------- CIA --------//
 #define JOB_CIA "Intelligence Analyst"
 #define JOB_CIA_LIAISON "Intelligence Liaison Officer"
+
+//-------- HYBRISA PROTESTORS --------//
+#define JOB_UNION_LEADER "Union Leader"
+#define JOB_UNION_REP "Union Representative"
+
+#define JOB_MILITIA_CMDR "Militia Commander"
+#define JOB_MILITIA_CPT "Militia Captain"
+#define JOB_MILITIA_LT "Miliita Lieutenant"
+#define JOB_MILITIA_SGT "Militia Sergeant"
+#define JOB_MILITIA_PO "Militia Police Officer"
+
+#define JOB_GUARD_CMDR "Guard Commander"
+#define JOB_GUARD_TL "Guard Team Leader"
+#define JOB_GUARD_MBR "Guard Member"
+
+#define JOB_SPACEPORT_SUP "Spaceport Supervisor"
+#define JOB_SPACEPORT_MNG "Spaceport Manager"
+#define JOB_SPACEPORT_QM "Spaceport Quartermaster"
+#define JOB_SPACEPORT_TCH "Spaceport Technician"
+
+#define JOB_MEDICAL_DIR "Hospital Director"
+#define JOB_MEDICAL_SPC "Medical Specialist"
+#define JOB_MEDICAL_RES "Medical Resident"
+#define JOB_MEDICAL_INT "Medical Intern"
+
+#define JOB_INDUSTRY_OVR "Industrial Overseer"
+#define JOB_INDUSTRY_OFC "Industrial Officer"
+#define JOB_INDUSTRY_SNG "Industrial Senior Engineer"
+#define JOB_INDUSTRY_ENG "Industrial Engineer"
+
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"

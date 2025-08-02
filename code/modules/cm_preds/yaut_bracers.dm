@@ -1276,7 +1276,7 @@
 		return
 
 	var/list/heard = get_mobs_in_view(7, user)
-	for(var/mob/M in heard)
+	for(var/mob/heard_mob in heard)
 		if(M.ear_deaf)
 			heard -= M
 

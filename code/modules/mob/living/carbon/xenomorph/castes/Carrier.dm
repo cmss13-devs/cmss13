@@ -42,6 +42,11 @@
 
 	minimap_icon = "carrier"
 
+/datum/caste_datum/carrier/New(mob/living/carbon/xenomorph/carrier)
+	. = ..()
+
+	resin_build_order = GLOB.resin_build_order_carrier
+
 /mob/living/carbon/xenomorph/carrier
 	caste_type = XENO_CASTE_CARRIER
 	name = XENO_CASTE_CARRIER
@@ -68,9 +73,10 @@
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/plant_weeds, //1st macro
-		/datum/action/xeno_action/onclick/place_trap, //2nd macro
-		/datum/action/xeno_action/activable/throw_hugger, //3rd macro
-		/datum/action/xeno_action/activable/retrieve_egg, //4th macro
+		/datum/action/xeno_action/onclick/choose_resin, //2nd macro
+		/datum/action/xeno_action/activable/secrete_resin, //3rd macro
+		/datum/action/xeno_action/activable/throw_hugger, //4rd macro
+		/datum/action/xeno_action/activable/retrieve_egg, //5th macro
 		/datum/action/xeno_action/onclick/set_hugger_reserve,
 		/datum/action/xeno_action/onclick/tacmap,
 		)

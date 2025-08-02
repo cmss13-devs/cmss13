@@ -124,7 +124,7 @@
 	dat += "<b>Примечания или комментарии:</b><br><span class=\"paper_field\"></span><br><br>"
 	dat += "<b>Подпись ответственного:</b> <span class=\"paper_field\"></span><br>"
 	dat += "</div> <!-- /message-body-text -->"
-	dat += "<hr style=\"margin-bottom:-3px; margin-top:3px;\">"
+	dat += "<hr style=\"margin-bottom:3px; margin-top:3px;\">"
 	dat += "<div class=\"message-signature-text\">"
 	dat += "<p class=\"signature-title\">Протокол PR301b</p>"
 	dat += "<p>"

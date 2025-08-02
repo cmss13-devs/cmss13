@@ -290,3 +290,13 @@
   yackemflam:
   - qol: You can make sausages with raw ingredients now. Why on earth would you make
       sausage with cooked casings and fillings?
+2025-07-29:
+  TheGamerdk:
+  - rscdel: Removed an outdated first name
+  kiVts:
+  - bugfix: You can unrest as the last xeno
+2025-07-31:
+  SRG3124, Geeves, Frans_Feiffer:
+  - rscadd: Added a Riot Visor for MP's
+  Stakeyng:
+  - balance: the pistol toolbelt can hold anything its pistolless sister can.

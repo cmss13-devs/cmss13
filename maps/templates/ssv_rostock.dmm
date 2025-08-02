@@ -9462,16 +9462,9 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
 "gOw" = (
-/obj/item/weapon/gun/launcher/rocket/upp{
-	pixel_y = -8
-	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/ammo_magazine/rocket/upp{
-	pixel_y = 11
-	},
-/obj/item/ammo_magazine/rocket/upp{
-	pixel_y = 4
-	},
+/obj/item/stack/sheet/plasteel/large_stack,
+/obj/item/stack/sheet/plasteel/large_stack,
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/command/armory)
 "gOx" = (
@@ -15643,7 +15636,10 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/clothing/antag/upp,
+/obj/structure/machinery/cm_vending/clothing/antag/upp{
+	density = 0;
+	pixel_x = 32
+	},
 /turf/open/floor/wood/ship,
 /area/rostock/command/so)
 "lri" = (
@@ -26812,7 +26808,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/s_a)
 "uKO" = (
-/obj/structure/machinery/cm_vending/clothing/antag/upp,
+/obj/structure/machinery/cm_vending/clothing/antag/upp{
+	density = 0;
+	pixel_x = -32
+	},
 /turf/open/floor/wood,
 /area/rostock/command/polcom)
 "uKR" = (
@@ -26955,8 +26954,6 @@
 /obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/metal/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
-/obj/item/stack/sheet/plasteel/large_stack,
 /obj/structure/machinery/power/apc/upp/south,
 /turf/open/floor/strata/red1,
 /area/rostock/command/armory)
@@ -28322,7 +28319,10 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/rostock/req)
 "vQn" = (
-/obj/structure/machinery/cm_vending/clothing/antag/upp,
+/obj/structure/machinery/cm_vending/clothing/antag/upp{
+	density = 0;
+	pixel_x = -32
+	},
 /turf/open/floor/wood,
 /area/rostock/command/xo)
 "vQs" = (

@@ -112,6 +112,8 @@
 		switch(damtype)
 			if("brute")
 				M.apply_damage(power,BRUTE)
+				if(is_sharp(src))
+					new /obj/effect/bloodsplatter(M, Get_Angle(user, M),, M.get_blood_color())
 			if("fire")
 				M.apply_damage(power,BURN)
 				to_chat(M, SPAN_WARNING("It burns!"))

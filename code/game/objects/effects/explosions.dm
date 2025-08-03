@@ -96,7 +96,6 @@
 	fadein = 3
 	scale = generator(GEN_NUM, 0.18, 0.15)
 	position = generator(GEN_SPHERE, 150, 150)
-	color = COLOR_BROWN
 	velocity = list(0, 12)
 	grow = list(0, 0.01)
 	gravity = list(0, -1.25)
@@ -169,7 +168,6 @@
 	lifespan = 20
 	fade = 5
 	position = generator(GEN_SPHERE, 16, 16)
-	color = COLOR_DARK_BROWN
 	velocity = list(0, 26)
 	scale = generator(GEN_NUM, 1, 2)
 	gravity = list(0, -3)
@@ -197,18 +195,16 @@
 	drift = generator(GEN_CIRCLE, 0, 1.5)
 
 /particles/sparks_outwards
-	icon = 'icons/effects/64x64.dmi'
-	icon_state = "flare"
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
+	icon_state = "shrapnel_bright2"
 	width = 750
 	height = 750
 	count = 40
-	spawning = 20
-	lifespan = 15
-	fade = 15
-	position = generator(GEN_SPHERE, 8, 8)
-	velocity = generator(GEN_CIRCLE, 30, 30)
-	scale = 0.1
-	friction = 0.1
+	spawning = 5
+	lifespan = 0.6 SECONDS
+	fadein = 0.2 SECONDS
+	velocity = generator("square", 32 * 0.85, 32 * 1.15)
+	rotation = generator("num", 0, 359)
 
 /particles/water_outwards
 	icon = 'icons/effects/particles/generic_particles.dmi'
@@ -233,12 +229,8 @@
 	var/duration = 25
 	///smoke wave particle holder
 	var/obj/effect/abstract/particle_holder/smoke_wave
-	///explosion smoke particle holder
-	var/obj/effect/abstract/particle_holder/explosion_smoke
 	///debris dirt kickup particle holder
 	var/obj/effect/abstract/particle_holder/dirt_kickup
-	///falling debris particle holder
-	var/obj/effect/abstract/particle_holder/falling_debris
 	///sparks particle holder
 	var/obj/effect/abstract/particle_holder/sparks
 	///large dirt kickup particle holder
@@ -265,10 +257,8 @@
 	var/turf/turf_type = get_turf(src)
 	if(!turf_type.can_bloody)
 		smoke_wave = new(src, /particles/wave_water)
-		explosion_smoke = new(src, /particles/explosion_water)
 		dirt_kickup = new(src, /particles/water_splash)
-		falling_debris = new(src, /particles/water_falling)
-		sparks = new(src, /particles/water_outwards)
+		sparks = new(src, /particles/sparks_outwards)
 		large_kickup = new(src, /particles/water_splash_large)
 	else
 		if(power <= EXPLOSION_THRESHOLD_LOW)
@@ -276,18 +266,7 @@
 		else
 			smoke_wave = new(src, /particles/smoke_wave)
 
-		if(power > EXPLOSION_THRESHOLD_HIGH)
-			explosion_smoke = new(src, /particles/explosion_smoke/deva)
-		else if(power <= EXPLOSION_THRESHOLD_LOW)
-			explosion_smoke = new(src, /particles/explosion_smoke/small)
-		else
-			explosion_smoke = new(src, /particles/explosion_smoke)
-
 		dirt_kickup = new(src, /particles/dirt_kickup)
-		if(power <= EXPLOSION_THRESHOLD_LOW)
-			falling_debris = new(src, /particles/falling_debris/small)
-		else
-			falling_debris = new(src, /particles/falling_debris)
 		sparks = new(src, /particles/sparks_outwards)
 
 		if(power > EXPLOSION_THRESHOLD_HIGH)
@@ -301,26 +280,22 @@
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 3 * radius, 3 * radius)
 	else
 		smoke_wave.particles.velocity = generator(GEN_CIRCLE, 5 * radius, 5 * radius)
-	explosion_smoke.layer = layer + 0.1
 	sparks.particles.velocity = generator(GEN_CIRCLE, 8 * radius, 8 * radius)
 	addtimer(CALLBACK(src, PROC_REF(set_count_short)), 5)
 	addtimer(CALLBACK(src, PROC_REF(set_count_long)), 10)
 
 /obj/effect/explosion/proc/set_count_short()
 	smoke_wave.particles.count = 0
-	explosion_smoke.particles.count = 0
 	sparks.particles.count = 0
+	sparks.particles.spawning = 0
 	large_kickup.particles.count = 0
-	falling_debris.particles.count = 0
 
 /obj/effect/explosion/proc/set_count_long()
 	dirt_kickup.particles.count = 0
 
 /obj/effect/explosion/Destroy()
 	QDEL_NULL(smoke_wave)
-	QDEL_NULL(explosion_smoke)
 	QDEL_NULL(sparks)
 	QDEL_NULL(large_kickup)
-	QDEL_NULL(falling_debris)
 	QDEL_NULL(dirt_kickup)
 	return ..()

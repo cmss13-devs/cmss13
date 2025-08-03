@@ -321,10 +321,3 @@
 /datum/action/xeno_action/activable/queen_heal/pathogen_mind
 	name = "Heal Pathogen Creature (600)"
 	cross_map_heal = TRUE
-
-/datum/action/xeno_action/activable/queen_heal/pathogen_mind/use_ability(atom/A, verbose)
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X.status_flags & INCORPOREAL)
-		to_chat(X, SPAN_WARNING("You cannot heal while incorporeal."))
-		return FALSE
-	return ..()

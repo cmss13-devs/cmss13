@@ -1216,6 +1216,9 @@ h2.alert {
   color: hsl(0, 100%, 50%);
   font-weight: bold;
   font-size: 200%;
+
+  /*Animation*/
+  animation: glitch 0.5s infinite;
 }
 
 .xenohighdanger {

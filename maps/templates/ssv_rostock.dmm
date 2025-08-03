@@ -28643,13 +28643,13 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/line_nexter_control{
 	id = "uppline1";
-	pixel_x = 8;
+	pixel_x = 6;
 	pixel_y = 10
 	},
 /obj/structure/machinery/door_control{
 	id = "cargdoor";
 	name = "Shutter View Access";
-	pixel_x = 8;
+	pixel_x = 6;
 	pixel_y = 2
 	},
 /turf/open/floor/strata,

@@ -31,12 +31,64 @@
 /turf/open/gm/dirt/brown/variant_6
 	icon_state = "desert_dug"
 
-/turf/open/gm/road
+/turf/open/gm/road/browndirt
 	name = "dirt road"
 	icon = 'icons/turf/floors/ground_map_dirt.dmi'
 	icon_state = "browndirt_road"
 	baseturfs = /turf/open/gm/road
 	minimap_color = MINIMAP_DIRT
+
+/turf/open/gm/road/browndirt/edge
+	icon_state = "browndirt_road_1"
+	dir = SOUTH
+
+/turf/open/gm/road/browndirt/edge/east
+	dir = EAST
+
+/turf/open/gm/road/browndirt/edge/north
+	dir = NORTH
+
+/turf/open/gm/road/browndirt/edge/west
+	dir = WEST
+
+/turf/open/gm/road/browndirt/thin
+	icon_state = "browndirt_road_2"
+	dir = SOUTH
+
+/turf/open/gm/road/browndirt/thin
+	dir = EAST
+
+/turf/open/gm/road/browndirt/thin
+	dir = NORTH
+
+/turf/open/gm/road/browndirt/thin
+	dir = WEST
+
+/turf/open/gm/road/browndirt/innercorner
+	icon_state = "browndirt_road_3"
+	dir = SOUTH
+
+/turf/open/gm/road/browndirt/innercorner
+	dir = EAST
+
+/turf/open/gm/road/browndirt/innercorner
+	dir = NORTH
+
+/turf/open/gm/road/browndirt/innercorner
+	dir = WEST
+
+/turf/open/gm/road/browndirt/outercorner
+	icon_state = "browndirt_road_corner"
+	dir = SOUTH
+
+/turf/open/gm/road/browndirt/outercorner
+	dir = EAST
+
+/turf/open/gm/road/browndirt/outercorner
+	dir = NORTH
+
+/turf/open/gm/road/browndirt/outercorner
+	dir = WEST
 
 /turf/open/gm/grass/dirt
 	name = "grass"

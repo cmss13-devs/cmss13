@@ -413,7 +413,7 @@
 		if(X.hivenumber == hivenumber) //Trigger proxy alert only for hostile xenos
 			return
 
-	to_chat(get_parent(), SPAN_PATHOGEN_ANNOUNCE("Our [src.name] has detected a nearby hostile, [hostile], at [get_area(hostile)] (X: [hostile.x], Y: [hostile.y])."))
+	xeno_announcement("Our [src.name] has detected a nearby hostile, [hostile], at [get_area(hostile)] (X: [hostile.x], Y: [hostile.y]).", XENO_HIVE_PATHOGEN, PATHOGEN_ANNOUNCE)
 	SEND_SOUND(get_parent(), 'sound/pathogen_creatures/pathogen_help.ogg')
 	COOLDOWN_START(src, cooldown_overmind_proxy_alert, OVERMIND_DETECTION_COOLDOWN) //set the cooldown.
 

@@ -268,7 +268,7 @@
 		if(human_passer.species)
 			human_passer.species.larva_impregnated(embryo)
 
-		human_passer.visible_message(SPAN_DANGER("[human_passer] inhales [src] as they walk through it!"), SPAN_HIGHDANGER("You inhale [src] as you walk through it!"))
+		human_passer.visible_message(SPAN_HIGHDANGER("[human_passer] inhales [src] as they walk through it!"), SPAN_EFFINGHIGHDANGER("You inhale [src] as you walk through it!"))
 		var/area/breath_area = get_area(src)
 		if(breath_area)
 			notify_ghosts(header = "Infected", message = "[human_passer] has been infected with pathogen spores at [breath_area]!", source = human_passer, action = NOTIFY_ORBIT)

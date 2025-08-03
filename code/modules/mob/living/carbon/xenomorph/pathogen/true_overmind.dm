@@ -15,7 +15,7 @@
 	aura_strength = 0
 
 	max_build_dist = 7
-	heal_standing = 1
+	heal_standing = 3
 
 	evolves_to = list()
 	deevolves_to = list()
@@ -94,7 +94,7 @@
 		pass_flags.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
 	invisibility = INVISIBILITY_LEVEL_TWO
-	aura_strength = 0
+	aura_strength = 2
 	speed = XENO_SPEED_RUNNER
 
 /mob/living/carbon/xenomorph/overmind/proc/set_stats_manifest()
@@ -102,7 +102,7 @@
 		pass_flags.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		pass_flags.flags_can_pass_all = PASS_MOB_THRU_XENO|PASS_AROUND|PASS_HIGH_OVER_ONLY
 
-	aura_strength = 4
+	aura_strength = 5
 	speed = XENO_SPEED_QUEEN
 
 /mob/living/carbon/xenomorph/overmind/updatehealth()

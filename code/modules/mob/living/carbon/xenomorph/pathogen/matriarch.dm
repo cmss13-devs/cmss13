@@ -221,7 +221,7 @@
 	ability_primacy = XENO_NOT_PRIMARY_ACTION
 
 /datum/action/xeno_action/onclick/blight_wave/overmind/can_use_action(silent = FALSE, override_flags)
-	if(owner.status_flags & INCORPOREAL)
+	if(owner?.status_flags & INCORPOREAL)
 		return FALSE
 	return ..()
 

@@ -12,7 +12,7 @@
 
 /datum/action/xeno_action/onclick/change_form/can_use_action(silent = FALSE, override_flags)
 	var/mob/living/carbon/xenomorph/overmind = owner
-	if((overmind.status_flags & INCORPOREAL) && (overmind.health != overmind.maxHealth))
+	if(overmind && (overmind.status_flags & INCORPOREAL) && (overmind.health != overmind.maxHealth))
 		return FALSE
 	return ..()
 
@@ -22,14 +22,14 @@
 	return ..()
 
 /datum/action/xeno_action/onclick/emit_pheromones/overmind/can_use_action(silent = FALSE, override_flags)
-	if (owner.status_flags & INCORPOREAL)
+	if(owner?.status_flags & INCORPOREAL)
 		return FALSE
 	return ..()
 
 
 /datum/action/xeno_action/watch_xeno/overmind/can_use_action(silent = FALSE, override_flags)
 	var/mob/living/carbon/xenomorph/overmind/overmind = owner
-	if(!COOLDOWN_FINISHED(overmind, cooldown_hivemind_manifestation))
+	if(overmind && !COOLDOWN_FINISHED(overmind, cooldown_hivemind_manifestation))
 		return FALSE
 	return ..()
 

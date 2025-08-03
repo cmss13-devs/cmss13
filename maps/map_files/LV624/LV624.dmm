@@ -13,6 +13,17 @@
 	icon_state = "pwall"
 	},
 /area/space)
+"aad" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4;
+	pixel_y = 17
+	},
+/obj/structure/flora/bush/ausbushes/grassybush{
+	layer = 4.1
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_east_jungle)
 "aae" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge/east,
@@ -53,6 +64,24 @@
 /obj/effect/landmark/corpsespawner/colonist,
 /turf/open/floor/hybrisa/wood/redwood,
 /area/lv624/lazarus/kitchen)
+"aal" = (
+/turf/open/gm/road/browndirt,
+/area/lv624/ground/colony/west_tcomms_road)
+"aam" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.3;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/kitchen)
+"aan" = (
+/obj/structure/machinery/colony_floodlight{
+	pixel_x = -14
+	},
+/obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/landing_zones/lz1)
 "aao" = (
 /obj/structure/bed/sofa/hybrisa/sofa/black{
 	icon_state = "couch_vet3_black";
@@ -109,9 +138,26 @@
 "aaA" = (
 /turf/open/gm/coast/beachcorner/south_west,
 /area/lv624/ground/caves/north_central_caves)
+"aaB" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.3;
+	pixel_y = 16
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/canteen)
 "aaC" = (
 /turf/open/gm/coast/beachcorner2/south_west,
 /area/lv624/ground/caves/north_central_caves)
+"aaD" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/west_jungle)
 "aaE" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -125,6 +171,15 @@
 "aaH" = (
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/ground/caves/north_central_caves)
+"aaI" = (
+/obj/effect/landmark/hunter_primary,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/west_jungle)
 "aaJ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/dirtgrassborder/north,
@@ -132,6 +187,22 @@
 "aaK" = (
 /turf/open/gm/dirtgrassborder/north,
 /area/lv624/ground/caves/north_central_caves)
+"aaL" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.3;
+	pixel_y = 16
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/lazarus/quartstorage)
+"aaM" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grassmud/corner/north_west,
+/area/lv624/ground/jungle/west_jungle)
 "aaN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer0,
@@ -146,6 +217,14 @@
 /obj/structure/prop/brazier/frame,
 /turf/open/hunter_temple/mossy,
 /area/lv624/ground/caves/east_caves)
+"aaR" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.3;
+	pixel_y = 16
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/north_east_jungle)
 "aaS" = (
 /obj/effect/decal/remains/xeno,
 /turf/open/auto_turf/strata_grass/layer0,
@@ -172,9 +251,25 @@
 "aaZ" = (
 /turf/open/gm/coast/beachcorner/north_east,
 /area/lv624/ground/caves/north_central_caves)
+"aba" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grassmud/north,
+/area/lv624/ground/barrens/south_west_barrens)
 "abb" = (
 /turf/open/gm/river,
 /area/lv624/ground/caves/north_central_caves)
+"abc" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grassmud/east,
+/area/lv624/ground/jungle/north_west_jungle)
 "abd" = (
 /turf/open/gm/coast/beachcorner2/north_east,
 /area/lv624/ground/caves/north_central_caves)
@@ -262,6 +357,15 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
+"abt" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/south_west_barrens)
 "abu" = (
 /obj/structure/platform/metal/strata,
 /obj/effect/decal/cleanable/dirt,
@@ -277,6 +381,11 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/central_caves)
+"abx" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/south_west_barrens)
 "aby" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -305,6 +414,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/tan/grey_edge,
 /area/lv624/lazarus/main_hall)
+"abD" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/south_west_barrens)
 "abE" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /turf/open/auto_turf/strata_grass/layer0,
@@ -336,6 +455,23 @@
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/main_hall)
+"abK" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/north_east_jungle)
+"abL" = (
+/obj/structure/flora/jungle/vines/light_3,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.1;
+	pixel_y = 16
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/north_east_jungle)
 "abM" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/north_west_caves)
@@ -346,10 +482,26 @@
 /obj/effect/landmark/crap_item,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/west_caves)
+"abP" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grassmud/corner/north_west,
+/area/lv624/ground/barrens/south_west_barrens)
 "abQ" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/north_west_caves)
+"abR" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.1;
+	pixel_y = 16
+	},
+/turf/open/gm/grass/grassmud/corner/south_east,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "abS" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_central_caves)
@@ -360,6 +512,30 @@
 "abU" = (
 /turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
+"abV" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.1;
+	pixel_y = 16
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/north_east_jungle)
+"abW" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.1;
+	pixel_y = 16
+	},
+/turf/open/gm/grass/grassmud/corner/south_west,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"abX" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/central_barrens)
 "abY" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -373,6 +549,33 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
+"acb" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	layer = 4.2;
+	pixel_x = -15;
+	pixel_y = -7
+	},
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/central_barrens)
+"acc" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.1;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/central_barrens)
+"acd" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/barrens/central_barrens)
 "ace" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -392,6 +595,10 @@
 /obj/item/stack/sheet/wetleather,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"aci" = (
+/obj/structure/flora/jungle/vines/light_3,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/barrens/central_barrens)
 "acj" = (
 /obj/structure/transmitter/colony_net{
 	phone_category = "Lazarus Landing";
@@ -421,6 +628,14 @@
 	},
 /turf/closed/wall,
 /area/lv624/lazarus/canteen)
+"acn" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/east_barrens)
 "aco" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -439,6 +654,14 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/jungle/south_west_jungle/ceiling)
+"acs" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/south_west_caves)
 "act" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 9
@@ -464,12 +687,37 @@
 /obj/item/storage/box/m94,
 /turf/open/floor/plating,
 /area/lv624/lazarus/crashed_ship_containers)
+"acx" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/barrens/west_barrens)
 "acy" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
 	},
 /turf/open/gm/dirt/brown/variant_1,
 /area/lv624/ground/caves/west_caves)
+"acz" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
+/turf/open/hybrisa/street/cement3,
+/area/lv624/ground/barrens/containers)
+"acA" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/corsat,
+/area/lv624/ground/barrens/central_barrens)
 "acB" = (
 /obj/structure/computerframe,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
@@ -487,11 +735,38 @@
 	},
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"acD" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/largecrate/empty/case{
+	pixel_y = 3
+	},
+/turf/open/hybrisa/street/cement1,
+/area/lv624/ground/barrens/containers)
 "acE" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy27"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"acF" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/structure/sign/safety/fire_haz{
+	pixel_y = -26;
+	pixel_x = 15
+	},
+/turf/open/hybrisa/street/cement2,
+/area/lv624/ground/caves/south_central_caves)
+"acG" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat/plate,
+/area/lv624/ground/caves/south_central_caves)
 "acH" = (
 /obj/structure/girder/displaced,
 /turf/open/floor/platingdmg1,
@@ -536,12 +811,35 @@
 "acO" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
+"acP" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/largecrate/empty,
+/turf/open/hybrisa/street/cement1,
+/area/lv624/ground/barrens/north_east_barrens)
 "acQ" = (
 /obj/item/xeno_restraints,
 /turf/open/floor/platingdmg1,
 /area/lv624/lazarus/crashed_ship_containers)
+"acR" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/hybrisa/street/cement1,
+/area/lv624/ground/barrens/north_east_barrens)
+"acS" = (
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/corsat/plate,
+/area/lv624/ground/caves/south_central_caves)
 "acT" = (
 /obj/item/prop/colony/usedbandage{
 	dir = 10
@@ -576,6 +874,10 @@
 "acY" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/faxmachine/corporate{
+	pixel_y = -6
+	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
 "acZ" = (
@@ -583,6 +885,15 @@
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor/wood/wood_broken3,
 /area/lv624/ground/caves/north_central_caves)
+"ada" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/corsat/plate,
+/area/lv624/ground/caves/south_central_caves)
 "adb" = (
 /obj/structure/bed/sofa/hybrisa/sofa/black{
 	icon_state = "couch_vet3_black";
@@ -601,6 +912,23 @@
 /obj/effect/landmark/crap_item,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/south_central_caves)
+"add" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/plating,
+/area/lv624/ground/caves/south_central_caves)
+"ade" = (
+/obj/structure/machinery/door_control/brbutton{
+	pixel_y = -10;
+	name = "Cargo Garage";
+	id = "phigarage"
+	},
+/turf/closed/wall/r_wall/unmeltable,
+/area/lv624/ground/caves/south_central_caves)
 "adf" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
@@ -612,6 +940,14 @@
 /obj/effect/landmark/railgun_camera_pos,
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz1)
+"adi" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	dir = 4;
+	id = "phieastcheckpoint"
+	},
+/turf/open/floor/corsat,
+/area/lv624/ground/caves/south_central_caves)
 "adj" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -658,6 +994,14 @@
 	icon_state = "wy22"
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/turf/open/floor/corsat/red/east,
+/area/lv624/ground/caves/south_central_caves)
 "ado" = (
 /turf/open/floor/white,
 /area/lv624/lazarus/robotics)
@@ -673,6 +1017,13 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves)
+"adr" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door_control{
+	id = "phiwestcheckpoint"
+	},
+/turf/open/floor/corsat/red/west,
+/area/lv624/ground/caves/south_central_caves)
 "ads" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy3"
@@ -690,6 +1041,14 @@
 	opacity = 0
 	},
 /area/lv624/lazarus/crashed_ship_containers)
+"adv" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/filingcabinet{
+	pixel_y = 20;
+	pixel_x = 4
+	},
+/turf/open/floor/corsat/redcorner/west,
+/area/lv624/ground/caves/south_central_caves)
 "adw" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy1"
@@ -703,6 +1062,13 @@
 "ady" = (
 /turf/closed/wall/cult,
 /area/lv624/ground/caves/south_central_caves)
+"adz" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door_control{
+	id = "phieastcheckpoint"
+	},
+/turf/open/floor/corsat/red/east,
+/area/lv624/ground/caves/south_central_caves)
 "adA" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /obj/effect/decal/strata_decals/mud_corner{
@@ -710,6 +1076,33 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/barrens/north_east_barrens)
+"adB" = (
+/obj/structure/prop/hybrisa/misc/floorprops/grate2,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/hybrisa/metal/underground_unweedable,
+/area/lv624/ground/caves/central_caves)
+"adC" = (
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = 32;
+	pixel_y = -6
+	},
+/turf/open/floor/darkish,
+/area/lv624/ground/caves/central_caves)
+"adD" = (
+/obj/structure/sign/safety/coffee{
+	pixel_y = 5
+	},
+/turf/closed/wall/r_wall,
+/area/lv624/ground/caves/central_caves)
+"adE" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/closed/wall/r_wall,
+/area/lv624/ground/caves/central_caves)
+"adF" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/corsat,
+/area/lv624/ground/caves/central_caves)
 "adG" = (
 /obj/structure/bed/chair/wood/wings,
 /turf/open/gm/dirt,
@@ -723,13 +1116,48 @@
 	},
 /turf/open/hunter_temple/mossy,
 /area/lv624/ground/caves/south_east_caves)
+"adI" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/corsat,
+/area/lv624/ground/caves/central_caves)
 "adJ" = (
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/west_caves)
+"adK" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 10
+	},
+/turf/open/floor/corsat,
+/area/lv624/ground/caves/central_caves)
+"adL" = (
+/turf/open/floor/corsat,
+/area/lv624/ground/caves/central_caves)
+"adM" = (
+/obj/structure/fence/dark,
+/turf/open/floor/corsat,
+/area/lv624/ground/caves/central_caves)
+"adN" = (
+/obj/structure/sign/safety/fire_haz{
+	pixel_y = -26;
+	pixel_x = 14
+	},
+/turf/open/floor/corsat/box,
+/area/lv624/ground/caves/central_caves)
 "adO" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"adP" = (
+/turf/open/floor/corsat/theta,
+/area/lv624/ground/caves/central_caves)
+"adQ" = (
+/turf/open/floor/corsat/gamma,
+/area/lv624/ground/caves/central_caves)
+"adR" = (
+/turf/open/floor/corsat/sigma,
+/area/lv624/ground/caves/central_caves)
 "adS" = (
 /turf/closed/shuttle/ert{
 	icon_state = "wy15"
@@ -771,6 +1199,9 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/south_east_caves)
+"aea" = (
+/turf/open/floor/corsat/omega,
+/area/lv624/ground/caves/central_caves)
 "aeb" = (
 /obj/structure/stairs/perspective{
 	color = "#414449";
@@ -784,6 +1215,18 @@
 /obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"aed" = (
+/obj/structure/sign/safety/high_voltage{
+	pixel_y = 6;
+	pixel_x = -16
+	},
+/obj/structure/sign/safety/west{
+	pixel_y = -6;
+	pixel_x = -16
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/corsat/spiralblueoffice,
+/area/lv624/ground/caves/central_caves)
 "aee" = (
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/dirtgrassborder/grassdirt_corner/north_east,
@@ -800,6 +1243,13 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
+"aei" = (
+/obj/structure/sign/safety/high_voltage{
+	pixel_y = 6;
+	pixel_x = -16
+	},
+/turf/open/floor/corsat/box,
+/area/lv624/ground/caves/central_caves)
 "aej" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/prop/brazier/torch,
@@ -813,6 +1263,15 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/south_east_caves)
+"ael" = (
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/plating,
+/area/lv624/ground/caves/central_caves)
 "aem" = (
 /obj/item/device/flashlight/lamp/tripod{
 	on = 0
@@ -825,6 +1284,11 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/barrens/containers)
+"aeo" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/effect/landmark/lizard_spawn,
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/caves/north_central_caves)
 "aeq" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
@@ -865,6 +1329,9 @@
 	icon_state = "W";
 	layer = 2.5
 	},
+/obj/structure/largecrate/empty/case{
+	pixel_y = 3
+	},
 /turf/open/hybrisa/street/cement1,
 /area/lv624/ground/barrens/containers)
 "aeE" = (
@@ -898,14 +1365,6 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/south_east_caves)
-"afc" = (
-/obj/structure/machinery/colony_floodlight{
-	density = 0;
-	layer = 4.3;
-	pixel_y = 17
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/south_east_jungle)
 "afh" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/warning_stripes{
@@ -3041,7 +3500,7 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /obj/structure/machinery/colony_floodlight{
 	density = 0;
-	layer = 4.3;
+	layer = 4.1;
 	pixel_y = 17
 	},
 /turf/open/gm/grass/grass1,
@@ -5811,7 +6270,6 @@
 /obj/structure/reagent_dispensers/watertank{
 	pixel_y = 7
 	},
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/plating,
 /area/lv624/lazarus/toilet)
 "aAb" = (
@@ -7493,10 +7951,6 @@
 "aGR" = (
 /turf/open/floor/warningcorner/north,
 /area/lv624/lazarus/landing_zones/lz1)
-"aGS" = (
-/obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass/grass1,
-/area/lv624/lazarus/landing_zones/lz1)
 "aGT" = (
 /obj/structure/fence/dark,
 /turf/open/gm/grass/grassmud/east,
@@ -7522,12 +7976,6 @@
 /obj/structure/fence/dark,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/colony/north_nexus_road)
-"aGZ" = (
-/obj/effect/decal/strata_decals/grime/grime4,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/north,
-/turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
-/area/lv624/lazarus/sleep_male)
 "aHa" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/reagent_dispensers/fueltank{
@@ -7570,7 +8018,6 @@
 /turf/open/floor/almayer,
 /area/lv624/lazarus/quart)
 "aHo" = (
-/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/lv624/lazarus/main_hall)
 "aHs" = (
@@ -7775,6 +8222,11 @@
 /area/lv624/lazarus/main_hall)
 "aIm" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
 "aIn" = (
@@ -7844,6 +8296,11 @@
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/lazarus/landing_zones/lz1)
 "aIG" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.3;
+	pixel_y = 16
+	},
 /turf/open/gm/grass/grassmud/corner/south_west,
 /area/lv624/lazarus/landing_zones/lz1)
 "aIH" = (
@@ -10095,12 +10552,6 @@
 /turf/open/hybrisa/street/sidewalkcenter,
 /area/lv624/ground/colony/north_nexus_road)
 "aRY" = (
-/obj/structure/machinery/colony_floodlight{
-	density = 0;
-	layer = 4.3;
-	pixel_y = 6;
-	pixel_x = 2
-	},
 /turf/open/hybrisa/street/sidewalk/southwest,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aRZ" = (
@@ -10355,6 +10806,11 @@
 /turf/open/hybrisa/street/sidewalk/north,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aSS" = (
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.3;
+	pixel_y = 16
+	},
 /turf/open/hybrisa/street/sidewalk/northeast,
 /area/lv624/lazarus/quartstorage/outdoors)
 "aST" = (
@@ -15580,10 +16036,6 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/south_west_caves)
-"bit" = (
-/obj/structure/machinery/colony_floodlight,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/north_east_jungle)
 "biu" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 10;
@@ -17277,6 +17729,11 @@
 "bov" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /obj/structure/flora/jungle/vines/light_2,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
+	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/west_barrens)
 "bow" = (
@@ -18107,7 +18564,7 @@
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/machinery/colony_floodlight{
 	density = 0;
-	layer = 4.3;
+	layer = 4.1;
 	pixel_y = 17
 	},
 /turf/open/gm/grass/grassmud/corner/north_west,
@@ -19575,6 +20032,7 @@
 /area/lv624/ground/barrens/central_barrens)
 "bwL" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/smg/p90,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv624/ground/barrens/central_barrens)
 "bwM" = (
@@ -19625,11 +20083,27 @@
 /turf/closed/wall/r_wall,
 /area/lv624/ground/barrens/central_barrens)
 "bwT" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Garage Shutters";
+	id = "phigarage"
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
 /turf/open/floor,
 /area/lv624/ground/barrens/central_barrens)
 "bwU" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper Garage Shutters";
+	id = "phigarage"
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
 /turf/open/floor,
 /area/lv624/ground/barrens/containers)
 "bwV" = (
@@ -19750,10 +20224,6 @@
 	icon_state = "2"
 	},
 /obj/effect/decal/hybrisa/bloodtrail,
-/turf/open/hybrisa/street/sidewalkfull,
-/area/lv624/ground/barrens/central_barrens)
-"bxr" = (
-/obj/item/weapon/gun/smg/p90,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv624/ground/barrens/central_barrens)
 "bxs" = (
@@ -19889,11 +20359,28 @@
 /area/lv624/ground/barrens/central_barrens)
 "bxR" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/obj/effect/xenomorph/acid/weak{
+	pixel_y = -11
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/barrens/central_barrens)
 "bxS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
-/turf/open/floor/corsat/plate,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/obj/effect/xenomorph/acid/weak{
+	pixel_y = -6;
+	pixel_x = -9
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/barrens/central_barrens)
 "bxT" = (
 /obj/effect/decal/cleanable/blood/drip{
@@ -19915,7 +20402,7 @@
 /obj/item/shard{
 	icon_state = "medium"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/corsat,
 /area/lv624/ground/barrens/central_barrens)
 "bxX" = (
 /obj/structure/machinery/colony_floodlight{
@@ -19938,7 +20425,7 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv624/ground/barrens/containers)
 "byb" = (
-/obj/structure/largecrate/random,
+/obj/structure/largecrate/lisa,
 /turf/open/hybrisa/street/cement1,
 /area/lv624/ground/barrens/containers)
 "byc" = (
@@ -20413,7 +20900,12 @@
 	},
 /obj/structure/sign/poster/wylogo{
 	pixel_y = 32;
-	layer = 2.9
+	layer = 2.9;
+	pixel_x = -6
+	},
+/obj/structure/sign/safety/reception{
+	pixel_y = 24;
+	pixel_x = 15
 	},
 /turf/open/floor/corsat/yellow,
 /area/lv624/ground/barrens/central_barrens)
@@ -20472,7 +20964,11 @@
 	},
 /obj/structure/sign/poster/wylogo{
 	pixel_y = 32;
-	layer = 2.9
+	layer = 2.9;
+	pixel_x = 6
+	},
+/obj/structure/sign/safety/reception{
+	pixel_y = 24
 	},
 /turf/open/floor/corsat/yellow,
 /area/lv624/ground/caves/south_central_caves)
@@ -20744,10 +21240,10 @@
 /turf/open/floor/corsat/yellow/west,
 /area/lv624/ground/caves/south_central_caves)
 "bAq" = (
-/obj/structure/machinery/power/apc/no_power/west,
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /obj/effect/spawner/random/tool,
+/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/corsat/brown/northwest,
 /area/lv624/ground/caves/south_central_caves)
 "bAr" = (
@@ -21220,7 +21716,13 @@
 /area/lv624/ground/caves/west_caves)
 "bBQ" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/barrens/west_barrens)
 "bBR" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -21281,6 +21783,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
 "bBZ" = (
@@ -21338,6 +21846,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
 "bCh" = (
@@ -21357,6 +21871,9 @@
 "bCj" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/manifold/hidden/cyan,
+/obj/structure/sign/safety/fire_haz{
+	pixel_y = -26
+	},
 /turf/open/hybrisa/street/cement2,
 /area/lv624/ground/caves/south_central_caves)
 "bCk" = (
@@ -21729,7 +22246,13 @@
 /area/lv624/ground/caves/south_central_caves)
 "bDu" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/south_central_caves)
 "bDv" = (
 /obj/structure/barricade/sandbags{
@@ -22127,33 +22650,40 @@
 /area/lv624/ground/caves/south_central_caves)
 "bEI" = (
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/machinery/door/poddoor/hybrisa/shutters,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/south_central_caves)
 "bEJ" = (
-/obj/structure/closet/secure_closet/guncabinet,
-/obj/item/storage/belt/marine,
-/obj/item/weapon/gun/rifle/m41a,
-/obj/item/ammo_magazine/rifle/extended,
-/obj/item/ammo_magazine/rifle,
-/obj/item/ammo_magazine/rifle,
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/photocopier,
 /turf/open/floor/corsat/redcorner/east,
 /area/lv624/ground/caves/south_central_caves)
 "bEK" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/vents/pump,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
 /turf/open/floor/corsat/red/north,
 /area/lv624/ground/caves/south_central_caves)
 "bEL" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/corsat/red/north,
-/area/lv624/ground/caves/south_central_caves)
-"bEM" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
+/turf/open/floor/corsat/red/north,
+/area/lv624/ground/caves/south_central_caves)
+"bEM" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/bed/chair/office/light{
+	dir = 4;
+	pixel_y = 15
+	},
 /turf/open/floor/corsat/red/north,
 /area/lv624/ground/caves/south_central_caves)
 "bEN" = (
@@ -22301,9 +22831,10 @@
 "bFh" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
-	dir = 4
+	dir = 4;
+	id = "phiwestcheckpoint"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/south_central_caves)
 "bFi" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -22327,17 +22858,6 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6";
 	pixel_y = 3
-	},
-/turf/open/floor/corsat/plate,
-/area/lv624/ground/caves/south_central_caves)
-"bFn" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/item/paper{
-	pixel_x = 5;
-	pixel_y = -7
 	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
@@ -22472,7 +22992,6 @@
 /turf/open/floor/corsat/purple/southwest,
 /area/lv624/ground/caves/south_central_caves)
 "bFL" = (
-/obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/machinery/big_computers/science_big/operator_machine,
 /turf/open/floor/corsat/purple,
 /area/lv624/ground/caves/south_central_caves)
@@ -22526,20 +23045,6 @@
 	icon_state = "trash_4";
 	pixel_x = -8;
 	pixel_y = 12
-	},
-/turf/open/floor/corsat/plate,
-/area/lv624/ground/caves/south_central_caves)
-"bFS" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/item/prop/flower_vase/redwhiteflowers{
-	pixel_x = 6;
-	pixel_y = 9
-	},
-/obj/structure/machinery/faxmachine/corporate{
-	pixel_y = -6
 	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
@@ -22720,13 +23225,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/corsat/red/southeast,
 /area/lv624/ground/caves/south_central_caves)
-"bGs" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/corsat/plate,
-/area/lv624/ground/caves/south_central_caves)
 "bGt" = (
 /obj/item/ammo_casing/bullet{
 	icon_state = "casing_3"
@@ -22739,6 +23237,10 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 1;
+	pixel_y = 6
 	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
@@ -22759,7 +23261,11 @@
 	pixel_y = 7;
 	dir = 9
 	},
-/turf/open/floor/plating,
+/obj/item/tool/crowbar/red{
+	pixel_x = 2;
+	pixel_y = -6
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/south_central_caves)
 "bGw" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -22830,7 +23336,6 @@
 /turf/open/floor/corsat/darkgreen,
 /area/lv624/ground/barrens/north_east_barrens)
 "bGE" = (
-/obj/structure/machinery/power/apc/no_power/south,
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_6";
@@ -22913,7 +23418,13 @@
 "bGQ" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/south_central_caves)
 "bGR" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -22974,30 +23485,30 @@
 /turf/open/floor/corsat/red,
 /area/lv624/ground/caves/south_central_caves)
 "bHa" = (
-/obj/structure/machinery/photocopier{
-	pixel_x = -2;
-	pixel_y = 8
-	},
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/storage/belt/marine,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41aMK1,
 /turf/open/floor/corsat/redcorner,
 /area/lv624/ground/caves/south_central_caves)
 "bHb" = (
-/obj/structure/filingcabinet{
-	pixel_y = 20;
-	pixel_x = 4
-	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/closet/secure_closet/guncabinet,
+/obj/item/storage/belt/marine,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/obj/item/weapon/gun/rifle/m41aMK1,
 /turf/open/floor/corsat/red,
 /area/lv624/ground/caves/south_central_caves)
 "bHc" = (
-/obj/structure/surface/table/reinforced/prison,
 /obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_off{
 	dir = 1;
 	pixel_y = 32
 	},
-/obj/structure/machinery/computer/cameras{
-	dir = 8;
-	pixel_y = -5
-	},
+/obj/structure/machinery/big_computers/computerbrown/computer3,
 /turf/open/floor/corsat/red,
 /area/lv624/ground/caves/south_central_caves)
 "bHd" = (
@@ -23016,6 +23527,13 @@
 	light_range = 5;
 	pixel_y = 32
 	},
+/obj/structure/machinery/big_computers/computerbrown/computer5,
+/obj/structure/machinery/door_control/colony_lockdown{
+	id = "phiresearchlockdown";
+	name = "Phi Lab - Lockdown";
+	pixel_y = -5;
+	needs_power = 0
+	},
 /turf/open/floor/corsat/red,
 /area/lv624/ground/caves/south_central_caves)
 "bHe" = (
@@ -23028,16 +23546,15 @@
 	pixel_y = 32
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/item/tool/crowbar/red{
-	pixel_x = 2;
-	pixel_y = -6
+/obj/structure/machinery/big_computers/computerbrown/computer1{
+	pixel_x = -1
 	},
 /turf/open/floor/corsat/red,
 /area/lv624/ground/caves/south_central_caves)
 "bHf" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/plating,
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/south_central_caves)
 "bHg" = (
 /obj/structure/prop/hybrisa/misc/cabinet{
@@ -23115,7 +23632,13 @@
 /area/lv624/ground/caves/south_central_caves)
 "bHq" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/barrens/north_east_barrens)
 "bHr" = (
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -23234,7 +23757,13 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/whitepurplefull,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bHJ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -23272,7 +23801,7 @@
 	pixel_x = 12
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/white,
+/turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bHP" = (
 /obj/item/clothing/head/hairflower{
@@ -23308,14 +23837,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
-/turf/open/floor/white,
-/area/lv624/ground/caves/south_central_caves)
-"bHS" = (
-/obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/white,
+/turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bHT" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -23355,13 +23877,6 @@
 	dir = 4
 	},
 /turf/open/floor/corsat/darkgreen/east,
-/area/lv624/ground/caves/south_central_caves)
-"bHY" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whitegreenfull,
 /area/lv624/ground/caves/south_central_caves)
 "bHZ" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -23558,7 +24073,7 @@
 	pixel_x = 12
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/white,
+/turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bIB" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -23605,7 +24120,7 @@
 	pixel_x = -9;
 	pixel_y = -5
 	},
-/turf/open/floor/white,
+/turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bIG" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -23845,7 +24360,7 @@
 	pixel_x = 12
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/turf/open/floor/white,
+/turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bJg" = (
 /turf/open/floor/hybrisa/wood,
@@ -23900,10 +24415,6 @@
 "bJj" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv624/ground/caves/south_central_caves)
-"bJk" = (
-/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
 /area/lv624/ground/caves/south_central_caves)
 "bJl" = (
@@ -24439,7 +24950,7 @@
 	pixel_x = -7;
 	pixel_y = -1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/south_central_caves)
 "bKw" = (
 /obj/item/reagent_container/glass/bucket/mopbucket{
@@ -24549,7 +25060,6 @@
 /turf/open/floor/corsat/blue/southwest,
 /area/lv624/ground/caves/south_central_caves)
 "bKL" = (
-/obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/blue,
@@ -24683,31 +25193,26 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8"
 	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_21";
-	pixel_y = 3;
-	pixel_x = -2;
-	layer = 4
+/obj/structure/closet/hydrant{
+	pixel_x = 32
 	},
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bKZ" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#b7b8b2"
+/obj/structure/machinery/shower{
+	dir = 4
 	},
-/obj/item/storage/fancy/vials/random,
-/obj/item/storage/fancy/vials/random{
-	pixel_x = -6;
-	pixel_y = 8
+/obj/effect/decal/warning_stripes,
+/obj/structure/window/reinforced{
+	dir = 4
 	},
-/turf/open/floor/darkish,
+/turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/lv624/ground/caves/south_central_caves)
 "bLa" = (
 /obj/structure/machinery/chem_master,
 /turf/open/floor/darkish,
 /area/lv624/ground/caves/south_central_caves)
 "bLb" = (
-/obj/structure/machinery/power/apc/no_power/south,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
@@ -24728,6 +25233,10 @@
 	pixel_x = -4;
 	pixel_y = -27;
 	layer = 2.9
+	},
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = 32;
+	pixel_y = 6
 	},
 /turf/open/floor/darkish,
 /area/lv624/ground/caves/south_central_caves)
@@ -24954,6 +25463,10 @@
 	pixel_x = 4;
 	pixel_y = 6
 	},
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = 32;
+	pixel_y = 6
+	},
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bLG" = (
@@ -25119,7 +25632,13 @@
 /area/lv624/ground/caves/south_central_caves)
 "bLZ" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
-/turf/open/floor/whitebluefull,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bMa" = (
 /obj/effect/decal/hybrisa/dirt_2,
@@ -25148,7 +25667,12 @@
 	name = "\improper Corporate Liaison Quarters"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/dark,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/corsat/squares,
 /area/lv624/ground/caves/south_central_caves)
 "bMe" = (
 /obj/effect/decal/hybrisa/trash{
@@ -25313,13 +25837,6 @@
 	},
 /turf/open/floor/corsat/blue/east,
 /area/lv624/ground/caves/south_central_caves)
-"bMD" = (
-/obj/structure/machinery/door/airlock/almayer/generic,
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 4
-	},
-/turf/open/floor/whitebluefull,
-/area/lv624/ground/caves/south_central_caves)
 "bME" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -25427,6 +25944,11 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
+/obj/item/storage/fancy/vials/random{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/storage/fancy/vials/random,
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
 "bMS" = (
@@ -25587,9 +26109,6 @@
 /area/lv624/ground/caves/south_central_caves)
 "bNq" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/closet/hydrant{
-	pixel_y = 32
-	},
 /turf/open/floor/corsat/greencorner,
 /area/lv624/ground/caves/south_central_caves)
 "bNr" = (
@@ -25610,7 +26129,13 @@
 "bNt" = (
 /obj/structure/window/framed/colony/reinforced,
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/central_caves)
 "bNu" = (
 /obj/effect/spawner/gibspawner/xeno,
@@ -25801,6 +26326,11 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/sign/safety/bathunisex{
+	layer = 2;
+	pixel_x = 8;
+	pixel_y = 32
+	},
 /turf/open/floor/corsat/browncorner/east,
 /area/lv624/ground/caves/south_central_caves)
 "bNT" = (
@@ -25811,13 +26341,22 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 1
 	},
-/turf/open/floor/corsat/browncorner/north,
-/area/lv624/ground/caves/south_central_caves)
-"bNV" = (
-/obj/structure/sign/nosmoking_1{
-	pixel_x = -1
+/obj/structure/sign/safety/bathunisex{
+	layer = 2;
+	pixel_x = 8;
+	pixel_y = 32
 	},
-/turf/closed/wall/r_wall/unmeltable,
+/obj/structure/sign/safety/chem_lab{
+	pixel_x = 32;
+	pixel_y = -6
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 3;
+	pixel_x = -2;
+	layer = 4
+	},
+/turf/open/floor/corsat/browncorner/north,
 /area/lv624/ground/caves/south_central_caves)
 "bNW" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -25836,6 +26375,7 @@
 /area/lv624/ground/caves/sand_temple)
 "bNX" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/corsat/green,
 /area/lv624/ground/caves/central_caves)
 "bNY" = (
@@ -25977,7 +26517,12 @@
 "bOs" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/caves/central_caves)
 "bOt" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -25985,7 +26530,12 @@
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/floor/whitegreenfull,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
+/turf/open/floor/corsat/whitebluefull,
 /area/lv624/ground/caves/central_caves)
 "bOu" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -26023,6 +26573,11 @@
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/caves/central_caves)
 "bOy" = (
@@ -26045,6 +26600,7 @@
 /obj/structure/prop/hybrisa/misc/metergreen{
 	pixel_y = 32
 	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/darkish,
 /area/lv624/ground/caves/central_caves)
 "bOC" = (
@@ -26175,6 +26731,11 @@
 	dir = 2
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
 /turf/open/floor/corsat/marked,
 /area/lv624/ground/caves/central_caves)
 "bOV" = (
@@ -26341,7 +26902,6 @@
 "bPr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/kitchen/utensil/pknife,
-/obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/corsat/whitebluefull,
 /area/lv624/ground/caves/central_caves)
 "bPs" = (
@@ -26456,7 +27016,6 @@
 	layer = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/caves/central_caves)
 "bPI" = (
@@ -26713,6 +27272,11 @@
 	layer = 3.33;
 	pixel_y = 1;
 	pixel_x = -1
+	},
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
 	},
 /turf/open/floor/corsat/marked,
 /area/lv624/ground/caves/central_caves)
@@ -27750,6 +28314,10 @@
 /area/lv624/ground/caves/west_caves)
 "bSP" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/sign/safety/fire_haz{
+	pixel_y = -26;
+	pixel_x = 14
+	},
 /turf/open/floor/corsat/yellow/southwest,
 /area/lv624/ground/caves/central_caves)
 "bSQ" = (
@@ -27768,6 +28336,14 @@
 "bST" = (
 /obj/structure/machinery/big_computers/computerblack/computer2{
 	pixel_x = -7
+	},
+/obj/structure/sign/safety/high_voltage{
+	pixel_y = 6;
+	pixel_x = -16
+	},
+/obj/structure/sign/safety/west{
+	pixel_y = -6;
+	pixel_x = -16
 	},
 /turf/open/floor/corsat/spiralblueoffice,
 /area/lv624/ground/caves/central_caves)
@@ -27933,6 +28509,12 @@
 /area/lv624/ground/caves/west_caves)
 "bTo" = (
 /obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv624/ground/caves/central_caves)
 "bTp" = (
@@ -28339,6 +28921,7 @@
 /obj/structure/prop/hybrisa/fakeplatforms/platform3{
 	dir = 4
 	},
+/obj/item/clothing/head/welding,
 /turf/open/floor/corsat,
 /area/lv624/ground/caves/central_caves)
 "bTV" = (
@@ -28424,11 +29007,11 @@
 /area/lv624/ground/caves/central_caves)
 "bUi" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/item/tool/wirecutters/tactical,
 /turf/open/floor/corsat/yellowcorner,
 /area/lv624/ground/caves/central_caves)
 "bUj" = (
 /obj/effect/decal/hybrisa/dirt_2,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/floor/corsat/yellowcorner/west,
 /area/lv624/ground/caves/central_caves)
 "bUk" = (
@@ -28466,6 +29049,7 @@
 /obj/structure/platform_decoration/metal/almayer/northeast{
 	pixel_x = -1
 	},
+/obj/item/stack/cable_coil,
 /turf/open/floor/corsat,
 /area/lv624/ground/caves/central_caves)
 "bUl" = (
@@ -28528,6 +29112,10 @@
 	dir = 4
 	},
 /obj/structure/platform_decoration/metal/almayer/northwest,
+/obj/item/tool/weldingtool/empty{
+	pixel_y = -18;
+	pixel_x = -12
+	},
 /turf/open/floor/corsat,
 /area/lv624/ground/caves/central_caves)
 "bUn" = (
@@ -28641,6 +29229,10 @@
 	dir = 8
 	},
 /obj/structure/machinery/fuelcell_recycler/full,
+/obj/structure/sign/safety/high_voltage{
+	pixel_y = 6;
+	pixel_x = -16
+	},
 /turf/open/floor/corsat/cargo,
 /area/lv624/ground/caves/central_caves)
 "bUF" = (
@@ -32466,7 +33058,11 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_jungle)
 "eDS" = (
-/obj/structure/machinery/colony_floodlight,
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.1;
+	pixel_y = 16
+	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -34142,7 +34738,6 @@
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/window/framed/colony/reinforced,
-/obj/structure/flora/jungle/planttop1,
 /turf/open/floor/plating,
 /area/lv624/lazarus/corporate_dome)
 "ilF" = (
@@ -35360,6 +35955,11 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "lnr" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/engidoor/colony,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown"
+	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
 "lnR" = (
@@ -35388,11 +35988,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"lsq" = (
-/obj/structure/flora/jungle/vines/heavy,
-/obj/structure/flora/jungle/plantbot1,
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/west_central_jungle)
 "lsK" = (
 /turf/open/gm/mudcoast/corner2/south_east,
 /area/lv624/ground/barrens/west_barrens)
@@ -36425,10 +37020,6 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/south_central_caves)
-"nLH" = (
-/obj/structure/prop/tower,
-/turf/open/floor/bot/north,
-/area/lv624/lazarus/landing_zones/lz1)
 "nLI" = (
 /obj/structure/flora/bush/ausbushes/palebush,
 /turf/open/gm/grass/grass1,
@@ -36597,7 +37188,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/largecrate/random/barrel/white,
+/obj/structure/largecrate/machine/bodyscanner,
 /turf/open/hybrisa/street/cement1,
 /area/lv624/ground/barrens/north_east_barrens/ceiling)
 "oeS" = (
@@ -38219,7 +38810,7 @@
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/machinery/colony_floodlight{
 	density = 0;
-	layer = 4.3;
+	layer = 4.1;
 	pixel_y = 17
 	},
 /turf/open/gm/grass/grass1,
@@ -38629,6 +39220,11 @@
 /obj/item/stack/sheet/metal{
 	pixel_x = 16;
 	pixel_y = -10
+	},
+/obj/structure/machinery/colony_floodlight{
+	density = 0;
+	layer = 4.09;
+	pixel_y = 17
 	},
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/north_west_jungle)
@@ -39396,6 +39992,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/item/prop/flower_vase/redwhiteflowers{
+	pixel_x = 6;
+	pixel_y = 9
 	},
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/caves/south_central_caves)
@@ -40579,10 +41179,6 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
 "xdb" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4;
-	pixel_y = 15
-	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 6
 	},
@@ -40628,7 +41224,13 @@
 "xhv" = (
 /obj/effect/decal/grass_overlay/grass1,
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/obj/structure/machinery/door/poddoor/hybrisa/secure_red_door{
+	name = "\improper Lockdown";
+	needs_power = 0;
+	id = "phiresearchlockdown";
+	dir = 4
+	},
+/turf/open/floor/corsat,
 /area/lv624/ground/barrens/north_east_barrens)
 "xhC" = (
 /turf/open/gm/grass/grassmud/corner/south_west,
@@ -42393,7 +42995,7 @@ ayA
 ayA
 awV
 asw
-aHE
+aaI
 asg
 asw
 asw
@@ -42820,7 +43422,7 @@ bcA
 baB
 bbz
 aUY
-bal
+aba
 aXr
 aYB
 aXz
@@ -43294,7 +43896,7 @@ aNw
 aMC
 aLC
 asw
-aCO
+aaM
 aEe
 aAl
 asQ
@@ -45367,7 +45969,7 @@ jga
 aHR
 aqS
 asw
-axX
+aaD
 aro
 aro
 aro
@@ -46233,8 +46835,8 @@ bbz
 bcl
 bbz
 bci
-aUY
-bbB
+bbz
+abt
 bal
 aYA
 aYB
@@ -48284,7 +48886,7 @@ bfJ
 aUY
 bcl
 bcl
-baZ
+abx
 baB
 baB
 bal
@@ -48338,7 +48940,7 @@ aEw
 rKf
 wLz
 tZD
-aAp
+fuy
 rTG
 aVK
 kJu
@@ -48510,9 +49112,9 @@ baB
 bcz
 bbz
 bci
-aUY
-aUY
-bby
+bbz
+bbA
+abD
 baB
 aVR
 sIr
@@ -48739,7 +49341,7 @@ bby
 baB
 bci
 bcl
-baB
+bci
 bea
 aVR
 aYz
@@ -49616,7 +50218,7 @@ bvB
 buN
 ane
 ane
-bhE
+acs
 bhE
 bhE
 bhE
@@ -50162,7 +50764,7 @@ aEw
 aRg
 wLz
 wHp
-aAp
+fuy
 rTG
 aVK
 oOd
@@ -51714,7 +52316,7 @@ aUg
 aSl
 psh
 cGb
-nuW
+psh
 cRT
 cRT
 cRT
@@ -51770,7 +52372,7 @@ efp
 efp
 ntL
 xOL
-qIO
+aal
 jaw
 uSq
 kxI
@@ -52624,8 +53226,8 @@ oTJ
 oTJ
 aSl
 psh
-pGD
-psh
+nuW
+aSh
 cRT
 cRT
 cRT
@@ -52853,7 +53455,7 @@ aOV
 gyP
 psh
 psh
-nuW
+pGD
 cRT
 nuW
 cRT
@@ -53065,7 +53667,7 @@ bcl
 bcl
 bbz
 bgJ
-aVR
+abP
 aYz
 aUZ
 aYQ
@@ -54082,7 +54684,7 @@ aaF
 aaF
 aaF
 aaF
-bXq
+aeo
 bXq
 cau
 bXe
@@ -54219,7 +54821,7 @@ tlE
 gyP
 pDI
 psh
-nuW
+psh
 nuW
 txx
 cRT
@@ -55409,7 +56011,7 @@ vno
 gnx
 xwQ
 ilf
-lsq
+wMk
 wMk
 qGK
 alt
@@ -55998,7 +56600,7 @@ bxN
 iIB
 iIB
 ady
-biU
+acx
 buk
 bjf
 bjf
@@ -57410,7 +58012,7 @@ bbG
 bbG
 bbG
 bbG
-aOV
+abc
 bbe
 baD
 aYP
@@ -58707,7 +59309,7 @@ bOr
 bOq
 bEH
 byZ
-bMD
+bHI
 bLZ
 byZ
 byZ
@@ -59411,7 +60013,7 @@ bCK
 bBU
 bAX
 bAh
-bxR
+acA
 agS
 agS
 agS
@@ -59632,14 +60234,14 @@ bGZ
 bGq
 bFP
 bBd
-bCO
+acS
 bEf
 xTa
 bCL
 bBV
 bAY
 bAh
-bxR
+acA
 byO
 bmB
 bmB
@@ -59805,7 +60407,7 @@ bWZ
 bXb
 bXO
 aaE
-aaw
+cbZ
 aaw
 bXg
 bXe
@@ -59823,7 +60425,7 @@ bPg
 bPg
 bOM
 bOM
-hBL
+aei
 bVi
 bUQ
 bQX
@@ -59835,7 +60437,7 @@ bSR
 bQX
 bQX
 bQX
-hBL
+adN
 bQI
 bQI
 bQx
@@ -59867,7 +60469,7 @@ bCM
 bBW
 bAZ
 bAi
-bxR
+acA
 bwE
 bwE
 bwE
@@ -59888,7 +60490,7 @@ bnq
 bmF
 bmD
 bli
-boz
+acc
 bmG
 bkC
 csM
@@ -60085,7 +60687,7 @@ bJf
 bIA
 bHO
 byZ
-bFi
+adr
 bFi
 bFi
 byZ
@@ -60319,7 +60921,7 @@ bFj
 byZ
 byZ
 byZ
-bCO
+acG
 bBY
 byZ
 byZ
@@ -60527,7 +61129,7 @@ bOM
 bQg
 bPQ
 bPz
-bOM
+adD
 bOr
 bNM
 bNj
@@ -60739,7 +61341,7 @@ bUW
 bVm
 bUV
 bQI
-bUv
+aed
 bTx
 bTx
 bTx
@@ -60959,7 +61561,7 @@ acf
 bPg
 bPg
 bPg
-bTo
+ael
 bWb
 bUX
 bVq
@@ -60997,8 +61599,8 @@ bJi
 bID
 byZ
 bHc
-bGs
-bCO
+bMO
+acS
 bFl
 bEL
 byZ
@@ -61187,7 +61789,7 @@ acf
 bPg
 bPg
 bPg
-bTo
+ael
 bWc
 bVS
 bVK
@@ -61202,8 +61804,8 @@ bTz
 bSV
 bSx
 bQX
-bQX
-bQL
+adR
+adP
 bQZ
 bQL
 bQB
@@ -61239,7 +61841,7 @@ bzE
 byT
 byr
 bxR
-bxr
+bwE
 bwK
 bwo
 bvO
@@ -61415,7 +62017,7 @@ acf
 bPg
 bPg
 bPg
-bTo
+ael
 bWd
 bVT
 bVm
@@ -61430,8 +62032,8 @@ bTA
 bSV
 bRn
 bRW
-bQX
-bQX
+aea
+adQ
 bQL
 bQL
 bQB
@@ -61449,12 +62051,12 @@ bLA
 bKT
 bKr
 bJM
-bJk
+bKT
 byZ
 byZ
 bHe
 bGu
-bFS
+bCO
 uxL
 bEN
 byZ
@@ -61682,8 +62284,8 @@ byZ
 bHP
 bHf
 bGv
+bFU
 bFT
-bFn
 bEO
 byZ
 bDF
@@ -61910,7 +62512,7 @@ byZ
 bHQ
 bHg
 bGw
-bFU
+bCO
 cxi
 bEP
 byZ
@@ -62137,13 +62739,13 @@ byZ
 byZ
 bHR
 byZ
-bEf
+adv
 bFV
 bFo
 byZ
 byZ
 byZ
-bCO
+acG
 bCg
 byZ
 byZ
@@ -62363,10 +62965,10 @@ bKv
 bDu
 byZ
 bIF
-bHS
+bCc
 byZ
-bFp
-bFp
+adz
+adn
 bFp
 byZ
 bEi
@@ -62395,9 +62997,9 @@ bnU
 ajW
 bpK
 bpK
+acd
 bli
-bli
-jaa
+acb
 bmD
 blT
 bke
@@ -62593,14 +63195,14 @@ bDw
 bIG
 bHT
 byZ
-bFh
-bFh
-bFh
+adi
+adi
+adi
 byZ
 bBl
 bDI
 bBl
-bCh
+acF
 byZ
 bAq
 bzJ
@@ -62618,7 +63220,7 @@ but
 blg
 blh
 agW
-bli
+bun
 bli
 bli
 afO
@@ -62847,7 +63449,7 @@ bpN
 bns
 bli
 bli
-bli
+bun
 bpf
 ahT
 ahT
@@ -63052,7 +63654,7 @@ bHi
 bGx
 mOL
 bFr
-bEQ
+ada
 bBj
 bDJ
 bCW
@@ -63074,12 +63676,12 @@ but
 bpN
 bnq
 bli
-bli
+aci
 wvP
 bpg
 bqG
 ahT
-bli
+acd
 bli
 bmG
 bnr
@@ -63280,7 +63882,7 @@ bHj
 bGy
 bFW
 bFs
-bEI
+add
 bBl
 bBl
 bBl
@@ -63302,7 +63904,7 @@ but
 bpN
 bmD
 bli
-bli
+bun
 brI
 bpf
 ahT
@@ -63499,7 +64101,7 @@ bMN
 bMg
 bLF
 bKY
-byZ
+bLG
 bJU
 bJp
 bIJ
@@ -63508,7 +64110,7 @@ bHk
 bGz
 bFX
 bEH
-bEH
+ade
 bEl
 bDK
 bBl
@@ -63530,7 +64132,7 @@ buu
 bpN
 bmF
 bli
-bli
+acd
 bqG
 ahT
 bpg
@@ -63721,17 +64323,17 @@ bOM
 bOM
 bOr
 bOq
-bNV
+bEH
 bDu
-bHY
+bHI
 bDu
-bLG
 byZ
 byZ
 byZ
 byZ
 byZ
-bHY
+byZ
+bHI
 byZ
 byZ
 byZ
@@ -63759,7 +64361,7 @@ bpN
 bsX
 bli
 bli
-bli
+acd
 brl
 bqH
 bpM
@@ -63945,8 +64547,8 @@ acf
 acf
 acf
 acf
-bPg
-bPg
+adL
+adF
 bOr
 bOz
 gPu
@@ -64174,7 +64776,7 @@ acf
 acf
 acf
 acf
-bPg
+adI
 bOr
 bOA
 kxv
@@ -64402,11 +65004,11 @@ bOD
 acf
 acf
 acf
-bPg
-bOr
+adK
+adE
 bOB
 bNX
-bNr
+adB
 bMQ
 bMh
 bLK
@@ -64629,10 +65231,10 @@ bQN
 acf
 acf
 acf
-bPg
-bPg
+adL
+adL
 bOr
-bOA
+adC
 uMd
 bNr
 bIb
@@ -64679,7 +65281,7 @@ bpi
 bmD
 bmD
 bli
-bmD
+abX
 blS
 ajM
 sqj
@@ -64857,8 +65459,8 @@ bOD
 acf
 acf
 acf
-bPg
-bPg
+adM
+adM
 bOr
 bOC
 bNY
@@ -65563,7 +66165,7 @@ bDc
 guW
 bEs
 bDQ
-guW
+acP
 bya
 bya
 bAx
@@ -65870,7 +66472,7 @@ bad
 oUy
 axr
 azP
-aGZ
+aAP
 aCR
 aCR
 aDo
@@ -66018,7 +66620,7 @@ adT
 bEu
 bEu
 oeN
-guW
+acR
 bDb
 bCn
 bBr
@@ -66251,7 +66853,7 @@ bDb
 bCo
 bzP
 bAz
-bzd
+acD
 bzd
 byz
 bwV
@@ -66361,7 +66963,7 @@ akg
 akg
 aQM
 aQM
-oUy
+aho
 oUy
 cqw
 yle
@@ -66590,7 +67192,7 @@ akg
 aVo
 aiE
 ahY
-aho
+oUy
 cqw
 yle
 yle
@@ -66710,7 +67312,7 @@ bwV
 bwV
 bwV
 bwV
-bvt
+acz
 bvt
 bwW
 bvt
@@ -67096,7 +67698,7 @@ aaw
 aax
 aaE
 bXc
-aaw
+cbZ
 bXg
 aaw
 bXb
@@ -68110,7 +68712,7 @@ bht
 bho
 oRH
 fuY
-cpY
+abV
 cpY
 cpY
 pba
@@ -69228,7 +69830,7 @@ agc
 bmH
 buz
 brn
-bqK
+acn
 bsz
 bnu
 bmH
@@ -69509,8 +70111,8 @@ aqW
 aOk
 aMR
 aqG
-fjM
 aOh
+fjM
 cOs
 cOs
 fjM
@@ -69554,10 +70156,10 @@ aak
 aVr
 aNk
 aia
-afc
+wpw
 wpw
 lBw
-agJ
+aad
 wpw
 wpw
 wpw
@@ -69714,8 +70316,8 @@ vSG
 wTa
 pKS
 vtt
-fuY
-vjH
+xPL
+abL
 vjH
 cpY
 cpY
@@ -69726,7 +70328,7 @@ cpY
 cpY
 fuY
 fuY
-bag
+aaR
 aYl
 cpY
 cpY
@@ -69944,7 +70546,7 @@ cwV
 cwV
 gEn
 cwV
-bit
+cpY
 pba
 cpY
 tHc
@@ -70008,7 +70610,7 @@ aTD
 aSE
 aNk
 aNk
-aia
+aam
 wpw
 tIZ
 afT
@@ -70241,7 +70843,7 @@ xPS
 wpw
 wpw
 lBw
-afc
+wpw
 wpw
 ajY
 ifF
@@ -71345,7 +71947,7 @@ aHG
 asN
 awW
 asN
-aCE
+aGP
 aCX
 asN
 aDY
@@ -71572,7 +72174,7 @@ aDd
 aDd
 aGi
 aER
-aGP
+aCE
 aGP
 aBR
 ayo
@@ -72224,7 +72826,7 @@ fuY
 fuY
 lSs
 fuY
-cpY
+abK
 bah
 bai
 bai
@@ -72278,7 +72880,7 @@ aGW
 aLp
 aLp
 aLp
-ajo
+aaB
 ajo
 aky
 aky
@@ -73403,9 +74005,9 @@ aBX
 asN
 asN
 aky
-aGz
 aky
-aGS
+aky
+aky
 aDi
 vBQ
 aGz
@@ -73629,7 +74231,7 @@ aGP
 aGP
 asN
 asN
-ayb
+aaL
 aky
 jtg
 aky
@@ -73858,8 +74460,8 @@ asN
 asN
 ayb
 ayb
-aDG
-aGQ
+aky
+aky
 aky
 aky
 aDi
@@ -73885,7 +74487,7 @@ btF
 btF
 btF
 apN
-apN
+apQ
 eDS
 apu
 apu
@@ -74086,8 +74688,8 @@ ayb
 ayb
 ayb
 ayb
-nLH
-aMq
+aky
+aky
 aky
 aRq
 aDi
@@ -74314,8 +74916,8 @@ uVx
 aDG
 aDG
 aDG
-aHu
-aGR
+aDG
+aDG
 aDG
 aDG
 aHu
@@ -75675,7 +76277,7 @@ aJw
 aID
 aky
 aky
-aGS
+aky
 aky
 amz
 aDi
@@ -77450,7 +78052,7 @@ oWN
 rwg
 fHz
 uve
-qDx
+abW
 bgD
 bjT
 iJs
@@ -78896,7 +79498,7 @@ atk
 rpR
 phU
 phU
-eDS
+aan
 meP
 jzZ
 fEn
@@ -79284,7 +79886,7 @@ tqe
 tqe
 uve
 uve
-eTI
+abR
 mPt
 bfE
 bfE

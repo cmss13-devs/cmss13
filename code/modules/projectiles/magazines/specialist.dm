@@ -164,6 +164,9 @@
 	if(!in_hand || !istype(in_hand))
 		to_chat(user, SPAN_WARNING("[demoman] isn't holding a rocket launcher in their active hand!"))
 		return
+	if(!in_hand.can_be_reloaded)
+		to_chat(user, SPAN_WARNING("[demoman]'s [in_hand] can not be reloaded!"))
+		return
 	if(!in_hand.current_mag)
 		to_chat(user, SPAN_WARNING("[demoman]'s [in_hand] is already loaded!"))
 		return

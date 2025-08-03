@@ -92,7 +92,7 @@
 //Returns 1 if the master item's parent's attack_hand() should be called, 0 otherwise.
 //It's strange, but no other way of doing it without the ability to call another proc's parent, really.
 /obj/item/storage/internal/proc/handle_attack_hand(mob/living/user as mob, mods)
-	if(user.body_position == LYING_DOWN) // what about stuns? huh?
+	if(user.body_position == LYING_DOWN && !HAS_TRAIT(user, TRAIT_HAULED)) // what about stuns? huh?
 		return FALSE
 
 	if(ishuman(user))

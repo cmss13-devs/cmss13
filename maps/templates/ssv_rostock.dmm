@@ -1164,9 +1164,49 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/rostock/security/brig_holding_area)
+"adN" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/rostock/lower_deck/m_hallway)
+"adO" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/strata/green3,
+/area/rostock/req)
+"adP" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5
+	},
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/rostock/req)
+"adQ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/rostock/req)
 "adR" = (
 /turf/open/floor/strata/red4/north,
 /area/rostock/security/headquarters_bunk)
+"adS" = (
+/obj/structure/machinery/computer/supply/asrs/upp{
+	req_access = list(232)
+	},
+/turf/open/floor/strata/green3/east,
+/area/rostock/req)
+"adT" = (
+/obj/structure/surface/table/reinforced/rostock_blend/east,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "cargdoor";
+	name = "Cargo Access"
+	},
+/turf/open/floor/plating,
+/area/rostock/req)
 "aeC" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -1260,7 +1300,7 @@
 /turf/open/floor/strata/green3,
 /area/rostock/lower_deck/m_hallway)
 "agu" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/reagent_container/food/drinks/bottle/vodka{
 	pixel_y = 4;
 	pixel_x = 5
@@ -1289,7 +1329,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/engineering/port_aft_accessway)
 "aiP" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 1;
 	pixel_y = -19;
@@ -1317,7 +1357,7 @@
 /turf/open/floor/strata/floor3,
 /area/rostock/hangar/hangarbay)
 "ajj" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/tool/hand_labeler,
 /obj/item/tool/hand_labeler,
 /obj/item/reagent_container/dropper,
@@ -1354,7 +1394,7 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/paper_bin/uscm{
 	pixel_y = 6
 	},
@@ -1748,7 +1788,7 @@
 	dir = 1;
 	light_color = "#ccecff"
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/reagentgrinder{
 	pixel_y = 3
 	},
@@ -1872,7 +1912,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/rostock/medical/prep)
 "aGB" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_f)
@@ -1955,12 +1995,10 @@
 /obj/structure/closet/coffin/woodencrate,
 /obj/item/stack/sheet/mineral/plastic/small_stack,
 /obj/item/stack/sheet/mineral/plastic/small_stack,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor2,
 /area/rostock/req)
 "aJK" = (
@@ -2377,11 +2415,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/sign/safety/synth_storage{
-	pixel_y = 32
-	},
 /obj/structure/closet/crate/supply,
 /obj/item/stack/sheet/wood/medium_stack,
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "baD" = (
@@ -2566,7 +2602,7 @@
 /area/rostock/engineering/main_area)
 "bjl" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/effect/spawner/random/toolbox,
 /obj/item/stack/sheet/mineral/phoron/medium_stack{
 	pixel_y = 10
@@ -2595,7 +2631,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/hangar/hangarbay)
 "bky" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/door_control{
 	id = "upp_armory";
 	name = "Armory Lockdown";
@@ -2684,7 +2720,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/command/cic)
 "bmx" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/gloves/latex,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
@@ -2740,7 +2776,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "boE" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/kitchen)
 "bpt" = (
@@ -3827,7 +3863,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_a)
 "cjd" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8
 	},
@@ -3905,7 +3941,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_a)
 "cmC" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/kitchen)
@@ -3999,7 +4035,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_m)
 "cpt" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 4;
 	network = list("Rostock")
@@ -4308,7 +4344,7 @@
 /turf/open/floor/almayer/no_build,
 /area/rostock/stair_clone)
 "cFS" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
 	name = "Remote dropship navigation computer";
 	req_one_access = null;
@@ -4318,7 +4354,7 @@
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/rostock/command/cic)
 "cGb" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 3
@@ -4527,7 +4563,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/hangar/hangarbay)
 "cNZ" = (
-/obj/structure/surface/table/reinforced/black,
+/obj/structure/surface/table/reinforced/rostock_blend/west,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "cargdoor";
 	name = "Cargo Access"
@@ -4581,7 +4617,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/engineering_lower_access)
 "cQR" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/recharger,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/security/headquarters_lobby)
@@ -4677,7 +4713,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "cVY" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/suit/storage/marine/faction/UPP{
 	pixel_y = -8;
 	pixel_x = -4
@@ -4863,9 +4899,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/transmitter/upp_net/rotary{
 	phone_id = "Bizon Overwatch Telephone";
 	name = "Bizon Overwatch Telephone";
@@ -5297,7 +5331,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_f)
 "dxf" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/tank/emergency_oxygen/double{
 	pixel_y = 10;
 	pixel_x = 6
@@ -5441,7 +5475,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/p_hallway)
 "dBX" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/storage/donut_box,
 /obj/item/storage/donut_box,
 /obj/item/storage/donut_box,
@@ -5646,7 +5680,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/astronavigation)
 "dKM" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/emails{
 	dir = 8
 	},
@@ -5844,9 +5878,7 @@
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/railgun/starboard)
 "dSo" = (
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.4
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8
 	},
@@ -6383,8 +6415,8 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns,
-/turf/open/floor/plating/plating_catwalk/strata,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo/blend,
+/turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "enK" = (
 /obj/structure/prop/power_transformer{
@@ -6643,7 +6675,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lifeboat)
 "eyo" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/tank/emergency_oxygen/double{
 	pixel_y = 10;
 	pixel_x = 6
@@ -7057,7 +7089,7 @@
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
 /obj/item/device/healthanalyzer,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/light{
 	dir = 8;
 	light_color = "#ccecff"
@@ -7077,7 +7109,7 @@
 /area/rostock/req)
 "eOa" = (
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast,
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "eOQ" = (
@@ -7789,9 +7821,7 @@
 	dir = 4;
 	layer = 3.0
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 2
@@ -7833,7 +7863,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/upperdeck_maint/s_a)
 "foc" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/mask/breath{
 	pixel_x = 8;
 	pixel_y = -6
@@ -7975,7 +8005,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -8555,9 +8585,7 @@
 	dir = 8;
 	layer = 2.7
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/overwatch/upp{
 	pixel_x = 10;
 	pixel_y = -7;
@@ -8593,7 +8621,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/command/hallway)
 "gbg" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/cameras/almayer_network{
 	dir = 4;
 	network = list("Rostock")
@@ -8618,7 +8646,7 @@
 /turf/open/floor/almayer/silverfull,
 /area/rostock/medical/surgery)
 "gcq" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 4
 	},
@@ -8874,7 +8902,7 @@
 /turf/open/floor/corsat/purplecorner,
 /area/rostock/lower_deck/p_hallway)
 "gnU" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/recharger,
 /obj/structure/sign/flag/upp{
 	dir = 1;
@@ -8949,7 +8977,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_m)
 "gqI" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 1
 	},
@@ -9445,9 +9473,7 @@
 	dir = 4;
 	layer = 3.0
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/overwatch/upp{
 	dir = 4;
 	pixel_x = -4;
@@ -9462,7 +9488,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/command/cic)
 "gOw" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/stack/sheet/plasteel/large_stack,
 /obj/item/stack/sheet/plasteel/large_stack,
 /turf/closed/wall/upp_ship/reinforced/outer,
@@ -10999,7 +11025,7 @@
 /turf/open/floor/strata/green4/west,
 /area/rostock/lifeboat)
 "hSC" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/mask/breath{
 	pixel_x = 8;
 	pixel_y = -6
@@ -11260,7 +11286,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_f)
 "ido" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/head/bearpelt,
 /obj/item/tool/soap/syndie,
 /turf/open/floor/corsat/lightplate,
@@ -11559,7 +11585,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/command/cic)
 "inn" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/device/megaphone,
 /obj/item/roller,
 /obj/item/roller,
@@ -11602,9 +11628,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/hangar/hangarbay)
 "inH" = (
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/transmitter/upp_net/rotary{
 	phone_id = "Chayka Overwatch Telephone";
 	name = "Chayka Overwatch Telephone";
@@ -12430,7 +12454,7 @@
 	pixel_x = -2;
 	pixel_y = 13
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/head/welding{
 	pixel_y = 6
 	},
@@ -13007,12 +13031,6 @@
 	},
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/m_hallway)
-"jqF" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 10
-	},
-/turf/open/floor/plating/plating_catwalk/strata,
-/area/rostock/req)
 "jqJ" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
@@ -13581,7 +13599,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lower_deck/engineering_lower_access)
 "jLP" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/storage/belt/medical/lifesaver/upp,
 /obj/item/storage/belt/medical/lifesaver/upp,
 /obj/item/storage/belt/medical/lifesaver/upp,
@@ -13710,14 +13728,6 @@
 	},
 /turf/open/floor/strata/fake_wood,
 /area/rostock/security/brig_holding_area)
-"jRI" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "rostock camera";
-	network = list("Rostock");
-	dir = 1
-	},
-/turf/open/floor/strata,
-/area/rostock/req)
 "jSt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -13825,7 +13835,7 @@
 	icon_state = "N";
 	pixel_y = 3
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/tool/shovel/etool/folded,
 /obj/item/tool/shovel/etool/folded,
 /obj/item/tool/shovel/etool/folded,
@@ -14047,11 +14057,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/rostock/hangar/repairbay)
 "kdz" = (
-/obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments{
-	pixel_y = 31;
-	density = 0
-	},
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo,
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns/blend,
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "kdQ" = (
@@ -14375,7 +14381,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/p_m)
 "kqh" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
 /obj/item/device/defibrillator,
@@ -14395,9 +14401,7 @@
 	dir = 8
 	},
 /obj/structure/platform/metal/strata/east,
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.4
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /turf/open/floor/corsat/squares,
 /area/rostock/railgun)
 "kry" = (
@@ -14766,9 +14770,7 @@
 	dir = 8;
 	layer = 2.7
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -15001,7 +15003,7 @@
 /area/rostock/engineering/main_area)
 "kLZ" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/turf/open/floor/strata,
+/turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/req)
 "kNe" = (
 /obj/structure/stairs{
@@ -16350,7 +16352,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/engineering/reactor)
 "lYb" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/head/helmet/marine/veteran/UPP,
 /obj/item/clothing/head/helmet/marine/veteran/UPP{
 	pixel_x = 4;
@@ -16675,7 +16677,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/rostock/lower_deck/prep)
 "mof" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/med_data/laptop{
 	dir = 8
 	},
@@ -17018,7 +17020,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/rostock/lower_deck/briefing)
 "mDW" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/kitchen)
@@ -17199,7 +17201,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/s_f)
 "mLG" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/folder/white,
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/rostock/airoom)
@@ -17418,7 +17420,7 @@
 	pixel_x = -2;
 	pixel_y = 13
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/tool/weldingtool{
 	pixel_x = -11;
 	pixel_y = 5
@@ -17640,7 +17642,7 @@
 /turf/open/floor/plating,
 /area/rostock/hangar/hangarbay)
 "nfS" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/paper_bin/uscm{
 	pixel_x = -5;
 	pixel_y = 8
@@ -17680,7 +17682,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/railgun)
 "njM" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/kitchen)
@@ -17745,7 +17747,7 @@
 /turf/open/floor/prison,
 /area/rostock/engineering/main_area)
 "nmy" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/mre_food_packet/upp/snack,
 /turf/open/floor/strata/floor2,
 /area/rostock/lower_deck/kitchen)
@@ -17794,7 +17796,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/medical/morgue)
 "nog" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	pixel_y = -1
@@ -18166,7 +18168,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "nFP" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/roller/surgical,
 /obj/item/reagent_container/glass/minitank{
 	pixel_x = -7;
@@ -18334,7 +18336,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_m)
 "nOQ" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/faxmachine{
 	target_department = "UPP High Command";
 	name = "UPP Command Fax Machine";
@@ -18660,15 +18662,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/rostock/lower_deck/m_hallway)
-"oco" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/machinery/computer/supply/asrs/upp{
-	req_access = list(232)
-	},
-/turf/open/floor/strata/green3,
-/area/rostock/req)
 "odd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N"
@@ -19043,7 +19036,7 @@
 	name = "rostock camera";
 	network = list("Rostock")
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
 /obj/item/reagent_container/glass/beaker/large,
@@ -19421,6 +19414,7 @@
 /turf/open/floor/corsat/arrow_north,
 /area/rostock/command/cic)
 "oJJ" = (
+/obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments/blend,
 /turf/closed/wall/upp_ship/reinforced/outer,
 /area/rostock/req)
 "oJT" = (
@@ -19472,7 +19466,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/p_f)
 "oLb" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/barricade/handrail{
 	layer = 3.1
 	},
@@ -19560,7 +19554,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/m_hallway)
 "oOe" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/paper_bin/uscm{
 	pixel_y = 4
 	},
@@ -20265,9 +20259,7 @@
 	dir = 4;
 	layer = 3.0
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/overwatch/upp{
 	pixel_x = -6;
 	pixel_y = -7;
@@ -21074,7 +21066,7 @@
 	icon_state = "S";
 	pixel_y = -1
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/paper_bin/uscm{
 	pixel_x = -5;
 	pixel_y = 8
@@ -21086,7 +21078,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/lower_deck/prep)
 "pXn" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/storage/firstaid/adv/empty,
 /obj/item/storage/firstaid/adv/empty,
 /obj/item/storage/firstaid/fire/empty,
@@ -21466,7 +21458,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/lowerdeck_maint/s_f)
 "qkh" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/reagent_container/food/drinks/bottle/vodka,
 /obj/structure/platform/metal/strata,
 /turf/open/floor/strata/multi_tiles/west,
@@ -21849,7 +21841,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/command/cic)
 "qCp" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/barricade/handrail{
 	dir = 1;
 	pixel_y = 16;
@@ -22605,7 +22597,7 @@
 /turf/open/floor/prison/floor_marked/west,
 /area/rostock/lower_deck/cryogenics)
 "rer" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/paper_bin/uscm{
 	pixel_y = 6
 	},
@@ -22726,9 +22718,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/transmitter/upp_net/rotary{
 	phone_id = "Akula Overwatch Telephone";
 	name = "Akula Overwatch Telephone";
@@ -22768,7 +22758,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/rostock/lower_deck/p_a_hallway)
 "rkZ" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 1
 	},
@@ -23139,9 +23129,7 @@
 	dir = 8;
 	layer = 2.7
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/overwatch/upp{
 	dir = 8;
 	pixel_x = 4;
@@ -23733,7 +23721,7 @@
 /turf/open/floor/strata/red3/east,
 /area/rostock/security/brig_accessway)
 "sep" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/storage/toolkit/empty,
 /obj/item/storage/toolkit/empty,
 /obj/item/storage/toolkit/empty,
@@ -23830,7 +23818,7 @@
 /area/rostock/lower_deck/prep)
 "shL" = (
 /obj/item/flag/plantable/upp,
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /turf/open/floor/strata/red1,
 /area/rostock/command/armory)
 "shN" = (
@@ -24352,7 +24340,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/lower_deck/m_hallway)
 "sFn" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -24955,9 +24943,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/upperdeck_maint/s_a)
 "tjJ" = (
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.4
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8
 	},
@@ -25335,7 +25321,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/m_hallway)
 "txU" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/accessory/storage/surg_vest,
 /obj/item/tool/portadialysis,
 /obj/item/clothing/glasses/hud/health,
@@ -25409,7 +25395,7 @@
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/rostock/lower_deck/engineering_lower_access)
 "tAG" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	pixel_y = 5;
 	pixel_x = 8
@@ -25664,7 +25650,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/s_f)
 "tPq" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/storage/belt/utility/full,
 /obj/item/storage/belt/utility/full,
 /obj/item/clothing/glasses/welding,
@@ -25689,7 +25675,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/faxmachine{
 	target_department = "UPP High Command";
 	name = "UPP Command Fax Machine";
@@ -25900,7 +25886,7 @@
 /turf/open/floor/strata/red2,
 /area/rostock/security/brig_office)
 "tWB" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/light{
 	dir = 8;
 	light_color = "#ffcccc"
@@ -26112,9 +26098,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/req)
 "udu" = (
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/transmitter/upp_net/rotary{
 	phone_id = "Delfin Overwatch Telephone";
 	name = "Delfin Overwatch Telephone";
@@ -26239,7 +26223,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/obj/structure/platform_decoration/metal/strata/west,
+/obj/structure/platform/metal/strata/north,
 /turf/open/floor/strata/orange_edge/east,
 /area/rostock/req)
 "uiV" = (
@@ -26536,7 +26520,7 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/rostock/hangar/hangarbay)
 "uuN" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/storage/box/lights/tubes{
 	pixel_x = -4;
 	pixel_y = 3
@@ -26551,7 +26535,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/rostock/ert_dock/starboard)
 "uvz" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/storage/surgical_tray,
 /obj/item/tool/wrench{
 	pixel_y = 10
@@ -26600,7 +26584,7 @@
 /turf/open/floor/corsat/marked,
 /area/rostock/lower_deck/s_a_hallway)
 "uyG" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/storage/pouch/pressurized_reagent_canister,
 /obj/item/storage/pouch/pressurized_reagent_canister,
 /obj/item/storage/pouch/pressurized_reagent_canister,
@@ -26950,7 +26934,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/upperdeck_maint/p_a)
 "uPK" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/metal/large_stack,
@@ -27272,9 +27256,7 @@
 	dir = 4;
 	layer = 3.0
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -27656,7 +27638,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/rostock/engineering/main_area)
 "vpf" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/reagent_container/food/drinks/flask/canteen{
 	pixel_y = 7;
 	pixel_x = -5
@@ -28209,7 +28191,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/rostock/medical/surgery)
 "vLZ" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/reagent_container/food/drinks/drinkingglass{
 	pixel_y = 5;
 	pixel_x = 8
@@ -28580,6 +28562,10 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/structure/sign/safety/synth_storage{
+	pixel_y = 32
+	},
+/obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata/floor2,
 /area/rostock/req)
 "vXU" = (
@@ -28646,6 +28632,11 @@
 /obj/item/stack/sheet/cardboard/full_stack,
 /obj/item/stack/sheet/cardboard/full_stack,
 /obj/item/stack/sheet/cardboard/full_stack,
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "rostock camera";
+	network = list("Rostock");
+	dir = 4
+	},
 /turf/open/floor/strata/green3/west,
 /area/rostock/req)
 "vZv" = (
@@ -28687,7 +28678,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/command/cic)
 "waO" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/emails{
 	dir = 1
 	},
@@ -29089,7 +29080,7 @@
 	pixel_x = -7;
 	pixel_y = 6
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "rostock camera";
 	network = list("Rostock");
@@ -29512,7 +29503,7 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/rostock/airoom)
 "wHj" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/computer/groundside_operations/upp{
 	dir = 4;
 	pixel_y = -9;
@@ -29777,12 +29768,6 @@
 "wTZ" = (
 /turf/open/floor/corsat/plate,
 /area/rostock/security/headquarters_interrogation)
-"wUb" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 5
-	},
-/turf/open/floor/strata,
-/area/rostock/req)
 "wUk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -30324,7 +30309,7 @@
 /turf/open/floor/strata/floor2,
 /area/rostock/lifeboat)
 "xrJ" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/clothing/head/welding,
 /obj/item/clothing/head/welding,
 /obj/item/clothing/head/welding,
@@ -30985,7 +30970,7 @@
 	pixel_x = -2;
 	pixel_y = 2
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/prop/tableflag/upp{
 	pixel_x = -9;
 	pixel_y = 14
@@ -31030,7 +31015,7 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/rostock/engineering/main_area)
 "xVr" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8
 	},
@@ -31161,7 +31146,7 @@
 /turf/open/floor/corsat/plate,
 /area/rostock/command/astronavigation)
 "ybU" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 1
 	},
@@ -31176,9 +31161,7 @@
 	dir = 8;
 	layer = 2.7
 	},
-/obj/structure/surface/table/reinforced/almayer_B{
-	layer = 2.6
-	},
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
 	layer = 2
@@ -31224,7 +31207,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/rostock/lower_deck/m_hallway)
 "ydm" = (
-/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/surface/table/reinforced/rostock_table,
 /obj/item/toy/deck/uno{
 	pixel_x = -12;
 	pixel_y = -3
@@ -43614,9 +43597,9 @@ oFZ
 ixC
 lrV
 vZv
-aai
-dKo
-hfN
+adQ
+adP
+adO
 aZY
 sJs
 sJs
@@ -43796,9 +43779,9 @@ jiF
 cjZ
 cNZ
 gxO
+tzk
 aai
-jRI
-hfN
+mIE
 aJz
 kbh
 sJs
@@ -43979,8 +43962,8 @@ wyB
 oJJ
 kdz
 emQ
-dKo
-hfN
+aai
+mIE
 uiq
 kIf
 cXB
@@ -44158,11 +44141,11 @@ oFZ
 goA
 nGW
 hOz
-cNZ
+adT
 azC
+tzk
 aai
-dKo
-oco
+mIE
 oBH
 bhV
 udp
@@ -44342,8 +44325,8 @@ oFZ
 ixC
 lrV
 gNj
-jqF
-wUb
+ixC
+aai
 mIE
 oBH
 dCp
@@ -44705,7 +44688,7 @@ iWW
 iWW
 iWW
 hfN
-kTX
+adS
 kTX
 ipM
 mVP
@@ -48531,7 +48514,7 @@ eqM
 mui
 aqt
 kSx
-azT
+adN
 azT
 azT
 eSh

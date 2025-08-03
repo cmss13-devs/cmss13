@@ -371,9 +371,11 @@
 //hivemind cores
 
 /obj/effect/alien/resin/overmind/attack_alien(mob/living/carbon/xenomorph/xeno_attacker)
-	xeno_attacker.visible_message(SPAN_DANGER("[xeno_attacker] nudges its head against [src]."), \
-	SPAN_XENODANGER("You nudge your head against [src]."))
-	return
+	if(HIVE_ALLIED_TO_HIVE(hivenumber, xeno_attacker.hivenumber))
+		xeno_attacker.visible_message(SPAN_DANGER("[xeno_attacker] nudges its head against [src]."), \
+		SPAN_XENODANGER("You nudge your head against [src]."))
+		return
+	..()
 
 /obj/effect/alien/resin/overmind/healthcheck()
 	. = ..()

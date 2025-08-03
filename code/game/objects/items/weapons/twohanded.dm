@@ -11,6 +11,7 @@
 	force = MELEE_FORCE_NORMAL
 	force_wielded = MELEE_FORCE_VERY_STRONG
 	flags_item = TWOHANDED
+	explo_proof = TRUE
 
 /obj/item/weapon/twohanded/update_icon()
 	return

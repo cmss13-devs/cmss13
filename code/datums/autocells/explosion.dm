@@ -293,9 +293,10 @@ as having entered the turf.
 	E.direction = direction
 	E.explosion_cause_data = explosion_cause_data
 
-	if(power >= 100) // powerful explosions send out some special effects
-		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		new /obj/shrapnel_effect(epicenter)
+	var/explosion_range = ceil(power / falloff)
+	var/small = power < EXPLOSION_THRESHOLD_LOW
+	var/large = power >= EXPLOSION_THRESHOLD_HIGH
+	new /obj/effect/explosion(epicenter, explosion_range, LIGHT_COLOR_LAVA, small, large)
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))

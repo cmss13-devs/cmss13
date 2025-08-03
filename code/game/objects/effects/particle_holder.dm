@@ -69,3 +69,6 @@
 /// Sets the particles position to the passed coordinates
 /obj/effect/abstract/particle_holder/proc/set_particle_position(x = 0, y = 0, z = 0)
 	particles.position = list(x, y, z)
+
+/obj/effect/abstract/particle_holder/reset_transform
+	appearance_flags = KEEP_APART|TILE_BOUND|RESET_TRANSFORM

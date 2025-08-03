@@ -39,6 +39,8 @@
 	*/
 	if(HAS_TRAIT(user, TRAIT_HAULED))
 		return
+	if(is_sharp(I))
+		new /obj/effect/bloodsplatter(loc, Get_Angle(user, src),, get_blood_color())
 	if(istype(I) && ismob(user))
 		return I.attack(src, user)
 
@@ -112,8 +114,6 @@
 		switch(damtype)
 			if("brute")
 				M.apply_damage(power,BRUTE)
-				if(is_sharp(src))
-					new /obj/effect/bloodsplatter(M, Get_Angle(user, M),, M.get_blood_color())
 			if("fire")
 				M.apply_damage(power,BURN)
 				to_chat(M, SPAN_WARNING("It burns!"))

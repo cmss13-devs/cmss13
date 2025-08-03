@@ -139,8 +139,6 @@
 
 			handle_blood_splatter(Get_Angle(attacking_xeno.loc, src.loc))
 
-			new /obj/effect/bloodsplatter(loc, Get_Angle(attacking_xeno, src),,get_blood_color())
-
 			last_damage_data = create_cause_data(initial(attacking_xeno.name), attacking_xeno)
 
 			//Logging, including anti-rulebreak logging

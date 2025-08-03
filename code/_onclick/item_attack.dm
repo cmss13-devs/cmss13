@@ -39,8 +39,6 @@
 	*/
 	if(HAS_TRAIT(user, TRAIT_HAULED))
 		return
-	if(is_sharp(I))
-		new /obj/effect/bloodsplatter(loc, Get_Angle(user, src),, get_blood_color())
 	if(istype(I) && ismob(user))
 		return I.attack(src, user)
 

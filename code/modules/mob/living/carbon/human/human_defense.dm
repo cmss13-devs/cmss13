@@ -251,9 +251,6 @@ Contains most of the procs that are called when a mob is attacked by something
 				if(bloody)
 					add_blood(get_blood_color(), BLOOD_BODY)
 
-	if(weapon_sharp && I.damtype == BRUTE)
-		new /obj/effect/bloodsplatter(loc, Get_Angle(user, src),, get_blood_color())
-
 	//Melee weapon embedded object code.
 	if (I.damtype == BRUTE && !(I.flags_item & (NODROP|DELONDROP)))
 		damage = I.force

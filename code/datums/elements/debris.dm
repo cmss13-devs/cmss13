@@ -2,9 +2,9 @@
 	icon = 'icons/effects/particles/generic_particles.dmi'
 	width = 500
 	height = 500
-	count = 10
-	spawning = 10
-	lifespan = 0.7 SECONDS
+	count = 2
+	spawning = 2
+	lifespan = 0.4 SECONDS
 	fade = 0.4 SECONDS
 	drift = generator(GEN_CIRCLE, 0, 7)
 	scale = 0.7
@@ -21,10 +21,10 @@
 	spawning = 20
 	lifespan = 0.7 SECONDS
 	fade = 8 SECONDS
-	grow = 0.1
+	grow = 0
 	scale = 0.2
 	spin = generator(GEN_NUM, -20, 20)
-	velocity = list(50, 0)
+	velocity = list(20, 0)
 	friction = generator(GEN_NUM, 0.1, 0.5)
 
 /datum/element/debris
@@ -87,9 +87,11 @@
 			pitch = 55000
 		playsound(source, P.ammo.sound_bounce, 50, TRUE, 4, 5, pitch)
 	*/
-	addtimer(CALLBACK(src, PROC_REF(remove_ping), src, smoke_visuals, debris_visuals), 0.7 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_smoke), smoke_visuals), 0.2 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(remove_debris), debris_visuals), 0.4 SECONDS)
 
-/datum/element/debris/proc/remove_ping(hit, obj/effect/abstract/particle_holder/smoke_visuals, obj/effect/abstract/particle_holder/debris_visuals)
+/datum/element/debris/proc/remove_smoke(obj/effect/abstract/particle_holder/smoke_visuals)
 	QDEL_NULL(smoke_visuals)
-	if(debris_visuals)
-		QDEL_NULL(debris_visuals)
+
+/datum/element/debris/proc/remove_debris(obj/effect/abstract/particle_holder/debris_visuals)
+	QDEL_NULL(debris_visuals)

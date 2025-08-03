@@ -642,8 +642,10 @@ W is always an item. stop_warning prevents messaging. user may be null.**/
 
 /obj/item/storage/attack_hand(mob/user, mods)
 	if(HAS_TRAIT(user, TRAIT_HAULED) && !HAS_FLAG(storage_flags, STORAGE_ALLOW_WHILE_HAULED))
+		if(loc == user)
+			open(user)
 		return
-	if (loc == user)
+	if(loc == user)
 		if((mods && mods[ALT_CLICK] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents)) //Alt mod can reach attack_hand through the clicked() override.
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)

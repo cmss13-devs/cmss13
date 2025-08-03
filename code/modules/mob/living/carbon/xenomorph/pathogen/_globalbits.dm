@@ -283,7 +283,7 @@
 	var/list/castes_available = caste.evolves_to.Copy()
 
 	// Also offer queen to any tier 1 that can evolve at all if there isn't a queen
-	if(tier <= 1 && !hive.living_xeno_queen)
+	if(tier <= 2 && !hive.living_xeno_queen)
 		castes_available |= PATHOGEN_CREATURE_OVERMIND
 
 	for(var/caste in castes_available)

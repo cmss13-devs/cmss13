@@ -56,6 +56,7 @@
 		/datum/action/xeno_action/onclick/queen_word,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
+		/datum/action/xeno_action/onclick/emit_pheromones/overmind,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/activable/queen_heal/pathogen_mind, //first macro
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
@@ -86,7 +87,6 @@
 	make_pathogen_speaker()
 	set_resin_build_order(GLOB.resin_build_order_pathogen_overmind)
 	extra_build_dist = IGNORE_BUILD_DISTANCE
-	RegisterSignal(src, COMSIG_CLIENT_MOB_MOVE, PROC_REF(turf_weed_only))
 
 /mob/living/carbon/xenomorph/overmind/proc/set_stats_incorporeal()
 	if(pass_flags)
@@ -208,27 +208,27 @@
 	SIGNAL_HANDLER
 
 	if(!crossing_turf)
-		return COMPONENT_TURF_DENY_MOVEMENT
+		return FALSE
 
 	if(istype(crossing_turf, /turf/closed/wall))
 		var/turf/closed/wall/crossing_wall = crossing_turf
 		if(crossing_wall.turf_flags & TURF_HULL)
-			return COMPONENT_TURF_DENY_MOVEMENT
+			return FALSE
 
 	var/obj/effect/alien/weeds/nearby_weeds = locate() in crossing_turf
 	if(nearby_weeds && HIVE_ALLIED_TO_HIVE(nearby_weeds.hivenumber, hivenumber))
 		if(!(nearby_weeds.hivenumber == XENO_HIVE_PATHOGEN))
 			nearby_weeds.update_icon() //randomizes the icon of the turf when crossed over*/
-		return COMPONENT_TURF_ALLOW_MOVEMENT
+		return TRUE
 
-	return COMPONENT_TURF_DENY_MOVEMENT
+	return FALSE
 
 /mob/living/carbon/xenomorph/overmind/proc/handle_weeds_adjacent_removed()
 	if(turf_weed_only(src, get_turf(src)))
-		return
+		return TRUE
 	return_to_core()
 	to_chat(src, SPAN_XENOBOLDNOTICE("We had no weeds nearby, we got moved to our core."))
-	return
+	return FALSE
 
 /mob/living/carbon/xenomorph/overmind/proc/return_to_core()
 	if(!(status_flags & INCORPOREAL) && COOLDOWN_FINISHED(src, cooldown_hivemind_manifestation))
@@ -249,10 +249,11 @@
 /mob/living/carbon/xenomorph/overmind/proc/end_teleport(turf/T)
 	if(!turf_weed_only(src, T))
 		balloon_alert(src, "No weeds in destination")
-		return
+		return FALSE
 	forceMove(T)
 	flick("overmind_appear", src)
 	setDir(SOUTH)
+	return TRUE
 
 /mob/living/carbon/xenomorph/overmind/proc/setBruteLoss(amount)
 	bruteloss = amount
@@ -286,11 +287,12 @@
 	var/turf/target_turf = get_turf(xeno)
 	if(!turf_weed_only(src, target_turf))
 		balloon_alert(src, "No nearby weeds")
-		return
+		return FALSE
 	if(!(status_flags & INCORPOREAL))
 		start_teleport(target_turf)
-		return
+		return TRUE
 	abstract_move(target_turf)
+	return TRUE
 
 /// handles hivemind updating with their respective weedtype
 /mob/living/carbon/xenomorph/overmind/update_icons()
@@ -300,20 +302,20 @@
 		return
 	icon_state = "overmind_manifested"
 
-/mob/living/carbon/xenomorph/overmind/DblClickOn(atom/A, params)
-	if(!COOLDOWN_FINISHED(src, cooldown_hivemind_manifestation))
-		return
-	var/list/modifiers = params2list(params)
-	if(modifiers["right"])
-		return
-	var/turf/target_turf = get_turf(A)
-	if(!turf_weed_only(src, target_turf))
-		return
-	if(!(status_flags & INCORPOREAL))
-		start_teleport(target_turf)
-		return
-	setDir(SOUTH)
-	abstract_move(target_turf)
+/mob/living/carbon/xenomorph/overmind/Click(atom/target, list/mods)
+	if(mods[CTRL_CLICK])
+		if(!COOLDOWN_FINISHED(src, cooldown_hivemind_manifestation))
+			return
+		var/turf/target_turf = get_turf(target)
+		if(!turf_weed_only(src, target_turf))
+			return
+		if(!(status_flags & INCORPOREAL))
+			start_teleport(target_turf)
+			return
+		setDir(SOUTH)
+		abstract_move(target_turf)
+	else
+		..()
 
 /mob/living/carbon/xenomorph/overmind/a_intent_change()
 	return //Unable to change intent, forced help intent
@@ -409,7 +411,7 @@
 		if(X.hivenumber == hivenumber) //Trigger proxy alert only for hostile xenos
 			return
 
-	to_chat(get_parent(), SPAN_PATHOGEN_ANNOUNCE("Our [src.name] has detected a nearby hostile [hostile] at [get_area(hostile)] (X: [hostile.x], Y: [hostile.y])."))
+	to_chat(get_parent(), SPAN_PATHOGEN_ANNOUNCE("Our [src.name] has detected a nearby hostile, [hostile], at [get_area(hostile)] (X: [hostile.x], Y: [hostile.y])."))
 	SEND_SOUND(get_parent(), 'sound/pathogen_creatures/pathogen_help.ogg')
 	COOLDOWN_START(src, cooldown_overmind_proxy_alert, OVERMIND_DETECTION_COOLDOWN) //set the cooldown.
 

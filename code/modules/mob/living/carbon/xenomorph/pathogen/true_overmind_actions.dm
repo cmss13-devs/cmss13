@@ -1,6 +1,6 @@
 /datum/action/xeno_action/onclick/return_to_core
 	name = "Return to Core"
-	action_icon_state = "lay_hivemind"
+	action_icon_state = "retrieve"
 
 /datum/action/xeno_action/onclick/return_to_core/action_activate()
 	SEND_SIGNAL(owner, COMSIG_XENOMORPH_CORE_RETURN)
@@ -9,6 +9,12 @@
 /datum/action/xeno_action/onclick/change_form
 	name = "Change form"
 	action_icon_state = "manifest"
+
+/datum/action/xeno_action/onclick/change_form/can_use_action(silent = FALSE, override_flags)
+	var/mob/living/carbon/xenomorph/overmind = owner
+	if((overmind.status_flags & INCORPOREAL) && (overmind.health != overmind.maxHealth))
+		return FALSE
+	return ..()
 
 /datum/action/xeno_action/onclick/change_form/action_activate()
 	var/mob/living/carbon/xenomorph/overmind/overmind = owner

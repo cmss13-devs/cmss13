@@ -255,7 +255,7 @@
 		return
 
 	// Can only have one queen.
-	if(isqueen(X))
+	if(isqueen(X) || is_pathogen_overmind(X))
 		if(!living_xeno_queen && !should_block_game_interaction(X)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 

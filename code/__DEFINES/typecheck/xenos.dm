@@ -30,6 +30,7 @@
 #define isbloodburster(A) (istype(A, /mob/living/carbon/xenomorph/bloodburster))
 #define ispopper(A) (istype(A, /mob/living/carbon/xenomorph/popper))
 #define ismatriarch(A) (istype(A, /mob/living/carbon/xenomorph/matriarch))
+#define is_pathogen_overmind(A) (istype(A, /mob/living/carbon/xenomorph/overmind))
 
 /// Returns true/false based on if the xenomorph can harm the passed carbon mob.
 /mob/living/carbon/xenomorph/proc/can_not_harm(mob/living/carbon/attempt_harm_mob)

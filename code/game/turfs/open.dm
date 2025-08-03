@@ -936,6 +936,48 @@
 /turf/open/gm/mudcoast/corner2/north_east
 	dir = 8
 
+/turf/open/gm/mudcoast/greenwater
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	icon_state = "mudbeach"
+	dir = SOUTH
+
+/turf/open/gm/mudcoast/greenwater/north
+	dir = NORTH
+
+/turf/open/gm/mudcoast/greenwater/west
+	dir = WEST
+
+/turf/open/gm/mudcoast/greenwater/east
+	dir = EAST
+
+/turf/open/gm/mudcoast/greenwater/cornerinner
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	icon_state = "mudbeach_corner_inner"
+	dir = SOUTH
+
+/turf/open/gm/mudcoast/greenwater/cornerinner/north
+	dir = NORTH
+
+/turf/open/gm/mudcoast/greenwater/cornerinner/west
+	dir = WEST
+
+/turf/open/gm/mudcoast/greenwater/cornerinner/east
+	dir = EAST
+
+/turf/open/gm/mudcoast/greenwater/cornerouter
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	icon_state = "mudbeach_corner_outer"
+	dir = SOUTH
+
+/turf/open/gm/mudcoast/greenwater/cornerouter/north
+	dir = NORTH
+
+/turf/open/gm/mudcoast/greenwater/cornerouter/west
+	dir = WEST
+
+/turf/open/gm/mudcoast/greenwater/cornerouter/east
+	dir = EAST
+
 /turf/open/gm/riverdeep
 	name = "river"
 	icon_state = "seadeep"

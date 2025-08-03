@@ -238,7 +238,7 @@
 ///Start the teleportation process to send the hivemind manifestation to the selected turf
 /mob/living/carbon/xenomorph/overmind/proc/start_teleport(turf/T)
 	if(!istype(T, /turf/open))
-		balloon_alert(src, "Can't teleport into a wall")
+		balloon_alert(src, "can't teleport into a wall")
 		return
 	COOLDOWN_START(src, cooldown_hivemind_manifestation, TIME_TO_TRANSFORM * 2)
 	flick("overmind_disappear", src)
@@ -248,7 +248,7 @@
 ///Finish the teleportation process to send the hivemind manifestation to the selected turf
 /mob/living/carbon/xenomorph/overmind/proc/end_teleport(turf/T)
 	if(!turf_weed_only(src, T))
-		balloon_alert(src, "No weeds in destination")
+		balloon_alert(src, "no weeds in destination")
 		return FALSE
 	forceMove(T)
 	flick("overmind_appear", src)
@@ -286,7 +286,7 @@
 /mob/living/carbon/xenomorph/overmind/proc/jump(mob/living/carbon/xenomorph/xeno)
 	var/turf/target_turf = get_turf(xeno)
 	if(!turf_weed_only(src, target_turf))
-		balloon_alert(src, "No nearby weeds")
+		balloon_alert(src, "no nearby weeds")
 		return FALSE
 	if(!(status_flags & INCORPOREAL))
 		start_teleport(target_turf)

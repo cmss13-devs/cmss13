@@ -251,9 +251,15 @@
 	set category = "IC"
 
 	if(observed_atom)
-		var/atom/to_delete = observed_atom
-		observed_atom = null
-		qdel(to_delete)
+		QDEL_NULL(observed_atom)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
+		to_chat(src, SPAN_WARNING("We cannot look up here, we are burrowed!"))
+		return
+
+	if(!isturf(loc))
+		to_chat(src, SPAN_WARNING("You cannot look up here."))
 		return
 
 	var/turf/above = locate(x, y, z+1)

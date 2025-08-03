@@ -1302,7 +1302,6 @@
 	icon_state = "mercenary_heavy_uniform"
 	worn_state = "mercenary_heavy_uniform"
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/mercenary)
 
 /obj/item/clothing/under/marine/veteran/mercenary/miner
 	name = "\improper Mercenary miner fatigues"
@@ -1331,6 +1330,16 @@
 	flags_atom = NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE //Let's make them keep their original name.
 	flags_jumpsuit = FALSE
 	suit_restricted = null
+
+/obj/item/clothing/under/marine/ua_riot/police
+	name = "\improper United American police uniform"
+	desc = "A version of the Standard uniform worn by US Marines and Army personnel, this one dyed a navy blue, often worn by police officers in high intensity situations."
+	icon = 'icons/obj/items/clothing/uniforms/uniforms_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/clothing/uniforms/uniforms_by_faction/CMB.dmi',
+	)
+	icon_state = "police_riot"
+	worn_state = "police_riot"
 
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"
@@ -1504,6 +1513,12 @@
 	icon_state = "liaison_charcoal"
 	worn_state = "liaison_charcoal"
 
+/obj/item/clothing/under/liaison_suit/charcoal/skirt
+	name = "liaison's charcoal suitskirt"
+	desc = "A stiff, stylish charcoal suit commonly worn by businesswomen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
+	icon_state = "liaison_charcoal_skirt"
+	worn_state = "liaison_charcoal_skirt"
+
 /obj/item/clothing/under/liaison_suit/outing
 	name = "liaison's outfit"
 	desc = "A casual outfit consisting of a collared shirt and a vest. Looks like something you might wear on the weekends, or on a visit to a derelict colony."
@@ -1538,6 +1553,12 @@
 	icon_state = "corporate_field"
 	worn_state = "corporate_field"
 
+/obj/item/clothing/under/liaison_suit/field/skirt
+	name = "corporate casual skirt"
+	desc = "A black pencil skirt paired with a dark blue button-down shirt. A popular look among those in the corporate world that conduct the majority of their business from night clubs."
+	icon_state = "corporate_field_skirt"
+	worn_state = "corporate_field_skirt"
+
 /obj/item/clothing/under/liaison_suit/ivy
 	name = "country club outfit"
 	desc = "A pair of khaki slacks paired with a light blue button-down shirt. A popular look with those in the corporate world that conduct the majority of their business from country clubs."
@@ -1561,6 +1582,12 @@
 	desc = "A pair of black slacks paired with a white shirt. The most common pairing among corporate workers."
 	icon_state = "corporate_black"
 	worn_state = "corporate_black"
+
+/obj/item/clothing/under/liaison_suit/black/skirt
+	name = "black suitskirt"
+	desc = "A black pencil skirt paired with a white shirt. A common pairing among corporate workers."
+	icon_state = "corporate_black_skirt"
+	worn_state = "corporate_black_skirt"
 
 /obj/item/clothing/under/liaison_suit/brown
 	name = "brown suit pants"
@@ -1831,7 +1858,7 @@
 	)
 	icon_state = "rmc_uniform"
 	worn_state = "rmc_uniform"
-	flags_atom = NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/veteran/royal_marine/tl
 	icon_state = "rmc_uniform_teaml"
@@ -1852,10 +1879,27 @@
 	)
 	icon_state = "rmc_uniform_service"
 	worn_state = "rmc_uniform_service"
+	flags_atom = FPRINT|NO_NAME_OVERRIDE|NO_GAMEMODE_SKIN
 
 /obj/item/clothing/under/marine/officer/royal_marine/black
 	icon_state = "rmc_uniform_service_alt"
 	worn_state = "rmc_uniform_service_alt"
+
+// IASF
+
+/obj/item/clothing/under/marine/veteran/royal_marine/iasf
+	name = "IASF No.8 combat uniform"
+	desc = "Standard issue No.8 Pattern BDU used by the Imperial Armed Space Force. Identical in cut and protection to the Royal Marine Commando variant, but issued in woodland camouflage. Lightweight Kevlar mesh offers limited protection against shrapnel and close-quarters threats."
+	icon_state = "iasf_uniform"
+	worn_state = "iasf_uniform"
+
+/obj/item/clothing/under/marine/officer/royal_marine/iasf
+	name = "IASF No.2 service uniform"
+	desc = "A formal No.2 service uniform worn by IASF officers. Features the same upper torso cut as the No.8 BDU, but paired with pressed khaki trousers. Issued for inspections, ceremonial duties, or when deployed in an advisory role."
+	icon_state = "iasf_uniform_service"
+	worn_state = "iasf_uniform_service"
+
+// CBRN
 
 /obj/item/clothing/under/marine/cbrn //CBRN MOPP suit
 	name = "\improper M3 MOPP suit"

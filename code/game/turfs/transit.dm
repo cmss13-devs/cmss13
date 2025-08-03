@@ -51,6 +51,8 @@
 		var/turf/location = get_turf(dropship.paradrop_signal.signal_loc)
 		for(var/turf/turf as anything in RANGE_TURFS(crosser.get_paradrop_scatter(), location))
 			var/area/turf_area = get_area(turf)
+			if(istype(turf, /turf/open/space))
+				continue
 			if(!turf_area || CEILING_IS_PROTECTED(turf_area.ceiling, CEILING_PROTECTION_TIER_1))
 				continue
 			if(turf.density)

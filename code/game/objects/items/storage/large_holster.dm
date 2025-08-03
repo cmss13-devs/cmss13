@@ -63,7 +63,7 @@
 		playsound(src, drawSound, 15, TRUE)
 
 /obj/item/storage/large_holster/m37
-	name = "\improper L44 M37A2 scabbard"
+	name = "\improper L44 shotgun scabbard"
 	desc = "A large leather holster fitted for USCM-issue shotguns. It has harnesses that allow it to be secured to the back for easy storage."
 	icon_state = "m37_holster"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
@@ -75,6 +75,7 @@
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat,
 		/obj/item/weapon/gun/shotgun/double/mou53,
+		/obj/item/weapon/gun/shotgun/pump/m37a,
 	)
 	flags_atom = FPRINT // has gamemode skin
 
@@ -467,3 +468,35 @@
 	if (!istype(FP))
 		return
 	FP.toggle_fuel()
+
+/obj/item/storage/belt/gun/brutepack
+	name = "\improper M271A2 Pattern Launcher Rig"
+	desc = "A special-issue harness designed to allow the user to freely and securely holster a M6H-BRUTE launcher system on their back without impeding movement, while also having several other integrated storage packs for additional ammo and equipment."
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
+	icon_state = "bruterig"
+	map_specific_decoration = FALSE
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/UA.dmi'
+	)
+	flags_equip_slot = SLOT_BACK //yes we are belt subtype that is worn on back
+	storage_slots = 7
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/weapon/gun/launcher/rocket/brute,
+	)
+	bypass_w_limit = list(/obj/item/weapon/gun/launcher/rocket/brute)
+
+
+/obj/item/storage/belt/gun/brutepack/update_icon()
+	. = ..()
+	var/mob/living/carbon/human/user = loc
+	if(istype(user))
+		user.update_inv_back()
+
+/obj/item/storage/belt/gun/brutepack/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/launcher/rocket/brute())
+	new /obj/item/ammo_magazine/rocket/brute(src)
+	new /obj/item/ammo_magazine/rocket/brute(src)
+	new /obj/item/ammo_magazine/rocket/brute(src)
+

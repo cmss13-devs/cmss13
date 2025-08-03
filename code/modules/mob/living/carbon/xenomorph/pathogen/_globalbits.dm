@@ -345,7 +345,7 @@
 		evolving = FALSE
 		return
 
-	if(hive.living_xeno_queen)
+	if(castepick == PATHOGEN_CREATURE_OVERMIND && hive.living_xeno_queen)
 		to_chat(src, SPAN_WARNING("Another creature has become the Overmind. We remain as we are, for now."))
 		return
 

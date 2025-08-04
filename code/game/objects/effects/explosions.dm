@@ -50,8 +50,8 @@
 	icon_state = "smoke3"
 	width = 750
 	height = 750
-	count = 75
-	spawning = 75
+	count = 100
+	spawning = 100
 	lifespan = 15
 	fade = 70
 	gradient = list("#BA9F6D", "#808080", "#FFFFFF")
@@ -89,32 +89,24 @@
 	icon_state = "smoke"
 	width = 500
 	height = 500
-	count = 80
-	spawning = 10
+	count = 40
+	spawning = 40
 	lifespan = 15
 	fade = 10
-	fadein = 3
 	scale = generator(GEN_NUM, 0.18, 0.15)
 	position = generator(GEN_SPHERE, 150, 150)
-	velocity = list(0, 12)
-	grow = list(0, 0.01)
-	gravity = list(0, -1.25)
 
 /particles/water_splash
 	icon = 'icons/effects/96x157.dmi'
 	icon_state = "smoke2"
 	width = 500
 	height = 500
-	count = 80
-	spawning = 10
+	count = 50
+	spawning = 50
 	lifespan = 15
 	fade = 10
-	fadein = 3
 	scale = generator(GEN_NUM, 0.18, 0.15)
 	position = generator(GEN_SPHERE, 150, 150)
-	velocity = list(0, 12)
-	grow = list(0, 0.01)
-	gravity = list(0, -1.25)
 
 /particles/dirt_kickup_large
 	icon = 'icons/effects/96x157.dmi'

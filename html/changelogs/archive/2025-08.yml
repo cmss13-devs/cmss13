@@ -27,3 +27,8 @@
   - bugfix: Fixed the messed up margins in prefab paperwork.
   wgtjunior743:
   - rscadd: ABR-40 variant name.
+2025-08-04:
+  MistChristmas, Ediblebomb, Drathek:
+  - bugfix: Adds a haul check for click dragging, moves a Lint Proc to the top for
+      Linting; Fixes the things that would get caught in the fixed lint. Left clicking
+      storages whilst hauled will open them instead of doing nothing.

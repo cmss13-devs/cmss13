@@ -692,12 +692,13 @@
 
 
 // legacy procs
-/mob/living/put_in_l_hand(obj/item/W)
+/mob/living/put_in_l_hand(obj/item/moved_item)
 	if(body_position == LYING_DOWN)
 		if(!HAS_TRAIT(src, TRAIT_HAULED))
 			return
 	return ..()
-/mob/living/put_in_r_hand(obj/item/W)
+
+/mob/living/put_in_r_hand(obj/item/moved_item)
 	if(body_position == LYING_DOWN)
 		if(!HAS_TRAIT(src, TRAIT_HAULED))
 			return

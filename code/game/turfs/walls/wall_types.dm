@@ -809,6 +809,7 @@
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
+	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
 

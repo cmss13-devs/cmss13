@@ -12,8 +12,8 @@
 		/datum/action/xeno_action/active_toggle/toggle_meson_vision,
 	)
 	actions_to_add = list(
-		/datum/action/xeno_action/activable/place_design, //macro 2, macro 1 is for weeds
-		/datum/action/xeno_action/onclick/change_design, //macro 3
+		/datum/action/xeno_action/onclick/change_design, //macro 2, macro 1 is for weeds
+		/datum/action/xeno_action/activable/place_design, //macro 3
 		/datum/action/xeno_action/onclick/toggle_design_icons, //macro 4
 		/datum/action/xeno_action/activable/greater_resin_surge, //macro 5
 		/datum/action/xeno_action/onclick/toggle_long_range/designer,
@@ -772,7 +772,7 @@
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/place_design
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	xeno_cooldown = 0
 	var/max_reach = 10
 	var/design_toggle = TRUE
@@ -1113,14 +1113,21 @@
 ///   Change Design    ///
 //////////////////////////
 
+/datum/action/xeno_action/verb/verb_change_design()
+	set category = "Alien"
+	set name = "Change Design Mark"
+	set hidden = TRUE
+	var/action_name = "Change Design Mark"
+	handle_xeno_macro(src, action_name)
+
 /datum/action/xeno_action/onclick/change_design
 	name = "Choose Action"
 	action_icon_state = "static_speednode"
 	plasma_cost = 0
 	xeno_cooldown = 0
-	macro_path = /datum/action/xeno_action/verb/verb_resin_surge
+	macro_path = /datum/action/xeno_action/verb/verb_change_design
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_3
+	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/onclick/change_design/use_ability(atom/Atom)
 	var/mob/living/carbon/xenomorph/xeno = owner

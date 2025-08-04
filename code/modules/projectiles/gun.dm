@@ -1788,7 +1788,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		var/skill_accuracy = 0
 		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			skill_accuracy = -1
-		else if if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_TRAINED)
+		else if (user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_TRAINED)
 			skill_accuracy = 1
 		else  if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_SKILLED)
 			skill_accuracy = 1.5

@@ -2006,6 +2006,18 @@
 /obj/structure/machinery/hybrisa/coffee_machine,
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/break_room/upper)
+"agi" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = -6;
+	pixel_y = -1
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/armory)
 "agj" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -2017,6 +2029,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/upper_stairwell)
+"agl" = (
+/obj/structure/closet/secure_closet/hybrisa/nspa,
+/obj/item/clothing/head/hybrisa/nspa_peaked_cap,
+/obj/item/storage/belt/gun/l54,
+/turf/open/floor/prison/darkredfull2,
+/area/desert_dam/building/security/staffroom)
 "agm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -3783,10 +3801,13 @@
 /area/desert_dam/building/security/workshop)
 "alH" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/ammo_magazine/pistol/highpower,
-/obj/item/ammo_magazine/pistol/highpower{
-	pixel_x = 8;
-	pixel_y = 1
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = 4;
+	pixel_y = 7
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
@@ -3831,24 +3852,22 @@
 /area/desert_dam/building/security/workshop)
 "alO" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/ammo_magazine/pistol/highpower{
-	current_rounds = 0;
-	pixel_x = 1;
-	pixel_y = -1
-	},
-/obj/item/ammo_magazine/pistol/highpower{
-	current_rounds = 0;
-	pixel_x = 7;
-	pixel_y = 4
-	},
-/obj/item/ammo_magazine/pistol/highpower{
-	current_rounds = 0;
-	pixel_x = -7;
-	pixel_y = 2
-	},
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/pistol/l54{
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = 8;
+	pixel_y = 4;
+	current_rounds = 0
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = -6;
+	pixel_y = 10;
+	current_rounds = 0
+	},
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/workshop)
 "alP" = (
@@ -3856,20 +3875,19 @@
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
-/obj/item/ammo_magazine/revolver/cmb{
-	current_rounds = 0;
-	pixel_x = 6;
-	pixel_y = -1
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = 4;
+	current_rounds = 0
 	},
-/obj/item/ammo_magazine/revolver/cmb{
-	current_rounds = 0;
-	pixel_x = -5;
-	pixel_y = 2
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = -4;
+	pixel_y = 6;
+	current_rounds = 0
 	},
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/darkred2/northeast,
 /area/desert_dam/building/security/workshop)
 "alQ" = (
@@ -4808,6 +4826,13 @@
 	},
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/building/security/stairwell/upper)
+"apa" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/pistol/l54{
+	current_mag = null
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/riot_armory)
 "apb" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
@@ -6735,11 +6760,27 @@
 "avI" = (
 /turf/closed/wall/r_wall/bunker,
 /area/sky)
+"avJ" = (
+/obj/item/ammo_magazine/pistol/l54/rubber{
+	pixel_x = 10;
+	pixel_y = 4
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/riot_armory)
 "avK" = (
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage/solar)
+"avL" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/pistol/l54/rubber,
+/obj/item/ammo_magazine/pistol/l54/rubber{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/riot_armory)
 "avM" = (
 /obj/structure/surface/rack,
 /obj/item/device/binoculars/civ,
@@ -6841,6 +6882,13 @@
 /obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow_edge/west,
 /area/desert_dam/exterior/river/riverside_south)
+"awf" = (
+/obj/item/ammo_magazine/pistol/l54/rubber{
+	pixel_x = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/prison,
+/area/desert_dam/building/security/riot_armory)
 "awg" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4
@@ -16096,7 +16144,8 @@
 /area/desert_dam/interior/dam_interior/smes_main)
 "bGi" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/revolver/cmb{
+/obj/item/weapon/gun/pistol/l54{
+	pixel_x = -1;
 	pixel_y = -5
 	},
 /turf/open/floor/prison,
@@ -22775,10 +22824,10 @@
 	req_access = null;
 	opened = 1
 	},
-/obj/item/weapon/gun/pistol/highpower{
-	pixel_y = -4
+/obj/item/weapon/gun/pistol/l54{
+	pixel_y = -2
 	},
-/obj/item/weapon/gun/revolver/cmb{
+/obj/item/weapon/gun/pistol/l54{
 	pixel_y = 5
 	},
 /turf/open/floor/prison/darkred2/north,
@@ -41669,8 +41718,13 @@
 /area/desert_dam/building/security/prison)
 "lCw" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = 3
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = -5;
+	pixel_y = 5
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "lCH" = (
@@ -42812,9 +42866,9 @@
 "lZb" = (
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
-/obj/item/weapon/gun/pistol/highpower{
-	pixel_y = 7;
-	pixel_x = -2
+/obj/item/weapon/gun/pistol/l54{
+	pixel_x = -3;
+	pixel_y = 7
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/workshop)
@@ -59450,7 +59504,9 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/desert_dam/exterior/valley/valley_civilian)
 "srw" = (
-/obj/item/weapon/gun/revolver/cmb,
+/obj/item/weapon/gun/pistol/l54{
+	pixel_y = -2
+	},
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/control_room)
 "srB" = (
@@ -60464,9 +60520,8 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/medical/break_room)
 "sJz" = (
-/obj/item/weapon/gun/pistol/b92fs{
-	current_mag = null;
-	pixel_x = -5
+/obj/item/weapon/gun/pistol/l54{
+	pixel_x = -4
 	},
 /turf/open/floor/prison/floor_marked,
 /area/desert_dam/building/security/armory)
@@ -63724,6 +63779,7 @@
 "tXT" = (
 /obj/structure/closet/secure_closet/hybrisa/nspa,
 /obj/item/clothing/head/hybrisa/nspa_peaked_cap,
+/obj/item/storage/belt/gun/l54/full,
 /turf/open/floor/prison/darkredfull2,
 /area/desert_dam/building/security/staffroom)
 "tYb" = (
@@ -63962,7 +64018,10 @@
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "ucM" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/revolver/cmb,
+/obj/item/weapon/gun/pistol/l54{
+	pixel_x = -2;
+	pixel_y = 4
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "udb" = (
@@ -145098,7 +145157,7 @@ kno
 dpS
 jRQ
 bGi
-lCw
+agi
 vUg
 oIh
 kno
@@ -146728,7 +146787,7 @@ aDM
 aDM
 xjD
 lGz
-tXT
+agl
 tXT
 aDM
 aDM
@@ -199140,7 +199199,7 @@ arD
 atO
 atp
 asV
-arX
+apa
 arV
 arC
 ark
@@ -199373,8 +199432,8 @@ aul
 aua
 arD
 arD
-arD
-arD
+awf
+avJ
 arD
 arD
 arl
@@ -199608,8 +199667,8 @@ arD
 atP
 arX
 asW
+avL
 asv
-arX
 arE
 ark
 aqL

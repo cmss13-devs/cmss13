@@ -50,10 +50,22 @@
 /area/desert_dam/building/security/armory)
 "m" = (
 /obj/structure/surface/rack,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
-/obj/item/ammo_magazine/revolver/cmb,
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = -7;
+	pixel_y = 5
+	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)
 "n" = (
@@ -160,9 +172,11 @@
 /area/desert_dam/building/security/armory)
 "M" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/revolver/cmb,
-/obj/item/weapon/gun/revolver/cmb{
-	pixel_y = -5
+/obj/item/weapon/gun/pistol/l54{
+	pixel_y = -3
+	},
+/obj/item/weapon/gun/pistol/l54{
+	pixel_y = 5
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)

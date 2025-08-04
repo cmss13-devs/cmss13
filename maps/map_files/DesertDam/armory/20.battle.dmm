@@ -68,8 +68,9 @@
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
 "uQ" = (
-/obj/item/ammo_magazine/revolver/cmb{
-	pixel_y = -5
+/obj/item/ammo_magazine/pistol/l54{
+	pixel_x = 2;
+	pixel_y = -4
 	},
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/armory)
@@ -241,8 +242,9 @@
 /turf/open/floor/prison/floor_marked,
 /area/desert_dam/building/security/armory)
 "Wg" = (
-/obj/item/weapon/gun/revolver/cmb{
-	pixel_y = 7
+/obj/item/weapon/gun/pistol/l54{
+	pixel_x = -3;
+	pixel_y = 5
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/armory)

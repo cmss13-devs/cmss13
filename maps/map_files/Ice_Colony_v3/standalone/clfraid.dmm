@@ -1077,7 +1077,7 @@
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_left,
 /area/shiva/interior/colony/clf_shuttle)
 "Cj" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/garage)
 "Cl" = (
 /obj/structure/closet/secure_closet/guncabinet{
@@ -1232,7 +1232,7 @@
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/shiva/interior/colony/clf_shuttle)
 "Gz" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/colony/s_admin)
 "GG" = (
 /obj/structure/bed/chair/office/light{
@@ -1798,7 +1798,7 @@
 /turf/open/floor/platingdmg3,
 /area/shiva/interior/colony/s_admin)
 "Vc" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/bar)
 "Vf" = (
 /turf/open/auto_turf/snow/layer1,

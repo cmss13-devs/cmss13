@@ -51,26 +51,28 @@
 
 	..()
 
-/turf/closed/wall/almayer/reinforced
+/turf/closed/wall/r_wall/almayer
 	name = "reinforced hull"
 	desc = "A reinforced metal wall used to separate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
 	icon_state = "reinforced"
+	icon = 'icons/turf/walls/almayer.dmi'
+	walltype = WALL_HULL
 
-/// Acts like /turf/closed/wall/almayer/outer until post-hijack where it reverts to /turf/closed/wall/almayer/reinforced.
-/turf/closed/wall/almayer/reinforced/temphull
+/// Acts like /turf/closed/wall/almayer/outer until post-hijack where it reverts to /turf/closed/wall/r_wall/almayer.
+/turf/closed/wall/r_wall/almayer/temphull
 	name = "heavy reinforced hull"
 	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It would take a great impact to weaken this wall."
 	icon_state = "temphull"
 	damage_cap = HEALTH_WALL_REINFORCED
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/almayer/reinforced/temphull/Initialize()
+/turf/closed/wall/r_wall/almayer/temphull/Initialize()
 	. = ..()
 	if(is_mainship_level(z))
 		RegisterSignal(SSdcs, COMSIG_GLOB_HIJACK_IMPACTED, PROC_REF(de_hull))
 
-/turf/closed/wall/almayer/reinforced/temphull/proc/de_hull()
+/turf/closed/wall/r_wall/almayer/proc/de_hull()
 	SIGNAL_HANDLER
 	turf_flags = NO_FLAGS
 	desc = "A highly reinforced metal wall used to separate rooms and make up the ship. It has been weakened by a great impact."
@@ -94,10 +96,12 @@
 	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "wwall"
 
-/turf/closed/wall/almayer/white/reinforced
+/turf/closed/wall/r_wall/almayer/white
 	name = "reinforced hull"
-	damage_cap = HEALTH_WALL_REINFORCED
+	icon = 'icons/turf/walls/almayer_white.dmi'
 	icon_state = "reinforced"
+	walltype = WALL_WHITE
+	damage_cap = HEALTH_WALL_REINFORCED
 
 /turf/closed/wall/almayer/white/outer_tile
 	tiles_with = list(/turf/closed/wall/almayer/white,/turf/closed/wall/almayer/outer)
@@ -219,9 +223,11 @@
 	icon = 'icons/turf/walls/almayer_aicore.dmi'
 	icon_state = "aiwall"
 
-/turf/closed/wall/almayer/aicore/reinforced
+/turf/closed/wall/r_wall/almayer/aicore
 	name = "reinforced hull"
+	walltype = WALL_AICORE
 	damage_cap = HEALTH_WALL_REINFORCED
+	icon = 'icons/turf/walls/almayer_aicore.dmi'
 	icon_state = "reinforced"
 
 /turf/closed/wall/almayer/aicore/hull
@@ -235,9 +241,11 @@
 	icon = 'icons/turf/walls/almayer_aicore_white.dmi'
 	icon_state = "aiwall"
 
-/turf/closed/wall/almayer/aicore/white/reinforced
+/turf/closed/wall/r_wall/almayer/aicore/white
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
+	walltype = WALL_AICORE
+	icon = 'icons/turf/walls/almayer_aicore_white.dmi'
 	icon_state = "reinforced"
 
 /turf/closed/wall/almayer/aicore/white/hull
@@ -282,12 +290,14 @@
 	icon = 'icons/turf/walls/upp_walls.dmi'
 	icon_state = "uppwall_interior"
 
-/turf/closed/wall/upp_ship/reinforced
+/turf/closed/wall/r_wall/upp_ship
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
+	walltype = WALL_UPP_SHIP
+	icon = 'icons/turf/walls/upp_walls.dmi'
 	icon_state = "uppwall_reinforced"
 
-/turf/closed/wall/upp_ship/reinforced/outer
+/turf/closed/wall/upp_ship/outer
 	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	turf_flags = TURF_HULL
@@ -300,12 +310,14 @@
 	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
 	icon_state = "uppwall"
 
-/turf/closed/wall/almayer/upp/reinforced
+/turf/closed/wall/r_wall/almayer/upp
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
+	walltype = WALL_UPP_BASE
+	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
 	icon_state = "reinforced"
 
-/turf/closed/wall/almayer/upp/reinforced/outer
+/turf/closed/wall/almayer/upp/outer
 	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	turf_flags = TURF_HULL
@@ -318,15 +330,17 @@
 	desc = "A thick and chunky metal wall. The surface is barren and imposing."
 	walltype = WALL_STRATA_OUTPOST_BARE
 
-/turf/closed/wall/strata_outpost/reinforced
+/turf/closed/wall/r_wall/strata_outpost
 	name = "ribbed outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
 	icon_state = "strata_ribbed_outpost_"
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
-/turf/closed/wall/strata_outpost/reinforced/hull
+/turf/closed/wall/strata_outpost/hull
 	turf_flags = TURF_HULL
+	walltype = WALL_STRATA_OUTPOST_RIBBED
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 
@@ -600,7 +614,7 @@
 	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement
+/turf/closed/wall/r_wall/strata_outpost_ribbed //this guy is our reinforced replacement
 	name = "ribbed outpost walls"
 	icon = 'icons/turf/walls/strata_outpost.dmi'
 	icon_state = "strata_ribbed_outpost_"
@@ -615,16 +629,20 @@
 	desc = "A thick and chunky metal wall. The surface is barren and imposing."
 	walltype = WALL_STRATA_OUTPOST_BARE
 
-/turf/closed/wall/strata_outpost/reinforced
+/turf/closed/wall/r_wall/strata_outpost
 	name = "ribbed outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
 	icon_state = "strata_ribbed_outpost_"
 	desc = "A thick and chunky metal wall covered in jagged ribs."
 	walltype = WALL_STRATA_OUTPOST_RIBBED
 	damage_cap = HEALTH_WALL_REINFORCED
 
-/turf/closed/wall/strata_outpost/reinforced/hull
+/turf/closed/wall/strata_outpost/hull
+	name = "ribbed outpost walls"
+	icon = 'icons/turf/walls/strata_outpost.dmi'
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
 	icon_state = "strata_hull"
+	walltype = WALL_STRATA_OUTPOST_RIBBED
 	turf_flags = TURF_HULL
 
 //SOLARIS RIDGE TILESET//
@@ -636,18 +654,20 @@
 	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
 	walltype = WALL_SOLARIS
 
-/turf/closed/wall/solaris/reinforced
+/turf/closed/wall/r_wall/solaris
 	name = "reinforced colony wall"
+	desc = "Tough looking walls that have been blasted by sand since the day they were erected. A testament to human willpower."
+	icon = 'icons/turf/walls/solaris/solaris.dmi'
 	icon_state = "solaris_interior_r"
 	walltype = WALL_SOLARISR
 	damage_cap = HEALTH_WALL_REINFORCED
 
-/turf/closed/wall/solaris/reinforced/hull
+/turf/closed/wall/solaris/hull
 	name = "heavy reinforced colony wall"
 	icon_state = "solaris_interior_h"
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/solaris/reinforced/hull/lv522
+/turf/closed/wall/solaris/hull/lv522
 	name = "Colony Windbreaker"
 
 /turf/closed/wall/solaris/rock
@@ -668,16 +688,19 @@
 	desc = "Just like in the orange box!"
 	walltype = WALL_DEVWALL
 
-/turf/closed/wall/dev/reinforced
+/turf/closed/wall/r_wall/dev
 	name = "greybox reinforced wall"
+	icon = 'icons/turf/walls/dev/dev.dmi'
 	icon_state = "devwall_r"
 	desc = "Just like in the orange box! This one is reinforced"
 	walltype = WALL_DEVWALL_R
 	damage_cap = HEALTH_WALL_REINFORCED
 
-/turf/closed/wall/dev/reinforced/hull
+/turf/closed/wall/dev/hull
 	name = "greybox hull wall"
 	desc = "Just like in the orange box! This one is indestructible."
+	icon_state = "devwall_r"
+	walltype = WALL_DEVWALL_R
 	turf_flags = TURF_HULL
 
 //KUTJEVO DESERT WALLS / SHARED TRIJENT TILESET
@@ -701,17 +724,19 @@
 	desc = "Dusty worn down walls that were once built to last."
 	walltype = WALL_KUTJEVO_COLONY
 
-/turf/closed/wall/kutjevo/colony/reinforced
+/turf/closed/wall/r_wall/kutjevo/colony
 	name = "reinforced colony wall"
+	icon = 'icons/turf/walls/kutjevo/kutjevo.dmi'
 	icon_state = "colonyr"
 	desc = "Dusty worn down walls that were once built to last. This one is reinforced"
 	walltype = WALL_KUTJEVO_COLONYR
 	damage_cap = HEALTH_WALL_REINFORCED
 
-/turf/closed/wall/kutjevo/colony/reinforced/hull
+/turf/closed/wall/kutjevo/colony/hull
 	icon_state = "colonyh"
 	name = "reinforced colony wall"
 	desc = "Dusty worn down walls that were once built to last. This one is indestructible."
+	walltype = WALL_KUTJEVO_COLONYR
 	turf_flags = TURF_HULL
 
 //ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
@@ -733,14 +758,15 @@
 	walltype = WALL_SHIVA_FAB
 	damage_cap = HEALTH_WALL
 
-/turf/closed/wall/shiva/prefabricated/reinforced
+/turf/closed/wall/r_wall/shiva/prefabricated
 	name = "reinforced prefabricated structure wall"
+	icon = 'icons/turf/walls/ice_colony/shiva_turfs.dmi'
 	icon_state = "shiva_fab_r"
 	desc = "This structure is made of metal support rods. The poly-kevlon has been replaced with sheet metal, reinforcing it."
 	walltype = WALL_SHIVA_FAB_R
 	damage_cap = HEALTH_WALL + HEALTH_WALL_XENO_THICK
 
-/turf/closed/wall/shiva/prefabricated/reinforced/hull
+/turf/closed/wall/shiva/prefabricated/hull
 	name = "reinforced prefabricated structure wall"
 	icon_state = "shiva_fab_r_h"
 	desc = "It cannot be destroyed by any means you have available. Perhaps praying to the gods may help."
@@ -783,7 +809,6 @@
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
-	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
 
@@ -1356,6 +1381,7 @@
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
+
 /turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()
 	if(mapload)
@@ -1363,18 +1389,6 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
-/turf/closed/wall/resin/reflective/weak
-	name = "weakened reflective wall"
-	desc = "Weird slime with strange hardened fragments solidified into a wall. It looks like it last for moment before it will collapse."
-	damage_cap = HEALTH_WALL_XENO_REFLECTIVE_WEAK
-	var/duration = 13 SECONDS
-
-/turf/closed/wall/resin/reflective/weak/Initialize(mapload, ...)
-	. = ..()
-	if(mapload)
-		ScrapeAway()
-		return
-	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 /turf/closed/wall/resin/can_be_dissolved()
 	return FALSE

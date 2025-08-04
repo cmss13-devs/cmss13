@@ -198,7 +198,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/lz2_habs)
 "W" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "X" = (
 /obj/item/weapon/gun/boltaction,

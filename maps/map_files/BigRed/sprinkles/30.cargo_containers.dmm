@@ -608,7 +608,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "cv" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/engineering)
 "cw" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{

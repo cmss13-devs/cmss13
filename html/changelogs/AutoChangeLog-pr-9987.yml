@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Early game queen is now temporarily mature when near the hive core (1 minute timer that refreshes while close or when getting shot)"
-  - code_imp: "Added missing undefs for queen and removed a few redundant checks for refreshing the choose resin ability"

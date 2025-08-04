@@ -1178,8 +1178,8 @@ can cause issues with ammo types getting mixed up during the burst.
 //Shotguns in this category will need to be pumped each shot.
 
 /obj/item/weapon/gun/shotgun/pump
-	name = "\improper M37A2 pump shotgun"
-	desc = "An Armat Battlefield Systems classic design, the M37A2 combines close-range firepower with long term reliability. Requires a pump, which is a Unique Action."
+	name = "\improper M37 pump shotgun"
+	desc = "An Armat Battlefield Systems classic design, the M37 combines close-range firepower with long term reliability. Requires a pump, which is a Unique Action."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "m37"
 	item_state = "m37"
@@ -1310,7 +1310,7 @@ can cause issues with ammo types getting mixed up during the burst.
 //-------------------------------------------------------
 
 /obj/item/weapon/gun/shotgun/pump/m37a
-	name = "\improper M37A1 pump shotgun"
+	name = "\improper M37A2 pump shotgun"
 	desc = "An Armat Battlefield Systems modern take on an all-time classic, combining close range firepower with long-term reliability. Requires a pump, which is a Unique Action."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/shotguns.dmi'
 	icon_state = "m37a"
@@ -1344,6 +1344,7 @@ can cause issues with ammo types getting mixed up during the burst.
 		/obj/item/attachable/shotgun_choke,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/stock/synth/collapsible,
 	)
 
 /obj/item/weapon/gun/shotgun/pump/dual_tube

@@ -721,7 +721,7 @@
 	icon_state = "s_poncho"
 
 /obj/item/clothing/accessory/clf_cape
-	name = "CLF cape"
+	name = "torn CLF flag"
 	desc = "A torn up CLF flag with a pin that allows it to be worn as a cape."
 	icon_state = "clf_cape"
 	icon = 'icons/obj/items/clothing/accessory/ponchos.dmi'

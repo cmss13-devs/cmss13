@@ -250,12 +250,12 @@
 	new_human.equip_to_slot_or_del(new_uniform, WEAR_BODY)
 
 	var/obj/item/clothing/accessory/clf_cape/new_cape = new()
-	var/obj/item/clothing/suit/storage/militia/gambeson/new_gambeson = new()
+	var/obj/item/clothing/suit/storage/militia/full/new_gambeson = new()
 	new_gambeson.attach_accessory(new_human, new_cape)
 	new_human.equip_to_slot_or_del(new_gambeson, WEAR_JACKET)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/militia/brown(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clf(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/riot(new_human), WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/dragon_katana/full(new_human), WEAR_WAIST)

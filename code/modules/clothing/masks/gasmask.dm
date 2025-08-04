@@ -141,9 +141,9 @@
 
 //= CLF =\\
 
-/obj/item/clothing/mask/gas/clf
-	name = "carbon mask"
-	desc = "Used for obscurity on the frontier."
+/obj/item/clothing/mask/gas/riot
+	name = "riot mask"
+	desc = "A mask of colonial riot control department, with red laser shield lenses for eye protection due a somewhat often use of RXF-M5 EVA by colonial rioteers. Riot gear is also often seen in hands of CLF terrorists, due to large surplus of it being captured in colonial rebellions."
 	icon_state = "carbon_mask"
 	item_state = "balaclava"
 	icon = 'icons/obj/items/clothing/masks/masks_by_faction/CLF.dmi'
@@ -153,4 +153,5 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/masks_righthand.dmi',
 	)
 	vision_impair = VISION_IMPAIR_NONE
+	eye_protection = EYE_PROTECTION_FLAVOR
 	flags_inv_hide = HIDEEARS|HIDEFACE

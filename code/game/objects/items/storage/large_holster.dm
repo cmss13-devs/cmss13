@@ -63,7 +63,7 @@
 		playsound(src, drawSound, 15, TRUE)
 
 /obj/item/storage/large_holster/m37
-	name = "\improper L44 M37A2 scabbard"
+	name = "\improper L44 shotgun scabbard"
 	desc = "A large leather holster fitted for USCM-issue shotguns. It has harnesses that allow it to be secured to the back for easy storage."
 	icon_state = "m37_holster"
 	icon = 'icons/obj/items/clothing/backpack/backpacks_by_map/jungle.dmi'
@@ -75,6 +75,7 @@
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat,
 		/obj/item/weapon/gun/shotgun/double/mou53,
+		/obj/item/weapon/gun/shotgun/pump/m37a,
 	)
 	flags_atom = FPRINT // has gamemode skin
 

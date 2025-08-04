@@ -1381,7 +1381,6 @@
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
-
 /turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()
 	if(mapload)

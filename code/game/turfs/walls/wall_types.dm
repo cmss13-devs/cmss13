@@ -1389,6 +1389,18 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
+/turf/closed/wall/resin/reflective/weak
+	name = "weakened reflective wall"
+	desc = "Weird slime with strange hardened fragments solidified into a wall. It looks like it last for moment before it will collapse."
+	damage_cap = HEALTH_WALL_XENO_REFLECTIVE_WEAK
+	var/duration = 13 SECONDS
+
+/turf/closed/wall/resin/reflective/weak/Initialize(mapload, ...)
+	. = ..()
+	if(mapload)
+		ScrapeAway()
+		return
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 /turf/closed/wall/resin/can_be_dissolved()
 	return FALSE

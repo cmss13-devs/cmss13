@@ -32,3 +32,20 @@
   - bugfix: Adds a haul check for click dragging, moves a Lint Proc to the top for
       Linting; Fixes the things that would get caught in the fixed lint. Left clicking
       storages whilst hauled will open them instead of doing nothing.
+2025-08-05:
+  Comxy:
+  - rscadd: CLF Coordinator role
+  - imageadd: CLF Coordinator supporting sprites
+  Kyogon:
+  - bugfix: fixed queen's radial showing old sprite
+  Puckaboo2:
+  - bugfix: Xenos can now see the 'bursting' stage of a cap on their HUD.
+  Red-byte3D:
+  - balance: Scout helmet now has the same functions as an RTO pack, allowing you
+      to call or be called. However, you cannot hand the telephone to anyone and you
+      must give them the helmet if you want them to use it.
+  - rscadd: Adds radio backpack equivelant for helmets, nothing uses these right now
+      other then scout.
+  - imagedel: grenadier helmet no longer has an antenna, scout helmet does
+  - soundadd: New sounds for the scout helmet-phone
+  - imageadd: New sprites for the scout helmet and microphone

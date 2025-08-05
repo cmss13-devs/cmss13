@@ -1674,7 +1674,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "aee" = (
@@ -4402,7 +4402,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -5357,7 +5357,7 @@
 /turf/open/floor/almayer/flooredgesmooth2/east,
 /area/almayer/engineering/lower)
 "amX" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/maintenance/sp)
 "amY" = (
@@ -5928,7 +5928,7 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "aoz" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "aoA" = (
@@ -8021,7 +8021,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
 "atX" = (
@@ -8626,7 +8626,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
 "avK" = (
@@ -8872,7 +8872,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
 "awy" = (
@@ -10627,12 +10627,12 @@
 /turf/open/floor/almayer/bluefull,
 /area/almayer/living/captain_mess)
 "aBb" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aBc" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aBd" = (
@@ -11446,7 +11446,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/hallways/upper/fore_hallway)
 "aDe" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aDf" = (
@@ -12268,12 +12268,12 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/numbertwobunks)
 "aFh" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aFi" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aFj" = (
@@ -12332,8 +12332,8 @@
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/hallways/upper/aft_hallway)
 "aFt" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aFu" = (
@@ -12403,8 +12403,8 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/lifeboat_pumps/north1)
 "aFG" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aFH" = (
@@ -13057,7 +13057,7 @@
 /turf/closed/wall/almayer/reinforced,
 /area/almayer/middeck/engineer)
 "aHI" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aHJ" = (
@@ -13091,7 +13091,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "aHO" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -13184,7 +13184,7 @@
 /turf/open/floor/almayer,
 /area/almayer/shipboard/starboard_missiles)
 "aIa" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aIb" = (
@@ -13302,8 +13302,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aIt" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/east,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -13438,8 +13438,8 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/engineer)
 "aIL" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/platform/metal/almayer_smooth,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -13653,17 +13653,13 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
-"aJn" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
-/turf/open_space,
-/area/almayer/middeck/hanger)
 "aJo" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aJp" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aJq" = (
@@ -13675,7 +13671,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/engineering/upper_engineering)
 "aJr" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aJs" = (
@@ -13763,7 +13759,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aJF" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/obj/structure/platform_decoration/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "aJG" = (
@@ -14123,7 +14119,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
 "aKE" = (
@@ -14149,7 +14145,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
+/obj/structure/platform/metal/stair_cut/almayer_smooth_right,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
 "aKJ" = (
@@ -14249,7 +14245,7 @@
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
 /area/space/almayer/lifeboat_dock)
 "aLa" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
@@ -14271,7 +14267,7 @@
 /turf/open/floor/almayer/orangecorner/west,
 /area/almayer/engineering/upper_engineering)
 "aLd" = (
-/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
+/obj/structure/platform/metal/stair_cut/almayer_smooth_right,
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
@@ -14717,7 +14713,7 @@
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aMi" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aMj" = (
@@ -14787,7 +14783,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
 "aMs" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aMt" = (
@@ -14897,11 +14893,11 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "aMJ" = (
-/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/platform_decoration/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aMK" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aML" = (
@@ -14909,8 +14905,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_f_p)
 "aMM" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aMN" = (
@@ -14998,8 +14994,8 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aNb" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/shipboard/navigation)
 "aNc" = (
@@ -15013,7 +15009,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/squads/alpha)
 "aNd" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/shipboard/navigation)
 "aNe" = (
@@ -15029,14 +15025,14 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
 "aNg" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/shipboard/navigation)
 "aNh" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
-/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/shipboard/navigation)
 "aNi" = (
@@ -15062,12 +15058,12 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "aNn" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/shipboard/navigation)
 "aNo" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
 /area/almayer/shipboard/navigation)
 "aNp" = (
@@ -15123,7 +15119,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "aNw" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aNx" = (
@@ -15134,12 +15130,12 @@
 /turf/open/floor/almayer/cargo_arrow/north,
 /area/almayer/squads/alpha_bravo_shared)
 "aNy" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aNz" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/maintenance/bow)
 "aNA" = (
@@ -15412,17 +15408,17 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
 "aOk" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOl" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOm" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOn" = (
@@ -15517,12 +15513,12 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aOw" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOx" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOy" = (
@@ -15538,8 +15534,8 @@
 /turf/open/floor/almayer/redcorner/west,
 /area/almayer/squads/alpha)
 "aOA" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOB" = (
@@ -15706,7 +15702,7 @@
 /turf/open/floor/prison/kitchen,
 /area/almayer/engineering/upper_engineering)
 "aOX" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOY" = (
@@ -15734,7 +15730,7 @@
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aPc" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
@@ -15873,7 +15869,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aPu" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aPv" = (
@@ -16084,8 +16080,8 @@
 /turf/open/floor/almayer/plating_striped/west,
 /area/almayer/engineering/lower/engine_core)
 "aPV" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aPW" = (
@@ -16105,7 +16101,7 @@
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aPY" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 1
@@ -17146,14 +17142,14 @@
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/north1)
 "aSB" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aSC" = (
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aSD" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aSE" = (
@@ -17255,8 +17251,8 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_medbay)
 "aSP" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aSQ" = (
@@ -17271,8 +17267,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aSS" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aST" = (
@@ -17282,7 +17278,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/briefing)
 "aSV" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/req)
 "aSW" = (
@@ -17298,8 +17294,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aSY" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aSZ" = (
@@ -17464,7 +17460,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/briefing)
 "aTu" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/req)
 "aTv" = (
@@ -17497,8 +17493,8 @@
 /turf/open/floor/wood/ship,
 /area/almayer/living/numbertwobunks)
 "aTA" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aTB" = (
@@ -17517,7 +17513,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/captain_mess)
 "aTC" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/engineer)
 "aTD" = (
@@ -18171,7 +18167,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aUS" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/briefing)
 "aUT" = (
@@ -18372,8 +18368,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "aVq" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/briefing)
 "aVr" = (
@@ -18381,7 +18377,7 @@
 /turf/open/floor/almayer/orange/northwest,
 /area/almayer/maint/upper/mess)
 "aVs" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
 /area/almayer/middeck/briefing)
 "aVt" = (
@@ -18495,8 +18491,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "aVE" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth/west,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/briefing)
 "aVF" = (
@@ -18507,7 +18503,7 @@
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/command/cichallway)
 "aVH" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/briefing)
 "aVI" = (
@@ -19026,7 +19022,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/aft)
 "aWO" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/almayer/middeck/briefing)
 "aWP" = (
@@ -19137,8 +19133,8 @@
 /turf/open/floor/plating,
 /area/almayer/engineering/airmix)
 "aXa" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open_space,
 /area/almayer/middeck/briefing)
 "aXb" = (
@@ -20300,7 +20296,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
 "aZF" = (
@@ -24794,7 +24790,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "bjz" = (
@@ -26940,7 +26936,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
 "bnV" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open_space,
 /area/almayer/middeck/maintenance/sf)
 "bnW" = (
@@ -27262,7 +27258,7 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boK" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
@@ -27271,7 +27267,7 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boM" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper/starboard_fore)
@@ -27279,7 +27275,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boO" = (
@@ -27295,21 +27291,21 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boR" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boS" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
+/obj/structure/platform/metal/stair_cut/almayer_smooth_right,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boT" = (
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boU" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boV" = (
@@ -27321,7 +27317,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "boW" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/obj/structure/platform_decoration/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper/starboard_fore)
 "boX" = (
@@ -27344,7 +27340,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/starboard_fore)
 "bpa" = (
@@ -27356,7 +27352,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/starboard_fore)
 "bpc" = (
@@ -27397,7 +27393,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/starboard_fore)
 "bpg" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper/starboard_fore)
@@ -27406,7 +27402,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/starboard_fore)
 "bpi" = (
@@ -39490,7 +39486,7 @@
 /area/almayer/underdeck/req)
 "cFg" = (
 /obj/structure/machinery/power/apc/almayer/south,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
@@ -40448,7 +40444,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "cYQ" = (
@@ -42738,7 +42734,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
 "dXY" = (
@@ -43846,7 +43842,7 @@
 /turf/open/floor/almayer/sterile_green_side/west,
 /area/almayer/medical/upper_medical)
 "ets" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
@@ -48366,8 +48362,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
 "gpp" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth/west,
+/obj/structure/platform/metal/almayer_smooth,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/port_fore)
@@ -49050,7 +49046,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
+/obj/structure/platform/metal/stair_cut/almayer_smooth_left,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "gDp" = (
@@ -49824,7 +49820,7 @@
 /area/almayer/command/airoom)
 "gTK" = (
 /obj/structure/machinery/power/apc/almayer/north,
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
@@ -51228,7 +51224,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "hwH" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/obj/structure/platform_decoration/metal/almayer_smooth/north,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "hxe" = (
@@ -55688,7 +55684,7 @@
 /turf/open/floor/almayer/research/containment/entrance,
 /area/almayer/medical/containment/cell)
 "jlN" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/port_fore)
 "jlQ" = (
@@ -56540,8 +56536,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
 "jFt" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build,
 /area/almayer/stair_clone/upper/starboard_fore)
@@ -58225,7 +58221,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "kqy" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/east,
+/obj/structure/platform_decoration/metal/almayer_smooth/east,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "kqB" = (
@@ -60323,7 +60319,7 @@
 /turf/open/floor/almayer/orange/north,
 /area/almayer/engineering/upper_engineering/port)
 "lhX" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
+/obj/structure/platform_decoration/metal/almayer_smooth/west,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper/port_fore)
 "lia" = (
@@ -65470,7 +65466,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/almayer_smooth/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/stair_clone/upper/port_fore)
@@ -65952,7 +65948,7 @@
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "nyS" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper/port_fore)
@@ -68133,7 +68129,7 @@
 	dir = 8;
 	icon_state = "ramptop"
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
@@ -71198,7 +71194,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
+/obj/structure/platform/metal/stair_cut/almayer_smooth_right,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/starboard_fore)
 "pDW" = (
@@ -73494,7 +73490,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
 "qxC" = (
@@ -74372,7 +74368,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "qNc" = (
-/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/obj/structure/platform_decoration/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper/port_fore)
 "qNd" = (
@@ -74882,7 +74878,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
+/obj/structure/platform/metal/stair_cut/almayer_smooth_right,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
 "qYu" = (
@@ -83408,7 +83404,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/obj/structure/platform/metal/stair_cut/kutjevo_smooth_left,
+/obj/structure/platform/metal/stair_cut/almayer_smooth_left,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/lower/starboard_fore)
 "uuT" = (
@@ -85644,7 +85640,7 @@
 /turf/open/floor/almayer/orangecorner,
 /area/almayer/engineering/lower)
 "vmJ" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/stair_clone/upper/port_fore)
 "vmN" = (
@@ -91703,7 +91699,7 @@
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/underdeck/req)
 "xxZ" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/almayer_smooth,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/stair_clone/upper/port_fore)
@@ -165391,7 +165387,7 @@ aDe
 aDe
 aDe
 aDe
-aJn
+aBb
 azJ
 azJ
 azJ

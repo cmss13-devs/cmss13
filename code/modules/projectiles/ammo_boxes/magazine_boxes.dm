@@ -510,10 +510,10 @@
 /obj/item/ammo_box/magazine/nailgun/empty
 	empty = TRUE
 
-//-----------------------M56B Drum Box-----------------------
+//-----------------------M56A2 Drum Box-----------------------
 
-/obj/item/ammo_box/magazine/m56b
-	name = "drum box (M56B x 8)"
+/obj/item/ammo_box/magazine/m56a2
+	name = "drum box (M56A2 x 8)"
 	icon_state = "base_m56b"
 	overlay_ammo_type = "_reg_heavy"
 	overlay_gun_type = "_sg"
@@ -521,16 +521,16 @@
 	magazine_type = /obj/item/ammo_magazine/smartgun
 	num_of_magazines = 8
 
-/obj/item/ammo_box/magazine/m56b/empty
+/obj/item/ammo_box/magazine/m56a2/empty
 	empty = TRUE
 
-/obj/item/ammo_box/magazine/m56b/dirty
-	name = "drum box (M56B 'Dirty' x 8)"
+/obj/item/ammo_box/magazine/m56a2/dirty
+	name = "drum box (M56A2 'Dirty' x 8)"
 	overlay_ammo_type = "_red_heavy"
 	overlay_content = "_sgdirty"
 	magazine_type = /obj/item/ammo_magazine/smartgun/dirty
 
-/obj/item/ammo_box/magazine/m56b/dirty/empty
+/obj/item/ammo_box/magazine/m56a2/dirty/empty
 	empty = TRUE
 
 //-----------------------M56D Drum Box-----------------------

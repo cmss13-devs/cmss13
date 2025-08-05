@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed pheros helping banished xenos"
-  - balance: "Banishment damage now ignores armor"
-  - code_imp: "Cleaned up some of handle_pheromones"

@@ -507,6 +507,11 @@
 	icon_state = "rebel_armor_full"
 	storage_slots = 3
 
+/obj/item/clothing/suit/storage/militia/full/smartgun
+	name = "colonial militia full armor harness"
+	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled lether and more modern armor places, this one includes full set of armor for all limbs and full torso protection. This one is even further modified with parts of M56 smargunner harness, allowing the use of smargun system electronics."
+	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
+
 //===========================//CMB\\================================\\
 //=====================================================================\\
 

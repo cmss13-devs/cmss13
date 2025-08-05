@@ -2604,9 +2604,9 @@
 /obj/item/storage/belt/gun/smartgunner/clf/full/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/revolver/mateba())
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
 
 /obj/item/storage/belt/gun/smartgunner/clf/full_alt/fill_preset_inventory()
 	switch(rand(1, 5))

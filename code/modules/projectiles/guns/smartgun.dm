@@ -9,7 +9,7 @@
 	icon_state = "m56"
 	item_state = "m56"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/smartguns.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smartguns.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smartguns.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smartguns_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smartguns_righthand.dmi'
@@ -1007,6 +1007,10 @@
 	icon_state = "la56"
 	item_state = "la56"
 
+/obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_TWE
+
 /obj/item/weapon/gun/smartgun/upp
 	name = "\improper RFVS37 smartgun"
 	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
@@ -1015,11 +1019,12 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
 	icon_state = "rfvs37"
 	item_state = "rfvs37"
+	current_mag = /obj/item/ammo_magazine/smartgun/upp
+	mouse_pointer = 'icons/effects/mouse_pointer/upp_smartgun_mouse.dmi'
 
-/obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
+/obj/item/weapon/gun/smartgun/upp/Initialize(mapload, ...)
 	. = ..()
-	MD.iff_signal = FACTION_TWE
-
+	MD.iff_signal = FACTION_UPP
 
 //  Solar devils SG, frontline mode only
 

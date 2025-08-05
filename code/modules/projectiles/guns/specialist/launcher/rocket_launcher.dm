@@ -273,6 +273,7 @@
 	name = "\improper M83A2 SADAR"
 	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
 	var/fired = FALSE
+	can_be_reloaded = FALSE
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/get_examine_text(mob/user)
 	. = ..()

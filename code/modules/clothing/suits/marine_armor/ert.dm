@@ -501,6 +501,12 @@
 	storage_slots = 3
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 
+/obj/item/clothing/suit/storage/militia/full
+	name = "colonial militia full armor"
+	desc = "A rare privilege within the disorganized partisans, a set of somewhat full armor, created from boiled lether and more modern armor places, this one includes full set of armor for all limbs and full torso protection."
+	icon_state = "rebel_armor_full"
+	storage_slots = 3
+
 //===========================//CMB\\================================\\
 //=====================================================================\\
 

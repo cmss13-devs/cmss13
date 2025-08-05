@@ -1070,3 +1070,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	mind.transfer_to(new_player)
 
 	qdel(src)
+
+/mob/proc/update_cursor()
+
+	client?.mouse_pointer_icon = client?.prefs.chosen_pointer

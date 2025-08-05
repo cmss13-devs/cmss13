@@ -82,7 +82,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
-	if(!can_heal)
+	if(!can_heal && !resting)
 		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
 		return
 

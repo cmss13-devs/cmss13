@@ -59,6 +59,7 @@
 
 //Explosion act
 /turf/open/auto_turf/ex_act(severity)
+	.=..()
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(20) && bleed_layer)

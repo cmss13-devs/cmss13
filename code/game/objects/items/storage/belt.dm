@@ -2498,6 +2498,29 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 
+/obj/item/storage/belt/gun/smartgunner/marsoc
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/gun/smartgunner/marsoc/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/socom/equipped())
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
+	new /obj/item/ammo_magazine/smartgun/heap(src)
+
+/obj/item/storage/belt/gun/smartgunner/marsoc/full_low_threat/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/socom/equipped())
+	new /obj/item/ammo_magazine/pistol/m1911(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+	new /obj/item/ammo_magazine/smartgun(src)
+
 /obj/item/storage/belt/gun/smartgunner/pmc
 	name = "\improper WY-TM410 pattern 'Dirty' smartgunner sidearm rig"
 	desc = "A special pattern of W-Y made combat belt, designed to carry smartgun ammunition and a sidearm."
@@ -2583,6 +2606,31 @@
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
 	new /obj/item/ammo_magazine/smartgun(src)
+
+/obj/item/storage/belt/gun/smartgunner/clf/full_alt/fill_preset_inventory()
+	switch(rand(1, 5))
+		if(1)
+			handle_item_insertion(new /obj/item/weapon/gun/revolver/upp())
+			new /obj/item/ammo_magazine/revolver/upp(src)
+			new /obj/item/ammo_magazine/revolver/upp(src)
+		if(2)
+			handle_item_insertion(new /obj/item/weapon/gun/revolver/cmb())
+			new /obj/item/ammo_magazine/revolver/cmb(src)
+			new /obj/item/ammo_magazine/revolver/cmb(src)
+		if(3)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911())
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+			new /obj/item/ammo_magazine/pistol/m1911(src)
+		if(4)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/t73())
+			new /obj/item/ammo_magazine/pistol/t73(src)
+			new /obj/item/ammo_magazine/pistol/t73(src)
+		if(5)
+			handle_item_insertion(new /obj/item/weapon/gun/pistol/heavy())
+			new /obj/item/ammo_magazine/pistol/heavy(src)
+			new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
+	new /obj/item/ammo_magazine/smartgun/rusty(src)
 
 /obj/item/storage/belt/gun/mortarbelt
 	name="\improper M276 pattern mortar operator belt"

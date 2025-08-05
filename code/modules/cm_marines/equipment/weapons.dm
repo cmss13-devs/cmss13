@@ -71,7 +71,7 @@
 /obj/item/storage/box/m56_dirty_system/Initialize()
 	. = ..()
 	new /obj/item/clothing/glasses/night/m56_goggles(src)
-	new /obj/item/weapon/gun/smartgun/dirty(src)
+	new /obj/item/weapon/gun/smartgun/l56a2(src)
 	new /obj/item/smartgun_battery(src)
 	new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc(src)
 	new /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed(src)

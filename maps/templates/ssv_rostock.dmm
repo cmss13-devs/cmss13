@@ -1197,6 +1197,12 @@
 /obj/structure/machinery/computer/supply/asrs/upp{
 	req_access = list(232)
 	},
+/obj/structure/transmitter/upp_net{
+	name = "Rostock Requisition Telephone";
+	phone_category = "Rostock";
+	phone_id = "Requisition";
+	pixel_y = 32
+	},
 /turf/open/floor/strata/green3/east,
 /area/rostock/req)
 "adT" = (
@@ -2666,7 +2672,7 @@
 	pixel_y = -1;
 	pixel_x = 8;
 	name = "Rostock CIC Telephone";
-	phone_category = "Command"
+	phone_category = "Rostock"
 	},
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/rostock/command/cic)
@@ -4903,7 +4909,7 @@
 /obj/structure/transmitter/upp_net/rotary{
 	phone_id = "Bizon Overwatch Telephone";
 	name = "Bizon Overwatch Telephone";
-	phone_category = "Command"
+	phone_category = "Rostock"
 	},
 /turf/open/floor/corsat/brown/west,
 /area/rostock/command/cic)
@@ -11632,7 +11638,7 @@
 /obj/structure/transmitter/upp_net/rotary{
 	phone_id = "Chayka Overwatch Telephone";
 	name = "Chayka Overwatch Telephone";
-	phone_category = "Command"
+	phone_category = "Rostock"
 	},
 /turf/open/floor/corsat/purple/west,
 /area/rostock/command/cic)
@@ -22722,7 +22728,7 @@
 /obj/structure/transmitter/upp_net/rotary{
 	phone_id = "Akula Overwatch Telephone";
 	name = "Akula Overwatch Telephone";
-	phone_category = "Command"
+	phone_category = "Rostock"
 	},
 /turf/open/floor/corsat/red/east,
 /area/rostock/command/cic)
@@ -26102,7 +26108,7 @@
 /obj/structure/transmitter/upp_net/rotary{
 	phone_id = "Delfin Overwatch Telephone";
 	name = "Delfin Overwatch Telephone";
-	phone_category = "Command"
+	phone_category = "Rostock"
 	},
 /turf/open/floor/corsat/blue/east,
 /area/rostock/command/cic)
@@ -31215,7 +31221,8 @@
 /obj/structure/transmitter/upp_net/rotary{
 	pixel_y = 7;
 	pixel_x = 5;
-	phone_id = "Rostock Brig"
+	phone_id = "Rostock Brig";
+	phone_category = "Rostock"
 	},
 /turf/open/floor/strata/floor3/east,
 /area/rostock/security/headquarters_lobby)

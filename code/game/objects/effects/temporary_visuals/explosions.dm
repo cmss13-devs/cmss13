@@ -212,13 +212,13 @@
 	scale = 1.25
 	friction = 0.1
 
-/obj/effect/explosion
+/obj/effect/temp_visual/explosion
 	name = "boom"
 	icon = 'icons/effects/96x96.dmi'
 	icon_state = "explosion"
 	light_system = STATIC_LIGHT
 	layer = ABOVE_MOB_LAYER
-	var/duration = 25
+	duration = 25
 	///smoke wave particle holder
 	var/obj/effect/abstract/particle_holder/smoke_wave
 	///debris dirt kickup particle holder
@@ -228,9 +228,8 @@
 	///large dirt kickup particle holder
 	var/obj/effect/abstract/particle_holder/large_kickup
 
-/obj/effect/explosion/Initialize(mapload, radius, color, small = FALSE, large = FALSE)
+/obj/effect/temp_visual/explosion/Initialize(mapload, radius, color, small = FALSE, large = FALSE)
 	. = ..()
-	AddElement(/datum/element/temporary, duration)
 	set_light(radius, radius, color)
 	generate_particles(radius, small, large)
 	var/turf/turf_type = get_turf(src)
@@ -245,7 +244,7 @@
 	icon_state = null
 
 ///Generate the particles
-/obj/effect/explosion/proc/generate_particles(radius, power)
+/obj/effect/temp_visual/explosion/proc/generate_particles(radius, power)
 	var/turf/turf_type = get_turf(src)
 	if(!turf_type.can_bloody)
 		smoke_wave = new(src, /particles/wave_water)
@@ -276,16 +275,16 @@
 	addtimer(CALLBACK(src, PROC_REF(set_count_short)), 5)
 	addtimer(CALLBACK(src, PROC_REF(set_count_long)), 10)
 
-/obj/effect/explosion/proc/set_count_short()
+/obj/effect/temp_visual/explosion/proc/set_count_short()
 	smoke_wave.particles.count = 0
 	sparks.particles.count = 0
 	sparks.particles.spawning = 0
 	large_kickup.particles.count = 0
 
-/obj/effect/explosion/proc/set_count_long()
+/obj/effect/temp_visual/explosion/proc/set_count_long()
 	dirt_kickup.particles.count = 0
 
-/obj/effect/explosion/Destroy()
+/obj/effect/temp_visual/explosion/Destroy()
 	QDEL_NULL(smoke_wave)
 	QDEL_NULL(sparks)
 	QDEL_NULL(large_kickup)

@@ -80,13 +80,6 @@
 		debris_visuals.particles.spawning = debris_amount
 		debris_visuals.particles.scale = debris_scale
 	smoke_visuals.layer = ABOVE_OBJ_LAYER + 0.01
-	/*
-	if(P.ammo.sound_bounce && prob(50))
-		var/pitch = 0
-		if(P.ammo.flags_ammo_behavior & AMMO_SOUND_PITCH)
-			pitch = 55000
-		playsound(source, P.ammo.sound_bounce, 50, TRUE, 4, 5, pitch)
-	*/
 	addtimer(CALLBACK(src, PROC_REF(remove_smoke), smoke_visuals), 0.2 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(remove_debris), debris_visuals), 0.4 SECONDS)
 

@@ -23,15 +23,15 @@
 	if(set_color != "red") // we're already red colored by default
 		color = set_color
 
-/obj/effect/bloodsplatter
+/obj/effect/temp_visual/dir_setting/bloodsplatter
 	icon = 'icons/effects/blood.dmi'
-	var/duration = 5
+	duration = 5
 	layer = ABOVE_XENO_LAYER
 	alpha = 200
 	var/splatter_type = "splatter"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/effect/bloodsplatter/Initialize(mapload, angle, fx_duration, color_override)
+/obj/effect/temp_visual/dir_setting/bloodsplatter/Initialize(mapload, angle, fx_duration, color_override)
 	. = ..()
 	if(color_override)
 		color = color_override
@@ -44,7 +44,6 @@
 	icon_state = "[splatter_type][pick(1, 2, 3, 4, 5, 6)]"
 	if(fx_duration)
 		duration = fx_duration
-	AddElement(/datum/element/temporary, duration)
 	var/target_pixel_x = 0
 	var/target_pixel_y = 0
 	switch(angle)
@@ -100,22 +99,22 @@
 	animate(src, pixel_x = target_pixel_x, pixel_y = target_pixel_y, time = 0.25 SECONDS)
 	animate(src, alpha = 0, time = duration)
 
-/obj/effect/bloodsplatter/xenosplatter
+/obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_XENO
 
-/obj/effect/bloodsplatter/human
+/obj/effect/temp_visual/dir_setting/bloodsplatter/human
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_HUMAN
 
-/obj/effect/bloodsplatter/hellhound
+/obj/effect/temp_visual/dir_setting/bloodsplatter/hellhound
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_YAUTJA
 
-/obj/effect/bloodsplatter/yautjasplatter
+/obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_YAUTJA_DARK
 
-/obj/effect/bloodsplatter/synthsplatter
+/obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter
 	splatter_type = "csplatter"
 	color = BLOOD_COLOR_SYNTHETIC

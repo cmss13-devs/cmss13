@@ -287,7 +287,7 @@ as having entered the turf.
 	var/explosion_range = ceil(power / falloff)
 	var/small = power < EXPLOSION_THRESHOLD_LOW
 	var/large = power >= EXPLOSION_THRESHOLD_HIGH
-	new /obj/effect/explosion(epicenter, explosion_range, LIGHT_COLOR_LAVA, small, large)
+	new /obj/effect/temp_visual/explosion(epicenter, explosion_range, LIGHT_COLOR_LAVA, small, large)
 
 /proc/log_explosion(atom/A, datum/automata_cell/explosion/E)
 	if(isliving(A))

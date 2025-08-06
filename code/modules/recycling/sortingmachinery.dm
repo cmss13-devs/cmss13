@@ -354,7 +354,7 @@
 	show_browser(user, dat, "Whiskey Outpost Destination Tagger")
 	onclose(user, "destTagScreen")
 
-/obj/item/device/destTagger/attack_self(mob/user as mob)
+/obj/item/device/destTagger/attack_hand(mob/user as mob)
 	openwindow(user)
 
 /obj/item/device/destTagger/Topic(href, href_list)

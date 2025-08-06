@@ -586,7 +586,7 @@
 /area/whiskey_outpost/outside/north)
 "bX" = (
 /obj/effect/timed_event/scrapeaway{
-	time = 70
+	time = 60
 	},
 /turf/closed/wall/mineral/bone_resin,
 /area/whiskey_outpost/inside/caves/deep)

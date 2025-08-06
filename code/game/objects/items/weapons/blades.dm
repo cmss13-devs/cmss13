@@ -117,6 +117,13 @@
 	force = MELEE_FORCE_WEAK
 	throwforce = 7
 
+/obj/item/weapon/sword/dragon_katana
+	name = "dragon katana"
+	desc = "A finely made Japanese sword, with a cherry colored handle. The blade has been filed to a molecular edge, and is extremely deadly. This one seems to have been handcrafted."
+	icon_state = "dragon_katana"
+	item_state = "dragon_katana"
+	force = MELEE_FORCE_VERY_STRONG
+
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'
@@ -229,8 +236,8 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi'
 	)
 
 /obj/item/weapon/straight_razor

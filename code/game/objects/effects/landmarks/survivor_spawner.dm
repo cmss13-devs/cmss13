@@ -46,7 +46,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf
 	synth_equipment = /datum/equipment_preset/synth/survivor/cmb_synth
-	CO_equipment = /datum/equipment_preset/survivor/clf //to prevent NV CO from spawning as a CO
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
@@ -67,7 +67,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/freelancer_synth
-	CO_equipment = /datum/equipment_preset/survivor/clf/leader
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
@@ -88,7 +88,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/trucker_synth
-	CO_equipment = /datum/equipment_preset/survivor/clf/engineer
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")
@@ -109,7 +109,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/doctor_synth
-	CO_equipment = /datum/equipment_preset/survivor/clf/medic
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You ARE AWARE of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive, wait until at least drones can evolve.</span>")

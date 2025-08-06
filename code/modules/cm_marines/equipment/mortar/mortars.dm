@@ -425,6 +425,28 @@
 			visible_message("[icon2html(src, viewers(src))] [SPAN_DANGER("The [name] fires!")]")
 			user.drop_inv_item_to_loc(mortar_shell, src)
 			playsound(loc, 'sound/weapons/gun_mortar_fire.ogg', 50, 1)
+
+			var/x_component
+			var/y_component
+			switch(dir)
+				if(NORTH,SOUTH)
+					x_component = sin(dir2angle(NORTH))
+					y_component = cos(dir2angle(NORTH))
+				if(WEST, NORTHWEST, SOUTHWEST)
+					x_component = sin(dir2angle(NORTHWEST))
+					y_component = cos(dir2angle(NORTHWEST))
+				if(EAST, NORTHEAST, SOUTHEAST)
+					x_component = sin(dir2angle(NORTHEAST))
+					y_component = cos(dir2angle(NORTHEAST))
+			x_component *= 40
+			y_component *= 40
+
+			var/obj/effect/abstract/particle_holder/gun_smoke = new(get_turf(src), /particles/firing_smoke_large)
+			gun_smoke.particles.velocity = list(x_component, y_component)
+			addtimer(VARSET_CALLBACK(gun_smoke.particles, count, 0), 5)
+			addtimer(VARSET_CALLBACK(gun_smoke.particles, drift, 0), 3)
+			QDEL_IN(gun_smoke, 0.7 SECONDS)
+
 			busy = FALSE
 			firing = TRUE
 			flick(icon_state + "_fire", src)

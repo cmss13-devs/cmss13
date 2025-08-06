@@ -1,6 +1,38 @@
 #define CODEX_ARMOR_MAX 50
 #define CODEX_ARMOR_STEP 5
 
+/particles/firing_smoke_large
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "smoke5"
+	width = 500
+	height = 500
+	count = 5
+	spawning = 15
+	lifespan = 0.5 SECONDS
+	fade = 2.4 SECONDS
+	grow = 0.12
+	drift = generator(GEN_CIRCLE, 8, 8)
+	scale = 0.1
+	spin = generator(GEN_NUM, -20, 20)
+	velocity = list(50, 0)
+	friction = generator(GEN_NUM, 0.3, 0.6)
+
+/particles/firing_smoke
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "smoke5"
+	width = 500
+	height = 500
+	count = 5
+	spawning = 15
+	lifespan = 0.2 SECONDS
+	fade = 2.4 SECONDS
+	drift = generator(GEN_CIRCLE, 8, 8)
+	grow = 0.2
+	scale = 0.1
+	spin = generator(GEN_NUM, -20, 20)
+	velocity = list(50, 0)
+	friction = generator(GEN_NUM, 0.3, 0.6)
+
 /obj/item/weapon/gun
 	name = "gun"
 	desc = "It's a gun. It's pretty terrible, though."
@@ -1295,6 +1327,7 @@ and you're good to go.
 
 	//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
 	var/angle = floor(Get_Angle(user,target)) //Let's do a muzzle flash.
+	handle_smoke(angle)
 	muzzle_flash(angle,user)
 
 	//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
@@ -1302,6 +1335,24 @@ and you're good to go.
 		click_empty(user)
 		return TRUE //Nothing else to do here, time to cancel out.
 	return TRUE
+
+/obj/item/weapon/gun/proc/handle_smoke(angle)
+	if(CHECK_BITFIELD(flags_gun_features, GUN_SMOKE_PARTICLES_LARGE))
+		var/x_component = sin(angle) * 40
+		var/y_component = cos(angle) * 40
+		var/obj/effect/abstract/particle_holder/gun_smoke = new(get_turf(src), /particles/firing_smoke_large)
+		gun_smoke.particles.velocity = list(x_component, y_component)
+		addtimer(VARSET_CALLBACK(gun_smoke.particles, count, 0), 5)
+		addtimer(VARSET_CALLBACK(gun_smoke.particles, drift, 0), 3)
+		QDEL_IN(gun_smoke, 0.6 SECONDS)
+	else if(CHECK_BITFIELD(flags_gun_features, GUN_SMOKE_PARTICLES))
+		var/x_component = sin(angle) * 40
+		var/y_component = cos(angle) * 40
+		var/obj/effect/abstract/particle_holder/gun_smoke = new(get_turf(src), /particles/firing_smoke)
+		gun_smoke.particles.velocity = list(x_component, y_component)
+		addtimer(VARSET_CALLBACK(gun_smoke.particles, count, 0), 5)
+		addtimer(VARSET_CALLBACK(gun_smoke.particles, drift, 0), 3)
+		QDEL_IN(gun_smoke, 0.2 SECONDS)
 
 #define EXECUTION_CHECK (attacked_mob.stat == UNCONSCIOUS || attacked_mob.is_mob_restrained()) && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
 

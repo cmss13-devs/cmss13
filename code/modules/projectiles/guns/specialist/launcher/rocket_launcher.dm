@@ -28,7 +28,7 @@
 		/obj/item/attachable/magnetic_harness,
 	)
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_INTERNAL_MAG|GUN_SMOKE_PARTICLES_LARGE
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	var/skill_locked = TRUE
@@ -239,7 +239,7 @@
 
 	current_mag = /obj/item/ammo_magazine/rocket/m57a4
 	aim_slowdown = SLOWDOWN_ADS_SUPERWEAPON
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_SMOKE_PARTICLES_LARGE
 
 /obj/item/weapon/gun/launcher/rocket/m57a4/set_gun_config_values()
 	..()
@@ -269,7 +269,7 @@
 	attachable_allowed = list()
 
 	flags_equip_slot = SLOT_BACK|SLOT_SUIT_STORE
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY|GUN_SMOKE_PARTICLES_LARGE
 	flags_item = TWOHANDED
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/set_bullet_traits()
@@ -382,7 +382,7 @@
 	pixel_x = -7
 	hud_offset = -7
 
-	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_SMOKE_PARTICLES_LARGE
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 

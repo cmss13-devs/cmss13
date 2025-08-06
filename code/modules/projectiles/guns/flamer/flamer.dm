@@ -547,7 +547,7 @@ GLOBAL_LIST_EMPTY(flamer_particles)
 	icon_state = "bonfire"
 	width = 100
 	height = 100
-	count = 1000
+	count = 20
 	spawning = 2
 	lifespan = 0.7 SECONDS
 	fade = 1 SECONDS

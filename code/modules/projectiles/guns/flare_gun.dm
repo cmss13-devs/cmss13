@@ -15,7 +15,7 @@
 	flags_equip_slot = SLOT_WAIST
 	wield_delay = WIELD_DELAY_VERY_FAST
 	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
-	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK|GUN_SMOKE_PARTICLES
 	gun_category = GUN_CATEGORY_HANDGUN
 	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
 

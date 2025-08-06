@@ -127,12 +127,14 @@
 	icon_state = "purple"
 
 /area/desert_dam/interior/dam_interior/northwestern_tunnel
-	name = "Engineering Northwestern Tunnel"
+	name = "Engineering Northwestern Road"
 	icon_state = "green"
+	ceiling = CEILING_NONE
 
 /area/desert_dam/interior/dam_interior/north_tunnel
-	name = "Engineering Northern Tunnel"
+	name = "Engineering Northern Road"
 	icon_state = "blue-red"
+	ceiling = CEILING_NONE
 
 /area/desert_dam/interior/dam_interior/west_tunnel
 	name = "Engineering Western Tunnel"
@@ -140,17 +142,19 @@
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/desert_dam/interior/dam_interior/central_tunnel
-	name = "Engineering Central Tunnel"
+	name = "Engineering Central Road"
 	icon_state = "red"
+	ceiling = CEILING_NONE
 
 /area/desert_dam/interior/dam_interior/south_tunnel
-	name = "Engineering Southern Tunnel"
+	name = "Engineering Southern Road"
 	icon_state = "purple"
-	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	ceiling = CEILING_NONE
 
 /area/desert_dam/interior/dam_interior/northeastern_tunnel
 	name = "Engineering Northeastern Tunnel"
 	icon_state = "green"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/desert_dam/interior/dam_interior/CE_office
 	name = "Engineering Chief Engineer's Office"
@@ -162,6 +166,7 @@
 
 /area/desert_dam/interior/dam_interior/hanger
 	name = "Engineering Hangar"
+	ceiling = CEILING_METAL
 	icon_state = "hangar"
 	linked_lz = DROPSHIP_LZ1
 
@@ -215,6 +220,7 @@
 
 /area/desert_dam/interior/dam_interior/western_dam_cave
 	name = "Engineering West Entrance"
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "red"
 
 /area/desert_dam/interior/dam_interior/office

@@ -425,6 +425,7 @@
 		icon_state = "donut2"
 		overlay_state = "fdonut"
 		name = "frosted donut"
+		ru_names_rename(ru_names_toml(name)) // SS220 - EDIT ADDITTION
 		desc = "A pink frosted donut. Even more rare on the frontier."
 		reagents.add_reagent("sprinkles", 2)
 

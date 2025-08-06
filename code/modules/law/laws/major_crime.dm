@@ -1,89 +1,90 @@
+//BANDAMARINES - Translate
 /datum/law/major_law/damage_to_government_property
-	name = "Damage to Government Property"
-	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a major level, such as destroying/dismantling multiple walls or windows."
-	special_punishment = "Reparation"
+	name = "Ущерб государственному имуществу"
+	desc = "Уничтожение корабля или внесение каких-либо несанкционированных модификаций на серьезном уровне, таких как разрушение/демонтаж нескольких стен или окон, как указано в Стандартных Операционных Процедурах."
+	special_punishment = "Возмещение ущерба"
 	brig_time = 10
 
 /datum/law/major_law/disorderly_conduct
-	name = "Disorderly Conduct"
-	desc = "Directly and intentionally disrupting primary operations of the ship. Fighting in the RO line, disrupting the briefing."
+	name = "Нарушение общественного порядка"
+	desc = "Прямое и намеренное нарушение основных операций корабля. Драка в очереди в карго, срыв брифинга."
 	brig_time = 10
 
 /datum/law/major_law/assault
-	name = "Assault"
-	desc = "To threaten or use physical force against someone with ill intent, but without intent to kill."
+	name = "Нападение"
+	desc = "Угроза или применение физической силы против кого-либо с недобрыми намерениями, но без намерения убить."
 	brig_time = 15
 
 /datum/law/major_law/contraband
-	name = "Contraband"
-	desc = "Possessing, or distributing controlled substances or unauthorized items or weapons as defined in Standard Operating Procedure or impairing, intoxicating or addictive drugs such as Mindbreaker, this does not include custom mixes or dosages of medicinal drugs."
-	special_punishment = "Confiscation of Contraband"
+	name = "Контрабанда"
+	desc = "Наличие или распространение контролируемых веществ или несанкционированных предметов или оружия, как определено в Стандартных Операционных Процедурах, или обладание наркотиками, которые могут вызывать опьянение или зависимость, такими как Mindbreaker. Это не включает в себя индивидуальные смеси или дозы медицинских препаратов."
+	special_punishment = "Конфискация контрабанды"
 	brig_time = 15
 
 /datum/law/major_law/insubordination
-	name = "Insubordination"
-	desc = "Failing to follow a lawful order from a superior that is personally directed at you."
+	name = "Неподчинение"
+	desc = "Невыполнение законного приказа от вышестоящего, который был адресован лично вам."
 	brig_time = 15
 
 /datum/law/major_law/interference
-	name = "Interference"
-	desc = "Interfering in a legal arrest being performed with ill intent. Clearly trying to hinder the arrest being performed."
+	name = "Вмешательство"
+	desc = "Вмешательство в законный арест со недобрыми намерениями. Явное стремление препятствовать проводимому аресту."
 	brig_time = 15
 
 /datum/law/major_law/neglect_of_duty
-	name = "Neglect of duty"
-	desc = "Failure to perform one’s role to an acceptable standard. For example, a Commanding Officer failing to properly organize and ensure their personnel are given orders, failing to follow proper procedure in detriment of one’s duties, or ship crew leaving the ship without authorization from the Commanding Officer or their Department Head. Any officer who commits a crime may be charged with Neglect of Duty in addition to the appropriate crimes."
+	name = "Неисполнение обязанностей"
+	desc = "Невыполнение своей роли на приемлемом уровне. Например, Командир, который не организует и не обеспечивает выполнение приказов своим подчиненным, или корабельный экипаж, покидающий корабль без разрешения Командира или руководителя своего отдела. Любой офицер, совершивший преступление, может быть обвинен в неисполнении обязанностей в дополнение к имеющимся преступлениям."
 	brig_time = 15
 
 /datum/law/major_law/listening_bugs
-	name = "Unauthorized use of a Listening Device"
-	desc = "Using a listening device against SOP in a secure area such as the CIC. Use of listening devices tied to foreign governments or terror organisations is also considered subterfuge."
-	special_punishment = "Listening Device Confiscation"
+	name = "Несанкционированное использование прослушивающего устройства"
+	desc = "Использование прослушивающего устройства в защищенной зоне, такой как КИК, в нарушении СОП. Использование прослушивающих устройств, связанных с иностранными государствами или террористическими организациями, также считается подрывной деятельностью."
+	special_punishment = "Конфискация прослушивающего устройства"
 	brig_time = 15
 
 /datum/law/major_law/subterfuge
-	name = "Subterfuge"
-	desc = "Carrying out objectives or being tied to material that describe planned actions that go against the USCM. Strong proof is required that the individual is working against USCM. Use of listening devices tied to foreign governments or terror organisations in secure areas is also considered subterfuge."
-	special_punishment = "Termination of ID/Discharge to planet"
+	name = "Подрывная деятельность"
+	desc = "Выполнение задач или связь с материалами, описывающими запланированные действия, идущие против КМП. Требуются веские доказательства того, что человек работает против КМП. Использование прослушивающих устройств, связанных с иностранными государствами или террористическими организациями, в защищенных зонах также считается подрывной деятельностью."
+	special_punishment = "Аннулирование удостоверения/Депортация на планету"
 	brig_time = 15
 
 /datum/law/major_law/assault_with_a_deadly_weapon
-	name = "Assault with a deadly weapon"
-	desc = "To threaten or use physical force against someone with ill intent and with a lethal weapon such as a sidearm, blade, or rifle."
+	name = "Нападение с летальным оружием"
+	desc = "Угроза применения или применение физической силы против кого-либо с недобрыми намерениями и с использованием летального оружия, такого как пистолет, нож или винтовка."
 	brig_time = 20
 
 /datum/law/major_law/illegal_confinement
-	name = "Illegal Confinement"
-	desc = "Unlawfully detaining a person against their will. Includes, kidnapping, hostage taking and confining people in cells without charging them for a crime. Does not apply to Prisoners of War."
+	name = "Незаконное задержание"
+	desc = "Незаконное удержание человека против его воли. Включает в себя похищение, захват заложников и удержание людей в камерах без предъявления обвинений. Не относится к военнопленным."
 	brig_time = 20
 
 /datum/law/major_law/manslaughter
-	name = "Manslaughter"
-	desc = "Killing someone without malicious intent. Manslaughter may be applied if someone dies as a result of a fight where the intent was not to kill."
+	name = "Непредумышленное убийство"
+	desc = "Убийство человека без злого умысла. Непредумышленное убийство может быть применено, если кто-то умирает в результате драки, где не было намерения убить."
 	brig_time = 20
-	special_punishment = "Demotion"
+	special_punishment = "Понижение в должности"
 
 /datum/law/major_law/prevarication
-	name = "Prevarication"
-	desc = "To intentionally order the arrest of a person on false charges who is then found to be innocent, or to apply an improper or abusive NJP. This includes intentionally arresting a person on false charges, on one's own initiative without orders."
+	name = "Фальсификация"
+	desc = "Умышленный приказ об аресте человека по ложному обвинению, который затем признается невиновным. Это включает в себя намеренный арест человека по ложному обвинению по собственной инициативе без приказа."
 	brig_time = 20
 
 /datum/law/major_law/sexual_harrasment
-	name = "Sexual Harrasment"
-	desc = "Unwelcome sexual advances, verbal or physical conduct of a sexual nature. Creating an intimidating, hostile or offensive work environment as a result of the harassment."
+	name = "Сексуальные домогательства"
+	desc = "Нежелательные сексуальные домогательства, вербальное или физическое поведение сексуального характера. Создание угрожающей, враждебной или оскорбительной рабочей атмосферы в результате домогательств."
 	brig_time = 30
 
 /datum/law/major_law/animal_cruelty
-	name = "Animal Cruelty"
-	desc = "Injuring or killing any domestic animal or wild life with malicious intent. Research monkeys used for chemical research, scientific purposes or hostile wildlife are exempt."
+	name = "Жестокое обращение с животными"
+	desc = "Нанесение увечий или убийство любого домашнего или дикого животного со злым умыслом. Исключение составляют обезьяны, используемые для химических исследований, научных целей или враждебные дикие животные."
 	brig_time = 30
 
 /datum/law/major_law/misuse_of_authority
-	name = "Misuse of Authority"
-	desc = "The exercising of power to a malicious extent by Military Police or deputized personnel acting as an MP; examples include beating a downed prisoner, excessive use of harmful or non-lethal force, or other abusive actions that led to the harm of a person in custody. Detained suspects should not have more force used on them than necessary in order to pacify them. Force may be used against retaliating or escaping parties only to the point where they are sufficiently pacified."
+	name = "Злоупотребление властью"
+	desc = "Злоупотребление властью со стороны военной полиции или уполномоченных сотрудников, выступающих в качестве ВП; примеры включают избиение упавшего заключенного, чрезмерное применение летальной или нелетальной силы или другие неправомерные действия, которые привели к причинению вреда человеку, находящемуся под стражей. К задержанным подозреваемым не должно применяться больше силы, чем необходимо для их успокоения. Сила может быть применена против мстящих или сбегающих лиц только только до того момента, пока они не будут достаточно успокоены."
 	brig_time = 20
 
 /datum/law/major_law/unauthorized_deployment
-	name = "Unauthorized Deployment"
-	desc = "To deploy into the area of operations without permission of the relevant head of department or Commander where appropriate whilst still performing assigned duties. (I.E A doctor deploying without permission, with the intentions to perform field surgery.) Deploying without intent to perform assigned duties remains desertion."
+	name = "Несанкционированное развертывание"
+	desc = "Отправка в район операции без разрешения соответствующего начальника отдела или командира, если это необходимо, при этом выполняя возложенные на него обязанности. (Например, врач, отправляющийся без разрешения, с намерением провести операцию в полевых условиях). Развертывание без намерения выполнять возложенные обязанности считается дезертирством."
 	brig_time = 10

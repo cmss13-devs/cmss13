@@ -1,0 +1,11 @@
+### Dropship sound effects
+
+[This work is licensed under CC BY-NC 4.0]
+dj-34 (Discord: dj34 / Github: https://github.com/dj-34) authoring:
+dropship_gau.ogg
+dropship_sonic_boom.ogg
+
+Assets used (modified & repurposed) in dj-34 work:
+A-10 Thunderbolt ("Warthog") 30mm GAU cannon 8 by nicStage -- https://freesound.org/s/127735/ -- License: Attribution 4.0
+/sound/effects/gau.ogg
+/sound/weapons/dropship_sonic_boom.ogg

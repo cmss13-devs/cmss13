@@ -62,8 +62,8 @@ const ElectricalPanelClosed = (props: ComponentProps<typeof Box>) => {
             </Flex.Item>
             <Flex.Item>
               <span>
-                Electrical Hazard <br />
-                Authorised Personnel Only
+                НЕ ВЛЕЗАЙ, УБЬЁТ! <br />
+                Только для персонала
               </span>
             </Flex.Item>
           </Flex>

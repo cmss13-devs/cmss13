@@ -155,6 +155,16 @@
 	langchat_speech("[src] raises back into position!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
 	practice_health = practice_mode[1]
 
+/obj/structure/target/syndicate
+	icon_state = "target_s"
+	desc = "A shooting target that looks like a hostile agent."
+	health = 7500
+
+/obj/structure/target/alien
+	icon_state = "target_q"
+	desc = "A shooting target with a threatening silhouette."
+	health = 6500
+
 /obj/structure/shooting_target_rail
 	name = "shooting range rail"
 	desc = "A rail for making shooting targets move. When assembled, a placed shooting target will start to move back and forth on the track."

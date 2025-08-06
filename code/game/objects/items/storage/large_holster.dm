@@ -230,7 +230,8 @@
 
 		gun_offset = W.hud_offset
 		W.hud_offset = 0
-		W.pixel_x = 0
+		W.pixel_x = -16
+		W.pixel_y = -13
 		W.transform = turn(matrix(0.82, MATRIX_SCALE), 90) //0.82x is the right size and gives reasonably accurate results with pixel scaling.
 
 		W.vis_flags |= VIS_INHERIT_ID //Means the gun is just visual and doesn't block picking up or clicking on the holster.
@@ -245,7 +246,8 @@
 		W.appearance_flags &= ~PIXEL_SCALE
 
 	W.hud_offset = gun_offset
-	W.pixel_x = gun_offset
+	W.pixel_x = 0
+	W.pixel_y = 0
 	W.transform = null
 
 	W.vis_flags &= ~VIS_INHERIT_ID

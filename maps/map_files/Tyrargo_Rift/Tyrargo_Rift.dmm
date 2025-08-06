@@ -103406,10 +103406,10 @@
 	pixel_x = 5;
 	pixel_y = 3
 	},
-/obj/structure/blocker,
 /obj/structure/barricade/metal/plasteel{
 	dir = 8;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
 /area/tyrargo/oob/outdoors)
@@ -103428,13 +103428,14 @@
 	pixel_x = 5;
 	pixel_y = -2
 	},
-/obj/structure/blocker,
 /obj/structure/barricade/metal/plasteel{
 	dir = 8;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /obj/structure/barricade/metal/plasteel{
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
 /area/tyrargo/oob/outdoors)
@@ -103445,7 +103446,6 @@
 	pixel_y = -3;
 	layer = 2.98
 	},
-/obj/structure/blocker,
 /turf/open/floor/almayer_hull/outerhull_dir_alt/northeast,
 /area/tyrargo/oob/outdoors)
 "faO" = (
@@ -103462,7 +103462,8 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/barricade/metal/plasteel{
 	dir = 8;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 8;
@@ -103483,7 +103484,6 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/structure/blocker,
 /turf/open/floor/almayer_hull/outerhull_dir/west,
 /area/tyrargo/oob/outdoors)
 "faR" = (
@@ -103518,17 +103518,18 @@
 /obj/structure/blocker/invisible_wall,
 /obj/structure/barricade/metal/plasteel{
 	dir = 1;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /obj/structure/prop/tyrargo/boards{
 	dir = 4;
 	pixel_x = -2;
 	pixel_y = -6
 	},
-/obj/structure/blocker,
 /obj/structure/barricade/metal/plasteel{
 	dir = 8;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/oob/outdoors)
@@ -103545,7 +103546,6 @@
 	pixel_y = 7;
 	pixel_x = 2
 	},
-/obj/structure/blocker,
 /turf/open/floor/almayer_hull/outerhull_dir_alt/southeast,
 /area/tyrargo/oob/outdoors)
 "faX" = (
@@ -103565,14 +103565,15 @@
 	dir = 4;
 	pixel_x = 2
 	},
-/obj/structure/blocker,
 /obj/structure/barricade/metal/plasteel{
 	dir = 8;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /obj/structure/barricade/metal/plasteel{
 	dir = 1;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/oob/outdoors)
@@ -103595,10 +103596,10 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/obj/structure/blocker,
 /obj/structure/barricade/metal/plasteel{
 	dir = 1;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/tyrargo/oob/outdoors)
@@ -103610,10 +103611,10 @@
 	dir = 4;
 	pixel_x = 2
 	},
-/obj/structure/blocker,
 /obj/structure/barricade/metal/plasteel{
 	dir = 1;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/tyrargo/oob/outdoors)
@@ -103625,10 +103626,10 @@
 	dir = 1;
 	pixel_x = -4
 	},
-/obj/structure/blocker,
 /obj/structure/barricade/metal/plasteel{
 	dir = 1;
-	health = 50000
+	health = 50000;
+	maxhealth = 50000
 	},
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/tyrargo/oob/outdoors)

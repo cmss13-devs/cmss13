@@ -27,3 +27,38 @@
   - bugfix: Fixed the messed up margins in prefab paperwork.
   wgtjunior743:
   - rscadd: ABR-40 variant name.
+2025-08-04:
+  MistChristmas, Ediblebomb, Drathek:
+  - bugfix: Adds a haul check for click dragging, moves a Lint Proc to the top for
+      Linting; Fixes the things that would get caught in the fixed lint. Left clicking
+      storages whilst hauled will open them instead of doing nothing.
+2025-08-05:
+  Comxy:
+  - rscadd: CLF Coordinator role
+  - imageadd: CLF Coordinator supporting sprites
+  Kyogon:
+  - bugfix: fixed queen's radial showing old sprite
+  Puckaboo2:
+  - bugfix: Xenos can now see the 'bursting' stage of a cap on their HUD.
+  Red-byte3D:
+  - balance: Scout helmet now has the same functions as an RTO pack, allowing you
+      to call or be called. However, you cannot hand the telephone to anyone and you
+      must give them the helmet if you want them to use it.
+  - rscadd: Adds radio backpack equivelant for helmets, nothing uses these right now
+      other then scout.
+  - imagedel: grenadier helmet no longer has an antenna, scout helmet does
+  - soundadd: New sounds for the scout helmet-phone
+  - imageadd: New sprites for the scout helmet and microphone
+2025-08-06:
+  cuberound; zenith:
+  - qol: walking into open space makes you start to climb down unless on harm intent
+  - qol: when you try to walk into climbable wall you start climbing it
+  - balance: removes chance for breaking bones when falling from z level (still chance
+      from taking the damage itself)
+  - balance: reduces fall stuns and adds some slow after the stun
+  - balance: shifts around climbing up times
+  - rscadd: adds wall boosting, to wall boost lean on a climbable wall and have the
+      other climb said wall for reduced climbing time
+  - balance: adds windup for big xenos to pounce on different z level and small (extra)
+      windup for everyone to pounce up a z level
+  - qol: adds up and down tracking indicators

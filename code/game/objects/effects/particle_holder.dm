@@ -61,7 +61,7 @@
 	//add to new
 	if(isitem(attached_to) && ismob(attached_to.loc)) //special case we want to also be emitting from the mob
 		var/mob/particle_mob = attached_to.loc
-		last_attached_location_type = attached_to.loc
+		last_attached_location_type = attached_to.loc.type
 		weak_additional = WEAKREF(particle_mob)
 		particle_mob.vis_contents += src
 	//readd to ourselves

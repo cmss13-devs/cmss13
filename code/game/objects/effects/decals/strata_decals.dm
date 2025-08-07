@@ -3,8 +3,6 @@
 	layer = TURF_LAYER
 	anchored = TRUE
 
-
-
 /obj/effect/decal/strata_decals/catwalk/prison //For finding and replacing prison catwalk objects since they nasty
 	icon = 'icons/turf/floors/strata_floor.dmi'
 	icon_state = "catwalk"
@@ -30,14 +28,7 @@
 /obj/effect/decal/strata_decals/grasses
 	icon_state = "tufts"
 	name = "some foliage"
-	desc = "A few brave tufts of grass."
-
-/obj/effect/decal/strata_decals/mud_corner
-	icon_state = "soro_mud_innercorner"
-	name = "mud"
-	desc = null
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	keep_as_object = TRUE
+	desc = "A few brave tufts of snow grass."
 
 ////////////////INDOORS STUFF////////////////////
 

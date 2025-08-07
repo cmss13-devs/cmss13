@@ -86,7 +86,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
 	statistic_exempt = TRUE
-	block_game_interaction = TRUE
 	ceiling = CEILING_METAL
 
 	base_lighting_alpha = 255

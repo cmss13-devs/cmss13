@@ -17,7 +17,6 @@ const Story = (props) => {
   if (!window.localStorage) {
     return <NoticeBox>Local storage is not available.</NoticeBox>;
   }
-
   return (
     <Section
       title="Local Storage"

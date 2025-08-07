@@ -13,7 +13,7 @@
  */
 
 import { classes } from 'common/react';
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 interface PointerProps {
   readonly className?: string;

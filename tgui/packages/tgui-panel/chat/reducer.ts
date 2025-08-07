@@ -18,7 +18,7 @@ import {
   updateMessageCount,
 } from './actions';
 import { canPageAcceptType, createMainPage } from './model';
-import type { Page } from './types';
+import { Page } from './types';
 
 const mainPage = createMainPage();
 

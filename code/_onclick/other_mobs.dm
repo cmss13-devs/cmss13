@@ -4,11 +4,11 @@
 */
 
 /mob/living/carbon/click(atom/A, list/mods)
-	if (mods[SHIFT_CLICK] && mods[MIDDLE_CLICK])
+	if (mods["shift"] && mods["middle"])
 		point_to(A)
 		return TRUE
 
-	if (mods[MIDDLE_CLICK])
+	if (mods["middle"])
 		if (isStructure(A) && get_dist(src, A) <= 1)
 			var/obj/structure/S = A
 			if(S.climbable)

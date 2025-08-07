@@ -144,7 +144,6 @@ class ChatRenderer {
         highlightWholeMessage: boolean;
       }[]
     | null;
-  lastScrollHeight: number;
   constructor() {
     /** @type {HTMLElement} */
     this.loaded = false;
@@ -160,15 +159,13 @@ class ChatRenderer {
     /** @type {HTMLElement} */
     this.scrollNode = null;
     this.scrollTracking = true;
-    this.lastScrollHeight = 0;
     this.handleScroll = (type) => {
       const node = this.scrollNode;
       if (node) {
         const height = node.scrollHeight;
         const bottom = node.scrollTop + node.offsetHeight;
         const scrollTracking =
-          Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE ||
-          this.lastScrollHeight === 0;
+          Math.abs(height - bottom) < SCROLL_TRACKING_TOLERANCE;
         if (scrollTracking !== this.scrollTracking) {
           this.scrollTracking = scrollTracking;
           this.events.emit('scrollTrackingChanged', scrollTracking);
@@ -198,7 +195,18 @@ class ChatRenderer {
     else {
       this.rootNode = node;
     }
-    this.tryFindScrollable();
+    // Find scrollable parent
+    if (this.rootNode) {
+      this.scrollNode = findNearestScrollableParent(
+        this.rootNode,
+      ) as HTMLElement;
+    }
+    if (this.scrollNode) {
+      this.scrollNode.addEventListener('scroll', this.handleScroll);
+    }
+    setTimeout(() => {
+      this.scrollToBottom();
+    });
     // Flush the queue
     this.tryFlushQueue();
   }
@@ -212,10 +220,6 @@ class ChatRenderer {
     if (this.isReady() && this.queue.length > 0) {
       this.processBatch(this.queue);
       this.queue = [];
-      setTimeout(() => {
-        this.tryFindScrollable();
-        this.scrollToBottom();
-      });
     }
   }
 
@@ -321,20 +325,6 @@ class ChatRenderer {
     }
   }
 
-  tryFindScrollable() {
-    // Find scrollable parent
-    if (this.rootNode) {
-      if (!this.scrollNode || this.scrollNode.scrollHeight === undefined) {
-        this.scrollNode = findNearestScrollableParent(
-          this.rootNode,
-        ) as HTMLElement;
-        if (this.scrollNode) {
-          this.scrollNode.addEventListener('scroll', this.handleScroll);
-        }
-      }
-    }
-  }
-
   changePage(page: Page) {
     if (!this.isReady()) {
       this.page = page;
@@ -402,10 +392,6 @@ class ChatRenderer {
         this.queue = [...this.queue, ...batch];
       }
       return;
-    }
-    // Store last scroll position
-    if (this.scrollNode) {
-      this.lastScrollHeight = this.scrollNode.scrollHeight;
     }
     // Insert messages
     const fragment = document.createDocumentFragment();
@@ -480,12 +466,10 @@ class ChatRenderer {
 
           /* eslint-disable react/no-danger */
           reactRoot.render(
-            <>
-              <Element {...outputProps}>
-                <span dangerouslySetInnerHTML={oldHtml} />
-              </Element>
-              {childNode}
-            </>,
+            <Element {...outputProps}>
+              <span dangerouslySetInnerHTML={oldHtml} />
+            </Element>,
+            childNode,
           );
           /* eslint-enable react/no-danger */
         }

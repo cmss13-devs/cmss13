@@ -6,10 +6,10 @@
  * @license MIT
  */
 
-import { type BooleanLike, classes } from 'common/react';
-import type { ReactNode } from 'react';
+import { BooleanLike, classes } from 'common/react';
+import { ReactNode } from 'react';
 
-import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 const FA_OUTLINE_REGEX = /-o$/;
 

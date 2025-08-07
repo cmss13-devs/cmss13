@@ -109,9 +109,6 @@
 	shell_speed = AMMO_SPEED_TIER_1
 	shrapnel_chance = 0
 
-/datum/ammo/bullet/shrapnel/light/resin
-	name = "resin shrapnel"
-
 /datum/ammo/bullet/shrapnel/light/human
 	name = "human bone fragments"
 	icon_state = "shrapnel_human"

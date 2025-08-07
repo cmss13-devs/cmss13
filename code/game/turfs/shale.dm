@@ -2,7 +2,9 @@
 /turf/open/shale
 	icon = 'icons/turf/floors/auto_shale.dmi'
 	icon_state = "shale_0"
-	is_weedable = SEMI_WEEDABLE
+
+/turf/open/shale/is_weedable()
+	return TRUE
 
 /turf/open/shale/get_dirt_type()
 	return DIRT_TYPE_SHALE

@@ -30,9 +30,9 @@
 	if ((A.flags_atom & NOINTERACT))
 		if (istype(A, /atom/movable/screen/click_catcher))
 			var/list/mods = params2list(params)
-			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.eye), client)
+			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
 			if (TU)
-				params += CLICK_CATCHER_ADD_PARAM
+				params += ";click_catcher=1"
 				do_click(TU, location, params)
 		return
 
@@ -49,7 +49,7 @@
 		clicked_something[mod] = TRUE
 
 	// Don't allow any other clicks while dragging something
-	if(mods[DRAG])
+	if (mods["drag"])
 		return
 
 	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -213,19 +213,19 @@
 	if(!client || !client.remote_control)
 		return FALSE
 
-	if(mods[MIDDLE_CLICK])
+	if(mods["middle"])
 		A.AIMiddleClick(src)
 		return TRUE
 
-	if(mods[SHIFT_CLICK])
+	if(mods["shift"])
 		A.AIShiftClick(src)
 		return TRUE
 
-	if(mods[ALT_CLICK])
+	if(mods["alt"])
 		A.AIAltClick(src)
 		return TRUE
 
-	if(mods[CTRL_CLICK])
+	if(mods["ctrl"])
 		A.AICtrlClick(src)
 		return TRUE
 
@@ -236,12 +236,12 @@
 	return TRUE
 
 /atom/proc/clicked(mob/user, list/mods)
-	if (mods[SHIFT_CLICK] && !mods[MIDDLE_CLICK])
+	if (mods["shift"] && !mods["middle"])
 		if(can_examine(user))
 			examine(user)
 		return TRUE
 
-	if (mods[ALT_CLICK])
+	if (mods["alt"])
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && length(T.contents))
 			user.set_listed_turf(T)
@@ -253,7 +253,7 @@
 	if (..())
 		return TRUE
 
-	if (mods[CTRL_CLICK])
+	if (mods["ctrl"])
 		if (Adjacent(user) && user.next_move < world.time)
 			user.start_pulling(src)
 		return TRUE

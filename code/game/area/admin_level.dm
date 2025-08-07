@@ -174,7 +174,6 @@
 	name = "Tutorial Zone"
 	icon_state = "tutorial"
 	requires_power = FALSE
-	unlimited_power = TRUE
 	flags_area = AREA_NOTUNNEL|AREA_AVOID_BIOSCAN
 	statistic_exempt = TRUE
 	ceiling = CEILING_METAL
@@ -189,6 +188,3 @@
 
 /area/misc/tutorial/no_baselight
 	base_lighting_alpha = 0
-
-/area/misc/tutorial/no_baselight/open
-	ceiling = CEILING_NONE

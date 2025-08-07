@@ -1,0 +1,113 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/void/vehicle,
+/area/interior/vehicle/blackfoot)
+"f" = (
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot,
+/turf/open/floor/transparent,
+/area/interior/vehicle/blackfoot)
+"n" = (
+/obj/structure/bed/chair/vehicle/blackfoot/top_left_top,
+/obj/structure/bed/chair/vehicle/blackfoot/top_left_bottom,
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/void/vehicle,
+/area/interior/vehicle/blackfoot)
+"o" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	tag = "right";
+	exit_type = /obj/structure/interior_exit/vehicle/blackfoot/right;
+	name = "blackfoot side door";
+	pixel_y = 5;
+	pixel_x = -15;
+	offset_x = 1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/transparent,
+/area/interior/vehicle/blackfoot)
+"p" = (
+/obj/structure/prop/vehicle/blackfoot,
+/turf/open/void/vehicle,
+/area/interior/vehicle/blackfoot)
+"q" = (
+/obj/structure/bed/chair/vehicle/blackfoot/bottom_left_top,
+/obj/structure/bed/chair/vehicle/blackfoot/bottom_left_bottom,
+/obj/effect/landmark/interior/spawn/chimera_loader{
+	icon_state = "chimera-ammo-interior-left";
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
+	pixel_y = 19;
+	pixel_x = -7
+	},
+/turf/open/void/vehicle,
+/area/interior/vehicle/blackfoot)
+"G" = (
+/obj/structure/bed/chair/vehicle/blackfoot/top_right_top,
+/obj/structure/bed/chair/vehicle/blackfoot/top_right_bottom,
+/obj/effect/landmark/interior/spawn/blackfoot_rear_door_button{
+	pixel_x = 4;
+	pixel_y = 25
+	},
+/turf/open/void/vehicle,
+/area/interior/vehicle/blackfoot)
+"M" = (
+/obj/structure/bed/chair/vehicle/blackfoot/bottom_right_top,
+/obj/structure/bed/chair/vehicle/blackfoot/bottom_right_bottom,
+/obj/effect/landmark/interior/spawn/chimera_loader{
+	icon_state = "chimera-ammo-interior-right";
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
+	pixel_y = 20;
+	pixel_x = 8
+	},
+/turf/open/void/vehicle,
+/area/interior/vehicle/blackfoot)
+"O" = (
+/obj/effect/landmark/interior/spawn/entrance/blackfoot_rear_door{
+	tag = "back"
+	},
+/turf/open/floor/transparent,
+/area/interior/vehicle/blackfoot)
+"R" = (
+/turf/open/floor/transparent,
+/area/interior/vehicle/blackfoot)
+"T" = (
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 4;
+	tag = "left";
+	exit_type = /obj/structure/interior_exit/vehicle/blackfoot/left;
+	name = "blackfoot side door";
+	pixel_x = 15;
+	pixel_y = 5;
+	offset_x = -1
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/transparent,
+/area/interior/vehicle/blackfoot)
+
+(1,1,1) = {"
+a
+n
+o
+q
+a
+p
+"}
+(2,1,1) = {"
+a
+O
+R
+R
+f
+a
+"}
+(3,1,1) = {"
+a
+G
+T
+M
+a
+a
+"}

@@ -2,11 +2,7 @@ import { useBackend } from 'tgui/backend';
 import { Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import {
-  CompoundTable,
-  type DocumentLog,
-  type DocumentRecord,
-} from './ResearchTerminal';
+import { CompoundTable, DocumentLog, DocumentRecord } from './ResearchTerminal';
 
 interface TerminalProps {
   published_documents: DocumentLog;

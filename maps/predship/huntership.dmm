@@ -6,12 +6,6 @@
 /obj/structure/machinery/prop/yautja/bubbler,
 /turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
-"ac" = (
-/obj/structure/machinery/medical_pod/autodoc/yautja{
-	pixel_y = 8
-	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
-/area/yautja)
 "ad" = (
 /obj/structure/window/framed/colony/reinforced/hull/yautja,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters{
@@ -55,12 +49,6 @@
 	},
 /obj/effect/hunter/catwalk/hunter_grate,
 /turf/open/shuttle/dropship/predship/red_glow/on,
-/area/yautja)
-"ag" = (
-/obj/structure/machinery/autodoc_console/yautja{
-	pixel_y = 8
-	},
-/turf/open/shuttle/dropship/predship/hunter_grille,
 /area/yautja)
 "ah" = (
 /obj/structure/prop/hunter/fake_platform/hunter/west,
@@ -135,18 +123,26 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 6
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = -5;
 	pixel_y = 6
 	},
@@ -1264,30 +1260,30 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -9;
 	pixel_y = 10
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 12;
 	pixel_y = -3
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 8;
 	pixel_y = -1
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_y = 3
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -3707,7 +3703,9 @@
 /turf/open/shuttle/dropship/predship/red_glow/on,
 /area/yautja)
 "mH" = (
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -3826,17 +3824,17 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = 4
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -5984,30 +5982,30 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -9;
 	pixel_y = 10
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 12;
 	pixel_y = -3
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 8;
 	pixel_y = -1
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_y = 3
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -7128,19 +7126,19 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = 3;
 	pixel_y = -1
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -1;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -6;
 	pixel_y = 8
 	},
@@ -7624,22 +7622,22 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = -5;
 	pixel_y = -3
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = -2
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = 1;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = 7;
 	pixel_y = 7
 	},
@@ -7661,7 +7659,7 @@
 	dir = 1;
 	pixel_y = 1
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
 	anchored = 1;
 	pixel_x = -1;
 	pixel_y = 3
@@ -8090,18 +8088,26 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 6
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = -5;
 	pixel_y = 6
 	},
@@ -8148,18 +8154,26 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 6
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = -1;
 	pixel_y = 4
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = -5;
 	pixel_y = 6
 	},
@@ -8316,18 +8330,18 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 3
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 10;
 	pixel_y = -1
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -8376,13 +8390,6 @@
 	pixel_x = -7;
 	pixel_y = 4
 	},
-/obj/item/device/houndcam{
-	pixel_x = 10
-	},
-/obj/item/device/houndcam{
-	pixel_x = 5
-	},
-/obj/item/device/houndcam,
 /turf/open/shuttle/dropship/predship/hunter_catwalk_new,
 /area/yautja/lower_deck)
 "Ck" = (
@@ -10459,22 +10466,22 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = -5;
 	pixel_y = -3
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = -2
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = 1;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/obj/item/weapon/yautja/duelaxe{
+/obj/item/tool/hatchet/yautja{
 	pixel_x = 7;
 	pixel_y = 7
 	},
@@ -11912,7 +11919,9 @@
 	layer = 3.2;
 	color = "#bccab4"
 	},
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 2;
 	pixel_y = 2
 	},
@@ -12560,7 +12569,9 @@
 	pixel_y = 11
 	},
 /obj/item/weapon/twohanded/yautja/spear,
-/obj/item/weapon/yautja/duelknife{
+/obj/item/weapon/unathiknife{
+	attack_speed = 12;
+	force = 25;
 	pixel_x = 6;
 	pixel_y = -3
 	},
@@ -14581,18 +14592,18 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 3
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = 10;
 	pixel_y = -1
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -2;
 	pixel_y = 3
 	},
-/obj/item/weapon/yautja/duelsword{
+/obj/item/weapon/sword/yautja{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -14673,19 +14684,19 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = 3;
 	pixel_y = -1
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -1;
 	pixel_y = 2
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/item/weapon/yautja/duelclub{
+/obj/item/weapon/baseballbat/metal/yautja{
 	pixel_x = -6;
 	pixel_y = 8
 	},
@@ -16659,7 +16670,7 @@ aV
 jy
 ir
 VD
-ac
+ir
 VD
 rd
 VD
@@ -16761,7 +16772,7 @@ aV
 VD
 xC
 VD
-ag
+xC
 VD
 by
 VD

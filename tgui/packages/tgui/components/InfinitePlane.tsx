@@ -1,8 +1,8 @@
 import { round } from 'common/math';
-import { Component, type PropsWithChildren } from 'react';
+import { Component, PropsWithChildren } from 'react';
 import { Button, ProgressBar, Stack } from 'tgui/components';
 
-import { type BoxProps, computeBoxProps } from './Box';
+import { BoxProps, computeBoxProps } from './Box';
 
 const ZOOM_MIN_VAL = 0.5;
 const ZOOM_MAX_VAL = 1.5;

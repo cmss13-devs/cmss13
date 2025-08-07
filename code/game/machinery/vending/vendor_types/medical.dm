@@ -678,13 +678,6 @@
 	vendor_theme = VENDOR_THEME_CLF
 	allow_supply_link_restock = FALSE
 
-/obj/structure/machinery/cm_vending/sorted/medical/upp
-	name = "\improper Medical Equipment Vendor"
-	desc = "A vending machine dispensing various pieces of medical equipment."
-	req_one_access = list(ACCESS_UPP_GENERAL)
-	req_access = null
-	vendor_theme = VENDOR_THEME_UPP
-
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed
 	name = "\improper ColMarTech MarineMed"
 	desc = "Medical pharmaceutical dispenser with basic medical supplies for marines."
@@ -722,13 +715,6 @@
 	vendor_theme = VENDOR_THEME_CLF
 	allow_supply_link_restock = FALSE
 
-/obj/structure/machinery/cm_vending/sorted/medical/marinemed/upp
-	name = "\improper Basic Medical Supplies Vendor"
-	desc = "A vending machine dispensing basic medical supplies."
-	req_one_access = list(ACCESS_UPP_GENERAL)
-	req_access = null
-	vendor_theme = VENDOR_THEME_UPP
-
 /obj/structure/machinery/cm_vending/sorted/medical/blood
 	name = "\improper MM Blood Dispenser"
 	desc = "The MarineMed brand blood dispensary is the premier, top-of-the-line blood dispenser of 2105! Get yours today!" //Don't update this year, the joke is it's old.
@@ -761,11 +747,6 @@
 	req_access = null
 	vendor_theme = VENDOR_THEME_CLF
 	allow_supply_link_restock = FALSE
-
-/obj/structure/machinery/cm_vending/sorted/medical/blood/upp
-	req_one_access = list(ACCESS_UPP_GENERAL)
-	req_access = null
-	vendor_theme = VENDOR_THEME_UPP
 
 
 //------------WALL MED VENDORS------------

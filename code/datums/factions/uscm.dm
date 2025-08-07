@@ -43,6 +43,8 @@
 				marine_rk = "io"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
+			if(JOB_OPERATIONS_PILOT)
+				marine_rk = "op"
 			if(JOB_MARINE_RAIDER)
 				marine_rk = "soc"
 			if(JOB_MARINE_RAIDER_SL)
@@ -66,7 +68,7 @@
 
 		if(!marine_rk)
 			marine_rk = current_human.rank_fallback
-		if(current_human.rank_override && squad.squad_leader != current_human)
+		if(current_human.rank_override)
 			marine_rk = current_human.rank_override
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
@@ -127,6 +129,8 @@
 				marine_rk = "dp"
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
+			if(JOB_OPERATIONS_PILOT)
+				marine_rk = "op"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"

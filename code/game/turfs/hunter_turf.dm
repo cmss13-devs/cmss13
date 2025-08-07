@@ -274,7 +274,9 @@
 	icon = 'icons/turf/floors/hunter_floors.dmi'
 	icon_state = "outerhull"
 	allow_construction = FALSE
-	is_weedable = NOT_WEEDABLE
+
+/turf/open/floor/predship/hull/is_weedable()
+	return NOT_WEEDABLE
 
 /turf/open/floor/predship/hull/non_weedable_hull
 	icon_state = "outerhull_dir"

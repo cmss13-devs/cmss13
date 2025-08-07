@@ -3,7 +3,7 @@ import { useBackend } from 'tgui/backend';
 import { Tooltip } from 'tgui/components';
 
 import { IconDisplay } from './IconDisplay';
-import type { SearchGroup, SearchItem } from './types';
+import { SearchGroup, SearchItem } from './types';
 
 type Props =
   | {

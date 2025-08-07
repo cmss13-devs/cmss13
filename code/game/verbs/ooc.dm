@@ -55,8 +55,6 @@
 			display_colour = CONFIG_GET(string/ooc_color_mods)
 		if(admin_holder.rights & R_ADMIN)
 			display_colour = CONFIG_GET(string/ooc_color_admin)
-		if(admin_holder.rights & R_PROFILER)
-			display_colour  = CONFIG_GET(string/ooc_color_maint)
 		if(admin_holder.rights & R_COLOR)
 			display_colour = prefs.ooccolor
 	else if(donator)

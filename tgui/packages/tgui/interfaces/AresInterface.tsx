@@ -4,10 +4,10 @@
 
 import type { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
-import { Box, Button, Dropdown, Flex, Section, Stack } from 'tgui/components';
+import { Box, Button, Flex, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import type { DataCoreData } from './common/commonTypes';
+import { DataCoreData } from './common/commonTypes';
 
 type Data = DataCoreData & {
   local_current_menu: string;
@@ -111,8 +111,6 @@ const MainMenu = (props) => {
     local_current_menu,
     local_access_level,
     local_sudo,
-    faction_options,
-    sentry_setting,
   } = data;
 
   return (
@@ -450,18 +448,6 @@ const MainMenu = (props) => {
               >
                 AI Core Lockdown
               </Button.Confirm>
-            </Stack.Item>
-            <Stack.Item ml="0" mr="0">
-              <Dropdown
-                options={faction_options}
-                selected={sentry_setting}
-                color="red"
-                onSelected={(value) =>
-                  act('update_sentries', { chosen_iff: value })
-                }
-                width="90px"
-                disabled={local_access_level < 9}
-              />
             </Stack.Item>
           </Stack>
         </Section>

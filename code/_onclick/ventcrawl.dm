@@ -13,7 +13,7 @@
 /mob/living/click(atom/A, list/mods)
 	if(..())
 		return TRUE
-	if(mods[ALT_CLICK])
+	if(mods["alt"])
 		if(can_ventcrawl() && istype(A, /obj/structure/pipes/vents))
 			handle_ventcrawl(A)
 			return TRUE

@@ -188,7 +188,7 @@
 	dispersion_angle = 25//tight cone
 
 /obj/item/explosive/grenade/high_explosive/airburst/starshell
-	name = "\improper M74 AGM-S Star Shell"
+	name = "\improper M74 AGM-S 40mm Star Shell"
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the star shells bursts into burning phosphor that illuminates the area."
 	icon_state = "grenade_starshell"
 	item_state = "grenade_starshell_active"
@@ -196,6 +196,27 @@
 	shrapnel_type = /datum/ammo/flare/starshell
 	direct_hit_shrapnel = 5
 	dispersion_angle = 360 //beeg circle
+
+// Non-airburst variant
+/obj/item/explosive/grenade/high_explosive/starshell
+	name = "\improper M74 HE 40mm impact Star Shell"
+	desc = "A non-airburst variant of the standard AGM-S 40mm Star Shell, with an impact detonator installed. Bursts into burning phosphor that illuminates the area upon contact."
+	icon_state = "grenade_starshell"
+	item_state = "grenade_starshell_active"
+	shrapnel_count = 8
+	shrapnel_type = /datum/ammo/flare/starshell
+	det_time = 0
+	explosion_power = 0
+
+/obj/item/explosive/grenade/high_explosive/hornet
+	name = "\improper M74 HE 40mm impact Hornet Shell"
+	desc = "A non-airburst variant of the standard AGM-H 40mm Hornet Shell, with an impact detonator installed. Shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
+	icon_state = "grenade_hornet"
+	item_state = "grenade_hornet_active"
+	shrapnel_count = 15
+	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
+	det_time = 0
+	explosion_power = 0
 
 /*
 //================================================
@@ -521,9 +542,6 @@
 		if(!human.allow_gun_usage)
 			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 			return
-		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
-			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
-			return
 
 	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
@@ -617,8 +635,6 @@
 			if((mob_dist < (range-3))) // 2 tiles around small superslow
 				mob.Superslow(2)
 			mob.Slow(damage_applied/xeno_slowdown_numerator)
-			if(iswydroid(mob))
-				mob.emote("pain")
 
 		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
 			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
@@ -908,15 +924,11 @@
 // abstract grenades used for hijack explosions
 
 /obj/item/explosive/grenade/high_explosive/bursting_pipe
-	AUTOWIKI_SKIP(TRUE)
-
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/item/explosive/grenade/incendiary/bursting_pipe
-	AUTOWIKI_SKIP(TRUE)
-
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

@@ -39,7 +39,7 @@
 	if(!ishuman(user) || !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return ..()
 
-	if(mods[ALT_CLICK])
+	if(mods["alt"])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		select_object(user)

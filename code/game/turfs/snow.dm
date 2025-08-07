@@ -40,7 +40,6 @@
 /turf/open/snow/Initialize(mapload, ...)
 	. = ..()
 	update_icon(1,1)
-	is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 /turf/open/snow/Entered(atom/movable/AM)
 	if(bleed_layer > 0)
@@ -117,9 +116,6 @@
 
 					I.layer = layer + 0.001 + bleed_layer * 0.0001
 					overlays += I
-
-		//a bit odd to have it here but weedability should be linked to visual show of snow
-		is_weedable = bleed_layer ? NOT_WEEDABLE : FULLY_WEEDABLE
 
 
 //Explosion act

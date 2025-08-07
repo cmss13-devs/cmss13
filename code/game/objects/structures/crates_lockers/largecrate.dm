@@ -429,7 +429,6 @@ GLOBAL_LIST_INIT(rbarrel_color_list, list(COLOR_SILVER,
 	num_mags = 5
 	name = "\improper Black market firearm crate"
 	stuff = list( /obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
-					/obj/item/weapon/gun/pistol/action = /obj/item/ammo_magazine/pistol/action,
 					/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 					/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 					/obj/item/weapon/gun/pistol/heavy = /obj/item/ammo_magazine/pistol/heavy,

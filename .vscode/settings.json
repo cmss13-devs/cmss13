@@ -42,9 +42,5 @@
 	},
 	"workbench.editorAssociations": {
 		"*.dmi": "dmiEditor.dmiEditor"
-	},
-	"tgstationTestExplorer.project.DMEName": "colonialmarines.dme",
-	"dreammaker.tickOnCreate": true,
-	"dreammaker.reparseOnSave": true,
-	"dreammaker.autoUpdate": true
+	}
 }

@@ -26,7 +26,7 @@
 
 /client/proc/whitelist_panel()
 	set name = "Whitelist Panel"
-	set category = "OOC.Whitelist"
+	set category = "Admin.Panels"
 
 	if(wl_panel)
 		qdel(wl_panel)

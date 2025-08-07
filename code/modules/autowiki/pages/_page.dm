@@ -50,14 +50,10 @@
 
 /// Takes an icon and uploads it to Autowiki-name.png.
 /// Do your best to make sure this is unique, so it doesn't clash with other autowiki icons.
-/// Specifying a center_width and center_height when centering (default) can pad/contrain the icon.
-/datum/autowiki/proc/upload_icon(icon/icon, name, center=TRUE, center_width, center_height)
+/datum/autowiki/proc/upload_icon(icon/icon, name)
 	// Fuck you
 	if (IsAdminAdvancedProcCall())
 		return
-
-	if (center)
-		center_icon(icon, center_width, center_height)
 
 	fcopy(icon, "data/autowiki_files/[name].png")
 

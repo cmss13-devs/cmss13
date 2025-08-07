@@ -177,7 +177,10 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "bcircuit"
 	allow_construction = FALSE
-	is_weedable = NOT_WEEDABLE
+
+
+/turf/open/hybrisa/street/underground_unweedable/is_weedable()
+	return NOT_WEEDABLE
 
 // Engineer Ship Hull
 
@@ -187,7 +190,9 @@
 	icon = 'icons/turf/floors/engineership.dmi'
 	icon_state = "engineerwallfloor1"
 	allow_construction = FALSE
-	is_weedable = NOT_WEEDABLE
+
+/turf/open/floor/hybrisa/engineership/ship_hull/is_weedable()
+	return NOT_WEEDABLE
 
 /turf/open/floor/hybrisa/engineership/ship_hull/non_weedable_hull
 	icon_state = "outerhull_dir"
@@ -1029,7 +1034,9 @@
 	desc = "A strange metal pillar, unlike any metal you've seen before."
 	icon_state = "eng_pillar1"
 	allow_construction = FALSE
-	is_weedable = NOT_WEEDABLE
+
+/turf/open/floor/hybrisa/engineership/pillars/is_weedable()
+	return NOT_WEEDABLE
 
 /turf/open/floor/hybrisa/engineership/pillars/north/pillar1
 	icon_state = "eng_pillar1"

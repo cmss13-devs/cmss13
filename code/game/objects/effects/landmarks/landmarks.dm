@@ -65,7 +65,6 @@
 /obj/effect/landmark/observer_start/Initialize()
 	. = ..()
 	GLOB.observer_starts += src
-	new /obj/effect/landmark/spycam_start(loc)
 
 /obj/effect/landmark/observer_start/Destroy()
 	GLOB.observer_starts -= src

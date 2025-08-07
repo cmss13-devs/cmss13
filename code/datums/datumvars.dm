@@ -1,9 +1,7 @@
 
 // reference: /client/proc/modify_variables(var/atom/O, var/param_var_name = null, var/autodetect_class = 0)
 
-/datum/proc/can_vv_get(var_name)
-	if(var_name == NAMEOF(src, vars))
-		return FALSE
+/datum/proc/can_vv_get()
 	return TRUE
 
 /datum/proc/can_vv_modify()

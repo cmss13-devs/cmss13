@@ -24,8 +24,6 @@ export type DataCoreData = {
   security_vents: VentRecord[];
   maintenance_tickets: MaintTicketRecord[];
   access_tickets: AccessTicketRecord[];
-  faction_options: string[];
-  sentry_setting: string;
 };
 
 type MaintTicketRecord = {
@@ -54,7 +52,7 @@ type AccessTicketRecord = {
   ref: string;
 };
 
-export type VentRecord = { vent_tag: string; ref: string; available: boolean };
+type VentRecord = { vent_tag: string; ref: string; available: boolean };
 
 type DiscussionRecord = BasicRecord & {
   user: string;

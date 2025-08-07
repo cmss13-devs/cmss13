@@ -1,5 +1,7 @@
 import { Flex } from 'tgui/components';
-import { render } from 'tgui/renderer';
+import { createRenderer } from 'tgui/renderer';
+
+const render = createRenderer();
 
 export const Default = () => {
   const node = (

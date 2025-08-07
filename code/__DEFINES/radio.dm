@@ -62,10 +62,6 @@
 #define RADIO_CHANNEL_PMC_CCT "PMC CCT"
 #define RADIO_CHANNEL_WY_WO "SpecOps"
 
-//Hyperdyne Comms
-
-#define RADIO_CHANNEL_HYPERDYNE "Hyperdyne"
-
 //Listening Devices
 #define RADIO_CHANNEL_BUG_A "Listening Device A"
 #define RADIO_CHANNEL_BUG_B "Listening Device B"
@@ -83,7 +79,6 @@
 #define RADIO_CHANNEL_CIA "CIA"
 
 #define RADIO_CHANNEL_YAUTJA "Yautja"
-#define RADIO_CHANNEL_YAUTJA_OVERSEER "Overseer"
 
 
 // Listening bug broadcast setting. Whether or not it plays only to ghosts with preferences, or doesn't show to ghosts at all.

@@ -1,5 +1,5 @@
 import {
-  type PropsWithChildren,
+  PropsWithChildren,
   useCallback,
   useEffect,
   useRef,

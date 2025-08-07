@@ -15,13 +15,6 @@
 	. = ..()
 	src.roles = JOB_DOCTOR_ROLES_LIST
 
-/datum/timelock/research
-	name = "Research Roles"
-
-/datum/timelock/research/New(name, time_required, list/roles)
-	. = ..()
-	src.roles = JOB_RESEARCH_ROLES_LIST
-
 /datum/timelock/corporate
 	name = "Corporate Roles"
 

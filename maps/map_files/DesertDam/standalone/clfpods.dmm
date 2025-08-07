@@ -589,8 +589,9 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 1
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 1;
+	faction_group = list("CLF")
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached16,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -598,8 +599,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal4"
 	},
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
+	faction_group = list("CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -915,8 +917,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 8
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 8;
+	faction_group = list("CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1435,8 +1438,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 1
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 1;
+	faction_group = list("CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1499,8 +1503,6 @@
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
-/obj/item/flag/plantable/clf,
-/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_medical)
 "Lf" = (
@@ -1624,8 +1626,9 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 4
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -1814,8 +1817,9 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
 	},
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 4
+/obj/structure/machinery/defenses/sentry/premade/dumb{
+	dir = 4;
+	faction_group = list("CLF")
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)

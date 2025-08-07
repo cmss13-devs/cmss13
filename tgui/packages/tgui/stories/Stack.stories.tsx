@@ -11,49 +11,45 @@ export const meta = {
   render: () => <Story />,
 };
 
-function Filler() {
-  return (
-    <Box inline width={1} height={1}>
-      A
-    </Box>
-  );
-}
+const Filler = () => (
+  <Box inline width={1} height={1}>
+    A
+  </Box>
+);
 
-function SmallStackItems() {
-  return (
-    <>
-      <Stack.Item>
-        <Filler />
-      </Stack.Item>
-      <Stack.Divider />
-      <Stack.Item>
-        <Filler />
-      </Stack.Item>
-    </>
-  );
-}
+const SmallStackItems = () => (
+  <>
+    <Stack.Item>
+      <Filler />
+    </Stack.Item>
+    <Stack.Divider />
+    <Stack.Item>
+      <Filler />
+    </Stack.Item>
+  </>
+);
 
-function Story() {
+const Story = (props) => {
   return (
     <Section fill>
       <Stack fill className="debug-layout">
         <SmallStackItems />
-        <Stack.Item grow>
+        <Stack.Item grow={1}>
           <Stack fill vertical zebra>
             <SmallStackItems />
             <Stack.Item>
               <Stack fill>
                 <SmallStackItems />
-                <Stack.Item grow />
+                <Stack.Item grow={1} />
                 <SmallStackItems />
                 <SmallStackItems />
               </Stack>
             </Stack.Item>
-            <Stack.Item grow />
+            <Stack.Item grow={1} />
             <SmallStackItems />
           </Stack>
         </Stack.Item>
       </Stack>
     </Section>
   );
-}
+};

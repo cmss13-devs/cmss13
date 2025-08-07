@@ -22,20 +22,20 @@
 
 /obj/structure/machinery/gibber/New()
 	..()
-	overlays += image(icon, "grjam")
+	overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
 
 /obj/structure/machinery/gibber/update_icon()
 	overlays.Cut()
 	if (dirty)
-		overlays += image(icon, "grbloody")
+		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grbloody")
 	if(inoperable())
 		return
 	if (!occupant)
-		overlays += image(icon, "grjam")
+		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "grjam")
 	else if (operating)
-		overlays += image(icon, "gruse")
+		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gruse")
 	else
-		overlays += image(icon, "gridle")
+		overlays += image('icons/obj/structures/machinery/kitchen.dmi', "gridle")
 
 /obj/structure/machinery/gibber/relaymove(mob/user)
 	if(user.is_mob_incapacitated(TRUE))

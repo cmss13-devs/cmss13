@@ -175,90 +175,6 @@
 		var/obj/item/weapon/gun/flare/flare_gun_fired_from = fired_projectile.shot_from
 		flare_gun_fired_from.last_signal_flare_name = signal_flare.name
 
-/datum/ammo/arrow
-	name = "arrow"
-	ping = null //no bounce off.
-	damage_type = BRUTE
-	icon_state = "arrow"
-
-	damage = 110
-	penetration = 20
-	accuracy = HIT_ACCURACY_TIER_3
-	max_range = 14
-	shell_speed = AMMO_SPEED_TIER_3
-	flags_ammo_behavior = AMMO_SPECIAL_EMBED
-	shrapnel_chance = SHRAPNEL_CHANCE_TIER_10
-	shrapnel_type = /obj/item/arrow
-	handful_type = /obj/item/arrow
-	sound_hit = 'sound/weapons/pierce.ogg'
-	var/activated = FALSE
-
-/datum/ammo/arrow/on_embed(mob/embedded_mob, obj/limb/target_organ, silent = FALSE)
-	if(!ishumansynth_strict(embedded_mob) || !istype(target_organ))
-		return
-	target_organ.embed(new shrapnel_type)
-
-/datum/ammo/arrow/proc/drop_arrow(turf/T, obj/projectile/fired_projectile)
-	var/obj/item/arrow/arrow = new handful_type(T)
-	var/matrix/rotation = matrix()
-	rotation.Turn(fired_projectile.angle - 90)
-	arrow.apply_transform(rotation)
-
-/datum/ammo/arrow/on_hit_mob(mob/mob,obj/projectile/projectile)
-	mob.apply_effect(1, STUN)
-	mob.apply_effect(3, DAZE)
-	if(!ishumansynth_strict(mob))
-		drop_arrow(get_turf(mob), projectile)
-	pushback(mob, projectile, 7)
-
-/datum/ammo/arrow/on_hit_obj(obj/object,obj/projectile/projectile)
-	drop_arrow(get_turf(projectile), projectile)
-
-/datum/ammo/arrow/on_hit_turf(turf/turf, obj/projectile/projectile)
-	if(turf.density && isturf(projectile.loc))
-		drop_arrow(projectile.loc, projectile)
-	else
-		drop_arrow(turf, projectile)
-
-/datum/ammo/arrow/do_at_max_range(obj/projectile/projectile, mob/firer)
-	drop_arrow(get_turf(projectile), projectile)
-
-/datum/ammo/arrow/expl
-	activated = TRUE
-	handful_type = /obj/item/arrow/expl
-	damage_type = BURN
-	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
-	shrapnel_chance = 0
-	var/datum/effect_system/smoke_spread/smoke
-
-/datum/ammo/arrow/expl/New()
-	. = ..()
-	smoke = new()
-
-/datum/ammo/arrow/expl/on_hit_mob(mob/mob,obj/projectile/projectile)
-	cell_explosion(get_turf(mob), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(mob))
-	smoke.start()
-
-/datum/ammo/arrow/expl/on_hit_obj(obj/object,obj/projectile/projectile)
-	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(projectile))
-	smoke.start()
-/datum/ammo/arrow/expl/on_hit_turf(turf/turf, obj/projectile/projectile)
-	if(turf.density && isturf(projectile.loc))
-		cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-		smoke.set_up(1, get_turf(projectile))
-		smoke.start()
-	else
-		cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-		smoke.set_up(1, turf)
-		smoke.start()
-
-/datum/ammo/arrow/expl/do_at_max_range(obj/projectile/projectile, mob/firer)
-	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
-	smoke.set_up(1, get_turf(projectile))
-	smoke.start()
-
 /datum/ammo/flare/starshell
 	name = "starshell ash"
 	icon_state = "starshell_bullet"
@@ -347,25 +263,26 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 6
 
-/datum/ammo/grenade_container/on_hit_mob(mob/M,obj/projectile/P)
-	drop_nade(P)
+/datum/ammo/grenade_container/on_hit_mob(mob/mob, obj/projectile/projectile)
+	drop_nade(projectile)
 
-/datum/ammo/grenade_container/on_hit_obj(obj/O,obj/projectile/P)
-	drop_nade(P)
+/datum/ammo/grenade_container/on_hit_obj(obj/obj, obj/projectile/projectile)
+	drop_nade(projectile)
 
-/datum/ammo/grenade_container/on_hit_turf(turf/T,obj/projectile/P)
-	drop_nade(P)
+/datum/ammo/grenade_container/on_hit_turf(turf/turf, obj/projectile/projectile)
+	drop_nade(projectile)
 
-/datum/ammo/grenade_container/do_at_max_range(obj/projectile/P)
-	drop_nade(P)
+/datum/ammo/grenade_container/do_at_max_range(obj/projectile/projectile)
+	drop_nade(projectile)
 
-/datum/ammo/grenade_container/proc/drop_nade(obj/projectile/P)
-	var/turf/T = get_turf(P)
-	var/obj/item/explosive/grenade/G = new nade_type(T)
-	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
-	G.det_time = 10
-	G.cause_data = P.weapon_cause_data
-	G.activate()
+/datum/ammo/grenade_container/proc/drop_nade(obj/projectile/projectile)
+	var/turf/turf = get_turf(projectile)
+	var/obj/item/explosive/grenade/grenade = new nade_type(turf)
+	turf.on_throw_end(grenade)
+	grenade.visible_message(SPAN_WARNING("\A [grenade] lands on [turf]!"))
+	grenade.det_time = min(10, grenade.det_time)
+	grenade.cause_data = projectile.weapon_cause_data
+	grenade.activate()
 
 /datum/ammo/grenade_container/rifle
 	flags_ammo_behavior = NO_FLAGS
@@ -377,6 +294,14 @@
 
 /datum/ammo/grenade_container/tank_glauncher
 	max_range = 8
+
+/datum/ammo/grenade_container/chimera_launcher
+	name = "starburst shell"
+	nade_type = /obj/item/explosive/grenade/high_explosive/starshell
+
+/datum/ammo/grenade_container/doorgun
+	name = "hornet shell"
+	nade_type = /obj/item/explosive/grenade/high_explosive/hornet
 
 /datum/ammo/hugger_container
 	name = "hugger shell"
@@ -405,29 +330,3 @@
 	var/obj/item/clothing/mask/facehugger/child = new(T)
 	child.hivenumber = hugger_hive
 	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))
-
-/datum/ammo/pill
-	name = "syringe"
-	icon_state = "syringe"
-	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_ALWAYS_FF
-
-	damage = 0
-
-/datum/ammo/pill/on_hit_mob(mob/M, obj/projectile/P)
-	. = ..()
-
-	if(!ishuman(M))
-		return
-
-	if(!istype(P, /obj/projectile/pill))
-		return
-
-	var/obj/projectile/pill/pill_projectile = P
-
-	if(QDELETED(pill_projectile.source_pill))
-		pill_projectile.source_pill = null
-		return
-
-	var/datum/reagents/pill_reagents = pill_projectile.source_pill.reagents
-
-	pill_reagents.trans_to(M, pill_reagents.total_volume)

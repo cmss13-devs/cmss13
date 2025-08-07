@@ -328,7 +328,6 @@
 	var/burn_damage = 40
 	var/applied_fire_stacks = 5
 	var/xeno_yautja_reduction = 0.75
-	var/reagent = new /datum/reagent/napalm/ut()
 
 /obj/effect/particle_effect/smoke/phosphorus/Initialize(mapload, oldamount, datum/cause_data/new_cause_data, intensity, max_intensity)
 	burn_damage = min(burn_damage, max_intensity - intensity) // Applies reaction limits
@@ -340,9 +339,6 @@
 	smokeranking = SMOKE_RANK_MED
 	burn_damage = 30
 	xeno_yautja_reduction = 0.5
-
-/obj/effect/particle_effect/smoke/phosphorus/sharp
-	reagent = new /datum/reagent/napalm/blue()
 
 /obj/effect/particle_effect/smoke/phosphorus/Move()
 	. = ..()
@@ -374,6 +370,7 @@
 	if(isyautja(affected_mob) || isxeno(affected_mob))
 		damage *= xeno_yautja_reduction
 
+	var/reagent = new /datum/reagent/napalm/ut()
 	affected_mob.burn_skin(damage)
 	affected_mob.adjust_fire_stacks(applied_fire_stacks, reagent)
 	affected_mob.IgniteMob()
@@ -791,9 +788,6 @@
 
 /datum/effect_system/smoke_spread/phosphorus/weak
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/weak
-
-/datum/effect_system/smoke_spread/phosphorus/sharp
-	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/sharp
 
 /datum/effect_system/smoke_spread/cn20
 	smoke_type = /obj/effect/particle_effect/smoke/cn20

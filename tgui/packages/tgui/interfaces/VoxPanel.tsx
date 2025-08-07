@@ -1,5 +1,5 @@
 import { KEY_CTRL, KEY_SHIFT } from 'common/keycodes';
-import { type ComponentProps, useState } from 'react';
+import { ComponentProps, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -11,8 +11,6 @@ import {
   Tabs,
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
-
-import { replaceRegexChars } from './helpers';
 
 const PAGES = [
   {
@@ -289,11 +287,7 @@ const SoundList = (props) => {
             />
             <Flex wrap="wrap" justify="space-evenly">
               {Object.keys(glob_vox_types[voxType])
-                .filter((val) =>
-                  val.match(
-                    currentSearch ? replaceRegexChars(currentSearch) : '',
-                  ),
-                )
+                .filter((val) => val.match(currentSearch))
                 .map((val) => (
                   <Flex.Item key={val} ml={1} mt={1}>
                     <Button

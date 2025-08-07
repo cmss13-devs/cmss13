@@ -132,7 +132,7 @@
 
 		playsound(M.loc, consume_sound, 15, 1)
 		return 1
-	else if( istype(M, /mob/living/carbon) )
+	else if( istype(M, /mob/living/carbon/human) )
 		if (!open)
 			to_chat(user, SPAN_NOTICE("You need to open the [object_fluff]!"))
 			return

@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-import type { Placement } from '@popperjs/core';
+import { Placement } from '@popperjs/core';
 import { Box, Button, Section, Tooltip } from 'tgui/components';
 
 export const meta = {
@@ -12,16 +12,16 @@ export const meta = {
   render: () => <Story />,
 };
 
-const positions = [
-  'top',
-  'left',
-  'right',
-  'bottom',
-  'bottom-start',
-  'bottom-end',
-] as Placement[];
+const Story = () => {
+  const positions = [
+    'top',
+    'left',
+    'right',
+    'bottom',
+    'bottom-start',
+    'bottom-end',
+  ];
 
-function Story() {
   return (
     <Section>
       <Box>
@@ -38,7 +38,7 @@ function Story() {
             key={position}
             color="transparent"
             tooltip="Tooltip text."
-            tooltipPosition={position}
+            tooltipPosition={position as Placement}
           >
             {position}
           </Button>
@@ -46,4 +46,4 @@ function Story() {
       </Box>
     </Section>
   );
-}
+};

@@ -1,4 +1,4 @@
-import type { BooleanLike } from 'common/react';
+import { BooleanLike } from 'common/react';
 import { marked } from 'marked';
 import { createRef, useEffect, useState } from 'react';
 import { resolveAsset } from 'tgui/assets';

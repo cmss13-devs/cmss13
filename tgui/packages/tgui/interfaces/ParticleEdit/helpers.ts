@@ -34,22 +34,11 @@ export const isStringArray = (value: any): value is string[] => {
   return value.every((x) => typeof x === 'string');
 };
 
-/** sets the "space" keys value on an object, then returns that object*/
+/** sets the "space" keys value on  an object, then returns that object*/
 export const setGradientSpace = (
-  gradient: (string | number | { space: number })[],
+  gradient: (number | string)[],
   space: number,
 ) => {
-  let found = false;
-  gradient?.map((entry) => {
-    if (typeof entry === 'object') {
-      if (Object.keys(entry)[0] === 'space') {
-        entry['space'] = space;
-        found = true;
-      }
-    }
-  });
-  if (!found) {
-    gradient.push({ space: space });
-  }
+  gradient['space'] = space;
   return gradient;
 };

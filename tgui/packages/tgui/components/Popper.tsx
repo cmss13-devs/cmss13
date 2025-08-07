@@ -1,7 +1,7 @@
-import type { Placement } from '@popperjs/core';
+import { Placement } from '@popperjs/core';
 import {
-  type PropsWithChildren,
-  type ReactNode,
+  PropsWithChildren,
+  ReactNode,
   useEffect,
   useRef,
   useState,

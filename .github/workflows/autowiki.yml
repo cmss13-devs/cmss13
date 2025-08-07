@@ -21,9 +21,12 @@ jobs:
     - name: Checkout
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       uses: actions/checkout@v3
-    - name: Install BYOND
+    - name: Restore BYOND cache
       if: steps.secrets_set.outputs.SECRETS_ENABLED
-      uses: ./.github/actions/restore_or_install_byond
+      uses: actions/cache@v3
+      with:
+        path: ~/BYOND
+        key: ${{ runner.os }}-byond-${{ secrets.CACHE_PURGE_KEY }}
     - name: Install rust-g
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       run: |
@@ -34,6 +37,7 @@ jobs:
     - name: Compile and generate Autowiki files
       if: steps.secrets_set.outputs.SECRETS_ENABLED
       run: |
+        bash tools/ci/install_byond.sh
         source $HOME/BYOND/byond/bin/byondsetup
         tools/build/build --ci autowiki
     - name: Run Autowiki

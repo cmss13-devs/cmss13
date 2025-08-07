@@ -1,4 +1,4 @@
-import type { BooleanLike } from 'common/react';
+import { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Flex } from 'tgui/components';
 
@@ -25,9 +25,6 @@ export const InputButtons = (props: InputButtonsProps) => {
     on_submit_actual = () => {
       if (submit_disabled) {
         return;
-      }
-      if (typeof input === 'string') {
-        input.replace(/"/g, '');
       }
       act('submit', { entry: input });
     };

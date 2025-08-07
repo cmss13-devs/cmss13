@@ -13,4 +13,3 @@
 #define P_DATA_ICON_ADD "icon_add"
 #define P_DATA_ICON_REMOVE "icon_remove"
 #define P_DATA_ICON_WEIGHT "icon_edit"
-#define P_DATA_GRADIENT "gradient"

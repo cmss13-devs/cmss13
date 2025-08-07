@@ -611,7 +611,6 @@
 	var/list/supplies = list(
 		"10x24mm, slugs, buckshot, and 10x20mm rounds",
 		"Explosives and grenades",
-		"SHARP ammo",
 		"Rocket ammo",
 		"Sniper ammo",
 		"Anti-Material Sniper ammo",
@@ -641,14 +640,11 @@
 		if("Explosives and grenades")
 			supply_drop = 5
 			to_chat(usr, SPAN_NOTICE("Explosives and grenades will now drop!"))
-		if("SHARP ammo")
-			supply_drop = 6
-			to_chat(usr, SPAN_NOTICE("SHARP ammo will now drop!"))
 		if("Pyrotechnician tanks")
-			supply_drop = 7
+			supply_drop = 6
 			to_chat(usr, SPAN_NOTICE("Pyrotechnician tanks will now drop!"))
 		if("Scout ammo")
-			supply_drop = 8
+			supply_drop = 7
 			to_chat(usr, SPAN_NOTICE("Scout ammo will now drop!"))
 		else
 			return
@@ -751,17 +747,12 @@
 		if(5) // Give them explosives + Grenades for the Grenade spec. Might be too many grenades, but we'll find out.
 			spawnitems = list(/obj/item/storage/box/explosive_mines,
 							/obj/item/storage/belt/grenade/full)
-		if(6) // SHARP ammo
-			spawnitems = list(/obj/item/ammo_magazine/rifle/sharp/explosive,
-							/obj/item/ammo_magazine/rifle/sharp/explosive,
-							/obj/item/ammo_magazine/rifle/sharp/incendiary,
-							/obj/item/ammo_magazine/rifle/sharp/flechette,)
-		if(7) // Pyrotech
+		if(6) // Pyrotech
 			var/fuel = pick(/obj/item/ammo_magazine/flamer_tank/large/B, /obj/item/ammo_magazine/flamer_tank/large/X)
 			spawnitems = list(/obj/item/ammo_magazine/flamer_tank/large,
 							/obj/item/ammo_magazine/flamer_tank/large,
 							fuel)
-		if(8) // Scout
+		if(7) // Scout
 			spawnitems = list(/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom,
 							/obj/item/ammo_magazine/rifle/m4ra/custom/incendiary,

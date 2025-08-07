@@ -14,7 +14,6 @@ import './styles/themes/crt/crt-green.scss';
 import './styles/themes/crt/crt-lobby.scss';
 import './styles/themes/crt/crt-lobby-red.scss';
 import './styles/themes/crt/crt-red.scss';
-import './styles/themes/crt/crt-white.scss';
 import './styles/themes/crt/crt-upp.scss';
 import './styles/themes/crt/crt-yellow.scss';
 import './styles/themes/spookyconsole.scss';
@@ -40,49 +39,58 @@ import './styles/themes/xeno.scss';
 import './styles/themes/hive_status.scss';
 
 import { perf } from 'common/perf';
-import { setupHotReloading } from 'tgui-dev-server/link/client.mjs';
+import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';
 
-import { App } from './App';
 import { setGlobalStore } from './backend';
 import { setupGlobalEvents } from './events';
 import { setupHotKeys } from './hotkeys';
 import { captureExternalLinks } from './links';
-import { render } from './renderer';
+import { createRenderer } from './renderer';
 import { configureStore } from './store';
 
-perf.mark('inception', window.performance?.timeOrigin);
+perf.mark('inception', window.performance?.timing?.navigationStart);
 perf.mark('init');
 
 const store = configureStore();
 
-function setupApp() {
+const renderApp = createRenderer(() => {
+  setGlobalStore(store);
+
+  const { getRoutedComponent } = require('./routes');
+  const Component = getRoutedComponent(store);
+  return <Component />;
+});
+
+const setupApp = () => {
   // Delay setup
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', setupApp);
     return;
   }
 
-  setGlobalStore(store);
-
   setupGlobalEvents();
   setupHotKeys();
   captureExternalLinks();
 
-  store.subscribe(() => render(<App />));
+  // Re-render UI on store updates
+  store.subscribe(renderApp);
 
   // Dispatch incoming messages as store actions
   Byond.subscribe((type, payload) => store.dispatch({ type, payload }));
 
   // Enable hot module reloading
-  if (import.meta.webpackHot) {
+  if (module.hot) {
     setupHotReloading();
-    import.meta.webpackHot.accept(
-      ['./debug', './layouts', './routes', './App'],
-      () => {
-        render(<App />);
-      },
-    );
+    // prettier-ignore
+    module.hot.accept([
+      './components',
+      './debug',
+      './layouts',
+      './routes',
+    ], () => {
+      renderApp();
+    });
   }
-}
+};
 
 setupApp();

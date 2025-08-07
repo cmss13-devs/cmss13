@@ -1,5 +1,7 @@
 import { Box, Tooltip } from 'tgui/components';
-import { render } from 'tgui/renderer';
+import { createRenderer } from 'tgui/renderer';
+
+const render = createRenderer();
 
 export const ListOfTooltips = () => {
   const nodes: JSX.Element[] = [];

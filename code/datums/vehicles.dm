@@ -14,10 +14,6 @@
 	name = "APC"
 	interior_id = "apc"
 
-/datum/map_template/interior/apc_pmc
-	name = "W-Y APC"
-	interior_id = "apc_pmc"
-
 /datum/map_template/interior/apc_command
 	name = "Command APC"
 	interior_id = "apc_command"
@@ -53,3 +49,15 @@
 /datum/map_template/interior/arc
 	name = "ARC"
 	interior_id = "arc"
+
+/datum/map_template/interior/blackfoot
+	name = "blackfoot base"
+	interior_id = "blackfoot"
+
+/datum/map_template/interior/blackfoot_doorgun
+	name = "blackfoot doorgun"
+	interior_id = "blackfoot_doorgun"
+
+/datum/map_template/interior/blackfoot_transport
+	name = "blackfoot transport"
+	interior_id = "blackfoot_transport"

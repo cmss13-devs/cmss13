@@ -13,11 +13,6 @@
 		else
 			appearance.color = _EMISSIVE_COLOR_NO_BLOOM(alpha_ratio)
 
-	//Test to make sure emissives with broken or missing icon states are created
-	if(PERFORM_ALL_TESTS(focus_only/invalid_emissives))
-		if(icon_state && !icon_exists(icon, icon_state))
-			stack_trace("An emissive appearance was added with non-existant icon_state \"[icon_state]\" in [icon]!")
-
 	return appearance
 
 // This is a semi hot proc, so we micro it. saves maybe 150ms

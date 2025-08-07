@@ -1,5 +1,5 @@
 /obj/item/shooting_target_rail
-	name = "Target Rail"
+	name = "target rail"
 	icon = 'icons/obj/structures/shooting_rail.dmi'
 	icon_state = "rail"
 	desc = "a rail that is used to place a shooting target on top. Once wrenched and a proper track is formed, allows practice target to move back and forth."

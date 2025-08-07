@@ -320,7 +320,7 @@
 	dir = connected_direction
 
 /obj/structure/shooting_carriage
-	name = "Shooting range carriage"
+	name = "shooting range carriage"
 	desc = "A motorized carriage to be placed on shooting range tracks. Place a shooting target on it before placing on tracks."
 	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_carriage"

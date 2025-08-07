@@ -45,7 +45,7 @@
 	var/list/blend_turfs = list(/turf/closed/wall)
 	var/list/noblend_turfs = list(/turf/closed/wall/mineral, /turf/closed/wall/almayer/research/containment) //Turfs to avoid blending with
 	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
-	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
+	var/list/noblend_objects = list(/obj/structure/machinery/door/window, /obj/structure/machinery/door/poddoor/railing/no_blend) //Objects to avoid blending with (such as children of listed blend objects.
 
 	var/list/hiding_humans = list()
 

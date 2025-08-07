@@ -422,16 +422,41 @@ Parameters are passed from New.
 /atom/clone
 	var/proj_x = 0
 	var/proj_y = 0
+	var/obj/effect/projector/proj = null
 
-/atom/proc/create_clone(shift_x, shift_y) //NOTE: Use only for turfs, otherwise use create_clone_movable
-	var/turf/T = null
-	T = locate(src.x + shift_x, src.y + shift_y, src.z)
+/atom/proc/create_clone(obj/effect/projector/related_projector) //NOTE: Use only for turfs, otherwise use create_clone_movable
+	var/turf/target_turf = null
+	target_turf = locate(x + related_projector.vector_x, y + related_projector.vector_y, z)
 
-	T.appearance = src.appearance
-	T.setDir(src.dir)
+	if(related_projector.modify_turf)
+		target_turf.appearance = appearance
+		target_turf.setDir(dir)
 
-	GLOB.clones_t.Add(src)
-	src.clone = T
+		if(related_projector.mask_layer)
+			target_turf.layer = ((related_projector.mask_layer-0.5)+(layer/10))
+
+		GLOB.clones_t.Add(src)
+		clone = target_turf
+	else
+		var/atom/movable/clone/facsimile_turf = new /atom/movable/clone(target_turf)
+
+		facsimile_turf.appearance = appearance
+
+		// we don't want a projected lighting underlay (especially when this generates at roundstart) to duplicate over the real turf's lighting (not a very sound way of doing it, but the only one plausible it seems like.)
+		facsimile_turf.underlays -= facsimile_turf.underlays[1]
+		// spider webs and etcetra may be an issue
+		facsimile_turf.overlays = list()
+
+		facsimile_turf.setDir(dir)
+		if(related_projector.mask_layer)
+			facsimile_turf.layer = ((related_projector.mask_layer-0.5)+(layer/10))
+		facsimile_turf.plane = -7
+		facsimile_turf.opacity = related_projector.projected_opacity
+
+		GLOB.clones_t.Add(src)
+		clone = facsimile_turf
+		facsimile_turf.mstr = src
+		facsimile_turf.proj = related_projector
 
 // EFFECTS
 /atom/proc/extinguish_acid()

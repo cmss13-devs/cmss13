@@ -1,4 +1,32 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 8
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop2/sulaco)
+"ab" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/almayer{
+	dir = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/shuttle/drop2/sulaco)
 "ac" = (
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "80"
@@ -33,8 +61,8 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bN" = (
-/obj/item/device/radio/intercom/normandy{
-	pixel_y = 24
+/obj/structure/machinery/light/almayer{
+	dir = 1
 	},
 /turf/open/shuttle/dropship/light_grey_top_right,
 /area/shuttle/drop2/sulaco)
@@ -199,6 +227,10 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop2/sulaco)
 "lJ" = (
+/obj/item/device/radio/intercom/normandy{
+	layer = 3.5;
+	pixel_x = 10
+	},
 /turf/closed/shuttle/dropship2{
 	icon_state = "62"
 	},
@@ -411,6 +443,9 @@
 	normaldoorcontrol = 3;
 	req_one_access_txt = "3;22"
 	},
+/obj/item/device/radio/intercom/alamo{
+	pixel_y = -32
+	},
 /turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
 /area/shuttle/drop2/sulaco)
 "HB" = (
@@ -442,8 +477,8 @@
 	},
 /area/shuttle/drop2/sulaco)
 "Lh" = (
-/obj/item/device/radio/intercom/normandy{
-	pixel_y = 24
+/obj/structure/machinery/light/almayer{
+	dir = 1
 	},
 /turf/open/shuttle/dropship/light_grey_top_left,
 /area/shuttle/drop2/sulaco)
@@ -604,6 +639,10 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/shuttle/drop2/sulaco)
 "Tp" = (
+/obj/item/device/radio/intercom/normandy{
+	layer = 3.5;
+	pixel_x = -10
+	},
 /turf/closed/shuttle/dropship2{
 	icon_state = "64"
 	},
@@ -744,7 +783,7 @@ Co
 SY
 Fq
 SY
-it
+aa
 SY
 it
 Kl
@@ -761,7 +800,7 @@ xx
 SY
 it
 SY
-it
+ab
 SY
 xx
 vd
@@ -807,7 +846,7 @@ xx
 SY
 it
 SY
-it
+aa
 SY
 xx
 vd
@@ -836,7 +875,7 @@ qg
 SY
 OJ
 Qd
-it
+ab
 SY
 it
 QF

@@ -243,6 +243,11 @@
 	var/atom/movable/mstr = null //Used by clones for referral
 	var/proj_x = 0
 	var/proj_y = 0
+	var/proj_base_layer = null
+	var/proj_plane = -6
+	var/proj_mouse_opacity = 1
+	var/proj_opacity = 1
+	var/obj/effect/projector/proj = null
 	unacidable = TRUE
 
 	var/list/image/hud_list
@@ -268,17 +273,32 @@
 
 /atom/movable/clone/bullet_act(obj/projectile/P)
 	return src.mstr.bullet_act(P)
+
+/atom/movable/clone/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
+	return TRUE
+	// at least for how we're using them for airlocks, we don't want clones moving
+
+/atom/movable/clone/Destroy(force)
+	if(!force)
+		return QDEL_HINT_LETMELIVE
+	. = ..()
 /////////////////////
 
-/atom/movable/proc/create_clone_movable(shift_x, shift_y)
-	var/atom/movable/clone/C = new /atom/movable/clone(src.loc)
-	C.density = FALSE
-	C.proj_x = shift_x
-	C.proj_y = shift_y
+/atom/movable/proc/create_clone_movable(obj/effect/projector/related_projector)
+	var/atom/movable/clone/new_clone = new /atom/movable/clone(loc)
+	new_clone.density = FALSE
+	new_clone.proj_x = related_projector.vector_x
+	new_clone.proj_y = related_projector.vector_y
+	if(related_projector.mask_layer)
+		new_clone.proj_base_layer = related_projector.mask_layer-0.5
+	new_clone.proj_plane = related_projector.movables_projection_plane
+	new_clone.proj_mouse_opacity = related_projector.projected_mouse_opacity
+	new_clone.proj_opacity = related_projector.projected_opacity
 
-	GLOB.clones.Add(C)
-	C.mstr = src //Link clone and master
-	src.clone = C
+	GLOB.clones.Add(new_clone)
+	new_clone.mstr = src //Link clone and master
+	new_clone.proj = related_projector
+	clone = new_clone
 
 /atom/movable/proc/update_clone()
 	///---Var-Copy---////
@@ -298,6 +318,21 @@
 	clone.pixel_y = pixel_y
 	clone.transform = transform
 	clone.invisibility = invisibility
+	clone.flags_atom = flags_atom
+	clone.layer = layer
+	clone.opacity = clone.proj_opacity
+	clone.plane = clone.proj_plane // necessary when placing movables (typically plane -6) under a turf (typically plane -7)
+	clone.density = density
+	clone.anchored = anchored
+	clone.name = name
+	clone.mouse_opacity = clone.proj_mouse_opacity
+
+	if(clone.proj_base_layer)
+		for(var/overlay in clone.overlays) // image cannot be reliably interacted with to apply layers
+			if(istype(overlay, /image))
+				clone.overlays.Cut(overlay, overlay)
+
+		clone.layer = clone.proj_base_layer+(layer/10)
 	////////////////////
 
 	if(light) //Clone lighting
@@ -309,7 +344,7 @@
 
 /atom/movable/proc/destroy_clone()
 	GLOB.clones.Remove(src.clone)
-	qdel(src.clone)
+	qdel(src.clone, TRUE)
 	src.clone = null
 
 /**
@@ -352,4 +387,4 @@
 	set_light_color(color)
 
 /atom/movable/proc/onZImpact(turf/impact_turf, height)
-	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)		
+	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)

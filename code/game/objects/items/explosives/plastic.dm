@@ -68,6 +68,8 @@
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
 /obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
+	setDir(get_dir(user, target))
+
 	if(user.action_busy || !flag)
 		return
 	if(!skillcheck(user, req_skill, req_skill_level))
@@ -92,7 +94,6 @@
 			disarm()
 		return
 
-	setDir(get_dir(user, target))
 	user.drop_held_item()
 	cause_data = create_cause_data(initial(name), user)
 	plant_target = target

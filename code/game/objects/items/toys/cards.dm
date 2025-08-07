@@ -49,12 +49,6 @@
 		for(var/number in list("ace", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "jack", "queen", "king"))
 			cards += new /datum/playing_card("[number] of [suit]", "[suit]_[number]", "back_[base_icon]", card_id++)
 
-/obj/item/toy/deck/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(HAS_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS))
-		attack_hand(xeno)
-		return XENO_NONCOMBAT_ACTION
-	return
-
 /obj/item/toy/deck/uno
 	name = "deck of UNO cards"
 	desc = "A simple deck of the Weyland-Yutani classic UNO playing cards."
@@ -117,7 +111,7 @@
 	if(usr.stat || !Adjacent(usr))
 		return
 
-	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	var/mob/living/carbon/human/user = usr
@@ -146,7 +140,7 @@
 	if(user.stat || !Adjacent(user))
 		return
 
-	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_CARDPLAYING_THUMBS))
+	if(!ishuman(user) && !HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	var/cards_length = length(cards)
@@ -192,7 +186,7 @@
 	if(usr.stat || !Adjacent(usr))
 		return
 
-	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	var/mob/living/carbon/user = usr
@@ -224,7 +218,7 @@
 	if(usr.stat || !Adjacent(usr))
 		return
 
-	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(!length(cards))
@@ -274,7 +268,7 @@
 	if(!usr || !over)
 		return
 
-	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(get_dist(usr, over) > 3)
@@ -308,12 +302,6 @@
 /obj/item/toy/handcard/Destroy(force)
 	. = ..()
 	QDEL_NULL_LIST(cards)
-
-/obj/item/toy/handcard/attack_alien(mob/living/carbon/xenomorph/xeno)
-	if(HAS_TRAIT(xeno, TRAIT_CARDPLAYING_THUMBS))
-		attack_hand(xeno)
-		return XENO_NONCOMBAT_ACTION
-	return
 
 /obj/item/toy/handcard/aceofspades
 	icon_state = "spades_ace"
@@ -349,7 +337,7 @@
 	if(usr.stat)
 		return
 
-	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	pile_state = !pile_state
@@ -365,7 +353,7 @@
 	if(usr.stat)
 		return
 
-	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
@@ -456,7 +444,7 @@
 		return
 	if(usr.stat)
 		return
-	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_CARDPLAYING_THUMBS))
+	if(!ishuman(usr) && !HAS_TRAIT(usr, TRAIT_OPPOSABLE_THUMBS))
 		return
 
 	if(isstorage(loc))

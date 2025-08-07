@@ -127,7 +127,6 @@
 	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini
 
 /obj/structure/machinery/sentry_holder/almayer/mini/aicore
-	turret_path = /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares
 
 /obj/structure/machinery/sentry_holder/almayer/mini/aicore/Initialize()
 	. = ..()

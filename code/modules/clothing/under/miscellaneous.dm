@@ -11,8 +11,8 @@
 	item_state = "w_suit"
 
 /obj/item/clothing/under/sl_suit
-	desc = "It's a very simple looking white shirt and black pants."
-	name = "white shirt uniform"
+	desc = "It's a very Amish-looking suit."
+	name = "Amish suit"
 	icon_state = "sl_suit"
 	icon = 'icons/obj/items/clothing/uniforms/formal_uniforms.dmi'
 	item_icons = list(

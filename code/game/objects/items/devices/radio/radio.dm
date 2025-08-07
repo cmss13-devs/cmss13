@@ -229,9 +229,6 @@
 		to each individual headset.
 	*/
 
-	if(should_block_game_interaction(M))
-		return
-
 	//#### Grab the connection datum ####//
 	var/datum/radio_frequency/connection = handle_message_mode(M, message, channel)
 	if(!istype(connection))

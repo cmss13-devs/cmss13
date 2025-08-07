@@ -154,32 +154,6 @@
 	},
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/interior/oob)
-"aaO" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz2"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/shuttle/drop1/kutjevo)
-"aaP" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhupplz1"
-	},
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_south)
-"aaQ" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "hvhuscmlz1"
-	},
-/turf/closed/wall/kutjevo/rock,
-/area/kutjevo/interior/oob)
-"aaR" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/lz_dunes)
-"aaS" = (
-/obj/effect/landmark/spycam_start,
-/turf/open/floor/almayer/research/containment/floor2,
-/area/kutjevo/exterior/lz_pad)
 "aaT" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -2823,7 +2797,7 @@
 /area/kutjevo/interior/power/comms)
 "dST" = (
 /obj/effect/decal/cleanable/blood,
-/obj/item/weapon/gun/shotgun/double/with_stock,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "dTn" = (
@@ -4963,6 +4937,7 @@
 /obj/structure/machinery/bioprinter{
 	stored_metal = 1000
 	},
+/obj/item/clothing/glasses/thermal/syndi/kutjevo,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med/operating)
 "hnZ" = (
@@ -8358,7 +8333,6 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/kutjevo/multi_tiles/southeast,
 /area/kutjevo/interior/complex/med/locks)
 "mHJ" = (
@@ -11695,6 +11669,9 @@
 "rRC" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
+/obj/item/clothing/glasses/thermal/syndi/kutjevo{
+	pixel_y = -2
+	},
 /turf/open/floor/kutjevo/multi_tiles/east,
 /area/kutjevo/interior/colony_south/power2)
 "rSg" = (
@@ -15663,10 +15640,6 @@
 "ybd" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine,
-/obj/structure/sign/calendar{
-	pixel_y = 29;
-	pixel_x = 9
-	},
 /turf/open/floor/kutjevo/tan/alt_edge/north,
 /area/kutjevo/interior/complex/Northwest_Flight_Control)
 "ybh" = (
@@ -16236,7 +16209,7 @@ dxF
 dxF
 dxF
 dxF
-aaQ
+dxF
 dxF
 dxF
 dxF
@@ -18621,7 +18594,7 @@ lAI
 lAI
 lAI
 lAI
-aaO
+lAI
 lAI
 lAI
 lAI
@@ -20206,7 +20179,7 @@ ppX
 ppX
 hzN
 wXf
-aaS
+jGF
 dmy
 dmy
 dmy
@@ -20454,7 +20427,7 @@ wGH
 wGH
 prJ
 wGH
-aaR
+wGH
 wGH
 prJ
 wGH
@@ -43657,7 +43630,7 @@ bpj
 bpj
 bpj
 bpj
-aaP
+bpj
 bpj
 bpj
 bpj

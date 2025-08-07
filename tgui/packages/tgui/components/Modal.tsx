@@ -6,7 +6,7 @@
 
 import { classes } from 'common/react';
 
-import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { Dimmer } from './Dimmer';
 
 export function Modal(props: BoxProps) {

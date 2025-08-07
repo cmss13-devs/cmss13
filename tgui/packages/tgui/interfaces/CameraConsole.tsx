@@ -1,4 +1,4 @@
-import { type BooleanLike, classes } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 import { createSearch } from 'common/string';
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';

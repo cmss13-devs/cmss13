@@ -93,10 +93,6 @@
 		to_chat(user, SPAN_WARNING("The patient needs to be on the table first."))
 		return
 
-	if(!H.has_limb("head"))
-		to_chat(user, SPAN_WARNING("The patient has no head."))
-		return
-
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
@@ -111,10 +107,6 @@
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
-	if(!H.has_limb("head"))
-		to_chat(user, SPAN_WARNING("The patient has no head."))
-		return
-
 	if(H.wear_mask)
 		var/obj/item/mask = H.wear_mask
 		if(mask.flags_inventory & CANTSTRIP)

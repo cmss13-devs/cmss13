@@ -4,13 +4,13 @@
  * @license MIT
  */
 
-import { type BooleanLike, classes } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 import {
   createElement,
-  type KeyboardEventHandler,
-  type MouseEventHandler,
-  type ReactNode,
-  type UIEventHandler,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  ReactNode,
+  UIEventHandler,
 } from 'react';
 
 import { CSS_COLORS } from '../constants';

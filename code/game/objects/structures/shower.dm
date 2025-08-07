@@ -30,9 +30,6 @@
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/effect/mist/steam
-	name = "steam"
-	icon_state = "steam"
 
 /obj/structure/machinery/shower/attack_hand(mob/M as mob)
 	on = !on

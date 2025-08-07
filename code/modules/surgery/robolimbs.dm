@@ -93,15 +93,11 @@
 
 	log_interact(user, target, "[key_name(user)] finished tightening a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
 
-/datum/surgery_step/strenghten_prosthesis_connection/failure(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/nerves_type = target.get_nerves_type()
-	if(nerves_type == "nervous system") //pinching someone's entire nervous system wouldn't make sense
-		nerves_type = "stump"
-	var/pain = (target.species && (target.species.flags & IS_SYNTHETIC)) ? "" : " painfully"
+/datum/surgery_step/strenghten_prosthesis_connection/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
-		SPAN_WARNING("You slip while trying to tighten [target]'s prosthesis, pinching \his [nerves_type][pain]!"),
-		SPAN_WARNING("[user] slips while trying to tighten the prosthesis, pinching your [nerves_type][pain]!"),
-		SPAN_WARNING("[user] slips while trying to tighten [target]'s prosthesis, pinching \his [nerves_type][pain]!"))
+		SPAN_WARNING("You slip while trying to tighten [target]'s prosthesis, pinching \his stump painfully!"),
+		SPAN_WARNING("[user] slips while trying to tighten the prosthesis, pinching your stump painfully!"),
+		SPAN_WARNING("[user] slips while trying to tighten [target]'s prosthesis, pinching \his stump painfully!"))
 
 	log_interact(user, target, "[key_name(user)] failed to tighten a prosthesis to [key_name(target)]'s [surgery.affected_limb.display_name].")
 	return FALSE
@@ -119,11 +115,11 @@
 	failure_sound = 'sound/items/Screwdriver2.ogg'
 
 /datum/surgery_step/calibrate_prosthesis/preop(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	var/nerves_type = target.get_nerves_type()
+	var/nerves = (target.species && (target.species.flags & IS_SYNTHETIC)) ? "control wiring" : "nervous system"
 	user.affected_message(target,
-		SPAN_NOTICE("You start calibrating [target]'s prosthesis to \his [nerves_type]."),
-		SPAN_NOTICE("[user] starts calibrating your prosthesis to your [nerves_type]."),
-		SPAN_NOTICE("[user] starts calibrating [target]'s prosthesis to \his [nerves_type]."))
+		SPAN_NOTICE("You start calibrating [target]'s prosthesis to \his [nerves]."),
+		SPAN_NOTICE("[user] starts calibrating your prosthesis to your [nerves]."),
+		SPAN_NOTICE("[user] starts calibrating [target]'s prosthesis to \his [nerves]."))
 
 	log_interact(user, target, "[key_name(user)] began calibrating a prosthesis on [key_name(target)]'s [surgery.affected_limb.display_name].")
 

@@ -112,7 +112,7 @@
 		return
 	if(opened)
 		user.drop_inv_item_to_loc(W, loc)
-	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/stack/fulton) || istype(W, /obj/item/tool/hand_labeler)) //If it does something to the crate, don't open it.
+	else if(istype(W, /obj/item/packageWrap) || istype(W, /obj/item/stack/fulton))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/C = W

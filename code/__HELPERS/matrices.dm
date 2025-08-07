@@ -102,11 +102,16 @@ list(-1,0,0,0, 0,-1,0,0, 0,0,-1,0, 0,0,0,1, 1,1,1,0)
 list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0,0,0)
 */
 
+
+//Does nothing
+/proc/color_matrix_identity()
+	return list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
+
 //word of warning: using a matrix like this as a color value will simplify it back to a string after being set
 /proc/color_hex2color_matrix(string)
 	var/length = length(string)
 	if((length != 7 && length != 9) || length != length_char(string))
-		return COLOR_MATRIX_IDENTITY
+		return color_matrix_identity()
 	var/r = hex2num(copytext(string, 2, 4))/255
 	var/g = hex2num(copytext(string, 4, 6))/255
 	var/b = hex2num(copytext(string, 6, 8))/255
@@ -114,13 +119,13 @@ list(0.393,0.349,0.272,0, 0.769,0.686,0.534,0, 0.189,0.168,0.131,0, 0,0,0,1, 0,0
 	if(length == 9)
 		a = hex2num(copytext(string, 8, 10))/255
 	if(!isnum(r) || !isnum(g) || !isnum(b) || !isnum(a))
-		return COLOR_MATRIX_IDENTITY
+		return color_matrix_identity()
 	return list(r,0,0,0, 0,g,0,0, 0,0,b,0, 0,0,0,a, 0,0,0,0)
 
 ///Converts a hex color string to a color matrix.
 /proc/color_matrix_from_string(string)
 	if(!string || !istext(string))
-		return COLOR_MATRIX_IDENTITY
+		return color_matrix_identity()
 
 	var/string_r = hex2num(copytext(string, 2, 4)) / 255
 	var/string_g = hex2num(copytext(string, 4, 6)) / 255
@@ -187,9 +192,9 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 //Returns a matrix addition of A with B
 /proc/color_matrix_add(list/A, list/B)
 	if(!istype(A) || !istype(B))
-		return COLOR_MATRIX_IDENTITY
+		return color_matrix_identity()
 	if(length(A) != 20 || length(B) != 20)
-		return COLOR_MATRIX_IDENTITY
+		return color_matrix_identity()
 	var/list/output = list()
 	output.len = 20
 	for(var/value in 1 to 20)
@@ -200,9 +205,9 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 //Returns a matrix multiplication of A with B
 /proc/color_matrix_multiply(list/A, list/B)
 	if(!istype(A) || !istype(B))
-		return COLOR_MATRIX_IDENTITY
+		return color_matrix_identity()
 	if(length(A) != 20 || length(B) != 20)
-		return COLOR_MATRIX_IDENTITY
+		return color_matrix_identity()
 	var/list/output = list()
 	output.len = 20
 	var/x = 1
@@ -220,7 +225,7 @@ round(cos_inv_third+sqrt3_sin, 0.001), round(cos_inv_third-sqrt3_sin, 0.001), ro
 The arg is a list of hex colours, for ex "list("#d4c218", "#b929f7", "#339933"".
 if you want variations of the same color, color_matrix_recolor_red() is simpler.**/
 /proc/color_matrix_recolor_rgb(list/replacement_shades)
-	var/list/final_matrix = COLOR_MATRIX_IDENTITY
+	var/list/final_matrix = color_matrix_identity()
 
 	if(length(replacement_shades) != 3)
 		CRASH("color_matrix_recolor_rgb() called with less than 3 replacement colours.")

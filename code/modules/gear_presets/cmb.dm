@@ -2,10 +2,9 @@
 	name = "Colonial Marshal"
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
-	job_title = JOB_CMB
+	rank = JOB_CMB
 	idtype = /obj/item/card/id/deputy
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
-	origin_override = ORIGIN_CMB
 	minimap_background = "background_cmb"
 	var/human_versus_human = FALSE
 	var/headset_type = /obj/item/device/radio/headset/distress/CMB
@@ -63,7 +62,7 @@
 	role_comm_title = "CMB DEP"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "CMB Deputy"
-	job_title = JOB_CMB
+	rank = JOB_CMB
 
 	minimap_icon = "deputy"
 
@@ -86,7 +85,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud, WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/action, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/flashlight, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera, WEAR_IN_BACK)
@@ -153,7 +152,7 @@
 	minimap_icon = "xo"
 
 	assignment = "CMB Marshal"
-	job_title = JOB_CMB_TL
+	rank = JOB_CMB_TL
 	skills = /datum/skills/cmb/leader
 	minimum_age = 30
 	languages = ALL_HUMAN_LANGUAGES
@@ -189,7 +188,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/beanbag, WEAR_IN_R_STORE)
 	//backpack
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/action, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/holdout, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive/m15/rubber, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/handheld_distress_beacon/cmb, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio, WEAR_IN_BACK)
@@ -261,7 +260,7 @@
 	minimap_icon = "mp"
 
 	assignment = "CMB Riot Control Officer"
-	job_title = JOB_CMB_RIOT
+	rank = JOB_CMB_RIOT
 
 	skills = /datum/skills/cmb
 
@@ -378,7 +377,7 @@
 	minimap_icon = "medic"
 
 	assignment = "CMB Medical Technician"
-	job_title = JOB_CMB_MED
+	rank = JOB_CMB_MED
 	skills = /datum/skills/cmb/medic
 
 /datum/equipment_preset/cmb/med/load_gear(mob/living/carbon/human/new_human)
@@ -429,7 +428,7 @@
 	minimap_icon = "engi"
 
 	assignment = "CMB Breaching Technician"
-	job_title = JOB_CMB_ENG
+	rank = JOB_CMB_ENG
 	skills = /datum/skills/cmb/engi
 
 /datum/equipment_preset/cmb/eng/load_gear(mob/living/carbon/human/new_human)
@@ -483,7 +482,7 @@
 	minimap_icon = "cmb_spc"
 
 	assignment = "CMB SWAT Specialist"
-	job_title = JOB_CMB_SWAT
+	rank = JOB_CMB_SWAT
 	skills = /datum/skills/cmb/spec
 
 /datum/equipment_preset/cmb/spec/load_gear(mob/living/carbon/human/new_human)
@@ -534,7 +533,7 @@
 	minimap_icon = "cmb_syn"
 
 	assignment = "CMB Investigative Synthetic"
-	job_title = JOB_CMB_SYN
+	rank = JOB_CMB_SYN
 	languages = ALL_SYNTH_LANGUAGES
 
 /datum/equipment_preset/cmb/synth/load_skills(mob/living/carbon/human/new_human)
@@ -632,7 +631,7 @@
 	minimap_icon = "pmc_syn"
 
 	assignment = "CMB Riot Control Synthetic"
-	job_title = JOB_CMB_RSYN
+	rank = JOB_CMB_RSYN
 	skills = /datum/skills/synthetic
 
 /datum/equipment_preset/cmb/synth/riot/load_gear(mob/living/carbon/human/new_human)
@@ -694,7 +693,7 @@
 	minimap_icon = "icc"
 
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
-	job_title = JOB_CMB_ICC
+	rank = JOB_CMB_ICC
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_JAPANESE)
 
@@ -755,7 +754,7 @@
 	minimap_icon = "obs"
 
 	assignment = "Interstellar Human Rights Observer"
-	job_title = JOB_CMB_OBS
+	rank = JOB_CMB_OBS
 	skills = /datum/skills/civilian/survivor/doctor
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN)
 
@@ -803,7 +802,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	assignment = "Anchorpoint Station Marine Rifleman"
-	job_title = JOB_SQUAD_MARINE
+	rank = JOB_SQUAD_MARINE
 	paygrades = list(PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-RFN"
 	skills = /datum/skills/pfc/crafty
@@ -856,7 +855,7 @@
 	name = "USCM Anchorpoint Station Team Leader"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	assignment = "Anchorpoint Station Marine Team Leader"
-	job_title = JOB_SQUAD_LEADER
+	rank = JOB_SQUAD_LEADER
 	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-TL"
 	minimum_age = 25
@@ -899,7 +898,7 @@
 	name = "USCM Anchorpoint Station Technical Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	assignment = "Anchorpoint Station Marine Technical Specialist"
-	job_title = JOB_SQUAD_TEAM_LEADER
+	rank = JOB_SQUAD_TEAM_LEADER
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-TS"
 	skills = /datum/skills/tl
@@ -942,7 +941,7 @@
 	name = "USCM Anchorpoint Station Corpsman"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	assignment = "Anchorpoint Station Hospital Corpsman"
-	job_title = JOB_SQUAD_MEDIC
+	rank = JOB_SQUAD_MEDIC
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-HM"
 	skills = /datum/skills/combat_medic
@@ -1001,7 +1000,7 @@
 	name = "USCM Anchorpoint Station Smartgunner"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	assignment = "Anchorpoint Station Marine Smartgunner"
-	job_title = JOB_SQUAD_SMARTGUN
+	rank = JOB_SQUAD_SMARTGUN
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-SG"
 	skills = /datum/skills/smartgunner

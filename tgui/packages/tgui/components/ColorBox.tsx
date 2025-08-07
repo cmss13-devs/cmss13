@@ -5,9 +5,9 @@
  */
 
 import { classes } from 'common/react';
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
 type Props = {
   readonly content?: ReactNode;

@@ -23,8 +23,6 @@
 			hud_icon_state = "synth"
 		if(JOB_CLF_COMMANDER)
 			hud_icon_state = "cellcom"
-		if(JOB_CLF_COORDINATOR)
-			hud_icon_state = "cr"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "clf_[hud_icon_state]")
 

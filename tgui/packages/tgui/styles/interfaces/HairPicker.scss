@@ -6,11 +6,11 @@
 
     .Picker {
       &.Active {
-        outline: 4px solid hsl(208, 100%, 77%);
+        outline: 4px solid #8ac8ff;
       }
 
       & > div {
-        background: hsl(0, 0%, 100%);
+        background: #fff;
         overflow: hidden;
       }
 
@@ -21,10 +21,8 @@
         }
       }
 
-      & {
-        height: 66px;
-        margin-bottom: 6px;
-      }
+      height: 66px;
+      margin-bottom: 6px;
     }
 
     &:not(.ModalOpen) {

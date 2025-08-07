@@ -12,20 +12,19 @@ export const meta = {
   render: () => <Story />,
 };
 
-const TAB_RANGE = ['Tab #1', 'Tab #2', 'Tab #3', 'Tab #4'] as const;
-
-type TabProps = Partial<{
-  centered: boolean;
-  fluid: boolean;
-  icon: boolean;
+type TabProps = {
+  vertical: boolean;
   leftSlot: boolean;
   rightSlot: boolean;
-  vertical: boolean;
-}>;
+  icon: boolean;
+  fluid: boolean;
+  centered: boolean;
+};
 
-function Story() {
-  const [tabProps, setTabProps] = useState<TabProps>({});
+const TAB_RANGE = ['Tab #1', 'Tab #2', 'Tab #3', 'Tab #4'];
 
+const Story = (props) => {
+  const [tabProps, setTabProps] = useState({} as TabProps);
   return (
     <>
       <Section>
@@ -39,7 +38,7 @@ function Story() {
             })
           }
         >
-          Vertical
+          vertical
         </Button.Checkbox>
         <Button.Checkbox
           inline
@@ -115,29 +114,29 @@ function Story() {
       <TabsPrefab tabProps={tabProps} />
     </>
   );
-}
+};
 
-function TabsPrefab(props) {
+const TabsPrefab = (props: { readonly tabProps: TabProps }) => {
   const [tabIndex, setTabIndex] = useState(0);
-
+  const { tabProps } = props;
   return (
     <Tabs
-      vertical={props.tabProps.vertical}
-      fluid={props.tabProps.fluid}
-      textAlign={props.tabProps.centered && 'center'}
+      vertical={tabProps.vertical}
+      fluid={tabProps.fluid}
+      textAlign={tabProps.centered && 'center'}
     >
       {TAB_RANGE.map((text, i) => (
         <Tabs.Tab
           key={i}
           selected={i === tabIndex}
-          icon={props.tabProps.icon ? 'info-circle' : undefined}
+          icon={tabProps.icon ? 'info-circle' : undefined}
           leftSlot={
-            props.tabProps.leftSlot && (
+            tabProps.leftSlot && (
               <Button circular compact color="transparent" icon="times" />
             )
           }
           rightSlot={
-            props.tabProps.rightSlot && (
+            tabProps.rightSlot && (
               <Button circular compact color="transparent" icon="times" />
             )
           }
@@ -148,4 +147,4 @@ function TabsPrefab(props) {
       ))}
     </Tabs>
   );
-}
+};

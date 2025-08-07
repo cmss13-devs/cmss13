@@ -1,11 +1,11 @@
 import { randomInteger } from 'common/random';
-import { type BooleanLike, classes } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 import { storage } from 'common/storage';
 import {
-  type ComponentProps,
+  ComponentProps,
   createContext,
-  type PropsWithChildren,
-  type ReactNode,
+  PropsWithChildren,
+  ReactNode,
   useContext,
   useEffect,
   useRef,

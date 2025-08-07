@@ -6,42 +6,25 @@
 
 /datum/weather_event
 	//// MANDATORY vars
-
-	/// Make this a copy of display name unless theres a good reason
-	var/name = "set this"
-
-	/// The "display name" of this event
-	var/display_name = "set this"
-
-	/// Length of the event
-	var/length = 0
+	var/name = "set this" // Make this a copy of display name unless theres a good reason
+	var/display_name = "set this" // The "display name" of this event
+	var/length = 0 // Length of the event
 
 	//// Optional vars
-
-	/// If this is set, display a fullscreen type to mobs
-	var/fullscreen_type = null
-
-	/// The icon to set on the VFX holder instanced into every turf at round start
-	var/turf_overlay_icon_state
+	var/fullscreen_type = null  // If this is set, display a fullscreen type to mobs
+	var/turf_overlay_icon_state // The icon to set on the VFX holder instanced into every turf at round start
 	var/turf_overlay_alpha = 255
 
 	var/effect_message = "tell a coder to fix this | WEATHER EVENT EFFECT MESSAGE"
 	var/damage_per_tick = 200 // more likely to report the bug if it instantly kills them
 	var/damage_type = BURN
 
-	var/should_sound_weather_alarm = FALSE // Variable to check if weather alarm on loudspeakers (like soro) should be played.
-
 	var/ambience = 'sound/ambience/strata/strata_snow.ogg'
 
-	/// to be used with handle_weather_process()
-	var/has_process = FALSE
+	var/has_process = FALSE // to be used with handle_weather_process()
 	var/lightning_chance = 0
 
-	/// How much will this weather smother fires on turfs and on mobs - should be 0 to 10
-	var/fire_smothering_strength = 0
-
-	/// If this weather event should wash away decals exposed to it
-	var/cleaning = TRUE
+	var/fire_smothering_strength = 0 // How much will this weather smother fires on turfs and on mobs - should be 0 to 10
 
 /datum/weather_event/proc/start_weather_event()
 	return

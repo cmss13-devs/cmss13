@@ -190,7 +190,7 @@
 			continue
 
 		// --- Can understand the speech ---
-		if (!M || R.say_understands(M, speaking))
+		if (!M || R.say_understands(M))
 			// - Not human or wearing a voice mask -
 			if (!M || !ishuman(M) || vmask)
 				heard_masked += R
@@ -246,10 +246,7 @@
 		/* --- Process all the mobs that heard the voice normally (did not understand) --- */
 		if (length(heard_voice))
 			for (var/mob/R in heard_voice)
-				if(R.faction == M.faction)
-					R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname, volume)
-				else
-					R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, vname, 0)
+				R.hear_radio(message,verbage, speaking, part_a, part_b, M,0, vname, 0)
 
 		/* --- Process all the mobs that heard a garbled voice (did not understand) --- */
 			// Displays garbled message (ie "f*c* **u, **i*er!")

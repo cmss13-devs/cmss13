@@ -5,9 +5,9 @@
  */
 
 import { keyOfMatchingRange, scale } from 'common/math';
-import { type BooleanLike, classes } from 'common/react';
+import { BooleanLike, classes } from 'common/react';
 
-import { type BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 import { DraggableControl } from './DraggableControl';
 
 type Props = {

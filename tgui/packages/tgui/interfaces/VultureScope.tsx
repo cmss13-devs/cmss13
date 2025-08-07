@@ -1,4 +1,4 @@
-import type { BooleanLike } from 'common/react';
+import { BooleanLike } from 'common/react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,

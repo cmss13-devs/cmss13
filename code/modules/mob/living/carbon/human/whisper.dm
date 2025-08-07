@@ -29,7 +29,6 @@
 		message = copytext(message,3)
 	else
 		speaking = get_default_language()
-		message = strip_language(message)
 
 	whisper_say(message, speaking, alt_name)
 

@@ -1,11 +1,12 @@
 /datum/law/precautionary_charge
+	severity = PRECAUTIONARY_CHARGE
 	brig_time = PERMABRIG_SENTENCE
-	conditions = "Not inclusive for execution criteria."
+	special_punishment = "Not inclusive for execution criteria."
 
 /datum/law/precautionary_charge/discretionary_arrest
 	name = "Discretionary Detainment"
 	desc = "A discretionary charge used by Commanding Officers to detain personnel for any reason, for the safety and benefit of the operation or security. The duration of this charge is variable and may be pardoned/lifted at any time by the Commanding Officer."
-	conditions = "Not inclusive for execution criteria. May only be appealed to the Acting Commander or Provost/USCM HC."
+	special_punishment = "Not inclusive for execution criteria. May only be appealed to the Acting Commander or Provost/USCM HC."
 
 /datum/law/precautionary_charge/insanity
 	name = "Insanity"
@@ -14,4 +15,4 @@
 /datum/law/precautionary_charge/prisoner_of_war
 	name = "Prisoner of War"
 	desc = "Being a member of a legitimate and recognised faction currently hostile to the USCM."
-	conditions = "Execution is forbidden barring exceptional circumstances."
+	special_punishment = "Execution is forbidden barring exceptional circumstances."

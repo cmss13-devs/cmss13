@@ -5,12 +5,8 @@
  */
 
 import { classes } from 'common/react';
-import { type ComponentProps, useEffect, useRef } from 'react';
-import {
-  type Box,
-  computeBoxClassName,
-  computeBoxProps,
-} from 'tgui/components/Box';
+import { ComponentProps, useEffect, useRef } from 'react';
+import { Box, computeBoxClassName, computeBoxProps } from 'tgui/components/Box';
 import { addScrollableNode, removeScrollableNode } from 'tgui/events';
 
 type Props = Partial<{

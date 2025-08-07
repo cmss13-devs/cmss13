@@ -118,7 +118,7 @@
 	eject(user)
 
 /obj/item/device/taperecorder/clicked(mob/user, list/mods)
-	if(mods[ALT_CLICK])
+	if(mods["alt"])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(loc == user)

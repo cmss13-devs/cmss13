@@ -1,6 +1,6 @@
-import type { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-import type { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { DropshipEquipment } from '../DropshipWeaponsConsole';
 
 export interface ButtonProps {
   children?: ReactNode;

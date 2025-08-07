@@ -23,8 +23,6 @@
 	var/on = FALSE
 	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
 	var/toggleable = TRUE
-	/// Should the flashlight rotate when thrown?
-	var/rotation_on_throw = FALSE
 
 	var/can_be_broken = TRUE //can xenos swipe at this to break it/turn it off?
 	var/breaking_sound = 'sound/handling/click_2.ogg' //sound used when this happens
@@ -42,9 +40,8 @@
 		icon_state = initial(icon_state)
 
 /obj/item/device/flashlight/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
-	if(rotation_on_throw)
-		clockwise = pick(TRUE, FALSE)
-		angular_offset = rand(360)
+	clockwise = pick(TRUE, FALSE)
+	angular_offset = rand(360)
 	return ..()
 
 /obj/item/device/flashlight/proc/update_brightness(mob/user = null)
@@ -327,7 +324,6 @@
 	actions = list() //just pull it manually, neckbeard.
 	raillight_compatible = 0
 	can_be_broken = FALSE
-	rotation_on_throw = TRUE
 	var/burnt_out = FALSE
 	var/fuel = 16 MINUTES
 	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
@@ -407,13 +403,12 @@
 /obj/item/device/flashlight/flare/animation_spin(speed = 5, loop_amount = -1, clockwise = TRUE, sections = 3, angular_offset = 0, pixel_fuzz = 0)
 	pixel_fuzz = 16
 	return ..()
-
 /obj/item/device/flashlight/flare/pickup()
-	. = ..()
 	if(transform)
 		apply_transform(matrix()) // reset rotation
 	pixel_x = 0
 	pixel_y = 0
+	return ..()
 
 /obj/item/device/flashlight/flare/proc/burn_out()
 	turn_off()

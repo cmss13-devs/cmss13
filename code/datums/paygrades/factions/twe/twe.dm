@@ -119,105 +119,105 @@
 	pay_multiplier = 9
 	officer_grade = GRADE_FLAG
 
-/// IASF Enlisted
+///IASF Enlisted
 
 /datum/paygrade/twe/iasf/e1
 	paygrade = PAY_SHORT_IASFE1
-	name = "Private"
-	prefix = "Pte."
+	name = "Nito Rikushi"
+	prefix = "Nt-Shi."
 
 /datum/paygrade/twe/iasf/e2
 	paygrade = PAY_SHORT_IASFE2
-	name = "Private Second Class"
-	prefix = "Pte2."
+	name = "Itto rikushi "
+	prefix = "It-Shi."
 	pay_multiplier = 2.1
 
 /datum/paygrade/twe/iasf/e3
 	paygrade = PAY_SHORT_IASFE3
-	name = "Lance Corporal"
-	prefix = "LCpl."
+	name = "Rikushicho"
+	prefix = "Shi."
 	pay_multiplier = 2.2
 
 /datum/paygrade/twe/iasf/e4
 	paygrade = PAY_SHORT_IASFE4
-	name = "Corporal"
-	prefix = "Cpl."
+	name = "Santo rikuso"
+	prefix = "St-Rik."
 	pay_multiplier = 2.3
 
 /datum/paygrade/twe/iasf/e5
 	paygrade = PAY_SHORT_IASFE5
-	name = "Sergeant"
-	prefix = "Sgt."
+	name = "Nito rikuso"
+	prefix = "Nt-Rik."
 	pay_multiplier = 2.7
 
-/datum/paygrade/twe/iasf/e6
+/datum/paygrade/twe/e6
 	paygrade = PAY_SHORT_IASFE6
-	name = "Staff Sergeant"
-	prefix = "SSgt."
+	name = "Itto rikuso"
+	prefix = "It-Rik."
 	pay_multiplier = 2.7
 
-/datum/paygrade/twe/iasf/e7
+/datum/paygrade/twe/e7
 	paygrade = PAY_SHORT_IASFE7
-	name = "Warrant Officer Class 2"
-	prefix = "WO2."
+	name = "Rikusocho "
+	prefix = "Rik."
 	pay_multiplier = 2.7
 
-/// IASF Officer
+
+///IASF officer
 
 /datum/paygrade/twe/iasf/o1
 	paygrade = PAY_SHORT_IASFO1
-	name = "Second Lieutenant"
-	prefix = "2Lt."
+	name = "Santo Kaii"
+	prefix = "St-Wei."
 
 /datum/paygrade/twe/iasf/o2
 	paygrade = PAY_SHORT_IASFO2
-	name = "Lieutenant"
-	prefix = "Lt."
+	name = "Nito Kaii"
+	prefix = "Nt-Wei."
 	pay_multiplier = 2.1
 
 /datum/paygrade/twe/iasf/o3
 	paygrade = PAY_SHORT_IASFO3
-	name = "Captain"
-	prefix = "Capt."
+	name = "Itto Kaii"
+	prefix = "It-Wei."
 	pay_multiplier = 2.2
 
 /datum/paygrade/twe/iasf/o4
 	paygrade = PAY_SHORT_IASFO4
-	name = "Major"
-	prefix = "Maj."
+	name = "Santo Kaisa"
+	prefix = "St-Sa."
 	pay_multiplier = 2.3
 
 /datum/paygrade/twe/iasf/o5
 	paygrade = PAY_SHORT_IASFO5
-	name = "Lieutenant Colonel"
-	prefix = "LtCol."
+	name = "Nito Kaisa"
+	prefix = "Nt-Sa."
 	pay_multiplier = 2.7
 
 /datum/paygrade/twe/iasf/o6
 	paygrade = PAY_SHORT_IASFO6
-	name = "Colonel"
-	prefix = "Col."
+	name = "Itto Kaisa"
+	prefix = "It-Sa."
 	pay_multiplier = 2.7
 
 /datum/paygrade/twe/iasf/o7
 	paygrade = PAY_SHORT_IASFO7
-	name = "Brigadier"
-	prefix = "Brig."
+	name = "Kaisho-ho"
+	prefix = "It-Sho."
 	pay_multiplier = 2.7
 
 /datum/paygrade/twe/iasf/o8
 	paygrade = PAY_SHORT_IASFO8
-	name = "Major General"
-	prefix = "MajGen."
+	name = "Kaisho"
+	prefix = "Sho."
 	pay_multiplier = 2.7
+
 
 /datum/paygrade/twe/iasf/o9
 	paygrade = PAY_SHORT_IASFO9
-	name = "General of the Brigade"
-	prefix = "GenBrig."
+	name = "Bakuryōchō-taru-shō"
+	prefix = "Bt-Sho."
 	pay_multiplier = 2.7
-
-// Misc
 
 /datum/paygrade/twe/o10
 	paygrade = PAY_SHORT_EMP

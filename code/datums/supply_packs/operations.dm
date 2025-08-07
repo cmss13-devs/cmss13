@@ -73,20 +73,14 @@
 	group = "Operations"
 
 /datum/supply_packs/nuclearbomb
-	name = "Decrypted Operational Blockbuster"
-	contains = list(
-		/obj/item/book/manual/nuclear,
-	)
+	name = "Decrypted Operational Nuke"
 	cost = 0
 	containertype = /obj/structure/machinery/nuclearbomb
 	buyable = 0
 	group = "Operations"
 
 /datum/supply_packs/technuclearbomb
-	name = "Encrypted Operational Blockbuster"
-	contains = list(
-		/obj/item/book/manual/nuclear,
-	)
+	name = "Encrypted Operational Nuke"
 	cost = 0
 	containertype = /obj/structure/machinery/nuclearbomb/tech
 	buyable = 0

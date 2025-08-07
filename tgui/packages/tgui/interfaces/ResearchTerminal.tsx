@@ -1,4 +1,4 @@
-import { type ComponentProps, useState } from 'react';
+import { ComponentProps, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,

@@ -116,7 +116,7 @@
 	return TRUE
 
 /obj/structure/machinery/chem_dispenser/clicked(mob/user, list/mods)
-	if(mods[ALT_CLICK])
+	if(mods["alt"])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		replace_beaker(user)
@@ -285,12 +285,10 @@
 		"kelotane",
 		"anti_toxin",
 		"dexalin",
-		"dexalinp",
 		"inaprovaline",
 		"adrenaline",
 		"peridaxon",
 		"tramadol",
-		"oxycodone",
 		"tricordrazine",
 	)
 

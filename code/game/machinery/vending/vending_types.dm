@@ -462,7 +462,6 @@
 		/obj/item/ammo_magazine/rifle/m4ra/rubber = 40,
 		/obj/item/clothing/head/helmet/marine/MP = 8,
 		/obj/item/explosive/plastic/breaching_charge/rubber = 6,
-		/obj/item/clothing/glasses/mgoggles/mp_riot_shield = 15,
 	)
 
 /obj/structure/machinery/vending/sea
@@ -485,7 +484,6 @@
 		/obj/item/storage/firstaid/fire = 2,
 		/obj/item/storage/firstaid/rad = 1,
 		/obj/item/device/radio/headset = 6,
-		/obj/item/device/flashlight = 4,
 		/obj/item/tool/crew_monitor = 1,
 	)
 	contraband = list(/obj/item/storage/fancy/cigar = 2,/obj/item/tool/lighter/zippo = 2)

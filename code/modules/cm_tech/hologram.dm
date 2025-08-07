@@ -18,8 +18,6 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	var/datum/action/leave_hologram/leave_button
 	///If can be detected on motion detectors.
 	var/motion_sensed = FALSE
-	///If this hologram can hear speech.
-	var/hears_speech = FALSE
 
 /mob/hologram/movement_delay()
 	. = -2 // Very fast speed, so they can navigate through easily, they can't ever have movement delay whilst as a hologram
@@ -138,9 +136,9 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	. = ..()
 
 /mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
-	var/turf/new_turf = get_step(loc, direct)
+	var/turf/new_turf = SSmapping.get_turf_above(M)
 	forceMove(new_turf)
-
+	
 	if(!istype(new_turf, /turf/open_space))
 		UnregisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW)
 		view_registered = FALSE
@@ -156,12 +154,9 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 	return -2
 
-/mob/hologram/look_up/handle_view(mob/M, atom/target)
+/mob/hologram/look_up/handle_view(mob/M, atom/target)	
 	if(M.client)
 		M.client.perspective = EYE_PERSPECTIVE
 		M.client.eye = src
 
 	return COMPONENT_OVERRIDE_VIEW
-
-/mob/hologram/look_up/take_damage(mob/M, damage, damagetype)
-	return //no cancelation of looking up by taking damage

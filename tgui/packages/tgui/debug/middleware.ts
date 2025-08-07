@@ -5,6 +5,7 @@
  */
 
 import { KEY_BACKSPACE, KEY_F10, KEY_F11, KEY_F12 } from 'common/keycodes';
+import type { AnyAction, Middleware } from 'common/redux';
 import { globalEvents } from 'tgui/events';
 import { acquireHotKey } from 'tgui/hotkeys';
 
@@ -14,35 +15,39 @@ import {
   toggleKitchenSink,
 } from './actions';
 
-const relayedTypes = ['backend/update', 'chat/message'];
+// prettier-ignore
+const relayedTypes = [
+  'backend/update',
+  'chat/message',
+];
 
-export function debugMiddleware(store) {
+export const debugMiddleware: Middleware = (store) => {
   acquireHotKey(KEY_F11);
   acquireHotKey(KEY_F12);
   globalEvents.on('keydown', (key) => {
     if (key.code === KEY_F11) {
-      store.dispatch(toggleDebugLayout());
+      store.dispatch(toggleDebugLayout() as any);
     }
     if (key.code === KEY_F12) {
-      store.dispatch(toggleKitchenSink());
+      store.dispatch(toggleKitchenSink() as any);
     }
     if (key.ctrl && key.alt && key.code === KEY_BACKSPACE) {
       // NOTE: We need to call this in a timeout, because we need a clean
       // stack in order for this to be a fatal error.
       setTimeout(() => {
+        // prettier-ignore
         throw new Error(
-          'OOPSIE WOOPSIE!! UwU We made a fucky wucky!! A wittle' +
-            ' fucko boingo! The code monkeys at our headquarters are' +
-            ' working VEWY HAWD to fix this!',
-        );
+          'OOPSIE WOOPSIE!! UwU We made a fucky wucky!! A wittle'
+          + ' fucko boingo! The code monkeys at our headquarters are'
+          + ' working VEWY HAWD to fix this!');
       });
     }
   });
   return (next) => (action) => next(action);
-}
+};
 
-export function relayMiddleware(store) {
-  const devServer = require('tgui-dev-server/link/client.mjs');
+export const relayMiddleware: Middleware = (store) => {
+  const devServer = require('tgui-dev-server/link/client.cjs');
   const externalBrowser = location.search === '?external';
   if (externalBrowser) {
     devServer.subscribe((msg) => {
@@ -58,12 +63,12 @@ export function relayMiddleware(store) {
     acquireHotKey(KEY_F10);
     globalEvents.on('keydown', (key) => {
       if (key === KEY_F10) {
-        store.dispatch(openExternalBrowser());
+        store.dispatch(openExternalBrowser() as any);
       }
     });
   }
   return (next) => (action) => {
-    const { type, relayed } = action;
+    const { type, payload, relayed } = action as AnyAction;
     if (type === openExternalBrowser.type) {
       window.open(location.href + '?external', '_blank');
       return;
@@ -79,4 +84,4 @@ export function relayMiddleware(store) {
     }
     return next(action);
   };
-}
+};

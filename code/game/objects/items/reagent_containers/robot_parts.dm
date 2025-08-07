@@ -200,7 +200,10 @@
 /obj/item/robot_parts/head/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	if(istype(W, /obj/item/device/flash))
-		if(src.flash1 && src.flash2)
+		if(istype(user,/mob/living/silicon/robot))
+			to_chat(user, SPAN_DANGER("How do you propose to do that?"))
+			return
+		else if(src.flash1 && src.flash2)
 			to_chat(user, SPAN_NOTICE(" You have already inserted the eyes!"))
 			return
 		else if(src.flash1)

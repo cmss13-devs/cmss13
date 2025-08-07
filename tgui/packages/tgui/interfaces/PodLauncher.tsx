@@ -1,4 +1,4 @@
-import type { Placement } from '@popperjs/core';
+import { Placement } from '@popperjs/core';
 import { toFixed } from 'common/math';
 import type { BooleanLike } from 'common/react';
 import { storage } from 'common/storage';

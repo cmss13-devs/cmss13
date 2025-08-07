@@ -1,12 +1,11 @@
-import type { Placement } from '@popperjs/core';
+import { Placement } from '@popperjs/core';
 import { Component, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Dropdown, Flex, Input, Section } from 'tgui/components';
 import { globalEvents } from 'tgui/events';
 import { Window } from 'tgui/layouts';
 
-import { replaceRegexChars } from './helpers';
-import type { ButtonProps } from './MfdPanels/types';
+import { ButtonProps } from './MfdPanels/types';
 
 const KEY_MODS = {
   SHIFT: true,
@@ -59,10 +58,8 @@ export const KeyBinds = (props) => {
       ? getAllKeybinds(glob_keybinds)
       : glob_keybinds[selectedTab];
 
-  const filteredKeybinds = keybinds_to_use.filter(
-    (val) =>
-      !searchTerm ||
-      val.full_name.toLowerCase().match(replaceRegexChars(searchTerm)),
+  const filteredKeybinds = keybinds_to_use.filter((val) =>
+    val.full_name.toLowerCase().match(searchTerm),
   );
 
   return (
@@ -90,9 +87,7 @@ export const KeyBinds = (props) => {
                     <Flex.Item grow>
                       <Input
                         value={searchTerm}
-                        onInput={(_, value) =>
-                          setSearchTerm(value.toLowerCase())
-                        }
+                        onInput={(_, value) => setSearchTerm(value)}
                         placeholder="Search..."
                         fluid
                       />

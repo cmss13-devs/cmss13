@@ -5,19 +5,19 @@
  * @license MIT
  */
 
-import { isEscape, KEY } from 'common/keys';
+import { KEY } from 'common/keys';
 import { classes } from 'common/react';
-import type { KeyboardEvent, SyntheticEvent } from 'react';
 import {
   forwardRef,
-  type RefObject,
+  RefObject,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from 'react';
+import { KeyboardEvent, SyntheticEvent } from 'react';
 
-import { Box, type BoxProps } from './Box';
+import { Box, BoxProps } from './Box';
 import { toInputValue } from './Input';
 
 type Props = Partial<{
@@ -28,7 +28,6 @@ type Props = Partial<{
   fluid: boolean;
   maxLength: number;
   noborder: boolean;
-  noResize: boolean;
   /** Fires when user is 'done typing': Clicked out, blur, enter key (but not shift+enter) */
   onChange: (event: SyntheticEvent<HTMLTextAreaElement>, value: string) => void;
   /** Fires once the enter key is pressed */
@@ -63,7 +62,7 @@ export const TextArea = forwardRef(
       value,
       ...boxProps
     } = props;
-    const { className, fluid, nowrap, noResize, ...rest } = boxProps;
+    const { className, fluid, nowrap, ...rest } = boxProps;
 
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const [scrolledAmount, setScrolledAmount] = useState(0);
@@ -83,7 +82,7 @@ export const TextArea = forwardRef(
         return;
       }
 
-      if (isEscape(event.key)) {
+      if (event.key === KEY.Escape) {
         onEscape?.(event);
         if (selfClear) {
           event.currentTarget.value = '';
@@ -132,14 +131,10 @@ export const TextArea = forwardRef(
     /** Updates the initial value on props change */
     useEffect(() => {
       const input = textareaRef.current;
-      if (!input) {
-        return;
-      }
+      if (!input) return;
 
       const newValue = toInputValue(value);
-      if (input.value === newValue) {
-        return;
-      }
+      if (input.value === newValue) return;
 
       input.value = newValue;
     }, [value]);
@@ -181,13 +176,10 @@ export const TextArea = forwardRef(
             'TextArea__textarea',
             scrollbar && 'TextArea__textarea--scrollable',
             nowrap && 'TextArea__nowrap',
-            noResize && 'TextArea--noresize',
           ])}
           maxLength={maxLength}
           onBlur={(event) => onChange?.(event, event.target.value)}
-          onChange={(event) =>
-            onInput?.(event, event.target.value.replace(/"/g, ''))
-          }
+          onChange={(event) => onInput?.(event, event.target.value)}
           onKeyDown={handleKeyDown}
           onScroll={() => {
             if (displayedValue && textareaRef.current) {

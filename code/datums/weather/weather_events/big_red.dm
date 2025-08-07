@@ -13,8 +13,6 @@
 
 	fire_smothering_strength = 1
 
-	cleaning = FALSE
-
 /datum/weather_event/sand
 	name = "Sandstorm"
 	display_name = "Sandstorm"
@@ -30,8 +28,6 @@
 
 	fire_smothering_strength = 2
 
-	cleaning = FALSE
-
 /datum/weather_event/rock
 	name = "Rockstorm"
 	display_name = "Rockstorm"
@@ -46,5 +42,3 @@
 	ambience = 'sound/ambience/strata/strata_blizzard.ogg'
 
 	fire_smothering_strength = 3
-
-	cleaning = FALSE

@@ -1,7 +1,7 @@
 /datum/equipment_preset/contractor
 	name = "Military Contractor"
 	faction = FACTION_CONTRACTOR
-	job_title = JOB_CONTRACTOR
+	rank = JOB_CONTRACTOR
 	idtype = /obj/item/card/id/data
 	faction = FACTION_CONTRACTOR
 	faction_group = list(FACTION_CONTRACTOR)
@@ -64,7 +64,7 @@
 	role_comm_title = "Merc"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "VAIPO Mercenary"
-	job_title = JOB_CONTRACTOR_ST
+	rank = JOB_CONTRACTOR_ST
 	skills = /datum/skills/contractor
 	faction = FACTION_CONTRACTOR
 
@@ -173,7 +173,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Automatic Rifleman"
-	job_title = JOB_CONTRACTOR_MG
+	rank = JOB_CONTRACTOR_MG
 	skills = /datum/skills/contractor/heavy
 	faction = FACTION_CONTRACTOR
 
@@ -235,7 +235,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Engineering Specialist"
-	job_title = JOB_CONTRACTOR_ENGI
+	rank = JOB_CONTRACTOR_ENGI
 	skills = /datum/skills/contractor/engi
 	faction = FACTION_CONTRACTOR
 
@@ -281,7 +281,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIMS Medical Specialist"
-	job_title = JOB_CONTRACTOR_MEDIC
+	rank = JOB_CONTRACTOR_MEDIC
 	skills = /datum/skills/contractor/medic
 	faction = FACTION_CONTRACTOR
 
@@ -327,7 +327,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Team Leader"
-	job_title = JOB_CONTRACTOR_TL
+	rank = JOB_CONTRACTOR_TL
 	skills = /datum/skills/contractor/leader
 	faction = FACTION_CONTRACTOR
 
@@ -378,7 +378,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIPO Support Synthetic"
-	job_title = JOB_CONTRACTOR_SYN
+	rank = JOB_CONTRACTOR_SYN
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES
 
@@ -469,7 +469,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Mercenary"
-	job_title = JOB_CONTRACTOR_COVST
+	rank = JOB_CONTRACTOR_COVST
 	skills = /datum/skills/contractor
 	faction = FACTION_CONTRACTOR
 
@@ -578,7 +578,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Automatic Rifleman"
-	job_title = JOB_CONTRACTOR_COVMG
+	rank = JOB_CONTRACTOR_COVMG
 	skills = /datum/skills/contractor/heavy
 	faction = FACTION_CONTRACTOR
 
@@ -629,7 +629,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Engineering Specialist"
-	job_title = JOB_CONTRACTOR_COVENG
+	rank = JOB_CONTRACTOR_COVENG
 	skills = /datum/skills/contractor/engi
 	faction = FACTION_CONTRACTOR
 
@@ -676,7 +676,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAIMS Medical Specialist"
-	job_title = JOB_CONTRACTOR_COVMED
+	rank = JOB_CONTRACTOR_COVMED
 	skills = /datum/skills/contractor/medic
 	faction = FACTION_CONTRACTOR
 
@@ -723,7 +723,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Team Leader"
-	job_title = JOB_CONTRACTOR_COVTL
+	rank = JOB_CONTRACTOR_COVTL
 	skills = /datum/skills/contractor/leader
 	faction = FACTION_CONTRACTOR
 
@@ -774,7 +774,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = "VAISO Support Synthetic"
-	job_title = JOB_CONTRACTOR_COVSYN
+	rank = JOB_CONTRACTOR_COVSYN
 	skills = /datum/skills/synthetic
 	faction = FACTION_CONTRACTOR
 	languages = ALL_SYNTH_LANGUAGES

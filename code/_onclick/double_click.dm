@@ -1,25 +1,25 @@
 // Default behavior: ignore double clicks (the second click that makes the doubleclick call already calls for a normal click)
 /mob/proc/DblClickOn(atom/A, params)
 	var/list/modifiers = params2list(params)
-	if(modifiers[SHIFT_CLICK] && modifiers[MIDDLE_CLICK])
+	if(modifiers["shift"] && modifiers["middle"])
 		ShiftMiddleDblClickOn(A)
 		return
-	if(modifiers[SHIFT_CLICK] && modifiers[CTRL_CLICK])
+	if(modifiers["shift"] && modifiers["ctrl"])
 		CtrlShiftDblClickOn(A)
 		return
-	if(modifiers[CTRL_CLICK] && modifiers[MIDDLE_CLICK])
+	if(modifiers["ctrl"] && modifiers["middle"])
 		CtrlMiddleDblClickOn(A)
 		return
-	if(modifiers[MIDDLE_CLICK])
+	if(modifiers["middle"])
 		MiddleDblClickOn(A)
 		return
-	if(modifiers[SHIFT_CLICK])
+	if(modifiers["shift"])
 		ShiftDblClickOn(A)
 		return
-	if(modifiers[ALT_CLICK])
+	if(modifiers["alt"])
 		AltDblClickOn(A)
 		return
-	if(modifiers[CTRL_CLICK])
+	if(modifiers["ctrl"])
 		CtrlDblClickOn(A)
 		return
 

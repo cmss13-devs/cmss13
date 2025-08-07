@@ -533,9 +533,8 @@
 			temp_msg += " <a href='byond://?src=\ref[src];use_stethoscope=1'>\[Use Stethoscope\]</a>"
 		msg += "\n<span class = 'deptradio'>Medical actions: [temp_msg]\n"
 
-	var/flavor = print_flavor_text()
-	if(flavor)
-		msg += "[flavor]\n"
+	if(print_flavor_text())
+		msg += "[print_flavor_text()]\n"
 
 	msg += "</span>"
 

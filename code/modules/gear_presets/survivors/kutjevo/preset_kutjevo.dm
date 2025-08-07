@@ -153,16 +153,10 @@
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate_security
-	name = "Survivor - Kutjevo - Synthetic - Corporate Security Goon"
+	name = "Survivor - Kutjevo - Synthetic - Corporate Security"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
-	assignment = JOB_WY_GOON_SYNTH
-	job_title = JOB_WY_GOON_SYNTH
-	faction = FACTION_WY
-	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
-	minimap_icon = "goon_synth"
-	minimap_background = "background_goon"
 
 	survivor_variant = SECURITY_SURVIVOR
 
@@ -173,7 +167,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/pmc/light/synth/corporate(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/corporate(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(new_human), WEAR_HANDS)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/pmc(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/five_slot(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/telebaton(new_human), WEAR_L_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full/synth(new_human), WEAR_WAIST)
@@ -185,10 +179,7 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
-	job_title = JOB_CMB_SYN
-	minimap_background = "background_cmb"
-	minimap_icon = "cmb_syn"
-
+	rank = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)

@@ -3,7 +3,7 @@ import { clamp } from 'common/math';
 import { classes } from 'common/react';
 import { Component, createRef } from 'react';
 
-import { Box, type BoxProps } from './Box';
+import { Box, BoxProps } from './Box';
 
 const DEFAULT_MIN = 0;
 const DEFAULT_MAX = 10000;
@@ -144,7 +144,7 @@ function getClampedNumber(value, minValue, maxValue, allowFloats) {
 export class RestrictedInput extends Component {
   handleBlur: (e: any) => void;
   inputRef: React.RefObject<HTMLInputElement>;
-  declare props: {
+  props: {
     readonly autoSelect?: boolean;
     readonly autoFocus?: boolean;
     readonly maxValue?: number | null;

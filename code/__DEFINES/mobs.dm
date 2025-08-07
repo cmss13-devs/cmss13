@@ -121,7 +121,6 @@
 #define CANSLOW (1<<19)
 #define NO_PERMANENT_DAMAGE (1<<20)
 #define CORRUPTED_ALLY (1<<21)
-#define FAKESOUL (1<<22) // Lets things without souls pretend like they do
 
 // =============================
 // hive types
@@ -188,12 +187,9 @@
 #define SQUEEZE_UNDER_VEHICLES (1<<1)  // Only the van is supported as of now.
 #define EASY_SURGERY (1<<2)  // Surgeries on this mob don't require advanced skills.
 #define SURGERY_MODE_ON (1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
-#define GIVING (1<<4) // Is currently trying to give an item to someone
-#define NOBIOSCAN (1<<5)
-#define HAS_SPAWNED_PET (1<<6) // Has spawned their special pet.
-#define MUTINY_MUTINEER (1<<7)  // Part of the Mutiny Gang
-#define MUTINY_LOYALIST (1<<8) // Allied with command.
-#define MUTINY_NONCOMBAT (1<<9) // NON COMBATANT.
+#define MUTINEER (1<<4)  // Part of the Mutiny Gang
+#define GIVING (1<<5) // Is currently trying to give an item to someone
+#define NOBIOSCAN (1<<6)
 
 //=================================================
 
@@ -264,10 +260,6 @@
 #define ACTION_BLUE_POWER_UP 16
 #define ACTION_PURPLE_POWER_UP 17
 
-#define BUSY_ICON_CLIMBING 18
-
-#define EMOTE_ICON_WALLBOOSTING 19
-
 //defins for datum/hud
 
 #define HUD_STYLE_STANDARD 1
@@ -303,7 +295,6 @@
 #define EMOTING_HEADBUTT   (1<<2)
 #define EMOTING_TAIL_SWIPE (1<<3)
 #define EMOTING_ROCK_PAPER_SCISSORS (1<<4)
-#define EMOTING_WALL_BOOSTING (1<<5)
 
 //forcesay types
 #define SUDDEN 0

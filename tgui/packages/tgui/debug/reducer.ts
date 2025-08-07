@@ -4,13 +4,12 @@
  * @license MIT
  */
 
-type DebugState = {
-  kitchenSink: boolean;
-  debugLayout: boolean;
-};
+import type { ActionData } from './types';
 
-export function debugReducer(state = {} as DebugState, action) {
-  const { type } = action;
+type StateData = { kitchenSink: boolean; debugLayout: boolean };
+
+export const debugReducer = (state = {} as StateData, action: ActionData) => {
+  const { type, payload } = action;
   if (type === 'debug/toggleKitchenSink') {
     return {
       ...state,
@@ -24,4 +23,4 @@ export function debugReducer(state = {} as DebugState, action) {
     };
   }
   return state;
-}
+};

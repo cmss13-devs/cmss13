@@ -62,8 +62,6 @@
 		if(speaking.flags & HIVEMIND)
 			speaking.broadcast(src,trim(message))
 			return
-	else
-		message = strip_language(message)
 
 	// Currently used by drones.
 	if(local_transmit)

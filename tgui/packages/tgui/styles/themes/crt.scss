@@ -15,15 +15,15 @@ $scrollbar-color-multiplier: 0.5 !default;
 
 %theme-crt {
   @include meta.load-css(
-    '~tgui/styles/components/Divider',
+    '../components/Divider.scss',
     $with: ('color': base.$color-fg)
   );
-  @include meta.load-css('~tgui/styles/components/Stack');
+  @include meta.load-css('../components/Stack.scss');
 
   @include meta.load-css(
-    '~tgui/styles/components/Slider',
+    '../components/Slider.scss',
     $with: (
-      'cursor-color': color.adjust(base.$color-fg, $lightness: -0.2%),
+      'cursor-color': darken(base.$color-fg, 0.2),
       'popup-background-color': base.$color-bg,
       'popup-text-color': base.$color-fg
     )
@@ -31,17 +31,16 @@ $scrollbar-color-multiplier: 0.5 !default;
 
   @include meta.load-css(
     '../components/Input.scss',
-    // Replace this when tgui core has font family fixed as !default
     $with: (
-        'text-color': base.$color-fg,
-        'background-color': base.$color-bg,
-        'border-color': base.$color-fg,
-        'font-family': $font-family
-      )
+      'text-color': base.$color-fg,
+      'background-color': base.$color-bg,
+      'border-color': base.$color-fg,
+      'font-family': $font-family
+    )
   );
 
   @include meta.load-css(
-    '~tgui/styles/components/NumberInput',
+    '../components/NumberInput.scss',
     $with: (
       'text-color': base.$color-fg,
       'background-color': base.$color-bg,
@@ -50,7 +49,7 @@ $scrollbar-color-multiplier: 0.5 !default;
   );
 
   @include meta.load-css(
-    '~tgui/styles/components/Knob',
+    '../components/Knob.scss',
     $with: (
       'ring-color': base.$color-fg,
       'knob-color': base.$color-bg,
@@ -60,12 +59,12 @@ $scrollbar-color-multiplier: 0.5 !default;
   );
 
   @include meta.load-css(
-    '~tgui/styles/components/ProgressBar',
+    '../components/ProgressBar.scss',
     $with: ('color-default-fill': base.$color-fg)
   );
 
   @include meta.load-css(
-    '~tgui/styles/components/BlockQuote',
+    '../components/BlockQuote.scss',
     $with: ('color-default': base.$color-fg)
   );
 
@@ -79,19 +78,19 @@ $scrollbar-color-multiplier: 0.5 !default;
     $with: ('scrollbar-color-multiplier': $scrollbar-color-multiplier)
   );
   @include meta.load-css(
-    '~tgui/styles/components/Section',
+    '../components/Section.scss',
     $with: ('title-text-color': base.$color-fg)
   );
   @include meta.load-css(
-    '~tgui/styles/components/Button',
+    '../components/Button.scss',
     $with: (
       'color-default': base.$color-fg,
-      'color-disabled': color.adjust(base.$color-fg, $lightness: -30%)
+      'color-disabled': darken(base.$color-fg, 30)
     )
   );
 
   @include meta.load-css(
-    '~tgui/styles/components/Tabs',
+    '../components/Tabs.scss',
     $with: (
       'tab-color': base.$color-bg,
       'tab-color-selected': base.$color-fg,
@@ -102,7 +101,7 @@ $scrollbar-color-multiplier: 0.5 !default;
   );
 
   @include meta.load-css(
-    '~tgui/styles/components/Modal',
+    '../components/Modal.scss',
     $with: ('background-color': base.$color-bg)
   );
 
@@ -122,7 +121,7 @@ $scrollbar-color-multiplier: 0.5 !default;
     left: 0;
     bottom: 0;
     right: 0;
-    background: hsla(0, 6%, 7%, 0.1);
+    background: rgba(18, 16, 16, 0.1);
     opacity: 0;
     z-index: 2;
     pointer-events: none;
@@ -135,13 +134,15 @@ $scrollbar-color-multiplier: 0.5 !default;
     left: 0;
     bottom: 0;
     right: 0;
-    background:
-      linear-gradient(hsla(0, 6%, 7%, 0) 50%, hsla(0, 0%, 0%, 0.25) 50%),
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+      ),
       linear-gradient(
         90deg,
-        hsla(0, 100%, 50%, 0.06),
-        hsla(120, 100%, 50%, 0.02),
-        hsla(240, 100%, 50%, 0.06)
+        rgba(255, 0, 0, 0.06),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 0, 255, 0.06)
       );
     z-index: 2;
     background-size:
@@ -222,7 +223,7 @@ $scrollbar-color-multiplier: 0.5 !default;
   .Dropdown__control {
     & > .Dropdown__selected-text,
     & > .Dropdown__arrow-button {
-      color: hsla(0, 0%, 0%, 1);
+      color: rgba(0, 0, 0, 1);
     }
   }
 
@@ -240,7 +241,7 @@ $scrollbar-color-multiplier: 0.5 !default;
       border: 2px solid base.$color-fg;
       border-bottom: 6px solid base.$color-fg;
       text-align: center;
-      background-color: hsla(0, 0%, 0%, 0);
+      background-color: rgba(0, 0, 0, 0);
       font-weight: bold;
     }
 

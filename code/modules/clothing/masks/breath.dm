@@ -152,9 +152,6 @@
 	flags_inv_hide = HIDEFACE
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	can_become_accessory = TRUE
-	worn_accessory_slot = ACCESSORY_SLOT_MASK
-	worn_accessory_limit = 2
 
 /obj/item/clothing/mask/rebreather/scarf/tacticalmask/red
 	icon_state = "scarf_red"
@@ -231,9 +228,6 @@
 	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	can_become_accessory = TRUE
-	worn_accessory_slot = ACCESSORY_SLOT_MASK
-	worn_accessory_limit = 2
 
 /obj/item/clothing/mask/tornscarf/green
 	icon_state = "torn_scarf_green"
@@ -328,7 +322,6 @@
 	flags_inventory = ALLOWCPR
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	can_become_accessory = TRUE
 
 /obj/item/clothing/mask/tornscarf/smock/classic
 	icon_state = "smock_classic"
@@ -365,9 +358,6 @@
 	var/adjust = FALSE
 	var/original_state = "neckerchief"
 	actions_types = list(/datum/action/item_action/toggle)
-	can_become_accessory = TRUE
-	worn_accessory_slot = ACCESSORY_SLOT_MASK
-	worn_accessory_limit = 2
 
 /obj/item/clothing/mask/neckerchief/ui_action_click()
 	adjust()
@@ -445,11 +435,6 @@
 	icon_state = "neckerchief_black"
 	item_state = "neckerchief_black"
 	original_state = "neckerchief_black"
-
-/obj/item/clothing/mask/neckerchief/brown
-	icon_state = "neckerchief_brown"
-	item_state = "neckerchief_brown"
-	original_state = "neckerchief_brown"
 
 /obj/item/clothing/mask/owlf_mask
 	name = "\improper OWLF gas mask"

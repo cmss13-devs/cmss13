@@ -2,9 +2,8 @@
     {
         "type": "pick", "name": "event",
         "choices": [
-            { "weight": 6, "type": "def", "values": { "lvevent": "none" } },
-            { "weight": 1, "type": "def", "values": { "lvevent": "clfraid" } },
-            { "weight": 3, "type": "def", "values": { "lvevent": "twe_iasf" } }
+            { "weight": 9, "type": "def", "values": { "lvevent": "none" } },
+            { "weight": 1, "type": "def", "values": { "lvevent": "clfraid" } }
         ]
     }
 ]

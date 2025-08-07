@@ -56,8 +56,6 @@
 /// conveyor belt
 #define CONVEYOR_LAYER 2.56
 
-#define RESIN_UNDER_STRUCTURE_LAYER 2.59
-
 #define RESIN_STRUCTURE_LAYER 2.6
 
 #define LADDER_LAYER 2.7

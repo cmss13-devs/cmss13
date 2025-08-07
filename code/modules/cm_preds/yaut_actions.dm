@@ -291,7 +291,7 @@
 	var/list/data = list()
 
 	data["categories"] = yautja_categories
-	data["theme"] = "crtred"
+	data["theme"] = "crtgreen"
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/yautja/emote as anything in yautja_emotes)

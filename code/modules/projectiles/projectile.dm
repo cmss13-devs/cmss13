@@ -16,6 +16,7 @@
 	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER
 	animate_movement = NO_STEPS //disables gliding because it fights against what animate() is doing
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 
 	var/datum/ammo/ammo //The ammo data which holds most of the actual info.
 

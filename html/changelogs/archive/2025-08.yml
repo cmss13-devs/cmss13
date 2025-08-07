@@ -62,3 +62,9 @@
   - balance: adds windup for big xenos to pounce on different z level and small (extra)
       windup for everyone to pounce up a z level
   - qol: adds up and down tracking indicators
+2025-08-07:
+  Blundir:
+  - bugfix: fixed m39 holster (without ammo one) now has correct holstered gun pixel
+      offset
+  Drathek:
+  - maptweak: Replaced two pictures with calendars on Hybrisa

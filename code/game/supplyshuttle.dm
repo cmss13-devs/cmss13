@@ -1420,6 +1420,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	post_signal("supply_vehicle")
 
 	var/dat = ""
+	var/turf/upper_turf = get_turf(SSshuttle.getDock("almayer vehicle"))
 
 	if(!SSshuttle.vehicle_elevator)
 		return
@@ -1428,7 +1429,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
+		if(SSshuttle.vehicle_elevator.z == upper_turf.z)
 			dat += "Raised"
 			if(!spent)
 				dat += "<br>\[<a href='byond://?src=\ref[src];lower_elevator=1'>Lower</a>\]"
@@ -1453,12 +1454,19 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 /obj/structure/machinery/computer/supply/asrs/vehicle/Topic(href, href_list)
 	. = ..()
+
+	var/turf/upper_turf = get_turf(SSshuttle.getDock("almayer vehicle"))
+	var/turf/lower_turf = get_turf(SSshuttle.getDock("adminlevel vehicle"))
+
 	if(.)
 		return
+
 	if(!is_mainship_level(z))
 		return
+
 	if(spent)
 		return
+
 	if(!linked_supply_controller)
 		world.log << "## ERROR: Eek. The linked_supply_controller controller datum is missing somehow."
 		return
@@ -1471,10 +1479,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
+		if((SSshuttle.vehicle_elevator.z == upper_turf.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
 			return
-		// dunno why the +1 is needed but the vehicles spawn off-center
+
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
 
 		var/obj/vehicle/multitile/ordered_vehicle
@@ -1485,6 +1493,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		if(VO?.has_vehicle_lock())
 			return
+
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
@@ -1495,6 +1504,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	else if(href_list["lower_elevator"])
 		if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
+			return
+
+		if(SSshuttle.vehicle_elevator.z == lower_turf.z)
+			to_chat(usr, SPAN_WARNING("The elevator is already lowered!"))
 			return
 
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))

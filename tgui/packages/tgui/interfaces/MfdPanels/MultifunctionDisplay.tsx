@@ -1,5 +1,5 @@
 import { classes } from 'common/react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Button, Flex } from 'tgui/components';
 import { Table, TableCell, TableRow } from 'tgui/components/Table';

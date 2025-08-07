@@ -2,3 +2,6 @@ giant_lizard_growl1.ogg, giant_lizard_growl2.ogg by D.jones -- https://freesound
 giant_lizard_death.wav by craigsmith -- https://freesound.org/s/437933/ -- License: Creative Commons 0
 giant_lizard_hiss1.ogg, giant_lizard_hiss2.ogg by ZapSplat -- https://www.zapsplat.com/sound-effect-category/alligators-and-crocodiles/ -- License: ZapSplat Standard License
 ghost_whisper_12.ogg by ondrosik -- https://freesound.org/s/207797/ -- License: Creative Commons 0
+
+hit_punch.ogg and hit_kick.ogg are made by Taira Komori
+(https://taira-komori.jpn.org/freesounden.html)

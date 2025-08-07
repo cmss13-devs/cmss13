@@ -96,10 +96,16 @@
 	shrapnel_chance = 0
 
 // Reskinned rubber bullet used for the ES-4 CL pistol.
-/datum/ammo/bullet/pistol/rubber/stun
+/datum/ammo/bullet/pistol/rubber/es4
 	name = "stun pistol bullet"
+	icon_state = "cm_laser"
 	sound_override = null
-
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	sound_hit = "energy_hit"
+	sound_miss = "energy_miss"
+	sound_bounce = "energy_bounce"
+	hit_effect_color = "#00aeff"
+	stamina_damage = 30
 	accuracy = HIT_ACCURACY_TIER_4
 
 // Used by M1911, Deagle and KT-42
@@ -239,6 +245,13 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/pistol/squash/rubber
+	name = "rubber squash-head pistol bullet"
+	damage_type = BURN
+	shrapnel_chance = 0
+	sound_override = 'sound/weapons/gun_c99.ogg'
+	damage = 2
+	stamina_damage = 40
 
 /datum/ammo/bullet/pistol/mankey
 	name = "live monkey"
@@ -272,3 +285,5 @@
 	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/l54_custom
+	penetration= ARMOR_PENETRATION_TIER_3

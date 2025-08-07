@@ -751,7 +751,7 @@
 	if(isliving(target_mob))
 		var/mob/living/target = target_mob
 		//invisible mobs will still randomly be attacked regardless of this check if the lizard is in combat (intended)
-		if(target.stat == DEAD || target.alpha <= 200)
+		if(target.stat == DEAD || target.alpha <= 200 || !isturf(target.loc))
 			return TRUE //TRUE means it's unattackable (amazing code!)
 	return FALSE
 

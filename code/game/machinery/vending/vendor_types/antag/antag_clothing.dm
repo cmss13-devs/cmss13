@@ -40,6 +40,11 @@
 		products_sets = listed_products[/datum/equipment_preset/clf]
 	return products_sets
 
+/obj/structure/machinery/cm_vending/clothing/antag/upp
+	name = "\improper Automated Equipment Rack"
+	icon_state = "upp_clothing"
+	req_access = list(ACCESS_UPP_GENERAL)
+
 //--------------RANDOM EQUIPMENT AND GEAR------------------------
 
 /obj/effect/essentials_set/random/clf_shoes
@@ -263,11 +268,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth_upp, list(
 	list("Purple Armband", 6, /obj/item/clothing/accessory/armband/science, null, VENDOR_ITEM_REGULAR),
 	list("Yellow Armband", 6, /obj/item/clothing/accessory/armband/engine, null, VENDOR_ITEM_REGULAR),
 	list("Green Armband", 6, /obj/item/clothing/accessory/armband/medgreen, null, VENDOR_ITEM_REGULAR),
-	list("Blue Tie", 6, /obj/item/clothing/accessory/blue, null, VENDOR_ITEM_REGULAR),
-	list("Green Tie", 6, /obj/item/clothing/accessory/green, null, VENDOR_ITEM_REGULAR),
-	list("Black Tie", 6, /obj/item/clothing/accessory/black, null, VENDOR_ITEM_REGULAR),
-	list("Gold Tie", 6, /obj/item/clothing/accessory/gold, null, VENDOR_ITEM_REGULAR),
-	list("Red Tie", 6, /obj/item/clothing/accessory/red, null, VENDOR_ITEM_REGULAR),
-	list("Purple Tie", 6, /obj/item/clothing/accessory/purple, null, VENDOR_ITEM_REGULAR),
+	list("Blue Tie", 6, /obj/item/clothing/accessory/tie, null, VENDOR_ITEM_REGULAR),
+	list("Green Tie", 6, /obj/item/clothing/accessory/tie/green, null, VENDOR_ITEM_REGULAR),
+	list("Black Tie", 6, /obj/item/clothing/accessory/tie/black, null, VENDOR_ITEM_REGULAR),
+	list("Gold Tie", 6, /obj/item/clothing/accessory/tie/gold, null, VENDOR_ITEM_REGULAR),
+	list("Red Tie", 6, /obj/item/clothing/accessory/tie/red, null, VENDOR_ITEM_REGULAR),
+	list("Purple Tie", 6, /obj/item/clothing/accessory/tie/purple, null, VENDOR_ITEM_REGULAR),
 	list("Dress Gloves", 6, /obj/item/clothing/gloves/marine/dress, null, VENDOR_ITEM_REGULAR),
 ))

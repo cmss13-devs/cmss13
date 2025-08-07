@@ -214,7 +214,7 @@
 
 			for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
 				bottle.AddComponent(/datum/component/label, label)
-				if(length(label) < 3)
+				if(length(label) < 4)
 					bottle.maptext_label = label
 					bottle.update_icon()
 
@@ -330,7 +330,7 @@
 
 					if(label_component_on_main_bottle != label_component_on_inputed_bottle)
 						bottle.AddComponent(/datum/component/label, label_component_on_main_bottle.label_name)
-						if(length(main_bottle.maptext_label) < 3)
+						if(length(main_bottle.maptext_label) < 4)
 							bottle.maptext_label = main_bottle.maptext_label
 							bottle.update_icon()
 					else if(label_component_on_inputed_bottle != label_component_on_main_bottle)
@@ -488,3 +488,6 @@
 	pill_maker = FALSE
 	vial_maker = TRUE
 	max_pill_count = 0
+
+/obj/structure/machinery/chem_master/vial
+	vial_maker = TRUE

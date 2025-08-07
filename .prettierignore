@@ -3,3 +3,6 @@
 
 # We want it to run into the TGUI folder, however.
 !/tgui
+
+# Avoid running on any bundles.
+/tgui/public/**/*

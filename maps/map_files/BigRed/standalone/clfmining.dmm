@@ -369,9 +369,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dw" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	faction_group = list("CLF")
-	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dy" = (
@@ -940,9 +938,8 @@
 /area/bigredv2/caves/mining)
 "nW" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -1087,6 +1084,7 @@
 /obj/item/storage/backpack/general_belt,
 /obj/item/storage/backpack/general_belt,
 /obj/item/storage/backpack/general_belt,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/mars_cave/mars_cave_13,
 /area/bigredv2/caves/mining)
 "qU" = (
@@ -1518,7 +1516,7 @@
 "yF" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/weapon/gun/launcher/grenade/m81/m79{
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1{
 	pixel_x = -3;
 	pixel_y = -9
 	},
@@ -1875,9 +1873,8 @@
 /turf/open/mars_cave/mars_cave_3,
 /area/bigredv2/caves/mining)
 "DI" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
@@ -1888,9 +1885,8 @@
 "DN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/burger,
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
@@ -2343,9 +2339,8 @@
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 6
 	},
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 4;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 4
 	},
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/caves/mining)
@@ -2755,18 +2750,14 @@
 /area/bigredv2/caves/mining)
 "QZ" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "Rg" = (
@@ -2820,9 +2811,7 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 4
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "RP" = (
@@ -2956,9 +2945,8 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Tw" = (
-/obj/structure/machinery/defenses/sentry/premade/dumb{
-	dir = 8;
-	faction_group = list("CLF")
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
 	},
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
@@ -3068,6 +3056,7 @@
 /obj/item/explosive/grenade/high_explosive/frag{
 	desc = "High-Explosive Fragmenting-Antipersonnel. A small, but deceptively strong fragmentation grenade that has been phasing out the M15 fragmentation grenades alongside the M40 HEDP. Capable of being loaded in the M92 Launcher, or thrown by hand. This one seems to have weird insciptions all over it. You can barely make out 'PrAIs3 thE H3f@ G0d'"
 	},
+/obj/item/flag/plantable/clf,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "Wp" = (

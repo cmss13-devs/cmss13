@@ -32,7 +32,6 @@
 	var/last_output = 0
 
 	var/name_tag = null
-	var/obj/structure/machinery/power/terminal/terminal = null
 	//Holders for powerout event.
 
 	var/open_hatch = 0

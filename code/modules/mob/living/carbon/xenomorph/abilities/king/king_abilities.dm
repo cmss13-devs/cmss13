@@ -29,7 +29,7 @@
 	name = "Destroy"
 	action_icon_state = "charge"
 	macro_path = /datum/action/xeno_action/verb/verb_destroy
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	xeno_cooldown = 60 SECONDS
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_3

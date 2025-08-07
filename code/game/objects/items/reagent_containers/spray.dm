@@ -78,6 +78,9 @@
 		if(!human_user.allow_gun_usage && reagents.contains_harmful_substances())
 			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 			return FALSE
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return FALSE
 
 	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
 	D.create_reagents(amount_per_transfer_from_this)

@@ -29,6 +29,22 @@
 	///failure >:(
 	var/failure_sound
 
+//when a surgery step wants to use an anatomy type, we use these procs to fetch the correct type.
+/mob/living/carbon/human/proc/get_flesh_type()
+	return species.flesh_type
+
+/mob/living/carbon/human/proc/get_nerves_type()
+	return species.nerves_type
+
+/mob/living/carbon/human/proc/get_muscle_type()
+	return species.muscle_type
+
+/mob/living/carbon/human/proc/get_vasculature_type()
+	return species.vasculature_type
+
+/mob/living/carbon/human/proc/get_bone_type()
+	return species.bone_type
+
 /datum/surgery_step/New()
 	. = ..()
 	for(var/tool_path in tools)
@@ -58,7 +74,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 			return tools_cache[tool.type]
 	return FALSE
 
-///does any extra checks that is is SUBTYPED to perform
+///does any extra checks that it is SUBTYPED to perform
 /datum/surgery_step/proc/extra_checks(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, repeating, skipped)
 	return TRUE
 
@@ -206,6 +222,7 @@ affected_limb, or location vars. Also, in that case there may be a wait between 
 	else //Help intent.
 		if(do_after(user, step_duration, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_FRIENDLY,target,INTERRUPT_MOVED,BUSY_ICON_MEDICAL))
 			success(user, target, target_zone, tool, tool_type, surgery)
+			SEND_SIGNAL(user, COMSIG_HUMAN_SURGERY_STEP_SUCCESS, target, surgery, tool)
 			advance = TRUE
 			play_success_sound(user, target, target_zone, tool, surgery)
 			if(repeat_step && repeat_step_criteria(user, target, target_zone, tool, tool_type, surgery))

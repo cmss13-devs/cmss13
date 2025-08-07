@@ -4,8 +4,8 @@
  * @license MIT
  */
 
-import { BooleanLike, classes } from 'common/react';
-import { PropsWithChildren, ReactNode } from 'react';
+import { type BooleanLike, classes } from 'common/react';
+import type { PropsWithChildren, ReactNode } from 'react';
 
 import { Box, unit } from './Box';
 import { Divider } from './Divider';

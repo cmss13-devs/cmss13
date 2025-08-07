@@ -745,7 +745,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		var/obj/item/device/multitool/MT = W
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
-			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
+			to_chat(user, SPAN_WARNING("You do not understand how to tweak access requirements in [src]."))
 			return FALSE
 		if(stat != WORKING)
 			to_chat(user, SPAN_WARNING("[src] must be in working condition and powered for you to hack it."))
@@ -1295,6 +1295,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 		if(islist(item_ref)) // multi-vending
 			var/list/ref_list = item_ref
 			item_ref = ref_list[1]
+		var/icon/image_icon = icon(initial(item_ref.icon), initial(item_ref.icon_state))
+		var/image_size = "[image_icon.Width()]x[image_icon.Height()]"
 
 		var/is_category = item_ref == null
 
@@ -1307,7 +1309,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			"prod_color" = priority,
 			"prod_desc" = initial(item_ref.desc),
 			"prod_cost" = p_cost,
-			"image" = imgid
+			"image" = imgid,
+			"image_size" = image_size,
 		)
 
 		if (is_category == 1)

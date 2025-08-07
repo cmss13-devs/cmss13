@@ -82,6 +82,17 @@ GLOBAL_LIST_EMPTY(dummy_mob_list)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_TUTORIAL)
 	anchored = TRUE
 
+/mob/living/carbon/human/realistic_dummy/Initialize() // Now comes pre-fitted with Marine gear!! Tutorial realism increased by 400%!!!
+	. = ..()
+	status_flags |= FAKESOUL
+	create_hud()
+	arm_equipment(src, /datum/equipment_preset/uscm/tutorial_rifleman)
+
+/mob/living/carbon/human/realistic_dummy/updatehealth()
+	. = ..()
+	if(health >= 70)
+		SEND_SIGNAL(src, COMSIG_HUMAN_HM_TUTORIAL_TREATED)
+
 /// Professor Dummy, used by CMOs and SEAs to teach new nurses/doctors
 /mob/living/carbon/human/professor_dummy/Initialize()
 	. = ..()

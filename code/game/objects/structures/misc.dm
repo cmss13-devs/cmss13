@@ -1,3 +1,10 @@
+#define PRACTICE_LEVEL_LOW list(XENO_HEALTH_RUNNER, XENO_NO_ARMOR) //runner
+#define PRACTICE_LEVEL_MEDIUM_LOW list(XENO_HEALTH_TIER_6, XENO_NO_ARMOR)//drone
+#define PRACTICE_LEVEL_MEDIUM list(XENO_HEALTH_TIER_6, XENO_ARMOR_TIER_1) //warrior
+#define PRACTICE_LEVEL_HIGH list(XENO_HEALTH_TIER_10, XENO_ARMOR_TIER_3)//crusher
+#define PRACTICE_LEVEL_VERY_HIGH list(XENO_HEALTH_QUEEN, XENO_ARMOR_TIER_2)//queen
+#define PRACTICE_LEVEL_EXTREMELY_HIGH list(XENO_HEALTH_KING, XENO_ARMOR_FACTOR_TIER_5)//king
+
 /obj/structure/showcase
 	name = "Showcase"
 	icon = 'icons/obj/structures/props/stationobjs.dmi'
@@ -71,12 +78,60 @@
 
 /obj/structure/target
 	name = "shooting target"
-	anchored = FALSE
-	desc = "A shooting target."
-	icon = 'icons/obj/objects.dmi'
+	desc = "A shooting target. Installed on a holographic display mount to help assess the damage done. While being a close replica of real threats a marine would encounter, its not a real target - special firing procedures seen in weapons such as XM88 or Holotarget ammo wont have any effect."
+	icon = 'icons/obj/structures/props/target_dummies.dmi'
 	icon_state = "target_a"
 	density = FALSE
-	health = 5000
+	health = 10000
+	wrenchable = TRUE
+	anchored = TRUE
+	///mode that dictates how difficult the target should be to flatten(kill)
+	var/list/practice_mode = PRACTICE_LEVEL_LOW
+	///health of the target mode
+	var/practice_health = 230
+/obj/structure/target/Initialize(mapload, ...)
+	. = ..()
+	icon_state = pick("target_a", "target_q")
+
+/obj/structure/target/get_examine_text(mob/user)
+	. = ..()
+	. += SPAN_BOLDNOTICE("It seems to have a control panel on it.")
+	. += SPAN_NOTICE("It appears to be at [floor(max(1, practice_health)/practice_mode[1]*100)]% health.")
+	if(practice_health <= 0)
+		. += SPAN_WARNING("[src] is currently rebooting!")
+
+/obj/structure/target/bullet_act(obj/projectile/bullet)
+	. = ..()
+	if(practice_health <= 0 || !anchored)
+		return
+	var/damage_dealt = floor(armor_damage_reduction(GLOB.xeno_ranged, bullet.damage, practice_mode[2], bullet.ammo.penetration))
+	langchat_speech(damage_dealt, get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, animation_style = LANGCHAT_FAST_POP, additional_styles = list("langchat_small"))
+	practice_health -= damage_dealt
+	animation_flash_color(src, "#FF0000", 1)
+	playsound(loc, get_sfx("ballistic_hit"), 20, TRUE, 7)
+	if(practice_health <= 0)
+		start_practice_health_reset()
+
+/obj/structure/target/attack_hand(mob/user)
+	. = ..()
+	var/list/sorted_options = list("Very light target" = PRACTICE_LEVEL_LOW, "Light target" = PRACTICE_LEVEL_MEDIUM_LOW, "Standard target" = PRACTICE_LEVEL_MEDIUM, "Heavy target" = PRACTICE_LEVEL_HIGH, "Super-heavy target" = PRACTICE_LEVEL_VERY_HIGH, "Impossible" = PRACTICE_LEVEL_EXTREMELY_HIGH)
+	var/picked_option = tgui_input_list(user, "Select target difficulty.", "Target difficulty", sorted_options,  20 SECONDS)
+	if(picked_option)
+		practice_mode = sorted_options[picked_option]
+		practice_health = practice_mode[1]
+		user.visible_message(SPAN_NOTICE("[user] adjusted the difficulty of [src]."), SPAN_NOTICE("You adjusted the difficulty of [src] to [lowertext(picked_option)]"))
+
+/obj/structure/target/proc/start_practice_health_reset()
+	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_IN)
+	animate(transform = matrix(270, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
+	langchat_speech("[src] folds to the ground!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	playsound(loc, 'sound/machines/chime.ogg', 50, TRUE, 7)
+	addtimer(CALLBACK(src, PROC_REF(raise_target)), 5 SECONDS)
+
+/obj/structure/target/proc/raise_target()
+	animate(src, transform = matrix(0, MATRIX_ROTATE), time = 1, easing = EASE_OUT)
+	langchat_speech("[src] raises back into position!", get_mobs_in_view(7, src) , GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("langchat_small"))
+	practice_health = practice_mode[1]
 
 /obj/structure/target/syndicate
 	icon_state = "target_s"
@@ -299,10 +354,20 @@
 
 /obj/structure/stairs/multiz
 	var/direction
+	layer = OBJ_LAYER // Cannot be obstructed by weeds
+	var/list/blockers = list()
 
 /obj/structure/stairs/multiz/Initialize(mapload, ...)
 	. = ..()
 	RegisterSignal(loc, COMSIG_TURF_ENTERED, PROC_REF(on_turf_entered))
+	for(var/turf/blocked_turf in range(1, src))
+		blockers += new /obj/effect/build_blocker(blocked_turf, src)
+		new /obj/structure/blocker/anti_cade(blocked_turf)
+
+/obj/structure/stairs/multiz/Destroy()
+	QDEL_LIST(blockers)
+
+	. = ..()
 
 /obj/structure/stairs/multiz/proc/on_turf_entered(turf/source, atom/movable/enterer)
 	if(!istype(enterer, /mob))
@@ -329,7 +394,7 @@
 		actual_turf = SSmapping.get_turf_above(target_turf)
 	else
 		actual_turf = SSmapping.get_turf_below(target_turf)
-	
+
 	if(actual_turf)
 		if(istype(mover, /mob))
 			var/mob/mover_mob = mover
@@ -527,3 +592,9 @@
 
 #undef DOUBLE_BAND
 #undef TRIPLE_BAND
+#undef PRACTICE_LEVEL_LOW
+#undef PRACTICE_LEVEL_MEDIUM_LOW
+#undef PRACTICE_LEVEL_MEDIUM
+#undef PRACTICE_LEVEL_HIGH
+#undef PRACTICE_LEVEL_VERY_HIGH
+#undef PRACTICE_LEVEL_EXTREMELY_HIGH

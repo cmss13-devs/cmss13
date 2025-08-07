@@ -143,6 +143,10 @@
 //Another wrapper for try_move()
 /obj/vehicle/multitile/tank/relaymove(mob/user, direction)
 	if(user == seats[VEHICLE_DRIVER])
+		// Check if treads are installed
+		if(!(locate(/obj/item/hardpoint/locomotion/treads) in hardpoints))
+			return FALSE
+
 		return ..()
 
 	if(user != seats[VEHICLE_GUNNER])

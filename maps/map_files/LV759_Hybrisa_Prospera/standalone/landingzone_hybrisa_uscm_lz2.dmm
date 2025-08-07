@@ -1,0 +1,29 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/plating,
+/area/lv759/outdoors/landing_zone_1)
+"e" = (
+/obj/docking_port/stationary/marine_dropship/lz1{
+	faction = "Yautja"
+	},
+/turf/open/floor/plating/hybrisa/darkredfull2,
+/area/lv759/outdoors/landing_zone_1)
+"U" = (
+/turf/open/floor/plating/hybrisa/darkredfull2,
+/area/lv759/outdoors/landing_zone_1)
+
+(1,1,1) = {"
+a
+U
+a
+"}
+(2,1,1) = {"
+U
+e
+U
+"}
+(3,1,1) = {"
+a
+U
+a
+"}

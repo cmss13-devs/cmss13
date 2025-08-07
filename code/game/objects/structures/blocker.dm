@@ -5,6 +5,7 @@
 	anchored = TRUE
 	unacidable = TRUE
 	unslashable = TRUE
+	explo_proof = TRUE
 	icon = 'icons/landmarks.dmi'
 	icon_state = "map_blocker"
 

@@ -97,6 +97,7 @@
 #define PLASMA_PHEROMONE "pheromoneplasma"
 #define PLASMA_CHITIN "chitinplasma"
 #define PLASMA_CATECHOLAMINE "catecholamineplasma"
+#define PLASMA_NUTRIENT "nutrientplasma"
 #define PLASMA_EGG "eggplasma"
 #define PLASMA_NEUROTOXIN "neurotoxinplasma"
 #define PLASMA_ROYAL "royalplasma"
@@ -186,6 +187,7 @@
 #define PROPERTY_ANTIPARASITIC "anti-parasitic"
 #define PROPERTY_ELECTROGENETIC "electrogenetic"
 #define PROPERTY_ORGANSTABILIZE "organ-stabilizing"
+#define PROPERTY_CRITICALSTABILIZE "critical-stabilizing"
 //Rare Combo, made by combining other properties
 #define PROPERTY_DEFIBRILLATING "defibrillating"
 #define PROPERTY_THANATOMETABOL "thanatometabolizing"
@@ -296,9 +298,11 @@
 #define POTENCY_MULTIPLIER_VVLOW 0.1
 #define POTENCY_MULTIPLIER_VLOW 0.25
 #define POTENCY_MULTIPLIER_LOW 0.5
+#define POTENCY_MULTIPLIER_MEDIUMLOW 1.5
 #define POTENCY_MULTIPLIER_MEDIUM 2
 #define POTENCY_MULTIPLIER_HIGH 3
 #define POTENCY_MULTIPLIER_VHIGH 5
+#define POTENCY_MULTIPLIER_VVHIGH 6
 #define POTENCY_MULTIPLIER_HIGHEXTREMEINTER 7.5
 #define POTENCY_MULTIPLIER_EXTREME 10
 

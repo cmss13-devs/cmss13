@@ -265,11 +265,17 @@
 		list("Mar", null),
 		list("ass", "hudsquad_ass"),
 		list("load", "hudsquad_load"),
+		list("mortar", "hudsquad_mortar"),
 		list("Eng", "hudsquad_engi"),
 		list("Med", "hudsquad_med"),
 		list("medk9", "hudsquad_medk9"),
 		list("SG", "hudsquad_gun"),
 		list("Spc", "hudsquad_spec"),
+		list("SpcDem", "hudsquad_spec_demo"),
+		list("SpcSn", "hudsquad_spec_sniper"),
+		list("SpcGr", "hudsquad_spec_grenadier"),
+		list("SpcShp", "hudsquad_spec_sharp"),
+		list("SpcPy", "hudsquad_spec_pyro"),
 		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
 	)
@@ -295,6 +301,7 @@
 		/obj/item/storage/box,
 		/obj/item/ammo_box,
 		/obj/item/reagent_container,
+		/obj/item/reagent_container/glass/beaker/vial,
 		/obj/item/ammo_magazine,
 		/obj/item/device/binoculars,
 		/obj/item/clothing/under/marine,
@@ -309,8 +316,16 @@
 		/obj/item/weapon,
 	)
 
+	var/list/icons_to_always_load = list(
+		/obj/item/storage/pill_bottle,
+	)
+
 /datum/asset/spritesheet/vending_products/register()
-	for (var/current_product in GLOB.vending_products)
+	var/additional_types = list()
+	for(var/add_type in icons_to_always_load)
+		additional_types += typesof(add_type)
+
+	for (var/current_product in additional_types + GLOB.vending_products)
 		var/atom/item = current_product
 		var/icon_file = initial(item.icon)
 		var/icon_state = initial(item.icon_state)
@@ -384,6 +399,38 @@
 				else
 					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
 			stack_trace("[fruit] does not have a valid icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state]), icon_states=[icon_states_string]")
+			icon_file = 'icons/turf/floors/floors.dmi'
+			icon_state = ""
+
+		var/icon/iconNormal = icon(icon_file, icon_state, SOUTH)
+		Insert(icon_name, iconNormal)
+
+		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
+		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
+		Insert("[icon_name]_big", iconBig)
+	return ..()
+
+/datum/asset/spritesheet/choose_design
+	name = "choosedesign"
+
+/datum/asset/spritesheet/choose_design/register()
+	var/icon_file = 'icons/mob/hud/actions_xeno.dmi'
+	var/icon_states_list = icon_states(icon_file)
+	for(var/obj/effect/alien/resin/design/design as anything in typesof(/obj/effect/alien/resin/design))
+		var/icon_state = initial(design.icon_state)
+		var/icon_name = replacetext(icon_state, " ", "-")
+
+		if (sprites[icon_name])
+			continue
+
+		if(!(icon_state in icon_states_list))
+			var/icon_states_string
+			for (var/an_icon_state in icon_states_list)
+				if (!icon_states_string)
+					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
+				else
+					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
+			stack_trace("[design] does not have a valid icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state]), icon_states=[icon_states_string]")
 			icon_file = 'icons/turf/floors/floors.dmi'
 			icon_state = ""
 

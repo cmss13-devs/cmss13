@@ -326,10 +326,14 @@ GLOBAL_LIST_INIT(wj_emotes, setup_working_joe_emotes())
 GLOBAL_LIST_EMPTY(hj_categories)
 /// dict ("category" : (emotes)) of every hj emote typepath
 GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
-/// dict ("category" : (emotes)) of every uppj emote typepath
+/// list of categories for upp joes
 GLOBAL_LIST_EMPTY(uppj_categories)
 /// dict ("category" : (emotes)) of every uppj emote typepath
 GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
+/// list of categories for wy combat droids
+GLOBAL_LIST_EMPTY(wy_droid_categories)
+/// dict ("category" : (emotes)) of every wy droid emote typepath
+GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]
@@ -425,9 +429,7 @@ GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
 	var/list/language_keys = list()
 	for (var/language_name in subtypesof(/datum/language))
 		var/datum/language/L = language_name
-		language_keys[":[lowertext(initial(L.key))]"] = initial(L.name)
-		language_keys[".[lowertext(initial(L.key))]"] = initial(L.name)
-		language_keys["#[lowertext(initial(L.key))]"] = initial(L.name)
+		language_keys["![lowertext(initial(L.key))]"] = initial(L.name)
 	return language_keys
 
 //Comb Sort. This works apparently, so we're keeping it that way
@@ -605,7 +607,7 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 		emotes_to_add += emote
 	return emotes_to_add
 
-/// Setup for Hazard joe emotes and category list, returns data for uppj_emotes
+/// Setup for UPP joe emotes and category list, returns data for uppj_emotes
 /proc/setup_upp_joe_emotes()
 	var/list/emotes_to_add = list()
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
@@ -614,6 +616,19 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 
 		if(!(initial(emote.category) in GLOB.uppj_categories))
 			GLOB.uppj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
+/// Setup for WY droid emotes and category list, returns data for wy_droid_emotes
+/proc/setup_wy_droid_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/colonial/wy_droid))
+		if(!initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.wy_droid_categories))
+			GLOB.wy_droid_categories += initial(emote.category)
 
 		emotes_to_add += emote
 	return emotes_to_add

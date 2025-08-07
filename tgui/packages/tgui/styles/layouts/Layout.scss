@@ -14,7 +14,7 @@ $scrollbar-base: color.scale(
   $lightness: -25% * $scrollbar-color-multiplier
 );
 $scrollbar-face: color.scale(
-  base.$color-bg,
+  color.mix(base.$color-bg, base.$color-fg, $method: hsl, $weight: 85%),
   $lightness: if($luminance > 0.05, 30%, 10%) * $scrollbar-color-multiplier
 );
 
@@ -22,39 +22,6 @@ $scrollbar-face: color.scale(
 html,
 body {
   scrollbar-color: $scrollbar-face $scrollbar-base;
-}
-
-.Layout,
-.Layout * {
-  // Fancy scrollbar
-  scrollbar-base-color: color.scale(
-    base.$color-bg,
-    $lightness: -25% * $scrollbar-color-multiplier
-  );
-  scrollbar-face-color: color.scale(
-    base.$color-bg,
-    $lightness: 10% * $scrollbar-color-multiplier
-  );
-  scrollbar-3dlight-color: color.scale(
-    base.$color-bg,
-    $lightness: 0% * $scrollbar-color-multiplier
-  );
-  scrollbar-highlight-color: color.scale(
-    base.$color-bg,
-    $lightness: 0% * $scrollbar-color-multiplier
-  );
-  scrollbar-track-color: color.scale(
-    base.$color-bg,
-    $lightness: -25% * $scrollbar-color-multiplier
-  );
-  scrollbar-arrow-color: color.scale(
-    base.$color-bg,
-    $lightness: 50% * $scrollbar-color-multiplier
-  );
-  scrollbar-shadow-color: color.scale(
-    base.$color-bg,
-    $lightness: 10% * $scrollbar-color-multiplier
-  );
 }
 
 .Layout__content {

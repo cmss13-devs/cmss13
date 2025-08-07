@@ -9,6 +9,7 @@ import {
   Icon,
   Input,
   ProgressBar,
+  Section,
   Stack,
   Tabs,
 } from 'tgui/components';
@@ -397,7 +398,7 @@ const ShowSentryCard = (props: { readonly data: SentrySpec }) => {
 
 const ShowAllSentry = (props: { readonly data: SentrySpec[] }) => {
   return (
-    <Flex align="space-between" wrap>
+    <Flex align="space-around" wrap>
       {props.data.map((x) => (
         <Flex.Item key={x.index}>
           <ShowSentryCard data={x} />
@@ -472,11 +473,22 @@ const SentryTabMenu = (props: {
 }) => {
   const { data, act } = useBackend<SentryData>();
   return (
-    <Tabs fill>
+    <Tabs>
+      <Tabs.Tab
+        selected={props.selected === undefined}
+        onClick={() => {
+          props.setSelected(undefined);
+          act('clear-camera');
+        }}
+      >
+        All
+      </Tabs.Tab>
       {props.sentrySpecs.map((x, index) => (
         <Tabs.Tab
           key={x.index}
           selected={props.selected === index}
+          textAlign="center"
+          minWidth="2%"
           onClick={() => {
             props.setSelected(index);
             if (data.camera_target) {
@@ -489,15 +501,6 @@ const SentryTabMenu = (props: {
           {x.nickname.length === 0 ? x.index : x.nickname}
         </Tabs.Tab>
       ))}
-      <Tabs.Tab
-        selected={props.selected === undefined}
-        onClick={() => {
-          props.setSelected(undefined);
-          act('clear-camera');
-        }}
-      >
-        All
-      </Tabs.Tab>
     </Tabs>
   );
 };
@@ -506,12 +509,13 @@ const PowerLevel = () => {
   const { data } = useBackend<SentryData>();
   return (
     <ProgressBar
+      width="100px"
       minValue={0}
       maxValue={data.electrical.max_charge}
       value={data.electrical.charge}
     >
       {((data.electrical.charge / data.electrical.max_charge) * 100).toFixed(2)}{' '}
-      %
+      <span>%</span>
     </ProgressBar>
   );
 };
@@ -537,55 +541,57 @@ export const SentryGunUI = () => {
 
   return (
     <Window theme="crtyellow" height={700} width={700}>
-      <Window.Content className="SentryGun" scrollable>
-        <Stack vertical>
-          {data.sentry.length > 0 && (
+      <Window.Content className="SentryGun">
+        <Section fill scrollable>
+          <Stack vertical>
+            {data.sentry.length > 0 && (
+              <Stack.Item>
+                <Flex justify="space-between" align-items="center">
+                  <Flex.Item width="85%">
+                    <SentryTabMenu
+                      sentrySpecs={sentrySpecs}
+                      selected={selectedSentry}
+                      setSelected={setSelectedSentry}
+                    />
+                  </Flex.Item>
+                  <Flex.Item align="right">
+                    <PowerLevel />
+                  </Flex.Item>
+                </Flex>
+              </Stack.Item>
+            )}
             <Stack.Item>
-              <Flex justify="space-between" align-items="center">
-                <Flex.Item>
-                  <SentryTabMenu
-                    sentrySpecs={sentrySpecs}
-                    selected={selectedSentry}
-                    setSelected={setSelectedSentry}
+              {data.screen_state === 0 && (
+                <div>
+                  <TimedCallback
+                    time={1.5}
+                    callback={() => act('screen-state', { state: 1 })}
                   />
-                </Flex.Item>
-                <Flex.Item align="center">
-                  <PowerLevel />
-                </Flex.Item>
-              </Flex>
+                  <div className="TopPanelSlide" />
+                  <div className="BottomPanelSlide" />
+                </div>
+              )}
+              {data.camera_target === null && (
+                <>
+                  {!validSelection && <EmptyDisplay />}
+                  {validSelection && (
+                    <>
+                      {selectedSentry !== undefined && (
+                        <ShowSingleSentry data={sentrySpecs[selectedSentry]} />
+                      )}
+                      {selectedSentry === undefined && (
+                        <ShowAllSentry data={sentrySpecs} />
+                      )}
+                    </>
+                  )}
+                </>
+              )}
+              {data.camera_target !== null && (
+                <SentryCamera sentry_data={sentrySpecs} />
+              )}
             </Stack.Item>
-          )}
-          <Stack.Item>
-            {data.screen_state === 0 && (
-              <div>
-                <TimedCallback
-                  time={1.5}
-                  callback={() => act('screen-state', { state: 1 })}
-                />
-                <div className="TopPanelSlide" />
-                <div className="BottomPanelSlide" />
-              </div>
-            )}
-            {data.camera_target === null && (
-              <>
-                {!validSelection && <EmptyDisplay />}
-                {validSelection && (
-                  <>
-                    {selectedSentry !== undefined && (
-                      <ShowSingleSentry data={sentrySpecs[selectedSentry]} />
-                    )}
-                    {selectedSentry === undefined && (
-                      <ShowAllSentry data={sentrySpecs} />
-                    )}
-                  </>
-                )}
-              </>
-            )}
-            {data.camera_target !== null && (
-              <SentryCamera sentry_data={sentrySpecs} />
-            )}
-          </Stack.Item>
-        </Stack>
+          </Stack>
+        </Section>
       </Window.Content>
     </Window>
   );

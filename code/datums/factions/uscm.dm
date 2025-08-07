@@ -68,7 +68,7 @@
 
 		if(!marine_rk)
 			marine_rk = current_human.rank_fallback
-		if(current_human.rank_override)
+		if(current_human.rank_override && squad.squad_leader != current_human)
 			marine_rk = current_human.rank_override
 		if(marine_rk)
 			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")

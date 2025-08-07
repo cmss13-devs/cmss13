@@ -79,3 +79,10 @@
 
 	if(SSticker.mode)
 		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
+
+/datum/timelock/young_blood
+	name = "Young Blood Roles"
+
+/datum/timelock/young_blood/New(name, time_required, list/roles)
+	. = ..()
+	src.roles = JOB_YOUNGBLOOD_ROLES_LIST

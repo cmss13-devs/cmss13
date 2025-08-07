@@ -5,7 +5,7 @@
  */
 
 import { classes } from 'common/react';
-import { Component, createRef, ReactNode, RefObject } from 'react';
+import { Component, createRef, type ReactNode, type RefObject } from 'react';
 
 import { logger } from '../logging';
 import { Box } from './Box';

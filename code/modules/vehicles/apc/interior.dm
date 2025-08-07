@@ -28,6 +28,26 @@
 /obj/structure/interior_exit/vehicle/apc/rear/right
 	icon_state = "door_rear_right"
 
+/obj/structure/interior_wall/apc_pmc
+	name = "\improper APC interior wall"
+	icon = 'icons/obj/vehicles/interiors/apc_pmc.dmi'
+	icon_state = "apc_right_1"
+
+/obj/structure/interior_exit/vehicle/apc_pmc
+	name = "APC side door"
+	icon = 'icons/obj/vehicles/interiors/apc_pmc.dmi'
+	icon_state = "exit_door"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear
+	name = "APC rear hatch"
+	icon_state = "door_rear_center"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear/left
+	icon_state = "door_rear_left"
+
+/obj/structure/interior_exit/vehicle/apc_pmc/rear/right
+	icon_state = "door_rear_right"
+
 /obj/structure/prop/vehicle
 	name = "Generic vehicle prop"
 	desc = "Adds more flavour to vehicle interior."

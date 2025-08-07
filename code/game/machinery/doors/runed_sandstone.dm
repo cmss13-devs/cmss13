@@ -251,3 +251,6 @@
 	name = "\improper Runed Sandstone Airlock"
 	unacidable = FALSE //Destroyable version of the temple doors
 	damage_cap = HEALTH_WALL
+
+/obj/structure/machinery/door/airlock/sandstone/runed/dark
+	color = "#2E1E21"

@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - bugfix: "mouse 4/5 presses no longer count as mouse 1 presses"

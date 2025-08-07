@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import type { BooleanLike } from 'common/react';
 import React, { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Flex, Section } from 'tgui/components';

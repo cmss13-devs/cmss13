@@ -123,6 +123,8 @@
 			var/obj/structure/bed/chair/C = null
 			if(istype(user.buckled, /obj/structure/bed/chair))
 				C = user.buckled
+			if(!C)
+				return
 			var/obj/B = user.buckled
 			var/movementdirection = turn(direction,180)
 			if(C)
@@ -201,7 +203,7 @@
 			if(isliving(atm)) //For extinguishing mobs on fire
 				var/mob/living/M = atm
 				M.ExtinguishMob()
-			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
+			if(iscarbon(atm) || istype(atm, /obj/structure/barricade) || istype(atm, /obj/effect/xenomorph/acid))
 				atm.extinguish_acid()
 		T = get_turf(W)
 		if(T == target)

@@ -4,9 +4,9 @@
  * @license MIT
  */
 
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 import { Button } from './Button';
 
 type Props = Partial<{

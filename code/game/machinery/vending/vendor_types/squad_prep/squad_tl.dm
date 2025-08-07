@@ -35,7 +35,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 		list("RESTRICTED FIREARMS", 0, null, null, null),
 		list("VP78 Pistol", 10, /obj/item/storage/box/guncase/vp78, null, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smart Pistol", 15, /obj/item/storage/box/guncase/smartpistol, null, VENDOR_ITEM_REGULAR),
-		list("M79 Grenade Launcher", 30, /obj/item/storage/box/guncase/m79, null, VENDOR_ITEM_REGULAR),
+		list("M85A1 Grenade Launcher", 30, /obj/item/storage/box/guncase/m85a1, null, VENDOR_ITEM_REGULAR),
 
 		list("ARMORS", 0, null, null, null),
 		list("M3 B12 Pattern Marine Armor", 30, /obj/item/clothing/suit/storage/marine/medium/leader, null, VENDOR_ITEM_REGULAR),
@@ -95,10 +95,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_tl, list(
 
 GLOBAL_LIST_INIT(cm_vending_clothing_tl, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine, /obj/item/clothing/shoes/marine/knife, /obj/item/clothing/gloves/marine, /obj/item/device/radio/headset/almayer/marine, /obj/item/clothing/head/helmet/marine/rto), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Standard Marine Apparel", 0, list(/obj/item/clothing/under/marine, /obj/item/clothing/shoes/marine/knife, /obj/item/device/radio/headset/almayer/marine, /obj/item/clothing/head/helmet/marine/rto), MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
+		list("Insulated Gloves (Yellow/Tan)", 0, /obj/item/clothing/gloves/marine/insulated, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Insulated Gloves (Black)", 0, /obj/item/clothing/gloves/marine/insulated/black, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("M4 Pattern Armor", 0, /obj/item/clothing/suit/storage/marine/medium/rto, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/mre, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_KIT, VENDOR_ITEM_MANDATORY),
+		list("Map", 0, /obj/item/map/current_map, MARINE_CAN_BUY_MAP, VENDOR_ITEM_MANDATORY),
 		list("Essential Fireteam Leader Utilities", 0, /obj/effect/essentials_set/tl, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
@@ -130,11 +132,14 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tl, list(
 
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Leg Pouch", 0, /obj/item/clothing/accessory/storage/black_vest/leg_pouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Leg Pouch (Black)", 0, /obj/item/clothing/accessory/storage/black_vest/black_leg_pouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/storage/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Black Webbing", 0, /obj/item/clothing/accessory/storage/webbing/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
@@ -154,25 +159,21 @@ GLOBAL_LIST_INIT(cm_vending_clothing_tl, list(
 /obj/structure/machinery/cm_vending/clothing/tl/alpha
 	squad_tag = SQUAD_MARINE_1
 	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_ALPHA)
-	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/tl
 
 /obj/structure/machinery/cm_vending/clothing/tl/bravo
 	squad_tag = SQUAD_MARINE_2
 	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_BRAVO)
-	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/tl
 
 /obj/structure/machinery/cm_vending/clothing/tl/charlie
 	squad_tag = SQUAD_MARINE_3
 	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_CHARLIE)
-	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/tl
 
 /obj/structure/machinery/cm_vending/clothing/tl/delta
 	squad_tag = SQUAD_MARINE_4
 	req_access = list(ACCESS_MARINE_TL_PREP, ACCESS_MARINE_DELTA)
-	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/tl
 
 //------------ESSENTIAL SETS---------------

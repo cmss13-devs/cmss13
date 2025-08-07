@@ -37,12 +37,12 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 	var/list/data = list()
 
 	for(var/datum/data/record/record_entry in GLOB.data_core.general)
-
 		var/name = record_entry.fields["name"]
 		var/rank = record_entry.fields["rank"]
 		var/squad = record_entry.fields["squad"]
 		if(isnull(name) || isnull(rank))
 			continue
+
 		if(record_entry.fields["mob_faction"] != FACTION_MARINE && rank != JOB_CORPORATE_LIAISON)
 			continue
 
@@ -56,7 +56,6 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 
 		for(var/iterated_dept in departments)
 			if(iterated_dept in GLOB.ROLES_SQUAD_ALL)
-				//Check for exact squad match
 				if(isnull(squad) || lowertext(squad) != lowertext(iterated_dept))
 					continue
 			var/list/jobs = departments[iterated_dept]
@@ -64,7 +63,6 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 				entry_dept = iterated_dept
 				break
 
-		// Assign to department if rank matches or fallback for unrecognized rank
 			if(isnull(entry_dept) && squad)
 				entry_dept = squad
 				break
@@ -85,7 +83,12 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		ui.open()
 
 /datum/crew_manifest/ui_state(mob/user)
-	return GLOB.always_state
+	if(ishuman(user) && (user.faction == FACTION_MARINE || (user.faction in FACTION_LIST_WY) || user.faction == FACTION_FAX))
+		return GLOB.conscious_state
+	if(isnewplayer(user))
+		return GLOB.new_player_state
+	if(isobserver(user))
+		return GLOB.observer_state
 
 /datum/crew_manifest/proc/open_ui(mob/user)
 	tgui_interact(user)

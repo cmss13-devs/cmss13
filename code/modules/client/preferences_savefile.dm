@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN 8
-#define SAVEFILE_VERSION_MAX 31
+#define SAVEFILE_VERSION_MAX 32
 
 //handles converting savefiles to new formats
 //MAKE SURE YOU KEEP THIS UP TO DATE!
@@ -217,6 +217,12 @@
 
 		S.cd = "/"
 
+	if(savefile_version < 32)
+		var/pref_toggles
+		S["toggle_prefs"] >> pref_toggles
+		pref_toggles |= TOGGLE_LEADERSHIP_SPOKEN_ORDERS // Enables it by default for new saves
+		S["toggle_prefs"] << pref_toggles
+
 	savefile_version = SAVEFILE_VERSION_MAX
 	return 1
 
@@ -319,6 +325,7 @@
 	S["pred_age"] >> predator_age
 	S["pred_use_legacy"] >> predator_use_legacy
 	S["pred_trans_type"] >> predator_translator_type
+	S["pred_invis_sound"] >> predator_invisibility_sound
 	S["pred_mask_type"] >> predator_mask_type
 	S["pred_accessory_type"] >> predator_accessory_type
 	S["pred_armor_type"] >> predator_armor_type
@@ -429,6 +436,7 @@
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
+	predator_invisibility_sound = sanitize_inlist(predator_invisibility_sound, PRED_INVIS_SOUNDS, initial(predator_invisibility_sound))
 	predator_mask_type = sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_accessory_type = sanitize_integer(predator_accessory_type,0,3, initial(predator_accessory_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
@@ -570,6 +578,7 @@
 	S["pred_age"] << predator_age
 	S["pred_use_legacy"] << predator_use_legacy
 	S["pred_trans_type"] << predator_translator_type
+	S["pred_invis_sound"] << predator_invisibility_sound
 	S["pred_mask_type"] << predator_mask_type
 	S["pred_accessory_type"] << predator_accessory_type
 	S["pred_armor_type"] << predator_armor_type
@@ -683,7 +692,7 @@
 	S["underwear"] >> underwear
 	S["undershirt"] >> undershirt
 	S["backbag"] >> backbag
-	//S["b_type"] >> b_type
+	//S["blood_type"] >> blood_type
 
 	//Jobs
 	S["alternate_option"] >> alternate_option
@@ -771,7 +780,7 @@
 	backbag = sanitize_integer(backbag, 1, length(GLOB.backbaglist), initial(backbag))
 	preferred_armor = sanitize_inlist(preferred_armor, GLOB.armor_style_list, "Random")
 	night_vision_preference = sanitize_inlist(night_vision_preference, GLOB.nvg_color_list, "Green")
-	//b_type = sanitize_text(b_type, initial(b_type))
+	//blood_type = sanitize_text(blood_type, initial(blood_type))
 
 	alternate_option = sanitize_integer(alternate_option, 0, 3, initial(alternate_option))
 	if(!job_preference_list)
@@ -843,7 +852,7 @@
 	S["underwear"] << underwear
 	S["undershirt"] << undershirt
 	S["backbag"] << backbag
-	//S["b_type"] << b_type
+	//S["blood_type"] << blood_type
 	S["spawnpoint"] << spawnpoint
 
 	//Jobs

@@ -19,6 +19,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines_64x32.dmi'
 	icon_state = "modifier"
 	active_power_usage = 1000
+	health = STRUCTURE_HEALTH_REINFORCED
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
 	bound_x = 32
@@ -235,6 +236,8 @@
 	switch(action)
 		if("change_mode")
 			mode = params["mode_id"]
+			target_property = null
+			reference_property = null
 			update_costs()
 		if("eject_target")
 			if(target)
@@ -340,6 +343,11 @@
 					creation_name = newname
 		if("change_create_target_level")
 			var/level_to_set = 1
+			if(mode != MODE_CREATE)
+				return
+			if(!target_property)
+				to_chat(ui.user, SPAN_WARNING("Target property not selected!"))
+				return
 			if(GLOB.chemical_data.clearance_level <= 2)
 				level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4))
 			else if(GLOB.chemical_data.clearance_level <= 4)

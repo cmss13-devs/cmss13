@@ -4,7 +4,7 @@ import { useBackend } from 'tgui/backend';
 import { Button, LabeledList, Section } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
-import { ParticleUIData } from './data';
+import type { ParticleUIData } from './data';
 import {
   EntryCoord,
   EntryFloat,

@@ -243,6 +243,10 @@
 	icon_state = "wy18"
 	},
 /area/bigredv2/outside/office_complex)
+"aU" = (
+/obj/item/storage/belt/medical/lifesaver/wy,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -1147,7 +1151,7 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/item/clothing/head/helmet/marine/veteran/pmc,
 /obj/item/clothing/under/marine/veteran/pmc,
-/obj/item/clothing/head/helmet/marine/veteran/pmc,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/black,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Oi" = (
@@ -1794,7 +1798,7 @@ dE
 dE
 bc
 bc
-bc
+aU
 bc
 bc
 Gx

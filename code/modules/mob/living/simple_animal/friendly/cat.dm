@@ -59,18 +59,17 @@
 	if(stat == DEAD)
 		return ..()
 
-	if((src.loc) && isturf(src.loc))
-		if(stat != DEAD)
-			if(++miaow_counter >= rand(20, 30)) //Increase the meow variable each tick. Play it at random intervals.
-				playsound(loc, "cat_meow", 15, 1, 4)
-				miaow_counter = 0 //Reset the counter
-		if(!stat && !resting && !buckled)
+	if(isturf(loc))
+		if(++miaow_counter >= rand(20, 30)) //Increase the meow variable each tick. Play it at random intervals.
+			playsound(loc, "cat_meow", 15, 1, 4)
+			miaow_counter = 0 //Reset the counter
+		if(stat == CONSCIOUS && !resting && !buckled)
 			for(var/mob/prey in view(1,src))
 				if(is_type_in_list(prey, hunting_targets) && play_counter < 5 && prey.stat != DEAD)
 					var/mob/living/livingprey = prey
 
 					if(livingprey.stat == DEAD) //quick deadcheck
-						return
+						return ..()
 
 					play_counter++
 					visible_message(pick("[src] bites [livingprey]!","[src] toys with [livingprey].","[src] chomps on [livingprey]!"))
@@ -96,7 +95,7 @@
 			visible_message(pick("[src] hisses at [snack]!", "[src] mrowls fiercely!", "[src] eyes [snack] hungrily."))
 		break
 
-	if(!stat && !resting && !buckled)
+	if(stat == CONSCIOUS && !resting && !buckled)
 		handle_movement_target()
 
 /mob/living/simple_animal/cat/death()

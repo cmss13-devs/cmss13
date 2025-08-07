@@ -207,6 +207,7 @@
 	var/stored_index = 1
 	var/list/regexOutput
 	//multiz lool
+	dmm_regex.next = stored_index // CM addition: Neccessary to reset start position in case of loading the same file concurrently. Putting it in Find() below is NOT enough!
 	while(dmm_regex.Find(tfile, stored_index))
 		stored_index = dmm_regex.next
 		// Datum var lookup is expensive, this isn't

@@ -202,15 +202,32 @@
  * Toy swords
  */
 /obj/item/toy/sword
-	name = "toy sword"
-	desc = "A cheap, plastic replica of an energy sword. Realistic sounds! Ages 8 and up."
+	name = "blue toy light-sword"
+	desc = "A cheap, plastic replica of a light-sword, very popular toy among fans of those new Star Skirmishes movies. Realistic sounds! Ages 8 and up."
 	icon = 'icons/obj/items/weapons/melee/energy.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/energy_righthand.dmi',
+	)
 	icon_state = "sword0"
 	item_state = "sword0"
 	var/active = 0
+	var/sword_type = "blue"
 	w_class = SIZE_SMALL
 	flags_item = NOSHIELD
 	attack_verb = list("attacked", "struck", "hit")
+
+/obj/item/toy/sword/red
+	name = "red toy light-sword"
+	sword_type = "red"
+
+/obj/item/toy/sword/green
+	name = "green toy light-sword"
+	sword_type = "green"
+
+/obj/item/toy/sword/purple
+	name = "green toy light-sword"
+	sword_type = "purple"
 
 /obj/item/toy/sword/attack_self(mob/user)
 	..()
@@ -219,8 +236,8 @@
 	if (active)
 		to_chat(user, SPAN_NOTICE(" You extend the plastic blade with a quick flick of your wrist."))
 		playsound(user, 'sound/weapons/saberon.ogg', 15, 1)
-		icon_state = "swordblue"
-		item_state = "swordblue"
+		icon_state = "sword[sword_type]"
+		item_state = "sword[sword_type]"
 		w_class = SIZE_LARGE
 	else
 		to_chat(user, SPAN_NOTICE(" You push the plastic blade back down into the handle."))

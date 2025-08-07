@@ -106,6 +106,20 @@
 	},
 	{
 		"type": "map_insert",
+		"landmark": "hvhupplz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_ice_upp_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz2",
+		"chance": 1.0,
+		"path": "standalone/landingzone_ice_uscm_lz2.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+    {
+		"type": "map_insert",
 		"landmark": "panic_room",
 		"chance": 1.0,
 		"path": "standalone/clfraid.dmm",

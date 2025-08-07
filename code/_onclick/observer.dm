@@ -15,11 +15,11 @@
 	if(..())
 		return TRUE
 
-	if (mods["shift"] && mods["middle"])
+	if (mods[SHIFT_CLICK] && mods[MIDDLE_CLICK])
 		point_to(target)
 		return TRUE
 
-	if(mods["ctrl"])
+	if(mods[CTRL_CLICK])
 		if(target == src)
 			if(!can_reenter_corpse || !mind || !mind.current)
 				return
@@ -92,7 +92,7 @@
 	next_move = world.time + 8
 	// You are responsible for checking config.ghost_interaction when you override this function
 	// Not all of them require checking, see below
-	if(!mods["shift"])
+	if(!mods[SHIFT_CLICK])
 		target.attack_ghost(src)
 	return FALSE
 
@@ -116,21 +116,19 @@
 		user.forceMove(get_turf(target))
 
 /obj/structure/ladder/attack_ghost(mob/user as mob)
+	var/obj/structure/ladder/ladder_dest
 	if(up && down)
-		switch( alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
-			if("Up")
-				user.forceMove(get_turf(up))
-			if("Down")
-				user.forceMove(get_turf(down))
-			if("Cancel")
-				return
-
+		ladder_dest = lowertext(show_radial_menu(user, src, direction_selection, require_near = FALSE))
+		if(ladder_dest == "up")
+			user.forceMove(get_turf(up))
+		if(ladder_dest == "down")
+			user.forceMove(get_turf(down))
 	else if(up)
 		user.forceMove(get_turf(up))
-
 	else if(down)
 		user.forceMove(get_turf(down))
-
+	else
+		return FALSE //just in case
 // -------------------------------------------
 // This was supposed to be used by adminghosts
 // I think it is a *terrible* idea

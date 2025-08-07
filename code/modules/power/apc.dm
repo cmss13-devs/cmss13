@@ -71,8 +71,10 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/areastring = null
 
 	var/obj/item/cell/cell
-	var/start_charge = 90 //Initial cell charge %
-	var/cell_type = /obj/item/cell/apc/empty //0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
+	/// Initial cell charge %
+	var/start_charge = 90
+	/// 0 = no cell, 1 = regular, 2 = high-cap (x5) <- old, now it's just 0 = no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
+	var/cell_type = /obj/item/cell/apc/empty
 
 	var/opened = APC_COVER_CLOSED
 	var/shorted = 0
@@ -86,7 +88,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	var/locked = 1
 	var/coverlocked = 1
 	var/aidisabled = 0
-	var/obj/structure/machinery/power/terminal/terminal = null
 	var/lastused_light = 0
 	var/lastused_equip = 0
 	var/lastused_environ = 0
@@ -99,16 +100,21 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	powernet = 0 //Set so that APCs aren't found as powernet nodes //Hackish, Horrible, was like this before I changed it :(
 	var/debug = 0
-	var/autoflag = 0 // 0 = off, 1 = eqp and lights off, 2 = eqp off, 3 = all on.
-	var/has_electronics = 0 // 0 - none, 1 - plugged in, 2 - secured by screwdriver
-	var/overload = 1 //Used for the Blackout malf module
-	var/beenhit = 0 //Used for counting how many times it has been hit, used for Aliens at the moment
+	/// 0 = off, 1 = eqp and lights off, 2 = eqp off, 3 = all on.
+	var/autoflag = 0
+	/// 0 - none, 1 - plugged in, 2 - secured by screwdriver
+	var/has_electronics = 0
+	/// Used for the Blackout malf module
+	var/overload = 1
+	/// Used for counting how many times it has been hit, used for Aliens at the moment
+	var/beenhit = 0
 	var/longtermpower = 10
 	var/update_state = -1
 	var/update_overlay = -1
 	var/global/status_overlays = 0
 	var/updating_icon = 0
-	var/crash_break_probability = 85 //Probability of APC being broken by a shuttle crash on the same z-level
+	/// Probability of APC being broken by a shuttle crash on the same z-level, set to 0 to have the APC not be destroyed
+	var/crash_break_probability = 85
 
 	var/global/list/status_overlays_lock
 	var/global/list/status_overlays_charging
@@ -1381,6 +1387,29 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	dir = 4
 
 /obj/structure/machinery/power/apc/almayer/hardened/west
+	pixel_x = -30
+	dir = 8
+
+//------UPP APCs ------//
+
+/// Same as other APCs, but with restricted access
+/obj/structure/machinery/power/apc/upp
+	cell_type = /obj/item/cell/high
+	req_one_access = list(ACCESS_UPP_ENGINEERING)
+
+/obj/structure/machinery/power/apc/upp/north
+	pixel_y = 32
+	dir = 1
+
+/obj/structure/machinery/power/apc/upp/south
+	pixel_y = -26
+	dir = 2
+
+/obj/structure/machinery/power/apc/upp/east
+	pixel_x = 30
+	dir = 4
+
+/obj/structure/machinery/power/apc/upp/west
 	pixel_x = -30
 	dir = 8
 

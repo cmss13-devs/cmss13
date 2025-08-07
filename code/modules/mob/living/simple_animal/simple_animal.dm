@@ -157,6 +157,7 @@
 		fire_overlay = fire_overlay_image
 
 /mob/living/simple_animal/Life(delta_time)
+	..()
 	if(affected_by_fire)
 		handle_fire()
 	//Health
@@ -180,7 +181,7 @@
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
-		if(isturf(src.loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if(isturf(loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE) && !HAS_TRAIT(src, TRAIT_HAULED)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled

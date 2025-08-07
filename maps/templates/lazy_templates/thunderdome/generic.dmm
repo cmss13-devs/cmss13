@@ -1,0 +1,917 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "tdome_t1";
+	name = "\improper Team 1 Shutters";
+	explo_proof = 1
+	},
+/turf/open/floor/tdome/test_floor4,
+/area/tdome)
+"c" = (
+/obj/effect/landmark/thunderdome/one,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdome1)
+"d" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome)
+"f" = (
+/turf/open/floor/tdome/bluefull,
+/area/tdome/tdome1)
+"g" = (
+/obj/effect/landmark/thunderdome/two,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdome2)
+"h" = (
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdome2)
+"i" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/binoculars{
+	pixel_x = -4
+	},
+/obj/item/device/binoculars{
+	pixel_x = 3
+	},
+/obj/item/device/binoculars{
+	pixel_y = 4
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"k" = (
+/turf/open/floor/tdome/w_y0/north,
+/area/tdome)
+"l" = (
+/turf/open/floor/tdome/tcomms,
+/area/tdome)
+"m" = (
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdome1)
+"n" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/door_control{
+	id = "tdome_t1";
+	name = "Team 1 Shutters (Left)";
+	pixel_y = -3
+	},
+/obj/structure/machinery/door_control{
+	id = "tdome_t2";
+	name = "Team 2 Shutters (Right)";
+	pixel_y = 3
+	},
+/obj/structure/machinery/door_control{
+	id = "tdome_observer";
+	name = "Observer Shutters";
+	pixel_y = 9
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"o" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome)
+"p" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "tdome_t2";
+	name = "\improper Team 2 Shutters";
+	explo_proof = 1
+	},
+/turf/open/floor/tdome/test_floor4,
+/area/tdome)
+"q" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"s" = (
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"u" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/fancy/cigar,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"z" = (
+/obj/effect/landmark/thunderdome/one,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdome1)
+"B" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_20"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"C" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdomeobserve)
+"D" = (
+/turf/open/floor/tdome/northeast,
+/area/tdome)
+"F" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"G" = (
+/obj/structure/disposaloutlet{
+	dir = 4
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
+"H" = (
+/obj/structure/machinery/vending/cigarette/koorlander,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"K" = (
+/turf/open/floor/tdome/redfull,
+/area/tdome/tdome2)
+"M" = (
+/obj/structure/window/framed/almayer/hull,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "tdome_observer";
+	name = "\improper Observer Shutters"
+	},
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"N" = (
+/turf/template_noop,
+/area/template_noop)
+"O" = (
+/turf/closed/wall/almayer/outer,
+/area/tdome/tdomeobserve)
+"P" = (
+/turf/closed/wall/almayer/outer,
+/area/tdome)
+"S" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdomeobserve)
+"T" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor/tdome/tcomms,
+/area/tdome/tdomeobserve)
+"V" = (
+/turf/open/floor/tdome/w_y1/north,
+/area/tdome)
+"W" = (
+/obj/effect/landmark/thunderdome/two,
+/turf/open/floor/tdome/northeast,
+/area/tdome/tdome2)
+"Z" = (
+/turf/open/floor/tdome/w_y2/north,
+/area/tdome)
+
+(1,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+N
+h
+h
+h
+h
+h
+h
+h
+N
+N
+N
+"}
+(2,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+h
+h
+K
+K
+K
+K
+K
+h
+h
+N
+N
+"}
+(3,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+h
+K
+W
+W
+W
+W
+W
+K
+h
+N
+N
+"}
+(4,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+h
+K
+W
+W
+W
+W
+W
+K
+h
+N
+N
+"}
+(5,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+h
+K
+W
+W
+W
+W
+W
+K
+h
+N
+N
+"}
+(6,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+h
+K
+W
+W
+W
+W
+W
+K
+h
+N
+N
+"}
+(7,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+h
+K
+g
+g
+g
+g
+g
+K
+h
+N
+N
+"}
+(8,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+P
+P
+P
+a
+a
+a
+a
+a
+P
+P
+P
+N
+"}
+(9,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+P
+D
+D
+d
+d
+d
+d
+d
+D
+D
+P
+N
+"}
+(10,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+P
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+P
+"}
+(11,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(12,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(13,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(14,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(15,1,1) = {"
+O
+O
+O
+O
+O
+O
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(16,1,1) = {"
+O
+B
+s
+s
+i
+n
+M
+D
+D
+D
+D
+D
+l
+D
+D
+D
+D
+D
+P
+"}
+(17,1,1) = {"
+O
+q
+s
+s
+s
+T
+M
+D
+D
+D
+D
+l
+k
+l
+D
+D
+D
+D
+P
+"}
+(18,1,1) = {"
+O
+H
+s
+s
+s
+T
+M
+D
+D
+D
+D
+l
+V
+l
+D
+D
+D
+D
+P
+"}
+(19,1,1) = {"
+O
+S
+s
+s
+s
+T
+M
+D
+D
+D
+D
+l
+Z
+l
+D
+D
+D
+D
+P
+"}
+(20,1,1) = {"
+O
+F
+s
+s
+u
+n
+M
+D
+D
+D
+D
+D
+l
+D
+D
+D
+D
+D
+P
+"}
+(21,1,1) = {"
+O
+C
+O
+O
+O
+O
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(22,1,1) = {"
+N
+G
+N
+N
+N
+N
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(23,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(24,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(25,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+"}
+(26,1,1) = {"
+N
+N
+N
+N
+N
+N
+O
+P
+D
+D
+D
+D
+D
+D
+D
+D
+D
+P
+P
+"}
+(27,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+P
+D
+D
+o
+o
+o
+o
+o
+D
+D
+P
+N
+"}
+(28,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+P
+P
+P
+p
+p
+p
+p
+p
+P
+P
+P
+N
+"}
+(29,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+m
+f
+z
+z
+z
+z
+z
+f
+m
+N
+N
+"}
+(30,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+m
+f
+c
+c
+c
+c
+c
+f
+m
+N
+N
+"}
+(31,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+m
+f
+c
+c
+c
+c
+c
+f
+m
+N
+N
+"}
+(32,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+m
+f
+c
+c
+c
+c
+c
+f
+m
+N
+N
+"}
+(33,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+m
+f
+c
+c
+c
+c
+c
+f
+m
+N
+N
+"}
+(34,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+m
+m
+f
+f
+f
+f
+f
+m
+m
+N
+N
+"}
+(35,1,1) = {"
+N
+N
+N
+N
+N
+N
+N
+N
+N
+m
+m
+m
+m
+m
+m
+m
+N
+N
+N
+"}

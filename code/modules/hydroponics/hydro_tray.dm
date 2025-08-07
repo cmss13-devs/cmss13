@@ -656,6 +656,39 @@
 		anchored = !anchored
 		to_chat(user, "You [anchored ? "wrench" : "unwrench"] \the [src].")
 
+/obj/structure/machinery/portable_atmospherics/hydroponics/clicked(mob/user, list/mods)
+	if(!mods[ALT_CLICK])
+		return ..()
+
+	var/obj/item/held_item = user.get_active_hand()
+	if(!held_item)
+		user.visible_message(SPAN_NOTICE("[user] runs their hand along \the [src]."))
+		return TRUE
+
+	// Check if it's a reagent container
+	var/obj/item/reagent_container/RG = held_item
+	if(!istype(RG))
+		user.visible_message(SPAN_NOTICE("[user] taps \the [held_item] against \the [src]."))
+		return TRUE
+
+	if(!RG.is_open_container() || !RG.reagents || RG.reagents.total_volume <= 0)
+		user.visible_message(SPAN_WARNING("[user] tries to pour \the [RG] into \the [src], but it's empty or sealed."))
+		return TRUE
+
+	var/available_space = reagents.maximum_volume - reagents.total_volume
+	if(available_space <= 0)
+		user.visible_message(SPAN_WARNING("[user] tries to pour \the [RG] into \the [src], but it's completely full."))
+		return TRUE
+
+	var/transfer_amount = min(RG.reagents.total_volume, available_space)
+	RG.reagents.trans_to(src, transfer_amount)
+	user.visible_message(SPAN_NOTICE("[user] pours \the [RG] into \the [src]."), SPAN_NOTICE("You pour \the [RG] into \the [src]."))
+
+	if(transfer_amount < RG.reagents.total_volume)
+		to_chat(user, SPAN_WARNING("The hydroponics tray is full."))
+
+	return TRUE
+
 /obj/structure/machinery/portable_atmospherics/hydroponics/get_examine_text(mob/user)
 	. = ..()
 	var/hydro_info = show_hydro_info(user)

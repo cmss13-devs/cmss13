@@ -1,0 +1,4288 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/solaris/rock,
+/area/event/metal/dynamic/lit)
+"ai" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/event/metal/dynamic/lit)
+"at" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/mars,
+/area/bigredv2/outside/s)
+"aH" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"aJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/asteroidwarning/north,
+/area/event/metal/dynamic/lit)
+"aN" = (
+/turf/open/mars,
+/area/bigredv2/outside/s)
+"aP" = (
+/obj/item/stack/rods{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"ba" = (
+/obj/structure/platform/metal/strata/east,
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/plating/asteroidwarning/east,
+/area/event/metal/dynamic/lit)
+"bg" = (
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "South ETA Landing Zone";
+	faction = "UPP"
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"bj" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/s)
+"bs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"bw" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"bx" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/event/metal/dynamic/lit)
+"bQ" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"bX" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"cy" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/outside/filtration_cave_cas)
+"cA" = (
+/obj/structure/largecrate/random/secure,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"cL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/floor/darkblue2/east,
+/area/event/metal/dynamic/lit)
+"cM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"cR" = (
+/obj/structure/machinery/telecomms/bus,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"df" = (
+/obj/effect/decal/strata_decals/grime/grime3,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached,
+/area/event/metal/dynamic/lit)
+"dg" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/asphalt/cement_sunbleached,
+/area/event/metal/dynamic/lit)
+"di" = (
+/obj/structure/lz_sign/solaris_sign,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"dA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkblue2/north,
+/area/event/metal/dynamic/lit)
+"dC" = (
+/obj/item/stack/rods{
+	pixel_y = -2
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/filtration_cave_cas)
+"dH" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
+"dI" = (
+/turf/open/floor/asteroidwarning/northwest,
+/area/bigredv2/outside/s)
+"ef" = (
+/turf/open/mars_cave/mars_dirt_5,
+/area/bigredv2/outside/s)
+"eh" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	explo_proof = 1
+	},
+/turf/open/floor/delivery,
+/area/event/metal/dynamic/lit)
+"eK" = (
+/turf/open/floor/asteroidwarning/north,
+/area/event/metal/dynamic/lit)
+"fg" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"fH" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/structure/bed/bedroll,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/event/metal/dynamic/lit)
+"fS" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/s)
+"gd" = (
+/obj/structure/largecrate/goat,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"gk" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/floor/asteroidwarning/southeast,
+/area/bigredv2/outside/s)
+"go" = (
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/s)
+"gt" = (
+/turf/open/mars/mars_dirt_10,
+/area/bigredv2/outside/s)
+"hh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"hn" = (
+/obj/item/stack/rods{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/filtration_cave_cas)
+"hJ" = (
+/obj/structure/bed/bedroll,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"hN" = (
+/obj/item/stack/sheet/metal{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/outside/filtration_cave_cas)
+"hW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"ic" = (
+/turf/closed/wall/solaris/reinforced,
+/area/event/metal/dynamic/lit)
+"io" = (
+/obj/structure/largecrate/random/barrel/white,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"iA" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidwarning,
+/area/event/metal/dynamic/lit)
+"iF" = (
+/obj/structure/cargo_container/arious/rightmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"iX" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 16
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/event/metal/dynamic/lit)
+"je" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"jp" = (
+/obj/structure/prop/brazier/campfire{
+	pixel_x = null
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"jM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 2;
+	pixel_x = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"ke" = (
+/obj/structure/window/framed/solaris,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"kq" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"kG" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 19
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"kK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"kM" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 11;
+	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	name = "\improper landing zone traffic signal"
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 7;
+	pixel_y = 26;
+	name = "\improper East traffic signal";
+	desc = "A traffic signal denoting the nearby presence of something to the East."
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"kN" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"kR" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/asteroidplating,
+/area/event/metal/dynamic/lit)
+"lh" = (
+/turf/closed/wall/strata_ice,
+/area/bigredv2/caves)
+"ln" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/event/metal/dynamic/lit)
+"lw" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/mars,
+/area/bigredv2/outside/s)
+"lA" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
+"lC" = (
+/obj/item/stack/rods{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/filtration_cave_cas)
+"lZ" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/event/metal/dynamic/lit)
+"ma" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"mk" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/asteroidwarning/north,
+/area/event/metal/dynamic/lit)
+"mo" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/event/metal/dynamic/lit)
+"mq" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/asteroidwarning/east,
+/area/event/metal/dynamic/lit)
+"ms" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/plating/asteroidfloor,
+/area/event/metal/dynamic/lit)
+"mt" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/outside/filtration_cave_cas)
+"mu" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/event/metal/dynamic/lit)
+"mv" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/event/metal/dynamic/lit)
+"mB" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/event/metal/dynamic/lit)
+"mC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"mI" = (
+/obj/structure/cargo_container/grant/rightmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"mP" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/outside/filtration_cave_cas)
+"ny" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 13;
+	layer = 2.7;
+	pixel_x = 14
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"nz" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/asteroidwarning,
+/area/event/metal/dynamic/lit)
+"nA" = (
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/outside/filtration_cave_cas)
+"nT" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/mars,
+/area/bigredv2/outside/s)
+"nV" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/event/metal/dynamic/lit)
+"nX" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/floor/darkish,
+/area/event/metal/dynamic/lit)
+"nZ" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"oh" = (
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"oP" = (
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/outside/filtration_cave_cas)
+"oZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"px" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 7;
+	pixel_y = 11;
+	desc = "A traffic signal denoting the presecense of a landing zone nearby.";
+	name = "\improper landing zone traffic signal"
+	},
+/obj/structure/sign/safety/south{
+	pixel_y = 26;
+	pixel_x = 7
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"pJ" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"qj" = (
+/obj/structure/girder/displaced,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/s)
+"qk" = (
+/obj/structure/largecrate/supply/supplies/water,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"qt" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	explo_proof = 1
+	},
+/turf/open/floor/delivery,
+/area/event/metal/dynamic/lit)
+"qI" = (
+/obj/structure/lz_sign/solaris_sign,
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/outside/s)
+"qS" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"rf" = (
+/obj/structure/platform_decoration/metal/almayer,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"rh" = (
+/obj/structure/sign/flag/upp{
+	pixel_y = 28;
+	layer = 2.7
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/outside/filtration_cave_cas)
+"rk" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/floor/darkish,
+/area/event/metal/dynamic/lit)
+"rm" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/floor/plating/asteroidwarning/north,
+/area/event/metal/dynamic/lit)
+"rH" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"rI" = (
+/obj/structure/cargo_container/grant/right,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"rJ" = (
+/turf/open/mars_cave/mars_cave_11,
+/area/bigredv2/caves_research)
+"sw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"sH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"sV" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_3"
+	},
+/turf/open/mars,
+/area/bigredv2/outside/s)
+"sW" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/turf/open/asphalt/cement_sunbleached,
+/area/event/metal/dynamic/lit)
+"sX" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/almayer/north,
+/turf/open/floor/plating/asteroidfloor,
+/area/event/metal/dynamic/lit)
+"tb" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/whitegreen/northeast,
+/area/event/metal/dynamic/lit)
+"td" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves)
+"ti" = (
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 8;
+	explosive_multiplier = 0.1;
+	pixel_x = -5
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	dir = 4;
+	explosive_multiplier = 0.1;
+	pixel_x = 5
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.05;
+	burn_multiplier = 0.1;
+	explosive_multiplier = 0.1;
+	pixel_y = -6
+	},
+/obj/structure/barricade/metal/wired{
+	brute_multiplier = 0.5;
+	burn_multiplier = 0.1;
+	dir = 1;
+	explosive_multiplier = 0.1;
+	layer = 2;
+	pixel_y = 3
+	},
+/turf/closed/wall/r_wall/bunker{
+	layer = 3;
+	name = "Tank Trap"
+	},
+/area/bigredv2/outside/filtration_cave_cas)
+"tC" = (
+/turf/open/mars_cave/mars_cave_5,
+/area/bigredv2/caves_research)
+"tG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"tI" = (
+/obj/structure/machinery/optable{
+	desc = "This maybe could be used for advanced medical procedures.";
+	name = "Exam Table"
+	},
+/turf/open/floor/whitegreen/northwest,
+/area/event/metal/dynamic/lit)
+"tJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"tL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/dam/truck/damaged,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"tM" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
+"tS" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark2,
+/area/event/metal/dynamic/lit)
+"tW" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	layer = 2.7
+	},
+/turf/open/floor/asteroidwarning/southwest,
+/area/bigredv2/outside/s)
+"uc" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 19
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
+/area/event/metal/dynamic/lit)
+"um" = (
+/obj/item/trash/waffles{
+	pixel_x = -19;
+	pixel_y = -5
+	},
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/s)
+"uo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/event/metal/dynamic/lit)
+"uu" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"uL" = (
+/turf/open/floor/asteroidwarning/east,
+/area/bigredv2/outside/s)
+"uQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"uS" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/faxmachine{
+	target_department = "UPP High Command";
+	name = "UPP Fax Machine";
+	department = "FOB Fax";
+	network = "UPP Encrypted Network"
+	},
+/turf/open/floor/darkblue2/west,
+/area/event/metal/dynamic/lit)
+"vi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning,
+/area/event/metal/dynamic/lit)
+"vM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/solaris/reinforced,
+/area/event/metal/dynamic/lit)
+"wh" = (
+/obj/structure/platform_decoration/metal/strata,
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/asteroidwarning/east,
+/area/event/metal/dynamic/lit)
+"wv" = (
+/turf/open/floor/whitegreen/east,
+/area/event/metal/dynamic/lit)
+"wz" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/obj/item/ammo_magazine/m2c/t37,
+/obj/item/ammo_magazine/m2c/t37,
+/turf/open/floor/darkish,
+/area/event/metal/dynamic/lit)
+"wA" = (
+/obj/item/stack/rods{
+	pixel_y = -2
+	},
+/turf/open/floor/plating/platingdmg2/west,
+/area/bigredv2/outside/filtration_cave_cas)
+"wY" = (
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/s)
+"xf" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/event/metal/dynamic/lit)
+"xj" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 10;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/floor/plating/asteroidwarning/north,
+/area/event/metal/dynamic/lit)
+"xl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/darkish,
+/area/event/metal/dynamic/lit)
+"xn" = (
+/turf/open/asphalt/cement_sunbleached,
+/area/event/metal/dynamic/lit)
+"xr" = (
+/turf/open/mars/mars_dirt_12,
+/area/bigredv2/outside/s)
+"xu" = (
+/obj/structure/bed/roller,
+/turf/open/floor/white,
+/area/event/metal/dynamic/lit)
+"xD" = (
+/obj/structure/cargo_container/arious/right,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"xL" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/outside/filtration_cave_cas)
+"xP" = (
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/s)
+"ya" = (
+/obj/item/stack/rods{
+	pixel_y = 13;
+	pixel_x = 17
+	},
+/turf/open/floor/plating/platingdmg2/west,
+/area/bigredv2/outside/filtration_cave_cas)
+"yl" = (
+/turf/open/floor/asteroidwarning/northeast,
+/area/bigredv2/outside/s)
+"yw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"yP" = (
+/turf/open/mars_cave/mars_cave_19,
+/area/bigredv2/outside/s)
+"yR" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic/lit)
+"yS" = (
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/caves)
+"yX" = (
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves)
+"zh" = (
+/obj/structure/cargo_container/watatsumi/right,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"zG" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"zJ" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_box/magazine/misc/flashlight,
+/turf/open/floor/darkblue2/east,
+/area/event/metal/dynamic/lit)
+"zQ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"zV" = (
+/turf/open/floor/asteroidwarning/southeast,
+/area/bigredv2/outside/s)
+"Ao" = (
+/turf/open/mars_cave/mars_cave_15,
+/area/bigredv2/outside/s)
+"Aw" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/outside/filtration_cave_cas)
+"Az" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"AB" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"AC" = (
+/turf/open/floor/asteroidwarning/southwest,
+/area/event/metal/dynamic/lit)
+"AD" = (
+/turf/open/floor/whitegreen,
+/area/event/metal/dynamic/lit)
+"AF" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -9
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"AU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"Ch" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic/lit)
+"Cj" = (
+/obj/structure/cargo_container/grant/left,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic/lit)
+"Ck" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/event/metal/dynamic/lit)
+"Cl" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"CB" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"CQ" = (
+/obj/structure/platform/metal/strata,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroidwarning,
+/area/event/metal/dynamic/lit)
+"CU" = (
+/obj/structure/largecrate/random/barrel/green,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"CW" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/event/metal/dynamic/lit)
+"Db" = (
+/turf/open/floor/asteroidwarning/east,
+/area/event/metal/dynamic/lit)
+"Dd" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"Dq" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/surgical_tray,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/whitegreen/southwest,
+/area/event/metal/dynamic/lit)
+"DJ" = (
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"DO" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/s)
+"Ec" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	pixel_y = -1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"Fx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	pixel_y = -1
+	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"FD" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	icon_state = "sandbag_0"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"FR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/event/metal/dynamic/lit)
+"Gs" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"GE" = (
+/obj/structure/cargo_container/watatsumi/leftmid,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic/lit)
+"HF" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"HJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/s)
+"HN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"Ie" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/asteroidwarning,
+/area/bigredv2/outside/s)
+"Ik" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/event/metal/dynamic/lit)
+"Ir" = (
+/turf/open/mars_cave/mars_cave_8,
+/area/bigredv2/caves_research)
+"IA" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 16
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/event/metal/dynamic/lit)
+"II" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"IJ" = (
+/obj/structure/largecrate/random/case/double,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"IN" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/asteroidwarning/north,
+/area/event/metal/dynamic/lit)
+"IW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"IX" = (
+/turf/open/mars_cave,
+/area/bigredv2/caves_research)
+"Jo" = (
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/outside/s)
+"JA" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/whitegreen/southeast,
+/area/event/metal/dynamic/lit)
+"JL" = (
+/obj/structure/machinery/telecomms/relay/preset/tower/all{
+	pixel_x = 11;
+	pixel_y = 20
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"JV" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"Kb" = (
+/obj/structure/machinery/light/small,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"Kd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
+"Kn" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/caves)
+"Ko" = (
+/obj/structure/machinery/door/airlock/almayer/command/reinforced{
+	dir = 2;
+	req_access = null
+	},
+/turf/open/floor/delivery,
+/area/event/metal/dynamic/lit)
+"Kw" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/mars/mars_dirt_3,
+/area/bigredv2/outside/s)
+"KA" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"KB" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/mars,
+/area/bigredv2/outside/s)
+"KS" = (
+/turf/open/floor/delivery,
+/area/bigredv2/outside/s)
+"Ld" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"Lm" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/asteroidfloor,
+/area/event/metal/dynamic/lit)
+"Lx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/asteroidwarning/north,
+/area/bigredv2/outside/s)
+"Ly" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/s)
+"LA" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/asteroidwarning/east,
+/area/event/metal/dynamic/lit)
+"LC" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/event/metal/dynamic/lit)
+"LW" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 5;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/east,
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/event/metal/dynamic/lit)
+"Ms" = (
+/obj/structure/platform/metal/strata/east,
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/plating/asteroidwarning/east,
+/area/event/metal/dynamic/lit)
+"MH" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves_research)
+"MK" = (
+/obj/item/trash/sosjerky{
+	pixel_x = -12;
+	pixel_y = 17
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
+"MQ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
+"MR" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 2
+	},
+/turf/open/floor/dark,
+/area/event/metal/dynamic/lit)
+"Ni" = (
+/turf/open/floor/dark2,
+/area/event/metal/dynamic/lit)
+"Nq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"NK" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/floor/plating/asteroidfloor,
+/area/event/metal/dynamic/lit)
+"NV" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/asteroidwarning/north,
+/area/event/metal/dynamic/lit)
+"NW" = (
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"Oj" = (
+/turf/open/floor/asteroidwarning,
+/area/event/metal/dynamic/lit)
+"Ok" = (
+/obj/structure/barricade/metal/wired{
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/outside/s)
+"Oo" = (
+/turf/open/floor/whitegreen/west,
+/area/event/metal/dynamic/lit)
+"Op" = (
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"OF" = (
+/obj/structure/prop/dam/truck/mining,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"OL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic/lit)
+"PB" = (
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
+"PK" = (
+/obj/structure/platform/metal/strata/north,
+/turf/open/floor/plating/asteroidwarning/north,
+/area/event/metal/dynamic/lit)
+"PL" = (
+/turf/open/mars_cave/mars_cave_23,
+/area/bigredv2/caves_research)
+"PV" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 2;
+	explo_proof = 1;
+	needs_power = 0
+	},
+/turf/open/floor/delivery,
+/area/event/metal/dynamic/lit)
+"Qk" = (
+/turf/open/mars_cave/mars_cave_17,
+/area/bigredv2/outside/s)
+"Qm" = (
+/obj/structure/barricade/plasteel/wired{
+	dir = 1
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/bigredv2/outside/s)
+"Qw" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic/lit)
+"QG" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/filtration_cave_cas)
+"QP" = (
+/turf/open/mars_cave/mars_dirt_6,
+/area/bigredv2/outside/s)
+"Rn" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/platform_decoration/metal/strata/north,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/event/metal/dynamic/lit)
+"Ro" = (
+/obj/structure/largecrate/random/case/small,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"Rp" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/obj/structure/machinery/m56d_hmg/auto/t37{
+	dir = 1
+	},
+/turf/open/floor/darkish,
+/area/event/metal/dynamic/lit)
+"Rw" = (
+/turf/open/floor/whitegreen/north,
+/area/event/metal/dynamic/lit)
+"RA" = (
+/obj/structure/machinery/telecomms/server,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"RP" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached15,
+/area/event/metal/dynamic/lit)
+"RX" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 6;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"SS" = (
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 13;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 8;
+	pixel_x = 14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/obj/structure/barricade/handrail/kutjevo{
+	dir = 4;
+	pixel_x = -14;
+	pixel_y = 16;
+	density = 0;
+	name = "pole signal"
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"Ta" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
+/area/event/metal/dynamic/lit)
+"Tf" = (
+/turf/open/mars/mars_dirt_14,
+/area/bigredv2/outside/s)
+"Tg" = (
+/turf/open/mars_cave/mars_cave_18,
+/area/bigredv2/caves_research)
+"Tj" = (
+/turf/open/floor/darkblue2/west,
+/area/event/metal/dynamic/lit)
+"TG" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -14;
+	pixel_y = -6
+	},
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/event/metal/dynamic/lit)
+"TJ" = (
+/obj/structure/cargo_container/watatsumi/rightmid,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"TP" = (
+/turf/open/floor/delivery,
+/area/event/metal/dynamic/lit)
+"TX" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/plating/asteroidwarning/east,
+/area/event/metal/dynamic/lit)
+"Ua" = (
+/turf/open/mars/mars_dirt_11,
+/area/bigredv2/outside/s)
+"Ue" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"Um" = (
+/turf/open/mars_cave/mars_dirt_7,
+/area/bigredv2/outside/s)
+"Ur" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 1
+	},
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"UB" = (
+/turf/open/floor/asteroidwarning/west,
+/area/event/metal/dynamic/lit)
+"UG" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"UK" = (
+/obj/structure/barricade/sandbags/wired{
+	icon_state = "sandbag_0";
+	dir = 8
+	},
+/turf/open/floor/darkish,
+/area/event/metal/dynamic/lit)
+"UM" = (
+/obj/structure/flora/grass/desert/lightgrass_7,
+/turf/open/mars,
+/area/bigredv2/outside/s)
+"UW" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached2,
+/area/event/metal/dynamic/lit)
+"VL" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -8
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"VS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/obj/structure/prop/dam/truck/cargo,
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"VV" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_y = 7;
+	pixel_x = -7
+	},
+/obj/item/tool/pen{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/darkblue2/west,
+/area/event/metal/dynamic/lit)
+"Wv" = (
+/obj/structure/machinery/telecomms/broadcaster,
+/turf/open/floor/almayer/tcomms,
+/area/event/metal/dynamic/lit)
+"WT" = (
+/turf/open/mars_cave/mars_cave_7,
+/area/bigredv2/caves_research)
+"Xi" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/darkblue2/east,
+/area/event/metal/dynamic/lit)
+"Xv" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/delivery,
+/area/bigredv2/outside/s)
+"XG" = (
+/obj/item/stack/sheet/metal{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/turf/open/mars_cave/mars_cave_16,
+/area/bigredv2/outside/filtration_cave_cas)
+"XP" = (
+/obj/structure/cargo_container/arious/leftmid,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic/lit)
+"XT" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/event/metal/dynamic/lit)
+"XW" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/s)
+"Yb" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/trash/sosjerky{
+	pixel_x = 14;
+	pixel_y = -4
+	},
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/s)
+"Yd" = (
+/turf/open/floor/asteroidwarning/southwest,
+/area/bigredv2/outside/s)
+"Yl" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/event/metal/dynamic/lit)
+"Ym" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/event/metal/dynamic/lit)
+"Yp" = (
+/obj/structure/largecrate/random/mini/ammo,
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"YC" = (
+/turf/open/floor/asteroidwarning/southeast,
+/area/event/metal/dynamic/lit)
+"YL" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/plating/asteroidwarning/west,
+/area/event/metal/dynamic/lit)
+"YX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5;
+	pixel_x = -1
+	},
+/turf/open/floor/plating,
+/area/event/metal/dynamic/lit)
+"Zm" = (
+/obj/structure/sign/flag/upp{
+	dir = 1;
+	pixel_y = 26;
+	pixel_x = 15
+	},
+/turf/open/floor/asteroidfloor/north,
+/area/event/metal/dynamic/lit)
+"Zv" = (
+/obj/structure/stairs/perspective{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/plating/asteroidwarning/west,
+/area/event/metal/dynamic/lit)
+"ZK" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/caves_research)
+"ZM" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/event/metal/dynamic/lit)
+"ZP" = (
+/obj/structure/machinery/computer/shuttle/dropship/flight/remote_control{
+	name = "Remote dropship navigation computer";
+	req_one_access = null;
+	faction = "UPP"
+	},
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/darkblue2,
+/area/event/metal/dynamic/lit)
+"ZW" = (
+/turf/open/mars/mars_dirt_13,
+/area/bigredv2/outside/s)
+
+(1,1,1) = {"
+aN
+gt
+NW
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+Ly
+ic
+Az
+Az
+Az
+Az
+Az
+Az
+MH
+MH
+MH
+MH
+MH
+MH
+MH
+MH
+rJ
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Ir
+Az
+Az
+Tg
+rJ
+Az
+Tg
+tM
+tM
+tM
+tM
+tM
+"}
+(2,1,1) = {"
+ZW
+NW
+qI
+Ly
+NW
+NW
+NW
+NW
+wY
+PB
+go
+qS
+NW
+XW
+ic
+Az
+Az
+Az
+Az
+Az
+Az
+ZK
+tM
+MH
+MH
+MH
+tM
+ZK
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+WT
+tM
+tM
+tM
+tM
+"}
+(3,1,1) = {"
+NW
+NW
+NW
+Ly
+NW
+NW
+NW
+NW
+wY
+Kd
+go
+Ur
+NW
+uQ
+ic
+Az
+Az
+Az
+Az
+Az
+Az
+ZK
+tM
+tM
+tM
+tM
+tM
+ZK
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Tg
+tM
+tM
+tM
+tM
+"}
+(4,1,1) = {"
+NW
+dI
+Ly
+Ly
+Ly
+tW
+XW
+NW
+wY
+PB
+go
+Ur
+NW
+NW
+ic
+ic
+ic
+ic
+ic
+ic
+ic
+Kn
+eh
+eh
+eh
+eh
+eh
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Az
+tM
+tM
+tM
+tM
+tM
+"}
+(5,1,1) = {"
+Um
+wY
+KS
+Qm
+KS
+go
+NW
+Um
+wY
+PB
+Ie
+AB
+NW
+NW
+eK
+Oj
+oh
+oh
+oh
+oh
+oh
+Yl
+bw
+UW
+mu
+nV
+AF
+Yl
+oh
+oh
+oh
+oh
+oh
+oh
+UG
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+yS
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Az
+tM
+tM
+tM
+tM
+tM
+"}
+(6,1,1) = {"
+DO
+lA
+Xv
+dH
+Xv
+MQ
+DO
+DO
+MQ
+MQ
+MQ
+DO
+DO
+Yb
+Gs
+iA
+zQ
+zQ
+zQ
+zQ
+Dd
+KA
+oh
+xf
+dg
+mv
+Cl
+KA
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+kq
+oh
+oh
+oh
+oh
+hW
+Kn
+Kn
+Yl
+aa
+aa
+aa
+aa
+aa
+aa
+Yl
+Yl
+ZK
+PL
+tM
+WT
+tM
+tM
+"}
+(7,1,1) = {"
+uL
+PB
+KS
+Qm
+KS
+PB
+uL
+uL
+PB
+PB
+PB
+uL
+uL
+uL
+ma
+Oj
+oh
+ic
+ic
+TP
+ic
+ic
+oh
+xf
+ai
+mv
+oh
+ic
+ic
+ic
+TP
+TP
+ic
+ic
+ic
+oh
+oh
+oh
+oh
+Cl
+oh
+oh
+oh
+oh
+VL
+qt
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+Yl
+PV
+WT
+tM
+tM
+tM
+tM
+tM
+"}
+(8,1,1) = {"
+NW
+wY
+KS
+Qm
+KS
+go
+NW
+NW
+wY
+Kd
+go
+qS
+NW
+NW
+mk
+Oj
+oh
+ic
+tI
+Oo
+Dq
+ic
+oh
+xf
+xn
+mv
+oh
+ic
+Wv
+MR
+bs
+bs
+jM
+cR
+ic
+oh
+oh
+oh
+oh
+oh
+UW
+Ym
+Ym
+Ym
+uc
+qt
+UW
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Yl
+PV
+tM
+tM
+tM
+tM
+tC
+tM
+"}
+(9,1,1) = {"
+NW
+yl
+Ly
+Ly
+Ly
+zV
+Um
+NW
+wY
+PB
+go
+Ur
+NW
+NW
+mk
+Oj
+oh
+TP
+Rw
+xu
+AD
+TP
+oh
+xf
+xn
+mv
+oh
+ke
+tJ
+kK
+nZ
+JL
+AU
+tJ
+ke
+oh
+oh
+oh
+oh
+oh
+xf
+xn
+xn
+xn
+ZM
+qt
+FR
+xn
+xn
+xn
+xn
+xn
+xn
+Yl
+PV
+tM
+tM
+tM
+tM
+tC
+tM
+"}
+(10,1,1) = {"
+xr
+xr
+xr
+at
+aN
+Tf
+NW
+NW
+wY
+PB
+go
+AB
+fg
+NW
+mk
+nz
+oh
+TP
+Rw
+xu
+AD
+TP
+oh
+xf
+xn
+mv
+oh
+ke
+bs
+hh
+nZ
+nZ
+oZ
+bs
+ke
+oh
+oh
+oh
+OF
+oh
+xf
+ai
+dg
+bx
+CW
+qt
+Ta
+bx
+bx
+bx
+bx
+bx
+bx
+Yl
+PV
+tM
+tM
+tM
+tM
+tC
+tM
+"}
+(11,1,1) = {"
+aN
+aN
+aN
+at
+aN
+aN
+gt
+NW
+wY
+PB
+go
+NW
+NW
+NW
+mk
+Oj
+oh
+TP
+Rw
+xu
+AD
+TP
+oh
+xf
+xn
+mv
+oh
+ic
+bQ
+Fx
+yw
+tJ
+rH
+RA
+ic
+Zm
+oh
+Cl
+oh
+oh
+xf
+xn
+mv
+oh
+kG
+qt
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+Yl
+PV
+WT
+tM
+tM
+tM
+tC
+tM
+"}
+(12,1,1) = {"
+nT
+aN
+aN
+at
+UM
+aN
+Tf
+NW
+Lx
+PB
+go
+ny
+SS
+NW
+mk
+Oj
+oh
+ic
+tb
+wv
+JA
+ic
+UG
+xf
+xn
+mv
+oh
+ic
+ic
+ic
+TP
+TP
+ic
+ic
+ic
+oh
+oh
+oh
+oh
+oh
+xf
+xn
+mv
+Kb
+Yl
+Kn
+Yl
+aa
+aa
+aa
+aa
+aa
+aa
+Yl
+Yl
+ZK
+tM
+tM
+tM
+tM
+tM
+"}
+(13,1,1) = {"
+aN
+sV
+aN
+at
+KB
+aN
+aN
+gt
+wY
+PB
+go
+SS
+SS
+NW
+aJ
+Oj
+oh
+ic
+ic
+TP
+ic
+ic
+oh
+xf
+xn
+mv
+oh
+oh
+oh
+oh
+oh
+kq
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+IA
+xn
+mv
+oh
+oh
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Az
+Tg
+IX
+IX
+tM
+tM
+"}
+(14,1,1) = {"
+aN
+aN
+aN
+at
+aN
+ZW
+Ua
+NW
+wY
+PB
+go
+XW
+NW
+NW
+mk
+vi
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+xf
+xn
+mv
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+FR
+xn
+mv
+oh
+UG
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Az
+Az
+Az
+Az
+Ir
+tM
+"}
+(15,1,1) = {"
+lw
+aN
+aN
+at
+Ua
+Um
+NW
+NW
+wY
+PB
+go
+qS
+NW
+NW
+mk
+oh
+UB
+UB
+UB
+UB
+UB
+AC
+UW
+xn
+iX
+ai
+Ym
+Ym
+Ym
+Ym
+fH
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+Ym
+xn
+xn
+xn
+Ym
+mo
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Az
+Az
+Az
+Az
+Ir
+Az
+"}
+(16,1,1) = {"
+aN
+dI
+Ly
+Ly
+Ly
+Yd
+NW
+NW
+fS
+PB
+HJ
+Ur
+NW
+NW
+mk
+oh
+oh
+oh
+oh
+oh
+oh
+Oj
+xf
+sW
+xn
+xn
+xn
+ai
+xn
+xn
+xn
+xn
+xn
+xn
+xn
+xn
+xn
+df
+xn
+xn
+dg
+xn
+xn
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+"}
+(17,1,1) = {"
+aN
+wY
+KS
+Qm
+KS
+go
+NW
+Um
+wY
+PB
+go
+AB
+NW
+NW
+mk
+oh
+Db
+Db
+Db
+Db
+Db
+YC
+Ik
+xn
+xn
+xn
+bx
+bx
+bx
+bx
+ln
+bx
+bx
+bx
+bx
+bx
+bx
+bx
+bx
+bx
+bx
+bx
+xn
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+"}
+(18,1,1) = {"
+xP
+PB
+KS
+Qm
+KS
+PB
+xP
+xP
+MK
+PB
+PB
+xP
+xP
+xP
+ma
+Oj
+px
+oh
+oh
+rf
+zG
+zG
+kN
+Ta
+bx
+RP
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+Cl
+oh
+oh
+oh
+oh
+kM
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+"}
+(19,1,1) = {"
+uL
+PB
+bj
+Qm
+KS
+PB
+uL
+uL
+PB
+PB
+PB
+uL
+uL
+uL
+ma
+Oj
+oh
+kR
+oh
+Op
+nX
+UK
+je
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+tL
+oh
+oh
+oh
+oh
+oh
+kR
+oh
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(20,1,1) = {"
+NW
+um
+KS
+Qm
+KS
+go
+Um
+NW
+wY
+PB
+go
+qS
+NW
+NW
+IN
+iA
+zQ
+zQ
+zQ
+Ld
+Rp
+xl
+HF
+oh
+oh
+oh
+oh
+oh
+oh
+Cl
+oh
+oh
+oh
+oh
+oh
+vM
+ic
+ic
+oh
+oh
+Cl
+oh
+xf
+xn
+uo
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(21,1,1) = {"
+QP
+yl
+Ly
+Ly
+Ly
+gk
+NW
+NW
+wY
+Kd
+go
+Ur
+hJ
+jp
+eK
+Oj
+oh
+oh
+oh
+IW
+wz
+rk
+RX
+oh
+oh
+Cl
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+KA
+ic
+KA
+Cl
+oh
+oh
+oh
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(22,1,1) = {"
+ef
+QP
+QP
+Ly
+aN
+Tf
+NW
+NW
+wY
+PB
+go
+AB
+NW
+hJ
+eK
+Oj
+oh
+oh
+oh
+sX
+Ms
+Ms
+ba
+TX
+TX
+TX
+TX
+LA
+mq
+mq
+mq
+wh
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+TX
+NK
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(23,1,1) = {"
+QP
+yP
+Jo
+Ly
+aN
+aN
+Tf
+Um
+wY
+PB
+go
+NW
+NW
+NW
+eK
+Oj
+oh
+vM
+mC
+CQ
+Ue
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+Ue
+PK
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(24,1,1) = {"
+QP
+Qk
+Ao
+Kw
+aN
+aN
+aN
+gt
+fS
+PB
+HJ
+NW
+NW
+bX
+eK
+Oj
+oh
+ic
+vM
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+PK
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(25,1,1) = {"
+oP
+xL
+nA
+Kw
+aN
+aN
+aN
+gt
+wY
+PB
+go
+qS
+NW
+NW
+eK
+Oj
+oh
+ic
+JV
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+xj
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+lh
+lh
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(26,1,1) = {"
+xL
+xL
+nA
+Kw
+aN
+KB
+aN
+gt
+wY
+PB
+go
+Ur
+XW
+NW
+eK
+Oj
+oh
+oh
+oh
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+NV
+xf
+mB
+TG
+Kn
+Az
+Az
+Az
+yX
+yX
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(27,1,1) = {"
+xL
+xL
+nA
+Ok
+Um
+aN
+ZW
+Um
+wY
+PB
+go
+AB
+FD
+pJ
+eK
+Oj
+oh
+oh
+oh
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+NV
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(28,1,1) = {"
+xL
+xL
+nA
+cy
+Um
+Um
+NW
+aP
+qj
+PB
+PB
+PB
+PB
+PB
+oh
+Oj
+oh
+oh
+oh
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+bg
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+NV
+xf
+xn
+mv
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(29,1,1) = {"
+xL
+xL
+xL
+QG
+rh
+Um
+Um
+Um
+yl
+uL
+uL
+uL
+uL
+uL
+ic
+ic
+ic
+ic
+ic
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+NV
+FR
+dg
+mv
+Kn
+Az
+Az
+Az
+lh
+lh
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(30,1,1) = {"
+dC
+xL
+xL
+QG
+wA
+oP
+hN
+XG
+ya
+QG
+QG
+mP
+Aw
+mt
+td
+Az
+Az
+Az
+ic
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+NV
+Ck
+bx
+RP
+Kn
+Az
+Az
+Az
+yX
+yX
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(31,1,1) = {"
+xL
+lC
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+ic
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+rm
+oh
+oh
+oh
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(32,1,1) = {"
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+hn
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+ic
+CQ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+PK
+di
+oh
+oh
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+yX
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(33,1,1) = {"
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+ic
+CQ
+Ue
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+Ue
+PK
+oh
+Cl
+Cl
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(34,1,1) = {"
+xL
+xL
+xL
+xL
+ti
+xL
+xL
+xL
+xL
+xL
+ti
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+ic
+ms
+LC
+LC
+LC
+LC
+LC
+LC
+LC
+LW
+lZ
+lZ
+Zv
+Rn
+YL
+YL
+YL
+YL
+YL
+YL
+YL
+YL
+YL
+Lm
+oh
+oh
+Yp
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(35,1,1) = {"
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+Az
+Az
+ic
+ic
+ic
+ic
+ic
+Cl
+oh
+oh
+oh
+oh
+oh
+oh
+ma
+oh
+oh
+oh
+Cl
+oh
+oh
+oh
+oh
+oh
+oh
+oh
+aH
+qk
+uu
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(36,1,1) = {"
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+ic
+oh
+ic
+ic
+ic
+ic
+ic
+Ec
+OL
+cM
+sw
+sw
+sw
+sw
+sw
+sw
+sH
+sw
+sw
+Ro
+YX
+II
+Ro
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(37,1,1) = {"
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+ic
+ic
+ic
+cL
+zJ
+Xi
+ic
+ic
+OL
+tG
+Nq
+Nq
+Nq
+Nq
+Nq
+Nq
+HN
+Nq
+gd
+io
+CU
+cA
+IJ
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(38,1,1) = {"
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+ic
+ic
+ZP
+Ni
+tS
+Ni
+dA
+Ko
+XT
+Ch
+Ch
+Ch
+yR
+Qw
+Qw
+Qw
+Qw
+Cj
+Cj
+Qw
+XP
+GE
+XP
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(39,1,1) = {"
+xL
+xL
+ti
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+ic
+ic
+ic
+Tj
+uS
+VV
+ic
+ic
+sw
+sw
+sw
+sw
+sw
+sw
+sw
+VS
+sw
+mI
+mI
+sw
+iF
+TJ
+iF
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(40,1,1) = {"
+xL
+xL
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+ic
+oh
+ic
+ic
+ic
+ic
+ic
+CB
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+DJ
+rI
+rI
+DJ
+xD
+zh
+xD
+Kn
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+"}
+(41,1,1) = {"
+xL
+xL
+xL
+xL
+xL
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Az
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+Kn
+"}

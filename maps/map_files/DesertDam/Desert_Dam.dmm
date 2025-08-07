@@ -263,7 +263,7 @@
 "abd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abe" = (
@@ -895,18 +895,52 @@
 "adI" = (
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"adJ" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/closed/wall,
+/area/desert_dam/building/dorms/hallway_westwing)
 "adK" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1
 	},
 /turf/open/floor/plating/warnplate/north,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"adL" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_two)
+"adM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/open/desert/rock/deep/transition/west,
+/area/desert_dam/interior/dam_interior/hanger)
+"adN" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_two)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_labs)
+"adP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"adQ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
@@ -5613,6 +5647,9 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/item/phone,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayH" = (
@@ -6656,7 +6693,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDq" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDr" = (
@@ -18326,7 +18363,7 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bIx" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/prison/green/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bIy" = (
@@ -21585,7 +21622,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYy" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
@@ -21699,7 +21736,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
 "bYY" = (
-/obj/item/trash/liquidfood,
+/obj/item/trash/chips,
 /obj/item/trash/raisins,
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/disposals)
@@ -29081,6 +29118,9 @@
 /area/desert_dam/building/medical/virology_wing)
 "cIN" = (
 /obj/structure/machinery/computer/crew,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "cIO" = (
@@ -32450,6 +32490,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "dax" = (
@@ -43030,7 +43071,7 @@
 /area/desert_dam/exterior/valley/valley_security)
 "iqs" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
+/obj/item/trash/chips,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "iqv" = (
@@ -44777,7 +44818,7 @@
 /turf/open/floor/prison/whitegreen/southeast,
 /area/desert_dam/building/medical/emergency_room)
 "mqi" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "mqM" = (
@@ -54957,7 +54998,7 @@ bht
 bht
 bht
 bht
-afc
+adM
 afc
 dTs
 dTs
@@ -55564,7 +55605,7 @@ cDY
 cDY
 cDY
 cDY
-cDY
+adL
 cDY
 cDY
 cDY
@@ -57431,7 +57472,7 @@ cDX
 cDX
 cDX
 cDX
-cDX
+adN
 cDX
 cDX
 cDX
@@ -60536,7 +60577,7 @@ iKp
 iKp
 iKp
 iKp
-iKp
+adP
 iKp
 iKp
 iKp
@@ -61688,7 +61729,7 @@ aPF
 aSC
 aau
 aOc
-aUH
+adQ
 aVk
 aVk
 aVk
@@ -94414,7 +94455,7 @@ dBr
 dBr
 dBr
 dBr
-dBr
+adJ
 eaQ
 dZn
 dHE

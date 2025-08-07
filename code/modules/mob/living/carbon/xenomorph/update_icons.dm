@@ -326,6 +326,8 @@
 	if(!wound_icon_holder)
 		return
 
+	wound_icon_holder.icon = icon
+
 	var/health_threshold
 	health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
 
@@ -353,9 +355,6 @@
 /atom/movable/vis_obj
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR|VIS_INHERIT_LAYER|VIS_INHERIT_PLANE
 	appearance_flags = RESET_COLOR
-
-/atom/movable/vis_obj/xeno_wounds
-	icon = 'icons/mob/xenos/wounds.dmi'
 
 /atom/movable/vis_obj/xeno_pack/Initialize(mapload, mob/living/carbon/source)
 	. = ..()

@@ -28,10 +28,17 @@ SUBSYSTEM_DEF(tgui)
 
 /datum/controller/subsystem/tgui/PreInit()
 	basehtml = file2text('tgui/public/tgui.html')
-	// Inject inline polyfills
-	var/polyfill = file2text('tgui/public/tgui-polyfill.min.js')
-	polyfill = "<script>\n[polyfill]\n</script>"
-	basehtml = replacetextEx(basehtml, "<!-- tgui:inline-polyfill -->", polyfill)
+
+	// Inject inline helper functions
+	var/helpers = file2text('tgui/public/helpers.min.js')
+	helpers = "<script type='text/javascript'>\n[helpers]\n</script>"
+	basehtml = replacetextEx(basehtml, "<!-- tgui:helpers -->", helpers)
+
+	// Inject inline ntos-error styles
+	var/ntos_error = file2text('tgui/public/ntos-error.min.css')
+	ntos_error = "<style type='text/css'>\n[ntos_error]\n</style>"
+	basehtml = replacetextEx(basehtml, "<!-- tgui:ntos-error -->", ntos_error)
+
 	basehtml = replacetext(basehtml, "tgui:stylesheet", MAP_STYLESHEET)
 
 /datum/controller/subsystem/tgui/OnConfigLoad()

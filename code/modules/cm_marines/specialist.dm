@@ -198,6 +198,19 @@
 	trait_to_give = "grenadier"
 	rank_icon = "spec_grenadier"
 	kit_typepath = /obj/item/storage/box/spec/heavy_grenadier
+	incompatible_sets = list(
+		/datum/specialist_set/sharp_operator,
+	)
+
+/datum/specialist_set/sharp_operator
+	name = "SHARP Operator Set"
+	role_name = "SHARP Operator"
+	skill_to_give = SKILL_SPEC_GRENADIER
+	rank_icon = "spec_sharp"
+	kit_typepath = /obj/item/storage/box/spec/sharp_operator
+	incompatible_sets = list(
+		/datum/specialist_set/grenadier,
+	)
 
 /datum/specialist_set/pyro
 	name = "Pyro Set"

@@ -3,11 +3,46 @@
         "type": "map_sprinkle",
         "path": "sprinkles/"
     },
-    {
+	{
 		"type": "map_insert",
-		"landmark": "clfcrash",
+		"landmark": "hvhupplz1",
 		"chance": 1.0,
-		"path": "standalone/clfcamp.dmm",
-		"when": { "lvevent": "clfcrash" }
+		"path": "standalone/landingzone_sorokyne_upp_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz1",
+		"chance": 1.0,
+		"path": "standalone/landingzone_sorokyne_uscm_lz1.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "hvhuscmlz2",
+		"chance": 1.0,
+		"path": "standalone/landingzone_sorokyne_uscm_lz2.dmm",
+		"when": { "$gamemode": "Faction Clash UPP CM" }
+    },
+	{
+    "type": "map_insert",
+    "landmark": "sof_dropship",
+    "chance": 1.0,
+    "path": "standalone/sof_insert_dropship.dmm",
+    "when": { "lvevent": "sof_insert" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "sof_supply_crash",
+		"chance": 1.0,
+		"path": "standalone/sof_insert_supplyship.dmm",
+		"when": { "lvevent": "sof_insert" }
+	},
+	{
+	"type": "map_insert",
+	"landmark": "clfcrash",
+	"chance": 1.0,
+	"path": "standalone/clfcamp.dmm",
+	"when": { "lvevent": "clfcrash" }
 	}
 ]

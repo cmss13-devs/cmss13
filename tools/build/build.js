@@ -204,7 +204,7 @@ export const TguiTarget = new Juke.Target({
   dependsOn: [YarnTarget],
   inputs: [
     "tgui/.yarn/install-target",
-    "tgui/webpack.config.js",
+    "tgui/rspack.config.cjs",
     "tgui/**/package.json",
     "tgui/packages/**/*.+(js|jsx|cjs|ts|tsx|scss)",
   ],
@@ -266,6 +266,20 @@ export const TguiBenchTarget = new Juke.Target({
   executes: () => yarn("tgui:bench"),
 });
 
+export const TguiPrettierFix = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:prettier-fix'),
+});
+
+export const TguiEslintFix = new Juke.Target({
+  dependsOn: [YarnTarget],
+  executes: () => yarn('tgui:eslint-fix'),
+});
+
+export const TguiFix = new Juke.Target({
+  dependsOn: [TguiPrettierFix, TguiEslintFix],
+});
+
 export const TestTarget = new Juke.Target({
   dependsOn: [DmTestTarget, TguiTestTarget],
 });
@@ -301,7 +315,7 @@ export const TguiCleanTarget = new Juke.Target({
     Juke.rm("tgui/public/*.map");
     Juke.rm("tgui/public/*.{chunk,bundle,hot-update}.*");
     Juke.rm("tgui/packages/tgfont/dist", { recursive: true });
-    Juke.rm("tgui/.yarn/{cache,unplugged,webpack}", { recursive: true });
+    Juke.rm("tgui/.yarn/{cache,unplugged,rspack}", { recursive: true });
     Juke.rm("tgui/.yarn/build-state.yml");
     Juke.rm("tgui/.yarn/install-state.gz");
     Juke.rm("tgui/.yarn/install-target");

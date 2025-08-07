@@ -99,8 +99,10 @@ It DOES NOT control where your bullets go, that's scatter and projectile varianc
 ////RECOIL////
 */
 
+#define RECOIL_AMOUNT_TIER_0 6
 #define RECOIL_AMOUNT_TIER_1 5
 #define RECOIL_AMOUNT_TIER_2 4
+#define RECOIL_AMOUNT_TIER_2_5 3.4
 #define RECOIL_AMOUNT_TIER_3 3
 #define RECOIL_AMOUNT_TIER_4 2
 #define RECOIL_AMOUNT_TIER_5 1
@@ -136,7 +138,8 @@ As such, don't expect any values assigned to common firearms to even consider ho
 //How many ticks you have to wait between firing. Burst delay uses the same variable!
 */
 
-/// Sniper/DMR Delays
+/// Sniper/DMR/SHARP Delays
+#define FIRE_DELAY_TIER_SHARP 40
 #define FIRE_DELAY_TIER_AMR 30
 #define FIRE_DELAY_TIER_VULTURE 20
 #define FIRE_DELAY_TIER_SNIPER 15

@@ -130,7 +130,7 @@
 	if(!reagents || reagents.locked)
 		return ..()
 
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		dispensing = !dispensing
 		if(dispensing)
 			to_chat(user, SPAN_NOTICE("[src] is now dispensing"))

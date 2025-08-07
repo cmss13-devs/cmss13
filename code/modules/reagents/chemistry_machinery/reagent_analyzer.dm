@@ -4,6 +4,7 @@
 	icon = 'icons/obj/structures/machinery/science_machines.dmi'
 	icon_state = "reagent_analyzer"
 	active_power_usage = 5000 //This is how many watts the big XRF machines usually take
+	health = STRUCTURE_HEALTH_REINFORCED
 
 	var/mob/last_used
 	var/obj/item/reagent_container/sample = null //Object containing our sample

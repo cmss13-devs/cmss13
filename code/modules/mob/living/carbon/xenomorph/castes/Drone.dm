@@ -21,6 +21,7 @@
 
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
 	evolves_to = list(XENO_CASTE_QUEEN, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD) //Add more here separated by commas
+	early_evolves_to = list(XENO_CASTE_QUEEN, XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER) //list of castes that can be evolved too prior to 20 minutes.
 	deevolves_to = list(XENO_CASTE_LARVA)
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_TWO_HANDS

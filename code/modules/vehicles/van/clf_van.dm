@@ -203,7 +203,7 @@
 
 
 /obj/vehicle/multitile/clf_van/handle_click(mob/living/user, atom/A, list/mods)
-	if(mods["shift"] && !mods["alt"])
+	if(mods[SHIFT_CLICK] && !mods[ALT_CLICK])
 		if(overdrive_next > world.time)
 			to_chat(user, SPAN_WARNING("You can't activate overdrive yet! Wait [round((overdrive_next - world.time) / 10, 0.1)] seconds."))
 			return

@@ -2,23 +2,24 @@
 	var/datum/language/new_language = GLOB.all_languages[language]
 
 	if(!istype(new_language) || (new_language in languages))
-		return 0
+		return FALSE
 
 	languages.Add(new_language)
-	return 1
+	client?.tgui_say?.load()
+	return TRUE
 
 /mob/proc/set_languages(list/new_languages)
 	languages = list()
 	for(var/language in new_languages)
 		add_language(language)
-
+	client?.tgui_say?.load()
 
 /mob/proc/remove_language(rem_language)
-	languages.Remove(GLOB.all_languages[rem_language])
-	return 0
+	. = languages.Remove(GLOB.all_languages[rem_language])
+	client?.tgui_say?.load()
 
 /mob/proc/get_default_language()
-	if (length(languages) > 0)
+	if(length(languages) > 0)
 		return languages[1]
 	return null
 

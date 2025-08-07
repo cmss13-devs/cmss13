@@ -74,7 +74,7 @@
 
 /obj/item/paper/update_icon()
 	switch(icon_state)
-		if("paper_talisman", "paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
+		if("paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
 			return
 
 	if(!info)
@@ -1024,6 +1024,54 @@
 				template += {"\[b\]No comments\[/b\]\[br\]"}
 		else
 			template += {"\[b\]Security Record Lost!\[/b\]\[br\]"}
+
+	info = parsepencode(template, null, null, FALSE)
+	update_icon()
+
+/obj/item/paper/medical_record
+	name = "Medical record"
+	icon_state = "paper_uscm_words"
+
+/obj/item/paper/medical_record/Initialize(mapload, datum/data/record/general_record, datum/data/record/medical_record)
+	. = ..(mapload)
+	var/template = {"\[center\]\[uscm\]\[/center\]"}
+
+	template += {"\[center\]\[b\]Personal Record\[/b\]\[/center\]"}
+
+	if(general_record)
+		template += {"
+		Name: [general_record.fields["name"]]\[br\]
+		ID: [general_record.fields["id"]]\[br\]
+		Sex: [general_record.fields["sex"]]\[br\]
+		Age: [general_record.fields["age"]]\[br\]
+		Assignment: [general_record.fields["rank"]]\[br\]
+		Physical Status: [general_record.fields["p_stat"]]\[br\]
+		Mental Status: [general_record.fields["m_stat"]]\[br\]
+		"}
+
+		if (medical_record)
+			template += {"\[center\]\[b\]Medical Record\[/b\]\[/center\]"}
+			template += {"Diseases: [medical_record.fields["diseases"]]\[br\]"}
+			template += {"Allergies: [medical_record.fields["allergies"]]\[br\]"}
+			template += {"Major Disabilities: [medical_record.fields["major_disability"]]\[br\]"}
+			template += {"Minor Disabilities: [medical_record.fields["minor_disability"]]\[br\]"}
+			template += {"\[center\]\[b\]Comments and Logs\[/b\]\[/center\]"}
+
+			if(islist(medical_record.fields["comments"]) || length(medical_record.fields["comments"]) > 0)
+				for(var/com_i in medical_record.fields["comments"])
+					var/comment = medical_record.fields["comments"][com_i]
+					// What a wacky and jolly creation
+					// its derived from //? text("<b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+					var/comment_markup = "\[b\][comment["created_at"]] / [comment["created_by"]["name"]] \[/b\] ([comment["created_by"]["rank"]])\[br\]"
+					if (isnull(comment["deleted_by"]))
+						comment_markup += "[comment["entry"]]"
+					else
+						comment_markup += "\[i\]Comment deleted by [comment["deleted_by"]] at [comment["deleted_at"]]\[/i\]"
+					template += {"[comment_markup]\[br\]\[br\]"}
+			else
+				template += {"\[b\]No comments\[/b\]\[br\]"}
+		else
+			template += {"\[b\]Medical record not found!\[/b\]\[br\]"}
 
 	info = parsepencode(template, null, null, FALSE)
 	update_icon()

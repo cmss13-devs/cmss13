@@ -2,8 +2,8 @@ import { range } from 'common/collections';
 import { useBackend } from 'tgui/backend';
 import { Box, Icon, Stack } from 'tgui/components';
 
-import { DropshipEquipment } from '../DropshipWeaponsConsole';
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import type { DropshipEquipment } from '../DropshipWeaponsConsole';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useWeaponState } from './stateManagers';
 import {
   getLastTargetName,

@@ -49,6 +49,11 @@
 	trait_desc = "Boosts the medical skill to 1. Crewmember has attended several first aid training sessions and learned basic medical care."
 	skill = SKILL_MEDICAL
 
+/datum/character_trait/skills/science
+	trait_name = "Basic Lab Training"
+	trait_desc = "Boosts the research skill to 1. Crewmember has gained a fundamental understanding of scientific research and basic laboratory work."
+	skill = SKILL_RESEARCH
+
 /datum/character_trait/skills/engineering
 	trait_name = "Basic Engineering Training"
 	trait_desc = "Boosts the engineering skill to 1. Crewmember received basic training in repairing simple machinery and fortifications."
@@ -100,9 +105,9 @@
 
 /datum/character_trait/skills/loader
 	trait_name = "Loader Training"
-	trait_desc = "Boosts the endurance skill by 1."
-	skill = SKILL_ENDURANCE
-	skill_cap = SKILL_ENDURANCE_TRAINED
+	trait_desc = "Boosts the engineering skill by 1."
+	skill = SKILL_ENGINEER
+	skill_cap = SKILL_ENGINEER_NOVICE
 	skill_increment = 1
 
 /datum/character_trait/skills/mortar
@@ -118,6 +123,8 @@
 	trait_name = "K9 Handler Training"
 	trait_desc = "Allows the user to interface with Wey-Yu Synthetic K9 Units for rescue purposes"
 	skill = SKILL_JTAC
+	secondary_skill = SKILL_ENGINEER //enables the handler to use standard synth reset keys as well as easier repairs for the dog
+	skill_cap = SKILL_ENGINEER_NOVICE
 
 /datum/character_trait/skills/powerloader
 	trait_name = "Powerloader Usage Training"

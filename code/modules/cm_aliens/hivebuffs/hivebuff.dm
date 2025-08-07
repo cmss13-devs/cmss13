@@ -430,7 +430,7 @@
 				if(turf_to_check.density)
 					failed = TRUE
 					break
-				if(!turf_to_check.is_weedable())
+				if(!turf_to_check.is_weedable)
 					failed = TRUE
 					break
 				var/area/target_area = get_area(turf_to_check)
@@ -479,7 +479,7 @@
 
 	if(xeno.caste.fire_immunity == FIRE_IMMUNITY_NONE)
 		RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
-		
+
 
 /datum/hivebuff/fire/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
 	if(!(xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE))
@@ -524,7 +524,7 @@
 
 	if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
 		return
-	
+
 	add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
 	var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
 	transmute_action.give_to(xeno)

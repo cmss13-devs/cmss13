@@ -59,7 +59,7 @@
 	. = ..()
 
 /obj/item/explosive/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!has_blast_wave_dampener)

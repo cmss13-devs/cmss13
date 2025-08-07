@@ -5,7 +5,7 @@
  */
 
 import { classes } from 'common/react';
-import { ComponentProps } from 'react';
+import type { ComponentProps } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box } from 'tgui/components';
 import { useDebug } from 'tgui/debug';

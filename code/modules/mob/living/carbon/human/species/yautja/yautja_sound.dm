@@ -25,22 +25,38 @@
 // Laughing Emotes
 /datum/emote/living/carbon/human/yautja/species_sound/laugh1
 	key = "laugh1"
+	message = "laughs!"
 	sound = 'sound/voice/pred_laugh1.ogg'
 	volume = 25
 
 /datum/emote/living/carbon/human/yautja/species_sound/laugh2
 	key = "laugh2"
+	message = "laughs!"
 	sound = 'sound/voice/pred_laugh2.ogg'
 	volume = 25
 
 /datum/emote/living/carbon/human/yautja/species_sound/laugh3
 	key = "laugh3"
+	message = "laughs!"
 	sound = 'sound/voice/pred_laugh3.ogg'
 	volume = 25
 
 /datum/emote/living/carbon/human/yautja/species_sound/laugh4
 	key = "laugh4"
-	sound = "pred_laugh4"
+	message = "laughs!"
+	sound = 'sound/voice/pred_laugh4.ogg'
+	volume = 25
+
+/datum/emote/living/carbon/human/yautja/species_sound/laugh5
+	key = "laugh5"
+	message = "laughs!"
+	sound = 'sound/voice/pred_laugh5.ogg'
+	volume = 25
+
+/datum/emote/living/carbon/human/yautja/species_sound/laugh6
+	key = "laugh6"
+	message = "laughs!"
+	sound = 'sound/voice/pred_laugh6.ogg'
 	volume = 25
 
 // Roar Emotes

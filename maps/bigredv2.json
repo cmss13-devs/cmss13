@@ -7,6 +7,7 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/solaris",
         "/datum/equipment_preset/survivor/doctor/solaris",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
         "/datum/equipment_preset/survivor/chaplain/solaris",
         "/datum/equipment_preset/survivor/engineer/solaris",
         "/datum/equipment_preset/survivor/trucker/solaris",
@@ -15,7 +16,13 @@
         "/datum/equipment_preset/survivor/colonial_marshal/solaris",
         "/datum/equipment_preset/survivor/corporate/solaris",
         "/datum/equipment_preset/survivor/flight_control_operator",
-        "/datum/equipment_preset/survivor/civilian"
+        "/datum/equipment_preset/survivor/civilian",
+        "/datum/equipment_preset/survivor/civilian_unique",
+        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
+        "/datum/equipment_preset/survivor/hybrisa/fire_fighter"
+    ],
+    "CO_survivor_types": [
+        "/datum/equipment_preset/survivor/solaris_ridge/co_survivor"
     ],
     "defcon_triggers": [
         4750,

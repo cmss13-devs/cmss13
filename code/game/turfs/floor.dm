@@ -189,3 +189,22 @@
 /turf/open/floor/sandstone/runed
 	name = "sandstone temple floor"
 	icon_state = "runedsandstone"
+
+/turf/open/floor/sandstone/cult
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "cult"
+
+/turf/open/floor/sandstone/red
+	name = "carved red temple floor"
+	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon_state = "hunter_red"
+
+/turf/open/floor/sandstone/red2
+	name = "carved red temple floor"
+	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon_state = "hunter_red_2"
+
+/turf/open/floor/sandstone/red3
+	name = "carved red temple floor"
+	icon = 'icons/turf/floors/hunter_floors.dmi'
+	icon_state = "hunter_red_3"

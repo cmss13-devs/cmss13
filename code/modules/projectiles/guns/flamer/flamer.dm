@@ -4,13 +4,14 @@
 //FLAMETHROWER
 
 /obj/item/weapon/gun/flamer
-	name = "\improper M240A1 incinerator unit"
-	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
+	name = "\improper core flamer item"
+	desc = "You shouldn't have this, report how you got this item on GitHub."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/flamers.dmi'
 	icon_state = "m240"
 	item_state = "m240"
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
 		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
 		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
 		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
@@ -103,13 +104,6 @@
 		var/image/I = image(icon, src, "+lit")
 		I.pixel_x += nozzle && nozzle == active_attachable ? 6 : 1
 		overlays += I
-
-/obj/item/weapon/gun/flamer/able_to_fire(mob/user)
-	. = ..()
-	if(.)
-		if(!current_mag || !current_mag.current_rounds)
-			click_empty(user)
-			return NONE
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -227,31 +221,79 @@
 		click_empty(user)
 		return
 
-	var/datum/reagent/R = current_mag.reagents.reagent_list[1]
+	var/datum/reagent/chem = current_mag.reagents.reagent_list[1]
 
-	var/flameshape = R.flameshape
-	var/fire_type = R.fire_type
+	var/flameshape = chem.flameshape
+	var/fire_type = chem.fire_type
 
-	R.intensityfire = clamp(R.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
-	R.durationfire = clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
-	R.rangefire = clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
-	var/max_range = R.rangefire
-	if (max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
-		max_range = clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
-	if(R.rangefire == -1)
+	chem.intensityfire = clamp(chem.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
+	chem.durationfire = clamp(chem.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
+
+	// COMMENTING THESE OUT BUT NOT DELETING, THERE IS CURRENTLY NO ITERATION OF FLAMERS THAT NECESSITATES THE CODE BELOW
+		//atleast until circa 2030 CM with scoped flamers
+	//if (max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
+	//	max_range = clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
+
+	var/max_range = chem.rangefire
+	if(chem.rangefire == -1)
 		max_range = current_mag.reagents.max_fire_rad
+	var/distance = 0
 
 	var/turf/temp[] = get_line(get_turf(user), get_turf(target))
+	process_flame_tiles(temp, target, user, chem, max_range, flameshape, fire_type, distance, null, FALSE)
 
-	var/turf/to_fire = temp[2]
+/obj/item/weapon/gun/flamer/proc/process_flame_tiles(list/turfs, atom/target, mob/living/user, datum/reagent/chem, max_range, flameshape, fire_type, distance, turf/prev_turf, stop_at_turf)
+	if(!length(turfs))
+		return
 
-	var/obj/flamer_fire/fire = locate() in to_fire
-	if(fire)
-		qdel(fire)
+	var/turf/current_turf = turfs[1]
+	turfs.Cut(1, 2)
 
-	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
+	if(current_turf == user.loc)
+		prev_turf = current_turf
+		addtimer(CALLBACK(src, PROC_REF(process_flame_tiles), turfs, target, user, chem, max_range, flameshape, fire_type, distance, prev_turf, stop_at_turf), 1, TIMER_UNIQUE)
+		return
 
-	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
+	if(distance >= max_range)
+		return
+
+	if(current_turf.density)
+		stop_at_turf = TRUE
+	else if(prev_turf)
+		var/atom/movable/temp = new /obj/flamer_fire()
+		var/atom/movable/blocked = LinkBlocked(temp, prev_turf, current_turf)
+		qdel(temp)
+
+		if(blocked)
+			if(blocked.flags_atom & ON_BORDER)
+				return
+			stop_at_turf = TRUE
+
+	if(stop_at_turf)
+		flame_adjacent(current_turf, user, chem)
+		playsound(current_turf, src.get_fire_sound(), 50, TRUE)
+		show_percentage(user)
+		return
+
+	distance++
+	prev_turf = current_turf
+
+	playsound(current_turf, src.get_fire_sound(), 50, TRUE)
+
+	new /obj/flamer_fire(current_turf, create_cause_data(initial(name), user), chem, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, PROC_REF(show_percentage), user), fuel_pressure, fire_type)
+
+/obj/item/weapon/gun/flamer/proc/flame_adjacent(turf/turfed, mob/living/user, datum/reagent/chem)
+	if(!istype(turfed))
+		return
+
+	if(!locate(/obj/flamer_fire) in turfed) // Prevent stacking flames
+		if(current_mag && current_mag.reagents && length(current_mag.reagents.reagent_list)) // Ensure reagents exist
+
+			chem.intensityfire = clamp(chem.intensityfire, current_mag.reagents.min_fire_int, current_mag.reagents.max_fire_int)
+			chem.durationfire = clamp(chem.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
+
+			new /obj/flamer_fire(turfed, create_cause_data(initial(name), user), chem)
+			current_mag.reagents.remove_reagent(chem.id, 1)
 
 /obj/item/weapon/gun/flamer/proc/unleash_smoke(atom/target, mob/living/user)
 	last_fired = world.time
@@ -370,30 +412,14 @@
 	if(current_mag)
 		to_chat(user, SPAN_WARNING("The gauge reads: <b>[floor(current_mag.get_ammo_percent())]</b>% fuel remains!"))
 
-/obj/item/weapon/gun/flamer/underextinguisher
+/obj/item/weapon/gun/flamer/m240
+	name = "\improper M240A1 incinerator unit"
+	desc = "M240A1 incinerator unit has proven to be one of the most effective weapons at clearing out soft-targets. This is a weapon to be feared and respected as it is quite deadly."
+
+/obj/item/weapon/gun/flamer/m240/underextinguisher
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher)
 
-/obj/item/weapon/gun/flamer/deathsquad //w-y deathsquad waist flamer
-	name = "\improper M240A3 incinerator unit"
-	desc = "A next-generation incinerator unit, the M240A3 is much lighter and dextrous than its predecessors thanks to the ceramic alloy construction. It can be slinged over a belt and usually comes equipped with EX-type fuel."
-	attachable_allowed = list(
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/attached_gun/extinguisher,
-	)
-	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro, /obj/item/attachable/magnetic_harness)
-	flags_equip_slot = SLOT_BACK | SLOT_WAIST
-	auto_retrieval_slot = WEAR_WAIST
-	current_mag = /obj/item/ammo_magazine/flamer_tank/EX
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_WIELDED_FIRING_ONLY
-
-/obj/item/weapon/gun/flamer/deathsquad/nolock
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
-
-/obj/item/weapon/gun/flamer/deathsquad/standard
-	current_mag = /obj/item/ammo_magazine/flamer_tank
-
-/obj/item/weapon/gun/flamer/M240T
+/obj/item/weapon/gun/flamer/m240/spec
 	name = "\improper M240-T incinerator unit"
 	desc = "An improved version of the M240A1 incinerator unit, the M240-T model is capable of dispersing a larger variety of fuel types."
 	icon_state = "m240t"
@@ -412,18 +438,18 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
-/obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
+/obj/item/weapon/gun/flamer/m240/spec/unique_action(mob/user)
 	if(fuelpack)
 		fuelpack.do_toggle_fuel(user)
 
-/obj/item/weapon/gun/flamer/M240T/Destroy()
+/obj/item/weapon/gun/flamer/m240/spec/Destroy()
 	if(fuelpack)
 		if(fuelpack.linked_flamer == src)
 			fuelpack.linked_flamer = null
 		fuelpack = null
 	. = ..()
 
-/obj/item/weapon/gun/flamer/M240T/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/gun/flamer/m240/spec/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
 	if(retrieval_slot == WEAR_IN_SCABBARD)
 		var/obj/item/storage/large_holster/fuelpack/FP = user.back
 		if(istype(FP) && !length(FP.contents))
@@ -431,28 +457,28 @@
 		return FALSE
 	return ..()
 
-/obj/item/weapon/gun/flamer/M240T/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/gun/flamer/m240/spec/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc, silent)
 	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
-		if(..(user, WEAR_IN_SCABBARD)) //...first try to put it onto the Broiler.
+		if(..(user, WEAR_IN_SCABBARD, check_loc, silent)) //...first try to put it onto the Broiler.
 			return TRUE
 	return ..()
 
-/obj/item/weapon/gun/flamer/M240T/x_offset_by_attachment_type(attachment_type)
+/obj/item/weapon/gun/flamer/m240/spec/x_offset_by_attachment_type(attachment_type)
 	switch(attachment_type)
 		if(/obj/item/attachable/flashlight)
 			return 7
 	return 0
 
-/obj/item/weapon/gun/flamer/M240T/y_offset_by_attachment_type(attachment_type)
+/obj/item/weapon/gun/flamer/m240/spec/y_offset_by_attachment_type(attachment_type)
 	switch(attachment_type)
 		if(/obj/item/attachable/flashlight)
 			return -1
 	return 0
 
-/obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
+/obj/item/weapon/gun/flamer/m240/spec/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0, "rail_x" = 13, "rail_y" = 20, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
 
-/obj/item/weapon/gun/flamer/M240T/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+/obj/item/weapon/gun/flamer/m240/spec/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if (!link_fuelpack(user) && !current_mag)
 		to_chat(user, SPAN_WARNING("You must equip the specialized Broiler-T back harness or load in a fuel tank to use this incinerator unit!"))
 		click_empty(user)
@@ -469,19 +495,19 @@
 	return ..()
 
 
-/obj/item/weapon/gun/flamer/M240T/reload(mob/user, obj/item/ammo_magazine/magazine)
+/obj/item/weapon/gun/flamer/m240/spec/reload(mob/user, obj/item/ammo_magazine/magazine)
 	if (fuelpack)
 		to_chat(user, SPAN_WARNING("The Broiler-T feed system cannot be reloaded manually."))
 		return
 	..()
 
-/obj/item/weapon/gun/flamer/M240T/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
+/obj/item/weapon/gun/flamer/m240/spec/unload(mob/user, reload_override = 0, drop_override = 0, loc_override = 0)
 	if (fuelpack && (current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
 		to_chat(user, SPAN_WARNING("The incinerator tank is locked in place. It cannot be removed."))
 		return
 	..()
 
-/obj/item/weapon/gun/flamer/M240T/able_to_fire(mob/user)
+/obj/item/weapon/gun/flamer/m240/spec/able_to_fire(mob/user)
 	. = ..()
 	if(.)
 		if(!current_mag || !current_mag.current_rounds)
@@ -491,7 +517,7 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 
-/obj/item/weapon/gun/flamer/M240T/proc/link_fuelpack(mob/user)
+/obj/item/weapon/gun/flamer/m240/spec/proc/link_fuelpack(mob/user)
 	if (fuelpack)
 		fuelpack.linked_flamer = null
 		fuelpack = null
@@ -505,13 +531,13 @@
 		return TRUE
 	return FALSE
 
-/obj/item/weapon/gun/flamer/M240T/auto // With NEW advances in science, we've learned how to drain a pyro's tank in 6 seconds, or your money back!
+/obj/item/weapon/gun/flamer/m240/spec/auto // With NEW advances in science, we've learned how to drain a pyro's tank in 6 seconds, or your money back!
 	name = "\improper M240-T2 incinerator unit"
 	desc = "A prototyped model of the M240-T incinerator unit, it was discontinued after its automatic mode was deemed too expensive to deploy in the field."
 	start_semiauto = FALSE
 	start_automatic = TRUE
 
-/obj/item/weapon/gun/flamer/M240T/auto/set_gun_config_values()
+/obj/item/weapon/gun/flamer/m240/spec/auto/set_gun_config_values()
 	. = ..()
 	set_fire_delay(FIRE_DELAY_TIER_7)
 
@@ -635,28 +661,29 @@
 			continue
 
 		if(ishuman(ignited_morb))
-			var/mob/living/carbon/human/H = ignited_morb //fixed :s
+			var/mob/living/carbon/human/target_human = ignited_morb //fixed :s
 
 			if(weapon_cause_data)
 				var/mob/user = weapon_cause_data.resolve_mob()
 				if(user)
 					var/area/thearea = get_area(user)
-					if(user.faction == H.faction && !thearea?.statistic_exempt)
-						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+					if(user.faction == target_human.faction && !thearea?.statistic_exempt)
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)
-							H.track_friendly_fire(weapon_cause_data.cause_name)
-						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
+							target_human.track_friendly_fire(weapon_cause_data.cause_name)
+						var/ff_msg = "[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] [ADMIN_JMP(user)] [ADMIN_PM(user)]"
 						var/ff_living = TRUE
-						if(H.stat == DEAD)
+						if(target_human.stat == DEAD)
 							ff_living = FALSE
-						msg_admin_ff(ff_msg, ff_living)
+						if(!((user.mob_flags & MUTINY_MUTINEER) && (target_human.mob_flags & MUTINY_LOYALIST)) && ((user.mob_flags & MUTINY_LOYALIST) && (target_human.mob_flags & MUTINY_MUTINEER)))
+							msg_admin_ff(ff_msg, ff_living)
 					else
-						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-						msg_admin_attack("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+						target_human.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(target_human)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						msg_admin_attack("[key_name(user)] shot [key_name(target_human)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 				if(weapon_cause_data.cause_name)
-					H.track_shot_hit(weapon_cause_data.cause_name, H)
+					target_human.track_shot_hit(weapon_cause_data.cause_name, target_human)
 
 		var/fire_intensity_resistance = ignited_morb.check_fire_intensity_resistance()
 		var/firedamage = max(burn_dam - fire_intensity_resistance, 0)
@@ -917,17 +944,9 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/flamers.dmi'
 	icon_state = "flamer"
 	item_state = "flamer"
-	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/flamers.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/flamers.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/flamers_righthand.dmi'
-	)
 	ignite_sound = 'sound/weapons/surv_flamer_ignite.ogg'
 	extinguish_sound = 'sound/weapons/surv_flamer_extinguish.ogg'
-
-	fire_sound = ""
-
+	accepted_ammo = list(/obj/item/ammo_magazine/flamer_tank/survivor)
 	current_mag = /obj/item/ammo_magazine/flamer_tank/survivor
 
 	attachable_allowed = list(
@@ -941,3 +960,52 @@
 		'sound/weapons/surv_flamer_fire3.ogg',
 		'sound/weapons/surv_flamer_fire4.ogg')
 	return pick(fire_sounds)
+
+/obj/item/weapon/gun/flamer/flammenwerfer3
+	name = "\improper Flammenwerfer 3 Heavy Incineration Unit"
+	desc = "A heavy industrial incineration unit produced by Weyland Corporation and later by Weyland-Yutani Corporation. Often found among foliage cleaning missions on frontier colonies, usually aren't seen in combat, but devastating when actually used."
+	desc_lore = "This century-old flamethrower is seeing a comeback on Frontier colonies. Heavy Incinerator Units are often used for clearing out dead foliage and burning disease ridden corpses. Current market price of is 2000$."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/flamers.dmi'
+	icon_state = "fl3"
+	item_state = "fl3"
+	hud_offset = -6
+	pixel_x = -6
+	ignite_sound = 'sound/weapons/wy_flamer_ignite.ogg'
+	extinguish_sound = 'sound/weapons/wy_flamer_extinguish.ogg'
+	unload_sound = 'sound/weapons/handling/wy_flamer_unload.ogg'
+	reload_sound = 'sound/weapons/handling/wy_flamer_reload.ogg'
+	dry_fire_sound = list('sound/weapons/wy_flamer_dryfire.ogg')
+	accepted_ammo = list(
+		/obj/item/ammo_magazine/flamer_tank/flammenwerfer,
+		/obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout,
+	)
+	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer
+
+	attachable_allowed = null
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/get_fire_sound()
+	var/list/fire_sounds = list(
+		'sound/weapons/wy_flamethrower1.ogg',
+		'sound/weapons/wy_flamethrower2.ogg',
+		'sound/weapons/wy_flamethrower3.ogg')
+	return pick(fire_sounds)
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad
+	flags_equip_slot = SLOT_BACK | SLOT_WAIST
+	auto_retrieval_slot = WEAR_WAIST
+	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer/whiteout
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_WIELDED_FIRING_ONLY
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/magnetic_harness/Integrated = new(src)
+	Integrated.hidden = TRUE
+	Integrated.flags_attach_features &= ~ATTACH_REMOVABLE
+	Integrated.Attach(src)
+	update_attachable(Integrated.slot)
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/nolock
+	flags_gun_features = GUN_WIELDED_FIRING_ONLY
+
+/obj/item/weapon/gun/flamer/flammenwerfer3/deathsquad/standard
+	current_mag = /obj/item/ammo_magazine/flamer_tank/flammenwerfer

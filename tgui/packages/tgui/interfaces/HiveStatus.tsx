@@ -8,6 +8,7 @@ import {
   Divider,
   Flex,
   Icon,
+  Image,
   Input,
   NumberInput,
   Table,
@@ -16,6 +17,10 @@ import { Window } from 'tgui/layouts';
 
 const redFont = {
   color: 'red',
+};
+
+const grayFont = {
+  color: 'gray',
 };
 
 /**
@@ -48,6 +53,7 @@ const filterXenos = (data: {
       strain: xeno_info[nicknumber].strain,
       location: xeno_vitals[nicknumber].area,
       health: xeno_vitals[nicknumber].health,
+      plasma: xeno_vitals[nicknumber].plasma,
       ref: xeno_info[nicknumber].ref,
       is_ssd: xeno_vitals[nicknumber].is_ssd,
       is_leader: key.is_leader,
@@ -99,6 +105,7 @@ type XenoEntry = {
   strain: string;
   location: string | null;
   health: number;
+  plasma: number;
   ref: string;
   is_ssd: BooleanLike;
   is_leader: BooleanLike;
@@ -115,10 +122,16 @@ type XenoKey = {
 
 type TierSlot = { open_slots: string; guaranteed_slots: string };
 type XenoInfo = { name: string; straing: string; ref: string };
-type XenoVitals = { health: number; area: string; is_ssd: BooleanLike };
+type XenoVitals = {
+  health: number;
+  plasma: number;
+  area: string;
+  is_ssd: BooleanLike;
+};
 
 type Data = {
   total_xenos: number;
+  xeno_icons: Record<string, string>[];
   xeno_counts: Record<string, number>[];
   tier_slots: { 3: TierSlot; 2: TierSlot };
   xeno_keys: XenoKey[];
@@ -129,6 +142,7 @@ type Data = {
   burrowed_larva: number;
   evilution_level: number;
   pylon_status: string;
+  xeno_background: string;
   is_in_ovi: BooleanLike;
   user_ref: string;
   hive_color: string;
@@ -212,7 +226,8 @@ const GeneralInformation = (props) => {
 
 const XenoCounts = (props) => {
   const { data } = useBackend<Data>();
-  const { xeno_counts, tier_slots, hive_color } = data;
+  const { xeno_background, xeno_icons, xeno_counts, tier_slots, hive_color } =
+    data;
 
   return (
     <Flex direction="column-reverse">
@@ -275,9 +290,30 @@ const XenoCounts = (props) => {
               <Flex.Item>
                 <center>
                   <Table className="xenoCountTable" collapsing>
-                    <Table.Row header>
+                    <Table.Row header style={{ transform: 'translateX(10px)' }}>
                       {Object.keys(counts).map((caste, i) => (
-                        <Table.Cell key={i} className="underlineCell" width={7}>
+                        <Table.Cell
+                          key={i}
+                          className="underlineCell"
+                          width={caste.length}
+                          nowrap
+                        >
+                          <Image
+                            src={`data:image/jpeg;base64,${xeno_background}`}
+                            position="absolute"
+                            style={{
+                              transform:
+                                'scale(3) translateX(-6px) translateY(1px)',
+                            }}
+                          />
+                          <Image
+                            src={`data:image/jpeg;base64,${xeno_icons[tier][caste]}`}
+                            position="absolute"
+                            style={{
+                              transform:
+                                'scale(3) translateX(-6px) translateY(1px)',
+                            }}
+                          />
                           {caste === 'Bloody Larva' ? 'Larva' : caste}
                         </Table.Cell>
                       ))}
@@ -317,6 +353,8 @@ const XenoList = (props) => {
   const [maxHealth, setMaxHealth] = useState(100);
   const { xeno_keys, xeno_vitals, xeno_info, user_ref, is_in_ovi, hive_color } =
     data;
+  const [showPlasma, setShowPlasma] = useState(is_in_ovi ? true : false);
+
   const xeno_entries = filterXenos({
     searchKey: searchKey,
     searchFilters: searchFilters,
@@ -376,6 +414,20 @@ const XenoList = (props) => {
       </Flex.Item>
       <Flex.Item mb={1}>
         <Flex align="baseline">
+          <Flex.Item>
+            <Button.Checkbox
+              inline
+              checked={showPlasma}
+              backgroundColor={showPlasma && hive_color}
+              onClick={() => setShowPlasma(!showPlasma)}
+            >
+              Show Plasma
+            </Button.Checkbox>
+          </Flex.Item>
+        </Flex>
+      </Flex.Item>
+      <Flex.Item mb={1}>
+        <Flex align="baseline">
           <Flex.Item width="100px">Max Health:</Flex.Item>
           <Flex.Item>
             <NumberInput
@@ -405,7 +457,8 @@ const XenoList = (props) => {
           <Table.Cell>Name</Table.Cell>
           <Table.Cell width="15%">Strain</Table.Cell>
           <Table.Cell>Location</Table.Cell>
-          <Table.Cell width="75px">Health</Table.Cell>
+          <Table.Cell width="60px">Health</Table.Cell>
+          {showPlasma && <Table.Cell width="60px">Plasma</Table.Cell>}
           <Table.Cell width="100px" />
         </Table.Row>
 
@@ -433,6 +486,17 @@ const XenoList = (props) => {
                 <>{entry.health}%</>
               )}
             </Table.Cell>
+            {showPlasma && (
+              <Table.Cell>
+                {entry.plasma < 0 ? (
+                  <div style={grayFont}>------</div>
+                ) : entry.plasma < 30 ? (
+                  <b style={redFont}>{entry.plasma}%</b>
+                ) : (
+                  <>{entry.plasma}%</>
+                )}
+              </Table.Cell>
+            )}
             <Table.Cell className="noPadCell" textAlign="center">
               {entry.ref !== user_ref && (
                 <Flex

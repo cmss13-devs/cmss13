@@ -1,7 +1,7 @@
 /mob/living/carbon/human/proc/parse_say_modes(message)
 	. = list("message_and_language", "modes" = list())
 	if(length(message) >= 1 && message[1] == ";")
-		.["message_and_language"] = copytext(message, 2)
+		.["message_and_language"] = trim_left(copytext(message, 2))
 		.["modes"] += "headset"
 		return
 
@@ -15,8 +15,8 @@
 			if(current_channel == " " || current_channel == ":" || current_channel == ".")
 				i--
 				break
-			.["modes"] += GLOB.department_radio_keys[":[current_channel]"]
-		.["message_and_language"] = copytext(message, i+1)
+			.["modes"] += GLOB.department_radio_keys[":[lowertext(current_channel)]"]
+		.["message_and_language"] = trim_left(copytext(message, i+1))
 		var/multibroadcast_cooldown = 0
 		for(var/obj/item/device/radio/headset/headset in list(wear_l_ear, wear_r_ear))
 			if(world.time - headset.last_multi_broadcast < headset.multibroadcast_cooldown)
@@ -30,9 +30,9 @@
 		return
 
 	if(length(message) >= 2 && (message[1] == "." || message[1] == ":" || message[1] == "#"))
-		var/channel_prefix = copytext(message, 1, 3)
+		var/channel_prefix = lowertext(copytext(message, 1, 3))
 		if(channel_prefix in GLOB.department_radio_keys)
-			.["message_and_language"] = copytext(message, 3)
+			.["message_and_language"] = trim_left(copytext(message, 3))
 			.["modes"] += GLOB.department_radio_keys[channel_prefix]
 			return
 
@@ -51,7 +51,7 @@
 		.["language"] = parsed_language
 		.["message"] = copytext(message_and_language, 3)
 	else
-		.["message"] = message_and_language
+		.["message"] = strip_language(message_and_language)
 
 /mob/living/carbon/human/say(message)
 
@@ -98,8 +98,14 @@
 	if(!speaking)
 		speaking = get_default_language()
 
-	var/ending = copytext(message, length(message))
 	if (speaking)
+		var/ending = copytext(message, length(message))
+		if(ending=="!")
+			verb = pick(speaking.exclaim_verb)
+		else if(ending=="?")
+			verb = pick(speaking.ask_verb)
+		else
+			verb = pick(speaking.speech_verb)
 		// This is broadcast to all mobs with the language,
 		// irrespective of distance or anything else.
 		if(speaking.flags & HIVEMIND)
@@ -109,12 +115,8 @@
 			speaking.broadcast(src, trim(message))
 			return
 		//If we've gotten this far, keep going!
-		verb = speaking.get_spoken_verb(ending)
 	else
-		if(ending=="!")
-			verb=pick("exclaims","shouts","yells")
-		if(ending=="?")
-			verb="asks"
+		verb = "says"
 
 	if (istype(wear_mask, /obj/item/clothing/mask/muzzle))
 		return
@@ -125,7 +127,7 @@
 	message = capitalize(trim(message))
 	message = process_chat_markup(message, list("~", "_"))
 
-	var/list/handle_r = handle_speech_problems(message)
+	var/list/handle_r = handle_speech_problems(message, verb)
 	message = handle_r[1]
 	verb = handle_r[2]
 	if(!message)
@@ -257,19 +259,15 @@ for it but just ignore it.
 	var/verb = "says"
 	var/ending = copytext(message, length(message))
 
-	if(speaking)
-		verb = speaking.get_spoken_verb(ending)
-	else
-		if(ending == "!")
-			verb=pick("exclaims","shouts","yells")
-		else if(ending == "?")
-			verb="asks"
+	if(ending == "!")
+		verb = pick("exclaims","shouts","yells")
+	if(ending == "?")
+		verb = "asks"
 
 	return verb
 
-/mob/living/carbon/human/proc/handle_speech_problems(message)
+/mob/living/carbon/human/proc/handle_speech_problems(message, verb)
 	var/list/returns[2]
-	var/verb = "says"
 	if(silent)
 		message = ""
 	if(sdisabilities & DISABILITY_MUTE)

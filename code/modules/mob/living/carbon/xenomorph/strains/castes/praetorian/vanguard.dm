@@ -8,6 +8,7 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
+		/datum/action/xeno_action/activable/xeno_spit/praetorian,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
 		/datum/action/xeno_action/activable/corrosive_acid,
 	)
@@ -76,8 +77,6 @@
 			break
 
 	if (found_shield)
-		qdel(found_shield)
-
 		praetorian.add_xeno_shield(800, XENO_SHIELD_SOURCE_VANGUARD_PRAE, /datum/xeno_shield/vanguard)
 
 	else
@@ -94,6 +93,8 @@
 
 /datum/action/xeno_action/activable/pierce/use_ability(atom/targetted_atom)
 	var/mob/living/carbon/xenomorph/pierce_user = owner
+	var/pierce_sounds = pick('sound/effects/pierce1.ogg', 'sound/effects/pierce2.ogg', 'sound/effects/pierce3.ogg')
+
 	if (!action_cooldown_check())
 		return
 
@@ -164,7 +165,7 @@
 
 		current_mob.flick_attack_overlay(current_mob, "slash")
 		current_mob.apply_armoured_damage(get_xeno_damage_slash(current_mob, damage), ARMOR_MELEE, BRUTE, null, 20)
-		playsound(current_mob, 'sound/weapons/alien_tail_attack.ogg', 30, TRUE)
+		playsound(current_mob, pierce_sounds, 30, 1)
 
 	if (length(target_mobs) >= shield_regen_threshold)
 		var/datum/behavior_delegate/praetorian_vanguard/behavior = pierce_user.behavior_delegate
@@ -264,7 +265,7 @@
 	cleave_user.face_atom(target_carbon)
 	cleave_user.animation_attack_on(target_atom, 10)
 	var/hitsound = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-	playsound(target_carbon,hitsound, 50, 1)
+	playsound(target_carbon, hitsound, 75, 1)
 
 	if (root_toggle)
 		var/root_duration = buffed ? root_duration_buffed : root_duration_unbuffed

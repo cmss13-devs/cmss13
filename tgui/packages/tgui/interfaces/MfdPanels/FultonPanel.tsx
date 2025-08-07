@@ -4,7 +4,7 @@ import { useBackend } from 'tgui/backend';
 import { Box, Stack } from 'tgui/components';
 import { Icon } from 'tgui/components';
 
-import { MfdPanel, MfdProps } from './MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import type { FultonProps } from './types';
 

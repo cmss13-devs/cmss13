@@ -27,7 +27,7 @@
 	var/broken = FALSE
 	var/contraband = FALSE
 	var/covert = FALSE //covert = no light, no sound
-	var/delay = 3 //fabricating time, in seconds
+	var/delay = 3 SECONDS //fabricating time, in seconds
 
 	var/list/purchase_log = list()
 
@@ -197,7 +197,7 @@
 	fabricating = TRUE
 	update_overlays()
 
-	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), delay SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), delay)
 
 /obj/item/device/portable_vendor/proc/spawn_product(typepath, mob/user)
 	var/obj/new_item = new typepath(get_turf(src))

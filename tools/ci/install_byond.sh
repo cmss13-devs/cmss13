@@ -10,11 +10,20 @@ if [ -d "$HOME/BYOND/byond/bin" ] && grep -Fxq "${BYOND_MAJOR}.${BYOND_MINOR}" $
 then
   echo "Using cached directory."
 else
-  echo "Setting up BYOND."
+  echo "Setting up BYOND version ${BYOND_MAJOR}.${BYOND_MINOR} (linux)..."
   rm -rf "$HOME/BYOND"
   mkdir -p "$HOME/BYOND"
   cd "$HOME/BYOND"
-  curl "http://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip
+  curl "http://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip -A "CMSS13/1.0 Continuous Integration"
+  if [ $? -ne 0 ] || !(unzip -qt byond.zip); then
+    echo "Attempting fallback mirror..."
+    rm byond.zip
+    curl "https://cmss13-devs.github.io/byond-build-mirror/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip -A "CMSS13/1.0 Continuous Integration"
+    if [ $? -ne 0 ] || !(unzip -qt byond.zip); then
+      echo "Failure!"
+      exit 1
+    fi
+  fi
   unzip byond.zip
   rm byond.zip
   cd byond

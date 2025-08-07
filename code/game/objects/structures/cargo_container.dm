@@ -106,6 +106,32 @@
 /obj/structure/cargo_container/wy/right
 	icon_state = "wy_r"
 
+/obj/structure/cargo_container/wy2
+	name = "Weyland-Yutani Cargo Container"
+	desc = "A huge industrial shipping container.\nThis one is from The Weyland-Yutani Corporation, you have probably heard of them before."
+
+/obj/structure/cargo_container/wy2/left
+	icon_state = "wy2_l"
+
+/obj/structure/cargo_container/wy2/mid
+	icon_state = "wy2_m"
+
+/obj/structure/cargo_container/wy2/right
+	icon_state = "wy2_r"
+
+/obj/structure/cargo_container/armat
+	name = "ARMAT Cargo Container"
+	desc = "A large industrial container. This one is from ARMAT, the defense contractors behind the M41A and other marine weaponry."
+
+/obj/structure/cargo_container/armat/left
+	icon_state = "armat_l"
+
+/obj/structure/cargo_container/armat/mid
+	icon_state = "armat_m"
+
+/obj/structure/cargo_container/armat/right
+	icon_state = "armat_r"
+
 /obj/structure/cargo_container/hd
 	name = "Hyperdyne Systems Cargo Container"
 	desc = "A huge industrial shipping container.\nThis one is from Hyperdyne Systems, a manufacturer of synthetics, prosthetics, and weapons.\nWe don't speak about their former affiliations with the UPP."
@@ -361,3 +387,129 @@
 
 /obj/structure/cargo_container/uscm/right
 	icon_state = "uscm_r"
+
+/obj/structure/cargo_container/upp_small
+	name = "UPP Cargo Container"
+	desc = "A small industrial shipping container.\nThis one is from the Union of Progressive Peoples, as indicated by the red star symbol on the side."
+	bound_height = 32
+	layer = ABOVE_XENO_LAYER
+
+/obj/structure/cargo_container/upp_small/container_1/left
+	icon_state = "upp_1_l"
+
+/obj/structure/cargo_container/upp_small/container_1/right
+	icon_state = "upp_1_r"
+
+/obj/structure/cargo_container/upp_small/container_2/left
+	icon_state = "upp_2_l"
+
+/obj/structure/cargo_container/upp_small/container_2/right
+	icon_state = "upp_2_r"
+
+/obj/structure/cargo_container/upp_small/container_3/left
+	icon_state = "upp_3_l"
+
+/obj/structure/cargo_container/upp_small/container_3/right
+	icon_state = "upp_3_r"
+
+/obj/structure/cargo_container/upp_small/container_4/left
+	icon_state = "upp_4_l"
+
+/obj/structure/cargo_container/upp_small/container_4/right
+	icon_state = "upp_4_r"
+
+/obj/structure/cargo_container/upp_small/container_5/left
+	icon_state = "upp_5_l"
+
+/obj/structure/cargo_container/upp_small/container_5/right
+	icon_state = "upp_5_r"
+
+/obj/structure/cargo_container/upp_small/container_6/left
+	icon_state = "upp_6_l"
+
+/obj/structure/cargo_container/upp_small/container_6/right
+	icon_state = "upp_6_r"
+
+/obj/structure/cargo_container/upp_small/container_7/left
+	icon_state = "upp_7_l"
+
+/obj/structure/cargo_container/upp_small/container_7/right
+	icon_state = "upp_7_r"
+
+/obj/structure/cargo_container/upp_small/container_8/left
+	icon_state = "upp_8_l"
+
+/obj/structure/cargo_container/upp_small/container_8/right
+	icon_state = "upp_8_r"
+
+/obj/structure/cargo_container/upp_small/container_9/left
+	icon_state = "upp_9_l"
+
+/obj/structure/cargo_container/upp_small/container_9/right
+	icon_state = "upp_9_r"
+
+/obj/structure/cargo_container/upp_small/container_10/left
+	icon_state = "upp_10_l"
+
+/obj/structure/cargo_container/upp_small/container_10/right
+	icon_state = "upp_10_r"
+
+/obj/structure/cargo_container/upp_small/container_11/left
+	icon_state = "upp_11_l"
+
+/obj/structure/cargo_container/upp_small/container_11/right
+	icon_state = "upp_11_r"
+
+/obj/structure/cargo_container/upp_small/container_12/left
+	icon_state = "upp_12_l"
+
+/obj/structure/cargo_container/upp_small/container_12/right
+	icon_state = "upp_12_r"
+
+/obj/structure/cargo_container/upp_small/container_13/left
+	icon_state = "upp_13_l"
+
+/obj/structure/cargo_container/upp_small/container_13/right
+	icon_state = "upp_13_r"
+
+/obj/structure/cargo_container/upp_small/container_14/left
+	icon_state = "upp_14_l"
+
+/obj/structure/cargo_container/upp_small/container_14/right
+	icon_state = "upp_14_r"
+
+/obj/structure/cargo_container/upp_small/container_15/left
+	icon_state = "upp_15_l"
+
+/obj/structure/cargo_container/upp_small/container_15/right
+	icon_state = "upp_15_r"
+
+/obj/structure/cargo_container/upp_small/container_16/left
+	icon_state = "upp_16_l"
+
+/obj/structure/cargo_container/upp_small/container_16/right
+	icon_state = "upp_16_r"
+
+/obj/structure/cargo_container/upp_small/container_17/left
+	icon_state = "upp_17_l"
+
+/obj/structure/cargo_container/upp_small/container_17/right
+	icon_state = "upp_17_r"
+
+/obj/structure/cargo_container/upp_small/container_18/left
+	icon_state = "upp_18_l"
+
+/obj/structure/cargo_container/upp_small/container_18/right
+	icon_state = "upp_18_r"
+
+/obj/structure/cargo_container/upp_small/container_19/left
+	icon_state = "upp_19_l"
+
+/obj/structure/cargo_container/upp_small/container_19/right
+	icon_state = "upp_19_r"
+
+/obj/structure/cargo_container/upp_small/container_20/left
+	icon_state = "upp_20_l"
+
+/obj/structure/cargo_container/upp_small/container_20/right
+	icon_state = "upp_20_r"

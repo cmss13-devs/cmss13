@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useRef } from 'react';
+import { type PropsWithChildren, useEffect, useRef } from 'react';
 
 /** Used to force the window to steal focus on load. Children optional */
 export function Autofocus(props: PropsWithChildren) {

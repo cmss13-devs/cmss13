@@ -447,12 +447,12 @@
 
 	shake_cameras(turfs_int) //shake for 1.5 seconds before crash, 0.5 after
 
-	for(var/obj/structure/machinery/power/apc/A in GLOB.machines) //break APCs
-		if(A.z != T_trg.z)
+	for(var/obj/structure/machinery/power/apc/controller in GLOB.machines) //break APCs
+		if(!is_mainship_level(controller.z))
 			continue
-		if(prob(A.crash_break_probability))
-			A.overload_lighting()
-			A.set_broken()
+		if(prob(controller.crash_break_probability))
+			controller.overload_lighting()
+			controller.set_broken()
 
 	var/turf/sploded
 	var/explonum = rand(10,15)

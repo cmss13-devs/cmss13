@@ -5,7 +5,7 @@ export const meta = {
   render: () => <Story />,
 };
 
-const Story = () => {
+function Story() {
   return (
     <>
       <Popper
@@ -55,4 +55,4 @@ const Story = () => {
       </Popper>
     </>
   );
-};
+}

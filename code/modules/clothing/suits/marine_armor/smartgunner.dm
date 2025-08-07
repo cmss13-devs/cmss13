@@ -4,7 +4,6 @@
 	icon_state = "8"
 	item_state = "armor"
 	armor_laser = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT

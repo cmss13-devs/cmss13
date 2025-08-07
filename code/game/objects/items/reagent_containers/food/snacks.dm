@@ -2217,7 +2217,7 @@
 
 /obj/item/reagent_container/food/snacks/sliceable/meatbread
 	name = "meatbread loaf"
-	desc = "The culinary base of every self-respecting eloquen/tg/entleman."
+	desc = "The culinary base of every self-respecting eloquent gentleman."
 	icon_state = "meatbread"
 	icon = 'icons/obj/items/food/bread.dmi'
 	slice_path = /obj/item/reagent_container/food/snacks/meatbreadslice
@@ -3519,6 +3519,7 @@
 	reagents.add_reagent("nutriment", 4)
 	reagents.add_reagent("coco", 2)
 	reagents.add_reagent("tramadol", 1) //May be powergamed but it's a single unit.
+	reagents.add_reagent("bicaridine", 2) //The namesake of the bar.
 
 /obj/item/reagent_container/food/snacks/wrapped/twe_bar
 	name = "ORP oat bisuit"

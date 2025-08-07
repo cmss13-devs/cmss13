@@ -1,7 +1,7 @@
 @use 'sass:meta';
 
-$light: #ffbf00;
-$dark: #111100;
+$light: hsl(45, 100%, 50%);
+$dark: hsl(60, 100%, 3%);
 
 @use '../../base.scss' with (
   $color-bg: $dark,

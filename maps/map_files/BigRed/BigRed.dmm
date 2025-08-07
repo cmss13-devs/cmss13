@@ -594,6 +594,9 @@
 "acl" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "acm" = (
@@ -1027,6 +1030,12 @@
 /obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/bigredv2/caves_north)
+"adY" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
+/turf/open/mars_cave/mars_cave_2,
+/area/bigredv2/caves_research)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1149,6 +1158,12 @@
 /obj/structure/machinery/computer/cameras/wooden_tv,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
+"aet" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/space_port_lz2)
 "aeu" = (
 /obj/item/clothing/accessory/storage/holster/armpit,
 /turf/open/floor/wood,
@@ -1263,6 +1278,12 @@
 	},
 /turf/open/floor/whitepurple/northeast,
 /area/bigredv2/caves/lambda/xenobiology)
+"aeR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz1"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "aeS" = (
 /obj/structure/closet/crate/freezer,
 /turf/open/floor/freezerfloor,
@@ -1315,6 +1336,12 @@
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
+"afe" = (
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
+/turf/open/floor/wood,
+/area/bigredv2/caves/lambda/breakroom)
 "aff" = (
 /obj/effect/decal/cleanable/mucus,
 /obj/structure/surface/table,
@@ -1325,6 +1352,12 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/bigredv2/outside/space_port)
+"afh" = (
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
+/turf/open/floor/dark,
+/area/bigredv2/outside/telecomm)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office Isolation"
@@ -1362,6 +1395,17 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/vault2/west,
 /area/bigredv2/outside/marshal_office)
+"afo" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/mars_cave/mars_dirt_4,
+/area/bigredv2/outside/space_port_lz2)
+"afp" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/asteroidwarning/west,
+/area/bigredv2/outside/space_port)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
@@ -1468,7 +1512,8 @@
 /area/bigredv2/outside/telecomm)
 "afL" = (
 /obj/structure/showcase{
-	icon_state = "broadcaster_send"
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/greengrid,
 /area/bigredv2/outside/telecomm)
@@ -3319,7 +3364,7 @@
 /area/bigredv2/outside/marshal_office)
 "aom" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/suit/storage/lawyer/bluejacket,
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aon" = (
@@ -4811,11 +4856,12 @@
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
 "avj" = (
-/obj/structure/showcase{
-	icon_state = "broadcaster_send"
-	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
+	},
+/obj/structure/showcase{
+	icon_state = "broadcaster_send";
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
 	},
 /turf/open/floor/darkish,
 /area/bigredv2/caves/lambda/breakroom)
@@ -5406,7 +5452,7 @@
 /area/bigredv2/outside/medical)
 "ayo" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios,
+/obj/item/trash/hotdog,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "ayp" = (
@@ -6723,7 +6769,7 @@
 /area/bigred/ground/garage_workshop)
 "aEZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/liquidfood,
+/obj/item/trash/cheesie,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
@@ -8116,6 +8162,9 @@
 "aLJ" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "aLM" = (
@@ -14180,7 +14229,7 @@
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "boK" = (
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "boL" = (
@@ -14374,7 +14423,7 @@
 /area/bigredv2/outside/engineering)
 "bpE" = (
 /obj/structure/surface/rack,
-/obj/item/device/analyzer,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bpF" = (
@@ -16096,6 +16145,9 @@
 "bzG" = (
 /obj/structure/surface/table,
 /obj/item/storage/fancy/vials/random,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor/darkblue2/north,
 /area/bigredv2/caves/eta/research)
 "bzH" = (
@@ -18982,7 +19034,7 @@
 /area/bigredv2/outside/general_offices)
 "dsU" = (
 /obj/item/trash/cheesie,
-/obj/item/trash/pistachios,
+/obj/item/trash/raisins,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
@@ -19029,7 +19081,7 @@
 /turf/open/floor/whitegreencorner,
 /area/bigredv2/outside/medical)
 "dvq" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -11;
 	pixel_y = -9
 	},
@@ -19167,7 +19219,7 @@
 "dCb" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/weapon/gun/launcher/grenade/m81/m79{
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1{
 	pixel_x = -3;
 	pixel_y = -9
 	},
@@ -19309,9 +19361,7 @@
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 4
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "dIH" = (
@@ -20747,6 +20797,9 @@
 /obj/structure/bed/chair/comfy/blue{
 	dir = 8
 	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor/carpet15_15/west,
 /area/bigredv2/outside/admin_building)
 "fhI" = (
@@ -22179,7 +22232,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/marshal_office)
 "gJk" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -11;
 	pixel_y = -9
 	},
@@ -27278,10 +27331,10 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
 /area/bigredv2/outside/c)
 "mnu" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/ammo_casing/shell,
 /obj/item/ammo_casing/shell,
 /obj/effect/decal/cleanable/blood,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/wood,
 /area/bigredv2/outside/bar)
 "mnv" = (
@@ -32973,11 +33026,11 @@
 /area/bigredv2/outside/medical)
 "rXy" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary{
 	pixel_y = 12
 	},
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "rXJ" = (
@@ -33860,7 +33913,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/lambda_cave_cas)
 "sMP" = (
-/obj/item/trash/pistachios{
+/obj/item/trash/kepler/flamehot{
 	pixel_x = -3;
 	pixel_y = 11
 	},
@@ -34954,7 +35007,6 @@
 "tQo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -7;
 	pixel_y = 4
 	},
@@ -35001,18 +35053,14 @@
 /area/bigredv2/outside/c)
 "tRV" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/mars_cave/mars_cave_14,
 /area/bigredv2/caves/mining)
 "tSY" = (
@@ -38206,7 +38254,7 @@
 /area/bigredv2/caves/mining)
 "xlD" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/pistachios{
+/obj/item/trash/hotdog{
 	pixel_y = -21;
 	pixel_x = -6
 	},
@@ -38720,6 +38768,9 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 30
+	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)
 "xLd" = (
@@ -38777,8 +38828,8 @@
 	pixel_y = 7
 	},
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
 /obj/item/reagent_container/food/snacks/packaged_burger,
+/obj/item/weapon/gun/shotgun/double/sawn,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "xNa" = (
@@ -38908,18 +38959,14 @@
 /area/bigredv2/caves/lambda/research)
 "xWr" = (
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = 4;
 	pixel_y = 15
 	},
 /obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant";
 	pixel_x = -8;
 	pixel_y = 9
 	},
-/obj/item/ore/uranium{
-	desc = "You feel fuzzy just looking at it.... it's slightly lumanesant"
-	},
+/obj/item/ore/uranium,
 /turf/open/floor/plating,
 /area/bigredv2/caves/mining)
 "xWz" = (
@@ -38978,7 +39025,7 @@
 /area/bigredv2/caves/mining)
 "xYw" = (
 /obj/effect/decal/strata_decals/grime/grime4,
-/obj/item/trash/pistachios{
+/obj/item/trash/hotdog{
 	pixel_x = -3;
 	pixel_y = 11
 	},
@@ -39942,7 +39989,7 @@ aao
 aao
 aao
 aao
-aao
+aeR
 aao
 aao
 aao
@@ -41001,7 +41048,7 @@ acA
 aas
 aas
 acQ
-ade
+afh
 ade
 ade
 aeb
@@ -46302,7 +46349,7 @@ bie
 bie
 bie
 bmM
-bie
+aet
 bie
 bie
 bie
@@ -46423,7 +46470,7 @@ aaT
 aap
 aav
 aaG
-aaT
+afp
 aap
 aav
 aaG
@@ -46937,7 +46984,7 @@ beP
 beP
 aSB
 tVp
-tVp
+afo
 tVp
 tVp
 bgX
@@ -58317,7 +58364,7 @@ jrD
 jcR
 jrD
 jrD
-jrD
+adY
 jrD
 jrD
 jrD
@@ -76182,7 +76229,7 @@ arG
 ara
 atf
 amk
-aqc
+afe
 aqc
 ass
 aqc

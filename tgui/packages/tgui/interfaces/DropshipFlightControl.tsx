@@ -3,6 +3,7 @@ import { useBackend, useSharedState } from 'tgui/backend';
 import {
   Box,
   Button,
+  Divider,
   Flex,
   Icon,
   ProgressBar,
@@ -14,11 +15,11 @@ import { Window } from 'tgui/layouts';
 import {
   CancelLaunchButton,
   DisabledScreen,
-  DockingPort,
+  type DockingPort,
   InFlightCountdown,
   LaunchButton,
   LaunchCountdown,
-  NavigationProps,
+  type NavigationProps,
   ShuttleRecharge,
 } from './NavigationShuttle';
 
@@ -68,6 +69,8 @@ const DropshipDoorControl = () => {
   const disable_door_controls = in_flight;
   return (
     <Section
+      m="0"
+      mb="6px"
       title="Door Controls"
       buttons={data.door_status
         .filter((x) => x.id === 'all')
@@ -76,6 +79,7 @@ const DropshipDoorControl = () => {
             {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
               <Button
                 disabled={disable_door_controls}
+                width="100%"
                 onClick={() =>
                   act('door-control', {
                     interaction: 'force-lock',
@@ -91,6 +95,7 @@ const DropshipDoorControl = () => {
             {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
               <Button
                 disabled={disable_door_controls}
+                width="100%"
                 onClick={() =>
                   act('door-control', {
                     interaction: 'unlock',
@@ -105,22 +110,24 @@ const DropshipDoorControl = () => {
           </>
         ))}
     >
-      <Stack className="DoorControlStack">
+      <Stack justify="space-between" className="DoorControlStack">
         {data.door_status
           .filter((x) => x.id !== 'all')
           .map((x) => {
             const name = x.id.substr(0, 1).toLocaleUpperCase() + x.id.substr(1);
             return (
-              <Stack.Item key={x.id}>
+              <Stack.Item key={x.id} grow>
                 <>
                   {x.value === DoorStatusEnum.SHUTTLE_DOOR_BROKEN && (
-                    <Button disabled icon="ban">
+                    <Button disabled icon="ban" width="100%" textAlign="center">
                       No response
                     </Button>
                   )}
                   {x.value === DoorStatusEnum.SHUTTLE_DOOR_UNLOCKED && (
                     <Button
                       disabled={disable_door_controls}
+                      width="100%"
+                      textAlign="center"
                       onClick={() =>
                         act('door-control', {
                           interaction: 'force-lock',
@@ -135,6 +142,8 @@ const DropshipDoorControl = () => {
                   {x.value === DoorStatusEnum.SHUTTLE_DOOR_LOCKED && (
                     <Button
                       disabled={disable_door_controls}
+                      width="100%"
+                      textAlign="center"
                       onClick={() =>
                         act('door-control', {
                           interaction: 'unlock',
@@ -162,15 +171,19 @@ export const DropshipDestinationSelection = () => {
     undefined,
   );
   return (
-    <Section
-      title="Flight Controls"
-      buttons={
-        <>
+    <Section m="0" mb="6px" title="Flight Controls">
+      <Stack justify="space-evenly">
+        <Stack.Item align="center">
           <CancelLaunchButton />
+        </Stack.Item>
+        <Stack.Item>
+          <Divider vertical />
+        </Stack.Item>
+        <Stack.Item align="center">
           <LaunchButton />
-        </>
-      }
-    >
+        </Stack.Item>
+      </Stack>
+      <Divider />
       <Stack vertical className="DestinationSelector">
         <DestinationSelector
           options={data.destinations}
@@ -234,7 +247,11 @@ const DestinationSelector = (props: DestinationProps) => {
 export const TouchdownCooldown = () => {
   const { data } = useBackend<NavigationProps>();
   return (
-    <Section title={`Final Approach: ${data.target_destination}`}>
+    <Section
+      m="0"
+      mb="6px"
+      title={`Final Approach: ${data.target_destination}`}
+    >
       <div className="InFlightCountdown">
         <Stack vertical>
           <Stack.Item>
@@ -267,6 +284,8 @@ const AutopilotConfig = () => {
   );
   return (
     <Section
+      m="0"
+      mb="6px"
       title="Autopilot Control"
       buttons={
         <>
@@ -362,6 +381,8 @@ const LaunchAnnouncementAlarm = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
     <Section
+      m="0"
+      fitted
       title="Launch Announcement Alarm"
       buttons={
         !data.playing_launch_announcement_alarm ? (
@@ -385,6 +406,8 @@ const DropshipButton = (props: {
 
   return (
     <Button
+      width="30%"
+      textAlign="center"
       disabled={match || props.disable}
       onClick={() => {
         act('change_shuttle', { new_shuttle: props.shipId });
@@ -413,8 +436,8 @@ const DropshipSelector = () => {
   }, [refreshTimeout]);
 
   return (
-    <Section title="Select Dropship">
-      <Stack>
+    <Section m="0" mb="6px" title="Select Dropship">
+      <Stack justify="space-evenly">
         {data.alternative_shuttles
           .sort((a, b) => a.id.localeCompare(b.id))
           .map((x) => (
@@ -477,7 +500,7 @@ const DropshipDisabledScreen = () => {
 export const DropshipFlightControl = () => {
   const { data } = useBackend<DropshipNavigationProps>();
   return (
-    <Window theme="crtgreen" height={500} width={700}>
+    <Window theme="crtgreen" height={550} width={700}>
       <Window.Content className="NavigationMenu">
         {data.is_disabled === 0 ? <RenderScreen /> : <DropshipDisabledScreen />}
       </Window.Content>

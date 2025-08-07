@@ -1331,12 +1331,6 @@
 
 // Misc
 
-/obj/structure/prop/hybrisa/misc/picture
-	name = "framed picture"
-	desc = "A golden framed picture of an ominous skeletal figure ordorned in golden garb, fancy for a pile of bones..."
-	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
-	icon_state = "pictureframe"
-
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
 	name = "Weyland-Yutani 'M5X Apesuit' showcase"
 	desc = "A display model of the Weyland-Yutani 'Apesuit', shame it's only a model..."

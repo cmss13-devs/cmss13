@@ -184,6 +184,24 @@
 /obj/item/storage/large_holster/ceremonial_sword/full/fill_preset_inventory()
 	new /obj/item/weapon/sword/ceremonial(src)
 
+/obj/item/storage/large_holster/dragon_katana
+	name = "\improper dragon katana scabbard"
+	desc = "A large, cherry colored katana scabbard with an illustration of a dragon on it. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
+	icon_state = "dragon_katana_holster"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/holster.dmi',
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/scabbards.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/belts_righthand.dmi'
+	)
+	force = 12
+	attack_verb = list("bludgeoned", "struck", "cracked")
+	flags_equip_slot = SLOT_WAIST|SLOT_BACK
+	can_hold = list(/obj/item/weapon/sword/dragon_katana)
+
+/obj/item/storage/large_holster/dragon_katana/full/fill_preset_inventory()
+	new /obj/item/weapon/sword/dragon_katana(src)
+
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This holster features a larger frame and stiff backboard to support a submachinegun. It's designed for the M39, but the clips are adjustable enough to fit most compact submachineguns. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
@@ -212,7 +230,8 @@
 
 		gun_offset = W.hud_offset
 		W.hud_offset = 0
-		W.pixel_x = 0
+		W.pixel_x = -16
+		W.pixel_y = -13
 		W.transform = turn(matrix(0.82, MATRIX_SCALE), 90) //0.82x is the right size and gives reasonably accurate results with pixel scaling.
 
 		W.vis_flags |= VIS_INHERIT_ID //Means the gun is just visual and doesn't block picking up or clicking on the holster.
@@ -227,7 +246,8 @@
 		W.appearance_flags &= ~PIXEL_SCALE
 
 	W.hud_offset = gun_offset
-	W.pixel_x = gun_offset
+	W.pixel_x = 0
+	W.pixel_y = 0
 	W.transform = null
 
 	W.vis_flags &= ~VIS_INHERIT_ID

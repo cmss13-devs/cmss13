@@ -338,6 +338,8 @@
 	if(isstorage(loc))
 		var/obj/item/storage/S = loc
 		S.remove_from_storage(src, user.loc, user)
+	else if(isturf(loc) && HAS_TRAIT(user, TRAIT_HAULED))
+		return
 
 	throwing = 0
 

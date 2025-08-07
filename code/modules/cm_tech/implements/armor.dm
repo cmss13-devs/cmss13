@@ -430,9 +430,9 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_MOB_DEATH)
 	to_chat(wearer, SPAN_NOTICE("The [src] detects your death and starts injecting various chemicals to slow down your final demise!"))
-	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(onetime_use))
+	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(reset_use))
 
-/obj/item/clothing/accessory/health/research_plate/anti_decay/proc/onetime_use()
+/obj/item/clothing/accessory/health/research_plate/anti_decay/proc/reset_use()
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_HUMAN_REVIVED)
 	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Registering user life signs, halting preservation efforts"))

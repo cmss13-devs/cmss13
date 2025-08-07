@@ -963,7 +963,7 @@
 	new /obj/item/ammo_magazine/rifle/nsg23/ap(src)
 
 
-// M56E HMG gunner belt
+// M2C HMG/M56D gunner belt
 /obj/item/storage/belt/marine/m2c
 	name = "\improper M804 heavygunner storage rig"
 	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified to carry ammunition for heavy machinegun systems, and engineering tools for the gunner."

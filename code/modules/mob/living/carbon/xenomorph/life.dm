@@ -335,7 +335,7 @@ Make sure their actual health updates immediately.*/
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
-			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
+			if(health < maxHealth && can_heal && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
 						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
@@ -420,13 +420,15 @@ Make sure their actual health updates immediately.*/
 			queen_locator()
 		return
 
-	if(tracking_atom.loc.z != loc.z && SSinterior.in_interior(tracking_atom))
+	if(!SSmapping.same_z_map(tracking_atom.loc.z, loc.z) && SSinterior.in_interior(tracking_atom))
 		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
 		var/atom/exterior = interior.exterior
 		if(exterior)
 			tracking_atom = exterior
 
-	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+	locator.overlays.Cut()
+
+	if( !SSmapping.same_z_map(tracking_atom.loc.z, loc.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		locator.icon_state = "trackondirect"
 	else
 		var/area/our_area = get_area(loc)
@@ -434,6 +436,10 @@ Make sure their actual health updates immediately.*/
 		if(our_area.fake_zlevel == target_area.fake_zlevel)
 			locator.setDir(Get_Compass_Dir(src, tracking_atom))
 			locator.icon_state = "trackon"
+			if(tracking_atom.loc.z > loc.z)
+				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "up")
+			if(tracking_atom.loc.z < loc.z)
+				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "down")
 		else
 			locator.icon_state = "trackondirect"
 
@@ -450,7 +456,7 @@ Make sure their actual health updates immediately.*/
 
 	ML.overlays.Cut()
 
-	if(tracked_marker_z_level != loc.z) //different z levels
+	if(!SSmapping.same_z_map(tracked_marker_z_level, loc.z)) //different z levels
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "z_direction")
@@ -465,6 +471,12 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")
+		/*if(tracked_marker_z_level > loc.z)
+			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "up")
+		if(tracked_marker_z_level < loc.z)
+			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "down")*/
+
+
 	else //same z level, different fake z levels (decks of almayer)
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")

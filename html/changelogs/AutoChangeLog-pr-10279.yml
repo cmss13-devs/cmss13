@@ -1,4 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - bugfix: "fixed m39 holster (without ammo one) now has correct holstered gun pixel offset"

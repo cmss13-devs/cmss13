@@ -335,7 +335,7 @@
 			if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
 			playsound(loc, 'sound/machines/hydraulics_1.ogg', 25)
-			practice_target.forceMove(get_turf(src))
+			practice_target.forceMove(src)
 			practice_target.underlays += icon(icon, icon_state)
 			practice_target.is_on_carriage = TRUE
 			qdel(src)

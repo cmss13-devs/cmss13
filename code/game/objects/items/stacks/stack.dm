@@ -107,6 +107,9 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 	return uni_receipts
 
+/obj/item/stack/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/spritesheet/stack_receipts))
+
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if((ui.user.is_mob_restrained() || ui.user.stat || ui.user.get_active_hand() != src))
@@ -147,7 +150,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	if(multiplier < 1)
 		return FALSE  //href exploit protection
 
-	if(recipe.max_res_amount == 1)
+	if(recipe.max_res_amount <= 1)
 		multiplier = 1
 
 	if(recipe.skill_lvl)
@@ -264,15 +267,17 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	var/max_build = min(20, floor(amount / rec.req_amount))
 	var/can_build = max_build > 0
 
-	var/icon_state = null
-	var/icon = null
+	var/icon/image_icon = null
+	var/imgid = null
+	var/is_multi = rec.max_res_amount > 1 && max_build > 1
+	var/image_size = null
 
 	if (rec.result_type)
-		var/obj/res = rec.result_type
-		icon_state = res.icon_state
-		icon = res.icon
+		var/obj/item_ref = rec.result_type
 
-	var/is_multi = rec.max_res_amount > 1 && max_build > 1
+		image_icon = icon(initial(item_ref.icon), initial(item_ref.icon_state))
+		imgid = replacetext(replacetext("[item_ref]", "/obj/item/", ""), "/", "-")
+		image_size = "[image_icon.Width()]x[image_icon.Height()]"
 
 	return list(
 		"id" = id,
@@ -283,8 +288,8 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		"can_build" = can_build,
 		"amount_to_build" = is_multi ? 5 : 1,
 		"empty_line_next" = empty_line_next,
-		"icon_state" = icon_state,
-		"icon" = icon
+		"image" = imgid,
+		"image_size" = image_size,
 	)
 
 /obj/item/stack/ui_static_data(mob/user)

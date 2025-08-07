@@ -1,13 +1,7 @@
+import { classes } from 'common/react';
 import { useEffect, useRef, useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import {
-  Box,
-  Button,
-  DmIcon,
-  NumberInput,
-  Section,
-  Stack,
-} from 'tgui/components';
+import { Box, Button, NumberInput, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
 type Receipt = {
@@ -19,8 +13,8 @@ type Receipt = {
   can_build?: boolean;
   amount_to_build?: number;
   empty_line_next: boolean;
-  icon?: string;
-  icon_state?: string;
+  image: string;
+  image_size: string;
   stack_sub_receipts?: Receipt[];
 };
 
@@ -82,18 +76,23 @@ export const StackReceipts = () => {
     // Used to cycle through sub-receipts icons
     const interval = setInterval(() => {
       setCycleIndex((prev) => (prev + 1) % 999);
-    }, 2000); // Every 2 seconds
+    }, 1500); // Every 1.5 seconds
     return () => clearInterval(interval);
   }, []);
 
-  const renderIcon = (icon?: string, icon_state?: string) =>
-    icon && icon_state ? (
-      <DmIcon
-        icon={icon}
-        icon_state={icon_state}
-        height="32px"
-        width="32px"
-        style={{ position: 'relative', top: '6px', marginRight: '8px' }}
+  const renderIcon = (image?: string, image_size?: string) =>
+    image && image_size ? (
+      <span
+        className={classes([
+          `Icon`,
+          `stack-receipts${image_size ? image_size : `32x32`}`,
+          `${image}`,
+        ])}
+        style={{
+          position: 'relative',
+          top: '6px',
+          marginRight: '2px',
+        }}
       />
     ) : (
       ''
@@ -117,10 +116,10 @@ export const StackReceipts = () => {
             {renderIcon(
               receipt.stack_sub_receipts?.[
                 cycleIndex % receipt.stack_sub_receipts.length
-              ]?.icon,
+              ]?.image,
               receipt.stack_sub_receipts?.[
                 cycleIndex % receipt.stack_sub_receipts.length
-              ]?.icon_state,
+              ]?.image_size,
             )}
             <Button
               className="StackButton"
@@ -137,7 +136,7 @@ export const StackReceipts = () => {
           </>
         ) : (
           <>
-            {renderIcon(receipt.icon, receipt.icon_state)}
+            {renderIcon(receipt.image, receipt.image_size)}
             <Button
               className="StackButton"
               disabled={

@@ -214,8 +214,8 @@
 		if(accept_beaker_only && istype(attacking_object,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
 			return
-		if(pressurized_only && !istype(attacking_object, /obj/item/reagent_container/glass/pressurized_canister))
-			to_chat(user, SPAN_NOTICE("This machine only accepts pressurized canisters"))
+		if(pressurized_only && (!istype(attacking_object, /obj/item/reagent_container/glass/pressurized_canister) && !istype(attacking_object, /obj/item/reagent_container/glass/minitank)))
+			to_chat(user, SPAN_NOTICE("This machine only accepts pressurized canisters or MS-11 Smart Refill Tanks"))
 			return
 		if(user.drop_inv_item_to_loc(attacking_object, src))
 			var/obj/item/old_beaker = beaker

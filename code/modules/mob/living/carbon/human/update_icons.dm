@@ -739,13 +739,16 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	remove_overlay(BURST_LAYER)
 	var/image/standing
 	var/bursting_icon = "stand"
+	var/icon_file = 'icons/mob/xenos/effects.dmi'
+	if(mob_flags & BLOOD_BURSTING)
+		icon_file = 'icons/mob/pathogen/bloodburster_stage.dmi'
 	if(isyautja(src))
 		bursting_icon = "yautja_stand"
 	switch(chestburst)
 		if(1)
-			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "burst_[bursting_icon]", "layer" = -BURST_LAYER)
+			standing = image("icon" = icon_file,"icon_state" = "burst_[bursting_icon]", "layer" = -BURST_LAYER)
 		if(2)
-			standing = image("icon" = 'icons/mob/xenos/effects.dmi',"icon_state" = "bursted_[bursting_icon]", "layer" = -BURST_LAYER)
+			standing = image("icon" = icon_file,"icon_state" = "bursted_[bursting_icon]", "layer" = -BURST_LAYER)
 		else
 			return
 	overlays_standing[BURST_LAYER] = standing

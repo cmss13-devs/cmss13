@@ -214,7 +214,7 @@
 		to_chat(X, SPAN_WARNING("You must select a valid turf to heal around."))
 		return
 
-	if(!SSmapping.same_z_map(X.loc.z, T.loc.z))
+	if(!cross_map_heal && !SSmapping.same_z_map(X.loc.z, T.loc.z))
 		to_chat(X, SPAN_XENOWARNING("You are too far away to do this here."))
 		return
 
@@ -734,7 +734,10 @@
 			return
 
 		to_chat(xeno, SPAN_XENOWARNING("You plant a node at [turf_to_get]"))
-		new /obj/effect/alien/weeds/node(turf_to_get, null, owner)
+		if(xeno.hivenumber == XENO_HIVE_PATHOGEN)
+			new /obj/effect/alien/weeds/node/pathogen(turf_to_get, null, owner)
+		else
+			new /obj/effect/alien/weeds/node(turf_to_get, null, owner)
 		playsound(turf_to_get, "alien_resin_build", 35)
 		apply_cooldown_override(node_plant_cooldown)
 		return
@@ -757,7 +760,11 @@
 	if(!check_and_use_plasma_owner())
 		return
 
-	new /obj/effect/alien/weeds(turf_to_get, node, FALSE, TRUE)
+	if(xeno.hivenumber == XENO_HIVE_PATHOGEN)
+		new /obj/effect/alien/weeds/pathogen(turf_to_get, node, FALSE, TRUE)
+	else
+		new /obj/effect/alien/weeds(turf_to_get, node, FALSE, TRUE)
+
 	playsound(turf_to_get, "alien_resin_build", 35)
 	recently_built_turfs += turf_to_get
 	addtimer(CALLBACK(src, PROC_REF(reset_turf_cooldown), turf_to_get), turf_build_cooldown)

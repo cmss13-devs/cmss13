@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(who)
 	// Running thru all clients and doing some counts
 	for(var/client/client as anything in sortTim(GLOB.clients, GLOBAL_PROC_REF(cmp_ckey_asc)))
 		var/list/client_payload = list()
-		client_payload["text"] = client.key
+		client_payload["text"] = client.username()
 		client_payload["ckey_color"] = "white"
 		if(CLIENT_IS_STEALTHED(client))
 			player_stealthed_additional["total_players"] += list(list(client.key = list(client_payload)))
@@ -282,14 +282,14 @@ SUBSYSTEM_DEF(who)
 
 
 // VERBS
-/mob/verb/who()
+CLIENT_VERB(who)
 	set category = "OOC"
 	set name = "Who"
 
-	SSwho.who.tgui_interact(src)
+	SSwho.who.tgui_interact(mob)
 
-/mob/verb/staffwho()
+CLIENT_VERB(staffwho)
 	set category = "Admin"
 	set name = "StaffWho"
 
-	SSwho.staff_who.tgui_interact(src)
+	SSwho.staff_who.tgui_interact(mob)

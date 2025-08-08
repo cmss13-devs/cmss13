@@ -49,6 +49,15 @@ window "mainwindow"
 		anchor2 = -1,-1
 		is-visible = false
 		saved-params = ""
+	elem "fullscreen_browser"
+		type = BROWSER
+		pos = 0,0
+		size = 640,440
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-visible = false
+		is-disabled = true
+		background-color = #222222
 
 window "mapwindow"
 	elem "mapwindow"

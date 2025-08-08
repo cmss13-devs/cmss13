@@ -42,7 +42,7 @@
 	return
 
 //This gets called when you press the delete button.
-/client/verb/delete_key_pressed()
+CLIENT_VERB(delete_key_pressed)
 	set hidden = TRUE
 
 	if(!usr.pulling)
@@ -50,7 +50,7 @@
 		return
 	usr.stop_pulling()
 
-/client/verb/swap_hand()
+CLIENT_VERB(swap_hand)
 	set name = ".SwapMobHand"
 	set hidden = TRUE
 
@@ -60,13 +60,13 @@
 
 
 
-/client/verb/attack_self()
+CLIENT_VERB(attack_self)
 	set hidden = TRUE
 	if(mob)
 		mob.mode()
 	return
 
-/client/verb/drop_item()
+CLIENT_VERB(drop_item)
 	set hidden = TRUE
 	mob.drop_item_v()
 	return

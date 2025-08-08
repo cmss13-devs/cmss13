@@ -395,7 +395,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_civilian)
 "gw" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "gx" = (
@@ -819,7 +819,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "mK" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
 "mU" = (
@@ -1998,7 +1998,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "Hb" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
@@ -2190,7 +2190,7 @@
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_civilian)
 "JN" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
 "JX" = (

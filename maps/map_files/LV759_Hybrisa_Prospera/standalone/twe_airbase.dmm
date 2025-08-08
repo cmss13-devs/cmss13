@@ -146,7 +146,7 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/central_streets)
 "bc" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/armoury)
 "be" = (
 /obj/structure/reagent_dispensers/water_cooler{
@@ -1699,7 +1699,7 @@
 	pixel_x = 15;
 	pixel_y = 2
 	},
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "nj" = (
 /obj/item/clothing/gloves/marine/veteran/insulated{
@@ -1998,7 +1998,7 @@
 /turf/open/floor/plating,
 /area/lv759/indoors/twe_souter_outpost/twe_gunship)
 "pn" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/maint)
 "pH" = (
 /obj/structure/bed/chair/comfy/black{
@@ -2303,7 +2303,7 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/outdoors/colony_streets/central_streets)
 "uz" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "uD" = (
 /obj/structure/machinery/door_control{
@@ -2534,7 +2534,7 @@
 /turf/open/floor/prison/darkred2/west,
 /area/lv759/indoors/twe_souter_outpost/hallway)
 "xl" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "xp" = (
 /obj/structure/machinery/big_computers/computerblack/computer3{
@@ -4414,7 +4414,7 @@
 	pixel_y = 16;
 	layer = 6
 	},
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/turf/closed/wall/r_wall/hybrisa/marhsalls,
 /area/lv759/indoors/twe_souter_outpost/flight)
 "Wq" = (
 /obj/effect/decal/cleanable/blood,

@@ -11,7 +11,7 @@
 /turf/closed/wall/shiva/prefabricated/pink,
 /area/shiva/interior/lz2_habs)
 "aad" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/interior/colony/central)
 "aae" = (
 /obj/structure/girder,
@@ -236,7 +236,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/colony/central)
 "aaY" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/colony/central)
 "aaZ" = (
 /obj/structure/fence,
@@ -566,7 +566,7 @@
 /turf/closed/shuttle/elevator/button/arrivals,
 /area/shiva/interior/colony/central)
 "acH" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/interior/colony/medseceng)
 "acI" = (
 /obj/structure/fence,
@@ -3213,7 +3213,7 @@
 	id = "garage_ice_2";
 	name = "garage shutter control"
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/garage)
 "axO" = (
 /obj/structure/machinery/light/double{
@@ -3770,7 +3770,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/cp_colony_grounds)
 "aDn" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/colony/medseceng)
 "aDo" = (
 /obj/structure/closet/crate,
@@ -5840,7 +5840,7 @@
 /area/shiva/interior/caves/research_caves)
 "buJ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/colony/medseceng)
 "buP" = (
 /obj/structure/platform_decoration/stone/strata,
@@ -6162,7 +6162,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/medseceng)
 "bQZ" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/interior/caves/s_lz2)
 "bRD" = (
 /obj/structure/machinery/door/airlock/almayer/medical/colony{
@@ -6341,7 +6341,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/research_hab)
 "caS" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "cbk" = (
 /obj/structure/prop/invuln{
@@ -6907,7 +6907,7 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/caves/s_lz2)
 "cOA" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/interior/oob)
 "cOU" = (
 /obj/structure/flora/tree/dead/tree_2,
@@ -7433,7 +7433,7 @@
 /turf/open/floor/shiva/yellowfull,
 /area/shiva/interior/colony/research_hab)
 "dtq" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/colony/botany)
 "dtr" = (
 /obj/structure/machinery/light/double{
@@ -8498,7 +8498,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/cp_s_research)
 "eYH" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/cp_lz2)
 "eZX" = (
 /obj/item/tool/soap,
@@ -9064,7 +9064,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
 "fIT" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/valley_huts/no2)
 "fIW" = (
 /obj/effect/decal/cleanable/blood,
@@ -10094,7 +10094,7 @@
 /turf/open/floor/plating,
 /area/shiva/interior/bar)
 "gWx" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/exterior/southwest_valley)
 "gWF" = (
 /obj/structure/machinery/light/double{
@@ -10195,10 +10195,10 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/valley)
 "hcH" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/bar)
 "hcJ" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/interior/telecomm/lz1_biceps)
 "hdF" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -10535,7 +10535,7 @@
 /turf/open/gm/river,
 /area/shiva/interior/warehouse/caves)
 "hzJ" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/exterior/lz1_valley)
 "hzZ" = (
 /obj/effect/landmark/objective_landmark/close,
@@ -12950,7 +12950,7 @@
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "ktd" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/garage)
 "kts" = (
 /obj/structure/surface/table,
@@ -13635,7 +13635,7 @@
 	pixel_x = 1;
 	pixel_y = 22
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "laz" = (
 /obj/structure/barricade/handrail/wire{
@@ -13702,7 +13702,7 @@
 /turf/open/gm/river,
 /area/shiva/exterior/valley)
 "leg" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/telecomm/lz1_north)
 "lel" = (
 /obj/item/lightstick/red/variant,
@@ -13742,7 +13742,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/exterior/lz2_fortress)
 "lgN" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/junkyard/fortbiceps)
 "lha" = (
 /obj/structure/prop/invuln/ice_prefab{
@@ -14005,7 +14005,7 @@
 	id = "garage_ice_1";
 	name = "garage shutter control"
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/garage)
 "lxl" = (
 /obj/item/stack/rods{
@@ -14885,7 +14885,7 @@
 	pixel_x = -2;
 	pixel_y = 23
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "mBW" = (
 /obj/item/reagent_container/glass/bucket,
@@ -15065,7 +15065,7 @@
 	pixel_x = -2;
 	pixel_y = 22
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "mJJ" = (
 /obj/structure/barricade/wooden{
@@ -15933,7 +15933,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/warehouse/caves)
 "nOd" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/colony/s_admin)
 "nOB" = (
 /obj/item/stack/sheet/metal,
@@ -17036,7 +17036,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "pqe" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/interior/bar)
 "pqj" = (
 /turf/open/auto_turf/snow/layer0,
@@ -17602,7 +17602,7 @@
 /turf/open/floor/shiva/wredfull,
 /area/shiva/interior/colony/medseceng)
 "pQE" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/valley_huts)
 "pRH" = (
 /obj/item/trash/cigbutt/ucigbutt{
@@ -18061,7 +18061,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/central)
 "qrY" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/exterior/junkyard)
 "qsN" = (
 /obj/structure/machinery/light/double{
@@ -20952,7 +20952,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/aux_power)
 "tYw" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/junkyard)
 "tYA" = (
 /obj/structure/machinery/microwave{
@@ -21200,14 +21200,14 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/shiva/interior/colony/research_hab)
 "uir" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/caves/cp_camp)
 "uiI" = (
 /obj/item/reagent_container/food/drinks/cans/beer,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "uji" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/aerodrome)
 "ujl" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
@@ -21277,7 +21277,7 @@
 /turf/open/floor/shiva/yellow/north,
 /area/shiva/interior/colony/medseceng)
 "umB" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/telecomm/lz2_northeast)
 "umC" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
@@ -22129,7 +22129,7 @@
 	pixel_x = 1;
 	pixel_y = 23
 	},
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "vph" = (
 /obj/structure/barricade/handrail/strata{
@@ -22501,7 +22501,7 @@
 /area/shiva/interior/colony/research_hab)
 "vQZ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/exterior/cp_colony_grounds)
 "vRW" = (
 /obj/effect/decal/warning_stripes{
@@ -22631,7 +22631,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/southwest_valley)
 "wag" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/colony/n_admin)
 "waE" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -23892,7 +23892,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "xRY" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/exterior/cp_colony_grounds)
 "xSk" = (
 /obj/structure/surface/table/reinforced/prison,

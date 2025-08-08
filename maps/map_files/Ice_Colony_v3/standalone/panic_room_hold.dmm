@@ -47,7 +47,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "ce" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/colony/s_admin)
 "ch" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -71,7 +71,7 @@
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/shiva/interior/colony/s_admin)
 "cS" = (
-/turf/closed/wall/shiva/prefabricated/reinforced,
+/turf/closed/wall/r_wall/shiva/prefabricated,
 /area/shiva/interior/bar)
 "cY" = (
 /obj/structure/window/reinforced/tinted{

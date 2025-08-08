@@ -16,7 +16,7 @@
 	stop_automated_movement_when_pulled = 0
 	maxHealth = 250
 	health = 250
-	melee_damage_lower = 15
+	melee_damage_lower = 10
 	melee_damage_upper = 40
 	var/poison_per_bite = 5
 	var/poison_type = "blackgoo"
@@ -55,3 +55,6 @@
 /mob/living/simple_animal/hostile/zombie/proc/roar_emote()
 	visible_message("<B>The [name]</B> roars!")
 	playsound(loc, "zombie_sound", 25)
+
+/mob/living/simple_animal/hostile/zombie/fast
+	move_to_delay = 4

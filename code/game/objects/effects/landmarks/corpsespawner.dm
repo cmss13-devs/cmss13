@@ -295,7 +295,7 @@
 
 //*****************************************************************************************************/
 
-// Colonial Marshals
+// NSPA
 
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable
 	name = "Corpse - NSPA Constable"
@@ -304,6 +304,14 @@
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable/burst
 	name = "Corpse - Burst - NSPA Constable"
 	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/burst
+
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable/
+	name = "Corpse - Trijent NSPA Constable"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent
+
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable/burst
+	name = "Corpse - Burst - Trijent NSPA Constable"
+	equip_path = /datum/equipment_preset/corpse/hybrisa/nspa_constable/trijent/burst
 
 //*****************************************************************************************************/
 

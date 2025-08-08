@@ -322,6 +322,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_NSPA_CMD "NSPA Commander"
 #define JOB_NSPA_DCO "NSPA Deputy Commissioner"
 #define JOB_NSPA_COM "NSPA Commissioner"
+#define JOB_NSPA_SYN "NSPA Investigative Synthetic"
 
 #define NSPA_GRUNT_LIST list(JOB_NSPA_CST, JOB_NSPA_SC, JOB_NSPA_SGT)
 

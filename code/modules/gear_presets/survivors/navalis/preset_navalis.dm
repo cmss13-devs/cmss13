@@ -221,8 +221,7 @@
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	minimap_background = "background_clf"
 	minimap_icon = "CLF Guerilla"
-	assignment = "CLF Guerilla"
-	rank = JOB_CLF
+	assignment = JOB_CLF
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 //	survivor_variant = HOSTILE_SURVIVOR
 
@@ -274,8 +273,7 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/tech
 	name = "Survivor - Navalis - CLF Special Force: Technician"
-	assignment = "CLF Field Technician"
-	rank = JOB_CLF_ENGI
+	assignment = JOB_CLF_ENGI
 	role_comm_title = "TECH."
 	skills = /datum/skills/clf/combat_engineer
 
@@ -322,8 +320,7 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/medic
 	name = "Survivor - Navalis - CLF Special Force: Medic"
-	assignment = "CLF Field Medic"
-	rank = JOB_CLF_MEDIC
+	assignment = JOB_CLF_MEDIC
 	role_comm_title = "MED."
 	skills = /datum/skills/clf/combat_medic
 
@@ -375,8 +372,7 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/spec
 	name = "Survivor - Navalis - CLF Special Force: Heavy Weapons"
-	assignment = "CLF Field Specialist"
-	rank = JOB_CLF_SPECIALIST
+	assignment = JOB_CLF_SPECIALIST
 	role_comm_title = "SPEC."
 	skills = /datum/skills/clf/specialist
 
@@ -405,8 +401,7 @@
 
 /datum/equipment_preset/survivor/navalis/clf_wet_ops/leader
 	name = "Survivor - Navalis - CLF Special Force: Unit Leader"
-	assignment = "CLF Cell Leader"
-	rank = JOB_CLF_LEADER
+	assignment = JOB_CLF_LEADER
 	role_comm_title = "LEAD."
 	skills = /datum/skills/clf/leader
 

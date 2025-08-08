@@ -3021,7 +3021,7 @@
 
 /obj/structure/prop/hybrisa/factory/robotic_arm
 	name = "robotic arm"
-	desc = "A robotic arm used in the construction of 'Meridian' Automobiles."
+	desc = "A robust robotic arm used in a range of mechanical processes, including assembly and packaging."
 	icon_state = "factory_roboticarm"
 	bound_width = 32
 	anchored = TRUE

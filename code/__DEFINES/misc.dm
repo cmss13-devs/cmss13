@@ -54,6 +54,8 @@
 #define AREA_YAUTJA_HANGABLE (1<<7)
 /// Makes it so barricades can't be anchored and starts unsecured.
 #define AREA_NOSECURECADES (1<<8)
+/// Flags the area as not being a valid location for a para-drop to land on..
+#define AREA_NO_PARA (1<<7)
 
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5

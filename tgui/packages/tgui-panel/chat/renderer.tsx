@@ -518,7 +518,7 @@ class ChatRenderer {
           }
         }
       }
-      this.storeQueue.push({ ...message });
+      this.storeQueue.push({ ...message, stored: true });
       // Store the node in the message
       message.node = node;
       // Query all possible selectors to find out the message type

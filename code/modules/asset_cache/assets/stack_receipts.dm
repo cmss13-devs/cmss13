@@ -21,6 +21,11 @@
 	big_list = mergeLists(big_list, GLOB.cardboard_recipes)
 	big_list = mergeLists(big_list, GLOB.aluminium_recipes)
 	big_list = mergeLists(big_list, GLOB.copper_recipes)
+	big_list = mergeLists(big_list, GLOB.glass_recipes)
+	big_list = mergeLists(big_list, GLOB.glass_reinforced_recipes)
+	big_list = mergeLists(big_list, GLOB.phoronrglass_recipes)
+	big_list = mergeLists(big_list, GLOB.phoronglass_recipes)
+
 
 	for(var/each in big_list)
 		if (istype(each, /datum/stack_recipe_list))

@@ -62,6 +62,9 @@
 /// PMC-TL, Team Leader
 #define PAY_SHORT_PMC_TL "PMC-TL"
 
+/// PMC-FOL, Field Operations Leader
+#define PAY_SHORT_PMC_FOL "PMC-FOL"
+
 /// PMC-DOC, Trauma Surgeon
 #define PAY_SHORT_PMC_DOC "PMC-DOC"
 

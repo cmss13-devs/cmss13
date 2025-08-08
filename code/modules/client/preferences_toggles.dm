@@ -567,16 +567,44 @@
 	do_toggle_custom_cursors()
 
 /client/proc/do_toggle_custom_cursors(mob/user)
-	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No"))
+	var/result = tgui_alert(user, "Do you want custom cursors enabled?", "Custom Cursors", list("Yes", "No", "Enable Main Cursor", "Disable Main Cursor"))
 	if(!result)
 		return
-	if(result == "Yes")
-		prefs.custom_cursors = TRUE
-		to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
-	else
-		prefs.custom_cursors = FALSE
-		to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
-		mouse_pointer_icon = initial(mouse_pointer_icon)
+	switch(result)
+		if("Yes")
+			prefs.custom_cursors = TRUE
+			to_chat(src, SPAN_NOTICE("You're now using custom cursors."))
+			if(result == "Yes")
+				var/chosen_cursor = tgui_alert(user, "Which type of custom cursor?", "Custom Cursors", list("USCM", "Xenomorph", "UPP", "PMC", "TWE"))
+				if(!chosen_cursor)
+					return
+				switch(chosen_cursor)
+					if("USCM")// For anyone in the future who might add anything, all of the cursors need to be their own file. and the only icon inside it needs to be renamed to "all" for byond to work with it
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/uscm.dmi'
+					if("Xenomorph")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/xeno.dmi'
+					if("UPP")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/upp.dmi'
+					if("PMC")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/wy.dmi'
+					if("TWE")
+						prefs.chosen_pointer = 'icons/effects/mouse_pointer/twe.dmi'
+				prefs.save_preferences()
+				user.update_cursor()
+		if("No")
+			prefs.custom_cursors = FALSE
+			to_chat(src, SPAN_NOTICE("You're no longer using custom cursors."))
+			mouse_pointer_icon = initial(mouse_pointer_icon)
+			prefs.save_preferences()
+		if("Enable Main Cursor")
+			prefs.main_cursor = TRUE
+			to_chat(src, SPAN_NOTICE("Your main cursor will now be customized."))
+			prefs.save_preferences()
+		if("Disable Main Cursor")
+			to_chat(src, SPAN_NOTICE("Your main cursor will no longer be customized."))
+			prefs.main_cursor = FALSE
+			prefs.save_preferences()
+
 
 	prefs.save_preferences()
 
@@ -686,7 +714,20 @@
 	set category = "Preferences.Ghost"
 	set desc = "Use to change which HUDs you want to have by default when you become an observer."
 
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD", "Faction UPP HUD", "Faction Wey-Yu HUD", "Faction RESS HUD", "Faction CLF HUD"))
+	var/list/hud_options = list(
+		"Medical HUD" = MOB_HUD_MEDICAL_OBSERVER,
+		"Security HUD" = MOB_HUD_SECURITY_ADVANCED,
+		"Squad HUD" = MOB_HUD_FACTION_OBSERVER,
+		"Xeno Status HUD" = MOB_HUD_XENO_STATUS,
+		"Faction UPP HUD" = MOB_HUD_FACTION_UPP,
+		"Faction Wey-Yu HUD" = MOB_HUD_FACTION_WY,
+		"Faction TWE HUD" = MOB_HUD_FACTION_TWE,
+		"Faction CLF HUD" = MOB_HUD_FACTION_CLF,
+		"Faction WO HUD" = MOB_HUD_FACTION_WO,
+		"Faction Hyperdyne HUD" = MOB_HUD_FACTION_HC,
+	)
+
+	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD prefs", hud_options)
 	if(!hud_choice)
 		return
 	prefs.observer_huds[hud_choice] = !prefs.observer_huds[hud_choice]
@@ -697,32 +738,13 @@
 	if(!isobserver(usr))
 		return
 	var/mob/dead/observer/observer_user = usr
-	var/datum/mob_hud/H
-	switch(hud_choice)
-		if("Medical HUD")
-			H = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
-		if("Security HUD")
-			H = GLOB.huds[MOB_HUD_SECURITY_ADVANCED]
-		if("Squad HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
-		if("Xeno Status HUD")
-			H = GLOB.huds[MOB_HUD_XENO_STATUS]
-		if("Faction UPP HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_UPP]
-		if("Faction Wey-Yu HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_WY]
-		if("Faction TWE HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_TWE]
-		if("Faction CLF HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_CLF]
-		if("Faction WO HUD")
-			H = GLOB.huds[MOB_HUD_FACTION_WO]
+	var/datum/mob_hud/hud = GLOB.huds[hud_options[hud_choice]]
 
 	observer_user.HUD_toggled[hud_choice] = prefs.observer_huds[hud_choice]
 	if(observer_user.HUD_toggled[hud_choice])
-		H.add_hud_to(observer_user, observer_user)
+		hud.add_hud_to(observer_user, observer_user)
 	else
-		H.remove_hud_from(observer_user, observer_user)
+		hud.remove_hud_from(observer_user, observer_user)
 
 /client/proc/toggle_ghost_health_scan()
 	set name = "Toggle Health Scan"

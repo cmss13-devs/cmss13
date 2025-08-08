@@ -1352,12 +1352,6 @@
 
 // Misc
 
-/obj/structure/prop/hybrisa/misc/picture
-	name = "framed picture"
-	desc = "A golden framed picture of an ominous skeletal figure ordorned in golden garb, fancy for a pile of bones..."
-	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
-	icon_state = "pictureframe"
-
 /obj/structure/prop/hybrisa/misc/picture_oil
 	name = "framed picture"
 	desc = "A silver framed picture of someone wearing a corporate issue deepsea powered hardsuit, the base of the frame has some words inscribed, 'site director'."

@@ -11,6 +11,7 @@
 	velocity = list(50, 0)
 	friction = generator(GEN_NUM, 0.1, 0.15)
 	spin = generator(GEN_NUM, -20, 20)
+	rotation = generator(GEN_NUM, 0, 360)
 
 /particles/impact_large
 	icon = 'icons/effects/particles/generic_particles.dmi'
@@ -106,6 +107,9 @@
 		debris_visuals = new(source, /particles/debris)
 		debris_visuals.particles.position = generator(GEN_CIRCLE, position_offset, position_offset)
 		debris_visuals.particles.velocity = list(x_component, y_component)
+		switch(debris)
+			if(DEBRIS_SPARKS)
+				debris_visuals.particles.rotation = angle
 		debris_visuals.layer = ABOVE_OBJ_LAYER + 0.02
 		debris_visuals.particles.icon_state = debris
 		debris_visuals.particles.count = debris_amount

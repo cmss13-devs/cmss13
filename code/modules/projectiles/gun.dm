@@ -1958,9 +1958,9 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	var/prev_light = light_range
 	if(!light_on && (light_range <= muzzle_flash_lum))
 		set_light_range(muzzle_flash_lum)
-		set_light_on(TRUE)
 		set_light_color(muzzle_flash_color)
-		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.5 SECONDS)
+		set_light_on(TRUE)
+		addtimer(CALLBACK(src, PROC_REF(reset_light_range), prev_light), 0.1 SECONDS)
 
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', user, muzzle_flash, user.dir == NORTH ? ABOVE_LYING_MOB_LAYER : FLOAT_LAYER)
 	var/matrix/rotate = matrix() //Change the flash angle.

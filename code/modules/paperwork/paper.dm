@@ -280,6 +280,7 @@
 		paper_text = replacetext(paper_text, "\[wy_inv\]", "<img src = [asset.get_url_mappings()["logo_wy_inv.png"]]>")
 		paper_text = replacetext(paper_text, "\[uscm\]", "<img src = [asset.get_url_mappings()["logo_uscm.png"]]>")
 		paper_text = replacetext(paper_text, "\[upp\]", "<img src = [asset.get_url_mappings()["logo_upp.png"]]>")
+		paper_text = replacetext(paper_text, "\[twe\]", "<img src = [asset.get_url_mappings()["logo_twe.png"]]>")
 		paper_text = replacetext(paper_text, "\[cmb\]", "<img src = [asset.get_url_mappings()["logo_cmb.png"]]>")
 
 		paper_text = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[paper_text]</font>"

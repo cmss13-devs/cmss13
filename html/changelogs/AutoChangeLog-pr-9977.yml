@@ -1,0 +1,4 @@
+author: "Unknownity"
+delete-after: True
+changes:
+  - rscadd: "Adds an upgraded autodoc to the Yautja ship and upgrades their sleepers."

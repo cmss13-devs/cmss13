@@ -249,6 +249,48 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
+"aaV" = (
+/obj/item/device/radio/intercom/south,
+/turf/open/floor/shiva/greenfull/west,
+/area/varadero/interior/hall_SE)
+"aaW" = (
+/obj/item/device/radio/intercom/north,
+/turf/open/floor/plating/icefloor/asteroidplating,
+/area/varadero/interior/maintenance/security/south)
+"aaX" = (
+/obj/item/device/radio/intercom/south,
+/turf/open/floor/shiva/yellow/north,
+/area/varadero/interior/hall_SE)
+"aaY" = (
+/obj/item/device/radio/intercom/north,
+/turf/open/floor/shiva/blue,
+/area/varadero/interior/hall_SE)
+"aaZ" = (
+/obj/item/device/radio/intercom/east,
+/turf/open/floor/shiva/yellow/west,
+/area/varadero/interior/hall_NW)
+"aba" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/device/radio/intercom/east,
+/turf/open/floor/shiva/red/east,
+/area/varadero/interior/security)
+"abb" = (
+/obj/item/device/radio/intercom/east,
+/turf/open/floor/shiva/green/west,
+/area/varadero/interior/hall_SE)
+"abc" = (
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_NW)
+"abd" = (
+/obj/item/device/radio/intercom/south,
+/turf/open/floor/shiva/floor3,
+/area/varadero/interior/medical)
+"abe" = (
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_N)
 "abf" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -256,11 +298,53 @@
 /mob/living/simple_animal/mouse,
 /turf/open/floor/shiva/multi_tiles/southeast,
 /area/varadero/interior/medical)
+"abg" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = 16;
+	pixel_y = -8
+	},
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/shiva/green/east,
+/area/varadero/interior/hall_SE)
+"abh" = (
+/obj/item/device/radio/intercom/south,
+/turf/open/floor/shiva/green/north,
+/area/varadero/interior/hall_N)
+"abi" = (
+/obj/item/device/radio/intercom/north,
+/turf/open/floor/shiva/greenfull/west,
+/area/varadero/interior/hall_N)
+"abj" = (
+/obj/item/device/radio/intercom/north,
+/turf/open/floor/shiva/green,
+/area/varadero/interior/hall_N)
+"abk" = (
+/obj/structure/machinery/alarm/north,
+/turf/open/floor/shiva/yellow,
+/area/varadero/interior/comms3)
 "abl" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/radio,
 /turf/open/floor/shiva/red/southwest,
 /area/varadero/interior/security)
+"abm" = (
+/obj/item/device/radio/intercom/north,
+/turf/open/floor/prison/chapel_carpet/doubleside/north,
+/area/varadero/interior/chapel)
+"abn" = (
+/obj/item/device/radio/intercom/east,
+/turf/open/floor/shiva/yellowfull/west,
+/area/varadero/interior/hall_N)
+"abo" = (
+/obj/structure/reagent_dispensers/beerkeg/alt,
+/obj/structure/machinery/alarm/west,
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
+"abp" = (
+/obj/structure/machinery/firealarm/east,
+/turf/open/floor/freezerfloor,
+/area/varadero/interior/cargo)
 "abu" = (
 /obj/item/stack/sheet/wood,
 /obj/item/shard{
@@ -445,9 +529,6 @@
 /area/varadero/exterior/comms4)
 "akd" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
@@ -1108,10 +1189,6 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /turf/open/floor/shiva/red/west,
 /area/varadero/interior/security)
 "aHs" = (
@@ -1150,9 +1227,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/varadero/exterior/lz1_near)
 "aHM" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "aIm" = (
@@ -2184,10 +2259,7 @@
 	pixel_x = 2;
 	pixel_y = 16
 	},
-/obj/structure/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
+/obj/structure/machinery/alarm/east,
 /turf/open/floor/shiva/redfull,
 /area/varadero/interior/security)
 "byw" = (
@@ -2371,9 +2443,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/white,
 /area/varadero/interior/toilets)
 "bIt" = (
@@ -2421,13 +2491,10 @@
 /turf/open/floor/plating,
 /area/varadero/interior/chapel)
 "bLI" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
 /obj/structure/prop/ice_colony/tiger_rug{
 	icon_state = "HotlineAlt"
 	},
+/obj/structure/machinery/firealarm/east,
 /turf/open/floor/shiva/red/east,
 /area/varadero/interior/administration)
 "bLN" = (
@@ -2516,9 +2583,7 @@
 "bOO" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
 "bPl" = (
@@ -2892,6 +2957,7 @@
 /area/varadero/interior/cargo)
 "cdS" = (
 /obj/effect/decal/cleanable/blood,
+/obj/item/device/radio/intercom/south,
 /turf/open/floor/carpet,
 /area/varadero/interior/maintenance/north)
 "cel" = (
@@ -4187,13 +4253,10 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "dfJ" = (
-/obj/structure/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
+/obj/structure/machinery/alarm/east,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/morgue)
 "dfP" = (
@@ -4294,9 +4357,7 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/east,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/records)
 "diW" = (
@@ -4459,10 +4520,7 @@
 /area/varadero/exterior/lz2_near)
 "doO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/structure/machinery/firealarm/west,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/records)
 "doP" = (
@@ -4507,9 +4565,6 @@
 /area/varadero/exterior/lz2_near)
 "dro" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
 /turf/open/floor/freezerfloor,
 /area/varadero/interior/cargo)
 "drK" = (
@@ -4548,9 +4603,7 @@
 /turf/closed/wall,
 /area/varadero/interior/technical_storage)
 "dtu" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "dtH" = (
@@ -4860,10 +4913,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/structure/machinery/firealarm/west,
 /turf/open/floor/shiva/north,
 /area/varadero/interior/medical)
 "dLO" = (
@@ -5416,10 +5466,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "ejK" = (
-/obj/structure/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
+/obj/structure/machinery/alarm/east,
 /turf/open/floor/wood,
 /area/varadero/interior/library)
 "ejM" = (
@@ -5680,9 +5727,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22"
 	},
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
 "evW" = (
@@ -6658,6 +6703,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
+/obj/item/device/radio/intercom/south,
 /turf/open/floor/shiva/green/southeast,
 /area/varadero/interior/hall_SE)
 "fiB" = (
@@ -7240,10 +7286,8 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "fFx" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
 /obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "fFI" = (
@@ -7613,12 +7657,11 @@
 /turf/open/floor/strata/grey_multi_tiles,
 /area/varadero/interior_protected/vessel)
 "fVt" = (
-/obj/structure/machinery/door_control{
-	id = "colony_sec_armory";
-	name = "Colony Secure Armory";
-	pixel_y = -26
-	},
 /obj/item/storage/box/flashbangs,
+/obj/structure/machinery/door_control/south{
+	id = "colony_sec_armory";
+	name = "Colony Secure Armory"
+	},
 /turf/open/floor/shiva/red,
 /area/varadero/interior/security)
 "fVw" = (
@@ -7771,9 +7814,7 @@
 	icon_state = "pottedplant_22";
 	pixel_y = 8
 	},
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/green/northwest,
 /area/varadero/interior/hall_SE)
 "gaJ" = (
@@ -8902,11 +8943,8 @@
 /turf/open/floor/wood,
 /area/varadero/interior/bunks)
 "haq" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
 /obj/effect/spawner/random/attachment,
+/obj/structure/machinery/firealarm/east,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "hay" = (
@@ -9677,10 +9715,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "hJl" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
 /obj/structure/bed/chair,
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "hJq" = (
@@ -9814,13 +9850,10 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/hall_SE)
 "hNc" = (
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
+/obj/structure/machinery/firealarm/south,
 /turf/open/floor/shiva/redfull/west,
 /area/varadero/interior/hall_SE)
 "hOp" = (
@@ -10739,10 +10772,7 @@
 /turf/open/floor/shiva/blue/west,
 /area/varadero/interior/maintenance)
 "iAa" = (
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
+/obj/structure/machinery/firealarm/south,
 /turf/open/floor/white,
 /area/varadero/interior/toilets)
 "iAc" = (
@@ -11124,15 +11154,12 @@
 /turf/open/floor/carpet,
 /area/varadero/interior/records)
 "iPw" = (
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin{
 	pixel_x = 6;
 	pixel_y = 8
 	},
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "iPH" = (
@@ -11247,10 +11274,7 @@
 	pixel_x = 10;
 	pixel_y = 2
 	},
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/structure/machinery/firealarm/east,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/morgue)
 "iSW" = (
@@ -11604,9 +11628,7 @@
 /area/varadero/interior/records)
 "jhe" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "jhv" = (
@@ -11676,11 +11698,8 @@
 /area/varadero/exterior/pontoon_beach)
 "jjE" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/firealarm/west,
 /turf/open/floor/shiva/red/east,
 /area/varadero/interior/security)
 "jjN" = (
@@ -11921,9 +11940,7 @@
 /obj/item/storage/donut_box{
 	pixel_y = 9
 	},
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "jtU" = (
@@ -11995,10 +12012,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz2_near)
 "jxe" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/structure/machinery/firealarm/east,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "jxi" = (
@@ -12396,6 +12410,7 @@
 /area/varadero/exterior/eastbeach)
 "jNS" = (
 /obj/structure/bed/chair/wheelchair,
+/obj/item/device/radio/intercom/north,
 /turf/open/floor/shiva/wred/northeast,
 /area/varadero/interior/medical)
 "jNT" = (
@@ -12417,6 +12432,7 @@
 /area/varadero/interior/bunks)
 "jNW" = (
 /obj/item/stack/sheet/metal,
+/obj/item/device/radio/intercom/west,
 /turf/open/floor/shiva/multi_tiles/west,
 /area/varadero/interior/hall_SE)
 "jOR" = (
@@ -13607,10 +13623,8 @@
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/electrical)
 "kPj" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
 /obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/green/north,
 /area/varadero/interior/mess)
 "kPX" = (
@@ -13650,11 +13664,8 @@
 /turf/open/gm/coast/beachcorner/north_west,
 /area/varadero/exterior/lz1_near)
 "kSd" = (
-/obj/structure/machinery/alarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/structure/curtain/shower,
+/obj/structure/machinery/alarm/south,
 /turf/open/floor/interior/plastic,
 /area/varadero/interior/laundry)
 "kSw" = (
@@ -13848,6 +13859,7 @@
 "lbi" = (
 /obj/structure/closet/secure_closet/cargotech,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/device/radio/intercom/west,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/cargo)
 "lbr" = (
@@ -14365,11 +14377,9 @@
 /turf/closed/wall/rock/brown,
 /area/varadero/exterior/monsoon)
 "lzX" = (
-/obj/structure/machinery/door_control{
-	id = "undergroundhangarsouth";
+/obj/structure/machinery/door_control/west{
 	name = "South Dock Door";
-	pixel_x = -24;
-	explo_proof = 1
+	id = "undergroundhangarsouth"
 	},
 /turf/open/floor/plating/icefloor/warnplate,
 /area/varadero/interior/maintenance/north)
@@ -14486,10 +14496,7 @@
 /turf/open/floor/shiva/snow_mat/east,
 /area/varadero/interior/medical)
 "lEY" = (
-/obj/structure/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
+/obj/structure/machinery/alarm/east,
 /turf/open/floor/carpet,
 /area/varadero/interior/chapel)
 "lFk" = (
@@ -14951,10 +14958,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "lWJ" = (
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
+/obj/structure/machinery/firealarm/south,
 /turf/open/floor/wood,
 /area/varadero/interior/hall_SE)
 "lXc" = (
@@ -15102,9 +15106,7 @@
 	pixel_y = -2
 	},
 /obj/item/tool/stamp,
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/red/northeast,
 /area/varadero/interior/security)
 "mcp" = (
@@ -15179,10 +15181,7 @@
 	pixel_x = 1;
 	pixel_y = 6
 	},
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
+/obj/structure/machinery/firealarm/south,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/laundry)
 "meS" = (
@@ -15318,11 +15317,8 @@
 /turf/open/floor/shiva/yellow/southeast,
 /area/varadero/interior/technical_storage)
 "mkt" = (
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/effect/spawner/random/attachment,
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_SE)
 "mlN" = (
@@ -15493,10 +15489,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/medical)
 "mrR" = (
@@ -16186,10 +16179,6 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/court)
 "mXO" = (
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
@@ -16197,6 +16186,7 @@
 	pixel_x = -9
 	},
 /obj/item/clothing/suit/armor/vest,
+/obj/structure/machinery/firealarm/south,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/hall_N)
 "mXV" = (
@@ -17096,10 +17086,7 @@
 	pixel_x = -1;
 	pixel_y = 7
 	},
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/shiva/yellow/northwest,
 /area/varadero/interior/technical_storage)
 "nPI" = (
@@ -17418,8 +17405,7 @@
 	id = "undergroundhangarsouth";
 	name = "South Dock Door";
 	pixel_x = -32;
-	pixel_y = -18;
-	explo_proof = 1
+	pixel_y = -18
 	},
 /turf/open/floor/plating/icefloor/warnplate/north,
 /area/varadero/exterior/lz1_near)
@@ -17564,10 +17550,10 @@
 	id = "sec_checkpoint";
 	pixel_y = 24
 	},
-/obj/structure/machinery/door_control{
+/obj/structure/machinery/door_control/north{
+	pixel_y = 34;
 	id = "sec_checkpoint_lock";
-	name = "Checkpoint Lockdown";
-	pixel_y = 36
+	name = "Checkpoint Lockdown"
 	},
 /turf/open/floor/shiva/red/northwest,
 /area/varadero/interior/security)
@@ -17583,9 +17569,6 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "oiB" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
 /obj/structure/surface/table/woodentable,
 /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_bishop{
 	pixel_x = -10;
@@ -17599,6 +17582,7 @@
 	pixel_x = -13;
 	pixel_y = 3
 	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/varadero/interior/chapel)
 "oiM" = (
@@ -17966,10 +17950,10 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/obj/structure/machinery/door_control{
-	id = "sec_checkpoint_lock";
+/obj/structure/machinery/door_control/flat{
+	pixel_y = 10;
 	name = "Checkpoint Lockdown";
-	pixel_y = 7
+	id = "sec_checkpoint_lock"
 	},
 /turf/open/floor/plating,
 /area/varadero/interior/security)
@@ -18010,6 +17994,7 @@
 /area/varadero/interior/maintenance/security/north)
 "oBj" = (
 /obj/structure/machinery/vending/cigarette/koorlander,
+/obj/item/device/radio/intercom/north,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/hall_N)
 "oBl" = (
@@ -18439,13 +18424,10 @@
 /turf/open/gm/coast/north,
 /area/varadero/exterior/pontoon_beach)
 "oTJ" = (
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/taperecorder,
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/shiva/blue/southwest,
 /area/varadero/interior/administration)
 "oUh" = (
@@ -19077,10 +19059,7 @@
 /turf/open/floor/shiva/green/west,
 /area/varadero/interior/hall_SE)
 "pqG" = (
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/structure/machinery/firealarm/east,
 /turf/open/floor/shiva/green/west,
 /area/varadero/interior/court)
 "pqH" = (
@@ -19603,13 +19582,10 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/varadero/interior/maintenance)
 "pLV" = (
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/shiva/red/east,
 /area/varadero/interior/administration)
 "pMe" = (
@@ -19670,9 +19646,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/hall_SE)
 "pNJ" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "pNR" = (
@@ -20367,9 +20341,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/green/northwest,
 /area/varadero/interior/court)
 "qpD" = (
@@ -20404,8 +20376,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 3;
-	explo_proof = 1
+	pixel_x = 3
 	},
 /turf/closed/wall/r_wall/unmeltable,
 /area/varadero/exterior/lz1_near)
@@ -20427,10 +20398,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/structure/machinery/firealarm/west,
 /turf/open/floor/shiva/red/east,
 /area/varadero/interior/security)
 "qsJ" = (
@@ -21101,10 +21069,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/structure/machinery/alarm{
-	dir = 1;
-	pixel_y = -24
-	},
+/obj/structure/machinery/alarm/south,
 /turf/open/floor/white,
 /area/varadero/interior/toilets)
 "qQk" = (
@@ -21315,9 +21280,7 @@
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "qXn" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/green/northeast,
 /area/varadero/interior/mess)
 "qXO" = (
@@ -21900,10 +21863,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
+/obj/structure/machinery/firealarm/south,
 /turf/open/floor/shiva/green,
 /area/varadero/interior/hall_SE)
 "rtx" = (
@@ -22965,25 +22925,9 @@
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/security)
 "sia" = (
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
+/obj/structure/machinery/firealarm/south,
 /turf/open/floor/carpet,
 /area/varadero/interior/library)
-"sic" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
-	},
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
-/turf/open/floor/shiva/yellowfull/west,
-/area/varadero/interior/comms3)
 "sid" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/asteroidfloor/north,
@@ -23306,10 +23250,8 @@
 /area/varadero/interior/security)
 "swj" = (
 /obj/structure/closet/secure_closet/detective,
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
 /obj/item/storage/pouch/machete/full,
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "swk" = (
@@ -23404,10 +23346,7 @@
 	pixel_x = 5;
 	pixel_y = 13
 	},
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/structure/machinery/firealarm/east,
 /turf/open/floor/shiva/blue/southwest,
 /area/varadero/interior/technical_storage)
 "szh" = (
@@ -23464,6 +23403,7 @@
 /obj/structure/platform/metal/kutjevo_smooth/east{
 	climb_delay = 1
 	},
+/obj/item/device/radio/intercom/east,
 /turf/open/floor/asteroidwarning,
 /area/varadero/interior/comms1)
 "sBF" = (
@@ -23504,13 +23444,8 @@
 /turf/open/floor/shiva/north,
 /area/varadero/interior/cargo)
 "sCV" = (
-/obj/structure/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
+/obj/structure/machinery/alarm/east,
 /turf/open/floor/shiva/yellow/northeast,
 /area/varadero/interior/cargo)
 "sDf" = (
@@ -24300,9 +24235,7 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/eastbeach)
 "tlG" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/white,
 /area/varadero/interior/toilets)
 "tlT" = (
@@ -24881,10 +24814,8 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "tPI" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
 /obj/structure/largecrate/random/case/small,
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "tPK" = (
@@ -25206,12 +25137,10 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/cargo)
 "ucv" = (
@@ -25437,9 +25366,6 @@
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "unw" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
 /obj/structure/filingcabinet{
 	density = 0;
 	icon_state = "chestdrawer";
@@ -25453,6 +25379,7 @@
 	pixel_y = 11
 	},
 /obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/wood,
 /area/varadero/interior/security)
 "uoh" = (
@@ -25717,10 +25644,8 @@
 /turf/open/gm/coast/west,
 /area/varadero/exterior/farocean)
 "uyd" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
 /obj/structure/largecrate/random,
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/floor3,
 /area/varadero/interior/cargo)
 "uyK" = (
@@ -25730,9 +25655,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/technical_storage)
 "uzb" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/disposals)
 "uzg" = (
@@ -25903,14 +25826,11 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/disposals)
 "uIl" = (
-/obj/structure/machinery/alarm{
-	dir = 4;
-	pixel_x = -24
-	},
 /obj/structure/filingcabinet{
 	pixel_x = -8;
 	pixel_y = 4
 	},
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/wood,
 /area/varadero/interior/administration)
 "uIH" = (
@@ -25988,10 +25908,7 @@
 /obj/structure/surface/table,
 /obj/item/cell/high/empty,
 /obj/structure/machinery/cell_charger,
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/structure/machinery/firealarm/east,
 /turf/open/floor/shiva/yellow/southwest,
 /area/varadero/interior/technical_storage)
 "uMQ" = (
@@ -26337,13 +26254,8 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/security/south)
 "vap" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
+/obj/structure/machinery/firealarm/west,
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/shiva/red/northeast,
 /area/varadero/interior/security)
 "vaV" = (
@@ -27948,13 +27860,11 @@
 /turf/open/gm/dirt,
 /area/varadero/exterior/monsoon)
 "wic" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
-	},
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "wir" = (
@@ -27983,9 +27893,7 @@
 /area/varadero/interior/comms1)
 "wkq" = (
 /obj/structure/machinery/photocopier,
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/wood,
 /area/varadero/interior/records)
 "wkt" = (
@@ -28560,8 +28468,7 @@
 /obj/structure/machinery/door_control/brbutton{
 	id = "undergroundhangarwest";
 	name = "West Dock Door";
-	pixel_x = 8;
-	explo_proof = 1
+	pixel_x = 8
 	},
 /obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/unmeltable,
@@ -28626,6 +28533,7 @@
 /obj/structure/machinery/computer/station_alert{
 	dir = 8
 	},
+/obj/item/device/radio/intercom/east,
 /turf/open/floor/shiva/bluefull/west,
 /area/varadero/interior/administration)
 "wJu" = (
@@ -28820,9 +28728,7 @@
 /turf/open/floor/plating,
 /area/varadero/interior/disposals)
 "wTM" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/yellowfull/west,
 /area/varadero/interior/disposals)
 "wTR" = (
@@ -29026,6 +28932,7 @@
 /area/varadero/interior/hall_SE)
 "xdJ" = (
 /obj/structure/closet/emcloset,
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/shiva/red/northwest,
 /area/varadero/interior/security)
 "xdW" = (
@@ -29324,13 +29231,10 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/machinery/vending/snack,
-/obj/structure/machinery/alarm{
-	dir = 8;
-	pixel_x = 24
-	},
 /obj/structure/machinery/light{
 	dir = 4
 	},
+/obj/structure/machinery/alarm/east,
 /turf/open/floor/shiva/yellow/east,
 /area/varadero/interior/cargo)
 "xrA" = (
@@ -29372,12 +29276,9 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/hall_N)
 "xuJ" = (
-/obj/structure/machinery/atm{
-	name = "Weyland-Yutani Automatic Teller Machine";
-	pixel_y = 30
-	},
 /obj/item/reagent_container/food/snacks/wrapped/barcardine,
 /obj/structure/bed/chair/wood/normal,
+/obj/structure/machinery/atm/north,
 /turf/open/floor/wood,
 /area/varadero/interior/beach_bar)
 "xuN" = (
@@ -29487,14 +29388,11 @@
 /turf/closed/wall/r_wall,
 /area/varadero/interior/hall_N)
 "xxZ" = (
-/obj/structure/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
-	},
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/structure/machinery/firealarm/west,
 /turf/open/floor/shiva/blue/southeast,
 /area/varadero/interior/administration)
 "xya" = (
@@ -30083,9 +29981,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/lz2_near)
 "xWj" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
+/obj/structure/machinery/firealarm/north,
 /turf/open/floor/shiva/red/north,
 /area/varadero/interior/security)
 "xWL" = (
@@ -30134,10 +30030,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/obj/structure/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
+/obj/structure/machinery/firealarm/east,
 /turf/open/floor/shiva/yellow/west,
 /area/varadero/interior/cargo)
 "xZa" = (
@@ -36227,9 +36120,9 @@ rMM
 wjB
 ykc
 akd
-eBL
+abp
 vjA
-pfR
+abo
 pfR
 bRo
 ykc
@@ -38085,7 +37978,7 @@ lzu
 mGb
 mGb
 mGb
-mGb
+abe
 lgP
 kwB
 icM
@@ -38097,7 +37990,7 @@ kPX
 bPl
 uVV
 kwB
-kwB
+abc
 kwB
 nWg
 kwB
@@ -38797,7 +38690,7 @@ xqY
 muE
 oLM
 fYA
-fYA
+abn
 fYA
 dQe
 lWo
@@ -38838,7 +38731,7 @@ foU
 ujp
 vDm
 mVF
-vDm
+aaZ
 vDm
 deX
 vDm
@@ -39393,7 +39286,7 @@ ykw
 pRX
 sJZ
 tEJ
-cNu
+aaX
 nTG
 jpD
 ebr
@@ -39730,7 +39623,7 @@ maN
 maN
 maN
 maN
-maN
+abd
 qcN
 seY
 gjw
@@ -40254,7 +40147,7 @@ ygn
 hHb
 hyr
 vnm
-hfR
+abm
 ePz
 pRb
 ceJ
@@ -40811,7 +40704,7 @@ epQ
 ntw
 hvO
 bih
-rHv
+abh
 qcN
 uUW
 maN
@@ -42446,7 +42339,7 @@ vcj
 leF
 ded
 epQ
-lzu
+abi
 oMs
 hca
 lzu
@@ -42487,7 +42380,7 @@ xgG
 oyx
 sJZ
 tEJ
-cNu
+aaX
 kyG
 kyG
 kyG
@@ -42666,7 +42559,7 @@ xZO
 pAa
 jbh
 xgG
-vUM
+aaY
 sJZ
 tEJ
 cNu
@@ -45217,7 +45110,7 @@ xgG
 xff
 sJZ
 tEJ
-cNu
+aaX
 bkM
 bkM
 ngg
@@ -46086,7 +45979,7 @@ cGc
 aVt
 iet
 sXb
-xWY
+abj
 hvO
 bih
 rHv
@@ -48820,7 +48713,7 @@ gnx
 hvO
 bih
 mux
-pot
+abg
 kmb
 mvI
 mvI
@@ -49383,7 +49276,7 @@ rBP
 gvE
 uLY
 rBP
-rBP
+abb
 pqC
 rBP
 rBP
@@ -49971,7 +49864,7 @@ rrp
 uLY
 sJZ
 tEJ
-uLY
+aaV
 aFt
 xZv
 mPT
@@ -50090,7 +49983,7 @@ oVm
 fLZ
 esB
 juW
-xzr
+abk
 hus
 wuR
 rVS
@@ -51000,7 +50893,7 @@ gXO
 aZX
 dCE
 juW
-sic
+faP
 ftF
 bEX
 pnL
@@ -51599,7 +51492,7 @@ cKC
 xOo
 jcC
 wVf
-eVy
+aaW
 gUX
 lIM
 fEz
@@ -51757,7 +51650,7 @@ sPs
 oXp
 jVK
 uUS
-yeY
+aba
 yeY
 fER
 yeY

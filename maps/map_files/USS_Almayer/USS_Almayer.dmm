@@ -13653,10 +13653,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
-"aJn" = (
-/obj/item/device/radio/intercom/south,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
@@ -31420,10 +31416,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
-"bxQ" = (
-/obj/structure/machinery/firealarm/south,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
 "bxR" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/prop/invuln/lattice_prop{
@@ -34943,86 +34935,20 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/fore_hallway)
-"bFG" = (
-/obj/structure/machinery/alarm/south,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
-"bFH" = (
-/obj/structure/machinery/atm/south{
-	pixel_y = -7
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
-"bFI" = (
-/obj/item/device/radio/intercom/west,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
 "bFJ" = (
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
-"bFK" = (
-/obj/item/device/radio/intercom/east,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
-"bFL" = (
-/obj/structure/machinery/firealarm/east{
-	pixel_x = -20
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
-"bFM" = (
-/obj/structure/machinery/firealarm/west,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
-"bFN" = (
-/obj/structure/machinery/alarm/west{
-	pixel_x = -8
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
-"bFO" = (
-/obj/structure/machinery/alarm/east{
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
 "bFP" = (
 /obj/vehicle/powerloader{
 	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
-"bFQ" = (
-/obj/structure/machinery/atm/west{
-	pixel_x = -11
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
 "bFR" = (
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
-"bFS" = (
-/obj/structure/machinery/atm/east{
-	pixel_x = 11
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
-"bFT" = (
-/obj/structure/machinery/keycard_auth{
-	dir = 4;
-	pixel_x = -21
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
-"bFU" = (
-/obj/structure/machinery/keycard_auth{
-	dir = 8;
-	pixel_x = 21
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/stern_point_defense)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -153306,14 +153232,14 @@ aaa
 gFP
 vVI
 lMb
-qjZ
-qjZ
-qjZ
-qjZ
-qjZ
-qjZ
-qjZ
-qjZ
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
 lMb
 lMb
 lMb
@@ -153409,14 +153335,14 @@ aaa
 gFP
 aoO
 lMb
-qjZ
-bFT
-bFQ
-bFN
-bFL
-bFI
-aJn
-qjZ
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
 lMb
 lMb
 lMb
@@ -153512,14 +153438,14 @@ aaa
 gFP
 aoO
 lMb
-qjZ
 lMb
 lMb
 lMb
 lMb
 lMb
-bxQ
-qjZ
+lMb
+lMb
+lMb
 lMb
 lMb
 lMb
@@ -153615,14 +153541,14 @@ aaa
 gFP
 riT
 lMb
-qjZ
 lMb
 lMb
 lMb
 lMb
 lMb
-bFG
-qjZ
+lMb
+lMb
+lMb
 lMb
 lMb
 lMb
@@ -153718,14 +153644,14 @@ aaa
 gFP
 aoO
 lMb
-qjZ
 lMb
 lMb
 lMb
 lMb
 lMb
-bFH
-qjZ
+lMb
+lMb
+lMb
 lMb
 lMb
 lMb
@@ -153821,14 +153747,14 @@ aaa
 gFP
 aoO
 lMb
-qjZ
 lMb
 lMb
 lMb
 lMb
 lMb
 lMb
-qjZ
+lMb
+lMb
 lMb
 lMb
 lMb
@@ -153924,14 +153850,14 @@ aaa
 gFP
 vVI
 lMb
-qjZ
-bFU
-bFS
-bFO
-bFM
-bFK
 lMb
-qjZ
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
+lMb
 lMb
 lMb
 lMb
@@ -154027,14 +153953,14 @@ aaa
 gFP
 aoQ
 wgf
-qjZ
-qjZ
-qjZ
-qjZ
-qjZ
-qjZ
-qjZ
-qjZ
+ane
+qbD
+ane
+wgf
+ane
+qbD
+ane
+wgf
 ane
 qbD
 ane
@@ -154130,14 +154056,14 @@ aaa
 gFP
 gFP
 gFP
-ane
-qbD
-ane
-wgf
-ane
-qbD
-ane
-wgf
+gFP
+gFP
+gFP
+gFP
+gFP
+gFP
+gFP
+gFP
 gFP
 gFP
 gFP
@@ -154233,14 +154159,14 @@ aaa
 aaa
 aaa
 aaa
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
-aKQ
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
+bdH
 aaa
 aaa
 aaa

@@ -23,6 +23,7 @@
 	faction = FACTION_ZOMBIE
 	move_to_delay = 6
 	speed = 3
+	break_stuff_probability = 75
 
 /mob/living/simple_animal/hostile/zombie/FindTarget()
 	. = ..()

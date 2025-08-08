@@ -5,7 +5,7 @@ FIRE ALARM
 	name = "fire alarm"
 	desc = "<i>\"Pull this in case of emergency\"</i>. Thus, keep pulling it forever."
 	icon = 'icons/obj/structures/machinery/monitors.dmi'
-	icon_state = "fire0"
+	icon_state = "firealarm"
 	var/detecting = 1
 	var/working = 1
 	anchored = TRUE
@@ -182,3 +182,19 @@ FIRE ALARM
 	area.firealert()
 	update_icon()
 	return
+
+/obj/structure/machinery/firealarm/south
+	dir = SOUTH
+	pixel_y = -17
+
+/obj/structure/machinery/firealarm/north
+	dir = NORTH
+	pixel_y = 28
+
+/obj/structure/machinery/firealarm/east
+	dir = EAST
+	pixel_x = -20
+
+/obj/structure/machinery/firealarm/west
+	dir = WEST
+	pixel_x = 20

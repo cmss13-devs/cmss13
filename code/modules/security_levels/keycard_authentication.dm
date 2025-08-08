@@ -178,6 +178,21 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 	for(var/obj/structure/machinery/computer/overwatch/overwatch in GLOB.active_overwatch_consoles)
 		overwatch.toggle_ob_cannon_safety()
 
+/obj/structure/machinery/keycard_auth/south
+	dir = SOUTH
+	pixel_y = -1
+
+/obj/structure/machinery/keycard_auth/north
+	dir = NORTH
+	pixel_y = 28
+
+/obj/structure/machinery/keycard_auth/east
+	dir = EAST
+	pixel_y = 21
+
+/obj/structure/machinery/keycard_auth/west
+	dir = WEST
+	pixel_y = -21
 
 // Keycard reader at the CORSAT locks
 /obj/structure/machinery/keycard_auth/lockdown

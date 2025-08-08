@@ -2427,7 +2427,7 @@
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/living/cafeteria_officer)
 "afK" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -5538,7 +5538,7 @@
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/engineering/lower/engine_core)
 "any" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -12635,7 +12635,7 @@
 "aGs" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /obj/item/seeds/goldappleseed,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/wood/ship,
@@ -13631,7 +13631,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/device/camera_film,
 /obj/item/clothing/glasses/welding,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer,
@@ -13653,6 +13653,10 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
+"aJn" = (
+/obj/item/device/radio/intercom/south,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
@@ -15225,7 +15229,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/red/north,
@@ -20046,7 +20050,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
 "aZe" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/wood/ship,
@@ -22873,7 +22877,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
 "bfC" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -23422,7 +23426,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
 "bgM" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/northeast,
@@ -31157,7 +31161,7 @@
 "bxk" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -31416,6 +31420,10 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
+"bxQ" = (
+/obj/structure/machinery/firealarm/south,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bxR" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/prop/invuln/lattice_prop{
@@ -31887,7 +31895,7 @@
 "byW" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -33003,7 +33011,7 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
 "bBy" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/surface/rack,
@@ -34253,7 +34261,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -34935,20 +34943,86 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/fore_hallway)
+"bFG" = (
+/obj/structure/machinery/alarm/south,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bFH" = (
+/obj/structure/machinery/atm/south{
+	pixel_y = -7
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bFI" = (
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bFJ" = (
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
+"bFK" = (
+/obj/item/device/radio/intercom/east,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bFL" = (
+/obj/structure/machinery/firealarm/east{
+	pixel_x = -20
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bFM" = (
+/obj/structure/machinery/firealarm/west,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bFN" = (
+/obj/structure/machinery/alarm/west{
+	pixel_x = -8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bFO" = (
+/obj/structure/machinery/alarm/east{
+	pixel_x = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bFP" = (
 /obj/vehicle/powerloader{
 	dir = 8
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
+"bFQ" = (
+/obj/structure/machinery/atm/west{
+	pixel_x = -11
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bFR" = (
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
+"bFS" = (
+/obj/structure/machinery/atm/east{
+	pixel_x = 11
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bFT" = (
+/obj/structure/machinery/keycard_auth{
+	dir = 4;
+	pixel_x = -21
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
+"bFU" = (
+/obj/structure/machinery/keycard_auth{
+	dir = 8;
+	pixel_x = 21
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/stern_point_defense)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -36069,7 +36143,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/req)
 "bOM" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -37981,7 +38055,7 @@
 /turf/open/floor/almayer/emerald/north,
 /area/almayer/squads/charlie)
 "chV" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -38291,7 +38365,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_y = -29
 	},
@@ -38775,7 +38849,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -39018,7 +39092,7 @@
 /area/almayer/shipboard/brig/cryo)
 "cuq" = (
 /obj/structure/machinery/computer/arcade,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1;
 	pixel_x = 31;
 	pixel_y = -6
@@ -40787,7 +40861,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/cells)
 "dfA" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/blue/north,
@@ -46993,7 +47067,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_a_p)
 "fJt" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/green/north,
@@ -47164,7 +47238,7 @@
 /turf/open/floor/almayer,
 /area/almayer/maint/hull/upper/u_f_s)
 "fLu" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/machinery/computer/general_air_control/large_tank_control{
@@ -47628,7 +47702,7 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/securestorage)
 "fXz" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -49567,7 +49641,7 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera"
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
@@ -50801,7 +50875,7 @@
 /area/almayer/maint/hull/upper/p_bow)
 "hng" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -51148,7 +51222,7 @@
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/command/computerlab)
 "huP" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer,
@@ -52859,7 +52933,7 @@
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/cargo,
@@ -55914,7 +55988,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/squads/req)
 "jpW" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer,
@@ -57459,7 +57533,7 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
 "jZU" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/effect/decal/warning_stripes{
@@ -58267,7 +58341,7 @@
 "krp" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/box/cups,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -61835,7 +61909,7 @@
 /turf/open/floor/almayer/plating_stripedcorner/north,
 /area/almayer/command/securestorage)
 "lPY" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/green/northeast,
@@ -71433,7 +71507,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_s)
 "pKh" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -74806,7 +74880,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/l_m_s)
 "qWQ" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/north,
@@ -76066,7 +76140,7 @@
 /turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
 "rwB" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer,
@@ -77265,7 +77339,7 @@
 /area/almayer/hallways/lower/repair_bay)
 "rVB" = (
 /obj/structure/machinery/suit_storage_unit/compression_suit/uscm,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -77719,7 +77793,7 @@
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "sfV" = (
-/obj/structure/machinery/alarm/almayer,
+/obj/structure/machinery/alarm,
 /turf/open/floor/almayer,
 /area/almayer/engineering/lower/workshop)
 "sgc" = (
@@ -78585,7 +78659,7 @@
 /area/almayer/maint/hull/upper/p_bow)
 "swE" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/green/northeast,
@@ -79127,7 +79201,7 @@
 /turf/open/floor/almayer/orange/west,
 /area/almayer/engineering/lower/workshop)
 "sHC" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/green/north,
@@ -82841,7 +82915,7 @@
 /turf/open/floor/almayer/plating_stripedcorner/east,
 /area/almayer/underdeck/req)
 "uiC" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/northwest,
@@ -84617,7 +84691,7 @@
 "uUt" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -85024,7 +85098,7 @@
 	name = "synthetic potted plant";
 	pixel_y = 8
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/northwest,
@@ -85292,7 +85366,7 @@
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "vhw" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/blue/northeast,
@@ -88123,7 +88197,7 @@
 "wgR" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -91338,7 +91412,7 @@
 /turf/open/floor/almayer/plating,
 /area/almayer/living/basketball)
 "xsl" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/orange/northeast,
@@ -92594,7 +92668,7 @@
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell)
 "xQz" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -153232,14 +153306,14 @@ aaa
 gFP
 vVI
 lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+qjZ
+qjZ
+qjZ
+qjZ
+qjZ
+qjZ
+qjZ
+qjZ
 lMb
 lMb
 lMb
@@ -153335,14 +153409,14 @@ aaa
 gFP
 aoO
 lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+qjZ
+bFT
+bFQ
+bFN
+bFL
+bFI
+aJn
+qjZ
 lMb
 lMb
 lMb
@@ -153438,14 +153512,14 @@ aaa
 gFP
 aoO
 lMb
+qjZ
 lMb
 lMb
 lMb
 lMb
 lMb
-lMb
-lMb
-lMb
+bxQ
+qjZ
 lMb
 lMb
 lMb
@@ -153541,14 +153615,14 @@ aaa
 gFP
 riT
 lMb
+qjZ
 lMb
 lMb
 lMb
 lMb
 lMb
-lMb
-lMb
-lMb
+bFG
+qjZ
 lMb
 lMb
 lMb
@@ -153644,14 +153718,14 @@ aaa
 gFP
 aoO
 lMb
+qjZ
 lMb
 lMb
 lMb
 lMb
 lMb
-lMb
-lMb
-lMb
+bFH
+qjZ
 lMb
 lMb
 lMb
@@ -153747,14 +153821,14 @@ aaa
 gFP
 aoO
 lMb
+qjZ
 lMb
 lMb
 lMb
 lMb
 lMb
 lMb
-lMb
-lMb
+qjZ
 lMb
 lMb
 lMb
@@ -153850,14 +153924,14 @@ aaa
 gFP
 vVI
 lMb
+qjZ
+bFU
+bFS
+bFO
+bFM
+bFK
 lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
-lMb
+qjZ
 lMb
 lMb
 lMb
@@ -153953,14 +154027,14 @@ aaa
 gFP
 aoQ
 wgf
-ane
-qbD
-ane
-wgf
-ane
-qbD
-ane
-wgf
+qjZ
+qjZ
+qjZ
+qjZ
+qjZ
+qjZ
+qjZ
+qjZ
 ane
 qbD
 ane
@@ -154056,14 +154130,14 @@ aaa
 gFP
 gFP
 gFP
-gFP
-gFP
-gFP
-gFP
-gFP
-gFP
-gFP
-gFP
+ane
+qbD
+ane
+wgf
+ane
+qbD
+ane
+wgf
 gFP
 gFP
 gFP
@@ -154159,14 +154233,14 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+aKQ
+aKQ
+aKQ
+aKQ
+aKQ
+aKQ
+aKQ
+aKQ
 aaa
 aaa
 aaa

@@ -74,6 +74,22 @@
 		else
 			icon_state = "intercom"
 
+/obj/item/device/radio/intercom/south
+	dir = SOUTH
+	pixel_y = -24
+
+/obj/item/device/radio/intercom/north
+	dir = NORTH
+	pixel_y = 30
+
+/obj/item/device/radio/intercom/west
+	dir = WEST
+	pixel_x = -30
+
+/obj/item/device/radio/intercom/east
+	dir = EAST
+	pixel_x = 30
+
 /obj/item/device/radio/intercom/alamo
 	name = "dropship alamo intercom"
 	frequency = DS1_FREQ

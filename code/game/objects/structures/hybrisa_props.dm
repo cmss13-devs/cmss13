@@ -738,6 +738,9 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
+/obj/structure/prop/hybrisa/supermart/rack
+	health = 100
+
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty
 	name = "shelf"
 	desc = "A long empty shelf."
@@ -858,7 +861,7 @@
 	desc = "A rack filled with Souto cans of various flavors."
 	icon_state = "souto_rack"
 	density = TRUE
-	health = 15
+	health = 75
 
 /obj/structure/prop/hybrisa/supermart/souto_can_stack
 	name = "stacked souto cans"
@@ -866,7 +869,7 @@
 	desc = "A large stack of 'Souto-Classic' cans."
 	icon_state = "souto_can_stack"
 	density = TRUE
-	health = 15
+	health = 75
 
 // Furniture
 

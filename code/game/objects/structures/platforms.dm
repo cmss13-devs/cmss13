@@ -115,7 +115,7 @@
 		to_chat(user, SPAN_WARNING("Its already destroyed!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(stat & explo_proof)
+	if(explo_proof)
 		to_chat(user, SPAN_WARNING("Its too strong for us!"))
 		return XENO_NO_DELAY_ACTION
 

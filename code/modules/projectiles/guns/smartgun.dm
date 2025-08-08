@@ -3,16 +3,16 @@
 
 //Come get some.
 /obj/item/weapon/gun/smartgun
-	name = "\improper M56B smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	name = "\improper M56A2 smartgun"
+	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "m56"
 	item_state = "m56"
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/machineguns.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/machineguns.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/machineguns_righthand.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smartguns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/smartguns.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smartguns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/smartguns_righthand.dmi'
 	)
 	mouse_pointer = 'icons/effects/mouse_pointer/smartgun_mouse.dmi'
 
@@ -20,6 +20,12 @@
 	fire_rattle = "gun_smartgun_rattle"
 	reload_sound = 'sound/weapons/handling/gun_sg_reload.ogg'
 	unload_sound = 'sound/weapons/handling/gun_sg_unload.ogg'
+
+	//Onmob is huge there
+	worn_x_dimension = 64
+	inhand_x_dimension = 64
+	hud_offset = -8
+	pixel_x = -8
 
 	current_mag = /obj/item/ammo_magazine/smartgun
 	flags_equip_slot = NO_FLAGS
@@ -76,6 +82,12 @@
 	var/frontline_enabled = FALSE //Begin with Frontline mode off.
 	/// Whether we are using AP ammo currently
 	var/secondary_toggled = FALSE
+	/// If the gun should have custom overlay for cover depending on whether it has a drum or not
+	var/drum_cover_overlay = TRUE
+	/// If the gun has switchable ammo types
+	var/can_change_ammo = TRUE
+	/// If the gun has a cover that should be opened in order to reload
+	var/has_cover = TRUE
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
 	var/auto_fire = 0
@@ -101,6 +113,9 @@
 	muzzle_flash = "muzzle_flash_blue"
 	muzzle_flash_color = COLOR_MUZZLE_BLUE
 	. = ..()
+	if(has_cover)
+		desc += SPAN_INFO("\nAlt-click it to open the feed cover and allow for reloading.")
+	desc += SPAN_INFO("\nYou may toggle firing restrictions by using a special action.")
 	AddComponent(/datum/component/iff_fire_prevention)
 	update_icon()
 
@@ -165,14 +180,15 @@
 		if(user.get_active_hand() && user.get_inactive_hand())
 			to_chat(user, SPAN_WARNING("You can't do that with your hands full!"))
 			return TRUE
-		if(!cover_open)
-			playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You open \the [src]'s feed cover, allowing the drum to be removed."))
-			cover_open = TRUE
-		else
-			playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
-			to_chat(user, SPAN_NOTICE("You close \the [src]'s feed cover."))
-			cover_open = FALSE
+		if(has_cover)
+			if(!cover_open)
+				playsound(src.loc, 'sound/handling/smartgun_open.ogg', 50, TRUE, 3)
+				to_chat(user, SPAN_NOTICE("You open \the [src]'s feed cover, allowing the drum to be removed."))
+				cover_open = TRUE
+			else
+				playsound(src.loc, 'sound/handling/smartgun_close.ogg', 50, TRUE, 3)
+				to_chat(user, SPAN_NOTICE("You close \the [src]'s feed cover."))
+				cover_open = FALSE
 		update_icon()
 		return TRUE
 	else
@@ -194,13 +210,13 @@
 	return ..()
 
 /obj/item/weapon/gun/smartgun/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
-	if(!cover_open)
+	if(!cover_open && has_cover)
 		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't put a new drum in! (alt-click to open it)"))
 		return
 	. = ..()
 
 /obj/item/weapon/gun/smartgun/unload(mob/user, reload_override, drop_override, loc_override)
-	if(!cover_open)
+	if(!cover_open && has_cover)
 		to_chat(user, SPAN_WARNING("\The [src]'s feed cover is closed! You can't take out the drum! (alt-click to open it)"))
 		return
 	. = ..()
@@ -210,10 +226,15 @@
 
 /obj/item/weapon/gun/smartgun/update_icon()
 	. = ..()
-	if(cover_open)
-		overlays += "+[base_gun_icon]_cover_open"
+	if(!has_cover)
+		return //No cover, no overlay.
+	if(!cover_open)
+		if(current_mag && drum_cover_overlay)
+			overlays += "+[base_gun_icon]_cover_closed_a"
+		else
+			overlays += "+[base_gun_icon]_cover_closed"
 	else
-		overlays += "+[base_gun_icon]_cover_closed"
+		overlays += "+[base_gun_icon]_cover_open"
 
 //---ability actions--\\
 
@@ -411,7 +432,8 @@
 /obj/item/weapon/gun/smartgun/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
 		return
-	toggle_ammo_type(usr)
+	if(can_change_ammo)
+		toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	secondary_toggled = !secondary_toggled
@@ -662,7 +684,7 @@
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co
 	name = "\improper M56C 'Cavalier' smartgun"
-	desc = "The actual firearm in the 4-piece M56C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56B.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 4-piece M56C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.\nAlt-click it to open the feed cover and allow for reloading."
 	icon_state = "m56c"
 	item_state = "m56c"
 	var/mob/living/carbon/human/linked_human
@@ -756,29 +778,55 @@
 	SIGNAL_HANDLER
 	linked_human = null
 
-/obj/item/weapon/gun/smartgun/dirty
-	name = "\improper M56D 'Dirty' smartgun"
-	desc = "The actual firearm in the 4-piece M56D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+//TERMINATOR SMARTGUN
+/obj/item/weapon/gun/smartgun/terminator
+	name = "\improper M50R 'Terminator' smartgun"
+	desc = "The actual experimental firearm in the 4-piece M50R Smartgun System. Essentially a heavy, mobile machinegun. This one looks slightly outdated, but far more menacing.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	icon_state = "m50r"
+	item_state = "m50r"
+	can_change_ammo = FALSE //Only one ammo type, no toggling.
+	current_mag = /obj/item/ammo_magazine/smartgun/heap
+	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
+	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_auto_fire,
+		/datum/action/item_action/smartgun/toggle_frontline_mode,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
+
+/obj/item/weapon/gun/smartgun/terminator/low_threat
+	current_mag = /obj/item/ammo_magazine/smartgun
+	ammo_primary_def = /datum/ammo/bullet/smartgun
+
+/obj/item/weapon/gun/smartgun/l56a2
+	name = "\improper L56A2 smartgun"
+	desc = "The actual firearm in the 4-piece L56A2 Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc_lore = "Originally produced for the Three World Empires Royal Marines forces, it mostly ended up in hands of W-Y PMCs and other affiliated forces, with Three World Empire giving preference for other design, that is still produced by W-Y regardless. Compared to more commonly used M56A2, it has improved recoil control, better electronics and advanced tracking software."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/machineguns.dmi'
+	icon_state = "l56d"
+	item_state = "l56d"
+	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	drum_cover_overlay = FALSE
+	has_cover = FALSE
+
+/obj/item/weapon/gun/smartgun/l56a2/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_PMC
+
+/obj/item/weapon/gun/smartgun/l56a2/elite
+	name = "\improper L56A2D 'Dirty' smartgun"
+	desc = "The actual firearm in the 4-piece L56A2D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc_lore = "Essentially a reuse of a proof of concept originally made as M57D, utilizing depleted uranium rounds, this one reuses same ideas on a basis of a more robust L56A2 smartgun."
 	current_mag = /obj/item/ammo_magazine/smartgun/dirty
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
-	ammo_primary //Toggled ammo type
-	ammo_secondary //Toggled ammo type
 	ammo_primary_def = /datum/ammo/bullet/smartgun/dirty
 	ammo_secondary_def = /datum/ammo/bullet/smartgun/dirty/armor_piercing
 	ammo_primary_alt = /datum/ammo/bullet/smartgun/dirty/alt
 	ammo_secondary_alt = /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
-	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
-/obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_PMC
-
-//TERMINATOR SMARTGUN
-/obj/item/weapon/gun/smartgun/dirty/elite
-	name = "\improper M56T 'Terminator' smartgun"
-	desc = "The actual firearm in the 4-piece M56T Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
-
-/obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
+/obj/item/weapon/gun/smartgun/l56a2/elite/set_gun_config_values()
 	..()
 	set_burst_amount(BURST_AMOUNT_TIER_3)
 	set_burst_delay(FIRE_DELAY_TIER_SMG)
@@ -792,13 +840,123 @@
 
 // CLF SMARTGUN
 
+#define CLF_SMARTGUN_UNJAM_CHANCE 20
+
 /obj/item/weapon/gun/smartgun/clf
-	name = "\improper M56B 'Freedom' smartgun"
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. Essentially a heavy, mobile machinegun. This one has the CLF logo carved over the manufacturing stamp.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	name = "\improper scavenged M56 'Freedom' smartgun"
+	desc = "A smartgun abomination made from salvaged-parts sloppily wired and welded together, it appears to be rusted across it's frame. As whoever made this thing, clearly had no resources or proper tools to assemble it to an efficient usable state."
+	desc_lore = {"After long-fiery battles that partook within the Neroid Sector of the frontier, the United States Colonial Marines were pushed out by Colonial Liberation Front cells. Through a set of tactics, utilizing guerilla warfare mostly based around hit-and runs to compensate for the lack of proper logistics.
+
+		On it's aftermath gear unrecovered was left on the way, which the front proceeded to use to their own advantage. Taking what they could from the corpses of the infantry left behind to cover their needs, the mechanisms and electronics from the M56A2's were extracted from the broken-down exemplarys. Then placed into a makeshift frame although primitive and rudimentary due to no detailed schematics or resources at hand. Then issued out as  a desperate measure of giving an equal fire-support weapon to it's troops.
+
+		After studys done on this frankenstein of a weapon by the USCM, it reportedly was using parts from the slightly outdated M56, mainly it's barrel to outfit it, as  an unintentioned flaw it jams constantly requiring extensive  and frequent maintenance making it almost unreliable. The M57 and L56A2 were also scrapped for spare-parts to put it together, as the rarity of parts themselves was a prominent fabrication issue for the insurgency cells."}
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
+	icon_state = "m56f"
+	item_state = "m56f"
+	random_spawn_chance = 100
+	random_cosmetic_chance = 100
+	current_mag = /obj/item/ammo_magazine/smartgun/rusty
+	random_spawn_cosmetic = list(
+		/obj/item/attachable/cosmetic/clf_flag,
+		/obj/item/attachable/cosmetic/clf_rags,
+		/obj/item/attachable/cosmetic/clf_sling,
+	)
+	var/jammed = FALSE
 
 /obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_CLF
+
+/obj/item/weapon/gun/smartgun/clf/set_gun_config_values()
+	..()
+	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_1 //Rusty, salvaged and worn, what did you expect?
+
+/obj/item/weapon/gun/smartgun/clf/update_icon()
+	. = ..()
+	if(locate(/obj/item/attachable/cosmetic/clf_flag) in src)
+		item_state = "m56f_flag"
+		item_state_slots[WEAR_J_STORE] ="m56f_flag"
+		item_state_slots[WEAR_BACK] ="m56f_flag"
+	else if(locate(/obj/item/attachable/cosmetic/clf_rags) in src)
+		item_state = "m56f_rags"
+		item_state_slots[WEAR_J_STORE] ="m56f_rags"
+		item_state_slots[WEAR_BACK] ="m56f_rags"
+	else if(locate(/obj/item/attachable/cosmetic/clf_sling) in src)
+		item_state = "m56f_sling"
+		item_state_slots[WEAR_J_STORE] ="m56f_sling"
+		item_state_slots[WEAR_BACK] ="m56f_sling"
+	else
+		item_state = "m56f"
+		item_state_slots[WEAR_J_STORE] ="m56f"
+		item_state_slots[WEAR_BACK] ="m56f"
+
+/obj/item/weapon/gun/smartgun/clf/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14, "cosmetic_x" = 16, "cosmetic_y" = 16)
+
+/obj/item/weapon/gun/smartgun/clf/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	if(jammed)
+		if(world.time % 3)
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
+			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
+			balloon_alert(user, "*jammed*")
+		return NONE
+	else if(prob(0.4)) //0.4% chance to jam on fire
+		jammed = TRUE
+		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
+		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*jammed*")
+		return NONE
+	else if(prob(0.8)) //0.8% chance to malfunction on fire
+		switch(rand(1, 7))
+			if(1)
+				toggle_accuracy_improvement(user)
+			if(2)
+				toggle_auto_fire(user)
+			if(3)
+				toggle_frontline_mode(user)
+			if(4)
+				toggle_motion_detector(user)
+			if(5)
+				toggle_recoil_compensation(user)
+			if(6)
+				toggle_ammo_type(user)
+			if(7)
+				toggle_lethal_mode(user)
+		to_chat(user, SPAN_HIGHDANGER("The [src] electronics malfunctions!"))
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(5, 3, src)
+		sparks.start()
+		playsound(src, pick('sound/machines/resource_node/node_marine_die_2.ogg', 'sound/machines/resource_node/node_marine_die.ogg'), 50, FALSE)
+	else
+		return ..()
+
+/obj/item/weapon/gun/smartgun/clf/unique_action(mob/user)
+	if(jammed)
+		if(prob(CLF_SMARTGUN_UNJAM_CHANCE))
+			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
+			jammed = FALSE
+			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			balloon_alert(user, "*unjammed!*")
+		else
+			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
+			playsound(src, "gun_jam_rack", 50, FALSE)
+			balloon_alert(user, "*rack*")
+		return
+	. = ..()
+
+/obj/item/weapon/gun/smartgun/clf/plain
+	name = "\improper scavenged M56 smartgun"
+	random_spawn_chance = 0
+	random_cosmetic_chance = 0
+
+/obj/item/weapon/gun/smartgun/clf/no_flag
+	random_spawn_cosmetic = list(
+		/obj/item/attachable/cosmetic/clf_rags,
+		/obj/item/attachable/cosmetic/clf_sling,
+	)
+
+#undef CLF_SMARTGUN_UNJAM_CHANCE
 
 /obj/item/weapon/gun/smartgun/admin
 	requires_power = FALSE
@@ -835,8 +993,9 @@
 	. += SPAN_NOTICE("The power indicator reads [power_cell.charge] charge out of [power_cell.maxcharge] total.")
 
 /obj/item/weapon/gun/smartgun/rmc
-	name = "\improper L56A2 smartgun"
-	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This Variant is used by the Three World Empires Royal Marines Commando units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	name = "\improper L56A1 smartgun"
+	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This variant is used by the Three World Empires Royal Marines Commando units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc_lore = "The L56A1 is a W-Y licensed copy of the original M56 developed for the USMC, this version was marketed to the 3WE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time."
 	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
 	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
 	ammo_primary_def = /datum/ammo/bullet/smartgun/holo_target
@@ -845,18 +1004,32 @@
 	ammo_secondary_alt = /datum/ammo/bullet/smartgun/holo_target/ap/alt
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
-	icon_state = "magsg"
-	item_state = "magsg"
+	icon_state = "la56"
+	item_state = "la56"
 
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_TWE
 
+/obj/item/weapon/gun/smartgun/upp
+	name = "\improper RFVS37 smartgun"
+	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc_lore = "Seeing the successful use of the M56 and L56 by the UA and 3WE Militaries during military conflicts such as the linna 349 campaign and the the australia wars, the UPP SOF saw a need for a similar self aiming LMG for their own units, following extensive trials the NORCOMM RFVS-37 was chosen, fulfilling all of the SOF's criteria."
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
+	icon_state = "rfvs37"
+	item_state = "rfvs37"
+	current_mag = /obj/item/ammo_magazine/smartgun/upp
+	mouse_pointer = 'icons/effects/mouse_pointer/upp_smartgun_mouse.dmi'
+
+/obj/item/weapon/gun/smartgun/upp/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_UPP
 
 //  Solar devils SG, frontline mode only
 
 /obj/item/weapon/gun/smartgun/pve
-	desc = "The actual firearm in the 4-piece M56B Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,

@@ -45,6 +45,9 @@
 /obj/item/clothing/shoes/marine/jungle/knife
 	spawn_item_type = /obj/item/attachable/bayonet
 
+/obj/item/clothing/shoes/marine/jungle/pistol
+	spawn_item_type = /obj/item/weapon/gun/pistol/action
+
 /obj/item/clothing/shoes/marine/brown
 	icon_state = "marine_brown"
 	desc = "Standard issue combat boots for combat scenarios or combat situations. All combat, all the time. These are brown."

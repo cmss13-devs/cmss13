@@ -205,6 +205,12 @@
 	vision_flags = SEE_TURFS|SEE_MOBS
 	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/m56_goggles/far_sight)
 
+/obj/item/clothing/glasses/night/m56_goggles/upp
+	name = "\improper RADIO head rig"
+	desc = "Developed for use with the RFVS-37, the Integrated Auto-Rifleman Optronic Device enables the riflemen of the UPP SOF to visually search for targets in low-visibility conditions, while also enabling safe use of the weapon itself."
+	icon_state = "radio_head_rig"
+	deactive_state = "radio_head_rig_0"
+
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"
 	gender = NEUTER

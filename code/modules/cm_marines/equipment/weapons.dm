@@ -1,7 +1,7 @@
 
 /obj/item/storage/box/m56_system
 	name = "\improper M56 smartgun system case"
-	desc = "A large case containing an M56B Smartgun, M56 combat harness, head mounted sight and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing an M56A2 Smartgun, M56 combat harness, head mounted sight and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	w_class = SIZE_HUGE
@@ -71,7 +71,7 @@
 /obj/item/storage/box/m56_dirty_system/Initialize()
 	. = ..()
 	new /obj/item/clothing/glasses/night/m56_goggles(src)
-	new /obj/item/weapon/gun/smartgun/dirty(src)
+	new /obj/item/weapon/gun/smartgun/l56a2(src)
 	new /obj/item/smartgun_battery(src)
 	new /obj/item/clothing/suit/storage/marine/smartgunner/veteran/pmc(src)
 	new /obj/item/clothing/head/helmet/marine/veteran/pmc/enclosed(src)

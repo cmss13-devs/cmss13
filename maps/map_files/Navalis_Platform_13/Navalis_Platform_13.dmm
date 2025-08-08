@@ -965,10 +965,6 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/ind_ext)
-"acG" = (
-/obj/structure/machinery/power/apc,
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/navalis/outdoors/landing_zone_2/under)
 "acH" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_12"
@@ -1133,7 +1129,6 @@
 /obj/structure/machinery/door_control{
 	pixel_y = 28;
 	id = "vesselsecond";
-	explo_proof = 1;
 	name = "Lower Vehicle Access";
 	use_power = 0;
 	needs_power = 0;
@@ -3508,7 +3503,6 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/residential/starboard)
 "ajf" = (
@@ -4325,24 +4319,16 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /turf/open_space,
 /area/navalis/indoors/industrial/refinery)
-"alf" = (
-/obj/structure/stairs/multiz/down,
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/landing_zone_2)
 "alg" = (
 /obj/structure/pipes/standard/simple/visible/purple{
 	dir = 5
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/log_ext)
-"alh" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/landing_zone_2/under)
+"ali" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/turf/open/floor/prison/ramptop/north,
+/area/navalis/outdoors/landing_zone_2)
 "alj" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -4378,26 +4364,6 @@
 	},
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/mining)
-"alk" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/obj/effect/stairs/up,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/charon/below_deck/rear)
-"all" = (
-/obj/structure/stairs/multiz/up{
-	dir = 4
-	},
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101;
-	light_color = "#680b62";
-	needs_power = 0
-	},
-/obj/effect/stairs/up,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/xeno_growth/residential)
 "alm" = (
 /obj/structure/flora/tree/dead{
 	pixel_y = 5;
@@ -4443,13 +4409,6 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/rear_deck)
-"alu" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/obj/effect/stairs/up,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/charon/below_deck/front)
 "alv" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -4469,13 +4428,6 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1/east,
 /turf/open/floor/plating/catwalk/grate/net,
 /area/navalis/outdoors/exterior/com_ext)
-"alz" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/obj/effect/stairs/up,
-/turf/open/floor/prison/ramptop,
-/area/navalis/outdoors/landing_zone_2)
 "alA" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /obj/structure/prop/hybrisa/misc/floorprops/grate4,
@@ -4505,11 +4457,6 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/rear_deck)
-"alD" = (
-/obj/structure/stairs/multiz/up,
-/obj/effect/stairs/up,
-/turf/open/floor/prison/ramptop/north,
-/area/navalis/outdoors/landing_zone_2)
 "alE" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	dir = 8;
@@ -4566,13 +4513,6 @@
 	},
 /turf/open_space,
 /area/navalis/indoors/charon/surface_deck/main_deck)
-"alM" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/charon/surface_deck/rear_deck)
 "alN" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /obj/item/lightstick/red/planted{
@@ -4624,13 +4564,6 @@
 /obj/structure/platform/metal/kutjevo_smooth/east,
 /turf/open_space,
 /area/navalis/oob/empty_space)
-"alV" = (
-/obj/structure/stairs/multiz/up{
-	dir = 4
-	},
-/obj/effect/stairs/up,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/residential/accessway)
 "alW" = (
 /turf/open/floor/prison/darkbrowncorners2,
 /area/navalis/outdoors/landing_zone_2)
@@ -4665,6 +4598,12 @@
 "amb" = (
 /turf/open/floor/plating/plating_catwalk/aicore/white,
 /area/navalis/indoors/charon/surface_deck/main_deck)
+"amc" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "amd" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 4
@@ -5105,13 +5044,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/navalis/indoors/industrial/refinery)
-"anr" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/xeno_growth/residential)
 "ans" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -5928,11 +5860,6 @@
 /obj/structure/pipes/standard/simple/hidden/dark,
 /turf/open/floor/corsat/brown,
 /area/navalis/indoors/industrial/mining)
-"aqy" = (
-/obj/structure/stairs/multiz/down,
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/med_sci/upper_level/sci_ent)
 "aqz" = (
 /turf/open/floor/prison/whitered/west,
 /area/navalis/indoors/med_sci/main_floor)
@@ -6254,24 +6181,10 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
-"arU" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/residential/cafeteria)
 "arV" = (
 /obj/effect/alien/resin/sticky,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/kitchen)
-"arW" = (
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/residential/cafeteria)
 "arX" = (
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/com_ext)
@@ -8235,14 +8148,6 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5/east,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only/lz1)
-"ayF" = (
-/obj/effect/stairs/up,
-/turf/open/floor/corsat/squares,
-/area/navalis/indoors/industrial/power)
-"ayG" = (
-/obj/effect/stairs/up,
-/turf/open/floor/corsat/squares,
-/area/navalis/indoors/industrial/refinery)
 "ayH" = (
 /obj/structure/monorail{
 	dir = 8;
@@ -8308,30 +8213,13 @@
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/landing_zone_2)
 "ayO" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = 9;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/half_plate/dark_yellow/west,
 /area/navalis/outdoors/landing_zone_2/under)
-"ayP" = (
-/obj/effect/stairs/down,
-/turf/open_space,
-/area/navalis/indoors/industrial/power)
 "ayQ" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open/floor/plating/catwalk/grate/lattice,
 /area/navalis/outdoors/exterior_xeno_only)
-"ayR" = (
-/obj/effect/stairs/down,
-/turf/open_space,
-/area/navalis/indoors/industrial/refinery)
-"ayS" = (
-/obj/effect/stairs/down,
-/turf/open_space,
-/area/navalis/indoors/industrial/mining)
 "ayT" = (
 /obj/structure/monorail{
 	dir = 5;
@@ -8594,7 +8482,6 @@
 	id = "testr";
 	pixel_x = 30;
 	pixel_y = 34;
-	explo_proof = 1;
 	name = "Sector C: External Access Lockdown";
 	use_power = 0;
 	light_power = 2;
@@ -8847,12 +8734,24 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/refinery)
+"aAk" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aAl" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 10
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/refinery)
+"aAm" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 1
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aAn" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 8
@@ -9279,6 +9178,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/logistic/primary_storage)
+"aBu" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aBv" = (
 /obj/structure/platform/stone/strata/north,
 /obj/structure/platform/stone/strata/east,
@@ -9294,6 +9199,12 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/oob/empty_space)
+"aBx" = (
+/obj/structure/machinery/landinglight/ds2/delayone{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aBy" = (
 /obj/structure/prop/structure_lattice{
 	dir = 4;
@@ -9328,6 +9239,12 @@
 	},
 /turf/open_space,
 /area/navalis/oob/empty_space)
+"aBz" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aBA" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5,
 /obj/structure/platform/metal/hybrisa/metalplatform5/west,
@@ -10126,11 +10043,6 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/navalis/indoors/command/aft_hallway)
-"aDv" = (
-/obj/structure/stairs/multiz/up,
-/obj/effect/stairs/up,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/ice_cavern)
 "aDw" = (
 /obj/item/device/analyzer{
 	pixel_x = 2;
@@ -10311,6 +10223,12 @@
 	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/navalis/indoors/command/aft_hallway)
+"aDT" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aDU" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8";
@@ -10347,10 +10265,6 @@
 	},
 /turf/open/auto_turf/hybrisa_auto_turf/layer1,
 /area/navalis/indoors/ice_cavern)
-"aEa" = (
-/obj/structure/machinery/camera/autoname/lz_camera,
-/turf/open/floor/plating,
-/area/navalis/outdoors/landing_zone_2)
 "aEb" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate3,
 /obj/structure/platform/metal/hybrisa/metalplatform5/north,
@@ -10751,12 +10665,6 @@
 	},
 /turf/open/floor/plating/catwalk/grate,
 /area/navalis/outdoors/exterior/med_ext)
-"aFl" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "aFm" = (
 /obj/structure/platform/stone/strata/north,
 /obj/structure/platform/stone/strata/east,
@@ -10991,6 +10899,12 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/starboard)
+"aFN" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aFO" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
@@ -11429,7 +11343,6 @@
 	},
 /obj/structure/machinery/door_control/navalis_digsite_nw_lockdown{
 	id = "dig_lockdown";
-	explo_proof = 1;
 	name = "Sector D: External Access Lockdown";
 	light_color = "#FFEFD2";
 	light_on = 1;
@@ -11484,6 +11397,12 @@
 /obj/structure/platform/stone/strata/west,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/far)
+"aHd" = (
+/obj/structure/machinery/landinglight/ds2/delaythree{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aHe" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -11845,6 +11764,12 @@
 "aIi" = (
 /turf/open/floor/hybrisa/tile/darkbrowncorner_bigtile/west,
 /area/navalis/indoors/command/tertiary_comms)
+"aIj" = (
+/obj/structure/machinery/landinglight/ds2{
+	dir = 8
+	},
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aIk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -12734,6 +12659,9 @@
 	},
 /turf/open/floor/prison/whitegreen,
 /area/navalis/indoors/med_sci/chemical_store)
+"aLh" = (
+/turf/open/floor/prison/ramptop/east,
+/area/navalis/outdoors/landing_zone_2)
 "aLi" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/navalis/oob/powered)
@@ -13307,6 +13235,10 @@
 /obj/structure/platform/stone/strata/west,
 /turf/closed/wall/shiva/ice,
 /area/navalis/oob)
+"aMK" = (
+/obj/structure/platform_decoration/metal/almayer/west,
+/turf/open/floor/prison/ramptop/east,
+/area/navalis/outdoors/landing_zone_2)
 "aML" = (
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/corsat/plate,
@@ -13321,6 +13253,9 @@
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/navalis/indoors/charon/below_deck/front)
+"aMN" = (
+/turf/open/floor/half_plate/dark_yellow/east,
+/area/navalis/outdoors/landing_zone_2/under)
 "aMO" = (
 /obj/structure/prop/ice_colony/ice_crystal{
 	name = "deep sea crystal";
@@ -13497,6 +13432,9 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/charon/below_deck/middle)
+"aNo" = (
+/turf/open/floor/half_plate/dark_yellow,
+/area/navalis/outdoors/landing_zone_2/under)
 "aNp" = (
 /obj/structure/platform/stone/strata,
 /obj/structure/blocker/forcefield/all{
@@ -13519,6 +13457,10 @@
 /obj/structure/platform/stone/strata/west,
 /turf/open_space,
 /area/navalis/indoors/ice_cavern)
+"aNt" = (
+/obj/structure/machinery/landinglight/ds2,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aNu" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 6;
@@ -14222,12 +14164,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/navalis/oob)
-"aPw" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "aPx" = (
 /obj/structure/pipes/standard/simple/hidden/dark{
 	dir = 4
@@ -14637,7 +14573,6 @@
 /area/navalis/indoors/industrial/power)
 "aQD" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/stairs/up,
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/industrial/power)
 "aQE" = (
@@ -14843,7 +14778,6 @@
 "aRd" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/stairs/multiz/up,
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "aRe" = (
@@ -15551,82 +15485,13 @@
 /obj/structure/platform/stone/strata/east,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/ice_cavern)
-"aSZ" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "aTa" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/navalis/oob/water/far)
-"aTb" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 4
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTc" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 8
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTd" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 4
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTe" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 8
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTf" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 4
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTg" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 8
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTh" = (
-/turf/open/floor/prison/darkyellowfull2,
-/area/navalis/outdoors/landing_zone_2)
-"aTi" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 4
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTj" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTk" = (
-/obj/structure/machinery/landinglight/ds2,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
-"aTl" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "aTm" = (
 /obj/structure/platform/metal/hybrisa/metalplatform5/east,
 /turf/open_space,
 /area/navalis/oob/empty_space)
-"aTn" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "aTo" = (
 /obj/effect/decal/hybrisa/road/road_edge,
 /obj/effect/decal/hybrisa/road/lines1,
@@ -16063,6 +15928,10 @@
 	},
 /turf/open/floor/prison/whitegreen/southwest,
 /area/navalis/indoors/med_sci/pharmacy)
+"aUu" = (
+/obj/structure/machinery/landinglight/ds2/delaythree,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aUv" = (
 /obj/structure/platform_decoration/stone/strata/north,
 /obj/structure/prop/ice_colony/ice_crystal{
@@ -16639,7 +16508,6 @@
 /area/navalis/indoors/residential/maint_starboard)
 "aWh" = (
 /obj/structure/stairs/multiz/down,
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/industrial/mining)
 "aWi" = (
@@ -16744,6 +16612,10 @@
 "aWD" = (
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/cafeteria)
+"aWE" = (
+/obj/structure/machinery/landinglight/ds2/delaytwo,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "aWF" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/west,
@@ -16846,15 +16718,6 @@
 /obj/structure/platform/stone/strata/east,
 /turf/open_space,
 /area/navalis/indoors/ice_cavern)
-"aXa" = (
-/obj/effect/stairs/up,
-/turf/open/floor/plating/plating_catwalk/prison/dark,
-/area/navalis/indoors/industrial/mining)
-"aXb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/stairs/up,
-/turf/open/floor/plating/plating_catwalk/prison/dark,
-/area/navalis/indoors/industrial/mining)
 "aXc" = (
 /obj/structure/stairs/multiz/up{
 	dir = 1
@@ -16874,11 +16737,6 @@
 /obj/structure/stairs/multiz/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/xeno_growth/residential)
-"aXf" = (
-/obj/structure/stairs/multiz/down,
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/xeno_growth/residential)
 "aXg" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal3";
@@ -16891,13 +16749,6 @@
 "aXh" = (
 /obj/structure/stairs/multiz/down,
 /obj/structure/platform/stone/strata/east,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/xeno_growth/residential)
-"aXi" = (
-/obj/structure/stairs/multiz/up{
-	dir = 4
-	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/xeno_growth/residential)
 "aXj" = (
@@ -16959,13 +16810,6 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/navalis/indoors/command/upper_deck/naval_traffic_control)
-"aXr" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/charon/surface_deck/forecastle_deck)
 "aXs" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 8
@@ -17043,13 +16887,6 @@
 /obj/structure/machinery/light,
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/residential/maint_starboard)
-"aXF" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/industrial/mining)
 "aXG" = (
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/prison/floor_plate,
@@ -18374,13 +18211,6 @@
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/navalis/indoors/charon/upper_deck/rear)
-"bcc" = (
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/residential/access)
 "bcd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -18420,15 +18250,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/navalis/indoors/command/upper_deck/starboard)
-"bck" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal5";
-	pixel_x = 9;
-	pixel_y = -9;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "bcl" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
@@ -19939,26 +19760,10 @@
 /obj/structure/window/framed/prison,
 /turf/open/floor/plating,
 /area/navalis/indoors/charon/upper_deck/rear)
-"bha" = (
-/obj/structure/stairs/multiz/down,
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/exterior/com_ext)
-"bhb" = (
-/obj/effect/stairs/down,
-/turf/open/floor/corsat/marked,
-/area/navalis/indoors/charon/upper_deck/rear)
 "bhc" = (
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/ice_cavern)
-"bhd" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/ice_cavern)
 "bhe" = (
@@ -20046,13 +19851,6 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/ice_cavern)
-"bhw" = (
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/ice_cavern)
 "bhx" = (
@@ -20145,13 +19943,6 @@
 /obj/structure/cargo_container/hd/right,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/primary_storage)
-"bhL" = (
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/logistic/primary_storage)
 "bhM" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -20196,6 +19987,15 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/command/maintenance_port)
+"bhV" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
+"bhW" = (
+/obj/structure/machinery/landinglight/ds2/delayone,
+/turf/open/floor/plating/catwalk/rusted,
+/area/navalis/outdoors/landing_zone_2/under)
 "bic" = (
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/northeast,
 /area/navalis/indoors/residential/port)
@@ -20205,11 +20005,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/north,
 /area/navalis/indoors/command/upper_deck/starboard)
-"bix" = (
-/obj/structure/platform/metal/strata/north,
-/obj/structure/platform/metal/strata/east,
-/turf/open_space,
-/area/navalis/outdoors/landing_zone_2/under)
 "biX" = (
 /obj/structure/surface/table{
 	color = "#8B7B5B"
@@ -20923,21 +20718,6 @@
 	},
 /turf/open/floor/darkbrown2,
 /area/navalis/indoors/residential/starboard)
-"bAJ" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 15;
-	pixel_x = -16;
-	color = "#FFFF00"
-	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 15;
-	pixel_x = -23;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "bAK" = (
 /obj/effect/decal/hybrisa/road/lines2{
 	pixel_y = 2
@@ -21451,13 +21231,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/navalis/outdoors/exterior/med_ext/upper)
-"bNX" = (
-/obj/structure/stairs/multiz/up{
-	dir = 4
-	},
-/obj/structure/platform_decoration/metal/almayer/west,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
 "bNZ" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/lines2,
@@ -22262,7 +22035,7 @@
 	pixel_y = 12;
 	pixel_x = 2
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/ramptop/east,
 /area/navalis/outdoors/landing_zone_2)
 "cpq" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate4{
@@ -22563,11 +22336,6 @@
 /obj/structure/machinery/camera/autoname,
 /turf/open/floor/prison/darkbrown3/north,
 /area/navalis/indoors/logistic/upper_deck/walkway)
-"czH" = (
-/obj/structure/stairs,
-/obj/structure/platform/metal/strata/east,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/landing_zone_2/under)
 "czP" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown3/west,
@@ -23905,7 +23673,7 @@
 	pixel_x = -1;
 	color = "#FFFF00"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/ramptop/east,
 /area/navalis/outdoors/landing_zone_2)
 "dpf" = (
 /obj/structure/closet/cabinet,
@@ -24679,8 +24447,7 @@
 	name = "Submarine Dock";
 	pixel_y = 28;
 	pixel_x = -28;
-	req_access = list(213);
-	explo_proof = 1
+	req_access = list(213)
 	},
 /turf/closed/wall/hybrisa/colony/office/reinforced/hull,
 /area/navalis/oob/powered)
@@ -25091,8 +24858,7 @@
 	name = "Submarine Dock";
 	pixel_y = -4;
 	pixel_x = -25;
-	req_access = list(213);
-	explo_proof = 1
+	req_access = list(213)
 	},
 /turf/open/floor/roof_weedable,
 /area/navalis/oob/powered)
@@ -25204,10 +24970,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/logistic/lower_deck/fore)
-"ebb" = (
-/obj/structure/stairs,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/landing_zone_2/under)
 "ebl" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/east,
 /area/navalis/indoors/command/upper_deck/port)
@@ -25713,9 +25475,6 @@
 	},
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/chemical_store)
-"etb" = (
-/turf/open/floor/strata/multi_tiles/southeast,
-/area/navalis/outdoors/landing_zone_2/under)
 "ete" = (
 /turf/open/floor/roof_weedable/outerhull_dir/northwest,
 /area/navalis/outdoors/landing_zone_2)
@@ -25741,7 +25500,6 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/residential/landing_pad)
 "etT" = (
@@ -26310,7 +26068,6 @@
 	dir = 1
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/command/lower_deck/starboard)
 "eJn" = (
@@ -26354,12 +26111,6 @@
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/east,
 /area/navalis/indoors/residential/starboard)
-"eKb" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
-/obj/structure/stairs/multiz/down,
-/obj/effect/stairs/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "eKs" = (
 /obj/item/paper/crumpled{
 	pixel_x = -6;
@@ -26649,7 +26400,6 @@
 "eRW" = (
 /obj/structure/machinery/door_control/navalis_comms_lockdown{
 	pixel_y = 32;
-	explo_proof = 1;
 	needs_power = 0;
 	id = "sector_two";
 	name = "Sector B: Vehicle Entrance Lockdown"
@@ -27768,7 +27518,6 @@
 /area/navalis/indoors/logistic/upper_deck/entrance)
 "fwM" = (
 /obj/structure/stairs/multiz/up,
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/outdoors/landing_zone_2/under)
 "fwS" = (
@@ -28285,11 +28034,6 @@
 /obj/structure/platform/metal/strata/north,
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/command/aft_hallway)
-"fKE" = (
-/obj/structure/machinery/landinglight/ds2,
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "fKO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating_striped/west,
@@ -28479,18 +28223,8 @@
 	color = "#FFFF00"
 	},
 /obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/ramptop,
 /area/navalis/outdoors/landing_zone_2)
-"fPx" = (
-/obj/effect/decal/hybrisa/road/road_stop{
-	dir = 4;
-	icon_state = "stop_decal5";
-	pixel_x = 3;
-	color = "#FFFF00";
-	pixel_y = -1
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "fPN" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -28754,12 +28488,6 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_starboard)
-"fVx" = (
-/obj/effect/decal/cleanable/blood/oil,
-/obj/structure/machinery/landinglight/ds2/delayone,
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "fVy" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -29049,7 +28777,6 @@
 	pixel_y = 10
 	},
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/command/maintenance_port)
 "geS" = (
@@ -29091,11 +28818,6 @@
 	},
 /turf/open/floor/corsat,
 /area/navalis/indoors/med_sci/maintenance_starboard)
-"ggb" = (
-/obj/structure/platform_decoration/metal/almayer/north,
-/obj/structure/platform_decoration/metal/almayer,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
 "gge" = (
 /obj/structure/machinery/door/poddoor{
 	explo_proof = 1;
@@ -29483,7 +29205,6 @@
 	dir = 4
 	},
 /obj/effect/decal/hybrisa/road/road_edge,
-/obj/effect/stairs/up,
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/main_deck)
 "gta" = (
@@ -30105,12 +29826,8 @@
 /turf/open/floor/almayer/plating_striped/east,
 /area/navalis/indoors/med_sci/lower_level/starboard)
 "gKa" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = -16;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/obj/structure/machinery/camera/autoname/lz_camera,
+/turf/open/floor/plating,
 /area/navalis/outdoors/landing_zone_2/under)
 "gKi" = (
 /obj/effect/decal/cleanable/dirt,
@@ -30644,9 +30361,6 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/floor_plate,
 /area/navalis/indoors/command/office)
-"gZB" = (
-/turf/open/floor/strata/multi_tiles/southwest,
-/area/navalis/outdoors/landing_zone_2/under)
 "haK" = (
 /obj/effect/decal/cleanable/generic,
 /obj/structure/pipes/standard/simple/hidden/cyan,
@@ -30688,7 +30402,6 @@
 	pixel_x = 12
 	},
 /obj/structure/machinery/door_control/navalis_lockdown{
-	explo_proof = 1;
 	needs_power = 0;
 	id = "industriallockdown";
 	name = "Industrial Rig - Lockdown";
@@ -30713,7 +30426,6 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/med_sci/corridor)
 "hcY" = (
@@ -30778,11 +30490,6 @@
 "hfr" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/navalis/oob/water)
-"hfz" = (
-/obj/structure/platform/metal/strata/north,
-/obj/structure/platform/metal/strata/west,
-/turf/open_space,
-/area/navalis/outdoors/landing_zone_2/under)
 "hfH" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/north,
 /area/navalis/indoors/residential/cafeteria)
@@ -31039,14 +30746,6 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/carpet/carpetreddeco,
 /area/navalis/indoors/command/director_office)
-"hmw" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 15;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "hmB" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/plate,
@@ -31418,7 +31117,6 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/command/upper_deck/port)
 "hxc" = (
@@ -31436,13 +31134,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/southeast,
 /area/navalis/indoors/command/meeting_hall)
-"hxm" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/obj/structure/platform_decoration/metal/almayer/west,
-/turf/open/floor/prison/ramptop,
-/area/navalis/outdoors/landing_zone_2)
 "hxv" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/effect/landmark/objective_landmark/science,
@@ -31685,7 +31376,8 @@
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/oob/powered)
 "hGn" = (
-/turf/closed/wall/hybrisa/colony/engineering,
+/obj/effect/sentry_landmark/lz_2/bottom_left,
+/turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2/under)
 "hGp" = (
 /obj/structure/surface/table/almayer,
@@ -31799,7 +31491,7 @@
 /area/navalis/indoors/med_sci/maintenance_port)
 "hKH" = (
 /obj/structure/platform_decoration/metal,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/prison/ramptop/east,
 /area/navalis/outdoors/landing_zone_2)
 "hLj" = (
 /obj/structure/bed/chair/comfy/black{
@@ -32016,15 +31708,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/lower_deck/port)
-"hRJ" = (
-/obj/effect/decal/hybrisa/road/road_stop{
-	dir = 8;
-	icon_state = "stop_decal5";
-	pixel_x = -3;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "hRK" = (
 /obj/structure/monorail{
 	dir = 6;
@@ -32814,17 +32497,7 @@
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/logistic/lower_deck/maint_store)
 "irQ" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = -16;
-	color = "#FFFF00"
-	},
-/obj/effect/decal/hybrisa/road/road_stop{
-	icon_state = "stop_decal5";
-	pixel_y = -3;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/plating,
 /area/navalis/outdoors/landing_zone_2/under)
 "isi" = (
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -33018,14 +32691,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/navalis/indoors/med_sci/upper_level/morgue)
-"ixD" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/obj/structure/platform_decoration/metal/almayer/north,
-/obj/effect/stairs/up,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
 "iyp" = (
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_x = 31
@@ -33074,11 +32739,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/command/lower_deck/port)
-"izw" = (
-/obj/structure/stairs/multiz/down,
-/obj/effect/stairs/down,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/landing_zone_2/under)
 "izA" = (
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/starboard)
@@ -33526,15 +33186,6 @@
 	},
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/outdoors/landing_zone_2/under)
-"iPJ" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 15;
-	pixel_x = -30;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "iPM" = (
 /obj/structure/machinery/floodlight/landing{
 	desc = "A powerful light stationed near construction zones to provide better visibility.";
@@ -33699,7 +33350,7 @@
 /area/navalis/indoors/residential/port)
 "iUg" = (
 /obj/structure/platform_decoration/metal/almayer,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/prison/ramptop/east,
 /area/navalis/outdoors/landing_zone_2)
 "iUh" = (
 /obj/structure/bed/hybrisa/dingy,
@@ -34575,9 +34226,6 @@
 	},
 /turf/open/floor/corsat/box,
 /area/navalis/indoors/logistic/lower_deck/fore)
-"juA" = (
-/turf/open/floor/half_plate/dark_yellow/north,
-/area/navalis/outdoors/landing_zone_2)
 "juB" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -34636,9 +34284,6 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/navalis/indoors/command/command_kitchen)
-"jyc" = (
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "jyk" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_13";
@@ -35580,15 +35225,6 @@
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_port)
-"kbb" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 1
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "kbd" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -35795,15 +35431,6 @@
 	},
 /turf/open/floor/prison/blue/north,
 /area/navalis/indoors/med_sci/lower_level/records)
-"kie" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 1
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "kim" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
@@ -35987,7 +35614,6 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/obj/effect/stairs/down,
 /turf/open/floor/prison,
 /area/navalis/indoors/logistic/upper_deck/entrance)
 "knd" = (
@@ -36163,19 +35789,6 @@
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/navalis/indoors/logistic/upper_deck/walkway)
-"ksD" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = 9;
-	color = "#FFFF00"
-	},
-/obj/effect/decal/hybrisa/road/road_stop{
-	icon_state = "stop_decal5";
-	pixel_y = 22;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "ksM" = (
 /obj/structure/platform/metal/strata,
 /obj/structure/platform/metal/strata/east,
@@ -36551,11 +36164,6 @@
 	},
 /turf/open/floor/hybrisa/wood,
 /area/navalis/indoors/residential/accessway)
-"kDb" = (
-/obj/structure/platform_decoration/metal,
-/obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
 "kDB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/cyan{
@@ -36606,15 +36214,6 @@
 	},
 /turf/open/floor/prison/whitegreen/east,
 /area/navalis/indoors/med_sci/corridor)
-"kEm" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal6";
-	pixel_x = -10;
-	pixel_y = -9;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "kEy" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 4
@@ -36936,7 +36535,6 @@
 /turf/open/floor/prison/sterile_white,
 /area/navalis/indoors/med_sci/foyer)
 "kNG" = (
-/obj/structure/stairs/multiz/up,
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/landing_zone_2)
@@ -36987,10 +36585,10 @@
 /turf/open/floor/prison/whitegreen/west,
 /area/navalis/indoors/med_sci/surg_two)
 "kPb" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 1
 	},
-/turf/open/floor/corsat/marked,
+/turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2/under)
 "kPv" = (
 /obj/structure/blocker/forcefield/all{
@@ -37023,7 +36621,6 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/logistic/mech_bay)
 "kQW" = (
@@ -37675,15 +37272,6 @@
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/indoors/command/lower_deck/sub_pen)
-"llH" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 8
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "llU" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "solarpanel1"
@@ -38030,7 +37618,6 @@
 /area/navalis/indoors/command/cent_com)
 "lvD" = (
 /obj/structure/machinery/door_control/navalis_industrial_lockdown{
-	explo_proof = 1;
 	needs_power = 0;
 	name = "Sector C: Internal Access Lockdown";
 	id = "sector_three";
@@ -38266,11 +37853,6 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/logistic/lower_deck/fore)
-"lBL" = (
-/obj/structure/stairs/multiz/up,
-/obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/prison/ramptop/north,
-/area/navalis/outdoors/landing_zone_2)
 "lBM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow4";
@@ -38930,9 +38512,6 @@
 	},
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_port)
-"lXO" = (
-/turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
-/area/navalis/outdoors/landing_zone_2/under)
 "lXX" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/emails{
@@ -39097,7 +38676,6 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/outdoors/landing_zone_1/under)
 "mdC" = (
@@ -39839,8 +39417,10 @@
 /turf/open/floor/plating/kutjevo,
 /area/navalis/outdoors/landing_zone_1)
 "mCL" = (
-/obj/structure/platform/metal/strata/north,
-/turf/open_space,
+/obj/docking_port/stationary/marine_dropship/lz2{
+	name = "LZ2: Engineering Landing Zone"
+	},
+/turf/open/floor/prison/darkyellowfull2,
 /area/navalis/outdoors/landing_zone_2/under)
 "mDn" = (
 /turf/open/floor/prison/greenblue/west,
@@ -40005,12 +39585,7 @@
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/command/lower_deck/starboard)
 "mHP" = (
-/obj/effect/decal/hybrisa/road/road_stop{
-	icon_state = "stop_decal5";
-	pixel_y = 22;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/half_plate/dark_yellow/north,
 /area/navalis/outdoors/landing_zone_2/under)
 "mHT" = (
 /turf/closed/wall/hybrisa/colony/hospital,
@@ -40342,9 +39917,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/outdoors/exterior/com_ext/upper)
-"mSw" = (
-/turf/open/floor/plating,
-/area/navalis/outdoors/landing_zone_2)
 "mSE" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/east,
 /obj/structure/platform/metal/hybrisa/metalplatform1,
@@ -40443,11 +40015,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison/darkpurplefull2,
 /area/navalis/indoors/command/upper_deck/server)
-"mWi" = (
-/obj/structure/stairs,
-/obj/structure/platform/metal/strata/west,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/landing_zone_2/under)
 "mWG" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 1
@@ -40633,7 +40200,7 @@
 /turf/open/floor/prison/darkbrown3/east,
 /area/navalis/indoors/command/lower_deck/port)
 "neL" = (
-/turf/open/floor/kutjevo/grey,
+/turf/open/floor/prison/darkyellowfull2,
 /area/navalis/outdoors/landing_zone_2/under)
 "nfK" = (
 /obj/structure/surface/table/woodentable/fancy,
@@ -40647,7 +40214,6 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/outdoors/landing_zone_2/under)
 "nfU" = (
@@ -40851,16 +40417,6 @@
 	},
 /turf/open/floor/freezerfloor,
 /area/navalis/indoors/residential/kitchen)
-"nmp" = (
-/obj/structure/machinery/landinglight/ds2/delaythree{
-	dir = 1
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "nmr" = (
 /obj/structure/largecrate/supply/explosives/grenades,
 /turf/open/floor/roof_weedable,
@@ -41146,7 +40702,6 @@
 	dir = 4
 	},
 /obj/structure/stairs/multiz/up,
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/industrial/mining)
 "num" = (
@@ -41310,11 +40865,8 @@
 	color = "#FFFF00"
 	},
 /obj/structure/platform_decoration/metal/almayer,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/ramptop,
 /area/navalis/outdoors/landing_zone_2)
-"nzE" = (
-/turf/closed/wall/hybrisa/colony/engineering/reinforced,
-/area/navalis/outdoors/landing_zone_2/under)
 "nzU" = (
 /turf/closed/wall/hybrisa/colony/office/reinforced,
 /area/navalis/indoors/command/upper_deck/port)
@@ -41927,7 +41479,6 @@
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/command/aft_hallway)
 "nTP" = (
@@ -42101,7 +41652,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/residential/cafeteria)
 "nYx" = (
@@ -42413,7 +41963,7 @@
 	pixel_y = 15;
 	color = "#FFFF00"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/ramptop/east,
 /area/navalis/outdoors/landing_zone_2)
 "ojb" = (
 /obj/structure/bed/chair/comfy/beige{
@@ -43421,13 +42971,6 @@
 	},
 /turf/open/floor/prison/blue_plate/north,
 /area/navalis/indoors/command/upper_deck/naval_traffic_control)
-"oOz" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/obj/structure/platform_decoration/metal/almayer/east,
-/turf/open/floor/prison/ramptop,
-/area/navalis/outdoors/landing_zone_2)
 "oOE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -44143,16 +43686,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform4/west,
 /turf/open/floor/prison/blue/north,
 /area/navalis/outdoors/landing_zone_1)
-"pjR" = (
-/obj/structure/machinery/landinglight/ds2{
-	dir = 8
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 8
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "pjT" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "2-4"
@@ -44486,8 +44019,6 @@
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/navalis/indoors/command/upper_deck/port)
 "psc" = (
-/obj/structure/stairs/multiz/up,
-/obj/effect/stairs/up,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/landing_zone_2)
 "psl" = (
@@ -44985,11 +44516,6 @@
 /obj/effect/decal/hybrisa/road/lines2,
 /turf/open/hybrisa/street/asphalt,
 /area/navalis/indoors/command/lower_deck/starboard)
-"pHs" = (
-/obj/structure/stairs/multiz/up,
-/obj/structure/platform_decoration/metal,
-/turf/open/floor/prison/ramptop/north,
-/area/navalis/outdoors/landing_zone_2)
 "pHJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -46017,9 +45543,6 @@
 /obj/structure/platform_decoration/metal/strata/west,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water/mid)
-"qho" = (
-/turf/open/floor/half_plate/dark_yellow/west,
-/area/navalis/outdoors/landing_zone_2)
 "qhR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -46060,9 +45583,6 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/escapepod/east,
 /area/navalis/oob/powered)
-"qiV" = (
-/turf/open/floor/half_plate/dark_yellow/east,
-/area/navalis/outdoors/landing_zone_2)
 "qja" = (
 /obj/structure/platform/metal/kutjevo_smooth/north{
 	layer = 2.9
@@ -46233,19 +45753,6 @@
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/hybrisa/tile/green_bigtile/northwest,
 /area/navalis/indoors/command/tertiary_comms)
-"qoi" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = 9;
-	color = "#FFFF00"
-	},
-/obj/effect/decal/hybrisa/road/road_stop{
-	icon_state = "stop_decal5";
-	pixel_y = -3;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "qor" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -46308,9 +45815,6 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco1,
 /turf/open/gm/river/no_overlay/ocean,
 /area/navalis/oob/water)
-"qpt" = (
-/turf/open/floor/half_plate/dark_yellow,
-/area/navalis/outdoors/landing_zone_2)
 "qqp" = (
 /obj/structure/machinery/light{
 	invisibility = 101;
@@ -46792,21 +46296,6 @@
 /obj/effect/hybrisa/misc/fake/pipes/pipe1,
 /turf/open/floor/corsat,
 /area/navalis/indoors/command/maintenance_port)
-"qDY" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 15;
-	pixel_x = -42;
-	color = "#FFFF00"
-	},
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal7";
-	pixel_y = 10;
-	pixel_x = -10;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "qEC" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/stairs/multiz/up{
@@ -46814,12 +46303,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/residential/starboard)
-"qEG" = (
-/obj/docking_port/stationary/marine_dropship/lz2{
-	name = "LZ2: Engineering Landing Zone"
-	},
-/turf/open/floor/prison/darkyellowfull2,
-/area/navalis/outdoors/landing_zone_2)
 "qEJ" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal12";
@@ -46865,7 +46348,6 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/outdoors/landing_zone_1)
 "qGf" = (
@@ -46955,13 +46437,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_starboard)
-"qJd" = (
-/obj/structure/stairs/multiz/up{
-	dir = 8
-	},
-/obj/structure/platform_decoration/metal/almayer/east,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
 "qJn" = (
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/starboard)
@@ -47225,7 +46700,6 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/logistic/upper_deck/workshop)
 "qQI" = (
@@ -47412,15 +46886,6 @@
 	},
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/main_deck)
-"qXp" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal8";
-	pixel_x = 9;
-	pixel_y = 10;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "qXw" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
 	pixel_y = 42;
@@ -48055,10 +47520,6 @@
 "rnI" = (
 /turf/open/floor/prison/blue,
 /area/navalis/indoors/med_sci/upper_level/morgue)
-"rnM" = (
-/obj/structure/stairs,
-/turf/open/floor/almayer_hull,
-/area/navalis/indoors/landing_zone_2)
 "rof" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -48654,7 +48115,6 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/med_sci/upper_level/entrance)
 "rGy" = (
@@ -48671,11 +48131,6 @@
 "rHA" = (
 /turf/open/floor/darkblue2/east,
 /area/navalis/indoors/residential/accessway)
-"rHC" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "rHP" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/corsat/plate,
@@ -48814,7 +48269,6 @@
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/mining)
 "rMI" = (
-/obj/structure/stairs/multiz/up,
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/landing_zone_2)
@@ -49688,7 +49142,7 @@
 	pixel_y = -9;
 	color = "#FFFF00"
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/ramptop/east,
 /area/navalis/outdoors/landing_zone_2)
 "soG" = (
 /obj/effect/decal/warning_stripes{
@@ -49718,8 +49172,10 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/navalis/indoors/logistic/upper_deck/walkway)
 "spn" = (
-/obj/structure/window/framed/hybrisa/colony/engineering,
-/turf/open/floor/plating,
+/obj/structure/machinery/landinglight/ds2/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/plating/catwalk/rusted,
 /area/navalis/outdoors/landing_zone_2/under)
 "spt" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -50337,14 +49793,6 @@
 	},
 /turf/open/floor/hybrisa/carpet/pink,
 /area/navalis/indoors/residential/accessway)
-"sIi" = (
-/obj/effect/decal/hybrisa/road/road_stop{
-	icon_state = "stop_decal5";
-	pixel_y = -3;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "sIn" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -50515,12 +49963,6 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/navalis/indoors/residential/cafeteria)
-"sKY" = (
-/obj/structure/stairs/multiz/up{
-	dir = 1
-	},
-/turf/open/floor/prison/ramptop,
-/area/navalis/outdoors/landing_zone_2)
 "sLj" = (
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/prison/blue/west,
@@ -51263,7 +50705,6 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/effect/stairs/down,
 /turf/open/floor/almayer_hull,
 /area/navalis/outdoors/landing_zone_1)
 "tdM" = (
@@ -51465,15 +50906,6 @@
 /obj/effect/landmark/crap_item,
 /turf/open/floor/prison/whitegreen/southeast,
 /area/navalis/indoors/med_sci/chemical_store)
-"tjn" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 1
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 1
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "tjz" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4;
@@ -51806,7 +51238,6 @@
 /obj/structure/machinery/door_control/navalis_command_lockdown{
 	pixel_x = 30;
 	pixel_y = -23;
-	explo_proof = 1;
 	id = "comacc";
 	name = "Command-Logistic Bridge Access";
 	light_on = 1;
@@ -52729,16 +52160,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
-"tWS" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo{
-	dir = 4
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/obj/effect/stairs/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "tXj" = (
 /obj/structure/platform/metal/almayer/east{
 	pixel_x = 4
@@ -53811,9 +53232,6 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/navalis/indoors/logistic/lower_deck/fuel)
-"uCz" = (
-/turf/open/floor/kutjevo/grey/plate,
-/area/navalis/outdoors/landing_zone_2/under)
 "uCE" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/tiretrack{
@@ -54267,7 +53685,7 @@
 	color = "#FFFF00"
 	},
 /obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/ramptop,
 /area/navalis/outdoors/landing_zone_2)
 "uNg" = (
 /obj/effect/decal/cleanable/dirt,
@@ -54366,19 +53784,6 @@
 	},
 /turf/open/floor/prison/darkbrown3/east,
 /area/navalis/indoors/command/lower_deck/starboard)
-"uPv" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal2";
-	pixel_x = -16;
-	color = "#FFFF00"
-	},
-/obj/effect/decal/hybrisa/road/road_stop{
-	icon_state = "stop_decal5";
-	pixel_y = 22;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "uPU" = (
 /obj/item/stack/rods{
 	amount = 25
@@ -54795,11 +54200,6 @@
 	},
 /turf/open/floor/hybrisa/tile/darkbrown_bigtile/southeast,
 /area/navalis/indoors/residential/starboard)
-"veg" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
-/obj/structure/stairs/multiz/down,
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "vej" = (
 /obj/structure/barricade/handrail/strata/navalis,
 /turf/open/floor/plating/catwalk/rusted,
@@ -55208,15 +54608,6 @@
 	},
 /turf/open/floor/almayer_hull,
 /area/navalis/indoors/logistic/upper_deck/workshop)
-"vtq" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = -9;
-	pixel_x = -1;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "vtz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/extinguisher_cabinet{
@@ -55494,7 +54885,7 @@
 	color = "#FFFF00"
 	},
 /obj/structure/platform_decoration/metal/almayer,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/prison/ramptop,
 /area/navalis/outdoors/landing_zone_2)
 "vyK" = (
 /obj/effect/decal/cleanable/dirt,
@@ -56334,23 +55725,9 @@
 	},
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/outdoors/landing_zone_2)
-"vZa" = (
-/obj/structure/stairs/multiz/down,
-/obj/structure/platform/metal/strata/west,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/landing_zone_2/under)
 "vZe" = (
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/navalis/outdoors/landing_zone_2/under)
-"vZk" = (
-/obj/structure/machinery/landinglight/ds2/delayone{
-	dir = 4
-	},
-/obj/structure/stairs/multiz/down{
-	dir = 4
-	},
-/turf/open/floor/plating/catwalk/rusted,
-/area/navalis/outdoors/landing_zone_2)
 "vZl" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /turf/open_space,
@@ -56363,15 +55740,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/xeno_growth/residential)
-"vZA" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 15;
-	pixel_x = -23;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "vZG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating2/east,
@@ -56404,10 +55772,6 @@
 "waE" = (
 /turf/open/floor/prison/cell_stripe/east,
 /area/navalis/indoors/med_sci/upper_level/sci_ent)
-"waP" = (
-/obj/structure/stairs/multiz/up,
-/turf/open/floor/prison/ramptop/north,
-/area/navalis/outdoors/landing_zone_2)
 "waU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/hybrisa/tile/greencorner_bigtile,
@@ -56577,9 +55941,6 @@
 	},
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/indoors/med_sci/foyer)
-"wfi" = (
-/turf/open/floor/strata/multi_tiles/west,
-/area/navalis/outdoors/landing_zone_2/under)
 "wfq" = (
 /obj/structure/barricade/handrail/strata/navalis{
 	dir = 1
@@ -56805,7 +56166,6 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/structure/machinery/door_control/navalis_charon_lockdown{
-	explo_proof = 1;
 	use_power = 0;
 	name = "PSV Charon - Vehicle Accessway";
 	id = "vessellockdown";
@@ -57119,11 +56479,6 @@
 "wuS" = (
 /obj/effect/acid_hole{
 	explo_proof = 1
-	},
-/turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "79";
-	opacity = 0;
-	name = "\improper Submersile Door"
 	},
 /area/navalis/oob/water)
 "wuT" = (
@@ -57795,8 +57150,7 @@
 	name = "Submarine Dock";
 	pixel_y = 28;
 	pixel_x = -23;
-	req_access = list(213);
-	explo_proof = 1
+	req_access = list(213)
 	},
 /turf/open/floor/plating/catwalk/grate/alt,
 /area/navalis/indoors/command/lower_deck/sub_pen)
@@ -58051,9 +57405,6 @@
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/plating,
 /area/navalis/indoors/med_sci/maintenance_port)
-"wXC" = (
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "wXG" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -58171,14 +57522,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/floor/prison/greenfull/east,
 /area/navalis/indoors/charon/surface_deck/rear_deck)
-"xaU" = (
-/obj/structure/stairs/multiz/up{
-	dir = 4
-	},
-/obj/structure/platform_decoration/metal,
-/obj/effect/stairs/up,
-/turf/open/floor/almayer/blackfull/west,
-/area/navalis/outdoors/landing_zone_2)
 "xbb" = (
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	pixel_x = -4
@@ -58998,7 +58341,7 @@
 /area/navalis/indoors/command/maintenance_starboard)
 "xzj" = (
 /obj/structure/platform_decoration/metal/almayer/west,
-/turf/open/floor/almayer/blackfull/west,
+/turf/open/floor/prison/ramptop/north,
 /area/navalis/outdoors/landing_zone_2)
 "xzB" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -59070,11 +58413,6 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/almayer/greenfull2,
 /area/navalis/indoors/residential/landing_pad)
-"xAz" = (
-/obj/structure/stairs/multiz/down,
-/obj/structure/platform/metal/strata/east,
-/turf/open/floor/almayer_hull,
-/area/navalis/outdoors/landing_zone_2/under)
 "xAK" = (
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco5,
 /turf/open/floor/plating/catwalk/grate/lattice,
@@ -59601,8 +58939,7 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/navalis/indoors/command/upper_deck/starboard)
 "xNB" = (
-/obj/effect/sentry_landmark/lz_2/bottom_left,
-/turf/open/floor/plating/catwalk/rusted,
+/turf/open/space/basic,
 /area/navalis/outdoors/landing_zone_2)
 "xOp" = (
 /obj/effect/decal/hybrisa/road/road_edge,
@@ -59640,7 +58977,6 @@
 /obj/structure/stairs{
 	dir = 1
 	},
-/obj/effect/stairs/up,
 /turf/open/floor/corsat/officetiles,
 /area/navalis/indoors/logistic/primary_storage)
 "xPy" = (
@@ -59892,10 +59228,6 @@
 	},
 /turf/open/floor/prison/green/east,
 /area/navalis/indoors/command/port_hallway)
-"xXV" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/turf/open/floor/corsat/marked,
-/area/navalis/outdoors/landing_zone_2/under)
 "xXW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -60110,15 +59442,6 @@
 /obj/structure/cargo_container/trijent/left,
 /turf/open/floor/plating,
 /area/navalis/indoors/charon/surface_deck/main_deck)
-"yfT" = (
-/obj/effect/decal/hybrisa/road/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = 15;
-	pixel_x = -16;
-	color = "#FFFF00"
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/navalis/outdoors/landing_zone_2/under)
 "yfU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -82310,13 +81633,13 @@ gGc
 aMq
 azG
 bhc
-bhd
+bhc
 bhc
 bhc
 adz
 bhc
 bhc
-bhd
+bhc
 bhc
 hCk
 hCk
@@ -85452,7 +84775,7 @@ aAf
 aAf
 aAf
 azL
-aDv
+aoD
 asq
 gGc
 gGc
@@ -116706,7 +116029,7 @@ ryK
 jVy
 jVy
 iFS
-rnM
+psc
 kNG
 aAp
 uoF
@@ -116865,12 +116188,12 @@ aAE
 aAE
 aAE
 aAE
-alf
+emS
 fBh
 lHA
 lHA
 hlm
-rnM
+psc
 psc
 aAp
 acK
@@ -117034,7 +116357,7 @@ tEA
 jSU
 jSU
 iSP
-rnM
+psc
 rMI
 aAp
 vUv
@@ -117180,7 +116503,7 @@ lvZ
 lvZ
 aMv
 aMv
-alh
+sSD
 aAE
 aQh
 aQh
@@ -118074,7 +117397,7 @@ aAf
 azL
 azL
 azL
-aDv
+aoD
 azG
 crn
 kVD
@@ -119222,7 +118545,7 @@ aAf
 azL
 azL
 azL
-aDv
+aoD
 azG
 crn
 alU
@@ -122819,13 +122142,13 @@ tAt
 aVM
 azG
 bhv
-bhw
 bhv
 bhv
 bhv
 bhv
 bhv
-bhw
+bhv
+bhv
 bhv
 azG
 azG
@@ -123000,7 +122323,7 @@ mkl
 iwF
 aNf
 hCk
-alu
+wsA
 tcG
 bYh
 nGT
@@ -123033,7 +122356,7 @@ dXo
 cOW
 aNj
 hCk
-alk
+qxz
 aNG
 aNG
 bvN
@@ -125817,7 +125140,7 @@ asq
 asq
 dVb
 rmZ
-all
+rmZ
 usd
 asq
 ari
@@ -155370,7 +154693,7 @@ aDd
 acs
 rPK
 wyn
-bhL
+bhM
 okw
 okw
 okw
@@ -156389,20 +155712,20 @@ omM
 omM
 omM
 omM
-xzj
-tnV
-tnV
+aMK
+aLh
+aLh
 hKH
 omM
-bNX
-xaU
 omM
 omM
 omM
 omM
-xzj
-tnV
-tnV
+omM
+omM
+aMK
+aLh
+aLh
 iUg
 omM
 omM
@@ -156549,28 +155872,28 @@ aUq
 iGR
 aAP
 aWu
-hGn
-hGn
-hGn
-hGn
+aMv
+aBu
 spn
-xXV
-xXV
+aFN
+aBz
+aBu
 spn
-hGn
-hGn
-hGn
-hGn
-hGn
-hGn
-hGn
+aFN
+aBz
+aBu
 spn
-xXV
-xXV
+aFN
+aBz
+aBu
 spn
-hGn
-hGn
-hGn
+aFN
+aBz
+aBu
+spn
+aFN
+aBz
+aBu
 hGn
 tCs
 tnV
@@ -156713,30 +156036,30 @@ jNQ
 jNQ
 jNQ
 uMR
-kPb
-uPv
+aNt
+irQ
 gKa
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
 gKa
-gKa
-hRJ
-hRJ
-gKa
-gKa
-gKa
-gKa
-gKa
-gKa
-gKa
-gKa
-gKa
-hRJ
-hRJ
-gKa
-gKa
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
 gKa
 irQ
 kPb
-bJz
+ali
 tnV
 aAt
 fgB
@@ -156877,30 +156200,30 @@ kIp
 kIp
 kIp
 nzh
-kPb
-ksD
+aUu
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+mHP
+neL
+neL
+neL
+neL
+neL
+neL
+neL
 ayO
-ayO
-ayO
-qXp
-bck
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-qXp
-wXC
-wXC
-wXC
-wXC
-sIi
-kPb
-tnV
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+amc
+xge
 tnV
 aAt
 fgB
@@ -157040,30 +156363,30 @@ unv
 aUq
 iGR
 tnV
-kDb
-spn
+aWu
+aWE
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+neL
+irQ
+mHP
+neL
+aMN
+irQ
+mHP
 neL
 neL
-neL
-neL
-wXC
-vtq
-neL
-neL
-neL
-neL
-neL
-neL
-neL
-neL
-neL
-hmw
-bck
-ayO
-ayO
-ayO
-qoi
-kPb
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+aAk
 xzj
 tnV
 aAt
@@ -157204,31 +156527,31 @@ tAt
 aUq
 eSs
 tnV
-lBL
-hGn
-uCz
-uCz
-uCz
+aWu
+bhV
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
 neL
-vZA
-vtq
+mHP
 neL
-uCz
-gZB
-nzE
-wfi
-wfi
-wfi
-gZB
+aMN
+irQ
+mHP
 neL
-yfT
-vtq
+aMN
 neL
-neL
-neL
-neL
-hGn
-oOz
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+aAm
+tCs
 tnV
 aAt
 fgB
@@ -157368,31 +156691,31 @@ tnY
 aUq
 eSs
 tnV
-waP
-hGn
-uCz
-uCz
-uCz
+aWu
+aNt
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
 neL
-bAJ
-vtq
 neL
-uCz
-etb
-lXO
-hfz
-vZa
-mWi
-uPv
-gKa
-qDY
-vtq
+aMN
+irQ
+mHP
 neL
-uCz
-uCz
-uCz
-hGn
-sKY
+aMN
+irQ
+neL
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+kPb
+tCs
 tnV
 aAt
 fgB
@@ -157532,31 +156855,31 @@ tnY
 aUq
 eSs
 tnV
-alD
-hGn
-uCz
-uCz
-uCz
+aWu
+aUu
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
 neL
-yfT
-vtq
-neL
-uCz
-acG
-lXO
-mCL
-izw
-ebb
+aMN
+irQ
 mHP
-wXC
-wXC
-vtq
+mCL
+aMN
+irQ
+mHP
 neL
-uCz
-uCz
-uCz
-hGn
-alz
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+amc
+tCs
 tnV
 aAt
 fgB
@@ -157696,31 +157019,31 @@ tnY
 aUq
 eSs
 tnV
-waP
-hGn
-uCz
-uCz
-uCz
+aWu
+aWE
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
 neL
-yfT
-vtq
+irQ
+mHP
 neL
-uCz
-etb
-lXO
-bix
-xAz
-czH
-ksD
-ayO
-qXp
-vtq
+aMN
+irQ
+mHP
 neL
-uCz
-uCz
-uCz
-hGn
-sKY
+neL
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+aAk
+tCs
 tnV
 aAt
 fgB
@@ -157860,31 +157183,31 @@ tAt
 aUq
 eSs
 tnV
-pHs
-hGn
-uCz
-uCz
-uCz
+aWu
+bhW
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
 neL
-yfT
-vtq
+mHP
 neL
-uCz
-gZB
-nzE
-wfi
-wfi
-wfi
-gZB
+aMN
+irQ
+mHP
 neL
-wXC
-vtq
+aMN
 neL
-neL
-neL
-neL
-hGn
-hxm
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+aAm
+tCs
 tnV
 aAt
 fgB
@@ -158024,31 +157347,31 @@ unv
 aUq
 iGR
 tnV
-ggb
-spn
+aWu
+aNt
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
 neL
 neL
+aMN
+irQ
+mHP
 neL
+aMN
+irQ
 neL
-yfT
-vtq
-neL
-neL
-neL
-neL
-neL
-neL
-neL
-neL
-neL
-iPJ
-kEm
-gKa
-gKa
-gKa
+irQ
+irQ
+irQ
+irQ
+irQ
 irQ
 kPb
-bJz
+ali
 tnV
 aAt
 fgB
@@ -158189,30 +157512,30 @@ jNQ
 jNQ
 jNQ
 fOG
-kPb
-uPv
-gKa
-gKa
-gKa
-qDY
-kEm
-gKa
-gKa
-gKa
-gKa
-gKa
-gKa
-gKa
-gKa
-gKa
-qDY
-wXC
-wXC
-wXC
-wXC
-sIi
-kPb
-tnV
+aUu
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+aNo
+neL
+neL
+neL
+neL
+neL
+neL
+neL
+aMN
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+amc
+xge
 tnV
 aAt
 fgB
@@ -158353,29 +157676,29 @@ kIp
 kIp
 kIp
 vyJ
-kPb
-ksD
-ayO
-ayO
-ayO
-fPx
-fPx
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-ayO
-fPx
-fPx
-ayO
-ayO
-ayO
-qoi
-kPb
+aWE
+irQ
+gKa
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+gKa
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+irQ
+gKa
+irQ
+aAk
 xzj
 tnV
 aAt
@@ -158517,29 +157840,29 @@ aUq
 iGR
 dYA
 uNM
-hGn
-hGn
-hGn
-hGn
-spn
-xXV
-xXV
-spn
-hGn
-hGn
-hGn
-hGn
-hGn
-hGn
-hGn
-spn
-xXV
-xXV
-spn
-hGn
-hGn
-hGn
-hGn
+aMv
+aBx
+aIj
+aHd
+aDT
+aBx
+aIj
+aHd
+aDT
+aBx
+aIj
+aHd
+aDT
+aBx
+aIj
+aHd
+aDT
+aBx
+aIj
+aHd
+aDT
+aBx
+aMv
 tCs
 tnV
 aAt
@@ -158690,8 +158013,8 @@ coK
 soB
 bUA
 lwl
-qJd
-ixD
+lwl
+lwl
 lwl
 lwl
 lwl
@@ -158748,7 +158071,7 @@ aMS
 aMS
 aMS
 aMS
-bha
+aUU
 arX
 arX
 arX
@@ -159896,7 +159219,7 @@ aMS
 aMS
 aMS
 aMS
-bha
+aUU
 arX
 arX
 arX
@@ -162647,7 +161970,7 @@ qLV
 afC
 cyG
 qLp
-ayF
+mJI
 qfy
 dmH
 aac
@@ -163672,7 +162995,7 @@ amg
 amy
 amy
 amv
-aXr
+eQZ
 dwn
 tat
 mCt
@@ -163705,7 +163028,7 @@ hjX
 hjX
 hjX
 aXw
-alM
+alv
 uAA
 hCk
 jwI
@@ -165586,7 +164909,7 @@ anh
 amB
 amA
 amN
-ayG
+amA
 rtA
 tyB
 akO
@@ -166654,7 +165977,7 @@ ari
 arT
 dqw
 oqa
-anr
+oqa
 dxE
 ari
 ari
@@ -166801,7 +166124,7 @@ aMS
 aMS
 aMS
 aTS
-aXf
+aXe
 ari
 ari
 ari
@@ -167333,13 +166656,13 @@ aoo
 aoo
 aDp
 aeJ
-aXb
+apj
 aox
 aov
 aom
 aow
 aox
-aXa
+aox
 cjd
 aor
 aol
@@ -167553,7 +166876,7 @@ vSh
 anl
 aKL
 aAj
-ayG
+amA
 amG
 mJI
 mJI
@@ -168112,7 +167435,7 @@ aJZ
 aeY
 aVW
 aVW
-aXi
+aVW
 aVW
 aVV
 ari
@@ -170920,7 +170243,7 @@ aqZ
 sEF
 sEF
 sEF
-alV
+sEF
 sEF
 sEF
 sEF
@@ -193571,7 +192894,7 @@ qoC
 jsi
 aKi
 ueN
-aqy
+kAP
 mue
 aAV
 xXz
@@ -197222,28 +196545,28 @@ tAt
 tAt
 tAt
 tAt
-jyc
-aTb
-aTi
-aTf
-aTd
-aTb
-aTi
-aTf
-aTd
-vZk
-tWS
-aTf
-aTd
-aTb
-aTi
-aTf
-aTd
-aTb
-aTi
-aTf
-aTd
-aTb
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 xNB
 tAt
 tAt
@@ -197386,29 +196709,29 @@ tAt
 tAt
 tAt
 tAt
-aTk
-mSw
-aEa
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aEa
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aEa
-mSw
-aFl
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -197550,29 +196873,29 @@ tAt
 tAt
 tAt
 tAt
-aTl
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-juA
-aTh
-aTh
-aTh
-aTh
-aTh
-aTh
-aTh
-qho
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aPw
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -197714,29 +197037,29 @@ tAt
 tAt
 tAt
 tAt
-aTn
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aTh
-mSw
-juA
-aTh
-qiV
-mSw
-juA
-aTh
-aTh
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aSZ
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -197878,29 +197201,29 @@ tAt
 tAt
 tAt
 tAt
-fVx
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aTh
-juA
-aTh
-qiV
-mSw
-juA
-aTh
-qiV
-aTh
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-kbb
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -198042,29 +197365,29 @@ tAt
 tAt
 tAt
 tAt
-fKE
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aTh
-aTh
-qiV
-mSw
-juA
-aTh
-qiV
-mSw
-aTh
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-tjn
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -198206,29 +197529,29 @@ tAt
 tAt
 tAt
 tAt
-eKb
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aTh
-qiV
-mSw
-juA
-qEG
-qiV
-mSw
-juA
-aTh
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-nmp
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -198370,29 +197693,29 @@ tAt
 tAt
 tAt
 tAt
-veg
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aTh
-mSw
-juA
-aTh
-qiV
-mSw
-juA
-aTh
-aTh
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-kie
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -198534,29 +197857,29 @@ tAt
 tAt
 tAt
 tAt
-rHC
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aTh
-juA
-aTh
-qiV
-mSw
-juA
-aTh
-qiV
-aTh
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-kbb
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -198698,29 +198021,29 @@ tAt
 tAt
 tAt
 tAt
-aTk
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aTh
-aTh
-qiV
-mSw
-juA
-aTh
-qiV
-mSw
-aTh
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aFl
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -198862,29 +198185,29 @@ tAt
 tAt
 tAt
 tAt
-aTl
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-qpt
-aTh
-aTh
-aTh
-aTh
-aTh
-aTh
-aTh
-qiV
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aPw
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -199026,29 +198349,29 @@ tAt
 tAt
 tAt
 tAt
-aTn
-mSw
-aEa
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aEa
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-mSw
-aEa
-mSw
-aSZ
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -199190,29 +198513,29 @@ tAt
 tAt
 tAt
 tAt
-jyc
-aTc
-aTj
-aTg
-aTe
-aTc
-aTj
-aTg
-aTe
-llH
-pjR
-aTg
-aTe
-aTc
-aTj
-aTg
-aTe
-aTc
-aTj
-aTg
-aTe
-aTc
-jyc
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
+xNB
 tAt
 tAt
 tAt
@@ -203320,7 +202643,7 @@ geS
 geS
 hqv
 qLp
-ayP
+geS
 geS
 bdL
 tAt
@@ -203812,7 +203135,7 @@ geS
 geS
 hqv
 qLp
-ayP
+geS
 geS
 bdL
 tAt
@@ -205500,7 +204823,7 @@ bcN
 bcN
 bcN
 bcM
-bhb
+baN
 bcp
 lyT
 lyT
@@ -205558,7 +204881,7 @@ cmK
 aoz
 aoz
 aoz
-ayS
+aoz
 sWt
 aov
 tOZ
@@ -206095,7 +205418,7 @@ fAt
 fAt
 fAt
 fAt
-ayR
+eEP
 geS
 geS
 geS
@@ -208062,7 +207385,7 @@ xRs
 oGN
 mwR
 fAt
-ayR
+eEP
 amz
 geS
 geS
@@ -208335,12 +207658,12 @@ asq
 aol
 aWd
 aXI
-aXF
 aXI
 aXI
 aXI
 aXI
-aXF
+aXI
+aXI
 aVZ
 aol
 isl
@@ -208949,7 +208272,7 @@ asq
 asq
 aWP
 aWP
-bcc
+aWP
 aWP
 aWP
 asq
@@ -211757,7 +211080,7 @@ akU
 dAk
 dAk
 dAk
-arU
+dAk
 dAk
 dAk
 dAk
@@ -215529,7 +214852,7 @@ fFV
 epZ
 epZ
 wjJ
-arW
+wjJ
 wjJ
 wjJ
 wjJ

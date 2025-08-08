@@ -4297,7 +4297,6 @@
 	pixel_x = 12
 	},
 /obj/structure/machinery/door_control/navalis_lockdown{
-	explo_proof = 1;
 	needs_power = 0;
 	id = "industriallockdown";
 	name = "Industrial Rig - Lockdown";
@@ -8599,6 +8598,11 @@
 "azI" = (
 /turf/closed/wall/shiva/ice,
 /area/navalis/oob/water/far)
+"azJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/navalis/oob/powered)
 "azK" = (
 /turf/open/auto_turf/snow/brown_base/layer0/seabed,
 /area/navalis/indoors/ice_cavern)
@@ -19278,7 +19282,6 @@
 	id = "testr";
 	pixel_x = 30;
 	pixel_y = 34;
-	explo_proof = 1;
 	name = "Sector C: External Access Lockdown";
 	use_power = 0;
 	light_power = 2;
@@ -19675,8 +19678,7 @@
 	name = "Submarine Dock";
 	pixel_y = 28;
 	pixel_x = -28;
-	req_access = list(213);
-	explo_proof = 1
+	req_access = list(213)
 	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/navalis/oob/powered)
@@ -20652,7 +20654,6 @@
 "eRW" = (
 /obj/structure/machinery/door_control/navalis_comms_lockdown{
 	pixel_y = 32;
-	explo_proof = 1;
 	needs_power = 0;
 	id = "sector_two";
 	name = "Sector B: Vehicle Entrance Lockdown"
@@ -21059,7 +21060,6 @@
 	},
 /obj/structure/machinery/door_control/navalis_digsite_nw_lockdown{
 	id = "dig_lockdown";
-	explo_proof = 1;
 	name = "Sector D: External Access Lockdown";
 	light_color = "#FFEFD2";
 	light_on = 1;
@@ -26349,7 +26349,6 @@
 /area/navalis/indoors/command/cent_com)
 "lvD" = (
 /obj/structure/machinery/door_control/navalis_industrial_lockdown{
-	explo_proof = 1;
 	needs_power = 0;
 	name = "Sector C: Internal Access Lockdown";
 	id = "sector_three";
@@ -28291,8 +28290,7 @@
 	name = "Submarine Dock";
 	pixel_y = 28;
 	pixel_x = -23;
-	req_access = list(213);
-	explo_proof = 1
+	req_access = list(213)
 	},
 /obj/structure/sign/safety/stairs{
 	pixel_y = 33;
@@ -36277,7 +36275,6 @@
 	icon_state = "road_edge_decal2"
 	},
 /obj/structure/machinery/door_control/navalis_charon_lockdown{
-	explo_proof = 1;
 	use_power = 0;
 	name = "PSV Charon - Vehicle Accessway";
 	id = "vessellockdown";
@@ -37711,11 +37708,6 @@
 "xGv" = (
 /obj/effect/acid_hole{
 	explo_proof = 1
-	},
-/turf/closed/shuttle/dropship2/WY/StarGlider{
-	icon_state = "79";
-	opacity = 0;
-	name = "\improper Submersile Door"
 	},
 /area/navalis/oob/water)
 "xGN" = (
@@ -40238,7 +40230,7 @@ aMM
 aMD
 aMx
 aMl
-aLW
+azJ
 aLT
 aLW
 ayA
@@ -40402,7 +40394,7 @@ aMD
 aMD
 aMz
 aMj
-aLT
+aLW
 aLT
 aLY
 ayA

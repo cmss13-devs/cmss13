@@ -37,9 +37,9 @@
 
 /datum/research_upgrades/machinery/autodoc/internal_bleed
 	name = "AutoDoc Internal Bleeding Repair"
-	desc = "A data and instruction set for the AutoDoc, making it capable of rapidly fixing internal bleeding."
+	desc = "A data and instruction set for the AutoDoc, making it capable of fixing internal bleeding nearly instantaneously."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 200
+	value_upgrade = 100
 	clearance_req = 1
 
 /datum/research_upgrades/machinery/autodoc/internal_bleed/on_purchase(turf/machine_loc)
@@ -47,9 +47,9 @@
 
 /datum/research_upgrades/machinery/autodoc/broken_bone
 	name = "AutoDoc Bone Fracture Repair"
-	desc = "A data instruction set for the AutoDoc, making it capable of setting fractures and applying bonegel."
+	desc = "A data and instruction set for the AutoDoc, making it capable of setting fractures and applying bonegel."
 	behavior = RESEARCH_UPGRADE_ITEM
-	value_upgrade = 2000
+	value_upgrade = 1500
 	clearance_req = 3
 
 /datum/research_upgrades/machinery/autodoc/broken_bone/on_purchase(turf/machine_loc)
@@ -82,7 +82,7 @@
 	value_upgrade = 500
 	item_reference = /obj/item/research_upgrades/grinderspeed
 	upgrade_type = ITEM_MACHINERY_UPGRADE
-	clearance_req = 1
+	clearance_req = 2
 
 
 /datum/research_upgrades/machinery/sleeper
@@ -101,7 +101,7 @@
 	value_upgrade = 250
 	item_reference = /obj/item/research_upgrades/autoharvest
 	upgrade_type = ITEM_MACHINERY_UPGRADE
-	clearance_req = 1
+	clearance_req = 2
 
 /datum/research_upgrades/item
 	name = "Items"
@@ -130,7 +130,7 @@
 /datum/research_upgrades/item/incision_management
 	name = "Incision Management System"
 	desc = "A true extension of the surgeon's body, this marvel instantly and completely prepares an incision, allowing for the immediate commencement of therapeutic steps."
-	value_upgrade = 2000
+	value_upgrade = 1500
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 	clearance_req = 3
@@ -142,8 +142,8 @@
 	desc = "A set of splints made from durable carbon fiber sheets reinforced with flexible titanium lattice, comes in a stack of five."
 	value_upgrade = 800
 	clearance_req = 3
-	change_purchase = -200
-	minimum_price = 200
+	change_purchase = -100
+	minimum_price = 100
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ACCESSORY_UPGRADE
 
@@ -212,10 +212,10 @@
 	name = "Ceramic Armor Plate"
 	desc = "A strong trauma plate, able to protect the user from a large amount of bullets. Completely useless against sharp objects."
 	value_upgrade = 500
-	clearance_req = 4
+	clearance_req = 2
 	behavior = RESEARCH_UPGRADE_ITEM
 	upgrade_type = ITEM_ARMOR_UPGRADE
-	change_purchase = -50
+	change_purchase = -100
 	minimum_price = 200
 	item_reference = /obj/item/clothing/accessory/health/ceramic_plate
 

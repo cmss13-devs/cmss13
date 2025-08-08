@@ -488,6 +488,12 @@
 	minimap_color = MINIMAP_AREA_MINING
 	requires_power = FALSE
 
+/area/navalis/indoors/clf_shuttle
+	name = "Kutjevo - Unregistered Freighter"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_CELL_MED
+	icon_state = "syndie-ship"
+
 // Medical
 
 /area/navalis/outdoors/exterior/med_ext

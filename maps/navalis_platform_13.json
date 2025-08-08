@@ -62,6 +62,7 @@
         "xeno_hive_delta": 0
     },
     "camouflage": "classic",
+    "nightmare_path": "maps/Nightmare/maps/Navalis_Platform_13/",
 	"gamemodes": [
         "Distress Signal",
         "Hunter Games",

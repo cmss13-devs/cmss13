@@ -321,6 +321,60 @@
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
 	story_text = "You are a doctor fighting for the Colonial Liberation Front. Taking advantage of the chaos after most security forces present in the city were diverted to the lab, your cell launched an assault on the offices nearby, knowing that a company big shot would be present. The raid was a success with minimal losses, but the expected security response never arrived. In fact, the whole city seems to have gone quiet..."
 
+//Navalis CLF survivors//
+
+/obj/effect/landmark/survivor_spawner/clf/navalis
+	intro_text = list("<h2>You are a survivor of a failed raid!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
+	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/operative
+	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
+
+/obj/effect/landmark/survivor_spawner/clf_lead/navalis
+	intro_text = list("<h2>You are a survivor of a failed raid!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
+	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/leader
+	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
+
+
+/obj/effect/landmark/survivor_spawner/clf_engi/navalis
+	intro_text = list("<h2>You are a survivor of a failed raid!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
+	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/tech
+	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
+
+/obj/effect/landmark/survivor_spawner/clf_medic/navalis
+	intro_text = list("<h2>You are a survivor of a failed raid!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
+	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/medic
+	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
+
+/obj/effect/landmark/survivor_spawner/clf_heavy
+	icon_state = "surv_clf"
+	hostile = TRUE
+	intro_text = list("<h2>You are a survivor of a failed raid!</h2>",\
+	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
+	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
+	story_text = "You are a soldier fighting for the Colonial Liberation Front. You were dispatched to this oil rig to raid it for actionable intelligence. However, your team arrived at the worst time, in the middle of a full-scale xenomorph outbreak. You've successfully recovered the intel, however someone, or something, has disabled your escape craft. Trapped on this world, all your team can do is survive the odds until someone comes to investigate."
+	equipment = /datum/equipment_preset/survivor/navalis/clf_wet_ops/spec
+	synth_equipment = /datum/equipment_preset/synth/survivor/clf
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
+	roundstart_damage_min = 3
+	roundstart_damage_max = 10
+	roundstart_damage_times = 2
+	spawn_priority = SPAWN_PRIORITY_HIGH
+
 //Weyland-Yutani Survivors//
 
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl

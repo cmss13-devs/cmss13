@@ -1,0 +1,13 @@
+[
+    {
+        "type": "map_sprinkle",
+        "path": "sprinkles/"
+    },
+    {
+		"type": "map_insert",
+		"landmark": "clfspecforce",
+		"chance": 1.0,
+		"path": "standalone/clfspecforce.dmm",
+		"when": { "lvevent": "clfspecforce" }
+	}
+]

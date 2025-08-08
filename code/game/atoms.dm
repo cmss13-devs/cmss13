@@ -816,3 +816,4 @@ Parameters are passed from New.
 
 ///Adds the debris element for projectile impacts
 /atom/proc/add_debris_element()
+	SHOULD_CALL_PARENT(FALSE)

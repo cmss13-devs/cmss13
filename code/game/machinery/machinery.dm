@@ -136,6 +136,9 @@ Class Procs:
 	if(A)
 		A.add_machine(src) //takes care of adding machine's power usage
 
+/obj/structure/machinery/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /obj/structure/machinery/Destroy()
 	GLOB.machines -= src
 	GLOB.processing_machines -= src

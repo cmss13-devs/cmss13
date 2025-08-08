@@ -25,6 +25,9 @@
 		/obj/structure/girder,
 		/obj/structure/window_frame)
 
+/obj/structure/window_frame/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /obj/structure/window_frame/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

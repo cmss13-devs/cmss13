@@ -25,6 +25,9 @@
 	var/obj/item/reagent_container/glass/beaker = null
 	var/occupant_death_stage = DEATH_STAGE_NONE
 
+/obj/structure/machinery/cryo_cell/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_GLASS, -10, 5)
+
 /obj/structure/machinery/cryo_cell/Initialize()
 	. = ..()
 	start_processing()

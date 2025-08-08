@@ -36,7 +36,22 @@
     "monkey_types": [
         "neaera"
     ],
-    "traits": [{ "Ground": true }],
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Up": 1,
+            "Down": -1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+
+    ],
     "nightmare_path": "maps/Nightmare/maps/BigRed/",
     "xvx_hives": {
         "xeno_hive_alpha": 0,

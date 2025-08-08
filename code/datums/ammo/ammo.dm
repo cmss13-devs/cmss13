@@ -103,6 +103,10 @@
 /datum/ammo/proc/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator) //NOT used on New(), applied to the projectiles.
 	return
 
+///called when bullet is actually fired.
+/datum/ammo/proc/on_bullet_firing(obj/projectile/fired_projectile, atom/bullet_firer, atom/target, atom/gun)
+	return
+
 /// Populate traits_to_give in this proc
 /datum/ammo/proc/set_bullet_traits()
 	return

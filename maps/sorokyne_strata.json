@@ -16,6 +16,9 @@
         "/datum/equipment_preset/survivor/upp_miner",
         "/datum/equipment_preset/survivor/upp_fire_fighter"
     ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "defcon_triggers": [
         3750,
         2600,

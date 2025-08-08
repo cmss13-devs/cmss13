@@ -22,7 +22,9 @@
 	"CO_survivor_types": [
         "/datum/equipment_preset/survivor/new_varadero/commander"
     ],
-
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "defcon_triggers": [
         3300,
         2100,

@@ -224,6 +224,9 @@
 	dir = WEST
 	pixel_x = -21
 
+/obj/structure/machinery/door_control/flat
+	dir = NORTHWEST
+
 /obj/structure/machinery/door_control/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 

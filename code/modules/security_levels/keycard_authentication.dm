@@ -194,6 +194,9 @@ GLOBAL_VAR_INIT(ob_cannon_safety, FALSE)
 	dir = WEST
 	pixel_y = -21
 
+/obj/structure/machinery/keycard_auth/flat
+	dir = NORTHWEST
+
 // Keycard reader at the CORSAT locks
 /obj/structure/machinery/keycard_auth/lockdown
 	name = "automated lockdown override"

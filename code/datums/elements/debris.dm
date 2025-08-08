@@ -12,20 +12,41 @@
 	friction = generator(GEN_NUM, 0.1, 0.15)
 	spin = generator(GEN_NUM, -20, 20)
 
-/particles/impact_smoke
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "smoke"
+/particles/impact_large
+	icon = 'icons/effects/particles/generic_particles.dmi'
+	icon_state = list("impact" = 1, "impact_2" = 1, "impact_3" = 1)
+	color = "#646464"
 	width = 500
 	height = 500
-	count = 20
-	spawning = 20
-	lifespan = 0.7 SECONDS
-	fade = 8 SECONDS
-	grow = 0
-	scale = 0.2
+	count = 3
+	spawning = 3
+	lifespan = 0.4 SECONDS
+	fade = 0.65 SECONDS
+	position = generator(GEN_CIRCLE, 3, 3)
+	scale = 0.75
+	grow = -0.15
+	velocity = list(50, 0)
+	friction = generator(GEN_NUM, 0.65, 0.8, UNIFORM_RAND)
+	rotation = generator(GEN_NUM, -20, 20)
+	drift = generator(GEN_CIRCLE, 8, 8)
 	spin = generator(GEN_NUM, -20, 20)
-	velocity = list(20, 0)
-	friction = generator(GEN_NUM, 0.1, 0.5)
+
+/particles/impact_smoke
+	icon = 'icons/effects/particles/generic_particles.dmi'
+	icon_state = list("smoke" = 1, "smoke_2" = 1)
+	width = 500
+	height = 500
+	count = 5
+	spawning = 5
+	lifespan = 0.4 SECONDS
+	fade = 0.35 SECONDS
+	grow = 0.07
+	drift = generator(GEN_CIRCLE, 5, 5)
+	scale = 0.4
+	position = generator(GEN_CIRCLE, 6, 6)
+	spin = generator(GEN_NUM, -20, 20)
+	velocity = list(50, 0)
+	friction = generator(GEN_NUM, 0.6, 0.4, UNIFORM_RAND)
 
 /datum/element/debris
 	element_flags = ELEMENT_BESPOKE
@@ -60,16 +81,27 @@
 	if(!P.ammo.ping)
 		return
 	var/angle = !isnull(P.angle) ? P.angle : round(Get_Angle(P.starting, source), 1)
+
 	var/x_component = sin(angle) * debris_velocity
 	var/y_component = cos(angle) * debris_velocity
-	var/x_component_smoke = sin(angle) * -15
-	var/y_component_smoke = cos(angle) * -15
+	var/x_component_smoke = sin(angle) * -30
+	var/y_component_smoke = cos(angle) * -30
+	var/x_component_large = sin(angle) * -20
+	var/y_component_large = cos(angle) * -20
+
 	var/obj/effect/abstract/particle_holder/debris_visuals
 	var/obj/effect/abstract/particle_holder/smoke_visuals
+	var/obj/effect/abstract/particle_holder/large_impact_visuals
 	var/position_offset = rand(-6,6)
+
 	smoke_visuals = new(source, /particles/impact_smoke)
 	smoke_visuals.particles.position = list(position_offset, position_offset)
 	smoke_visuals.particles.velocity = list(x_component_smoke, y_component_smoke)
+
+	large_impact_visuals = new(source, /particles/impact_large)
+	large_impact_visuals.particles.position = list(position_offset, position_offset)
+	large_impact_visuals.particles.velocity = list(x_component_large, y_component_large)
+
 	if(debris && !(P.ammo.flags_ammo_behavior & AMMO_ENERGY || P.ammo.flags_ammo_behavior & AMMO_XENO))
 		debris_visuals = new(source, /particles/debris)
 		debris_visuals.particles.position = generator(GEN_CIRCLE, position_offset, position_offset)
@@ -79,12 +111,15 @@
 		debris_visuals.particles.count = debris_amount
 		debris_visuals.particles.spawning = debris_amount
 		debris_visuals.particles.scale = debris_scale
+
 	smoke_visuals.layer = ABOVE_OBJ_LAYER + 0.01
-	addtimer(CALLBACK(src, PROC_REF(remove_smoke), smoke_visuals), 0.2 SECONDS)
+	large_impact_visuals.layer = ABOVE_OBJ_LAYER + 0.02
+	addtimer(CALLBACK(src, PROC_REF(remove_smoke), smoke_visuals, large_impact_visuals), 0.3 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(remove_debris), debris_visuals), 0.4 SECONDS)
 
-/datum/element/debris/proc/remove_smoke(obj/effect/abstract/particle_holder/smoke_visuals)
+/datum/element/debris/proc/remove_smoke(obj/effect/abstract/particle_holder/smoke_visuals, obj/effect/abstract/particle_holder/large_impact_visuals)
 	QDEL_NULL(smoke_visuals)
+	QDEL_NULL(large_impact_visuals)
 
 /datum/element/debris/proc/remove_debris(obj/effect/abstract/particle_holder/debris_visuals)
 	QDEL_NULL(debris_visuals)

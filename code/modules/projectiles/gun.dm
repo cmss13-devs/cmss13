@@ -3,7 +3,7 @@
 
 /particles/firing_smoke_large
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = "smoke5"
+	icon_state = "smoke5_pix"
 	width = 500
 	height = 500
 	count = 5
@@ -19,7 +19,7 @@
 
 /particles/firing_smoke
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = "smoke5"
+	icon_state = "smoke5_pix"
 	width = 500
 	height = 500
 	count = 5

@@ -1,6 +1,6 @@
 /particles/explosion_smoke
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = "smoke3"
+	icon_state = "smoke3_pix"
 	width = 1000
 	height = 1000
 	count = 75
@@ -30,7 +30,7 @@
 
 /particles/explosion_water
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = list("smoke4" = 1, "smoke5" = 1)
+	icon_state = list("smoke4_pix" = 1, "smoke5_pix" = 1)
 	width = 1000
 	height = 1000
 	count = 75
@@ -47,7 +47,7 @@
 
 /particles/smoke_wave
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = "smoke3"
+	icon_state = "smoke3_pix"
 	width = 750
 	height = 750
 	count = 100
@@ -70,7 +70,7 @@
 
 /particles/wave_water
 	icon = 'icons/effects/96x96.dmi'
-	icon_state = "smoke5"
+	icon_state = "smoke5_pix"
 	width = 750
 	height = 750
 	count = 75

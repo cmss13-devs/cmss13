@@ -92,6 +92,14 @@
 /obj/structure/sign/double/maltesefalcon/right
 	icon_state = "maltesefalcon-right"
 
+/obj/structure/sign/minefield
+	name = "\improper MINEFIELD WARNING"
+	desc = "A warning sign indicating the presence of a minefield!"
+	icon_state = "minefield"
+
+/obj/structure/sign/minefield/alt
+	icon_state = "mines_warning"
+
 //============//
 //  Banners  //
 //==========//

@@ -193,8 +193,8 @@ FIRE ALARM
 
 /obj/structure/machinery/firealarm/east
 	dir = EAST
-	pixel_x = -20
+	pixel_x = 20
 
 /obj/structure/machinery/firealarm/west
 	dir = WEST
-	pixel_x = 20
+	pixel_x = -20

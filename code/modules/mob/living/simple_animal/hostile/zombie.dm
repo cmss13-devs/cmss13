@@ -57,5 +57,13 @@
 	visible_message("<B>The [name]</B> roars!")
 	playsound(loc, "zombie_sound", 25)
 
+/mob/living/simple_animal/hostile/zombie/death(cause, gibbed, deathmessage = "lets out a high pitched groan, its body begins to melt away...")
+	. = ..()
+	if(!.)
+		return //If they were already dead, it will return.
+	playsound(src, 'sound/hallucinations/veryfar_noise.ogg', 25, 1)
+	QDEL_IN(src, 5 SECONDS)
+	animate(src, 5 SECONDS, alpha = 0, easing = CUBIC_EASING)
+
 /mob/living/simple_animal/hostile/zombie/fast
 	move_to_delay = 4

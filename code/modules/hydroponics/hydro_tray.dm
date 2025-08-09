@@ -381,7 +381,9 @@
 		return
 
 	// Check if we should even bother working on the current seed datum. mutation_controller
-	if((LAZYLEN(seed.mutants) && severity > 1 && mutation_controller["Mutate Species"] == 0) || mutation_controller["Mutate Species"] > 0)
+	if((LAZYLEN(seed.mutants) && severity > 1 && mutation_controller["Mutate Species"] == 0) || (LAZYLEN(seed.mutants) && mutation_controller["Mutate Species"] > 0))
+		if(mutation_controller["Mutate Species"] > 0)
+			mutation_controller["Mutate Species"] = 0
 		mutate_species()
 		return
 

@@ -77,12 +77,14 @@
 #define CHEM_CLASS_COMMON 2
 /// Chemicals which recipe is uncommonly known and made (spacedrugs, foaming agent)
 #define CHEM_CLASS_UNCOMMON 3
-/// Chemicals without a recipe but can be obtained on the Almayer, or requires rare components
+/// Chemicals that are either cant be made or require rare or expandable components.
 #define CHEM_CLASS_RARE 4
-/// Chemicals without a recipe and can't be obtained on the Almayer, or requires special components
+/// Chemicals that cant be made
 #define CHEM_CLASS_SPECIAL 5
 /// Randomly generated chemicals
 #define CHEM_CLASS_ULTRA 6
+/// Rare chemicals ONLY aquired via hydroponics, Those are mostly useless but very important for hard difficulty on contracts.
+#define CHEM_CLASS_HYDRO 7
 
 //chem_effect_flags, used to quickly check if the mob has a chem that provides a special effect
 #define CHEM_EFFECT_RESIST_FRACTURE (1<<0)
@@ -91,6 +93,19 @@
 #define CHEM_EFFECT_ORGAN_STASIS (1<<3) //peri stabiliser
 #define CHEM_EFFECT_NO_BLEEDING (1<<4) //replacement for quickclot
 
+//REACTION FLAGS
+/// reaction that has nothing to it. this is whats making the reaction occur, thus it always must be enabled, or replaced with CHEM_REACTION_ENDOTHERMIC.
+#define CHEM_REACTION_CALM (1<<0)
+/// reaction that bubbles when mixed, causing the person holding it get splashed by it unless wearing protective equipment, mixing small amounts (under 5) is safe, everything else needs suit for complete protection. cannot defend with closing the lid.
+#define CHEM_REACTION_BUBBLING (1<<1)
+/// reaction that glows. nothing to add.
+#define CHEM_REACTION_GLOWING (1<<2)
+/// reaction that sets things around on fire, its still mixed, but everything is on fire. the beaker is set on fire 3 seconds after the reaction. smoke and sound are given immediatly, countered by having water.
+#define CHEM_REACTION_FIRE (1<<3)
+/// reaction that makes smoke from its contents while mixing. spread of smoke is depending on amount mixed. protect yourself with a gas mask or close the lid quick enough before it starts to smoke.
+#define CHEM_REACTION_SMOKING (1<<4)
+/// potential replacment for CHEM_REACTION_CALM. makes the reaction go slower. no longer will stuff mix instantly.
+#define CHEM_REACTION_ENDOTHERMIC (1<<5)
 
 //Blood plasma
 #define PLASMA_PURPLE "purpleplasma"
@@ -197,12 +212,14 @@
 #define PROPERTY_ANTIADDICTIVE "anti-addictive"
 #define PROPERTY_ADDICTIVE "addictive"
 #define PROPERTY_ENCEPHALOPHRASIVE "encephalophrasive"
-//Legendary, only in gen_tier 3+
+//Legendary, only in research hints. add this property to legendary list define if you're planning for it to be in normal research loop.
 #define PROPERTY_HYPERGENETIC "hypergenetic"
 #define PROPERTY_BOOSTING "boosting"
 #define PROPERTY_DNA_DISINTEGRATING "DNA-Disintegrating"
 #define PROPERTY_REGULATING "regulating"
+#define PROPERTY_OPTIMIZED "optimizing"
 #define PROPERTY_CIPHERING "ciphering"
+#define PROPERTY_ENCRYPTED "encrypted"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
 #define PROPERTY_FIRE_PENETRATING "fire-penetrating"
 //Admin Only Properties
@@ -232,6 +249,9 @@
 #define PROPERTY_UNKNOWN "unknown" //just has an OD effect
 #define PROPERTY_HEMOSITIC "hemositic"
 
+///Legendary properties, no PROPERTY_TYPE_ANOMALOUS, only normal ones.
+#define PROPERTY_LEGENDARY_LIST list(PROPERTY_HYPERGENETIC, PROPERTY_BOOSTING, PROPERTY_REGULATING, PROPERTY_OPTIMIZED)
+
 
 //Property rarity
 
@@ -243,7 +263,7 @@
 #define PROPERTY_UNCOMMON 2
 /// can only be generated at specific gen_tiers, but can also be made through specific property combinations
 #define PROPERTY_RARE 3
-/// can strictly only be generated at specific gen_tiers
+/// can strictly only be made through random generated property combinations, hints are found groundside.
 #define PROPERTY_LEGENDARY 4
 /// can only be spawned through admin powers
 #define PROPERTY_ADMIN 5
@@ -275,13 +295,25 @@
 
 /// Scales cost of increasing clearance using credits
 #define RESEARCH_LEVEL_INCREASE_MULTIPLIER 3
+/// Amount of contract chemicals that should be generated
+#define RESEARCH_CONTRACT_CHEM_AMOUNT 3
+///reroll in X minutes if our contract is NOT picked
+#define RESEARCH_CONTRACT_NOT_PICKED 3 MINUTES
+///reroll in X minutes if our contract IS picked
+#define RESEARCH_CONTRACT_PICKED 6 MINUTES
 /// Scales tech level to max amplification level
 #define TECHTREE_LEVEL_MULTIPLIER 2
+/// how many properties to combine into legendary
+#define LEGENDARY_COMBINE_PROPERTIES 3
+/// how many properties to combine into ciphering from encrypted.
+#define CIPHERING_COMBINE_PROPERTIES LEGENDARY_COMBINE_PROPERTIES
 
 //Property cost multipliers for the chemical simulator
 #define PROPERTY_COST_MAX 8
-#define PROPERTY_MULTIPLIER_RARE 2
+#define PROPERTY_MULTIPLIER_RARE 3
 #define PROPERTY_MULTIPLIER_ANOMALOUS 5
+#define PROPERTY_MULTIPLIER_ADD_BULK 2 // if you use the add mode if target has X(currently 6) or more properties
+#define PROPERTY_MULTIPLIER_ADD_VALUE 3 // if you use the add mode if the target total value of the properties is above a certain value
 
 /*
 	For minimum potencies for properties

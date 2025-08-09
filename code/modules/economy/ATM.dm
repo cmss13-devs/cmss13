@@ -487,3 +487,19 @@ log transactions
 		human_user.put_in_hands(E)
 	E.worth = sum
 	E.owner_name = authenticated_account.owner_name
+
+/obj/structure/machinery/atm/south
+	dir = SOUTH
+	pixel_y = -9
+
+/obj/structure/machinery/atm/north
+	dir = NORTH
+	pixel_y = 29
+
+/obj/structure/machinery/atm/west
+	dir = WEST
+	pixel_x = -11
+
+/obj/structure/machinery/atm/east
+	dir = EAST
+	pixel_x = 11

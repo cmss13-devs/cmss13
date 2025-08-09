@@ -118,12 +118,6 @@
 
 	smoke_visuals.layer = ABOVE_MOB_LAYER + 0.01
 	large_impact_visuals.layer = ABOVE_MOB_LAYER + 0.02
-	addtimer(CALLBACK(src, PROC_REF(remove_smoke), smoke_visuals, large_impact_visuals), 0.4 SECONDS)
-	addtimer(CALLBACK(src, PROC_REF(remove_debris), debris_visuals), 0.4 SECONDS)
-
-/datum/element/debris/proc/remove_smoke(obj/effect/abstract/particle_holder/smoke_visuals, obj/effect/abstract/particle_holder/large_impact_visuals)
-	QDEL_NULL(smoke_visuals)
-	QDEL_NULL(large_impact_visuals)
-
-/datum/element/debris/proc/remove_debris(obj/effect/abstract/particle_holder/debris_visuals)
-	QDEL_NULL(debris_visuals)
+	QDEL_IN(smoke_visuals, 0.4 SECONDS)
+	QDEL_IN(large_impact_visuals, 0.4 SECONDS)
+	QDEL_IN(debris_visuals, 0.4 SECONDS)

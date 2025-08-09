@@ -32,7 +32,7 @@
 	total_health = 175 //more health than regular humans
 	timed_hug = FALSE
 
-	bloodsplatter_type = /obj/effect/bloodsplatter/yautjasplatter
+	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
 
 	burstscreams = list(MALE = "pred_preburst", FEMALE = "pred_preburst")
 

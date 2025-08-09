@@ -110,15 +110,15 @@
 		switch(debris)
 			if(DEBRIS_SPARKS)
 				debris_visuals.particles.rotation = angle
-		debris_visuals.layer = ABOVE_OBJ_LAYER + 0.02
+		debris_visuals.layer = ABOVE_MOB_LAYER + 0.03
 		debris_visuals.particles.icon_state = debris
 		debris_visuals.particles.count = debris_amount
 		debris_visuals.particles.spawning = debris_amount
 		debris_visuals.particles.scale = debris_scale
 
-	smoke_visuals.layer = ABOVE_OBJ_LAYER + 0.01
-	large_impact_visuals.layer = ABOVE_OBJ_LAYER + 0.02
-	addtimer(CALLBACK(src, PROC_REF(remove_smoke), smoke_visuals, large_impact_visuals), 0.3 SECONDS)
+	smoke_visuals.layer = ABOVE_MOB_LAYER + 0.01
+	large_impact_visuals.layer = ABOVE_MOB_LAYER + 0.02
+	addtimer(CALLBACK(src, PROC_REF(remove_smoke), smoke_visuals, large_impact_visuals), 0.4 SECONDS)
 	addtimer(CALLBACK(src, PROC_REF(remove_debris), debris_visuals), 0.4 SECONDS)
 
 /datum/element/debris/proc/remove_smoke(obj/effect/abstract/particle_holder/smoke_visuals, obj/effect/abstract/particle_holder/large_impact_visuals)

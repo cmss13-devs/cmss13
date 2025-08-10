@@ -326,7 +326,7 @@
 		list("Magazine Box (XM51 x 8)", 0, /obj/item/ammo_box/magazine/xm51, VENDOR_ITEM_REGULAR),
 		list("Rounds Box (.458 SOCOM x 300)", 0, /obj/item/ammo_box/magazine/lever_action/xm88, VENDOR_ITEM_REGULAR),
 		list("Ammo Box (M2C x 8)", 0, /obj/item/ammo_box/magazine/m2c, VENDOR_ITEM_REGULAR),
-		list("Drum Box (M56B x 8)", 0, /obj/item/ammo_box/magazine/m56b, VENDOR_ITEM_REGULAR),
+		list("Drum Box (M56 x 8)", 0, /obj/item/ammo_box/magazine/m56a2, VENDOR_ITEM_REGULAR),
 		list("Drum Box (M56D x 8)", 0, /obj/item/ammo_box/magazine/m56d, VENDOR_ITEM_REGULAR),
 		list("Speed Loaders Box (M44 x 16)", 0, /obj/item/ammo_box/magazine/m44, VENDOR_ITEM_REGULAR),
 		list("Speed Loaders Box (Marksman M44 x 16)", 0, /obj/item/ammo_box/magazine/m44/marksman, VENDOR_ITEM_REGULAR),

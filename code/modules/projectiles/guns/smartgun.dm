@@ -587,16 +587,12 @@
 	START_PROCESSING(SSobj, src)
 	var/datum/action/item_action/smartgun/toggle_aim_assist/aim_assist_action = locate(/datum/action/item_action/smartgun/toggle_aim_assist) in actions
 	aim_assist_action.update_icon()
-	if(user)
-		unwield(user)
 	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/disable_auto_aim(mob/user)
 	drain -= 50
 	var/datum/action/item_action/smartgun/toggle_aim_assist/aim_assist_action = locate(/datum/action/item_action/smartgun/toggle_aim_assist) in actions
 	aim_assist_action.update_icon()
-	if(user)
-		unwield(user)
 	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/reset_autoshot_image()

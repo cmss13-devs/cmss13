@@ -234,3 +234,14 @@ When using time2text(), please use "DDD" to find the weekday. Refrain from using
 
 /// Anywhere on Earth
 #define TIMEZONE_ANYWHERE_ON_EARTH -12
+
+// BANDAMARINES ADD - Start
+/proc/deciseconds_to_time_stamp(deciseconds)
+	if(istext(deciseconds))
+		deciseconds = text2num(deciseconds)
+	var/hour_calc = round(deciseconds / 36000) < 10 ? add_zero(round(deciseconds / 36000), 1) : round(deciseconds / 36000)
+	var/minute_calc = round((deciseconds % 36000) / 600) < 10 ? add_zero(round((deciseconds % 36000) / 600), 1) : round((deciseconds % 36000) / 600)
+	var/second_calc = round(((deciseconds % 36000) % 600) / 10) < 10 ? add_zero(round(((deciseconds % 36000) % 600) / 10), 1) : round(((deciseconds % 36000) % 600) / 10)
+
+	return "[hour_calc]:[minute_calc]:[second_calc]"
+// BANDAMARINES ADD - End

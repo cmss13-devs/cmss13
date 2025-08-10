@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(statpanels)
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
 //   "Round Time: [ROUND_TIME]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
-			"Round Time: [duration2text()]",
+			"[SSticker.round_start_time ? "Round Time" : "Lobby Time"]: [deciseconds_to_time_stamp(world.time - SSticker.round_start_time)]", // BANDAMARINES EDIT
 			"Operation Time: [worldtime2text()]",
 		)
 

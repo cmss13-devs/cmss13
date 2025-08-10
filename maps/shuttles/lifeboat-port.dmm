@@ -310,7 +310,7 @@
 /turf/closed/shuttle/lifeboat,
 /area/shuttle/lifeboat)
 "Jg" = (
-/turf/open/shuttle/escapepod/floor1/east,
+/turf/open/shuttle/lifeboat/catwalk,
 /area/shuttle/lifeboat)
 "Jw" = (
 /turf/closed/shuttle/lifeboat{

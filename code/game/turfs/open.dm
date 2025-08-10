@@ -1388,6 +1388,11 @@
 	allow_construction = FALSE
 	supports_surgery = TRUE
 
+/turf/open/shuttle/lifeboat/catwalk
+	icon = 'icons/turf/escapepods.dmi'
+	icon_state = "floor3"
+	dir = EAST
+
 /turf/open/shuttle/lifeboat/plating_striped
 	icon_state = "plating_striped"
 

@@ -1,6 +1,10 @@
-/client/verb/discord_connect()
+CLIENT_VERB(discord_connect)
 	set name = "Discord Certify"
 	set category = "OOC"
+
+	if(IsGuestKey(key, TRUE))
+		to_chat(src, SPAN_WARNING("You must be connected as a BYOND key to connect to Discord."))
+		return FALSE
 
 	var/total_playtime = get_total_xeno_playtime(skip_cache = TRUE) + get_total_human_playtime(skip_cache = TRUE)
 

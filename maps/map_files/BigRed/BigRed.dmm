@@ -3364,7 +3364,7 @@
 /area/bigredv2/outside/marshal_office)
 "aom" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/clothing/suit/storage/lawyer/bluejacket,
+/obj/item/clothing/suit/storage/jacket/marine/lawyer/bluejacket,
 /turf/open/floor/wood,
 /area/bigredv2/outside/marshal_office)
 "aon" = (
@@ -12992,7 +12992,7 @@
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhL" = (
-/obj/item/stack/repairable/gunlube,
+/obj/item/prop/helmetgarb/gunoil,
 /turf/open/mars_cave/mars_dirt_4,
 /area/bigredv2/outside/c)
 "bhT" = (
@@ -14423,7 +14423,7 @@
 /area/bigredv2/outside/engineering)
 "bpE" = (
 /obj/structure/surface/rack,
-/obj/item/device/analyzer,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/darkyellow2/north,
 /area/bigredv2/outside/engineering)
 "bpF" = (
@@ -19219,7 +19219,7 @@
 "dCb" = (
 /obj/effect/landmark/corpsespawner/security/marshal,
 /obj/effect/decal/cleanable/blood/oil,
-/obj/item/weapon/gun/launcher/grenade/m81/m79{
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1{
 	pixel_x = -3;
 	pixel_y = -9
 	},

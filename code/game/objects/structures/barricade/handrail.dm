@@ -40,8 +40,9 @@
 			layer = initial(layer) - 0.01
 		else
 			layer = initial(layer)
+	pixel_y = initial(pixel_y)
 	if(!anchored)
-		layer = initial(layer)
+		pixel_y += 2
 	if(build_state == BARRICADE_BSTATE_FORTIFIED)
 		if(reinforced)
 			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_reinforced_[damage_state]")
@@ -220,6 +221,9 @@
 					reinforce()
 					return
 	. = ..()
+
+/obj/structure/barricade/handrail/no_vault
+	autoclimb = FALSE
 
 /obj/structure/barricade/handrail/type_b
 	icon_state = "handrail_b_0"

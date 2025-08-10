@@ -553,7 +553,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"
-	desc = "A modified choke for the M37A2 pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
+	desc = "A modified choke for a pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
 	slot = "muzzle"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "choke"
@@ -1812,6 +1812,122 @@ Defined in conflicts.dm of the #defines folder.
 
 	select_gamemode_skin(type)
 
+
+/obj/item/attachable/stock/synth/collapsible
+	name = "\improper M37A2 Collapsible Stock"
+	desc = "A wire stock for the M37A2, used to help with recoil control."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "37stock"
+	attach_icon = "37stock"
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/synth/collapsible/New()
+	..()
+
+	//rifle stock starts collapsed so we zero out everything
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+	recoil_unwielded_mod = 0
+	scatter_unwielded_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
+	select_gamemode_skin(type)
+
+
+/obj/item/attachable/stock/synth/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
+		//it makes stuff worse when one handed
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+		scatter_unwielded_mod =  SCATTER_AMOUNT_TIER_8
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
+		hud_offset_mod = 5
+		select_gamemode_skin(type)
+		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 5
+		select_gamemode_skin(type)
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
+
+/obj/item/attachable/stock/synth/collapsible/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..() // We are forcing attach_icon skin
+	var/new_attach_icon
+	var/new_icon_state
+	if(stock_activated)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("jungle")
+				attach_icon = new_attach_icon ? new_attach_icon : initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : initial(icon_state) + "_on"
+				. = TRUE
+			if("snow")
+				attach_icon = new_attach_icon ? new_attach_icon : "s_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "s_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("desert")
+				attach_icon = new_attach_icon ? new_attach_icon : "d_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "d_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("classic")
+				attach_icon = new_attach_icon ? new_attach_icon : "c_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "c_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("urban")
+				attach_icon = new_attach_icon ? new_attach_icon : "u_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "u_" + initial(icon_state) + "_on"
+				. = TRUE
+	else
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("jungle")
+				attach_icon = new_attach_icon ? new_attach_icon : initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : initial(icon_state)
+				. = TRUE
+			if("snow")
+				attach_icon = new_attach_icon ? new_attach_icon : "s_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "s_" + initial(icon_state)
+				. = TRUE
+			if("desert")
+				attach_icon = new_attach_icon ? new_attach_icon : "d_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "d_" + initial(icon_state)
+				. = TRUE
+			if("classic")
+				attach_icon = new_attach_icon ? new_attach_icon : "c_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "c_" + initial(icon_state)
+				. = TRUE
+			if("urban")
+				attach_icon = new_attach_icon ? new_attach_icon : "u_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "u_" + initial(icon_state)
+				. = TRUE
+	return .
+
 /obj/item/attachable/stock/double
 	name = "\improper double barrel shotgun stock"
 	desc = "A chunky piece of wood coated in varnish and age."
@@ -1999,6 +2115,69 @@ Defined in conflicts.dm of the #defines folder.
 	gun.recalculate_attachment_bonuses()
 	gun.update_overlays(src, "stock")
 
+/obj/item/attachable/stock/rifle/collapsible/ak4047
+	name = "\improper AK-4047 folding stock"
+	desc =  "The standard back end of any gun starting with 'AK'. Compatible with the AK-4047 series, this stock reduces recoil and improves accuracy, but at a reduction to handling and agility. Also enhances the thwacking of things with the stock-end of the rifle, just like its ancestors."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "ak4047_folding"
+	attach_icon = "ak4047_folding_a"
+	pixel_shift_x = 29
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/rifle/collapsible/ak4047/New()
+	..()
+
+	//rifle stock starts collapsed so we zero out everything
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+	recoil_unwielded_mod = 0
+	scatter_unwielded_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
+
+/obj/item/attachable/stock/rifle/collapsible/ak4047/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_2
+		recoil_mod = -RECOIL_AMOUNT_TIER_5
+		scatter_mod = -SCATTER_AMOUNT_TIER_9
+		//it makes stuff worse when one handed
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+		scatter_unwielded_mod = SCATTER_AMOUNT_TIER_8
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
+		hud_offset_mod = 5
+		icon_state = "ak4047_folding_on"
+		attach_icon = "ak4047_folding_a_on"
+		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 3
+		icon_state = "ak4047_folding"
+		attach_icon = "ak4047_folding_a"
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/xm177
 	name = "\improper collapsible M16 stock"
@@ -2058,8 +2237,6 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "car_folding"
 	attach_icon = "car_folding"
 	base_icon = "car_folding"
-
-
 
 /obj/item/attachable/stock/xm51
 	name = "\improper XM51 stock"

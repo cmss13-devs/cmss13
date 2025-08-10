@@ -49,3 +49,29 @@
   - imagedel: grenadier helmet no longer has an antenna, scout helmet does
   - soundadd: New sounds for the scout helmet-phone
   - imageadd: New sprites for the scout helmet and microphone
+2025-08-06:
+  cuberound; zenith:
+  - qol: walking into open space makes you start to climb down unless on harm intent
+  - qol: when you try to walk into climbable wall you start climbing it
+  - balance: removes chance for breaking bones when falling from z level (still chance
+      from taking the damage itself)
+  - balance: reduces fall stuns and adds some slow after the stun
+  - balance: shifts around climbing up times
+  - rscadd: adds wall boosting, to wall boost lean on a climbable wall and have the
+      other climb said wall for reduced climbing time
+  - balance: adds windup for big xenos to pounce on different z level and small (extra)
+      windup for everyone to pounce up a z level
+  - qol: adds up and down tracking indicators
+2025-08-07:
+  Blundir:
+  - bugfix: fixed m39 holster (without ammo one) now has correct holstered gun pixel
+      offset
+  Drathek:
+  - maptweak: Replaced two pictures with calendars on Hybrisa
+2025-08-08:
+  SpartanBobby:
+  - maptweak: Makes USS Almayer Multiz
+2025-08-10:
+  hry-gh:
+  - server: the server can now be configured to ingest runtimes to sentry
+  - code_imp: browser preference storage has changed (again)

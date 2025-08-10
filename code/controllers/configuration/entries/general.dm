@@ -684,5 +684,16 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 
 /datum/config_entry/string/org
 
+/datum/config_entry/keyed_list/auth_urls
+	splitter = "|"
+	key_mode = KEY_MODE_TEXT_UNALTERED
+	value_mode = VALUE_MODE_TEXT
+	protection = CONFIG_ENTRY_HIDDEN|CONFIG_ENTRY_LOCKED
+
 /datum/config_entry/string/twofactor_admins_url
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/string/sentry_endpoint
+
+/datum/config_entry/string/sentry_dsn
+	protection = CONFIG_ENTRY_HIDDEN

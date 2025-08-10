@@ -62,3 +62,16 @@
   - balance: adds windup for big xenos to pounce on different z level and small (extra)
       windup for everyone to pounce up a z level
   - qol: adds up and down tracking indicators
+2025-08-07:
+  Blundir:
+  - bugfix: fixed m39 holster (without ammo one) now has correct holstered gun pixel
+      offset
+  Drathek:
+  - maptweak: Replaced two pictures with calendars on Hybrisa
+2025-08-08:
+  SpartanBobby:
+  - maptweak: Makes USS Almayer Multiz
+2025-08-10:
+  hry-gh:
+  - server: the server can now be configured to ingest runtimes to sentry
+  - code_imp: browser preference storage has changed (again)

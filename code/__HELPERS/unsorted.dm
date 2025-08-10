@@ -237,9 +237,12 @@
 
 
 //Returns whether or not a player is a guest using their ckey as an input
-/proc/IsGuestKey(key)
+/proc/IsGuestKey(key, strict = FALSE)
+	if(!strict && (key in GLOB.permitted_guests))
+		return FALSE
+
 	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
-		return 0
+		return FALSE
 
 	var/i = 7, ch, len = length(key)
 
@@ -249,8 +252,8 @@
 	for (, i <= len, ++i)
 		ch = text2ascii(key, i)
 		if (ch < 48 || ch > 57)
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn

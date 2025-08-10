@@ -19,7 +19,7 @@
 	return
 
 /// Whether or not to show a typing indicator when speaking. Defaults to on.
-/client/verb/typing_indicator()
+CLIENT_VERB(typing_indicator)
 	set name = "Show/Hide Typing Indicator"
 	set category = "Preferences.Chat"
 	set desc = "Toggles showing an indicator when you are typing emote or say message."

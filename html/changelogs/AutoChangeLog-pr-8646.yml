@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - code_imp: "browser preference storage has changed (again)"

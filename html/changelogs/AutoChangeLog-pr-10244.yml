@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - server: "the server can now be configured to ingest runtimes to sentry"

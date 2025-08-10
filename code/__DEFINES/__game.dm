@@ -585,4 +585,16 @@
 #define PERF_TOGGLE_TECHWEBS (1<<4)
 
 /// Maptext styles
-#define MAP_STYLESHEET ".maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_small { font-size: 6px; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic; } .langchat_italic {font-style: italic; }"
+#define MAP_STYLESHEET "\
+.center { text-align: center; } \
+.maptext { font-family: 'Grand9K Pixel'; font-size: 6pt; -dm-text-outline: 1pt black; color: white; line-height: 1.0; } \
+.langchat { font-family: 'Grand9K Pixel'; font-size: 6pt; -dm-text-outline: 1pt black; } \
+.langchat_small { font-family: 'Spess Font'; font-size: 6pt; } \
+.langchat_yell { font-size: 12pt; } \
+.langchat_bolded { font-family: 'Press Start 2P'; font-size: 6pt; } \
+.langchat_announce { font-family: 'Pix Cyrillic'; font-size: 12pt; } \
+.langchat_bolditalicbig { font-family: 'TinyUnicode'; font-size: 24pt; } \
+.langchat_italic { font-family: 'TinyUnicode'; font-size: 12pt; } \
+.langchat_notification { font-family: 'Press Start 2P'; font-size: 6pt; } \
+.context { font-family: 'Pix Cyrillic'; font-size: 12pt; -dm-text-outline: 1px black; } \
+.subcontext { font-family: 'TinyUnicode'; font-size: 12pt; line-height: 0.75; }"

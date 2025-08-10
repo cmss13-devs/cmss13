@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - ui: "Centers and resizes door controls/dropship selection buttons. Does the same for launch control buttons but also moves them into the element and out the title (Does similar for ERT Shuttles). Centers the whole UI. Adjusts the spacings between elements smaller than before. Makes the default UI slightly taller to accommodate the bigger buttons."

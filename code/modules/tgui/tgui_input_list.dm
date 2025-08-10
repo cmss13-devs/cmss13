@@ -29,8 +29,9 @@
  * * theme - The ui theme to use for the TGUI window.
  * * default - If an option is already preselected on the UI. Current values, etc.
  * * ui_state - The TGUI UI state that will be returned in ui_state(). Default: always_state
+ * * associative_list - TRUE if need to return selected key from an associative array, default FALSE // SS220 EDIT ADDICTION
  */
-/proc/tgui_input_list(mob/user, message, title = "Select", list/buttons, timeout = 0, theme = null, default, ui_state = GLOB.always_state)
+/proc/tgui_input_list(mob/user, message, title = "Select", list/buttons, timeout = 0, theme = null, default, ui_state = GLOB.always_state, associative_list = FALSE)
 	if (!user)
 		user = usr
 	if(!length(buttons))
@@ -46,14 +47,31 @@
 	if(isnull(user.client))
 		return null
 
-	var/datum/tgui_list_input/input = new(user, message, title, buttons, timeout, theme, default, ui_state)
+	// SS220 START EDIT ADDICTION
+	var/list/display_list = buttons
+	if(associative_list)
+		display_list = list()
+		for(var/key in buttons)
+			display_list += buttons[key]
+	// SS220 END EDIT ADDICTION
+
+	var/datum/tgui_list_input/input = new(user, message, title, display_list, timeout, theme, default, ui_state, associative_list) // SS220 EDIT ADDICTION
 	if(input.invalid)
 		qdel(input)
 		return
 	input.tgui_interact(user)
 	input.wait()
 	if (input)
-		. = input.choice
+		// SS220 START EDIT ADDICTION
+		if(associative_list)
+			. = null
+			for(var/key in buttons)
+				if(buttons[key] == input.choice)
+					. = key
+					break
+		else
+		// SS220 END EDIT ADDICTION
+			. = input.choice
 		qdel(input)
 
 /**

@@ -8,13 +8,14 @@ type Receipt = {
   id: number;
   title: string;
   req_amount?: number;
+  res_amount?: number;
   is_multi?: boolean;
   maximum_to_build?: number;
   can_build?: boolean;
   amount_to_build?: number;
   empty_line_next: boolean;
-  image: string;
-  image_size: string;
+  image?: string;
+  image_size?: string;
   stack_sub_receipts?: Receipt[];
 };
 
@@ -39,6 +40,8 @@ export const StackReceipts = () => {
 
   const pluralize = (count: number, singular: string) =>
     count === 1 ? singular : `${singular}s`;
+
+  const getNotOne = (count: number) => (count === 1 ? '' : `${count} `);
 
   const handleBuildClick = (receipt: Receipt, multiplier: number) => {
     act('make', {
@@ -148,19 +151,17 @@ export const StackReceipts = () => {
                 handleBuildClick(receipt, receipt.amount_to_build ?? 1);
               }}
             >
-              {receipt.title} (
-              {(receipt.req_amount ?? 1) *
-                ((receipt.is_multi ?? false)
-                  ? (receipt.amount_to_build ?? 1)
-                  : 1)}{' '}
+              {getNotOne(receipt.res_amount ?? 1)}
+              {pluralize(receipt.res_amount ?? 1, receipt.title)}
+              {' ('}
+              {receipt.req_amount ?? 1}{' '}
               {pluralize(
-                (receipt.req_amount ?? 1) *
-                  ((receipt.is_multi ?? false)
-                    ? (receipt.amount_to_build ?? 1)
-                    : 1),
+                (receipt.is_multi ?? false)
+                  ? (receipt.amount_to_build ?? 1)
+                  : 1,
                 data.singular_name,
               )}
-              )
+              {')'}
             </Button>
             {receipt.is_multi && (receipt.req_amount ?? 1) < stack_amount ? (
               <span style={{ marginLeft: '8px' }}>

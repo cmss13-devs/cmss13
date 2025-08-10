@@ -112,6 +112,9 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 
 /obj/item/stack/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
+	if(!ui || !ui.user)
+		return
+
 	if((ui.user.is_mob_restrained() || ui.user.stat || ui.user.get_active_hand() != src))
 		return
 
@@ -283,6 +286,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 		"id" = id,
 		"title" = rec.title,
 		"req_amount" = rec.req_amount,
+		"res_amount" = rec.res_amount,
 		"is_multi" = is_multi,
 		"maximum_to_build" = max_build,
 		"can_build" = can_build,

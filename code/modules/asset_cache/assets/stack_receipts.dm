@@ -25,6 +25,8 @@
 	big_list = mergeLists(big_list, GLOB.glass_reinforced_recipes)
 	big_list = mergeLists(big_list, GLOB.phoronrglass_recipes)
 	big_list = mergeLists(big_list, GLOB.phoronglass_recipes)
+	big_list = mergeLists(big_list, GLOB.rod_recipes)
+	big_list = mergeLists(big_list, GLOB.snow_recipes)
 
 
 	for(var/each in big_list)

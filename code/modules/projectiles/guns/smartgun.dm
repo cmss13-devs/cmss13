@@ -88,6 +88,8 @@
 	var/can_change_ammo = TRUE
 	/// If the gun has a cover that should be opened in order to reload
 	var/has_cover = TRUE
+	/// IFF and motion detector faction of the gun
+	var/gun_faction = FACTION_MARINE
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
 	var/auto_fire = 0
@@ -113,6 +115,7 @@
 	ammo_primary = ammo_primary_def
 	ammo_secondary = ammo_secondary_def
 	MD = new(src)
+	MD.iff_signal = gun_faction
 	battery = new /obj/item/smartgun_battery(src)
 	muzzle_flash = "muzzle_flash_blue"
 	muzzle_flash_color = COLOR_MUZZLE_BLUE
@@ -490,7 +493,7 @@
 	if(iff_enabled)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 		drain += 10
-		MD.iff_signal = initial(MD.iff_signal)
+		MD.iff_signal = gun_faction
 		SEND_SIGNAL(src, COMSIG_GUN_ALT_IFF_TOGGLED, frontline_enabled)
 	if(!iff_enabled)
 		remove_bullet_trait("iff")
@@ -926,6 +929,7 @@
 	item_state = "l56d"
 	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	drum_cover_overlay = FALSE
+	gun_faction = FACTION_PMC
 	has_cover = FALSE
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
@@ -940,7 +944,6 @@
 /obj/item/weapon/gun/smartgun/l56a2/Initialize(mapload, ...)
 	. = ..()
 	toggle_aim_assist(null, TRUE)
-	MD.iff_signal = FACTION_PMC
 
 /obj/item/weapon/gun/smartgun/l56a2/elite
 	name = "\improper L56A2D 'Dirty' smartgun"
@@ -988,11 +991,8 @@
 		/obj/item/attachable/cosmetic/clf_rags,
 		/obj/item/attachable/cosmetic/clf_sling,
 	)
+	gun_faction = FACTION_CLF
 	var/jammed = FALSE
-
-/obj/item/weapon/gun/smartgun/clf/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_CLF
 
 /obj/item/weapon/gun/smartgun/clf/set_gun_config_values()
 	..()
@@ -1133,10 +1133,7 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "la56"
 	item_state = "la56"
-
-/obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_TWE
+	gun_faction = FACTION_TWE
 
 /obj/item/weapon/gun/smartgun/upp
 	name = "\improper RFVS37 smartgun"
@@ -1148,10 +1145,7 @@
 	item_state = "rfvs37"
 	current_mag = /obj/item/ammo_magazine/smartgun/upp
 	mouse_pointer = 'icons/effects/mouse_pointer/upp_smartgun_mouse.dmi'
-
-/obj/item/weapon/gun/smartgun/upp/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_UPP
+	gun_faction = FACTION_UPP
 
 //  Solar devils SG, frontline mode only
 

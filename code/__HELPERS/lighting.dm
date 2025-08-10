@@ -1,18 +1,11 @@
 /// Produces a mutable appearance glued to the [EMISSIVE_PLANE] dyed to be the [EMISSIVE_COLOR].
-/proc/emissive_appearance(icon, icon_state = "", layer = FLOAT_LAYER, alpha = 255, appearance_flags = NONE, offset_const, apply_bloom = TRUE)
+/proc/emissive_appearance(icon, icon_state = "", layer = FLOAT_LAYER, alpha = 255, appearance_flags = NONE, offset_const)
 	var/mutable_appearance/appearance = mutable_appearance(icon, icon_state, layer, EMISSIVE_PLANE, 255, appearance_flags | EMISSIVE_APPEARANCE_FLAGS, offset_const)
 	if(alpha == 255)
-		if (apply_bloom)
-			appearance.color = GLOB.emissive_color
-		else
-			appearance.color = GLOB.emissive_color_no_bloom
+		appearance.color = GLOB.emissive_color_no_bloom
 	else
 		var/alpha_ratio = alpha/255
-		if (apply_bloom)
-			appearance.color = _EMISSIVE_COLOR(alpha_ratio)
-		else
-			appearance.color = _EMISSIVE_COLOR_NO_BLOOM(alpha_ratio)
-
+		appearance.color = _EMISSIVE_COLOR_NO_BLOOM(alpha_ratio)
 	return appearance
 
 // This is a semi hot proc, so we micro it. saves maybe 150ms

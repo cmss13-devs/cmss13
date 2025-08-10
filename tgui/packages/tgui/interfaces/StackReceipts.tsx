@@ -153,15 +153,12 @@ export const StackReceipts = () => {
             >
               {getNotOne(receipt.res_amount ?? 1)}
               {pluralize(receipt.res_amount ?? 1, receipt.title)}
-              {' ('}
-              {receipt.req_amount ?? 1}{' '}
-              {pluralize(
+              {` (${receipt.req_amount ?? 1} ${pluralize(
                 (receipt.is_multi ?? false)
                   ? (receipt.amount_to_build ?? 1)
                   : 1,
                 data.singular_name,
-              )}
-              {')'}
+              )})`}
             </Button>
             {receipt.is_multi && (receipt.req_amount ?? 1) < stack_amount ? (
               <span style={{ marginLeft: '8px' }}>

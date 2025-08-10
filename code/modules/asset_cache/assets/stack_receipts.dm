@@ -4,43 +4,44 @@
 /datum/asset/spritesheet/stack_receipts/register()
 	// initialising the list of items we need
 	var/target_items = list()
-	var/big_list = list()
+	var/all_receipts = list( // kill me plz
+		GLOB.sandstone_recipes,
+		GLOB.runedsandstone_recipes,
+		GLOB.silver_recipes,
+		GLOB.diamond_recipes,
+		GLOB.uranium_recipes,
+		GLOB.gold_recipes,
+		GLOB.phoron_recipes,
+		GLOB.plastic_recipes,
+		GLOB.iron_recipes,
+		GLOB.metal_recipes,
+		GLOB.plasteel_recipes,
+		GLOB.wood_recipes,
+		GLOB.cardboard_recipes,
+		GLOB.aluminium_recipes,
+		GLOB.copper_recipes,
+		GLOB.glass_recipes,
+		GLOB.glass_reinforced_recipes,
+		GLOB.phoronrglass_recipes,
+		GLOB.phoronglass_recipes,
+		GLOB.rod_recipes,
+		GLOB.snow_recipes
+	)
 
-	big_list = mergeLists(big_list, GLOB.sandstone_recipes) //kill me plz
-	big_list = mergeLists(big_list, GLOB.runedsandstone_recipes)
-	big_list = mergeLists(big_list, GLOB.silver_recipes)
-	big_list = mergeLists(big_list, GLOB.diamond_recipes)
-	big_list = mergeLists(big_list, GLOB.uranium_recipes)
-	big_list = mergeLists(big_list, GLOB.gold_recipes)
-	big_list = mergeLists(big_list, GLOB.phoron_recipes)
-	big_list = mergeLists(big_list, GLOB.plastic_recipes)
-	big_list = mergeLists(big_list, GLOB.iron_recipes)
-	big_list = mergeLists(big_list, GLOB.metal_recipes)
-	big_list = mergeLists(big_list, GLOB.plasteel_recipes)
-	big_list = mergeLists(big_list, GLOB.wood_recipes)
-	big_list = mergeLists(big_list, GLOB.cardboard_recipes)
-	big_list = mergeLists(big_list, GLOB.aluminium_recipes)
-	big_list = mergeLists(big_list, GLOB.copper_recipes)
-	big_list = mergeLists(big_list, GLOB.glass_recipes)
-	big_list = mergeLists(big_list, GLOB.glass_reinforced_recipes)
-	big_list = mergeLists(big_list, GLOB.phoronrglass_recipes)
-	big_list = mergeLists(big_list, GLOB.phoronglass_recipes)
-	big_list = mergeLists(big_list, GLOB.rod_recipes)
-	big_list = mergeLists(big_list, GLOB.snow_recipes)
 
-
-	for(var/each in big_list)
-		if (istype(each, /datum/stack_recipe_list))
-			var/datum/stack_recipe_list/srl = each
-			for (var/sub_rec in srl.recipes)
-				if (istype(sub_rec, /datum/stack_recipe))
-					var/datum/stack_recipe/recipe = sub_rec
-					target_items |= recipe.result_type
-		else if (istype(each, /datum/stack_recipe))
-			var/datum/stack_recipe/recipe = each
-			if(!recipe)
-				continue
-			target_items |= recipe.result_type
+	for(var/little_list in all_receipts)
+		for(var/each in little_list)
+			if (istype(each, /datum/stack_recipe_list))
+				var/datum/stack_recipe_list/srl = each
+				for (var/sub_rec in srl.recipes)
+					if (istype(sub_rec, /datum/stack_recipe))
+						var/datum/stack_recipe/recipe = sub_rec
+						target_items |= recipe.result_type
+			else if (istype(each, /datum/stack_recipe))
+				var/datum/stack_recipe/recipe = each
+				if(!recipe)
+					continue
+				target_items |= recipe.result_type
 
 	// building icons for each item
 	for (var/k in target_items)

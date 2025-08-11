@@ -388,12 +388,23 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/fence_alt.dmi'
 
+/obj/structure/fence/slim/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/fence_alt_door.dmi'
+
 /obj/structure/fence/slim/dark
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/dark_fence_alt.dmi'
 
 /obj/structure/fence/slim/dark/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
 	door = TRUE
 	forms_junctions = FALSE
 	icon = 'icons/obj/structures/props/fences/dark_fence_alt_door.dmi'
@@ -403,7 +414,23 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/electric_fence_alt.dmi'
 
+/obj/structure/fence/slim/warning/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/electric_fence_alt_door.dmi'
+
 /obj/structure/fence/slim/upp
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/upp_fence.dmi'
+
+/obj/structure/fence/slim/upp/door
+	name = "fence door"
+	desc = "A sturdy chainlink door set between two metal poles. A cheap way to section off areas while still allowing visibility through it."
+	icon_state = "door_closed"
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/upp_fence_door.dmi'

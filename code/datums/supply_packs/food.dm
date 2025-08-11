@@ -27,7 +27,7 @@
 		/obj/item/storage/box/potato,
 		/obj/item/storage/box/tomato,
 		/obj/item/storage/box/whitebeet,
-		/obj/item/reagent_container/food/condiment/hotsauce/cholula,
+		/obj/item/reagent_container/food/condiment/hotsauce/gramps,
 		/obj/item/reagent_container/food/condiment/hotsauce/franks,
 		/obj/item/reagent_container/food/condiment/hotsauce/sriracha,
 		/obj/item/reagent_container/food/condiment/hotsauce/tabasco,

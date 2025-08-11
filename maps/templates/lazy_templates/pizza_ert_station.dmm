@@ -1986,7 +1986,7 @@
 /area/adminlevel/ert_station/pizza_station)
 "zl" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_y = 28;
 	pixel_x = 16
 	},
@@ -2292,7 +2292,7 @@
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha,
 /obj/item/reagent_container/food/condiment/hotsauce/franks,
-/obj/item/reagent_container/food/condiment/hotsauce/cholula,
+/obj/item/reagent_container/food/condiment/hotsauce/gramps,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
@@ -2858,7 +2858,7 @@
 /obj/item/reagent_container/food/condiment/coldsauce{
 	pixel_y = 11
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_y = 6
 	},
 /turf/open/floor/prison/kitchen,
@@ -3003,7 +3003,7 @@
 	pixel_y = 18;
 	pixel_x = 6
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_y = 16
 	},
 /obj/structure/surface/table/almayer,
@@ -3450,7 +3450,7 @@
 /area/adminlevel/ert_station/pizza_station)
 "Te" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_y = 28;
 	pixel_x = 16
 	},
@@ -3863,7 +3863,7 @@
 	pixel_y = 18;
 	pixel_x = 6
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_y = 16
 	},
 /obj/item/reagent_container/food/drinks/drinkingglass{
@@ -3990,7 +3990,7 @@
 /obj/item/reagent_container/food/condiment/hotsauce/tabasco,
 /obj/item/reagent_container/food/condiment/hotsauce/sriracha,
 /obj/item/reagent_container/food/condiment/hotsauce/franks,
-/obj/item/reagent_container/food/condiment/hotsauce/cholula,
+/obj/item/reagent_container/food/condiment/hotsauce/gramps,
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},

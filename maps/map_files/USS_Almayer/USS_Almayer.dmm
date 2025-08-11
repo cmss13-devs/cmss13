@@ -19020,7 +19020,7 @@
 /obj/item/facepaint/black{
 	pixel_x = -4
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_x = 10;
 	pixel_y = 22
 	},
@@ -44309,7 +44309,7 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer/orangefull,
@@ -56281,7 +56281,7 @@
 /area/almayer/shipboard/port_point_defense)
 "qSE" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/condiment/hotsauce/cholula,
+/obj/item/reagent_container/food/condiment/hotsauce/gramps,
 /turf/open/floor/almayer/orangefull,
 /area/almayer/living/briefing)
 "qSI" = (
@@ -59277,7 +59277,7 @@
 	dir = 8;
 	pixel_x = 29
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_x = 10;
 	pixel_y = 14
 	},
@@ -64524,7 +64524,7 @@
 /obj/item/trash/USCMtray{
 	pixel_x = 5
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_x = -12;
 	pixel_y = 14
 	},

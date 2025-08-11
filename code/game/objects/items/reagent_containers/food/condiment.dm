@@ -190,11 +190,11 @@
 	. = ..()
 	reagents.add_reagent("hotsauce", 60)
 
-/obj/item/reagent_container/food/condiment/hotsauce/cholula
-	name = "\improper Cholula bottle"
-	desc = "A bottle of Weyland-Yutani brand Cholula hot sauce."
-	icon_state = "hotsauce_cholula"
-	item_state = "hotsauce_cholula"
+/obj/item/reagent_container/food/condiment/hotsauce/gramps
+	name = "\improper Gramps bottle"
+	desc = "A bottle of Weyland-Yutani brand Gramps hot sauce."
+	icon_state = "hotsauce_gramps"
+	item_state = "hotsauce_gramps"
 
 /obj/item/reagent_container/food/condiment/hotsauce/franks
 	name = "\improper Frank's Red Hot bottle"

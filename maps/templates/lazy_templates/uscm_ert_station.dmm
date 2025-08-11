@@ -182,7 +182,7 @@
 /obj/item/trash/USCMtray{
 	pixel_y = 7
 	},
-/obj/item/reagent_container/food/condiment/hotsauce/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/gramps{
 	pixel_y = 13;
 	pixel_x = 12
 	},

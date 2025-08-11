@@ -193,7 +193,7 @@
 /obj/item/reagent_container/food/condiment/hotsauce/gramps
 	name = "\improper Gramp's Gasping Mix bottle"
 	desc = "A bottle of Weyland-Yutani brand Gramp's Gasping Mix hot sauce."
-	desc_lore = "Marketed as a direct 'competitor' to Frank's, Gramp's Hot Sauce is a more sensational Hot Sauce that is popular with the more traditional American crowds. It's advertisements are always show an older gentleman dripping it into various food items, and making profound gasping noises while stuffing it down."
+	desc_lore = "Marketed as a direct 'competitor' to Frank's, Gramp's Hot Sauce is a more sensational and spicy Hot Sauce, and is shown to be more popular with the traditional American crowds. It's advertisements always introduce an older gentleman dripping it into various food items, and making profound gasping noises while stuffing it down."
 	icon_state = "hotsauce_gramps"
 	item_state = "hotsauce_gramps"
 

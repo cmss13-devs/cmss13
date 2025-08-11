@@ -1022,6 +1022,7 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
+	can_hold_skill_only = FALSE
 
 /obj/item/storage/pouch/medkit/wy
 	icon_state = "wy_medkit"

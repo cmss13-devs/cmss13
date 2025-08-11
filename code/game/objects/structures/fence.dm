@@ -88,6 +88,7 @@
 	if(cut)
 		return
 	open = !open
+	density = !density
 	operating = FALSE
 	update_icon()
 

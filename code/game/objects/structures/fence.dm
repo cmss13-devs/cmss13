@@ -315,12 +315,51 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	health -= severity/2
 	healthcheck(make_hit_sound = FALSE, create_debris = TRUE)
 
+// Classic Style Fences
+
+/obj/structure/fence/overgrown
+	name = "overgrow fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/overgrown_fence.dmi'
+
 /obj/structure/fence/dark
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/dark_fence.dmi'
 
+/obj/structure/fence/dark/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/overgrown_dark_fence.dmi'
+
 /obj/structure/fence/dark/warning
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/electric_fence.dmi'
+
+/obj/structure/fence/dark/warning/overgrown
+	name = "overgrown fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/overgrown_electric_fence.dmi'
+
+// Alternative Fences - New Design
+
+/obj/structure/fence/slim
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/fence_alt.dmi'
+
+/obj/structure/fence/slim/dark
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/dark_fence_alt.dmi'
+
+/obj/structure/fence/slim/warning
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/electric_fence_alt.dmi'
+
+/obj/structure/fence/slim/upp
+	name = "fence"
+	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	icon = 'icons/obj/structures/props/fences/upp_fence.dmi'

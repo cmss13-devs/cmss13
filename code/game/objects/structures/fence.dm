@@ -12,9 +12,16 @@
 	minimap_color = MINIMAP_FENCE
 	var/health_max = 50
 	var/cut = 0 //Cut fences can be passed through
-	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
+	var/junction = null //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
 	var/forms_junctions = TRUE
+
+	var/door = FALSE
+	var/open = FALSE
+	var/operating = FALSE
+	var/opening_time = 1 SECONDS
+
+
 
 /obj/structure/fence/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -72,6 +79,19 @@
 		var/mob/living/carbon/human/human = user
 		if(human.species.can_shred(human))
 			attack_generic(human, 25)
+
+	if(!door || operating || cut)
+		return
+	operating = TRUE
+	update_icon()
+	sleep(opening_time)
+	if(cut)
+		return
+	open = !open
+	operating = FALSE
+	update_icon()
+
+
 
 //Used by attack_animal
 /obj/structure/fence/proc/attack_generic(mob/living/user, damage = 0)
@@ -204,6 +224,8 @@
 
 /obj/structure/fence/Initialize(mapload, start_dir = null, constructed = 0)
 	. = ..()
+	if(door)
+		basestate = "door"
 
 	if(start_dir)
 		setDir(start_dir)
@@ -246,6 +268,22 @@
 			icon_state = "broken[basestate][junction]"
 		else
 			icon_state = "[basestate][junction]"
+
+		if(cut || !door)
+			return
+
+		if(!operating)
+			if(open)
+				icon_state = "[basestate]_open"
+			else
+				icon_state = "[basestate]_closed"
+			return
+
+		if(open)
+			icon_state = "[basestate]_closing"
+
+		else
+			icon_state = "[basestate]_opening"
 
 /obj/structure/fence/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > T0C + 800)
@@ -353,6 +391,11 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	name = "fence"
 	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
 	icon = 'icons/obj/structures/props/fences/dark_fence_alt.dmi'
+
+/obj/structure/fence/slim/dark/door
+	door = TRUE
+	forms_junctions = FALSE
+	icon = 'icons/obj/structures/props/fences/dark_fence_alt_door.dmi'
 
 /obj/structure/fence/slim/warning
 	name = "fence"

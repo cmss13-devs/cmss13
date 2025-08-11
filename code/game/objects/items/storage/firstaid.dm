@@ -49,7 +49,14 @@
 		/obj/item/stack/medical/advanced/bruise_pack = "brute_kit_overlay",
 		/obj/item/stack/medical/advanced/ointment = "burn_kit_overlay",
 		/obj/item/stack/medical/splint = "splints_overlay",
+		/obj/item/storage/syringe_case = "syringe_case_overlay",
+		/obj/item/tool/surgery/synthgraft = "synthgraft_overlay",
+		/obj/item/tool/surgery/surgical_line = "surgical_line_overlay",
+		/obj/item/tool/surgery/FixOVein = "fixovein_overlay",
+		/obj/item/reagent_container/blood = "bloodpack_overlay",
+		/obj/item/storage/surgical_case = "surgical_case_overlay",
 	)
+	var/has_overlays = TRUE //whether this kit has contents overlays or not
 
 /obj/item/storage/firstaid/Initialize()
 	. = ..()
@@ -65,10 +72,11 @@
 	overlays.Cut()
 	if(content_watchers)
 		icon_state = empty_icon
+		if(!has_overlays)
+			return
 		for(var/obj/item/overlayed_item in contents)
-			if (types_and_overlays[overlayed_item.type])
+			if(types_and_overlays[overlayed_item.type])
 				overlays += types_and_overlays[overlayed_item.type]
-				types_and_overlays -= overlayed_item.type
 	else if(!length(contents))
 		icon_state = empty_icon
 		return
@@ -232,6 +240,7 @@
 	icon_state = "whiteout"
 	empty_icon = "whiteout_empty"
 	item_state = "whiteout"
+	has_overlays = FALSE //different formfactor
 	can_hold = list(
 		/obj/item/device/healthanalyzer,
 		/obj/item/reagent_container/dropper,

@@ -44,6 +44,12 @@
 
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
+	var/list/types_and_overlays = list(
+		/obj/item/reagent_container/hypospray/autoinjector/tricord = "tricord_injector_overlay",
+		/obj/item/stack/medical/advanced/bruise_pack = "brute_kit_overlay",
+		/obj/item/stack/medical/advanced/ointment = "burn_kit_overlay",
+		/obj/item/stack/medical/splint = "splints_overlay",
+	)
 
 /obj/item/storage/firstaid/Initialize()
 	. = ..()
@@ -56,8 +62,16 @@
 	update_icon()
 
 /obj/item/storage/firstaid/update_icon()
-	if(content_watchers || !length(contents))
+	overlays.Cut()
+	if(content_watchers)
 		icon_state = empty_icon
+		for(var/obj/item/overlayed_item in contents)
+			if (types_and_overlays[overlayed_item.type])
+				overlays += types_and_overlays[overlayed_item.type]
+				types_and_overlays -= overlayed_item.type
+	else if(!length(contents))
+		icon_state = empty_icon
+		return
 	else
 		icon_state = icon_full
 

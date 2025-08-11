@@ -4,6 +4,7 @@
 	desc = "A face-covering mask that can be connected to an air supply. Filters harmful gases from the air."
 	icon_state = "gas_alt"
 	item_state = "gas_alt"
+	blood_overlay_type = "gasmask"
 	icon = 'icons/obj/items/clothing/masks/gasmasks.dmi'
 	item_icons = list(
 		WEAR_FACE = 'icons/mob/humans/onmob/clothing/masks/gasmasks.dmi',

@@ -174,6 +174,8 @@
 
 //returns the color of the mob's blood
 /mob/living/proc/get_blood_color()
+	if(status_flags & PERMANENTLY_DEAD)
+		return BLOOD_COLOR_HUMAN_DRY
 	return BLOOD_COLOR_HUMAN
 
 /mob/living/carbon/xenomorph/get_blood_color()

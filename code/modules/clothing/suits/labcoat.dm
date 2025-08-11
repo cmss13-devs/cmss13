@@ -153,6 +153,7 @@
 	desc = "A green sleek long labcoat, designed to distinguish a higher ranking medical personnel. Fabric has a better protection against chemical hazards."
 	icon_state = "labcoatg"
 	item_state = "labcoatg"
+	blood_overlay_type = "suit"
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/suit/storage/labcoat/researcher
@@ -198,7 +199,7 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
-	blood_overlay_type = "armor"
+	blood_overlay_type = "jacket"
 	siemens_coefficient = 0.7
 
 /obj/item/clothing/suit/storage/snow_suit/doctor
@@ -375,3 +376,4 @@
 /obj/item/clothing/suit/storage/labcoat/long
 	icon_state = "labcoat_long"
 	item_state = "labcoat_long"
+	blood_overlay_type = "suit"

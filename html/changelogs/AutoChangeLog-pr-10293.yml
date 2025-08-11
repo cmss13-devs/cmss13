@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Mass screenshot verb now can handle offset maps (like multiz Almayer)"

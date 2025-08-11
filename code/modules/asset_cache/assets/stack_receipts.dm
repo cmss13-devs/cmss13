@@ -4,7 +4,9 @@
 /datum/asset/spritesheet/stack_receipts/register()
 	// initialising the list of items we need
 	var/target_items = list()
-	var/all_receipts = list( // kill me plz
+
+	//This list should contain stack receipts to render them on UI
+	var/all_receipts = list(
 		GLOB.sandstone_recipes,
 		GLOB.runedsandstone_recipes,
 		GLOB.silver_recipes,

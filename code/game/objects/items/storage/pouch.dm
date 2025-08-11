@@ -1014,6 +1014,9 @@
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 
+/obj/item/storage/pouch/medkit/full/toxin/cbrn
+	can_hold_skill_only = FALSE // Given to non-medically trained personnel.
+
 /obj/item/storage/pouch/medkit/full/toxin/cbrn/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/antitox/skillless(src)
@@ -1022,8 +1025,6 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
-	can_hold_skill_only = FALSE
-
 /obj/item/storage/pouch/medkit/wy
 	icon_state = "wy_medkit"
 

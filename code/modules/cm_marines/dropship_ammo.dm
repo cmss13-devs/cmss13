@@ -39,17 +39,18 @@
 	var/mob/source_mob
 	var/combat_equipment = TRUE
 	var/faction_exclusive //if this ammo is obtainable only by certain faction
-	//if TRUE, this ammo can be used to break through cave roofs
+	///if TRUE, this ammo can be used to break through cave roofs
 	var/cavebreaker = FALSE
-	//if TRUE, this ammo can pierce metal roofs in direct fire
+	///if TRUE, this ammo can pierce metal roofs in direct fire
 	var/metalbreaker = FALSE
-	//delay in how fast to loop the simulation, mainly for GAU/Laser currently
+	///delay in how fast to loop the simulation, mainly for GAU/Laser currently
 	var/sleep_per_shot = 1
-	//if this ammo doesn't require a powerloader to be moved
+	///if this ammo doesn't require a powerloader to be moved
 	var/handheld = FALSE
-	//if this ammo has a safety toggle
+	///if this ammo has a safety toggle
 	var/safety_enabled = FALSE
-	var/handheld_type = null // Type path to the corresponding handheld item, if any
+	/// Type path to the corresponding handheld item, if any
+	var/handheld_type = null
 
 /obj/structure/ship_ammo/update_icon()
 	. = ..()

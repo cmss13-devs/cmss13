@@ -20,7 +20,8 @@
 	var/skill_required = SKILL_PILOT_TRAINED
 	var/combat_equipment = TRUE
 	var/faction_exclusive //if null all factions can print it
-	var/stackable_ammo = FALSE 	/// Whether the ammo inside this equipment can be directly replenished without needing to uninstall the existing ammo
+	/// Whether the ammo inside this equipment can be directly replenished without needing to uninstall the existing ammo
+	var/stackable_ammo = FALSE
 
 	var/damaged = FALSE // TRUE if affected by any anti-air effect
 	var/antiair_fire = FALSE // TRUE if anti-air disables firing

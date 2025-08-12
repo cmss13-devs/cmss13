@@ -267,12 +267,12 @@
 				return TRUE
 			//need the welder to be active for welding repairs
 			if(next_step == "WELDER" && istype(I, /obj/item/tool/weldingtool))
-				var/obj/item/tool/weldingtool/WELD = I
-				if(!WELD.welding)
+				var/obj/item/tool/weldingtool/weld = I
+				if(!weld.welding)
 					to_chat(user, SPAN_WARNING("The welder must be activated!"))
 					effect.repairing = FALSE
 					return TRUE
-				WELD.eyecheck(user)
+				weld.eyecheck(user)
 			// Play sounds and effects
 			if(next_step == "CROWBAR")
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)

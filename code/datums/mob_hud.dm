@@ -179,20 +179,20 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if(user.client && isobserver(user))
 		refresh_xeno_telegraphs_for_client(user.client)
 
-/datum/mob_hud/xeno/proc/refresh_xeno_telegraphs_for_client(client/C)
-	if(!C)
+/datum/mob_hud/xeno/proc/refresh_xeno_telegraphs_for_client(client/xeno_client)
+	if(!xeno_client)
 		return
 
 	// Add all existing xeno telegraph overlays to this client
 	for(var/obj/effect/xenomorph/xeno_telegraph/antiair/telegraph in world)
 		if(QDELETED(telegraph) || !telegraph.telegraph_image)
 			continue
-		C.images |= telegraph.telegraph_image
+		xeno_client.images |= telegraph.telegraph_image
 
 	for(var/obj/effect/xenomorph/xeno_telegraph/chaff/telegraph in world)
 		if(QDELETED(telegraph) || !telegraph.telegraph_image)
 			continue
-		C.images |= telegraph.telegraph_image
+		xeno_client.images |= telegraph.telegraph_image
 
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
@@ -1099,8 +1099,8 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 		R.update_visibility_for_mob(ghost)
 
 /// Helper proc to update dropship HUD visibility when someone teleports between areas
-/proc/update_dropship_hud_on_move(mob/M, area/old_area, area/new_area)
-	if(!M || !GLOB.huds[MOB_HUD_DROPSHIP])
+/proc/update_dropship_hud_on_move(mob/updated_mob, area/old_area, area/new_area)
+	if(!updated_mob || !GLOB.huds[MOB_HUD_DROPSHIP])
 		return
 	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
 	var/was_dropship = istype(old_area, /area/shuttle/drop1) || istype(old_area, /area/shuttle/drop2)
@@ -1108,18 +1108,18 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 
 	if(was_dropship != is_dropship)
 		// Handle the person who moved
-		if(M in dropship_hud.hudusers)
+		if(updated_mob in dropship_hud.hudusers)
 			if(is_dropship)
 				// Person entered dropship, add overlays
-				dropship_hud.refresh_hud(M, dropship_hud.hudusers[M])
+				dropship_hud.refresh_hud(updated_mob, dropship_hud.hudusers[updated_mob])
 			else
 				// Person left dropship, remove overlays
 				for(var/mob/target in dropship_hud.hudmobs)
-					dropship_hud.remove_from_single_hud(M, target)
+					dropship_hud.remove_from_single_hud(updated_mob, target)
 
 		if(is_dropship)
 			// Person entered dropship, hide overlays
-			dropship_hud.remove_from_hud(M)
+			dropship_hud.remove_from_hud(updated_mob)
 		else
 			// Person left dropship, show overlays
-			dropship_hud.add_to_hud(M)
+			dropship_hud.add_to_hud(updated_mob)

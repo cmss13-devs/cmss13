@@ -61,6 +61,7 @@
 	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
+	// Last time a psychic pulse detected CAS camera movement
 	var/last_psychic_pulse_time = 0
 
 	base_actions = list(
@@ -70,11 +71,11 @@
 		/datum/action/xeno_action/activable/tail_stab/boiler,
 		/datum/action/xeno_action/activable/corrosive_acid/strong,
 		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
-		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
+		/datum/action/xeno_action/activable/skyspit/boiler, //2nd macro
 		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
-		/datum/action/xeno_action/activable/skyspit/boiler, //4th macro
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
 		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
+		/datum/action/xeno_action/onclick/shift_spits/boiler,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	skull = /obj/item/skull/boiler

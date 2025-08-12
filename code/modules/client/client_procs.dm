@@ -284,11 +284,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!(connection in list("seeker", "web"))) //Invalid connection type.
 		return null
 
+	if(!CanLogin())
+		qdel(src)
+		return
+
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
-
-	if(byond_version >= 516) // Enable 516 compat browser storage mechanisms
-		winset(src, "", "browser-options=byondstorage")
 
 	// Instantiate stat panel
 	stat_panel = new(src, "statbrowser")
@@ -305,6 +306,58 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		next_external_rsc = WRAP(next_external_rsc+1, 1, length(external_rsc_urls)+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
 
+	// we should interrupt this here, now
+	if(IsGuestKey(key) && length(CONFIG_GET(keyed_list/auth_urls)) && !check_localhost_status())
+		mob = new /mob/unauthenticated(locate(1, 1, 1))
+		return mob
+
+	PreLogin()
+
+	. = ..() //calls mob.Login()
+
+	PostLogin()
+
+/client/proc/CanLogin()
+	// Version check below if we ever need to start checking against BYOND versions again.
+	var/breaking_version = CONFIG_GET(number/client_error_version)
+	var/breaking_build = CONFIG_GET(number/client_error_build)
+	var/warn_version = CONFIG_GET(number/client_warn_version)
+	var/warn_build = CONFIG_GET(number/client_warn_build)
+
+	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
+		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
+		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
+		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
+		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
+		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+		return FALSE
+
+	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
+		if(CONFIG_GET(flag/client_warn_popup))
+			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
+			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
+			msg += "Your version: [byond_version].[byond_build]<br>"
+			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
+			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
+			src << browse(msg, "window=warning_popup")
+		else
+			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
+			to_chat(src, CONFIG_GET(string/client_warn_message))
+			to_chat(src, "Your version: [byond_version].[byond_build]")
+			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
+			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+
+	if (num2text(byond_build) in GLOB.blacklisted_builds)
+		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of BYOND is blacklisted.")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("BYOND build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
+		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Please download a new version of BYOND. If [byond_build] is the latest (which it shouldn't be), you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")))
+		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
+		return FALSE
+
+	return TRUE
+
+/client/proc/PreLogin()
 	player_entity = setup_player_entity(ckey)
 
 	if(check_localhost_status())
@@ -344,49 +397,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		GLOB.player_details[ckey] = player_details
 
 	view = GLOB.world_view_size
-	. = ..() //calls mob.Login()
 
-	if(SSinput.initialized)
-		INVOKE_ASYNC(src, /client/proc/set_macros)
+/client/proc/PostLogin()
+	add_verb(src, collect_client_verbs())
 
-	// Version check below if we ever need to start checking against BYOND versions again.
-	var/breaking_version = CONFIG_GET(number/client_error_version)
-	var/breaking_build = CONFIG_GET(number/client_error_build)
-	var/warn_version = CONFIG_GET(number/client_warn_version)
-	var/warn_build = CONFIG_GET(number/client_warn_build)
-
-	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
-		to_chat_immediate(src, SPAN_DANGER("<b>Your version of BYOND is too old:</b>"))
-		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
-		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
-		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
-		to_chat_immediate(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
-		qdel(src)
-		return
-
-	if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
-		if(CONFIG_GET(flag/client_warn_popup))
-			var/msg = "<b>Your version of BYOND may be getting out of date:</b><br>"
-			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
-			msg += "Your version: [byond_version].[byond_build]<br>"
-			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
-			msg += "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
-			src << browse(msg, "window=warning_popup")
-		else
-			to_chat(src, SPAN_DANGER("<b>Your version of BYOND may be getting out of date:</b>"))
-			to_chat(src, CONFIG_GET(string/client_warn_message))
-			to_chat(src, "Your version: [byond_version].[byond_build]")
-			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
-			to_chat(src, "Visit <a href=\"https://www.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
-
-	if (num2text(byond_build) in GLOB.blacklisted_builds)
-		log_access("Failed login: [key] - blacklisted byond build ([byond_version].[byond_build])")
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_HUGE("Your version of byond is blacklisted.")))
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].")))
-		to_chat_immediate(src, SPAN_WARNING(FONT_SIZE_LARGE("Please download a new version of byond. If [byond_build] is the latest (which it shouldn't be), you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.")))
-		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
-		qdel(src)
-		return
+	acquire_dpi()
 
 	// Initialize tgui panel
 	stat_panel.initialize(
@@ -403,6 +418,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	tgui_panel.initialize()
 	tgui_say.initialize()
+
+	if(SSinput.initialized)
+		INVOKE_ASYNC(src, /client/proc/set_macros)
 
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
 	CEI.show_player_event_info(src)
@@ -423,8 +441,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	winset(src, null, "command=\".configure graphics-hwmode on\"")
 	winset(src, "map", "style=\"[MAP_STYLESHEET]\"")
 
-	acquire_dpi()
-
 	send_assets()
 
 	create_clickcatcher()
@@ -442,9 +458,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if(src.ckey == line)
 			src.donator = TRUE
 			add_verb(src, /client/proc/set_ooc_color_self)
-
-	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
-	// set_night_skin()
 
 	if(!tooltips && prefs.tooltips)
 		tooltips = new(src)
@@ -496,10 +509,18 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	..()
 	return QDEL_HINT_HARDDEL_NOW
 
-
 #undef TOPIC_SPAM_DELAY
 #undef UPLOAD_LIMIT
 #undef MIN_CLIENT_VERSION
+
+/client/var/external_username
+
+/// To be used when displaying a client's "username" to players
+/client/proc/username()
+	if(external_username)
+		return external_username
+
+	return key
 
 /// Handles login-related logging and associated notifications
 /client/proc/notify_login()
@@ -542,8 +563,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		addtimer(CALLBACK(SSassets.transport, TYPE_PROC_REF(/datum/asset_transport, send_assets_slow), src, SSassets.transport.preload), 5 SECONDS)
 
 /client/proc/acquire_dpi()
-	set waitfor = FALSE
-
 	// Remove with 516
 	if(byond_version < 516)
 		return
@@ -602,7 +621,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	winset(src, "[parent].[macro_button]", "parent=")
 
-/client/verb/read_key_down(key as text|null)
+CLIENT_VERB(read_key_down, key as text|null)
 	set name = ".Read Key Down"
 	set hidden = TRUE
 
@@ -611,7 +630,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	SEND_SIGNAL(src, COMSIG_CLIENT_KEY_DOWN, key)
 
-/client/verb/read_key_up(key as text|null)
+CLIENT_VERB(read_key_up, key as text|null)
 	set name = ".Read Key Up"
 	set hidden = TRUE
 
@@ -788,7 +807,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		return TRUE
 	return FALSE
 
-/client/verb/fix_stat_panel()
+CLIENT_VERB(fix_stat_panel)
 	set name = "Fix Stat Panel"
 	set hidden = TRUE
 
@@ -871,7 +890,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	return total_t3_playtime
 
-/client/verb/action_hide_menu()
+CLIENT_VERB(action_hide_menu)
 	set name = "Show/Hide Actions"
 	set category = "IC"
 

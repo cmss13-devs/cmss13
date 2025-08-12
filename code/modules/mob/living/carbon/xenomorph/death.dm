@@ -125,17 +125,20 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 			if((GLOB.last_ares_callout + 2 MINUTES) > world.time)
 				return
 			if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
-				var/mob/living/carbon/xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
+				var/mob/living/carbon/xenomorph/xeno = LAZYACCESS(hive.totalXenos, 1)
 				GLOB.last_ares_callout = world.time
 				// Tell the marines where the last one is.
 				var/name = "[MAIN_AI_SYSTEM] Bioscan Status"
-				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(X)]."
+				var/input = "Bioscan complete.\n\nSensors indicate one remaining unknown lifeform signature in [get_area(xeno)]."
 				log_ares_bioscan(name, input)
 				marine_announcement(input, name, 'sound/AI/bioscan.ogg', logging = ARES_LOG_NONE)
-				// Tell the xeno she is the last one.
-				if(X.client)
-					to_chat(X, SPAN_XENOANNOUNCE("Your carapace rattles with dread. You are all that remains of the hive!"))
-				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [X.name].", source = X, action = NOTIFY_ORBIT)
+				// Tell the xeno she is the last one, heal her and make her fight to the death
+				if(xeno.client)
+					to_chat(xeno, SPAN_XENOANNOUNCE("Your carapace rattles with RAGE. You are all that remains of the hive! Go out fighting, kill them all!"))
+					xeno.rejuvenate()
+					if(!isqueen(xeno))
+						xeno.can_heal = FALSE
+				notify_ghosts(header = "Last Xenomorph", message = "There is only one Xenomorph left: [xeno.name].", source = xeno, action = NOTIFY_ORBIT)
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 	give_action(src, /datum/action/ghost/xeno)

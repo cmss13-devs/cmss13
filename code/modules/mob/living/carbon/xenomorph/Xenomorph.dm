@@ -591,6 +591,7 @@
 
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
+	refresh_xeno_telegraphs()
 	hud_set_design_marks()
 
 	var/name_prefix = in_hive.prefix
@@ -817,6 +818,7 @@
 	hud_set_plasma()
 	hud_set_pheromone()
 	hud_set_marks()
+	refresh_xeno_telegraphs()
 	hud_set_design_marks()
 
 
@@ -824,6 +826,14 @@
 	add_to_all_mob_huds()
 	var/datum/mob_hud/MH = GLOB.huds[MOB_HUD_XENO_INFECTION]
 	MH.add_hud_to(src, src)
+
+/mob/living/carbon/xenomorph/proc/refresh_xeno_telegraphs()
+	if(!client)
+		return
+
+	var/datum/mob_hud/xeno/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+	if(hud)
+		hud.refresh_xeno_telegraphs_for_client(client)
 
 // Transfer any observing players over to the xeno's new body (`target`) on evolve/de-evolve.
 /mob/living/carbon/xenomorph/transfer_observers_to(atom/target)

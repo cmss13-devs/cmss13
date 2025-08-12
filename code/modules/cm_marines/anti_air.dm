@@ -135,3 +135,97 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 
 	tgui_interact(user)
 	return TRUE
+
+// Generic anti-air effect datum for dropship equipment
+/datum/dropship_antiair
+	var/name = "antiair effect"
+	var/description = "This equipment has been affected by anti-air defenses."
+	var/examine_text = "The skies are protected by an antiair defense system." // This is the examine text for the tile, think metal roofs etc
+	var/duration = null // default: infinite duration unless set by effect type
+	var/list/repair_steps = list()
+	var/antiair_fire = FALSE // blocks weapon from firing
+	var/antiair_reload = FALSE // blocks weapon from being reloaded
+	var/antiair_destroy = FALSE // destroys the weapon after the duration
+	var/list/tools = list("WELDER", "SCREWDRIVER", "WRENCH", "WIRECUTTERS", "CROWBAR", "MULTITOOL", "CABLE COIL")
+	var/repairing = FALSE
+	var/repair_step_index = 1
+	var/effect_id = null // Unique identifier for this effect instance
+	var/creation_time = null // So we know when it was applied
+	var/repair_steps_count = 3 // Number of repair steps for this effect
+	var/antiair_message = null // Custom message for when this antiair effect triggers during CAS, use PLANE as the placeholder for the DS name, it'll be converted into dropship/bird for marine/xeno
+
+/datum/dropship_antiair/New()
+	..()
+	// Assign a unique effect_id on creation
+	creation_time = world.time
+	effect_id = "[src.type]-[creation_time]-[rand(1000,9999)]"
+	// Generate a random repair_steps list of length repair_steps_count
+	var/list/shuffled = shuffle(tools.Copy())
+	repair_steps = list()
+	for(var/i = 1, i <= repair_steps_count, i++)
+		if(i > shuffled.len)
+			shuffled = shuffle(tools.Copy())
+		repair_steps += shuffled[i]
+
+/datum/dropship_antiair/proc/get_antiair_message(ds_identifier)
+	return antiair_message ? replacetext(antiair_message, "PLANE", ds_identifier) : null
+
+/datum/dropship_antiair/proc/apply(obj/structure/dropship_equipment/target)
+	target.damaged = TRUE
+
+	// Automatically apply all antiair flags
+	for(var/varname in vars)
+		if(findtext(varname, "antiair_") && vars[varname] && (varname in target.vars))
+			target.vars[varname] = TRUE
+
+	if(duration > 0)
+		spawn(duration)
+			src.on_timeout(target)
+
+/datum/dropship_antiair/proc/remove(obj/structure/dropship_equipment/target)
+	// Reset antiair flags only if no remaining effects need them
+	for(var/varname in target.vars)
+		if(findtext(varname, "antiair_"))
+			var/effect_stacked = FALSE
+			// Check if any remaining effects still need this flag
+			for(var/datum/dropship_antiair/remaining_effect in target.active_effects)
+				if(remaining_effect.effect_id == src.effect_id)
+					continue // Skip this effect since it's being removed
+				if(findtext(varname, "antiair_") && (varname in remaining_effect.vars) && remaining_effect.vars[varname])
+					effect_stacked = TRUE
+					break
+			// Only set to FALSE if no remaining effects need it
+			if(!effect_stacked)
+				target.vars[varname] = FALSE
+
+	// Only set damaged to FALSE if no antiair effects remain
+	if(!target.active_effects || target.active_effects.len == 0)
+		target.damaged = FALSE
+
+	// Clean up the effect if it was set to delete on timeout
+	if(antiair_destroy)
+		qdel(src)
+
+/datum/dropship_antiair/proc/on_timeout(obj/structure/dropship_equipment/target)
+	// Check if this effect is still active on the target (not removed by repairs)
+	if(!(src in target.active_effects))
+		return
+
+	// Only destroy if the effect wasn't repaired (still has repair steps)
+	if(antiair_destroy && length(src.repair_steps) > 0)
+		// Effect timed out without being repaired - destroy the equipment
+		target.visible_message(SPAN_WARNING("[target] crumbles into itself and falls apart. It's been destroyed!"))
+		qdel(target)
+	else
+		// Effect was repaired or doesn't destroy on timeout, remove it properly
+		target.remove_antiair_effect(src)
+
+/datum/dropship_antiair/boiler_corrosion
+	name = "Corrosive Acid Damage"
+	description = "Corrosive acid is eating through the equipment!"
+	examine_text = "A thick smog of acidic gas lingers above."
+	duration = 1800
+	antiair_reload = TRUE
+	antiair_destroy = TRUE
+	tools = list("WELDER", "SCREWDRIVER", "WRENCH", "WIRECUTTERS", "CROWBAR")
+	antiair_message = "YOU HEAR THE PLANE VEER OFF COURSE AS IT FLIES THROUGH A CLOUD OF ACIDIC GAS!"

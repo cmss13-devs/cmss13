@@ -1111,3 +1111,63 @@
 	// If the xenomorph is still holding the same direction as the tail stab animation's changed it to, reset it back to the old direction so the xenomorph isn't stuck facing backwards.
 	if(new_dir == stabbing_xeno.dir)
 		stabbing_xeno.setDir(last_dir)
+
+/datum/action/xeno_action/activable/skyspit/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		to_chat(xeno, SPAN_WARNING("We do not have enough plasma!"))
+		return FALSE
+
+	var/turf/center = get_turf(xeno)
+	if(!center)
+		to_chat(xeno, SPAN_WARNING("No valid areas to mark!"))
+		return FALSE
+
+	if(windup_time > 0)
+		xeno.visible_message(SPAN_WARNING("[xeno] begins to prepare a massive corrosive spit towards the sky!"),
+			SPAN_WARNING("We begin to prepare our skyspit bombardment!"))
+		if(!do_after(xeno, windup_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our skyspit."))
+			return FALSE
+
+	// Launch message and sound
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] launches a massive acidic cloud into the sky!"),
+		SPAN_XENOWARNING("We launch our acidic payload into the sky!"))
+	playsound(xeno.loc, 'sound/effects/blobattack.ogg', 25, 1)
+
+	var/list/affected_turfs = list()
+	for(var/turf/T in range(skyspit_range, center))
+		// Skip if already marked by skyspit or protected by antiair pylon
+		if(T.skyspit_active || (T.turf_protection_flags & TURF_PROTECTION_ANTIAIR))
+			continue
+		T.skyspit_active = TRUE
+		T.turf_protection_flags |= TURF_PROTECTION_ANTIAIR
+		T.antiair_effect_type = /datum/dropship_antiair/boiler_corrosion
+		T.skyspit_applier = xeno
+		T.skyspit_expire_timer = addtimer(CALLBACK(T, /turf/proc/remove_skyspit_marker), antiair_duration, TIMER_UNIQUE)
+		if(!T.skyspit_overlay)
+			T.skyspit_overlay = new /obj/effect/xenomorph/xeno_telegraph/antiair(T, antiair_duration)
+		// Add dropship protection flag overlay for anti-air
+		if(!T.protection_flag_overlay)
+			T.protection_flag_overlay = new /obj/effect/overlay/temp/protection_flag/antiair(T)
+		affected_turfs += T
+
+	if(affected_turfs.len)
+		to_chat(xeno, SPAN_NOTICE("You mark the sky with corrosive skyspit!"))
+
+		// Check for and extinguish illumination flares in the area
+		for(var/turf/T in affected_turfs)
+			for(var/obj/item/device/flashlight/flare/on/illumination/flare in T)
+				flare.visible_message(SPAN_WARNING("[flare]'s light in the sky fizzles out!"))
+				flare.turn_off()
+
+		apply_cooldown()
+		return ..()
+	else
+		to_chat(xeno, SPAN_WARNING("The area is already marked!"))
+		return FALSE
+

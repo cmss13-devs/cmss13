@@ -70,6 +70,21 @@
 	/// Can xenomorph weeds grow on the tile
 	var/is_weedable = FULLY_WEEDABLE
 
+	//Anti-Air turf vars for Boiler's Skyspit
+	var/skyspit_active = FALSE
+	var/skyspit_expire_timer = null
+	var/skyspit_overlay = null
+	var/skyspit_applier = null // Xeno mob who created the skyspit
+	var/chaff_active = FALSE // Xeno chaff marker
+	var/chaff_expire_timer = null // Timer for chaff marker
+	var/chaff_overlay = null // Overlay for chaff telegraph
+	var/protection_flag_overlay = null // Dropship HUD overlay
+	var/antiair_applier = null // Hive or xeno that applied antiair protection
+
+	var/turf_protection_flags = TURF_PROTECTION_NONE
+
+	var/antiair_effect_type = null // Path of the anti-air effect datum to apply when this turf is targeted by a firemission
+
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
 	if(flags_atom & INITIALIZED)
@@ -646,6 +661,19 @@
 
 /turf/proc/ceiling_desc(mob/user)
 
+	// Check for antiair protection first
+	if(turf_protection_flags & TURF_PROTECTION_ANTIAIR)
+		if(antiair_effect_type)
+			// Create an instance of the antiair effect to get its examine text
+			var/datum/dropship_antiair/effect = new antiair_effect_type()
+			var/examine_result = SPAN_WARNING(effect.examine_text)
+			qdel(effect)
+			return examine_result
+
+	// Check for chaff protection
+	if(turf_protection_flags & TURF_PROTECTION_CHAFF)
+		return SPAN_WARNING("A cloud of opaque chaff blocks out the sky.")
+
 	if(LAZYLEN(linked_pylons))
 		switch(get_pylon_protection_level())
 			if(TURF_PROTECTION_MORTAR)
@@ -959,3 +987,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	if(damage_modifier > 0.5)
 		playsound(loc, "slam", 50, 1)
+
+/turf/proc/obstructed_signal()
+	var/area/laser_area = get_area(src)
+	return !istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_2)

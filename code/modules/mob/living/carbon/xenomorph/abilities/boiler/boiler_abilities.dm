@@ -1,7 +1,6 @@
 /datum/action/xeno_action/onclick/toggle_long_range/boiler
 	should_delay = TRUE
 	delay = 5
-	ability_primacy = XENO_PRIMARY_ACTION_4
 	handles_movement = FALSE
 	movement_slowdown = XENO_SPEED_SLOWMOD_ZOOM
 
@@ -79,11 +78,20 @@
 		/datum/action/xeno_action/onclick/acid_shroud,
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
 		/datum/action/xeno_action/activable/spray_acid/boiler,
+		/datum/action/xeno_action/activable/skyspit/boiler,
 	)
 	xeno_cooldown = 34 SECONDS
 
 	/// Duration for the cooldown of abilities affected by acid shroud
 	var/cooldown_duration = 30 SECONDS
+
+/datum/action/xeno_action/activable/skyspit/boiler
+	name = "Skyspit"
+	action_icon_state = "skyspit"
+	macro_path = /datum/action/xeno_action/verb/verb_skyspit
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
+
 
 //////////////////////////// Trapper boiler abilities
 

@@ -53,6 +53,17 @@
 	plasma_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
+/datum/construction_template/xenomorph/antiair_pylon
+	name = XENO_STRUCTURE_PYLON_ANTIAIR
+	description = "Damages dropships that executes firemissions within its area."
+	build_type = /obj/effect/alien/resin/special/antiair_pylon
+	build_icon_state = "pylon_antiair"
+	plasma_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	block_range = 1
+
+/datum/construction_template/xenomorph/antiair_pylon/set_structure_image()
+	build_icon = 'icons/mob/xenos/structures64x64.dmi'
+
 /datum/construction_template/xenomorph/eggmorph
 	name = XENO_STRUCTURE_EGGMORPH
 	description = "Processes hatched hosts into new facehuggers."

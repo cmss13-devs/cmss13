@@ -107,3 +107,12 @@ If you push crates out of a dropship when paradropping, it will land near the pa
 When paradropping, you can toss any large item (such as a backpack, pouch, or gun) into hyperspace, and it will land near the paradrop drop point. However, smaller items such as flares will not survive the fall.
 Medbay cryotubes will process chemicals in the dead if Cryoxadone and or Clonexadone is present. In a mass-casualty situation or when a patient has severe injuries, consider injecting the dead with chemicals and putting them in the tubes.
 A synthetic's head can be reattached to their body by a skilled doctor. Save your synth!
+Be careful when leaving your rappel point unattended, small xenomorphs are capable of climbing up!
+Zoomed out Boilers and the Queen's Eye are able to periodically detect when a dropship is looking at them from above. Be mindful, pilots!
+DCC and Maintenance Technicians are faster at repairing damaged dropship equipment than pilots. Be sure to call them.
+The Skyspit ability also doubles as a way to extinguish flares in the sky, such as from a mortar or dropship's flare launcher.
+The Skyspit ability and antiair pylon only affect firemissions. Suborbital direct fires are unaffected, be aware!
+The chaff from a Boiler's neuorotoxic Skyspit prevents all CAS suborbital direct fire and pilot vision, but firemissions are unaffected. Be aware!
+Bombs dropped from the Bomb Bay and certain missiles are capable of being direct fired on metal roofs, but not through chaff!
+The dropship's camera console is capable of using auxiliary equipment such as the Medevac. Copilots, be useful!
+The Queen's Skyspit ability is smaller and lasts shorter than the Boiler's, but it is much faster!

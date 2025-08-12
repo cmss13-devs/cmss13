@@ -82,6 +82,38 @@
 
 	var/point_delay = 1 SECONDS
 
+	var/last_psychic_pulse_time = 0
+
+
+/mob/hologram/queen/proc/psychic_pulse_ready()
+	if(world.time < last_psychic_pulse_time + 4 SECONDS)
+		return FALSE
+	last_psychic_pulse_time = world.time
+	return TRUE
+
+
+/mob/hologram/queen/proc/show_psychic_blip(turf/at)
+	if(!linked_mob || !linked_mob.client)
+		return
+	var/datum/mob_hud/xeno/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+	if(!hud || !hud.hudusers[linked_mob])
+		return
+	if(!istype(at))
+		at = get_turf(src)
+	var/obj/effect/overlay/temp/psychic_blip/blip = new()
+	var/image/I = blip.get_blip_image()
+	I.loc = at
+	linked_mob.client.images += I
+	SEND_SOUND(linked_mob, sound('sound/effects/alien_psychic_warning.ogg', volume = 60))
+	addtimer(CALLBACK(src, PROC_REF(clear_psychic_blip), I, blip), 1 SECONDS)
+
+
+/mob/hologram/queen/proc/clear_psychic_blip(image/I, obj/effect/overlay/temp/psychic_blip/blip)
+	if(linked_mob && linked_mob.client && I)
+		linked_mob.client.images -= I
+	if(blip)
+		qdel(blip)
+
 
 /mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)
 	if(!Q)
@@ -344,6 +376,7 @@
 		/datum/action/xeno_action/onclick/send_thoughts,
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/skyspit/queen,
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits,
 		//second macro
@@ -354,6 +387,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/activable/skyspit/queen,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 

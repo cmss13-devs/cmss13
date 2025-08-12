@@ -243,3 +243,10 @@
 	layer = LIGHTING_PRIMARY_LAYER
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE
+
+/atom/movable/screen/fullscreen/pilot_camera/
+	icon_state = "CAS_Camera"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/screen/fullscreen/pilot_camera/bellygun
+	icon_state = "Bellygun_Camera"

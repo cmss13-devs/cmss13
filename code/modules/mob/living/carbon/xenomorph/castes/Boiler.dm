@@ -61,6 +61,7 @@
 	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
+	var/last_psychic_pulse_time = 0
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
@@ -71,8 +72,9 @@
 		/datum/action/xeno_action/activable/xeno_spit/bombard, //1st macro
 		/datum/action/xeno_action/onclick/shift_spits/boiler, //2nd macro
 		/datum/action/xeno_action/activable/spray_acid/boiler, //3rd macro
-		/datum/action/xeno_action/onclick/toggle_long_range/boiler, //4th macro
+		/datum/action/xeno_action/activable/skyspit/boiler, //4th macro
 		/datum/action/xeno_action/onclick/acid_shroud, //5th macro
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	skull = /obj/item/skull/boiler
@@ -92,6 +94,34 @@
 		qdel(smoke)
 		smoke = null
 	. = ..()
+
+// motion detector pulse for dropship
+/mob/living/carbon/xenomorph/boiler/proc/psychic_pulse_ready()
+	if(world.time < last_psychic_pulse_time + 4 SECONDS)
+		return FALSE
+	last_psychic_pulse_time = world.time
+	return TRUE
+
+/mob/living/carbon/xenomorph/boiler/proc/show_psychic_blip(turf/at)
+	if(!client)
+		return
+	var/datum/mob_hud/xeno/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+	if(!hud || !hud.hudusers[src])
+		return
+	if(!istype(at))
+		at = get_turf(src)
+	var/obj/effect/overlay/temp/psychic_blip/blip = new()
+	var/image/I = blip.get_blip_image()
+	I.loc = at
+	client.images += I
+	SEND_SOUND(src, sound('sound/effects/alien_psychic_warning.ogg', volume = 60))
+	addtimer(CALLBACK(src, PROC_REF(clear_psychic_blip), I, blip), 1 SECONDS)
+
+/mob/living/carbon/xenomorph/boiler/proc/clear_psychic_blip(image/I, obj/effect/overlay/temp/psychic_blip/blip)
+	if(client && I)
+		client.images -= I
+	if(blip)
+		qdel(blip)
 
 // No special behavior for boilers
 /datum/behavior_delegate/boiler_base
@@ -279,3 +309,115 @@
 		else
 			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")
 		return TRUE
+
+/datum/action/xeno_action/activable/skyspit/boiler/use_ability(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!xeno.is_zoomed)
+		to_chat(xeno, SPAN_WARNING("You must be zoomed in to use Skyspit!"))
+		return FALSE
+
+	if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas/acid])
+		return ..()
+	else if(xeno.ammo == GLOB.ammo_list[/datum/ammo/xeno/boiler_gas])
+		skyspit_range = 3 // 7x7 area
+		antiair_duration = 150 // 15 seconds
+		return handle_neurotoxin_chaff(affected_atom)
+
+	return ..()
+
+/datum/action/xeno_action/activable/skyspit/boiler/proc/handle_neurotoxin_chaff(atom/affected_atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		to_chat(xeno, SPAN_WARNING("We do not have enough plasma!"))
+		return FALSE
+
+	var/turf/center = get_turf(xeno)
+	if(!center)
+		to_chat(xeno, SPAN_WARNING("No valid areas to mark!"))
+		return FALSE
+
+	if(windup_time > 0)
+		xeno.visible_message(SPAN_WARNING("[xeno] begins to prepare a massive corrosive spit towards the sky!"),
+			SPAN_WARNING("We begin to prepare our skyspit bombardment!"))
+		if(!do_after(xeno, windup_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our skyspit."))
+			return FALSE
+
+	xeno.visible_message(SPAN_XENOWARNING("[xeno] launches a massive neurotoxic cloud into the sky!"),
+		SPAN_XENOWARNING("We launch our neurotoxic payload into the sky!"))
+	playsound(xeno.loc, 'sound/effects/blobattack.ogg', 25, 1)
+
+	var/list/affected_turfs = list()
+	for(var/turf/T in range(skyspit_range, center))
+		if(T.chaff_active)
+			continue
+		T.chaff_active = TRUE
+		T.turf_protection_flags |= TURF_PROTECTION_CHAFF
+		T.chaff_expire_timer = addtimer(CALLBACK(T, /turf/proc/remove_chaff_marker), antiair_duration, TIMER_UNIQUE)
+		if(!T.chaff_overlay)
+			T.chaff_overlay = new /obj/effect/xenomorph/xeno_telegraph/chaff(T, antiair_duration)
+		// Add dropship protection flag overlay for chaff
+		if(!T.protection_flag_overlay)
+			T.protection_flag_overlay = new /obj/effect/overlay/temp/protection_flag/chaff(T)
+		affected_turfs += T
+
+	if(affected_turfs.len)
+		to_chat(xeno, SPAN_NOTICE("You mark the sky with neurotoxic chaff!"))
+
+		// Check for and extinguish illumination flares in the area
+		for(var/turf/T in affected_turfs)
+			for(var/obj/item/device/flashlight/flare/on/illumination/flare in T)
+				flare.visible_message(SPAN_WARNING("[flare]'s light in the sky fizzles out!"))
+				flare.turn_off()
+
+		apply_cooldown()
+		return TRUE
+	else
+		to_chat(xeno, SPAN_WARNING("The area is already marked!"))
+		return FALSE
+
+/turf/proc/remove_skyspit_marker()
+	if(skyspit_active)
+		skyspit_active = FALSE
+		skyspit_expire_timer = null
+		if(skyspit_overlay)
+			qdel(skyspit_overlay)
+			skyspit_overlay = null
+
+		// Check if this turf is still protected by antiair pylons before removing protection
+		var/still_protected = FALSE
+		for(var/obj/O in range(5, src)) // 5 is pylon protection range
+			if(istype(O, /obj/effect/alien/resin/special/antiair_pylon) && !QDELETED(O))
+				still_protected = TRUE
+				break
+
+		// Only remove antiair protection and overlays if no pylon is protecting this area
+		if(!still_protected)
+			turf_protection_flags &= ~TURF_PROTECTION_ANTIAIR
+			// Remove dropship protection flag overlay
+			if(protection_flag_overlay)
+				qdel(protection_flag_overlay)
+				protection_flag_overlay = null
+
+		for(var/mob/M in src)
+			to_chat(M, SPAN_INFO("The cloud of acidic gas in the sky evaporates."))
+
+// Add cleanup for chaff overlay and flag
+/turf/proc/remove_chaff_marker()
+	if(chaff_active)
+		chaff_active = FALSE
+		turf_protection_flags &= ~TURF_PROTECTION_CHAFF
+		chaff_expire_timer = null
+		if(chaff_overlay)
+			qdel(chaff_overlay)
+			chaff_overlay = null
+		// Remove dropship protection flag overlay
+		if(protection_flag_overlay)
+			qdel(protection_flag_overlay)
+			protection_flag_overlay = null
+		for(var/mob/M in src)
+			to_chat(M, SPAN_INFO("The cloud of neurotoxic chaff in the sky dissipates."))

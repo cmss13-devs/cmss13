@@ -28,6 +28,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	MOB_HUD_EXECUTE = new /datum/mob_hud/execute_hud(),
 	MOB_HUD_NEW_PLAYER = new /datum/mob_hud/new_player(),
 	MOB_HUD_SPYCAMS = new /datum/mob_hud/spy_cams(),
+	MOB_HUD_DROPSHIP = new /datum/mob_hud/dropship(),
 	))
 
 /datum/mob_hud
@@ -173,6 +174,26 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/xeno
 	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
+/datum/mob_hud/xeno/refresh_hud(mob/user, list/source)
+	. = ..()
+	if(user.client && isobserver(user))
+		refresh_xeno_telegraphs_for_client(user.client)
+
+/datum/mob_hud/xeno/proc/refresh_xeno_telegraphs_for_client(client/C)
+	if(!C)
+		return
+
+	// Add all existing xeno telegraph overlays to this client
+	for(var/obj/effect/xenomorph/xeno_telegraph/antiair/telegraph in world)
+		if(QDELETED(telegraph) || !telegraph.telegraph_image)
+			continue
+		C.images |= telegraph.telegraph_image
+
+	for(var/obj/effect/xenomorph/xeno_telegraph/chaff/telegraph in world)
+		if(QDELETED(telegraph) || !telegraph.telegraph_image)
+			continue
+		C.images |= telegraph.telegraph_image
+
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 
@@ -244,6 +265,102 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 /datum/mob_hud/spy_cams
 	hud_icons = list(SPYCAM_HUD)
 
+/datum/mob_hud/dropship
+	hud_icons = list(CAS_PROFILING_HUD)
+
+/datum/mob_hud/dropship/refresh_hud(mob/user, list/source)
+	. = ..()
+	if(user.client)
+		refresh_protection_flags_for_client(user.client)
+
+/datum/mob_hud/dropship/proc/refresh_protection_flags_for_client(client/C)
+	if(!C)
+		return
+
+	// Add all existing protection flag overlays to this client
+	for(var/obj/effect/overlay/temp/protection_flag/antiair/flag in world)
+		if(QDELETED(flag) || !flag.flag_image)
+			continue
+		// Antiair flags are only shown to non-observers
+		if(!isobserver(C.mob))
+			C.images |= flag.flag_image
+
+	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in world)
+		if(QDELETED(flag) || !flag.flag_image)
+			continue
+		// Chaff flags are only shown to non-observers
+		if(!isobserver(C.mob))
+			C.images |= flag.flag_image
+
+/datum/mob_hud/dropship/proc/remove_protection_flags_from_client(client/C)
+	if(!C)
+		return
+
+	for(var/obj/effect/overlay/temp/protection_flag/antiair/flag in world)
+		if(QDELETED(flag) || !flag.flag_image)
+			continue
+		C.images -= flag.flag_image
+
+	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in world)
+		if(QDELETED(flag) || !flag.flag_image)
+			continue
+		C.images -= flag.flag_image
+
+/datum/mob_hud/dropship/add_to_single_hud(mob/user, mob/target)
+	if(!user.client || user == target)
+		return
+	// Only show HUD if user is in either the Alamo or Normandy
+	if(!(istype(get_area(user), /area/shuttle/drop1) || istype(get_area(user), /area/shuttle/drop2)))
+		return
+	// Do not show overlays if the target is also in a dropship area
+	if(istype(get_area(target), /area/shuttle/drop1) || istype(get_area(target), /area/shuttle/drop2))
+		return
+	// Marines: always add both overlays
+	if(istype(target, /mob/living/carbon/human) && target.faction == FACTION_MARINE)
+		if("friendly" in target.hud_list)
+			user.client.images |= target.hud_list["friendly"]
+		if("friendly_dead" in target.hud_list)
+			user.client.images |= target.hud_list["friendly_dead"]
+		return
+	// Xenos: always add all overlays
+	if(istype(target, /mob/living/carbon/xenomorph))
+		var/list/xeno_states = list("enemy_light", "enemy_medium", "enemy_heavy", "enemy_dead")
+		for(var/state in xeno_states)
+			if(state in target.hud_list)
+				var/image/overlay = target.hud_list[state]
+				// Center overlay for large xenos
+				if(istype(target, /mob/living/carbon/xenomorph/lurker) || istype(target, /mob/living/carbon/xenomorph/sentinel) || istype(target, /mob/living/carbon/xenomorph/drone))
+					overlay.pixel_x = 12
+					overlay.pixel_y = 0
+				else if(istype(target, /mob/living/carbon/xenomorph/queen))
+					overlay.pixel_x = 29
+					overlay.pixel_y = 0
+				else if(istype(target, /mob/living/carbon/xenomorph/crusher))
+					overlay.pixel_x = 16
+					overlay.pixel_y = 3
+				else
+					overlay.pixel_x = 16
+					overlay.pixel_y = 0
+				user.client.images |= overlay
+		return
+
+/datum/mob_hud/dropship/remove_from_single_hud(mob/user, mob/target)
+	if(!user.client || user == target)
+		return
+	// Marines: remove both overlays (including dead)
+	if(istype(target, /mob/living/carbon/human) && target.faction == FACTION_MARINE)
+		if("friendly" in target.hud_list)
+			user.client.images -= target.hud_list["friendly"]
+		if("friendly_dead" in target.hud_list)
+			user.client.images -= target.hud_list["friendly_dead"]
+		return
+	// Xenos: remove all overlays (including dead)
+	if(istype(target, /mob/living/carbon/xenomorph))
+		var/list/enemy_states = list("enemy_light", "enemy_medium", "enemy_heavy", "enemy_dead")
+		for(var/state in enemy_states)
+			if(state in target.hud_list)
+				user.client.images -= target.hud_list[state]
+		return
 ///////// MOB PROCS //////////////////////////////:
 
 
@@ -265,10 +382,14 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 				continue
 		hud.add_to_hud(src)
 	hud_set_new_player()
+	init_dropship_hud_overlays()
 
 /mob/living/carbon/xenomorph/add_to_all_mob_huds()
 	var/datum/mob_hud/hud = GLOB.huds[MOB_HUD_XENO_STATUS]
 	hud.add_to_hud(src)
+	if(GLOB.huds[MOB_HUD_DROPSHIP])
+		GLOB.huds[MOB_HUD_DROPSHIP].add_to_hud(src)
+	init_dropship_hud_overlays()
 
 
 /mob/proc/remove_from_all_mob_huds()
@@ -906,3 +1027,99 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 	holder.overlays += marker
 	hud_list[NEW_PLAYER_HUD] = holder
 	return TRUE
+
+/mob/living/carbon/human/proc/init_dropship_hud_overlays()
+	if(!("friendly" in hud_list))
+		hud_list["friendly"] = image('icons/mob/hud/hud.dmi', src, "friendly")
+	if(!("friendly_dead" in hud_list))
+		hud_list["friendly_dead"] = image('icons/mob/hud/hud.dmi', src, "friendly_dead")
+	hud_list["friendly"].icon_state = "hudblank"
+	hud_list["friendly_dead"].icon_state = "hudblank"
+	if(stat == DEAD)
+		hud_list["friendly_dead"].icon_state = "friendly_dead"
+	else
+		hud_list["friendly"].icon_state = "friendly"
+
+/mob/living/carbon/xenomorph/proc/init_dropship_hud_overlays()
+	if(!("enemy_light" in hud_list))
+		hud_list["enemy_light"] = image('icons/mob/hud/hud.dmi', src, "enemy_light")
+	if(!("enemy_medium" in hud_list))
+		hud_list["enemy_medium"] = image('icons/mob/hud/hud.dmi', src, "enemy_medium")
+	if(!("enemy_heavy" in hud_list))
+		hud_list["enemy_heavy"] = image('icons/mob/hud/hud.dmi', src, "enemy_heavy")
+	if(!("enemy_dead" in hud_list))
+		hud_list["enemy_dead"] = image('icons/mob/hud/hud.dmi', src, "enemy_dead")
+	hud_list["enemy_light"].icon_state = "hudblank"
+	hud_list["enemy_medium"].icon_state = "hudblank"
+	hud_list["enemy_heavy"].icon_state = "hudblank"
+	hud_list["enemy_dead"].icon_state = "hudblank"
+	if(stat == DEAD && src.tier > 0)
+		hud_list["enemy_dead"].icon_state = "enemy_dead"
+	else
+		var/icon_state = null
+		if(istype(src, /mob/living/carbon/xenomorph/queen) || src.tier >= 3)
+			icon_state = "enemy_heavy"
+		else if(src.tier == 2)
+			icon_state = "enemy_medium"
+		else if(src.tier == 1)
+			icon_state = "enemy_light"
+		if(icon_state)
+			hud_list[icon_state].icon_state = icon_state
+
+/mob/Move(NewLoc, Dir, step_x, step_y, step_z)
+	var/old_area = get_area(src)
+	. = ..(NewLoc, Dir, step_x, step_y, step_z)
+	var/new_area = get_area(src)
+
+	// Update dropship HUD visibility if moving between dropship and ground areas
+	if(GLOB.huds[MOB_HUD_DROPSHIP])
+		update_dropship_hud_on_move(src, old_area, new_area)
+
+/mob/Entered(atom/movable/O)
+	var/old_area = get_area(src)
+	..(O)
+	var/new_area = get_area(src)
+
+	// Update dropship HUD visibility if moving between dropship and ground areas
+	if(GLOB.huds[MOB_HUD_DROPSHIP])
+		update_dropship_hud_on_move(src, old_area, new_area)
+
+/datum/mob_hud/dropship/proc/add_cas_reticles_to_observer(mob/dead/observer/ghost)
+	if(!ghost)
+		return
+	for(var/obj/effect/overlay/temp/dropship_reticle/R in world)
+		if(QDELETED(R)) continue
+		R.update_visibility_for_mob(ghost)
+
+/datum/mob_hud/dropship/proc/remove_cas_reticles_from_observer(mob/dead/observer/ghost)
+	if(!ghost)
+		return
+	for(var/obj/effect/overlay/temp/dropship_reticle/R in world)
+		if(QDELETED(R)) continue
+		R.update_visibility_for_mob(ghost)
+
+/// Helper proc to update dropship HUD visibility when someone teleports between areas
+/proc/update_dropship_hud_on_move(mob/M, area/old_area, area/new_area)
+	if(!M || !GLOB.huds[MOB_HUD_DROPSHIP])
+		return
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	var/was_dropship = istype(old_area, /area/shuttle/drop1) || istype(old_area, /area/shuttle/drop2)
+	var/is_dropship = istype(new_area, /area/shuttle/drop1) || istype(new_area, /area/shuttle/drop2)
+
+	if(was_dropship != is_dropship)
+		// Handle the person who moved
+		if(M in dropship_hud.hudusers)
+			if(is_dropship)
+				// Person entered dropship, add overlays
+				dropship_hud.refresh_hud(M, dropship_hud.hudusers[M])
+			else
+				// Person left dropship, remove overlays
+				for(var/mob/target in dropship_hud.hudmobs)
+					dropship_hud.remove_from_single_hud(M, target)
+
+		if(is_dropship)
+			// Person entered dropship, hide overlays
+			dropship_hud.remove_from_hud(M)
+		else
+			// Person left dropship, show overlays
+			dropship_hud.add_to_hud(M)

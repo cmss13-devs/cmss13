@@ -275,6 +275,15 @@
 	new /obj/item/evidencebag(src)
 	new /obj/item/evidencebag(src)
 
+/obj/item/rappel_harness
+	name = "rappel harness"
+	desc = "A simple, uncomfortable rappel harness with just enough safety straps to make RnD pass health and safety. It comes with an in-built descender, but has no pouches for ammunition."
+	icon = 'icons/obj/items/clothing/belts/belts.dmi'
+	icon_state = "rappel_harness"
+	item_state = "rappel_harness"
+	w_class = SIZE_MEDIUM
+	flags_equip_slot = SLOT_WAIST
+
 /obj/item/parachute
 	name = "parachute"
 	desc = "A surprisingly small yet bulky pack with just enough safety straps to make RnD pass health and safety. The label says the pack comes with two parachutes - main and reserve, but you doubt the pack can fit even one."

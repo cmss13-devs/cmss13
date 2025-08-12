@@ -84,18 +84,31 @@
 	if(optimised)
 		recharge_duration = SHUTTLE_RECHARGE * SHUTTLE_OPTIMIZE_FACTOR_RECHARGE
 
+	var/has_fuel_enhancer = FALSE
+	var/has_ramrocket = FALSE
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
-		// fuel enhancer
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/fuel_enhancer))
-			if(is_flyby)
-				flight_duration = flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
-			else
-				flight_duration = flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL
-
+			has_fuel_enhancer = TRUE
+		if(istype(equipment, /obj/structure/dropship_equipment/fuel/ram_rocket))
+			has_ramrocket = TRUE
 		// cooling system
 		if(istype(equipment, /obj/structure/dropship_equipment/fuel/cooling_system))
 			recharge_duration = recharge_duration * SHUTTLE_COOLING_FACTOR_RECHARGE
 
+
+	// Apply fuel enhancer and ramrocket effects
+	if(has_fuel_enhancer && has_ramrocket)
+		// Cancel out both effects, use whatever flight_duration is currently set to (including optimised)
+	else if(has_fuel_enhancer)
+		if(is_flyby)
+			flight_duration = flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL // 0.75, 25% longer flyby time
+		else
+			flight_duration = flight_duration * SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL // 25% faster transport time
+	else if(has_ramrocket)
+		if(is_flyby)
+			flight_duration = flight_duration / SHUTTLE_RAM_ROCKET_FACTOR_TRAVEL // 1.25, 25% shorter flyby time (opposite of fuel enhancer)
+		else
+			flight_duration = flight_duration * SHUTTLE_RAM_ROCKET_FACTOR_TRAVEL // 25% slower transport time
 
 	dropship.callTime = floor(flight_duration)
 	dropship.rechargeTime = floor(recharge_duration)

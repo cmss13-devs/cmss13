@@ -226,6 +226,20 @@
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "laser_target3"
 
+/obj/effect/overlay/temp/guidance_laser
+	name = "guidance laser"
+	anchored = TRUE
+	light_range = 2
+	effect_duration = 10
+	mouse_opacity = MOUSE_OPACITY_ICON
+	icon = 'icons/obj/items/weapons/projectiles.dmi'
+	icon_state = "yellow_laser"
+
+/obj/effect/overlay/temp/guidance_laser/get_examine_text(mob/user)
+	. = ..()
+	if(ishuman(user))
+		. += SPAN_DANGER("It's a guidance laser from a target designation pod, steer clear of it!")
+
 /obj/effect/overlay/temp/emp_sparks
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "empdisable"
@@ -305,3 +319,243 @@
 	icon = 'icons/mob/xenos/effects.dmi'
 	icon_state = "pool_splash"
 	effect_duration = 10 SECONDS
+
+/obj/effect/overlay/temp/dropship_reticle
+	name = "Targeting Reticle"
+	desc = "A targeting reticle for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "direct_fire_reticle"
+	anchored = TRUE
+	layer = ABOVE_LIGHTING_LAYER
+	plane = ABOVE_LIGHTING_PLANE
+	effect_duration = 600
+
+	var/target_x = null
+	var/target_y = null
+	var/target_z = null
+	var/image/reticle_image = null
+
+	var/shuttle_tag = null
+
+/obj/effect/overlay/temp/dropship_reticle/proc/update_visibility_for_mob(mob/M)
+	var/show_reticle = FALSE
+	if(GLOB.huds[MOB_HUD_DROPSHIP] && (M in GLOB.huds[MOB_HUD_DROPSHIP].hudusers))
+		show_reticle = TRUE
+	if(show_reticle)
+		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+		if(dropship_hud)
+			dropship_hud.add_hud_to(M, src)
+		if(M.client)
+			M.client.images += src.get_reticle_image()
+	else
+		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+		if(dropship_hud)
+			dropship_hud.remove_hud_from(M, src)
+		if(M.client)
+			M.client.images -= src.get_reticle_image()
+
+/obj/effect/overlay/temp/dropship_reticle/proc/get_reticle_image()
+	if(!reticle_image)
+		var/turf/T = locate(target_x, target_y, target_z)
+		reticle_image = image(icon, T, icon_state, layer)
+		reticle_image.plane = ABOVE_LIGHTING_PLANE
+	return reticle_image
+
+/obj/effect/overlay/temp/dropship_reticle/proc/update_target(x, y, z)
+	target_x = x
+	target_y = y
+	target_z = z
+	reticle_image = null
+
+	// motion detector pulse for boilers
+	var/turf/T = locate(x, y, z)
+	if(T)
+		// Only ping when the dropship is actually in flight
+		var/obj/docking_port/mobile/marine_dropship/dropship = shuttle_tag ? SSshuttle.getShuttle(shuttle_tag) : null
+		if(istype(dropship) && dropship.mode == SHUTTLE_CALL)
+			xeno_psy_ping(T)
+
+/obj/effect/overlay/temp/dropship_reticle/proc/remove_from_all_clients()
+	var/image/I = src.get_reticle_image()
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud)
+		for(var/mob/M in dropship_hud.hudusers)
+			if(M.client)
+				M.client.images -= I
+			dropship_hud.remove_hud_from(M, src)
+	for(var/mob/living/carbon/human/M in GLOB.alive_human_list)
+		if(M.client)
+			M.client.images -= I
+
+/obj/effect/overlay/temp/dropship_reticle/bellygunner
+	name = "Belly Gun Targeting Reticle"
+	desc = "A targeting reticle for a dropship's belly gun system."
+	icon_state = "bellygunner_reticle"
+
+// --- Protection Flag Overlays ---
+/obj/effect/overlay/temp/protection_flag
+	name = "Protection Flag"
+	desc = "Indicates turf protection status."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	anchored = TRUE
+	layer = ABOVE_LIGHTING_LAYER
+	plane = ABOVE_LIGHTING_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	effect_duration = -1
+	start_on_spawn = FALSE
+	invisibility = INVISIBILITY_MAXIMUM
+	var/image/flag_image
+
+/obj/effect/overlay/temp/protection_flag/New(turf/T)
+	..()
+	if(T)
+		forceMove(T)
+		update_all_dropship_users()
+
+/obj/effect/overlay/temp/protection_flag/Destroy()
+	if(flag_image)
+		for(var/client/C in GLOB.clients)
+			if(C.images && (flag_image in C.images))
+				C.images -= flag_image
+	..()
+
+/obj/effect/overlay/temp/protection_flag/proc/get_flag_image()
+	if(!flag_image)
+		flag_image = image(icon, src, icon_state, layer)
+		flag_image.plane = plane
+	return flag_image
+
+/obj/effect/overlay/temp/protection_flag/proc/update_all_dropship_users()
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud)
+		var/image/flag_img = get_flag_image()
+		for(var/mob/user in dropship_hud.hudusers)
+			if(user.client)
+				user.client.images += flag_img
+
+/obj/effect/overlay/temp/protection_flag/antiair
+	name = "Anti-Air Protection"
+	desc = "This area is protected by anti-air defenses."
+	icon_state = "danger_reticle"
+
+/obj/effect/overlay/temp/protection_flag/antiair/update_all_dropship_users()
+	// Exclude observers
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud)
+		var/image/flag_img = get_flag_image()
+		for(var/mob/user in dropship_hud.hudusers)
+			if(user.client && !isobserver(user))
+				user.client.images += flag_img
+
+/obj/effect/overlay/temp/protection_flag/antiair/Destroy()
+	if(flag_image)
+		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+		if(dropship_hud)
+			for(var/mob/user in dropship_hud.hudusers)
+				if(user.client && !isobserver(user))
+					user.client.images -= flag_image
+	return ..()
+
+/obj/effect/overlay/temp/protection_flag/chaff
+	name = "Chaff Protection"
+	desc = "This area is protected by chaff countermeasures."
+	icon_state = "warning_reticle"
+
+/obj/effect/overlay/temp/protection_flag/chaff/update_all_dropship_users()
+	// Exclude observers
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud)
+		var/image/flag_img = get_flag_image()
+		for(var/mob/user in dropship_hud.hudusers)
+			if(user.client && !isobserver(user))
+				user.client.images += flag_img
+
+/obj/effect/overlay/temp/protection_flag/chaff/Destroy()
+	if(flag_image)
+		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+		if(dropship_hud)
+			for(var/mob/user in dropship_hud.hudusers)
+				if(user.client && !isobserver(user))
+					user.client.images -= flag_image
+	return ..()
+
+/obj/effect/overlay/temp/dropship_reticle/direct
+	name = "Impact Reticle"
+	desc = "The projected suborbital impact zone for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "impact_reticle"
+
+/obj/effect/overlay/temp/dropship_reticle/direct/proc/spawn_reticle(x, y, z)
+	var/obj/effect/overlay/temp/dropship_reticle/direct/O = new()
+	O.target_x = x
+	O.target_y = y
+	O.target_z = z
+	O.reticle_image = null
+	return O
+
+/obj/effect/overlay/temp/dropship_reticle/direct/New(loc)
+	if(loc)
+		qdel(src)
+		return
+	..()
+
+// --- Firemission Reticle ---
+/obj/effect/overlay/temp/dropship_reticle/firemission
+	name = "Firemission Reticle"
+	desc = "The projected firemission target zone for a dropship's HUD."
+	icon = 'icons/mob/hud/dropship_hud.dmi'
+	icon_state = "firemission_reticle"
+
+/obj/effect/overlay/temp/dropship_reticle/firemission/proc/spawn_reticle(x, y, z)
+	var/obj/effect/overlay/temp/dropship_reticle/firemission/O = new()
+	O.target_x = x
+	O.target_y = y
+	O.target_z = z
+	O.reticle_image = null
+	return O
+
+/obj/effect/overlay/temp/dropship_reticle/firemission/New(loc)
+	if(loc)
+		qdel(src)
+		return
+	..()
+
+// --- Xeno Psychic Blip ---
+
+/obj/effect/overlay/temp/psychic_blip
+	name = "Psychic Pulse"
+	icon = 'icons/mob/hud/xeno_markers.dmi'
+	icon_state = "blip"
+	anchored = TRUE
+	layer = BELOW_FULLSCREEN_LAYER
+	plane = FULLSCREEN_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	effect_duration = 6
+
+/obj/effect/overlay/temp/psychic_blip/proc/get_blip_image()
+	var/image/I = image(icon, src, icon_state, layer)
+	I.plane = plane
+	return I
+
+// dispatches motion detector pings to boily/queen eye whenever dropship reticle moves
+/proc/xeno_psy_ping(turf/T)
+	if(!T)
+		return
+	var/area/TA = get_area(T)
+	if(!TA)
+		return
+	for(var/mob/living/carbon/xenomorph/boiler/B in GLOB.living_xeno_list)
+		if(QDELETED(B) || !B.is_zoomed)
+			continue
+		var/area/BA = get_area(B)
+		if(BA == TA && B.psychic_pulse_ready())
+			B.show_psychic_blip(T)
+
+	for(var/mob/hologram/queen/QE as anything in GLOB.hologram_list)
+		if(QDELETED(QE))
+			continue
+		var/area/QA = get_area(QE)
+		if(QA != TA)
+			continue
+		if(QE.psychic_pulse_ready())
+			QE.show_psychic_blip(T)

@@ -580,6 +580,114 @@
 /obj/effect/xenomorph/xeno_telegraph/lash
 	icon_state = "xeno_telegraph_lash"
 
+/// Anti-air skyspit telegraph
+/obj/effect/xenomorph/xeno_telegraph/antiair
+	icon_state = "xeno_telegraph_antiair"
+	layer = LOWER_ITEM_LAYER
+	invisibility = INVISIBILITY_MAXIMUM
+	var/image/telegraph_image
+
+/obj/effect/xenomorph/xeno_telegraph/antiair/proc/get_telegraph_image()
+	if(!telegraph_image)
+		telegraph_image = image(icon, src, icon_state, layer)
+		telegraph_image.plane = plane
+	return telegraph_image
+
+/obj/effect/xenomorph/xeno_telegraph/antiair/proc/update_all_xeno_users()
+	// Add this overlay to all xeno clients and xeno status HUD enabled
+	var/image/telegraph_img = get_telegraph_image()
+	for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
+		if(xeno.client)
+			xeno.client.images |= telegraph_img
+
+	// Also add to observers who have xeno status HUD enabled
+	var/datum/mob_hud/xeno_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+	if(xeno_hud)
+		for(var/mob/user in xeno_hud.hudusers)
+			if(user.client && isobserver(user))
+				user.client.images |= telegraph_img
+
+/obj/effect/xenomorph/xeno_telegraph/antiair/New(loc, ttl = 10, color = null)
+	if(loc)
+		forceMove(loc)
+	if(color)
+		src.color = color
+
+	if(ttl > 0)
+		QDEL_IN(src, ttl)
+
+	// Add this overlay to all current xeno clients and observers
+	update_all_xeno_users()
+
+/obj/effect/xenomorph/xeno_telegraph/antiair/Destroy()
+	// Remove image from all xeno clients and observers before destroying
+	if(telegraph_image)
+		for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
+			if(xeno.client)
+				xeno.client.images -= telegraph_image
+
+		var/datum/mob_hud/xeno_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+		if(xeno_hud)
+			for(var/mob/user in xeno_hud.hudusers)
+				if(user.client && isobserver(user))
+					user.client.images -= telegraph_image
+	telegraph_image = null
+	return ..()
+
+/// Chaff skyspit telegraph
+/obj/effect/xenomorph/xeno_telegraph/chaff
+	icon_state = "xeno_telegraph_chaff"
+	layer = LOWER_ITEM_LAYER
+	invisibility = INVISIBILITY_MAXIMUM
+	var/image/telegraph_image
+
+/obj/effect/xenomorph/xeno_telegraph/chaff/proc/get_telegraph_image()
+	if(!telegraph_image)
+		telegraph_image = image(icon, src, icon_state, layer)
+		telegraph_image.plane = plane
+	return telegraph_image
+
+/obj/effect/xenomorph/xeno_telegraph/chaff/proc/update_all_xeno_users()
+	// Add this overlay to all xeno clients with xeno status HUD enabled
+	var/image/telegraph_img = get_telegraph_image()
+	for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
+		if(xeno.client)
+			xeno.client.images |= telegraph_img
+
+	// Also add to observers who have xeno status HUD enabled
+	var/datum/mob_hud/xeno_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+	if(xeno_hud)
+		for(var/mob/user in xeno_hud.hudusers)
+			if(user.client && isobserver(user))
+				user.client.images |= telegraph_img
+
+/obj/effect/xenomorph/xeno_telegraph/chaff/New(loc, ttl = 10, color = null)
+	if(loc)
+		forceMove(loc)
+	if(color)
+		src.color = color
+
+	if(ttl > 0)
+		QDEL_IN(src, ttl)
+
+	// Add this overlay to all current xeno clients and observers
+	update_all_xeno_users()
+
+/obj/effect/xenomorph/xeno_telegraph/chaff/Destroy()
+	// Remove image from all xeno clients and observers before destroying
+	if(telegraph_image)
+		for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
+			if(xeno.client)
+				xeno.client.images -= telegraph_image
+
+		var/datum/mob_hud/xeno_hud = GLOB.huds[MOB_HUD_XENO_STATUS]
+		if(xeno_hud)
+			for(var/mob/user in xeno_hud.hudusers)
+				if(user.client && isobserver(user))
+					user.client.images -= telegraph_image
+	telegraph_image = null
+	return ..()
+
 /obj/effect/xenomorph/acid_damage_delay
 	name = "???"
 	desc = ""

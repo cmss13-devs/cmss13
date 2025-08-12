@@ -11,8 +11,12 @@ type DataEntry = {
   is_ammo: BooleanLike;
 };
 
+type EquipmentCategories = {
+  [key: string]: DataEntry[];
+};
+
 type Data = {
-  Equipment: DataEntry[];
+  Equipment: EquipmentCategories;
   Ammo: DataEntry[];
   points: number;
   omnisentrygun_price: number;
@@ -22,7 +26,7 @@ type Data = {
 export const PartFabricator = (props) => {
   return (
     <Window width={900} height={850}>
-      <Window.Content>
+      <Window.Content scrollable>
         <GeneralPanel />
       </Window.Content>
     </Window>
@@ -37,35 +41,42 @@ const GeneralPanel = (props) => {
       <Section>
         <Section>Points: {points}</Section>
         <Flex height="100%" direction="row">
-          <Flex.Item>
+          <Flex.Item grow={1}>
             <Section title="Equipment">
-              <LabeledList>
-                {Equipment.map((Equipment) => (
-                  <LabeledList.Item
-                    key={Equipment.name}
-                    label={Equipment.name}
-                    className="underline"
-                    buttons={
-                      <Button
-                        icon="wrench"
-                        tooltip={Equipment.desc}
-                        tooltipPosition="left"
-                        onClick={() =>
-                          act('produce', {
-                            index: Equipment.index,
-                            is_ammo: Equipment.is_ammo,
-                          })
-                        }
-                      >
-                        {'Fabricate  (' + Equipment.cost + ')'}
-                      </Button>
-                    }
-                  />
-                ))}
-              </LabeledList>
+              {Object.entries(Equipment).map(
+                ([categoryName, equipmentList]) => (
+                  <Section key={categoryName} title={categoryName}>
+                    <LabeledList>
+                      {equipmentList.map((equipment) => (
+                        <LabeledList.Item
+                          key={equipment.name}
+                          label={equipment.name}
+                          className="underline"
+                          buttons={
+                            <Button
+                              icon="wrench"
+                              tooltip={equipment.desc}
+                              tooltipPosition="left"
+                              onClick={() =>
+                                act('produce', {
+                                  index: equipment.index,
+                                  is_ammo: equipment.is_ammo,
+                                })
+                              }
+                            >
+                              {'Fabricate  (' + equipment.cost + ')'}
+                            </Button>
+                          }
+                        />
+                      ))}
+                    </LabeledList>
+                  </Section>
+                ),
+              )}
             </Section>
           </Flex.Item>
-          <Flex.Item>
+          <Flex.Item width="2rem" />
+          <Flex.Item grow={1}>
             <Section title="Ammo">
               <LabeledList>
                 {Ammo.map((Ammo) => (

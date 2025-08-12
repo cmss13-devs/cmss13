@@ -537,6 +537,7 @@ Make sure their actual health updates immediately.*/
 	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
 	if(stat != .)
 		handle_regular_hud_updates()
+		init_dropship_hud_overlays()
 
 /mob/living/carbon/xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0

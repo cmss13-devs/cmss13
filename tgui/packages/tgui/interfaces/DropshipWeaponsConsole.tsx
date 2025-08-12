@@ -59,7 +59,24 @@ export type DropshipEquipment = {
   burst?: number;
   max_ammo?: number;
   firemission_delay?: number;
+  last_fired?: number;
+  firing_delay?: number;
+  medevac_cooldown?: number;
+  system_cooldown?: number;
+  deployment_cooldown?: number;
+  spotlights_cooldown?: number;
+  fulton_cooldown?: number;
+  reload_cooldown?: number;
   data?: any;
+  stored_ammo?: Array<{
+    name: string;
+    ammo_count: number;
+    max_ammo_count: number;
+    ammo_name: string;
+    ref: string;
+  }>;
+  icon_state?: string;
+  damaged?: boolean;
 };
 
 const xOffset = 40;
@@ -311,7 +328,7 @@ const BaseMfdPanel = (props: MfdProps) => {
           <h1>U.S.C.M.</h1>
           <h1>Dropship Weapons Control System</h1>
           <h3>UA Northbridge</h3>
-          <h3>V 0.1</h3>
+          <h3>V 1.0</h3>
         </div>
       </Box>
     </MfdPanel>
@@ -354,6 +371,7 @@ export const DropshipWeaponsConsole = () => {
               <PrimaryPanel
                 panelStateId="left-screen"
                 otherPanelStateId="right-screen"
+                consoleType="weapons"
               />
             </Stack.Item>
             <Stack.Item>
@@ -376,6 +394,7 @@ export const DropshipWeaponsConsole = () => {
               <PrimaryPanel
                 panelStateId="right-screen"
                 otherPanelStateId="left-screen"
+                consoleType="weapons"
               />
             </Stack.Item>
           </Stack>

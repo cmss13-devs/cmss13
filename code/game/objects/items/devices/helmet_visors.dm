@@ -351,3 +351,50 @@
 
 /obj/item/device/helmet_visor/night_vision/marine_raider/process(delta_time)
 	return PROCESS_KILL
+
+/obj/item/device/helmet_visor/pilot
+	name = "pilot optic"
+	desc = "A tactical eyepiece able to be affixed to a USCM Pilot's helmet. It filters flight data and targeting information to a Heads-up Display."
+	icon_state = "pilot_sight"
+	hud_type = MOB_HUD_DROPSHIP
+	action_icon_string = "pilot_sight_down"
+	helmet_overlay = "pilot_sight_left"
+
+/obj/item/device/helmet_visor/pilot/can_toggle(mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	if(!skillcheck(user, SKILL_PILOT, SKILL_PILOT_EXPERT))
+		to_chat(user, SPAN_NOTICE("You are not skilled enough to use [src]."))
+		return FALSE
+	return TRUE
+
+/obj/item/device/helmet_visor/pilot/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	. = ..()
+	// Refresh protection flags for pilots when they activate their HUD
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud && user.client)
+		dropship_hud.refresh_protection_flags_for_client(user.client)
+
+/obj/item/device/helmet_visor/pilot/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	. = ..()
+	// Remove protection flags from pilots when they deactivate their HUD
+	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+	if(dropship_hud && user.client)
+		dropship_hud.remove_protection_flags_from_client(user.client)
+	// Remove the dropship HUD datum from the user
+	if(user && ismob(user))
+		if(dropship_hud)
+			// Remove all dropship HUD overlays for this user
+			dropship_hud.remove_hud_from(user, attached_helmet)
+			// Remove from hudusers if present
+			if(user in dropship_hud.hudusers)
+				dropship_hud.hudusers -= user
+			// Force remove all friendly/enemy overlays
+			for(var/mob/target_mob in dropship_hud.hudmobs)
+				dropship_hud.remove_from_single_hud(user, target_mob)
+	// Remove any stuck reticle overlays from the client
+	if(user?.client)
+		for(var/image/I in user.client.images)
+			if(I.icon_state == "direct_fire_reticle" || I.icon_state == "dropship_reticle")
+				user.client.images -= I

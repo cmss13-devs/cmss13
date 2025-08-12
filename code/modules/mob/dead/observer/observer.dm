@@ -414,6 +414,9 @@
 				if("Faction WO HUD")
 					the_hud= GLOB.huds[MOB_HUD_FACTION_WO]
 					the_hud.add_hud_to(src, src)
+				if("Dropship CAS HUD")
+					the_hud= GLOB.huds[MOB_HUD_DROPSHIP]
+					the_hud.add_hud_to(src, src)
 				if(HUD_MENTOR_SIGHT)
 					the_hud = GLOB.huds[MOB_HUD_NEW_PLAYER]
 					the_hud.add_hud_to(src, src)

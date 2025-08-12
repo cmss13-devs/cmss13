@@ -1,11 +1,13 @@
 import { useBackend } from 'tgui/backend';
 import { Box, Stack } from 'tgui/components';
 
+import { AutoReloaderMfdPanel } from './AutoReloaderPanel';
 import { FultonMfdPanel } from './FultonPanel';
 import { MedevacMfdPanel } from './MedevacPanel';
 import { MgMfdPanel } from './MGPanel';
 import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { ParadropMfdPanel } from './ParadropPanel';
+import { RappelMfdPanel } from './RappelPanel';
 import { SentryMfdPanel } from './SentryPanel';
 import { SpotlightMfdPanel } from './SpotlightPanel';
 import { mfdState, useEquipmentState } from './stateManagers';
@@ -21,26 +23,58 @@ export const SupportMfdPanel = (props: MfdProps) => {
     (x) => x.mount_point === equipmentState,
   );
   if (result?.shorthand === 'Medevac') {
-    return <MedevacMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <MedevacMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   if (result?.shorthand === 'Fulton') {
-    return <FultonMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <FultonMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   if (result?.shorthand === 'Sentry') {
-    return <SentryMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <SentryMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   if (result?.shorthand === 'PDS') {
-    return <ParadropMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <ParadropMfdPanel
+        panelStateId={props.panelStateId}
+        color={props.color}
+      />
+    );
   }
   if (result?.shorthand === 'MG') {
-    return <MgMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <MgMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   if (result?.shorthand === 'Spotlight') {
-    return <SpotlightMfdPanel panelStateId={props.panelStateId} />;
+    return (
+      <SpotlightMfdPanel
+        panelStateId={props.panelStateId}
+        color={props.color}
+      />
+    );
+  }
+  if (result?.shorthand === 'RMT') {
+    return (
+      <AutoReloaderMfdPanel
+        panelStateId={props.panelStateId}
+        color={props.color}
+      />
+    );
+  }
+  if (result?.shorthand === 'RDS') {
+    return (
+      <RappelMfdPanel panelStateId={props.panelStateId} color={props.color} />
+    );
   }
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      color={props.color}
       topButtons={[
         { children: 'EQUIP', onClick: () => setPanelState('equipment') },
       ]}

@@ -2,6 +2,7 @@
 	var/obj/structure/machinery/computer/dropship_weapons/linked_console
 	var/list/datum/cas_fire_mission/missions
 	var/fire_length
+	var/base_fire_length // Base fire length before equipment bonuses
 	var/grace_period //how much time you have after initiating fire mission and before you can't change firemissions
 	var/first_warning
 	var/second_warning
@@ -24,6 +25,15 @@
 	var/obj/effect/firemission_guidance/guidance
 	var/atom/tracked_object
 
+	var/antiair_fx_played = FALSE
+
+	var/shuttle_shake_played = FALSE // Track if shuttle shake effect has played this firemission
+
+	var/xeno_announcement_played = FALSE // Track if xeno announcement has played this firemission
+
+	/// Stores saved firemission configurations by equipment attach_id for restoration after uninstall/reinstall
+	var/list/saved_equipment_configs = list()
+
 /datum/cas_fire_envelope/New()
 	..()
 	missions = list()
@@ -40,22 +50,95 @@
 		.["missions"] += list(mission.ui_data(user))
 
 /datum/cas_fire_envelope/proc/update_weapons(list/obj/structure/dropship_equipment/weapon/weapons)
+	// Exclude heavygun/bay from firemission weapons unless this is a belly_gun console
+	var/is_belly_gun_console = istype(linked_console, /obj/structure/machinery/computer/dropship_weapons/belly_gun)
+	var/list/obj/structure/dropship_equipment/weapon/filtered_weapons = list()
+	for(var/obj/structure/dropship_equipment/weapon/weapon in weapons)
+		if(istype(weapon, /obj/structure/dropship_equipment/weapon/heavygun/bay) && !is_belly_gun_console)
+			continue
+		filtered_weapons += weapon
+
+	// Save configurations for equipment that's being removed
+	save_equipment_configs(filtered_weapons)
+
 	for(var/datum/cas_fire_mission/mission in missions)
-		mission.update_weapons(weapons, fire_length)
+		mission.update_weapons(filtered_weapons, fire_length, saved_equipment_configs)
+
+/// Save firemission configurations for equipment that's about to be removed
+/datum/cas_fire_envelope/proc/save_equipment_configs(list/obj/structure/dropship_equipment/weapon/current_weapons)
+	// Create a set of current weapon attach_ids for quick lookup
+	var/list/current_attach_ids = list()
+	for(var/obj/structure/dropship_equipment/weapon/weapon in current_weapons)
+		if(weapon?.ship_base?.attach_id)
+			current_attach_ids += weapon.ship_base.attach_id
+
+	// For each mission, save configs of equipment that's being removed
+	for(var/datum/cas_fire_mission/mission in missions)
+		for(var/datum/cas_fire_mission_record/record in mission.records)
+			if(!record.weapon?.ship_base?.attach_id)
+				continue
+			var/attach_id = record.weapon.ship_base.attach_id
+			// If this equipment is no longer in current weapons, it's being removed
+			if(!(attach_id in current_attach_ids))
+				if(!saved_equipment_configs[mission.name])
+					saved_equipment_configs[mission.name] = list()
+				// Create config key that includes weapon type, attach_id and ammo type
+				var/weapon_type = record.weapon.type
+				var/ammo_name = record.weapon?.ammo_equipped?.name || "No Ammo"
+				var/config_key = "[weapon_type]_[attach_id]_[ammo_name]"
+				// Save the offsets configuration for this combination
+				saved_equipment_configs[mission.name][config_key] = record.offsets.Copy()
+
+				// Also save a fallback configuration under weapon type and attach_id
+				var/fallback_key = "[weapon_type]_[attach_id]_FALLBACK"
+				saved_equipment_configs[mission.name][fallback_key] = record.offsets.Copy()
+
+/// Save configuration
+/datum/cas_fire_envelope/proc/save_equipment_config(datum/cas_fire_mission/mission, obj/structure/dropship_equipment/weapon/weapon)
+	if(!mission || !weapon?.ship_base?.attach_id)
+		return
+
+	var/attach_id = weapon.ship_base.attach_id
+	var/datum/cas_fire_mission_record/record = mission.record_for_weapon(attach_id)
+	if(!record)
+		return
+
+	if(!saved_equipment_configs[mission.name])
+		saved_equipment_configs[mission.name] = list()
+
+	// Create config key that includes weapon type, attach_id and ammo type
+	var/weapon_type = weapon.type
+	var/ammo_name = weapon?.ammo_equipped?.name || "No Ammo"
+	var/config_key = "[weapon_type]_[attach_id]_[ammo_name]"
+
+	// Save the current offsets configuration
+	saved_equipment_configs[mission.name][config_key] = record.offsets.Copy()
+
+	// Also save a fallback configuration under weapon type and attach_id
+	var/fallback_key = "[weapon_type]_[attach_id]_FALLBACK"
+	saved_equipment_configs[mission.name][fallback_key] = record.offsets.Copy()
 
 /datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
-	if(!missions || !linked_console || !fire_length)
+	if(!missions || !linked_console)
 		return null
 	var/list/obj/structure/dropship_equipment/weapons = list()
 	var/shuttle_tag = linked_console.shuttle_tag
 	var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+
+	// Update fire_length based on equipment
+	update_fire_length()
+
+	// Exclude heavygun/bay from firemission weapons unless this is a belly_gun console
+	var/is_belly_gun_console = istype(linked_console, /obj/structure/machinery/computer/dropship_weapons/belly_gun)
 	for(var/obj/structure/dropship_equipment/equipment as anything in dropship.equipments)
 		if(equipment.is_weapon)
+			if(istype(equipment, /obj/structure/dropship_equipment/weapon/heavygun/bay) && !is_belly_gun_console)
+				continue
 			weapons += equipment
 
 	var/datum/cas_fire_mission/fm = new()
 	for(var/obj/structure/dropship_equipment/weapon/wp in weapons)
-		fm.build_new_record(wp, fire_length)
+		fm.build_new_record(wp, fire_length, saved_equipment_configs)
 
 	fm.name = firemission_name
 	fm.mission_length = length
@@ -74,6 +157,12 @@
 	if(!mission)
 		return FIRE_MISSION_NOT_EXECUTABLE
 
+	// Update fire_length and check if mission exceeds current capability
+	update_fire_length()
+	if(mission.mission_length > fire_length)
+		mission_error = "Fire Mission length ([mission.mission_length]) exceeds current vehicle capability ([fire_length]). Check equipment configuration."
+		return FIRE_MISSION_NOT_EXECUTABLE
+
 	var/datum/cas_fire_mission_record/fmr = mission.record_for_weapon(weapon_id)
 	if(!fmr)
 		return FIRE_MISSION_NOT_EXECUTABLE
@@ -83,6 +172,9 @@
 	if(offset == null)
 		offset = "-"
 	fmr.offsets[offset_step] = offset
+
+	save_equipment_config(mission, fmr.weapon)
+
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
 		return FIRE_MISSION_NOT_EXECUTABLE
@@ -111,6 +203,13 @@
 		return FIRE_MISSION_BAD_DIRECTION
 	mission_error = null
 	var/datum/cas_fire_mission/mission = missions[mission_id]
+
+	// Update fire_length and check if mission exceeds current capability
+	update_fire_length()
+	if(mission.mission_length > fire_length)
+		mission_error = "Fire Mission length ([mission.mission_length]) exceeds current vehicle capability ([fire_length]). Check equipment configuration."
+		return FIRE_MISSION_CODE_ERROR
+
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
 		return FIRE_MISSION_CODE_ERROR
@@ -312,12 +411,21 @@
 	firemission_effect.invisibility = INVISIBILITY_MAXIMUM
 	QDEL_IN(firemission_effect, 12 SECONDS)
 
+	// Ramrocket decreases grace period
+	var/adjusted_grace_period = grace_period
+	if(linked_console)
+		var/shuttle_tag = linked_console.shuttle_tag
+		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+		if(istype(dropship))
+			for(var/obj/structure/dropship_equipment/fuel/ram_rocket/rocket in dropship.equipments)
+				adjusted_grace_period = grace_period / 2
+				break
 
 	notify_ghosts(header = "CAS Fire Mission", message = "[usr ? usr : "Someone"] is launching Fire Mission '[mission.name]' at [get_area(target_turf)].", source = firemission_effect)
 	msg_admin_niche("[usr ? key_name(usr) : "Someone"] is launching Fire Mission '[mission.name]' at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 
 
-	addtimer(CALLBACK(src, PROC_REF(play_sound), target_turf), grace_period)
+	addtimer(CALLBACK(src, PROC_REF(play_sound), target_turf), adjusted_grace_period)
 	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 1), first_warning)
 	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 2), second_warning)
 	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 10, 3), third_warning)
@@ -367,6 +475,7 @@
 
 /datum/cas_fire_envelope/uscm_dropship
 	fire_length = 12
+	base_fire_length = 12
 	grace_period = 5 SECONDS
 	first_warning = 6 SECONDS
 	second_warning = 8 SECONDS
@@ -408,3 +517,75 @@
 	if(result != FIRE_MISSION_ALL_GOOD)
 		return firemission_envelope.mission_error
 	return "OK"
+
+/datum/cas_fire_envelope/proc/update_fire_length()
+	// Reset to base fire length to prevent stacking bonuses
+	// If base_fire_length is not set, use current fire_length as base
+	if(!base_fire_length)
+		base_fire_length = fire_length
+	fire_length = base_fire_length
+
+	if(linked_console)
+		var/shuttle_tag = linked_console.shuttle_tag
+		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
+		if(istype(dropship))
+			// Check for ram rocket equipment (adds +4 fire length, not stackable)
+			for(var/obj/structure/dropship_equipment/fuel/ram_rocket/rocket in dropship.equipments)
+				fire_length += 4
+				break
+
+/datum/cas_fire_envelope/proc/anti_air_success(atom/target_turf, range = 10, datum/dropship_antiair/effect_type = null)
+	var/ds_identifier = "LARGE BIRD"
+	var/custom_message = ""
+
+	for(var/mob/mob in range(range, target_turf))
+		if(mob && !QDELETED(mob) && !mob.gc_destroyed && mob.client)
+			if(mob.mob_flags & KNOWS_TECHNOLOGY)
+				ds_identifier = "DROPSHIP"
+			else
+				ds_identifier = "LARGE BIRD"
+
+			// Set custom message based on the antiair effect type
+			if(effect_type && effect_type.get_antiair_message(ds_identifier))
+				custom_message = effect_type.get_antiair_message(ds_identifier)
+			else
+				// Default message for all other cases
+				custom_message = "YOU HEAR THE [ds_identifier] VEER OFF COURSE AS AN EXPLOSION ROCKS ITS FRAME!"
+
+			mob.show_message(
+				SPAN_HIGHDANGER(custom_message), SHOW_MESSAGE_AUDIBLE
+			)
+	if(!src.antiair_fx_played)
+		src.antiair_fx_played = TRUE
+		playsound(target_turf, 'sound/effects/supercapacitors_charging.ogg', vol = 80, vary = TRUE, sound_range = 75, falloff = 8)
+		// Announce to xenos only if the anti-air was created by a xeno and announcement hasn't been played yet
+		if(!src.xeno_announcement_played)
+			var/turf/turf_loc = get_turf(target_turf)
+			var/hivenumber_to_announce = null
+
+			if(turf_loc && turf_loc.skyspit_applier && istype(turf_loc.skyspit_applier, /mob/living/carbon/xenomorph))
+				var/mob/living/carbon/xenomorph/applier_xeno = turf_loc.skyspit_applier
+				hivenumber_to_announce = applier_xeno.hivenumber
+			// Check for pylon antiair
+			else if(turf_loc && turf_loc.antiair_applier && istype(turf_loc.antiair_applier, /datum/hive_status))
+				var/datum/hive_status/applier_hive = turf_loc.antiair_applier
+				hivenumber_to_announce = applier_hive.hivenumber
+
+			if(hivenumber_to_announce)
+				xeno_announcement("The metal bird's cries can be heard from the sky. It's been injured!", hivenumber_to_announce, XENO_GENERAL_ANNOUNCE)
+				src.xeno_announcement_played = TRUE
+		// Spark effect for the Dropship
+		var/list/nearby = list()
+		for(var/turf/T in range(3, target_turf)) if(T != target_turf) nearby += T
+		if(nearby.len)
+			var/list/used = list()
+			var/max_sparks = min(9, nearby.len)
+			for(var/i = 1, i <= max_sparks, i++)
+				var/turf/random_turf = pick(nearby - used)
+				if(random_turf)
+					new /obj/effect/particle_effect/sparks(random_turf)
+					used += random_turf
+		// Shake the camera for all mobs in range
+		for(var/mob/mob in range(range, target_turf))
+			if(mob && !QDELETED(mob) && !mob.gc_destroyed && mob.client && istype(mob, /mob/living))
+				shake_camera(mob, 10, 1)

@@ -62,6 +62,38 @@
 	instance.screen_loc = "[map_name]:CENTER"
 	cam_plane_masters["[instance.plane]"] = instance
 
+/datum/component/camera_manager/proc/show_pilot_camera(mob/user)
+	if(user && parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		for(var/plane_id in cam_plane_masters)
+			var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
+			var/atom/movable/screen/fullscreen/pilot_camera/overlay
+			// bellygun has its own display
+			if(istype(parent, /obj/structure/machinery/computer/dropship_weapons/belly_gun))
+				overlay = new /atom/movable/screen/fullscreen/pilot_camera/bellygun()
+			else
+				overlay = new /atom/movable/screen/fullscreen/pilot_camera()
+			overlay:assigned_map = map_name
+			overlay:pixel_x = -224
+			overlay:pixel_y = -224
+			overlay:screen_loc = null
+			overlay:layer = plane:layer + 1
+			overlay:plane = plane:plane
+			plane:vis_contents += overlay
+			if(!islist(plane:vars["cas_hud_overlays"])) plane:vars["cas_hud_overlays"] = list()
+			plane:vars["cas_hud_overlays"] += overlay
+
+/datum/component/camera_manager/proc/hide_pilot_camera(mob/user)
+	if(user && parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		// Remove the CAS HUD overlay from the camera panel's plane masters
+		for(var/plane_id in cam_plane_masters)
+			var/atom/movable/screen/plane_master/plane = cam_plane_masters[plane_id]
+			if(islist(plane:vars["cas_hud_overlays"]))
+				for(var/overlay in plane:vars["cas_hud_overlays"])
+					var/atom/movable/screen/fullscreen/pilot_camera/typed_overlay = overlay
+					plane:vis_contents -= typed_overlay
+					qdel(typed_overlay)
+				plane:vars["cas_hud_overlays"] = list()
+
 /datum/component/camera_manager/proc/register(source, mob/user)
 	SIGNAL_HANDLER
 	var/client/user_client = user.client
@@ -71,6 +103,7 @@
 	user_client.register_map_obj(cam_background)
 	for(var/plane_id in cam_plane_masters)
 		user_client.register_map_obj(cam_plane_masters[plane_id])
+	show_pilot_camera(user)
 
 /datum/component/camera_manager/proc/unregister(source, mob/user)
 	SIGNAL_HANDLER
@@ -78,6 +111,17 @@
 	if(!user_client)
 		return
 	user_client.clear_map(map_name)
+	hide_pilot_camera(user)
+	// Remove dropship reticle overlay if present when exiting console
+	if(parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		var/obj/structure/machinery/computer/dropship_weapons/console = parent
+		if(console.direct_fire_reticle)
+			var/atom/movable/screen/plane_master/above_lighting = cam_plane_masters["[ABOVE_LIGHTING_PLANE]"]
+			if(above_lighting)
+				above_lighting.vis_contents -= console.direct_fire_reticle
+			console.direct_fire_reticle.remove_from_all_clients()
+			qdel(console.direct_fire_reticle)
+			console.direct_fire_reticle = null
 
 /datum/component/camera_manager/RegisterWithParent()
 	. = ..()
@@ -106,6 +150,16 @@
 	SIGNAL_HANDLER
 	if(current)
 		UnregisterSignal(current, COMSIG_PARENT_QDELETING)
+	// Remove dropship reticle overlay if present
+	if(parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+		var/obj/structure/machinery/computer/dropship_weapons/console = parent
+		if(console.direct_fire_reticle)
+			var/atom/movable/screen/plane_master/above_lighting = cam_plane_masters["[ABOVE_LIGHTING_PLANE]"]
+			if(above_lighting)
+				above_lighting.vis_contents -= console.direct_fire_reticle
+			console.direct_fire_reticle.remove_from_all_clients()
+			qdel(console.direct_fire_reticle)
+			console.direct_fire_reticle = null
 	current_area = null
 	current = null
 	target_x = null
@@ -236,6 +290,65 @@
 	for(var/turf/visible_turf in visible_things)
 		visible_turfs += visible_turf
 
+	var/turf/center_turf = null
+	var/allow_render = FALSE
+	var/cas_camera = (parent && istype(parent, /obj/structure/machinery/computer/dropship_weapons))
+
+	// Check if this is a dropship weapons console with an active firemission in ON_TARGET or FIRING state
+	if(cas_camera)
+		var/obj/structure/machinery/computer/dropship_weapons/console = parent
+		if(console.firemission_envelope && (console.firemission_envelope.stat == FIRE_MISSION_STATE_ON_TARGET || console.firemission_envelope.stat == FIRE_MISSION_STATE_FIRING))
+			allow_render = TRUE
+
+	if(render_mode == RENDER_MODE_AREA && current_area && target_z)
+		center_turf = locate(current_area.center_x, current_area.center_y, target_z)
+	else if(render_mode == RENDER_MODE_TARGET && last_camera_turf)
+		center_turf = last_camera_turf
+	else
+		return
+
+	if(cas_camera && !allow_render)
+		var/area/laser_area = get_area(center_turf)
+		if(center_turf.turf_protection_flags & TURF_PROTECTION_CHAFF)
+			show_camera_static()
+			return
+		if(!istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_1))
+			show_camera_static()
+			return
+		if(center_turf.obstructed_signal())
+			show_camera_static()
+			return
+
+	// Spawn Dropship Reticle
+	if(cas_camera)
+		var/obj/structure/machinery/computer/dropship_weapons/console = parent
+		// Remove any previous reticle image overlays from all clients
+		if(console.direct_fire_reticle)
+			// Remove from plane master vis_contents if present
+			var/atom/movable/screen/plane_master/above_lighting = cam_plane_masters["[ABOVE_LIGHTING_PLANE]"]
+			if(above_lighting)
+				above_lighting.vis_contents -= console.direct_fire_reticle
+			console.direct_fire_reticle.remove_from_all_clients()
+			qdel(console.direct_fire_reticle)
+			console.direct_fire_reticle = null
+
+		// Create appropriate reticle based on console type
+		if(istype(console, /obj/structure/machinery/computer/dropship_weapons/belly_gun))
+			console.direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle/bellygunner()
+		else
+			console.direct_fire_reticle = new /obj/effect/overlay/temp/dropship_reticle()
+
+		console.direct_fire_reticle.loc = null
+		// This is so that xeno motion detector pings only happen when dropship is in flight
+		console.direct_fire_reticle.shuttle_tag = console.shuttle_tag
+		console.direct_fire_reticle.update_target(center_turf.x, center_turf.y, center_turf.z)
+
+		// Add the reticle image to clients
+		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
+		if(dropship_hud)
+			for(var/mob/M in dropship_hud.hudusers)
+				console.direct_fire_reticle.update_visibility_for_mob(M)
+
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
 	var/size_y = bbox[4] - bbox[2] + 1
@@ -247,3 +360,6 @@
 #undef DEFAULT_MAP_SIZE
 #undef RENDER_MODE_TARGET
 #undef RENDER_MODE_AREA
+
+/atom/movable/screen/plane_master
+	var/list/cas_hud_overlays = null

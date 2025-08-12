@@ -27,6 +27,7 @@
 	apc_in_area = current_area.get_apc()
 	if (apc_in_area)
 		LAZYADD(apc_in_area.connected_power_sources, src)
+		return apc_in_area
 
 /obj/structure/machinery/power/proc/power_local_apc(amount)
 	if(current_area && current_area.requires_power && !current_area.unlimited_power && !current_area.always_unpowered)
@@ -34,16 +35,16 @@
 			apc_in_area = find_apc()
 			if(!apc_in_area)
 				return amount
-		if(apc_in_area.area == null)
-			LAZYREMOVE(apc_in_area.connected_power_sources, src)
-			apc_in_area = find_apc()
-			if(!apc_in_area)
-				return amount
-		if(!apc_in_area.cell)
+		if(!apc_in_area.cell || !apc_in_area.operating)
 			return amount
-		amount *= CELLRATE
-		amount = (amount - apc_in_area.cell.give(amount))
-		amount /= CELLRATE
+
+		var/amount_to_sent = min(apc_in_area.required_power, amount)
+
+		amount -= amount_to_sent
+		amount_to_sent *= CELLRATE
+		amount_to_sent = (amount_to_sent - apc_in_area.cell.give(amount_to_sent))
+		amount_to_sent /= CELLRATE
+		amount += amount_to_sent
 	return amount
 
 // common helper procs for all power machines

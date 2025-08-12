@@ -12,7 +12,7 @@
 	minimap_color = MINIMAP_FENCE
 	var/health_max = 50
 	var/cut = 0 //Cut fences can be passed through
-	var/junction = null //Because everything is terrible, I'm making this a fence-level var
+	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
 	var/forms_junctions = TRUE
 
@@ -261,8 +261,6 @@
 		if(!src)
 			return
 		for(var/obj/structure/fence/fence in orange(src, 1))
-			if(!fence.forms_junctions)
-				continue
 			if(abs(x - fence.x) - abs(y - fence.y)) //Doesn't count grilles, placed diagonally to src
 				junction |= get_dir(src, fence)
 		if(cut)

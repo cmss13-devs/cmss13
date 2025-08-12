@@ -94,10 +94,15 @@
 	if(ishuman(affected_atom))
 		var/mob/living/carbon/human/affected_human = affected_atom
 		affected_human.update_effects()
+		if(acid_level == 3)
+			to_chat(affected_human, SPAN_WARNING("Your armor has been weakened."))
 
 /datum/effects/acid/proc/cleanse_acid()
 	acid_goopiness--
 	if(acid_goopiness <= 0)
+		if(acid_level == 3)
+			var/mob/living/carbon/human/affected_human = affected_atom
+			to_chat(affected_human, SPAN_WARNING("Your armor returns to normal."))
 		return TRUE
 	else
 		return FALSE

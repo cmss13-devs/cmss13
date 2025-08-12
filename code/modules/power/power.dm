@@ -23,17 +23,20 @@
 	disconnect_from_network()
 	. = ..()
 
+/obj/structure/machinery/power/proc/find_apc()
+	apc_in_area = current_area.get_apc()
+	if (apc_in_area)
+		LAZYADD(apc_in_area.connected_power_sources, src)
+
 /obj/structure/machinery/power/proc/power_local_apc(amount)
 	if(current_area && current_area.requires_power && !current_area.unlimited_power && !current_area.always_unpowered)
 		if(!apc_in_area)
-			apc_in_area = current_area.get_apc()
+			apc_in_area = find_apc()
 			if(!apc_in_area)
 				return amount
-			LAZYADD(apc_in_area.connected_power_sources, src)
 		if(apc_in_area.area == null)
 			LAZYREMOVE(apc_in_area.connected_power_sources, src)
-			apc_in_area = current_area.get_apc()
-			LAZYADD(apc_in_area.connected_power_sources, src)
+			apc_in_area = find_apc()
 			if(!apc_in_area)
 				return amount
 		if(!apc_in_area.cell)

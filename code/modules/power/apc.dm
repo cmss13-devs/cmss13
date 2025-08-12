@@ -46,7 +46,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 #define APC_UPDATE_ICON_COOLDOWN 100 //10 seconds
 
-#define MAXIMUM_GIVEN_POWER_TO_LOCAL_APC 20000 //20,000W
+#define MAXIMUM_GIVEN_POWER_TO_LOCAL_APC 20000 //20,000W ~ one pacman at maximum output
 
 //The Area Power Controller (APC), formerly Power Distribution Unit (PDU)
 //One per area, needs wire conection to power network

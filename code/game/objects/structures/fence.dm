@@ -12,7 +12,7 @@
 	minimap_color = MINIMAP_FENCE
 	var/health_max = 50
 	var/cut = 0 //Cut fences can be passed through
-	var/junction = null //Because everything is terrible, I'm making this a fence-level var
+	var/junction = 0 //Because everything is terrible, I'm making this a fence-level var
 	var/basestate = "fence"
 	var/forms_junctions = TRUE
 

@@ -52,12 +52,14 @@
 	var/obj/item/fuel_cell/fusion_cell
 
 /obj/structure/machinery/power/reactor/disconnect_from_network()
-	..()
+	var/something = ..()
 
 	if(apc_in_area)
 		LAZYREMOVE(apc_in_area.connected_power_sources, src)
 	apc_in_area = null
 	current_area = null
+
+	return something
 
 /obj/structure/machinery/power/reactor/Initialize(mapload, ...)
 	. = ..()

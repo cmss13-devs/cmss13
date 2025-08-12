@@ -38,10 +38,10 @@
 	if(health <= 0)
 		if(user)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
-		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/fencehit.ogg', 25, 1)
 		cut_grille()
 	if(make_hit_sound)
-		playsound(loc, 'sound/effects/grillehit.ogg', 25, 1)
+		playsound(loc, 'sound/effects/fencehit.ogg', 25, 1)
 
 /obj/structure/fence/bullet_act(obj/projectile/Proj)
 	//Tasers and the like should not damage windows.
@@ -91,8 +91,6 @@
 	density = !density
 	operating = FALSE
 	update_icon()
-
-
 
 //Used by attack_animal
 /obj/structure/fence/proc/attack_generic(mob/living/user, damage = 0)
@@ -295,6 +293,7 @@
 GLOBAL_LIST_INIT(all_electric_fences, list())
 
 // Hybrisa Electric Fence
+
 /obj/structure/fence/electrified
 	name = "electrified grille"
 	desc = "A dark reinforced mesh grille with warning stripes, equipped with Tesla-like coils to regulate high voltage current. It is highly electrified and dangerous when powered."
@@ -358,7 +357,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 
 /obj/structure/fence/overgrown
 	name = "overgrow fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
 	icon = 'icons/obj/structures/props/fences/overgrown_fence.dmi'
 
 /obj/structure/fence/dark
@@ -368,7 +367,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 
 /obj/structure/fence/dark/overgrown
 	name = "overgrown fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
 	icon = 'icons/obj/structures/props/fences/overgrown_dark_fence.dmi'
 
 /obj/structure/fence/dark/warning
@@ -378,7 +377,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 
 /obj/structure/fence/dark/warning/overgrown
 	name = "overgrown fence"
-	desc = "A large metal mesh strewn between two poles. Intended as a cheap way to separate areas, while allowing one to see through it."
+	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
 	icon = 'icons/obj/structures/props/fences/overgrown_electric_fence.dmi'
 
 // Alternative Fences - New Design

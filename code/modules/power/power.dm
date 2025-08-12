@@ -15,12 +15,35 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
+	var/obj/structure/machinery/power/apc/apc_in_area = null
+
+	var/area/current_area = null
+
 /obj/structure/machinery/power/Destroy()
 	disconnect_from_network()
 	. = ..()
 
+/obj/structure/machinery/power/proc/power_local_apc(amount)
+	if(current_area && current_area.requires_power && !current_area.unlimited_power && !current_area.always_unpowered)
+		if(!apc_in_area)
+			apc_in_area = current_area.get_apc()
+			if(!apc_in_area)
+				return amount
+		if(apc_in_area.area == null)
+			apc_in_area = current_area.get_apc()
+			if(!apc_in_area)
+				return amount
+		if(!apc_in_area.cell)
+			return amount
+		amount *= CELLRATE
+		amount = (amount - apc_in_area.cell.give(amount))
+		amount /= CELLRATE
+	return amount
+
 // common helper procs for all power machines
 /obj/structure/machinery/power/proc/add_avail(amount)
+	amount = power_local_apc(amount)
+
 	if(powernet)
 		powernet.newavail += amount
 
@@ -256,10 +279,11 @@
 		powernet = null
 	// Then find any cables on our location
 
-	var/area/A = get_area(src)
-	if(!A)
+	current_area = get_area(src)
+	if(!current_area)
 		return 0
-	var/datum/powernet/PN = GLOB.powernets_by_name[A.powernet_name]
+	var/datum/powernet/PN = GLOB.powernets_by_name[current_area.powernet_name]
+
 	if(!PN)
 		return 0
 	powernet = PN

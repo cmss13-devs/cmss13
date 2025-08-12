@@ -129,6 +129,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	appearance_flags = TILE_BOUND
 
+	var/connected_power_sources = list() //list with all powersources that may power this APC
+
 /obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
 
@@ -1200,8 +1202,30 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				charging = APC_NOT_CHARGING //Stop charging
 				chargecount = 0
 
+		var/getting_energy = FALSE
+		if(length(connected_power_sources) > 0)
+			for(var/power_source in connected_power_sources)
+				if(istype(power_source, /obj/structure/machinery/power/reactor))
+					var/obj/structure/machinery/power/reactor/react = power_source
+					if(react)
+						if(react.power_gen_percent > 0)
+							charging = APC_CHARGING
+							if (main_status < 1)
+								main_status = 3
+							getting_energy = TRUE
+							break
+				else if(istype(power_source, /obj/structure/machinery/power/port_gen))
+					var/obj/structure/machinery/power/port_gen/generator = power_source
+					if(generator)
+						if(generator.active)
+							charging = APC_CHARGING
+							if (main_status < 1)
+								main_status = 3
+							getting_energy = TRUE
+							break
+
 		//Show cell as fully charged if so
-		if(cell.charge >= cell_maxcharge)
+		if(cell.percent() >= 98)
 			charging = APC_FULLY_CHARGED
 
 		//If we have excess power for long enough, think about re-enable charging.
@@ -1210,7 +1234,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				//last_surplus() overestimates the amount of power available for charging, but it's equivalent to what APCs were doing before.
 				if(last_surplus() * CELLRATE >= cell_maxcharge * CHARGELEVEL)
 					chargecount++
-				else
+				else if(!getting_energy)
 					chargecount = 0
 					charging = APC_NOT_CHARGING
 

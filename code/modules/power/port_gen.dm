@@ -59,6 +59,21 @@ display floor(lastgen) and phorontank amount
 	var/power_output = 1
 	power_machine = TRUE
 
+/obj/structure/machinery/power/port_gen/connect_to_network()
+	..()
+
+	apc_in_area = current_area.get_apc()
+	if(apc_in_area)
+		apc_in_area.connected_power_sources += src
+
+/obj/structure/machinery/power/port_gen/disconnect_from_network()
+	..()
+
+	if(apc_in_area)
+		apc_in_area.connected_power_sources -= src
+	apc_in_area = null
+	current_area = null
+
 /obj/structure/machinery/power/port_gen/proc/HasFuel() //Placeholder for fuel check.
 	return 1
 

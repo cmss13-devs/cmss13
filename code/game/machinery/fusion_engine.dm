@@ -51,6 +51,21 @@
 	///The reactors fuel cell, fail rate increases if empty
 	var/obj/item/fuel_cell/fusion_cell
 
+/obj/structure/machinery/power/reactor/connect_to_network()
+	..()
+
+	apc_in_area = current_area.get_apc()
+	if(apc_in_area)
+		apc_in_area.connected_power_sources += src
+
+/obj/structure/machinery/power/reactor/disconnect_from_network()
+	..()
+
+	if(apc_in_area)
+		apc_in_area.connected_power_sources -= src
+	apc_in_area = null
+	current_area = null
+
 /obj/structure/machinery/power/reactor/Initialize(mapload, ...)
 	. = ..()
 	if(is_mainship_level(z)) //Only ship reactors can overload

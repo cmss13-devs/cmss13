@@ -129,7 +129,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	appearance_flags = TILE_BOUND
 
-	var/connected_power_sources = list() //list with all powersources that may power this APC
+	var/list/connected_power_sources = list() //list with all powersources that may power this APC
 
 /obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()

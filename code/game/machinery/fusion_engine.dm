@@ -55,6 +55,9 @@
 	..()
 
 	current_area = get_area(src)
+	if(!current_area)
+		return
+
 	apc_in_area = current_area.get_apc()
 	if(apc_in_area)
 		apc_in_area.connected_power_sources += src

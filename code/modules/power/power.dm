@@ -29,8 +29,11 @@
 			apc_in_area = current_area.get_apc()
 			if(!apc_in_area)
 				return amount
+			LAZYADD(apc_in_area.connected_power_sources, src)
 		if(apc_in_area.area == null)
+			LAZYREMOVE(apc_in_area.connected_power_sources, src)
 			apc_in_area = current_area.get_apc()
+			LAZYADD(apc_in_area.connected_power_sources, src)
 			if(!apc_in_area)
 				return amount
 		if(!apc_in_area.cell)

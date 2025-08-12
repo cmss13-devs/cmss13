@@ -51,22 +51,11 @@
 	///The reactors fuel cell, fail rate increases if empty
 	var/obj/item/fuel_cell/fusion_cell
 
-/obj/structure/machinery/power/reactor/connect_to_network()
-	..()
-
-	current_area = get_area(src)
-	if(!current_area)
-		return
-
-	apc_in_area = current_area.get_apc()
-	if(apc_in_area)
-		apc_in_area.connected_power_sources += src
-
 /obj/structure/machinery/power/reactor/disconnect_from_network()
 	..()
 
 	if(apc_in_area)
-		apc_in_area.connected_power_sources -= src
+		LAZYREMOVE(apc_in_area.connected_power_sources, src)
 	apc_in_area = null
 	current_area = null
 

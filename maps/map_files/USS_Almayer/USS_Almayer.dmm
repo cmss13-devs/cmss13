@@ -3519,6 +3519,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "ahY" = (
@@ -43258,7 +43259,11 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
-/obj/structure/machinery/iv_drip,
+/obj/item/tool/wrench,
+/obj/item/tool/crowbar,
+/obj/structure/closet/crate/secure/medical{
+	desc = "A secure medical crate for field doctors to take with them to the FOB."
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "eiE" = (

@@ -192,7 +192,7 @@ GLOBAL_LIST_INIT(cm_vending_blooded_thrall, list(
 	desc = "A gear rack for hunting."
 	icon = 'icons/obj/items/hunter/pred_vendor.dmi'
 	icon_state = "pred_vendor_elder_left"
-	req_access = list(ACCESS_YAUTJA_ELITE)
+	req_one_access = list(ACCESS_YAUTJA_ELITE, ACCESS_YAUTJA_ELDER, ACCESS_YAUTJA_ANCIENT)
 	vendor_role = list(JOB_PREDATOR)
 	show_points = FALSE
 	vendor_theme = VENDOR_THEME_YAUTJA

@@ -261,8 +261,6 @@
 		if(!src)
 			return
 		for(var/obj/structure/fence/fence in orange(src, 1))
-			if(!fence.forms_junctions)
-				continue
 			if(abs(x - fence.x) - abs(y - fence.y)) //Doesn't count grilles, placed diagonally to src
 				junction |= get_dir(src, fence)
 		if(cut)

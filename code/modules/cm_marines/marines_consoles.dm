@@ -961,19 +961,20 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 		if(FACTION_MARINE)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
-				// 00-09: High Command, defined at bottom
-				JOB_CMC = 00,//Grade O10
-				JOB_ACMC = 00,
-				JOB_PROVOST_CMARSHAL = 00,
-				JOB_GENERAL = 00,
-				JOB_PROVOST_SMARSHAL = 01,//Grade O9
-				JOB_PROVOST_MARSHAL = 02,//Grade O7
-				JOB_PROVOST_DMARSHAL = 03,//Grade O6
-				JOB_COLONEL = 04,//Grade O6
-				JOB_PROVOST_CINSPECTOR = 05,
-				JOB_PROVOST_INSPECTOR = 06,
-				JOB_CIA_UACQS_C = 07,
-				JOB_CIA_UACQS = 8,
+				// 0-9: High Command, defined at bottom
+				JOB_CMC = 0,//Grade O10
+				JOB_ACMC = 0,
+				JOB_PROVOST_CMARSHAL = 0,
+				JOB_GENERAL = 0,
+				JOB_PROVOST_SMARSHAL = 1,//Grade O9
+				JOB_PROVOST_MARSHAL = 2,//Grade O7
+				JOB_PROVOST_DMARSHAL = 3,//Grade O6
+				JOB_COLONEL = 4,//Grade O6
+				JOB_PROVOST_CINSPECTOR = 5,
+				JOB_PROVOST_INSPECTOR = 6,
+				JOB_CIA_UACQS_COMR = 7,
+				JOB_CIA_UACQS_ADMN = 8,
+				JOB_CIA_UACQS_SEC = 9,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,

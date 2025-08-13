@@ -1,4 +1,0 @@
-author: "LTNTS"
-delete-after: True
-changes:
-  - bugfix: "gives CBRN rifleman skilless toxin bottles in their medikit pouch"

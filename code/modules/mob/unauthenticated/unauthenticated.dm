@@ -25,15 +25,15 @@ GENERAL_PROTECT_DATUM(/mob/unauthenticated)
 	ADD_TRAIT(src, TRAIT_IMMOBILIZED, TRAIT_SOURCE_INHERENT)
 
 /mob/unauthenticated/Login()
-	. = ..()
-
-	client.acquire_dpi()
-
 	var/static/datum/preferences/dummy_preferences
 	if(!dummy_preferences)
 		dummy_preferences = new()
 
 	client.prefs = dummy_preferences
+
+	. = ..()
+
+	client.acquire_dpi()
 
 	display_unauthenticated_menu()
 

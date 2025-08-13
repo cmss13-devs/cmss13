@@ -143,6 +143,10 @@
 	name = "Vehicle Yard Relay"
 	icon_state = "tcomms1"
 
+/area/strata/exterior/tcomms_geosprings
+	name = "Geothermal Springs Relay"
+	icon_state = "tcomms1"
+
 //-Outpost
 
 /area/strata/exterior/outpost_decks

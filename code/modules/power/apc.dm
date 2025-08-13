@@ -1137,6 +1137,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			var/working_generators = 0
 			for(var/power_system in connected_power_sources)
 				if(!power_system)
+					LAZYREMOVE(connected_power_sources, power_system)
 					continue
 				if(istype(power_system, /obj/structure/machinery/power/reactor))
 					var/obj/structure/machinery/power/reactor/react = power_system

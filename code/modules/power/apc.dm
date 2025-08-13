@@ -1135,7 +1135,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(length(connected_power_sources) > 0)
 			var/total_power_generation = 0
 			var/working_generators = 0
-			for(var/obj/structure/machinery/power/power_system in connected_power_sources)
+			for(var/power_system in connected_power_sources)
+				if(!power_system)
+					continue
 				if(istype(power_system, /obj/structure/machinery/power/reactor))
 					var/obj/structure/machinery/power/reactor/react = power_system
 					if(react && react.power_gen_percent > 0)

@@ -1,26 +1,24 @@
 /datum/equipment_preset/cia
-	name = "CIA"
+	name = "CIA Agent (Civilian Clothing)"
 	flags = EQUIPMENT_PRESET_EXTRA
 	minimum_age = 25
+	job_title = JOB_CIA
 	assignment = JOB_CIA
 	skills = /datum/skills/cia
 	languages = ALL_HUMAN_LANGUAGES
 	faction = FACTION_MARINE
 
-/datum/equipment_preset/cia/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA)
-
-/datum/equipment_preset/cia/analyst
-	name = "CIA Agent (Civilian Clothing)"
-	job_title = JOB_CIA
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"
 	minimap_background = "background_civillian"
 	minimap_icon = "cia_ia"
 	idtype = /obj/item/card/id/adaptive
 
-/datum/equipment_preset/cia/analyst/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+/datum/equipment_preset/cia/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA)
+
+/datum/equipment_preset/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
 
 	//Give them a random piece of civvie clothing.
@@ -60,16 +58,19 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_IN_BACK)
 
-/datum/equipment_preset/cia/analyst/uacqs
+/datum/equipment_preset/cia/uacqs
 	name = "CIA Agent (UACQS Administrator)"
 	job_title = JOB_CIA_UACQS
+	assignment = JOB_CIA_UACQS
 	paygrades = list(PAY_SHORT_CADMIN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UACQS"
 	minimap_icon = "uacqs"
+	minimap_background = "background_ua"
 
-/datum/equipment_preset/cia/analyst/uacqs/commissioner
+/datum/equipment_preset/cia/uacqs/commissioner
 	name = "CIA Agent (UACQS Commissioner)"
 	job_title = JOB_CIA_UACQS_C
+	assignment = JOB_CIA_UACQS_C
 	paygrades = list(PAY_SHORT_CCOMR = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "uacqs_c"
 
@@ -79,10 +80,8 @@
 	assignment = JOB_CIA_LIAISON
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "ILO"
-	minimum_age = 25
 	minimap_icon = "cia_lo"
 	minimap_background = "background_ua"
-	idtype = /obj/item/card/id/adaptive
 
 /datum/equipment_preset/cia/officer/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()

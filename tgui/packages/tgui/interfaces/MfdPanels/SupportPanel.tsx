@@ -39,16 +39,11 @@ export const SupportMfdPanel = (props: MfdProps) => {
   }
   if (result?.shorthand === 'PDS') {
     return (
-      <ParadropMfdPanel
-        panelStateId={props.panelStateId}
-        color={props.color}
-      />
+      <ParadropMfdPanel panelStateId={props.panelStateId} color={props.color} />
     );
   }
   if (result?.shorthand === 'MG') {
-    return (
-      <MgMfdPanel panelStateId={props.panelStateId} color={props.color} />
-    );
+    return <MgMfdPanel panelStateId={props.panelStateId} color={props.color} />;
   }
   if (result?.shorthand === 'Spotlight') {
     return (

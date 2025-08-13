@@ -255,11 +255,15 @@
 	name = "CIA Senior Agent (UACQS Commissioner)"
 	job_title = JOB_CIA_UACQS_COMR
 	assignment = JOB_CIA_UACQS_COMR
-	paygrades = list(PAY_SHORT_CCOMR = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_COM = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "uacqs_c"
 
 /datum/equipment_preset/cia/uacqs/security
 	name = "CIA Agent (UACQS Security)"
+	job_title = JOB_CIA_UACQS_SEC
+	assignment = JOB_CIA_UACQS_SEC
+	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "uacqs_s"
 
 /datum/equipment_preset/cia/uacqs/security/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//back

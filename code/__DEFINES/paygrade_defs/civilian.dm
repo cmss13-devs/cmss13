@@ -42,6 +42,3 @@
 
 /// CADMIN, Administrator
 #define PAY_SHORT_CADMIN "CADMIN"
-
-/// CCOMR, Commissioner
-#define PAY_SHORT_CCOMR "CCOMR"

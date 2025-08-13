@@ -165,7 +165,7 @@
 	name = "medical crate"
 	desc = "A medical crate with a secure lock on it."
 	icon_state = "secure_locked_medical"
-	icon_opened = "secure_medical_open"
+	icon_opened = "secure_open_medical"
 	icon_locked = "secure_locked_medical"
 	icon_unlocked = "secure_unlocked_medical"
 

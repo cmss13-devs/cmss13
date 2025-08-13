@@ -61,11 +61,9 @@ display floor(lastgen) and phorontank amount
 
 /obj/structure/machinery/power/port_gen/connect_to_network()
 	var/something = ..()
-	if(!anchored)
+	if(!anchored || !current_area)
 		return something
 
-	if(!current_area)
-		return something
 	apc_in_area = current_area.get_apc()
 	if(apc_in_area)
 		if(LAZYFIND(apc_in_area.connected_power_sources, src) == 0)

@@ -1153,7 +1153,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				power_drawn = min(total_power_generation, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
 				target_draw = max(target_draw - power_drawn, 0)
 				total_power_generation -= power_drawn
-				powernet.newavail += total_power_generation
+				if(powernet) // what
+					powernet.newavail += total_power_generation
 
 				got_power_from_local_grid = target_draw <= 0
 				charging = APC_CHARGING
@@ -1234,7 +1235,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		if(attempt_charging())
 			if(power_excess > 0) //Check to make sure we have enough to charge
 				var/what_is_left = cell.give(power_excess * CELLRATE) / CELLRATE //Actually recharge the cell
-				powernet.newavail += what_is_left //Giving power back to the powernet if not used
+				//Giving power back to the powernet if not used
+				if(powernet)
+					powernet.newavail += what_is_left
 			else
 				charging = APC_NOT_CHARGING //Stop charging
 				chargecount = 0

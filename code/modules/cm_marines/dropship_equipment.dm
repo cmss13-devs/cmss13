@@ -230,8 +230,8 @@
 	// Block all repair tools if installed
 	if(src.ship_base)
 		var/is_tool = FALSE
-		for(var/T in dropship_repair_tool_types)
-			if(istype(I, dropship_repair_tool_types[T]))
+		for(var/T in GLOB.dropship_repair_tool_types)
+			if(istype(I, GLOB.dropship_repair_tool_types[T]))
 				is_tool = TRUE
 				break
 		if(is_tool)

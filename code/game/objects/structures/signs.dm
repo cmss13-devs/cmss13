@@ -6,11 +6,12 @@
 	layer = WALL_OBJ_LAYER
 
 /obj/structure/sign/ex_act(severity)
-	deconstruct(FALSE)
+	if(!explo_proof)
+		deconstruct(FALSE)
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob) //deconstruction
-	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double))
+	if(wrenchable && HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double))
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
 		S.name = name

@@ -6286,6 +6286,10 @@
 /obj/structure/sign/poster/upp{
 	pixel_y = 33
 	},
+/obj/structure/sign/poster/upp{
+	pixel_y = 36;
+	pixel_x = 9
+	},
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/mining_outpost)
 "arY" = (
@@ -64575,7 +64579,7 @@ bme
 bme
 vlH
 aYB
-rIr
+aYB
 rIr
 aYB
 aYB
@@ -65450,7 +65454,7 @@ aac
 acc
 lyn
 mMu
-xdC
+mMu
 xdC
 mMu
 mMu

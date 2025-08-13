@@ -98,7 +98,7 @@
 
 	// Apply fuel enhancer and ramrocket effects
 	if(has_fuel_enhancer && has_ramrocket)
-		// Cancel out both effects, use whatever flight_duration is currently set to (including optimised)
+		return // Cancel out both effects, use whatever flight_duration is currently set to (including optimised)
 	else if(has_fuel_enhancer)
 		if(is_flyby)
 			flight_duration = flight_duration / SHUTTLE_FUEL_ENHANCE_FACTOR_TRAVEL // 0.75, 25% longer flyby time

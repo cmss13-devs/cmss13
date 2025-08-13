@@ -27,13 +27,13 @@
 	if(!current_area)
 		return
 	apc_in_area = current_area.get_apc()
-	if (apc_in_area)
+	if(apc_in_area)
 		LAZYADD(apc_in_area.connected_power_sources, src)
 		return apc_in_area
 
 // common helper procs for all power machines
 /obj/structure/machinery/power/proc/add_avail(amount)
-	if(apc_in_area && apc_in_area.cell && apc_in_area.operating && !apc_in_area.shorted && !(apc_in_area.stat & (BROKEN|MAINT)))
+	if(apc_in_area && apc_in_area.cell && apc_in_area.operating)
 		return
 
 	if(powernet)

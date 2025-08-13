@@ -61,8 +61,8 @@
 	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
-	// Last time a psychic pulse detected CAS camera movement
-	var/last_psychic_pulse_time = 0
+	/// Last time a psychic pulse detected CAS camera movement
+	COOLDOWN_DECLARE(last_psychic_pulse_time)
 
 	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,

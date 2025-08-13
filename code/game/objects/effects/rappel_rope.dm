@@ -45,8 +45,8 @@
 			var/list/available_ropes = list()
 			for(var/obj/effect/rappel_rope/rope in linked_rappel.ground_ropes)
 				var/occupied = FALSE
-				for(var/mob/M in rope.loc)
-					if(istype(M, /mob/living) && M != user)
+				for(var/mob/living/mob_in_rope in rope.loc)
+					if(istype(mob_in_rope, /mob/living) && mob_in_rope != user)
 						occupied = TRUE
 						break
 				if(!occupied)
@@ -154,8 +154,8 @@
 			var/list/available_ropes = list()
 			for(var/obj/effect/rappel_rope/rope in linked_rappel.ground_ropes)
 				var/occupied = FALSE
-				for(var/mob/M in rope.loc)
-					if(istype(M, /mob/living) && M != user)
+				for(var/mob/living/mob_in_rope in rope.loc)
+					if(istype(mob_in_rope, /mob/living) && mob_in_rope != user)
 						occupied = TRUE
 						break
 				if(!occupied)

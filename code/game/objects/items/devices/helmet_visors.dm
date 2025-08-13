@@ -458,6 +458,6 @@
 				dropship_hud.remove_from_single_hud(user, target_mob)
 	// Remove any stuck reticle overlays from the client
 	if(user?.client)
-		for(var/image/I in user.client.images)
-			if(I.icon_state == "direct_fire_reticle" || I.icon_state == "dropship_reticle")
-				user.client.images -= I
+		for(var/image/Image_Reticle in user.client.images)
+			if(Image_Reticle.icon_state == "direct_fire_reticle" || Image_Reticle.icon_state == "dropship_reticle")
+				user.client.images -= Image_Reticle

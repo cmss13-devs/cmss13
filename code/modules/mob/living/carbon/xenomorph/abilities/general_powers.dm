@@ -1140,28 +1140,28 @@
 	playsound(xeno.loc, 'sound/effects/blobattack.ogg', 25, 1)
 
 	var/list/affected_turfs = list()
-	for(var/turf/T in range(skyspit_range, center))
+	for(var/turf/targeted_turfs in range(skyspit_range, center))
 		// Skip if already marked by skyspit or protected by antiair pylon
-		if(T.skyspit_active || (T.turf_protection_flags & TURF_PROTECTION_ANTIAIR))
+		if(targeted_turfs.skyspit_active || (targeted_turfs.turf_protection_flags & TURF_PROTECTION_ANTIAIR))
 			continue
-		T.skyspit_active = TRUE
-		T.turf_protection_flags |= TURF_PROTECTION_ANTIAIR
-		T.antiair_effect_type = /datum/dropship_antiair/boiler_corrosion
-		T.skyspit_applier = xeno
-		T.skyspit_expire_timer = addtimer(CALLBACK(T, /turf/proc/remove_skyspit_marker), antiair_duration, TIMER_UNIQUE)
-		if(!T.skyspit_overlay)
-			T.skyspit_overlay = new /obj/effect/xenomorph/xeno_telegraph/antiair(T, antiair_duration)
+		targeted_turfs.skyspit_active = TRUE
+		targeted_turfs.turf_protection_flags |= TURF_PROTECTION_ANTIAIR
+		targeted_turfs.antiair_effect_type = /datum/dropship_antiair/boiler_corrosion
+		targeted_turfs.skyspit_applier = xeno
+		targeted_turfs.skyspit_expire_timer = addtimer(CALLBACK(targeted_turfs, /turf/proc/remove_skyspit_marker), antiair_duration, TIMER_UNIQUE)
+		if(!targeted_turfs.skyspit_overlay)
+			targeted_turfs.skyspit_overlay = new /obj/effect/xenomorph/xeno_telegraph/antiair(targeted_turfs, antiair_duration)
 		// Add dropship protection flag overlay for anti-air
-		if(!T.protection_flag_overlay)
-			T.protection_flag_overlay = new /obj/effect/overlay/temp/protection_flag/antiair(T)
-		affected_turfs += T
+		if(!targeted_turfs.protection_flag_overlay)
+			targeted_turfs.protection_flag_overlay = new /obj/effect/overlay/temp/protection_flag/antiair(targeted_turfs)
+		affected_turfs += targeted_turfs
 
 	if(affected_turfs.len)
 		to_chat(xeno, SPAN_NOTICE("You mark the sky with corrosive skyspit!"))
 
 		// Check for and extinguish illumination flares in the area
-		for(var/turf/T in affected_turfs)
-			for(var/obj/item/device/flashlight/flare/on/illumination/flare in T)
+		for(var/turf/illumination_turf in affected_turfs)
+			for(var/obj/item/device/flashlight/flare/on/illumination/flare in illumination_turf)
 				flare.visible_message(SPAN_WARNING("[flare]'s light in the sky fizzles out!"))
 				flare.turn_off()
 

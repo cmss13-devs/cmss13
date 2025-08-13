@@ -353,25 +353,25 @@
 	playsound(xeno.loc, 'sound/effects/blobattack.ogg', 25, 1)
 
 	var/list/affected_turfs = list()
-	for(var/turf/T in range(skyspit_range, center))
-		if(T.chaff_active)
+	for(var/turf/targeted_turf in range(skyspit_range, center))
+		if(targeted_turf.chaff_active)
 			continue
-		T.chaff_active = TRUE
-		T.turf_protection_flags |= TURF_PROTECTION_CHAFF
-		T.chaff_expire_timer = addtimer(CALLBACK(T, /turf/proc/remove_chaff_marker), antiair_duration, TIMER_UNIQUE)
-		if(!T.chaff_overlay)
-			T.chaff_overlay = new /obj/effect/xenomorph/xeno_telegraph/chaff(T, antiair_duration)
+		targeted_turf.chaff_active = TRUE
+		targeted_turf.turf_protection_flags |= TURF_PROTECTION_CHAFF
+		targeted_turf.chaff_expire_timer = addtimer(CALLBACK(targeted_turf, /turf/proc/remove_chaff_marker), antiair_duration, TIMER_UNIQUE)
+		if(!targeted_turf.chaff_overlay)
+			targeted_turf.chaff_overlay = new /obj/effect/xenomorph/xeno_telegraph/chaff(targeted_turf, antiair_duration)
 		// Add dropship protection flag overlay for chaff
-		if(!T.protection_flag_overlay)
-			T.protection_flag_overlay = new /obj/effect/overlay/temp/protection_flag/chaff(T)
-		affected_turfs += T
+		if(!targeted_turf.protection_flag_overlay)
+			targeted_turf.protection_flag_overlay = new /obj/effect/overlay/temp/protection_flag/chaff(targeted_turf)
+		affected_turfs += targeted_turf
 
 	if(affected_turfs.len)
 		to_chat(xeno, SPAN_NOTICE("You mark the sky with neurotoxic chaff!"))
 
 		// Check for and extinguish illumination flares in the area
-		for(var/turf/T in affected_turfs)
-			for(var/obj/item/device/flashlight/flare/on/illumination/flare in T)
+		for(var/turf/illumination_turf in affected_turfs)
+			for(var/obj/item/device/flashlight/flare/on/illumination/flare in illumination_turf)
 				flare.visible_message(SPAN_WARNING("[flare]'s light in the sky fizzles out!"))
 				flare.turn_off()
 
@@ -391,8 +391,8 @@
 
 		// Check if this turf is still protected by antiair pylons before removing protection
 		var/still_protected = FALSE
-		for(var/obj/O in range(5, src)) // 5 is pylon protection range
-			if(istype(O, /obj/effect/alien/resin/special/antiair_pylon) && !QDELETED(O))
+		for(var/obj/antiair_pylon in range(5, src)) // 5 is pylon protection range
+			if(istype(antiair_pylon, /obj/effect/alien/resin/special/antiair_pylon) && !QDELETED(antiair_pylon))
 				still_protected = TRUE
 				break
 
@@ -404,8 +404,8 @@
 				qdel(protection_flag_overlay)
 				protection_flag_overlay = null
 
-		for(var/mob/M in src)
-			to_chat(M, SPAN_INFO("The cloud of acidic gas in the sky evaporates."))
+		for(var/mob/nearby_mobs in src)
+			to_chat(nearby_mobs, SPAN_INFO("The cloud of acidic gas in the sky evaporates."))
 
 // Add cleanup for chaff overlay and flag
 /turf/proc/remove_chaff_marker()
@@ -420,5 +420,5 @@
 		if(protection_flag_overlay)
 			qdel(protection_flag_overlay)
 			protection_flag_overlay = null
-		for(var/mob/M in src)
-			to_chat(M, SPAN_INFO("The cloud of neurotoxic chaff in the sky dissipates."))
+		for(var/mob/nearby_mobs in src)
+			to_chat(nearby_mobs, SPAN_INFO("The cloud of neurotoxic chaff in the sky dissipates."))

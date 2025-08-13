@@ -162,10 +162,10 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	// Generate a random repair_steps list of length repair_steps_count
 	var/list/shuffled = shuffle(tools.Copy())
 	repair_steps = list()
-	for(var/i = 1, i <= repair_steps_count, i++)
-		if(i > shuffled.len)
+	for(var/step_index = 1, step_index <= repair_steps_count, step_index++)
+		if(step_index > shuffled.len)
 			shuffled = shuffle(tools.Copy())
-		repair_steps += shuffled[i]
+		repair_steps += shuffled[step_index]
 
 /datum/dropship_antiair/proc/get_antiair_message(ds_identifier)
 	return antiair_message ? replacetext(antiair_message, "PLANE", ds_identifier) : null

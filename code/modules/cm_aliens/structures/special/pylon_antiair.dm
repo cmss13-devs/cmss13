@@ -28,20 +28,21 @@
 	SSminimaps.remove_marker(src)
 	return ..()
 
-/obj/effect/alien/resin/special/antiair_pylon/proc/can_build_here(turf/T)
-	if(!T)
+
+/obj/effect/alien/resin/special/antiair_pylon/proc/can_build_here(turf/target_turf)
+	if(!target_turf)
 		return FALSE
 
 	// Must be built on hive weeds
-	var/obj/effect/alien/weeds/W = locate() in T
-	if(!W)
+	var/obj/effect/alien/weeds/weeds_on_turf = locate() in target_turf
+	if(!weeds_on_turf)
 		return FALSE
 
 	// Must be on weeds from the same hive
-	if(W.linked_hive != linked_hive)
+	if(weeds_on_turf.linked_hive != linked_hive)
 		return FALSE
 
-	if(!W.weed_strength || W.weed_strength < WEED_LEVEL_HIVE)
+	if(!weeds_on_turf.weed_strength || weeds_on_turf.weed_strength < WEED_LEVEL_HIVE)
 		return FALSE
 
 	return TRUE
@@ -53,55 +54,55 @@
 
 	protected_turfs.Cut()
 
-	for(var/turf/T in range(protection_range, center))
-		var/already_protected = (T.turf_protection_flags & TURF_PROTECTION_ANTIAIR)
+	for(var/turf/protected_turf in range(protection_range, center))
+		var/already_protected = (protected_turf.turf_protection_flags & TURF_PROTECTION_ANTIAIR)
 
-		T.turf_protection_flags |= TURF_PROTECTION_ANTIAIR
-		if(!T.antiair_effect_type)
-			T.antiair_effect_type = /datum/dropship_antiair/boiler_corrosion
+		protected_turf.turf_protection_flags |= TURF_PROTECTION_ANTIAIR
+		if(!protected_turf.antiair_effect_type)
+			protected_turf.antiair_effect_type = /datum/dropship_antiair/boiler_corrosion
 		// Set the antiair applier to reference this pylon's hive for announcements
-		if(!T.antiair_applier)
-			T.antiair_applier = linked_hive
-		protected_turfs += T
+		if(!protected_turf.antiair_applier)
+			protected_turf.antiair_applier = linked_hive
+		protected_turfs += protected_turf
 
 		// Only create overlays if this turf wasn't already protected
 		if(!already_protected)
 			// Create protection flag overlay for pilots to see
-			if(!T.protection_flag_overlay)
-				T.protection_flag_overlay = new /obj/effect/overlay/temp/protection_flag/antiair(T)
+			if(!protected_turf.protection_flag_overlay)
+				protected_turf.protection_flag_overlay = new /obj/effect/overlay/temp/protection_flag/antiair(protected_turf)
 
 			// Visual telegraph for pylons, idk if it's too distracting so only boiler/queen skyspit shows it for now
-			//if(!T.skyspit_overlay)
-			//	T.skyspit_overlay = new /obj/effect/xenomorph/xeno_telegraph/antiair(T, -1) // -1 = permanent
+			//if(!protected_turf.skyspit_overlay)
+			//	protected_turf.skyspit_overlay = new /obj/effect/xenomorph/xeno_telegraph/antiair(protected_turf, -1) // -1 = permanent
 
 /obj/effect/alien/resin/special/antiair_pylon/proc/remove_antiair_field()
-	for(var/turf/T as anything in protected_turfs)
-		if(!T)
+	for(var/turf/protected_turf as anything in protected_turfs)
+		if(!protected_turf)
 			continue
 
 		// Check if this turf is still protected by other systems or pylons
 		var/still_protected = FALSE
 
 		// Check for other antiair pylons
-		for(var/obj/effect/alien/resin/special/antiair_pylon/other_pylon in range(protection_range, T))
+		for(var/obj/effect/alien/resin/special/antiair_pylon/other_pylon in range(protection_range, protected_turf))
 			if(other_pylon != src && !QDELETED(other_pylon))
 				still_protected = TRUE
 				break
 
 		// Check for active skyspit in this area
-		if(!still_protected && T.skyspit_active)
+		if(!still_protected && protected_turf.skyspit_active)
 			still_protected = TRUE
 
 		if(!still_protected)
-			T.turf_protection_flags &= ~TURF_PROTECTION_ANTIAIR
-			T.antiair_effect_type = null
-			T.antiair_applier = null
+			protected_turf.turf_protection_flags &= ~TURF_PROTECTION_ANTIAIR
+			protected_turf.antiair_effect_type = null
+			protected_turf.antiair_applier = null
 			// Only remove overlays if we're sure no other protection systems need them
-			if(T.protection_flag_overlay)
-				qdel(T.protection_flag_overlay)
-				T.protection_flag_overlay = null
-			if(T.skyspit_overlay)
-				qdel(T.skyspit_overlay)
-				T.skyspit_overlay = null
+			if(protected_turf.protection_flag_overlay)
+				qdel(protected_turf.protection_flag_overlay)
+				protected_turf.protection_flag_overlay = null
+			if(protected_turf.skyspit_overlay)
+				qdel(protected_turf.skyspit_overlay)
+				protected_turf.skyspit_overlay = null
 
 	protected_turfs.Cut()

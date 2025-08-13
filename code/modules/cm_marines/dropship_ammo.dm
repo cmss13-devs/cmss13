@@ -631,12 +631,12 @@
 	var/mob/cached_source_mob = source_mob
 
 	// Schedule cluster explosions with rapid delays and warning dots
-	for(var/i = 1 to diamond_coords.len)
-		var/list/coords = diamond_coords[i]
+	for(var/cluster_index = 1 to diamond_coords.len)
+		var/list/coords = diamond_coords[cluster_index]
 		var/turf/target_turf = locate(impact.x + coords[1], impact.y + coords[2], impact.z)
 		if(target_turf)
 			// Schedule warning dot and explosion (using global procs to avoid src dependency)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_cluster), target_turf, 200, 50, cached_name, cached_source_mob), (0.5 + i * 0.1) SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_cluster), target_turf, 200, 50, cached_name, cached_source_mob), (0.5 + cluster_index * 0.1) SECONDS)
 
 	QDEL_IN(src, 0.5 SECONDS)
 
@@ -662,12 +662,12 @@
 
 	// Create 5 random explosions with napalm fire spread and warning dots
 	var/list/selected_turfs = list()
-	for(var/i = 1 to 5)
+	for(var/incendiary_index = 1 to 5)
 		var/turf/target_turf = pick(target_turfs)
 		selected_turfs += target_turf
 		if(target_turf)
 			// Schedule warning dot, explosion and fire (using global procs to avoid src dependency)
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_incendiary), target_turf, 150, 50, cached_name, cached_source_mob), (0.3 + i * 0.1) SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_in_a_hole_incendiary), target_turf, 150, 50, cached_name, cached_source_mob), (0.3 + incendiary_index * 0.1) SECONDS)
 
 	QDEL_IN(src, 0.5 SECONDS)
 
@@ -878,14 +878,14 @@
 		icon_state = "flare_cartridge"
 		item_state = "flare_cartridge"
 	if(iscarbon(loc))
-		var/mob/living/carbon/C = loc
-		if(C.r_hand == src)
-			C.update_inv_r_hand()
-		else if(C.l_hand == src)
-			C.update_inv_l_hand()
+		var/mob/living/carbon/carbon_mob = loc
+		if(carbon_mob.r_hand == src)
+			carbon_mob.update_inv_r_hand()
+		else if(carbon_mob.l_hand == src)
+			carbon_mob.update_inv_l_hand()
 
-/obj/item/ship_ammo_handheld/flare/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/screwdriver))
+/obj/item/ship_ammo_handheld/flare/attackby(obj/item/item_tool, mob/user)
+	if(istype(item_tool, /obj/item/tool/screwdriver))
 		if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_GENERIC))
 			return
 		if(safety_enabled)
@@ -929,22 +929,22 @@
 		qdel(src)
 		return FALSE
 	if(istype(user, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
+		var/mob/living/carbon/human/human_user = user
 		if(!src.handheld_type)
 			to_chat(user, SPAN_WARNING("This ammo cannot be picked up by hand."))
 			return FALSE
-		var/obj/item/ship_ammo_handheld/I = new src.handheld_type()
-		I.ammo_count = src.ammo_count
-		I.max_ammo_count = src.max_ammo_count
-		I.safety_enabled = src.safety_enabled
-		I.structure_type = src.type
-		I.update_icon()
-		if(H.put_in_hands(I))
+		var/obj/item/ship_ammo_handheld/handheld_ammo = new src.handheld_type()
+		handheld_ammo.ammo_count = src.ammo_count
+		handheld_ammo.max_ammo_count = src.max_ammo_count
+		handheld_ammo.safety_enabled = src.safety_enabled
+		handheld_ammo.structure_type = src.type
+		handheld_ammo.update_icon()
+		if(human_user.put_in_hands(handheld_ammo))
 			qdel(src)
-			to_chat(user, SPAN_NOTICE("You pick up [I] by hand."))
+			to_chat(user, SPAN_NOTICE("You pick up [handheld_ammo] by hand."))
 			return TRUE
 		else
-			qdel(I)
+			qdel(handheld_ammo)
 			to_chat(user, SPAN_WARNING("You need a free hand to pick this up."))
 			return FALSE
 	else

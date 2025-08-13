@@ -373,11 +373,11 @@
 							for(var/area/internal_area in shuttle.shuttle_areas)
 								for(var/turf/internal_turf in internal_area)
 									all_turfs += internal_turf
-									for(var/mob/M in internal_turf)
-										to_chat(M, SPAN_DANGER("The ship jostles violently as something rocks the vessel!"))
-										to_chat(M, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
-										if(istype(M, /mob/living))
-											shake_camera(M, 20, 1)
+									for(var/mob/mob_in_turf in internal_turf)
+										to_chat(mob_in_turf, SPAN_DANGER("The ship jostles violently as something rocks the vessel!"))
+										to_chat(mob_in_turf, SPAN_DANGER("You feel the ship turning sharply as it adjusts its course!"))
+										if(istype(mob_in_turf, /mob/living))
+											shake_camera(mob_in_turf, 20, 1)
 								playsound_area(internal_area, 'sound/effects/Explosion1.ogg')
 							// Spawn sparks inside the dropship for extra feedback and immersion
 							if(all_turfs.len)

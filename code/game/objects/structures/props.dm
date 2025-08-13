@@ -747,15 +747,15 @@
 	return ..()
 
 /obj/structure/prop/ice_colony/hula_girl/process() //i got you 4 years later monkey -TrollerNoob
-	var/area/A = get_area(src)
-	if(istype(A, /area/shuttle))
-		var/obj/docking_port/mobile/shuttle = null
-		for(var/obj/docking_port/mobile/S in world)
-			if(get_area(S) == A)
-				shuttle = S
+	var/area/current_area = get_area(src)
+	if(istype(current_area, /area/shuttle))
+		var/obj/docking_port/mobile/found_shuttle = null
+		for(var/obj/docking_port/mobile/shuttle in world)
+			if(get_area(shuttle) == current_area)
+				found_shuttle = shuttle
 				break
-		if(shuttle)
-			switch(shuttle.mode)
+		if(found_shuttle)
+			switch(found_shuttle.mode)
 				if(SHUTTLE_IGNITING)
 					icon_state = "Hula_Gal_Bounce"
 				if(SHUTTLE_CALL, SHUTTLE_RECALL)

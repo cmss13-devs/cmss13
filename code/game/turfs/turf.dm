@@ -74,16 +74,22 @@
 	var/skyspit_active = FALSE
 	var/skyspit_expire_timer = null
 	var/skyspit_overlay = null
-	var/skyspit_applier = null // Xeno mob who created the skyspit
-	var/chaff_active = FALSE // Xeno chaff marker
-	var/chaff_expire_timer = null // Timer for chaff marker
-	var/chaff_overlay = null // Overlay for chaff telegraph
-	var/protection_flag_overlay = null // Dropship HUD overlay
-	var/antiair_applier = null // Hive or xeno that applied antiair protection
+	/// Xeno mob who created the skyspit
+	var/skyspit_applier = null
+	/// Xeno chaff marker
+	var/chaff_active = FALSE
+	/// Timer for chaff marker
+	var/chaff_expire_timer = null
+	/// Overlay for chaff telegraph
+	var/chaff_overlay = null
+	/// Dropship HUD overlay
+	var/protection_flag_overlay = null
+	/// Hive or xeno that applied antiair protection
+	var/antiair_applier = null
 
 	var/turf_protection_flags = TURF_PROTECTION_NONE
-
-	var/antiair_effect_type = null // Path of the anti-air effect datum to apply when this turf is targeted by a firemission
+	/// Path of the anti-air effect datum to apply when this turf is targeted by a firemission
+	var/antiair_effect_type = null
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons

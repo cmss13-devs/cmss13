@@ -54,29 +54,29 @@
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
 
-/obj/structure/dropship_equipment/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/powerloader_clamp))
-		var/obj/item/powerloader_clamp/PC = I
+/obj/structure/dropship_equipment/attackby(obj/item/item_equip, mob/user)
+	if(istype(item_equip, /obj/item/powerloader_clamp))
+		var/obj/item/powerloader_clamp/powerloader_item = item_equip
 		if(istype(src, /obj/structure/dropship_equipment/autoreloader))
-			var/obj/structure/dropship_equipment/autoreloader/A = src
+			var/obj/structure/dropship_equipment/autoreloader/autoreloader_equipment = src
 			// Loading ammo into autoreloader
-			if(PC.loaded)
+			if(powerloader_item.loaded)
 				// Prevent loading if shuttle is not idle
-				if(!(A.linked_shuttle.mode in list(SHUTTLE_IDLE, SHUTTLE_IGNITING, SHUTTLE_RECHARGING)))
+				if(!(autoreloader_equipment.linked_shuttle.mode in list(SHUTTLE_IDLE, SHUTTLE_IGNITING, SHUTTLE_RECHARGING)))
 					to_chat(user, SPAN_WARNING("You cannot load ammo while the dropship is in flight or busy!"))
 					return TRUE
 				// Only allow compatible ammo types
-				if(!istype(PC.loaded, /obj/structure/ship_ammo))
+				if(!istype(item_equip, /obj/structure/ship_ammo))
 					to_chat(user, SPAN_WARNING("You need to use a powerloader holding dropship ammo to load [src]."))
 					return TRUE
-				var/obj/structure/ship_ammo/ammo = PC.loaded
+				var/obj/structure/ship_ammo/ammo = powerloader_item.loaded
 				if(!(src.type in ammo.equipment_type))
 					to_chat(user, SPAN_WARNING("[ammo] is not compatible with the autoreloader!"))
 					return TRUE
-				if(ammo in A.stored_ammo)
+				if(ammo in autoreloader_equipment.stored_ammo)
 					to_chat(user, SPAN_WARNING("[ammo] is already stored in [src]."))
 					return TRUE
-				if(length(A.stored_ammo) >= A.max_ammo_slots)
+				if(length(autoreloader_equipment.stored_ammo) >= autoreloader_equipment.max_ammo_slots)
 					to_chat(user, SPAN_WARNING("[src] cannot store more ammo. Maximum capacity reached."))
 					return TRUE
 				to_chat(user, SPAN_NOTICE("You begin loading [ammo] into [src]."))
@@ -85,76 +85,76 @@
 					to_chat(user, SPAN_WARNING("You stop loading [ammo] into [src]."))
 					return TRUE
 				// Directly add ammo to stored_ammo list
-				if(length(A.stored_ammo) < A.max_ammo_slots)
-					A.stored_ammo += ammo
+				if(length(autoreloader_equipment.stored_ammo) < autoreloader_equipment.max_ammo_slots)
+					autoreloader_equipment.stored_ammo += ammo
 					ammo.forceMove(src)
-					PC.loaded = null
+					powerloader_item.loaded = null
 					playsound(src, 'sound/machines/hydraulics_2.ogg', 40, 1)
-					PC.update_icon()
+					powerloader_item.update_icon()
 					to_chat(user, SPAN_NOTICE("You successfully load [ammo] into [src]."))
-					A.update_icon()
+					autoreloader_equipment.update_icon()
 				else
 					to_chat(user, SPAN_WARNING("[src] cannot store more ammo. Maximum capacity reached."))
 				return TRUE
 			// Unloading ammo from autoreloader
-			else if(!PC.loaded && length(A.stored_ammo) > 0)
-				var/obj/structure/ship_ammo/ammo = A.stored_ammo[A.stored_ammo.len]
+			else if(!powerloader_item.loaded && length(autoreloader_equipment.stored_ammo) > 0)
+				var/obj/structure/ship_ammo/ammo = autoreloader_equipment.stored_ammo[autoreloader_equipment.stored_ammo.len]
 				to_chat(user, SPAN_NOTICE("You begin unloading [ammo] from [src]."))
 				if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
 					to_chat(user, SPAN_WARNING("You stop unloading [ammo] from [src]."))
 					return TRUE
 				// Directly remove ammo from stored_ammo list
-				if(ammo in A.stored_ammo)
-					A.stored_ammo -= ammo
-					ammo.forceMove(PC)
-					PC.loaded = ammo
-					PC.update_icon()
+				if(ammo in autoreloader_equipment.stored_ammo)
+					autoreloader_equipment.stored_ammo -= ammo
+					ammo.forceMove(powerloader_item)
+					powerloader_item.loaded = ammo
+					powerloader_item.update_icon()
 					to_chat(user, SPAN_NOTICE("You unload [ammo] from [src] into the powerloader clamp."))
-					A.selected_ammo = null
-					A.update_icon()
+					autoreloader_equipment.selected_ammo = null
+					autoreloader_equipment.update_icon()
 				else
 					to_chat(user, SPAN_WARNING("Failed to unload ammo from [src]."))
 				return TRUE
 
 		// Default behavior for other equipment
-		if(PC.loaded)
+		if(powerloader_item.loaded)
 			if(ammo_equipped)
 				// Allow stacking if stackable_ammo is TRUE, types match, and not full
-				if(stackable_ammo && istype(PC.loaded, /obj/structure/ship_ammo) && ammo_equipped.type == PC.loaded.type && ammo_equipped.ammo_count < ammo_equipped.max_ammo_count)
+				if(stackable_ammo && istype(powerloader_item.loaded, /obj/structure/ship_ammo) && ammo_equipped.type == powerloader_item.loaded.type && ammo_equipped.ammo_count < ammo_equipped.max_ammo_count)
 					// Add do_after before stacking
 					if(!do_after(user, 1 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 						to_chat(user, SPAN_WARNING("You stop topping off [src] with the ammo."))
 						return TRUE
-					var/obj/structure/ship_ammo/SA = PC.loaded
-					var/amt_to_add = min(SA.ammo_count, ammo_equipped.max_ammo_count - ammo_equipped.ammo_count)
+					var/obj/structure/ship_ammo/powerloader_ammo = powerloader_item.loaded
+					var/amt_to_add = min(powerloader_ammo.ammo_count, ammo_equipped.max_ammo_count - ammo_equipped.ammo_count)
 					ammo_equipped.ammo_count += amt_to_add
-					SA.ammo_count -= amt_to_add
-					if(SA.ammo_count <= 0)
-						qdel(SA)
-					PC.loaded = null
+					powerloader_ammo.ammo_count -= amt_to_add
+					if(powerloader_ammo.ammo_count <= 0)
+						qdel(powerloader_ammo)
+					powerloader_item.loaded = null
 					to_chat(user, SPAN_NOTICE("You top off [src] with the ammo."))
 					update_equipment()
 					return TRUE
 				to_chat(user, SPAN_WARNING("You need to unload \the [ammo_equipped] from \the [src] first!"))
 				return TRUE
 			if(uses_ammo) //it handles on it's own whether the ammo fits
-				load_ammo(PC, user)
+				load_ammo(powerloader_item, user)
 				return TRUE
 		else
 			if(uses_ammo && ammo_equipped)
-				unload_ammo(PC, user)
+				unload_ammo(powerloader_item, user)
 			else
-				grab_equipment(PC, user)
+				grab_equipment(powerloader_item, user)
 		return TRUE
 
 	// Support for loading handheld ship_ammo by hand
-	if(istype(I, /obj/structure/ship_ammo) || istype(I, /obj/item/ship_ammo_handheld))
+	if(istype(item_equip, /obj/structure/ship_ammo) || istype(item_equip, /obj/item/ship_ammo_handheld))
 		var/obj/structure/ship_ammo/hand_ammo
 		var/obj/item/ship_ammo_handheld/handheld_ammo
-		if(istype(I, /obj/structure/ship_ammo))
-			hand_ammo = I
-		else if(istype(I, /obj/item/ship_ammo_handheld))
-			handheld_ammo = I
+		if(istype(item_equip, /obj/structure/ship_ammo))
+			hand_ammo = item_equip
+		else if(istype(item_equip, /obj/item/ship_ammo_handheld))
+			handheld_ammo = item_equip
 			// Convert to structure for stacking, using the correct type
 			var/typepath = handheld_ammo.structure_type ? handheld_ammo.structure_type : /obj/structure/ship_ammo/flare
 			hand_ammo = new typepath()
@@ -164,7 +164,7 @@
 			hand_ammo.icon_state = handheld_ammo.icon_state
 			hand_ammo.handheld = TRUE
 		if(stackable_ammo && ammo_equipped && hand_ammo && hand_ammo.type == ammo_equipped.type)
-			// Add a 2 second do_after before stacking
+			 // Add a 2 second do_after before stacking
 			if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
 				to_chat(user, SPAN_WARNING("You stop topping off [src] with the ammo."))
 				return TRUE
@@ -175,7 +175,7 @@
 				handheld_ammo.ammo_count = hand_ammo.ammo_count
 				if(hand_ammo.ammo_count <= 0)
 					qdel(handheld_ammo)
-					if(hand_ammo != I) // Only qdel if we created it
+					if(hand_ammo != item_equip) // Only qdel if we created it
 						qdel(hand_ammo)
 			else
 				if(hand_ammo.ammo_count <= 0)
@@ -186,7 +186,7 @@
 
 		// Manual install of ship_ammo_handheld if equipment is empty and compatible
 		if(!ammo_equipped && handheld_ammo && handheld_ammo.structure_type)
-			// Prevent loading flare ammo with safety enabled
+			; // Prevent loading flare ammo with safety enabled
 			if(istype(handheld_ammo) && handheld_ammo.safety_enabled)
 				to_chat(user, SPAN_WARNING("You must disable the safety on [handheld_ammo] before loading it into [src]!"))
 				return TRUE
@@ -221,7 +221,7 @@
 				return TRUE
 
 	//Handle anti-air effect repair logic
-	if(istype(I, /obj/item/device/dropship_handheld))
+	if(istype(item_equip, /obj/item/device/dropship_handheld))
 		return ..()
 	// Only allow people that have at least level 1 in Piloting or Engineering to repair damage
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED) && !skillcheck(user, SKILL_PILOT, SKILL_PILOT_TRAINED))
@@ -230,8 +230,8 @@
 	// Block all repair tools if installed
 	if(src.ship_base)
 		var/is_tool = FALSE
-		for(var/T in GLOB.dropship_repair_tool_types)
-			if(istype(I, GLOB.dropship_repair_tool_types[T]))
+		for(var/tool_type in GLOB.dropship_repair_tool_types)
+			if(istype(item_equip, GLOB.dropship_repair_tool_types[tool_type]))
 				is_tool = TRUE
 				break
 		if(is_tool)
@@ -251,8 +251,8 @@
 			var/expected_type = get_dropship_repair_tool_type(next_step)
 			//wear your insulated gloves, shocks the user before any do_after if the next step is wirecutters
 			if(next_step == "WIRECUTTERS")
-				var/mob/living/L = user
-				if(L.electrocute_act(10, src))
+				var/mob/living/Living_mob = user
+				if(Living_mob.electrocute_act(10, src))
 					effect.repairing = FALSE
 					to_chat(user, SPAN_DANGER("You are shocked by the exposed wiring!"))
 					return TRUE
@@ -262,13 +262,13 @@
 				to_chat(user, SPAN_WARNING("Repair interrupted!"))
 				return TRUE
 			//if the tool is not the expected type, warn the user
-			if(!expected_type || !istype(I, expected_type))
+			if(!expected_type || !istype(item_equip, expected_type))
 				to_chat(user, SPAN_WARNING("Incorrect tool!"))
 				// Stay on the same step, do not advance or reset anything
 				return TRUE
 			//need the welder to be active for welding repairs
-			if(next_step == "WELDER" && istype(I, /obj/item/tool/weldingtool))
-				var/obj/item/tool/weldingtool/weld = I
+			if(next_step == "WELDER" && istype(item_equip, /obj/item/tool/weldingtool))
+				var/obj/item/tool/weldingtool/weld = item_equip
 				if(!weld.welding)
 					to_chat(user, SPAN_WARNING("The welder must be activated!"))
 					effect.repairing = FALSE
@@ -1116,14 +1116,14 @@
 		impact_overlay.reticle_image = null
 		// Only show to CAS HUD users
 		if(GLOB.huds[MOB_HUD_DROPSHIP])
-			for(var/mob/M in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
-				if(M)
-					impact_overlay.update_visibility_for_mob(M)
+			for(var/mob/Mob_Pilot in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+				if(Mob_Pilot)
+					impact_overlay.update_visibility_for_mob(Mob_Pilot)
 
 	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
 	if(ammo_travelling_time && !istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
-		for(var/i in 0 to total_seconds)
+		for(var/second_index in 0 to total_seconds)
 			sleep(10)
 			if(!selected_target || !selected_target.loc)//if laser disappeared before we reached the target,
 				ammo_accuracy_range++ //accuracy decreases
@@ -1143,9 +1143,9 @@
 					impact_overlay.reticle_image = null
 					// Show the new overlay to CAS HUD users
 					if(GLOB.huds[MOB_HUD_DROPSHIP])
-						for(var/mob/M in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
-							if(M)
-								impact_overlay.update_visibility_for_mob(M)
+						for(var/mob/Mob_Pilot in GLOB.huds[MOB_HUD_DROPSHIP].hudusers)
+							if(Mob_Pilot)
+								impact_overlay.update_visibility_for_mob(Mob_Pilot)
 	// clamp back to maximum inaccuracy
 	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
 
@@ -1179,7 +1179,7 @@
 	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1, 15)
 		var/total_seconds = max(floor(ammo_travelling_time / 10), 1)
-		for(var/i in 0 to total_seconds)
+		for(var/second_index in 0 to total_seconds)
 			sleep(1 SECONDS)
 			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser dissapears, it will land where it is telegraphed to land
 
@@ -1961,8 +1961,8 @@
 /obj/structure/dropship_equipment/fulton_system/ui_data(mob/user)
 	var/list/targets = get_targets()
 	. = list()
-	for(var/i in targets)
-		. += list(i)
+	for(var/target_entry in targets)
+		. += list(target_entry)
 
 
 /obj/structure/dropship_equipment/fulton_system/proc/get_targets()
@@ -2212,22 +2212,22 @@
 		to_chat(user, SPAN_WARNING("You cannot jump to the target. It is probably underground."))
 		return
 	var/list/valid_turfs = list()
-	for(var/turf/T as anything in RANGE_TURFS(2, location))
-		var/area/t_area = get_area(T)
-		if(!t_area || CEILING_IS_PROTECTED(t_area.ceiling, CEILING_PROTECTION_TIER_1))
+	for(var/turf/possible_turf as anything in RANGE_TURFS(2, location))
+		var/area/possible_area = get_area(possible_turf)
+		if(!possible_area || CEILING_IS_PROTECTED(possible_area.ceiling, CEILING_PROTECTION_TIER_1))
 			continue
-		if(T.density)
+		if(possible_turf.density)
 			continue
 		var/found_dense = FALSE
-		for(var/atom/A in T)
-			if(A.density && A.can_block_movement)
+		for(var/atom/contained_atom in possible_turf)
+			if(contained_atom.density && contained_atom.can_block_movement)
 				found_dense = TRUE
 				break
 		if(found_dense)
 			continue
-		if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+		if(protected_by_pylon(TURF_PROTECTION_MORTAR, possible_turf))
 			continue
-		valid_turfs += T
+		valid_turfs += possible_turf
 	if(!length(valid_turfs))
 		to_chat(user, SPAN_WARNING("There's nowhere safe for you to land, the landing zone is too congested."))
 		return
@@ -2391,7 +2391,7 @@
 	equip_categories = list(DROPSHIP_CREW_WEAPON) // Fits inside the central spot of the dropship
 	bound_height = 32
 	density = TRUE
-	point_cost = 300
+	point_cost = 500
 	is_interactable = TRUE
 	combat_equipment = FALSE
 	uses_ammo = FALSE // the ammo that it accepts is decided underneath the specific ammo type itself, currently intended for only rocket_pod/missile_silo ammo types

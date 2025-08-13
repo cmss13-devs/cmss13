@@ -273,8 +273,8 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if(user.client)
 		refresh_protection_flags_for_client(user.client)
 
-/datum/mob_hud/dropship/proc/refresh_protection_flags_for_client(client/C)
-	if(!C)
+/datum/mob_hud/dropship/proc/refresh_protection_flags_for_client(client/client_user)
+	if(!client_user)
 		return
 
 	// Add all existing protection flag overlays to this client
@@ -282,29 +282,29 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
 		// Antiair flags are only shown to non-observers
-		if(!isobserver(C.mob))
-			C.images |= flag.flag_image
+		if(!isobserver(client_user.mob))
+			client_user.images |= flag.flag_image
 
 	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in world)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
 		// Chaff flags are only shown to non-observers
-		if(!isobserver(C.mob))
-			C.images |= flag.flag_image
+		if(!isobserver(client_user.mob))
+			client_user.images |= flag.flag_image
 
-/datum/mob_hud/dropship/proc/remove_protection_flags_from_client(client/C)
-	if(!C)
+/datum/mob_hud/dropship/proc/remove_protection_flags_from_client(client/client_user)
+	if(!client_user)
 		return
 
 	for(var/obj/effect/overlay/temp/protection_flag/antiair/flag in world)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
-		C.images -= flag.flag_image
+		client_user.images -= flag.flag_image
 
 	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in world)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
-		C.images -= flag.flag_image
+		client_user.images -= flag.flag_image
 
 /datum/mob_hud/dropship/add_to_single_hud(mob/user, mob/target)
 	if(!user.client || user == target)
@@ -1075,9 +1075,9 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 	if(GLOB.huds[MOB_HUD_DROPSHIP])
 		update_dropship_hud_on_move(src, old_area, new_area)
 
-/mob/Entered(atom/movable/O)
+/mob/Entered(atom/movable/entered_object)
 	var/old_area = get_area(src)
-	..(O)
+	..(entered_object)
 	var/new_area = get_area(src)
 
 	// Update dropship HUD visibility if moving between dropship and ground areas
@@ -1087,16 +1087,16 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 /datum/mob_hud/dropship/proc/add_cas_reticles_to_observer(mob/dead/observer/ghost)
 	if(!ghost)
 		return
-	for(var/obj/effect/overlay/temp/dropship_reticle/R in world)
-		if(QDELETED(R)) continue
-		R.update_visibility_for_mob(ghost)
+	for(var/obj/effect/overlay/temp/dropship_reticle/reticle in world)
+		if(QDELETED(reticle)) continue
+		reticle.update_visibility_for_mob(ghost)
 
 /datum/mob_hud/dropship/proc/remove_cas_reticles_from_observer(mob/dead/observer/ghost)
 	if(!ghost)
 		return
-	for(var/obj/effect/overlay/temp/dropship_reticle/R in world)
-		if(QDELETED(R)) continue
-		R.update_visibility_for_mob(ghost)
+	for(var/obj/effect/overlay/temp/dropship_reticle/reticle in world)
+		if(QDELETED(reticle)) continue
+		reticle.update_visibility_for_mob(ghost)
 
 /// Helper proc to update dropship HUD visibility when someone teleports between areas
 /proc/update_dropship_hud_on_move(mob/updated_mob, area/old_area, area/new_area)

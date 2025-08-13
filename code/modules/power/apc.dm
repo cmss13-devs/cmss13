@@ -131,7 +131,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	appearance_flags = TILE_BOUND
 
 	var/list/connected_power_sources = list() //list with all powersources that may power this APC
-	var/required_power = 0
 
 /obj/structure/machinery/power/apc/Initialize(mapload, ndir, building=0)
 	. = ..()
@@ -178,7 +177,6 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 	for(var/obj/structure/machinery/power/power_system in connected_power_sources)
 		power_system.apc_in_area = null
-		LAZYREMOVE(connected_power_sources, power_system)
 
 	if(terminal)
 		terminal.master = null
@@ -1121,35 +1119,44 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		log_debug( "Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light]")
 
 	if(cell && !shorted)
-		//preventing APC from charging too quickly
-		if(length(connected_power_sources) > 0)
-			var/total_power_generation_machinery = 0
-			var/total_power_generation = 0
-			for(var/obj/structure/machinery/power/power_system in connected_power_sources)
-				if(istype(power_system, /obj/structure/machinery/power/reactor))
-					var/obj/structure/machinery/power/reactor/react = power_system
-					if(react && react.power_gen_percent > 0)
-						total_power_generation += react.power_gen_percent * react.power_generation_max
-						total_power_generation_machinery += 1
-				else if(istype(power_system, /obj/structure/machinery/power/port_gen))
-					var/obj/structure/machinery/power/port_gen/generator = power_system
-					if(generator && generator.active)
-						total_power_generation += generator.power_gen * generator.power_output
-						total_power_generation_machinery += 1
-			required_power = min(total_power_generation, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC) / length(connected_power_sources)
-
 		var/cell_maxcharge = cell.maxcharge
 
 		//Calculate how much power the APC will try to get from the grid.
 		var/target_draw = lastused_total
+
 		if(attempt_charging())
 			target_draw += min((cell_maxcharge - cell.charge), (cell_maxcharge * CHARGELEVEL))/CELLRATE
 		target_draw = min(target_draw, perapc) //Limit power draw by perapc
 
 		//Try to draw power from the grid
 		var/power_drawn = 0
+		var/got_power_from_local_grid = FALSE
+
+		if(length(connected_power_sources) > 0)
+			var/total_power_generation = 0
+			var/working_generators = 0
+			for(var/obj/structure/machinery/power/power_system in connected_power_sources)
+				if(istype(power_system, /obj/structure/machinery/power/reactor))
+					var/obj/structure/machinery/power/reactor/react = power_system
+					if(react && react.power_gen_percent > 0)
+						total_power_generation += react.power_gen_percent * react.power_generation_max
+						working_generators++
+				else if(istype(power_system, /obj/structure/machinery/power/port_gen))
+					var/obj/structure/machinery/power/port_gen/generator = power_system
+					if(generator && generator.active)
+						total_power_generation += generator.power_gen * generator.power_output
+						working_generators++
+			if(working_generators > 0)
+				power_drawn = min(total_power_generation, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
+				target_draw = max(target_draw - power_drawn, 0)
+				total_power_generation -= power_drawn
+				powernet.newavail += total_power_generation
+
+				got_power_from_local_grid = target_draw <= 0
+				charging = APC_CHARGING
+
 		if(avail())
-			power_drawn = add_load(target_draw) //Get some power from the powernet
+			power_drawn += add_load(target_draw) //Get some power from the powernet
 
 		//Figure out how much power is left over after meeting demand
 		power_excess = power_drawn - lastused_total
@@ -1177,6 +1184,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 			main_status = 1
 		else
 			main_status = 2
+
+		if (got_power_from_local_grid)
+			main_status = 3
 
 		//Set channels depending on how much charge we have left
 		// Allow the APC to operate as normal if the cell can charge
@@ -1220,32 +1230,11 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		//Now trickle-charge the cell
 		if(attempt_charging())
 			if(power_excess > 0) //Check to make sure we have enough to charge
-				cell.give(power_excess * CELLRATE) //Actually recharge the cell
+				var/what_is_left = cell.give(power_excess * CELLRATE) / CELLRATE //Actually recharge the cell
+				powernet.newavail += what_is_left //Giving power back to the powernet if not used
 			else
 				charging = APC_NOT_CHARGING //Stop charging
 				chargecount = 0
-
-		var/getting_energy = FALSE
-		if(length(connected_power_sources) > 0)
-			for(var/power_source in connected_power_sources)
-				if(istype(power_source, /obj/structure/machinery/power/reactor))
-					var/obj/structure/machinery/power/reactor/react = power_source
-					if(react)
-						if(react.power_gen_percent > 0)
-							charging = APC_CHARGING
-							if (main_status < 1)
-								main_status = 3
-							getting_energy = TRUE
-							break
-				else if(istype(power_source, /obj/structure/machinery/power/port_gen))
-					var/obj/structure/machinery/power/port_gen/generator = power_source
-					if(generator)
-						if(generator.active)
-							charging = APC_CHARGING
-							if (main_status < 1)
-								main_status = 3
-							getting_energy = TRUE
-							break
 
 		//Show cell as fully charged if so
 		if(cell.percent() >= 98)
@@ -1257,7 +1246,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				//last_surplus() overestimates the amount of power available for charging, but it's equivalent to what APCs were doing before.
 				if(last_surplus() * CELLRATE >= cell_maxcharge * CHARGELEVEL)
 					chargecount++
-				else if(!getting_energy)
+				else
 					chargecount = 0
 					charging = APC_NOT_CHARGING
 

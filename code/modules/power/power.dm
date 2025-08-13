@@ -29,27 +29,10 @@
 		LAZYADD(apc_in_area.connected_power_sources, src)
 		return apc_in_area
 
-/obj/structure/machinery/power/proc/power_local_apc(amount)
-	if(current_area && current_area.requires_power && !current_area.unlimited_power && !current_area.always_unpowered)
-		if(!apc_in_area)
-			apc_in_area = find_apc()
-			if(!apc_in_area)
-				return amount
-		if(!apc_in_area.cell || !apc_in_area.operating)
-			return amount
-
-		var/amount_to_sent = min(apc_in_area.required_power, amount)
-
-		amount -= amount_to_sent
-		amount_to_sent *= CELLRATE
-		amount_to_sent = (amount_to_sent - apc_in_area.cell.give(amount_to_sent))
-		amount_to_sent /= CELLRATE
-		amount += amount_to_sent
-	return amount
-
 // common helper procs for all power machines
 /obj/structure/machinery/power/proc/add_avail(amount)
-	amount = power_local_apc(amount)
+	if(apc_in_area && apc_in_area.cell && apc_in_area.operating && !apc_in_area.shorted && !(apc_in_area.stat & (BROKEN|MAINT)))
+		return
 
 	if(powernet)
 		powernet.newavail += amount

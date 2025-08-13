@@ -25,12 +25,13 @@
 
 // common helper procs for all power machines
 /obj/structure/machinery/power/proc/add_avail(amount)
+	if(apc_in_area.current_area != current_area)
+		LAZYREMOVE(apc_in_area.connected_power_sources, src)
+		apc_in_area = null
+
 	if(apc_in_area)
 		if(apc_in_area.cell && apc_in_area.operating)
 			return
-		if(apc_in_area.current_area != current_area)
-			LAZYREMOVE(apc_in_area.connected_power_sources, src)
-			apc_in_area = null
 	else
 		apc_in_area = current_area.get_apc()
 		if(apc_in_area)

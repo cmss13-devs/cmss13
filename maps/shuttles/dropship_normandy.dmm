@@ -431,7 +431,7 @@
 /area/shuttle/drop2/sulaco)
 "Ld" = (
 /obj/effect/attach_point/electronics/dropship2{
-	dir = 1
+	dir = 1;
 	attach_id = 5
 	},
 /obj/structure/shuttle/part/dropship2/transparent/inner_left_weapons,

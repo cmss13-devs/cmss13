@@ -1,9 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - rscadd: "Added a secure personal field doctor crate pre-filled with a wrench and crowbar to Field Equipment Storage."
-  - rscadd: "Added a secure replacement field doctor gear supply pack."
-  - rscadd: "Added secure medical crates for future purposes."
-  - imageadd: "Added icon states for secure medical crates."
-  - code_imp: "added a new datum under supply packs for the Field Doctor crate."
-  - spellcheck: "Fixed some grammatical errors."

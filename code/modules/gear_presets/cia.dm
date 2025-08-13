@@ -259,6 +259,10 @@
 	idtype = /obj/item/card/id/adaptive/silver
 	skills = /datum/skills/cia_senior
 
+/datum/equipment_preset/cia/uacqs/commissioner/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	new_human.equip_to_slot_or_del(new /obj/item/paper/prefab/uacqs_notice(new_human), WEAR_IN_BACK)
+
 /datum/equipment_preset/cia/uacqs/security
 	name = "CIA Agent (UACQS Security)"
 	job_title = JOB_CIA_UACQS_SEC

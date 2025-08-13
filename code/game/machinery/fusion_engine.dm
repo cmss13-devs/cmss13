@@ -53,12 +53,7 @@
 
 /obj/structure/machinery/power/reactor/connect_to_network()
 	var/something = ..()
-
-	if(!current_area)
-		return something
-	apc_in_area = current_area.get_apc()
-	if(apc_in_area)
-		LAZYADD(apc_in_area.connected_power_sources, src)
+	find_apc()
 
 	return something
 

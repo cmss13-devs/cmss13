@@ -413,12 +413,25 @@
 
 	// Ramrocket decreases grace period
 	var/adjusted_grace_period = grace_period
+	var/adjusted_first_warning = first_warning
+	var/adjusted_second_warning = second_warning
+	var/adjusted_third_warning = third_warning
+	var/adjusted_execution_start = execution_start
+	var/adjusted_flyoff_period = flyoff_period
+	var/adjusted_cooldown_period = cooldown_period
 	if(linked_console)
 		var/shuttle_tag = linked_console.shuttle_tag
 		var/obj/docking_port/mobile/marine_dropship/dropship = SSshuttle.getShuttle(shuttle_tag)
 		if(istype(dropship))
 			for(var/obj/structure/dropship_equipment/fuel/ram_rocket/rocket in dropship.equipments)
-				adjusted_grace_period = grace_period / 2
+				var/reduction = grace_period / 2
+				adjusted_grace_period = reduction
+				adjusted_first_warning = first_warning - (grace_period - reduction)
+				adjusted_second_warning = second_warning - (grace_period - reduction)
+				adjusted_third_warning = third_warning - (grace_period - reduction)
+				adjusted_execution_start = execution_start - (grace_period - reduction)
+				adjusted_flyoff_period = flyoff_period - (grace_period - reduction)
+				adjusted_cooldown_period = cooldown_period - (grace_period - reduction)
 				break
 
 	notify_ghosts(header = "CAS Fire Mission", message = "[usr ? usr : "Someone"] is launching Fire Mission '[mission.name]' at [get_area(target_turf)].", source = firemission_effect)
@@ -426,12 +439,12 @@
 
 
 	addtimer(CALLBACK(src, PROC_REF(play_sound), target_turf), adjusted_grace_period)
-	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 1), first_warning)
-	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 2), second_warning)
-	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 10, 3), third_warning)
-	addtimer(CALLBACK(src, PROC_REF(open_fire), target_turf, mission,dir), execution_start)
-	addtimer(CALLBACK(src, PROC_REF(flyoff)), flyoff_period)
-	addtimer(CALLBACK(src, PROC_REF(end_cooldown)), cooldown_period)
+	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 1), adjusted_first_warning)
+	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 15, 2), adjusted_second_warning)
+	addtimer(CALLBACK(src, PROC_REF(chat_warning), target_turf, 10, 3), adjusted_third_warning)
+	addtimer(CALLBACK(src, PROC_REF(open_fire), target_turf, mission,dir), adjusted_execution_start)
+	addtimer(CALLBACK(src, PROC_REF(flyoff)), adjusted_flyoff_period)
+	addtimer(CALLBACK(src, PROC_REF(end_cooldown)), adjusted_cooldown_period)
 
 /**
  * Change attack vector for firemission

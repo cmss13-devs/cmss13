@@ -948,18 +948,18 @@
 	return ..()
 
 /obj/structure/dropship_equipment/electronics/targeting_designator
-    name = "\improper AN/ASQ-183 Target Designation Pod"
-    shorthand = "ASQ-183"
-    icon_state = "laser_detector"
-    desc = "A cutting edge target designation pod capable of utilizing its own laser spot tracker to further fine tune target profiling for the dropship's weapon operator. It effectively enables offsetting up to 3 paces off of a predefined target during suborbital bombardments. Fits on electronics attach points. You need a powerloader to lift this."
-    point_cost = 900
-    is_interactable = FALSE
+	name = "\improper AN/ASQ-183 Target Designation Pod"
+	shorthand = "ASQ-183"
+	icon_state = "laser_detector"
+	desc = "A cutting edge target designation pod capable of utilizing its own laser spot tracker to further fine tune target profiling for the dropship's weapon operator. It effectively enables offsetting up to 3 paces off of a predefined target during suborbital bombardments. Fits on electronics attach points. You need a powerloader to lift this."
+	point_cost = 900
+	is_interactable = FALSE
 
 /obj/structure/dropship_equipment/electronics/targeting_designator/update_equipment()
-    if(ship_base)
-        icon_state = "[initial(icon_state)]_installed"
-    else
-        icon_state = initial(icon_state)
+	if(ship_base)
+		icon_state = "[initial(icon_state)]_installed"
+	else
+		icon_state = initial(icon_state)
 
 /obj/structure/dropship_equipment/electronics/vertical_exhaust_nozzle
 	name = "\improper TF-107/B-01 Vertical Exhaust Nozzle"
@@ -1453,20 +1453,20 @@
 	point_cost = 400
 
 /obj/structure/dropship_equipment/weapon/flare_launcher/update_icon()
-    if(ammo_equipped && ammo_equipped.ammo_count)
-        if(ship_base)
-            var/percent = ammo_equipped.ammo_count / ammo_equipped.max_ammo_count
-            if(percent > 0.5)
-                icon_state = "flare_launcher_installed1"
-            else
-                icon_state = "flare_launcher_installed2"
-        else
-            icon_state = "flare_launcher"
-    else
-        if(ship_base)
-            icon_state = "flare_launcher_installed"
-        else
-            icon_state = "flare_launcher"
+	if(ammo_equipped && ammo_equipped.ammo_count)
+		if(ship_base)
+			var/percent = ammo_equipped.ammo_count / ammo_equipped.max_ammo_count
+			if(percent > 0.5)
+				icon_state = "flare_launcher_installed1"
+			else
+				icon_state = "flare_launcher_installed2"
+		else
+			icon_state = "flare_launcher"
+	else
+		if(ship_base)
+			icon_state = "flare_launcher_installed"
+		else
+			icon_state = "flare_launcher"
 
 /obj/structure/dropship_equipment/weapon/bomb_bay
 	name = "\improper LAB-107 Bomb Bay"
@@ -2138,7 +2138,7 @@
 		ground_ropes += new_rope
 
 /obj/structure/dropship_equipment/rappel_system/proc/set_icon_state(state)
-    icon_state = state
+	icon_state = state
 
 /obj/structure/dropship_equipment/rappel_system/proc/retract_ropes()
 	if(hatch_rope)
@@ -2193,59 +2193,59 @@
 		if(warn) qdel(warn)
 
 /obj/structure/dropship_equipment/rappel_system/attack_hand(mob/living/carbon/human/user)
-    if(world.time < manual_deploy_cooldown)
-        to_chat(user, SPAN_WARNING("You must wait before deploying the rappel again!"))
-        return
-    if(!can_lock_rappel())
-        to_chat(user, SPAN_WARNING("Rappel system is not ready to deploy."))
-        return
-    var/datum/cas_signal/sig = locked_target
-    if(!sig)
-        to_chat(user, SPAN_WARNING("No rappel target locked."))
-        return
-    if(last_deployed_target == sig)
-        to_chat(user, SPAN_WARNING("Rappel is already deployed to this target."))
-        return
-    var/turf/location = get_turf(sig.signal_loc)
-    var/area/location_area = get_area(location)
-    if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
-        to_chat(user, SPAN_WARNING("You cannot jump to the target. It is probably underground."))
-        return
-    var/list/valid_turfs = list()
-    for(var/turf/T as anything in RANGE_TURFS(2, location))
-        var/area/t_area = get_area(T)
-        if(!t_area || CEILING_IS_PROTECTED(t_area.ceiling, CEILING_PROTECTION_TIER_1))
-            continue
-        if(T.density)
-            continue
-        var/found_dense = FALSE
-        for(var/atom/A in T)
-            if(A.density && A.can_block_movement)
-                found_dense = TRUE
-                break
-        if(found_dense)
-            continue
-        if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
-            continue
-        valid_turfs += T
-    if(!length(valid_turfs))
-        to_chat(user, SPAN_WARNING("There's nowhere safe for you to land, the landing zone is too congested."))
-        return
-    var/turf/deploy_turf = pick(valid_turfs)
-    spawn_rappel_warning(deploy_turf)
-    cleanup_ropes(FALSE)
-    playsound(src, 'sound/machines/elevator_openclose.ogg', 50, 1)
-    flick("rappel_hatch_opening", src)
-    visible_message(SPAN_NOTICE("[src] flashes green as it locks to a signal."))
-    icon_state = "rappel_hatch_open"
-    spawn(17)
-        var/turf/target_turf = get_turf(deploy_turf)
-        if(target_turf)
-            create_ropes(loc, target_turf)
-            last_deployed_target = sig
-            system_cooldown = world.time + 5 SECONDS  // Set cooldown when rappel is actually deployed
-    manual_cancel_cooldown = world.time + 6 SECONDS
-    return
+	if(world.time < manual_deploy_cooldown)
+		to_chat(user, SPAN_WARNING("You must wait before deploying the rappel again!"))
+		return
+	if(!can_lock_rappel())
+		to_chat(user, SPAN_WARNING("Rappel system is not ready to deploy."))
+		return
+	var/datum/cas_signal/sig = locked_target
+	if(!sig)
+		to_chat(user, SPAN_WARNING("No rappel target locked."))
+		return
+	if(last_deployed_target == sig)
+		to_chat(user, SPAN_WARNING("Rappel is already deployed to this target."))
+		return
+	var/turf/location = get_turf(sig.signal_loc)
+	var/area/location_area = get_area(location)
+	if(CEILING_IS_PROTECTED(location_area.ceiling, CEILING_PROTECTION_TIER_1))
+		to_chat(user, SPAN_WARNING("You cannot jump to the target. It is probably underground."))
+		return
+	var/list/valid_turfs = list()
+	for(var/turf/T as anything in RANGE_TURFS(2, location))
+		var/area/t_area = get_area(T)
+		if(!t_area || CEILING_IS_PROTECTED(t_area.ceiling, CEILING_PROTECTION_TIER_1))
+			continue
+		if(T.density)
+			continue
+		var/found_dense = FALSE
+		for(var/atom/A in T)
+			if(A.density && A.can_block_movement)
+				found_dense = TRUE
+				break
+		if(found_dense)
+			continue
+		if(protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+			continue
+		valid_turfs += T
+	if(!length(valid_turfs))
+		to_chat(user, SPAN_WARNING("There's nowhere safe for you to land, the landing zone is too congested."))
+		return
+	var/turf/deploy_turf = pick(valid_turfs)
+	spawn_rappel_warning(deploy_turf)
+	cleanup_ropes(FALSE)
+	playsound(src, 'sound/machines/elevator_openclose.ogg', 50, 1)
+	flick("rappel_hatch_opening", src)
+	visible_message(SPAN_NOTICE("[src] flashes green as it locks to a signal."))
+	icon_state = "rappel_hatch_open"
+	spawn(17)
+		var/turf/target_turf = get_turf(deploy_turf)
+		if(target_turf)
+			create_ropes(loc, target_turf)
+			last_deployed_target = sig
+			system_cooldown = world.time + 5 SECONDS  // Set cooldown when rappel is actually deployed
+	manual_cancel_cooldown = world.time + 6 SECONDS
+	return
 
 /obj/effect/warning/rappel
 	color = "#cf7a1e"
@@ -2598,6 +2598,3 @@
 
 /obj/structure/dropship_equipment/proc/has_active_antiair_effect()
 	return islist(src.active_effects) && src.active_effects.len > 0
-
-
-

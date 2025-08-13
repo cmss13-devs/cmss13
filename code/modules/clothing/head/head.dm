@@ -1021,6 +1021,11 @@ GLOBAL_LIST_INIT(allowed_hat_items, list(
 	desc = "This metal bucket appears to have been modified with padding and chin-straps, plus an eye-slit carved into the \"front\". Presumably, it is intended to be worn on the head, possibly for protection."
 	icon_state = "bucket"
 
+/obj/item/clothing/head/militia/brown
+	name = "\improper armored militia hood"
+	desc = "A large hood in service with some militias, modified for full obscurity on the frontier. Offers some head protection due to the study fibers utilized in production."
+	icon_state = "coordinator_hood"
+
 /obj/item/clothing/head/general
 	name = "\improper USCM officer peaked service cap"
 	desc = "A standard issue officer service cap, worn by USCM commissioned officers on official visits."

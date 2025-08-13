@@ -1,5 +1,0 @@
-author: "MistChristmas"
-delete-after: True
-changes:
-  - bugfix: "Tactical Sign Language not registering for TGUI"
-  - ui: "Sentry computer % sign for power level uses a different font that looks better. Radio menu gets a little more formatting"

@@ -89,11 +89,12 @@
 	name = "CIA Senior Agent (USCM Liaison - Captain)"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
 	minimum_age = 30
+	skills = /datum/skills/cia_senior
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
-	name = "CIA Agent (Marine Raider Advisor)"
+	name = "CIA Senior Agent (Marine Raider Advisor)"
 	minimum_age = 30
-	skills = /datum/skills/cia
+	skills = /datum/skills/cia_senior
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/New()
 	. = ..()
@@ -189,7 +190,7 @@
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia
 	name = "CIA Spy (UPP Senior Officer)"
-	skills = /datum/skills/cia
+	skills = /datum/skills/cia_senior
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/New()
 	. = ..()
@@ -212,8 +213,6 @@
 	minimap_background = "background_ua"
 
 /datum/equipment_preset/cia/uacqs/load_gear(mob/living/carbon/human/new_human, client/mob_client)
-	. = ..()
-
 	//Give them a random piece of civvie clothing.
 	var/random_outfit = pick(
 		/obj/item/clothing/under/liaison_suit/black,
@@ -258,6 +257,7 @@
 	paygrades = list(PAY_SHORT_COM = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "uacqs_c"
 	idtype = /obj/item/card/id/adaptive/silver
+	skills = /datum/skills/cia_senior
 
 /datum/equipment_preset/cia/uacqs/security
 	name = "CIA Agent (UACQS Security)"

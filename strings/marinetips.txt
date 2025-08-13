@@ -116,3 +116,4 @@ The chaff from a Boiler's neuorotoxic Skyspit prevents all CAS suborbital direct
 Bombs dropped from the Bomb Bay and certain missiles are capable of being direct fired on metal roofs, but not through chaff!
 The dropship's camera console is capable of using auxiliary equipment such as the Medevac. Copilots, be useful!
 The Queen's Skyspit ability is smaller and lasts shorter than the Boiler's, but it is much faster!
+CAS can not see into metal or stronger roofs, be sure to give proper directions FTLs!

@@ -164,7 +164,7 @@
 			hand_ammo.icon_state = handheld_ammo.icon_state
 			hand_ammo.handheld = TRUE
 		if(stackable_ammo && ammo_equipped && hand_ammo && hand_ammo.type == ammo_equipped.type)
-			 // Add a 2 second do_after before stacking
+			// Add a 2 second do_after before stacking
 			if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND | BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, target = src))
 				to_chat(user, SPAN_WARNING("You stop topping off [src] with the ammo."))
 				return TRUE
@@ -186,7 +186,7 @@
 
 		// Manual install of ship_ammo_handheld if equipment is empty and compatible
 		if(!ammo_equipped && handheld_ammo && handheld_ammo.structure_type)
-			; // Prevent loading flare ammo with safety enabled
+			// Prevent loading flare ammo with safety enabled
 			if(istype(handheld_ammo) && handheld_ammo.safety_enabled)
 				to_chat(user, SPAN_WARNING("You must disable the safety on [handheld_ammo] before loading it into [src]!"))
 				return TRUE

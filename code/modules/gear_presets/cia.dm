@@ -86,7 +86,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
 
 /datum/equipment_preset/cia/officer/o3
-	name = "CIA Agent (USCM Liaison - Captain)"
+	name = "CIA Senior Agent (USCM Liaison - Captain)"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
 	minimum_age = 30
 
@@ -257,6 +257,7 @@
 	assignment = JOB_CIA_UACQS_COMR
 	paygrades = list(PAY_SHORT_COM = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "uacqs_c"
+	idtype = /obj/item/card/id/adaptive/silver
 
 /datum/equipment_preset/cia/uacqs/security
 	name = "CIA Agent (UACQS Security)"
@@ -271,7 +272,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK) //CIA equipment
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/antag(new_human), WEAR_EYES)
 
 	//uniform

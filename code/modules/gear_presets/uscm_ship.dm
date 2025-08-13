@@ -61,7 +61,7 @@
 	access = get_access(ACCESS_LIST_MARINE_LIAISON)
 
 /datum/equipment_preset/uscm_ship/liaison/load_gear(mob/living/carbon/human/new_human)
-	var/back_item = /obj/item/storage/backpack/satchel/lockable/no_override
+	var/back_item = /obj/item/storage/backpack/satchel/lockable/liaison
 	//There is no suitable backpack for a CL really...
 	//if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		//back_item = /obj/item/storage/backpack

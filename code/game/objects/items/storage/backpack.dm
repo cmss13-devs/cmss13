@@ -378,7 +378,7 @@
 	desc = "A very fancy satchel made of fine leather. It's got a lock on it."
 	is_id_lockable = TRUE
 
-/obj/item/storage/backpack/satchel/lockable/no_override
+/obj/item/storage/backpack/satchel/lockable/liaison
 	lock_overridable = FALSE
 
 /obj/item/storage/backpack/satchel/blue

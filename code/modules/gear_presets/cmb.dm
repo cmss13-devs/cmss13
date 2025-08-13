@@ -727,7 +727,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/spacecash/c1000, WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/taperecorder, WEAR_IN_R_STORE)
 	//backpack and stuff in it
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/no_override, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/carbon, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/paper/carbon, WEAR_IN_BACK)
@@ -783,7 +783,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/reagent_container/spray/pepper, WEAR_IN_R_STORE)
 	//backpack and stuff in it
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/no_override, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera_film, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/clicky, WEAR_IN_BACK)

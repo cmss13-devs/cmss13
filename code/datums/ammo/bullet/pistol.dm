@@ -124,8 +124,8 @@
 
 /datum/ammo/bullet/pistol/heavy/highimpact/ap
 	name = "high-impact armor-piercing pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_8
-	damage = 45
+	penetration = ARMOR_PENETRATION_TIER_10
+	damage = 40
 
 /datum/ammo/bullet/pistol/heavy/highimpact/New()
 	..()
@@ -149,7 +149,7 @@
 /datum/ammo/bullet/pistol/deagle/highimpact/ap
 	name = ".50 high-impact armor piercing pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 45
+	damage = 50
 
 /datum/ammo/bullet/pistol/deagle/highimpact/upp
 	name = "high-impact pistol bullet"

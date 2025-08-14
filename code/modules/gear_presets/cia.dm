@@ -91,6 +91,10 @@
 	minimum_age = 30
 	skills = /datum/skills/cia_senior
 
+/datum/equipment_preset/cia/officer/o3/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
+
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
 	name = "CIA Senior Agent (Marine Raider Advisor)"
 	minimum_age = 30
@@ -98,7 +102,7 @@
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA)
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//Custom reduced loadout versus normal MARSOC
@@ -181,7 +185,7 @@
 
 /datum/equipment_preset/upp/soldier/dressed/cia/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
+	access = get_access(ACCESS_LIST_UPP_ALL) + list(ACCESS_CIA)
 
 /datum/equipment_preset/upp/soldier/dressed/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
@@ -194,7 +198,7 @@
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
+	access = get_access(ACCESS_LIST_UPP_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
@@ -258,6 +262,10 @@
 	minimap_icon = "uacqs_c"
 	idtype = /obj/item/card/id/adaptive/silver
 	skills = /datum/skills/cia_senior
+
+/datum/equipment_preset/cia/uacqs/commissioner/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
 
 /datum/equipment_preset/cia/uacqs/commissioner/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()

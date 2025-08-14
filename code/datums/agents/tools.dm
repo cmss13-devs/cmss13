@@ -145,7 +145,7 @@
 	max_points = 300
 	delay = 0.5
 	force = MELEE_FORCE_STRONG
-	req_access = list()
+	req_access = list(ACCESS_CIA)
 
 	listed_products = list(
 		list("STATIONERY", 0, null, null, null),
@@ -170,6 +170,8 @@
 		list("Listening Device", 20, /obj/item/device/radio/listening_bug/radio_linked/cia, "white", "A listening device. Can be disguised as anything by right-clicking on it."),
 		list("USCM Codebook", 20, /obj/item/book/codebook, "white", "A copy of a USCM codebook used to verify credentials with the commanding officer."),
 		list("Tools Kit", 15, /obj/item/storage/toolbox/mechanical, "white", "A toolbox containing general tools."),
+		list("Ceramic Plate", 15, /obj/item/clothing/accessory/health/ceramic_plate, "white", "A strong trauma plate, able to protect the user from a large amount of bullets. Ineffective against sharp objects."),
+		list("Cyanide Pill", 15, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 		list("CIA Challenge Coin", 15, /obj/item/coin/silver/cia, "white", "A challenge coin emblazoned with an eagle. Use to identify other CIA operatives on the field at a glance."),
 
 		list("MARINE CLOTHING", 0, null, null, null),

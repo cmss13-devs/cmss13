@@ -407,7 +407,7 @@
 		var/obj/item/card/id/card = person_in_charge.get_idcard()
 		if(card)
 			var/list/access = card.access
-			access.Add(ACCESS_MARINE_SENIOR)
+			access.Add(list(ACCESS_MARINE_SENIOR, ACCESS_MARINE_DATABASE))
 			announce_addendum += "\nSenior Command access added to ID."
 
 	//does an announcement to the crew about the commander & alerts admins to that change for logs.

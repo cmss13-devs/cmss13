@@ -138,13 +138,20 @@
 /area/strata/exterior/tcomms_mining_caves
 	name = "Mining Pathway Relay"
 	icon_state = "tcomms1"
-
 /area/strata/exterior/tcomms_vehicle_yard
 	name = "Vehicle Yard Relay"
 	icon_state = "tcomms1"
 
 /area/strata/exterior/tcomms_geosprings
 	name = "Geothermal Springs Relay"
+	icon_state = "tcomms1"
+
+/area/strata/exterior/tcomms_crashed_dropship
+	name = "Crashed Dropship Relay"
+	icon_state = "tcomms1"
+
+/area/strata/exterior/tcomms_engineering_parts_storage
+	name = "Engineering - Parts Storage Platform Relay"
 	icon_state = "tcomms1"
 
 //-Outpost

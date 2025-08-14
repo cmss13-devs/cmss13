@@ -3095,6 +3095,10 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/vanyard)
 "ajm" = (
@@ -11721,11 +11725,10 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
 "aHQ" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = -7;
-	pixel_y = 10
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/parts_storage_exterior)
 "aHR" = (
 /turf/open/floor/strata/multi_tiles/west,
@@ -12574,23 +12577,17 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/parts_storage_exterior)
 "aKt" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 6
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 9
-	},
-/turf/open/gm/dirt/brown,
-/area/strata/exterior/parts_storage_exterior)
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "aKu" = (
-/obj/structure/largecrate/random/secure{
-	pixel_x = 5
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
 	},
-/turf/open/asphalt/cement/cement12,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "aKv" = (
 /obj/item/ammo_casing,
 /turf/open/gm/dirt/brown/variant_5/south,
@@ -13139,14 +13136,8 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
 "aLV" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 8
-	},
-/turf/open/gm/dirt/brown/variant_1,
-/area/strata/exterior/parts_storage_exterior)
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/exterior/south_outpost)
 "aLW" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -13169,18 +13160,11 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/admin)
 "aLX" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = 14
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/exterior/parts_storage_exterior)
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "aLY" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = -2;
-	pixel_y = -14
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "aLZ" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -13689,6 +13673,9 @@
 	pixel_y = 4;
 	pixel_x = 2
 	},
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
+	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/parts_storage_exterior)
 "aNG" = (
@@ -13713,13 +13700,10 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost)
 "aNK" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 9
+/obj/structure/fence/slim/upp/door{
+	dir = 4
 	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
-	},
-/turf/open/gm/dirt/brown/variant_2,
+/turf/open/asphalt/cement/cement3,
 /area/strata/exterior/parts_storage_exterior)
 "aNL" = (
 /obj/structure/sign/safety/restrictedarea,
@@ -13752,11 +13736,9 @@
 /turf/open/asphalt/cement,
 /area/strata/exterior/mining_outpost_exterior)
 "aNO" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = 13
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/exterior/parts_storage_exterior)
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "aNP" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/south_outpost)
@@ -15259,8 +15241,8 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/spring_marshes)
 "aSb" = (
-/obj/structure/platform_decoration/metal/strata,
 /obj/structure/machinery/colony_floodlight,
+/obj/structure/platform/metal/strata,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/south_outpost)
 "aSc" = (
@@ -16962,9 +16944,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/admin)
-"aWP" = (
-/turf/open/asphalt/cement/cement7,
-/area/strata/interior/vanyard)
 "aWQ" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
@@ -17175,10 +17154,11 @@
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/marsh/center)
 "aXA" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 19;
+	pixel_y = 13
 	},
-/turf/open/gm/dirt/brown,
+/turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/center)
 "aXB" = (
 /obj/effect/decal/cleanable/blood,
@@ -17244,8 +17224,9 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
 	},
+/obj/structure/fence/slim/upp,
 /turf/open/gm/dirt/brown,
-/area/strata/exterior/marsh/spring_marshes)
+/area/strata/exterior/marsh/center)
 "aXM" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = -8;
@@ -17399,7 +17380,7 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
 	},
-/turf/open/gm/dirt/brown,
+/turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/marsh/center)
 "aYl" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -17732,9 +17713,8 @@
 /turf/open/gm/dirt/brown/variant_5,
 /area/strata/exterior/marsh/spring_marshes)
 "aZm" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/strata/floor3/east,
-/area/strata/exterior/marsh/spring_marshes)
+/turf/open/floor/strata/orange_edge,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "aZn" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -17980,7 +17960,7 @@
 	pixel_x = -15
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/marsh/crash)
+/area/strata/exterior/tcomms_geosprings)
 "aZX" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -17988,6 +17968,7 @@
 	dir = 8;
 	pixel_x = 1
 	},
+/obj/structure/fence/slim/upp,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/crash)
 "aZY" = (
@@ -18413,7 +18394,7 @@
 /area/strata/exterior/marsh/spring_marshes)
 "bbp" = (
 /obj/effect/decal/strata_decals/mud_corner,
-/turf/open/gm/dirt/brown,
+/turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/exterior/marsh/spring_marshes)
 "bbq" = (
 /turf/closed/wall/strata_outpost/reinforced,
@@ -18763,10 +18744,6 @@
 	},
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/administration)
-"bcJ" = (
-/obj/structure/fence/slim/upp,
-/turf/open/asphalt/cement/cement3,
-/area/strata/interior/vanyard)
 "bcK" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 5
@@ -18785,7 +18762,7 @@
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
 /turf/open/asphalt/cement/cement12,
-/area/strata/interior/vanyard)
+/area/strata/exterior/marsh/spring_marshes)
 "bcN" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 4
@@ -18797,8 +18774,12 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/river)
 "bcP" = (
-/turf/closed/wall/strata_outpost/reinforced,
-/area/strata/exterior/tcomms_vehicle_yard)
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
 "bcQ" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 8
@@ -19272,7 +19253,7 @@
 	pixel_y = -13
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "bew" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -19664,7 +19645,7 @@
 	pixel_y = 7
 	},
 /turf/open/gm/dirt/brown,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "bfL" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 9;
@@ -20011,7 +19992,7 @@
 	},
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "bgR" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -20021,7 +20002,7 @@
 /obj/item/device/flashlight,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "bgS" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/marsh/crash)
@@ -20333,7 +20314,7 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/item/clothing/mask/gas/upp_pfb,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "bhM" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
@@ -20342,7 +20323,7 @@
 /obj/item/device/flashlight/flare,
 /obj/item/device/flashlight,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "bhN" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d796a";
@@ -20381,7 +20362,7 @@
 /area/strata/exterior/marsh/center)
 "bhS" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/floor/strata/orange_cover,
 /area/strata/exterior/tcomms_vehicle_yard)
 "bhT" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -20575,7 +20556,11 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/asphalt/cement/cement9,
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/asphalt/cement/cement4,
 /area/strata/exterior/tcomms_vehicle_yard)
 "biz" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass{
@@ -20770,7 +20755,7 @@
 /area/strata/interior/outpost/admin)
 "bjd" = (
 /obj/structure/machinery/power/apc/no_power/south,
-/turf/open/asphalt/cement/cement1/north,
+/turf/open/floor/strata/orange_cover,
 /area/strata/exterior/tcomms_vehicle_yard)
 "bje" = (
 /obj/structure/machinery/power/terminal{
@@ -21093,9 +21078,6 @@
 "bkg" = (
 /turf/open/gm/coast/dirt/beachcorner2/north_west,
 /area/strata/exterior/deep_jungle/platform_east)
-"bkh" = (
-/turf/open/asphalt/cement/cement1/north,
-/area/strata/exterior/tcomms_vehicle_yard)
 "bkj" = (
 /obj/structure/flora/bush/ausbushes/reedbush{
 	pixel_x = 13;
@@ -24794,7 +24776,7 @@
 	pixel_y = 10
 	},
 /turf/closed/wall/strata_outpost/reinforced,
-/area/strata/exterior/tcomms_mining_caves)
+/area/strata/interior/checkpoints/north)
 "bwC" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 6;
@@ -30125,7 +30107,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/floor3/east,
 /area/strata/exterior/tcomms_mining_caves)
 "bMe" = (
 /obj/structure/cargo_container/canc/left,
@@ -31864,11 +31846,15 @@
 "bRf" = (
 /obj/item/trash/cigbutt,
 /obj/structure/machinery/power/apc/power/south,
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/tcomms_mining_caves)
 "bRg" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
+	},
+/obj/effect/decal/strata_decals/grime/grime2{
+	dir = 4;
+	icon_state = "grime1"
 	},
 /turf/open/asphalt/cement/cement12,
 /area/strata/exterior/tcomms_mining_caves)
@@ -33315,7 +33301,7 @@
 "bUQ" = (
 /obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement4,
-/area/strata/interior/vanyard)
+/area/strata/exterior/marsh/spring_marshes)
 "bUR" = (
 /obj/structure/sign/safety/ladder{
 	pixel_x = -19
@@ -35756,7 +35742,7 @@
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/far_north_outpost)
 "cbu" = (
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/tcomms_mining_caves)
 "cbv" = (
 /obj/structure/barricade/handrail/strata,
@@ -36022,6 +36008,9 @@
 "ccc" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
+"ccd" = (
+/turf/open/floor/strata/orange_edge/southeast,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "ccg" = (
 /obj/item/stool{
 	pixel_y = 11
@@ -36860,6 +36849,13 @@
 /obj/structure/machinery/light_switch,
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/outpost/canteen/bar)
+"ckM" = (
+/obj/structure/sign/safety/biohazard,
+/obj/structure/sign/safety/storage{
+	pixel_x = 12
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/interior/parts_storage)
 "ckN" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -37445,7 +37441,7 @@
 	dir = 4
 	},
 /turf/open/gm/dirt/brown,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "crR" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/strata/orange_cover,
@@ -37654,6 +37650,9 @@
 "ctS" = (
 /turf/open/floor/strata/fake_wood,
 /area/strata/interior/administration)
+"cuc" = (
+/turf/open/floor/strata/orange_edge/northeast,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "cui" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 6
@@ -38025,6 +38024,10 @@
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/water_marshes)
+"cGk" = (
+/obj/structure/sign/safety/storage,
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/interior/parts_storage)
 "cGu" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -38587,6 +38590,11 @@
 /obj/structure/platform_decoration/stone/soro,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/marsh/spring_marshes)
+"drw" = (
+/obj/structure/largecrate/random/case/double,
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "drI" = (
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/admin2)
@@ -38811,6 +38819,13 @@
 	pixel_y = 9
 	},
 /turf/open/gm/river/soro,
+/area/strata/interior/parts_storage)
+"dHn" = (
+/obj/structure/machinery/weather_siren{
+	dir = 1;
+	pixel_y = 28
+	},
+/turf/closed/wall/strata_outpost/reinforced,
 /area/strata/interior/parts_storage)
 "dIh" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
@@ -39871,6 +39886,13 @@
 	},
 /turf/open/floor/strata/red1,
 /area/strata/interior/checkpoints/north)
+"eTJ" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = 19;
+	pixel_y = 13
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/center)
 "eUV" = (
 /obj/structure/platform/metal/strata/east,
 /obj/effect/decal/strata_decals/catwalk/prison,
@@ -39929,6 +39951,9 @@
 /obj/structure/platform_decoration/metal/strata/west,
 /turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
+"eXk" = (
+/turf/open/floor/strata/orange_edge/southwest,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "eXK" = (
 /obj/structure/window/framed/strata/reinforced,
 /turf/open/floor/plating,
@@ -39993,7 +40018,7 @@
 /obj/structure/platform/stone/soro/west,
 /obj/structure/platform_decoration/stone/soro,
 /turf/open/gm/river/soro,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "fbq" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 5
@@ -40077,17 +40102,19 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/canteen)
 "fhl" = (
-/obj/structure/fence/slim/upp,
-/turf/open/asphalt/cement/cement15,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/orange_edge/west,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "fhW" = (
 /obj/structure/fence/slim/upp,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/asphalt/cement/cement1,
-/area/strata/exterior/south_outpost)
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "fiD" = (
 /obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement4,
-/area/strata/exterior/south_outpost)
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "fkD" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_1";
@@ -40095,9 +40122,8 @@
 	},
 /area/strata/interior/outpost/engi/drome/shuttle_MK3)
 "fkG" = (
-/obj/structure/flora/grass/tallgrass/jungle_alt/corner,
-/turf/open/gm/dirt/brown,
-/area/strata/exterior/marsh/river)
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/tcomms_geosprings)
 "fkK" = (
 /obj/structure/largecrate/random,
 /obj/structure/barricade/handrail/strata{
@@ -40449,6 +40475,9 @@
 	},
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi/drome)
+"fHe" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/tcomms_geosprings)
 "fHZ" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 6
@@ -40589,8 +40618,12 @@
 /turf/open/floor/plating,
 /area/strata/interior/parts_storage)
 "fOX" = (
-/turf/open/asphalt/cement/cement14,
-/area/strata/exterior/south_outpost)
+/obj/structure/largecrate/random/secure{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "fOY" = (
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro/east,
@@ -41077,7 +41110,7 @@
 	dir = 4
 	},
 /turf/open/asphalt/cement,
-/area/strata/exterior/south_outpost)
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "gqJ" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/structure/platform/stone/soro/east,
@@ -41122,6 +41155,13 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/canteen/bar)
+"gsz" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/fence/slim/upp,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/center)
 "gsQ" = (
 /obj/structure/platform_decoration/stone/soro/north,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -41231,8 +41271,8 @@
 	},
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/firstaid/regular,
-/turf/open/asphalt/cement,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "gAD" = (
 /obj/structure/machinery/iv_drip,
 /turf/open/floor/strata,
@@ -41344,6 +41384,14 @@
 /obj/item/clothing/suit/radiation,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"gNW" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/item/device/radio,
+/obj/structure/machinery/light,
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "gOi" = (
 /obj/item/lightstick/planted,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -41423,6 +41471,7 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost/hive)
 "gRK" = (
+/obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement15,
 /area/strata/exterior/south_outpost)
 "gSz" = (
@@ -41601,9 +41650,9 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
 "haU" = (
-/obj/structure/machinery/power/apc/no_power/west,
+/obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating,
-/area/strata/exterior/marsh/crash)
+/area/strata/exterior/tcomms_geosprings)
 "hba" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/power/apc/no_power/east,
@@ -41616,6 +41665,10 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
+"hce" = (
+/obj/structure/fence/slim/upp/door,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/center)
 "hcg" = (
 /obj/item/tool/pen/blue,
 /turf/open/floor/strata/floor3/east,
@@ -41985,7 +42038,7 @@
 "hFM" = (
 /obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement2,
-/area/strata/interior/vanyard)
+/area/strata/exterior/marsh/spring_marshes)
 "hGH" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -42042,6 +42095,14 @@
 /obj/structure/platform/stone/soro/east,
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/spring_marshes)
+"hKz" = (
+/obj/structure/largecrate/random/mini{
+	pixel_x = 2;
+	pixel_y = 15;
+	layer = 3.1
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "hLc" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#98a3ab"
@@ -42061,9 +42122,9 @@
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/outpost/engi/drome)
 "hLf" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/asphalt/cement,
-/area/strata/exterior/south_outpost)
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "hLX" = (
 /obj/structure/platform_decoration/stone/soro/east,
 /obj/structure/prop/colorable_rock/colorable{
@@ -42074,6 +42135,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/marsh/spring_marshes)
+"hMb" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -16;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/parts_storage_exterior)
 "hMs" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -42159,7 +42227,7 @@
 "hQP" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/exterior/marsh/crash)
+/area/strata/exterior/tcomms_geosprings)
 "hTi" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/exterior/deep_jungle/old_tunnels)
@@ -42322,6 +42390,7 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/south_dormitories)
 "ibE" = (
+/obj/structure/closet,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/vanyard)
 "ibH" = (
@@ -42447,6 +42516,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/outpost/security)
+"igC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3;
+	pixel_x = -1
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/marsh/spring_marshes)
 "ihd" = (
 /obj/structure/bookcase{
 	icon_state = "book-5"
@@ -42908,7 +42986,7 @@
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
 "iMd" = (
-/turf/open/floor/strata/multi_tiles/southeast,
+/turf/open/asphalt/cement/cement4,
 /area/strata/exterior/tcomms_vehicle_yard)
 "iMn" = (
 /obj/structure/surface/rack{
@@ -43494,6 +43572,10 @@
 	},
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/interior/outpost/admin)
+"jyd" = (
+/obj/structure/fence/slim/upp,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/center)
 "jyE" = (
 /obj/structure/machinery/cm_vending/sorted/marine_food,
 /obj/structure/machinery/light,
@@ -43632,12 +43714,8 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/platform)
 "jKf" = (
-/obj/structure/largecrate/random/secure{
-	pixel_x = 5;
-	pixel_y = 3
-	},
-/turf/open/asphalt/cement/cement12,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "jLb" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/tearlake)
@@ -44010,11 +44088,13 @@
 /turf/open/floor/strata/multi_tiles,
 /area/strata/interior/mining_outpost)
 "khh" = (
-/obj/structure/machinery/power/smes/buildable{
-	capacity = 1e+006;
-	dir = 1
+/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 6
 	},
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/vanyard)
 "khT" = (
 /turf/closed/wall/strata_outpost,
@@ -44184,10 +44264,17 @@
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"kwk" = (
+/obj/structure/flora/grass/tallgrass/jungle_alt/corner{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/south_outpost)
 "kwu" = (
 /obj/effect/landmark/static_comms/net_two,
-/turf/open/asphalt/cement/cement3,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "kxN" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt/brown,
@@ -44362,6 +44449,14 @@
 /obj/effect/blocker/sorokyne_hot_water,
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/water)
+"kMi" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/orange_edge/north,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "kNJ" = (
 /turf/open/gm/coast/dirt/beachcorner/south_west,
 /area/strata/exterior/deep_jungle/south)
@@ -44721,6 +44816,9 @@
 	},
 /turf/open/floor/strata,
 /area/strata/interior/mining_outpost)
+"lgm" = (
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/parts_storage_exterior)
 "lgv" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 9
@@ -45039,7 +45137,7 @@
 	pixel_y = 6
 	},
 /turf/open/gm/river/soro,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "lyX" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -45063,8 +45161,8 @@
 /area/strata/interior/bball_cave)
 "lzv" = (
 /obj/structure/largecrate/random,
-/turf/open/asphalt/cement/cement7,
-/area/strata/interior/vanyard)
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/marsh/spring_marshes)
 "lzT" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/machinery/door/airlock/almayer/generic/rusted_white{
@@ -45196,8 +45294,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi/drome)
 "lJC" = (
-/obj/structure/machinery/light,
-/turf/open/auto_turf/strata_grass/layer1,
+/turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/parts_storage_exterior)
 "lJD" = (
 /obj/structure/platform/stone/soro/north,
@@ -45348,8 +45445,9 @@
 /turf/open/gm/coast/dirt/north,
 /area/strata/exterior/deep_jungle/south)
 "lTX" = (
-/turf/open/asphalt/cement/cement3,
-/area/strata/exterior/south_outpost)
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "lUg" = (
 /obj/structure/platform_decoration/metal/strata/east,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -45537,6 +45635,12 @@
 /obj/item/storage/belt/security/brown,
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
+"meq" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/marsh/center)
 "mes" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/colony{
 	dir = 1;
@@ -45604,6 +45708,14 @@
 /obj/structure/barricade/handrail/strata,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/exterior/outpost_decks)
+"miV" = (
+/obj/structure/surface/rack{
+	color = "#98a3ab"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "mjt" = (
 /obj/structure/stairs/perspective{
 	color = "#6e6e6e";
@@ -45684,6 +45796,10 @@
 /obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/parts_storage)
+"mqS" = (
+/obj/structure/fence/slim/upp,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/center)
 "mrp" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata/floor3/east,
@@ -45888,8 +46004,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/med)
 "mDF" = (
-/turf/open/asphalt/cement/cement12,
-/area/strata/interior/vanyard)
+/turf/open/floor/strata/orange_edge/north,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "mDN" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -46232,6 +46348,9 @@
 /obj/item/stack/sheet/wood,
 /turf/open/floor/strata/red1,
 /area/strata/interior/outpost/security)
+"nbw" = (
+/turf/open/floor/strata/orange_edge/northwest,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "ndO" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/floor/strata/floor3/east,
@@ -46286,6 +46405,10 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/interior/parts_storage)
+"nhh" = (
+/obj/structure/fence/slim/upp,
+/turf/open/asphalt/cement/cement1,
+/area/strata/exterior/south_outpost)
 "nis" = (
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro/west,
@@ -46483,6 +46606,11 @@
 /obj/structure/machinery/door/airlock/almayer/maint/colony,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/engi/drome)
+"nsd" = (
+/obj/item/tool/wirecutters,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/orange_edge/west,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "nso" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/weapon/twohanded/folded_metal_chair,
@@ -47078,11 +47206,10 @@
 /turf/open/floor/strata,
 /area/strata/interior/parts_storage)
 "oeK" = (
-/obj/structure/machinery/weather_siren{
-	pixel_y = -8
-	},
-/turf/closed/wall/strata_outpost/reinforced,
-/area/strata/exterior/parts_storage_exterior)
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/obj/structure/largecrate/random/case,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "oeO" = (
 /turf/open/gm/coast/dirt/beachcorner,
 /area/strata/exterior/deep_jungle/carplake_east)
@@ -47208,7 +47335,7 @@
 /obj/structure/platform/stone/soro/west,
 /obj/structure/platform/stone/soro/east,
 /turf/open/gm/river/soro,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "olH" = (
 /obj/structure/bed{
 	icon_state = "abed"
@@ -47267,11 +47394,8 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/underground_dorms/med2)
 "opg" = (
-/obj/structure/machinery/power/terminal{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/blood/oil,
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/vanyard)
 "opW" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -47438,7 +47562,7 @@
 	pixel_y = 2
 	},
 /turf/open/asphalt/cement/cement12,
-/area/strata/interior/vanyard)
+/area/strata/exterior/marsh/spring_marshes)
 "oCD" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
@@ -47459,6 +47583,10 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/deep_jungle/platform)
+"oEV" = (
+/obj/structure/fence/slim/upp,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
 "oFc" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -47474,6 +47602,9 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/asteroidwarning,
 /area/strata/exterior/landing_zones/lz2)
+"oGv" = (
+/turf/open/asphalt/cement/cement3,
+/area/strata/exterior/south_outpost)
 "oGQ" = (
 /obj/structure/platform_decoration/stone/soro/east,
 /obj/structure/blocker/invisible_wall,
@@ -47652,6 +47783,9 @@
 /obj/structure/machinery/power/apc/no_power/west,
 /turf/open/floor/plating,
 /area/strata/exterior/deep_jungle/platform_east)
+"oQT" = (
+/turf/open/gm/dirt/brown/variant_3,
+/area/strata/exterior/marsh/spring_marshes)
 "oRg" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/structure/platform/metal/strata/north,
@@ -47778,6 +47912,13 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/strata/cyan1/east,
 /area/strata/interior/mining_outpost)
+"oXR" = (
+/obj/structure/largecrate/random{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/asphalt/cement,
+/area/strata/exterior/south_outpost)
 "oYM" = (
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/parts_storage)
@@ -48215,6 +48356,12 @@
 	},
 /turf/open/asphalt/cement,
 /area/strata/exterior/outpost_platform)
+"pzk" = (
+/obj/structure/fence/slim/upp/door{
+	dir = 4
+	},
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/strata/exterior/marsh/crash)
 "pzt" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device,
 /turf/open/floor/strata/multi_tiles/southwest,
@@ -48336,9 +48483,9 @@
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/interior/mining_outpost/south_dormitories)
 "pGf" = (
-/obj/structure/machinery/power/apc/no_power/west,
-/turf/open/floor/plating,
-/area/strata/exterior/parts_storage_exterior)
+/obj/structure/fence/slim/upp,
+/turf/open/asphalt/cement/cement1,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "pGt" = (
 /turf/closed/shuttle/ert{
 	icon_state = "rightengine_3";
@@ -48768,9 +48915,26 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi/drome)
+"qhU" = (
+/obj/structure/platform_decoration/metal/strata/west,
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/spring_marshes)
 "qin" = (
 /turf/open/floor/strata/floor2,
 /area/strata/exterior/restricted)
+"qiU" = (
+/obj/structure/machinery/light/small{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "qjD" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/asphalt/cement/cement12,
@@ -48810,8 +48974,8 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/mining_outpost/canteen)
 "qmw" = (
-/obj/structure/sign/safety/storage,
-/turf/closed/wall/strata_outpost/reinforced,
+/obj/structure/fence/slim/upp,
+/turf/open/asphalt/cement/cement3,
 /area/strata/exterior/parts_storage_exterior)
 "qmW" = (
 /obj/structure/largecrate/random,
@@ -48881,6 +49045,10 @@
 	},
 /turf/open/floor/strata/blue1,
 /area/strata/interior/outpost/canteen)
+"qqC" = (
+/obj/structure/fence/slim/upp,
+/turf/open/asphalt/cement,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "qqO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/blue3/southwest,
@@ -49122,10 +49290,9 @@
 /turf/open/gm/river/soro,
 /area/strata/exterior/marsh/river)
 "qDO" = (
-/obj/structure/closet,
 /obj/effect/decal/cleanable/dirt/alt_dirt,
-/turf/open/asphalt/cement/cement7,
-/area/strata/interior/vanyard)
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/marsh/spring_marshes)
 "qFH" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt,
@@ -49201,9 +49368,6 @@
 /obj/item/trash/upp_mre,
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
-"qJA" = (
-/turf/open/asphalt/cement/cement12,
-/area/strata/exterior/tcomms_mining_caves)
 "qJC" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -49233,7 +49397,7 @@
 /turf/open/asphalt/cement/cement7,
 /area/strata/interior/vanyard)
 "qKx" = (
-/turf/open/asphalt/cement,
+/turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/vanyard)
 "qKU" = (
 /obj/structure/bed/nest,
@@ -49680,9 +49844,18 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/vanyard)
 "rjG" = (
-/obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/asphalt/cement,
-/area/strata/exterior/south_outpost)
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = -13;
+	dir = 8;
+	pixel_x = 2
+	},
+/obj/item/lightstick/planted,
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/parts_storage_exterior)
 "rkb" = (
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/surface/table/almayer,
@@ -49779,6 +49952,10 @@
 /obj/structure/platform/metal/strata/east,
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/landing_zones/near_lz1)
+"rsu" = (
+/obj/item/lightstick/planted,
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/exterior/marsh/spring_marshes)
 "rts" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 8
@@ -50148,6 +50325,9 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/flight_control)
+"rRf" = (
+/turf/open/gm/dirt/brown/variant_5/east,
+/area/strata/exterior/marsh/crash)
 "rRl" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -50357,6 +50537,12 @@
 	},
 /turf/open/gm/river/soro,
 /area/strata/exterior/landing_zones/near_lz2)
+"sdg" = (
+/obj/item/stack/catwalk{
+	color = "#c7ccca"
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/interior/parts_storage)
 "seb" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -50436,6 +50622,10 @@
 /obj/structure/platform/metal/strata/west,
 /turf/open/gm/river/soro,
 /area/strata/exterior/far_north_outpost)
+"shY" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/asphalt/cement/cement12,
+/area/strata/exterior/south_outpost)
 "sig" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -50666,7 +50856,7 @@
 /obj/structure/fence/slim/upp,
 /obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement9,
-/area/strata/exterior/south_outpost)
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "swK" = (
 /obj/structure/largecrate/random/secure{
 	layer = 3.1
@@ -50991,6 +51181,18 @@
 	},
 /turf/open/floor/strata/white_cyan1,
 /area/strata/interior/mining_outpost)
+"sTf" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/exterior/marsh/water_marshes)
 "sTk" = (
 /obj/structure/flora/grass/tallgrass/jungle_alt/corner{
 	dir = 5
@@ -51015,6 +51217,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/exterior/outpost_decks)
+"sUW" = (
+/turf/open/floor/plating,
+/area/strata/exterior/tcomms_geosprings)
 "sUY" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -51405,9 +51610,8 @@
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/engi)
 "twa" = (
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/asphalt/cement,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/multi_tiles/west,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "twi" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 9
@@ -51447,6 +51651,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata,
 /area/strata/interior/landing_zones/near_lz1)
+"tzb" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 2
+	},
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/strata/interior/parts_storage)
 "tAi" = (
 /obj/structure/platform/stone/soro/west,
 /obj/structure/blocker/invisible_wall,
@@ -51507,6 +51717,10 @@
 /obj/structure/curtain/open/shower,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/outpost/canteen)
+"tCp" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/marsh/spring_marshes)
 "tCM" = (
 /obj/structure/bed/roller,
 /obj/item/ammo_casing,
@@ -51525,7 +51739,7 @@
 	pixel_y = -8
 	},
 /turf/open/gm/river/soro,
-/area/strata/exterior/marsh/river)
+/area/strata/exterior/marsh/crash)
 "tDH" = (
 /obj/structure/platform/stone/soro/east,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -51855,8 +52069,8 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
-/turf/open/asphalt/cement,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "tWO" = (
 /obj/structure/platform/metal/strata/west,
 /obj/structure/bed/chair{
@@ -51864,8 +52078,23 @@
 	},
 /turf/open/floor/prison/darkyellowfull2,
 /area/strata/interior/outpost/engi)
+"tWX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	color = "#858680"
+	},
+/turf/open/floor/plating,
+/area/strata/interior/parts_storage)
 "tWY" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = -7;
+	pixel_x = 3
+	},
+/turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/parts_storage_exterior)
 "tYg" = (
 /obj/structure/platform_decoration/metal/strata/west,
@@ -51900,11 +52129,9 @@
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "uad" = (
-/obj/structure/largecrate/random{
-	pixel_y = 2
-	},
-/turf/open/asphalt/cement/cement12,
-/area/strata/exterior/south_outpost)
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "uau" = (
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 4
@@ -52073,6 +52300,10 @@
 	},
 /turf/open/gm/dirt/brown/variant_5/east,
 /area/strata/exterior/marsh/water_marshes)
+"uhW" = (
+/obj/item/lightstick/planted,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/tcomms_geosprings)
 "uic" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -52252,8 +52483,8 @@
 /obj/structure/largecrate/guns/russian{
 	pixel_x = -2
 	},
-/turf/open/asphalt/cement,
-/area/strata/exterior/south_outpost)
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "uux" = (
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/research)
@@ -52954,6 +53185,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/interior/bball_cave)
+"vlD" = (
+/obj/structure/platform/metal/strata,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/south_outpost)
 "vlG" = (
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
@@ -53015,11 +53250,7 @@
 /area/strata/exterior/outpost_platform)
 "voK" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/item/tool/warning_cone{
-	pixel_x = 4;
-	pixel_y = 2
-	},
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/marsh/spring_marshes)
 "vpi" = (
 /obj/structure/barricade/wooden{
@@ -53123,7 +53354,10 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/parts_storage)
 "vtl" = (
-/obj/structure/machinery/power/apc/no_power/east,
+/obj/structure/machinery/power/smes/buildable{
+	capacity = 1e+006;
+	dir = 1
+	},
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/vanyard)
 "vtp" = (
@@ -53296,7 +53530,7 @@
 	pixel_x = 4;
 	pixel_y = 2
 	},
-/turf/open/floor/strata/floor3/east,
+/turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/marsh/spring_marshes)
 "vCD" = (
 /obj/structure/bed/sofa/vert/grey/top,
@@ -53573,6 +53807,7 @@
 /turf/open/floor/strata/white_cyan2/west,
 /area/strata/interior/underground_dorms/sec1)
 "vUp" = (
+/obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement2,
 /area/strata/exterior/south_outpost)
 "vUy" = (
@@ -53639,6 +53874,10 @@
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/strata,
 /area/strata/interior/outpost/med)
+"waS" = (
+/obj/structure/fence/slim/upp,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
 "waZ" = (
 /obj/structure/fence/slim/upp,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -53705,10 +53944,6 @@
 	},
 /turf/open/floor/strata/orange_cover,
 /area/strata/interior/parts_storage)
-"weI" = (
-/obj/structure/fence/slim/upp,
-/turf/open/asphalt/cement/cement14,
-/area/strata/interior/vanyard)
 "wfm" = (
 /obj/structure/platform_decoration/stone/soro/west,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -53824,6 +54059,7 @@
 /turf/open/gm/coast/dirt/beachcorner2/north_east,
 /area/strata/exterior/deep_jungle/platform_east)
 "wni" = (
+/obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement4,
 /area/strata/exterior/south_outpost)
 "wnC" = (
@@ -53951,10 +54187,16 @@
 	},
 /turf/open/floor/strata,
 /area/strata/interior/outpost/security)
+"wtw" = (
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/south_outpost)
 "wtE" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/strata/exterior/lz_caves)
+"wuA" = (
+/turf/open/floor/strata/orange_edge/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "wuE" = (
 /obj/structure/barricade/handrail/strata{
 	dir = 8
@@ -54086,7 +54328,7 @@
 "wDq" = (
 /obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement2,
-/area/strata/exterior/south_outpost)
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "wDx" = (
 /obj/structure/platform/metal/strata/west,
 /turf/open/floor/strata,
@@ -54248,6 +54490,7 @@
 /turf/open/floor/strata,
 /area/strata/interior/underground_dorms/admin1)
 "wPI" = (
+/obj/structure/fence/slim/upp,
 /turf/open/asphalt/cement/cement9,
 /area/strata/exterior/south_outpost)
 "wQu" = (
@@ -54298,6 +54541,12 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
+"wUe" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/parts_storage_exterior)
 "wUD" = (
 /obj/structure/machinery/light/small,
 /turf/open/floor/strata/multi_tiles,
@@ -54614,9 +54863,9 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/outpost/engi)
 "xre" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/parts_storage_exterior)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "xrs" = (
 /obj/item/stool,
 /turf/open/floor/strata/floor3,
@@ -54749,8 +54998,11 @@
 /area/strata/interior/bball)
 "xyN" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/turf/open/asphalt/cement/cement12,
+/turf/open/floor/strata/multi_tiles/southeast,
 /area/strata/exterior/south_outpost)
+"xyW" = (
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_vehicle_yard)
 "xzq" = (
 /obj/effect/blocker/sorokyne_hot_water,
 /obj/structure/barricade/handrail/strata{
@@ -54957,6 +55209,9 @@
 /area/strata/exterior/mining_outpost_exterior)
 "xJb" = (
 /obj/effect/landmark/objective_landmark/science,
+/obj/structure/machinery/power/terminal{
+	dir = 4
+	},
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/vanyard)
 "xJD" = (
@@ -55075,6 +55330,12 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/parts_storage)
+"xOg" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/exterior/parts_storage_exterior)
 "xOo" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -55116,6 +55377,10 @@
 /area/strata/exterior/marsh/center)
 "xPT" = (
 /obj/item/reagent_container/food/drinks/cans/cola,
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_y = 18;
+	pixel_x = 17
+	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/strata/exterior/parts_storage_cave)
 "xPX" = (
@@ -55212,8 +55477,12 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
-/turf/open/asphalt/cement/cement3,
-/area/strata/exterior/south_outpost)
+/obj/structure/largecrate/random{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/strata/floor3/east,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "xTU" = (
 /obj/structure/machinery/power/port_gen/pacman,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -55461,6 +55730,15 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/strata/floor3,
 /area/strata/interior/mining_outpost/flight_control)
+"yhw" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt,
+/turf/open/floor/strata/orange_cover,
+/area/strata/exterior/tcomms_engineering_parts_storage)
 "yhJ" = (
 /obj/structure/largecrate/random{
 	pixel_x = -3;
@@ -55986,10 +56264,10 @@ acc
 acc
 acc
 aac
-bET
-bET
-bET
-bAe
+aOk
+aOk
+aOk
+aNk
 aac
 acc
 acc
@@ -56160,11 +56438,11 @@ aac
 aac
 aac
 aac
-cmg
+jXQ
 fax
 tDw
 olo
-fkG
+gUP
 aac
 acc
 wGp
@@ -56335,14 +56613,14 @@ bET
 bET
 bET
 aac
-cmg
+jXQ
 lyI
 bfK
 crN
-bhJ
-bhY
-biG
-ctx
+bmY
+bub
+bgS
+fRv
 jnH
 aYF
 aYF
@@ -56510,13 +56788,13 @@ fDw
 ksX
 bjG
 aac
-bET
-beo
-biG
+aOk
+fCI
+bgS
 bgQ
 bhL
-biG
-biG
+bgS
+bgS
 bia
 nPW
 fRv
@@ -56686,11 +56964,11 @@ xYk
 bjH
 biG
 biG
-nrp
-biG
-biG
-biG
-biG
+qvy
+bgS
+bgS
+bgS
+bgS
 bgS
 bgS
 bia
@@ -56862,7 +57140,7 @@ biG
 biG
 biG
 biG
-biG
+bgS
 bgR
 bhM
 bgS
@@ -57038,7 +57316,7 @@ biP
 biG
 biG
 biG
-biG
+bgS
 bgS
 bgS
 bgS
@@ -57213,7 +57491,7 @@ aZx
 aZx
 biG
 biG
-beo
+fCI
 bgS
 bgS
 qvy
@@ -57388,7 +57666,7 @@ aWf
 biG
 biG
 beo
-bet
+aNp
 fCI
 bgS
 bgS
@@ -57563,7 +57841,7 @@ biQ
 biG
 aWf
 biG
-beo
+fCI
 aOs
 bgS
 bgS
@@ -57738,7 +58016,7 @@ aZx
 aZx
 bgD
 biG
-aWf
+bia
 bgS
 bia
 bgS
@@ -57913,11 +58191,11 @@ aZx
 big
 aZx
 aZx
-aZx
-bgS
-bgS
 bhO
 bgS
+fkG
+fHe
+fkG
 okM
 mpk
 xVQ
@@ -58090,8 +58368,8 @@ aZx
 aZx
 beu
 bhO
-bhO
-bhO
+fHe
+fHe
 hQP
 aZU
 aYV
@@ -58263,11 +58541,11 @@ bei
 biG
 aWf
 bfL
-aZx
 bhO
 bhO
-bhO
-bhO
+fHe
+fHe
+fHe
 aZU
 aZa
 gZp
@@ -58438,10 +58716,10 @@ biG
 biG
 biG
 biG
-aZx
 bhO
-bgS
-bgS
+bhO
+fkG
+fkG
 aZW
 aZV
 aZd
@@ -58613,12 +58891,12 @@ biG
 biG
 biG
 biG
-aWf
-bgS
 bia
 bgS
-bgS
-bhO
+uhW
+fkG
+fkG
+fHe
 tKS
 blW
 aYf
@@ -58788,11 +59066,11 @@ bet
 biG
 biG
 biG
-biG
 bgS
 bgS
-bgS
-bgS
+fkG
+fkG
+fkG
 aZW
 aZe
 bhO
@@ -58963,12 +59241,12 @@ beo
 biG
 biG
 biG
-biG
 bgS
 bgS
-wGp
-wGp
-bgS
+fkG
+fkG
+fkG
+fkG
 bgS
 bgS
 aWY
@@ -59138,12 +59416,12 @@ bet
 beo
 biG
 biG
-biG
 bgS
 bgS
+fkG
 haU
-aYF
-bgS
+sUW
+fkG
 bgS
 bgS
 bgS
@@ -59315,13 +59593,13 @@ bgE
 biG
 bgS
 bgS
+uhW
+vlH
+nQz
+uhW
+rRf
 bgS
-fCI
-fCI
-bgS
-fCI
-fAS
-bgS
+bcP
 bgS
 bgS
 bgS
@@ -59488,15 +59766,15 @@ biR
 olk
 beo
 bgk
-bgS
-bgS
-bgS
+oEV
+oEV
+oEV
 acc
 acc
 aZX
-bgS
-fCI
-bgS
+pzk
+waS
+oEV
 bhO
 bhO
 aWq
@@ -59669,8 +59947,8 @@ tFA
 bbo
 aZf
 aZY
-aZf
-aHH
+sGb
+aHI
 glN
 dCK
 dCK
@@ -59837,8 +60115,8 @@ bcs
 biS
 vUM
 phP
-aHH
-aHH
+aJg
+gWg
 bdF
 aHH
 gWg
@@ -60017,7 +60295,7 @@ gUM
 wSb
 bcu
 aHH
-aHH
+aZf
 bab
 aHH
 nGi
@@ -60544,7 +60822,7 @@ smV
 vlu
 hVY
 bac
-aHH
+oQT
 djr
 aYg
 aHH
@@ -61266,7 +61544,7 @@ aKg
 bnj
 but
 acc
-buG
+acc
 qfV
 aGy
 qfV
@@ -61793,8 +62071,8 @@ bme
 buB
 qcX
 qfV
-acc
-acc
+qfV
+sTf
 acc
 aac
 aac
@@ -61967,7 +62245,7 @@ aJc
 buw
 bnj
 buH
-acc
+qfV
 acc
 acc
 acc
@@ -62143,7 +62421,7 @@ bnj
 bnj
 acc
 acc
-aac
+acc
 acc
 acc
 acc
@@ -62647,7 +62925,7 @@ vlu
 gUM
 tFA
 wSb
-bnj
+mqS
 bnj
 bnj
 aJa
@@ -62822,9 +63100,9 @@ wSb
 wSb
 wSb
 aYi
+hce
 bme
-bme
-bnj
+eTJ
 bnj
 bnj
 oqQ
@@ -62997,7 +63275,7 @@ tUh
 tFA
 tFA
 wSb
-bme
+jyd
 bme
 bme
 bme
@@ -63502,7 +63780,7 @@ blR
 blR
 aWp
 bMd
-qJA
+aYX
 aYX
 ndO
 mvm
@@ -63676,8 +63954,8 @@ blR
 blR
 laA
 jJq
-cbu
-qJA
+aYX
+aYX
 aYX
 eWg
 mvm
@@ -63697,7 +63975,7 @@ beQ
 tFA
 acc
 acc
-aTq
+meq
 bme
 wjv
 lnl
@@ -64376,8 +64654,8 @@ bga
 bga
 bgN
 bwB
-bvi
-bvi
+mvm
+mvm
 mvm
 ciH
 cmn
@@ -64397,7 +64675,7 @@ tFA
 aac
 acc
 acc
-aXA
+acc
 bnj
 oqQ
 opW
@@ -64571,12 +64849,12 @@ bjO
 tFA
 aac
 acc
-acc
-aTq
+igC
+gsz
 bme
 bnj
 bme
-bme
+aXA
 vlH
 aYB
 aYB
@@ -64744,10 +65022,10 @@ bcC
 wSb
 bjO
 tFA
-aYt
+rsu
 gWg
 aYl
-wSb
+hce
 bme
 bme
 qzY
@@ -65277,7 +65555,7 @@ aac
 aac
 acc
 acc
-vlH
+fZO
 gSz
 oBR
 gef
@@ -66316,7 +66594,7 @@ bgb
 bgb
 bgb
 bgb
-wvp
+qhU
 bgx
 qMj
 jHK
@@ -66488,18 +66766,18 @@ aZP
 bgN
 mDW
 hFM
-bcJ
-bcJ
-weI
+bfY
+bfY
+rJr
 iQb
 gFh
 aPA
 hsq
-bcP
+dOO
 bhf
 bhf
 bhf
-bcP
+dOO
 knu
 tFA
 wSb
@@ -66664,9 +66942,9 @@ bgN
 mDW
 bUQ
 qDO
-aWP
-mDF
 aYZ
+qkS
+bFv
 baT
 bFv
 voK
@@ -66839,12 +67117,12 @@ bgN
 mDW
 bUQ
 lzv
-aWP
-oCg
 aYZ
+oCg
+bFv
 baT
 bFv
-aZm
+voK
 iMd
 dis
 aXN
@@ -67014,17 +67292,17 @@ bfa
 biw
 bUQ
 lzv
-aWP
+tCp
 bcM
 vCe
 baT
 bFv
-aZm
+voK
 bix
-bkh
-bkh
+xyW
+xyW
 bjd
-bcP
+dOO
 knu
 tFA
 wSb
@@ -67215,7 +67493,7 @@ acc
 acc
 aac
 aac
-btq
+buF
 aac
 aac
 aac
@@ -67387,10 +67665,10 @@ acc
 acc
 acc
 acc
-oeK
+wYL
 btq
 btq
-buF
+wUe
 btq
 btq
 lTG
@@ -67562,11 +67840,11 @@ acc
 acc
 acc
 aac
-btq
-btq
-btq
-aHQ
+buF
 btv
+btq
+btv
+aGP
 btv
 oWD
 kNZ
@@ -67737,12 +68015,12 @@ acc
 acc
 aac
 btq
-buF
+btq
 aJj
 btv
+btq
+btq
 btv
-btv
-aGP
 btv
 ezl
 qot
@@ -67913,12 +68191,12 @@ aac
 aac
 btq
 aKs
-btv
-btq
+aHQ
+hMb
 aac
 aac
-btq
-btq
+rjG
+xOg
 kNZ
 tRC
 tRC
@@ -68086,13 +68364,13 @@ aac
 acc
 acc
 aNF
-aLV
 btv
-lJC
+btv
+btq
 tWY
 acc
 acc
-aac
+acc
 lTG
 hYc
 kOr
@@ -68255,16 +68533,16 @@ aNP
 blJ
 blJ
 bre
-brR
-aac
+kwk
 acc
 acc
 acc
+lgm
 btu
-aLX
-aKt
-aac
-acc
+btv
+aHQ
+lJC
+hYc
 acc
 acc
 acc
@@ -68430,15 +68708,15 @@ aNP
 bnD
 blJ
 aNP
-aNP
-aac
-acc
-acc
+vlD
+hYc
+hYc
+cGk
 qmw
 aNK
-btq
-btq
-aac
+aNK
+qmw
+qmw
 hYc
 hYc
 xyz
@@ -68606,14 +68884,14 @@ aUk
 blJ
 aNP
 aSb
-acc
-acc
-acc
-pGf
+wYL
+yhw
+qiU
+aLY
+twa
+twa
+aLY
 aNO
-btv
-xre
-aac
 hYc
 vmm
 aft
@@ -68631,7 +68909,7 @@ olh
 vlG
 vlG
 srQ
-lTG
+ckM
 apH
 awl
 apH
@@ -68783,13 +69061,13 @@ aNP
 cwA
 wDq
 xTw
+hKz
+aLX
+aLX
+lTX
+aLX
 fOX
-aNP
-btq
-btv
-btq
-aac
-hYc
+dHn
 jVU
 aGT
 aGV
@@ -68958,12 +69236,12 @@ aNP
 aSg
 fiD
 uul
-asd
-aNP
-aNP
-aLY
-btq
-aac
+ccd
+wuA
+wuA
+cuc
+aKt
+gNW
 hYc
 aHS
 vxd
@@ -69133,12 +69411,12 @@ aNP
 cwA
 fiD
 gAv
-lbh
+aZm
 lTX
 kwu
-lTX
-fOX
-acc
+mDF
+aLX
+miV
 hYc
 xZk
 xKr
@@ -69308,15 +69586,15 @@ aNP
 cwA
 fiD
 tWJ
-lbh
-lbh
-lbh
-lbh
+aZm
+xre
+aKu
+kMi
+aLX
 jKf
-acc
-hYc
+tzb
 ndS
-vlG
+fNH
 tRC
 vjc
 tRC
@@ -69482,16 +69760,16 @@ vXt
 aNP
 cwA
 fiD
-lbh
-lbh
-lbh
-lbh
-lbh
-aKu
-acc
-hYc
+oeK
+eXk
+fhl
+nsd
+nbw
+aLX
+jKf
+tzb
 vrH
-vlG
+tWX
 gFf
 vxd
 tEf
@@ -69657,17 +69935,17 @@ gOi
 aNP
 cwA
 fiD
-lbh
-lbh
-lbh
-twa
+aLX
+aLX
+aLX
+aLX
 hLf
 uad
-acc
+drw
 hYc
 bfQ
 vlG
-tRC
+sdg
 mrp
 aTP
 bss
@@ -69832,13 +70110,13 @@ tAs
 aNP
 cwA
 svP
-fhW
+qqC
 gqA
 gqA
+pGf
 fhW
-fhW
-fhl
-acc
+pGf
+hYc
 hYc
 vrH
 fNH
@@ -70358,8 +70636,8 @@ blJ
 blJ
 hAw
 wPI
-lbh
-asd
+xje
+xje
 vxd
 mpr
 vxd
@@ -70533,8 +70811,8 @@ aSY
 blJ
 lDF
 sSM
-lbh
-asd
+wtw
+wtw
 jIz
 tRC
 tdr
@@ -70708,7 +70986,7 @@ bpA
 bpA
 bpA
 tMR
-rjG
+xyN
 xyN
 ohV
 xKr
@@ -70883,8 +71161,8 @@ blJ
 blJ
 blJ
 wfv
-lbh
-asd
+aLV
+aLV
 vjc
 tRC
 tRC
@@ -71058,8 +71336,8 @@ blJ
 blJ
 tKA
 tMC
-lbh
-asd
+wtw
+wtw
 doO
 vxd
 vxd
@@ -71233,8 +71511,8 @@ blJ
 blJ
 hAw
 vUp
-lbh
-asd
+oGv
+oGv
 tEf
 vsL
 oYM
@@ -71408,8 +71686,8 @@ blJ
 aSj
 cwA
 wni
-lbh
-asd
+oXR
+shY
 tEf
 itG
 xeo
@@ -71583,7 +71861,7 @@ blJ
 aNP
 cwA
 wPI
-xje
+nhh
 gRK
 vxd
 vxd

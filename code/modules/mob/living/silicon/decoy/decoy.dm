@@ -82,7 +82,7 @@
 		return "headset"
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext(message, 1 ,3)
+		var/channel_prefix = lowertext(copytext(message, 1, 3))
 		channel_prefix = GLOB.department_radio_keys[channel_prefix]
 		if(channel_prefix)
 			return channel_prefix

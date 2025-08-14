@@ -1,10 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
-	dir = 1
-	},
-/turf/open/auto_turf/sand/layer1,
+/obj/item/flag/plantable/clf,
+/turf/open/floor/kutjevo/tan,
 /area/kutjevo/exterior/clf_lz)
 "am" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname,
@@ -211,7 +208,6 @@
 /area/kutjevo/exterior/stonyfields)
 "iN" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached,
@@ -516,7 +512,6 @@
 /area/kutjevo/interior/colony/clf_shuttle)
 "AT" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 8
 	},
 /turf/open/auto_turf/sand/layer1,
@@ -761,8 +756,7 @@
 /area/kutjevo/interior/colony/clf_shuttle)
 "Nw" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	dir = 1;
-	faction_group = list("CLF")
+	dir = 1
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/clf_lz)
@@ -779,6 +773,7 @@
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
 /obj/item/ammo_magazine/rifle/mar40,
+/obj/item/defenses/handheld/planted_flag/clf,
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/clf_lz)
 "NR" = (
@@ -1484,7 +1479,7 @@ Kn
 qx
 lX
 Ix
-aa
+Nw
 cf
 cf
 zp
@@ -1626,7 +1621,7 @@ cf
 zp
 EW
 vZ
-RN
+aa
 Pp
 EW
 Ql

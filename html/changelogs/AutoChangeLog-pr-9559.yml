@@ -1,5 +1,0 @@
-author: "DolphinShark20"
-delete-after: True
-changes:
-  - balance: "Lurkers can no longer evolve whilst invisible"
-  - bugfix: "Transmuting a strain now performs stance checks like picking a strain checks"

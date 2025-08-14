@@ -1,44 +1,38 @@
-import { describe, it } from 'vitest';
+import { describe, expect, it } from 'bun:test';
 
-import { sanitizeText } from './sanitize';
+import { sanitizeTest } from './sanitize';
 
 describe('sanitizeText', () => {
-  it('should sanitize basic HTML input', ({ expect }) => {
+  it('should sanitize basic HTML input', () => {
     const input = '<b>Hello, world!</b><script>alert("hack")</script>';
     const expected = '<b>Hello, world!</b>';
-    const result = sanitizeText(input);
+    const result = sanitizeTest(input);
     expect(result).toBe(expected);
   });
 
-  it('should sanitize advanced HTML input when advHtml flag is true', ({
-    expect,
-  }) => {
+  it('should sanitize advanced HTML input when advHtml flag is true', () => {
     const input =
       '<b>Hello, world!</b><iframe src="https://example.com"></iframe>';
     const expected = '<b>Hello, world!</b>';
-    const result = sanitizeText(input, true);
+    const result = sanitizeTest(input, true);
     expect(result).toBe(expected);
   });
 
-  it('should allow specific HTML tags when tags array is provided', ({
-    expect,
-  }) => {
+  it('should allow specific HTML tags when tags array is provided', () => {
     const input = '<b>Hello, world!</b><span>Goodbye, world!</span>';
     const tags = ['b'];
     const expected = '<b>Hello, world!</b>Goodbye, world!';
-    const result = sanitizeText(input, false, tags);
+    const result = sanitizeTest(input, false, tags);
     expect(result).toBe(expected);
   });
 
-  it('should allow advanced HTML tags when advTags array is provided and advHtml flag is true', ({
-    expect,
-  }) => {
+  it('should allow advanced HTML tags when advTags array is provided and advHtml flag is true', () => {
     const input =
       '<b>Hello, world!</b><iframe src="https://example.com"></iframe>';
     const advTags = ['iframe'];
     const expected =
       '<b>Hello, world!</b><iframe src="https://example.com"></iframe>';
-    const result = sanitizeText(input, true, undefined, undefined, advTags);
+    const result = sanitizeTest(input, true, undefined, undefined, advTags);
     expect(result).toBe(expected);
   });
 });

@@ -390,6 +390,9 @@
 "aby" = (
 /obj/effect/landmark/xeno_hive_spawn,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "abz" = (
@@ -4433,7 +4436,12 @@
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "app" = (
-/turf/open/gm/grass/grassmud/east,
+/obj/structure/flora/bush/ausbushes/grassybush{
+	layer = 2.9
+	},
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "apq" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
@@ -5274,8 +5282,12 @@
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/east_river)
 "asm" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/grassmud/corner/south_west,
+/obj/structure/flora/bush/ausbushes/var3/fullgrass{
+	layer = 2.9
+	},
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "asn" = (
 /turf/open/floor/kutjevo/tan/grey_edge/north,
@@ -5609,8 +5621,15 @@
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 "auc" = (
-/turf/open/gm/mudcoast/greenwater/cornerouter/north,
-/area/lv624/ground/river/west_river)
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/lv624/ground/caves/west_caves)
 "aud" = (
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
@@ -5629,7 +5648,10 @@
 /area/lv624/ground/jungle/west_jungle/ceiling)
 "auh" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aui" = (
 /obj/effect/decal/hybrisa/trash{
@@ -5637,7 +5659,7 @@
 	pixel_y = 15
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "auk" = (
 /obj/structure/stairs/perspective{
@@ -5988,7 +6010,7 @@
 	name = s;
 	pixel_x = -23
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "awa" = (
 /obj/item/reagent_container/food/drinks/cans/classcola{
@@ -6021,6 +6043,9 @@
 /obj/item/reagent_container/food/drinks/cans/classcola{
 	pixel_x = 9;
 	layer = 2.96
+	},
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 1
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
@@ -6254,7 +6279,7 @@
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage{
 	req_access = list(7,23,27)
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "axt" = (
 /turf/open/floor/warnwhite/northwest,
@@ -6280,15 +6305,11 @@
 	icon_state = "trash_13";
 	pixel_y = 12
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "axE" = (
-/obj/item/trash/cigbutt/ucigbutt,
+/obj/structure/barricade/handrail/strata,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/cigbutt{
-	pixel_x = -10;
-	pixel_y = 13
-	},
 /turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "axK" = (
@@ -6405,7 +6426,7 @@
 /area/lv624/ground/jungle/west_jungle)
 "ayi" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "ayl" = (
 /obj/effect/decal/cleanable/blood/oil/streak{
@@ -6547,7 +6568,7 @@
 	pixel_y = 31;
 	layer = 3
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/sleep_male)
 "azs" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -6694,7 +6715,7 @@
 /obj/structure/reagent_dispensers/watertank{
 	pixel_y = 7
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aAb" = (
 /obj/effect/decal/hybrisa/trash{
@@ -6707,7 +6728,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/obj/structure/machinery/power/apc/no_power/north,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aAd" = (
@@ -7614,10 +7635,13 @@
 	dir = 8;
 	id = "Nexus Maint"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aDT" = (
-/turf/open/floor/plating,
+/obj/structure/platform_decoration/metal/almayer/northwest{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aDU" = (
 /turf/open/floor/bar,
@@ -7845,7 +7869,7 @@
 	pixel_y = 9;
 	pixel_x = -11
 	},
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aEC" = (
 /obj/structure/machinery/washing_machine{
@@ -7864,7 +7888,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/main_hall)
 "aED" = (
-/obj/effect/landmark/static_comms/net_two,
+/obj/effect/landmark/static_comms/net_one,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/floor/podhatchfloor,
 /area/lv624/lazarus/toilet)
@@ -7986,7 +8010,7 @@
 	pixel_x = -6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aFi" = (
 /obj/structure/closet/cabinet,
@@ -7994,11 +8018,17 @@
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/ground/colony/west_nexus_road)
 "aFk" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_14"
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
 	},
-/turf/open/floor/almayer/plating/northeast,
-/area/lv624/lazarus/toilet)
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 9;
+	pixel_y = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "aFm" = (
 /turf/closed/wall/wood,
 /area/lv624/ground/jungle/west_jungle/ceiling)
@@ -8285,7 +8315,7 @@
 	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aGq" = (
 /obj/structure/surface/table,
@@ -8388,11 +8418,9 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/toilet)
 "aGI" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	dir = 1
-	},
-/turf/open/floor/almayer/plating/northeast,
-/area/lv624/lazarus/toilet)
+/obj/structure/bed/chair,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv624/ground/caves/south_west_caves)
 "aGJ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating/northeast,
@@ -9903,7 +9931,10 @@
 /area/lv624/lazarus/quartstorage/outdoors)
 "aNi" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/obj/structure/platform_decoration/metal/almayer/southeast{
+	dir = 2
+	},
+/turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/sleep_male)
 "aNk" = (
 /turf/closed/wall,
@@ -10739,7 +10770,7 @@
 /area/lv624/lazarus/chapel)
 "aQz" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/jungle/west_jungle)
 "aQA" = (
 /turf/open/floor/wood/wood_broken6,
@@ -11067,6 +11098,15 @@
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/south_west_jungle)
+"aRP" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "aRQ" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 6
@@ -11452,9 +11492,12 @@
 /turf/open/floor/plating,
 /area/lv624/lazarus/comms)
 "aTh" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/mudcoast/greenwater/east,
-/area/lv624/ground/river/west_river)
+/obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/prop/invuln/minecart_tracks{
+	layer = 2.6
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/west_caves)
 "aTi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/ship,
@@ -13197,9 +13240,14 @@
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv624/ground/jungle/north_west_jungle)
 "aYX" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/mudcoast/greenwater/cornerouter,
-/area/lv624/ground/river/west_river)
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 9
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/west_caves)
 "aYY" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/gm/mudcoast/greenwater,
@@ -13208,7 +13256,9 @@
 /turf/open/gm/mudcoast/greenwater/cornerouter,
 /area/lv624/ground/river/west_river)
 "aZb" = (
-/turf/open/gm/grass/grassmud/west,
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/river/west_river)
 "aZc" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/colony{
@@ -16421,8 +16471,7 @@
 "biM" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 1
@@ -16438,8 +16487,7 @@
 "biO" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/south_west_caves)
@@ -16544,8 +16592,7 @@
 "bjl" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /obj/structure/closet/crate/miningcar/yellow{
 	layer = 3
@@ -16647,8 +16694,7 @@
 "bjG" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
@@ -16721,8 +16767,7 @@
 "bjU" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
@@ -18835,8 +18880,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/south_west_caves)
@@ -18964,8 +19008,8 @@
 /obj/structure/prop/wooden_cross{
 	pixel_y = 23
 	},
-/obj/item/clothing/head/hardhat{
-	pixel_y = 23
+/obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet{
+	pixel_y = 22
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/south_west_caves)
@@ -19201,8 +19245,7 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/south_west_caves)
@@ -19516,8 +19559,7 @@
 "btv" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /turf/open/gm/dirt/brown/variant_2,
 /area/lv624/ground/caves/west_caves)
@@ -19660,8 +19702,7 @@
 "btW" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
@@ -19984,8 +20025,7 @@
 "bvg" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
@@ -20114,8 +20154,7 @@
 "bvI" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 10
@@ -20205,9 +20244,7 @@
 /area/lv624/ground/caves/central_caves)
 "bvY" = (
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2.6
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/west_caves)
@@ -20907,8 +20944,9 @@
 /turf/open/floor/hybrisa/wood/blackwood,
 /area/lv624/lazarus/robotics)
 "byl" = (
-/turf/open/gm/grass/grassmud/corner2/south_east,
-/area/lv624/ground/river/east_river)
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass/grassmud/south,
+/area/lv624/ground/jungle/east_jungle)
 "bym" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -21487,7 +21525,8 @@
 	dir = 6
 	},
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
@@ -21870,9 +21909,7 @@
 	dir = 8
 	},
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 10;
-	layer = 2;
-	explo_proof = 0
+	dir = 10
 	},
 /turf/open/floor/plating,
 /area/lv624/ground/caves/west_caves)
@@ -21894,6 +21931,10 @@
 "bAT" = (
 /obj/structure/prop/invuln/minecart_tracks/bumper{
 	dir = 8
+	},
+/obj/item/ore/iron{
+	pixel_y = 11;
+	pixel_x = -8
 	},
 /turf/open/floor/plating,
 /area/lv624/ground/caves/west_caves)
@@ -22110,7 +22151,8 @@
 	dir = 4
 	},
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/west_caves)
@@ -22145,10 +22187,8 @@
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "bBO" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
-	},
-/turf/open/floor/plating/platingdmg3/west,
+/obj/structure/prop/invuln/minecart_tracks/bumper,
+/turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "bBP" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -22415,9 +22455,10 @@
 /area/lv624/ground/caves/west_caves)
 "bCA" = (
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 5;
-	layer = 2;
-	explo_proof = 0
+	dir = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/west_caves)
@@ -22679,6 +22720,9 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/west_caves)
 "bDq" = (
@@ -22880,7 +22924,8 @@
 /area/lv624/ground/caves/sand_temple)
 "bDW" = (
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/west_caves)
@@ -23250,6 +23295,9 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
 	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10
+	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "bFd" = (
@@ -23400,12 +23448,13 @@
 /area/lv624/ground/caves/west_caves)
 "bFE" = (
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	layer = 2.6
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "bFF" = (
 /obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/cans/beer,
 /turf/open/gm/dirt/brown/variant_1,
 /area/lv624/ground/caves/west_caves)
 "bFG" = (
@@ -23580,9 +23629,9 @@
 /turf/open/hunter_temple/decorated/east,
 /area/lv624/ground/caves/south_east_caves)
 "bGg" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/decal/strata_decals/mud_corner,
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	dir = 5
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
@@ -24687,7 +24736,8 @@
 /area/lv624/ground/caves/west_caves)
 "bIV" = (
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/gm/dirt/brown,
@@ -25454,14 +25504,9 @@
 /turf/open/hunter_temple/corner/moss/east,
 /area/lv624/ground/caves/south_east_caves)
 "bKE" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 8
-	},
-/turf/open/gm/dirt/brown,
-/area/lv624/ground/caves/west_caves)
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/mudcoast/greenwater/cornerinner,
+/area/lv624/ground/river/east_river)
 "bKF" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 8
@@ -26446,7 +26491,8 @@
 "bMY" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
@@ -26637,11 +26683,12 @@
 /turf/open/gm/dirt/brown/variant_5,
 /area/lv624/ground/caves/west_caves)
 "bNA" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
-	},
 /obj/effect/decal/strata_decals/mud_corner{
-	dir = 10
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
@@ -26924,7 +26971,8 @@
 /area/lv624/ground/caves/west_caves)
 "bOl" = (
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
@@ -28271,6 +28319,10 @@
 /area/lv624/ground/caves/west_caves)
 "bRN" = (
 /obj/effect/landmark/crap_item,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "bRO" = (
@@ -32411,6 +32463,9 @@
 /area/lv624/ground/jungle/east_central_jungle)
 "chf" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "chi" = (
@@ -32571,6 +32626,11 @@
 "crG" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/plating/platingdmg3/west,
+/area/lv624/ground/caves/west_caves)
+"crZ" = (
+/obj/structure/surface/table,
+/obj/item/reagent_container/food/drinks/cans/beer,
+/turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "csu" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
@@ -32962,6 +33022,12 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv624/ground/caves/west_caves)
+"deT" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "deU" = (
 /obj/item/circuitboard/airlock{
 	pixel_x = 12
@@ -33002,6 +33068,11 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/west_caves)
+"dip" = (
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/mudcoast/greenwater,
+/area/lv624/ground/river/west_river)
 "diG" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -33116,6 +33187,15 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"due" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "dvf" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
@@ -33166,20 +33246,14 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/sand_temple)
 "dzo" = (
-/obj/item/ore/iron{
-	pixel_x = -4;
-	pixel_y = -2;
-	layer = 2.98
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
 	},
-/obj/item/ore/phoron{
-	pixel_x = 5;
-	pixel_y = 12
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
 	},
-/obj/item/ore/silver{
-	pixel_y = 6;
-	pixel_x = -17
-	},
-/turf/open/floor/plating,
+/turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "dAu" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -33473,6 +33547,9 @@
 	},
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/west_barrens)
+"dYD" = (
+/turf/closed/wall/wood,
+/area/lv624/ground/caves/central_caves)
 "dYE" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -33628,8 +33705,9 @@
 /turf/open/floor/warning/northeast,
 /area/lv624/lazarus/landing_zones/lz2)
 "eiP" = (
-/obj/structure/flora/bush/ausbushes/grassybush,
-/turf/open/gm/grass/grassmud/east,
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/soro,
 /area/lv624/ground/river/east_river)
 "ejp" = (
 /obj/effect/decal/grass_overlay/grass1{
@@ -34057,6 +34135,15 @@
 "eQL" = (
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/north_east_barrens)
+"eRC" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/gm/dirt/brown/variant_5/south{
+	dir = 1
+	},
+/area/lv624/ground/caves/west_caves)
 "eSb" = (
 /obj/structure/platform_decoration/stone/runed_sandstone/west{
 	color = "#34393C"
@@ -34285,13 +34372,8 @@
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/lazarus/corporate_dome)
 "fmm" = (
-/obj/item/ore/iron{
-	pixel_x = -4;
-	pixel_y = 4;
-	layer = 2.98
-	},
-/obj/item/ore/silver{
-	pixel_y = -8
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 4
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/west_caves)
@@ -34762,13 +34844,27 @@
 	},
 /turf/open/floor/plating,
 /area/lv624/ground/caves/west_caves)
+"fXe" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/obj/item/ore/iron{
+	pixel_x = -4;
+	pixel_y = -2;
+	layer = 2.98
+	},
+/turf/open/floor/plating,
+/area/lv624/ground/caves/west_caves)
 "fXr" = (
 /obj/effect/landmark/crap_item,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/colony/south_nexus_road)
 "fXD" = (
 /obj/structure/flora/jungle/alienplant1,
-/turf/open/gm/mudcoast/greenwater/west,
+/turf/open/gm/mudcoast/greenwater/cornerinner,
 /area/lv624/ground/river/east_river)
 "fYl" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -34812,9 +34908,18 @@
 /turf/open/floor/warning/northwest,
 /area/lv624/lazarus/landing_zones/lz2)
 "gbz" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/gm/grass/grassmud/west,
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
+"gbW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 1
+	},
+/obj/item/trash/cigbutt/ucigbutt,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv624/lazarus/toilet)
 "gch" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/folder,
@@ -34915,6 +35020,13 @@
 "gky" = (
 /turf/open/gm/grass/grassmud/corner2/south_west,
 /area/lv624/ground/colony/north_nexus_road)
+"gkZ" = (
+/obj/item/ammo_casing/bullet{
+	icon_state = "casing_3"
+	},
+/obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet,
+/turf/open/floor/plating,
+/area/lv624/ground/caves/south_west_caves)
 "glp" = (
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
 /turf/open/gm/river/soro,
@@ -35064,8 +35176,8 @@
 /turf/open/gm/grass/grassmud/corner/south_west,
 /area/lv624/ground/jungle/north_west_jungle)
 "gyY" = (
-/turf/open/gm/grass/grassmud/corner/south_west,
-/area/lv624/ground/river/east_river)
+/turf/open/gm/mudcoast/greenwater/north,
+/area/lv624/ground/jungle/east_jungle)
 "gzd" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -35088,10 +35200,23 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
+"gAP" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 6
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/caves/west_caves)
 "gBG" = (
 /obj/structure/fence/dark,
 /turf/open/gm/grass/grassmud/corner2/north_east,
 /area/lv624/ground/colony/south_nexus_road)
+"gBM" = (
+/obj/item/stack/rods,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/north_west_caves)
 "gDu" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/colony/west_tcomms_road)
@@ -35181,6 +35306,14 @@
 /obj/structure/window,
 /turf/open/floor/plating/bare_catwalk,
 /area/lv624/lazarus/robotics)
+"gIw" = (
+/obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "gJU" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /obj/structure/prop/ice_colony/ground_wire{
@@ -35259,6 +35392,12 @@
 "gSb" = (
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/lazarus/secure_storage)
+"gTb" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 9
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/west_caves)
 "gTj" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -35671,6 +35810,10 @@
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 10
 	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
 "hyK" = (
@@ -35986,9 +36129,16 @@
 /obj/effect/landmark/lizard_spawn,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"hVZ" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv624/ground/caves/west_caves)
 "hWj" = (
-/turf/open/gm/mudcoast/greenwater/cornerouter/west,
-/area/lv624/ground/river/east_river)
+/obj/item/clothing/head/welding,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "hWZ" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
@@ -36295,6 +36445,16 @@
 	},
 /turf/open/hunter_temple/corner/west,
 /area/lv624/ground/caves/east_caves)
+"iyH" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/lv624/ground/caves/west_caves)
 "izh" = (
 /obj/structure/sign/nosmoking_1{
 	pixel_x = 28
@@ -36459,6 +36619,18 @@
 	pixel_y = 12
 	},
 /turf/open/floor/plating/platingdmg3/west,
+/area/lv624/ground/caves/west_caves)
+"iOM" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2;
+	explo_proof = 0
+	},
+/turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "iOT" = (
 /obj/structure/window_frame/colony,
@@ -36658,6 +36830,12 @@
 "jiR" = (
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
+"jjp" = (
+/obj/structure/prop/hybrisa/fakeplatforms/platform3{
+	dir = 4
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv624/lazarus/toilet)
 "jlh" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/faxmachine{
@@ -36672,6 +36850,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/south_east_caves)
+"jly" = (
+/obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/prop/invuln/minecart_tracks/bumper{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "jnG" = (
 /obj/structure/machinery/door/airlock/almayer/engineering/colony{
 	dir = 1;
@@ -36892,6 +37077,13 @@
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grassmud/west,
 /area/lv624/ground/jungle/north_jungle)
+"jFL" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/lv624/ground/caves/west_caves)
 "jGo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -36933,6 +37125,15 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_east_caves)
+"jJL" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/caves/west_caves)
 "jJQ" = (
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
@@ -37069,9 +37270,9 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "jRM" = (
-/obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/lv624/ground/river/east_river)
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/north_west_caves)
 "jSY" = (
 /obj/structure/ore_box,
 /turf/open/floor/plating,
@@ -37209,6 +37410,14 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grassmud/corner/north_east,
 /area/lv624/ground/jungle/east_jungle)
+"kki" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10;
+	layer = 2;
+	explo_proof = 0
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/caves/west_caves)
 "kkw" = (
 /obj/item/stack/sheet/wood,
 /obj/item/stack/sheet/wood{
@@ -37329,6 +37538,10 @@
 	},
 /turf/open/gm/grass/grassmud/corner/south_east,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"kud" = (
+/obj/item/tool/pickaxe,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "kuZ" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -37353,6 +37566,10 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"kxu" = (
+/obj/item/tool/weldingtool,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "kxv" = (
 /obj/structure/cable{
 	icon_state = "5-9";
@@ -37416,15 +37633,8 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "kzP" = (
-/obj/item/ore/phoron{
-	pixel_x = -10;
-	pixel_y = 2
-	},
-/obj/item/ore/silver{
-	pixel_y = -8
-	},
-/turf/open/floor/plating,
-/area/lv624/ground/caves/west_caves)
+/turf/open/gm/mudcoast/greenwater/cornerouter/north,
+/area/lv624/ground/jungle/east_jungle)
 "kAg" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
@@ -37542,6 +37752,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/north_west_caves)
+"kKA" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/west_caves)
 "kLl" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 8
@@ -37599,6 +37816,15 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/south_west_caves)
+"kQz" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "kQH" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/lv624/lazarus/robotics)
@@ -37643,6 +37869,12 @@
 /obj/structure/fence/dark,
 /turf/open/gm/grass/grassmud/corner2/south_west,
 /area/lv624/ground/colony/north_tcomms_road)
+"kUQ" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "kVP" = (
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass/grass1,
@@ -37961,6 +38193,13 @@
 	dir = 4;
 	icon_state = "xsplatter3"
 	},
+/obj/item/ore/iron{
+	pixel_y = -6
+	},
+/obj/item/ore/phoron{
+	pixel_x = 5;
+	pixel_y = 12
+	},
 /turf/open/floor/plating,
 /area/lv624/ground/caves/west_caves)
 "lCG" = (
@@ -38107,6 +38346,9 @@
 	},
 /turf/open/floor/plating/burnt_platingdmg3/west,
 /area/lv624/ground/caves/west_caves)
+"lJY" = (
+/turf/open/gm/grass/grassmud/corner2/south_west,
+/area/lv624/ground/river/east_river)
 "lKe" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines/light_3,
@@ -38143,7 +38385,7 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
 	},
-/turf/open/gm/grass/grass1,
+/turf/open/gm/grass/grassmud/corner/north_east,
 /area/lv624/ground/jungle/east_jungle)
 "lLQ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
@@ -38250,6 +38492,16 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/north_west_caves)
+"lTH" = (
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	icon_state = "bush2";
+	pixel_x = -13;
+	pixel_y = -10;
+	layer = 4.21
+	},
+/turf/open/gm/grass/grassmud/south,
+/area/lv624/ground/jungle/west_jungle)
 "lUb" = (
 /obj/item/stack/sheet/wood{
 	amount = 2
@@ -38264,6 +38516,15 @@
 /obj/structure/prop/brazier/torch,
 /turf/closed/wall/cult/temple,
 /area/lv624/ground/caves/sand_temple)
+"lVb" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "lWh" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 6
@@ -38421,6 +38682,16 @@
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/corporate_dome)
+"mhI" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "mhZ" = (
 /turf/open/shuttle/red,
 /area/lv624/ground/caves/sand_temple)
@@ -38533,6 +38804,13 @@
 "mqJ" = (
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/river/east_river)
+"mqL" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14"
+	},
+/obj/structure/stairs/perspective,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv624/lazarus/toilet)
 "mrg" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -38814,6 +39092,14 @@
 "mPt" = (
 /turf/open/gm/grass/grassmud/corner2/south_west,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"mPG" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/west_caves)
 "mPK" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/flora/jungle/vines/light_2,
@@ -38980,6 +39266,19 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/south_east_jungle)
+"ngo" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 5
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "nhi" = (
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
@@ -38988,12 +39287,16 @@
 /obj/structure/prop/wooden_cross{
 	pixel_y = 23
 	},
-/obj/item/clothing/head/hardhat{
-	pixel_y = 9;
-	pixel_x = 8
+/obj/item/clothing/head/helmet/hybrisa/kelland_mining_helmet{
+	pixel_y = 7;
+	pixel_x = 9
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/south_west_caves)
+"nhN" = (
+/obj/item/stack/rods,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "niF" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass/grass1,
@@ -39090,6 +39393,15 @@
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_jungle)
+"npV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/hybrisa/street/cement1,
+/area/lv624/ground/caves/south_central_caves)
 "nqv" = (
 /turf/open/gm/river/soro,
 /area/lv624/ground/barrens/east_barrens)
@@ -39130,6 +39442,12 @@
 /obj/structure/fence/dark,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/colony/west_tcomms_road)
+"nug" = (
+/obj/structure/prop/invuln/minecart_tracks/bumper{
+	dir = 8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/lv624/ground/caves/west_caves)
 "nuz" = (
 /obj/structure/fence/overgrown,
 /turf/open/gm/grass/grassmud/north,
@@ -39592,6 +39910,16 @@
 /obj/effect/hybrisa/misc/fake/pipes,
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
+"ogV" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 9
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/west_caves)
 "ogZ" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -39687,6 +40015,10 @@
 "opS" = (
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/jungle/south_east_jungle)
+"oqa" = (
+/obj/structure/stairs/perspective,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv624/lazarus/toilet)
 "oqT" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 4;
@@ -39808,6 +40140,15 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/asteroidfloor/north,
 /area/lv624/lazarus/corporate_dome)
+"oze" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#6d6558";
+	dir = 8;
+	pixel_y = -36;
+	pixel_x = -7
+	},
+/turf/open/floor/hybrisa/wood/blackwood,
+/area/lv624/lazarus/robotics)
 "oAD" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 1
@@ -39856,13 +40197,21 @@
 "oEI" = (
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/barrens/east_barrens)
+"oEM" = (
+/obj/item/stack/sheet/metal/med_small_stack,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "oER" = (
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
 "oFf" = (
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/river/east_river)
+/obj/effect/decal/strata_decals/mud_corner,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "oFJ" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 8
@@ -39975,6 +40324,22 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
+"oRu" = (
+/obj/structure/bed/chair,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
+"oRC" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/obj/item/ore/silver{
+	pixel_y = -8
+	},
+/turf/open/floor/plating/platingdmg3/west,
+/area/lv624/ground/caves/west_caves)
 "oRH" = (
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/north_east_jungle)
@@ -40241,6 +40606,10 @@
 /obj/structure/fence/dark,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/west_central_jungle)
+"plL" = (
+/obj/item/tool/pickaxe/hammer,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/west_caves)
 "pmz" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -40507,6 +40876,13 @@
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
+"pDK" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "pET" = (
 /obj/effect/decal/grass_overlay/grass1{
 	dir = 6
@@ -40758,6 +41134,16 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/south_west_caves)
+"pXf" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 6
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "pXI" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
@@ -40805,9 +41191,10 @@
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/west_caves)
 "qaZ" = (
-/obj/item/stool{
-	pixel_x = -9;
-	pixel_y = 2
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = 1
 	},
 /obj/structure/coatrack{
 	pixel_y = 24;
@@ -40897,7 +41284,8 @@
 	dir = 4
 	},
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5;
@@ -41117,6 +41505,14 @@
 "qKl" = (
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/colony/north_nexus_road)
+"qKm" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv624/lazarus/toilet)
 "qKC" = (
 /turf/open/floor/asteroidwarning/northwest,
 /area/lv624/ground/colony/telecomm/sw_lz2)
@@ -41172,6 +41568,14 @@
 	},
 /turf/open/hunter_temple,
 /area/lv624/ground/caves/east_caves)
+"qQD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv624/lazarus/toilet)
 "qRj" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/cargo_container/horizontal/blue/bottom,
@@ -41280,6 +41684,15 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
+"qZS" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 9
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "rac" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/cult/temple,
@@ -41442,6 +41855,14 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
+"rmX" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = 2;
+	layer = 3
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "rox" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
@@ -41468,6 +41889,14 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/south_west_caves)
+"rqK" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "rrz" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/mineral_door/wood{
@@ -42409,6 +42838,12 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_east_jungle)
+"sZQ" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/lv624/lazarus/toilet)
 "taa" = (
 /obj/structure/barricade/wooden,
 /obj/structure/flora/jungle/vines/light_3,
@@ -42464,6 +42899,19 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/south_central_caves)
+"tdx" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/caves/west_caves)
 "tdX" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -42494,6 +42942,11 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
+"tfm" = (
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/mudcoast/greenwater/north,
+/area/lv624/ground/jungle/east_jungle)
 "tfA" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid,
@@ -42584,6 +43037,11 @@
 	dir = 8
 	},
 /mob/living/simple_animal/bat,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2;
+	explo_proof = 0
+	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
 "tob" = (
@@ -42708,6 +43166,11 @@
 /obj/structure/platform/metal/almayer,
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
+"tuE" = (
+/obj/structure/surface/table,
+/obj/item/toy/deck/uno,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "tuJ" = (
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
 	light_on = 1;
@@ -42760,6 +43223,16 @@
 /obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer/test_floor4,
 /area/lv624/lazarus/comms)
+"tAV" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/obj/item/tool/wrench,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "tBJ" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/grass/grass1,
@@ -42885,8 +43358,7 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
-	layer = 2;
-	explo_proof = 0
+	layer = 2
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/west_caves)
@@ -42936,6 +43408,15 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/north_east_caves)
+"tWo" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "tWw" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/white,
@@ -42967,9 +43448,11 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/barrens/north_east_barrens)
 "tZa" = (
-/obj/structure/flora/bush/ausbushes/var3/stalkybush,
-/turf/open/gm/mudcoast/greenwater/cornerouter/west,
-/area/lv624/ground/river/east_river)
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/lv624/ground/caves/west_caves)
 "tZe" = (
 /obj/item/tank/oxygen/yellow,
 /turf/open/auto_turf/strata_grass/layer0,
@@ -43239,6 +43722,12 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/south_east_caves)
+"uzk" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/caves/west_caves)
 "uzH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -43258,6 +43747,15 @@
 /obj/structure/prop/hybrisa/misc/blood,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/south_west_caves)
+"uDb" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "uDd" = (
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
@@ -43446,7 +43944,7 @@
 "uRe" = (
 /obj/effect/decal/grass_overlay/grass1,
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
+	dir = 4
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
@@ -43518,15 +44016,8 @@
 /turf/open/floor/mech_bay_recharge_floor/shuttle_landing_lights,
 /area/lv624/lazarus/landing_zones/lz1)
 "uVG" = (
-/obj/item/ore/iron{
-	pixel_y = -6
-	},
-/obj/item/ore/iron{
-	pixel_y = 11;
-	pixel_x = -8
-	},
-/turf/open/floor/plating,
-/area/lv624/ground/caves/west_caves)
+/turf/closed/wall/wood,
+/area/lv624/ground/caves/north_west_caves)
 "uVU" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
 /obj/structure/flora/jungle/vines/light_3,
@@ -43819,6 +44310,16 @@
 "vty" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"vuL" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/caves/west_caves)
 "vvC" = (
 /obj/item/storage/box/stompers,
 /obj/item/spacecash/c1000,
@@ -43841,7 +44342,6 @@
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 4
 	},
-/obj/effect/landmark/corpsespawner/hybrisa/kelland_miner,
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -3;
 	pixel_y = 6
@@ -44049,6 +44549,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/orange2/north,
 /area/lv624/lazarus/comms)
+"vMR" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/machinery/power/apc/no_power/south,
+/turf/open/floor/corsat/redcorner/east,
+/area/lv624/ground/caves/south_central_caves)
 "vMV" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grass1,
@@ -44369,8 +44874,16 @@
 /turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/caves/sand_temple)
 "wkt" = (
-/turf/open/gm/mudcoast/greenwater/cornerinner/north,
+/obj/structure/blocker/fog,
+/obj/structure/blocker/invisible_wall,
+/turf/open/gm/mudcoast/greenwater,
 /area/lv624/ground/river/east_river)
+"wkD" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 9
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/lv624/ground/caves/west_caves)
 "wkE" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass/grass1,
@@ -44388,6 +44901,10 @@
 /obj/structure/flora/bush/ausbushes/genericbush,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_east_jungle)
+"wmL" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/caves/west_caves)
 "wng" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 5
@@ -44490,6 +45007,17 @@
 /obj/structure/flora/bush/ausbushes/var3/ppflowers,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/south_west_caves)
+"wtG" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 5
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "wuE" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/girder/reinforced,
@@ -44517,6 +45045,17 @@
 "wxP" = (
 /turf/open/gm/grass/grassmud/corner/north_east,
 /area/lv624/ground/jungle/north_jungle)
+"wyK" = (
+/obj/item/ore/iron{
+	pixel_x = -4;
+	pixel_y = 4;
+	layer = 2.98
+	},
+/obj/structure/prop/invuln/minecart_tracks/bumper{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lv624/ground/caves/west_caves)
 "wzG" = (
 /obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines/heavy,
@@ -44653,6 +45192,12 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/south_west_caves)
+"wJr" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	layer = 4.1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/jungle/west_jungle)
 "wJA" = (
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/window/framed/colony,
@@ -44834,9 +45379,10 @@
 /turf/open/floor/vault2/west,
 /area/lv624/lazarus/quartstorage)
 "wSY" = (
-/obj/item/stool{
-	pixel_x = -9;
-	pixel_y = 7
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 6
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood{
@@ -45103,6 +45649,16 @@
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
+"xmW" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/closet/crate/miningcar/yellow{
+	layer = 3
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "xov" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/grass/grass1,
@@ -45205,6 +45761,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
+/obj/effect/landmark/corpsespawner/hybrisa/kelland_miner,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/south_west_caves)
 "xyq" = (
@@ -45265,6 +45822,15 @@
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/barrens/west_barrens)
+"xCy" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "xCF" = (
 /obj/item/ammo_magazine/smg/mp5,
 /obj/item/weapon/gun/smg/mp5,
@@ -45371,6 +45937,9 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 5
 	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 6
+	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/west_caves)
 "xLi" = (
@@ -45413,6 +45982,16 @@
 	},
 /turf/open/floor/plating/bare_catwalk,
 /area/lv624/ground/caves/west_caves)
+"xMY" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo"
+	},
+/turf/open/hybrisa/street/cement1,
+/area/lv624/ground/barrens/north_east_barrens)
 "xNi" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/decal/grass_overlay/grass1{
@@ -45450,6 +46029,13 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/west_caves)
+"xPt" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plating/northeast,
+/area/lv624/lazarus/toilet)
 "xPD" = (
 /obj/structure/closet/crate/secure/weyland,
 /obj/item/weapon/gun/rifle/nsg23/no_lock,
@@ -45590,6 +46176,15 @@
 	},
 /turf/open/floor/white,
 /area/lv624/lazarus/corporate_dome)
+"ycX" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "ydp" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass/grass1,
@@ -45606,6 +46201,12 @@
 	},
 /turf/open/floor/delivery,
 /area/lv624/lazarus/engineering)
+"ydZ" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 6
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/lv624/ground/caves/west_caves)
 "yfe" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 10
@@ -45616,9 +46217,15 @@
 /turf/open/gm/grass/grassmud/corner2/north_east,
 /area/lv624/ground/jungle/north_east_jungle)
 "ygn" = (
-/obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/gm/grass/grassmud/corner2/south_east,
-/area/lv624/ground/river/east_river)
+/obj/item/ore/silver{
+	pixel_y = -8
+	},
+/obj/item/ore/phoron{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/lv624/ground/caves/west_caves)
 "ygp" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -45630,6 +46237,13 @@
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/south_west_caves)
+"ygK" = (
+/obj/item/ore/silver{
+	pixel_y = 6;
+	pixel_x = -17
+	},
+/turf/open/floor/plating,
+/area/lv624/ground/caves/west_caves)
 "yhd" = (
 /turf/open/gm/grass/grassmud/corner2/south_east,
 /area/lv624/ground/caves/sand_temple)
@@ -46218,11 +46832,11 @@ abM
 abM
 abM
 abM
-abM
-abM
-abM
-abM
-abM
+uVG
+uVG
+uVG
+uVG
+uVG
 abM
 abM
 abM
@@ -46339,13 +46953,13 @@ aUY
 aUY
 aUY
 aVR
-oyx
-aZb
-aZb
+aYz
+dip
+gbz
+gbz
 gbz
 aZb
-aZb
-aME
+lTH
 hJn
 atC
 npQ
@@ -46567,12 +47181,12 @@ aUY
 aVR
 oyx
 fEU
-aUZ
-aRb
-aRb
-aRb
-aRb
-aun
+aYB
+aYS
+aud
+aud
+aud
+asR
 ase
 arE
 atC
@@ -46795,12 +47409,12 @@ aVR
 aYz
 aUZ
 aUZ
-aUZ
-aYX
-aTh
-alC
-auc
-aRb
+bgt
+arU
+bGb
+aud
+aud
+auP
 aAl
 aLC
 aLC
@@ -46891,8 +47505,8 @@ bVX
 bVX
 bVX
 abM
-abM
-abM
+uVG
+uVG
 abM
 abM
 bVX
@@ -46960,8 +47574,8 @@ mdQ
 mdQ
 mdQ
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 mdQ
 mdQ
@@ -47023,12 +47637,12 @@ bal
 aUZ
 aXr
 aZa
-alC
 aYS
 aud
+aud
 bGb
-auP
-aAl
+aud
+dmf
 asQ
 aLC
 aOl
@@ -47119,8 +47733,8 @@ bVX
 bVX
 bVX
 bVX
-abM
-abM
+uVG
+uVG
 bVX
 bVX
 bVX
@@ -47186,9 +47800,9 @@ mdQ
 mdQ
 mdQ
 mdQ
-mdQ
-mdQ
-mdQ
+bwe
+bwe
+bwe
 bsO
 bsO
 aca
@@ -47255,9 +47869,9 @@ bGb
 arV
 aud
 aud
-auP
-aqR
-asa
+fQL
+erx
+aAl
 aLC
 aMC
 aNv
@@ -47334,8 +47948,8 @@ abM
 abM
 abM
 abM
-abM
-abM
+uVG
+uVG
 bVZ
 bVZ
 bVZ
@@ -47414,18 +48028,18 @@ mdQ
 mdQ
 mdQ
 mdQ
-mdQ
+bwe
 bsO
 bsO
 bsO
-aca
-bxi
-vle
-qdx
-qdx
+due
+mPG
+ogV
+tdx
+vuL
 hyF
-btY
-btY
+bDW
+gTb
 btY
 bvV
 bsO
@@ -47484,8 +48098,8 @@ aud
 amG
 bGb
 auP
-aqS
-aro
+aAl
+aAl
 aLD
 aMC
 aMC
@@ -47562,7 +48176,7 @@ abM
 abM
 abM
 abM
-abM
+uVG
 bVZ
 bVZ
 bVZ
@@ -47626,9 +48240,9 @@ mdQ
 mdQ
 mdQ
 mdQ
-mdQ
-mdQ
-mdQ
+bwe
+bwe
+bwe
 btY
 btY
 mdQ
@@ -47645,15 +48259,15 @@ bsO
 bsO
 buJ
 bsO
-aca
-vle
+due
+aYX
 bAH
 cHW
 dOA
 dmT
 grW
 bxH
-bwy
+uzk
 btY
 bvW
 bsO
@@ -47712,8 +48326,8 @@ bGb
 aud
 asp
 auP
-aqS
-aqg
+aAl
+wJr
 aLC
 aOm
 aMC
@@ -47790,7 +48404,7 @@ abM
 abM
 abM
 abM
-abM
+uVG
 bVZ
 bVZ
 bVZ
@@ -47854,7 +48468,7 @@ mdQ
 mdQ
 mdQ
 mdQ
-mdQ
+bwe
 bNx
 btY
 btY
@@ -47870,10 +48484,10 @@ mdQ
 mdQ
 bFC
 bsO
-bsO
+deT
 tnY
-bDl
-btY
+iOM
+bxg
 wQK
 cQB
 dmT
@@ -47883,7 +48497,7 @@ ndk
 grW
 xKL
 bvY
-bvY
+bDW
 bvI
 btW
 bvg
@@ -47940,8 +48554,8 @@ aud
 aud
 aud
 auP
-aqS
-aro
+aAl
+aAl
 aLC
 aMA
 aNw
@@ -48018,18 +48632,13 @@ abM
 abM
 abM
 abM
-abM
+uVG
 bVZ
 bVZ
 bVZ
 bWC
 bVX
 bVX
-abM
-bVX
-bVX
-bVX
-bWh
 bVX
 bVX
 bVX
@@ -48039,6 +48648,11 @@ bVX
 bVX
 bVX
 bVX
+bWh
+bVX
+bVX
+bVX
+bVX
 bVX
 bVX
 bVX
@@ -48046,8 +48660,8 @@ bVX
 bVX
 abM
 abM
-abM
-abM
+uVG
+uVG
 bVZ
 bWv
 bVY
@@ -48063,10 +48677,10 @@ bsO
 bsO
 mdQ
 mdQ
-mdQ
-mdQ
-mdQ
-mdQ
+bwe
+bwe
+bwe
+bwe
 mdQ
 btY
 bvV
@@ -48097,8 +48711,8 @@ mdQ
 mdQ
 mdQ
 bvV
-bsO
-aca
+deT
+kQz
 btY
 btY
 btY
@@ -48168,7 +48782,7 @@ asF
 bGb
 fQL
 aBn
-aqS
+aAl
 aQz
 aLC
 aLC
@@ -48246,15 +48860,15 @@ abM
 abM
 abM
 abM
-abM
+uVG
 bVZ
 bVZ
 bVZ
 bWz
 bVX
-abM
-abM
-abM
+uVG
+uVG
+uVG
 bVX
 bVX
 bVX
@@ -48274,8 +48888,8 @@ bWD
 abM
 abM
 abM
-abM
-abM
+uVG
+uVG
 bVZ
 bVZ
 bVZ
@@ -48291,10 +48905,10 @@ bsO
 bsO
 bsO
 bsO
-mdQ
-mdQ
-mdQ
-mdQ
+bwe
+bwe
+bwe
+bwe
 btY
 btY
 bvV
@@ -48325,7 +48939,7 @@ mdQ
 mdQ
 bvZ
 bsO
-aca
+qZS
 btY
 vle
 qdx
@@ -48396,9 +49010,9 @@ aud
 aud
 auP
 xuK
-aqS
-aro
-aCO
+aAl
+aAl
+ase
 atu
 aLE
 atu
@@ -48474,15 +49088,15 @@ abM
 abM
 abM
 abM
-abM
+uVG
 bVZ
 bVZ
 bVZ
 bWv
 bVX
-abM
-abM
-abM
+uVG
+uVG
+uVG
 bZF
 bZn
 bZv
@@ -48502,8 +49116,8 @@ bVZ
 abM
 abM
 abM
-abM
-abM
+uVG
+uVG
 bVZ
 bVZ
 bVZ
@@ -48514,10 +49128,10 @@ bWh
 bVX
 bVX
 bVX
-bVX
+gBM
 bvA
-bsO
-bsO
+oEM
+hWj
 bsO
 gwP
 btY
@@ -48553,7 +49167,7 @@ mdQ
 mdQ
 bvV
 bxL
-bxi
+kKA
 vle
 amI
 dmT
@@ -48579,7 +49193,7 @@ bgE
 bgE
 brx
 biI
-bir
+bil
 rqF
 boX
 bhE
@@ -48702,7 +49316,7 @@ abM
 abM
 abM
 abM
-abM
+uVG
 bVZ
 bVZ
 bVZ
@@ -48731,7 +49345,7 @@ abM
 abM
 abM
 abM
-bVZ
+jRM
 bVZ
 bVZ
 bWC
@@ -48743,9 +49357,9 @@ abM
 bVY
 bVY
 bVY
-bsO
-bsO
-bsO
+rmX
+nhN
+kxu
 bsO
 bsO
 bFe
@@ -48781,7 +49395,7 @@ mdQ
 btY
 bvV
 bFD
-btY
+ptm
 bBI
 dmT
 mdQ
@@ -48793,7 +49407,7 @@ mdQ
 mdQ
 byh
 bwy
-bxf
+jJL
 btY
 bvZ
 mdQ
@@ -48930,7 +49544,7 @@ abM
 abM
 abM
 abM
-abM
+uVG
 bVZ
 bVZ
 bVZ
@@ -48971,14 +49585,14 @@ abM
 abM
 bVZ
 bVZ
-btw
-bAe
-bFd
-bAe
-bsO
-bsO
-bsO
-bFe
+tAV
+bNA
+auc
+bNA
+bvg
+bvg
+bvg
+uDb
 bsO
 bBP
 bsO
@@ -48998,7 +49612,7 @@ bOj
 bNz
 bsO
 bsO
-bGL
+tWo
 bxL
 btY
 btY
@@ -49009,7 +49623,7 @@ mdQ
 btY
 bvV
 bxL
-btY
+ptm
 bBI
 dmT
 fRU
@@ -49158,7 +49772,7 @@ abM
 abM
 abM
 abM
-abM
+uVG
 bVZ
 bVZ
 bVZ
@@ -49199,14 +49813,14 @@ abM
 abM
 abM
 bVZ
-btY
-btY
+wmL
+plL
 btY
 btY
 btw
 bsO
 bsO
-bsO
+bGL
 bsO
 bsO
 bsO
@@ -49231,13 +49845,13 @@ bxL
 btY
 btY
 btY
-mdQ
-mdQ
+bwe
+bwe
 byC
 btY
 bvV
 bxL
-btY
+ptm
 wQK
 dmT
 dmT
@@ -49386,8 +50000,8 @@ abM
 abM
 abM
 abM
-abM
-abM
+uVG
+uVG
 bVZ
 bVZ
 bVZ
@@ -49419,8 +50033,8 @@ bVX
 bVX
 bWh
 bWD
-abM
-abM
+uVG
+uVG
 abM
 abM
 abM
@@ -49434,7 +50048,7 @@ bwy
 btY
 btw
 bsO
-bsO
+tWo
 bvA
 mdQ
 bsO
@@ -49459,13 +50073,13 @@ bvA
 gwP
 bKh
 btY
-mdQ
-mdQ
+bwe
+bwe
 btY
 bGJ
 btV
 bxL
-btY
+bAI
 bEE
 gvm
 qJE
@@ -49647,8 +50261,8 @@ bWP
 bVX
 bWD
 bVZ
-abM
-abM
+uVG
+uVG
 abM
 abM
 abM
@@ -49662,7 +50276,7 @@ bwy
 bwy
 btY
 btw
-bsO
+tWo
 mdQ
 mdQ
 mdQ
@@ -49687,14 +50301,14 @@ bsO
 bxL
 btY
 btY
-mdQ
-mdQ
+bwe
+bwe
 btY
 bGK
-bGg
+tOS
 bFE
 bFc
-bDW
+bvY
 bDW
 bDm
 qJE
@@ -49875,8 +50489,8 @@ bVY
 bWD
 bVZ
 bVZ
-abM
-abM
+uVG
+uVG
 abM
 abM
 abM
@@ -49886,11 +50500,11 @@ abM
 mdQ
 mdQ
 mdQ
-mdQ
-bwy
+bwe
+bwe
 bwy
 btY
-bvV
+oFf
 bsO
 bTj
 mdQ
@@ -49898,8 +50512,8 @@ buJ
 bsO
 aca
 btY
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 mdQ
 mdQ
@@ -50114,11 +50728,11 @@ abM
 mdQ
 mdQ
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 bwy
 btY
-btw
+aRP
 bsO
 bsO
 bsO
@@ -50126,8 +50740,8 @@ bsO
 bxL
 btY
 btY
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 mdQ
 mdQ
@@ -50342,11 +50956,11 @@ amk
 onU
 mdQ
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 bzl
 bwy
-btY
+ptm
 btw
 bsO
 bsO
@@ -50574,7 +51188,7 @@ gRk
 dmT
 bzl
 bwy
-bwy
+bxf
 bTL
 bvV
 bBP
@@ -50586,18 +51200,18 @@ btY
 btY
 bvZ
 bsO
-aca
-bwy
+due
 bOl
 bOl
 bOl
-bNA
+bOl
+bvI
 bMY
 bFE
 bLS
-bKE
-bKE
-bFE
+btW
+btW
+bvg
 bIV
 bIV
 bIp
@@ -50802,19 +51416,19 @@ lKl
 tRM
 bzl
 bwy
-bwy
-bTL
-bvV
-bsO
-bsO
-bsO
-gwP
-btY
-bvZ
-bFe
-bMt
-aca
-bwy
+gAP
+aTh
+gIw
+bvg
+bvg
+bvg
+ngo
+bDW
+pXf
+dzo
+eRC
+mhI
+kki
 bKI
 jvQ
 jvQ
@@ -50853,7 +51467,7 @@ wPj
 bvi
 dWM
 puO
-nrb
+aGI
 mRm
 dWM
 cLq
@@ -51011,8 +51625,8 @@ bVZ
 abM
 abM
 abM
-abM
-abM
+uVG
+uVG
 bVZ
 bVZ
 bVZ
@@ -51030,7 +51644,7 @@ dmT
 owZ
 bzm
 bwy
-btY
+ptm
 bvZ
 bsO
 bsO
@@ -51087,7 +51701,7 @@ dWM
 wKv
 kQp
 uvN
-kIY
+gkZ
 bnL
 wIp
 boq
@@ -51239,8 +51853,8 @@ abM
 abM
 abM
 abM
-abM
-abM
+uVG
+uVG
 bVZ
 bVZ
 abN
@@ -51258,7 +51872,7 @@ owZ
 bzm
 bwy
 btY
-btY
+ptm
 bvV
 buJ
 bsO
@@ -51284,8 +51898,8 @@ btY
 btY
 btY
 btY
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 mdQ
 mdQ
@@ -51467,8 +52081,8 @@ abM
 abM
 abM
 abM
-abM
-abM
+uVG
+uVG
 abB
 abN
 abN
@@ -51486,7 +52100,7 @@ bzm
 bwy
 qaE
 btY
-bvZ
+lVb
 aLr
 bsO
 bSK
@@ -51512,8 +52126,8 @@ bwy
 bxi
 btY
 btY
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 mdQ
 btY
@@ -51714,7 +52328,7 @@ bwy
 btY
 btY
 bvZ
-bsO
+bGL
 bsO
 bsO
 bMW
@@ -51722,9 +52336,9 @@ bAe
 aca
 btY
 bwy
-mdQ
-mdQ
-mdQ
+bwe
+bwe
+bwe
 mdQ
 mdQ
 mdQ
@@ -51740,8 +52354,8 @@ bxH
 bwy
 bwy
 btY
-mdQ
-btY
+bwe
+bwe
 btY
 btY
 btY
@@ -51936,8 +52550,8 @@ amk
 amk
 abM
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 bwy
 btY
 btY
@@ -51971,14 +52585,14 @@ btY
 btY
 btY
 bvZ
-bFe
-bFe
+wtG
+aFk
 bBP
 bsO
 buN
-bvB
+tZa
 bCA
-bBO
+bCA
 bAQ
 bAd
 bzt
@@ -52164,13 +52778,13 @@ amk
 amk
 abM
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 btY
 btY
 btY
 bvV
-bsO
+bGL
 bxL
 btY
 btY
@@ -52199,12 +52813,12 @@ btY
 btY
 bvZ
 bsO
-bFG
+tuE
 bFF
 bsO
 bsO
 buN
-bvB
+hVZ
 bCB
 fmm
 bAR
@@ -52392,13 +53006,13 @@ amk
 amk
 abM
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 btY
 btY
 bUB
 bsO
-bsO
+tWo
 bxL
 btY
 btY
@@ -52426,17 +53040,17 @@ btY
 btY
 bvZ
 bsO
-bsO
+oRu
 bFG
 bFG
 bsO
 bsO
 buN
-bvB
+bAS
 bCC
-dzo
-pbs
-bvB
+bAS
+fXe
+ygn
 oig
 rNx
 jzm
@@ -52598,10 +53212,10 @@ bVZ
 bVZ
 bVZ
 bVZ
-abM
-abM
-abM
-abM
+uVG
+uVG
+uVG
+uVG
 bVZ
 bVZ
 bVZ
@@ -52620,13 +53234,13 @@ amk
 abM
 abM
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 btY
 btY
 bvV
 bsO
-bsO
+bGL
 bSN
 btY
 btY
@@ -52655,14 +53269,14 @@ btY
 bvV
 bsO
 bBP
-bFG
+crZ
 bFG
 bsO
 bsO
 buN
-bvB
+bAS
 bCC
-kzP
+bAS
 pbs
 byF
 klR
@@ -52854,7 +53468,7 @@ btY
 btY
 bvV
 bsO
-bsO
+bGL
 bsO
 bFe
 gwP
@@ -52883,16 +53497,16 @@ bvZ
 bsO
 buJ
 bsO
-bsO
+rqK
 bsO
 bsO
 bsO
 buN
 bDp
-bCC
-uVG
+oRC
 bAS
-bvB
+bAS
+ygK
 chU
 nOA
 qZh
@@ -53075,14 +53689,14 @@ abM
 abM
 abM
 btY
-btY
+btZ
 btY
 btY
 btY
 bvZ
 bsO
 bMZ
-bsO
+bGL
 bsO
 bsO
 bsO
@@ -53116,9 +53730,9 @@ bvA
 bsO
 bsO
 bDY
-bwb
+nug
 bCD
-bvB
+wyK
 bAT
 bvB
 vCT
@@ -53307,10 +53921,10 @@ btY
 btY
 btY
 btY
-bvV
-bsO
-bBP
-bsO
+bGg
+bvg
+tOS
+bGM
 bsO
 bsO
 bBP
@@ -53535,7 +54149,7 @@ btY
 btY
 btY
 bvZ
-bsO
+bGL
 bsO
 bsO
 bsO
@@ -53755,15 +54369,15 @@ abM
 abM
 abM
 abM
-abM
-abM
+uVG
+uVG
 btY
 btY
 btY
 btY
 bxi
 bvV
-bsO
+bGL
 bsO
 bsO
 bsO
@@ -53983,20 +54597,20 @@ abM
 abM
 abM
 abM
-abM
-btY
+uVG
+bwe
 btY
 btY
 bvZ
 bFe
 bFe
 bvA
-bsO
+bGL
 bsO
 bsO
 aca
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 bxi
 bsO
@@ -54219,12 +54833,12 @@ bsO
 bsO
 bsO
 bsO
-bsO
+bGL
 buJ
 bxL
 btY
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 btY
 bvV
@@ -54447,7 +55061,7 @@ bsO
 bsO
 bsO
 bsO
-bsO
+tWo
 bsO
 aca
 btY
@@ -54463,7 +55077,7 @@ bsO
 bsO
 bsO
 bsO
-bsO
+kud
 mdQ
 mdQ
 btY
@@ -54675,7 +55289,7 @@ bsO
 bsO
 bsO
 bsO
-bsO
+bGL
 bxL
 btY
 btY
@@ -54903,7 +55517,7 @@ bsO
 bsO
 bsO
 bsO
-bsO
+bLR
 bxL
 btY
 btY
@@ -55125,13 +55739,13 @@ bWu
 bOK
 bLn
 bWk
-bsO
-bsO
-bvA
-bsO
-bsO
-bsO
-bsO
+bBO
+bvg
+iyH
+bvg
+bvg
+bvg
+xCy
 bsO
 gwP
 btY
@@ -55359,7 +55973,7 @@ bsO
 buJ
 bsO
 bsO
-bsO
+bGL
 bsO
 bxL
 btY
@@ -55572,12 +56186,12 @@ bVZ
 bVZ
 bVZ
 bVZ
+uVG
 abM
 abM
 abM
 abM
-abM
-bVZ
+jRM
 btw
 bAe
 bAe
@@ -55587,7 +56201,7 @@ bsO
 bsO
 bsO
 btV
-bsO
+bGL
 bvA
 bsO
 gwP
@@ -55800,7 +56414,7 @@ bVZ
 bWw
 bVZ
 bVZ
-abM
+uVG
 abM
 abM
 abM
@@ -55815,7 +56429,7 @@ bsO
 bsO
 bsO
 bBP
-bsO
+bGL
 bsO
 bsO
 bsO
@@ -56028,15 +56642,15 @@ bVZ
 bVZ
 bVZ
 bVZ
-abM
+uVG
 abM
 abM
 abM
 abM
 abM
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 btY
 bvV
 bsO
@@ -56256,22 +56870,22 @@ bVZ
 bVZ
 bVZ
 bVZ
-abM
+uVG
 abM
 abM
 abM
 abM
 abM
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 btY
 btw
 bsO
 bsO
 bvA
 bsO
-bsO
+bGL
 bsO
 bsO
 bsO
@@ -56499,7 +57113,7 @@ btw
 bsO
 bsO
 bVc
-bsO
+bGL
 bsO
 bsO
 bvA
@@ -56727,7 +57341,7 @@ btY
 btw
 bAe
 bsO
-bsO
+bGL
 bsO
 bsO
 bsO
@@ -56955,14 +57569,14 @@ btY
 btY
 btY
 bvW
-bAe
-bsO
-bsO
-buJ
-bsO
-bsO
-bsO
-bvA
+ycX
+bvg
+bvg
+jFL
+xmW
+bvg
+bvg
+wkD
 bsO
 gwP
 btY
@@ -57066,7 +57680,7 @@ cGb
 aOZ
 vlF
 axj
-axj
+oze
 ayg
 ado
 lrT
@@ -57190,7 +57804,7 @@ bAe
 bsO
 bBP
 bsO
-bsO
+bGL
 bsO
 bsO
 gwP
@@ -57418,9 +58032,9 @@ btY
 btw
 bAe
 bsO
-bvA
+ydZ
 bRN
-bvA
+wkD
 bsO
 gwP
 btY
@@ -57648,7 +58262,7 @@ btY
 btw
 bsO
 bsO
-bsO
+bGL
 bsO
 bsO
 bFe
@@ -57681,8 +58295,8 @@ bym
 bzw
 bzw
 bym
-mdQ
-mdQ
+bwe
+bwe
 btY
 btY
 btY
@@ -57876,9 +58490,9 @@ btY
 btY
 bvW
 bsO
-bsO
-bsO
-bBP
+kUQ
+bvg
+pDK
 bMt
 bsO
 bsO
@@ -57909,8 +58523,8 @@ bxM
 bxj
 bxj
 bxj
-abS
-abS
+bwf
+bwf
 abS
 abS
 bxj
@@ -58106,14 +58720,14 @@ btY
 btw
 bsO
 bvA
-bsO
+bGL
 bsO
 buJ
 bsO
 bAe
 aca
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 mdQ
 mdQ
@@ -58334,14 +58948,14 @@ btY
 btY
 btw
 bsO
-bsO
+bGL
 bsO
 bsO
 bxL
 btY
 btY
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 mdQ
 mdQ
@@ -58538,8 +59152,8 @@ abN
 bVZ
 bVZ
 bVZ
-abM
-abM
+uVG
+uVG
 abM
 abM
 mdQ
@@ -58562,14 +59176,14 @@ btY
 btY
 btY
 btw
-bsO
+tWo
 bsO
 bBP
 bsO
 gwP
 btY
-mdQ
-mdQ
+bwe
+bwe
 mdQ
 mdQ
 mdQ
@@ -58766,16 +59380,16 @@ bVZ
 bVZ
 bVZ
 abN
+uVG
+uVG
 abM
 abM
-abM
-abM
 mdQ
 mdQ
 mdQ
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 jqr
 sxl
 bsO
@@ -58790,7 +59404,7 @@ bSq
 btY
 bxi
 btY
-bvV
+oFf
 bsO
 bsO
 bsO
@@ -59002,8 +59616,8 @@ mdQ
 mdQ
 mdQ
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 jqr
 bVA
 acp
@@ -59018,7 +59632,7 @@ bSr
 btY
 btY
 btY
-bvV
+oFf
 bsO
 bsO
 bvA
@@ -59230,8 +59844,8 @@ mdQ
 mdQ
 mdQ
 mdQ
-mdQ
-mdQ
+bwe
+bwe
 bVI
 bvV
 acu
@@ -59246,7 +59860,7 @@ bSr
 btY
 btY
 btY
-bvV
+oFf
 buJ
 bsO
 bsO
@@ -59474,7 +60088,7 @@ bSr
 btY
 btY
 btY
-bvV
+jly
 bsO
 bsO
 bsO
@@ -59704,7 +60318,7 @@ btY
 bvZ
 bBP
 bsO
-bsO
+kud
 acf
 abS
 bxj
@@ -60386,7 +61000,7 @@ btY
 bvZ
 bsO
 bsO
-bsO
+kud
 acf
 acf
 acf
@@ -61067,8 +61681,8 @@ dmT
 tlk
 bzl
 bwy
-acf
-acf
+dYD
+dYD
 acf
 acf
 acf
@@ -61295,8 +61909,8 @@ uxU
 ryp
 vbK
 bSs
-acf
-acf
+dYD
+dYD
 acf
 acf
 acf
@@ -61523,8 +62137,8 @@ vAB
 fDE
 nUZ
 bOD
-acf
-acf
+dYD
+dYD
 acf
 acf
 acf
@@ -64969,7 +65583,7 @@ byZ
 byZ
 mca
 bFQ
-bFj
+vMR
 byZ
 byZ
 byZ
@@ -68621,7 +69235,7 @@ byZ
 bER
 bEn
 bDM
-bCY
+npV
 bBq
 bBn
 bAv
@@ -68710,8 +69324,8 @@ axr
 aDy
 aDy
 avZ
-auh
-aDT
+aGJ
+atf
 aDy
 asn
 azu
@@ -68939,7 +69553,7 @@ ayi
 axs
 aFh
 aGm
-auh
+aGJ
 atr
 atb
 aks
@@ -69077,7 +69691,7 @@ bDc
 bES
 bEo
 bDO
-pDt
+xMY
 bBm
 bBo
 bAv
@@ -69165,9 +69779,9 @@ azP
 aAa
 aEA
 axy
-aDT
-aDT
-auh
+atf
+atf
+aGJ
 aDy
 aDy
 asn
@@ -69392,9 +70006,9 @@ azp
 aNi
 auh
 auh
+jjp
 aDT
-aDT
-aDT
+atf
 aui
 aHa
 aDy
@@ -69618,12 +70232,12 @@ azP
 azP
 aCP
 azP
-aDy
-aDy
-aDy
-aDy
+qKm
+sZQ
+xPt
+oqa
+qQD
 atf
-aGI
 aDy
 aDy
 asn
@@ -69848,8 +70462,8 @@ aAP
 azP
 aEE
 aED
-aFk
 atf
+mqL
 atf
 aGJ
 aGH
@@ -70076,8 +70690,8 @@ aCQ
 azP
 aAb
 aEE
-atf
-aGJ
+axE
+gbW
 avi
 aPs
 aHb
@@ -70303,7 +70917,7 @@ aCQ
 aCR
 azP
 aAc
-atf
+aGJ
 axE
 awa
 avk
@@ -83725,8 +84339,8 @@ ajI
 ajI
 ajI
 alA
-arQ
-mqJ
+arS
+bgg
 auM
 hKk
 psc
@@ -83946,16 +84560,16 @@ bfE
 hIh
 efX
 fXD
-pjk
 ajI
 ajI
 ajI
 ajI
 ajI
-wkt
-hWj
-jRM
-btS
+ajI
+ajI
+ajI
+asl
+aRw
 lLO
 aYt
 sXi
@@ -84173,18 +84787,18 @@ nWe
 bfE
 hba
 mqJ
-mqJ
 oHu
 ajI
+ajI
 alA
-wkt
-efX
-efX
-hWj
-pmz
-mqJ
+ajI
+ajI
+ajI
+ajI
+alA
+arS
+kzP
 btS
-dLY
 xDR
 sXi
 aQq
@@ -84401,18 +85015,18 @@ bfE
 eNQ
 bfE
 mqJ
-mqJ
-toF
-fXD
-efX
-tZa
-mqJ
-pmz
-mqJ
-mqJ
-mqJ
+oHu
+ajI
+alw
+ajI
+aon
+ajI
+alA
+ajI
+ajI
+ajI
+gyY
 btS
-dLY
 xDR
 sXi
 aQl
@@ -84629,18 +85243,18 @@ bfE
 bfE
 bfE
 pmz
-mqJ
-pmz
-mqJ
-mqJ
-pmz
-mqJ
-mqJ
-mqJ
-mqJ
-byl
-aIK
-dLY
+toF
+bKE
+ajI
+ajI
+alA
+ajI
+ajI
+ajI
+alA
+ajI
+gyY
+btS
 lbX
 aXq
 dLY
@@ -84858,17 +85472,17 @@ pxs
 mPt
 mqJ
 mqJ
-mqJ
-pmz
-mqJ
-mqJ
-mqJ
-pmz
-ygn
-app
+oHu
+alA
+eiP
+eiP
+ajI
+alA
+eiP
+eiP
 asm
-dLY
-dLY
+gyY
+byl
 aYy
 fSX
 dLY
@@ -85084,19 +85698,19 @@ bgp
 vty
 bfS
 wJG
-app
-app
-app
+lJY
+mqJ
+wkt
+eiP
 eiP
 app
-app
-app
-app
-gyY
-oFf
-oFf
-dLY
-fED
+eiP
+eiP
+eiP
+eiP
+eiP
+tfm
+btS
 fSX
 dLY
 gAI

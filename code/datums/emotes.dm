@@ -89,11 +89,14 @@
 	if(params && message_param)
 		msg = select_param(user, params)
 
+	var/adjusted_say_message = say_message
+
 	if(replace_pronouns)
 		msg = replace_pronoun(user, msg)
+		adjusted_say_message = replace_pronoun(user, say_message)
 
-	if(say_message)
-		user.say(say_message)
+	if(adjusted_say_message)
+		user.say(adjusted_say_message)
 
 	var/tmp_sound = get_sound(user)
 	if(TIMER_COOLDOWN_CHECK(user, type))

@@ -1,4 +1,5 @@
 {
+  "private": true,
   "name": "tgui",
   "version": "6.0.0",
   "dependencies": {
@@ -13,5 +14,10 @@
     "react-popper": "^2.3.0",
     "tgui-dev-server": "workspace:*"
   },
-  "private": true
+  "devDependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@types/marked": "4.3.2",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1"
+  }
 }

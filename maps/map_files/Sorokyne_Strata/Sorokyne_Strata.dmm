@@ -2085,7 +2085,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "afU" = (
-/obj/structure/machinery/power/apc/no_power/south,
+/obj/item/lightstick/planted,
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/parts_storage_exterior)
 "afV" = (
@@ -5749,7 +5749,14 @@
 /turf/open/floor/strata/floor2,
 /area/strata/interior/research)
 "apP" = (
-/turf/open/gm/dirt/brown,
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent2{
+	pixel_y = 25
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_x = -16
+	},
+/turf/open/floor/plating,
 /area/strata/exterior/parts_storage_exterior)
 "apQ" = (
 /obj/structure/platform/stone/soro/north,
@@ -9233,6 +9240,13 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
+"azh" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
+	pixel_x = -14;
+	pixel_y = -2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/parts_storage_exterior)
 "azi" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/strata,
@@ -12212,6 +12226,16 @@
 "aHP" = (
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
+"aHQ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 4;
+	pixel_x = 2
+	},
+/obj/item/lightstick/planted,
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/parts_storage_exterior)
 "aHR" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/maint)
@@ -13088,12 +13112,15 @@
 	},
 /turf/open/gm/dirt/brown/variant_5/south,
 /area/strata/exterior/marsh/spring_marshes)
-"aKs" = (
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = -4;
-	pixel_y = 11
+"aKt" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 1
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/parts_storage_exterior)
+"aKu" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/plating,
 /area/strata/exterior/parts_storage_exterior)
 "aKv" = (
 /obj/item/ammo_casing,
@@ -14210,19 +14237,6 @@
 	},
 /turf/open/floor/strata/white_cyan1/east,
 /area/strata/interior/outpost/maint)
-"aNF" = (
-/obj/item/lightstick/planted,
-/obj/structure/prop/colorable_rock/colorable{
-	color = "#9d7766";
-	dir = 8;
-	pixel_y = 4;
-	pixel_x = 2
-	},
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 1
-	},
-/turf/open/gm/dirt/brown/variant_2,
-/area/strata/exterior/parts_storage_exterior)
 "aNG" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/strata_grass/layer1,
@@ -16023,7 +16037,6 @@
 /area/strata/exterior/deep_jungle/carplake_north)
 "aSE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/asphalt/cement/cement1,
 /area/strata/exterior/parts_storage_cave)
 "aSF" = (
@@ -67614,7 +67627,7 @@ brZ
 aac
 aac
 acc
-aac
+acc
 acc
 acc
 aac
@@ -67790,7 +67803,7 @@ aac
 acc
 acc
 acc
-acc
+aac
 wYL
 btq
 btq
@@ -67964,7 +67977,7 @@ brZ
 aac
 acc
 acc
-acc
+aac
 aac
 buF
 btv
@@ -68139,7 +68152,7 @@ brZ
 aac
 acc
 acc
-aac
+aHQ
 btq
 btq
 aJj
@@ -68313,10 +68326,10 @@ brP
 aac
 acc
 acc
-aac
-aac
-btq
-aKs
+acc
+aKt
+azh
+btv
 afi
 adT
 aac
@@ -68487,9 +68500,9 @@ brZ
 bqy
 aac
 aac
-acc
-acc
-aNF
+hYc
+aKu
+aKt
 btv
 btv
 btq
@@ -68662,7 +68675,7 @@ bre
 aDi
 acc
 acc
-acc
+hYc
 apP
 btu
 btv

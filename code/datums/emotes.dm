@@ -55,6 +55,8 @@
 	var/keybind = TRUE
 	/// Does this emote have a custom keybind category?
 	var/keybind_category = CATEGORY_EMOTE
+	/// Should this emote replace pronouns?
+	var/replace_pronouns = TRUE
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -87,7 +89,8 @@
 	if(params && message_param)
 		msg = select_param(user, params)
 
-	msg = replace_pronoun(user, msg)
+	if(replace_pronouns)
+		msg = replace_pronoun(user, msg)
 
 	if(say_message)
 		user.say(say_message)

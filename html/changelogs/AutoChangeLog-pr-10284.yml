@@ -1,0 +1,4 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - qol: "facehuggers can crawl onto nested targets"

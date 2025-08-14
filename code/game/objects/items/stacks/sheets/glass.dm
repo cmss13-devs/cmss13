@@ -45,9 +45,8 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
 	var/is_reinforced = FALSE
 
 /obj/item/stack/sheet/glass/Initialize(mapload, amount)
-	var/something = ..()
+	. = ..()
 	recipes = GLOB.glass_recipes
-	return something
 
 /obj/item/stack/sheet/glass/small_stack
 	amount = STACK_10
@@ -110,10 +109,9 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
 	is_reinforced = TRUE
 
 /obj/item/stack/sheet/glass/reinforced/Initialize(mapload, amount)
-	var/something = ..()
+	. = ..()
 
 	recipes = GLOB.glass_reinforced_recipes
-	return something
 
 /obj/item/stack/sheet/glass/reinforced/medium_stack
 	amount = 25
@@ -139,10 +137,9 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
 	is_reinforced = TRUE
 
 /obj/item/stack/sheet/glass/phoronglass/Initialize(mapload, amount)
-	var/something = ..()
+	. = ..()
 
 	recipes = GLOB.phoronglass_recipes
-	return something
 
 /obj/item/stack/sheet/glass/phoronglass/attackby(obj/item/W, mob/user)
 	..()
@@ -175,7 +172,6 @@ GLOBAL_LIST_INIT_TYPED(phoronglass_recipes, /datum/stack_recipe, list ( \
 
 
 /obj/item/stack/sheet/glass/phoronrglass/Initialize(mapload, amount)
-	var/something = ..()
+	. = ..()
 
 	recipes = GLOB.phoronrglass_recipes
-	return something

@@ -385,9 +385,23 @@
 	icon_state = "satchel_blue"
 	item_state = "satchel_blue"
 
+/obj/item/storage/backpack/satchel/blue/lockable
+	name = "secure leather satchel"
+	is_id_lockable = TRUE
+
+/obj/item/storage/backpack/satchel/blue/lockable/no_override
+	lock_overridable = FALSE
+
 /obj/item/storage/backpack/satchel/black
 	icon_state = "satchel_black"
 	item_state = "satchel_black"
+
+/obj/item/storage/backpack/satchel/black/lockable
+	name = "secure leather satchel"
+	is_id_lockable = TRUE
+
+/obj/item/storage/backpack/satchel/black/lockable/no_override
+	lock_overridable = FALSE
 
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"

@@ -122,7 +122,7 @@
 	wave_number = 1
 	wave_castes = list(XENO_CASTE_RUNNER)
 	sound_effect = list('sound/effects/siren.ogg')
-	command_announcement = list("We're tracking the creatures that wiped out our patrols heading towards your outpost, Multiple small life-signs detected enroute to the outpost. Stand-by while we attempt to establish a signal with the USS Alistoun to alert them of these creatures.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+	command_announcement = list("We're tracking the creatures that wiped out our patrols. They're heading towards your outpost, multiple small life-signs detected. We're attempting to establish a signal with the USS Alistoun, stand by.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 	scaling_factor = 0.3
 	wave_delay = 1 MINUTES //Early, quick waves
 
@@ -200,7 +200,7 @@
 	wave_castes = list(XENO_CASTE_BURROWER)
 	wave_type = WO_STATIC_WAVE
 	number_of_xenos = 3
-	command_announcement = list("First Lieutenant Ike Saker, Executive Officer of Captain Naiche, speaking. The Captain is still trying to try and get off world contact. An engineer platoon managed to destroy the main entrance into this valley this should give you a short break while the aliens find another way in. We are receiving reports of seismic waves occurring nearby, there might be creatures burrowing underground, keep an eye on your defenses. I have also received word that marines from an overrun outpost are evacuating to you and will help you. I used to be stationed with them, they are top notch!", "First Lieutenant Ike Saker, 3rd Battalion Command, LV-624 Garrison")
+	command_announcement = list("This is First Lieutenant Ike Saker, Executive Officer of Captain Naiche. The Captain is still trying to get off world contact. An engineer platoon managed to destroy the main entrance into this valley; this should give you a short break while the aliens find another way in. We are receiving reports of seismic waves occurring nearby, there might be creatures burrowing underground. Keep an eye on your defenses. I have also received word that marines evacuating from an overrun outpost are coming to reinforce you. I used to be stationed with them, those troops are top notch.", "First Lieutenant Ike Saker, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave8
 	wave_number = 8
@@ -216,7 +216,7 @@
 		XENO_CASTE_WARRIOR,
 	)
 	sound_effect = list()
-	command_announcement = list("Captain Naiche speaking, we've been unsuccessful in establishing offworld communication for the moment. We're prepping our M402 mortars to destroy the inbound xeno force on the main road. Standby for fire support.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+	command_announcement = list("Captain Naiche speaking, we've been unsuccessful in establishing offworld communication so far. We're prepping our M402 mortars to destroy the inbound forces on the main road. Stand by for fire support.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave9 //Ravager and Praetorian Added, Tier II more common, Tier I less common
 	wave_number = 9
@@ -239,7 +239,7 @@
 		XENO_CASTE_WARRIOR,
 	)
 	sound_effect = list('sound/voice/alien_queen_command.ogg')
-	command_announcement = list("Our garrison forces are reaching seventy percent casualties, we are losing our grip on LV-624. It appears that vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We're counting on you to keep holding.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+	command_announcement = list("Our garrison forces are reaching seventy percent casualties. We're losing our grip here. It appears that the vanguard of the hostile force is still approaching, and most of the other Dust Raider platoons have been shattered. We need you to hold.", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/wave10
 	wave_number = 10
@@ -309,7 +309,7 @@
 		XENO_CASTE_PRAETORIAN,
 		XENO_CASTE_PRAETORIAN,
 	)
-	command_announcement = list("This is Captain Naiche, we are picking up large signatures inbound, we'll see what we can do to delay them.", "Captain Naiche, 3rd Battalion Command, LV-624")
+	command_announcement = list("This is Captain Naiche. Large signatures inbound. We'll try to buy you some time.", "Captain Naiche, 3rd Battalion Command, LV-624")
 
 /datum/whiskey_outpost_wave/wave13
 	wave_number = 13
@@ -378,7 +378,7 @@
 	)
 	wave_type = WO_STATIC_WAVE
 	number_of_xenos = 50
-	command_announcement = list("This is Captain Naiche, we've established our distress beacon for the USS Alistoun and the remaining Dust Raiders. Hold on for a bit longer while we trasmit our coordinates!", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
+	command_announcement = list("This is Captain Naiche, we've just succeeded in establishing off-world contact. We're transmitting our coordinates, but it'll take time. Hold for just a little bit longer!", "Captain Naiche, 3rd Battalion Command, LV-624 Garrison")
 
 /datum/whiskey_outpost_wave/random
 	wave_type = WO_STATIC_WAVE

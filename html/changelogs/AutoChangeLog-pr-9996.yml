@@ -1,4 +1,0 @@
-author: "Puckaboo2"
-delete-after: True
-changes:
-  - bugfix: "Xenos can now see the 'bursting' stage of a cap on their HUD."

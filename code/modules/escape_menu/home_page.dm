@@ -271,7 +271,7 @@
 /atom/movable/screen/escape_menu/home_button/admin_help/proc/on_client_verb_changed(client/source, list/verbs_changed)
 	SIGNAL_HANDLER
 
-	if (/client/verb/adminhelp in verbs_changed)
+	if (/client/proc/adminhelp in verbs_changed)
 		home_button_text.update_text()
 
 /atom/movable/screen/escape_menu/home_button/admin_help/proc/begin_processing()
@@ -307,7 +307,7 @@
 		return FALSE
 
 	if (!has_open_adminhelp())
-		return /client/verb/adminhelp in escape_menu.client?.verbs
+		return /client/proc/adminhelp in escape_menu.client?.verbs
 
 	return TRUE
 

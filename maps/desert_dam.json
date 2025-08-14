@@ -49,6 +49,9 @@
 		"/datum/equipment_preset/synth/survivor/pilot_synth",
 		"/datum/equipment_preset/synth/survivor/radiation_synth"
     ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "defcon_triggers": [
         3300,
         2100,

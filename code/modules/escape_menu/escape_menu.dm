@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(escape_menus)
 
 /// Opens the escape menu.
 /// Verb, hardcoded to Escape, set in the client skin.
-/client/verb/open_escape_menu()
+CLIENT_VERB(open_escape_menu)
 	set name = "Open Escape Menu"
 	set hidden = TRUE
 

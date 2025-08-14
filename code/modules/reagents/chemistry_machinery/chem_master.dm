@@ -99,10 +99,21 @@
 		if(!box)
 			return
 
+		if(length(loaded_pill_bottles) >= max_bottles_count)
+			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
+			return
+
+		if(length(box.contents) == 0)
+			to_chat(user, SPAN_WARNING("[box.name] is empty and cannot be unloaded into the [name]."))
+			return
+
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box.name] into the [name]..."),
 		SPAN_NOTICE("You start to empty the [box.name] into the [name]..."))
 
 		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
+
+		if(waiting_time <= 0) //well, something went wrong
+			return
 
 		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
 			return

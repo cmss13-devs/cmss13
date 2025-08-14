@@ -784,6 +784,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			if(current_squad)
 				var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+
+				if(!istype(cam_target))
+					return
+
 				var/obj/item/new_holder = cam_target.get_camera_holder()
 				var/obj/structure/machinery/camera/new_cam
 				if(new_holder)

@@ -18,6 +18,9 @@
         "/datum/equipment_preset/survivor/civilian",
         "/datum/equipment_preset/survivor/civilian_unique"
     ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",
     "announce_text": "An automated distress signal has been received from the archaeological site of Lazarus Landing, on the border world of LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "monkey_types": [

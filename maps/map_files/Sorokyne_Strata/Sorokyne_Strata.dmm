@@ -2085,6 +2085,7 @@
 /turf/open/floor/strata/floor3/east,
 /area/strata/interior/research)
 "afU" = (
+/obj/structure/machinery/power/apc/no_power/south,
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/parts_storage_exterior)
 "afV" = (
@@ -9232,6 +9233,14 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/strata/exterior/landing_zones/near_lz2)
+"azh" = (
+/obj/structure/machinery/weather_siren{
+	dir = 8;
+	pixel_x = -18;
+	pixel_y = 10
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/exterior/tcomms_crashed_dropship)
 "azi" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/strata,
@@ -12211,6 +12220,9 @@
 "aHP" = (
 /turf/open/floor/strata,
 /area/strata/interior/outpost/canteen)
+"aHQ" = (
+/turf/closed/wall/strata_outpost/reinforced,
+/area/strata/exterior/tcomms_crashed_dropship)
 "aHR" = (
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/outpost/maint)
@@ -16022,6 +16034,7 @@
 /area/strata/exterior/deep_jungle/carplake_north)
 "aSE" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/no_power/north,
 /turf/open/asphalt/cement/cement1,
 /area/strata/exterior/parts_storage_cave)
 "aSF" = (
@@ -18580,7 +18593,7 @@
 	pixel_x = -15
 	},
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/tcomms_geosprings)
+/area/strata/exterior/tcomms_crashed_dropship)
 "aZX" = (
 /obj/structure/prop/colorable_rock/colorable{
 	color = "#9d7766";
@@ -19126,7 +19139,7 @@
 /area/strata/exterior/outpost_decks)
 "bbJ" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/exterior/tcomms_geosprings)
+/area/strata/exterior/tcomms_crashed_dropship)
 "bbK" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -19149,7 +19162,7 @@
 /area/strata/interior/underground_dorms/admin4)
 "bbO" = (
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/tcomms_geosprings)
+/area/strata/exterior/tcomms_crashed_dropship)
 "bbP" = (
 /obj/structure/machinery/door/airlock/almayer/generic/glass/rusted_window,
 /turf/open/floor/strata/multi_tiles/west,
@@ -19182,7 +19195,7 @@
 "bbT" = (
 /obj/item/lightstick/planted,
 /turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/tcomms_geosprings)
+/area/strata/exterior/tcomms_crashed_dropship)
 "bbU" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt/brown,
@@ -19340,7 +19353,7 @@
 /area/strata/interior/vanyard)
 "bcz" = (
 /turf/open/floor/plating,
-/area/strata/exterior/tcomms_geosprings)
+/area/strata/exterior/tcomms_crashed_dropship)
 "bcA" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -42514,7 +42527,7 @@
 "haU" = (
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/plating,
-/area/strata/exterior/tcomms_geosprings)
+/area/strata/exterior/tcomms_crashed_dropship)
 "hba" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/machinery/power/apc/no_power/east,
@@ -43066,7 +43079,7 @@
 "hQP" = (
 /obj/effect/landmark/static_comms/net_one,
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/strata/exterior/tcomms_geosprings)
+/area/strata/exterior/tcomms_crashed_dropship)
 "hTi" = (
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/exterior/deep_jungle/old_tunnels)
@@ -59707,8 +59720,8 @@ biG
 bgS
 bgS
 bbT
-arI
-arw
+aHQ
+azh
 bbT
 baA
 bgS

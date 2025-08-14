@@ -102,10 +102,17 @@
 
 	var/far_sight = FALSE
 	var/obj/item/weapon/gun/smartgun/linked_smartgun = null
+	var/obj/structure/machinery/camera/camera
+
+/obj/item/clothing/glasses/night/m56_goggles/Initialize(mapload, ...)
+	. = ..()
+	camera = new /obj/structure/machinery/camera/overwatch(src)
+	AddComponent(/datum/component/overwatch_console_control)
 
 /obj/item/clothing/glasses/night/m56_goggles/Destroy()
 	linked_smartgun = null
 	disable_far_sight()
+	QDEL_NULL(camera)
 	return ..()
 
 /obj/item/clothing/glasses/night/m56_goggles/proc/link_smartgun(mob/user)
@@ -125,12 +132,23 @@
 /obj/item/clothing/glasses/night/m56_goggles/equipped(mob/user, slot)
 	if(slot != SLOT_EYES)
 		disable_far_sight(user)
-	return ..()
+	if(camera)
+		camera.c_tag = user.name
+		camera.status = TRUE
+	..()
 
 /obj/item/clothing/glasses/night/m56_goggles/dropped(mob/living/carbon/human/user)
 	linked_smartgun = null
 	disable_far_sight(user)
+	if(camera)
+		camera.c_tag = "Unknown"
 	return ..()
+
+/obj/item/clothing/glasses/night/m56_goggles/hear_talk(mob/living/sourcemob, message, verb, datum/language/language, italics)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_HEAR_TALK, sourcemob, message, verb, language, italics, loc == sourcemob)
+
+/obj/item/clothing/glasses/night/m56_goggles/see_emote(mob/living/sourcemob, emote, audible)
+	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
 
 /obj/item/clothing/glasses/night/m56_goggles/proc/set_far_sight(mob/living/carbon/human/user, set_to_state = TRUE)
 	if(set_to_state)

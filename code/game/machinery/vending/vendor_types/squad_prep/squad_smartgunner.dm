@@ -2,7 +2,9 @@
 
 GLOBAL_LIST_INIT(cm_vending_gear_smartgun, list(
 		list("SMARTGUN SET (MANDATORY)", 0, null, null, null),
-		list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Essential Smartgunner Set", 0, /obj/item/storage/box/m56_system/armorless, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("M56 Standard Combat Harness", 0, /obj/item/clothing/suit/storage/marine/smartgunner, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("M56 Reinforced Combat Harness", 0, /obj/item/clothing/suit/storage/marine/smartgunner/reinforced, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 		list("GUN ATTACHMENTS (CHOOSE 1)", 0, null, null, null),
 		list("Laser Sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),

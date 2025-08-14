@@ -310,7 +310,7 @@
 	. = ..()
 	name = "Toggle Aim Assist"
 
-	action_icon_state = "autofire"
+	action_icon_state = "aimassist"
 	button.name = name
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

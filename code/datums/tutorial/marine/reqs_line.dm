@@ -67,9 +67,9 @@
 		/obj/item/attachable/attached_gun/shotgun = list("U7", "Underbarrel", "Underbarrel Shotgun", "Mini Shotgun", "UBS"),
 		/obj/item/attachable/verticalgrip = list("VG", "Vert Grip", "Vertical Grip"),
 		/obj/item/attachable/stock/rifle = list("Solid Stock", "M41 stock", "M41 Solid Stock"),
-		/obj/item/attachable/stock/shotgun = list("M37 Stock", "Wooden stock"),
+		/obj/item/attachable/stock/synth/collapsible = list("M37A2 Stock", "Collapsible Stock"),
 		/* GEAR */
-		/obj/item/weapon/gun/shotgun/pump = list("M37", "shotgun"),
+		/obj/item/weapon/gun/shotgun/pump/m37a = list("M37", "shotgun"),
 		/obj/item/weapon/gun/smg/m39 = list("M39", "SMG"),
 		/obj/item/weapon/gun/rifle/m4ra = list("M4RA", "M4RA Battle Rifle"),
 		/obj/item/weapon/gun/rifle/m41a = list("M41", "M41", "M41A", "Mk2", "M4 rifle"),
@@ -82,13 +82,13 @@
 		/obj/item/storage/box/guncase/m56d = list("M56D", "HMG", "M56"),
 		/obj/item/storage/box/guncase/m2c = list("M2C"),
 		/obj/item/storage/box/guncase/flamer = list("Flamer", "Flamer kit", "Incinerator"),
-		/obj/item/storage/box/guncase/m79 = list("GL", "Grenade launcher", "M79", "M79 Grenade launcher"),
-		/obj/item/storage/box/guncase/xm51 = list("XM51", "Breaching Shotty", "Breaching Shotgun", "Breaching Scattergun"),
+		/obj/item/storage/box/guncase/m85a1 = list("GL", "Grenade launcher", "M85A1", "M85A1 Grenade launcher"),
 		/obj/item/clothing/accessory/storage/black_vest = list("Black webbing", "Black webbing vest"),
 		/obj/item/clothing/accessory/storage/black_vest/brown_vest = list("Brown webbing", "Brown webbing vest"),
 		/obj/item/clothing/accessory/storage/webbing = list("Webbing", "Normal webbing", "Web"),
 		/obj/item/clothing/accessory/storage/webbing/black = list("Normal black webbing", "Black normal webbing","Normal black web"),
 		/obj/item/clothing/accessory/storage/droppouch = list("Drop Pouch"),
+		/obj/item/clothing/accessory/storage/droppouch/black = list("Black Drop Pouch"),
 		/obj/item/clothing/suit/storage/webbing = list("External webbing"),
 		/obj/item/storage/backpack/marine/engineerpack/flamethrower/kit = list("Pyro pack", "Pyro backpack", "G4-1 pack", "Flamer backpack"),
 		/obj/item/storage/backpack/marine/ammo_rack = list ("IMP Ammo Rack", "Ammo rack", "Ammo IMP Rack"),
@@ -128,7 +128,7 @@
 		/obj/item/ammo_magazine/rifle/extended = list("Ext Mk2", "MK2 Extended", "Extended MK2 mag"),
 		/obj/item/ammo_magazine/smartgun = list("Smartgun drum", "SG drum"),
 		/obj/item/ammo_magazine/rifle/lmg = list("HPR mag", "Heavy pulse rifle mag", "M41AE2 box"),
-		/obj/item/ammo_magazine/rifle/xm51 = list("XM51 mag"),
+		/obj/item/ammo_magazine/rocket/brute = list("Brute warhead", "Brute rocket"),
 	)
 
 /datum/tutorial/marine/reqs_line/Destroy(force)

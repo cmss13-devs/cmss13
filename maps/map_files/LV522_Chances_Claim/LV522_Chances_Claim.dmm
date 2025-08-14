@@ -605,6 +605,14 @@
 	},
 /turf/open/floor/corsat/squares,
 /area/lv522/atmos/east_reactor/south)
+"aco" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/ap,
+/turf/open/floor/prison/darkredfull2,
+/area/lv522/outdoors/colony_streets/north_street)
 "acp" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
@@ -690,6 +698,58 @@
 "acK" = (
 /turf/open/floor/prison/floor_plate,
 /area/lv522/outdoors/colony_streets/central_streets)
+"acL" = (
+/obj/item/ammo_magazine/rifle/ap,
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_street)
+"acM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_magazine/rifle/ap,
+/turf/open/asphalt/cement/cement3,
+/area/lv522/outdoors/colony_streets/north_street)
+"acN" = (
+/obj/item/ammo_magazine/rifle/extended,
+/turf/open/asphalt/cement/cement1,
+/area/lv522/outdoors/colony_streets/north_street)
+"acO" = (
+/obj/item/ammo_magazine/rifle/ap,
+/turf/open/asphalt/cement/cement4,
+/area/lv522/outdoors/colony_streets/north_street)
+"acP" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "Reactor_e_entry_3"
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/east_reactor/south)
+"acQ" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "Reactor_e_entry_4"
+	},
+/turf/closed/wall/strata_outpost/reinforced,
+/area/lv522/atmos/filt)
+"acR" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhuscmlz2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/drop2/lv522)
+"acS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/lv522/indoors/b_block/bar)
+"acT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_2)
+"acU" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_1)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -1535,7 +1595,7 @@
 /obj/item/trash/buritto,
 /obj/item/trash/wy_chips_pepper,
 /obj/item/trash/syndi_cakes,
-/obj/item/trash/pistachios,
+/obj/item/trash/kepler/flamehot,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "aGI" = (
@@ -1774,6 +1834,7 @@
 /area/lv522/indoors/a_block/medical)
 "aQf" = (
 /obj/structure/surface/table/almayer,
+/obj/item/ammo_magazine/rifle/extended,
 /turf/open/asphalt/cement/cement3,
 /area/lv522/outdoors/colony_streets/north_street)
 "aQs" = (
@@ -2270,7 +2331,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/item/weapon/gun/launcher/grenade/m81/m79,
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/outdoors/colony_streets/north_street)
 "beb" = (
@@ -8248,6 +8309,7 @@
 /obj/structure/barricade/metal{
 	dir = 1
 	},
+/obj/item/ammo_magazine/rifle/ap,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/outdoors/colony_streets/north_street)
 "eov" = (
@@ -8317,7 +8379,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/item/trash/liquidfood,
+/obj/item/trash/burger,
 /obj/item/stack/tile/plasteel{
 	name = "ceiling tile";
 	pixel_x = -5;
@@ -9801,6 +9863,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
 "flN" = (
@@ -10036,12 +10101,6 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/colony_streets/central_streets)
 "fts" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 8;
-	id = "Reactor_entry_2";
-	pixel_x = 16;
-	req_access = null
-	},
 /obj/item/prop/alien/hugger,
 /obj/structure/machinery/light{
 	dir = 1
@@ -11973,15 +12032,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/reactor_garage)
-"gzF" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 4;
-	id = "Reactor_e_entry_4";
-	pixel_x = -16;
-	req_access = null
-	},
-/turf/open/asphalt/cement/cement1,
-/area/lv522/atmos/filt)
 "gzS" = (
 /obj/structure/pipes/unary/freezer{
 	dir = 1;
@@ -12499,15 +12549,6 @@
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/security/glass)
-"gOG" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 4;
-	id = "Reactor_e_entry_3";
-	pixel_x = -16;
-	req_access = null
-	},
-/turf/open/floor/corsat/brown,
-/area/lv522/atmos/filt)
 "gOJ" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -14638,6 +14679,9 @@
 /area/lv522/atmos/east_reactor/south)
 "hXW" = (
 /obj/item/storage/firstaid/adv/empty,
+/obj/effect/landmark/nightmare{
+	insert_tag = "hvhupplz1"
+	},
 /turf/open/floor/prison/blue/north,
 /area/lv522/indoors/a_block/hallway)
 "hYf" = (
@@ -18231,7 +18275,7 @@
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/outdoors/colony_streets/north_street)
 "jUg" = (
-/obj/item/ammo_box/magazine/l42a/ap/empty,
+/obj/item/ammo_box/magazine/l42a/ap,
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/security)
 "jUk" = (
@@ -19376,7 +19420,7 @@
 /area/lv522/indoors/c_block/cargo)
 "kug" = (
 /obj/structure/closet/crate/trashcart,
-/obj/item/trash/pistachios,
+/obj/item/trash/hotdog,
 /obj/item/trash/kepler,
 /obj/item/trash/chips,
 /obj/item/trash/popcorn,
@@ -19576,7 +19620,7 @@
 "kzr" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/trash/wy_chips_pepper,
-/obj/item/trash/pistachios,
+/obj/item/trash/cheesie,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "kzu" = (
@@ -19944,7 +19988,7 @@
 	pixel_x = -4;
 	pixel_y = 12
 	},
-/obj/item/weapon/gun/flamer{
+/obj/item/weapon/gun/flamer/m240{
 	current_mag = null;
 	layer = 3.1
 	},
@@ -20570,6 +20614,10 @@
 /area/lv522/indoors/a_block/security)
 "kZe" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29;
+	pixel_x = 8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo)
 "kZj" = (
@@ -22573,7 +22621,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
 "meM" = (
-/obj/item/clothing/accessory/red,
+/obj/item/clothing/accessory/tie/red,
 /obj/item/clothing/under/liaison_suit/field{
 	pixel_x = -4;
 	pixel_y = 9
@@ -25821,7 +25869,7 @@
 "nMt" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/ammo_box/magazine/l42a,
+/obj/item/ammo_box/magazine/l42a/ext,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/indoors/a_block/security)
 "nMv" = (
@@ -27308,7 +27356,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/mining)
 "oxK" = (
-/obj/structure/cargo_container/wy/left,
+/obj/structure/cargo_container/wy2/left,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/containers)
 "oyf" = (
@@ -27835,7 +27883,7 @@
 /turf/open/floor/strata/white_cyan2,
 /area/lv522/indoors/a_block/dorms)
 "oMX" = (
-/obj/item/storage/belt/grenade,
+/obj/item/storage/belt/grenade/full,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
 /area/lv522/outdoors/colony_streets/north_street)
@@ -28580,7 +28628,7 @@
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/fitness/glass)
 "pjn" = (
-/obj/structure/cargo_container/wy/mid,
+/obj/structure/cargo_container/wy2/mid,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/containers)
 "pjM" = (
@@ -31408,6 +31456,9 @@
 /turf/open/floor/strata/white_cyan2,
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "qHD" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "Reactor_entry_2"
+	},
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv522/atmos/way_in_command_centre)
 "qHI" = (
@@ -34188,12 +34239,11 @@
 /area/lv522/outdoors/colony_streets/south_street)
 "rSG" = (
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = 5;
-	pixel_y = -6
+	pixel_x = 2
 	},
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = -6;
-	pixel_y = 10
+	pixel_x = -13;
+	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
@@ -39441,7 +39491,7 @@
 /area/lv522/indoors/c_block/garage)
 "uyN" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/clothing/head/helmet/marine/scout{
+/obj/item/clothing/head/helmet/marine/radio_helmet/scout{
 	armor_bullet = 5;
 	armor_melee = 15;
 	desc = "A custom helmet designed for USCM Scouts. Looks like this one has seen some action.";
@@ -41505,8 +41555,7 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "vyD" = (
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = -6;
-	pixel_y = -6
+	pixel_x = -6
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/bar)
@@ -47034,7 +47083,7 @@
 /turf/open/floor/corsat/plate,
 /area/lv522/atmos/east_reactor)
 "yjN" = (
-/obj/structure/cargo_container/wy/right,
+/obj/structure/cargo_container/wy2/right,
 /turf/open/floor/prison/floor_marked,
 /area/lv522/outdoors/colony_streets/containers)
 "yjP" = (
@@ -52476,7 +52525,7 @@ wuK
 xfW
 wuK
 xcY
-sAT
+acU
 sAT
 pnj
 uiM
@@ -59659,7 +59708,7 @@ jaO
 lYR
 wmI
 mBF
-wDy
+acS
 hds
 mBF
 mBF
@@ -62078,7 +62127,7 @@ nQk
 rYu
 siB
 hqB
-oXd
+acM
 nXM
 sjb
 biZ
@@ -62288,7 +62337,7 @@ rah
 lmW
 cVR
 iRW
-ovC
+aco
 szh
 rLk
 epe
@@ -63104,7 +63153,7 @@ fjr
 fjr
 fGw
 lHk
-nRK
+acO
 ksO
 qFc
 vBV
@@ -63313,10 +63362,10 @@ gwH
 hhD
 jYc
 hhD
-jYc
+acN
 sPU
 pUf
-hhD
+acL
 hhD
 vqF
 muB
@@ -75015,7 +75064,7 @@ xZE
 xZE
 xZE
 xZE
-xZE
+acP
 gRV
 gRV
 gRV
@@ -75221,7 +75270,7 @@ cpy
 cpy
 xZE
 eWn
-gOG
+gUv
 sYl
 sYl
 sYl
@@ -76251,7 +76300,7 @@ cpy
 cpy
 cpy
 shD
-shD
+acQ
 fzK
 fzK
 fzK
@@ -76457,7 +76506,7 @@ cpy
 cpy
 cpy
 acG
-gzF
+acG
 acG
 acG
 acG
@@ -77429,7 +77478,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+aaa
 eXG
 eXG
 wPN
@@ -78034,7 +78083,7 @@ gRp
 iGr
 iGr
 uIn
-uIn
+acT
 rqn
 qvA
 lhE
@@ -79890,7 +79939,7 @@ aIp
 aIp
 aIp
 aIp
-aIp
+acR
 aIp
 aIp
 aIp

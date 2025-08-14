@@ -237,9 +237,12 @@
 
 
 //Returns whether or not a player is a guest using their ckey as an input
-/proc/IsGuestKey(key)
+/proc/IsGuestKey(key, strict = FALSE)
+	if(!strict && (key in GLOB.permitted_guests))
+		return FALSE
+
 	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
-		return 0
+		return FALSE
 
 	var/i = 7, ch, len = length(key)
 
@@ -249,8 +252,8 @@
 	for (, i <= len, ++i)
 		ch = text2ascii(key, i)
 		if (ch < 48 || ch > 57)
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
@@ -344,8 +347,6 @@
 	var/list/moblist = list()
 	var/list/sortmob = sortAtom(GLOB.mob_list)
 	for(var/mob/living/silicon/ai/M in sortmob)
-		moblist.Add(M)
-	for(var/mob/living/silicon/robot/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/living/carbon/human/M in sortmob)
 		moblist.Add(M)
@@ -622,10 +623,12 @@ GLOBAL_DATUM(busy_indicator_medical, /image)
 GLOBAL_DATUM(busy_indicator_build, /image)
 GLOBAL_DATUM(busy_indicator_friendly, /image)
 GLOBAL_DATUM(busy_indicator_hostile, /image)
+GLOBAL_DATUM(busy_indicator_climbing, /image)
 GLOBAL_DATUM(emote_indicator_highfive, /image)
 GLOBAL_DATUM(emote_indicator_fistbump, /image)
 GLOBAL_DATUM(emote_indicator_headbutt, /image)
 GLOBAL_DATUM(emote_indicator_tailswipe, /image)
+GLOBAL_DATUM(emote_indicator_wallboosting, /image)
 GLOBAL_DATUM(emote_indicator_rock_paper_scissors, /image)
 GLOBAL_DATUM(emote_indicator_rock, /image)
 GLOBAL_DATUM(emote_indicator_paper, /image)
@@ -666,6 +669,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.busy_indicator_hostile.layer = FLY_LAYER
 			GLOB.busy_indicator_hostile.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_hostile
+	else if(busy_type == BUSY_ICON_CLIMBING)
+		if(!GLOB.busy_indicator_climbing)
+			GLOB.busy_indicator_climbing = image('icons/mob/do_afters.dmi', null, "busy_climbing", "pixel_y" = 22)
+			GLOB.busy_indicator_climbing.layer = FLY_LAYER
+			GLOB.busy_indicator_climbing.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_climbing
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
 		if(!GLOB.emote_indicator_highfive)
 			GLOB.emote_indicator_highfive = image('icons/mob/do_afters.dmi', null, "emote_highfive", "pixel_y" = 22)
@@ -714,6 +723,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
 			GLOB.emote_indicator_tailswipe.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_tailswipe
+	else if(busy_type == EMOTE_ICON_WALLBOOSTING)
+		if(!GLOB.emote_indicator_wallboosting)
+			GLOB.emote_indicator_wallboosting = image('icons/mob/do_afters.dmi', null, "emote_wallboosting", "pixel_y" = 22)
+			GLOB.emote_indicator_wallboosting.layer = FLY_LAYER
+			GLOB.emote_indicator_wallboosting.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_wallboosting
 	else if(busy_type == ACTION_RED_POWER_UP)
 		if(!GLOB.action_red_power_up)
 			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
@@ -738,6 +753,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.action_purple_power_up.layer = FLY_LAYER
 			GLOB.action_purple_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_purple_power_up
+
 
 
 /*
@@ -889,33 +905,33 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(busy_user, target) > max_dist)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something["left"] || \
-			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something["left"])
+		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something[LEFT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something[LEFT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something["right"] || \
-			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something["right"])
+		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something[RIGHT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something[RIGHT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["shift"] || \
-			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"])
+		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[SHIFT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[SHIFT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["alt"] || \
-			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"])
+		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[ALT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[ALT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["ctrl"] || \
-			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"])
+		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[CTRL_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[CTRL_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something["middle"] || \
-			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
+		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something[MIDDLE_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something[MIDDLE_CLICK])
 		)
 			. = FALSE
 			break

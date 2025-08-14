@@ -9,7 +9,7 @@
 		return
 
 	if(banished)
-		apply_armoured_damage(ceil(health / XENO_BANISHMENT_DMG_DIVISOR))
+		apply_damage(max(ceil(health / XENO_BANISHMENT_DMG_DIVISOR), 1))
 
 	..()
 
@@ -30,11 +30,8 @@
 		handle_luminosity()
 		handle_blood()
 
-		if(behavior_delegate)
-			behavior_delegate.on_life()
-
-		if(loc)
-			handle_environment()
+		behavior_delegate?.on_life()
+		handle_environment()
 		if(client)
 			handle_regular_hud_updates()
 
@@ -99,20 +96,20 @@
 	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
 	//Now moved out of healthy only state, because crit xenos can def still be affected by pheros
 
-	if(!stat)
+	if(stat == CONSCIOUS)
 		var/use_current_aura = FALSE
 		var/use_leader_aura = FALSE
 		var/aura_center = src
 		if(aura_strength > 0) //Ignoring pheromone underflow
 			if(current_aura && plasma_stored > 5)
 				if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
-					var/mob/living/carbon/xenomorph/queen/Q = src
-					var/atom/phero_center = Q
-					if(Q.observed_xeno)
-						phero_center = Q.observed_xeno
+					var/mob/living/carbon/xenomorph/queen/queen = src
+					var/atom/phero_center = queen
+					if(queen.observed_xeno)
+						phero_center = queen.observed_xeno
 					if(!phero_center || !phero_center.loc)
 						return
-					if(SSmapping.same_z_map(phero_center.loc.z, Q.loc.z))//Only same map
+					if(SSmapping.same_z_map(phero_center.loc.z, queen.loc.z))//Only same map
 						use_current_aura = TRUE
 						aura_center = phero_center
 				else
@@ -122,13 +119,25 @@
 			use_leader_aura = TRUE
 
 		if(use_current_aura || use_leader_aura)
-			for(var/mob/living/carbon/xenomorph/Z as anything in GLOB.living_xeno_list)
-				if(Z.ignores_pheromones || Z.ignore_aura == current_aura || Z.ignore_aura == leader_current_aura || !SSmapping.same_z_map(Z.z, z) || get_dist(aura_center, Z) > floor(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
+			for(var/mob/living/carbon/xenomorph/target as anything in GLOB.living_xeno_list)
+				if(target.ignores_pheromones)
+					continue
+				if(target.ignore_aura == current_aura)
+					continue
+				if(target.ignore_aura == leader_current_aura)
+					continue
+				if(!SSmapping.same_z_map(target.z, z))
+					continue
+				if(get_dist(aura_center, target) > floor(6 + aura_strength * 2))
+					continue
+				if(!HIVE_ALLIED_TO_HIVE(target.hivenumber, hivenumber))
+					continue
+				if(target.banished)
 					continue
 				if(use_leader_aura)
-					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
+					target.affected_by_pheromones(leader_current_aura, leader_aura_strength)
 				if(use_current_aura)
-					Z.affected_by_pheromones(current_aura, aura_strength)
+					target.affected_by_pheromones(current_aura, aura_strength)
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
@@ -174,12 +183,10 @@
 
 /mob/living/carbon/xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
-		var/turf/T = loc
-		if(istype(T))
-			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
-				apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
-			else
-				apply_damage(-warding_aura, BRUTE)
+		if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
+			apply_damage(2.5 - warding_aura*0.5, BRUTE) //Warding can heavily lower the impact of bleedout. Halved at 2.5 phero, stopped at 5 phero
+		else
+			apply_damage(-warding_aura, BRUTE)
 
 	updatehealth()
 
@@ -308,8 +315,11 @@ Make sure their actual health updates immediately.*/
 
 
 /mob/living/carbon/xenomorph/proc/handle_environment()
-	var/turf/T = loc
-	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || fire_stacks == 0) ? recovery_aura : 0
+	var/turf/current_turf = loc
+	if(!current_turf || !istype(current_turf))
+		return
+
+	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
 	if(caste && !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
 		if(env_temperature > (T0C + 66))
@@ -318,9 +328,6 @@ Make sure their actual health updates immediately.*/
 			if(prob(20))
 				to_chat(src, SPAN_WARNING("You feel a searing heat!"))
 
-	if(!T || !istype(T))
-		return
-
 	if(caste)
 		if(caste.innate_healing || check_weeds_for_healing())
 			if(!hive)
@@ -328,7 +335,7 @@ Make sure their actual health updates immediately.*/
 			plasma_stored += plasma_gain * plasma_max / 100
 			if(recovery_aura)
 				plasma_stored += floor(plasma_gain * plasma_max / 100 * recovery_aura/4) //Divided by four because it gets massive fast. 1 is equivalent to weed regen! Only the strongest pheromones should bypass weeds
-			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
+			if(health < maxHealth && can_heal && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(body_position == LYING_DOWN || resting)
 					if(health < 0) //Unconscious
 						heal_wounds(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
@@ -413,13 +420,15 @@ Make sure their actual health updates immediately.*/
 			queen_locator()
 		return
 
-	if(tracking_atom.loc.z != loc.z && SSinterior.in_interior(tracking_atom))
+	if(!SSmapping.same_z_map(tracking_atom.loc.z, loc.z) && SSinterior.in_interior(tracking_atom))
 		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
 		var/atom/exterior = interior.exterior
 		if(exterior)
 			tracking_atom = exterior
 
-	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+	locator.overlays.Cut()
+
+	if( !SSmapping.same_z_map(tracking_atom.loc.z, loc.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		locator.icon_state = "trackondirect"
 	else
 		var/area/our_area = get_area(loc)
@@ -427,6 +436,10 @@ Make sure their actual health updates immediately.*/
 		if(our_area.fake_zlevel == target_area.fake_zlevel)
 			locator.setDir(Get_Compass_Dir(src, tracking_atom))
 			locator.icon_state = "trackon"
+			if(tracking_atom.loc.z > loc.z)
+				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "up")
+			if(tracking_atom.loc.z < loc.z)
+				locator.overlays |= image('icons/mob/hud/alien_standard.dmi', "down")
 		else
 			locator.icon_state = "trackondirect"
 
@@ -443,7 +456,7 @@ Make sure their actual health updates immediately.*/
 
 	ML.overlays.Cut()
 
-	if(tracked_marker_z_level != loc.z) //different z levels
+	if(!SSmapping.same_z_map(tracked_marker_z_level, loc.z)) //different z levels
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "z_direction")
@@ -458,6 +471,12 @@ Make sure their actual health updates immediately.*/
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "direction")
+		/*if(tracked_marker_z_level > loc.z)
+			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "up")
+		if(tracked_marker_z_level < loc.z)
+			ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "down")*/
+
+
 	else //same z level, different fake z levels (decks of almayer)
 		ML.overlays |= image(tracked_marker.seenMeaning, "pixel_y" = 0)
 		ML.overlays |= image('icons/mob/hud/xeno_markers.dmi', "center_glow")

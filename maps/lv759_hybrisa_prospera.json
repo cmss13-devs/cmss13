@@ -35,6 +35,9 @@
         "/datum/equipment_preset/synth/survivor/hybrisa/paramedic",
         "/datum/equipment_preset/synth/survivor/hybrisa/exec_bodyguard"
     ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/hybrisa/iasf_commander"
+    ],
     "defcon_triggers": [
         3750,
         2600,

@@ -108,11 +108,11 @@
 	playsound(user, unload_sound, 30, 1)
 
 
-/obj/item/weapon/gun/launcher/grenade/attackby(obj/item/I, mob/user)
-	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
-		attach_to_gun(user,I)
+/obj/item/weapon/gun/launcher/grenade/attackby(obj/item/attacking_obj, mob/user)
+	if(istype(attacking_obj, /obj/item/attachable) && check_inactive_hand(user))
+		attach_to_gun(user, attacking_obj)
 		return
-	return cylinder.attackby(I, user)
+	return cylinder.attackby(attacking_obj, user)
 
 /obj/item/weapon/gun/launcher/grenade/unique_action(mob/user)
 	if(isobserver(usr) || isxeno(usr))
@@ -328,6 +328,7 @@
 	desc = "A lightweight, multiple-shot variant of the M81 grenade launcher retrofitted to launch non-lethal or concussive ammunition. Used by the Colonial Marines Military Police during riots."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/grenade_launchers.dmi'
 	icon_state = "m81"
+	item_state = "m81"
 	valid_munitions = list(
 		/obj/item/explosive/grenade/custom/teargas,
 		/obj/item/explosive/grenade/slug/baton,
@@ -356,18 +357,21 @@
 			return FALSE
 
 //-------------------------------------------------------
-//M79 Grenade Launcher subtype of the M81
+//M85A1 Grenade Launcher subtype of the M81
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79//m79 variant for marines
-	name = "\improper M79 grenade launcher"
-	desc = "A heavy, low-angle 40mm grenade launcher. It's been in use since the Vietnam War, though this version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1//m85a1 variant for marines
+	name = "\improper M85A1 grenade launcher"
+	desc = "A heavy, low-angle, break-action 40mm grenade launcher. Archaic in core design, inferior to more modern semi automatic M92, M95 grenade launchers and M94 impact launcher, but doesn't require a magnetic armature or an advanced expertice to operate, not to mention near flawless reliability, extremely low cost and low weight due to mostly being made out of polymer materials."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/grenade_launchers.dmi'
-	icon_state = "m79"
-	item_state = "m79"
+	icon_state = "m85a1"
+	item_state = "m85a1"
 	flags_equip_slot = SLOT_BACK
 	preload = /obj/item/explosive/grenade/slug/baton
 	is_lobbing = TRUE
 	actions_types = list(/datum/action/item_action/toggle_firing_level)
+
+	pixel_x = -4
+	hud_offset = -4
 
 	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'
 	cocked_sound = 'sound/weapons/handling/m79_break_open.ogg'
@@ -379,21 +383,18 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/reddot,
 		/obj/item/attachable/reflex,
-		/obj/item/attachable/stock/m79,
 	)
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m79/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 18, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/grenade/m81/m79/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18, "rail_x" = 11, "rail_y" = 21, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
-
-/obj/item/weapon/gun/launcher/grenade/m81/m79/set_bullet_traits()
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
 	))
+
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1/m79
+	name = "\improper M79 grenade launcher"
+	desc = "A heavy, low-angle 40mm grenade launcher. Looks to be a hobbyist modification made to resemble a Vietnam War prop. This version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
+	icon_state = "m79"
+	icon_state = "m79"

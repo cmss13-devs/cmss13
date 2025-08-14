@@ -411,3 +411,36 @@
   - imageadd: added many new additions to the Hunter sprite lists and expanded current
       ones, as well as many new prey items.
   - maptweak: completely remade the Hunter ship map and expanded it with more decks.
+2025-03-29:
+  hry-gh:
+  - bugfix: the audio player shouldn't blow up in weird circumstances
+  - bugfix: mouse 4/5 presses no longer count as mouse 1 presses
+2025-03-30:
+  Generallemon07:
+  - rscadd: added 2 new fish types
+  - qol: made fishing poles able to be crafted
+  - bugfix: fixed Yautja spearfishing code
+  - imageadd: two new sprites for fish
+  IroquoisLou:
+  - balance: Lowered the L23's damage and gave it falloff.
+2025-03-31:
+  Kashargul:
+  - bugfix: large batch processes offsetting the chat scrollbar
+  - code_imp: update tgui dependencies
+  - code_imp: update tgui say
+  LC4492:
+  - code_imp: Adds new books and new contents for pre-existing ones, including new
+      links and CM conversions. This PR also finally names the nuke and gives it proper
+      specifications (now called the 'Blockbuster'), so they will match to the new
+      version of the nuclear instructions book. Adds ten more Boots! headlines to
+      the game, of which have been proposed by players on the forums.
+  - imageadd: Updates all books to the contemporary "pattern", in_hands included.
+      Also updates the in_hands of folders and notepads to match the current versions
+      of their respective objects. Adds new sprite to the Boots! magazine.
+  - bugfix: Fixes wiki links on all the manuals, allowing you to actually read them.
+  Nihisohel:
+  - rscadd: Underbarrel Miniflamers now notify your remaining fuel after firing.
+  - bugfix: Flamers no longer fire through doors and windows.
+  - bugfix: Underbarrel Miniflamers are now a bit more responsive and will no longer
+      drop clicks at far ranges.
+  - refactor: Cleans up unleash_flame proc to bring up to code standard.

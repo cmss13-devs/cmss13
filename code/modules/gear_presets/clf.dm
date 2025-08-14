@@ -2,7 +2,7 @@
 	name = FACTION_CLF
 	languages = list(LANGUAGE_JAPANESE, LANGUAGE_ENGLISH)
 	assignment = JOB_CLF
-	rank = FACTION_CLF
+	job_title = FACTION_CLF
 	paygrades = list(PAY_SHORT_REB = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_CLF
 	origin_override = ORIGIN_CIVILIAN
@@ -46,13 +46,19 @@
 	new_human.g_eyes = 62
 	new_human.b_eyes = 19
 
+/datum/equipment_preset/clf/load_traits(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	if(!HAS_TRAIT(new_human, TRAIT_IRON_TEETH))
+		var/datum/character_trait/character_trait = GLOB.character_traits[/datum/character_trait/biology/iron_teeth]
+		character_trait.apply_trait(new_human, src)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/clf/soldier
 	name = "CLF Soldier"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF
-	rank = JOB_CLF
+	job_title = JOB_CLF
 	role_comm_title = "GRL"
 
 	minimap_icon = "clf_mil"
@@ -162,7 +168,7 @@
 	name = "CLF Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_ENGI
-	rank = JOB_CLF_ENGI
+	job_title = JOB_CLF_ENGI
 	role_comm_title = "TECH"
 
 	minimap_icon = "clf_engi"
@@ -291,7 +297,7 @@
 	name = "CLF Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_MEDIC
-	rank = JOB_CLF_MEDIC
+	job_title = JOB_CLF_MEDIC
 	role_comm_title = "MED"
 	minimap_icon = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
@@ -452,7 +458,7 @@
 	name = "CLF Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_SPECIALIST
-	rank = JOB_CLF_SPECIALIST
+	job_title = JOB_CLF_SPECIALIST
 	role_comm_title = "SPC"
 
 	minimap_icon = "clf_spec"
@@ -581,7 +587,7 @@
 	name = "CLF Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_LEADER
-	rank = JOB_CLF_LEADER
+	job_title = JOB_CLF_LEADER
 	role_comm_title = "LDR"
 
 	minimap_icon = "clf_sl"
@@ -737,7 +743,7 @@
 
 	skills = /datum/skills/colonial_synthetic
 	assignment = JOB_CLF_SYNTH
-	rank = JOB_CLF_SYNTH
+	job_title = JOB_CLF_SYNTH
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 
@@ -826,6 +832,7 @@
 		list("Surgical Webbing Vest", 0, /obj/item/clothing/accessory/storage/surg_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Surgical Webbing Vest (Blue)", 0, /obj/item/clothing/accessory/storage/surg_vest/blue, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
+		list("Black Drop Pouch", 0, /obj/item/clothing/accessory/storage/droppouch/black, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
 		list("SHOES (CHOOSE 1)", 0, null, null, null),
 		list("Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
@@ -987,7 +994,7 @@
 	name = "CLF Cell Commander"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CLF_COMMANDER
-	rank = JOB_CLF_COMMANDER
+	job_title = JOB_CLF_COMMANDER
 	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMDR"
 
@@ -1000,7 +1007,7 @@
 	access = get_access(ACCESS_LIST_CLF_ALL)
 
 /datum/equipment_preset/clf/commander/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner/clf(new_human), WEAR_HEAD)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/colonist/clf(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/militia/smartgun(new_human), WEAR_JACKET)
@@ -1029,7 +1036,7 @@
 		list("Combat Pack", 0, /obj/item/storage/backpack/lightpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Y8 Miner Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Y8 Miner Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/mercenary/miner/clf, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Bayonet Sheath", 0, /obj/item/storage/pouch/bayonet/upp, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -1115,6 +1122,46 @@
 		list("Shoulder Holster", 10, /obj/item/clothing/accessory/storage/holster, null, VENDOR_ITEM_REGULAR),
 		list("Webbing", 10, /obj/item/clothing/accessory/storage/webbing, null, VENDOR_ITEM_REGULAR)
 	)
+
+/datum/equipment_preset/clf/coordinator
+	name = "CLF Coordinator"
+	flags = EQUIPMENT_PRESET_EXTRA
+	assignment = JOB_CLF_COORDINATOR
+	job_title = JOB_CLF_COORDINATOR
+	role_comm_title = "CRDN"
+	minimap_icon = "clf_cr"
+	skills = /datum/skills/clf/coordinator
+
+/datum/equipment_preset/clf/coordinator/load_gear(mob/living/carbon/human/new_human)
+	var/obj/item/clothing/under/colonist/clf/new_uniform = new()
+	var/obj/item/clothing/accessory/storage/webbing/new_webbing = new()
+	new_uniform.attach_accessory(new_human, new_webbing)
+	new_human.equip_to_slot_or_del(new_uniform, WEAR_BODY)
+
+	var/obj/item/clothing/accessory/clf_cape/new_cape = new()
+	var/obj/item/clothing/suit/storage/militia/full/new_gambeson = new()
+	new_gambeson.attach_accessory(new_human, new_cape)
+	new_human.equip_to_slot_or_del(new_gambeson, WEAR_JACKET)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/militia/brown(new_human), WEAR_HEAD)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/riot(new_human), WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/brown(new_human), WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/dragon_katana/full(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/command(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen(new_human), WEAR_R_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(new_human), WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/mre_food_packet/clf, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/paper(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked/clf(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/incendiary/molotov, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(new_human), WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(new_human), WEAR_R_STORE)
+
+	spawn_weapon(/obj/item/weapon/gun/smg/fp9000, /obj/item/ammo_magazine/smg/fp9000, new_human)
 
 ///Hunting Grounds CLF///
 

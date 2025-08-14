@@ -78,7 +78,7 @@ All new interfaces in CM must be created using tgui - this document will help ge
 ### <a href="LICENSE-AGPLv3.txt"><img src="https://img.shields.io/badge/licence-AGPL_3-red?style=for-the-badge" alt="AGPLv3 license"></a>
 > The code for CM-SS13 is licensed under the [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl.html). All code is assumed to be licensed under AGPL v3 unless stated otherwise by file header, or this document.
 
-### <a href="LICENSE-CC-BY-NC-SA-3.0.txt"><img src="https://img.shields.io/badge/licence-CC_3.0_BY--SA-lightblue?style=for-the-badge" alt="Creative Commons 3.0 BY-SA"></a>
+### <a href="LICENSE-CC-BY-SA-3.0.txt"><img src="https://img.shields.io/badge/licence-CC_3.0_BY--SA-lightblue?style=for-the-badge" alt="Creative Commons 3.0 BY-SA"></a>
 > Assets including icons and sound are under the [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. Authorship for assets including art and sound under the CC BY-SA license is defined as the active development team of CM-SS13 unless stated otherwise (by author of the commit).
 
 ### <a href="LICENSE-GPLv3.txt"><img src="https://img.shields.io/badge/licence-GPL_3-orange?style=for-the-badge" alt="GPLv3 license"></a>

@@ -72,14 +72,6 @@
 	name = "Kepler Flamehot wrapper"
 	icon_state = "flamehotkepler"
 
-/obj/item/trash/liquidfood
-	name = "\improper \"LiquidFood\" ration"
-	icon_state = "liquidfood"
-
-/obj/item/trash/pistachios
-	name = "Pistachios pack"
-	icon_state = "pistachios_pack"
-
 /obj/item/trash/popcorn
 	name = "Popcorn"
 	icon_state = "popcorn"

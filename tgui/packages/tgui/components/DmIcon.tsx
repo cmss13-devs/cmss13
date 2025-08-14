@@ -1,8 +1,8 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
 import { resolveAsset } from '../assets';
 import { fetchRetry } from '../http';
-import { BoxProps } from './Box';
+import type { BoxProps } from './Box';
 import { Image } from './Image';
 
 enum Direction {

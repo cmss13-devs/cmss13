@@ -110,18 +110,19 @@
 	item_state = "katana"
 	force = MELEE_FORCE_VERY_STRONG
 
-/obj/item/weapon/sword/yautja
-	name = "duelling blade"
-	desc = "A primitive yet deadly sword used in yautja rituals and duels. Though crude compared to their advanced weaponry, its sharp edge demands respect."
-	icon_state = "yautja_sword"
-	item_state = "yautja_sword"
-
 //To do: replace the toys.
 /obj/item/weapon/sword/katana/replica
 	name = "replica katana"
 	desc = "A cheap knock-off commonly found in regular knife stores. Can still do some damage."
 	force = MELEE_FORCE_WEAK
 	throwforce = 7
+
+/obj/item/weapon/sword/dragon_katana
+	name = "dragon katana"
+	desc = "A finely made Japanese sword, with a cherry colored handle. The blade has been filed to a molecular edge, and is extremely deadly. This one seems to have been handcrafted."
+	icon_state = "dragon_katana"
+	item_state = "dragon_katana"
+	force = MELEE_FORCE_VERY_STRONG
 
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
@@ -146,21 +147,6 @@
 	flags_equip_slot = SLOT_STORE|SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
-
-/obj/item/weapon/unathiknife
-	name = "duelling knife"
-	desc = "A length of leather-bound wood studded with razor-sharp teeth. How crude."
-	icon = 'icons/obj/items/weapons/melee/knives.dmi'
-	icon_state = "unathiknife"
-	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
-	)
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("ripped", "torn", "cut")
-	force = MELEE_FORCE_STRONG
-	throwforce = MELEE_FORCE_STRONG
-	edge = 1
 
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.
 /obj/item/proc/dig_out_shrapnel_check(mob/living/carbon/human/target, mob/living/carbon/human/user)
@@ -250,8 +236,8 @@
 	inhand_x_dimension = 64
 	inhand_y_dimension = 64
 	item_icons = list(
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/melee/knives_righthand.dmi'
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/items_lefthand_64.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/items_righthand_64.dmi'
 	)
 
 /obj/item/weapon/straight_razor

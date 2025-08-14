@@ -62,7 +62,7 @@
 	user << browse_rsc(img, "tmp_photo.png")
 	var/dat = "<html>" \
 		+ "<body style='overflow:hidden;margin:0;text-align:center' class='paper'>" \
-		+ "<img src='tmp_photo.png' width='[64*photo_size]' style='-ms-interpolation-mode:nearest-neighbor;image-rendering:pixelated' />" \
+		+ "<img src='tmp_photo.png' width='[64*photo_size]' style='image-rendering:pixelated'/>" \
 		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"\
 		+ "</body></html>"
 	show_browser(user, dat, name, name, width = 80 * photo_size, height = (scribble ? 100 : 82) *photo_size)

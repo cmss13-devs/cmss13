@@ -4,12 +4,17 @@
  * @license MIT
  */
 
-import { KEY } from 'common/keys';
+import { isEscape, KEY } from 'common/keys';
 import { classes } from 'common/react';
 import { debounce } from 'common/timer';
-import { KeyboardEvent, SyntheticEvent, useEffect, useRef } from 'react';
+import {
+  type KeyboardEvent,
+  type SyntheticEvent,
+  useEffect,
+  useRef,
+} from 'react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 
 type ConditionalProps =
   | {
@@ -128,7 +133,7 @@ export function Input(props: Props) {
       return;
     }
 
-    if (event.key === KEY.Escape) {
+    if (isEscape(event.key)) {
       onEscape?.(event);
 
       event.currentTarget.value = toInputValue(value);

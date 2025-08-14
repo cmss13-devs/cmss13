@@ -1,5 +1,5 @@
-import { KEY } from 'common/keys';
-import { KeyboardEvent, useState } from 'react';
+import { isEscape, KEY } from 'common/keys';
+import { type KeyboardEvent, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Section, Stack, TextArea } from 'tgui/components';
 import { Window } from 'tgui/layouts';
@@ -67,7 +67,7 @@ export const TextInputModal = (props) => {
           ) {
             act('submit', { entry: input });
           }
-          if (event.key === KEY.Escape) {
+          if (isEscape(event.key)) {
             act('cancel');
           }
         }}
@@ -110,13 +110,15 @@ const InputArea = (props: {
       autoSelect
       height={multiline || input.length >= 30 ? '100%' : '1.8rem'}
       maxLength={max_length}
+      noResize
       onEscape={() => act('cancel')}
       onEnter={(event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (visualMultiline && event.shiftKey) {
           return;
         }
         event.preventDefault();
-        act('submit', { entry: input });
+
+        act('submit', { entry: input.replace(/"/g, '') });
       }}
       onChange={(_, value) => onType(value)}
       onInput={(_, value) => onType(value)}

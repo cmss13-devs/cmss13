@@ -95,15 +95,15 @@
 	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 
 //------------
-//M79 grenade launcher
-/obj/item/storage/box/guncase/m79
-	name = "\improper M79 grenade launcher case"
-	desc = "A gun case containing the modernized M79 grenade launcher. Comes with 3 baton slugs, 3 hornet shells and 3 star shell grenades."
+//M85A1 grenade launcher
+/obj/item/storage/box/guncase/m85a1
+	name = "\improper M85A1 grenade launcher case"
+	desc = "A gun case containing the modernized M85A1 grenade launcher. Comes with 3 baton slugs, 3 hornet shells and 3 star shell grenades."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/launcher/grenade/m81/m79, /obj/item/storage/box/packet)
+	can_hold = list(/obj/item/weapon/gun/launcher/grenade/m81/m85a1, /obj/item/storage/box/packet)
 
-/obj/item/storage/box/guncase/m79/fill_preset_inventory()
-	new /obj/item/weapon/gun/launcher/grenade/m81/m79(src)
+/obj/item/storage/box/guncase/m85a1/fill_preset_inventory()
+	new /obj/item/weapon/gun/launcher/grenade/m81/m85a1(src)
 	new /obj/item/storage/box/packet/flare(src)
 	new /obj/item/storage/box/packet/baton_slug(src)
 	new /obj/item/storage/box/packet/hornet(src)
@@ -144,10 +144,10 @@
 	name = "\improper M240 incinerator case"
 	desc = "A gun case containing the M240A1 incinerator unit. It does come loaded, but you'll still have to find extra tanks as you go."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/flamer, /obj/item/ammo_magazine/flamer_tank, /obj/item/attachable/attached_gun/extinguisher)
+	can_hold = list(/obj/item/weapon/gun/flamer/m240, /obj/item/ammo_magazine/flamer_tank, /obj/item/attachable/attached_gun/extinguisher)
 
 /obj/item/storage/box/guncase/flamer/fill_preset_inventory()
-	new /obj/item/weapon/gun/flamer(src)
+	new /obj/item/weapon/gun/flamer/m240(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/ammo_magazine/flamer_tank(src)
 	new /obj/item/attachable/attached_gun/extinguisher(src)
@@ -203,7 +203,7 @@
 	name = "\improper M37A2 Pump Shotgun case"
 	desc = "A gun case containing the M37A2 Pump Shotgun."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/shotgun/pump, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump/m37a, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
 
 /obj/item/storage/box/guncase/pumpshotgun/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)

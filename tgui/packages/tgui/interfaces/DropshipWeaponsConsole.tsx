@@ -8,7 +8,7 @@ import { CameraMfdPanel } from './MfdPanels/CameraPanel';
 import { EquipmentMfdPanel } from './MfdPanels/EquipmentPanel';
 import { FiremissionMfdPanel } from './MfdPanels/FiremissionPanel';
 import { MapMfdPanel } from './MfdPanels/MapPanel';
-import { MfdPanel, MfdProps } from './MfdPanels/MultifunctionDisplay';
+import { MfdPanel, type MfdProps } from './MfdPanels/MultifunctionDisplay';
 import { mfdState } from './MfdPanels/stateManagers';
 import { otherMfdState } from './MfdPanels/stateManagers';
 import { SupportMfdPanel } from './MfdPanels/SupportPanel';

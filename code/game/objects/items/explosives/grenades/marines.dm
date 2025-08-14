@@ -542,6 +542,9 @@
 		if(!human.allow_gun_usage)
 			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
+			return
 
 	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
@@ -635,6 +638,8 @@
 			if((mob_dist < (range-3))) // 2 tiles around small superslow
 				mob.Superslow(2)
 			mob.Slow(damage_applied/xeno_slowdown_numerator)
+			if(iswydroid(mob))
+				mob.emote("pain")
 
 		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
 			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
@@ -924,11 +929,15 @@
 // abstract grenades used for hijack explosions
 
 /obj/item/explosive/grenade/high_explosive/bursting_pipe
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/item/explosive/grenade/incendiary/bursting_pipe
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

@@ -32,7 +32,6 @@
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
-	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -48,7 +47,6 @@
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 	attachable_allowed = list(
-		/obj/item/attachable/smartbarrel,
 		/obj/item/attachable/flashlight,
 	)
 
@@ -159,7 +157,7 @@
 		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
@@ -733,11 +731,10 @@
 // action end \\
 
 /obj/item/weapon/gun/smartgun/co/pickup(user)
+	. = ..()
 	if(!linked_human)
 		src.name_after_co(user, src)
 		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
-	..()
-
 
 /obj/item/weapon/gun/smartgun/co/proc/name_after_co(mob/living/carbon/human/H, obj/item/weapon/gun/smartgun/co/I)
 	linked_human = H
@@ -781,18 +778,14 @@
 	name = "\improper M56T 'Terminator' smartgun"
 	desc = "The actual firearm in the 4-piece M56T Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
 
-/obj/item/weapon/gun/smartgun/dirty/elite/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_WY_DEATHSQUAD
-
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
-	set_burst_amount(BURST_AMOUNT_TIER_5)
-	set_burst_delay(FIRE_DELAY_TIER_12)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
 	if(!recoil_compensation)
 		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-	set_fire_delay(FIRE_DELAY_TIER_12)
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_10
 	fa_max_scatter = SCATTER_AMOUNT_NONE
 
@@ -854,7 +847,6 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "magsg"
 	item_state = "magsg"
-	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)
 
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()

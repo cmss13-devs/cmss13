@@ -59,9 +59,19 @@
 /turf/open/gm/dirt/brown/dirtmud_corner_inner/west
 	dir = WEST
 
-/turf/open/gm/dirt/brown/dirtmud/corner
+/turf/open/gm/dirt/brown/dirtmud_edge
 	name = "dirt"
 	icon_state = "dirtmud_edge"
+	dir = NORTH
+
+/turf/open/gm/dirt/brown/dirtmud_edge/south
+	dir = SOUTH
+
+/turf/open/gm/dirt/brown/dirtmud_edge/east
+	dir = EAST
+
+/turf/open/gm/dirt/brown/dirtmud_edge/west
+	dir = WEST
 
 /turf/open/gm/road/browndirt
 	name = "dirt road"

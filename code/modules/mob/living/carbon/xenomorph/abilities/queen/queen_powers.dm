@@ -992,17 +992,3 @@
 	xeno.hive_message()
 	return ..()
 
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	xeno.xeno_tacmap()
-	return ..()
-
-/datum/action/xeno_action/onclick/queen_tacmap/give_to(mob/living/carbon/xenomorph/xeno)
-	. = ..()
-
-	RegisterSignal(xeno.hive, COMSIG_XENO_REVEAL_TACMAP, PROC_REF(handle_unhide_tacmap))
-
-/datum/action/xeno_action/onclick/queen_tacmap/proc/handle_unhide_tacmap()
-	SIGNAL_HANDLER
-
-	unhide_from(owner)

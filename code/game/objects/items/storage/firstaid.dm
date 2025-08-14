@@ -44,6 +44,7 @@
 
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
+    /// List of types and their corresponding overlay icon state for appearing inside the item.
 	var/list/types_and_overlays = list(
 		/obj/item/reagent_container/hypospray/autoinjector/tricord = "tricord_injector_overlay",
 		/obj/item/stack/medical/advanced/bruise_pack = "brute_kit_overlay",

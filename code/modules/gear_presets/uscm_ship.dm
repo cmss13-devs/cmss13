@@ -632,7 +632,7 @@
 	idtype = /obj/item/card/id/silver
 	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
 	assignment = JOB_OPERATIONS_PILOT
-	rank = JOB_OPERATIONS_PILOT
+	job_title = JOB_OPERATIONS_PILOT
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "OP"
 	skills = /datum/skills/operations_pilot

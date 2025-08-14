@@ -136,7 +136,7 @@
 				"mob_name" = sanitize(S.mob_name),
 				"job_name" = S.role_name,
 				"area_name" = sanitize_area(S.area_name),
-				"cause_name" = sanitize(S.cause_name, list("\n"=" ","\t"=" ","�"=" ", "\u{16}" =""))),
+				"cause_name" = sanitize(S.cause_name, list("\n"=" ","\t"=" ","�"=" ", "\u{16}" ="")),
 				"total_kills" = S.total_kills,
 				"total_damage" = damage_list,
 				"time_of_death" = duration2text(S.time_of_death),

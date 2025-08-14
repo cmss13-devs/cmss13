@@ -58,7 +58,7 @@ FROM cm-builder AS cm-build-standalone
 ARG PROJECT_NAME
 COPY --from=source-cache /src /build
 WORKDIR /build
-COPY --from=tgui-deps /tgui/node_modules/.cache tgui/node_modules/.cache
+COPY --from=tgui-deps /tgui/node_modules tgui/node_modules
 RUN ./tools/docker/juke-build.sh
 
 # Helper Stage just packaging locally provided resources

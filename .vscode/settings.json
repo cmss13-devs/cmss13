@@ -1,8 +1,8 @@
 {
 	"eslint.workingDirectories": ["./tgui"],
-    "search.exclude": {
-        "**/node_modules": true,
-    },
+	"search.exclude": {
+		"**/node_modules": true
+	},
 	"editor.codeActionsOnSave": {
 		"source.fixAll.eslint": "explicit"
 	},

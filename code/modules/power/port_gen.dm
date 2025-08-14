@@ -60,24 +60,19 @@ display floor(lastgen) and phorontank amount
 	power_machine = TRUE
 
 /obj/structure/machinery/power/port_gen/connect_to_network()
-	var/something = ..()
+	. = ..()
 	if(!anchored || !current_area)
-		return something
+		return .
 
 	apc_in_area = current_area.get_apc()
 	if(apc_in_area)
 		if(LAZYFIND(apc_in_area.connected_power_sources, src) == 0)
 			LAZYADD(apc_in_area.connected_power_sources, src)
 
-	return something
-
 /obj/structure/machinery/power/port_gen/disconnect_from_network()
-	var/something = ..()
-
+	. = ..()
 	if(apc_in_area)
 		LAZYREMOVE(apc_in_area.connected_power_sources, src)
-
-	return something
 
 /obj/structure/machinery/power/port_gen/proc/HasFuel() //Placeholder for fuel check.
 	return 1

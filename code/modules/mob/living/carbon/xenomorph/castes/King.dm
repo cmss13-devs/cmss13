@@ -92,6 +92,7 @@
 	SIGNAL_HANDLER
 
 	if(stat == DEAD)
+		return
 
 	var/turf/new_loc = get_turf(src)
 

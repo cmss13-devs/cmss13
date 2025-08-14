@@ -91,6 +91,8 @@
 /mob/living/carbon/xenomorph/king/proc/post_move(mob/king)
 	SIGNAL_HANDLER
 
+	if(stat == DEAD)
+
 	var/turf/new_loc = get_turf(src)
 
 	for(var/mob/living/carbon/carbon in new_loc.contents)

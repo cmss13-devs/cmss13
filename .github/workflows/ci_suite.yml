@@ -178,7 +178,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Setup Bun
-        uses: ./.github/actions/setuo_bun
+        uses: ./.github/actions/setup_bun
       - name: Configure BYOND version from inputs
         if: ${{ inputs.major }}
         shell: bash

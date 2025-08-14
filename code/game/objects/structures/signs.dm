@@ -104,7 +104,7 @@
 
 /obj/structure/sign/uacqs/New(loc, ...)
 	. = ..()
-	desc = "These premises are under the operation of the United Americas Commission for Quality and Standards.<br>2) Access to these premises are regulated by UACQS personnel, or the regulating authority of the region.<br>[SPAN_RED("3) In accordance with Civil Law, firearms are not permitted in these premises.")]"
+	desc = "1) These premises are under the operation of the United Americas Commission for Quality and Standards.<br>2) Access to these premises are regulated by UACQS personnel, or the regulating authority of the region.<br>[SPAN_RED("3) In accordance with Civil Law, firearms are not permitted in these premises.")]"
 
 //============//
 //  Banners  //

@@ -56,7 +56,8 @@
 		/obj/item/reagent_container/blood = "bloodpack_overlay",
 		/obj/item/storage/surgical_case = "surgical_case_overlay",
 	)
-	var/has_overlays = TRUE //whether this kit has contents overlays or not
+    /// Whether this kit has content overlays or not
+	var/has_overlays = TRUE
 
 /obj/item/storage/firstaid/Initialize()
 	. = ..()

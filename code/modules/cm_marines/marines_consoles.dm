@@ -962,17 +962,20 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 		if(FACTION_MARINE)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
-				// 00-09: High Command, defined at bottom
-				JOB_CMC = 00,//Grade O10
-				JOB_ACMC = 00,
-				JOB_PROVOST_CMARSHAL = 00,
-				JOB_GENERAL = 00,
-				JOB_PROVOST_SMARSHAL = 01,//Grade O9
-				JOB_PROVOST_MARSHAL = 02,//Grade O7
-				JOB_PROVOST_DMARSHAL = 03,//Grade O6
-				JOB_COLONEL = 04,//Grade O6
-				JOB_PROVOST_CINSPECTOR = 05,
-				JOB_PROVOST_INSPECTOR = 06,
+				// 0-9: High Command, defined at bottom
+				JOB_CMC = 0,//Grade O10
+				JOB_ACMC = 0,
+				JOB_PROVOST_CMARSHAL = 0,
+				JOB_GENERAL = 0,
+				JOB_PROVOST_SMARSHAL = 1,//Grade O9
+				JOB_PROVOST_MARSHAL = 2,//Grade O7
+				JOB_PROVOST_DMARSHAL = 3,//Grade O6
+				JOB_COLONEL = 4,//Grade O6
+				JOB_PROVOST_CINSPECTOR = 5,
+				JOB_PROVOST_INSPECTOR = 6,
+				JOB_CIA_UACQS_COMR = 7,
+				JOB_CIA_UACQS_ADMN = 8,
+				JOB_CIA_UACQS_SEC = 9,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,
@@ -987,7 +990,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_DROPSHIP_PILOT = 23,
 				JOB_DROPSHIP_CREW_CHIEF = 24,
 				JOB_INTEL = 25,
-				JOB_TANK_CREW = 26,
+				JOB_CIA_LIAISON = 26,
+				JOB_TANK_CREW = 27,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,
@@ -1016,7 +1020,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_SYNTH_K9 = 71,
 				// 140+: Civilian/other
 				JOB_CORPORATE_LIAISON = 140,
-				JOB_PASSENGER = 141,
+				JOB_CIA = 141,
+				JOB_PASSENGER = 142,
 				// Non Almayer jobs lower then registered
 				JOB_SYNTH_SURVIVOR = 150,
 				JOB_SURVIVOR = 151,

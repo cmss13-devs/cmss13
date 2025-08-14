@@ -199,6 +199,12 @@
 			//CIA
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
+			if(JOB_CIA_UACQS_ADMN)
+				marine_rk = "uacqs"
+			if(JOB_CIA_UACQS_COMR)
+				marine_rk = "uacqs_com"
+			if(JOB_CIA_UACQS_SEC)
+				marine_rk = "uacqs_sec"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"

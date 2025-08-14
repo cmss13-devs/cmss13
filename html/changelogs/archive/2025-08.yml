@@ -103,3 +103,10 @@
   wgtjunior743:
   - rscadd: New level of firearms skill
   - balance: Change the firearms skill of several jobs
+2025-08-14:
+  BOBAMAx:
+  - bugfix: decorative z level ledges on the almayer no longer break
+  dadlips:
+  - bugfix: changed secure_open_medical to secure_medical_open
+  hry-gh:
+  - bugfix: fixes a runtime when checking cursor preferences

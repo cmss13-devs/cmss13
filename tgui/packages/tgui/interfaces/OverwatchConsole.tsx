@@ -125,7 +125,10 @@ const HomePanel = (props) => {
           );
         })}
         {data.squad_list.length === 0 && (
-          <NoticeBox>All squads are being Overwatched. Please log-out of an existing console to start Overwatching here.</NoticeBox>
+          <NoticeBox warning>
+            No squads available for Overwatch! Please log-out of an existing
+            console to start Overwatching here.
+          </NoticeBox>
         )}
       </Stack>
     </Section>

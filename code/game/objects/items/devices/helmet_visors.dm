@@ -30,6 +30,10 @@
 	deactivate_visor(attached_helmet, user)
 	. = ..()
 
+// Visors can attach to all marine helmets by default
+/obj/item/device/helmet_visor/proc/can_attach_to(obj/item/clothing/head/helmet/marine/target_helmet)
+	return TRUE
+
 /// Called to see if the user can even use this visor
 /obj/item/device/helmet_visor/proc/can_toggle(mob/living/carbon/human/user)
 	return TRUE
@@ -47,7 +51,7 @@
 		activate_visor(attached_helmet, user)
 
 		if(!silent)
-			to_chat(user, SPAN_NOTICE("You activate [src] on [attached_helmet]."))
+			to_chat(user, SPAN_NOTICE("You activate [src] on the [attached_helmet]."))
 			playsound_client(user.client, toggle_on_sound, null, 75)
 
 		return TRUE
@@ -55,7 +59,7 @@
 	deactivate_visor(attached_helmet, user)
 
 	if(!silent)
-		to_chat(user, SPAN_NOTICE("You deactivate [src] on [attached_helmet]."))
+		to_chat(user, SPAN_NOTICE("You deactivate [src] on the [attached_helmet]."))
 		playsound_client(user.client, toggle_off_sound, null, 75)
 
 	return TRUE
@@ -351,3 +355,62 @@
 
 /obj/item/device/helmet_visor/night_vision/marine_raider/process(delta_time)
 	return PROCESS_KILL
+
+/////////////////////// PO VISOR ///////////////////////
+
+/obj/item/device/helmet_visor/po_visor
+	name = "MK30 flight visor, black"
+	desc = "A standard issue snap-on visor used by USCM dropship pilots. Polarized to reduce glare and protect the eyes during atmospheric re-entry and orbital deployment."
+	icon_state = "po_visor"
+	action_icon_string = "po_visor_down"
+	helmet_overlay = "po_visor_black"
+	hud_type = null
+	toggle_on_sound = 'sound/handling/helmet_open.ogg'
+	toggle_off_sound = 'sound/handling/helmet_close.ogg'
+
+/obj/item/device/helmet_visor/po_visor/can_attach_to(obj/item/clothing/head/helmet/marine/target_helmet)
+	if(!istype(target_helmet, /obj/item/clothing/head/helmet/marine/pilot))
+		return FALSE
+	return TRUE
+
+/obj/item/device/helmet_visor/po_visor/activate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	attached_helmet.flags_inventory |= COVEREYES|COVERMOUTH
+	attached_helmet.flags_inv_hide |= HIDEEYES|HIDEFACE
+	attached_helmet.eye_protection = EYE_PROTECTION_FLASH
+	user.update_tint()
+
+/obj/item/device/helmet_visor/po_visor/deactivate_visor(obj/item/clothing/head/helmet/marine/attached_helmet, mob/living/carbon/human/user)
+	attached_helmet.flags_inventory &= ~(COVEREYES|COVERMOUTH)
+	attached_helmet.flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
+	attached_helmet.eye_protection = EYE_PROTECTION_NONE
+	user.update_tint()
+
+/obj/item/device/helmet_visor/po_visor/purple
+	name = "MK30 flight visor, purple"
+	icon_state = "po_visor_purple"
+	action_icon_string = "po_visor_purple_down"
+	helmet_overlay = "po_visor_purple"
+
+/obj/item/device/helmet_visor/po_visor/lightblue
+	name = "MK30 flight visor, light-blue"
+	icon_state = "po_visor_lightblue"
+	action_icon_string = "po_visor_lightblue_down"
+	helmet_overlay = "po_visor_lightblue"
+
+/obj/item/device/helmet_visor/po_visor/red
+	name = "MK30 flight visor, red"
+	icon_state = "po_visor_red"
+	action_icon_string = "po_visor_red_down"
+	helmet_overlay = "po_visor_red"
+
+/obj/item/device/helmet_visor/po_visor/darkblue
+	name = "MK30 flight visor, dark-blue"
+	icon_state = "po_visor_darkblue"
+	action_icon_string = "po_visor_darkblue_down"
+	helmet_overlay = "po_visor_darkblue"
+
+/obj/item/device/helmet_visor/po_visor/yellow
+	name = "MK30 flight visor, yellow"
+	icon_state = "po_visor_yellow"
+	action_icon_string = "po_visor_yellow_down"
+	helmet_overlay = "po_visor_yellow"

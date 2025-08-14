@@ -13655,23 +13655,6 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
-"aJn" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
-	unacidable = 1;
-	explo_proof = 1;
-	emp_proof = 1
-	},
-/obj/structure/machinery/door/poddoor/almayer{
-	id = "s_umbilical";
-	name = "\improper Umbillical Airlock";
-	unacidable = 1;
-	explo_proof = 1;
-	emp_proof = 1
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/port_umbilical)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
@@ -132484,7 +132467,7 @@ mLg
 wAK
 efk
 bTz
-aJn
+efk
 aaa
 aaa
 aaa

@@ -429,9 +429,7 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 	var/list/language_keys = list()
 	for (var/language_name in subtypesof(/datum/language))
 		var/datum/language/L = language_name
-		language_keys[":[lowertext(initial(L.key))]"] = initial(L.name)
-		language_keys[".[lowertext(initial(L.key))]"] = initial(L.name)
-		language_keys["#[lowertext(initial(L.key))]"] = initial(L.name)
+		language_keys["![lowertext(initial(L.key))]"] = initial(L.name)
 	return language_keys
 
 //Comb Sort. This works apparently, so we're keeping it that way
@@ -541,7 +539,7 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 
 
 /* // Uncomment to debug chemical reaction list.
-/client/verb/debug_chemical_list()
+CLIENT_VERB(debug_chemical_list)
 
 	for (var/reaction in GLOB.chemical_reactions_filtered_list)
 		. += "GLOB.chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[GLOB.chemical_reactions_filtered_list[reaction]]\"\n"

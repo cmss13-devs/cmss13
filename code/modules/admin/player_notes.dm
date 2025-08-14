@@ -1,4 +1,4 @@
-/proc/notes_add(key, note, mob/usr)
+/proc/notes_add(key, note, mob/user)
 	if (!key || !note)
 		return
 
@@ -25,12 +25,12 @@
 	var/day_loc = findtext(full_date, time2text(world.timeofday, "DD"))
 
 	var/datum/player_info/P = new
-	if (usr)
-		P.author = usr.key
-		if(usr.client && usr.client.admin_holder && (usr.client.admin_holder.rights & R_MOD))
-			P.rank = usr.client.admin_holder.rank
+	if (user)
+		P.author = user.key
+		if(user.client && user.client.admin_holder && (user.client.admin_holder.rights & R_MOD))
+			P.rank = user.client.admin_holder.rank
 		else
-			to_chat(usr, "NA01: Something went wrong, tell a coder.")
+			to_chat(user, "NA01: Something went wrong, tell a coder.")
 			return
 	else
 		P.author = "Adminbot"
@@ -41,7 +41,7 @@
 	infos += P
 	info << infos
 
-	message_admins("[key_name_admin(usr)] has edited [key]'s notes: [sanitize(note)]")
+	message_admins("[key_name_admin(user)] has edited [key]'s notes: [sanitize(note)]")
 	qdel(info)
 
 	//Updating list of keys with notes on them

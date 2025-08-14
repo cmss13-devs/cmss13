@@ -92,3 +92,5 @@
 #define CLAN_SHIP_PUBLIC -1
 
 #define ERT_JOB_YOUNGBLOOD "Young Blood"
+#define JOB_YOUNGBLOOD_ROLES /datum/timelock/young_blood
+#define JOB_YOUNGBLOOD_ROLES_LIST list(ERT_JOB_YOUNGBLOOD)

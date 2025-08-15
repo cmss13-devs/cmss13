@@ -1,5 +1,0 @@
-author: "Zenith"
-delete-after: True
-changes:
-  - rscadd: "Added six new MK30 flight visors to the PO's clothing vendor."
-  - rscadd: "Added black MK30 flight visors to all M30 helmets by default."

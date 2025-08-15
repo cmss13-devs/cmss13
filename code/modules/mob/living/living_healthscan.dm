@@ -255,7 +255,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 
 			//checking for open incisions, but since eyes and mouths incisions are "head incisions" but not "head surgeries" gotta do some snowflake
 			if(limb.name == "head")
-				if(human_target_mob.active_surgeries["head"])
+				if(human_target_mob.active_surgeries["head"] || limb.get_incision_depth())
 					current_list["open_incision"] = TRUE
 
 				var/zone

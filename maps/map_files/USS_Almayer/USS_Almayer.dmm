@@ -6617,9 +6617,6 @@
 "aqk" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/operations)
-"aql" = (
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/shipboard/operations)
 "aqm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7359,9 +7356,6 @@
 	dir = 10
 	},
 /turf/open/floor/almayer/plating_striped/east,
-/area/almayer/shipboard/operations)
-"asb" = (
-/turf/open/floor/almayer/plate,
 /area/almayer/shipboard/operations)
 "asc" = (
 /turf/open/floor/almayer/silver/north,
@@ -13620,8 +13614,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "aJn" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/almayer/test_floor4,
+/turf/open/floor/almayer/cargo_arrow,
 /area/almayer/shipboard/operations)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
@@ -31384,19 +31377,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
 "bxQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	layer = 3.33;
-	pixel_x = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/item/hardpoint/secondary/doorgun{
-	pixel_y = 10;
-	pixel_x = 2
-	},
-/turf/open/floor/almayer/plating/northeast,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/operations)
 "bxR" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
@@ -34918,6 +34900,21 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/fore_hallway)
 "bFG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/hardpoint/secondary/doorgun{
+	pixel_y = 10;
+	pixel_x = 2
+	},
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/operations)
+"bFH" = (
 /obj/structure/platform/metal/almayer/west{
 	layer = 2.9
 	},
@@ -34926,7 +34923,7 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/operations)
-"bFH" = (
+"bFI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	layer = 3.33;
@@ -34939,7 +34936,11 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/operations)
-"bFI" = (
+"bFJ" = (
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
+"bFK" = (
 /obj/structure/platform/metal/almayer,
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/southwest,
@@ -34965,18 +34966,14 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/operations)
-"bFJ" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
-/turf/open/floor/plating,
-/area/almayer/hallways/hangar)
-"bFK" = (
+"bFL" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/operations)
-"bFL" = (
+"bFM" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
 	layer = 3.25
@@ -37248,7 +37245,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/upper/u_a_s)
 "bYW" = (
-/turf/open/floor/almayer/cargo_arrow,
+/turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/operations)
 "bYY" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -70424,6 +70421,9 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/combat_correspondent)
+"phw" = (
+/turf/open/floor/almayer/plate,
+/area/almayer/shipboard/operations)
 "phN" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4;
@@ -132975,7 +132975,7 @@ sbt
 pOH
 sbt
 smU
-aql
+bYW
 lpl
 xyw
 bHB
@@ -133076,9 +133076,9 @@ aqk
 aso
 riC
 eqd
-bFG
+bFH
 njO
-bYW
+aJn
 lpl
 xyw
 bHB
@@ -133179,9 +133179,9 @@ aqk
 asp
 arW
 arI
-bFH
+bFI
+bFG
 bxQ
-aJn
 lpl
 xyw
 bHB
@@ -133283,7 +133283,7 @@ qfQ
 are
 jwi
 are
-asb
+phw
 xMG
 aqk
 hmy
@@ -133385,7 +133385,7 @@ aqk
 wVN
 arY
 qmM
-bFI
+bFK
 aqR
 wFN
 tGH
@@ -133487,8 +133487,8 @@ onv
 aqk
 pjh
 arZ
+bFM
 bFL
-bFK
 aqT
 qxI
 aqk

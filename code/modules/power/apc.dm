@@ -1237,7 +1237,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		//Now trickle-charge the cell
 		if(attempt_charging())
 			if(power_excess > 0) //Check to make sure we have enough to charge
-				var/what_is_left = cell.give(power_excess * CELLRATE) / CELLRATE //Actually recharge the cell
+				var/what_is_left = power_excess - cell.give(power_excess * CELLRATE) / CELLRATE //Actually recharge the cell
 				//Giving power back to the powernet if not used
 				if(powernet)
 					powernet.newavail += what_is_left

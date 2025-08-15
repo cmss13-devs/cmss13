@@ -8498,7 +8498,8 @@
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
 	unacidable = 1;
-	explo_proof = 1
+	explo_proof = 1;
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
@@ -34093,7 +34094,8 @@
 "bDF" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/weapon_room/notunnel)
@@ -43064,7 +43066,8 @@
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
 	unacidable = 1;
-	explo_proof = 1
+	explo_proof = 1;
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
@@ -56352,7 +56355,8 @@
 "jzD" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
-	id = "s_engi"
+	id = "s_engi";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/notunnel)
@@ -64614,7 +64618,8 @@
 "mZF" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
-	id = "s_engi_ext"
+	id = "s_engi_ext";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/notunnel)
@@ -67820,7 +67825,8 @@
 	id = "n_umbilical";
 	name = "\improper Umbillical Airlock";
 	unacidable = 1;
-	explo_proof = 1
+	explo_proof = 1;
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_umbilical)
@@ -77528,7 +77534,8 @@
 "sbq" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
-	id = "n_engi"
+	id = "n_engi";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/notunnel)
@@ -93469,7 +93476,8 @@
 "yjq" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
-	id = "n_engi_ext"
+	id = "n_engi_ext";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/notunnel)

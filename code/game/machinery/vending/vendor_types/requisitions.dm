@@ -269,7 +269,6 @@
 		list("88 Mod 4 AP Magazine (9mm)", floor(scale * 50), /obj/item/ammo_magazine/pistol/mod88, VENDOR_ITEM_REGULAR),
 		list("M10 AP magazine (10x20mm-APC)", floor(scale * 14), /obj/item/ammo_magazine/pistol/m10/ap, VENDOR_ITEM_REGULAR),
 		list("M10 AP Extended Magazine (10x20mm-APC)", floor(scale * 6), /obj/item/ammo_magazine/pistol/m10/ap/extended , VENDOR_ITEM_REGULAR),
-		list("M10 AP Drum Magazine (10x20mm-APC)", floor(scale * 4), /obj/item/ammo_magazine/pistol/m10/ap/drum , VENDOR_ITEM_REGULAR),
 		list("M4RA AP Magazine (10x24mm)", floor(scale * 16), /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", floor(scale * 12), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 AP Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
@@ -277,7 +276,6 @@
 
 		list("EXTENDED AMMUNITION", -1, null, null),
 		list("M10 HV Extended Magazine (10x20mm-APC)", floor(scale * 10), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
-		list("M10 HV Drum Magazine (10x20mm-APC)", floor(scale * 8), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", floor(scale * 10), /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M4RA Extended Magazine (10x24mm)", floor(scale * 10), /obj/item/ammo_magazine/rifle/m4ra/extended, VENDOR_ITEM_REGULAR),
 		list("M41A MK2 Extended Magazine (10x24mm)", floor(scale * 8), /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),

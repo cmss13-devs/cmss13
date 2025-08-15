@@ -282,8 +282,8 @@
 	listed_products = list(
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
 		list("M4RA AP Magazine (10x24mm)", 3.5, /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
-		list("M10 AP magazine (10x20mm-APC)", floor(scale * 6), /obj/item/ammo_magazine/pistol/m10/ap , VENDOR_ITEM_REGULAR),
-		list("M10 AP Extended Magazine (10x20mm-APC)", floor(scale * 4), /obj/item/ammo_magazine/pistol/m10/ap/extended , VENDOR_ITEM_REGULAR),
+		list("M10 AP magazine (10x20mm-APC)", floor(scale * 4), /obj/item/ammo_magazine/pistol/m10/ap , VENDOR_ITEM_REGULAR),
+		list("M10 AP Extended Magazine (10x20mm-APC)", floor(scale * 2), /obj/item/ammo_magazine/pistol/m10/ap/extended , VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", floor(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", floor(scale * 3), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
 
@@ -291,8 +291,8 @@
 		list("M4RA Extended Magazine (10x24mm)", 1.8, /obj/item/ammo_magazine/rifle/m4ra/extended, null, VENDOR_ITEM_REGULAR),
 		list("M39 Extended Magazine (10x20mm)", 1.8, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 1.9, /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
-		list("M10 HV Extended Magazine (10x20mm-APC)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
-		list("M10 HV Drum Magazine (10x20mm-APC)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
+		list("M10 HV Extended Magazine (10x20mm-APC)", floor(scale * 4), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
+		list("M10 HV Drum Magazine (10x20mm-APC)", floor(scale * 1), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", -1, null, null),
 		list("M56 Smartgun Drum", 1, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),

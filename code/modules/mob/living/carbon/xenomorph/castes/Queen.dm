@@ -314,11 +314,8 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
-<<<<<<< HEAD
-=======
 		/datum/action/xeno_action/onclick/tacmap,
 		/datum/action/xeno_action/onclick/toggle_seethrough,
->>>>>>> f0b309c17231258598fd9e7cac8a96b5d48a1e57
 	)
 
 	inherent_verbs = list(

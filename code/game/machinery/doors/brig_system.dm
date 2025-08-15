@@ -153,7 +153,7 @@
 	// Sentence complete.
 	var/datum/crime_incident/incident = active_report.incident
 	if(REALTIMEOFDAY > incident.time_to_release)
-		ai_silent_announcement("BRIG REPORT: [incident.criminal_name] has served their time from [src]. Release them.", ":p")
+		ai_silent_announcement("ОТЧЁТНАЯ СИСТЕМА БРИГА: Срок отбыт: [incident.criminal_name]. Камера: [declent_ru(NOMINATIVE)]. Требуется освобождение.", ":p")
 		timer_end()
 
 	update_icon()
@@ -179,7 +179,7 @@
 
 	message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has pardoned [viewed_report.incident.criminal_name].")
 	log_admin("[key_name(user)] pardoned [viewed_report.incident.criminal_name] for [viewed_report.incident.charges_to_string()].")
-	ai_silent_announcement("BRIG REPORT: [viewed_report.incident.criminal_name] has been pardoned for [viewed_report.incident.charges_to_string()].")
+	ai_silent_announcement("ОТЧЁТНАЯ СИСТЕМА БРИГА: Осуществлено помилование: [viewed_report.incident.criminal_name]. Причина заключения под стражу: [viewed_report.incident.charges_to_string()].")
 
 	// If this is the active timer, end it.
 	if (viewed_report.incident.status & BRIG_SENTENCE_ACTIVE)
@@ -197,7 +197,7 @@
 	// Calculate remaining time left.
 	incident.time_to_release = REALTIMEOFDAY + incident.brig_sentence * 600 - incident.time_served
 	if(!incident.time_served)
-		ai_silent_announcement("BRIG REPORT: [incident.criminal_name] has been jailed for [incident.charges_to_string()].")
+		ai_silent_announcement("ОТЧЁТНАЯ СИСТЕМА БРИГА: Осуществлено заключение под стражу: [incident.criminal_name]. Причина заключения под стражу: [incident.charges_to_string()].")
 
 	// Close cell doors.
 	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
@@ -268,7 +268,7 @@
 
 	message_admins("[key_name(user, 1)][ADMIN_JMP_USER(user)] has reset the jail timer of [incident.criminal_name].")
 	log_admin("[key_name(user)] reset the jail timer of [incident.criminal_name], [incident.charges_to_string()].")
-	ai_silent_announcement("BRIG REPORT: [incident.criminal_name] had their jail time reset by [user].", ":p")
+	ai_silent_announcement("ОТЧЁТНАЯ СИСТЕМА БРИГА: Срок заключения [incident.criminal_name] был сокращён пользователем [user.declent_ru(INSTRUMENTAL)].", ":p")
 
 	update_icon()
 

@@ -420,5 +420,8 @@
 /obj/structure/machinery/power/power_generator/proc/UseFuel() //Placeholder for fuel use.
 	return
 
+/obj/structure/machinery/power/power_generator/proc/DropFuel()
+	return
+
 /obj/structure/machinery/power/power_generator/proc/handleInactive()
 	return

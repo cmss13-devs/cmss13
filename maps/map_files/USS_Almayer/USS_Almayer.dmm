@@ -3519,6 +3519,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "ahY" = (
@@ -27139,7 +27140,7 @@
 /area/almayer/middeck/req)
 "bos" = (
 /obj/structure/coatrack,
-/obj/item/clothing/head/helmet/marine/pilottex{
+/obj/item/clothing/head/helmet/marine/pilot/tex{
 	pixel_x = -2;
 	pixel_y = 11
 	},
@@ -43258,7 +43259,11 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
-/obj/structure/machinery/iv_drip,
+/obj/item/tool/wrench,
+/obj/item/tool/crowbar,
+/obj/structure/closet/crate/secure/medical{
+	desc = "A secure medical crate for field doctors to take with them to the FOB."
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "eiE" = (
@@ -49186,7 +49191,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "gGx" = (
-/obj/structure/filingcabinet/chestdrawer{
+/obj/structure/filingcabinet/research{
 	density = 0;
 	pixel_x = -16
 	},
@@ -92913,6 +92918,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/l3closet,
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/lower/workshop/hangar)
 "xXr" = (

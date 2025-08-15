@@ -526,7 +526,7 @@
 	)
 
 /obj/item/weapon/gun/smg/pps43/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 20,"rail_x" = 20, "rail_y" = 24, "under_x" = 25, "under_y" = 17, "stock_x" = 26, "stock_y" = 15)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 21, "under_x" = 25, "under_y" = 17, "stock_x" = 26, "stock_y" = 15)
 
 /obj/item/weapon/gun/smg/pps43/set_gun_config_values()
 	..()

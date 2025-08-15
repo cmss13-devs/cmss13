@@ -1,8 +1,0 @@
-author: "realforest2001"
-delete-after: True
-changes:
-  - rscadd: "Added equipment presets for UACQS."
-  - rscadd: "Added CIA roles to the crew monitor."
-  - rscadd: "Added a CIA clothing vendor."
-  - rscadd: "Added lockable versions of the blue and black leather satchels."
-  - rscadd: "Added a variable that determines if signs can be deconstructed, and forbids it on no-smoking signs and the RO plaque."

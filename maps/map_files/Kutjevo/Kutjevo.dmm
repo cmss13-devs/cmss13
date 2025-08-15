@@ -433,7 +433,7 @@
 	pixel_y = 20
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/stonyfields)
+/area/kutjevo/interior/colony_south/power2/south)
 "abS" = (
 /obj/structure/window/reinforced,
 /obj/structure/surface/table/reinforced/prison,
@@ -653,7 +653,7 @@
 	pixel_y = 20
 	},
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/stonyfields)
+/area/kutjevo/interior/colony_south/power2/south)
 "acG" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -1092,13 +1092,6 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/floor/kutjevo/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aef" = (
-/obj/structure/machinery/light/small{
-	dir = 1;
-	pixel_y = 20
-	},
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_south)
 "aeg" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /obj/item/stack/rods,
@@ -1134,10 +1127,6 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2/south)
-"ael" = (
-/obj/structure/machinery/light/small,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_south)
 "aem" = (
 /obj/item/clothing/glasses/kutjevo,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
@@ -4731,7 +4720,7 @@
 "fgJ" = (
 /obj/structure/machinery/light/small,
 /turf/open/auto_turf/sand/layer0,
-/area/kutjevo/exterior/stonyfields)
+/area/kutjevo/interior/colony_south/power2/south)
 "fgS" = (
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/kutjevo/tan/multi_tiles,
@@ -42281,12 +42270,12 @@ npL
 dxF
 dxF
 acW
-aef
+acF
 qOP
 mMH
-ael
+fgJ
 jhS
-aef
+acF
 mMH
 mMH
 jhS

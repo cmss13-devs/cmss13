@@ -1608,6 +1608,24 @@
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 
+/obj/item/storage/belt/gun/m4a3/m4a4_tactical
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/gun/m4a3/m4a4_tactical/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical())
+	new /obj/item/ammo_magazine/pistol/hp(src)
+	new /obj/item/ammo_magazine/pistol/hp(src)
+	new /obj/item/ammo_magazine/pistol/ap(src)
+	new /obj/item/ammo_magazine/pistol/ap(src)
+	new /obj/item/ammo_magazine/pistol/ap(src)
+	new /obj/item/ammo_magazine/pistol/ap(src)
+
 /obj/item/storage/belt/gun/m4a3/mod88/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/pistol/mod88())
 	for(var/i = 1 to storage_slots - 1)

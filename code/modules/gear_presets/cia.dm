@@ -297,7 +297,7 @@
 	for(var/i in 1 to accessory.hold.storage_slots)
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/ap, WEAR_IN_ACCESSORY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/socom/black, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m4a4_tactical, WEAR_WAIST)
 	//jacket
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/bulletproof, WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/cia, WEAR_J_STORE)

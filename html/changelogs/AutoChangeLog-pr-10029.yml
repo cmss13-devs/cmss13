@@ -1,5 +1,0 @@
-author: "SRG3127, Thwomper"
-delete-after: True
-changes:
-  - rscadd: "Added M37A2 Collapsible stock."
-  - rscdel: "Removed the old M37 stock from vendors and replaced it with the M37 Collapsible stock."

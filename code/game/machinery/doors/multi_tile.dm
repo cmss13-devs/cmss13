@@ -156,6 +156,9 @@
 	opacity = TRUE
 	glass = FALSE
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/solid
+	autoname = TRUE
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/2x1medidoor.dmi'

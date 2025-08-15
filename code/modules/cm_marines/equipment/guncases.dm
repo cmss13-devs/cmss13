@@ -425,7 +425,7 @@
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 
-//M4A3 Service Pistol
+//M4A4 Service Pistol
 /obj/item/storage/box/guncase/m4a4
 	name = "\improper M4A4 Service Pistol case"
 	desc = "A gun case containing an M4A4 Service Pistol."

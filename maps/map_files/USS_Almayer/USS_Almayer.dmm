@@ -49235,7 +49235,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "gGx" = (
-/obj/structure/filingcabinet/chestdrawer{
+/obj/structure/filingcabinet/research{
 	density = 0;
 	pixel_x = -16
 	},
@@ -92957,6 +92957,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/l3closet,
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/lower/workshop/hangar)
 "xXr" = (

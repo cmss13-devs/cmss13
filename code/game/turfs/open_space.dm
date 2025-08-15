@@ -114,3 +114,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
+
+/turf/open_space/solid
+	baseturfs = /turf/open_space/solid
+	density = TRUE

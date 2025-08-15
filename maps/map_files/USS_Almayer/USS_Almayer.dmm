@@ -21397,7 +21397,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "bcf" = (
-/turf/solid_open_space,
+/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bcg" = (
 /obj/effect/decal/warning_stripes{
@@ -32729,25 +32729,25 @@
 /area/almayer/middeck/maintenance/paft)
 "bAW" = (
 /obj/effect/attach_point/weapon/dropship1/left_fore,
-/turf/solid_open_space,
+/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bAX" = (
 /obj/effect/attach_point/electronics/dropship1{
 	dir = 1;
 	attach_id = 5
 	},
-/turf/solid_open_space,
+/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bAY" = (
 /obj/effect/attach_point/electronics/dropship1{
 	dir = 1;
 	attach_id = 6
 	},
-/turf/solid_open_space,
+/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bAZ" = (
 /obj/effect/attach_point/weapon/dropship1/right_fore,
-/turf/solid_open_space,
+/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bBa" = (
 /obj/effect/decal/cleanable/dirt,

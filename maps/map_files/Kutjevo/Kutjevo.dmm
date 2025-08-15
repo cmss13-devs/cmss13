@@ -1092,23 +1092,23 @@
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /turf/open/floor/kutjevo/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aeg" = (
+"aef" = (
 /obj/structure/platform_decoration/metal/kutjevo,
 /obj/item/stack/rods,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2/south)
-"aeh" = (
+"aeg" = (
 /obj/structure/platform/metal/kutjevo,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2/south)
-"aei" = (
+"aeh" = (
 /obj/structure/platform/metal/kutjevo,
 /obj/effect/decal/cleanable/blood/oil,
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2/south)
-"aej" = (
+"aei" = (
 /obj/structure/platform/metal/kutjevo,
 /obj/structure/machinery/light,
 /obj/structure/prop/dam/truck/damaged{
@@ -1118,7 +1118,7 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2/south)
-"aek" = (
+"aej" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "\improper South East Power Shutters";
@@ -1127,30 +1127,30 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2/south)
-"aem" = (
+"aek" = (
 /obj/item/clothing/glasses/kutjevo,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aen" = (
+"ael" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aeo" = (
+"aem" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/rods,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aep" = (
+"aen" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aeq" = (
+"aeo" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/sheet/metal/small_stack,
 /obj/structure/machinery/power/port_gen/pacman/super,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aer" = (
+"aep" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "\improper South East Power Shutters";
 	dir = 4
@@ -1158,47 +1158,47 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2/south)
-"aes" = (
+"aeq" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/largecrate/random/barrel,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aet" = (
+"aer" = (
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aeu" = (
+"aes" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/effect/landmark/corpsespawner/colonist/kutjevo,
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aev" = (
+"aet" = (
 /obj/structure/cargo_container/grant/left{
 	layer = 4
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aew" = (
+"aeu" = (
 /obj/structure/cargo_container/grant/right{
 	layer = 4
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles/west,
 /area/kutjevo/interior/colony_south/power2/south)
-"aex" = (
+"aev" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2/south)
-"aey" = (
+"aew" = (
 /obj/structure/platform/metal/kutjevo/north,
 /obj/structure/largecrate/random,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2/south)
-"aez" = (
+"aex" = (
 /obj/structure/platform/metal/kutjevo/north,
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/colony_south/power2/south)
-"aeA" = (
+"aey" = (
 /obj/structure/platform_decoration/metal/kutjevo/east,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "\improper South East Power Shutters";
@@ -1207,18 +1207,31 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2/south)
-"aeB" = (
+"aez" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/closed/wall/kutjevo/colony/reinforced,
 /area/kutjevo/interior/colony_south/power2/south)
-"aeC" = (
+"aeA" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/objective_landmark/medium,
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/kutjevo/multi_tiles/north,
 /area/kutjevo/interior/power/comms)
-"aeD" = (
+"aeB" = (
 /obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper South Power Shutters"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/colony_south/power2/south)
+"aeC" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	name = "\improper South Power Shutters"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/colony_south/power2/south)
+"aeD" = (
+/obj/structure/platform_decoration/metal/kutjevo,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "\improper South Power Shutters"
 	},
@@ -1232,30 +1245,17 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	name = "\improper South Power Shutters"
 	},
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/colony_south/power2/south)
-"aeG" = (
-/obj/structure/platform_decoration/metal/kutjevo,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	name = "\improper South Power Shutters"
-	},
-/turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/colony_south/power2/south)
-"aeH" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	name = "\improper South Power Shutters"
-	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2)
-"aeI" = (
+"aeG" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	name = "\improper South Power Shutters"
 	},
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2)
-"aeJ" = (
+"aeH" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
 	dir = 4;
 	name = "\improper East Power Shutters"
@@ -1263,15 +1263,15 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/colony_south/power2)
-"aeK" = (
+"aeI" = (
 /obj/effect/spawner/random/powercell,
 /turf/open/floor/kutjevo/tan,
 /area/kutjevo/interior/complex/botany)
-"aeL" = (
+"aeJ" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/construction/east)
-"aeM" = (
+"aeK" = (
 /obj/effect/spawner/random/powercell,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/construction/north)
@@ -21559,7 +21559,7 @@ hkY
 pKO
 tXm
 boR
-aeC
+aeA
 tlN
 dxF
 dxF
@@ -31390,7 +31390,7 @@ dxF
 dxF
 eXm
 oln
-aeK
+aeI
 lce
 kDS
 kDS
@@ -36686,7 +36686,7 @@ aaF
 aaF
 aaF
 aaA
-aeM
+aeK
 aaz
 aaz
 aap
@@ -40763,7 +40763,7 @@ qGx
 qGx
 qGx
 qGx
-aeD
+aeB
 acY
 acY
 acY
@@ -41097,7 +41097,7 @@ mLw
 cpg
 fqm
 mLw
-aeF
+aeC
 acs
 acs
 acs
@@ -41264,14 +41264,14 @@ qGx
 qGx
 gNx
 qGx
-aeG
+aeD
 acq
 acE
 acq
-aex
-aes
-aem
-aeg
+aev
+aeq
+aek
+aef
 acq
 acq
 acq
@@ -41435,10 +41435,10 @@ acW
 acW
 acW
 acW
-aey
-aet
-aen
-aeh
+aew
+aer
+ael
+aeg
 jhS
 kVJ
 kVJ
@@ -41602,10 +41602,10 @@ acW
 dxF
 dxF
 acW
-aez
-aeu
-aeo
-aei
+aex
+aes
+aem
+aeh
 jhS
 qfT
 bvO
@@ -41770,9 +41770,9 @@ dxF
 dxF
 acW
 acI
-aev
-aep
-aej
+aet
+aen
+aei
 jhS
 ulS
 qwg
@@ -41937,8 +41937,8 @@ dxF
 dxF
 acW
 acH
-aew
-aeq
+aeu
+aeo
 acj
 jhS
 vkr
@@ -42099,14 +42099,14 @@ rdm
 rfE
 rfE
 rfE
-aeB
+aez
 dxF
 dxF
-aeB
-aeA
-aer
-aer
-aek
+aez
+aey
+aep
+aep
+aej
 jhS
 kVJ
 kVJ
@@ -42263,7 +42263,7 @@ qGx
 shX
 duu
 okv
-aeH
+aeF
 mMH
 mMH
 npL
@@ -42430,7 +42430,7 @@ qGx
 klE
 tXK
 fTk
-aeI
+aeG
 mMH
 qOP
 mMH
@@ -42597,7 +42597,7 @@ qGx
 qGx
 tXK
 qGx
-aeI
+aeG
 mMH
 mMH
 bpj
@@ -42764,7 +42764,7 @@ xVZ
 xVZ
 tXK
 mLw
-aeI
+aeG
 mMH
 mMH
 bpj
@@ -42931,7 +42931,7 @@ qGx
 qGx
 duu
 ltv
-aeI
+aeG
 mMH
 mMH
 bpj
@@ -43072,7 +43072,7 @@ rob
 rob
 lxc
 lxc
-aeL
+aeJ
 rdm
 rdm
 pKn
@@ -43098,7 +43098,7 @@ qGx
 klE
 tXK
 fTk
-aeI
+aeG
 mMH
 mMH
 oXH
@@ -43239,7 +43239,7 @@ rob
 rob
 rob
 lxc
-aeL
+aeJ
 oZE
 oAU
 mLw
@@ -43265,7 +43265,7 @@ qGx
 shX
 tXK
 okv
-aeH
+aeF
 mMH
 mMH
 mMH
@@ -43406,7 +43406,7 @@ rob
 csE
 csE
 lxc
-aeL
+aeJ
 iWI
 oMS
 mLw
@@ -43573,7 +43573,7 @@ lxc
 lxc
 lxc
 lxc
-aeL
+aeJ
 wDm
 kPM
 mLw
@@ -44421,13 +44421,13 @@ rfE
 rfE
 rfE
 rfE
-aeJ
-aeJ
-aeJ
-aeJ
-aeJ
-aeJ
-aeJ
+aeH
+aeH
+aeH
+aeH
+aeH
+aeH
+aeH
 rfE
 rfE
 rfE

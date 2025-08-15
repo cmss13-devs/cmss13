@@ -239,7 +239,6 @@
 
 
 /datum/keybinding/xenomorph/toggle_seethrough
-
 	hotkey_keys = list("Shift+Z")
 	classic_keys = list("Unbound")
 	name = "become_seethrough"

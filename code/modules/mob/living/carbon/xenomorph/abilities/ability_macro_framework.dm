@@ -194,7 +194,6 @@
 
 
 /mob/living/carbon/xenomorph/verb/toggle_seethrough()
-
 	set category = "Alien"
 	set name = "Become seethrough"
 	set hidden = TRUE

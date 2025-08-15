@@ -1,4 +1,0 @@
-author: "Kyogon"
-delete-after: True
-changes:
-  - bugfix: "fixed queen's radial showing old sprite"

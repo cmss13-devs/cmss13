@@ -82,7 +82,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
-	if(hardcore)
+	if(!can_heal && !resting)
 		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
 		return
 
@@ -411,6 +411,18 @@
 
 	if (!tracks_target)
 		A = get_turf(A)
+
+	if(A.z != X.z && X.mob_size >= MOB_SIZE_BIG)
+		if (!do_after(X, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+
+	//everyone gets (extra) timer to pounce up
+	if(A.z > X.z)
+		if (!do_after(X, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			return
+
+
+
 
 	apply_cooldown()
 

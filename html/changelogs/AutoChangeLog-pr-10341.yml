@@ -1,0 +1,4 @@
+author: "Steelpoint"
+delete-after: True
+changes:
+  - rscadd: "An antiZed autoinjector has been added to the game, a single-use device that contains a cure for the zombie pathogen."

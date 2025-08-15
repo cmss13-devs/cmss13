@@ -1,0 +1,4 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "aid kits now have dynamically rendered items inside them when aid kit is open"

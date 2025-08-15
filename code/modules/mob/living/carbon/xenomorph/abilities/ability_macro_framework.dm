@@ -194,16 +194,13 @@
 
 
 /mob/living/carbon/xenomorph/verb/toggle_seethrough()
+
 	set category = "Alien"
 	set name = "Become seethrough"
 	set hidden = TRUE
 	var/mob/living/carbon/xenomorph/xeno = src
 
-	if (!istype(xeno))
-		return
 	for(var/datum/action/xeno_action/xeno_action in xeno.actions)
-		if(!istype(xeno_action))
-			continue
 		if(xeno_action.hidden)
 			continue
 		if(xeno_action.ability_primacy == XENO_BECOME_SEETHROUGH)

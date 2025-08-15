@@ -52,9 +52,7 @@
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
-	attachable_allowed = list(
-		/obj/item/attachable/flashlight,
-	)
+	attachable_allowed = null
 
 	var/obj/item/smartgun_battery/battery = null
 	/// Whether the smartgun drains the battery (Ignored if requires_battery is false)
@@ -1082,6 +1080,11 @@
 		/obj/item/attachable/cosmetic/clf_rags,
 		/obj/item/attachable/cosmetic/clf_sling,
 	)
+
+/obj/item/weapon/gun/smartgun/clf/flag
+	starting_attachment_types = list(/obj/item/attachable/cosmetic/clf_flag)
+	random_spawn_chance = 0
+	random_cosmetic_chance = 0
 
 #undef CLF_SMARTGUN_UNJAM_CHANCE
 

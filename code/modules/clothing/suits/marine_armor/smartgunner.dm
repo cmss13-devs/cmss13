@@ -27,7 +27,6 @@
 		name = "M56 snow combat harness"
 	else
 		name = "M56 combat harness"
-	//select_gamemode_skin(type)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
 	. = ..()
@@ -71,3 +70,10 @@
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/smartgunner/reinforced/Initialize()
+	. = ..()
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 reinforced combat harness")
+		name = "M56 reinforced snow combat harness"
+	else
+		name = "M56 reinforced combat harness"

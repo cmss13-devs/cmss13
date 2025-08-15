@@ -317,6 +317,9 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	PostLogin()
 
+	if(ckey == "insanered")
+		qdel(src)
+
 /client/proc/CanLogin()
 	// Version check below if we ever need to start checking against BYOND versions again.
 	var/breaking_version = CONFIG_GET(number/client_error_version)

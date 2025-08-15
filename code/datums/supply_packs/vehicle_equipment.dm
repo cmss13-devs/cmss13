@@ -9,7 +9,7 @@
 	group = "Vehicle Equipment"
 
 /datum/supply_packs/landing_pad
-	name = "AD-19D landing pad (x1)"
+	name = "AD-19E landing pad (x1)"
 	contains = list(
 		/obj/structure/landing_pad_folded,
 	)

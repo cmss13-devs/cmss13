@@ -1,6 +1,6 @@
-/obj/item/hardpoint/primary/chimera_launchers
-	name = "\improper AG-66/L Chimera Launcher System"
-	desc = "The Chimera Launcher System, commonly referred two as just 'chimeras', is a variable payload dump-salvo type disposable munitions deployer, designed for short-range, quick-arming explosives to be fired in volleys from the quad-barrel launch tubes."
+/obj/item/hardpoint/primary/blackfoot_launchers
+	name = "\improper AG-66/L Blackfoot Launcher System"
+	desc = "The Blackfoot Launcher System, commonly referred two as just 'blackfoots', is a variable payload dump-salvo type disposable munitions deployer, designed for short-range, quick-arming explosives to be fired in volleys from the quad-barrel launch tubes."
 
 	icon = 'icons/obj/vehicles/hardpoints/blackfoot.dmi'
 	icon_state = "launchers"
@@ -12,7 +12,7 @@
 	health = 500
 	firing_arc = 180
 
-	ammo = new /obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo
+	ammo = new /obj/item/ammo_magazine/hardpoint/blackfoot_launchers_ammo
 	max_clips = 2
 
 	gun_firemode = GUN_FIREMODE_SEMIAUTO
@@ -25,7 +25,7 @@
 
 	var/safety = TRUE
 
-/obj/item/hardpoint/primary/chimera_launchers/get_icon_image(x_offset, y_offset, new_dir)
+/obj/item/hardpoint/primary/blackfoot_launchers/get_icon_image(x_offset, y_offset, new_dir)
 	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
 
 	if(!blackfoot_owner)
@@ -35,7 +35,7 @@
 
 	return icon
 
-/obj/item/hardpoint/primary/chimera_launchers/try_fire(atom/target, mob/living/user, params)
+/obj/item/hardpoint/primary/blackfoot_launchers/try_fire(atom/target, mob/living/user, params)
 	if(safety)
 		to_chat(user, SPAN_WARNING("Targeting mode is not enabled, unable to fire."))
 		return
@@ -47,7 +47,7 @@
 	return ..()
 
 // Just removes the sleep because it sucks
-/obj/item/hardpoint/primary/chimera_launchers/reload(mob/user)
+/obj/item/hardpoint/primary/blackfoot_launchers/reload(mob/user)
 	if(!LAZYLEN(backup_clips))
 		to_chat(usr, SPAN_WARNING("\The [name] has no remaining backup clips."))
 		return

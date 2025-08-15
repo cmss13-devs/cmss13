@@ -49,8 +49,8 @@
 
 	. = ..()
 
-/obj/effect/landmark/interior/spawn/chimera_loader/on_load(datum/interior/interior)
-	var/obj/structure/chimera_loader/loader = new(get_turf(src))
+/obj/effect/landmark/interior/spawn/blackfoot_loader/on_load(datum/interior/interior)
+	var/obj/structure/blackfoot_loader/loader = new(get_turf(src))
 
 	loader.name = name
 	loader.setDir(dir)

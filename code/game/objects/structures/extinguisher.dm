@@ -22,7 +22,7 @@
 
 /obj/structure/extinguisher_cabinet/blackfoot
 	name = "integrated fire cabinet"
-	desc = "A compact on-board fire suppression system specially designed for implementation aboard the aircraft. In grunt terms, it's a fancy-pants fire extinguisher cabinet. Good if the Chimera launchers misfire, or if some chucklehead forgets to put the pilot light out on their flamer."
+	desc = "A compact on-board fire suppression system specially designed for implementation aboard the aircraft. In grunt terms, it's a fancy-pants fire extinguisher cabinet. Good if the Blackfoot launchers misfire, or if some chucklehead forgets to put the pilot light out on their flamer."
 	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'
 	icon_state = "fire-cab"
 

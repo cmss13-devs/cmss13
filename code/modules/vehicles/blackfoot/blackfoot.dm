@@ -42,7 +42,7 @@
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
-		/obj/item/hardpoint/primary/chimera_launchers,
+		/obj/item/hardpoint/primary/blackfoot_launchers,
 		/obj/item/hardpoint/support/sensor_array,
 		/obj/item/hardpoint/secondary/doorgun,
 	)
@@ -77,13 +77,10 @@
 
 	var/image/thrust_overlay
 
-	var/last_turn = 0
-	var/turn_delay = 1 SECONDS
-
 	var/state = STATE_STOWED
 
-	var/last_flight_sound = 0
-	var/flight_sound_cooldown = 4 SECONDS
+	COOLDOWN_DECLARE(turn_delay)
+	COOLDOWN_DECLARE(flight_sound_cooldown)
 
 	var/obj/blackfoot_shadow/shadow_holder
 
@@ -224,7 +221,7 @@
 	if(state == STATE_VTOL)
 		return ..()
 
-	if(last_turn + turn_delay > world.time)
+	if(!COOLDOWN_FINISHED(src, turn_delay))
 		return FALSE
 
 	if(state != STATE_FLIGHT)
@@ -241,8 +238,10 @@
 	if(!.)
 		return
 
-	shadow_holder.dir = dir
-	last_turn = world.time
+	COOLDOWN_START(src, turn_delay, 1 SECONDS)
+
+	if(shadow_holder)
+		shadow_holder.dir = dir
 
 /obj/vehicle/multitile/blackfoot/process(deltatime)
 	if (state == STATE_FLIGHT)
@@ -251,8 +250,8 @@
 		thrust_overlay = image(icon, "flight_thrust")
 		overlays += thrust_overlay
 
-	if(world.time > last_flight_sound + flight_sound_cooldown)
-		last_flight_sound = world.time
+	if(COOLDOWN_FINISHED(src, flight_sound_cooldown))
+		COOLDOWN_START(src, flight_sound_cooldown, 4 SECONDS)
 		playsound(loc, 'sound/vehicles/vtol/exteriorflight.ogg', 25, FALSE)
 
 	for(var/atom/movable/screen/blackfoot/custom_screen as anything in custom_hud)
@@ -435,7 +434,7 @@
 	remove_action(M, /datum/action/human_action/blackfoot/toggle_targeting)
 
 	M.client?.mouse_pointer_icon = initial(M.client?.mouse_pointer_icon)
-	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
+	var/obj/item/hardpoint/primary/blackfoot_launchers/launchers = locate() in hardpoints
 
 	if(launchers)
 		launchers.safety = TRUE
@@ -752,7 +751,7 @@
 		state = STATE_DEPLOYED
 
 /obj/vehicle/multitile/blackfoot/proc/toggle_targeting()
-	var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in hardpoints
+	var/obj/item/hardpoint/primary/blackfoot_launchers/launchers = locate() in hardpoints
 
 	if(!launchers)
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("CRITICAL ERROR: NO LAUNCHERS DETECTED."))
@@ -1302,24 +1301,24 @@
 		/obj/item/fuel_pump = 1,
 		/obj/item/flight_cpu = 1,
 		/obj/item/landing_pad_light = 4,
-		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo = 4,
+		/obj/item/ammo_magazine/hardpoint/blackfoot_launchers_ammo = 4,
 	)
 	icon_state = "secure_crate_strapped"
 
 
-/obj/structure/chimera_loader
-	name = "\improper chimera internal access point"
+/obj/structure/blackfoot_loader
+	name = "\improper blackfoot internal access point"
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi'
 
 	var/obj/vehicle/multitile/blackfoot/linked_blackfoot
 
-/obj/structure/chimera_loader/attackby(obj/item/attack_item, mob/user)
+/obj/structure/blackfoot_loader/attackby(obj/item/attack_item, mob/user)
 	if(!linked_blackfoot)
 		return
 
-	if(istype(attack_item, /obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo))
-		var/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo/ammo = attack_item
-		var/obj/item/hardpoint/primary/chimera_launchers/launchers = locate() in linked_blackfoot.hardpoints
+	if(istype(attack_item, /obj/item/ammo_magazine/hardpoint/blackfoot_launchers_ammo))
+		var/obj/item/ammo_magazine/hardpoint/blackfoot_launchers_ammo/ammo = attack_item
+		var/obj/item/hardpoint/primary/blackfoot_launchers/launchers = locate() in linked_blackfoot.hardpoints
 
 		if(!launchers)
 			return

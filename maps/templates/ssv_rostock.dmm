@@ -105,9 +105,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/rostock/lowerdeck_maint/p_m)
 "aap" = (
-/obj/structure/machinery/computer/supply/asrs/upp{
-	req_access = list(232)
-	},
+/obj/structure/machinery/computer/supply/asrs/upp,
 /turf/open/floor/strata/orange_edge/east,
 /area/rostock/req)
 "aaq" = (
@@ -1194,9 +1192,7 @@
 /turf/open/floor/strata/red4/north,
 /area/rostock/security/headquarters_bunk)
 "adS" = (
-/obj/structure/machinery/computer/supply/asrs/upp{
-	req_access = list(232)
-	},
+/obj/structure/machinery/computer/supply/asrs/upp,
 /obj/structure/transmitter/upp_net{
 	name = "Rostock Requisition Telephone";
 	phone_category = "Rostock";

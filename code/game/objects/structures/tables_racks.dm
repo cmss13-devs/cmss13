@@ -614,7 +614,7 @@
 	table_prefix = "rostockW"
 
 /obj/structure/surface/table/reinforced/rostock_blend/flip(direction)
-	return 0
+	return FALSE
 
 /obj/structure/surface/table/reinforced/rostock_table
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
@@ -622,7 +622,7 @@
 	table_prefix = "rostock_"
 
 /obj/structure/surface/table/reinforced/rostock_table/flip(direction)
-	return 0
+	return FALSE
 
 /obj/structure/surface/table/reinforced/almayer_blend
 	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."

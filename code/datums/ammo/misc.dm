@@ -379,7 +379,7 @@
 /datum/ammo/grenade_container/tank_glauncher
 	max_range = 8
 
-/datum/ammo/grenade_container/chimera_launcher
+/datum/ammo/grenade_container/blackfoot_launcher
 	name = "starburst shell"
 	nade_type = /obj/item/explosive/grenade/high_explosive/starshell
 

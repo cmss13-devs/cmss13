@@ -162,12 +162,12 @@
 	group = "Vehicle Ammo"
 
 /datum/supply_packs/blackfoot_ammo
-	name = "Chimera Launchers ammunition (x4)"
+	name = "Blackfoot Launchers ammunition (x4)"
 	contains = list(
-		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo,
-		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo,
-		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo,
-		/obj/item/ammo_magazine/hardpoint/chimera_launchers_ammo,
+		/obj/item/ammo_magazine/hardpoint/blackfoot_launchers_ammo,
+		/obj/item/ammo_magazine/hardpoint/blackfoot_launchers_ammo,
+		/obj/item/ammo_magazine/hardpoint/blackfoot_launchers_ammo,
+		/obj/item/ammo_magazine/hardpoint/blackfoot_launchers_ammo,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon

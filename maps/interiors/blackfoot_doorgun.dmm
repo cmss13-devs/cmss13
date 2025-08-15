@@ -39,8 +39,8 @@
 "q" = (
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_left_top,
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_left_bottom,
-/obj/effect/landmark/interior/spawn/chimera_loader{
-	icon_state = "chimera-ammo-interior-left";
+/obj/effect/landmark/interior/spawn/blackfoot_loader{
+	icon_state = "blackfoot-ammo-interior-left";
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
 	pixel_y = -24;
 	pixel_x = 3
@@ -62,8 +62,8 @@
 "M" = (
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_right_top,
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_right_bottom,
-/obj/effect/landmark/interior/spawn/chimera_loader{
-	icon_state = "chimera-ammo-interior-right";
+/obj/effect/landmark/interior/spawn/blackfoot_loader{
+	icon_state = "blackfoot-ammo-interior-right";
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
 	pixel_y = -24;
 	pixel_x = -3

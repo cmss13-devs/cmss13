@@ -34933,7 +34933,7 @@
 	pixel_x = 2
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/hardpoint/primary/chimera_launchers{
+/obj/item/hardpoint/primary/blackfoot_launchers{
 	pixel_y = 7;
 	pixel_x = -4
 	},

@@ -1142,7 +1142,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 				if(istype(power_system, /obj/structure/machinery/power/power_generator))
 					var/obj/structure/machinery/power/power_generator/generator = power_system
 					if(generator.current_area != current_area)
-						generator.current_area = null
+						generator.apc_in_area = null
 						LAZYREMOVE(connected_power_sources, power_system)
 						continue
 					if(generator && generator.is_on)

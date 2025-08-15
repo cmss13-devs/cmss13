@@ -75,7 +75,7 @@
 		marine_announcement("Power has been restored. Reason: Unknown.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
 
 /proc/power_restore_ship_reactors(announce = TRUE)
-	for(var/obj/structure/machinery/power/reactor/reactor in GLOB.machines)
+	for(var/obj/structure/machinery/power/power_generator/reactor/reactor in GLOB.machines)
 		if(!is_mainship_level(reactor.z)) //Only ship reactors should be repaired
 			continue
 		reactor.buildstate = 0

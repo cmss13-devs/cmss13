@@ -15,8 +15,6 @@
 	idle_power_usage = 0
 	active_power_usage = 0
 
-	var/obj/structure/machinery/power/apc/apc_in_area = null
-
 	var/area/current_area = null
 
 /obj/structure/machinery/power/Destroy()
@@ -25,19 +23,6 @@
 
 // common helper procs for all power machines
 /obj/structure/machinery/power/proc/add_avail(amount)
-	if(apc_in_area)
-		if(apc_in_area.current_area != current_area)
-			LAZYREMOVE(apc_in_area.connected_power_sources, src)
-			apc_in_area = null
-		else if(apc_in_area.cell && apc_in_area.operating)
-			return
-	else
-		apc_in_area = current_area.get_apc()
-		if(apc_in_area)
-			if(LAZYFIND(apc_in_area.connected_power_sources, src) == 0)
-				LAZYADD(apc_in_area.connected_power_sources, src)
-			return
-
 	if(powernet)
 		powernet.newavail += amount
 
@@ -384,3 +369,56 @@
 		else if (istype(power_source, /obj/item/cell))
 			cell.use(drained_energy*CELLRATE) //convert to units of charge.
 		return drained_energy
+
+
+
+/obj/structure/machinery/power/power_generator
+	name = "power generator"
+	desc = "A machine that generates power."
+	power_machine = TRUE
+
+	//5,000W is our power output
+	var/power_gen = 5000
+	var/obj/structure/machinery/power/apc/apc_in_area = null //apc to power
+	///% of power produced
+	var/power_gen_percent = 0
+
+/obj/structure/machinery/power/power_generator/connect_to_network()
+	. = ..()
+	if(!anchored || !current_area)
+		return .
+
+	apc_in_area = current_area.get_apc()
+	if(apc_in_area)
+		if(LAZYFIND(apc_in_area.connected_power_sources, src) == 0)
+			LAZYADD(apc_in_area.connected_power_sources, src)
+
+/obj/structure/machinery/power/power_generator/disconnect_from_network()
+	. = ..()
+	if(apc_in_area)
+		LAZYREMOVE(apc_in_area.connected_power_sources, src)
+
+/obj/structure/machinery/power/power_generator/add_avail(amount)
+	if(apc_in_area)
+		if(apc_in_area.current_area != current_area)
+			LAZYREMOVE(apc_in_area.connected_power_sources, src)
+			apc_in_area = null
+		else if(apc_in_area.cell && apc_in_area.operating)
+			return
+	else
+		apc_in_area = current_area.get_apc()
+		if(apc_in_area)
+			if(LAZYFIND(apc_in_area.connected_power_sources, src) == 0)
+				LAZYADD(apc_in_area.connected_power_sources, src)
+			return
+
+	..(amount)
+
+/obj/structure/machinery/power/power_generator/proc/HasFuel() //Placeholder for fuel check.
+	return 1
+
+/obj/structure/machinery/power/power_generator/proc/UseFuel() //Placeholder for fuel use.
+	return
+
+/obj/structure/machinery/power/power_generator/proc/handleInactive()
+	return

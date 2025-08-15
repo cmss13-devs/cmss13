@@ -175,7 +175,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 	area.power_environ = 0
 	area.power_change()
 
-	for(var/obj/structure/machinery/power/power_system in connected_power_sources)
+	for(var/obj/structure/machinery/power/power_generator/power_system in connected_power_sources)
 		power_system.apc_in_area = null
 
 	if(terminal)
@@ -1130,35 +1130,31 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 
 		//Try to draw power from the grid
 		var/power_drawn = 0
-		var/got_power_from_local_grid = FALSE
 
+		//Try to draw from local grid
+		var/got_power_from_local_grid = FALSE
 		if(length(connected_power_sources) > 0)
-			var/total_power_generation = 0
-			var/working_generators = 0
+			var/total_power_generated = 0
 			for(var/power_system in connected_power_sources)
 				if(!power_system)
 					LAZYREMOVE(connected_power_sources, power_system)
 					continue
-				if(istype(power_system, /obj/structure/machinery/power/reactor))
-					var/obj/structure/machinery/power/reactor/react = power_system
-					if(react && react.power_gen_percent > 0)
-						total_power_generation += react.power_gen_percent * react.power_generation_max
-						working_generators++
-				else if(istype(power_system, /obj/structure/machinery/power/port_gen))
-					var/obj/structure/machinery/power/port_gen/generator = power_system
-					if(generator && generator.active)
-						total_power_generation += generator.power_gen * generator.power_output
-						working_generators++
-			if(working_generators > 0)
-				power_drawn = min(total_power_generation, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
+				if(istype(power_system, /obj/structure/machinery/power/power_generator))
+					var/obj/structure/machinery/power/power_generator/genr = power_system
+					if(genr && genr.is_on)
+						total_power_generated += genr.power_gen_percent * genr.power_gen
+
+			if(total_power_generated > 0)
+				power_drawn = min(total_power_generated, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
 				target_draw = max(target_draw - power_drawn, 0)
-				total_power_generation -= power_drawn
+				total_power_generated -= power_drawn
 				if(powernet) // what
-					powernet.newavail += total_power_generation
+					powernet.newavail += total_power_generated
 
 				got_power_from_local_grid = target_draw <= 0
 				charging = APC_CHARGING
 
+		//Try to draw from powernet
 		if(avail())
 			power_drawn += add_load(target_draw) //Get some power from the powernet
 
@@ -1189,7 +1185,7 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		else
 			main_status = 2
 
-		if (got_power_from_local_grid)
+		if (got_power_from_local_grid && main_status < 2)
 			main_status = 3
 
 		//Set channels depending on how much charge we have left

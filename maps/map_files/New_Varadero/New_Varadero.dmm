@@ -5928,7 +5928,7 @@
 /turf/open/floor/shiva/multi_tiles,
 /area/varadero/interior/comms3)
 "eGd" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -7243,7 +7243,7 @@
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "fFI" = (
@@ -10260,7 +10260,7 @@
 /turf/open/floor/wood,
 /area/varadero/interior/court)
 "igQ" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "igU" = (
@@ -11770,7 +11770,7 @@
 /turf/open/floor/prison/chapel_carpet/doubleside/north,
 /area/varadero/interior/chapel)
 "joO" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
@@ -12955,7 +12955,7 @@
 /turf/open/floor/shiva/green/east,
 /area/varadero/interior/hall_SE)
 "kmo" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/exterior/eastbeach)
 "kmu" = (
@@ -16694,7 +16694,7 @@
 /turf/open/gm/river/ocean/deep_ocean,
 /area/varadero/exterior/farocean)
 "nwi" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/north)
 "nwq" = (
@@ -18913,7 +18913,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/cargo)
 "pkT" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/bcircuit,
 /area/varadero/interior/electrical)
 "pkX" = (
@@ -23325,7 +23325,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior_protected/maintenance/south)
 "swM" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light/small,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
@@ -24171,7 +24171,7 @@
 /turf/open/floor/shiva,
 /area/varadero/interior/technical_storage)
 "thp" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/electrical)
 "thS" = (
@@ -28224,7 +28224,7 @@
 /area/varadero/interior/medical)
 "wpC" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/gm/dirt,
 /area/varadero/exterior/lz1_near)
 "wpG" = (

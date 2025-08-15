@@ -1,0 +1,4 @@
+author: "Thwomper"
+delete-after: True
+changes:
+  - rscadd: "Adds M4A4 Service Pistol as a new USCM loadout option sidearm."

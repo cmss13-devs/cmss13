@@ -208,6 +208,8 @@
 	is_armor = FALSE
 	icon_state = "plate_research"
 	icon = 'icons/obj/items/devices.dmi'
+	ground_offset_x = 8
+	ground_offset_y = 8
 	var/obj/item/clothing/attached_uni
 	///can the plate be recycled after X condition? 0 means it cannot be recycled, otherwise put in the biomass points to refund.
 	var/recyclable_value = 0
@@ -293,7 +295,7 @@
 /obj/item/clothing/accessory/health/research_plate/emergency_injector
 	name = "emergency chemical plate"
 	desc = "One-time disposable research plate packing all kinds of chemicals injected at the will of the user by pressing two buttons on the sides simultaneously. The injection is painless, instant and packs much more chemicals than your normal emergency injector. Features OD Protection in three modes."
-	var/od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_STRICT
+	var/od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC
 	var/datum/action/item_action/activation
 	var/mob/living/wearer
 	var/used = FALSE
@@ -398,26 +400,19 @@
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay
 	name = "experimental preservation plate"
-	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death."
+	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead to around 9 minutes instead of 5"
 	var/mob/living/carbon/human/wearer
-	var/used = FALSE
 
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay/Destroy()
 	. = ..()
 	wearer = null
 
-/obj/item/clothing/accessory/health/research_plate/anti_decay/get_examine_text(mob/user)
-	. = ..()
-	if(used)
-		. += SPAN_WARNING("It is used!")
-
 /obj/item/clothing/accessory/health/research_plate/anti_decay/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	wearer = user
-	if(!used)
-		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(begin_preserving))
-		user.revive_grace_period += 4 MINUTES
+	RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(begin_preserving))
+	user.revive_grace_period += 4 MINUTES
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
@@ -435,14 +430,13 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_MOB_DEATH)
 	to_chat(wearer, SPAN_NOTICE("The [src] detects your death and starts injecting various chemicals to slow down your final demise!"))
-	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(onetime_use))
-	used = TRUE
+	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(reset_use))
 
-/obj/item/clothing/accessory/health/research_plate/anti_decay/proc/onetime_use()
+/obj/item/clothing/accessory/health/research_plate/anti_decay/proc/reset_use()
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_HUMAN_REVIVED)
-	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Chemical preservatives reserves depleted, replace the [src]"))
-	wearer.revive_grace_period = 5 MINUTES
+	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Registering user life signs, halting preservation efforts"))
+	wearer.revive_grace_period = 9 MINUTES
 
 
 

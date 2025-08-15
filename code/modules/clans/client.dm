@@ -17,7 +17,7 @@
 
 	create_new_clan(input)
 
-/client/verb/view_clan_info()
+CLIENT_VERB(view_clan_info)
 	set name = "View Clan Info"
 	set category = "OOC.Records"
 

@@ -94,6 +94,93 @@
 				sleep(5)
 				icon_state = initial(icon_state)
 
+/obj/structure/filingcabinet/research
+	name = "automated sorting cabinet"
+	desc = "Marvel of sorting technology. Automatically sorts any research document you place in it."
+	icon_state = "chestdrawer"
+	allowed_types = list(/obj/item/paper/research_report)
+	///contains references to all papers in the cabinet, for ease of looping.
+	var/list/paper_contents = list()
+
+/obj/structure/filingcabinet/research/attack_hand(mob/user)
+	tgui_interact(user)
+
+/obj/structure/filingcabinet/research/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AutosortingCabinet", name)
+		ui.open()
+
+/obj/structure/filingcabinet/research/ui_static_data(mob/user)
+	var/list/data = list()
+	for(var/document_obj in paper_contents)
+		var/obj/item/paper/research_report/document_report = document_obj
+		var/chemical_value = 0
+		var/list/properties_codes_level = list()
+		for(var/datum/chem_property/properties_document in document_report?.data?.properties)
+			if(document_report.completed) //only evaluate completed documents.
+				var/attitude = (isNegativeProperty(properties_document) ? -1.5 : (isNeutralProperty(properties_document) ? -1 : 1) )
+				//this should give us the absolutely rough estimate of how good paper is, value var on properties are a mess, so nada.
+				chemical_value += properties_document.level * attitude
+				properties_codes_level += list(list(
+				"code" = properties_document.code,
+				"level" = properties_document.level))
+		chemical_value += document_report.data.overdose / 5
+		var/list/document_spliced = splittext(document_report.name," ")
+		data["paper_data"] += list(list(
+			"name" = document_report.data.name,
+			"document_id" = document_report.data?.id,
+			"completed" = document_report.completed,
+			"overdose" = document_report.data.overdose,
+			"overall_value" = chemical_value,
+			"document_type" = (document_spliced[1] == "Contract" ? 1 : (document_spliced[1] == "Synthesis" ? 2 : 3)),
+			"properties_list" = properties_codes_level,
+		))
+	if(!length(data["paper_data"]))
+		data["paper_data"] = null
+	return data
+/obj/structure/filingcabinet/research/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	switch(action)
+		if("take_out_document")
+			for(var/obj/item/paper/research_report/document_report as anything in paper_contents)
+				if(document_report.data?.id != params["document_id"])
+					continue
+				ui.user.put_in_hands(document_report)
+				LAZYREMOVE(paper_contents, document_report)
+				update_static_data_for_all_viewers()
+				return TRUE
+
+
+/obj/structure/filingcabinet/research/attackby(obj/item/attacked_item, mob/user)
+	if(HAS_TRAIT(attacked_item, TRAIT_TOOL_WRENCH))
+		return ..()
+	if(istype(attacked_item, /obj/item/paper/research_notes))
+		var/obj/item/paper/research_notes/note = attacked_item
+		if(note.note_type != "synthesis")
+			return
+		attacked_item = note.convert_to_chem_report()
+	for(var/allowed_type in allowed_types)
+		if(istype(attacked_item, allowed_type))
+			var/obj/item/paper/research_report/document_report = attacked_item
+			if(document_report.valid_report && !isnull(document_report.data))
+				var/duplicate = FALSE
+				for(var/obj/item/paper/research_report/document_inside in paper_contents)
+					if(document_inside.data.id == document_report.data.id)
+						duplicate = TRUE
+						to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but there is identical document already in the array."))
+						break
+				if(duplicate)
+					return
+				to_chat(user, SPAN_NOTICE("You slot a document into a sorting tray, and [src] whirs to life."))
+				user.drop_inv_item_to_loc(attacked_item, src)
+				LAZYADD(paper_contents, attacked_item)
+				icon_state = initial(icon_state)+"-open"
+				addtimer(VARSET_CALLBACK(src, icon_state, initial(icon_state)), 0.5 SECONDS)
+				update_static_data_for_all_viewers()
+			else
+				to_chat(user, SPAN_WARNING("You try to slot a document into a sorting tray, but is refused."))
+				return
 
 /*
  * Security Record Cabinets

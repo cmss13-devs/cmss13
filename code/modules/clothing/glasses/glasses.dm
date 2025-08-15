@@ -173,6 +173,7 @@
 	req_skill = SKILL_RESEARCH
 	req_skill_level = SKILL_RESEARCH_TRAINED
 	clothing_traits = list(TRAIT_REAGENT_SCANNER)
+	matter = list("glass" = 500,"plastic" = 500)
 
 /obj/item/clothing/glasses/science/prescription
 	name = "prescription reagent scanner HUD goggles"

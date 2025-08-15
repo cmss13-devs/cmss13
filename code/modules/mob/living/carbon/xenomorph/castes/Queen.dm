@@ -313,7 +313,8 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
-		/datum/action/xeno_action/onclick/tacmap
+		/datum/action/xeno_action/onclick/tacmap,
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 	)
 
 	inherent_verbs = list(
@@ -347,6 +348,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits,
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		//second macro
 	)
 
@@ -355,6 +357,7 @@
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 	)
 	claw_type = CLAW_TYPE_VERY_SHARP
 
@@ -447,6 +450,7 @@
 		make_combat_effective()
 
 	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+	AddComponent(/datum/component/seethrough_mob)
 	RegisterSignal(src, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(check_block))
 
 /mob/living/carbon/xenomorph/queen/proc/check_block(mob/queen, turf/new_loc)

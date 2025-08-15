@@ -487,6 +487,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/jungle/pistol, WEAR_FEET)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/night, WEAR_EYES)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs, WEAR_R_EAR)
+		new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/CLF/cct, WEAR_L_EAR)
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/clf/no_flag, WEAR_J_STORE)
 		new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
 

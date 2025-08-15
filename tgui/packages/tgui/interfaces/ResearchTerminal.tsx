@@ -5,6 +5,7 @@ import {
   Button,
   Divider,
   Flex,
+  ProgressBar,
   Section,
   Stack,
   Tabs,
@@ -14,6 +15,13 @@ import { Window } from 'tgui/layouts';
 
 export interface DocumentLog {
   ['XRF Scans']?: Array<DocumentRecord>;
+}
+export interface Chemical {
+  name: string;
+  property_hint: string;
+  recipe_hint: string;
+  id: string;
+  gen_tier: number;
 }
 
 export interface DocumentRecord {
@@ -35,6 +43,11 @@ interface TerminalProps {
   clearance_x_access: number;
   photocopier_error: number;
   printer_toner: number;
+  is_contract_picked: number;
+  contract_chems: Chemical[];
+  world_time: number;
+  next_reroll: number;
+  contract_cooldown: number;
 }
 
 interface ConfirmationProps extends ComponentProps<typeof Box> {
@@ -433,6 +446,7 @@ const ResearchManager = (props: {
         setConfirm={setConfirm}
       />
       <XClearanceConfirmation isConfirm={isConfirm} setConfirm={setConfirm} />
+      <Contracts />
     </Box>
   );
 };
@@ -452,6 +466,72 @@ const ErrorStack = () => {
         </Stack.Item>
       )}
     </Stack>
+  );
+};
+
+const Contracts = () => {
+  const { data, act } = useBackend<TerminalProps>();
+  const timeLeft = data.next_reroll - data.world_time;
+  const timeLeftPct = timeLeft / data.contract_cooldown;
+  const contractKeys =
+    data.contract_chems.length === 0
+      ? []
+      : Array.from(Array(data.contract_chems.length).keys());
+  return (
+    <Box px={'7px'}>
+      <Section title={'Chemical Contracts'} mt={'5px'}>
+        <ProgressBar
+          width="100%"
+          value={timeLeftPct}
+          ranges={{
+            average: [-Infinity, Infinity],
+          }}
+        >
+          <Box textAlign="center">
+            Contracts Refresh in: {Math.ceil(timeLeft / 10)}
+          </Box>
+        </ProgressBar>
+      </Section>
+      {contractKeys.map((value, key) => (
+        <Flex grow direction="row" key={key}>
+          <Flex.Item grow={1}>
+            <Section title={<span>{data.contract_chems[key].name}</span>} fill>
+              <span>
+                Difficulty:{' '}
+                {data.contract_chems[key].gen_tier === 1
+                  ? 'Easy'
+                  : data.contract_chems[key].gen_tier === 2
+                    ? 'Intermediate'
+                    : 'Hard'}
+              </span>
+              <Flex.Item>
+                Early assesment shows one part of the recipe is{' '}
+                {data.contract_chems[key].recipe_hint}
+              </Flex.Item>
+              <Flex.Item>
+                Early testing shows property of{' '}
+                {data.contract_chems[key].property_hint}
+              </Flex.Item>
+              <Button
+                my={1}
+                fluid
+                icon="print"
+                disabled={data.is_contract_picked}
+                tooltip={
+                  'Taking this contract will put a 5 minute cooldown on new chemical. You can only pick one.'
+                }
+                tooltipPosition="top"
+                onClick={() =>
+                  act('take_contract', { id: data.contract_chems[key].id })
+                }
+              >
+                {data.is_contract_picked ? 'UNAVAILABLE' : 'Take Contract'}
+              </Button>
+            </Section>
+          </Flex.Item>
+        </Flex>
+      ))}
+    </Box>
   );
 };
 
@@ -552,13 +632,21 @@ const ClearanceImproveButton = (props: {
   readonly setSelectedTab: React.Dispatch<React.SetStateAction<number>>;
   readonly setConfirm: React.Dispatch<React.SetStateAction<string | undefined>>;
 }) => {
-  const { data } = useBackend<TerminalProps>();
+  const { data, act } = useBackend<TerminalProps>();
   const { setSelectedTab, setConfirm } = props;
   const clearance_level = data.clearance_level;
   const x_access = data.clearance_x_access;
   const isDisabled = data.rsc_credits < data.broker_cost;
   return (
     <>
+      <Button
+        onClick={() => {
+          act('reprint_last_contract');
+        }}
+        tooltip={'Reprint Last picked contract in the case you lost it.'}
+      >
+        Reprint Last Contract
+      </Button>
       {clearance_level < 5 && (
         <Button
           disabled={isDisabled}
@@ -571,29 +659,23 @@ const ClearanceImproveButton = (props: {
         </Button>
       )}
       {clearance_level === 5 && x_access === 0 && (
-        <Flex.Item>
-          <Button
-            disabled={data.rsc_credits < 5}
-            onClick={() => {
-              setSelectedTab(1);
-              setConfirm('request_clearance_x_access');
-            }}
-          >
-            Request X (5)
-          </Button>
-        </Flex.Item>
+        <Button
+          disabled={data.rsc_credits < 5}
+          onClick={() => {
+            setSelectedTab(1);
+            setConfirm('request_clearance_x_access');
+          }}
+        >
+          Request X (5)
+        </Button>
       )}
-      {x_access !== 0 && (
-        <Flex.Item>
-          <Button disabled>Maximum clearance reached</Button>
-        </Flex.Item>
-      )}
+      {x_access !== 0 && <Button disabled>Maximum clearance reached</Button>}
     </>
   );
 };
 
 export const ResearchTerminal = () => {
-  const { data } = useBackend<TerminalProps>();
+  const { data, act } = useBackend<TerminalProps>();
   const [selectedTab, setSelectedTab] = useState(1);
   const [isConfirm, setConfirm] = useState<string | undefined>(undefined);
   return (

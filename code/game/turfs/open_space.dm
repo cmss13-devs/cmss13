@@ -71,9 +71,6 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		user.forceMove(below)
 		return
 
-/turf/open_space/is_weedable()
-	return NOT_WEEDABLE
-
 /turf/open_space/blackfoot
 	var/target_x = 1
 	var/target_y = 1

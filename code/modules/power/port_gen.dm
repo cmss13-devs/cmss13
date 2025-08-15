@@ -53,6 +53,7 @@ display floor(lastgen) and phorontank amount
 	unslashable = FALSE
 	power_gen = 5000
 	power_gen_percent = 100
+	is_on = FALSE
 
 	var/open = 0
 	var/recent_fault = 0

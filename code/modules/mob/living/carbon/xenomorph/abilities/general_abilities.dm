@@ -623,6 +623,7 @@
 	name = "Toggle Seethrough"
 	action_icon_state = "xenohide"
 	xeno_cooldown = 5 SECONDS
+	ability_primacy = XENO_BECOME_SEETHROUGH
 
 
 /datum/action/xeno_action/onclick/toggle_seethrough/use_ability(atom/target)

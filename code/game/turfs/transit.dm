@@ -155,7 +155,12 @@
 
 	overlays += chute
 	pixel_z = 360
+	var/old_area = get_area(src)
 	forceMove(target)
+	var/new_area = get_area(src)
+	// Update HUD for marines paradropping from dropship to ground
+	if(ismob(src))
+		update_dropship_hud_on_move(src, old_area, new_area)
 	playsound(src, 'sound/items/fulton.ogg', 30, 1)
 	animate(src, time = 3.5 SECONDS, pixel_z = 0, flags = ANIMATION_PARALLEL)
 	addtimer(CALLBACK(target, TYPE_PROC_REF(/turf, ceiling_debris)), 2 SECONDS)

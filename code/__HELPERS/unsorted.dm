@@ -1296,8 +1296,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
  * list - turfs from start_atom (in/exclusive) to end_atom (inclusive)
  */
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
+	if(!start_atom || !end_atom) // to fix null run time
+		return list()
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
+	if(!start_turf || !end_turf)
+		return list()
 	var/start_z
 
 	if(end_atom.z > start_atom.z)

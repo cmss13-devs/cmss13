@@ -508,6 +508,12 @@
 /obj/item/device/flashlight/flare/on/illumination/ex_act(severity)
 	return //Nope
 
+/obj/item/device/flashlight/flare/on/illumination/parachute //subtype for the dropship's flare launcher
+	name = "parachute flare"
+	desc = "A sparkling bright light in the sky. It gently falls down with a small parachute."
+	light_range = 4
+	light_power = 3
+
 /obj/item/device/flashlight/flare/on/starshell_ash
 	name = "burning star shell ash"
 	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, or it'll burn ya'."
@@ -707,3 +713,33 @@
 	signal.linked_cam = new(loc, name)
 	GLOB.cas_groups[FACTION_MARINE].add_signal(signal)
 	anchored = TRUE
+
+//Dropship spotlight beam - creates light at target location
+/obj/item/device/flashlight/spotlight_beam
+	name = "Spotlight Beam"
+	desc = "A bright beam of light shining down from the sky."
+	icon_state = ""
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
+	light_range = 14
+	light_power = 3
+	on = TRUE
+	toggleable = FALSE
+	raillight_compatible = FALSE
+	can_be_broken = FALSE
+	w_class = SIZE_TINY
+
+/obj/item/device/flashlight/spotlight_beam/Initialize()
+	. = ..()
+	set_light_range(light_range)
+	set_light_power(light_power)
+	set_light_on(TRUE)
+
+/obj/item/device/flashlight/spotlight_beam/attack_hand(mob/user)
+	if (!user) return
+
+/obj/item/device/flashlight/spotlight_beam/attack_self(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+
+	. = ..()

@@ -335,6 +335,17 @@ GLOBAL_LIST_EMPTY(wy_droid_categories)
 /// dict ("category" : (emotes)) of every wy droid emote typepath
 GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 
+//Maintenance Repair Tools
+GLOBAL_LIST_INIT(dropship_repair_tool_types, list(
+	"WELDER" = /obj/item/tool/weldingtool,
+	"SCREWDRIVER" = /obj/item/tool/screwdriver,
+	"WRENCH" = /obj/item/tool/wrench,
+	"WIRECUTTERS" = /obj/item/tool/wirecutters,
+	"CROWBAR" = /obj/item/tool/crowbar,
+	"MULTITOOL" = /obj/item/device/multitool,
+	"CABLE COIL" = /obj/item/stack/cable_coil,
+))
+
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]
 	if(!.)

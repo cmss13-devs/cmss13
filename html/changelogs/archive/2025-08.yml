@@ -110,3 +110,30 @@
   - bugfix: changed secure_open_medical to secure_medical_open
   hry-gh:
   - bugfix: fixes a runtime when checking cursor preferences
+2025-08-15:
+  BOBAMAx:
+  - bugfix: CLF CO survs now actually spawn, CO survs in PMC insert will no longer
+      be CMB
+  Blundir:
+  - bugfix: fixed type 19 incorrect attachment offsets
+  - rscadd: aid kits now have dynamically rendered items inside them when aid kit
+      is open
+  DarkLordCabbage:
+  - spellcheck: fixed typos/grammatical errors in whiskey outpost announcements
+  FishyFlaps2024:
+  - rscadd: Adds reagent scanner HUD goggles to the medilathe
+  Red-byte3D:
+  - code_imp: Added a transparent sprite ability for the queen
+  - bugfix: Queen icon for orbit alerts is better now
+  Steelpoint:
+  - rscadd: An antiZed autoinjector has been added to the game, a single-use device
+      that contains a cure for the zombie pathogen.
+  realforest2001:
+  - rscadd: Added equipment presets for UACQS.
+  - rscadd: Added CIA roles to the crew monitor.
+  - rscadd: Added a CIA clothing vendor.
+  - rscadd: Added lockable versions of the blue and black leather satchels.
+  - rscadd: Added a variable that determines if signs can be deconstructed, and forbids
+      it on no-smoking signs and the RO plaque.
+  zzzmike:
+  - qol: facehuggers can crawl onto nested targets

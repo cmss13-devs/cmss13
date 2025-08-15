@@ -79,6 +79,9 @@
 /datum/action/xeno_action/onclick/choose_resin/queen_macro //so it doesn't screw other macros up
 	ability_primacy = XENO_PRIMARY_ACTION_4 //it's important that hivelord and drone have the same macros because their playstyle is similar, but it's not as important for queen since her playstyle is very different
 
+/datum/action/xeno_action/onclick/choose_resin/burrower
+	ability_primacy = XENO_NOT_PRIMARY_ACTION
+
 // Secrete Resin
 /datum/action/xeno_action/activable/secrete_resin
 	name = "Secrete Resin"
@@ -418,14 +421,6 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.layer == XENO_HIDING_LAYER)
 		button.icon_state = "template_active"
-
-/datum/action/xeno_action/onclick/place_trap
-	name = "Place resin hole (200)"
-	action_icon_state = "place_trap"
-	plasma_cost = 200
-	macro_path = /datum/action/xeno_action/verb/verb_resin_hole
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
 
 /datum/action/xeno_action/activable/place_construction
 	name = "Order Construction (400)"

@@ -38,9 +38,9 @@
 	update_icon()
 
 
-/obj/item/storage/box/m56c_system
-	name = "\improper M56C smartgun system case"
-	desc = "A large case containing an M56C Smartgun, M56 combat harness, head mounted sight, M280 Smartgunner Drum Belt and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
+/obj/item/storage/box/m56a2c_system
+	name = "\improper M56A2C smartgun system case"
+	desc = "A large case containing an M56A2C Smartgun, M56 combat harness, head mounted sight, M280 Smartgunner Drum Belt and powerpack.\nDrag this sprite into you to open it up! NOTE: You cannot put items back inside this case."
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "kit_case"
 	w_class = SIZE_HUGE
@@ -49,7 +49,7 @@
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = null
 
-/obj/item/storage/box/m56c_system/Initialize()
+/obj/item/storage/box/m56a2c_system/Initialize()
 	. = ..()
 	new /obj/item/clothing/glasses/night/m56_goggles(src)
 	new /obj/item/weapon/gun/smartgun/co(src)

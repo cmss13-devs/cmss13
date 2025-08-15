@@ -801,8 +801,8 @@
 
 //CO SMARTGUN
 /obj/item/weapon/gun/smartgun/co
-	name = "\improper M56C 'Cavalier' smartgun"
-	desc = "The actual firearm in the 4-piece M56C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.\nAlt-click it to open the feed cover and allow for reloading."
+	name = "\improper M56A2C 'Cavalier' smartgun"
+	desc = "The actual firearm in the 4-piece M56A2C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.\nAlt-click it to open the feed cover and allow for reloading."
 	icon_state = "m56c"
 	item_state = "m56c"
 	var/mob/living/carbon/human/linked_human
@@ -898,8 +898,8 @@
 
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/terminator
-	name = "\improper M50R 'Terminator' smartgun"
-	desc = "The actual experimental firearm in the 4-piece M50R Smartgun System. Essentially a heavy, mobile machinegun. This one looks slightly outdated, but far more menacing.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	name = "\improper M57R 'Terminator' smartgun"
+	desc = "The actual experimental firearm in the 4-piece M57R Smartgun System. Essentially a heavy, mobile machinegun. This one looks slightly outdated, but far more menacing.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
 	icon_state = "m50r"
 	item_state = "m50r"
 	can_change_ammo = FALSE //Only one ammo type, no toggling.
@@ -913,6 +913,10 @@
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
+
+/obj/item/weapon/gun/smartgun/terminator/Initialize(mapload, ...)
+	. = ..()
+	toggle_aim_assist(null, TRUE)
 
 /obj/item/weapon/gun/smartgun/terminator/low_threat
 	current_mag = /obj/item/ammo_magazine/smartgun
@@ -1025,7 +1029,7 @@
 			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
 			balloon_alert(user, "*jammed*")
 		return NONE
-	else if(prob(0.4)) //0.4% chance to jam on fire
+	else if(prob(0.6)) //0.6% chance to jam on fire
 		jammed = TRUE
 		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
 		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))

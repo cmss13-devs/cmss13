@@ -599,6 +599,20 @@
 /obj/item/storage/pouch/magazine/large/m16/ap/black
 	icon_state = "wy_ammo_mag"
 
+/obj/item/storage/pouch/magazine/large/mp5/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/mp5(src)
+
+/obj/item/storage/pouch/magazine/large/mp5/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/mp5/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/mp5/ap(src)
+
+/obj/item/storage/pouch/magazine/large/mp5/ap/black
+	icon_state = "wy_ammo_mag"
+
 /obj/item/storage/pouch/magazine/large/rifle_heap
 	icon_state = "wy_ammo_mag"
 

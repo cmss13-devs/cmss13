@@ -16,10 +16,6 @@ CIA informant.
 	//name = "CIA"
 	assignment = JOB_CIA_RU
 
-/datum/equipment_preset/cia/analyst
-	//name = "CIA Agent (Civilian Clothing)"
-	assignment = JOB_CIA_CIVILIAN_RU
-
 /datum/equipment_preset/cia/officer
 	//name = "CIA Agent (USCM Liaison - 1st Lieutenant)"
 	assignment = JOB_CIA_LIAISON_RU

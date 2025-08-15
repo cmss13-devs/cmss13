@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@happy-dom/global-registrator": "^17.4.7",
+    "@swc/register": "^0.1.10",
     "@types/bun": "^1.2.14",
     "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",

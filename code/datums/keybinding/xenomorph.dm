@@ -236,3 +236,18 @@
 
 	var/mob/living/carbon/xenomorph/current_xeno = user?.mob
 	current_xeno.reset_strain()
+
+/datum/keybinding/xenomorph/plant_weeds
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "plant_weeds"
+	full_name = "Plant Weeds"
+	keybind_signal = COMSIG_KB_XENO_PLANT_WEEDS
+
+/datum/keybinding/xenomorph/plant_weeds/down(client/user)
+    . = ..()
+    if(.)
+        return
+    var/mob/living/carbon/xenomorph/xeno = user.mob
+    xeno.xeno_plant_weeds_action()
+    return TRUE

@@ -7,7 +7,10 @@ on:
     types: [ready_for_review, opened, synchronize, reopened]
 jobs:
   triage:
-    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: [self-hosted]
     steps:
       - uses: eps1lon/actions-label-merge-conflict@v2.1.0
         with:

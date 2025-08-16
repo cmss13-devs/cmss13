@@ -1,0 +1,4 @@
+author: "MistChristmas"
+delete-after: True
+changes:
+  - ui: "Security Records: adds a scrollbar to Individual records. Centers Title and New Record button. Slightly moves the Photo window. Moves the record delete button to the right hand-side. OW Console: Slightly aligns the search bar and Squad Panel in the Squad Monitor."

@@ -1,4 +1,4 @@
-/datum/prefab_document/provost/mp/apology_notice/New()
+/datum/prefab_document/provost/mp/apology_notice/New() // BANDAMARINES Translate
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	var/dat = ""
 
@@ -94,21 +94,21 @@
 	dat += "<!--Header Info here-->"
 	dat += "<div class=\"message-header-text\">"
 	dat += "<hr style=\"margin-top:5px; margin-bottom:-15px;\">"
-	dat += "<p class=\"header-title\">Notice of Formal Apology</p>"
+	dat += "<p class=\"header-title\">Официальное извинение</p>"
 	dat += "<p class=\"header-subtitle\">NJ910</p>"
 	dat += "<hr style=\"margin-top:-15px; margin-bottom:15px;\">"
 	dat += "</div> <!-- /Heasder Info -->"
 	dat += ""
 	dat += ""
 	dat += "<div class=\"message-body-text\">"
-	dat += "<b>To:</b> <span class=\"paper_field\"></span>"
+	dat += "<b>Кому:</b> <span class=\"paper_field\"></span>"
 	dat += "<br>"
-	dat += "<b>From:</b> <span class=\"paper_field\"></span>"
+	dat += "<b>От:</b> <span class=\"paper_field\"></span>"
 	dat += "<br><br><hr style=\"margin-top:-20px; margin-bottom:10px;\">"
-	dat += "<p><u>Statement</u></p>"
+	dat += "<p><u>Заявление</u></p>"
 	dat += "<span class=\"paper_field\"></span>"
 	dat += "<br><br>"
-	dat += "Sincerely,<br>"
+	dat += "С уважением,<br>"
 	dat += "<span class=\"paper_field\"></span>"
 	dat += ""
 	dat += ""

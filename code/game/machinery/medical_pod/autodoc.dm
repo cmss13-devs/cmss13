@@ -682,7 +682,7 @@
 /obj/structure/machinery/autodoc_console/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Autodoc", "Autodoc")
+		ui = new(user, src, "Autodoc", capitalize(declent_ru())) // BANDAMARINES EDIT - Translation
 		ui.open()
 
 /obj/structure/machinery/autodoc_console/ui_state(mob/user)
@@ -726,7 +726,8 @@
 			if(!(NO_BLOOD in human_occupant.species.flags))
 				occupantData["pulse"] = human_occupant.get_pulse(GETPULSE_TOOL)
 				occupantData["hasBlood"] = 1
-				occupantData["bloodLevel"] = floor(occupant.blood_volume)
+				occupantData["bloodType"] = occupant.blood_type // SS220 - EDIT ADDITTION
+				occupantData["bloodLevel"] = floor(occupant.blood_volume * 10) // SS220 - EDIT ADDITTION
 				occupantData["bloodMax"] = occupant.max_blood
 				occupantData["bloodPercent"] = round(100*(occupant.blood_volume/occupant.max_blood), 0.01)
 

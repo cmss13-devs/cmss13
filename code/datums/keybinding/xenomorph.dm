@@ -245,9 +245,16 @@
 	keybind_signal = COMSIG_KB_XENO_PLANT_WEEDS
 
 /datum/keybinding/xenomorph/plant_weeds/down(client/user)
-    . = ..()
-    if(.)
-        return
-    var/mob/living/carbon/xenomorph/xeno = user.mob
-    xeno.xeno_plant_weeds_action()
-    return TRUE
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/plant_weeds/plant = get_action(xeno, /datum/action/xeno_action/onclick/plant_weeds)
+	if(plant)
+		if(plant && !plant.hidden)
+			handle_xeno_macro_datum(xeno, plant)
+			return TRUE
+	var/datum/action/xeno_action/activable/expand_weeds/expand = get_action(xeno, /datum/action/xeno_action/activable/expand_weeds)
+	if(expand && !expand.hidden)
+		handle_xeno_macro_datum(xeno, expand)
+		return TRUE

@@ -211,7 +211,7 @@
 /turf/open/floor/plating/burnt_platingdmg3,
 /area/varadero/interior/maintenance/research)
 "fp" = (
-/obj/item/paper/research_notes/good{
+/obj/item/paper/research_notes/unique/tier_three{
 	pixel_x = -15;
 	pixel_y = 2
 	},

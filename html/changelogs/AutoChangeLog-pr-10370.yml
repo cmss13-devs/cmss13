@@ -1,4 +1,0 @@
-author: "TheGamerdk"
-delete-after: True
-changes:
-  - bugfix: "Kill feed now preserves the first letter of the killing weapon"

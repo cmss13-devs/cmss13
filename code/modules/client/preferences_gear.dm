@@ -804,6 +804,12 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/weapon/gun/pistol/m4a3/custom
 	allowed_origins = USCM_ORIGINS
 
+/datum/gear/weapon/m4a4
+	display_name = "M4A4 Service Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/m4a4
+	allowed_origins = USCM_ORIGINS
+	fluff_cost = 2
+
 /datum/gear/weapon/m44_custom_revolver
 	display_name = "M44 Custom Revolver"
 	path = /obj/item/weapon/gun/revolver/m44/custom

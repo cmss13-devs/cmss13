@@ -60,7 +60,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	var/selected = GLOB.prefab_papers[chosen].type
 	if(!user.Adjacent(src))
 		return
- 
+
 	var/obj/item/paper/prefab/document = new selected
 	document.forceMove(user.loc)
 	user.put_in_hands(document)
@@ -120,6 +120,11 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 /obj/item/paper/prefab/Initialize()
 	. = ..()
 	name = document_title || "BLANK"
+
+/obj/item/paper/prefab/uacqs_notice
+	document_title = "UACQS Inspection Notice"
+	doc_datum_type = /datum/prefab_document/uacqs/commissioner
+	document_category = "UACQS"
 
 // ########## Provost MP Forms  ########## \\
 

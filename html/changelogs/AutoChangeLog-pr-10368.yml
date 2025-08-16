@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - rscadd: "Added a QOL warning to the overwatch console when no squads are available."

@@ -115,7 +115,7 @@
 		to_chat(user, SPAN_WARNING("Its already destroyed!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(stat & explo_proof)
+	if(explo_proof)
 		to_chat(user, SPAN_WARNING("Its too strong for us!"))
 		return XENO_NO_DELAY_ACTION
 
@@ -234,9 +234,11 @@
 
 /obj/structure/platform/metal/stair_cut/almayer_smooth_left
 	icon_state = "platform_sm_stair"
+	explo_proof = TRUE
 
 /obj/structure/platform/metal/stair_cut/almayer_smooth_right
 	icon_state = "platform_sm_stair_alt"
+	explo_proof = TRUE
 
 //------------------------------//
 //    Stone Stairs Platforms    //
@@ -299,6 +301,7 @@
 
 /obj/structure/platform/metal/almayer_smooth
 	icon_state = "platform_sm"
+	explo_proof = TRUE
 
 /obj/structure/platform/metal/almayer_smooth/north
 	dir = NORTH
@@ -484,6 +487,7 @@
 
 /obj/structure/platform_decoration/metal/almayer_smooth
 	icon_state = "platform_sm_deco"
+	explo_proof = TRUE
 
 /obj/structure/platform_decoration/metal/almayer_smooth/north
 	dir = NORTH

@@ -75,3 +75,65 @@
   hry-gh:
   - server: the server can now be configured to ingest runtimes to sentry
   - code_imp: browser preference storage has changed (again)
+2025-08-11:
+  Drathek:
+  - bugfix: Mass screenshot verb now can handle offset maps (like multiz Almayer)
+  hry-gh:
+  - server: the server can now support external authentication, you require a separate
+      service outside the game to modify the database
+2025-08-12:
+  IroquoisLou:
+  - rscdel: Removed reference to player in the description of the 50 dollar bill
+  LTNTS:
+  - bugfix: Gives GP Medbay Access
+2025-08-13:
+  LTNTS:
+  - bugfix: gives CBRN rifleman skilless toxin bottles in their medikit pouch
+  Puckaboo2:
+  - rscadd: Added a secure personal field doctor crate pre-filled with a wrench and
+      crowbar to Field Equipment Storage.
+  - rscadd: Added a secure replacement field doctor gear supply pack.
+  - rscadd: Added secure medical crates for future purposes.
+  - imageadd: Added icon states for secure medical crates.
+  - code_imp: added a new datum under supply packs for the Field Doctor crate.
+  - spellcheck: Fixed some grammatical errors.
+  Zenith:
+  - rscadd: Added six new MK30 flight visors to the PO's clothing vendor.
+  - rscadd: Added black MK30 flight visors to all M30 helmets by default.
+  wgtjunior743:
+  - rscadd: New level of firearms skill
+  - balance: Change the firearms skill of several jobs
+2025-08-14:
+  BOBAMAx:
+  - bugfix: decorative z level ledges on the almayer no longer break
+  dadlips:
+  - bugfix: changed secure_open_medical to secure_medical_open
+  hry-gh:
+  - bugfix: fixes a runtime when checking cursor preferences
+2025-08-15:
+  BOBAMAx:
+  - bugfix: CLF CO survs now actually spawn, CO survs in PMC insert will no longer
+      be CMB
+  Blundir:
+  - bugfix: fixed type 19 incorrect attachment offsets
+  - rscadd: aid kits now have dynamically rendered items inside them when aid kit
+      is open
+  DarkLordCabbage:
+  - spellcheck: fixed typos/grammatical errors in whiskey outpost announcements
+  FishyFlaps2024:
+  - rscadd: Adds reagent scanner HUD goggles to the medilathe
+  Red-byte3D:
+  - code_imp: Added a transparent sprite ability for the queen
+  - bugfix: Queen icon for orbit alerts is better now
+  Steelpoint:
+  - rscadd: An antiZed autoinjector has been added to the game, a single-use device
+      that contains a cure for the zombie pathogen.
+  realforest2001:
+  - rscadd: Added equipment presets for UACQS.
+  - rscadd: Added CIA roles to the crew monitor.
+  - rscadd: Added a CIA clothing vendor.
+  - rscadd: Added lockable versions of the blue and black leather satchels.
+  - rscadd: Added a variable that determines if signs can be deconstructed, and forbids
+      it on no-smoking signs and the RO plaque.
+  zzzmike:
+  - qol: facehuggers can crawl onto nested targets

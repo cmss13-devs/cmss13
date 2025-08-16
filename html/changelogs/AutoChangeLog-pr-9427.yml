@@ -1,4 +1,0 @@
-author: "hry-gh"
-delete-after: True
-changes:
-  - server: "the server can now support external authentication, you require a separate service outside the game to modify the database"

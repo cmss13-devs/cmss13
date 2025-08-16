@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
 "aK" = (
 /turf/open/floor/prison/darkpurple2/north,
 /area/navalis/indoors/med_sci/upper_level/sci_lab)
@@ -167,6 +171,7 @@
 /turf/open/floor/prison/blue/east,
 /area/navalis/indoors/med_sci/upper_level/sci_scan)
 "pB" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/navalis/indoors/med_sci/upper_level/sci_scan)
 "pE" = (
@@ -517,7 +522,6 @@
 	dir = 1;
 	flipped = 1
 	},
-/obj/item/paper/research_notes/good,
 /obj/structure/machinery/power/apc{
 	dir = 8
 	},
@@ -635,6 +639,7 @@
 	dir = 1;
 	pixel_x = 16
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkpurplefull2,
 /area/navalis/indoors/med_sci/upper_level/sci_scan)
 "YC" = (
@@ -1007,7 +1012,7 @@ PM
 Dw
 nw
 aK
-qv
+aa
 iq
 iq
 iq

@@ -145,7 +145,7 @@
 	max_points = 300
 	delay = 0.5
 	force = MELEE_FORCE_STRONG
-	req_access = list()
+	req_access = list(ACCESS_CIA)
 
 	listed_products = list(
 		list("STATIONERY", 0, null, null, null),
@@ -154,12 +154,16 @@
 		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
 
-		list("WEAPONS", 0, null, null, null),
+		list("WEAPONS (NON-LETHAL)", 0, null, null, null),
 		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge."),
 		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "white", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
 		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
 		list("Sedative Pen", 15, /obj/item/tool/pen/sleepypen, "white", "A sedative syringe disguised as a pen. Can be used to stealthily knock out targets."),
 		list("Handcuffs", 2, /obj/item/restraint/handcuffs, "white", "A set of handcuffs."),
+
+		list("WEAPONS (LETHAL)", 0, null, null, null),
+		list("W62 'Whisper' pistol", 25, /obj/item/storage/box/plinker, "white", "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory."),
+		list("AC71 'Action' holdout pistol", 25, /obj/item/storage/box/action, "white", "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory."),
 
 		list("AMMUNITION", 0, null, null, null),
 		list("M1911 Magazine", 5, /obj/item/ammo_magazine/pistol/m1911, "white", "A magazine for an M1911 pistol."),
@@ -170,6 +174,8 @@
 		list("Listening Device", 20, /obj/item/device/radio/listening_bug/radio_linked/cia, "white", "A listening device. Can be disguised as anything by right-clicking on it."),
 		list("USCM Codebook", 20, /obj/item/book/codebook, "white", "A copy of a USCM codebook used to verify credentials with the commanding officer."),
 		list("Tools Kit", 15, /obj/item/storage/toolbox/mechanical, "white", "A toolbox containing general tools."),
+		list("Ceramic Plate", 15, /obj/item/clothing/accessory/health/ceramic_plate, "white", "A strong trauma plate, able to protect the user from a large amount of bullets. Ineffective against sharp objects."),
+		list("Cyanide Pill", 15, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 		list("CIA Challenge Coin", 15, /obj/item/coin/silver/cia, "white", "A challenge coin emblazoned with an eagle. Use to identify other CIA operatives on the field at a glance."),
 
 		list("MARINE CLOTHING", 0, null, null, null),

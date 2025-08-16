@@ -424,7 +424,7 @@
 		caste = GLOB.xeno_datum_list[caste_type]
 
 		//Fire immunity signals
-		if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
+		if (HAS_FLAG(caste.fire_immunity, FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_NO_IGNITE | FIRE_IMMUNITY_XENO_FRENZY))
 			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
 				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 

@@ -1,6 +1,0 @@
-author: "SRG3124, Dimdimich1996"
-delete-after: True
-changes:
-  - rscadd: "Added the L64 Battle Rifle to the RMC's arsenal"
-  - rscdel: "Removed the L42A3 from the RMC's arsenal"
-  - soundadd: "added sounds for the L64"

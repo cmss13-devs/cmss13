@@ -11,6 +11,10 @@
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return FALSE
 
+	if(key in GLOB.event_mob_players)
+		to_chat(src, SPAN_WARNING("You have already played as an event mob this round! You cannot respawn!"))
+		return FALSE
+
 	var/list/event_mob_choices = GLOB.event_mob_landmarks.Copy()
 	for(var/obj/effect/landmark/event_mob_spawn/pos_spawner in event_mob_choices)
 		if(pos_spawner.being_spawned)
@@ -40,18 +44,23 @@
 	var/spawn_preset_path
 	/// Whether or not the landmark is already in use.
 	var/being_spawned = FALSE
-
 	/// Whether or not the event mob is forced to use random name.
 	var/always_random_name = FALSE
 
 	/// The title, if one, that appears in the join list.
 	var/custom_join_title
 
-	/// Override of the mob's assignment on IDs.
+	/// Override of the mob's 'assignment' variable on ID card.
 	var/custom_assignment
+	/// Override of the mob's 'rank' variable on ID card.
+	var/custom_job_title
+	/// Override of the mob's paygrade on ID card.
+	var/custom_paygrade
 
 	/// Whether or not to wait on setup of this landmark, intended for manual preparation mid-round.
 	var/delay_setup = FALSE
+	/// How many uses the landmark has, defaulting to 1.
+	var/num_uses = 1
 
 /obj/effect/landmark/event_mob_spawn/midround
 	delay_setup = TRUE
@@ -93,7 +102,11 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_mob_spawn), observer), 1 SECONDS)
 
 /obj/effect/landmark/event_mob_spawn/proc/handle_mob_spawn(mob/dead/observer/observer)
-	var/mob/living/carbon/human/new_player = observer.change_mob_type(/mob/living/carbon/human, get_turf(src), null, TRUE, SPECIES_HUMAN)
+	var/use_random_name = always_random_name
+	if(!isobserver(observer.mind.original))
+		use_random_name = TRUE
+
+	var/mob/living/carbon/human/new_player = observer.change_mob_type(/mob/living/carbon/human, get_turf(src), null, TRUE, SPECIES_HUMAN, TRUE)
 	if(!ishuman(new_player))
 		message_admins("Something went wrong with preparing an event mob.")
 		qdel(src)
@@ -102,10 +115,26 @@
 	if(!new_player.hud_used)
 		new_player.create_hud()
 
-	var/use_random_name = always_random_name
-	if(new_player.mind.original && !isobserver(new_player.mind.original))
-		use_random_name = TRUE
-
-	arm_equipment(new_player, spawn_preset_path, randomise = use_random_name, count_participant = TRUE, mob_client = new_player.client, show_job_gear = TRUE)
+	arm_equipment(new_player, spawn_preset_path, use_random_name, count_participant = TRUE)
 	message_admins("[key_name_admin(new_player)] joined an event mob! ([name])")
-	qdel(src)
+	GLOB.event_mob_players += new_player.key
+
+	var/obj/item/card/id/id_card = new_player.get_idcard()
+	if(id_card)
+		if(custom_assignment)
+			id_card.assignment = custom_assignment
+			id_card.name = "[id_card.registered_name]'s [id_card.id_type] ([id_card.assignment])"
+		if(custom_job_title)
+			id_card.rank = custom_job_title
+		if(custom_paygrade)
+			id_card.paygrade = custom_paygrade
+
+	num_uses--
+	if(num_uses <= 0)
+		qdel(src)
+	else
+		being_spawned = FALSE
+
+/obj/effect/landmark/event_mob_spawn/debug
+	custom_join_title = "Debugging Spawn"
+	spawn_preset_path = /datum/equipment_preset/uscm_event/colonel

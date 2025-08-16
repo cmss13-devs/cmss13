@@ -2,7 +2,7 @@
 //This proc is the most basic of the procs. All it does is make a new mob on the same tile and transfer over a few variables.
 //Returns the new mob
 //Note that this proc does NOT do MMI related stuff!
-/mob/proc/change_mob_type(new_type = null, turf/location = null, new_name = null as text, delete_old_mob = 0 as num, subspecies)
+/mob/proc/change_mob_type(new_type = null, turf/location = null, new_name = null as text, delete_old_mob = FALSE, subspecies, datacore_check = FALSE)
 	if(istype(src,/mob/new_player))
 		to_chat(usr, SPAN_DANGER("Cannot convert players who have not entered yet."))
 		return
@@ -40,7 +40,7 @@
 		H.set_species(subspecies)
 
 	if(M.client && M.client.prefs)
-		M.client.prefs.copy_all_to(M)
+		M.client.prefs.copy_all_to(M, check_datacore = datacore_check)
 
 	if(istext(new_name))
 		M.change_real_name(M, new_name)

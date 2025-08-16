@@ -456,7 +456,7 @@
 	icon_state = "hawkeye_jacket_u"
 	item_state = "hawkeye_jacket_u"
 
-/obj/item/clothing/suit/storage/marine/fluff/chimera //CKEY=theultimatechimera
+/obj/item/clothing/suit/storage/marine/fluff/blackfoot //CKEY=theultimatechimera
 	name = "Brett's Trenchcoat"
 	desc = "A trenchcoat of authority.  DONOR ITEM"
 	icon_state = "hos"
@@ -968,7 +968,7 @@
 	)
 	flags_inventory = BLOCKSHARPOBJ
 
-/obj/item/clothing/head/helmet/marine/fluff/chimera //CKEY=theultimatechimera
+/obj/item/clothing/head/helmet/marine/fluff/blackfoot //CKEY=theultimatechimera
 	name = "Brett's hat"
 	desc = "A fancy beret.  DONOR ITEM"
 	icon_state = "hosberet"

@@ -186,9 +186,128 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/lz_dunes)
+"aaU" = (
+/obj/structure/platform/metal/kutjevo/west,
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/power/comms)
+"aaV" = (
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany/east_tech)
+"aaW" = (
+/obj/structure/machinery/firealarm/north,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/complex/botany/east_tech)
+"aaX" = (
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/interior/colony_south/power2)
 "aaY" = (
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/colony_south)
+"aaZ" = (
+/obj/structure/machinery/alarm/west,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany/east_tech)
+"aba" = (
+/obj/structure/machinery/firealarm/west,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/colony_south/power2)
+"abb" = (
+/obj/item/tool/wirecutters/clippers,
+/obj/structure/machinery/alarm/north,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/complex/botany)
+"abc" = (
+/obj/structure/machinery/firealarm/west,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/interior/colony_south/power2)
+"abd" = (
+/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/machinery/alarm/west,
+/turf/open/floor/kutjevo/multi_tiles/southwest,
+/area/kutjevo/interior/colony_south/power2)
+"abe" = (
+/obj/structure/machinery/alarm/east,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany/east)
+"abf" = (
+/obj/item/device/radio/intercom/north,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/power/comms)
+"abg" = (
+/obj/structure/machinery/alarm/north,
+/turf/open/floor/kutjevo/multi_tiles/southwest,
+/area/kutjevo/interior/colony_south/power2)
+"abh" = (
+/obj/structure/machinery/alarm/east,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
+"abi" = (
+/obj/structure/machinery/firealarm/east,
+/turf/open/floor/kutjevo/colors/orange/edge/west,
+/area/kutjevo/interior/power_pt2_electric_boogaloo)
+"abj" = (
+/obj/structure/machinery/firealarm/west,
+/turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/interior/colony_south/power2)
+"abk" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib6"
+	},
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/botany)
+"abl" = (
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/east)
+"abm" = (
+/obj/item/device/radio/intercom/east,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/interior/complex/med)
+"abn" = (
+/obj/structure/machinery/firealarm/east,
+/turf/open/floor/kutjevo/multi_tiles/west,
+/area/kutjevo/interior/complex/med/locks)
+"abo" = (
+/obj/structure/machinery/firealarm/east,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"abp" = (
+/obj/structure/machinery/alarm/west,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"abq" = (
+/obj/structure/surface/rack,
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/construction/east)
+"abr" = (
+/obj/structure/machinery/alarm/south,
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/kutjevo/interior/complex/Northwest_Flight_Control)
+"abs" = (
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
+"abt" = (
+/obj/item/device/radio/intercom/west,
+/turf/open/floor/kutjevo/colors/purple/edge/west,
+/area/kutjevo/interior/construction/north)
+"abu" = (
+/obj/item/device/radio/intercom/north,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/foremans_office)
+"abv" = (
+/obj/structure/machinery/firealarm/east,
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/construction/north)
+"abw" = (
+/obj/structure/machinery/alarm/east,
+/turf/open/floor/kutjevo/tan/grey_edge/east,
+/area/kutjevo/interior/complex/Northwest_Dorms)
 "abz" = (
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_full"
@@ -384,6 +503,7 @@
 /area/kutjevo/exterior/scrubland/south)
 "aqC" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/obj/item/device/radio/intercom/north,
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/operating)
 "aqO" = (
@@ -606,6 +726,7 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
+/obj/structure/machinery/alarm/east,
 /turf/open/floor/kutjevo/colors/cyan,
 /area/kutjevo/interior/complex/med)
 "aFc" = (
@@ -1354,6 +1475,7 @@
 /area/kutjevo/interior/colony_south/power2)
 "bMu" = (
 /obj/structure/bed/sofa/south/grey,
+/obj/item/device/radio/intercom/north,
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/complex/Northwest_Dorms)
 "bNk" = (
@@ -2218,7 +2340,6 @@
 	health = null;
 	id = "kutjevo_medlock_east";
 	idle_power_usage = 0;
-	explo_proof = 1;
 	name = "Medical East Lock Override";
 	pixel_y = 22;
 	range = 15
@@ -3055,6 +3176,7 @@
 /area/kutjevo/exterior/lz_pad)
 "ejP" = (
 /obj/structure/bed/sofa/south/grey/left,
+/obj/item/device/radio/intercom/north,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central/mine_elevator)
 "ejT" = (
@@ -3760,6 +3882,7 @@
 /area/kutjevo/exterior/runoff_dunes)
 "fme" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks,
+/obj/item/device/radio/intercom/north,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "fmr" = (
@@ -4775,6 +4898,7 @@
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "gUS" = (
+/obj/structure/machinery/alarm/west,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/complex/med/locks)
 "gUZ" = (
@@ -6547,6 +6671,7 @@
 /area/kutjevo/interior/colony_southeast)
 "jZL" = (
 /obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/machinery/firealarm/west,
 /turf/open/floor/kutjevo/colors/purple/edge/east,
 /area/kutjevo/interior/construction/north)
 "jZT" = (
@@ -6936,7 +7061,6 @@
 	health = null;
 	id = "kutjevo_medlock_west";
 	idle_power_usage = 0;
-	explo_proof = 1;
 	name = "Medical West Lock Override";
 	pixel_y = 22;
 	range = 15
@@ -8086,6 +8210,7 @@
 /area/kutjevo/exterior/stonyfields)
 "mmh" = (
 /obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/machinery/alarm/north,
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/cells)
 "mmH" = (
@@ -10226,6 +10351,7 @@
 "psu" = (
 /obj/structure/filingcabinet,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/device/radio/intercom/west,
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "psz" = (
@@ -11274,7 +11400,6 @@
 	health = null;
 	id = "kutjevo_hydlock_east";
 	idle_power_usage = 0;
-	explo_proof = 1;
 	name = "Hydroponics East Lock Override";
 	pixel_x = -8;
 	pixel_y = 4
@@ -11283,7 +11408,6 @@
 	health = null;
 	id = "kutjevo_hydlock_west";
 	idle_power_usage = 0;
-	explo_proof = 1;
 	name = "Hydroponics West Lock Override";
 	pixel_x = 8;
 	pixel_y = 4
@@ -12660,6 +12784,7 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29"
 	},
+/obj/structure/machinery/alarm/south,
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction/north)
 "toV" = (
@@ -13578,6 +13703,7 @@
 	dir = 8;
 	icon_state = "p_stair_sn_full_cap"
 	},
+/obj/item/device/radio/intercom/east,
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/auto_doc)
 "uKT" = (
@@ -15383,6 +15509,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/exterior/Northwest_Colony)
 "xCc" = (
+/obj/structure/machinery/firealarm/east,
 /turf/open/gm/dirtgrassborder2/wall3,
 /area/kutjevo/exterior/complex_border/med_park)
 "xDR" = (
@@ -20261,7 +20388,7 @@ hdP
 hdP
 hdP
 hdP
-hdP
+aaU
 jMo
 tlN
 dxF
@@ -22208,7 +22335,7 @@ hoK
 hoK
 ybd
 nZK
-jnr
+abr
 hoK
 fEu
 xNF
@@ -22250,7 +22377,7 @@ wVK
 wVK
 wVK
 tlN
-tWM
+abf
 tWM
 tWM
 moL
@@ -23183,7 +23310,7 @@ jnV
 wno
 vER
 wnK
-mLY
+abw
 awJ
 klu
 jnV
@@ -30401,8 +30528,8 @@ koX
 meY
 uHP
 lhY
-uHP
-uHP
+abp
+abo
 lZz
 dic
 tKY
@@ -30722,7 +30849,7 @@ pCS
 pzG
 hVQ
 wLp
-uHP
+abs
 uHP
 gTo
 bXc
@@ -31920,7 +32047,7 @@ fpO
 nnf
 aqO
 xOU
-tFh
+abk
 foI
 nvd
 emn
@@ -32578,7 +32705,7 @@ oVX
 snr
 lxd
 uIg
-pzH
+abm
 hrv
 uIg
 bjj
@@ -33279,7 +33406,7 @@ kDS
 alh
 mbS
 mbS
-qGA
+abb
 xfW
 nCM
 mbS
@@ -35431,7 +35558,7 @@ xWK
 jhx
 xWK
 dip
-kHm
+abh
 kHm
 kHm
 kHm
@@ -35918,7 +36045,7 @@ fpJ
 fpJ
 fpJ
 eSq
-fpJ
+abn
 lfb
 gUS
 ktq
@@ -36114,7 +36241,7 @@ oQc
 wtH
 mJq
 mdw
-xkk
+abe
 qRq
 xkk
 xkk
@@ -36433,7 +36560,7 @@ xWK
 xWK
 toV
 phv
-stt
+abi
 stt
 eOc
 rQY
@@ -36956,10 +37083,10 @@ jKN
 jKN
 jKN
 rRl
-jKN
+aaZ
 rRl
 jKN
-jKN
+aaV
 rRl
 mCd
 khI
@@ -37061,14 +37188,14 @@ aaC
 aau
 uQa
 aaA
-aaA
+abv
 alo
 cPv
 qCi
 qCi
 qCi
 kmm
-qCi
+abt
 lLH
 cdE
 mYM
@@ -38901,7 +39028,7 @@ hUk
 hUk
 hUk
 bbW
-oUh
+abu
 vMd
 abZ
 abZ
@@ -39129,7 +39256,7 @@ kVJ
 kVJ
 jhS
 hMu
-cXL
+aaW
 cXL
 iiN
 duP
@@ -40630,7 +40757,7 @@ qGx
 efr
 qGx
 shX
-qGx
+aba
 acD
 vSE
 acD
@@ -40775,7 +40902,7 @@ eTT
 jhx
 bKH
 xoM
-okv
+abj
 rIn
 qCy
 ctV
@@ -41299,7 +41426,7 @@ slx
 qGx
 shX
 duu
-okv
+aaX
 duu
 mMH
 mMH
@@ -41601,7 +41728,7 @@ tAQ
 pih
 jBe
 aag
-aah
+abl
 aah
 aag
 aag
@@ -41612,7 +41739,7 @@ feg
 rdm
 rdm
 rdm
-klE
+abg
 klE
 klE
 qGx
@@ -41961,7 +42088,7 @@ wdt
 oYQ
 mcv
 sJm
-vUi
+abd
 bLW
 slx
 qGx
@@ -42590,7 +42717,7 @@ mnT
 uiK
 pih
 jtD
-bsm
+abq
 bsm
 pJt
 euj
@@ -42964,7 +43091,7 @@ slx
 qGx
 pbR
 klE
-pbR
+abc
 sAf
 gCh
 vaa

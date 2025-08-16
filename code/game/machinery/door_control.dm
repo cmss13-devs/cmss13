@@ -208,6 +208,25 @@
 		if(!(stat & NOPOWER))
 			icon_state = initial(icon_state) + "0"
 
+/obj/structure/machinery/door_control/south
+	dir = SOUTH
+	pixel_y = -16
+
+/obj/structure/machinery/door_control/north
+	dir = NORTH
+	pixel_y = 30
+
+/obj/structure/machinery/door_control/east
+	dir = EAST
+	pixel_x = 21
+
+/obj/structure/machinery/door_control/west
+	dir = WEST
+	pixel_x = -21
+
+/obj/structure/machinery/door_control/flat
+	dir = NORTHWEST
+
 /obj/structure/machinery/door_control/yautja
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 

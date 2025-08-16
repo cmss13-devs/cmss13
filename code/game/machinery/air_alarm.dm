@@ -61,7 +61,7 @@
 /obj/structure/machinery/alarm
 	name = "alarm"
 	icon = 'icons/obj/structures/machinery/monitors.dmi' // I made these really quickly because idk where they have their new air alarm ~Art
-	icon_state = "alarm0"
+	icon_state = "alarmp"
 	anchored = TRUE
 	use_power = USE_POWER_IDLE
 	idle_power_usage = 80
@@ -1023,7 +1023,20 @@ table tr:first-child th:first-child { border: none;}
 		. += "The circuit is missing."
 
 
+/obj/structure/machinery/alarm/south
+	dir = SOUTH
 
+/obj/structure/machinery/alarm/north
+	dir = NORTH
+	pixel_y = 19
+
+/obj/structure/machinery/alarm/east
+	dir = EAST
+	pixel_x = 8
+
+/obj/structure/machinery/alarm/west
+	dir = WEST
+	pixel_x = -8
 
 /obj/structure/machinery/alarm/monitor
 	apply_danger_level = 0
@@ -1040,9 +1053,4 @@ table tr:first-child th:first-child { border: none;}
 	TLV["pressure"] = list(0,ONE_ATMOSPHERE*0.10,ONE_ATMOSPHERE*1.40,ONE_ATMOSPHERE*1.60) /* kpa */
 	TLV["temperature"] = list(20, 40, 140, 160) // K
 	target_temperature = 90
-
-
-//Almayer version
-/obj/structure/machinery/alarm/almayer
-
 

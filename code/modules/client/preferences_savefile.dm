@@ -737,6 +737,7 @@
 	S["traits"] >> traits
 
 	S["preferred_squad"] >> preferred_squad
+	S["preferred_spec"] >> preferred_spec
 	S["preferred_armor"] >> preferred_armor
 	S["night_vision_preference"] >> night_vision_preference
 	S["weyland_yutani_relation"] >> weyland_yutani_relation
@@ -823,6 +824,7 @@
 		religion = RELIGION_AGNOSTICISM
 	if(!preferred_squad)
 		preferred_squad = "None"
+	preferred_spec = sanitize_list(preferred_spec, allow=GLOB.specialist_set_name_dict)
 
 	// =================================
 	// SS220 EDIT - TTS
@@ -906,6 +908,7 @@
 
 	S["weyland_yutani_relation"] << weyland_yutani_relation
 	S["preferred_squad"] << preferred_squad
+	S["preferred_spec"] << preferred_spec
 	S["preferred_armor"] << preferred_armor
 	S["night_vision_preference"] << night_vision_preference
 	//S["skin_style"] << skin_style

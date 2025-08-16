@@ -1906,7 +1906,7 @@
 /turf/open/floor/whitegreen/north,
 /area/whiskey_outpost/inside/hospital)
 "hH" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/engineering)
 "hI" = (
@@ -5452,7 +5452,7 @@
 /area/whiskey_outpost/outside/north/beach)
 "xc" = (
 /obj/structure/machinery/light/small,
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/engineering)
 "xg" = (
@@ -7837,7 +7837,7 @@
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/lane/three_south)
 "JA" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/light/small,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/engineering)

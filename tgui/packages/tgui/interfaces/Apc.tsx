@@ -48,6 +48,11 @@ export const Apc = (props) => {
 };
 
 const powerStatusMap = {
+  3: {
+    color: 'average',
+    externalPowerText: 'Local Power',
+    chargingText: 'Charging',
+  },
   2: {
     color: 'good',
     externalPowerText: 'External Power',

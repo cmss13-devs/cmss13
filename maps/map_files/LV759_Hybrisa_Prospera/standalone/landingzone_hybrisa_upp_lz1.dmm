@@ -1157,7 +1157,7 @@
 /turf/open/floor/strata/orange_edge,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "fv" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /obj/structure/largecrate/random/mini{
 	pixel_x = 6;
 	pixel_y = 18

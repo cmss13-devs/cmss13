@@ -3977,7 +3977,7 @@
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/east_central_street)
 "cfd" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -6963,7 +6963,7 @@
 	},
 /area/lv522/indoors/c_block/mining)
 "dFH" = (
-/obj/structure/machinery/power/port_gen/pacman{
+/obj/structure/machinery/power/power_generator/port_gen/pacman{
 	layer = 3.1;
 	pixel_y = 6
 	},
@@ -11680,7 +11680,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/cargo)
 "gpB" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/asphalt/cement/cement12,
 /area/lv522/outdoors/colony_streets/south_west_street)
 "gpN" = (
@@ -18291,7 +18291,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/a_block/admin)
 "jUy" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "jUI" = (
@@ -25632,7 +25632,7 @@
 /turf/open/floor/prison,
 /area/lv522/indoors/c_block/casino)
 "nFO" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv522/outdoors/nw_rockies)
 "nGe" = (
@@ -30446,7 +30446,7 @@
 /turf/open/floor/carpet,
 /area/lv522/indoors/a_block/dorm_north)
 "qlD" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs{
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs{
 	layer = 3.1;
 	pixel_y = 6
 	},
@@ -32752,7 +32752,7 @@
 /turf/open/floor/strata/blue1,
 /area/lv522/indoors/a_block/dorm_north)
 "rgk" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /turf/open/floor/prison/darkbrownfull2,
 /area/lv522/indoors/c_block/cargo)
 "rgA" = (
@@ -36634,7 +36634,7 @@
 /area/lv522/outdoors/colony_streets/south_east_street)
 "teE" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/asphalt/cement,
 /area/lv522/indoors/lone_buildings/engineering)
 "teO" = (
@@ -36821,7 +36821,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/port_gen/pacman{
+/obj/structure/machinery/power/power_generator/port_gen/pacman{
 	layer = 2.9
 	},
 /turf/open/floor/prison/darkyellowfull2/east,
@@ -39090,7 +39090,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "upK" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/asphalt/cement,
 /area/lv522/outdoors/colony_streets/central_streets)
 "upP" = (
@@ -40897,7 +40897,7 @@
 	},
 /area/lv522/landing_zone_forecon/UD6_Typhoon)
 "vir" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /obj/structure/machinery/camera/autoname,
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -41892,7 +41892,7 @@
 /turf/open/floor/prison/darkpurplefull2,
 /area/lv522/indoors/a_block/dorms)
 "vGk" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/auto_turf/shale/layer1,
 /area/lv522/outdoors/colony_streets/central_streets)
 "vGo" = (
@@ -41915,7 +41915,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv522/indoors/a_block/dorms)
 "vGP" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/lv522/indoors/lone_buildings/engineering)
 "vHd" = (
@@ -44287,7 +44287,7 @@
 /area/lv522/indoors/c_block/t_comm)
 "wPt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/prison/darkyellowfull2/east,
 /area/lv522/indoors/lone_buildings/outdoor_bot)
 "wPN" = (

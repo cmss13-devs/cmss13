@@ -1,4 +1,68 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"ab" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"ac" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"ad" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"ae" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_dunes)
+"af" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"ag" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"ah" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"ai" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"aj" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"ak" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"al" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"am" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"an" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
 "as" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 5
@@ -191,6 +255,7 @@
 	name = "????";
 	stat = 2
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/lz_dunes)
 "hV" = (
@@ -1866,9 +1931,9 @@ Ot
 up
 up
 up
-wS
-up
-up
+ak
+Ch
+pX
 up
 wS
 up
@@ -2198,7 +2263,7 @@ nh
 ks
 rY
 Is
-up
+ho
 FQ
 up
 up
@@ -2242,12 +2307,12 @@ nh
 vI
 wY
 Is
-Pp
-FQ
-Pp
-Pp
-Pp
 NK
+FQ
+ab
+Pp
+Pp
+aa
 lV
 SP
 sL
@@ -2285,11 +2350,11 @@ nh
 nh
 hA
 wY
-Is
-Pp
+ac
+PB
 FQ
 Pp
-Pp
+ab
 Pp
 PB
 lV
@@ -2327,10 +2392,10 @@ nh
 nh
 nh
 nh
-kZ
+ag
 wY
-Is
-Pp
+ad
+PB
 FQ
 Pp
 xp
@@ -2372,9 +2437,9 @@ nh
 nh
 nh
 ks
-wY
+ae
 Is
-up
+ho
 FQ
 up
 ho
@@ -2417,8 +2482,8 @@ nh
 nh
 vI
 wY
-Is
-up
+ad
+mf
 lm
 XJ
 XJ
@@ -2461,7 +2526,7 @@ nh
 nh
 oc
 wY
-Is
+ad
 Vg
 lm
 iC
@@ -2505,7 +2570,7 @@ nh
 nh
 kZ
 wY
-Is
+ad
 up
 fv
 kG
@@ -2549,7 +2614,7 @@ bH
 Uw
 ss
 wY
-Is
+ad
 up
 lm
 HK
@@ -2702,7 +2767,7 @@ Tf
 ra
 ra
 ra
-ra
+al
 LC
 ra
 pL
@@ -2746,7 +2811,7 @@ Xa
 up
 Dw
 up
-Dw
+am
 up
 He
 Vo
@@ -2790,7 +2855,7 @@ Xa
 Dw
 up
 Dw
-up
+yG
 Dw
 Nt
 hg
@@ -2811,7 +2876,7 @@ gR
 Jt
 MA
 up
-Dw
+ah
 up
 Is
 Pp
@@ -2834,13 +2899,13 @@ Xa
 up
 NB
 MN
-Dw
+an
 up
 kh
 GN
 np
 Is
-Pp
+aj
 lm
 Fd
 YP
@@ -2858,7 +2923,7 @@ np
 up
 Dw
 Is
-Pp
+ab
 PB
 ex
 SP
@@ -2900,7 +2965,7 @@ cW
 aF
 hG
 Dw
-up
+af
 Is
 PB
 NK
@@ -2943,7 +3008,7 @@ up
 Dw
 mf
 jz
-up
+af
 Dw
 Is
 up
@@ -2985,7 +3050,7 @@ TG
 UB
 UB
 FJ
-UB
+kA
 HF
 HF
 UB
@@ -3031,7 +3096,7 @@ BK
 lm
 Kc
 Bd
-Bd
+ai
 Kc
 up
 up

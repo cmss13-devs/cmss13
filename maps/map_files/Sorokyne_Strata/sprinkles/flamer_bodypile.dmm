@@ -76,7 +76,9 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "ls" = (
-/obj/structure/platform_decoration/metal/strata/west,
+/obj/structure/platform_decoration/metal/strata/west{
+	color = "#858680"
+	},
 /obj/effect/decal/large_stain{
 	pixel_x = 4;
 	pixel_y = -1
@@ -102,7 +104,9 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "re" = (
-/obj/structure/platform/metal/strata/east,
+/obj/structure/platform/metal/strata/east{
+	color = "#858680"
+	},
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	pixel_x = 4;
 	pixel_y = -2
@@ -132,7 +136,9 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "vf" = (
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/north{
+	color = "#858680"
+	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
@@ -206,7 +212,9 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/strata/exterior/outpost_decks)
 "FN" = (
-/obj/structure/platform_decoration/metal/strata,
+/obj/structure/platform_decoration/metal/strata{
+	color = "#858680"
+	},
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
@@ -221,7 +229,9 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/exterior/outpost_decks)
 "GB" = (
-/obj/structure/platform_decoration/metal/strata/east,
+/obj/structure/platform_decoration/metal/strata/east{
+	color = "#858680"
+	},
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
@@ -261,7 +271,9 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "IC" = (
-/obj/structure/platform/metal/strata/north,
+/obj/structure/platform/metal/strata/north{
+	color = "#858680"
+	},
 /obj/effect/decal/large_stain{
 	pixel_x = -4;
 	pixel_y = -16
@@ -315,7 +327,9 @@
 /area/strata/exterior/outpost_decks)
 "LB" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/platform_decoration/metal/strata/north,
+/obj/structure/platform_decoration/metal/strata/north{
+	color = "#858680"
+	},
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/exterior/outpost_decks)
 "Mg" = (
@@ -373,7 +387,9 @@
 /turf/closed/wall/strata_outpost/reinforced,
 /area/strata/exterior/outpost_decks)
 "PN" = (
-/obj/structure/platform/metal/strata/east,
+/obj/structure/platform/metal/strata/east{
+	color = "#858680"
+	},
 /obj/effect/decal/large_stain{
 	pixel_x = -5;
 	pixel_y = -1
@@ -389,7 +405,9 @@
 /area/strata/exterior/outpost_decks)
 "Qc" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/platform/metal/strata,
+/obj/structure/platform/metal/strata{
+	color = "#858680"
+	},
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "QW" = (
@@ -405,12 +423,14 @@
 /area/strata/exterior/outpost_decks)
 "RD" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/obj/structure/platform/metal/strata,
 /obj/effect/decal/large_stain{
 	pixel_x = -3;
 	pixel_y = -21
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/strata{
+	color = "#858680"
+	},
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "RR" = (
@@ -439,7 +459,9 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "XO" = (
-/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata/west{
+	color = "#858680"
+	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
@@ -451,7 +473,9 @@
 /turf/open/floor/strata,
 /area/strata/exterior/outpost_decks)
 "Zr" = (
-/obj/structure/platform/metal/strata/west,
+/obj/structure/platform/metal/strata/west{
+	color = "#858680"
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ash{
 	color = "#858680"

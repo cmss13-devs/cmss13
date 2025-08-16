@@ -549,6 +549,7 @@
 		if(istype(object, /obj/effect/alien/resin/trap) || istype(object, /obj/effect/alien/egg))
 			object.HasProximity(src)
 	next_haul_resist = 0
+	SEND_SIGNAL(src, COMSIG_MOB_UNHAULED)
 
 
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)

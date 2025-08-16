@@ -86,7 +86,8 @@ $scrollbar-color-multiplier: 0.5 !default;
     '~tgui/styles/components/Button',
     $with: (
       'color-default': base.$color-fg,
-      'color-disabled': color.adjust(base.$color-fg, $lightness: -30%)
+      'color-disabled': color.adjust(base.$color-fg, $lightness: -30%),
+      'color-selected': color.adjust(base.$color-fg, $lightness: 10%)
     )
   );
 

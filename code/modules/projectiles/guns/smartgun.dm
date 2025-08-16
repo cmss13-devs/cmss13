@@ -907,8 +907,8 @@
 	ammo_primary_def = /datum/ammo/bullet/smartgun/heap
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
-		/datum/action/item_action/smartgun/toggle_auto_fire,
 		/datum/action/item_action/smartgun/toggle_frontline_mode,
+		/datum/action/item_action/smartgun/toggle_aim_assist,
 		/datum/action/item_action/smartgun/toggle_lethal_mode,
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,

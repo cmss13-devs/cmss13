@@ -13,43 +13,6 @@
 /obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
-"aad" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
-/area/tyrargo/underground/bunker/ammo_dump_connection)
-"aae" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/underground/bunker/ammo_dump_connection)
-"aaf" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/underground/bunker/south)
-"aag" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
-/area/tyrargo/underground/bunker/south)
-"aah" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
-/area/tyrargo/underground/bunker/north)
-"aai" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/floor/corsat,
-/area/tyrargo/underground/bunker/north)
 "aaj" = (
 /turf/open_space,
 /area/tyrargo/oob)
@@ -67,12 +30,6 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_exterior/south_east)
-"aan" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aao" = (
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -120,12 +77,6 @@
 "aas" = (
 /turf/open/asphalt/cement,
 /area/tyrargo/oob)
-"aat" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/central)
 "aau" = (
 /obj/structure/machinery/light{
 	light_color = "#A7DBB6"
@@ -157,19 +108,16 @@
 "aaB" = (
 /turf/open/floor/strata/green4/east,
 /area/tyrargo/indoors/market/ground)
-"aaC" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/north_west_usasf)
 "aaD" = (
 /turf/open/floor/strata/green3/west,
 /area/tyrargo/indoors/market/ground)
 "aaE" = (
 /turf/open/floor/strata/green3/east,
 /area/tyrargo/indoors/market/ground)
+"aaF" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer_hull/outerhull_dir,
+/area/tyrargo/oob/outdoors)
 "aaG" = (
 /turf/open/hybrisa/street/sidewalk,
 /area/tyrargo/oob/outdoors)
@@ -179,13 +127,6 @@
 "aaI" = (
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/indoors/sewer_treatment/upper)
-"aaJ" = (
-/obj/effect/decal/grass_overlay/grass1/dark,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts_road/west)
 "aaK" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -233,13 +174,6 @@
 "aaS" = (
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/south_ground)
-"aaT" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/hybrisa/street/roadlines4,
-/area/tyrargo/outdoors/colony_streets/north_west)
 "aaU" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
@@ -272,13 +206,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/engineering/ground)
-"aba" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/asphalt,
-/area/tyrargo/outdoors/outskirts_road/east)
 "abb" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/cement2,
@@ -606,6 +533,10 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/underground/museum_carpark)
+"abV" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer_hull,
+/area/tyrargo/oob/outdoors)
 "abW" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	pixel_x = -1
@@ -3397,13 +3328,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northwest,
 /area/tyrargo/indoors/sewer_treatment/ground)
-"ajp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/asphalt,
-/area/tyrargo/outdoors/colony_streets/north_west)
 "ajq" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northeast,
@@ -9912,9 +9836,6 @@
 "ayQ" = (
 /obj/item/prop/colony/used_flare,
 /obj/effect/decal/hybrisa/road/roadmiddle,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "ayR" = (
@@ -15647,9 +15568,6 @@
 "aMK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/landing_zone_2/east_trench)
 "aML" = (
@@ -17273,6 +17191,10 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/fsb_north)
+"aPL" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer_hull/outerhull_dir/east,
+/area/tyrargo/oob/outdoors)
 "aPM" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
@@ -18661,12 +18583,6 @@
 /obj/structure/platform_decoration/metal/hybrisa/metalplatformdeco3/east,
 /turf/open/floor/prison/ramptop/east,
 /area/tyrargo/landing_zone_2)
-"aSL" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/colony_streets/north)
 "aSM" = (
 /turf/open/floor/almayer/plating_stripedcorner/north,
 /area/tyrargo/landing_zone_2)
@@ -24262,12 +24178,6 @@
 /obj/structure/flora/wood/stick1,
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
-"bdc" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/central)
 "bdd" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/decal/grass_overlay/grass1/dark{
@@ -24284,15 +24194,6 @@
 "bde" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/northwest,
 /area/tyrargo/landing_zone_2)
-"bdf" = (
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 4
-	},
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/central)
 "bdg" = (
 /obj/structure/flora/grass/tallgrass/ice,
 /turf/open/auto_turf/snow/brown_base/layer1,
@@ -25822,12 +25723,6 @@
 "bgE" = (
 /turf/open/floor/coagulation/icon0_0,
 /area/tyrargo/indoors/sewer_treatment/lower)
-"bgF" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/asphalt,
-/area/tyrargo/outdoors/colony_streets/north_west)
 "bgG" = (
 /obj/effect/blocker/water,
 /turf/open/floor/plating,
@@ -27484,9 +27379,6 @@
 	pixel_x = -10;
 	pixel_y = -5
 	},
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/landing_zone_2/east_trench)
 "bkj" = (
@@ -28244,12 +28136,6 @@
 /obj/effect/decal/grass_overlay/grass1/dark,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
-"blM" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/indoors/security/ground)
 "blN" = (
 /obj/structure/flora/tree/tyrargo{
 	pixel_x = -14;
@@ -36744,9 +36630,6 @@
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bEA" = (
 /obj/item/prop/colony/used_flare,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud_alt,
 /area/tyrargo/outdoors/outskirts_road/west)
 "bEB" = (
@@ -38709,22 +38592,6 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer3,
 /area/tyrargo/oob/outdoors)
-"bIY" = (
-/obj/effect/decal/hybrisa/tiretrack{
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 8
-	},
-/obj/effect/decal/hybrisa/tiretrack{
-	dir = 4;
-	pixel_x = 1;
-	pixel_y = 8
-	},
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/north_east_usasf)
 "bIZ" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_3";
@@ -43010,6 +42877,16 @@
 "bTJ" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/outdoors/outskirts/central)
+"bTK" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/area/tyrargo/oob/outdoors)
+"bTL" = (
+/turf/open/floor/almayer_hull/outerhull_dir_alt/southwest,
+/area/tyrargo/indoors/comms/upper)
+"bTM" = (
+/turf/closed/wall/strata_outpost/reinforced/hull,
+/area/tyrargo/outdoors/colony_exterior/north)
 "bTP" = (
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
@@ -58424,12 +58301,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/west,
 /area/tyrargo/indoors/mall)
-"cPZ" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/indoors/mall)
 "cQa" = (
 /obj/structure/surface/table/almayer,
 /obj/item/prop/geiger_counter,
@@ -58635,12 +58506,6 @@
 "cQM" = (
 /turf/open/floor/strata/green2,
 /area/tyrargo/indoors/mall)
-"cQN" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/floor/strata/green2,
-/area/tyrargo/indoors/mall)
 "cQO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -58826,9 +58691,6 @@
 /area/tyrargo/indoors/mall/upper)
 "cRt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 10
 	},
@@ -66453,17 +66315,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts_road/central)
-"dlc" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3";
-	pixel_y = -12
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/asphalt,
-/area/tyrargo/outdoors/colony_streets/west)
 "dld" = (
 /obj/item/prop/alien/hugger,
 /turf/open/auto_turf/tyrargo_grass/layer0,
@@ -66474,12 +66325,6 @@
 /obj/item/device/m56d_gun,
 /obj/item/device/m56d_post,
 /turf/open/asphalt/cement,
-/area/tyrargo/outdoors/colony_streets/west)
-"dlf" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/west)
 "dlg" = (
 /obj/effect/landmark/corpsespawner/tyrargo/us_army_trooper,
@@ -66516,13 +66361,6 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
-"dlm" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/obj/effect/decal/grass_overlay/grass1/dark,
-/turf/open/asphalt/cement/cement4,
-/area/tyrargo/outdoors/colony_streets/west)
 "dln" = (
 /obj/item/storage/surgical_tray/empty,
 /turf/open/floor/plating/platingdmg1,
@@ -71750,9 +71588,6 @@
 /obj/effect/decal/siding{
 	icon_state = "siding5"
 	},
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_west)
 "dyo" = (
@@ -76409,9 +76244,6 @@
 	layer = 5
 	},
 /obj/effect/decal/cleanable/blood/drip,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /turf/open/floor/corsat,
 /area/tyrargo/underground/mall)
 "dJG" = (
@@ -76449,13 +76281,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/underground/apartment)
-"dJL" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/underground/mall)
 "dJM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/hybrisa/misc/trash_bag_full_prop{
@@ -76790,9 +76615,6 @@
 "dKD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dKE" = (
@@ -76899,9 +76721,6 @@
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/underground/mall)
 "dKU" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 5
 	},
@@ -82939,15 +82758,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/central)
-"dZH" = (
-/obj/item/device/flashlight/flare/on{
-	fuel_rate = 5
-	},
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/central)
 "dZI" = (
 /obj/structure/prop/rock/black_ground{
 	dir = 5
@@ -86996,7 +86806,7 @@
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
 "ejl" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
+/obj/effect/landmark/xeno_hive_spawn,
 /turf/open/hybrisa/street/asphalt,
 /area/tyrargo/indoors/museum_storage/upper)
 "ejm" = (
@@ -94794,16 +94604,6 @@
 /obj/structure/platform/stone/tyrargo/west,
 /turf/open/auto_turf/snow/brown_base/layer2,
 /area/tyrargo/outdoors/outskirts/central/landing_zone)
-"eDl" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/obj/structure/flora/bush/ausbushes/var3/sparsegrass{
-	pixel_x = 10;
-	pixel_y = -7
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/central)
 "eDm" = (
 /obj/effect/decal/strata_decals/tyrargo_mud_corner{
 	dir = 6
@@ -100650,24 +100450,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_sticky,
 /turf/open/asphalt,
 /area/tyrargo/outdoors/colony_streets/north_east)
-"eSN" = (
-/obj/effect/decal/strata_decals/tyrargo_mud_corner{
-	dir = 6
-	},
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/east)
-"eSO" = (
-/obj/effect/decal/strata_decals/tyrargo_mud_corner{
-	dir = 9
-	},
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/east)
 "eSP" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/prop/hybrisa/misc/fire/fire1{
@@ -100695,35 +100477,6 @@
 	},
 /turf/open/floor/interior/wood/alt,
 /area/tyrargo/outdoors/outskirts/fsb_north)
-"eSS" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/east)
-"eST" = (
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 4
-	},
-/obj/effect/decal/grass_overlay/grass1/dark,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/central)
-"eSU" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/east)
-"eSV" = (
-/obj/effect/decal/grass_overlay/grass1/dark,
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/east)
 "eSW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -101313,12 +101066,6 @@
 /obj/structure/girder,
 /turf/open/floor/corsat/marked,
 /area/tyrargo/outdoors/colony_streets/south_west)
-"eUS" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
-	},
-/turf/open/auto_turf/tyrargo_grass/layer1,
-/area/tyrargo/outdoors/outskirts/central)
 "eUT" = (
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/landing_zone_1/no_mans_land)
@@ -103344,6 +103091,7 @@
 	pixel_x = 2;
 	pixel_y = -5
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/tyrargo/oob/outdoors)
 "faM" = (
@@ -103375,12 +103123,14 @@
 /area/tyrargo/oob/outdoors)
 "faO" = (
 /obj/item/ammo_casing/bullet,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob/outdoors)
 "faP" = (
 /obj/item/explosive/mine/active/no_iff{
 	dir = 8
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob/outdoors)
 "faQ" = (
@@ -103420,12 +103170,14 @@
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob/outdoors)
 "faS" = (
 /obj/item/ammo_magazine/rifle/heap{
 	current_rounds = 0
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob/outdoors)
 "faT" = (
@@ -103480,6 +103232,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
+/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull,
 /area/tyrargo/oob/outdoors)
 "faZ" = (
@@ -113044,9 +112797,6 @@
 	dir = 6;
 	pixel_x = 5;
 	pixel_y = 6
-	},
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 0
 	},
 /turf/open/asphalt/cement,
 /area/tyrargo/outdoors/colony_streets/north_west)
@@ -126780,7 +126530,7 @@ ekX
 eku
 eku
 bXy
-aae
+bVX
 bXq
 bVX
 bVX
@@ -129110,7 +128860,7 @@ bsw
 bsw
 bsO
 eku
-aaf
+bXY
 bZr
 eku
 bsO
@@ -129989,7 +129739,7 @@ eku
 eku
 caO
 caS
-aai
+caS
 caS
 cdG
 cdE
@@ -131022,7 +130772,7 @@ bWc
 bWj
 bWj
 bWd
-aad
+bWd
 bWy
 bWd
 bWl
@@ -131285,7 +131035,7 @@ eku
 eku
 cMb
 caz
-aah
+caz
 caz
 caz
 caO
@@ -131853,7 +131603,7 @@ bsw
 caA
 cRc
 caz
-aah
+caz
 caz
 bgB
 caO
@@ -132599,7 +132349,7 @@ caF
 bXZ
 bXZ
 bZm
-aag
+bXZ
 bXZ
 bYb
 bsw
@@ -132850,7 +132600,7 @@ bsw
 bsw
 bsw
 bXP
-aae
+bVX
 bVX
 bsw
 bsw
@@ -133353,7 +133103,7 @@ bsw
 bsw
 bZk
 cLZ
-aaf
+bXY
 bXY
 bXY
 bZk
@@ -149536,7 +149286,7 @@ dAe
 dIU
 dAe
 dAe
-dJL
+dIU
 dJC
 dRF
 dRE
@@ -162264,7 +162014,7 @@ bxJ
 bxJ
 bxJ
 bDN
-aan
+bBJ
 bBW
 bBJ
 bxJ
@@ -163709,7 +163459,7 @@ cLx
 mRz
 bxL
 bwi
-aaC
+bFt
 bxJ
 cKv
 boJ
@@ -165720,7 +165470,7 @@ baT
 bxz
 bxz
 dcJ
-aaJ
+bDj
 byp
 byp
 etJ
@@ -171099,7 +170849,7 @@ bnk
 bnj
 byX
 bmZ
-bIY
+bmT
 bxr
 bBt
 bxr
@@ -171958,7 +171708,7 @@ bGt
 bFj
 bEL
 bBg
-eDl
+eul
 bBg
 bMq
 bBg
@@ -173651,7 +173401,7 @@ bBg
 bBg
 bBg
 bBg
-aat
+bBg
 bBg
 eEx
 bCH
@@ -173666,7 +173416,7 @@ etZ
 bBg
 bBg
 bBg
-dZH
+bKo
 bBg
 bBg
 bJD
@@ -174168,7 +173918,7 @@ bBg
 bBg
 etV
 bCb
-bdc
+bBD
 bBD
 bBD
 bBD
@@ -174357,7 +174107,7 @@ bBE
 bBE
 bBE
 bBE
-bdc
+bBD
 dEg
 etP
 bBg
@@ -174526,7 +174276,7 @@ bBg
 bBg
 bOH
 bOy
-bdf
+bCb
 etP
 bBg
 bLq
@@ -174888,7 +174638,7 @@ bBg
 bBg
 bBh
 bBg
-eST
+bCz
 bCb
 bCb
 bIe
@@ -175251,7 +175001,7 @@ bBg
 bBh
 bQs
 bBg
-eST
+bCz
 brd
 aRa
 bBD
@@ -175279,7 +175029,7 @@ aJG
 aJD
 aOc
 bBw
-aat
+bBg
 bBg
 bBg
 bEL
@@ -175984,7 +175734,7 @@ bRh
 bQY
 bzy
 bwE
-eSU
+bwE
 dTb
 bzi
 bMj
@@ -176200,7 +175950,7 @@ bBD
 bBw
 bBg
 bBg
-eUS
+bCH
 bCH
 bCH
 eUQ
@@ -176432,7 +176182,7 @@ bCH
 bCH
 bBg
 bCp
-aat
+bBg
 bBg
 bBg
 bBg
@@ -177827,7 +177577,7 @@ bxw
 bwE
 bwE
 cRW
-eSV
+bIq
 byQ
 bzi
 aQZ
@@ -179300,7 +179050,7 @@ bxk
 bMe
 bwE
 bwE
-eSU
+bwE
 etw
 byQ
 bzi
@@ -179324,7 +179074,7 @@ bwE
 bwE
 bLX
 bFF
-eSN
+euk
 bwE
 bwE
 css
@@ -179686,7 +179436,7 @@ bzi
 bNz
 byQ
 euU
-eSO
+eta
 eBJ
 bMs
 bMm
@@ -180041,7 +179791,7 @@ bwE
 bPG
 bFF
 byQ
-eSS
+byQ
 bIr
 bzi
 bzi
@@ -181170,7 +180920,7 @@ apt
 apl
 doh
 uKB
-aba
+bJY
 aoZ
 bBn
 bJl
@@ -181908,7 +181658,7 @@ cqF
 cqF
 cqF
 cqF
-aaT
+aoP
 cqc
 eUa
 cor
@@ -183420,8 +183170,8 @@ cfy
 cfy
 anD
 cjX
-bvh
-bvh
+ceJ
+ceJ
 ceJ
 cgQ
 cgQ
@@ -183432,8 +183182,8 @@ ceJ
 ceJ
 ceJ
 ceJ
-bvh
-bvh
+ceJ
+ceJ
 etC
 ett
 aTd
@@ -183604,7 +183354,7 @@ cfy
 cfy
 cfy
 cjX
-bvh
+ceJ
 akc
 cjy
 ceO
@@ -183617,16 +183367,16 @@ ajg
 aja
 abe
 eZS
-bvh
-ceJ
-cgQ
-cgQ
-cgQ
-cgQ
 ceJ
 ceJ
-bvh
-bvh
+cgQ
+cgQ
+cgQ
+cgQ
+ceJ
+ceJ
+ceJ
+ceJ
 cgP
 eTT
 eTT
@@ -183813,7 +183563,7 @@ ahO
 ceJ
 ceJ
 ceJ
-bvh
+ceJ
 cgP
 eTU
 cft
@@ -183997,8 +183747,8 @@ ahP
 cgQ
 ahl
 eZq
-bvh
-bvh
+ceJ
+ceJ
 eTS
 cft
 cft
@@ -185977,7 +185727,7 @@ abZ
 cjI
 cjI
 cjI
-dlf
+cjI
 cjI
 cnc
 bix
@@ -186347,7 +186097,7 @@ cjI
 cjI
 cjI
 cjI
-dlc
+oXy
 cmM
 fnR
 cmC
@@ -186886,7 +186636,7 @@ cpi
 cpj
 ldl
 mzv
-dlm
+ePn
 cjs
 cjs
 bzI
@@ -188901,7 +188651,7 @@ mra
 cfk
 cpz
 cpd
-bgF
+cpd
 cpd
 tTk
 dFn
@@ -189638,7 +189388,7 @@ tvN
 cpd
 dda
 cpd
-ajp
+cpz
 cpd
 dFn
 dFj
@@ -190742,7 +190492,7 @@ crk
 crk
 buG
 cnQ
-aSL
+cnQ
 djh
 con
 nAT
@@ -192961,7 +192711,7 @@ cQL
 cCu
 ceX
 ceS
-cPZ
+ceS
 ceS
 cLN
 alY
@@ -193877,7 +193627,7 @@ dEV
 alY
 dTd
 cQV
-cQN
+cQM
 cQE
 efG
 cQp
@@ -198718,7 +198468,7 @@ chB
 chq
 aFM
 cgg
-blM
+cgg
 abK
 non
 aEL
@@ -226409,8 +226159,8 @@ aaj
 aaj
 aaj
 bta
-cVG
-cVG
+cVE
+cVE
 cVG
 cVG
 cVG
@@ -226593,7 +226343,7 @@ aaj
 aaj
 bta
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -226776,7 +226526,7 @@ aaj
 aaj
 bta
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -226959,7 +226709,7 @@ aaj
 aaj
 bta
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -227142,7 +226892,7 @@ aaj
 aaj
 bta
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -227325,7 +227075,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -227509,7 +227259,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -227877,14 +227627,14 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
 cHS
 cIf
 cIf
-cHu
+bTL
 cHu
 cHu
 cHu
@@ -228244,7 +227994,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -228428,7 +228178,7 @@ aaj
 aaj
 bta
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -228611,7 +228361,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -229163,7 +228913,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -229531,7 +229281,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -230267,7 +230017,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -230635,7 +230385,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -231371,7 +231121,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -231739,7 +231489,7 @@ aaj
 aaj
 aaj
 bta
-cVG
+cVE
 cVG
 cVG
 cVG
@@ -232475,7 +232225,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -232843,7 +232593,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -233579,7 +233329,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -233947,7 +233697,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -234131,7 +233881,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -235971,7 +235721,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -236155,7 +235905,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -236523,7 +236273,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -237259,7 +237009,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -237627,7 +237377,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -238363,7 +238113,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -238731,7 +238481,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -239467,7 +239217,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -239835,7 +239585,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -240571,7 +240321,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -240939,7 +240689,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -241675,7 +241425,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -242043,7 +241793,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -242227,7 +241977,7 @@ aaj
 aaj
 aaj
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -242412,7 +242162,7 @@ aaj
 aaj
 bta
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -242597,7 +242347,7 @@ aaj
 aaj
 bta
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -242782,7 +242532,7 @@ aaj
 aaj
 bta
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -242967,7 +242717,7 @@ aaj
 aaj
 bta
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -243152,7 +242902,7 @@ aaj
 aaj
 bta
 bta
-cVR
+bTM
 cVR
 cVR
 cVR
@@ -243350,8 +243100,8 @@ bta
 bta
 bta
 bta
-bta
-bta
+cVR
+cVR
 cVR
 cVR
 cWw
@@ -244701,7 +244451,7 @@ fba
 faX
 faO
 faO
-faB
+aaF
 faG
 faz
 faz
@@ -244884,8 +244634,8 @@ cjc
 fbb
 faO
 faS
-faE
-faB
+abV
+aaF
 faG
 faz
 faz
@@ -245069,7 +244819,7 @@ fbc
 faP
 faO
 faP
-faB
+aaF
 faG
 faz
 faz
@@ -245249,10 +244999,10 @@ fax
 fax
 fax
 fTs
-faJ
-faF
-faF
-faF
+bTK
+aPL
+aPL
+aPL
 faL
 faH
 faD

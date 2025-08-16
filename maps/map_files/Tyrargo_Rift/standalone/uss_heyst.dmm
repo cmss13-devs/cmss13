@@ -638,7 +638,6 @@
 /turf/open/gm/dirt/dark_brown/variant_5/west,
 /area/tyrargo/outdoors/outskirts/central)
 "bB" = (
-/obj/effect/landmark/xeno_npc_spawn,
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
 	pixel_x = 10;
 	pixel_y = -7
@@ -2329,7 +2328,6 @@
 /obj/item/device/flashlight/flare/on{
 	fuel_rate = 5
 	},
-/obj/effect/landmark/xeno_npc_spawn,
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "oY" = (
@@ -2406,10 +2404,6 @@
 	},
 /turf/open/floor/prison/cell_stripe/north,
 /area/tyrargo/indoors/bunker/central_south)
-"pU" = (
-/obj/effect/landmark/xeno_npc_spawn,
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/central)
 "pZ" = (
 /turf/open/floor/almayer/plating_striped/east,
 /area/tyrargo/indoors/heyst)
@@ -8078,7 +8072,7 @@ jU
 kY
 jU
 YD
-pU
+jU
 jU
 jU
 jU

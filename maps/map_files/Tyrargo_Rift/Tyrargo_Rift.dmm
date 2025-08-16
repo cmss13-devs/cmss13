@@ -606,12 +606,6 @@
 	},
 /turf/open/hybrisa/street/cement3,
 /area/tyrargo/underground/museum_carpark)
-"abV" = (
-/obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0,
-/area/tyrargo/outdoors/outskirts/central)
 "abW" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
 	pixel_x = -1
@@ -17279,14 +17273,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/fsb_north)
-"aPL" = (
-/obj/structure/prop/tyrargo/boards/boards_1{
-	dir = 4;
-	pixel_x = -5
-	},
-/obj/item/ammo_casing/bullet,
-/turf/open_space,
-/area/tyrargo/landing_zone_1)
 "aPM" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
@@ -24278,7 +24264,7 @@
 /area/tyrargo/outdoors/outskirts/north_west_usasf)
 "bdc" = (
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -24303,7 +24289,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
@@ -43024,67 +43010,6 @@
 "bTJ" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/outdoors/outskirts/central)
-"bTK" = (
-/obj/structure/prop/tyrargo/boards/boards_1{
-	dir = 4;
-	pixel_y = -3;
-	pixel_x = 7
-	},
-/obj/structure/prop/tyrargo/boards/boards_1{
-	dir = 8;
-	pixel_y = 2;
-	pixel_x = -13
-	},
-/turf/open_space,
-/area/tyrargo/landing_zone_1)
-"bTL" = (
-/obj/structure/prop/tyrargo/boards/boards_2{
-	dir = 4;
-	layer = 2.1;
-	pixel_y = 4;
-	pixel_x = 3
-	},
-/turf/open_space,
-/area/tyrargo/landing_zone_1)
-"bTM" = (
-/obj/structure/prop/tyrargo/boards/boards_2{
-	layer = 2.1;
-	pixel_x = -1;
-	pixel_y = -4;
-	dir = 1
-	},
-/obj/structure/prop/tyrargo/boards/boards_2{
-	dir = 1;
-	pixel_x = -9;
-	pixel_y = 7
-	},
-/turf/open_space,
-/area/tyrargo/landing_zone_1)
-"bTN" = (
-/obj/structure/prop/tyrargo/boards/boards_2{
-	layer = 2.1;
-	pixel_x = -7;
-	pixel_y = 1
-	},
-/obj/structure/prop/tyrargo/boards/boards_2{
-	dir = 4;
-	pixel_x = 5;
-	pixel_y = -9
-	},
-/turf/open_space,
-/area/tyrargo/landing_zone_1)
-"bTO" = (
-/obj/structure/prop/tyrargo/boards/boards_1{
-	dir = 8
-	},
-/obj/structure/prop/tyrargo/boards/boards_2{
-	layer = 2.1;
-	pixel_x = 3;
-	pixel_y = 2;
-	dir = 1
-	},
-/turf/open_space,
-/area/tyrargo/landing_zone_1)
 "bTP" = (
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
@@ -100730,7 +100655,7 @@
 	dir = 6
 	},
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/east)
@@ -100739,7 +100664,7 @@
 	dir = 9
 	},
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/east)
@@ -100772,7 +100697,7 @@
 /area/tyrargo/outdoors/outskirts/fsb_north)
 "eSS" = (
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
@@ -100782,20 +100707,20 @@
 	},
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/central)
 "eSU" = (
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/east)
 "eSV" = (
 /obj/effect/decal/grass_overlay/grass1/dark,
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0_mud,
 /area/tyrargo/outdoors/outskirts/east)
@@ -101390,7 +101315,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "eUS" = (
 /obj/effect/landmark/xeno_npc_spawn{
-	spawn_chance = 80
+	spawn_chance = 0
 	},
 /turf/open/auto_turf/tyrargo_grass/layer1,
 /area/tyrargo/outdoors/outskirts/central)
@@ -149254,8 +149179,8 @@ dtC
 duc
 dtC
 dtC
-duL
-duL
+duN
+duN
 dtC
 dvC
 dvd
@@ -175354,7 +175279,7 @@ aJG
 aJD
 aOc
 bBw
-abV
+aat
 bBg
 bBg
 bEL
@@ -206239,7 +206164,7 @@ cVd
 cVd
 cVd
 cVd
-bTK
+cVd
 cVd
 cVd
 cVd
@@ -206423,7 +206348,7 @@ cVd
 cVd
 cVd
 cVd
-bTL
+cVd
 cVd
 cVd
 cVd
@@ -206606,8 +206531,8 @@ cVd
 cVd
 cVd
 cVd
-bTO
-bTM
+cVd
+cVd
 cVd
 cVd
 cVd
@@ -206790,8 +206715,8 @@ cVd
 cVd
 cVd
 cVd
-aPL
-bTN
+cVd
+cVd
 cVd
 cVd
 cVd

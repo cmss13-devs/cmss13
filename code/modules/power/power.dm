@@ -389,9 +389,8 @@
 		return .
 
 	apc_in_area = current_area.get_apc()
-	if(apc_in_area)
-		if(LAZYFIND(apc_in_area.connected_power_sources, src) == 0)
-			LAZYADD(apc_in_area.connected_power_sources, src)
+	if(apc_in_area && LAZYFIND(apc_in_area.connected_power_sources, src) == 0)
+		LAZYADD(apc_in_area.connected_power_sources, src)
 
 /obj/structure/machinery/power/power_generator/disconnect_from_network()
 	. = ..()

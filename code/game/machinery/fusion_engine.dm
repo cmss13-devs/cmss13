@@ -149,7 +149,7 @@
 		visible_message(SPAN_NOTICE("[src]'s overload suddenly ceases as primary power is lost."))
 
 /obj/structure/machinery/power/power_generator/reactor/HasFuel()
-	return !(!fusion_cell || fusion_cell.fuel_amount <= 0)
+	return fusion_cell && fusion_cell.fuel_amount > 0
 
 /obj/structure/machinery/power/power_generator/reactor/process()
 	if(!is_on) //if off, turn off

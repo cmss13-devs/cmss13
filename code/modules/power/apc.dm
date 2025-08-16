@@ -1135,10 +1135,8 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		var/got_power_from_local_grid = FALSE
 		if(length(connected_power_sources) > 0)
 			var/total_power_generated = 0
+
 			for(var/power_system in connected_power_sources)
-				if(!power_system)
-					LAZYREMOVE(connected_power_sources, power_system)
-					continue
 				if(istype(power_system, /obj/structure/machinery/power/power_generator))
 					var/obj/structure/machinery/power/power_generator/generator = power_system
 					if(!generator)
@@ -1150,12 +1148,14 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 						continue
 					if(generator.is_on)
 						total_power_generated += (generator.power_gen_percent / 100) * generator.power_gen
+				else
+					LAZYREMOVE(connected_power_sources, power_system)
 
 			if(total_power_generated > 0)
 				power_drawn = min(total_power_generated, max(target_draw, MAXIMUM_GIVEN_POWER_TO_LOCAL_APC))
 				target_draw = max(target_draw - power_drawn, 0)
 				total_power_generated -= power_drawn
-				if(powernet) // what
+				if(powernet)
 					powernet.newavail += total_power_generated
 
 				got_power_from_local_grid = target_draw <= 0

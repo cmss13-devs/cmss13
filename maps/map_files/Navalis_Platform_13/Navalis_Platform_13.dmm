@@ -905,6 +905,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkbrown2/east,
 /area/navalis/indoors/logistic/primary_storage)
+"acw" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/darkpurple2,
+/area/navalis/indoors/med_sci/upper_level/sci_lab)
 "acx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -20034,7 +20042,6 @@
 	dir = 1;
 	flipped = 1
 	},
-/obj/item/paper/research_notes/good,
 /obj/structure/machinery/power/apc{
 	dir = 8
 	},
@@ -33172,7 +33179,6 @@
 	dir = 1;
 	flipped = 1
 	},
-/obj/item/research_upgrades/credits,
 /obj/item/folder/white{
 	pixel_x = 6
 	},
@@ -182377,7 +182383,7 @@ iQx
 iQx
 iQx
 lxu
-vNq
+acw
 gVE
 izg
 tAt

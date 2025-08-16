@@ -54,7 +54,7 @@
 	if(HAS_TRAIT(target_mob, TRAIT_XENONID))
 		return ..() // We don't have backpack sprites for xenoids (yet?)
 	var/mob/living/carbon/xenomorph/xeno = target_mob
-	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
+	if((target_mob.stat != DEAD) && !xeno.legcuffed) // If the Xeno is alive, fight back
 		var/mob/living/carbon/carbon_user = user
 		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
 			user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))

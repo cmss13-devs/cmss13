@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - balance: "Scout is now force uncloaked when hauled/unhauled"

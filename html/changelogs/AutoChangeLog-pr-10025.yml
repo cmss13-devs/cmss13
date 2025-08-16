@@ -1,0 +1,5 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - imageadd: "New sprites for surgery overlays"
+  - rscadd: "Some new overlays for surgery, mainly past retractor (opening the incision) and prying the bones, for chest and head!"

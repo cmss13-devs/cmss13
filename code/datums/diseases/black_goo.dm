@@ -174,6 +174,7 @@
 	sharp = 1
 	attack_verb = list("slashed", "torn", "scraped", "gashed", "ripped")
 	pry_capable = IS_PRY_CAPABLE_FORCE
+	attack_speed = 1 SECONDS
 
 /obj/item/weapon/zombie_claws/attack(mob/living/target, mob/living/carbon/human/user)
 	if(iszombie(target))

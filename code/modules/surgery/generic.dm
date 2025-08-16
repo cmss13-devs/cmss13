@@ -518,6 +518,8 @@
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to open [key_name(target)]'s [surgery.affected_limb.encased].")
 
+	return FALSE
+
 //------------------------------------
 
 /datum/surgery/close_encased
@@ -584,6 +586,8 @@
 	surgery.affected_limb.fracture(100)
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to close [key_name(target)]'s [surgery.affected_limb.encased], aborting [surgery].")
+
+	return FALSE
 
 //------------------------------------
 
@@ -672,6 +676,8 @@
 		var/obj/item/stack/rods/rods = new /obj/item/stack/rods(get_turf(target))
 		rods.amount = 2 //Refund 2 rods on failure
 		rods.update_icon()
+
+	return FALSE
 
 /*Proof of concept. Functions but does nothing useful.
 If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointless processing to have live without any surgeries for it to use.*/

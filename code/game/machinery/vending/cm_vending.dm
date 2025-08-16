@@ -869,6 +869,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	show_points = TRUE
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_UNIFORM_RANKS | VEND_UNIFORM_AUTOEQUIP | VEND_CATEGORY_CHECK
+	vend_sound = 'sound/machines/vending_cloth.ogg'
 
 /obj/structure/machinery/cm_vending/clothing/ui_static_data(mob/user)
 	. = ..(user)
@@ -886,6 +887,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vendor_theme = VENDOR_THEME_USCM
 	vend_flags = VEND_CLUTTER_PROTECTION | VEND_LIMITED_INVENTORY | VEND_TO_HAND
 	show_points = FALSE
+	vend_sound = 'sound/machines/vending_quiet.ogg'
 
 	///this here is made to provide ability to restock vendors with different subtypes of same object, like handmade and manually filled ammo boxes.
 	var/list/corresponding_types_list
@@ -1145,6 +1147,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	vendor_theme = VENDOR_THEME_USCM
 	use_points = TRUE
 	use_snowflake_points = FALSE
+	vend_sound = 'sound/machines/vending_quiet.ogg'
 
 	var/available_points = MARINE_TOTAL_BUY_POINTS
 	available_points_to_display = MARINE_TOTAL_BUY_POINTS
@@ -1366,6 +1369,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			if(vend_sound)
 				playsound(loc, vend_sound, 25, 1, 2) //heard only near vendor
 			sleep(vend_delay)
+		else if(vend_sound)
+			playsound(loc, vend_sound, 25, 1, 2) //heard only near vendor
 
 		var/prod_type = itemspec[3]
 		var/stack_amount = 0

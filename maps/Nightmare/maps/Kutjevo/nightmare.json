@@ -30,5 +30,11 @@
 		"chance": 1.0,
 		"path": "standalone/clfsmugglers.dmm",
 		"when": { "lvevent": "clfsmugglers" }
+	},
+	{
+	"type": "map_insert",
+	"landmark": "lz1_alternative",
+	"chance": 0.60,
+	"path": "sprinkles/lz1alternative.dmm"
 	}
 ]

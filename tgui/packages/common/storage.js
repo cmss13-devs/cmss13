@@ -99,7 +99,8 @@ class IFrameIndexedDbBackend {
       iframe.onload = () => resolve(this);
     });
 
-    this.iframeWindow = document.body.appendChild(iframe).contentWindow;
+    this.documentElement = document.body.appendChild(iframe);
+    this.iframeWindow = this.documentElement.contentWindow;
 
     return completePromise;
   }
@@ -129,6 +130,21 @@ class IFrameIndexedDbBackend {
     this.iframeWindow.postMessage({ type: 'clear' }, '*');
   }
 
+  async ping() {
+    const promise = new Promise((resolve) => {
+      window.addEventListener('message', (message) => {
+        if (message.data === true) {
+          resolve(true);
+        }
+      });
+
+      setTimeout(() => resolve(false), 100);
+    });
+
+    this.iframeWindow.postMessage({ type: 'ping' }, '*');
+    return promise;
+  }
+
   async processChatMessages(messages) {
     this.iframeWindow.postMessage(
       { type: 'processChatMessages', messages: messages },
@@ -147,6 +163,12 @@ class IFrameIndexedDbBackend {
 
     this.iframeWindow.postMessage({ type: 'getChatMessages' }, '*');
     return promise;
+  }
+
+  async destroy() {
+    document.body.removeChild(this.documentElement);
+    this.documentElement = null;
+    this.iframeWindow = null;
   }
 }
 
@@ -212,16 +234,42 @@ class IndexedDbBackend {
  * depending on the environment.
  */
 export class StorageProxy {
-  constructor(chat) {
+  constructor() {
     this.backendPromise = (async () => {
       if (!Byond.TRIDENT) {
-        if (chat) {
+        if (Byond.storageCdn && !window.hubStorage) {
           const iframe = new IFrameIndexedDbBackend();
           await iframe.ready();
-          return iframe;
+
+          if ((await iframe.ping()) === true) {
+            // Remove with 516... eventually
+            if (await iframe.get('byondstorage-migrated')) return iframe;
+
+            Byond.winset(null, 'browser-options', '+byondstorage');
+
+            await new Promise((resolve) => {
+              document.addEventListener('byondstorageupdated', async () => {
+                setTimeout(() => {
+                  const hub = new HubStorageBackend();
+                  hub
+                    .get('panel-settings')
+                    .then((settings) => iframe.set('panel-settings', settings));
+                  iframe.set('byondstorage-migrated', true);
+
+                  resolve();
+                }, 1);
+              });
+            });
+
+            return iframe;
+          }
+
+          iframe.destroy();
         }
 
         if (!testHubStorage()) {
+          Byond.winset(null, 'browser-options', '+byondstorage');
+
           return new Promise((resolve) => {
             const listener = () => {
               document.removeEventListener('byondstorageupdated', listener);

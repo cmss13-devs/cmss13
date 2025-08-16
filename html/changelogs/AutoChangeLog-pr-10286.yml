@@ -1,0 +1,4 @@
+author: "Drathek"
+delete-after: True
+changes:
+  - bugfix: "More attempts to address sticky keys: Unfocusing a window now releases all held keys (even if actually held)"

@@ -927,7 +927,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(current_mag.chamber_closed)
 		COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN)
 	else
-		COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN + 0.5 SECONDS)
+		COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN + 0.2 SECONDS)
 	. = ..()
 
 

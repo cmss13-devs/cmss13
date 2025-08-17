@@ -194,3 +194,7 @@
   - balance: Scout is now force uncloaked when hauled/unhauled
   Thwomper:
   - rscadd: Adds M4A4 Service Pistol as a new USCM loadout option sidearm.
+2025-08-17:
+  Red-byte3D:
+  - balance: Queen's can now rest on ovi again to cancel breaking off their ovipositor
+      as so they are not doomed

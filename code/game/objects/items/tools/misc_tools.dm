@@ -358,41 +358,33 @@
 /*
  * Antag pens
  */
-/obj/item/tool/pen/sleepypen
+/obj/item/tool/pen/syringe
 	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
 
-/obj/item/tool/pen/sleepypen/Initialize()
+/obj/item/tool/pen/syringe/get_examine_text(mob/user)
 	. = ..()
-	create_reagents(30)
-	reagents.add_reagent("chloralhydrate", 15)
+	if(skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		. += SPAN_ORANGE("It has an internal syringe system that can be refilled with chemicals.")
 
-/obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)
-	if(!(istype(M,/mob)))
-		return
-	..()
-	if(reagents.total_volume)
-		if(M.reagents)
-			reagents.trans_to(M, 50)
-	return
-
-/obj/item/tool/pen/paralysis
-	flags_atom = FPRINT|OPENCONTAINER
-	flags_equip_slot = SLOT_WAIST
-
-/obj/item/tool/pen/paralysis/attack(mob/living/M as mob, mob/user as mob)
-	if(!(istype(M)))
-		return
-	..()
-	if(M.can_inject(user, TRUE))
-		if(reagents.total_volume)
-			if(M.reagents)
-				reagents.trans_to(M, 50)
-
-/obj/item/tool/pen/paralysis/Initialize()
+/obj/item/tool/pen/syringe/Initialize()
 	. = ..()
 	create_reagents(50)
+	add_default_contents()
+
+/obj/item/tool/pen/syringe/proc/add_default_contents()
+	reagents.add_reagent("chloralhydrate", 15)
+
+/obj/item/tool/pen/syringe/attack(mob/target as mob, mob/user as mob)
+	if(!istype(target))
+		return
+	..()
+	if(reagents.total_volume && target.reagents)
+		reagents.trans_to(target, 50)
+	return
+
+/obj/item/tool/pen/syringe/paralysis/add_default_contents()
 	reagents.add_reagent("zombiepowder", 10)
 	reagents.add_reagent("cryptobiolin", 15)
 

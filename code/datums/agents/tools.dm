@@ -8,12 +8,12 @@
 	req_role = null
 	listed_products = list(
 		list("WEAPONS", 0, null, null, null),
-		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge, tuned to work only for agents."),
-		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "white", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
-		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
+		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "blue", "A stun baton with more charge, tuned to work only for agents."),
+		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "blue", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
+		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "blue", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
 
 		list("ONE-USE TOOLS", 0, null, null, null),
-		list("Experimental Stimulant Pills", 20, /obj/item/storage/pill_bottle/ultrazine/antag, "white", "Useful stimulants that allow you to resist stamina damage. Lasts for approximately 2 minutes. Take only 1 pill. Use with care."),
+		list("Experimental Stimulant Pills", 20, /obj/item/storage/pill_bottle/ultrazine/antag, "purple", "Useful stimulants that allow you to resist stamina damage. Lasts for approximately 2 minutes. Take only 1 pill. Use with care."),
 		list("Decoy", 14, /obj/item/explosive/grenade/decoy, "white", "A decoy grenade. Emits a loud explosion that can be heard from very far away, keep away from ears. Can be used 3 times."),
 
 		list("UTILITY", 0, null, null, null),
@@ -26,9 +26,9 @@
 		list("Hacking Kit", 15, /obj/item/storage/box/antag_signaller, "white", "A box containing a screwdriver, a multi-tool and an engineering pamphlet, as well as 5 signallers to help you hack doors."),
 
 		list("TRANSFER POINTS", 0, null, null, null),
-		list("1 point", 1, /obj/item/stack/points/p1, "white", "A method of transferring points between agents."),
-		list("5 points", 5, /obj/item/stack/points/p5, "white", "A method of transferring points between agents."),
-		list("20 points", 20, /obj/item/stack/points/p20, "white", "A method of transferring points between agents."),
+		list("1 point", 1, /obj/item/stack/points/p1, "yellow", "A method of transferring points between agents."),
+		list("5 points", 5, /obj/item/stack/points/p5, "yellow", "A method of transferring points between agents."),
+		list("20 points", 20, /obj/item/stack/points/p20, "yellow", "A method of transferring points between agents."),
 	)
 
 	points = 40
@@ -167,11 +167,11 @@
 		list("Cyanide Pill", 15, /obj/item/reagent_container/pill/cyanide, "red", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 
 		list("AMMUNITION", 0, null, null, null),
-		list("M1911 Magazine", 5, /obj/item/ammo_magazine/pistol/m1911, "red", "A magazine for an M1911 pistol."),
-		list("M4A3 Magazine", 4, /obj/item/ammo_magazine/pistol, "red", "A magazine for an M4A3 or M4A4 pistol."),
-		list("M4A3 AP Magazine", 5, /obj/item/ammo_magazine/pistol/ap, "red", "An armor-piercing magazine for an M4A3 or M4A4 pistol."),
-		list("M4A3 HP Magazine", 5, /obj/item/ammo_magazine/pistol/hp, "red", "A hollowpoint magazine for an M4A3 or M4A4 pistol."),
-		list("Tranquilizer Magazine", 5, /obj/item/ammo_magazine/pistol/tranq, "blue", "A magazine for an tranquilizer pistol."),
+		list("M1911 Magazine", 5, /obj/item/ammo_magazine/pistol/m1911, "red", "A magazine for a M1911 pistol."),
+		list("M4A3 Magazine", 4, /obj/item/ammo_magazine/pistol, "red", "A magazine for a M4A3 or M4A4 pistol."),
+		list("M4A3 AP Magazine", 5, /obj/item/ammo_magazine/pistol/ap, "red", "An armor-piercing magazine for a M4A3 or M4A4 pistol."),
+		list("M4A3 HP Magazine", 5, /obj/item/ammo_magazine/pistol/hp, "red", "A hollowpoint magazine for a M4A3 or M4A4 pistol."),
+		list("Tranquilizer Magazine", 5, /obj/item/ammo_magazine/pistol/tranq, "blue", "A magazine for a tranquilizer pistol."),
 
 		list("UTILITY", 0, null, null, null),
 		list("Security Access Tuner v2", 25, /obj/item/device/multitool/antag, "white", "An upgraded access tuner, able to rapidly hack various machinery. Disguised as a regular multitool."),

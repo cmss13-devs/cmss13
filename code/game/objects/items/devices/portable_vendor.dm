@@ -278,12 +278,12 @@
 	req_role = JOB_CORPORATE_LIAISON
 	listed_products = list(
 		list("INCENTIVES", 0, null, null, null),
-		list("Corporate Security Bodyguard", 50, /obj/item/handheld_distress_beacon/bodyguard, "white", "A beacon which sends the Corporate Security Division an encoded message informing them of your request for a Corporate Security Bodyguard."),
-		list("Corporate Lawyer Team", 50, /obj/item/handheld_distress_beacon/lawyer, "white", "A beacon which sends the Corporate Affairs Division an encoded message informing them of your request for a Corporate Lawyer, required when a contract signee breaks one of their clauses."),
-		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "white", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
-		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison, "white", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
-		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
-		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "white", "A ceramic plate, useful in a variety of situations."),
+		list("Corporate Security Bodyguard", 50, /obj/item/handheld_distress_beacon/bodyguard, "orange", "A beacon which sends the Corporate Security Division an encoded message informing them of your request for a Corporate Security Bodyguard."),
+		list("Corporate Lawyer Team", 50, /obj/item/handheld_distress_beacon/lawyer, "orange", "A beacon which sends the Corporate Affairs Division an encoded message informing them of your request for a Corporate Lawyer, required when a contract signee breaks one of their clauses."),
+		list("Neurostimulator Implant", 30, /obj/item/implanter/neurostim, "purple", "Implant which regulates nociception and sensory function. Benefits include pain reduction, improved balance, and improved resistance to overstimulation and disorientation. To encourage compliance, negative stimulus is applied if the implant hears a (non-radio) spoken codephrase. Implant will be degraded by the body's immune system over time, and thus malfunction with gradually increasing frequency. Personal use not recommended."),
+		list("Ultrazine Injector", 25, /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison, "purple", "Highly-addictive stimulant. Enhances short-term physical performance, particularly running speed. Effects last approximately 10 minutes per injection. More than two injections at a time will result in overdose. Withdrawal causes extreme discomfort and hallucinations. Long-term use results in halluciations and organ failure. Conditional distribution secures subject compliance. Not for personal use."),
+		list("Cyanide Pill", 20, /obj/item/reagent_container/pill/cyanide, "red", "A cyanide pill, also known as a suicide pill. For the easy way out."),
+		list("Ceramic Plate", 10, /obj/item/trash/ceramic_plate, "green", "A ceramic plate, useful in a variety of situations."),
 		list("Cash", 5, /obj/item/spacecash/c1000/counterfeit, "white", "$1000 USD, unmarked bills"),
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
 
@@ -312,7 +312,7 @@
 		list("Hollow Cane", 15, /obj/item/weapon/pole/fancy_cane/this_is_a_knife, "white", "A hollow cane that can store any commonplace sharp weaponry. Said weapon not included."),
 
 		list("AMMO", 0, null, null, null),
-		list("ES-4 stun magazine", 10, /obj/item/ammo_magazine/pistol/es4, "white", "Holds 19 rounds of specialized Conductive 9mm."),
+		list("ES-4 stun magazine", 10, /obj/item/ammo_magazine/pistol/es4, "blue", "Holds 19 rounds of specialized Conductive 9mm."),
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Alpha Squad", 15, /obj/item/device/encryptionkey/alpha, "white", "Radio Key for USCM Alpha Squad."),

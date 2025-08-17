@@ -155,47 +155,54 @@
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),
 
 		list("WEAPONS (NON-LETHAL)", 0, null, null, null),
-		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "white", "A stun baton with more charge."),
-		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "white", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
-		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "white", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
-		list("Sedative Pen", 15, /obj/item/tool/pen/syringe, "white", "A sedative syringe disguised as a pen. Can be used to stealthily knock out targets."),
+		list("Configured Stunbaton", 25, /obj/item/weapon/baton/antag, "blue", "A stun baton with more charge."),
+		list("Tranquilizer Gun", 25, /obj/item/weapon/gun/pistol/tranquilizer, "blue", "A tranquilizer gun. Comes with 5 darts. Deals no damage, knockout guaranteed."),
+		list("Chloroform Cloth", 18, /obj/item/weapon/chloroform, "blue", "A cloth dosed with chloroform. Has 8 effective uses and can only be used whilst behind a target. You must be in disarm intent to use."),
+		list("Sedative Pen", 15, /obj/item/tool/pen/syringe, "blue", "A sedative syringe disguised as a pen. Can be used to stealthily knock out targets."),
 		list("Handcuffs", 2, /obj/item/restraint/handcuffs, "white", "A set of handcuffs."),
 
 		list("WEAPONS (LETHAL)", 0, null, null, null),
-		list("W62 'Whisper' pistol", 25, /obj/item/storage/box/plinker, "white", "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory."),
-		list("AC71 'Action' holdout pistol", 25, /obj/item/storage/box/action, "white", "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory."),
+		list("W62 'Whisper' pistol", 25, /obj/item/storage/box/plinker, "red", "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory."),
+		list("AC71 'Action' holdout pistol", 25, /obj/item/storage/box/action, "red", "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory."),
+		list("Cyanide Pill", 15, /obj/item/reagent_container/pill/cyanide, "red", "A cyanide pill, also known as a suicide pill. For the easy way out."),
 
 		list("AMMUNITION", 0, null, null, null),
-		list("M1911 Magazine", 5, /obj/item/ammo_magazine/pistol/m1911, "white", "A magazine for an M1911 pistol."),
-		list("Tranquilizer Magazine", 5, /obj/item/ammo_magazine/pistol/tranq, "white", "A magazine for an tranquilizer pistol."),
+		list("M1911 Magazine", 5, /obj/item/ammo_magazine/pistol/m1911, "red", "A magazine for an M1911 pistol."),
+		list("M4A3 Magazine", 4, /obj/item/ammo_magazine/pistol, "red", "A magazine for an M4A3 or M4A4 pistol."),
+		list("M4A3 AP Magazine", 5, /obj/item/ammo_magazine/pistol/ap, "red", "An armor-piercing magazine for an M4A3 or M4A4 pistol."),
+		list("M4A3 HP Magazine", 5, /obj/item/ammo_magazine/pistol/hp, "red", "A hollowpoint magazine for an M4A3 or M4A4 pistol."),
+		list("Tranquilizer Magazine", 5, /obj/item/ammo_magazine/pistol/tranq, "blue", "A magazine for an tranquilizer pistol."),
 
 		list("UTILITY", 0, null, null, null),
 		list("Security Access Tuner v2", 25, /obj/item/device/multitool/antag, "white", "An upgraded access tuner, able to rapidly hack various machinery. Disguised as a regular multitool."),
 		list("Listening Device", 20, /obj/item/device/radio/listening_bug/radio_linked/cia, "white", "A listening device. Can be disguised as anything by right-clicking on it."),
 		list("USCM Codebook", 20, /obj/item/book/codebook, "white", "A copy of a USCM codebook used to verify credentials with the commanding officer."),
 		list("Tools Kit", 15, /obj/item/storage/toolbox/mechanical, "white", "A toolbox containing general tools."),
-		list("Ceramic Plate", 15, /obj/item/clothing/accessory/health/ceramic_plate, "white", "A strong trauma plate, able to protect the user from a large amount of bullets. Ineffective against sharp objects."),
-		list("Cyanide Pill", 15, /obj/item/reagent_container/pill/cyanide, "white", "A cyanide pill, also known as a suicide pill. For the easy way out."),
+		list("Ceramic Plate", 15, /obj/item/clothing/accessory/health/ceramic_plate, "green", "A strong trauma plate, able to protect the user from a large amount of bullets. Ineffective against sharp objects."),
 		list("CIA Challenge Coin", 15, /obj/item/coin/silver/cia, "white", "A challenge coin emblazoned with an eagle. Use to identify other CIA operatives on the field at a glance."),
 
 		list("MARINE CLOTHING", 0, null, null, null),
-		list("Marine Helmet", 5, /obj/item/clothing/head/helmet/marine, "white", "A USCM standard military helmet."),
+		list("Marine Helmet", 5, /obj/item/clothing/head/helmet/marine, "green", "A USCM standard military helmet."),
 		list("Marine Fatigues", 8, /obj/item/clothing/under/marine, "white", "A USCM standard military battle dress uniform."),
-		list("M3 Pattern Marine Armor", 20, /obj/item/clothing/suit/storage/marine, "white", "A USCM standard armor rig for combat situations."),
-		list("M3 Pattern Marine Armor", 15, /obj/item/clothing/suit/storage/marine/light, "white", "A USCM light armor rig for combat situations."),
-		list("M3-VL Ballistics Vest", 12, /obj/item/clothing/suit/storage/marine/light/vest, "white", "A USCM light ballistic vest for combat situations."),
+		list("M3 Pattern Marine Armor", 20, /obj/item/clothing/suit/storage/marine, "green", "A USCM standard armor rig for combat situations."),
+		list("M3-L Pattern Light Armor", 15, /obj/item/clothing/suit/storage/marine/light, "green", "A USCM light armor rig for combat situations."),
+		list("M3-VL Ballistics Vest", 12, /obj/item/clothing/suit/storage/marine/light/vest, "green", "A USCM light ballistic vest for combat situations."),
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Radio Key: CIA", 10, /obj/item/device/encryptionkey/cia, "white", "Radio Key for CIA communications."),
 		list("Radio Key: Colonial Marshals", 20, /obj/item/device/encryptionkey/cmb, "white", "Radio Key for the CMB."),
+		list("Radio Key: Weyland-Yutani", 20, /obj/item/device/encryptionkey/WY, "white", "Radio Key for Weyland-Yutani."),
 		list("Radio Key: Colonial Liberation Front", 20, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies."),
 		list("Radio Key: Union of Progressive Peoples", 20, /obj/item/device/encryptionkey/upp, "white", "Radio Key for known UPP listening frequencies."),
 
 		list("TRANSFER POINTS", 0, null, null, null),
-		list("1 point", 1, /obj/item/stack/points/p1, "white", "A method of transferring points between agents."),
-		list("5 points", 5, /obj/item/stack/points/p5, "white", "A method of transferring points between agents."),
-		list("20 points", 20, /obj/item/stack/points/p20, "white", "A method of transferring points between agents."),
+		list("1 point", 1, /obj/item/stack/points/p1, "yellow", "A method of transferring points between agents."),
+		list("5 points", 5, /obj/item/stack/points/p5, "yellow", "A method of transferring points between agents."),
+		list("20 points", 20, /obj/item/stack/points/p20, "yellow", "A method of transferring points between agents."),
 	)
+
+/obj/item/device/portable_vendor/antag/cia/low_points
+	points = 100
 
 /obj/item/device/portable_vendor/antag/cia/covert
 	name = "briefcase"

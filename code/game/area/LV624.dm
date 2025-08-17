@@ -452,7 +452,7 @@
 
 /area/lv624/lazarus/pumping_station
 	name = "\improper Water Pumping Station"
-	icon_state = "blue-old"
+	icon_state = "blueold"
 
 /area/lv624/lazarus/kmcc_cargo
 	name = "\improper KMCC Cargo Transit"

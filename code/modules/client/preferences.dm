@@ -191,6 +191,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/body_type = "Lean" // Body Type
 	var/language = "None" //Secondary language
 	var/preferred_squad = "None"
+	var/preferred_spec = list()
 	var/night_vision_preference = "Green"
 	var/list/nv_color_list = list(
 						"Green" = NV_COLOR_GREEN,
@@ -488,6 +489,15 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<b>Corporate Relation:</b> <a href='byond://?_src_=prefs;preference=wy_relation;task=input'><b>[weyland_yutani_relation]</b></a><br>"
 			dat += "<b>Preferred Squad:</b> <a href='byond://?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
+			var/spec_detail
+			switch(length(preferred_spec))
+				if(0)
+					spec_detail = "No Preference"
+				if(1)
+					spec_detail = preferred_spec[1]
+				else
+					spec_detail = preferred_spec[1] + ", ..."
+			dat += "<b>Specialist Priority:</b> <a href='byond://?_src_=prefs;preference=prefspec;task=input'><b>[spec_detail]</b></a><br>"
 
 			dat += "<h2><b><u>Fluff Information:</u></b></h2>"
 			if(jobban_isbanned(user, "Records"))
@@ -1636,6 +1646,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")
 					if(new_pref_squad)
 						preferred_squad = new_pref_squad
+
+				if("prefspec")
+					var/new_pref_spec = tgui_input_checkboxes(user, "Choose your preferred spec in order of priority or none for 'No Preference'.", "Specialist Preference", GLOB.specialist_set_name_dict, min_checked=0)
+					if(isnull(new_pref_spec))
+						return // Canceled
+					preferred_spec = new_pref_spec
 
 				if("prefnvg")
 					var/new_nvg_color = tgui_input_list(user, "Choose the color of your night-vision", "Character Preferences", GLOB.nvg_color_list)

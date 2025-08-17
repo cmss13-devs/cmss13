@@ -924,10 +924,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(!COOLDOWN_FINISHED(src, breach_action_cooldown))
 		to_chat(user, SPAN_WARNING("You must wait before [current_mag.chamber_closed ? "opening" : "closing"] the chamber again."))
 		return
-	if(current_mag.chamber_closed)
-		COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN)
-	else
-		COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN + 0.2 SECONDS)
+	COOLDOWN_START(src, breach_action_cooldown, MOU_ACTION_COOLDOWN)
 	. = ..()
 
 

@@ -1200,7 +1200,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	return list(
 
 		list("PMC GUNNER SET (SPARE)", 0, null, null, null),
-		list("Spare M56D 'Dirty' Set", 0, /obj/item/storage/box/m56_dirty_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("Spare M56D 'Dirty' Set", 0, /obj/item/storage/box/l56a2_dirty_system, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Entrenching Tool", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),

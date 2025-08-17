@@ -128,6 +128,7 @@
 		"logo_uscm.png" = 'html/paper_assets/logo_uscm.png',
 		"logo_provost.png" = 'html/paper_assets/logo_provost.png',
 		"logo_upp.png" = 'html/paper_assets/logo_upp.png',
+		"logo_twe.png" = 'html/paper_assets/logo_twe.png',
 		"logo_cmb.png" = 'html/paper_assets/logo_cmb.png',
 		"background_white.jpg" = 'html/paper_assets/background_white.jpg',
 		"background_dark.jpg" = 'html/paper_assets/background_dark.jpg',

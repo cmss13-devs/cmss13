@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - balance: "Acider runner can now fill traps for 75 acid at level 3"
-  - bugfix: "Acid level is now checked after the do_after when filling a trap to ensure it wasn't filled by someone else"
-  - refactor: "Alien open hand trap filling is now handled with a try_fill_trap proc per mob type to avoid istype checking and more easily customize its implementation"

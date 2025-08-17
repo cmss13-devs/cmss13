@@ -491,8 +491,10 @@
 		SPAN_NOTICE("[user] uses \the [tool] to hold [target]'s [surgery.affected_limb.encased] open, exposing \his [brain ? "brain" : "vital organs"]."))
 	switch(target_zone)
 		if("head")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
 		if("chest")
+			target.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP

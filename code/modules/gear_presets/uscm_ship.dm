@@ -642,7 +642,7 @@
 
 /datum/equipment_preset/uscm_ship/op/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
-	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
+	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))	// note that 1 is not a boolean here
 		back_item = /obj/item/storage/backpack/marine
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/po(new_human), WEAR_L_EAR)

@@ -7,4 +7,4 @@
 	w_class = SIZE_LARGE
 	default_ammo = /datum/ammo/grenade_container/doorgun
 	max_rounds = 10
-	gun_type = /obj/item/hardpoint/secondary/doorgun
+	gun_type = /obj/item/hardpoint/special/doorgun

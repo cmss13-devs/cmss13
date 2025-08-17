@@ -34908,10 +34908,6 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
-/obj/item/hardpoint/secondary/doorgun{
-	pixel_y = 10;
-	pixel_x = 2
-	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/operations)
 "bFH" = (

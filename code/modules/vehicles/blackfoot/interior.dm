@@ -427,7 +427,7 @@
 		return
 
 	var/obj/item/ammo_magazine/hardpoint/doorgun_ammo/ammo = item
-	var/obj/item/hardpoint/secondary/doorgun/doorgun = locate() in linked_blackfoot.hardpoints
+	var/obj/item/hardpoint/special/doorgun/doorgun = locate() in linked_blackfoot.hardpoints
 
 	if(!doorgun)
 		return

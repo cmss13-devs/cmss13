@@ -370,6 +370,9 @@
 	if(modifiers[SHIFT_CLICK] || modifiers[MIDDLE_CLICK] || modifiers[RIGHT_CLICK] || modifiers[BUTTON4] || modifiers[BUTTON5]) //don't step on examine, point, etc
 		return
 
+	if(isscreenatom(object))	// the user has clicked a UI element, which is handled elsewhere
+		return
+
 	var/seat = get_mob_seat(source)
 	switch(seat)
 		if(VEHICLE_DRIVER)

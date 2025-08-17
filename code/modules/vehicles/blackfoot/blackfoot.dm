@@ -44,7 +44,7 @@
 		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 		/obj/item/hardpoint/primary/blackfoot_launchers,
 		/obj/item/hardpoint/support/sensor_array,
-		/obj/item/hardpoint/secondary/doorgun,
+		/obj/item/hardpoint/special/doorgun,
 	)
 
 	entrances = list(
@@ -79,7 +79,7 @@
 
 	var/state = STATE_STOWED
 
-	COOLDOWN_DECLARE(turn_delay)
+	COOLDOWN_DECLARE(turn_cooldown)
 	COOLDOWN_DECLARE(flight_sound_cooldown)
 
 	var/obj/blackfoot_shadow/shadow_holder
@@ -129,12 +129,17 @@
 /obj/vehicle/multitile/blackfoot/Initialize(mapload, ...)
 	. = ..()
 	tacmap = new /datum/tacmap/drawing/blackfoot(src, minimap_type)
+	load_hardpoints()
+	load_role_reserved_slots()
 	update_icon()
 
 /obj/vehicle/multitile/blackfoot/Destroy()
 	QDEL_NULL(shadow_holder)
 
 	. = ..()
+
+/obj/vehicle/multitile/blackfoot/load_hardpoints()
+	add_hardpoint(new /obj/item/hardpoint/special/doorgun)
 
 /obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
 	var/datum/role_reserved_slots/reserved_slot = new
@@ -221,7 +226,7 @@
 	if(state == STATE_VTOL)
 		return ..()
 
-	if(!COOLDOWN_FINISHED(src, turn_delay))
+	if(!COOLDOWN_FINISHED(src, turn_cooldown))
 		return FALSE
 
 	if(state != STATE_FLIGHT)
@@ -238,7 +243,7 @@
 	if(!.)
 		return
 
-	COOLDOWN_START(src, turn_delay, 1 SECONDS)
+	COOLDOWN_START(src, turn_cooldown, 1 SECONDS)
 
 	if(shadow_holder)
 		shadow_holder.dir = dir

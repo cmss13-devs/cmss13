@@ -24,7 +24,7 @@
 /datum/ammo/bullet/proc/handle_battlefield_execution(datum/ammo/firing_ammo, mob/living/hit_mob, obj/projectile/firing_projectile, mob/living/user, obj/item/weapon/gun/fired_from)
 	SIGNAL_HANDLER
 
-	if(!user || hit_mob == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !ishuman_strict(hit_mob))
+	if(!user || hit_mob == user || user.zone_selected != "head" || user.a_intent != INTENT_GRAB || !ishuman_strict(hit_mob))
 		return
 
 	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))

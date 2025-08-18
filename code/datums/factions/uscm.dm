@@ -45,6 +45,8 @@
 				marine_rk = "dcc"
 			if(JOB_OPERATIONS_PILOT)
 				marine_rk = "op"
+			if(JOB_OPERATIONS_CREW_CHIEF)
+				marine_rk = "occ"
 			if(JOB_MARINE_RAIDER)
 				marine_rk = "soc"
 			if(JOB_MARINE_RAIDER_SL)
@@ -131,6 +133,8 @@
 				marine_rk = "dcc"
 			if(JOB_OPERATIONS_PILOT)
 				marine_rk = "op"
+			if(JOB_OPERATIONS_CREW_CHIEF)
+				marine_rk = "occ"
 			if(JOB_CHIEF_POLICE)
 				marine_rk = "cmp"
 				border_rk = "command"

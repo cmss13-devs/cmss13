@@ -52,7 +52,7 @@
 		/datum/action/item_action/smartgun/toggle_motion_detector,
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
-	attachable_allowed = null
+	attachable_allowed = list()
 
 	var/obj/item/smartgun_battery/battery = null
 	/// Whether the smartgun drains the battery (Ignored if requires_battery is false)

@@ -302,6 +302,7 @@
 				SPAN_WARNING("[user] tears the incision on [target]'s lower abdomen open with \the [tool], exposing [h_his] viscera!"))
 		if("chest")
 			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			user.affected_message(target,
 				SPAN_WARNING("You tear open the incision on [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
 				SPAN_WARNING("[user] tears the incision on your [surgery.affected_limb.display_name] open with \the [tool]!"),
 				SPAN_WARNING("[user] tears the incision on [target]'s [surgery.affected_limb.display_name] open with \the [tool]!"))

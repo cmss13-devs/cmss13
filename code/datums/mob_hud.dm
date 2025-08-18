@@ -412,6 +412,9 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			hud.remove_hud_from(src, src)
 		else if (istype(hud, /datum/mob_hud/xeno_infection))
 			hud.remove_hud_from(src, src)
+		else if (istype(hud, /datum/mob_hud/dropship))
+			hud.remove_from_hud(src)
+			hud.remove_hud_from(src, src)
 	if (xeno_hostile_hud)
 		xeno_hostile_hud = FALSE
 		var/datum/mob_hud/hostile_hud = GLOB.huds[MOB_HUD_XENO_HOSTILE]

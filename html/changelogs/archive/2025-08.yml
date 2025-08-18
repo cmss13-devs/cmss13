@@ -198,3 +198,6 @@
   Red-byte3D:
   - balance: Queen's can now rest on ovi again to cancel breaking off their ovipositor
       as so they are not doomed
+2025-08-18:
+  TheGamerdk:
+  - bugfix: Eggs and morphers are now more robust at handling unhauling.

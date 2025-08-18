@@ -6162,15 +6162,30 @@
 "apc" = (
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/shipboard/weapon_room)
+"apd" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/s_bow)
 "ape" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/living/grunt_rnr)
+"apf" = (
+/obj/effect/landmark/start/ops_crew_chief,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/pilotbunks)
 "apg" = (
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/north1)
+"aph" = (
+/obj/effect/landmark/start/pilot/operations_pilot,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/living/pilotbunks)
 "api" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -7165,6 +7180,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/s_bow)
 "arE" = (
@@ -131096,7 +131112,7 @@ fUz
 ldF
 eQR
 eQR
-eQR
+apd
 eQR
 aiX
 apl
@@ -131197,10 +131213,10 @@ nBJ
 rLp
 fUz
 eQR
-eQR
-ldF
-rdN
-iWJ
+aiX
+aiX
+aiX
+aiX
 aiX
 apm
 iqp
@@ -131301,9 +131317,9 @@ avo
 auZ
 bTW
 aiX
-aiX
-aiX
-aiX
+vkO
+bKP
+bos
 aiX
 aiX
 bBD
@@ -131406,7 +131422,7 @@ eQR
 aiX
 jCr
 aqc
-bos
+iqp
 bBD
 apn
 apq
@@ -132021,8 +132037,8 @@ nBJ
 eQR
 ldF
 aiX
-bFr
-bFr
+aph
+apf
 avU
 avU
 mKN

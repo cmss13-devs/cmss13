@@ -729,6 +729,9 @@
 	can_be_broken = FALSE
 	w_class = SIZE_TINY
 
+/obj/item/device/flashlight/spotlight_beam/update_icon()
+	return
+
 /obj/item/device/flashlight/spotlight_beam/Initialize()
 	. = ..()
 	set_light_range(light_range)

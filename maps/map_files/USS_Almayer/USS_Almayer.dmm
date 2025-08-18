@@ -22791,17 +22791,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
-"bfs" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 2.5
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/item/hardpoint/special/doorgun,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/shipboard/operations)
 "bft" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4
@@ -133015,7 +133004,7 @@ aqk
 usq
 sbt
 pOH
-bfs
+sbt
 smU
 bYW
 lpl

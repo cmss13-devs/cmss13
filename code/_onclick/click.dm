@@ -22,13 +22,13 @@
 		ignore_next_click = TRUE
 		return usr.do_click(A, location, params)
 
-/mob/proc/do_click(atom/A, location, params)
+/mob/proc/do_click(atom/atom_clicked, location, params)
 	// We'll be sending a lot of signals and things later on, this will save time.
 	if(!client)
 		return
 	// No clicking on atoms with the NOINTERACT flag
-	if ((A.flags_atom & NOINTERACT))
-		if (istype(A, /atom/movable/screen/click_catcher))
+	if ((atom_clicked.flags_atom & NOINTERACT))
+		if (istype(atom_clicked, /atom/movable/screen/click_catcher))
 			var/list/mods = params2list(params)
 			var/turf/TU = params2turf(mods[SCREEN_LOC], get_turf(client.eye), client)
 			if (TU)
@@ -52,28 +52,28 @@
 	if(mods[DRAG])
 		return
 
-	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
+	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, atom_clicked, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
-	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
+	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, atom_clicked, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
-	if(istype(A, /obj/effect/statclick))
-		A.clicked(src, mods)
+	if(istype(atom_clicked, /obj/effect/statclick))
+		atom_clicked.clicked(src, mods)
 		return
 
 	if(client.click_intercept)
-		if(istype(A, /atom/movable/screen/buildmode))
-			A.clicked(src, mods)
+		if(istype(atom_clicked, /atom/movable/screen/buildmode))
+			atom_clicked.clicked(src, mods)
 			return
 
-	if(check_click_intercept(params,A))
+	if(check_click_intercept(params,atom_clicked))
 		return
 
 	// Click handled elsewhere. (These clicks are not affected by the next_move cooldown)
-	if(click(A, mods))
+	if(click(atom_clicked, mods))
 		return
-	if(A.clicked(src, mods, location, params))
+	if(atom_clicked.clicked(src, mods, location, params))
 		return
 
 	// Default click functions from here on.
@@ -81,40 +81,40 @@
 	if (is_mob_incapacitated(TRUE))
 		return
 
-	face_atom(A)
+	face_atom(atom_clicked)
 
 	if(mods[MIDDLE_CLICK] || mods[BUTTON4] || mods[BUTTON5])
 		return
 
 	// Special type of click.
 	if (is_mob_restrained())
-		RestrainedClickOn(A)
+		RestrainedClickOn(atom_clicked)
 		return
 
 	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
-	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /atom/movable/screen))
+	if (throw_mode && atom_clicked.loc != src && !isstorage(atom_clicked.loc) && !istype(atom_clicked, /atom/movable/screen))
 		//if we're past the throw delay just throw, add the new delay time, and reset the buffer
 		if(COOLDOWN_FINISHED(src, throw_delay))
-			throw_item(A)
+			throw_item(atom_clicked)
 			COOLDOWN_START(src, throw_delay, THROW_DELAY)
 			throw_buffer = 0
 		//if we're still in the throw delay we check if the buffer is already used, if not then we throw the item and set the buffer as used
 		else if(!throw_buffer)
-			throw_item(A)
+			throw_item(atom_clicked)
 			throw_buffer++
 		return
 
-	var/obj/item/W = get_active_hand()
+	var/obj/item/object_used = get_active_hand()
 
 	// Special gun mode stuff.
-	if(W == A)
+	if(object_used == atom_clicked)
 		mode()
 		return
 
 	//Self-harm preference. isxeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if(A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isxeno(src))
-		if(W)
-			if(W.force && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+	if(atom_clicked == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isxeno(src))
+		if(object_used)
+			if(object_used.force && (!object_used || !(object_used.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 				if(world.time % 3)
 					to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
 				return
@@ -128,29 +128,29 @@
 	if (!isturf(loc))
 		return
 
-	if (world.time <= next_move && A.loc != src) // Attack click cooldown check
+	if (world.time <= next_move && atom_clicked.loc != src) // Attack click cooldown check
 		return
 
 	next_move = world.time
-	if(A.Adjacent(src)) // If standing next to the atom clicked.
-		if(get_turf(A) == src.loc)
-			click_adjacent(A, W, mods)
+	if(atom_clicked.Adjacent(src)) // If standing next to the atom clicked.
+		if(get_turf(atom_clicked) == src.loc)
+			click_adjacent(atom_clicked, object_used, mods)
 			return
 		else
-			if(!istype(W, /obj/item/weapon/gun) || istype(W, /obj/item/weapon/gun/shotgun)) //Exception for shotguns cause they don't suck for PBing
-				click_adjacent(A, W, mods)
+			if(!istype(object_used, /obj/item/weapon/gun) || istype(object_used, /obj/item/weapon/gun/shotgun)) //Exception for shotguns cause they don't suck for PBing
+				click_adjacent(atom_clicked, object_used, mods)
 				return
 			else
 				if(src.a_intent != INTENT_HARM) //Force normal gunfire on harm intent.
-					click_adjacent(A, W, mods)
+					click_adjacent(atom_clicked, object_used, mods)
 					return
 	// If not standing next to the atom clicked.
-	if(W)
-		W.afterattack(A, src, 0, mods)
+	if(object_used)
+		object_used.afterattack(atom_clicked, src, 0, mods)
 		return
 
-	RangedAttack(A, mods)
-	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
+	RangedAttack(atom_clicked, mods)
+	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, atom_clicked, mods)
 	return
 
 /mob/proc/click_adjacent(atom/targeted_atom, obj/item/used_item, mods)

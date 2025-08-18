@@ -293,7 +293,7 @@
 				SPAN_WARNING("You tear open the incision on [target]'s head with \the [tool], exposing [h_his] skull!"),
 				SPAN_WARNING("[user] holds the incision on your head open with \the [tool], exposing your skull!"),
 				SPAN_WARNING("[user] holds the incision on [target]'s head open with \the [tool], exposing [h_his] skull!"))
-			target.overlays += image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+			target.overlays += image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 
 		if("groin")
 			user.affected_message(target,

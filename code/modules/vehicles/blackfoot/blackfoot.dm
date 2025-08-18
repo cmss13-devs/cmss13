@@ -143,14 +143,14 @@
 
 /obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
 	var/datum/role_reserved_slots/reserved_slot = new
-	reserved_slot.category_name = "Crewmen"
+	reserved_slot.category_name = "Pilot"
 	reserved_slot.roles = list(JOB_OPERATIONS_PILOT)
 	reserved_slot.total = 1
 	role_reserved_slots += reserved_slot
 
 	reserved_slot = new
-	reserved_slot.category_name = "Crew"
-	reserved_slot.roles = list(JOB_DROPSHIP_CREW_CHIEF)
+	reserved_slot.category_name = "Crew Chief"
+	reserved_slot.roles = list(JOB_OPERATIONS_CREW_CHIEF)
 	reserved_slot.total = 1
 	role_reserved_slots += reserved_slot
 

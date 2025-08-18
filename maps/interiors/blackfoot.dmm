@@ -4,6 +4,9 @@
 /area/interior/vehicle/blackfoot)
 "f" = (
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat/blackfoot,
+/obj/effect/landmark/interior/spawn/walkman/blackfoot_cassette{
+	pixel_x = -20
+	},
 /turf/open/floor/transparent,
 /area/interior/vehicle/blackfoot)
 "n" = (
@@ -37,8 +40,9 @@
 /obj/effect/landmark/interior/spawn/blackfoot_loader{
 	icon_state = "blackfoot-ammo-interior-left";
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
-	pixel_y = 19;
-	pixel_x = -7
+	pixel_y = -24;
+	pixel_x = 3;
+	name = "weapon access port"
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
@@ -52,11 +56,17 @@
 "M" = (
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_right_top,
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_right_bottom,
+/obj/structure/extinguisher_cabinet/blackfoot{
+	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi';
+	pixel_x = -10;
+	pixel_y = -36
+	},
 /obj/effect/landmark/interior/spawn/blackfoot_loader{
 	icon_state = "blackfoot-ammo-interior-right";
 	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
-	pixel_y = 20;
-	pixel_x = 8
+	pixel_y = -24;
+	pixel_x = -3;
+	name = "weapon access port"
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)

@@ -39,16 +39,17 @@
 "q" = (
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_left_top,
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_left_bottom,
-/obj/effect/landmark/interior/spawn/blackfoot_loader{
-	icon_state = "blackfoot-ammo-interior-left";
-	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
-	pixel_y = -24;
-	pixel_x = 3
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 4;
 	pixel_x = 1;
 	pixel_y = 20
+	},
+/obj/effect/landmark/interior/spawn/blackfoot_loader{
+	icon_state = "blackfoot-ammo-interior-left";
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
+	pixel_y = -24;
+	pixel_x = 3;
+	name = "weapon access port"
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
@@ -62,12 +63,6 @@
 "M" = (
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_right_top,
 /obj/structure/bed/chair/vehicle/blackfoot/bottom_right_bottom,
-/obj/effect/landmark/interior/spawn/blackfoot_loader{
-	icon_state = "blackfoot-ammo-interior-right";
-	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
-	pixel_y = -24;
-	pixel_x = -3
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	pixel_x = -1;
 	pixel_y = 20;
@@ -77,6 +72,13 @@
 	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi';
 	pixel_x = -10;
 	pixel_y = -36
+	},
+/obj/effect/landmark/interior/spawn/blackfoot_loader{
+	icon_state = "blackfoot-ammo-interior-right";
+	icon = 'icons/obj/vehicles/blackfoot_peripherals.dmi';
+	pixel_y = -24;
+	pixel_x = -3;
+	name = "weapon access port"
 	},
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)

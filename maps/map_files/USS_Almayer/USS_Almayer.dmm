@@ -6617,6 +6617,13 @@
 "aqk" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/operations)
+"aql" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -20;
+	pixel_y = 18
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "aqm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7357,6 +7364,16 @@
 	},
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/shipboard/operations)
+"asb" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -20;
+	pixel_y = 18
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
 "asc" = (
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
@@ -22774,6 +22791,17 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
+"bfs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 2.5
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/hardpoint/special/doorgun,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/shipboard/operations)
 "bft" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4
@@ -34978,6 +35006,12 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/operations)
+"bFN" = (
+/obj/structure/surface/rack,
+/obj/item/tool/wet_sign,
+/obj/item/tool/wet_sign,
+/turf/open/floor/almayer/plate,
+/area/almayer/maint/hull/lower/l_f_s)
 "bFP" = (
 /obj/vehicle/powerloader{
 	dir = 8
@@ -70475,7 +70509,8 @@
 /obj/item/fuel_pump{
 	anchored = 1;
 	pixel_y = 8;
-	pixel_x = 4
+	pixel_x = 4;
+	name = "broken M6G Short-Cycle Pump"
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -14;
@@ -70488,7 +70523,8 @@
 /obj/item/flight_cpu{
 	anchored = 1;
 	pixel_y = 5;
-	pixel_x = 29
+	pixel_x = 29;
+	name = "busted GZ0 Operations Terminal"
 	},
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/operations)
@@ -71705,6 +71741,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/operations)
 "pON" = (
@@ -132978,11 +133015,11 @@ aqk
 usq
 sbt
 pOH
-sbt
+bfs
 smU
 bYW
 lpl
-xyw
+aql
 bHB
 gjm
 aYu
@@ -133291,7 +133328,7 @@ are
 phw
 xMG
 aqk
-hmy
+asb
 bHB
 aZO
 baI
@@ -133903,7 +133940,7 @@ sGw
 dvD
 eWs
 ass
-dvD
+bFN
 ipk
 rEt
 xzB

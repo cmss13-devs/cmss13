@@ -24,7 +24,7 @@
 	var/obj/item/reagent_container/beaker = null
 	var/ui_check = 0
 	var/static/list/possible_transfer_amounts = list(5,10,20,30,40)
-	//Used in a check to see if the dispenser can accept that container. Currently only used for corpsman dispensers.
+	/// List of typepaths for reagent containers that a chem dispenser will accept; all containers allowed if empty.
 	var/list/whitelisted_containers = list()
 	var/list/dispensable_reagents = list(
 		"hydrogen",

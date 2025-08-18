@@ -4,6 +4,7 @@
 	spawn_positions = 1
 	supervisors = "the pilot officers"
 	flags_startup_parameters = ROLE_HIDDEN
+	late_joinable = FALSE
 	gear_preset = /datum/equipment_preset/uscm_ship/occ
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to assist</a> the pilot officer maintain the ship's AD-71E Blackfoot VTOL. You have authority only on the VTOL, but you are expected to maintain order, as not to disrupt the pilot."
 

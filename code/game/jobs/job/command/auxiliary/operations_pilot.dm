@@ -4,6 +4,7 @@
 	spawn_positions = 1
 	supervisors = "the auxiliary support officer"
 	flags_startup_parameters = ROLE_HIDDEN
+	late_joinable = FALSE
 	gear_preset = /datum/equipment_preset/uscm_ship/op
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>Your job is to fly, protect, and maintain the AD-71E blackfoot.</a> While you are an officer, your authority is limited to the VTOL, where you have authority over the enlisted personnel."
 

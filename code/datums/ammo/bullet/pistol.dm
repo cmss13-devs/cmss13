@@ -4,7 +4,7 @@
 //======
 */
 
-// Used by M4A3, M4A3 Custom and B92FS
+// Used by M4A3, M4A4, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM

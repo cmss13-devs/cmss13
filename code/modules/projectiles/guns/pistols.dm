@@ -85,6 +85,16 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_6
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
+/obj/item/weapon/gun/pistol/m4a3/m4a4
+	name = "\improper M4A4 service pistol"
+	desc = "An M4A4 service pistol, a standard issue sidearm of the USCM, an updated edition of the previous A3 model. Fires 9mm pistol rounds."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
+	icon_state = "m4a4"
+	item_state = "m4a4"
+	current_mag = /obj/item/ammo_magazine/pistol
+
+/obj/item/weapon/gun/pistol/m4a3/m4a4/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 10, "rail_y" = 23, "under_x" = 21, "under_y" = 16, "stock_x" = 21, "stock_y" = 17)
 
 /obj/item/weapon/gun/pistol/m4a3/training
 	current_mag = /obj/item/ammo_magazine/pistol/rubber

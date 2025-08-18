@@ -1851,4 +1851,11 @@
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
 
+/mob/living/carbon/human/proc/remove_overlays() // Mainly for ahealing
+
+	if(overlays)
+		overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+		overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+		overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+		overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 

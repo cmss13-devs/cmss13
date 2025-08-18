@@ -631,10 +631,6 @@
 		H.update_body()
 
 /mob/living/proc/remove_surgery_overlays() // Mainly for ahealing
-
-	if(!ishuman_strict(src))
-		return
-
 	if(overlays)
 		overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
 		overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")

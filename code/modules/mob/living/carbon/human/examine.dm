@@ -75,7 +75,7 @@
 	var/rank_display = get_paygrades(id_paygrade, FALSE, gender)
 	var/msg = "<span class='info'>\nThis is "
 
-	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
+	if(skipjumpsuit && skipface || gender == PLURAL) //big suits/masks/helmets make it hard to tell their gender
 		t_He = "They"
 		t_his = "their"
 		t_him = "them"

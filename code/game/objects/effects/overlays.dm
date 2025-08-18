@@ -417,7 +417,7 @@
 		for(var/client/Client in GLOB.clients)
 			if(Client.images && (flag_image in Client.images))
 				Client.images -= flag_image
-	..()
+	return ..()
 
 /obj/effect/overlay/temp/protection_flag/proc/get_flag_image()
 	if(!flag_image)

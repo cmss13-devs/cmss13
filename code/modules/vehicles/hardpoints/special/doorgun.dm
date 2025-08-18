@@ -11,13 +11,13 @@
 	firing_arc = 180
 
 	ammo = new /obj/item/ammo_magazine/hardpoint/doorgun_ammo
-	max_clips = 2
+	max_clips = 4
 
 	gun_firemode = GUN_FIREMODE_SEMIAUTO
 	gun_firemode_list = list(
 		GUN_FIREMODE_SEMIAUTO,
 	)
-	fire_delay = 0.6 SECONDS
+	fire_delay = 0.2 SECONDS
 
 	allowed_seat = VEHICLE_GUNNER
 

@@ -1,0 +1,203 @@
+2025-08-02:
+  FourkhanDaKhan:
+  - bugfix: the ID modification console does not allow modification from other users
+  Kyogon:
+  - imageadd: added a new queen sprite
+  Red-byte3D:
+  - balance: New xenomorph special structure "Plasma Tree"
+  - rscadd: Adds a new xenomorph special structure named the "Plasma Tree" it replenishes
+      plasma to nearby xenos every few seconds, works like the recovery node.
+  - code_imp: Made "health" and "plasma" span their own color on examine for both
+      structures
+  - bugfix: Unreloadable sadar's are no longer re-loadable
+  SRG3124:
+  - rscadd: Added UA Riot police Uniform and headgear.
+  SRG3127, Thwomper:
+  - rscadd: Added M37A2 Collapsible stock.
+  - rscdel: Removed the old M37 stock from vendors and replaced it with the M37 Collapsible
+      stock.
+  Willzadl:
+  - bugfix: fixed chanterelle box not having a proper name in the galley vendor
+  dryramen, chaussettes for original sprites:
+  - imageadd: add new suitskirts sprites
+  jupyterkat:
+  - bugfix: alt iff now does not care about people on the same z as you if you're
+      shooting at a turf above
+  realforest2001:
+  - bugfix: Fixed the messed up margins in prefab paperwork.
+  wgtjunior743:
+  - rscadd: ABR-40 variant name.
+2025-08-04:
+  MistChristmas, Ediblebomb, Drathek:
+  - bugfix: Adds a haul check for click dragging, moves a Lint Proc to the top for
+      Linting; Fixes the things that would get caught in the fixed lint. Left clicking
+      storages whilst hauled will open them instead of doing nothing.
+2025-08-05:
+  Comxy:
+  - rscadd: CLF Coordinator role
+  - imageadd: CLF Coordinator supporting sprites
+  Kyogon:
+  - bugfix: fixed queen's radial showing old sprite
+  Puckaboo2:
+  - bugfix: Xenos can now see the 'bursting' stage of a cap on their HUD.
+  Red-byte3D:
+  - balance: Scout helmet now has the same functions as an RTO pack, allowing you
+      to call or be called. However, you cannot hand the telephone to anyone and you
+      must give them the helmet if you want them to use it.
+  - rscadd: Adds radio backpack equivelant for helmets, nothing uses these right now
+      other then scout.
+  - imagedel: grenadier helmet no longer has an antenna, scout helmet does
+  - soundadd: New sounds for the scout helmet-phone
+  - imageadd: New sprites for the scout helmet and microphone
+2025-08-06:
+  cuberound; zenith:
+  - qol: walking into open space makes you start to climb down unless on harm intent
+  - qol: when you try to walk into climbable wall you start climbing it
+  - balance: removes chance for breaking bones when falling from z level (still chance
+      from taking the damage itself)
+  - balance: reduces fall stuns and adds some slow after the stun
+  - balance: shifts around climbing up times
+  - rscadd: adds wall boosting, to wall boost lean on a climbable wall and have the
+      other climb said wall for reduced climbing time
+  - balance: adds windup for big xenos to pounce on different z level and small (extra)
+      windup for everyone to pounce up a z level
+  - qol: adds up and down tracking indicators
+2025-08-07:
+  Blundir:
+  - bugfix: fixed m39 holster (without ammo one) now has correct holstered gun pixel
+      offset
+  Drathek:
+  - maptweak: Replaced two pictures with calendars on Hybrisa
+2025-08-08:
+  SpartanBobby:
+  - maptweak: Makes USS Almayer Multiz
+2025-08-10:
+  hry-gh:
+  - server: the server can now be configured to ingest runtimes to sentry
+  - code_imp: browser preference storage has changed (again)
+2025-08-11:
+  Drathek:
+  - bugfix: Mass screenshot verb now can handle offset maps (like multiz Almayer)
+  hry-gh:
+  - server: the server can now support external authentication, you require a separate
+      service outside the game to modify the database
+2025-08-12:
+  IroquoisLou:
+  - rscdel: Removed reference to player in the description of the 50 dollar bill
+  LTNTS:
+  - bugfix: Gives GP Medbay Access
+2025-08-13:
+  LTNTS:
+  - bugfix: gives CBRN rifleman skilless toxin bottles in their medikit pouch
+  Puckaboo2:
+  - rscadd: Added a secure personal field doctor crate pre-filled with a wrench and
+      crowbar to Field Equipment Storage.
+  - rscadd: Added a secure replacement field doctor gear supply pack.
+  - rscadd: Added secure medical crates for future purposes.
+  - imageadd: Added icon states for secure medical crates.
+  - code_imp: added a new datum under supply packs for the Field Doctor crate.
+  - spellcheck: Fixed some grammatical errors.
+  Zenith:
+  - rscadd: Added six new MK30 flight visors to the PO's clothing vendor.
+  - rscadd: Added black MK30 flight visors to all M30 helmets by default.
+  wgtjunior743:
+  - rscadd: New level of firearms skill
+  - balance: Change the firearms skill of several jobs
+2025-08-14:
+  BOBAMAx:
+  - bugfix: decorative z level ledges on the almayer no longer break
+  dadlips:
+  - bugfix: changed secure_open_medical to secure_medical_open
+  hry-gh:
+  - bugfix: fixes a runtime when checking cursor preferences
+2025-08-15:
+  BOBAMAx:
+  - bugfix: CLF CO survs now actually spawn, CO survs in PMC insert will no longer
+      be CMB
+  Blundir:
+  - bugfix: fixed type 19 incorrect attachment offsets
+  - rscadd: aid kits now have dynamically rendered items inside them when aid kit
+      is open
+  DarkLordCabbage:
+  - spellcheck: fixed typos/grammatical errors in whiskey outpost announcements
+  FishyFlaps2024:
+  - rscadd: Adds reagent scanner HUD goggles to the medilathe
+  Red-byte3D:
+  - code_imp: Added a transparent sprite ability for the queen
+  - bugfix: Queen icon for orbit alerts is better now
+  Steelpoint:
+  - rscadd: An antiZed autoinjector has been added to the game, a single-use device
+      that contains a cure for the zombie pathogen.
+  realforest2001:
+  - rscadd: Added equipment presets for UACQS.
+  - rscadd: Added CIA roles to the crew monitor.
+  - rscadd: Added a CIA clothing vendor.
+  - rscadd: Added lockable versions of the blue and black leather satchels.
+  - rscadd: Added a variable that determines if signs can be deconstructed, and forbids
+      it on no-smoking signs and the RO plaque.
+  zzzmike:
+  - qol: facehuggers can crawl onto nested targets
+2025-08-16:
+  Drathek:
+  - balance: Acider runner can now fill traps for 75 acid at level 3
+  - bugfix: Acid level is now checked after the do_after when filling a trap to ensure
+      it wasn't filled by someone else
+  - refactor: Alien open hand trap filling is now handled with a try_fill_trap proc
+      per mob type to avoid istype checking and more easily customize its implementation
+  - bugfix: 'More attempts to address sticky keys: Unfocusing a window now releases
+      all held keys (even if actually held)'
+  - rscadd: Added a preference for spec priority which will attempt to automatically
+      select a specialization on round start (does not apply to ERT or late join currently).
+      The order choices are made will be the priority order.
+  - code_imp: Corrected some incorrect usr usage in cm_vending
+  - code_imp: tgui_input_checkboxes can now handle associated lists (ignores values
+      currently)
+  Kivts, paperbirch:
+  - rscdel: Create mode is removed
+  - rscdel: Chemicals that appear in vials are gone, xeno plasma still appears in
+      the vials.
+  - rscadd: Queue system for biomass printer.
+  - rscadd: Contract system for research, Research gets a choice of 3 chemicals every
+      5 minutes (2 if not picked), of random difficulty. Level of difficulty affects
+      the quality of properties and complexity of the recipe, however, the harder
+      - the more points you get to manipulate the chemical in synthesis simulator.
+  - rscadd: ADD mode in synthesis simulator, This is a replacement to CREATE mode,
+      in this mode you can add a property to target chemical at no disadvantage for
+      the target chemical, however the reference chemical is "damaged" and simulator
+      wont accept it anymore.
+  - rscadd: 9 Hydro exclusive chemicals. Atropine, more powerful epinephrine but deals
+      brain damage, Thymol an extremely weak anti parasitic, Psoralen a powerful carcinogenic
+      and more. Found only in certain plants during a mutagenic process.
+  - rscdel: Passive income for research is removed.
+  - rscadd: Legendary properties will not generate in chemicals anymore, instead they're
+      now assigned 3 properties to combine from, similar applies to ciphering.
+  - balance: Regulating nerf is reverted
+  Red-byte3D:
+  - imageadd: New sprites for surgery overlays
+  - rscadd: Some new overlays for surgery, mainly past retractor (opening the incision)
+      and prying the bones, for chest and head!
+  SRG3124, Dimdimich1996:
+  - rscadd: Added the L64 Battle Rifle to the RMC's arsenal
+  - rscdel: Removed the L42A3 from the RMC's arsenal
+  - soundadd: added sounds for the L64
+  TheGamerdk:
+  - rscadd: King gets a tacmap, if applicable.
+  - bugfix: King corpse gives intel
+  - bugfix: Custom emotes will no longer force pronouns
+  - bugfix: Can no longer duplicate signs or place them telepathically
+  - rscadd: When promoted by ARES, the new aCO now has the ability to change ID access
+  - bugfix: Fixed a runtime with the Sorokyne hot water blockers
+  - rscadd: Added a QOL warning to the overwatch console when no squads are available.
+  - rscadd: Queen gets a tactical map on hijack end
+  - bugfix: G2 grenades can no longer open the umbillical podlocks.
+  - bugfix: Kill feed now preserves the first letter of the killing weapon
+  - balance: Scout is now force uncloaked when hauled/unhauled
+  Thwomper:
+  - rscadd: Adds M4A4 Service Pistol as a new USCM loadout option sidearm.
+2025-08-17:
+  Red-byte3D:
+  - balance: Queen's can now rest on ovi again to cancel breaking off their ovipositor
+      as so they are not doomed
+2025-08-18:
+  TheGamerdk:
+  - bugfix: Eggs and morphers are now more robust at handling unhauling.

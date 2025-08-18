@@ -1442,7 +1442,7 @@
 /obj/item/storage/belt/gun/attack_hand(mob/user, mods)
 	if(length(holstered_guns) && ishuman(user) && loc == user)
 		var/obj/item/I
-		if(mods && mods[ALT_CLICK] && length(contents) > length(holstered_guns)) //Withdraw the most recently inserted magazine, if possible.
+		if(mods && mods[ALT_CLICK] && length(contents) > length(holstered_guns) && !HAS_TRAIT(user, TRAIT_HAULED)) //Withdraw the most recently inserted magazine, if possible.
 			var/list/magazines = contents - holstered_guns
 			I = magazines[length(magazines)]
 		else //Otherwise find and draw the last-inserted gun.
@@ -2751,9 +2751,9 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/rmc_f90/marksman(src)
 
-/obj/item/storage/belt/marine/rmc/l42a3/marksman/fill_preset_inventory()
+/obj/item/storage/belt/marine/rmc/l64a3/marksman/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/l42a/ap(src)
+		new /obj/item/ammo_magazine/rifle/l64/ap(src)
 
 /obj/item/storage/belt/marine/rmc/rmc_l23_ammo/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)

@@ -406,8 +406,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CLF_LEADER "CLF Cell Leader"
 #define JOB_CLF_COMMANDER "CLF Cell Commander"
 #define JOB_CLF_SYNTH "CLF Multipurpose Synthetic"
+#define JOB_CLF_COORDINATOR "CLF Coordinator"
 
-#define CLF_JOB_LIST list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER, JOB_CLF_COMMANDER, JOB_CLF_SYNTH)
+#define CLF_JOB_LIST list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER, JOB_CLF_COMMANDER, JOB_CLF_SYNTH, JOB_CLF_COORDINATOR)
 
 //-------- TWE --------//
 #define JOB_TWE_REPRESENTATIVE "TWE Representative"
@@ -478,6 +479,11 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 //-------- CIA --------//
 #define JOB_CIA "Intelligence Analyst"
 #define JOB_CIA_LIAISON "Intelligence Liaison Officer"
+#define JOB_CIA_UACQS_SEC "UACQS Security"
+#define JOB_CIA_UACQS_ADMN "UACQS Administrator"
+#define JOB_CIA_UACQS_COMR "UACQS Commissioner"
+
+#define JOB_CIA_ROLES_LIST list(JOB_CIA, JOB_CIA_LIAISON, JOB_CIA_UACQS_SEC, JOB_CIA_UACQS_ADMN, JOB_CIA_UACQS_COMR)
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"

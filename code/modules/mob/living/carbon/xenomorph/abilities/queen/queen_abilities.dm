@@ -37,11 +37,6 @@
 	no_cooldown_msg = FALSE // Needed for onclick actions
 	ability_primacy = XENO_SCREECH
 
-/datum/action/xeno_action/onclick/queen_tacmap
-	name = "View Xeno Tacmap"
-	action_icon_state = "toggle_queen_zoom"
-	plasma_cost = 0
-
 
 /datum/action/xeno_action/activable/queen_give_plasma
 	name = "Give Plasma (400)"

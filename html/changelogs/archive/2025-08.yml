@@ -137,3 +137,60 @@
       it on no-smoking signs and the RO plaque.
   zzzmike:
   - qol: facehuggers can crawl onto nested targets
+2025-08-16:
+  Drathek:
+  - balance: Acider runner can now fill traps for 75 acid at level 3
+  - bugfix: Acid level is now checked after the do_after when filling a trap to ensure
+      it wasn't filled by someone else
+  - refactor: Alien open hand trap filling is now handled with a try_fill_trap proc
+      per mob type to avoid istype checking and more easily customize its implementation
+  - bugfix: 'More attempts to address sticky keys: Unfocusing a window now releases
+      all held keys (even if actually held)'
+  - rscadd: Added a preference for spec priority which will attempt to automatically
+      select a specialization on round start (does not apply to ERT or late join currently).
+      The order choices are made will be the priority order.
+  - code_imp: Corrected some incorrect usr usage in cm_vending
+  - code_imp: tgui_input_checkboxes can now handle associated lists (ignores values
+      currently)
+  Kivts, paperbirch:
+  - rscdel: Create mode is removed
+  - rscdel: Chemicals that appear in vials are gone, xeno plasma still appears in
+      the vials.
+  - rscadd: Queue system for biomass printer.
+  - rscadd: Contract system for research, Research gets a choice of 3 chemicals every
+      5 minutes (2 if not picked), of random difficulty. Level of difficulty affects
+      the quality of properties and complexity of the recipe, however, the harder
+      - the more points you get to manipulate the chemical in synthesis simulator.
+  - rscadd: ADD mode in synthesis simulator, This is a replacement to CREATE mode,
+      in this mode you can add a property to target chemical at no disadvantage for
+      the target chemical, however the reference chemical is "damaged" and simulator
+      wont accept it anymore.
+  - rscadd: 9 Hydro exclusive chemicals. Atropine, more powerful epinephrine but deals
+      brain damage, Thymol an extremely weak anti parasitic, Psoralen a powerful carcinogenic
+      and more. Found only in certain plants during a mutagenic process.
+  - rscdel: Passive income for research is removed.
+  - rscadd: Legendary properties will not generate in chemicals anymore, instead they're
+      now assigned 3 properties to combine from, similar applies to ciphering.
+  - balance: Regulating nerf is reverted
+  Red-byte3D:
+  - imageadd: New sprites for surgery overlays
+  - rscadd: Some new overlays for surgery, mainly past retractor (opening the incision)
+      and prying the bones, for chest and head!
+  SRG3124, Dimdimich1996:
+  - rscadd: Added the L64 Battle Rifle to the RMC's arsenal
+  - rscdel: Removed the L42A3 from the RMC's arsenal
+  - soundadd: added sounds for the L64
+  TheGamerdk:
+  - rscadd: King gets a tacmap, if applicable.
+  - bugfix: King corpse gives intel
+  - bugfix: Custom emotes will no longer force pronouns
+  - bugfix: Can no longer duplicate signs or place them telepathically
+  - rscadd: When promoted by ARES, the new aCO now has the ability to change ID access
+  - bugfix: Fixed a runtime with the Sorokyne hot water blockers
+  - rscadd: Added a QOL warning to the overwatch console when no squads are available.
+  - rscadd: Queen gets a tactical map on hijack end
+  - bugfix: G2 grenades can no longer open the umbillical podlocks.
+  - bugfix: Kill feed now preserves the first letter of the killing weapon
+  - balance: Scout is now force uncloaked when hauled/unhauled
+  Thwomper:
+  - rscadd: Adds M4A4 Service Pistol as a new USCM loadout option sidearm.

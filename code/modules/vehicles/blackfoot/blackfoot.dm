@@ -624,7 +624,8 @@
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)
 	shadow_holder = new(shadow_turf)
 	shadow_holder.icon_state = "[get_sprite_state()]_shadow"
-	update_rear_view()
+	if(back_door.open)
+		update_rear_view()
 	START_PROCESSING(SSsuperfastobj, src)
 	busy = FALSE
 
@@ -638,6 +639,7 @@
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
 
 	if(!fits_in_turf(below_turf))
+		// yah carnt park that there mate
 		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("You can't land here, the area is roofed or blocked by something."))
 		return
 
@@ -667,7 +669,7 @@
 	var/turf/below_turf = SSmapping.get_turf_below(get_turf(src))
 
 	while(SSmapping.get_turf_below(below_turf))
-		if(!fits_in_turf(below_turf))
+		if(!fits_in_turf(SSmapping.get_turf_below(below_turf)))
 			break
 
 		below_turf = SSmapping.get_turf_below(below_turf)
@@ -678,7 +680,8 @@
 	state = STATE_DEPLOYED
 	transition_engines() // Idle mode by default
 	update_icon()
-	update_rear_view()
+	if(back_door.open)
+		update_rear_view()
 	busy = FALSE
 
 	var/turf/downwash_turf = get_turf(src)

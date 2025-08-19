@@ -400,7 +400,7 @@
 
 	to_chat(user, SPAN_NOTICE("You [deployed ? "retract" : "deploy"] the door gun."))
 
-	if(deployed)
+	if(deployed && gunner)
 		on_unset_interaction(gunner)
 
 	deployed = !deployed

@@ -199,7 +199,7 @@
 		if(STATE_TUGGED)
 			icon_state = "[vtol_type]stowed"
 			overlays += image(icon, "stowed_lights")
-			overlays += image(icon, "tug_underlay", layer = BELOW_MOB_LAYER)
+			overlays += image(icon, "tug_underlay", layer = 4.01)
 		if(STATE_DESTROYED)
 			icon_state = "[vtol_type]flight"
 			overlays += image(icon, "stowed_lights")
@@ -1067,6 +1067,7 @@
 	anchored = FALSE
 	pixel_x = -16
 	pixel_y = 0
+	layer = 4.01
 
 /obj/structure/landing_pad_folded
 	name = "M9AB Landing Pad"

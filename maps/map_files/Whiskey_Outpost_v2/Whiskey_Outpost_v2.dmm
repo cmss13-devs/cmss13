@@ -289,14 +289,6 @@
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/cic)
-"aU" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper ComTech Preparations";
-	req_access = list(11);
-	req_one_access = list()
-	},
-/turf/open/floor/prison,
-/area/whiskey_outpost/inside/living)
 "aV" = (
 /turf/open/floor/whitegreen/southwest,
 /area/whiskey_outpost/inside/hospital)
@@ -968,6 +960,14 @@
 /area/whiskey_outpost/outside/mortar_pit)
 "dh" = (
 /obj/structure/machinery/light/small,
+/turf/open/floor/prison,
+/area/whiskey_outpost/inside/living)
+"di" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper ComTech Preparations";
+	req_access = list(11);
+	req_one_access = list()
+	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/living)
 "dj" = (
@@ -28542,7 +28542,7 @@ Ys
 fr
 fr
 sI
-aU
+di
 jM
 cH
 cH

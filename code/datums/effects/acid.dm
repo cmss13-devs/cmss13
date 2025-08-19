@@ -7,16 +7,16 @@
 	var/damage_per_process_human = 1.25
 	var/damage_per_process_object = 4
 	var/acid_multiplier = 1
-	/// How 'goopy' the acid is. Each value is one stop drop roll.
-	var/acid_goopiness = 1
 	/// If it's been enhanced by a spit combo to level 2 or by despoiler up to 3
 	var/acid_level = 1
+	var/damage_areas = list("chest","groin","l_arm","r_arm")
+
 
 /datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
 	..(A, from, last_dmg_source, zone)
 	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		H.update_effects()
+		var/mob/living/carbon/human/human = A
+		human.update_effects()
 
 	if(isobj(A))
 		var/obj/O = A
@@ -37,8 +37,8 @@
 		return FALSE
 
 	if(ishuman(A))
-		var/mob/living/carbon/human/H = A
-		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD || HAS_TRAIT(H, TRAIT_HAULED))
+		var/mob/living/carbon/human/human = A
+		if(human.status_flags & XENO_HOST && HAS_TRAIT(human, TRAIT_NESTED) || human.stat == DEAD || HAS_TRAIT(human, TRAIT_HAULED))
 			return FALSE
 
 	. = ..()
@@ -50,7 +50,7 @@
 
 	var/mob/living/carbon/affected_mob = affected_atom
 	affected_mob.last_damage_data = cause_data
-	affected_mob.apply_armoured_damage(damage_per_process_human, ARMOR_BIO, BURN, def_zone, 40)
+	affected_mob.apply_armoured_damage(damage_per_process_human, ARMOR_BIO, BURN, pick(damage_areas), 40)
 
 	return TRUE
 
@@ -69,8 +69,10 @@
 		LAZYREMOVE(affected_atom.effects_list, src)
 
 	if(ishuman(affected_atom))
-		var/mob/living/carbon/human/H = affected_atom
-		H.update_effects()
+		var/mob/living/carbon/human/human = affected_atom
+		human.update_effects()
+		if(acid_level == 3)
+			to_chat(human, SPAN_WARNING("Your armor returns to normal."))
 
 	if(isobj(affected_atom))
 		var/obj/O = affected_atom
@@ -81,7 +83,6 @@
 	if(!super_acid && acid_level >= 2 || acid_level >= 3)
 		return
 
-	acid_goopiness++
 	acid_level++
 	if(acid_level == 2)
 		duration += 20
@@ -98,8 +99,8 @@
 			to_chat(affected_human, SPAN_WARNING("Your armor has been weakened."))
 
 /datum/effects/acid/proc/cleanse_acid()
-	acid_goopiness--
-	if(acid_goopiness <= 0)
+	duration -= 27
+	if(duration <= 0)
 		if(acid_level == 3 || ishuman(affected_atom))
 			var/mob/living/carbon/human/affected_human = affected_atom
 			to_chat(affected_human, SPAN_WARNING("Your armor returns to normal."))

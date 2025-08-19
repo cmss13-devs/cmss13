@@ -225,9 +225,6 @@
 	if(SSticker.current_state != GAME_STATE_PLAYING)
 		return
 
-	if(ROUND_TIME < 5 MINUTES) // Catch all for weirdness in spawn order, or other weird conditions that might cause there to be 0 contestants during setup.
-		return
-
 	var/list/counted_players = count_participants()
 	var/contestant_count = counted_players[1]
 	var/yautja_count = counted_players[2]
@@ -244,6 +241,9 @@
 
 	last_tally = contestant_count
 
+	if(ROUND_TIME < 5 MINUTES) // Catch all for weirdness in spawn order, or other weird conditions that might cause there to be 0 contestants during setup.
+		return
+
 	if(force_end_at && world.time > force_end_at)
 		round_finished = MODE_HUNTER_GAMES_ELSE // Nobody wins, because of some external reason
 		return
@@ -257,7 +257,8 @@
 		return
 
 	else if(yautja_count <= 0 && length(predators) >= 4) // yautja_count only includes living yautja, predators includes all. If >3 yautja join and all die, this triggers.
-		round_finished = MODE_HUNTER_GAMES_YAUTJA_DEATH // The contestants managed to kill their yautja capturers and earn their freedom, truly.
+		message_admins("HUNTER GAMES DEBUG MESSAGE: YAUTJA_COUNT: [yautja_count], LENGTH(PREDATORS): [length(predators)], PREDATORS: [predators]")
+		//round_finished = MODE_HUNTER_GAMES_YAUTJA_DEATH // The contestants managed to kill their yautja capturers and earn their freedom, truly.
 		return
 // would like to figure out an intelligent way to make the above check not include cryoed, not sure yet.
 

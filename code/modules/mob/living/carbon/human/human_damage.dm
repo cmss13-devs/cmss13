@@ -472,7 +472,7 @@ This function restores all limbs.
 			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
 				UpdateDamageIcon()
 
-	pain.apply_pain(damage, damagetype)
+	pain.recalculate_pain()
 
 	if(damagetype != HALLOSS && damage > 0)
 		life_damage_taken_total += damage

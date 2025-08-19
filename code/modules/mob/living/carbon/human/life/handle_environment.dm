@@ -30,13 +30,10 @@
 
 		if(bodytemperature > species.heat_level_3)
 			take_overall_damage(burn = HEAT_DAMAGE_LEVEL_3, used_weapon = "High Body Temperature")
-			pain.apply_pain(HEAT_DAMAGE_LEVEL_3, BURN)
 		else if(bodytemperature > species.heat_level_2)
 			take_overall_damage(burn = HEAT_DAMAGE_LEVEL_2, used_weapon = "High Body Temperature")
-			pain.apply_pain(HEAT_DAMAGE_LEVEL_2, BURN)
 		else if(bodytemperature > species.heat_level_1)
 			take_overall_damage(burn = HEAT_DAMAGE_LEVEL_1, used_weapon = "High Body Temperature")
-			pain.apply_pain(HEAT_DAMAGE_LEVEL_1, BURN)
 
 	else if(bodytemperature < species.cold_level_1)
 		fire_alert = max(fire_alert, 1)
@@ -45,15 +42,11 @@
 			return 1 //Godmode
 
 		if(!istype(loc, /obj/structure/machinery/cryo_cell))
-
 			if(bodytemperature < species.cold_level_3)
 				take_overall_damage(burn = COLD_DAMAGE_LEVEL_3, used_weapon = "Low Body Temperature")
-				pain.apply_pain(COLD_DAMAGE_LEVEL_3, BURN)
 			else if(bodytemperature < species.cold_level_2)
 				take_overall_damage(burn = COLD_DAMAGE_LEVEL_2, used_weapon = "Low Body Temperature")
-				pain.apply_pain(COLD_DAMAGE_LEVEL_2, BURN)
 			else if(bodytemperature < species.cold_level_1)
 				take_overall_damage(burn = COLD_DAMAGE_LEVEL_1, used_weapon = "Low Body Temperature")
-				pain.apply_pain(COLD_DAMAGE_LEVEL_1, BURN)
 
 	return 1

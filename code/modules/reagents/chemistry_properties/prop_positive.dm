@@ -439,7 +439,7 @@
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL)
+	M.pain.apply_pain_reduction(- PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL)
 
 //Applies mutation cancel onto hydrotray plants, enables new chems from being added
 /datum/chem_property/positive/cardiopeutic/reaction_hydro_tray(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, potency, volume)
@@ -690,7 +690,7 @@
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_DEFIBRILLATING_PAIN_OD)
+	M.pain.apply_pain_reduction(-PROPERTY_DEFIBRILLATING_PAIN_OD)
 	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM*potency, OXY)
 
 /datum/chem_property/positive/defibrillating/process_critical(mob/living/M, potency = 1, delta_time)

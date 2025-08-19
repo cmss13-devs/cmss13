@@ -118,14 +118,13 @@
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 		picked.heal_damage(brute, burn, TRUE)
-		human.pain.apply_pain(-brute, BRUTE)
-		human.pain.apply_pain(-burn, BURN)
 	else
 		human.apply_damage(-brute, BRUTE, picked)
 		human.apply_damage(-burn, BURN, picked)
 
 	human.UpdateDamageIcon()
 	human.updatehealth()
+	human.pain.recalculate_pain()
 
 /obj/structure/machinery/medical_pod/autodoc/process()
 	set background = 1

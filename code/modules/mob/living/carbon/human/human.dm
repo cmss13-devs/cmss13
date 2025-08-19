@@ -243,8 +243,7 @@
 			if("l_arm")
 				limb_multiplier = 0.05
 		update |= temp.take_damage(b_loss * limb_multiplier, f_loss * limb_multiplier, used_weapon = weapon_message, attack_source = attack_source)
-		pain.apply_pain(b_loss * limb_multiplier, BRUTE)
-		pain.apply_pain(f_loss * limb_multiplier, BURN)
+		pain.recalculate_pain()
 	if(update)
 		UpdateDamageIcon()
 	return TRUE

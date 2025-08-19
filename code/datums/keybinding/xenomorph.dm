@@ -259,6 +259,24 @@
 		handle_xeno_macro_datum(xeno, expand)
 		return TRUE
 
+/datum/keybinding/xenomorph/facehugger_pounce
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "facehugger_pounce"
+	full_name = "Facehugger: Pounce"
+	keybind_signal = COMSIG_KB_XENO_FACEHUGGER_POUNCE
+
+/datum/keybinding/xenomorph/facehugger_pounce/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pounce/facehugger/facehugger_pounce_check = get_action(xeno, /datum/action/xeno_action/activable/pounce/facehugger)
+	if(facehugger_pounce_check)
+		if(facehugger_pounce_check && !facehugger_pounce_check.hidden)
+			handle_xeno_macro_datum(xeno, facehugger_pounce_check)
+			return TRUE
+
 /datum/keybinding/xenomorph/runner_pounce
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")

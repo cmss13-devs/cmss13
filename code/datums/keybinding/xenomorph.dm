@@ -258,3 +258,22 @@
 	if(expand && !expand.hidden)
 		handle_xeno_macro_datum(xeno, expand)
 		return TRUE
+
+/datum/keybinding/xenomorph/runner_pounce
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "runner_pounce"
+	full_name = "Runner: Pounce"
+	keybind_signal = COMSIG_KB_XENO_RUNNER_POUNCE
+
+/datum/keybinding/xenomorph/runner_pounce/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pounce/runner/runner_pounce_check = get_action(xeno, /datum/action/xeno_action/activable/pounce/runner)
+	if(runner_pounce_check)
+		if(runner_pounce_check && !runner_pounce_check.hidden)
+			handle_xeno_macro_datum(xeno, runner_pounce_check)
+			return TRUE
+

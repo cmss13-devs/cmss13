@@ -160,7 +160,7 @@
 #define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 #define COMSIG_KB_TAIL_STAB "keybinding_tail_stab"
 #define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_plant_weeds"
-#define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_pounce"
+#define COMSIG_KB_XENO_RUNNER_POUNCE "keybinding_runner_pounce"
 
 #define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"

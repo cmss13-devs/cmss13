@@ -838,7 +838,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 		H.embedded_items -= selection
 
 		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
-		H.pain.apply_pain(selection.w_class * 3)
+		H.pain.recalculate_pain()
 
 		if(prob(selection.w_class * 5) && !(affected.status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))
 			var/datum/wound/internal_bleeding/I = new (0)

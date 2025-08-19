@@ -194,3 +194,20 @@
   - balance: Scout is now force uncloaked when hauled/unhauled
   Thwomper:
   - rscadd: Adds M4A4 Service Pistol as a new USCM loadout option sidearm.
+2025-08-17:
+  Red-byte3D:
+  - balance: Queen's can now rest on ovi again to cancel breaking off their ovipositor
+      as so they are not doomed
+2025-08-18:
+  TheGamerdk:
+  - bugfix: Eggs and morphers are now more robust at handling unhauling.
+2025-08-19:
+  Red-byte3D:
+  - bugfix: Marines no longer walk around with their ribs open
+  nauticall:
+  - imageadd: Resprited the Desert Eagle and variants.
+  - rscadd: Adds the M1911C pistol, a new sidearm option to COs.
+  - rscdel: Removes the golden Desert Eagle from the CO loadout.
+  - balance: Adjusted some weapon statistics of the Desert Eagle/M1911.
+  realforest2001:
+  - bugfix: Blended wall shutters can now be used properly in east-west directions.

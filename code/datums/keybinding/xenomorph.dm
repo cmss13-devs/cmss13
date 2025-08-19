@@ -277,3 +277,75 @@
 			handle_xeno_macro_datum(xeno, runner_pounce_check)
 			return TRUE
 
+/datum/keybinding/xenomorph/runner_bonespur
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "runner_bonespur"
+	full_name = "Runner: Bone Spur"
+	keybind_signal = COMSIG_KB_XENO_RUNNER_BONE_SPUR
+
+/datum/keybinding/xenomorph/runner_bonespur/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/runner_skillshot/runner_bonespur_check = get_action(xeno, /datum/action/xeno_action/activable/runner_skillshot)
+	if(runner_bonespur_check)
+		if(runner_bonespur_check && !runner_bonespur_check.hidden)
+			handle_xeno_macro_datum(xeno, runner_bonespur_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/toggle_long_range
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "toggle_long_range"
+	full_name = "Toggle Long Range Sight"
+	keybind_signal = COMSIG_KB_XENO_TOGGLE_LONG_RANGE_SIGHT
+
+/datum/keybinding/xenomorph/toggle_long_range/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/toggle_long_range/toggle_long_range_check = get_action(xeno, /datum/action/xeno_action/onclick/toggle_long_range)
+	if(toggle_long_range_check)
+		if(toggle_long_range_check && !toggle_long_range_check.hidden)
+			handle_xeno_macro_datum(xeno, toggle_long_range_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/acider_for_the_hive
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "acider_for_the_hive"
+	full_name = "Acider: For The Hive"
+	keybind_signal = COMSIG_KB_XENO_ACIDER_FOR_THE_HIVE
+
+/datum/keybinding/xenomorph/acider_for_the_hive/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/acider_for_the_hive/acider_for_the_hive_check = get_action(xeno, /datum/action/xeno_action/activable/acider_for_the_hive)
+	if(acider_for_the_hive_check)
+		if(acider_for_the_hive_check && !acider_for_the_hive_check.hidden)
+			handle_xeno_macro_datum(xeno, acider_for_the_hive_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/acider_acid
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "acider_acid"
+	full_name = "Acider: Corrosive Acid"
+	keybind_signal = COMSIG_KB_XENO_ACIDER_ACID
+
+/datum/keybinding/xenomorph/acider_acid/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/acider_acid/acider_acid_check = get_action(xeno, /datum/action/xeno_action/activable/acider_acid)
+	if(acider_acid_check)
+		if(acider_acid_check && !acider_acid_check.hidden)
+			handle_xeno_macro_datum(xeno, acider_acid_check)
+			return TRUE
+

@@ -159,14 +159,21 @@
 #define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"
 #define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 #define COMSIG_KB_TAIL_STAB "keybinding_tail_stab"
+#define COMSIG_KB_XENO_TOGGLE_LONG_RANGE_SIGHT "keybinding_toggle_long_range_sight"
 #define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_plant_weeds"
-#define COMSIG_KB_XENO_RUNNER_POUNCE "keybinding_runner_pounce"
 
 #define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
+
+// Xenomorph Runner
+#define COMSIG_KB_XENO_RUNNER_POUNCE "keybinding_runner_pounce"
+#define COMSIG_KB_XENO_RUNNER_BONE_SPUR "keybinding_runner_bonespur"
+#define COMSIG_KB_XENO_ACIDER_FOR_THE_HIVE "keybinding_acider_for_the_hive"
+#define COMSIG_KB_XENO_ACIDER_ACID "keybinding_acider_acid"
+
 
 // Yautja
 

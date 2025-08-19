@@ -158,6 +158,7 @@
 	can_bloody = FALSE
 	supports_surgery = FALSE
 	is_weedable = NOT_WEEDABLE
+	var/can_lean = FALSE
 
 /turf/open/void/vehicle
 	density = TRUE

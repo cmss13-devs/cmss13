@@ -51,7 +51,6 @@
 	pixel_x = 3;
 	name = "weapon access port"
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
 "G" = (
@@ -81,7 +80,6 @@
 	pixel_x = -3;
 	name = "weapon access port"
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/void/vehicle,
 /area/interior/vehicle/blackfoot)
 "O" = (

@@ -19,7 +19,7 @@
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE, FEMALE)
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
 	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))

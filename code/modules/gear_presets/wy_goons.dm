@@ -18,7 +18,7 @@
 	return
 
 /datum/equipment_preset/goon/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE, FEMALE)
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)

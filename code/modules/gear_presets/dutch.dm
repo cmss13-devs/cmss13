@@ -14,7 +14,7 @@
 	job_title = assignment
 
 /datum/equipment_preset/dutch/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/human = new()
 	human.randomize_appearance(new_human)
 	var/random_name

@@ -38,7 +38,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 
 /datum/equipment_preset/upp/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
@@ -2866,16 +2866,20 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp/knife, WEAR_FEET)
 
 /datum/equipment_preset/upp/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_chinese_word(2))]"
-	else if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_upp)]"
 	else
-		random_name = "[pick(GLOB.first_names_female_upp)]"
+		switch(new_human.gender)
+			if(FEMALE)
+				random_name = capitalize(pick(GLOB.first_names_female_upp))
+			if(MALE)
+				random_name = capitalize(pick(GLOB.first_names_male_upp))
+			if(PLURAL)
+				random_name = capitalize(pick(pick(GLOB.first_names_male_upp), pick(GLOB.first_names_female_upp)))
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")

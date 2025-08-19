@@ -15,7 +15,7 @@
 
 
 /datum/equipment_preset/contractor/load_name(mob/living/carbon/human/new_human)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
@@ -387,7 +387,7 @@
 		new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/contractor/duty/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
@@ -784,7 +784,7 @@
 		new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/contractor/covert/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name

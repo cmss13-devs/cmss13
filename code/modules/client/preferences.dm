@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	if(!ooccolor)
 		ooccolor = CONFIG_GET(string/ooc_color_default)
-	gender = pick(MALE, FEMALE)
+	gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	real_name = random_name(gender)
 	gear = list()
 
@@ -1310,7 +1310,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 				if("pred_gender")
-					predator_gender = predator_gender == MALE ? FEMALE : MALE
+					predator_gender = predator_gender == MALE ? FEMALE : predator_gender == FEMALE ? PLURAL : MALE
 				if("pred_age")
 					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
 					if(new_predator_age)

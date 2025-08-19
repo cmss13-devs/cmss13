@@ -202,6 +202,8 @@
 		t_him = "him"
 	else if (gender == FEMALE)
 		t_him = "her"
+	else if (gender == PLURAL)
+		t_him = "them"
 	if (w_uniform)
 		w_uniform.add_fingerprint(M)
 

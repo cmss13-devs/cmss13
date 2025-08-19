@@ -7,7 +7,7 @@
 	minimap_background = "background_twe"
 
 /datum/equipment_preset/twe/royal_marine/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick_weight(list(MALE = 80, FEMALE = 20,))
+	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/placeholder_pref = new()
 	placeholder_pref.randomize_appearance(new_human)
 	var/random_name

@@ -1,0 +1,7 @@
+author: "nauticall"
+delete-after: True
+changes:
+  - imageadd: "Resprited the Desert Eagle and variants."
+  - rscadd: "Adds the M1911C pistol, a new sidearm option to COs."
+  - rscdel: "Removes the golden Desert Eagle from the CO loadout."
+  - balance: "Adjusted some weapon statistics of the Desert Eagle/M1911."

@@ -4,7 +4,7 @@
 	name = "survival pouch"
 	desc = "It's all you woke up with..."
 	icon_state = "tools"
-	storage_slots = 5
+	storage_slots = 6
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/tool/crowbar,
@@ -17,6 +17,7 @@
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/storage/pill_bottle/packet/oxycodone(src)
+	new /obj/item/storage/pill_bottle/packet/bicaridine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/splint(src)
 
@@ -26,7 +27,6 @@
 	/obj/item/weapon/baseballbat, \
 	/obj/item/weapon/butterfly, \
 	/obj/item/tool/hatchet, \
-	/obj/item/weapon/twohanded/spear, \
 	/obj/item/tool/scythe, \
 	/obj/item/tool/kitchen/knife/butcher, \
 	/obj/item/attachable/bayonet, \
@@ -46,8 +46,6 @@
 	/obj/item/weapon/gun/shotgun/double/damaged, \
 \
 	/obj/item/large_shrapnel/at_rocket_dud, \
-	/obj/item/weapon/energy/sword, \
-	/obj/item/weapon/energy/sword/pirate, \
 	/obj/item/tool/kitchen/pizzacutter/holyrelic, \
 	/obj/item/reagent_container/food/snacks/wrapped/chunk/hunk, \
 	/obj/item/prop/folded_anti_tank_sadar, \
@@ -60,13 +58,13 @@
 	/obj/item/weapon/yautja/scythe, \
 	/obj/item/weapon/yautja/sword, \
 \
-	/obj/item/weapon/shield/energy, \
 	/obj/item/weapon/shield/riot/metal, \
 \
 	/obj/item/explosive/grenade/high_explosive/pmc, \
 	/obj/item/storage/box/packet/m15, \
 \
 	/obj/item/clothing/head/helmet/marine/veteran/dutch, \
+\
 	/obj/item/storage/backpack/holding, \
 	/obj/item/storage/backpack/pmc/backpack/commando/apesuit, \
 	/obj/item/storage/backpack/yautja, \

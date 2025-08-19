@@ -4,7 +4,7 @@
 //Come get some.
 /obj/item/weapon/gun/smartgun
 	name = "\improper M56A2 smartgun"
-	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. Essentially a heavy, mobile machinegun."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
 	icon_state = "m56"
 	item_state = "m56"
@@ -899,7 +899,7 @@
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/terminator
 	name = "\improper M57R 'Terminator' smartgun"
-	desc = "The actual experimental firearm in the 4-piece M57R Smartgun System. Essentially a heavy, mobile machinegun. This one looks slightly outdated, but far more menacing.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual experimental firearm in the 4-piece M57R Smartgun System. Essentially a heavy, mobile machinegun. This one looks slightly outdated, but far more menacing."
 	icon_state = "m50r"
 	item_state = "m50r"
 	can_change_ammo = FALSE //Only one ammo type, no toggling.
@@ -924,7 +924,7 @@
 
 /obj/item/weapon/gun/smartgun/l56a2
 	name = "\improper L56A2 smartgun"
-	desc = "The actual firearm in the 4-piece L56A2 Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 4-piece L56A2 Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way."
 	desc_lore = "Originally produced for the Three World Empires Royal Marines forces, it mostly ended up in hands of W-Y PMCs and other affiliated forces, with Three World Empire giving preference for other design, that is still produced by W-Y regardless. Compared to more commonly used M56A2, it has improved recoil control, better electronics and advanced tracking software."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/machineguns.dmi'
 	icon_state = "l56d"
@@ -949,7 +949,7 @@
 
 /obj/item/weapon/gun/smartgun/l56a2/elite
 	name = "\improper L56A2D 'Dirty' smartgun"
-	desc = "The actual firearm in the 4-piece L56A2D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 4-piece L56A2D Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way."
 	desc_lore = "Essentially a reuse of a proof of concept originally made as M57D, utilizing depleted uranium rounds, this one reuses same ideas on a basis of a more robust L56A2 smartgun."
 	current_mag = /obj/item/ammo_magazine/smartgun/dirty
 	ammo = /obj/item/ammo_magazine/smartgun/dirty
@@ -1128,7 +1128,7 @@
 
 /obj/item/weapon/gun/smartgun/rmc
 	name = "\improper L56A1 smartgun"
-	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This variant is used by the Three World Empires Royal Marines Commando units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 2-piece L56A2 Smartgun System. This variant is used by the Three World Empires Royal Marines Commando units."
 	desc_lore = "The L56A1 is a W-Y licensed copy of the original M56 developed for the USMC, this version was marketed to the 3WE's Royal Marines as having a lighter weight construction and as being more reliable then the LMG's in service at the time."
 	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting
 	ammo = /obj/item/ammo_magazine/smartgun/holo_targetting
@@ -1144,7 +1144,7 @@
 
 /obj/item/weapon/gun/smartgun/upp
 	name = "\improper RFVS37 smartgun"
-	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 2-piece RFVS37 Smartgun System. This experimental variant is used by the Union of Progressive Peoples units."
 	desc_lore = "Seeing the successful use of the M56 and L56 by the UA and 3WE Militaries during military conflicts such as the linna 349 campaign and the the australia wars, the UPP SOF saw a need for a similar self aiming LMG for their own units, following extensive trials the NORCOMM RFVS-37 was chosen, fulfilling all of the SOF's criteria."
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/machineguns.dmi'
@@ -1157,7 +1157,7 @@
 //  Solar devils SG, frontline mode only
 
 /obj/item/weapon/gun/smartgun/pve
-	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 4-piece M56A2 Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit."
 	actions_types = list(
 		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
 		/datum/action/item_action/smartgun/toggle_ammo_type,

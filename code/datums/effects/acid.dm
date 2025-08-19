@@ -10,6 +10,9 @@
 	/// If it's been enhanced by a spit combo to level 2 or by despoiler up to 3
 	var/acid_level = 1
 	var/damage_areas = list("chest","groin","l_arm","r_arm")
+	var/increment_times =  list(20,30,40,50)
+	var/active_for = 0
+	var/hits = 1
 
 
 /datum/effects/acid/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest")
@@ -50,8 +53,9 @@
 
 	var/mob/living/carbon/affected_mob = affected_atom
 	affected_mob.last_damage_data = cause_data
-	affected_mob.apply_armoured_damage(damage_per_process_human, ARMOR_BIO, BURN, pick(damage_areas), 40)
-
+	for(var/i in 1 to hits)
+		affected_mob.apply_armoured_damage(damage_per_process_human, ARMOR_BIO, BURN, pick(damage_areas), 40)
+	increment_duration()
 	return TRUE
 
 /datum/effects/acid/process_obj()
@@ -97,6 +101,11 @@
 		affected_human.update_effects()
 		if(acid_level == 3)
 			to_chat(affected_human, SPAN_WARNING("Your armor has been weakened."))
+
+/datum/effects/acid/proc/increment_duration()
+	active_for ++
+	if(active_for in increment_times)
+		hits ++
 
 /datum/effects/acid/proc/cleanse_acid()
 	duration -= 27

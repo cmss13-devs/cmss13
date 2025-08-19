@@ -168,6 +168,9 @@
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 
+// Xenomorph
+#define COMSIG_KB_XENO_FACEHUGGER_POUNCE "keybinding_hugger_pounce"
+
 // Xenomorph Runner
 #define COMSIG_KB_XENO_RUNNER_POUNCE "keybinding_runner_pounce"
 #define COMSIG_KB_XENO_RUNNER_BONE_SPUR "keybinding_runner_bonespur"

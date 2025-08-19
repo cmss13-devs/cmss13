@@ -141,7 +141,7 @@
 	w_class = SIZE_MEDIUM
 	max_rounds = 1
 	default_ammo = /datum/ammo/rocket
-	gun_type = /obj/item/weapon/gun/launcher/rocket
+	gun_type = /obj/item/weapon/gun/launcher/rocket/m5
 	flags_magazine = NO_FLAGS
 
 /obj/item/ammo_magazine/rocket/attack_self(mob/user)
@@ -163,6 +163,9 @@
 	var/obj/item/weapon/gun/launcher/in_hand = demoman.get_active_hand()
 	if(!in_hand || !istype(in_hand))
 		to_chat(user, SPAN_WARNING("[demoman] isn't holding a rocket launcher in their active hand!"))
+		return
+	if(!in_hand.can_be_reloaded)
+		to_chat(user, SPAN_WARNING("[demoman]'s [in_hand] can not be reloaded!"))
 		return
 	if(!in_hand.current_mag)
 		to_chat(user, SPAN_WARNING("[demoman]'s [in_hand] is already loaded!"))
@@ -242,6 +245,13 @@
 	icon_state = "wp_rocket"
 	default_ammo = /datum/ammo/rocket/wp
 	desc = "A rocket tube loaded with a white phosphorus incendiary warhead. Has two damaging factors. On hit disperses X-Variant Napthal (blue flames) in a 4-meter radius circle, ignoring cover, while simultaneously bursting into highly heated shrapnel that ignites targets within slightly bigger area."
+
+/obj/item/ammo_magazine/rocket/brute
+	name = "\improper M5510 Laser-Guided Rocket"
+	icon_state = "brute_rocket"
+	default_ammo = /datum/ammo/rocket/brute
+	gun_type = /obj/item/weapon/gun/launcher/rocket/brute
+	desc = "The M5510 rockets are high-explosive anti-structure munitions designed to rapidly accelerate to nearly 1,000 miles per hour in any atmospheric conditions. The warhead itself uses an inflection stabilized shaped-charge to generate a low-frequency pressure wave that can flatten nearly any fortification in an ellipical radius of several meters. These rockets are known to have reduced lethality to personel, but will put just about any ol' backwater mud-hut right into orbit."
 
 /obj/item/ammo_magazine/rocket/custom
 	name = "\improper 84mm custom rocket"

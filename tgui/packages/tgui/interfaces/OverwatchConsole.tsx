@@ -15,6 +15,9 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { NoticeBox } from '../components';
+import { replaceRegexChars } from './helpers';
+
 type MarineData = {
   name: string;
   state: string;
@@ -121,6 +124,12 @@ const HomePanel = (props) => {
             </Stack.Item>
           );
         })}
+        {data.squad_list.length === 0 && (
+          <NoticeBox warning>
+            No squads available for Overwatch! Please log-out of an existing
+            console to start Overwatching here.
+          </NoticeBox>
+        )}
       </Stack>
     </Section>
   );
@@ -564,9 +573,11 @@ const SquadMonitor = (props) => {
             marines
               .sort(sortByRole)
               .filter((marine) => {
-                if (marineSearch && !marineSearch.includes('\\')) {
+                if (marineSearch) {
                   const searchableString = String(marine.name).toLowerCase();
-                  return searchableString.match(new RegExp(marineSearch, 'i'));
+                  return searchableString.match(
+                    new RegExp(replaceRegexChars(marineSearch), 'i'),
+                  );
                 }
                 return marine;
               })

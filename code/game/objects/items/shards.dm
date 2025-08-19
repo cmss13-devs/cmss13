@@ -203,7 +203,7 @@
 	var/obj/limb/organ = embedded_organ
 	if(istype(organ))
 		organ.take_damage(damage_on_move, 0, 0, no_limb_loss = TRUE)
-		embedded_mob.pain.apply_pain(damage_on_move)
+		embedded_mob.pain.recalculate_pain()
 		if(prob(5))
 			to_chat(embedded_mob, SPAN_DANGER("\The [src] sticking out of you jostles roughly against your innards! Oh no."))
 			embedded_mob.visible_message(SPAN_DANGER("\The [src] sticking out of [embedded_mob] suddenly explodes!"))

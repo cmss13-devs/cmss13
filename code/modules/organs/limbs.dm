@@ -840,7 +840,7 @@ This function completely restores a damaged organ to perfect condition.
 			status = LIMB_DESTROYED|LIMB_ROBOT
 		else
 			status = LIMB_DESTROYED|LIMB_ORGANIC
-			owner.pain.apply_pain(PAIN_BONE_BREAK)
+			owner.pain.recalculate_pain()
 		if(amputation)
 			status |= LIMB_AMPUTATED
 		for(var/i in implants)
@@ -1151,7 +1151,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 					l.status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
 		else
 			status |= LIMB_BROKEN
-			owner.pain.apply_pain(PAIN_BONE_BREAK)
+			owner.pain.recalculate_pain()
 			broken_description = pick("broken","fracture","hairline fracture")
 			perma_injury = min_broken_damage
 	else

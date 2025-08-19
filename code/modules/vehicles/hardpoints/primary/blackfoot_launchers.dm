@@ -1,6 +1,6 @@
 /obj/item/hardpoint/primary/blackfoot_launchers
 	name = "\improper AG-66/L Blackfoot Launcher System"
-	desc = "The Blackfoot Launcher System, commonly referred two as just 'blackfoots', is a variable payload dump-salvo type disposable munitions deployer, designed for short-range, quick-arming explosives to be fired in volleys from the quad-barrel launch tubes."
+	desc = "The Blackfoot Launcher System, commonly referred to as just 'blackfoots', is a variable payload dump-salvo type disposable munitions deployer, designed for short-range, quick-arming explosives to be fired in volleys from the quad-barrel launch tubes."
 
 	icon = 'icons/obj/vehicles/hardpoints/blackfoot.dmi'
 	icon_state = "launchers"

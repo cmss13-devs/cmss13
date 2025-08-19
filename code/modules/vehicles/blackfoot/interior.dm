@@ -5,7 +5,6 @@
 	icon_state = "chassis"
 	layer = ABOVE_TURF_LAYER
 	mouse_opacity = FALSE
-	var/can_lean = FALSE
 
 /obj/structure/interior_exit/vehicle/blackfoot
 	icon = 'icons/obj/vehicles/interiors/blackfoot.dmi'

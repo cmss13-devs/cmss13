@@ -514,7 +514,7 @@ This function restores all limbs.
 			// The damage is negative so we want to heal, but heal damage only takes positive numbers.
 			I.heal_damage(-1 * damage)
 
-	pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
+	pain.recalculate_pain()
 
 /mob/living/carbon/human/apply_stamina_damage(damage, def_zone, armor_type)
 	if(!def_zone || !armor_type || !stamina)

@@ -354,7 +354,7 @@
 	if(target.loc != loc)
 		target.forceMove(loc) //buckle if you're right next to it
 
-		return buckle_mob(target)
+		return buckle_mob(target, user)
 
 	if (target.mob_size <= MOB_SIZE_XENO)
 		if ((target.stat == DEAD && istype(src, /obj/structure/bed/roller) || HAS_TRAIT(target, TRAIT_OPPOSABLE_THUMBS)))

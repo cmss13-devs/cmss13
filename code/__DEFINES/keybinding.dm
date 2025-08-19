@@ -149,7 +149,6 @@
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_THREE "keybinding_xeno_primary_attack_three"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR "keybinding_xeno_primary_attack_four"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_FIVE "keybinding_xeno_primary_attack_five"
-#define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_plant_weeds"
 
 #define COMSIG_KB_XENO_EMIT_PHEROMONES "keybinding_xeno_emit_pheromones"
 #define COMSIG_KB_XENO_EMIT_PHEROMONES_FRENZY "keybinding_xeno_emit_pheromones_frenzy"
@@ -160,6 +159,8 @@
 #define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"
 #define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 #define COMSIG_KB_TAIL_STAB "keybinding_tail_stab"
+#define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_plant_weeds"
+#define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_pounce"
 
 #define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"

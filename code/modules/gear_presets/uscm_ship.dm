@@ -670,7 +670,7 @@
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
-/datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm_ship/occ/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
@@ -724,7 +724,7 @@
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
 
-/datum/equipment_preset/uscm_ship/occ/load_gear(mob/living/carbon/human/new_human)
+/datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 	if(new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine

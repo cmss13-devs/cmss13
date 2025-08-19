@@ -235,7 +235,7 @@
 	var/obj/limb/organ = embedded_organ
 	if(istype(organ) && damage_on_move)
 		organ.take_damage(damage_on_move * count, 0, 0, no_limb_loss = TRUE)
-		embedded_mob.pain.apply_pain(damage_on_move * count)
+		embedded_mob.pain.recalculate_pain()
 
 /obj/item/shard/shrapnel/upp
 	name = "small shrapnel"
@@ -305,7 +305,7 @@
 	var/obj/limb/organ = embedded_organ
 	if(istype(organ))
 		organ.take_damage(damage_on_move * count, 0, 0, no_limb_loss = TRUE)
-		embedded_mob.pain.apply_pain(damage_on_move * count)
+		embedded_mob.pain.recalculate_pain()
 
 /obj/item/sharp/proc/turn_object(amount)
 	var/matrix/initial_matrix = matrix(transform)

@@ -44,7 +44,7 @@
 		/obj/item/hardpoint/locomotion/blackfoot_thrusters,
 		/obj/item/hardpoint/primary/blackfoot_launchers,
 		/obj/item/hardpoint/support/sensor_array,
-		/obj/item/hardpoint/special/doorgun,
+		/obj/item/hardpoint/secondary/doorgun,
 	)
 
 	entrances = list(
@@ -139,7 +139,7 @@
 	. = ..()
 
 /obj/vehicle/multitile/blackfoot/load_hardpoints()
-	add_hardpoint(new /obj/item/hardpoint/special/doorgun)
+	add_hardpoint(new /obj/item/hardpoint/secondary/doorgun)
 
 /obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
 	var/datum/role_reserved_slots/reserved_slot = new

@@ -51,6 +51,7 @@ Host 			+EVERYTHING
 Vice Host   	+EVERYTHING
 Manager			+EVERYTHING
 Head Dev		+EVERYTHING
+Banda			+EVERYTHING
 
 
 Legacy Mentor 	 +MENTOR +COLOR

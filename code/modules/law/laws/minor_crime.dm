@@ -1,60 +1,61 @@
+//BANDAMARINES - Translate
 /datum/law/minor_law/contraband
-	name = "Contraband"
-	desc = "Possessing items or weapons from the Area of Operations not authorized by someone with the rank of SSGT or higher."
-	special_punishment = "Contraband Confiscation"
+	name = "Контрабанда"
+	desc = "Наличие предметов или оружия из зоны операции, не разрешенных лицом со званием Оруж.Серж или выше."
+	special_punishment = "Конфискация контрабанды"
 	brig_time = 7.5
 
 /datum/law/minor_law/damage_to_government_property
-	name = "Damage to Government Property"
-	desc = "Damaging the ship or making any unauthorized modifications to it as outlined in Standard Operating Procedure on a minor level, such as breaking a window or damaging a wall."
-	special_punishment = "Reparation"
+	name = "Повреждение государственного имущества"
+	desc = "Повреждение корабля или внесение любых несанкционированных изменений в него, как указано в Стандартных Операционных Процедурах на незначительном уровне, например, разбивание окна или повреждение стены."
+	special_punishment = "Ремонт"
 	brig_time = 7.5
 
 /datum/law/minor_law/insubordination
-	name = "Insubordination"
-	desc = "Failing to follow a lawful order from a superior which is not personally directed at you. Additionally, disrespecting someone of higher rank or position that is not an officer."
+	name = "Неподчинение"
+	desc = "Неисполнение законного приказа вышестоящего, который не адресован лично вам. Кроме того, неуважение к лицу более высокого ранга или положения, которое не является офицером."
 	brig_time = 7.5
 
 /datum/law/minor_law/interference
-	name = "Interference"
-	desc = "Interfering in an arrest without ill intent to interfere against a legal arrest, such as blocking the way or helping someone up."
+	name = "Вмешательство"
+	desc = "Вмешательство в арест без злого умысла помешать законному аресту, например, блокирование пути или помощь кому-то встать."
 	brig_time = 7.5
 
 /datum/law/minor_law/trespassing
-	name = "Trespassing"
-	desc = "Unauthorized access of an area which a person does not have access to or without approval from someone with access."
-	special_punishment = "Escort Out"
+	name = "Незаконное проникновение"
+	desc = "Несанкционированный доступ в область, к которой у человека нет доступа, или без одобрения лица с доступом."
+	special_punishment = "Эскорт наружу"
 	brig_time = 7.5
 
 /datum/law/minor_law/listening_bugs
-	name = "Unauthorized use of a Listening Device"
-	desc = "Using a listening device against SOP in a public area such as the gym."
-	special_punishment = "Listening Device Confiscation"
+	name = "Несанкционированное использование прослушивающего устройства"
+	desc = "Использование прослушивающего устройства в нарушение СОП в общественном месте, таком как спортзал."
+	special_punishment = "Конфискация прослушивающего устройства"
 	brig_time = 7.5
 
 /datum/law/minor_law/disrespect
-	name = "Disrespecting a Superior Officer"
-	desc = "Using offensive names or being directly disrespectful to someone of a Commissioned Officer of higher rank or position."
+	name = "Неуважение к вышестоящему офицеру"
+	desc = "Использование оскорбительных прозвищ или прямое неуважительное отношение к кому-либо из офицеров более высокого ранга или положения"
 	brig_time = 10
 
 /datum/law/minor_law/failure_to_follow_procedure
-	name = "Failure to Follow Procedure"
-	desc = "Failing to follow the regulations found in the Standard Operating Procedure."
-	special_punishment = "Equipment Confiscation"
+	name = "Несоблюдение процедуры"
+	desc = "Несоблюдение правил, изложенных в Стандартных Операционных Процедурах."
+	special_punishment = "Конфискация оборудования"
 	brig_time = 10
 
 /datum/law/minor_law/intoxication
-	name = "Intoxication"
-	desc = "To consume alcohol or other substances such as alcohol or hallucinogenic drugs resulting in impaired job performance."
+	name = "Опьянение"
+	desc = "Употребление алкоголя или других веществ, таких как алкоголь или галлюциногенные наркотики, что приводит к ухудшению выполнения служебных обязанностей."
 	brig_time = 10
 
 /datum/law/minor_law/theft
-	name = "Theft"
-	desc = "To take items (or property) from another person or entity without their express permission, or to retain possession of items that have been taken without permission. This includes the removal of vendors from department areas without permission."
-	special_punishment = "Return of Stolen Item"
+	name = "Кража"
+	desc = "Изъятие предметов (или имущества) у другого человека или сущности без их явного разрешения или удержание предметов, которые были изъяты без разрешения. Это включает перенос раздатчиков из зон департамента без разрешения."
+	special_punishment = "Возврат украденного предмета"
 	brig_time = 10
 
 /datum/law/minor_law/false_testimony
-	name = "False Testimony"
-	desc = "To intentionally and willingly lie to an MP, or deputized officer, during a legal investigation with the intent to disrupt said investigation."
+	name = "Ложные показания"
+	desc = "Умышленная и добровольная ложь перед ВП или уполномоченным офицером во время юридического расследования с намерением нарушить данное расследование."
 	brig_time = 5

@@ -273,7 +273,7 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			MA.maptext_height = 64
 			MA.maptext_x = -floor(MA.maptext_width / 2) + 16
 			MA.maptext_y = -floor(MA.maptext_height / 2) + 16
-			MA.maptext = SMALL_FONTS_CENTRED(7, label)
+			MA.maptext = GRAND_9K_CENTRED(6, label) // SS220 EDIT - font change
 	return MA
 
 

@@ -1,23 +1,23 @@
-Remember hotkeys and macros can be customized to your liking. Hotkeys can be accessed in your preferences, and macros can be edited in the Byond macro editor, available in the top left drop down menu (click the Byond logo in the corner of the game window).
-If you're unsure about a gameplay mechanic, use the 'mentorhelp' verb in the Admin tab to ask veteran players on the subject. It is also available from the pause menu, pressing ESCAPE.
-Try not to get too mad about dying. We’re all here to have fun.
-You can get information on current TestMerges by pressing 'Show Server Revision' in 'OOC' tab.
-After dying, ask yourself what you did wrong and make a mental note to not make the same mistake again.
-Communication, be it from a marine to a marine, a drone to the queen, or command to everyone, is vital and information on flanks can change how the entire round plays out.
-As an alien or marine, be careful of the flank, regardless of if the push is going well or stalling out.
-Half of getting good is knowing to be aggressive. The other half is knowing when not to be aggressive.
-Alt-click a storage item to draw the last item in it (last non-weapon if it's a weapon belt). Middle-click a storage item to immediately open it, and middle-click structures to attempt to vault them.
-Use "North, South, West, East" when referring to locations in-game rather than "up, down, left, right".
-As a mentor, you can become the imaginary friend of a new player to teach them!
-You shouldn't ignore what your allies are up to. Sometimes they can be organizing a flank in hivemind/radio, sometimes they can be walking up behind you with a slug-loaded shotgun. Either way, it pays to be alert to what they're doing, as much to as what the enemies are.
-The Wiki (https://cm-ss13.com/wiki) is a very useful repository of information about the game, such as weapons, equipment, xenomorph castes and their strains. It may not be fully up to date much of the time, but the basics are usually accurate.
-As an observer, you may see how much remaining hijack time is left in the status panel.
-As an observer, you can quickly follow someone by ctrl-clicking on their sprite.
-You can always AdminHelp with the F1 key to question a member of staff regarding rules or game bugs.
-As ghost you are given extra tools for spectating the round: you can jump and follow specific players, get notifications about CAS and OB strikes, can see all health bars, and such.
-You can press ESC key to bring up the game pause menu. It allows you change settings, AdminHelp and MentorHelp, and even access the Web Maps of game by clicking at top right.
-Dead? You can take that moment to 'Edit Characters' from Preferences or Escape menus, to flesh out your characters or change your settings.
-Control of intelligence is important: be it for retrieving it as marine, or denying it as Xeno.
-If the lobby music is too loud or bothering you, you can disable it in Preferences tab at top right.
-Maps can and will be unpredictably modified by the Nightmare system - stay frosty while roaming around!
-You can go to GitHub to view code of the game and propose modifications of your own.
+Помните, что хоткеи и макросы можно настроить на ваш вкус. Хоткеи можно изменить в настройках, а макросы можно настроить в редакторе макросов Byond, который доступен в выпадающем меню слева сверху (кликните на логотип Byond в левом верхнем углу игрового окна).
+Если вы не знаете какую-то игровую механику, используйте кнопку 'mentorhelp' в панели Admin, чтобы спросить опытных игроков на нужную вам тему. Она также доступна из меню паузы, открываемого клавишей ESCAPE.
+Старайтесь не гореть от смертей. Мы все здесь, чтобы повеселиться.
+Вы можете получить информацию о текущих тестмерджах, используя кнопку 'Show Server Revision' в 'OOC' панели.
+После смерти спросите себя, что вы сделали не так и сделайте вывод, чтобы не повторить такую ошибку вновь.
+Коммуникация, будь то от морпеха к морпеху, от дрона к королеве или от командования ко всем - жизненно необходима, а информация о флангах может переломить ход раунда.
+Будучи ксеноморфом или морпехом, следите за флангами, не зависимо от того, идёт наступление или нет.
+Половина успеха - это умение быть агрессивным. Вторая половина - знать, когда не стоит проявлять агрессию.
+Alt-кликните по хранилищу, чтобы достать последний предмет из него; если это оружейный пояс, то вы достанете последний любой предмет, кроме оружия. Нажмите CKM по хранилищу, чтобы мгновенно открыть его, и нажмите CKM по структуре, чтобы попытаться перелезть через неё.
+Используйте "Север, Юг, Запад, Восток" при упоминании внутриигровых направлений, а не "сверху, снизу, слева, справа".
+Будучи ментором, вы можете стать воображаемым другом для новичка, чтобы обучить его!
+Не стоит игнорировать то, что собираются делать ваши союзники. Иногда они могут организовать обход с фланга в гнездо/телекомы, иногда они могут подойти к вам сзади с заряженным дробовиком. В любом случае нужно быть внимательным к тому, что ваши союзники делают, и к тому, что из себя представляют ваши противники.
+Вики (https://cm-ss13.com/wiki) - это очень полезный репозиторий с информацией по игре, включая оружие, экипировку, касты ксеноморфов и их виды. Она не всегда может содержать актуальную информацию, но основы обычно соответствуют действительности.
+Будучи наблюдателем, вы можете видеть, сколько времени осталось до конца налёта на корабль в статус-панели.
+Будучи наблюдателем, вы можете быстро начать следовать за кем-либо, используя ctrl-клик на спрайте.
+Вы всегда можете написать ахелп с помощью клавиши F1, чтобы задать вопрос администрации вопрос касательно правил или багов.
+Будучи призраком, у вас есть дополнительные инструменты для наблюдения за раундом, вы можете прыгнуть и начать следовать за конкретным игроком, получать оповещения о поддержке с воздуха и орбитальной бомбардировке, можете видеть полоски здоровья у всех и т.д.
+Вы можете нажать клавишу ESC, чтобы открыть меню паузы. В нём можно поменять настройки, написать ахелп или менторхелп, даже найти веб-карты игры, кликнув на правый верхний угол.
+Умерли? Вы можете воспользоваться моментом и нажать на 'Edit Characters' в настройках или меню паузы, чтобы придать своим персонажам живости или поменять настройки.
+Контроль над разведанными очень важен: собирайте их за морпеха или уничтожайте их за ксеноморфа.
+Если музыка в лобби слишком громкая или мешает, то вы можете отключить её в панеле настроек справа сверху.
+Карты могут и будут случайно модифицированы системой Nightmare - будьте начеку во время патрулирования!
+Вы можете пойти на GitHub, чтобы посмотреть код игры и предложить свои изменения.

@@ -74,12 +74,12 @@
 
 /datum/behavior_delegate/runner_acider/append_to_stat() //The status panel info for Acid Runner is handed here.
 	. = list()
-	. += "Acid: [acid_amount]/[max_acid]"
+	. += "Кислота: [acid_amount]/[max_acid]"
 	if(acid_amount >= acid_gen_cap)
-		. += "Passive acid generation cap ([acid_gen_cap]) reached"
-	. += "Battle acid generation: [combat_gen_active ? "Active" : "Inactive"]"
+		. += "Достигнут лимит пассивной генерации кислоты ([acid_gen_cap])"
+	. += "Генерация кислоты во время боя: [combat_gen_active ? "Активна" : "Неактивна"]"
 	if(caboom_trigger)
-		. += "FOR THE HIVE!: in [caboom_left] seconds"
+		. += "ЗА УЛЕЙ!: [caboom_left] секунд до взрыва"
 
 /datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	if(ishuman(target_mob)) //Will acid be applied to the mob

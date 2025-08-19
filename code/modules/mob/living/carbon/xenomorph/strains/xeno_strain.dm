@@ -50,6 +50,7 @@
 	to_chat(xeno, SPAN_XENOANNOUNCE(description))
 	if(flavor_description)
 		to_chat(xeno, SPAN_XENOLEADER(flavor_description))
+	xeno.recalculate_actions() // BANDAMARINES EDIT - Xeno Translate
 	return TRUE
 
 /**

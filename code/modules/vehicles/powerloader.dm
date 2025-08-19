@@ -53,6 +53,7 @@
 			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
 			. = TRUE
 		else
+			set_glide_size(DELAY_TO_GLIDE_SIZE(move_delay + 1)) // SS220 ADD
 			. = step(src, direction)
 			if(.)
 				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))

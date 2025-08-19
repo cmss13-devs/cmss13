@@ -1,0 +1,476 @@
+["handcuffs"]
+nominative = "наручники"
+genitive = "наручников"
+dative = "наручникам"
+accusative = "наручники"
+instrumental = "наручниками"
+prepositional = "наручниках"
+gender = "plural"
+
+["pepperspray"]
+nominative = "перцовый баллончик"
+genitive = "перцового баллончика"
+dative = "перцовому баллончику"
+accusative = "перцовый баллончик"
+instrumental = "перцовым баллончиком"
+prepositional = "перцовом баллончике"
+gender = "male"
+
+["flashbang"]
+nominative = "светошумовая граната"
+genitive = "светошумовой гранаты"
+dative = "светошумовой гранате"
+accusative = "светошумовую гранату"
+instrumental = "светошумовой гранатой"
+prepositional = "светошумовой гранате"
+gender = "female"
+
+["box of flashbangs (WARNING)"]
+nominative = "коробка с светошумовыми гранатами (ОСТОРОЖНО)"
+genitive = "коробки с светошумовыми гранатами (ОСТОРОЖНО)"
+dative = "коробке с светошумовыми гранатами (ОСТОРОЖНО)"
+accusative = "коробку с светошумовыми гранатами (ОСТОРОЖНО)"
+instrumental = "коробкой с светошумовыми гранатами (ОСТОРОЖНО)"
+prepositional = "коробке с светошумовыми гранатами (ОСТОРОЖНО)"
+gender = "female"
+
+["teargas grenade"]
+nominative = "слезоточивая граната"
+genitive = "слезоточивой гранаты"
+dative = "слезоточивой гранате"
+accusative = "слезоточивую гранату"
+instrumental = "слезоточивой гранатой"
+prepositional = "слезоточивой гранате"
+gender = "female"
+
+["box of tear gas grenades (WARNING)"]
+nominative = "коробка с слезоточивыми гранатами"
+genitive = "коробки с слезоточивыми гранатами"
+dative = "коробке с слезоточивыми гранатами"
+accusative = "коробку с слезоточивыми гранатами"
+instrumental = "коробкой с слезоточивыми гранатами"
+prepositional = "коробке с слезоточивыми гранатами"
+gender = "female"
+
+["zipties"]
+nominative = "стяжки"
+genitive = "стяжек"
+dative = "стяжкам"
+accusative = "стяжки"
+instrumental = "стяжками"
+prepositional = "стяжках"
+gender = "plural"
+
+["box of spare zipties"]
+nominative = "коробка с запасными стяжками"
+genitive = "коробки с запасными стяжками"
+dative = "коробке с запасными стяжками"
+accusative = "коробку с запасными стяжками"
+instrumental = "коробкой с запасными стяжками"
+prepositional = "коробке с запасными стяжками"
+gender = "female"
+
+["flash"]
+nominative = "вспышка"
+genitive = "вспышки"
+dative = "вспышке"
+accusative = "вспышку"
+instrumental = "вспышкой"
+prepositional = "вспышке"
+gender = "female"
+
+["portable flasher"]
+nominative = "переносная вспышка"
+genitive = "переносной вспышки"
+dative = "переносной вспышке"
+accusative = "переносную вспышку"
+instrumental = "переносной вспышкой"
+prepositional = "переносной вспышке"
+gender = "female"
+
+["security barrier"]
+nominative = "барьер охраны"
+genitive = "барьера охраны"
+dative = "барьеру охраны"
+accusative = "барьер охраны"
+instrumental = "барьером охраны"
+prepositional = "барьере охраны"
+gender = "male"
+
+["training bomb"]
+nominative = "тренировочная бомба"
+genitive = "тренировочной бомбы"
+dative = "тренировочной бомбе"
+accusative = "тренировочную бомбу"
+instrumental = "тренировочной бомбой"
+prepositional = "тренировочной бомбе"
+gender = "female"
+
+["straight jacket"]
+nominative = "смирительная рубашка"
+genitive = "смирительной рубашки"
+dative = "смирительной рубашке"
+accusative = "смирительную рубашку"
+instrumental = "смирительной рубашкой"
+prepositional = "смирительной рубашке"
+gender = "female"
+
+["evidence bag"]
+nominative = "пакет для улик"
+genitive = "пакета для улик"
+dative = "пакету для улик"
+accusative = "пакет для улик"
+instrumental = "пакетом для улик"
+prepositional = "пакете для улик"
+gender = "male"
+
+["evidence bag box"]
+nominative = "коробка с пакетами для улик"
+genitive = "коробки с пакетами для улик"
+dative = "коробке с пакетами для улик"
+accusative = "коробку с пакетами для улик"
+instrumental = "коробкой с пакетами для улик"
+prepositional = "коробке с пакетами для улик"
+gender = "female"
+
+["seclite"]
+nominative = "фонарь охраны"
+genitive = "фонаря охраны"
+dative = "фонарю охраны"
+accusative = "фонарь охраны"
+instrumental = "фонарем охраны"
+prepositional = "фонаре охраны"
+gender = "male"
+
+["energy bola"]
+nominative = "энергетическая бола"
+genitive = "энергетической болы"
+dative = "энергетической боле"
+accusative = "энергетическую болу"
+instrumental = "энергетической болой"
+prepositional = "энергетической боле"
+gender = "female"
+
+["enhanced retrieval gloves"]
+nominative = "перчатки для улучшенного извлечения"
+genitive = "перчаток для улучшенного извлечения"
+dative = "перчаткам для улучшенного извлечения"
+accusative = "перчатки для улучшенного извлечения"
+instrumental = "перчатками для улучшенного извлечения"
+prepositional = "перчатках для улучшенного извлечения"
+gender = "plural"
+
+["security webbing"]
+nominative = "разгрузка охраны"
+genitive = "разгрузки охраны"
+dative = "разгрузке охраны"
+accusative = "разгрузку охраны"
+instrumental = "разгрузкой охраны"
+prepositional = "разгрузке охраны"
+gender = "female"
+
+["antag token"]
+nominative = "жетон антагониста"
+genitive = "жетона антагониста"
+dative = "жетону антагониста"
+accusative = "жетон антагониста"
+instrumental = "жетоном антагониста"
+prepositional = "жетоне антагониста"
+gender = "male"
+
+["stingbang"]
+nominative = "травматическая граната"
+genitive = "травматической гранаты"
+dative = "травматической гранате"
+accusative = "травматическую гранату"
+instrumental = "травматической гранатой"
+prepositional = "травматической гранате"
+gender = "female"
+
+["ANTI-TIDER-2500 suppression backpack"]
+nominative = "рюкзак подавитель-набегов-2500"
+genitive = "рюкзака подавителя-набегов-2500"
+dative = "рюкзаку подавителю-набегов-2500"
+accusative = "рюкзак подавитель-набегов-2500"
+instrumental = "рюкзаком подавителем-набегов-2500"
+prepositional = "рюкзаке подавителе-набегов-2500"
+gender = "male"
+
+["shoulder holster"]
+nominative = "наплечная кобура"
+genitive = "наплечной кобуры"
+dative = "наплечной кобуре"
+accusative = "наплечную кобуру"
+instrumental = "наплечной кобурой"
+prepositional = "наплечной кобуре"
+gender = "female"
+
+["energy shoulder holsters"]
+nominative = "энергетическая наплечная кобура"
+genitive = "энергетической наплечной кобуры"
+dative = "энергетической наплечной кобуре"
+accusative = "энергетическую наплечную кобуру"
+instrumental = "энергетической наплечной кобурой"
+prepositional = "энергетической наплечной кобуре"
+gender = "female"
+
+["recharger"]
+nominative = "зарядник"
+genitive = "зарядника"
+dative = "заряднику"
+accusative = "зарядник"
+instrumental = "зарядником"
+prepositional = "заряднике"
+gender = "male"
+
+["sunglasses"]
+nominative = "солнцезащитные очки"
+genitive = "солнцезащитных очков"
+dative = "солнцезащитным очкам"
+accusative = "солнцезащитные очки"
+instrumental = "солнцезащитными очками"
+prepositional = "солнцезащитных очках"
+gender = "plural"
+
+["earmuffs"]
+nominative = "противошумный наушник"
+genitive = "противошумного наушника"
+dative = "противошумному наушнику"
+accusative = "противошумный наушник"
+instrumental = "противошумным наушником"
+prepositional = "противошумном наушнике"
+gender = "male"
+
+["riot shield"]
+nominative = "щит для подавления беспорядков"
+genitive = "щита для подавления беспорядков"
+dative = "щиту для подавления беспорядков"
+accusative = "щит для подавления беспорядков"
+instrumental = "щитом для подавления беспорядков"
+prepositional = "щите для подавления беспорядков"
+gender = "male"
+
+["telescopic shield"]
+nominative = "телескопический щит"
+genitive = "телескопического щита"
+dative = "телескопическому щиту"
+accusative = "телескопический щит"
+instrumental = "телескопическим щитом"
+prepositional = "телескопическом щите"
+gender = "male"
+
+["grenade launcher"]
+nominative = "гранатомёт"
+genitive = "гранатомёта"
+dative = "гранатомёту"
+accusative = "гранатомёт"
+instrumental = "гранатомётом"
+prepositional = "гранатомёте"
+gender = "male"
+
+["barrier grenade"]
+nominative = "барьерная граната"
+genitive = "барьерной гранаты"
+dative = "барьерной гранате"
+accusative = "барьерную гранату"
+instrumental = "барьерной гранатой"
+prepositional = "барьерной гранате"
+gender = "female"
+
+["box of flashbulbs"]
+nominative = "коробка со вспышками"
+genitive = "коробки со вспышками"
+dative = "коробке со вспышками"
+accusative = "коробку со вспышками"
+instrumental = "коробкой со вспышками"
+prepositional = "коробке со вспышками"
+gender = "female"
+
+["boxed chemical implant kit"]
+nominative = "коробка с химическими имплантами"
+genitive = "коробки с химическими имплантами"
+dative = "коробке с химическими имплантами"
+accusative = "коробку с химическими имплантами"
+instrumental = "коробкой с химическими имплантами"
+prepositional = "коробке с химическими имплантами"
+gender = "female"
+
+["boxed tracking implant kit"]
+nominative = "коробка с имплантами слежения"
+genitive = "коробки с имплантами слежения"
+dative = "коробке с имплантами слежения"
+accusative = "коробку с имплантами слежения"
+instrumental = "коробкой с имплантами слежения"
+prepositional = "коробке с имплантами слежения"
+gender = "female"
+
+["box of standard firing pins"]
+nominative = "коробка со стандартными ударниками"
+genitive = "коробки со стандартными ударниками"
+dative = "коробке со стандартными ударниками"
+accusative = "коробку со стандартными ударниками"
+instrumental = "коробкой со стандартными ударниками"
+prepositional = "коробке со стандартными ударниками"
+gender = "female"
+
+["box of spare handcuffs"]
+nominative = "коробка с запасными наручниками"
+genitive = "коробки с запасными наручниками"
+dative = "коробке с запасными наручниками"
+accusative = "коробку с запасными наручниками"
+instrumental = "коробкой с запасными наручниками"
+prepositional = "коробке с запасными наручниками"
+gender = "female"
+
+["implanter"]
+nominative = "имплантер"
+genitive = "имплантера"
+dative = "имплантеру"
+accusative = "имплантер"
+instrumental = "имплантером"
+prepositional = "имплантере"
+gender = "male"
+
+["electronic firing pin"]
+nominative = "электронный ударник"
+genitive = "электронного ударника"
+dative = "электронному ударнику"
+accusative = "электронный ударник"
+instrumental = "электронным ударником"
+prepositional = "электронном ударнике"
+gender = "male"
+
+["magic crystal shard"]
+nominative = "магический кристальный осколок"
+genitive = "магического кристального осколка"
+dative = "магическому кристальному осколку"
+accusative = "магический кристальный осколок"
+instrumental = "магическим кристальным осколком"
+prepositional = "магическом кристальном осколке"
+gender = "male"
+
+["test-range firing pin"]
+nominative = "ударник испытательного полигона"
+genitive = "ударника испытательного полигона"
+dative = "ударнику испытательного полигона"
+accusative = "ударник испытательного полигона"
+instrumental = "ударником испытательного полигона"
+prepositional = "ударнике испытательного полигона"
+gender = "male"
+
+["implant-keyed firing pin"]
+nominative = "ударник с проверкой импланта"
+genitive = "ударника с проверкой импланта"
+dative = "ударнику с проверкой импланта"
+accusative = "ударник с проверкой импланта"
+instrumental = "ударником с проверкой импланта"
+prepositional = "ударнике с проверкой импланта"
+gender = "male"
+
+["mindshield firing pin"]
+nominative = "ударник защиты разума"
+genitive = "ударника защиты разума"
+dative = "ударнику защиты разума"
+accusative = "ударник защиты разума"
+instrumental = "ударником защиты разума"
+prepositional = "ударнике защиты разума"
+gender = "male"
+
+["syndicate firing pin"]
+nominative = "ударник синдиката"
+genitive = "ударника синдиката"
+dative = "ударнику синдиката"
+accusative = "ударник синдиката"
+instrumental = "ударником синдиката"
+prepositional = "ударнике синдиката"
+gender = "male"
+
+["hilarious firing pin"]
+nominative = "весёлый ударник"
+genitive = "весёлого ударника"
+dative = "весёлому ударнику"
+accusative = "весёлый ударник"
+instrumental = "весёлым ударником"
+prepositional = "весёлом ударнике"
+gender = "male"
+
+["ultra hilarious firing pin"]
+nominative = "сверхвесёлый ударник"
+genitive = "сверхвесёлого ударника"
+dative = "сверхвесёлому ударнику"
+accusative = "сверхвесёлый ударник"
+instrumental = "сверхвесёлым ударником"
+prepositional = "сверхвесёлом ударнике"
+gender = "male"
+
+["super ultra hilarious firing pin"]
+nominative = "суперсверхвесёлый ударник"
+genitive = "суперсверхвесёлого ударника"
+dative = "суперсверхвесёлому ударнику"
+accusative = "суперсверхвесёлый ударник"
+instrumental = "суперсверхвесёлым ударником"
+prepositional = "суперсверхвесёлом ударнике"
+gender = "male"
+
+["DNA-keyed firing pin"]
+nominative = "ударник с замком ДНК"
+genitive = "ударника с замком ДНК"
+dative = "ударнику с замком ДНК"
+accusative = "ударник с замком ДНК"
+instrumental = "ударником с замком ДНК"
+prepositional = "ударнике с замком ДНК"
+gender = "male"
+
+["paywall firing pin"]
+nominative = "платный ударник"
+genitive = "платного ударника"
+dative = "платному ударнику"
+accusative = "платный ударник"
+instrumental = "платным ударником"
+prepositional = "платном ударнике"
+gender = "male"
+
+["outback firing pin"]
+nominative = "ударник глубинки"
+genitive = "ударника глубинки"
+dative = "ударнику глубинки"
+accusative = "ударник глубинки"
+instrumental = "ударником глубинки"
+prepositional = "ударнике глубинки"
+gender = "male"
+
+["laser tag firing pin"]
+nominative = "ударник лазертага"
+genitive = "ударника лазертага"
+dative = "ударнику лазертага"
+accusative = "ударник лазертага"
+instrumental = "ударником лазертага"
+prepositional = "ударнике лазертага"
+gender = "male"
+
+["red laser tag firing pin"]
+nominative = "ударник красного лазертага"
+genitive = "ударника красного лазертага"
+dative = "ударнику красного лазертага"
+accusative = "ударник красного лазертага"
+instrumental = "ударником красного лазертага"
+prepositional = "ударнике красного лазертага"
+gender = "male"
+
+["blue laser tag firing pin"]
+nominative = "ударник синего лазертага"
+genitive = "ударника синего лазертага"
+dative = "ударнику синего лазертага"
+accusative = "ударник синего лазертага"
+instrumental = "ударником синего лазертага"
+prepositional = "ударнике синего лазертага"
+gender = "male"
+
+["monkeylock firing pin"]
+nominative = "ударник мартышек"
+genitive = "ударника мартышек"
+dative = "ударнику мартышек"
+accusative = "ударник мартышек"
+instrumental = "ударником мартышек"
+prepositional = "ударнике мартышек"
+gender = "male"

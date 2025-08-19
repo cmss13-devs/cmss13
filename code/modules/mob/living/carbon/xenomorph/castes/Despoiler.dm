@@ -99,7 +99,7 @@
 			return
 		behavior.next_slash_buffed = FALSE
 
-	to_chat(xeno, SPAN_XENODANGER("Our power weakens, out slashes will no longer apply acid!"))
+	to_chat(xeno, SPAN_XENODANGER("Our power weakens, our slashes will no longer apply acid!"))
 
 
 /datum/behavior_delegate/despoiler_base

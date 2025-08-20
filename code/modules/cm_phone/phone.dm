@@ -16,6 +16,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	var/obj/structure/transmitter/outbound_call
 	var/obj/structure/transmitter/inbound_call
+	var/pickup_sound = "rtb_handset"
 
 	var/next_ring = 0
 
@@ -40,6 +41,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/datum/looping_sound/telephone/busy/busy_loop
 	var/datum/looping_sound/telephone/hangup/hangup_loop
 	var/datum/looping_sound/telephone/ring/outring_loop
+	var/call_sound = 'sound/machines/telephone/telephone_ring.ogg'
 
 /obj/structure/transmitter/hidden
 	do_not_disturb = PHONE_DND_FORCED
@@ -190,7 +192,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	T.update_icon()
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
-	playsound(get_turf(user), "rtb_handset")
+	playsound(get_turf(user), pickup_sound)
 	timeout_timer_id = addtimer(CALLBACK(src, PROC_REF(reset_call), TRUE), timeout_duration, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
 	outring_loop.start()
 
@@ -238,7 +240,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			T.timeout_timer_id = null
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Picked up a call from [T.phone_id]."))
-	playsound(get_turf(user), "rtb_handset")
+	playsound(get_turf(user), pickup_sound)
 
 	T.outring_loop.stop()
 	user.put_in_active_hand(attached_to)
@@ -308,7 +310,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 		if(attached_to.loc == src)
 			if(next_ring < world.time)
-				playsound(loc, 'sound/machines/telephone/telephone_ring.ogg', 75)
+				playsound(loc, call_sound, 75)
 				visible_message(SPAN_WARNING("[src] rings vigorously!"))
 				next_ring = world.time + 3 SECONDS
 
@@ -321,7 +323,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		var/obj/item/phone/P = T.attached_to
 
 		if(P && attached_to.loc == src && P.loc == T && next_ring < world.time)
-			playsound(get_turf(attached_to), 'sound/machines/telephone/telephone_ring.ogg', 20, FALSE, 14)
+			playsound(get_turf(attached_to), call_sound, 20, FALSE, 14)
 			visible_message(SPAN_WARNING("[src] rings vigorously!"))
 			next_ring = world.time + 3 SECONDS
 
@@ -334,7 +336,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(ismob(attached_to.loc))
 		var/mob/M = attached_to.loc
 		M.drop_held_item(attached_to)
-		playsound(get_turf(M), "rtb_handset", 100, FALSE, 7)
+		playsound(get_turf(M), pickup_sound, 100, FALSE, 7)
 		hangup_loop.stop()
 
 	attached_to.forceMove(src)
@@ -409,6 +411,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/zlevel_transfer = FALSE
 	var/zlevel_transfer_timer = TIMER_ID_NULL
 	var/zlevel_transfer_timeout = 5 SECONDS
+	var/can_be_raised = TRUE // This is for items like the scout helmet where you dont need to raise it.
 
 /obj/item/phone/Initialize(mapload)
 	. = ..()
@@ -516,16 +519,22 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/item/phone/attack_self(mob/user)
 	..()
-	if(raised)
-		set_raised(FALSE, user)
-		to_chat(user, SPAN_NOTICE("You lower [src]."))
+	if(can_be_raised)
+		if(raised)
+			set_raised(FALSE, user)
+			to_chat(user, SPAN_NOTICE("You lower [src]."))
+		else
+			set_raised(TRUE, user)
+			to_chat(user, SPAN_NOTICE("You raise [src] to your ear."))
 	else
 		set_raised(TRUE, user)
-		to_chat(user, SPAN_NOTICE("You raise [src] to your ear."))
 
 
 /obj/item/phone/proc/set_raised(to_raise, mob/living/carbon/human/H)
 	if(!istype(H))
+		return
+
+	if(!can_be_raised)
 		return
 
 	if(!to_raise)
@@ -549,6 +558,11 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(user, COMSIG_LIVING_SPEAK)
 
 	set_raised(FALSE, user)
+	if(istype(attached_to.loc, /obj/item/clothing/head/helmet/marine/radio_helmet/scout))
+		if(attached_to != loc)
+			attached_to.recall_phone()
+
+
 
 /obj/item/phone/on_enter_storage(obj/item/storage/S)
 	. = ..()

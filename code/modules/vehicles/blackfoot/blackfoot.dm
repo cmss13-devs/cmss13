@@ -317,14 +317,14 @@
 	var/turf/below = SSmapping.get_turf_below(get_step(get_turf(src), direction))
 
 	if(!below)
-		message_admins("BLACKFOOT ERROR: No below turf found.")
+		log_debug("BLACKFOOT ERROR: No below turf found.")
 		return
 
 	var/turf/shadow_turf = SSmapping.get_turf_below(below)
 
 	while(SSmapping.get_turf_below(shadow_turf))
 		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
-			message_admins("BLACKFOOT ERROR: Doesn't fit.")
+			log_debug("BLACKFOOT ERROR: Doesn't fit.")
 			break
 
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)

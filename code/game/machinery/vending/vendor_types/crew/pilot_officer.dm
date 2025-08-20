@@ -282,7 +282,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_dropship_crew_chief, list(
 		combined += GLOB.cm_vending_clothing_dropship_crew_chief
 		combined += GLOB.cm_vending_clothing_pilot_officer
 		return combined
-	switch(user.job)
+	var/user_job = user.job
+	switch(user_job)
 		if(JOB_DROPSHIP_CREW_CHIEF, JOB_OPERATIONS_CREW_CHIEF)
 			return GLOB.cm_vending_clothing_dropship_crew_chief
 		if(JOB_CAS_PILOT, JOB_DROPSHIP_PILOT, JOB_OPERATIONS_PILOT)

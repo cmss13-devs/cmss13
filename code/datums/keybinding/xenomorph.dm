@@ -277,6 +277,42 @@
 			handle_xeno_macro_datum(xeno, choose_resin_check)
 			return TRUE
 
+/datum/keybinding/xenomorph/secrete_resin
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "secrete_resin"
+	full_name = "Secrete Resin"
+	keybind_signal = COMSIG_KB_XENO_SECRETE_RESIN
+
+/datum/keybinding/xenomorph/secrete_resin/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/secrete_resin/secrete_resin_check = get_action(xeno, /datum/action/xeno_action/activable/secrete_resin)
+	if(secrete_resin_check)
+		if(secrete_resin_check && !secrete_resin_check.hidden)
+			handle_xeno_macro_datum(xeno, secrete_resin_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/place_construction
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "place_construction"
+	full_name = "Order Construction"
+	keybind_signal = COMSIG_KB_XENO_PLACE_CONSTRUCTION
+
+/datum/keybinding/xenomorph/place_construction/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/place_construction/place_construction_check = get_action(xeno, /datum/action/xeno_action/activable/place_construction)
+	if(place_construction_check)
+		if(place_construction_check && !place_construction_check.hidden)
+			handle_xeno_macro_datum(xeno, place_construction_check)
+			return TRUE
+
 /datum/keybinding/xenomorph/facehugger_pounce
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")

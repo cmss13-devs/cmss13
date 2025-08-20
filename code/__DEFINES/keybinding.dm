@@ -162,6 +162,8 @@
 #define COMSIG_KB_XENO_TOGGLE_LONG_RANGE_SIGHT "keybinding_toggle_long_range_sight"
 #define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_plant_weeds"
 #define COMSIG_KB_XENO_CHOOSE_RESIN "keybinding_choose_resin"
+#define COMSIG_KB_XENO_SECRETE_RESIN "keybinding_secrete_resin"
+#define COMSIG_KB_XENO_PLACE_CONSTRUCTION "keybinding_place_construction"
 
 #define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"

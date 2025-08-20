@@ -23,6 +23,7 @@ type MarineData = {
   state: string;
   has_helmet: BooleanLike;
   role: string;
+  rank: string;
   acting_sl: string;
   fteam: string;
   distance: string;

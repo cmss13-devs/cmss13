@@ -453,7 +453,7 @@
 	if(aiming)
 		return
 
-	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
+	if(!(istype(target, /obj/structure) && !istype(target, /obj/structure/closet/bodybag)) || istype(target,/turf/closed/wall)) )
 		to_chat(user, SPAN_WARNING("Invalid target!"))
 		return
 

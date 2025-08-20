@@ -485,7 +485,7 @@
 
 			// Only allow changing direct fire offsets if offsetter is installed
 			var/can_modify_direct_offset = (shuttle && locate(/obj/structure/dropship_equipment/electronics/targeting_designator) in shuttle.equipments) || (selected_equipment && istype(selected_equipment, /obj/structure/dropship_equipment/weapon/heavygun/bay))
-			if(can_modify_direct_offset)
+			if(can_modify_direct_offset && shuttle && shuttle.in_flyby)
 				src.direct_x_offset_value = clamp(text2num(direct_x_offset_value), -3, 3)
 				src.direct_y_offset_value = clamp(text2num(direct_y_offset_value), -3, 3)
 
@@ -511,8 +511,8 @@
 				qdel(src.direct_fire_laser_dot)
 				src.direct_fire_laser_dot = null
 
-			if(src.direct_x_offset_value || src.direct_y_offset_value)
-				if(shuttle && camera_target_id)
+			if((src.direct_x_offset_value || src.direct_y_offset_value) && shuttle && shuttle.in_flyby)
+				if(camera_target_id)
 					if(cas_sig && cas_sig.signal_loc)
 						var/turf/base_turf = cas_sig.signal_loc
 						var/turf/offset_turf = locate(

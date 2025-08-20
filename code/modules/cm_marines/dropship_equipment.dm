@@ -66,7 +66,7 @@
 					to_chat(user, SPAN_WARNING("You cannot load ammo while the dropship is in flight or busy!"))
 					return TRUE
 				// Only allow compatible ammo types
-				if(!istype(item_equip, /obj/structure/ship_ammo))
+				if(!istype(powerloader_item.loaded, /obj/structure/ship_ammo))
 					to_chat(user, SPAN_WARNING("You need to use a powerloader holding dropship ammo to load [src]."))
 					return TRUE
 				var/obj/structure/ship_ammo/ammo = powerloader_item.loaded
@@ -1121,7 +1121,7 @@
 					impact_overlay.update_visibility_for_mob(Mob_Pilot)
 
 	msg_admin_niche("[key_name(user)] is direct-firing [SA] onto [selected_target] at ([target_turf.x],[target_turf.y],[target_turf.z]) [ADMIN_JMP(target_turf)]")
-	if(ammo_travelling_time && !istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
+	if(ammo_travelling_time)
 		var/total_seconds = max(floor(ammo_travelling_time/10),1)
 		for(var/second_index in 0 to total_seconds)
 			sleep(10)
@@ -1175,13 +1175,6 @@
 				SPAN_HIGHDANGER("YOU HEAR SOMETHING VERY CLOSE COMING DOWN [SPAN_UNDERLINE(relative_dir ? uppertext(("TO YOUR " + dir2text(relative_dir))) : uppertext("right above you"))]!"), SHOW_MESSAGE_AUDIBLE \
 			)
 		sleep(10)
-
-	if(ammo_travelling_time && istype(SA, /obj/structure/ship_ammo/rocket/thermobaric))
-		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1, 15)
-		var/total_seconds = max(floor(ammo_travelling_time / 10), 1)
-		for(var/second_index in 0 to total_seconds)
-			sleep(1 SECONDS)
-			new /obj/effect/overlay/temp/blinking_laser (impact) //no decreased accuracy if laser dissapears, it will land where it is telegraphed to land
 
 	if(ammo_warn_sound)
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1,15)

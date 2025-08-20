@@ -405,17 +405,19 @@
 /obj/structure/ship_ammo/rocket/thermobaric
 	name = "\improper BLU-200 'Dragon's Breath'"
 	desc = "The BLU-200 'Dragon's Breath' is a thermobaric fuel-air bomb. The aerosolized fuel mixture creates a vacuum when ignited causing serious damage to those in its way. Can be loaded into the LAU-444 Guided Missile Launcher."
-	icon_state = "fatty"
-	ammo_id = "f"
+	icon_state = "dragon"
+	ammo_id = "d"
 	travelling_time = 50
-	point_cost = 300
+	point_cost = 400
 
 /obj/structure/ship_ammo/rocket/thermobaric/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)
 	impact.ceiling_debris_check(3)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.5 SECONDS) //Very intense but the fire doesn't last very long
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 50, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.5 SECONDS) // Initial minor explosion for the first stage of the thermobaric reaction
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cell_explosion), impact, 75, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 0.9 SECONDS) // Second minor explosion to complete the thermobaric reaction
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(fire_spread), impact, create_cause_data(initial(name), source_mob), 4, 25, 50, "#c96500"), 0.9 SECONDS) //Stronger than Napalm but lasts for a smaller amount of time
 	for(var/mob/living/carbon/victim in orange(5, impact))
-		victim.throw_atom(impact, 3, 15, src, TRUE) // Implosion throws affected towards center of vacuum
-	QDEL_IN(src, 0.5 SECONDS)
+		victim.throw_atom(impact, 2, 15, src, TRUE) // Implosion throws affected towards center of vacuum
+	QDEL_IN(src, 0.9 SECONDS)
 
 
 //minirockets

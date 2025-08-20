@@ -435,14 +435,15 @@
 // Releasing a dead hauled mob
 /mob/living/carbon/xenomorph/proc/release_dead_haul()
 	SIGNAL_HANDLER
-	var/mob/living/carbon/human/user = hauled_mob?.resolve()
-	if(user.is_xeno_grabbable()) // They may be dead but about to burst
-		UnregisterSignal(user, COMSIG_MOB_DEATH)
+	var/mob/living/carbon/human/hauled_human = hauled_mob?.resolve()
+	if(hauled_human.is_xeno_grabbable()) // They may be dead but about to burst
+		UnregisterSignal(hauled_human, COMSIG_MOB_DEATH)
 		return
 	deltimer(haul_timer)
-	to_chat(src, SPAN_XENOWARNING("[user] is dead. No more use for them now."))
-	user.handle_unhaul()
-	UnregisterSignal(user, COMSIG_MOB_DEATH)
+	to_chat(src, SPAN_XENOWARNING("[hauled_human] is dead. No more use for them now."))
+	hauled_human.handle_unhaul()
+	UnregisterSignal(hauled_human, COMSIG_MOB_DEATH)
+	UnregisterSignal(hauled_human, COMSIG_MOB_CHESTBURSTED)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null
 
@@ -450,29 +451,30 @@
 /mob/living/carbon/xenomorph/proc/release_chestbursted_haul()
 	SIGNAL_HANDLER
 	deltimer(haul_timer)
-	var/mob/living/carbon/human/user = hauled_mob?.resolve()
-	to_chat(src, SPAN_XENOWARNING("[user] has served their purpose. No more use for them now."))
-	user.handle_unhaul()
-	UnregisterSignal(user, COMSIG_MOB_CHESTBURSTED)
+	var/mob/living/carbon/human/hauled_human = hauled_mob?.resolve()
+	to_chat(src, SPAN_XENOWARNING("[hauled_human] has served their purpose. No more use for them now."))
+	hauled_human.handle_unhaul()
+	UnregisterSignal(hauled_human, COMSIG_MOB_DEATH)
+	UnregisterSignal(hauled_human, COMSIG_MOB_CHESTBURSTED)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null
 
 // Releasing a hauled mob
 /mob/living/carbon/xenomorph/proc/release_haul(stuns = FALSE)
 	deltimer(haul_timer)
-	var/mob/living/carbon/human/user = hauled_mob?.resolve()
-	if(!user)
+	var/mob/living/carbon/human/hauled_human = hauled_mob?.resolve()
+	if(!hauled_human)
 		to_chat(src, SPAN_WARNING("We are not hauling anyone."))
 		return
-	user.handle_unhaul()
-	visible_message(SPAN_XENOWARNING("[src] releases [user] from their grip!"),
-	SPAN_XENOWARNING("We release [user] from our grip!"), null, 5)
+	hauled_human.handle_unhaul()
+	visible_message(SPAN_XENOWARNING("[src] releases [hauled_human] from their grip!"),
+	SPAN_XENOWARNING("We release [hauled_human] from our grip!"), null, 5)
 	playsound(src, 'sound/voice/alien_growl1.ogg', 15)
-	log_interact(src, user, "[key_name(src)] released [key_name(user)] at [get_area_name(loc)]")
+	log_interact(src, hauled_human, "[key_name(src)] released [key_name(hauled_human)] at [get_area_name(loc)]")
 	if(stuns)
-		user.adjust_effect(2, STUN)
-	UnregisterSignal(user, COMSIG_MOB_DEATH)
-	UnregisterSignal(user, COMSIG_MOB_CHESTBURSTED)
+		hauled_human.adjust_effect(2, STUN)
+	UnregisterSignal(hauled_human, COMSIG_MOB_DEATH)
+	UnregisterSignal(hauled_human, COMSIG_MOB_CHESTBURSTED)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null
 

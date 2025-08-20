@@ -274,7 +274,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				role = marine_human.job
 			else if(card?.rank) //decapitated marine is mindless,
 				role = card.rank
-				rank = card.paygrade
+			rank = card?.paygrade
 
 			if(current_squad.squad_leader)
 				if(marine_human == current_squad.squad_leader)
@@ -445,7 +445,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			role = marine_human.job
 		else if(card?.rank) //decapitated marine is mindless,
 			role = card.rank
-			rank = card.paygrade
+		rank = card?.paygrade
 
 
 

@@ -12599,6 +12599,13 @@
 "aGr" = (
 /turf/open/floor/almayer,
 /area/almayer/living/bridgebunks)
+"aGs" = (
+/obj/structure/machinery/door_control/cl/quarter/backdoor{
+	pixel_y = -21;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/command/corporateliaison)
 "aGt" = (
 /obj/structure/machinery/portable_atmospherics/powered/pump,
 /obj/structure/machinery/light{
@@ -36017,30 +36024,40 @@
 	pixel_y = 11;
 	pixel_x = -6
 	},
+/obj/item/paper_bin/wy{
+	pixel_x = 13;
+	pixel_y = 6
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = 11;
+	pixel_y = 3
+	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "bJi" = (
-/obj/structure/transmitter/rotary{
-	name = "CL Office Lobby Telephone";
-	phone_category = "Offices";
-	phone_id = "CL Office Lobby";
-	pixel_x = 5;
-	pixel_y = 5
-	},
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/door_control/cl/office/door{
-	pixel_y = 3;
-	pixel_x = -5
+/obj/structure/transmitter/rotary{
+	name = "CL Security Telephone";
+	phone_category = "Offices";
+	phone_id = "CL Security";
+	pixel_x = 6;
+	pixel_y = 10;
+	do_not_disturb = 1
 	},
-/obj/structure/machinery/door_control/cl/office/window{
-	pixel_x = -5;
-	pixel_y = 9
+/obj/structure/machinery/door_control{
+	id = "CL Office Door";
+	name = "Office Door Control";
+	normaldoorcontrol = 1;
+	pixel_y = 4;
+	req_one_access_txt = "200";
+	pixel_x = -4
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "bJj" = (
 /obj/structure/machinery/door/airlock/almayer/generic/corporate{
-	name = "\improper Weyland-Yutani Office"
+	name = "\improper Weyland-Yutani Office";
+	id_tag = "CL Office Door"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -36057,6 +36074,13 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
+"bJk" = (
+/obj/structure/sign/poster/hero/voteno{
+	pixel_x = -26;
+	pixel_y = 4
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "bJl" = (
 /obj/structure/bed/chair/comfy/orange{
 	dir = 8
@@ -36071,12 +36095,12 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/u_m_p)
-"bJo" = (
-/obj/structure/machinery/door_control/cl/quarter/officedoor{
-	pixel_x = 24
+"bJn" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
 	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/wood/ship,
+/turf/open/floor/plating,
 /area/almayer/command/corporateliaison)
 "bJp" = (
 /obj/item/tool/pen/blue/clicky{
@@ -36396,20 +36420,29 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/shipboard/navigation)
 "bKe" = (
-/obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary{
 	name = "CL Office Telephone";
 	phone_category = "Offices";
 	phone_id = "CL Office";
 	pixel_x = 5;
-	pixel_y = -1
+	pixel_y = 6
 	},
-/turf/open/floor/wood/ship,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/door_control/cl/quarter/windows{
+	pixel_y = 4;
+	pixel_x = -6
+	},
+/obj/structure/machinery/door_control/cl/quarter/backdoor{
+	pixel_x = -14;
+	pixel_y = -2
+	},
+/turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "bKf" = (
 /obj/structure/machinery/firealarm{
 	dir = 8;
-	pixel_x = -20
+	pixel_x = -20;
+	pixel_y = -7
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -36417,10 +36450,6 @@
 /area/almayer/command/corporateliaison)
 "bKg" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/folder/black_random{
-	pixel_x = 3;
-	pixel_y = 3
-	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "bKh" = (
@@ -36519,22 +36548,14 @@
 /area/almayer/shipboard/weapon_room)
 "bKq" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/door_control/cl/quarter/windows{
-	pixel_y = 16;
-	pixel_x = 7
-	},
-/obj/structure/machinery/door_control/cl/quarter/backdoor{
-	pixel_y = 16;
-	pixel_x = -1
-	},
-/obj/structure/machinery/door_control/cl/quarter/officedoor{
-	pixel_y = 10;
-	pixel_x = 7
-	},
 /obj/item/tool/stamp{
 	name = "Corporate Liaison's stamp";
 	pixel_x = 5;
 	pixel_y = -12
+	},
+/obj/item/folder/black_random{
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -64282,9 +64303,6 @@
 /turf/open/floor/plating,
 /area/almayer/maint/upper/u_f_p)
 "mxq" = (
-/obj/structure/machinery/door_control/cl/office/door{
-	pixel_x = 25
-	},
 /turf/open/floor/almayer/w_y2/north,
 /area/almayer/command/corporateliaison)
 "mxD" = (
@@ -74381,7 +74399,6 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/poddoor/shutters/almayer/cl/office/door,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
 "qwo" = (
@@ -203091,8 +203108,8 @@ ijd
 ayQ
 bBH
 rRT
-bvX
-eAN
+bJn
+bJk
 cHG
 bJg
 eAN
@@ -203297,7 +203314,7 @@ whc
 yiu
 bBH
 mxq
-bvX
+bJn
 eAN
 jVg
 bJi
@@ -203502,7 +203519,7 @@ kgs
 lXl
 poD
 bBH
-bvX
+bJn
 bJB
 eAN
 bKv
@@ -203605,10 +203622,10 @@ kgs
 lXl
 poD
 bBH
-bvX
+bJn
 bJF
 vQR
-bJo
+vQR
 bKj
 eAN
 bIQ
@@ -203618,7 +203635,7 @@ bJQ
 bHV
 bId
 bHT
-gAk
+aGs
 mRU
 jtU
 vpf

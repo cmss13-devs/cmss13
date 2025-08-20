@@ -822,18 +822,18 @@
 		qdel(src)
 		return FALSE
 	if(istype(user, /mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		var/obj/item/ship_ammo_handheld/I = new src.type()
-		I.ammo_count = src.ammo_count
-		I.max_ammo_count = src.max_ammo_count
-		I.safety_enabled = src.safety_enabled
-		I.update_icon()
-		if(H.put_in_hands(I))
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/ship_ammo_handheld/handheld_ammo = new src.type()
+		handheld_ammo.ammo_count = src.ammo_count
+		handheld_ammo.max_ammo_count = src.max_ammo_count
+		handheld_ammo.safety_enabled = src.safety_enabled
+		handheld_ammo.update_icon()
+		if(human_user.put_in_hands(handheld_ammo))
 			qdel(src)
-			to_chat(user, SPAN_NOTICE("You pick up [I] by hand."))
+			to_chat(user, SPAN_NOTICE("You pick up [handheld_ammo] by hand."))
 			return TRUE
 		else
-			qdel(I)
+			qdel(handheld_ammo)
 			to_chat(user, SPAN_WARNING("You need a free hand to pick this up."))
 			return FALSE
 	else
@@ -846,13 +846,13 @@
 		return .
 	if(!structure_type)
 		return .
-	var/turf/T = get_turf(user)
-	var/obj/structure/ship_ammo/S = new structure_type(T)
-	S.ammo_count = src.ammo_count
-	S.max_ammo_count = src.max_ammo_count
-	S.safety_enabled = src.safety_enabled
-	S.icon_state = src.icon_state
-	S.update_icon()
+	var/turf/drop_turf = get_turf(user)
+	var/obj/structure/ship_ammo/structure_ammo = new structure_type(drop_turf)
+	structure_ammo.ammo_count = src.ammo_count
+	structure_ammo.max_ammo_count = src.max_ammo_count
+	structure_ammo.safety_enabled = src.safety_enabled
+	structure_ammo.icon_state = src.icon_state
+	structure_ammo.update_icon()
 	qdel(src)
 	return .
 

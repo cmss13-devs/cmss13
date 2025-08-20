@@ -1179,10 +1179,6 @@
 	if(!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
 		return FALSE
 
-	if(!check_and_use_plasma_owner())
-		to_chat(xeno, SPAN_WARNING("We do not have enough plasma!"))
-		return FALSE
-
 	var/turf/center = get_turf(xeno)
 	if(!center)
 		to_chat(xeno, SPAN_WARNING("No valid areas to mark!"))
@@ -1194,6 +1190,10 @@
 		if(!do_after(xeno, windup_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			to_chat(xeno, SPAN_XENODANGER("We decide to cancel our skyspit."))
 			return FALSE
+
+	if(!check_and_use_plasma_owner())
+		to_chat(xeno, SPAN_WARNING("We do not have enough plasma!"))
+		return FALSE
 
 	// Launch message and sound
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] launches a massive acidic cloud into the sky!"),

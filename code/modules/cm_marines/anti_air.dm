@@ -214,6 +214,15 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	// Only destroy if the effect wasn't repaired (still has repair steps)
 	if(antiair_destroy && length(src.repair_steps) > 0)
 		// Effect timed out without being repaired - destroy the equipment
+		// Force drop the equipment if it's being held by a powerloader
+		var/obj/item/powerloader_clamp/clamp = null
+		for(var/obj/item/powerloader_clamp/possible_clamp in world)
+			if(possible_clamp.loaded == target)
+				clamp = possible_clamp
+				break
+		if(clamp)
+			clamp.loaded = null
+			clamp.update_icon()
 		target.visible_message(SPAN_WARNING("[target] crumbles into itself and falls apart. It's been destroyed!"))
 		qdel(target)
 	else

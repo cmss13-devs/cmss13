@@ -1450,7 +1450,7 @@
 	combat_equipment = TRUE
 	stackable_ammo = TRUE
 	equip_categories = list(DROPSHIP_ELECTRONICS) //fits inside the front parts next to the weapons
-	point_cost = 400
+	point_cost = 250
 
 /obj/structure/dropship_equipment/weapon/flare_launcher/update_icon()
 	if(ammo_equipped && ammo_equipped.ammo_count)
@@ -2316,7 +2316,7 @@
 	shorthand = "PDS"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "paradrop_module_packaged"
-	point_cost = 50
+	point_cost = 150
 	combat_equipment = FALSE
 	var/system_cooldown
 	var/signal_registered = FALSE

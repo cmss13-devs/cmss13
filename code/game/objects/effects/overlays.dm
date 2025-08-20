@@ -230,7 +230,7 @@
 	name = "guidance laser"
 	anchored = TRUE
 	light_range = 2
-	effect_duration = 10
+	effect_duration = 30
 	mouse_opacity = MOUSE_OPACITY_ICON
 	icon = 'icons/obj/items/weapons/projectiles.dmi'
 	icon_state = "yellow_laser"

@@ -281,16 +281,12 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	for(var/obj/effect/overlay/temp/protection_flag/antiair/flag in world)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
-		// Antiair flags are only shown to non-observers
-		if(!isobserver(client_user.mob))
-			client_user.images |= flag.flag_image
+		client_user.images |= flag.flag_image
 
 	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in world)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
-		// Chaff flags are only shown to non-observers
-		if(!isobserver(client_user.mob))
-			client_user.images |= flag.flag_image
+		client_user.images |= flag.flag_image
 
 /datum/mob_hud/dropship/proc/remove_protection_flags_from_client(client/client_user)
 	if(!client_user)

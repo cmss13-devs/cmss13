@@ -331,6 +331,24 @@
 			handle_xeno_macro_datum(xeno, transfer_plasma_check)
 			return TRUE
 
+/datum/keybinding/xenomorph/plant_resin_fruit
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "plant_resin_fruit"
+	full_name = "Plant Resin Fruit"
+	keybind_signal = COMSIG_KB_XENO_PLANT_RESIN_FRUIT
+
+/datum/keybinding/xenomorph/plant_resin_fruit/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/plant_resin_fruit/plant_resin_fruit_check = get_action(xeno, /datum/action/xeno_action/onclick/plant_resin_fruit)
+	if(plant_resin_fruit_check)
+		if(plant_resin_fruit_check && !plant_resin_fruit_check.hidden)
+			handle_xeno_macro_datum(xeno, plant_resin_fruit_check)
+			return TRUE
+
 /datum/keybinding/xenomorph/facehugger_pounce
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
@@ -437,5 +455,23 @@
 	if(acider_acid_check)
 		if(acider_acid_check && !acider_acid_check.hidden)
 			handle_xeno_macro_datum(xeno, acider_acid_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/apply_salve
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "apply_salve"
+	full_name = "Healer: Apply Salve"
+	keybind_signal = COMSIG_KB_XENO_HEALER_APPLY_SALVE
+
+/datum/keybinding/xenomorph/apply_salve/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/apply_salve/apply_salve_check = get_action(xeno, /datum/action/xeno_action/activable/apply_salve)
+	if(apply_salve_check)
+		if(apply_salve_check && !apply_salve_check.hidden)
+			handle_xeno_macro_datum(xeno, apply_salve_check)
 			return TRUE
 

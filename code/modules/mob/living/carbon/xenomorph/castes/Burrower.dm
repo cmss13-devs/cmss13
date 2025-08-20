@@ -361,7 +361,7 @@
 		to_chat(xenomorph, SPAN_XENOWARNING("We can't do that from there."))
 		return
 
-	if(SSticker?.mode?.hardcore)
+	if(SSticker?.mode?.hardcore && xenomorph.caste_type == XENO_CASTE_BURROWER)
 		to_chat(xenomorph, SPAN_XENOWARNING("A certain presence is preventing us from digging tunnels here."))
 		return
 

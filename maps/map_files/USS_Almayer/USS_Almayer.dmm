@@ -6375,13 +6375,6 @@
 	pixel_x = 1;
 	pixel_y = 38
 	},
-/obj/structure/machinery/door_control{
-	id = "Operations Lockdown";
-	name = "Operations Bay Lockdown";
-	pixel_x = 8;
-	pixel_y = 25;
-	req_one_access_txt = "3;22;2;19;7"
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "apK" = (
@@ -48485,6 +48478,11 @@
 	req_one_access = null;
 	req_one_access_txt = "3;22;19"
 	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Operations Lockdown";
+	name = "\improper Operations Lockdown Blast Door";
+	dir = 4
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/operations)
 "gpc" = (
@@ -60846,6 +60844,10 @@
 	id = "VTOL Bay Shutters";
 	name = "\improper Operations Hangar Shutters"
 	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Operations Lockdown";
+	name = "\improper Operations Lockdown Blast Door"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/operations)
 "lpt" = (
@@ -72641,7 +72643,8 @@
 /obj/structure/machinery/door_control{
 	id = "VTOL Bay Shutters";
 	name = "shutter-control";
-	pixel_y = 25
+	pixel_y = 25;
+	pixel_x = -6
 	},
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -72651,6 +72654,13 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer{
 	pixel_x = -4
+	},
+/obj/structure/machinery/door_control{
+	id = "Operations Lockdown";
+	name = "Operations Bay Lockdown";
+	pixel_x = 6;
+	pixel_y = 25;
+	req_one_access_txt = "3;22;2;19;7"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/operations)

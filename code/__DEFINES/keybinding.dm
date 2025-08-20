@@ -172,6 +172,7 @@
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 #define COMSIG_KB_XENO_TRANSFER_PLASMA "keybinding_drone_transfer_plasma"
 #define COMSIG_KB_XENO_PLANT_RESIN_FRUIT "keybinding_plant_resin_fruit"
+#define COMSIG_KB_XENO_CHANGE_FRUIT "keybinding_change_fruit"
 
 // Xenomorph Facehugger
 #define COMSIG_KB_XENO_FACEHUGGER_POUNCE "keybinding_hugger_pounce"
@@ -184,6 +185,7 @@
 
 // Xenomorph Drone
 #define COMSIG_KB_XENO_HEALER_APPLY_SALVE "keybinding_healer_apply_salve"
+#define COMSIG_KB_XENO_HEALER_SACRIFICE "keybinding_healer_sacrifice"
 
 // Yautja
 

@@ -349,6 +349,24 @@
 			handle_xeno_macro_datum(xeno, plant_resin_fruit_check)
 			return TRUE
 
+/datum/keybinding/xenomorph/change_fruit
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "change_fruit"
+	full_name = "Change Fruit"
+	keybind_signal = COMSIG_KB_XENO_CHANGE_FRUIT
+
+/datum/keybinding/xenomorph/change_fruit/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/change_fruit/change_fruit_check = get_action(xeno, /datum/action/xeno_action/onclick/change_fruit)
+	if(change_fruit_check)
+		if(change_fruit_check && !change_fruit_check.hidden)
+			handle_xeno_macro_datum(xeno, change_fruit_check)
+			return TRUE
+
 /datum/keybinding/xenomorph/facehugger_pounce
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
@@ -473,5 +491,23 @@
 	if(apply_salve_check)
 		if(apply_salve_check && !apply_salve_check.hidden)
 			handle_xeno_macro_datum(xeno, apply_salve_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/healer_sacrifice
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "healer_sacrifice"
+	full_name = "Healer: Sacrifice"
+	keybind_signal = COMSIG_KB_XENO_HEALER_SACRIFICE
+
+/datum/keybinding/xenomorph/healer_sacrifice/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/healer_sacrifice/healer_sacrifice_check = get_action(xeno, /datum/action/xeno_action/activable/healer_sacrifice)
+	if(healer_sacrifice_check)
+		if(healer_sacrifice_check && !healer_sacrifice_check.hidden)
+			handle_xeno_macro_datum(xeno, healer_sacrifice_check)
 			return TRUE
 

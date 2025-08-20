@@ -2085,7 +2085,7 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "agS" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/lv624/ground/barrens/central_barrens)
+/area/lv624/gonzo)
 "agW" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -44949,9 +44949,6 @@
 	},
 /turf/open/floor/prison,
 /area/lv624/lazarus/armory)
-"soe" = (
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/lv624/gonzo)
 "soY" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 4
@@ -50921,7 +50918,7 @@ mdQ
 mdQ
 mdQ
 mdQ
-soe
+agS
 mdQ
 mdQ
 mdQ
@@ -68982,7 +68979,7 @@ afI
 bvp
 afI
 bur
-agS
+bNn
 mVV
 wxP
 tyG

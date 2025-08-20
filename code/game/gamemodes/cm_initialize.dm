@@ -858,7 +858,7 @@ Additional game mode variables.
 	if(SSticker.mode == GAMEMODE_WHISKEY_OUTPOST || GLOB.master_mode == GAMEMODE_WHISKEY_OUTPOST)
 		to_chat(new_queen, "<B>You are now the alien queen!</B>")
 		to_chat(new_queen, "<B>Your job is to assist the hive in assaulting the human outpost!</B>")
-		to_chat(new_queen, "<B>You should start by planting weeds and growing an ovipositor, You will be able to leave your cave after the round time reaches 1:10.</B>")
+		to_chat(new_queen, "<B>You should start by planting weeds and growing an ovipositor, your children will appear around round time 0:20. You will be able to leave your cave after the round time reaches 1:00.</B>")
 		to_chat(new_queen, "Talk in Hivemind using <strong>;</strong> (e.g. ';Hello my children!')")
 	else
 		to_chat(new_queen, "<B>You are now the alien queen!</B>")

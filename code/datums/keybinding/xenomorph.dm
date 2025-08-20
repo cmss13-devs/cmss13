@@ -313,6 +313,24 @@
 			handle_xeno_macro_datum(xeno, place_construction_check)
 			return TRUE
 
+/datum/keybinding/xenomorph/transfer_plasma
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "transfer_plasma"
+	full_name = "Transfer Plasma"
+	keybind_signal = COMSIG_KB_XENO_TRANSFER_PLASMA
+
+/datum/keybinding/xenomorph/transfer_plasma/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/transfer_plasma/transfer_plasma_check = get_action(xeno, /datum/action/xeno_action/activable/transfer_plasma)
+	if(transfer_plasma_check)
+		if(transfer_plasma_check && !transfer_plasma_check.hidden)
+			handle_xeno_macro_datum(xeno, transfer_plasma_check)
+			return TRUE
+
 /datum/keybinding/xenomorph/facehugger_pounce
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")

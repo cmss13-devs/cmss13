@@ -881,6 +881,22 @@
 	icon_state = "thickresin"
 	walltype = WALL_THICKRESIN
 
+
+/turf/closed/wall/resin/thick/process()
+	. = ..()
+
+	if(!boosted_regen)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	if(!COOLDOWN_FINISHED(src, automatic_heal))
+		return
+
+	if(damage >= 0)
+		damage -= 100
+
+	COOLDOWN_START(src, automatic_heal, 10 SECONDS)
+
 /turf/closed/wall/resin/tutorial
 	name = "tutorial resin wall"
 	desc = "Weird slime solidified into a wall. Remarkably resilient."

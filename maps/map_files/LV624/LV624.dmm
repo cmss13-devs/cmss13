@@ -2084,8 +2084,15 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "agS" = (
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/lv624/gonzo)
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	layer = 4.21;
+	pixel_x = -21;
+	pixel_y = -4
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/central_jungle)
 "agW" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -5273,10 +5280,8 @@
 /turf/closed/wall,
 /area/lv624/lazarus/quartstorage)
 "asO" = (
-/obj/structure/pipes/vents/pump_hybrisa,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/hybrisa/street/sidewalkfull,
-/area/lv624/lazarus/general_dorms)
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/gonzo)
 "asP" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/warning_stripes{
@@ -32569,15 +32574,13 @@
 /turf/open/gm/mudcoast/greenwater/north,
 /area/lv624/ground/jungle/west_jungle/swamp)
 "dmz" = (
-/obj/structure/pipes/standard/simple/hidden/cyan{
-	dir = 5
-	},
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 1;
 	pixel_x = -6;
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/hybrisa/street/sidewalkfull,
 /area/lv624/lazarus/general_dorms)
 "dmD" = (
@@ -50918,7 +50921,7 @@ mdQ
 mdQ
 mdQ
 mdQ
-agS
+asO
 mdQ
 mdQ
 mdQ
@@ -68131,7 +68134,7 @@ pqy
 ezw
 aHt
 pTc
-asO
+aHt
 aHt
 bec
 bec
@@ -69273,7 +69276,7 @@ aDZ
 aHt
 aqN
 por
-aDk
+agS
 kAg
 iAA
 aJr

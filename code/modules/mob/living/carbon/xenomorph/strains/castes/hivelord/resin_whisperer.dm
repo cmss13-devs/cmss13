@@ -33,7 +33,8 @@
 			var/datum/action/xeno_action/onclick/choose_resin/choose_resin_ability = action
 			choose_resin_ability.update_button_icon(hivelord.selected_resin)
 			break // Don't need to keep looking
-
+	if(SSticker?.mode?.hardcore)
+		give_action(hivelord, /datum/action/xeno_action/onclick/build_tunnel) // Whisperers get tunnels for WO
 /*
  * Coerce Resin ability
  */

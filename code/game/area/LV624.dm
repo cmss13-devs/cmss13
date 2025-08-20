@@ -507,3 +507,12 @@
 	name = "\improper KMCC Mining Facility"
 	icon = 'icons/turf/hybrisareas.dmi'
 	icon_state = "mining"
+
+/area/lv624/gonzo
+	name = "Gonzo's hide-out"
+	icon_state = "cliff_blocked"
+	ceiling = CEILING_MAX
+	is_resin_allowed = FALSE
+	flags_area = AREA_NOTUNNEL
+	minimap_color = MINIMAP_AREA_OOB
+	requires_power = FALSE

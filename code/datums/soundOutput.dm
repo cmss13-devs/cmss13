@@ -45,7 +45,7 @@
 					S.falloff /= 2
 					owner_turf = candidate
 			S.x = T.x - owner_turf.x
-			S.y = T.z - owner_turf.z
+			S.y = (T.z - owner_turf.z) * 5
 			S.z = T.y - owner_turf.y
 		S.y += T.y_s_offset
 		S.x += T.x_s_offset
@@ -199,18 +199,18 @@
 		S.status = SOUND_UPDATE
 		sound_to(src, S)
 
-/client/verb/adjust_volume_sfx()
+CLIENT_VERB(adjust_volume_sfx)
 	set name = "Adjust Volume SFX"
 	set category = "Preferences.Sound"
 	adjust_volume_prefs(VOLUME_SFX, "Set the volume for sound effects", 0)
 
-/client/verb/adjust_volume_ambience()
+CLIENT_VERB(adjust_volume_ambience)
 	set name = "Adjust Volume Ambience"
 	set category = "Preferences.Sound"
 	adjust_volume_prefs(VOLUME_AMB, "Set the volume for ambience and soundscapes", 0)
 	soundOutput.update_ambience(null, null, TRUE)
 
-/client/verb/adjust_volume_lobby_music()
+CLIENT_VERB(adjust_volume_lobby_music)
 	set name = "Adjust Volume LobbyMusic"
 	set category = "Preferences.Sound"
 	adjust_volume_prefs(VOLUME_LOBBY, "Set the volume for Lobby Music", SOUND_CHANNEL_LOBBY)

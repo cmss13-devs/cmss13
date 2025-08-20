@@ -437,6 +437,7 @@
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
 	if(user.is_xeno_grabbable()) // They may be dead but about to burst
+		UnregisterSignal(user, COMSIG_MOB_DEATH)
 		return
 	deltimer(haul_timer)
 	to_chat(src, SPAN_XENOWARNING("[user] is dead. No more use for them now."))
@@ -471,6 +472,7 @@
 	if(stuns)
 		user.adjust_effect(2, STUN)
 	UnregisterSignal(user, COMSIG_MOB_DEATH)
+	UnregisterSignal(user, COMSIG_MOB_CHESTBURSTED)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null
 

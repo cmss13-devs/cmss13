@@ -29,11 +29,6 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_SMG
 	start_automatic = TRUE
-	can_jam = TRUE
-	initial_jam_chance = GUN_JAM_CHANCE_LOW
-	unjam_chance = GUN_UNJAM_CHANCE_DEFAULT
-	durability_loss = GUN_DURABILITY_LOSS_SEVERE
-	jam_threshold = GUN_DURABILITY_MEDIUM
 
 /obj/item/weapon/gun/smg/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -41,10 +36,7 @@
 		load_into_chamber()
 
 /obj/item/weapon/gun/smg/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else
-		cock(user)
+	cock(user)
 
 /obj/item/weapon/gun/smg/set_gun_config_values()
 	..()
@@ -403,7 +395,9 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
 //-------------------------------------------------------
-//PPSH //Based on the PPSh-41. Carlarc jamming code originated here
+//PPSH //Based on the PPSh-41.
+
+#define PPSH_UNJAM_CHANCE 25
 
 /obj/item/weapon/gun/smg/ppsh
 	name = "\improper PPSh-17b submachinegun"
@@ -418,6 +412,7 @@
 	fire_sound = 'sound/weapons/smg_heavy.ogg'
 	current_mag = /obj/item/ammo_magazine/smg/ppsh
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
+	var/jammed = FALSE
 
 /obj/item/weapon/gun/smg/ppsh/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 17,"rail_x" = 15, "rail_y" = 19, "under_x" = 26, "under_y" = 15, "stock_x" = 18, "stock_y" = 15)
@@ -436,11 +431,43 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 	fa_max_scatter = SCATTER_AMOUNT_TIER_9
 	fa_scatter_peak = 1 // Seems a bit funny, but it works pretty well in the end
-	initial_jam_chance = GUN_JAM_CHANCE_CRITICAL //the ppsh jams apparently a fuckton in real life, so we're going to make it jam a lot
-	unjam_chance = GUN_UNJAM_CHANCE_LOW // yep
-	durability_loss = GUN_DURABILITY_LOSS_FAIR
-	jam_threshold = GUN_DURABILITY_HIGH
 
+/obj/item/weapon/gun/smg/ppsh/with_drum_mag
+	current_mag = /obj/item/ammo_magazine/smg/ppsh/extended
+
+// Special feature! The PPSH can jam with the drum magazine, and will also receive handling debuffs when using one.
+
+/obj/item/weapon/gun/smg/ppsh/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	var/obj/item/ammo_magazine/smg/ppsh/ppsh_mag =  current_mag
+	if(jammed)
+		if(world.time % 3)
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
+			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
+			balloon_alert(user, "*jammed*")
+		return NONE
+	else if(prob(ppsh_mag?.jam_chance))
+		jammed = TRUE
+		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 50, FALSE)
+		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*jammed*")
+		return NONE
+	else
+		return ..()
+
+/obj/item/weapon/gun/smg/ppsh/unique_action(mob/user)
+	if(jammed)
+		if(prob(PPSH_UNJAM_CHANCE))
+			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 50, FALSE)
+			jammed = FALSE
+			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			balloon_alert(user, "*unjammed!*")
+		else
+			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
+			playsound(src, "gun_jam_rack", 50, FALSE)
+			balloon_alert(user, "*rack*")
+		return
+	. = ..()
 
 /obj/item/weapon/gun/smg/ppsh/unload(mob/user, reload_override, drop_override, loc_override)
 	. = ..()
@@ -464,6 +491,8 @@
 	if(ppsh_mag && ppsh_mag.new_item_state)
 		item_state = ppsh_mag.new_item_state
 		ppsh_mag.update_icon()
+
+#undef PPSH_UNJAM_CHANCE
 
 //-------------------------------------------------------
 //Type-19,
@@ -491,7 +520,7 @@
 	)
 
 /obj/item/weapon/gun/smg/pps43/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 20,"rail_x" = 20, "rail_y" = 24, "under_x" = 25, "under_y" = 17, "stock_x" = 26, "stock_y" = 15)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 20, "rail_x" = 10, "rail_y" = 21, "under_x" = 25, "under_y" = 17, "stock_x" = 26, "stock_y" = 15)
 
 /obj/item/weapon/gun/smg/pps43/set_gun_config_values()
 	..()
@@ -590,13 +619,14 @@
 	scatter = SCATTER_AMOUNT_TIER_5
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT - BULLET_DAMAGE_MULT_TIER_2
-	jam_threshold = GUN_DURABILITY_HIGH
 
 /obj/item/weapon/gun/smg/mac15/extended
 	current_mag = /obj/item/ammo_magazine/smg/mac15/extended
 
 //-------------------------------------------------------
-// DAS REAL UZI, carlarc was also here
+// DAS REAL UZI
+
+#define UZI_UNJAM_CHANCE 25
 
 /obj/item/weapon/gun/smg/uzi
 	name = "\improper UZI"
@@ -629,6 +659,7 @@
 		)
 	wield_delay = WIELD_DELAY_MIN
 	aim_slowdown = SLOWDOWN_ADS_QUICK
+	var/jammed = FALSE
 
 /obj/item/weapon/gun/smg/uzi/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 20,"rail_x" = 12, "rail_y" = 22, "under_x" = 22, "under_y" = 16, "stock_x" = 22, "stock_y" = 16)
@@ -645,11 +676,42 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_3
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	initial_jam_chance = GUN_JAM_CHANCE_HIGH //carlarc wanted the smg jam often, but not as often as the ppsh
-	unjam_chance = GUN_UNJAM_CHANCE_HIGH
-	durability_loss = GUN_DURABILITY_LOSS_HIGH
-	jam_threshold = GUN_DURABILITY_HIGH
 
+// The UZI can also jam, though it's less likely.
+
+/obj/item/weapon/gun/smg/uzi/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
+	var/obj/item/ammo_magazine/smg/uzi/uzi_mag = current_mag
+	if(jammed)
+		if(world.time % 3)
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 35, TRUE)
+			to_chat(user, SPAN_WARNING("Your gun is jammed! Mash Unique-Action to unjam it!"))
+			balloon_alert(user, "*jammed*")
+		return NONE
+	else if(prob(uzi_mag.jam_chance))
+		jammed = TRUE
+		playsound(src, 'sound/weapons/handling/gun_jam_initial_click.ogg', 35, TRUE)
+		user.visible_message(SPAN_DANGER("[src] makes a noticeable clicking noise!"), SPAN_HIGHDANGER("\The [src] suddenly jams and refuses to fire! Mash Unique-Action to unjam it."))
+		balloon_alert(user, "*jammed*")
+		return NONE
+	else
+		return ..()
+
+/obj/item/weapon/gun/smg/uzi/unique_action(mob/user)
+	if(jammed)
+		if(prob(UZI_UNJAM_CHANCE))
+			to_chat(user, SPAN_GREEN("You successfully unjam \the [src]!"))
+			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 35, TRUE)
+			jammed = FALSE
+			cock_cooldown += 1 SECONDS //so they dont accidentally cock a bullet away
+			balloon_alert(user, "*unjammed!*")
+		else
+			to_chat(user, SPAN_NOTICE("You start wildly racking the bolt back and forth attempting to unjam \the [src]!"))
+			playsound(src, "gun_jam_rack", 50, FALSE)
+			balloon_alert(user, "*rack*")
+		return
+	. = ..()
+
+#undef UZI_UNJAM_CHANCE
 
 //-------------------------------------------------------
 //FP9000 //Based on the FN P90
@@ -779,15 +841,9 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_5
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-	initial_jam_chance = GUN_JAM_CHANCE_FAIR // i dont think tools jam easily
-	unjam_chance = GUN_UNJAM_CHANCE_INSUBSTANTIAL // but they would be an arsehole to unjam if they did
-	durability_loss = GUN_DURABILITY_LOSS_FAIR
 
 /obj/item/weapon/gun/smg/nailgun/unique_action(mob/user)
-	if(jammed)
-		jam_unique_action(user)
-	else //frankly, i dont even know if the return is necessary to begin with
-		return //Yeah no.
+	return //Yeah no.
 
 /obj/item/weapon/gun/smg/nailgun/unload_chamber(mob/user)
 	return //Can't remove nails from mags or gun.
@@ -861,7 +917,7 @@
 
 /obj/item/weapon/gun/smg/p90/twe
 	name = "\improper FN-TWE P90 submachinegun"
-	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts the AP variation of the 5.7×28mm rounds."
+	desc = "A variation of the FN P90 submachine gun. Used by mercenaries and royal marines commandos. This weapon only accepts 5.7×28mm rounds."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/smgs.dmi'
 	icon_state = "p90_twe"
 	item_state = "p90_twe"

@@ -158,7 +158,7 @@
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
 	assignment = JOB_WY_GOON_SYNTH
-	rank = JOB_WY_GOON_SYNTH
+	job_title = JOB_WY_GOON_SYNTH
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	minimap_icon = "goon_synth"
@@ -185,7 +185,7 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
-	rank = JOB_CMB_SYN
+	job_title = JOB_CMB_SYN
 	minimap_background = "background_cmb"
 	minimap_icon = "cmb_syn"
 
@@ -225,7 +225,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full(new_human), WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector(new_human), WEAR_R_HAND)
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/twohanded/fireaxe(new_human), WEAR_L_HAND)
-	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_three(new_human), WEAR_IN_BACK)
 	..()
 
 /datum/equipment_preset/synth/survivor/kutjevo/corporate

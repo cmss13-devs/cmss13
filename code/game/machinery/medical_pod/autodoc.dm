@@ -1,6 +1,6 @@
 //Autodoc
 /obj/structure/machinery/medical_pod/autodoc
-	name = "\improper autodoc emergency medical system"
+	name = "autodoc emergency medical system"
 	desc = "An emergency surgical device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon. <br>It still requires someone with medical knowledge to program the treatments correctly; for this reason, colonies that use these often have paramedics trained in autodoc operation."
 	icon_state = "autodoc_open"
 
@@ -601,7 +601,7 @@
 
 //Auto Doc console that links up to it.
 /obj/structure/machinery/autodoc_console
-	name = "\improper autodoc medical system control console"
+	name = "autodoc medical system control console"
 	desc = "The control interface used to operate the adjoining autodoc. Requires training to use properly."
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
@@ -673,8 +673,8 @@
 		to_chat(user, "This console seems to be powered down.")
 		return
 
-	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
-		to_chat(user, SPAN_WARNING("You have no idea how to use this."))
+	if(connected.skilllock && !skillcheck(user, SKILL_SURGERY, connected.skilllock))
+		to_chat(user, SPAN_WARNING("The interface looks too complicated for you. You're going to need someone trained in the usage of \the [connected.name]!"))
 		return
 
 	tgui_interact(user)
@@ -870,6 +870,7 @@
 /obj/structure/machinery/autodoc_console/yautja
 	name = "medical pod console"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	upgrades = list(1=1, 2=2, 3=3, 4=4)
 
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"
@@ -877,6 +878,6 @@
 	skilllock = null
 
 /obj/structure/machinery/medical_pod/autodoc/yautja
-	name = "alien automated medical pod"
+	name = "automated medical pod"
 	desc = "An emergency surgical alien device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

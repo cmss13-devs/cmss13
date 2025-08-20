@@ -186,6 +186,8 @@
 // Xenomorph Drone
 #define COMSIG_KB_XENO_HEALER_APPLY_SALVE "keybinding_healer_apply_salve"
 #define COMSIG_KB_XENO_HEALER_SACRIFICE "keybinding_healer_sacrifice"
+#define COMSIG_KB_XENO_GARDENER_PLANT_WEEDS "keybinding_gardener_plant_weeds"
+#define COMSIG_KB_XENO_GARDENER_RESING_SURGE "keybinding_gardener_resin_surge"
 
 // Yautja
 

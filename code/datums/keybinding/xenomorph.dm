@@ -511,3 +511,39 @@
 			handle_xeno_macro_datum(xeno, healer_sacrifice_check)
 			return TRUE
 
+/datum/keybinding/xenomorph/gardener_plant_weeds
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "gardener_plant_weeds"
+	full_name = "Gardener: Plant Hardy Weeds"
+	keybind_signal = COMSIG_KB_XENO_GARDENER_PLANT_WEEDS
+
+/datum/keybinding/xenomorph/gardener_plant_weeds/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/plant_weeds/gardener/gardener_plant_weeds_check = get_action(xeno, /datum/action/xeno_action/onclick/plant_weeds/gardener)
+	if(gardener_plant_weeds_check)
+		if(gardener_plant_weeds_check && !gardener_plant_weeds_check.hidden)
+			handle_xeno_macro_datum(xeno, gardener_plant_weeds_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/gardener_resin_surge
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "gardener_resin_surge"
+	full_name = "Gardener: Resin Surge"
+	keybind_signal = COMSIG_KB_XENO_GARDENER_RESING_SURGE
+
+/datum/keybinding/xenomorph/gardener_resin_surge/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/resin_surge/gardener_resin_surge_check = get_action(xeno, /datum/action/xeno_action/activable/resin_surge)
+	if(gardener_resin_surge_check)
+		if(gardener_resin_surge_check && !gardener_resin_surge_check.hidden)
+			handle_xeno_macro_datum(xeno, gardener_resin_surge_check)
+			return TRUE
+

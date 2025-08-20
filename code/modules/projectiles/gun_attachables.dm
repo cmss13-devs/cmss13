@@ -2992,6 +2992,15 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		. += "It's empty."
 
+/obj/item/attachable/attached_gun/flamer/update_icon()
+	. = ..()
+	attach_icon = initial(attach_icon)
+	if(intense_mode)
+		attach_icon += "-intense"
+	if(isgun(loc))
+		var/obj/item/weapon/gun/gun = loc
+		gun.update_attachable(slot)
+
 /obj/item/attachable/attached_gun/flamer/unique_action(mob/user)
 	..()
 	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
@@ -3009,6 +3018,7 @@ Defined in conflicts.dm of the #defines folder.
 		burn_duration = BURN_TIME_TIER_2
 		max_range = 2
 		intense_mode = TRUE
+	update_icon()
 
 /obj/item/attachable/attached_gun/flamer/handle_pre_break_attachment_description(base_description_text as text)
 	return base_description_text + " It is on [intense_mode ? "intense" : "normal"] mode."

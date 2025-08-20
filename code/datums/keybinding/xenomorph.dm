@@ -259,6 +259,24 @@
 		handle_xeno_macro_datum(xeno, expand)
 		return TRUE
 
+/datum/keybinding/xenomorph/choose_resin
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "choose_resin"
+	full_name = "Choose Resin Structure"
+	keybind_signal = COMSIG_KB_XENO_CHOOSE_RESIN
+
+/datum/keybinding/xenomorph/choose_resin/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/choose_resin/choose_resin_check = get_action(xeno, /datum/action/xeno_action/onclick/choose_resin)
+	if(choose_resin_check)
+		if(choose_resin_check && !choose_resin_check.hidden)
+			handle_xeno_macro_datum(xeno, choose_resin_check)
+			return TRUE
+
 /datum/keybinding/xenomorph/facehugger_pounce
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")

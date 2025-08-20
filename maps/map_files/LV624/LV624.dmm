@@ -27450,7 +27450,7 @@
 	pixel_x = 1
 	},
 /turf/open/gm/dirt/desert2,
-/area/lv624/ground/caves/west_caves)
+/area/lv624/gonzo)
 "bRM" = (
 /mob/living/simple_animal/hostile/retaliate/clown{
 	desc = "Uh oh, looks like Gonzo got blocked by a cave-in. How is he gonna get out of this one?";
@@ -27461,7 +27461,7 @@
 	},
 /obj/item/stack/sandbags/large_stack,
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/west_caves)
+/area/lv624/gonzo)
 "bRN" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/prop/invuln/minecart_tracks{
@@ -27712,7 +27712,7 @@
 	info = "<p>To be consulted in the event of my untimely demise to a Model 30 Light Excavator.</p><p>I hearby entrust my Gigadrill to Bonzo.</p><p>Use it to get revenge.</p><p> -Gonzo the Magnificent, Esq."
 	},
 /turf/open/gm/dirt/desert1,
-/area/lv624/ground/caves/west_caves)
+/area/lv624/gonzo)
 "bSp" = (
 /obj/item/stack/sandbags/large_stack{
 	pixel_x = -3;
@@ -27728,7 +27728,7 @@
 	pixel_x = -10
 	},
 /turf/open/gm/dirt/desert_dug,
-/area/lv624/ground/caves/west_caves)
+/area/lv624/gonzo)
 "bSq" = (
 /obj/structure/prop/ice_colony/ground_wire{
 	dir = 1
@@ -27926,7 +27926,7 @@
 	pixel_x = -16
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/lv624/ground/caves/west_caves)
+/area/lv624/gonzo)
 "bSK" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/gm/dirt/brown/variant_2,
@@ -28111,7 +28111,7 @@
 	pixel_y = 5
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud,
-/area/lv624/ground/caves/west_caves)
+/area/lv624/gonzo)
 "bTj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/closed/wall/rock/brown,
@@ -31581,6 +31581,9 @@
 "cfe" = (
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/colony/north_tcomms_road)
+"cfw" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/gonzo)
 "cfA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/platingdmg1,
@@ -50918,7 +50921,7 @@ mdQ
 mdQ
 mdQ
 mdQ
-btY
+cfw
 mdQ
 mdQ
 mdQ

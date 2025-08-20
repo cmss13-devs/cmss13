@@ -174,6 +174,10 @@
 	name = "\improper South Medbay Road"
 	icon_state = "south"
 
+/area/lv624/ground/colony/west_medbay_road
+	name = "\improper West Medbay Road"
+	icon_state = "west"
+
 /area/lv624/ground/colony/south_nexus_road
 	name = "\improper South Nexus Road"
 	icon_state = "south"
@@ -191,6 +195,10 @@
 	name = "\improper West T-Comms Road"
 	icon_state = "west"
 	linked_lz = DROPSHIP_LZ2
+
+/area/lv624/ground/colony/phi_lab_road
+	name = "\improper Phi Lab Road"
+	icon_state = "north"
 
 /area/lv624/ground/colony/telecomm
 	name = "\improper LZ1 Communications Relay"
@@ -458,7 +466,15 @@
 	name = "\improper KMCC Cargo Transit"
 	icon_state = "quartstorage"
 
-//LV624 REVAMP NEW AREAS (Remove this category once new areas are integrated)//
+/area/lv624/lazarus/cargo_storage
+	name = "\improper Cargo Storage Dome"
+	icon_state = "quartstorage"
+
+/area/lv624/lazarus/disposals
+	name = "\improper Disposals Dome"
+	icon_state = "yellow"
+
+//LV624 REVAMP NEW AREAS
 
 /area/lv624/ground/colony/phi_lab
 	name = "\improper Phi Labs"

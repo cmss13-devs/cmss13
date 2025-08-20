@@ -25,7 +25,7 @@
 
 	var/obj/item/held_item = user.get_held_item()
 	if(istype(held_item, /obj/item/explosive/plastic))
-		to_chat(user, SPAN_WARNING("You cannot climb while holding [held_item]!"))
+		to_chat(user, SPAN_DANGER("You cannot climb while holding [held_item]!"))
 		return
 
 	if(user.action_busy)

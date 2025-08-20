@@ -1124,12 +1124,9 @@ const CommandMonitor = (props) => {
   let { marines } = data;
 
   const rankFinder = {
-    MO6: 'COL. ',
-    MO5: 'LT COL. ',
-    MO4: 'MAJ. ',
-    MO3: 'CAPT. ',
-    MO2: 'LT. ',
-    MO1: 'LT. ',
+    'Commanding Officer': 'MAJ. ',
+    'Executive Officer': 'CAPT. ',
+    'Staff Officer': 'LT. ',
   };
 
   let determine_status_color = (status) => {
@@ -1202,7 +1199,7 @@ const CommandMonitor = (props) => {
                       pb="15px"
                       align="center"
                     >
-                      {rankFinder[marine.rank] + marine.name.toUpperCase()}
+                      {rankFinder[marine.role] + marine.name.toUpperCase()}
                     </Box>
                   </Flex.Item>
                   <Flex.Item textAlign="end" align="center">

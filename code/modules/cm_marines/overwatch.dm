@@ -240,7 +240,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		var/mob_state = ""
 		var/has_helmet = TRUE
 		var/role = "unknown"
-		var/rank = "unknown"
 		var/acting_sl = ""
 		var/fteam = ""
 		var/distance = "???"
@@ -274,7 +273,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				role = marine_human.job
 			else if(card?.rank) //decapitated marine is mindless,
 				role = card.rank
-				rank = card.paygrade
 
 			if(current_squad.squad_leader)
 				if(marine_human == current_squad.squad_leader)
@@ -362,7 +360,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(mob_state != "Dead")
 					marines_alive++
 
-		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine), "rank" = rank))
+		var/marine_data = list(list("name" = mob_name, "state" = mob_state, "has_helmet" = has_helmet, "role" = role, "acting_sl" = acting_sl, "fteam" = fteam, "distance" = distance, "area_name" = area_name,"ref" = REF(marine)))
 		data["marines"] += marine_data
 		if(is_squad_leader)
 			if(!data["squad_leader"])
@@ -415,8 +413,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		var/mob_state = ""
 		var/has_helmet = TRUE
 		var/role = "unknown"
-		var/rank = "unknown"
-
 		var/area_name = "???"
 		var/mob/living/carbon/human/marine_human
 
@@ -445,9 +441,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			role = marine_human.job
 		else if(card?.rank) //decapitated marine is mindless,
 			role = card.rank
-			rank = card.paygrade
-
-
 
 		switch(marine_human.stat)
 			if(CONSCIOUS)

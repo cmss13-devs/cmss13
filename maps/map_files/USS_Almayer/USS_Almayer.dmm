@@ -887,6 +887,23 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
+"acm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/structure/surface/rack{
+	pixel_y = 19;
+	layer = 5.2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_y = 2
+	},
+/obj/structure/machinery/light/red,
+/turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/maintenance/sp)
 "acn" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -17946,6 +17963,21 @@
 /obj/structure/airlock_assembly,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
+"aUE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/sp)
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -19880,6 +19912,13 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
+"aYT" = (
+/obj/structure/coatrack{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "aYU" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -20329,6 +20368,12 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
+"aZU" = (
+/obj/structure/coatrack{
+	pixel_x = -8
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "aZV" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor/almayer/plate,
@@ -35103,9 +35148,11 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/paft)
 "bHe" = (
+/obj/structure/largecrate/random/barrel/true_random,
 /turf/open/floor/almayer/silver/northwest,
 /area/almayer/medical/containment/cell/cl)
 "bHf" = (
+/obj/structure/closet/firecloset,
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/medical/containment/cell/cl)
 "bHg" = (
@@ -35223,6 +35270,10 @@
 	pixel_y = -1
 	},
 /obj/structure/closet/firecloset,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
 "bHu" = (
@@ -35409,6 +35460,10 @@
 /area/almayer/command/corporateliaison)
 "bHV" = (
 /obj/structure/surface/rack,
+/obj/item/clock,
+/obj/item/clipboard{
+	pixel_x = 5
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bHW" = (
@@ -35520,7 +35575,11 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/photo_album,
 /obj/item/device/camera_film{
-	pixel_x = -3
+	pixel_x = -6
+	},
+/obj/item/device/toner{
+	pixel_x = -5;
+	pixel_y = 15
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -35665,14 +35724,13 @@
 /area/almayer/command/corporateliaison)
 "bIF" = (
 /obj/structure/surface/table/almayer,
-/obj/item/clipboard{
-	pixel_x = -4
-	},
 /obj/item/device/taperecorder{
-	pixel_x = 3;
+	pixel_x = 5;
 	pixel_y = 3
 	},
-/obj/item/device/camera,
+/obj/item/device/camera{
+	pixel_x = -7
+	},
 /obj/structure/machinery/status_display{
 	pixel_x = -32
 	},
@@ -35716,6 +35774,13 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17
+	},
+/obj/item/paper_bin/wy{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = -6
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -36207,7 +36272,7 @@
 	network_id = "CL_Security"
 	},
 /obj/structure/machinery/flasher{
-	alpha = 100;
+	alpha = 50;
 	id = "CL_Security";
 	layer = 2.1;
 	name = "Ceiling Flash";
@@ -36297,7 +36362,7 @@
 /area/almayer/command/corporateliaison)
 "bJW" = (
 /obj/structure/machinery/flasher{
-	alpha = 100;
+	alpha = 50;
 	id = "CL_Security";
 	layer = 2.1;
 	name = "Ceiling Flash";
@@ -36407,18 +36472,6 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bKj" = (
-/obj/item/tool/pen/blue/clicky{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/tool/pen/red/clicky{
-	pixel_x = -1;
-	pixel_y = 1
-	},
-/obj/item/tool/pen/clicky{
-	pixel_x = 1;
-	pixel_y = -1
-	},
 /obj/item/paper_bin/wy{
 	pixel_x = -5;
 	pixel_y = 5
@@ -36426,6 +36479,9 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = -6
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -52901,9 +52957,6 @@
 /obj/item/device/flashlight/lamp{
 	pixel_x = 4;
 	pixel_y = 4
-	},
-/obj/item/weapon/pole/fancy_cane{
-	pixel_x = 5
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -70440,6 +70493,7 @@
 /area/almayer/underdeck/req)
 "oOp" = (
 /obj/structure/surface/table/almayer,
+/obj/item/weapon/pole/fancy_cane,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "oOw" = (
@@ -173163,7 +173217,7 @@ bHr
 bHc
 aHs
 aXu
-aXO
+aUE
 aXv
 aHs
 bFU
@@ -173373,7 +173427,7 @@ aXO
 aXv
 bnW
 aXM
-bFM
+acm
 aHs
 buT
 aYF
@@ -203549,7 +203603,7 @@ eAN
 bKh
 bJO
 nQA
-eAN
+aZU
 pBG
 gAk
 bIQ
@@ -204481,7 +204535,7 @@ pBG
 bJk
 eAN
 xUa
-eAN
+aYT
 eAN
 bHW
 mRU

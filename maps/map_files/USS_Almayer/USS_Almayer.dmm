@@ -10452,8 +10452,7 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/command/computerlab)
 "aAA" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/east,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/east,
 /area/almayer/command/cic)
 "aAB" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -36284,10 +36283,7 @@
 	},
 /obj/effect/landmark/observer_start,
 /obj/effect/landmark/spycam_start,
-/obj/effect/decal/floor_symbol/uscm_3x3{
-	dir = 8
-	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/living/briefing)
 "bQc" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
@@ -43924,10 +43920,7 @@
 /obj/item/device/radio/listening_bug/radio_linked/fax/uscm_hc{
 	nametag = "CIC"
 	},
-/obj/effect/decal/floor_symbol/uscm_3x3{
-	dir = 8
-	},
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/logo_c/west,
 /area/almayer/command/cic)
 "euW" = (
 /obj/structure/window/reinforced/toughened{
@@ -49592,8 +49585,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/east,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/east,
 /area/almayer/living/briefing)
 "gNg" = (
 /obj/structure/sign/safety/maint{
@@ -50085,8 +50077,7 @@
 /area/almayer/lifeboat_pumps/south1)
 "gZz" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/southwest,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/southwest,
 /area/almayer/living/briefing)
 "gZK" = (
 /obj/structure/pipes/vents/pump{
@@ -58385,8 +58376,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/p_stern)
 "ksN" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/southeast,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/southeast,
 /area/almayer/living/briefing)
 "ksS" = (
 /obj/structure/largecrate/random{
@@ -60267,8 +60257,7 @@
 /area/almayer/living/cryo_cells)
 "lgC" = (
 /obj/structure/platform/metal/almayer/west,
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/northwest,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/northwest,
 /area/almayer/living/briefing)
 "lgF" = (
 /obj/structure/surface/table/almayer,
@@ -63200,9 +63189,6 @@
 /obj/structure/machinery/door_control/cl/office/door{
 	pixel_y = -20
 	},
-/obj/effect/decal/floor_symbol/wy_3x1/right{
-	dir = 1
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/midship_hallway)
 "mxD" = (
@@ -63878,8 +63864,7 @@
 /turf/open/floor/plating,
 /area/almayer/squads/alpha)
 "mJu" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional,
 /area/almayer/command/cic)
 "mJx" = (
 /obj/structure/prop/server_equipment/broken,
@@ -68773,8 +68758,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/west,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/west,
 /area/almayer/living/briefing)
 "oCa" = (
 /obj/structure/disposalpipe/segment{
@@ -70079,8 +70063,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/p_bow)
 "paL" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/north,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/north,
 /area/almayer/command/cic)
 "pbm" = (
 /obj/item/bedsheet/brown{
@@ -71670,8 +71653,7 @@
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/shipboard/panic)
 "pON" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/west,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/west,
 /area/almayer/command/cic)
 "pOW" = (
 /turf/open/floor/almayer/flooredgesmooth2/south,
@@ -76731,8 +76713,7 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "rKd" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/northeast,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/northeast,
 /area/almayer/command/cic)
 "rKt" = (
 /obj/structure/sign/safety/rewire{
@@ -77141,9 +77122,6 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
 "rRT" = (
-/obj/effect/decal/floor_symbol/wy_3x1{
-	dir = 1
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/midship_hallway)
 "rRU" = (
@@ -84864,9 +84842,6 @@
 "uXE" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/floor_symbol/wy_3x1/mid{
-	dir = 1
-	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/midship_hallway)
 "uXL" = (
@@ -85436,8 +85411,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/gym)
 "viO" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/northeast,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/northeast,
 /area/almayer/living/briefing)
 "viS" = (
 /obj/effect/landmark/start/marine/engineer/bravo,
@@ -87137,8 +87111,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/starboard_hallway)
 "vNW" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/northwest,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/northwest,
 /area/almayer/command/cic)
 "vOh" = (
 /obj/structure/pipes/vents/pump,
@@ -87312,8 +87285,7 @@
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "vRb" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/southwest,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/southwest,
 /area/almayer/command/cic)
 "vRc" = (
 /obj/effect/decal/warning_stripes{
@@ -88186,8 +88158,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_m_s)
 "whA" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional,
 /area/almayer/living/briefing)
 "whB" = (
 /obj/structure/closet/firecloset,
@@ -92410,8 +92381,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "xMB" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/southeast,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/southeast,
 /area/almayer/command/cic)
 "xMG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -92668,8 +92638,7 @@
 /turf/open/floor/almayer/silver/west,
 /area/almayer/command/computerlab)
 "xRw" = (
-/obj/effect/decal/floor_symbol/uscm_3x3/westface/north,
-/turf/open/floor/almayer,
+/turf/open/floor/almayer/uscm/directional/north,
 /area/almayer/living/briefing)
 "xRH" = (
 /obj/effect/decal/warning_stripes{

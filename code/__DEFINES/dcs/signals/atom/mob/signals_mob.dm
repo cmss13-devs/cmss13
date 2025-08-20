@@ -51,6 +51,9 @@
 // For when a mob is no longer being hauled by a Xeno
 #define COMSIG_MOB_UNHAULED "mob_unhauled"
 
+// For when a mob chestbursts
+#define COMSIG_MOB_CHESTBURSTED "mob_chestbursted"
+
 // Reserved for tech trees
 #define COMSIG_MOB_ENTER_TREE "mob_enter_tree"
 	#define COMPONENT_CANCEL_TREE_ENTRY (1<<0)

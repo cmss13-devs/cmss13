@@ -420,6 +420,7 @@
 	victim.forceMove(loc, get_dir(victim.loc, loc))
 	victim.handle_haul(src)
 	RegisterSignal(victim, COMSIG_MOB_DEATH, PROC_REF(release_dead_haul))
+	RegisterSignal(victim, COMSIG_MOB_CHESTBURSTED, PROC_REF(release_chestbursted_haul))
 	haul_timer = addtimer(CALLBACK(src, PROC_REF(about_to_release_hauled)), 40 SECONDS + rand(0 SECONDS, 20 SECONDS), TIMER_STOPPABLE)
 
 /mob/living/carbon/xenomorph/proc/about_to_release_hauled()
@@ -434,11 +435,24 @@
 // Releasing a dead hauled mob
 /mob/living/carbon/xenomorph/proc/release_dead_haul()
 	SIGNAL_HANDLER
-	deltimer(haul_timer)
 	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	if(user.is_xeno_grabbable()) // They may be dead but about to burst
+		return
+	deltimer(haul_timer)
 	to_chat(src, SPAN_XENOWARNING("[user] is dead. No more use for them now."))
 	user.handle_unhaul()
 	UnregisterSignal(user, COMSIG_MOB_DEATH)
+	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
+	hauled_mob = null
+
+// Releasing a chestbursted hauled mob
+/mob/living/carbon/xenomorph/proc/release_chestbursted_haul()
+	SIGNAL_HANDLER
+	deltimer(haul_timer)
+	var/mob/living/carbon/human/user = hauled_mob?.resolve()
+	to_chat(src, SPAN_XENOWARNING("[user] has served their purpose. No more use for them now."))
+	user.handle_unhaul()
+	UnregisterSignal(user, COMSIG_MOB_CHESTBURSTED)
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
 	hauled_mob = null
 

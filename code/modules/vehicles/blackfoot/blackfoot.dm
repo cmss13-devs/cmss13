@@ -119,12 +119,18 @@
 	pixel_y = -160
 	layer = ABOVE_MOB_LAYER
 	flags_atom = NO_ZFALL
+	unacidable = TRUE
+	explo_proof = TRUE
+	emp_proof = TRUE
 
 /obj/downwash_effect
 	icon = 'icons/obj/vehicles/blackfoot.dmi'
 	icon_state = "downwash"
 	pixel_x = -64
 	pixel_y = -32
+	unacidable = TRUE
+	explo_proof = TRUE
+	emp_proof = TRUE
 
 /obj/vehicle/multitile/blackfoot/Initialize(mapload, ...)
 	. = ..()
@@ -311,12 +317,14 @@
 	var/turf/below = SSmapping.get_turf_below(get_step(get_turf(src), direction))
 
 	if(!below)
+		message_admins("BLACKFOOT ERROR: No below turf found.")
 		return
 
 	var/turf/shadow_turf = SSmapping.get_turf_below(below)
 
 	while(SSmapping.get_turf_below(shadow_turf))
 		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
+			message_admins("BLACKFOOT ERROR: Doesn't fit.")
 			break
 
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)

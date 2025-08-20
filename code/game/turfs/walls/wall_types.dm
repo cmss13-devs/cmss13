@@ -791,6 +791,8 @@
 	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
+	var/boosted_regen = FALSE
+	COOLDOWN_DECLARE(automatic_heal)
 
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()
@@ -800,7 +802,8 @@
 
 	if(hivenumber == XENO_HIVE_NORMAL)
 		RegisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING, PROC_REF(forsaken_handling))
-
+		RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_regeneration))
+		RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(disable_regeneration))
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		if(area)
@@ -814,6 +817,33 @@
 	if(!(turf_flags & TURF_HULL))
 		var/area/area = get_area(src)
 		area?.current_resin_count--
+
+
+/turf/closed/wall/resin/process()
+	. = ..()
+
+	if(!boosted_regen)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	if(!COOLDOWN_FINISHED(src, automatic_heal))
+		return
+
+	if(damage >= 0)
+		damage -= 75
+
+	COOLDOWN_START(src, automatic_heal, 10 SECONDS)
+
+/turf/closed/wall/resin/proc/enable_regeneration()
+	SIGNAL_HANDLER
+	START_PROCESSING(SSobj, src)
+	boosted_regen = TRUE
+
+
+/turf/closed/wall/resin/proc/disable_regeneration()
+	SIGNAL_HANDLER
+
+	boosted_regen = FALSE
 
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER

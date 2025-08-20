@@ -14,7 +14,7 @@
 	unacidable = TRUE
 	anchored = TRUE
 	block_range = 1
-
+	var/boosted_structure = FALSE
 	var/datum/hive_status/linked_hive
 
 	plane = FLOOR_PLANE
@@ -58,3 +58,13 @@
 		return TRUE
 
 	return FALSE
+
+/obj/effect/alien/resin/special/proc/enable_boost()
+	SIGNAL_HANDLER
+
+	boosted_structure = TRUE
+
+
+/obj/effect/alien/resin/special/proc/disable_boost()
+	SIGNAL_HANDLER
+	boosted_structure = FALSE

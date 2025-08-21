@@ -1275,17 +1275,16 @@
 		else
 			icon_state = "gunner_bay"
 
-	// Override afterbuckle to open UI for buckled mob
-/obj/structure/dropship_equipment/weapon/heavygun/bay/afterbuckle(mob/M)
+	// Console now spawns automatically when you install the bellygun
+/obj/structure/dropship_equipment/weapon/heavygun/bay/update_equipment()
 	. = ..()
-	playsound(src, 'sound/machines/terminal_on.ogg', 20)
-	if((!personal_console || QDELETED(personal_console)) && buckled_mob == M && ishuman(M))
-		var/obj/docking_port/mobile/marine_dropship/dropship = src.linked_shuttle
+	if(ship_base && (!personal_console || QDELETED(personal_console)))
 		personal_console = new /obj/structure/machinery/computer/dropship_weapons/belly_gun(get_turf(src))
 		personal_console.icon = 'icons/obj/structures/props/dropship/dropship_equipment.dmi'
 		personal_console.icon_state = "gunner_bay_console"
 		personal_console.layer = ABOVE_MOB_LAYER
-		personal_console.shuttle_tag = dropship?.id
+		personal_console.density = FALSE
+		personal_console.shuttle_tag = linked_shuttle?.id
 		personal_console.name = "Belly Gunner Weapons Console"
 		personal_console.selected_equipment = src
 		personal_console.faction = FACTION_MARINE
@@ -1296,6 +1295,17 @@
 		personal_console.pixel_y = -4
 		if(personal_console.tacmap && personal_console.tacmap.map_holder)
 			personal_console.camera_mapname_update(personal_console, personal_console.tacmap.map_holder.map_ref)
+
+	// Remove console when uninstalled
+	else if(!ship_base && personal_console && !QDELETED(personal_console))
+		QDEL_NULL(personal_console)
+		personal_console = null
+
+	// Override afterbuckle to open UI for buckled mob
+/obj/structure/dropship_equipment/weapon/heavygun/bay/afterbuckle(mob/M)
+	. = ..()
+	playsound(src, 'sound/machines/terminal_on.ogg', 20)
+	if(personal_console && buckled_mob == M && ishuman(M))
 		personal_console.tgui_interact(M)
 
 // Clean up console on unbuckle
@@ -1304,9 +1314,13 @@
 		// Close the UI
 		if(ismob(buckled_mob))
 			personal_console.ui_close(buckled_mob)
+	..()
+
+/obj/structure/dropship_equipment/weapon/heavygun/bay/Destroy()
+	if(personal_console)
 		QDEL_NULL(personal_console)
 		personal_console = null
-	..()
+	return ..()
 
 
 /obj/structure/dropship_equipment/weapon/rocket_pod

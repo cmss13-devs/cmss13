@@ -237,7 +237,7 @@
 			to_chat(xeno, SPAN_XENONOTICE("[src] is occupied by a child."))
 			return XENO_NO_DELAY_ACTION
 
-	if((!xeno.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY || RESIN_TRAP_MIST))
+	if((!xeno.acid_level || trap_type == RESIN_TRAP_GAS || RESIN_TRAP_MIST) && trap_type != RESIN_TRAP_EMPTY)
 		to_chat(xeno, SPAN_XENONOTICE("Better not risk setting this off."))
 		return XENO_NO_DELAY_ACTION
 

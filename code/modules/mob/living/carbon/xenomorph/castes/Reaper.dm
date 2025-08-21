@@ -116,6 +116,34 @@
 	if(flesh_plasma < 0)
 		flesh_plasma = 0
 
+/mob/living/carbon/xenomorph/reaper/try_fill_trap(obj/effect/alien/resin/trap/target)
+	if(!istype(target))
+		return FALSE
+
+	if(flesh_plasma < 100)
+		to_chat(src, SPAN_XENOWARNING("We do not have enough flesh plasma for this, we need [100 - flesh_plasma] more."))
+		return FALSE
+
+	to_chat(src, SPAN_XENONOTICE("We begin charging the resin trap with toxic mist."))
+	xeno_attack_delay(src)
+	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+		return FALSE
+
+	if(flesh_plasma < 100)
+		return FALSE
+
+	target.smoke_system = new /datum/effect_system/smoke_spread/reaper_mist()
+	flesh_plasma -= 100
+
+	target.cause_data = create_cause_data("resin mist trap", src)
+	target.setup_tripwires()
+	target.set_state(RESIN_TRAP_MIST)
+
+	playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with toxic mist!"), \
+	SPAN_XENOWARNING("We pressurise the resin trap with toxic mist!"), null, 5)
+	return TRUE
+
 /mob/living/carbon/xenomorph/reaper/death(cause, gibbed)
 	. = ..(cause, gibbed)
 	if(.)
@@ -383,10 +411,6 @@
 
 /datum/behavior_delegate/base_reaper/on_kill_mob()
 	initiate_passive_decay_pause()
-
-/datum/behavior_delegate/base_reaper/append_to_stat()
-	. = list()
-	. += "Acid: [corpse_buildup]"
 
 /datum/behavior_delegate/base_reaper/on_life()
 	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno

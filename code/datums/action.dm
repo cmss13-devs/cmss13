@@ -240,6 +240,236 @@
 	name = "Use [target]"
 	button.name = name
 
+/datum/action/item_action/toggle/use/whistle/New(target)
+	. = ..()
+	action_icon_state = "whistle"
+
+/datum/action/item_action/toggle/stock/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/stock/update_button_icon()
+	var/obj/item/weapon/gun/G = holder_item
+	var/obj/item/attachable/stock/S = G.attachments["stock"]
+	if(!S.stock_activated)
+		action_icon_state = "extend_stock"
+	else
+		action_icon_state = "extend_stock_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/scope/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/scope/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/scope/update_button_icon()
+	var/obj/item/weapon/gun/G = holder_item
+	var/obj/item/attachable/scope/S = G.attachments["rail"]
+	if(!S.using_scope)
+		action_icon_state = "zoom_scope"
+	else
+		action_icon_state = "unzoom_scope"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/motion_detector/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/motion_detector/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/motion_detector/update_button_icon()
+	if(!holder_item)
+		return
+	var/obj/item/device/motiondetector/detector = holder_item
+	if(!detector.active)
+		action_icon_state = "motion_detector"
+	else
+		action_icon_state = "motion_detector_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/lamp/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/lamp/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/lamp/update_button_icon()
+	var/obj/item/clothing/suit/storage/marine/G = holder_item
+	if(!G.light_on)
+		action_icon_state = "armor_light"
+	else
+		action_icon_state = "armor_light_off"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/flashlight/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/flashlight/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/flashlight/update_button_icon()
+	var/obj/item/device/flashlight/light = holder_item
+	var/action_icon_file = 'icons/mob/hud/actions.dmi'
+	if(!light.light_on)
+		if(istype(light, /obj/item/device/flashlight/lantern))
+			action_icon_state = "lantern_on"
+			if(istype(light, /obj/item/device/flashlight/lantern/yautja))
+				action_icon_file = 'icons/mob/hud/actions_yautja.dmi'
+				button.icon_state = "pred_template"
+		else
+			action_icon_state = "flashlight"
+	else
+		if(istype(light, /obj/item/device/flashlight/lantern))
+			action_icon_state = "lantern_off"
+			if(istype(light, /obj/item/device/flashlight/lantern/yautja))
+				action_icon_file = 'icons/mob/hud/actions_yautja.dmi'
+				button.icon_state = "pred_template"
+		else
+			action_icon_state = "flashlight_off"
+	button.overlays.Cut()
+	button.overlays += image(action_icon_file, button, action_icon_state)
+
+/datum/action/item_action/toggle/flashlight_grip/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/flashlight_grip/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/flashlight_grip/update_button_icon()
+	var/obj/item/weapon/gun/G = holder_item
+	var/obj/item/attachable/scope/S = G.attachments["under"]
+	if(G.flags_gun_features & GUN_FLASHLIGHT_ON)
+		if(istype(S, /obj/item/attachable/flashlight/grip))
+			action_icon_state = "flash_grip_off"
+		else
+			action_icon_state = "combo_flash_off"
+	else
+		if(istype(S, /obj/item/attachable/flashlight/grip))
+			action_icon_state = "flash_grip"
+		else
+			action_icon_state = "combo_flash"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/rail_flashlight/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/rail_flashlight/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/rail_flashlight/update_button_icon()
+	var/obj/item/weapon/gun/firearm = holder_item
+	if(firearm.flags_gun_features & GUN_FLASHLIGHT_ON)
+		action_icon_state = "flashlight_off"
+	else
+		action_icon_state = "flashlight"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/bipod/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/bipod/update_button_icon()
+	var/obj/item/weapon/gun/firearm = holder_item
+	var/obj/item/attachable/bipod/bipods = firearm.attachments["under"]
+	if(bipods.bipod_deployed)
+		action_icon_state = "bipod_off"
+	else
+		action_icon_state = "bipod"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/nozzle/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/nozzle/update_button_icon()
+	var/obj/item/weapon/gun/firearm = holder_item
+	var/obj/item/attachable/attached_gun/flamer_nozzle/flamer = firearm.attachments["under"]
+	if(firearm.active_attachable == flamer)
+		action_icon_state = "nozzle_ball"
+	else
+		action_icon_state = "nozzle_spray"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/ubs/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/ubs/update_button_icon()
+	var/obj/item/weapon/gun/firearm = holder_item
+	var/obj/item/attachable/attached_gun/shotgun/shotty = firearm.attachments["under"]
+	if(firearm.active_attachable == shotty)
+		action_icon_state = "undershot_off"
+	else
+		action_icon_state = "undershot"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/ext/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/ext/update_button_icon()
+	var/obj/item/weapon/gun/firearm = holder_item
+	var/obj/item/attachable/attached_gun/extinguisher/foamer = firearm.attachments["under"]
+	if(firearm.active_attachable == foamer)
+		action_icon_state = "underext_off"
+	else
+		action_icon_state = "underext"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/flamer/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/flamer/update_button_icon()
+	var/obj/item/weapon/gun/firearm = holder_item
+	var/obj/item/attachable/attached_gun/flamer/burner = firearm.attachments["under"]
+	if(firearm.active_attachable == burner)
+		action_icon_state = "underflamer_off"
+	else
+		action_icon_state = "underflamer"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/ugl/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/ugl/update_button_icon()
+	var/obj/item/weapon/gun/firearm = holder_item
+	var/obj/item/attachable/attached_gun/grenade/bomber = firearm.attachments["under"]
+	if(firearm.active_attachable == bomber)
+		if(bomber.breech_open)
+			action_icon_state = "undergl_breech"
+		else
+			action_icon_state = "undergl_off"
+	else
+		action_icon_state = "undergl"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 //This is the proc used to update all the action buttons.
 /mob/proc/update_action_buttons(reload_screen)
 	if(!client)

@@ -232,24 +232,24 @@
 /datum/action/item_action/smartgun/toggle_motion_detector/New(Target, obj/item/holder)
 	. = ..()
 	name = "Toggle Motion Detector"
-	action_icon_state = "motion_detector"
 	button.name = name
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_motion_detector/action_activate()
 	. = ..()
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_motion_detector(usr)
 
-/datum/action/item_action/smartgun/toggle_motion_detector/proc/update_icon()
+/datum/action/item_action/smartgun/toggle_motion_detector/update_button_icon()
 	if(!holder_item)
 		return
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	if(G.motion_detector)
-		button.icon_state = "template_on"
+		action_icon_state = "motion_detector_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "motion_detector"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 
 /datum/action/item_action/smartgun/toggle_auto_fire/New(Target, obj/item/holder)
 	. = ..()
@@ -646,7 +646,7 @@
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
 	var/datum/action/item_action/smartgun/toggle_motion_detector/TMD = locate(/datum/action/item_action/smartgun/toggle_motion_detector) in actions
-	TMD.update_icon()
+	TMD.update_button_icon()
 	motion_detector()
 
 /obj/item/weapon/gun/smartgun/proc/motion_detector()

@@ -276,6 +276,24 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
+/datum/action/item_action/toggle/vulture_scope/update_button_icon()
+	var/obj/item/weapon/gun/G = holder_item
+	var/obj/item/attachable/vulture_scope/scope = G.attachments["rail"]
+	if(!scope.scoping)
+		action_icon_state = "zoom_scope"
+	else
+		action_icon_state = "unzoom_scope"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/vulture_scope/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/vulture_scope/action_activate()
+	. = ..()
+	update_button_icon()
+
 /datum/action/item_action/toggle/motion_detector/New()
 	. = ..()
 	update_button_icon()

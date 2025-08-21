@@ -1273,7 +1273,7 @@ Defined in conflicts.dm of the #defines folder.
 	aim_speed_mod = SLOWDOWN_ADS_SCOPE //Extra slowdown when wielded
 	wield_delay_mod = WIELD_DELAY_FAST
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
-	attachment_action_type = /datum/action/item_action/toggle/scope
+	attachment_action_type = /datum/action/item_action/toggle/vulture_scope
 	/// Weakref to the user of the scope
 	var/datum/weakref/scope_user
 	/// If the scope is currently in use

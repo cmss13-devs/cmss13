@@ -558,7 +558,7 @@
 	point_cost = 500
 	ammo_count = 4
 	max_ammo_count = 4
-	fire_mission_delay = 4 // high cooldown
+	fire_mission_delay = 6 // very high cooldown
 	cavebreaker = TRUE // Designed for bunker busting
 
 /obj/structure/ship_ammo/missile/hellhound/detonate_on(turf/impact, obj/structure/dropship_equipment/weapon/fired_from)

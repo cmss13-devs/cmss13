@@ -476,7 +476,7 @@
 ////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/fog
-	alpha = 190
+	alpha = 220
 	color = "white"
 
 //////////////////////////////////////

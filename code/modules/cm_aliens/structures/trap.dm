@@ -223,127 +223,26 @@
 	if(xeno.hivenumber != hivenumber)
 		return ..()
 
-	var/trap_acid_level = 0
-	if(trap_type >= RESIN_TRAP_ACID1)
-		trap_acid_level = 1 + trap_type - RESIN_TRAP_ACID1
 	if(xeno.a_intent == INTENT_HARM && trap_type == RESIN_TRAP_EMPTY)
 		return ..()
 
 	if(trap_type == RESIN_TRAP_HUGGER)
 		if(xeno.caste.can_hold_facehuggers)
 			set_state()
-			var/obj/item/clothing/mask/facehugger/F = new (loc, hivenumber)
-			xeno.put_in_active_hand(F)
-			to_chat(xeno, SPAN_XENONOTICE("We remove the facehugger from [src]."))
+			var/obj/item/clothing/mask/facehugger/hugger = new (loc, hivenumber)
+			xeno.put_in_active_hand(hugger)
+			to_chat(xeno, SPAN_XENONOTICE("You remove the facehugger from [src]."))
 			return XENO_NONCOMBAT_ACTION
 		else
 			to_chat(xeno, SPAN_XENONOTICE("[src] is occupied by a child."))
 			return XENO_NO_DELAY_ACTION
 
-	if((!xeno.acid_level || trap_type == (RESIN_TRAP_GAS || RESIN_TRAP_MIST)) && trap_type != RESIN_TRAP_EMPTY)
+	if((!xeno.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY || RESIN_TRAP_MIST))
 		to_chat(xeno, SPAN_XENONOTICE("Better not risk setting this off."))
 		return XENO_NO_DELAY_ACTION
 
-	if(isreaper(xeno))
-		var/mob/living/carbon/xenomorph/reaper/reaper = xeno
-
-		if(reaper.flesh_plasma < 100)
-			to_chat(reaper, SPAN_XENOWARNING("We do not have enough flesh plasma for this, we need [100 - reaper.flesh_plasma] more."))
-			return XENO_NO_DELAY_ACTION
-
-		to_chat(reaper, SPAN_XENONOTICE("We begin charging the resin trap with toxic mist."))
-		xeno_attack_delay(reaper)
-		if(!do_after(reaper, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
-			return XENO_NO_DELAY_ACTION
-
-		if(trap_type != RESIN_TRAP_EMPTY)
-			return XENO_NO_DELAY_ACTION
-
-		if(reaper.flesh_plasma < 100)
-			return XENO_NO_DELAY_ACTION
-
-		smoke_system = new /datum/effect_system/smoke_spread/reaper_mist()
-
-		setup_tripwires()
-		reaper.flesh_plasma -= 100
-		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-		set_state(RESIN_TRAP_MIST)
-		cause_data = create_cause_data("resin mist trap", reaper)
-		reaper.visible_message(SPAN_XENOWARNING("\The [reaper] pressurises the resin trap with toxic mist!"), \
-		SPAN_XENOWARNING("We pressurise the resin trap with toxic mist!"), null, 5)
-
-	if(!xeno.acid_level)
-		to_chat(xeno, SPAN_XENONOTICE("We can't secrete any acid into \the [src]"))
+	if(!xeno.try_fill_trap(src))
 		return XENO_NO_DELAY_ACTION
-
-	if(trap_acid_level >= xeno.acid_level)
-		to_chat(xeno, SPAN_XENONOTICE("It already has good acid in."))
-		return XENO_NO_DELAY_ACTION
-
-	if(isboiler(xeno))
-		var/mob/living/carbon/xenomorph/boiler/boiler = xeno
-
-		if(!boiler.check_plasma(200))
-			to_chat(boiler, SPAN_XENOWARNING("We must produce more plasma before doing this."))
-			return XENO_NO_DELAY_ACTION
-
-		to_chat(xeno, SPAN_XENONOTICE("We begin charging the resin trap with acid gas."))
-		xeno_attack_delay(xeno)
-		if(!do_after(boiler, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
-			return XENO_NO_DELAY_ACTION
-
-		if(trap_type != RESIN_TRAP_EMPTY)
-			return XENO_NO_DELAY_ACTION
-
-		if(!boiler.check_plasma(200))
-			return XENO_NO_DELAY_ACTION
-
-		if(boiler.ammo.type == /datum/ammo/xeno/boiler_gas)
-			smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
-		else
-			smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
-
-		setup_tripwires()
-		boiler.use_plasma(200)
-		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-		set_state(RESIN_TRAP_GAS)
-		cause_data = create_cause_data("resin gas trap", boiler)
-		boiler.visible_message(SPAN_XENOWARNING("\The [boiler] pressurises the resin trap with acid gas!"),
-		SPAN_XENOWARNING("We pressurise the resin trap with acid gas!"), null, 5)
-	else
-		//Non-boiler acid types
-		var/acid_cost = 70
-		if(xeno.acid_level == 2)
-			acid_cost = 100
-		else if(xeno.acid_level == 3)
-			acid_cost = 200
-
-		if (!xeno.check_plasma(acid_cost))
-			to_chat(xeno, SPAN_XENOWARNING("We must produce more plasma before doing this."))
-			return XENO_NO_DELAY_ACTION
-
-		to_chat(xeno, SPAN_XENONOTICE("We begin charging the resin trap with acid."))
-		xeno_attack_delay(xeno)
-		if(!do_after(xeno, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
-			return XENO_NO_DELAY_ACTION
-
-		if (!xeno.check_plasma(acid_cost))
-			return XENO_NO_DELAY_ACTION
-
-		xeno.use_plasma(acid_cost)
-		cause_data = create_cause_data("resin acid trap", xeno)
-		setup_tripwires()
-		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-
-		if(isburrower(xeno))
-			set_state(RESIN_TRAP_ACID3)
-		else
-			set_state(RESIN_TRAP_ACID1 + xeno.acid_level - 1)
-
-		xeno.visible_message(SPAN_XENOWARNING("\The [xeno] pressurises the resin trap with acid!"),
-		SPAN_XENOWARNING("We pressurise the resin trap with acid!"), null, 5)
-	return XENO_NO_DELAY_ACTION
-
 
 /obj/effect/alien/resin/trap/proc/setup_tripwires()
 	clear_tripwires()

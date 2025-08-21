@@ -466,7 +466,7 @@
 		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
 	else
 		if(user.client)
-			user.client.change_view(GLOB.world_view_size)
+			user.client.change_view(GLOB.world_view_size, linked_blackfoot)
 			user.client.pixel_x = 0
 			user.client.pixel_y = 0
 		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
@@ -480,7 +480,7 @@
 	user_old_y = user.pixel_y
 	update_pixels(user)
 
-	RegisterSignal(user, list(COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION), PROC_REF(exit_interaction))
+	RegisterSignal(user, list(COMSIG_MOB_RESISTED, COMSIG_MOB_DEATH, COMSIG_LIVING_SET_BODY_POSITION, COMSIG_VEHICLE_INTERIOR_EXIT), PROC_REF(exit_interaction))
 	linked_blackfoot.set_seated_mob(VEHICLE_GUNNER, user)
 	if(user && user.client)
 		user.client.change_view(8, linked_blackfoot)
@@ -506,6 +506,7 @@
 		COMSIG_MOB_RESISTED,
 		COMSIG_MOB_DEATH,
 		COMSIG_LIVING_SET_BODY_POSITION,
+		COMSIG_VEHICLE_INTERIOR_EXIT,
 	))
 
 	if(gunner == user)

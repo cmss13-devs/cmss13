@@ -144,9 +144,6 @@
 
 	. = ..()
 
-/obj/vehicle/multitile/blackfoot/load_hardpoints()
-	add_hardpoint(new /obj/item/hardpoint/secondary/doorgun)
-
 /obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
 	var/datum/role_reserved_slots/reserved_slot = new
 	reserved_slot.category_name = "Pilot"

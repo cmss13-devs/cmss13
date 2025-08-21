@@ -475,6 +475,8 @@
 			handle_xeno_macro_datum(xeno, acider_acid_check)
 			return TRUE
 
+// Xenomorph Drone
+
 /datum/keybinding/xenomorph/apply_salve
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
@@ -545,5 +547,61 @@
 	if(gardener_resin_surge_check)
 		if(gardener_resin_surge_check && !gardener_resin_surge_check.hidden)
 			handle_xeno_macro_datum(xeno, gardener_resin_surge_check)
+			return TRUE
+
+// Xenomorph Sentinel
+
+/datum/keybinding/xenomorph/slowing_spit
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "slowing_spit"
+	full_name = "Sentinel: Slowing Spit"
+	keybind_signal = COMSIG_KB_XENO_SENTINEL_SLOWING_SPIT
+
+/datum/keybinding/xenomorph/slowing_spit/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/slowing_spit/slowing_spit_check = get_action(xeno, /datum/action/xeno_action/activable/slowing_spit)
+	if(slowing_spit_check)
+		if(slowing_spit_check && !slowing_spit_check.hidden)
+			handle_xeno_macro_datum(xeno, slowing_spit_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/scattered_spit
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "scattered_spit"
+	full_name = "Sentinel: Scattered Spit"
+	keybind_signal = COMSIG_KB_XENO_SENTINEL_SLOWING_SPIT
+
+/datum/keybinding/xenomorph/scattered_spit/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/scattered_spit/scattered_spit_check = get_action(xeno, /datum/action/xeno_action/activable/scattered_spit)
+	if(scattered_spit_check)
+		if(scattered_spit_check && !scattered_spit_check.hidden)
+			handle_xeno_macro_datum(xeno, scattered_spit_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/paralyzing_slash
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "paralyzing_slash"
+	full_name = "Sentinel: Paralyzing Slash"
+	keybind_signal = COMSIG_KB_XENO_SENTINEL_PARALYZING_SLASH
+
+/datum/keybinding/xenomorph/paralyzing_slash/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/paralyzing_slash/paralyzing_slash_check = get_action(xeno, /datum/action/xeno_action/onclick/paralyzing_slash)
+	if(paralyzing_slash_check)
+		if(paralyzing_slash_check && !paralyzing_slash_check.hidden)
+			handle_xeno_macro_datum(xeno, paralyzing_slash_check)
 			return TRUE
 

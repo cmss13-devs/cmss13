@@ -189,6 +189,11 @@
 #define COMSIG_KB_XENO_GARDENER_PLANT_WEEDS "keybinding_gardener_plant_weeds"
 #define COMSIG_KB_XENO_GARDENER_RESING_SURGE "keybinding_gardener_resin_surge"
 
+// Xenomorph Sentinel
+#define COMSIG_KB_XENO_SENTINEL_SLOWING_SPIT "keybinding_sentinel_slowing_spit"
+#define COMSIG_KB_XENO_SENTINEL_SCATTERED_SPIT "keybinding_sentinel_scattered_spit"
+#define COMSIG_KB_XENO_SENTINEL_PARALYZING_SLASH "keybinding_sentinel_paralyzing_slash"
+
 // Yautja
 
 #define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"

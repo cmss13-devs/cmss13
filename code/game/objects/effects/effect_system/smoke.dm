@@ -472,6 +472,14 @@
 	return TRUE
 
 //////////////////////////////////////
+// FOB SMOKE
+////////////////////////////////////
+
+/obj/effect/particle_effect/smoke/fog
+	alpha = 190
+	color = "white"
+
+//////////////////////////////////////
 // FLASHBANG SMOKE
 ////////////////////////////////////
 
@@ -800,6 +808,10 @@
 
 /datum/effect_system/smoke_spread/cn20/xeno
 	smoke_type = /obj/effect/particle_effect/smoke/cn20/xeno
+
+/datum/effect_system/smoke_spread/fog
+	smoke_type = /obj/effect/particle_effect/smoke/fog
+
 
 // XENO SMOKES
 

@@ -281,7 +281,7 @@
 	icon = 'icons/obj/items/clothing/belts/belts.dmi'
 	icon_state = "rappel_harness"
 	item_state = "rappel_harness"
-	w_class = SIZE_MEDIUM
+	w_class = SIZE_MASSIVE
 	flags_equip_slot = SLOT_WAIST
 
 /obj/item/parachute

@@ -119,12 +119,18 @@
 	pixel_y = -160
 	layer = ABOVE_MOB_LAYER
 	flags_atom = NO_ZFALL
+	unacidable = TRUE
+	explo_proof = TRUE
+	emp_proof = TRUE
 
 /obj/downwash_effect
 	icon = 'icons/obj/vehicles/blackfoot.dmi'
 	icon_state = "downwash"
 	pixel_x = -64
 	pixel_y = -32
+	unacidable = TRUE
+	explo_proof = TRUE
+	emp_proof = TRUE
 
 /obj/vehicle/multitile/blackfoot/Initialize(mapload, ...)
 	. = ..()
@@ -137,9 +143,6 @@
 	QDEL_NULL(shadow_holder)
 
 	. = ..()
-
-/obj/vehicle/multitile/blackfoot/load_hardpoints()
-	add_hardpoint(new /obj/item/hardpoint/secondary/doorgun)
 
 /obj/vehicle/multitile/blackfoot/load_role_reserved_slots()
 	var/datum/role_reserved_slots/reserved_slot = new
@@ -311,12 +314,14 @@
 	var/turf/below = SSmapping.get_turf_below(get_step(get_turf(src), direction))
 
 	if(!below)
+		log_debug("BLACKFOOT ERROR: No below turf found.")
 		return
 
 	var/turf/shadow_turf = SSmapping.get_turf_below(below)
 
 	while(SSmapping.get_turf_below(shadow_turf))
 		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
+			log_debug("BLACKFOOT ERROR: Doesn't fit.")
 			break
 
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)

@@ -289,6 +289,8 @@
 			return /datum/equipment_preset/uscm_ship/dcc/full
 		if(JOB_OPERATIONS_PILOT)
 			return /datum/equipment_preset/uscm_ship/op
+		if(JOB_OPERATIONS_CREW_CHIEF)
+			return /datum/equipment_preset/uscm_ship/occ
 		if(JOB_CORPORATE_LIAISON)
 			return /datum/equipment_preset/uscm_ship/liaison
 		if(JOB_COMBAT_REPORTER)

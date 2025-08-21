@@ -73,3 +73,6 @@
 /// Fired on the item when someone tries to holster the item: /mob/living/carbon/human/verb/holster_verb
 #define COMSIG_ITEM_HOLSTER "item_holster"
 	#define COMPONENT_ITEM_HOLSTER_CANCELLED (1<<0)
+
+/// from /datum/interior/proc/exit() : (atom/movable/atom, turf/exit_turf)
+#define COMSIG_VEHICLE_INTERIOR_EXIT "vehicle_interior_exit"

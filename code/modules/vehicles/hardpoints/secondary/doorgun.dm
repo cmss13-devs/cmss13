@@ -76,7 +76,3 @@
 
 	to_chat(user, SPAN_NOTICE("You reload \the [name]."))
 
-/obj/item/hardpoint/secondary/doorgun/can_be_removed(mob/remover)
-	to_chat(remover, SPAN_WARNING("[src] cannot be removed from [owner]."))
-	return FALSE
-

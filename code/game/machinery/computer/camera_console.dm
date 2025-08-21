@@ -920,6 +920,8 @@
 /obj/structure/machinery/computer/cameras/dropship/proc/get_sanitised_equipment(mob/user, obj/docking_port/mobile/marine_dropship/dropship)
 	. = list()
 	for(var/obj/structure/dropship_equipment/equipment in dropship.equipments)
+		if(istype(equipment, /obj/structure/dropship_equipment/weapon/heavygun/bay))
+			continue
 		var/list/data = list(
 			"name"= equipment.name,
 			"shorthand" = equipment.shorthand,

@@ -1,6 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - rscadd: "Added a preference for spec priority which will attempt to automatically select a specialization on round start (does not apply to ERT or late join currently). The order choices are made will be the priority order."
-  - code_imp: "Corrected some incorrect usr usage in cm_vending"
-  - code_imp: "tgui_input_checkboxes can now handle associated lists (ignores values currently)"

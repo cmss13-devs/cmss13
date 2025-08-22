@@ -625,8 +625,8 @@
 	while(SSmapping.get_turf_below(shadow_turf))
 		if(!fits_in_turf(SSmapping.get_turf_below(shadow_turf)))
 			break
-
 		shadow_turf = SSmapping.get_turf_below(shadow_turf)
+
 	shadow_holder = new(shadow_turf)
 	shadow_holder.icon_state = "[get_sprite_state()]_shadow"
 	if(back_door.open)
@@ -1073,14 +1073,18 @@
 	pixel_x = -16
 	pixel_y = 0
 	layer = 4.01
+	unacidable = TRUE
+	explo_proof = TRUE
+	emp_proof = TRUE
 
 /obj/structure/landing_pad_folded
-	name = "M9AB Landing Pad"
+	name = "M9AB Landing Pad (FOLDED)"
 	desc = "A specially fabricated ultra-light, carbon-fiber, fiberglass reinforced, fuel saturated foldable landing pad designed for quick in-field deployment. VTOL aircraft can be automatically refueled by landing directly on this pad, taking fuel in at a slow rate through a emissive membrane sealed into the pad layer. It is firm, but malleable, like a water bed full of tar."
 	icon = 'icons/obj/vehicles/blackfoot_structures.dmi'
 	icon_state = "landing-pad-folded"
 	density = TRUE
 	anchored = FALSE
+	climbable = TRUE //Can get stuck in the interior otherwise.
 
 	pixel_x = -16
 	pixel_y = -16
@@ -1236,6 +1240,9 @@
 	var/installed_lights = 0
 	var/flight_cpu_installed = FALSE
 	var/fuelpump_installed = FALSE
+	var/list/tunnel_blockers = list()
+
+	layer = ABOVE_WEED_LAYER
 
 /obj/structure/landing_pad/process(deltatime)
 	var/turf/center_turf = locate(x + 1, y + 1, z)
@@ -1246,6 +1253,26 @@
 		return
 
 	parked_aircraft.fuel = min(parked_aircraft.fuel + deltatime, parked_aircraft.max_fuel)
+
+/obj/structure/landing_pad/Initialize(mapload, ...)
+	. = ..()
+	for(var/turf/floor in CORNER_BLOCK(loc, 3, 3))
+		var/obj/effect/tunnel_blocker/blocker_effect = new(floor)
+		tunnel_blockers += blocker_effect
+
+/obj/structure/landing_pad/Destroy()
+	for(var/obj/effect/tunnel_blocker/blocker_effect in tunnel_blockers)
+		tunnel_blockers -= blocker_effect
+		qdel(blocker_effect)
+
+	. = ..()
+
+/// Landing Pad Tunnel Blocker
+/obj/effect/tunnel_blocker
+	name = "Tunnel Blocker"
+	invisibility = INVISIBILITY_MAXIMUM
+	density = FALSE
+	opacity = FALSE
 
 /obj/structure/landing_pad/attackby(obj/item/hit_item, mob/user)
 	if(istype(hit_item, /obj/item/landing_pad_light))

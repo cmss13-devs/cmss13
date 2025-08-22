@@ -194,6 +194,13 @@
 #define COMSIG_KB_XENO_SENTINEL_SCATTERED_SPIT "keybinding_sentinel_scattered_spit"
 #define COMSIG_KB_XENO_SENTINEL_PARALYZING_SLASH "keybinding_sentinel_paralyzing_slash"
 
+// Xenomorph Defender
+#define COMSIG_KB_XENO_DEFENDER_TOGGLE_CREST_DEFENCE "keybinding_defender_toggle_crest_defence"
+#define COMSIG_KB_XENO_DEFENDER_HEADBUTT "keybinding_defender_headbutt"
+#define COMSIG_KB_XENO_DEFENDER_TAIL_SWEEP "keybinding_defender_tail_sweep"
+#define COMSIG_KB_XENO_DEFENDER_FORTIFY "keybinding_defender_fortify"
+#define COMSIG_KB_XENO_STEEL_CREST_SOAK "keybinding_steal_crest_soak"
+
 // Yautja
 
 #define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"

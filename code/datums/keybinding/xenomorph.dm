@@ -605,3 +605,77 @@
 			handle_xeno_macro_datum(xeno, paralyzing_slash_check)
 			return TRUE
 
+// Xenomorph Defender
+
+/datum/keybinding/xenomorph/toggle_crest
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "toggle_crest"
+	full_name = "Defender: Toggle Crest Defence"
+	keybind_signal = COMSIG_KB_XENO_DEFENDER_TOGGLE_CREST_DEFENCE
+
+/datum/keybinding/xenomorph/toggle_crest/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/toggle_crest/toggle_crest_check = get_action(xeno, /datum/action/xeno_action/onclick/toggle_crest)
+	if(toggle_crest_check)
+		if(toggle_crest_check && !toggle_crest_check.hidden)
+			handle_xeno_macro_datum(xeno, toggle_crest_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/defender_headbutt
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "defender_headbutt"
+	full_name = "Defender: Headbutt"
+	keybind_signal = COMSIG_KB_XENO_DEFENDER_HEADBUTT
+
+/datum/keybinding/xenomorph/defender_headbutt/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/headbutt/defender_headbutt_check = get_action(xeno, /datum/action/xeno_action/activable/headbutt)
+	if(defender_headbutt_check)
+		if(defender_headbutt_check && !defender_headbutt_check.hidden)
+			handle_xeno_macro_datum(xeno, defender_headbutt_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/defender_tail_sweep
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "defender_tail_sweep"
+	full_name = "Defender: Tail Sweep"
+	keybind_signal = COMSIG_KB_XENO_DEFENDER_HEADBUTT
+
+/datum/keybinding/xenomorph/defender_tail_sweep/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/tail_sweep/defender_tail_sweep_check = get_action(xeno, /datum/action/xeno_action/onclick/tail_sweep)
+	if(tail_sweep_check)
+		if(defender_tail_sweep_check && !defender_tail_sweep_check.hidden)
+			handle_xeno_macro_datum(xeno, defender_tail_sweep_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/fortify
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "tail_sweep"
+	full_name = "Defender: Tail Sweep"
+	keybind_signal = COMSIG_KB_XENO_DEFENDER_FORTIFY
+
+/datum/keybinding/xenomorph/fortify/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/tail_sweep/tail_sweep_check = get_action(xeno, /datum/action/xeno_action/onclick/tail_sweep)
+	if(tail_sweep_check)
+		if(tail_sweep_check && !tail_sweep_check.hidden)
+			handle_xeno_macro_datum(xeno, tail_sweep_check)
+			return TRUE
+

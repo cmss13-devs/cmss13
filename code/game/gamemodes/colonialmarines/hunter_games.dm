@@ -263,8 +263,8 @@
 		//round_finished = MODE_HUNTER_GAMES_YAUTJA_DEATH // The contestants managed to kill their yautja capturers and earn their freedom, truly.
 		return
 
-	if(prob(10)) // lol
-		message_admins("HUNTER GAMES DEBUG MESSAGE: YAUTJA_COUNT: [yautja_count], LENGTH(PREDATORS): [length(predators)], PREDATORS: [predators]")
+	if(prob(5)) // lol
+		log_debug("HUNTER GAMES DEBUG MESSAGE: YAUTJA_COUNT: [yautja_count], LENGTH(PREDATORS): [length(predators)], PREDATORS: [predators]")
 
 
 /datum/game_mode/hunter_games/proc/count_participants()

@@ -211,3 +211,9 @@
   - balance: Adjusted some weapon statistics of the Desert Eagle/M1911.
   realforest2001:
   - bugfix: Blended wall shutters can now be used properly in east-west directions.
+2025-08-21:
+  MistChristmas:
+  - bugfix: Fix flashlight grip being listed twice for M37.
+  thevandie:
+  - rscadd: Adds a new description to the plump helmet mushroom.
+  - rscdel: Deletes the weird description on the plump helmet mushroom.

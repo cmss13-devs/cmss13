@@ -100,7 +100,10 @@
 		qdel(gun)
 
 	for(var/melee_spawner in GLOB.melee_weapon) // Spawn the roundstart melee weapons scattered around.
-		place_drop(get_turf(melee_spawner), DROP_MELEE_WEAPON)
+		if(prob(10)) // 10% chance for a normal weapon spawn to get replaced with a good one.
+			place_drop(get_turf(melee_spawner), DROP_GOOD_ITEM)
+		else
+			place_drop(get_turf(melee_spawner), DROP_MELEE_WEAPON)
 
 	for(var/good_item in GLOB.good_items) // Spawn some rare, upgraded goodies.
 		place_drop(get_turf(good_item), DROP_GOOD_ITEM, HUNTER_DROP_CRATE)
@@ -132,7 +135,6 @@
 
 
 /datum/game_mode/hunter_games/proc/hunter_games_announce_yautja()
-	set waitfor = FALSE
 	for(var/mob/living/carbon/human/yautja/yautja as anything in GLOB.yautja_mob_list)
 		to_chat(yautja, "You are an honorable Yautja Hunter.")
 		to_chat(yautja, "You and your huntmates have taken this human colony over.")
@@ -256,11 +258,13 @@
 		round_finished = MODE_HUNTER_GAMES_LAST_STANDING // One living human remains, they win.
 		return
 
-	else if(yautja_count <= 0 && length(predators) >= 4) // yautja_count only includes living yautja, predators includes all. If >3 yautja join and all die, this triggers.
-		message_admins("HUNTER GAMES DEBUG MESSAGE: YAUTJA_COUNT: [yautja_count], LENGTH(PREDATORS): [length(predators)], PREDATORS: [predators]")
+	if(yautja_count <= 0 && length(predators) >= 4) // yautja_count only includes living yautja, predators includes all. If >3 yautja join and all die, this triggers.
+		message_admins("HUNTER GAMES DEBUG MESSAGE: GAME WOULD HAVE ENDED BUT COMMENTED OUT")
 		//round_finished = MODE_HUNTER_GAMES_YAUTJA_DEATH // The contestants managed to kill their yautja capturers and earn their freedom, truly.
 		return
-// would like to figure out an intelligent way to make the above check not include cryoed, not sure yet.
+
+	if(prob(10)) // lol
+		message_admins("HUNTER GAMES DEBUG MESSAGE: YAUTJA_COUNT: [yautja_count], LENGTH(PREDATORS): [length(predators)], PREDATORS: [predators]")
 
 
 /datum/game_mode/hunter_games/proc/count_participants()
@@ -276,11 +280,6 @@
 		if(should_block_game_interaction(potential_contestant))
 			continue
 
-		if(!ishuman_strict(potential_contestant)) // Preds counted separately.
-			if(isyautja(potential_contestant))
-				yautja_count++
-			continue
-
 		if(!(potential_contestant.z in z_levels))
 			continue
 
@@ -288,7 +287,14 @@
 			xeno_count++
 			continue
 
+		if(!ishuman_strict(potential_contestant))
+			continue
+
 		human_count++ //Add them to the amount of people who're alive.
+
+	for(var/yautja in predators)
+		if(predators[yautja]["Status"] == "Alive")
+			yautja_count++
 
 	return list(human_count, yautja_count, xeno_count)
 
@@ -382,7 +388,6 @@
 
 
 /datum/game_mode/hunter_games/declare_completion_announce_predators()
-	set waitfor = 0
 	if(length(predators))
 		var/dat = "<br>"
 		dat += SPAN_ROUNDBODY("<br>The Predators were:")
@@ -392,7 +397,6 @@
 
 
 /datum/game_mode/hunter_games/declare_fun_facts() // no need for xeno facts
-	set waitfor = 0
 	to_chat_spaced(world, margin_bottom = 0, html = SPAN_ROLE_BODY("|______________________|"))
 	to_world(SPAN_ROLE_HEADER("FUN FACTS"))
 	var/list/fact_types = subtypesof(/datum/random_fact)

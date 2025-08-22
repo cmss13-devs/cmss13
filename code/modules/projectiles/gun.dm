@@ -2158,7 +2158,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 /obj/item/weapon/gun/proc/icon_reset()
 	if(temp_icon)
 		icon = temp_icon
-	temp_icon = null
+		temp_icon = null
 
 /obj/item/weapon/gun/ex_act(severity, explosion_direction)
 	var/msg = pick("is destroyed by the blast!", "is obliterated by the blast!", "shatters as the explosion engulfs it!", "disintegrates in the blast!", "perishes in the blast!", "is mangled into uselessness by the blast!")

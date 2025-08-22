@@ -44,10 +44,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	return GLOB.department_radio_keys[lowertext(prefix)]
 
 /proc/filter_message(client/user, message)
+
+	return config.filter_speech(user, message) // SS220 ADD - Cyrillic speech Filter
+	/* SS220 REMOVE - Cyrillic speech filter
 	if(!config.word_filter_regex)
 		return TRUE
 
-	if(config.word_filter_regex.Find(message))
+	if(config.word_filter_regex.Find_char(message))	// SS220 EDIT - Cyrillic
 		to_chat(user,
 			html = "\n<font color='red' size='4'><b>-- Word Filter Message --</b></font>",
 			)
@@ -60,6 +63,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		return FALSE
 
 	return TRUE
+	SS220 REMOVE - Cyrillic speech filter */
 
 ///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(list/viewers, bubble_image, looping_bubble = FALSE, bubble_prefix = FALSE, animated = TRUE, image/speech_bubble)

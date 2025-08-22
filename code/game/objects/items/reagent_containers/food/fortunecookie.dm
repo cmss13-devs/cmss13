@@ -7,7 +7,7 @@
 /obj/item/paper/fortune/premade
 
 /obj/item/paper/fortune/premade/proc/assign_fortunes()
-	var/list/fortunelist = file2list("strings/fortunes.txt")
+	var/list/fortunelist = file2list("strings/fortunes_ru.txt") // SS220 - EDIT ADDITTION
 	return(pick(fortunelist))
 
 /obj/item/paper/fortune/premade/proc/get_lucky_numbers()
@@ -16,7 +16,7 @@
 	var/num3 = rand(1,99)
 	var/num4 = rand(1,99)
 	var/num5 = rand(1,99)
-	var/luckynumbers = "[num1], [num2], [num3], [num4], and [num5]"
+	var/luckynumbers = "[num1], [num2], [num3], [num4] и [num5]" // SS220 - EDIT
 	return luckynumbers
 
 /obj/item/paper/fortune/premade/Initialize(mapload, message = "Random", numbers = "Random")
@@ -29,7 +29,7 @@
 	if(numbers == "None")
 		numbers = null
 	else
-		numbers = "Your lucky numbers are [numbers == "Random" ? get_lucky_numbers() : numbers]."
+		numbers = "Ваши счастливые номера сегодня: [numbers == "Random" ? get_lucky_numbers() : numbers]." // SS220 - EDIT
 	if(message || numbers)
 		info = "<p style=\"text-align: center;\"><span style=\"text-align: center; color: #0000ff;\"><b>[message]</b><br/>[numbers]</p></span>"
 	else
@@ -88,6 +88,7 @@
 		cookie_broken = TRUE
 		playsound(user,'sound/effects/pillbottle.ogg',10,TRUE)
 		name = "broken fortune cookie"
+		ru_names_rename(ru_names_toml(name)) // SS220 - EDIT ADDITTION
 		update_icon()
 		if(cookiefortune)
 			to_chat(user,SPAN_NOTICE("You break open the fortune cookie, revealing a fortune inside!"))
@@ -104,6 +105,7 @@
 		cookie_broken = TRUE
 		playsound(user,'sound/effects/pillbottle.ogg',10,TRUE)
 		name = "broken fortune cookie"
+		ru_names_rename(ru_names_toml(name)) // SS220 - EDIT ADDITTION
 		update_icon()
 		if(cookiefortune)
 			to_chat(user,SPAN_NOTICE("You break open the fortune cookie, revealing a fortune inside!"))

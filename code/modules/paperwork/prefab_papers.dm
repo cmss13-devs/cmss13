@@ -133,23 +133,23 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_category = PAPER_CATEGORY_MP
 
 /obj/item/paper/prefab/carbon/military_police/ops_report
-	document_title = "PR201 - Operations Report"
+	document_title = "PR201 - Отчет об операции" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/mp/ops_report
 
 /obj/item/paper/prefab/carbon/military_police/appeal_form
-	document_title = "PR301a - Appeals Form"
+	document_title = "PR301a - Апелляционная форма" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/mp/appeal_form
 
 /obj/item/paper/prefab/carbon/military_police/dao_request
-	document_title = "PR301b - Delayed Action Order"
+	document_title = "PR301b - Приказ на отложенное действие" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/mp/dao_request
 
 /obj/item/paper/prefab/carbon/military_police/confiscation_receipt
-	document_title = "PR356 - Confiscation Receipt"
+	document_title = "PR356 - Расписка о конфискации" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/mp/confiscation_receipt
 
 /obj/item/paper/prefab/carbon/military_police/apology_notice
-	document_title = "NJ910 - Apology Notice"
+	document_title = "NJ910 - Уведомление об извинениях" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/mp/apology_notice
 
 // ########## Provost HC Forms  ########## \\
@@ -159,19 +159,19 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_category = PAPER_CATEGORY_PROVOST
 
 /obj/item/paper/prefab/provost/standard
-	document_title = "PR202 - Provost Missive"
+	document_title = "PR202 - Сообщение главного управления Военной Полиции" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/highcom/standard
 
 /obj/item/paper/prefab/provost/arrest_warrant
-	document_title = "PR211 - Arrest Warrant"
+	document_title = "PR211 - Ордер на арест" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/highcom/arrest_warrant
 
 /obj/item/paper/prefab/provost/custody_transfer
-	document_title = "PR238 - Custody Transfer Order"
+	document_title = "PR238 - Приказ о передаче под стражу" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/highcom/custody_transfer
 
 /obj/item/paper/prefab/provost/dao_response
-	document_title = "PR301c - Delayed Action Order"
+	document_title = "PR301c - Приказ на отложенное действие" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/provost/highcom/dao_response
 
 // ########## USCM Standard Forms  ########## \\
@@ -181,7 +181,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_category = PAPER_CATEGORY_USCM
 
 /obj/item/paper/prefab/uscm/ops_report
-	document_title = "UAM421 - Operations Report"
+	document_title = "UAM421 - Отчет об операции" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/uscm/ops_report
 
 // ########## USCM HC Forms  ########## \\
@@ -191,15 +191,15 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_category = PAPER_CATEGORY_USCM_HC
 
 /obj/item/paper/prefab/uscm_highcom/arrest_warrant
-	document_title = "UAM211 - Arrest Warrant"
+	document_title = "UAM211 - Ордер на арест" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/uscm/highcom/arrest_warrant
 
 /obj/item/paper/prefab/uscm_highcom/custody_transfer
-	document_title = "UAM238 - Custody Transfer Order"
+	document_title = "UAM238 - Приказ о передаче под стражу" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/uscm/highcom/custody_transfer
 
 /obj/item/paper/prefab/uscm_highcom/standard
-	document_title = "UAM422 - USCM High Command Missive"
+	document_title = "UAM422 - Сообщение Верховного Командования КМП" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/uscm/highcom/standard
 
 // ########## Wey-Yu Liaison Forms  ########## \\
@@ -209,23 +209,23 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_category = PAPER_CATEGORY_LIAISON
 
 /obj/item/paper/prefab/liaison/ops_report
-	document_title = "WY435 - Local Operations Report"
+	document_title = "WY435 - Отчет корпоративного связного" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/ops_report
 
 /obj/item/paper/prefab/liaison/preserve_intent
-	document_title = "WY439 - Affidavit of Intent to Preserve"
+	document_title = "WY439 - Заявление о намерении сохранить" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/preserve_intent
 
 /obj/item/paper/prefab/liaison/liability
-	document_title = "WY440 - Affidavit of Liability"
+	document_title = "WY440 - Заявление об отказе от ответственности" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/liability
 
 /obj/item/paper/prefab/liaison/nda_short
-	document_title = "WY441 - Confidentiality Agreement"
+	document_title = "WY441 - Соглашение о конфиденциальности" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/nda_short
 
 /obj/item/paper/prefab/liaison/nda_long
-	document_title = "WY442 - Non Disclosure Agreement"
+	document_title = "WY442 - Соглашение о неразглашении" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/wey_yu/liaison/nda_long
 
 /obj/item/paper/prefab/liaison/nda_long/uscm
@@ -239,5 +239,5 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	document_category = PAPER_CATEGORY_WEYYU_HC
 
 /obj/item/paper/prefab/wey_yu/standard
-	document_title = "WY101 - Directorate Communication"
+	document_title = "WY101 - Сообщение Директората" // BANDAMARINES Translate
 	doc_datum_type = /datum/prefab_document/wey_yu/highcom/standard

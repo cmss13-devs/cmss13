@@ -61,15 +61,21 @@
 			malfunction()
 			return
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/vehicle/multitile/V)
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/proc/populate_products(datum/source, obj/effect/vehicle_spawner/spawner) // BANDAMARINES EDIT obj/vehicle/multitile/V -> obj/effect/vehicle_spawner/spawner
 	SIGNAL_HANDLER
 	UnregisterSignal(SSdcs, COMSIG_GLOB_VEHICLE_ORDERED)
+
+	// BANDAMARINES ADD Start
+	selected_vehicle = spawner.category
+	if(selected_vehicle == "APC")
+		marine_announcement("В поддержку наземных сил операции вам будет предоставлен БТР.")
+	// BANDAMARINES ADD End
 
 	if(!selected_vehicle)
 		selected_vehicle = "TANK" // The whole thing seems to be based upon the assumption you unlock tank as an override, defaulting to APC
 	if(selected_vehicle == "TANK")
 		available_categories &= ~(VEHICLE_INTEGRAL_AVAILABLE) //APC lacks these, so we need to remove these flags to be able to access spare parts section
-		marine_announcement("A tank is being sent up to reinforce this operation.")
+		marine_announcement("В поддержку наземных сил операции вам будет предоставлен танк.")
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_listed_products(mob/user)
 	var/list/display_list = list()
@@ -138,7 +144,8 @@ GLOBAL_LIST_INIT(cm_vending_vehicle_crew_tank, list(
 	list("M34A2-A Multipurpose Turret", 0, /obj/effect/essentials_set/tank/turret, VEHICLE_INTEGRAL_AVAILABLE, VENDOR_ITEM_MANDATORY),
 
 	list("PRIMARY WEAPON", 0, null, null, null),
-	list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED),
+	list("LTB Canon 86mm", 0, /obj/effect/essentials_set/tank/ltb, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_RECOMMENDED), //BANDAMARINES EDIT
+	list("AC3-E Autocannon", 0, /obj/effect/essentials_set/tank/autocannon, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("DRG-N Offensive Flamer Unit", 0, /obj/effect/essentials_set/tank/dragonflamer, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 	list("LTAA-AP Minigun", 0, /obj/effect/essentials_set/tank/gatling, VEHICLE_PRIMARY_AVAILABLE, VENDOR_ITEM_REGULAR),
 

@@ -813,34 +813,45 @@
 	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		// Removing your own holocard when you are not trained
 		if(user == src && holo_card_color)
-			if(tgui_alert(user, "Are you sure you want to reset your own holocard?", "Resetting Holocard", list("Yes", "No")) != "Yes")
+			if(tgui_alert(user, "Вы уверены, что хотите сбросить статус своей медголокарты?", "Сброс статуса медголокарты", list("Да", "Нет")) != "Да") // SS220 - EDIT ADDITTION
 				return
 			holo_card_color = null
-			to_chat(user, SPAN_NOTICE("You reset your holocard."))
+			to_chat(user, SPAN_NOTICE("Вы сбрасываете статус своей медголокарты.")) // SS220 - EDIT ADDITTION
 			hud_set_holocard()
 			return
-		to_chat(user, SPAN_WARNING("You're not trained to use this."))
+		to_chat(user, SPAN_WARNING("Вы не знаете как использовать это устройство.")) // SS220 - EDIT ADDITTION
 		return
 	if(!has_species(src, "Human"))
-		to_chat(user, SPAN_WARNING("Triage holocards only works on humans."))
+		to_chat(user, SPAN_WARNING("Статус медголокарты можно изменить только у людей.")) // SS220 - EDIT ADDITTION
 		return
-	var/newcolor = tgui_input_list(user, "Choose a triage holo card to add to the patient:", "Triage holo card", list("black", "red", "orange", "purple", "none"))
+
+	// SS220 - START ADDITTION
+	var/holocard_translations = list(
+		"black" = "Скончался",
+		"red" = "Необходима срочная помощь",
+		"orange" = "Необходима операция",
+		"purple" = "Инфицирован паразитом XX-121",
+		"none" = "Нет данных"
+	)
+	var/newcolor = tgui_input_list(user, "Укажите причину болезни пациента:", "Медголокарта", holocard_translations, associative_list = TRUE)
+	// SS220 - END ADDITTION
 	if(!newcolor)
 		return
+	var/translated_value = holocard_translations[newcolor] // SS220 - EDIT ADDITTION
 	if(get_dist(user, src) > 7)
-		to_chat(user, SPAN_WARNING("[src] is too far away."))
+		to_chat(user, SPAN_WARNING("Пациент [src] слишком далеко от вас.")) // SS220 - EDIT ADDITTION
 		return
 	if(newcolor == "none")
 		if(!holo_card_color)
 			return
 		holo_card_color = null
-		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
+		to_chat(user, SPAN_NOTICE("Вы снимаете статус в медголокарте пациента [src].")) // SS220 - EDIT ADDITTION
 	else if(newcolor != holo_card_color)
 		if(newcolor == "black" && is_revivable() && check_tod())
-			to_chat(user, SPAN_WARNING("They are yet saveable."))
+			to_chat(user, SPAN_WARNING("Пациента ещё можно спасти!")) // SS220 - EDIT ADDITTION
 			return
 		holo_card_color = newcolor
-		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
+		to_chat(user, SPAN_NOTICE("Вы устанавливаете статус «[translated_value]» в медголокарте пациента [src].")) // SS220 - EDIT ADDITTION
 	hud_set_holocard()
 
 /mob/living/carbon/human/tgui_interact(mob/user, datum/tgui/ui) // I'M SORRY, SO FUCKING SORRY

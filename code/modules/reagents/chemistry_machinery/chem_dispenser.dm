@@ -218,7 +218,7 @@
 		//If the dispenser has a whitelist with stuff in it, and the attacking object ain't in there, don't accept it.
 		if(length(whitelisted_containers) && !(attacking_object.type in whitelisted_containers))
 			//Currently this is only used for pressurized disepnsers
-			to_chat(user, SPAN_NOTICE("This machine only accepts pressurized canisters or MS-11 Smart Refill Tanks"))
+			to_chat(user, SPAN_NOTICE("This machine doesn't accept that container."))
 			return
 		if(user.drop_inv_item_to_loc(attacking_object, src))
 			var/obj/item/old_beaker = beaker

@@ -134,7 +134,7 @@
 	dat += ""
 	dat += "<div id=\"width-container\">"
 	dat += "<div id=\"uscm-fax-logo\">"
-	dat += "<img src='[asset.get_url_mappings()["logo_uscm.png"]]' alt=\"USCM Logo\"/>"
+	dat += "<img src='[asset.get_url_mappings()["logo_uacqs_orange.png"]]' alt=\"UACQS Logo\"/>"
 	dat += "</div>"
 	dat += ""
 	dat += "<!--Header Info here-->"

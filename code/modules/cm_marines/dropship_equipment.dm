@@ -437,7 +437,7 @@
 
 /obj/structure/dropship_equipment/get_examine_text(mob/user)
 	. = ..()
-	if(damaged && active_effects.len > 0) // shows the description of antiair effects, i'll add a visual icon later
+	if(damaged && active_effects.len > 0) // shows the description of antiair effects
 		. +=  SPAN_WARNING("It appears to be damaged!")
 		var/list/unique_descriptions = list()
 		for(var/datum/dropship_antiair/effect in active_effects)

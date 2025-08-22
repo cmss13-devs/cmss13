@@ -246,9 +246,9 @@
 	desc = "A crate full of PGU-110 Compact 25mm rounds designed for precise supporting fire from gunner stations aboard dropships. These smaller, lighter rounds feature enhanced ballistic stability for tighter shot groupings, making them ideal for strikes against light armored insurgents and soft targets. The reduced size allows for manual reloading by crewmembers within the dropship. Can be loaded into the GAU-24/B Belly Gunner Station."
 	equipment_type = /obj/structure/dropship_equipment/weapon/heavygun/bay
 	travelling_time = 30
-	ammo_count = 400
-	max_ammo_count = 400
-	ammo_used_per_firing = 20
+	ammo_count = 300
+	max_ammo_count = 300
+	ammo_used_per_firing = 30
 	bullet_spread_range = 2
 	point_cost = 300
 	fire_mission_delay = 2

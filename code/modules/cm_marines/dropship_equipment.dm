@@ -28,9 +28,11 @@
 	var/antiair_reload = FALSE // TRUE if anti-air disables reloading
 
 	var/list/active_effects = list() // List of active anti-air effects
+	var/obj/effect/overlay/temp/fire_damage/damage_overlay 	// Fire damage overlay for damaged equipment
 
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
+	QDEL_NULL(damage_overlay)
 	if(linked_shuttle)
 		SEND_SIGNAL(linked_shuttle, COMSIG_DROPSHIP_REMOVE_EQUIPMENT, src)
 		linked_shuttle = null
@@ -2576,6 +2578,8 @@
 	if(!(effect in active_effects))
 		active_effects[effect] = TRUE
 		effect.apply(src)
+		// Create fire damage overlay when equipment becomes damaged
+		create_fire_damage_overlay()
 
 /obj/structure/dropship_equipment/proc/remove_antiair_effect(datum/dropship_antiair/effect)
 	if(active_effects && (effect in active_effects))
@@ -2598,10 +2602,23 @@
 	// Only set damaged to FALSE if no antiair effects remain
 	if(!active_effects || active_effects.len == 0)
 		damaged = FALSE
+		// Remove fire damage overlay when equipment is no longer damaged
+		remove_fire_damage_overlay()
 
 	// Clean up the effect if it was set to delete on timeout
 	if(effect.antiair_destroy)
 		qdel(effect)
+
+/// Create fire damage overlay on damaged equipment
+/obj/structure/dropship_equipment/proc/create_fire_damage_overlay()
+	if(damage_overlay)
+		return // Already has overlay
+	damage_overlay = new /obj/effect/overlay/temp/fire_damage(loc, src)
+
+/// Remove fire damage overlay from equipment
+/obj/structure/dropship_equipment/proc/remove_fire_damage_overlay()
+	if(damage_overlay)
+		QDEL_NULL(damage_overlay)
 
 /obj/structure/dropship_equipment/proc/has_active_antiair_effect()
 	return islist(src.active_effects) && src.active_effects.len > 0

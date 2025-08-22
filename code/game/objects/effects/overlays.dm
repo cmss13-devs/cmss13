@@ -537,6 +537,80 @@
 	I.plane = plane
 	return I
 
+// Fire overlay for damaged dropship equipment
+/obj/effect/overlay/temp/fire_damage
+	name = "Exposed Fire"
+	icon = 'icons/obj/structures/props/dropship/dropshipdamage.dmi'
+	icon_state = "zfire_smoke"
+	anchored = TRUE
+	layer = BELOW_MOB_LAYER
+	effect_duration = -1
+	start_on_spawn = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	// The dropship equipment this overlay is attached to
+	var/obj/structure/dropship_equipment/target_equipment
+
+/obj/effect/overlay/temp/fire_damage/Initialize(mapload, obj/structure/dropship_equipment/equipment)
+	. = ..()
+	if(!equipment || !istype(equipment))
+		return INITIALIZE_HINT_QDEL
+
+	target_equipment = equipment
+
+	// Position the overlay on the equipment
+	forceMove(get_turf(target_equipment))
+
+	// Check if equipment is initially being held by a powerloader clamp
+	if(istype(target_equipment.loc, /obj/item/powerloader_clamp))
+		invisibility = INVISIBILITY_MAXIMUM
+
+	// Register signals to track when equipment moves
+	RegisterSignal(target_equipment, COMSIG_MOVABLE_MOVED, PROC_REF(move_overlay))
+	RegisterSignal(target_equipment, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
+
+	// Start processing to check if equipment is still damaged
+	START_PROCESSING(SSeffects, src)
+
+/obj/effect/overlay/temp/fire_damage/Destroy()
+	if(target_equipment)
+		UnregisterSignal(target_equipment, COMSIG_MOVABLE_MOVED)
+		UnregisterSignal(target_equipment, COMSIG_PARENT_QDELETING)
+		target_equipment = null
+	STOP_PROCESSING(SSeffects, src)
+	. = ..()
+
+/obj/effect/overlay/temp/fire_damage/proc/move_overlay()
+	SIGNAL_HANDLER
+	var/turf/new_loc = get_turf(target_equipment)
+	if(!new_loc)
+		qdel(src)
+		return
+
+	// Check if equipment is being held by a powerloader clamp
+	if(istype(target_equipment.loc, /obj/item/powerloader_clamp))
+		// Equipment is in a powerloader clamp, hide the overlay
+		invisibility = INVISIBILITY_MAXIMUM
+		return
+	else
+		// Equipment is on a turf, show the overlay and move it
+		invisibility = initial(invisibility)
+		forceMove(new_loc)
+
+/obj/effect/overlay/temp/fire_damage/proc/cleanup()
+	SIGNAL_HANDLER
+	qdel(src)
+
+// Check if equipment is still damaged
+/obj/effect/overlay/temp/fire_damage/process()
+	if(!target_equipment || QDELETED(target_equipment))
+		qdel(src)
+		return PROCESS_KILL
+
+	if(!target_equipment.damaged)
+		qdel(src)
+		return PROCESS_KILL
+
 // dispatches motion detector pings to boily/queen eye whenever dropship reticle moves
 /proc/xeno_psy_ping(turf/target_turf)
 	if(!target_turf)

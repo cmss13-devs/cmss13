@@ -2084,15 +2084,10 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_central_jungle)
 "agS" = (
-/obj/structure/flora/grass/tallgrass/jungle,
-/obj/structure/flora/jungle/thickbush/large_jungle_bush{
-	color = "#648c57";
-	layer = 4.21;
-	pixel_x = -21;
-	pixel_y = -4
-	},
-/turf/open/gm/grass/grass1,
-/area/lv624/ground/jungle/central_jungle)
+/obj/structure/flora/jungle/alienplant1,
+/obj/effect/fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "agW" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -2224,6 +2219,7 @@
 	pixel_x = 7;
 	pixel_y = 3
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood/ship,
 /area/lv624/lazarus/comms)
 "ahw" = (
@@ -2579,12 +2575,11 @@
 /area/lv624/ground/jungle/west_jungle/swamp)
 "aiW" = (
 /obj/item/shard{
-	icon_state = "medium"
+	pixel_x = 12;
+	pixel_y = 3
 	},
 /obj/item/shard{
-	icon_state = "small";
-	pixel_x = -5;
-	pixel_y = -6
+	layer = 2.9
 	},
 /turf/open/floor/kutjevo/tan,
 /area/lv624/lazarus/main_hall)
@@ -3913,6 +3908,7 @@
 /area/lv624/lazarus/nexus_admin)
 "anR" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
+/obj/effect/fog_marker,
 /turf/open/gm/river/soro,
 /area/lv624/ground/river/west_river)
 "anU" = (
@@ -5280,8 +5276,10 @@
 /turf/closed/wall,
 /area/lv624/lazarus/quartstorage)
 "asO" = (
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/lv624/gonzo)
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "asP" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/warning_stripes{
@@ -7966,7 +7964,9 @@
 /obj/effect/acid_hole{
 	dir = 4
 	},
-/turf/closed/wall,
+/turf/closed/wall{
+	acided_hole_dir = 4
+	},
 /area/lv624/lazarus/diner)
 "aER" = (
 /obj/structure/platform/metal/almayer,
@@ -8754,19 +8754,12 @@
 /area/lv624/ground/jungle/south_west_jungle)
 "aIe" = (
 /obj/item/shard{
-	icon_state = "large";
-	pixel_x = -7;
-	pixel_y = -1
+	layer = 2.9
 	},
+/obj/item/shard,
 /obj/item/shard{
-	icon_state = "small";
-	pixel_x = 4;
-	pixel_y = 5
-	},
-/obj/item/shard{
-	icon_state = "large";
-	pixel_x = 5;
-	pixel_y = 7
+	pixel_x = 12;
+	pixel_y = 3
 	},
 /turf/open/floor/kutjevo/tan,
 /area/lv624/lazarus/main_hall)
@@ -10743,6 +10736,9 @@
 	layer = 2.9;
 	pixel_x = -16
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv624/lazarus/corpo_apartments)
 "aQi" = (
@@ -12540,6 +12536,7 @@
 	pixel_x = -11;
 	pixel_y = 1
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/carpet/carpet_colorable/blue,
 /area/lv624/lazarus/comms)
 "aWz" = (
@@ -12653,6 +12650,12 @@
 	name = "pneumatic delivery system pipe";
 	dir = 4;
 	pixel_y = -5
+	},
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	dir = 1;
+	health = 45;
+	icon_state = "folding_3"
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/lv624/lazarus/secure_bunker)
@@ -19473,6 +19476,9 @@
 	pixel_x = -4;
 	pixel_y = 16;
 	layer = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/lv624/lazarus/corpo_apartments)
@@ -32114,6 +32120,16 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/carpet/carpetred,
 /area/lv624/lazarus/general_dorms)
+"cGG" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	layer = 4.1;
+	pixel_x = -12;
+	pixel_y = -14
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/south_central_jungle)
 "cGV" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
@@ -33231,6 +33247,9 @@
 	pixel_y = 32;
 	pixel_x = 4
 	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/hybrisa/wood/darkerwood,
 /area/lv624/lazarus/corpo_apartments)
 "edS" = (
@@ -34149,6 +34168,11 @@
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grassmud/corner2/south_east,
 /area/lv624/ground/jungle/north_east_jungle)
+"ffW" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/obj/effect/fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "fgM" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilewhite,
@@ -38266,6 +38290,9 @@
 	pixel_y = 9;
 	pixel_x = 5
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/lv624/lazarus/corpo_apartments)
 "knd" = (
@@ -39200,6 +39227,9 @@
 "lyc" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/structure/flora/pottedplant,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/west,
 /area/lv624/lazarus/corpo_apartments)
 "lyj" = (
@@ -41961,7 +41991,7 @@
 /obj/item/trash/crushed_cup{
 	pixel_y = 12
 	},
-/obj/effect/landmark/objective_landmark/medium,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/dark,
 /area/lv624/lazarus/comms)
 "oJH" = (
@@ -42729,6 +42759,11 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/mining)
+"pBz" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "pBB" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
@@ -44987,6 +45022,11 @@
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
+"sqy" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/obj/effect/fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "ssc" = (
 /turf/open/gm/grass/grassmud/corner2/north_west,
 /area/lv624/ground/jungle/east_central_jungle)
@@ -45964,6 +46004,16 @@
 "tzr" = (
 /turf/open/gm/dirt/brown/dirtmud_corner_inner/south,
 /area/lv624/ground/jungle/east_central_jungle)
+"tzz" = (
+/obj/structure/flora/grass/tallgrass/jungle,
+/obj/structure/flora/jungle/thickbush/large_jungle_bush{
+	color = "#648c57";
+	layer = 4.21;
+	pixel_x = -21;
+	pixel_y = -4
+	},
+/turf/open/gm/grass/grass1,
+/area/lv624/ground/jungle/central_jungle)
 "tzK" = (
 /obj/effect/landmark/crap_item,
 /turf/open/gm/grass/grass1,
@@ -47573,9 +47623,9 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_jungle)
 "vEj" = (
-/obj/effect/landmark/objective_landmark/medium,
-/turf/open/floor/almayer/mono,
-/area/lv624/lazarus/comms)
+/obj/effect/fog_marker,
+/turf/open/gm/river/soro,
+/area/lv624/ground/river/west_river)
 "vEp" = (
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grass1,
@@ -49316,6 +49366,9 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/white,
 /area/lv624/lazarus/customs_dome)
+"xCN" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/gonzo)
 "xDl" = (
 /obj/structure/flora/bush/ausbushes/ausbush,
 /turf/open/gm/grass/grassmud/west,
@@ -50921,7 +50974,7 @@ mdQ
 mdQ
 mdQ
 mdQ
-asO
+xCN
 mdQ
 mdQ
 mdQ
@@ -51245,7 +51298,7 @@ oTJ
 aun
 aZa
 aYS
-aud
+vEj
 aud
 bGb
 aud
@@ -51703,7 +51756,7 @@ aYQ
 aud
 aud
 amG
-bGb
+asO
 auP
 brn
 brn
@@ -51928,7 +51981,7 @@ aRb
 aYK
 aUg
 aYQ
-aud
+vEj
 bGb
 aud
 asp
@@ -52384,7 +52437,7 @@ aRb
 pJr
 aYQ
 aud
-amG
+agS
 asF
 bGb
 fQL
@@ -52614,7 +52667,7 @@ aYS
 aud
 arU
 aud
-aud
+vEj
 auP
 xuK
 brn
@@ -53066,9 +53119,9 @@ bal
 aRb
 aRb
 tgV
+vEj
 aud
-aud
-aud
+vEj
 aud
 bGb
 aud
@@ -53526,7 +53579,7 @@ amG
 aud
 aud
 aud
-aud
+vEj
 amG
 aRJ
 aRk
@@ -53751,9 +53804,9 @@ aRb
 aZa
 aYL
 aud
-aud
+vEj
 bGb
-arV
+ffW
 bGb
 aud
 aRH
@@ -54205,7 +54258,7 @@ bkb
 aRL
 aRb
 aYQ
-sFc
+sqy
 aud
 aud
 aud
@@ -54435,7 +54488,7 @@ aRb
 aYQ
 aud
 aud
-bGb
+asO
 asF
 auP
 aRb
@@ -55118,7 +55171,7 @@ aZa
 aYS
 aud
 aud
-aud
+vEj
 aud
 aud
 auP
@@ -55344,7 +55397,7 @@ aYK
 aUg
 aYQ
 aud
-bGb
+asO
 aud
 aud
 aud
@@ -55576,7 +55629,7 @@ aud
 aud
 bGb
 aud
-aud
+vEj
 asR
 aRb
 aLC
@@ -56028,9 +56081,9 @@ bal
 aRb
 aYQ
 bGb
-amG
+agS
 aud
-aud
+vEj
 bGb
 auP
 asQ
@@ -56487,7 +56540,7 @@ amG
 aud
 sFc
 aud
-aud
+vEj
 auP
 aqS
 asw
@@ -56711,9 +56764,9 @@ bkb
 aRL
 aRb
 aYQ
+vEj
 aud
-aud
-aud
+vEj
 aud
 aud
 auP
@@ -57171,7 +57224,7 @@ aud
 aud
 aud
 aud
-aud
+vEj
 auP
 ase
 tRE
@@ -57622,9 +57675,9 @@ oTJ
 aRb
 aYQ
 aud
+vEj
 aud
-aud
-sFc
+sqy
 aud
 arV
 aud
@@ -57688,7 +57741,7 @@ tuM
 mdw
 aOi
 mqs
-aWR
+vCa
 sRH
 kNy
 pmZ
@@ -57855,7 +57908,7 @@ aud
 aud
 bGb
 aud
-aud
+vEj
 auP
 asQ
 aTm
@@ -58081,7 +58134,7 @@ aud
 aud
 aud
 amG
-aud
+vEj
 amG
 aud
 auP
@@ -58307,11 +58360,11 @@ aYQ
 bGb
 aud
 amG
-aud
+vEj
 arc
 aud
 aud
-aud
+vEj
 auP
 aQz
 jDY
@@ -58545,7 +58598,7 @@ aAl
 aqS
 aWq
 woF
-arn
+aro
 aAt
 auU
 xHa
@@ -58759,13 +58812,13 @@ oTJ
 aRb
 aYQ
 aud
-aud
+vEj
 aud
 amG
-aud
+vEj
 aud
 bGb
-aud
+vEj
 bGb
 aud
 auP
@@ -58986,7 +59039,7 @@ oTJ
 aRb
 xuK
 aYQ
-aud
+vEj
 sFc
 aud
 aud
@@ -59219,7 +59272,7 @@ aud
 aud
 aud
 aud
-aud
+vEj
 fQL
 avK
 avK
@@ -59443,7 +59496,7 @@ aYQ
 aud
 aud
 aud
-amG
+agS
 aud
 bGb
 aoZ
@@ -59668,7 +59721,7 @@ aRb
 aun
 aZa
 aYS
-anl
+pBz
 aud
 aud
 aud
@@ -60121,13 +60174,13 @@ oTJ
 aRb
 aRb
 aYQ
+vEj
 aud
 aud
 aud
-aud
-aud
+vEj
 aoZ
-aud
+vEj
 aud
 auP
 aAl
@@ -60580,7 +60633,7 @@ aud
 aud
 aud
 aud
-bGb
+asO
 aud
 aud
 fQL
@@ -60807,7 +60860,7 @@ aYQ
 aud
 aud
 bGb
-aud
+vEj
 aud
 aud
 apa
@@ -61032,7 +61085,7 @@ aYK
 aUg
 aRb
 aYQ
-aud
+vEj
 amG
 aud
 sFc
@@ -61263,7 +61316,7 @@ aYQ
 bGb
 aud
 aud
-aud
+vEj
 fQL
 avK
 aUg
@@ -61716,9 +61769,9 @@ aJV
 bbe
 oTJ
 aYQ
-amG
+agS
 aud
-aud
+vEj
 bGb
 auP
 aRb
@@ -62402,7 +62455,7 @@ aRb
 aYQ
 aud
 anl
-aud
+vEj
 bGb
 auP
 xuK
@@ -62631,7 +62684,7 @@ aYU
 aud
 aud
 amG
-aud
+vEj
 auP
 aRb
 aRb
@@ -62857,7 +62910,7 @@ aRb
 aRb
 aYQ
 aud
-aud
+vEj
 aud
 aud
 auP
@@ -63084,7 +63137,7 @@ aRb
 aun
 aZa
 aYS
-bGb
+asO
 amG
 aud
 amw
@@ -63314,7 +63367,7 @@ aYQ
 aud
 sFc
 aud
-aud
+vEj
 aud
 auP
 aRb
@@ -63543,7 +63596,7 @@ aud
 aud
 aud
 aud
-bGb
+asO
 auP
 xuK
 qUM
@@ -63765,12 +63818,12 @@ asH
 aUp
 aZa
 aYS
-aud
+vEj
 aud
 bGb
-amG
+agS
 aud
-aud
+vEj
 aud
 auP
 qJE
@@ -64219,10 +64272,10 @@ aYQ
 aud
 aud
 aud
-aud
+vEj
 amG
 aud
-aud
+vEj
 aud
 aud
 anR
@@ -64445,7 +64498,7 @@ aRb
 aZa
 aYS
 aud
-bGb
+asO
 aud
 aud
 aud
@@ -64679,7 +64732,7 @@ aud
 sFc
 bGb
 aud
-aud
+vEj
 fQL
 avK
 aUg
@@ -64900,11 +64953,11 @@ aud
 aud
 amG
 aud
+vEj
 aud
+vEj
 aud
-aud
-aud
-aud
+vEj
 aud
 aud
 fQL
@@ -65124,9 +65177,9 @@ blc
 bkv
 aYQ
 aud
-bGb
+asO
 aud
-aud
+vEj
 aud
 aud
 bGb
@@ -66796,7 +66849,7 @@ aQn
 rkZ
 aQn
 alB
-vEj
+aON
 aQn
 aON
 aQn
@@ -69276,7 +69329,7 @@ aDZ
 aHt
 aqN
 por
-agS
+tzz
 kAg
 iAA
 aJr
@@ -77751,8 +77804,8 @@ ebS
 ebS
 ebS
 azH
-oAJ
-afQ
+cGG
+qZv
 bFa
 tsa
 tsa
@@ -77971,7 +78024,7 @@ amq
 aln
 akz
 aaf
-aLp
+ans
 wpw
 wpw
 wpw
@@ -78199,7 +78252,7 @@ amt
 aUb
 aZD
 aUL
-aLp
+ans
 wpw
 dZp
 wpw
@@ -78427,7 +78480,7 @@ amu
 aUc
 aak
 aVr
-aLp
+ans
 wpw
 wpw
 wpw

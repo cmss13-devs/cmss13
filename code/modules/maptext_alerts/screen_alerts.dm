@@ -307,20 +307,34 @@
 	living_owner.look_up()
 
 
-/atom/movable/screen/alert/multi_z/alert_post_setup(mob/user)
+/atom/movable/screen/alert/multi_z/alert_post_setup(mob/living/user)
 	. = ..()
 
-	if(istype(user, /mob/living/))
-		RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(update_alert))
+	if(!istype(user, /mob/living)) // only /mob/living can look up.
+		return
+
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(update_alert))
 	update_alert(user)
 
 
-/atom/movable/screen/alert/multi_z/proc/update_alert(mob/user)
+/atom/movable/screen/alert/multi_z/proc/update_alert(mob/living/user)
+	// No user, no update.
+	if(!user)
+		return
+
+	// If the user's not on a turf we can skip this.
 	if(!isturf(user.loc))
 		return
-	
+
+	// Check if owner's current Z has the "up" ztrait; if not, hide the indicator.
+	if(!user.z || !(user.z in SSmapping.levels_by_trait(ZTRAIT_UP)))
+		icon_state = "blank"
+		return
+
+	// Get the turf on the level above the user.
 	var/turf/above = SSmapping.get_turf_above(user)
 
+	// If the user is a xeno, show the generic version of the indicator.
 	if(istype(user, /mob/living/carbon/xenomorph))
 		if(above && istransparentturf(above))
 			icon_state = "uphint1_xeno"
@@ -329,6 +343,7 @@
 			icon_state = "uphint0_xeno"
 			desc = "There's nothing to look up at right now."
 
+	// Otherwise, use the stylized marine version.
 	else
 		if(above && istransparentturf(above))
 			icon_state = "uphint1"

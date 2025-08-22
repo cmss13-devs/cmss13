@@ -681,15 +681,15 @@
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/compensator,
-		/obj/item/attachable/mateba/dark,
-		/obj/item/attachable/mateba/long/dark,
-		/obj/item/attachable/mateba/short/dark,
+		/obj/item/attachable/mateba/gold,
+		/obj/item/attachable/mateba/long/gold,
+		/obj/item/attachable/mateba/short/gold,
 	)
 	starting_attachment_types = null
 
 /obj/item/weapon/gun/revolver/mateba/general/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/mateba/long/dark/barrel = new(src)
+	var/obj/item/attachable/mateba/long/gold/barrel = new(src)
 	barrel.flags_attach_features &= ~ATTACH_REMOVABLE
 	barrel.Attach(src)
 	update_attachables()
@@ -711,6 +711,25 @@
 	icon_state = "aamateba"
 	item_state = "aamateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+
+/obj/item/weapon/gun/revolver/mateba/silver
+	name = "\improper polished Mateba autorevolver"
+	desc = "The .454 Mateba 6 Unica autorevolver is a semi-automatic handcannon that uses its own recoil to rotate the cylinders. Extremely rare, prohibitively costly, and unyieldingly powerful, it's found in the hands of a select few high-ranking USCM officials. Stylish, sophisticated, and above all, extremely deadly. This one is finished in a beautiful polished silver."
+	icon_state = "smateba"
+	item_state = "smateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
+	attachable_allowed = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/flashlight,
+		/obj/item/attachable/heavy_barrel,
+		/obj/item/attachable/compensator,
+		/obj/item/attachable/mateba/silver,
+		/obj/item/attachable/mateba/long/silver,
+		/obj/item/attachable/mateba/short/silver,
+	)
+
+	starting_attachment_types = list(/obj/item/attachable/mateba/silver)
 
 /obj/item/weapon/gun/revolver/mateba/engraved/tactical
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba

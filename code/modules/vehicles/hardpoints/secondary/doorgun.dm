@@ -31,6 +31,7 @@
 
 	var/obj/vehicle/multitile/blackfoot/blackfoot = vehicle
 
+	QDEL_NULL(blackfoot.interior)
 	blackfoot.interior = new(blackfoot)
 	blackfoot.interior_map = interior_type
 	INVOKE_ASYNC(blackfoot, TYPE_PROC_REF(/obj/vehicle/multitile, do_create_interior))

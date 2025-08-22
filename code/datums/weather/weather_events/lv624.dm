@@ -35,16 +35,17 @@
 
 GLOBAL_LIST_INIT(fog_tiles, list())
 
-/obj/effect/fog_marker
+/obj/effect/landmark/fog_marker
 	name = "Fog marker"
 	var/active = FALSE
-	var/datum/effect_system/smoke_spread/smoke
+	var/datum/effect_system/smoke_spread/fog/smoke
+	icon_state = "fog"
 
-/obj/effect/fog_marker/Initialize(mapload, ...)
+/obj/effect/landmark/fog_marker/Initialize(mapload, ...)
 	. = ..()
 	GLOB.fog_tiles += src
 
-/obj/effect/fog_marker/proc/activate()
+/obj/effect/landmark/fog_marker/proc/activate()
 	if(active)
 		return
 	active = TRUE
@@ -54,7 +55,7 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 	smoke.start()
 	addtimer(CALLBACK(src, PROC_REF(deactivate)), duration)
 
-/obj/effect/fog_marker/proc/deactivate()
+/obj/effect/landmark/fog_marker/proc/deactivate()
 	active = FALSE
 
 
@@ -65,7 +66,7 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 /datum/weather_event/heavy_rain/fog/handle_weather_process()
 	. = ..()
 	for(var/i = 1 to 20)
-		var/obj/effect/fog_marker/marker = pick(GLOB.fog_tiles)
+		var/obj/effect/landmark/fog_marker/marker = pick(GLOB.fog_tiles)
 		marker.activate()
 
 

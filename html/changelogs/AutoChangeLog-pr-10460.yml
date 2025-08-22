@@ -1,0 +1,4 @@
+author: "TheGamerdk"
+delete-after: True
+changes:
+  - bugfix: "Can no longer extract infinite metal from walls"

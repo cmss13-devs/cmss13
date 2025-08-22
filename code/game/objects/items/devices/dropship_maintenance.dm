@@ -192,6 +192,13 @@
 	if(!proximity || !istype(target, /obj/item/device/dropship_handheld))
 		return
 
+/obj/item/device/dropship_handheld/proc/get_tool_display_name(tool_type)
+	var/obj/item/temp_tool = new tool_type() // Get the tool name for display in the maintenance computer
+	var/tool_name = temp_tool.name
+	qdel(temp_tool)
+
+	return tool_name
+
 /obj/item/device/dropship_handheld/proc/get_repair_data()
 	if(!length(src.scanned_weapons))
 		return null
@@ -223,6 +230,12 @@
 			// Calculate completed steps
 			var/completed_steps = (isnum(effect.repair_step_index) && effect.repair_step_index > 1) ? min(effect.repair_step_index - 1, length(effect.repair_steps)) : 0
 
+			// Converts type paths to names
+			var/list/readable_steps = list()
+			for(var/tool_type in effect.repair_steps)
+				var/tool_name = src.get_tool_display_name(tool_type)
+				readable_steps += tool_name
+
 			// Additional effect information
 			var/effect_description = effect.description ? effect.description : "No description available"
 			var/effect_duration = effect.duration ? effect.duration : null
@@ -239,7 +252,7 @@
 
 			repair_info += list(list(
 				"id" = "[effect_name] #[effect_id]",
-				"steps" = effect.repair_steps,
+				"steps" = readable_steps,
 				"mount_point" = mount_point,
 				"original_mount_point" = original_mount_point,
 				"effect_name" = effect_name,
@@ -308,11 +321,6 @@
 			screen_state = params["state"]
 			playsound(src, get_sfx("terminal_button"), 25, FALSE)
 			return FALSE
-
-// Tool mapping for dropship repairs
-
-/proc/get_dropship_repair_tool_type(action)
-		return GLOB.dropship_repair_tool_types[action]
 
 /obj/item/device/dropship_handheld/proc/clear_scanned_data()
 	scanned_weapons.Cut()

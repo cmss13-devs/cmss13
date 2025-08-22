@@ -184,12 +184,12 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 		return
 
 	// Add all existing xeno telegraph overlays to this client
-	for(var/obj/effect/xenomorph/xeno_telegraph/antiair/telegraph in world)
+	for(var/obj/effect/xenomorph/xeno_telegraph/antiair/telegraph in GLOB.xeno_telegraphs_antiair)
 		if(QDELETED(telegraph) || !telegraph.telegraph_image)
 			continue
 		xeno_client.images |= telegraph.telegraph_image
 
-	for(var/obj/effect/xenomorph/xeno_telegraph/chaff/telegraph in world)
+	for(var/obj/effect/xenomorph/xeno_telegraph/chaff/telegraph in GLOB.xeno_telegraphs_chaff)
 		if(QDELETED(telegraph) || !telegraph.telegraph_image)
 			continue
 		xeno_client.images |= telegraph.telegraph_image
@@ -277,13 +277,17 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if(!client_user)
 		return
 
+	// Only show protection flags if user is in the dropship
+	if(!(istype(get_area(client_user.mob), /area/shuttle/drop1) || istype(get_area(client_user.mob), /area/shuttle/drop2)))
+		return
+
 	// Add all existing protection flag overlays to this client
-	for(var/obj/effect/overlay/temp/protection_flag/antiair/flag in world)
+	for(var/obj/effect/overlay/temp/protection_flag/antiair/flag in GLOB.protection_flags_antiair)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
 		client_user.images |= flag.flag_image
 
-	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in world)
+	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in GLOB.protection_flags_chaff)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
 		client_user.images |= flag.flag_image
@@ -292,12 +296,12 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	if(!client_user)
 		return
 
-	for(var/obj/effect/overlay/temp/protection_flag/antiair/flag in world)
+	for(var/obj/effect/overlay/temp/protection_flag/antiair/flag in GLOB.protection_flags_antiair)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
 		client_user.images -= flag.flag_image
 
-	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in world)
+	for(var/obj/effect/overlay/temp/protection_flag/chaff/flag in GLOB.protection_flags_chaff)
 		if(QDELETED(flag) || !flag.flag_image)
 			continue
 		client_user.images -= flag.flag_image
@@ -1086,14 +1090,14 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 /datum/mob_hud/dropship/proc/add_cas_reticles_to_observer(mob/dead/observer/ghost)
 	if(!ghost)
 		return
-	for(var/obj/effect/overlay/temp/dropship_reticle/reticle in world)
+	for(var/obj/effect/overlay/temp/dropship_reticle/reticle in GLOB.dropship_reticles)
 		if(QDELETED(reticle)) continue
 		reticle.update_visibility_for_mob(ghost)
 
 /datum/mob_hud/dropship/proc/remove_cas_reticles_from_observer(mob/dead/observer/ghost)
 	if(!ghost)
 		return
-	for(var/obj/effect/overlay/temp/dropship_reticle/reticle in world)
+	for(var/obj/effect/overlay/temp/dropship_reticle/reticle in GLOB.dropship_reticles)
 		if(QDELETED(reticle)) continue
 		reticle.update_visibility_for_mob(ghost)
 
@@ -1109,16 +1113,16 @@ GLOBAL_DATUM_INIT(hud_icon_new_player_3, /image, image('icons/mob/hud/hud.dmi', 
 		// Handle the person who moved
 		if(updated_mob in dropship_hud.hudusers)
 			if(is_dropship)
-				// Person entered dropship, add overlays
+				// Pilot entered dropship, add overlays
 				dropship_hud.refresh_hud(updated_mob, dropship_hud.hudusers[updated_mob])
 			else
-				// Person left dropship, remove overlays
+				// Pilot left dropship, remove overlays
 				for(var/mob/target in dropship_hud.hudmobs)
 					dropship_hud.remove_from_single_hud(updated_mob, target)
 
 		if(is_dropship)
-			// Person entered dropship, hide overlays
+			// Marine entered dropship, hide overlays
 			dropship_hud.remove_from_hud(updated_mob)
 		else
-			// Person left dropship, show overlays
+			// Marine left dropship, show overlays
 			dropship_hud.add_to_hud(updated_mob)

@@ -114,6 +114,13 @@ GLOBAL_LIST_INIT_TYPED(resin_mark_meanings, /datum/xeno_mark_define, setup_resin
 /// Xeno caste datums
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
+//Dropship HUD antiair markers
+GLOBAL_LIST_EMPTY(protection_flags_antiair)
+GLOBAL_LIST_EMPTY(protection_flags_chaff)
+//Xeno antiair markers
+GLOBAL_LIST_EMPTY(xeno_telegraphs_antiair)
+GLOBAL_LIST_EMPTY(xeno_telegraphs_chaff)
+
 //Chem Stuff
 GLOBAL_LIST(chemical_reactions_filtered_list) //List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions
 GLOBAL_LIST(chemical_reactions_list) //List of all /datum/chemical_reaction datums indexed by reaction id. Used to search for the result instead of the components.
@@ -337,14 +344,17 @@ GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 
 //Maintenance Repair Tools
 GLOBAL_LIST_INIT(dropship_repair_tool_types, list(
-	"WELDER" = /obj/item/tool/weldingtool,
-	"SCREWDRIVER" = /obj/item/tool/screwdriver,
-	"WRENCH" = /obj/item/tool/wrench,
-	"WIRECUTTERS" = /obj/item/tool/wirecutters,
-	"CROWBAR" = /obj/item/tool/crowbar,
-	"MULTITOOL" = /obj/item/device/multitool,
-	"CABLE COIL" = /obj/item/stack/cable_coil,
+	/obj/item/tool/weldingtool,
+	/obj/item/tool/screwdriver,
+	/obj/item/tool/wrench,
+	/obj/item/tool/wirecutters,
+	/obj/item/tool/crowbar,
+	/obj/item/device/multitool,
+	/obj/item/stack/cable_coil,
 ))
+
+//Dropship CAS overlays
+GLOBAL_LIST_EMPTY(dropship_reticles)
 
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]

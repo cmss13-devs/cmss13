@@ -750,7 +750,7 @@
 	var/area/current_area = get_area(src)
 	if(istype(current_area, /area/shuttle))
 		var/obj/docking_port/mobile/found_shuttle = null
-		for(var/obj/docking_port/mobile/shuttle in world)
+		for(var/obj/docking_port/mobile/shuttle in SSshuttle.mobile)
 			if(get_area(shuttle) == current_area)
 				found_shuttle = shuttle
 				break

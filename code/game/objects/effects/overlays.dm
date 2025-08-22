@@ -337,6 +337,14 @@
 
 	var/shuttle_tag = null
 
+/obj/effect/overlay/temp/dropship_reticle/New()
+	. = ..()
+	GLOB.dropship_reticles += src
+
+/obj/effect/overlay/temp/dropship_reticle/Destroy()
+	GLOB.dropship_reticles -= src
+	return ..()
+
 /obj/effect/overlay/temp/dropship_reticle/proc/update_visibility_for_mob(mob/mob_user)
 	var/show_reticle = FALSE
 	if(GLOB.huds[MOB_HUD_DROPSHIP] && (mob_user in GLOB.huds[MOB_HUD_DROPSHIP].hudusers))
@@ -406,10 +414,10 @@
 	invisibility = INVISIBILITY_MAXIMUM
 	var/image/flag_image
 
-/obj/effect/overlay/temp/protection_flag/New(turf/T)
+/obj/effect/overlay/temp/protection_flag/New(turf/Tile)
 	..()
-	if(T)
-		forceMove(T)
+	if(Tile)
+		forceMove(Tile)
 		update_all_dropship_users()
 
 /obj/effect/overlay/temp/protection_flag/Destroy()
@@ -438,6 +446,10 @@
 	desc = "This area is protected by anti-air defenses."
 	icon_state = "danger_reticle"
 
+/obj/effect/overlay/temp/protection_flag/antiair/New(turf/Tile)
+	..()
+	GLOB.protection_flags_antiair += src
+
 /obj/effect/overlay/temp/protection_flag/antiair/update_all_dropship_users()
 	// Exclude observers
 	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
@@ -445,9 +457,12 @@
 		var/image/flag_img = get_flag_image()
 		for(var/mob/user in dropship_hud.hudusers)
 			if(user.client && !isobserver(user))
-				user.client.images += flag_img
+				// Only show if user is in the dropship
+				if(istype(get_area(user), /area/shuttle/drop1) || istype(get_area(user), /area/shuttle/drop2))
+					user.client.images += flag_img
 
 /obj/effect/overlay/temp/protection_flag/antiair/Destroy()
+	GLOB.protection_flags_antiair -= src
 	if(flag_image)
 		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
 		if(dropship_hud)
@@ -461,6 +476,10 @@
 	desc = "This area is protected by chaff countermeasures."
 	icon_state = "warning_reticle"
 
+/obj/effect/overlay/temp/protection_flag/chaff/New(turf/Tile)
+	..()
+	GLOB.protection_flags_chaff += src
+
 /obj/effect/overlay/temp/protection_flag/chaff/update_all_dropship_users()
 	// Exclude observers
 	var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
@@ -468,9 +487,12 @@
 		var/image/flag_img = get_flag_image()
 		for(var/mob/user in dropship_hud.hudusers)
 			if(user.client && !isobserver(user))
-				user.client.images += flag_img
+				// Only show if user is in the dropship
+				if(istype(get_area(user), /area/shuttle/drop1) || istype(get_area(user), /area/shuttle/drop2))
+					user.client.images += flag_img
 
 /obj/effect/overlay/temp/protection_flag/chaff/Destroy()
+	GLOB.protection_flags_chaff -= src
 	if(flag_image)
 		var/datum/mob_hud/dropship/dropship_hud = GLOB.huds[MOB_HUD_DROPSHIP]
 		if(dropship_hud)

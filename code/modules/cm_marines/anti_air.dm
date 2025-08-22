@@ -146,7 +146,7 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	var/antiair_fire = FALSE // blocks weapon from firing
 	var/antiair_reload = FALSE // blocks weapon from being reloaded
 	var/antiair_destroy = FALSE // destroys the weapon after the duration
-	var/list/tools = list("WELDER", "SCREWDRIVER", "WRENCH", "WIRECUTTERS", "CROWBAR", "MULTITOOL", "CABLE COIL")
+	var/list/tools = list(/obj/item/tool/weldingtool, /obj/item/tool/screwdriver, /obj/item/tool/wrench, /obj/item/tool/wirecutters, /obj/item/tool/crowbar, /obj/item/device/multitool, /obj/item/stack/cable_coil)
 	var/repairing = FALSE
 	var/repair_step_index = 1
 	var/effect_id = null // Unique identifier for this effect instance
@@ -215,12 +215,8 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	if(antiair_destroy && length(src.repair_steps) > 0)
 		// Effect timed out without being repaired - destroy the equipment
 		// Force drop the equipment if it's being held by a powerloader
-		var/obj/item/powerloader_clamp/clamp = null
-		for(var/obj/item/powerloader_clamp/possible_clamp in world)
-			if(possible_clamp.loaded == target)
-				clamp = possible_clamp
-				break
-		if(clamp)
+		if(istype(target.loc, /obj/item/powerloader_clamp))
+			var/obj/item/powerloader_clamp/clamp = target.loc
 			clamp.loaded = null
 			clamp.update_icon()
 		target.visible_message(SPAN_WARNING("[target] crumbles into itself and falls apart. It's been destroyed!"))
@@ -236,5 +232,5 @@ GLOBAL_DATUM(almayer_aa_cannon, /obj/structure/anti_air_cannon)
 	duration = 1800
 	antiair_reload = TRUE
 	antiair_destroy = TRUE
-	tools = list("WELDER", "SCREWDRIVER", "WRENCH", "WIRECUTTERS", "CROWBAR")
+	tools = list(/obj/item/tool/weldingtool, /obj/item/tool/screwdriver, /obj/item/tool/wrench, /obj/item/tool/wirecutters, /obj/item/tool/crowbar)
 	antiair_message = "YOU HEAR THE PLANE VEER OFF COURSE AS IT FLIES THROUGH A CLOUD OF ACIDIC GAS!"

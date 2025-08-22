@@ -613,6 +613,8 @@
 	if(color)
 		src.color = color
 
+	GLOB.xeno_telegraphs_antiair += src
+
 	if(ttl > 0)
 		QDEL_IN(src, ttl)
 
@@ -620,6 +622,7 @@
 	update_all_xeno_users()
 
 /obj/effect/xenomorph/xeno_telegraph/antiair/Destroy()
+	GLOB.xeno_telegraphs_antiair -= src
 	// Remove image from all xeno clients and observers before destroying
 	if(telegraph_image)
 		for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)
@@ -667,6 +670,8 @@
 	if(color)
 		src.color = color
 
+	GLOB.xeno_telegraphs_chaff += src
+
 	if(ttl > 0)
 		QDEL_IN(src, ttl)
 
@@ -674,6 +679,7 @@
 	update_all_xeno_users()
 
 /obj/effect/xenomorph/xeno_telegraph/chaff/Destroy()
+	GLOB.xeno_telegraphs_chaff -= src
 	// Remove image from all xeno clients and observers before destroying
 	if(telegraph_image)
 		for(var/mob/living/carbon/xenomorph/xeno in GLOB.living_xeno_list)

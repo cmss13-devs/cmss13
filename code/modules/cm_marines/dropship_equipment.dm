@@ -233,7 +233,7 @@
 	if(src.ship_base)
 		var/is_tool = FALSE
 		for(var/tool_type in GLOB.dropship_repair_tool_types)
-			if(istype(item_equip, GLOB.dropship_repair_tool_types[tool_type]))
+			if(istype(item_equip, tool_type))
 				is_tool = TRUE
 				break
 		if(is_tool)
@@ -250,9 +250,8 @@
 		// Only allow one repair at a time per effect
 		if(effect.repairing)
 			var/next_step = effect.repair_steps[effect.repair_step_index]
-			var/expected_type = get_dropship_repair_tool_type(next_step)
 			//wear your insulated gloves, shocks the user before any do_after if the next step is wirecutters
-			if(next_step == "WIRECUTTERS")
+			if(next_step == /obj/item/tool/wirecutters)
 				var/mob/living/Living_mob = user
 				if(Living_mob.electrocute_act(10, src))
 					effect.repairing = FALSE
@@ -264,7 +263,7 @@
 				to_chat(user, SPAN_WARNING("Repair interrupted!"))
 				return TRUE
 			//if the tool is not the expected type, warn the user
-			if(!expected_type || !istype(item_equip, expected_type))
+			if(!next_step || !istype(item_equip, next_step))
 				to_chat(user, SPAN_WARNING("Incorrect tool!"))
 				// Stay on the same step, do not advance or reset anything
 				return TRUE

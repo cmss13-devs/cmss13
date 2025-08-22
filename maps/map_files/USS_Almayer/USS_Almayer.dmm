@@ -15663,7 +15663,7 @@
 	id = "engie_store";
 	name = "Emergency Storage";
 	pixel_y = 26;
-	req_one_access_txt = "6"
+	req_one_access_txt = "7"
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)

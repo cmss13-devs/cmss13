@@ -34790,7 +34790,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/hallways/upper/port)
 "bGb" = (
-/obj/effect/decal/floor_symbol/wey_yu{
+/obj/effect/decal/floor_symbol/wy_3x1{
 	dir = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2,
@@ -34808,13 +34808,13 @@
 	network_id = "CL_Security";
 	welded = 1
 	},
-/obj/effect/decal/floor_symbol/wey_yu/mid{
+/obj/effect/decal/floor_symbol/wy_3x1/mid{
 	dir = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2,
 /area/almayer/medical/containment/cell/cl)
 "bGe" = (
-/obj/effect/decal/floor_symbol/wey_yu/right{
+/obj/effect/decal/floor_symbol/wy_3x1/right{
 	dir = 1
 	},
 /turf/open/floor/almayer/research/containment/floor2,
@@ -64041,7 +64041,7 @@
 /obj/structure/machinery/door_control/cl/office/lobby_door{
 	pixel_x = 24
 	},
-/obj/effect/decal/floor_symbol/wey_yu/right{
+/obj/effect/decal/floor_symbol/wy_3x1/right{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -77783,7 +77783,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
 "rRT" = (
-/obj/effect/decal/floor_symbol/wey_yu{
+/obj/effect/decal/floor_symbol/wy_3x1{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
@@ -85422,7 +85422,7 @@
 "uXE" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/decal/floor_symbol/wey_yu/mid{
+/obj/effect/decal/floor_symbol/wy_3x1/mid{
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,

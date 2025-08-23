@@ -211,3 +211,56 @@
   - balance: Adjusted some weapon statistics of the Desert Eagle/M1911.
   realforest2001:
   - bugfix: Blended wall shutters can now be used properly in east-west directions.
+2025-08-21:
+  MistChristmas:
+  - bugfix: Fix flashlight grip being listed twice for M37.
+  thevandie:
+  - rscadd: Adds a new description to the plump helmet mushroom.
+  - rscdel: Deletes the weird description on the plump helmet mushroom.
+2025-08-23:
+  BOBAMAx:
+  - bugfix: CL on solaris pmc insert won't spawn as a CMB marshal any more
+  Blue-Fox5:
+  - spellcheck: Fixed berserkers strain description giving out the wrong number of
+      rage you can obtain
+  Blundir:
+  - rscadd: yautja, working joes, provost now have unique bubbles types to them
+  - rscadd: yautja translator now has a unique speech and typing bubble
+  - rscadd: speech bubbles now render over huds like med/sec huds
+  - rscadd: whisper now shows runechat message above your head (if you are in range)
+  - imageadd: a lot of new bubble icons, resprite of old ones, adding a smooth fade
+      out animation to all of them
+  - bugfix: whispering while laying down (like in crit) no longer shows your speech
+      bubble under your legs
+  Icarus-The-Sun:
+  - qol: Allows Syringes to be worn in Suit Storage, Ear Slots, and Belt Slots
+  MeH0y:
+  - rscadd: Blooded Thrall system
+  - balance: thralls no longer have access to human weaponry
+  - bugfix: thralls can now interact with their mask functions
+  - bugfix: thralls can now use the combi-stick
+  - bugfix: thrall SD now works properly
+  - bugfix: thralls no longer go bald
+  - imageadd: Blooded thrall hud icon, new thrall armor set with 5 material types.
+  - maptweak: Added blooded thrall vendor on upper-deck, replaced the lower-deck youngblood
+      showers with thrall quarters.
+  Red-byte3D:
+  - bugfix: Fixes some broken vending code so you can properly vend apc gear if an
+      apc is "chosen"
+  - bugfix: Spec weapons no longer become null when you are wielding them near an
+      explosion
+  SirNightKnight:
+  - bugfix: fixed light fixture deconstruction getting stuck on removing the light
+      fitting.
+  TheGamerdk:
+  - spellcheck: Stationary -> Stationery in the CL's briefcase
+  - bugfix: You can no longer tunnel in vehicle interiors
+  - qol: You can no longer climb with C4 in your hands, as you're more likely to want
+      to plant it on the wall.
+  - bugfix: Can no longer extract infinite metal from walls
+  Vicacrov:
+  - qol: Hivelords can now evolve from 4 minutes instead of 3 minutes, the same time
+      as Defenders (drones should be around at 180/200 evolution when this announcement
+      comes, this is just to cut down on extra announcements).
+  jupyterkat:
+  - bugfix: fixed boiler being immune to crossing flames

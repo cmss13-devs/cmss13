@@ -313,6 +313,7 @@
 		/datum/action/xeno_action/activable/info_marker/queen,
 		/datum/action/xeno_action/onclick/manage_hive,
 		/datum/action/xeno_action/onclick/send_thoughts,
+		/datum/action/xeno_action/onclick/tacmap,
 		/datum/action/xeno_action/onclick/toggle_seethrough,
 	)
 
@@ -374,11 +375,6 @@
 
 /mob/living/carbon/xenomorph/queen/can_destroy_special()
 	return TRUE
-
-/mob/living/carbon/xenomorph/queen/set_resting(new_resting, silent, instant)
-	if(ovipositor)
-		return
-	return ..()
 
 /mob/living/carbon/xenomorph/queen/get_organ_icon()
 	return "heart_t3"
@@ -928,7 +924,6 @@
 		/datum/action/xeno_action/activable/queen_give_plasma, //second macro
 		/datum/action/xeno_action/activable/expand_weeds, //third macro
 		/datum/action/xeno_action/activable/secrete_resin/remote/queen, //fifth macro
-		/datum/action/xeno_action/onclick/queen_tacmap,
 		/datum/action/xeno_action/onclick/eye,
 	)
 

@@ -492,7 +492,7 @@
 	color = "#d1001c" // rgb: 209, 0, 28
 	chemclass = CHEM_CLASS_RARE
 	custom_metabolism = RAPID_METABOLISM
-
+	flags = REAGENT_NO_GENERATION
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_HYPERTHERMIC = 8)
@@ -681,6 +681,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_NEOGENETIC = 0.5, PROPERTY_ANTICORROSIVE = 0.5, PROPERTY_ANTITOXIC = 0.5, PROPERTY_OXYGENATING = 0.5, PROPERTY_RELAXING = 1)
 	adj_dizzy = -3
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/drink/cold/kiraspecial
 	name = "Kira Special"
@@ -714,3 +715,4 @@
 	nutriment_factor = 2 * FOOD_METABOLISM
 	color = "#2ca314" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION

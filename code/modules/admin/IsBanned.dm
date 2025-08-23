@@ -32,6 +32,10 @@
 
 	var/datum/entity/player/P = get_player_from_key(ckey)
 
+	//BANDAMARINES ADD start
+	if(!is_telemetry && CONFIG_GET(flag/panic_bunker_enabled) && P.check_panic_bunker(address))
+		return list("reason"="PANIC BUNKER", "desc"="\nСервер сейчас находится в режиме бункера. Вам нужно наиграть больше часов, когда бункер отключен, либо обратиться к администрации за пропуском в дискорде [CONFIG_GET(string/discordurl)]")
+	//BANDAMARINES ADD end
 
 	. = P.check_ban(computer_id, address, is_telemetry)
 

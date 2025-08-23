@@ -54,6 +54,7 @@
 	loadmaplist(CONFIG_GROUND_MAPS_FILE, GROUND_MAP)
 	loadmaplist(CONFIG_SHIP_MAPS_FILE, SHIP_MAP)
 	LoadChatFilter()
+	LoadPanicBunker() // BANDAMARINES ADD
 
 	is_loaded = TRUE
 

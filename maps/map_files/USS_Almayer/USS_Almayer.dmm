@@ -34779,14 +34779,14 @@
 	req_access_txt = "200";
 	req_one_access = null
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
-	id = "cl_quarter_maintenance_2";
-	dir = 4
-	},
 /obj/item/device/motion_sensor/wy{
 	anchored = 1;
 	pixel_x = 8;
 	pixel_y = 8
+	},
+/obj/structure/machinery/door/poddoor/almayer/blended{
+	id = "cl_quarter_maintenance_2";
+	dir = 4
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment/cell/cl)

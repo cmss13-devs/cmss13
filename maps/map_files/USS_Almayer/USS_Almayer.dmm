@@ -34783,6 +34783,11 @@
 	id = "cl_quarter_maintenance_2";
 	dir = 4
 	},
+/obj/item/device/motion_sensor/wy{
+	anchored = 1;
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment/cell/cl)
 "bGw" = (
@@ -35211,6 +35216,11 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/backdoor{
 	dir = 1
 	},
+/obj/item/device/motion_sensor/wy{
+	anchored = 1;
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
 "bHM" = (
@@ -35239,6 +35249,11 @@
 /area/almayer/command/corporateliaison)
 "bHR" = (
 /obj/structure/platform_decoration/metal/almayer_smooth/north,
+/obj/item/device/motion_sensor/wy{
+	anchored = 1;
+	pixel_x = -8;
+	pixel_y = -8
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/command/corporateliaison)
 "bHS" = (
@@ -35313,6 +35328,11 @@
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/command/corporateliaison)
 "bIc" = (
+/obj/item/device/motion_sensor/wy{
+	anchored = 1;
+	pixel_x = -8;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/command/corporateliaison)
 "bId" = (
@@ -35448,6 +35468,11 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/item/device/motion_sensor/wy{
+	anchored = 1;
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
 "bIv" = (
@@ -36063,6 +36088,11 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/item/device/motion_sensor/wy{
+	anchored = 1;
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
 "bJK" = (

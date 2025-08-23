@@ -16,6 +16,8 @@
 #include "screentips/_screentips.dme"
 #include "xeno_customization/_xeno_customization.dme"
 #include "sounds/_sounds.dme"
+#include "metaserver/_metaserver.dme"
+#include "discord_link/_discord_link.dme"
 #include "translations/_translations.dme"
 #include "stats_viewer/_stats_viewer.dme"
 #include "vulture_rework/_vulture_rework.dme"

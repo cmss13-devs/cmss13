@@ -8,6 +8,9 @@
 	var/brainrot_regex
 
 /datum/controller/configuration/proc/filter_speech(client/user, message)
+	if(!has_discord_link(user))
+		return FALSE
+
 	if(!length(message))
 		return TRUE
 

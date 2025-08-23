@@ -70,9 +70,8 @@
 /obj/effect/alien/resin/special/recovery/Initialize(mapload, hive_ref)
 	. = ..()
 	update_minimap_icon()
-	if(hive_ref == XENO_HIVE_NORMAL)
-		RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_boost))
-		RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(disable_boost))
+	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_boost))
+	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(disable_boost))
 
 /obj/effect/alien/resin/special/recovery/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)

@@ -59,12 +59,17 @@
 
 	return FALSE
 
-/obj/effect/alien/resin/special/proc/enable_boost()
+/obj/effect/alien/resin/special/proc/enable_boost(source, hive_purchaser)
 	SIGNAL_HANDLER
-
-	boosted_structure = TRUE
-
-
-/obj/effect/alien/resin/special/proc/disable_boost()
+	if(hive_purchaser != src.linked_hive.hivenumber)
+		return
+	else
+		boosted_structure = TRUE
+/obj/effect/alien/resin/special/proc/disable_boost(source, hive_purchaser)
 	SIGNAL_HANDLER
-	boosted_structure = FALSE
+	if(hive_purchaser != src.linked_hive.hivenumber)
+		return
+	else
+		boosted_structure = FALSE
+
+

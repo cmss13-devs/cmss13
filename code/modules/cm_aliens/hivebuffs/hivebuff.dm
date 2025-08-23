@@ -578,12 +578,17 @@
 	cost = 1
 	radial_icon = "building"
 
-/datum/hivebuff/boost_structure/apply_buff_effects()
+/datum/hivebuff/boost_structure/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BOOST_XENOMORPH_WALLS)
+	var/hive_purchaser = hive.hivenumber
+
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_BOOST_XENOMORPH_WALLS, hive_purchaser)
 
 /datum/hivebuff/boost_structure/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
 	. = ..()
 
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS)
+	var/hive_purchaser = hive.hivenumber
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, hive_purchaser)

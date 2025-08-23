@@ -112,21 +112,26 @@
 /obj/item/restraint/legcuffs/xeno_restraints/attack(mob/living/carbon/target_mob, mob/user as mob)
 	if(!istype(target_mob, /mob/living/carbon/xenomorph))
 		to_chat(user, SPAN_DANGER("The cuffs do not fit!"))
-		return
-	if(!target_mob.legcuffed)
-		var/turf/user_loc = user.loc
-		var/turf/target_loc = target_mob.loc
-		playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
-		target_mob.visible_message(SPAN_DANGER("<B>[user] is trying to put restraints on [target_mob]!</B>"))
-		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mob, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-			return
-		if(!target_mob)
-			return
-		if(user_loc == user.loc && target_loc == target_mob.loc)
-			target_mob.legcuffed = src
-			forceMove(target_mob)
-			target_mob.legcuff_update()
-			target_mob.visible_message(SPAN_DANGER("[target_mob] has been successfully restrained by [user]!"))
+		return FALSE
+	if(target_mob.legcuffed)
+		to_chat(user, SPAN_DANGER("They're already cuffed!"))
+		return FALSE
+
+	var/turf/user_loc = get_turf(user)
+	var/turf/target_loc = get_turf(target_mob)
+	playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
+	target_mob.visible_message(SPAN_DANGER("<B>[user] is trying to put restraints on [target_mob]!</B>"))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mob, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		return FALSE
+	if(!target_mob)
+		return FALSE
+	if(user_loc != get_turf(user) || target_loc != get_turf(target_mob))
+		return FALSE
+	target_mob.legcuffed = src
+	forceMove(target_mob)
+	target_mob.legcuff_update()
+	target_mob.visible_message(SPAN_DANGER("[target_mob] has been successfully restrained by [user]!"))
+	return TRUE
 
 /obj/item/restraint/legcuffs/xeno_restraints/strong
 	name = "strong xeno restraints"

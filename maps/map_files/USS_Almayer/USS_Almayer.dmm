@@ -887,6 +887,11 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
+"acm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/node_n_w_e,
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/maintenance/sp)
 "acn" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -13611,7 +13616,11 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "aJn" = (
-/turf/open/space/basic,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
@@ -14055,6 +14064,17 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
+"aKB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/maintenance/sp)
 "aKC" = (
 /obj/structure/machinery/light,
 /turf/open_space,
@@ -17935,6 +17955,24 @@
 	},
 /obj/structure/airlock_assembly,
 /turf/open/floor/almayer/no_build/plating,
+/area/almayer/middeck/maintenance/sp)
+"aUE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -34755,24 +34793,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/node_s_w_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/sp)
-"bGi" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	layer = 2.5
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "bGj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -175806,16 +175826,16 @@ aYm
 aYm
 aXO
 bac
-aXO
 aYm
 aYm
+aOo
 aWt
-aJn
-aJn
-aJn
+aYm
+aYm
+aNJ
 aJn
 aZc
-aXv
+acm
 aXQ
 aXv
 wDr
@@ -175909,14 +175929,14 @@ aYY
 aYY
 aYy
 aYY
-bGi
 aYY
 aYY
+aUE
 aYo
-aJn
-aJn
-aJn
-aJn
+aYY
+aYY
+aKB
+aIi
 aZc
 aXv
 aXQ
@@ -176012,14 +176032,14 @@ aYm
 aYm
 aXO
 bab
-aXO
 aYm
 aYl
+aOo
 aYl
-aJn
-aJn
-aJn
-aJn
+aYm
+aYl
+aNJ
+aIi
 aZc
 aXw
 aXP

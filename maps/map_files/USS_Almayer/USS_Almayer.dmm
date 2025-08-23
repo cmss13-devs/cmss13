@@ -19904,12 +19904,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
-"aYT" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "aYU" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
@@ -20359,17 +20353,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
-"aZU" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "aZV" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor/almayer/plate,
@@ -20420,24 +20403,6 @@
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/effect/spawner/random/tool,
 /turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/sp)
-"baf" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SW-out";
-	layer = 2.5
-	},
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
-"bag" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "bah" = (
 /obj/effect/decal/cleanable/dirt,
@@ -25386,16 +25351,6 @@
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
-"bkZ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "SE-out"
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/maintenance/sp)
 "bla" = (
 /obj/structure/machinery/light/red{
 	dir = 8;
@@ -25422,11 +25377,6 @@
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
-"bld" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/adv,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "ble" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
@@ -25449,10 +25399,6 @@
 /obj/item/tool/pen,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
-"blg" = (
-/obj/structure/machinery/computer/arcade,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "blh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -34646,65 +34592,6 @@
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
-"bFK" = (
-/obj/structure/foamed_metal,
-/turf/open/floor/plating,
-/area/almayer/middeck/maintenance/sp)
-"bFL" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/item/storage/box/guncase/m41a{
-	pixel_y = 7
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
-"bFM" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/rack,
-/obj/structure/surface/rack{
-	pixel_y = 19;
-	layer = 5.2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/largecrate/random/mini{
-	pixel_y = 2
-	},
-/obj/structure/machinery/light/red,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
-"bFN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/surface/rack,
-/obj/structure/surface/rack{
-	pixel_y = 19;
-	layer = 5.2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/largecrate/random/mini{
-	pixel_y = 2
-	},
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
-"bFO" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 1;
-	pixel_x = -1
-	},
-/obj/structure/surface/table/almayer,
-/obj/item/storage/firstaid/adv,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "bFP" = (
 /obj/vehicle/powerloader{
 	dir = 8
@@ -34751,32 +34638,12 @@
 "bFV" = (
 /turf/open/floor/almayer/research/containment/corner/north,
 /area/almayer/medical/containment/cell/cl)
-"bFW" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/item/storage/box/guncase/m41a{
-	pixel_y = 7
-	},
-/obj/structure/surface/rack,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_aft_hallway)
-"bFY" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/goggles/midchance,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "bFZ" = (
 /obj/structure/stairs,
 /obj/structure/platform/metal/almayer_smooth/west,
@@ -34829,11 +34696,6 @@
 /obj/structure/platform_decoration/metal/almayer_smooth,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
-"bGh" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/heavy_cable/node_s_w_e,
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/maintenance/sp)
 "bGj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
@@ -35280,10 +35142,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bHC" = (
-/obj/effect/spawner/random/facepaint,
-/turf/open/floor/almayer/no_build/plating,
-/area/almayer/middeck/maintenance/sp)
 "bHD" = (
 /obj/structure/dropship_equipment/weapon/launch_bay,
 /turf/open/floor/almayer/cargo,
@@ -172592,9 +172450,9 @@ rdZ
 rdZ
 bCs
 bHM
-bFK
-bFK
-bFK
+aHs
+aHs
+aHs
 aHs
 aXw
 aYF
@@ -172798,9 +172656,9 @@ rdZ
 rdZ
 rdZ
 bHM
-aYT
-bFW
-bFL
+aHs
+aHs
+aHs
 aHs
 aXu
 aXO
@@ -172901,9 +172759,9 @@ rdZ
 rdZ
 rdZ
 bHM
-bkW
-aXM
-bkL
+aHs
+aHs
+aHs
 aHs
 aXu
 aXQ
@@ -173004,9 +172862,9 @@ bHM
 bHM
 bHM
 bHM
-bkW
-aXM
-bFM
+aHs
+aHs
+aHs
 aHs
 buT
 aYF
@@ -173101,15 +172959,15 @@ bxS
 bbj
 baG
 aHs
-blg
-aRe
-aYT
-bag
-bkZ
-bag
-aZU
-aXM
-bFN
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
 aHs
 aXu
 aXQ
@@ -173204,15 +173062,15 @@ bxR
 bqp
 bqj
 aHs
-bHC
-bld
-bkW
-aXv
-aXQ
-aXv
-baf
-bFY
-bFO
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
+aHs
 aHs
 aXv
 aXQ
@@ -173310,9 +173168,9 @@ aHs
 aHs
 aHs
 aHs
-aWl
-aWl
-aWl
+aHs
+aHs
+aHs
 aHs
 aHs
 aHs
@@ -173415,7 +173273,7 @@ aYl
 baq
 bpZ
 aYl
-bGh
+aYl
 aYl
 aUz
 aYl

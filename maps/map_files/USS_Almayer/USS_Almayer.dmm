@@ -13667,6 +13667,16 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
+"aJn" = (
+/obj/structure/reagent_dispensers/fueltank/oxygentank{
+	anchored = 1
+	},
+/obj/structure/window/reinforced/toughened{
+	dir = 4;
+	health = 500
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/almayer/engineering/lower/workshop/hangar)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
@@ -31430,6 +31440,9 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
+"bxQ" = (
+/turf/open/floor/almayer/test_floor5,
+/area/almayer/engineering/lower/workshop/hangar)
 "bxR" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/prop/invuln/lattice_prop{
@@ -34950,10 +34963,42 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/fore_hallway)
+"bFG" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/plating_striped/northeast,
+/area/almayer/engineering/lower/workshop/hangar)
+"bFH" = (
+/turf/open/floor/almayer/plating_striped/southeast,
+/area/almayer/engineering/lower/workshop/hangar)
+"bFI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/l3closet,
+/turf/open/floor/almayer/plating/northeast,
+/area/almayer/engineering/lower/workshop/hangar)
 "bFJ" = (
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
+"bFK" = (
+/obj/structure/closet/secure_closet/guncabinet/red,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/obj/item/clothing/suit/storage/marine/light/vest,
+/turf/open/floor/almayer/cargo,
+/area/almayer/engineering/lower/workshop/hangar)
+"bFL" = (
+/obj/structure/closet/secure_closet,
+/obj/item/storage/backpack/marine/rocketpack,
+/obj/item/storage/backpack/marine/rocketpack,
+/obj/item/storage/backpack/marine/mortarpack,
+/obj/item/storage/backpack/marine/mortarpack,
+/obj/item/storage/backpack/marine/grenadepack,
+/obj/item/storage/backpack/marine/grenadepack,
+/turf/open/floor/almayer/cargo,
+/area/almayer/engineering/lower/workshop/hangar)
+"bFM" = (
+/obj/structure/surface/table/reinforced/black,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/engineering/lower/workshop/hangar)
 "bFP" = (
 /obj/vehicle/powerloader{
 	dir = 8
@@ -59533,10 +59578,6 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/lifeboat)
-"kRD" = (
-/obj/effect/decal/cleanable/blood/oil,
-/turf/open/floor/almayer/plating_striped/northeast,
-/area/almayer/engineering/lower/workshop/hangar)
 "kRG" = (
 /obj/effect/decal/heavy_cable/cable_horizontal,
 /obj/structure/machinery/camera/autoname/almayer{
@@ -65596,16 +65637,6 @@
 /obj/structure/closet/firecloset,
 /turf/open/floor/almayer/cargo,
 /area/almayer/hallways/lower/starboard_midship_hallway)
-"npA" = (
-/obj/structure/closet/secure_closet,
-/obj/item/storage/backpack/marine/rocketpack,
-/obj/item/storage/backpack/marine/rocketpack,
-/obj/item/storage/backpack/marine/mortarpack,
-/obj/item/storage/backpack/marine/mortarpack,
-/obj/item/storage/backpack/marine/grenadepack,
-/obj/item/storage/backpack/marine/grenadepack,
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/workshop/hangar)
 "npO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -69965,9 +69996,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/upper/midship_hallway)
-"oZy" = (
-/turf/open/floor/almayer/plating_striped/southeast,
-/area/almayer/engineering/lower/workshop/hangar)
 "oZD" = (
 /obj/structure/sign/poster/music{
 	pixel_x = -27
@@ -71841,12 +71869,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/engineering/lower/workshop)
-"pSt" = (
-/obj/structure/closet/secure_closet/guncabinet/red,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/obj/item/clothing/suit/storage/marine/light/vest,
-/turf/open/floor/almayer/cargo,
-/area/almayer/engineering/lower/workshop/hangar)
 "pSF" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -71856,11 +71878,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_fore_hallway)
-"pSQ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/l3closet,
-/turf/open/floor/almayer/plating/northeast,
-/area/almayer/engineering/lower/workshop/hangar)
 "pSU" = (
 /obj/structure/machinery/photocopier,
 /obj/structure/barricade/handrail{
@@ -79198,10 +79215,6 @@
 	},
 /turf/open/floor/almayer/bluefull,
 /area/almayer/living/briefing)
-"sJI" = (
-/obj/structure/surface/table/reinforced/black,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/engineering/lower/workshop/hangar)
 "sJY" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -85486,16 +85499,6 @@
 	},
 /turf/open/floor/almayer/orangecorner/east,
 /area/almayer/hallways/lower/port_umbilical)
-"vjW" = (
-/obj/structure/reagent_dispensers/fueltank/oxygentank{
-	anchored = 1
-	},
-/obj/structure/window/reinforced/toughened{
-	dir = 4;
-	health = 500
-	},
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/engineering/lower/workshop/hangar)
 "vka" = (
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/cic_hallway)
@@ -86210,9 +86213,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"vwY" = (
-/turf/open/floor/almayer/test_floor5,
-/area/almayer/engineering/lower/workshop/hangar)
 "vxb" = (
 /obj/structure/machinery/light,
 /turf/open/floor/almayer,
@@ -137523,7 +137523,7 @@ rNK
 wUK
 prP
 ary
-pSt
+bFK
 nmY
 alb
 xHS
@@ -137626,12 +137626,12 @@ alB
 alv
 rNK
 alm
-npA
+bFL
 nmY
 dZu
 akW
 dKK
-vjW
+aJn
 nmY
 siT
 bUQ
@@ -137829,7 +137829,7 @@ yfy
 lFp
 qUZ
 alC
-sJI
+bFM
 rNK
 dDM
 acd
@@ -137932,7 +137932,7 @@ yfy
 ruL
 gsd
 alC
-sJI
+bFM
 rNK
 dDM
 lab
@@ -138041,8 +138041,8 @@ aln
 ary
 ali
 nZm
-oZy
-kRD
+bFH
+bFG
 xXl
 nmY
 idL
@@ -138246,10 +138246,10 @@ uNq
 tOu
 qyK
 nmY
-pSQ
+bFI
 akW
 qGw
-vwY
+bxQ
 nmY
 lQf
 tHk

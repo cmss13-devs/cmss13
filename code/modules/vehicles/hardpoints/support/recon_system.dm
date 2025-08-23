@@ -1,6 +1,6 @@
 /obj/item/hardpoint/support/recon_system
 	name = "\improper AQ-133 Acquisition System"
-	desc = "A short-range Air-to-Ground LIDAR target acquisition system designed to actively track and profile non-IFF signatures in a localized range of detection."
+	desc = "you STRONGLY feel like you should put this down NOW"
 	icon = 'icons/obj/vehicles/hardpoints/blackfoot.dmi'
 	icon_state = "radar"
 	disp_icon = "blackfoot"

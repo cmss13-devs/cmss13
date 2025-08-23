@@ -46,7 +46,6 @@
 		/obj/item/hardpoint/primary/blackfoot_launchers,
 		/obj/item/hardpoint/support/sensor_array,
 		/obj/item/hardpoint/secondary/doorgun,
-		/obj/item/hardpoint/support/recon_system,
 	)
 
 	entrances = list(

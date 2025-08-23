@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Spec weapons no longer become null when you are wielding them near an explosion"

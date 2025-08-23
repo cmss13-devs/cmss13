@@ -18,8 +18,7 @@
 	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
-	random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+	var/random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
 	new_human.name = new_human.real_name
 	new_human.age = rand(22,45)
@@ -391,10 +390,13 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male)]"
-	else
-		random_name = "[pick(GLOB.first_names_female)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male)]"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
@@ -788,10 +790,13 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male)]"
-	else
-		random_name = "[pick(GLOB.first_names_female)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male)]"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")

@@ -37,6 +37,7 @@
 		"UPP" = ACCESS_UPP_ENGINEERING,
 		"RMC" = ACCESS_TWE_ENGINEERING,
 	)
+	layer = ABOVE_BLOOD_LAYER
 
 /obj/item/device/motion_sensor/Initialize(mapload, ...)
 	. = ..()

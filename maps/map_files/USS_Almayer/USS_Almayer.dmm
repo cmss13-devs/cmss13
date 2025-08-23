@@ -35099,6 +35099,7 @@
 /area/almayer/maint/hull/lower/lower_astronav)
 "bHr" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/secure_closet/guncabinet/wy,
 /turf/open/floor/almayer/silver/north,
 /area/almayer/medical/containment/cell/cl)
 "bHs" = (

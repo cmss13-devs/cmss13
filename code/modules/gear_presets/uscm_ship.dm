@@ -106,7 +106,7 @@
 
 /datum/equipment_preset/uscm_ship/corp_sec/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_MARINE_LIAISON)
+	access = get_access(ACCESS_LIST_MARINE_LIAISON) + list(ACCESS_WY_SECURITY)
 
 /datum/equipment_preset/uscm_ship/corp_sec/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl/sec, WEAR_L_EAR)

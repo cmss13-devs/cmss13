@@ -435,6 +435,9 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"abd" = (
+/turf/closed/wall/almayer/reinforced/temphull,
+/area/almayer/medical/containment/cell/cl)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -171768,7 +171771,7 @@ gel
 gel
 gel
 fkX
-bFG
+abd
 aXB
 aYD
 aXB
@@ -171871,7 +171874,7 @@ cXF
 rLU
 dKp
 cHu
-bFG
+abd
 aXu
 aXO
 aXu
@@ -171974,7 +171977,7 @@ bHk
 bGb
 bHk
 cHu
-bFG
+abd
 aXv
 aXO
 aXu
@@ -172077,7 +172080,7 @@ vzp
 bGd
 bFU
 cHu
-bFG
+abd
 aXv
 aXO
 aXu
@@ -172180,7 +172183,7 @@ bHk
 bGe
 bHk
 cHu
-bFG
+abd
 aXw
 aYF
 aXy
@@ -172283,7 +172286,7 @@ pRy
 wwW
 bFV
 cHu
-bFG
+abd
 aXv
 aXQ
 aXu
@@ -172386,7 +172389,7 @@ wJH
 wJH
 wJH
 sNR
-bFG
+abd
 aXv
 aXQ
 aXu
@@ -172486,10 +172489,10 @@ bxQ
 bxQ
 bxQ
 bxQ
-bFG
-bFG
-bFG
-bFG
+abd
+abd
+abd
+abd
 aXv
 aXQ
 aXu

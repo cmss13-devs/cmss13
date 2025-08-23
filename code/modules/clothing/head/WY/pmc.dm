@@ -7,7 +7,7 @@
 
 /obj/item/clothing/head/helmet/marine/veteran/pmc
 	name = "\improper PMC tactical cap"
-	desc = "A protective cap made from flexible kevlar. Standard issue for most security forms in the place of a helmet."
+	desc = "A protective cap made from flexible kevlar. Standard issue for most security firms in the place of a helmet."
 	icon_state = "pmc_hat"
 	icon = 'icons/obj/items/clothing/hats/hats_by_faction/WY.dmi'
 	item_icons = list(

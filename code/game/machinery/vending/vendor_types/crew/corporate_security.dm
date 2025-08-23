@@ -2,11 +2,22 @@
 
 GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-	list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/pmc, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-	list("Uniform", 0, /obj/item/clothing/under/marine/veteran/pmc/guard, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 	list("Headset", 0, /obj/item/device/radio/headset/almayer/mcl/sec, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 	list("Corporate Boots", 0, /obj/item/clothing/shoes/veteran/pmc/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 	list("Tactical SWAT HUD", 0, /obj/item/clothing/glasses/sunglasses/sechud/tactical, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
+
+	list("SHIRT (MAX 5)", 0, null, null, null),
+	list("Black Suit Pants", 0, /obj/item/clothing/under/liaison_suit/black, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+	list("Black Suitskirt", 0, /obj/item/clothing/under/liaison_suit/black/skirt, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+	list("Blue Suit Pants", 0, /obj/item/clothing/under/liaison_suit/blue, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("Brown Suit Pants", 0, /obj/item/clothing/under/liaison_suit/brown, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("White Suit Pants", 0, /obj/item/clothing/under/liaison_suit/corporate_formal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+
+	list("JACKET (MAX 5)", 0, null, null, null),
+	list("Black Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/black, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_RECOMMENDED),
+	list("Blue Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("Brown Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("Formal Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/formal, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 
 	list("ARMOR (CHOOSE 1)", 0, null, null, null),
 	list("Bulletproof Vest", 0, /obj/item/clothing/suit/armor/bulletproof, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),

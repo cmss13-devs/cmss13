@@ -738,7 +738,7 @@ Defined in conflicts.dm of the #defines folder.
 
 	attached_item = S.master_object
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, PROC_REF(remove_attached_item))
-	activation = new /datum/action/item_action/toggle(src, S.master_object)
+	activation = new /datum/action/item_action/toggle/rail_flashlight(src, S.master_object)
 
 	if(ismob(S.master_object.loc))
 		activation.give_to(S.master_object.loc)
@@ -765,6 +765,8 @@ Defined in conflicts.dm of the #defines folder.
 		. = ..()
 	else
 		activate_attachment(attached_item, owner)
+		for(var/datum/action/item_action as anything in holder.actions)
+			item_action.update_button_icon()
 
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	turn_light(user, turn_off ? !turn_off : !light_on)
@@ -3668,9 +3670,9 @@ Defined in conflicts.dm of the #defines folder.
 	playsound(owner, 'sound/weapons/handling/gun_burst_toggle.ogg', 15, 1)
 
 	if(attached_bipod.full_auto_switch)
-		button.icon_state = "template_on"
+		action_icon_state = "full_auto_switch_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "full_auto_switch"
 
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)

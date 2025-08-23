@@ -680,7 +680,7 @@
 			COMSIG_XENO_STOP_MOMENTUM,
 			COMSIG_XENO_START_CHARGING,
 		))
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 	return ..()
 
 /datum/action/xeno_action/activable/tumble/use_ability(atom/Target)

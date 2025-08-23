@@ -163,7 +163,7 @@
 
 	if (behavior.dodge_activated)
 		behavior.dodge_activated = FALSE
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 		dodge_remove.speed_modifier += speed_buff_amount
 		dodge_remove.remove_temp_pass_flags(PASS_MOB_THRU)
 		dodge_remove.recalculate_speed()

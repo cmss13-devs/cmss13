@@ -243,6 +243,8 @@
 /datum/action/item_action/toggle/use/whistle/New(target)
 	. = ..()
 	action_icon_state = "whistle"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/toggle/stock/New()
 	. = ..()
@@ -393,8 +395,7 @@
 	update_button_icon()
 
 /datum/action/item_action/toggle/rail_flashlight/update_button_icon()
-	var/obj/item/weapon/gun/firearm = holder_item
-	if(firearm.flags_gun_features & GUN_FLASHLIGHT_ON)
+	if(holder_item.light_on)
 		action_icon_state = "flashlight_off"
 	else
 		action_icon_state = "flashlight"
@@ -526,6 +527,19 @@
 	else
 		action_icon_state = "neckerchief"
 	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/helmet_nvg/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/helmet_nvg/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/helmet_nvg/update_button_icon()
+	button.overlays.Cut()
+	action_icon_state = "nvg"
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 //This is the proc used to update all the action buttons.

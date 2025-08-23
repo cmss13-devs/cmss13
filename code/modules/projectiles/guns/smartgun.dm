@@ -269,9 +269,11 @@
 		return
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	if(G.auto_fire)
-		button.icon_state = "template_on"
+		action_icon_state = "autofire_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "autofire"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_accuracy_improvement/New(Target, obj/item/holder)
 	. = ..()
@@ -286,9 +288,11 @@
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_accuracy_improvement(usr)
 	if(G.accuracy_improvement)
-		button.icon_state = "template_on"
+		action_icon_state = "accuracy_improvement_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "accuracy_improvement"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_recoil_compensation/New(Target, obj/item/holder)
 	. = ..()
@@ -303,9 +307,11 @@
 	var/obj/item/weapon/gun/smartgun/G = holder_item
 	G.toggle_recoil_compensation(usr)
 	if(G.recoil_compensation)
-		button.icon_state = "template_on"
+		action_icon_state = "recoil_compensation_off"
 	else
-		button.icon_state = "template"
+		action_icon_state = "recoil_compensation"
+	button.overlays.Cut()
+	button.overlays += image ('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /datum/action/item_action/smartgun/toggle_frontline_mode/New(Target, obj/item/holder)
 	. = ..()

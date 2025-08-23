@@ -488,6 +488,46 @@
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
+/datum/action/item_action/toggle/adjust_mask/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/adjust_mask/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/adjust_mask/update_button_icon()
+	var/obj/item/clothing/mask/rebreather/scarf/coif = holder_item
+	if(coif.pulled)
+		if(istype(coif, /obj/item/clothing/mask/rebreather/scarf/tacticalmask))
+			action_icon_state = "scarf_off"
+		else
+			action_icon_state = "coif_off"
+	else
+		if(istype(coif, /obj/item/clothing/mask/rebreather/scarf/tacticalmask))
+			action_icon_state = "scarf"
+		else
+			action_icon_state = "coif"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/toggle/neckerchief/New()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/neckerchief/action_activate()
+	. = ..()
+	update_button_icon()
+
+/datum/action/item_action/toggle/neckerchief/update_button_icon()
+	var/obj/item/clothing/mask/neckerchief/chief = holder_item
+	if(chief.adjust)
+		action_icon_state = "neckerchief_off"
+	else
+		action_icon_state = "neckerchief"
+	button.overlays.Cut()
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
 //This is the proc used to update all the action buttons.
 /mob/proc/update_action_buttons(reload_screen)
 	if(!client)

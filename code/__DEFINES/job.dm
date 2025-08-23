@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(job_squad_roles, JOB_SQUAD_ROLES_LIST)
 #define JOB_MEDIC_ROLES /datum/timelock/medic
 #define JOB_MEDIC_ROLES_LIST list(JOB_SQUAD_MEDIC, JOB_CMO, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_NURSE, JOB_RESEARCHER, JOB_SURGEON)
 #define JOB_DOCTOR_ROLES /datum/timelock/doctor
-#define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON)
+#define JOB_DOCTOR_ROLES_LIST list(JOB_CMO, JOB_DOCTOR, JOB_SURGEON, JOB_FIELD_DOCTOR)
 #define JOB_RESEARCH_ROLES /datum/timelock/research
 #define JOB_RESEARCH_ROLES_LIST list(JOB_RESEARCHER)
 
@@ -261,6 +261,25 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define ROLES_WY_GOONS list(JOB_WY_GOON_LEAD, JOB_WY_GOON_TECH, JOB_WY_GOON_MEDIC, JOB_WY_GOON, JOB_WY_RESEARCHER, JOB_WY_RESEARCH_LEAD, JOB_WY_GOON_SYNTH)
 
+//-------- Hyperdyne --------//
+
+#define JOB_HC_SEC "HC Security Guard"
+#define JOB_HC_SEC_SYNTH "HC Security Guard Synthetic"
+#define JOB_HC_TRAINEE "Corporate Trainee"
+#define JOB_HC_JUNIOR_EXECUTIVE "Corporate Junior Executive"
+#define JOB_HC_CORPORATE_LIAISON "Corporate Liaison"
+#define JOB_HC_EXECUTIVE "Corporate Executive"
+#define JOB_HC_SENIOR_EXECUTIVE "Corporate Senior Executive"
+#define JOB_HC_EXECUTIVE_SPECIALIST "Corporate Executive Specialist"
+#define JOB_HC_LEGAL_SPECIALIST "Corporate Legal Specialist"
+#define JOB_HC_EXECUTIVE_SUPERVISOR "Corporate Executive Supervisor"
+#define JOB_HC_LEGAL_SUPERVISOR "Corporate Legal Supervisor"
+#define JOB_HC_ASSISTANT_MANAGER "Corporate Assistant Manager"
+#define JOB_HC_DIVISION_MANAGER "Corporate Division Manager"
+#define JOB_HC_CHIEF_EXECUTIVE "Corporate Chief Executive"
+#define JOB_HC_DEPUTY_DIRECTOR "HC Deputy Director"
+#define JOB_HC_DIRECTOR "HC Director"
+
 //---- Contractors ----//
 #define JOB_CONTRACTOR "VAIPO Mercenary"
 #define JOB_CONTRACTOR_ST "VAIPO Mercenary"
@@ -366,6 +385,19 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 #define JOB_UPP_COMMISSAR "UPP Political Commissar"
 
+//-------- People's Armed Police --------//
+
+#define JOB_PAP_MILITSIONER "UPP Militsioner"
+#define JOB_PAP_STARSHIY_MILITSIONER "UPP Starshiy Militsioner"
+#define JOB_PAP_STARSHINA "UPP Starshina"
+#define JOB_PAP_LEYTENANT "UPP Leytenant Militsii"
+#define JOB_PAP_KAPITAN "UPP Kapitan Militsii"
+#define JOB_PAP_MAYOR "UPP Mayor Militsii"
+#define JOB_PAP_POLITKOMISSAR "UPP Politkomissar"
+#define JOB_PAP_POLKOVNIK "UPP Polkovnik Militsii"
+
+#define PAP_GRUNT_LIST list(JOB_PAP_MILITSIONER, JOB_PAP_STARSHIY_MILITSIONER, JOB_PAP_STARSHINA)
+
 //-------- CLF --------//
 #define JOB_CLF "CLF Guerilla"
 #define JOB_CLF_ENGI "CLF Field Technician"
@@ -374,11 +406,31 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CLF_LEADER "CLF Cell Leader"
 #define JOB_CLF_COMMANDER "CLF Cell Commander"
 #define JOB_CLF_SYNTH "CLF Multipurpose Synthetic"
+#define JOB_CLF_COORDINATOR "CLF Coordinator"
 
-#define CLF_JOB_LIST list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER, JOB_CLF_COMMANDER, JOB_CLF_SYNTH)
+#define CLF_JOB_LIST list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER, JOB_CLF_COMMANDER, JOB_CLF_SYNTH, JOB_CLF_COORDINATOR)
 
 //-------- TWE --------//
 #define JOB_TWE_REPRESENTATIVE "TWE Representative"
+
+//IASF
+
+#define JOB_TWE_IASF_PARA "IASF Paratrooper"
+#define JOB_TWE_IASF_PARA_SNIPER "IASF Paratrooper (Marksman)"
+#define JOB_TWE_IASF_PARA_PILOT "IASF Fleet Air Arm (Dropship Pilot)"
+#define JOB_TWE_IASF_PARA_SMARTGUNNER "IASF Paratrooper (Smartgunner)"
+#define JOB_TWE_IASF_PARA_SPECIALIST "IASF Paratrooper (Specialist)"
+#define JOB_TWE_IASF_PARA_ENGI "IASF Paratrooper (Combat Engineer)"
+#define JOB_TWE_IASF_PARA_MEDIC "IASF Paratrooper (Combat Medical Technician)"
+#define JOB_TWE_IASF_PARA_SQUAD_LEADER "IASF Paratrooper (Squad Leader)"
+#define JOB_TWE_IASF_PARA_LIEUTENANT "IASF Lieutenant"
+#define JOB_TWE_IASF_PARA_CAPTAIN "IASF Captain"
+#define JOB_TWE_IASF_PARA_MAJOR "IASF Major"
+#define JOB_TWE_IASF_PARA_COMMANDER "IASF Commanding Officer"
+
+#define JOB_TWE_IASF_PARA_SYNTH "IASF Support Synth"
+
+#define TWE_IASF_JOB_LIST list(JOB_TWE_IASF_PARA, JOB_TWE_IASF_PARA_ENGI, JOB_TWE_IASF_PARA_MEDIC, JOB_TWE_IASF_PARA_PILOT, JOB_TWE_IASF_PARA_SMARTGUNNER, JOB_TWE_IASF_PARA_SPECIALIST, JOB_TWE_IASF_PARA_SNIPER , JOB_TWE_IASF_PARA_SQUAD_LEADER, JOB_TWE_IASF_PARA_LIEUTENANT, JOB_TWE_IASF_PARA_CAPTAIN, JOB_TWE_IASF_PARA_MAJOR, JOB_TWE_IASF_PARA_COMMANDER)
 
 //RMC
 #define JOB_TWE_RMC_RIFLEMAN "RMC Rifleman"
@@ -427,6 +479,11 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 //-------- CIA --------//
 #define JOB_CIA "Intelligence Analyst"
 #define JOB_CIA_LIAISON "Intelligence Liaison Officer"
+#define JOB_CIA_UACQS_SEC "UACQS Security"
+#define JOB_CIA_UACQS_ADMN "UACQS Administrator"
+#define JOB_CIA_UACQS_COMR "UACQS Commissioner"
+
+#define JOB_CIA_ROLES_LIST list(JOB_CIA, JOB_CIA_LIAISON, JOB_CIA_UACQS_SEC, JOB_CIA_UACQS_ADMN, JOB_CIA_UACQS_COMR)
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"

@@ -61,8 +61,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	//game-preferences
 	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
 	var/ooccolor
-	var/be_special = BE_KING // Special role selection
-	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS // flags in #define/mode.dm
+	var/be_special = BE_ALIEN_AFTER_DEATH|BE_KING // Special role selection
+	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS // flags in #define/mode.dm
 	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
 	var/auto_fit_viewport = FALSE
 	var/adaptive_zoom = 0
@@ -191,6 +191,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/body_type = "Lean" // Body Type
 	var/language = "None" //Secondary language
 	var/preferred_squad = "None"
+	var/preferred_spec = list()
 	var/night_vision_preference = "Green"
 	var/list/nv_color_list = list(
 						"Green" = NV_COLOR_GREEN,
@@ -279,6 +280,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	/// if this client has custom cursors enabled
 	var/custom_cursors = TRUE
+	var/main_cursor = TRUE
+	var/chosen_pointer
 
 	/// if this client has tooltips enabled
 	var/tooltips = TRUE
@@ -330,8 +333,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 /datum/preferences/proc/client_reconnected(client/C)
 	owner = C
 	macros.owner = C
-
-	C.tgui_say?.load()
 
 /datum/preferences/Del()
 	. = ..()
@@ -488,6 +489,15 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<b>Corporate Relation:</b> <a href='byond://?_src_=prefs;preference=wy_relation;task=input'><b>[weyland_yutani_relation]</b></a><br>"
 			dat += "<b>Preferred Squad:</b> <a href='byond://?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
+			var/spec_detail
+			switch(length(preferred_spec))
+				if(0)
+					spec_detail = "No Preference"
+				if(1)
+					spec_detail = preferred_spec[1]
+				else
+					spec_detail = preferred_spec[1] + ", ..."
+			dat += "<b>Specialist Priority:</b> <a href='byond://?_src_=prefs;preference=prefspec;task=input'><b>[spec_detail]</b></a><br>"
 
 			dat += "<h2><b><u>Fluff Information:</u></b></h2>"
 			if(jobban_isbanned(user, "Records"))
@@ -943,6 +953,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 /datum/preferences/proc/SetFlavorText(mob/user)
 	var/HTML = "<body>"
 	HTML += "<tt>"
+	HTML += "You may include %bloodtype% %rank% or %name% as inserts."
+	HTML += "<br>"
+	HTML += "The %rank% will include a space after if applicable."
+	HTML += "<br>"
 	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
 	HTML += "<br>"
@@ -950,7 +964,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	HTML +="<a href='byond://?src=\ref[user];preference=flavor_text;task=done'>Done</a>"
 	HTML += "<tt>"
 	close_browser(user, "preferences")
-	show_browser(user, HTML, "Set Flavor Text", "flavor_text", width = 400, height = 430)
+	show_browser(user, HTML, "Set Flavor Text", "flavor_text", width = 410, height = 430)
 	return
 
 /datum/preferences/proc/SetJob(mob/user, role, priority)
@@ -1632,6 +1646,12 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "None")
 					if(new_pref_squad)
 						preferred_squad = new_pref_squad
+
+				if("prefspec")
+					var/new_pref_spec = tgui_input_checkboxes(user, "Choose your preferred spec in order of priority or none for 'No Preference'.", "Specialist Preference", GLOB.specialist_set_name_dict, min_checked=0)
+					if(isnull(new_pref_spec))
+						return // Canceled
+					preferred_spec = new_pref_spec
 
 				if("prefnvg")
 					var/new_nvg_color = tgui_input_list(user, "Choose the color of your night-vision", "Character Preferences", GLOB.nvg_color_list)

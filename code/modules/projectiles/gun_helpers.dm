@@ -149,7 +149,7 @@ DEFINES in setup.dm, referenced here.
 	return FALSE
 
 /obj/item/weapon/gun/pickup(mob/user)
-	..()
+	. = ..()
 
 	unwield(user)
 
@@ -254,57 +254,20 @@ DEFINES in setup.dm, referenced here.
 	if(user.equip_to_slot_if_possible(src, WEAR_BACK))
 		to_chat(user, SPAN_WARNING("[src]'s magnetic sling automatically yanks it into your back."))
 
-//repair popup stuff
-
-/obj/item/weapon/gun/proc/gun_repair_popup(mob/living/carbon/human/user)
-	if(gun_durability > GUN_DURABILITY_BROKEN)
-		if(user)
-			to_chat(user, SPAN_GREEN("The [name] has been successfully repaired."))
-			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 20, FALSE)
-			balloon_alert(user, "*repaired*")
-	else if(gun_durability <= GUN_DURABILITY_BROKEN)
-		if(user)
-			to_chat(user, SPAN_GREEN("The [name] is no longer worn out."))
-			playsound(src, 'sound/weapons/handling/gun_jam_rack_success.ogg', 20, FALSE)
-			balloon_alert(user, "*functional*")
-
-/obj/item/weapon/gun/proc/attempt_repair(mob/user, obj/item/stack/repairable/item)
-	var/strong_repair = FALSE
-	if(item.repair_amount_min >= 50)
-		strong_repair = TRUE
-
-	if(gun_durability >= GUN_DURABILITY_MAX)
-		to_chat(user, SPAN_GREEN("[src] is already fully repaired."))
-		if(user)
-			balloon_alert(user, "*max durability*")
-		return
-
-	if(gun_durability <= GUN_DURABILITY_BROKEN && item.repair_amount_min <= 49)
-		to_chat(user, SPAN_WARNING("[src] is too damaged to be repaired with [item]!"))
-		if(user)
-			balloon_alert(user, "*can't repair*")
-		return
-
-	if(do_after(user, item.repair_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-		clean_blood()
-		gun_repair_popup(user)
-		heal_gun_durability(rand(item.repair_amount_min, item.repair_amount_max), user)
-		user.visible_message("[user] [pick(item.repair_verb)] [src]. It looks to be repaired [strong_repair ? "significantly!" : "slightly."]")
-		item.use(1)
-	else
-		return
-
 //Clicking stuff onto the gun.
 //Attachables & Reloading
 /obj/item/weapon/gun/attackby(obj/item/attack_item, mob/user)
-	if(user.action_busy)
-		return
-
 	if(flags_gun_features & GUN_BURST_FIRING)
 		return
 
-	if(istype(attack_item, /obj/item/stack/repairable))
-		attempt_repair(user, attack_item)
+	if(istype(attack_item, /obj/item/prop/helmetgarb/gunoil))
+		var/oil_verb = pick("lubes", "oils", "cleans", "tends to", "gently strokes")
+		if(do_after(user, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, user, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+			user.visible_message("[user] [oil_verb] [src]. It shines like new.", "You oil up and immaculately clean [src]. It shines like new.")
+			src.clean_blood()
+		else
+			return
+
 
 	if(istype(attack_item,/obj/item/attachable))
 		if(check_inactive_hand(user))
@@ -338,6 +301,8 @@ DEFINES in setup.dm, referenced here.
 			return
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
+			return
+		if(magazine.loc != user && !istype(magazine.loc, /obj/item/storage))
 			return
 		if(flags_gun_features & GUN_INTERNAL_MAG)
 			to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
@@ -545,9 +510,16 @@ DEFINES in setup.dm, referenced here.
 /mob/living/carbon/human/proc/can_unholster_from_storage_slot(obj/item/storage/slot)
 	if(isnull(slot))
 		return FALSE
-	if(slot == shoes)//Snowflakey check for shoes and uniform
+
+	//Snowflakey check for shoes, face, and uniform
+	if(slot == shoes)
 		if(shoes.stored_item && isweapon(shoes.stored_item))
 			return shoes
+		return FALSE
+
+	if(slot == wear_mask)
+		if(wear_mask && isweapon(wear_mask))
+			return wear_mask
 		return FALSE
 
 	if(slot == w_uniform)
@@ -639,8 +611,8 @@ DEFINES in setup.dm, referenced here.
 			to_chat(src, SPAN_DANGER("You are unable to equip that."))
 	else //empty hand, start checking slots and holsters
 
-		//default order: suit, belt, back, pockets, uniform, shoes
-		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes")
+		//default order: suit, belt, back, pockets, uniform, shoes, wear_mask
+		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes", "wear_mask")
 
 		var/obj/item/slot_selected
 

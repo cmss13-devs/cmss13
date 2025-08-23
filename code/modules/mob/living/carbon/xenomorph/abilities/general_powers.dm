@@ -82,7 +82,7 @@
 	return ..()
 
 /mob/living/carbon/xenomorph/lay_down()
-	if(hardcore)
+	if(!can_heal && !resting)
 		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
 		return
 
@@ -275,11 +275,12 @@
 		return FALSE
 	var/turf/target_turf = get_turf(A)
 
-	if(target_turf.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
+	if(!SSmapping.same_z_map(X.loc.z, target_turf.loc.z))
+		to_chat(X, SPAN_XENOWARNING("Our mind cannot reach that far."))
 		return
-	if(!X.hive.living_xeno_queen || X.hive.living_xeno_queen.z != X.z)
-		to_chat(X, SPAN_XENOWARNING("We have no queen, the psychic link is gone!"))
+
+	if(!X.hive.living_xeno_queen || !SSmapping.same_z_map(X.hive.living_xeno_queen.z, X.z))
+		to_chat(X, SPAN_XENOWARNING("Our psychic link is gone, the Queen is either dead or too far away!"))
 		return
 
 	var/tally = 0
@@ -318,6 +319,67 @@
 	for(var/obj/item/explosive/plastic/explosive in target.contents)
 		xeno.corrosive_acid(explosive,acid_type,acid_plasma_cost)
 	return ..()
+
+#define ACID_COST_LEVEL_1 70
+#define ACID_COST_LEVEL_2 100
+#define ACID_COST_LEVEL_3 200
+
+/// Attempt to fill the target trap (called when xeno attacks with an empty hand)
+/// Returns TRUE if the trap was filled
+/mob/living/carbon/xenomorph/proc/try_fill_trap(obj/effect/alien/resin/trap/target)
+	if(!istype(target))
+		return FALSE
+
+	if(!acid_level)
+		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]"))
+		return FALSE
+
+	var/trap_acid_level = 0
+	if(target.trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
+
+	if(trap_acid_level >= acid_level)
+		to_chat(src, SPAN_XENONOTICE("It already has good acid in."))
+		return FALSE
+
+	var/acid_cost = ACID_COST_LEVEL_1
+	if(acid_level == 2)
+		acid_cost = ACID_COST_LEVEL_2
+	else if(acid_level == 3)
+		acid_cost = ACID_COST_LEVEL_3
+
+	if(!check_plasma(acid_cost))
+		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		return FALSE
+
+	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid."))
+	xeno_attack_delay(src)
+	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+		return FALSE
+
+	if(target.trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
+
+	if(trap_acid_level >= acid_level)
+		return FALSE
+
+	if(!check_plasma(acid_cost))
+		return FALSE
+
+	use_plasma(acid_cost)
+
+	target.cause_data = create_cause_data("resin acid trap", src)
+	target.setup_tripwires()
+	target.set_state(RESIN_TRAP_ACID1 + acid_level - 1)
+
+	playsound(target, 'sound/effects/refill.ogg', 25, 1)
+	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid!"),
+	SPAN_XENOWARNING("You pressurise the resin trap with acid!"), null, 5)
+	return TRUE
+
+#undef ACID_COST_LEVEL_1
+#undef ACID_COST_LEVEL_2
+#undef ACID_COST_LEVEL_3
 
 /datum/action/xeno_action/onclick/emit_pheromones/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -410,6 +472,18 @@
 
 	if (!tracks_target)
 		A = get_turf(A)
+
+	if(A.z != X.z && X.mob_size >= MOB_SIZE_BIG)
+		if (!do_after(X, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			return
+
+	//everyone gets (extra) timer to pounce up
+	if(A.z > X.z)
+		if (!do_after(X, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+			return
+
+
+
 
 	apply_cooldown()
 
@@ -593,6 +667,10 @@
 
 		if(locate(/obj/structure/machinery/colony_floodlight) in src)
 			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole on a light!"))
+			return FALSE
+
+		if(locate(/obj/structure/flora/jungle/vines) in src)
+			to_chat(xeno, SPAN_XENOWARNING("We cannot make a hole under the vines!"))
 			return FALSE
 
 	if(!xeno.check_alien_construction(src, check_doors = TRUE))
@@ -807,7 +885,6 @@
 		spitting = FALSE
 		return
 
-	xeno_cooldown = xeno.caste.spit_delay + xeno.ammo.added_spit_delay
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] spits at [atom]!"),
 
 	SPAN_XENOWARNING("We spit [xeno.ammo.name] at [atom]!") )

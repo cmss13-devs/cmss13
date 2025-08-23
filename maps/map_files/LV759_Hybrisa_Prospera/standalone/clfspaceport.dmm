@@ -1,0 +1,4425 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"ab" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = -5
+	},
+/obj/item/flag/plantable/clf,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"ai" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "36_alt"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"am" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"at" = (
+/obj/structure/closet/coffin/woodencrate{
+	pixel_y = 8
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/mre_food_packet/clf{
+	pixel_x = -2;
+	pixel_y = 10
+	},
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/clf_dropship)
+"aI" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"bf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"bm" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "49"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/clf_dropship)
+"bD" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"bL" = (
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"bN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"bR" = (
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_1";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = -20
+	},
+/obj/structure/closet/crate/green,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/accessory/patch/clf_patch,
+/obj/item/clothing/under/colonist/clf,
+/obj/item/clothing/under/colonist/clf,
+/obj/item/clothing/under/colonist/clf,
+/obj/item/clothing/under/colonist/clf,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
+/obj/item/roller/bedroll,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/southwest,
+/area/lv759/indoors/spaceport/clf_dropship)
+"cc" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	pixel_x = 10
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"cd" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "36"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"ci" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	amount = 15;
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/item/shard,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"co" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"cr" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = 13;
+	pixel_y = 31;
+	layer = 2.9
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/structure/machinery/light/blue{
+	dir = 1;
+	pixel_x = -15;
+	pixel_y = 20
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/indoors/spaceport/clf_dropship)
+"cD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/bed/stool,
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/yellow3,
+/area/lv759/indoors/spaceport/cargo)
+"cO" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid/autoname{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"cR" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "97"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"cS" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "98"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"cZ" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"dm" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/sign/safety/storage{
+	pixel_x = 32
+	},
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"dr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/shutters/almayer,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"ds" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = -1;
+	pixel_y = 34
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/blue{
+	pixel_x = -6;
+	pixel_y = -9
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"dx" = (
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"dz" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"dA" = (
+/obj/structure/closet/crate/ammo,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/clf_dropship)
+"dE" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "brokendropshipconsole2"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"dQ" = (
+/obj/item/tool/wet_sign{
+	layer = 4;
+	pixel_x = -9;
+	pixel_y = 17
+	},
+/obj/item/tool/mop{
+	pixel_y = 23
+	},
+/obj/structure/sign/poster/safety{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/item/stack/rods{
+	pixel_y = -2
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"dZ" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	amount = 15;
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/shard,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ea" = (
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/obj/structure/platform_decoration/metal/strata/west,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ei" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"ek" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"em" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "110"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"er" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "37_alt"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"ex" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "45"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ez" = (
+/obj/structure/machinery/big_computers/computerblack/computer2{
+	pixel_y = 8
+	},
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"eB" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/structure/barricade/metal/wired,
+/obj/item/shard,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"eJ" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "101"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"eP" = (
+/obj/structure/machinery/floodlight,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"fa" = (
+/obj/structure/sign/safety/bulkhead_door,
+/obj/structure/sign/safety/airlock{
+	pixel_x = 11
+	},
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo)
+"ff" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	pixel_y = 2
+	},
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"fg" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = -1;
+	pixel_y = 34
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"fp" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"fN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"fP" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"fT" = (
+/obj/item/ammo_casing,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"fU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out"
+	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/yellow3/northeast,
+/area/lv759/indoors/spaceport/cargo)
+"gb" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/indoors/spaceport/clf_dropship)
+"ge" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/indoors/spaceport/clf_dropship)
+"gg" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	pixel_x = 10
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"gj" = (
+/obj/structure/machinery/door/airlock/prison_hatch{
+	dir = 1
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"gk" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/stack/rods,
+/obj/item/clothing/head/hardhat{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/stack/cable_coil/cut{
+	icon_state = "coil1";
+	color = "#550d0d"
+	},
+/obj/structure/machinery/power/apc/power/east,
+/turf/open/floor/plating/platingdmg3,
+/area/lv759/indoors/spaceport/cargo)
+"gn" = (
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"go" = (
+/obj/structure/sign/safety/synth_storage{
+	pixel_x = -17
+	},
+/turf/closed/wall/hybrisa/spaceport/unmeltable,
+/area/lv759/oob)
+"gp" = (
+/obj/structure/sign/safety/opens_up,
+/obj/structure/sign/poster/clf{
+	pixel_y = 1
+	},
+/obj/structure/sign/poster/clf{
+	pixel_x = 11;
+	pixel_y = 3
+	},
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"gI" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"gK" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -1
+	},
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"gU" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/obj/item/stool{
+	layer = 2;
+	pixel_x = -4;
+	pixel_y = 23
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"gY" = (
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_1";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = 26
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 4;
+	pixel_y = 8
+	},
+/obj/structure/largecrate/supply/ammo/m56d,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/clf_dropship)
+"hb" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"hg" = (
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/spaceport/clf_dropship)
+"hl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/double{
+	pixel_y = -9;
+	layer = 2.9
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"hm" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/surface/rack,
+/obj/item/storage/backpack/general_belt,
+/obj/item/storage/backpack/general_belt{
+	pixel_y = 7
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"hG" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 4
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "7"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"hP" = (
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"hQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ic" = (
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/spaceport/clf_dropship)
+"ie" = (
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -2
+	},
+/obj/structure/surface/rack{
+	pixel_y = 17;
+	density = 0;
+	layer = 2.4
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -7;
+	pixel_y = 2;
+	layer = 3.1
+	},
+/obj/item/storage/belt/medical/full{
+	pixel_y = 17
+	},
+/obj/item/storage/firstaid/regular{
+	pixel_y = 23
+	},
+/turf/open/floor/prison/southwest,
+/area/lv759/indoors/spaceport/clf_dropship)
+"ii" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
+	},
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"il" = (
+/obj/structure/platform/metal/strata/west,
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"in" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/clf_dropship)
+"iQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"iX" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/encryptionkey/clf{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/storage/box/clf{
+	pixel_x = 8;
+	pixel_y = 1
+	},
+/obj/item/paper_bin{
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"jh" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"jq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/yellow3,
+/area/lv759/indoors/spaceport/cargo)
+"jx" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "38"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"jB" = (
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"jK" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"jP" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"jY" = (
+/obj/structure/sign/poster/safety{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"kb" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"kc" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 6
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"kd" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/yellow3/east,
+/area/lv759/indoors/spaceport/cargo)
+"kq" = (
+/obj/effect/decal/hybrisa/lattice/full,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"kZ" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"lo" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"lw" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/machinery/light/blue{
+	pixel_x = 15
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/indoors/spaceport/clf_dropship)
+"lx" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "4"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"lA" = (
+/turf/open/floor/prison/cell_stripe,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"lN" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light/small/blue,
+/obj/item/device/binoculars{
+	pixel_y = 5;
+	pixel_x = 7
+	},
+/obj/item/ashtray/bronze{
+	icon_state = "ashtray_small_bl_full";
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/lv759/indoors/spaceport/clf_dropship)
+"lP" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue4/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"md" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"mg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/WY/WY1{
+	pixel_y = 16
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak{
+	pixel_x = 8;
+	pixel_y = 15
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"mi" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/yellow3/north,
+/area/lv759/indoors/spaceport/cargo)
+"ml" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"mp" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"mD" = (
+/obj/structure/machinery/light/dropship/blue{
+	dir = 8
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "8"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"mJ" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"mL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"mM" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "34"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"mQ" = (
+/obj/structure/machinery/door/airlock/prison_hatch,
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite'";
+	color = "#646464";
+	id = "clf_lockdown";
+	dir = 4
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"ne" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/structure/machinery/light/blue{
+	dir = 1;
+	pixel_x = -15;
+	pixel_y = 20
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/indoors/spaceport/clf_dropship)
+"nn" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ns" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_1"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"nH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"nV" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 8;
+	pixel_x = 1;
+	pixel_y = 15
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"nX" = (
+/obj/structure/machinery/light/blue,
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"nY" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ol" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ov" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ox" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "33"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"oF" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/clf_dropship)
+"oQ" = (
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"oT" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"pk" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/clf_dropship)
+"po" = (
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = -17
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"pw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"px" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	amount = 15;
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"pD" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = -1;
+	pixel_y = 34
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"pH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/platform_decoration/metal/almayer{
+	layer = 2.9
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/yellow3/north,
+/area/lv759/indoors/spaceport/cargo)
+"pJ" = (
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"pN" = (
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"pP" = (
+/obj/item/trash/cigbutt,
+/obj/structure/barricade/sandbags{
+	dir = 8;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"pX" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "rightengine_3"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"qd" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"qk" = (
+/turf/template_noop,
+/area/template_noop)
+"ql" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "26"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"qv" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_2"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"qC" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"qG" = (
+/obj/structure/sign/safety/opens_up,
+/obj/structure/sign/poster/clf,
+/obj/structure/sign/poster/clf{
+	pixel_x = 9;
+	pixel_y = 6
+	},
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"qJ" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "75"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"qR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"qT" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"qW" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"rd" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue4/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"rt" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags{
+	dir = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"ru" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "78"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"rv" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -7;
+	buckle_offset_x = -7
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 9;
+	buckling_x = 9
+	},
+/obj/structure/machinery/light/blue{
+	pixel_x = -15
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/indoors/spaceport/clf_dropship)
+"rC" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"rD" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"se" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_1"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"sm" = (
+/obj/item/tank/anesthetic{
+	pixel_x = 8
+	},
+/obj/item/clothing/mask/breath/medical{
+	pixel_x = -3
+	},
+/obj/structure/machinery/optable{
+	dir = 1;
+	density = 0
+	},
+/obj/structure/sign/safety/medical{
+	pixel_x = 22;
+	pixel_y = 28;
+	layer = 2.9
+	},
+/obj/structure/machinery/light/blue{
+	dir = 8;
+	pixel_y = -8
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/surface/rack{
+	pixel_y = 17;
+	density = 0;
+	layer = 2.4
+	},
+/obj/item/storage/surgical_tray{
+	pixel_x = 1;
+	pixel_y = 27
+	},
+/obj/item/roller{
+	pixel_x = 1;
+	pixel_y = 18;
+	layer = 2.41
+	},
+/turf/open/floor/prison/southwest,
+/area/lv759/indoors/spaceport/clf_dropship)
+"sn" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/clf_dropship)
+"st" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"sB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -3;
+	pixel_y = 17
+	},
+/obj/item/storage/box/m56d_hmg,
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/clf_dropship)
+"sT" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "9_alt"
+	},
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "45"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"sW" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"tt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	layer = 2.5
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"uf" = (
+/obj/structure/platform/metal/almayer/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/turf/open/floor/strata/yellow3/southeast,
+/area/lv759/indoors/spaceport/cargo)
+"uh" = (
+/obj/effect/attach_point/electronics/dropship1{
+	dir = 1;
+	attach_id = 5
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "106"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"um" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"uo" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"uu" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 2
+	},
+/obj/structure/machinery/light/blue,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"uP" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "35"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"uT" = (
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"uV" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"vc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/turf/open/floor/strata/yellow3,
+/area/lv759/indoors/spaceport/cargo)
+"vd" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/spawner/random/technology_scanner,
+/obj/effect/spawner/random/toolbox{
+	pixel_y = 12
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"vu" = (
+/obj/item/stack/rods,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"vv" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/machinery/door/poddoor{
+	explo_proof = 1;
+	needs_power = 0;
+	unacidable = 1;
+	name = "\improper Lockdown";
+	emp_proof = 1
+	},
+/turf/closed/wall/hybrisa/spaceport/unmeltable,
+/area/lv759/oob)
+"vz" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"vN" = (
+/obj/structure/machinery/light/dropship/red{
+	dir = 8
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "28"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"vP" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"vR" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"vW" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 32;
+	pixel_y = 20
+	},
+/obj/structure/surface/rack,
+/obj/item/clothing/head/militia/bucket{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/tool/weldpack{
+	pixel_x = 2;
+	pixel_y = -1
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"vY" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40/carbine,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"wb" = (
+/obj/effect/landmark/survivor_spawner/clf_engi,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"wc" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"wd" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/clf_dropship)
+"wg" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/turf/open/floor/strata/yellow3,
+/area/lv759/indoors/spaceport/cargo)
+"wq" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"wv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/landmark/survivor_spawner/clf_lead/hybrisa,
+/turf/open/floor/strata/yellow3,
+/area/lv759/indoors/spaceport/cargo)
+"ww" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "110";
+	dir = 4
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"wx" = (
+/obj/structure/sign/poster/clf{
+	pixel_x = 10;
+	pixel_y = 29;
+	layer = 2.8
+	},
+/obj/structure/sign/poster/clf{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/obj/structure/bed/hybrisa/bunkbed3{
+	dir = 4;
+	pixel_y = 8;
+	buckling_y = 16
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/obj/item/clothing/head/militia/bucket{
+	pixel_x = -6;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/southwest,
+/area/lv759/indoors/spaceport/clf_dropship)
+"xb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"xm" = (
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"xt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	amount = 15;
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"xC" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"xG" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/effect/spawner/random/attachment,
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 14
+	},
+/obj/item/tool/extinguisher/mini{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"xJ" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/clf_dropship)
+"xL" = (
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = 4;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/shotgun/slugs{
+	pixel_x = -4;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = -2
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_y = -2;
+	pixel_x = -4
+	},
+/obj/structure/closet/crate/ammo,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_2";
+	name = "Cargo Lockdown";
+	pixel_x = -10;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/clf_dropship)
+"xO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = -1;
+	pixel_y = 34
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"yb" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 5
+	},
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ye" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/clf_dropship)
+"yf" = (
+/obj/item/weapon/gun/smg/fp9000,
+/obj/item/weapon/gun/smg/fp9000,
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/clf_dropship)
+"yp" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "15_alt"
+	},
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "44"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"yD" = (
+/obj/structure/stairs{
+	color = "#a6aeab"
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"yG" = (
+/obj/structure/machinery/light/dropship/green{
+	dir = 4
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "83"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"yH" = (
+/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/kitchen)
+"yN" = (
+/obj/structure/platform_decoration/metal/strata/east,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"yQ" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light/small/blue,
+/obj/item/prop/almayer/comp_open{
+	pixel_y = 5
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/lv759/indoors/spaceport/clf_dropship)
+"ze" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"zh" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "20"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"zi" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "94"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"zx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/obj/item/shard,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"zI" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"zJ" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	pixel_y = 8;
+	buckling_y = 8;
+	pixel_x = 5;
+	buckling_x = 5
+	},
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/structure/machinery/door_control{
+	id = "clf_lockdown";
+	name = "Dropship Lockdown";
+	pixel_x = -15;
+	pixel_y = 22
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/lv759/indoors/spaceport/clf_dropship)
+"zU" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"Ab" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -16
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Aq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ar" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "37"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Aw" = (
+/obj/structure/prop/ice_colony/hula_girl{
+	pixel_x = -14;
+	pixel_y = 20
+	},
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "brokendropshipconsole1"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"AA" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/corsat/plate,
+/area/lv759/indoors/spaceport/kitchen)
+"AM" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/clf_dropship)
+"AP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"AR" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"AT" = (
+/obj/structure/window/framed/hybrisa/spaceport/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"AW" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "3"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"AX" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
+	dir = 8
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Bg" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "107"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Bu" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "92"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Bw" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"BF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	amount = 15;
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"BS" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "44"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"BZ" = (
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Cx" = (
+/turf/closed/wall/hybrisa/spaceport/unmeltable,
+/area/lv759/oob)
+"CB" = (
+/obj/structure/machinery/light/spot/blue,
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "101"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"CI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"CM" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"CO" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"CY" = (
+/obj/structure/cable{
+	icon_state = "2-6";
+	color = "#550d0d";
+	level = 2
+	},
+/obj/structure/cable{
+	icon_state = "1-9";
+	color = "#550d0d";
+	level = 2
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 15
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"Da" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Dc" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"Dk" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Dp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Dz" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"DB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"DN" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Eg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"Ep" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "10_interior_1"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Eq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/door_control{
+	id = "clf_cargo_2";
+	name = "Cargo Lockdown";
+	pixel_x = 22;
+	pixel_y = 33
+	},
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Er" = (
+/obj/structure/shuttle/part/dropship_clf/transparent,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Ev" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue4/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ew" = (
+/obj/structure/pipes/standard/manifold/hidden/dark,
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"EL" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "39"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"ES" = (
+/obj/structure/sign/nosmoking_1,
+/obj/structure/sign/poster/clf{
+	pixel_x = 10;
+	pixel_y = 1
+	},
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Fj" = (
+/obj/structure/cable{
+	icon_state = "1-4";
+	level = 2;
+	color = "#550d0d"
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"Fl" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"Fs" = (
+/obj/item/tool/weldingtool,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"FG" = (
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/obj/structure/stairs{
+	color = "#a6aeab";
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"FJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"FO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"FR" = (
+/obj/structure/sign/banners/clf_flag{
+	pixel_x = -14;
+	pixel_y = 31;
+	layer = 2.9
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/spaceport/clf_dropship)
+"FU" = (
+/obj/structure/sign/safety/bulkhead_door,
+/obj/structure/sign/safety/airlock{
+	pixel_x = 11
+	},
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Gf" = (
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"Gn" = (
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"Gp" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_S,
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Gy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"GR" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = -7;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/ammo_magazine/rifle/mar40/lmg{
+	pixel_y = 8
+	},
+/obj/item/weapon/gun/rifle/mar40/lmg{
+	pixel_x = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"GX" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/structure/barricade/plasteel/wired,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"GZ" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "16"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Hh" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 8
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ho" = (
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Hz" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"HB" = (
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"HG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/turf/open/floor/strata/yellow3/west,
+/area/lv759/indoors/spaceport/cargo)
+"HR" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 4;
+	pixel_y = 14
+	},
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ic" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "wy_leftengine"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Ie" = (
+/obj/structure/cable{
+	icon_state = "8-10";
+	color = "#550d0d";
+	level = 2
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 15
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"Ih" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname,
+/obj/structure/machinery/door/poddoor/almayer{
+	dir = 4;
+	name = "Weakened Emergency Lockdown";
+	needs_power = 0
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"Io" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"It" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ix" = (
+/obj/structure/surface/rack,
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/item/stack/sheet/metal/med_large_stack,
+/obj/effect/spawner/random/tool,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"Iz" = (
+/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"IG" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 8;
+	pixel_x = -10
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"IH" = (
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"IJ" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"IP" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"IQ" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/warning/redandwhite_W,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/indoors/spaceport/clf_dropship)
+"IS" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/defenses/handheld/planted_flag/clf,
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"Jp" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_E,
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Jq" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"JB" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/obj/effect/decal/cleanable/blood/oil/streak{
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/item/trash/cigbutt,
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"JJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"JN" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "102"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"JO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out"
+	},
+/turf/open/floor/strata/yellow3/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"JU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/yellow3/east,
+/area/lv759/indoors/spaceport/cargo)
+"Ke" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "100"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Kf" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"Kh" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "rightengine_1";
+	opacity = 0
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Kk" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "wy_rightengine"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Kt" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "96"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Ku" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	welded = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"Kx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/machinery/light/small/blue{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/obj/structure/largecrate/random/barrel/medical{
+	pixel_y = -8
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"KB" = (
+/obj/item/tool/warning_cone{
+	layer = 2;
+	pixel_x = -13;
+	pixel_y = 11
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"KE" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 9
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = 2
+	},
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb{
+	pixel_y = -5
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor5,
+/area/lv759/indoors/spaceport/clf_dropship)
+"KI" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"La" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "99"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Ld" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	pixel_y = 14
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Le" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "29"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Lh" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ly" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"LC" = (
+/obj/structure/machinery/light/small/blue{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"LK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/platform/metal/stair_cut/strata_left,
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"LR" = (
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"LU" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/power/port_gen,
+/obj/structure/cable{
+	icon_state = "11-6";
+	color = "#550d0d";
+	level = 2
+	},
+/turf/open/floor/almayer/cargo,
+/area/lv759/indoors/spaceport/cargo)
+"Ma" = (
+/obj/structure/barricade/handrail{
+	dir = 1;
+	layer = 2.7;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/indoors/spaceport/cargo)
+"Mi" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "6"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Mj" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "24"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Mr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/faxmachine{
+	department = "CLF - Cell 42"
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"Mv" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"MB" = (
+/obj/structure/cable{
+	icon_state = "4-9";
+	color = "#550d0d";
+	level = 2
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = 15
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"MN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Na" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags{
+	pixel_y = -5
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"Nt" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -21;
+	pixel_y = 3
+	},
+/turf/open/floor/strata/blue3/north,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ny" = (
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"NJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/platform_decoration/metal/almayer/north{
+	layer = 2.9
+	},
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/strata/yellow3/north,
+/area/lv759/indoors/spaceport/cargo)
+"Ob" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"Og" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ol" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags{
+	dir = 8;
+	pixel_y = -3
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"Oo" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "brokendropshipconsole3"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Oq" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/wirecutters,
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"Ot" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/item/tool/weldingtool/empty{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"OD" = (
+/obj/structure/platform/metal/strata/west,
+/turf/open/floor/strata/blue4,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"OM" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"OP" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"OU" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 15;
+	pixel_y = 13
+	},
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Pe" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -16
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Pg" = (
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "leftengine_1";
+	opacity = 0
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Pj" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Pq" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 1
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Ps" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "21"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Pz" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"PL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Qe" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/communications_office)
+"Qf" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "2"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Qg" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "103"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Qt" = (
+/obj/structure/bed/hybrisa/bunkbed3{
+	dir = 4;
+	pixel_y = 8;
+	buckling_y = 16
+	},
+/obj/structure/sign/poster/pinup{
+	pixel_x = 6;
+	pixel_y = 31;
+	layer = 2.9
+	},
+/obj/structure/machinery/light/blue{
+	dir = 4;
+	pixel_y = -8
+	},
+/obj/item/tool/extinguisher/mini,
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/prison/southwest,
+/area/lv759/indoors/spaceport/clf_dropship)
+"QA" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "27"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"QD" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 9
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"QM" = (
+/obj/structure/pipes/vents/pump,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -15;
+	pixel_y = 8
+	},
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"QV" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"Rf" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/power/apc/power/east,
+/obj/item/tool/warning_cone{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Rp" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "32"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Rt" = (
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/platform/metal/strata/west,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Rv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	amount = 15;
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/communications_office)
+"RD" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/obj/item/tool/warning_cone,
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"RF" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	pixel_y = 8;
+	buckling_y = 8;
+	pixel_x = -5;
+	buckling_x = -5
+	},
+/obj/item/trash/cigbutt,
+/turf/open/shuttle/dropship/medium_grey_single_wide_left_to_right,
+/area/lv759/indoors/spaceport/clf_dropship)
+"RM" = (
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -7;
+	pixel_y = 15;
+	buckling_x = -7;
+	buckling_y = 15
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 9;
+	pixel_y = 15;
+	buckling_x = 9;
+	buckling_y = 15
+	},
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/indoors/spaceport/clf_dropship)
+"RS" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "25"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"RU" = (
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"RW" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/obj/item/shard,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"RX" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "17"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Sb" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "10_interior"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Sd" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "22"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Sg" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Sh" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "31"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"SD" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/kitchen)
+"SH" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 12;
+	pixel_y = 12
+	},
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = 15
+	},
+/obj/item/tool/wet_sign{
+	layer = 4;
+	pixel_x = -9;
+	pixel_y = 17
+	},
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"SJ" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4;
+	pixel_x = 10
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"SK" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/structure/barricade/plasteel/wired{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"SN" = (
+/obj/structure/prop/structure_lattice{
+	desc = "An old company comms tower used to transmit communications between subspace bodies. Looks like this one has seen better days.";
+	dir = 4;
+	icon = 'icons/obj/structures/machinery/comm_tower2.dmi';
+	icon_state = "construct_9_1";
+	layer = 5;
+	level = 5;
+	name = "destroyed comms tower"
+	},
+/obj/structure/cable{
+	icon_state = "2-8";
+	level = 2;
+	color = "#550d0d"
+	},
+/obj/structure/cable{
+	icon_state = "5-9";
+	color = "#550d0d";
+	level = 2
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo)
+"Tm" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
+	pixel_y = 28
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Tq" = (
+/obj/structure/machinery/medical_pod/bodyscanner,
+/turf/open/floor/prison/southwest,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Tv" = (
+/obj/structure/platform_decoration/metal/almayer/east,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/yellow3/east,
+/area/lv759/indoors/spaceport/cargo)
+"TA" = (
+/obj/structure/bed/hybrisa/bunkbed3,
+/obj/item/weapon/gun/rifle/m16{
+	pixel_x = -3;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/southwest,
+/area/lv759/indoors/spaceport/clf_dropship)
+"TO" = (
+/turf/open/floor/prison/ramptop/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"TP" = (
+/obj/structure/platform/metal/strata/west,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Uu" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/trash/cigbutt,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"UB" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"UE" = (
+/obj/structure/machinery/door/poddoor/hybrisa/white{
+	name = "\improper UD-9M 'Dogbite' - Cargo Hold";
+	color = "#646464";
+	id = "clf_cargo_2"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"UR" = (
+/obj/effect/decal/hybrisa/warning/redandwhite_N{
+	pixel_y = 1
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/indoors/spaceport/clf_dropship)
+"UX" = (
+/obj/structure/platform/metal/almayer,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/yellow3/north,
+/area/lv759/indoors/spaceport/cargo)
+"Vl" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open/floor/prison/ramptop/north,
+/area/lv759/indoors/spaceport/cargo)
+"Vz" = (
+/obj/structure/platform/metal/strata/west,
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"VA" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"VG" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/barricade/metal/wired{
+	dir = 8
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"VX" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "23"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Wf" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired,
+/obj/item/shard,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Wn" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"Wu" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "10"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Wx" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/lv759/indoors/spaceport/cargo)
+"WE" = (
+/turf/closed/shuttle/dropship5/CLF/Fire{
+	icon_state = "30"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"WJ" = (
+/obj/item/trash/cigbutt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/spaceport/clf_dropship)
+"WM" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "docstripingdir";
+	color = "#d3d3d3"
+	},
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 4
+	},
+/obj/structure/platform_decoration/metal/strata,
+/turf/open/floor/strata/floor3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"WN" = (
+/obj/structure/machinery/body_scanconsole,
+/obj/effect/decal/medical_decals{
+	dir = 4;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3";
+	pixel_x = -2
+	},
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/landmark/survivor_spawner/clf_medic/hybrisa,
+/turf/open/floor/prison/southwest,
+/area/lv759/indoors/spaceport/clf_dropship)
+"WW" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/obj/item/stack/rods,
+/obj/item/trash/cigbutt{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"Xh" = (
+/obj/structure/pipes/standard/simple/hidden/dark,
+/obj/structure/machinery/light/blue{
+	dir = 4
+	},
+/obj/structure/machinery/power/port_gen,
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Xl" = (
+/obj/structure/platform/metal/strata/east,
+/turf/open/floor/strata/blue3,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Xw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"XC" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "5"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/clf_dropship)
+"XQ" = (
+/obj/effect/landmark/objective_landmark/medium,
+/obj/structure/closet/cabinet/hybrisa/metal,
+/obj/structure/sign/poster/safety{
+	pixel_y = 32
+	},
+/obj/structure/sign/poster/safety{
+	pixel_x = -4;
+	pixel_y = 34
+	},
+/obj/item/tool/shovel,
+/obj/item/tool/crowbar,
+/obj/item/tool/crowbar/red,
+/obj/item/tool/mop,
+/obj/item/tool/mop,
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"XR" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/cable{
+	icon_state = "2-6";
+	color = "#550d0d";
+	level = 2
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/accessory/patch/clf_patch{
+	pixel_x = 3;
+	pixel_y = 1
+	},
+/obj/item/book/codebook/clf{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer,
+/area/lv759/indoors/spaceport/cargo)
+"Yc" = (
+/obj/structure/shuttle/part/dropship_clf/transparent{
+	icon_state = "46"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Yf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out"
+	},
+/obj/structure/platform/metal/almayer,
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/strata/yellow3/northwest,
+/area/lv759/indoors/spaceport/cargo)
+"Yh" = (
+/turf/closed/shuttle/dropship5/CLF/Fire/transparent{
+	icon_state = "leftengine_3"
+	},
+/area/lv759/indoors/spaceport/clf_dropship)
+"Yn" = (
+/obj/structure/platform_decoration/metal/strata/north,
+/obj/item/tool/warning_cone{
+	pixel_x = -9;
+	pixel_y = 20
+	},
+/turf/open/floor/strata/blue3/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Yo" = (
+/turf/closed/wall/hybrisa/spaceport/reinforced,
+/area/lv759/indoors/spaceport/cargo)
+"Yv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33
+	},
+/turf/open/floor/strata/yellow3/east,
+/area/lv759/indoors/spaceport/cargo)
+"Yz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/item/tool/warning_cone{
+	pixel_x = 6;
+	pixel_y = 17
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"YN" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/plating/platingdmg3,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"YP" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	welded = 1
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/cargo_maintenance)
+"YX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Zd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Zi" = (
+/obj/structure/pipes/standard/simple/hidden/dark{
+	dir = 10
+	},
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Zm" = (
+/obj/effect/landmark/survivor_spawner/clf/hybrisa,
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"Zt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/shuttle/part/dropship_clf{
+	icon_state = "95"
+	},
+/turf/open/floor/prison/ramptop,
+/area/lv759/indoors/spaceport/clf_dropship)
+"Zw" = (
+/obj/structure/barricade/sandbags{
+	pixel_y = 14
+	},
+/turf/open/floor/prison/cell_stripe/north,
+/area/lv759/indoors/spaceport/cargo)
+"Zz" = (
+/obj/structure/machinery/floodlight/landing/floor,
+/obj/effect/decal/cleanable/dirt{
+	layer = 4
+	},
+/turf/open/floor/plating,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ZL" = (
+/obj/structure/pipes/standard/manifold/hidden/dark{
+	dir = 4
+	},
+/obj/structure/barricade/plasteel/wired{
+	dir = 8;
+	closed = 0
+	},
+/turf/open/floor/strata/multi_tiles,
+/area/lv759/indoors/spaceport/docking_bay_2)
+"ZO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 16
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/indoors/spaceport/docking_bay_2)
+
+(1,1,1) = {"
+go
+Jq
+Jq
+LK
+TO
+Cx
+Cx
+Rt
+il
+TP
+Rt
+il
+Jq
+Jq
+Jq
+Jq
+Gy
+dZ
+mL
+Zd
+xt
+hQ
+qR
+"}
+(2,1,1) = {"
+Cx
+ES
+ii
+Pq
+Lh
+po
+nV
+RD
+wc
+wc
+Bw
+FJ
+IH
+kZ
+Hh
+OM
+Lh
+ZL
+IG
+RW
+VG
+Mv
+ci
+"}
+(3,1,1) = {"
+Cx
+gp
+HR
+jB
+jK
+Zm
+RU
+RU
+RU
+ol
+RU
+Zm
+ol
+ol
+qC
+RU
+JJ
+RU
+RU
+RU
+RU
+Wf
+lo
+"}
+(4,1,1) = {"
+Cx
+FU
+OU
+AX
+Dk
+DN
+hP
+BZ
+BZ
+hP
+hP
+hP
+hP
+hP
+Dk
+BZ
+BZ
+hP
+hP
+pN
+hP
+um
+Jq
+"}
+(5,1,1) = {"
+vv
+Kx
+kc
+QD
+pJ
+ov
+CM
+Ab
+Ab
+Xl
+ov
+lP
+Ev
+ov
+CM
+Pe
+Pe
+Xl
+ov
+ea
+Nt
+um
+bN
+"}
+(6,1,1) = {"
+vv
+ds
+WM
+ze
+lA
+Ke
+qJ
+mQ
+mQ
+Ic
+Yh
+Pg
+BS
+mM
+vN
+Sd
+zh
+Ny
+am
+md
+fP
+vz
+Qe
+"}
+(7,1,1) = {"
+vv
+qd
+UB
+pw
+uo
+CB
+ru
+FR
+ic
+Ep
+ai
+em
+sT
+uP
+Le
+VX
+Ps
+co
+Ny
+Er
+fP
+vz
+Qe
+"}
+(8,1,1) = {"
+vv
+qd
+Pz
+Zt
+Bu
+uh
+ru
+IQ
+gb
+ru
+sm
+Tq
+Ep
+cd
+WE
+Mj
+ai
+Yc
+Uu
+Qf
+Yz
+zx
+Rv
+"}
+(9,1,1) = {"
+vv
+xb
+Pz
+Kt
+Aw
+yQ
+ru
+ne
+rv
+Qg
+ie
+WN
+Qg
+at
+sB
+yf
+xJ
+Wu
+hG
+AW
+PL
+Og
+CI
+"}
+(10,1,1) = {"
+vv
+xO
+Pz
+cR
+dE
+RF
+gj
+pk
+in
+gj
+UR
+oF
+se
+AM
+WJ
+Pj
+ml
+UE
+rD
+mp
+mg
+Aq
+ek
+"}
+(11,1,1) = {"
+vv
+qd
+UB
+cR
+dE
+zJ
+gj
+sn
+Gp
+gj
+wd
+ye
+ns
+AM
+wb
+MN
+VA
+qv
+Eq
+JB
+fN
+bf
+Eg
+"}
+(12,1,1) = {"
+vv
+xb
+Pz
+cS
+Oo
+lN
+ru
+RM
+lw
+ru
+wx
+bR
+Qg
+gY
+KE
+dA
+xL
+Wu
+mD
+lx
+fP
+tt
+BF
+"}
+(13,1,1) = {"
+vv
+xb
+mJ
+La
+zi
+Bg
+ru
+cr
+ge
+ru
+Qt
+TA
+Sb
+Ar
+Sh
+RS
+er
+bm
+gn
+XC
+fP
+eB
+wq
+"}
+(14,1,1) = {"
+vv
+pD
+Pz
+YX
+dz
+eJ
+ru
+Jp
+hg
+Sb
+er
+ww
+yp
+EL
+Rp
+ql
+GZ
+Ny
+Ho
+Mi
+kb
+nY
+Qe
+"}
+(15,1,1) = {"
+vv
+qd
+UB
+ze
+vP
+JN
+yG
+mQ
+mQ
+Kk
+pX
+Kh
+ex
+jx
+ox
+QA
+RX
+Ho
+Zz
+It
+FO
+vz
+Qe
+"}
+(16,1,1) = {"
+vv
+hl
+hb
+yb
+Yn
+st
+KI
+ZO
+ZO
+gI
+st
+rd
+OD
+st
+KI
+ZO
+ZO
+Vz
+st
+yN
+Dp
+um
+Qe
+"}
+(17,1,1) = {"
+Cx
+FU
+vR
+oT
+xm
+xm
+xm
+BZ
+BZ
+xm
+xm
+xm
+xm
+xm
+xm
+BZ
+BZ
+Io
+cZ
+Xw
+xm
+um
+SD
+"}
+(18,1,1) = {"
+Cx
+qG
+QM
+Ew
+Zm
+RU
+jK
+RU
+RU
+ol
+ol
+RU
+RU
+RU
+RU
+Dz
+Zm
+iQ
+ol
+Ly
+RU
+GX
+AA
+"}
+(19,1,1) = {"
+Cx
+Jq
+Tm
+Zi
+jh
+Sg
+jh
+qT
+Hz
+jh
+dm
+vW
+jP
+Xh
+hm
+Rf
+qW
+gg
+xC
+nn
+SJ
+cc
+yH
+"}
+(20,1,1) = {"
+Cx
+Yo
+AT
+AT
+AT
+Yo
+AT
+Wn
+cO
+AT
+Yo
+rC
+rC
+rC
+rC
+Jq
+Jq
+Da
+Ld
+mL
+nH
+px
+SD
+"}
+(21,1,1) = {"
+Cx
+fa
+ez
+gU
+sW
+FG
+Gf
+Wn
+Wx
+yD
+dx
+fp
+SH
+KB
+fp
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(22,1,1) = {"
+vv
+Iz
+Vl
+uf
+kd
+Tv
+Yv
+JU
+Yv
+fU
+Ma
+rC
+xG
+ei
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(23,1,1) = {"
+vv
+Ob
+eP
+wg
+IJ
+AP
+Gn
+Dc
+bL
+mi
+Ma
+rC
+XQ
+OP
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(24,1,1) = {"
+vv
+fg
+IP
+wg
+LU
+ff
+zU
+rt
+LR
+UX
+nX
+rC
+dQ
+Ot
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(25,1,1) = {"
+vv
+Ob
+GR
+cD
+XR
+CY
+Fj
+Na
+IJ
+UX
+Ma
+rC
+rC
+Ku
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(26,1,1) = {"
+vv
+Zw
+AR
+wv
+iX
+MB
+SN
+Na
+aa
+UX
+Ma
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(27,1,1) = {"
+vv
+fg
+vY
+jq
+Mr
+Ie
+fT
+ab
+Kf
+UX
+uu
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(28,1,1) = {"
+vv
+Ob
+gK
+wg
+IS
+pP
+LR
+Ol
+LR
+NJ
+uT
+dr
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(29,1,1) = {"
+vv
+Zw
+eP
+vc
+DB
+HB
+bL
+Dc
+Gn
+pH
+uT
+dr
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(30,1,1) = {"
+vv
+LC
+uT
+JO
+HG
+vu
+Fs
+Fl
+aI
+Yf
+bD
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(31,1,1) = {"
+Cx
+fa
+vd
+Ix
+SK
+oQ
+gk
+Oq
+zI
+yD
+bD
+YP
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(32,1,1) = {"
+Cx
+rC
+rC
+CO
+uV
+CO
+CO
+CO
+CO
+CO
+CO
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(33,1,1) = {"
+qk
+qk
+qk
+rC
+jY
+QV
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(34,1,1) = {"
+qk
+qk
+qk
+rC
+WW
+YN
+rC
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}
+(35,1,1) = {"
+qk
+qk
+qk
+rC
+Ih
+rC
+kq
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+qk
+"}

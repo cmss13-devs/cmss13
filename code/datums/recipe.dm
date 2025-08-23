@@ -558,7 +558,7 @@
 /datum/recipe/nettlesoup
 	reagents = list("water" = 10)
 	items = list(
-		/obj/item/grown/nettle,
+		/obj/item/reagent_container/food/snacks/grown/nettle,
 		/obj/item/reagent_container/food/snacks/grown/potato,
 		/obj/item/reagent_container/food/snacks/egg,
 	)
@@ -996,8 +996,8 @@
 
 /datum/recipe/sausage
 	items = list(
-		/obj/item/reagent_container/food/snacks/meatball,
-		/obj/item/reagent_container/food/snacks/cutlet,
+		/obj/item/reagent_container/food/snacks/rawmeatball,
+		/obj/item/reagent_container/food/snacks/rawcutlet,
 	)
 	result = /obj/item/reagent_container/food/snacks/sausage
 

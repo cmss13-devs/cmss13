@@ -1,0 +1,302 @@
+2025-07-01:
+  Drathek:
+  - rscadd: Fun facts are now randomized (meaning just mentions first player meeting
+      a minimum is mentioned - not a top stat) and are only displayed for currently
+      connected players
+  TheKillfish:
+  - code_imp: Xeno Spit now uses xeno_cooldown var, like a normal ability.
+  - rscdel: Deletes now-useless vars related to Xeno Spit cooldown
+2025-07-02:
+  Drathek:
+  - balance: Base prae acid spray no longer has a windup
+  FebrezeNinja:
+  - bugfix: Medical's fax machine now properly alerts :m on receipt of priority fax.
+  - bugfix: 'Changes other department fax machines to correspond with #9804'
+  Red-byte3D:
+  - bugfix: Predator taps aka TRAIT_INTERFERENCE now stops xenos from devolving and
+      transmuting, so they dont bug themselves out forever.
+  - imageadd: Radial icons for up and down.
+  - rscadd: Radial menu for ladders, being presented for going up and down has never
+      looked better
+  - bugfix: Praetorian strains now properly get their acid removed
+  - bugfix: Your patients now need a head if you want to attach the anasthetic mask
+      on them
+  Zenith:
+  - bugfix: Fixes a mistake from a previous PR that had overwritten a RMC helmet for
+      the spec.
+  - rscadd: Adds Paramedic survivors to appropriate maps, adds civilian/unique presets
+      to NV, replaced NV "Miner" with "KMCC" preset.
+  ihatethisengine:
+  - balance: HPR doesn't require bipod for full auto, no longer spawns with one
+  matttheficus, harryob:
+  - ui: XM88 custom crosshair is now blue.
+  stalkerino:
+  - bugfix: fixes access for CO surv on solaris ridge and radio
+  tallfission:
+  - bugfix: large general pouch can no longer hold engineering toolkits
+2025-07-03:
+  Zenith00000:
+  - bugfix: fixes sand & mud_corners & edges, stops them from being deleted from explosions.
+  - maptweak: various very minor tweaks to Hybrisa & Soro, with lot's of decal tidying
+      up on Hybrisa specifically.
+  - imageadd: added stain & goo icons, which were previously only var edits, now should
+      work as originally intended.
+2025-07-05:
+  Detective-Google:
+  - bugfix: Fixed the ritual knife onmob sprite.
+  - admin: Logging for BEs is updated
+  stalkerino:
+  - balance: disables cade anchoring on almayer, except sandbags
+  - rscadd: Barricades and handrails now properly layer even when unanchored, and
+      instead pixel shift when unanchored
+  - bugfix: Barricades can no longer be pushed behind a blocking atom/mob
+  - bugfix: Added missing bitfields for AREA_YAUTJA flags
+2025-07-06:
+  Drathek:
+  - bugfix: Fixed a few cases of capitalized channels not working
+  FebrezeNinja:
+  - bugfix: Fixed a typo in the fax sprite sheet
+  - bugfix: Fixed the portable fax machine's identification being random every time
+      it was deployed
+  - bugfix: Fixed the portable fax causing sprites to temporarily morph
+  - qol: Moved the portable fax to the USS Almayer department and gave it a name.
+  Jesters-Ballad:
+  - qol: Spotter's spotting changed to Spec Ability 2 for smoother use of both spotting
+      and cloaking as a spotter.
+  MistChristmas:
+  - ui: Sentry Computer's CRT theme won't scroll away.
+  Red-byte3D:
+  - bugfix: Fixes some brute message being sent to everyone instead of self
+  SRG3124, Thwomper:
+  - rscadd: Added four new jackets for the CC to wear.
+  - bugfix: fixed the RMC Service Obj sprite being different from it's worn sprite
+  Zenith:
+  - bugfix: added both Hyperdyne & the IASF to the follow menu.
+  - imageadd: addeded iasf background icon & swapped around CO squad_menu icon to
+      gold.
+  nyozzl:
+  - rscadd: Added mess tent
+  realforest2001:
+  - rscadd: Infected follow category is now split between hives.
+2025-07-10:
+  Red-byte3D:
+  - code_imp: Xenomorph markers can now be put into different z levels
+2025-07-11:
+  matttheficus:
+  - bugfix: Field Doctor now counts hours towards the Doctor Roles timelock.
+2025-07-12:
+  jupyterkat:
+  - imageadd: added sharp operator hud icon and map icon
+2025-07-13:
+  Red-byte3D:
+  - rscadd: Adds in more radial menus for ladders including grenade throwing, looking
+      up and ghosts
+  tallfission:
+  - balance: Synthetic reset keys now spawn on all in-rotation groundmaps
+  - balance: A synthetic reset key starts in the Almayer's medical bay, in one of
+      the backrooms
+  - maptweak: Fiorina Science Annex has 2% more powercreep (synthetic vest)
+2025-07-14:
+  Drathek:
+  - bugfix: Fixed the possibility of fax machines sending faxes on cooldown and ejecting
+      paper when there is no paper
+2025-07-15:
+  DarkLordCabbage:
+  - balance: Changes one of the XO's timelock requirements from being 20 hours of
+      ASO or SO to just 20 hours of SO
+  - bugfix: fixed a bug where dog tags couldn't be retrieved from bursted/headless
+      bodies until 5 minutes had passed.
+  - balance: adds dexalin plus and oxycodone to the pressurized reagent canister chem
+      dispensers.
+  - qol: trying to use a hand labeler on closed crates no longer opens them
+  - bugfix: fixed being unable to label wooden crates
+  Detective-Google:
+  - maptweak: USS runtime testing map has been expanded for multiz testing
+  - bugfix: BRUTE rockets no longer malfunction at max range.
+  Drathek:
+  - code_imp: Removed depreciated url-loader for tgui
+  - bugfix: Fixed tgui kitchen sink theme and tab stories
+  - bugfix: Fixed issue with pngs not properly inlining with rspack
+  - bugfix: Fixed clean build scripts not actually cleaning rspack
+  FebrezeNinja:
+  - qol: Cryo Cell's auto-eject now waits for Toxin damage to heal
+  MistChristmas, Drathek:
+  - bugfix: fixed TGUI search crashes
+  Thwomper:
+  - rscadd: New M37A1 sprites as Marine standard issue shotgun.
+  Venuska1117:
+  - balance: Healer Drone "Sacrifice" ability now extinguish and remove debuffs.
+  Zenith:
+  - soundadd: added some sounds for the CLF large flags
+  - imageadd: added new CLF hand-held flags
+  - imageadd: added new CLF large flags
+  - imageadd: added new CLF sentry sprites
+  - maptweak: added large CLF and some handheld CLF flags to each CLF insert.
+  - rscadd: Adds many new clothing into the CL's wardrobe.
+  - imageadd: replaced shiva_floor.dmi icons with new updated, modern CM style icons.
+  lanse12:
+  - qol: face slot bayonet can now be equipped with keybinds
+  - balance: clf survs spawn with the iron teeth trait and guerillas spawn with bayonets
+      in their mouths
+  mullenpaul:
+  - ui: added z-level filter buttons to orbit menu
+  realforest2001:
+  - bugfix: ASB ammunition for Pyro Spec and Scout Spec now drop the correct contents.
+  - rscdel: Dropship walls and other solid turfs cannot be weeded. This does not affect
+      dropship internals.
+2025-07-16:
+  MistChristmas:
+  - bugfix: Tactical Sign Language not registering for TGUI
+  - ui: Sentry computer % sign for power level uses a different font that looks better.
+      Radio menu gets a little more formatting
+  Unknownity:
+  - rscadd: Synthetic Survivors now gain access to the civilian only section of the
+      loadout gear and are able to spawn with it. Wear those Weyland or Hyperdyne
+      patches proudly! Disclaimer, this does not apply to all of their variants.
+  - bugfix: Fixed PMC,CMB and FORECON survivors having the civilian origin, they now
+      have the closest appropriate origin instead.
+  realforest2001:
+  - balance: Locking the dropship as Queen now takes 5 seconds.
+  stalkerino, zenith:
+  - rscadd: adds the leg pouch from pve as a 5 slot webbing resprite
+  - rscadd: gives co the intel satchel, and chestrig  option rather than only the
+      backpack
+  - rscadd: gives insulated black gloves option to POs too
+2025-07-17:
+  Drathek:
+  - balance: Queen now matures on hijack launch so there isn't reason for delay
+  - balance: Early game queen is now temporarily mature when near the hive core (1
+      minute timer that refreshes while close or when getting shot)
+  - code_imp: Added missing undefs for queen and removed a few redundant checks for
+      refreshing the choose resin ability
+2025-07-19:
+  Drathek:
+  - bugfix: Fix db backend for playtime sometimes recording the gamemode type instead
+      of mob type
+  Red-byte3D:
+  - bugfix: Tac reload now only works if the magazine is in your hand or inventory.
+  - bugfix: You will now only put items on conveyor belts when not on harm intent.
+2025-07-20:
+  Drathek:
+  - rscadd: Added flavor text inserts for bloodtype, rank, and name.
+  - bugfix: Fixed a runtime with lessers on death
+  - rscadd: Added missing implementations for transform and enumerations in Filteriffic
+  - bugfix: Fixed multiple crash causes in Filteriffic e.g. opening displacement at
+      all
+  - bugfix: Fixed multiple crash causes in particle editor e.g. touching gradients
+      or transform at all
+  - qol: When picking icons in VV Filteriffic or Particle editor, you can now specify
+      just a dmi path, and in the case of Filteriffic customize the icon paramters
+  - code_imp: Moved matrix identities to a define file and ported a filter qdel check
+      from TG
+  - rscadd: Fun facts can now have whitelist/blacklists for role and faction. Namely
+      this now prevents lessers and huggers from generating fun facts, and larva from
+      generating kills fun facts (burst)
+  - bugfix: Fixed various eye protection runtimes
+  - code_imp: Death statistics are no longer deleted since GLOB.round_statistics holds
+      on to them
+  Red-byte3D:
+  - bugfix: You can now fire underbarrel extuingishers on flamers when they are not
+      loaded again
+2025-07-21:
+  Zenith:
+  - bugfix: fixed some preset issues with radios spawning in nullspace on the SOF
+      insert for Soro.
+  tallfission:
+  - imageadd: rolled sleeve icons for CMB SWAT uniforms
+2025-07-22:
+  Blundir:
+  - rscadd: M79 been renamed and resprited into M85A1
+  Red-byte3D:
+  - bugfix: Lizards will no longer attack xenos in tunnels
+  Unknownity:
+  - bugfix: Fixed bugged survivor spawns due to origins.
+  - rscadd: Added three new origins, WY, TWE and the CMBs. WY has three sub origins,
+      the corporate default, goon security and the PMCs. Added the origins to the
+      respective gear presets that would have them.
+  jupyterkat:
+  - bugfix: fixed bullets disappearing if you shoot the above or below zlevels from
+      some angles
+2025-07-23:
+  Red-byte3D:
+  - bugfix: Queens can now watch leaders through "watch leaders" properly.
+  - bugfix: Queens can now weed through the queen eye, the same map level they are
+      on regardless of z level.
+  dadlips:
+  - bugfix: fixes the revolver iff scope bug
+  jupyterkat:
+  - bugfix: you now stop looking up on zlevel transitions
+  - bugfix: you can no longer look up ladders from half a screen away
+  kiVts:
+  - bugfix: Patched a chemical simulator exploit
+2025-07-24:
+  Venuska1117:
+  - rscadd: 'New Hivelord strain: Designer'
+  - rscadd: New plasma type called "Nutrient" that can be used in research.
+  - code_imp: Changed Hivelord resin walker ability from behavior_delegate to be ability
+      only, now it consumes correctly 30 plasma every 2 seconds instead of 10 plasma
+      every 2 seconds.
+2025-07-25:
+  Willzadl:
+  - bugfix: requisition line tutorial now uses the brute warhead and m37a1 instead
+      of the XM51 mag and m37a2
+  thevandie:
+  - rscadd: Added two new pistols, the Action and Whisper
+  - rscdel: Removed the old holdout pistol and replaced it with the Action and Whisper
+  - soundadd: Added a new firing sound for the Action pistol
+  - imageadd: Added new sprites for the Whisper and Action pistols, including Inhands
+  - imageadd: Added a new sprite for the Action pistols magazines
+  - imagedel: Deleted the old Holdout Pistol sprite
+2025-07-26:
+  Drathek:
+  - bugfix: Fixed pheros helping banished xenos
+  - balance: Banishment damage now ignores armor
+  - code_imp: Cleaned up some of handle_pheromones
+  FishyFlaps2024:
+  - rscadd: Adds research access to ASO
+  - rscadd: Adds research skill to ASO
+  MistChristmas:
+  - bugfix: Nightmare disposal pipes no longer end up with null icon_states on load.
+  Red-byte3D:
+  - rscadd: You can now use a custom "glove" cursor from preferences by clicking the
+      "use custom cursors" in preferences tab. Theres a cursor for each faction
+  - bugfix: You can no longer paradrop to outside of the map.
+  Unknownity:
+  - rscadd: Adds an upgraded autodoc to the Yautja ship and upgrades their sleepers.
+  Venuska1117:
+  - bugfix: Swap Designer macros of Place Design and Change Design ability.
+  Willzadl:
+  - rscadd: Nested predators will now be stabilized
+  cuberound:
+  - bugfix: reduces AP GAU ammo spread to 3 tile from 4 as intended
+  jupyterkat:
+  - bugfix: look up is a toggle again
+  rattybag:
+  - rscadd: adds alt click to sinks and hydro trays
+2025-07-28:
+  ghostsheet:
+  - bugfix: Throwing guns no longer breaks their sprites.
+  jupyterkat:
+  - bugfix: fixed look up
+  - qol: made it clear that you can throw nades and drag click to look into ladders
+      on the examine text
+  - qol: unlit flares thrown up/down ladders are now lit
+  - qol: you now instantly stop looking at ladders when you move
+  private-tristan:
+  - balance: The last living xeno is now fully healed, but is unable to heal/rest
+      at all. FIGHT AND DIE.
+  realforest2001:
+  - bugfix: Fixes duplicate entries in infected follow menu.
+  yackemflam:
+  - qol: You can make sausages with raw ingredients now. Why on earth would you make
+      sausage with cooked casings and fillings?
+2025-07-29:
+  TheGamerdk:
+  - rscdel: Removed an outdated first name
+  kiVts:
+  - bugfix: You can unrest as the last xeno
+2025-07-31:
+  SRG3124, Geeves, Frans_Feiffer:
+  - rscadd: Added a Riot Visor for MP's
+  Stakeyng:
+  - balance: the pistol toolbelt can hold anything its pistolless sister can.

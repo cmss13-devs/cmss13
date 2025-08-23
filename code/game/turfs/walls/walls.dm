@@ -339,6 +339,8 @@
 		dismantle_wall(FALSE, TRUE)
 		if(!istype(src, /turf/closed/wall/resin))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
+		else
+			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/resin, cause_data)
 	else
 		if(istype(src, /turf/closed/wall/resin))
 			exp_damage *= RESIN_EXPLOSIVE_MULTIPLIER
@@ -560,6 +562,8 @@
 				SPAN_NOTICE("You struggle to pry apart the connecting rods."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					return
+				if(!istype(src, /turf/closed/wall))
 					return
 				user.visible_message(SPAN_NOTICE("[user] pries apart the connecting rods."), SPAN_NOTICE("You pry apart the connecting rods."))
 				new /obj/item/stack/rods(src)

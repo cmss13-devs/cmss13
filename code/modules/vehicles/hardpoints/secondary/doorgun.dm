@@ -49,6 +49,10 @@
 	if(!blackfoot_owner)
 		return
 
+	if(blackfoot_owner.stealth_mode)
+		to_chat(user, SPAN_WARNING("Weapons system unavailable while recon mode is active."))
+		return
+
 	if(!blackfoot_owner.back_door || !blackfoot_owner.back_door.open)
 		to_chat(user, SPAN_WARNING("You should probably open the rear door before firing."))
 		return

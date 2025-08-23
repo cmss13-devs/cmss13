@@ -36,8 +36,17 @@
 	return icon
 
 /obj/item/hardpoint/primary/blackfoot_launchers/try_fire(atom/target, mob/living/user, params)
+	var/obj/vehicle/multitile/blackfoot/blackfoot_owner = owner
+
+	if(!blackfoot_owner)
+		return
+
 	if(safety)
 		to_chat(user, SPAN_WARNING("Targeting mode is not enabled, unable to fire."))
+		return
+
+	if(blackfoot_owner.stealth_mode)
+		to_chat(user, SPAN_WARNING("Weapons system unavailable while recon mode is active."))
 		return
 
 	if(ammo && ammo.current_rounds <= 0)

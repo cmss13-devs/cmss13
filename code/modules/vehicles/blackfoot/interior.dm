@@ -63,6 +63,7 @@
 	if(istype(interior.exterior, /obj/vehicle/multitile/blackfoot))
 		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
 		loader.linked_blackfoot = linked_blackfoot
+		linked_blackfoot.interior_area = get_area(loader)
 
 	qdel(src)
 

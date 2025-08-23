@@ -23,6 +23,7 @@
 	bound_y = 0
 
 	interior_map = /datum/map_template/interior/blackfoot
+	var/area/interior_area
 
 	move_max_momentum = 2.2
 	move_momentum_build_factor = 1.5
@@ -45,6 +46,7 @@
 		/obj/item/hardpoint/primary/blackfoot_launchers,
 		/obj/item/hardpoint/support/sensor_array,
 		/obj/item/hardpoint/secondary/doorgun,
+		/obj/item/hardpoint/support/recon_system,
 	)
 
 	entrances = list(
@@ -78,6 +80,9 @@
 	var/image/thrust_overlay
 
 	var/state = STATE_STOWED
+
+	/// used by the recon_system module to allow the VTOL to 'run dark'
+	var/stealth_mode = FALSE
 
 	COOLDOWN_DECLARE(turn_cooldown)
 	COOLDOWN_DECLARE(flight_sound_cooldown)
@@ -365,6 +370,9 @@
 	give_action(M, /datum/action/human_action/blackfoot/toggle_nvg)
 	give_action(M, /datum/action/human_action/blackfoot/toggle_targeting)
 
+	for(var/obj/item/hardpoint/hardpoint in hardpoints)
+		SEND_SIGNAL(hardpoint, COMSIG_BLACKFOOT_ACTIONS_UPDATE)
+
 	for(var/atom/movable/screen/blackfoot/screen_to_add as anything in custom_hud)
 		M.client.add_to_screen(screen_to_add)
 		screen_to_add.update(fuel, max_fuel, health, maxhealth, battery, max_battery)
@@ -451,6 +459,9 @@
 
 	if(launchers)
 		launchers.safety = TRUE
+
+	for(var/obj/item/hardpoint/hardpoint in hardpoints)
+		SEND_SIGNAL(hardpoint, COMSIG_BLACKFOOT_ACTIONS_UPDATE, TRUE)
 
 	for(var/atom/movable/screen/blackfoot/screen_to_remove as anything in custom_hud)
 		M.client.remove_from_screen(screen_to_remove)
@@ -900,6 +911,12 @@
 	vehicle.toggle_stowed()
 	return
 
+/obj/vehicle/multitile/blackfoot/perform_honk()
+	if(stealth_mode)
+		to_chat(seats[VEHICLE_DRIVER], SPAN_WARNING("Perhaps sounding the horn isn't the best way to be stealthy?"))
+		return
+	if(honk_sound)
+		playsound(loc, honk_sound, 75, TRUE, 15) //heard within ~15 tiles
 
 /datum/action/human_action/blackfoot/New(Target, obj/item/holder)
 	. = ..()

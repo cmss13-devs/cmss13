@@ -120,7 +120,7 @@
 			prefs.predator_name = picked_name
 
 		if("gender")
-			prefs.predator_gender = prefs.predator_gender == FEMALE ? MALE : FEMALE
+			prefs.predator_gender = prefs.predator_gender == MALE ? FEMALE : prefs.predator_gender == FEMALE ? PLURAL : MALE
 
 		if("age")
 			var/age = params["age"]

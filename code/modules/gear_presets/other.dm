@@ -666,7 +666,7 @@
 	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
-	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male_gladiator : GLOB.first_names_female_gladiator))
+	var/random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male_gladiator : FEMALE ? GLOB.first_names_female_gladiator : pick(pick(GLOB.first_names_male_gladiator), pick(GLOB.first_names_female_gladiator))))
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(21,45)
 

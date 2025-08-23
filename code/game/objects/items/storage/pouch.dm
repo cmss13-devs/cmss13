@@ -596,6 +596,9 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap(src)
 
+/obj/item/storage/pouch/magazine/large/m16/ap/black
+	icon_state = "wy_ammo_mag"
+
 /obj/item/storage/pouch/magazine/large/rifle_heap
 	icon_state = "wy_ammo_mag"
 
@@ -1014,6 +1017,17 @@
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 
+/obj/item/storage/pouch/medkit/full/toxin/cbrn
+	can_hold_skill_only = FALSE // Given to non-medically trained personnel.
+
+/obj/item/storage/pouch/medkit/full/toxin/cbrn/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/antitox/skillless(src)
+	new /obj/item/storage/pill_bottle/antitox/skillless(src)
+	new /obj/item/roller(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
 /obj/item/storage/pouch/medkit/wy
 	icon_state = "wy_medkit"
 

@@ -2066,7 +2066,7 @@
 	pixel_x = -11;
 	pixel_y = 4
 	},
-/obj/item/paper/research_notes/good{
+/obj/item/paper/research_notes/unique/tier_three{
 	pixel_x = -15;
 	pixel_y = 2
 	},
@@ -6409,6 +6409,7 @@
 /area/varadero/exterior/pontoon_beach)
 "faX" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/shiva/yellow/north,
 /area/varadero/interior/electrical)
 "fbw" = (

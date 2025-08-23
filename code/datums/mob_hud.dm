@@ -545,6 +545,13 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	for(var/obj/effect/alien/resin/marker/i in hive.resin_marks)
 		client.images |= i.seenMeaning
 
+/mob/living/carbon/xenomorph/proc/hud_set_design_marks()
+	if(!client)
+		return
+	for(var/obj/effect/alien/resin/design/des in hive.designer_marks)
+		if(des.choosenMark)
+			client.images |= des.choosenMark
+
 /mob/living/carbon/xenomorph/proc/hud_set_plasma()
 	var/image/holder = hud_list[PLASMA_HUD]
 	if(stat == DEAD || plasma_max == 0)
@@ -739,7 +746,7 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_hunted, /image, image('icons/mob/hud/hud_yautj
 GLOBAL_DATUM_INIT(hud_icon_hunter_dishonored, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_dishonored"))
 GLOBAL_DATUM_INIT(hud_icon_hunter_honored, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_honored"))
 GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thralled"))
-
+GLOBAL_DATUM_INIT(hud_icon_hunter_blooded, /image, image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thrall_blooded"))
 
 /mob/living/carbon/hud_set_hunter()
 	var/image/holder = hud_list[HUNTER_HUD]
@@ -757,6 +764,9 @@ GLOBAL_DATUM_INIT(hud_icon_hunter_thralled, /image, image('icons/mob/hud/hud_yau
 		holder.overlays += GLOB.hud_icon_hunter_thralled
 	else if(hunter_data.gear)
 		holder.overlays += GLOB.hud_icon_hunter_gear
+
+	if(hunter_data.blooded)
+		holder.overlays += GLOB.hud_icon_hunter_blooded
 
 	hud_list[HUNTER_HUD] = holder
 

@@ -156,6 +156,12 @@
 			resisting = FALSE
 			return
 
+		if(!allowed_to_resist(user)) // We have to make sure they're still allowed out.
+			user.visible_message(SPAN_DANGER("[user] fails to breaks free from \the [src]!"),\
+			SPAN_DANGER("You failed to pull yourself free from \the [src]!"))
+			resisting = FALSE
+			return
+
 		user.visible_message(SPAN_DANGER("[user] breaks free from \the [src]!"),\
 		SPAN_DANGER("You pull yourself free from \the [src]!"),\
 		SPAN_NOTICE("You hear squelching."))
@@ -425,3 +431,4 @@
 			return TRUE
 	if(!(user.status_flags & XENO_HOST))//You can escape if you're not infected.
 		return TRUE
+	return FALSE

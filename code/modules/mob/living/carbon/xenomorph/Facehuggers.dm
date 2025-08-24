@@ -38,7 +38,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 	var/impregnated = FALSE
-	var/stim_drain = 30 // Value refers to units of chem
+	/// How many units of stims are drained upon hugging
+	var/stim_drain = 30
 
 	/// The timer for the hugger to jump
 	/// at the nearest human

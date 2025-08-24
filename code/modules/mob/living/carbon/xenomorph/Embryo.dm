@@ -16,8 +16,8 @@
 	var/hugger_ckey
 	/// The total time the person is hugged divided by stages until burst
 	var/per_stage_hugged_time = 90 //Set in Initialize due to config
-
-	var/stim_drain = 5
+	/// How How many units of stims are drained per tick
+	var/stim_drain = 2
 
 /obj/item/alien_embryo/Initialize(mapload, ...)
 	. = ..()

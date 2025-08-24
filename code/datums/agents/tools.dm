@@ -202,10 +202,13 @@
 	)
 
 /obj/item/device/portable_vendor/antag/cia/low_points
-	points = 100
+	points = 75
 
 /obj/item/device/portable_vendor/antag/cia/covert
 	name = "briefcase"
 	icon_state = "briefcase"
 	desc = "It's made of AUTHENTIC faux-leather and has a price-tag still attached. Its owner must be a real professional."
 	covert = TRUE
+
+/obj/item/device/portable_vendor/antag/cia/covert/low_points
+	points = 75

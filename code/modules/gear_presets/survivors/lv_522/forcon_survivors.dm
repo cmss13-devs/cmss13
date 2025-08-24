@@ -111,6 +111,13 @@
 	skills = /datum/skills/military/survivor/forecon_standard
 	minimap_icon = "private"
 
+/datum/equipment_preset/survivor/forecon/standard/cia
+	skills = /datum/skills/military/survivor/forecon_standard/cia
+
+/datum/equipment_preset/survivor/forecon/standard/cia/load_gear(mob/living/carbon/human/new_human)
+	..()
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/low_points(new_human), WEAR_IN_BACK)
+
 /datum/equipment_preset/survivor/forecon/standard/load_gear(mob/living/carbon/human/new_human)
 	..()
 	add_forecon_weapon_pistol(new_human)

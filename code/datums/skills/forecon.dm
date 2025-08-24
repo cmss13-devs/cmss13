@@ -21,7 +21,7 @@ MILITARY SURVIVORS
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
-/datum/skills/military/survivor/forecon_standard/cia_spy
+/datum/skills/military/survivor/forecon_standard/cia
 	name = "Reconnaissance Rifleman (CIA)"
 	additional_skills = list(
 		SKILL_CQC = SKILL_CQC_MASTER,

@@ -20,7 +20,7 @@
 	var/pass_accesses = list()
 
 	/// radio which broadcasts updates
-	var/obj/item/device/radio/marine/transceiver
+	var/obj/item/device/radio/motion/transceiver
 	/// the hidden mob which voices updates
 	var/mob/living/silicon/voice
 
@@ -38,6 +38,9 @@
 		"RMC" = ACCESS_TWE_ENGINEERING,
 	)
 	layer = ABOVE_BLOOD_LAYER
+
+/obj/item/device/radio/motion
+	listening = FALSE
 
 /obj/item/device/motion_sensor/Initialize(mapload, ...)
 	. = ..()

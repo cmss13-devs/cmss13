@@ -145,8 +145,8 @@
 			update_icon()
 		else
 			name = "[name] (ACTIVE)"
-			update_icon()
 			anchored = TRUE
+			update_icon()
 			var/chosen_dir = tgui_input_list(user, "Which corner do you wish to place the sensor?", "Location", list("North-West", "North-East", "South-West", "South-East"), 5 SECONDS, default = "North-West")
 			switch(chosen_dir)
 				if("North-West")

@@ -225,7 +225,7 @@
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but also shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
+	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
 //-------------------------------------------------------

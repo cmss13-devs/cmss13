@@ -112,6 +112,7 @@
 	minimap_icon = "private"
 
 /datum/equipment_preset/survivor/forecon/standard/cia
+	name = "Survivor - USCM Reconnaissance Marine (CIA)"
 	skills = /datum/skills/military/survivor/forecon_standard/cia
 
 /datum/equipment_preset/survivor/forecon/standard/cia/load_gear(mob/living/carbon/human/new_human)

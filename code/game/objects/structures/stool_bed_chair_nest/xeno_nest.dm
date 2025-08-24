@@ -13,8 +13,7 @@
 	buckle_lying = 0
 	var/on_fire = 0
 	var/resisting = 0
-	var/resisting_ready = 0
-	var/nest_resist_time = 1200
+	var/nest_resist_time = 30 SECONDS
 	var/mob/dead/observer/ghost_of_buckled_mob =  null
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/force_nest = FALSE
@@ -45,7 +44,6 @@
 	if(. && current_mob.pulledby)
 		current_mob.pulledby.stop_pulling()
 		resisting = FALSE //just in case
-		resisting_ready = FALSE
 
 	if(buckled_mob == current_mob)
 		current_mob.pixel_y = buckling_y["[dir]"]
@@ -140,7 +138,29 @@
 	healthcheck()
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
-	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
+	if(!(buckled_mob && buckled_mob.buckled == src))
+		return
+
+	if((buckled_mob == user) && allowed_to_resist(user))
+		if(resisting)
+			to_chat(user, SPAN_WARNING("You are already resisting."))
+			return
+		resisting = TRUE
+		user.visible_message(SPAN_WARNING("[user] struggles to break free of \the [src]."),\
+			SPAN_WARNING("You struggle to break free from \the [src]."),\
+			SPAN_NOTICE("You hear squelching."))
+
+		if(!do_after(user, nest_resist_time, INTERRUPT_INCAPACITATED_NO_RESIST, BUSY_ICON_HOSTILE))
+			user.visible_message(SPAN_DANGER("[user] fails to breaks free from \the [src]!"),\
+			SPAN_DANGER("You failed to pull yourself free from \the [src]!"))
+			resisting = FALSE
+			return
+
+		user.visible_message(SPAN_DANGER("[user] breaks free from \the [src]!"),\
+		SPAN_DANGER("You pull yourself free from \the [src]!"),\
+		SPAN_NOTICE("You hear squelching."))
+		unbuckle()
+		resisting = FALSE
 		return
 
 	if(user.body_position == LYING_DOWN || user.is_mob_incapacitated())
@@ -274,7 +294,6 @@
 	if(!buckled_mob)
 		return
 	resisting = FALSE
-	resisting_ready = FALSE
 	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	REMOVE_TRAIT(buckled_mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob
@@ -392,3 +411,17 @@
 			buckled_mob.dir = WEST
 		if(WEST)
 			buckled_mob.dir = EAST
+
+/obj/structure/bed/nest/proc/allowed_to_resist(mob/living/user)
+	if((buckled_mob != user) || (user.buckled != src))
+		return FALSE
+	if(user.stat)
+		to_chat(buckled_mob, SPAN_WARNING("You're a little too unconscious to try that."))
+		return FALSE
+	if(SSticker.mode && MODE_HAS_MODIFIER(/datum/gamemode_modifier/resistable_nests))//For specific events admins can allow people to escape nests. This should be telegraphed somewhere.
+		return TRUE
+	if(world.time < SSticker.mode.round_time_lobby + SHUTTLE_TIME_LOCK)//Survivors can escape before it is possible for them to be rescued.
+		if(issurvivorjob(user.job) || (FACTION_SURVIVOR in user.faction_group))
+			return TRUE
+	if(!(user.status_flags & XENO_HOST))//You can escape if you're not infected.
+		return TRUE

@@ -20,7 +20,7 @@
 	var/pass_accesses = list()
 
 	/// radio which broadcasts updates
-	var/obj/item/device/radio/marine/transceiver
+	var/obj/item/device/radio/motion/transceiver
 	/// the hidden mob which voices updates
 	var/mob/living/silicon/voice
 
@@ -38,6 +38,9 @@
 		"RMC" = ACCESS_TWE_ENGINEERING,
 	)
 	layer = ABOVE_BLOOD_LAYER
+
+/obj/item/device/radio/motion
+	listening = FALSE
 
 /obj/item/device/motion_sensor/Initialize(mapload, ...)
 	. = ..()
@@ -145,8 +148,8 @@
 			update_icon()
 		else
 			name = "[name] (ACTIVE)"
-			update_icon()
 			anchored = TRUE
+			update_icon()
 			var/chosen_dir = tgui_input_list(user, "Which corner do you wish to place the sensor?", "Location", list("North-West", "North-East", "South-West", "South-East"), 5 SECONDS, default = "North-West")
 			switch(chosen_dir)
 				if("North-West")

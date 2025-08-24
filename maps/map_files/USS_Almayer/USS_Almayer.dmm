@@ -3519,6 +3519,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/machinery/iv_drip,
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "ahY" = (
@@ -8497,7 +8498,8 @@
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
 	unacidable = 1;
-	explo_proof = 1
+	explo_proof = 1;
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
@@ -27139,7 +27141,7 @@
 /area/almayer/middeck/req)
 "bos" = (
 /obj/structure/coatrack,
-/obj/item/clothing/head/helmet/marine/pilottex{
+/obj/item/clothing/head/helmet/marine/pilot/tex{
 	pixel_x = -2;
 	pixel_y = 11
 	},
@@ -34092,7 +34094,8 @@
 "bDF" = (
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
-	unacidable = 1
+	unacidable = 1;
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/shipboard/weapon_room/notunnel)
@@ -43063,7 +43066,8 @@
 	id = "s_umbilical";
 	name = "\improper Umbillical Airlock";
 	unacidable = 1;
-	explo_proof = 1
+	explo_proof = 1;
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_umbilical)
@@ -43258,7 +43262,11 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
-/obj/structure/machinery/iv_drip,
+/obj/item/tool/wrench,
+/obj/item/tool/crowbar,
+/obj/structure/closet/crate/secure/medical{
+	desc = "A secure medical crate for field doctors to take with them to the FOB."
+	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "eiE" = (
@@ -49186,7 +49194,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/lower/vehiclehangar)
 "gGx" = (
-/obj/structure/filingcabinet/chestdrawer{
+/obj/structure/filingcabinet/research{
 	density = 0;
 	pixel_x = -16
 	},
@@ -56347,7 +56355,8 @@
 "jzD" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
-	id = "s_engi"
+	id = "s_engi";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/notunnel)
@@ -64609,7 +64618,8 @@
 "mZF" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
-	id = "s_engi_ext"
+	id = "s_engi_ext";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/notunnel)
@@ -67815,7 +67825,8 @@
 	id = "n_umbilical";
 	name = "\improper Umbillical Airlock";
 	unacidable = 1;
-	explo_proof = 1
+	explo_proof = 1;
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_umbilical)
@@ -77523,7 +77534,8 @@
 "sbq" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
-	id = "n_engi"
+	id = "n_engi";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/notunnel)
@@ -92913,6 +92925,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/closet/l3closet,
 /turf/open/floor/almayer/orange/southwest,
 /area/almayer/engineering/lower/workshop/hangar)
 "xXr" = (
@@ -93463,7 +93476,8 @@
 "yjq" = (
 /obj/structure/machinery/door/poddoor/almayer/locked{
 	icon_state = "almayer_pdoor";
-	id = "n_engi_ext"
+	id = "n_engi_ext";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/notunnel)

@@ -49,3 +49,4 @@
 /area/interior/vehicle/blackfoot
 	name = "blackfoot interior"
 	ambience_exterior = 'sound/vehicles/vtol/interior.ogg'
+	base_lighting_alpha = 0

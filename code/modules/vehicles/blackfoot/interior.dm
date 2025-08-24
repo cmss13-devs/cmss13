@@ -60,11 +60,22 @@
 	loader.pixel_x = pixel_x
 	loader.pixel_y = pixel_y
 
-	if(istype(interior.exterior, /obj/vehicle/multitile/blackfoot))
-		var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
-		loader.linked_blackfoot = linked_blackfoot
-		linked_blackfoot.interior_area = get_area(loader)
+	if(!istype(interior.exterior, /obj/vehicle/multitile/blackfoot))
+		qdel(src)
+		return
 
+	var/obj/vehicle/multitile/blackfoot/linked_blackfoot = interior.exterior
+	loader.linked_blackfoot = linked_blackfoot
+	linked_blackfoot.interior_area = get_area(loader)
+
+	if(!linked_blackfoot.interior_lighting_holder)
+		linked_blackfoot.interior_lighting_holder = new(src)
+		var/atom/movable/vehicle_light_holder/interior_light = linked_blackfoot.interior_lighting_holder
+		interior_light.set_light_range(10)
+		interior_light.set_light_power(2)
+		interior_light.set_light_on(TRUE)
+		interior_light.x = interior_light.x + 1
+		interior_light.y = interior_light.y + 1
 	qdel(src)
 
 /obj/effect/landmark/interior/spawn/blackfoot_rear_door_button

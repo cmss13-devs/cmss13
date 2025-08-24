@@ -35,6 +35,8 @@
 	vehicle_light_power = 4
 	vehicle_light_range = 5
 
+	var/atom/movable/vehicle_light_holder/interior_lighting_holder
+
 	vehicle_flags = VEHICLE_CLASS_LIGHT
 
 	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION

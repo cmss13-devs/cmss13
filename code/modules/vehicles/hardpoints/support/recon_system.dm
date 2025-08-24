@@ -73,14 +73,12 @@
 		return
 
 	var/mob/user = blackfoot_owner.seats[VEHICLE_DRIVER]
-	var/area/interior_area = blackfoot_owner.interior_area
-
 
 	if(!user)
 		return
 
-	if(interior_area)
-		interior_area.set_base_lighting(COLOR_WHITE, 255)
+	if(blackfoot_owner.interior_lighting_holder)
+		blackfoot_owner.interior_lighting_holder.set_light_color(COLOR_WHITE)
 
 	active = FALSE
 	blackfoot_owner.stealth_mode = FALSE
@@ -96,13 +94,12 @@
 		return
 
 	var/mob/user = blackfoot_owner.seats[VEHICLE_DRIVER]
-	var/area/interior_area = blackfoot_owner.interior_area
 
 	if(!user)
 		return
 
-	if(interior_area)
-		interior_area.set_base_lighting("#BB3F3F", 200)
+	if(blackfoot_owner.interior_lighting_holder)
+		blackfoot_owner.interior_lighting_holder.set_light_color("#d00200")
 
 	active = TRUE
 	blackfoot_owner.stealth_mode = TRUE

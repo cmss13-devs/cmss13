@@ -359,7 +359,7 @@
 	for(var/atom/movable/A in targets) // orange allows sentry to fire through gas and darkness
 		if(isliving(A))
 			var/mob/living/M = A
-			if(M.stat & DEAD)
+			if(M.stat & DEAD || isbrain(M))
 				if(A == target)
 					target = null
 				targets.Remove(A)

@@ -38,6 +38,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
 	var/impregnated = FALSE
+	var/stim_drain = 30 // Value refers to units of chem
 
 	/// The timer for the hugger to jump
 	/// at the nearest human
@@ -314,6 +315,8 @@
 	if(!sterile)
 		if(!human.species || !(human.species.flags & IS_SYNTHETIC)) //synthetics aren't paralyzed
 			human.apply_effect(MIN_IMPREGNATION_TIME * 0.5 * knockout_mod, PARALYZE) //THIS MIGHT NEED TWEAKS
+			for(var/datum/reagent/generated/stim in human.reagents.reagent_list) // Cause fuck 'em stims, boah
+				human.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 
 	var/area/hug_area = get_area(src)
 	var/name = hugger ? "[hugger]" : "\a [src]"

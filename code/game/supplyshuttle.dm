@@ -331,6 +331,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if("keyboard")
 			playsound(src, "keyboard", 15, 1)
 
+/obj/structure/machinery/computer/supply/ui_status(mob/user)
+	. = ..()
+	if(inoperable(MAINT))
+		return UI_CLOSE
+
 /obj/structure/machinery/computer/supply/proc/print_form(datum/supply_order/order)
 	var/list/accesses = list()
 

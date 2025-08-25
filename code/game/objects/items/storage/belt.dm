@@ -1964,6 +1964,15 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 
+/obj/item/storage/belt/gun/m44/m2049/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049())
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/pkd(src)
+
+/obj/item/storage/belt/gun/m44/m2049/nogun/fill_preset_inventory()
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/pkd(src)
+
 /obj/item/storage/belt/gun/m44/gunslinger
 	name = "custom-tooled gunslinger's belt"
 	desc = "It's always high noon <i>somewhere</i>."

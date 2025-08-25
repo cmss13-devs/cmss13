@@ -49,7 +49,7 @@
 				marine_rk = "soctl"
 			if(JOB_MARINE_RAIDER_CMD)
 				marine_rk = "soccmd"
-			if(JOB_SQUAD_TECH)
+			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
 			// US Army
 			if(JOB_ARMY_TROOPER)
@@ -134,7 +134,7 @@
 				marine_rk = "med"
 			if(JOB_PLT_SL)
 				marine_rk = "leader"
-			if(JOB_SQUAD_TECH)
+			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
 			// US Army
 			if(JOB_ARMY_TROOPER)

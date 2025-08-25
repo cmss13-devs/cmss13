@@ -1893,6 +1893,13 @@
 /area/almayer/living/basketball)
 "aeJ" = (
 /obj/structure/closet/firecloset,
+/obj/structure/machinery/door_control{
+	id = "ARES ReceptStairs2";
+	name = "ARES Reception Stairway Shutters";
+	pixel_x = 8;
+	req_one_access_txt = "91;92";
+	pixel_y = -24
+	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aeK" = (
@@ -3433,7 +3440,7 @@
 "ahM" = (
 /obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/multiz/up,
-/turf/open/floor/almayer/aicore/no_build,
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
 "ahN" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
@@ -3873,7 +3880,7 @@
 /area/almayer/hallways/lower/starboard_fore_hallway)
 "aiJ" = (
 /obj/structure/platform_decoration/metal/almayer,
-/turf/open/floor/almayer/aicore/glowing/no_build,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aiK" = (
 /turf/open/floor/almayer/flooredge/south,
@@ -6054,9 +6061,6 @@
 "aoO" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/stern_point_defense)
-"aoP" = (
-/turf/open/floor/almayer/aicore/no_build/ai_floor2,
-/area/almayer/command/airoom)
 "aoQ" = (
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/shipboard/stern_point_defense)
@@ -6508,19 +6512,6 @@
 "apV" = (
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/hallways/lower/starboard_aft_hallway)
-"apW" = (
-/obj/structure/machinery/door_control{
-	id = "ARES ReceptStairs2";
-	name = "ARES Reception Stairway Shutters";
-	req_one_access_txt = "91;92";
-	pixel_y = 26;
-	pixel_x = 8
-	},
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
-"apX" = (
-/turf/open/floor/almayer/aicore/glowing/no_build,
-/area/almayer/command/airoom)
 "apY" = (
 /obj/structure/machinery/telecomms/server/presets/medical,
 /obj/structure/machinery/telecomms/processor/preset_three{
@@ -6984,13 +6975,6 @@
 /obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 1;
 	vent_tag = "Comms"
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES ReceptStairs2";
-	name = "ARES Reception Stairway Shutters";
-	pixel_x = 8;
-	req_one_access_txt = "91;92";
-	pixel_y = -24
 	},
 /turf/open/floor/almayer/aicore/no_build/ai_plates,
 /area/almayer/command/airoom)
@@ -13655,6 +13639,10 @@
 /obj/structure/surface/table/almayer,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
+"aJn" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
@@ -13689,9 +13677,9 @@
 /turf/open/floor/almayer/aicore/glowing/no_build,
 /area/almayer/command/airoom)
 "aJv" = (
-/obj/structure/machinery/ares/substrate,
 /obj/structure/platform/metal/almayer/west,
-/turf/open/floor/almayer/no_build/test_floor4,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
 "aJw" = (
 /obj/structure/machinery/light{
@@ -13711,16 +13699,8 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "aJy" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
-	},
 /obj/structure/platform_decoration/metal/almayer/north,
-/turf/open/floor/almayer/aicore/glowing/no_build,
+/turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
 "aJz" = (
 /obj/effect/decal/warning_stripes{
@@ -16145,9 +16125,6 @@
 /obj/effect/decal/heavy_cable/node_n_e,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
-"aQd" = (
-/turf/closed/wall/almayer/aicore/hull,
-/area/almayer/middeck/maintenance/saft)
 "aQe" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -31418,6 +31395,17 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
+"bxQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
+/area/almayer/command/airoom)
 "bxR" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/prop/invuln/lattice_prop{
@@ -31708,9 +31696,6 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/plate,
 /area/almayer/middeck/hanger)
-"byz" = (
-/turf/closed/wall/almayer/aicore/hull,
-/area/almayer/middeck/maintenance/sf)
 "byA" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -34938,6 +34923,9 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/fore_hallway)
+"bFG" = (
+/turf/open/floor/plating,
+/area/almayer/command/airoom)
 "bFJ" = (
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
 /turf/open/floor/plating,
@@ -60551,9 +60539,6 @@
 /obj/structure/closet/l3closet/scientist,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/medical_science)
-"lmz" = (
-/turf/closed/wall/almayer/aicore/hull,
-/area/almayer/middeck/req)
 "lmA" = (
 /obj/structure/bed/chair/comfy/blue,
 /turf/open/floor/carpet,
@@ -88525,7 +88510,7 @@
 /area/almayer/maint/upper/u_m_s)
 "wnh" = (
 /obj/structure/window/framed/almayer/aicore/hull,
-/turf/open/floor/plating,
+/turf/open/floor/almayer/no_build/plating,
 /area/almayer/command/airoom)
 "wnw" = (
 /obj/structure/machinery/flasher{
@@ -173938,21 +173923,21 @@ aJM
 aJM
 aJM
 aJM
-byz
-byz
-byz
-byz
-lmz
-lmz
-lmz
-lmz
-lmz
-lmz
-lmz
-lmz
-lmz
-lmz
-lmz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
 asm
 bcX
 bak
@@ -174041,7 +174026,6 @@ aJM
 aJM
 aJM
 aJM
-byz
 daz
 daz
 daz
@@ -174055,7 +174039,8 @@ daz
 daz
 daz
 daz
-lmz
+daz
+daz
 asm
 bcX
 bak
@@ -174135,16 +174120,16 @@ aJM
 aJM
 aJM
 aJM
-byz
-byz
-byz
-byz
-byz
-byz
-byz
-byz
-byz
-byz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
 daz
 vhe
 qQS
@@ -174152,13 +174137,13 @@ cqm
 gTH
 qit
 ebN
-yaZ
+rOz
 gwn
 pfT
 vCH
 dyp
 daz
-lmz
+daz
 asm
 bcX
 bak
@@ -174238,16 +174223,16 @@ aJM
 aJM
 aJM
 aJM
-byz
-byz
-byz
-byz
-byz
-byz
-byz
-sbJ
-sbJ
-sbJ
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
 daz
 rna
 clw
@@ -174261,7 +174246,7 @@ bFg
 frM
 lcg
 daz
-lmz
+daz
 asm
 bhe
 bgB
@@ -174341,16 +174326,16 @@ aJM
 aJM
 aJM
 aJM
-byz
-byz
-byz
 daz
 daz
 daz
 daz
 daz
-kfU
-kfU
+daz
+daz
+daz
+bFG
+bFG
 daz
 pmV
 eGr
@@ -174364,7 +174349,7 @@ sEK
 etM
 lcg
 daz
-lmz
+daz
 asm
 bcW
 bak
@@ -174444,8 +174429,8 @@ aJM
 aJM
 aJM
 aJM
-byz
-byz
+daz
+daz
 daz
 daz
 hRW
@@ -174453,7 +174438,7 @@ asZ
 vXh
 daz
 daz
-kfU
+bFG
 daz
 ebN
 ebN
@@ -174465,9 +174450,9 @@ rOz
 kBy
 kBy
 nNA
-fPB
+kBy
 daz
-lmz
+daz
 asm
 bhf
 bak
@@ -174547,7 +174532,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 daz
 daz
 eKJ
@@ -174565,7 +174550,7 @@ roH
 ebN
 daz
 daz
-daz
+wnh
 wnh
 wnh
 daz
@@ -174650,7 +174635,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 daz
 jYH
 ubA
@@ -174753,7 +174738,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 daz
 cwS
 ffE
@@ -174856,7 +174841,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 daz
 oRV
 ydI
@@ -174959,7 +174944,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 daz
 daz
 eKJ
@@ -174977,7 +174962,7 @@ gXs
 ebN
 daz
 daz
-daz
+wnh
 wnh
 wnh
 daz
@@ -175062,8 +175047,8 @@ aJM
 aJM
 aJM
 aJM
-byz
-byz
+daz
+daz
 daz
 daz
 ocB
@@ -175078,14 +175063,14 @@ ebN
 gbg
 uVv
 arg
-ebN
-apW
+qQS
+clw
 qQS
 qQS
 air
 ahM
 daz
-lmz
+daz
 asm
 bhe
 bgD
@@ -175165,8 +175150,8 @@ aJM
 aJM
 aJM
 aJM
-byz
-byz
+daz
+daz
 daz
 daz
 daz
@@ -175181,14 +175166,14 @@ mIJ
 xDC
 yaQ
 qQS
-aqf
-apX
-aoP
-apX
+qQS
+qQS
+qQS
+qQS
 aiJ
 aJu
 daz
-lmz
+daz
 asm
 bcW
 byl
@@ -175268,7 +175253,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 daz
 daz
 daz
@@ -175284,14 +175269,14 @@ qRX
 qQS
 aCd
 qQS
-aqf
-igr
-sEK
-ujn
+clw
+qQS
+qQS
+qQS
 aJy
 aJv
 daz
-lmz
+daz
 asm
 bcW
 byl
@@ -175371,7 +175356,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 daz
 ahJ
 ahh
@@ -175387,14 +175372,14 @@ itg
 gba
 kRQ
 our
-ebN
-cxc
-kBy
-kBy
-dzt
-gyN
+qQS
+qQS
+aJn
+aJn
+aJn
+aJn
 daz
-lmz
+daz
 asm
 bcW
 bak
@@ -175474,7 +175459,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 daz
 ahS
 fVx
@@ -175488,16 +175473,16 @@ daz
 ebN
 fCI
 ebN
+ebN
+ebN
+ebN
+ebN
+ebN
+ebN
 daz
 daz
 daz
 daz
-daz
-daz
-daz
-daz
-daz
-lmz
 asm
 bgf
 bgf
@@ -175577,7 +175562,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 izf
 aid
 qQS
@@ -175591,16 +175576,16 @@ ebN
 naj
 itg
 aeJ
+ebN
+rOz
+kBy
+kBy
+nNA
+lcg
 daz
 daz
 daz
 daz
-daz
-lmz
-lmz
-lmz
-lmz
-lmz
 asm
 bcW
 bak
@@ -175680,7 +175665,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 vVk
 aih
 fVx
@@ -175694,13 +175679,13 @@ wiu
 xDC
 yaQ
 clw
+aqf
+fKe
+dDp
+bFg
+frM
+lcg
 daz
-daz
-aqU
-aqU
-aqU
-asm
-asm
 asm
 asm
 asm
@@ -175783,7 +175768,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 fhR
 nKO
 qQS
@@ -175797,13 +175782,13 @@ flL
 qQS
 qQS
 qQS
+aqf
+igr
+sEK
+ujn
+bxQ
+lcg
 daz
-daz
-aqU
-aqU
-aqU
-asm
-asm
 asm
 asm
 aHF
@@ -175886,7 +175871,7 @@ aJM
 aJM
 aJM
 aJM
-byz
+daz
 npq
 aij
 ahy
@@ -175900,13 +175885,13 @@ daz
 daz
 daz
 daz
+ebN
+cxc
+fPB
+kBy
+dzt
+gyN
 daz
-daz
-aqU
-aqU
-aqU
-asm
-asm
 asm
 asm
 aHF
@@ -175989,27 +175974,27 @@ bwI
 bwI
 bwI
 bwI
-aQd
 daz
 daz
 daz
 daz
 daz
 daz
-aQd
-aQd
-aQd
-aQd
-aQd
-aQd
-aQd
-aQd
-aQd
-asm
-asm
-asm
-asm
-asm
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
+daz
 asm
 asm
 aHF

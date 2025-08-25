@@ -270,6 +270,7 @@
 /datum/equipment_preset/cia/uacqs/commissioner/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
 	new_human.equip_to_slot_or_del(new /obj/item/paper/prefab/uacqs_notice(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/syringe/uacqs_fountain(new_human), WEAR_R_EAR)
 
 /datum/equipment_preset/cia/uacqs/security
 	name = "CIA Agent (UACQS Security)"

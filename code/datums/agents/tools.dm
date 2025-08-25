@@ -150,6 +150,7 @@
 	listed_products = list(
 		list("STATIONERY", 0, null, null, null),
 		list("pen", 1, /obj/item/tool/pen/clicky, "white", "A pen, for writing on the go."),
+		list("UACQS Fountain Pain", 20, /obj/item/tool/pen/syringe/uacqs_fountain, "purple", "A pristine fountain pain emblazoned with 'UACQS'. Multi-functional."),
 		list("Paper", 1, /obj/item/paper, "white", "A fresh piece of paper, for writing on."),
 		list("Carbon Paper", 1, /obj/item/paper/carbon, "white", "A piece of carbon paper, to double the writing output."),
 		list("Clipboard", 1, /obj/item/clipboard, "white", "A clipboard, for storing all that writing."),

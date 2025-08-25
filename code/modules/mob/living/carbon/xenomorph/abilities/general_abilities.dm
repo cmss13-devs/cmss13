@@ -481,6 +481,20 @@
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
 
+/datum/action/xeno_action/activable/skyspit
+	name = "Skyspit"
+	action_icon_state = "skyspit"
+	macro_path = /datum/action/xeno_action/verb/verb_skyspit
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_3
+	xeno_cooldown = 20 SECONDS
+	plasma_cost = 150
+	var/windup_time = 25 // 2.5 second default windup
+	var/skyspit_range = 4 // 9x9 area
+	var/antiair_duration = 60 // 6 seconds
+	var/sound_to_play = 'sound/effects/blobattack.ogg'
+
+
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"
 	action_icon_state = "evolve"

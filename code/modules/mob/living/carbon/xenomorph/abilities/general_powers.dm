@@ -482,9 +482,6 @@
 		if (!do_after(X, 0.5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			return
 
-
-
-
 	apply_cooldown()
 
 	if (windup)

@@ -7311,10 +7311,6 @@
 	pixel_x = -6;
 	pixel_y = -3
 	},
-/obj/item/hardpoint/support/sensor_array{
-	pixel_x = 6;
-	pixel_y = -6
-	},
 /turf/open/floor/almayer/plating/northeast,
 /area/almayer/shipboard/operations)
 "arZ" = (

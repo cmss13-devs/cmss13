@@ -15913,7 +15913,7 @@
 /turf/open/floor/corsat/yellow/northeast,
 /area/corsat/gamma/engineering)
 "bhO" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/gamma/engineering)
 "bhP" = (
@@ -19434,7 +19434,7 @@
 /turf/closed/wall/biodome,
 /area/corsat/sigma/south/engineering)
 "bwT" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/corsat/cargo,
 /area/corsat/sigma/south/engineering)
 "bwU" = (
@@ -22812,7 +22812,7 @@
 /turf/open/floor/corsat/yellow/north,
 /area/corsat/sigma/south/engineering)
 "bMf" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/corsat/yellow/west,
 /area/corsat/omega/maint)
 "bMh" = (
@@ -27139,7 +27139,7 @@
 /turf/open/floor/corsat/whitetancorner/west,
 /area/corsat/sigma/dorms)
 "drE" = (
-/obj/structure/machinery/power/reactor/colony{
+/obj/structure/machinery/power/power_generator/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
 	name = "\improper G-17 Thermoelectric Generator"
 	},
@@ -31612,7 +31612,7 @@
 /turf/open/gm/grass/grass1/weedable,
 /area/corsat/theta/biodome)
 "hNL" = (
-/obj/structure/machinery/power/reactor/colony{
+/obj/structure/machinery/power/power_generator/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
 	name = "\improper G-17 Thermoelectric Generator"
 	},
@@ -41202,7 +41202,7 @@
 /turf/open/floor/corsat/red/north,
 /area/corsat/omega/hangar/security)
 "sgN" = (
-/obj/structure/machinery/power/reactor/colony{
+/obj/structure/machinery/power/power_generator/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
 	name = "\improper G-17 Thermoelectric Generator"
 	},
@@ -46852,7 +46852,7 @@
 /turf/open/floor/corsat/purplewhite/southwest,
 /area/corsat/gamma/sigmaremote)
 "ykJ" = (
-/obj/structure/machinery/power/reactor/colony{
+/obj/structure/machinery/power/power_generator/reactor/colony{
 	desc = "A high-tech thermoelectric generator fueled by a superheated uranium rod.";
 	name = "\improper G-17 Thermoelectric Generator"
 	},

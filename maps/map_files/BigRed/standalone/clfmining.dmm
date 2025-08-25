@@ -1223,7 +1223,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "sK" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "sS" = (
@@ -2902,7 +2902,7 @@
 	icon_state = "1-2-4";
 	name = "heavy duty power cable"
 	},
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "SU" = (

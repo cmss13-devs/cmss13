@@ -499,7 +499,7 @@
 	name = "working joe radio headset"
 	desc = "The headset used by working joe synthetics. To access the engineering channel, use :n. To access the AI Core internal network, use :q."
 	icon_state = "eng_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/aicore)
+	initial_keys = list(/obj/item/device/encryptionkey/engi, /obj/item/device/encryptionkey/aicore)
 
 /obj/item/device/radio/headset/almayer/chef
 	name = "kitchen radio headset"

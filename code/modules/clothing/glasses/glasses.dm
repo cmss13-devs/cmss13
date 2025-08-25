@@ -900,6 +900,7 @@
 	darkness_view = -1
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 	flags_obj = OBJ_IS_HELMET_GARB
+	flags_inv_hide = HIDEEYES
 	eye_protection = EYE_PROTECTION_FLAVOR
 
 /obj/item/clothing/glasses/sunglasses/blindfold

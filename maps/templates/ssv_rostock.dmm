@@ -10255,7 +10255,7 @@
 "hrh" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/glass,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/strata/blue3,

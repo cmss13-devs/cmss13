@@ -553,7 +553,7 @@
 /turf/open/floor/prison/whitepurplefull,
 /area/prison/research/secret/bioengineering)
 "abF" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/whitepurplefull,
@@ -920,7 +920,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
 "acP" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -1483,7 +1483,7 @@
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/north)
 "aeA" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -1533,7 +1533,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkpurple2/north,
@@ -2277,7 +2277,7 @@
 /turf/open/floor/prison/darkpurple2/northwest,
 /area/prison/research/secret)
 "ahj" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkpurple2/north,
@@ -2318,7 +2318,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/cellblock/maxsec/north)
 "ahs" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkredfull2/southwest,
@@ -2660,7 +2660,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/research/secret)
 "aiO" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -2818,7 +2818,7 @@
 /turf/open/floor/prison/whitepurple/north,
 /area/prison/research/secret/chemistry)
 "ajt" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/surface/table/reinforced,
@@ -2829,7 +2829,7 @@
 /turf/open/floor/prison/whitepurple/northeast,
 /area/prison/research/secret/chemistry)
 "ajv" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -4098,7 +4098,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/prison/medbay/surgery)
 "anP" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean_marked,
@@ -5700,7 +5700,7 @@
 /turf/open/floor/prison/red/north,
 /area/prison/cellblock/highsec/north/north)
 "atD" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/whitepurple/north,
@@ -5718,7 +5718,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -5764,7 +5764,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkredfull2/southwest,
@@ -6262,7 +6262,7 @@
 /turf/open/floor/wood,
 /area/prison/chapel)
 "avV" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -6463,7 +6463,7 @@
 /area/prison/yard)
 "awS" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/red/north,
@@ -8020,7 +8020,7 @@
 /area/prison/medbay/foyer)
 "aDf" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -8574,7 +8574,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/residential/north)
 "aFj" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -9135,7 +9135,7 @@
 /turf/open/floor/prison/whitepurple/north,
 /area/prison/quarters/research)
 "aHq" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -9398,7 +9398,7 @@
 /turf/open/floor/prison/redfull,
 /area/prison/cellblock/highsec/north/south)
 "aIu" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/platform_decoration/metal/almayer/west,
@@ -10082,7 +10082,7 @@
 /turf/open/floor/prison/redcorner/north,
 /area/prison/cellblock/highsec/north/south)
 "aLh" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/red/north,
@@ -10183,7 +10183,7 @@
 /turf/open/floor/prison/green/north,
 /area/prison/hallway/staff)
 "aLC" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/green/north,
@@ -10802,7 +10802,7 @@
 /area/prison/cellblock/lowsec/ne)
 "aOf" = (
 /obj/structure/bed/chair/comfy,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/greenfull/northwest,
@@ -11579,7 +11579,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/ne)
 "aRf" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -11670,7 +11670,7 @@
 /area/prison/cellblock/lowsec/nw)
 "aRx" = (
 /obj/structure/pipes/vents/scrubber,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/green/north,
@@ -11686,7 +11686,7 @@
 /area/prison/cellblock/lowsec/ne)
 "aRC" = (
 /obj/structure/pipes/vents/scrubber,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/green/north,
@@ -13068,7 +13068,7 @@
 /turf/open/floor/prison/sterile_white,
 /area/prison/toilet/staff)
 "aWZ" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -13463,7 +13463,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkred2/north,
@@ -13508,7 +13508,7 @@
 /turf/open/floor/prison/greenfull,
 /area/prison/cellblock/lowsec/nw)
 "aYG" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -16160,7 +16160,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/prison/hallway/entrance)
 "biH" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/platform/metal/almayer/north,
@@ -16237,7 +16237,7 @@
 /turf/open/floor/prison/whitegreen/north,
 /area/prison/residential/central)
 "bjc" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/whitegreen/north,
@@ -16385,7 +16385,7 @@
 /turf/open/floor/prison/darkred2/southeast,
 /area/prison/hanger/main)
 "bjK" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/blue/north,
@@ -16427,7 +16427,7 @@
 /turf/open/floor/prison/red/north,
 /area/prison/security/monitoring/highsec)
 "bjU" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -16699,7 +16699,7 @@
 /turf/open/floor/prison,
 /area/prison/cellblock/vip)
 "bkZ" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/red/north,
@@ -17367,7 +17367,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -17865,7 +17865,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/prison/security/monitoring/highsec)
 "bpO" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/cell_stripe/west,
@@ -18219,7 +18219,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/holding/holding1)
 "brq" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -18278,7 +18278,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/visitation)
 "brA" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -19858,7 +19858,7 @@
 /area/prison/security/checkpoint/hangar)
 "byM" = (
 /obj/structure/flora/pottedplant,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/cell_stripe/west,
@@ -20512,7 +20512,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/green/north,
@@ -20663,7 +20663,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -21337,7 +21337,7 @@
 /area/prison/maintenance/hangar_barracks)
 "bEM" = (
 /obj/structure/pipes/vents/pump/on,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/largecrate/random,
@@ -21421,7 +21421,7 @@
 /turf/open/floor/prison/redcorner/east,
 /area/prison/cellblock/highsec/south/north)
 "bFd" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/red/north,
@@ -21861,7 +21861,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/holding/holding2)
 "bGL" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -21933,7 +21933,7 @@
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/prison/telecomms)
 "bGY" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkbrown2/northeast,
@@ -22828,7 +22828,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/telecomms)
 "bKG" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkbrown2/northeast,
@@ -23142,7 +23142,7 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/prison/residential/south)
 "bLX" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -23271,7 +23271,7 @@
 /turf/open/floor/prison/kitchen/southwest,
 /area/prison/residential/south)
 "bME" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkred2/north,
@@ -23530,7 +23530,7 @@
 /turf/open/floor/prison,
 /area/prison/storage/medsec)
 "bNJ" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -23594,7 +23594,7 @@
 /turf/open/floor/prison,
 /area/prison/engineering)
 "bOc" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -23842,7 +23842,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/prison/laundry)
 "bPo" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean/southwest,
@@ -23977,7 +23977,7 @@
 /obj/structure/pipes/standard/simple/visible/green{
 	dir = 6
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -24488,7 +24488,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/access/south)
 "bRX" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -24502,7 +24502,7 @@
 /turf/open/floor/prison,
 /area/prison/security)
 "bSb" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/closed/wall/resin,
@@ -25468,7 +25468,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/yellowfull,
@@ -25545,7 +25545,7 @@
 /turf/open/floor/prison/darkyellow2/southeast,
 /area/prison/storage/medsec)
 "bVM" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bluefull/west,
@@ -26407,7 +26407,7 @@
 /turf/open/floor/prison/darkyellow2/north,
 /area/prison/hallway/engineering)
 "bZn" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellow2/north,
@@ -27481,7 +27481,7 @@
 /turf/open/floor/prison/darkyellow2,
 /area/prison/hallway/engineering)
 "cdP" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/yellow/north,
@@ -27942,7 +27942,7 @@
 /turf/open/floor/prison,
 /area/prison/execution)
 "cfI" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -27967,7 +27967,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/prison/security/briefing)
 "cfP" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkred2/north,
@@ -28167,7 +28167,7 @@
 /turf/open/floor/wood,
 /area/prison/parole/protective_custody)
 "cgH" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -28733,7 +28733,7 @@
 /turf/open/floor/prison/blue/north,
 /area/prison/cellblock/protective)
 "ciS" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/blue/north,
@@ -29053,7 +29053,7 @@
 /turf/open/floor/plating,
 /area/prison/disposal)
 "cki" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -29854,7 +29854,7 @@
 /obj/structure/machinery/conveyor{
 	dir = 8
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -29987,7 +29987,7 @@
 /area/prison/security/briefing)
 "cnV" = (
 /obj/structure/bed,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/shuttle/black,
@@ -30523,7 +30523,7 @@
 /area/prison/cellblock/mediumsec/north)
 "cql" = (
 /obj/structure/bed/chair,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/yellow/north,
@@ -31167,7 +31167,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -31727,7 +31727,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 10
 	},
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/plating,
@@ -33079,7 +33079,7 @@
 /turf/open/floor/prison/darkpurple2/northeast,
 /area/prison/hanger/research)
 "dRQ" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /obj/structure/machinery/light{
@@ -33140,7 +33140,7 @@
 /area/prison/maintenance/residential/access/south)
 "efk" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -33291,7 +33291,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
 "eRq" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -33679,7 +33679,7 @@
 /area/prison/cellblock/mediumsec/east)
 "gEZ" = (
 /obj/structure/pipes/vents/pump/on,
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/darkyellow2/north,
@@ -35332,7 +35332,7 @@
 /turf/open/floor/prison/darkpurple2/north,
 /area/prison/hanger/research)
 "mVq" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -36503,7 +36503,7 @@
 /turf/open/floor/prison,
 /area/prison/residential/central)
 "shN" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/bright_clean2/southwest,
@@ -36614,7 +36614,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/hallway/central/south)
 "sMK" = (
-/obj/structure/machinery/alarm/almayer{
+/obj/structure/machinery/alarm{
 	dir = 1
 	},
 /turf/open/floor/prison/yellow/north,

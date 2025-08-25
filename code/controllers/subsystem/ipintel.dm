@@ -137,6 +137,7 @@ SUBSYSTEM_DEF(ipintel)
 
 /datum/controller/subsystem/ipintel/proc/add_intel_to_database(datum/ip_intel/intel)
 	set waitfor = FALSE //no need to make the client connection wait for this step.
+
 	WAIT_DB_READY
 
 	var/datum/entity/intel/query = DB_ENTITY(/datum/entity/intel)
@@ -145,7 +146,7 @@ SUBSYSTEM_DEF(ipintel)
 	query.date = intel.date
 
 	query.save()
-	query.sync()
+	query.detach()
 
 /datum/controller/subsystem/ipintel/proc/fetch_cached_ip_intel(address)
 	if(!SSentity_manager.ready)
@@ -179,11 +180,13 @@ SUBSYSTEM_DEF(ipintel)
 /datum/controller/subsystem/ipintel/proc/is_exempt(client/player)
 	if(player.admin_holder)
 		return TRUE
+
 	var/exempt_living_playtime = CONFIG_GET(number/ipintel_exempt_playtime_living)
 	if(exempt_living_playtime > 0)
 		var/living_minutes = player.get_total_xeno_playtime() + player.get_total_human_playtime()
-		if(living_minutes > exempt_living_playtime)
+		if(living_minutes >= exempt_living_playtime)
 			return TRUE
+
 	return FALSE
 
 /datum/entity/vpn_whitelist
@@ -331,3 +334,4 @@ SUBSYSTEM_DEF(ipintel)
 
 	to_chat_immediate(src, SPAN_USERDANGER(message_string))
 	qdel(src)
+	return TRUE

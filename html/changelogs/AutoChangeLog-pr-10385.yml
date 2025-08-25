@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Fixes the inhand sprites for all three PKD revolvers to use their existing placeholders."

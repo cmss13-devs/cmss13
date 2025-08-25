@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - rscadd: "You can now use a custom \"glove\" cursor from preferences by clicking the \"use custom cursors\" in preferences tab. Theres a cursor for each faction"

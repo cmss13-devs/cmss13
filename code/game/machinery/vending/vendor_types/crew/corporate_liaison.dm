@@ -3,6 +3,7 @@
 GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("SUITS AND UNDERSHIRTS (CHOOSE 5)", 0, null, null, null),
 	list("Black Suit Pants", 0, /obj/item/clothing/under/liaison_suit/black, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
+	list("Black Suitskirt", 0, /obj/item/clothing/under/liaison_suit/black/skirt, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_RECOMMENDED),
 	list("Blue Suit Pants", 0, /obj/item/clothing/under/liaison_suit/blue, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Brown Suit Pants", 0, /obj/item/clothing/under/liaison_suit/brown, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("White Suit Pants", 0, /obj/item/clothing/under/liaison_suit/corporate_formal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
@@ -10,6 +11,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("Worn Suit", 0, /obj/item/clothing/under/detective/neutral, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's Tan Suit", 0, /obj/item/clothing/under/liaison_suit, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's Charcoal Suit", 0, /obj/item/clothing/under/liaison_suit/charcoal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("Liaison's Charcoal Suitskirt", 0, /obj/item/clothing/under/liaison_suit/charcoal/skirt, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's White Suit", 0, /obj/item/clothing/under/liaison_suit/formal, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's Blue Blazer", 0, /obj/item/clothing/under/liaison_suit/blazer, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Liaison's Suspenders", 0, /obj/item/clothing/under/liaison_suit/suspenders, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
@@ -18,6 +20,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_liaison, list(
 	list("Country Club Outfit", 0, /obj/item/clothing/under/liaison_suit/ivy, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Orange Outfit", 0, /obj/item/clothing/under/liaison_suit/orange, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Corporate Casual", 0, /obj/item/clothing/under/liaison_suit/field, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
+	list("Corporate Casual Skirt", 0, /obj/item/clothing/under/liaison_suit/field/skirt, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Simple White Shirt, Black Pants", 0, /obj/item/clothing/under/sl_suit, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Simple White Shirt, Blue Pants", 0, /obj/item/clothing/under/lawyer/bluesuit, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),
 	list("Black Tailored Suit", 0, /obj/item/clothing/under/suit_jacket, CIVILIAN_CAN_BUY_UNIFORM, VENDOR_ITEM_REGULAR),

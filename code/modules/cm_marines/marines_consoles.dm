@@ -31,6 +31,7 @@
 
 	var/is_weyland = FALSE
 	var/authenticated = FALSE
+	var/mob/maybe_authenticated_user
 
 /obj/structure/machinery/computer/card/wey_yu
 	is_weyland = TRUE
@@ -42,14 +43,28 @@
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Authority confirmation card is missing!\"")
 		return FALSE
 
+	if (id_card.registered_ref?.resolve() != user)
+		visible_message("[SPAN_BOLD("[user]")] starts fidgeting with the ID console.")
+
+		if (!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: Incorrect user for the given ID!\"")
+			return FALSE
+
 	if(check_access(id_card))
 		authenticated = TRUE
+		maybe_authenticated_user = user
 		visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
 		update_static_data(user)
 		return TRUE
 
 	visible_message("[SPAN_BOLD("[src]")] states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
 	return FALSE
+
+/obj/structure/machinery/computer/card/proc/verify_current_user_is_authenticated_user(mob/user)
+	if (!authenticated)
+		return FALSE
+
+	return user == maybe_authenticated_user
 
 /obj/structure/machinery/computer/card/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -88,6 +103,7 @@
 		if("PRG_logout")
 			visible_message("[SPAN_BOLD("[src]")] states, \"AUTH LOGOUT: Session end confirmed.\"")
 			authenticated = FALSE
+			maybe_authenticated_user = null
 			if(ishuman(user))
 				user_id_card.forceMove(user.loc)
 				if(!user.get_active_hand())
@@ -99,7 +115,7 @@
 		if("PRG_print")
 			if(!printing)
 				if(params["mode"])
-					if(!authenticated || !target_id_card)
+					if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 						return
 
 					printing = TRUE
@@ -166,7 +182,7 @@
 						return TRUE
 			return FALSE
 		if("PRG_terminate")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			target_id_card.assignment = "Terminated"
@@ -175,7 +191,7 @@
 			message_admins("[user.real_name] terminated the ID of [target_id_card.registered_name].", key_name_admin(user))
 			return TRUE
 		if("PRG_edit")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			var/new_name = strip_html(params["name"])
@@ -185,7 +201,7 @@
 			target_id_card.registered_name = new_name
 			return TRUE
 		if("PRG_assign")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 			var/target = params["assign_target"]
 			if(!target)
@@ -213,7 +229,7 @@
 			message_admins("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment '[target_id_card.assignment]'.")
 			return TRUE
 		if("PRG_access")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			var/access_type = params["access_target"]
@@ -237,7 +253,7 @@
 					log_idmod(target_id_card, "<font color='green'> [user.real_name] granted access '[get_access_desc(access_type)]'. </font>", key_name_admin(user))
 				return TRUE
 		if("PRG_grantall")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			target_id_card.access |= (is_weyland ? get_access(ACCESS_LIST_WY_ALL) : get_access(ACCESS_LIST_MARINE_MAIN))
@@ -245,7 +261,7 @@
 			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted the ID all access and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyall")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			var/list/access = target_id_card.access
@@ -254,7 +270,7 @@
 			log_idmod(target_id_card, "<font color='red'> [user.real_name] removed all accesses and USCM IFF. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_grantregion")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			if(params["region"] == "Faction (IFF system)")
@@ -269,7 +285,7 @@
 			log_idmod(target_id_card, "<font color='green'> [user.real_name] granted all [additions] accesses. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_denyregion")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			if(params["region"] == "Faction (IFF system)")
@@ -284,7 +300,7 @@
 			log_idmod(target_id_card, "<font color='red'> [user.real_name] revoked all [additions] accesses. </font>", key_name_admin(user))
 			return TRUE
 		if("PRG_account")
-			if(!authenticated || !target_id_card)
+			if(!verify_current_user_is_authenticated_user(user) || !target_id_card)
 				return
 
 			var/account = text2num(params["account"])
@@ -945,17 +961,20 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 		if(FACTION_MARINE)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
-				// 00-09: High Command, defined at bottom
-				JOB_CMC = 00,//Grade O10
-				JOB_ACMC = 00,
-				JOB_PROVOST_CMARSHAL = 00,
-				JOB_GENERAL = 00,
-				JOB_PROVOST_SMARSHAL = 01,//Grade O9
-				JOB_PROVOST_MARSHAL = 02,//Grade O7
-				JOB_PROVOST_DMARSHAL = 03,//Grade O6
-				JOB_COLONEL = 04,//Grade O6
-				JOB_PROVOST_CINSPECTOR = 05,
-				JOB_PROVOST_INSPECTOR = 06,
+				// 0-9: High Command, defined at bottom
+				JOB_CMC = 0,//Grade O10
+				JOB_ACMC = 0,
+				JOB_PROVOST_CMARSHAL = 0,
+				JOB_GENERAL = 0,
+				JOB_PROVOST_SMARSHAL = 1,//Grade O9
+				JOB_PROVOST_MARSHAL = 2,//Grade O7
+				JOB_PROVOST_DMARSHAL = 3,//Grade O6
+				JOB_COLONEL = 4,//Grade O6
+				JOB_PROVOST_CINSPECTOR = 5,
+				JOB_PROVOST_INSPECTOR = 6,
+				JOB_CIA_UACQS_COMR = 7,
+				JOB_CIA_UACQS_ADMN = 8,
+				JOB_CIA_UACQS_SEC = 9,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,
@@ -970,7 +989,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_DROPSHIP_PILOT = 23,
 				JOB_DROPSHIP_CREW_CHIEF = 24,
 				JOB_INTEL = 25,
-				JOB_TANK_CREW = 26,
+				JOB_CIA_LIAISON = 26,
+				JOB_TANK_CREW = 27,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,
@@ -995,16 +1015,17 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_CHIEF_REQUISITION = 60,
 				JOB_CARGO_TECH = 61,
 				JOB_MESS_SERGEANT = 62,
-				// 70-139: SQUADS (look below)
+				// 70-149: SQUADS (look below)
 				JOB_SYNTH_K9 = 71,
-				// 140+: Civilian/other
-				JOB_CORPORATE_LIAISON = 140,
-				JOB_PASSENGER = 141,
+				// 150+: Civilian/other
+				JOB_CORPORATE_LIAISON = 150,
+				JOB_CIA = 151,
+				JOB_PASSENGER = 152,
 				// Non Almayer jobs lower then registered
-				JOB_SYNTH_SURVIVOR = 150,
-				JOB_SURVIVOR = 151,
-				JOB_COLONIST = 152,
-				JOB_WORKING_JOE = 153,
+				JOB_SYNTH_SURVIVOR = 160,
+				JOB_SURVIVOR = 161,
+				JOB_COLONIST = 162,
+				JOB_WORKING_JOE = 163,
 
 				// WO jobs
 				// 10-19: Command
@@ -1027,10 +1048,10 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 60-69: Cargo
 				JOB_WO_CHIEF_REQUISITION = 60,
 				JOB_WO_REQUISITION = 61,
-				// 70-139: SQUADS (look below)
-				// 140+: Civilian/other
-				JOB_WO_CORPORATE_LIAISON = 140,
-				JOB_WO_SYNTH = 150,
+				// 70-149: SQUADS (look below)
+				// 150+: Civilian/other
+				JOB_WO_CORPORATE_LIAISON = 150,
+				JOB_WO_SYNTH = 160,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,
@@ -1059,6 +1080,15 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				RAIDER_SL_SQUAD = 130,
 				JOB_MARINE_RAIDER = 131,
 				RAIDER_SQUAD = 131,
+
+				JOB_FORECON_CO = 140,
+				JOB_FORECON_SL = 140,
+				JOB_FORECON_SNIPER = 141,
+				JOB_FORECON_MARKSMAN = 142,
+				JOB_FORECON_SMARTGUNNER = 143,
+				JOB_FORECON_SUPPORT = 144,
+				JOB_FORECON_RIFLEMAN = 145,
+				JOB_FORECON_SYN = 146,
 			)
 			var/squad_number = 70
 			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")

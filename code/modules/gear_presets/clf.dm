@@ -19,17 +19,17 @@
 	var/first_name
 	var/last_name
 	//gender checks
-	if(new_human.gender == MALE)
-		if(prob(40))
-			first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
-		else
-			first_name = "[pick(GLOB.first_names_male_clf)]"
-		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+	if(prob(40))
+		first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
 	else
-		if(prob(40))
-			first_name = "[capitalize(randomly_generate_japanese_word(rand(1, 3)))]"
-		else
-			first_name = "[pick(GLOB.first_names_female_clf)]"
+		switch(new_human.gender)
+			if(MALE)
+				first_name = "[pick(GLOB.first_names_male_clf)]"
+				new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
+			if(FEMALE)
+				first_name = "[pick(GLOB.first_names_female_clf)]"
+			if(PLURAL)
+				first_name = "[pick(pick(GLOB.first_names_male_clf), pick(GLOB.first_names_female_clf))]"
 	//surname
 	if(prob(35))
 		last_name = "[capitalize(randomly_generate_japanese_word(rand(1, 4)))]"
@@ -760,13 +760,15 @@
 	var/random_name
 	if(prob(10))
 		random_name = "[capitalize(randomly_generate_japanese_word(rand(2, 3)))]"
-	else if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_clf)]"
 	else
-		random_name = "[pick(GLOB.first_names_female_clf)]"
-
-	if(new_human.gender == MALE)
-		new_human.f_style = "5 O'clock Shadow"
+		switch(new_human.gender)
+			if(MALE)
+				random_name = "[pick(GLOB.first_names_male_clf)]"
+				new_human.f_style = "5 O'clock Shadow"
+			if(FEMALE)
+				random_name = "[pick(GLOB.first_names_female_clf)]"
+			if(PLURAL)
+				random_name = "[pick(pick(GLOB.first_names_male_clf), pick(GLOB.first_names_female_clf))]"
 
 	new_human.change_real_name(new_human, random_name)
 	new_human.r_hair = 15

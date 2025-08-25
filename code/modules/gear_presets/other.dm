@@ -22,11 +22,14 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
-		new_human.f_style = "5 O'clock Shadow"
-	else
-		random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
+			new_human.f_style = "5 O'clock Shadow"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male_colonist), pick(GLOB.first_names_female_colonist))] [pick(GLOB.last_names_colonist)]"
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(20,45)
 	new_human.r_hair = 25
@@ -285,11 +288,14 @@
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
-		new_human.f_style = "5 O'clock Shadow"
-	else
-		random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
+			new_human.f_style = "5 O'clock Shadow"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male_colonist), pick(GLOB.first_names_female_colonist))] [pick(GLOB.last_names_colonist)]"
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(20,45)
 	new_human.r_hair = rand(15,35)

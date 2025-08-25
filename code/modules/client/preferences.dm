@@ -104,6 +104,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	//Predator specific preferences.
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
+	var/pred_body_presentation = MALE
 	var/predator_age = 100
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"

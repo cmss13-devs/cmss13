@@ -276,6 +276,7 @@
 		list("SpcSn", "hudsquad_spec_sniper"),
 		list("SpcGr", "hudsquad_spec_grenadier"),
 		list("SpcShp", "hudsquad_spec_sharp"),
+		list("SpcHvy", "hudsquad_spec_heavy"),
 		list("SpcPy", "hudsquad_spec_pyro"),
 		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),

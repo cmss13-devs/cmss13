@@ -90,6 +90,9 @@
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
 	var/build_speed_mod = 1
+	var/range_build_capable = FALSE
+	var/needs_weeds = FALSE
+	var/care_about_adjacency = FALSE
 
 	plasma_cost = 1
 
@@ -110,6 +113,20 @@
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
 	thick = TRUE
+
+/datum/action/xeno_action/activable/secrete_resin/remote
+	name = "Coerce Resin"
+	action_icon_state = "secrete_resin"
+	xeno_cooldown = 2.5 SECONDS
+	thick = FALSE
+
+	no_cooldown_msg = TRUE
+
+	build_speed_mod = 2.5 // the actual building part takes twice as long
+	range_build_capable = TRUE
+	needs_weeds = TRUE
+
+	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 
 //resin marker
 /datum/action/xeno_action/activable/info_marker

@@ -104,6 +104,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	//Predator specific preferences.
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
+	var/pred_body_presentation = MALE
 	var/predator_age = 100
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
@@ -325,7 +326,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	if(!ooccolor)
 		ooccolor = CONFIG_GET(string/ooc_color_default)
-	gender = pick(MALE, FEMALE)
+	gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
 	real_name = random_name(gender)
 	gear = list()
 
@@ -403,7 +404,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<h2><b><u>Physical Information:</u></b>"
 			dat += "<a href='byond://?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 			dat += "<b>Age:</b> <a href='byond://?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
-			dat += "<b>Gender:</b> <a href='byond://?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br><br>"
+			dat += "<b>Gender:</b> <a href='byond://?_src_=prefs;preference=gender'><b>[gender == PLURAL ? "Non-Binary" : gender == MALE ? "Male" : "Female"]</b></a><br>"
 
 			dat += "<b>Skin Color:</b> [skin_color]<br>"
 			dat += "<b>Body Size:</b> [body_size]<br>"
@@ -1310,7 +1311,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 				if("pred_gender")
-					predator_gender = predator_gender == MALE ? FEMALE : MALE
+					predator_gender = predator_gender == MALE ? FEMALE : predator_gender == FEMALE ? PLURAL : MALE
 				if("pred_age")
 					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
 					if(new_predator_age)
@@ -1796,7 +1797,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("gender")
 					if(gender == MALE)
 						gender = FEMALE
-					else
+					else if(gender == FEMALE)
+						gender = PLURAL
+					else if(gender == PLURAL)
 						gender = MALE
 					underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 					undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))

@@ -156,7 +156,7 @@ SUBSYSTEM_DEF(ipintel)
 
 	var/filter
 	if(ipintel_cache_length > 1)
-		var/length_time = world.realtime - (ipintel_cache_length * 24 HOURS)
+		var/length_time = time2text(world.realtime - (ipintel_cache_length * 24 HOURS), "YYYY-MM-DD hh:mm:ss")
 		filter = DB_AND(
 			DB_COMP("ip", DB_EQUALS, address),
 			DB_COMP("date", DB_GREATER, length_time)

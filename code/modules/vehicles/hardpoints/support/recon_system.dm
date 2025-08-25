@@ -80,6 +80,9 @@
 	if(blackfoot_owner.interior_lighting_holder)
 		blackfoot_owner.interior_lighting_holder.set_light_color(COLOR_WHITE)
 
+	if(blackfoot_owner.lighting_holder)
+		blackfoot_owner.lighting_holder.set_light_power(4)
+
 	active = FALSE
 	blackfoot_owner.stealth_mode = FALSE
 
@@ -100,6 +103,9 @@
 
 	if(blackfoot_owner.interior_lighting_holder)
 		blackfoot_owner.interior_lighting_holder.set_light_color("#d00200")
+
+	if(blackfoot_owner.lighting_holder)
+		blackfoot_owner.lighting_holder.set_light_power(0)
 
 	active = TRUE
 	blackfoot_owner.stealth_mode = TRUE

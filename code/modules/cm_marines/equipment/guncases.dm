@@ -95,15 +95,15 @@
 	new /obj/item/ammo_magazine/rifle/m41aMK1/ap(src)
 
 //------------
-//M79 grenade launcher
-/obj/item/storage/box/guncase/m79
-	name = "\improper M79 grenade launcher case"
-	desc = "A gun case containing the modernized M79 grenade launcher. Comes with 3 baton slugs, 3 hornet shells and 3 star shell grenades."
+//M85A1 grenade launcher
+/obj/item/storage/box/guncase/m85a1
+	name = "\improper M85A1 grenade launcher case"
+	desc = "A gun case containing the modernized M85A1 grenade launcher. Comes with 3 baton slugs, 3 hornet shells and 3 star shell grenades."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/launcher/grenade/m81/m79, /obj/item/storage/box/packet)
+	can_hold = list(/obj/item/weapon/gun/launcher/grenade/m81/m85a1, /obj/item/storage/box/packet)
 
-/obj/item/storage/box/guncase/m79/fill_preset_inventory()
-	new /obj/item/weapon/gun/launcher/grenade/m81/m79(src)
+/obj/item/storage/box/guncase/m85a1/fill_preset_inventory()
+	new /obj/item/weapon/gun/launcher/grenade/m81/m85a1(src)
 	new /obj/item/storage/box/packet/flare(src)
 	new /obj/item/storage/box/packet/baton_slug(src)
 	new /obj/item/storage/box/packet/hornet(src)
@@ -203,7 +203,7 @@
 	name = "\improper M37A2 Pump Shotgun case"
 	desc = "A gun case containing the M37A2 Pump Shotgun."
 	storage_slots = 4
-	can_hold = list(/obj/item/weapon/gun/shotgun/pump, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
+	can_hold = list(/obj/item/weapon/gun/shotgun/pump/m37a, /obj/item/ammo_magazine/shotgun/buckshot, /obj/item/ammo_magazine/shotgun/flechette, /obj/item/ammo_magazine/shotgun/slugs)
 
 /obj/item/storage/box/guncase/pumpshotgun/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)
@@ -425,16 +425,26 @@
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 
-//M4A3 Service Pistol
-/obj/item/storage/box/guncase/m4a3
-	name = "\improper M4A3 Service Pistol case"
-	desc = "A gun case containing an M4A3 Service Pistol."
-	storage_slots = 8
-	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/m4a3, /obj/item/ammo_magazine/pistol)
+/obj/item/storage/box/guncase/m2049
+	name = "\improper M2049 Blaster case"
+	desc = "A gun case containing the M2049 Blaster. Comes with a full belt holster."
+	can_hold = list(/obj/item/storage/belt/gun/m44, /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049)
+	storage_slots = 2
 
-/obj/item/storage/box/guncase/m4a3/fill_preset_inventory()
+/obj/item/storage/box/guncase/m2049/fill_preset_inventory()
+	new /obj/item/storage/belt/gun/m44/m2049/nogun(src)
+	new /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049(src)
+
+//M4A4 Service Pistol
+/obj/item/storage/box/guncase/m4a4
+	name = "\improper M4A4 Service Pistol case"
+	desc = "A gun case containing an M4A4 Service Pistol."
+	storage_slots = 8
+	can_hold = list(/obj/item/attachable/flashlight, /obj/item/weapon/gun/pistol/m4a3/m4a4, /obj/item/ammo_magazine/pistol)
+
+/obj/item/storage/box/guncase/m4a4/fill_preset_inventory()
 	new /obj/item/attachable/flashlight(src)
-	new /obj/item/weapon/gun/pistol/m4a3(src)
+	new /obj/item/weapon/gun/pistol/m4a3/m4a4(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)
 	new /obj/item/ammo_magazine/pistol(src)

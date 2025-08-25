@@ -128,6 +128,13 @@
 	throwforce = 7
 	shield_chance = SHIELD_CHANCE_MED
 
+/obj/item/weapon/sword/dragon_katana
+	name = "dragon katana"
+	desc = "A finely made Japanese sword, with a cherry colored handle. The blade has been filed to a molecular edge, and is extremely deadly. This one seems to have been handcrafted."
+	icon_state = "dragon_katana"
+	item_state = "dragon_katana"
+	force = MELEE_FORCE_VERY_STRONG
+
 /obj/item/weapon/throwing_knife
 	name ="\improper M11 throwing knife"
 	icon = 'icons/obj/items/weapons/melee/knives.dmi'

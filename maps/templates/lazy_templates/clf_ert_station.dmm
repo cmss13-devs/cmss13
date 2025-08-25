@@ -1817,10 +1817,6 @@
 	pixel_x = 12
 	},
 /obj/item/reagent_container/glass/beaker/silver,
-/obj/item/reagent_container/glass/beaker/vial/random/good{
-	pixel_x = 18;
-	pixel_y = 5
-	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/clf_station)
 "ZI" = (

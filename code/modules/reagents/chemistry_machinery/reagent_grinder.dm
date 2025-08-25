@@ -9,6 +9,7 @@
 	idle_power_usage = 5
 	active_power_usage = 100
 	var/inuse = 0
+	var/grind_duration = 6 SECONDS // 6 seconds
 	var/obj/item/reagent_container/beaker = null
 	var/limit = 10
 	var/tether_range = 8
@@ -20,8 +21,6 @@
 		/obj/item/stack/sheet/mineral/uranium = list("uranium" = 20),
 		/obj/item/stack/sheet/mineral/silver = list("silver" = 20),
 		/obj/item/stack/sheet/mineral/gold = list("gold" = 20),
-		/obj/item/grown/nettle/death = list("pacid" = 0),
-		/obj/item/grown/nettle = list("sulphuric acid" = 0),
 
 		//Blender Stuff
 		/obj/item/reagent_container/food/snacks/grown/soybeans = list("soymilk" = 0),
@@ -88,12 +87,21 @@
 			user.put_in_hands(old_beaker)
 		update_icon()
 		updateUsrDialog()
-		return 0
+		return FALSE
 
 	if(LAZYLEN(holdingitems) >= limit)
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
-		return 1
-
+		return TRUE
+	if (istype(O, /obj/item/research_upgrades/grinderspeed))
+		if(limit == 10)
+			grind_duration = 3 SECONDS
+			limit = 25
+			to_chat(user, SPAN_NOTICE("You insert [O] into [src]"))
+			qdel(O)
+			return TRUE
+		else
+			to_chat(user, SPAN_WARNING("[src] already contains [O], and already has extended capacity and speed."))
+			return TRUE
 	if(istype(O,/obj/item/storage))
 		var/obj/item/storage/B = O
 		if(length(B.contents) > 0)
@@ -112,35 +120,37 @@
 						user.drop_inv_item_to_loc(I, src)
 						holdingitems += I
 			playsound(user.loc, "rustle", 15, 1, 6)
-			return 0
+			return FALSE
 
 		else
 			to_chat(user, SPAN_WARNING("[B] is empty."))
-			return 1
+			return TRUE
 
 	else if(!is_type_in_list(O, blend_items) && !is_type_in_list(O, juice_items))
 		to_chat(user, SPAN_WARNING("Cannot refine into a reagent."))
-		return 1
-
+		return TRUE
 	user.drop_inv_item_to_loc(O, src)
 	holdingitems += O
 	updateUsrDialog()
-	return 0
+	return FALSE
 
 /obj/structure/machinery/reagentgrinder/attack_hand(mob/living/user)
 	user.set_interaction(src)
 	interact(user)
 
-/obj/structure/machinery/reagentgrinder/interact(mob/living/user) // The microwave Menu
+/obj/structure/machinery/reagentgrinder/interact(mob/living/user) // what is tgui even
 	var/is_chamber_empty = 0
 	var/is_beaker_ready = 0
 	var/processing_chamber = ""
 	var/beaker_contents = ""
 	var/dat = ""
+	var/list/processing_names = list()
 
 	if(!inuse)
-		for(var/obj/item/O in holdingitems)
-			processing_chamber += "\A [O.name]<BR>"
+		for(var/obj/item/holding_item in holdingitems)
+			processing_names[holding_item.name] += 1
+		for(var/obj/item/item_key as anything in processing_names)
+			processing_chamber += "\A [item_key] x[processing_names[item_key]]<BR>"
 
 		if(!processing_chamber)
 			is_chamber_empty = 1
@@ -159,10 +169,10 @@
 
 
 		dat = {"
-	<b>Processing chamber contains:</b><br>
-	[processing_chamber]<br>
-	[beaker_contents]<hr>
-	"}
+		<b>Processing chamber contains:</b><br>
+		[processing_chamber]<br>
+		[beaker_contents]<hr>
+		"}
 		if(is_beaker_ready && !is_chamber_empty && !(inoperable()))
 			dat += "<A href='byond://?src=\ref[src];action=grind'>Grind the reagents</a><BR>"
 			dat += "<A href='byond://?src=\ref[src];action=juice'>Juice the reagents</a><BR><BR>"
@@ -185,7 +195,7 @@
 	var/mob/living/carbon/human/user = usr
 	if(!in_range(src, user))
 		return
-	usr.set_interaction(src)
+	user.set_interaction(src)
 	if(href_list["bottle"])
 		var/id = href_list["bottle"]
 		if(QDELETED(linked_storage) || src.z != linked_storage.z || get_dist(src, linked_storage) > tether_range)
@@ -204,9 +214,9 @@
 	else
 		switch(href_list["action"])
 			if("grind")
-				grind()
+				grind(user)
 			if("juice")
-				juice()
+				juice(user)
 			if("eject")
 				eject(user)
 			if("detach")
@@ -285,7 +295,7 @@
 	holdingitems -= O
 	qdel(O)
 
-/obj/structure/machinery/reagentgrinder/proc/juice()
+/obj/structure/machinery/reagentgrinder/proc/juice(mob/user)
 	power_change()
 	if(inoperable())
 		return
@@ -293,9 +303,11 @@
 		return
 	playsound(src.loc, 'sound/machines/juicer.ogg', 25, 1)
 	inuse = 1
-	spawn(50)
-		inuse = 0
-		interact(usr)
+	addtimer(CALLBACK(src, PROC_REF(end_using), user), grind_duration)
+	animate(src, transform = matrix(rand(1,-1), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
+	for(var/i in 0 to 30)
+		animate(transform = matrix(rand(-0.5,0.5), rand(1,-1), MATRIX_TRANSLATE), time = 1)
+	animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT)
 	//Snacks
 	for(var/obj/item/reagent_container/food/snacks/O in holdingitems)
 		if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
@@ -317,7 +329,7 @@
 
 		remove_object(O)
 
-/obj/structure/machinery/reagentgrinder/proc/grind()
+/obj/structure/machinery/reagentgrinder/proc/grind(mob/user)
 
 	power_change()
 	if(inoperable())
@@ -326,9 +338,11 @@
 		return
 	playsound(src.loc, 'sound/machines/blender.ogg', 25, 1)
 	inuse = 1
-	spawn(60)
-		inuse = 0
-		interact(usr)
+	addtimer(CALLBACK(src, PROC_REF(end_using), user), grind_duration)
+	animate(src, transform = matrix(rand(-0.5,0.5), rand(-0.5,0.5), MATRIX_TRANSLATE), time = 0.5, easing = EASE_IN)
+	for(var/i in 0 to grind_duration)
+		animate(transform = matrix(rand(-0.4,0.4), rand(-0.4,0.4), MATRIX_TRANSLATE), time = 1)
+	animate(transform = matrix(0, 0, MATRIX_TRANSLATE), time = 0.5, easing = EASE_OUT, )
 	//Snacks and Plants
 	for(var/obj/item/reagent_container/food/snacks/O in holdingitems)
 		if(beaker.reagents.total_volume >= beaker.reagents.maximum_volume)
@@ -420,6 +434,9 @@
 	if(linked_storage)
 		linked_storage = null
 
+/obj/structure/machinery/reagentgrinder/proc/end_using(mob/user)
+	inuse = 0
+	interact(user)
 
 /obj/structure/machinery/reagentgrinder/industrial
 	name = "Industrial Grinder"
@@ -437,8 +454,6 @@
 		/obj/item/stack/sheet/metal = list("iron" = 60),
 		/obj/item/stack/sheet/aluminum = list("aluminum" = 60),
 		/obj/item/stack/sheet/copper = list("copper" = 60),
-		/obj/item/grown/nettle/death = list("pacid" = 0),
-		/obj/item/grown/nettle = list("sulphuric acid" = 0),
 
 		//Special Stuff
 		/obj/item/reagent_container/hypospray/autoinjector/yautja = list("thwei" = 30),

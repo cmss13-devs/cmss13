@@ -791,10 +791,24 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/weapon/gun/pistol/l54
 	allowed_origins = USCM_ORIGINS
 
+/datum/gear/weapon/holdout
+	display_name = "W62 'Whisper'" //22LR ratkiller and/or plinker
+	path = /obj/item/storage/box/plinker
+
+/datum/gear/weapon/action
+	display_name = "AC71 'Action'" //380ACP holdout pistol
+	path = /obj/item/storage/box/action
+
 /datum/gear/weapon/m4a3_custom
 	display_name = "M4A3 Custom Pistol"
 	path = /obj/item/weapon/gun/pistol/m4a3/custom
 	allowed_origins = USCM_ORIGINS
+
+/datum/gear/weapon/m4a4
+	display_name = "M4A4 Service Pistol"
+	path = /obj/item/weapon/gun/pistol/m4a3/m4a4
+	allowed_origins = USCM_ORIGINS
+	fluff_cost = 2
 
 /datum/gear/weapon/m44_custom_revolver
 	display_name = "M44 Custom Revolver"

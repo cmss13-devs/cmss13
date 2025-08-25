@@ -2880,10 +2880,6 @@
 			if(PLURAL)
 				random_name = capitalize(pick(pick(GLOB.first_names_male_upp), pick(GLOB.first_names_female_upp)))
 
-	if(new_human.gender == MALE)
-
-
-
 	new_human.change_real_name(new_human, random_name)
 	new_human.h_style = pick("Crewcut", "Shaved Head", "Buzzcut", "Undercut", "Side Undercut")
 	var/static/list/colors = list("BLACK" = list(15, 15, 25), "BROWN" = list(102, 51, 0), "AUBURN" = list(139, 62, 19))

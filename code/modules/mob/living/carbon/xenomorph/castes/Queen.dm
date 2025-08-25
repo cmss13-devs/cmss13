@@ -116,6 +116,8 @@
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
+	hud_used = Q.hud_used
+
 	Q.sight |= SEE_TURFS|SEE_OBJS
 
 /mob/hologram/queen/proc/exit_hologram()

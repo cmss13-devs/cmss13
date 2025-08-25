@@ -215,13 +215,13 @@
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_PAINING_PAIN * potency)
+	M.pain.apply_pain_reduction(-PROPERTY_PAINING_PAIN * potency)
 
 /datum/chem_property/negative/paining/process_overdose(mob/living/M, potency = 1, delta_time)
 	if(!(..()))
 		return
 
-	M.pain.apply_pain(PROPERTY_PAINING_PAIN_OD * potency)
+	M.pain.apply_pain_reduction(-PROPERTY_PAINING_PAIN_OD * potency)
 	M.take_limb_damage(0.5 * potency * delta_time)
 
 /datum/chem_property/negative/paining/process_critical(mob/living/M, potency = 1)

@@ -1105,7 +1105,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			shoulder.status &= ~LIMB_SPLINTED
 			playsound(get_turf(loc), 'sound/items/splintbreaks.ogg', 20)
 			to_chat(user, SPAN_DANGER("The splint on your [shoulder.display_name] comes apart under the recoil!"))
-			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+			user.pain.recalculate_pain()
 			user.update_med_icon()
 
 	//Ruh roh.

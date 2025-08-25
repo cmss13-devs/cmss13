@@ -6,12 +6,25 @@
 	},
 /area/shuttle/escape_pod)
 "b" = (
-/turf/open/shuttle/escapepod/floor1,
+/obj/structure/machinery/cryopod/evacuation,
+/obj/structure/sign/safety/cryo{
+	pixel_x = 36
+	},
+/turf/open/shuttle/escapepod/floor4,
 /area/shuttle/escape_pod)
 "c" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall11"
 	},
+/area/shuttle/escape_pod)
+"d" = (
+/turf/open/shuttle/escapepod/floor0/north,
+/area/shuttle/escape_pod)
+"e" = (
+/obj/structure/machinery/computer/shuttle/escape_pod_panel{
+	pixel_y = 30
+	},
+/turf/open/shuttle/escapepod/floor2,
 /area/shuttle/escape_pod)
 "g" = (
 /turf/closed/shuttle/escapepod{
@@ -23,9 +36,6 @@
 	icon_state = "wall13"
 	},
 /area/shuttle/escape_pod)
-"n" = (
-/turf/open/shuttle/escapepod/floor0/west,
-/area/shuttle/escape_pod)
 "s" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall2"
@@ -36,11 +46,9 @@
 /turf/open/shuttle/escapepod/floor4,
 /area/shuttle/escape_pod)
 "D" = (
-/obj/structure/machinery/door/airlock/evacuation/liaison{
-	name = "\improper Evacuation Airlock CL-1";
-	id_tag = "cl_evac"
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall5"
 	},
-/turf/open/floor/almayer/test_floor4,
 /area/shuttle/escape_pod)
 "E" = (
 /turf/closed/shuttle/escapepod{
@@ -63,27 +71,18 @@
 	},
 /area/shuttle/escape_pod)
 "S" = (
-/turf/closed/shuttle/escapepod{
-	icon_state = "wall12"
+/obj/structure/machinery/door/airlock/evacuation{
+	name = "\improper Evacuation Airlock PL-3"
 	},
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/escape_pod)
 "T" = (
-/obj/structure/machinery/cryopod/evacuation,
-/obj/structure/sign/safety/cryo{
-	pixel_x = -18
-	},
-/turf/open/shuttle/escapepod/floor4,
+/turf/open/shuttle/escapepod/north,
 /area/shuttle/escape_pod)
 "X" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall10"
 	},
-/area/shuttle/escape_pod)
-"Z" = (
-/obj/structure/machinery/computer/shuttle/escape_pod_panel/liaison{
-	pixel_y = 30
-	},
-/turf/open/shuttle/escapepod/floor0,
 /area/shuttle/escape_pod)
 
 (1,1,1) = {"
@@ -95,16 +94,16 @@ a
 "}
 (2,1,1) = {"
 Q
-z
+e
 T
-z
+d
 E
 "}
 (3,1,1) = {"
 s
-Z
+z
 b
-n
+z
 E
 "}
 (4,1,1) = {"

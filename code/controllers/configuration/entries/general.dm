@@ -711,6 +711,10 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 	config_entry_value = 15
 	min_val = 0
 
+/datum/config_entry/number/ipintel_rate_day
+	config_entry_value = 500
+	min_val = 0
+
 /datum/config_entry/number/ipintel_cache_length
 	config_entry_value = 7
 	min_val = 0

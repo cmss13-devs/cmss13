@@ -71,6 +71,11 @@ SUBSYSTEM_DEF(ipintel)
 
 	if(rate_limit_minute >= CONFIG_GET(number/ipintel_rate_minute))
 		return IPINTEL_RATE_LIMITED_MINUTE
+
+	var/list/datum/view_record/intel/intels = DB_VIEW(/datum/view_record/intel, DB_COMP("date", DB_GREATER, time2text(world.realtime - 24 HOURS, "YYYY-MM-DD hh:mm:ss")))
+	if(length(intels) >= CONFIG_GET(number/ipintel_rate_day))
+		return IPINTEL_RATE_LIMITED_DAY
+
 	return FALSE
 
 /datum/controller/subsystem/ipintel/proc/query_address(address, allow_cached = TRUE)
@@ -91,8 +96,6 @@ SUBSYSTEM_DEF(ipintel)
 	request.execute_blocking()
 	var/datum/http_response/response = request.into_response()
 	var/list/data = json_decode(response.body)
-
-	debug_log("IPIntel: [response.body]")
 
 	var/datum/ip_intel/intel = new
 	intel.query_status = data["status"]
@@ -121,14 +124,14 @@ SUBSYSTEM_DEF(ipintel)
 		"date" = DB_FIELDTYPE_DATE,
 	)
 
-/datum/view/intel
+/datum/view_record/intel
 	var/ip
 	var/intel
 	var/date
 
 /datum/entity_view_meta/intel
 	root_record_type = /datum/entity/intel
-	destination_entity = /datum/view/intel
+	destination_entity = /datum/view_record/intel
 	fields = list(
 		"ip",
 		"intel",
@@ -164,11 +167,11 @@ SUBSYSTEM_DEF(ipintel)
 	else
 		filter = DB_COMP("ip", DB_EQUALS, address)
 
-	var/list/datum/view/intel/reports = DB_VIEW(/datum/view/intel, filter)
+	var/list/datum/view_record/intel/reports = DB_VIEW(/datum/view_record/intel, filter)
 	if(!length(reports))
 		return null
 
-	var/datum/view/intel/report = reports[1]
+	var/datum/view_record/intel/report = reports[1]
 
 	var/datum/ip_intel/intel = new
 	intel.query_status = "cached"

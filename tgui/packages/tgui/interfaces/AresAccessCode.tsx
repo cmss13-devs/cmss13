@@ -1,13 +1,29 @@
+import type { BooleanLike } from 'common/react';
+
 import { useBackend } from '../backend';
 import { Box, Button, Flex } from '../components';
 import { Window } from '../layouts';
+import type { DataCoreData } from './common/commonTypes';
+
+type Data = DataCoreData & {
+  local_admin_login: string;
+  admin_access_log: string[];
+  local_current_menu: string;
+  local_last_page: string;
+  ares_logged_in: String;
+  ares_sudo: BooleanLike;
+  ares_access_text: string;
+  local_spying_conversation: string[];
+  local_active_convo: String[];
+  local_active_ref: String;
+};
 
 const PAGES = {
   login: () => Login,
 };
 
 export const AresAccessCode = (props) => {
-  const { data } = useBackend();
+  const { data } = useBackend<Data>();
   const { local_current_menu } = data;
   const PageComponent = PAGES[local_current_menu]();
 

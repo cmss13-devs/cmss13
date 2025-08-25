@@ -842,7 +842,7 @@
 	if(isnull(new_xeno))
 		return FALSE
 
-	if(!SSticker.mode.transfer_xeno(xeno_client.mob, new_xeno))
+	if(!SSticker.mode.transfer_xeno(xeno_client.mob, new_xeno, TRUE))
 		qdel(new_xeno)
 		return FALSE
 
@@ -881,6 +881,13 @@
 	if(isnull(new_xeno))
 		return FALSE
 
+	playsound_client(xeno_candidate?.client, 'sound/machines/pda_ping.ogg', src, 50, 0)
+	var/confirm = tgui_alert(xeno_candidate, "Do your wish to become [new_xeno]?", "Confirm Join Xeno", list("Yes","No"), 5 SECONDS)
+	if(!confirm)
+		confirm = xeno_candidate?.client.prefs.larva_join_default
+	if(confirm == "No")
+		qdel(new_xeno)
+		return FALSE
 	if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 		qdel(new_xeno)
 		return FALSE
@@ -892,6 +899,10 @@
 	if(new_xeno.client)
 		if(new_xeno.client?.prefs?.toggles_flashing & FLASH_POOLSPAWN)
 			window_flash(new_xeno.client)
+
+	if(stored_larva <= 0) // TEMP CHECK
+		qdel(new_xeno)
+		return FALSE
 
 	stored_larva--
 	hive_ui.update_burrowed_larva()

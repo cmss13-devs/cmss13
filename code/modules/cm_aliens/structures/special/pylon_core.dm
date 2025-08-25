@@ -263,6 +263,8 @@
 	// Handle spawning larva if core is connected to a hive
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/worm in range(2, src))
+			if(world.time - worm.time_of_birth <= 6 SECONDS)
+				continue
 			if((!worm.ckey || worm.stat == DEAD) && worm.burrowable && (worm.hivenumber == linked_hive.hivenumber) && !QDELETED(worm))
 				visible_message(SPAN_XENODANGER("[worm] quickly burrows into \the [src]."))
 				if(!worm.banished)
@@ -315,11 +317,18 @@
 		var/mob/living/carbon/xenomorph/larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
 		if(isnull(new_xeno))
 			return FALSE
-
 		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges from [src]!"),
 		SPAN_XENODANGER("We emerge from [src] and awaken from our slumber. For the Hive!"))
 		msg_admin_niche("[key_name(new_xeno)] emerged from \a [src]. [ADMIN_JMP(src)]")
 		playsound(new_xeno, 'sound/effects/xeno_newlarva.ogg', 50, 1)
+
+		playsound_client(xeno_candidate?.client, 'sound/machines/pda_ping.ogg', src, 50, 0)
+		var/confirm = tgui_alert(xeno_candidate, "Do your wish to become [new_xeno]?", "Confirm Join Xeno", list("Yes","No"), 5 SECONDS)
+		if(!confirm)
+			confirm = xeno_candidate?.client.prefs.larva_join_default
+		if(confirm == "No")
+			qdel(new_xeno)
+			return FALSE
 		if(!SSticker.mode.transfer_xeno(xeno_candidate, new_xeno))
 			qdel(new_xeno)
 			return FALSE
@@ -328,6 +337,10 @@
 		if(new_xeno.client)
 			if(new_xeno.client.prefs.toggles_flashing & FLASH_POOLSPAWN)
 				window_flash(new_xeno.client)
+
+		if(!can_spawn_larva()) // TEMP CHECK
+			qdel(new_xeno)
+			return FALSE
 
 		linked_hive.stored_larva--
 		linked_hive.hive_ui.update_burrowed_larva()

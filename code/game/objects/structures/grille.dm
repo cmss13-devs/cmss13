@@ -31,20 +31,6 @@
 			bound_width = world.icon_size
 			bound_height = width * world.icon_size
 
-
-/obj/structure/grille/fence/east_west
-	//width=80
-	//height=42
-	icon = 'icons/obj/structures/props/fences/fence_ew.dmi'
-	icon_state = "fence-ew"
-	dir = EAST
-
-/obj/structure/grille/fence/north_south
-	//width=80
-	//height=42
-	icon = 'icons/obj/structures/props/fences/fence_ns.dmi'
-	icon_state = "fence-ns"
-
 /obj/structure/grille/fence/healthcheck()
 	if(health <= 0)
 		density = FALSE

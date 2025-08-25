@@ -264,3 +264,20 @@
       comes, this is just to cut down on extra announcements).
   jupyterkat:
   - bugfix: fixed boiler being immune to crossing flames
+2025-08-24:
+  realforest2001:
+  - rscadd: Added floor logo decals for the USCM and WY
+2025-08-25:
+  FloranOtten:
+  - bugfix: fixed a runtime caused by fulton name formatting
+  TheGamerdk:
+  - bugfix: Synth heads will no longer be shot at by sentries
+  - bugfix: The Overwatch console now properly adresses the ranks of Lt.Col+
+  - qol: Forsaken ERT no longer pretends to be a distress beacon
+  - bugfix: FORECON CO no longer gets 2 guns when they love the M1911C
+  - bugfix: Further enforced adjacency requirements when planting C4 and subtypes
+  - bugfix: ASRS console UI now respects being broken/depowered/etc
+  - bugfix: Sentries will correctly handle mobs in inventories.
+  - bugfix: A dead King no longer stomps on their enemies
+  realforest2001:
+  - rscadd: Added designated Forecon listing on the crew monitor.

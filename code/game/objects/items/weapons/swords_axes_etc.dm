@@ -106,7 +106,7 @@
 
 /obj/item/weapon/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
 	var/stun_sound = pick('sound/weapons/baton.ogg', 'sound/effects/woodstave.ogg')
-	if(target.check_shields(src, 0, "[user]'s [name]"))
+	if(!(flags_item & UNBLOCKABLE) && target.check_shields("[user]'s [name]", get_dir(target, user)))
 		return FALSE
 	// Visuals and sound
 	playsound(target, stun_sound, 50, TRUE, 7)
@@ -136,8 +136,6 @@
 /*
  * Energy Shield
  */
-/obj/item/weapon/shield/energy/IsShield()
-	return active
 
 /obj/item/weapon/shield/energy/attack_self(mob/living/user)
 	..()
@@ -149,6 +147,7 @@
 		w_class = SIZE_LARGE
 		playsound(user, 'sound/weapons/saberon.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] is now active."))
+		shield_chance = SHIELD_CHANCE_5050
 
 	else
 		force = 3
@@ -156,6 +155,7 @@
 		w_class = SIZE_TINY
 		playsound(user, 'sound/weapons/saberoff.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE(" [src] can now be concealed."))
+		shield_chance = SHIELD_CHANCE_NONE
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user

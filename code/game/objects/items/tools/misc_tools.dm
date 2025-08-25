@@ -362,7 +362,6 @@
 /obj/item/tool/pen/syringe
 	desc = "It's a black ink pen with a sharp point and a carefully engraved \"Waffle Co.\""
 	flags_atom = FPRINT|OPENCONTAINER
-	flags_equip_slot = SLOT_WAIST
 	var/skillless = TRUE
 
 /obj/item/tool/pen/syringe/proc/get_reagent_list_text()

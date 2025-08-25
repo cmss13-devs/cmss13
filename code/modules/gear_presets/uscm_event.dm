@@ -453,7 +453,7 @@
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_ARES_MARINE
 	assignment = JOB_AI_TECH
-	rank = JOB_AI_TECH
+	job_title = JOB_AI_TECH
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "AIST"
 	skills = /datum/skills/CE

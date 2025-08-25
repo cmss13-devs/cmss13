@@ -100,6 +100,7 @@ SUBSYSTEM_DEF(ipintel)
 	var/datum/ip_intel/intel = new
 	intel.query_status = data["status"]
 	if(intel.query_status != "success")
+		log_debug("IPINTEL: Error while requesting address. [response.body]")
 		return intel
 	intel.result = data["result"]
 	if(istext(intel.result))

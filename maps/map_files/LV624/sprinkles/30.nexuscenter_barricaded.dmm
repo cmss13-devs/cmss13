@@ -741,7 +741,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/chapel)
 "He" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/whiteblue/northwest,
 /area/lv624/lazarus/main_hall)
 "Hf" = (

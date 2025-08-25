@@ -43,8 +43,10 @@
 
 		for(var/i in GLOB.teleporter_landmarks)
 			var/obj/effect/landmark/sloc = i
-			if(sloc.name != C.data) continue
-			if(locate(/mob/living) in sloc.loc) continue
+			if(sloc.name != C.data)
+				continue
+			if(locate(/mob/living) in sloc.loc)
+				continue
 			L = sloc
 			break
 
@@ -114,8 +116,10 @@
 				if (M.timeofdeath + 6000 < world.time)
 					continue
 			var/turf/T = get_turf(M)
-			if(T) continue
-			if(should_block_game_interaction(T)) continue
+			if(T)
+				continue
+			if(should_block_game_interaction(T))
+				continue
 			var/tmpname = M.real_name
 			if(areaindex[tmpname])
 				tmpname = "[tmpname] ([++areaindex[tmpname]])"
@@ -152,7 +156,8 @@
 	var/turf/T = R.loc
 	while(!istype(T, /turf))
 		T = T.loc
-		if(!T || istype(T, /area)) return null
+		if(!T || istype(T, /area))
+			return null
 	return T
 
 /obj/structure/machinery/teleport

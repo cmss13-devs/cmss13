@@ -26,7 +26,7 @@
 	icon_state = "refurb_meson"
 	item_state = "glasses"
 	darkness_view = 12
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
 	flags_item = MOB_LOCK_ON_EQUIP

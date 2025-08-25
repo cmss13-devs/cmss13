@@ -116,7 +116,6 @@
 	desc = "The memory substrate of ARES, containing complex protocols and information. Limited capabilities can operate on substrate alone, without the main ARES Unit operational."
 	icon_state = "substrate"
 
-
 /// Sentry
 /obj/structure/machinery/defenses/sentry/premade/deployable/almayer/mini/ares
 	name = "UA X512-S mini sentry"

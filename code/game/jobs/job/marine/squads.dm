@@ -703,7 +703,8 @@
 				if(JOB_MARINE_RAIDER_CMD)
 					old_lead.comm_title = "CMD."
 				else
-					old_lead.comm_title = "RFN"
+					var/datum/job/job = GLOB.RoleAuthority.roles_for_mode[GET_DEFAULT_ROLE(old_lead.job)]
+					old_lead.comm_title = job.gear_preset.role_comm_title
 			if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
 				var/obj/item/device/radio/headset/almayer/marine/headset = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 				if(headset)
@@ -844,11 +845,16 @@
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 			return //if SL got knocked out or demoted while choosing
 		switch(choice)
-			if("Unassign Fireteam 1 Leader") unassign_ft_leader("FT1", TRUE)
-			if("Unassign Fireteam 2 Leader") unassign_ft_leader("FT2", TRUE)
-			if("Unassign Fireteam 3 Leader") unassign_ft_leader("FT3", TRUE)
-			if("Unassign all Team Leaders") unassign_all_ft_leaders()
-			else return
+			if("Unassign Fireteam 1 Leader")
+				unassign_ft_leader("FT1", TRUE)
+			if("Unassign Fireteam 2 Leader")
+				unassign_ft_leader("FT2", TRUE)
+			if("Unassign Fireteam 3 Leader")
+				unassign_ft_leader("FT3", TRUE)
+			if("Unassign all Team Leaders")
+				unassign_all_ft_leaders()
+			else
+				return
 		target_mob.hud_set_squad()
 		return
 	if(target_mob.assigned_fireteam)
@@ -869,12 +875,18 @@
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 			return
 		switch(choice)
-			if("Remove from Fireteam") unassign_fireteam(target_mob)
-			if("Assign to Fireteam 1") assign_fireteam("FT1", target_mob)
-			if("Assign to Fireteam 2") assign_fireteam("FT2", target_mob)
-			if("Assign to Fireteam 3") assign_fireteam("FT3", target_mob)
-			if("Assign as Team Leader") assign_ft_leader(target_mob.assigned_fireteam, target_mob)
-			else return
+			if("Remove from Fireteam")
+				unassign_fireteam(target_mob)
+			if("Assign to Fireteam 1")
+				assign_fireteam("FT1", target_mob)
+			if("Assign to Fireteam 2")
+				assign_fireteam("FT2", target_mob)
+			if("Assign to Fireteam 3")
+				assign_fireteam("FT3", target_mob)
+			if("Assign as Team Leader")
+				assign_ft_leader(target_mob.assigned_fireteam, target_mob)
+			else
+				return
 		target_mob.hud_set_squad()
 		return
 
@@ -884,10 +896,14 @@
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 		return
 	switch(choice)
-		if("Assign to Fireteam 1") assign_fireteam("FT1", target_mob)
-		if("Assign to Fireteam 2") assign_fireteam("FT2", target_mob)
-		if("Assign to Fireteam 3") assign_fireteam("FT3", target_mob)
-		else return
+		if("Assign to Fireteam 1")
+			assign_fireteam("FT1", target_mob)
+		if("Assign to Fireteam 2")
+			assign_fireteam("FT2", target_mob)
+		if("Assign to Fireteam 3")
+			assign_fireteam("FT3", target_mob)
+		else
+			return
 	target_mob.hud_set_squad()
 	return
 
@@ -901,7 +917,8 @@
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
 		return //if SL got knocked out or demoted while choosing
 	switch(choice)
-		if("Remove status") target_mob.squad_status = null
+		if("Remove status")
+			target_mob.squad_status = null
 		if("M.I.A.")
 			target_mob.squad_status = choice
 			to_chat(squad_leader, FONT_SIZE_BIG(SPAN_BLUE("You set [target_mob]'s status as Missing In Action.")))
@@ -916,7 +933,8 @@
 			to_chat(squad_leader, FONT_SIZE_BIG(SPAN_BLUE("You set [target_mob]'s status as Killed In Action. If they were Team Leader or in fireteam, they were demoted and unassigned.")))
 			if(target_mob.stat == CONSCIOUS)
 				to_chat(target_mob, FONT_SIZE_HUGE(SPAN_BLUE("You were marked as Killed In Action by Squad Leader.")))
-		else return
+		else
+			return
 	if(target_mob.assigned_fireteam)
 		update_fireteam(target_mob.assigned_fireteam)
 	else

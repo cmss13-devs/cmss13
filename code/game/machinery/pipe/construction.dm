@@ -269,7 +269,8 @@ Buildable meters
 
 //called when a turf is attacked with a pipe item
 /obj/item/pipe/afterattack(turf/open/floor/target, mob/user, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if(istype(target))
 		user.drop_inv_item_to_loc(src, target)
 	else
@@ -277,7 +278,7 @@ Buildable meters
 
 /obj/item/pipe/pickup(mob/user, silent)
 	var/old_dir = dir
-	..()
+	. = ..()
 	setDir(old_dir) // Retain old dir since these rotate in hand
 
 /obj/item/pipe/equipped(mob/user, slot, silent)
@@ -579,9 +580,9 @@ Buildable meters
 	new_pipe.search_for_connections()
 
 	playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
-	user.visible_message( \
-		"[user] fastens [src].", \
-		SPAN_NOTICE("You have fastened [src]."), \
+	user.visible_message(
+		"[user] fastens [src].",
+		SPAN_NOTICE("You have fastened [src]."),
 		"You hear ratchet.")
 	qdel(src) // remove the pipe item
 

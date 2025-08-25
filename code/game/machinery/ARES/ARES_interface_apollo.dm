@@ -359,7 +359,7 @@
 
 		if("trigger_vent")
 			playsound = FALSE
-			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
+			var/obj/structure/pipes/vents/pump/no_boom/gas/ares/sec_vent = locate(params["vent"])
 			if(!istype(sec_vent) || sec_vent.welded)
 				to_chat(user, SPAN_WARNING("ERROR: Gas release failure."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
@@ -384,16 +384,13 @@
 			return TRUE
 
 		if("update_sentries")
-			playsound = FALSE
 			var/new_iff = params["chosen_iff"]
 			if(!new_iff)
 				to_chat(user, SPAN_WARNING("ERROR: Unknown setting."))
-				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
 			if(new_iff == link.faction_label)
 				return FALSE
 			link.change_iff(new_iff)
-			playsound(src, 'sound/machines/chime.ogg', 15, 1)
 			message_admins("ARES: [key_name(user)] updated ARES Sentry IFF to [new_iff].")
 			to_chat(user, SPAN_WARNING("Sentry IFF settings updated!"))
 			return TRUE

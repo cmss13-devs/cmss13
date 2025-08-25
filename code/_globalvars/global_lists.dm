@@ -133,7 +133,8 @@ GLOBAL_LIST_INIT_TYPED(conflicting_properties, /list, list( PROPERTY_NUTRITIOUS 
 											PROPERTY_HYPOMETABOLIC = PROPERTY_HYPERMETABOLIC, PROPERTY_HYPERTHROTTLING = PROPERTY_NEUROINHIBITING,
 											PROPERTY_FOCUSING = PROPERTY_NERVESTIMULATING, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPERTHERMIC, PROPERTY_THERMOSTABILIZING = PROPERTY_HYPOTHERMIC,
 											PROPERTY_AIDING = PROPERTY_NEUROINHIBITING, PROPERTY_OXYGENATING = PROPERTY_HYPOXEMIC, PROPERTY_ANTICARCINOGENIC = PROPERTY_CARCINOGENIC, \
-											PROPERTY_CIPHERING = PROPERTY_CIPHERING_PREDATOR, PROPERTY_TRANSFORMATIVE = PROPERTY_ANTITOXIC, PROPERTY_MUSCLESTIMULATING = PROPERTY_NERVESTIMULATING))
+											PROPERTY_CIPHERING = PROPERTY_CIPHERING_PREDATOR, PROPERTY_TRANSFORMATIVE = PROPERTY_ANTITOXIC, PROPERTY_INTRAVENOUS = PROPERTY_HYPERMETABOLIC,\
+											PROPERTY_INTRAVENOUS = PROPERTY_HYPOMETABOLIC, PROPERTY_MUSCLESTIMULATING = PROPERTY_NERVESTIMULATING, PROPERTY_HEMOSITIC = PROPERTY_NUTRITIOUS))
 //list of all properties that combine into something else, now featured in global list
 GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATING = list(PROPERTY_MUSCLESTIMULATING, PROPERTY_CARDIOPEUTIC),\
 											PROPERTY_THANATOMETABOL = list(PROPERTY_HYPOXEMIC, PROPERTY_CRYOMETABOLIZING, PROPERTY_NEUROCRYOGENIC),\
@@ -144,11 +145,10 @@ GLOBAL_LIST_INIT_TYPED(combining_properties, /list, list( PROPERTY_DEFIBRILLATIN
 											PROPERTY_ADDICTIVE = list(PROPERTY_PSYCHOSTIMULATING, PROPERTY_NEUROTOXIC),\
 											PROPERTY_CIPHERING_PREDATOR = list(PROPERTY_CIPHERING, PROPERTY_CROSSMETABOLIZING),\
 											PROPERTY_FIRE_PENETRATING = list(PROPERTY_OXYGENATING, PROPERTY_VISCOUS),\
-											PROPERTY_BONEMENDING = list(PROPERTY_HYPERDENSIFICATING, PROPERTY_NUTRITIOUS),\
-											PROPERTY_BONEMENDING = list(PROPERTY_HYPERDENSIFICATING, PROPERTY_NUTRITIOUS),\
+											PROPERTY_BONEMENDING = list(PROPERTY_CRYSTALLIZATION, PROPERTY_NUTRITIOUS),\
 											PROPERTY_ENCEPHALOPHRASIVE = list(PROPERTY_NERVESTIMULATING, PROPERTY_PSYCHOSTIMULATING)))
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
-GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"tau", list()))
+GLOBAL_LIST_INIT_TYPED(chemical_gen_classes_list, /list, list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(), "H1" = list(), "tau", list()))
 //properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
 GLOBAL_LIST_INIT_TYPED(generated_properties, /list, list("positive" = list(), "negative" = list(), "neutral" = list()))
 
@@ -326,10 +326,14 @@ GLOBAL_LIST_INIT(wj_emotes, setup_working_joe_emotes())
 GLOBAL_LIST_EMPTY(hj_categories)
 /// dict ("category" : (emotes)) of every hj emote typepath
 GLOBAL_LIST_INIT(hj_emotes, setup_hazard_joe_emotes())
-/// dict ("category" : (emotes)) of every uppj emote typepath
+/// list of categories for upp joes
 GLOBAL_LIST_EMPTY(uppj_categories)
 /// dict ("category" : (emotes)) of every uppj emote typepath
 GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
+/// list of categories for wy combat droids
+GLOBAL_LIST_EMPTY(wy_droid_categories)
+/// dict ("category" : (emotes)) of every wy droid emote typepath
+GLOBAL_LIST_INIT(wy_droid_emotes, setup_wy_droid_emotes())
 
 /proc/cached_params_decode(params_data, decode_proc)
 	. = GLOB.paramslist_cache[params_data]
@@ -425,9 +429,7 @@ GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
 	var/list/language_keys = list()
 	for (var/language_name in subtypesof(/datum/language))
 		var/datum/language/L = language_name
-		language_keys[":[lowertext(initial(L.key))]"] = initial(L.name)
-		language_keys[".[lowertext(initial(L.key))]"] = initial(L.name)
-		language_keys["#[lowertext(initial(L.key))]"] = initial(L.name)
+		language_keys["![lowertext(initial(L.key))]"] = initial(L.name)
 	return language_keys
 
 //Comb Sort. This works apparently, so we're keeping it that way
@@ -537,7 +539,7 @@ GLOBAL_LIST_INIT(uppj_emotes, setup_upp_joe_emotes())
 
 
 /* // Uncomment to debug chemical reaction list.
-/client/verb/debug_chemical_list()
+CLIENT_VERB(debug_chemical_list)
 
 	for (var/reaction in GLOB.chemical_reactions_filtered_list)
 		. += "GLOB.chemical_reactions_filtered_list\[\"[reaction]\"\] = \"[GLOB.chemical_reactions_filtered_list[reaction]]\"\n"
@@ -605,7 +607,7 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 		emotes_to_add += emote
 	return emotes_to_add
 
-/// Setup for Hazard joe emotes and category list, returns data for uppj_emotes
+/// Setup for UPP joe emotes and category list, returns data for uppj_emotes
 /proc/setup_upp_joe_emotes()
 	var/list/emotes_to_add = list()
 	for(var/datum/emote/living/carbon/human/synthetic/working_joe/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/working_joe))
@@ -614,6 +616,19 @@ GLOBAL_LIST_INIT_TYPED(specialist_set_datums, /datum/specialist_set, setup_speci
 
 		if(!(initial(emote.category) in GLOB.uppj_categories))
 			GLOB.uppj_categories += initial(emote.category)
+
+		emotes_to_add += emote
+	return emotes_to_add
+
+/// Setup for WY droid emotes and category list, returns data for wy_droid_emotes
+/proc/setup_wy_droid_emotes()
+	var/list/emotes_to_add = list()
+	for(var/datum/emote/living/carbon/human/synthetic/colonial/wy_droid/emote as anything in subtypesof(/datum/emote/living/carbon/human/synthetic/colonial/wy_droid))
+		if(!initial(emote.key) || !initial(emote.say_message))
+			continue
+
+		if(!(initial(emote.category) in GLOB.wy_droid_categories))
+			GLOB.wy_droid_categories += initial(emote.category)
 
 		emotes_to_add += emote
 	return emotes_to_add

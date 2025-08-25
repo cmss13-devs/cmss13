@@ -228,7 +228,8 @@
 
 	for(var/shuttle_tag in shuttles)
 		shuttle = shuttles[shuttle_tag]
-		if(istype(shuttle, /datum/shuttle/ferry/marine)) continue //Evac pods ignore this, as do other marine ferries.
+		if(istype(shuttle, /datum/shuttle/ferry/marine))
+			continue //Evac pods ignore this, as do other marine ferries.
 		if(shuttle.docking_controller_tag)
 			dock_controller_map[shuttle.docking_controller_tag] = shuttle
 

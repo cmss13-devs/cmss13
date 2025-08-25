@@ -1087,7 +1087,7 @@
 /turf/open/floor/almayer/dark_sterile,
 /area/adminlevel/ert_station)
 "ZS" = (
-/obj/structure/machinery/vending/cigarette/colony,
+/obj/structure/machinery/vending/cigarette/koorlander/free,
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 

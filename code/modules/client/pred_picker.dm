@@ -64,6 +64,7 @@
 
 	.["materials"] = PRED_MATERIALS
 	.["translators"] = PRED_TRANSLATORS
+	.["invisibility_sounds"] = PRED_INVIS_SOUNDS
 	.["legacies"] = PRED_LEGACIES
 
 
@@ -84,6 +85,7 @@
 
 	.["use_legacy"] = prefs.predator_use_legacy
 	.["translator_type"] = prefs.predator_translator_type
+	.["invisibility_sound"] = prefs.predator_invisibility_sound
 
 	.["armor_type"] = prefs.predator_armor_type
 	.["armor_material"] = prefs.predator_armor_material
@@ -111,7 +113,6 @@
 
 		if("name")
 			var/picked_name = params["name"]
-
 			picked_name = reject_bad_name(picked_name)
 			if(!picked_name)
 				return
@@ -240,6 +241,19 @@
 				return
 
 			prefs.predator_translator_type = selected
+
+		if("invisibility_sound")
+			var/selected = params["selected"]
+			if(!selected || !(selected in PRED_INVIS_SOUNDS))
+				return
+
+			prefs.predator_invisibility_sound = selected
+			var/sound_to_use
+			if(selected == PRED_TECH_MODERN)
+				sound_to_use = 'sound/effects/pred_cloakon_modern.ogg'
+			else
+				sound_to_use = 'sound/effects/pred_cloakon.ogg'
+			playsound_client(ui.user.client, sound_to_use, null, 35)
 
 		if("legacy")
 			var/selected = params["selected"]

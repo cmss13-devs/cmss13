@@ -109,7 +109,7 @@
 	if(accept_check(O))
 		if(user.drop_held_item())
 			add_local_item(O)
-			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
+			user.visible_message(SPAN_NOTICE("[user] has added \the [O] to \the [src]."),
 								SPAN_NOTICE("You add \the [O] to \the [src]."))
 
 	else if(istype(O, /obj/item/storage/bag/plants))
@@ -122,8 +122,8 @@
 				plants_loaded++
 		if(plants_loaded)
 
-			user.visible_message( \
-				SPAN_NOTICE("[user] loads \the [src] with \the [P]."), \
+			user.visible_message(
+				SPAN_NOTICE("[user] loads \the [src] with \the [P]."),
 				SPAN_NOTICE("You load \the [src] with \the [P]."))
 			if(length(P.contents) > 0)
 				to_chat(user, SPAN_NOTICE("Some items are refused."))

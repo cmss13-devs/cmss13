@@ -9,7 +9,8 @@
 
 
 /datum/player_action/fun/narrate/act(client/user, mob/target, list/params)
-	if(!params["to_narrate"]) return
+	if(!params["to_narrate"])
+		return
 
 	to_chat(target, params["to_narrate"])
 	message_admins("DirectNarrate: [key_name_admin(user)] to ([key_name_admin(target)]): [params["to_narrate"]]")

@@ -196,6 +196,7 @@
 
 
 /mob/living/carbon/human/proc/handle_revive()
+	revive_grace_period = initial(revive_grace_period)
 	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)
 	track_revive(job)
 	GLOB.alive_mob_list += src

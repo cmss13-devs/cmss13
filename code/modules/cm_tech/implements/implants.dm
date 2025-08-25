@@ -160,7 +160,7 @@
 /obj/item/device/internal_implant/nvg/proc/give_nvg(mob/living/M)
 	SIGNAL_HANDLER
 	M.see_in_dark = 12
-	M.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	M.lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 	M.sync_lighting_plane_alpha()
 
 /obj/item/device/implanter/rejuv

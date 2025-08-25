@@ -27,6 +27,18 @@
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
 		)
 
+/obj/item/prop/helmetgarb/netting/desert
+	name = "desert combat netting"
+	icon_state = "netting_desert"
+
+/obj/item/prop/helmetgarb/netting/jungle
+	name = "jungle combat netting"
+	icon_state = "netting_jungle"
+
+/obj/item/prop/helmetgarb/netting/urban
+	name = "urban combat netting"
+	icon_state = "netting_urban"
+
 /obj/item/prop/helmetgarb/spent_buckshot
 	name = "spent buckshot"
 	desc = "Three spent rounds of good ol' buckshot. You know they used to paint these green? Strange times."
@@ -76,6 +88,18 @@
 	item_icons = list(
 		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/helmet_covers.dmi',
 	)
+
+/obj/item/prop/helmetgarb/raincover/jungle
+	name = "jungle raincover"
+	icon_state = "raincover_jungle"
+
+/obj/item/prop/helmetgarb/raincover/desert
+	name = "desert raincover"
+	icon_state = "raincover_desert"
+
+/obj/item/prop/helmetgarb/raincover/urban
+	name = "urban raincover"
+	icon_state = "raincover_urban"
 
 /obj/item/prop/helmetgarb/rabbitsfoot
 	name = "Rabbit's Foot"

@@ -175,7 +175,7 @@
 /area/desert_dam/interior/caves/temple)
 "hh" = (
 /turf/closed/wall/mineral/sandstone/runed/decor{
-	hull = 1
+	turf_flags = 16
 	},
 /area/desert_dam/interior/caves/temple)
 "hn" = (
@@ -609,6 +609,7 @@
 	},
 /obj/item/reagent_container/food/snacks/stew,
 /obj/item/tool/kitchen/utensil/spoon,
+/obj/structure/machinery/power/apc/fully_broken/no_cell/north,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "NL" = (
@@ -637,7 +638,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/unathiknife,
+/obj/item/weapon/yautja/duelknife,
 /turf/open/floor/corsat/squareswood/north,
 /area/desert_dam/interior/caves/temple)
 "RB" = (
@@ -661,7 +662,7 @@
 /area/desert_dam/interior/caves/temple)
 "Vz" = (
 /turf/closed/wall/mineral/sandstone/runed{
-	hull = 1
+	turf_flags = 16
 	},
 /area/desert_dam/interior/caves/temple)
 "WM" = (

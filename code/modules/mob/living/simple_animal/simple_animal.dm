@@ -125,6 +125,16 @@
 		return
 	return ..()
 
+/mob/living/simple_animal/update_stat()
+	if(stat == DEAD)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+		set_stat(UNCONSCIOUS)
+		return
+
+	set_stat(CONSCIOUS)
+
 /mob/living/simple_animal/update_fire()
 	if(!on_fire)
 		overlays -= fire_overlay
@@ -147,6 +157,7 @@
 		fire_overlay = fire_overlay_image
 
 /mob/living/simple_animal/Life(delta_time)
+	..()
 	if(affected_by_fire)
 		handle_fire()
 	//Health
@@ -170,7 +181,7 @@
 
 	//Movement
 	if(!client && !stop_automated_movement && wander && !anchored)
-		if(isturf(src.loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
+		if(isturf(loc) && !resting && !buckled && (mobility_flags & MOBILITY_MOVE) && !HAS_TRAIT(src, TRAIT_HAULED)) //This is so it only moves if it's not inside a closet, gentics machine, etc.
 			turns_since_move++
 			if(turns_since_move >= turns_per_move)
 				if(!(stop_automated_movement_when_pulled && pulledby)) //Soma animals don't move when pulled
@@ -265,7 +276,8 @@
 	return 1
 
 /mob/living/simple_animal/Collided(atom/movable/AM)
-	if(!AM) return
+	if(!AM)
+		return
 
 	if(resting || buckled)
 		return
@@ -281,7 +293,8 @@
 
 /mob/living/simple_animal/death()
 	. = ..()
-	if(!.) return //was already dead
+	if(!.)
+		return //was already dead
 	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
 	black_market_value = dead_black_market_value

@@ -417,11 +417,10 @@
 				var/mob/living/carbon/human/human_user = user
 				var/obj/item/card/id/card = human_user.get_idcard()
 
-				if(!card)
-					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
-					return
+				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // if no card or not enough access, check for held id
+					card = locate(/obj/item/card/id) in human_user
 
-				if(!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))
+				if(!card || (!(ACCESS_MARINE_SENIOR in card.access) && !(ACCESS_MARINE_DROPSHIP in card.access))) // still no valid card found?
 					to_chat(user, SPAN_NOTICE("[src]'s screen says \"Unauthorized access. Please inform your supervisor\"."))
 					return
 

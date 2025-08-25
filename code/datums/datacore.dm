@@ -14,12 +14,26 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		if(!nosleep)
 			sleep(40)
 
-		var/list/jobs_to_check = GLOB.ROLES_CIC + GLOB.ROLES_AUXIL_SUPPORT + GLOB.ROLES_MISC + GLOB.ROLES_POLICE + GLOB.ROLES_ENGINEERING + GLOB.ROLES_REQUISITION + GLOB.ROLES_MEDICAL + GLOB.ROLES_MARINES
-		for(var/mob/living/carbon/human/H as anything in GLOB.human_mob_list)
-			if(should_block_game_interaction(H))
+		var/list/jobs_to_check = GLOB.ROLES_USCM + GLOB.ROLES_WO
+
+		for(var/mob/living/carbon/human/current_human as anything in GLOB.human_mob_list)
+			if(should_block_game_interaction(current_human))
 				continue
-			if(H.job in jobs_to_check)
-				manifest_inject(H)
+
+			if(is_in_manifest(current_human))
+				continue
+
+			if(current_human.job in jobs_to_check)
+				manifest_inject(current_human)
+
+/datum/datacore/proc/is_in_manifest(mob/living/carbon/human/current_human)
+	var/weakref = WEAKREF(current_human)
+
+	for(var/datum/data/record/current_record as anything in general)
+		if(current_record.fields["ref"] == weakref)
+			return TRUE
+
+	return FALSE
 
 /datum/datacore/proc/manifest_modify(name, ref, assignment, rank, p_stat)
 	var/datum/data/record/foundrecord
@@ -55,17 +69,24 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	else
 		assignment = "Unassigned"
 
+	var/manifest_title
+	if(target?.assigned_equipment_preset.manifest_title)
+		manifest_title = target.assigned_equipment_preset.manifest_title
+	else
+		manifest_title = target.job
+
 	var/id = add_zero(num2hex(target.gid), 6) //this was the best they could come up with? A large random number? *sigh*
-	//var/icon/front = new(get_id_photo(H), dir = SOUTH)
-	//var/icon/side = new(get_id_photo(H), dir = WEST)
+	var/icon/front = new(get_id_photo(target), dir = SOUTH)
+	var/icon/side = new(get_id_photo(target), dir = WEST)
+
 
 	//General Record
 	var/datum/data/record/record_general = new()
 	record_general.fields["id"] = id
 	record_general.fields["name"] = target.real_name
 	record_general.name = target.real_name
-	record_general.fields["real_rank"] = target.job
-	record_general.fields["rank"] = assignment
+	record_general.fields["real_rank"] = assignment
+	record_general.fields["rank"] = manifest_title
 	record_general.fields["squad"] = target.assigned_squad ? target.assigned_squad.name : null
 	record_general.fields["age"] = target.age
 	record_general.fields["p_stat"] = "Active"
@@ -77,8 +98,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_general.fields["mob_faction"] = target.faction
 	record_general.fields["religion"] = target.religion
 	record_general.fields["ref"] = WEAKREF(target)
-	//record_general.fields["photo_front"] = front
-	//record_general.fields["photo_side"] = side
+	record_general.fields["photo_front"] = front
+	record_general.fields["photo_side"] = side
 
 	if(target.gen_record && !jobban_isbanned(target, "Records"))
 		record_general.fields["notes"] = target.gen_record
@@ -91,19 +112,18 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_medical.fields["id"] = id
 	record_medical.fields["name"] = target.real_name
 	record_medical.name = target.name
-	record_medical.fields["b_type"] = target.blood_type
-	record_medical.fields["mi_dis"] = "None"
-	record_medical.fields["mi_dis_d"] = "No minor disabilities have been declared."
-	record_medical.fields["ma_dis"] = "None"
-	record_medical.fields["ma_dis_d"] = "No major disabilities have been diagnosed."
-	record_medical.fields["alg"] = "None"
-	record_medical.fields["alg_d"] = "No allergies have been detected in this patient."
-	record_medical.fields["cdi"] = "None"
-	record_medical.fields["cdi_d"] = "No diseases have been diagnosed at the moment."
+	record_medical.fields["blood_type"] = target.blood_type
+	record_medical.fields["minor_disability"] = "None"
+	record_medical.fields["minor_disability_details"] = "No minor disabilities have been declared."
+	record_medical.fields["major_disability"] = "None"
+	record_medical.fields["major_disability_details"] = "No major disabilities have been diagnosed."
+	record_medical.fields["allergies"] = "None"
+	record_medical.fields["allergies_details"] = "No allergies have been detected in this patient."
+	record_medical.fields["diseases"] = "None"
+	record_medical.fields["diseases_details"] = "No diseases have been diagnosed at the moment."
 	record_medical.fields["last_scan_time"] = null
 	record_medical.fields["last_scan_result"] = "No scan data on record" // body scanner results
 	record_medical.fields["autodoc_data"] = list()
-	record_medical.fields["autodoc_manual"] = list()
 	record_medical.fields["ref"] = WEAKREF(target)
 
 	if(target.med_record && !jobban_isbanned(target, "Records"))
@@ -136,7 +156,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	record_locked.fields["rank"] = target.job
 	record_locked.fields["age"] = target.age
 	record_locked.fields["sex"] = target.gender
-	record_locked.fields["b_type"] = target.b_type
+	record_locked.fields["blood_type"] = target.blood_type
 	record_locked.fields["species"] = target.get_species()
 	record_locked.fields["origin"] = target.origin
 	record_locked.fields["faction"] = target.personal_faction
@@ -190,7 +210,8 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	preview_icon.Blend(temp, ICON_OVERLAY)
 
 	for(var/obj/limb/E in H.limbs)
-		if(E.status & LIMB_DESTROYED) continue
+		if(E.status & LIMB_DESTROYED)
+			continue
 		temp = new /icon(icobase, get_limb_icon_name(H.species, body_size_icon, body_type_icon, H.gender, E.name, skin_color_icon))
 		if(E.status & LIMB_ROBOT)
 			temp.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
@@ -198,7 +219,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 	//Tail
 	if(H.species.tail)
-		temp = new/icon("icon" = 'icons/effects/species.dmi', "icon_state" = "[H.species.tail]_s")
+		temp = new/icon("icon" = H.species.icobase, "icon_state" = "[H.species.tail]_s")
 		preview_icon.Blend(temp, ICON_OVERLAY)
 
 
@@ -219,8 +240,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		eyes_s.Blend(facial_s, ICON_OVERLAY)
 
 	var/icon/clothes_s = null
-	clothes_s = new /icon('icons/mob/humans/onmob/clothing/uniforms/underwear_uniforms.dmi', "marine_underpants_s")
-	clothes_s.Blend(new /icon('icons/mob/humans/onmob/clothing/feet.dmi', "black"), ICON_UNDERLAY)
+	clothes_s = new /icon('icons/mob/humans/body_mask.dmi', "marine_uniform")
+	clothes_s.Blend(new /icon('icons/mob/humans/onmob/clothing/feet.dmi', "marine"), ICON_UNDERLAY)
+
 	preview_icon.Blend(eyes_s, ICON_OVERLAY)
 	if(clothes_s)
 		preview_icon.Blend(clothes_s, ICON_OVERLAY)

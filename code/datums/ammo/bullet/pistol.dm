@@ -4,7 +4,7 @@
 //======
 */
 
-// Used by M4A3, M4A3 Custom and B92FS
+// Used by M4A3, M4A4, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
@@ -96,13 +96,19 @@
 	shrapnel_chance = 0
 
 // Reskinned rubber bullet used for the ES-4 CL pistol.
-/datum/ammo/bullet/pistol/rubber/stun
+/datum/ammo/bullet/pistol/rubber/es4
 	name = "stun pistol bullet"
+	icon_state = "cm_laser"
 	sound_override = null
-
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	sound_hit = "energy_hit"
+	sound_miss = "energy_miss"
+	sound_bounce = "energy_bounce"
+	hit_effect_color = "#00aeff"
+	stamina_damage = 30
 	accuracy = HIT_ACCURACY_TIER_4
 
-// Used by M1911, Deagle and KT-42
+// Used by M1911 and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
@@ -112,36 +118,51 @@
 	penetration = ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-/datum/ammo/bullet/pistol/heavy/super //Commander's variant
+/datum/ammo/bullet/pistol/heavy/highimpact
+	name = "high-impact pistol bullet"
+	debilitate = list(0,0.2,0,0,0,1,0,0)
+
+/datum/ammo/bullet/pistol/heavy/highimpact/ap
+	name = "high-impact armor-piercing pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_10
+	damage = 40
+
+/datum/ammo/bullet/pistol/heavy/highimpact/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+
+/datum/ammo/bullet/pistol/deagle //Commander's variant
 	name = ".50 heavy pistol bullet"
 	damage = 60
-	damage_var_low = PROJECTILE_VARIANCE_TIER_8
-	damage_var_high = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_4
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_6
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact
+/datum/ammo/bullet/pistol/deagle/highimpact
 	name = ".50 high-impact pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_4
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/ap
+/datum/ammo/bullet/pistol/deagle/highimpact/ap
 	name = ".50 high-impact armor piercing pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 45
+	damage = 50
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+/datum/ammo/bullet/pistol/deagle/highimpact/upp
 	name = "high-impact pistol bullet"
 	sound_override = 'sound/weapons/gun_DE50.ogg'
 	penetration = ARMOR_PENETRATION_TIER_6
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/New()
+/datum/ammo/bullet/pistol/deagle/highimpact/New()
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/pistol/deagle/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/deagle
@@ -239,6 +260,13 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/pistol/squash/rubber
+	name = "rubber squash-head pistol bullet"
+	damage_type = BURN
+	shrapnel_chance = 0
+	sound_override = 'sound/weapons/gun_c99.ogg'
+	damage = 2
+	stamina_damage = 40
 
 /datum/ammo/bullet/pistol/mankey
 	name = "live monkey"
@@ -272,3 +300,5 @@
 	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/l54_custom
+	penetration= ARMOR_PENETRATION_TIER_3

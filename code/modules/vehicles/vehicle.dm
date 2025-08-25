@@ -38,14 +38,21 @@
 // Standard procs
 //-------------------------------------------
 
+/obj/vehicle/Destroy(force)
+	. = ..()
+	if(!QDELETED(cell))
+		QDEL_NULL(cell)
+
 /obj/vehicle/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_OVER_THROW_ITEM
 
 /obj/vehicle/relaymove(mob/user, direction)
-	if(user.is_mob_incapacitated()) return
-	if(seats[VEHICLE_DRIVER] != user) return
+	if(user.is_mob_incapacitated())
+		return
+	if(seats[VEHICLE_DRIVER] != user)
+		return
 
 	if(world.time > l_move_time + move_delay)
 		if(on && powered && cell && cell.charge < charge_use)
@@ -95,7 +102,8 @@
 		..()
 
 /obj/vehicle/attack_animal(mob/living/simple_animal/M as mob)
-	if(M.melee_damage_upper == 0) return
+	if(M.melee_damage_upper == 0)
+		return
 	health -= M.melee_damage_upper
 	src.visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")

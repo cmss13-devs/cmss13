@@ -86,7 +86,7 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(one_hand_lever && !(flags_gun_lever_action & DANGEROUS_TO_ONEHAND_LEVER))
 		return
 	else if(one_hand_lever) //base marines should never be able to easily pass the skillcheck, only specialists and etc.
-		if(prob(cur_onehand_chance) || skillcheck(human_user, SKILL_FIREARMS, SKILL_FIREARMS_EXPERT))
+		if(prob(cur_onehand_chance) || skillcheck(human_user, SKILL_FIREARMS, SKILL_FIREARMS_SKILLED))
 			cur_onehand_chance = cur_onehand_chance - 20 //gets steadily worse if you spam it
 			return
 		else
@@ -135,7 +135,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/proc/reset_hit_buff(mob/user, one_hand_lever)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
-	SIGNAL_HANDLER
 	streak = 0
 	lever_sound = initial(lever_sound)
 	lever_message = initial(lever_message)
@@ -168,11 +167,13 @@ their unique feature is that a direct hit will buff your damage and firerate
 			playsound(user, reload_sound, 25, TRUE)
 			new_handful.forceMove(get_turf(src))
 		else
-			if(user) to_chat(user, SPAN_WARNING("\The [src] is already empty."))
+			if(user)
+				to_chat(user, SPAN_WARNING("\The [src] is already empty."))
 		return
 
 	unload_bullet(user)
-	if(!current_mag.current_rounds && !in_chamber) update_icon()
+	if(!current_mag.current_rounds && !in_chamber)
+		update_icon()
 
 /obj/item/weapon/gun/lever_action/proc/unload_bullet(mob/user)
 	if(isnull(current_mag) || !length(current_mag.chamber_contents))
@@ -182,7 +183,8 @@ their unique feature is that a direct hit will buff your damage and firerate
 	if(user)
 		user.put_in_hands(new_handful)
 		playsound(user, reload_sound, 25, TRUE)
-	else new_handful.forceMove(get_turf(src))
+	else
+		new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"
@@ -299,6 +301,16 @@ their unique feature is that a direct hit will buff your damage and firerate
 	attachable_allowed = list(
 		/obj/item/attachable/bayonet/upp, // Barrel
 		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/wy,
+		/obj/item/attachable/bayonet/antique,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/bayonet/tanto,
+		/obj/item/attachable/bayonet/tanto/blue,
+		/obj/item/attachable/bayonet/rmc_replica,
+		/obj/item/attachable/bayonet/rmc,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/heavy_barrel,
 		/obj/item/attachable/suppressor,
@@ -491,7 +503,6 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/reset_hit_buff(mob/user, one_hand_lever)
 	if(!(flags_gun_lever_action & USES_STREAKS))
 		return
-	SIGNAL_HANDLER
 	if(streak > 0)
 		to_chat(user, SPAN_WARNING("[src] beeps as it loses its targeting data, and returns to normal firing procedures."))
 	streak = 0

@@ -102,7 +102,7 @@
 	if(!_check_num_required_pylons())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("Our hive does not have the required number of available pylons! We require [number_of_required_pylons]"))
 		return FALSE
-	
+
 	if(!_check_danger())
 		to_chat(purchasing_mob, SPAN_XENONOTICE("There is not enough danger to warrant hive buffs."))
 		return FALSE
@@ -195,12 +195,12 @@
 /datum/hivebuff/proc/_on_cease()
 	if(cease_timer_id)
 		deltimer(cease_timer_id)
-	
+
 	_announce_buff_cease()
 	on_cease()
 	LAZYREMOVE(hive.active_hivebuffs, src)
 	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
-	
+
 	for(var/mob/living/carbon/xenomorph/xeno in hive.totalXenos)
 		remove_buff_effects(xeno)
 
@@ -394,16 +394,15 @@
 
 /datum/hivebuff/game_ender_caste
 	name = "His Grace"
-	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space to grow."
+	desc = "A huge behemoth of a Xenomorph which can tear its way through defences and flesh alike. Requires open space around the hive core to spawn."
 	tier = HIVEBUFF_TIER_MAJOR
 	radial_icon = "king"
-	
+
 	is_reusable = TRUE
 	cost = 0
 	special_fail_message = "Only one hatchery may exist at a time."
 	cooldown_duration = 15 MINUTES // This buff ceases instantly so we need to incorporation the spawning time too
 	number_of_required_pylons = 2
-	must_select_pylon = TRUE
 
 /datum/hivebuff/game_ender_caste/New()
 	roundtime_to_enable = GLOB.king_acquisition_time
@@ -415,11 +414,15 @@
 		special_fail_message = "Only one King may exist at a time."
 		return FALSE
 
+	if(!hive.hive_location)
+		special_fail_message = "You must first construct a hive core."
+		return FALSE
+
 	return !hive.has_hatchery
 
 /datum/hivebuff/game_ender_caste/on_engage(obj/effect/alien/resin/special/pylon/purchased_pylon)
 	var/turf/spawn_turf
-	for(var/turf/potential_turf in orange(5, purchased_pylon))
+	for(var/turf/potential_turf in orange(5, hive.hive_location))
 		var/failed = FALSE
 		for(var/x_offset in -1 to 1)
 			for(var/y_offset in -1 to 1)
@@ -427,7 +430,7 @@
 				if(turf_to_check.density)
 					failed = TRUE
 					break
-				if(!turf_to_check.is_weedable())
+				if(!turf_to_check.is_weedable)
 					failed = TRUE
 					break
 				var/area/target_area = get_area(turf_to_check)
@@ -437,6 +440,9 @@
 				for(var/obj/structure/struct in turf_to_check)
 					if(struct.density)
 						failed = TRUE
+						break
+				for(var/obj/effect/alien/resin/special in turf_to_check)
+					failed = TRUE
 					break
 		if(!failed)
 			spawn_turf = potential_turf
@@ -454,42 +460,74 @@
 
 	return TRUE
 
-/datum/hivebuff/defence
-	name = "Boon of Defence"
-	desc = "Increases all xenomorph armour by 2.5 for 5 minutes"
+/datum/hivebuff/fire
+	name = "Boon of Fire Resistance"
+	desc = "Makes all xenomorphs immune to fire for 5 minutes."
 	tier = HIVEBUFF_TIER_MINOR
 
-	engage_flavourmessage = "The Queen has imbued us with greater chitin."
+	engage_flavourmessage = "The Queen has imbued us with flame-resistant chitin."
 	duration = 5 MINUTES
 	number_of_required_pylons = 1
 	radial_icon = "shield"
 
-/datum/hivebuff/defence/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier += XENO_ARMOR_MOD_TINY
-	xeno.recalculate_armor()
+/datum/hivebuff/fire/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	if(!xeno.caste)
+		return
 
-/datum/hivebuff/defence/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier -= XENO_ARMOR_MOD_TINY
-	xeno.recalculate_armor()
+	if(!(xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE))
+		RegisterSignal(xeno, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 
-/datum/hivebuff/defence/major
-	name = "Major Boon of Defence"
-	desc = "Increases all xenomorph armour by 5 for 10 minutes"
+	if(xeno.caste.fire_immunity == FIRE_IMMUNITY_NONE)
+		RegisterSignal(xeno, list(COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED), PROC_REF(flamer_crossed_immune))
+
+
+/datum/hivebuff/fire/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
+	if(!(xeno.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE))
+		UnregisterSignal(xeno, COMSIG_LIVING_PREIGNITION)
+	if(xeno.caste.fire_immunity == FIRE_IMMUNITY_NONE)
+		UnregisterSignal(xeno, list(
+				COMSIG_LIVING_FLAMER_CROSSED,
+				COMSIG_LIVING_FLAMER_FLAMED
+			))
+
+/datum/hivebuff/fire/proc/flamer_crossed_immune(mob/living/living, datum/reagent/reagent)
+	SIGNAL_HANDLER
+
+	if(reagent.fire_penetrating)
+		return
+
+	. |= COMPONENT_NO_IGNITE
+
+
+/datum/hivebuff/fire/proc/fire_immune(mob/living/living)
+	SIGNAL_HANDLER
+
+	if(living.fire_reagent?.fire_penetrating && !HAS_TRAIT(living, TRAIT_ABILITY_BURROWED))
+		return
+
+	return COMPONENT_CANCEL_IGNITION
+
+/datum/hivebuff/adaptability
+	name = "Boon of Adaptability"
+	desc = "Allows each xenomorph to change to a different caste of the same tier."
 	tier = HIVEBUFF_TIER_MAJOR
 
-	engage_flavourmessage = "The Queen has imbued us with even greater chitin."
-	duration = 10 MINUTES
+	engage_flavourmessage = "The Queen has blessed us with adaptability."
+	duration = 0
 	cost = 2
 	number_of_required_pylons = 2
 	radial_icon = "shield_m"
 
-/datum/hivebuff/defence/major/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier += XENO_ARMOR_MOD_VERY_SMALL
-	xeno.recalculate_armor()
+/datum/hivebuff/adaptability/apply_buff_effects(mob/living/carbon/xenomorph/xeno)
+	if(xeno.caste.tier > 3)
+		return
 
-/datum/hivebuff/defence/major/remove_buff_effects(mob/living/carbon/xenomorph/xeno)
-	xeno.armor_modifier -= XENO_ARMOR_MOD_VERY_SMALL
-	xeno.recalculate_armor()
+	if(get_action(xeno, /datum/action/xeno_action/onclick/transmute))
+		return
+
+	add_verb(xeno, /mob/living/carbon/xenomorph/proc/transmute_verb)
+	var/datum/action/xeno_action/onclick/transmute/transmute_action = new()
+	transmute_action.give_to(xeno)
 
 /datum/hivebuff/attack
 	name = "Boon of Aggression"

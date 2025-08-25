@@ -558,7 +558,7 @@
 /datum/recipe/nettlesoup
 	reagents = list("water" = 10)
 	items = list(
-		/obj/item/grown/nettle,
+		/obj/item/reagent_container/food/snacks/grown/nettle,
 		/obj/item/reagent_container/food/snacks/grown/potato,
 		/obj/item/reagent_container/food/snacks/egg,
 	)
@@ -956,12 +956,6 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/stewedsoymeat
 
-/*/datum/recipe/spagetti We have the processor now
-	items = list(
-		/obj/item/reagent_container/food/snacks/doughslice,
-	)
-	result= /obj/item/reagent_container/food/snacks/spagetti*/
-
 /datum/recipe/boiledrice
 	reagents = list("water" = 5, "rice" = 10)
 	result = /obj/item/reagent_container/food/snacks/boiledrice
@@ -1002,8 +996,8 @@
 
 /datum/recipe/sausage
 	items = list(
-		/obj/item/reagent_container/food/snacks/meatball,
-		/obj/item/reagent_container/food/snacks/cutlet,
+		/obj/item/reagent_container/food/snacks/rawmeatball,
+		/obj/item/reagent_container/food/snacks/rawcutlet,
 	)
 	result = /obj/item/reagent_container/food/snacks/sausage
 
@@ -1146,3 +1140,11 @@
 /datum/recipe/mint
 	reagents = list("sugar" = 5, "frostoil" = 5)
 	result = /obj/item/reagent_container/food/snacks/mint
+
+/datum/recipe/chocolate
+	reagents = list("milk" = 2, "coco" = 2, "sugar" = 2)
+	result = /obj/item/reagent_container/food/snacks/chocolatebar
+
+/datum/recipe/chocolate_soy
+	reagents = list("soymilk" = 2, "coco" = 2, "sugar" = 2)
+	result = /obj/item/reagent_container/food/snacks/chocolatebar

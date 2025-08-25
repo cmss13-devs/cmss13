@@ -28,6 +28,7 @@
 #define COMSIG_SNACK_EATEN "snack_eaten"
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+	#define COMSIG_ITEM_PICKUP_CANCELLED (1<<0)
 
 ///from /obj/item/device/broadcasting
 #define COMSIG_BROADCAST_GO_LIVE "broadcast_live"
@@ -58,3 +59,7 @@
 #define COMSIG_CAMERA_REFRESH "camera_manager_refresh"
 
 #define COMSIG_PRED_BRACER_DECLOAKED "pred_bracer_decloaked"
+
+//from /datum/component/overwatch_console_control
+#define COMSIG_OW_CONSOLE_OBSERVE_START "ow_console_observe_start"
+#define COMSIG_OW_CONSOLE_OBSERVE_END "ow_console_observe_end"

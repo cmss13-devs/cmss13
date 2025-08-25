@@ -125,7 +125,8 @@
 			if(include_keys)
 				formatted = SPAN_MENTORHELP(key_name(sender, TRUE) + " -> " + key_name(recipient, TRUE) + ": ") + msg
 
-		else continue
+		else
+			continue
 
 		if(soundfile && with_sound && (admin_client.prefs?.toggles_sound & SOUND_ADMINHELP))
 			sound_to(admin_client, soundfile)

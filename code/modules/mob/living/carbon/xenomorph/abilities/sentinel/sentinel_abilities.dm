@@ -15,7 +15,7 @@
 	macro_path = /datum/action/xeno_action/verb/verb_scattered_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 6 SECONDS
+	xeno_cooldown = 7 SECONDS
 	plasma_cost = 30
 
 // Paralyzing slash

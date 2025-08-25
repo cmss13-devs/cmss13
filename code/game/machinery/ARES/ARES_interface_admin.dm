@@ -344,7 +344,7 @@
 			return TRUE
 
 		if("trigger_vent")
-			var/obj/structure/pipes/vents/pump/no_boom/gas/sec_vent = locate(params["vent"])
+			var/obj/structure/pipes/vents/pump/no_boom/gas/ares/sec_vent = locate(params["vent"])
 			if(!istype(sec_vent) || sec_vent.welded)
 				to_chat(user, SPAN_WARNING("ERROR: Gas release failure."))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
@@ -360,13 +360,6 @@
 			log_ares_security("Nerve Gas Release", "Released Nerve Gas from Vent '[sec_vent.vent_tag]'.", MAIN_AI_SYSTEM)
 			sec_vent.create_gas(VENT_GAS_CN20_XENO, 6, 5 SECONDS)
 			log_admin("[key_name(user)] released nerve gas from Vent '[sec_vent.vent_tag]' via ARES.")
-
-		if("security_lockdown")
-			if(!COOLDOWN_FINISHED(datacore, aicore_lockdown))
-				to_chat(user, SPAN_BOLDWARNING("AI Core Lockdown procedures are on cooldown! They will be ready in [COOLDOWN_SECONDSLEFT(datacore, aicore_lockdown)] seconds!"))
-				return FALSE
-			aicore_lockdown(user)
-			return TRUE
 
 		if("update_sentries")
 			var/new_iff = params["chosen_iff"]

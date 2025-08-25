@@ -108,9 +108,9 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE(" You begin to unfasten \the [src] from the floor..."))
 			if (do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message( \
-					"[user] unfastens \the [src].", \
-					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."), \
+				user.visible_message(
+					"[user] unfastens \the [src].",
+					SPAN_NOTICE("You have unfastened \the [src]. Now it can be pulled somewhere else."),
 					"You hear ratchet.")
 				src.anchored = FALSE
 				src.stat |= MAINT
@@ -121,9 +121,9 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(user, SPAN_NOTICE(" You begin to fasten \the [src] to the floor..."))
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message( \
-					"[user] fastens \the [src].", \
-					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."), \
+				user.visible_message(
+					"[user] fastens \the [src].",
+					SPAN_NOTICE("You have fastened \the [src]. Now it can dispense pipes."),
 					"You hear ratchet.")
 				src.anchored = TRUE
 				src.stat &= ~MAINT
@@ -149,11 +149,11 @@ Nah
 */
 
 //Allow you to drag-drop disposal pipes into it
-/obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(obj/structure/disposalconstruct/pipe as obj, mob/usr as mob)
-	if(usr.is_mob_incapacitated())
+/obj/structure/machinery/pipedispenser/disposal/MouseDrop_T(obj/structure/disposalconstruct/pipe as obj, mob/user as mob)
+	if(user.is_mob_incapacitated())
 		return
 
-	if (!istype(pipe) || get_dist(usr, src) > 1 || get_dist(src,pipe) > 1 )
+	if (!istype(pipe) || get_dist(user, src) > 1 || get_dist(src,pipe) > 1 )
 		return
 
 	if (pipe.anchored)

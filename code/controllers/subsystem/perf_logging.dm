@@ -40,14 +40,16 @@ SUBSYSTEM_DEF(perf_logging)
 /datum/controller/subsystem/perf_logging/proc/start_logging()
 	SHOULD_NOT_SLEEP(TRUE)
 	var/datum/map_config/ground = SSmapping.configs[GROUND_MAP]
-	if(!ground) return
+	if(!ground)
+		return
 	ord = 0
 	round = SSentity_manager.round
 	round.map_name = ground.map_name
 	var/datum/entity/mc_controller/C
 	for(var/datum/controller/subsystem/SS in Master.subsystems)
 		C = SSentity_manager.select_by_key(/datum/entity/mc_controller, "[SS.type]")
-		if(!C) continue
+		if(!C)
+			continue
 		C.wait_time = SS.wait
 		C.save()
 		controller_assoc[SS.type] = C
@@ -77,6 +79,8 @@ SUBSYSTEM_DEF(perf_logging)
 	timing_info.save() && timing_info.detach()
 
 /datum/controller/subsystem/perf_logging/stat_entry(msg)
-	if(round) msg = "ACTIVE | Round: [round.id] | Time: #[ord]"
-	else msg = "INACTIVE"
+	if(round)
+		msg = "ACTIVE | Round: [round.id] | Time: #[ord]"
+	else
+		msg = "INACTIVE"
 	return ..()

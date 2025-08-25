@@ -32,7 +32,8 @@
 					fail = FALSE
 					break
 
-		if(fail) return
+		if(fail)
+			return
 
 	if(skip_this == 1)
 		//if(src.virus) < -- this used to replace the current disease. Not anymore!
@@ -46,7 +47,8 @@
 			v.carrier = 1
 		return
 
-	if(prob(15/virus.permeability_mod)) return //the power of immunity compels this disease! but then you forgot resistances
+	if(prob(15/virus.permeability_mod))
+		return //the power of immunity compels this disease! but then you forgot resistances
 	var/passed = 1
 
 	if(spread_type == -5)
@@ -58,7 +60,8 @@
 		AddDisease(virus)
 
 /mob/living/carbon/human/contract_disease(datum/disease/virus, skip_this = 0, force_species_check=1, spread_type = -5)
-	if(species.flags & IS_SYNTHETIC) return //synthetic species are immune
+	if(species.flags & IS_SYNTHETIC)
+		return //synthetic species are immune
 	..(virus, skip_this, force_species_check, spread_type)
 
 /mob/proc/AddDisease(datum/disease/D, roll_for_carrier = TRUE)

@@ -43,7 +43,8 @@
 	return
 
 /obj/item/toy/balloon/afterattack(atom/A as mob|obj, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if (istype(A, /obj/structure/reagent_dispensers/watertank) && get_dist(src,A) <= 1)
 		A.reagents.trans_to(src, 10)
 		to_chat(user, SPAN_NOTICE("You fill the balloon with the contents of [A]."))
@@ -380,8 +381,8 @@
 	else if(sides == 20 && result == 1)
 		comment = "Ouch, bad luck."
 	icon_state = "[name][result]"
-	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"), \
-						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"), \
+	user.visible_message(SPAN_NOTICE("[user] has thrown [src]. It lands on [result]. [comment]"),
+						SPAN_NOTICE("You throw [src]. It lands on a [result]. [comment]"),
 						SPAN_NOTICE("You hear [src] landing on a [result]. [comment]"))
 
 /obj/item/toy/bikehorn
@@ -527,15 +528,20 @@
 	desc = "A cute toy that awakens the warrior spirit in the most reserved marine."
 	icon_state = "bee"
 
-/obj/item/toy/plush/moth
-	name = "moth plush"
-	desc = "A plush doll of a bug."
-	icon_state = "moth"
-
 /obj/item/toy/plush/rock
 	name = "rock plush"
 	desc = "It says it is a plush on the tag, at least."
 	icon_state = "rock"
+
+/obj/item/toy/plush/gnarp
+	name = "gnarp plush"
+	desc = "gnarp gnarp."
+	icon_state = "gnarp"
+
+/obj/item/toy/plush/gnarp/alt
+	name = "gnarp plush"
+	desc = "gnarp gnarp."
+	icon_state = "gnarp_alt"
 
 /obj/item/toy/plush/therapy
 	name = "therapy plush"
@@ -585,7 +591,8 @@
 		/obj/item/toy/plush/barricade,
 		/obj/item/toy/plush/bee,
 		/obj/item/toy/plush/shark,
-		/obj/item/toy/plush/moth,
+		/obj/item/toy/plush/gnarp,
+		/obj/item/toy/plush/gnarp/alt,
 		/obj/item/toy/plush/rock,
 	)
 	///Therapy plushies left separately to not flood the entire list

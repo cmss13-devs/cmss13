@@ -873,7 +873,7 @@
 /turf/open/floor/prison/redfull,
 /area/fiorina/station/security)
 "HH" = (
-/obj/item/weapon/gun/launcher/grenade/m81/riot,
+/obj/item/weapon/gun/launcher/grenade/m84,
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "HL" = (

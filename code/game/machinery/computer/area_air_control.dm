@@ -80,7 +80,7 @@
 			<i>[zone]</i>
 		</body>
 	</html>"}
-	show_browser(user, dat, name, "miningshuttle", "size=400x400")
+	show_browser(user, dat, name, "miningshuttle", width = 400, height = 400)
 	status = ""
 
 /obj/structure/machinery/computer/area_atmos/Topic(href, href_list)
@@ -137,11 +137,13 @@
 	wow this is stupid, someone help me
 	*/
 	var/turf/T_src = get_turf(src)
-	if(!T_src.loc) return 0
+	if(!T_src.loc)
+		return 0
 	var/area/A_src = T_src.loc
 
 	var/turf/T_scrub = get_turf(scrubber)
-	if(!T_scrub.loc) return 0
+	if(!T_scrub.loc)
+		return 0
 	var/area/A_scrub = T_scrub.loc
 
 	if(A_scrub != A_src)
@@ -155,7 +157,8 @@
 	var/found = 0
 
 	var/turf/T = get_turf(src)
-	if(!T.loc) return
+	if(!T.loc)
+		return
 	for(var/obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/scrubber in GLOB.machines )
 		var/turf/T2 = get_turf(scrubber)
 		if(T2 && T2.loc)

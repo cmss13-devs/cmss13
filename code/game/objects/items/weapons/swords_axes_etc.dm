@@ -71,8 +71,8 @@
 
 	on = !on
 	if(on)
-		user.visible_message(SPAN_DANGER("With a flick of the wrist, [user] extends \his [src]."),\
-		SPAN_DANGER("You extend \the [src]."),\
+		user.visible_message(SPAN_DANGER("With a flick of the wrist, [user] extends \his [src]."),
+		SPAN_DANGER("You extend \the [src]."),
 		"You hear an ominous click.")
 		icon_state = "telebaton_1"
 		item_state = "telebaton_1"
@@ -81,8 +81,8 @@
 		stun_force = 40
 		attack_verb = list("smacked", "struck", "slapped", "beat")
 	else
-		user.visible_message(SPAN_NOTICE("Using a smooth, practiced movement, [user] collapses \his [src]."),\
-		SPAN_NOTICE("You collapse \the [src]."),\
+		user.visible_message(SPAN_NOTICE("Using a smooth, practiced movement, [user] collapses \his [src]."),
+		SPAN_NOTICE("You collapse \the [src]."),
 		"You hear a click.")
 		icon_state = "telebaton_0"
 		item_state = "telebaton_0"
@@ -105,10 +105,11 @@
 	return
 
 /obj/item/weapon/telebaton/proc/stun(mob/living/carbon/human/target, mob/living/user)
+	var/stun_sound = pick('sound/weapons/baton.ogg', 'sound/effects/woodstave.ogg')
 	if(target.check_shields(src, 0, "[user]'s [name]"))
 		return FALSE
 	// Visuals and sound
-	playsound(target, 'sound/weapons/baton.ogg', 50, TRUE, 7)
+	playsound(target, stun_sound, 50, TRUE, 7)
 	user.animation_attack_on(target)
 	user.flick_attack_overlay(target, "punch")
 	log_interact(user, target, "[key_name(user)] stunned [key_name(target)] with \the [src]")
@@ -125,10 +126,10 @@
 	var/target_zone = check_zone(user.zone_selected)
 	target.apply_stamina_damage(final_stun_force, target_zone, ARMOR_MELEE)
 	if(target.stamina.current_stamina <= 0)
-		user.visible_message(SPAN_DANGER("[user] knocks down [target] with \the [src]!"),\
+		user.visible_message(SPAN_DANGER("[user] knocks down [target] with \the [src]!"),
 							SPAN_WARNING("You knock down [target] with \the [src]!"))
 	else
-		user.visible_message(SPAN_DANGER("[user] thwacks [target] with \the [src]!"),\
+		user.visible_message(SPAN_DANGER("[user] thwacks [target] with \the [src]!"),
 							SPAN_WARNING("You beat [target] with \the [src]!"))
 	return TRUE
 

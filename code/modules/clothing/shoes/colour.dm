@@ -40,7 +40,7 @@
 	allowed_items_typecache = list(
 		/obj/item/attachable/bayonet,
 		/obj/item/weapon/throwing_knife,
-		/obj/item/weapon/gun/pistol/holdout,
+		/obj/item/weapon/gun/pistol/action,
 		/obj/item/weapon/gun/pistol/clfpistol,
 		/obj/item/tool/screwdriver,
 		/obj/item/weapon/straight_razor,
@@ -55,6 +55,11 @@
 	name = "leather shoes"
 	desc = "A sturdy pair of leather shoes."
 	icon_state = "leather"
+
+/obj/item/clothing/shoes/leather/fancy
+	name = "fancy leather shoes"
+	desc = "A fancy pair of leather shoes."
+	icon_state = "fancy"
 
 /obj/item/clothing/shoes/rainbow
 	name = "rainbow shoes"

@@ -14,20 +14,21 @@ if (!String.prototype.trim) {
 	};
 }
 
+// Storage.js stuff ------------------------------------------------
+function testHubStorage() {
+	try {
+		return Boolean(window.hubStorage && window.hubStorage.getItem);
+	} catch (error) {
+		return false;
+	}
+}
+
+
 // Status panel implementation ------------------------------------------------
 var status_tab_parts = ["Loading..."];
 var current_tab = null;
-var local_fontsize;
-// Per `storage.js` for tgui:
-// Localstorage can sometimes throw an error, even if DOM storage is not
-// disabled in IE11 settings.
-// See: https://superuser.com/questions/1080011
-try {
-	local_fontsize = localStorage.getItem("fontsize");
-} catch (error) {
-	local_fontsize = 14;
-}
-var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 14; // in px, also determines line height and category header sizes for the verb menus
+var current_fontsize = 14; // in px, also determines line height and category header sizes for the verb menus
+
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;
 var spells = [];
@@ -174,9 +175,6 @@ let clientButtons = {
 		{name: "Effects", command: "Adjust-Volume-SFX"},
 		{name: "Ambience", command: "Adjust-Volume-Ambience"},
 		{name: "Admin Music", command: "Adjust-Volume-Admin-Music"}
-	],
-	"Statbrowser": [
-		{name: "Change Fontsize", function: openOptionsMenu}
 	]
 }
 
@@ -1124,6 +1122,12 @@ window.onload = function () {
 	Byond.sendMessage("Update-Verbs");
 };
 
+function set_font_size(size) {
+	current_fontsize = parseInt(size);
+	statcontentdiv.style.fontSize = current_fontsize + "px";
+	tab_change(current_tab, true);
+}
+
 Byond.subscribeTo("update_spells", function (payload) {
 	spell_tabs = payload.spell_tabs;
 	var do_update = false;
@@ -1339,14 +1343,3 @@ Byond.subscribeTo("changelog_read", function(read) {
 function createOptionsButton() {
 	addPermanentTab("Options", true);
 }
-
-function openOptionsMenu() {
-	Byond.command("Open-Statbrowser-Options " + current_fontsize);
-}
-
-Byond.subscribeTo("change_fontsize", function (new_fontsize) {
-	current_fontsize = parseInt(new_fontsize);
-	localStorage.setItem("fontsize", current_fontsize.toString());
-	statcontentdiv.style.fontSize = current_fontsize + "px";
-	tab_change(current_tab, true); // Redraw the current tab
-});

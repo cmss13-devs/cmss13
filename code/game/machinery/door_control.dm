@@ -12,6 +12,7 @@
 	power_channel = POWER_CHANNEL_ENVIRON
 	unslashable = TRUE
 	unacidable = TRUE
+	explo_proof = TRUE
 	var/id = null
 	var/range = 10
 	var/normaldoorcontrol = CONTROL_POD_DOORS
@@ -206,6 +207,9 @@
 		busy = FALSE
 		if(!(stat & NOPOWER))
 			icon_state = initial(icon_state) + "0"
+
+/obj/structure/machinery/door_control/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
 
 /obj/structure/machinery/door_control/brbutton
 	icon_state = "big_red_button_wallv"

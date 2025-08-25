@@ -16,7 +16,7 @@
 	title = JOB_RIOT_CHIEF
 
 /datum/job/special/uscm/tech
-	title = JOB_SQUAD_TECH
+	title = JOB_FORECON_SUPPORT
 
 #define USCM_TECH "USCM"
 #define WY_TECH "Wey-Yu"

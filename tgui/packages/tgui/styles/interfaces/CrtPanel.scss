@@ -34,7 +34,7 @@
 
     ::after {
       content: ' ';
-      background: rgba(18, 16, 16);
+      background: hsl(0, 6%, 7%);
       opacity: 0;
       z-index: 2;
       pointer-events: none;
@@ -42,15 +42,13 @@
 
     ::before {
       content: ' ';
-      background: linear-gradient(
-          rgba(18, 16, 16, 0) 50%,
-          rgba(0, 0, 0, 0.25) 50%
-        ),
+      background:
+        linear-gradient(hsla(0, 6%, 7%, 0) 50%, hsla(0, 0%, 0%, 0.25) 50%),
         linear-gradient(
           90deg,
-          rgba(255, 0, 0, 0.06),
-          rgba(0, 255, 0, 0.02),
-          rgba(0, 0, 255, 0.06)
+          hsla(0, 100%, 50%, 0.06),
+          hsla(120, 100%, 50%, 0.02),
+          hsla(240, 100%, 50%, 0.06)
         );
       z-index: 2;
       background-size:
@@ -61,14 +59,14 @@
   }
 
   .panel-crt-green {
-    @include panel-crt(#00e94e, #111100);
+    @include panel-crt(hsl(140, 100%, 46%), hsl(60, 100%, 3%));
   }
 
   .panel-crt-yellow {
-    @include panel-crt(#ffbf00, #111100);
+    @include panel-crt(hsl(45, 100%, 50%), hsl(60, 100%, 3%));
   }
 
   .panel-crt-blue {
-    @include panel-crt(#8ac8ff, #111100);
+    @include panel-crt(hsl(208, 100%, 77%), hsl(60, 100%, 3%));
   }
 }

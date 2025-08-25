@@ -220,7 +220,7 @@
 
 	X.animation_attack_on(src)
 
-	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
+	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"),
 	SPAN_DANGER("You slash [src]!"))
 
 	take_damage(damage * FOAMED_METAL_XENO_SLASH)

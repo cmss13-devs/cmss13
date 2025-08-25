@@ -162,7 +162,7 @@
 /datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
+		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return FALSE
 	..()
 
@@ -186,7 +186,6 @@
 	max_range = 8
 	damage = 30
 	shell_speed = AMMO_SPEED_TIER_2
-	added_spit_delay = 0
 
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
@@ -252,7 +251,7 @@
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/projectile/proj)
 	if(iscarbon(moob))
 		var/mob/living/carbon/carbon = moob
-		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
 	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 	if(!neuro_effect)
@@ -302,7 +301,7 @@
 /datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/moob, obj/projectile/proj)
 	if(iscarbon(moob))
 		var/mob/living/carbon/carbon = moob
-		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
 	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
 	playsound(moob,"acid_strike",75,1)
@@ -330,7 +329,7 @@
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
@@ -360,7 +359,7 @@
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
@@ -403,3 +402,39 @@
 
 /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(mob/overlayed_mob, image/tail_image)
 	overlayed_mob.overlays -= tail_image
+
+
+
+/datum/ammo/yautja/gauntlet_hook
+	name = "chain hook"
+	icon_state = "none"
+	ping = null
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+	damage_type = BRUTE
+
+	damage = XENO_DAMAGE_TIER_5
+	max_range = 4
+	accuracy = HIT_ACCURACY_TIER_MAX
+
+/datum/ammo/yautja/gauntlet_hook/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator)
+	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
+	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "chain", layer = BELOW_MOB_LAYER)
+	generated_projectile.overlays += hook_overlay
+
+/datum/ammo/yautja/gauntlet_hook/on_hit_mob(mob/target, obj/projectile/fired_proj)
+	shake_camera(target, 5, 0.1 SECONDS)
+	var/obj/effect/beam/chain_beam = fired_proj.firer.beam(target, "chain", 'icons/effects/beam.dmi', 10 SECONDS, 10)
+
+	var/image/chain_image = image('icons/effects/status_effects.dmi', "chain")
+	target.overlays += chain_image
+
+	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
+
+	target.apply_effect(0.5, ROOT)
+
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/atom/movable, throw_atom), fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+
+	qdel(chain_beam)
+
+/datum/ammo/yautja/gauntlet_hook/proc/remove_tail_overlay(mob/overlayed_mob, image/chain_image)
+	overlayed_mob.overlays -= chain_image

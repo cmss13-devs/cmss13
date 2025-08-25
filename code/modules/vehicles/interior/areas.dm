@@ -5,6 +5,7 @@
 	icon = 'icons/turf/areas_interiors.dmi'
 	icon_state = "interior"
 	base_lighting_alpha = 255
+	flags_area = AREA_NOTUNNEL
 
 	ambience_exterior = 'sound/ambience/vehicle_interior1.ogg'
 	sound_environment = SOUND_ENVIRONMENT_ROOM
@@ -27,6 +28,10 @@
 
 /area/interior/vehicle/van
 	name = "van interior"
+	icon_state = "van"
+
+/area/interior/vehicle/clf_van
+	name = "clf van interior"
 	icon_state = "van"
 
 /area/interior/vehicle/box_van

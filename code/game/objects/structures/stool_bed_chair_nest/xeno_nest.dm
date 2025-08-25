@@ -135,7 +135,7 @@
 	health = max(0, health - W.force)
 	playsound(loc, "alien_resin_break", 25)
 	user.animation_attack_on(src)
-	user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [W]!"), \
+	user.visible_message(SPAN_WARNING("\The [user] hits \the [src] with \the [W]!"),
 	SPAN_WARNING("You hit \the [src] with \the [W]!"))
 	healthcheck()
 
@@ -172,8 +172,8 @@
 		user.visible_message(SPAN_NOTICE("\The [user] starts pulling \the [buckled_mob] free from the resin binding them in place..."), SPAN_NOTICE("You start pulling \the [buckled_mob] free from the resin binding them in place..."))
 		if(!do_after(user, 8 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
 			return
-	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
-	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
+	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),
+	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 	if(ishuman(buckled_mob))
@@ -265,8 +265,8 @@
 	return TRUE
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
-	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"), \
-	SPAN_XENONOTICE("[user] drenches you in a foul-smelling resin, trapping you in [src]!"), \
+	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"),
+	SPAN_XENONOTICE("[user] drenches you in a foul-smelling resin, trapping you in [src]!"),
 	SPAN_NOTICE("You hear squelching."))
 	playsound(loc, "alien_resin_move", 50)
 
@@ -279,19 +279,26 @@
 	REMOVE_TRAIT(buckled_mob, TRAIT_NO_STRAY, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/buckled_human = buckled_mob
 
-	var/mob/dead/observer/G = ghost_of_buckled_mob
-	var/datum/mind/M = G?.mind
+	var/mob/dead/observer/ghost_mob = ghost_of_buckled_mob
+	var/datum/mind/ghost_mind = ghost_mob?.mind
 	ghost_of_buckled_mob = null
 
 	. = ..() //Very important that this comes after, since it deletes the nest and clears ghost_of_buckled_mob
 
-	if(!istype(buckled_human) || !istype(G) || !istype(M) || buckled_human.undefibbable || buckled_human.mind || M.original != buckled_human || buckled_human.chestburst)
+	if(!istype(buckled_human) || buckled_human.undefibbable || buckled_human.chestburst)
+		return
+
+	var/client/user_client = ghost_mob?.client || buckled_human.client
+	if(user_client?.prefs.toggles_flashing & FLASH_UNNEST)
+		window_flash(user_client)
+
+	if(!istype(ghost_mob) || !istype(ghost_mind) || buckled_human.mind || ghost_mind.original != buckled_human)
 		return // Zealous checking as most is handled by ghost code
-	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='byond://?src=\ref[G];reentercorpse=1'>click here</a>!)")))
-	sound_to(G, 'sound/effects/attackblob.ogg')
-	if(buckled_human.client?.prefs.toggles_flashing & FLASH_UNNEST)
-		window_flash(buckled_human.client)
-	G.can_reenter_corpse = TRUE
+
+	to_chat(ghost_mob, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='byond://?src=\ref[ghost_mob];reentercorpse=1'>click here</a>!)")))
+	sound_to(ghost_mob, 'sound/effects/attackblob.ogg')
+
+	ghost_mob.can_reenter_corpse = TRUE
 
 /obj/structure/bed/nest/ex_act(power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
@@ -320,7 +327,7 @@
 		return
 	if(M.a_intent == INTENT_HARM && !buckled_mob) //can't slash nest with an occupant.
 		M.animation_attack_on(src)
-		M.visible_message(SPAN_DANGER("\The [M] claws at \the [src]!"), \
+		M.visible_message(SPAN_DANGER("\The [M] claws at \the [src]!"),
 		SPAN_DANGER("We claw at \the [src]."))
 		playsound(loc, "alien_resin_break", 25)
 		health -= (M.melee_damage_upper + 25) //Beef up the damage a bit
@@ -331,7 +338,7 @@
 	return XENO_NONCOMBAT_ACTION
 
 /obj/structure/bed/nest/attack_animal(mob/living/M as mob)
-	M.visible_message(SPAN_DANGER("\The [M] tears at \the [src]!"), \
+	M.visible_message(SPAN_DANGER("\The [M] tears at \the [src]!"),
 		SPAN_DANGER("You tear at \the [src]."))
 	playsound(loc, "alien_resin_break", 25)
 	health -= 40

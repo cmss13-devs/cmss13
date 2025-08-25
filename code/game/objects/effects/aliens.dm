@@ -86,7 +86,8 @@
 						if(FF.firelevel > 3*fire_level_to_extinguish)
 							FF.firelevel -= 3*fire_level_to_extinguish
 							FF.update_flame()
-						else qdel(atm)
+						else
+							qdel(atm)
 					else
 						qdel(atm)
 			continue
@@ -102,6 +103,10 @@
 			if( !W.linked_hive || W.linked_hive.hivenumber != hivenumber )
 				W.acid_spray_act()
 				continue
+
+		if(istype(atm, /obj/item/explosive/mine/sharp))
+			var/obj/item/explosive/mine/sharp/sharp_mine = atm
+			sharp_mine.prime()
 
 		// Humans?
 		if(isliving(atm)) //For extinguishing mobs on fire
@@ -206,6 +211,7 @@
 		var/mob/living/carbon/human/hooman = carbone
 
 		var/damage = damage_amount
+		var/sizzle_sound = pick('sound/effects/sizzle1.ogg', 'sound/effects/sizzle2.ogg')
 
 		var/buffed_splash = FALSE
 		var/datum/effects/acid/acid_effect = locate() in hooman.effects_list
@@ -226,6 +232,7 @@
 		if (buffed_splash)
 			hooman.KnockDown(stun_duration)
 			to_chat(hooman, SPAN_HIGHDANGER("The acid coating on you starts bubbling and sizzling wildly!"))
+			playsound(hooman, sizzle_sound, 75, 1)
 		hooman.last_damage_data = cause_data
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "l_foot", 20)
 		hooman.apply_armoured_damage(damage * 0.25, ARMOR_BIO, BURN, "r_foot", 20)
@@ -306,6 +313,9 @@
 	var/barricade_damage = 40
 	var/in_weather = FALSE
 
+	/// Set when attempting to clear acid off of an item with extinguish_acid() to prevent an item being extinguished multiple times in a tick.
+	COOLDOWN_DECLARE(clear_acid)
+
 //Sentinel weakest acid
 /obj/effect/xenomorph/acid/weak
 	name = "weak acid"
@@ -331,6 +341,8 @@
 		ticks_left = 9
 	handle_weather()
 	RegisterSignal(SSdcs, COMSIG_GLOB_WEATHER_CHANGE, PROC_REF(handle_weather))
+	RegisterSignal(acid_t, COMSIG_ITEM_PICKUP, PROC_REF(attempt_pickup))
+	RegisterSignal(acid_t, COMSIG_MOVABLE_MOVED, PROC_REF(move_acid))
 	RegisterSignal(acid_t, COMSIG_PARENT_QDELETING, PROC_REF(cleanup))
 	START_PROCESSING(SSoldeffects, src)
 
@@ -342,6 +354,20 @@
 /obj/effect/xenomorph/acid/proc/cleanup()
 	SIGNAL_HANDLER
 	qdel(src)
+
+/// Called by COMSIG_MOVABLE_MOVED when an item with acid is moved
+/obj/effect/xenomorph/acid/proc/move_acid()
+	SIGNAL_HANDLER
+	var/turf/new_loc = get_turf(acid_t)
+	if(!new_loc)
+		qdel(src)
+		return
+	forceMove(new_loc)
+
+/// Called by COMSIG_ITEM_PICKUP when an item is attempted to be picked up but has acid
+/obj/effect/xenomorph/acid/proc/attempt_pickup()
+	SIGNAL_HANDLER
+	return COMSIG_ITEM_PICKUP_CANCELLED
 
 /obj/effect/xenomorph/acid/proc/handle_weather()
 	SIGNAL_HANDLER
@@ -397,16 +423,29 @@
 	remaining = return_delay
 
 	switch(ticks_left)
-		if(6) visible_message(SPAN_XENOWARNING("\The [acid_t] is barely holding up against the acid!"))
-		if(4) visible_message(SPAN_XENOWARNING("\The [acid_t]\s structure is being melted by the acid!"))
-		if(2) visible_message(SPAN_XENOWARNING("\The [acid_t] is struggling to withstand the acid!"))
-		if(0 to 1) visible_message(SPAN_XENOWARNING("\The [acid_t] begins to crumble under the acid!"))
+		if(6)
+			visible_message(SPAN_XENOWARNING("\The [acid_t] is barely holding up against the acid!"))
+		if(4)
+			visible_message(SPAN_XENOWARNING("\The [acid_t]\s structure is being melted by the acid!"))
+		if(2)
+			visible_message(SPAN_XENOWARNING("\The [acid_t] is struggling to withstand the acid!"))
+		if(0 to 1)
+			visible_message(SPAN_XENOWARNING("\The [acid_t] begins to crumble under the acid!"))
 
 /obj/effect/xenomorph/acid/proc/finish_melting()
-	visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 	playsound(src, "acid_hit", 25, TRUE)
 
+	if(istype(acid_t, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/acid_gun = acid_t
+		if(acid_gun.has_second_wind)
+			visible_message(SPAN_XENODANGER("[acid_t] loses its shine as the acid bubbles against it."))
+			acid_gun.has_second_wind = FALSE
+			playsound(src, 'sound/weapons/handling/gun_jam_click.ogg', 25, TRUE)
+			qdel(src)
+			return
+
 	if(istype(acid_t, /turf))
+		visible_message(SPAN_XENODANGER("[acid_t] is terribly damaged by the acid covering it!"))
 		if(istype(acid_t, /turf/closed/wall))
 			var/turf/closed/wall/wall = acid_t
 			new /obj/effect/acid_hole(wall)
@@ -416,20 +455,39 @@
 
 	else if (istype(acid_t, /obj/structure/girder))
 		var/obj/structure/girder/girder = acid_t
+		visible_message(SPAN_XENODANGER("[acid_t] collapses and falls in on itself as the acid melts its frame!"))
 		girder.dismantle()
 
 	else if(istype(acid_t, /obj/structure/window/framed))
 		var/obj/structure/window/framed/window = acid_t
+		visible_message(SPAN_XENODANGER("[acid_t] audibly cracks and fails as the acid bubbles against it!"))
 		window.deconstruct(disassembled = FALSE)
 
 	else if(istype(acid_t, /obj/structure/barricade))
+		visible_message(SPAN_XENODANGER("[acid_t] cracks and fragments as the acid sizzles against it!"))
 		pass() // Don't delete it, just damaj
 
 	else
 		for(var/mob/mob in acid_t)
 			mob.forceMove(loc)
+		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
 		qdel(acid_t)
 	qdel(src)
+
+/obj/effect/xenomorph/acid/extinguish_acid()
+	if(!COOLDOWN_FINISHED(src, clear_acid))
+		return
+	COOLDOWN_START(src, clear_acid, 1 SECONDS)
+
+	if(istype(acid_t, /obj/item/weapon/gun))
+		var/obj/item/weapon/gun/acid_gun = acid_t
+		if(!acid_gun.has_second_wind)
+			visible_message(SPAN_XENODANGER("[acid_t] seems unaffected and continues to deform!"))
+			return FALSE
+		else
+			visible_message(SPAN_XENODANGER("The sizzling on [acid_t] quiets as the acid is sprayed off of it!"))
+			qdel(src)
+			return TRUE
 
 /obj/effect/xenomorph/boiler_bombard
 	name = "???"

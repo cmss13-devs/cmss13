@@ -56,25 +56,25 @@
 /obj/structure/machinery/microwave/attackby(obj/item/O as obj, mob/user as mob)
 	if(broken > 0)
 		if(broken == 2 && HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
-			user.visible_message( \
-				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
-				SPAN_NOTICE("You start to fix part of the microwave.") \
+			user.visible_message(
+				SPAN_NOTICE("[user] starts to fix part of the microwave."),
+				SPAN_NOTICE("You start to fix part of the microwave.")
 			)
 			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message( \
-					SPAN_NOTICE("[user] fixes part of the microwave."), \
-					SPAN_NOTICE("You have fixed part of the microwave. Now use a wrench!") \
+				user.visible_message(
+					SPAN_NOTICE("[user] fixes part of the microwave."),
+					SPAN_NOTICE("You have fixed part of the microwave. Now use a wrench!")
 				)
 				src.broken = 1 // Fix it a bit
 		else if(src.broken == 1 && HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) // If it's broken and they're doing the wrench
-			user.visible_message( \
-				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
-				SPAN_NOTICE("You start to fix part of the microwave.") \
+			user.visible_message(
+				SPAN_NOTICE("[user] starts to fix part of the microwave."),
+				SPAN_NOTICE("You start to fix part of the microwave.")
 			)
 			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				user.visible_message( \
-					SPAN_NOTICE("[user] fixes the microwave."), \
-					SPAN_NOTICE("You have fixed the microwave.") \
+				user.visible_message(
+					SPAN_NOTICE("[user] fixes the microwave."),
+					SPAN_NOTICE("You have fixed the microwave.")
 				)
 				icon_state = "mw"
 				broken = 0 // Fix it!
@@ -91,14 +91,14 @@
 		return
 	else if(dirty==100) // The microwave is all dirty so can't be used!
 		if(istype(O, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
-			user.visible_message( \
-				SPAN_NOTICE("[user] starts to clean the microwave."), \
-				SPAN_NOTICE("You start to clean the microwave.") \
+			user.visible_message(
+				SPAN_NOTICE("[user] starts to clean the microwave."),
+				SPAN_NOTICE("You start to clean the microwave.")
 			)
 			if (do_after(user, 2 SECONDS * user.get_skill_duration_multiplier(SKILL_DOMESTIC), INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-				user.visible_message( \
-					SPAN_NOTICE("[user]  has cleaned  the microwave."), \
-					SPAN_NOTICE("You have cleaned the microwave.") \
+				user.visible_message(
+					SPAN_NOTICE("[user]  has cleaned  the microwave."),
+					SPAN_NOTICE("You have cleaned the microwave.")
 				)
 				dirty = 0 // It's clean!
 				broken = 0 // just to be sure
@@ -117,15 +117,15 @@
 			var/obj/item/stack/S = O
 			new O.type (src)
 			S.use(1)
-			user.visible_message( \
-				SPAN_NOTICE("[user] has added one of [O] to \the [src]."), \
+			user.visible_message(
+				SPAN_NOTICE("[user] has added one of [O] to \the [src]."),
 				SPAN_NOTICE("You add one of [O] to \the [src]."))
 		else
 		// user.before_take_item(O) //This just causes problems so far as I can tell. -Pete
 			if(user.drop_held_item())
 				O.forceMove(src)
-				user.visible_message( \
-					SPAN_NOTICE("[user] has added \the [O] to \the [src]."), \
+				user.visible_message(
+					SPAN_NOTICE("[user] has added \the [O] to \the [src]."),
 					SPAN_NOTICE("You add \the [O] to \the [src]."))
 	else if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks) || istype(O,/obj/item/reagent_container/food/condiment)) // TODO: typecache this
 		if (!O.reagents)

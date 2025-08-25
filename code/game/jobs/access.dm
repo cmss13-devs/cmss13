@@ -59,10 +59,13 @@
 /obj/proc/check_access(obj/item/I)
 	//These generations have been moved out of /obj/New() because they were slowing down the creation of objects that never even used the access system.
 	gen_access()
-	if(!islist(req_access)) return 1//something's very wrong
+	if(!islist(req_access))
+		return 1//something's very wrong
 	var/L[] = req_access
-	if(!length(L) && !LAZYLEN(req_one_access)) return 1//no requirements
-	if(!I) return
+	if(!length(L) && !LAZYLEN(req_one_access))
+		return 1//no requirements
+	if(!I)
+		return
 
 	var/list/A = I.GetAccess()
 	for(var/i in req_access)
@@ -78,18 +81,24 @@
 
 /obj/proc/check_access_list(L[])
 	gen_access()
-	if(!req_access  && !req_one_access) return 1
-	if(!islist(req_access)) return 1
+	if(!req_access  && !req_one_access)
+		return 1
+	if(!islist(req_access))
+		return 1
 	if(!length(req_access) && !islist(req_one_access))
 		return TRUE
-	if(!length(req_access) && !LAZYLEN(req_one_access)) return 1
-	if(!islist(L)) return
+	if(!length(req_access) && !LAZYLEN(req_one_access))
+		return 1
+	if(!islist(L))
+		return
 	var/i
 	for(i in req_access)
-		if(!(i in L)) return //doesn't have this access
+		if(!(i in L))
+			return //doesn't have this access
 	if(LAZYLEN(req_one_access))
 		for(i in req_one_access)
-			if(i in L) return 1//has an access from the single access list
+			if(i in L)
+				return 1//has an access from the single access list
 		return
 	return 1
 
@@ -101,7 +110,7 @@
 		if(ACCESS_LIST_MARINE_MAIN)
 			return list(
 				ACCESS_MARINE_SENIOR,
-				ACCESS_MARINE_DATABASE,
+				ACCESS_MARINE_GENERAL,
 				ACCESS_MARINE_COMMAND,
 				ACCESS_MARINE_CMP,
 				ACCESS_MARINE_BRIG,
@@ -135,12 +144,15 @@
 				ACCESS_MARINE_SYNTH,
 				ACCESS_MARINE_ASO,
 				ACCESS_MARINE_CHAPLAIN,
+				ACCESS_MARINE_FIELD_DOC,
 				ACCESS_PRESS,
+				ACCESS_MARINE_DATABASE,
 			)
 
 		if(ACCESS_LIST_MARINE_ALL)
 			return list(
 				ACCESS_MARINE_CO,
+				ACCESS_MARINE_DATABASE_ADMIN,
 				ACCESS_MARINE_AI,
 				ACCESS_MARINE_AI_TEMP,
 			) + get_access(ACCESS_LIST_MARINE_MAIN)
@@ -308,7 +320,7 @@
 		if(1)//Security
 			return list(ACCESS_MARINE_CMP, ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY)
 		if(2)//Medbay
-			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY)
+			return list(ACCESS_MARINE_CMO, ACCESS_MARINE_FIELD_DOC, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_CHEMISTRY)
 		if(3)//Research
 			return list(ACCESS_MARINE_RESEARCH, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 		if(4)//Engineering
@@ -316,8 +328,9 @@
 		if(5)//Command
 			return list(
 				ACCESS_MARINE_SENIOR,
-				ACCESS_MARINE_DATABASE,
 				ACCESS_MARINE_COMMAND,
+				ACCESS_MARINE_GENERAL,
+				ACCESS_MARINE_DATABASE,
 				ACCESS_MARINE_RO,
 				ACCESS_MARINE_CARGO,
 				ACCESS_MARINE_SEA,
@@ -378,6 +391,8 @@
 			return "Armory"
 		if(ACCESS_MARINE_CMO)
 			return "CMO's Office"
+		if(ACCESS_MARINE_FIELD_DOC)
+			return "Field Doctor Supplies"
 		if(ACCESS_MARINE_MEDBAY)
 			return "[MAIN_SHIP_NAME] Medbay"
 		if(ACCESS_MARINE_RESEARCH)
@@ -394,6 +409,10 @@
 			return "[MAIN_SHIP_NAME] Engineering"
 		if(ACCESS_MARINE_OT)
 			return "[MAIN_SHIP_NAME] Ordnance Workshop"
+		if(ACCESS_MARINE_GENERAL)
+			return "[MAIN_SHIP_NAME] General Access"
+		if(ACCESS_MARINE_DATABASE)
+			return "[MAIN_SHIP_NAME] Database Access"
 		if(ACCESS_MARINE_SENIOR)
 			return "[MAIN_SHIP_NAME] Senior Command"
 		if(ACCESS_MARINE_CO)

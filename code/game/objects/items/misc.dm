@@ -211,7 +211,7 @@
 		to_chat(user, SPAN_NOTICE("[src] already has something inside it."))
 		return
 
-	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",\
+	user.visible_message("[user] puts [I] into [src]", "You put [I] inside [src].",
 	"You hear a rustle as someone puts something into a plastic bag.")
 
 	icon_state = "evidence"
@@ -242,7 +242,7 @@
 
 	if(length(contents))
 		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\
+		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",
 		"You hear someone rustle around in a plastic bag, and remove something.")
 		overlays.Cut() //remove the overlays
 
@@ -297,7 +297,6 @@
 	icon_state = "digital_clock"
 	force = 3
 	throwforce = 2
-	throw_speed = 1
 	throw_range = 4
 	w_class = SIZE_SMALL
 

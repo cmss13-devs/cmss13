@@ -32,7 +32,6 @@
 
 	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
-	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
 	auto_retrieval_slot = WEAR_J_STORE
 	start_semiauto = FALSE
 	start_automatic = TRUE
@@ -48,7 +47,6 @@
 		/datum/action/item_action/smartgun/toggle_recoil_compensation,
 	)
 	attachable_allowed = list(
-		/obj/item/attachable/smartbarrel,
 		/obj/item/attachable/flashlight,
 	)
 
@@ -159,7 +157,7 @@
 		. += "A small gauge on [battery] reads: Power: [battery.power_cell.charge] / [battery.power_cell.maxcharge]."
 
 /obj/item/weapon/gun/smartgun/clicked(mob/user, list/mods)
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		if(!locate(src) in list(user.get_active_hand(), user.get_inactive_hand()))
@@ -372,10 +370,11 @@
 
 //more general procs
 
-/obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user)
+/obj/item/weapon/gun/smartgun/proc/toggle_frontline_mode(mob/user, silent)
 	to_chat(user, "[icon2html(src, user)] You [frontline_enabled? "<B>disable</b>" : "<B>enable</b>"] [src]'s frontline mode. You will now [frontline_enabled ? "be able to shoot through friendlies" : "deal increased damage but be unable to shoot through friendlies"].")
-	balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
-	playsound(loc,'sound/machines/click.ogg', 25, 1)
+	if(!silent)
+		balloon_alert(user, "frontline mode [frontline_enabled ? "disabled" : "enabled"]")
+		playsound(loc,'sound/machines/click.ogg', 25, 1)
 	frontline_enabled = !frontline_enabled
 ///Determines the color of the muzzle flash, depending on whether frontline mode is enabled or not.
 	if (!frontline_enabled)
@@ -558,9 +557,11 @@
 	var/turf/T
 
 	for(var/mob/living/M in orange(range, user)) // orange allows sentry to fire through gas and darkness
-		if((M.stat & DEAD)) continue // No dead or non living.
+		if((M.stat & DEAD))
+			continue // No dead or non living.
 
-		if(M.get_target_lock(user.faction_group)) continue
+		if(M.get_target_lock(user.faction_group))
+			continue
 		if(angle > 0)
 			var/opp
 			var/adj
@@ -580,7 +581,8 @@
 					adj = user.x-M.x
 
 			var/r = 9999
-			if(adj != 0) r = abs(opp/adj)
+			if(adj != 0)
+				r = abs(opp/adj)
 			var/angledegree = arcsin(r/sqrt(1+(r*r)))
 			if(adj < 0)
 				continue
@@ -729,11 +731,10 @@
 // action end \\
 
 /obj/item/weapon/gun/smartgun/co/pickup(user)
+	. = ..()
 	if(!linked_human)
 		src.name_after_co(user, src)
 		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You pick up \the [src], registering yourself as its owner."))
-	..()
-
 
 /obj/item/weapon/gun/smartgun/co/proc/name_after_co(mob/living/carbon/human/H, obj/item/weapon/gun/smartgun/co/I)
 	linked_human = H
@@ -777,18 +778,14 @@
 	name = "\improper M56T 'Terminator' smartgun"
 	desc = "The actual firearm in the 4-piece M56T Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
 
-/obj/item/weapon/gun/smartgun/dirty/elite/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_WY_DEATHSQUAD
-
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
-	set_burst_amount(BURST_AMOUNT_TIER_5)
-	set_burst_delay(FIRE_DELAY_TIER_12)
+	set_burst_amount(BURST_AMOUNT_TIER_3)
+	set_burst_delay(FIRE_DELAY_TIER_SMG)
 	if(!recoil_compensation)
 		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-	set_fire_delay(FIRE_DELAY_TIER_12)
+	set_fire_delay(FIRE_DELAY_TIER_SMG)
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_10
 	fa_max_scatter = SCATTER_AMOUNT_NONE
 
@@ -850,8 +847,29 @@
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/machineguns.dmi'
 	icon_state = "magsg"
 	item_state = "magsg"
-	starting_attachment_types = list(/obj/item/attachable/l56a2_smartgun)
 
 /obj/item/weapon/gun/smartgun/rmc/Initialize(mapload, ...)
 	. = ..()
 	MD.iff_signal = FACTION_TWE
+
+
+//  Solar devils SG, frontline mode only
+
+/obj/item/weapon/gun/smartgun/pve
+	desc = "The actual firearm in the 4-piece M56B Smartgun System. This is a variant used by the Solar Devils Batallion, utilizing a 'frontline only' IFF system that refuses to fire if a friendly would be hit.\nYou may toggle firing restrictions by using a special action.\nAlt-click it to open the feed cover and allow for reloading."
+	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_ammo_type,
+		/datum/action/item_action/smartgun/toggle_auto_fire,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
+
+/obj/item/weapon/gun/smartgun/pve/Initialize(mapload, ...)
+	. = ..()
+	toggle_frontline_mode(null, TRUE)
+
+/obj/item/weapon/gun/smartgun/pve/set_gun_config_values()
+	..()
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_3

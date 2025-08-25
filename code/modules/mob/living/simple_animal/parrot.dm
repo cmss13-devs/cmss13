@@ -191,7 +191,8 @@
 //Humans, monkeys, aliens
 /mob/living/simple_animal/parrot/attack_hand(mob/living/carbon/M as mob)
 	..()
-	if(client) return
+	if(client)
+		return
 	if(!stat && M.a_intent == INTENT_HARM)
 
 		icon_state = "parrot_fly" //It is going to be flying regardless of whether it flees or attacks
@@ -211,7 +212,8 @@
 
 //Simple animals
 /mob/living/simple_animal/parrot/attack_animal(mob/living/M as mob)
-	if(client) return
+	if(client)
+		return
 
 
 	if(parrot_state == PARROT_PERCH)
@@ -267,7 +269,7 @@
 	if(client || stat)
 		return //Lets not force players or dead/incap parrots to move
 
-	if(!isturf(src.loc) || !(mobility_flags & MOBILITY_MOVE) || buckled)
+	if(!isturf(loc) || !(mobility_flags & MOBILITY_MOVE) || buckled)
 		return //If it can't move, dont let it move. (The buckled check probably isn't necessary thanks to canmove)
 
 
@@ -695,7 +697,7 @@
 		message = copytext(message,2)
 
 	if(length(message) >= 2)
-		var/channel_prefix = copytext(message, 1 ,3)
+		var/channel_prefix = lowertext(copytext(message, 1, 3))
 		message_mode = GLOB.department_radio_keys[channel_prefix]
 
 	if(copytext(message,1,2) == ":")

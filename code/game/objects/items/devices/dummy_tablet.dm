@@ -88,7 +88,7 @@
 	dat += "<BR>\[ <A href='byond://?src=\ref[src];operation=reset'>Reset</A> \]"
 	dat += "<BR><hr>"
 
-	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", window_options="size=400x500")
+	show_browser(user, dat, "Professor DUMMY Control Tablet", "dummytablet", width = 400, height = 500)
 	onclose(user, "dummytablet")
 	updateDialog()
 	return
@@ -142,7 +142,8 @@
 
 
 /obj/item/device/professor_dummy_tablet/Topic(href, href_list)
-	if(..()) return FALSE
+	if(..())
+		return FALSE
 
 	if (!is_adjacent_to_dummy(usr))
 		return FALSE

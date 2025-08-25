@@ -223,7 +223,8 @@
 
 	else if(istype(O, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/D = O
-		if(D.isSwitchingStates) return
+		if(D.isSwitchingStates)
+			return
 		if(!D.density || user.action_busy || user.a_intent == INTENT_HARM)
 			return
 		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
@@ -290,7 +291,7 @@
 	vision_flags = SEE_MOBS
 	darkness_view = 7
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 
 /obj/item/storage/fancy/blackgoo

@@ -4,7 +4,6 @@
 
 /obj/item/reagent_container/glass
 	name = " "
-	var/base_name = " "
 	desc = " "
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
@@ -16,9 +15,12 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
-	var/splashable = TRUE
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
+	var/splashable = TRUE
+	var/has_lid = TRUE
+	var/base_name = " "
+
 
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,
@@ -51,6 +53,7 @@
 /obj/item/reagent_container/glass/Initialize()
 	. = ..()
 	base_name = name
+	ADD_TRAIT(src, TRAIT_REACTS_UNSAFELY, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/glass/get_examine_text(mob/user)
 	. = ..()
@@ -61,6 +64,8 @@
 
 /obj/item/reagent_container/glass/attack_self()
 	..()
+	if(!has_lid)
+		return
 	if(splashable)
 		if(is_open_container())
 			to_chat(usr, SPAN_NOTICE("You put the lid on \the [src]."))
@@ -168,30 +173,35 @@
 			reagents.clear_reagents()
 		return
 
-/obj/item/reagent_container/glass/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_container/glass/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
-		if(labelcomponent)
+		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
+		if(labelcomponent && labelcomponent.has_label())
 			prior_label_text = labelcomponent.label_name
-		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
-		if(tmp_label == "" || !tmp_label)
-			if(labelcomponent)
-				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."), \
-				SPAN_NOTICE("You remove the label from \the [src]."))
-				return
-			else
-				return
+		var/tmp_label = tgui_input_text(user, "Enter a label for [src] (or nothing to remove)", "Label", prior_label_text, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state)
+		if(isnull(tmp_label))
+			return // Canceled
+		if(!tmp_label)
+			if(prior_label_text)
+				log_admin("[key_name(usr)] has removed label from [src].")
+				user.visible_message(SPAN_NOTICE("[user] removes label from [src]."),
+									SPAN_NOTICE("You remove the label from [src]."))
+				labelcomponent.clear_label()
+			return
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
-		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."), \
-			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
-			AddComponent(/datum/component/label, tmp_label)
-			playsound(src, "paper_writing", 15, TRUE)
-	else
-		. = ..()
+			return
+		if(prior_label_text == tmp_label)
+			to_chat(user, SPAN_WARNING("The label already says \"[tmp_label]\"."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
+		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+		AddComponent(/datum/component/label, tmp_label)
+		playsound(src, "paper_writing", 15, TRUE)
+		return
+
+	return ..()
 
 /obj/item/reagent_container/glass/beaker
 	name = "beaker"
@@ -206,7 +216,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/dropped(mob/user)
@@ -225,12 +235,18 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0) filling.icon_state = null
-			if(1 to 20) filling.icon_state = "[icon_state]-20"
-			if(21 to 40) filling.icon_state = "[icon_state]-40"
-			if(41 to 60) filling.icon_state = "[icon_state]-60"
-			if(61 to 80) filling.icon_state = "[icon_state]-80"
-			if(81 to INFINITY) filling.icon_state = "[icon_state]-100"
+			if(0)
+				filling.icon_state = null
+			if(1 to 20)
+				filling.icon_state = "[icon_state]-20"
+			if(21 to 40)
+				filling.icon_state = "[icon_state]-40"
+			if(41 to 60)
+				filling.icon_state = "[icon_state]-60"
+			if(61 to 80)
+				filling.icon_state = "[icon_state]-80"
+			if(81 to INFINITY)
+				filling.icon_state = "[icon_state]-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -298,7 +314,8 @@
 	set name = "Flush Tank"
 	set src in usr
 
-	if(usr.is_mob_incapacitated()) return
+	if(usr.is_mob_incapacitated())
+		return
 	if(src.reagents.total_volume == 0)
 		to_chat(usr, SPAN_WARNING("It's already empty!"))
 		return
@@ -314,8 +331,10 @@
 		var/image/filling = image('icons/obj/items/reagentfillings.dmi', src, "[icon_state]10")
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		var/round_percent = 0
-		if(percent > 24) round_percent = round(percent, 25)
-		else round_percent = 10
+		if(percent > 24)
+			round_percent = round(percent, 25)
+		else
+			round_percent = 10
 		filling.icon_state = "[icon_state][round_percent]"
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -374,6 +393,23 @@
 	ground_offset_x = 9
 	ground_offset_y = 8
 
+
+/obj/item/reagent_container/glass/beaker/vial/random
+	var/tier
+
+/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
+	. = ..()
+	var/random_chem
+	if(tier)
+		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
+	else
+		random_chem = pick(GLOB.chemical_gen_classes_list["C5"])
+	if(prob(4))
+		random_chem = "xenogenic"
+	if(random_chem)
+		reagents.add_reagent(random_chem, 30)
+		update_icon()
+
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"
 
@@ -397,34 +433,6 @@
 	. = ..()
 	reagents.add_reagent("chloralhydrate", 30)
 	update_icon()
-
-/obj/item/reagent_container/glass/beaker/vial/random
-	var/tier
-
-/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
-	. = ..()
-	var/random_chem
-	if(tier)
-		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
-	else
-		random_chem = pick( prob(3);pick(GLOB.chemical_gen_classes_list["C1"]),\
-							prob(5);pick(GLOB.chemical_gen_classes_list["C2"]),\
-							prob(7);pick(GLOB.chemical_gen_classes_list["C3"]),\
-							prob(10);pick(GLOB.chemical_gen_classes_list["C4"]),\
-							prob(15);pick(GLOB.chemical_gen_classes_list["C5"]),\
-							prob(25);pick(GLOB.chemical_gen_classes_list["T1"]),\
-							prob(15);pick(GLOB.chemical_gen_classes_list["T2"]),\
-							prob(10);pick(GLOB.chemical_gen_classes_list["T3"]),\
-							prob(5);pick(GLOB.chemical_gen_classes_list["T4"]),\
-							prob(15);"")
-	if(random_chem)
-		reagents.add_reagent(random_chem, 30)
-		update_icon()
-
-/obj/item/reagent_container/glass/beaker/vial/random/good/Initialize()
-	tier = pick("C5","T4")
-	. = ..()
-
 /obj/item/reagent_container/glass/beaker/cryoxadone
 	name = "cryoxadone beaker"
 
@@ -620,7 +628,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bucket/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/bucket/dropped(mob/user)
@@ -639,9 +647,12 @@
 
 		var/percent = floor((reagents.total_volume / volume) * 100)
 		switch(percent)
-			if(0 to 33) filling.icon_state = "[icon_state]-00-33"
-			if(34 to 65) filling.icon_state = "[icon_state]-34-65"
-			if(66 to INFINITY) filling.icon_state = "[icon_state]-66-100"
+			if(0 to 33)
+				filling.icon_state = "[icon_state]-00-33"
+			if(34 to 65)
+				filling.icon_state = "[icon_state]-34-65"
+			if(66 to INFINITY)
+				filling.icon_state = "[icon_state]-66-100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += filling
@@ -683,6 +694,7 @@
 	can_be_placed_into = null
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
+	has_lid = FALSE
 
 /obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)

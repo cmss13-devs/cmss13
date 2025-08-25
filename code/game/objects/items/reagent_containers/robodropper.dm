@@ -10,7 +10,8 @@
 	var/filled = 0
 
 /obj/item/reagent_container/robodropper/afterattack(obj/target, mob/user , flag)
-	if(!target.reagents) return
+	if(!target.reagents)
+		return
 
 	if(filled)
 

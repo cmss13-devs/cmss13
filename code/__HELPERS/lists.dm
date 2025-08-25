@@ -148,8 +148,10 @@
 		var/i
 		while(length(L_o))
 			i = pick(L_o)
-			if(!ref) L_n += i
-			else L_n[i] = L_o[i]
+			if(!ref)
+				L_n += i
+			else
+				L_n[i] = L_o[i]
 			L_o -= i
 
 //Return a list with no duplicate entries

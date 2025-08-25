@@ -67,6 +67,11 @@
 	path = /obj/item/tool/wrench
 	category = AUTOLATHE_CATEGORY_TOOLS
 
+/datum/autolathe/recipe/lightreplacer
+	name = "light replacer"
+	path = /obj/item/device/lightreplacer/empty
+	category = AUTOLATHE_CATEGORY_TOOLS
+
 /datum/autolathe/recipe/mop
 	name = "mop"
 	path = /obj/item/tool/mop
@@ -492,3 +497,7 @@
 	name = "Pressurized Canister"
 	path = /obj/item/reagent_container/glass/pressurized_canister
 	category = AUTOLATHE_CATEGORY_MEDICAL_CONTAINERS
+
+/datum/autolathe/recipe/medilathe/research_glasses
+	name = "Reagent scanner HUD goggles"
+	path = /obj/item/clothing/glasses/science

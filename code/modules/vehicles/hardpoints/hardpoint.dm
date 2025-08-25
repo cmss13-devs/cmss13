@@ -716,7 +716,8 @@
 	owner.update_icon()
 
 /obj/item/hardpoint/proc/muzzle_flash(angle)
-	if(isnull(angle)) return
+	if(isnull(angle))
+		return
 
 	// The +48 and +64 centers the muzzle flash
 	var/muzzle_flash_x = muzzle_flash_pos["[dir]"][1] + 48

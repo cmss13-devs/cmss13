@@ -57,7 +57,6 @@
 		reducible_tally += wear_suit.slowdown
 		wear_slowdown_reduction += wear_suit.movement_compensation
 
-	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
 	if(bodytemperature < species.cold_level_1 && !isyautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing
@@ -68,6 +67,8 @@
 
 	if(shield_slowdown)
 		reducible_tally += shield_slowdown
+
+	reducible_tally = max(-0.1, reducible_tally + reagent_move_delay_modifier) //MST stim speeds up from slowdowns
 
 	//Compile reducible tally and send it to total tally. Cannot go more than 1 units faster from the reducible tally!
 	. += max(-0.7, reducible_tally)
@@ -103,13 +104,15 @@
 
 /mob/living/carbon/human/Process_Spacemove(check_drift = 0)
 	//Can we act
-	if(is_mob_restrained()) return 0
+	if(is_mob_restrained())
+		return 0
 
 // if(!check_drift && J.allow_thrust(0.01, src))
 // return 1
 
 	//If no working jetpack then use the other checks
-	if(..()) return 1
+	if(..())
+		return 1
 	return 0
 
 
@@ -127,7 +130,8 @@
 		prob_slip = 0
 
 	//Check hands and mod slip
-	if(!l_hand) prob_slip -= 2
+	if(!l_hand)
+		prob_slip -= 2
 	else if(l_hand.w_class <= SIZE_SMALL) prob_slip--
 	if (!r_hand) prob_slip -= 2
 	else if(r_hand.w_class <= SIZE_SMALL) prob_slip--

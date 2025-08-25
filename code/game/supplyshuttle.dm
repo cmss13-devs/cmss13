@@ -28,6 +28,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 /area/supply/station/upp
 	name = "Supply Shuttle UPP"
 
+
+
 /area/supply/dock
 	name = "Supply Shuttle"
 	icon_state = "shuttle3"
@@ -82,7 +84,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		return
 
 	collide_message_busy = world.time + 3 SECONDS
-	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."), \
+	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."),
 	SPAN_NOTICE("You try to go through \the [src]."))
 
 	if(do_after(C, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
@@ -329,6 +331,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		if("keyboard")
 			playsound(src, "keyboard", 15, 1)
 
+/obj/structure/machinery/computer/supply/ui_status(mob/user)
+	. = ..()
+	if(inoperable(MAINT))
+		return UI_CLOSE
+
 /obj/structure/machinery/computer/supply/proc/print_form(datum/supply_order/order)
 	var/list/accesses = list()
 
@@ -429,6 +436,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	req_access = list(ACCESS_MARINE_CARGO)
 	var/x_supply = 0
 	var/y_supply = 0
+	var/z_supply = 0
 	var/datum/squad/current_squad = null
 	var/drop_cooldown = 1 MINUTES
 	var/can_pick_squad = TRUE
@@ -477,6 +485,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	data["worldtime"] = world.time
 	data["x_offset"] = x_supply
 	data["y_offset"] = y_supply
+	data["z_offset"] = z_supply
 	data["loaded"] = loaded_crate
 	if(loaded_crate)
 		data["crate_name"] = loaded_crate.name
@@ -493,16 +502,23 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	switch(action)
 		if("set_x")
 			var/new_x = text2num(params["set_x"])
-			if(!new_x)
+			if(isnull(new_x))
 				return
 			x_supply = new_x
 			. = TRUE
 
 		if("set_y")
 			var/new_y = text2num(params["set_y"])
-			if(!new_y)
+			if(isnull(new_y))
 				return
 			y_supply = new_y
+			. = TRUE
+
+		if("set_z")
+			var/new_z = text2num(params["set_z"])
+			if(isnull(new_z))
+				return
+			z_supply = new_z
 			. = TRUE
 
 		if("pick_squad")
@@ -559,11 +575,11 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
-	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
-	if(length(z_coord))
-		z_coord = z_coord[1]
-	else
-		z_coord = 1 // fuck it
+	var/z_coord = deobfuscate_z(z_supply)
+
+	if(!is_ground_level(z_coord))
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The target zone appears to be out of bounds. Please check coordinates.")]")
+		return
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
@@ -920,7 +936,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(maul_human), movable_atom), timer)
 
 		// Delete everything else.
-		else qdel(movable_atom)
+		else
+			qdel(movable_atom)
 
 	if(screams)
 		for(var/atom/computer as anything in bound_supply_computer_list)
@@ -1020,7 +1037,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if(scramble)
 		paper_info = stars_decode_html(info)
 	// Tossing ref in widow id as this allows us to read multiple manifests at same time
-	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
+	show_browser(user, "<BODY class='paper'>[paper_info][stamps]</BODY>", null, "manifest\ref[src]", width = 550, height = 650)
 	onclose(user, "manifest\ref[src]")
 
 /obj/item/paper/manifest/proc/generate_contents()
@@ -1074,7 +1091,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	return attack_hand(user)
 
 /obj/structure/machinery/computer/supply/asrs/attack_hand(mob/user as mob)
-	if(!is_mainship_level(z)) return
+	if(!is_mainship_level(z))
+		return
 	if(!allowed(user))
 		to_chat(user, SPAN_DANGER("Access Denied."))
 		return
@@ -1304,7 +1322,8 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
-	if(!frequency) return
+	if(!frequency)
+		return
 
 	var/datum/signal/status_signal = new
 	status_signal.source = src
@@ -1406,6 +1425,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	post_signal("supply_vehicle")
 
 	var/dat = ""
+	var/turf/upper_turf = get_turf(SSshuttle.getDock("almayer vehicle"))
 
 	if(!SSshuttle.vehicle_elevator)
 		return
@@ -1414,7 +1434,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 	if (SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 		dat += "Moving"
 	else
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
+		if(SSshuttle.vehicle_elevator.z == upper_turf.z)
 			dat += "Raised"
 			if(!spent)
 				dat += "<br>\[<a href='byond://?src=\ref[src];lower_elevator=1'>Lower</a>\]"
@@ -1435,16 +1455,23 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 			else
 				dat += "<a href='byond://?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
 
-	show_browser(H, dat, asrs_name, "computer", "size=575x450")
+	show_browser(H, dat, asrs_name, "computer", width = 575, height = 450)
 
 /obj/structure/machinery/computer/supply/asrs/vehicle/Topic(href, href_list)
 	. = ..()
+
+	var/turf/upper_turf = get_turf(SSshuttle.getDock("almayer vehicle"))
+	var/turf/lower_turf = get_turf(SSshuttle.getDock("adminlevel vehicle"))
+
 	if(.)
 		return
+
 	if(!is_mainship_level(z))
 		return
+
 	if(spent)
 		return
+
 	if(!linked_supply_controller)
 		world.log << "## ERROR: Eek. The linked_supply_controller controller datum is missing somehow."
 		return
@@ -1457,10 +1484,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])
-		if(is_mainship_level(SSshuttle.vehicle_elevator.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
+		if((SSshuttle.vehicle_elevator.z == upper_turf.z) || SSshuttle.vehicle_elevator.mode != SHUTTLE_IDLE)
 			to_chat(usr, SPAN_WARNING("The elevator needs to be in the cargo bay dock to call a vehicle up!"))
 			return
-		// dunno why the +1 is needed but the vehicles spawn off-center
+
 		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
 
 		var/obj/vehicle/multitile/ordered_vehicle
@@ -1471,6 +1498,7 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 		if(VO?.has_vehicle_lock())
 			return
+
 		spent = TRUE
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
@@ -1481,6 +1509,10 @@ GLOBAL_DATUM_INIT(supply_controller, /datum/controller/supply, new())
 
 	else if(href_list["lower_elevator"])
 		if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
+			return
+
+		if(SSshuttle.vehicle_elevator.z == lower_turf.z)
+			to_chat(usr, SPAN_WARNING("The elevator is already lowered!"))
 			return
 
 		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("adminlevel vehicle"))

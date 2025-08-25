@@ -96,7 +96,8 @@
 	. = ..()
 
 	. += ""
-	. += "Security Level: [uppertext(get_security_level())]"
+	if(ishumansynth_strict(src)) // So that yautja or other species dont see the ships security alert
+		. += "Security Level: [uppertext(get_security_level())]"
 
 	if(species?.has_species_tab_items)
 		var/list/species_tab_items = species.get_status_tab_items(src)
@@ -137,8 +138,6 @@
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
 
-
-
 	var/b_loss = 0
 	var/f_loss = 0
 
@@ -155,6 +154,10 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 30, /datum/ammo/bullet/shrapnel/light/human/var1, last_damage_data)
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, last_damage_data)
+		return
+
+	if(HAS_TRAIT(src, TRAIT_HAULED)) // We still probably wanna gib them as well if they were supposed to be gibbed by the explosion in the first place
+		visible_message(SPAN_WARNING("[src] is shielded from the blast!"), SPAN_WARNING("You are shielded from the blast!"))
 		return
 
 	if(!HAS_TRAIT(src, TRAIT_EAR_PROTECTION))
@@ -265,7 +268,8 @@
 
 
 /mob/living/carbon/human/proc/implant_loyalty(mob/living/carbon/human/M, override = FALSE) // Won't override by default.
-	if(!CONFIG_GET(flag/use_loyalty_implants) && !override) return // Nuh-uh.
+	if(!CONFIG_GET(flag/use_loyalty_implants) && !override)
+		return // Nuh-uh.
 
 	var/obj/item/implant/loyalty/L = new/obj/item/implant/loyalty(M)
 	L.imp_in = M
@@ -387,7 +391,8 @@
 //Removed the horrible safety parameter. It was only being used by ninja code anyways.
 //Now checks siemens_coefficient of the affected area by default
 /mob/living/carbon/human/electrocute_act(shock_damage, obj/source, base_siemens_coeff = 1.0, def_zone = null)
-	if(status_flags & GODMODE) return FALSE //godmode
+	if(status_flags & GODMODE)
+		return FALSE //godmode
 
 	if(!def_zone)
 		def_zone = pick("l_hand", "r_hand")
@@ -670,11 +675,11 @@
 						for(var/datum/data/record/R as anything in GLOB.data_core.medical)
 							if(R.fields["id"] == E.fields["id"])
 								if(hasHUD(usr,"medical"))
-									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["b_type"]]")
-									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
-									to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
-									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
-									to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
+									to_chat(usr, "<b>Name:</b> [R.fields["name"]] <b>Blood Type:</b> [R.fields["blood_type"]]")
+									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["minor_disability"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["minor_disability_details"]]")
+									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["major_disability"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["major_disability_details"]]")
 									to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
 									to_chat(usr, "<a href='byond://?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
 									read = 1
@@ -831,6 +836,9 @@
 		holo_card_color = null
 		to_chat(user, SPAN_NOTICE("You remove the holo card on [src]."))
 	else if(newcolor != holo_card_color)
+		if(newcolor == "black" && is_revivable() && check_tod())
+			to_chat(user, SPAN_WARNING("They are yet saveable."))
+			return
 		holo_card_color = newcolor
 		to_chat(user, SPAN_NOTICE("You add a [newcolor] holo card on [src]."))
 	hud_set_holocard()
@@ -853,34 +861,35 @@
 /mob/living/carbon/human/ui_state(mob/user)
 	return GLOB.not_incapacitated_state
 
-///get_eye_protection()
-///Returns a number between -1 to 2
+/// Gets a value between EYE_PROTECTION_NEGATIVE (-1) and EYE_PROTECTION_WELDING (3) based on whether there are eyes
+/// to blind or how much clothing protects them
 /mob/living/carbon/human/get_eye_protection()
-	var/number = 0
+	var/number = EYE_PROTECTION_NONE
 
 	if(species && !species.has_organ["eyes"])
 		return EYE_PROTECTION_WELDING //No eyes, can't hurt them.
 
 	if(!internal_organs_by_name)
 		return EYE_PROTECTION_WELDING
-	var/datum/internal_organ/eyes/I = internal_organs_by_name["eyes"]
-	if(I)
-		if(I.cut_away)
+	var/datum/internal_organ/eyes/eyes_organ = internal_organs_by_name["eyes"]
+	if(eyes_organ)
+		if(eyes_organ.cut_away)
 			return EYE_PROTECTION_WELDING
-		if(I.robotic == ORGAN_ROBOT)
+		if(eyes_organ.robotic == ORGAN_ROBOT)
 			return EYE_PROTECTION_WELDING
 	else
 		return EYE_PROTECTION_WELDING
 
 	if(istype(head, /obj/item/clothing))
-		var/obj/item/clothing/C = head
-		number += C.eye_protection
+		var/obj/item/clothing/cloth_item = head
+		number += cloth_item.eye_protection
 	if(istype(wear_mask, /obj/item/clothing))
-		number += wear_mask.eye_protection
+		var/obj/item/clothing/cloth_item = wear_mask
+		number += cloth_item.eye_protection
 	if(glasses)
 		number += glasses.eye_protection
 
-	return number
+	return clamp(number, EYE_PROTECTION_NEGATIVE, EYE_PROTECTION_WELDING)
 
 
 /mob/living/carbon/human/abiotic(full_body = 0)
@@ -1007,6 +1016,9 @@
 			embedded.on_embedded_movement(src)
 		else if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
+			embedded.on_embedded_movement(src)
+		else if(istype(W, /obj/item/sharp))
+			var/obj/item/sharp/embedded = W
 			embedded.on_embedded_movement(src)
 		// Check if its a sharp weapon
 		else if(is_sharp(W))
@@ -1221,6 +1233,12 @@
 			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
 				flavor_text += flavor_texts[T]
 				flavor_text += "\n\n"
+
+	// Variable inserts
+	flavor_text = replacetext(flavor_text, "%bloodtype%", blood_type)
+	flavor_text = replacetext(flavor_text, "%rank%", get_paygrade())
+	flavor_text = replacetext(flavor_text, "%name%", name)
+
 	return ..()
 
 
@@ -1258,8 +1276,12 @@
 		TRACKER_CSL = /datum/squad/marine/charlie,
 		TRACKER_DSL = /datum/squad/marine/delta,
 		TRACKER_ESL = /datum/squad/marine/echo,
-		TRACKER_FSL = /datum/squad/marine/cryo
+		TRACKER_FSL = /datum/squad/marine/cryo,
+		TRACKER_ISL = /datum/squad/marine/intel
 	)
+
+	hud_used.locate_leader.overlays.Cut()
+
 	switch(tracker_setting)
 		if(TRACKER_SL)
 			if(assigned_squad)
@@ -1268,11 +1290,15 @@
 			var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
 			if(!C) //no LZ selected
 				hud_used.locate_leader.icon_state = "trackoff"
-			else if(C.z != src.z || get_dist(src,C) < 1)
+			else if(!SSmapping.same_z_map(src.z, C.z) || get_dist(src,C) < 1)
 				hud_used.locate_leader.icon_state = "trackondirect_lz"
 			else
 				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
 				hud_used.locate_leader.icon_state = "trackon_lz"
+				if(C.z > z)
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
+				if(C.z < z)
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
 			return
 		if(TRACKER_FTL)
 			if(assigned_squad)
@@ -1290,6 +1316,11 @@
 			if(cmp_job?.active_cmp)
 				H = cmp_job.active_cmp
 			tracking_suffix = "_cmp"
+		if(TRACKER_WARDEN)
+			var/datum/job/command/warden/warden_job = GLOB.RoleAuthority.roles_for_mode[JOB_WARDEN]
+			if(warden_job?.active_warden)
+				H = warden_job.active_warden
+			tracking_suffix = "_warden"
 		if(TRACKER_CL)
 			var/datum/job/civilian/liaison/liaison_job = GLOB.RoleAuthority.roles_for_mode[JOB_CORPORATE_LIAISON]
 			if(liaison_job?.active_liaison)
@@ -1305,20 +1336,25 @@
 		return
 
 	var/atom/tracking_atom = H
-	if(tracking_atom.z != src.z && SSinterior.in_interior(tracking_atom))
+	if(tracking_atom.z != z && SSinterior.in_interior(tracking_atom))
 		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
 		var/atom/exterior = interior.exterior
 		if(exterior)
 			tracking_atom = exterior
 
-	if(tracking_atom.z != src.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+	if(!SSmapping.same_z_map(z, tracking_atom.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
 		hud_used.locate_leader.setDir(Get_Compass_Dir(src, tracking_atom))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
+		if(tracking_atom.z > z)
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "up")
+		if(tracking_atom.z < z)
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "down")
 
 /mob/living/carbon/proc/locate_nearest_nuke()
-	if(!GLOB.bomb_set) return
+	if(!GLOB.bomb_set)
+		return
 	var/obj/structure/machinery/nuclearbomb/N
 	for(var/obj/structure/machinery/nuclearbomb/bomb in world)
 		if(!istype(N) || N.z != src.z )
@@ -1342,7 +1378,8 @@
 	sync_lighting_plane_alpha()
 
 /mob/living/carbon/human/update_sight()
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT) return
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT)
+		return
 
 	sight &= ~BLIND // Never have blind on by default
 
@@ -1486,7 +1523,7 @@
 					if(new_splint.amount == 0)
 						qdel(new_splint) //we only removed nano splints
 					msg = "[user == target ? "their own":"\proper [target]'s"]"
-					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."), \
+					target.visible_message(SPAN_NOTICE("[user] removes [msg] [amount_removed>1 ? "splints":"splint"]."),
 						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
 					target.update_med_icon()
 			else
@@ -1544,13 +1581,13 @@
 		adjust_fire_stacks(HUNTER_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(1, WEAKEN) // actually 0.5
 		spin(5, 1)
-		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"), \
+		visible_message(SPAN_DANGER("[src] expertly rolls on the floor, greatly reducing the amount of flames!"),
 			SPAN_NOTICE("You expertly roll to extinguish the flames!"), null, 5)
 	else
 		adjust_fire_stacks(HUMAN_FIRE_RESIST_AMOUNT, min_stacks = 0)
 		apply_effect(4, WEAKEN)
 		spin(35, 2)
-		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"), \
+		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to put themselves out!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), null, 5)
 
 	if(istype(get_turf(src), /turf/open/gm/river))
@@ -1559,7 +1596,7 @@
 	if(fire_stacks > 0)
 		return
 
-	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"), \
+	visible_message(SPAN_DANGER("[src] has successfully extinguished themselves!"),
 			SPAN_NOTICE("You extinguish yourself."), null, 5)
 
 /mob/living/carbon/human/resist_acid()
@@ -1567,21 +1604,21 @@
 	if(isyautja(src))
 		apply_effect(1, WEAKEN)
 		spin(10, 2)
-		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"), \
+		visible_message(SPAN_DANGER("[src] expertly rolls on the floor!"),
 			SPAN_NOTICE("You expertly roll to get rid of the acid!"), max_distance = 5)
 	else
 		apply_effect(1.5, WEAKEN)
 		spin(15, 2)
-		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"), \
+		visible_message(SPAN_DANGER("[src] rolls on the floor, trying to get the acid off!"),
 			SPAN_NOTICE("You stop, drop, and roll!"), max_distance = 5)
 
 	sleep(sleep_amount)
 
 	if( extinguish_acid() )
-		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"), \
+		visible_message(SPAN_DANGER("[src] has successfully removed the acid!"),
 				SPAN_NOTICE("You get rid of the acid."), max_distance = 5)
 	else
-		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"), \
+		visible_message(SPAN_DANGER("[src] has managed to get rid of some of the acid!"),
 				SPAN_NOTICE("You manage to get rid of some of the acid... but it's still melting you!"), max_distance = 5)
 
 	return
@@ -1602,14 +1639,14 @@
 	last_special = world.time + 10
 	var/can_break_cuffs
 	if(iszombie(src))
-		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."), \
+		visible_message(SPAN_DANGER("[src] is attempting to break out of [restraint]..."),
 		SPAN_NOTICE("You use your superior zombie strength to start breaking [restraint]..."))
 		if(!do_after(src, 100, INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST, BUSY_ICON_HOSTILE))
 			return
 
 		if(!restraint || buckled)
 			return
-		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"), \
+		visible_message(SPAN_DANGER("[src] tears [restraint] in half!"),
 			SPAN_NOTICE("You tear [restraint] in half!"))
 		restraint = null
 		if(handcuffed)
@@ -1656,7 +1693,7 @@
 		drop_inv_item_on_ground(restraint)
 
 /mob/living/carbon/human/equip_to_appropriate_slot(obj/item/W, ignore_delay = 1, list/slot_equipment_priority)
-	if(species)
+	if(species && !slot_equipment_priority)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
 
@@ -1673,6 +1710,10 @@
 	set category = "IC"
 
 	var/HTML = "<body>"
+	HTML += "You may include %bloodtype% %rank% or %name% as inserts."
+	HTML += "<br>"
+	HTML += "The %rank% will include a space after if applicable."
+	HTML += "<br>"
 	HTML += "<tt>"
 	HTML += "<a href='byond://?src=\ref[src];flavor_change=general'>General:</a> "
 	HTML += TextPreview(flavor_texts["general"])
@@ -1704,7 +1745,7 @@
 	HTML += "<hr />"
 	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
-	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", "size=430x300")
+	show_browser(src, HTML, "Update Flavor Text", "flavor_changes", width = 430, height = 430)
 
 /mob/living/carbon/human/throw_item(atom/target)
 	if(!throw_allowed)
@@ -1809,3 +1850,4 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
+

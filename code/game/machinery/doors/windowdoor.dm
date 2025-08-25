@@ -35,9 +35,12 @@
 	if(direction)
 		setDir(direction)
 	switch(dir)
-		if(NORTH) layer = ABOVE_TABLE_LAYER
-		if(SOUTH) layer = ABOVE_MOB_LAYER
-		else layer = initial(layer)
+		if(NORTH)
+			layer = ABOVE_TABLE_LAYER
+		if(SOUTH)
+			layer = ABOVE_MOB_LAYER
+		else
+			layer = initial(layer)
 
 /obj/structure/machinery/door/window/Collided(atom/movable/AM)
 	if (!( ismob(AM) ))

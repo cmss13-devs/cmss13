@@ -67,8 +67,10 @@
 	var/savefile/info = new("data/player_saves/[copytext(key, 1, 2)]/[key]/info.sav")
 	var/list/infos
 	info >> infos
-	if(!LAZYLEN(infos)) return 0
-	else return 1
+	if(!LAZYLEN(infos))
+		return 0
+	else
+		return 1
 
 /datum/admins/proc/player_notes_all(key as text)
 	set category = null
@@ -105,11 +107,12 @@
 		dat += "<br><br>"
 	dat += "</body></html>"
 
-	show_browser(usr, dat, "Info on [key]", "allplayerinfo", "size=480x480")
+	show_browser(usr, dat, "Info on [key]", "allplayerinfo", width = 480, height = 480)
 
 
 /datum/admins/proc/Jobbans()
-	if(!check_rights(R_BAN)) return
+	if(!check_rights(R_BAN))
+		return
 	var/L[] //List reference.
 	var/r //rank --This will always be a string.
 	var/c //ckey --This will always be a string.
@@ -125,11 +128,12 @@
 			u = "[c] - [r]"
 			dat += "<tr><td>[t] (<A href='byond://?src=\ref[src];[HrefToken(forceGlobal = TRUE)];removejobban=[u]'>unban</A>)</td></tr>"
 	dat += "</table>"
-	show_browser(usr, dat, "Job Bans", "ban", "size=400x400")
+	show_browser(usr, dat, "Job Bans", "ban", width = 400, height = 400)
 
 
 /datum/admins/proc/Game()
-	if(!check_rights(0)) return
+	if(!check_rights(0))
+		return
 
 	var/dat = {"
 		<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];c_mode=1'>Change Game Mode</A><br>
@@ -144,7 +148,7 @@
 		<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];send_tip=1'>Immediately Send Tip</A><br>
 		"}
 
-	show_browser(usr, dat, "Game Panel", "admin2", "size=210x280")
+	show_browser(usr, dat, "Game Panel", "admin2", width = 210, height = 280)
 	return
 
 /////////////////////////////////////////////////////////////////////////////////////////////////admins2.dm merge
@@ -170,7 +174,8 @@
 	set desc = "(atom path) Spawn an atom"
 	set name = "Spawn"
 
-	if(!check_rights(R_SPAWN)) return
+	if(!check_rights(R_SPAWN))
+		return
 
 	var/list/types = typesof(/atom)
 	var/list/matches = new()

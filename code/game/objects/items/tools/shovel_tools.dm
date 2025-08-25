@@ -27,11 +27,16 @@
 /obj/item/tool/shovel/update_icon()
 	var/image/I = image(icon,src,dirt_overlay)
 	switch(dirt_type) // We can actually shape the color for what environment we dig up our dirt in.
-		if(DIRT_TYPE_GROUND) I.color = "#512A09"
-		if(DIRT_TYPE_MARS) I.color = "#FF5500"
-		if(DIRT_TYPE_SNOW) I.color = "#EBEBEB"
-		if(DIRT_TYPE_SAND) I.color = "#ab804b"
-		if(DIRT_TYPE_SHALE) I.color = "#1c2142"
+		if(DIRT_TYPE_GROUND)
+			I.color = "#512A09"
+		if(DIRT_TYPE_MARS)
+			I.color = "#FF5500"
+		if(DIRT_TYPE_SNOW)
+			I.color = "#EBEBEB"
+		if(DIRT_TYPE_SAND)
+			I.color = "#ab804b"
+		if(DIRT_TYPE_SHALE)
+			I.color = "#1c2142"
 	overlays -= I
 	if(dirt_amt)
 		overlays += I
@@ -196,6 +201,8 @@
 	shovelspeed = 60
 	dirt_amt_per_dig = 1
 
+/obj/item/tool/shovel/spade/yautja
+	icon = 'icons/obj/structures/props/hunter/32x32_hunter_props.dmi'
 
 //Snow Shovel----------
 /obj/item/tool/shovel/snow

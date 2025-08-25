@@ -1,4 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/mre/upp,
+/turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
+/area/desert_dam/exterior/valley/valley_civilian)
 "bm" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -1180,7 +1185,7 @@ Xq
 (7,1,1) = {"
 Yr
 fg
-OG
+aa
 oL
 jX
 la
@@ -1380,7 +1385,7 @@ UK
 xz
 xE
 bm
-OG
+aa
 OG
 Ry
 Yv

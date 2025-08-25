@@ -23,7 +23,8 @@
 	permissions_required = R_BAN
 
 /datum/player_action/eorgban/act(client/user, mob/target, list/params)
-	if(target.client && target.client.admin_holder) return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
+	if(target.client && target.client.admin_holder)
+		return //admins cannot be banned. Even if they could, the ban doesn't affect them anyway
 
 	if(!target.ckey)
 		to_chat(user, SPAN_DANGER("<B>Warning: Mob ckey for [target.name] not found.</b>"))

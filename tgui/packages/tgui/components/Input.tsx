@@ -1,16 +1,20 @@
-/* eslint-disable func-style */
 /**
  * @file
  * @copyright 2020 Aleksej Komarov
  * @license MIT
  */
 
-import { KEY } from 'common/keys';
+import { isEscape, KEY } from 'common/keys';
 import { classes } from 'common/react';
 import { debounce } from 'common/timer';
-import { KeyboardEvent, SyntheticEvent, useEffect, useRef } from 'react';
+import {
+  type KeyboardEvent,
+  type SyntheticEvent,
+  useEffect,
+  useRef,
+} from 'react';
 
-import { Box, BoxProps } from './Box';
+import { Box, type BoxProps } from './Box';
 
 type ConditionalProps =
   | {
@@ -62,6 +66,7 @@ type OptionalProps = Partial<{
   selfClear: boolean;
   /** The state variable of the input. */
   value: string | number;
+  type: string;
 }>;
 
 type Props = OptionalProps & ConditionalProps & BoxProps;
@@ -128,7 +133,7 @@ export function Input(props: Props) {
       return;
     }
 
-    if (event.key === KEY.Escape) {
+    if (isEscape(event.key)) {
       onEscape?.(event);
 
       event.currentTarget.value = toInputValue(value);
@@ -180,6 +185,7 @@ export function Input(props: Props) {
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
         ref={inputRef}
+        spellCheck="false"
       />
     </Box>
   );

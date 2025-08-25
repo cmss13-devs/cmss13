@@ -20,7 +20,6 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	var/cleaned_up = FALSE
 
 	keep_as_object = TRUE
-
 	garbage = TRUE
 
 /obj/effect/decal/cleanable/Initialize(mapload, ...)
@@ -35,6 +34,8 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	var/obj/effect/decal/cleanable/C = LAZYACCESS(T.cleanables, cleanable_type)
 	if(C && !can_place_cleanable(C))
 		return INITIALIZE_HINT_QDEL
+
+	SSweather.add_cleanable(src)
 
 	place_cleanable(T, overlay_on_initialize)
 
@@ -73,6 +74,9 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 /obj/effect/decal/cleanable/proc/cleanup_cleanable()
 	cleaned_up = TRUE
+
+	SSweather.cleanable_list -= src
+
 	if(!cleanable_turf?.cleanables || !cleanable_turf?.cleanables[cleanable_type])
 		return
 	clear_overlay()
@@ -82,7 +86,13 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 /obj/effect/decal/cleanable/proc/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state)
 	overlayed_image = image(overlay_icon, icon_state = overlay_icon_state)
-	overlayed_image.appearance = appearance
+	if(pixel_x)
+		overlayed_image.pixel_x = pixel_x
+	if(pixel_y)
+		overlayed_image.pixel_y = pixel_y
+	if(color)
+		overlayed_image.color = color
+
 	cleanable_turf.overlays += overlayed_image
 	moveToNullspace() // This obj should not be on the turf for performance
 
@@ -90,3 +100,14 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	if(overlayed_image)
 		cleanable_turf.overlays -= overlayed_image
 		overlayed_image = null
+
+/// Gives the cleanable a nice fadeout before disappearing
+/obj/effect/decal/cleanable/proc/fade_and_disappear()
+	var/fade_time = rand(3, 7) SECONDS
+
+	if(overlayed_image)
+		clear_overlay()
+		forceMove(cleanable_turf)
+
+	animate(src, alpha = 0, time = fade_time)
+	QDEL_IN(src, fade_time)

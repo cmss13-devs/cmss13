@@ -2,7 +2,7 @@
 	name = "USCM (police roles)"
 	faction = FACTION_MARINE
 	minimap_background = "background_mp"
-	minimum_age = 27
+	minimum_age = 21
 
 //*****************************************************************************************************/
 
@@ -14,6 +14,7 @@
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_MEDBAY,
@@ -27,7 +28,7 @@
 		ACCESS_MARINE_OT,
 	)
 	assignment = JOB_POLICE
-	rank = JOB_POLICE
+	job_title = JOB_POLICE
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "MP"
 	skills = /datum/skills/MP
@@ -71,6 +72,7 @@
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_ARMORY,
@@ -85,9 +87,10 @@
 		ACCESS_MARINE_OT,
 	)
 	assignment = JOB_WARDEN
-	rank = JOB_WARDEN
+	job_title = JOB_WARDEN
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "MW"
+	minimum_age = 25
 	skills = /datum/skills/MW
 
 	minimap_icon = "warden"
@@ -103,7 +106,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/security
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mwcom(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/warden(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(new_human), WEAR_HANDS)
@@ -129,7 +132,9 @@
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_DATABASE_ADMIN,
 		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_CMP,
 		ACCESS_MARINE_ARMORY,
@@ -146,8 +151,9 @@
 		ACCESS_MARINE_SYNTH,
 	)
 	assignment = JOB_CHIEF_POLICE
-	rank = JOB_CHIEF_POLICE
+	job_title = JOB_CHIEF_POLICE
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_1)
+	minimum_age = 23
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 
@@ -189,7 +195,7 @@
 	idtype = /obj/item/card/id/silver
 	access = list()
 	assignment = JOB_RIOT
-	rank = JOB_RIOT
+	job_title = JOB_RIOT
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
@@ -241,7 +247,7 @@
 	minimap_icon = list("crmp")
 
 	assignment = JOB_RIOT_CHIEF
-	rank = JOB_RIOT_CHIEF
+	job_title = JOB_RIOT_CHIEF
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CRMP"
 	skills = /datum/skills/CMP

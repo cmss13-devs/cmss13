@@ -300,9 +300,10 @@
 		return
 
 	// door controls being overridden
-	if(!dropship_control_lost)
+	if(!dropship_control_lost && do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
+		update_icon()
 		door_control_cooldown = addtimer(CALLBACK(src, PROC_REF(remove_door_lock)), SHUTTLE_LOCK_COOLDOWN, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 		if(GLOB.almayer_orbital_cannon)
 			GLOB.almayer_orbital_cannon.is_disabled = TRUE
@@ -333,6 +334,14 @@
 			return
 		hijack(xeno)
 		return
+
+/obj/structure/machinery/computer/shuttle/dropship/flight/update_icon()
+	. = ..()
+	if(icon_state == "console") // someday, replace this with a better check
+		if(dropship_control_lost)
+			icon_state = "[initial(icon_state)]-locked"
+		else
+			icon_state = initial(icon_state)
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack(mob/user, force = FALSE)
 	// select crash location
@@ -373,6 +382,8 @@
 	if(hive.living_xeno_queen)
 		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
 		ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
+		if(!hive.living_xeno_queen.queen_aged)
+			hive.living_xeno_queen.make_combat_effective()
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt
@@ -397,6 +408,7 @@
 		return
 	playsound(loc, 'sound/machines/terminal_success.ogg', KEYBOARD_SOUND_VOLUME, 1)
 	dropship_control_lost = FALSE
+	update_icon()
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/ui_data(mob/user)
 	var/obj/docking_port/mobile/marine_dropship/shuttle = SSshuttle.getShuttle(shuttleId)

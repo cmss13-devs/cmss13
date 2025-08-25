@@ -16,8 +16,7 @@ black market prices are NOT based on real or in-universe costs. they are based o
 
 */
 
-/datum/supply_packs/contraband //base
-	name = "contraband crate"
+/datum/supply_packs/contraband // Abstract type (null name)
 	contains = null
 	containertype = null
 	containername = "large crate"
@@ -67,10 +66,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 /datum/supply_packs/contraband/seized/black_market_scanner
 	name = "black market scanner crate"
 	contains = list(/obj/item/device/black_market_scanner)
-	containername = "trash cart"
+	containername = "interesting wooden crate"
 	dollar_cost = 5
 	crate_heat = 0
-	containertype = /obj/structure/closet/crate/trashcart
+	containertype = /obj/structure/closet/coffin/woodencrate
 
 /datum/supply_packs/contraband/seized/confiscated_equipment
 	name = "seized foreign equipment crate"
@@ -84,10 +83,10 @@ Non-USCM items, from CLF, UPP, colonies, etc. Mostly combat-related.
 		if(1) //pmc
 			new /obj/item/clothing/under/marine/veteran/pmc(src)
 			new /obj/item/clothing/head/helmet/marine/veteran/pmc(src)
-			new /obj/item/clothing/suit/storage/marine/veteran/pmc(src)
-			new /obj/item/clothing/gloves/marine/veteran/pmc(src)
+			new /obj/item/clothing/suit/storage/marine/veteran/pmc/light(src)
+			new /obj/item/clothing/gloves/marine/veteran(src)
 			new /obj/item/clothing/mask/gas/pmc(src)
-			new /obj/item/storage/backpack/lightpack/five_slot(src)
+			new /obj/item/storage/backpack/pmc(src)
 		if(2) //pizza
 			new /obj/item/clothing/under/pizza(src)
 			new /obj/item/clothing/head/soft/red(src)
@@ -180,6 +179,19 @@ Additionally, weapons that are way too good to put in the basically-flavor black
 */
 
 // Rifles
+
+/datum/supply_packs/contraband/seized/ak4047
+	name = "AK-4047 pulse assault rifle crate (x5 magazines included)"
+	contains = list(
+		/obj/item/weapon/gun/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+		/obj/item/ammo_magazine/rifle/ak4047,
+	)
+	dollar_cost = 20
+	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/seized/m16
 	name = "M16 rifle crate (x4 magazines included)"
@@ -546,7 +558,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/reagent_container/food/snacks/egg/random,
 		/obj/item/reagent_container/food/snacks/egg/random, //not a dupe
 		/obj/item/reagent_container/food/snacks/xemeatpie,
-		/obj/item/reagent_container/food/snacks/upp,
+		/obj/item/storage/box/mre/upp,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas1,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas2,
 		/obj/item/reagent_container/food/snacks/mre_pack/xmas3,
@@ -617,7 +629,7 @@ Primarily made up of things that would be best utilized, well, shipside. Recreat
 		/obj/item/toy/prize/deathripley,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiadeus,
 		/obj/item/reagent_container/food/snacks/grown/ambrosiavulgaris,
-		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/toy/inflatable_duck,
 		/obj/item/pamphlet/skill/powerloader,
 		/obj/item/pamphlet/language/russian,
@@ -681,7 +693,7 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 		/obj/item/weapon/baton/cattleprod,
 		/obj/item/ammo_magazine/shotgun/beanbag,
 		/obj/item/storage/box/packet/m15/rubber,
-		/obj/item/storage/box/guncase/m79,
+		/obj/item/storage/box/guncase/m85a1,
 		/obj/item/clothing/head/helmet/marine/MP,
 		/obj/item/prop/helmetgarb/riot_shield,
 	)
@@ -767,6 +779,18 @@ USCM spare items, miscellaneous gear that's too niche and distant (or restricted
 	name = "shotgun shell box crate (Type 23, x100 8g flechette shells)"
 	dollar_cost = 115
 	contains = list(/obj/item/ammo_box/magazine/shotgun/upp/flechette)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ak4047
+	name = "Magazine box (AK-4047, 12x regular mags)"
+	dollar_cost = 40
+	contains = list(/obj/item/ammo_box/magazine/ak4047)
+	containertype = /obj/structure/largecrate/black_market
+
+/datum/supply_packs/contraband/ammo/ak4047/ap
+	name = "Magazine box (AK-4047, 12x AP mags)"
+	dollar_cost = 80
+	contains = list(/obj/item/ammo_box/magazine/ak4047/ap)
 	containertype = /obj/structure/largecrate/black_market
 
 /datum/supply_packs/contraband/ammo/m16
@@ -1252,7 +1276,7 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			new /obj/item/ammo_magazine/smg/mac15/extended(loc)
 			loot_message = SPAN_NOTICE("It's some CLF SMG armaments.")
-		if(21 to 29)
+		if(21 to 25)
 			// Discovered Yautja ruins.. (None of these will trigger any alarms. They are far too old, degraded, and useless for any Yautja to care.)
 			new /obj/item/clothing/mask/yautja_flavor(loc)
 			new /obj/item/clothing/suit/armor/yautja_flavor(loc)
@@ -1260,6 +1284,14 @@ Things that don't fit anywhere else. If they're meant for shipside use, they pro
 			new /obj/item/weapon/twohanded/yautja/glaive/damaged(loc)
 			new /obj/item/stack/yautja_rope(loc)
 			loot_message = SPAN_NOTICE("It's some strange ancient gear...?")
+		if(26 to 29)
+			// stevemre1989's secret stash
+			new /obj/item/storage/box/mre/fsr(loc)
+			new /obj/item/storage/box/mre/twe(loc)
+			new /obj/item/storage/box/mre/wy(loc)
+			new /obj/item/storage/box/mre/pmc(loc)
+			new /obj/item/storage/box/mre/upp(loc)
+			loot_message = SPAN_NOTICE("It's some rations...?")
 		if(30 to 35)
 		// CLF nades!
 			loot_message = SPAN_NOTICE("It's a package of assorted CLF grenades!")

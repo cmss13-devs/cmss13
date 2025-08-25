@@ -21,11 +21,17 @@
 //Offuscate y for coord system
 #define obfuscate_y(y) ((y) + GLOB.obfs_y)
 
+//Offuscate z for the coord system
+#define obfuscate_z(z) ((z) + GLOB.obfs_z)
+
 //Deoffuscate x for coord system
 #define deobfuscate_x(x) ((x) - GLOB.obfs_x)
 
 //Deoffuscate y for coord system
 #define deobfuscate_y(y) ((y) - GLOB.obfs_y)
+
+//Deoffuscate z for the coord system
+#define deobfuscate_z(z) ((z) - GLOB.obfs_z)
 
 #define can_xeno_build(T) (!T.density && !(locate(/obj/structure/fence) in T) && !(locate(/obj/structure/tunnel) in T) && (locate(/obj/effect/alien/weeds) in T))
 
@@ -231,9 +237,12 @@
 
 
 //Returns whether or not a player is a guest using their ckey as an input
-/proc/IsGuestKey(key)
+/proc/IsGuestKey(key, strict = FALSE)
+	if(!strict && (key in GLOB.permitted_guests))
+		return FALSE
+
 	if (findtext(key, "Guest-", 1, 7) != 1) //was findtextEx
-		return 0
+		return FALSE
 
 	var/i = 7, ch, len = length(key)
 
@@ -243,13 +252,14 @@
 	for (, i <= len, ++i)
 		ch = text2ascii(key, i)
 		if (ch < 48 || ch > 57)
-			return 0
-	return 1
+			return FALSE
+	return TRUE
 
 //This will update a mob's name, real_name, mind.name, data_core records, pda and id
 //Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
 /mob/proc/fully_replace_character_name(oldname, newname)
-	if(!newname) return 0
+	if(!newname)
+		return 0
 	change_real_name(src, newname)
 
 	if(oldname)
@@ -273,7 +283,8 @@
 				if(ID.registered_name == oldname)
 					ID.registered_name = newname
 					ID.name = "[newname]'s [ID.id_type] ([ID.assignment])"
-					if(!search_pda) break
+					if(!search_pda)
+						break
 					search_id = 0
 	return 1
 
@@ -337,8 +348,6 @@
 	var/list/sortmob = sortAtom(GLOB.mob_list)
 	for(var/mob/living/silicon/ai/M in sortmob)
 		moblist.Add(M)
-	for(var/mob/living/silicon/robot/M in sortmob)
-		moblist.Add(M)
 	for(var/mob/living/carbon/human/M in sortmob)
 		moblist.Add(M)
 	for(var/mob/living/brain/M in sortmob)
@@ -362,7 +371,8 @@
 	var/client/C
 	var/key
 
-	if(!whom) return "*null*"
+	if(!whom)
+		return "*null*"
 	if(istype(whom, /client))
 		C = whom
 		M = C.mob
@@ -429,22 +439,37 @@
 
 	return target
 
-/proc/urange(dist=0, atom/center=usr, orange=0, areas=0)
+/**
+ * An alternative to orange() that should perform better for distances >= 5 because
+ * of ORANGE_TURFS utilizing RECT_TURFS.
+ *
+ * Returns a list of turfs and those turf's contents, excluding center (and
+ * its contents). Ignores visibility (like orange).
+ */
+/proc/long_orange(dist=0, atom/center)
 	if(!dist)
-		if(!orange)
-			return list(center)
-		else
-			return list()
+		return list()
 
-	var/list/turfs = RANGE_TURFS(dist, center)
-	if(orange)
-		turfs -= get_turf(center)
+	var/list/turfs = ORANGE_TURFS(dist, center)
 	. = list()
-	for(var/turf/T as anything in turfs)
-		. += T
-		. += T.contents
-		if(areas)
-			. |= T.loc
+	for(var/turf/cur_turf as anything in turfs)
+		. += cur_turf
+		. += cur_turf.contents
+	. -= center // If center isn't a turf
+
+/**
+ * An alternative to range() that should perform better for distances >= 5 because
+ * of RANGE_TURFS utilizing RECT_TURFS.
+ *
+ * Returns a list of turfs and those turf's contents, including center (and its
+ * contents if a turf). Ignores visibility (like range).
+ */
+/proc/long_range(dist=0, atom/center)
+	var/list/turfs = RANGE_TURFS(dist, center)
+	. = list()
+	for(var/turf/cur_turf as anything in turfs)
+		. += cur_turf
+		. += cur_turf.contents
 
 // returns turf relative to A in given direction at set range
 // result is bounded to map size
@@ -572,10 +597,13 @@
 		return FALSE
 
 	while(current != target_turf)
-		if(steps > length) return FALSE
-		if(!current || current.opacity) return FALSE
+		if(steps > length)
+			return FALSE
+		if(!current || current.opacity)
+			return FALSE
 		for(var/atom/A in current)
-			if(A && A.opacity) return FALSE
+			if(A && A.opacity)
+				return FALSE
 		current = get_step_towards(current, target_turf)
 		steps++
 
@@ -595,10 +623,12 @@ GLOBAL_DATUM(busy_indicator_medical, /image)
 GLOBAL_DATUM(busy_indicator_build, /image)
 GLOBAL_DATUM(busy_indicator_friendly, /image)
 GLOBAL_DATUM(busy_indicator_hostile, /image)
+GLOBAL_DATUM(busy_indicator_climbing, /image)
 GLOBAL_DATUM(emote_indicator_highfive, /image)
 GLOBAL_DATUM(emote_indicator_fistbump, /image)
 GLOBAL_DATUM(emote_indicator_headbutt, /image)
 GLOBAL_DATUM(emote_indicator_tailswipe, /image)
+GLOBAL_DATUM(emote_indicator_wallboosting, /image)
 GLOBAL_DATUM(emote_indicator_rock_paper_scissors, /image)
 GLOBAL_DATUM(emote_indicator_rock, /image)
 GLOBAL_DATUM(emote_indicator_paper, /image)
@@ -639,6 +669,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.busy_indicator_hostile.layer = FLY_LAYER
 			GLOB.busy_indicator_hostile.plane = ABOVE_GAME_PLANE
 		return GLOB.busy_indicator_hostile
+	else if(busy_type == BUSY_ICON_CLIMBING)
+		if(!GLOB.busy_indicator_climbing)
+			GLOB.busy_indicator_climbing = image('icons/mob/do_afters.dmi', null, "busy_climbing", "pixel_y" = 22)
+			GLOB.busy_indicator_climbing.layer = FLY_LAYER
+			GLOB.busy_indicator_climbing.plane = ABOVE_GAME_PLANE
+		return GLOB.busy_indicator_climbing
 	else if(busy_type == EMOTE_ICON_HIGHFIVE)
 		if(!GLOB.emote_indicator_highfive)
 			GLOB.emote_indicator_highfive = image('icons/mob/do_afters.dmi', null, "emote_highfive", "pixel_y" = 22)
@@ -687,6 +723,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.emote_indicator_tailswipe.layer = FLY_LAYER
 			GLOB.emote_indicator_tailswipe.plane = ABOVE_GAME_PLANE
 		return GLOB.emote_indicator_tailswipe
+	else if(busy_type == EMOTE_ICON_WALLBOOSTING)
+		if(!GLOB.emote_indicator_wallboosting)
+			GLOB.emote_indicator_wallboosting = image('icons/mob/do_afters.dmi', null, "emote_wallboosting", "pixel_y" = 22)
+			GLOB.emote_indicator_wallboosting.layer = FLY_LAYER
+			GLOB.emote_indicator_wallboosting.plane = ABOVE_GAME_PLANE
+		return GLOB.emote_indicator_wallboosting
 	else if(busy_type == ACTION_RED_POWER_UP)
 		if(!GLOB.action_red_power_up)
 			GLOB.action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
@@ -711,6 +753,7 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 			GLOB.action_purple_power_up.layer = FLY_LAYER
 			GLOB.action_purple_power_up.plane = ABOVE_GAME_PLANE
 		return GLOB.action_purple_power_up
+
 
 
 /*
@@ -862,33 +905,33 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 		if((user_flags|target_flags) & INTERRUPT_OUT_OF_RANGE && target && get_dist(busy_user, target) > max_dist)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something["left"] || \
-			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something["left"])
+		if(user_flags & INTERRUPT_LCLICK && busy_user.clicked_something[LEFT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_LCLICK && T.clicked_something[LEFT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something["right"] || \
-			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something["right"])
+		if(user_flags & INTERRUPT_RCLICK && busy_user.clicked_something[RIGHT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_RCLICK && T.clicked_something[RIGHT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["shift"] || \
-			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something["left"] && T.clicked_something["shift"])
+		if(user_flags & INTERRUPT_SHIFTCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[SHIFT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_SHIFTCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[SHIFT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["alt"] || \
-			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something["left"] && T.clicked_something["alt"])
+		if(user_flags & INTERRUPT_ALTCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[ALT_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_ALTCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[ALT_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something["left"] && busy_user.clicked_something["ctrl"] || \
-			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something["left"] && T.clicked_something["ctrl"])
+		if(user_flags & INTERRUPT_CTRLCLICK && busy_user.clicked_something[LEFT_CLICK] && busy_user.clicked_something[CTRL_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_CTRLCLICK && T.clicked_something[LEFT_CLICK] && T.clicked_something[CTRL_CLICK])
 		)
 			. = FALSE
 			break
-		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something["middle"] || \
-			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something["middle"])
+		if(user_flags & INTERRUPT_MIDDLECLICK && busy_user.clicked_something[MIDDLE_CLICK] || \
+			target_is_mob && (target_flags & INTERRUPT_MIDDLECLICK && T.clicked_something[MIDDLE_CLICK])
 		)
 			. = FALSE
 			break
@@ -915,8 +958,10 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 //Takes: Anything that could possibly have variables and a varname to check.
 //Returns: 1 if found, 0 if not.
 /proc/hasvar(datum/A, varname)
-	if(A.vars.Find(lowertext(varname))) return 1
-	else return 0
+	if(A.vars.Find(lowertext(varname)))
+		return 1
+	else
+		return 0
 
 //Returns: all the areas in the world, sorted.
 /proc/return_sorted_areas()
@@ -972,7 +1017,8 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	//    Movement based on lower left corner. Tiles that do not fit
 	//  into the new area will not be moved.
 
-	if(!A || !src) return 0
+	if(!A || !src)
+		return 0
 
 	var/list/turfs_src = get_area_turfs(src.type)
 	var/list/turfs_trg = get_area_turfs(A.type)
@@ -980,14 +1026,18 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	var/src_min_x = 0
 	var/src_min_y = 0
 	for (var/turf/T in turfs_src)
-		if(T.x < src_min_x || !src_min_x) src_min_x = T.x
-		if(T.y < src_min_y || !src_min_y) src_min_y = T.y
+		if(T.x < src_min_x || !src_min_x)
+			src_min_x = T.x
+		if(T.y < src_min_y || !src_min_y)
+			src_min_y = T.y
 
 	var/trg_min_x = 0
 	var/trg_min_y = 0
 	for (var/turf/T in turfs_trg)
-		if(T.x < trg_min_x || !trg_min_x) trg_min_x = T.x
-		if(T.y < trg_min_y || !trg_min_y) trg_min_y = T.y
+		if(T.x < trg_min_x || !trg_min_x)
+			trg_min_x = T.x
+		if(T.y < trg_min_y || !trg_min_y)
+			trg_min_y = T.y
 
 	var/list/refined_src = new/list()
 	for(var/turf/T in turfs_src)
@@ -1057,10 +1107,12 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 							X.name = "wall"
 							qdel(O) // prevents multiple shuttle corners from stacking
 							continue
-						if(!istype(O,/obj)) continue
+						if(!istype(O,/obj))
+							continue
 						O.forceMove(X)
 					for(var/mob/M in T)
-						if(!istype(M,/mob) || istype(M, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
+						if(!istype(M,/mob) || istype(M, /mob/aiEye))
+							continue // If we need to check for more mobs, I'll add a variable
 						M.forceMove(X)
 
 // var/area/AR = X.loc
@@ -1123,7 +1175,8 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 
 /proc/parse_zone(zone)
-	if(zone == "r_hand") return "right hand"
+	if(zone == "r_hand")
+		return "right hand"
 	else if (zone == "l_hand") return "left hand"
 	else if (zone == "l_arm") return "left arm"
 	else if (zone == "r_arm") return "right arm"
@@ -1135,7 +1188,8 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 	else if (zone == "r_hand") return "right hand"
 	else if (zone == "l_foot") return "left foot"
 	else if (zone == "r_foot") return "right foot"
-	else return zone
+	else
+		return zone
 
 /proc/get_true_location(atom/loc)
 	var/atom/subLoc = loc
@@ -1150,14 +1204,22 @@ GLOBAL_DATUM(action_purple_power_up, /image)
 
 /proc/reverse_nearby_direction(direction)
 	switch(direction)
-		if(NORTH) return list(SOUTH,  SOUTHEAST, SOUTHWEST)
-		if(NORTHEAST) return list(SOUTHWEST, SOUTH,  WEST)
-		if(EAST) return list(WEST,   SOUTHWEST, NORTHWEST)
-		if(SOUTHEAST) return list(NORTHWEST, NORTH,  WEST)
-		if(SOUTH) return list(NORTH,  NORTHEAST, NORTHWEST)
-		if(SOUTHWEST) return list(NORTHEAST, NORTH,  EAST)
-		if(WEST) return list(EAST,   NORTHEAST, SOUTHEAST)
-		if(NORTHWEST) return list(SOUTHEAST, SOUTH,  EAST)
+		if(NORTH)
+			return list(SOUTH,  SOUTHEAST, SOUTHWEST)
+		if(NORTHEAST)
+			return list(SOUTHWEST, SOUTH,  WEST)
+		if(EAST)
+			return list(WEST,   SOUTHWEST, NORTHWEST)
+		if(SOUTHEAST)
+			return list(NORTHWEST, NORTH,  WEST)
+		if(SOUTH)
+			return list(NORTH,  NORTHEAST, NORTHWEST)
+		if(SOUTHWEST)
+			return list(NORTHEAST, NORTH,  EAST)
+		if(WEST)
+			return list(EAST,   NORTHEAST, SOUTHEAST)
+		if(NORTHWEST)
+			return list(SOUTHEAST, SOUTH,  EAST)
 
 /*
 Checks if that loc and dir has a item on the wall
@@ -1236,7 +1298,12 @@ GLOBAL_LIST_INIT(WALLITEMS, list(
 /proc/get_line(atom/start_atom, atom/end_atom, include_start_atom = TRUE)
 	var/turf/start_turf = get_turf(start_atom)
 	var/turf/end_turf = get_turf(end_atom)
-	var/start_z = start_turf.z
+	var/start_z
+
+	if(end_atom.z > start_atom.z)
+		start_z = end_atom.z
+	else
+		start_z = start_atom.z
 
 	var/list/line = list()
 	if(include_start_atom)

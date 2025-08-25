@@ -112,7 +112,7 @@
 		/obj/item/toy/prize/ripley,
 		/obj/item/toy/prize/seraph,
 		/obj/item/toy/spinningtoy,
-		/obj/item/clothing/accessory/horrible,
+		/obj/item/clothing/accessory/tie/horrible,
 		/obj/item/clothing/shoes/slippers,
 		/obj/item/clothing/shoes/slippers_worn,
 		/obj/item/clothing/head/collectable/tophat/super,
@@ -127,7 +127,8 @@
 		/obj/item/attachable/stock/rifle,
 		/obj/item/attachable/scope)
 
-	if(!ispath(gift_type,/obj/item)) return
+	if(!ispath(gift_type,/obj/item))
+		return
 	to_chat(M, SPAN_NOTICE(" At least it's something..."))
 	var/obj/item/I = new gift_type(M)
 	M.temp_drop_inv_item(src)

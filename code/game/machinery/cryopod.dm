@@ -238,7 +238,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		switch(cryo_human.job)
 			if(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 				dept_console = GLOB.frozen_items["MP"]
-			if(JOB_NURSE, JOB_DOCTOR, JOB_RESEARCHER, JOB_CMO)
+			if(JOB_NURSE, JOB_DOCTOR, JOB_FIELD_DOCTOR, JOB_RESEARCHER, JOB_CMO)
 				dept_console = GLOB.frozen_items["Med"]
 			if(JOB_MAINT_TECH, JOB_ORDNANCE_TECH, JOB_CHIEF_ENGINEER)
 				dept_console = GLOB.frozen_items["Eng"]
@@ -425,8 +425,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 			visible_message(SPAN_NOTICE("[user] starts putting [M] into [src]."),
 			SPAN_NOTICE("You start putting [M] into [src]."))
 
-			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC)) return
-			if(!M || !G || !G.grabbed_thing) return
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+				return
+			if(!M || !G || !G.grabbed_thing)
+				return
 			if(occupant)
 				to_chat(user, SPAN_WARNING("[src] is occupied."))
 				return FALSE
@@ -471,8 +473,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 		message_admins("[key_name_admin(M)], [M.job], has left [src] at [location].")
 
 	var/list/items = src.contents //-Removes items from the chamber
-	if(occupant) items -= occupant
-	if(announce) items -= announce
+	if(occupant)
+		items -= occupant
+	if(announce)
+		items -= announce
 
 	for(var/obj/item/W in items)
 		W.forceMove(get_turf(src))
@@ -605,3 +609,10 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_MARINE_1 = list(), SQUAD_MARINE_2 = li
 
 	occupant.mind.transfer_to(new_player)
 	SEND_SIGNAL(occupant, COMSIG_MOB_END_TUTORIAL)
+
+/obj/structure/machinery/cryopod/no_store/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+
+/obj/structure/machinery/cryopod/no_store/right/yautja
+	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	dir = WEST

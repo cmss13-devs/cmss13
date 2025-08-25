@@ -1,0 +1,5 @@
+author: "SirNightKnight"
+delete-after: True
+changes:
+  - bugfix: "fixed the right inhand sprite for the classic mortar being invisible."
+  - bugfix: "fixed the right inhand sprite for OT shells being invisible."

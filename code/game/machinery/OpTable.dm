@@ -93,6 +93,10 @@
 		to_chat(user, SPAN_WARNING("The patient needs to be on the table first."))
 		return
 
+	if(!H.has_limb("head"))
+		to_chat(user, SPAN_WARNING("The patient has no head."))
+		return
+
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
@@ -107,6 +111,10 @@
 	if(!anes_tank)
 		to_chat(user, SPAN_WARNING("There is no anesthetic tank connected to the table, load one first."))
 		return
+	if(!H.has_limb("head"))
+		to_chat(user, SPAN_WARNING("The patient has no head."))
+		return
+
 	if(H.wear_mask)
 		var/obj/item/mask = H.wear_mask
 		if(mask.flags_inventory & CANTSTRIP)
@@ -220,7 +228,7 @@
 
 /obj/structure/machinery/optable/proc/take_victim(mob/living/carbon/C, mob/living/carbon/user)
 	if (C == user)
-		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."), \
+		user.visible_message(SPAN_NOTICE("[user] climbs on the operating table."),
 			SPAN_NOTICE("You climb on the operating table."), null, null, 4)
 	else
 		visible_message(SPAN_NOTICE("[C] has been laid on the operating table by [user]."), null, 4)

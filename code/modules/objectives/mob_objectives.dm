@@ -110,11 +110,14 @@
 			if(1)
 				if(ispredalien(X))
 					value = OBJECTIVE_ABSOLUTE_VALUE
-				else value = OBJECTIVE_LOW_VALUE
+				else
+					value = OBJECTIVE_LOW_VALUE
 			if(2)
 				value = OBJECTIVE_MEDIUM_VALUE
 			if(3)
 				value = OBJECTIVE_EXTREME_VALUE
+			if(4)
+				value = OBJECTIVE_ABSOLUTE_VALUE
 			else
 				if(isqueen(X)) //Queen is Tier 0 for some reason...
 					value = OBJECTIVE_ABSOLUTE_VALUE

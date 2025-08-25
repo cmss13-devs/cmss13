@@ -41,7 +41,8 @@
 		if(!M || !O) //Extra check in case the mob was deleted while we were transfering.
 			return
 		change_ckey(M, O.ckey)
-	else return
+	else
+		return
 
 /client/proc/cmd_admin_check_contents(mob/living/M as mob in GLOB.living_mob_list)
 	set name = "Check Contents"
@@ -79,7 +80,8 @@
 			H = GLOB.huds[MOB_HUD_FACTION_OBSERVER]
 		if("Xeno Status HUD")
 			H = GLOB.huds[MOB_HUD_XENO_STATUS]
-		else return
+		else
+			return
 
 	H.add_hud_to(M, HUD_SOURCE_ADMIN)
 	to_chat(src, SPAN_INFO("[hud_choice] enabled."))
@@ -89,12 +91,15 @@
 	set category = "Admin.Fun"
 	set name = "Gib"
 
-	if(!check_rights(R_ADMIN)) return
+	if(!check_rights(R_ADMIN))
+		return
 
 	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
-	if(confirm != "Yes") return
+	if(confirm != "Yes")
+		return
 	//Due to the delay here its easy for something to have happened to the mob
-	if(!M) return
+	if(!M)
+		return
 
 	message_admins("[key_name_admin(usr)] has gibbed [key_name_admin(M)]", 1)
 
@@ -214,11 +219,13 @@
 				"What type of narration?",
 				"Narration",
 				list(NARRATION_METHOD_SAY, NARRATION_METHOD_ME, NARRATION_METHOD_DIRECT))
-	if(!type) return
+	if(!type)
+		return
 	var/message = input(usr,
 				"What should it say?",
 				"Narrating as [selected.name]")
-	if(!message) return
+	if(!message)
+		return
 
 	var/list/heard = get_mobs_in_view(GLOB.world_view_size, selected)
 
@@ -325,7 +332,8 @@
 		return
 
 	for(var/obj/item/W in M)
-		if(istype(W,/obj/item/alien_embryo)) continue
+		if(istype(W,/obj/item/alien_embryo))
+			continue
 		M.drop_inv_item_on_ground(W)
 
 	message_admins("[key_name_admin(usr)] made [key_name_admin(M)] drop everything!")
@@ -399,7 +407,8 @@
 	set name = "Toggle Sleeping"
 	set category = null
 
-	if(!check_rights(0)) return
+	if(!check_rights(0))
+		return
 
 	if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
 		M.sleeping = 0

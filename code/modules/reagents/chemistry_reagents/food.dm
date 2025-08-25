@@ -17,6 +17,16 @@
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
 
+/datum/reagent/nutriment/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.5*volume
+	processing_tray.yield_mod += 0.1*volume
+	processing_tray.nutrilevel += 1*volume
+
+
+
 /datum/reagent/nutriment/egg
 	name = "Egg"
 	id = "egg"
@@ -39,7 +49,7 @@
 	name = "Meat Protein"
 	id = "meatprotein"
 	description = "Proteins found in various types of meat."
-	flags = REAGENT_NO_GENERATION
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/meat/fish
 	name = "Fish Meat"
@@ -51,7 +61,7 @@
 	name = "Plant Matter"
 	id = "plantmatter"
 	description = "Some sort of plant."
-	flags = REAGENT_NO_GENERATION
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/nutriment/grown/vegetable
 	name = "Vegetable"
@@ -89,6 +99,12 @@
 	description = "Cooked noodles."
 	flags = REAGENT_NO_GENERATION
 
+/datum/reagent/nutriment/nuts
+	name = "Nuts"
+	id = "nuts"
+	description = "Some sort of grinded nut, smells like almonds."
+	flags = REAGENT_NO_GENERATION
+
 
 /datum/reagent/lipozine
 	name = "Lipozine" // The anti-nutriment.
@@ -110,6 +126,7 @@
 	nutriment_factor = 2 * REAGENTS_METABOLISM
 	color = "#792300" // rgb: 121, 35, 0
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/ketchup
@@ -121,6 +138,30 @@
 	color = "#731008" // rgb: 115, 16, 8
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
+
+/datum/reagent/vegemite
+	name = "Vegemite"
+	id = "vegemite"
+	description = "A thick yeast extract food spread, salty, slightly bitter, malty, and has an umami flavour similar to beef bouillon, with a hint of radiation."
+	reagent_state = LIQUID
+	nutriment_factor = 7 * REAGENTS_METABOLISM
+	color = "#312007" // rgb: 115, 16, 8
+	chemclass = CHEM_CLASS_NONE
+	properties = list(PROPERTY_NUTRITIOUS = 3)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/vegemite/reaction_mob(mob/target_mob, method=TOUCH, volume, permeable)
+	if(target_mob.faction != FACTION_TWE)
+		to_chat(target_mob, (SPAN_ALERTWARNING("God... it's disgusting... eating that was not a good idea.")))
+
+/datum/reagent/vegemite/on_mob_life(mob/living/carbon/target_mob, potency = 1, delta_time)
+	. = ..()
+	if(!.)
+		return
+	if(prob(4) && ishuman(target_mob) && target_mob.faction != FACTION_TWE)
+		var/mob/living/carbon/human/target_human = target_mob
+		target_mob.make_dizzy(10)
+		target_human.vomit()
 
 /datum/reagent/capsaicin
 	name = "Capsaicin Oil"
@@ -179,6 +220,94 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPOTHERMIC = 6)
 
+// HYDRO HARD TIER CHEMS
+
+/datum/reagent/atropine //poppy
+	name = "Atropine"
+	id = "atropine"
+	description = "Plant based chemical replaced and superseded by Epinephrine, it has a plethora of side effects but is considerably stronger than epinephrine" //I know, now stay shush
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_ELECTROGENETIC = 7, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 0.5)
+
+/datum/reagent/thymol //some kind of thyme
+	name = "Thymol"
+	id = "thymol"
+	description = "Known chemical used in the 20th century as innovative way to combat hookworm parasites and generally all kinds of infections, it was since used as natural pesticide."
+	reagent_state = LIQUID
+	color = "#badb9e" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_ANTIPARASITIC = 0.5)
+
+/datum/reagent/psoralen //cabbage, doesnt make sense but eh
+	name = "Psoralen"
+	id = "psoralen"
+	description = "Naturally occuring carcinogenic, used commonly as mutagen for DNA research."
+	reagent_state = LIQUID
+	color = "#c9ca75" // rgb: 139, 166, 233
+
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARCINOGENIC = 6)
+
+/datum/reagent/coniine //carrot
+	name = "Coniine"
+	id = "coniine"
+	description = "Potent neurotoxic chemical commonly used as a murder weapon, death is caused by respiration failure and paralysis"
+	reagent_state = LIQUID
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	color = "#8f947b" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_SEDATIVE = 5)
+
+/datum/reagent/zygacine
+	name = "Zygacine"
+	id = "zygacine"
+	description = "Causes convulsing of the heart muscles before blocking the contractions entirely"
+	reagent_state = LIQUID
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	color = "#aaaaaa" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARDIOTOXIC = 3)
+
+/datum/reagent/digoxin
+	name = "Digoxin"
+	id = "digoxin"
+	description = "One of the oldest chemicals to enter field in treating many heart conditions, besides few sides effects, it can be used to great effect."
+	reagent_state = LIQUID
+	overdose = LOWM_REAGENTS_OVERDOSE
+	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
+	color = "#9ec265" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_CARDIOPEUTIC = 3, PROPERTY_FLUFFING = 1)
+
+/datum/reagent/urishiol
+	name = "Urishiol"
+	id = "urishiol"
+	description = "Potent skin and tissue irratant causing burns which lasts weeks after the contact is made, commonly encountered in plants like Poision Ivy, Poison Oak, and simular"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
+	custom_metabolism = AMOUNT_PER_TIME(15, 20 MINUTES)
+	reagent_state = LIQUID
+	color = "#c0bf90" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_ALLERGENIC = 6, PROPERTY_CORROSIVE = 3)
+
+/datum/reagent/phenol
+	name = "Phenol"
+	id = "phenol"
+	description = "Skin analgesic used for targeted operation and mild pain relief of an area. While safe on the skin, extremely lethal on injection."
+	overdose = LOWM_REAGENTS_OVERDOSE
+	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
+	reagent_state = LIQUID
+	color = "#c095c9" // rgb: 139, 166, 233
+	chemclass = CHEM_CLASS_HYDRO
+	properties = list(PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 5)
+
+
+//HARD TIER HYDRO END.
 /datum/reagent/sodiumchloride
 	name = "Table Salt"
 	id = "sodiumchloride"
@@ -192,7 +321,6 @@
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_RELAXING = 1)
 
 /datum/reagent/blackpepper
 	name = "Black Pepper"
@@ -210,6 +338,28 @@
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	color = "#302000" // rgb: 48, 32, 0
 	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+
+/datum/reagent/coco_drink_hazelnut
+	name = "Chocolate Hazelnut Drink"
+	id = "coco_drink_hazelnut"
+	description = "Smooth and creamy chocolate drink, with a hint of hazelnut flavor."
+	reagent_state = LIQUID
+	nutriment_factor = 2 * REAGENTS_METABOLISM
+	color = "#865e2a" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+
+/datum/reagent/coco_drink
+	name = "Chocolate Drink"
+	id = "coco_drink"
+	description = "Smooth and creamy chocolate drink."
+	reagent_state = LIQUID
+	nutriment_factor = 2 * REAGENTS_METABOLISM
+	color = "#61450e" // rgb: 48, 32, 0
+	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
 /datum/reagent/psilocybin
@@ -291,6 +441,17 @@
 	color = COLOR_WHITE
 	properties = list(PROPERTY_NUTRITIOUS = 2)
 
+/datum/reagent/buckwheat
+	name = "Buckwheat"
+	id = "buckwheat"
+	description = "A grain porridge made out of buckwheat."
+	reagent_state = SOLID
+	nutriment_factor = 1 * REAGENTS_METABOLISM
+	color = COLOR_BROWN
+	chemclass = CHEM_CLASS_NONE
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
 /datum/reagent/cherryjelly
 	name = "Cherry Jelly"
 	id = "cherryjelly"
@@ -306,4 +467,54 @@
 	description = "Honey is a natural sweet, viscous food substance composed of mainly fructose and glucose."
 	color = COLOR_YELLOW
 	chemclass = CHEM_CLASS_RARE
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/electrolyte_grape_beverage
+	name = "Grape Beverage"
+	id = "dehydrated_grape_beverage"
+	description = "Powderized electrolyte beverage with a grape flavor, ready to be mixed with water."
+	reagent_state = SOLID
+	color = "#74206f" // rgb: 116, 32, 111
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/electrolyte_orange_beverage
+	name = "Orange Beverage"
+	id = "electrolyte_orange_beverage"
+	description = "Powderized electrolyte beverage with an orange flavor, ready to be mixed with water. Smells of, surprise surprise, oranges."
+	reagent_state = SOLID
+	color = "#FFA500" // rgb: 255, 165, 0
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/electrolyte_lemonlime_beverage
+	name = "Lemon-Lime Beverage"
+	id = "electrolyte_lemonlime_beverage"
+	description = "Powderized electrolyte beverage with a lemon-lime flavor, ready to be mixed with water. Smells of, surprise surprise, lemons and limes."
+	reagent_state = SOLID
+	color = "#35b435" // rgb: 53, 180, 53
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/hazelnut_beverage
+	name = "Chocolate Hazelnut Protein Beverage"
+	id = "hazelnut_beverage"
+	description = "Powderized chocolate and hazelnut protein drink beverage, ready to be mixed with water."
+	reagent_state = SOLID
+	color = "#ac4729" // rgb: 172, 71, 41
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_NUTRITIOUS = 2)
+	flags = REAGENT_NO_GENERATION
+
+/datum/reagent/coco_beverage
+	name = "Chocolate Protein Beverage"
+	id = "chocolate_beverage"
+	description = "Powderized chocolate drink beverage, ready to be mixed with water."
+	reagent_state = SOLID
+	color = "#46271e" // rgb: 70, 39, 30
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_NUTRITIOUS = 2)
 	flags = REAGENT_NO_GENERATION

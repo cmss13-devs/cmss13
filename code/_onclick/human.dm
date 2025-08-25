@@ -70,7 +70,7 @@
 
 /mob/living/carbon/human/UnarmedAttack(atom/A, proximity, click_parameters)
 
-	if(body_position == LYING_DOWN) //No attacks while laying down
+	if(body_position == LYING_DOWN && !HAS_TRAIT(src, TRAIT_HAULED)) //No attacks while laying down
 		return 0
 
 	var/obj/item/clothing/gloves/G = gloves // not typecast specifically enough in defines
@@ -86,6 +86,7 @@
 		to_chat(src, SPAN_NOTICE("You try to move your [temp.display_name], but cannot!"))
 		return
 
+	SEND_SIGNAL(src, COMSIG_HUMAN_UNARMED_ATTACK, A)
 	A.attack_hand(src, click_parameters)
 
 /datum/proc/handle_click(mob/living/carbon/human/user, atom/A, params) //Heres our handle click relay proc thing.
@@ -112,7 +113,7 @@
 			if(user.get_active_hand())
 				to_chat(user, SPAN_WARNING("You can't unstrap \the [back_item] from [xeno] with your hands full."))
 				return
-			user.visible_message(SPAN_NOTICE("\The [user] starts unstrapping \the [back_item] from [xeno]"), \
+			user.visible_message(SPAN_NOTICE("\The [user] starts unstrapping \the [back_item] from [xeno]"),
 			SPAN_NOTICE("You start unstrapping \the [back_item] from [xeno]."), null, 5, CHAT_TYPE_FLUFF_ACTION)
 			if(!do_after(user, HUMAN_STRIP_DELAY * user.get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_GENERIC, xeno, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
 				to_chat(user, SPAN_WARNING("You were interrupted!"))
@@ -142,13 +143,13 @@
 
 	var/mob/living/carbon/human/target = dropping
 
-	user.visible_message(SPAN_WARNING("[src] starts loading [target] onto their back."),\
+	user.visible_message(SPAN_WARNING("[src] starts loading [target] onto their back."),
 	SPAN_WARNING("You start loading [target] onto your back."))
 
 	if(!do_after(src, carry_delay * get_skill_duration_multiplier(SKILL_FIREMAN), INTERRUPT_ALL, BUSY_ICON_HOSTILE, pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return
 
-	user.visible_message(SPAN_WARNING("[src] loads [target] onto their back."),\
+	user.visible_message(SPAN_WARNING("[src] loads [target] onto their back."),
 	SPAN_WARNING("You load [target] onto your back."))
 
 	if(pulling != dropping || !dropping || QDELETED(dropping))
@@ -160,3 +161,13 @@
 	target.update_transform(TRUE)
 
 
+/mob/living/carbon/human/RangedAttack(atom/A)
+	. = ..()
+
+	if(.)
+		return
+
+	var/turf/target_turf = get_turf(get_step(src, Get_Compass_Dir(src, A)))
+
+	if(istype(target_turf, /turf/open_space))
+		return target_turf.attack_hand(src)

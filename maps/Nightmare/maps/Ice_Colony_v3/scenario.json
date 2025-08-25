@@ -12,9 +12,11 @@
 {
     "type": "pick", "name": "Panic Room",
     "choices": [
-        { "weight": 10, "type": "def", "values": { "panic_room": "none"} },
-        { "weight": 3, "type": "def", "values": { "panic_room": "full"} }
+        { "weight": 6, "type": "def", "values": { "panic_room": "none"} },
+        { "weight": 3, "type": "def", "values": { "panic_room": "full"} },
+        { "weight": 1, "type": "def", "values": { "panic_room": "clfraid"} }
     ]
 }
+
 ]
 

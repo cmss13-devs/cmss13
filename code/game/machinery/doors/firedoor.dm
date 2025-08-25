@@ -143,8 +143,8 @@
 		to_chat(user, SPAN_WARNING("Access denied.  Please wait for authorities to arrive, or for the alert to clear."))
 		return
 	else
-		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),\
-		"\The [src] [density ? "open" : "close"]s.",\
+		user.visible_message(SPAN_NOTICE("\The [src] [density ? "open" : "close"]s for \the [user]."),
+		"\The [src] [density ? "open" : "close"]s.",
 		"You hear a beep, and a door opening.")
 
 	var/needs_to_close = 0
@@ -175,8 +175,8 @@
 		var/obj/item/tool/weldingtool/W = C
 		if(W.remove_fuel(0, user))
 			blocked = !blocked
-			user.visible_message(SPAN_DANGER("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W]."),\
-			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",\
+			user.visible_message(SPAN_DANGER("\The [user] [blocked ? "welds" : "unwelds"] \the [src] with \a [W]."),
+			"You [blocked ? "weld" : "unweld"] \the [src] with \the [W].",
 			"You hear something being welded.")
 			update_icon()
 			return
@@ -186,19 +186,20 @@
 			return
 
 		if(blocked)
-			user.visible_message(SPAN_DANGER("\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!"),\
-			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",\
+			user.visible_message(SPAN_DANGER("\The [user] pries at \the [src] with \a [C], but \the [src] is welded in place!"),
+			"You try to pry \the [src] [density ? "open" : "closed"], but it is welded in place!",
 			"You hear someone struggle and metal straining.")
 			return
 
-		user.visible_message(SPAN_DANGER("\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!"),\
-				SPAN_NOTICE("You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!"),\
+		user.visible_message(SPAN_DANGER("\The [user] starts to force \the [src] [density ? "open" : "closed"] with \a [C]!"),
+				SPAN_NOTICE("You start forcing \the [src] [density ? "open" : "closed"] with \the [C]!"),
 				"You hear metal strain.")
 		var/old_density = density
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			if(blocked || density != old_density) return
-			user.visible_message(SPAN_DANGER("\The [user] forces \the [blocked ? "welded " : "" ][name] [density ? "open" : "closed"] with \a [C]!"),\
-				SPAN_NOTICE("You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!"),\
+			if(blocked || density != old_density)
+				return
+			user.visible_message(SPAN_DANGER("\The [user] forces \the [blocked ? "welded " : "" ][name] [density ? "open" : "closed"] with \a [C]!"),
+				SPAN_NOTICE("You force \the [blocked ? "welded " : ""][name] [density ? "open" : "closed"] with \the [C]!"),
 				"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			spawn(0)
 				if(density)
@@ -213,12 +214,12 @@
 	if(istype(C, /obj/item/weapon/zombie_claws))
 		if(operating)
 			return
-		user.visible_message(SPAN_DANGER("\The zombie starts to force \the [src] [density ? "open" : "closed"] with it's claws!!!"),\
-				"You start forcing \the [src] [density ? "open" : "closed"] with your claws!",\
+		user.visible_message(SPAN_DANGER("\The zombie starts to force \the [src] [density ? "open" : "closed"] with it's claws!!!"),
+				"You start forcing \the [src] [density ? "open" : "closed"] with your claws!",
 				"You hear metal strain.")
 		if(do_after(user, 150, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			user.visible_message(SPAN_DANGER("\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!"),\
-			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",\
+			user.visible_message(SPAN_DANGER("\The [user] forces \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \a [C]!"),
+			"You force \the [ blocked ? "welded" : "" ] [src] [density ? "open" : "closed"] with \the [C]!",
 			"You hear metal strain and groan, and a door [density ? "opening" : "closing"].")
 			if(density)
 				INVOKE_ASYNC(src, PROC_REF(open), TRUE)

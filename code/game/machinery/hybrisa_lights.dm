@@ -48,6 +48,8 @@
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "street_off"
 	layer = BILLBOARD_LAYER
+	light_color = LIGHT_COLOR_XENON
+	explo_proof = FALSE
 
 /obj/structure/machinery/colony_floodlight/street/Initialize(mapload, ...)
 	. = ..()
@@ -61,18 +63,30 @@
 	else
 		icon_state = "street_off"
 
+/obj/structure/machinery/colony_floodlight/street/ex_act(severity)
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			return
+		if(EXPLOSION_THRESHOLD_LOW to INFINITY)
+			deconstruct(FALSE)
+			return
+
+/obj/structure/machinery/colony_floodlight/street/deconstruct(disassembled)
+	var/obj/structure/prop/hybrisa/misc/pole_stump/stump = new(loc)
+	stump.pixel_x = pixel_x
+	stump.pixel_y = pixel_y
+	return ..()
+
 // Traffic
 /obj/structure/machinery/colony_floodlight/traffic
-	lum_value = 0
 	name = "traffic light"
 	desc = "A traffic light"
 	icon = 'icons/obj/structures/props/streetlights.dmi'
 	icon_state = "trafficlight"
-	bound_width = 32
-	bound_height = 32
-	density = TRUE
 	health = 200
 	layer = BILLBOARD_LAYER
+	lum_value = 0
+	explo_proof = FALSE
 
 /obj/structure/machinery/colony_floodlight/traffic/Initialize(mapload, ...)
 	. = ..()
@@ -96,6 +110,20 @@
 		icon_state = "trafficlight_alt_on"
 	else
 		icon_state = "trafficlight_alt"
+
+/obj/structure/machinery/colony_floodlight/traffic/ex_act(severity)
+	switch(severity)
+		if(0 to EXPLOSION_THRESHOLD_LOW)
+			return
+		if(EXPLOSION_THRESHOLD_LOW to INFINITY)
+			deconstruct(FALSE)
+			return
+
+/obj/structure/machinery/colony_floodlight/traffic/deconstruct(disassembled)
+	var/obj/structure/prop/hybrisa/misc/pole_stump/traffic/stump = new(loc)
+	stump.pixel_x = pixel_x
+	stump.pixel_y = pixel_y
+	return ..()
 
 // Engineer Floor lights
 /obj/structure/machinery/colony_floodlight_switch/engineerconsole_switch

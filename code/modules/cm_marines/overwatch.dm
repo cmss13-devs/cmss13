@@ -238,7 +238,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			continue //just to be safe
 		var/mob_name = "unknown"
 		var/mob_state = ""
-		var/has_helmet = TRUE
+		var/has_helmet = FALSE
 		var/role = "unknown"
 		var/rank = "unknown"
 		var/acting_sl = ""
@@ -301,8 +301,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				if(DEAD)
 					mob_state = "Dead"
 
-			if(!marine_has_camera(marine_human))
-				has_helmet = FALSE
+			if(marine_has_camera(marine_human))
+				has_helmet = TRUE
 
 			if(!marine_human.key || !marine_human.client)
 				if(marine_human.stat != DEAD)
@@ -413,7 +413,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			continue //just to be safe
 		var/mob_name = "unknown"
 		var/mob_state = ""
-		var/has_helmet = TRUE
+		var/has_helmet = FALSE
 		var/role = "unknown"
 		var/rank = "unknown"
 
@@ -459,8 +459,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			if(DEAD)
 				mob_state = "Dead"
 
-		if(!marine_has_camera(marine_human))
-			has_helmet = FALSE
+		if(marine_has_camera(marine_human))
+			has_helmet = TRUE
 
 		switch(role)
 			if(JOB_CO)
@@ -791,6 +791,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			if(current_squad)
 				var/mob/living/carbon/human/cam_target = locate(params["target_ref"])
+
+				if(!istype(cam_target))
+					return
+
 				var/obj/item/new_holder = cam_target.get_camera_holder()
 				var/obj/structure/machinery/camera/new_cam
 				if(new_holder)

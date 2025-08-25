@@ -331,7 +331,7 @@
 		return FALSE
 
 	if(!acid_level)
-		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]"))
+		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
 		return FALSE
 
 	var/trap_acid_level = 0

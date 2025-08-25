@@ -33,7 +33,7 @@
 	var/land_layer = MOB_LAYER
 	appearance_flags = TILE_BOUND | KEEP_TOGETHER
 
-	var/obj/effect/warning/droppod/warning_zone
+	var/obj/effect/warning/droppod/smoke/warning_zone
 
 /obj/structure/droppod/proc/launch(turf/T)
 	if(!forceMove(T))

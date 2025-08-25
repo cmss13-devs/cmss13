@@ -79,16 +79,17 @@
 		display_list += GLOB.cm_vending_vehicle_crew_apc
 		return display_list
 
-	if(selected_vehicle == "TANK")
-		if(available_categories)
-			display_list = GLOB.cm_vending_vehicle_crew_tank
+	switch(selected_vehicle)
+		if("TANK")
+			if(available_categories)
+				display_list = GLOB.cm_vending_vehicle_crew_tank
 
-	else if(selected_vehicle == "ARC")
-		display_list = GLOB.cm_vending_vehicle_crew_arc
+		if("ARC")
+			display_list = GLOB.cm_vending_vehicle_crew_arc
 
-	else if(selected_vehicle == "TANK")
-		if(available_categories)
-			display_list = GLOB.cm_vending_vehicle_crew_apc
+		if("APC")
+			if(available_categories)
+				display_list = GLOB.cm_vending_vehicle_crew_apc
 		else //APC stuff costs more to prevent 4000 points spent on shitton of ammunition
 			display_list = GLOB.cm_vending_vehicle_crew_apc_spare
 	return display_list

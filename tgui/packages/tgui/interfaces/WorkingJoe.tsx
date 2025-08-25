@@ -268,12 +268,28 @@ const MainMenu = (props) => {
         <Section>
           <h1 style={{ textAlign: 'center' }}>Core Security Protocols</h1>
           <Stack>
-            <Stack.Item grow mr="0">
+            <Stack.Item grow>
+              <Button
+                align="center"
+                tooltip="Release stored CN20-X nerve gas from security vents."
+                icon="wind"
+                color="red"
+                ml="auto"
+                px="2rem"
+                width="100%"
+                bold
+                onClick={() => act('page_core_gas')}
+              >
+                Nerve Gas Control
+              </Button>
+            </Stack.Item>
+            <Stack.Item grow>
               <Button.Confirm
                 align="center"
                 tooltip="Activate/Deactivate the AI Core Lockdown."
                 icon="lock"
                 color="red"
+                ml="auto"
                 px="2rem"
                 width="100%"
                 bold

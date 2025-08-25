@@ -40,7 +40,7 @@ import './styles/themes/xeno.scss';
 import './styles/themes/hive_status.scss';
 
 import { perf } from 'common/perf';
-import { setupHotReloading } from 'tgui-dev-server/link/client.mjs';
+import { setupHotReloading } from 'tgui-dev-server/link/client';
 
 import { App } from './App';
 import { setGlobalStore } from './backend';

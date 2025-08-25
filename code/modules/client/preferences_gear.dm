@@ -809,12 +809,6 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/weapon/gun/revolver/m44/custom
 	allowed_origins = USCM_ORIGINS
 
-/datum/gear/weapon/m2049_blaster
-	display_name = "M2049 Blaster"
-	path = /obj/item/storage/box/guncase/m2049
-	allowed_origins = USCM_ORIGINS
-	fluff_cost = 5
-
 /datum/gear/drink
 	category = "Canned drinks"
 	fluff_cost = 1

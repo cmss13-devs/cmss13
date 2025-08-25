@@ -156,7 +156,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security_full, list(
 	desc = "An automated rack hooked up to a colossal storage of Corporate Security standard-issue equipment."
 
 /obj/structure/machinery/cm_vending/clothing/corporate_security/get_listed_products(mob/living/carbon/human/user)
-	if(user.wear_id)
+	if(user?.wear_id)
 		var/obj/item/card/id/id_card = user.wear_id
 		if(id_card.paygrade == PAY_SHORT_WY_SEC_PPC)
 			return GLOB.cm_vending_clothing_corporate_security_full

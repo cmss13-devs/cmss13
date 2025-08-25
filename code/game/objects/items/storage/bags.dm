@@ -26,8 +26,11 @@
 	name = "trash bag"
 	desc = "It's the heavy-duty black polymer kind. Time to take out the trash!"
 	icon = 'icons/obj/janitor.dmi'
-	icon_state = "trashbag0"
-	item_state = "trashbag"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/janitor_righthand.dmi',
+	)
+	icon_state = "trashbag"
 
 	w_class = SIZE_LARGE
 	max_w_class = SIZE_MEDIUM
@@ -39,19 +42,23 @@
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
 	flags_equip_slot = NONE
 
-/obj/item/storage/bag/trash/update_icon()
+/obj/item/storage/bag/trash/update_icon(mob/living/carbon/human/user)
 	var/sum_storage_cost = 0
 	for(var/obj/item/item in contents)
 		sum_storage_cost += item.get_storage_cost()
 
 	if(!sum_storage_cost)
-		icon_state = "trashbag0"
+		icon_state = "trashbag_empty"
+		item_state = "trashbag_empty"
 	else if(sum_storage_cost < floor(max_storage_space * 0.35))
-		icon_state = "trashbag1"
+		icon_state = "trashbag_small"
+		item_state = "trashbag_small"
 	else if(sum_storage_cost < floor(max_storage_space * 0.7))
-		icon_state = "trashbag2"
+		icon_state = "trashbag_mid"
+		item_state = "trashbag_mid"
 	else
-		icon_state = "trashbag3"
+		icon_state = "trashbag_full"
+		item_state = "trashbag_full"
 
 // -----------------------------
 // Plastic Bag
@@ -146,7 +153,8 @@
 // Modified handle_item_insertion & _item_insertion.  Would prefer not to, but...
 /obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	var/obj/item/stack/sheet/S = W
-	if(!istype(S)) return 0
+	if(!istype(S))
+		return 0
 
 	var/amount
 	var/inserted = 0
@@ -225,7 +233,8 @@
 // modified remove_from_storage and _item_removal.
 /obj/item/storage/bag/sheetsnatcher/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/stack/sheet/S = W
-	if(!istype(S)) return 0
+	if(!istype(S))
+		return 0
 
 	//I would prefer to drop a new stack, but the item/attack_hand code
 	// that calls this can't receive a different object than you clicked on.

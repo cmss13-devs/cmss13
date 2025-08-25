@@ -6,7 +6,6 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
-	uses_skin_color = TRUE
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
@@ -24,7 +23,8 @@
 	flesh_color = "#907E4A"
 	speech_sounds = list('sound/voice/pred_click1.ogg', 'sound/voice/pred_click2.ogg')
 	speech_chance = 100
-	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
+	death_message = "lets out a final bellowing cry, falling motionless and lifeless soon after..."
+	death_sound = "pred_death"
 	darksight = 5
 	default_lighting_alpha = LIGHTING_PLANE_ALPHA_YAUTJA
 	flags_sight = SEE_MOBS
@@ -32,14 +32,15 @@
 	total_health = 175 //more health than regular humans
 	timed_hug = FALSE
 
-	bloodsplatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter
+	bloodsplatter_type = /obj/effect/bloodsplatter/yautjasplatter
+
+	burstscreams = list(MALE = "pred_preburst", FEMALE = "pred_preburst")
 
 	heat_level_1 = 500
 	heat_level_2 = 700
 	heat_level_3 = 1000
 
 	inherent_verbs = list(
-		/mob/living/carbon/human/proc/pred_buy,
 		/mob/living/carbon/human/proc/butcher,
 		/mob/living/carbon/human/proc/mark_for_hunt,
 		/mob/living/carbon/human/proc/remove_from_hunt,
@@ -150,15 +151,15 @@
 	set_predator_status(H, "Cryo")
 
 /datum/species/yautja/proc/set_predator_status(mob/living/carbon/human/H, status = "Alive")
-	if(!H.persistent_ckey)
+	if(!H.persistent_username)
 		return
 	var/datum/game_mode/GM
 	if(SSticker?.mode)
 		GM = SSticker.mode
-		if(H.persistent_ckey in GM.predators)
-			GM.predators[H.persistent_ckey]["Status"] = status
+		if(H.persistent_username in GM.predators)
+			GM.predators[H.persistent_username]["Status"] = status
 		else
-			GM.predators[H.persistent_ckey] = list("Name" = H.real_name, "Status" = status)
+			GM.predators[H.persistent_username] = list("Name" = H.real_name, "Status" = status)
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
 	..()
@@ -212,7 +213,6 @@
 				limb.time_to_knit = 600 // 1 minute to self heal bone break, time is in tenths of a second
 
 	hunter.set_languages(list(LANGUAGE_YAUTJA))
-	give_action(hunter, /datum/action/predator_action/claim_equipment)
 	give_action(hunter, /datum/action/yautja_emote_panel)
 	give_action(hunter, /datum/action/predator_action/mark_for_hunt)
 	give_action(hunter, /datum/action/predator_action/mark_panel)

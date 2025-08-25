@@ -61,6 +61,8 @@
 
 /datum/surgery_step/mstabilize_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(40,40)
+	target.Slow(300)
+	target.Superslow(150)
 
 	if(isspeciesyautja(target))
 		target.emote("click2")
@@ -115,6 +117,8 @@
 
 /datum/surgery_step/mtend_wounds/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	target.heal_overall_damage(65,65)
+	target.Slow(300)
+	target.Superslow(150)
 
 	for(var/datum/internal_organ/organ in target.internal_organs) //Fixes all organs
 		organ.rejuvenate()
@@ -166,7 +170,9 @@
 			SPAN_NOTICE("[user] begns to clamp the treated wounds on [target]'s body with [tool]."))
 
 /datum/surgery_step/cauterize/mclamp_wound/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	target.heal_overall_damage(65,65) //makes sure that all damage is healed
+	target.heal_overall_damage(125,125) //makes sure that all damage is healed
+	target.SetSlow(0 SECONDS)
+	target.SetSuperslow(0 SECONDS)
 
 	if(user == target)
 		user.visible_message(SPAN_NOTICE("[user] finshes closing the treated wounds on their body with [tool]."),

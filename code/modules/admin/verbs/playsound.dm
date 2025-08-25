@@ -16,36 +16,38 @@
 	var/announce_title = TRUE
 
 	if(sound_mode == "Web")
-		var/ytdl = CONFIG_GET(string/invoke_youtubedl)
-		if(!ytdl)
-			to_chat(src, SPAN_BOLDWARNING("Youtube-dl was not configured, action unavailable"), confidential = TRUE) //Check config.txt for the INVOKE_YOUTUBEDL value
+		var/list/datum/internet_media/media_players = list()
+
+		if(CONFIG_GET(string/invoke_youtubedl))
+			media_players += new /datum/internet_media/yt_dlp
+
+		if(CONFIG_GET(string/cobalt_base_api))
+			media_players += new /datum/internet_media/cobalt
+
+		if(!length(media_players))
+			to_chat(src, SPAN_BOLDWARNING("Your server host has not set up any web media players."))
 			return
 
-		web_sound_input = input("Enter content URL (supported sites only)", "Play Internet Sound via youtube-dl") as text|null
+		web_sound_input = input("Enter content URL (supported sites only)", "Play Internet Sound") as text|null
 		if(!istext(web_sound_input) || !length(web_sound_input))
 			return
 
 		web_sound_input = trim(web_sound_input)
 
-		if(findtext(web_sound_input, ":") && !findtext(web_sound_input, GLOB.is_http_protocol))
-			to_chat(src, SPAN_WARNING("Non-http(s) URIs are not allowed."))
-			to_chat(src, SPAN_WARNING("For youtube-dl shortcuts like ytsearch: please use the appropriate full url from the website."))
+		var/datum/media_response/response
+		for(var/datum/internet_media/player as anything in media_players)
+			response = player.get_media(web_sound_input)
+
+			if(istype(response))
+				break
+
+		if(!istype(response))
+			to_chat(src, SPAN_BOLDWARNING("All configured web media players failed to provide a valid response:"))
+			for(var/datum/internet_media/player as anything in media_players)
+				to_chat(src, SPAN_WARNING("[player.type] error: [player.error]"))
 			return
 
-		var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height<=360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_url_scrub(web_sound_input)]\"")
-		var/errorlevel = output[SHELLEO_ERRORLEVEL]
-		var/stdout = output[SHELLEO_STDOUT]
-		var/stderr = output[SHELLEO_STDERR]
-
-		if(errorlevel)
-			to_chat(src, SPAN_WARNING("Youtube-dl URL retrieval FAILED: [stderr]"))
-			return
-
-		try
-			data = json_decode(stdout)
-		catch(var/exception/e)
-			to_chat(src, SPAN_WARNING("Youtube-dl JSON parsing FAILED: [e]: [stdout]"))
-			return
+		data = response.get_list()
 
 	else if(sound_mode == "Upload")
 		var/current_transport = CONFIG_GET(string/asset_transport)
@@ -80,16 +82,20 @@
 	var/list/music_extra_data = list()
 	if(data["url"])
 		music_extra_data["link"] = data["url"]
-		music_extra_data["title"] = data["title"]
 		web_sound_url = data["url"]
-		title = data["title"]
 		music_extra_data["start"] = data["start_time"]
 		music_extra_data["end"] = data["end_time"]
+
+		if(isnull(data["title"]))
+			data["title"] = tgui_input_text(src, "What is the title of this media?", "Media Title")
+		title = data["title"]
+		music_extra_data["title"] = data["title"]
 
 	if(!must_send_assets && web_sound_url && !findtext(web_sound_url, GLOB.is_http_protocol))
 		to_chat(src, SPAN_BOLDWARNING("BLOCKED: Content URL not using http(s) protocol"), confidential = TRUE)
 		to_chat(src, SPAN_WARNING("The media provider returned a content URL that isn't using the HTTP or HTTPS protocol"), confidential = TRUE)
 		return
+
 
 	switch(tgui_alert(src, "Show the name of this sound to the players?", "Sound Name", list("Yes","No","Cancel")))
 		if("No")
@@ -118,7 +124,7 @@
 		if("Ghosts")
 			targets = GLOB.observer_list + GLOB.dead_mob_list
 		if("All In View Range")
-			var/list/atom/ranged_atoms = urange(usr.client.view, get_turf(usr))
+			var/list/atom/ranged_atoms = long_range(usr.client.view, get_turf(usr))
 			for(var/mob/receiver in ranged_atoms)
 				targets += receiver
 		if("Single Mob")

@@ -41,12 +41,19 @@
 			return list[index]
 	return
 
-//Checks for specific types in a list
-/proc/is_type_in_list(atom/A, list/L)
-	for(var/type in L)
-		if(istype(A, type))
-			return 1
-	return 0
+///Checks if the needle atom is any type in the type_list
+/proc/is_type_in_list(atom/needle, list/type_list)
+	for(var/type in type_list)
+		if(istype(needle, type))
+			return TRUE
+	return FALSE
+
+///Checks if the needle path derives from any in the path_list
+/proc/is_path_in_list(needle, list/path_list)
+	for(var/path in path_list)
+		if(ispath(needle, path))
+			return TRUE
+	return FALSE
 
 //Removes any null entries from the list
 /proc/listclearnulls(list/list)
@@ -141,8 +148,10 @@
 		var/i
 		while(length(L_o))
 			i = pick(L_o)
-			if(!ref) L_n += i
-			else L_n[i] = L_o[i]
+			if(!ref)
+				L_n += i
+			else
+				L_n[i] = L_o[i]
 			L_o -= i
 
 //Return a list with no duplicate entries

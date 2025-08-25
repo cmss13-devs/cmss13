@@ -245,7 +245,19 @@
 					if(JOB_SQUAD_SMARTGUN)
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)
-						rank = "Spc"
+						switch(H.rank_override)
+							if("spec_demo")
+								rank = "SpcDem"
+							if("spec_sniper")
+								rank = "SpcSn"
+							if("spec_grenadier")
+								rank = "SpcGr"
+							if("spec_sharp")
+								rank = "SpcShp"
+							if("spec_pyro")
+								rank = "SpcPy"
+							else
+								rank = "Spc"
 					if(JOB_SQUAD_TEAM_LEADER)
 						rank = "TL"
 					if(JOB_SQUAD_LEADER)

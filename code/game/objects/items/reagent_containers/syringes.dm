@@ -9,6 +9,10 @@
 	name = "syringe"
 	desc = "A syringe."
 	icon = 'icons/obj/items/syringe.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	item_state = "syringe_0"
 	icon_state = "0"
 	matter = list("glass" = 150)
@@ -17,6 +21,7 @@
 	volume = 15
 	w_class = SIZE_TINY
 	flags_item = NOBLUDGEON
+	flags_equip_slot = SLOT_WAIST|SLOT_EAR|SLOT_SUIT_STORE
 	sharp = IS_SHARP_ITEM_SIMPLE
 	transparent = TRUE
 	reagent_desc_override = TRUE //uses display_contents
@@ -33,7 +38,7 @@
 
 
 /obj/item/reagent_container/syringe/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/syringe/dropped(mob/user)
@@ -60,8 +65,10 @@
 	return
 
 /obj/item/reagent_container/syringe/afterattack(obj/target, mob/user, proximity)
-	if(!proximity) return
-	if(!target.reagents) return
+	if(!proximity)
+		return
+	if(!target.reagents)
+		return
 
 	if(mode == SYRINGE_BROKEN)
 		to_chat(user, SPAN_DANGER("This syringe is broken!"))
@@ -74,7 +81,7 @@
 			M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Used CQC skill to stop [key_name(user)] injecting them.</font>")
 			user.attack_log += text("\[[time_stamp()]\] <font color='red'>Was stopped from injecting [key_name(M)] by their cqc skill.</font>")
 			msg_admin_attack("[key_name(user)] got robusted by the CQC of [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-			M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"), \
+			M.visible_message(SPAN_DANGER("[M]'s reflexes kick in and knock [user] to the ground before they could use \the [src]'!"),
 				SPAN_WARNING("You knock [user] to the ground before they inject you!"), null, 5)
 			playsound(user.loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 			return
@@ -173,7 +180,8 @@
 					else
 						user.visible_message(SPAN_DANGER("<B>[user] begins hunting for an injection port on [target]'s suit!</B>"))
 
-					if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
+					if(!do_after(user, injection_time, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+						return
 
 					user.visible_message(SPAN_DANGER("[user] injects [target] with the syringe!"))
 
@@ -289,6 +297,10 @@
 	name = "Lethal Injection Syringe"
 	desc = "A syringe used for lethal injections."
 	icon = 'icons/obj/items/syringe.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	item_state = "syringe_0"
 	icon_state = "0"
 	amount_per_transfer_from_this = 50
@@ -300,7 +312,7 @@
 	update_icon()
 
 /obj/item/reagent_container/ld50_syringe/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/ld50_syringe/dropped(mob/user)
@@ -320,7 +332,8 @@
 	return
 
 /obj/item/reagent_container/ld50_syringe/afterattack(obj/target, mob/user , flag)
-	if(!target.reagents) return
+	if(!target.reagents)
+		return
 
 	switch(mode)
 		if(SYRINGE_DRAW)
@@ -368,7 +381,8 @@
 
 			if(ismob(target) && target != user)
 				user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target] with a giant syringe!</B>"))
-				if(!do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
+				if(!do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+					return
 				user.visible_message(SPAN_DANGER("[user] injects [target] with a giant syringe!"))
 				src.reagents.reaction(target, INGEST)
 			if(ismob(target) && target == user)

@@ -27,10 +27,10 @@
 
 /obj/item/prop/laz_top
 	name = "lazertop"
-	icon = 'icons/obj/structures/props/server_equipment.dmi'
-	icon_state = "laptop-gun"
-	item_state = ""
 	desc = "A Rexim RXF-M5 EVA pistol compressed down into a laptop! Also known as the Laz-top. Part of a line of discreet assassination weapons developed for Greater Argentina and the United States covert programs respectively."
+	icon_state = "laptop-gun"
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
+	item_state = ""
 	w_class = SIZE_SMALL
 	garbage = TRUE
 
@@ -96,54 +96,49 @@
 
 /obj/item/prop/tableflag
 	name = "United Americas table flag"
-	icon = 'icons/obj/items/items.dmi'
+	desc = "A miniature table flag of the United Americas, representing all of North, South, and Central America."
+	icon = 'icons/obj/items/table_decorations.dmi'
 	icon_state = "uaflag"
 	force = 0.5
 	w_class = SIZE_SMALL
-	desc = "A miniature table flag of the United Americas, representing all of North, South, and Central America."
 
 /obj/item/prop/tableflag/uscm
 	name = "USCM table flag"
-	icon_state = "uscmflag"
 	desc = "A miniature table flag of the United States Colonial Marines. 'Semper Fi' is written on the flag's bottom."
+	icon_state = "uscmflag"
 
 /obj/item/prop/tableflag/uscm2
 	name = "USCM historical table flag"
-	icon_state = "uscmflag2"
 	desc = "A miniature historical table flag of the United States Colonial Marines, in traditional scarlet and gold. The USCM logo sits in the center; an eagle is perched atop it and an anchor rests behind it."
+	icon_state = "uscmflag2"
 
 /obj/item/prop/tableflag/upp
 	name = "UPP table flag"
-	icon_state = "uppflag"
 	desc = "A miniature table flag of the Union of Progressive Peoples, consisting of 17 yellow stars, surrounding the bigger one in the middle on scarlet field."
+	icon_state = "uppflag"
 
 /obj/item/prop/flower_vase
 	name = "flower vase"
-	icon_state = "flowervase"
-	w_class = SIZE_SMALL
 	desc = "An empty glass flower vase."
+	icon_state = "flowervase"
+	icon = 'icons/obj/items/table_decorations.dmi'
+	w_class = SIZE_SMALL
 
 /obj/item/prop/flower_vase/bluewhiteflowers
 	name = "vase of blue and white flowers"
-	icon_state = "bluewhiteflowers"
 	desc = "A flower vase filled with blue and white roses."
+	icon_state = "bluewhiteflowers"
 
 /obj/item/prop/flower_vase/redwhiteflowers
 	name = "vase of red and white flowers"
-	icon_state = "redwhiteflowers"
 	desc = "A flower vase filled with red and white roses."
+	icon_state = "redwhiteflowers"
 
 /obj/item/prop/colony/usedbandage
 	name = "dirty bandages"
 	desc = "Some used gauze."
 	icon_state = "bandages_prop"
-	icon = 'icons/monkey_icos.dmi'
-
-/obj/item/prop/colony/folded_bedroll
-	name = "folded bedroll"
-	desc = "a folded up bedroll"
-	icon_state = "bedroll"
-	icon = 'icons/monkey_icos.dmi'
+	icon = 'icons/obj/structures/props/furniture/misc.dmi'
 
 /obj/item/prop/colony/used_flare
 	name = "flare"
@@ -167,7 +162,7 @@
 	name = "portable game kit"
 	desc = "A ThinkPad Systems Game-Bro Handheld (TSGBH, shortened). It can play chess, checkers, tri-d chess, and it also runs Byond! Except this one is out of batteries."
 	icon_state = "game_kit"
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/toy.dmi'
 
 /obj/item/prop/gripper
 	name = "magnetic gripper"
@@ -195,7 +190,7 @@
 /obj/item/prop/almayer
 	name = "GENERIC USS ALMAYER PROP"
 	desc = "THIS SHOULDN'T BE VISIBLE, IF YOU SEE THIS THERE IS A PROBLEM IN THE PROP.DM FILE MAKE A BUG REPORT "
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	icon_state = "hangarbox"
 
 /obj/item/prop/almayer/box
@@ -251,7 +246,7 @@
 /obj/item/prop/magazine
 	name = "generic prop magazine"
 	desc = "A Magazine with a picture of a pretty girl on it..wait isn't that my mom?"
-	icon = 'icons/obj/structures/props/posters.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/posters.dmi'
 	icon_state = "poster15"
 	throw_speed = SPEED_FAST
 	throw_range = 5
@@ -278,38 +273,91 @@
 //books
 /obj/item/prop/magazine/book
 	name = "generic prop book"
-	desc = "some generic hardcover book, probably sucked"
+	desc = "Some generic hardcover book containing letters that, when grouped, form what we usually call 'words'. It's pages are made of paper, a material created with cellulose, being that a component usually found in trees."
 	icon = 'icons/obj/items/books.dmi'
-	icon_state = "bookSpaceLaw"
+	icon_state = "book_white"
+	item_state = "book_white"
 
-/obj/item/prop/magazine/book/spacebeast
+/obj/item/prop/magazine/book/spacebeast //The presence of this book is actually anachronistic, given that it was only published in 2183
 	name = "\improper Space Beast, by Robert Morse"
 	desc = "An autobiography focusing on the events of 'Fury 161' in August 2179 following the arrival of 'Ellen Ripley' and an unknown alien creature known as 'The Dragon' the books writing is extremely crude and was book banned shorty after publication."
+	icon_state = "book_dark"
+	item_state = "book_dark"
 
 /obj/item/prop/magazine/book/borntokill
 	name = "\improper Born to Kill"
-	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the USCM. The book was harshly criticised for its bland and uncreative writing and wasn't well received by the general public or members of the UA military. However, artificial soldiers typically value the information contained within."
+	desc = "An autobiography penned by Derik A.W. Tomahawk it recounts his service in the United States Colonial Marines (USCM), more specifically in the third fleet. The book was harshly criticised by the general public and even some members of the United Americas (UA) military for it's bland, repetitive and lifeless writing, consequently giving it quite a bad reception. However, artificial soldiers typically like and value the information contained within."
+	icon_state = "book_green"
+	item_state = "book_green"
 
 /obj/item/prop/magazine/book/bladerunner
 	name = "\improper Bladerunner: A True Detectives Story"
 	desc = "In the dark undercity of Luna 2119, blade runner Richard Ford is called out of retirement to terminate a cult of replicants who have escaped Earth seeking the meaning of their existence."
+	icon_state = "book_tan"
+	item_state = "book_tan"
 
 /obj/item/prop/magazine/book/starshiptroopers
 	name = "Starship Troopers"
-	desc = "Written by Robert A. Heinlein, this book really missed the mark when it comes to the individual equipment it depicts 'troopers' having, but it's still issued to every marine in basic so it must have some value."
+	desc = "Written by Robert A. Heinlein, this book really missed the mark when it comes to the individual equipment it depicts our 'troopers' having, but it's still issued to every marine in basic so it must have some value."
+	icon_state = "book_blue"
+	item_state = "book_blue"
 
 /obj/item/prop/magazine/book/theartofwar
 	name = "The Art of War"
-	desc = "A treatise on war written by Sun Tzu a great general, strategist, and philosopher from ancient Earth. This book is on the Commandant of the United States Colonial Marine Corps reading list and most officers can be found in possession of a copy. Most officers who've read it claim to know a little bit more about fighting than most enlisted but results may vary. "
+	desc = "A treatise on war written by the legendary Sun Tzu, a great general, strategist, and philosopher from ancient Earth. This book is on the Commandant of the United States Colonial Marine Corps reading list and most officers can be found in possession of a copy. Most officers who've read it claim to know a little bit more about fighting than most who did not, but results may vary a lot. "
+	icon_state = "book_red"
+	item_state = "book_red"
 
 //boots magazine
 /obj/item/prop/magazine/boots
 	name = "generic Boots! magazine"
 	desc = "The only official USCM magazine!"
+	icon = 'icons/obj/items/paper.dmi'
+	icon_state = "boots!"
+
+/obj/item/prop/magazine/boots/n07
+	name = "Boots!: Issue No.7"
+	desc = "The only official USCM magazine, the headline reads 'The Future Soldier!'. The short paragraph following describes the B18 Defensive Armor on how it is designed to make the modern marine invincible and that it has recently finished trials, raising the expectations of the brass for this new piece of gear."
+
+/obj/item/prop/magazine/boots/n45
+	name = "Boots!: Issue No. 45"
+	desc = "The only official USCM magazine, the headline reads 'Your sidearm and You!' with the subtitle 'Your best sleeping companion' right below it. The first part of the article explains basic sidearm maintenance and includes a small advertisement for a well-known gunsmith on Gateway Station. The second describes the best positions to sleep with your sidearm under the pillow in case of unexpected seditious activity."
+
+/obj/item/prop/magazine/boots/n054
+	name = "Boots!: Issue No.54"
+	desc = "The only official USCM magazine, the headline reads 'ARMAT strikes back against litigants in M41A-MK2 self cleaning case'."
+
+/obj/item/prop/magazine/boots/n055
+	name = "Boots!: Issue No.55"
+	desc = "The only official USCM magazine, the headline reads 'TEN tips to keep your UD4 cockpit both safer and more relaxing'."
+
+/obj/item/prop/magazine/boots/n058
+	name = "Boots!: Issue No.58"
+	desc = "The only official USCM magazine, the headline reads 'Swift, Silent, Deadly: Tientsin'. The article then goes on to describe the experience of the 1st FORECON Battalion veterans in the Tientsin campaign and the harsh jungle environment they had to go through when dealing with UPP and Local Guerrillas."
+
+/obj/item/prop/magazine/boots/n070
+	name = "Boots!: Issue No.70"
+	desc = "The only official USCM magazine, the headline reads “Marine 70, The Future of Warfare.” The article then goes on to detail the plans and implementation of Marine 70, a program designed to help modernize the USCM for 2170."
+
+/obj/item/prop/magazine/boots/n113
+	name = "Boots!: Issue No.113"
+	desc = "The only official USCM magazine, the headline reads 'Canberra, the Forward edge of the battle'. The article then goes on to detail the Fierce urban combat the marines had to face against Australian rebels, a few accounts from tankers on the effectiveness of the new M40 Ridgeway, and recent sightings of Marines Special Forces (Raiders) in the AO."
 
 /obj/item/prop/magazine/boots/n117
 	name = "Boots!: Issue No.117"
-	desc = "The only official USCM magazine, the headline reads 'STOP CANNING' the short paragraph further explains the dangers of marines throwing CN-20 Nerve gas into bathrooms as a prank."
+	desc = "The only official USCM magazine, the headline reads 'STOP CANNING'. The short paragraph further explains the dangers of marines throwing CN-20 Nerve gas into bathrooms as a prank."
+
+/obj/item/prop/magazine/boots/n120
+	name = "Boots!: Special Commemorative Issue No.120"
+	desc = "The only official USCM magazine, the headline reads 'Wallace Kelly Haar, 2136-2181'."
+
+/obj/item/prop/magazine/boots/n125
+	name = "Boots!: Issue No. 125"
+	desc = "The only official USCM magazine, the headline reads 'Bravo Squad… not just for FOB duty!'. Despite the title the article primarily consists of photos of barricades and diagrams on arrangements for ammo boxes."
+
+/obj/item/prop/magazine/boots/n131
+	name = "Boots!: Issue No. 131"
+	desc =  "The only official USCM magazine, the headline reads 'NO HOTBOXING'. The following paragraph goes into detail about how the HSDP smoke grenades are not safe for long period inhalation exposure and how hypoxia is a poor way to get high."
 
 /obj/item/prop/magazine/boots/n150
 	name = "Boots!: Issue No.150"
@@ -319,10 +367,28 @@
 	name = "Boots!: Issue No.160"
 	desc = "The only official USCM magazine, the headline reads 'Corporate Liaison 'emotionally exhausted' from screwing so many people over.'"
 
-/obj/item/prop/magazine/boots/n054
-	name = "Boots!: Issue No.54"
-	desc = "The only official USCM magazine, the headline reads 'ARMAT strikes back against litigants in M41A-MK2 self cleaning case'"
+/obj/item/prop/magazine/boots/n189
+	name = "Boots!: Issue No.189"
+	desc = "The only official USCM magazine, the headline reads 'Military Police Edition, those that help marines help themselves!'. As with every copy you have ever seen of Issue 189, someone has taken the time to deface it with crude language and unseemly drawings."
 
-/obj/item/prop/magazine/boots/n055
-	name = "Boots!: Issue No.55"
-	desc = "The only official USCM magazine, the headline reads 'TEN tips to keep your UD4 cockpit both safer and more relaxing.'"
+// Massive Digger by dimdimich1996
+
+/obj/structure/prop/invuln/dense/excavator
+	name = "Model 30 Light Excavator"
+	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice orange color."
+	icon = 'icons/obj/structures/props/digger.dmi'
+	icon_state = "digger_orange"
+	layer = BIG_XENO_LAYER
+
+/obj/structure/prop/invuln/dense/excavator/gray
+	desc = "Weyland-Yutani Corporation's Model 30 Light Excavator. Despite looking like a massive beast, the Model 30 is fairly light when compared to other W-Y terraforming excavators. It's designed to be able to be disassembled for transport and re-assembled on site. This one is a nice gray color."
+	icon_state = "digger_gray"
+
+/obj/structure/prop/invuln/dense/excavator/Initialize()
+	. = ..()
+	if(dir & (SOUTH|NORTH))
+		bound_height = 192
+		bound_width = 96
+	else
+		bound_height = 96
+		bound_width = 192

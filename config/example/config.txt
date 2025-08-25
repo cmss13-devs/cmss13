@@ -227,6 +227,8 @@ AUTOOOCMUTE
 # Art given by Sennen/Rasta
 #LOBBY_ART_IMAGES lobbyart14
 #LOBBY_ART_AUTHORS Sennen
+#LOBBY_ART_IMAGES lobbyart15
+#LOBBY_ART_AUTHORS Substance20
 
 ## System command that invokes youtube-dl, used by Play Internet Sound.
 ## You can install youtube-dl with
@@ -235,6 +237,11 @@ AUTOOOCMUTE
 ## or your package manager
 ## The default value assumes youtube-dl is in your system PATH
 # INVOKE_YOUTUBEDL youtube-dl
+
+## cobalt.tools is an alternative player used by Play Internet Sound, if
+## both INVOKE_YOUTUBEDL and COBALT_BASE_API are specified. If only
+## COBALT_BASE_API is specified, it will exclusively cobalt.tools.
+# COBALT_BASE_API https://api.cobalt.tools/
 
 ## Default gamemode to auto-switch back to after a round has concluded
 GAMEMODE_DEFAULT Extended

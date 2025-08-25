@@ -9,12 +9,6 @@
 		blinded = TRUE
 		silent = 0
 	else //ALIVE. LIGHTS ARE ON
-		if(health <= HEALTH_THRESHOLD_DEAD || (species.has_organ["brain"] && !has_brain()))
-			death(last_damage_data)
-			blinded = TRUE
-			silent = 0
-			return 1
-
 		if(regular_update)
 			if(hallucination)
 				if(hallucination >= 20)
@@ -35,7 +29,7 @@
 					qdel(a)
 
 				if(halloss > 100)
-					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."), \
+					visible_message(SPAN_WARNING("\The [src] slumps to the ground, too weak to continue fighting."),
 					SPAN_WARNING("You slump to the ground, you're in too much pain to keep going."))
 					apply_effect(10, PARALYZE)
 					setHalLoss(99)
@@ -71,7 +65,8 @@
 		else
 			set_stat(CONSCIOUS)
 
-		if(in_stasis == STASIS_IN_CRYO_CELL) blinded = TRUE //Always blinded while in stasisTUBES
+		if(in_stasis == STASIS_IN_CRYO_CELL)
+			blinded = TRUE //Always blinded while in stasisTUBES
 
 		if(!regular_update)
 			return

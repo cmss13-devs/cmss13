@@ -182,10 +182,10 @@
 	desc = "Functions identically to the standard AGM-F 40mm grenade, except instead of exploding into shrapnel, the hornet shell shoots off holo-targeting .22lr rounds. The equivalent to buckshot at-range."
 	icon_state = "grenade_hornet"
 	item_state = "grenade_hornet_active"
-	shrapnel_count = 5
+	shrapnel_count = 15
 	shrapnel_type = /datum/ammo/bullet/shrapnel/hornet_rounds
 	direct_hit_shrapnel = 5
-	dispersion_angle = 15//tight cone
+	dispersion_angle = 25//tight cone
 
 /obj/item/explosive/grenade/high_explosive/airburst/starshell
 	name = "\improper M74 AGM-S Star Shell"
@@ -485,9 +485,9 @@
 	/// Factor to mutiply the effect range has on damage.
 	var/falloff_dam_reduction_mult = 20
 	/// Post falloff calc damage is divided by this to get xeno slowdown
-	var/xeno_slowdown_numerator = 12
+	var/xeno_slowdown_numerator = 11
 	/// Post falloff calc damage is multipled by this to get human stamina damage
-	var/human_stam_dam_factor = 0.9
+	var/human_stam_dam_factor = 0.5
 
 /obj/item/explosive/grenade/sebb/get_examine_text(mob/user)
 	. = ..()
@@ -520,6 +520,9 @@
 		var/mob/living/carbon/human/human = user
 		if(!human.allow_gun_usage)
 			to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+			return
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/ceasefire))
+			to_chat(user, SPAN_WARNING("You will not break the ceasefire by doing that!"))
 			return
 
 	if(user_turf && (user_turf.density || locate(/obj/structure/fence) in user_turf))
@@ -613,14 +616,16 @@
 			mob.apply_damage(damage_applied, BURN)
 			if((mob_dist < (range-3))) // 2 tiles around small superslow
 				mob.Superslow(2)
-			mob.Slow(damage_applied/11)
+			mob.Slow(damage_applied/xeno_slowdown_numerator)
+			if(iswydroid(mob))
+				mob.emote("pain")
 
 		if(mob_dist < 1) // Range based stuff, standing ontop of the equivalent of a canned lighting bolt should mess you up.
 			mob.Superslow(3) // Note that humans will likely be in stamcrit so it's always worse for them when ontop of it and we can just balancing it on xenos.
 			mob.eye_blurry = damage_applied/4
 			mob.Daze(1)
 		else if((mob_dist < (range-1)) && (mob.mob_size < MOB_SIZE_XENO_VERY_SMALL)) // Flicker stun humans that are closer to the grenade and larvas too.
-			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/40
+			mob.apply_effect(1 + (damage_applied/100),WEAKEN) // 1 + damage/100
 			mob.eye_blurry = damage_applied/8
 
 		else
@@ -903,11 +908,15 @@
 // abstract grenades used for hijack explosions
 
 /obj/item/explosive/grenade/high_explosive/bursting_pipe
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/item/explosive/grenade/incendiary/bursting_pipe
+	AUTOWIKI_SKIP(TRUE)
+
 	name = "bursting pipe"
 	alpha = 0
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
@@ -936,3 +945,11 @@
 	burn_level = BURN_LEVEL_TIER_8
 	radius = 3
 	fire_type = FIRE_VARIANT_DEFAULT
+
+/obj/item/explosive/grenade/nerve_gas/xeno/rmc
+	name = "\improper R2175/CN20 grenade"
+	desc = "A small grenade containing a vial of deadly nerve gas. Usually knocks out the targets for long enough to allow RMCs to take them out. You sense your Drill Instructor's screaming in the back of your head, mentioning something about a gas mask. It is set to detonate in 3.5 seconds."
+	icon_state = "rmc_grenade_gas"
+	det_time = 35
+	item_state = "grenade_smoke"//temp icon
+	underslug_launchable = TRUE

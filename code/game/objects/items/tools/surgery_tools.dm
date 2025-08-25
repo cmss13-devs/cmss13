@@ -3,6 +3,10 @@
 // Surgery Tools
 /obj/item/tool/surgery
 	icon = 'icons/obj/items/surgery_tools.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+	)
 	/// reduced
 	attack_speed = 4
 
@@ -92,6 +96,11 @@
 	name = "scalpel"
 	desc = "Cut, cut, and once more cut."
 	icon_state = "scalpel"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/medical_righthand.dmi',
+		WEAR_AS_GARB = 'icons/mob/humans/onmob/clothing/helmet_garb/medical.dmi',
+	)
 	flags_atom = FPRINT|CONDUCT
 	force = 10
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -218,21 +227,23 @@
 	///How much bone gel is needed to mend bones
 	var/mend_bones_fix_cost = 5
 
-/obj/item/tool/surgery/bonegel/update_icon()
+/obj/item/tool/surgery/bonegel/update_icon(mob/user)
 	. = ..()
-	if(remaining_gel >= 100)
-		icon_state = base_icon_state
-		return
-	if(remaining_gel > 50)
-		icon_state = "[base_icon_state]_75"
-		return
-	if(remaining_gel > 25)
-		icon_state = "[base_icon_state]_50"
-		return
-	if(remaining_gel > 0)
-		icon_state = "[base_icon_state]_25"
-		return
-	icon_state = "[base_icon_state]_0"
+	switch(remaining_gel)
+		if(100 to INFINITY)
+			icon_state = base_icon_state
+		if(60 to 99)
+			icon_state = "[base_icon_state]_75"
+		if(30 to 59)
+			icon_state = "[base_icon_state]_50"
+		if(5 to 29)
+			icon_state = "[base_icon_state]_25"
+		if(0 to 4)
+			icon_state = "[base_icon_state]_0"
+
+	if(user)
+		user.update_inv_l_hand()
+		user.update_inv_r_hand()
 
 /obj/item/tool/surgery/bonegel/get_examine_text(mob/user)
 	. = ..()
@@ -321,6 +332,7 @@
 	name = "\proper surgical line"
 	desc = "A roll of military-grade surgical line, able to seamlessly sew up any wound. Also works as a robust fishing line for maritime deployments."
 	icon_state = "line_brute"
+	item_state = "line_brute"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL
@@ -339,6 +351,7 @@
 	desc = "An applicator for synthetic skin field grafts. The stuff reeks, itches like the dickens, hurts going on, and the color is \
 		a perfectly averaged multiethnic tone that doesn't blend with <i>anyone's</i> complexion. But at least you don't have to stay in sickbay."
 	icon_state = "line_burn"
+	item_state = "line_burn"
 	force = 0
 	throwforce = 1
 	w_class = SIZE_SMALL

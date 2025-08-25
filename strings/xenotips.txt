@@ -16,7 +16,7 @@ If a fellow alien is stunned, be sure to drag them to safety.
 On help intent, click a xenomorph who is on fire to pat them out. This works on marines too!
 Frenzy increases your speed and damage, Recovery increases your health regeneration, and Warding increases the time you have until you bleed out in critical health.
 Remember that, as a Xenomorph, you can fully disable your night-vision. This helps put into perspective how hidden your position is to marines onscreen.
-You can devour burst corpses in order to transport them to the Spawn Pool or Egg Morpher easier.
+You can drag larva corpses (not embryos) onto the hive core to gain a new burrowed larva.
 The bigger you are, the more time it'll take to enter a tunnel.
 Drag yourself onto a hole in a wall as a medium-sized or smaller Xeno to pass through it.
 Claymores have directional explosions. Set them off early by slashing them from behind.

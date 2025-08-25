@@ -1,10 +1,9 @@
-/* eslint-disable func-style */
 import { capitalizeAll, capitalizeFirst } from 'common/string';
+import { useBackend } from 'tgui/backend';
+import { Tooltip } from 'tgui/components';
 
-import { useBackend } from '../../backend';
-import { Tooltip } from '../../components';
 import { IconDisplay } from './IconDisplay';
-import { SearchGroup, SearchItem } from './types';
+import type { SearchGroup, SearchItem } from './types';
 
 type Props =
   | {

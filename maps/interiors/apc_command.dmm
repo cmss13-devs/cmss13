@@ -100,13 +100,13 @@
 	},
 /obj/structure/machinery/computer/groundside_operations{
 	dir = 4;
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 2.82;
 	pixel_y = -10
 	},
 /obj/structure/machinery/computer/overwatch/almayer{
 	dir = 8;
-	indestructible = 1;
+	explo_proof = 1;
 	layer = 2.81;
 	pixel_y = 4
 	},
@@ -132,7 +132,7 @@
 /area/interior/vehicle/apc/command)
 "s" = (
 /obj/structure/machinery/prop/almayer/CICmap{
-	indestructible = 1;
+	explo_proof = 1;
 	unslashable = 1
 	},
 /obj/structure/surface/table/reinforced/prison,

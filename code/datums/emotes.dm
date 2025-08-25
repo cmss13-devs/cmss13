@@ -55,6 +55,8 @@
 	var/keybind = TRUE
 	/// Does this emote have a custom keybind category?
 	var/keybind_category = CATEGORY_EMOTE
+	/// Should this emote replace pronouns?
+	var/replace_pronouns = TRUE
 
 /datum/emote/New()
 	switch(mob_type_allowed_typecache)
@@ -87,7 +89,10 @@
 	if(params && message_param)
 		msg = select_param(user, params)
 
-	msg = replace_pronoun(user, msg)
+
+
+	if(replace_pronouns)
+		msg = replace_pronoun(user, msg)
 
 	if(say_message)
 		user.say(say_message)
@@ -166,7 +171,10 @@
  * * group - The list of people that will see this emote being
  */
 /datum/emote/proc/run_langchat(mob/user, list/group)
-	user.langchat_speech(message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
+	var/adjusted_message = message
+	if(replace_pronouns)
+		adjusted_message = replace_pronoun(user, message)
+	user.langchat_speech(adjusted_message, group, GLOB.all_languages, skip_language_check = TRUE, additional_styles = list("emote", "langchat_small"))
 
 /**
  * For handling emote cooldown, return true to allow the emote to happen.
@@ -262,6 +270,9 @@
 		return FALSE
 	if(is_type_in_typecache(user, mob_type_blacklist_typecache))
 		return FALSE
+	if(intentional)
+		if(emote_type & EMOTE_FORCED_AUDIO)
+			return FALSE
 	if(status_check && !is_type_in_typecache(user, mob_type_ignore_stat_typecache))
 		if(user.stat > stat_allowed)
 			if(!intentional)
@@ -292,6 +303,9 @@
 /datum/emote/proc/should_play_sound(mob/user, intentional = FALSE)
 	if(emote_type & EMOTE_AUDIBLE && !muzzle_ignore)
 		if(istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
+			return FALSE
+
+		if(istype(user.wear_mask, /obj/item/clothing/mask/facehugger))
 			return FALSE
 
 	if(only_forced_audio && intentional)

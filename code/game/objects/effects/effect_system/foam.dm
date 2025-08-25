@@ -207,7 +207,7 @@
 			take_damage(I.force * I.sharp * FOAMED_METAL_ITEM_MELEE) //human advantage, sharper items do more damage
 		else
 			take_damage(I.force * FOAMED_METAL_ITEM_MELEE) //blunt items can damage it still
-		return TRUE
+		return (ATTACKBY_HINT_NO_AFTERATTACK|ATTACKBY_HINT_UPDATE_NEXT_MOVE)
 
 	return FALSE
 
@@ -220,7 +220,7 @@
 
 	X.animation_attack_on(src)
 
-	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
+	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"),
 	SPAN_DANGER("You slash [src]!"))
 
 	take_damage(damage * FOAMED_METAL_XENO_SLASH)

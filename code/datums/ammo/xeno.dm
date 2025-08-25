@@ -27,6 +27,7 @@
 	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST
 	spit_cost = 25
 	var/effect_power = XENO_NEURO_TIER_4
+	var/drain_power = 2
 	var/datum/callback/neuro_callback
 
 	shell_speed = AMMO_SPEED_TIER_3
@@ -37,15 +38,21 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, insta_neuro)
+/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		if(drain_stims)
+			for(var/datum/reagent/generated/stim in H.reagents.reagent_list)
+				H.reagents.remove_reagent(stim.id, drain, TRUE)
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
+		if(drain_medchems)
+			for(var/datum/reagent/medical/med in H.reagents.reagent_list)
+				H.reagents.remove_reagent(med.id, drain, TRUE)
 
 	if(!isxeno(M))
 		if(insta_neuro)
@@ -55,7 +62,7 @@
 				return
 
 		if(ishuman(M))
-			M.apply_effect(2.5, SUPERSLOW)
+			M.apply_effect(4, SUPERSLOW)
 			M.visible_message(SPAN_DANGER("[M]'s movements are slowed."))
 
 		var/no_clothes_neuro = FALSE
@@ -89,10 +96,10 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.status_flags & XENO_HOST)
-			neuro_callback.Invoke(H, effect_power, TRUE)
+			neuro_callback.Invoke(H, effect_power, drain_power, TRUE, TRUE, TRUE)
 			return
 
-	neuro_callback.Invoke(M, effect_power, FALSE)
+	neuro_callback.Invoke(M, effect_power, drain_power, FALSE, TRUE, TRUE)
 
 /datum/ammo/xeno/toxin/medium //Spitter
 	name = "neurotoxic spatter"
@@ -105,12 +112,13 @@
 	name = "neurotoxic spit"
 	spit_cost = 50
 	effect_power = 2
+	drain_power = 4
 
 	accuracy = HIT_ACCURACY_TIER_5*2
 	max_range = 6 - 1
 
 /datum/ammo/xeno/toxin/queen/on_hit_mob(mob/M,obj/projectile/P)
-	neuro_callback.Invoke(M, effect_power, TRUE)
+	neuro_callback.Invoke(M, effect_power, drain_power, TRUE, TRUE, FALSE)
 
 /datum/ammo/xeno/toxin/shotgun
 	name = "neurotoxic droplet"
@@ -121,7 +129,6 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 5
 	max_range = 5
-	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_4
 
 /datum/ammo/xeno/toxin/shotgun/New()
@@ -132,11 +139,12 @@
 /datum/ammo/xeno/toxin/shotgun/additional
 	name = "additional neurotoxic droplets"
 
+	scatter = SCATTER_AMOUNT_NEURO
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/acid
 	name = "acid spit"
-	icon_state = "xeno_acid"
+	icon_state = "xeno_acid_weak"
 	sound_hit  = "acid_hit"
 	sound_bounce = "acid_bounce"
 	damage_type = BURN
@@ -154,13 +162,13 @@
 /datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
+		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return FALSE
 	..()
 
 /datum/ammo/xeno/acid/spatter
 	name = "acid spatter"
-
+	icon_state = "xeno_acid_strong"
 	damage = 30
 	max_range = 6
 
@@ -173,19 +181,18 @@
 
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
-
+	icon_state = "xeno_acid_strong"
 	accuracy = HIT_ACCURACY_TIER_10 + HIT_ACCURACY_TIER_5
 	max_range = 8
 	damage = 30
 	shell_speed = AMMO_SPEED_TIER_2
-	added_spit_delay = 0
 
 /datum/ammo/xeno/acid/dot
 	name = "acid spit"
 
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid scatter"
-
+	icon_state = "xeno_acid_normal"
 	flags_ammo_behavior = AMMO_ACIDIC|AMMO_XENO|AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
@@ -244,7 +251,7 @@
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/moob, obj/projectile/proj)
 	if(iscarbon(moob))
 		var/mob/living/carbon/carbon = moob
-		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
 	var/datum/effects/neurotoxin/neuro_effect = locate() in moob.effects_list
 	if(!neuro_effect)
@@ -294,7 +301,7 @@
 /datum/ammo/xeno/boiler_gas/acid/on_hit_mob(mob/moob, obj/projectile/proj)
 	if(iscarbon(moob))
 		var/mob/living/carbon/carbon = moob
-		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD)
+		if(carbon.status_flags & XENO_HOST && HAS_TRAIT(carbon, TRAIT_NESTED) || carbon.stat == DEAD || HAS_TRAIT(carbon, TRAIT_HAULED))
 			return
 	to_chat(moob,SPAN_HIGHDANGER("Acid covers your body! Oh fuck!"))
 	playsound(moob,"acid_strike",75,1)
@@ -322,7 +329,7 @@
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
@@ -352,7 +359,7 @@
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/living/M, obj/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD)
+		if((HAS_FLAG(C.status_flags, XENO_HOST) && HAS_TRAIT(C, TRAIT_NESTED)) || C.stat == DEAD || HAS_TRAIT(C, TRAIT_HAULED))
 			return
 	if(ishuman_strict(M) || isxeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
@@ -395,3 +402,39 @@
 
 /datum/ammo/xeno/oppressor_tail/proc/remove_tail_overlay(mob/overlayed_mob, image/tail_image)
 	overlayed_mob.overlays -= tail_image
+
+
+
+/datum/ammo/yautja/gauntlet_hook
+	name = "chain hook"
+	icon_state = "none"
+	ping = null
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+	damage_type = BRUTE
+
+	damage = XENO_DAMAGE_TIER_5
+	max_range = 4
+	accuracy = HIT_ACCURACY_TIER_MAX
+
+/datum/ammo/yautja/gauntlet_hook/on_bullet_generation(obj/projectile/generated_projectile, mob/bullet_generator)
+	//The projectile has no icon, so the overlay shows up in FRONT of the projectile, and the beam connects to it in the middle.
+	var/image/hook_overlay = new(icon = 'icons/effects/beam.dmi', icon_state = "chain", layer = BELOW_MOB_LAYER)
+	generated_projectile.overlays += hook_overlay
+
+/datum/ammo/yautja/gauntlet_hook/on_hit_mob(mob/target, obj/projectile/fired_proj)
+	shake_camera(target, 5, 0.1 SECONDS)
+	var/obj/effect/beam/chain_beam = fired_proj.firer.beam(target, "chain", 'icons/effects/beam.dmi', 10 SECONDS, 10)
+
+	var/image/chain_image = image('icons/effects/status_effects.dmi', "chain")
+	target.overlays += chain_image
+
+	new /datum/effects/xeno_slow(target, fired_proj.firer, ttl = 0.5 SECONDS)
+
+	target.apply_effect(0.5, ROOT)
+
+	INVOKE_ASYNC(target, TYPE_PROC_REF(/atom/movable, throw_atom), fired_proj.firer, get_dist(fired_proj.firer, target)-1, SPEED_VERY_FAST)
+
+	qdel(chain_beam)
+
+/datum/ammo/yautja/gauntlet_hook/proc/remove_tail_overlay(mob/overlayed_mob, image/chain_image)
+	overlayed_mob.overlays -= chain_image

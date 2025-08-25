@@ -6,6 +6,10 @@
 	name = "\improper Automated Storage Briefcase"
 	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items."
 	icon = 'icons/obj/items/storage/briefcases.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/briefcases_righthand.dmi'
+	)
 	icon_state = "secure"
 	flags_atom = FPRINT|CONDUCT
 	force = 8
@@ -22,6 +26,8 @@
 	var/fabricating = FALSE
 	var/broken = FALSE
 	var/contraband = FALSE
+	var/covert = FALSE //covert = no light, no sound
+	var/delay = 3 SECONDS //fabricating time, in seconds
 
 	var/list/purchase_log = list()
 
@@ -186,11 +192,12 @@
 
 	purchase_log += "[key_name(usr)] bought [product[1]]."
 
-	playsound(src, "sound/machines/fax.ogg", 5)
+	if(!covert)
+		playsound(src, "sound/machines/fax.ogg", 5)
 	fabricating = TRUE
 	update_overlays()
 
-	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), 3 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(spawn_product), product[3], user), delay)
 
 /obj/item/device/portable_vendor/proc/spawn_product(typepath, mob/user)
 	var/obj/new_item = new typepath(get_turf(src))
@@ -199,7 +206,11 @@
 	update_overlays()
 
 /obj/item/device/portable_vendor/proc/update_overlays()
-	if(overlays) overlays.Cut()
+	if(covert)
+		return
+
+	if(overlays)
+		overlays.Cut()
 	if (broken)
 		overlays += image(icon, "securespark")
 	else if (fabricating)
@@ -287,7 +298,7 @@
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 		list("Weyland-Yutani Coffee Mug", 1, /obj/item/reagent_container/food/drinks/coffeecup/wy, "white", "A Weyland-Yutani coffee mug, for any Marines who want a Company souvenir."),
 
-		list("STATIONARY", 0, null, null, null),
+		list("STATIONERY", 0, null, null, null),
 		list("WY pen, black", 1, /obj/item/tool/pen/clicky, "white", "A WY pen, for writing formally on the go."),
 		list("WY pen, blue", 1, /obj/item/tool/pen/blue/clicky, "white", "A WY pen, for writing with a flourish on the go."),
 		list("WY pen, red", 1, /obj/item/tool/pen/red/clicky, "white", "A WY pen, for writing angrily on the go."),

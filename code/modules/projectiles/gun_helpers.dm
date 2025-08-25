@@ -110,7 +110,7 @@ DEFINES in setup.dm, referenced here.
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/clicked(mob/user, list/mods)
-	if (mods["alt"])
+	if (mods[ALT_CLICK])
 		if(!CAN_PICKUP(user, src))
 			return ..()
 		toggle_gun_safety()
@@ -149,7 +149,7 @@ DEFINES in setup.dm, referenced here.
 	return FALSE
 
 /obj/item/weapon/gun/pickup(mob/user)
-	..()
+	. = ..()
 
 	unwield(user)
 
@@ -191,15 +191,17 @@ DEFINES in setup.dm, referenced here.
 			return FALSE
 	return TRUE
 
-/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot)
+/obj/item/weapon/gun/proc/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc = TRUE, silent = FALSE)
 	if (!loc || !user)
 		return FALSE
-	if (!isturf(loc))
+	if (!isturf(loc) && check_loc)
 		return FALSE
 	if(!retrieval_check(user, retrieval_slot))
 		return FALSE
 	if(!user.equip_to_slot_if_possible(src, retrieval_slot, disable_warning = TRUE))
 		return FALSE
+	if(silent)
+		return TRUE
 	var/message
 	switch(retrieval_slot)
 		if(WEAR_BACK)
@@ -217,10 +219,11 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, retrieval_slot)
 	if (!ishuman(user))
-		return
+		return FALSE
 	if (!retrieval_check(user, retrieval_slot))
-		return
+		return FALSE
 	addtimer(CALLBACK(src, PROC_REF(retrieve_to_slot), user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+	return TRUE
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -267,7 +270,8 @@ DEFINES in setup.dm, referenced here.
 
 
 	if(istype(attack_item,/obj/item/attachable))
-		if(check_inactive_hand(user)) attach_to_gun(user,attack_item)
+		if(check_inactive_hand(user))
+			attach_to_gun(user,attack_item)
 
 	//the active attachment is reloadable
 	else if(active_attachable && active_attachable.flags_attach_features & ATTACH_RELOADABLE)
@@ -283,7 +287,8 @@ DEFINES in setup.dm, referenced here.
 			active_attachable.reload_attachment(attack_item, user)
 
 	else if(istype(attack_item,/obj/item/ammo_magazine))
-		if(check_inactive_hand(user)) reload(user,attack_item)
+		if(check_inactive_hand(user))
+			reload(user,attack_item)
 
 
 //tactical reloads
@@ -296,6 +301,8 @@ DEFINES in setup.dm, referenced here.
 			return
 		if(src != user.r_hand && src != user.l_hand)
 			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
+			return
+		if(magazine.loc != user && !istype(magazine.loc, /obj/item/storage))
 			return
 		if(flags_gun_features & GUN_INTERNAL_MAG)
 			to_chat(user, SPAN_WARNING("Can't do tactical reloads with [src]."))
@@ -403,7 +410,8 @@ DEFINES in setup.dm, referenced here.
 	if(attachable_offset) //Even if the attachment doesn't exist, we're going to try and remove it.
 		for(var/slot in attachments)
 			var/obj/item/attachable/attached_attachment = attachments[slot]
-			if(!attached_attachment) continue
+			if(!attached_attachment)
+				continue
 			update_overlays(attached_attachment, attached_attachment.slot)
 
 /obj/item/weapon/gun/proc/update_attachable(attachable) //Updates individually.
@@ -423,7 +431,8 @@ DEFINES in setup.dm, referenced here.
 		gun_image.pixel_y = attachable_offset["[slot]_y"] - attachment.pixel_shift_y + y_offset_by_attachment_type(attachment.type)
 		attachable_overlays[slot] = gun_image
 		overlays += gun_image
-	else attachable_overlays[slot] = null
+	else
+		attachable_overlays[slot] = null
 
 /obj/item/weapon/gun/proc/x_offset_by_attachment_type(attachment_type)
 	return 0
@@ -437,7 +446,10 @@ DEFINES in setup.dm, referenced here.
 		overlays -= gun_image
 		attachable_overlays["mag"] = null
 	if(current_mag && current_mag.bonus_overlay)
-		gun_image = image(current_mag.icon,src,current_mag.bonus_overlay)
+		if(current_mag.bonus_overlay_icon)
+			gun_image = image(current_mag.bonus_overlay_icon, src, current_mag.bonus_overlay)
+		else
+			gun_image = image(icon, src, current_mag.bonus_overlay)
 		gun_image.pixel_x += bonus_overlay_x
 		gun_image.pixel_y += bonus_overlay_y
 		attachable_overlays["mag"] = gun_image
@@ -455,9 +467,12 @@ DEFINES in setup.dm, referenced here.
 
 /obj/item/weapon/gun/proc/update_force_list()
 	switch(force)
-		if(-50 to 15) attack_verb = list("struck", "hit", "bashed") //Unlikely to ever be -50, but just to be safe.
-		if(16 to 35) attack_verb = list("smashed", "struck", "whacked", "beaten", "cracked")
-		else attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
+		if(-50 to 15)
+			attack_verb = list("struck", "hit", "bashed") //Unlikely to ever be -50, but just to be safe.
+		if(16 to 35)
+			attack_verb = list("smashed", "struck", "whacked", "beaten", "cracked")
+		else
+			attack_verb = list("slashed", "stabbed", "speared", "torn", "punctured", "pierced", "gored") //Greater than 35
 
 /obj/item/weapon/gun/proc/get_active_firearm(mob/user, restrictive = TRUE)
 	if(user.is_mob_incapacitated() || !isturf(usr.loc))
@@ -495,9 +510,16 @@ DEFINES in setup.dm, referenced here.
 /mob/living/carbon/human/proc/can_unholster_from_storage_slot(obj/item/storage/slot)
 	if(isnull(slot))
 		return FALSE
-	if(slot == shoes)//Snowflakey check for shoes and uniform
+
+	//Snowflakey check for shoes, face, and uniform
+	if(slot == shoes)
 		if(shoes.stored_item && isweapon(shoes.stored_item))
 			return shoes
+		return FALSE
+
+	if(slot == wear_mask)
+		if(wear_mask && isweapon(wear_mask))
+			return wear_mask
 		return FALSE
 
 	if(slot == w_uniform)
@@ -530,12 +552,20 @@ DEFINES in setup.dm, referenced here.
 /mob/living/carbon/human/verb/holster_verb(unholster_number_offset = 1 as num)
 	set name = "holster"
 	set hidden = TRUE
-	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained() || IsKnockDown() || HAS_TRAIT_FROM(src, TRAIT_UNDENSE, LYING_DOWN_TRAIT))
+	if(usr.is_mob_incapacitated(TRUE) || usr.is_mob_restrained() || IsKnockDown() || HAS_TRAIT_FROM(src, TRAIT_UNDENSE, LYING_DOWN_TRAIT) && !HAS_TRAIT(src, TRAIT_HAULED))
 		to_chat(src, SPAN_WARNING("You can't draw a weapon in your current state."))
 		return
 
 	var/obj/item/active_hand = get_active_hand()
 	if(active_hand)
+		//drop retrievals goes first
+		if(SEND_SIGNAL(active_hand, COMSIG_ITEM_HOLSTER, usr) & COMPONENT_ITEM_HOLSTER_CANCELLED)
+			return TRUE
+
+		if(active_hand.last_equipped_slot)
+			if(equip_to_slot_if_possible(active_hand, active_hand.last_equipped_slot, FALSE, FALSE, TRUE))
+				return TRUE
+
 		if(active_hand.preferred_storage)
 			for(var/storage in active_hand.preferred_storage)
 				var/list/items_in_slot
@@ -543,7 +573,7 @@ DEFINES in setup.dm, referenced here.
 					items_in_slot = get_item_by_slot(active_hand.preferred_storage[storage])
 				else
 					items_in_slot = list(get_item_by_slot(active_hand.preferred_storage[storage]))
-				
+
 				for(var/item_in_slot in items_in_slot)
 					if(istype(item_in_slot, storage))
 						var/slot = active_hand.preferred_storage[storage]
@@ -560,7 +590,7 @@ DEFINES in setup.dm, referenced here.
 								slot = WEAR_IN_HELMET
 							if(WEAR_FEET)
 								slot = WEAR_IN_SHOES
-						
+
 						if(equip_to_slot_if_possible(active_hand, slot, ignore_delay = TRUE, del_on_fail = FALSE, disable_warning = TRUE, redraw_mob = TRUE))
 							return TRUE
 		if(w_uniform)
@@ -577,11 +607,12 @@ DEFINES in setup.dm, referenced here.
 						storage.handle_item_insertion(active_hand, user = src)
 						return
 
-		quick_equip()
+		if(!equip_to_appropriate_slot(active_hand, 0))
+			to_chat(src, SPAN_DANGER("You are unable to equip that."))
 	else //empty hand, start checking slots and holsters
 
-		//default order: suit, belt, back, pockets, uniform, shoes
-		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes")
+		//default order: suit, belt, back, pockets, uniform, shoes, wear_mask
+		var/list/slot_order = list("s_store", "belt", "back", "l_store", "r_store", "w_uniform", "shoes", "wear_mask")
 
 		var/obj/item/slot_selected
 
@@ -957,7 +988,7 @@ DEFINES in setup.dm, referenced here.
 		return target
 	if(!istype(target, /atom/movable/screen/click_catcher))
 		return null
-	return params2turf(modifiers["screen-loc"], get_turf(user), user.client)
+	return params2turf(modifiers[SCREEN_LOC], get_turf(user), user.client)
 
 /// check if the gun contains any light source that is currently turned on.
 /obj/item/weapon/gun/proc/light_sources()

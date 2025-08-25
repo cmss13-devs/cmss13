@@ -1,5 +1,0 @@
-author: "FOFFLES105"
-delete-after: True
-changes:
-  - bugfix: "fixed issue where nightmare inserts would not spawn"
-  - bugfix: "moved unused nightmare inserts to \"unused\" folder so that they don't cause errors."

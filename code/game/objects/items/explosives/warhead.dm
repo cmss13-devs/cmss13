@@ -11,9 +11,10 @@
 	icon_state = "warhead_rocket"
 	max_container_volume = 210
 	allow_star_shape = FALSE
+	shrapnel_spread = 90
 	matter = list("metal" = 11250) //3 sheets
-	reaction_limits = list( "max_ex_power" = 240, "base_ex_falloff" = 90,"max_ex_shards" = 64,
-							"max_fire_rad" = 6, "max_fire_int" = 40, "max_fire_dur" = 48,
+	reaction_limits = list( "max_ex_power" = 220, "base_ex_falloff" = 160,"max_ex_shards" = 80,
+							"max_fire_rad" = 4, "max_fire_int" = 45, "max_fire_dur" = 48,
 							"min_fire_rad" = 2, "min_fire_int" = 4, "min_fire_dur" = 5
 	)
 	has_blast_wave_dampener = TRUE
@@ -24,8 +25,8 @@
 	icon_state = "warhead_mortar"
 	max_container_volume = 240
 	matter = list("metal" = 11250) //3 sheets
-	reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 90, "max_ex_shards" = 128,
-							"max_fire_rad" = 8, "max_fire_int" = 40, "max_fire_dur" = 48,
+	reaction_limits = list( "max_ex_power" = 360, "base_ex_falloff" = 130, "max_ex_shards" = 200,
+							"max_fire_rad" = 8, "max_fire_int" = 45, "max_fire_dur" = 48,
 							"min_fire_rad" = 3, "min_fire_int" = 5, "min_fire_dur" = 5
 	)
 	has_blast_wave_dampener = TRUE

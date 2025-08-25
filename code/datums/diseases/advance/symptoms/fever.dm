@@ -31,7 +31,7 @@ Bonus
 		var/message = "[pick("You feel hot.", "You feel like you're burning.")]"
 		to_chat(M, SPAN_NOTICE(message))
 		if(M.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT)
-			M.bodytemperature = min(M.bodytemperature + (20 * A.stage), BODYTEMP_HEAT_DAMAGE_LIMIT - 1)
+			M.bodytemperature = max(BODYTEMP_HEAT_DAMAGE_LIMIT, M.bodytemperature + (20 * A.stage))
 			M.recalculate_move_delay = TRUE
 
 	return

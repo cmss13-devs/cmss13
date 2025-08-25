@@ -1,6 +1,7 @@
 /obj/effect/decal/hefa_cult_decals
 	icon = 'icons/effects/hefa_cult/32_wall.dmi'
 	layer = TURF_LAYER
+	anchored = TRUE
 
 // IM STUFF
 

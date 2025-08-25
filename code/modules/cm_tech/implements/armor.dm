@@ -2,11 +2,11 @@
 /obj/item/clothing/accessory/health
 	name = "armor plate"
 	desc = "A metal trauma plate, able to absorb some blows."
-	icon = 'icons/obj/items/items.dmi'
+	icon = 'icons/obj/items/ceramic_plates.dmi'
 	icon_state = "regular2_100"
 	var/base_icon_state = "regular2"
 
-	slot = ACCESSORY_SLOT_ARMOR_C
+	worn_accessory_slot = ACCESSORY_SLOT_ARMOR_C
 	w_class = SIZE_MEDIUM
 	/// is it *armor* or something different & irrelevant and always passes damage & doesnt take damage to itself?
 	var/is_armor = TRUE
@@ -57,7 +57,9 @@
 	. += SPAN_NOTICE(get_damage_status())
 
 /obj/item/clothing/accessory/health/additional_examine_text()
-	return ". [get_damage_status()]"
+	. = ..()
+
+	. += "[get_damage_status()]"
 
 /obj/item/clothing/accessory/health/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
@@ -205,6 +207,9 @@
 	desc = "Attachment to the uniform which gives X (this shouldn't be in your handdssss)"
 	is_armor = FALSE
 	icon_state = "plate_research"
+	icon = 'icons/obj/items/devices.dmi'
+	ground_offset_x = 8
+	ground_offset_y = 8
 	var/obj/item/clothing/attached_uni
 	///can the plate be recycled after X condition? 0 means it cannot be recycled, otherwise put in the biomass points to refund.
 	var/recyclable_value = 0
@@ -216,14 +221,10 @@
 /obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/attached_to, mob/living/carbon/human/user)
 	. = ..()
 	attached_uni = attached_to
+	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
 
 /obj/item/clothing/accessory/health/research_plate/proc/can_recycle(mob/living/user) //override this proc for check if you can recycle the plate.
 	return FALSE
-
-
-/obj/item/clothing/accessory/health/research_plate/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
-	. = ..()
-	RegisterSignal(user, COMSIG_MOB_ITEM_UNEQUIPPED, PROC_REF(on_removed_sig))
 
 /obj/item/clothing/accessory/health/research_plate/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
@@ -271,31 +272,30 @@
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
-	if (user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
-		return
-	user.chem_effect_flags |= CHEM_EFFECT_NO_BLEEDING
+	RegisterSignal(user, COMSIG_BLEEDING_PROCESS, PROC_REF(cancel_bleeding))
 	to_chat(user, SPAN_NOTICE("You feel tickling as you activate [src]."))
+
+/obj/item/clothing/accessory/health/research_plate/coagulator/proc/cancel_bleeding()
+	SIGNAL_HANDLER
+	return COMPONENT_BLEEDING_CANCEL
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_removed(mob/living/carbon/human/user, obj/item/clothing/C)
 	. = ..()
-	if (user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
-		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
-		to_chat(user, SPAN_NOTICE("You feel [src] peeling off from your skin."))
-		attached_uni = null
+	to_chat(user, SPAN_NOTICE("You feel [src] peeling off from your skin."))
+	UnregisterSignal(user, COMSIG_BLEEDING_PROCESS)
+	attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/coagulator/on_removed_sig(mob/living/carbon/human/user, slot)
 	. = ..()
 	if(. == FALSE)
 		return
-	if(user.chem_effect_flags & CHEM_EFFECT_NO_BLEEDING)
-		to_chat(user, SPAN_NOTICE("You feel [src] peeling off from your skin."))
-		user.chem_effect_flags &= CHEM_EFFECT_NO_BLEEDING
-		attached_uni = null
+	UnregisterSignal(user, COMSIG_BLEEDING_PROCESS)
+	attached_uni = null
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector
 	name = "emergency chemical plate"
 	desc = "One-time disposable research plate packing all kinds of chemicals injected at the will of the user by pressing two buttons on the sides simultaneously. The injection is painless, instant and packs much more chemicals than your normal emergency injector. Features OD Protection in three modes."
-	var/od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_STRICT
+	var/od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC
 	var/datum/action/item_action/activation
 	var/mob/living/wearer
 	var/used = FALSE
@@ -327,7 +327,7 @@
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/clicked(mob/user, list/mods)
 	. = ..()
-	if(mods["alt"])
+	if(mods[ALT_CLICK])
 		var/text = "You toggle overdose protection "
 		if(od_protection_mode == EMERGENCY_PLATE_OD_PROTECTION_DYNAMIC)
 			od_protection_mode = EMERGENCY_PLATE_OD_PROTECTION_OFF
@@ -350,7 +350,7 @@
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	wearer = user
-	activation = new /datum/action/item_action/emergency_plate/inject_chemicals(src, attached_uni)
+	activation = new /datum/action/item_action/toggle/emergency_plate/inject_chemicals(src, attached_uni)
 	activation.give_to(wearer)
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/on_removed(mob/living/user, obj/item/clothing/C)
@@ -366,13 +366,13 @@
 	attached_uni = null
 
 //Action buttons
-/datum/action/item_action/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
+/datum/action/item_action/toggle/emergency_plate/inject_chemicals/New(Target, obj/item/holder)
 	. = ..()
 	name = "Inject Emergency Plate"
 	action_icon_state = "plate_research"
 	button.name = name
 	button.overlays.Cut()
-	button.overlays += image('icons/obj/items/items.dmi', button, action_icon_state)
+	button.overlays += image('icons/obj/items/devices.dmi', button, action_icon_state)
 
 /obj/item/clothing/accessory/health/research_plate/emergency_injector/ui_action_click(mob/owner, obj/item/holder)
 	if(used)
@@ -400,26 +400,19 @@
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay
 	name = "experimental preservation plate"
-	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead, due to small tank of preservatives, it needs to be replaced on each death."
+	desc = "preservation plate which activates once the user is dead, uses variety of different substances and sensors to slow down the decay and increase the time before the user is permanently dead to around 9 minutes instead of 5"
 	var/mob/living/carbon/human/wearer
-	var/used = FALSE
 
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay/Destroy()
 	. = ..()
 	wearer = null
 
-/obj/item/clothing/accessory/health/research_plate/anti_decay/get_examine_text(mob/user)
-	. = ..()
-	if(used)
-		. += SPAN_WARNING("It is used!")
-
 /obj/item/clothing/accessory/health/research_plate/anti_decay/on_attached(obj/item/clothing/S, mob/living/carbon/human/user)
 	. = ..()
 	wearer = user
-	if(!used)
-		RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(begin_preserving))
-		user.revive_grace_period += 4 MINUTES
+	RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(begin_preserving))
+	user.revive_grace_period += 4 MINUTES
 
 /obj/item/clothing/accessory/health/research_plate/anti_decay/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
@@ -437,14 +430,13 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_MOB_DEATH)
 	to_chat(wearer, SPAN_NOTICE("The [src] detects your death and starts injecting various chemicals to slow down your final demise!"))
-	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(onetime_use))
-	used = TRUE
+	RegisterSignal(wearer, COMSIG_HUMAN_REVIVED, PROC_REF(reset_use))
 
-/obj/item/clothing/accessory/health/research_plate/anti_decay/proc/onetime_use()
+/obj/item/clothing/accessory/health/research_plate/anti_decay/proc/reset_use()
 	SIGNAL_HANDLER
 	UnregisterSignal(wearer, COMSIG_HUMAN_REVIVED)
-	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Chemical preservatives reserves depleted, replace the [src]"))
-	wearer.revive_grace_period = 5 MINUTES
+	to_chat(wearer, SPAN_NOTICE("[icon2html(src, viewers(src))] \The <b>[src]</b> beeps: Registering user life signs, halting preservation efforts"))
+	wearer.revive_grace_period = 9 MINUTES
 
 
 

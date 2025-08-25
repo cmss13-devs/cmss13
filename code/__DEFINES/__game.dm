@@ -31,12 +31,15 @@
 #define MAP_KUTJEVO "Kutjevo Refinery"
 #define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 #define MAP_RUNTIME "USS Runtime"
-#define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim" // Highpop Only
+#define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
+#define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
+#define MAP_ROSTOCK "SSV Rostock" //UPP Warship
 
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
+#define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"
 
 /// Number of players before we switch to lowpop maps only (LV, BR, Prison).
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130
@@ -147,14 +150,27 @@
 #define PLAY_SYNTH (1<<5)
 #define PLAY_MISC (1<<6)
 
+//toggles_survivor
+#define PLAY_SURVIVOR_HOSTILE (1<<0)
+#define PLAY_SURVIVOR_NON_HOSTILE (1<<1)
+
+//toggles_ert_pred
+#define PLAY_MERC (1<<0)
+#define PLAY_TWE (1<<1)
+#define PLAY_UPP (1<<2)
+#define PLAY_CLF (1<<3)
+#define PLAY_XENO_T2 (1<<4)
+#define PLAY_XENO_T3 (1<<5)
+
 //toggles_admin
 /// Splits admin tabs in Statpanel
 #define SPLIT_ADMIN_TABS (1<<0)
 #define ADMIN_STEALTHMODE (1<<1)
+#define ADMIN_AFK_SAFE (1<<2)
 
 //=================================================
 
-#define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_LOOC|CHAT_GHOSTHIVEMIND)
+#define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_LOOC|CHAT_GHOSTHIVEMIND|CHAT_FFATTACKLOGS)
 
 #define TOGGLES_GHOST_DEFAULT (GHOST_HEALTH_SCAN)
 
@@ -166,7 +182,11 @@
 
 #define TOGGLES_ERT_DEFAULT (PLAY_LEADER|PLAY_MEDIC|PLAY_ENGINEER|PLAY_HEAVY|PLAY_SMARTGUNNER|PLAY_SYNTH|PLAY_MISC)
 
-#define TOGGLES_ADMIN_DEFAULT (NONE)
+#define TOGGLES_SURVIVOR_DEFAULT (PLAY_SURVIVOR_HOSTILE|PLAY_SURVIVOR_NON_HOSTILE)
+
+#define TOGGLES_ERT_GROUNDS (PLAY_MERC|PLAY_TWE|PLAY_UPP|PLAY_CLF|PLAY_XENO_T2|PLAY_XENO_T3)
+
+#define TOGGLES_ADMIN_DEFAULT (ADMIN_AFK_SAFE)
 
 // Game Intents
 #define INTENT_HELP 1
@@ -186,6 +206,7 @@
 #define DOCK_ATTEMPT_TIMEOUT 20 SECONDS
 #define DROPSHIP_WARMUP_TIME 10 SECONDS
 #define DROPSHIP_DROP_MSG_DELAY 30 SECONDS
+#define DROPSHIP_DROP_FIRE_DELAY 20 SECONDS
 #define DROPSHIP_TRANSIT_DURATION 100 SECONDS
 #define DROPSHIP_CORSAT_DURATION 30 SECONDS
 #define ELEVATOR_TRANSIT_DURATION 5 SECONDS
@@ -245,7 +266,7 @@
 
 /// Frequency stuff only works with 45kbps oggs.
 #define GET_RANDOM_FREQ rand(32000, 55000)
-
+#define GET_RANDOM_FREQ_MINOR rand(42000, 48000)
 
 // Ceilings
 // Ceiling types
@@ -260,6 +281,7 @@
 /// Blocks mortar placement, lasing, and medevac
 #define CEILING_PROTECTION_TIER_1 1
 #define CEILING_METAL 1.1
+#define CEILING_SANDSTONE_ALLOW_CAS 1.2
 
 /// Blocks CAS signals, supply drops, fultoning, and mortar fire
 #define CEILING_PROTECTION_TIER_2 2
@@ -270,6 +292,7 @@
 #define CEILING_PROTECTION_TIER_3 3
 #define CEILING_UNDERGROUND_BLOCK_CAS 3.1
 #define CEILING_UNDERGROUND_METAL_BLOCK_CAS 3.2
+#define CEILING_UNDERGROUND_SANDSTONE_BLOCK_CAS 3.3
 
 /// Blocks OB fire
 #define CEILING_PROTECTION_TIER_4 4
@@ -344,6 +367,8 @@
 #define WALL_REINFORCED_BUNKER "bunker"
 #define WALL_RESIN "resin"
 #define WALL_THICKRESIN "thickresin"
+#define WALL_WEEDBOUND_RESIN "weedboundresin"
+#define WALL_THICK_WEEDBOUND_RESIN "thickweedboundresin"
 #define WALL_MEMBRANE "membrane"
 #define WALL_THICKMEMBRANE "thickmembrane"
 #define WALL_BONE_RESIN "bone_resin"
@@ -378,6 +403,8 @@
 #define WALL_DEVWALL_R "devwall_r"
 #define WALL_HUNTERSHIP "metal"//DMI specific name
 #define WALL_AICORE "aiwall"
+#define WALL_UPP_SHIP "uppwall_interior"
+#define WALL_UPP_BASE "uppwall"
 
 //Defines for dropship weapon gimbals
 #define GIMBAL_LEFT -1
@@ -522,8 +549,10 @@
 	else
 		var/dx = abs(A.x - B.x)
 		var/dy = abs(A.y - B.y)
-		if(dx>=dy) dist = (0.934*dx) + (0.427*dy)
-		else dist = (0.427*dx) + (0.934*dy)
+		if(dx>=dy)
+			dist = (0.934*dx) + (0.427*dy)
+		else
+			dist = (0.427*dx) + (0.934*dy)
 
 	return dist
 
@@ -554,3 +583,6 @@
 #define PERF_TOGGLE_SHUTTLES (1<<3)
 /// Disables loading Techwebs and additional Z-Levels
 #define PERF_TOGGLE_TECHWEBS (1<<4)
+
+/// Maptext styles
+#define MAP_STYLESHEET ".maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .center { text-align: center; } .langchat { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; } .langchat_small { font-size: 6px; } .langchat_yell { font-weight: bold; font-size: 10px; } .langchat_bolded { font-weight: bold; font-size: 8px; } .langchat_announce { font-weight: bold; font-size: 12px; } .langchat_bolditalicbig {font-weight: bold; font-size: 24px; font-style: italic; } .langchat_italic {font-style: italic; }"

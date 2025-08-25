@@ -32,7 +32,6 @@
 #define EXPLOSION_FALLOFF_SHAPE_LINEAR   0
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL  1
 #define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF 2
-
 #define EXPLOSION_MAX_POWER 5000
 
 //area flags
@@ -47,6 +46,15 @@
 #define AREA_CONTAINMENT (1<<3)
 /// Flags the area as permanently unweedable. Still requires is_resin_allowed = FALSE
 #define AREA_UNWEEDABLE (1<<4)
+/// Flags the area as having purpose by the Yautja, and exempt from gear tracking.
+#define AREA_YAUTJA_GROUNDS (1<<5)
+/// Flags the area as a hunting grounds for the Yautja, sometimes blocking game interaction.
+#define AREA_YAUTJA_HUNTING_GROUNDS (1<<6)
+/// Flags the area as hangable, allowing the hanging of skinned bodies.
+#define AREA_YAUTJA_HANGABLE (1<<7)
+/// Makes it so barricades can't be anchored and starts unsecured.
+#define AREA_NOSECURECADES (1<<8)
+
 /// Default number of ticks for do_after
 #define DA_DEFAULT_NUM_TICKS 5
 
@@ -157,7 +165,7 @@
 #define ASSEMBLY_UNLOCKED 1
 #define ASSEMBLY_LOCKED 2
 
-// RESEARCH UPGRADES DEFINES //
+// RESEARCH DEFINES //
 
 // Matrix CAS Upgrades
 #define MATRIX_DEFAULT 0
@@ -186,8 +194,7 @@
 #define EMERGENCY_PLATE_OD_WARNING 1
 #define EMERGENCY_PLATE_ADJUSTED_WARNING 2
 
-
-// RESEARCH UPGRADES DEFINES END
+// RESEARCH DEFINES END
 
 // Statistics defines
 #define STATISTIC_XENO "xeno"
@@ -295,6 +302,7 @@
 //ghost vision mode pref settings
 #define GHOST_VISION_LEVEL_NO_NVG "No Night Vision"
 #define GHOST_VISION_LEVEL_MID_NVG "Half Night Vision"
+#define GHOST_VISION_LEVEL_HIGH_NVG "Three Quarters Night Vision"
 #define GHOST_VISION_LEVEL_FULL_NVG "Full Night Vision"
 
 //Ghost orbit types:

@@ -20,6 +20,9 @@
 	/// a ckey that persists client logout / ghosting, replaced when a client inhabits the mob
 	var/persistent_ckey
 
+	/// the username() of the last mob that logged in
+	var/persistent_username
+
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/obj/whatever, when it is in fact needed as such.
 	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticeable for other mobs).
@@ -138,7 +141,7 @@
 	var/obj/item/back = null//Human/Monkey
 	var/obj/item/tank/internal = null//Human/Monkey
 	var/obj/item/storage/s_active = null//Carbon
-	var/obj/item/clothing/mask/wear_mask = null//Carbon
+	var/obj/item/wear_mask = null//Carbon
 
 	var/able_to_speak = TRUE
 
@@ -200,9 +203,10 @@
 	///Color matrices to be applied to the client window. Assoc. list.
 	var/list/client_color_matrices
 
-	var/list/image/hud_list //This mob's HUD (med/sec, etc) images. Associative list.
-
-	var/list/hud_possible //HUD images that this mob can provide.
+	///This mob's HUD (med/sec, etc) images. Associative list.
+	var/list/image/hud_list
+	///HUD images that this mob can provide.
+	var/list/hud_possible
 
 	var/action_busy //whether the mob is currently doing an action that takes time (do_after proc)
 	var/resisting // whether the mob is currently resisting (primarily for do_after proc)
@@ -228,7 +232,6 @@
 	can_block_movement = TRUE
 
 	appearance_flags = TILE_BOUND
-	var/mouse_icon = null
 
 	///the mob's tgui player panel
 	var/datum/player_panel/mob_panel
@@ -287,7 +290,7 @@
 /mob/vv_get_header()
 	. = ..()
 	var/refid = REF(src)
-	. += "<font size='1'><br><a href='?_src_=vars;[HrefToken()];view_combat_logs=[refid]'>View Combat Logs</a><br></font>"
+	. += "<font size='1'><br><a href='byond://?_src_=vars;[HrefToken()];view_combat_logs=[refid]'>View Combat Logs</a><br></font>"
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()

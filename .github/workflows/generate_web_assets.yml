@@ -1,0 +1,35 @@
+name: Generate web assets
+on:
+  push:
+    branches:
+    - master
+jobs:
+  generate_static_assets:
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+    runs-on: ubuntu-latest
+    concurrency: gen-assets
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup cache
+        uses: actions/cache@v4
+        with:
+          path: ~/SpacemanDMM
+          key: ${{ runner.os }}-spacemandmm-${{ hashFiles('dependencies.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-spacemandmm-
+      - name: Install SpacemanDMM
+        run: bash tools/ci/install_spaceman_dmm.sh dmdoc
+      - name: Generate documentation and static assets
+        run: |
+          ~/dmdoc
+          touch dmdoc/.nojekyll
+          echo docs.cm-ss13.com > dmdoc/CNAME
+          mv tgui/public/ dmdoc/assets
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          BRANCH: gh-pages
+          CLEAN: true
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SINGLE_COMMIT: true
+          FOLDER: dmdoc

@@ -206,14 +206,21 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 	while(counter>=1)
 		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
 		if(rand(1,3)==3)
-			if(lowertext(newletter)=="o") newletter="u"
-			if(lowertext(newletter)=="s") newletter="ch"
-			if(lowertext(newletter)=="a") newletter="ah"
-			if(lowertext(newletter)=="c") newletter="k"
+			if(lowertext(newletter)=="o")
+				newletter="u"
+			if(lowertext(newletter)=="s")
+				newletter="ch"
+			if(lowertext(newletter)=="a")
+				newletter="ah"
+			if(lowertext(newletter)=="c")
+				newletter="k"
 		switch(rand(1,7))
-			if(1,3,5) newletter="[lowertext(newletter)]"
-			if(2,4,6) newletter="[uppertext(newletter)]"
-			if(7) newletter+="'"
+			if(1,3,5)
+				newletter="[lowertext(newletter)]"
+			if(2,4,6)
+				newletter="[uppertext(newletter)]"
+			if(7)
+				newletter+="'"
 			//if(9,10) newletter="<b>[newletter]</b>"
 			//if(11,12) newletter="<big>[newletter]</big>"
 			//if(13) newletter="<small>[newletter]</small>"
@@ -479,6 +486,24 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 /mob/proc/can_see_reagents()
 	return stat == DEAD || issynth(src) || HAS_TRAIT(src, TRAIT_REAGENT_SCANNER) //Dead guys and synths can always see reagents
 
+/// Returns TRUE if this mob is an ally of another, depending on the `faction` and `faction_group` variables, FALSE otherwise
+/mob/proc/is_ally_of(mob/potential_ally)
+	. = FALSE
+
+	if(faction == potential_ally.faction)
+		return TRUE
+
+	if(faction in potential_ally.faction_group)
+		return TRUE
+
+	if(potential_ally.faction in faction_group)
+		return TRUE
+
+	if(length(faction_group & potential_ally.faction_group))
+		return TRUE
+
+	return FALSE
+
 /**
  * Examine a mob
  *
@@ -527,7 +552,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		start_pulling(pullify)
 
 /mob/proc/handle_blood_splatter(splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(loc, splatter_dir)
+	new /obj/effect/bloodsplatter/human(loc, splatter_dir)
 
 /proc/get_mobs_in_z_level_range(turf/starting_turf, range)
 	var/list/mobs_in_range = list()
@@ -603,7 +628,8 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 			if(higher_power > 48)
 				alert_overlay.pixel_y = -(iheight * 0.5) * diff
 				alert_overlay.pixel_x = -(iwidth * 0.5) * diff
-
+			if(higher_power > 80)
+				center_image(alert_overlay, -20, -10)
 
 	alert_overlay.layer = FLOAT_LAYER
 	alert_overlay.plane = FLOAT_PLANE
@@ -615,3 +641,24 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	sync_lighting_plane_alpha()
+
+/mob/proc/get_ability_mouse_key()
+	if(!client)
+		return XENO_ABILITY_CLICK_MIDDLE
+
+	return client.prefs.xeno_ability_click_mode
+
+/proc/xeno_ability_mouse_pref_to_string(preference_value)
+	switch(preference_value)
+		if(XENO_ABILITY_CLICK_MIDDLE)
+			return "middle click"
+		if(XENO_ABILITY_CLICK_RIGHT)
+			return "right click"
+		if(XENO_ABILITY_CLICK_SHIFT)
+			return "shift click"
+	return "middle click"
+
+/mob/proc/get_ability_mouse_name()
+	var/ability = get_ability_mouse_key()
+
+	return xeno_ability_mouse_pref_to_string(ability)

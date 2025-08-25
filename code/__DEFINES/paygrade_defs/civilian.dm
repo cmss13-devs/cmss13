@@ -7,6 +7,9 @@
 /// CNUR, Nurse
 #define PAY_SHORT_CNUR "CNUR"
 
+///CPARA, Paramedic
+#define PAY_SHORT_CPARA "CPARA"
+
 /// CDOC, Doctor
 #define PAY_SHORT_CDOC "CDOC"
 
@@ -34,5 +37,8 @@
 /// REB, Rebel
 #define PAY_SHORT_REB "REB"
 
-/// REBC, Rebel Commander "REBC"
+/// REBC, Rebel Commander
 #define PAY_SHORT_REBC "REBC"
+
+/// CADMIN, Administrator
+#define PAY_SHORT_CADMIN "CADMIN"

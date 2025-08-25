@@ -6,7 +6,7 @@
 	active_power_usage = 15000
 	unslashable = TRUE
 	unacidable = TRUE
-	indestructible = TRUE
+	explo_proof = TRUE
 
 	///How much to recharge the cells per process
 	var/recharge_amount = 5
@@ -21,7 +21,7 @@
 	QDEL_NULL(cell_right)
 
 /obj/structure/machinery/fuelcell_recycler/ex_act(severity)
-	if(indestructible)
+	if(explo_proof)
 		return
 	. = ..()
 
@@ -120,10 +120,6 @@
 	if(cell_right && !cell_right.is_regenerated())
 		recharge_cell(cell_right)
 
-	update_icon()
-
-/obj/structure/machinery/fuelcell_recycler/power_change()
-	..()
 	update_icon()
 
 /obj/structure/machinery/fuelcell_recycler/update_icon()

@@ -24,8 +24,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	power_environ = FALSE
 	temperature = TCMB
 	pressure = 0
-	flags_area = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL|AREA_UNWEEDABLE
 	weather_enabled = FALSE
+	is_resin_allowed = FALSE
 
 	//fix for issue https://github.com/cmss13-devs/cmss13/issues/2191
 	base_muffle = AREA_MUTED
@@ -85,6 +86,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
 	statistic_exempt = TRUE
+	block_game_interaction = TRUE
 	ceiling = CEILING_METAL
 
 	base_lighting_alpha = 255

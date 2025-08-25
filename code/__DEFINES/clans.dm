@@ -28,7 +28,6 @@
 #define CLAN_RANK_YOUNG "Young Blood"
 /// New to the clan
 #define CLAN_RANK_BLOODED "Blooded"
-
 #define CLAN_RANK_ELITE "Elite"
 #define CLAN_RANK_ELDER "Elder"
 #define CLAN_RANK_LEADER "Clan Leader"
@@ -91,3 +90,7 @@
 		)
 
 #define CLAN_SHIP_PUBLIC -1
+
+#define ERT_JOB_YOUNGBLOOD "Young Blood"
+#define JOB_YOUNGBLOOD_ROLES /datum/timelock/young_blood
+#define JOB_YOUNGBLOOD_ROLES_LIST list(ERT_JOB_YOUNGBLOOD)

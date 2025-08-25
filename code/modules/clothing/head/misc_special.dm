@@ -33,7 +33,7 @@
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
 	eye_protection = EYE_PROTECTION_WELDING
-	vision_impair = VISION_IMPAIR_MAX
+	vision_impair = VISION_IMPAIR_ULTRA
 
 /obj/item/clothing/head/welding/attack_self(mob/user)
 	..()
@@ -49,7 +49,7 @@
 		return
 
 	if(up)
-		vision_impair = VISION_IMPAIR_MAX
+		vision_impair = VISION_IMPAIR_ULTRA
 		flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 		flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
 		icon_state = initial(icon_state)
@@ -74,6 +74,16 @@
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
+
+/obj/item/clothing/head/welding/painted
+	name = "custom welding helmet"
+	desc = "A head-mounted face cover, painted red with bold white stripes, offering solid protection and a touch of style."
+	icon_state = "weldingpainted"
+	item_state = "weldingpainted"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	)
 
 /*
  * Cakehat

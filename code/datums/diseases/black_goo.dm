@@ -223,7 +223,8 @@
 
 	else if(istype(O, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/D = O
-		if(D.isSwitchingStates) return
+		if(D.isSwitchingStates)
+			return
 		if(!D.density || user.action_busy || user.a_intent == INTENT_HARM)
 			return
 		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
@@ -232,7 +233,7 @@
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			user.visible_message(SPAN_DANGER("[user] forces [D] open with their [name]."),
 			SPAN_DANGER("You force [D] open with your [name]."))
-			D.Open()
+			D.open()
 
 /obj/item/reagent_container/food/drinks/bottle/black_goo
 	name = "strange bottle"
@@ -280,13 +281,17 @@
 /obj/item/clothing/glasses/zombie_eyes
 	name = "zombie eyes"
 	gender = PLURAL
+	icon = 'icons/obj/items/clothing/glasses/misc.dmi'
+	item_icons = list(
+		WEAR_EYES = 'icons/mob/humans/onmob/clothing/glasses/misc.dmi',
+	)
 	icon_state = "stub"
 	item_state = "BLANK"
 	w_class = SIZE_SMALL
 	vision_flags = SEE_MOBS
 	darkness_view = 7
 	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
-	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+	lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
 
 
 /obj/item/storage/fancy/blackgoo

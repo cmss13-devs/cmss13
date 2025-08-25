@@ -1,5 +1,9 @@
 /obj/item/ashtray
-	icon = 'icons/obj/items/ashtray.dmi'
+	icon = 'icons/obj/items/smoking/ashtray.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items/smoking_righthand.dmi'
+	)
 
 	var/max_butts = 0
 	var/empty_desc = ""

@@ -60,7 +60,7 @@
 		Detach(target)
 		return
 
-	// FIXME: This shit is retarded and Entered should be refactored
+	// FIXME: This shit is silly and Entered should be refactored
 	if(LAZYISIN(entered_bloody_turf, target))
 		LAZYREMOVE(entered_bloody_turf, target)
 		return

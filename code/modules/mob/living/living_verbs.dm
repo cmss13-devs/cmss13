@@ -1,7 +1,7 @@
 /mob/living/can_resist()
 	if(next_move > world.time)
 		return FALSE
-	if(HAS_TRAIT(src, TRAIT_INCAPACITATED))
+	if(HAS_TRAIT(src, TRAIT_INCAPACITATED) || HAS_TRAIT(src, TRAIT_HAULED))
 		return FALSE
 	return TRUE
 
@@ -23,6 +23,10 @@
 		if(HAS_TRAIT(xeno, TRAIT_ABILITY_BURROWED))
 			to_chat(src, SPAN_WARNING("You can't resist in your current state."))
 			return
+
+	if(pulledby && isxeno(pulledby))
+		to_chat(src, SPAN_WARNING("You can't resist while a xeno is grabbing you."))
+		return
 
 	resisting = TRUE
 

@@ -105,16 +105,6 @@
 	if(owner)
 		forceMove(owner)
 
-
-
-/*
-/obj/limb/proc/get_icon(icon/race_icon, icon/deform_icon)
-	return icon('icons/mob/human.dmi',"blank")
-*/
-
-/obj/limb/process()
-		return 0
-
 /obj/limb/Destroy()
 	if(parent)
 		parent.children -= src
@@ -182,11 +172,18 @@
 	if(severity == 2)
 		probability = 1
 		damage = 3
-	if(prob(probability))
+	if(can_emp_delimb() && prob(probability))
 		droplimb(0, 0, "EMP")
 	else
 		take_damage(damage, 0, 1, 1, used_weapon = "EMP")
+		for(var/datum/internal_organ/internal_organ in internal_organs)
+			if(internal_organ.robotic == FALSE)
+				continue
+			internal_organ.emp_act(severity)
 
+/// If this limb can be dropped as a result of an EMP
+/obj/limb/proc/can_emp_delimb()
+	return TRUE
 
 /obj/limb/proc/take_damage_organ_damage(brute, sharp)
 	if(!owner)
@@ -269,14 +266,20 @@
 							no_limb_loss, damage_source = create_cause_data("amputation"),\
 							mob/attack_source = null,\
 							brute_reduced_by = -1, burn_reduced_by = -1)
+	if((brute > 0 || burn > 0) && owner && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && owner.stat == DEAD) //if they take positive damage (not healing) we prevent it
+		return 0
 	if((brute <= 0) && (burn <= 0))
 		return 0
+
+	if(burn > 0 && MODE_HAS_MODIFIER(/datum/gamemode_modifier/weaker_explosions_fire))
+		burn /= 4 //reduce the flame dmg by 75% for HvH, it is still super strong
 
 	if(status & LIMB_DESTROYED)
 		return 0
 
 	var/previous_brute = brute_dam
 	var/previous_burn = burn_dam
+	var/previous_bonebreak = (status & LIMB_BROKEN)
 
 	var/is_ff = FALSE
 	if(istype(attack_source) && attack_source.faction == owner.faction)
@@ -370,7 +373,7 @@
 	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
 	var/no_bone_break = owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE
 	if(previous_brute > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage && !no_bone_break)
-		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (status & LIMB_BROKEN))
+		if(CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier) && (previous_bonebreak || (status & (LIMB_ROBOT|LIMB_SYNTHSKIN)))) //delimbable only if broken before this hit or we're a robot limb (synths do not fracture)
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))
 				limb_delimb(damage_source)
@@ -488,7 +491,8 @@ This function completely restores a damaged organ to perfect condition.
 			//we need to make sure that the wound we are going to worsen is compatible with the type of damage...
 			var/compatible_wounds[] = new
 			for(W in wounds)
-				if(W.can_worsen(type, damage)) compatible_wounds += W
+				if(W.can_worsen(type, damage))
+					compatible_wounds += W
 
 			if(length(compatible_wounds))
 				W = pick(compatible_wounds)
@@ -531,6 +535,9 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(internal && !can_bleed_internally)
 		internal = FALSE
+	if(internal && MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_ib))
+		internal = FALSE
+
 
 	if(length(bleeding_effects_list))
 		if(!internal)
@@ -588,7 +595,6 @@ This function completely restores a damaged organ to perfect condition.
 	return FALSE
 
 /obj/limb/process()
-
 	// Process wounds, doing healing etc. Only do this every few ticks to save processing power
 	if(owner.life_tick % wound_update_accuracy == 0)
 		update_wounds()
@@ -718,7 +724,16 @@ This function completely restores a damaged organ to perfect condition.
 		body_type = owner.body_type
 
 	species = owner?.species ? owner.species : GLOB.all_species[SPECIES_HUMAN]
-	limb_gender = owner?.gender ? owner.gender : FEMALE
+	limb_gender = get_limb_gender()
+
+/obj/limb/proc/get_limb_gender()
+	return owner?.gender ? owner.gender : FEMALE
+
+/obj/limb/chest/get_limb_gender()
+	if(owner && owner.body_presentation)
+		return owner.body_presentation
+
+	return owner?.gender ? owner.gender : FEMALE
 
 /// generates a list of overlays that should be applied to the owner
 /obj/limb/proc/get_limb_icon()
@@ -854,8 +869,10 @@ This function completely restores a damaged organ to perfect condition.
 		wounds.Cut()
 		if(parent && !amputation)
 			var/datum/wound/W
-			if(max_damage < 50) W = new/datum/wound/lost_limb/small(max_damage)
-			else W = new/datum/wound/lost_limb(max_damage)
+			if(max_damage < 50)
+				W = new/datum/wound/lost_limb/small(max_damage)
+			else
+				W = new/datum/wound/lost_limb(max_damage)
 
 			parent.wounds += W
 			parent.update_damages()
@@ -880,8 +897,10 @@ This function completely restores a damaged organ to perfect condition.
 				owner.drop_inv_item_on_ground(owner.wear_l_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_r_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
+				owner.lip_style = null
 				owner.update_hair()
-				if(owner.species) owner.species.handle_head_loss(owner)
+				if(owner.species)
+					owner.species.handle_head_loss(owner)
 			if(BODY_FLAG_ARM_RIGHT)
 				if(status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 					organ = new /obj/item/robot_parts/arm/r_arm(owner.loc)
@@ -958,8 +977,8 @@ This function completely restores a damaged organ to perfect condition.
 
 			if(organ)
 				//Throw organs around
-				var/lol = pick(GLOB.cardinals)
-				step(organ,lol)
+				var/dir_to_throw = pick(GLOB.cardinals)
+				step(organ,dir_to_throw)
 
 		owner.update_body() //Among other things, this calls update_icon() and updates our visuals.
 		owner.update_med_icon()
@@ -996,15 +1015,15 @@ This function completely restores a damaged organ to perfect condition.
 	if(!owner)
 		return
 	if (owner.handcuffed && (body_part in list(BODY_FLAG_ARM_LEFT, BODY_FLAG_ARM_RIGHT, BODY_FLAG_HAND_LEFT, BODY_FLAG_HAND_RIGHT)))
-		owner.visible_message(\
-			"\The [owner.handcuffed.name] falls off of [owner.name].",\
+		owner.visible_message(
+			"\The [owner.handcuffed.name] falls off of [owner.name].",
 			"\The [owner.handcuffed.name] falls off you.")
 
 		owner.drop_inv_item_on_ground(owner.handcuffed)
 
 	if (owner.legcuffed && (body_part in list(BODY_FLAG_FOOT_LEFT, BODY_FLAG_FOOT_RIGHT, BODY_FLAG_LEG_LEFT, BODY_FLAG_LEG_RIGHT)))
-		owner.visible_message(\
-			"\The [owner.legcuffed.name] falls off of [owner.name].",\
+		owner.visible_message(
+			"\The [owner.legcuffed.name] falls off of [owner.name].",
 			"\The [owner.legcuffed.name] falls off you.")
 
 		owner.drop_inv_item_on_ground(owner.legcuffed)
@@ -1085,7 +1104,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 		return
 
 	if(owner.status_flags & NO_PERMANENT_DAMAGE)
-		owner.visible_message(\
+		owner.visible_message(
 			SPAN_WARNING("[owner] withstands the blow!"),
 			SPAN_WARNING("Your [display_name] withstands the blow!"))
 		return
@@ -1112,7 +1131,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(prob(bonebreak_probability))
 		owner.recalculate_move_delay = TRUE
 		if(status & (LIMB_ROBOT))
-			owner.visible_message(\
+			owner.visible_message(
 				SPAN_WARNING("You see sparks coming from [owner]'s [display_name]!"),
 				SPAN_HIGHDANGER("Something feels like it broke in your [display_name] as it spits out sparks!"),
 				SPAN_HIGHDANGER("You hear electrical sparking!"))
@@ -1122,7 +1141,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			spark_system.start()
 			QDEL_IN(spark_system, 1 SECONDS)
 		else
-			owner.visible_message(\
+			owner.visible_message(
 				SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
 				SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
 				SPAN_HIGHDANGER("You hear a sickening crack!"))
@@ -1142,7 +1161,7 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 			broken_description = pick("broken","fracture","hairline fracture")
 			perma_injury = min_broken_damage
 	else
-		owner.visible_message(\
+		owner.visible_message(
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
 			SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
 
@@ -1236,21 +1255,22 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	if(W)
 		W.forceMove(owner)
 
-/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, indestructible_splints = FALSE)
+/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/splint, mob/living/user, mob/living/carbon/human/target, indestructible_splints = FALSE)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		var/time_to_take = 5 SECONDS
 		if (target == user)
-			user.visible_message(SPAN_WARNING("[user] fumbles with [S]"), SPAN_WARNING("You fumble with [S]..."))
+			user.visible_message(SPAN_WARNING("[user] fumbles with [splint]"), SPAN_WARNING("You fumble with [splint]..."))
 			time_to_take = 15 SECONDS
 
 		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			var/possessive = "[user == target ? "your" : "\the [target]'s"]"
 			var/possessive_their = "[user == target ? user.gender == MALE ? "his" : "her" : "\the [target]'s"]"
 			user.affected_message(target,
-				SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
-				SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
-				SPAN_NOTICE("[user] finishes applying [S] to [possessive_their] [display_name]."))
+				SPAN_HELPFUL("You finish applying <b>[splint]</b> to [possessive] [display_name]."),
+				SPAN_HELPFUL("[user] finishes applying <b>[splint]</b> to your [display_name]."),
+				SPAN_NOTICE("[user] finishes applying [splint] to [possessive_their] [display_name]."))
 			status |= LIMB_SPLINTED
+			SEND_SIGNAL(src, COMSIG_LIVING_LIMB_SPLINTED, user)
 			if(indestructible_splints)
 				status |= LIMB_SPLINTED_INDESTRUCTIBLE
 
@@ -1308,6 +1328,12 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	vital = 1
 	splint_icon_amount = 1
 	bandage_icon_amount = 2
+
+/obj/limb/groin/can_emp_delimb()
+	if(status & (LIMB_ROBOT | LIMB_SYNTHSKIN))
+		return FALSE
+
+	return TRUE
 
 /obj/limb/leg
 	name = "leg"
@@ -1447,6 +1473,9 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 	eyes.color = list(null, null, null, null, rgb(owner.r_eyes, owner.g_eyes, owner.b_eyes))
 	. += eyes
 
+	if(HAS_TRAIT(owner, TRAIT_INTENT_EYES))
+		. += emissive_appearance(icon = 'icons/mob/humans/onmob/human_face.dmi', icon_state = species.eyes)
+
 	if(lip_style && (species && species.flags & HAS_LIPS))
 		var/image/lips = image('icons/mob/humans/onmob/human_face.dmi', "paint_[lip_style]", layer = -BODYPARTS_LAYER)
 		. += lips
@@ -1512,5 +1541,5 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	owner.visible_message("[owner]'s [owner_helmet] goes flying off from the impact!", SPAN_USERDANGER("Your [owner_helmet] goes flying off from the impact!"))
 	owner.drop_inv_item_on_ground(owner_helmet)
-	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(range(1, get_turf(loc))), 1, SPEED_FAST)
+	INVOKE_ASYNC(owner_helmet, TYPE_PROC_REF(/atom/movable, throw_atom), pick(RANGE_TURFS(1, get_turf(owner))), 1, SPEED_FAST)
 	playsound(owner, 'sound/effects/helmet_noise.ogg', 100)

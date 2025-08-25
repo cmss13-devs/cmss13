@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/structure/transmitter
 	name = "telephone receiver"
-	icon = 'icons/obj/structures/structures.dmi'
+	icon = 'icons/obj/structures/phone.dmi'
 	icon_state = "wall_phone"
 	desc = "It is a wall mounted telephone. The fine text reads: To log your details with the mainframe please insert your keycard into the slot below. Unfortunately the slot is jammed. You can still use the phone, however."
 
@@ -14,8 +14,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/obj/item/phone/attached_to
 	var/atom/tether_holder
 
-	var/obj/structure/transmitter/calling
-	var/obj/structure/transmitter/caller
+	var/obj/structure/transmitter/outbound_call
+	var/obj/structure/transmitter/inbound_call
+	var/pickup_sound = "rtb_handset"
 
 	var/next_ring = 0
 
@@ -40,6 +41,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/datum/looping_sound/telephone/busy/busy_loop
 	var/datum/looping_sound/telephone/hangup/hangup_loop
 	var/datum/looping_sound/telephone/ring/outring_loop
+	var/call_sound = 'sound/machines/telephone/telephone_ring.ogg'
 
 /obj/structure/transmitter/hidden
 	do_not_disturb = PHONE_DND_FORCED
@@ -52,12 +54,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	RegisterSignal(attached_to, COMSIG_PARENT_PREQDELETED, PROC_REF(override_delete))
 	update_icon()
 
-	if(!get_turf(src))
-		return
-
 	outring_loop = new(attached_to)
 	busy_loop = new(attached_to)
 	hangup_loop = new(attached_to)
+
+	if(!get_turf(src))
+		return
 
 	GLOB.transmitters += src
 
@@ -68,7 +70,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		icon_state = "[base_icon_state]_ear"
 		return
 
-	if(caller)
+	if(inbound_call)
 		icon_state = "[base_icon_state]_ring"
 	else
 		icon_state = base_icon_state
@@ -184,13 +186,13 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(TRANSMITTER_UNAVAILABLE(T))
 		return
 
-	calling = T
-	T.caller = src
+	outbound_call = T
+	outbound_call.inbound_call = src
 	T.last_caller = src.phone_id
 	T.update_icon()
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
-	playsound(get_turf(user), "rtb_handset")
+	playsound(get_turf(user), pickup_sound)
 	timeout_timer_id = addtimer(CALLBACK(src, PROC_REF(reset_call), TRUE), timeout_duration, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
 	outring_loop.start()
 
@@ -238,7 +240,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			T.timeout_timer_id = null
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Picked up a call from [T.phone_id]."))
-	playsound(get_turf(user), "rtb_handset")
+	playsound(get_turf(user), pickup_sound)
 
 	T.outring_loop.stop()
 	user.put_in_active_hand(attached_to)
@@ -276,13 +278,13 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			else
 				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You have hung up on [T.phone_id]."))
 
-	if(calling)
-		calling.caller = null
-		calling = null
+	if(outbound_call)
+		outbound_call.inbound_call = null
+		outbound_call = null
 
-	if(caller)
-		caller.calling = null
-		caller = null
+	if(inbound_call)
+		inbound_call.outbound_call = null
+		inbound_call = null
 
 	if(timeout_timer_id)
 		deltimer(timeout_timer_id)
@@ -301,18 +303,18 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/transmitter/process()
-	if(caller)
+	if(inbound_call)
 		if(!attached_to)
 			STOP_PROCESSING(SSobj, src)
 			return
 
 		if(attached_to.loc == src)
 			if(next_ring < world.time)
-				playsound(loc, 'sound/machines/telephone/telephone_ring.ogg', 75)
+				playsound(loc, call_sound, 75)
 				visible_message(SPAN_WARNING("[src] rings vigorously!"))
 				next_ring = world.time + 3 SECONDS
 
-	else if(calling)
+	else if(outbound_call)
 		var/obj/structure/transmitter/T = get_calling_phone()
 		if(!T)
 			STOP_PROCESSING(SSobj, src)
@@ -321,7 +323,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		var/obj/item/phone/P = T.attached_to
 
 		if(P && attached_to.loc == src && P.loc == T && next_ring < world.time)
-			playsound(get_turf(attached_to), 'sound/machines/telephone/telephone_ring.ogg', 20, FALSE, 14)
+			playsound(get_turf(attached_to), call_sound, 20, FALSE, 14)
 			visible_message(SPAN_WARNING("[src] rings vigorously!"))
 			next_ring = world.time + 3 SECONDS
 
@@ -334,7 +336,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(ismob(attached_to.loc))
 		var/mob/M = attached_to.loc
 		M.drop_held_item(attached_to)
-		playsound(get_turf(M), "rtb_handset", 100, FALSE, 7)
+		playsound(get_turf(M), pickup_sound, 100, FALSE, 7)
 		hangup_loop.stop()
 
 	attached_to.forceMove(src)
@@ -345,15 +347,16 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	update_icon()
 
 /obj/structure/transmitter/proc/get_calling_phone()
-	if(calling)
-		return calling
-	else if(caller)
-		return caller
+	if(outbound_call)
+		return outbound_call
+	else if(inbound_call)
+		return inbound_call
 
 	return
 
 /obj/structure/transmitter/proc/handle_speak(message, datum/language/L, mob/speaking)
-	if(L.flags & SIGNLANG) return
+	if(L.flags & SIGNLANG)
+		return
 
 	var/obj/structure/transmitter/T = get_calling_phone()
 	if(!istype(T))
@@ -392,7 +395,11 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/item/phone
 	name = "telephone"
-	icon = 'icons/obj/items/misc.dmi'
+	icon = 'icons/obj/structures/phone.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/equipment/tools_righthand.dmi'
+	)
 	icon_state = "rpb_phone"
 
 	w_class = SIZE_LARGE
@@ -404,6 +411,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/zlevel_transfer = FALSE
 	var/zlevel_transfer_timer = TIMER_ID_NULL
 	var/zlevel_transfer_timeout = 5 SECONDS
+	var/can_be_raised = TRUE // This is for items like the scout helmet where you dont need to raise it.
 
 /obj/item/phone/Initialize(mapload)
 	. = ..()
@@ -511,16 +519,22 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/item/phone/attack_self(mob/user)
 	..()
-	if(raised)
-		set_raised(FALSE, user)
-		to_chat(user, SPAN_NOTICE("You lower [src]."))
+	if(can_be_raised)
+		if(raised)
+			set_raised(FALSE, user)
+			to_chat(user, SPAN_NOTICE("You lower [src]."))
+		else
+			set_raised(TRUE, user)
+			to_chat(user, SPAN_NOTICE("You raise [src] to your ear."))
 	else
 		set_raised(TRUE, user)
-		to_chat(user, SPAN_NOTICE("You raise [src] to your ear."))
 
 
 /obj/item/phone/proc/set_raised(to_raise, mob/living/carbon/human/H)
 	if(!istype(H))
+		return
+
+	if(!can_be_raised)
 		return
 
 	if(!to_raise)
@@ -544,6 +558,11 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	UnregisterSignal(user, COMSIG_LIVING_SPEAK)
 
 	set_raised(FALSE, user)
+	if(istype(attached_to.loc, /obj/item/clothing/head/helmet/marine/radio_helmet/scout))
+		if(attached_to != loc)
+			attached_to.recall_phone()
+
+
 
 /obj/item/phone/on_enter_storage(obj/item/storage/S)
 	. = ..()
@@ -604,6 +623,12 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 /obj/structure/transmitter/rotary/no_dnd
 	do_not_disturb = PHONE_DND_FORBIDDEN
+
+/obj/structure/transmitter/rotary/fax_responder
+	phone_category = "Comms Relay"
+	networks_receive = list("Fax Responders")
+	pixel_x = -6
+	pixel_y = 6
 
 /obj/structure/transmitter/touchtone
 	name = "touch-tone telephone"

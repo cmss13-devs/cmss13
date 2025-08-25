@@ -26,8 +26,10 @@
 
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
+	faction = FACTION_WY
 	faction_group =	FACTION_LIST_MARINE_WY
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_CIVILIAN
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -35,6 +37,7 @@
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_RESEARCH,
 		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_DATABASE,
 		ACCESS_CIVILIAN_PUBLIC,
 		ACCESS_CIVILIAN_RESEARCH,
 		ACCESS_CIVILIAN_ENGINEERING,
@@ -45,81 +48,13 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 	assignment = JOB_CORPORATE_LIAISON
-	rank = JOB_CORPORATE_LIAISON
+	job_title = JOB_CORPORATE_LIAISON
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_2, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_3, PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_4)
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
 	minimap_icon = "cl"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
-
-	dress_under = list(
-		/obj/item/clothing/under/liaison_suit/black,
-		/obj/item/clothing/under/liaison_suit/blue,
-		/obj/item/clothing/under/liaison_suit/brown,
-		/obj/item/clothing/under/liaison_suit/corporate_formal,
-		/obj/item/clothing/under/liaison_suit,
-		/obj/item/clothing/under/liaison_suit/charcoal,
-		/obj/item/clothing/under/liaison_suit/formal,
-		/obj/item/clothing/under/liaison_suit/blazer,
-		/obj/item/clothing/under/liaison_suit/suspenders,
-		/obj/item/clothing/under/blackskirt,
-		/obj/item/clothing/under/suit_jacket/trainee,
-		/obj/item/clothing/under/liaison_suit/ivy,
-		/obj/item/clothing/under/liaison_suit/orange,
-		/obj/item/clothing/under/liaison_suit/field,
-		/obj/item/clothing/under/colonist/workwear,
-		/obj/item/clothing/under/colonist/workwear/khaki,
-		/obj/item/clothing/under/colonist/workwear/pink,
-		/obj/item/clothing/under/colonist/workwear/green,
-	)
-	dress_over = list(
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/brown,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/blue,
-		/obj/item/clothing/suit/storage/jacket/marine/corporate/black,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber/grey,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber/red,
-		/obj/item/clothing/suit/storage/jacket/marine/bomber,
-		/obj/item/clothing/suit/storage/bomber,
-		/obj/item/clothing/suit/storage/bomber/alt,
-		/obj/item/clothing/suit/storage/snow_suit/liaison,
-		/obj/item/clothing/suit/storage/labcoat,
-		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
-		/obj/item/clothing/suit/storage/jacket/marine/vest,
-		/obj/item/clothing/suit/storage/jacket/marine/vest/tan,
-		/obj/item/clothing/suit/storage/webbing,
-	)
-	dress_extra = list(
-		/obj/item/clothing/accessory/black,
-		/obj/item/clothing/accessory/red,
-		/obj/item/clothing/accessory/purple,
-		/obj/item/clothing/accessory/blue,
-		/obj/item/clothing/accessory/green,
-		/obj/item/clothing/accessory/gold,
-		/obj/item/clothing/accessory/horrible,
-		/obj/item/clothing/glasses/sunglasses/big,
-		/obj/item/clothing/glasses/sunglasses/aviator,
-		/obj/item/clothing/glasses/sunglasses,
-		/obj/item/clothing/glasses/sunglasses/prescription,
-		/obj/item/clothing/glasses/regular/hipster,
-	)
-	dress_gloves = list(
-		/obj/item/clothing/gloves/black,
-		/obj/item/clothing/gloves/marine/dress,
-	)
-	dress_shoes = list(
-		/obj/item/clothing/shoes/laceup,
-		/obj/item/clothing/shoes/laceup/brown,
-		/obj/item/clothing/shoes/black,
-		/obj/item/clothing/shoes/marine/corporate,
-	)
-	dress_hat = list(
-		/obj/item/clothing/head/fedora,
-		/obj/item/clothing/head/beret/cm/black/civilian,
-		/obj/item/clothing/head/beret/cm/white/civilian,
-	)
+	minimap_background = "background_goon"
 
 /datum/equipment_preset/uscm_ship/liaison/New()
 	. = ..()
@@ -141,6 +76,7 @@
 /datum/equipment_preset/uscm_ship/reporter
 	name = "Combat Correspondent (Press)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
+	origin_override = ORIGIN_CIVILIAN
 
 	access = list(
 		ACCESS_MARINE_COMMAND,
@@ -156,15 +92,14 @@
 		ACCESS_PRESS,
 	)
 	assignment = JOB_COMBAT_REPORTER
-	rank = JOB_COMBAT_REPORTER
+	job_title = JOB_COMBAT_REPORTER
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PRESS"
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
 
 	minimap_icon = "correspondent"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIVILIAN
-
+	minimap_background = "background_civillian"
 	dress_under = list()
 	dress_over = list()
 	dress_hat = list()
@@ -176,6 +111,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/device/camera(new_human), WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(new_human), WEAR_BACK) // Needs backpack for loadout gear to spawn
 
 /datum/equipment_preset/uscm_ship/reporter/load_preset(mob/living/carbon/human/new_human, randomise, count_participant, client/mob_client, show_job_gear)
 	. = ..()
@@ -191,14 +127,14 @@
 		ACCESS_MARINE_PREP,
 	)
 	assignment = JOB_COMBAT_REPORTER
-	rank = JOB_COMBAT_REPORTER
+	job_title = JOB_COMBAT_REPORTER
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CC"
 	skills = /datum/skills/pfc
 	idtype = /obj/item/card/id/dogtag
 
 	minimap_icon = "correspondent"
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_background = "background_civillian"
 
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -235,21 +171,23 @@
 		ACCESS_MARINE_ENGINEERING,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
 		ACCESS_MARINE_MAINT,
 		ACCESS_MARINE_OT,
 		ACCESS_MARINE_SYNTH,
 		ACCESS_MARINE_AI,
+		ACCESS_MARINE_DROPSHIP,
 	)
 	assignment = JOB_CHIEF_ENGINEER
-	rank = JOB_CHIEF_ENGINEER
+	job_title = JOB_CHIEF_ENGINEER
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "CE"
-	minimum_age = 27
+	minimum_age = 25
 	skills = /datum/skills/CE
 
-	minimap_icon = list("engi" = MINIMAP_ICON_COLOR_HEAD)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "ce"
+	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
 
@@ -278,12 +216,13 @@
 		ACCESS_MARINE_MAINT,
 	)
 	assignment = JOB_MAINT_TECH
-	rank = JOB_MAINT_TECH
+	job_title = JOB_MAINT_TECH
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
 
-	minimap_icon = "engi"
+	minimap_icon = "mt"
+	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -313,12 +252,13 @@
 
 	)
 	assignment = JOB_ORDNANCE_TECH
-	rank = JOB_ORDNANCE_TECH
+	job_title = JOB_ORDNANCE_TECH
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "OT"
 	skills = /datum/skills/OT
 
 	minimap_icon = "ot"
+	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -357,14 +297,14 @@
 		ACCESS_MARINE_PREP,
 	)
 	assignment = JOB_CHIEF_REQUISITION
-	rank = JOB_CHIEF_REQUISITION
+	job_title = JOB_CHIEF_REQUISITION
 	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "QM"
-	minimum_age = 27
+	minimum_age = 25
 	skills = /datum/skills/RO
 
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
-	minimap_icon = list("ct" = MINIMAP_ICON_COLOR_HEAD)
+	minimap_icon = "cargo"
+	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/rank/qm_suit)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -392,12 +332,13 @@
 
 	access = list(ACCESS_MARINE_CARGO)
 	assignment = JOB_CARGO_TECH
-	rank = JOB_CARGO_TECH
+	job_title = JOB_CARGO_TECH
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
 
-	minimap_icon = "ct"
+	minimap_icon = "cargo"
+	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/rank/cargotech)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -420,118 +361,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/uscm_ship/commander
-	name = "USCM Commanding Officer (CO)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-
-	idtype = /obj/item/card/id/gold
-	assignment = JOB_CO
-	rank = JOB_CO
-	paygrades = list(PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "CO"
-	minimum_age = 30
-	skills = /datum/skills/commander
-
-	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_COMMANDER)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
-
-	utility_under = list(/obj/item/clothing/under/marine, /obj/item/clothing/under/marine/officer/command, /obj/item/clothing/under/marine/officer/boiler)
-	utility_hat = list(/obj/item/clothing/head/cmcap,/obj/item/clothing/head/beret/cm/tan)
-	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
-
-	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
-	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	service_extra = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
-	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/service)
-
-	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
-	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
-	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
-	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
-	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
-
-/datum/equipment_preset/uscm_ship/commander/New()
-	. = ..()
-	access = get_access(ACCESS_LIST_MARINE_ALL)
-
-/datum/equipment_preset/uscm_ship/commander/load_race(mob/living/carbon/human/new_human, client/mob_client)
-	..()
-	ADD_TRAIT(new_human, TRAIT_EMOTE_CD_EXEMPT, TRAIT_SOURCE_JOB)
-
-/datum/equipment_preset/uscm_ship/commander/load_gear(mob/living/carbon/human/new_human)
-	var/sidearm = "Mateba"
-	var/kit = null
-	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
-	var/back_item = /obj/item/storage/backpack/satchel/lockable
-
-	if(new_human.client && new_human.client.prefs)
-		sidearm = new_human.client.prefs.commander_sidearm
-		switch(sidearm)
-			if(CO_GUN_MATEBA)
-				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
-				kit = /obj/item/storage/mateba_case/captain
-			if(CO_GUN_MATEBA_SPECIAL)
-				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/special
-			if(CO_GUN_MATEBA_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/mateba/council/full
-				kit = /obj/item/storage/mateba_case/captain/council
-			if(CO_GUN_DEAGLE)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
-			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
-
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(new_human), WEAR_FEET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(new_human), WEAR_HEAD)
-	new_human.equip_to_slot_or_del(new sidearmpath(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol/command(new_human), WEAR_L_STORE)
-	if(kit)
-		new_human.equip_to_slot_or_del(new kit(new_human), WEAR_IN_BACK)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/uscm_ship/commander/visitor
-	name = "USCM Observer (Major) (VO)"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	assignment = JOB_USCM_OBSV
-	rank = JOB_USCM_OBSV
-	role_comm_title = "VO"
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/uscm_ship/commander/council
-	name = "USCM Commanding Officer (CO+)"
-	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
-
-	idtype = /obj/item/card/id/gold/council
-	rank = JOB_CO
-	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
-	role_comm_title = "CO"
-	minimum_age = 35
-
-	dress_over = list(
-		/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer,
-		/obj/item/clothing/suit/storage/jacket/marine/dress/officer/falcon,
-	)
-/datum/equipment_preset/uscm_ship/commander/council/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)
-	. = ..()
-
-/datum/equipment_preset/uscm_ship/commander/council/plus
-	name = "USCM Commanding Officer (CO++)"
-	idtype = /obj/item/card/id/general
-	paygrades = list(PAY_SHORT_MO6 = JOB_PLAYTIME_TIER_0)
-	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior, /obj/item/clothing/under/marine/dress/blues/general)
-
-/datum/equipment_preset/uscm_ship/commander/council/plus/load_gear(mob/living/carbon/human/new_human)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/councilchief(new_human), WEAR_HEAD)
-	. = ..()
 
 //*****************************************************************************************************/
 
@@ -541,27 +370,28 @@
 
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_XO
-	rank = JOB_XO
+	job_title = JOB_XO
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "XO"
-	minimum_age = 35
+	minimum_age = 27
 	skills = /datum/skills/XO
 
-	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_HEAD)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "xo"
+	minimap_background = "background_command"
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
 /datum/equipment_preset/uscm_ship/xo/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_MAIN)
+	access |= ACCESS_MARINE_DATABASE_ADMIN
 
 /datum/equipment_preset/uscm_ship/xo/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom/xo(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(new_human), WEAR_FEET)
@@ -578,16 +408,16 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_MEDBAY)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_DATABASE, ACCESS_MARINE_GENERAL, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SO
-	rank = JOB_SO
+	job_title = JOB_SO
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SO"
-	minimum_age = 25
+	minimum_age = 23
 	skills = /datum/skills/SO
 
-	minimap_icon = list("cic" = MINIMAP_ICON_COLOR_BRONZE)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "so"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -611,13 +441,14 @@
 
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_SEA
-	rank = JOB_SEA
+	job_title = JOB_SEA
 	paygrades = list(PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SEA"
 	minimum_age = 40
 	skills = /datum/skills/SEA
 
 	minimap_icon = "sea"
+	minimap_background = "background_command"
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -626,6 +457,7 @@
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
 	access = get_access(ACCESS_LIST_MARINE_MAIN)
+	access |= ACCESS_MARINE_DATABASE_ADMIN
 
 /datum/equipment_preset/uscm_ship/sea/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -644,8 +476,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/whistle(new_human), WEAR_R_HAND)
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/rankee, client/mob_client)
-	if(rankee?.client?.prefs?.pref_special_job_options[rank])
-		var/paygrade_choice = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[rank])
+	mob_client?.toggle_newplayer_ic_hud(TRUE)
+	if(rankee?.client?.prefs?.pref_special_job_options[job_title])
+		var/paygrade_choice = get_paygrade_id_by_name(rankee.client.prefs.pref_special_job_options[job_title])
 		return paygrade_choice
 	..()
 
@@ -657,20 +490,22 @@
 
 	idtype = /obj/item/card/id/silver
 	assignment = JOB_AUXILIARY_OFFICER
-	rank = JOB_AUXILIARY_OFFICER
+	job_title = JOB_AUXILIARY_OFFICER
 	paygrades = list(PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "ASO"
-	minimum_age = 27
+	minimum_age = 25
 	skills = /datum/skills/auxiliary_officer
 
-	minimap_icon = list("cic" = COLOR_SILVER)
-	minimap_background = MINIMAP_ICON_BACKGROUND_CIC
+	minimap_icon = "aso"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/New()
 	. = ..()
 	access = list(
 		ACCESS_MARINE_SENIOR,
+		ACCESS_MARINE_GENERAL,
 		ACCESS_MARINE_DATABASE,
+		ACCESS_MARINE_DATABASE_ADMIN,
 		ACCESS_MARINE_ASO,
 		ACCESS_MARINE_COMMAND,
 		ACCESS_MARINE_BRIG,
@@ -691,6 +526,7 @@
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_KITCHEN,
 		ACCESS_PRESS,
+		ACCESS_MARINE_RESEARCH,
 	)
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/load_gear(mob/living/carbon/human/new_human)
@@ -698,7 +534,7 @@
 	if (new_human.client && new_human.client.prefs && (new_human.client.prefs.backbag == 1))
 		back_item = /obj/item/storage/backpack/marine
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/alt(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/service/aso(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(new_human), WEAR_FEET)
@@ -714,14 +550,16 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_CAS_PILOT
-	rank = JOB_CAS_PILOT
+	job_title = JOB_CAS_PILOT
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "GP"
+	minimum_age = 23
 	skills = /datum/skills/pilot
 
-	minimap_icon = "pilot"
+	minimap_icon = "gp"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/gp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -751,7 +589,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/pilot(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/pilot/armor(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot(new_human), WEAR_HEAD)
@@ -764,14 +602,16 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_DROPSHIP_PILOT
-	rank = JOB_DROPSHIP_PILOT
+	job_title = JOB_DROPSHIP_PILOT
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "DP"
+	minimum_age = 23
 	skills = /datum/skills/pilot
 
 	minimap_icon = "pilot"
+	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/dp/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/satchel
@@ -801,7 +641,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(new_human), WEAR_HANDS)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(new_human), WEAR_WAIST)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/pilot(new_human), WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/pilot/armor(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new back_item(new_human), WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(new_human), WEAR_R_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot(new_human), WEAR_HEAD)
@@ -814,14 +654,15 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_DROPSHIP_CREW_CHIEF
-	rank = JOB_DROPSHIP_CREW_CHIEF
+	job_title = JOB_DROPSHIP_CREW_CHIEF
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "DCC"
 	skills = /datum/skills/crew_chief
 
 	minimap_icon = "dcc"
+	minimap_background = "background_shipside"
 
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover)
@@ -869,14 +710,14 @@
 	idtype = /obj/item/card/id/general
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
 	assignment = "USCM Officer"
-	rank = "USCM Officer"
+	job_title = "USCM Officer"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Cpt"
-	minimum_age = 40
+	minimum_age = 25
 	skills = /datum/skills/commander
 
 	utility_hat = list(/obj/item/clothing/head/beret/cm)
-	utility_gloves = list(/obj/item/clothing/gloves/marine/techofficer/commander)
+	utility_gloves = list(/obj/item/clothing/gloves/marine)
 	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
 
 	service_hat = list(/obj/item/clothing/head/beret/cm)
@@ -907,12 +748,13 @@
 
 	access = list(ACCESS_MARINE_KITCHEN)
 	assignment = JOB_MESS_SERGEANT
-	rank = JOB_MESS_SERGEANT
+	job_title = JOB_MESS_SERGEANT
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME2 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "MST"
 	skills = /datum/skills/mess_technician
 
 	minimap_icon = "mst"
+	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)

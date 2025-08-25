@@ -10,6 +10,7 @@
 /mob/living/carbon/xenomorph/hivelord/langchat_height = 64
 /mob/living/carbon/xenomorph/defender/langchat_height = 48
 /mob/living/carbon/xenomorph/warrior/langchat_height = 48
+/mob/living/carbon/xenomorph/king/langchat_height = 64
 
 #define LANGCHAT_LONGEST_TEXT 64
 #define LANGCHAT_WIDTH 96
@@ -61,6 +62,7 @@
 		langchat_image.layer = 20
 		langchat_image.plane = RUNECHAT_PLANE
 		langchat_image.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR|RESET_TRANSFORM
+		langchat_image.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 		langchat_image.maptext_y = langchat_height
 		langchat_image.maptext_height = 64
 		langchat_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK

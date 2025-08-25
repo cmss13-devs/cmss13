@@ -47,13 +47,13 @@ Please wait until completion...</TT><BR>
 		dat = {"
 <B>Metal Amount:</B> [min(150000, src.metal_amount)] cm<sup>3</sup> (MAX: 150,000)<BR><HR>
 <BR>
-<A href='?src=\ref[src];make=1'>Left Arm (25,000 cc metal.)<BR>
-<A href='?src=\ref[src];make=2'>Right Arm (25,000 cc metal.)<BR>
-<A href='?src=\ref[src];make=3'>Left Leg (25,000 cc metal.)<BR>
-<A href='?src=\ref[src];make=4'>Right Leg (25,000 cc metal).<BR>
-<A href='?src=\ref[src];make=5'>Chest (50,000 cc metal).<BR>
-<A href='?src=\ref[src];make=6'>Head (50,000 cc metal).<BR>
-<A href='?src=\ref[src];make=7'>Robot Frame (75,000 cc metal).<BR>
+<A href='byond://?src=\ref[src];make=1'>Left Arm (25,000 cc metal.)<BR>
+<A href='byond://?src=\ref[src];make=2'>Right Arm (25,000 cc metal.)<BR>
+<A href='byond://?src=\ref[src];make=3'>Left Leg (25,000 cc metal.)<BR>
+<A href='byond://?src=\ref[src];make=4'>Right Leg (25,000 cc metal).<BR>
+<A href='byond://?src=\ref[src];make=5'>Chest (50,000 cc metal).<BR>
+<A href='byond://?src=\ref[src];make=6'>Head (50,000 cc metal).<BR>
+<A href='byond://?src=\ref[src];make=7'>Robot Frame (75,000 cc metal).<BR>
 "}
 
 	user << browse("<HEAD><TITLE>Robotic Fabricator Control Panel</TITLE></HEAD><TT>[dat]</TT>", "window=robot_fabricator")
@@ -112,7 +112,7 @@ Please wait until completion...</TT><BR>
 					build_cost = 75000
 
 			var/building = build_type
-			if (building in subtypesof(/obj/item/robot_parts) + /obj/item/fake_robot_head)
+			if (building in (subtypesof(/obj/item/robot_parts) + /obj/item/fake_robot_head))
 				if (src.metal_amount >= build_cost)
 					src.operating = 1
 					src.update_use_power(USE_POWER_ACTIVE)
@@ -131,7 +131,8 @@ Please wait until completion...</TT><BR>
 						src.update_use_power(USE_POWER_IDLE)
 						src.operating = 0
 						src.overlays -= "fab-active"
-			else return //Someone's doing href fuckery if this gets here.
+			else
+				return //Someone's doing href fuckery if this gets here.
 		return
 
 	for (var/mob/M as anything in viewers(1, src))

@@ -3,6 +3,10 @@
 	desc = "An unlabeled 80mm mortar shell, probably a casing."
 	icon = 'icons/obj/structures/mortar.dmi'
 	icon_state = "mortar_ammo_cas"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
 	w_class = SIZE_HUGE
 	flags_atom = FPRINT|CONDUCT
 	var/datum/cause_data/cause_data
@@ -29,6 +33,7 @@
 	name = "\improper 80mm high explosive mortar shell"
 	desc = "An 80mm mortar shell, loaded with a high explosive charge."
 	icon_state = "mortar_ammo_he"
+	item_state = "mortar_ammo_he"
 
 /obj/item/mortar_shell/he/detonate(turf/T)
 	explosion(T, 0, 3, 5, 7, explosion_cause_data = cause_data)
@@ -37,9 +42,10 @@
 	name = "\improper 80mm fragmentation mortar shell"
 	desc = "An 80mm mortar shell, loaded with a fragmentation charge."
 	icon_state = "mortar_ammo_frag"
+	item_state = "mortar_ammo_frag"
 
 /obj/item/mortar_shell/frag/detonate(turf/T)
-	create_shrapnel(T, 60, cause_data = cause_data)
+	create_shrapnel(T, 60, cause_data = cause_data, shrapnel_type = /datum/ammo/bullet/shrapnel/breaching)
 	sleep(2)
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
@@ -47,6 +53,7 @@
 	name = "\improper 80mm incendiary mortar shell"
 	desc = "An 80mm mortar shell, loaded with a Type B napalm charge. Perfect for long-range area denial."
 	icon_state = "mortar_ammo_inc"
+	item_state = "mortar_ammo_inc"
 	var/radius = 5
 	var/flame_level = BURN_TIME_TIER_5 + 5 //Type B standard, 50 base + 5 from chemfire code.
 	var/burn_level = BURN_LEVEL_TIER_2
@@ -54,7 +61,6 @@
 	var/fire_type = FIRE_VARIANT_TYPE_B //Armor Shredding Greenfire
 
 /obj/item/mortar_shell/incendiary/detonate(turf/T)
-	explosion(T, 0, 2, 4, 7, explosion_cause_data = cause_data)
 	flame_radius(cause_data, radius, T, flame_level, burn_level, flameshape, null, fire_type)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
@@ -62,6 +68,7 @@
 	name = "\improper 80mm flare/camera mortar shell"
 	desc = "An 80mm mortar shell, loaded with an illumination flare / camera combo, attached to a parachute."
 	icon_state = "mortar_ammo_flr"
+	item_state = "mortar_ammo_flr"
 
 /obj/item/mortar_shell/flare/detonate(turf/T)
 	new /obj/item/device/flashlight/flare/on/illumination(T)
@@ -72,6 +79,7 @@
 	name = "\improper 80mm custom mortar shell"
 	desc = "An 80mm mortar shell."
 	icon_state = "mortar_ammo_custom"
+	item_state = "mortar_ammo_custom_locked"
 	matter = list("metal" = 18750) //5 sheets
 	var/obj/item/explosive/warhead/mortar/warhead
 	var/obj/item/reagent_container/glass/fuel
@@ -168,7 +176,7 @@
 
 /obj/item/mortar_shell/flamer_fire_act(dam, datum/cause_data/flame_cause_data)
 	addtimer(VARSET_CALLBACK(src, burning, FALSE), 5 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_DELETE_ME)
-	
+
 	if(burning)
 		return
 	burning = TRUE
@@ -200,7 +208,7 @@
 
 		addtimer(CALLBACK(src, PROC_REF(explode), cause_data), 5 SECONDS)
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(qdel), (src)), 5.5 SECONDS)
-		
+
 
 /obj/item/mortar_shell/proc/explode(flame_cause_data)
 	cell_explosion(src, 100, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, flame_cause_data)

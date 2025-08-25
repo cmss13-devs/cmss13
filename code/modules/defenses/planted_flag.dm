@@ -1,5 +1,6 @@
 #define PLANTED_FLAG_BUFF 4 // CO level aura plus one
 #define PLANTED_FLAG_RANGE 7
+#define PLANTED_FLAG_RANGE_EXTENDED 11
 
 /obj/structure/machinery/defenses/planted_flag
 	name = "\improper JIMA planted flag"
@@ -23,6 +24,9 @@
 		SENTRY_CATEGORY_IFF = FACTION_MARINE,
 	)
 
+	var/faction = FACTION_MARINE
+	var/datum/cas_signal/signal
+	var/luminosity_strength = 5
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
@@ -39,6 +43,7 @@
 /obj/structure/machinery/defenses/planted_flag/Destroy()
 	. = ..()
 	range_bounds = null
+	deactivate_signal()
 
 /obj/structure/machinery/defenses/planted_flag/update_icon()
 	..()
@@ -53,13 +58,30 @@
 	else
 		overlays += "[defense_type] planted_flag_off"
 
+/obj/structure/machinery/defenses/planted_flag/proc/activate_signal()
+	if(faction && GLOB.cas_groups[faction])
+		signal = new(src)
+		signal.target_id = ++GLOB.cas_tracking_id_increment
+		signal.name = "J-[signal.target_id]"
+		signal.linked_cam = new(loc, name)
+		GLOB.cas_groups[faction].add_signal(signal)
+
+/obj/structure/machinery/defenses/planted_flag/proc/deactivate_signal()
+	if(signal)
+		GLOB.cas_groups[faction].remove_signal(signal)
+		QDEL_NULL(signal)
+
 /obj/structure/machinery/defenses/planted_flag/power_on_action()
 	apply_area_effect()
+	set_light(luminosity_strength)
 	start_processing()
+	activate_signal()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
 
 /obj/structure/machinery/defenses/planted_flag/power_off_action()
+	set_light(0)
 	stop_processing()
+	deactivate_signal()
 	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
 
 /obj/structure/machinery/defenses/planted_flag/process()
@@ -99,6 +121,7 @@
 	disassemble_time = 1.5 SECONDS
 	handheld_type = /obj/item/defenses/handheld/planted_flag/range
 	defense_type = "Range"
+	luminosity_strength = 7
 
 /obj/structure/machinery/defenses/planted_flag/warbanner
 	name = "JIMA planted warbanner"
@@ -123,12 +146,14 @@
 	hack_time = 25 SECONDS
 	health = 300
 	health_max = 300
-	area_range = 11
+	area_range = PLANTED_FLAG_RANGE_EXTENDED
 	handheld_type = /obj/item/defenses/handheld/planted_flag/wy
 	defense_type = "WY"
 	selected_categories = list(
 		SENTRY_CATEGORY_IFF = SENTRY_FACTION_WEYLAND,
 	)
+
+	faction = FACTION_WY
 
 /obj/structure/machinery/defenses/planted_flag/wy/apply_buff_to_player(mob/living/carbon/human/H)
 	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 2 SECONDS)
@@ -142,16 +167,34 @@
 	disassemble_time = 5 SECONDS
 	health = 300
 	health_max = 300
-	area_range = 11
+	area_range = PLANTED_FLAG_RANGE_EXTENDED
 	handheld_type = /obj/item/defenses/handheld/planted_flag/upp
 	defense_type = "UPP"
 	selected_categories = list(
 		SENTRY_CATEGORY_IFF = FACTION_UPP,
 	)
 
+	faction = FACTION_UPP
+
+/obj/structure/machinery/defenses/planted_flag/clf
+	name = "CLF planted flag"
+	desc = "A planted flag with the iconic CLF flag plastered all over it, you feel a burst of energy by its mere sight."
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	disassemble_time = 5 SECONDS
+	health = 300
+	health_max = 300
+	area_range = PLANTED_FLAG_RANGE_EXTENDED
+	handheld_type = /obj/item/defenses/handheld/planted_flag/clf
+	defense_type = "CLF"
+	selected_categories = list(
+		SENTRY_CATEGORY_IFF = FACTION_CLF,
+	)
+
+	faction = FACTION_CLF
+
 /obj/item/storage/backpack/jima
 	name = "JIMA frame mount"
-	icon = 'icons/obj/items/clothing/backpacks.dmi'
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/UA.dmi'
 	icon_state = "flag_backpack"
 	max_storage_space = 10
 	worn_accessible = TRUE
@@ -160,11 +203,10 @@
 	var/area_range = PLANTED_FLAG_RANGE-2
 	var/buff_intensity = PLANTED_FLAG_BUFF/2
 
-/obj/item/storage/backpack/equipped(mob/user, slot)
+/obj/item/storage/backpack/jima/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_BACK)
 		START_PROCESSING(SSobj, src)
-
 
 /obj/item/storage/backpack/jima/process()
 	if(!ismob(loc))

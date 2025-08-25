@@ -31,7 +31,7 @@
 		basecolor = b_color
 	update_icon()
 
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		amount = 0
 		return
 
@@ -46,10 +46,10 @@
 	. = ..()
 	// Check if the blood is dry and only humans
 	// can make footprints
-	if(!amount || !ishuman(AM))
+	if(!amount || !ishuman(AM) || QDELETED(AM))
 		return
 
-	if(SSticker.mode && MODE_HAS_TOGGLEABLE_FLAG(MODE_BLOOD_OPTIMIZATION))
+	if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/blood_optimization))
 		return
 
 	var/mob/living/carbon/human/H = AM
@@ -129,7 +129,7 @@
 	gender = PLURAL
 	density = FALSE
 	anchored = TRUE
-	layer = TURF_LAYER
+	layer = ABOVE_WEED_LAYER
 	icon = 'icons/effects/blood.dmi'
 	icon_state = ""
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
@@ -137,21 +137,24 @@
 	var/fleshcolor = "#830303"
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()
+	overlays.Cut()
+
+	if(basecolor == "rainbow")
+		basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
+	color = basecolor
+
 	var/image/giblets = new(base_icon, "[icon_state]_flesh", dir)
 	if(!fleshcolor || fleshcolor == "rainbow")
 		fleshcolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
 	giblets.color = fleshcolor
 
-	if(basecolor == "rainbow") basecolor = "#[pick(list("FF0000","FF7F00","FFFF00","00FF00","0000FF","4B0082","8F00FF"))]"
-	color = basecolor
-
 	overlays += giblets
 
 /obj/effect/decal/cleanable/blood/gibs/up
-	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibup1","gibup1","gibup1")
+	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibup1", "gibup1", "gibup1")
 
 /obj/effect/decal/cleanable/blood/gibs/down
-	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibdown1","gibdown1","gibdown1")
+	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6", "gibdown1", "gibdown1", "gibdown1")
 
 /obj/effect/decal/cleanable/blood/gibs/body
 	random_icon_states = list("gibhead", "gibtorso")

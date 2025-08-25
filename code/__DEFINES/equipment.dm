@@ -27,8 +27,8 @@
 #define ITEM_UNCATCHABLE (1<<9)
 /// Used for nonstandard marine clothing to ignore 'specialty' var.
 #define NO_NAME_OVERRIDE (1<<10)
-/// Used for armors or uniforms that don't have a snow/desert/etc icon state set via select_gamemode_skin (not all item types currently perform this test though).
-#define NO_SNOW_TYPE (1<<11)
+/// Used for armors or uniforms that don't have a snow/desert/etc icon state set via select_gamemode_skin.
+#define NO_GAMEMODE_SKIN (1<<11)
 
 #define INVULNERABLE (1<<12)
 
@@ -48,6 +48,10 @@
 #define USES_SEEING (1<<19)
 // Can be quick drawn
 #define QUICK_DRAWABLE (1<<20)
+// If object should utilize icon state indexes for map colors (s_ d_ etc) in select_gamemode_skin
+#define MAP_COLOR_INDEX (1<<21)
+/// If an object will fall through open space, use this when dashing \ jumping for example
+#define NO_ZFALL (1<<22)
 
 //==========================================================================================
 
@@ -90,6 +94,8 @@
 #define FORCEDROP_CONDITIONAL (1<<14)
 /// Overrides smartgunner not being able to wear backpacks
 #define SMARTGUNNER_BACKPACK_OVERRIDE (1<<15)
+/// The item will incur click delay if an empty adjacent tile is clicked
+#define ADJACENT_CLICK_DELAY (1<<16)
 //==========================================================================================
 
 
@@ -178,7 +184,9 @@
 /// 2 tiles of full and 2 of partial impairment
 #define VISION_IMPAIR_STRONG 5
 /// 3 tiles of full and 2 of partial impairment (original one)
-#define VISION_IMPAIR_MAX 6
+#define VISION_IMPAIR_ULTRA 6
+/// Full blindness, 1 tile visibility
+#define VISION_IMPAIR_MAX 7
 
 //VISION IMPAIRMENT LEVELS===========================================================================
 
@@ -245,6 +253,11 @@
 #define SLOT_BLOCK_SUIT_STORE (1<<16)
 //=================================================
 
+//garb overrides
+#define NO_GARB_OVERRIDE null
+#define PREFIX_HAT_GARB_OVERRIDE "%PREFIX_HAT_GARB_OVERRIDE%"
+#define PREFIX_HELMET_GARB_OVERRIDE "%PREFIX_HELMET_GARB_OVERRIDE%"
+
 //slots
 //Text strings so that the slots can be associated when doing inventory lists.
 #define WEAR_ID "id"
@@ -277,6 +290,7 @@
 #define WEAR_IN_L_STORE  "in_l_store"
 #define WEAR_IN_R_STORE  "in_r_store"
 #define WEAR_IN_SHOES "in_shoes"
+#define WEAR_AS_GARB "as_garb"
 
 // Contained Sprites
 #define WORN_LHAND "_lh"
@@ -461,21 +475,35 @@ GLOBAL_LIST_INIT(slot_to_contained_sprite_shorthand, list(
 //=================================================
 
 //=================================================
+/// Default accessory slot for non-accessory specific clothing, this should almost never be used for proper categorization
+#define ACCESSORY_SLOT_DEFAULT "Accessory"
+
+// Accessory slots that have mechanics tied to them
 #define ACCESSORY_SLOT_UTILITY "Utility"
+#define ACCESSORY_SLOT_STORAGE "Storage"
+#define ACCESSORY_SLOT_ARMOR_C "Chest armor"
+#define ACCESSORY_SLOT_WRIST_L "Left wrist"
+#define ACCESSORY_SLOT_WRIST_R "Right wrist"
+
+// Accessory slots that are purely if not mostly cosmetic
+#define ACCESSORY_SLOT_TIE "Tie"
+#define ACCESSORY_SLOT_PATCH "Patch"
 #define ACCESSORY_SLOT_ARMBAND "Armband"
 #define ACCESSORY_SLOT_RANK "Rank"
 #define ACCESSORY_SLOT_DECOR "Decor"
 #define ACCESSORY_SLOT_MEDAL "Medal"
 #define ACCESSORY_SLOT_PONCHO "Ponchos"
+#define ACCESSORY_SLOT_TROPHY "Trophy"
+#define ACCESSORY_SLOT_YAUTJA_MASK "Yautja Mask"
+#define ACCESSORY_SLOT_MASK "Mask"
 
-/// Used for uniform armor inserts.
-#define ACCESSORY_SLOT_ARMOR_C "Chest armor"
-
+// Accessory slots that are currently unused
 #define ACCESSORY_SLOT_ARMOR_A "Arm armor"
 #define ACCESSORY_SLOT_ARMOR_L "Leg armor"
 #define ACCESSORY_SLOT_ARMOR_S "Armor storage"
 #define ACCESSORY_SLOT_ARMOR_M "Misc armor"
 #define ACCESSORY_SLOT_HELM_C "Helmet cover"
+
 //=================================================
 
 //=================================================
@@ -526,22 +554,37 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 
 
 // Storage flags
-#define STORAGE_ALLOW_EMPTY (1<<0) // Whether the storage object has the 'empty' verb, which dumps all the contents on the floor
-#define STORAGE_QUICK_EMPTY (1<<1) // Whether the storage object can quickly be emptied (no delay)
-#define STORAGE_QUICK_GATHER (1<<2) // Whether the storage object can quickly collect all items from a tile via the 'toggle mode' verb
-#define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE (1<<3) // Whether this storage object can have its items drawn (pouches)
-#define STORAGE_USING_DRAWING_METHOD (1<<4) // Whether this storage object has its items drawn (versus just opening it)
-#define STORAGE_USING_FIFO_DRAWING (1<<5) // Wether the storage object can have items in it's leftmost slot be drawn
-#define STORAGE_CLICK_EMPTY (1<<6) // Whether you can click to empty an item
-#define STORAGE_CLICK_GATHER (1<<7) // Whether it is possible to use this storage object in an inverse way,
-													// so you can have the item in your hand and click items on the floor to pick them up
-#define STORAGE_SHOW_FULLNESS (1<<8) // Whether our storage object on hud changes color when full
-#define STORAGE_CONTENT_NUM_DISPLAY (1<<9) // Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
-#define STORAGE_GATHER_SIMULTAENOUSLY (1<<10) // Whether the storage object can pick up all the items in a tile
-#define STORAGE_ALLOW_QUICKDRAW (1<<11) // Whether the storage can be drawn with E or Holster verb
+/// Whether the storage object has the 'empty' verb, which dumps all the contents on the floor
+#define STORAGE_ALLOW_EMPTY (1<<0)
+/// Whether the storage object can quickly be emptied (no delay)
+#define STORAGE_QUICK_EMPTY (1<<1)
+/// Whether the storage object can quickly collect all items from a tile via the 'toggle mode' verb
+#define STORAGE_QUICK_GATHER (1<<2)
+/// Whether this storage object can have its items drawn (pouches)
+#define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE (1<<3)
+/// Whether this storage object has its items drawn (versus just opening it)
+#define STORAGE_USING_DRAWING_METHOD (1<<4)
+/// Wether the storage object can have items in it's leftmost slot be drawn
+#define STORAGE_USING_FIFO_DRAWING (1<<5)
+/// Whether you can click to empty an item
+#define STORAGE_CLICK_EMPTY (1<<6)
+/// Whether it is possible to use this storage object in an inverse way, so you can have the item in your hand and click items on the floor to pick them up
+#define STORAGE_CLICK_GATHER (1<<7)
+/// Whether our storage object on hud changes color when full
+#define STORAGE_SHOW_FULLNESS (1<<8)
+/// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
+#define STORAGE_CONTENT_NUM_DISPLAY (1<<9)
+/// Whether the storage object can pick up all the items in a tile
+#define STORAGE_GATHER_SIMULTAENOUSLY (1<<10)
+/// Whether the storage can be drawn with E or Holster verb
+#define STORAGE_ALLOW_QUICKDRAW (1<<11)
+/// Whether using this item will try not to empty it if possible
+#define STORAGE_DISABLE_USE_EMPTY (1<<12)
+/// Whether the user can withdraw the items in storage while being hauled by a xeno
+#define STORAGE_ALLOW_WHILE_HAULED (1<<13)
 
 #define STORAGE_FLAGS_DEFAULT (STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
-#define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY)
+#define STORAGE_FLAGS_BOX (STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_BAG (STORAGE_QUICK_GATHER|STORAGE_QUICK_EMPTY|STORAGE_CLICK_GATHER|STORAGE_FLAGS_DEFAULT)
 #define STORAGE_FLAGS_POUCH (STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE)
 
@@ -562,3 +605,34 @@ GLOBAL_LIST_INIT(uniform_categories, list(
 #define PHONE_DND_ON 1
 #define PHONE_DND_OFF 0
 #define PHONE_DND_FORBIDDEN -1
+
+///Get appropriate SLOT_IN_X for given slot
+/proc/slot_to_in_storage_slot(slot)
+	switch(slot)
+		if(WEAR_FEET)
+			return WEAR_IN_SHOES
+		if(WEAR_BACK)
+			return WEAR_IN_BACK
+		if(WEAR_J_STORE)
+			return WEAR_IN_J_STORE
+		if(WEAR_BODY)
+			return WEAR_IN_ACCESSORY
+		if(WEAR_WAIST)
+			return WEAR_IN_BELT
+		if(WEAR_JACKET)
+			return WEAR_IN_JACKET
+		if(WEAR_L_STORE)
+			return WEAR_IN_L_STORE
+		if(WEAR_R_STORE)
+			return WEAR_IN_R_STORE
+		if(WEAR_HEAD)
+			return WEAR_IN_HELMET
+		else
+			return 0
+
+/proc/is_valid_sticky_slot(slot)
+	switch(slot)
+		if(WEAR_HANDCUFFS, WEAR_LEGCUFFS, WEAR_L_HAND, WEAR_R_HAND)
+			return FALSE
+		else
+			return TRUE

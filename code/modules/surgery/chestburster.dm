@@ -33,6 +33,7 @@
 		/obj/item/tool/surgery/scalpel/pict_system = SURGERY_TOOL_MULT_IDEAL,
 		/obj/item/attachable/bayonet = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/tool/kitchen/knife = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/weapon/throwing_knife = SURGERY_TOOL_MULT_AWFUL,
 		/obj/item/shard = SURGERY_TOOL_MULT_AWFUL,
 	)
 	time = 5 SECONDS
@@ -46,13 +47,14 @@
 	for(var/mob/living/carbon/human/victim in orange(1, patient)) //Loop through all nearby victims, excepting patient.
 		var/distance = get_dist(patient, victim)
 		splash_chance = 80 - (i * 5)
-		if(victim.loc == patient.loc) splash_chance += 30 //Same tile? BURN
+		if(victim.loc == patient.loc)
+			splash_chance += 30 //Same tile? BURN
 		splash_chance += distance * -15
 		if(victim.species && victim.species.name == "Yautja")
 			splash_chance -= 70 //Preds know to avoid the splashback.
 		if(splash_chance > 0 && prob(splash_chance)) //Success!
 			i++
-			victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"), \
+			victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"),
 			SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
 			if(prob(60) && !victim.stat && victim.pain.feels_pain)
 				INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream") //Topkek
@@ -170,6 +172,7 @@
 		if(L)
 			L.forceMove(target.loc)
 			qdel(A)
+			user.visible_message(SPAN_HIGHDANGER("The larva was removed just in time, but is fully grown and alive!"))
 		else
 			A.forceMove(target.loc)
 			target.status_flags &= ~XENO_HOST

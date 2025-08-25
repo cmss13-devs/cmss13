@@ -9,17 +9,18 @@
 /area/corsat/landing/console
 	name = "\improper LZ1 'Gamma'"
 	icon_state = "corsat_telecomms"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/corsat/landing/console2
 	name = "\improper LZ2 'Sigma'"
 	icon_state = "corsat_telecomms"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/corsat/emergency_access
 	name = "\improper Unknown Area"
 	icon_state = "corsat_hull"
 	ceiling = CEILING_REINFORCED_METAL
+	requires_power = FALSE
 
 //SIGMA SECTOR
 
@@ -30,12 +31,10 @@
 /area/corsat/sigma/north
 	name = "\improper Sigma Sector North Hallway"
 	icon_state = "sigma_hallway_north"
-	is_resin_allowed = FALSE
 
 /area/corsat/sigma/hangar
 	name = "\improper Landing Bay Sigma"
 	icon_state = "sigma_hangar"
-	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 
 /area/corsat/sigma/hangar/monorail
@@ -104,22 +103,18 @@
 /area/corsat/sigma/cargo
 	name = "\improper Sigma Cargo"
 	icon_state = "sigma_cargo"
-	is_resin_allowed = FALSE
 
 /area/corsat/sigma/laundry
 	name = "\improper Sigma Laundry"
 	icon_state = "sigma_laundry"
-	is_resin_allowed = FALSE
 
 /area/corsat/sigma/lavatory
 	name = "\improper Sigma Lavatory"
 	icon_state = "sigma_lavatory"
-	is_resin_allowed = FALSE
 
 /area/corsat/sigma/cafe
 	name = "\improper Sigma Cafe"
 	icon_state = "sigma_cafe"
-	is_resin_allowed = FALSE
 
 /area/corsat/sigma/dorms
 	name = "\improper Sigma Residential Module"
@@ -216,7 +211,6 @@
 /area/corsat/gamma/hangar
 	name = "\improper Landing Bay Gamma"
 	icon_state = "gamma_hangar"
-	is_resin_allowed = FALSE
 	is_landing_zone = TRUE
 
 /area/corsat/gamma/hangar/monorail
@@ -260,7 +254,6 @@
 /area/corsat/gamma/foyer
 	name = "\improper Gamma Foyer"
 	icon_state = "gamma_foyer"
-	is_resin_allowed = FALSE
 
 /area/corsat/gamma/hallwaymain
 	name = "\improper Gamma Sector West Hallway"
@@ -309,7 +302,6 @@
 /area/corsat/gamma/cargo
 	name = "\improper Gamma Cargo"
 	icon_state = "gamma_cargo"
-	is_resin_allowed = FALSE
 
 /area/corsat/gamma/cargo/lobby
 	name = "\improper Gamma Cargo Lobby"
@@ -378,12 +370,10 @@
 /area/corsat/gamma/rnr/bar
 	name = "\improper CORSAT Bar"
 	icon_state = "corsat_bar"
-	is_resin_allowed = FALSE
 
 /area/corsat/gamma/rnr/arcade
 	name = "\improper CORSAT Arcade"
 	icon_state = "corsat_arcade"
-	is_resin_allowed = FALSE
 
 /area/corsat/gamma/rnr/library
 	name = "\improper CORSAT Library"
@@ -581,5 +571,6 @@
 /area/corsat/inaccessible
 	name = "\improper Unknown Location"
 	icon_state = "corsat_hull"
+	requires_power = FALSE
 	ceiling = CEILING_REINFORCED_METAL
 	flags_area = AREA_NOTUNNEL

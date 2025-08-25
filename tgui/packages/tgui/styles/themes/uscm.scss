@@ -2,12 +2,12 @@
 @use 'sass:meta';
 
 @use '../colors.scss' with (
-  $primary: #000000,
+  $primary: hsl(0, 0%, 0%),
   $fg-map-keys: (),
   $bg-map-keys: ()
 );
 @use '../base.scss' with (
-  $color-bg: #0c0e1e,
+  $color-bg: hsl(233, 43%, 8%),
   $color-bg-grad-spread: 0%,
   $border-radius: 0
 );
@@ -15,7 +15,7 @@
 // USMC Theme
 .theme-usmc {
   .Layout__content {
-    background-image: linear-gradient(#0c0e1e, #000000);
+    background-image: linear-gradient(hsl(233, 43%, 8%), hsl(0, 0%, 0%));
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;
@@ -28,7 +28,7 @@
   }
   .Vendor {
     .VendingFlexAlt {
-      background-color: rgba(#0c0e1e, 1);
+      background-color: rgba(hsl(233, 43%, 8%), 1);
     }
   }
 }

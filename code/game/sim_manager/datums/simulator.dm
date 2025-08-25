@@ -4,7 +4,7 @@
 
 	// Necessary to prevent multiple users from simulating at the same time.
 	var/static/detonation_cooldown = 0
-	var/static/detonation_cooldown_time = 2 MINUTES
+	var/static/detonation_cooldown_time = 1 MINUTES
 	var/static/sim_reboot_state = TRUE
 
 	var/dummy_mode = CLF_MODE
@@ -28,6 +28,9 @@
 		DEFENDER_MODE = /mob/living/carbon/xenomorph/defender,
 		RAVAGER_MODE = /mob/living/carbon/xenomorph/ravager,
 		CRUSHER_MODE = /mob/living/carbon/xenomorph/crusher,
+		WARRIOR_MODE = /mob/living/carbon/xenomorph/warrior,
+		PRAETORIAN_MODE = /mob/living/carbon/xenomorph/praetorian,
+		BOILER_MODE = /mob/living/carbon/xenomorph/boiler,
 	)
 
 /datum/simulator/proc/start_watching(mob/living/user)
@@ -102,6 +105,7 @@
 
 		var/mob/living/carbon/xenomorph/xeno_dummy = new spawn_path(get_turf(spawn_loc))
 		xeno_dummy.hardcore = TRUE
+		xeno_dummy.can_heal = FALSE
 		delete_targets += xeno_dummy
 
 	addtimer(CALLBACK(src, PROC_REF(sim_turf_garbage_collection)), 30 SECONDS, TIMER_STOPPABLE)

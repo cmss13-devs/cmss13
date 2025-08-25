@@ -142,7 +142,7 @@ SUBSYSTEM_DEF(ipintel)
 	var/datum/entity/intel/query = DB_ENTITY(/datum/entity/intel)
 	query.ip = intel.address
 	query.intel = intel.result
-	query.date = world.realtime
+	query.date = intel.date
 
 	query.save()
 	query.sync()
@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(ipintel)
 
 /datum/controller/subsystem/ipintel/proc/is_whitelisted(ckey)
 	var/list/datum/view/vpn_whitelist/whitelists = DB_VIEW(/datum/view/vpn_whitelist, DB_COMP("ckey", DB_EQUALS, ckey))
-	. = !!length(whitelists)
+	return !!length(whitelists)
 
 /client/proc/ipintel_allow()
 	set name = "Whitelist Player VPN"

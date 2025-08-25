@@ -29,7 +29,8 @@
 					return
 				playsound(src.loc, 'sound/items/Welder.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !WT.isOn()) return
+					if(!src || !WT.isOn())
+						return
 					to_chat(user, SPAN_NOTICE(" You deconstruct the frame."))
 					deconstruct()
 		if(1)

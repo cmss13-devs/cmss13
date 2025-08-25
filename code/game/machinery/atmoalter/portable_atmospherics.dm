@@ -48,5 +48,5 @@
 		cell = null
 		return
 
-	..()
+	. = ..()
 

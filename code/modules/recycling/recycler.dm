@@ -23,10 +23,6 @@
 	. = ..()
 	update_icon()
 
-/obj/structure/machinery/recycler/power_change()
-	..()
-	update_icon()
-
 /obj/structure/machinery/recycler/update_icon()
 	. = ..()
 	icon_state = "separator-AO[(inoperable()) ? "0":"1"]"
@@ -94,8 +90,10 @@
 			stored_matter[material] -= sheets * 3750
 			var/obj/item/stack/sheet/sheet_stack
 			switch(material)
-				if("metal") sheet_stack = new /obj/item/stack/sheet/metal(loc)
-				if("glass") sheet_stack = new /obj/item/stack/sheet/glass(loc)
+				if("metal")
+					sheet_stack = new /obj/item/stack/sheet/metal(loc)
+				if("glass")
+					sheet_stack = new /obj/item/stack/sheet/glass(loc)
 			if(sheet_stack)
 				sheet_stack.amount = sheets
 				sheet_stack.update_icon()

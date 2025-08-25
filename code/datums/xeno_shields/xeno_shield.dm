@@ -34,6 +34,7 @@
 		linked_xeno = null
 	if(processing)
 		STOP_PROCESSING(SSobj, src)
+
 	return ..()
 
 // Actually calculate how much the damage reduces our amount
@@ -43,9 +44,15 @@
 
 // Anything special to do on removal
 /datum/xeno_shield/proc/on_removal()
+	if(linked_xeno && istype(linked_xeno, /mob/living/carbon/xenomorph) && shield_source == XENO_SHIELD_SOURCE_GARDENER)
+		linked_xeno.balloon_alert(linked_xeno, "our carapace shell crumbles!", text_color = "#17997280")
+		playsound(linked_xeno, "shield_shatter", 25, 1)
 	return
 
 /datum/xeno_shield/proc/begin_decay()
+	if(linked_xeno && istype(linked_xeno, /mob/living/carbon/xenomorph) && shield_source == XENO_SHIELD_SOURCE_GARDENER)
+		linked_xeno.balloon_alert(linked_xeno, "our carapace shell begins to decay!", text_color = "#17997280")
+		playsound(linked_xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 	START_PROCESSING(SSobj, src)
 	processing = TRUE
 
@@ -61,7 +68,7 @@
 // Use the type var if you need to construct a shield with different on hit behavior, damage reduction, etc.
 /mob/living/carbon/xenomorph/proc/add_xeno_shield(\
 	added_amount, shield_source, type = /datum/xeno_shield, \
-	duration = -1, decay_amount_per_second = 1, \
+	duration, decay_amount_per_second, \
 	add_shield_on = FALSE, max_shield = 200)
 	for (var/datum/xeno_shield/curr_shield in xeno_shields)
 		if (shield_source == curr_shield.shield_source)
@@ -78,12 +85,14 @@
 	new_shield.shield_source = shield_source
 	xeno_shields += new_shield
 	new_shield.last_damage_taken = world.time // So we don't insta-delete our shield.
-
-	new_shield.decay_amount_per_second = decay_amount_per_second
+	if(decay_amount_per_second)
+		new_shield.decay_amount_per_second = decay_amount_per_second
+	if(duration)
+		new_shield.duration = duration
 	new_shield.linked_xeno = src
 
-	if(duration > -1)
-		addtimer(CALLBACK(new_shield, TYPE_PROC_REF(/datum/xeno_shield, begin_decay)), duration)
+	if(new_shield.duration > -1)
+		addtimer(CALLBACK(new_shield, TYPE_PROC_REF(/datum/xeno_shield, begin_decay)), new_shield.duration)
 
 	overlay_shields()
 	return new_shield

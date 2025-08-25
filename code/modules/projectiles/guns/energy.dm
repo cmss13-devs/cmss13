@@ -10,6 +10,7 @@
 
 	icon_state = "stunrevolver"
 	item_state = "stunrevolver"
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/energy_weapons.dmi'
 	muzzle_flash = null//replace at some point
 	fire_sound = 'sound/weapons/emitter2.ogg'
 
@@ -40,7 +41,7 @@
 /obj/item/weapon/gun/energy/update_icon()
 	. = ..()
 
-	icon_state = "[base_gun_icon]"
+	icon_state = base_gun_icon
 
 	if(!cell)
 		return
@@ -98,7 +99,8 @@
 
 /obj/item/weapon/gun/energy/delete_bullet(obj/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
-	if(refund) cell.charge += charge_cost
+	if(refund)
+		cell.charge += charge_cost
 	return TRUE
 
 /obj/item/weapon/gun/energy/get_examine_text(mob/user)
@@ -113,9 +115,13 @@
 /obj/item/weapon/gun/energy/rxfm5_eva
 	name = "RXF-M5 EVA pistol"
 	desc = "A high power focusing laser pistol designed for Extra-Vehicular Activity, though it works just about anywhere really. Derived from the same technology as laser welders. Issued by the Weyland-Yutani Corporation, but also available on the civilian market."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/energy_weapons.dmi'
 	icon_state = "rxfm5_eva"
 	item_state = "eva"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_righthand.dmi'
+	)
 	muzzle_flash = "muzzle_laser"
 	muzzle_flash_color = COLOR_LASER_RED
 	fire_sound = 'sound/weapons/Laser4.ogg'
@@ -171,9 +177,15 @@
 /obj/item/weapon/gun/energy/laz_uzi
 	name = "laser UZI"
 	desc = "A refit of the classic Israeli SMG. Fires laser bolts."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/energy_weapons.dmi'
 	icon_state = "laz_uzi"
 	item_state = "laz_uzi"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/guns.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/energy_weapons.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/energy_weapons_righthand.dmi'
+	)
 	muzzle_flash = "muzzle_laser"
 	muzzle_flash_color = COLOR_LASER_RED
 	gun_category = GUN_CATEGORY_SMG
@@ -204,7 +216,7 @@
 /obj/item/weapon/gun/energy/taser
 	name = "disabler gun"
 	desc = "An advanced stun device capable of firing balls of ionized electricity. Used for nonlethal takedowns. "
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/uscm.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/energy_weapons.dmi'
 	icon_state = "taser"
 	item_state = "taser"
 	muzzle_flash = null //TO DO.

@@ -1,5 +1,5 @@
 /obj/structure/sign/double/barsign
-	icon = 'icons/obj/structures/props/barsigns.dmi'
+	icon = 'icons/obj/structures/props/wall_decorations/barsigns.dmi'
 	icon_state = "empty"
 	anchored = TRUE
 

@@ -1,5 +1,3 @@
-GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
-
 /datum/resin_construction
 	var/name
 	var/desc
@@ -19,19 +17,35 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	var/thick_hiveweed = FALSE // if this is set, the thick variants will only work on hiveweeds
 	var/can_build_on_doors = TRUE // if it can be built on a tile with an open door or not
 
+	/// Whether this construction gets more expensive the more saturated the area is
+	var/scaling_cost = FALSE
+
 /datum/resin_construction/proc/can_build_here(turf/T, mob/living/carbon/xenomorph/X)
 	var/mob/living/carbon/xenomorph/blocker = locate() in T
 	if(blocker && blocker != X && blocker.stat != DEAD)
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return FALSE
 
-	if(!istype(T) || T.is_weedable() < FULLY_WEEDABLE)
-		to_chat(X, SPAN_WARNING("You can't do that here."))
+	if(!istype(T))
 		return FALSE
+
+	if(T.is_weedable < FULLY_WEEDABLE)
+		var/has_node = FALSE
+		for(var/obj/effect/alien/resin/design/node in T)
+			has_node = TRUE
+			break
+
+		if(!has_node)
+			to_chat(X, SPAN_WARNING("You can't do that here without design nodes."))
+			return FALSE
+
+		if(!check_for_wall_or_door())
+			to_chat(X, SPAN_WARNING("This terrain is unsuitable for other resin secretions, only walls and doors can be built on this node."))
+			return FALSE
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
-		if(AR.flags_area & AREA_UNWEEDABLE)
+		if(!AR || AR.flags_area & AREA_UNWEEDABLE)
 			to_chat(X, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
@@ -67,13 +81,16 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 		return FALSE
 
 	if(range_between_constructions)
-		for(var/i in urange(range_between_constructions, T))
+		for(var/i in long_range(range_between_constructions, T))
 			var/atom/A = i
 			if(A.type == build_path)
 				to_chat(X, SPAN_WARNING("This is too close to another similar structure!"))
 				return FALSE
 
 	return TRUE
+
+/datum/resin_construction/proc/check_for_wall_or_door()
+	return FALSE
 
 /datum/resin_construction/proc/build(turf/T, hivenumber, builder)
 	return
@@ -110,22 +127,26 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	return build_turf
 
-
 // Resin Walls
 /datum/resin_construction/resin_turf/wall
 	name = "Resin Wall"
 	desc = "A resin wall, able to block passage."
 	construction_name = "resin wall"
 	cost = XENO_RESIN_WALL_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin
 	build_animation_effect = /obj/effect/resin_construct/weak
+
+/datum/resin_construction/resin_turf/wall/check_for_wall_or_door()
+	return TRUE
 
 /datum/resin_construction/resin_turf/wall/thick
 	name = "Thick Resin Wall"
 	desc = "A thick resin wall, stronger than regular walls."
 	construction_name = "thick resin wall"
 	cost = XENO_RESIN_WALL_THICK_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin/thick
 	build_animation_effect = /obj/effect/resin_construct/thick
@@ -134,8 +155,8 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	name = "Queen Resin Wall"
 	desc = "A resin wall, able to block passage. Constructed type depends on weeds."
 	construction_name = "queen resin wall"
-
 	cost = XENO_RESIN_WALL_QUEEN_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin
 	build_path_thick = /turf/closed/wall/resin/thick
@@ -157,6 +178,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "Resin membrane that can be seen through."
 	construction_name = "resin membrane"
 	cost = XENO_RESIN_MEMBRANE_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin/membrane
 	build_animation_effect = /obj/effect/resin_construct/transparent/weak
@@ -166,6 +188,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "Resin membrane that can be seen through. Constructed type depends on weeds."
 	construction_name = "queen resin membrane"
 	cost = XENO_RESIN_MEMBRANE_QUEEN_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin/membrane
 	build_path_thick = /turf/closed/wall/resin/membrane/thick
@@ -177,6 +200,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "Strong resin membrane that can be seen through."
 	construction_name = "thick resin membrane"
 	cost = XENO_RESIN_MEMBRANE_THICK_COST
+	scaling_cost = TRUE
 
 	build_path = /turf/closed/wall/resin/membrane/thick
 	build_animation_effect = /obj/effect/resin_construct/transparent/thick
@@ -187,6 +211,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "A resin door that only sisters may pass."
 	construction_name = "resin door"
 	cost = XENO_RESIN_DOOR_COST
+	scaling_cost = TRUE
 
 	build_path = /obj/structure/mineral_door/resin
 	build_animation_effect = /obj/effect/resin_construct/door
@@ -212,11 +237,15 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 
 	return TRUE
 
+/datum/resin_construction/resin_obj/door/check_for_wall_or_door()
+	return TRUE
+
 /datum/resin_construction/resin_obj/door/queen
 	name = "Queen Resin Door"
 	desc = "A resin door that only sisters may pass. Constructed type depends on weeds."
 	construction_name = "queen resin door"
 	cost = XENO_RESIN_DOOR_QUEEN_COST
+	scaling_cost = TRUE
 
 	build_path = /obj/structure/mineral_door/resin
 	build_path_thick = /obj/structure/mineral_door/resin/thick
@@ -228,6 +257,7 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "A thick resin door, which is more durable, that only sisters may pass."
 	construction_name = "thick resin door"
 	cost = XENO_RESIN_DOOR_THICK_COST
+	scaling_cost = TRUE
 
 	build_path = /obj/structure/mineral_door/resin/thick
 	build_animation_effect = /obj/effect/resin_construct/thickdoor

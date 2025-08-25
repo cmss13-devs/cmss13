@@ -15,7 +15,8 @@
 
 	for(i in GLOB.cardinals) //For all cardinal dir turfs
 		T = get_step(src, i)
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 		for(j in tiles_with) //And for all types that we tile with
 			if(istype(T, j))
 				junction |= i
@@ -36,7 +37,8 @@
 
 	for(i in GLOB.cardinals) //For all cardinal dir turfs
 		T = get_step(src, i)
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 		for(j in tiles_with) //And for all types that we tile with
 			if(istype(T, j))
 				T.relativewall() //If we tile this type, junction it
@@ -63,7 +65,8 @@
 
 	for(i in GLOB.cardinals)
 		T = get_step(src, i)
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 		for(j in tiles_with)
 			if(istype(T, j))
 				jun_1 |= i
@@ -95,7 +98,8 @@
 
 	for(i in GLOB.cardinals)
 		T = get_step(src, i)
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 		for(j in tiles_with)
 			if(istype(T, j))
 				jun_1 |= i
@@ -229,7 +233,8 @@
 
 	for(i in GLOB.alldirs) //For all cardinal dir turfs
 		T = get_step(src, i)
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 		for(j in tiles_with) //And for all types that we tile with
 			if(istype(T, j))
 				junction |= i
@@ -251,7 +256,8 @@
 
 	for(i in GLOB.alldirs) //For all cardinal dir turfs
 		T = get_step(src, i)
-		if(!istype(T)) continue
+		if(!istype(T))
+			continue
 		for(j in tiles_with) //And for all types that we tile with
 			if(istype(T, j))
 				junction |= i

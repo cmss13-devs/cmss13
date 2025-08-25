@@ -3,7 +3,7 @@
 /obj/item/alien_embryo
 	name = "alien embryo"
 	desc = "All slimy and yucky."
-	icon = 'icons/mob/xenos/larva.dmi'
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi'
 	icon_state = "Embryo"
 	var/mob/living/affected_mob
 	var/stage = 0
@@ -82,14 +82,19 @@
 	if(hivenumber == XENO_HIVE_TUTORIAL)
 		return
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+
+	var/is_nested = HAS_TRAIT(affected_mob, TRAIT_NESTED)
+	if(is_nested && !(affected_mob.stat & DEAD) && stage <= 3 && affected_mob.reagents && affected_mob.reagents.get_reagent_amount("host_stabilizer") < 1)
+		affected_mob.reagents.add_reagent("host_stabilizer", 1)
+
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
-		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
+		if(affected_mob.in_stasis || affected_mob.bodytemperature < BODYTEMP_CRYO_LIQUID_THRESHOLD)
 			if(stage < 5)
 				counter += 0.33 * hive.larva_gestation_multiplier * delta_time
 			if(stage == 4) // Stasis affects late-stage less
 				counter += 0.11 * hive.larva_gestation_multiplier * delta_time
-		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
+		else if(is_nested) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
 			counter += 1.5 * hive.larva_gestation_multiplier * delta_time //Currently twice as much, can be changed
 		else
 			if(stage < 5)
@@ -107,7 +112,7 @@
 			if(prob(4))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
-					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
+					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"),
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(1, PARALYZE)
 					affected_mob.make_jittery(105)
@@ -128,7 +133,7 @@
 			if(prob(5))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
-					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"), \
+					affected_mob.visible_message(SPAN_DANGER("\The [affected_mob] starts shaking uncontrollably!"),
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(2, PARALYZE)
 					affected_mob.make_jittery(105)
@@ -144,7 +149,7 @@
 			if(prob(6))
 				if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 					affected_mob.pain.apply_pain(PAIN_CHESTBURST_WEAK)
-					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"), \
+					affected_mob.visible_message(SPAN_DANGER("[affected_mob] starts shaking uncontrollably!"),
 												SPAN_DANGER("You feel something moving inside you! You start shaking uncontrollably!"))
 					affected_mob.apply_effect(3, PARALYZE)
 					affected_mob.make_jittery(105)
@@ -243,15 +248,13 @@
 
 	if(isyautja(affected_mob) || (flags_embryo & FLAG_EMBRYO_PREDATOR))
 		new_xeno = new /mob/living/carbon/xenomorph/larva/predalien(affected_mob)
-		yautja_announcement(SPAN_YAUTJABOLDBIG("WARNING!\n\nAn abomination has been detected at [get_area_name(new_xeno)]. It is a stain upon our purity and is unfit for life. Exterminate it immediately.\n\nHeavy Armory unlocked."))
-		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_YAUTJA_ARMORY_OPENED)
 	else
 		new_xeno = new(affected_mob)
 
 	if(hive)
 		hive.add_xeno(new_xeno)
-		if(!affected_mob.first_xeno && hive.hive_location)
-			hive.increase_larva_after_burst()
+		if(!affected_mob.first_xeno && hive.hive_location && !ismonkey(affected_mob))
+			hive.increase_larva_after_burst(is_nested)
 			hive.hive_ui.update_burrowed_larva()
 
 	new_xeno.update_icons()
@@ -268,6 +271,8 @@
 				window_flash(new_xeno.client)
 
 		SSround_recording.recorder.track_player(new_xeno)
+		if(HAS_TRAIT(affected_mob, TRAIT_LISPING))
+			ADD_TRAIT(new_xeno, TRAIT_LISPING, affected_mob)
 
 		to_chat(new_xeno, SPAN_XENOANNOUNCE("You are a xenomorph larva inside a host! Move to burst out of it!"))
 		to_chat(new_xeno, "<B>Your job is to spread the hive and protect the Queen. If there's no Queen, you can become the Queen yourself by evolving into a drone.</B>")
@@ -300,7 +305,7 @@
 	to_chat(src, SPAN_DANGER("We start bursting out of [victim]'s chest!"))
 	if(!HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		victim.apply_effect(20, DAZE)
-	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"), \
+	victim.visible_message(SPAN_DANGER("\The [victim] starts shaking uncontrollably!"),
 						SPAN_DANGER("You feel something ripping up your insides!"))
 	victim.make_jittery(300)
 	sleep(30)
@@ -309,19 +314,17 @@
 	if(loc != victim)
 		victim.chestburst = 0
 		return
+	if(ishuman(victim) || isyautja(victim))
+		victim.emote("burstscream")
+	sleep(25) //Sound delay
 	victim.update_burst()
-	sleep(6) //Sprite delay
+	sleep(10) //Sprite delay
 	if(!victim || !victim.loc)
 		return
 	if(loc != victim)
-		victim.chestburst = 0 //if a doc removes the larva during the sleep(6), we must remove the 'bursting' overlay on the human
+		victim.chestburst = 0 //if a doc removes the larva during the sleep(10), we must remove the 'bursting' overlay on the human
 		victim.update_burst()
 		return
-
-	if(isyautja(victim))
-		victim.emote("roar")
-	else
-		victim.emote("scream")
 
 	var/burstcount = 0
 
@@ -330,6 +333,7 @@
 	for(var/mob/living/carbon/xenomorph/larva/larva_embryo in victim)
 		var/datum/hive_status/hive = GLOB.hive_datum[larva_embryo.hivenumber]
 		larva_embryo.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
+		larva_embryo.grant_spawn_protection(1 SECONDS)
 		playsound(larva_embryo, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 
 		if(larva_embryo.client)
@@ -349,7 +353,7 @@
 		if(!larva_embryo.ckey && larva_embryo.burrowable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			larva_embryo.visible_message(SPAN_XENODANGER("[larva_embryo] quickly burrows into the ground."))
 			if(GLOB.round_statistics && !larva_embryo.statistic_exempt)
-				GLOB.round_statistics.track_new_participant(faction, -1) // keep stats sane
+				GLOB.round_statistics.track_new_participant(faction, 0) // keep stats sane
 			hive.stored_larva++
 			hive.hive_ui.update_burrowed_larva()
 			qdel(larva_embryo)

@@ -15,6 +15,12 @@
 	///If the action is currently on or in use
 	var/active = FALSE
 
+/datum/action/predator_action/remove_from(mob/user)
+	yautja = null
+	bracers = null
+	mask = null
+	. = ..()
+
 /datum/action/predator_action/can_use_action()
 	. = ..()
 	if(!.)
@@ -25,16 +31,16 @@
 	mask = null
 
 	var/mob/living/carbon/human/mob = owner
-	if(!isyautja(mob))
+	if(!ishuman(mob))
 		return FALSE
 	if(mob.is_mob_incapacitated())
 		return FALSE
 	yautja = mob
 
 	if(require_bracers)
-		if(istype(yautja.gloves, /obj/item/clothing/gloves/yautja/hunter))
+		if(istype(yautja.gloves, /obj/item/clothing/gloves/yautja))
 			bracers = yautja.gloves
-		else if(istype(yautja.get_held_item(), /obj/item/clothing/gloves/yautja/hunter))
+		else if(istype(yautja.get_held_item(), /obj/item/clothing/gloves/yautja))
 			bracers = yautja.get_held_item()
 		if(!bracers)
 			to_chat(yautja, SPAN_WARNING("You don't have bracers."))
@@ -89,16 +95,6 @@
 /datum/action/predator_action/mark_panel/action_activate()
 	. = ..()
 	yautja.mark_panel()
-
-/datum/action/predator_action/claim_equipment
-	name = "Claim Equipment"
-	action_icon_state = "claim_equipment"
-	listen_signal = COMSIG_KB_YAUTJA_PRED_BUY
-	active = PREDATOR_ACTION_ON_CLICK
-
-/datum/action/predator_action/claim_equipment/action_activate()
-	. = ..()
-	yautja.pred_buy()
 
 //Actions that require wearing a mask
 /datum/action/predator_action/mask
@@ -155,21 +151,21 @@
 	require_bracers = TRUE
 
 /datum/action/predator_action/bracer/wristblade
-	name = "Toggle Wristblades"
+	name = "Use Bracer Attachments"
 	action_icon_state = "wristblade"
-	listen_signal = COMSIG_KB_YAUTJA_WRISTBLADES
+	listen_signal = COMSIG_KB_YAUTJA_BRACER_ATTACHMENT
 
 /datum/action/predator_action/bracer/wristblade/action_activate()
 	. = ..()
-	bracers.wristblades()
+	bracers.bracer_attachment()
 
-/datum/action/predator_action/bracer/combistick
-	name = "Yank Combi-stick"
+/datum/action/predator_action/bracer/chained
+	name = "Yank Weapon"
 	action_icon_state = "combi"
 	listen_signal = COMSIG_KB_YAUTJA_CALL_COMBI
 	active = PREDATOR_ACTION_ON_CLICK
 
-/datum/action/predator_action/bracer/combistick/action_activate()
+/datum/action/predator_action/bracer/chained/action_activate()
 	. = ..()
 	yautja.call_combi_internal(yautja, forced = FALSE)
 
@@ -278,7 +274,7 @@
 /datum/yautja_emote_panel/proc/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "YautjaEmotes")
+		ui = new(user, src, "Emotes", "Yautja Audio Panel")
 		ui.open()
 
 /datum/yautja_emote_panel/ui_data(mob/user)
@@ -295,6 +291,7 @@
 	var/list/data = list()
 
 	data["categories"] = yautja_categories
+	data["theme"] = "crtred"
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/yautja/emote as anything in yautja_emotes)

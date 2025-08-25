@@ -11,7 +11,7 @@
 	density = FALSE
 	unacidable = TRUE
 	anchored = TRUE //You will not have me, space wind!
-	flags_atom = NOINTERACT //No real need for this, but whatever. Maybe this flag will do something useful in the future.
+	flags_atom = NOINTERACT|NO_ZFALL //No real need for this, but whatever. Maybe this flag will do something useful in the future.
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0 // We want this thing to be transparent when it drops on a turf because it will be on the user's turf. We then want to make it opaque as it travels.
 	layer = FLY_LAYER
@@ -187,7 +187,7 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards)
-/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override)
+/obj/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, randomize_speed = TRUE, gun_damage_mult = 1, projectile_max_range_add = 0, gun_bonus_proj_scatter = 0)
 	SHOULD_NOT_SLEEP(TRUE)
 	original = original || original_override || target
 	if(!loc)
@@ -230,7 +230,8 @@
 
 	//If we have the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
-		ammo.fire_bonus_projectiles(src)
+		randomize_speed = FALSE
+		ammo.fire_bonus_projectiles(src, gun_damage_mult, projectile_max_range_add, gun_bonus_proj_scatter)
 		bonus_projectile_check = 1 //Mark this projectile as having spawned a set of bonus projectiles.
 
 	path = get_line(starting, target_turf)
@@ -241,8 +242,11 @@
 	src.speed = speed
 	// Randomize speed by a small factor to help bullet animations look okay
 	// Otherwise you get a   s   t   r   e   a   m of warping bullets in same positions
-	src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
-	src.speed = clamp(src.speed, 0.1, 100) // Safety to avoid loop hazards
+	if (randomize_speed)
+		src.speed *= (1 + (rand()-0.5) * 0.30) // 15.0% variance either way
+
+	// Safety to avoid loop hazards
+	src.speed = clamp(src.speed, 0.1, 100)
 
 	// Also give it some headstart, flying it now ahead of tick
 	var/delta_time = world.tick_lag * rand() * 0.4
@@ -417,7 +421,7 @@
 
 		// If the ammo should hit the surface of the target and the next turf is dense
 		// The current turf is the "surface" of the target
-		if(ammo_flags & AMMO_STRIKES_SURFACE)
+		if(ammo_flags & (AMMO_STRIKES_SURFACE|AMMO_STRIKES_SURFACE_ONLY))
 			// We "hit" the current turf but strike the actual blockage
 			ammo.on_hit_turf(get_turf(src),src)
 		else
@@ -478,7 +482,7 @@
 
 		// If the ammo should hit the surface of the target and there is an object blocking
 		// The current turf is the "surface" of the target
-		if(ammo_flags & AMMO_STRIKES_SURFACE)
+		if(ammo_flags & (AMMO_STRIKES_SURFACE|AMMO_STRIKES_SURFACE_ONLY))
 			var/turf/T = get_turf(O)
 
 			// We "hit" the current turf but strike the actual blockage
@@ -499,7 +503,7 @@
 	if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
 		return FALSE
 
-	if((MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && L.stat == DEAD) || (L in permutated))
+	if((MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_attacking_corpses) && L.stat == DEAD) || (L in permutated))
 		return FALSE
 	permutated |= L
 	if((ammo.flags_ammo_behavior & AMMO_XENO) && (isfacehugger(L) || L.stat == DEAD)) //xeno ammo is NEVER meant to hit or damage dead people. If you want to add a xeno ammo that DOES then make a new flag that makes it ignore this check.
@@ -541,7 +545,7 @@
 		to_world(SPAN_DEBUG("([L]) Hit chance: [hit_chance] | Roll: [hit_roll]"))
 		#endif
 
-		if(hit_chance > hit_roll)
+		if(hit_chance > hit_roll && !(L.status_flags & RECENTSPAWN))
 			#if DEBUG_HIT_CHANCE
 			to_world(SPAN_DEBUG("([L]) Hit."))
 			#endif
@@ -575,7 +579,8 @@
 			. = TRUE
 		else if(L.body_position != LYING_DOWN)
 			animatation_displace_reset(L)
-			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
+			if(ammo.sound_miss)
+				playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 			var/log_message = "[src] narrowly missed [key_name(L)]"
@@ -596,7 +601,7 @@
 
 /obj/projectile/proc/check_canhit(turf/current_turf, turf/next_turf, list/ignore_list)
 	var/proj_dir = get_dir(current_turf, next_turf)
-	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list))
+	if((proj_dir & (proj_dir - 1)) && !current_turf.Adjacent(next_turf, ignore_list = ignore_list) && current_turf.z == next_turf.z)
 		ammo.on_hit_turf(current_turf, src)
 		current_turf.bullet_act(src)
 		return TRUE
@@ -617,7 +622,7 @@
 
 /obj/projectile/proc/get_effective_accuracy()
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>; distance: <b>[distance_travelled]</b>"))
+	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>;accurate_range: <b>[ammo.accurate_range]<b>; distance: <b>[distance_travelled]</b>"))
 	#endif
 
 	var/effective_accuracy = accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
@@ -835,8 +840,10 @@
 //mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
 
 /mob/living/proc/get_projectile_hit_chance(obj/projectile/P)
-	if((body_position == LYING_DOWN || HAS_TRAIT(src, TRAIT_NO_STRAY)) && src != P.original)
+	if(HAS_TRAIT(src, TRAIT_NO_STRAY) && src != P.original)
 		return FALSE
+	if(body_position == LYING_DOWN && src != P.original && world.time - body_position_changed > 0.1 SECONDS && !P.ammo.hits_lying_mobs)
+		return FALSE // Fixes for buckshot projectiles not hitting stunned targets
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_XENO)
 		if((status_flags & XENO_HOST) && HAS_TRAIT(src, TRAIT_NESTED))
@@ -864,7 +871,7 @@
 			. -= mobility_aura * 5
 		var/mob/living/carbon/human/shooter_human = P.firer
 		if(istype(shooter_human))
-			if(shooter_human.faction == faction && !(ammo_flags & AMMO_ALWAYS_FF))
+			if(is_ally_of(shooter_human) && !(ammo_flags & AMMO_ALWAYS_FF))
 				. -= FF_hit_evade
 
 			if(ammo_flags & AMMO_MP)
@@ -894,9 +901,6 @@
 			. += 10
 		if(evasion > 0)
 			. -= evasion
-
-/mob/living/silicon/robot/drone/get_projectile_hit_chance(obj/projectile/P)
-	return FALSE // just stop them getting hit by projectiles completely
 
 
 /obj/projectile/proc/play_hit_effect(mob/hit_mob)
@@ -1008,7 +1012,8 @@
 			damage_result = 0
 			bullet_ping(P)
 			visible_message(SPAN_AVOIDHARM("[src]'s armor deflects [P]!"))
-			if(P.ammo.sound_armor) playsound(src, P.ammo.sound_armor, 50, 1)
+			if(P.ammo.sound_armor)
+				playsound(src, P.ammo.sound_armor, 50, 1)
 
 	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
@@ -1035,6 +1040,7 @@
 
 			var/obj/item/shard/shrapnel/new_embed = new P.ammo.shrapnel_type
 			var/obj/item/large_shrapnel/large_embed = new P.ammo.shrapnel_type
+			var/embed_sound = pick('sound/effects/crackandbleed.ogg', 'sound/effects/pierce3.ogg')
 			if(istype(large_embed))
 				large_embed.on_embed(src, organ)
 			if(istype(new_embed))
@@ -1052,6 +1058,7 @@
 				if(!stat && pain.feels_pain)
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
+					playsound(src, embed_sound, 75, 1)
 	SEND_SIGNAL(P, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
 
 //Deal with xeno bullets.
@@ -1064,7 +1071,7 @@
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
-	if((ammo_flags & AMMO_FLAME) && (src.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE))
+	if((ammo_flags & AMMO_FLAME) && (caste.fire_immunity & (FIRE_IMMUNITY_NO_IGNITE|FIRE_IMMUNITY_NO_DAMAGE)))
 		to_chat(src, SPAN_AVOIDHARM("You shrug off the glob of flame."))
 		bullet_message(P, damaging = FALSE)
 		return
@@ -1096,6 +1103,7 @@
 			"armour_break_flat" = P.ammo.damage_armor_punch,
 			"armor_integrity" = armor_integrity,
 			"direction" = P.dir,
+			"armour_type" = GLOB.xeno_ranged,
 		)
 		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
 		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
@@ -1199,7 +1207,7 @@
 
 /obj/item/bullet_act(obj/projectile/P)
 	bullet_ping(P)
-	if(P.ammo.damage_type == BRUTE)
+	if(P.ammo.damage_type == BRUTE && !(P.ammo.flags_ammo_behavior & AMMO_XENO))
 		explosion_throw(P.damage/2, P.dir, 4)
 	return TRUE
 
@@ -1225,7 +1233,8 @@
 	if(!P || !P.ammo.ping)
 		return
 
-	if(P.ammo.sound_bounce) playsound(src, P.ammo.sound_bounce, 50, 1)
+	if(P.ammo.sound_bounce)
+		playsound(src, P.ammo.sound_bounce, 50, 1)
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, P.ammo.ping, 10)
 	var/offset_x = clamp(P.pixel_x + pixel_x_offset, -10, 10)
 	var/offset_y = clamp(P.pixel_y + pixel_y_offset, -10, 10)
@@ -1245,7 +1254,7 @@
 	if(!P)
 		return
 	if(damaging && COOLDOWN_FINISHED(src, shot_cooldown))
-		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"),
 			SPAN_HIGHDANGER("[isxeno(src) ? "We" : "You"] are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		COOLDOWN_START(src, shot_cooldown, 1 SECONDS)
 
@@ -1261,7 +1270,8 @@
 				var/ff_living = TRUE
 				if(src.stat == DEAD)
 					ff_living = FALSE
-				msg_admin_ff(ff_msg, ff_living)
+				if(!(((mob_flags & MUTINY_MUTINEER) && (firingMob.mob_flags & MUTINY_LOYALIST)) || ((mob_flags & MUTINY_LOYALIST) && (firingMob.mob_flags & MUTINY_MUTINEER))))
+					msg_admin_ff(ff_msg, ff_living)
 				if(ishuman(firingMob) && P.weapon_cause_data)
 					var/mob/living/carbon/human/H = firingMob
 					H.track_friendly_fire(P.weapon_cause_data.cause_name)
@@ -1312,6 +1322,13 @@
 	SIGNAL_HANDLER
 
 	accuracy = HIT_ACCURACY_TIER_2 // flat 10% chance if you're desperate and try to fire this thing without a bipod
+
+/obj/projectile/pill
+	var/obj/item/reagent_container/pill/source_pill
+
+/obj/projectile/pill/Destroy()
+	. = ..()
+	source_pill = null
 
 #undef DEBUG_HIT_CHANCE
 #undef DEBUG_HUMAN_DEFENSE

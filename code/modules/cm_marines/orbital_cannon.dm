@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 /obj/structure/orbital_tray
 	name = "loading tray"
 	desc = "The orbital cannon's loading tray."
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props64.dmi'
 	icon_state = "cannon_tray"
 	density = TRUE
 	anchored = TRUE
@@ -353,7 +353,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 	throwpass = TRUE
 	climbable = TRUE
 	unacidable = TRUE // issue: being used for defences, solution: abomb
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
+	icon = 'icons/obj/structures/props/almayer/almayer_props.dmi'
 	var/is_solid_fuel = 0
 	var/source_mob
 
@@ -392,10 +392,10 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 
 	var/cancellation_token = rand(0,32000)
 	GLOB.orbital_cannon_cancellation["[cancellation_token]"] = src
-	message_admins(FONT_SIZE_XL("<A HREF='?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
+	message_admins(FONT_SIZE_XL("<A href='byond://?_src_=admin_holder;[HrefToken(forceGlobal = TRUE)];admincancelob=1;cancellation=[cancellation_token]'>CLICK TO CANCEL THIS OB</a>"))
 
 	var/relative_dir
-	for(var/mob/M in urange(30, target))
+	for(var/mob/M in long_range(30, target))
 		if(get_turf(M) == target)
 			relative_dir = 0
 		else
@@ -406,7 +406,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
-	for(var/mob/M in urange(25, target))
+	for(var/mob/M in long_range(25, target))
 		if(get_turf(M) == target)
 			relative_dir = 0
 		else
@@ -417,7 +417,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		)
 	sleep(OB_TRAVEL_TIMING/3)
 
-	for(var/mob/M in urange(15, target))
+	for(var/mob/M in long_range(15, target))
 		M.show_message( \
 			SPAN_HIGHDANGER("OH GOD THE SKY WILL EXPLODE!!!"), SHOW_MESSAGE_VISIBLE, \
 			SPAN_HIGHDANGER("YOU SHOULDN'T BE HERE!"), SHOW_MESSAGE_AUDIBLE \
@@ -435,7 +435,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 
 	var/radius_size = 30
 
-	for(var/mob/living/user in urange(radius_size, epicenter))
+	for(var/mob/living/user in long_range(radius_size, epicenter))
 
 		var/distance = get_accurate_dist(get_turf(user), epicenter)
 		var/distance_percent = ((radius_size - distance) / radius_size)
@@ -613,7 +613,7 @@ GLOBAL_LIST_EMPTY(orbital_cannon_cancellation)
 		ui = new(user, src, "OrbitalCannonConsole", "[src.name]")
 		ui.open()
 
-/obj/structure/machinery/computer/aa_console/ui_state(mob/user)
+/obj/structure/machinery/computer/orbital_cannon_console/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_state
 
 /obj/structure/machinery/computer/orbital_cannon_console/ui_status(mob/user, datum/ui_state/state)

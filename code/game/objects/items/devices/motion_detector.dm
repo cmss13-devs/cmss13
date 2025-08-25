@@ -37,7 +37,7 @@
 	var/long_range_cooldown = 2
 	var/blip_type = "detector"
 	var/iff_signal = FACTION_MARINE
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/motion_detector)
 	var/scanning = FALSE // controls if MD is in process of scan
 	var/datum/shape/rectangle/square/range_bounds
 	var/long_range_locked = FALSE //only long-range MD
@@ -86,6 +86,8 @@
 		overlays += "+[initial(icon_state)]_long_switch"
 	else
 		overlays += "+[initial(icon_state)]_short_switch"
+	for(var/datum/action/item_action as anything in actions)
+		item_action.update_button_icon()
 
 /obj/item/device/motiondetector/verb/toggle_range_mode()
 	set name = "Toggle Range Mode"

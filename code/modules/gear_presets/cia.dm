@@ -52,7 +52,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_R_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911/socom/equipped, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
@@ -91,6 +91,10 @@
 	minimum_age = 30
 	skills = /datum/skills/cia_senior
 
+/datum/equipment_preset/cia/officer/o3/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
+
 /datum/equipment_preset/uscm/marsoc/low_threat/cia
 	name = "CIA Senior Agent (Marine Raider Advisor)"
 	minimum_age = 30
@@ -98,7 +102,7 @@
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA)
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
 
 /datum/equipment_preset/uscm/marsoc/low_threat/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//Custom reduced loadout versus normal MARSOC
@@ -181,7 +185,7 @@
 
 /datum/equipment_preset/upp/soldier/dressed/cia/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
+	access = get_access(ACCESS_LIST_UPP_ALL) + list(ACCESS_CIA)
 
 /datum/equipment_preset/upp/soldier/dressed/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
@@ -194,7 +198,7 @@
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/New()
 	. = ..()
-	access = get_access(ACCESS_LIST_CLF_BASE) + list(ACCESS_CIA)
+	access = get_access(ACCESS_LIST_UPP_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
@@ -236,7 +240,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new random_outfit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new random_suit(new_human), WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/antag(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/general_belt, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/lockable/liaison(new_human), WEAR_BACK)
@@ -244,7 +248,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_R_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911/socom/equipped, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
@@ -259,9 +263,14 @@
 	idtype = /obj/item/card/id/adaptive/silver
 	skills = /datum/skills/cia_senior
 
+/datum/equipment_preset/cia/uacqs/commissioner/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
+
 /datum/equipment_preset/cia/uacqs/commissioner/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
 	new_human.equip_to_slot_or_del(new /obj/item/paper/prefab/uacqs_notice(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/syringe/uacqs_fountain(new_human), WEAR_R_EAR)
 
 /datum/equipment_preset/cia/uacqs/security
 	name = "CIA Agent (UACQS Security)"
@@ -273,7 +282,7 @@
 /datum/equipment_preset/cia/uacqs/security/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//back
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia, WEAR_IN_BACK) //CIA equipment
+	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/low_points, WEAR_IN_BACK) //CIA equipment
 	//face
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/antag(new_human), WEAR_EYES)
@@ -287,16 +296,16 @@
 	uniform.attach_accessory(new_human, plate)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)
 	for(var/i in 1 to accessory.hold.storage_slots)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/ap, WEAR_IN_ACCESSORY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/socom/black, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m4a4_tactical, WEAR_WAIST)
 	//jacket
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/bulletproof, WEAR_JACKET)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/tactical, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/cia, WEAR_J_STORE)
 
 	//limbs
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/knife(new_human), WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife(new_human), WEAR_FEET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m16/ap/black, WEAR_R_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mp5/ap/black, WEAR_R_STORE)

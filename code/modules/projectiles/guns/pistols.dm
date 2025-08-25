@@ -102,6 +102,9 @@
 /obj/item/weapon/gun/pistol/m4a3/tactical
 	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/reflex, /obj/item/attachable/lasersight)
 
+/obj/item/weapon/gun/pistol/m4a3/m4a4/tactical
+	starting_attachment_types = list(/obj/item/attachable/suppressor, /obj/item/attachable/reflex, /obj/item/attachable/lasersight)
+
 /obj/item/weapon/gun/pistol/m4a3/custom
 	name = "\improper M4A3 custom pistol"
 	desc = "This M4A3 sports a nickel finish and faux ivory grips. This one is a slightly customized variant produced by a well known gunsmith on Gateway Station. These are commonly purchased by low level enlisted men and junior officers who have nothing better to spend their salary on. Chambered in 9mm."

@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - bugfix: "Made xeno restraints functional."
+  - rscadd: "Added strong xeno restraints, that stop slashes."

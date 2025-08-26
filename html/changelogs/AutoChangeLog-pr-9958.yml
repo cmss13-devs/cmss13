@@ -1,0 +1,9 @@
+author: "Gorap"
+delete-after: True
+changes:
+  - rscadd: "Added PMC CO Variant for Solaris Ridge"
+  - rscadd: "PMC Field Officer Beret. Slightly better PMC officer beret."
+  - rscadd: "Added VP78 Mostly Empty Belt. (Was going to use this before I realized how you can put holsters on people)"
+  - rscadd: "Added Ext M39 Corpo Variant for FOL."
+  - ui: "Added Field Operation Leader Hud UI"
+  - imageadd: "Added the broken RTO Icons, Added FOL Hud Icon. Using TWE Radiopack Sprite for it."

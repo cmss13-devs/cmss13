@@ -132,4 +132,4 @@
 /obj/structure/curtain/Initialize()
 	. = ..()
 	if(alpha)
-		set_opacity(0)
+		set_opacity(1)

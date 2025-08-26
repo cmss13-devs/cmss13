@@ -5995,7 +5995,7 @@
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
 /obj/structure/machinery/door_control/brbutton{
 	id = "Nexus Maint";
-	name = s;
+	name = "Nexus Garage";
 	pixel_x = -23
 	},
 /turf/open/floor/almayer/plating/northeast,
@@ -7669,7 +7669,8 @@
 "aDS" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 8;
-	id = "Nexus Maint"
+	id = "Nexus Maint";
+	name = "\improper Nexus Garage"
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/lv624/lazarus/nexus_radio)

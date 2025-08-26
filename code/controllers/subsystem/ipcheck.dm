@@ -70,8 +70,6 @@ SUBSYSTEM_DEF(ipcheck)
 	request.execute_blocking()
 	var/datum/http_response/response = request.into_response()
 
-	log_debug("DEBUG: [response.body]")
-
 	var/list/data
 	try
 		data = json_decode(response.body)
@@ -81,7 +79,7 @@ SUBSYSTEM_DEF(ipcheck)
 
 	var/datum/ip_intel/intel = new
 	intel.result = data["block"]
-	if(!intel.result)
+	if(isnull(intel.result))
 		return
 
 	intel.date = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")

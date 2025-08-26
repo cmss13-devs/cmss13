@@ -153,6 +153,10 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
 		return
 
+	if(target.z != thrower.z) //Stop people hurling eachother up to the next floor. And back down.
+		to_chat(thrower, SPAN_DANGER("You can't throw someone that high!"))
+		return
+
 	flags_atom |= NO_ZFALL
 
 	launch_towards(LM, tracking)

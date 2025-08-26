@@ -8363,7 +8363,7 @@
 "aGd" = (
 /obj/structure/machinery/door/airlock/almayer/generic/autoname/glass{
 	dir = 2;
-	welded = true
+	welded = 1
 	},
 /turf/open/floor/wood,
 /area/lv624/lazarus/nexus_dorms)
@@ -17624,7 +17624,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "bnK" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	welded = true
+	welded = 1
 	},
 /obj/structure/curtain/colorable{
 	color = "#5a5a5a"

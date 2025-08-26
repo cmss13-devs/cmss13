@@ -34752,7 +34752,9 @@
 	},
 /obj/structure/machinery/door/poddoor/almayer/blended{
 	id = "cl_quarter_maintenance_2";
-	dir = 4
+	dir = 4;
+	name = "blastdoor";
+	explo_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment/cell/cl)

@@ -297,15 +297,7 @@ SUBSYSTEM_DEF(ipcheck)
 			else
 				message_admins("IPCHECK: [key_name_admin(src)] has been flagged as a VPN.")
 
-		if(IPCHECK_RATE_LIMITED_DAY)
-			log_access("IPCHECK: [ckey] was unable to be checked due to the rate limit.")
-			if(reject_rate_limited)
-				to_chat_immediate(src, SPAN_BOLDNOTICE("New connections are not being allowed at this time."))
-				connection_rejected = TRUE
-			else
-				message_admins("IPCHECK: [key_name_admin(src)] was unable to be checked due to rate limiting.")
-
-		if(IPCHECK_UNKNOWN_INTERNAL_ERROR, IPCHECK_UNKNOWN_QUERY_ERROR)
+		if(IPCHECK_UNKNOWN_INTERNAL_ERROR)
 			log_access("IPCHECK: [ckey] unable to be checked due to an error.")
 			if(reject_unknown_intel)
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection cannot be processed at this time."))

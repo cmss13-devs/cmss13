@@ -312,7 +312,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 /obj/structure/machinery/door/airlock/proc/isElectrified()
 	if(secondsElectrified != 0)
-		addtimer(CALLBACK( src, PROC_REF(isElectrified)), 6 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(isElectrified)), 6 SECONDS)
 		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 		sparks.set_up(5, 1, src)
 		sparks.start()

@@ -6445,7 +6445,8 @@
 /area/lv624/lazarus/landing_zones/lz2)
 "ayg" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1
+	dir = 1;
+	name = "\improper Premium Corporate Apartment"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
@@ -6528,7 +6529,8 @@
 /area/lv624/lazarus/quartstorage)
 "ayF" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 2
+	dir = 2;
+	name = "\improper Corporate Apartment 1"
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
@@ -11962,11 +11964,8 @@
 /turf/open/gm/grass/grassmud/corner2/north_east,
 /area/lv624/ground/jungle/north_west_jungle)
 "aUo" = (
-/obj/effect/spawner/random/toolbox,
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/fuelcell_recycler/full,
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 2
@@ -11976,6 +11975,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/structure/machinery/fuelcell_recycler/full,
 /turf/open/floor/almayer/orange2/south,
 /area/lv624/lazarus/engineering)
 "aUp" = (
@@ -12628,6 +12628,7 @@
 	icon_state = "NE-out";
 	pixel_y = 1
 	},
+/obj/effect/spawner/random/toolbox,
 /turf/open/floor/almayer/orange2/south,
 /area/lv624/lazarus/engineering)
 "aWG" = (
@@ -15540,6 +15541,14 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/medbay)
+"bfM" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Corporate Apartment 2"
+	},
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/turf/open/floor/hybrisa/metal/bluemetalfull,
+/area/lv624/lazarus/corpo_apartments)
 "bfN" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Hydroponics Garage";
@@ -37472,7 +37481,7 @@
 	pixel_y = -6
 	},
 /obj/structure/bed/chair{
-	pixel_y = -8;
+	pixel_y = -2;
 	layer = 2.1
 	},
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
@@ -38413,6 +38422,12 @@
 	pixel_y = 9;
 	layer = 2.9
 	},
+/obj/item/bedsheet/colorable{
+	dir = 4;
+	layer = 4.1;
+	color = "#81929f";
+	pixel_y = -10
+	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/north,
 /area/lv624/lazarus/corpo_apartments)
 "kjj" = (
@@ -38701,6 +38716,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/almayer/orange2/south,
 /area/lv624/lazarus/engineering)
 "kzr" = (
@@ -39181,6 +39197,12 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_jungle)
 "leB" = (
+/obj/item/bedsheet/colorable{
+	dir = 4;
+	layer = 4.1;
+	color = "#81929f";
+	pixel_y = -11
+	},
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/north,
 /area/lv624/lazarus/corpo_apartments)
 "leS" = (
@@ -46972,8 +46994,6 @@
 /area/lv624/ground/jungle/south_central_jungle)
 "uta" = (
 /obj/structure/machinery/light,
-/obj/structure/platform/metal/almayer,
-/obj/structure/bed/stool,
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/comms)
 "uuf" = (
@@ -47186,7 +47206,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
 	pixel_y = 11;
-	layer = 3
+	layer = s
 	},
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
@@ -63818,7 +63838,7 @@ bvk
 pyb
 pBB
 kLd
-ayF
+bfM
 sTF
 crq
 pUZ

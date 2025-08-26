@@ -1,8 +1,8 @@
 SUBSYSTEM_DEF(ipintel)
 	name = "IPIntel"
 	init_order = SS_INIT_IPINTEL
-	flags = SS_NO_INIT
 	wait = 1.5 MINUTES
+	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 
 	/// The weakrefs of new clients we have to check against IPIntel
 	var/list/datum/weakref/to_check = list()

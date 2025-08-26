@@ -4189,10 +4189,6 @@
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
 /turf/open/gm/river,
 /area/lv624/lazarus/hydroponics)
-"aoQ" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer5,
-/turf/open/floor/hybrisa/tile/tilewhite,
-/area/lv624/lazarus/kitchen)
 "aoR" = (
 /obj/structure/prop/ice_colony/dense/planter_box/hydro,
 /obj/structure/flora/bush/ausbushes/var3/fernybush,
@@ -5906,11 +5902,6 @@
 /obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv624/lazarus/general_dorms)
-"avz" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer5,
-/turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
-/area/lv624/lazarus/sushi)
 "avA" = (
 /obj/structure/surface/rack{
 	layer = 1
@@ -6422,7 +6413,6 @@
 	pixel_x = 1;
 	pixel_y = 3
 	},
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/lv624/lazarus/sushi)
 "axW" = (
@@ -8334,11 +8324,6 @@
 	pixel_y = 2;
 	pixel_x = 4
 	},
-/turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
-/area/lv624/lazarus/sushi)
-"aFW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer6,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/lv624/lazarus/sushi)
 "aFX" = (
@@ -10461,7 +10446,6 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
 "aOT" = (
@@ -10682,10 +10666,6 @@
 "aPB" = (
 /obj/effect/decal/strata_decals/grime/grime4,
 /obj/effect/landmark/survivor_spawner,
-/turf/open/floor/hybrisa/tile/tilewhite,
-/area/lv624/lazarus/kitchen)
-"aPC" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer6,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
 "aPF" = (
@@ -13871,9 +13851,7 @@
 /obj/effect/decal/hybrisa/road/roadmiddle{
 	dir = 4
 	},
-/turf/open/floor/prison/ramptop/north{
-	dir = 2
-	},
+/turf/open/floor/prison/ramptop,
 /area/lv624/ground/colony/west_medbay_road)
 "baW" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
@@ -15768,9 +15746,7 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal{
 	dir = 8
 	},
-/turf/open/floor/prison/ramptop/north{
-	dir = 2
-	},
+/turf/open/floor/prison/ramptop,
 /area/lv624/ground/colony/west_medbay_road)
 "bgw" = (
 /obj/structure/platform/metal/hybrisa/metalplatform6/west,
@@ -36701,9 +36677,7 @@
 	pixel_y = 5;
 	pixel_x = 2
 	},
-/turf/open/floor/prison/ramptop/north{
-	dir = 2
-	},
+/turf/open/floor/prison/ramptop,
 /area/lv624/ground/colony/west_medbay_road)
 "hKk" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
@@ -80038,8 +80012,8 @@ yhR
 aAG
 biT
 axV
-aFW
-avz
+aus
+aus
 aus
 aGt
 biT
@@ -81649,8 +81623,8 @@ apf
 apf
 apf
 aOQ
-aPC
-aoQ
+apf
+apf
 aNk
 aLp
 aLp

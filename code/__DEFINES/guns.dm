@@ -3,6 +3,8 @@
 #define TASER_MODE_P "precision"
 #define TASER_MODE_F "free"
 
+#define MOU_ACTION_COOLDOWN 1.1 SECONDS
+
 // Common
 #define AMMO_BAND_COLOR_AP "#1F951F"
 #define AMMO_BAND_COLOR_HIGH_VELOCITY "#8998A3"

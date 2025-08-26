@@ -14946,11 +14946,6 @@
 	icon_state = "S";
 	pixel_y = -2
 	},
-/obj/item/clothing/head/hairflower{
-	pixel_y = -2;
-	pixel_x = -9;
-	layer = s
-	},
 /obj/structure/prop/hybrisa/misc/trash/green{
 	layer = 3.1
 	},
@@ -15316,6 +15311,10 @@
 	pixel_x = 6
 	},
 /obj/item/tool/pen,
+/obj/item/clothing/head/hairflower{
+	pixel_y = -2;
+	pixel_x = -9
+	},
 /turf/open/floor/almayer,
 /area/lv624/lazarus/hydroponics)
 "bfk" = (

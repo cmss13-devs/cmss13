@@ -355,8 +355,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
 		return FALSE
 
-	if(check_ip_intel())
-		return FALSE
+	SSipintel.add_client_to_queue(src)
 
 	return TRUE
 

@@ -1,14 +1,57 @@
 SUBSYSTEM_DEF(ipintel)
 	name = "IPIntel"
 	init_order = SS_INIT_IPINTEL
-	flags = SS_NO_INIT|SS_NO_FIRE
+	flags = SS_NO_INIT
+	wait = 1.5 MINUTES
+
+	/// The weakrefs of new clients we have to check against IPIntel
+	var/list/datum/weakref/to_check = list()
+
+	/// The number of queries we have submitted to IPIntel today
+	var/queries_today = 0
+
 	/// The threshold for probability to be considered a VPN and/or bad IP
 	var/probability_threshold
 
 	/// Cache for previously queried IP addresses and those stored in the database
 	var/list/datum/ip_intel/cached_queries = list()
-	/// The store for rate limiting
-	var/list/rate_limit_minute
+
+/datum/controller/subsystem/ipintel/Initialize()
+	if(!is_enabled())
+		return SS_INIT_NO_NEED
+
+	var/list/datum/view_record/intel/intels = DB_VIEW(/datum/view_record/intel, DB_COMP("date", DB_GREATER, time2text(world.realtime - 24 HOURS, "YYYY-MM-DD hh:mm:ss")))
+	queries_today = length(intels)
+
+	if(queries_today >= CONFIG_GET(number/ipintel_rate_day))
+		message_admins("The IPIntel subsystem has been disabled due to hitting the daily ratelimit.")
+		return SS_INIT_NO_NEED
+
+	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/ipintel/fire(resumed)
+	var/list/datum/weakref/current_run = to_check.Copy()
+
+	var/limit = 0
+	for(var/datum/weakref/check_weakref in current_run)
+		if(limit >= CONFIG_GET(number/ipintel_rate_minute))
+			return
+
+		if(queries_today >= CONFIG_GET(number/ipintel_rate_day))
+			message_admins("The IPIntel subsystem has been disabled due to hitting the daily ratelimit.")
+			can_fire = FALSE
+			return
+
+		limit++
+
+		var/client/check_client = check_weakref.resolve()
+		if(!check_client)
+			to_check -= check_weakref
+			continue
+
+		check_client.check_ip_intel()
+		to_check -= check_weakref
+		queries_today++
 
 /// The ip intel for a given address
 /datum/ip_intel
@@ -37,8 +80,16 @@ SUBSYSTEM_DEF(ipintel)
 		log_debug("IPIntel is not enabled because the configs are not valid: [jointext(fail_messages, ", ")]",)
 
 /datum/controller/subsystem/ipintel/stat_entry(msg)
-	return "[..()] | M: [CONFIG_GET(number/ipintel_rate_minute) - rate_limit_minute]"
+	return "[..()] | M: [length(to_check)]"
 
+/datum/controller/subsystem/ipintel/proc/add_client_to_queue(client/new_client)
+	if(!is_enabled())
+		return
+
+	if(is_exempt(new_client) || SSipintel.is_whitelisted(new_client))
+		return
+
+	to_check += WEAKREF(new_client)
 
 /datum/controller/subsystem/ipintel/proc/is_enabled()
 	return length(CONFIG_GET(string/ipintel_email)) && length(CONFIG_GET(string/ipintel_base))
@@ -61,32 +112,11 @@ SUBSYSTEM_DEF(ipintel)
 		return IPINTEL_BAD_IP
 	return IPINTEL_GOOD_IP
 
-/datum/controller/subsystem/ipintel/proc/is_rate_limited()
-	var/static/minute_key
-	var/expected_minute_key = floor(REALTIMEOFDAY / 1 MINUTES)
-
-	if(minute_key != expected_minute_key)
-		minute_key = expected_minute_key
-		rate_limit_minute = 0
-
-	if(rate_limit_minute >= CONFIG_GET(number/ipintel_rate_minute))
-		return IPINTEL_RATE_LIMITED_MINUTE
-
-	var/list/datum/view_record/intel/intels = DB_VIEW(/datum/view_record/intel, DB_COMP("date", DB_GREATER, time2text(world.realtime - 24 HOURS, "YYYY-MM-DD hh:mm:ss")))
-	if(length(intels) >= CONFIG_GET(number/ipintel_rate_day))
-		return IPINTEL_RATE_LIMITED_DAY
-
-	return FALSE
-
 /datum/controller/subsystem/ipintel/proc/query_address(address, allow_cached = TRUE)
 	if (!is_enabled())
 		return
 	if(allow_cached && fetch_cached_ip_intel(address))
 		return cached_queries[address]
-	var/is_rate_limited = is_rate_limited()
-	if(is_rate_limited)
-		return is_rate_limited
-	rate_limit_minute += 1
 
 	var/query_base = "https://[CONFIG_GET(string/ipintel_base)]/check.php?ip="
 	var/query = "[query_base][address]&contact=[CONFIG_GET(string/ipintel_email)]&flags=b&format=json"
@@ -281,11 +311,6 @@ SUBSYSTEM_DEF(ipintel)
 	message_admins("IPINTEL: [key_name_admin(src)] has revoked the VPN whitelist for '[dewhitelist_ckey]'")
 
 /client/proc/check_ip_intel()
-	if (!SSipintel.is_enabled())
-		return
-	if(SSipintel.is_exempt(src) || SSipintel.is_whitelisted(ckey))
-		return
-
 	var/intel_state = SSipintel.get_address_intel_state(address)
 	var/reject_bad_intel = CONFIG_GET(flag/ipintel_reject_bad)
 	var/reject_unknown_intel = CONFIG_GET(flag/ipintel_reject_unknown)

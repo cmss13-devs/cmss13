@@ -3334,7 +3334,7 @@
 	},
 /obj/structure/machinery/door_control/brbutton{
 	id = "Engineering Garage";
-	name = s;
+	name = "Engineering Garage";
 	pixel_y = 20
 	},
 /obj/effect/spawner/random/toolbox{
@@ -3884,7 +3884,8 @@
 	pixel_y = -1
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering Garage"
+	id = "Engineering Garage";
+	name = "\improper Engineering Garage"
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -32047,7 +32048,8 @@
 /area/lv624/lazarus/general_dorms)
 "cys" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering Garage"
+	id = "Engineering Garage";
+	name = "\improper Engineering Garage"
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)
@@ -40715,7 +40717,8 @@
 	icon_state = "S"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Engineering Garage"
+	id = "Engineering Garage";
+	name = "\improper Engineering Garage"
 	},
 /turf/open/floor/dark,
 /area/lv624/lazarus/engineering)

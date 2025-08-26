@@ -58,6 +58,9 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 /obj/effect/landmark/fog_marker/proc/deactivate()
 	active = FALSE
 
+/obj/effect/landmark/fog_marker/Destroy()
+	. = ..()
+	GLOB.fog_tiles -= src
 
 /datum/weather_event/heavy_rain/fog
 	name = "Heavy Rain with fog"

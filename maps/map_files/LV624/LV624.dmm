@@ -36269,7 +36269,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
 "huq" = (
-/obj/structure/machinery/door/airlock/almayer/generic/autoname/glass{
+/obj/structure/machinery/door/airlock/almayer/generic/autoname{
 	dir = 2
 	},
 /turf/open/floor/strata/multi_tiles/west,
@@ -38736,12 +38736,6 @@
 /obj/structure/flora/grass/tallgrass/jungle,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
-"kAj" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
-	dir = 2
-	},
-/turf/open/floor/dark,
-/area/lv624/lazarus/customs_dome)
 "kAl" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass2,
@@ -40631,6 +40625,9 @@
 /area/lv624/ground/caves/north_east_caves)
 "mGG" = (
 /obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic/autoname{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/customs_dome)
 "mHk" = (
@@ -62251,7 +62248,7 @@ ayN
 ayN
 ayN
 aTx
-kAj
+kWH
 ayN
 ayN
 ayN

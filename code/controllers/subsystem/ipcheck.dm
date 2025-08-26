@@ -275,9 +275,12 @@ SUBSYSTEM_DEF(ipcheck)
 	if(queries_today == day_limit)
 		message_admins("IPCheck has been disabled due to exceeding the day ratelimit.")
 		queries_today++
-		return
 
 	if(queries_today > day_limit)
+		log_access("IPCHECK: [ckey] unable to be checked due to ratelimiting.")
+		if(CONFIG_GET(flag/ipcheck_reject_rate_limited))
+			to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection cannot be processed at this time."))
+			return TRUE
 		return
 
 	var/intel_state = SSipcheck.get_address_intel_state(address)

@@ -15542,13 +15542,8 @@
 /area/lv624/lazarus/medbay)
 "bfM" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = s
-	},
-/turf/open/floor/almayer,
-/area/lv624/lazarus/hydroponics)
-"bfN" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Hydroponics Garage"
+	id = "Hydroponics Garage";
+	name = "\improper Hydro Garage"
 	},
 /turf/open/floor/almayer,
 /area/lv624/lazarus/hydroponics)
@@ -47191,7 +47186,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
 	pixel_y = 11;
-	layer = s
+	layer = 3
 	},
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
@@ -72225,7 +72220,7 @@ aZQ
 vam
 bpj
 bpj
-bfN
+bfM
 beC
 beZ
 erK
@@ -72453,7 +72448,7 @@ aZQ
 bgA
 aqp
 aqp
-bfN
+bfM
 nHj
 aol
 beE

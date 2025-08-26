@@ -9697,9 +9697,8 @@
 "aMa" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
-	pixel_x = -17;
-	pixel_y = 5;
-	layer = s
+	pixel_x = -10;
+	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/carpet11_12,

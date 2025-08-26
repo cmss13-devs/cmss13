@@ -70,6 +70,8 @@ SUBSYSTEM_DEF(ipcheck)
 	request.execute_blocking()
 	var/datum/http_response/response = request.into_response()
 
+	log_debug("DEBUG: [response.body]")
+
 	var/list/data
 	try
 		data = json_decode(response.body)

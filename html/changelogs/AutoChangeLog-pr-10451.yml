@@ -1,4 +1,0 @@
-author: "TheGamerdk"
-delete-after: True
-changes:
-  - bugfix: "Further enforced adjacency requirements when planting C4 and subtypes"

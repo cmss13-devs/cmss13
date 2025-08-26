@@ -1,0 +1,7 @@
+author: "Blundir"
+delete-after: True
+changes:
+  - rscadd: "HPR and RPG resprites, both now have full camo sets, RPG now has empty state"
+  - balance: "HPR now has a functional folding stock which gives some stats"
+  - balance: "RPG now comes with interal magnetic harness"
+  - bugfix: "fixed vulture breaking bipod color on use"

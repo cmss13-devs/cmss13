@@ -46,6 +46,11 @@
 
 	return hive.is_ally(attempt_harm_mob)
 
+/mob/living/carbon/xenomorph/proc/claw_restrained()
+	if(legcuffed && legcuffed.stop_xeno_slash)
+		return TRUE
+	return FALSE
+
 // need this to set the data for walls/eggs/huggers when they are initialized
 /proc/set_hive_data(atom/focused_atom, hivenumber)
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]

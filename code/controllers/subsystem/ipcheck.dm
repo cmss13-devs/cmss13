@@ -328,4 +328,5 @@ SUBSYSTEM_DEF(ipcheck)
 	message_string += "."
 
 	to_chat_immediate(src, SPAN_USERDANGER(message_string))
+	qdel(src)
 	return TRUE

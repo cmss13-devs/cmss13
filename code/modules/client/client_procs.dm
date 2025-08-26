@@ -355,9 +355,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		to_chat_immediate(src, SPAN_NOTICE(FONT_SIZE_LARGE("You will now be automatically disconnected. Have a CM day.")))
 		return FALSE
 
-	if(check_ip_vpn())
-		return FALSE
-
 	return TRUE
 
 /client/proc/PreLogin()
@@ -403,6 +400,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 /client/proc/PostLogin()
 	add_verb(src, collect_client_verbs())
+
+	check_ip_vpn()
 
 	acquire_dpi()
 

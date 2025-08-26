@@ -340,7 +340,7 @@
 	name = "\improper Armory"
 	icon_state = "armory"
 	minimap_color = MINIMAP_AREA_SEC
-linked_lz = DROPSHIP_LZ1
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/security
 	name = "\improper Security"

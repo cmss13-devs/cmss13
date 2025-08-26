@@ -33,6 +33,7 @@
 
 /turf/open/gm/dirtmud/dirtmud_corner_outer
 	name = "dirt"
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
 	icon_state = "dirtmud_corner_outer"
 	dir = NORTH
 
@@ -47,6 +48,7 @@
 
 /turf/open/gm/dirtmud/dirtmud_corner_inner
 	name = "dirt"
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
 	icon_state = "dirtmud_corner_inner"
 	dir = NORTH
 
@@ -61,6 +63,7 @@
 
 /turf/open/gm/dirtmud/dirtmud_edge
 	name = "dirt"
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
 	icon_state = "dirtmud_edge"
 	dir = NORTH
 

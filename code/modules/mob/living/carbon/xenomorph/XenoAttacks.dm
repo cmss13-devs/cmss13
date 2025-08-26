@@ -31,7 +31,7 @@
 				back.add_fingerprint(M)
 				var/obj/item/storage/backpack = back
 				if(backpack && !M.action_busy)
-					if(stat != DEAD) // If the Xeno is alive, fight back
+					if((stat != DEAD) && !legcuffed) // If the Xeno is alive, fight back
 						if(!M.ally_of_hivenumber(hivenumber))
 							M.KnockDown(rand(caste.tacklestrength_min, caste.tacklestrength_max))
 							playsound(M.loc, 'sound/weapons/pierce.ogg', 25, TRUE)

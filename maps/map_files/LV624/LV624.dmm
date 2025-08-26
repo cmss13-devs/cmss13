@@ -15540,7 +15540,7 @@
 /obj/structure/window/framed/colony,
 /turf/open/floor/plating,
 /area/lv624/lazarus/medbay)
-"bfM" = (
+"bfN" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "Hydroponics Garage";
 	name = "\improper Hydro Garage"
@@ -34517,7 +34517,7 @@
 /obj/item/reagent_container/food/condiment/hotsauce/cholula{
 	pixel_y = 2;
 	pixel_x = -6;
-	layer = s
+	layer = 3
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv624/lazarus/kitchen)
@@ -47186,7 +47186,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
 	pixel_y = 11;
-	layer = 3
+	layer = s
 	},
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
@@ -47960,7 +47960,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
 	pixel_y = 11;
-	layer = 3
+	layer = 3.1
 	},
 /turf/open/floor/plating/bare_catwalk,
 /area/lv624/ground/caves/mining)
@@ -48280,7 +48280,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
 	pixel_y = 11;
-	layer = 3
+	layer = 3.1
 	},
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib1"
@@ -71992,7 +71992,7 @@ aZQ
 vam
 bpj
 bpj
-bfM
+bfN
 nHj
 aFg
 toa
@@ -72220,7 +72220,7 @@ aZQ
 vam
 bpj
 bpj
-bfM
+bfN
 beC
 beZ
 erK
@@ -72448,7 +72448,7 @@ aZQ
 bgA
 aqp
 aqp
-bfM
+bfN
 nHj
 aol
 beE

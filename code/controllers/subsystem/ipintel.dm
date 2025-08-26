@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(ipintel)
 	if(!is_enabled())
 		return
 
-	if(is_exempt(new_client) || SSipintel.is_whitelisted(new_client))
+	if(is_exempt(new_client) || is_whitelisted(new_client))
 		return
 
 	to_check += WEAKREF(new_client)

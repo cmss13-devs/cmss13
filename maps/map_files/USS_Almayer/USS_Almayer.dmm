@@ -34981,12 +34981,6 @@
 	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
-"bFI" = (
-/obj/structure/pipes/vents/scrubber/no_boom{
-	dir = 1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
-/area/almayer/command/aist_office)
 "bFJ" = (
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
 /turf/open/floor/plating,
@@ -35020,9 +35014,7 @@
 /turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "bFO" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 9
-	},
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply/no_boom,
 /turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "bFP" = (
@@ -35032,6 +35024,9 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "bFQ" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "bFR" = (
@@ -35084,11 +35079,10 @@
 	pixel_y = 1;
 	req_one_access_txt = "31;92"
 	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bFU" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
 "bFV" = (
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
@@ -35213,27 +35207,10 @@
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
 /area/almayer/command/aist_office)
 "bGj" = (
+/obj/structure/pipes/vents/scrubber/no_boom{
+	dir = 8
+	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver/northeast,
-/area/almayer/command/aist_office)
-"bGk" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "\improper AIST Office";
-	dir = 1;
-	req_one_access_txt = "31;92";
-	masterkey_resist = 1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bGl" = (
-/obj/structure/flora/pottedplant/random,
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
-/area/almayer/command/aist_office)
-"bGm" = (
-/obj/structure/pipes/vents/pump/no_boom{
-	dir = 1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
@@ -35249,12 +35226,6 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
-"bGp" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
-/area/almayer/command/aist_office)
 "bGq" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
@@ -35262,18 +35233,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"bGr" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 6
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
-/area/almayer/command/aist_office)
-"bGs" = (
-/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
-	dir = 1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
 "bGt" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -35289,43 +35248,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bGv" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 10
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
-/area/almayer/command/aist_office)
 "bGw" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
-"bGx" = (
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1;
-	pixel_y = 13
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_cargo,
-/area/almayer/command/aist_office)
 "bGy" = (
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
@@ -35336,35 +35264,6 @@
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/squads/req)
-"bGA" = (
-/obj/effect/landmark/late_join/aist,
-/obj/effect/landmark/start/ai_tech,
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bGB" = (
-/obj/item/bedsheet/yellow,
-/obj/structure/bed,
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bGC" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
-	sub_name = "AIST";
-	pixel_y = 8
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bGD" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bGE" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer{
-	req_one_access_txt = "1;92";
-	req_access = null
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northeast,
-/area/almayer/command/aist_office)
 "bGF" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1
@@ -35447,10 +35346,124 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
+"bGR" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/command/aist_office)
+"bGS" = (
+/obj/structure/window/framed/almayer/aicore/hull/black,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "ARES AIST Bed";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/aist_office)
+"bGT" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_cargo,
+/area/almayer/command/aist_office)
 "bGU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
+"bGV" = (
+/obj/effect/landmark/late_join/aist,
+/obj/effect/landmark/start/ai_tech,
+/obj/structure/machinery/door_control{
+	id = "ARES AIST Bed";
+	name = "Privacy Shutters";
+	pixel_y = -24;
+	req_one_access_txt = "31;92"
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
+/area/almayer/command/aist_office)
+"bGW" = (
+/obj/item/bedsheet/yellow,
+/obj/structure/bed,
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southeast,
+/area/almayer/command/aist_office)
+"bGX" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/paper_bin/uscm{
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_y = 3;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
+/area/almayer/command/aist_office)
+"bGY" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
+/area/almayer/command/aist_office)
+"bGZ" = (
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
+"bHa" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 9
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
+/area/almayer/command/aist_office)
+"bHb" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
+	sub_name = "AIST";
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northwest,
+/area/almayer/command/aist_office)
+"bHc" = (
+/obj/structure/flora/pottedplant/random{
+	pixel_y = 24
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bHd" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bHe" = (
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	req_one_access_txt = "1;92";
+	req_access = null;
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bHf" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/aist_office)
 "bHg" = (
 /obj/structure/pipes/unary/freezer{
 	throwpass = 1
@@ -35474,9 +35487,44 @@
 	},
 /turf/open/floor/almayer/dark_sterile2,
 /area/almayer/medical/cryo_tubes)
+"bHh" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+	name = "\improper AIST Office";
+	req_one_access_txt = "31;92";
+	req_access = null;
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
+"bHi" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
+"bHj" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 10
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
+/area/almayer/command/aist_office)
 "bHk" = (
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell/cl)
+"bHl" = (
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bHm" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 6
+	},
+/obj/structure/machinery/keycard_auth{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
 "bHp" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 2
@@ -176339,20 +176387,20 @@ daz
 daz
 daz
 daz
+daz
+daz
+daz
+daz
 aoP
-apW
-apW
-apW
-apW
 apW
 apW
 bFM
 apW
 aoP
-daz
-daz
-daz
-daz
+aoP
+aoP
+aoP
+aoP
 daz
 daz
 asm
@@ -176442,20 +176490,20 @@ bwI
 bwI
 bwI
 bwI
-aoP
-bGx
-bGp
-apX
-apW
+bwI
+bwI
+bwI
+bwI
+bGR
 bGf
 bFY
 bFN
 apX
-aoP
-bwI
-asm
-asm
-asm
+bHf
+bHb
+bGX
+bGT
+bGR
 asm
 asm
 asm
@@ -176545,20 +176593,20 @@ bwI
 bwI
 bwI
 bwI
-aoP
-bGA
-bGr
-bGd
-bGk
-bGd
-bFZ
-bFO
-aQd
-aoP
 bwI
-asm
-asm
-asm
+bwI
+bwI
+bwI
+bGR
+bHl
+bHj
+bFO
+bGd
+bHh
+bGd
+bGY
+bGV
+bGR
 asm
 asm
 asm
@@ -176648,20 +176696,20 @@ bwI
 bwI
 bwI
 bwI
-aoP
-bGB
-bFN
-bGl
-apW
+bwI
+bwI
+bwI
+bwI
+bGR
 bGg
 bFQ
-bFQ
+bFN
 aQd
-aoP
-bwI
-asm
-asm
-asm
+bHf
+bHc
+bFN
+aQd
+bGS
 aHF
 aHF
 aHF
@@ -176751,20 +176799,20 @@ bwI
 bwI
 bwI
 bwI
-aoP
-bGC
-bGs
-bGm
-apW
+bwI
+bwI
+bwI
+bwI
+bGR
 bGh
 bFS
-bFS
+bHi
 byz
-aoP
-bwI
-asm
-asm
-asm
+bHf
+bHd
+bGZ
+aQd
+bGS
 aHF
 aHF
 aHF
@@ -176854,20 +176902,20 @@ bwI
 bwI
 bwI
 bwI
-aoP
-bGD
-bGt
-bGl
-apW
+bwI
+bwI
+bwI
+bwI
+bGR
 bGi
 bGb
 bFT
 bFH
-aoP
-bwI
-asm
-asm
-asm
+bHf
+bHe
+bGt
+aQd
+bGS
 aHF
 aHF
 aHF
@@ -176957,20 +177005,20 @@ bwI
 bwI
 bwI
 bwI
-aoP
-bGE
-bGv
-bGd
-bGk
-bGd
-bGd
-bFU
-bFI
-aoP
 bwI
-asm
-asm
-asm
+bwI
+bwI
+bwI
+bGR
+bHm
+bGd
+bFZ
+bGd
+bHh
+bGd
+bHa
+bGW
+bGR
 aHF
 aHF
 aHF
@@ -177060,20 +177108,20 @@ bwI
 bwI
 bwI
 bwI
-aoP
-aoP
-aoP
-aoP
-aoP
+bwI
+bwI
+bwI
+bwI
+bGR
 bGj
 bGe
 bFV
 bFK
-aoP
-bwI
-asm
-asm
-asm
+bGR
+bGR
+bGR
+bGR
+bGR
 aHF
 aHF
 aHF
@@ -177167,12 +177215,12 @@ bwI
 bwI
 bwI
 bwI
-aoP
-aoP
-aoP
-aoP
-aoP
-aoP
+bGR
+bGR
+bGR
+bGR
+bGR
+bGR
 bwI
 asm
 asm

@@ -964,7 +964,7 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
+	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
 	var/random_name
 	var/first_name
 	var/last_name

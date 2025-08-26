@@ -326,7 +326,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 	if(!ooccolor)
 		ooccolor = CONFIG_GET(string/ooc_color_default)
-	gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
+	gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
 	real_name = random_name(gender)
 	gear = list()
 

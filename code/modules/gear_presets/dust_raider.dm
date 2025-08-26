@@ -6,7 +6,7 @@
 
 
 /datum/equipment_preset/dust_raider/load_name(mob/living/carbon/human/new_human)
-	new_human.gender = pick(47.5;MALE, 47.5;FEMALE, 5;PLURAL)
+	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name = random_name(new_human.gender)

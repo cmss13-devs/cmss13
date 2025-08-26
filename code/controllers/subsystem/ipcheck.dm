@@ -265,6 +265,9 @@ SUBSYSTEM_DEF(ipcheck)
 	if(SSipcheck.is_exempt(src) || SSipcheck.is_whitelisted(src))
 		return
 
+	if(check_localhost_status())
+		return
+
 	var/static/queries_today
 	if(isnull(queries_today))
 		var/list/datum/view_record/intel/intels = DB_VIEW(/datum/view_record/intel, DB_COMP("date", DB_GREATER, time2text(world.realtime - 24 HOURS, "YYYY-MM-DD hh:mm:ss")))

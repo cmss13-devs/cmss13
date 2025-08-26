@@ -23434,7 +23434,8 @@
 	},
 /obj/structure/machinery/big_computers/computerbrown/computer5,
 /obj/structure/machinery/door_control/colony_lockdown/lv624{
-	pixel_y = -4
+	pixel_y = -4;
+	id = "phiresearchlockdown"
 	},
 /turf/open/floor/corsat/red,
 /area/lv624/ground/colony/phi_lab)

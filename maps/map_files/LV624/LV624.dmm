@@ -5376,6 +5376,7 @@
 	req_one_access = null
 	},
 /obj/structure/flora/jungle/vines/heavy,
+/turf/open/gm/dirt/brown,
 /area/lv624/lazarus/landing_zones/lz1)
 "asN" = (
 /turf/closed/wall,

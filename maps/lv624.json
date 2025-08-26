@@ -37,11 +37,6 @@
         },
         {
             "Ground": true,
-            "Up": 1,
-            "Down": -1
-        },
-        {
-            "Ground": true,
             "Down": -1
         }
     ],

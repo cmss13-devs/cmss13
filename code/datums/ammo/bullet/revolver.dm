@@ -135,6 +135,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_4
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
 
 /datum/ammo/bullet/revolver/mateba/New()
 	..()
@@ -143,13 +144,13 @@
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
 	debilitate = list(0,2,0,0,0,1,0,0)
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_5
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 /datum/ammo/bullet/revolver/mateba/highimpact/ap
 	name = ".454 heavy high-impact armor piercing revolver bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 45
+	damage = 50
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)

@@ -1,13 +1,13 @@
-name: Generate documentation
+name: Generate web assets
 on:
   push:
     branches:
     - master
 jobs:
-  generate_documentation:
+  generate_static_assets:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     runs-on: ubuntu-latest
-    concurrency: gen-docs
+    concurrency: gen-assets
     steps:
       - uses: actions/checkout@v3
       - name: Setup cache
@@ -19,11 +19,12 @@ jobs:
             ${{ runner.os }}-spacemandmm-
       - name: Install SpacemanDMM
         run: bash tools/ci/install_spaceman_dmm.sh dmdoc
-      - name: Generate documentation
+      - name: Generate documentation and static assets
         run: |
           ~/dmdoc
           touch dmdoc/.nojekyll
           echo docs.cm-ss13.com > dmdoc/CNAME
+          mv tgui/public/ dmdoc/assets
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:

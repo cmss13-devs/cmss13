@@ -526,6 +526,7 @@
 		ACCESS_MARINE_DROPSHIP,
 		ACCESS_MARINE_KITCHEN,
 		ACCESS_PRESS,
+		ACCESS_MARINE_RESEARCH,
 	)
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/load_gear(mob/living/carbon/human/new_human)
@@ -549,7 +550,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/silver
-	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT)
+	access = list(ACCESS_MARINE_COMMAND, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_PILOT, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_CAS_PILOT
 	job_title = JOB_CAS_PILOT
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)

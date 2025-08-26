@@ -31,46 +31,46 @@
 /turf/open/gm/dirt/brown/variant_6
 	icon_state = "desert_dug"
 
-/turf/open/gm/dirt/brown/dirtmud_corner_outer
+/turf/open/gm/dirtmud/dirtmud_corner_outer
 	name = "dirt"
 	icon_state = "dirtmud_corner_outer"
 	dir = NORTH
 
-/turf/open/gm/dirt/brown/dirtmud_corner_outer/south
+/turf/open/gm/dirtmud/dirtmud_corner_outer/south
 	dir = SOUTH
 
-/turf/open/gm/dirt/brown/dirtmud_corner_outer/east
+/turf/open/gm/dirtmud/dirtmud_corner_outer/east
 	dir = EAST
 
-/turf/open/gm/dirt/brown/dirtmud_corner_outer/west
+/turf/open/gm/dirtmud/dirtmud_corner_outer/west
 	dir = WEST
 
-/turf/open/gm/dirt/brown/dirtmud_corner_inner
+/turf/open/gm/dirtmud/dirtmud_corner_inner
 	name = "dirt"
 	icon_state = "dirtmud_corner_inner"
 	dir = NORTH
 
-/turf/open/gm/dirt/brown/dirtmud_corner_inner/south
+/turf/open/gm/dirtmud/dirtmud_corner_inner/south
 	dir = SOUTH
 
-/turf/open/gm/dirt/brown/dirtmud_corner_inner/east
+/turf/open/gm/dirtmud/dirtmud_corner_inner/east
 	dir = EAST
 
-/turf/open/gm/dirt/brown/dirtmud_corner_inner/west
+/turf/open/gm/dirtmud/dirtmud_corner_inner/west
 	dir = WEST
 
-/turf/open/gm/dirt/brown/dirtmud_edge
+/turf/open/gm/dirtmud/dirtmud_edge
 	name = "dirt"
 	icon_state = "dirtmud_edge"
 	dir = NORTH
 
-/turf/open/gm/dirt/brown/dirtmud_edge/south
+/turf/open/gm/dirtmud/dirtmud_edge/south
 	dir = SOUTH
 
-/turf/open/gm/dirt/brown/dirtmud_edge/east
+/turf/open/gm/dirtmud/dirtmud_edge/east
 	dir = EAST
 
-/turf/open/gm/dirt/brown/dirtmud_edge/west
+/turf/open/gm/dirtmud/dirtmud_edge/west
 	dir = WEST
 
 /turf/open/gm/road/browndirt

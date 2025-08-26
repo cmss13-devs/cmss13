@@ -275,17 +275,27 @@
 /obj/structure/machinery/door_control/colony_lockdown
 	var/used = FALSE
 	var/colony_lockdown_time = 25 MINUTES
+	var/timer_message = "The colony-wide lockdown cannot be lifted yet. Please wait another"
+	var/already_used_message = "The colony-wide lockdown has already been lifted."
+	var/activate_message = "The colony-wide lockdown protocols have been lifted."
+
 
 /obj/structure/machinery/door_control/colony_lockdown/use_button(mob/living/user,force)
 	if(world.time < SSticker.mode.round_time_lobby + colony_lockdown_time)
-		to_chat(user, SPAN_WARNING("The colony-wide lockdown cannot be lifted yet. Please wait another [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
+		to_chat(user, SPAN_WARNING("[timer_message] [floor((SSticker.mode.round_time_lobby + colony_lockdown_time-world.time)/600)] minutes before trying again."))
 		return
 	if(used)
-		to_chat(user, SPAN_WARNING("The colony-wide lockdown has already been lifted."))
+		to_chat(user, SPAN_WARNING("[already_used_message]"))
 		return
 	. = ..()
-	marine_announcement("The colony-wide lockdown protocols have been lifted.")
+	marine_announcement("[activate_message]")
 	used = TRUE
+
+// 624 research
+/obj/structure/machinery/door_control/colony_lockdown/lv624
+	timer_message = "The Phi Laboratory lockdown cannot be lifted yet. Please wait another"
+	already_used_message = "The Phi Laboratory lockdown has already been lifted."
+	activate_message = "The Phi Laboratory lockdown protocols have been lifted."
 
 // Research
 

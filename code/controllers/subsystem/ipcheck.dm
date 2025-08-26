@@ -286,15 +286,11 @@ SUBSYSTEM_DEF(ipcheck)
 	var/intel_state = SSipcheck.get_address_intel_state(address)
 	queries_today++
 
-	var/reject_bad_intel = CONFIG_GET(flag/ipcheck_reject_bad)
-	var/reject_unknown_intel = CONFIG_GET(flag/ipcheck_reject_unknown)
-	var/reject_rate_limited = CONFIG_GET(flag/ipcheck_reject_rate_limited)
-
 	var/connection_rejected = FALSE
 	switch(intel_state)
 		if(IPCHECK_BAD_IP)
 			log_access("IPCHECK: [ckey] was flagged as a VPN.")
-			if(reject_bad_intel)
+			if(CONFIG_GET(flag/ipcheck_reject_bad))
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection has been detected as a VPN."))
 				connection_rejected = TRUE
 			else
@@ -302,7 +298,7 @@ SUBSYSTEM_DEF(ipcheck)
 
 		if(IPCHECK_UNKNOWN_INTERNAL_ERROR)
 			log_access("IPCHECK: [ckey] unable to be checked due to an error.")
-			if(reject_unknown_intel)
+			if(CONFIG_GET(flag/ipcheck_reject_unknown))
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection cannot be processed at this time."))
 				connection_rejected = TRUE
 			else

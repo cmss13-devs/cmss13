@@ -20,6 +20,7 @@
 	name ="\improper Southeast Jungle"
 	icon_state = "southeast"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/ground/jungle/south_central_jungle
 	name ="\improper Southern Central Jungle"
@@ -30,6 +31,7 @@
 	name ="\improper Southwest Jungle"
 	icon_state = "southwest"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/south_west_jungle/ceiling
 	ceiling = CEILING_GLASS
@@ -48,11 +50,13 @@
 
 /area/lv624/ground/jungle/west_jungle/shacks
 	ceiling = CEILING_METAL
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/ground/jungle/east_jungle
 	name ="\improper Eastern Jungle"
 	icon_state = "east"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/ground/jungle/north_west_jungle
 	name ="\improper Northwest Jungle"
@@ -336,11 +340,13 @@
 	name = "\improper Armory"
 	icon_state = "armory"
 	minimap_color = MINIMAP_AREA_SEC
+linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/security
 	name = "\improper Security"
 	icon_state = "security"
 	minimap_color = MINIMAP_AREA_SEC
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/captain
 	name = "\improper Commandant's Quarters"
@@ -370,18 +376,22 @@
 /area/lv624/lazarus/toilet
 	name = "\improper Dormitory Toilet"
 	icon_state = "toilet"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/nexus_admin
 	name = "\improper Nexus Administrator's Office"
 	icon_state = "purple"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/sushi
 	name = "\improper Nexus Sushi"
 	icon_state = "toilet"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/nexus_dorms
 	name = "\improper Nexus Dormatories"
 	icon_state = "Sleep"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/nexus_radio
 	name = "\improper Lazarus Radio Station"
@@ -414,6 +424,7 @@
 	name = "\improper Communications Relay"
 	icon_state = "tcomsatcham"
 	minimap_color = MINIMAP_AREA_ENGI
+	linked_lz = DROPSHIP_LZ2
 
 /area/lv624/lazarus/secure_bunker
 	name = "\improper Secure Bunker"
@@ -469,10 +480,12 @@
 /area/lv624/lazarus/cargo_storage
 	name = "\improper Cargo Storage Dome"
 	icon_state = "quartstorage"
+	linked_lz = DROPSHIP_LZ1
 
 /area/lv624/lazarus/disposals
 	name = "\improper Disposals Dome"
 	icon_state = "yellow"
+	linked_lz = DROPSHIP_LZ1
 
 //LV624 REVAMP NEW AREAS
 

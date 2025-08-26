@@ -1,13 +1,11 @@
-SUBSYSTEM_DEF(ipintel)
-	name = "IPIntel"
-	init_order = SS_INIT_IPINTEL
-	wait = 1.5 MINUTES
-	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
+SUBSYSTEM_DEF(ipcheck)
+	name = "IPCheck"
+	flags = SS_NO_FIRE | SS_NO_INIT
 
-	/// The weakrefs of new clients we have to check against IPIntel
+	/// The weakrefs of new clients we have to check against IPCheck
 	var/list/datum/weakref/to_check = list()
 
-	/// The number of queries we have submitted to IPIntel today
+	/// The number of queries we have submitted to IPCheck today
 	var/queries_today = 0
 
 	/// The threshold for probability to be considered a VPN and/or bad IP
@@ -16,113 +14,59 @@ SUBSYSTEM_DEF(ipintel)
 	/// Cache for previously queried IP addresses and those stored in the database
 	var/list/datum/ip_intel/cached_queries = list()
 
-/datum/controller/subsystem/ipintel/Initialize()
-	if(!is_enabled())
-		return SS_INIT_NO_NEED
-
-	var/list/datum/view_record/intel/intels = DB_VIEW(/datum/view_record/intel, DB_COMP("date", DB_GREATER, time2text(world.realtime - 24 HOURS, "YYYY-MM-DD hh:mm:ss")))
-	queries_today = length(intels)
-
-	if(queries_today >= CONFIG_GET(number/ipintel_rate_day))
-		message_admins("The IPIntel subsystem has been disabled due to hitting the daily ratelimit.")
-		return SS_INIT_NO_NEED
-
-	return SS_INIT_SUCCESS
-
-/datum/controller/subsystem/ipintel/fire(resumed)
-	var/list/datum/weakref/current_run = to_check.Copy()
-
-	var/limit = 0
-	for(var/datum/weakref/check_weakref in current_run)
-		if(limit >= CONFIG_GET(number/ipintel_rate_minute))
-			return
-
-		if(queries_today >= CONFIG_GET(number/ipintel_rate_day))
-			message_admins("The IPIntel subsystem has been disabled due to hitting the daily ratelimit.")
-			can_fire = FALSE
-			return
-
-		limit++
-
-		var/client/check_client = check_weakref.resolve()
-		if(!check_client)
-			to_check -= check_weakref
-			continue
-
-		check_client.check_ip_intel()
-		to_check -= check_weakref
-		queries_today++
-
 /// The ip intel for a given address
 /datum/ip_intel
-	/// If this intel was just queried, the status of the query
-	var/query_status
 	var/result
 	var/address
 	var/date
 
-/datum/controller/subsystem/ipintel/OnConfigLoad()
+/datum/controller/subsystem/ipcheck/OnConfigLoad()
 	var/list/fail_messages = list()
 
-	var/contact_email = CONFIG_GET(string/ipintel_email)
-
-	if(!length(contact_email))
-		fail_messages += "No contact email"
-
-	if(!findtext(contact_email, "@"))
-		fail_messages += "Invalid contact email"
-
-	if(!length(CONFIG_GET(string/ipintel_base)))
+	if(!length(CONFIG_GET(string/ipcheck_base)))
 		fail_messages += "Invalid query base"
 
 	if(length(fail_messages))
-		message_admins("IPIntel: Initialization failed check logs!")
-		log_debug("IPIntel is not enabled because the configs are not valid: [jointext(fail_messages, ", ")]",)
+		message_admins("IPCheck: Initialization failed check logs!")
+		log_debug("IPCheck is not enabled because the configs are not valid: [jointext(fail_messages, ", ")]",)
 
-/datum/controller/subsystem/ipintel/stat_entry(msg)
+/datum/controller/subsystem/ipcheck/stat_entry(msg)
 	return "[..()] | M: [length(to_check)]"
 
-/datum/controller/subsystem/ipintel/proc/add_client_to_queue(client/new_client)
-	if(!is_enabled())
-		return
+/datum/controller/subsystem/ipcheck/proc/is_enabled()
+	return !!length(CONFIG_GET(string/ipcheck_base)) && !!length(CONFIG_GET(string/ipcheck_apikey))
 
-	if(is_exempt(new_client) || is_whitelisted(new_client))
-		return
-
-	to_check += WEAKREF(new_client)
-
-/datum/controller/subsystem/ipintel/proc/is_enabled()
-	return length(CONFIG_GET(string/ipintel_email)) && length(CONFIG_GET(string/ipintel_base))
-
-/datum/controller/subsystem/ipintel/proc/get_address_intel_state(address, probability_override)
+/datum/controller/subsystem/ipcheck/proc/get_address_intel_state(address, probability_override)
 	if (!is_enabled())
-		return IPINTEL_GOOD_IP
+		return IPCHECK_GOOD_IP
 	var/datum/ip_intel/intel = query_address(address)
 	if(isnull(intel))
 		stack_trace("query_address did not return an ip intel response")
-		return IPINTEL_UNKNOWN_INTERNAL_ERROR
+		return IPCHECK_UNKNOWN_INTERNAL_ERROR
 
-	if(istext(intel))
-		return intel
+	var/check_probability = CONFIG_GET(number/ipcheck_rating_bad)
+	if(intel.result == check_probability)
+		return IPCHECK_BAD_IP
 
-	if(!(intel.query_status in list("success", "cached")))
-		return IPINTEL_UNKNOWN_QUERY_ERROR
-	var/check_probability = probability_override || CONFIG_GET(number/ipintel_rating_bad)
-	if(intel.result >= check_probability)
-		return IPINTEL_BAD_IP
-	return IPINTEL_GOOD_IP
+	return IPCHECK_GOOD_IP
 
-/datum/controller/subsystem/ipintel/proc/query_address(address, allow_cached = TRUE)
+/datum/controller/subsystem/ipcheck/proc/query_address(address, allow_cached = TRUE)
 	if (!is_enabled())
 		return
 	if(allow_cached && fetch_cached_ip_intel(address))
 		return cached_queries[address]
 
-	var/query_base = "https://[CONFIG_GET(string/ipintel_base)]/check.php?ip="
-	var/query = "[query_base][address]&contact=[CONFIG_GET(string/ipintel_email)]&flags=b&format=json"
+	var/query_base = "https://[CONFIG_GET(string/ipcheck_base)]/ip/"
+	var/query = "[query_base][address]"
+
+	var/list/headers
+	if(!headers)
+		headers = list(
+			"X-Key" = CONFIG_GET(string/ipcheck_apikey)
+		)
 
 	var/datum/http_request/request = new
-	request.prepare(RUSTG_HTTP_METHOD_GET, query)
+	request.prepare(RUSTG_HTTP_METHOD_GET, query, headers = headers)
 	request.execute_blocking()
 	var/datum/http_response/response = request.into_response()
 
@@ -130,21 +74,20 @@ SUBSYSTEM_DEF(ipintel)
 	try
 		data = json_decode(response.body)
 	catch
-		log_debug("IPINTEL: Error while decoding response. [response.body]")
+		log_debug("IPCHECK: Error while decoding response. [response.body]")
 		return
 
 	var/datum/ip_intel/intel = new
-	intel.query_status = data["status"]
-	if(intel.query_status != "success")
-		log_debug("IPINTEL: Error while requesting address. [response.body]")
-		return intel
-	intel.result = data["result"]
-	if(istext(intel.result))
-		intel.result = text2num(intel.result)
+	intel.result = data["block"]
+	if(!intel.result)
+		return
+
 	intel.date = time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")
 	intel.address = address
+
 	cached_queries[address] = intel
 	add_intel_to_database(intel)
+
 	return intel
 
 /datum/entity/intel
@@ -157,7 +100,7 @@ SUBSYSTEM_DEF(ipintel)
 	table_name = "intel"
 	field_types = list(
 		"ip" = DB_FIELDTYPE_STRING_SMALL,
-		"intel" = DB_FIELDTYPE_DECIMAL,
+		"intel" = DB_FIELDTYPE_INT,
 		"date" = DB_FIELDTYPE_DATE,
 	)
 
@@ -175,7 +118,7 @@ SUBSYSTEM_DEF(ipintel)
 		"date",
 	)
 
-/datum/controller/subsystem/ipintel/proc/add_intel_to_database(datum/ip_intel/intel)
+/datum/controller/subsystem/ipcheck/proc/add_intel_to_database(datum/ip_intel/intel)
 	set waitfor = FALSE //no need to make the client connection wait for this step.
 
 	WAIT_DB_READY
@@ -188,15 +131,15 @@ SUBSYSTEM_DEF(ipintel)
 	query.save()
 	query.detach()
 
-/datum/controller/subsystem/ipintel/proc/fetch_cached_ip_intel(address)
+/datum/controller/subsystem/ipcheck/proc/fetch_cached_ip_intel(address)
 	if(!SSentity_manager.ready)
 		return
 
-	var/ipintel_cache_length = CONFIG_GET(number/ipintel_cache_length)
+	var/ipcheck_cache_length = CONFIG_GET(number/ipcheck_cache_length)
 
 	var/filter
-	if(ipintel_cache_length > 1)
-		var/length_time = time2text(world.realtime - (ipintel_cache_length * 24 HOURS), "YYYY-MM-DD hh:mm:ss")
+	if(ipcheck_cache_length > 1)
+		var/length_time = time2text(world.realtime - (ipcheck_cache_length * 24 HOURS), "YYYY-MM-DD hh:mm:ss")
 		filter = DB_AND(
 			DB_COMP("ip", DB_EQUALS, address),
 			DB_COMP("date", DB_GREATER, length_time)
@@ -211,17 +154,16 @@ SUBSYSTEM_DEF(ipintel)
 	var/datum/view_record/intel/report = reports[1]
 
 	var/datum/ip_intel/intel = new
-	intel.query_status = "cached"
 	intel.result = report.intel
 	intel.date = report.date
 	intel.address = address
 	return TRUE
 
-/datum/controller/subsystem/ipintel/proc/is_exempt(client/player)
+/datum/controller/subsystem/ipcheck/proc/is_exempt(client/player)
 	if(player.admin_holder)
 		return TRUE
 
-	var/exempt_living_playtime = CONFIG_GET(number/ipintel_exempt_playtime_living)
+	var/exempt_living_playtime = CONFIG_GET(number/ipcheck_exempt_playtime_living)
 	if(exempt_living_playtime > 0)
 		var/living_minutes = player.get_total_xeno_playtime() + player.get_total_human_playtime()
 		if(living_minutes >= exempt_living_playtime)
@@ -255,11 +197,11 @@ SUBSYSTEM_DEF(ipintel)
 		"admin_ckey",
 	)
 
-/datum/controller/subsystem/ipintel/proc/is_whitelisted(ckey)
+/datum/controller/subsystem/ipcheck/proc/is_whitelisted(ckey)
 	var/list/datum/view/vpn_whitelist/whitelists = DB_VIEW(/datum/view/vpn_whitelist, DB_COMP("ckey", DB_EQUALS, ckey))
 	return !!length(whitelists)
 
-/client/proc/ipintel_allow()
+/client/proc/ipcheck_allow()
 	set name = "Whitelist Player VPN"
 	set desc = "Allow a player to connect even if they are using a VPN."
 	set category = "Admin.VPN"
@@ -271,9 +213,9 @@ SUBSYSTEM_DEF(ipintel)
 	if(!whitelist_ckey)
 		return
 
-	if (!SSipintel.is_enabled())
-		to_chat(src, "The ipintel system is not currently enabled but you can still edit the whitelists")
-	if(SSipintel.is_whitelisted(whitelist_ckey))
+	if (!SSipcheck.is_enabled())
+		to_chat(src, "The ipcheck system is not currently enabled but you can still edit the whitelists")
+	if(SSipcheck.is_whitelisted(whitelist_ckey))
 		to_chat(src, "Player is already whitelisted.")
 		return
 
@@ -284,9 +226,9 @@ SUBSYSTEM_DEF(ipintel)
 	whitelist.save()
 	whitelist.sync()
 
-	message_admins("IPINTEL: [key_name_admin(src)] has whitelisted '[whitelist_ckey]'")
+	message_admins("IPCHECK: [key_name_admin(src)] has whitelisted '[whitelist_ckey]'")
 
-/client/proc/ipintel_revoke()
+/client/proc/ipcheck_revoke()
 	set name = "Dewhitelist Player VPN"
 	set desc = "Revoke a player's VPN whitelist."
 	set category = "Admin.VPN"
@@ -299,9 +241,9 @@ SUBSYSTEM_DEF(ipintel)
 		return
 
 
-	if (!SSipintel.is_enabled())
-		to_chat(src, "The ipintel system is not currently enabled but you can still edit the whitelists")
-	if(!SSipintel.is_whitelisted(dewhitelist_ckey))
+	if (!SSipcheck.is_enabled())
+		to_chat(src, "The ipcheck system is not currently enabled but you can still edit the whitelists")
+	if(!SSipcheck.is_whitelisted(dewhitelist_ckey))
 		to_chat(src, "Player is not whitelisted.")
 		return
 
@@ -314,40 +256,63 @@ SUBSYSTEM_DEF(ipintel)
 		var/datum/entity/vpn_whitelist/db_whitelist = DB_ENTITY(/datum/entity/vpn_whitelist, whitelist.id)
 		db_whitelist.delete()
 
-	message_admins("IPINTEL: [key_name_admin(src)] has revoked the VPN whitelist for '[dewhitelist_ckey]'")
+	message_admins("IPCHECK: [key_name_admin(src)] has revoked the VPN whitelist for '[dewhitelist_ckey]'")
 
-/client/proc/check_ip_intel()
-	var/intel_state = SSipintel.get_address_intel_state(address)
-	var/reject_bad_intel = CONFIG_GET(flag/ipintel_reject_bad)
-	var/reject_unknown_intel = CONFIG_GET(flag/ipintel_reject_unknown)
-	var/reject_rate_limited = CONFIG_GET(flag/ipintel_reject_rate_limited)
+/client/proc/check_ip_vpn()
+	if(!SSipcheck.is_enabled(src))
+		return
+
+	if(SSipcheck.is_exempt(src) || SSipcheck.is_whitelisted(src))
+		return
+
+	var/static/queries_today
+	if(isnull(queries_today))
+		var/list/datum/view_record/intel/intels = DB_VIEW(/datum/view_record/intel, DB_COMP("date", DB_GREATER, time2text(world.realtime - 24 HOURS, "YYYY-MM-DD hh:mm:ss")))
+		queries_today = length(intels)
+
+	var/day_limit = CONFIG_GET(number/ipcheck_rate_day)
+
+	if(queries_today == day_limit)
+		message_admins("IPCheck has been disabled due to exceeding the day ratelimit.")
+		queries_today++
+		return
+
+	if(queries_today > day_limit)
+		return
+
+	var/intel_state = SSipcheck.get_address_intel_state(address)
+	queries_today++
+
+	var/reject_bad_intel = CONFIG_GET(flag/ipcheck_reject_bad)
+	var/reject_unknown_intel = CONFIG_GET(flag/ipcheck_reject_unknown)
+	var/reject_rate_limited = CONFIG_GET(flag/ipcheck_reject_rate_limited)
 
 	var/connection_rejected = FALSE
-	var/datum/ip_intel/intel = SSipintel.cached_queries[address]
+	var/datum/ip_intel/intel = SSipcheck.cached_queries[address]
 	switch(intel_state)
-		if(IPINTEL_BAD_IP)
-			log_access("IPINTEL: [ckey] was flagged as a VPN with [intel.result * 100]% likelihood.")
+		if(IPCHECK_BAD_IP)
+			log_access("IPCHECK: [ckey] was flagged as a VPN.")
 			if(reject_bad_intel)
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection has been detected as a VPN."))
 				connection_rejected = TRUE
 			else
-				message_admins("IPINTEL: [key_name_admin(src)] has been flagged as a VPN with [intel.result * 100]% likelihood.")
+				message_admins("IPCHECK: [key_name_admin(src)] has been flagged as a VPN.")
 
-		if(IPINTEL_RATE_LIMITED_DAY, IPINTEL_RATE_LIMITED_MINUTE)
-			log_access("IPINTEL: [ckey] was unable to be checked due to the rate limit.")
+		if(IPCHECK_RATE_LIMITED_DAY)
+			log_access("IPCHECK: [ckey] was unable to be checked due to the rate limit.")
 			if(reject_rate_limited)
 				to_chat_immediate(src, SPAN_BOLDNOTICE("New connections are not being allowed at this time."))
 				connection_rejected = TRUE
 			else
-				message_admins("IPINTEL: [key_name_admin(src)] was unable to be checked due to rate limiting.")
+				message_admins("IPCHECK: [key_name_admin(src)] was unable to be checked due to rate limiting.")
 
-		if(IPINTEL_UNKNOWN_INTERNAL_ERROR, IPINTEL_UNKNOWN_QUERY_ERROR)
-			log_access("IPINTEL: [ckey] unable to be checked due to an error.")
+		if(IPCHECK_UNKNOWN_INTERNAL_ERROR, IPCHECK_UNKNOWN_QUERY_ERROR)
+			log_access("IPCHECK: [ckey] unable to be checked due to an error.")
 			if(reject_unknown_intel)
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection cannot be processed at this time."))
 				connection_rejected = TRUE
 			else
-				message_admins("IPINTEL: [key_name_admin(src)] was unable to be checked due to an error.")
+				message_admins("IPCHECK: [key_name_admin(src)] was unable to be checked due to an error.")
 
 	if(!connection_rejected)
 		return
@@ -368,5 +333,4 @@ SUBSYSTEM_DEF(ipintel)
 	message_string += "."
 
 	to_chat_immediate(src, SPAN_USERDANGER(message_string))
-	qdel(src)
 	return TRUE

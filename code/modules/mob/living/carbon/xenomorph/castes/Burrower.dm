@@ -374,6 +374,10 @@
 		to_chat(xenomorph, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
 		return
 
+	if(locate(/obj/effect/tunnel_blocker) in xenomorph.loc)
+		to_chat(xenomorph, SPAN_XENOWARNING("We can't dig a tunnel with this object in the way."))
+		return
+
 	if(xenomorph.tunnel_delay)
 		to_chat(xenomorph, SPAN_XENOWARNING("We are not ready to dig a tunnel again."))
 		return

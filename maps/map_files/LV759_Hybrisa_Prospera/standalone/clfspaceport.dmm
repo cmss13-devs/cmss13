@@ -1831,7 +1831,7 @@
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "yH" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
+/obj/structure/prop/hybrisa/supermart/freezer/freezer4,
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/kitchen)
 "yN" = (

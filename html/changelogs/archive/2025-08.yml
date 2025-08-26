@@ -281,3 +281,15 @@
   - bugfix: A dead King no longer stomps on their enemies
   realforest2001:
   - rscadd: Added designated Forecon listing on the crew monitor.
+2025-08-26:
+  CeUvi:
+  - imageadd: resprited loadout headset
+  SirNightKnight:
+  - bugfix: fixed the right inhand sprite for the classic mortar being invisible.
+  - bugfix: fixed the right inhand sprite for OT shells being invisible.
+  Zenith, Crowford:
+  - imageadd: Replaces and tweaks most of the bayonet sprites, adds larger more consistent
+      ones for the TWE, UPP & Antique sprites.
+  realforest2001:
+  - bugfix: Fixes the inhand sprites for all three PKD revolvers to use their existing
+      placeholders.

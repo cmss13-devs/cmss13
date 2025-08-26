@@ -157,6 +157,8 @@ SUBSYSTEM_DEF(ipcheck)
 	intel.result = report.intel
 	intel.date = report.date
 	intel.address = address
+
+	cached_queries[address] = intel
 	return TRUE
 
 /datum/controller/subsystem/ipcheck/proc/is_exempt(client/player)

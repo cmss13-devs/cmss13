@@ -288,7 +288,6 @@ SUBSYSTEM_DEF(ipcheck)
 	var/reject_rate_limited = CONFIG_GET(flag/ipcheck_reject_rate_limited)
 
 	var/connection_rejected = FALSE
-	var/datum/ip_intel/intel = SSipcheck.cached_queries[address]
 	switch(intel_state)
 		if(IPCHECK_BAD_IP)
 			log_access("IPCHECK: [ckey] was flagged as a VPN.")

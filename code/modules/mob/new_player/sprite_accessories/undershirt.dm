@@ -9,21 +9,6 @@ GLOBAL_LIST_INIT_TYPED(undershirt_f, /datum/sprite_accessory/undershirt, setup_u
 			continue
 		if(undershirt_datum.camo_conforming)
 			undershirt_list["[undershirt_datum.name] (Camo Conforming)"] = undershirt_datum
-			var/datum/sprite_accessory/undershirt/classic_datum = new undershirt_type
-			classic_datum.generate_non_conforming("classic")
-			undershirt_list[classic_datum.name] = classic_datum
-			var/datum/sprite_accessory/undershirt/jungle_datum = new undershirt_type
-			jungle_datum.generate_non_conforming("jungle")
-			undershirt_list[jungle_datum.name] = jungle_datum
-			var/datum/sprite_accessory/undershirt/desert_datum = new undershirt_type
-			desert_datum.generate_non_conforming("desert")
-			undershirt_list[desert_datum.name] = desert_datum
-			var/datum/sprite_accessory/undershirt/snow_datum = new undershirt_type
-			snow_datum.generate_non_conforming("snow")
-			undershirt_list[snow_datum.name] = snow_datum
-			var/datum/sprite_accessory/undershirt/urban_datum = new undershirt_type
-			urban_datum.generate_non_conforming("urban")
-			undershirt_list[urban_datum.name] = urban_datum
 		else
 			undershirt_list[undershirt_datum.name] = undershirt_datum
 	return undershirt_list

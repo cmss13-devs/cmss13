@@ -32272,7 +32272,7 @@
 	},
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_x = -2;
-	pixel_y = 29
+	pixel_y = 23
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/mining)

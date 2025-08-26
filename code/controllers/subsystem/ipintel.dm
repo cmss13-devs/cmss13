@@ -125,7 +125,13 @@ SUBSYSTEM_DEF(ipintel)
 	request.prepare(RUSTG_HTTP_METHOD_GET, query)
 	request.execute_blocking()
 	var/datum/http_response/response = request.into_response()
-	var/list/data = json_decode(response.body)
+
+	var/list/data
+	try
+		data = json_decode(response.body)
+	catch
+		log_debug("IPINTEL: Error while decoding response. [response.body]")
+		return
 
 	var/datum/ip_intel/intel = new
 	intel.query_status = data["status"]

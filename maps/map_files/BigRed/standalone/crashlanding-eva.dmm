@@ -347,7 +347,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/general_offices)
 "bo" = (
-/obj/item/xeno_restraints,
+/obj/item/restraint/legcuffs/xeno_restraints,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/general_offices)
 "bp" = (

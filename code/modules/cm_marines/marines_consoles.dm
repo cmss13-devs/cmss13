@@ -961,17 +961,20 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 		if(FACTION_MARINE)
 			jobs = list(
 				// Note that jobs divisible by 10 are considered heads of staff, and bolded
-				// 00-09: High Command, defined at bottom
-				JOB_CMC = 00,//Grade O10
-				JOB_ACMC = 00,
-				JOB_PROVOST_CMARSHAL = 00,
-				JOB_GENERAL = 00,
-				JOB_PROVOST_SMARSHAL = 01,//Grade O9
-				JOB_PROVOST_MARSHAL = 02,//Grade O7
-				JOB_PROVOST_DMARSHAL = 03,//Grade O6
-				JOB_COLONEL = 04,//Grade O6
-				JOB_PROVOST_CINSPECTOR = 05,
-				JOB_PROVOST_INSPECTOR = 06,
+				// 0-9: High Command, defined at bottom
+				JOB_CMC = 0,//Grade O10
+				JOB_ACMC = 0,
+				JOB_PROVOST_CMARSHAL = 0,
+				JOB_GENERAL = 0,
+				JOB_PROVOST_SMARSHAL = 1,//Grade O9
+				JOB_PROVOST_MARSHAL = 2,//Grade O7
+				JOB_PROVOST_DMARSHAL = 3,//Grade O6
+				JOB_COLONEL = 4,//Grade O6
+				JOB_PROVOST_CINSPECTOR = 5,
+				JOB_PROVOST_INSPECTOR = 6,
+				JOB_CIA_UACQS_COMR = 7,
+				JOB_CIA_UACQS_ADMN = 8,
+				JOB_CIA_UACQS_SEC = 9,
 				// 10-19: Command
 				JOB_CO = 10,
 				JOB_XO = 11,
@@ -986,7 +989,8 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_DROPSHIP_PILOT = 23,
 				JOB_DROPSHIP_CREW_CHIEF = 24,
 				JOB_INTEL = 25,
-				JOB_TANK_CREW = 26,
+				JOB_CIA_LIAISON = 26,
+				JOB_TANK_CREW = 27,
 				// 30-39: Security
 				JOB_CHIEF_POLICE = 30,
 				JOB_PROVOST_TML = 30,
@@ -1011,16 +1015,17 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_CHIEF_REQUISITION = 60,
 				JOB_CARGO_TECH = 61,
 				JOB_MESS_SERGEANT = 62,
-				// 70-139: SQUADS (look below)
+				// 70-149: SQUADS (look below)
 				JOB_SYNTH_K9 = 71,
-				// 140+: Civilian/other
-				JOB_CORPORATE_LIAISON = 140,
-				JOB_PASSENGER = 141,
+				// 150+: Civilian/other
+				JOB_CORPORATE_LIAISON = 150,
+				JOB_CIA = 151,
+				JOB_PASSENGER = 152,
 				// Non Almayer jobs lower then registered
-				JOB_SYNTH_SURVIVOR = 150,
-				JOB_SURVIVOR = 151,
-				JOB_COLONIST = 152,
-				JOB_WORKING_JOE = 153,
+				JOB_SYNTH_SURVIVOR = 160,
+				JOB_SURVIVOR = 161,
+				JOB_COLONIST = 162,
+				JOB_WORKING_JOE = 163,
 
 				// WO jobs
 				// 10-19: Command
@@ -1043,10 +1048,10 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 60-69: Cargo
 				JOB_WO_CHIEF_REQUISITION = 60,
 				JOB_WO_REQUISITION = 61,
-				// 70-139: SQUADS (look below)
-				// 140+: Civilian/other
-				JOB_WO_CORPORATE_LIAISON = 140,
-				JOB_WO_SYNTH = 150,
+				// 70-149: SQUADS (look below)
+				// 150+: Civilian/other
+				JOB_WO_CORPORATE_LIAISON = 150,
+				JOB_WO_SYNTH = 160,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,
@@ -1075,6 +1080,15 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				RAIDER_SL_SQUAD = 130,
 				JOB_MARINE_RAIDER = 131,
 				RAIDER_SQUAD = 131,
+
+				JOB_FORECON_CO = 140,
+				JOB_FORECON_SL = 140,
+				JOB_FORECON_SNIPER = 141,
+				JOB_FORECON_MARKSMAN = 142,
+				JOB_FORECON_SMARTGUNNER = 143,
+				JOB_FORECON_SUPPORT = 144,
+				JOB_FORECON_RIFLEMAN = 145,
+				JOB_FORECON_SYN = 146,
 			)
 			var/squad_number = 70
 			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")

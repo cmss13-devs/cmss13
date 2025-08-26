@@ -1,0 +1,4 @@
+author: "hry-gh"
+delete-after: True
+changes:
+  - bugfix: "fixes a runtime when people attempt to view the camera of a deleted marine"

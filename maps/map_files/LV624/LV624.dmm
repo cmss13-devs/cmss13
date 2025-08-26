@@ -47186,7 +47186,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1;
 	pixel_y = 11;
-	layer = s
+	layer = 3
 	},
 /obj/structure/barricade/handrail/strata{
 	dir = 1;

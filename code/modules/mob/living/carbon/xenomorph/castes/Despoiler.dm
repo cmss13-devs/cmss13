@@ -61,8 +61,8 @@
 	weed_food_states = list("Praetorian_1","Praetorian_2","Praetorian_3")
 	weed_food_states_flipped = list("Praetorian_1","Praetorian_2","Praetorian_3")
 
-	skull = /obj/item/skull/praetorian
-	pelt = /obj/item/pelt/praetorian
+	skull = /obj/item/skull/despoiler
+	pelt = /obj/item/pelt/despoiler
 
 
 /datum/action/xeno_action/onclick/corrosive_slash/use_ability(atom/targeted_atom)

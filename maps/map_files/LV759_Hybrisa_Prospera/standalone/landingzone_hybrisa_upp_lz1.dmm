@@ -366,7 +366,7 @@
 /obj/item/reagent_container/food/snacks/packaged_burger{
 	pixel_y = 11
 	},
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer5,
+/obj/structure/prop/hybrisa/supermart/freezer/freezer5,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/kitchen)
 "aW" = (
@@ -3131,8 +3131,8 @@
 /turf/open/floor/hybrisa/tile/cuppajoesfloor,
 /area/lv759/indoors/spaceport/cuppajoes)
 "qL" = (
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/open_shutters,
+/obj/structure/window/framed/hybrisa/spaceport,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "qM" = (
@@ -3839,7 +3839,7 @@
 /turf/open/floor/strata/floor3,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "uY" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4,
+/obj/structure/prop/hybrisa/supermart/freezer/freezer4,
 /turf/closed/wall/hybrisa/spaceport/reinforced,
 /area/lv759/indoors/spaceport/kitchen)
 "va" = (
@@ -3992,10 +3992,10 @@
 /turf/open/floor/strata/multi_tiles,
 /area/lv759/indoors/spaceport/docking_bay_1)
 "vM" = (
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
+/obj/structure/window/framed/hybrisa/spaceport,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/kitchen)
 "vN" = (
@@ -8062,7 +8062,7 @@
 /obj/structure/closet/crate/freezer/cooler{
 	layer = 5
 	},
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer6,
+/obj/structure/prop/hybrisa/supermart/freezer/freezer6,
 /turf/open/floor/corsat/officetiles,
 /area/lv759/indoors/spaceport/kitchen)
 "TG" = (
@@ -8456,10 +8456,10 @@
 /turf/open/shuttle/escapepod/floor1,
 /area/lv759/indoors/spaceport/engineering)
 "Wq" = (
-/obj/structure/window/framed/hybrisa/spaceport/reinforced,
 /obj/structure/machinery/door/poddoor/hybrisa/shutters{
 	dir = 8
 	},
+/obj/structure/window/framed/hybrisa/spaceport,
 /turf/open/floor/plating,
 /area/lv759/indoors/spaceport/hallway_east)
 "Ww" = (

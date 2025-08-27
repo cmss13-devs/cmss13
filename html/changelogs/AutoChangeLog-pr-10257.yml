@@ -1,4 +1,0 @@
-author: "jupyterkat"
-delete-after: True
-changes:
-  - bugfix: "fixed boiler being immune to crossing flames"

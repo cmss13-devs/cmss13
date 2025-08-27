@@ -49,7 +49,10 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 	if(active)
 		return
 	active = TRUE
-	var/duration = pick(5,10)
+	addtimer(CALLBACK(src, PROC_REF(set_off)), rand(0,59))
+
+/obj/effect/landmark/fog_marker/proc/set_off()
+	var/duration = rand(5,10)
 	smoke = new()
 	smoke.set_up(radius = 0, loca = loc,smoke_time = duration)
 	smoke.start()

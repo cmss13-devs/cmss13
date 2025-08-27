@@ -120,6 +120,10 @@
 		if(isdefenses(O))
 			var/obj/structure/machinery/defenses/TR = O
 			TR.earn_kill()
+		if(isgun(O))
+			var/obj/item/weapon/gun/gun_check = O
+			if(HAS_TRAIT(gun_check, GUN_GAME_TRAIT))
+				SEND_SIGNAL(gun_check, COMSIG_GUN_GAME_REGISTER)
 		var/mob/cause_mob = cause_data.resolve_mob()
 		if(cause_mob)
 			if(isyautja(cause_mob) && cause_mob.client && cause_mob != src)

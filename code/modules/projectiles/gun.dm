@@ -250,6 +250,44 @@
 	/// the icon for spinning the gun
 	var/temp_icon = null
 
+	//Default rifles that are pretty easy to kill with
+	var/gun_list_first = list(
+
+	/obj/item/weapon/gun/rifle/m41a/gun_game,
+	/obj/item/weapon/gun/rifle/mar40/gun_game,
+	/obj/item/weapon/gun/rifle/m41aMK1/gun_game,
+	)
+
+	//Rifles that arent as easy to get kills with
+	var/gun_list_second= list(
+	/obj/item/weapon/gun/rifle/lmg/gun_game,
+	/obj/item/weapon/gun/rifle/type71/gun_game,
+	/obj/item/weapon/gun/rifle/l42a/gun_game,
+	)
+
+	//Shotguns or things that arent as easy to get kills with
+	var/gun_list_third = list(
+	/obj/item/weapon/gun/lever_action/xm88/gun_game,
+	/obj/item/weapon/gun/shotgun/pump/m37a/gun_game,
+	/obj/item/weapon/gun/shotgun/double/mou53/gun_game,
+	)
+
+	//Things that are very situational to get kills with and pistols
+	var/gun_list_fourth = list(
+	/obj/item/weapon/gun/flamer/m240/gun_game,
+	/obj/item/weapon/gun/pistol/m4a3/m4a4/gun_game,
+	/obj/item/weapon/gun/pistol/heavy/gun_game,
+	)
+
+
+	var/final_list
+
+
+	var/finished_gun_list = list()
+
+	var/gun_game_phase
+
+	var/current_gun
 /**
  * An assoc list where the keys are fire delay group string defines
  * and the keys are when the guns of the group can be fired again
@@ -1071,10 +1109,12 @@ and you're good to go.
 		chambered = GLOB.ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
 	var/weapon_source_mob = null
+	var/weapon_that_shot = null
 	if(isliving(loc))
 		var/mob/M = loc
 		weapon_source_mob = M
-	var/obj/projectile/P = new projectile_type(src, create_cause_data(bullet_source, weapon_source_mob))
+		weapon_that_shot = src
+	var/obj/projectile/P = new projectile_type(src, create_cause_data(bullet_source, weapon_source_mob, weapon_that_shot))
 	P.generate_bullet(chambered, 0, NO_FLAGS)
 
 	return P

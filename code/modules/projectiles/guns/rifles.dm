@@ -39,6 +39,24 @@
 	cock(user)
 
 
+
+/obj/item/weapon/gun/rifle/gun_game_suprise_box
+	name = "Mystery Gun"
+	desc = "It's an infinite amount of guns...waiting for you to reach down and pick one. Uniuq-action to begin partaking in gun-game."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
+	icon_state = "suprise_box"
+
+	map_specific_decoration = FALSE
+	has_empty_icon = FALSE
+
+
+/obj/item/weapon/gun/rifle/gun_game_suprise_box/unique_action(mob/user)
+	. = ..()
+	src.start_gun_game()
+	qdel(src)
+
+
+
 //-------------------------------------------------------
 //M41A PULSE RIFLE
 

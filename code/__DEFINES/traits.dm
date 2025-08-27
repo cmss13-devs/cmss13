@@ -533,3 +533,5 @@ GLOBAL_LIST(trait_name_map)
 #define TURF_Z_TRANSPARENT_TRAIT "turf_z_transparent"
 /// traits from wall hiding
 #define WALL_HIDING_TRAIT "wallhiding"
+#define GUN_GAME_TRAIT "gun_game_trait"
+#define TRAIT_SOURCE_GUNGAME "t_g_game"

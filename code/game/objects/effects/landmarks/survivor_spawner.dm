@@ -326,6 +326,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/corporate/executive
+	CO_equipment = /datum/equipment_preset/survivor/corporate/executive
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are the last alive Executive of Lazarus Landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -337,6 +338,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon
+	CO_equipment = /datum/equipment_preset/survivor/goon/lead
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Officer!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -348,6 +350,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/medic
+	CO_equipment = /datum/equipment_preset/survivor/goon/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Medic!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -359,6 +362,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/engineer
+	CO_equipment = /datum/equipment_preset/survivor/goon/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Technician!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -370,6 +374,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/lead
+	CO_equipment = /datum/equipment_preset/survivor/goon/lead
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Lead!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\

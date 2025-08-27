@@ -155,7 +155,7 @@
 
 	//Stop people hurling eachother up to the next floor. And back down.
 	if(istype(src, /mob/living/carbon/human))
-		var/turf/above = SSmapping.get_turf_above(src)
+		var/turf/above = SSmapping.get_turf_above(thrower)
 		if(above && above.z == target.z)
 			to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
 			return

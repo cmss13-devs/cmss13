@@ -357,10 +357,9 @@
 	var/list/unconscious_targets = list()
 
 	for(var/atom/movable/A in targets) // orange allows sentry to fire through gas and darkness
-		var/turf/target_turf = get_turf(A)
 		if(isliving(A))
 			var/mob/living/M = A
-			if(M.stat & DEAD || isbrain(M))
+			if(M.stat & DEAD)
 				if(A == target)
 					target = null
 				targets.Remove(A)
@@ -383,17 +382,17 @@
 			var/adj
 			switch(dir)
 				if(NORTH)
-					opp = x-target_turf.x
-					adj = target_turf.y-y
+					opp = x-A.x
+					adj = A.y-y
 				if(SOUTH)
-					opp = x-target_turf.x
-					adj = y-target_turf.y
+					opp = x-A.x
+					adj = y-A.y
 				if(EAST)
-					opp = y-target_turf.y
-					adj = target_turf.x-x
+					opp = y-A.y
+					adj = A.x-x
 				if(WEST)
-					opp = y-target_turf.y
-					adj = x-target_turf.x
+					opp = y-A.y
+					adj = x-A.x
 
 			var/r = 9999
 			if(adj != 0)
@@ -405,8 +404,8 @@
 				targets.Remove(A)
 				continue
 
-		var/list/turf/path = get_line(src, target_turf, include_start_atom = FALSE)
-		if(!length(path) || get_dist(src, target_turf) > sentry_range)
+		var/list/turf/path = get_line(src, A, include_start_atom = FALSE)
+		if(!length(path) || get_dist(src, A) > sentry_range)
 			if(A == target)
 				target = null
 			targets.Remove(A)

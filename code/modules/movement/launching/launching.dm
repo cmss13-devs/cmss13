@@ -154,10 +154,10 @@
 		return
 
 	//Stop people hurling eachother up to the next floor. And back down.
-	if(istype(target, /mob/living/carbon/human))
+	if(istype(src, /mob/living/carbon/human))
 		var/turf/above = SSmapping.get_turf_above(src)
-		if(above && above.z != thrower.z)
-			to_chat(thrower, SPAN_DANGER("You can't throw someone that high!"))
+		if(above && above.z == target.z)
+			to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
 			return
 
 	flags_atom |= NO_ZFALL

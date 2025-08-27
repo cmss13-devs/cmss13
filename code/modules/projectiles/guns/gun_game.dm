@@ -13,11 +13,9 @@
 
 	var/mob/living/carbon/human/shooter = gun_user
 
-	var/new_weapon
+	var/new_chosen_weapon
 	var/old_weapon = src
 	var/datum/next_weapon
-
-	var/current_phase
 
 	finished_gun_list += src
 
@@ -37,7 +35,7 @@
 	finished_gun_list += next_weapon
 
 	current_gun = old_weapon
-	new_weapon = next_weapon
+	new_chosen_weapon = next_weapon
 	qdel(old_weapon)
 
 	shooter.equip_to_slot_or_del(new next_weapon(shooter), WEAR_R_HAND)
@@ -61,13 +59,10 @@
 /obj/item/weapon/gun/rifle/l42a/gun_game/Initialize()
 	. = ..()
 
-
 	RegisterSignal(src, COMSIG_GUN_GAME_REGISTER, PROC_REF(move_onto_next_gun))
 	ADD_TRAIT(src, GUN_GAME_TRAIT, TRAIT_SOURCE_GUNGAME)
 	src.current_gun = src
 	src.gun_game_phase = 2
-
-
 
 /obj/item/weapon/gun/rifle/m41a/gun_game
 

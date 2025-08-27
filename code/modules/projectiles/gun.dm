@@ -279,7 +279,6 @@
 	/obj/item/weapon/gun/pistol/heavy/gun_game,
 	)
 
-
 	var/final_list
 
 
@@ -293,8 +292,6 @@
  * and the keys are when the guns of the group can be fired again
  */
 /mob/var/list/fire_delay_next_fire
-
-
 //----------------------------------------------------------
 				// \\
 				// NECESSARY PROCS  \\

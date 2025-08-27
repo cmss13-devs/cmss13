@@ -419,6 +419,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		attach_to(loc)
 
 /obj/item/phone/Destroy()
+	if(attached_to)
+		attached_to.hangup_loop.stop()
 	remove_attached()
 	return ..()
 

@@ -50,8 +50,6 @@
 
 
 /obj/item/weapon/gun/rifle/l42a/gun_game
-
-
 	starting_attachment_types = list(/obj/item/attachable/reddot, /obj/item/attachable/flashlight/grip, /obj/item/attachable/extended_barrel)
 
 /obj/item/weapon/gun/rifle/l42a/gun_game/Initialize()
@@ -64,9 +62,7 @@
 
 /obj/item/weapon/gun/rifle/m41a/gun_game
 
-
 	starting_attachment_types = list(/obj/item/attachable/reflex, /obj/item/attachable/angledgrip,)
-
 
 /obj/item/weapon/gun/rifle/m41a/gun_game/Initialize()
 
@@ -79,8 +75,6 @@
 
 /obj/item/weapon/gun/rifle/lmg/gun_game
 
-
-
 /obj/item/weapon/gun/rifle/lmg/gun_game/Initialize()
 	. = ..()
 
@@ -91,9 +85,7 @@
 	src.gun_game_phase = 2
 
 /obj/item/weapon/gun/rifle/m41aMK1/gun_game
-
 	starting_attachment_types = list(/obj/item/attachable/reflex)
-
 
 /obj/item/weapon/gun/rifle/m41aMK1/gun_game/Initialize()
 	. = ..()
@@ -116,7 +108,6 @@
 
 
 /obj/item/weapon/gun/rifle/type71/gun_game
-
 
 /obj/item/weapon/gun/rifle/type71/gun_game/Initialize()
 	. = ..()
@@ -165,7 +156,6 @@
 	RegisterSignal(src, COMSIG_GUN_GAME_REGISTER, PROC_REF(move_onto_next_gun))
 	ADD_TRAIT(src, GUN_GAME_TRAIT, TRAIT_SOURCE_GUNGAME)
 	src.current_gun = src
-
 
 
 /obj/item/weapon/gun/pistol/heavy/gun_game

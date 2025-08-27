@@ -1,0 +1,4 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - rscadd: "added spec icon for heavy armor spec"

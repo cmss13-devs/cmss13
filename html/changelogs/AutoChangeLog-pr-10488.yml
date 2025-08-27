@@ -1,4 +1,0 @@
-author: "Blue-Fox5"
-delete-after: True
-changes:
-  - bugfix: "cryotanks breaking no longer say \"The floor\""

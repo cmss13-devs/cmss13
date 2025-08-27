@@ -141,6 +141,11 @@
 	icon_state = "yellow"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
+/area/desert_dam/interior/dam_interior/south_tunnel_research
+	name = "Research Southern Tunnel"
+	icon_state = "purple"
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
 /area/desert_dam/interior/dam_interior/central_tunnel
 	name = "Engineering Central Road"
 	icon_state = "red"
@@ -163,6 +168,7 @@
 /area/desert_dam/interior/dam_interior/workshop
 	name = "Engineering Workshop"
 	icon_state = "purple"
+	ceiling = CEILING_METAL
 
 /area/desert_dam/interior/dam_interior/hanger
 	name = "Engineering Hangar"
@@ -173,6 +179,7 @@
 /area/desert_dam/interior/dam_interior/hanger/roof
 	name = "Engineering Hangar Roof"
 	icon_state = "hangar"
+	ceiling = CEILING_NONE
 
 /area/desert_dam/interior/dam_interior/hanger/waiting
 	name = "Engineering Hangar Gate"
@@ -185,10 +192,12 @@
 /area/desert_dam/interior/dam_interior/hangar_storage
 	name = "Engineering Hangar Storage"
 	icon_state = "storage"
+	ceiling = CEILING_METAL
 
 /area/desert_dam/interior/dam_interior/auxilary_tool_storage
 	name = "Engineering Auxiliary Tool Storage"
 	icon_state = "red"
+	ceiling = CEILING_METAL
 
 /area/desert_dam/interior/dam_interior/primary_tool_storage
 	name = "Engineering Primary Tool Storage"
@@ -209,10 +218,12 @@
 /area/desert_dam/interior/dam_interior/tech_storage
 	name = "Engineering Secure Tech Storage"
 	icon_state = "dark"
+	ceiling = CEILING_METAL
 
 /area/desert_dam/interior/dam_interior/break_room
 	name = "Engineering Breakroom"
 	icon_state = "yellow"
+	ceiling = CEILING_METAL
 
 /area/desert_dam/interior/dam_interior/disposals
 	name = "Engineering Disposals"
@@ -249,6 +260,7 @@
 /area/desert_dam/interior/dam_interior/garage
 	name = "Garage"
 	icon_state = "green"
+	ceiling = CEILING_METAL
 
 /area/desert_dam/interior/caves
 	name = "Caves"

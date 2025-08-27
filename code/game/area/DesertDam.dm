@@ -936,9 +936,10 @@
 
 	//ambience = list('sound/ambience/ambiatm1.ogg')
 
-/area/desert_dam/exterior/rock
+/area/desert_dam/exterior/rock //OOB
 	name = "Rock"
 	icon_state = "cave"
+	ceiling = CEILING_DEEP_UNDERGROUND
 
 /area/desert_dam/exterior/rock/level1
 	name = "Lower Rock"

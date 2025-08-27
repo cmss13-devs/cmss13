@@ -4678,6 +4678,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopleft"
 	},
+/obj/structure/bed/chair,
 /turf/open/floor/almayer/sterile_green_side/northeast,
 /area/almayer/medical/lower_medical_medbay)
 "akR" = (
@@ -48852,6 +48853,7 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopright"
 	},
+/obj/structure/bed/chair,
 /turf/open/floor/almayer/sterile_green_side/northwest,
 /area/almayer/medical/lower_medical_medbay)
 "gDX" = (
@@ -49793,6 +49795,9 @@
 	},
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomright"
+	},
+/obj/structure/bed/chair{
+	dir = 1
 	},
 /turf/open/floor/almayer/sterile_green_side/southwest,
 /area/almayer/medical/lower_medical_medbay)
@@ -67850,7 +67855,6 @@
 	icon_state = "triagedecaldir";
 	dir = 1
 	},
-/obj/structure/bed/chair,
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_medbay)
 "ooA" = (
@@ -90116,6 +90120,9 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottomleft"
 	},
+/obj/structure/bed/chair{
+	dir = 1
+	},
 /turf/open/floor/almayer/sterile_green_side/southeast,
 /area/almayer/medical/lower_medical_medbay)
 "wYY" = (
@@ -92033,9 +92040,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
-	},
-/obj/structure/bed/chair{
-	dir = 1
 	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/medical/lower_medical_medbay)
@@ -135254,7 +135258,7 @@ wXT
 cdA
 bcm
 bcm
-emC
+bcm
 emC
 mTL
 xFt

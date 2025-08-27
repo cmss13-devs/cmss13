@@ -6,7 +6,7 @@
 
 	var/getting_egg = FALSE
 
-/datum/action/xeno_action/onclick/set_hugger_reserve_reaperL
+/datum/action/xeno_action/onclick/set_hugger_reserve_reaper
 	name = "Set Hugger Reserve"
 	action_icon_state = "xeno_banish"
 

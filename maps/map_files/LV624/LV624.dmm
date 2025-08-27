@@ -1189,7 +1189,7 @@
 	icon_state = "p_stair_full";
 	dir = 8
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/caves/east_caves)
 "aec" = (
 /obj/structure/surface/table/woodentable/poor,
@@ -1787,7 +1787,7 @@
 	icon_state = "p_stair_full";
 	dir = 8
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/caves/east_caves)
 "afF" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
@@ -5940,7 +5940,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/caves/east_caves)
 "avs" = (
 /obj/effect/decal/hybrisa/trash{
@@ -7166,7 +7166,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/jungle/north_east_jungle)
 "aBj" = (
 /turf/open/gm/grass/grassmud/corner/south_west,
@@ -9355,7 +9355,7 @@
 	dir = 4;
 	icon_state = "p_stair_full"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/caves/east_caves)
 "aKk" = (
 /obj/structure/flora/jungle/plantbot1,
@@ -22384,13 +22384,6 @@
 "bDT" = (
 /turf/open/gm/dirt/brown/variant_2,
 /area/lv624/lazarus/crash_site)
-"bDV" = (
-/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
-	name = "\improper Strange Temple";
-	color = "#474D51"
-	},
-/turf/open/floor/sandstone/runed,
-/area/lv624/ground/caves/ancient_temple)
 "bDW" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 1;
@@ -33112,7 +33105,7 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/north{
 	color = "#34393C"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/caves/ancient_temple)
 "dvF" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
@@ -34259,7 +34252,7 @@
 /obj/structure/platform_decoration/stone/runed_sandstone/east{
 	color = "#34393C"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/caves/ancient_temple)
 "eHm" = (
 /obj/structure/machinery/light{
@@ -41176,7 +41169,7 @@
 /obj/structure/platform/stone/stair_cut/runed_sandstone_right{
 	color = "34393C"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/jungle/north_east_jungle)
 "mwB" = (
 /obj/structure/bed/chair/comfy/black{
@@ -45448,14 +45441,6 @@
 	},
 /turf/open/floor/almayer/orange2/north,
 /area/lv624/lazarus/engineering)
-"rmt" = (
-/obj/structure/stairs/perspective{
-	color = "#414449";
-	dir = 4;
-	icon_state = "p_stair_full"
-	},
-/turf/open/floor/whiteyellowfull/east,
-/area/lv624/ground/caves/ancient_temple)
 "rmG" = (
 /obj/structure/machinery/conveyor{
 	dir = 8;
@@ -45718,7 +45703,7 @@
 	icon_state = "p_stair_full";
 	dir = 8
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/jungle/north_east_jungle)
 "rCV" = (
 /turf/open/gm/grass/grass2,
@@ -47577,7 +47562,7 @@
 /obj/structure/platform/stone/stair_cut/runed_sandstone_left{
 	color = "34393C"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/caves/ancient_temple)
 "tIA" = (
 /obj/effect/decal/cleanable/blood{
@@ -49109,7 +49094,7 @@
 /obj/structure/platform/stone/stair_cut/runed_sandstone_left{
 	color = "34393C"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/jungle/north_east_jungle)
 "vBd" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -49299,7 +49284,7 @@
 /obj/structure/platform/stone/runed_sandstone{
 	color = "#34393C"
 	},
-/turf/open/floor/whiteyellowfull/east,
+/turf/open/hunter_temple,
 /area/lv624/ground/caves/ancient_temple)
 "vMC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -83934,9 +83919,9 @@ aeg
 bCu
 rZK
 eHl
-rmt
-rmt
-rmt
+bzj
+bzj
+bzj
 dvA
 fhC
 wjA
@@ -85069,7 +85054,7 @@ bPm
 sIH
 bPI
 uDw
-bDV
+bJC
 bvH
 bvH
 bvz
@@ -86441,11 +86426,11 @@ unp
 aeg
 aeg
 tIw
-rmt
-rmt
-rmt
-rmt
-rmt
+bzj
+bzj
+bzj
+bzj
+bzj
 vMA
 afS
 afS

@@ -70,8 +70,8 @@
 				kit = /obj/item/storage/mateba_case/captain/council
 			if(CO_GUN_DEAGLE)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
-			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
+			if(CO_GUN_M1911C)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/m1911/commander
 	switch(whitelist_level)
 		if(WHITELIST_COUNCIL)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)

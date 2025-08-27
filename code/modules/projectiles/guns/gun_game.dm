@@ -13,7 +13,6 @@
 
 	var/mob/living/carbon/human/shooter = gun_user
 
-	var/new_chosen_weapon
 	var/old_weapon = src
 	var/datum/next_weapon
 
@@ -35,7 +34,6 @@
 	finished_gun_list += next_weapon
 
 	current_gun = old_weapon
-	new_chosen_weapon = next_weapon
 	qdel(old_weapon)
 
 	shooter.equip_to_slot_or_del(new next_weapon(shooter), WEAR_R_HAND)

@@ -285,6 +285,7 @@ SUBSYSTEM_DEF(ipcheck)
 		log_access("IPCHECK: [ckey] unable to be checked due to ratelimiting.")
 		if(CONFIG_GET(flag/ipcheck_reject_rate_limited))
 			to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection cannot be processed at this time."))
+			qdel(src)
 			return TRUE
 		return
 

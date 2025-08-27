@@ -7696,6 +7696,19 @@
 /obj/structure/prop/server_equipment/laptop,
 /turf/open/floor/prison/darkyellow2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/server)
+"ayJ" = (
+/obj/effect/decal/sand_overlay/sand2/corner2,
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/item/stack/cable_coil/random{
+	pixel_x = -2;
+	pixel_y = -5
+	},
+/obj/item/tool/wirecutters{
+	pixel_x = 3;
+	pixel_y = 12
+	},
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/south_tunnel)
 "ayK" = (
 /turf/open/floor/prison/darkyellowcorners2/north,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/server)
@@ -14236,6 +14249,30 @@
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/dam_interior/hanger/control)
+"aTe" = (
+/obj/effect/decal/sand_overlay/sand2,
+/obj/item/tool/warning_cone{
+	pixel_x = -5;
+	pixel_y = 16
+	},
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"aTf" = (
+/obj/effect/decal/sand_overlay/sand2,
+/obj/structure/largecrate/random/barrel/black,
+/obj/item/clothing/head/hardhat/white{
+	pixel_x = -3;
+	pixel_y = 9
+	},
+/turf/open/asphalt/cement/cement4,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"aTg" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -6;
+	pixel_y = 1
+	},
+/turf/open/asphalt/cement/cement1,
+/area/desert_dam/interior/dam_interior/south_tunnel)
 "aTi" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -43803,6 +43840,11 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "mtd" = (
+/obj/structure/largecrate/empty/case,
+/obj/structure/prop/server_equipment/laptop/closed{
+	pixel_x = 2;
+	pixel_y = 3
+	},
 /turf/open/asphalt/cement/cement1,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "mte" = (
@@ -146005,7 +146047,7 @@ rDT
 xWm
 qaR
 qaR
-qaR
+hyg
 qaR
 qaR
 qaR
@@ -146237,9 +146279,9 @@ kmd
 kmd
 rDT
 czi
+aTg
 mtd
-mtd
-lIK
+ayJ
 qaR
 qaR
 qaR
@@ -146473,7 +146515,7 @@ lPd
 onm
 onm
 gjC
-kaH
+aTe
 qaR
 qaR
 qaR
@@ -146707,7 +146749,7 @@ wdm
 cSi
 ayf
 rDT
-kaH
+aTf
 qaR
 qaR
 qaR

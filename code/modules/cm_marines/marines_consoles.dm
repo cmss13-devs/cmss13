@@ -1015,17 +1015,17 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_CHIEF_REQUISITION = 60,
 				JOB_CARGO_TECH = 61,
 				JOB_MESS_SERGEANT = 62,
-				// 70-139: SQUADS (look below)
+				// 70-149: SQUADS (look below)
 				JOB_SYNTH_K9 = 71,
-				// 140+: Civilian/other
-				JOB_CORPORATE_LIAISON = 140,
-				JOB_CIA = 141,
-				JOB_PASSENGER = 142,
+				// 150+: Civilian/other
+				JOB_CORPORATE_LIAISON = 150,
+				JOB_CIA = 151,
+				JOB_PASSENGER = 152,
 				// Non Almayer jobs lower then registered
-				JOB_SYNTH_SURVIVOR = 150,
-				JOB_SURVIVOR = 151,
-				JOB_COLONIST = 152,
-				JOB_WORKING_JOE = 153,
+				JOB_SYNTH_SURVIVOR = 160,
+				JOB_SURVIVOR = 161,
+				JOB_COLONIST = 162,
+				JOB_WORKING_JOE = 163,
 
 				// WO jobs
 				// 10-19: Command
@@ -1048,10 +1048,10 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 60-69: Cargo
 				JOB_WO_CHIEF_REQUISITION = 60,
 				JOB_WO_REQUISITION = 61,
-				// 70-139: SQUADS (look below)
-				// 140+: Civilian/other
-				JOB_WO_CORPORATE_LIAISON = 140,
-				JOB_WO_SYNTH = 150,
+				// 70-149: SQUADS (look below)
+				// 150+: Civilian/other
+				JOB_WO_CORPORATE_LIAISON = 150,
+				JOB_WO_SYNTH = 160,
 
 				// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
 				JOB_STOWAWAY = 999,
@@ -1080,6 +1080,15 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				RAIDER_SL_SQUAD = 130,
 				JOB_MARINE_RAIDER = 131,
 				RAIDER_SQUAD = 131,
+
+				JOB_FORECON_CO = 140,
+				JOB_FORECON_SL = 140,
+				JOB_FORECON_SNIPER = 141,
+				JOB_FORECON_MARKSMAN = 142,
+				JOB_FORECON_SMARTGUNNER = 143,
+				JOB_FORECON_SUPPORT = 144,
+				JOB_FORECON_RIFLEMAN = 145,
+				JOB_FORECON_SYN = 146,
 			)
 			var/squad_number = 70
 			for(var/squad_name in GLOB.ROLES_SQUAD_ALL + "")

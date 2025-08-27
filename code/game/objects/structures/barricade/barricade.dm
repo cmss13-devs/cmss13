@@ -233,6 +233,7 @@
 	if(istype(item, /obj/item/weapon/zombie_claws))
 		user.visible_message(SPAN_DANGER("The zombie smashed at the [src.barricade_type] barricade!"),
 		SPAN_DANGER("You smack the [src.barricade_type] barricade!"))
+		. = ..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 35, 1)
 		hit_barricade(item)

@@ -33,6 +33,48 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
 	item_state_slots = list(WEAR_JACKET = "cmb_light_armor")
 
+/obj/item/clothing/suit/storage/marine/sof/grs/smartgun
+	name = "\improper GRS heavy armor"
+	desc = "A dark set of heavy armor, which is a modification of the Armat Systems M3 armor. It has an eagle sigil emblazoned on the shoulders. This is designed to hold a smartgun system."
+	icon_state = "cmb_heavy_armor"
+	item_state_slots = list(WEAR_JACKET = "cmb_heavy_armor")
+	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
+	. = ..()
+
+	if(equipping_mob.back && !(equipping_mob.back.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE))
+		if(!disable_warning)
+			to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] while wearing a backpack."))
+		return FALSE
+
+/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/equipped(mob/user, slot, silent)
+	. = ..()
+
+	if(slot == WEAR_JACKET)
+		RegisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP, PROC_REF(check_equipping))
+
+/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/proc/check_equipping(mob/living/carbon/human/equipping_human, obj/item/equipping_item, slot)
+	SIGNAL_HANDLER
+
+	if(slot != WEAR_BACK)
+		return
+
+	if(equipping_item.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE)
+		return
+
+	. = COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP
+
+	if(equipping_item.flags_equip_slot == SLOT_BACK)
+		to_chat(equipping_human, SPAN_WARNING("You can't equip [equipping_item] on your back while wearing [src]."))
+		return
+
+/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/unequipped(mob/user, slot)
+	. = ..()
+
+	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
+
 //=============================//GENERIC FACTIONAL ARMOR ITEM\\==================================\\
 //=======================================================================\\
 

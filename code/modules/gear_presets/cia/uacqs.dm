@@ -4,7 +4,7 @@
 	name = "CIA Agent (UACQS Administrator)"
 	job_title = JOB_CIA_UACQS_ADMN
 	assignment = JOB_CIA_UACQS_ADMN
-	paygrades = list(PAY_SHORT_CADMIN = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CIA_ADM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "UACQS"
 	minimap_icon = "uacqs"
 	minimap_background = "background_ua"
@@ -51,7 +51,7 @@
 	name = "CIA Senior Agent (UACQS Commissioner)"
 	job_title = JOB_CIA_UACQS_COMR
 	assignment = JOB_CIA_UACQS_COMR
-	paygrades = list(PAY_SHORT_COM = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CIA_COM = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "uacqs_c"
 	idtype = /obj/item/card/id/adaptive/silver
 	skills = /datum/skills/cia/field_agent/senior
@@ -69,7 +69,7 @@
 	name = "CIA Agent (UACQS Security)"
 	job_title = JOB_CIA_UACQS_SEC
 	assignment = JOB_CIA_UACQS_SEC
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CIA_O = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "uacqs_s"
 
 /datum/equipment_preset/cia/uacqs/security/load_gear(mob/living/carbon/human/new_human, client/mob_client)

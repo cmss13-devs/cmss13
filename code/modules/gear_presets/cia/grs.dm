@@ -30,7 +30,7 @@
 
 /datum/equipment_preset/cia_global_response/standard
 	name = JOB_CIA_GRS_OPR
-	paygrades = list(PAY_SHORT_EFL_S = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_GRS_OPR = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_CIA_GRS_OPR
@@ -52,7 +52,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/tactical, WEAR_J_STORE)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/black/m16/ap, WEAR_WAIST)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)//CIA DONE
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/upp, WEAR_L_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/full, WEAR_L_STORE)
 	//backpack and stuff in it
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
@@ -65,7 +65,7 @@
 
 /datum/equipment_preset/cia_global_response/heavy
 	name = JOB_CIA_GRS_HVY
-	paygrades = list(PAY_SHORT_EFL_H = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_GRS_HVY = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_CIA_GRS_HVY
@@ -80,30 +80,29 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife, WEAR_FEET)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc/grs, WEAR_BODY)//CIA DONE
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof/grs, WEAR_JACKET)//CIA DONE
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof/grs/smartgun, WEAR_JACKET)//CIA DONE
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof/grs, WEAR_HEAD)//CIA DONE
 	//storage items
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/heavy, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/smartgunner/full, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)//CIA DONE
 	//backpack and stuff in it
-	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)//CIA DONE
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(new_human), WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun(new_human), WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner, WEAR_BACK)//CIA DONE
 	//gun
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/minigun(new_human), WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/co(new_human), WEAR_J_STORE)
 
 
 //*****************************************************************************************************/
 /datum/equipment_preset/cia_global_response/engineer
 	name = JOB_CIA_GRS_ENG
-	paygrades = list(PAY_SHORT_EFL_E = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_GRS_ENG = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_CIA_GRS_ENG
@@ -145,7 +144,7 @@
 
 /datum/equipment_preset/cia_global_response/medic
 	name = JOB_CIA_GRS_MED
-	paygrades = list(PAY_SHORT_EFL_M = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_GRS_MED = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_CIA_GRS_MED
@@ -188,7 +187,7 @@
 
 /datum/equipment_preset/cia_global_response/leader
 	name = JOB_CIA_GRS_TL
-	paygrades = list(PAY_SHORT_EFL_TL = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_GRS_TL = JOB_PLAYTIME_TIER_0)
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_CIA_GRS_TL
@@ -216,7 +215,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/upp, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/strong, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_IN_BACK)

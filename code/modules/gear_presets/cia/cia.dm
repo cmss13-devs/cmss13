@@ -10,7 +10,7 @@
 	languages = ALL_HUMAN_LANGUAGES
 	faction = FACTION_MARINE
 
-	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CIA_IA = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"
 	minimap_background = "background_civillian"
 	minimap_icon = "cia_ia"

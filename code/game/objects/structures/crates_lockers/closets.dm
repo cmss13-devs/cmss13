@@ -37,7 +37,6 @@
 	flags_atom |= USES_HEARING
 
 /obj/structure/closet/Destroy()
-	dump_contents()
 	GLOB.closet_list -= src
 	return ..()
 
@@ -191,6 +190,10 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
 			deconstruct(FALSE)
+
+/obj/structure/closet/deconstruct(disassembled = TRUE)
+	dump_contents()
+	return ..()
 
 /obj/structure/closet/proc/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	SIGNAL_HANDLER

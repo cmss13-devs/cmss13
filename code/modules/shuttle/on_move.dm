@@ -23,9 +23,6 @@ All ShuttleMove procs go here
 // var/shuttle_dir = shuttle.dir
 	for(var/i in contents)
 		var/atom/movable/thing = i
-		if(istype(thing, /obj/structure/closet))
-			for(var/j in thing.contents)
-				shuttleCrushThing(j, shuttle)
 		shuttleCrushThing(thing, shuttle)
 
 /turf/proc/shuttleCrushThing(atom/movable/thing, obj/docking_port/mobile/shuttle)

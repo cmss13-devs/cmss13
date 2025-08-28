@@ -66,7 +66,13 @@
 	prefix = "TechOp."
 	pay_multiplier = 3
 
-/datum/paygrade/cia/grs/engie
+/datum/paygrade/cia/grs/heavy
+	paygrade = PAY_SHORT_GRS_HVY
+	name = "Heavy Operator"
+	prefix = "HvyOp."
+	pay_multiplier = 3.3
+
+/datum/paygrade/cia/grs/leader
 	paygrade = PAY_SHORT_GRS_TL
 	name = "Team Leader"
 	prefix = "TL."

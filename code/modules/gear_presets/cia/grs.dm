@@ -94,7 +94,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)//CIA DONE
 	//backpack and stuff in it
-	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner, WEAR_BACK)//CIA DONE
+	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner/full, WEAR_BACK)//CIA DONE
 	//gun
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/co(new_human), WEAR_J_STORE)
 

@@ -636,6 +636,7 @@
 #define XENO_STRUCTURE_CORE  "hive core"
 #define XENO_STRUCTURE_CLUSTER   "hive cluster"
 #define XENO_STRUCTURE_PYLON "hive pylon"
+#define XENO_STRUCTURE_PYLON_ANTIAIR "spore pylon"
 #define XENO_STRUCTURE_EGGMORPH  "egg morpher"
 #define XENO_STRUCTURE_RECOVERY  "recovery node"
 #define XENO_STRUCTURE_PLASMA_TREE "plasma tree"

@@ -1,12 +1,18 @@
 import { useBackend } from 'tgui/backend';
-import { Box, Stack } from 'tgui/components';
+import { Box, Icon, Stack } from 'tgui/components';
 
 import type { DropshipEquipment } from '../DropshipWeaponsConsole';
 import { MfdPanel, type MfdProps } from './MultifunctionDisplay';
 import { mfdState, useEquipmentState } from './stateManagers';
 import type { EquipmentContext, SentrySpec } from './types';
+import { useSupportCooldown } from './WeaponPanel';
 
-const SentryPanel = (props: DropshipEquipment) => {
+const SentryPanel = (
+  props: DropshipEquipment & {
+    readonly isOnCooldown?: boolean;
+    readonly remainingTime?: number;
+  },
+) => {
   const sentryData = props.data as SentrySpec;
   return (
     <Stack>
@@ -18,6 +24,14 @@ const SentryPanel = (props: DropshipEquipment) => {
           <Stack.Item>
             <h3>{props.name}</h3>
           </Stack.Item>
+          {props.isOnCooldown && (
+            <Stack.Item>
+              <h3 style={{ color: '#ff8c00' }}>
+                <Icon name="clock" /> Deployment Cooldown: {props.remainingTime}
+                s
+              </h3>
+            </Stack.Item>
+          )}
           <Stack.Item>
             <h3>
               Health: {sentryData.health} / {sentryData.health_max}
@@ -66,6 +80,11 @@ export const SentryMfdPanel = (props: MfdProps) => {
   const sentry = data.equipment_data.find(
     (x) => x.mount_point === equipmentState,
   );
+
+  const { isOnCooldown, remainingTime } = useSupportCooldown(
+    (sentry as any) || {},
+  );
+
   const deployLabel =
     (sentry?.data?.deployed ?? 0) === 1 ? 'RETRACT' : 'DEPLOY';
 
@@ -77,12 +96,16 @@ export const SentryMfdPanel = (props: MfdProps) => {
   return (
     <MfdPanel
       panelStateId={props.panelStateId}
+      color={props.color}
       topButtons={[
         { children: 'EQUIP', onClick: () => setPanelState('equipment') },
       ]}
       leftButtons={[
         {
-          children: deployLabel,
+          children: isOnCooldown
+            ? `${deployLabel} (${remainingTime}s)`
+            : deployLabel,
+          disabled: isOnCooldown,
           onClick: () =>
             act('deploy-equipment', { equipment_id: sentry?.mount_point }),
         },
@@ -105,7 +128,13 @@ export const SentryMfdPanel = (props: MfdProps) => {
       ]}
     >
       <Box className="NavigationMenu">
-        {sentry && <SentryPanel {...sentry} />}
+        {sentry && (
+          <SentryPanel
+            {...sentry}
+            isOnCooldown={isOnCooldown}
+            remainingTime={remainingTime}
+          />
+        )}
       </Box>
     </MfdPanel>
   );

@@ -93,3 +93,4 @@
 	// Remove this once effects have been ported to trait signals (blinded, dazed, etc)
 	if(stat != .)
 		handle_regular_hud_updates()
+		init_dropship_hud_overlays()

@@ -19963,15 +19963,6 @@
 /obj/effect/alien/resin/sticky,
 /turf/open/floor/hybrisa/tile/green_bigtile/west,
 /area/navalis/indoors/residential/cafeteria)
-"blW" = (
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketempty{
-	density = 0
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#b7b8b2"
-	},
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/navalis/indoors/residential/kitchen)
 "bmd" = (
 /turf/open/floor/prison/whitegreenfull,
 /area/navalis/indoors/charon/below_deck/front)
@@ -26207,13 +26198,8 @@
 	icon_state = "E";
 	pixel_x = 2
 	},
-/obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped{
-	dir = 8;
-	pixel_y = 2;
-	pixel_x = 5;
-	desc = "A robotic arm used to assist in operating and repairing the internal mining equipment."
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/factory/robotic_arm/flipped,
 /turf/open/floor/almayer/plating,
 /area/navalis/oob/powered)
 "fMT" = (
@@ -28043,10 +28029,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/navalis/outdoors/exterior/log_ext/upper)
-"hek" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer2,
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/navalis/indoors/residential/kitchen)
 "heF" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/northwest,
 /area/navalis/indoors/command/upper_deck/port)
@@ -28259,10 +28241,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/xeno_growth)
-"hmE" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer3,
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/navalis/indoors/residential/kitchen)
 "hmK" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 1;
@@ -31282,13 +31260,6 @@
 "jGW" = (
 /turf/open/floor/hybrisa/carpet/rug_colorable/black/east,
 /area/navalis/indoors/residential/starboard)
-"jHf" = (
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketoranges,
-/obj/structure/surface/table/reinforced/prison{
-	color = "#b7b8b2"
-	},
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/navalis/indoors/residential/kitchen)
 "jHm" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/coffeecup{
@@ -33428,16 +33399,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison/darkbrown3/southwest,
 /area/navalis/indoors/logistic/upper_deck/workshop)
-"lpI" = (
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketpears{
-	pixel_x = 2;
-	density = 0
-	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#b7b8b2"
-	},
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/navalis/indoors/residential/kitchen)
 "lpP" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -35227,12 +35188,8 @@
 	icon_state = "W";
 	pixel_x = -1
 	},
-/obj/structure/prop/hybrisa/Factory/Robotic_arm{
-	level = 5;
-	pixel_x = -15;
-	desc = "A robotic arm used to assist in operating and repairing the internal mining equipment."
-	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/factory/robotic_arm,
 /turf/open/floor/almayer/plating,
 /area/navalis/oob/powered)
 "mHC" = (
@@ -35696,13 +35653,6 @@
 	},
 /turf/open/floor/prison,
 /area/navalis/indoors/med_sci/upper_level/on_duty)
-"nac" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#b7b8b2"
-	},
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketmelons,
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/navalis/indoors/residential/kitchen)
 "naP" = (
 /turf/open/floor/roof_weedable/outerhull_dir/north,
 /area/navalis/outdoors/exterior/com_ext/upper)
@@ -41356,13 +41306,6 @@
 /obj/structure/prop/hybrisa/misc/fake/heavydutywire/heavy2,
 /turf/open/floor/corsat,
 /area/navalis/indoors/med_sci/maintenance_starboard)
-"rfD" = (
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots,
-/obj/structure/surface/table/reinforced/prison{
-	color = "#b7b8b2"
-	},
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/navalis/indoors/residential/kitchen)
 "rfX" = (
 /turf/open/floor/prison/darkbrown3/east,
 /area/navalis/indoors/logistic/mech_bay)
@@ -43632,12 +43575,6 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/navalis/outdoors/landing_zone_2)
-"sSs" = (
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer1{
-	density = 0
-	},
-/turf/open/floor/hybrisa/tile/tilewhitecheckered,
-/area/navalis/indoors/residential/kitchen)
 "sSx" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/medium,
@@ -45091,10 +45028,6 @@
 "tWB" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
-	},
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketpears{
-	pixel_x = -3;
-	density = 0
 	},
 /turf/open/floor/prison,
 /area/navalis/indoors/med_sci/upper_level/on_duty)
@@ -48990,7 +48923,6 @@
 /turf/open/floor/prison/bright_clean2/southwest,
 /area/navalis/indoors/med_sci/science_lower_entrance)
 "wPY" = (
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples,
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
@@ -163168,12 +163100,12 @@ goW
 aqZ
 arL
 aGM
-blW
-nac
-lpI
+wPY
+wPY
+wPY
 asz
-jHf
-rfD
+wPY
+wPY
 wPY
 aGJ
 cNj
@@ -164152,12 +164084,12 @@ arK
 arL
 aiM
 aGM
-sSs
-hmE
-hmE
-hmE
-hmE
-hek
+asz
+asz
+asz
+asz
+asz
+asz
 asz
 aGJ
 arL

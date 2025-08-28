@@ -13,6 +13,16 @@
 /obj/structure/platform/stone/tyrargo/east,
 /turf/open/gm/river/desert/tyrargo/no_slowdown,
 /area/tyrargo/underground/bunker/ammo_dump_entrance)
+"aad" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/carrots,
+/turf/open/floor/strata/gray_multi_tiles,
+/area/tyrargo/indoors/market/ground)
+"aae" = (
+/obj/structure/surface/table/reinforced/cloth,
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket,
+/turf/open/floor/strata/green3,
+/area/tyrargo/indoors/market/ground)
 "aaj" = (
 /turf/open_space,
 /area/tyrargo/oob)
@@ -12130,7 +12140,7 @@
 /area/tyrargo/indoors/market/ground)
 "aER" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples,
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket,
 /turf/open/floor/strata/gray_multi_tiles,
 /area/tyrargo/indoors/market/ground)
 "aES" = (
@@ -12333,7 +12343,6 @@
 /area/tyrargo/indoors/market/ground)
 "aFp" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketempty,
 /turf/open/floor/strata/green4/east,
 /area/tyrargo/indoors/market/ground)
 "aFq" = (
@@ -12350,11 +12359,6 @@
 	},
 /turf/open/asphalt/cement/cement15,
 /area/tyrargo/outdoors/colony_streets/south_west)
-"aFr" = (
-/obj/structure/surface/table/reinforced/cloth,
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketoranges,
-/turf/open/floor/strata/green3,
-/area/tyrargo/indoors/market/ground)
 "aFs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/trash{
@@ -104636,7 +104640,7 @@
 /area/tyrargo/indoors/apartment/north_ground)
 "gHE" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples,
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/apples,
 /turf/open/floor/strata/green3/west,
 /area/tyrargo/indoors/market/ground)
 "gIK" = (
@@ -105709,7 +105713,7 @@
 /area/tyrargo/indoors/apartment/north_upper)
 "jcS" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots,
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/melons,
 /turf/open/floor/strata/gray_multi_tiles,
 /area/tyrargo/indoors/market/ground)
 "jez" = (
@@ -112026,7 +112030,7 @@
 /area/tyrargo/outdoors/colony_streets/south_west)
 "vgr" = (
 /obj/structure/surface/table/reinforced/cloth,
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketmelons,
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/oranges,
 /turf/open/floor/strata/green4/east,
 /area/tyrargo/indoors/market/ground)
 "vgu" = (
@@ -191658,8 +191662,8 @@ aSE
 chE
 chw
 dmi
-jcS
-aFr
+aad
+jBL
 cgT
 oHW
 cgB
@@ -192762,7 +192766,7 @@ aGA
 aGk
 aFW
 aFf
-jBL
+aae
 aav
 aFf
 aaz

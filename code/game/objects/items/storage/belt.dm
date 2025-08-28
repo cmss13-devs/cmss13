@@ -1914,6 +1914,22 @@
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
+/obj/item/storage/belt/gun/m39/mp5a6
+	name = "\improper M276 pattern MP5A6 holster rig"
+	desc = "Special issue variant of the M276 designed to holster a MP5A6 submachine gun and two spare magazines. Extremely rare and only issued on special request."
+	gun_has_gamemode_skin = FALSE
+	can_hold = list(
+		/obj/item/weapon/gun/smg/mp5/mp5a5/cia,
+		/obj/item/ammo_magazine/smg/mp5,
+		/obj/item/ammo_magazine/smg/mp5/ap,
+	)
+
+/obj/item/storage/belt/gun/m39/mp5a6/full/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/mp5/mp5a5/cia(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/mp5/ap(src)
+
+
 #define MAXIMUM_MAGAZINE_COUNT 2
 
 /obj/item/storage/belt/gun/m10

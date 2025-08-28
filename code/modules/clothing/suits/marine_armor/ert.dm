@@ -41,6 +41,16 @@
 	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
 	slowdown = SLOWDOWN_ARMOR_MEDIUM
 
+/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/Initialize(mapload)
+	. = ..()
+
+	pockets.bypass_w_limit = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/sniper,
+		/obj/item/ammo_magazine/smartgun,
+	)
+
 /obj/item/clothing/suit/storage/marine/sof/grs/smartgun/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
 	. = ..()
 

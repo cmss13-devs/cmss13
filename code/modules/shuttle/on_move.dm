@@ -29,37 +29,36 @@ All ShuttleMove procs go here
 		shuttleCrushThing(thing, shuttle)
 
 /turf/proc/shuttleCrushThing(atom/movable/thing, obj/docking_port/mobile/shuttle)
-	var/should_be_crushed = TRUE
+
 	SEND_SIGNAL(thing, COMSIG_MOVABLE_SHUTTLE_CRUSH, shuttle)
 	if(ismob(thing))
 		if(isliving(thing))
-			var/mob/living/M = thing
-			if(M.buckled)
-				M.buckled.unbuckle()//M, TRUE)
-			if(M.pulledby)
-				M.pulledby.stop_pulling()
-			M.stop_pulling()
-			M.visible_message(SPAN_WARNING("[shuttle] slams into [M]!"))
-			M.gib()
+			var/mob/living/living_thing = thing
+			if(living_thing.buckled)
+				living_thing.buckled.unbuckle()
+			if(living_thing.pulledby)
+				living_thing.pulledby.stop_pulling()
+			living_thing.stop_pulling()
+			living_thing.visible_message(SPAN_WARNING("[shuttle] slams into [living_thing]!"))
+			living_thing.gib()
 
 	else //non-living mobs shouldn't be affected by shuttles, which is why this is an else
 		if(thing.anchored)
 			// Ordered by most likely:
 			if(istype(thing, /obj/structure/machinery/landinglight))
-				should_be_crushed = FALSE
+				return
 			if(istype(thing, /obj/docking_port))
-				should_be_crushed = FALSE
+				return
 			if(istype(thing, /obj/structure/machinery/camera))
-				should_be_crushed = FALSE
+				return
 			if(istype(thing, /obj/structure/machinery/floodlight/landing/floor))
-				should_be_crushed = FALSE
+				return
 
 			// SSshuttle also removes these in remove_ripples, but its timing is weird
 			if(!istype(thing, /obj/effect))
 				log_debug("[shuttle] deleted an anchored [thing]")
 
-		if(should_be_crushed)
-			qdel(thing)
+		qdel(thing)
 
 
 // Called on the old turf to move the turf data

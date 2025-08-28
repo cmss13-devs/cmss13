@@ -267,19 +267,21 @@ SUBSYSTEM_DEF(ipcheck)
 	var/connection_rejected = FALSE
 	switch(intel_state)
 		if(IPCHECK_BAD_IP)
-			log_access("IPCHECK: [ckey] was flagged as a VPN.")
 			if(CONFIG_GET(flag/ipcheck_reject_bad))
+				log_access("IPCHECK: [ckey] ([address]) was flagged as a VPN and disconnected.")
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection has been detected as a VPN."))
 				connection_rejected = TRUE
 			else
+				log_access("IPCHECK: [ckey] ([address]) was flagged as a VPN and allowed to connect.")
 				message_admins("IPCHECK: [key_name_admin(src)] has been flagged as a VPN.")
 
 		if(IPCHECK_UNKNOWN_INTERNAL_ERROR)
-			log_access("IPCHECK: [ckey] unable to be checked due to an error.")
 			if(CONFIG_GET(flag/ipcheck_reject_unknown))
+				log_access("IPCHECK: [ckey] ([address]) unable to be checked due to an error and disconnected.")
 				to_chat_immediate(src, SPAN_BOLDNOTICE("Your connection cannot be processed at this time."))
 				connection_rejected = TRUE
 			else
+				log_access("IPCHECK: [ckey] ([address]) unable to be checked due to an error and was allowed to connect.")
 				message_admins("IPCHECK: [key_name_admin(src)] was unable to be checked due to an error.")
 
 	if(!connection_rejected)

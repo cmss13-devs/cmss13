@@ -90,7 +90,7 @@
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof/grs, WEAR_HEAD)//CIA DONE
 	//storage items
-	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/smartgunner/full, WEAR_WAIST)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/smartgunner/full/black, WEAR_WAIST)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/pressurized_reagent_canister/oxycodone, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)//CIA DONE
 	//backpack and stuff in it

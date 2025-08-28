@@ -191,6 +191,7 @@
 
 		list("RADIO KEYS", 0, null, null, null),
 		list("Radio Key: CIA", 10, /obj/item/device/encryptionkey/cia, "white", "Radio Key for CIA communications."),
+		list("Radio Key: USCM Senior Command", 20, /obj/item/device/encryptionkey/cmpcom/cdrcom, "white", "Radio Key for USCM communications."),
 		list("Radio Key: Colonial Marshals", 20, /obj/item/device/encryptionkey/cmb, "white", "Radio Key for the CMB."),
 		list("Radio Key: Weyland-Yutani", 20, /obj/item/device/encryptionkey/WY, "white", "Radio Key for Weyland-Yutani."),
 		list("Radio Key: Colonial Liberation Front", 20, /obj/item/device/encryptionkey/clf, "white", "Radio Key for known local CLF frequencies."),

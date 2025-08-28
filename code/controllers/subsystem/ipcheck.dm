@@ -2,15 +2,6 @@ SUBSYSTEM_DEF(ipcheck)
 	name = "IPCheck"
 	flags = SS_NO_FIRE | SS_NO_INIT
 
-	/// The weakrefs of new clients we have to check against IPCheck
-	var/list/datum/weakref/to_check = list()
-
-	/// The number of queries we have submitted to IPCheck today
-	var/queries_today = 0
-
-	/// The threshold for probability to be considered a VPN and/or bad IP
-	var/probability_threshold
-
 	/// Cache for previously queried IP addresses and those stored in the database
 	var/list/datum/ip_intel/cached_queries = list()
 
@@ -19,16 +10,6 @@ SUBSYSTEM_DEF(ipcheck)
 	var/result
 	var/address
 	var/date
-
-/datum/controller/subsystem/ipcheck/OnConfigLoad()
-	var/list/fail_messages = list()
-
-	if(!length(CONFIG_GET(string/ipcheck_base)))
-		fail_messages += "Invalid query base"
-
-	if(length(fail_messages))
-		message_admins("IPCheck: Initialization failed check logs!")
-		log_debug("IPCheck is not enabled because the configs are not valid: [jointext(fail_messages, ", ")]",)
 
 /datum/controller/subsystem/ipcheck/stat_entry(msg)
 	return "[..()] | M: [length(to_check)]"
@@ -56,17 +37,11 @@ SUBSYSTEM_DEF(ipcheck)
 	if(allow_cached && fetch_cached_ip_intel(address))
 		return cached_queries[address]
 
-	var/query_base = "https://[CONFIG_GET(string/ipcheck_base)]/ip/"
-	var/query = "[query_base][address]"
-
-	var/list/headers
-	if(!headers)
-		headers = list(
-			"X-Key" = CONFIG_GET(string/ipcheck_apikey)
-		)
+	var/query_base = "https://[CONFIG_GET(string/ipcheck_base)]/"
+	var/query = "[query_base]?q=[address]&key=[CONFIG_GET(string/ipcheck_apikey)]"
 
 	var/datum/http_request/request = new
-	request.prepare(RUSTG_HTTP_METHOD_GET, query, headers = headers)
+	request.prepare(RUSTG_HTTP_METHOD_GET, query)
 	request.execute_blocking()
 	var/datum/http_response/response = request.into_response()
 
@@ -78,7 +53,7 @@ SUBSYSTEM_DEF(ipcheck)
 		return
 
 	var/datum/ip_intel/intel = new
-	intel.result = data["block"]
+	intel.result = data["is_vpn"]
 	if(isnull(intel.result))
 		return
 

@@ -29,7 +29,6 @@ All ShuttleMove procs go here
 		shuttleCrushThing(thing, shuttle)
 
 /turf/proc/shuttleCrushThing(atom/movable/thing, obj/docking_port/mobile/shuttle)
-
 	SEND_SIGNAL(thing, COMSIG_MOVABLE_SHUTTLE_CRUSH, shuttle)
 	if(ismob(thing))
 		if(isliving(thing))

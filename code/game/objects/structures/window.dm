@@ -1126,13 +1126,14 @@
 
 
 // Colony
+
 /obj/structure/window/framed/hybrisa/colony
 	name = "window"
 	icon = 'icons/turf/walls/hybrisa_colony_window.dmi'
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	desc = "A glass window inside a wall frame."
-	health = 40
+	health = 15
 	window_frame = /obj/structure/window_frame/hybrisa/colony
 
 /obj/structure/window/framed/hybrisa/colony/reinforced
@@ -1189,13 +1190,14 @@
 	pressure_door.close()
 
 // Research
+
 /obj/structure/window/framed/hybrisa/research
 	name = "window"
 	icon = 'icons/turf/walls/hybrisaresearchbrown_windows.dmi'
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	desc = "A glass window inside a wall frame."
-	health = 40
+	health = 15
 	window_frame = /obj/structure/window_frame/hybrisa/research
 
 /obj/structure/window/framed/hybrisa/research/reinforced
@@ -1224,7 +1226,9 @@
 	icon = 'icons/turf/walls/hybrisa_marshalls_windows.dmi'
 	icon_state = "prison_window0"
 	basestate = "prison_window"
+	health = 15
 	window_frame = /obj/structure/window_frame/hybrisa/marshalls
+
 /obj/structure/window/framed/hybrisa/marshalls/reinforced
 	name = "reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
@@ -1233,11 +1237,13 @@
 	icon_state = "prison_rwindow0"
 	basestate = "prison_rwindow"
 	window_frame = /obj/structure/window_frame/hybrisa/marshalls/reinforced
+
 /obj/structure/window/framed/hybrisa/marshalls/cell
 	name = "cell window"
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
 	desc = "A glass window with a special rod matrix inside a wall frame."
+	health = 100
 
 // Hospital
 
@@ -1247,7 +1253,7 @@
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	desc = "A glass window inside a wall frame."
-	health = 40
+	health = 15
 	window_frame = /obj/structure/window_frame/hybrisa/colony/hospital
 
 /obj/structure/window/framed/hybrisa/colony/hospital/reinforced
@@ -1277,7 +1283,7 @@
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	desc = "A glass window inside a wall frame."
-	health = 40
+	health = 15
 	window_frame = /obj/structure/window_frame/hybrisa/colony/office
 
 /obj/structure/window/framed/hybrisa/colony/office/reinforced
@@ -1307,7 +1313,7 @@
 	icon_state = "strata_window0"
 	basestate = "strata_window"
 	desc = "A glass window inside a wall frame."
-	health = 40
+	health = 15
 	window_frame = /obj/structure/window_frame/hybrisa/colony/engineering
 
 /obj/structure/window/framed/hybrisa/colony/engineering/reinforced
@@ -1337,6 +1343,8 @@
 	icon_state = "prison_window0"
 	basestate = "prison_window"
 	window_frame = /obj/structure/window_frame/hybrisa/spaceport
+	health = 15
+
 /obj/structure/window/framed/hybrisa/spaceport/reinforced
 	name = "reinforced window"
 	desc = "A glass window with a special rod matrix inside a wall frame. It looks rather strong. Might take a few good hits to shatter it."
@@ -1345,8 +1353,10 @@
 	icon_state = "prison_rwindow0"
 	basestate = "prison_rwindow"
 	window_frame = /obj/structure/window_frame/hybrisa/spaceport/reinforced
+
 /obj/structure/window/framed/hybrisa/spaceport/cell
 	name = "window"
 	icon_state = "prison_cellwindow0"
 	basestate = "prison_cellwindow"
 	desc = "A glass window with a special rod matrix inside a wall frame."
+	health = 100

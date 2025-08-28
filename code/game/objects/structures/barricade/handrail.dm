@@ -286,6 +286,7 @@
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	layer = MOB_LAYER + 0.01
 
+
 // Hybrisa Barricades
 
 /obj/structure/barricade/handrail/hybrisa
@@ -298,6 +299,8 @@
 	name = "plastic road barrier"
 	icon_state = "plasticroadbarrierred"
 	barricade_hitsound = 'sound/effects/thud.ogg'
+	health = 10
+	maxhealth = 10
 
 /obj/structure/barricade/handrail/hybrisa/road/plastic/red
 	name = "plastic road barrier"
@@ -317,6 +320,8 @@
 	name = "wood road barrier"
 	icon_state = "roadbarrierwood"
 	barricade_hitsound = 'sound/effects/woodhit.ogg'
+	health = 10
+	maxhealth = 10
 
 /obj/structure/barricade/handrail/hybrisa/road/wood/orange
 	name = "wood road barrier"
@@ -344,6 +349,10 @@
 	name = "metal road barrier"
 	icon_state = "centerroadbarrier2"
 
+/obj/structure/barricade/handrail/hybrisa/road/metal/metaldark/offset
+	pixel_y = -2
+	layer = BETWEEN_OBJECT_ITEM_LAYER
+
 /obj/structure/barricade/handrail/hybrisa/road/metal/metaldark/middle
 	name = "metal road barrier"
 	icon_state = "centerroadbarrier2_middle"
@@ -359,6 +368,10 @@
 /obj/structure/barricade/handrail/hybrisa/road/metal/double
 	name = "metal road barrier"
 	icon_state = "centerroadbarrierdouble"
+	layer = BETWEEN_OBJECT_ITEM_LAYER
+
+/obj/structure/barricade/handrail/hybrisa/road/metal/double/offset
+	pixel_y = -5
 
 /obj/structure/barricade/handrail/hybrisa/handrail
 	name = "handrail"

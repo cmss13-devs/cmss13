@@ -203,7 +203,7 @@
 	health = max(0, health - damage)
 
 	if(health == 0)
-		visible_message(loc, SPAN_DANGER("[src] shatters!"))
+		visible_message(SPAN_DANGER("[src] shatters!"))
 		deconstruct(FALSE)
 		return TRUE
 

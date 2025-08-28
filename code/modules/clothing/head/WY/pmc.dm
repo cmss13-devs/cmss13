@@ -33,6 +33,14 @@
 	desc = "The pinnacle of fashion for any aspiring mercenary leader. Designed to protect the head from light impacts."
 	icon_state = "officer_hat"
 
+/obj/item/clothing/head/helmet/marine/veteran/pmc/fieldleader
+	name = "\improper PMC field officer beret"
+	desc = "The pinnacle of fashion for any aspiring mercenary leader. Designed to protect the head from light impacts."
+	icon_state = "field_officer_hat"
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+
 /obj/item/clothing/head/helmet/marine/veteran/pmc/sec
 	name = "\improper W-Y armored cap"
 	icon_state = "newcorpo_cap"

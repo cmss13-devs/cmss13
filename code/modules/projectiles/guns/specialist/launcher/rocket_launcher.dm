@@ -153,6 +153,7 @@
 			rocket.forceMove(src)
 			replace_ammo(,rocket)
 			to_chat(user, SPAN_NOTICE("You load [rocket] into [src]."))
+			update_icon()
 			if(reload_sound)
 				playsound(user, reload_sound, 25, 1)
 			else
@@ -165,6 +166,7 @@
 		current_mag = rocket
 		rocket.forceMove(src)
 		replace_ammo(,rocket)
+		update_icon()
 	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
@@ -182,6 +184,7 @@
 			SPAN_NOTICE("You unload [ammo] from [src]."))
 			make_rocket(user, drop_override, 0)
 			current_mag.current_rounds = 0
+			update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
@@ -217,6 +220,14 @@
 /obj/item/weapon/gun/launcher/rocket/m5
 	name = "\improper M5 RPG"
 	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+	map_specific_decoration = TRUE
+	has_empty_icon = TRUE
+	auto_retrieval_slot = WEAR_J_STORE
+	attachable_allowed = list()
+
+/obj/item/weapon/gun/launcher/rocket/m5/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	. = ..()
+	update_icon()
 
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN
@@ -273,6 +284,7 @@
 	name = "\improper M83A2 SADAR"
 	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
 	var/fired = FALSE
+	can_be_reloaded = FALSE
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/get_examine_text(mob/user)
 	. = ..()

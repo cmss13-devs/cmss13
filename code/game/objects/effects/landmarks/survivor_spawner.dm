@@ -42,7 +42,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf //to prevent NV CO from spawning as a CO
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -58,7 +58,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/leader
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -74,7 +74,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/engineer
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -90,7 +90,7 @@
 	hostile = TRUE
 	equipment = /datum/equipment_preset/survivor/clf/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/clf
-	CO_equipment = /datum/equipment_preset/survivor/clf/medic
+	CO_equipment = /datum/equipment_preset/survivor/clf/coordinator
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to heal up and survive. If you want to assault the hive - adminhelp.</span>")
@@ -382,6 +382,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/standard
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
@@ -396,6 +397,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
@@ -410,6 +412,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
@@ -424,6 +427,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/pmc_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
@@ -438,6 +442,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/corporate/manager
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")

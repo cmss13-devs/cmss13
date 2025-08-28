@@ -11,7 +11,7 @@
 /obj/structure/prop/hybrisa/vehicles
 	icon = 'icons/obj/structures/props/vehicles/meridian_red.dmi'
 	icon_state = "meridian_red"
-	health = 3000
+	health = 1500
 	var/damage_state = 0
 	var/brute_multiplier = 3
 
@@ -30,35 +30,35 @@
 
 /obj/structure/prop/hybrisa/vehicles/update_icon()
 	switch(health)
-		if(2500 to 3000)
+		if(1250 to 1500)
 			icon_state = initial(icon_state)
 			return
-		if(2000 to 2500)
+		if(1000 to 1250)
 			damage_state = 1
-		if(1500 to 2000)
+		if(750 to 1000)
 			damage_state = 2
-		if(1000 to 1500)
+		if(500 to 750)
 			damage_state = 3
-		if(500 to 1000)
+		if(250 to 500)
 			damage_state = 4
-		if(0 to 500)
+		if(0 to 250)
 			damage_state = 5
 	icon_state = "[initial(icon_state)]_damage_[damage_state]"
 
 /obj/structure/prop/hybrisa/vehicles/get_examine_text(mob/user)
 	. = ..()
 	switch(health)
-		if(2500 to 3000)
+		if(1250 to 1500)
 			. += SPAN_WARNING("It looks to be in good condition.")
-		if(2000 to 2500)
+		if(1000 to 1250)
 			. += SPAN_WARNING("It looks slightly damaged.")
-		if(1500 to 2000)
+		if(750 to 1000)
 			. += SPAN_WARNING("It looks moderately damaged.")
-		if(1000 to 1500)
+		if(500 to 750)
 			. += SPAN_DANGER("It looks heavily damaged.")
-		if(500 to 1000)
+		if(250 to 500)
 			. += SPAN_DANGER("It looks very heavily damaged.")
-		if(0 to 500)
+		if(0 to 250)
 			. += SPAN_DANGER("It looks like it's about break down into scrap.")
 
 /obj/structure/prop/hybrisa/vehicles/proc/explode(dam, mob/M)
@@ -90,6 +90,7 @@
 		update_icon()
 
 // Armored Truck - Damage States
+
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck
 	name = "heavy-loader truck"
 	desc = "It's locked and seems to be broken down, forget driving this."
@@ -99,6 +100,7 @@
 	bound_width = 96
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = 85
 
 /obj/structure/prop/hybrisa/vehicles/Armored_Truck/Blue
 	icon = 'icons/obj/structures/props/vehicles/armored_truck_blue.dmi'
@@ -181,6 +183,7 @@
 	bound_width = 64
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = 60
 
 /obj/structure/prop/hybrisa/vehicles/Small_Truck/Turquoise_Cargo
 	icon = 'icons/obj/structures/props/vehicles/small_truck_turquoise_cargo.dmi'
@@ -244,6 +247,7 @@
 	bound_width = 64
 	density = TRUE
 	layer = ABOVE_MOB_LAYER
+	projectile_coverage = 20
 
 /obj/structure/prop/hybrisa/vehicles/Box_Vans/Hyperdyne
 	icon = 'icons/obj/structures/props/vehicles/box_van_hyperdyne.dmi'
@@ -286,57 +290,267 @@
 	icon = 'icons/obj/structures/props/vehicles/meridian_red.dmi'
 	icon_state = "meridian_red"
 
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red/damage_5
+	health = 125
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Black
 	icon = 'icons/obj/structures/props/vehicles/meridian_black.dmi'
 	icon_state = "meridian_black"
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Black/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Black/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Black/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Black/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Black/damage_5
+	health = 125
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Blue
 	icon = 'icons/obj/structures/props/vehicles/meridian_blue.dmi'
 	icon_state = "meridian_blue"
 
+/obj/structure/prop/hybrisa/vehicles/Meridian/Blue/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Blue/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Blue/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Blue/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Blue/damage_5
+	health = 125
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Brown
 	icon = 'icons/obj/structures/props/vehicles/meridian_brown.dmi'
 	icon_state = "meridian_brown"
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Brown/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Brown/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Brown/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Brown/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Brown/damage_5
+	health = 125
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Cop
 	icon = 'icons/obj/structures/props/vehicles/meridian_cop.dmi'
 	icon_state = "meridian_cop"
 
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop/damage_5
+	health = 125
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue
 	icon = 'icons/obj/structures/props/vehicles/meridian_desatblue.dmi'
 	icon_state = "meridian_desatblue"
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue/damage_5
+	health = 125
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Green
 	icon = 'icons/obj/structures/props/vehicles/meridian_green.dmi'
 	icon_state = "meridian_green"
 
+/obj/structure/prop/hybrisa/vehicles/Meridian/Green/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Green/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Green/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Green/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Green/damage_5
+	health = 125
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue
 	icon = 'icons/obj/structures/props/vehicles/meridian_lightblue.dmi'
 	icon_state = "meridian_lightblue"
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue/damage_5
+	health = 125
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Pink
 	icon = 'icons/obj/structures/props/vehicles/meridian_pink.dmi'
 	icon_state = "meridian_pink"
 
+/obj/structure/prop/hybrisa/vehicles/Meridian/Pink/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Pink/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Pink/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Pink/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Pink/damage_5
+	health = 125
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Purple
 	icon = 'icons/obj/structures/props/vehicles/meridian_purple.dmi'
 	icon_state = "meridian_purple"
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Purple/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Purple/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Purple/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Purple/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Purple/damage_5
+	health = 125
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise
 	icon = 'icons/obj/structures/props/vehicles/meridian_turquoise.dmi'
 	icon_state = "meridian_turquoise"
 
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise/damage_5
+	health = 125
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Orange
 	icon = 'icons/obj/structures/props/vehicles/meridian_orange.dmi'
 	icon_state = "meridian_orange"
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange/damage_5
+	health = 125
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani
 	icon = 'icons/obj/structures/props/vehicles/meridian_wy.dmi'
 	icon_state = "meridian_wy"
 
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani/damage_5
+	health = 125
+
 /obj/structure/prop/hybrisa/vehicles/Meridian/Taxi
 	icon = 'icons/obj/structures/props/vehicles/meridian_taxi.dmi'
 	icon_state = "meridian_taxi"
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Taxi/damage_1
+	health = 1125
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Taxi/damage_2
+	health = 875
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Taxi/damage_3
+	health = 625
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Taxi/damage_4
+	health = 375
+
+/obj/structure/prop/hybrisa/vehicles/Meridian/Taxi/damage_5
+	health = 125
 
 /obj/structure/prop/hybrisa/vehicles/Meridian/Shell
 	desc = "A Mono-Spectra chassis in the early stages of assembly."
@@ -490,7 +704,7 @@
 	density = TRUE
 	projectile_coverage = 20
 	throwpass = TRUE
-	health = 200
+	health = 15
 
 /obj/structure/prop/hybrisa/supermart/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -523,6 +737,9 @@
 	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
 	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/hybrisa/supermart/rack
+	health = 100
 
 /obj/structure/prop/hybrisa/supermart/rack/longrackempty
 	name = "shelf"
@@ -574,51 +791,58 @@
 	desc = "A commercial grade freezer."
 	icon_state = "freezerupper"
 	density = TRUE
+	health = 30
 
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer1
+/obj/structure/prop/hybrisa/supermart/freezer/freezer1
 	icon_state = "freezerupper"
 
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer2
+/obj/structure/prop/hybrisa/supermart/freezer/freezer2
 	icon_state = "freezerlower"
 
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer3
+/obj/structure/prop/hybrisa/supermart/freezer/freezer3
 	icon_state = "freezermid"
 
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer4
+/obj/structure/prop/hybrisa/supermart/freezer/freezer4
 	icon_state = "freezerupper1"
 
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer5
+/obj/structure/prop/hybrisa/supermart/freezer/freezer5
 	icon_state = "freezerlower1"
 
-/obj/structure/prop/hybrisa/supermart/freezer/supermartfreezer6
+/obj/structure/prop/hybrisa/supermart/freezer/freezer6
 	icon_state = "freezermid1"
 
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketempty
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket
+	name = "basket"
+	desc = "A basket."
+	icon_state = "supermarketbasketempty"
+	health = 5
+
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/empty
 	name = "basket"
 	desc = "A basket."
 	icon_state = "supermarketbasketempty"
 
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketoranges
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/oranges
 	name = "basket"
 	desc = "A basket full of oranges."
 	icon_state = "supermarketbasket1"
 
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketpears
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/pears
 	name = "basket"
 	desc = "A basket full of pears."
 	icon_state = "supermarketbasket2"
 
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketcarrots
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/carrots
 	name = "basket"
 	desc = "A basket full of carrots."
 	icon_state = "supermarketbasket3"
 
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketmelons
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/melons
 	name = "basket"
 	desc = "A basket full of melons."
 	icon_state = "supermarketbasket4"
 
-/obj/structure/prop/hybrisa/supermart/supermartfruitbasketapples
+/obj/structure/prop/hybrisa/supermart/supermartfruitbasket/apples
 	name = "basket"
 	desc = "A basket full of apples."
 	icon_state = "supermarketbasket5"
@@ -629,6 +853,7 @@
 	desc = "A mannequin of the famous 'Souto-Man', Party like it's 1999!"
 	icon_state = "souto_man_prop"
 	density = TRUE
+	health = 100
 
 /obj/structure/prop/hybrisa/supermart/souto_rack
 	name = "Souto cans rack"
@@ -636,6 +861,7 @@
 	desc = "A rack filled with Souto cans of various flavors."
 	icon_state = "souto_rack"
 	density = TRUE
+	health = 75
 
 /obj/structure/prop/hybrisa/supermart/souto_can_stack
 	name = "stacked souto cans"
@@ -643,19 +869,22 @@
 	desc = "A large stack of 'Souto-Classic' cans."
 	icon_state = "souto_can_stack"
 	density = TRUE
+	health = 75
 
 // Furniture
+
 /obj/structure/prop/hybrisa/furniture
 	icon = 'icons/obj/structures/tables_64x64.dmi'
 	icon_state = "blackmetaltable"
-	health = 200
+	health = 100
 	projectile_coverage = 20
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/furniture/tables
 	icon = 'icons/obj/structures/tables_64x64.dmi'
 	icon_state = "table_pool"
-	health = 200
+	health = 100
+	projectile_coverage = 10
 
 /obj/structure/prop/hybrisa/furniture/tables/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -699,6 +928,7 @@
 	bound_height = 32
 	bound_width = 64
 	debris = list(/obj/item/stack/sheet/metal)
+	health = 150
 
 /obj/structure/prop/hybrisa/furniture/tables/tableblack/blacktablecomputer
 	icon = 'icons/obj/structures/tables_64x64.dmi'
@@ -714,6 +944,7 @@
 	bound_height = 32
 	bound_width = 64
 	debris = list(/obj/item/stack/sheet/wood)
+	health = 100
 
 /obj/structure/prop/hybrisa/furniture/tables/tablewood/woodtablecomputer
 	icon = 'icons/obj/structures/tables_64x64.dmi'
@@ -1331,12 +1562,6 @@
 
 // Misc
 
-/obj/structure/prop/hybrisa/misc/picture
-	name = "framed picture"
-	desc = "A golden framed picture of an ominous skeletal figure ordorned in golden garb, fancy for a pile of bones..."
-	icon = 'icons/obj/structures/props/wall_decorations/decals.dmi'
-	icon_state = "pictureframe"
-
 /obj/structure/prop/hybrisa/misc/commandosuitemptyprop
 	name = "Weyland-Yutani 'M5X Apesuit' showcase"
 	desc = "A display model of the Weyland-Yutani 'Apesuit', shame it's only a model..."
@@ -1368,9 +1593,9 @@
 	desc = "A Weyland-Yutani trash bin used for disposing your unwanted items, or you can just throw your shit on the ground like every other asshole."
 	icon = 'icons/obj/structures/props/hybrisa/trash_bins.dmi'
 	icon_state = "trashblue"
-	health = 150
+	health = 100
 	density = TRUE
-	projectile_coverage = 20
+	projectile_coverage = 10
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/trash/bullet_act(obj/projectile/P)
@@ -1436,7 +1661,7 @@
 	anchored = TRUE
 	density = TRUE
 	layer = WINDOW_LAYER
-	health = 450
+	health = 150
 
 /obj/structure/prop/hybrisa/misc/slotmachine/broken
 	name = "slot machine"
@@ -1610,7 +1835,7 @@
 	bound_height = 32
 	anchored = TRUE
 	density = TRUE
-	health = 250
+	health = 150
 	opacity = FALSE
 
 /obj/structure/machinery/big_computers/bullet_act(obj/projectile/P)
@@ -1724,7 +1949,7 @@
 	bound_height = 32
 	anchored = TRUE
 	density = TRUE
-	health = 250
+	health = 150
 	opacity = FALSE
 
 /obj/structure/machinery/big_computers/science_big/synthesis_simulator
@@ -1756,7 +1981,7 @@
 
 /obj/structure/prop/hybrisa/misc/machinery/screens
 	name = "monitor"
-	health = 150
+	health = 50
 
 /obj/structure/prop/hybrisa/misc/machinery/screens/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -2149,6 +2374,7 @@
 	icon_state = "hybrisaplatform_deco"
 
 // Greeblies
+
 /obj/structure/prop/hybrisa/misc/buildinggreeblies
 	name = "\improper machinery"
 	icon = 'icons/obj/structures/props/hybrisa/64x64_props.dmi'
@@ -2156,7 +2382,7 @@
 	bound_width = 64
 	bound_height = 32
 	density = TRUE
-	health = 500
+	health = 200
 	anchored = TRUE
 	layer = ABOVE_XENO_LAYER
 	gender = PLURAL
@@ -2238,7 +2464,7 @@
 	icon = 'icons/obj/structures/props/hybrisa/piping_wiring.dmi'
 	icon_state = "smallwallvent1"
 	density = FALSE
-	health = 250
+	health = 150
 
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -2307,10 +2533,10 @@
 	bound_width = 32
 	bound_height = 64
 	density = TRUE
-	health = 2000
+	health = 1500
 	anchored = TRUE
 	layer = ABOVE_MOB_LAYER
-	projectile_coverage = 20
+	projectile_coverage = 10
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/stoneplanterseats/empty
@@ -2361,8 +2587,8 @@
 	icon_state = "firehydrant"
 	density = TRUE
 	anchored = TRUE
-	health = 250
-	projectile_coverage = 20
+	health = 15
+	projectile_coverage = 10
 	throwpass = TRUE
 
 /obj/structure/prop/hybrisa/misc/firehydrant/Initialize(mapload, ...)
@@ -2556,7 +2782,7 @@
 	bound_height = 64
 	bound_width = 64
 	layer = BILLBOARD_LAYER
-	health = 250
+	health = 100
 
 /obj/structure/roof/hybrisa/signs/bullet_act(obj/projectile/P)
 	health -= P.damage
@@ -2711,7 +2937,7 @@
 	desc = "An advertisement billboard."
 	icon = 'icons/obj/structures/props/wall_decorations/32x64_hybrisabillboards.dmi'
 	icon_state = "billboard_bigger"
-	health = 500
+	health = 150
 	bound_width = 64
 	bound_height = 32
 	density = FALSE
@@ -2789,28 +3015,66 @@
 
 // Car Factory
 
-/obj/structure/prop/hybrisa/Factory
+/obj/structure/prop/hybrisa/factory
 	icon = 'icons/obj/structures/props/industrial/factory.dmi'
 	icon_state = "factory_roboticarm"
 
-/obj/structure/prop/hybrisa/Factory/Robotic_arm
+/obj/structure/prop/hybrisa/factory/robotic_arm
 	name = "robotic arm"
-	desc = "A robotic arm used in the construction of 'Meridian' Automobiles."
+	desc = "A robust robotic arm used in a range of mechanical processes, including assembly and packaging."
 	icon_state = "factory_roboticarm"
-	bound_width = 64
-	bound_height = 32
+	bound_width = 32
 	anchored = TRUE
+	health = 100
+	layer = BIG_XENO_LAYER
+	density = TRUE
 
-/obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped
+/obj/structure/prop/hybrisa/factory/robotic_arm/flipped
 	icon_state = "factory_roboticarm2"
+	layer = ABOVE_MOB_LAYER
 
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt
+/obj/structure/prop/hybrisa/factory/bullet_act(obj/projectile/P)
+	health -= P.damage
+	playsound(src, 'sound/effects/metalping.ogg', 35, 1)
+	..()
+	healthcheck()
+	return TRUE
+
+/obj/structure/prop/hybrisa/factory/proc/explode()
+	visible_message(SPAN_DANGER("[src] breaks apart!"), max_distance = 1)
+	deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/factory/proc/healthcheck()
+	if(health <= 0)
+		explode()
+
+/obj/structure/prop/hybrisa/factory/ex_act(severity)
+	switch(severity)
+		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
+			if(prob(50))
+				deconstruct(FALSE)
+		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
+			deconstruct(FALSE)
+
+/obj/structure/prop/hybrisa/factory/attack_alien(mob/living/carbon/xenomorph/current_xenomorph)
+	if(unslashable)
+		return XENO_NO_DELAY_ACTION
+	current_xenomorph.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	current_xenomorph.visible_message(SPAN_DANGER("[current_xenomorph] slashes at [src]!"),
+	SPAN_DANGER("You slash at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	update_health(rand(current_xenomorph.melee_damage_lower, current_xenomorph.melee_damage_upper))
+	return XENO_ATTACK_ACTION
+
+/obj/structure/prop/hybrisa/factory/conveyor_belt
 	name = "large conveyor belt"
 	desc = "A large conveyor belt used in industrial factories."
 	icon_state = "factory_conveyer"
 	density = FALSE
+	health = 25
 
 // Hybrisa Lattice
+
 /obj/structure/roof/hybrisa/lattice_prop
 	name = "lattice"
 	desc = "A support lattice."

@@ -54,7 +54,7 @@
 	if(HAS_TRAIT(target_mob, TRAIT_XENONID))
 		return ..() // We don't have backpack sprites for xenoids (yet?)
 	var/mob/living/carbon/xenomorph/xeno = target_mob
-	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
+	if((target_mob.stat != DEAD) && !xeno.legcuffed) // If the Xeno is alive, fight back
 		var/mob/living/carbon/carbon_user = user
 		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
 			user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
@@ -385,9 +385,23 @@
 	icon_state = "satchel_blue"
 	item_state = "satchel_blue"
 
+/obj/item/storage/backpack/satchel/blue/lockable
+	name = "secure leather satchel"
+	is_id_lockable = TRUE
+
+/obj/item/storage/backpack/satchel/blue/lockable/no_override
+	lock_overridable = FALSE
+
 /obj/item/storage/backpack/satchel/black
 	icon_state = "satchel_black"
 	item_state = "satchel_black"
+
+/obj/item/storage/backpack/satchel/black/lockable
+	name = "secure leather satchel"
+	is_id_lockable = TRUE
+
+/obj/item/storage/backpack/satchel/black/lockable/no_override
+	lock_overridable = FALSE
 
 /obj/item/storage/backpack/satchel/norm
 	name = "satchel"
@@ -974,7 +988,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		return
 
 	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, PROC_REF(cloak_grenade_callback))
-	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, PROC_REF(wrapper_fizzle_camouflage))
+	RegisterSignal(H, list(COMSIG_HUMAN_EXTINGUISH,  COMSIG_MOB_HAULED, COMSIG_MOB_UNHAULED), PROC_REF(wrapper_fizzle_camouflage))
 	RegisterSignal(H, COMSIG_MOB_EFFECT_CLOAK_CANCEL, PROC_REF(deactivate_camouflage))
 
 	camo_active = TRUE
@@ -1019,6 +1033,8 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	COMSIG_GRENADE_PRE_PRIME,
 	COMSIG_HUMAN_EXTINGUISH,
 	COMSIG_MOB_EFFECT_CLOAK_CANCEL,
+	COMSIG_MOB_HAULED,
+	COMSIG_MOB_UNHAULED,
 	))
 
 	if(forced)
@@ -1372,6 +1388,21 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "Ergonomic, protected, high capacity backpack, designed for Weyland-Yutani PMCs."
 	icon_state = "pmc_backpack"
 	max_storage_space = 21
+
+/obj/item/storage/backpack/pmc/backpack/rto_broken
+	name = "\improper Broken WY Radio Telephone Pack"
+	desc = "A heavy-duty extended-pack, used for telecommunications between central command. Commonly carried by RTOs. This one bears the logo of Weyland Yutani and internal systems seem to completely fried and broken."
+	icon_state = "pmc_broken_rto"
+	item_state = "pmc_broken_rto"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+	flags_item = ITEM_OVERRIDE_NORTHFACE
 
 /obj/item/storage/backpack/pmc/backpack/commando
 	name = "\improper W-Y Commando combat backpack"

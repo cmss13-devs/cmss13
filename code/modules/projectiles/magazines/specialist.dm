@@ -164,6 +164,9 @@
 	if(!in_hand || !istype(in_hand))
 		to_chat(user, SPAN_WARNING("[demoman] isn't holding a rocket launcher in their active hand!"))
 		return
+	if(!in_hand.can_be_reloaded)
+		to_chat(user, SPAN_WARNING("[demoman]'s [in_hand] can not be reloaded!"))
+		return
 	if(!in_hand.current_mag)
 		to_chat(user, SPAN_WARNING("[demoman]'s [in_hand] is already loaded!"))
 		return
@@ -199,6 +202,7 @@
 	qdel(in_hand.current_mag)
 	in_hand.replace_ammo(user,src)
 	in_hand.current_mag = src
+	in_hand.update_icon()
 	forceMove(in_hand)
 	to_chat(user, SPAN_NOTICE("You load \the [src] into \the [demoman]'s [in_hand]."))
 	if(in_hand.reload_sound)

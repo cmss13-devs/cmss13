@@ -11,9 +11,6 @@ SUBSYSTEM_DEF(ipcheck)
 	var/address
 	var/date
 
-/datum/controller/subsystem/ipcheck/stat_entry(msg)
-	return "[..()] | M: [length(to_check)]"
-
 /datum/controller/subsystem/ipcheck/proc/is_enabled()
 	return !!length(CONFIG_GET(string/ipcheck_base)) && !!length(CONFIG_GET(string/ipcheck_apikey))
 

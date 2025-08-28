@@ -685,14 +685,14 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/string/org
 
 /datum/config_entry/string/ipcheck_base
-	config_entry_value = "v2.api.iphub.info"
+	config_entry_value = "api.ipapi.is"
 
 /datum/config_entry/string/ipcheck_apikey
 
 /datum/config_entry/number/ipcheck_rating_bad
 	config_entry_value = 1
 	min_val = 0
-	max_val = 2
+	max_val = 1
 
 /datum/config_entry/flag/ipcheck_reject_bad
 	config_entry_value = FALSE

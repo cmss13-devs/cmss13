@@ -411,6 +411,11 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			shake_camera(current_mob, 110, 4)
 
 	sleep(10 SECONDS)
+	if(GLOB.bomb_set == FALSE)
+		update_minimap_icon()
+		stop_processing()
+		update_icon()
+		return FALSE
 
 	var/list/mob/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 	var/list/mob/dead_mobs = list() //Everyone that needs embryos cleared

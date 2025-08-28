@@ -23,16 +23,14 @@ All ShuttleMove procs go here
 // var/shuttle_dir = shuttle.dir
 	for(var/i in contents)
 		var/atom/movable/thing = i
-		SEND_SIGNAL(thing, COMSIG_MOVABLE_SHUTTLE_CRUSH, shuttle)
 		if(istype(thing, /obj/structure/closet))
 			for(var/j in thing.contents)
 				shuttleCrushThing(j, shuttle)
-			qdel(thing)
-			continue
 		shuttleCrushThing(thing, shuttle)
 
 /turf/proc/shuttleCrushThing(atom/movable/thing, obj/docking_port/mobile/shuttle)
 	var/should_be_crushed = TRUE
+	SEND_SIGNAL(thing, COMSIG_MOVABLE_SHUTTLE_CRUSH, shuttle)
 	if(ismob(thing))
 		if(isliving(thing))
 			var/mob/living/M = thing

@@ -1,3 +1,5 @@
+/// CIA Agents ///
+
 /datum/equipment_preset/cia
 	name = "CIA Agent (Civilian Clothing)"
 	flags = EQUIPMENT_PRESET_EXTRA

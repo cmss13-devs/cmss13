@@ -312,7 +312,7 @@
 	blip_type = "tracker"
 	long_range_locked = TRUE
 
-/obj/item/device/motiondetector/m717/hacked/contractor
+/obj/item/device/motiondetector/m717/contractor
 	name = "modified M717 pocket motion detector"
 	desc = "This prototype motion detector sacrifices versatility, having only the long-range mode, for size, being so small it can even fit in pockets. This one has been modified with an after-market IFF sensor to filter out Vanguard's Arrow Incorporated signals instead of USCM ones. Fight fire with fire!"
 	iff_signal = FACTION_CONTRACTOR

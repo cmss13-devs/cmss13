@@ -483,7 +483,13 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CIA_UACQS_ADMN "UACQS Administrator"
 #define JOB_CIA_UACQS_COMR "UACQS Commissioner"
 
-#define JOB_CIA_ROLES_LIST list(JOB_CIA, JOB_CIA_LIAISON, JOB_CIA_UACQS_SEC, JOB_CIA_UACQS_ADMN, JOB_CIA_UACQS_COMR)
+#define JOB_CIA_GRS_OPR "Global Response Operator"
+#define JOB_CIA_GRS_MED "Global Response Medic"
+#define JOB_CIA_GRS_ENG "Global Response Technician"
+#define JOB_CIA_GRS_HVY "Global Response Heavy Operator"
+#define JOB_CIA_GRS_TL "Global Response Team Leader"
+
+#define JOB_CIA_ROLES_LIST list(JOB_CIA, JOB_CIA_LIAISON, JOB_CIA_UACQS_SEC, JOB_CIA_UACQS_ADMN, JOB_CIA_UACQS_COMR, JOB_CIA_GRS_OPR, JOB_CIA_GRS_MED, JOB_CIA_GRS_ENG, JOB_CIA_GRS_HVY, JOB_CIA_GRS_TL)
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"

@@ -308,6 +308,9 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/es7/tactical
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/verticalgrip)
 
+/obj/item/weapon/gun/shotgun/es7/tactical/lethal
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/es7/lethal
+
 //-------------------------------------------------------
 //TACTICAL SHOTGUN
 

@@ -12,6 +12,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":e" = SQUAD_MARINE_5, ".e" = SQUAD_MARINE_5, "#e" = RADIO_CHANNEL_PMC_ENGI,
 	":f" = SQUAD_MARINE_CRYO, ".f" = SQUAD_MARINE_CRYO, "#f" = RADIO_CHANNEL_PMC_MED,
 	":g" = RADIO_CHANNEL_ALMAYER, ".g" = RADIO_CHANNEL_ALMAYER, "#g" = RADIO_CHANNEL_CLF_GEN,
+	//:h deparmental above
+	//:i Intercomm above
 	":j" = RADIO_CHANNEL_JTAC, ".j" = RADIO_CHANNEL_JTAC, "#j" = RADIO_CHANNEL_UPP_CCT,
 	":k" = SQUAD_SOF, ".k" = SQUAD_SOF, "#k" = RADIO_CHANNEL_WY_WO,
 	"#l" = RADIO_CHANNEL_PROVOST, //l . and : reserved for Left hand
@@ -25,11 +27,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	":t" = RADIO_CHANNEL_INTEL, ".t" = RADIO_CHANNEL_INTEL, "#t" = RADIO_CHANNEL_UPP_KDO,
 	":u" = RADIO_CHANNEL_REQ, ".u" = RADIO_CHANNEL_REQ, "#u" = RADIO_CHANNEL_UPP_GEN,
 	":v" = RADIO_CHANNEL_COMMAND , ".v" = RADIO_CHANNEL_COMMAND , "#v" = RADIO_CHANNEL_UPP_CMD,
+	//:w whisper above
 	":x" = RADIO_CHANNEL_HYPERDYNE, ".x" = RADIO_CHANNEL_HYPERDYNE, "#x" = RADIO_CHANNEL_HYPERDYNE,
 	":y" = RADIO_CHANNEL_WY, ".y" = RADIO_CHANNEL_WY, "#y" = RADIO_CHANNEL_WY,
 	":z" = RADIO_CHANNEL_HIGHCOM, ".z" = RADIO_CHANNEL_HIGHCOM, "#z" = RADIO_CHANNEL_PMC_CMD,
 
-	//0-9 available
+	":0" = RADIO_CHANNEL_CIA_GRS, ".0" = RADIO_CHANNEL_CIA_GRS, //#0 AVAILABLE
+	//1-9 available
 ))
 
 /proc/channel_to_prefix(channel)

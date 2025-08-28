@@ -20,6 +20,18 @@
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN
 	storage_slots = 4
 
+/obj/item/clothing/suit/storage/marine/sof/grs
+	name = "\improper GRS armor"
+	desc = "A dark set of armor, which is a modification of the Armat Systems M3 armor. It has an eagle sigil emblazoned on the shoulders."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/CMB.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/CMB.dmi'
+	)
+	icon_state = "cmb_light_armor"
+
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
+	item_state_slots = list(WEAR_JACKET = "cmb_light_armor")
 
 //=============================//GENERIC FACTIONAL ARMOR ITEM\\==================================\\
 //=======================================================================\\

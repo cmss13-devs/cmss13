@@ -203,6 +203,16 @@
 				marine_rk = "uacqs_com"
 			if(JOB_CIA_UACQS_SEC)
 				marine_rk = "uacqs_sec"
+			if(JOB_CIA_GRS_OPR)
+				marine_rk = "grs_opr"
+			if(JOB_CIA_GRS_MED)
+				marine_rk = "grs_med"
+			if(JOB_CIA_GRS_ENG)
+				marine_rk = "grs_eng"
+			if(JOB_CIA_GRS_HVY)
+				marine_rk = "grs_hvy"
+			if(JOB_CIA_GRS_TL)
+				marine_rk = "grs_tl"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"

@@ -218,6 +218,9 @@ also doesn't really matter. You can only reload them with handfuls.
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
 	max_rounds = 7
 
+/obj/item/ammo_magazine/internal/shotgun/combat/es7/lethal
+	default_ammo = /datum/ammo/bullet/shotgun/slug/es7
+
 /obj/item/ammo_magazine/internal/shotgun/merc
 	max_rounds = 5
 

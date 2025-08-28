@@ -5,6 +5,7 @@
 /datum/equipment_preset/clf/engineer/cia_spy
 	name = "CLF Engineer (CIA Spy)"
 	skills = /datum/skills/cia/field_agent
+	faction_group = FACTION_LIST_CIA_CLF
 
 /datum/equipment_preset/clf/engineer/cia_spy/New()
 	. = ..()
@@ -19,6 +20,7 @@
 /datum/equipment_preset/upp/soldier/dressed/cia_spy
 	name = "UPP Soldier (CIA Spy)"
 	skills = /datum/skills/cia/field_agent
+	faction_group = FACTION_LIST_CIA_UPP
 
 /datum/equipment_preset/upp/soldier/dressed/cia_spy/New()
 	. = ..()
@@ -32,6 +34,7 @@
 /datum/equipment_preset/upp/officer/senior/dressed/cia_spy
 	name = "UPP Starshiy Leytenant (CIA Spy)"
 	skills = /datum/skills/cia/field_agent/senior
+	faction_group = FACTION_LIST_CIA_UPP
 
 /datum/equipment_preset/upp/officer/senior/dressed/cia_spy/New()
 	. = ..()

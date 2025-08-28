@@ -427,6 +427,7 @@
 	item_state = "headset"
 	frequency = PUB_FREQ
 	has_hud = TRUE
+	additional_hud_types = list(MOB_HUD_FACTION_CIA)
 
 /obj/item/device/radio/headset/almayer/verb/enter_tree()
 	set name = "Enter Techtree"
@@ -531,7 +532,7 @@
 	name = "marine military police radio headset"
 	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	additional_hud_types = list(MOB_HUD_FACTION_CMB)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA)
 	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
 	locate_setting = TRACKER_CMP
 	misc_tracking = TRUE
@@ -546,7 +547,7 @@
 	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
-	additional_hud_types = list(MOB_HUD_FACTION_CMB)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA)
 	volume = RADIO_VOLUME_RAISED
 	locate_setting = TRACKER_CO
 	misc_tracking = TRUE
@@ -562,7 +563,7 @@
 	name = "marine Military Warden radio headset"
 	desc = "It seems oddly similar to the CMPs'... Smells like donuts too. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA, MOB_HUD_FACTION_WY)
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
 	volume = RADIO_VOLUME_CRITICAL
 	locate_setting = TRACKER_CMP
@@ -578,7 +579,7 @@
 	name = "marine chief MP radio headset"
 	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA, MOB_HUD_FACTION_WY)
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
 	volume = RADIO_VOLUME_CRITICAL
 	locate_setting = TRACKER_CO
@@ -664,7 +665,7 @@
 	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
-	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom/xo
@@ -730,8 +731,19 @@
 	name = "radio headset"
 	desc = "A radio headset."
 	frequency = CIA_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/public)
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/public)
+	hud_type = MOB_HUD_FACTION_CIA
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY, MOB_HUD_FACTION_UPP, MOB_HUD_FACTION_PMC, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_TWE)
 
+/obj/item/device/radio/headset/almayer/cia_grs
+	name = "GRS radio headset"
+	desc = "A radio headset."
+	icon_state = "soc_headset"
+	frequency = CIA_GRS_FREQ
+	maximum_keys = 4
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/cia, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/public)
+	hud_type = MOB_HUD_FACTION_CIA
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY, MOB_HUD_FACTION_UPP, MOB_HUD_FACTION_PMC, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_TWE)
 
 //############################## ALPHA ###############################
 /obj/item/device/radio/headset/almayer/marine/alpha
@@ -1311,7 +1323,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/cmb)
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CMB
-	additional_hud_types = list(MOB_HUD_FACTION_MARINE)
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CIA)
 
 /obj/item/device/radio/headset/distress/CMB/limited
 	name = "\improper Damaged CMB Earpiece"
@@ -1342,7 +1354,7 @@
 	icon_state = "mhc_headset"
 	frequency = HC_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
-	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_MARINE)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA, MOB_HUD_FACTION_TWE, MOB_HUD_FACTION_MARINE)
 	volume = RADIO_VOLUME_CRITICAL
 	has_hud = TRUE
 	hud_type = MOB_HUD_SECURITY_ADVANCED
@@ -1353,7 +1365,7 @@
 	icon_state = "pvst_headset"
 	frequency = PVST_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/provost)
-	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_MARINE)
+	additional_hud_types = list(MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA, MOB_HUD_FACTION_MARINE)
 	volume = RADIO_VOLUME_CRITICAL
 	has_hud = TRUE
 	hud_type = MOB_HUD_SECURITY_ADVANCED
@@ -1364,7 +1376,7 @@
 	icon_state = "soc_headset"
 	frequency = SOF_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/soc)
-	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_TWE)
+	additional_hud_types = list(MOB_HUD_FACTION_WY, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_CIA, MOB_HUD_FACTION_TWE)
 	volume = RADIO_VOLUME_IMPORTANT
 
 /obj/item/device/radio/headset/almayer/sof/survivor_forecon

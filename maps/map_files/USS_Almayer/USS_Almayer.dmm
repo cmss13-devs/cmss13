@@ -6524,6 +6524,14 @@
 "apV" = (
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/hallways/lower/starboard_aft_hallway)
+"apW" = (
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom";
+	pixel_x = -32
+	},
+/turf/open/floor/almayer/silver/west,
+/area/almayer/hallways/upper/midship_hallway)
 "apY" = (
 /obj/structure/machinery/telecomms/server/presets/medical,
 /obj/structure/machinery/telecomms/processor/preset_three{
@@ -35147,15 +35155,13 @@
 /obj/structure/machinery/door_control{
 	id = "ARES StairsUpper";
 	name = "Stairway Shutters";
-	pixel_x = -36;
-	req_one_access_txt = "31;92";
-	pixel_y = -2
+	pixel_x = -28;
+	req_one_access_txt = "31;92"
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES StairsLower";
 	name = "Corridor Shutters";
 	pixel_x = -36;
-	pixel_y = 4;
 	req_one_access_txt = "31;92"
 	},
 /obj/structure/machinery/door_control{
@@ -35163,7 +35169,7 @@
 	explo_proof = 1;
 	name = "Core Shutters";
 	pixel_x = -36;
-	pixel_y = 10;
+	pixel_y = 8;
 	req_one_access_txt = "31;92"
 	},
 /obj/structure/machinery/door_control{
@@ -35173,14 +35179,7 @@
 	needs_power = 0;
 	pixel_x = -28;
 	req_one_access_txt = "31;92";
-	pixel_y = 7
-	},
-/obj/structure/machinery/door_control{
-	id = "ARES Operations Left";
-	name = "Records Room Shutters";
-	pixel_x = -28;
-	pixel_y = 1;
-	req_one_access_txt = "31;92"
+	pixel_y = 8
 	},
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -205270,7 +205269,7 @@ rpV
 cGO
 cGO
 cGO
-cGO
+apW
 cGO
 kaO
 cGO

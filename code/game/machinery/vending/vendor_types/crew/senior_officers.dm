@@ -622,6 +622,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_aist, list(
 		list("Spare Equipment", 0, null, null, null),
 		list("T411 AIDT", 0, /obj/item/device/ai_tech_pda, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("APOLLO Relay Key", 5, /obj/item/device/encryptionkey/binary, null, VENDOR_ITEM_REGULAR),
+		list("Synthetic Reset Key", 10, /obj/item/device/defibrillator/synthetic, null, VENDOR_ITEM_REGULAR),
 	))
 
 GLOBAL_LIST_INIT(cm_vending_clothing_aist_wy, list(
@@ -691,6 +692,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_aist_wy, list(
 		list("Spare Equipment", 0, null, null, null),
 		list("T411 AIDT", 0, /obj/item/device/ai_tech_pda, MARINE_CAN_BUY_MRE, VENDOR_ITEM_REGULAR),
 		list("APOLLO Relay Key", 5, /obj/item/device/encryptionkey/binary, null, VENDOR_ITEM_REGULAR),
+		list("Synthetic Reset Key", 10, /obj/item/device/defibrillator/synthetic, null, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/effect/essentials_set/m2019

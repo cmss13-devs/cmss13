@@ -118,6 +118,11 @@ export const RADIO_CHANNELS = [
     color: '#e6754c',
   },
   {
+    name: 'GRS',
+    freq: 1226,
+    color: '#e6754c',
+  },
+  {
     name: 'WY',
     freq: 1231,
     color: '#fe9b24',

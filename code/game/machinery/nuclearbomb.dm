@@ -391,6 +391,10 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	explosion_time = null
 	for(var/mob/player in world)
 		player << sound(null, channel=5) // stops the explosion sound in case bomb is disabled while it's playing
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/turf/current_turf = get_turf(current_mob)
+		if(current_turf?.z == z && current_mob.stat != DEAD && current_mob.shakecamera > world.time)
+			stop_camera_shake(current_mob) // stops explosion camera shake in case bomb is disabled while it's shaking
 	announce_to_players()
 
 /obj/structure/machinery/nuclearbomb/proc/explode()

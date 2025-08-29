@@ -293,3 +293,48 @@
   realforest2001:
   - bugfix: Fixes the inhand sprites for all three PKD revolvers to use their existing
       placeholders.
+2025-08-27:
+  Blue-Fox5:
+  - bugfix: cryotanks breaking no longer say "The floor"
+  Blundir:
+  - rscadd: HPR and RPG resprites, both now have full camo sets, RPG now has empty
+      state
+  - balance: HPR now has a functional folding stock which gives some stats
+  - balance: RPG now comes with interal magnetic harness
+  - bugfix: fixed vulture breaking bipod color on use
+  Gorap:
+  - rscadd: Added PMC CO Variant for Solaris Ridge
+  - rscadd: PMC Field Officer Beret. Slightly better PMC officer beret.
+  - rscadd: Added VP78 Mostly Empty Belt. (Was going to use this before I realized
+      how you can put holsters on people)
+  - rscadd: Added Ext M39 Corpo Variant for FOL.
+  - ui: Added Field Operation Leader Hud UI
+  - imageadd: Added the broken RTO Icons, Added FOL Hud Icon. Using TWE Radiopack
+      Sprite for it.
+  Jesters-Ballad:
+  - spellcheck: Added an m to make Dapening Dampening
+  LTNTS:
+  - maptweak: Adds a button to secure storage from the inside
+  Unknownity:
+  - bugfix: Zombie claws have attack delay against cades again.
+  Zenith:
+  - balance: Rebalanced health values for many Hybrisa map props, Cars, Windows, Shutters
+      ect. Should be much easier to break as both the Marines and Xenos.
+  - balance: Scrape-away is reduced by 5 minutes. Cave walls will now drop at 00:30.
+  - bugfix: Replaced a lot of windows with their correct versions, was reinforced
+      in some cases, as well as reduced the regular window health values.
+  - bugfix: Fixes broken offset road-railings, makes them one instance instead of
+      two per tile.
+  hry-gh:
+  - bugfix: fixes a runtime when people attempt to view the camera of a deleted marine
+  kiVts:
+  - balance: mou given a minor cooldown to closing and opening the breech. most players
+      shouldn't notice it.
+  realforest2001:
+  - bugfix: Made xeno restraints functional.
+  - rscadd: Added strong xeno restraints, that stop slashes.
+2025-08-28:
+  Drathek:
+  - bugfix: Filling an acid trap successfully no longer swipes at it
+  jupyterkat:
+  - rscadd: added spec icon for heavy armor spec

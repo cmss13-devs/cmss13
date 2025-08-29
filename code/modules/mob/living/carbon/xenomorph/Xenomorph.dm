@@ -316,6 +316,14 @@
 	var/max_design_nodes = 0
 	var/selected_design_mark
 
+	// Egg and Hugger Carrying Vars
+	var/huggers_reserved = 0
+	var/huggers_cur = 0
+	var/huggers_max = 0
+	var/eggs_cur = 0
+	var/eggs_max = 0
+	var/drop_chance = 75
+
 	var/icon_xeno
 	var/icon_xenonid
 
@@ -1131,6 +1139,213 @@
 	SPAN_WARNING("We squeeze and scuttle underneath [current_structure]."), max_distance = 5)
 	forceMove(current_structure.loc)
 	return TRUE
+
+/mob/living/carbon/xenomorph/proc/store_hugger(obj/item/clothing/mask/facehugger/huggie)
+	if(huggie.hivenumber != hivenumber)
+		to_chat(src, SPAN_WARNING("This hugger is tainted!"))
+		return
+
+	if(huggers_max > 0 && huggers_cur < huggers_max)
+		if(huggie.stat != DEAD && !huggie.sterile)
+			huggers_cur++
+			to_chat(src, SPAN_NOTICE("We take a facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+			update_icons()
+			qdel(huggie)
+		else
+			to_chat(src, SPAN_WARNING("This [huggie.name] looks too unhealthy."))
+	else
+		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on us."))
+
+/mob/living/carbon/xenomorph/proc/store_huggers_from_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+		return
+
+	if(morpher.stored_huggers == 0)
+		to_chat(src, SPAN_WARNING("The egg morpher is empty!"))
+		return
+
+	if(huggers_max > 0 && huggers_cur < huggers_max)
+		var/huggers_to_transfer = min(morpher.stored_huggers, huggers_max-huggers_cur)
+		huggers_cur += huggers_to_transfer
+		morpher.stored_huggers -= huggers_to_transfer
+		if(huggers_to_transfer == 1)
+			to_chat(src, SPAN_NOTICE("We take one facehugger and carry it for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+		else
+			to_chat(src, SPAN_NOTICE("We take [huggers_to_transfer] facehuggers and carry them for safekeeping. Now sheltering: [huggers_cur] / [huggers_max]."))
+		update_icons()
+	else
+		to_chat(src, SPAN_WARNING("We can't carry more facehuggers on you."))
+
+/mob/living/carbon/xenomorph/proc/retrieve_hugger(atom/target)
+	if(!target)
+		return
+
+	if(!check_state())
+		return
+
+	//target a hugger on the ground to store it directly
+	if(istype(target, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/huggie = target
+		if(isturf(huggie.loc) && Adjacent(huggie))
+			if(huggie.hivenumber != hivenumber)
+				to_chat(src, SPAN_WARNING("That facehugger is tainted!"))
+				drop_inv_item_on_ground(huggie)
+				return
+			if(on_fire)
+				to_chat(src, SPAN_WARNING("Touching \the [huggie] while you're on fire would burn it!"))
+				return
+			store_hugger(huggie)
+			return
+
+	//target an egg morpher to top up on huggers
+	if(istype(target, /obj/effect/alien/resin/special/eggmorph))
+		var/obj/effect/alien/resin/special/eggmorph/morpher = target
+		if(Adjacent(morpher))
+			if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+				to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+				return
+			if(on_fire)
+				to_chat(src, SPAN_WARNING("Touching \the [morpher] while you're on fire would burn the facehuggers in it!"))
+				return
+			store_huggers_from_egg_morpher(morpher)
+			return
+
+	var/obj/item/clothing/mask/facehugger/huggie = get_active_hand()
+	if(!huggie) //empty active hand
+		//if no hugger in active hand, we take one from our storage
+		if(huggers_cur <= 0)
+			to_chat(src, SPAN_WARNING("We don't have any facehuggers to use!"))
+			return
+
+		if(on_fire)
+			to_chat(src, SPAN_WARNING("Retrieving a stored facehugger while we're on fire would burn it!"))
+			return
+
+		huggie = new(src, hivenumber)
+		huggers_cur--
+		put_in_active_hand(huggie)
+		to_chat(src, SPAN_XENONOTICE("We grab one of the facehugger in our storage. Now sheltering: [huggers_cur] / [huggers_max]."))
+		update_icons()
+		return
+
+/mob/living/carbon/xenomorph/proc/store_egg(obj/item/xeno_egg/eggies)
+	if(eggies.hivenumber != hivenumber)
+		to_chat(src, SPAN_WARNING("That egg is tainted!"))
+		return
+	if(eggs_cur < eggs_max)
+		if(stat == CONSCIOUS)
+			eggs_cur++
+			to_chat(src, SPAN_NOTICE("We store the egg and carry it for safekeeping. Now sheltering: [eggs_cur] / [eggs_max]."))
+			update_icons()
+			qdel(eggies)
+		else
+			to_chat(src, SPAN_WARNING("This [eggies.name] looks too unhealthy."))
+	else
+		to_chat(src, SPAN_WARNING("We can't carry more eggs on ourselves."))
+
+/mob/living/carbon/xenomorph/proc/retrieve_egg(atom/target)
+	if(!target)
+		return
+
+	if(!check_state())
+		return
+
+	//target a hugger on the ground to store it directly
+	if(istype(target, /obj/item/xeno_egg))
+		var/obj/item/xeno_egg/eggies = target
+		if(isturf(eggies.loc) && Adjacent(eggies))
+			var/turf/egg_turf = eggies.loc
+			store_egg(eggies)
+			//Grab all the eggs from the turf
+			if(eggs_cur < eggs_max)
+				for(eggies in egg_turf)
+					if(eggs_cur < eggs_max)
+						store_egg(eggies)
+			return
+
+	if(istype(target, /obj/effect/alien/resin/special/eggmorph))
+		store_eggs_into_egg_morpher(target)
+		return
+
+	var/obj/item/xeno_egg/eggies = get_active_hand()
+	if(!eggies) //empty active hand
+		//if no hugger in active hand, we take one from our storage
+		if(eggs_cur <= 0)
+			to_chat(src, SPAN_WARNING("We don't have any eggs to use!"))
+			return
+		eggies = new(src, hivenumber)
+		eggs_cur--
+		put_in_active_hand(eggies)
+		update_icons()
+		to_chat(src, SPAN_XENONOTICE("We grab one of the eggs in our storage. Now sheltering: [eggs_cur] / [eggs_max]."))
+		return
+
+	if(!istype(eggies)) //something else in our hand
+		to_chat(src, SPAN_WARNING("We need an empty hand to grab one of our stored eggs!"))
+		return
+
+/mob/living/carbon/xenomorph/proc/store_eggs_into_egg_morpher(obj/effect/alien/resin/special/eggmorph/morpher)
+	if(action_busy)
+		return FALSE
+
+	if(!morpher_safety_checks(morpher))
+		return
+
+	visible_message(SPAN_XENOWARNING("[src] starts placing facehuggers into [morpher] from their eggs..."), SPAN_XENONOTICE("We start placing children into [morpher] from our eggs..."))
+	while(eggs_cur > 0)
+		if(!morpher_safety_checks(morpher))
+			return
+
+		if(!do_after(src, 0.75 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(src, SPAN_WARNING("We stop filling [morpher] with our children."))
+			return
+
+		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 20, TRUE)
+		morpher.stored_huggers = min(morpher.huggers_max_amount, morpher.stored_huggers + 1)
+		eggs_cur--
+		to_chat(src, SPAN_XENONOTICE("We slide one of the children out of an egg and place them into [morpher]. Now sheltering: [eggs_cur] / [eggs_max]."))
+		update_icons()
+
+/mob/living/carbon/xenomorph/proc/morpher_safety_checks(obj/effect/alien/resin/special/eggmorph/morpher)
+	if(morpher.linked_hive && (morpher.linked_hive.hivenumber != hivenumber))
+		to_chat(src, SPAN_WARNING("That egg morpher is tainted!"))
+		return FALSE
+
+	if(morpher.stored_huggers == morpher.huggers_max_amount)
+		to_chat(src, SPAN_WARNING("[morpher] is full of children!"))
+		return FALSE
+
+	if(eggs_cur < 1)
+		to_chat(src, SPAN_WARNING("We don't have any eggs left!"))
+		return FALSE
+
+	return TRUE
+
+/mob/living/carbon/xenomorph/attack_ghost(mob/dead/observer/user)
+	. = ..() //Do a view printout as needed just in case the observer doesn't want to join as a Hugger but wants info
+	join_as_facehugger_from_this(user)
+
+/mob/living/carbon/xenomorph/proc/join_as_facehugger_from_this(mob/dead/observer/user)
+	if(!huggers_max)
+		return
+	if(stat == DEAD)
+		to_chat(user, SPAN_WARNING("\The [src] is dead and all their huggers died with it."))
+		return
+	if(!huggers_cur)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	if(huggers_cur <= huggers_reserved)
+		to_chat(user, SPAN_WARNING("\The [src] has reserved the remaining facehuggers for themselves."))
+		return
+	if(!GLOB.hive_datum[hivenumber].can_spawn_as_hugger(user))
+		return
+	//Need to check again because time passed due to the confirmation window
+	if(!huggers_cur)
+		to_chat(user, SPAN_WARNING("\The [src] doesn't have any facehuggers to inhabit."))
+		return
+	GLOB.hive_datum[hivenumber].spawn_as_hugger(user, src)
+	huggers_cur--
 
 ///Generate a new unused nicknumber for the current hive, if hive doesn't exist return 0
 /mob/living/carbon/xenomorph/proc/generate_and_set_nicknumber()

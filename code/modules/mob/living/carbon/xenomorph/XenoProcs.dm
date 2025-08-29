@@ -85,7 +85,14 @@
 
 	. += ""
 
-	if (behavior_delegate)
+	if(huggers_max > 0)
+		. += "Stored Huggers: [huggers_cur] / [huggers_max]"
+	if(eggs_max > 0)
+		. += "Stored Eggs: [eggs_cur] / [eggs_max]"
+	if(huggers_max > 0 || eggs_max > 0)
+		. += ""
+
+	if(behavior_delegate)
 		var/datum/behavior_delegate/MD = behavior_delegate
 		. += MD.append_to_stat()
 

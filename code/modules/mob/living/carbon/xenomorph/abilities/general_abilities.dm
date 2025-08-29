@@ -630,3 +630,15 @@
 	. = ..()
 
 	seethroughComp.toggle_active()
+
+/datum/action/xeno_action/activable/retrieve_hugger_egg
+	name = "Retrieve Hugger/Egg"
+	action_icon_state = "throw_hugger"
+	macro_path = /datum/action/xeno_action/verb/verb_retrieve_hugger_egg
+	action_type = XENO_ACTION_CLICK
+
+	var/getting_egg = FALSE
+
+/datum/action/xeno_action/onclick/set_hugger_reserve
+	name = "Set Hugger Reserve"
+	action_icon_state = "xeno_banish"

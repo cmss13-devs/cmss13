@@ -209,3 +209,10 @@
 	set hidden = TRUE
 	var/action_name = "Order Construction (400)"
 	handle_xeno_macro(src, action_name)
+
+/datum/action/xeno_action/verb/verb_retrieve_hugger_egg()
+	set category = "Alien"
+	set name = "Retrieve Facehugger/Egg"
+	set hidden = TRUE
+	var/action_name = "Retrieve Facehugger/Egg"
+	handle_xeno_macro(src, action_name)

@@ -176,17 +176,11 @@
 		return
 
 	var/mob/living/carbon/xenomorph/xeno = user
-	if(iscarrier(xeno))
-		var/mob/living/carbon/xenomorph/carrier/carrier = xeno
-		carrier.store_egg(src)
-	else if(isreaper(xeno))
-		var/mob/living/carbon/xenomorph/reaper/reaper = xeno
-		reaper.store_egg(src)
+	if(xeno.eggs_max > 0)
+		xeno.store_egg(src)
 	else
 		var/turf/T = get_turf(user)
 		plant_egg(user, T)
-
-
 
 //Deal with picking up facehuggers. "attack_alien" is the universal 'xenos click something while unarmed' proc.
 /obj/item/xeno_egg/attack_alien(mob/living/carbon/xenomorph/user)

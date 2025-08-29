@@ -100,33 +100,22 @@
 
 	//now mobs
 	var/speech_bubble_test = say_test(message)
-	var/image/speech_bubble = image('icons/mob/effects/talk.dmi',src,"[bubble_icon][speech_bubble_test]")
-	speech_bubble.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
+	show_speech_bubble(listening, "[bubble_icon][speech_bubble_test]")
 
 	var/not_dead_speaker = (stat != DEAD)
 	for(var/mob/M in listening)
-		if(not_dead_speaker)
-			M << speech_bubble
 		M.hear_say(message, verb, speaking, alt_name, italics, src)
+		langchat_speech(message, listening, speaking, langchat_color, FALSE, LANGCHAT_DEFAULT_POP, list("langchat_italic"))
 
 	if (length(eavesdropping))
 		var/new_message = stars(message) //hopefully passing the message twice through stars() won't hurt... I guess if you already don't understand the language, when they speak it too quietly to hear normally you would be able to catch even less.
 		for(var/mob/M in eavesdropping)
-			if(not_dead_speaker)
-				M << speech_bubble
 			M.hear_say(new_message, verb, speaking, alt_name, italics, src)
+			langchat_speech(message, listening, speaking, langchat_color, FALSE, LANGCHAT_DEFAULT_POP, list("langchat_italic"))
 
 	spawn(30)
-		if(client)
-			client.images -= speech_bubble
 		if(not_dead_speaker)
 			log_say("[name != "Unknown" ? name : "([real_name])"] \[Whisper\]: [message] (CKEY: [key]) (JOB: [job]) (AREA: [get_area_name(loc)])")
-			for(var/mob/M in listening)
-				if(M.client)
-					M.client.images -= speech_bubble
-			for(var/mob/M in eavesdropping)
-				if(M.client)
-					M.client.images -= speech_bubble
 
 	if (length(watching))
 		var/rendered = "<span class='game say'><span class='name'>[src.name]</span> whispers something.</span>"

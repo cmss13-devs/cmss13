@@ -20,6 +20,7 @@
 	plasma_cost = 50
 
 	var/range = 2
+	var/flesh_plasma_reap = 5
 
 /datum/action/xeno_action/activable/replenish
 	name = "Replenish"

@@ -378,70 +378,41 @@
 /datum/behavior_delegate/base_reaper
 	name = "Base Reaper Behavior Delegate"
 
-	var/passive_flesh_regen = 1 /// Base value for passive flesh plasma generation, this is not modified by abilities.
-	var/passive_flesh_multi= 1 /// Multiplier for passive flesh plasma generation, modified by abilities.
-	var/passive_multi_max = 10 /// What is the maximum amount you can passively generate?
-	var/passive_pause_decay = FALSE /// As passive generation decays over time, is it paused?
-	var/passive_pause_dur = 5 SECONDS /// How long is the passive generation decay going to be paused for?
-	var/passive_pause_timer_id = TIMER_ID_NULL
+	var/flesh_plasma_slash = 2 /// How much flesh plasma is generated on a slash
+	var/flesh_plasma_kill = 10 /// How much flesh plasma is generated on a kill
 
-	var/corpse_buildup /// Bonus flesh plasma generated when corpses are nearby, building up when corpses are nearby.
-	var/maximum_corpse_buildup = 20 /// The maximum amount of flesh plasma you can gain from being around dead bodies.
-	var/nearby_corpse_range = 3 /// Within how many tiles of you do corpses need to be for you to generate flesh plasma off them.
-
-/datum/behavior_delegate/base_reaper/proc/mult_decay()
-	if(passive_pause_decay == FALSE && passive_flesh_multi > 1)
-		modify_passive_mult(-1)
-
-/datum/behavior_delegate/base_reaper/proc/initiate_passive_decay_pause()
-	passive_pause_decay = TRUE
-	if(passive_pause_timer_id != TIMER_ID_NULL)
-		deltimer(passive_pause_timer_id)
-	passive_pause_timer_id = addtimer(VARSET_CALLBACK(src, passive_pause_decay, FALSE), passive_pause_dur)
-
-/datum/behavior_delegate/base_reaper/proc/modify_passive_mult(amount)
-	passive_flesh_multi += amount
-	if(passive_flesh_multi > passive_multi_max)
-		passive_flesh_multi = passive_multi_max
-	if(passive_flesh_multi < 1)
-		passive_flesh_multi = 1
+	var/corpse_buildup = 0 /// How much flesh plasma is generated from nearby corpses
+	var/maximum_corpse_buildup = 30 /// The maximum amount of flesh plasma you can gain from being around dead bodies
+	var/nearby_corpse_range = 3 /// Within how many tiles of you do corpses need to be for you to generate flesh plasma off them
 
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
-	modify_passive_mult(2)
+	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno
+	reaper.modify_flesh_plasma(flesh_plasma_slash)
 
 /datum/behavior_delegate/base_reaper/on_kill_mob()
-	initiate_passive_decay_pause()
+	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno
+	reaper.modify_flesh_plasma(flesh_plasma_kill)
 
 /datum/behavior_delegate/base_reaper/on_life()
 	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno
 
-	var/corpses_nearby = FALSE
 	var/obj/effect/alien/weeds/our_weeds = locate() in reaper.loc
-	if(our_weeds && our_weeds.hivenumber == reaper.hivenumber) // We must be on our weeds belonging to our hive to generate flesh plasma from nearby corpses
+	if(our_weeds && our_weeds.hivenumber == reaper.hivenumber) // We must be on weeds belonging to our hive to generate flesh plasma from nearby corpses
 		for(var/mob/living/carbon/dead_mob in view(nearby_corpse_range, reaper))
-			if(corpse_buildup == maximum_corpse_buildup) // No need to search more at max, but do need to specify that there's corpses around
-				corpses_nearby = TRUE
-				break
-
 			if(dead_mob.stat != DEAD)
 				continue
+
+			if(corpse_buildup == maximum_corpse_buildup) // Corpses not on weeds can sustain the buildup
+				break
 
 			var/obj/effect/alien/weeds/their_weeds = locate() in dead_mob.loc
 			if(!their_weeds || (their_weeds && their_weeds.hivenumber != reaper.hivenumber))
 				continue
 
-			corpses_nearby = TRUE
-			corpse_buildup += 1
+			corpse_buildup += 3
 
-	if(corpse_buildup > 0 && !corpses_nearby)
-		corpse_buildup =- 5
-		if(corpse_buildup < 0)
-			corpse_buildup = 0
-
-	corpses_nearby = FALSE
-	reaper.modify_flesh_plasma(corpse_buildup + passive_flesh_regen * passive_flesh_multi)
-
-	mult_decay()
+	reaper.modify_flesh_plasma(corpse_buildup)
+	corpse_buildup = 0
 
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()
@@ -491,7 +462,6 @@
 /datum/action/xeno_action/activable/reap/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/reaper/xeno = owner
 	var/mob/living/carbon/carbon = target
-	var/datum/behavior_delegate/base_reaper/reaper = xeno.behavior_delegate
 
 	if(!action_cooldown_check() || !xeno.check_state())
 		return
@@ -539,8 +509,7 @@
 	var/damage = (xeno.melee_damage_upper + xeno.frenzy_aura * FRENZY_DAMAGE_MULTIPLIER)
 	carbon.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, target_limb ? target_limb.name : "chest")
 	carbon.apply_effect(1, DAZE)
-	reaper.initiate_passive_decay_pause()
-	reaper.modify_passive_mult(1)
+	xeno.modify_flesh_plasma(flesh_plasma_reap)
 	shake_camera(target, 2, 1)
 	apply_cooldown()
 	return ..()
@@ -595,7 +564,7 @@
 			return
 
 		flesh_cost_mult = 0.5
-		plasma_cost_mult = 0.25 // Weeds on the other hand can be cheap no matter how far
+		plasma_cost_mult = 0.25 // Weeds can be cheap no matter how far
 
 		current_target_is_xeno = FALSE
 		current_target_is_Weeds = TRUE
@@ -642,7 +611,7 @@
 
 			// Healer Drone is still better at large amounts of healing thanks to 10x shorter CD
 			// Valkyrie is better for groups fighting off weeds thanks to AOE healing with every slash
-			// With the semi-ranged nature and not needing to lose health to give it, this should be good for prolonging lifespans
+			// With the semi-ranged nature and not needing to lose health to give it, this should be good for prolonging lifespans steadily and stably
 			new /datum/effects/heal_over_time(xeno_carbon, heal_amount = recovery_amount)
 		xeno_carbon.xeno_jitter(1 SECONDS)
 		xeno_carbon.flick_heal_overlay(2.5 SECONDS, "#c5bc81")

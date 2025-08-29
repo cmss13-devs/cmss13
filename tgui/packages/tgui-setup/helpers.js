@@ -324,6 +324,8 @@
       );
     };
 
+    console.log(options);
+
     if (attempt >= RETRY_SECONDARY_ATTEMPTS) {
       if (
         !Byond.primaryUrl.contains('tgui') &&

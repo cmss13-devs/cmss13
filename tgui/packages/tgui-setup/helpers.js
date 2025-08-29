@@ -37,6 +37,8 @@
   Byond.primaryCdn = 'tgui:primarycdn';
   Byond.secondaryCdn = 'tgui:secondarycdn';
 
+  Byond.useSecondary = 'tgui:usesecondary';
+
   // Backwards compatibility
   window.__windowId__ = Byond.windowId;
 
@@ -265,7 +267,7 @@
   let RETRY_WAIT_INITIAL = 500;
   let RETRY_WAIT_INCREMENT = 500;
 
-  let RETRY_SECONDARY_ATTEMPTS = 2;
+  let RETRY_SECONDARY_ATTEMPTS = 1;
 
   let loadedAssetByUrl = {};
 
@@ -294,6 +296,13 @@
     let type = options.type;
     let sync = options.sync;
     let attempt = options.attempt || 0;
+
+    let usingSecondaryDefault = !Byond.useSecondary.includes('tgui');
+    if (usingSecondaryDefault) {
+      url = url.replace(Byond.primaryCdn, Byond.secondaryCdn);
+    }
+
+    let secondaryLoadSuccessful = false;
     if (loadedAssetByUrl[url]) {
       return;
     }
@@ -326,14 +335,21 @@
 
     console.log(options);
 
-    if (attempt >= RETRY_SECONDARY_ATTEMPTS) {
+    if (!usingSecondaryDefault && attempt >= RETRY_SECONDARY_ATTEMPTS) {
       if (
         !Byond.primaryCdn.includes('tgui') &&
         !Byond.secondaryCdn.includes('tgui')
       ) {
         url = url.replace(Byond.primaryCdn, Byond.secondaryCdn);
+        secondaryLoadSuccessful = true;
       }
     }
+
+    let success = function () {
+      if (secondaryLoadSuccessful) {
+        Byond.command('.secondarycdn');
+      }
+    };
 
     // JS specific code
     if (type === 'js') {
@@ -352,6 +368,7 @@
         node = null;
         retry();
       };
+      node.onload = success;
       injectNode(node);
       return;
     }
@@ -384,6 +401,7 @@
         if (isStyleSheetLoaded(node, url)) {
           // Render the stylesheet
           node.media = 'all';
+          success();
           return;
         }
         removeNodeAndRetry();

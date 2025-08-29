@@ -85,6 +85,14 @@ CLIENT_VERB(edit_hotkeys)
 	set category = "Preferences"
 	prefs.macros.tgui_interact(usr)
 
+/client/var/use_secondary_cdn = FALSE
+
+/client/verb/switch_to_secondary()
+	set name = ".secondarycdn"
+	set category = null
+
+	use_secondary_cdn = TRUE
+
 /client/var/client_keysend_amount = 0
 /client/var/next_keysend_reset = 0
 /client/var/next_keysend_trip_reset = 0

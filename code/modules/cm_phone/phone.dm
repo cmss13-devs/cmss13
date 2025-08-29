@@ -337,7 +337,6 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		var/mob/M = attached_to.loc
 		M.drop_held_item(attached_to)
 		playsound(get_turf(M), pickup_sound, 100, FALSE, 7)
-		hangup_loop.stop()
 
 	attached_to.forceMove(src)
 	reset_call()

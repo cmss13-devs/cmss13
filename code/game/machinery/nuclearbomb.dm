@@ -390,7 +390,7 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	timeleft = initial(timeleft)
 	explosion_time = null
 	for(var/mob/player in world)
-    	player << sound(null, channel=5) // stops the explosion sound in case bomb is disabled while it's playing
+		player << sound(null, channel=5) // stops the explosion sound in case bomb is disabled while it's playing
 	announce_to_players()
 
 /obj/structure/machinery/nuclearbomb/proc/explode()

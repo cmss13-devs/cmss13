@@ -328,8 +328,8 @@
 
     if (attempt >= RETRY_SECONDARY_ATTEMPTS) {
       if (
-        !Byond.primaryCdn.contains('tgui') &&
-        !Byond.secondaryCdn.contains('tgui')
+        !Byond.primaryCdn.includes('tgui') &&
+        !Byond.secondaryCdn.includes('tgui')
       ) {
         url = url.replace(Byond.primaryCdn, Byond.secondaryCdn);
       }

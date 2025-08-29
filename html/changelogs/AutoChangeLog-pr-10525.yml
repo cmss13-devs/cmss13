@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - rscadd: "Rephrased Renegade defection message and added an announcement for marines when Renegades appear"

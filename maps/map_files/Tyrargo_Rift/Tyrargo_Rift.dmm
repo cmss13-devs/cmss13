@@ -23,6 +23,51 @@
 /obj/structure/prop/hybrisa/supermart/supermartfruitbasket,
 /turf/open/floor/strata/green3,
 /area/tyrargo/indoors/market/ground)
+"aaf" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_y = -3;
+	pixel_x = 7
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = 3;
+	pixel_x = 14
+	},
+/turf/open/gm/coast/dirt/forestbeachcorner2/south_east,
+/area/tyrargo/oob/outdoors)
+"aag" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/clothing/accessory/patch/army/armor,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
+"aah" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/clothing/accessory/patch/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
+"aai" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/clothing/head/beret/marine/commander/black/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
 "aaj" = (
 /turf/open_space,
 /area/tyrargo/oob)
@@ -40,6 +85,18 @@
 /obj/effect/landmark/monkey_spawn,
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/colony_exterior/south_east)
+"aan" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/weapon/gun/rifle/m4ra/army/full{
+	pixel_y = -6
+	},
+/obj/item/weapon/gun/smg/m39/army/heap{
+	pixel_y = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
 "aao" = (
 /turf/open/floor/prison/cell_stripe,
 /area/tyrargo/indoors/sewer_treatment/upper)
@@ -87,6 +144,13 @@
 "aas" = (
 /turf/open/asphalt/cement,
 /area/tyrargo/oob)
+"aat" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/storage/backpack/molle/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
 "aau" = (
 /obj/structure/machinery/light{
 	light_color = "#A7DBB6"
@@ -118,6 +182,13 @@
 "aaB" = (
 /turf/open/floor/strata/green4/east,
 /area/tyrargo/indoors/market/ground)
+"aaC" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/storage/backpack/molle/backpack/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
 "aaD" = (
 /turf/open/floor/strata/green3/west,
 /area/tyrargo/indoors/market/ground)
@@ -137,6 +208,15 @@
 "aaI" = (
 /turf/open/floor/prison/darkbrown2/east,
 /area/tyrargo/indoors/sewer_treatment/upper)
+"aaJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/clothing/shoes/marine/army/knife,
+/obj/item/clothing/gloves/marine/army,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
 "aaK" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -184,6 +264,21 @@
 "aaS" = (
 /turf/open/floor/hybrisa/wood/redwood,
 /area/tyrargo/indoors/apartment/south_ground)
+"aaT" = (
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/head/helmet/marine/rto/army/medic{
+	pixel_y = 11
+	},
+/obj/item/clothing/suit/storage/marine/medium/rto/army{
+	pixel_y = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
 "aaU" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/mechanical,
@@ -216,6 +311,13 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison,
 /area/tyrargo/indoors/engineering/ground)
+"aba" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/weapon/gun/rifle/m41a/army/full,
+/turf/open/floor/prison/floor_plate,
+/area/tyrargo/oob/outdoors)
 "abb" = (
 /obj/effect/decal/cleanable/generic,
 /turf/open/hybrisa/street/cement2,
@@ -17195,10 +17297,6 @@
 	},
 /turf/open/auto_turf/tyrargo_grass/layer0,
 /area/tyrargo/outdoors/outskirts/fsb_north)
-"aPL" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull/outerhull_dir/east,
-/area/tyrargo/oob/outdoors)
 "aPM" = (
 /obj/structure/prop/tyrargo/boards/boards_1{
 	dir = 1;
@@ -41138,13 +41236,6 @@
 	},
 /turf/open/floor/interior/wood,
 /area/tyrargo/outdoors/outskirts/fsb_north)
-"bPG" = (
-/obj/effect/decal/grass_overlay/grass1/dark,
-/obj/effect/decal/grass_overlay/grass1/dark{
-	dir = 8
-	},
-/turf/open/auto_turf/tyrargo_grass/layer0_mud,
-/area/tyrargo/outdoors/outskirts/east)
 "bPH" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -42881,10 +42972,6 @@
 "bTJ" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northwest,
 /area/tyrargo/outdoors/outskirts/central)
-"bTK" = (
-/obj/structure/blocker/invisible_wall,
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
-/area/tyrargo/oob/outdoors)
 "bTL" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/southwest,
 /area/tyrargo/indoors/comms/upper)
@@ -64202,10 +64289,6 @@
 /obj/effect/landmark/corpsespawner/hybrisa/nspa_constable,
 /turf/open/hybrisa/street/cement2,
 /area/tyrargo/outdoors/colony_streets/south_east)
-"dfQ" = (
-/obj/item/weapon/gun/smg/m39/army/heap,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
 "dfR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/blocker/invisible_wall,
@@ -92996,6 +93079,12 @@
 	pixel_y = -13
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = 3;
+	pixel_x = 14
+	},
 /turf/open/gm/coast/dirt/forestbeachcorner2/south_west,
 /area/tyrargo/oob/outdoors)
 "ezt" = (
@@ -93073,6 +93162,12 @@
 	pixel_y = 5
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = 3;
+	pixel_x = 14
+	},
 /turf/open/gm/coast/dirt/forestbeachcorner2/north_west,
 /area/tyrargo/oob/outdoors)
 "ezC" = (
@@ -93614,6 +93709,12 @@
 	pixel_y = 5
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = 3;
+	pixel_x = 14
+	},
 /turf/open/gm/river/tyrargo,
 /area/tyrargo/oob/outdoors)
 "eAT" = (
@@ -100260,15 +100361,14 @@
 /obj/effect/decal/heavy_cable/node_n_e,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/tyrargo/indoors/security/upper)
-"eSe" = (
-/obj/item/weapon/gun/rifle/m4ra/army/full,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
 "eSf" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt,
 /area/tyrargo/indoors/market/upper)
 "eSg" = (
 /obj/item/clothing/accessory/patch/army/infantry,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob/outdoors)
 "eSh" = (
@@ -100366,18 +100466,9 @@
 	},
 /turf/open/floor/prison/cell_stripe/east,
 /area/tyrargo/indoors/market/upper)
-"eSw" = (
-/obj/item/clothing/accessory/patch/army/armor,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
 "eSx" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/north,
 /area/tyrargo/indoors/market/upper)
-"eSy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/accessory/patch/army,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
 "eSz" = (
 /obj/structure/prop/invuln/ice_prefab/roof_greeble{
 	icon_state = "vent3"
@@ -100581,51 +100672,25 @@
 "eTu" = (
 /turf/open/floor/almayer_hull/outerhull_dir_alt/southeast,
 /area/tyrargo/indoors/gararge/upper/external)
-"eTv" = (
-/obj/item/clothing/suit/storage/marine/medium/rto/army,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
-"eTw" = (
-/obj/item/storage/backpack/molle/army,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
-"eTx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/storage/backpack/molle/backpack/army,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
-"eTy" = (
-/obj/item/weapon/gun/rifle/m41a/army/full,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
-"eTz" = (
-/obj/item/clothing/head/helmet/marine/rto/army,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
-"eTA" = (
-/obj/item/clothing/head/helmet/marine/rto/army/engi,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
-"eTB" = (
-/obj/item/clothing/head/helmet/marine/rto/army/medic,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
 "eTC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/ladder/multiz,
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob/outdoors)
-"eTD" = (
-/obj/item/clothing/gloves/marine/army,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
-"eTE" = (
-/obj/item/clothing/shoes/marine/army/knife,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
 "eTF" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/head/beret/cm/black/army,
+/obj/structure/showcase{
+	desc = "The display model for a Weyland Yutani generation one synthetic. It almost feels like the eyes on this one follow you.";
+	icon = 'icons/mob/humans/species/r_synthetic.dmi';
+	icon_state = "Synthetic_Template";
+	name = "Display synthetic"
+	},
+/obj/item/clothing/head/helmet/marine/rto/army/engi{
+	pixel_y = 11
+	},
+/obj/item/clothing/suit/storage/marine/medium/rto/army{
+	pixel_y = 1
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob/outdoors)
 "eTG" = (
@@ -100633,10 +100698,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeigecheckered,
 /area/tyrargo/indoors/apartment/north_upper)
-"eTH" = (
-/obj/item/clothing/head/beret/marine/commander/black/army,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
 "eTI" = (
 /obj/structure/flora/wood/stick2,
 /turf/open/auto_turf/tyrargo_grass/layer1,
@@ -100823,11 +100884,6 @@
 	},
 /turf/open/asphalt/cement/cement14,
 /area/tyrargo/outdoors/colony_streets/north_west)
-"eUh" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/item/weapon/gun/pistol/vp78/army,
-/turf/open/floor/prison/floor_plate,
-/area/tyrargo/oob/outdoors)
 "eUi" = (
 /obj/effect/decal/grass_overlay/grass1/dark{
 	dir = 4
@@ -102970,6 +103026,9 @@
 /area/tyrargo/indoors/mall)
 "fan" = (
 /obj/item/weapon/gun/rifle/lmg/army,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
 /turf/open/floor/prison/floor_plate,
 /area/tyrargo/oob/outdoors)
 "fao" = (
@@ -103095,7 +103154,6 @@
 	pixel_x = 2;
 	pixel_y = -5
 	},
-/obj/structure/blocker/invisible_wall,
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/tyrargo/oob/outdoors)
 "faM" = (
@@ -179792,7 +179850,7 @@ bQd
 bQd
 bwE
 bwE
-bPG
+etw
 bFF
 byQ
 byQ
@@ -181891,7 +181949,7 @@ bOk
 eqU
 bOk
 ezD
-ezv
+aaf
 ezo
 cjf
 cje
@@ -199131,10 +199189,10 @@ bFn
 eYW
 bta
 bta
+aat
 eXd
-eTD
 eSg
-eXf
+aag
 bta
 bta
 dqp
@@ -199315,10 +199373,10 @@ eWF
 bFn
 bGL
 bta
+aaC
 eXd
-eTE
-eSw
-eXf
+eXd
+aah
 bta
 bta
 aHJ
@@ -199499,9 +199557,9 @@ bFo
 eWF
 eWF
 bta
+aaJ
+eXd
 eXf
-eTz
-eSy
 eXd
 cts
 cEc
@@ -199684,8 +199742,8 @@ bFo
 eWF
 bta
 eTF
-eTA
-eTv
+eXd
+eXd
 eXd
 eCi
 cEd
@@ -199867,10 +199925,10 @@ bFo
 eYa
 bFo
 bta
-eTH
-eTB
-eTw
-eXf
+eTJ
+eXd
+eXd
+aai
 bta
 cEs
 aHJ
@@ -200051,10 +200109,10 @@ bFS
 eWj
 bFo
 bta
+aaT
+eXf
+eXf
 eXd
-eUh
-eTx
-dfQ
 cts
 cEu
 dFs
@@ -200237,8 +200295,8 @@ eWj
 bta
 fan
 eTC
-eTy
-eSe
+eXd
+eXd
 cts
 cEv
 eja
@@ -200419,10 +200477,10 @@ bFo
 eWj
 eWj
 bta
-eTJ
+aba
 eXf
 eXd
-eXd
+aan
 bta
 bta
 ejb
@@ -245003,10 +245061,10 @@ fax
 fax
 fax
 fTs
-bTK
-aPL
-aPL
-aPL
+faJ
+faF
+faF
+faF
 faL
 faH
 faD

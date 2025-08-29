@@ -394,11 +394,11 @@
   };
 
   Byond.loadJs = function (url, sync) {
-    loadAsset({ url: url, sync: sync, type: 'js' });
+    loadAsset({ url: url, sync: sync, type: 'js', attempt: 0 });
   };
 
   Byond.loadCss = function (url, sync) {
-    loadAsset({ url: url, sync: sync, type: 'css' });
+    loadAsset({ url: url, sync: sync, type: 'css', attempt: 0 });
   };
 
   Byond.saveBlob = function (blob, filename, ext) {

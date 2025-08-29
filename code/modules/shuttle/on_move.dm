@@ -54,7 +54,7 @@ All ShuttleMove procs go here
 			if(!istype(thing, /obj/effect))
 				log_debug("[shuttle] deleted an anchored [thing]")
 
-		qdel(thing, TRUE)
+		qdel(thing)
 
 
 // Called on the old turf to move the turf data

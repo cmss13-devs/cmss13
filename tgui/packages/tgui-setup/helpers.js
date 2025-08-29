@@ -346,6 +346,7 @@
     }
 
     let success = function () {
+      console.log(secondaryLoadSuccessful);
       if (secondaryLoadSuccessful) {
         Byond.command('.secondarycdn');
       }

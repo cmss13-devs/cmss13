@@ -560,6 +560,8 @@
 /datum/equipment_preset/corpse/ua_riot
 	name = "Corpse - UA Officer"
 	assignment = "United Americas Riot Officer"
+	faction = FACTION_UA
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	idtype = /obj/item/card/id/silver
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

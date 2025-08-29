@@ -71,6 +71,8 @@
 	assignment = "United Americas Peacekeeper"
 	minimap_icon = "peacekeeper"
 	minimap_background = "background_ua"
+	faction = FACTION_UA
+	faction_group = FACTION_LIST_SURVIVOR_UA
 
 /datum/equipment_preset/survivor/security/solaris/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(new_human), WEAR_BODY)

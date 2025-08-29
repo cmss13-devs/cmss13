@@ -55,7 +55,8 @@
 	idtype = /obj/item/card/id/silver
 	job_title = JOB_SURVIVOR
 	role_comm_title = "UA RO"
-	faction = FACTION_SURVIVOR
+	faction = FACTION_UA
+	faction_group = FACTION_LIST_SURVIVOR_UA
 	minimap_icon = "mp"
 	minimap_background = "background_ua"
 

@@ -1,8 +1,8 @@
 /obj/item/device/ai_tech_pda
-	icon = 'icons/obj/items/synth/ait_pda.dmi'
+	icon = 'icons/obj/items/synth/wj_pda.dmi'
 	name = "T411 AIDT"
 	desc = "Artifical Intelligence Diagnostic Tablet model T411. Built to withstand a nuclear bomb."
-	icon_state = "karnak_off"
+	icon_state = "karnak_aist_off"
 	unacidable = TRUE
 	explo_proof = TRUE
 	req_one_access = list(ACCESS_ARES_DEBUG, ACCESS_MARINE_AI)
@@ -103,11 +103,11 @@
 /obj/item/device/ai_tech_pda/update_icon()
 	. = ..()
 	if(last_menu == "off")
-		icon_state = "karnak_off"
+		icon_state = "karnak_aist_off"
 	else if(current_menu == "login")
-		icon_state = "karnak_login_anim"
+		icon_state = "karnak_aist_login_anim"
 	else
-		icon_state = "karnak_on_anim"
+		icon_state = "karnak_aist_on_anim"
 
 /obj/item/device/ai_tech_pda/attack_self(mob/living/carbon/human/user)
 	if(..() || !allowed(user))

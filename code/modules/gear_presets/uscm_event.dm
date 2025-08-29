@@ -472,6 +472,8 @@
 		ACCESS_MARINE_AI,
 		ACCESS_ARES_DEBUG,
 	)
+	minimap_background = "background_command"
+	minimap_icon = "aist"
 
 /datum/equipment_preset/uscm_event/ai_tech/load_vanity(mob/living/carbon/human/new_human)
 	new_human.mind.store_memory("<b>ARES Interface Code:</b> [GLOB.ares_link.code_interface]<br><b>APOLLO Interface Code:</b> [GLOB.ares_link.code_apollo]")

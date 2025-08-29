@@ -1950,6 +1950,7 @@
 		/obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6,
 		/obj/item/ammo_magazine/smg/mp5,
 		/obj/item/ammo_magazine/smg/mp5/ap,
+		/obj/item/ammo_magazine/smg/mp5/mp5a5_heap,
 	)
 
 /obj/item/storage/belt/gun/m39/mp5a6/full/fill_preset_inventory()
@@ -1960,7 +1961,7 @@
 /obj/item/storage/belt/gun/m39/mp5a6/heap/fill_preset_inventory()
 	handle_item_insertion(new /obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6/heap(src))
 	for(var/i = 1 to storage_slots - 1)
-		new /obj/item/ammo_magazine/smg/mp5a5_heap(src)
+		new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap(src)
 
 #define MAXIMUM_MAGAZINE_COUNT 2
 

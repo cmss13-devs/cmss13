@@ -257,10 +257,10 @@
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mp5/ap/black, WEAR_L_STORE)
 	else
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6/heap, WEAR_J_STORE)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5a5_heap, WEAR_IN_JACKET)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5a5_heap, WEAR_IN_JACKET)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5a5_heap, WEAR_IN_JACKET)
-		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5a5_heap, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap, WEAR_IN_JACKET)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mp5a5_heap/black, WEAR_L_STORE)
 
 	//storage items

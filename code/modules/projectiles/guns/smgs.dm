@@ -352,7 +352,7 @@
 	)
 
 /obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6/heap
-	current_mag = /obj/item/ammo_magazine/smg/mp5a5_heap
+	current_mag = /obj/item/ammo_magazine/smg/mp5/mp5a5_heap
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.

@@ -45,11 +45,12 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife, WEAR_FEET)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc/grs, WEAR_BODY)//CIA DONE
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof/grs, WEAR_JACKET)//CIA DONE
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof/grs, WEAR_HEAD)//CIA DONE
 
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/tactical, WEAR_J_STORE)//CIA DONE
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/tactical/a6, WEAR_J_STORE)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/black/m16/ap, WEAR_WAIST)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/full, WEAR_L_STORE)
@@ -85,6 +86,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof/grs/smartgun, WEAR_JACKET)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun/co(new_human), WEAR_J_STORE)
@@ -120,6 +122,7 @@
 	var/obj/item/clothing/accessory/storage/tool_webbing/equipped/webbing = new()
 	uniform.attach_accessory(new_human, webbing)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)//CIA DONE
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 	//clothes
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia_grs, WEAR_L_EAR)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)//CIA DONE
@@ -162,6 +165,7 @@
 	var/obj/item/clothing/accessory/storage/surg_vest/equipped/W = new()
 	uniform.attach_accessory(new_human, W)
 	new_human.equip_to_slot_or_del(uniform, WEAR_BODY)//CIA DONE
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 	//clothing
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia_grs, WEAR_L_EAR)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)//CIA DONE
@@ -203,6 +207,7 @@
 	//clothes
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia_grs, WEAR_L_EAR)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc/grs, WEAR_BODY)//CIA DONE
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife, WEAR_FEET)//CIA DONE
@@ -211,7 +216,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof/grs, WEAR_HEAD)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
 
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/tactical, WEAR_J_STORE)//CIA DONE
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/tactical/a6, WEAR_J_STORE)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/marine/black/m16/ap, WEAR_WAIST)//CIA DONE
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)//CIA DONE

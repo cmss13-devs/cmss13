@@ -273,7 +273,7 @@
 
 /obj/item/ammo_magazine/rifle/m16/m16a5/heap
 	name = "\improper M16A5 HEAP magazine (5.56x45mm)"
-	desc = "An armor-piercing 5.56x45mm magazine for the M16A5 assault rifle."
+	desc = "A high-explosive armor-piercing 5.56x45mm magazine for the M16A5 assault rifle."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
 

@@ -103,7 +103,7 @@
 
 /obj/item/ammo_magazine/smg/mp5a5_heap
 	name = "\improper MP5A5 AP magazine (9mm)"
-	desc = "A 9mm AP magazine for the MP5A5."
+	desc = "A 9mm high-explosive armor-piercing magazine for the MP5A5."
 	default_ammo = /datum/ammo/bullet/smg/heap
 	caliber = "9mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/smgs.dmi'

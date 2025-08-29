@@ -407,7 +407,6 @@
 /obj/structure/barricade/handrail{
 	dir = 4;
 	layer = 3.1;
-	pixel_y = 0;
 	pixel_x = 2
 	},
 /turf/open/floor/almayer/cargo_arrow/west,
@@ -4693,13 +4692,11 @@
 "akZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
-	pixel_y = 0;
 	pixel_x = 1
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = 0
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/cargo_arrow/east,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -5313,8 +5310,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = 0
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/cryo_cells)
@@ -5689,8 +5685,7 @@
 "anQ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 0
+	pixel_x = -1
 	},
 /turf/open/floor/almayer/plating_striped/northeast,
 /area/almayer/shipboard/stern_point_defense)
@@ -5990,8 +5985,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
-	pixel_x = 1;
-	pixel_y = 0
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/cryo_cells)
@@ -6061,9 +6055,6 @@
 "aoO" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/stern_point_defense)
-"aoP" = (
-/turf/closed/wall/almayer/aicore/hull,
-/area/almayer/command/aist_office)
 "aoQ" = (
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/shipboard/stern_point_defense)
@@ -6515,12 +6506,6 @@
 "apV" = (
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/hallways/lower/starboard_aft_hallway)
-"apW" = (
-/turf/closed/wall/almayer/aicore/reinforced,
-/area/almayer/command/aist_office)
-"apX" = (
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southwest,
-/area/almayer/command/aist_office)
 "apY" = (
 /obj/structure/machinery/telecomms/server/presets/medical,
 /obj/structure/machinery/telecomms/processor/preset_three{
@@ -6575,8 +6560,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 0
+	icon_state = "NW-out"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
@@ -9512,8 +9496,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/mess)
@@ -10086,9 +10069,7 @@
 /turf/open_space,
 /area/almayer/middeck/hanger)
 "azK" = (
-/obj/structure/pipes/vents/pump{
-	dir = 2
-	},
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/almayer/orangecorner/east,
 /area/almayer/hallways/upper/aft_hallway)
 "azL" = (
@@ -10473,9 +10454,7 @@
 /turf/open/floor/plating,
 /area/almayer/command/computerlab)
 "aAE" = (
-/obj/structure/pipes/vents/scrubber{
-	dir = 2
-	},
+/obj/structure/pipes/vents/scrubber,
 /turf/open/floor/almayer/plate,
 /area/almayer/command/cic)
 "aAF" = (
@@ -10968,7 +10947,6 @@
 	pixel_y = 30
 	},
 /obj/structure/machinery/prop/almayer/computer{
-	dir = 2;
 	pixel_x = -8
 	},
 /turf/open/floor/almayer/silver/north,
@@ -11677,7 +11655,6 @@
 "aDM" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/faxmachine/uscm/almayer/command{
-	pixel_y = 0;
 	density = 0;
 	can_block_movement = 0;
 	sub_name = "Aux Support Officer";
@@ -11956,15 +11933,12 @@
 /area/almayer/engineering/upper_engineering)
 "aEx" = (
 /obj/structure/barricade/handrail{
-	dir = 2;
 	layer = 3.1;
-	pixel_y = 0;
 	pixel_x = -1
 	},
 /obj/structure/barricade/handrail{
 	dir = 4;
 	layer = 3.1;
-	pixel_y = 0;
 	pixel_x = 2
 	},
 /obj/structure/surface/rack{
@@ -12537,8 +12511,7 @@
 	pixel_x = 1
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0
+	icon_state = "S"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/synthcloset)
@@ -12548,8 +12521,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/north1)
@@ -12766,8 +12738,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/upper/u_a_s)
@@ -12849,8 +12820,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/upper/u_a_s)
@@ -13313,8 +13283,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
@@ -13519,8 +13488,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
@@ -13649,9 +13617,12 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
 "aJn" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/almayer/aicore/no_build,
-/area/almayer/command/airoom)
+/obj/structure/prop/hybrisa/factory/robotic_arm/flipped{
+	pixel_x = -28;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
 "aJo" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /turf/open_space,
@@ -13714,8 +13685,7 @@
 "aJz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
@@ -13790,8 +13760,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sp)
@@ -13866,8 +13835,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
@@ -13887,8 +13855,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
@@ -13943,8 +13910,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
@@ -13992,8 +13958,7 @@
 "aKp" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
@@ -14021,7 +13986,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = -8;
@@ -14029,7 +13993,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Railing";
-	explo_proof = 1;
 	name = "ARES Chamber Railings";
 	needs_power = 0;
 	pixel_x = 24;
@@ -15313,8 +15276,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -15650,6 +15612,12 @@
 /obj/item/stack/sheet/mineral/phoron/medium_stack{
 	desc = "Phoron is an extremely rare mineral with exotic properties, often used in cutting-edge research. Just getting it into a stable, solid form is already hard enough. Handle with care."
 	},
+/obj/structure/machinery/door_control/brbutton{
+	id = "engie_store";
+	name = "Emergency Storage";
+	pixel_y = 26;
+	req_one_access_txt = "7"
+	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/engineering/upper_engineering)
 "aOR" = (
@@ -15854,8 +15822,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -15872,8 +15839,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -16053,8 +16019,7 @@
 "aPR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -16135,7 +16100,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
 "aQd" = (
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
+/turf/closed/wall/almayer/aicore/reinforced,
 /area/almayer/command/aist_office)
 "aQe" = (
 /obj/effect/decal/warning_stripes{
@@ -16148,8 +16113,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -16175,8 +16139,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
@@ -16448,8 +16411,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
@@ -16461,8 +16423,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -16488,8 +16449,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
@@ -16592,8 +16552,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -16661,8 +16620,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -16796,8 +16754,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -16894,8 +16851,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/paft)
@@ -17072,8 +17028,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -17365,8 +17320,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
@@ -17536,8 +17490,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
@@ -17560,8 +17513,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
@@ -17573,8 +17525,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -17626,8 +17577,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -17658,8 +17608,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -17692,8 +17641,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -17751,8 +17699,7 @@
 "aUc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/prop/invuln/lattice_prop{
@@ -17800,8 +17747,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -17906,8 +17852,7 @@
 "aUu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/rack,
@@ -18052,8 +17997,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -18224,8 +18168,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
@@ -18374,8 +18317,7 @@
 "aVt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
@@ -18457,8 +18399,7 @@
 "aVB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/structure/surface/table/almayer,
 /turf/open/floor/almayer/no_build/plate,
@@ -18717,7 +18658,6 @@
 /area/almayer/engineering/ce_room)
 "aWc" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 4;
 	name = "\improper Intelligence Officer Cryobay";
 	req_access = list(19)
 	},
@@ -18843,8 +18783,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/pb)
@@ -18891,8 +18830,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -19032,8 +18970,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
@@ -19142,8 +19079,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -19423,8 +19359,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -19477,8 +19412,7 @@
 "aXT" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -19501,8 +19435,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -19532,8 +19465,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -19551,8 +19483,7 @@
 "aXY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -19749,8 +19680,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -19800,8 +19730,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -19827,8 +19756,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -19981,8 +19909,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
@@ -20197,8 +20124,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -20249,8 +20175,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -20274,8 +20199,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -20402,8 +20326,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -20416,8 +20339,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -20513,8 +20435,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -20547,8 +20468,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -20592,8 +20512,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -20632,8 +20551,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice12";
@@ -20671,8 +20589,7 @@
 "bav" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
@@ -20942,8 +20859,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -20957,8 +20873,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -20976,8 +20891,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -20994,8 +20908,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -21021,8 +20934,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -21055,8 +20967,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -21100,16 +21011,14 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
 "bbx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -21181,8 +21090,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
@@ -21762,8 +21670,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/aft)
@@ -21873,8 +21780,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
@@ -21935,8 +21841,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -22325,8 +22230,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -22352,8 +22256,7 @@
 "bes" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -22449,8 +22352,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -22465,8 +22367,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -22779,8 +22680,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
@@ -22965,8 +22865,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -23015,8 +22914,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -23190,16 +23088,14 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
 "bgv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -23231,8 +23127,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -23246,8 +23141,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -23299,8 +23193,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
@@ -23329,8 +23222,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
@@ -23339,8 +23231,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/aft)
@@ -23388,8 +23279,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
@@ -23407,8 +23297,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
@@ -23496,8 +23385,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -23657,8 +23545,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -23699,8 +23586,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sb)
@@ -23758,8 +23644,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -23815,8 +23700,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
@@ -24048,8 +23932,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
@@ -24186,8 +24069,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -24209,8 +24091,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
@@ -24373,8 +24254,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sb)
@@ -24403,8 +24283,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -24476,8 +24355,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -24492,8 +24370,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -24522,8 +24399,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -24532,8 +24408,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -24557,8 +24432,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -24613,8 +24487,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -24631,8 +24504,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -24787,8 +24659,7 @@
 "bjz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -24850,8 +24721,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/structure/prop/server_equipment/yutani_server{
 	pixel_y = 16;
@@ -24892,8 +24762,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -24907,8 +24776,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -25042,8 +24910,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -25114,8 +24981,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -25183,8 +25049,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -25242,8 +25107,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -25292,8 +25156,7 @@
 "bkC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/no_build/plate,
@@ -25336,8 +25199,7 @@
 "bkH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -25361,8 +25223,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -25506,8 +25367,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -25549,8 +25409,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
@@ -25948,8 +25807,7 @@
 "blW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
@@ -25985,8 +25843,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -26258,8 +26115,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -26457,8 +26313,7 @@
 "bmY" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -26492,8 +26347,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/hanger)
@@ -26553,8 +26407,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -26599,8 +26452,7 @@
 "bnm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E"
@@ -26704,8 +26556,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -27580,14 +27431,12 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -27602,8 +27451,7 @@
 "bpD" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -27619,8 +27467,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
@@ -27635,8 +27482,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -27698,8 +27544,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
@@ -27919,8 +27764,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -27940,8 +27784,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -27977,8 +27820,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -28006,8 +27848,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
@@ -28023,8 +27864,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -28044,8 +27884,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -28061,8 +27900,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
@@ -28084,8 +27922,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -28097,8 +27934,7 @@
 "bqu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -28114,8 +27950,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -28288,8 +28123,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
@@ -28298,8 +28132,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -28407,8 +28240,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
@@ -28578,8 +28410,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/engineer)
@@ -28662,8 +28493,7 @@
 "brM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -29082,8 +28912,7 @@
 /obj/structure/machinery/computer/arcade,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
@@ -29627,8 +29456,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
@@ -29728,8 +29556,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/medical)
@@ -29776,8 +29603,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
@@ -29835,8 +29661,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -29851,8 +29676,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -29874,8 +29698,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/briefing)
@@ -29909,8 +29732,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -29934,8 +29756,7 @@
 "buw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/middeck/maintenance/sf)
@@ -29950,8 +29771,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sf)
@@ -29976,8 +29796,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -30003,8 +29822,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -30019,8 +29837,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice1";
@@ -30041,8 +29858,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
@@ -30050,8 +29866,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -30067,8 +29882,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
@@ -30085,8 +29899,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/saft)
@@ -30096,8 +29909,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/saft)
@@ -30106,8 +29918,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -30465,8 +30276,7 @@
 "bvx" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/req)
@@ -30968,8 +30778,7 @@
 "bwO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -31337,8 +31146,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -31408,23 +31216,19 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/aft)
 "bxQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/factory/robotic_arm/flipped{
+	pixel_x = -28;
+	pixel_y = 10
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NE-out";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build,
-/area/almayer/command/airoom)
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
 "bxR" = (
 /obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	icon_state = "lattice2";
@@ -31489,8 +31293,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
@@ -31708,22 +31511,6 @@
 /obj/structure/machinery/power/apc/almayer/north,
 /turf/open/floor/almayer/plate,
 /area/almayer/middeck/hanger)
-"byz" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/folder/white{
-	pixel_x = -12
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = 6
-	},
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_y = 3
-	},
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_y = 9
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
-/area/almayer/command/aist_office)
 "byA" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1
@@ -32016,8 +31803,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -32055,8 +31841,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sf)
@@ -32099,8 +31884,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sf)
@@ -32145,15 +31929,13 @@
 "bzw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sb)
@@ -32195,8 +31977,7 @@
 "bzB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/supply,
@@ -32258,8 +32039,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sf)
@@ -32306,8 +32086,7 @@
 "bzM" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -32325,8 +32104,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sf)
@@ -32431,8 +32209,7 @@
 "bAc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -32441,8 +32218,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sf)
@@ -32467,8 +32243,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sf)
@@ -32511,8 +32286,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sf)
@@ -32565,8 +32339,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sf)
@@ -32636,16 +32409,14 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sf)
 "bAC" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -32663,8 +32434,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/sf)
@@ -32793,8 +32563,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
@@ -32825,8 +32594,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
@@ -32851,8 +32619,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
@@ -32868,8 +32635,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
@@ -32878,8 +32644,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
@@ -32932,7 +32697,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -32949,7 +32713,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33110,7 +32873,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped,
@@ -33132,7 +32894,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -33145,7 +32906,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33166,7 +32926,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33186,7 +32945,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33264,7 +33022,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -33292,7 +33049,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped,
@@ -33314,7 +33070,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -33339,7 +33094,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -33429,7 +33183,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -33440,7 +33193,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -33483,8 +33235,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/closed/wall/almayer/outer/internal,
 /area/almayer/underdeck/vehicle)
@@ -33582,7 +33333,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33600,7 +33350,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33622,8 +33371,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
@@ -33721,8 +33469,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/underdeck/vehicle)
@@ -33762,8 +33509,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/underdeck/vehicle)
@@ -33778,8 +33524,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/underdeck/vehicle)
@@ -33787,8 +33532,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
@@ -33807,8 +33551,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
@@ -33847,7 +33590,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33865,7 +33607,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33889,7 +33630,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -33930,7 +33670,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -33941,7 +33680,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -33955,7 +33693,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -33966,7 +33703,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -34005,7 +33741,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -34023,7 +33758,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped/north,
@@ -34033,7 +33767,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped/north,
@@ -34044,7 +33777,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped/north,
@@ -34056,7 +33788,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped/north,
@@ -34067,7 +33798,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -34084,7 +33814,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -34142,7 +33871,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -34167,8 +33895,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/underdeck/vehicle)
@@ -34200,8 +33927,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
@@ -34211,8 +33937,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
@@ -34243,8 +33968,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build,
 /area/almayer/underdeck/vehicle)
@@ -34339,8 +34063,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
@@ -34355,8 +34078,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
@@ -34392,8 +34114,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/hangar)
@@ -34813,8 +34534,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -34843,8 +34563,7 @@
 "bFu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -34870,8 +34589,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
@@ -34905,8 +34623,7 @@
 "bFz" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/paft)
@@ -34952,9 +34669,227 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/upper/fore_hallway)
 "bFG" = (
-/turf/open/floor/plating,
-/area/almayer/command/airoom)
+/obj/structure/largecrate/random,
+/obj/structure/prop/hybrisa/factory/robotic_arm/flipped{
+	pixel_x = -28;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/underdeck/req)
 "bFH" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/airoom)
+"bFI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build,
+/area/almayer/command/airoom)
+"bFJ" = (
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
+"bFK" = (
+/turf/closed/wall/almayer/aicore/hull,
+/area/almayer/command/aist_office)
+"bFL" = (
+/turf/closed/wall/almayer/outer/internal,
+/area/almayer/command/aist_office)
+"bFM" = (
+/obj/structure/window/framed/almayer/aicore/hull/black,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "ARES AIST Bed";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/almayer/aicore/no_build,
+/area/almayer/command/aist_office)
+"bFN" = (
+/obj/structure/machinery/cryopod/right{
+	layer = 3.1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	pixel_x = -1
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_cargo,
+/area/almayer/command/aist_office)
+"bFO" = (
+/obj/effect/landmark/late_join/aist,
+/obj/effect/landmark/start/ai_tech,
+/obj/structure/machinery/door_control{
+	id = "ARES AIST Bed";
+	name = "Privacy Shutters";
+	pixel_y = -24;
+	req_one_access_txt = "31;92"
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
+/area/almayer/command/aist_office)
+"bFP" = (
+/obj/vehicle/powerloader{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/almayer/hallways/hangar)
+"bFQ" = (
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
+/area/almayer/command/aist_office)
+"bFR" = (
+/obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
+/turf/open/floor/plating,
+/area/almayer/hallways/hangar)
+"bFS" = (
+/obj/item/bedsheet/yellow,
+/obj/structure/bed,
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southeast,
+/area/almayer/command/aist_office)
+"bFT" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/paper_bin/uscm{
+	pixel_y = 6;
+	pixel_x = -6
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_y = 3;
+	pixel_x = -6
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
+/area/almayer/command/aist_office)
+"bFU" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 5
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
+/area/almayer/command/aist_office)
+"bFV" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
+"bFW" = (
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
+"bFX" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/lower/port_aft_hallway)
+"bFY" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
+/area/almayer/command/aist_office)
+"bFZ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 9
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
+/area/almayer/command/aist_office)
+"bGa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/red/northwest,
+/area/almayer/hallways/upper/port)
+"bGb" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
+	sub_name = "AIST";
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northwest,
+/area/almayer/command/aist_office)
+"bGc" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/red/west,
+/area/almayer/command/lifeboat)
+"bGd" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
+"bGe" = (
+/obj/structure/flora/pottedplant/random{
+	pixel_y = 24
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bGf" = (
+/obj/structure/pipes/vents/pump/no_boom{
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bGg" = (
+/obj/structure/machinery/cm_vending/clothing/senior_officer{
+	req_one_access_txt = "1;92";
+	req_access = null;
+	pixel_y = 24;
+	density = 0
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bGh" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/aist_office)
+"bGi" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+	name = "\improper AIST Office";
+	req_one_access_txt = "31;92";
+	req_access = null;
+	dir = 1
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
+"bGj" = (
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southwest,
+/area/almayer/command/aist_office)
+"bGk" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/folder/white{
+	pixel_x = -12
+	},
+/obj/item/paper_bin/uscm{
+	pixel_y = 6
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_y = 3
+	},
+/obj/item/tool/pen/multicolor/fountain{
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
+/area/almayer/command/aist_office)
+"bGl" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/light{
 	unacidable = 1;
@@ -34981,18 +34916,35 @@
 	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver,
 /area/almayer/command/aist_office)
-"bFJ" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_2,
-/turf/open/floor/plating,
-/area/almayer/hallways/hangar)
-"bFK" = (
+"bGm" = (
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver/southeast,
 /area/almayer/command/aist_office)
-"bFL" = (
+"bGn" = (
+/obj/structure/barricade/plasteel/metal,
+/turf/open/floor/almayer/cargo,
+/area/almayer/living/cryo_cells)
+"bGo" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "ROlobby1";
+	name = "\improper RO Line 1"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/window/framed/almayer/hull/hijack_bustable,
+/turf/open/floor/plating,
+/area/almayer/squads/req)
+"bGp" = (
 /obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
-"bFM" = (
+"bGq" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/hallways/hangar)
+"bGr" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
@@ -35007,37 +34959,27 @@
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/command/aist_office)
-"bFN" = (
+"bGs" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply/no_boom,
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
+/area/almayer/command/aist_office)
+"bGt" = (
+/obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
 	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
-"bFO" = (
-/obj/structure/pipes/standard/manifold/fourway/hidden/supply/no_boom,
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bFP" = (
-/obj/vehicle/powerloader{
-	dir = 8
+"bGu" = (
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/turf/open/floor/almayer,
-/area/almayer/hallways/hangar)
-"bFQ" = (
-/obj/structure/bed/chair/office/dark{
-	dir = 4
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
 	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bFR" = (
-/obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bFS" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bFT" = (
+"bGv" = (
 /obj/structure/machinery/sentry_holder/almayer/mini/aicore{
 	dir = 8
 	},
@@ -35084,10 +35026,32 @@
 	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
-"bFV" = (
+"bGw" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/squads/req)
+"bGx" = (
+/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
+	dir = 4
+	},
+/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
+/area/almayer/command/aist_office)
+"bGy" = (
+/turf/open/floor/almayer/green/west,
+/area/almayer/squads/req)
+"bGz" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 1
+	},
+/turf/open/floor/almayer/green/northwest,
+/area/almayer/squads/req)
+"bGA" = (
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
 /area/almayer/command/aist_office)
-"bFW" = (
+"bGB" = (
 /obj/structure/machinery/door_control{
 	id = "ARES AIST";
 	name = "Privacy Shutters";
@@ -35096,13 +35060,7 @@
 	},
 /turf/open/floor/almayer/aicore/no_build,
 /area/almayer/command/airoom)
-"bFX" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/lower/port_aft_hallway)
-"bFY" = (
+"bGC" = (
 /obj/structure/pipes/vents/pump/no_boom/gas/ares{
 	dir = 8;
 	vent_tag = "AIST Office"
@@ -35115,155 +35073,18 @@
 	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
 /area/almayer/command/aist_office)
-"bFZ" = (
-/obj/structure/pipes/standard/manifold/hidden/supply/no_boom{
-	dir = 4
+"bGD" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 10
 	},
 /turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
 /area/almayer/command/aist_office)
-"bGa" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/turf/open/floor/almayer/red/northwest,
-/area/almayer/hallways/upper/port)
-"bGb" = (
+"bGE" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 8
-	},
-/obj/structure/machinery/computer/working_joe{
-	dir = 4;
-	pixel_x = -29
+	dir = 4
 	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
-"bGc" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 4
-	},
-/turf/open/floor/almayer/red/west,
-/area/almayer/command/lifeboat)
-"bGd" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bGe" = (
-/obj/structure/machinery/camera/autoname/almayer/containment/ares{
-	dir = 8;
-	c_tag = "AI - AIST Office";
-	autoname = 0
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
-/area/almayer/command/aist_office)
-"bGf" = (
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northwest,
-/area/almayer/command/aist_office)
-"bGg" = (
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bGh" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/sign/safety/terminal{
-	pixel_y = 26;
-	pixel_x = 8;
-	layer = 2.2
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bGi" = (
-/obj/structure/surface/table/reinforced/almayer_B{
-	climbable = 0;
-	explo_proof = 1;
-	unacidable = 1;
-	unslashable = 1
-	},
-/obj/structure/machinery/computer/cameras/almayer/ares{
-	pixel_x = -28;
-	pixel_y = 6
-	},
-/obj/structure/machinery/computer/cameras/almayer{
-	pixel_y = 6;
-	pixel_x = 4
-	},
-/obj/structure/machinery/computer/view_objectives{
-	pixel_x = -12;
-	pixel_y = 6
-	},
-/obj/item/device/radio/intercom{
-	frequency = 1500;
-	name = "AI Core Intercom";
-	pixel_y = 32;
-	pixel_x = -14
-	},
-/obj/item/device/radio/intercom{
-	freerange = 1;
-	name = "General Listening Channel";
-	pixel_y = 32
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bGj" = (
-/obj/structure/pipes/vents/scrubber/no_boom{
-	dir = 8
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northeast,
-/area/almayer/command/aist_office)
-"bGn" = (
-/obj/structure/barricade/plasteel/metal,
-/turf/open/floor/almayer/cargo,
-/area/almayer/living/cryo_cells)
-"bGo" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 4;
-	id = "ROlobby1";
-	name = "\improper RO Line 1"
-	},
-/obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/window/framed/almayer/hull/hijack_bustable,
-/turf/open/floor/plating,
-/area/almayer/squads/req)
-"bGq" = (
-/obj/structure/machinery/light,
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/hallways/hangar)
-"bGt" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 4
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
-/area/almayer/command/aist_office)
-"bGu" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/pipes/standard/manifold/hidden/supply{
-	dir = 1
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/hallways/hangar)
-"bGw" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/squads/req)
-"bGy" = (
-/turf/open/floor/almayer/green/west,
-/area/almayer/squads/req)
-"bGz" = (
-/obj/structure/window/framed/almayer,
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 1
-	},
-/turf/open/floor/almayer/green/northwest,
-/area/almayer/squads/req)
 "bGF" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1
@@ -35347,123 +35168,102 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bGR" = (
-/turf/closed/wall/almayer/outer/internal,
+/obj/structure/surface/table/reinforced/almayer_B,
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "bGS" = (
-/obj/structure/window/framed/almayer/aicore/hull/black,
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "ARES AIST Bed";
-	name = "\improper Privacy Shutters"
+/obj/structure/bed/chair/office/dark{
+	dir = 8
 	},
-/turf/open/floor/almayer/aicore/no_build,
+/obj/structure/machinery/computer/working_joe{
+	dir = 4;
+	pixel_x = -29
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
 /area/almayer/command/aist_office)
 "bGT" = (
-/obj/structure/machinery/cryopod/right{
-	layer = 3.1
+/obj/structure/machinery/camera/autoname/almayer/containment/ares{
+	dir = 8;
+	c_tag = "AI - AIST Office";
+	autoname = 0
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	pixel_x = -1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_cargo,
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
 /area/almayer/command/aist_office)
 "bGU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "bGV" = (
-/obj/effect/landmark/late_join/aist,
-/obj/effect/landmark/start/ai_tech,
-/obj/structure/machinery/door_control{
-	id = "ARES AIST Bed";
-	name = "Privacy Shutters";
-	pixel_y = -24;
-	req_one_access_txt = "31;92"
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver,
-/area/almayer/command/aist_office)
-"bGW" = (
-/obj/item/bedsheet/yellow,
-/obj/structure/bed,
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/southeast,
-/area/almayer/command/aist_office)
-"bGX" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/paper_bin/uscm{
-	pixel_y = 6;
-	pixel_x = -6
-	},
-/obj/item/tool/pen/multicolor/fountain{
-	pixel_y = 3;
-	pixel_x = -6
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/west,
-/area/almayer/command/aist_office)
-"bGY" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 5
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
-/area/almayer/command/aist_office)
-"bGZ" = (
-/obj/structure/pipes/standard/manifold/hidden/supply/no_boom,
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bHa" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 9
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/east,
-/area/almayer/command/aist_office)
-"bHb" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/faxmachine/uscm/almayer/ai_core{
-	sub_name = "AIST";
-	pixel_y = 10
-	},
 /turf/open/floor/almayer/aicore/no_build/white/ai_silver/northwest,
 /area/almayer/command/aist_office)
+"bGW" = (
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bGX" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bGY" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/sign/safety/terminal{
+	pixel_y = 26;
+	pixel_x = 8;
+	layer = 2.2
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bGZ" = (
+/obj/structure/surface/table/reinforced/almayer_B{
+	climbable = 0;
+	explo_proof = 1;
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/structure/machinery/computer/cameras/almayer/ares{
+	pixel_x = -28;
+	pixel_y = 6
+	},
+/obj/structure/machinery/computer/cameras/almayer{
+	pixel_y = 6;
+	pixel_x = 4
+	},
+/obj/structure/machinery/computer/view_objectives{
+	pixel_x = -12;
+	pixel_y = 6
+	},
+/obj/item/device/radio/intercom{
+	frequency = 1500;
+	name = "AI Core Intercom";
+	pixel_y = 32;
+	pixel_x = -14
+	},
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	name = "General Listening Channel";
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bHa" = (
+/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
+	dir = 6
+	},
+/obj/structure/machinery/keycard_auth{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
+/area/almayer/command/aist_office)
+"bHb" = (
+/obj/structure/pipes/vents/scrubber/no_boom{
+	dir = 8
+	},
+/turf/open/floor/almayer/aicore/no_build/white/ai_silver/northeast,
+/area/almayer/command/aist_office)
 "bHc" = (
-/obj/structure/flora/pottedplant/random{
-	pixel_y = 24
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bHd" = (
-/obj/structure/pipes/vents/pump/no_boom{
-	dir = 1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bHe" = (
-/obj/structure/machinery/cm_vending/clothing/senior_officer{
-	req_one_access_txt = "1;92";
-	req_access = null;
-	pixel_y = 24;
-	density = 0
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bHf" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/command/aist_office)
+/turf/open/floor/plating,
+/area/almayer/command/airoom)
 "bHg" = (
 /obj/structure/pipes/unary/freezer{
 	throwpass = 1
@@ -35487,44 +35287,9 @@
 	},
 /turf/open/floor/almayer/dark_sterile2,
 /area/almayer/medical/cryo_tubes)
-"bHh" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom,
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	name = "\improper AIST Office";
-	req_one_access_txt = "31;92";
-	req_access = null;
-	dir = 1
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bHi" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 4
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_floor1,
-/area/almayer/command/aist_office)
-"bHj" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 10
-	},
-/turf/open/floor/almayer/aicore/glowing/no_build/white/ai_floor3,
-/area/almayer/command/aist_office)
 "bHk" = (
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/almayer/medical/containment/cell/cl)
-"bHl" = (
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
-"bHm" = (
-/obj/structure/pipes/standard/simple/hidden/supply/no_boom{
-	dir = 6
-	},
-/obj/structure/machinery/keycard_auth{
-	pixel_y = 32
-	},
-/turf/open/floor/almayer/aicore/no_build/white/ai_silver/north,
-/area/almayer/command/aist_office)
 "bHp" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 2
@@ -37998,7 +37763,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -39712,8 +39476,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/red/southeast,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -40165,7 +39928,7 @@
 	pixel_y = 22;
 	layer = 5.1
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -41279,7 +41042,7 @@
 /turf/open/floor/almayer/red/north,
 /area/almayer/maint/upper/u_a_p)
 "dhO" = (
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /obj/structure/largecrate/supply/supplies/metal{
@@ -42201,7 +41964,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
-	pixel_y = 0;
 	pixel_x = 10
 	},
 /obj/structure/machinery/firealarm{
@@ -42576,7 +42338,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = 8;
@@ -42664,7 +42425,7 @@
 "dLH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random,
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -43864,8 +43625,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/red/west,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -44025,7 +43785,6 @@
 /obj/structure/prop/almayer/computers/sensor_computer2,
 /obj/structure/machinery/door_control{
 	id = "Secretroom";
-	explo_proof = 1;
 	layer = 2.5;
 	name = "Shutters";
 	use_power = 0
@@ -44768,8 +44527,7 @@
 	pixel_x = -24
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0
+	icon_state = "S"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/bridgebunks)
@@ -45000,7 +44758,7 @@
 /area/almayer/hallways/upper/aft_hallway)
 "eJH" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -45201,17 +44959,6 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/shipboard/brig/processing)
-"eOj" = (
-/obj/structure/machinery/light/red{
-	dir = 8;
-	light_color = "#BB3F3F"
-	},
-/obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped{
-	pixel_x = -24;
-	pixel_y = 10
-	},
-/turf/open/floor/almayer/no_build/test_floor4,
-/area/almayer/underdeck/req)
 "eOx" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -45419,7 +45166,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -45743,7 +45489,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -47148,7 +46893,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -47629,10 +47373,10 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/underdeck/req)
 "fMP" = (
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -48783,7 +48527,6 @@
 	name = "Privacy Shutters";
 	pixel_x = -22;
 	pixel_y = 10;
-	req_access = null;
 	req_access_txt = "19"
 	},
 /turf/open/floor/almayer/cargo_arrow,
@@ -49947,7 +49690,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = -24;
 	pixel_y = -8;
@@ -51916,13 +51658,11 @@
 	dir = 9
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 0
+	icon_state = "NW-out"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
-	layer = 2.5;
-	pixel_y = 0
+	layer = 2.5
 	},
 /turf/open/floor/almayer/flooredgesmooth2/west,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -52068,7 +51808,7 @@
 /obj/structure/largecrate/random{
 	pixel_y = 9
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -52364,7 +52104,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -53240,7 +52979,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped,
@@ -53486,14 +53224,12 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -53562,7 +53298,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -54496,7 +54231,6 @@
 "iKM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/safety/cryo{
-	pixel_y = 0;
 	pixel_x = 32
 	},
 /turf/open/floor/almayer/plate,
@@ -54553,8 +54287,7 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/overwatch/almayer{
 	dir = 4;
-	pixel_x = 17;
-	pixel_y = 0
+	pixel_x = 17
 	},
 /obj/structure/machinery/computer/cameras/almayer/vehicle{
 	dir = 8;
@@ -54626,8 +54359,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = 0
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -55121,7 +54853,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -55949,7 +55680,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped/north,
@@ -56328,7 +56058,7 @@
 	pixel_x = -6;
 	pixel_y = 7
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -58784,7 +58514,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped,
@@ -59966,7 +59695,6 @@
 /area/almayer/command/airoom)
 "kSi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	dir = 4;
 	req_access = list(19);
 	name = "\improper Intel Storage"
 	},
@@ -60208,7 +59936,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -60263,7 +59990,6 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/storage/bible{
 	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
-	name = "Holy Bible";
 	pixel_x = -3;
 	pixel_y = 9
 	},
@@ -61721,7 +61447,7 @@
 /turf/open/floor/almayer/red/west,
 /area/almayer/shipboard/brig/lobby)
 "lEG" = (
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -61818,7 +61544,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -62363,8 +62088,7 @@
 "lTE" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/bible{
-	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
-	name = "Holy Bible"
+	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'."
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
@@ -62820,8 +62544,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/lifeboat_pumps/north1)
@@ -63447,8 +63170,7 @@
 "mtZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
-	pixel_x = -1;
-	pixel_y = 0
+	pixel_x = -1
 	},
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/engineering/lower/engine_core)
@@ -63589,7 +63311,7 @@
 /obj/structure/largecrate/random{
 	pixel_y = 14
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -63981,7 +63703,6 @@
 	},
 /obj/structure/machinery/door_control{
 	id = "ARES Interior";
-	explo_proof = 1;
 	name = "ARES Chamber Lockdown";
 	pixel_x = 24;
 	pixel_y = 8;
@@ -65380,7 +65101,7 @@
 	pixel_y = 16;
 	layer = 3.1
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -65840,7 +65561,6 @@
 	pixel_x = -1
 	},
 /obj/structure/barricade/handrail{
-	dir = 2;
 	pixel_x = 2
 	},
 /turf/open/floor/almayer/cargo,
@@ -66269,6 +65989,10 @@
 "nwB" = (
 /obj/structure/largecrate/random{
 	pixel_x = 6
+	},
+/obj/structure/prop/hybrisa/factory/robotic_arm/flipped{
+	pixel_x = -28;
+	pixel_y = 10
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
@@ -67042,7 +66766,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -67096,8 +66819,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice-simple";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /obj/item/frame/rack,
 /obj/structure/machinery/light/red{
@@ -68698,8 +68420,7 @@
 /obj/structure/prop/invuln/lattice_prop{
 	dir = 1;
 	icon_state = "lattice3";
-	pixel_x = 16;
-	pixel_y = 0
+	pixel_x = 16
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/underdeck/vehicle)
@@ -68902,7 +68623,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/plating_striped,
@@ -69086,7 +68806,7 @@
 /obj/structure/cargo_container/uscm/sanfran/left{
 	pixel_y = 5
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -70185,7 +69905,7 @@
 /area/almayer/maint/upper/u_a_s)
 "oVI" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -70571,10 +70291,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/upper/p_bow)
 "pdQ" = (
-/obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped{
-	pixel_x = -24;
-	pixel_y = 10
-	},
 /obj/structure/machinery/light/red{
 	dir = 8;
 	light_color = "#BB3F3F"
@@ -71193,7 +70909,7 @@
 	layer = 3.1;
 	pixel_y = 5
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -71408,7 +71124,7 @@
 	pixel_y = 23;
 	layer = 5.2
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -72499,7 +72215,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -72785,9 +72500,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/upper/midship_hallway)
 "qdQ" = (
-/obj/structure/bed/sofa/vert/grey/top{
-	pixel_y = 0
-	},
+/obj/structure/bed/sofa/vert/grey/top,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/north1)
 "qej" = (
@@ -74624,7 +74337,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -74924,7 +74636,7 @@
 	pixel_y = 24;
 	layer = 3.1
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/plate,
@@ -76799,7 +76511,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -77416,7 +77127,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -78111,8 +77821,7 @@
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "SE-out";
-	pixel_x = 1;
-	pixel_y = 0
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/redcorner/south,
 /area/almayer/hallways/lower/port_fore_hallway)
@@ -78263,8 +77972,8 @@
 	dir = 4;
 	light_color = "#BB3F3F"
 	},
-/obj/structure/prop/hybrisa/Factory{
-	pixel_y = 12;
+/obj/structure/prop/hybrisa/factory{
+	pixel_y = 10;
 	pixel_x = -10
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -78770,7 +78479,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -78824,7 +78532,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -79091,8 +78798,8 @@
 	dir = 4;
 	light_color = "#BB3F3F"
 	},
-/obj/structure/prop/hybrisa/Factory{
-	pixel_y = 12;
+/obj/structure/prop/hybrisa/factory{
+	pixel_y = 10;
 	pixel_x = -10
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -79699,7 +79406,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -81703,7 +81409,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
 "tBs" = (
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build,
@@ -81869,7 +81575,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /obj/structure/prop/invuln/lattice_prop{
@@ -82334,7 +82039,6 @@
 	dir = 1;
 	icon_state = "lattice3";
 	pixel_x = 16;
-	pixel_y = 0;
 	layer = 5.4
 	},
 /turf/open/floor/almayer/no_build/plating,
@@ -82649,9 +82353,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "tXM" = (
-/obj/structure/pipes/vents/pump{
-	dir = 2
-	},
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "tXT" = (
@@ -84493,8 +84195,8 @@
 /area/almayer/maint/hull/upper/u_a_s)
 "uKz" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/hybrisa/Factory{
-	pixel_y = 12;
+/obj/structure/prop/hybrisa/factory{
+	pixel_y = 10;
 	pixel_x = -10
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -85075,10 +84777,6 @@
 /obj/structure/machinery/light/red{
 	dir = 8;
 	light_color = "#BB3F3F"
-	},
-/obj/structure/prop/hybrisa/Factory/Robotic_arm/Flipped{
-	pixel_x = -24;
-	pixel_y = 10
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/underdeck/req)
@@ -86036,6 +85734,10 @@
 	layer = 3.1;
 	pixel_x = 9
 	},
+/obj/structure/prop/hybrisa/factory/robotic_arm/flipped{
+	pixel_x = -28;
+	pixel_y = 10
+	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/req)
 "vmq" = (
@@ -86681,7 +86383,7 @@
 /obj/structure/cargo_container/uscm/right{
 	pixel_y = 5
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -87001,9 +86703,7 @@
 	pixel_x = -2
 	},
 /obj/structure/barricade/handrail{
-	dir = 2;
 	layer = 3.1;
-	pixel_y = 0;
 	pixel_x = 2
 	},
 /turf/open/floor/wood/ship,
@@ -87306,9 +87006,7 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/squads/bravo)
 "vJZ" = (
-/obj/structure/stairs/multiz/down{
-	dir = 2
-	},
+/obj/structure/stairs/multiz/down,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/lower/port_aft)
 "vKe" = (
@@ -88045,7 +87743,7 @@
 	pixel_x = 6;
 	layer = 3.2
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -88466,7 +88164,7 @@
 	pixel_y = 23;
 	layer = 5.2
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /obj/item/stack/sheet/metal/med_large_stack,
@@ -88724,7 +88422,7 @@
 /area/almayer/living/briefing)
 "wkh" = (
 /obj/structure/largecrate/random,
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -89390,8 +89088,7 @@
 	pixel_x = -1
 	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0
+	icon_state = "S"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/synthcloset)
@@ -91121,8 +90818,7 @@
 /area/almayer/living/grunt_rnr)
 "xfO" = (
 /obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	pixel_y = 0
+	icon_state = "S"
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -92867,7 +92563,7 @@
 /obj/structure/largecrate/random{
 	pixel_y = 8
 	},
-/obj/structure/prop/hybrisa/Factory/Conveyor_belt{
+/obj/structure/prop/hybrisa/factory/conveyor_belt{
 	layer = 2.9
 	},
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -111102,11 +110798,11 @@ jVH
 jVH
 oOg
 oSQ
-dST
+bxQ
 oVI
 ggv
 ggv
-uro
+aJn
 ocK
 iDh
 jVH
@@ -112441,7 +112137,7 @@ jVH
 jVH
 oOg
 oSQ
-fai
+bFG
 wFp
 wFp
 wFp
@@ -113368,11 +113064,11 @@ fjl
 mBg
 fqX
 aDS
-eOj
+pdQ
 tLK
 uEM
 lEG
-eOj
+pdQ
 aDS
 xxT
 xIz
@@ -113471,11 +113167,11 @@ rgP
 kna
 oOg
 oSQ
-uro
+aJn
 pyb
 wFp
 wFp
-uro
+aJn
 ocK
 iDh
 eLW
@@ -114707,7 +114403,7 @@ jVH
 iXJ
 iWz
 aDS
-eOj
+pdQ
 lEG
 uEM
 hxT
@@ -114810,7 +114506,7 @@ jVH
 jVH
 unI
 oSQ
-uro
+aJn
 wFp
 wFp
 tBs
@@ -174742,8 +174438,8 @@ daz
 daz
 daz
 daz
-bFG
-bFG
+bHc
+bHc
 daz
 pmV
 eGr
@@ -174846,7 +174542,7 @@ asZ
 vXh
 daz
 daz
-bFG
+bHc
 daz
 ebN
 ebN
@@ -175782,10 +175478,10 @@ kRQ
 our
 qQS
 qQS
-aJn
-aJn
-aJn
-aJn
+bFH
+bFH
+bFH
+bFH
 daz
 daz
 asm
@@ -176085,7 +175781,7 @@ qQS
 mIJ
 wiu
 xDC
-bFL
+bGp
 clw
 aqf
 fKe
@@ -176194,7 +175890,7 @@ aqf
 igr
 sEK
 ujn
-bxQ
+bFI
 lcg
 daz
 asm
@@ -176290,7 +175986,7 @@ ebN
 ebN
 ebN
 ebN
-bFW
+bGB
 itg
 qQS
 ebN
@@ -176391,16 +176087,16 @@ daz
 daz
 daz
 daz
-aoP
-apW
-apW
-bFM
-apW
-aoP
-aoP
-aoP
-aoP
-aoP
+bFK
+aQd
+aQd
+bGr
+aQd
+bFK
+bFK
+bFK
+bFK
+bFK
 daz
 daz
 asm
@@ -176494,16 +176190,16 @@ bwI
 bwI
 bwI
 bwI
-bGR
-bGf
-bFY
+bFL
+bGV
+bGC
+bFV
+bGj
+bGh
+bGb
+bFT
 bFN
-apX
-bHf
-bHb
-bGX
-bGT
-bGR
+bFL
 asm
 asm
 asm
@@ -176597,16 +176293,16 @@ bwI
 bwI
 bwI
 bwI
-bGR
-bHl
-bHj
+bFL
+bGW
+bGD
+bGs
+bGd
+bGi
+bGd
+bFU
 bFO
-bGd
-bHh
-bGd
-bGY
-bGV
-bGR
+bFL
 asm
 asm
 asm
@@ -176700,16 +176396,16 @@ bwI
 bwI
 bwI
 bwI
-bGR
-bGg
+bFL
+bGX
+bGE
+bFV
 bFQ
-bFN
-aQd
-bHf
-bHc
-bFN
-aQd
-bGS
+bGh
+bGe
+bFV
+bFQ
+bFM
 aHF
 aHF
 aHF
@@ -176803,16 +176499,16 @@ bwI
 bwI
 bwI
 bwI
+bFL
+bGY
 bGR
+bGt
+bGk
 bGh
-bFS
-bHi
-byz
-bHf
-bHd
-bGZ
-aQd
-bGS
+bGf
+bFW
+bFQ
+bFM
 aHF
 aHF
 aHF
@@ -176906,16 +176602,16 @@ bwI
 bwI
 bwI
 bwI
-bGR
-bGi
-bGb
-bFT
-bFH
-bHf
-bHe
-bGt
-aQd
+bFL
+bGZ
 bGS
+bGv
+bGl
+bGh
+bGg
+bFY
+bFQ
+bFM
 aHF
 aHF
 aHF
@@ -177009,16 +176705,16 @@ bwI
 bwI
 bwI
 bwI
-bGR
-bHm
+bFL
+bHa
+bGd
+bGx
+bGd
+bGi
 bGd
 bFZ
-bGd
-bHh
-bGd
-bHa
-bGW
-bGR
+bFS
+bFL
 aHF
 aHF
 aHF
@@ -177112,16 +176808,16 @@ bwI
 bwI
 bwI
 bwI
-bGR
-bGj
-bGe
-bFV
-bFK
-bGR
-bGR
-bGR
-bGR
-bGR
+bFL
+bHb
+bGT
+bGA
+bGm
+bFL
+bFL
+bFL
+bFL
+bFL
 aHF
 aHF
 aHF
@@ -177215,12 +176911,12 @@ bwI
 bwI
 bwI
 bwI
-bGR
-bGR
-bGR
-bGR
-bGR
-bGR
+bFL
+bFL
+bFL
+bFL
+bFL
+bFL
 bwI
 asm
 asm

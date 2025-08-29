@@ -1,0 +1,4 @@
+author: "FloranOtten"
+delete-after: True
+changes:
+  - bugfix: "Queen eye can now peep into tents"

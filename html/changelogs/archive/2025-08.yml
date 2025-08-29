@@ -333,3 +333,8 @@
   realforest2001:
   - bugfix: Made xeno restraints functional.
   - rscadd: Added strong xeno restraints, that stop slashes.
+2025-08-28:
+  Drathek:
+  - bugfix: Filling an acid trap successfully no longer swipes at it
+  jupyterkat:
+  - rscadd: added spec icon for heavy armor spec

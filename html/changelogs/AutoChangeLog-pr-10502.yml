@@ -1,0 +1,5 @@
+author: "Don Cycon"
+delete-after: True
+changes:
+  - balance: "Replaces flashlights in firesuit closets with M94 flare packets."
+  - balance: "Replaces flashlights in survival pouches with lanterns."

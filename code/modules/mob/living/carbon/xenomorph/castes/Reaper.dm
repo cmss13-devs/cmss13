@@ -91,6 +91,9 @@
 	// Reaper vars
 	var/flesh_plasma = 0
 	var/flesh_plasma_max = 600
+	var/corpse_buildup = 0 /// How much flesh plasma is generated from nearby corpses
+	var/maximum_corpse_buildup = 30 /// The maximum amount of flesh plasma you can gain from being around dead bodies
+	var/nearby_corpse_range = 3 /// Within how many tiles of you do corpses need to be for you to generate flesh plasma off them
 
 	var/transferred_healing = 0
 
@@ -115,6 +118,25 @@
 		flesh_plasma = flesh_plasma_max
 	if(flesh_plasma < 0)
 		flesh_plasma = 0
+
+/mob/living/carbon/xenomorph/reaper/proc/corpse_generation()
+	var/obj/effect/alien/weeds/our_weeds = locate() in loc
+	if(our_weeds && our_weeds.hivenumber == hivenumber) // We must be on weeds belonging to our hive to generate flesh plasma from nearby corpses
+		for(var/mob/living/carbon/dead_mob in view(nearby_corpse_range, src))
+			if(corpse_buildup == maximum_corpse_buildup) // At max, no need to search more
+				break
+
+			if(dead_mob.stat != DEAD)
+				continue
+
+			var/obj/effect/alien/weeds/their_weeds = locate() in dead_mob.loc
+			if(!their_weeds || (their_weeds && their_weeds.hivenumber != hivenumber))
+				continue
+
+			corpse_buildup += 3
+
+	modify_flesh_plasma(corpse_buildup)
+	corpse_buildup = 0
 
 /mob/living/carbon/xenomorph/reaper/try_fill_trap(obj/effect/alien/resin/trap/target)
 	if(!istype(target))
@@ -381,10 +403,6 @@
 	var/flesh_plasma_slash = 2 /// How much flesh plasma is generated on a slash
 	var/flesh_plasma_kill = 10 /// How much flesh plasma is generated on a kill
 
-	var/corpse_buildup = 0 /// How much flesh plasma is generated from nearby corpses
-	var/maximum_corpse_buildup = 30 /// The maximum amount of flesh plasma you can gain from being around dead bodies
-	var/nearby_corpse_range = 3 /// Within how many tiles of you do corpses need to be for you to generate flesh plasma off them
-
 /datum/behavior_delegate/base_reaper/melee_attack_additional_effects_target(mob/living/carbon/target_mob)
 	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno
 	reaper.modify_flesh_plasma(flesh_plasma_slash)
@@ -396,23 +414,7 @@
 /datum/behavior_delegate/base_reaper/on_life()
 	var/mob/living/carbon/xenomorph/reaper/reaper = bound_xeno
 
-	var/obj/effect/alien/weeds/our_weeds = locate() in reaper.loc
-	if(our_weeds && our_weeds.hivenumber == reaper.hivenumber) // We must be on weeds belonging to our hive to generate flesh plasma from nearby corpses
-		for(var/mob/living/carbon/dead_mob in view(nearby_corpse_range, reaper))
-			if(corpse_buildup == maximum_corpse_buildup) // At max, no need to search more
-				break
-
-			if(dead_mob.stat != DEAD)
-				continue
-
-			var/obj/effect/alien/weeds/their_weeds = locate() in dead_mob.loc
-			if(!their_weeds || (their_weeds && their_weeds.hivenumber != reaper.hivenumber))
-				continue
-
-			corpse_buildup += 3
-
-	reaper.modify_flesh_plasma(corpse_buildup)
-	corpse_buildup = 0
+	reaper.corpse_generation()
 
 	var/image/holder = bound_xeno.hud_list[PLASMA_HUD]
 	holder.overlays.Cut()

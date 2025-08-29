@@ -106,6 +106,7 @@
 	desc = "A 9mm high-explosive armor-piercing magazine for the MP5A5."
 	default_ammo = /datum/ammo/bullet/smg/heap
 	gun_type = /obj/item/weapon/gun/smg/mp5/mp5a5
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.

@@ -9076,12 +9076,6 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat/plate,
 /area/navalis/indoors/industrial/refinery)
-"aAE" = (
-/obj/structure/machinery/power/apc{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/navalis/indoors/command/maintenance_port)
 "aAF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
@@ -150150,7 +150144,7 @@ arX
 arX
 arX
 awa
-aAE
+awo
 awJ
 azP
 axv

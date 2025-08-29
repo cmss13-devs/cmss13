@@ -347,7 +347,7 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 		return
 
 	targetmob.shakecamera = 0 
-	animate(targetmob.client, pixel_x = 0, pixel_y = 0, time = 1, flags = ANIMATION_END)
+	animate(targetmob.client, pixel_x = 0, pixel_y = 0, time = 1)
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)

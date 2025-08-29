@@ -258,6 +258,32 @@
 	bonus_overlay = "m16_ext_overlay"
 	max_rounds = 30
 
+//M16A5 RIFLE SUBTYPE
+/obj/item/ammo_magazine/rifle/m16/m16a5
+	name = "\improper M16A5 magazine (5.56x45mm)"
+	desc = "A 5.56x45mm magazine for the M16A5 assault rifle. It holds an additional 10 rounds compared to the older M16 magazine."
+	max_rounds = 30
+	gun_type = /obj/item/weapon/gun/rifle/m16/m16a5
+
+/obj/item/ammo_magazine/rifle/m16/m16a5/ap
+	name = "\improper M16A5 AP magazine (5.56x45mm)"
+	desc = "An armor-piercing 5.56x45mm magazine for the M16A5 assault rifle. It holds an additional 10 rounds compared to the older M16 magazine."
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/rifle/m16/m16a5/heap
+	name = "\improper M16A5 HEAP magazine (5.56x45mm)"
+	desc = "An armor-piercing 5.56x45mm magazine for the M16A5 assault rifle."
+	default_ammo = /datum/ammo/bullet/rifle/heap
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/m16/m16a5/ext
+	name = "\improper M16A5 extended magazine (5.56x45mm)"
+	desc = "An extended 5.56x45mm magazine for the M16A5 assault rifle. This one contains 50 bullets. It holds an additional 20 rounds compared to the older M16 magazine."
+	icon_state = "m16_ext"
+	item_state = "m16_ext"
+	bonus_overlay = "m16_ext_overlay"
+	max_rounds = 50
 //-------------------------------------------------------
 //AR10 RIFLE
 

@@ -837,13 +837,37 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
-/obj/item/storage/belt/marine/black/m16/fill_preset_inventory() // M16
+/obj/item/storage/belt/marine/black/m16/fill_preset_inventory() // Black Belt, M16
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16 (src)
 
 /obj/item/storage/belt/marine/black/m16/ap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
+
+/obj/item/storage/belt/marine/m16a5/fill_preset_inventory() // M16A5 and A6
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
+
+/obj/item/storage/belt/marine/m16a5/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap (src)
+
+/obj/item/storage/belt/marine/m16a5/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/heap (src)
+
+/obj/item/storage/belt/marine/black/m16a5/fill_preset_inventory() // Black Belt, M16A5 and A6
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
+
+/obj/item/storage/belt/marine/black/m16a5/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap (src)
+
+/obj/item/storage/belt/marine/black/m16a5/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/heap (src)
 
 /obj/item/storage/belt/marine/mar40/fill_preset_inventory() // Mar40
 	for(var/i = 1 to storage_slots)
@@ -1131,6 +1155,10 @@
 /obj/item/storage/belt/shotgun/black/es7_lethal/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+
+/obj/item/storage/belt/shotgun/black/es7_incendiary/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7/incendiary(src)
 
 /obj/item/storage/belt/shotgun/van_bandolier
 	name = "two bore bandolier"
@@ -1919,16 +1947,20 @@
 	desc = "Special issue variant of the M276 designed to holster a MP5A6 submachine gun and two spare magazines. Extremely rare and only issued on special request."
 	gun_has_gamemode_skin = FALSE
 	can_hold = list(
-		/obj/item/weapon/gun/smg/mp5/mp5a5/cia,
+		/obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6,
 		/obj/item/ammo_magazine/smg/mp5,
 		/obj/item/ammo_magazine/smg/mp5/ap,
 	)
 
 /obj/item/storage/belt/gun/m39/mp5a6/full/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/smg/mp5/mp5a5/cia(src))
+	handle_item_insertion(new /obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6(src))
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/smg/mp5/ap(src)
 
+/obj/item/storage/belt/gun/m39/mp5a6/heap/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6/heap(src))
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/smg/mp5a5_heap(src)
 
 #define MAXIMUM_MAGAZINE_COUNT 2
 

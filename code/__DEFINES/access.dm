@@ -77,6 +77,7 @@ most of them are tied into map-placed objects. This should be reworked in the fu
 //CIA-locked covert items
 #define ACCESS_CIA 125
 #define ACCESS_CIA_SENIOR 126
+#define ACCESS_CIA_GRS 127
 
 //=================================================
 

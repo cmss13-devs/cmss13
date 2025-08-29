@@ -613,6 +613,13 @@
 /obj/item/storage/pouch/magazine/large/mp5/ap/black
 	icon_state = "wy_ammo_mag"
 
+/obj/item/storage/pouch/magazine/large/mp5a5_heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/mp5a5_heap(src)
+
+/obj/item/storage/pouch/magazine/large/mp5a5_heap/black
+	icon_state = "wy_ammo_mag"
+
 /obj/item/storage/pouch/magazine/large/rifle_heap
 	icon_state = "wy_ammo_mag"
 
@@ -685,6 +692,10 @@
 /obj/item/storage/pouch/shotgun/large/es7_lethal/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+
+/obj/item/storage/pouch/shotgun/large/es7_incendiary/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7/incendiary(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"

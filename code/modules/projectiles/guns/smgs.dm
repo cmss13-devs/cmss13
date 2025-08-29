@@ -331,9 +331,10 @@
 		/obj/item/attachable/suppressor,
 	)
 
-/obj/item/weapon/gun/smg/mp5/mp5a5/cia
+/obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6
 	name = "\improper MP5A6 submachinegun"
 	desc = "A German design, this was one of the most widely used submachine guns in the world. This variant has been modernized with an auto-ejector and ammo counter."
+	current_mag = /obj/item/ammo_magazine/smg/mp5/ap
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
 	random_spawn_chance = 100
@@ -349,6 +350,9 @@
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 	)
+
+/obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6/heap
+	current_mag = /obj/item/ammo_magazine/smg/mp5a5_heap
 
 //-------------------------------------------------------
 //MP27, based on the MP27, based on the M7.

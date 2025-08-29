@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	item_state = "incendiary"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
 	handful_state = "elec_slug"
-	caliber = "20g"
+	caliber = "20g-E"
 
 /obj/item/ammo_magazine/shotgun/beanbag/es7/slug
 	name = "box of X21 lethal slugs"
@@ -107,6 +107,13 @@ GLOBAL_LIST_INIT(shotgun_boxes_12g, list(
 	icon_state = "slug"
 	default_ammo = /datum/ammo/bullet/shotgun/slug/es7
 	handful_state = "es7_slug"
+
+/obj/item/ammo_magazine/shotgun/beanbag/es7/slug/incendiary
+	name = "box of X21 incendiary lethal slugs"
+	desc = "A box filled with X21 combat electrostatic incendiary lethal shotgun shells designed for ES-7 Supernova."
+	icon_state = "fire"
+	default_ammo = /datum/ammo/bullet/shotgun/slug/es7/incendiary
+	handful_state = "es7_fire"
 
 /obj/item/ammo_magazine/shotgun/light/breaching
 	name = "box of breaching shells"
@@ -214,12 +221,15 @@ also doesn't really matter. You can only reload them with handfuls.
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 
 /obj/item/ammo_magazine/internal/shotgun/combat/es7
-	caliber = "20g"
+	caliber = "20g-E"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
 	max_rounds = 7
 
 /obj/item/ammo_magazine/internal/shotgun/combat/es7/lethal
 	default_ammo = /datum/ammo/bullet/shotgun/slug/es7
+
+/obj/item/ammo_magazine/internal/shotgun/combat/es7/incendiary
+	default_ammo = /datum/ammo/bullet/shotgun/slug/es7/incendiary
 
 /obj/item/ammo_magazine/internal/shotgun/merc
 	max_rounds = 5
@@ -298,7 +308,13 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	icon_state = "es7_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/slug/es7
 	handful_state = "es7_slug"
-	caliber = "20g"
+	caliber = "20g-E"
+
+/obj/item/ammo_magazine/handful/shotgun/slug/es7/incendiary
+	name = "handful of X21 incendiary slugs (20g)"
+	icon_state = "es7_fire_5"
+	default_ammo = /datum/ammo/bullet/shotgun/slug/es7/incendiary
+	handful_state = "es7_fire"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot
 	name = "handful of shotgun buckshot shells (12g)"
@@ -349,7 +365,7 @@ GLOBAL_LIST_INIT(shotgun_handfuls_12g, list(
 	icon_state = "shock_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag/es7
 	handful_state = "shock_slug"
-	caliber = "20g"
+	caliber = "20g-E"
 
 /obj/item/ammo_magazine/handful/shotgun/heavy
 	name = "handful of heavy shotgun slugs (8g)"

@@ -1066,13 +1066,6 @@
 		/obj/item/attachable/lasersight,
 	)
 
-/obj/item/weapon/gun/rifle/m16/m16a5/tactical/a6
-	name = "\improper M16A6 rifle"
-	desc = "A modernized version of M16 platform rifle, based upon the M16A5, this version has an auto-ejector and ammo counter. It is chambered in 5.56x45mm."
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
-	current_mag = /obj/item/ammo_magazine/rifle/m16/ap
-
-
 /obj/item/weapon/gun/rifle/m16/m16a5/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 17 ,"rail_x" = 11, "rail_y" = 20, "under_x" = 24, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
 
@@ -1091,6 +1084,29 @@
 	random_spawn_muzzle = list(
 		/obj/item/attachable/suppressor,
 	)
+
+/obj/item/weapon/gun/rifle/m16/m16a5/m16a6
+	name = "\improper M16A6 rifle"
+	desc = "A modernized version of M16 platform rifle, based upon the M16A5, this version has an auto-ejector and ammo counter. It is chambered in 5.56x45mm."
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
+	current_mag = /obj/item/ammo_magazine/rifle/m16/m16a5/ap
+
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/lasersight,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
+
+/obj/item/weapon/gun/rifle/m16/m16a5/m16a6/heap
+	current_mag = /obj/item/ammo_magazine/rifle/m16/m16a5/heap
 
 /obj/item/weapon/gun/rifle/m16/grenadier
 	name = "\improper M16 grenadier rifle"

@@ -256,7 +256,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	icon_state = "es7"
 	item_state = "es7"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/WY/shotguns.dmi'
-	gauge = "20g"
+	gauge = "20g-E"
 	hud_offset = -5
 	pixel_x = -5
 	muzzle_flash = "muzzle_energy"
@@ -310,6 +310,9 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/es7/tactical/lethal
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/es7/lethal
+
+/obj/item/weapon/gun/shotgun/es7/tactical/incendiary
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/es7/incendiary
 
 //-------------------------------------------------------
 //TACTICAL SHOTGUN

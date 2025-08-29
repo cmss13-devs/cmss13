@@ -632,7 +632,7 @@
 	seethroughComp.toggle_active()
 
 /datum/action/xeno_action/activable/retrieve_hugger_egg
-	name = "Retrieve Hugger/Egg"
+	name = "Hugger/Egg Storage"
 	action_icon_state = "throw_hugger"
 	macro_path = /datum/action/xeno_action/verb/verb_retrieve_hugger_egg
 	action_type = XENO_ACTION_CLICK

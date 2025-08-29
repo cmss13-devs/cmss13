@@ -599,6 +599,35 @@
 /obj/item/storage/pouch/magazine/large/m16/ap/black
 	icon_state = "wy_ammo_mag"
 
+/obj/item/storage/pouch/magazine/large/m16a5/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5(src)
+
+/obj/item/storage/pouch/magazine/large/m16a5/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m16a5/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap(src)
+
+/obj/item/storage/pouch/magazine/large/m16a5/ap/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m16a5/ext/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ext(src)
+
+/obj/item/storage/pouch/magazine/large/m16a5/ext/black
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m16a5/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/heap(src)
+
+/obj/item/storage/pouch/magazine/large/m16a5/heap/black
+	icon_state = "wy_ammo_mag"
+
+
 /obj/item/storage/pouch/magazine/large/mp5/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/mp5(src)

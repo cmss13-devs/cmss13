@@ -8,7 +8,8 @@
 	assignment = JOB_CIA
 	skills = /datum/skills/cia/field_agent
 	languages = ALL_HUMAN_LANGUAGES
-	faction = FACTION_MARINE
+	faction = FACTION_CIA
+	faction_group = FACTION_LIST_CIA_MARINE
 
 	paygrades = list(PAY_SHORT_CIA_IA = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CIV"

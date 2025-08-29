@@ -399,11 +399,11 @@
 	var/obj/effect/alien/weeds/our_weeds = locate() in reaper.loc
 	if(our_weeds && our_weeds.hivenumber == reaper.hivenumber) // We must be on weeds belonging to our hive to generate flesh plasma from nearby corpses
 		for(var/mob/living/carbon/dead_mob in view(nearby_corpse_range, reaper))
+			if(corpse_buildup == maximum_corpse_buildup) // At max, no need to search more
+				break
+
 			if(dead_mob.stat != DEAD)
 				continue
-
-			if(corpse_buildup == maximum_corpse_buildup) // Corpses not on weeds can sustain the buildup
-				break
 
 			var/obj/effect/alien/weeds/their_weeds = locate() in dead_mob.loc
 			if(!their_weeds || (their_weeds && their_weeds.hivenumber != reaper.hivenumber))

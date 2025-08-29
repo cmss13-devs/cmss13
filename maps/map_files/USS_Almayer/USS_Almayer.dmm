@@ -6067,6 +6067,12 @@
 "aoO" = (
 /turf/open/floor/almayer/plating_striped/north,
 /area/almayer/shipboard/stern_point_defense)
+"aoP" = (
+/obj/structure/machinery/power/apc/almayer/hardened/north{
+	cell_type = /obj/item/cell/hyper
+	},
+/turf/open/floor/plating,
+/area/almayer/command/aist_office)
 "aoQ" = (
 /turf/open/floor/almayer/plating_stripedcorner/south,
 /area/almayer/shipboard/stern_point_defense)
@@ -175272,7 +175278,7 @@ daz
 daz
 daz
 daz
-kfU
+aoP
 kfU
 daz
 hTl

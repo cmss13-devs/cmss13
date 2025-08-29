@@ -120,6 +120,11 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 	icon = 'icons/mob/xenos/castes/tier_4/rogueking.dmi'
 
+/mob/living/carbon/xenomorph/king/death(cause, gibbed)
+	. = ..()
+	if(hive)
+		hive.banned_allies = initial(hive.banned_allies)
+
 /*
 	REND ABILITY
 	3x3 aoe damage centred on the King. Basic ability, spammable, low damage.

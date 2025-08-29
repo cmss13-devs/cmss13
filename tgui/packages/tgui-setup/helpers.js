@@ -34,6 +34,9 @@
 
   Byond.storageCdn = 'tgui:storagecdn';
 
+  Byond.primaryCdn = 'tgui:primarycdn';
+  Byond.secondaryCdn = 'tgui:secondarycdn';
+
   // Backwards compatibility
   window.__windowId__ = Byond.windowId;
 
@@ -262,6 +265,8 @@
   let RETRY_WAIT_INITIAL = 500;
   let RETRY_WAIT_INCREMENT = 500;
 
+  let RETRY_SECONDARY_ATTEMPTS = 2;
+
   let loadedAssetByUrl = {};
 
   let isStyleSheetLoaded = function (node, url) {
@@ -318,6 +323,16 @@
         RETRY_WAIT_INITIAL + attempt * RETRY_WAIT_INCREMENT
       );
     };
+
+    if (attempt >= RETRY_SECONDARY_ATTEMPTS) {
+      if (
+        !Byond.primaryUrl.contains('tgui') &&
+        !Byond.secondaryUrl.contains('tgui')
+      ) {
+        url = url.replace(Byond.primaryUrl, Byond.secondaryUrl);
+      }
+    }
+
     // JS specific code
     if (type === 'js') {
       let node = document.createElement('script');

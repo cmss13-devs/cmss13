@@ -343,10 +343,11 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 #undef PIXELS_PER_STRENGTH_VAL
 
 /proc/stop_camera_shake(mob/targetmob)
-    if(!targetmob?.client) return
+	if(!targetmob?.client)
+		return
 
-    targetmob.shakecamera = 0 
-    animate(M.client, pixel_x = 0, pixel_y = 0, time = 1)
+	targetmob.shakecamera = 0 
+	animate(targetmob.client, pixel_x = 0, pixel_y = 0, time = 1, flags = ANIMATION_END)
 
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)

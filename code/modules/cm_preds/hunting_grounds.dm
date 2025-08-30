@@ -8,3 +8,7 @@
 /datum/lazy_template/pred/jungle_moon
 	map_name = "jungle_moon"
 	hunting_ground_name = "Jungle Moon"
+
+/datum/lazy_template/pred/temple_moon
+	map_name = "temple_moon"
+	hunting_ground_name = "Temple Moon"

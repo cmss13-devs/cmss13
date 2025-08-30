@@ -1,7 +1,7 @@
 
 //Weyland-Yutani PMCs. Friendly to USCM, hostile to xenos.
 /datum/emergency_call/pmc
-	name = "Weyland-Yutani PMC (Squad)"
+	name = "Weyland-Yutani PMC (Squad) (Auto-Grouped)"
 	mob_max = 6
 	probability = 20
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT2
@@ -79,6 +79,10 @@
 	to_chat(M, SPAN_BOLD("Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces."))
 
 
+/datum/emergency_call/pmc/no_squad
+	name = "Weyland-Yutani PMC (Squad)"
+	probability = 0
+
 /datum/emergency_call/pmc/platoon
 	name = "Weyland-Yutani PMC (Platoon)"
 	mob_min = 8
@@ -124,18 +128,18 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Lead Investigator!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator/chem_recovery, TRUE, TRUE)
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Medical Investigator!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_med_investigator, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_med_investigator/chem_recovery, TRUE, TRUE)
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Crowd Control Specialist!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_riot_control, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_riot_control/chem_recovery, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani PMC Detainer!"))
-		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer/chem_recovery, TRUE, TRUE)
 
 	print_backstory(H)
 

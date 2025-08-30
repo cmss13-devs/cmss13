@@ -992,8 +992,3 @@
 	xeno.hive_message()
 	return ..()
 
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	xeno.xeno_tacmap()
-	return ..()
-

@@ -1,9 +1,0 @@
-author: "thevandie"
-delete-after: True
-changes:
-  - rscadd: "Added two new pistols, the Action and Whisper"
-  - rscdel: "Removed the old holdout pistol and replaced it with the Action and Whisper"
-  - soundadd: "Added a new firing sound for the Action pistol"
-  - imageadd: "Added new sprites for the Whisper and Action pistols, including Inhands"
-  - imageadd: "Added a new sprite for the Action pistols magazines"
-  - imagedel: "Deleted the old Holdout Pistol sprite"

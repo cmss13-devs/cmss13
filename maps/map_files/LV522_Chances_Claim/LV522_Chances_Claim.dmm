@@ -32704,7 +32704,7 @@
 /area/lv522/indoors/a_block/dorm_north)
 "rfl" = (
 /obj/structure/surface/table/almayer,
-/obj/item/grown/nettle/death{
+/obj/item/reagent_container/food/snacks/grown/nettle{
 	pixel_x = -3;
 	pixel_y = 7
 	},
@@ -39491,7 +39491,7 @@
 /area/lv522/indoors/c_block/garage)
 "uyN" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/clothing/head/helmet/marine/scout{
+/obj/item/clothing/head/helmet/marine/radio_helmet/scout{
 	armor_bullet = 5;
 	armor_melee = 15;
 	desc = "A custom helmet designed for USCM Scouts. Looks like this one has seen some action.";

@@ -1283,6 +1283,9 @@
 		TRACKER_FSL = /datum/squad/marine/cryo,
 		TRACKER_ISL = /datum/squad/marine/intel
 	)
+
+	hud_used.locate_leader.overlays.Cut()
+
 	switch(tracker_setting)
 		if(TRACKER_SL)
 			if(assigned_squad)
@@ -1291,11 +1294,15 @@
 			var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
 			if(!C) //no LZ selected
 				hud_used.locate_leader.icon_state = "trackoff"
-			else if(C.z != src.z || get_dist(src,C) < 1)
+			else if(!SSmapping.same_z_map(src.z, C.z) || get_dist(src,C) < 1)
 				hud_used.locate_leader.icon_state = "trackondirect_lz"
 			else
 				hud_used.locate_leader.setDir(Get_Compass_Dir(src,C))
 				hud_used.locate_leader.icon_state = "trackon_lz"
+				if(C.z > z)
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "up")
+				if(C.z < z)
+					hud_used.locate_leader.overlays |= image('icons/mob/hud/screen1.dmi', "down")
 			return
 		if(TRACKER_FTL)
 			if(assigned_squad)
@@ -1333,17 +1340,21 @@
 		return
 
 	var/atom/tracking_atom = H
-	if(tracking_atom.z != src.z && SSinterior.in_interior(tracking_atom))
+	if(tracking_atom.z != z && SSinterior.in_interior(tracking_atom))
 		var/datum/interior/interior = SSinterior.get_interior_by_coords(tracking_atom.x, tracking_atom.y, tracking_atom.z)
 		var/atom/exterior = interior.exterior
 		if(exterior)
 			tracking_atom = exterior
 
-	if(tracking_atom.z != src.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+	if(!SSmapping.same_z_map(z, tracking_atom.z) || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
 		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
 		hud_used.locate_leader.setDir(Get_Compass_Dir(src, tracking_atom))
 		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
+		if(tracking_atom.z > z)
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "up")
+		if(tracking_atom.z < z)
+			hud_used.locate_leader.overlays |= image('icons/mob/hud/human_bronze.dmi', "down")
 
 /mob/living/carbon/proc/locate_nearest_nuke()
 	if(!GLOB.bomb_set)
@@ -1843,5 +1854,4 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
-
 

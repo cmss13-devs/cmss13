@@ -343,6 +343,14 @@
 	name = "agent card"
 	access = list(ACCESS_ILLEGAL_PIRATE)
 
+/obj/item/card/id/adaptive/silver
+	icon_state = "silver"
+	item_state = "silver_id"
+
+/obj/item/card/id/adaptive/gold
+	icon_state = "gold"
+	item_state = "gold_id"
+
 /obj/item/card/id/adaptive/New(mob/user as mob)
 	..()
 	if(!QDELETED(user)) // Runtime prevention on laggy starts or where users log out because of lag at round start.

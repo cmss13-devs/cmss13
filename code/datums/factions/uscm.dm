@@ -53,7 +53,7 @@
 				marine_rk = "soctl"
 			if(JOB_MARINE_RAIDER_CMD)
 				marine_rk = "soccmd"
-			if(JOB_SQUAD_TECH)
+			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
@@ -121,7 +121,7 @@
 				marine_rk = "med"
 			if(JOB_PLT_SL)
 				marine_rk = "leader"
-			if(JOB_SQUAD_TECH)
+			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
 			if(JOB_INTEL)
 				marine_rk = "io"
@@ -205,6 +205,12 @@
 			//CIA
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"
+			if(JOB_CIA_UACQS_ADMN)
+				marine_rk = "uacqs"
+			if(JOB_CIA_UACQS_COMR)
+				marine_rk = "uacqs_com"
+			if(JOB_CIA_UACQS_SEC)
+				marine_rk = "uacqs_sec"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"

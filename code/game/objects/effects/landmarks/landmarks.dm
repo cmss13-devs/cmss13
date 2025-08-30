@@ -720,3 +720,30 @@
 /obj/effect/landmark/tutorial_bottom_left
 	name = "tutorial bottom left"
 	icon_state = "new_player"
+
+
+//****************************************** BREACHABLE FLOOR ************************************************//
+/obj/effect/landmark/breachable_floor
+	name = "breachable floor"
+	icon_state = "new_player"
+	var/explosive_threshold = 200
+
+/obj/effect/landmark/breachable_floor/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/landmark/breachable_floor/LateInitialize()
+	. = ..()
+	var/turf/turf = src.loc
+	turf.breach_resistance = explosive_threshold
+	qdel(src)
+
+/obj/effect/landmark/breachable_floor/weak
+	name = "breachable floor weak"
+	explosive_threshold = 100
+
+/obj/effect/landmark/breachable_floor/medium
+	name = "breachable floor medium"
+/obj/effect/landmark/breachable_floor/strong
+	name = "breachable floor strong"
+	explosive_threshold = 300

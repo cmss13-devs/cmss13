@@ -31,6 +31,9 @@
 /obj/structure/barricade/handrail/proc/reset_autoclimb()
 	autoclimb = initial(autoclimb)
 
+/obj/structure/barricade/handrail/add_debris_element()
+	AddElement(/datum/element/debris, DEBRIS_SPARKS, -15, 8, 1)
+
 /obj/structure/barricade/handrail/update_icon()
 	overlays.Cut()
 	switch(dir)

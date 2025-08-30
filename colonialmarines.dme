@@ -717,6 +717,7 @@
 #include "code\datums\statistics\random_facts\kills_fact.dm"
 #include "code\datums\statistics\random_facts\random_fact.dm"
 #include "code\datums\statistics\random_facts\revives_fact.dm"
+#include "code\datums\statistics\random_facts\steps_fact.dm"
 #include "code\datums\status_effects\_status_effect.dm"
 #include "code\datums\status_effects\_status_effect_helpers.dm"
 #include "code\datums\status_effects\grouped_effect.dm"

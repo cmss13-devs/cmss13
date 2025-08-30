@@ -37,7 +37,7 @@
 #define RADIO_CHANNEL_REQ "Req"
 #define RADIO_CHANNEL_SENTRY "Sentry Network"
 #define RADIO_CHANNEL_SPECIAL "special"
-#define RADIO_CHANNEL_MECHS "Mech"
+#define RADIO_CHANNEL_MECH "Mech"
 
 //CLF Comms
 #define RADIO_CHANNEL_CLF_GEN "CLF"

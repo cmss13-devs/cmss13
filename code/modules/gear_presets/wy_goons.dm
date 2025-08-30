@@ -66,7 +66,7 @@
 
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon
 	minimap_icon = "goon_standard"
 
@@ -148,7 +148,7 @@
 
 	assignment = JOB_WY_GOON_TECH
 	job_title = JOB_WY_GOON_TECH
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC_SPEC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_tech
 	minimap_icon = "goon_engi"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/engineer
@@ -195,7 +195,7 @@
 
 	assignment = JOB_WY_GOON_MEDIC
 	job_title = JOB_WY_GOON_MEDIC
-	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC_SPEC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_medic
 	minimap_icon = "goon_med"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/medic
@@ -253,7 +253,7 @@
 
 	assignment = JOB_WY_GOON_LEAD
 	job_title = JOB_WY_GOON_LEAD
-	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_WY_SEC_LEAD = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_lead
 	minimap_icon = "goon_leader"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/lead

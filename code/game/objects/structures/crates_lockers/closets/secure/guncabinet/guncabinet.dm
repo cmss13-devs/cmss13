@@ -111,4 +111,4 @@
 
 /obj/structure/closet/secure_closet/guncabinet/wy
 	name = "weyland yutani gun cabinet"
-	req_access = ACCESS_WY_SECURITY
+	req_access = list(ACCESS_WY_SECURITY)

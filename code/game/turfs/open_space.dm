@@ -16,6 +16,15 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	is_weedable = NOT_WEEDABLE
 
 /turf/open_space/Initialize()
+	pass_flags = GLOB.pass_flags_cache[type]
+
+	if (isnull(pass_flags))
+		pass_flags = new()
+		initialize_pass_flags(pass_flags)
+		GLOB.pass_flags_cache[type] = pass_flags
+	else
+		initialize_pass_flags()
+
 	ADD_TRAIT(src, TURF_Z_TRANSPARENT_TRAIT, TRAIT_SOURCE_INHERENT)
 	return INITIALIZE_HINT_LATELOAD
 

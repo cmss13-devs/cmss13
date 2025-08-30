@@ -9,7 +9,7 @@
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station)
 "af" = (
-/turf/closed/wall/almayer/upp/reinforced/outer,
+/turf/closed/wall/almayer/upp/outer,
 /area/centcom/control)
 "ah" = (
 /turf/open/floor/plating/plating_catwalk/prison,

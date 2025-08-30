@@ -348,7 +348,7 @@
 /turf/closed/wall/kutjevo/colony,
 /area/kutjevo/interior/construction/signal_tower)
 "SZ" = (
-/turf/closed/wall/kutjevo/colony/reinforced,
+/turf/closed/wall/r_wall/kutjevo/colony,
 /area/kutjevo/interior/construction/signal_tower)
 "Ul" = (
 /obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{

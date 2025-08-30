@@ -1243,6 +1243,19 @@
 	max_storage_space = 28
 	can_hold = list(/obj/item/ammo_magazine/handful)
 
+/obj/item/storage/belt/shotgun/xm88/black
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/snow.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/snow.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/items_by_map/snow_righthand.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+/obj/item/storage/belt/shotgun/xm88/black/full_cia/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/lever_action/xm88/cia_iff(src)
+
 /obj/item/storage/belt/shotgun/xm88/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/lever_action/xm88))
 		var/obj/item/ammo_magazine/lever_action/xm88/B = W

@@ -37,5 +37,8 @@
 /// GRS-HVY, Heavy Operator
 #define PAY_SHORT_GRS_HVY "GRS-HVY"
 
+/// GRS-SNP, Advanced Marksman
+#define PAY_SHORT_GRS_SNP "GRS-SNP"
+
 /// GRS-TL, Team Leader
 #define PAY_SHORT_GRS_TL "GRS-TL"

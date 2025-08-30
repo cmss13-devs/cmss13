@@ -72,6 +72,12 @@
 	prefix = "HvyOp."
 	pay_multiplier = 3.3
 
+/datum/paygrade/cia/grs/sniper
+	paygrade = PAY_SHORT_GRS_SNP
+	name = "Advanced Marksman"
+	prefix = "AdvMrk."
+	pay_multiplier = 3.3
+
 /datum/paygrade/cia/grs/leader
 	paygrade = PAY_SHORT_GRS_TL
 	name = "Team Leader"

@@ -27,6 +27,8 @@
 			hud_icon_state = "grs_eng"
 		if(JOB_CIA_GRS_HVY)
 			hud_icon_state = "grs_hvy"
+		if(JOB_CIA_GRS_SNP)
+			hud_icon_state = "grs_sniper"
 		if(JOB_CIA_GRS_TL)
 			hud_icon_state = "grs_tl"
 	if(hud_icon_state)

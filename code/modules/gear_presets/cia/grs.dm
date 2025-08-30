@@ -121,7 +121,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 
-	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof/grs/smartgun, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof/grs/heavy, WEAR_JACKET)
 
 	if(!is_deathsquad)
 		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
@@ -152,6 +152,59 @@
 	//backpack and stuff in it
 	new_human.equip_to_slot_or_del(new /obj/item/storage/large_holster/machete/smartgunner/full, WEAR_BACK)
 
+//*****************************************************************************************************/
+
+/datum/equipment_preset/cia_global_response/sniper
+	name = JOB_CIA_GRS_SNP
+	paygrades = list(PAY_SHORT_GRS_SNP = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_CIA_GRS_SNP
+	job_title = JOB_CIA_GRS_SNP
+	skills = /datum/skills/cia/global_response/sniper
+	minimap_icon = "peacekeeper"
+
+/datum/equipment_preset/cia_global_response/sniper/deathsquad/New()
+	. = ..()
+	name = "[JOB_CIA_GRS_SNP] (!DEATHSQUAD!)"
+	is_deathsquad = TRUE
+
+/datum/equipment_preset/cia_global_response/sniper/load_gear(mob/living/carbon/human/new_human)
+	//clothes
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia_grs, WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/pmc/marsoc, WEAR_FACE)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife, WEAR_FEET)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/marsoc/grs, WEAR_BODY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/sof/grs, WEAR_JACKET)
+	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/lever_action/xm88/cia, WEAR_J_STORE)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/xm88/black/full_cia, WEAR_WAIST)
+
+	if(!is_deathsquad)
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)
+	else
+		new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical/incendiary, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/incendiary, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/incendiary, WEAR_IN_ACCESSORY)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_R_STORE)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/sof/grs, WEAR_HEAD)
+	//storage items
+	new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_L_STORE)
+	//backpack and stuff in it
+	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/black, WEAR_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/smoke, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/strong, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular/response, WEAR_IN_BACK)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/cia_global_response/engineer

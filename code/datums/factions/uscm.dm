@@ -211,6 +211,8 @@
 				marine_rk = "grs_eng"
 			if(JOB_CIA_GRS_HVY)
 				marine_rk = "grs_hvy"
+			if(JOB_CIA_GRS_SNP)
+				marine_rk = "grs_sniper"
 			if(JOB_CIA_GRS_TL)
 				marine_rk = "grs_tl"
 			// Riot MPs

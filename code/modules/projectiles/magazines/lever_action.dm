@@ -57,6 +57,18 @@ Similar to shotguns.dm but not exactly.
 	gun_type = /obj/item/weapon/gun/lever_action/xm88
 	handful_state = "boomslang_bullet"
 
+/obj/item/ammo_magazine/lever_action/xm88/cia_iff
+	name = "box of .458R custom SOCOM rounds"
+	desc = "A box filled with handfuls of .458R custom SOCOM rounds, designed for use with the XM88R custom heavy rifle."
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/marksman_rifles.dmi'
+	icon_state = "458-box"
+	item_state = "458-box"
+	default_ammo = /datum/ammo/bullet/lever_action/xm88/iff
+	max_rounds = 100
+	caliber = ".458R"
+	gun_type = /obj/item/weapon/gun/lever_action/xm88/cia
+	handful_state = "boomslang_bullet"
+
 //-------------------------------------------------------
 
 /obj/item/ammo_magazine/internal/lever_action
@@ -74,6 +86,10 @@ Similar to shotguns.dm but not exactly.
 	caliber = ".458"
 	max_rounds = 9
 	chamber_closed = 0
+
+/obj/item/ammo_magazine/internal/lever_action/xm88/cia
+	default_ammo = /datum/ammo/bullet/lever_action/xm88/iff
+	caliber = ".458R"
 
 //-------------------------------------------------------
 
@@ -122,4 +138,12 @@ Handfuls of lever_action rounds. For spawning directly on mobs in roundstart, ER
 	caliber = ".458"
 	icon_state = "marksman_lever_action_bullet_9"
 	default_ammo = /datum/ammo/bullet/lever_action/xm88
+	handful_state = "boomslang_bullet"
+
+/obj/item/ammo_magazine/handful/lever_action/xm88/cia_iff
+	name = "handful of .458R custom SOCOM rounds (.458R)"
+	desc = "A handful of .458R custom SOCOM rounds, designed for the XM88R custom heavy rifle."
+	caliber = ".458R"
+	icon_state = "marksman_lever_action_bullet_9"
+	default_ammo = /datum/ammo/bullet/lever_action/xm88/iff
 	handful_state = "boomslang_bullet"

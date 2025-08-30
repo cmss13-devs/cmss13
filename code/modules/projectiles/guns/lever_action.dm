@@ -477,20 +477,42 @@ their unique feature is that a direct hit will buff your damage and firerate
 /obj/item/weapon/gun/lever_action/xm88/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
 	if(!able_to_fire(user) || !target) //checks here since we don't want to fuck up applying the increase
 		return NONE
-	if(floating_penetration && in_chamber) //has to go before actual firing
-		var/obj/projectile/P = in_chamber
+
+	var/has_iff = FALSE
+	if(default_caliber == ".458R")
+		has_iff = TRUE
+	var/obj/projectile/chambered_shot
+	if(in_chamber)
+		chambered_shot = in_chamber
+		if(!has_iff)
+			chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88]
+		else
+			chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/iff]
+	if(floating_penetration && chambered_shot) //has to go before actual firing
 		switch(floating_penetration)
 			if(FLOATING_PENETRATION_TIER_1)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
+				if(!has_iff)
+					chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen20]
+				else
+					chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/iff/pen20]
 				direct_hit_sound = "sound/weapons/gun_xm88_directhit_low.ogg"
 			if(FLOATING_PENETRATION_TIER_2)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
+				if(!has_iff)
+					chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen30]
+				else
+					chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/iff/pen30]
 				direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
 			if(FLOATING_PENETRATION_TIER_3)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
+				if(!has_iff)
+					chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen40]
+				else
+					chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/iff/pen40]
 				direct_hit_sound = "sound/weapons/gun_xm88_directhit_medium.ogg"
 			if(FLOATING_PENETRATION_TIER_4)
-				P.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
+				if(!has_iff)
+					chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/pen50]
+				else
+					chambered_shot.ammo = GLOB.ammo_list[/datum/ammo/bullet/lever_action/xm88/iff/pen50]
 				direct_hit_sound = "sound/weapons/gun_xm88_directhit_high.ogg"
 	return ..()
 
@@ -532,3 +554,58 @@ their unique feature is that a direct hit will buff your damage and firerate
 #undef FLOATING_PENETRATION_TIER_2
 #undef FLOATING_PENETRATION_TIER_3
 #undef FLOATING_PENETRATION_TIER_4
+
+/obj/item/weapon/gun/lever_action/xm88/cia
+	name = "\improper XM88R custom heavy rifle"
+
+	desc = "An experimental man-portable anti-material rifle chambered in .458R custom SOCOM. It must be manually chambered for every shot.\nIt has a special property - when you obtain multiple direct hits in a row, its armor penetration and damage will increase.\nThis version is equipped with custom ammunition and sighting, allowing for IFF capable shots."
+
+	map_specific_decoration = FALSE
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/obj/items/weapons/guns/guns_by_map/snow/back.dmi',
+		WEAR_J_STORE = 'icons/obj/items/weapons/guns/guns_by_map/snow/suit_slot.dmi',
+		WEAR_L_HAND = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_righthand.dmi',
+	)
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor, // Barrel
+		/obj/item/attachable/scope/mini/xm88/cia, // Rail
+		/obj/item/attachable/lasersight, // Under
+		/obj/item/attachable/stock/xm88/cia, // Stock
+		)
+
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/scope/mini/xm88/cia,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/lasersight,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
+	random_spawn_stock = list(
+		/obj/item/attachable/stock/xm88/cia,
+	)
+	auto_retrieval_slot = WEAR_J_STORE
+	var/skill_locked = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+	emp_proof = TRUE
+
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
+
+	current_mag = /obj/item/ammo_magazine/internal/lever_action/xm88/cia
+	default_caliber = ".458R"
+
+/obj/item/weapon/gun/lever_action/xm88/cia/able_to_fire(mob/living/user)
+	. = ..()
+	if(. && istype(user) && skill_locked) //Let's check all that other stuff first.
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			return FALSE
+		if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use \the [src]..."))
+			return FALSE

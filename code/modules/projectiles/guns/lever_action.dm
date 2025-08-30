@@ -600,6 +600,11 @@ their unique feature is that a direct hit will buff your damage and firerate
 	current_mag = /obj/item/ammo_magazine/internal/lever_action/xm88/cia
 	default_caliber = ".458R"
 
+/obj/item/weapon/gun/lever_action/xm88/cia/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
 /obj/item/weapon/gun/lever_action/xm88/cia/able_to_fire(mob/living/user)
 	. = ..()
 	if(. && istype(user) && skill_locked) //Let's check all that other stuff first.

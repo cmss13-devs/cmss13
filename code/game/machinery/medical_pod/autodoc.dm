@@ -536,7 +536,13 @@
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(patient,current_surgery.limb_ref)
 						close_incision(patient,current_surgery.limb_ref)
-
+						switch(current_surgery.limb_ref.name)
+							if("head")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+							if("chest")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 		if(prob(30))
 			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");

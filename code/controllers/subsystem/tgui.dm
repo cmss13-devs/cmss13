@@ -42,13 +42,21 @@ SUBSYSTEM_DEF(tgui)
 	basehtml = replacetext(basehtml, "tgui:stylesheet", MAP_STYLESHEET)
 
 /datum/controller/subsystem/tgui/OnConfigLoad()
+	var/is_webroot = CONFIG_GET(string/asset_transport) == "webroot"
+	if(is_webroot)
+		basehtml = replacetext(basehtml, "tgui:primarycdn", CONFIG_GET(string/asset_cdn_url))
+
+		var/secondary_url = CONFIG_GET(string/asset_secondary_cdn_url)
+		if(secondary_url)
+			basehtml = replacetext(basehtml, "tgui:secondarycdn", secondary_url)
+
 	var/storage_iframe = CONFIG_GET(string/storage_cdn_iframe)
 
 	if(storage_iframe && storage_iframe != /datum/config_entry/string/storage_cdn_iframe::config_entry_value)
 		basehtml = replacetext(basehtml, "tgui:storagecdn", storage_iframe)
 		return
 
-	if(CONFIG_GET(string/asset_transport) == "webroot")
+	if(is_webroot)
 		var/datum/asset_transport/webroot/webroot = SSassets.transport
 
 		var/datum/asset_cache_item/item = webroot.register_asset("iframe.html", file("tgui/public/iframe.html"))

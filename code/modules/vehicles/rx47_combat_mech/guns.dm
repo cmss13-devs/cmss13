@@ -214,6 +214,7 @@
 	))
 
 /obj/item/weapon/gun/mech/cupola/attack_self(mob/user)
+	..()
 	activate_attachment_verb()
 	if(!active_attachable)
 		base_gun_icon = "aux_cupola"

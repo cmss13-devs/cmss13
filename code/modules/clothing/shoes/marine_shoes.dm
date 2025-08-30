@@ -162,6 +162,9 @@
 /obj/item/clothing/shoes/veteran/pmc/knife
 	spawn_item_type = /obj/item/attachable/bayonet/wy
 
+/obj/item/clothing/shoes/veteran/pmc/cia_knife
+	spawn_item_type = /obj/item/attachable/bayonet/custom/black
+
 /obj/item/clothing/shoes/veteran/pmc/commando
 	name = "\improper W-Y commando boots"
 	desc = "A pair of heavily armored, acid-resistant boots."

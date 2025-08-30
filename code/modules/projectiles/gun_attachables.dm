@@ -1238,6 +1238,12 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_offset = 7
 	dynamic_aim_slowdown = SLOWDOWN_ADS_NONE
 
+/obj/item/attachable/scope/mini/xm88/cia
+	name = "XS-9R targeting relay"
+	desc = "An ARMAT XS-9 optical interface. Unlike a traditional scope, this rail-mounted device features no telescoping lens. Instead, the firearm's onboard targeting system relays data directly to the optic for the system operator to reference in realtime."
+	icon_state = "s_boomslang-scope"
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
+
 /obj/item/attachable/scope/mini/xm88/New()
 	..()
 	select_gamemode_skin(type)
@@ -1995,6 +2001,13 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_4
+
+/obj/item/attachable/stock/xm88/cia
+	name = "\improper XM88R padded stock"
+	desc = "A specially made compound polymer stock reinforced with aluminum rods and thick rubber padding to shield the user from recoil. Fitted specifically for the XM88R Heavy Rifle."
+	icon_state = "s_boomslang-stock"
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
+
 
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"

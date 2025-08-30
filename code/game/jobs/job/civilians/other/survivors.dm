@@ -81,12 +81,22 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	H.name = H.get_visible_name()
 
 	if(length(picked_spawner.intro_text))
-		intro_text = picked_spawner.intro_text
+		if(picked_spawner.synth_equipment && picked_spawner.synthetic_intro_text != null)
+			intro_text = picked_spawner.synthetic_intro_text
+		else if(picked_spawner.CO_equipment && picked_spawner.CO_intro_text != null)
+			intro_text = picked_spawner.CO_intro_text
+		else
+			intro_text = picked_spawner.intro_text
 
 	if(picked_spawner.story_text)
-		story_text = picked_spawner.story_text
+		if(picked_spawner.synth_equipment && picked_spawner.synthetic_story_text != null)
+			story_text = picked_spawner.synthetic_story_text
+		else if(picked_spawner.CO_equipment && picked_spawner.CO_story_text != null)
+			story_text = picked_spawner.CO_story_text
+		else
+			story_text = picked_spawner.story_text
 
-	if(picked_spawner.hostile)
+	if(picked_spawner.hostile && !picked_spawner.synth_equipment)
 		hostile = TRUE
 
 	new /datum/cm_objective/move_mob/almayer/survivor(H)

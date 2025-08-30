@@ -100,6 +100,18 @@
 
 	return ..()
 
+/mob/living/carbon/xenomorph/set_lying_down()
+	if(selected_ability && selected_ability.ability_uses_acid_overlay)
+		overlays -= acid_overlay
+
+	return ..()
+
+/mob/living/carbon/xenomorph/get_up()
+	if(selected_ability && selected_ability.ability_uses_acid_overlay && !(acid_overlay in overlays))
+		overlays += acid_overlay
+
+	return ..()
+
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.lay_down()
@@ -903,35 +915,35 @@
 	apply_cooldown()
 	return ..()
 
-/datum/action/xeno_action/activable/bombard/use_ability(atom/A)
-	var/mob/living/carbon/xenomorph/X = owner
+/datum/action/xeno_action/activable/bombard/use_ability(atom/atom)
+	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(X) || !X.check_state() || !action_cooldown_check() || X.action_busy)
+	if (!istype(xeno) || !xeno.check_state() || !action_cooldown_check() || xeno.action_busy)
 		return FALSE
 
-	var/turf/T = get_turf(A)
+	var/turf/turf = get_turf(atom)
 
-	if(isnull(T) || istype(T, /turf/closed) || !T.can_bombard(owner))
-		to_chat(X, SPAN_XENODANGER("We can't bombard that!"))
+	if(isnull(turf) || istype(turf, /turf/closed) || !turf.can_bombard(owner))
+		to_chat(xeno, SPAN_XENODANGER("We can't bombard that!"))
 		return FALSE
 
 	if (!check_plasma_owner())
 		return FALSE
 
-	if(T.z != X.z)
-		to_chat(X, SPAN_WARNING("That target is too far away!"))
+	if(turf.z != xeno.z)
+		to_chat(xeno, SPAN_WARNING("That target is too far away!"))
 		return FALSE
 
 	var/atom/bombard_source = get_bombard_source()
-	if (!X.can_bombard_turf(T, range, bombard_source))
+	if (!xeno.can_bombard_turf(turf, range, bombard_source))
 		return FALSE
 
-	X.visible_message(SPAN_XENODANGER("[X] digs itself into place!"), SPAN_XENODANGER("We dig ourself into place!"))
-	if (!do_after(X, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
-		to_chat(X, SPAN_XENODANGER("We decide to cancel our bombard."))
+	xeno.visible_message(SPAN_XENODANGER("[xeno] digs itself into place!"), SPAN_XENODANGER("We dig ourself into place!"))
+	if (!do_after(xeno, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
+		to_chat(xeno, SPAN_XENODANGER("We decide to cancel our bombard."))
 		return FALSE
 
-	if (!X.can_bombard_turf(T, range, bombard_source)) //Second check in case something changed during the do_after.
+	if (!xeno.can_bombard_turf(turf, range, bombard_source)) //Second check in case something changed during the do_after.
 		return FALSE
 
 	if (!check_and_use_plasma_owner())
@@ -939,10 +951,10 @@
 
 	apply_cooldown()
 
-	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
-	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)
+	xeno.visible_message(SPAN_XENODANGER("[xeno] launches a massive ball of acid at [atom]!"), SPAN_XENODANGER("You launch a massive ball of acid at [atom]!"))
+	playsound(get_turf(xeno), 'sound/effects/blobattack.ogg', 25, 1)
 
-	recursive_spread(T, effect_range, effect_range)
+	recursive_spread(turf, effect_range, effect_range)
 
 	return ..()
 

@@ -194,6 +194,8 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
+			if(JOB_AI_TECH)
+				marine_rk = "aist"
 			//CIA
 			if(JOB_CIA_LIAISON)
 				marine_rk = "cialo"

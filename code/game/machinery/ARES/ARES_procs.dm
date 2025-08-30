@@ -46,9 +46,17 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	var/list/faction_options = list("USCM Only" = FACTION_LIST_ARES_MARINE, "Wey-Yu Only" = FACTION_WY, "USCM & Wey-Yu" = FACTION_LIST_ARES_ALL, "ARES Only" = FACTION_LIST_ARES_ALONE)
 	var/list/core_sentries = list()
 
+	var/code_apollo = 1
+	var/code_interface = 1
+	var/code_debug = 1
+
 /datum/ares_link/New()
 	admin_interface = new
 	datacore = GLOB.ares_datacore
+
+	code_apollo = "[pick(GLOB.alphabet_uppercase)][rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
+	code_interface = "[pick(GLOB.alphabet_uppercase)][rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
+	code_debug = "X[rand(1000, 9999)][pick(GLOB.alphabet_uppercase)][pick(GLOB.alphabet_uppercase)]"
 
 /datum/ares_link/Destroy()
 	qdel(admin_interface)
@@ -111,6 +119,7 @@ GLOBAL_LIST_INIT(maintenance_categories, list(
 	COOLDOWN_DECLARE(ares_nuclear_cooldown)
 	COOLDOWN_DECLARE(ares_quarters_cooldown)
 	COOLDOWN_DECLARE(aicore_lockdown)
+	COOLDOWN_DECLARE(ares_bioscan_cooldown)
 
 // ------ ARES Logging Procs ------ //
 /proc/ares_is_active()

@@ -518,6 +518,9 @@
 	icon_state = "late_join_misc"
 	job = JOB_WORKING_JOE
 
+/obj/effect/landmark/late_join/aist
+	name = "AIST late join"
+	job = JOB_AI_TECH
 /obj/effect/landmark/late_join/dzho_automaton
 	name = "dzho automaton late join"
 	icon_state = "late_join_upp"

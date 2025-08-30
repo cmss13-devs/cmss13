@@ -435,6 +435,14 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"abd" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8;
+	network = list("WY")
+	},
+/turf/open/floor/almayer/flooredge/north,
+/area/almayer/command/corporateliaison)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -880,6 +888,14 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
+"acm" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 1;
+	network = list("WY")
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "acn" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -14064,6 +14080,14 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
+"aKB" = (
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 8;
+	network = list("WY")
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "aKC" = (
 /obj/structure/machinery/light,
 /turf/open_space,
@@ -35203,6 +35227,9 @@
 	pixel_y = 10;
 	pixel_x = 4
 	},
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
+	name = "ship-grade camera"
+	},
 /turf/open/floor/almayer/silver/north,
 /area/almayer/medical/containment/cell/cl)
 "bHw" = (
@@ -35808,7 +35835,8 @@
 "bIV" = (
 /obj/structure/machinery/computer/cameras/containment/hidden{
 	dir = 4;
-	layer = 3
+	layer = 3;
+	network = list("Containment","Containment Hidden","Research","WY")
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails{
@@ -35929,6 +35957,8 @@
 	pixel_x = -8;
 	pixel_y = 3
 	},
+/obj/item/device/motion_sensor/wy,
+/obj/item/device/motion_sensor/wy,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bJi" = (
@@ -77709,6 +77739,11 @@
 "rRT" = (
 /obj/effect/decal/floor_symbol/wy_3x1{
 	dir = 1
+	},
+/obj/structure/machinery/camera/autoname/almayer{
+	name = "ship-grade camera";
+	dir = 4;
+	network = list("WY")
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -202797,7 +202832,7 @@ wmP
 dRP
 bJB
 xCf
-eAN
+acm
 pBG
 dbM
 bIN
@@ -203521,7 +203556,7 @@ eAN
 eAN
 ppF
 bIc
-bIm
+abd
 bIH
 bIr
 bIf
@@ -204135,7 +204170,7 @@ wvo
 bKi
 xUa
 bJL
-eAN
+aKB
 skR
 pBG
 nBi

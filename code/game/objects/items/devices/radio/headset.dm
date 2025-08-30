@@ -1387,7 +1387,8 @@
 /obj/item/device/radio/headset/almayer/mcom/mech
 	name = "marine mech operator radio headset"
 	desc = "Used by USCM mechsuit operators, features a non-standard brace. Channels are as follows: :v - marine command, :n - engineering, :m - medbay, :u - requisitions"
-	initial_keys = list(/obj/item/device/encryptionkey/vc)
+	frequency = MECH_FREQ
+	initial_keys = list(/obj/item/device/encryptionkey/mech)
 	volume = RADIO_VOLUME_RAISED
 	multibroadcast_cooldown = HIGH_MULTIBROADCAST_COOLDOWN
 	misc_tracking = TRUE

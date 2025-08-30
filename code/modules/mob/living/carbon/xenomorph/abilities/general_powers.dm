@@ -226,29 +226,69 @@
 	button.overlays += image('icons/mob/hud/actions_xeno.dmi', button, resin_construction.construction_name)
 
 // Resin
-/datum/action/xeno_action/activable/secrete_resin/use_ability(atom/target)
+/datum/action/xeno_action/activable/secrete_resin/use_ability(atom/target, mods)
 	if(!..())
 		return FALSE
+
 	var/mob/living/carbon/xenomorph/xeno_owner = owner
+	if(mods[CLICK_CATCHER])
+		return
+
+	if(!action_cooldown_check())
+		return
+
 	if(isstorage(target.loc))
 		return FALSE
+
 	if(xeno_owner.contains(target))
 		return FALSE
+
 	if(istype(target, /atom/movable/screen))
 		return FALSE
+
 	if(!SSmapping.same_z_map(target.z, xeno_owner.z))
 		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return
+
+	var/final_build_speed_mod = build_speed_mod
+	var/final_cooldown = xeno_cooldown
+
+	var/turf/target_turf = get_turf(target)
+	if(range_build_capable)
+		if(needs_weeds && !xeno_owner.standing_on_weeds() && !xeno_owner.Adjacent(target_turf))
+			to_chat(owner, SPAN_XENONOTICE("We must be standing on weeds to establish a connection to the resin."))
+			return
+
+		if(!target_turf)
+			return
+
+		if(care_about_adjacency)
+			if(!(target_turf in view(10, xeno_owner)))
+				to_chat(owner, SPAN_XENONOTICE("We must have a direct line of sight!"))
+				return FALSE
+
+			if(xeno_owner.Adjacent(target_turf))
+				final_build_speed_mod = 1
+				final_cooldown = 1 SECONDS
+			else
+				final_build_speed_mod = build_speed_mod
+				final_cooldown = xeno_cooldown
+
 	apply_cooldown()
-	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, build_speed_mod))
+
+	if(range_build_capable && care_about_adjacency)
+		apply_cooldown_override(final_cooldown)
+
+	switch(xeno_owner.build_resin(target, thick, make_message, plasma_cost != 0, final_build_speed_mod))
 		if(SECRETE_RESIN_INTERRUPT)
-			if(xeno_cooldown)
-				apply_cooldown_override(xeno_cooldown * 3)
+			if(final_cooldown)
+				apply_cooldown_override(final_cooldown * 3)
 			return FALSE
 		if(SECRETE_RESIN_FAIL)
-			if(xeno_cooldown)
-				apply_cooldown_override(1)
+			if(final_cooldown)
+				apply_cooldown_override(0)
 			return FALSE
+
 	return TRUE
 
 // leader Marker

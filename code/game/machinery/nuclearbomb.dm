@@ -389,6 +389,12 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	GLOB.bomb_set = FALSE
 	timeleft = initial(timeleft)
 	explosion_time = null
+	for(var/mob/player in world)
+		player << sound(null, channel=5) // stops the explosion sound in case bomb is disabled while it's playing
+	for(var/mob/current_mob as anything in GLOB.mob_list)
+		var/turf/current_turf = get_turf(current_mob)
+		if(current_turf?.z == z && current_mob.stat != DEAD && current_mob.shakecamera > world.time)
+			stop_camera_shake(current_mob) // stops explosion camera shake in case bomb is disabled while it's shaking
 	announce_to_players()
 
 /obj/structure/machinery/nuclearbomb/proc/explode()
@@ -403,7 +409,9 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 	safety = TRUE
 
 	playsound(src, 'sound/machines/Alarm.ogg', 75, 0, 30)
-	world << pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+	var/sound/explosionsound = sound(pick('sound/theme/nuclear_detonation1.ogg', 'sound/theme/nuclear_detonation2.ogg'))
+	explosionsound.channel = 5
+	world << explosionsound
 
 	for(var/mob/current_mob as anything in GLOB.mob_list)
 		var/turf/current_turf = get_turf(current_mob)
@@ -411,6 +419,11 @@ GLOBAL_VAR_INIT(bomb_set, FALSE)
 			shake_camera(current_mob, 110, 4)
 
 	sleep(10 SECONDS)
+	if(GLOB.bomb_set == FALSE)
+		update_minimap_icon()
+		stop_processing()
+		update_icon()
+		return FALSE
 
 	var/list/mob/alive_mobs = list() //Everyone who will be destroyed on the zlevel(s).
 	var/list/mob/dead_mobs = list() //Everyone that needs embryos cleared

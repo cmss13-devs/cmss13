@@ -44,21 +44,3 @@
 		overlays -= old_area.lighting_effect
 	if(new_area.lighting_effect)
 		overlays += new_area.lighting_effect
-
-
-
-/turf/proc/static_generate_missing_corners()
-	if (!lighting_corner_NE)
-		lighting_corner_NE = new/datum/static_lighting_corner(src, NORTH|EAST)
-
-	if (!lighting_corner_SE)
-		lighting_corner_SE = new/datum/static_lighting_corner(src, SOUTH|EAST)
-
-	if (!lighting_corner_SW)
-		lighting_corner_SW = new/datum/static_lighting_corner(src, SOUTH|WEST)
-
-	if (!lighting_corner_NW)
-		lighting_corner_NW = new/datum/static_lighting_corner(src, NORTH|WEST)
-
-	lighting_corners_initialised = TRUE
-

@@ -1203,6 +1203,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		return TRUE
 	if(istype(marine.wear_l_ear, /obj/item/device/overwatch_camera) || istype(marine.wear_r_ear, /obj/item/device/overwatch_camera))
 		return TRUE
+	if(istype(marine.glasses, /obj/item/clothing/glasses/night/m56_goggles))
+		return TRUE
 	return FALSE
 /// returns the overwatch camera the human is wearing
 /obj/item/proc/get_camera()
@@ -1214,11 +1216,18 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 /obj/item/device/overwatch_camera/get_camera()
 	return camera
 
+/obj/item/clothing/glasses/night/m56_goggles/get_camera()
+	return camera
+
 ///returns camera holder
 /mob/living/carbon/human/proc/get_camera_holder()
 	if(istype(head, /obj/item/clothing/head/helmet/marine))
 		var/obj/item/clothing/head/helmet/marine/helm = head
 		return helm
+	var/obj/item/clothing/glasses/night/m56_goggles/goggles
+	if(istype(glasses, /obj/item/clothing/glasses/night/m56_goggles))
+		goggles = glasses
+		return goggles
 	var/obj/item/device/overwatch_camera/cam_gear
 	if(istype(wear_l_ear, /obj/item/device/overwatch_camera))
 		cam_gear = wear_l_ear

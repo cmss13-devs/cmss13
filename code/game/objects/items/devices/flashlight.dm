@@ -419,6 +419,7 @@
 	turn_off()
 	fuel = 0
 	burnt_out = TRUE
+	playsound(src, 'sound/handling/flare_burnout.ogg', 50, 1) //No more fuel, sad sizzle.
 	update_icon()
 	add_to_garbage(src)
 	STOP_PROCESSING(SSobj, src)
@@ -458,14 +459,13 @@
 		SPAN_WARNING("You snuff out [src], singing your hand."))
 		user.apply_damage(7, BURN, hand)
 		burn_out()
-		//TODO: add snuff out sound so guerilla CLF snuffing flares get noticed
 		return
 
 	. = ..()
 	// All good, turn it on.
 	if(.)
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
-		playsound(src,'sound/handling/flare_activate_2.ogg', 50, 1) //cool guy sound
+		playsound(src,	pick('sound/handling/flare_activate_2.ogg','sound/handling/flare_activate_3.ogg','sound/handling/flare_activate_4.ogg'), 50, 1) //cool guy sounds
 		turn_on()
 		var/mob/living/carbon/enjoyer = user
 		if(istype(enjoyer) && !enjoyer.throw_mode)

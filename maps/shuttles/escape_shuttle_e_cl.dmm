@@ -21,6 +21,11 @@
 /turf/open/shuttle/escapepod/floor0/north,
 /area/shuttle/escape_pod)
 "e" = (
+/turf/closed/shuttle/escapepod{
+	icon_state = "wall5"
+	},
+/area/shuttle/escape_pod)
+"f" = (
 /obj/structure/machinery/computer/shuttle/escape_pod_panel{
 	pixel_y = 30
 	},
@@ -46,9 +51,11 @@
 /turf/open/shuttle/escapepod/floor4,
 /area/shuttle/escape_pod)
 "D" = (
-/turf/closed/shuttle/escapepod{
-	icon_state = "wall5"
+/obj/structure/machinery/door/airlock/evacuation/liaison{
+	name = "\improper Evacuation Airlock CL-1";
+	id_tag = "cl_evac"
 	},
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/escape_pod)
 "E" = (
 /turf/closed/shuttle/escapepod{
@@ -70,13 +77,6 @@
 	icon_state = "wall1"
 	},
 /area/shuttle/escape_pod)
-"S" = (
-/obj/structure/machinery/door/airlock/evacuation/liaison{
-	name = "\improper Evacuation Airlock CL-1";
-	id_tag = "cl_evac"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/shuttle/escape_pod)
 "T" = (
 /turf/open/shuttle/escapepod/north,
 /area/shuttle/escape_pod)
@@ -88,14 +88,14 @@
 
 (1,1,1) = {"
 h
-S
+D
 c
 X
 a
 "}
 (2,1,1) = {"
 Q
-e
+f
 T
 d
 E
@@ -111,6 +111,6 @@ E
 g
 O
 O
-D
+e
 I
 "}

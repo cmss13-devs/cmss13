@@ -62,8 +62,10 @@
 /obj/item/device/motion_sensor/update_icon()
 	if(anchored)
 		icon_state = "[icon_state]_active"
+		name = "[name] (ACTIVE)"
 	else
 		icon_state = initial(icon_state)
+		name = initial(name)
 
 /obj/item/device/motion_sensor/Crossed(mob/living/passer)
 	if(!anchored)//Not working if it isn't on the floor.
@@ -144,10 +146,8 @@
 			anchored = FALSE
 			pixel_y = 0
 			pixel_x = 0
-			name = initial(name)
 			update_icon()
 		else
-			name = "[name] (ACTIVE)"
 			anchored = TRUE
 			update_icon()
 			var/chosen_dir = tgui_input_list(user, "Which corner do you wish to place the sensor?", "Location", list("North-West", "North-East", "South-West", "South-East"), 5 SECONDS, default = "North-West")

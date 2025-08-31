@@ -31,6 +31,9 @@
 	var/markings_color
 	var/markings_specialty
 
+	var/played_crit_alert = FALSE
+	var/played_damage_alert = FALSE
+
 /obj/vehicle/rx47_mech/siegebreaker
 	name = "\improper RX47-SB Combat Mechsuit"
 	desc = "A RX47-SB 'Siegebreaker' Combat Mechsuit, equipped with a 50mm IFF-locked explosive cannon and support Cupola Smartgun. It has a flamethrower attached to the cupola unit."
@@ -108,12 +111,12 @@
 			l_move_time = world.time
 			setDir(direction)
 			handle_rotation()
-			pick(playsound(src.loc, 'sound/mecha/powerloader_turn.ogg', 25, 1), playsound(src.loc, 'sound/mecha/powerloader_turn2.ogg', 25, 1))
+			playsound(src.loc, 'sound/mecha/mechturn.ogg', 25, 1)
 			. = TRUE
 		else
 			. = step(src, direction)
 			if(.)
-				pick(playsound(loc, 'sound/mecha/powerloader_step.ogg', 25), playsound(loc, 'sound/mecha/powerloader_step2.ogg', 25))
+				playsound(loc, 'sound/mecha/mechstep.ogg', 25)
 
 /obj/vehicle/rx47_mech/handle_rotation()
 	if(buckled_mob)
@@ -125,12 +128,6 @@
 				buckled_mob.pixel_x = -4
 			else
 				buckled_mob.pixel_x = 0
-
-/obj/vehicle/rx47_mech/explode()
-	new wreckage(loc)
-	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
-	..()
-
 
 /obj/vehicle/rx47_mech/Collide(atom/A)
 	if(ishumansynth_strict(A))
@@ -197,6 +194,31 @@
 	if(gun_secondary)
 		. += gun_secondary.get_examine_text(user, TRUE)
 
+/obj/vehicle/rx47_mech/healthcheck()
+	var/one_percent = maxhealth / 100
+	var/percentage = health / one_percent
+	if(buckled_mob && buckled_mob.client)
+		if(percentage <= 10)
+			if(!played_crit_alert)
+				playsound_client(buckled_mob.client, 'sound/mecha/critnano.ogg', src, 75)
+				played_crit_alert = TRUE
+		else if(percentage <= 25)
+			if(!played_damage_alert)
+				playsound_client(buckled_mob.client, 'sound/mecha/internaldmgalarm.ogg', src, 75)
+				played_damage_alert = TRUE
+				played_crit_alert = FALSE
+		else
+			played_crit_alert = FALSE
+			played_damage_alert = FALSE
+
+	if(health <= 0)
+		explode()
+
+/obj/vehicle/rx47_mech/explode()
+	new wreckage(loc)
+	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
+	..()
+
 /obj/vehicle/rx47_mech/attack_hand(mob/user)
 	if(buckled_mob && user != buckled_mob)
 		buckled_mob.visible_message(SPAN_WARNING("[user] tries to move [buckled_mob] out of [src]."),
@@ -206,7 +228,7 @@
 		var/old_buckled_mob = buckled_mob
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && dir == olddir && loc == oldloc && buckled_mob == old_buckled_mob)
 			manual_unbuckle(user)
-			playsound(loc, 'sound/mecha/powerloader_unbuckle.ogg', 25)
+			playsound(loc, 'sound/mecha/mechmove03.ogg', 25)
 
 /obj/vehicle/rx47_mech/buckle_mob(mob/M, mob/user)
 	if(M != user)
@@ -241,8 +263,8 @@
 	RegisterSignal(new_buckled_mob, COMSIG_LIVING_FLAMER_CROSSED, PROC_REF(flamer_fire_crossed_callback))
 	update_mouse_pointer(new_buckled_mob, TRUE)
 	rebuild_icon()
-	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
+		playsound(loc, 'sound/mecha/mechmove01.ogg', 25)
 		if(new_buckled_mob.mind && new_buckled_mob.skills)
 			move_delay = max(3, move_delay - 2 * new_buckled_mob.skills.get_skill_level(SKILL_POWERLOADER))
 		if(gun_primary && !new_buckled_mob.put_in_l_hand(gun_primary))
@@ -259,6 +281,7 @@
 			return
 			//can't use the mech without both weapons equipped
 	else
+		playsound(loc, 'sound/mecha/mechmove03.ogg', 25)
 		move_delay = initial(move_delay)
 		clean_driver(new_buckled_mob)
 		new_buckled_mob.drop_held_items(TRUE) //drop the weapons when unbuckling

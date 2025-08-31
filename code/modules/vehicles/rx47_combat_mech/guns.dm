@@ -9,6 +9,34 @@
 	start_automatic = TRUE
 	akimbo_forbidden = TRUE
 	has_empty_icon = FALSE
+	force = MELEE_FORCE_VERY_STRONG
+	var/firing_arc = 160
+
+
+/obj/item/weapon/gun/mech/able_to_fire(mob/user, atom/target)
+	if(!in_firing_arc(target))
+		to_chat(user, SPAN_WARNING(SPAN_BOLD("The target is not within your firing arc!")))
+		return FALSE
+	return ..()
+
+/obj/item/weapon/gun/mech/proc/in_firing_arc(atom/target)
+	if(!linked_mech || !firing_arc || !ISINRANGE_EX(firing_arc, 0, 360))
+		return TRUE
+
+	var/turf/muzzle_turf = get_turf(linked_mech)
+	var/turf/target_turf = get_turf(target)
+
+	//same tile angle returns EAST, returning FALSE to ensure consistency
+	if(muzzle_turf == target_turf)
+		return FALSE
+
+	var/angle_diff = (dir2angle(linked_mech.dir) - Get_Angle(muzzle_turf, target_turf)) %% 360
+	if(angle_diff < -180)
+		angle_diff += 360
+	else if(angle_diff > 180)
+		angle_diff -= 360
+
+	return abs(angle_diff) <= (firing_arc * 0.5)
 
 /obj/item/weapon/gun/mech/dropped(mob/user)
 	if(!linked_mech)
@@ -52,8 +80,8 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_9
 	accurate_range = 12
-	damage = 25
-	penetration = ARMOR_PENETRATION_TIER_6
+	damage = 40
+	penetration = ARMOR_PENETRATION_TIER_4
 
 /obj/item/weapon/gun/mech/chaingun
 	name = "\improper RX47 Chaingun"
@@ -66,7 +94,6 @@
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/rx47_chaingun
 	w_class = SIZE_HUGE
-	force = 20
 	gun_category = GUN_CATEGORY_HEAVY
 
 /obj/item/weapon/gun/mech/chaingun/Initialize(mapload, spawn_empty)
@@ -79,8 +106,11 @@
 	set_fire_delay(FIRE_DELAY_TIER_12)
 
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 
-	scatter = SCATTER_AMOUNT_TIER_9 // Most of the scatter should come from the recoil
+	effective_range_max = 6
+
+	scatter = SCATTER_AMOUNT_TIER_9
 	scatter_unwielded = SCATTER_AMOUNT_TIER_9
 	fa_max_scatter = SCATTER_AMOUNT_TIER_8
 	fa_scatter_peak = 6
@@ -142,10 +172,10 @@
 	cocked_sound = 'sound/weapons/gun_minigun_cocked.ogg'
 	current_mag = /obj/item/ammo_magazine/rx47_cannon
 	w_class = SIZE_HUGE
-	force = 20
 	gun_category = GUN_CATEGORY_HEAVY
 	start_semiauto = TRUE
 	start_automatic = FALSE
+	firing_arc = 90
 
 /obj/item/weapon/gun/mech/cannon/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -194,7 +224,7 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_4
-	damage = 15
+	damage = 25
 	penetration = 0
 	effective_range_max = 5
 	penetration = ARMOR_PENETRATION_TIER_2
@@ -207,6 +237,10 @@
 	accuracy_mult += HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_10
 	recoil = RECOIL_OFF
+
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	effective_range_max = 6
 
 /obj/item/weapon/gun/mech/cupola/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

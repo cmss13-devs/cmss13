@@ -79,7 +79,7 @@
 
 /obj/structure/barricade/initialize_pass_flags(datum/pass_flags_container/pass_flags)
 	..()
-	if (pass_flags)
+	if(pass_flags)
 		pass_flags.flags_can_pass_all = NONE
 		pass_flags.flags_can_pass_front = NONE
 		pass_flags.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
@@ -176,7 +176,7 @@
 	if(istype(atom_movable, /mob/living/carbon/xenomorph/crusher))
 		var/mob/living/carbon/xenomorph/crusher/living_carbon = atom_movable
 
-		if (!living_carbon.throwing)
+		if(!living_carbon.throwing)
 			return
 
 		if(crusher_resistant)
@@ -221,9 +221,17 @@
 
 	return ..()
 
-/obj/structure/barricade/handle_barrier_chance()
+/obj/structure/barricade/handle_barrier_chance(mob/living/attacker)
 	if(!anchored)
 		return FALSE
+
+	if(ismob(attacker))
+		var/mob/mob = attacker
+		if(istype(mob, /mob/living/carbon/xenomorph))
+			var/mob/living/carbon/xenomorph/xeno = mob
+			if(xeno.strain && istype(xeno.strain, /datum/xeno_strain/shielder))
+				return prob(25) //Shielder can attack trough wired cade with 75% chance.
+
 	return prob(max(30,(100.0*health)/maxhealth))
 
 /obj/structure/barricade/attack_animal(mob/user as mob)
@@ -359,7 +367,7 @@
 // However, will look into fixing bugs w/diagonal movement different if this is
 // to hacky.
 /obj/structure/barricade/handle_rotation()
-	if (dir & EAST)
+	if(dir & EAST)
 		setDir(EAST)
 	else if(dir & WEST)
 		setDir(WEST)

@@ -45,11 +45,11 @@
 /datum/action/xeno_action/activable/flurry/use_ability(atom/targeted_atom) //flurry ability
 	var/mob/living/carbon/xenomorph/xeno = owner
 
-	if (!istype(xeno))
+	if(!istype(xeno))
 		return
-	if (!xeno.check_state())
+	if(!xeno.check_state())
 		return
-	if (!action_cooldown_check())
+	if(!action_cooldown_check())
 		return
 
 	xeno.visible_message(SPAN_DANGER("[xeno] drags its claws in a wide area in front of it!"),
@@ -70,31 +70,31 @@
 	var/turf/infront_right = get_step(root, turn(facing, -45))
 
 	temp_turfs += infront
-	if (!(!infront || infront.density))
+	if(!(!infront || infront.density))
 		temp_turfs += infront_left
-	if (!(!infront || infront.density))
+	if(!(!infront || infront.density))
 		temp_turfs += infront_right
 
-	for (var/turf/current_turfs in temp_turfs)
+	for(var/turf/current_turfs in temp_turfs)
 
-		if (!istype(current_turfs))
+		if(!istype(current_turfs))
 			continue
 
-		if (current_turfs.density)
+		if(current_turfs.density)
 			continue
 
 		target_turfs += current_turfs
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(current_turfs, 2)
 
-	for (var/turf/current_turfs in target_turfs)
-		for (var/mob/living/carbon/target in current_turfs)
-			if (target.stat == DEAD)
+	for(var/turf/current_turfs in target_turfs)
+		for(var/mob/living/carbon/target in current_turfs)
+			if(target.stat == DEAD)
 				continue
 
-			if (!isxeno_human(target) || xeno.can_not_harm(target))
+			if(!isxeno_human(target) || xeno.can_not_harm(target))
 				continue
 
-			if (HAS_TRAIT(target, TRAIT_NESTED))
+			if(HAS_TRAIT(target, TRAIT_NESTED))
 				continue
 
 			xeno.visible_message(SPAN_DANGER("[xeno] slashes [target]!"),
@@ -132,7 +132,7 @@
 		if(path_turf.density)
 			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 			return
-		var/atom/barrier = path_turf.handle_barriers(A = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
+		var/atom/barrier = path_turf.handle_barriers(attacker = xeno , pass_flags = (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
 			to_chat(xeno, SPAN_WARNING("There's something blocking us from striking!"))
 			return
@@ -181,7 +181,7 @@
 		hit_target.visible_message(SPAN_DANGER("[hit_target] slams into an obstacle!"),
 		isxeno(hit_target) ? SPAN_XENODANGER("We slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		hit_target.apply_damage(MELEE_FORCE_TIER_2)
-		if (hit_target.mob_size < MOB_SIZE_BIG)
+		if(hit_target.mob_size < MOB_SIZE_BIG)
 			hit_target.KnockDown(0.5)
 		else
 			hit_target.Slow(0.5)

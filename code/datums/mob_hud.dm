@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
 /datum/mob_hud/xeno_hostile
-	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
+	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, XENO_HOSTILE_FLOORED)
 
 /datum/mob_hud/execute_hud
 	hud_icons = list(XENO_EXECUTE)
@@ -827,16 +827,19 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 	var/image/slow_holder = hud_list[XENO_HOSTILE_SLOW]
 	var/image/tag_holder = hud_list[XENO_HOSTILE_TAG]
 	var/image/freeze_holder = hud_list[XENO_HOSTILE_FREEZE]
+	var/image/floored_holder = hud_list[XENO_HOSTILE_FLOORED]
 
 	acid_holder.icon_state = "hudblank"
 	slow_holder.icon_state = "hudblank"
 	tag_holder.icon_state = "hudblank"
 	freeze_holder.icon_state = "hudblank"
+	floored_holder.icon_state = "hudblank"
 
 	acid_holder.overlays.Cut()
 	slow_holder.overlays.Cut()
 	tag_holder.overlays.Cut()
 	freeze_holder.overlays.Cut()
+	floored_holder.overlays.Cut()
 
 	var/acid_found = FALSE
 	var/acid_count = 0
@@ -871,7 +874,11 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 	if (freeze_found)
 		freeze_holder.overlays += image('icons/mob/hud/hud.dmi', src, "xeno_freeze")
 
-
+	var/floored_found = HAS_TRAIT(src, TRAIT_FLOORED) && body_position == LYING_DOWN && !buckled // Targets that are forcefully floored and unable to stand up.
+	if(floored_found)
+		var/image/floored = image('icons/mob/hud/hud.dmi', src, "xeno_floored")
+		floored.appearance_flags = KEEP_APART | RESET_TRANSFORM
+		floored_holder.overlays += floored
 
 /mob/proc/hud_set_new_player()
 	return

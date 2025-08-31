@@ -71,8 +71,9 @@
 	},
 /area/shuttle/escape_pod)
 "S" = (
-/obj/structure/machinery/door/airlock/evacuation{
-	name = "\improper Evacuation Airlock PL-3"
+/obj/structure/machinery/door/airlock/evacuation/liaison{
+	name = "\improper Evacuation Airlock CL-1";
+	id_tag = "cl_evac"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/shuttle/escape_pod)

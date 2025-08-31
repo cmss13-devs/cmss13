@@ -243,6 +243,9 @@
 
 /obj/structure/machinery/door_control/cl
 	req_access_txt = "200"
+	needs_power = FALSE
+	use_power = FALSE
+
 // seperating quarter and office because we might want to allow more access to the office than quarter in the future.
 /obj/structure/machinery/door_control/cl/office
 

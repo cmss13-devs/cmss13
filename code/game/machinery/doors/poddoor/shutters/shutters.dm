@@ -220,7 +220,10 @@
 
 //make a subtype for CL office so it as a proper name.
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl
-		name = "\improper Corporate Liaison Privacy Shutters"
+	name = "\improper Corporate Liaison Privacy Shutters"
+	needs_power = FALSE
+	use_power = FALSE
+
 //adding a subtype for CL office to use to secure access to cl office.
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/office
 

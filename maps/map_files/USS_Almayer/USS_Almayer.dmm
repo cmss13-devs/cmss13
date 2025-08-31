@@ -435,6 +435,9 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"abd" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/command/corporateliaison)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -19776,10 +19779,6 @@
 	pixel_y = 4;
 	pixel_x = -6
 	},
-/obj/structure/machinery/door_control/cl/quarter/backdoor{
-	pixel_x = -14;
-	pixel_y = -2
-	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
 "aYI" = (
@@ -35245,6 +35244,10 @@
 "bHC" = (
 /obj/item/storage/xeno_tag_case/full,
 /obj/structure/surface/rack,
+/obj/structure/machinery/door_control/cl/office/evac{
+	pixel_x = 24;
+	specialfunctions = 4
+	},
 /turf/open/floor/almayer/silver/northeast,
 /area/almayer/medical/containment/cell/cl)
 "bHD" = (
@@ -36172,13 +36175,9 @@
 	pixel_x = -4;
 	pixel_y = -2
 	},
-/obj/structure/machinery/door_control{
-	id = "CL Office Door";
-	name = "Office Door Control";
-	normaldoorcontrol = 1;
-	pixel_y = 4;
-	req_one_access_txt = "200";
-	pixel_x = -4
+/obj/structure/machinery/door_control/cl/office/office_door_remote{
+	pixel_x = -4;
+	pixel_y = 4
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -36195,7 +36194,7 @@
 "bJL" = (
 /obj/structure/machinery/door/airlock/almayer/generic/corporate{
 	name = "\improper Weyland-Yutani Office";
-	id_tag = "CL Office Door"
+	id_tag = "cl_office_door"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -36458,9 +36457,6 @@
 "bKr" = (
 /obj/structure/toilet{
 	dir = 4
-	},
-/obj/item/paper_bin/uscm{
-	pixel_y = 29
 	},
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -172441,13 +172437,13 @@ aRQ
 bxr
 bxJ
 bxt
-bFU
-bFU
+bGt
+bGt
 bHn
-bFU
-bFU
-bFU
-bFU
+bGt
+bGt
+bFV
+bFV
 bFV
 bFV
 bFV
@@ -172544,13 +172540,13 @@ aRQ
 bxr
 bxJ
 bxr
-bGp
+abd
 rdZ
 rdZ
 rdZ
 rdZ
 bCs
-bGp
+abd
 aHs
 aHs
 aHs
@@ -172647,13 +172643,13 @@ aRQ
 bbK
 bbj
 baG
-bGp
+abd
 rdZ
 rdZ
 rdZ
 rdZ
 rdZ
-bGp
+abd
 aHs
 aHs
 aHs
@@ -172750,13 +172746,13 @@ aRQ
 bxt
 bxJ
 bxr
-bGp
+abd
 rdZ
 rdZ
 rdZ
 rdZ
 rdZ
-bGp
+abd
 aHs
 aHs
 aHs
@@ -172853,13 +172849,13 @@ bqw
 bxS
 bbl
 baG
-bGp
+abd
 rdZ
 rdZ
 rdZ
 rdZ
 rdZ
-bGp
+abd
 aHs
 aHs
 aHs
@@ -172956,13 +172952,13 @@ aRQ
 bxt
 bxJ
 bxr
-bGp
-bGp
-bGp
-bGp
-bGp
-bGp
-bGp
+abd
+abd
+abd
+abd
+abd
+abd
+abd
 aHs
 aHs
 aHs

@@ -36374,7 +36374,8 @@
 "bKf" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
-	pixel_y = 2
+	pixel_y = 2;
+	network = list("Combat Correspondent Live","WY")
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -42343,7 +42344,8 @@
 	dir = 4;
 	layer = 3.2;
 	pixel_x = -15;
-	pixel_y = 1
+	pixel_y = 1;
+	network = list("Combat Correspondent Live","WY")
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)

@@ -1181,6 +1181,17 @@
 
 	dynamic_evolution = FALSE
 
+/datum/hive_status/kseries
+	name = "K-Series Hive"
+	reporting_id = "k-series"
+	hivenumber = XENO_HIVE_K_SERIES
+	prefix = "K-Series "
+	color = "#ffff80"
+	ui_color = "#99994d"
+	latejoin_burrowed = FALSE
+
+	dynamic_evolution = FALSE
+
 /datum/hive_status/feral
 	name = "Feral Hive"
 	reporting_id = "feral"

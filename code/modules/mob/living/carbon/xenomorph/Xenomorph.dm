@@ -157,7 +157,10 @@
 
 	var/pslash_delay = 0
 
-	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution, deactivates dchat death messages
+	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents queen evolution and deactivates dchat death messages
+
+	///Can the xeno rest and passively heal?
+	var/can_heal = TRUE
 
 	//Naming variables
 	var/caste_type = "Drone"
@@ -252,7 +255,7 @@
 	var/life_slow_reduction = -1.5
 	//Research organ harvesting.
 	var/organ_removed = FALSE
-	/// value of organ in each caste, e.g. 10k is autodoc larva removal. runner is 500
+	/// value of organ in each caste, e.g. 7k is autodoc larva removal. runner is 500
 	var/organ_value = 0
 
 	var/obj/item/skull/skull = /obj/item/skull
@@ -305,6 +308,13 @@
 	/// the typepath of the placeable we wanna put down
 	var/obj/effect/alien/resin/fruit/selected_fruit = null
 	var/list/built_structures = list()
+
+	// Designer stuff
+	var/obj/effect/alien/resin/design/selected_design = null
+	var/list/available_design = list()
+	var/list/current_design = list()
+	var/max_design_nodes = 0
+	var/selected_design_mark
 
 	var/icon_xeno
 	var/icon_xenonid
@@ -414,7 +424,7 @@
 		caste = GLOB.xeno_datum_list[caste_type]
 
 		//Fire immunity signals
-		if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
+		if (HAS_FLAG(caste.fire_immunity, FIRE_IMMUNITY_NO_DAMAGE | FIRE_IMMUNITY_NO_IGNITE | FIRE_IMMUNITY_XENO_FRENZY))
 			if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
 				RegisterSignal(src, COMSIG_LIVING_PREIGNITION, PROC_REF(fire_immune))
 
@@ -474,8 +484,9 @@
 	SStracking.start_tracking("hive_[src.hivenumber]", src)
 
 	//WO GAMEMODE
-	if(SSticker?.mode?.hardcore)
-		hardcore = 1 //Prevents healing and queen evolution
+	if(SSticker?.mode?.hardcore)  //Prevents healing and queen evolution
+		hardcore = TRUE
+		can_heal = FALSE
 	time_of_birth = world.time
 
 	//Minimap
@@ -580,6 +591,7 @@
 
 	//Im putting this in here, because this proc gets called when a player inhabits a SSD xeno and it needs to go somewhere (sorry)
 	hud_set_marks()
+	hud_set_design_marks()
 
 	var/name_prefix = in_hive.prefix
 	var/name_client_prefix = ""
@@ -765,6 +777,8 @@
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
 	if(stat == DEAD)
 		return TRUE
+	if(legcuffed)
+		return TRUE
 	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))
@@ -805,6 +819,7 @@
 	hud_set_plasma()
 	hud_set_pheromone()
 	hud_set_marks()
+	hud_set_design_marks()
 
 
 	//and display them

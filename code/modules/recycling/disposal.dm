@@ -684,7 +684,10 @@
 //If visible, use regular icon_state
 /obj/structure/disposalpipe/proc/updateicon()
 
-	icon_state = base_icon_state
+	if(!isnull(base_icon_state))
+		icon_state = base_icon_state
+	else
+		base_icon_state = icon_state
 
 //Expel the held objects into a turf. called when there is a break in the pipe
 /obj/structure/disposalpipe/proc/expel(obj/structure/disposalholder/H, turf/T, direction)

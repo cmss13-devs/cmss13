@@ -26,9 +26,22 @@
 		to_chat(X, SPAN_WARNING("Can't do that with [blocker] in the way!"))
 		return FALSE
 
-	if(!istype(T) || T.is_weedable < FULLY_WEEDABLE)
-		to_chat(X, SPAN_WARNING("You can't do that here."))
+	if(!istype(T))
 		return FALSE
+
+	if(T.is_weedable < FULLY_WEEDABLE)
+		var/has_node = FALSE
+		for(var/obj/effect/alien/resin/design/node in T)
+			has_node = TRUE
+			break
+
+		if(!has_node)
+			to_chat(X, SPAN_WARNING("You can't do that here without design nodes."))
+			return FALSE
+
+		if(!check_for_wall_or_door())
+			to_chat(X, SPAN_WARNING("This terrain is unsuitable for other resin secretions, only walls and doors can be built on this node."))
+			return FALSE
 
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
@@ -76,6 +89,9 @@
 
 	return TRUE
 
+/datum/resin_construction/proc/check_for_wall_or_door()
+	return FALSE
+
 /datum/resin_construction/proc/build(turf/T, hivenumber, builder)
 	return
 
@@ -111,7 +127,6 @@
 
 	return build_turf
 
-
 // Resin Walls
 /datum/resin_construction/resin_turf/wall
 	name = "Resin Wall"
@@ -122,6 +137,9 @@
 
 	build_path = /turf/closed/wall/resin
 	build_animation_effect = /obj/effect/resin_construct/weak
+
+/datum/resin_construction/resin_turf/wall/check_for_wall_or_door()
+	return TRUE
 
 /datum/resin_construction/resin_turf/wall/thick
 	name = "Thick Resin Wall"
@@ -217,6 +235,9 @@
 		to_chat(X, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
 		return FALSE
 
+	return TRUE
+
+/datum/resin_construction/resin_obj/door/check_for_wall_or_door()
 	return TRUE
 
 /datum/resin_construction/resin_obj/door/queen

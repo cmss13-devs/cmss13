@@ -1,5 +1,0 @@
-author: "Unknownity"
-delete-after: True
-changes:
-  - bugfix: "Fixed bugged survivor spawns due to origins."
-  - rscadd: "Added three new origins, WY, TWE and the CMBs. WY has three sub origins, the corporate default, goon security and the PMCs. Added the origins to the respective gear presets that would have them."

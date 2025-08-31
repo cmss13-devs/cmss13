@@ -582,6 +582,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		/obj/item/weapon/gun/pistol/m1911 = /obj/item/ammo_magazine/pistol/m1911,
 		/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/kt42,
 		/obj/item/weapon/gun/pistol/holdout = /obj/item/ammo_magazine/pistol/holdout,
+		/obj/item/ammo_magazine/pistol/action = /obj/item/ammo_magazine/pistol/action,
 		/obj/item/weapon/gun/pistol/highpower = /obj/item/ammo_magazine/pistol/highpower,
 		/obj/item/weapon/gun/smg/mp27 = /obj/item/ammo_magazine/smg/mp27,
 		/obj/item/weapon/gun/smg/mac15 = /obj/item/ammo_magazine/smg/mac15,
@@ -793,7 +794,7 @@ GLOBAL_LIST_INIT(rebel_rifles, list(
 		if(1)
 			new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/grant(new_human.back), WEAR_IN_BACK)
 		if(2)
-			new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(new_human.back), WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/paper/research_notes/unique/tier_three(new_human.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/proc/add_random_kutjevo_survivor_uniform(mob/living/carbon/human/new_human) // Kutjevo Survivor Clothing Randomizer
 	var/random_gear = rand(0,1)

@@ -65,102 +65,108 @@ gender = "female"
 nominative = "тяжёлая броня"
 
 ["M3-EOD Pattern Heavy Armor"] # Unique Vendor Name
-nominative = "тяжёлая броня M3-EOD морпеха"
+nominative = "тяжёлая броня морпеха M3-EOD"
 
 ["M3-EOD pattern"]
-nominative = "тяжёлая броня M3-EOD морпеха"
-genitive = "тяжёлой брони M3-EOD морпеха"
-dative = "тяжёлой броне M3-EOD морпеха"
-accusative = "тяжёлую броню M3-EOD морпеха"
-instrumental = "тяжёлой бронёй M3-EOD морпеха"
-prepositional = "тяжёлой броне M3-EOD морпеха"
+nominative = "тяжёлая броня морпеха M3-EOD"
+genitive = "тяжёлой брони морпеха M3-EOD"
+dative = "тяжёлой броне морпеха M3-EOD"
+accusative = "тяжёлую броню морпеха M3-EOD"
+instrumental = "тяжёлой бронёй морпеха M3-EOD"
+prepositional = "тяжёлой броне морпеха M3-EOD"
 gender = "female"
 
 ["Medium Armor"] # Unique Vendor Name
 nominative = "средняя броня"
 
+["M4 pattern marine armor crate (x1 helmet, x1 armor)"] # Unique Vendor Name
+nominative = "ящик для экипировки (шлем M4 x 1, броня B12 x 1)"
+
 ["M4 Pattern Armor"] # Unique Vendor Name
-nominative = "средняя броня M4 морпеха"
+nominative = "средняя броня морпеха M4"
 
 ["M4 pattern marine armor"]
-nominative = "средняя броня M4 морпеха"
-genitive = "средней брони M4 морпеха"
-dative = "средней броне M4 морпеха"
-accusative = "среднюю броню M4 морпеха"
-instrumental = "средней бронёй M4 морпеха"
-prepositional = "средней броне M4 морпеха"
+nominative = "средняя броня морпеха M4"
+genitive = "средней брони морпеха M4"
+dative = "средней броне морпеха M4"
+accusative = "среднюю броню морпеха M4"
+instrumental = "средней бронёй морпеха M4"
+prepositional = "средней броне морпеха M4"
 gender = "female"
 
 ["Light Armor"] # Unique Vendor Name
 nominative = "лёгкая броня"
 
 ["M3-L pattern light armor"]
-nominative = "лёгкая броня M3-L морпеха"
-genitive = "лёгкой брони M3-L морпеха"
-dative = "лёгкой броне M3-L морпеха"
-accusative = "лёгкую броню M3-L морпеха"
-instrumental = "лёгкой бронёй M3-L морпеха"
-prepositional = "лёгкой броне M3-L морпеха"
+nominative = "лёгкая броня морпеха M3-L"
+genitive = "лёгкой брони морпеха M3-L"
+dative = "лёгкой броне морпеха M3-L"
+accusative = "лёгкую броню морпеха M3-L"
+instrumental = "лёгкой бронёй морпеха M3-L"
+prepositional = "лёгкой броне морпеха M3-L"
 gender = "female"
 
+["B12 pattern marine armor crate (x1 helmet, x1 armor)"] # Unique Vendor Name
+nominative = "ящик для экипировки (шлем M11 x 1, броня B12 x 1)"
+
 ["M3 B12 Pattern Marine Armor"] # Unique Vendor Name
-nominative = "броня B12 морпеха"
+nominative = "броня морпеха B12"
 
 ["B12 Pattern Armor"] # Unique Vendor Name
-nominative = "броня B12 морпеха"
+nominative = "броня морпеха B12"
 
 ["B12 pattern marine armor"]
-nominative = "броня B12 морпеха"
-genitive = "брони B12 морпеха"
-dative = "броне B12 морпеха"
-accusative = "броню B12 морпеха"
-instrumental = "бронёй B12 морпеха"
-prepositional = "броне B12 морпеха"
+nominative = "броня морпеха B12"
+genitive = "брони морпеха B12"
+dative = "броне морпеха B12"
+accusative = "броню морпеха B12"
+instrumental = "бронёй морпеха B12"
+prepositional = "броне морпеха B12"
 gender = "female"
 
 ["M3-T light armor"]
-nominative = "броня M3-T подрывника"
-genitive = "брони M3-T подрывника"
-dative = "броне M3-T подрывника"
-accusative = "броню M3-T подрывника"
-instrumental = "бронёй M3-T подрывника"
-prepositional = "броне M3-T подрывника"
+nominative = "броня подрывника M3-T"
+genitive = "брони подрывника M3-T"
+dative = "броне подрывника M3-T"
+accusative = "броню подрывника M3-T"
+instrumental = "бронёй подрывника M3-T"
+prepositional = "броне подрывника M3-T"
 gender = "female"
 
 ["M3-G4 grenadier armor"]
-nominative = "броня M3-G4 гранатомётчика"
-genitive = "брони M3-G4 гранатомётчика"
-dative = "броне M3-G4 гранатомётчика"
-accusative = "броню M3-G4 гранатомётчика"
-instrumental = "бронёй M3-G4 гранатомётчика"
-prepositional = "броне M3-G4 гранатомётчика"
+nominative = "броня гранатомётчика M3-G4"
+genitive = "брони гранатомётчика M3-G4"
+dative = "броне гранатомётчика M3-G4"
+accusative = "броню гранатомётчика M3-G4"
+instrumental = "бронёй гранатомётчика M3-G4"
+prepositional = "броне гранатомётчика M3-G4"
 gender = "female"
 
 ["M3-S light armor"]
-nominative = "броня M3-S разведчика"
-genitive = "брони M3-S разведчика"
-dative = "броне M3-S разведчика"
-accusative = "броню M3-S разведчика"
-instrumental = "бронёй M3-S разведчика"
-prepositional = "броне M3-S разведчика"
+nominative = "броня разведчика M3-S"
+genitive = "брони разведчика M3-S"
+dative = "броне разведчика M3-S"
+accusative = "броню разведчика M3-S"
+instrumental = "бронёй разведчика M3-S"
+prepositional = "броне разведчика M3-S"
 gender = "female"
 
 ["M45 pattern ghillie armor"]
-nominative = "маскброня M45 снайпера"
-genitive = "маскброни M45 снайпера"
-dative = "маскброне M45 снайпера"
-accusative = "маскброню M45 снайпера"
-instrumental = "маскбронёй M45 снайпера"
-prepositional = "маскброне M45 снайпера"
+nominative = "маскброня снайпера M45"
+genitive = "маскброни снайпера M45"
+dative = "маскброне снайпера M45"
+accusative = "маскброню снайпера M45"
+instrumental = "маскбронёй снайпера M45"
+prepositional = "маскброне снайпера M45"
 gender = "female"
 
 ["M35 pyrotechnician armor"]
-nominative = "броня M35 огнемётчика"
-genitive = "брони M35 огнемётчика"
-dative = "броне M35 огнемётчика"
-accusative = "броню M35 огнемётчика"
-instrumental = "бронёй M35 огнемётчика"
-prepositional = "броне M35 огнемётчика"
+nominative = "броня огнемётчика M35"
+genitive = "брони огнемётчика M35"
+dative = "броне огнемётчика M35"
+accusative = "броню огнемётчика M35"
+instrumental = "бронёй огнемётчика M35"
+prepositional = "броне огнемётчика M35"
 gender = "female"
 
 ["M3-VL pattern ballistics vest"]

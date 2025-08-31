@@ -210,14 +210,6 @@ instrumental = "мофферсами"
 nominative = "мофферсы"
 prepositional = "мофферсах"
 
-[mop]
-accusative = "швабру"
-dative = "швабре"
-genitive = "швабры"
-instrumental = "шваброй"
-nominative = "швабра"
-prepositional = "швабре"
-
 ["operating table"]
 accusative = "операционный стол"
 dative = "операционному столу"
@@ -356,15 +348,6 @@ dative = "голограмме"
 accusative = "голограмму"
 instrumental = "голограммой"
 prepositional = "голограмме"
-gender = "female"
-
-["box"]
-nominative = "коробка"
-genitive = "коробки"
-dative = "коробке"
-accusative = "коробку"
-instrumental = "коробкой"
-prepositional = "коробке"
 gender = "female"
 
 ["cryogenic freezer"]

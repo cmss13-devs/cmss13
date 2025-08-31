@@ -17,7 +17,16 @@ GLOBAL_LIST_EMPTY(ru_names)
 /proc/ru_names_list(base, nominative, genitive, dative, accusative, instrumental, prepositional, gender)
 	if(!base || !nominative || !genitive || !dative || !accusative || !instrumental || !prepositional)
 		CRASH("ru_names_list() received incomplete declent list!")
-	return list("base" = base, NOMINATIVE = nominative, GENITIVE = genitive, DATIVE = dative, ACCUSATIVE = accusative, INSTRUMENTAL = instrumental, PREPOSITIONAL = prepositional, "gender" = gender)
+	return list(
+		"base" = base,
+		NOMINATIVE = nominative,
+		GENITIVE = genitive,
+		DATIVE = dative,
+		ACCUSATIVE = accusative,
+		INSTRUMENTAL = instrumental,
+		PREPOSITIONAL = prepositional,
+		"gender" = gender,
+	)
 
 /proc/ru_names_toml(name, prefix, suffix, override_base)
 	. = list()
@@ -31,9 +40,6 @@ GLOBAL_LIST_EMPTY(ru_names)
 		var/list/tomls_path = flist(root)
 		if(!length(tomls_path))
 			return .
-#ifdef UNIT_TESTS
-		var/list/duplicate_list = list()
-#endif
 		for(var/toml_file in tomls_path)
 			var/full_path = root + toml_file
 			if(!fexists(full_path))
@@ -41,23 +47,18 @@ GLOBAL_LIST_EMPTY(ru_names)
 			var/list/file_data = rustg_read_toml_file(full_path)
 			for(var/key in file_data)
 				if(GLOB.ru_names[key])
-#ifdef UNIT_TESTS
-					duplicate_list += key
-#endif
 					continue
 				GLOB.ru_names[key] = file_data[key]
-#ifdef UNIT_TESTS
-		if(length(duplicate_list))
-			CRASH("Multiple ru_names entries detected. Keys are: [english_list(duplicate_list)]")
-#endif
 	if(GLOB.ru_names[formatted_name])
+		var/list/entry = GLOB.ru_names[formatted_name]
+
 		var/base = override_base || "[prefix][name][suffix]"
-		var/nominative_form = GLOB.ru_names[formatted_name]["nominative"] || name
-		var/genitive_form = GLOB.ru_names[formatted_name]["genitive"] || nominative_form
-		var/dative_form = GLOB.ru_names[formatted_name]["dative"] || nominative_form
-		var/accusative_form = GLOB.ru_names[formatted_name]["accusative"] || nominative_form
-		var/instrumental_form = GLOB.ru_names[formatted_name]["instrumental"] || nominative_form
-		var/prepositional_form = GLOB.ru_names[formatted_name]["prepositional"] || nominative_form
+		var/nominative_form = entry["nominative"] || name
+		var/genitive_form = entry["genitive"] || nominative_form
+		var/dative_form = entry["dative"] || nominative_form
+		var/accusative_form = entry["accusative"] || nominative_form
+		var/instrumental_form = entry["instrumental"] || nominative_form
+		var/prepositional_form = entry["prepositional"] || nominative_form
 		. = ru_names_list(
 			base,
 			"[prefix][nominative_form][suffix]",
@@ -66,7 +67,8 @@ GLOBAL_LIST_EMPTY(ru_names)
 			"[prefix][accusative_form][suffix]",
 			"[prefix][instrumental_form][suffix]",
 			"[prefix][prepositional_form][suffix]",
-			gender = "[GLOB.ru_names[formatted_name]["gender"] || null]",)
+			gender = "[entry["gender"] || null]",
+		)
 
 /atom/Initialize(mapload, ...)
 	. = ..()

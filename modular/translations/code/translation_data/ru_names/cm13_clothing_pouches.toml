@@ -31,6 +31,9 @@ instrumental = "сумкой для кассет"
 prepositional = "сумке для кассет"
 gender = "female"
 
+["Drop Pouch Crate (x4)"] # Unique Vendor Name
+nominative = "ящик для экипировки (наплечный подсумок x 4)"
+
 ["drop pouch"]
 nominative = "наплечный подсумок"
 genitive = "наплечного подсумка"
@@ -38,6 +41,15 @@ dative = "наплечному подсумку"
 accusative = "наплечный подсумок"
 instrumental = "наплечным подсумком"
 prepositional = "наплечном подсумке"
+gender = "male"
+
+["light general pouch"]
+nominative = "лёгкий подсумок общего назначения"
+genitive = "лёгкого подсумка общего назначения"
+dative = "лёгкому подсумку общего назначения"
+accusative = "лёгкий подсумок общего назначения"
+instrumental = "лёгким подсумком общего назначения"
+prepositional = "лёгком подсумке общего назначения"
 gender = "male"
 
 ["medium general pouch"]
@@ -243,6 +255,12 @@ accusative = "подсумок для магазинов"
 instrumental = "подсумком для магазинов"
 prepositional = "подсумке для магазинов"
 gender = "male"
+
+["Large Pouch 2x(pistol,magazine,general)"] # Unique Vendor Name
+nominative = "ящик для экипировки (большие подсумки x 6)"
+
+["medical pouches crate (1x firstaid, medical, syringe, medkit, autoinjector)"] # Unique Vendor Name
+nominative = "ящик для экипировки (медицинские подсумки x 5)"
 
 ["large magazine pouch"]
 nominative = "большой подсумок для магазинов"

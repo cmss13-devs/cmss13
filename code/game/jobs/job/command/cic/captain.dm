@@ -78,7 +78,7 @@
 		return get_desired_status(player.prefs.commander_status, WHITELIST_NORMAL)
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
-	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "ВСЕМ внимание, [H.get_paygrade(0)] [H.real_name] на борту!"), 1.5 SECONDS)	// SS220 EDIT TRANSLATE
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(all_hands_on_deck), "Всем внимание, [H.get_paygrade(0)] [H.real_name] на борту!"), 1.5 SECONDS)	// SS220 EDIT TRANSLATE
 	return ..()
 
 /datum/job/command/commander/generate_entry_conditions(mob/living/M, whitelist_status)

@@ -196,6 +196,9 @@ instrumental = "рюкзаком подавителем-набегов-2500"
 prepositional = "рюкзаке подавителе-набегов-2500"
 gender = "male"
 
+["Shoulder Holster Crate (x4)"] # Unique Vendor Name
+nominative = "ящик для экипировки (наплечная кобура x 4)"
+
 ["shoulder holster"]
 nominative = "наплечная кобура"
 genitive = "наплечной кобуры"

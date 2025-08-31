@@ -1,6 +1,6 @@
 // стул на колесиках, по другому "сайдкар"
 /obj/structure/bed/chair/stroller
-	name = "Коляска"
+	name = "Мотоциклетная коляска"
 	icon = 'modular/vehicles/icons/moto48x48.dmi'
 	icon_state = "moto_ural_stroller_classic"	// Для отображения на картах
 	var/icon_base = "moto_ural_stroller"

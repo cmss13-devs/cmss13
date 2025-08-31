@@ -104,7 +104,7 @@
 
 /obj/item/proc/get_examine_line(mob/user)
 	if(blood_color)
-		. = SPAN_WARNING("[icon2html(src, user)] <font color='[blood_color]'>окровавленн[genderize_ru(gender, "ый", "ая", "ое", "ые")]</font> [declent_ru(ACCUSATIVE)]")
+		. = SPAN_WARNING("[icon2html(src, user)] <font color='[blood_color == COLOR_OIL ? COLOR_OIL_TEXT : blood_color]'>[blood_color == COLOR_OIL ? "замасленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] " : "окровавленн[genderize_ru(gender, "ый", "ая", "ое", "ые")] "] [declent_ru(ACCUSATIVE)]</font>") // SS220 - EDIT ADDITTION
 	// SS220 - START ADDITTION
 	else if(istype(src, /obj/item/clothing/accessory/medal) || istype(src, /obj/item/clothing/accessory/ranks))
 		. = "[icon2html(src, user)] [declent_ru(INSTRUMENTAL)]"

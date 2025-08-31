@@ -80,7 +80,7 @@
 
 #define JOB_SEA_RU "Старший Инструктор"
 
-#define JOB_CHIEF_ENGINEER_RU "Главный Инженер"
+#define JOB_CHIEF_ENGINEER_RU "Старший Инженер"
 #define JOB_MAINT_TECH_RU "Техник Обслуживания"
 #define JOB_ORDNANCE_TECH_RU "Оружейный Техник"
 

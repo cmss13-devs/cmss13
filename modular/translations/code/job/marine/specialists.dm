@@ -21,6 +21,10 @@
 	//name = "Heavy Grenadier Set"
 	role_name_ru = "Гранатомётчик"
 
+/datum/specialist_set/sharp_operator
+	//name = "SHARP Operator Set"
+	role_name_ru = "Гранатомётчик «Шарп»"
+
 /datum/specialist_set/pyro
 	//name = "Pyro Set"
 	role_name_ru = "Огнемётчик"

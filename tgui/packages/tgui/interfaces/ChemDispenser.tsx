@@ -23,6 +23,7 @@ type Data = {
   beakerContents: BeakerProps;
   beakerCurrentVolume: number | null;
   beakerMaxVolume: number | null;
+  network: string | null;
   chemicals: { title: string; id: string }[];
 };
 
@@ -30,8 +31,16 @@ export const ChemDispenser = (props) => {
   const { act, data } = useBackend<Data>();
   const beakerTransferAmounts = data.beakerTransferAmounts || [];
   const beakerContents = data.beakerContents || [];
+  let chemDispenserTitle = 'Реагенты';
+  switch (data.network) {
+    case 'Misc':
+      chemDispenserTitle = 'Напитки';
+      break;
+    default:
+      break;
+  }
   return (
-    <Window width={435} height={620}>
+    <Window width={500} height={620}>
       <Window.Content scrollable>
         <Section title="Статус">
           <LabeledList>
@@ -43,7 +52,7 @@ export const ChemDispenser = (props) => {
           </LabeledList>
         </Section>
         <Section
-          title="Реагенты"
+          title={`${chemDispenserTitle}`}
           buttons={beakerTransferAmounts.map((amount) => (
             <Button
               key={amount}
@@ -59,12 +68,18 @@ export const ChemDispenser = (props) => {
             </Button>
           ))}
         >
-          <Box mr={-1}>
+          <Box
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', // Фикс для переполнения
+              gap: '4px',
+              width: '100%',
+            }}
+          >
             {data.chemicals.map((chemical) => (
               <Button
                 key={chemical.id}
                 icon="arrow-alt-circle-down"
-                width="129.5px"
                 lineHeight={1.75}
                 onClick={() =>
                   act('dispense', {
@@ -117,7 +132,7 @@ export const ChemDispenser = (props) => {
             <LabeledList.Item label="Состав">
               <Box color="label">
                 {(!data.isBeakerLoaded && 'Н/Д') ||
-                  (beakerContents.length === 0 && 'Nothing')}
+                  (beakerContents.length === 0 && 'Н/Д')}
               </Box>
               {beakerContents.map((chemical) => (
                 <Box key={chemical.name} color="label">

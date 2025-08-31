@@ -115,7 +115,7 @@
 	if(gloves && !skipgloves)
 		msg += "[t_He] носит [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_theirs)].\n"
 	else if(hands_blood_color)
-		msg += SPAN_WARNING("У [t_theirs] [(hands_blood_color != COLOR_OIL) ? "окровавленные" : "замасленные"] руки!\n")
+		msg += SPAN_WARNING("У [t_theirs] [(hands_blood_color == COLOR_OIL) ? "замасленные" : "окровавленные"] руки!\n") // SS220 EDIT ADDICTION
 
 	//belt
 	if(belt)
@@ -125,7 +125,7 @@
 	if(shoes && !skipshoes)
 		msg += "[t_He] носит [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_theirs)].\n"
 	else if(feet_blood_color)
-		msg += SPAN_WARNING("[t_He] [(feet_blood_color != COLOR_OIL) ? "окровавленные" : "замасленные"] ноги!\n")
+		msg += SPAN_WARNING("[t_He] [(feet_blood_color == COLOR_OIL) ? "замасленные" : "окровавленные"] ноги!\n") // SS220 EDIT ADDICTION
 
 	//mask
 	if(wear_mask && !skipmask)

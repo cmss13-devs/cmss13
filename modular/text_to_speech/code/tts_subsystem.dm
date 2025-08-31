@@ -152,7 +152,7 @@ SUBSYSTEM_DEF(tts220)
 		"businessman" = "Бизнэсмэн",
 		"trader" = "Торговец",
 		"assistant" = "Ассистент",
-		"chief engineer" = "Главный Инженер",
+		"chief engineer" = "Старший Инженер",
 		"station engineer" = "Станционный инженер",
 		"trainee engineer" = "Инженер-стажер",
 		"Engineer Assistant" = "Инженерный Ассистент",

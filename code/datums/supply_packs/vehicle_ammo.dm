@@ -91,6 +91,7 @@
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
 		/obj/item/ammo_magazine/hardpoint/turret_smoke,
+		/obj/item/ammo_magazine/hardpoint/turret_smoke, // BANDAMARINES QUANTITY FIX
 	)
 	cost = 20
 	containertype = /obj/structure/closet/crate/ammo
@@ -99,7 +100,13 @@
 
 /datum/supply_packs/ammo_towlauncher
 	name = "TOW Launcher magazines (x3)"
-	contains = list(/obj/item/hardpoint/secondary/towlauncher)
+	// BANDAMARINES START MAGAZINES FIX
+	contains = list(
+		/obj/item/ammo_magazine/hardpoint/towlauncher,
+		/obj/item/ammo_magazine/hardpoint/towlauncher,
+		/obj/item/ammo_magazine/hardpoint/towlauncher,
+	)
+	// BANDAMARINES END MAGAZINES FIX
 	cost = 30
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "TOW launcher ammo crate"

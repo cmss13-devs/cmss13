@@ -424,6 +424,18 @@ instrumental = "баком для реагентов"
 prepositional = "баке для реагентов"
 gender = "male"
 
+["fuel tank crate (x1)"] # Unique Vendor Name
+nominative = "ящик для бака с топливом"
+
+["fueltank"]
+nominative = "бак для топлива"
+genitive = "бака для топлива"
+dative = "баку для топлива"
+accusative = "бак для топлива"
+instrumental = "баком для топлива"
+prepositional = "баке для топлива"
+gender = "male"
+
 ["trash cart"]
 nominative = "тележка для мусора"
 genitive = "тележки для мусора"
@@ -506,12 +518,12 @@ prepositional = "стеклянной заслонке"
 gender = "female"
 
 ["USCM Poster"]
-nominative = "постер ККМП"
-genitive = "постера ККМП"
-dative = "постеру ККМП"
-accusative = "постер ККМП"
-instrumental = "постером ККМП"
-prepositional = "постере ККМП"
+nominative = "плакат ККМП"
+genitive = "плаката ККМП"
+dative = "плакату ККМП"
+accusative = "плакат ККМП"
+instrumental = "плакатом ККМП"
+prepositional = "плакате ККМП"
 gender = "male"
 
 ["Dirty Magazine"]

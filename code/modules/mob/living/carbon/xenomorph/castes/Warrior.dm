@@ -93,13 +93,13 @@
 	toggle_throw_mode(THROW_MODE_OFF)
 
 /mob/living/carbon/xenomorph/warrior/stop_pulling()
-    var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
-    if(isliving(pulling) && istype(warrior_delegate, /datum/behavior_delegate/warrior_base) && warrior_delegate.lunging)
-        warrior_delegate.lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
-        var/mob/living/lunged = pulling
-        lunged.set_effect(0, STUN)
-        lunged.set_effect(0, WEAKEN)
-    return ..()
+	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate
+	if(isliving(pulling) && istype(warrior_delegate, /datum/behavior_delegate/warrior_base) && warrior_delegate.lunging)
+		warrior_delegate.lunging = FALSE // To avoid extreme cases of stopping a lunge then quickly pulling and stopping to pull someone else
+		var/mob/living/lunged = pulling
+		lunged.set_effect(0, STUN)
+		lunged.set_effect(0, WEAKEN)
+	return ..()
 
 /mob/living/carbon/xenomorph/warrior/start_pulling(atom/movable/movable_atom, lunge)
 	var/datum/behavior_delegate/warrior_base/warrior_delegate = behavior_delegate

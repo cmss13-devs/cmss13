@@ -255,7 +255,7 @@
 		return
 
 	if(xeno.enclosed_plates)
-		xeno.balloon_alert(xeno, "We need to lower plates!", text_color = "#7d32bb", delay = 1 SECONDS)
+		xeno.balloon_alert(xeno, "we need to lower plates!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] swing its tail in a wide circle!"),
@@ -362,7 +362,7 @@
 		return
 
 	if(!xeno.enclosed_plates)
-		xeno.balloon_alert(xeno, "We need to encase ourself in plates!", text_color = "#7d32bb", delay = 1 SECONDS)
+		xeno.balloon_alert(xeno, "we need to encase ourself in plates!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
 	if(carbone.stat != DEAD && (!(carbone.status_flags & XENO_HOST) || !HAS_TRAIT(carbone, TRAIT_NESTED)))
@@ -525,7 +525,7 @@
 		return
 
 	if(!xeno.enclosed_plates)
-		xeno.balloon_alert(xeno, "We need to encase ourself in plates!", text_color = "#7d32bb", delay = 1 SECONDS)
+		xeno.balloon_alert(xeno, "we need to encase ourself in plates!", text_color = "#7d32bb", delay = 1 SECONDS)
 		return
 
 	xeno.activate_reflective_shield(10 SECONDS, 80) // A: how long, B: how much % is reflected. (remember to edit reflection chance)
@@ -550,7 +550,7 @@
 	src.add_filter("reflective_shield", 1, list("type" = "outline", "color" = "#2b8080", "size" = 1))
 	to_chat(src, SPAN_XENOWARNING("We adjust plates and getting ready for incomming attacks!"))
 	visible_message(SPAN_XENOWARNING("[src]'s changes stance and adjusting its plates!"))
-	src.balloon_alert(src, "We adjust our plates!", text_color = "#326dbb")
+	src.balloon_alert(src, "we adjust our plates!", text_color = "#326dbb")
 
 	addtimer(CALLBACK(src, PROC_REF(remove_reflective_shield)), duration)
 
@@ -563,7 +563,7 @@
 
 	src.remove_filter("reflective_shield")
 	to_chat(src, SPAN_XENOWARNING("We adjust plates back to their position."))
-	src.balloon_alert(src, "We adjust plates back to normal.", text_color = "#326dbb")
+	src.balloon_alert(src, "we adjust plates back to normal.", text_color = "#326dbb")
 
 /mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
 	if(!reflective_shield_active)

@@ -10,6 +10,7 @@
 	icon_closed ="base"
 	icon_opened = "base"
 	req_access = list(ACCESS_MARINE_ARMORY)
+	var/uses_sec_level = TRUE
 	var/req_level = SEC_LEVEL_GREEN
 
 /obj/structure/closet/secure_closet/guncabinet/get_examine_text(mob/user)
@@ -24,6 +25,8 @@
 
 /obj/structure/closet/secure_closet/guncabinet/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER
+	if(!uses_sec_level)
+		return
 	if(new_sec < req_level)
 		if(locked)
 			return
@@ -112,3 +115,4 @@
 /obj/structure/closet/secure_closet/guncabinet/wy
 	name = "weyland yutani gun cabinet"
 	req_access = list(ACCESS_WY_SECURITY)
+	uses_sec_level = FALSE

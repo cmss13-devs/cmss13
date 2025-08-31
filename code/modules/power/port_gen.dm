@@ -126,6 +126,9 @@ display floor(lastgen) and phorontank amount
 		visible_message(SPAN_NOTICE("[src]'s bolts are dislodged!"))
 		return XENO_NONCOMBAT_ACTION
 
+/obj/structure/machinery/power/port_gen/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 //A power generator that runs on solid plasma sheets.
 /obj/structure/machinery/power/port_gen/pacman
 	name = "P.A.C.M.A.N.-type Portable Generator"

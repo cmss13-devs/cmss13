@@ -508,6 +508,10 @@
 	name = "quartermaster's rubber stamp"
 	icon_state = "stamp-ro"
 
+/obj/item/tool/stamp/uacqs
+	name = "UACQS rubber stamp"
+	icon_state = "stamp-uacqs"
+
 /obj/item/tool/carpenters_hammer //doesn't do anything, yet
 	name = "carpenter's hammer"
 	icon_state = "carpenters_hammer" //yay, it now has a sprite.

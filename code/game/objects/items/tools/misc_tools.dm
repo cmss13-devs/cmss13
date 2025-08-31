@@ -415,7 +415,8 @@
 	item_state = "fountain_pen"
 	item_state_slots = list(WEAR_AS_GARB = "fountain_pen")
 	matter = list("metal" = 20, "gold" = 10)
-	var/list/colour_list = list("red", "white", "blue", "green", "black", "orange")
+	pen_color = "white"
+	var/list/colour_list = list("white", "red", "blue", "green", "orange", "black")
 	var/current_colour_index = 1
 	skillless = FALSE
 

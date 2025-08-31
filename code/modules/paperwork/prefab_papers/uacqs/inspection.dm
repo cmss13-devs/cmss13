@@ -1,6 +1,10 @@
+/datum/prefab_document/uacqs/inspection
+	var/dat = ""
+	var/body = ""
+	var/closer = ""
+
 /datum/prefab_document/uacqs/inspection/New()
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	var/dat = ""
 
 	dat += "<body>"
 	dat += "<style>"
@@ -109,37 +113,73 @@
 	dat += "<div class=\"message-header-text\">"
 	dat += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
 	dat += "<p class=\"header-title\">DEPARTMENTAL INSPECTION</p>"
-	dat += "<p class=\"header-subtitle\">QS101</p>"
-	dat += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
-	dat += "</div> <!-- /Heasder Info -->"
+	body += "<p class=\"header-subtitle\">QS101</p>"
+	body += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
+	body += "</div> <!-- /Heasder Info -->"
 
 
-	dat += "<div class=\"message-body-text\">"
-	dat += "<b>Date:</b> <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>"
-	dat += "<b>Subject Facility:</b> <span class=\"paper_field\"></span>"
-	dat += "<br>"
-	dat += "<b>Subject Department:</b> <span class=\"paper_field\"></span>"
-	dat += "<br><br>"
-	dat += "<b>Reason for Inspection:</b><br><span class=\"paper_field\"></span>"
-	dat += "<br>"
-	dat += "<hr style=\"margin-top:15px; margin-bottom:15px;\">"
-	dat += "<b>Cleanliness:</b> <span class=\"paper_field\"></span><br><span class=\"paper_field\"></span>"
-	dat += "<br><br>"
-	dat += "<b>Safety Compliance:</b> <span class=\"paper_field\"></span><br><span class=\"paper_field\"></span>"
-	dat += "<br><br>"
-	dat += "<b>Functional Capability:</b> <span class=\"paper_field\"></span><br><span class=\"paper_field\"></span>"
-	dat += "<br>"
-	dat += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
-	dat += "<b>Additional Notes:</b><br><span class=\"paper_field\"></span>"
-	dat += "<br><br>"
-	dat += "<b>Overall Grading:</b> <span class=\"paper_field\"></span>"
-	dat += "<br><br>"
-	dat += "<b>Inspector's signature:</b><br><span class=\"paper_field\"></span>"
+	body += "<div class=\"message-body-text\">"
+	body += "<b>Date:</b> <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>"
+	body += "<b>Subject Facility:</b> <span class=\"paper_field\"></span>"
+	body += "<br>"
+	body += "<b>Subject Department:</b> <span class=\"paper_field\"></span>"
+	body += "<br><br>"
+	body += "<b>Reason for Inspection:</b><br><span class=\"paper_field\"></span>"
+	body += "<br>"
+	body += "<hr style=\"margin-top:15px; margin-bottom:15px;\">"
+	body += "<b>Cleanliness:</b> <span class=\"paper_field\"></span><br><span class=\"paper_field\"></span>"
+	body += "<br><br>"
+	body += "<b>Safety Compliance:</b> <span class=\"paper_field\"></span><br><span class=\"paper_field\"></span>"
+	body += "<br><br>"
+	body += "<b>Functional Capability:</b> <span class=\"paper_field\"></span><br><span class=\"paper_field\"></span>"
+	body += "<br>"
+	body += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
+	body += "<b>Additional Notes:</b><br><span class=\"paper_field\"></span>"
+	body += "<br><br>"
+	body += "<b>Overall Grading:</b> <span class=\"paper_field\"></span>"
+	body += "<br><br>"
+	body += "<b>Inspector's signature:</b><br><span class=\"paper_field\"></span>"
 
-
-	dat += "</div> <!-- /message-body-text -->"
-
-	dat += "</div> <!-- /width-container -->"
-	dat += "</body >"
+	closer += "</div> <!-- /message-body-text -->"
+	closer += "</div> <!-- /width-container -->"
+	closer += "</body >"
 
 	contents = dat
+	contents += body
+	contents += closer
+
+
+
+/datum/prefab_document/uacqs/inspection/example/New()
+	..()
+	body = ""
+	body += "<p class=\"header-subtitle\">QS101E</p>"
+	body += "<p class=\"header-subtitle\">EXAMPLE DOCUMENT</p>"
+	body += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
+	body += "</div> <!-- /Heasder Info -->"
+
+	body += "<div class=\"message-body-text\">"
+	body += "<b>Date:</b> <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font><br>"
+	body += "<b>Subject Facility:</b> <font face=\"Courier New\" color=white>Merian Tower</font>"
+	body += "<br>"
+	body += "<b>Subject Department:</b> <font face=\"Courier New\" color=white>Filing Archive</font>"
+	body += "<br><br>"
+	body += "<b>Reason for Inspection:</b><br><font face=\"Courier New\" color=white>Annual Standards Review</font>"
+	body += "<br>"
+	body += "<hr style=\"margin-top:15px; margin-bottom:15px;\">"
+	body += "<b>Cleanliness:</b> <font face=\"Courier New\" color=red>POOR</font><br><font face=\"Courier New\" color=white>There was a mess everywhere.</font>"
+	body += "<br><br>"
+	body += "<b>Safety Compliance:</b> <font face=\"Courier New\" color=orange>ADEQUATE</font><br><font face=\"Courier New\" color=white>Minimum standards were met, but nothing exemplary.</font>"
+	body += "<br><br>"
+	body += "<b>Functional Capability:</b> <font face=\"Courier New\" color=orange>ADEQUATE</font><br><font face=\"Courier New\" color=white>Everything is functional, though efficiency has some room for improvement.</font>"
+	body += "<br>"
+	body += "<hr style=\"margin-top:5px; margin-bottom:15px;\">"
+	body += "<b>Additional Notes:</b><br><span class=\"sealed_paper_field\"></span>"
+	body += "<br><br>"
+	body += "<b>Overall Grading:</b> <font face=\"Courier New\" color=orange>MARGINAL</font>"
+	body += "<br><br>"
+	body += "<b>Inspector's signature:</b><br><span class=\"sealed_paper_field\"></span>"
+
+	contents = dat
+	contents += body
+	contents += closer

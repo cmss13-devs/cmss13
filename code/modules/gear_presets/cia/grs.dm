@@ -47,6 +47,7 @@
 	. = ..()
 	name = "[JOB_CIA_GRS_OPR] (!DEATHSQUAD!)"
 	is_deathsquad = TRUE
+	faction_group = FACTION_LIST_CIA
 
 /datum/equipment_preset/cia_global_response/standard/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -109,6 +110,7 @@
 	. = ..()
 	name = "[JOB_CIA_GRS_HVY] (!DEATHSQUAD!)"
 	is_deathsquad = TRUE
+	faction_group = FACTION_LIST_CIA
 
 /datum/equipment_preset/cia_global_response/heavy/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -168,6 +170,7 @@
 	. = ..()
 	name = "[JOB_CIA_GRS_SNP] (!DEATHSQUAD!)"
 	is_deathsquad = TRUE
+	faction_group = FACTION_LIST_CIA
 
 /datum/equipment_preset/cia_global_response/sniper/load_gear(mob/living/carbon/human/new_human)
 	//clothes
@@ -221,6 +224,7 @@
 	. = ..()
 	name = "[JOB_CIA_GRS_ENG] (!DEATHSQUAD!)"
 	is_deathsquad = TRUE
+	faction_group = FACTION_LIST_CIA
 
 /datum/equipment_preset/cia_global_response/engineer/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/marsoc/grs/uniform = new()
@@ -283,6 +287,7 @@
 	. = ..()
 	name = "[JOB_CIA_GRS_MED] (!DEATHSQUAD!)"
 	is_deathsquad = TRUE
+	faction_group = FACTION_LIST_CIA
 
 /datum/equipment_preset/cia_global_response/medic/load_gear(mob/living/carbon/human/new_human)
 	//webbing
@@ -345,6 +350,7 @@
 	. = ..()
 	name = "[JOB_CIA_GRS_TL] (!DEATHSQUAD!)"
 	is_deathsquad = TRUE
+	faction_group = FACTION_LIST_CIA
 
 /datum/equipment_preset/cia_global_response/leader/load_gear(mob/living/carbon/human/new_human)
 	//clothes

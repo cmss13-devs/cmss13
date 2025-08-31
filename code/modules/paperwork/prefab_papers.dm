@@ -129,13 +129,17 @@ GLOBAL_REFERENCE_LIST_INDEXED(prefab_papers, /obj/item/paper/prefab, document_ti
 	doc_datum_type = /datum/prefab_document/uacqs/commissioner
 	document_category = PAPER_CATEGORY_INACCESSIBLE
 
-/obj/item/paper/prefab/carbon/uacqs
+/obj/item/paper/prefab/uacqs
 	name = "Blank UACQS Document"
 	document_category = PAPER_CATEGORY_UACQS
 
-/obj/item/paper/prefab/carbon/uacqs/inspection
+/obj/item/paper/prefab/uacqs/inspection
 	document_title = "QS101 - Departmental Inspection"
 	doc_datum_type = /datum/prefab_document/uacqs/inspection
+
+/obj/item/paper/prefab/uacqs/inspection/example
+	document_title = "QS101E - Departmental Inspection \[EXAMPLE\]"
+	doc_datum_type = /datum/prefab_document/uacqs/inspection/example
 
 // ########## Provost MP Forms  ########## \\
 

@@ -162,8 +162,6 @@
 		if(RESIN_TRAP_EMPTY)
 			trap_type_name = "empty"
 		if(RESIN_TRAP_HUGGER)
-
-
 			trap_type_name = "hugger"
 			var/obj/item/clothing/mask/facehugger/hugger = new (loc)
 			hugger.hivenumber = hivenumber
@@ -209,11 +207,7 @@
 	if(xeno.hivenumber != hivenumber)
 		return ..()
 
-	var/trap_acid_level = 0
-	if(trap_type >= RESIN_TRAP_ACID1)
-		trap_acid_level = 1 + trap_type - RESIN_TRAP_ACID1
 	if(xeno.a_intent == INTENT_HARM && trap_type == RESIN_TRAP_EMPTY)
-
 		return ..()
 
 	if(trap_type == RESIN_TRAP_HUGGER)

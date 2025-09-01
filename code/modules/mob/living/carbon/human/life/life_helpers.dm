@@ -191,7 +191,7 @@
 		if(istype(present_visor, /obj/item/device/helmet_visor/night_vision))
 			return TRUE
 	return FALSE
-    // The current visor down is a night vision visor
+	// The current visor down is a night vision visor
 
 #define HUMAN_TIMER_TO_EFFECT_CONVERSION (0.05) //(1/20) //once per 2 seconds, with effect equal to endurance, which is used later
 

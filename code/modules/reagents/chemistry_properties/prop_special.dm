@@ -411,7 +411,10 @@
 	to_chat(H, SPAN_NOTICE("Your vision returns to normal"))
 
 /datum/chem_property/special/opticconeenhancing/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.sdisabilities |= DISABILITY_BLIND
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.apply_internal_damage(3, "eyes")
 
 /datum/chem_property/special/opticrodenhancing
 	name = PROPERTY_OPTICRODENHANCING
@@ -434,10 +437,14 @@
 		return
 	var/mob/living/carbon/human/H = M
 	H.chem_night_vision = FALSE
+
 	H.update_sight()
 	to_chat(H, SPAN_NOTICE("Your vision returns to normal"))
 /datum/chem_property/special/opticrodenhancing/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.sdisabilities |= DISABILITY_BLIND
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.apply_internal_damage(3, "eyes")
 
 /datum/chem_property/special/hyperoptic
 	name = PROPERTY_HYPEROPTIC
@@ -464,8 +471,12 @@
 	H.chem_night_vision = FALSE
 	H.chem_wall_vision = FALSE
 	H.chem_mob_vision = FALSE
+
 	H.update_sight()
 	to_chat(H, SPAN_NOTICE("Your vision returns to normal"))
 
 /datum/chem_property/special/hyperoptic/process_overdose(mob/living/M, potency = 1, delta_time)
-	M.sdisabilities |= DISABILITY_BLIND
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.apply_internal_damage(5, "eyes")

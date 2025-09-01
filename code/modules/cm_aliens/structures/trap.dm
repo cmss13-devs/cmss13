@@ -213,6 +213,7 @@
 	if(trap_type >= RESIN_TRAP_ACID1)
 		trap_acid_level = 1 + trap_type - RESIN_TRAP_ACID1
 	if(xeno.a_intent == INTENT_HARM && trap_type == RESIN_TRAP_EMPTY)
+	if(xeno.a_intent == INTENT_HARM && trap_type == RESIN_TRAP_EMPTY)
 		return ..()
 
 	if(trap_type == RESIN_TRAP_HUGGER)
@@ -236,6 +237,7 @@
 
 	if(trap_acid_level >= xeno.acid_level)
 		to_chat(xeno, SPAN_XENONOTICE("It already has good acid in."))
+	if(xeno.try_fill_trap(src))
 		return XENO_NO_DELAY_ACTION
 
 	if(isboiler(xeno))

@@ -1,5 +1,0 @@
-author: "Comxy"
-delete-after: True
-changes:
-  - rscadd: "CLF Coordinator role"
-  - imageadd: "CLF Coordinator supporting sprites"

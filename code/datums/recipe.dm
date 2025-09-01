@@ -558,7 +558,7 @@
 /datum/recipe/nettlesoup
 	reagents = list("water" = 10)
 	items = list(
-		/obj/item/grown/nettle,
+		/obj/item/reagent_container/food/snacks/grown/nettle,
 		/obj/item/reagent_container/food/snacks/grown/potato,
 		/obj/item/reagent_container/food/snacks/egg,
 	)

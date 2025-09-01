@@ -19785,6 +19785,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
+"aYH" = (
+/obj/effect/landmark/start/corp_sec,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/upper/u_m_p)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -205856,7 +205860,7 @@ poD
 bBH
 aQx
 sjM
-xzh
+aYH
 oIn
 nIN
 rgL

@@ -35095,8 +35095,8 @@
 /obj/structure/transmitter/rotary{
 	do_not_disturb = 2;
 	name = "Weyland-Yutani Meeting Room";
-	phone_category = "Offices";
-	phone_id = "W-Y Station Meeting Room";
+	phone_category = "Liaison";
+	phone_id = "Meeting Room";
 	pixel_x = -6;
 	pixel_y = 16
 	},
@@ -35214,10 +35214,11 @@
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/medical/containment/cell/cl)
 "bHn" = (
-/obj/structure/machinery/faxmachine/corporate{
-	pixel_y = 3
-	},
 /obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/faxmachine/corporate/liaison/almayer{
+	pixel_y = 2;
+	sub_name = "W-Y Liaison (Conference)"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/medical/containment/cell/cl)
 "bHo" = (
@@ -35637,11 +35638,10 @@
 	pixel_x = 8;
 	pixel_y = 8
 	},
-/obj/structure/machinery/door/poddoor/almayer/blended{
-	id = "cl_quarter_maintenance_2";
+/obj/structure/machinery/door/poddoor/almayer/blended/liaison{
 	dir = 4;
-	name = "blastdoor";
-	explo_proof = 1
+	id = "cl_quarter_maintenance_2";
+	emp_proof = 1
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/medical/containment/cell/cl)
@@ -36489,9 +36489,6 @@
 	},
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/shipboard/weapon_room)
-"bKo" = (
-/turf/closed/wall/almayer/reinforced,
-/area/almayer/maint/hull/upper/u_m_p)
 "bKp" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
@@ -36830,8 +36827,8 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/transmitter/rotary{
 	name = "Corporate Reception Telephone";
-	phone_category = "Offices";
-	phone_id = "Corporate Reception";
+	phone_category = "Liaison";
+	phone_id = "Reception";
 	pixel_y = 8;
 	pixel_x = -3
 	},
@@ -37260,9 +37257,9 @@
 /area/almayer/command/corporateliaison)
 "bMc" = (
 /obj/structure/barricade/handrail{
-	pixel_y = 25;
-	pixel_x = 1;
-	layer = 3.1
+	pixel_y = 12;
+	layer = 3.1;
+	dir = 1
 	},
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -70195,6 +70192,7 @@
 	pixel_x = 4;
 	pixel_y = -3
 	},
+/obj/structure/machinery/light/small/blue,
 /turf/open/floor/almayer/cargo,
 /area/almayer/command/corporateliaison)
 "oxe" = (
@@ -71031,8 +71029,8 @@
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/transmitter/rotary{
 	name = "Corporate Office Telephone";
-	phone_category = "Offices";
-	phone_id = "CL Office";
+	phone_category = "Liaison";
+	phone_id = "Office";
 	pixel_x = 5;
 	pixel_y = 3
 	},
@@ -203106,7 +203104,7 @@ bJj
 bJj
 bJj
 bJj
-bmR
+bJj
 gBs
 mRU
 woU
@@ -203209,7 +203207,7 @@ bKc
 bJM
 bJv
 bJk
-bmR
+bJj
 vpf
 bIP
 woU
@@ -203312,7 +203310,7 @@ bKc
 bJN
 bJx
 bJl
-bmR
+bJj
 bIV
 bIP
 woU
@@ -203415,7 +203413,7 @@ bJj
 bJj
 uBx
 fLi
-bmR
+bJj
 bJc
 vpf
 woU
@@ -203518,7 +203516,7 @@ bKe
 bJj
 uBx
 bJm
-bmR
+bJj
 bJc
 bIQ
 woU
@@ -203621,7 +203619,7 @@ pBG
 bJj
 uBx
 fLi
-bmR
+bJj
 bIP
 bIR
 woU
@@ -203724,7 +203722,7 @@ cXF
 bJj
 bJy
 fLi
-bmR
+bJj
 jtU
 bIS
 woU
@@ -203827,7 +203825,7 @@ bKf
 bJj
 bJz
 bJn
-bmR
+bJj
 bIV
 bIP
 woU
@@ -203930,7 +203928,7 @@ vzp
 bJj
 erd
 bJo
-bmR
+bJj
 bIV
 bIT
 woU
@@ -204033,7 +204031,7 @@ pBG
 pBG
 gAk
 gAk
-mRU
+pBG
 vpf
 bIP
 woU
@@ -204136,7 +204134,7 @@ pBG
 bJO
 mRW
 bJp
-mRU
+pBG
 bJd
 bIV
 woU
@@ -204342,7 +204340,7 @@ bKh
 bJQ
 bJB
 bJq
-mRU
+pBG
 bIP
 tMU
 woU
@@ -204445,7 +204443,7 @@ bKi
 bJR
 bJF
 pBG
-mRU
+pBG
 jtU
 bIV
 woU
@@ -204548,7 +204546,7 @@ pBG
 bJV
 pBG
 pBG
-mRU
+pBG
 bJg
 jtU
 woU
@@ -204651,7 +204649,7 @@ bKj
 jvM
 oyO
 nve
-mRU
+pBG
 bJh
 bIX
 woU
@@ -204754,7 +204752,7 @@ nQA
 bJW
 nQA
 bJr
-mRU
+pBG
 kuK
 bIP
 woU
@@ -204857,7 +204855,7 @@ nQA
 bJW
 nQA
 oOp
-mRU
+pBG
 jtU
 bIV
 woU
@@ -204960,7 +204958,7 @@ bKk
 bJZ
 bJG
 bJs
-mRU
+pBG
 jtU
 bIV
 woU
@@ -205063,7 +205061,7 @@ bKl
 pBG
 pGh
 pBG
-mRU
+pBG
 bIP
 bIY
 woU
@@ -205166,7 +205164,7 @@ bHh
 pBG
 bJI
 bJu
-mRU
+pBG
 bIP
 vpf
 woU
@@ -205258,7 +205256,7 @@ bIP
 bNv
 aGs
 bMQ
-mRU
+pBG
 pBG
 vrJ
 xOs
@@ -205269,7 +205267,7 @@ bHh
 bKa
 bJJ
 nID
-mRU
+pBG
 vpf
 bIZ
 woU
@@ -205362,17 +205360,17 @@ bNx
 xiU
 xUa
 bMv
-mRU
-mRU
-mRU
-mRU
-bKo
-bKo
-bKo
-mRU
-mRU
-mRU
-mRU
+pBG
+pBG
+pBG
+pBG
+bHh
+bHh
+bHh
+pBG
+pBG
+pBG
+pBG
 bIV
 bJa
 woU

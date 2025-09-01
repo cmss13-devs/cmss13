@@ -168,6 +168,31 @@
 	if(G.lighting_alpha < lighting_alpha)
 		lighting_alpha = G.lighting_alpha
 
+
+/mob/living/carbon/human/proc/check_glasses(obj/item/clothing/glasses/G) //Check if the glasses being used provide any modifications to sight. For use in chem NV code
+	if(!G || !G.active)
+		return FALSE
+	if(G.darkness_view != 0) // If the glasses change your darkness view in anyway (including tinting)
+		return TRUE
+	if(G.vision_flags & (SEE_TURFS | SEE_MOBS)) //Glasses modify sight to see turfs or mobs
+		return TRUE
+	if(G.lighting_alpha != LIGHTING_PLANE_ALPHA_VISIBLE) //If the glasses do change your ability to see around you in any meaningful way
+		return TRUE
+	return FALSE //Glasses are fine
+
+/mob/living/carbon/human/proc/check_visor(obj/item/clothing/head/H) //Checks if the current user is wearing a helmet visor of class night_vision... Mainly exists for chem NV code to prevent digital vision w/ chem vision
+	if (!H)
+		return FALSE
+	if(istype(H, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/Q = H
+		var present_visor = Q.active_visor
+		if (!present_visor)
+			return FALSE
+		if(istype(present_visor, /obj/item/device/helmet_visor/night_vision))
+			return TRUE
+	return FALSE
+    // The current visor down is a night vision visor
+
 #define HUMAN_TIMER_TO_EFFECT_CONVERSION (0.05) //(1/20) //once per 2 seconds, with effect equal to endurance, which is used later
 
 /mob/living/carbon/human/GetStunDuration(amount)

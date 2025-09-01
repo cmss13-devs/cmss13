@@ -435,6 +435,14 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"abd" = (
+/obj/structure/machinery/door_control/cl{
+	pixel_y = 24;
+	name = "Safe Shutters";
+	id = "CL_Safe"
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -36180,6 +36188,9 @@
 	pixel_x = 25;
 	pixel_y = 6
 	},
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
 /turf/open/floor/almayer/dark_sterile,
 /area/almayer/command/corporateliaison)
 "bJK" = (
@@ -36369,6 +36380,7 @@
 	pixel_x = 9;
 	pixel_y = 8
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer/flooredge/north,
 /area/almayer/command/corporateliaison)
 "bKg" = (
@@ -36673,7 +36685,8 @@
 /area/almayer/command/corporateliaison)
 "bKL" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 8
+	dir = 8;
+	id = "CL_Safe"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
@@ -205045,7 +205058,7 @@ bLL
 bLn
 oxc
 pBG
-eAN
+abd
 bKl
 pBG
 pGh

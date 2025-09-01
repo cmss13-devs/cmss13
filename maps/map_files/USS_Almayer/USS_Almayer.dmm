@@ -30409,7 +30409,7 @@
 	dir = 2
 	},
 /obj/structure/curtain/colorable_transparent{
-	color = #FED8B1;
+	color = "#FED8B1";
 	alpha = 225
 	},
 /obj/structure/window/framed/almayer/hull/hijack_bustable,

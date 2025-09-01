@@ -53441,7 +53441,7 @@
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/curtain/colorable_transparent{
-	color = #FED8B1;
+	color = "#FED8B1";
 	alpha = 225
 	},
 /turf/open/floor/plating,

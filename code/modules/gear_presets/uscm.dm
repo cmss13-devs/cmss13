@@ -71,7 +71,7 @@
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
 
-	minimap_icon = "private"
+	minimap_icon_state = "private"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
@@ -103,7 +103,7 @@
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
-	minimap_icon = "smartgunner"
+	minimap_icon_state = "smartgunner"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
@@ -163,7 +163,7 @@
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
 
-	minimap_icon = "vc"
+	minimap_icon_state = "vc"
 	minimap_background = "background_intel"
 
 /datum/equipment_preset/uscm/tank/load_gear(mob/living/carbon/human/new_human)
@@ -221,12 +221,12 @@
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "IO"
 	skills = /datum/skills/intel
-	minimap_icon = "io"
+	minimap_icon_state = "io"
 	minimap_background = "background_intel"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/intel)
 
-	minimap_icon = "io"
+	minimap_icon_state = "io"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
@@ -281,7 +281,7 @@
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
-	minimap_icon = "spec"
+	minimap_icon_state = "spec"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
@@ -340,7 +340,7 @@
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
-	minimap_icon = "medic"
+	minimap_icon_state = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -374,7 +374,7 @@
 	role_comm_title = "FTL"
 	skills = /datum/skills/tl
 
-	minimap_icon = "tl"
+	minimap_icon_state = "tl"
 
 /datum/equipment_preset/uscm/tl/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -404,7 +404,7 @@
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
-	minimap_icon = "engi"
+	minimap_icon_state = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -439,7 +439,7 @@
 	minimum_age = 25
 	skills = /datum/skills/SL
 
-	minimap_icon = "leader"
+	minimap_icon_state = "leader"
 
 /datum/equipment_preset/uscm/leader/load_gear(mob/living/carbon/human/new_human)
 	var/back_item = /obj/item/storage/backpack/marine/satchel
@@ -471,7 +471,7 @@
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
 
-	minimap_icon = "private"
+	minimap_icon_state = "private"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
@@ -516,7 +516,7 @@
 	minimum_age = 25
 	skills = /datum/skills/SL
 
-	minimap_icon = "leader"
+	minimap_icon_state = "leader"
 
 /datum/equipment_preset/uscm/leader_equipped/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -557,7 +557,7 @@
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
-	minimap_icon = "smartgunner"
+	minimap_icon_state = "smartgunner"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
@@ -596,7 +596,7 @@
 	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
-	minimap_icon = "engi"
+	minimap_icon_state = "engi"
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -644,7 +644,7 @@
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
-	minimap_icon = "medic"
+	minimap_icon_state = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -700,7 +700,7 @@
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
-	minimap_icon = "spec"
+	minimap_icon_state = "spec"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
@@ -772,7 +772,7 @@
 	role_comm_title = "TL"
 	skills = /datum/skills/tl
 
-	minimap_icon = "tl"
+	minimap_icon_state = "tl"
 
 /datum/equipment_preset/uscm/tl_equipped/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -811,7 +811,7 @@
 	ert_squad = TRUE
 	paygrades = list(PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 
-	minimap_icon = "sof_sg"
+	minimap_icon_state = "sof_sg"
 
 /datum/equipment_preset/uscm/marsoc/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -881,7 +881,7 @@
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/commando/deathsquad/leader
 
-	minimap_icon = "sof_sl"
+	minimap_icon_state = "sof_sl"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
@@ -906,7 +906,7 @@
 	assignment = JOB_MARINE_RAIDER_CMD
 	job_title = JOB_MARINE_RAIDER_CMD
 	role_comm_title = "CMD."
-	minimap_icon = "sof_officer"
+	minimap_icon_state = "sof_officer"
 	paygrades = list(PAY_SHORT_MO3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/commando/deathsquad/officer
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
@@ -963,7 +963,7 @@
 	paygrades = list(PAY_SHORT_MO1 = JOB_PLAYTIME_TIER_0, PAY_SHORT_MO2 = JOB_PLAYTIME_TIER_3)
 	skills = /datum/skills/commando/deathsquad/leader
 
-	minimap_icon = "leader"
+	minimap_icon_state = "leader"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
 	dress_hat = list(/obj/item/clothing/head/marine/dress_cover/officer)
@@ -993,7 +993,7 @@
 	skills = /datum/skills/rifleman_pve
 	auto_squad_name = SQUAD_SOLAR
 
-	minimap_icon = "private"
+	minimap_icon_state = "private"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
@@ -1053,7 +1053,7 @@
 	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic_pve
 
-	minimap_icon = "medic"
+	minimap_icon_state = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
@@ -1116,7 +1116,7 @@
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner_pve
 
-	minimap_icon = "smartgunner"
+	minimap_icon_state = "smartgunner"
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
 
@@ -1162,7 +1162,7 @@
 	role_comm_title = "FTL"
 	skills = /datum/skills/tl_pve
 
-	minimap_icon = "tl"
+	minimap_icon_state = "tl"
 
 /datum/equipment_preset/uscm/pve/tl/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -1218,7 +1218,7 @@
 	role_comm_title = "SL"
 	skills = /datum/skills/sl_pve
 
-	minimap_icon = "sl"
+	minimap_icon_state = "sl"
 
 /datum/equipment_preset/uscm/pve/sl/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -1284,7 +1284,7 @@
 	role_comm_title = "RFN"
 	skills = /datum/skills/rifleman_pve
 
-	minimap_icon = "private"
+	minimap_icon_state = "private"
 
 /datum/equipment_preset/uscm/hunted/rifleman/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_MAX
@@ -1331,7 +1331,7 @@
 	role_comm_title = "FTL"
 	skills = /datum/skills/tl_pve
 
-	minimap_icon = "tl"
+	minimap_icon_state = "tl"
 
 /datum/equipment_preset/uscm/hunted/tl/load_status(mob/living/carbon/human/new_human)
 	new_human.nutrition = NUTRITION_NORMAL
@@ -1374,7 +1374,7 @@
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner_pve
 
-	minimap_icon = "smartgunner"
+	minimap_icon_state = "smartgunner"
 
 /datum/equipment_preset/uscm/hunted/sg/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine(new_human), WEAR_BODY)

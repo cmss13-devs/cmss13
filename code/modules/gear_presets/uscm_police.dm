@@ -33,7 +33,7 @@
 	role_comm_title = "MP"
 	skills = /datum/skills/MP
 
-	minimap_icon = "mp"
+	minimap_icon_state = "mp"
 
 	utility_under = list(/obj/item/clothing/under/marine/mp)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp)
@@ -93,7 +93,7 @@
 	minimum_age = 25
 	skills = /datum/skills/MW
 
-	minimap_icon = "warden"
+	minimap_icon_state = "warden"
 
 	utility_under = list(/obj/item/clothing/under/marine/warden)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/warden)
@@ -157,7 +157,7 @@
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 
-	minimap_icon = list("cmp")
+	minimap_icon_state = list("cmp")
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
@@ -200,7 +200,7 @@
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 
-	minimap_icon = list("rmp")
+	minimap_icon_state = list("rmp")
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/warrant)
 	utility_hat = list(/obj/item/clothing/head/beret/marine/mp/cmp)
@@ -244,7 +244,7 @@
 	name = "USCM Riot Chief MP (RCMP)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = list("crmp")
+	minimap_icon_state = list("crmp")
 
 	assignment = JOB_RIOT_CHIEF
 	job_title = JOB_RIOT_CHIEF

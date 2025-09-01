@@ -43,7 +43,7 @@
 	role_comm_title = "CMO"
 	skills = /datum/skills/CMO
 
-	minimap_icon = list("doctor")
+	minimap_icon_state = list("doctor")
 	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/rank/chief_medical_officer)
@@ -74,7 +74,7 @@
 	skills = /datum/skills/doctor
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_DATABASE)
 
-	minimap_icon = list("doctor")
+	minimap_icon_state = list("doctor")
 	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor/load_gear(mob/living/carbon/human/new_human)
@@ -115,7 +115,7 @@
 
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE, ACCESS_MARINE_FIELD_DOC)
 
-	minimap_icon = "field_doctor"
+	minimap_icon_state = "field_doctor"
 	minimap_background = "background_medical"
 
 /datum/equipment_preset/uscm_ship/uscm_medical/field_doctor/load_gear(mob/living/carbon/human/new_human)
@@ -138,7 +138,7 @@
 	role_comm_title = "Nurse"
 	skills = /datum/skills/nurse
 
-	minimap_icon = list("nurse")
+	minimap_icon_state = list("nurse")
 	minimap_background = "background_shipside"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
@@ -168,7 +168,7 @@
 	role_comm_title = "Rsr"
 	skills = /datum/skills/researcher
 
-	minimap_icon = "researcher"
+	minimap_icon_state = "researcher"
 	minimap_background = "background_medical"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/researcher)

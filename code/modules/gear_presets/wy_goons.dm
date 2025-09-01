@@ -68,7 +68,7 @@
 	job_title = JOB_WY_GOON
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon
-	minimap_icon = "goon_standard"
+	minimap_icon_state = "goon_standard"
 
 /datum/equipment_preset/goon/standard/kutjevo
 	name = "Weyland-Yutani Corporate Security Goon (Kutjevo Camo)"
@@ -150,7 +150,7 @@
 	job_title = JOB_WY_GOON_TECH
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_tech
-	minimap_icon = "goon_engi"
+	minimap_icon_state = "goon_engi"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/engineer
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/engi
 
@@ -197,7 +197,7 @@
 	job_title = JOB_WY_GOON_MEDIC
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_medic
-	minimap_icon = "goon_med"
+	minimap_icon_state = "goon_med"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/medic
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
 
@@ -255,7 +255,7 @@
 	job_title = JOB_WY_GOON_LEAD
 	paygrades = list(PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon_lead
-	minimap_icon = "goon_leader"
+	minimap_icon_state = "goon_leader"
 	uniform_type = /obj/item/clothing/under/marine/veteran/pmc/corporate/lead
 	helmet_type = /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/lead
 
@@ -338,7 +338,7 @@
 	job_title = JOB_WY_RESEARCHER
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/researcher
-	minimap_icon = "goon_sci"
+	minimap_icon_state = "goon_sci"
 
 /datum/equipment_preset/goon/researcher/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/WY, WEAR_L_EAR)
@@ -384,4 +384,4 @@
 	job_title = JOB_WY_RESEARCH_LEAD
 	paygrades = list(PAY_SHORT_CCMO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/researcher
-	minimap_icon = "goon_sci_lead"
+	minimap_icon_state = "goon_sci_lead"

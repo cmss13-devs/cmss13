@@ -161,7 +161,7 @@
 	job_title = JOB_WY_GOON_SYNTH
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
-	minimap_icon = "goon_synth"
+	minimap_icon_state = "goon_synth"
 	minimap_background = "background_goon"
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -187,7 +187,7 @@
 	assignment = JOB_CMB_SYN
 	job_title = JOB_CMB_SYN
 	minimap_background = "background_cmb"
-	minimap_icon = "cmb_syn"
+	minimap_icon_state = "cmb_syn"
 
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL

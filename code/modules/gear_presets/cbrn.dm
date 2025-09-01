@@ -71,7 +71,7 @@
 	assignment = JOB_SQUAD_ENGI
 	job_title = JOB_SQUAD_ENGI
 	role_comm_title = "ComTech"
-	minimap_icon = "engi"
+	minimap_icon_state = "engi"
 	skills = /datum/skills/pmc/engineer
 
 /datum/equipment_preset/uscm/cbrn/engineer/load_gear(mob/living/carbon/human/new_human)
@@ -115,7 +115,7 @@
 	assignment = JOB_SQUAD_MEDIC
 	job_title = JOB_SQUAD_MEDIC
 	role_comm_title = "HM"
-	minimap_icon = "medic"
+	minimap_icon_state = "medic"
 	skills = /datum/skills/pmc/medic
 
 /datum/equipment_preset/uscm/cbrn/medic/load_gear(mob/living/carbon/human/new_human)
@@ -158,7 +158,7 @@
 	assignment = JOB_SQUAD_TEAM_LEADER
 	job_title = JOB_SQUAD_TEAM_LEADER
 	role_comm_title = "TL"
-	minimap_icon = "tl"
+	minimap_icon_state = "tl"
 	skills = /datum/skills/pmc/SL
 
 /datum/equipment_preset/uscm/cbrn/leader/load_gear(mob/living/carbon/human/new_human)
@@ -193,7 +193,7 @@
 	assignment = JOB_SQUAD_SPECIALIST
 	job_title = JOB_SQUAD_SPECIALIST
 	role_comm_title = "Spc"
-	minimap_icon = "spec"
+	minimap_icon_state = "spec"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
 	skills = /datum/skills/commando/deathsquad
 

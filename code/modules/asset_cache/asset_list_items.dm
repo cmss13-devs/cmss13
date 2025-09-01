@@ -260,7 +260,7 @@
 	name = "squadranks"
 
 /datum/asset/spritesheet/ranks/register()
-	var/icon_file = 'icons/mob/hud/factions/marine.dmi'
+	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
 
 	var/list/icon_data = list(
 		list("Mar", null),

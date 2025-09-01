@@ -286,7 +286,7 @@
 		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
-			var/icon/background = icon('icons/mob/hud/factions/marine.dmi', "hudsquad", SOUTH)
+			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
 			background.Blend(color, ICON_MULTIPLY)
 			if(iconref[2])
 				var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)

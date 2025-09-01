@@ -399,8 +399,9 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
-	H.chem_wall_vision = TRUE
-	H.update_sight()
+	if(H.chem_wall_vision == FALSE) //Prevents calling update sight every time we process the chem. Which would be bad
+		H.chem_wall_vision = TRUE
+		H.update_sight()
 /datum/chem_property/special/opticconeenhancing/on_delete(mob/living/M)
 	if(!ishuman(M))
 		return
@@ -425,8 +426,9 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
-	H.chem_night_vision = TRUE
-	H.update_sight()
+	if(H.chem_night_vision == FALSE) //Prevents calling update sight every time we process the chem. Which would be bad
+		H.chem_night_vision = TRUE
+		H.update_sight()
 /datum/chem_property/special/opticrodenhancing/on_delete(mob/living/M)
 	if(!ishuman(M))
 		return
@@ -450,10 +452,11 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
-	H.chem_night_vision = TRUE
-	H.chem_wall_vision = TRUE
-	H.chem_mob_vision = TRUE
-	H.update_sight()
+	if(H.chem_night_vision == FALSE || H.chem_wall_vision == FALSE || H.chem_mob_vision == FALSE) //Prevents calling update sight every time we process the chem. Which would be bad
+		H.chem_night_vision = TRUE
+		H.chem_wall_vision = TRUE
+		H.chem_mob_vision = TRUE
+		H.update_sight()
 /datum/chem_property/special/hyperoptic/on_delete(mob/living/M)
 	if(!ishuman(M))
 		return

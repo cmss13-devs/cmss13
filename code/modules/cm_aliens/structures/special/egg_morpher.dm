@@ -128,6 +128,12 @@
 	if(isnull(targets) || !length(targets))
 		return
 
+	for(var/mob/living/carbon/xenomorph/xeno in targets)
+		targets -= xeno //Don't add xenomorphs to the list of possible players we hug.
+
+
+	if(!length(targets))
+		return
 	var/target = pick(targets)
 	if(isnull(target))
 		return

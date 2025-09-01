@@ -226,7 +226,7 @@
 	if(customizable && assembly_stage < ASSEMBLY_LOCKED)
 		return FALSE
 
-	return TRUE
+	return user.Adjacent(target)
 
 /obj/item/explosive/plastic/proc/calculate_pixel_offset(mob/user, atom/target)
 	switch(get_dir(user, target))

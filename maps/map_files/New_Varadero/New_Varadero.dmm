@@ -2066,7 +2066,7 @@
 	pixel_x = -11;
 	pixel_y = 4
 	},
-/obj/item/paper/research_notes/good{
+/obj/item/paper/research_notes/unique/tier_three{
 	pixel_x = -15;
 	pixel_y = 2
 	},

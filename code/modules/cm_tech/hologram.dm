@@ -174,3 +174,6 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 		M.client.eye = src
 
 	return COMPONENT_OVERRIDE_VIEW
+
+/mob/hologram/look_up/take_damage(mob/M, damage, damagetype)
+	return //no cancelation of looking up by taking damage

@@ -789,8 +789,12 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(user.skills)
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			wield_time += 3
-		else
-			wield_time -= 2*user.skills.get_skill_level(SKILL_FIREARMS)
+		else if (user.skills.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_TRAINED)
+			wield_time -= 2*1
+		else if (user.skills.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_SKILLED)
+			wield_time -= 2*1.5
+		else //Max level skill of firearms.
+			wield_time -= 2*2
 
 	update_mouse_pointer(user, TRUE)
 	if(user.client)
@@ -1784,8 +1788,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		var/skill_accuracy = 0
 		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			skill_accuracy = -1
-		else
-			skill_accuracy = user.skills.get_skill_level(SKILL_FIREARMS)
+		else if (user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_TRAINED)
+			skill_accuracy = 1
+		else  if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_SKILLED)
+			skill_accuracy = 1.5
+		else // Max level skill of firearms.
+			skill_accuracy = 2
 		if(skill_accuracy)
 			gun_accuracy_mult += skill_accuracy * HIT_ACCURACY_MULT_TIER_3 // Accuracy mult increase/decrease per level is equal to attaching/removing a red dot sight
 
@@ -1847,8 +1855,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(user && user.mind && user.skills)
 		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			total_scatter_angle += SCATTER_AMOUNT_TIER_7
-		else
-			total_scatter_angle -= user.skills.get_skill_level(SKILL_FIREARMS)*SCATTER_AMOUNT_TIER_8
+		else if (user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_TRAINED)
+			total_scatter_angle -= 1*SCATTER_AMOUNT_TIER_8
+		else if (user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_SKILLED)
+			total_scatter_angle -= 1.5*SCATTER_AMOUNT_TIER_8
+		else // Max level skill of firearms.
+			total_scatter_angle -= 2*SCATTER_AMOUNT_TIER_8
 
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
@@ -1886,8 +1898,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	if(user && user.mind && user.skills)
 		if(user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_CIVILIAN && !is_civilian_usable(user))
 			total_recoil += RECOIL_AMOUNT_TIER_5
-		else
-			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
+		else if (user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_TRAINED)
+			total_recoil -= 1*RECOIL_AMOUNT_TIER_5
+		else if (user?.skills?.get_skill_level(SKILL_FIREARMS) == SKILL_FIREARMS_SKILLED)
+			total_recoil -= 1.5*RECOIL_AMOUNT_TIER_5
+		else // Max level skill of firearms.
+			total_recoil -= 2*RECOIL_AMOUNT_TIER_5
 
 	if(total_recoil > 0 && (ishuman(user) || HAS_TRAIT(user, TRAIT_OPPOSABLE_THUMBS)))
 		if(total_recoil >= 4)
@@ -2156,7 +2172,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	addtimer(CALLBACK(src, PROC_REF(icon_reset)),(speed*loop_amount)-0.8, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/gun/proc/icon_reset()
-	icon = temp_icon
+	if(temp_icon)
+		icon = temp_icon
 	temp_icon = null
 
 /obj/item/weapon/gun/ex_act(severity, explosion_direction)

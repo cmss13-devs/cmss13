@@ -28,4 +28,4 @@
 		if(JOB_NSPA_COM)
 			hud_icon_state = "sgt"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "nspa_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/twe.dmi', human, "nspa_[hud_icon_state]")

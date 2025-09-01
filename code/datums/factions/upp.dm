@@ -57,12 +57,12 @@
 		if(JOB_UPP_COMMISSAR)
 			hud_icon_state = "commi"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "upp_background")
-		var/image/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', human, "upp_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/upp.dmi', human, "upp_background")
+		var/image/rank_icon_image = image('icons/mob/hud/factions/upp.dmi', human, "upp_[hud_icon_state]")
 		if(istype(squad))
 			human.langchat_color = human.assigned_squad.chat_color
 			rank_icon_image.color = squad.equipment_color
-			var/image/squad_circle = image('icons/mob/hud/marine_hud.dmi', human, "upp_squad_circle")
+			var/image/squad_circle = image('icons/mob/hud/factions/upp.dmi', human, "upp_squad_circle")
 			squad_circle.color = squad.equipment_color
 			holder.overlays += squad_circle
 		else

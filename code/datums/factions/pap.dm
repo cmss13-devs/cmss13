@@ -28,4 +28,4 @@
 		if(JOB_PAP_POLKOVNIK)
 			hud_icon_state = "gold"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "pap_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/upp.dmi', human, "pap_[hud_icon_state]")

@@ -885,7 +885,7 @@
 	new /obj/item/reagent_container/glass/beaker(src)
 
 /obj/item/storage/pouch/autoinjector
-	name = "auto-injector pouch"
+	name = "autoinjector pouch"
 	desc = "A pouch specifically for auto-injectors."
 	icon_state = "injectors"
 	storage_slots = 7

@@ -75,6 +75,8 @@ GLOBAL_LIST_INIT(admin_verbs_default, list(
 	/client/proc/add_known_alt,
 	/client/proc/remove_known_alt,
 	/client/proc/toogle_door_control,
+	/client/proc/check_new_players, // SS220 ADD
+	/client/proc/offline_timed_ban, // SS220 ADD
 	))
 
 GLOBAL_LIST_INIT(admin_verbs_admin, list(
@@ -180,6 +182,9 @@ GLOBAL_LIST_INIT(admin_verbs_server, list(
 	/client/proc/cmd_debug_del_all,
 	/datum/admins/proc/togglejoin,
 	/client/proc/toggle_cdn,
+	/client/proc/toggle_panic_bunker, // BANDAMARINES ADD
+	/client/proc/change_panic_bunker_time, // BANDAMARINES ADD
+	/client/proc/edit_panic_bunker_bypass, // BANDAMARINES ADD
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_debug, list(
@@ -245,6 +250,7 @@ GLOBAL_LIST_INIT(admin_verbs_possess, list(
 
 GLOBAL_LIST_INIT(admin_verbs_permissions, list(
 	/client/proc/whitelist_panel,
+	/client/proc/clear_panic_bunker_bypass, // BANDAMARINESS ADD
 ))
 
 GLOBAL_LIST_INIT(admin_verbs_color, list(

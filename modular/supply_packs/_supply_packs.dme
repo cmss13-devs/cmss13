@@ -1,0 +1,3 @@
+#include "_supply_packs.dm"
+
+#include "code/vehicle_packs.dm"

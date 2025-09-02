@@ -156,7 +156,7 @@
 
 	return
 
-/mob/living/Move(NewLoc, direct)
+/mob/living/Move(NewLoc, direct, glide_size_override) // SS220 EDIT
 	if(lying_angle != 0)
 		lying_angle_on_movement(direct)
 	if (buckled && buckled.loc != NewLoc) //not updating position

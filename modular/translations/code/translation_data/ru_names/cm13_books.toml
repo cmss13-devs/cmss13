@@ -1,0 +1,128 @@
+# Uncategorized books
+# books, notes, manuals, pamphlets <- everything character wears
+
+["vehicle training manual"]
+nominative = "руководство по эксплуатации ТС"
+genitive = "руководства по эксплуатации ТС"
+dative = "руководству по эксплуатации ТС"
+accusative = "руководство по эксплуатации ТС"
+instrumental = "руководством по эксплуатации ТС"
+prepositional = "руководстве по эксплуатации ТС"
+gender = "male"
+
+["JTAC Pamphlet"] # Unique Vendor Name
+nominative = "инструкция для JTAC"
+
+["JTAC instructional pamphlet"]
+nominative = "инструкция для JTAC"
+genitive = "инструкции для JTAC"
+dative = "инструкции для JTAC"
+accusative = "инструкцию для JTAC"
+instrumental = "инструкцией для JTAC"
+prepositional = "инструкции для JTAC"
+gender = "female"
+
+["Engineering Pamphlet"] # Unique Vendor Name
+nominative = "инструкция для инженера"
+
+["engineer instructional pamphlet"]
+nominative = "инструкция для инженера"
+genitive = "инструкции для инженера"
+dative = "инструкции для инженера"
+accusative = "инструкцию для инженера"
+instrumental = "инструкцией для инженера"
+prepositional = "инструкции для инженера"
+gender = "female"
+
+["heavy machinegunner instructional pamphlet"]
+nominative = "руководство по эксплуатации пулемёта"
+genitive = "руководства по эксплуатации пулемёта"
+dative = "руководству по эксплуатации пулемёта"
+accusative = "руководство по эксплуатации пулемёта"
+instrumental = "руководством по эксплуатации пулемёта"
+prepositional = "руководстве по эксплуатации пулемёта"
+gender = "neuter"
+
+["Powerloader Certifcation"] # Unique Vendor Name
+nominative = "руководство по эксплуатации погрузчика «Caterpillar»"
+
+["powerloader instructional pamphlet"]
+nominative = "руководство по эксплуатации погрузчика «Caterpillar»"
+genitive = "руководства по эксплуатации погрузчика «Caterpillar»"
+dative = "руководству по эксплуатации погрузчика «Caterpillar»"
+accusative = "руководство по эксплуатации погрузчика «Caterpillar»"
+instrumental = "руководством по эксплуатации погрузчика «Caterpillar»"
+prepositional = "руководстве по эксплуатации погрузчика «Caterpillar»"
+gender = "neuter"
+
+["Loader instructional pamphlet"]
+nominative = "инструкция для заряжающего"
+genitive = "инструкции для заряжающего"
+dative = "инструкции для заряжающему"
+accusative = "инструкцию для заряжающего"
+instrumental = "инструкцией для заряжающим"
+prepositional = "инструкции для заряжающем"
+gender = "male"
+
+["Spotter instructional pamphlet"]
+nominative = "инструкция для корректировщика огня"
+genitive = "инструкции для корректировщика огня"
+dative = "инструкции для корректировщика огня"
+accusative = "инструкцию для корректировщика огня"
+instrumental = "инструкцией для корректировщика огня"
+prepositional = "инструкции для корректировщика огня"
+gender = "female"
+
+["M707 instructional pamphlet"]
+nominative = "инструкция для снайпера M707"
+genitive = "инструкции для снайпера M707"
+dative = "инструкции для снайпера M707"
+accusative = "инструкцию для снайпера M707"
+instrumental = "инструкцией для снайпера M707"
+prepositional = "инструкции для снайпера M707"
+gender = "female"
+
+["Mortar Operator instructional pamphlet"]
+nominative = "инструкция для специалиста миномётчика"
+genitive = "инструкции для специалиста миномётчика"
+dative = "инструкции для специалиста миномётчика"
+accusative = "инструкцию для специалиста миномётчика"
+instrumental = "инструкцией для специалиста миномётчика"
+prepositional = "инструкции для специалиста миномётчика"
+gender = "female"
+
+["field intelligence instructional pamphlet"]
+nominative = "инструкция для полевого разведчика"
+genitive = "инструкции для полевого разведчика"
+dative = "инструкции для полевого разведчика"
+accusative = "инструкцию для полевого разведчика"
+instrumental = "инструкцией для полевого разведчика"
+prepositional = "инструкции для полевого разведчика"
+gender = "female"
+
+["Principles and Practice of Medicine"]
+nominative = "Справочник «Медицинские основы и практики»"
+genitive = "Справочника «Медицинские основы и практики»"
+dative = "Справочнику «Медицинские основы и практики»"
+accusative = "Справочник «Медицинские основы и практики»"
+instrumental = "Справочником «Медицинские основы и практики»"
+prepositional = "Справочнике «Медицинские основы и практики»"
+gender = "male"
+
+["Supply Manifest"]
+nominative = "грузовой манифест"
+genitive = "грузового манифеста"
+dative = "грузовому манифесту"
+accusative = "грузовой манифест"
+instrumental = "грузовым манифестом"
+prepositional = "грузовом манифесте"
+gender = "male"
+
+["Requisition Form"]
+nominative = "бланк заявки"
+genitive = "бланка заявки"
+dative = "бланку заявки"
+accusative = "бланк заявки"
+instrumental = "бланком заявки"
+prepositional = "бланке заявки"
+gender = "male"

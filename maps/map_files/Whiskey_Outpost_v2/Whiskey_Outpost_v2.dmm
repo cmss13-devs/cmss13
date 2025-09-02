@@ -2255,6 +2255,7 @@
 /area/whiskey_outpost/inside/hospital)
 "iO" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/medical_supply_link/green,
 /turf/open/floor/whitegreen/southeast,
 /area/whiskey_outpost/inside/hospital)
 "iP" = (

@@ -1,4 +1,0 @@
-author: "BOBAMAx"
-delete-after: True
-changes:
-  - bugfix: "CL on solaris pmc insert won't spawn as a CMB marshal any more"

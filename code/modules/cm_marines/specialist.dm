@@ -230,6 +230,7 @@
 	role_name = "Heavy"
 	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
 	trait_to_give = "heavy"
+	rank_icon = "spec_heavy"
 	kit_typepath = /obj/item/storage/box/spec/B18
 	available_vendor_num = 0
 	available_kit_num = 0

@@ -11465,28 +11465,28 @@
 /obj/item/clothing/mask/muzzle,
 /obj/item/clothing/mask/muzzle,
 /obj/item/clothing/mask/muzzle,
-/obj/item/xeno_restraints{
+/obj/item/restraint/legcuffs/xeno_restraints{
 	pixel_y = 13
 	},
-/obj/item/xeno_restraints{
+/obj/item/restraint/legcuffs/xeno_restraints{
 	pixel_y = 13
 	},
-/obj/item/xeno_restraints{
+/obj/item/restraint/legcuffs/xeno_restraints{
 	pixel_y = 13
 	},
-/obj/item/xeno_restraints{
+/obj/item/restraint/legcuffs/xeno_restraints{
 	pixel_y = 13
 	},
-/obj/item/xeno_restraints{
+/obj/item/restraint/legcuffs/xeno_restraints{
 	pixel_y = 13
 	},
-/obj/item/xeno_restraints{
+/obj/item/restraint/legcuffs/xeno_restraints{
 	pixel_y = 13
 	},
-/obj/item/xeno_restraints{
+/obj/item/restraint/legcuffs/xeno_restraints/strong{
 	pixel_y = 13
 	},
-/obj/item/xeno_restraints{
+/obj/item/restraint/legcuffs/xeno_restraints/strong{
 	pixel_y = 13
 	},
 /obj/structure/showcase{

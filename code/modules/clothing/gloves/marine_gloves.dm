@@ -70,9 +70,9 @@
 
 /obj/item/clothing/gloves/marine/fingerless
 	name = "marine fingerless combat gloves"
-	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These ones have have been modified with the fingertips removed."
-	icon_state = "marine_grey"
-	item_state = "marine_grey"
+	desc = "Standard issue marine tactical gloves. It reads: 'knit by Marine Widows Association'. These ones have have been modified by having the fingertips removed."
+	icon_state = "marine_fingerless"
+	item_state = "marine_fingerless"
 	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/medical

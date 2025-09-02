@@ -34,9 +34,17 @@
 		if(JOB_JUNIOR_EXECUTIVE)
 			hud_icon_state = "junior_exec"
 		if(JOB_CORPORATE_LIAISON)
-			hud_icon_state = "liaison"
+			hud_icon_state = "exec"
+			if(id_card && id_card.paygrade)
+				switch(id_card.paygrade)
+					if(PAY_SHORT_WYC2)
+						hud_icon_state = "junior_exec"
+					if(PAY_SHORT_WYC4)
+						hud_icon_state = "senior_exec"
+					if(PAY_SHORT_WYC5)
+						hud_icon_state = "exec_spec"
 		if(JOB_EXECUTIVE)
-			hud_icon_state = "liaison"
+			hud_icon_state = "exec"
 		if(JOB_SENIOR_EXECUTIVE)
 			hud_icon_state = "senior_exec"
 		if(JOB_EXECUTIVE_SPECIALIST, JOB_LEGAL_SPECIALIST)

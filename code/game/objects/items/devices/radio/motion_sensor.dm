@@ -48,7 +48,7 @@
 	voice.name = "[name]:[serial_number]"
 	voice.forceMove(src)
 
-	transceiver = new /obj/item/device/radio
+	transceiver = new /obj/item/device/radio/motion
 	transceiver.forceMove(src)
 	transceiver.subspace_transmission = TRUE
 	update_tranceiver(assigned_network)

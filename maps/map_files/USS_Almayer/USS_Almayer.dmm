@@ -25400,9 +25400,7 @@
 	},
 /obj/structure/machinery/door_control/cl/office/evac{
 	pixel_x = 8;
-	specialfunctions = 4;
-	pixel_y = 32;
-	name = "Evac Pod Door Bolts"
+	pixel_y = 32
 	},
 /turf/open/floor/almayer/silver/east/no_build,
 /area/almayer/medical/containment/cell/cl)

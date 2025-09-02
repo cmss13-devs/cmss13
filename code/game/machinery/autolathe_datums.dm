@@ -370,39 +370,39 @@
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s1x1
-	name = "EZ auto-injector (E-U) (1x1)"
+	name = "EZ autoinjector (E-U) (1x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/unit
 
 /datum/autolathe/recipe/medilathe/autoinjector/s5x1
-	name = "EZ auto-injector (E-VS) (5x1)"
+	name = "EZ autoinjector (E-VS) (5x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/verysmall
 
 /datum/autolathe/recipe/medilathe/autoinjector/s10x1
-	name = "EZ auto-injector (E-S) (10x1)"
+	name = "EZ autoinjector (E-S) (10x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/small
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x1
-	name = "EZ auto-injector (E-T) (15x1)"
+	name = "EZ autoinjector (E-T) (15x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x1
-	name = "EZ auto-injector (E-M) (30x1)"
+	name = "EZ autoinjector (E-M) (30x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/medium
 
 /datum/autolathe/recipe/medilathe/autoinjector/s45x1
-	name = "EZ auto-injector (E-L) (45x1)"
+	name = "EZ autoinjector (E-L) (45x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/large
 
 /datum/autolathe/recipe/medilathe/autoinjector/s60x1
-	name = "EZ auto-injector (E-XL) (60x1)"
+	name = "EZ autoinjector (E-XL) (60x1)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/skillless/extralarge
 
 /datum/autolathe/recipe/medilathe/autoinjector/s15x6
-	name = "Medic auto-injector (M-M) (15x6)"
+	name = "Medic autoinjector (M-M) (15x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic
 
 /datum/autolathe/recipe/medilathe/autoinjector/s30x6
-	name = "Medic auto-injector (M-L) (30x6)"
+	name = "Medic Autoinjector (M-L) (30x6)"
 	path = /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
 
 /datum/autolathe/recipe/medilathe/hypospray

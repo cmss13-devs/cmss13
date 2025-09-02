@@ -14,7 +14,7 @@
 	group = "Clothing"
 
 /datum/supply_packs/pouches_medical
-	name = "medical pouches crate (1x firstaid, medical, syringe, medkit, auto-injector)"
+	name = "medical pouches crate (1x firstaid, medical, syringe, medkit, autoinjector)"
 	contains = list(
 		/obj/item/storage/pouch/firstaid,
 		/obj/item/storage/pouch/medical,

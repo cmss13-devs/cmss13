@@ -1,9 +1,9 @@
 /obj/item/reagent_container/hypospray/autoinjector
-	name = "inaprovaline auto-injector"
+	name = "inaprovaline autoinjector"
 	var/chemname = "inaprovaline"
 	var/autoinjector_type = "autoinjector"
 	//desc = "A rapid and safe way to administer small amounts of drugs by untrained or trained personnel."
-	desc = "An auto-injector containing Inaprovaline.  Useful for saving lives."
+	desc = "An autoinjector containing Inaprovaline.  Useful for saving lives."
 	icon_state = "empty"
 	item_state = "autoinjector"
 	item_state_slots = list(WEAR_AS_GARB = "injector")
@@ -86,42 +86,42 @@
 
 
 /obj/item/reagent_container/hypospray/autoinjector/tricord
-	name = "tricordrazine auto-injector"
+	name = "tricordrazine autoinjector"
 	chemname = "tricordrazine"
-	desc = "An auto-injector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage."
+	desc = "An autoinjector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Tc"
 
 /obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
-	name = "tricordrazine EZ auto-injector"
-	desc = "An EZ auto-injector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage. Doesn't require any training to use."
+	name = "tricordrazine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Tricordrazine, a weak general use medicine for treating damage. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/adrenaline
-	name = "epinephrine auto-injector"
+	name = "epinephrine autoinjector"
 	chemname = "adrenaline"
-	desc = "An auto-injector loaded with 3 uses of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart."
+	desc = "An autoinjector loaded with 3 uses of Epinephrine, better known as Adrenaline, a nerve stimulant useful in restarting the heart."
 	amount_per_transfer_from_this = LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (LOWM_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	display_maptext = TRUE
 	maptext_label = "Ep"
 
 /obj/item/reagent_container/hypospray/autoinjector/dexalinp
-	name = "dexalin plus auto-injector"
+	name = "dexalin plus autoinjector"
 	chemname = "dexalinp"
-	desc = "An auto-injector loaded with 3 uses of Dexalin+, designed to immediately oxygenate the entire body."
+	desc = "An autoinjector loaded with 3 uses of Dexalin+, designed to immediately oxygenate the entire body."
 	amount_per_transfer_from_this = 1
 	volume = 3
 	display_maptext = TRUE
 	maptext_label = "D+"
 
 /obj/item/reagent_container/hypospray/autoinjector/chloralhydrate
-	name = "anesthetic auto-injector"
+	name = "anesthetic autoinjector"
 	chemname = "anesthetic"
-	desc = "An auto-injector loaded with 3 uses of Chloral Hydrate and Sleeping Agent. Good to quickly pacify someone, for surgery of course."
+	desc = "An autoinjector loaded with 3 uses of Chloral Hydrate and Sleeping Agent. Good to quickly pacify someone, for surgery of course."
 	amount_per_transfer_from_this = 10
 	volume = 30
 	mixed_chem = TRUE
@@ -134,7 +134,7 @@
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol
-	name = "tramadol auto-injector"
+	name = "tramadol autoinjector"
 	chemname = "tramadol"
 	desc = "An auto-injector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -143,19 +143,19 @@
 	maptext_label = "Tr"
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
-	name = "tramadol EZ auto-injector"
-	desc = "An EZ auto-injector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
+	name = "tramadol EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use
-	desc = "An EZ auto-injector loaded with 1 use of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 1 use of Tramadol, a weak but effective painkiller for normal wounds. Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
-	name = "oxycodone auto-injector (EXTREME PAINKILLER)"
+	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
 	chemname = "oxycodone"
 	desc = "An auto-injector loaded with 3 uses of Oxycodone, a powerful painkiller intended for life-threatening situations."
 	amount_per_transfer_from_this = MED_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -164,7 +164,7 @@
 	maptext_label = "Ox"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane
-	name = "kelotane auto-injector"
+	name = "kelotane autoinjector"
 	chemname = "kelotane"
 	desc = "An auto-injector loaded with 3 uses of Kelotane, a common burn medicine."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -173,19 +173,19 @@
 	maptext_label = "Kl"
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless
-	name = "kelotane EZ auto-injector"
-	desc = "An EZ auto-injector loaded with 3 uses of Kelotane, a common burn medicine. Doesn't require any training to use."
+	name = "kelotane EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Kelotane, a common burn medicine. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use
-	desc = "An EZ auto-injector loaded with 1 use of Kelotane, a common burn medicine. Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 1 use of Kelotane, a common burn medicine. Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine
-	name = "bicaridine auto-injector"
+	name = "bicaridine autoinjector"
 	chemname = "bicaridine"
 	desc = "An auto-injector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -194,19 +194,19 @@
 	maptext_label = "Bi"
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
-	name = "bicaridine EZ auto-injector"
-	desc = "An EZ auto-injector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
+	name = "bicaridine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use
-	desc = "An EZ auto-injector loaded with 1 use of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
+	desc = "An EZ autoinjector loaded with 1 use of Bicaridine, a common brute and circulatory damage medicine.  Doesn't require any training to use."
 	volume = 15
 	amount_per_transfer_from_this = 15
 	uses_left = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin
-	name = "dylovene auto-injector"
+	name = "dylovene autoinjector"
 	chemname = "anti_toxin"
 	desc = "An auto-injector loaded with 3 uses of Dylovene, a common toxin damage medicine."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -215,13 +215,13 @@
 	maptext_label = "Dy"
 
 /obj/item/reagent_container/hypospray/autoinjector/antitoxin/skillless
-	name = "bicaridine EZ auto-injector"
-	desc = "An EZ auto-injector loaded with 3 uses of Dylovene, a common toxin damage medicine.  Doesn't require any training to use."
+	name = "bicaridine EZ autoinjector"
+	desc = "An EZ autoinjector loaded with 3 uses of Dylovene, a common toxin damage medicine.  Doesn't require any training to use."
 	icon_state = "emptyskill"
 	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/meralyne
-	name = "meralyne auto-injector"
+	name = "meralyne autoinjector"
 	desc = "An auto-injector loaded with 3 uses of Meralyne, an advanced brute and circulatory damage medicine."
 	chemname = "meralyne"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -230,7 +230,7 @@
 	maptext_label = "Me"
 
 /obj/item/reagent_container/hypospray/autoinjector/dermaline
-	name = "dermaline auto-injector"
+	name = "dermaline autoinjector"
 	desc = "An auto-injector loaded with 3 uses of Dermaline, an advanced burn medicine."
 	chemname = "dermaline"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -239,7 +239,7 @@
 	maptext_label = "De"
 
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline
-	name = "inaprovaline auto-injector"
+	name = "inaprovaline autoinjector"
 	chemname = "inaprovaline"
 	desc = "An auto-injector loaded with 3 uses of Inaprovaline, an emergency stabilization medicine for patients in critical condition."
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -248,7 +248,7 @@
 	maptext_label = "In"
 
 /obj/item/reagent_container/hypospray/autoinjector/peridaxon
-	name = "peridaxon auto-injector"
+	name = "peridaxon autoinjector"
 	chemname = "peridaxon"
 	desc = "An auto-injector loaded with 3 uses of Peridaxon, an emergency medicine used to stop most symptoms of organ damage. Does not fix organ damage."
 	amount_per_transfer_from_this = HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
@@ -257,7 +257,7 @@
 	maptext_label = "Pr"
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency
-	name = "emergency auto-injector (CAUTION)"
+	name = "emergency autoinjector (CAUTION)"
 	desc = "An auto-injector loaded with a special cocktail of chemicals, to be used in life-threatening situations. Doesn't require any training to use."
 	icon_state = "emptyskill"
 	chemname = "emergency"
@@ -279,7 +279,7 @@
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure
-	name = "\"Pathogen\" cure auto-injector (SINGLE-USE)"
+	name = "\"Pathogen\" cure autoinjector (SINGLE-USE)"
 	desc = "An auto-injector loaded with a cure for Agent A0-3959X.91–15, also known as the 'black-goo'. Doesn't require any training to administrate."
 	icon_state = "empty_ez"
 	chemname = "antiZed"
@@ -297,7 +297,7 @@
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine
-	name = "ultrazine auto-injector"
+	name = "ultrazine autoinjector"
 	chemname = "ultrazine"
 	desc = "An auto-injector loaded with a special illegal muscle stimulant, do not administer more than twice at a time. Highly addictive."
 	amount_per_transfer_from_this = 5
@@ -316,12 +316,12 @@
 		maptext = ""
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/empty
-	name = "empty ultrazine auto-injector"
+	name = "empty ultrazine autoinjector"
 	volume = 0
 	uses_left = 0
 
 /obj/item/reagent_container/hypospray/autoinjector/ultrazine/liaison
-	name = "white auto-injector"
+	name = "white autoinjector"
 	desc = "You know what they say, don't jab yourself with suspicious syringes."
 	maptext_label = "??"
 
@@ -352,9 +352,9 @@
 	qdel(src)
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless
-	name = "first aid auto-injector"
+	name = "first aid autoinjector"
 	chemname = "tricordrazine"
-	desc = "An auto-injector loaded with a small dose of medicine for marines to treat themselves with."
+	desc = "An autoinjector loaded with a small dose of medicine for marines to treat themselves with."
 	icon_state = "tricord"
 	amount_per_transfer_from_this = 15
 	volume = 15
@@ -383,7 +383,7 @@
 		. += SPAN_NOTICE("It is empty.")
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol
-	name = "pain-stop auto-injector"
+	name = "pain-stop autoinjector"
 	chemname = "tramadol"
 	desc = "An auto-injector loaded with a small amount of painkiller for marines to self-administer."
 	icon_state = "tramadol"
@@ -418,7 +418,7 @@
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/skillless
 	name = "Autoinjector (E-T)"
-	desc = "A custom-made EZ auto-injector, likely from research. Injects its entire payload immediately and doesn't require any training."
+	desc = "A custom-made EZ autoinjector, likely from research. Injects its entire payload immediately and doesn't require any training."
 	autoinjector_type = "autoinjector_ez"
 	icon_state = "empty_ez"
 	skilllock = SKILL_MEDICAL_DEFAULT
@@ -457,7 +457,7 @@
 	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic
-	name = "Medic auto-injector (M-M)"
+	name = "Medic Autoinjector (M-M)"
 	desc = "A custom-made professional injector, likely from research. Has a similar lock to pill bottles, and fits up to 6 injections."
 	skilllock = SKILL_MEDICAL_MEDIC
 	volume = 90
@@ -467,6 +467,6 @@
 	uses_left = 0
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/medic/large
-	name = "Medic auto-injector (M-L)"
+	name = "Medic Autoinjector (M-L)"
 	volume = 180
 	amount_per_transfer_from_this = 30

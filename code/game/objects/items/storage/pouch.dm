@@ -886,7 +886,7 @@
 
 /obj/item/storage/pouch/autoinjector
 	name = "autoinjector pouch"
-	desc = "A pouch specifically for auto-injectors."
+	desc = "A pouch specifically for autoinjectors."
 	icon_state = "injectors"
 	storage_slots = 7
 	can_hold = list(/obj/item/reagent_container/hypospray/autoinjector)

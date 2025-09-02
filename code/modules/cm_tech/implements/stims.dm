@@ -56,7 +56,7 @@
 	overlays += I
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
-	name = "speed stimulant autoinjector"
+	name = "speed stimulant auto-injector"
 	chemname = "speed_stimulant"
 	desc = "A stimpack loaded with an experimental performance enhancement stimulant. Extremely muscle-stimulating. Lasts 5 minutes."
 
@@ -68,6 +68,6 @@
 /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
 	amount_per_transfer_from_this = 5
 	volume = 5
-	name = "redemption stimulant autoinjector"
+	name = "redemption stimulant auto-injector"
 	chemname = "redemption_stimulant"
 	desc = "A stimpack loaded with an experimental bone, organ and muscle stimulant. Significantly increases what a human can take before they go down. Lasts 5 minutes."

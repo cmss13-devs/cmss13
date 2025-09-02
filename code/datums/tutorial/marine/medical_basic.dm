@@ -34,7 +34,7 @@
 		return
 
 	UnregisterSignal(tutorial_mob, COMSIG_LIVING_ATTACKHAND_HUMAN)
-	message_to_player("Good. Now, you have taken some brute damage. <b>Bicaridine</b> is used to fix brute over time. Pick up the <b>bicaridine EZ autoinjector</b> and use it in-hand.")
+	message_to_player("Good. Now, you have taken some brute damage. <b>Bicaridine</b> is used to fix brute over time. Pick up the <b>bicaridine EZ auto-injector</b> and use it in-hand.")
 	update_objective("Inject yourself with the bicaridine injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless/one_use/brute_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(brute_injector)
@@ -57,7 +57,7 @@
 	addtimer(CALLBACK(src, PROC_REF(burn_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/burn_tutorial()
-	message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ autoinjector</b>.")
+	message_to_player("<b>Kelotane</b> is used to fix burn over time. Inject yourself with the <b>kelotane EZ auto-injector</b>.")
 	update_objective("Inject yourself with the kelotane injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless/one_use/burn_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(burn_injector)
@@ -81,7 +81,7 @@
 	addtimer(CALLBACK(src, PROC_REF(pain_tutorial)), 4 SECONDS)
 
 /datum/tutorial/marine/medical_basic/proc/pain_tutorial()
-	message_to_player("<b>Tramadol</b> is used to reduce your pain. Inject yourself with the <b>tramadol EZ autoinjector</b>.")
+	message_to_player("<b>Tramadol</b> is used to reduce your pain. Inject yourself with the <b>tramadol EZ auto-injector</b>.")
 	update_objective("Inject yourself with the tramadol injector.")
 	var/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless/one_use/pain_injector = new(loc_from_corner(0, 4))
 	add_to_tracking_atoms(pain_injector)

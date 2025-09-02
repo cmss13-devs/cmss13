@@ -199,7 +199,7 @@
 
 /datum/research_upgrades/armor/emergency_injector
 	name = "Medical Emergency Injector"
-	desc = "A medical plate with two buttons on the sides and a hefty chemical tank. Attached to a uniform and on a simultaneous press, it injects an emergency dose of medical chemicals much larger than a normal emergency autoinjector. Single time use and is recycled in biomass printer. Features overdose protection."
+	desc = "A medical plate with two buttons on the sides and a hefty chemical tank. Attached to a uniform and on a simultaneous press, it injects an emergency dose of medical chemicals much larger than a normal emergency auto-injector. Single time use and is recycled in biomass printer. Features overdose protection."
 	value_upgrade = 250
 	clearance_req = 1
 	behavior = RESEARCH_UPGRADE_ITEM

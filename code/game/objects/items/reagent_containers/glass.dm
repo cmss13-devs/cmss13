@@ -296,7 +296,7 @@
 	if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
 		var/obj/item/reagent_container/hypospray/autoinjector/A = W
 		if(A.mixed_chem)
-			to_chat(user, SPAN_WARNING("The autoinjector doesn't fit into [src]'s valve. It's probably not compatible."))
+			to_chat(user, SPAN_WARNING("The auto-injector doesn't fit into [src]'s valve. It's probably not compatible."))
 			return
 		if(reagents.has_reagent(A.chemname, A.volume))
 			reagents.trans_id_to(A, A.chemname, A.volume)

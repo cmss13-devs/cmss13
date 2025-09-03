@@ -801,6 +801,14 @@
 	pixel_x = -6;
 	pixel_y = 15
 	},
+/obj/item/storage/box/bloodbag{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/storage/box/bloodbag{
+	pixel_x = 6;
+	pixel_y = 15
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "abY" = (
@@ -1046,8 +1054,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/storage/toolbox/electrical{
-	pixel_x = 15;
-	pixel_y = -8
+	pixel_x = 21;
+	pixel_y = -4
 	},
 /obj/item/reagent_container/glass/bucket{
 	pixel_x = 4;
@@ -3206,15 +3214,16 @@
 	pixel_x = -11
 	},
 /obj/item/reagent_container/food/drinks/coffeecup/uscm{
-	pixel_y = -1;
-	pixel_x = -2
+	pixel_y = 0;
+	pixel_x = -1
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = -13
+	pixel_x = -9;
+	pixel_y = -3
 	},
 /obj/item/reagent_container/food/drinks/coffeecup{
-	pixel_x = 10;
-	pixel_y = 3
+	pixel_x = 9;
+	pixel_y = -2
 	},
 /turf/open/floor/almayer/sterile_green,
 /area/almayer/medical/lower_medical_medbay)
@@ -3714,33 +3723,18 @@
 "aim" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/portadialysis{
-	pixel_x = -3;
-	pixel_y = 11
+	pixel_x = -1;
+	pixel_y = 10
 	},
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/surg_vest/blue/equipped,
 /obj/item/clothing/accessory/storage/surg_vest/equipped,
-/obj/item/prop{
-	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
-	icon = 'icons/obj/items/bloodpack.dmi';
-	icon_state = "bloodpack";
-	name = "blood bag"
-	},
-/obj/item/prop{
-	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
-	icon = 'icons/obj/items/bloodpack.dmi';
-	icon_state = "bloodpack";
-	name = "blood bag"
-	},
-/obj/item/prop{
-	desc = "A blood bag with a hole in it. The rats must have gotten to it first.";
-	icon = 'icons/obj/items/bloodpack.dmi';
-	icon_state = "bloodpack";
-	name = "blood bag"
-	},
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
+/obj/item/reagent_container/blood,
+/obj/item/reagent_container/blood,
+/obj/item/reagent_container/blood,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
 "ain" = (
@@ -12140,7 +12134,6 @@
 /obj/structure/machinery/light/double/blue{
 	light_color = "#a7dbc7"
 	},
-/obj/structure/closet/wardrobe/morgue,
 /turf/open/gm/grass/grass1,
 /area/almayer/medical/upper_medical)
 "aEP" = (
@@ -34782,13 +34775,6 @@
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
-"bFS" = (
-/obj/structure/machinery/door/firedoor/border_only/almayer{
-	dir = 2
-	},
-/obj/structure/closet/wardrobe/medic_white,
-/turf/open/floor/almayer/test_floor4,
-/area/almayer/living/offices)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -36932,6 +36918,10 @@
 	pixel_x = 5;
 	pixel_y = 12
 	},
+/obj/item/storage/box/bodybags{
+	pixel_y = 12;
+	pixel_x = -8
+	},
 /obj/item/storage/box/masks{
 	pixel_x = 5
 	},
@@ -36943,17 +36933,17 @@
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
+/obj/item/storage/box/bloodbag{
+	pixel_x = -8;
+	pixel_y = 0
+	},
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"
 	},
-/obj/item/storage/box/bodybags{
-	pixel_y = 12;
-	pixel_x = -8
-	},
 /obj/item/reagent_container/glass/minitank{
-	pixel_x = -16;
-	pixel_y = 5
+	pixel_x = -42;
+	pixel_y = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/medical/lower_medical_medbay)
@@ -54470,7 +54460,12 @@
 	pixel_y = 5
 	},
 /obj/item/storage/box/sprays{
-	pixel_y = -3
+	pixel_y = -4;
+	pixel_x = 6
+	},
+/obj/item/storage/box/vials{
+	pixel_x = -6;
+	pixel_y = -4
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
@@ -55011,13 +55006,20 @@
 /obj/structure/surface/rack,
 /obj/item/storage/box/pillbottles{
 	pixel_x = 6;
-	pixel_y = 7
+	pixel_y = 6
 	},
 /obj/item/storage/box/pillbottles{
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/storage/box/rxglasses{
+	pixel_x = -6;
+	pixel_y = -4
+	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/hydroponics)
 "jer" = (
@@ -139972,7 +139974,7 @@ feI
 brb
 cpp
 buv
-bFS
+aWF
 apQ
 hKe
 qqf

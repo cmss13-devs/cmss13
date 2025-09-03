@@ -112,7 +112,6 @@
 /datum/equipment_preset/synth/uscm/mp
 	name = "USCM Synthetic (MP)"
 	paygrades = list(PAY_SHORT_MWO = JOB_PLAYTIME_TIER_0)
-	skills = /datum/skills/synth_specialised/mp
 	subtype = "mp"
 	assignment = "Military Police Synthetic"
 	manifest_title = "Military Police Synthetic"

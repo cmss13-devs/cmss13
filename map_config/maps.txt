@@ -63,5 +63,8 @@ endmap
 map new_varadero
 endmap
 
+map white_venir_research_facility
+endmap
+
 map whiskey_outpost_v2
 endmap

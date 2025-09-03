@@ -54,7 +54,7 @@
 	if(HAS_TRAIT(target_mob, TRAIT_XENONID))
 		return ..() // We don't have backpack sprites for xenoids (yet?)
 	var/mob/living/carbon/xenomorph/xeno = target_mob
-	if(target_mob.stat != DEAD) // If the Xeno is alive, fight back
+	if((target_mob.stat != DEAD) && !xeno.legcuffed) // If the Xeno is alive, fight back
 		var/mob/living/carbon/carbon_user = user
 		if(!carbon_user || !carbon_user.ally_of_hivenumber(xeno.hivenumber))
 			user.KnockDown(rand(xeno.caste.tacklestrength_min, xeno.caste.tacklestrength_max))
@@ -1388,6 +1388,21 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "Ergonomic, protected, high capacity backpack, designed for Weyland-Yutani PMCs."
 	icon_state = "pmc_backpack"
 	max_storage_space = 21
+
+/obj/item/storage/backpack/pmc/backpack/rto_broken
+	name = "\improper Broken WY Radio Telephone Pack"
+	desc = "A heavy-duty extended-pack, used for telecommunications between central command. Commonly carried by RTOs. This one bears the logo of Weyland Yutani and internal systems seem to completely fried and broken."
+	icon_state = "pmc_broken_rto"
+	item_state = "pmc_broken_rto"
+	icon = 'icons/obj/items/clothing/backpack/backpacks_by_faction/WY.dmi'
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/clothing/backpacks_righthand.dmi',
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/backpacks_by_faction/WY.dmi'
+	)
+	flags_atom = FPRINT|NO_GAMEMODE_SKIN // same sprite for all gamemodes
+
+	flags_item = ITEM_OVERRIDE_NORTHFACE
 
 /obj/item/storage/backpack/pmc/backpack/commando
 	name = "\improper W-Y Commando combat backpack"

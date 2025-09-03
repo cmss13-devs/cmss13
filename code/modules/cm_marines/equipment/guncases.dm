@@ -425,6 +425,16 @@
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 	new /obj/item/ammo_magazine/revolver/marksman(src)
 
+/obj/item/storage/box/guncase/m2049
+	name = "\improper M2049 Blaster case"
+	desc = "A gun case containing the M2049 Blaster. Comes with a full belt holster."
+	can_hold = list(/obj/item/storage/belt/gun/m44, /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049)
+	storage_slots = 2
+
+/obj/item/storage/box/guncase/m2049/fill_preset_inventory()
+	new /obj/item/storage/belt/gun/m44/m2049/nogun(src)
+	new /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049(src)
+
 //M4A4 Service Pistol
 /obj/item/storage/box/guncase/m4a4
 	name = "\improper M4A4 Service Pistol case"

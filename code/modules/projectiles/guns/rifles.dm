@@ -1397,6 +1397,7 @@
 	fire_sound = 'sound/weapons/gun_hpr.ogg'
 
 	aim_slowdown = SLOWDOWN_ADS_LMG
+	map_specific_decoration = TRUE
 	current_mag = /obj/item/ammo_magazine/rifle/lmg
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
@@ -1412,14 +1413,22 @@
 		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/attached_gun/extinguisher,
+		/obj/item/attachable/stock/rifle/collapsible/m41ae2,
+		/obj/item/attachable/bipod/m41ae2,
 	)
 
+	pixel_x = -1
+
+	starting_attachment_types = list(
+		/obj/item/attachable/stock/rifle/collapsible/m41ae2,
+		/obj/item/attachable/bipod/m41ae2,
+	)
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
 	gun_category = GUN_CATEGORY_HEAVY
 	start_automatic = TRUE
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 23, "under_x" = 23, "under_y" = 12, "stock_x" = 24, "stock_y" = 12)
+	attachable_offset = list("muzzle_x" = 34, "muzzle_y" = 19, "rail_x" = 12, "rail_y" = 23, "under_x" = 27, "under_y" = 13, "stock_x" = 14, "stock_y" = 15)
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_config_values()
 	..()

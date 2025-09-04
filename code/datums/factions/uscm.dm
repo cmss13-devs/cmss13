@@ -194,27 +194,6 @@
 			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
-			//CIA
-			if(JOB_CIA_LIAISON)
-				marine_rk = "cialo"
-			if(JOB_CIA_UACQS_ADMN)
-				marine_rk = "uacqs"
-			if(JOB_CIA_UACQS_COMR)
-				marine_rk = "uacqs_com"
-			if(JOB_CIA_UACQS_SEC)
-				marine_rk = "uacqs_sec"
-			if(JOB_CIA_GRS_OPR)
-				marine_rk = "grs_opr"
-			if(JOB_CIA_GRS_MED)
-				marine_rk = "grs_med"
-			if(JOB_CIA_GRS_ENG)
-				marine_rk = "grs_eng"
-			if(JOB_CIA_GRS_HVY)
-				marine_rk = "grs_hvy"
-			if(JOB_CIA_GRS_SNP)
-				marine_rk = "grs_sniper"
-			if(JOB_CIA_GRS_TL)
-				marine_rk = "grs_tl"
 			// Riot MPs
 			if(JOB_RIOT)
 				marine_rk = "rmp"

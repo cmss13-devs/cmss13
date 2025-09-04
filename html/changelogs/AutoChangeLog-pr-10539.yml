@@ -1,0 +1,4 @@
+author: "ihatethisengine"
+delete-after: True
+changes:
+  - balance: "boosting boosts props by 0.5 per level again instead of 1 per level."

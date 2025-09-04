@@ -2971,6 +2971,21 @@ Defined in conflicts.dm of the #defines folder.
 	max_range = 10
 	attachment_firing_delay = 24
 
+// GRS Grenadier
+/obj/item/attachable/attached_gun/grenade/full_hedp/New()
+	..()
+	for(var/i = 1 to max_rounds)
+		var/grenade = new /obj/item/explosive/grenade/high_explosive(src)
+		loaded_grenades += grenade
+		current_rounds++
+
+/obj/item/attachable/attached_gun/grenade/full_hedp_super/New()
+	..()
+	for(var/i = 1 to max_rounds)
+		var/grenade = new /obj/item/explosive/grenade/high_explosive/super(src)
+		loaded_grenades += grenade
+		current_rounds++
+
 //"ammo/flamethrower" is a bullet, but the actual process is handled through fire_attachment, linked through Fire().
 /obj/item/attachable/attached_gun/flamer
 	name = "mini flamethrower"

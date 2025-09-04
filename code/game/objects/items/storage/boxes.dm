@@ -1100,3 +1100,43 @@
 /obj/item/storage/box/whitebeet/fill_preset_inventory()
 	for(var/i in 1 to 7)
 		new /obj/item/reagent_container/food/snacks/grown/whitebeet(src)
+
+
+// GRS Custom
+/obj/item/storage/box/grs_medical
+	name = "medical combat support kit"
+	desc = "Contains blood supplies and nano splints."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "medicbox"
+	storage_slots = 4
+	w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/reagent_container/blood/OMinus,
+		/obj/item/stack/medical/splint/nano,
+	)
+
+/obj/item/storage/box/grs_medical/Initialize()
+	. = ..()
+	new /obj/item/reagent_container/blood/OMinus(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/stack/medical/splint/nano(src)
+
+/obj/item/storage/box/grs_medical_deathsquad
+	name = "experimental stimulant kit"
+	desc = "Contains experimental stimulants for use in combat."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "medicbox"
+	storage_slots = 3
+	w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant,
+		/obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant,
+		/obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant,
+	)
+
+/obj/item/storage/box/grs_medical_deathsquad/Initialize()
+	. = ..()
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant(src)

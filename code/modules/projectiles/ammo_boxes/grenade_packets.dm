@@ -58,6 +58,13 @@ GLOBAL_LIST_INIT(grenade_packets, list(
 	item_state = "hefa_packet"
 	content_type = /obj/item/explosive/grenade/high_explosive/upp
 
+/obj/item/storage/box/packet/high_explosive/super
+	name = "\improper M40/2 HEDP grenade packet"
+	desc = "It contains three improved HEDP high explosive grenades."
+	icon_state = "hedpx_packet"
+	item_state = "hedpx_packet"
+	content_type = /obj/item/explosive/grenade/high_explosive/super
+
 /obj/item/storage/box/packet/baton_slug
 	name = "\improper HIRR baton slug packet"
 	desc = "It contains three HIRR (High Impact Rubber Rounds) Baton Slugs."

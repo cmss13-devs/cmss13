@@ -1034,8 +1034,6 @@
 	attachable_allowed = list(
 		/obj/item/attachable/suppressor,
 		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonet/upp,
-		/obj/item/attachable/bayonet/co2,
 		/obj/item/attachable/bayonet/antique,
 		/obj/item/attachable/bayonet/custom,
 		/obj/item/attachable/bayonet/wy,
@@ -1051,14 +1049,13 @@
 		/obj/item/attachable/scope/mini,
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/flashlight/grip,
 		/obj/item/attachable/gyro,
-		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
 		/obj/item/attachable/extended_barrel,
 		/obj/item/attachable/compensator,
-		/obj/item/attachable/burstfire_assembly,
 		/obj/item/attachable/attached_gun/grenade,
+		/obj/item/attachable/attached_gun/grenade/full_hedp,
+		/obj/item/attachable/attached_gun/grenade/full_hedp_super,
 		/obj/item/attachable/attached_gun/flamer,
 		/obj/item/attachable/attached_gun/flamer/advanced,
 		/obj/item/attachable/attached_gun/extinguisher,
@@ -1106,6 +1103,17 @@
 	)
 
 /obj/item/weapon/gun/rifle/m16/m16a5/m16a6/heap
+	current_mag = /obj/item/ammo_magazine/rifle/m16/m16a5/heap
+
+/obj/item/weapon/gun/rifle/m16/m16a5/m16a6/grenadier
+	random_spawn_under = list(
+		/obj/item/attachable/attached_gun/grenade/full_hedp
+	)
+
+/obj/item/weapon/gun/rifle/m16/m16a5/m16a6/grenadier/heap
+	random_spawn_under = list(
+		/obj/item/attachable/attached_gun/grenade/full_hedp_super
+	)
 	current_mag = /obj/item/ammo_magazine/rifle/m16/m16a5/heap
 
 /obj/item/weapon/gun/rifle/m16/grenadier

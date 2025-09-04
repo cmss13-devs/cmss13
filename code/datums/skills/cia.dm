@@ -50,6 +50,13 @@ CIA
 		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
 	)
 
+/datum/skills/cia/security_officer/lead
+	name = "CIA Lead Security Officer"
+	additional_skills = list(
+		SKILL_FIREARMS = SKILL_FIREARMS_SKILLED,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+	)
+
 /// GRS ///
 
 /datum/skills/cia/global_response

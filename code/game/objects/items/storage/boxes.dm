@@ -1113,31 +1113,21 @@
 	can_hold = list(
 		/obj/item/reagent_container/blood/OMinus,
 		/obj/item/stack/medical/splint/nano,
-	)
-
-/obj/item/storage/box/grs_medical/Initialize()
-	. = ..()
-	new /obj/item/reagent_container/blood/OMinus(src)
-	new /obj/item/reagent_container/blood/OMinus(src)
-	new /obj/item/stack/medical/splint/nano(src)
-	new /obj/item/stack/medical/splint/nano(src)
-
-/obj/item/storage/box/grs_medical_deathsquad
-	name = "medical combat support kit"
-	desc = "Contains experimental stimulants for use in combat, and blood supplies."
-	icon = 'icons/obj/items/storage/kits.dmi'
-	icon_state = "medicbox"
-	storage_slots = 3
-	w_class = SIZE_MEDIUM
-	can_hold = list(
-		/obj/item/reagent_container/blood/OMinus,
 		/obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant,
 		/obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant,
 		/obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant,
 	)
 
-/obj/item/storage/box/grs_medical_deathsquad/Initialize()
-	. = ..()
+/obj/item/storage/box/grs_medical/fill_preset_inventory()
+	new /obj/item/reagent_container/blood/OMinus(src)
+	new /obj/item/reagent_container/blood/OMinus(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/stack/medical/splint/nano(src)
+
+/obj/item/storage/box/grs_medical/deathsquad
+	desc = "Contains experimental stimulants for use in combat, and blood supplies."
+
+/obj/item/storage/box/grs_medical/deathsquad/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant(src)

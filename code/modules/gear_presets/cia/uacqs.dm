@@ -69,7 +69,7 @@
 	name = "CIA Agent (UACQS Security)"
 	job_title = JOB_CIA_UACQS_SEC
 	assignment = JOB_CIA_UACQS_SEC
-	paygrades = list(PAY_SHORT_CIA_O = JOB_PLAYTIME_TIER_0)
+	paygrades = list(PAY_SHORT_CIA_O = JOB_PLAYTIME_TIER_0, PAY_SHORT_CIA_SO = JOB_PLAYTIME_TIER_2)
 	minimap_icon = "uacqs_s"
 	skills = /datum/skills/cia/security_officer
 

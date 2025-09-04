@@ -1,5 +1,5 @@
 /datum/emergency_call/cia_grs
-	name = "CIA Strike Team"
+	name = "CIA Strike Team (FRIENDLY)"
 	mob_min = 4
 	mob_max = 8
 	probability = 0
@@ -8,24 +8,57 @@
 	max_heavies = 1
 	max_smartgunners = 1
 
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+
 	hostility = FALSE
 	var/is_deathsquad = FALSE
 
+/datum/emergency_call/cia_grs/hostile
+	name = "CIA Strike Team (HOSTILE)"
+	hostility = TRUE
+
 /datum/emergency_call/cia_grs/deathsquad
-	name = "CIA Strike Team (!DEATHSQUAD!)"
+	name = "CIA Strike Team (HOSTILE)(!DEATHSQUAD!)"
+	hostility = TRUE
+	is_deathsquad = TRUE
+
+/datum/emergency_call/cia_grs/large
+	name = "CIA Strike Team (REINFORCED)(FRIENDLY)"
+	mob_min = 8
+	mob_max = 24
+	probability = 0
+	max_medics = 3
+	max_engineers = 3
+	max_heavies = 2
+	max_smartgunners = 2
+
+/datum/emergency_call/cia_grs/large/hostile
+	name = "CIA Strike Team (REINFORCED)(HOSTILE)"
+	hostility = TRUE
+
+/datum/emergency_call/cia_grs/large/deathsquad
+	name = "CIA Strike Team (REINFORCED)(HOSTILE)(!DEATHSQUAD!)"
+	hostility = TRUE
 	is_deathsquad = TRUE
 
 /datum/emergency_call/cia_grs/New()
 	. = ..()
-	arrival_message = "[MAIN_SHIP_NAME], this is shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
-	objectives = "Help the crew of the [MAIN_SHIP_NAME]. Obey your Team Leader and any senior CIA agents present. Your survival, and that of your fellow operators and CIA agents, is more valuable than the Almayer."
+	if(hostility)
+		arrival_message = "[MAIN_SHIP_NAME], this is shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+		objectives = "Terminate the crew of the [MAIN_SHIP_NAME]. Obey your Team Leader and any senior CIA agents present. Leave no witnesses."
+	else
+		arrival_message = "[MAIN_SHIP_NAME], this is shuttle [pick(GLOB.alphabet_lowercase)][pick(GLOB.alphabet_lowercase)]-[rand(1, 99)] responding to your distress call. Prepare for boarding."
+		objectives = "Help the crew of the [MAIN_SHIP_NAME]. Obey your Team Leader and any senior CIA agents present. Your survival, and that of your fellow operators and CIA agents, is more valuable than the Almayer."
 
 /datum/emergency_call/cia_grs/print_backstory(mob/living/carbon/human/H)
 	to_chat(H, SPAN_BOLD("You are a highly trained operator working for the CIA Global Response Staff."))
 	to_chat(H, SPAN_BOLD("Drawn from United Americas Special Forces, and in some cases from the Special Forces of the TWE, you represent some of the best armed personnel in UA space."))
 	to_chat(H, SPAN_NOTICE(SPAN_BOLD("Your team have been tasked to assist the [MAIN_SHIP_NAME].")))
 	to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed, but not at the cost of your lives.")))
-	to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE FRIENDLY to the USCM unless otherwise specified by staff.")))
+	if(hostility)
+		to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE HOSTILE to the USCM unless otherwise specified by staff.")))
+	else
+		to_chat(H, SPAN_WARNING(FONT_SIZE_HUGE("YOU ARE FRIENDLY to the USCM unless otherwise specified by staff.")))
 
 /datum/emergency_call/cia_grs/create_member(datum/mind/M, turf/override_spawn_loc)
 	var/turf/spawn_loc = override_spawn_loc ? override_spawn_loc : get_spawn_point()

@@ -2172,7 +2172,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 	addtimer(CALLBACK(src, PROC_REF(icon_reset)),(speed*loop_amount)-0.8, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/gun/proc/icon_reset()
-	icon = temp_icon
+	if(temp_icon)
+		icon = temp_icon
 	temp_icon = null
 
 /obj/item/weapon/gun/ex_act(severity, explosion_direction)

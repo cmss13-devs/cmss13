@@ -31,7 +31,7 @@
 #define LIFEBOAT_INACTIVE 0
 #define LIFEBOAT_ACTIVE 1
 
-/// How much evoltuion accumulates per xevolution tick during XENO_ROUNDSTART_BOOSTED_EVO_TIME
+/// How much evolution accumulates per xevolution tick during XENO_ROUNDSTART_BOOSTED_EVO_TIME
 #define XENO_ROUNDSTART_BOOSTED_EVO_AMOUNT 2
 /// How long xenos from ROUND_TIME have for evolution to accumulate without a queen on ovi
 #define XENO_ROUNDSTART_FREE_EVO_TIME 3 MINUTES

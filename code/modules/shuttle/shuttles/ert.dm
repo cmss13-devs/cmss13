@@ -381,6 +381,10 @@
 	name = "TWE Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
 
+/datum/map_template/shuttle/cia_ert
+	name = "CIA Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
+
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_SMALL

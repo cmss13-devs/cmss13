@@ -14,16 +14,16 @@
 	var/is_deathsquad = FALSE
 
 /datum/emergency_call/cia_grs/hostile
-	name = "CIA Strike Team (HOSTILE)"
+	name = "CIA Strike Team (Hostile)"
 	hostility = TRUE
 
 /datum/emergency_call/cia_grs/deathsquad
-	name = "CIA Strike Team (HOSTILE)(!DEATHSQUAD!)"
+	name = "CIA Strike Team (Hostile !DEATHSQUAD!)"
 	hostility = TRUE
 	is_deathsquad = TRUE
 
 /datum/emergency_call/cia_grs/large
-	name = "CIA Strike Team (REINFORCED)(FRIENDLY)"
+	name = "CIA Strike Team (Reinforced) (Friendly)"
 	mob_min = 8
 	mob_max = 24
 	probability = 0
@@ -33,11 +33,11 @@
 	max_smartgunners = 2
 
 /datum/emergency_call/cia_grs/large/hostile
-	name = "CIA Strike Team (REINFORCED)(HOSTILE)"
+	name = "CIA Strike Team (Reinforced) (HOSTILE)"
 	hostility = TRUE
 
 /datum/emergency_call/cia_grs/large/deathsquad
-	name = "CIA Strike Team (REINFORCED)(HOSTILE)(!DEATHSQUAD!)"
+	name = "CIA Strike Team (Reinforced) (Hostile !DEATHSQUAD!)"
 	hostility = TRUE
 	is_deathsquad = TRUE
 

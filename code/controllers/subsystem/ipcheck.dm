@@ -233,6 +233,10 @@ SUBSYSTEM_DEF(ipcheck)
 	message_admins("IPCHECK: [key_name_admin(src)] has revoked the VPN whitelist for '[dewhitelist_ckey]'")
 
 /client/proc/check_ip_vpn()
+	set waitfor = FALSE
+
+	WAIT_DB_READY
+
 	if(!SSipcheck.is_enabled(src))
 		return
 

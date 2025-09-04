@@ -38,3 +38,6 @@
 
 // The maximum amount of phoron marines can store up in their pool
 #define MAX_PHORON_STORAGE 1000
+
+/// The amount of damage applied to xenos attacking wired cades
+#define XENO_WIRED_DAMAGE 10

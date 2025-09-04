@@ -55,6 +55,9 @@
 	var/UI_TEMP_LOC = "EAST-1:28,6:13"
 	var/UI_NUTRITION_LOC = "EAST-1:28,5:11"
 
+	//Backhud
+	var/ui_backhud = "hud:1,1"
+
 	//Pop-up inventory
 	var/ui_shoes = "WEST+1:8,1:5"
 	var/ui_iclothing = "WEST:6,2:7"
@@ -154,11 +157,17 @@
 /datum/custom_hud/alien
 	ui_style_icon = 'icons/mob/hud/alien_standard.dmi'
 
-	ui_resist = "WEST+9:20,1:5"
-	UI_HEALTH_LOC = "EAST-1:28,7:13"
-
-	var/ui_alien_nightvision = "EAST-1:28,9:13"
-	var/ui_queen_locator = "EAST-1:28,8:13"
-	var/ui_alienplasmadisplay = "EAST-1:28,6:13"
-	var/ui_alienarmordisplay = "EAST-1:28,5:13"
-	var/ui_mark_locator = "EAST-1:28,10:13"
+	var/ui_alien_nightvision = "hud:4:28,7:62"
+	var/ui_queen_locator = "hud:4:30,5:62"
+	var/ui_alienplasmadisplay = "hud:1:4,10:44"
+	var/ui_mark_locator = "hud:4:29,6:60"
+	var/ui_alien_resist = "hud:1:-4,7:35"
+	var/ui_alien_pull = "hud:1:-4,6:6"
+	var/ui_alien_swap = "hud:3:-4,8:17"
+	var/ui_alien_intents = "hud:2:-4,9:26"
+	var/ui_alien_throw = "hud:1:-4,6:36"
+	var/ui_alien_drop = "hud:1:-4,5:50"
+	var/ui_alien_walk = "hud:4:28,4:59"
+	var/ui_alien_rest = "hud:1:-4,7:22"
+	var/ui_alien_health_doll = "hud:2:-7,11:21"
+	var/ui_alien_evo_display = "hud:2:-7,10:41"

@@ -400,14 +400,16 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 	// Update the mob's selected zone.
 	zone_selected = target_zone
+	var/mob/user = hud_used.mymob
 	// Update the HUD's selected zone.
-	hud_used.zone_sel.selecting = target_zone
-	hud_used.zone_sel.update_icon()
+	user.zone_selected = target_zone
+	hud_used.zone_sel.update_icon(user)
 
 #define DURATION_MULTIPLIER_TIER_1 0.75
 #define DURATION_MULTIPLIER_TIER_2 0.5
 #define DURATION_MULTIPLIER_TIER_3 0.25
 #define DURATION_MULTIPLIER_TIER_4 0.10
+
 /mob/proc/get_skill_duration_multiplier(skill)
 	//Gets a multiplier for various tasks, based on the skill
 	. = 1

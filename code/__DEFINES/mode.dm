@@ -31,9 +31,14 @@
 #define LIFEBOAT_INACTIVE 0
 #define LIFEBOAT_ACTIVE 1
 
-#define XENO_ROUNDSTART_PROGRESS_AMOUNT 2
-#define XENO_ROUNDSTART_PROGRESS_TIME_1 0
-#define XENO_ROUNDSTART_PROGRESS_TIME_2 15 MINUTES
+/// How much evoltuion accumulates per xevolution tick during XENO_ROUNDSTART_BOOSTED_EVO_TIME
+#define XENO_ROUNDSTART_BOOSTED_EVO_AMOUNT 2
+/// How long xenos from ROUND_TIME have for evolution to accumulate without a queen on ovi
+#define XENO_ROUNDSTART_FREE_EVO_TIME 5 MINUTES
+/// How long xenos from ROUND_TIME have for evolution to accumulate without decay at XENO_ROUNDSTART_BOOSTED_EVO_AMOUNT
+#define XENO_ROUNDSTART_BOOSTED_EVO_TIME 15 MINUTES
+/// How long xenos from ROUND_TIME have latejoin_larva_drop_early used instead of latejoin_larva_drop (also allows burrowed without hivecore)
+#define XENO_ROUNDSTART_LATEJOIN_LARVA_TIME 15 MINUTES
 
 #define ROUND_TIME (world.time - SSticker.round_start_time)
 

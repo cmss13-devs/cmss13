@@ -166,10 +166,9 @@
 	var/new_name = "Pack Leader [new_human.real_name]" //fluff rank blooded outrank them
 	new_human.change_real_name(new_human, new_name)
 
-/datum/equipment_preset/yautja/equipped //The "leader" of the group if a WL player is not on
+/datum/equipment_preset/yautja/equipped
 	name = "Yautja Hunter (Equipped)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	default_cape_type = PRED_YAUTJA_QUARTER_CAPE
 	clan_rank = CLAN_RANK_BLOODED_INT
 
 /datum/equipment_preset/yautja/equipped/load_status(mob/living/carbon/human/new_human)

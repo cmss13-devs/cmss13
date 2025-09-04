@@ -41,7 +41,7 @@
 	assignment = JOB_CIA_GRS_OPR
 	job_title = JOB_CIA_GRS_OPR
 	skills = /datum/skills/cia/global_response
-	minimap_icon = "spec_sniper"
+	minimap_icon = "peacekeeper"
 
 /datum/equipment_preset/cia_global_response/standard/deathsquad/New()
 	. = ..()
@@ -105,7 +105,7 @@
 	assignment = JOB_CIA_GRS_HVY
 	job_title = JOB_CIA_GRS_HVY
 	skills = /datum/skills/cia/global_response/heavy
-	minimap_icon = "peacekeeper"
+	minimap_icon = "smartgunner"
 
 /datum/equipment_preset/cia_global_response/heavy/deathsquad/New()
 	. = ..()
@@ -165,7 +165,7 @@
 	assignment = JOB_CIA_GRS_SNP
 	job_title = JOB_CIA_GRS_SNP
 	skills = /datum/skills/cia/global_response/sniper
-	minimap_icon = "peacekeeper"
+	minimap_icon = "spec_sniper"
 
 /datum/equipment_preset/cia_global_response/sniper/deathsquad/New()
 	. = ..()

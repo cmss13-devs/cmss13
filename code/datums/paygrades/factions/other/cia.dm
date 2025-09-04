@@ -57,19 +57,19 @@
 /datum/paygrade/cia/grs/medic
 	paygrade = PAY_SHORT_GRS_MED
 	name = "Medical Operator"
-	prefix = "MedOp."
+	prefix = "MedOpr."
 	pay_multiplier = 3
 
 /datum/paygrade/cia/grs/technical
 	paygrade = PAY_SHORT_GRS_ENG
 	name = "Technical Operator"
-	prefix = "TechOp."
+	prefix = "TechOpr."
 	pay_multiplier = 3
 
 /datum/paygrade/cia/grs/heavy
 	paygrade = PAY_SHORT_GRS_HVY
 	name = "Heavy Operator"
-	prefix = "HvyOp."
+	prefix = "HvyOpr."
 	pay_multiplier = 3.3
 
 /datum/paygrade/cia/grs/sniper

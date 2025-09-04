@@ -915,6 +915,7 @@
 #include "code\game\jobs\job\marine\squad\specialist.dm"
 #include "code\game\jobs\job\marine\squad\standard.dm"
 #include "code\game\jobs\job\marine\squad\tl.dm"
+#include "code\game\jobs\job\special\cia.dm"
 #include "code\game\jobs\job\special\cmb.dm"
 #include "code\game\jobs\job\special\provost.dm"
 #include "code\game\jobs\job\special\responders.dm"

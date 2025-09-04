@@ -776,6 +776,10 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/grenade/high_explosive(src)
 
+/obj/item/storage/pouch/explosive/super/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/explosive/grenade/high_explosive/super(src)
+
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/grenade/high_explosive/upp(src)

@@ -1107,12 +1107,12 @@
 
 /obj/item/weapon/gun/rifle/m16/m16a5/m16a6/grenadier
 	random_spawn_under = list(
-		/obj/item/attachable/attached_gun/grenade/full_hedp
+		/obj/item/attachable/attached_gun/grenade/full_hedp,
 	)
 
 /obj/item/weapon/gun/rifle/m16/m16a5/m16a6/grenadier/heap
 	random_spawn_under = list(
-		/obj/item/attachable/attached_gun/grenade/full_hedp_super
+		/obj/item/attachable/attached_gun/grenade/full_hedp_super,
 	)
 	current_mag = /obj/item/ammo_magazine/rifle/m16/m16a5/heap
 

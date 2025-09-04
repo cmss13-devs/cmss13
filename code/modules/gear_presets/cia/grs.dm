@@ -42,6 +42,7 @@
 	job_title = JOB_CIA_GRS_OPR
 	skills = /datum/skills/cia/global_response
 	minimap_icon = "peacekeeper"
+	role_comm_title = "Opr"
 
 /datum/equipment_preset/cia_global_response/standard/deathsquad/New()
 	. = ..()
@@ -81,6 +82,7 @@
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ext, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ext, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/full, WEAR_L_STORE)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
 		new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_IN_BACK)
@@ -95,11 +97,11 @@
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/heap, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/heap, WEAR_IN_JACKET)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_R_STORE)
+		new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/super, WEAR_L_STORE)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive/super, WEAR_IN_BACK)
 		new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive/super, WEAR_IN_BACK)
 		new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_IN_BACK)
 
-	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/full, WEAR_L_STORE)
 
 
 //*****************************************************************************************************/
@@ -113,6 +115,7 @@
 	job_title = JOB_CIA_GRS_HVY
 	skills = /datum/skills/cia/global_response/heavy
 	minimap_icon = "smartgunner"
+	role_comm_title = "HvyOpr"
 
 /datum/equipment_preset/cia_global_response/heavy/deathsquad/New()
 	. = ..()
@@ -170,6 +173,7 @@
 	job_title = JOB_CIA_GRS_SNP
 	skills = /datum/skills/cia/global_response/sniper
 	minimap_icon = "spec_sniper"
+	role_comm_title = "AdvMrk"
 
 /datum/equipment_preset/cia_global_response/sniper/deathsquad/New()
 	. = ..()
@@ -238,6 +242,7 @@
 	job_title = JOB_CIA_GRS_ENG
 	skills = /datum/skills/cia/global_response/engineer
 	minimap_icon = "engi"
+	role_comm_title = "TechOpr"
 
 /datum/equipment_preset/cia_global_response/engineer/deathsquad/New()
 	. = ..()
@@ -302,6 +307,7 @@
 	job_title = JOB_CIA_GRS_MED
 	skills = /datum/skills/cia/global_response/medic
 	minimap_icon = "medic"
+	role_comm_title = "MedOpr"
 
 /datum/equipment_preset/cia_global_response/medic/deathsquad/New()
 	. = ..()
@@ -331,7 +337,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
-	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
@@ -371,6 +376,7 @@
 	job_title = JOB_CIA_GRS_TL
 	skills = /datum/skills/cia/global_response/leader
 	minimap_icon = "leader"
+	role_comm_title = "TL"
 
 /datum/equipment_preset/cia_global_response/leader/deathsquad/New()
 	. = ..()

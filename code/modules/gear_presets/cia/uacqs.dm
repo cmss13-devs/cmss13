@@ -71,6 +71,7 @@
 	assignment = JOB_CIA_UACQS_SEC
 	paygrades = list(PAY_SHORT_CIA_O = JOB_PLAYTIME_TIER_0)
 	minimap_icon = "uacqs_s"
+	skills = /datum/skills/cia/security_officer
 
 /datum/equipment_preset/cia/uacqs/security/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//back

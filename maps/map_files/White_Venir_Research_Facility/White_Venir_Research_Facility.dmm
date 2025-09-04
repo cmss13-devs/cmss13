@@ -1573,6 +1573,10 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/oob)
+"aeB" = (
+/obj/structure/window/framed/hybrisa/colony/engineering/reinforced,
+/turf/open/floor/plating,
+/area/lv759/oob)
 "aeC" = (
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_x = 3;
@@ -1800,10 +1804,7 @@
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv759/oob)
 "afb" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /obj/item/spacecash/ewallet,
 /obj/item/spacecash/ewallet{
 	pixel_x = 5;
@@ -1853,10 +1854,7 @@
 /turf/open/floor/almayer/floor,
 /area/lv759/oob)
 "afj" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 4;
 	pixel_y = 7
@@ -1864,10 +1862,7 @@
 /turf/open/floor/prison/green/west,
 /area/lv759/oob)
 "afk" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 8;
 	pixel_y = 4
@@ -1895,10 +1890,7 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv759/oob)
 "afp" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /obj/item/paper,
 /obj/item/tool/pen/blue/clicky,
 /turf/open/floor/prison/green/west,
@@ -1912,10 +1904,7 @@
 /turf/open/floor/prison,
 /area/lv759/oob)
 "afr" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
 	pixel_x = 2;
 	pixel_y = 4
@@ -2042,10 +2031,7 @@
 /turf/open/floor/prison/blue,
 /area/lv759/oob)
 "afF" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 1;
 	layer = 3.1;
@@ -2054,10 +2040,7 @@
 /turf/open/floor/prison/blue,
 /area/lv759/oob)
 "afG" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/prison/blue/southeast,
 /area/lv759/oob)
 "afH" = (
@@ -2103,10 +2086,7 @@
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/lv759/oob)
 "afQ" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /turf/open/floor/prison/bluefull/west,
 /area/lv759/oob)
 "afR" = (
@@ -2126,10 +2106,7 @@
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/lv759/oob)
 "afU" = (
-/obj/structure/surface/table/almayer{
-	dir = 8;
-	flipped = 1
-	},
+/obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/computer/PC{
 	dir = 4;
 	pixel_y = -4
@@ -2336,6 +2313,10 @@
 /area/lv759/oob)
 "agK" = (
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /turf/open/floor/almayer/research/containment/corner_var1/east,
 /area/lv759/oob)
 "agL" = (
@@ -2364,45 +2345,23 @@
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/lv759/oob)
 "agS" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/dumb,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /turf/open/floor/almayer/research/containment/corner_var1/east,
 /area/lv759/oob)
 "agT" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/dumb,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
-/obj/item/ammo_casing,
 /turf/open/floor/almayer/research/containment/corner_var1/containment_corner_variant_2,
 /area/lv759/oob)
 "agU" = (
@@ -2505,6 +2464,940 @@
 	pixel_y = 6
 	},
 /turf/open/floor/almayer/sterile_green,
+/area/lv759/oob)
+"ahf" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/machinery/shower{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/oob)
+"ahg" = (
+/obj/structure/closet/l3closet/virology,
+/obj/item/clothing/suit/bio_suit/wy_bio,
+/obj/item/clothing/suit/bio_suit/wy_bio,
+/obj/item/clothing/head/bio_hood/wy_bio,
+/obj/item/clothing/head/bio_hood/wy_bio,
+/turf/open/floor/prison/southwest,
+/area/lv759/oob)
+"ahh" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/turf/open/floor/corsat/officesquares,
+/area/lv759/oob)
+"ahi" = (
+/turf/open/floor/corsat/officesquares,
+/area/lv759/oob)
+"ahj" = (
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/oob)
+"ahk" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical_solid/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/oob)
+"ahl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/lv759/oob)
+"ahm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/lv759/oob)
+"ahn" = (
+/turf/open/floor/hybrisa/metal/bluemetalcorner/east,
+/area/lv759/oob)
+"aho" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/machinery/shower{
+	pixel_y = 16
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv759/oob)
+"ahp" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e";
+	layer = 3
+	},
+/obj/structure/machinery/reagent_analyzer{
+	pixel_y = 6
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ahq" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e";
+	layer = 3
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ahr" = (
+/obj/structure/window/framed/hybrisa/colony/hospital/reinforced,
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/oob)
+"ahs" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e";
+	layer = 3
+	},
+/obj/structure/machinery/centrifuge{
+	pixel_y = 8;
+	pixel_x = -2
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"aht" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e";
+	layer = 3
+	},
+/obj/structure/machinery/r_n_d/organic_analyzer{
+	pixel_y = 8;
+	pixel_x = 5
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ahu" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e";
+	layer = 3
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/shard/shrapnel/bone_chips/xeno{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/obj/item/xenos_claw{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ahv" = (
+/turf/open/floor/hybrisa/metal,
+/area/lv759/oob)
+"ahw" = (
+/turf/open/floor/hybrisa/metal/bluemetalcorner/west,
+/area/lv759/oob)
+"ahx" = (
+/turf/open/floor/hybrisa/metal/bluemetalcorner,
+/area/lv759/oob)
+"ahy" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"ahz" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"ahA" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/oob)
+"ahB" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/oob)
+"ahC" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/oob)
+"ahD" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/oob)
+"ahE" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/oob)
+"ahF" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/oob)
+"ahG" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"ahH" = (
+/turf/open/floor/prison/blue_plate/west,
+/area/lv759/oob)
+"ahI" = (
+/turf/closed/wall/hybrisa/colony/hospital/reinforced,
+/area/lv759/oob)
+"ahJ" = (
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/oldresearch/Chitin{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/oldresearch/Chitin{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahK" = (
+/obj/structure/platform/metal/almayer_smooth,
+/obj/item/stool{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahL" = (
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform_decoration/metal/almayer_smooth/southeast,
+/obj/item/xeno_egg,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahM" = (
+/obj/structure/stairs/perspective/ice{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahN" = (
+/obj/structure/platform/metal/almayer_smooth,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahO" = (
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/platform_decoration/metal/almayer_smooth/southeast,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahP" = (
+/obj/structure/platform/metal/almayer_smooth,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/oldresearch/Resin,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahQ" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212"
+	},
+/obj/structure/prop/hybrisa/xenobiology/small/cracked1{
+	pixel_x = 2;
+	pixel_y = 4;
+	layer = 3
+	},
+/obj/item/prop/alien/hugger{
+	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon_state = "Larva Dead";
+	name = "dead larva";
+	desc = "Looks like it was murdered by another xenomorph?"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/turf/open/floor/bluegrid,
+/area/lv759/oob)
+"ahR" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212"
+	},
+/obj/structure/prop/hybrisa/xenobiology/small/cracked1{
+	pixel_x = 2;
+	pixel_y = 4;
+	layer = 3
+	},
+/obj/item/prop/alien/hugger{
+	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon_state = "Larva Dead";
+	name = "dead larva";
+	desc = "Looks like it was murdered by another xenomorph?"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard{
+	layer = 2.9
+	},
+/turf/open/floor/bluegrid,
+/area/lv759/oob)
+"ahS" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212"
+	},
+/obj/structure/prop/hybrisa/xenobiology/small/cracked1{
+	pixel_x = 2;
+	pixel_y = 4;
+	layer = 3
+	},
+/obj/item/prop/alien/hugger{
+	desc = "Looks like it was murdered by another xenomorph?";
+	name = "dead facehugger"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/obj/item/shard,
+/turf/open/floor/bluegrid,
+/area/lv759/oob)
+"ahT" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 5;
+	pixel_y = -11
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahU" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/lv759/oob)
+"ahV" = (
+/obj/structure/stairs/perspective{
+	dir = 6;
+	icon_state = "p_stair_full";
+	pixel_y = -11
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"ahW" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/oldresearch/Blood{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/oldresearch/Blood{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/oldresearch/Blood{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/blackfull/west,
+/area/lv759/oob)
+"ahX" = (
+/obj/structure/machinery/iv_drip{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/obj/item/reagent_container/blood/empty,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahY" = (
+/obj/item/stool{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ahZ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/glass/beaker/vial{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/obj/item/weed_extract{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/weed_extract{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aia" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aib" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aic" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/turf/open/floor/corsat/officesquares,
+/area/lv759/oob)
+"aid" = (
+/obj/structure/stairs/perspective{
+	dir = 4;
+	icon_state = "p_stair_full";
+	pixel_y = -11
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aie" = (
+/obj/structure/machinery/optable,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl4"
+	},
+/obj/structure/prop/invuln{
+	desc = "A deceased xenomorph, subject of a live-fire test.";
+	dir = 4;
+	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon_state = "Normal Drone Dead";
+	name = "deceased drone";
+	pixel_x = -7;
+	pixel_y = -4;
+	anchored = 0;
+	layer = 3
+	},
+/obj/item/xenos_claw,
+/obj/item/xenos_claw{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/shard/shrapnel/bone_chips/xeno,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aif" = (
+/obj/structure/sink{
+	pixel_y = 24
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aig" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/tool/surgery/scalpel/pict_system{
+	pixel_x = -1;
+	pixel_y = 5
+	},
+/obj/item/tool/surgery/scalpel/laser/advanced{
+	pixel_x = -10;
+	pixel_y = -4
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aih" = (
+/obj/structure/sink{
+	pixel_y = 24
+	},
+/obj/structure/machinery/big_computers/computerwhite/computer3{
+	pixel_y = 18;
+	density = 0
+	},
+/obj/item/stool{
+	pixel_x = -1;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aii" = (
+/obj/structure/machinery/big_computers/computerwhite/computer4{
+	pixel_y = 18;
+	density = 0
+	},
+/obj/item/stool{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aij" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/tool/surgery/circular_saw{
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/item/tool/surgery/scalpel/manager,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aik" = (
+/obj/structure/machinery/optable,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "mgibbl4"
+	},
+/obj/item/oldresearch/Resin,
+/obj/item/tool/surgery/wound_clamp{
+	layer = 3.03
+	},
+/obj/structure/prop/invuln{
+	desc = "A deceased xenomorph, subject of a live-fire test.";
+	dir = 4;
+	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon_state = "Normal Drone Dead";
+	name = "deceased drone";
+	pixel_x = -7;
+	pixel_y = -4;
+	anchored = 0;
+	layer = 3
+	},
+/obj/item/shard/shrapnel/bone_chips/xeno,
+/obj/item/xenos_claw{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"ail" = (
+/obj/structure/prop/hybrisa/xenobiology/small/cracked1{
+	pixel_x = 2;
+	pixel_y = 4;
+	layer = 3
+	},
+/obj/item/prop/alien/hugger{
+	desc = "Looks like it was murdered by another xenomorph?";
+	name = "dead facehugger"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/item/shard,
+/turf/open/floor/bluegrid,
+/area/lv759/oob)
+"aim" = (
+/obj/structure/prop/hybrisa/xenobiology/small/cracked1{
+	pixel_x = 2;
+	pixel_y = 4;
+	layer = 3
+	},
+/obj/item/prop/alien/hugger{
+	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon_state = "Larva Dead";
+	name = "dead larva";
+	desc = "Looks like it was murdered by another xenomorph?"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard{
+	layer = 2.9
+	},
+/obj/item/shard,
+/turf/open/floor/bluegrid,
+/area/lv759/oob)
+"ain" = (
+/obj/structure/prop/hybrisa/xenobiology/small/cracked1{
+	pixel_x = 2;
+	pixel_y = 4;
+	layer = 3
+	},
+/obj/item/prop/alien/hugger{
+	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon_state = "Larva Dead";
+	name = "dead larva";
+	desc = "Looks like it was murdered by another xenomorph?"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/shard,
+/turf/open/floor/bluegrid,
+/area/lv759/oob)
+"aio" = (
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/obj/structure/xenoautopsy/jar_shelf{
+	layer = 4;
+	pixel_y = 12
+	},
+/obj/structure/xenoautopsy/jar_shelf{
+	layer = 4;
+	pixel_y = 31
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aip" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/stairs/perspective{
+	dir = 5;
+	icon_state = "p_stair_full";
+	pixel_y = -11
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiq" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"air" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"ais" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/platform/metal/hybrisa/metalplatform3/east,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"ait" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"aiu" = (
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiv" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/blue_plate/west,
+/area/lv759/oob)
+"aiw" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/hybrisa/metal/bluemetal1/southwest,
+/area/lv759/oob)
+"aix" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/stairs/perspective{
+	dir = 6;
+	icon_state = "p_stair_full";
+	pixel_y = -11
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiy" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiz" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiA" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7";
+	pixel_y = -2
+	},
+/obj/structure/machinery/computer/area_atmos{
+	dir = 1
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiB" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/east,
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiC" = (
+/turf/open/floor/hybrisa/metal/grated/east,
+/area/lv759/oob)
+"aiD" = (
+/obj/structure/machinery/sentry_holder/wy,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiE" = (
+/turf/open/floor/hybrisa/metal/grated/west,
+/area/lv759/oob)
+"aiF" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/machinery/big_computers/computerbrown/computer2{
+	pixel_x = 9
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiG" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/machinery/big_computers/computerbrown/computer4,
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiH" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/platform/metal/hybrisa/metalplatform3/east,
+/obj/structure/machinery/big_computers/computerbrown/computer2{
+	pixel_x = -6
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiI" = (
+/turf/open/floor/hybrisa/metal/bluemetalcorner/north,
+/area/lv759/oob)
+"aiJ" = (
+/obj/structure/bed/sofa/vert/grey/bot,
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/oob)
+"aiK" = (
+/obj/structure/bed/sofa/vert/grey,
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/oob)
+"aiL" = (
+/obj/structure/bed/sofa/vert/grey/top,
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/oob)
+"aiM" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"aiN" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"aiO" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/turf/open/floor/prison/floor_plate,
+/area/lv759/oob)
+"aiP" = (
+/turf/open/floor/corsat/squares,
+/area/lv759/oob)
+"aiQ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on{
+	pixel_x = 32;
+	pixel_y = 5
+	},
+/turf/open/floor/corsat/squares,
+/area/lv759/oob)
+"aiR" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/structure/machinery/prop/almayer/CICmap,
+/turf/open/floor/prison/floor_plate,
+/area/lv759/oob)
+"aiS" = (
+/obj/structure/bed/chair/office/light,
+/turf/open/floor/corsat/squares,
+/area/lv759/oob)
+"aiT" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/cameras{
+	name = "Security Cameras - Alpha Containment Zone";
+	network = list("containment_alpha");
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	icon_state = "bluemultimonitorbig_on";
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 32
+	},
+/turf/open/floor/corsat/squares,
+/area/lv759/oob)
+"aiU" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on{
+	pixel_x = 32;
+	pixel_y = -10;
+	layer = 2.9
+	},
+/turf/open/floor/corsat/squares,
+/area/lv759/oob)
+"aiV" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"aiW" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/lv759/oob)
+"aiX" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4;
+	pixel_x = 10;
+	layer = 2.7;
+	buckling_x = 10;
+	pixel_y = 12;
+	buckling_y = 12
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aiY" = (
+/mob/living/simple_animal/cat{
+	name = "Holly II";
+	desc = "Offspring of a cat from some corporate oil rig. Has a tendency to adopt crewmembers, this one adopted the site director."
+	},
+/turf/open/floor/corsat/officetiles,
+/area/lv759/oob)
+"aiZ" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/obj/structure/machinery/big_computers/messaging_server/brown{
+	layer = 2.9
+	},
+/turf/open/floor/prison/bright_clean2,
+/area/lv759/oob)
+"aja" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/lv759/oob)
+"ajb" = (
+/obj/structure/bed/sofa/hybrisa/misc/bench{
+	pixel_x = 7;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/lv759/oob)
+"ajc" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8;
+	pixel_x = -12;
+	layer = 2.7;
+	pixel_y = 10
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ajd" = (
+/obj/structure/machinery/big_computers/computerbrown/computer3,
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/lv759/oob)
+"aje" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/lv759/oob)
+"ajf" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/machinery/big_computers/computerbrown/computer2{
+	pixel_x = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"ajg" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_on{
+	pixel_y = 26
+	},
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"ajh" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/north,
+/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorbig_on{
+	dir = 4;
+	light_color = "#00da64";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"aji" = (
+/obj/structure/platform/metal/hybrisa/metalplatform3/west,
+/obj/structure/platform/metal/hybrisa/metalplatform3,
+/obj/structure/platform/metal/hybrisa/metalplatform3/east,
+/turf/open/floor/prison/blue_plate/north,
+/area/lv759/oob)
+"ajj" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/lv759/oob)
+"ajk" = (
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/research/containment/floor2/west,
+/area/lv759/oob)
+"ajl" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/research/containment/corner_var2,
+/area/lv759/oob)
+"ajm" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/research/containment/floor2/north,
+/area/lv759/oob)
+"ajn" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/almayer/research/containment/floor2/north,
 /area/lv759/oob)
 "ane" = (
 /obj/structure/fence/dark,
@@ -66990,13 +67883,13 @@ tyR
 qpw
 cDM
 cDM
-kRD
-kRD
+iHi
+iHi
 cDM
 cDM
-kRD
-kRD
-kRD
+iHi
+iHi
+iHi
 nCG
 nCG
 aND
@@ -67158,14 +68051,14 @@ mgB
 qpw
 qHO
 wRF
-kRD
-kRD
+iHi
+iHi
 qHO
 wRF
-kRD
-kRD
-kRD
-kRD
+iHi
+iHi
+iHi
+iHi
 nCG
 aND
 cDM
@@ -67333,8 +68226,8 @@ goq
 dzD
 odb
 odb
-kRD
-kRD
+iHi
+iHi
 aND
 cDM
 cDM
@@ -67502,7 +68395,7 @@ piB
 wmp
 rec
 odb
-kRD
+iHi
 aND
 cDM
 cDM
@@ -67670,7 +68563,7 @@ hjx
 hjx
 dzD
 odb
-kRD
+iHi
 aND
 cDM
 cDM
@@ -67838,7 +68731,7 @@ hjx
 hjx
 piB
 dJV
-kRD
+iHi
 aND
 cDM
 cDM
@@ -68006,7 +68899,7 @@ hgH
 hgH
 hgH
 cgU
-kRD
+iHi
 aND
 cDM
 cDM
@@ -68172,10 +69065,10 @@ hjx
 ftQ
 lvg
 oHy
-kRD
-kRD
-kRD
-kRD
+iHi
+iHi
+iHi
+iHi
 cDM
 cDM
 mEu
@@ -68343,7 +69236,7 @@ fjW
 fjW
 fjW
 fjW
-qpw
+aPR
 cDM
 cDM
 mEu
@@ -68511,7 +69404,7 @@ spC
 spC
 spC
 spC
-qpw
+aPR
 cDM
 cDM
 mEu
@@ -68679,7 +69572,7 @@ spC
 spC
 spC
 spC
-qpw
+aPR
 cDM
 cDM
 mEu
@@ -68847,7 +69740,7 @@ bzJ
 bzJ
 bzJ
 bzJ
-qpw
+aPR
 cDM
 cDM
 mEu
@@ -69012,10 +69905,10 @@ hjx
 gSd
 sAO
 oFL
-kRD
-kRD
-kRD
-kRD
+iHi
+iHi
+iHi
+iHi
 cDM
 cDM
 mEu
@@ -69182,7 +70075,7 @@ wmp
 wmp
 wmp
 wPy
-kRD
+iHi
 aND
 cDM
 cDM
@@ -69350,7 +70243,7 @@ hjx
 hjx
 hjx
 cDW
-kRD
+iHi
 aND
 cDM
 cDM
@@ -69518,7 +70411,7 @@ hjx
 bEF
 hgH
 aKo
-dkf
+iHi
 aND
 cDM
 cDM
@@ -69685,8 +70578,8 @@ hjx
 hjx
 dzD
 odb
-kRD
-kRD
+iHi
+iHi
 aND
 cDM
 cDM
@@ -69853,7 +70746,7 @@ hgH
 hgH
 oLT
 odb
-kRD
+iHi
 nCG
 aND
 cDM
@@ -70012,17 +70905,17 @@ iqP
 cDM
 qpw
 qpw
-kRD
+iHi
 xYp
-frB
+aeB
 xYp
-kRD
+iHi
 odb
 odb
 odb
-kRD
-kRD
-kRD
+iHi
+iHi
+iHi
 aND
 cDM
 cDM
@@ -70184,12 +71077,12 @@ aND
 cDM
 cDM
 cDM
-kRD
-kRD
-kRD
-kRD
-kRD
-kRD
+iHi
+iHi
+iHi
+iHi
+iHi
+iHi
 gfI
 aND
 cDM
@@ -70364,7 +71257,7 @@ cDM
 cDM
 qYq
 ocK
-weW
+kRD
 kRD
 kRD
 kRD
@@ -104792,7 +105685,7 @@ spC
 spC
 spC
 spC
-spC
+ahI
 spC
 spC
 spC
@@ -111719,14 +112612,14 @@ jpm
 etk
 qwn
 nCG
-qpw
-qpw
-qpw
-qpw
-qpw
+ady
+ady
+ady
+ady
+ady
 fAn
-jpm
-jpm
+uJj
+uJj
 cgK
 qpw
 diq
@@ -111886,16 +112779,16 @@ jpm
 jpm
 cgK
 nCG
-qpw
-qpw
-diq
-diq
-diq
-qpw
-frB
+ady
+ady
+ady
+kpp
+kpp
+ady
+adE
 qHO
-qHO
-frB
+ahk
+adE
 qpw
 qpw
 diq
@@ -112053,17 +112946,17 @@ qHO
 qHO
 qHO
 qHO
-qpw
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+ahI
+ahI
+ahI
+ahA
+ahi
+ahr
+aho
+ahm
+ahl
+ahf
 qpw
 diq
 diq
@@ -112221,17 +113114,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+aie
+ahW
+ahJ
+ahB
+ahj
+ahr
+aho
+ahm
+ahl
+ahf
 qpw
 diq
 diq
@@ -112354,7 +113247,7 @@ agN
 agI
 agN
 oAY
-agR
+ajm
 agK
 agE
 agx
@@ -112389,17 +113282,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+aif
+ahX
+ahK
+ahC
+ahi
+ahr
+ahg
+ahm
+ahl
+ahg
 qpw
 diq
 diq
@@ -112523,7 +113416,7 @@ agI
 agN
 oAY
 agS
-agE
+ajj
 agy
 agy
 agm
@@ -112557,17 +113450,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+aig
+hZR
+ahL
+ahB
+ahj
+ady
+ahh
+qHO
+ahk
+ahh
 qpw
 diq
 diq
@@ -112725,17 +113618,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+aih
+hZR
+ahM
+ahC
+ahi
+ahj
+vRW
+vRW
+vRW
+vRW
 qpw
 diq
 diq
@@ -112893,17 +113786,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+ahI
+ahI
+ahI
+ahD
+ahj
+ahi
+ahj
+ahi
+ahj
+ahi
 qpw
 diq
 diq
@@ -113061,17 +113954,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+aii
+hZR
+ahM
+ahC
+jTp
+iDL
+iDL
+wZd
+ahi
+ahj
 qpw
 diq
 diq
@@ -113229,17 +114122,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+aij
+hZR
+ahN
+ahB
+lDx
+ahs
+ahp
+qoj
+ahj
+ahi
 qpw
 diq
 diq
@@ -113397,19 +114290,19 @@ reI
 jpm
 jpm
 cPR
+ahI
+aif
+ahY
+ahO
+ahC
+lDx
+hAa
+ahq
+qoj
+ahi
+ahj
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
 qpw
-qpw
-diq
 diq
 diq
 diq
@@ -113531,7 +114424,7 @@ agI
 agN
 oAY
 agT
-agy
+ajk
 agF
 agz
 agp
@@ -113565,18 +114458,18 @@ jpm
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-qHO
+ahI
+aik
+ahZ
+ahP
+ahB
+lDx
+hAa
+hAa
+qoj
+ahj
+ahi
+avw
 diq
 diq
 diq
@@ -113698,8 +114591,8 @@ agN
 agI
 agN
 oAY
-agq
-agJ
+ajn
+ajl
 agy
 agp
 agq
@@ -113733,18 +114626,18 @@ jpm
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-qHO
+ahI
+ahI
+ahI
+ahI
+ahE
+lDx
+hAa
+hAa
+qoj
+ahi
+ahj
+avw
 diq
 diq
 diq
@@ -113901,18 +114794,18 @@ jpm
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-qHO
+ahI
+ail
+aia
+ahQ
+ahB
+lDx
+hAa
+hAa
+qoj
+ahj
+ahi
+avw
 diq
 diq
 diq
@@ -114069,19 +114962,19 @@ eYg
 jpm
 jpm
 cPR
+ahI
+aim
+aia
+ahR
+ahC
+lDx
+aht
+hAa
+qoj
+ahi
+ahj
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
 qpw
-qpw
-diq
 diq
 diq
 diq
@@ -114237,17 +115130,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+ain
+aib
+ahS
+ahB
+lDx
+ahu
+ahq
+qoj
+ahj
+ahi
 qpw
 diq
 diq
@@ -114405,17 +115298,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ahI
+aio
+hZR
+ahT
+ahC
+wje
+kpp
+kpp
+dlI
+ahi
+ahj
 qpw
 diq
 diq
@@ -114573,17 +115466,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ady
+ahU
+aic
+ahU
+ahF
+ahj
+ahi
+ahj
+ahi
+ahj
+ahi
 qpw
 diq
 diq
@@ -114741,17 +115634,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ady
+ahi
+vRW
+vRW
+vRW
+vRW
+ahj
+ahi
+ahj
+ahi
+ahj
 qpw
 diq
 diq
@@ -114888,7 +115781,7 @@ afA
 agi
 agc
 afO
-afO
+aiY
 afN
 afI
 afA
@@ -114909,17 +115802,17 @@ mTp
 jpm
 jpm
 cPR
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ady
+ady
+adE
+qHO
+ahk
+adE
+ady
+ahj
+jTp
+iDL
+iDL
 qpw
 diq
 diq
@@ -115077,17 +115970,17 @@ qHO
 qHO
 qHO
 qHO
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ady
+ady
+ahg
+ahm
+ahl
+ahg
+adE
+ahi
+lDx
+hAa
+hAa
 qpw
 diq
 diq
@@ -115245,17 +116138,17 @@ uyh
 jpm
 jpm
 nAK
-qpw
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ady
+ady
+aho
+ahm
+ahl
+ahf
+adE
+ahj
+lDx
+hAa
+hAa
 qpw
 qpw
 qpw
@@ -115414,15 +116307,15 @@ jpm
 jpm
 nAK
 nCG
-qpw
-qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ady
+aho
+ahm
+ahl
+ahf
+adE
+iDL
+ahn
+hAa
 qpw
 qpw
 ozb
@@ -115582,15 +116475,15 @@ jpm
 jpm
 nAK
 acx
-fAk
-qpw
+ady
+ady
 qHO
-qHO
-qpw
-diq
-diq
-diq
-qpw
+ahk
+ady
+ady
+hAa
+hAa
+ady
 qpw
 ozb
 ozb
@@ -115752,13 +116645,13 @@ wEh
 hwd
 jpm
 jpm
-jpm
-jpm
-frB
-diq
-diq
-diq
-qpw
+wcO
+wcO
+adE
+vRW
+hAa
+hAa
+ady
 ozb
 ozb
 jaC
@@ -115922,12 +116815,12 @@ jpm
 jpm
 jpm
 jpm
-frB
-diq
-diq
-diq
-diq
-qpw
+adE
+vRW
+hAa
+hAa
+hAa
+ady
 jaC
 iKa
 iKa
@@ -116090,11 +116983,11 @@ jpm
 jpm
 rNZ
 qFU
-qpw
-qpw
-qpw
-qpw
-qpw
+ady
+ady
+ady
+ady
+ady
 iKa
 spC
 spC
@@ -118413,25 +119306,25 @@ rdC
 aet
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+aja
+iDL
+iDL
+iDL
+iDL
+aiW
+aiW
+iDL
+iDL
+iDL
+iDL
+aiL
+aiK
+aiK
+aiJ
+iDL
+iDL
+iDL
+aiw
 qpw
 kRD
 kRD
@@ -118580,27 +119473,27 @@ qpw
 qpw
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ajb
+ahn
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+ahw
+wZd
 qpw
 qpw
 qpw
@@ -118739,45 +119632,45 @@ euM
 qpw
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+jTp
+iDL
+iDL
+iDL
+iDL
+iDL
+wZd
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+vRW
+vRW
+vRW
+hAa
+hAa
+hAa
+hAa
+vRW
+vRW
+vRW
+hAa
+hAa
+hAa
+hAa
+vRW
+vRW
+vRW
+hAa
+qoj
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+jTp
+iDL
+iDL
+iDL
+iDL
+iDL
+wZd
 qpw
 qpw
 qpw
@@ -118906,47 +119799,47 @@ spC
 euM
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+jTp
+ahn
+hAa
+hAa
+hAa
+hAa
+hAa
+qoj
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ajd
+ahn
+hAa
+aiF
+aiC
+aiz
+hAa
+vRW
+hAa
+aiM
+aiO
+aiR
+aiO
+aiM
+hAa
+vRW
+hAa
+aiF
+aiC
+aiz
+hAa
+ahw
+wZd
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+hAa
+hAa
+hAa
+ahw
+wZd
 qpw
 qpw
 euM
@@ -119073,49 +119966,49 @@ spC
 spC
 euM
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+jTp
+ahn
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+qoj
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+aje
+ajc
+hAa
+aiG
+aiD
+aiZ
+hAa
+vRW
+hAa
+aiM
+acG
+acG
+acG
+aiM
+hAa
+vRW
+hAa
+aiG
+aiD
+aiA
+hAa
+hAa
+qoj
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+ahw
+wZd
 qpw
 euM
 spC
@@ -119241,49 +120134,49 @@ spC
 spC
 euM
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+qoj
 qHO
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+aiH
+aiE
+aiB
+hAa
+vRW
+hAa
+aiM
+aiO
+aiR
+aiO
+aiM
+hAa
+vRW
+hAa
+aiH
+aiE
+aiB
+hAa
+hAa
+qoj
 qHO
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+ahv
 qpw
 euM
 spC
@@ -119409,49 +120302,49 @@ spC
 spC
 euM
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+wje
+aiI
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+qoj
 qHO
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+vRW
+vRW
+vRW
+hAa
+hAa
+hAa
+hAa
+vRW
+vRW
+vRW
+hAa
+hAa
+hAa
+hAa
+vRW
+vRW
+vRW
+hAa
+hAa
+qoj
 qHO
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+ahx
+dlI
 qpw
 euM
 spC
@@ -119578,47 +120471,47 @@ spC
 euM
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+qoj
 qHO
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+wje
+kpp
+kpp
+aiI
+hAa
+ahx
+kpp
+kpp
+kpp
+kpp
+kpp
+kpp
+kpp
+kpp
+kpp
+kpp
+kpp
+aiI
+hAa
+ahx
+kpp
+kpp
+dlI
 qHO
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+lDx
+hAa
+hAa
+hAa
+hAa
+hAa
+hAa
+ahv
 qpw
 qpw
 euM
@@ -119746,47 +120639,47 @@ euM
 ozb
 euM
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+wje
+kpp
+kpp
+kpp
+kpp
+kpp
+kpp
+dlI
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ajf
+ahG
+aip
+aid
+aid
+aid
+aix
+ahG
+ahG
+aiV
+aiC
+aiC
+aiC
+aiN
+ahG
+ahG
+aip
+aid
+aid
+aid
+aix
+ahG
+ahy
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+wje
+kpp
+kpp
+kpp
+kpp
+kpp
+kpp
+dlI
 qpw
 euM
 ozb
@@ -119914,47 +120807,47 @@ euM
 ozb
 euM
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+aiN
+aip
+aid
+aix
+ahG
+aiq
+aji
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ajg
+aiu
+aiu
+aiu
+aiu
+aiu
+aiu
+aiu
+aiX
+ait
+aiP
+aiS
+aiP
+air
+aiu
+aiu
+aiu
+aiu
+aiu
+aiu
+aiy
+aiu
+ait
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ais
+aiq
+aip
+aid
+ahV
+ahG
+ahy
 qpw
 euM
 ozb
@@ -120082,47 +120975,47 @@ euM
 ozb
 euM
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
+air
+ahH
+ahH
+ahH
+aiv
+ait
 qpw
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
-diq
+ajh
+aiv
+aiv
+ahH
+ahH
+ahH
+ahH
+aiv
+aiv
+ait
+aiU
+aiT
+aiQ
+air
+aiv
+aiv
+ahH
+ahH
+ahH
+ahH
+aiv
+aiv
+ait
 qpw
 qpw
 qpw
-diq
-diq
-diq
-diq
-diq
-diq
+air
+ahH
+ahH
+ahH
+ahH
+ahz
 qpw
 euM
 ozb

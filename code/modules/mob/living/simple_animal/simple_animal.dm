@@ -407,7 +407,7 @@
 	move_delay = .
 
 
-/mob/living/simple_animal/ex_act(severity, direction)
+/mob/living/simple_animal/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 
 	if(severity >= 30)
 		flash_eyes()
@@ -416,7 +416,7 @@
 		gib()
 		return
 
-	apply_damage(severity, BRUTE)
+	apply_damage(severity, BRUTE, enviro=enviro)
 	updatehealth()
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)

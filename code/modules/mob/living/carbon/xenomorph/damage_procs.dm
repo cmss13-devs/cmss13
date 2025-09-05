@@ -44,7 +44,7 @@
 		return
 	return ..()
 
-/mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0)
+/mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -80,8 +80,8 @@
 	if (damage >= 0)
 		b_loss += damage * 0.5
 		f_loss += damage * 0.5
-		apply_damage(b_loss, BRUTE, enviro=TRUE)
-		apply_damage(f_loss, BURN, enviro=TRUE)
+		apply_damage(b_loss, BRUTE, enviro=enviro)
+		apply_damage(f_loss, BURN, enviro=enviro)
 		updatehealth()
 
 		var/powerfactor_value = round( damage * 0.05 ,1)

@@ -247,7 +247,7 @@
 		if(map_deployed)
 			shrap_type = /datum/ammo/bullet/shrapnel/enviro
 		create_shrapnel(loc, 12, dir, shrapnel_spread, shrap_type, cause_data)
-		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
+		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data, enviro=map_deployed)
 		qdel(src)
 	else
 		. = ..()
@@ -441,7 +441,7 @@
 	else
 		explosion_size = 125
 		explosion_falloff = 25
-	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
+	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	qdel(src)
 

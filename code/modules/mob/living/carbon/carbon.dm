@@ -43,7 +43,7 @@
 		var/mob/living/carbon/xenomorph/larva/larva_burst = user
 		larva_burst.chest_burst(src)
 
-/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data)
+/mob/living/carbon/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	last_damage_data = istype(cause_data) ? cause_data : create_cause_data(cause_data)
 	var/gibbing = FALSE
 
@@ -66,7 +66,7 @@
 		gib(last_damage_data)
 		return
 
-	apply_damage(severity, BRUTE, enviro=TRUE)
+	apply_damage(severity, BRUTE, enviro=enviro)
 	updatehealth()
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)

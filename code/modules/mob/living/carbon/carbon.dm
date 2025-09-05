@@ -66,7 +66,7 @@
 		gib(last_damage_data)
 		return
 
-	apply_damage(severity, BRUTE)
+	apply_damage(severity, BRUTE, enviro=TRUE)
 	updatehealth()
 
 	var/knock_value = min( round( severity*0.1 ,1) ,10)
@@ -223,7 +223,7 @@
 	if(shock_damage<1)
 		return FALSE
 
-	src.apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution")
+	apply_damage(shock_damage, BURN, def_zone, used_weapon="Electrocution", enviro=TRUE)
 
 	playsound(loc, "sparks", 25, 1)
 	if(shock_damage > 10)

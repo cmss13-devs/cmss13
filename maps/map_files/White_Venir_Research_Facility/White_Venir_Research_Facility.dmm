@@ -3462,6 +3462,950 @@
 /obj/structure/platform/metal/hybrisa/metalplatform3/east,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv759/oob)
+"ajE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ajF" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/oob)
+"ajG" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/lv759/oob)
+"ajH" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 8;
+	pixel_y = -9;
+	pixel_x = -16
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"ajI" = (
+/obj/structure/sign/safety/radio_rad{
+	pixel_x = 34;
+	name = "telecommunications room semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of a telecommunications tower."
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 47
+	},
+/turf/open/floor/almayer/green2/southwest,
+/area/lv759/oob)
+"ajJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement14,
+/area/lv759/oob)
+"ajK" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement12,
+/area/lv759/oob)
+"ajL" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement15,
+/area/lv759/oob)
+"ajM" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement,
+/area/lv759/oob)
+"ajN" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement1,
+/area/lv759/oob)
+"ajO" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement3,
+/area/lv759/oob)
+"ajP" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 1
+	},
+/turf/open/floor/almayer/green2/east,
+/area/lv759/oob)
+"ajQ" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 16
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"ajR" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement9,
+/area/lv759/oob)
+"ajS" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement2,
+/area/lv759/oob)
+"ajT" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement4,
+/area/lv759/oob)
+"ajU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ajV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ajW" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4;
+	pixel_x = 14;
+	pixel_y = -15
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"ajX" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/cement/cement15,
+/area/lv759/oob)
+"ajY" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/almayer/green2/west,
+/area/lv759/oob)
+"ajZ" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/green2/east,
+/area/lv759/oob)
+"aka" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/green2/west,
+/area/lv759/oob)
+"akb" = (
+/obj/structure/sign/safety/outpatient{
+	name = "entrance lobby semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of the facility entrance";
+	pixel_x = 33
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 47
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/lv759/oob)
+"akc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/multi_tiles/west,
+/area/lv759/oob)
+"akd" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ake" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/lv759/oob)
+"akf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"akg" = (
+/obj/effect/decal/hybrisa/colorable_rug{
+	color = "#3d3d3d";
+	pixel_x = 2;
+	name = "rubber mat";
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/silvercorner/west,
+/area/lv759/oob)
+"akh" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/prison,
+/area/lv759/oob)
+"aki" = (
+/obj/structure/machinery/disposal,
+/turf/open/floor/almayer/silver2/southeast,
+/area/lv759/oob)
+"akj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"akk" = (
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"akl" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/card/id/guest{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"akm" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_x = 32;
+	layer = 3.1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/silver2/east,
+/area/lv759/oob)
+"akn" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/paper{
+	layer = 2.9;
+	pixel_x = -2;
+	pixel_y = 3
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/paper_bin{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/prison,
+/area/lv759/oob)
+"ako" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on{
+	pixel_x = 32;
+	pixel_y = -12
+	},
+/turf/open/floor/almayer/silver2/east,
+/area/lv759/oob)
+"akp" = (
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/silvercorner/north,
+/area/lv759/oob)
+"akq" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/silvercorner/east,
+/area/lv759/oob)
+"akr" = (
+/obj/structure/sign/safety/outpatient{
+	name = "entrance lobby semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of the facility entrance";
+	pixel_x = 33
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 47
+	},
+/turf/open/auto_turf/shale/layer2,
+/area/lv759/oob)
+"aks" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/reagent_dispensers/water_cooler{
+	density = 0;
+	pixel_x = -7;
+	pixel_y = 16;
+	layer = 4
+	},
+/turf/open/floor/almayer/silver2/north,
+/area/lv759/oob)
+"akt" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 13;
+	pixel_x = -3
+	},
+/turf/open/floor/almayer/silver2/northeast,
+/area/lv759/oob)
+"aku" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/almayer/plate,
+/area/lv759/oob)
+"akv" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"akw" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/black2/west,
+/area/lv759/oob)
+"akx" = (
+/obj/effect/decal/strata_decals/grime/grime1,
+/turf/open/floor/strata,
+/area/lv759/oob)
+"aky" = (
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/strata,
+/area/lv759/oob)
+"akz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"akA" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"akB" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/almayer/black2/west,
+/area/lv759/oob)
+"akC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"akD" = (
+/obj/structure/sign/safety/rad_haz{
+	desc = "Semiotic Standard denoting the nearby presence of a mining processing area.";
+	name = "engineering semiotic";
+	pixel_x = -18;
+	pixel_y = -7
+	},
+/obj/structure/sign/safety/north{
+	pixel_x = -32
+	},
+/obj/structure/sign/safety/radio_rad{
+	pixel_x = -18;
+	name = "telecommunications room semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of a telecommunications tower.";
+	pixel_y = 6
+	},
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"akE" = (
+/obj/structure/largecrate/empty/case,
+/obj/structure/largecrate/random/mini/chest/b{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/oob)
+"akF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 5;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"akG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/black2/west,
+/area/lv759/oob)
+"akH" = (
+/obj/structure/largecrate/random/mini/wooden{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/item/stack/sheet/wood{
+	pixel_x = -3;
+	pixel_y = 13
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/oob)
+"akI" = (
+/obj/structure/largecrate/random/barrel/black,
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/oob)
+"akJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"akK" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 4;
+	pixel_x = -5;
+	layer = 4
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"akL" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"akM" = (
+/obj/structure/machinery/light/double,
+/obj/item/trash/cigbutt{
+	pixel_x = 4
+	},
+/turf/open/floor/almayer/black2/northeast,
+/area/lv759/oob)
+"akN" = (
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/structure/bed/chair{
+	can_buckle = 0;
+	dir = 4;
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akP" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsleft,
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akQ" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsright,
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akR" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akS" = (
+/obj/structure/machinery/light/double,
+/obj/structure/largecrate/empty/case,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akT" = (
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_x = -11;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akU" = (
+/obj/structure/sign/safety/coffee{
+	pixel_x = 12;
+	pixel_y = -28
+	},
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akV" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/almayer/black2/north,
+/area/lv759/oob)
+"akW" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer/black2/northeast,
+/area/lv759/oob)
+"akX" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 1
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"akY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy/black{
+	dir = 4;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"akZ" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"ala" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"alb" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/obj/structure/largecrate/random/barrel/medical{
+	layer = 3.01
+	},
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"alc" = (
+/obj/structure/barricade/handrail{
+	dir = 4
+	},
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"ald" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"ale" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"alf" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"alg" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"alh" = (
+/obj/vehicle/train/cargo/trolley,
+/obj/structure/largecrate/random/mini/chest/c{
+	layer = 4.2;
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"ali" = (
+/obj/vehicle/train/cargo/engine,
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"alj" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 2;
+	light_range = 2;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"alk" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = 9;
+	pixel_y = 42
+	},
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"all" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 9;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"alm" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greywyleft{
+	layer = 4.2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/oob)
+"aln" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cargo_container/hybrisa/containersextended/greywyright{
+	layer = 4.2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/oob)
+"alo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/structure/machinery/disposal/delivery,
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"alp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 12;
+	pixel_x = -5;
+	layer = 4
+	},
+/turf/open/floor/almayer,
+/area/lv759/oob)
+"alq" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"alr" = (
+/obj/structure/largecrate/empty/case/double,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/lv759/oob)
+"als" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/stool{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"alt" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 7;
+	buckling_x = 7;
+	buckling_y = 7
+	},
+/turf/open/floor/almayer/black2/northwest,
+/area/lv759/oob)
+"alu" = (
+/obj/structure/surface/rack,
+/obj/item/prop/colony/canister{
+	pixel_y = 1
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"alv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/obj/item/storage/pouch/engikit{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"alw" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"alx" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 3;
+	pixel_y = -12
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aly" = (
+/obj/structure/sign/safety/rad_haz{
+	desc = "Semiotic Standard denoting the nearby presence of a mining processing area.";
+	name = "engineering semiotic";
+	pixel_x = 34
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 47
+	},
+/turf/open/floor/almayer/black2/southwest,
+/area/lv759/oob)
+"alz" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"alA" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"alB" = (
+/obj/structure/sign/safety/radio_rad{
+	pixel_x = 34;
+	name = "telecommunications room semiotic";
+	desc = "Semiotic Standard denoting the nearby presence of a telecommunications tower."
+	},
+/obj/structure/sign/safety/east{
+	pixel_x = 47
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/black2/northwest,
+/area/lv759/oob)
+"alC" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	pixel_x = -17;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"alD" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/obj/structure/machinery/disposal/delivery,
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"alE" = (
+/obj/effect/decal/hybrisa/bloodtrail,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"alF" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = 30
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/item/xenos_claw{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = -10;
+	pixel_y = 12
+	},
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 12;
+	pixel_y = 11
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"alG" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/frame{
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	layer = 3.1;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"alH" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 9
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood2{
+	pixel_y = -4;
+	pixel_x = -14
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -12;
+	pixel_y = 16
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"alI" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/asphalt/brown,
+/area/lv759/oob)
+"alJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/lv759/oob)
+"alK" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt/brown,
+/area/lv759/oob)
+"alL" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/turf/open/asphalt/brown,
+/area/lv759/oob)
+"alM" = (
+/obj/effect/decal/hybrisa/road/lines1,
+/obj/effect/decal/hybrisa/road/road_edge,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	explo_proof = 1
+	},
+/turf/open/asphalt/brown,
+/area/lv759/oob)
+"alN" = (
+/obj/effect/decal/hybrisa/road/lines4,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	explo_proof = 1
+	},
+/turf/open/asphalt/brown,
+/area/lv759/oob)
 "ane" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/sand_white/layer0,
@@ -3719,6 +4663,16 @@
 	},
 /area/lv759/oob)
 "aRI" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 2;
+	pixel_x = -3
+	},
 /turf/open/floor/almayer/silver2/southeast,
 /area/lv759/oob)
 "aSs" = (
@@ -3848,6 +4802,7 @@
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal9"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/brown,
 /area/lv759/oob)
 "blm" = (
@@ -4194,6 +5149,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "cvN" = (
@@ -4207,6 +5163,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/oob)
 "cyd" = (
@@ -4558,6 +5515,8 @@
 	layer = 2.5;
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "dDY" = (
@@ -4641,6 +5600,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "dNO" = (
@@ -4837,6 +5798,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement9,
 /area/lv759/oob)
 "esx" = (
@@ -4863,7 +5825,7 @@
 /obj/structure/machinery/shower{
 	dir = 4
 	},
-/turf/open/floor/plating/plating_catwalk,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/lv759/oob)
 "euM" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
@@ -4883,6 +5845,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "ewd" = (
@@ -5078,6 +6041,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement1,
 /area/lv759/oob)
 "fnq" = (
@@ -5279,6 +6243,7 @@
 	layer = 2.5;
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "gdH" = (
@@ -5335,6 +6300,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "grf" = (
@@ -5345,6 +6311,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "grs" = (
@@ -5566,6 +6533,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/strata/multi_tiles/southeast,
 /area/lv759/oob)
 "heI" = (
@@ -5626,9 +6594,14 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "hrX" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitormedium_on{
+	pixel_x = 33;
+	pixel_y = 10
+	},
 /turf/open/floor/almayer/silver2/east,
 /area/lv759/oob)
 "hsB" = (
@@ -5754,6 +6727,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/structure/machinery/computer/cameras{
+	dir = 4
+	},
 /turf/open/floor/prison,
 /area/lv759/oob)
 "hCO" = (
@@ -5853,6 +6829,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement14,
 /area/lv759/oob)
 "hTt" = (
@@ -6116,6 +7093,7 @@
 	pixel_x = 1;
 	pixel_y = 2
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "iIF" = (
@@ -6188,6 +7166,14 @@
 /turf/open/floor/prison/green,
 /area/lv759/oob)
 "iSx" = (
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer/silver2/northeast,
 /area/lv759/oob)
 "iTa" = (
@@ -6228,6 +7214,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "iYr" = (
@@ -6499,6 +7486,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement2,
 /area/lv759/oob)
 "kje" = (
@@ -6710,6 +7698,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "lgY" = (
@@ -6965,6 +7954,13 @@
 /area/lv759/oob)
 "lTs" = (
 /obj/structure/bed/chair/comfy/black,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/almayer/silver2/northwest,
 /area/lv759/oob)
 "lWy" = (
@@ -7055,6 +8051,10 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
 	layer = 3.25
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 12
 	},
 /turf/open/floor/prison,
 /area/lv759/oob)
@@ -7294,6 +8294,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "niu" = (
@@ -7385,6 +8387,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "nyQ" = (
@@ -7932,6 +8935,10 @@
 /obj/effect/decal/strata_decals/grime/grime3{
 	icon_state = "grime1"
 	},
+/obj/structure/machinery/light/small{
+	dir = 4;
+	pixel_y = 6
+	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/lv759/oob)
 "psX" = (
@@ -8286,6 +9293,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "qFv" = (
@@ -8445,6 +9453,10 @@
 "rkP" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 1
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
 	},
 /turf/open/floor/almayer/silver2/southwest,
 /area/lv759/oob)
@@ -8745,6 +9757,8 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "sID" = (
@@ -8910,6 +9924,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "tMw" = (
@@ -9012,6 +10027,7 @@
 	icon_state = "SE-out";
 	pixel_x = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement1,
 /area/lv759/oob)
 "ulT" = (
@@ -9327,12 +10343,6 @@
 "vww" = (
 /turf/closed/wall/strata_ice/dirty/rock,
 /area/lv759/oob)
-"vwY" = (
-/obj/structure/machinery/door/poddoor/shutters/almayer{
-	explo_proof = 1
-	},
-/turf/open/auto_turf/strata_grass/layer0_mud_alt,
-/area/lv759/oob)
 "vBc" = (
 /obj/effect/decal/hybrisa/road/road_edge{
 	icon_state = "road_edge_decal2"
@@ -9350,6 +10360,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement1,
 /area/lv759/oob)
 "vDf" = (
@@ -9442,6 +10453,7 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "vPs" = (
@@ -9476,6 +10488,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "vYk" = (
@@ -9607,6 +10620,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "wxm" = (
@@ -9644,6 +10658,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "wCv" = (
@@ -9836,7 +10851,7 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	explo_proof = 1
 	},
-/turf/open/auto_turf/strata_grass/layer0_mud,
+/turf/open/asphalt/brown,
 /area/lv759/oob)
 "xsI" = (
 /obj/effect/alien/weeds/node/kseries,
@@ -10004,6 +11019,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison,
 /area/lv759/oob)
 "yaj" = (
@@ -60512,7 +61528,7 @@ ewE
 ewE
 ewE
 ewE
-ewE
+kIT
 ewE
 ewE
 ewE
@@ -60527,7 +61543,7 @@ iKa
 iKa
 iKa
 iKa
-iKa
+kIT
 iKa
 pzo
 pzo
@@ -60681,20 +61697,20 @@ ewE
 ewE
 ewE
 kIT
+kIT
 ewE
 ewE
 ewE
+kIT
+kIT
 ewE
 ewE
 ewE
-ewE
-ewE
-ewE
+kIT
+kIT
 iKa
 iKa
-iKa
-iKa
-iKa
+kIT
 kIT
 pzo
 pzo
@@ -60847,27 +61863,27 @@ ewE
 ewE
 ewE
 ewE
-ewE
 kIT
 kIT
-ewE
-ewE
-ewE
 kIT
 kIT
-ewE
-ewE
-ewE
 kIT
 kIT
-iKa
-iKa
 kIT
 kIT
-pzo
-pzo
-pzo
-pzo
+kIT
+kIT
+kIT
+kIT
+kIT
+kIT
+kIT
+kIT
+alM
+pZZ
+alK
+cyt
+cyt
 pzo
 fHB
 pzo
@@ -61015,7 +62031,7 @@ ewE
 ewE
 ewE
 ewE
-ewE
+kIT
 kIT
 kIT
 kIT
@@ -61032,8 +62048,8 @@ kIT
 kIT
 kIT
 xrA
-cyt
-cyt
+jUa
+uJW
 cyt
 cyt
 lgY
@@ -61183,7 +62199,6 @@ ewE
 ewE
 ewE
 ewE
-ewE
 kIT
 kIT
 kIT
@@ -61199,9 +62214,10 @@ kIT
 kIT
 kIT
 kIT
-vwY
-kOT
-kOT
+kIT
+xrA
+pMU
+uJW
 kOT
 kOT
 ubv
@@ -61351,7 +62367,7 @@ ewE
 ewE
 ewE
 ewE
-ewE
+kIT
 kIT
 kIT
 kIT
@@ -61368,8 +62384,8 @@ kIT
 kIT
 kIT
 xrA
-cyt
-cyt
+jUa
+uJW
 cyt
 kOT
 okq
@@ -61519,25 +62535,25 @@ ewE
 ewE
 ewE
 ewE
-ewE
 kIT
 kIT
-ewE
-ewE
-ewE
 kIT
 kIT
-ewE
-ewE
-ewE
 kIT
 kIT
-iKa
-iKa
 kIT
 kIT
-pzo
-pzo
+kIT
+kIT
+kIT
+kIT
+kIT
+kIT
+kIT
+kIT
+alN
+czb
+alL
 cyt
 cyt
 cyt
@@ -61689,20 +62705,20 @@ ewE
 ewE
 ewE
 kIT
+kIT
 ewE
 ewE
 ewE
+kIT
+kIT
 ewE
 ewE
 ewE
-ewE
-ewE
-ewE
+kIT
+kIT
 iKa
 iKa
-iKa
-iKa
-iKa
+kIT
 kIT
 pzo
 pzo
@@ -61856,7 +62872,7 @@ ewE
 ewE
 ewE
 ewE
-ewE
+kIT
 ewE
 ewE
 ewE
@@ -61871,7 +62887,7 @@ iKa
 iKa
 ewE
 iKa
-iKa
+kIT
 pzo
 pzo
 pzo
@@ -65095,7 +66111,7 @@ pzo
 pzo
 pzo
 pzo
-pWw
+ajS
 atN
 bUN
 eDC
@@ -65103,10 +66119,10 @@ eDC
 eDC
 niu
 atN
-hjW
+ajJ
 cyt
 cyt
-pWw
+ajS
 atN
 pAI
 vRW
@@ -65122,10 +66138,10 @@ pAI
 vRW
 krp
 atN
-hjW
+ajJ
 pzq
 pzq
-pWw
+ajS
 atN
 bUN
 eDC
@@ -65133,7 +66149,7 @@ eDC
 eDC
 niu
 atN
-hjW
+ajJ
 pzq
 pzq
 pzo
@@ -65263,7 +66279,7 @@ pzo
 xEt
 pzo
 pzo
-dea
+ajT
 atN
 atN
 mVY
@@ -65271,10 +66287,10 @@ mVY
 mVY
 atN
 atN
-gKr
+ajK
 pzo
 pzo
-dea
+ajT
 atN
 sfO
 quF
@@ -65290,10 +66306,10 @@ sfO
 quF
 qsH
 atN
-gKr
+ajK
 pzq
 pzq
-dea
+ajT
 atN
 atN
 mVY
@@ -65301,7 +66317,7 @@ mVY
 mVY
 atN
 atN
-gKr
+ajK
 pzq
 pzq
 pzo
@@ -65431,18 +66447,18 @@ pzo
 pzo
 pzo
 pzo
-pLS
-mui
+ajR
+ajN
 atN
 oAY
 heI
 oAY
 atN
-wxm
-knT
+ajM
+ajL
 pzo
 pzo
-dea
+ajT
 atN
 atN
 qlQ
@@ -65458,18 +66474,18 @@ atN
 qlQ
 atN
 atN
-gKr
+ajK
 pzq
 pzq
-pLS
-wxm
+ajR
+ajM
 atN
 blm
 heI
 blm
 atN
-wxm
-knT
+ajM
+ajL
 pzq
 pzq
 pzq
@@ -65591,60 +66607,60 @@ sUP
 pzo
 pzo
 xEt
-dLI
-pDB
+ajU
+ajE
 vVi
 vVi
 vVi
 vVi
-pDB
-pDB
+ajE
+ajE
 nyz
-pLS
-mui
-mui
-mui
-mui
-mui
-knT
-dLI
-pDB
+ajR
+ajN
+ajN
+ajN
+ajN
+ajN
+ajL
+ajU
+ajE
 nyz
-pLS
-wxm
+ajR
+ajM
 atN
 heI
 atN
 hSc
-vQX
-vQX
-vQX
-vQX
-vQX
+akc
+akc
+akc
+akc
+akc
 kex
 atN
 heI
 atN
-wxm
-knT
-dLI
-pDB
+ajM
+ajX
+ajU
+ajE
 nyz
-pLS
-mui
-mui
-mui
-mui
-mui
-knT
+ajR
+ajN
+ajN
+ajN
+ajN
+ajN
+ajL
 dLI
-pDB
-pDB
+ajE
+ajE
 gqA
 gqA
 gqA
 gqA
-pDB
+ajE
 nyz
 xEt
 pzo
@@ -65775,11 +66791,11 @@ gqA
 gqA
 gqA
 gqA
-dDI
+ajV
 iYq
 hrS
 evX
-pLS
+ajR
 ulw
 fmJ
 fmJ
@@ -65792,10 +66808,10 @@ tyR
 esn
 fmJ
 fmJ
-mui
-knT
+ajN
+ajL
 wAJ
-dDI
+ajV
 iYq
 hrS
 gqA
@@ -65926,9 +66942,9 @@ pzo
 kRD
 sFP
 blg
-pZZ
-pZZ
-pZZ
+alI
+alI
+alI
 tqT
 wma
 wma
@@ -66092,7 +67108,7 @@ ewE
 cyt
 kRD
 kRD
-sFP
+alJ
 jcK
 jUa
 jUa
@@ -66260,7 +67276,7 @@ iKa
 pzo
 pzo
 kRD
-sFP
+alJ
 jcK
 jUa
 bZv
@@ -66428,7 +67444,7 @@ iKa
 iKa
 pzo
 sUP
-sFP
+alJ
 jcK
 jUa
 mgB
@@ -66453,17 +67469,17 @@ jUa
 mgB
 leD
 tLT
-pDB
-pDB
-pDB
-pDB
-pDB
-pDB
-pDB
-pDB
-pDB
-pDB
-pDB
+ajE
+ajE
+ajE
+ajE
+ajE
+ajE
+ajE
+ajE
+ajE
+ajE
+ajE
 gdw
 xZk
 jcK
@@ -66596,7 +67612,7 @@ iKa
 iKa
 iKa
 sUP
-sFP
+alJ
 jcK
 jUa
 mgB
@@ -66628,7 +67644,7 @@ iIg
 qFd
 iYq
 iIg
-hAa
+akd
 iYq
 iYq
 iYq
@@ -66764,7 +67780,7 @@ iKa
 iKa
 iKa
 sUP
-sFP
+alJ
 jcK
 jUa
 mgB
@@ -66796,7 +67812,7 @@ leD
 xZk
 xEt
 leD
-xZk
+ake
 pzo
 pzo
 pzq
@@ -66932,62 +67948,62 @@ iKa
 iKa
 pzo
 sUP
-sFP
+alJ
 jcK
 jUa
 mgB
 kRD
-qSP
-bDx
-bDx
-qSP
+ajF
+ajG
+ajG
+ajF
 qpw
-qSP
-bDx
-bDx
-qSP
+ajF
+ajG
+ajG
+ajF
 qpw
-pWw
-hNM
-hNM
-hNM
-hNM
-hNM
-hNM
-hjW
+ajS
+ajO
+ajO
+ajO
+ajO
+ajO
+ajO
+ajJ
 pzq
 pzq
 pzo
+pzo
+akr
+akj
+akf
+pzo
+akj
+akf
+akb
 pzo
 xEt
-leD
-xZk
-pzo
-leD
-xZk
-pzo
-pzo
-xEt
 pzq
 pzq
-pWw
-hNM
-hNM
-hNM
-hNM
-hNM
-hNM
-hjW
+ajS
+ajO
+ajO
+ajO
+ajO
+ajO
+ajO
+ajJ
 qpw
-qSP
-bDx
-bDx
-qSP
+ajF
+ajG
+ajG
+ajF
 qpw
-qSP
-bDx
-bDx
-qSP
+ajF
+ajG
+ajG
+ajF
 kRD
 jcK
 jUa
@@ -67100,7 +68116,7 @@ qpw
 qpw
 qpw
 sUP
-sFP
+alJ
 jcK
 jUa
 mgB
@@ -67122,10 +68138,10 @@ oAY
 oAY
 kRD
 kRD
-wxm
-hNM
-hNM
-hjW
+ajM
+ajO
+ajO
+ajJ
 kRD
 kRD
 qHO
@@ -67135,10 +68151,10 @@ qHO
 rcY
 kRD
 kRD
-pWw
-hNM
-hNM
-wxm
+ajS
+ajO
+ajO
+ajM
 kRD
 kRD
 oAY
@@ -67268,7 +68284,7 @@ vRW
 vRW
 qpw
 qpw
-sFP
+alJ
 qQq
 nyQ
 icq
@@ -67283,12 +68299,12 @@ jaC
 jaC
 jaC
 qpw
-nCG
-nCG
-nCG
-nCG
-nCG
-nCG
+all
+akL
+akY
+akL
+akL
+akF
 kRD
 kRD
 oAY
@@ -67296,11 +68312,11 @@ oAY
 kRD
 kRD
 lTs
-jwY
-iee
+akp
+akg
 hud
 jwY
-iee
+akg
 rkP
 kRD
 kRD
@@ -67442,36 +68458,36 @@ pIU
 pIU
 qpw
 qpw
+alD
+alz
+alw
+alv
+alu
+als
+ocK
+ocK
+alq
 ocK
 ocK
 ocK
+akX
 ocK
 ocK
+akD
+akA
 ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
+akz
+akv
 hCO
 ocB
 hAa
+akd
 hAa
-hAa
-hAa
+akd
 hAa
 qbk
 nLk
-ioB
+ajZ
 ioB
 ioB
 ioB
@@ -67479,7 +68495,7 @@ ioB
 kpM
 ioB
 ioB
-ioB
+ajP
 ioB
 ioB
 ioB
@@ -67609,10 +68625,10 @@ cml
 cml
 cml
 qpw
-cDM
-cDM
-cDM
-cDM
+alG
+alE
+alA
+alx
 cDM
 cDM
 cDM
@@ -67631,7 +68647,7 @@ cDM
 cDM
 cDM
 frB
-ocB
+aks
 hAa
 hAa
 iLN
@@ -67777,38 +68793,46 @@ vQX
 vQX
 vQX
 qpw
+alH
+alF
+alB
+aly
 cDM
 cDM
-lXU
+alt
+akw
+akG
+iZO
+iZO
 uFz
 cDM
 cDM
 lXU
+akG
+iZO
+akB
 iZO
 iZO
-iZO
-iZO
-uFz
-cDM
-cDM
-lXU
-iZO
-iZO
-iZO
-iZO
-iZO
-iZO
+akw
 hCO
 ocB
-hAa
+akh
+akn
+akl
 hAR
-hAR
-hAR
-hAa
+akh
 qbk
 nLk
+aka
 vJS
 vJS
+ajY
+vJS
+vJS
+iDy
+cDM
+cDM
+etk
 vJS
 vJS
 vJS
@@ -67817,15 +68841,7 @@ iDy
 cDM
 cDM
 etk
-vJS
-vJS
-vJS
-vJS
-iDy
-cDM
-cDM
-etk
-iDy
+ajI
 cDM
 cDM
 qpw
@@ -67954,24 +68970,24 @@ cDM
 iHi
 iHi
 iHi
-nCG
-nCG
-aND
+alr
+alm
+akZ
 cDM
 cDM
 mEu
-nCG
-nCG
+akH
+akE
 kRD
 kRD
 kRD
 kRD
 kRD
-iSx
-tqE
+akt
+akq
 hAa
 mrA
-hAa
+akk
 nzk
 aRI
 kRD
@@ -67979,14 +68995,14 @@ kRD
 kRD
 kRD
 kRD
-nCG
-nCG
+mID
+mID
 fAn
 cDM
 cDM
 cgK
-nCG
-nCG
+mID
+mID
 qpw
 qpw
 qpw
@@ -68123,12 +69139,12 @@ iHi
 iHi
 iHi
 iHi
-nCG
+aln
 aND
 cDM
 cDM
 mEu
-nCG
+akI
 kRD
 kRD
 pOm
@@ -68137,10 +69153,10 @@ dJK
 kRD
 kRD
 iSx
+ako
+akm
 hrX
-hrX
-hrX
-aRI
+aki
 kRD
 kRD
 aDT
@@ -68148,12 +69164,12 @@ wTr
 iMb
 kRD
 kRD
-nCG
+mID
 fAn
 cDM
 cDM
 cgK
-nCG
+mID
 qpw
 qpw
 qpw
@@ -68292,10 +69308,10 @@ odb
 odb
 iHi
 iHi
-aND
+ala
 cDM
 cDM
-qYq
+akM
 kRD
 kRD
 njj
@@ -68460,7 +69476,7 @@ wmp
 rec
 odb
 iHi
-aND
+alb
 cDM
 cDM
 cDM
@@ -68628,7 +69644,7 @@ hjx
 dzD
 odb
 iHi
-aND
+alc
 cDM
 cDM
 cDM
@@ -68796,7 +69812,7 @@ hjx
 piB
 dJV
 iHi
-aND
+ald
 cDM
 cDM
 lXU
@@ -68964,17 +69980,17 @@ hgH
 hgH
 cgU
 iHi
-aND
+ale
 cDM
 cDM
-mEu
+akN
 frB
 lqu
-lqu
+aku
 mID
 mFB
 fFV
-lqu
+aku
 pOh
 cMt
 cMt
@@ -69135,7 +70151,7 @@ iHi
 iHi
 cDM
 cDM
-mEu
+akO
 frB
 jbE
 lqu
@@ -69471,7 +70487,7 @@ spC
 aPR
 cDM
 cDM
-mEu
+akP
 kRD
 fFV
 rHC
@@ -69639,7 +70655,7 @@ spC
 aPR
 cDM
 cDM
-mEu
+akQ
 kRD
 lME
 lRH
@@ -69807,7 +70823,7 @@ bzJ
 aPR
 cDM
 cDM
-mEu
+akR
 kRD
 fFV
 fFV
@@ -69975,7 +70991,7 @@ iHi
 iHi
 cDM
 cDM
-mEu
+akS
 kRD
 kRD
 kRD
@@ -69991,7 +71007,7 @@ avB
 rGs
 lXc
 rHC
-rHC
+bDx
 kRD
 qIb
 aok
@@ -70140,10 +71156,10 @@ wmp
 wmp
 wPy
 iHi
-aND
+alf
+akC
 cDM
-cDM
-mEu
+akT
 kRD
 etU
 etU
@@ -70159,7 +71175,7 @@ avB
 eMe
 sDV
 rHC
-rHC
+bDx
 djh
 awA
 vkP
@@ -70308,7 +71324,7 @@ hjx
 hjx
 cDW
 iHi
-aND
+alg
 cDM
 cDM
 mEu
@@ -70327,7 +71343,7 @@ qwh
 rGs
 kRD
 cTO
-rHC
+bDx
 cIf
 vkP
 vkP
@@ -70476,7 +71492,7 @@ bEF
 hgH
 aKo
 iHi
-aND
+alh
 cDM
 cDM
 mEu
@@ -70644,16 +71660,16 @@ dzD
 odb
 iHi
 iHi
-aND
+ali
 cDM
 cDM
-mEu
+akU
 kRD
 kRD
 sav
 aWT
 fml
-rHC
+akx
 rHC
 dGz
 lqu
@@ -70811,17 +71827,17 @@ hgH
 oLT
 odb
 iHi
-nCG
+alo
 aND
 cDM
 cDM
 mEu
-nCG
+akJ
 kRD
 dYZ
 dkf
 baL
-rHC
+aky
 rHC
 qHO
 lqu
@@ -70980,10 +71996,10 @@ odb
 iHi
 iHi
 iHi
-aND
+alj
 cDM
 cDM
-mEu
+akV
 kRD
 kRD
 btB
@@ -71147,12 +72163,12 @@ iHi
 iHi
 iHi
 iHi
-gfI
-aND
+alp
+alk
 cDM
 cDM
 mEu
-nCG
+akK
 kRD
 nRU
 fzB
@@ -71319,8 +72335,8 @@ ocK
 fjh
 cDM
 cDM
-qYq
-ocK
+akW
+akz
 kRD
 kRD
 kRD
@@ -71483,10 +72499,10 @@ cDM
 cDM
 cDM
 cDM
+akC
 cDM
 cDM
-cDM
-cDM
+ajQ
 cDM
 cDM
 qYq
@@ -71511,7 +72527,7 @@ bCP
 cDM
 cDM
 cDM
-cDM
+ajQ
 cDM
 cDM
 cDM
@@ -71643,7 +72659,7 @@ cDM
 qHO
 cDM
 cDM
-cDM
+alC
 cDM
 cDM
 cDM
@@ -71658,7 +72674,7 @@ qpw
 cDM
 cDM
 cDM
-cDM
+akC
 cDM
 cDM
 cDM
@@ -71690,7 +72706,7 @@ cDM
 cDM
 cDM
 cDM
-cDM
+ajH
 cDM
 qHO
 cDM
@@ -76361,6 +77377,7 @@ cDM
 cDM
 cDM
 cDM
+ajW
 cDM
 cDM
 cDM
@@ -76369,6 +77386,7 @@ cDM
 cDM
 cDM
 cDM
+ajW
 cDM
 cDM
 cDM
@@ -76377,9 +77395,7 @@ cDM
 cDM
 cDM
 cDM
-cDM
-cDM
-cDM
+ajW
 cDM
 cDM
 cDM

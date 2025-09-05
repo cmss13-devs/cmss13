@@ -55,11 +55,11 @@
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/despoiler.dmi'
-	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/praetorian.dmi'
+	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/praetorian.dmi' // if someone makes xenoid sprites in future feel free to
 
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
-	weed_food_states = list("Praetorian_1","Praetorian_2","Praetorian_3")
-	weed_food_states_flipped = list("Praetorian_1","Praetorian_2","Praetorian_3")
+	weed_food_states = list("Despoiler_1","Despoiler_2","Despoiler_3")
+	weed_food_states_flipped = list("Despoiler_1","Despoiler_2","Despoiler_3")
 
 	skull = /obj/item/skull/despoiler
 	pelt = /obj/item/pelt/despoiler

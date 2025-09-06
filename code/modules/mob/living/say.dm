@@ -141,6 +141,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 							for(var/obj/item/interior_object in hearing_obj.contents)
 								if(HAS_TRAIT(interior_object, TRAIT_HEARS_FROM_CONTENTS))
 									listening_obj |= interior_object
+					for(var/mob/inner_mob in M.contents)
+						listening |= inner_mob
+						for(var/mob/living/captive_brain/brain in inner_mob)
+							listening |= brain
 				else if(istype(I, /obj/structure/surface))
 					var/obj/structure/surface/table = I
 					hearturfs += table.locs[1]
@@ -163,6 +167,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 					continue
 				if(M.loc && (M.locs[1] in hearturfs))
 					listening |= M
+					for(var/mob/inner_mob in M.contents)
+						listening |= inner_mob
+						for(var/mob/living/captive_brain/brain in inner_mob)
+							listening |= brain
 
 		var/speech_bubble_test = say_test(message)
 		show_speech_bubble(listening, speech_bubble_test, bubble_prefix = TRUE)

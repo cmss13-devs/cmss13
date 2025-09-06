@@ -89,7 +89,7 @@
 /area/lv759/indoors/spaceport/cargo)
 "bN" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "bR" = (
 /obj/structure/machinery/door_control{
@@ -413,7 +413,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_x = 11
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cargo)
 "ff" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -564,7 +564,7 @@
 	pixel_x = 11;
 	pixel_y = 3
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "gI" = (
 /obj/structure/platform/metal/strata/west,
@@ -854,7 +854,7 @@
 /area/lv759/indoors/spaceport/cargo)
 "kq" = (
 /obj/effect/decal/hybrisa/lattice/full,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cargo_maintenance)
 "kZ" = (
 /obj/item/tool/warning_cone{
@@ -1250,7 +1250,7 @@
 	pixel_x = 9;
 	pixel_y = 6
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "qJ" = (
 /obj/structure/machinery/light/dropship/red{
@@ -1325,7 +1325,7 @@
 /turf/open/floor/corsat/spiralplate,
 /area/lv759/indoors/spaceport/clf_dropship)
 "rC" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cargo_maintenance)
 "rD" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -1832,7 +1832,7 @@
 /area/lv759/indoors/spaceport/clf_dropship)
 "yH" = (
 /obj/structure/prop/hybrisa/supermart/freezer/freezer4,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/kitchen)
 "yN" = (
 /obj/structure/platform_decoration/metal/strata/east,
@@ -2064,7 +2064,7 @@
 /area/lv759/indoors/spaceport/docking_bay_2)
 "CO" = (
 /obj/structure/blocker/forcefield/vehicles,
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cargo_maintenance)
 "CY" = (
 /obj/structure/cable{
@@ -2174,7 +2174,7 @@
 	pixel_x = 10;
 	pixel_y = 1
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Fj" = (
 /obj/structure/cable{
@@ -2249,7 +2249,7 @@
 /obj/structure/sign/safety/airlock{
 	pixel_x = 11
 	},
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Gf" = (
 /obj/item/tool/warning_cone{
@@ -2474,7 +2474,7 @@
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/lv759/indoors/spaceport/clf_dropship)
 "Jq" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "JB" = (
 /obj/effect/decal/cleanable/dirt{
@@ -2907,7 +2907,7 @@
 /turf/open/floor/prison/ramptop,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Qe" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/communications_office)
 "Qf" = (
 /obj/structure/shuttle/part/dropship_clf/transparent{
@@ -3096,7 +3096,7 @@
 	},
 /area/lv759/indoors/spaceport/clf_dropship)
 "SD" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/kitchen)
 "SH" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -3437,7 +3437,7 @@
 /turf/open/floor/strata/blue3/west,
 /area/lv759/indoors/spaceport/docking_bay_2)
 "Yo" = (
-/turf/closed/wall/hybrisa/spaceport/reinforced,
+/turf/closed/wall/r_wall/hybrisa/spaceport,
 /area/lv759/indoors/spaceport/cargo)
 "Yv" = (
 /obj/effect/decal/warning_stripes{

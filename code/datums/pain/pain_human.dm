@@ -13,14 +13,14 @@
 
 	if(!ishuman(source_mob))
 		return
-	var/mob/living/carbon/human/H = source_mob
+	var/mob/living/carbon/human/human = source_mob
 
-	for(var/obj/limb/O in H.limbs)
+	for(var/obj/limb/O in human.limbs)
 		// Delimbed
 		if((O.status & LIMB_DESTROYED) && !(O.status & LIMB_AMPUTATED))
 			apply_pain(PAIN_DELIMB)
 		// Broken bones
-		else if(O.status & LIMB_BROKEN || H.incision_depths[O.name] != SURGERY_DEPTH_SURFACE)
+		else if(O.status & LIMB_BROKEN || human.incision_depths[O.name] != SURGERY_DEPTH_SURFACE)
 			// Splinted else non-splinted
 			if(O.status & LIMB_SPLINTED)
 				apply_pain(PAIN_BONE_BREAK - PAIN_BONE_BREAK_SPLINTED)
@@ -30,8 +30,22 @@
 			apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 	//Internal organs
-	for(var/datum/internal_organ/O in H.internal_organs)
+	for(var/datum/internal_organ/O in human.internal_organs)
 		if(O.damage)
 			apply_pain(O.damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
+
+	if(human.bodytemperature > human.species.heat_level_3)
+		apply_pain(HEAT_DAMAGE_LEVEL_3, BURN)
+	else if(human.bodytemperature > human.species.heat_level_2)
+		apply_pain(HEAT_DAMAGE_LEVEL_2, BURN)
+	else if(human.bodytemperature > human.species.heat_level_1)
+		apply_pain(HEAT_DAMAGE_LEVEL_1, BURN)
+
+	if(human.bodytemperature < human.species.cold_level_3)
+		apply_pain(COLD_DAMAGE_LEVEL_3, BURN)
+	else if(human.bodytemperature < human.species.cold_level_2)
+		apply_pain(COLD_DAMAGE_LEVEL_2, BURN)
+	else if(human.bodytemperature < human.species.cold_level_1)
+		apply_pain(COLD_DAMAGE_LEVEL_1, BURN)
 
 	return TRUE

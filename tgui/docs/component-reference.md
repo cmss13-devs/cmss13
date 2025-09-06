@@ -245,7 +245,7 @@ A button with an extra confirmation step, using native button component.
 - See inherited props: [Button](#button)
 - `confirmContent: string` - Text to display after first click; defaults to "Confirm?"
 - `confirmColor: string` - Color to display after first click; defaults to "bad"
-- `onConfirmChange: function` - Called when the clickedOnce state changes: When 
+- `onConfirmChange: function` - Called when the clickedOnce state changes: When
   the element is clicked the first time or unfocused.
 
 ### `Button.Input`

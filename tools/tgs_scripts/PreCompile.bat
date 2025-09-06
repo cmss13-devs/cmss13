@@ -12,4 +12,4 @@ IF NOT %1 == "" (
 	cd ..\Game\B
 )
 set CBT_BUILD_MODE=TGS
-tools\build\build
+tools\build\build.sh

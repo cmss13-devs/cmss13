@@ -1,3 +1,3 @@
 #!/bin/bash
 source /byond/bin/byondsetup
-exec ./tools/build/build
+exec ./tools/build/build.sh

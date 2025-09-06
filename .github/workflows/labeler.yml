@@ -54,7 +54,7 @@ jobs:
         uses: "pascalgn/size-label-action@v0.5.5"
         env:
           GITHUB_TOKEN: ${{ steps.app-token-generation.outputs.token }}
-          IGNORED: ".*\n!.gitignore\nyarn.lock/**"
+          IGNORED: "**/bun.lock"
         with:
           sizes: >
             {

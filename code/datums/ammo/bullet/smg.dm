@@ -69,6 +69,65 @@
 	accurate_range = 5
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/bullet/smg/nail/on_pointblank(mob/living/target, obj/projectile/bullet, mob/living/user, obj/item/weapon/gun/fired_from)
+	if(!target || target == bullet.firer || target.body_position == LYING_DOWN)
+		return
+
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		return
+
+	if(iscarbonsizexeno(target))
+		var/mob/living/carbon/xenomorph/X = target
+		if(X.tier != 1) // 0 is queen!
+			return
+	else if(HAS_TRAIT(target, TRAIT_SUPER_STRONG))
+		return
+
+	if(HAS_TRAIT(target, TRAIT_IMMOBILIZED))
+		to_chat(user, SPAN_DANGER("[target] struggles and avoids being nailed further!"))
+		return
+
+	//Check for presence of solid surface behind
+	var/atom/movable/thick_surface = LinkBlocked(target, get_turf(target), get_step(target, get_dir(user, target)))
+	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
+		return
+
+	ADD_TRAIT(target, TRAIT_IMMOBILIZED, null)
+	user.visible_message(SPAN_DANGER("[user] punches [target] with the nailgun and nails their limb to [thick_surface]!"),
+	SPAN_DANGER("You punch [target] with the nailgun and nail their limb to [thick_surface]!"))
+	addtimer(CALLBACK(target, /mob/proc/remove_immobilized_trait), 0.5 SECONDS) //extremely short or else inf stun is possible
+
+/mob/proc/remove_immobilized_trait()
+	REMOVE_TRAIT(src, TRAIT_IMMOBILIZED, null)
+
+
+/datum/ammo/bullet/smg/nail/on_hit_mob(mob/living/target, obj/projectile/bullet)
+	if(!target || target == bullet.firer || target.body_position == LYING_DOWN)
+		return
+
+	var/mob/living/user = bullet.firer
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
+		return
+
+	target.adjust_effect(1, SLOW) //Slow on hit.
+	target.recalculate_move_delay = TRUE
+	var/super_slowdown_duration = 0.6
+	//If there's an obstacle on the far side, superslow and do extra damage.
+	if(iscarbonsizexeno(target)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
+		var/mob/living/carbon/xenomorph/X = target
+		if(X.tier != 1) // 0 is queen!
+			super_slowdown_duration = 0.5
+	else if(HAS_TRAIT(target, TRAIT_SUPER_STRONG)) //preds dont get slowed
+		super_slowdown_duration = 0
+
+	var/atom/movable/thick_surface = LinkBlocked(target, get_turf(target), get_step(target, get_dir(bullet.loc ? bullet : bullet.firer, target)))
+	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
+		return
+
+	target.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+	target.adjust_effect(super_slowdown_duration, SUPERSLOW)
+
+
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
 	damage_type = BURN

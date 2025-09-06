@@ -31,12 +31,109 @@
 /turf/open/gm/dirt/brown/variant_6
 	icon_state = "desert_dug"
 
-/turf/open/gm/road
+/turf/open/gm/dirtmud/dirtmud_corner_outer
+	name = "dirt"
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	icon_state = "dirtmud_corner_outer"
+	dir = NORTH
+
+/turf/open/gm/dirtmud/dirtmud_corner_outer/south
+	dir = SOUTH
+
+/turf/open/gm/dirtmud/dirtmud_corner_outer/east
+	dir = EAST
+
+/turf/open/gm/dirtmud/dirtmud_corner_outer/west
+	dir = WEST
+
+/turf/open/gm/dirtmud/dirtmud_corner_inner
+	name = "dirt"
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	icon_state = "dirtmud_corner_inner"
+	dir = NORTH
+
+/turf/open/gm/dirtmud/dirtmud_corner_inner/south
+	dir = SOUTH
+
+/turf/open/gm/dirtmud/dirtmud_corner_inner/east
+	dir = EAST
+
+/turf/open/gm/dirtmud/dirtmud_corner_inner/west
+	dir = WEST
+
+/turf/open/gm/dirtmud/dirtmud_edge
+	name = "dirt"
+	icon = 'icons/turf/floors/ground_map_dirt.dmi'
+	icon_state = "dirtmud_edge"
+	dir = NORTH
+
+/turf/open/gm/dirtmud/dirtmud_edge/south
+	dir = SOUTH
+
+/turf/open/gm/dirtmud/dirtmud_edge/east
+	dir = EAST
+
+/turf/open/gm/dirtmud/dirtmud_edge/west
+	dir = WEST
+
+/turf/open/gm/road/browndirt
 	name = "dirt road"
 	icon = 'icons/turf/floors/ground_map_dirt.dmi'
 	icon_state = "browndirt_road"
 	baseturfs = /turf/open/gm/road
 	minimap_color = MINIMAP_DIRT
+
+/turf/open/gm/road/browndirt/edge
+	icon_state = "browndirt_road_1"
+	dir = SOUTH
+
+/turf/open/gm/road/browndirt/edge/east
+	dir = EAST
+
+/turf/open/gm/road/browndirt/edge/north
+	dir = NORTH
+
+/turf/open/gm/road/browndirt/edge/west
+	dir = WEST
+
+/turf/open/gm/road/browndirt/thin
+	icon_state = "browndirt_road_2"
+	dir = SOUTH
+
+/turf/open/gm/road/browndirt/thin
+	dir = EAST
+
+/turf/open/gm/road/browndirt/thin
+	dir = NORTH
+
+/turf/open/gm/road/browndirt/thin
+	dir = WEST
+
+/turf/open/gm/road/browndirt/innercorner
+	icon_state = "browndirt_road_3"
+	dir = SOUTH
+
+/turf/open/gm/road/browndirt/innercorner
+	dir = EAST
+
+/turf/open/gm/road/browndirt/innercorner
+	dir = NORTH
+
+/turf/open/gm/road/browndirt/innercorner
+	dir = WEST
+
+/turf/open/gm/road/browndirt/outercorner
+	icon_state = "browndirt_road_corner"
+	dir = SOUTH
+
+/turf/open/gm/road/browndirt/outercorner
+	dir = EAST
+
+/turf/open/gm/road/browndirt/outercorner
+	dir = NORTH
+
+/turf/open/gm/road/browndirt/outercorner
+	dir = WEST
 
 /turf/open/gm/grass/dirt
 	name = "grass"

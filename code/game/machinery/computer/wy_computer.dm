@@ -234,7 +234,7 @@
 					return WY_COMP_ACCESS_SENIOR_LEAD
 				if(PAY_SHORT_WYC7, PAY_SHORT_WYC6)
 					return WY_COMP_ACCESS_SUPERVISOR
-		if(card.assignment == JOB_CORPORATE_LIAISON)
+		if(card.assignment == JOB_CORPORATE_LIAISON_RU) //BM220 edit
 			return WY_COMP_ACCESS_LIAISON
 		if(card.paygrade && (card.paygrade == PAY_SHORT_WYC5 || card.paygrade == PAY_SHORT_WYC4))
 			return WY_COMP_ACCESS_CORPORATE_SENIOR

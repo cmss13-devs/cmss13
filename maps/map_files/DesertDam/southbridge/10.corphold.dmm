@@ -23,6 +23,12 @@
 "ad" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/maint/north)
+"ae" = (
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_Black{
+	dir = 1
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
 "af" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
@@ -626,6 +632,7 @@
 /obj/effect/decal/cleanable/blood/drip{
 	icon_state = "2"
 	},
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_White,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "AB" = (
@@ -1236,7 +1243,7 @@ Ow
 uX
 uM
 RN
-ih
+ae
 Ds
 zq
 vL

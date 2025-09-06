@@ -203,6 +203,14 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
+"aE" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"aF" = (
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Garbage,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "aI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -4275,7 +4283,7 @@ wq
 zN
 zN
 JY
-vD
+aE
 IH
 Fu
 Gu
@@ -5341,7 +5349,7 @@ Iy
 Iy
 AO
 Wa
-vD
+aF
 vD
 IH
 bH

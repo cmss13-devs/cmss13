@@ -11,6 +11,26 @@
 /obj/effect/spawner/random/gun/cmb/highchance,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
+"ac" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"ad" = (
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_medical)
+"ae" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/prop/hybrisa/vehicles/Ambulance,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"af" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Cop,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_medical)
 "al" = (
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/medical/lobby)
@@ -683,15 +703,6 @@
 "Aa" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/valley/valley_medical)
-"Ac" = (
-/obj/structure/barricade/deployable{
-	damage_state = 1;
-	dir = 1;
-	health = 245;
-	icon_state = "folding_1"
-	},
-/turf/open/desert/dirt/desert_transition_edge1/southeast,
-/area/desert_dam/exterior/valley/valley_medical)
 "Ap" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal2"
@@ -816,16 +827,6 @@
 	icon_state = "stop_decal5"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_medical)
-"Es" = (
-/obj/structure/desertdam/decals/road_edge,
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 4
-	},
-/obj/structure/barricade/deployable{
-	dir = 1
-	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "Ew" = (
@@ -1616,7 +1617,7 @@ LP
 PL
 pp
 ek
-oK
+ae
 fx
 lZ
 eR
@@ -1875,7 +1876,7 @@ TB
 Eg
 Me
 yB
-Jw
+ac
 eR
 hp
 cG
@@ -1890,7 +1891,7 @@ St
 cQ
 cQ
 cQ
-Ac
+Ih
 ek
 oK
 lZ
@@ -1913,7 +1914,7 @@ wJ
 cG
 cG
 cG
-cG
+af
 KY
 rc
 ou
@@ -1936,7 +1937,7 @@ Yh
 Ps
 LB
 Ps
-Es
+Ps
 QJ
 Gx
 fx
@@ -2031,7 +2032,7 @@ sx
 sx
 sx
 sx
-sx
+ad
 Aa
 Yu
 Jw

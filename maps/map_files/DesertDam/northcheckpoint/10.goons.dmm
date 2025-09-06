@@ -3,6 +3,15 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/floor_plate/southwest,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"ab" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/spawner/random/claymore/midchance{
+	dir = 8
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "aM" = (
 /obj/item/ammo_magazine/rifle{
 	current_rounds = 0
@@ -191,12 +200,6 @@
 "tw" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/north_tunnel)
-"tY" = (
-/obj/effect/spawner/random/claymore/midchance{
-	dir = 8
-	},
-/turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "ur" = (
 /obj/effect/decal/warning_stripes{
@@ -505,6 +508,9 @@
 /obj/effect/decal/sand_overlay/sand2/corner2{
 	dir = 1
 	},
+/obj/structure/prop/hybrisa/vehicles/Armored_Truck/WY_Black{
+	dir = 1
+	},
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "UU" = (
@@ -591,8 +597,8 @@ jm
 jm
 jm
 jm
-VJ
-tY
+ab
+dW
 VI
 iP
 "}

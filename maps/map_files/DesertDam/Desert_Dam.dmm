@@ -4218,6 +4218,10 @@
 	},
 /turf/open/asphalt/cement,
 /area/desert_dam/exterior/valley/valley_security)
+"amV" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
 "amW" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1
@@ -7923,11 +7927,6 @@
 	},
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
-"azs" = (
-/obj/structure/prop/dam/crane,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/asphalt,
-/area/desert_dam/interior/dam_interior/south_tunnel)
 "azt" = (
 /obj/item/trash/cigbutt,
 /obj/structure/pipes/vents/pump{
@@ -14428,6 +14427,26 @@
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
+"aTL" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Light_Blue,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aTM" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"aTN" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Turquoise,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_hydro)
+"aTO" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Black{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
 "aTP" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -14436,6 +14455,17 @@
 	},
 /turf/open/desert/rock/deep/rock4,
 /area/desert_dam/interior/caves/temple)
+"aTQ" = (
+/obj/structure/cargo_container/hybrisa/containersextended/emptymedicalleft,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aTR" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/emptymedicalright,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "aTS" = (
 /obj/structure/desertdam/decals/road_edge,
 /obj/effect/decal/sand_overlay/sand1/corner1{
@@ -14443,6 +14473,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/bar_valley_dam)
+"aTT" = (
+/obj/structure/prop/hybrisa/vehicles/Ambulance,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "aTU" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 9
@@ -14461,6 +14495,19 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
+"aTX" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/vehicles/Meridian/Pink{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aTY" = (
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Brown{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/south_tunnel)
 "aTZ" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -14472,12 +14519,26 @@
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/stairwell/upper)
+"aUb" = (
+/obj/structure/prop/hybrisa/vehicles/Ambulance{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
+"aUc" = (
+/obj/structure/prop/hybrisa/vehicles/Box_Vans/Blue_Grey,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "aUd" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached14,
 /area/desert_dam/exterior/landing_pad_two)
+"aUe" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Brown,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_medical)
 "aUf" = (
 /obj/structure/stairs{
 	dir = 4
@@ -14491,9 +14552,116 @@
 	},
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/south_valley_dam)
+"aUh" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Green,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aUi" = (
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Garbage,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aUj" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsleft,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aUk" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenwywingsright,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aUl" = (
+/obj/structure/largecrate/supply{
+	pixel_x = -3;
+	pixel_y = 10
+	},
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 2
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aUm" = (
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/Red,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
 "aUn" = (
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/mining/workshop_foyer)
+"aUo" = (
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aUp" = (
+/obj/structure/largecrate/random/barrel/yellow{
+	pixel_x = -15;
+	pixel_y = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aUq" = (
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown_Cargo{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/south_valley_dam)
+"aUr" = (
+/obj/structure/prop/hybrisa/vehicles/Mining_Crawlers,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/central_caves)
+"aUs" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Red{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"aUt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/Desat_Blue,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"aUu" = (
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/White_Cargo,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/west_tunnel)
+"aUv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/north_valley_dam)
+"aUw" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_northwest)
+"aUx" = (
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/WY_Black,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aUy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N"
+	},
+/obj/structure/prop/hybrisa/vehicles/Long_Truck/WY_Blue{
+	dir = 1
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aUz" = (
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Red,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
+"aUA" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Purple,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_labs)
 "aUB" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
@@ -14501,6 +14669,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/north_valley_dam)
+"aUC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/science,
+/obj/item/storage/box/beakers,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_labs)
+"aUD" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_labs)
 "aUE" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -14508,6 +14686,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement/cement4,
 /area/desert_dam/interior/dam_interior/northwestern_tunnel)
+"aUF" = (
+/obj/structure/prop/hybrisa/vehicles/Box_Vans/White{
+	dir = 1;
+	pixel_y = -7
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_labs)
 "aUH" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -41988,13 +42173,6 @@
 	},
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
-"lDV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/prop/dam/van{
-	dir = 1
-	},
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_labs)
 "lDX" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -51464,13 +51642,6 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/tech_storage)
-"pmO" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
-/obj/structure/prop/dam/crane,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_wilderness)
 "pnd" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -53957,7 +54128,7 @@
 /turf/open/floor/prison/kitchen,
 /area/desert_dam/building/dorms/restroom)
 "qje" = (
-/obj/structure/prop/vehicles/crawler{
+/obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Crawler_Cargo{
 	dir = 1
 	},
 /turf/open/desert/dirt/desert_transition_corner1/east,
@@ -58046,7 +58217,7 @@
 /turf/open/floor/prison/whitepurple/northeast,
 /area/desert_dam/interior/lab_northeast/east_lab_east_hallway)
 "rKv" = (
-/obj/structure/prop/vehicles/crawler,
+/obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Science_2,
 /turf/open/desert/dirt/desert_transition_corner1/east,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rKy" = (
@@ -58822,7 +58993,7 @@
 /turf/open/floor/white,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "scz" = (
-/obj/structure/prop/vehicles/crawler{
+/obj/structure/prop/hybrisa/vehicles/Colony_Crawlers/Science_1{
 	dir = 1
 	},
 /turf/open/desert/dirt/desert_transition_corner1,
@@ -62841,7 +63012,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/obj/structure/prop/dam/truck/damaged,
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/White,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/landing_pad_one)
 "tEu" = (
@@ -71573,7 +71744,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "xbB" = (
-/obj/structure/prop/hybrisa/vehicles/Box_Vans/Blue_Grey,
+/obj/structure/prop/hybrisa/vehicles/Meridian/WeylandYutani,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "xcb" = (
@@ -142454,7 +142625,7 @@ dKu
 dKu
 loN
 dKu
-dKu
+aTM
 xYT
 iDA
 gOA
@@ -147076,7 +147247,7 @@ kmd
 ayf
 dph
 tRZ
-kmd
+aTY
 rDT
 kaH
 qaR
@@ -147310,7 +147481,7 @@ kmd
 cSi
 mPd
 tRZ
-azs
+ayf
 rDT
 kaH
 xny
@@ -148411,7 +148582,7 @@ ofU
 gnI
 pas
 umP
-umP
+aUw
 sIj
 nBv
 shB
@@ -153992,7 +154163,7 @@ kuG
 qHV
 vlt
 fai
-kuG
+aUA
 qHV
 loR
 vgT
@@ -154221,12 +154392,12 @@ qaR
 hpF
 cti
 vlt
-kuG
-fai
+aUF
+aUC
 qHV
 vlt
 kuG
-lDV
+fai
 qHV
 loR
 vgT
@@ -154380,7 +154551,7 @@ xqD
 gCq
 wLz
 ekN
-wLz
+aTn
 sAD
 beM
 gDs
@@ -154456,7 +154627,7 @@ hpF
 wBS
 vlt
 kuG
-kuG
+aUD
 qHV
 vlt
 kuG
@@ -154579,7 +154750,7 @@ jej
 jNV
 uqQ
 dnP
-hZP
+aTO
 bwr
 lLm
 oIi
@@ -155082,7 +155253,7 @@ eyD
 gCq
 wLz
 ekN
-wLz
+aTN
 sAD
 beM
 gDs
@@ -155202,7 +155373,7 @@ kcd
 jQl
 xwy
 eTA
-isp
+aUv
 mOu
 vLn
 pOR
@@ -156644,8 +156815,8 @@ eJW
 cVc
 dWm
 hey
-qUB
-qUB
+aUm
+aUj
 jey
 qUB
 qUB
@@ -156879,7 +157050,7 @@ brL
 dWm
 hey
 qUB
-qUB
+aUk
 jey
 qUB
 qUB
@@ -157113,7 +157284,7 @@ brL
 dWm
 hey
 qUB
-qUB
+aUl
 jey
 les
 pZa
@@ -158019,7 +158190,7 @@ kdW
 jQl
 xwy
 mnh
-gCN
+aUs
 mOu
 oaW
 tKX
@@ -159083,7 +159254,7 @@ iIp
 iIp
 tTb
 xqD
-wLz
+aTL
 wLz
 sAD
 beM
@@ -159864,7 +160035,7 @@ leR
 fCb
 uxM
 vIu
-jtK
+aUz
 cHV
 mUT
 uxM
@@ -160100,7 +160271,7 @@ uxM
 vIu
 jtK
 jtK
-pmO
+mUT
 tbi
 lpr
 pQQ
@@ -161361,7 +161532,7 @@ iWi
 hzF
 nfn
 dbE
-dbE
+aTX
 ffZ
 cle
 mGQ
@@ -161737,7 +161908,7 @@ jtK
 jtK
 ehk
 vEi
-xmG
+aUy
 fUM
 lXy
 bNN
@@ -162698,7 +162869,7 @@ hNt
 hNt
 oaW
 xwy
-nmP
+aUt
 isp
 mOu
 oaW
@@ -163663,8 +163834,8 @@ fzi
 epN
 jQW
 hey
-qUB
-qUB
+aUq
+aUo
 qUB
 jey
 qUB
@@ -163898,7 +164069,7 @@ epN
 jQW
 hey
 qUB
-qUB
+aUp
 qUB
 jey
 les
@@ -164171,7 +164342,7 @@ wKe
 wHG
 dbK
 lkt
-eeb
+aTT
 dbE
 dbE
 eeb
@@ -164406,7 +164577,7 @@ cRc
 ckJ
 lkt
 dbE
-eeb
+aTQ
 eeb
 eeb
 eeb
@@ -164640,7 +164811,7 @@ cRc
 ckJ
 wIZ
 xCi
-oaD
+aTR
 oaD
 oaD
 oaD
@@ -165036,7 +165207,7 @@ gSP
 vgo
 rxL
 sjt
-cla
+aUu
 qce
 kPy
 usF
@@ -166943,7 +167114,7 @@ ccH
 bne
 jBt
 hey
-qUB
+aUh
 qUB
 xeN
 oBM
@@ -168837,7 +169008,7 @@ uVS
 eeb
 ivE
 hVk
-eeb
+aUb
 aOU
 tVM
 dDi
@@ -170687,7 +170858,7 @@ qaR
 woJ
 jBt
 hey
-qUB
+aUi
 qUB
 qUB
 xeN
@@ -172043,7 +172214,7 @@ uSb
 uSb
 wgQ
 vvB
-jtK
+aUx
 mUT
 iCL
 oId
@@ -173046,7 +173217,7 @@ tXM
 szM
 iWi
 uVS
-eeb
+aUe
 eeb
 aOU
 cRc
@@ -176325,7 +176496,7 @@ nfn
 eeb
 eeb
 hVk
-eeb
+aUc
 aOU
 bhp
 iWi
@@ -178747,7 +178918,7 @@ gJb
 wEM
 bbz
 lQU
-bbz
+amV
 rsa
 lsv
 lIC
@@ -184463,7 +184634,7 @@ jDl
 jDl
 jDl
 jDl
-jDl
+aUr
 qaR
 qaR
 hor

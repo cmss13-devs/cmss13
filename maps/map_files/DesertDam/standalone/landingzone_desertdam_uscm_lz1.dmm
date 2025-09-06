@@ -239,7 +239,7 @@
 /area/desert_dam/building/administration/hallway)
 "aU" = (
 /obj/structure/flora/grass/desert/lightgrass_2,
-/obj/structure/prop/dam/truck/damaged,
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/White,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "aV" = (
@@ -1948,10 +1948,6 @@
 	icon_state = "6"
 	},
 /area/lv522/landing_zone_forecon/UD6_Tornado)
-"Do" = (
-/obj/structure/prop/dam/truck/cargo,
-/turf/open/asphalt,
-/area/desert_dam/exterior/landing_pad_one)
 "Dq" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison/bright_clean/southwest,
@@ -2110,7 +2106,7 @@
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
-/obj/structure/prop/dam/truck/damaged,
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/White,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/landing_pad_one)
 "FI" = (
@@ -4523,7 +4519,7 @@ Ur
 Ur
 Ur
 Ur
-Do
+Ur
 Ur
 je
 ar
@@ -5174,7 +5170,7 @@ hd
 hd
 WB
 HH
-vM
+yD
 yD
 vM
 aU

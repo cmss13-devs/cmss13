@@ -14,6 +14,10 @@
 /obj/item/flag/plantable/clf,
 /turf/open/floor/platingdmg1,
 /area/varadero/interior/research)
+"ad" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/varadero,
+/turf/open/floor/platingdmg3,
+/area/varadero/interior/research)
 "af" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/item/stack/tile/plasteel{
@@ -763,6 +767,7 @@
 /turf/open/floor/plating/icefloor/asteroidplating,
 /area/varadero/interior/maintenance/research)
 "sD" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/varadero,
 /turf/open/floor/platingdmg3,
 /area/varadero/interior/research)
 "sU" = (
@@ -2657,7 +2662,7 @@ Km
 TV
 AS
 AS
-sD
+ad
 vF
 Sl
 Dp

@@ -336,6 +336,10 @@
 /obj/structure/machinery/vending/snack,
 /turf/open/floor/almayer/green/north,
 /area/lv624/lazarus/crashed_ship)
+"bd" = (
+/obj/effect/landmark/survivor_spawner/clf_synth,
+/turf/open/floor/almayer/bluecorner/north,
+/area/lv624/lazarus/crashed_ship)
 "bf" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -1427,6 +1431,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/effect/landmark/survivor_spawner/clf_coordinator,
 /turf/open/floor/almayer/bluecorner/east,
 /area/lv624/lazarus/crashed_ship)
 "MO" = (
@@ -2734,7 +2739,7 @@ DS
 jH
 uX
 Xq
-xI
+bd
 yX
 NI
 jr

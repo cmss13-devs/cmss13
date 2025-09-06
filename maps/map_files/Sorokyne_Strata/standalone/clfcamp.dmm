@@ -850,6 +850,10 @@
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
+"ck" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/soro,
+/turf/open/floor/strata/orange_cover,
+/area/strata/interior/outpost/clf_dorms)
 "cl" = (
 /obj/structure/sign/poster/clf{
 	pixel_y = 34;
@@ -1067,6 +1071,10 @@
 "cR" = (
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/far_north_outpost)
+"cS" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/soro,
+/turf/open/floor/wood,
+/area/strata/interior/outpost/clf_office)
 "dk" = (
 /turf/open/floor/wood/wood_broken6,
 /area/strata/interior/outpost/clf_dorms)
@@ -2717,7 +2725,7 @@ Ef
 fR
 xH
 bL
-Sl
+ck
 Sl
 Sl
 xH
@@ -2803,7 +2811,7 @@ cH
 cH
 bA
 cM
-xt
+cS
 jw
 OF
 ev

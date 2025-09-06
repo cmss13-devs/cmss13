@@ -229,7 +229,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
 		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
 			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
-				if(spawner.archetype != INSERT_SYNTH)
+				if(spawner.archetype != INSERT_SYNTH && spawner.archetype != INSERT_NONE) //Only add synth landmarks or normal survs
 					continue
 				if(spawner.hostile == hostile_scenario)
 					available_landmarks += spawner
@@ -281,7 +281,7 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
 		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
 			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
-				if(spawner.archetype != INSERT_CO)
+				if(spawner.archetype != INSERT_CO && spawner.archetype != INSERT_NONE) //Only add CO landmarks or normal survs
 					continue
 				if(spawner.hostile == hostile_scenario)
 					available_landmarks += spawner

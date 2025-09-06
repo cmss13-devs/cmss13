@@ -108,11 +108,22 @@
 	xeno.animation_attack_on(src)
 	xeno.flick_attack_overlay(src, "slash")
 	playsound(loc, 'sound/effects/metalhit.ogg', 25)
-	var/obj/item/mortar_kit/MK = new /obj/item/mortar_kit(loc)
-	MK.name = name
+	var/obj/item/mortar_kit/kit = new /obj/item/mortar_kit(loc)
+	kit.name = name
 	qdel(src)
 
 	return XENO_ATTACK_ACTION
+
+/obj/structure/mortar/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	if(unslashable || fixed || firing)
+		return TAILSTAB_COOLDOWN_NONE
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] with its tail knocking it over!"),
+	SPAN_DANGER("We smash [src] with our tail knocking it over!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	var/obj/item/mortar_kit/kit = new /obj/item/mortar_kit(loc)
+	kit.name = name
+	qdel(src)
+	return TAILSTAB_COOLDOWN_NORMAL
 
 /obj/structure/mortar/attack_hand(mob/user)
 	if(isyautja(user))

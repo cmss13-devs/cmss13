@@ -1045,9 +1045,15 @@
 		return FALSE
 
 	if(stabbing_xeno.z != targetted_atom.z)
-		return
+		var/turf/xeno_turf = get_turf(stabbing_xeno)
+		var/turf/xeno_turf_above = SSmapping.get_turf_above(xeno_turf)
+		var/turf/xeno_turf_below = SSmapping.get_turf_below(xeno_turf)
+		if(xeno_turf_above?.z != targetted_atom.z && xeno_turf_below?.z != targetted_atom.z)
+			return
 
 	var/distance = get_dist(stabbing_xeno, targetted_atom)
+	if(stabbing_xeno.z != targetted_atom.z)
+		distance++
 	if(distance > stab_range)
 		return FALSE
 

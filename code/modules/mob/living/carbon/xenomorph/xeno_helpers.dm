@@ -17,6 +17,9 @@
 		if(IS_XENO_LEADER(src))
 			if(hive.destruction_allowed == NORMAL_XENO || hive.destruction_allowed == XENO_LEADER)
 				return TRUE
+		if(client.get_total_xeno_playtime() < JOB_PLAYTIME_TIER_1)
+			message_admins("[key_name_admin(src)] attempted to destroy a xeno structure with under 10 hours playtime!")
+			return FALSE
 		if(hive.destruction_allowed == NORMAL_XENO && isxeno_builder(src))
 			return TRUE
 		if(isqueen(src))

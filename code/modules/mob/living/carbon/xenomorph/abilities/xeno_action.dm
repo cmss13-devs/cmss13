@@ -26,6 +26,11 @@
 
 	var/charges = NO_ACTION_CHARGES
 
+	//Shielder content
+	var/plasma_channel_timer = null
+	var/plasma_channel_tick = 1 SECONDS
+	var/plasma_channel_max_duration = 10 SECONDS
+
 /datum/action/xeno_action/New(Target, override_icon_state)
 	. = ..()
 	if(charges != NO_ACTION_CHARGES)
@@ -69,21 +74,21 @@
 	if(!owner)
 		return
 	var/mob/living/carbon/xenomorph/xeno = owner
-	if (name && GLOB.round_statistics)
+	if(name && GLOB.round_statistics)
 		GLOB.round_statistics.track_ability_usage(name)
 		xeno.track_ability_usage(name, xeno.caste_type)
 
 /datum/action/xeno_action/can_use_action()
 	if(!owner)
 		return FALSE
-	var/mob/living/carbon/xenomorph/X = owner
-	if(X && !X.is_mob_incapacitated() && !HAS_TRAIT(X, TRAIT_DAZED) && X.body_position == STANDING_UP && !X.buckled && X.plasma_stored >= plasma_cost)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(xeno && !xeno.is_mob_incapacitated() && !HAS_TRAIT(xeno, TRAIT_DAZED) && xeno.body_position == STANDING_UP && !xeno.buckled && xeno.plasma_stored >= plasma_cost)
 		return TRUE
 
-/datum/action/xeno_action/give_to(mob/living/L)
+/datum/action/xeno_action/give_to(mob/living/living)
 	..()
 	if(macro_path)
-		add_verb(L, macro_path)
+		add_verb(living, macro_path)
 
 /datum/action/xeno_action/update_button_icon()
 	if(!button)
@@ -101,7 +106,7 @@
 // Helper proc that checks and uses plasma if possible, returning TRUE
 // if the use was successful
 /datum/action/xeno_action/proc/check_and_use_plasma_owner(plasma_to_use)
-	if (!check_plasma_owner(plasma_to_use))
+	if(!check_plasma_owner(plasma_to_use))
 		return FALSE
 
 	use_plasma_owner(plasma_to_use)
@@ -117,8 +122,8 @@
 	if(plasma_to_use)
 		plasma_to_check = plasma_to_use
 
-	var/mob/living/carbon/xenomorph/X = owner
-	return X.check_plasma(plasma_to_check)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	return xeno.check_plasma(plasma_to_check)
 
 // Uses plasma on the owner.
 /datum/action/xeno_action/proc/use_plasma_owner(plasma_to_use)
@@ -129,8 +134,8 @@
 	if(plasma_to_use)
 		plasma_to_check = plasma_to_use
 
-	var/mob/living/carbon/xenomorph/X = owner
-	X.use_plasma(plasma_to_check)
+	var/mob/living/carbon/xenomorph/xeno = owner
+	xeno.use_plasma(plasma_to_check)
 
 /// A wrapper for use_ability that sends a signal
 /datum/action/xeno_action/proc/use_ability_wrapper(...)
@@ -225,9 +230,9 @@
 /datum/action/xeno_action/proc/apply_cooldown(cooldown_modifier = 1)
 	if(!owner)
 		return
-	var/mob/living/carbon/xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	// Uh oh! STINKY! already on cooldown
-	if (cooldown_timer_id != TIMER_ID_NULL)
+	if(cooldown_timer_id != TIMER_ID_NULL)
 	/*
 		Debug log disabled due to our historical inability at doing anything meaningful about it
 		And to make room for ones that matter more in regard to our ability to fix.
@@ -244,7 +249,7 @@
 	if(!cooldown_to_apply)
 		return
 
-	cooldown_to_apply = cooldown_to_apply * (1 - clamp(X.cooldown_reduction_percentage, 0, 0.5))
+	cooldown_to_apply = cooldown_to_apply * (1 - clamp(xeno.cooldown_reduction_percentage, 0, 0.5))
 
 	// Add a unique timer
 	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_to_apply, TIMER_UNIQUE|TIMER_STOPPABLE)
@@ -265,9 +270,9 @@
 	if(cooldown_timer_id != TIMER_ID_NULL)
 		deltimer(cooldown_timer_id)
 
-	var/mob/living/carbon/xenomorph/X = owner
+	var/mob/living/carbon/xenomorph/xeno = owner
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
-	cooldown_duration = cooldown_duration * (1 - clamp(X.cooldown_reduction_percentage, 0, 0.5))
+	cooldown_duration = cooldown_duration * (1 - clamp(xeno.cooldown_reduction_percentage, 0, 0.5))
 	cooldown_timer_id = addtimer(CALLBACK(src, PROC_REF(on_cooldown_end)), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
 	current_cooldown_start_time = world.time
@@ -282,7 +287,7 @@
 // that it can do stuff again and handles any other end-of-cooldown behavior. ability_cooldown_over
 // is called when a cooldown ends prematurely and otherwise.
 /datum/action/xeno_action/proc/on_cooldown_end()
-	if (cooldown_timer_id == TIMER_ID_NULL)
+	if(cooldown_timer_id == TIMER_ID_NULL)
 		/* See notes above in apply_cooldown()
 		log_debug("Xeno action [src] tried to go off cooldown while already off cooldown.")
 		log_admin("Xeno action [src] tried to go off cooldown while already off cooldown.")
@@ -298,7 +303,7 @@
 
 // Immediately force-ends the current cooldown.
 /datum/action/xeno_action/proc/end_cooldown()
-	if (cooldown_timer_id == TIMER_ID_NULL)
+	if(cooldown_timer_id == TIMER_ID_NULL)
 		/* See notes above in apply_cooldown()
 		log_debug("Xeno action [src] tried to force end cooldown while already off cooldown.")
 		log_admin("Xeno action [src] tried to force end cooldown while already off cooldown.")
@@ -316,7 +321,7 @@
 // we tracked earlier, because unfortunately the timer SS doesn't support querying the time from
 // an existing timer by ID. So we just delete it and add a new one if necessary
 /datum/action/xeno_action/proc/reduce_cooldown(amount)
-	if (cooldown_timer_id == TIMER_ID_NULL)
+	if(cooldown_timer_id == TIMER_ID_NULL)
 		/* See notes above in apply_cooldown()
 		log_debug("Xeno action [src] tried to force end cooldown while already off cooldown.")
 		log_admin("Xeno action [src] tried to force end cooldown while already off cooldown.")
@@ -328,7 +333,7 @@
 	cooldown_timer_id = TIMER_ID_NULL
 
 	// Are we done, or do we need to add a new timer
-	if ((current_cooldown_start_time + current_cooldown_duration - amount) < world.time)
+	if((current_cooldown_start_time + current_cooldown_duration - amount) < world.time)
 		// We are done, no more cooldown.
 		current_cooldown_start_time = 0
 		current_cooldown_duration = 0
@@ -351,8 +356,8 @@
 /datum/action/xeno_action/proc/ability_cooldown_over()
 	if(!owner)
 		return
-	for(var/X in owner.actions)
-		var/datum/action/act = X
+	for(var/xeno in owner.actions)
+		var/datum/action/act = xeno
 		act.update_button_icon()
 	if(!no_cooldown_msg && owner.client?.prefs.show_cooldown_messages)
 		if(cooldown_message)
@@ -377,33 +382,33 @@
 	deltimer(charge_timer_id)
 	charge_timer_id = TIMER_ID_NULL
 
-// Helper proc to check if there is anything blocking the way from mob M to the atom A
+// Helper proc to check if there is anything blocking the way from mob "mob" to the atom "atom"
 // Max distance can be supplied to check some of the way instead of the whole way.
-/proc/check_clear_path_to_target(mob/M, atom/A, smash_windows = TRUE, max_distance = 1000)
-	if(A.z != M.z)
+/proc/check_clear_path_to_target(mob/mob, atom/atom, smash_windows = TRUE, max_distance = 1000)
+	if(atom.z != mob.z)
 		return FALSE
 
-	var/list/turf/path = get_line(M, A, include_start_atom = FALSE)
+	var/list/turf/path = get_line(mob, atom, include_start_atom = FALSE)
 	var/distance = 0
-	for(var/turf/T in path)
+	for(var/turf/turf in path)
 		if(distance >= max_distance)
 			return FALSE
 		distance++
 
-		if(T.density || T.opacity)
+		if(turf.density || turf.opacity)
 			return FALSE
 
 		// H'yup, it's the snowflake check for dropships
-		if(istype(T, /turf/closed/shuttle/))
+		if(istype(turf, /turf/closed/shuttle/))
 			return FALSE
 
-		for(var/obj/structure/S in T)
-			if(istype(S, /obj/structure/window/framed) && smash_windows)
-				var/obj/structure/window/framed/W = S
+		for(var/obj/structure/structure in turf)
+			if(istype(structure, /obj/structure/window/framed) && smash_windows)
+				var/obj/structure/window/framed/W = structure
 				if(!W.unslashable)
 					W.deconstruct(disassembled = FALSE)
 
-			if(S.opacity)
+			if(structure.opacity)
 				return FALSE
 
 	return TRUE
@@ -468,5 +473,5 @@
 	else
 		button.set_maptext(SMALL_FONTS(7, round(time_left/10, 0.1)), 4, 4)
 
-#define XENO_ACTION_CHECK(X) if(!X.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
-#define XENO_ACTION_CHECK_USE_PLASMA(X) if(!X.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return
+#define XENO_ACTION_CHECK(xeno) if(!xeno.check_state() || !action_cooldown_check() || !check_plasma_owner(src.plasma_cost)) return
+#define XENO_ACTION_CHECK_USE_PLASMA(xeno) if(!xeno.check_state() || !action_cooldown_check() || !check_and_use_plasma_owner(src.plasma_cost)) return

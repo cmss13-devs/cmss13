@@ -12,6 +12,7 @@ import {
   openChatSettings,
   removeHighlightSetting,
   toggleSettings,
+  updateHighlightKeywords,
   updateHighlightSetting,
   updateSettings,
 } from './actions';
@@ -35,6 +36,7 @@ const initialState = {
   highlightSettingById: {
     [defaultHighlightSetting.id]: defaultHighlightSetting,
   },
+  highlightKeywords: {},
   view: {
     visible: false,
     activeTab: SETTINGS_TABS[0].id,
@@ -189,6 +191,15 @@ export function settingsReducer(
             defaultHighlightSetting;
         }
       }
+
+      return nextState;
+    }
+
+    case updateHighlightKeywords.type: {
+      const nextState = {
+        ...state,
+        highlightKeywords: payload,
+      };
 
       return nextState;
     }

@@ -1405,6 +1405,12 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "Skull of a militant hive ruler, lord of destruction."
 	icon_state = "king_skull"
 
+/obj/item/skull/despoiler
+	name = "Despoiler skull"
+	desc = "Skull of a decrepit wretch, the surface still stinging your hands."
+	icon_state = "despoiler_skull"
+
+
 /obj/item/skull/lurker
 	name = "Lurker skull"
 	desc = "Skull of a stealthy xenomorph, a nocturnal entity."
@@ -1506,6 +1512,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "King pelt"
 	desc = "The pelt of a militant hive ruler, lord of destruction."
 	icon_state = "king_pelt"
+
+/obj/item/pelt/despoiler
+	name = "Despoiler pelt"
+	desc = "The pelt of a decrepit wretch, the surface still stinging your hands"
+	icon_state = "despoiler_pelt"
 
 /obj/item/pelt/lurker
 	name = "Lurker pelt"

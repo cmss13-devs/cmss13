@@ -10,7 +10,6 @@
 	data["apollo_access_log"] = apollo_login_list
 	data["apollo_log"] = apollo_log
 
-
 	data["distresstime"] = ares_distress_cooldown
 	data["distresstimelock"] = DISTRESS_TIME_LOCK
 	data["quarterstime"] = ares_quarters_cooldown

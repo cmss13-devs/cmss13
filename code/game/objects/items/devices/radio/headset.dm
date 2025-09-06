@@ -495,6 +495,12 @@
 	icon_state = "eng_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/engi)
 
+/obj/item/device/radio/headset/almayer/mt/joe
+	name = "working joe radio headset"
+	desc = "The headset used by working joe synthetics. To access the engineering channel, use :n. To access the AI Core internal network, use :q."
+	icon_state = "eng_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/engi, /obj/item/device/encryptionkey/aicore)
+
 /obj/item/device/radio/headset/almayer/chef
 	name = "kitchen radio headset"
 	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel, using :u and inform command of delivery service using :v."
@@ -648,6 +654,16 @@
 	. = ..()
 	spy_bug.nametag = "CL Radio"
 
+/obj/item/device/radio/headset/almayer/mcl/aist
+	name = "corporate AI service technician headset"
+	desc = "A standard issue corporate liaison headset, modified for AIST responsibilities. Allows the wearer to listen to, and broadcast over, the APOLLO Link. (Use :+)"
+	icon_state = "aist_wy_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/binary, /obj/item/device/encryptionkey/mcom/cl, /obj/item/device/encryptionkey/aicore)
+
+/obj/item/device/radio/headset/almayer/mcl/aist/Initialize()
+	. = ..()
+	spy_bug.nametag = "AIST Radio"
+
 /obj/item/device/radio/headset/almayer/reporter
 	name = "reporter radio headset"
 	desc = "Used by the combat correspondent to get the scoop. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - intel."
@@ -697,6 +713,12 @@
 		"Intel SL" = TRACKER_ISL
 	)
 
+/obj/item/device/radio/headset/almayer/mcom/cdrcom/aist
+	name = "marine AI service technician headset"
+	desc = "A modified senior command headset issued to USCM AISTs. Allows the wearer to listen to, and broadcast over, the APOLLO Link. (Use :+)"
+	icon_state = "aist_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/binary, /obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/aicore)
+
 /obj/item/device/radio/headset/almayer/mcom/sea
 	name = "marine senior enlisted advisor headset"
 	desc = "Issued only to senior enlisted advisors. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :n - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - intel"
@@ -720,6 +742,8 @@
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom/ai
+	name = "USCM AI Headset"
+	desc = "The integrated headset of a W-Y built USCM Ship AI"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/synth/ai)
 	volume = RADIO_VOLUME_CRITICAL
 

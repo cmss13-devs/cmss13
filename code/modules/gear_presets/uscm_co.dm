@@ -38,7 +38,7 @@
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
 
-	minimap_icon = "co"
+	minimap_icon_state = "co"
 	minimap_background = "background_command"
 
 

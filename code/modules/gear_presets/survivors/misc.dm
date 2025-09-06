@@ -502,7 +502,7 @@ Everything below isn't used or out of place.
 	origin_override = ORIGIN_WY_SEC
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_COMMAND, ACCESS_CIVILIAN_BRIG, ACCESS_WY_COLONIAL)
-	minimap_icon = "goon_standard"
+	minimap_icon_state = "goon_standard"
 	minimap_background = "background_goon"
 
 	survivor_variant = SECURITY_SURVIVOR
@@ -588,7 +588,7 @@ Everything below isn't used or out of place.
 	assignment = "LACN Commander"
 	skills = /datum/skills/commander
 	paygrades = list(PAY_SHORT_NO5 = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "xo"
+	minimap_icon_state = "xo"
 	minimap_background = "background_shipside"
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "LACN CDR"

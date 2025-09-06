@@ -164,13 +164,13 @@
 				else if(human.mob_flags & MUTINY_NONCOMBAT)
 					serialized["mutiny_status"] = "Non-Combatant"
 
-				var/icon = human.assigned_equipment_preset?.minimap_icon
+				var/icon = human.assigned_equipment_preset?.minimap_icon_state
 				if(islist(icon))
 					for(var/key in icon)
 						icon = key
 						break
-				if(id_card?.minimap_icon_override)
-					icon = id_card.minimap_icon_override
+				if(id_card?.minimap_icon_state_override)
+					icon = id_card.minimap_icon_state_override
 				if(human.rank_override)
 					icon = human.rank_override
 				serialized["icon"] = icon ? icon : "private"

@@ -8,7 +8,7 @@
 	uses_special_name = TRUE
 	skills = /datum/skills/yautja/warrior
 
-	minimap_icon = "predator"
+	minimap_icon_state = "predator"
 
 	var/default_cape_type = "None"
 	var/clan_rank
@@ -74,7 +74,7 @@
 
 /datum/equipment_preset/yautja/youngblood //normal WL youngblood rank
 	name = "Yautja Young"
-	minimap_icon = "predator_young"
+	minimap_icon_state = "predator_young"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	clan_rank = CLAN_RANK_UNBLOODED_INT
 
@@ -93,7 +93,7 @@
 // ELITE
 /datum/equipment_preset/yautja/elite
 	name = "Yautja Elite"
-	minimap_icon = "predator_elite"
+	minimap_icon_state = "predator_elite"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_HALF_CAPE
 	clan_rank = CLAN_RANK_ELITE_INT
@@ -106,7 +106,7 @@
 // ELDER
 /datum/equipment_preset/yautja/elder
 	name = "Yautja Elder"
-	minimap_icon = "predator_elder"
+	minimap_icon_state = "predator_elder"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_THIRD_CAPE
 	clan_rank = CLAN_RANK_ELDER_INT
@@ -119,7 +119,7 @@
 // CLAN LEADER
 /datum/equipment_preset/yautja/leader
 	name = "Yautja Leader"
-	minimap_icon = "predator_leader"
+	minimap_icon_state = "predator_leader"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_CAPE
 	clan_rank = CLAN_RANK_LEADER_INT
@@ -132,7 +132,7 @@
 // ANCIENT
 /datum/equipment_preset/yautja/ancient
 	name = "Yautja Ancient"
-	minimap_icon = "predator_ancient"
+	minimap_icon_state = "predator_ancient"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	default_cape_type = PRED_YAUTJA_PONCHO
 	clan_rank = CLAN_RANK_ADMIN_INT
@@ -144,7 +144,7 @@
 
 /datum/equipment_preset/yautja/non_wl //For hunting grounds ONLY
 	name = "Yautja Young (non-WL)"
-	minimap_icon = "predator_young"
+	minimap_icon_state = "predator_young"
 	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -156,7 +156,7 @@
 
 /datum/equipment_preset/yautja/non_wl_leader //The "leader" of the group if a WL player is not on
 	name = "Yautja Youngblood pack leader (non-WL)"
-	minimap_icon = "predator_young"
+	minimap_icon_state = "predator_young"
 	job_title = "Young Blood"
 	faction = FACTION_YAUTJA_YOUNG
 	flags = EQUIPMENT_PRESET_START_OF_ROUND

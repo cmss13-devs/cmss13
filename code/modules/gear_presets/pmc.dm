@@ -64,7 +64,7 @@
 
 	assignment = JOB_PMC_STANDARD
 	job_title = JOB_PMC_STANDARD
-	minimap_icon = "pmc_gun"
+	minimap_icon_state = "pmc_gun"
 	paygrades = list(PAY_SHORT_PMC_OP = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
@@ -246,7 +246,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_DETAINER
 	job_title = JOB_PMC_DETAINER
-	minimap_icon = "pmc_mp"
+	minimap_icon_state = "pmc_mp"
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
@@ -380,7 +380,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_CROWD_CONTROL
 	job_title = JOB_PMC_CROWD_CONTROL
-	minimap_icon = "pmc_riot"
+	minimap_icon_state = "pmc_riot"
 	paygrades = list(PAY_SHORT_PMC_EN = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc
 
@@ -438,7 +438,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_MEDIC
 	job_title = JOB_PMC_MEDIC
-	minimap_icon = "pmc_md"
+	minimap_icon_state = "pmc_md"
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CM"
 	skills = /datum/skills/pmc/medic
@@ -627,7 +627,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_INVESTIGATOR
 	job_title = JOB_PMC_INVESTIGATOR
-	minimap_icon = "pmc_mi"
+	minimap_icon_state = "pmc_mi"
 	paygrades = list(PAY_SHORT_PMC_MS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc/medic/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
@@ -821,7 +821,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
 
-	minimap_icon = "pmc_ld"
+	minimap_icon_state = "pmc_ld"
 
 	skills = /datum/skills/pmc/SL
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
@@ -980,7 +980,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	job_title = JOB_PMC_LEAD_INVEST
 	paygrades = list(PAY_SHORT_PMC_TL = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SL"
-	minimap_icon = "cia_lo"
+	minimap_icon_state = "cia_lo"
 	skills = /datum/skills/pmc/SL/chem
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command
 
@@ -1128,7 +1128,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_PMC_SS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SG"
 
-	minimap_icon = "pmc_sg"
+	minimap_icon_state = "pmc_sg"
 
 	skills = /datum/skills/pmc/smartgunner
 
@@ -1238,7 +1238,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	job_title = JOB_PMC_SNIPER
 	paygrades = list(PAY_SHORT_PMC_WS = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Spc"
-	minimap_icon = "pmc_spec"
+	minimap_icon_state = "pmc_spec"
 	skills = /datum/skills/pmc/specialist
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
 
@@ -1360,7 +1360,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 
 	assignment = JOB_PMC_CREWMAN
 	job_title = JOB_PMC_CREWMAN
-	minimap_icon = "pmc_vc"
+	minimap_icon_state = "pmc_vc"
 	paygrades = list(PAY_SHORT_PMC_VS = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/pmc/tank_crew
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
@@ -1498,7 +1498,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_PMC_DOC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "SGN"
 
-	minimap_icon = "pmc_ld"
+	minimap_icon_state = "pmc_ld"
 
 	skills = /datum/skills/pmc/doctor
 	headset_type = /obj/item/device/radio/headset/distress/pmc/medic
@@ -1678,7 +1678,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	paygrades = list(PAY_SHORT_PMC_TEC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "TEC"
 
-	minimap_icon = "mt"
+	minimap_icon_state = "mt"
 
 	skills = /datum/skills/pmc/engineer
 	headset_type = /obj/item/device/radio/headset/distress/pmc/cct
@@ -1842,7 +1842,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	role_comm_title = "DIR"
 	skills = /datum/skills/pmc/director
 
-	minimap_icon = "pmc_sd"
+	minimap_icon_state = "pmc_sd"
 
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
 
@@ -1881,7 +1881,7 @@ list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	idtype = /obj/item/card/id/pmc
 	assignment = JOB_PMC_SYNTH
 	job_title = JOB_PMC_SYNTH
-	minimap_icon = "pmc_syn"
+	minimap_icon_state = "pmc_syn"
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "WY Syn"
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command

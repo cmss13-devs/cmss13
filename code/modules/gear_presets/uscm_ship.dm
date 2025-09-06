@@ -53,7 +53,7 @@
 	role_comm_title = "CL"
 	skills = /datum/skills/civilian
 
-	minimap_icon = "cl"
+	minimap_icon_state = "cl"
 	minimap_background = "background_goon"
 
 /datum/equipment_preset/uscm_ship/liaison/New()
@@ -98,7 +98,7 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id/silver/cl
 
-	minimap_icon = "correspondent"
+	minimap_icon_state = "correspondent"
 	minimap_background = "background_civillian"
 	dress_under = list()
 	dress_over = list()
@@ -133,7 +133,7 @@
 	skills = /datum/skills/pfc
 	idtype = /obj/item/card/id/dogtag
 
-	minimap_icon = "correspondent"
+	minimap_icon_state = "correspondent"
 	minimap_background = "background_civillian"
 
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -186,7 +186,7 @@
 	minimum_age = 25
 	skills = /datum/skills/CE
 
-	minimap_icon = "ce"
+	minimap_icon_state = "ce"
 	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/ce)
@@ -221,7 +221,7 @@
 	role_comm_title = "MT"
 	skills = /datum/skills/MT
 
-	minimap_icon = "mt"
+	minimap_icon_state = "mt"
 	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
@@ -257,7 +257,7 @@
 	role_comm_title = "OT"
 	skills = /datum/skills/OT
 
-	minimap_icon = "ot"
+	minimap_icon_state = "ot"
 	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/engi)
@@ -303,7 +303,7 @@
 	minimum_age = 25
 	skills = /datum/skills/RO
 
-	minimap_icon = "cargo"
+	minimap_icon_state = "cargo"
 	minimap_background = "background_command"
 
 	utility_under = list(/obj/item/clothing/under/rank/qm_suit)
@@ -337,7 +337,7 @@
 	role_comm_title = "CT"
 	skills = /datum/skills/CT
 
-	minimap_icon = "cargo"
+	minimap_icon_state = "cargo"
 	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/rank/cargotech)
@@ -376,7 +376,7 @@
 	minimum_age = 27
 	skills = /datum/skills/XO
 
-	minimap_icon = "xo"
+	minimap_icon_state = "xo"
 	minimap_background = "background_command"
 
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
@@ -416,7 +416,7 @@
 	minimum_age = 23
 	skills = /datum/skills/SO
 
-	minimap_icon = "so"
+	minimap_icon_state = "so"
 	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/so/load_gear(mob/living/carbon/human/new_human)
@@ -447,7 +447,7 @@
 	minimum_age = 40
 	skills = /datum/skills/SEA
 
-	minimap_icon = "sea"
+	minimap_icon_state = "sea"
 	minimap_background = "background_command"
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
@@ -496,7 +496,7 @@
 	minimum_age = 25
 	skills = /datum/skills/auxiliary_officer
 
-	minimap_icon = "aso"
+	minimap_icon_state = "aso"
 	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/auxiliary_officer/New()
@@ -558,7 +558,7 @@
 	minimum_age = 23
 	skills = /datum/skills/pilot
 
-	minimap_icon = "gp"
+	minimap_icon_state = "gp"
 	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/gp/load_gear(mob/living/carbon/human/new_human)
@@ -610,7 +610,7 @@
 	minimum_age = 23
 	skills = /datum/skills/pilot
 
-	minimap_icon = "pilot"
+	minimap_icon_state = "pilot"
 	minimap_background = "background_command"
 
 /datum/equipment_preset/uscm_ship/dp/load_gear(mob/living/carbon/human/new_human)
@@ -661,7 +661,7 @@
 	role_comm_title = "DCC"
 	skills = /datum/skills/crew_chief
 
-	minimap_icon = "dcc"
+	minimap_icon_state = "dcc"
 	minimap_background = "background_shipside"
 
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -753,7 +753,7 @@
 	role_comm_title = "MST"
 	skills = /datum/skills/mess_technician
 
-	minimap_icon = "mst"
+	minimap_icon_state = "mst"
 	minimap_background = "background_shipside"
 
 	utility_under = list(/obj/item/clothing/under/marine/chef)

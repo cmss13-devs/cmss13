@@ -69,7 +69,7 @@
 /datum/equipment_preset/survivor/security/solaris
 	name = "Survivor - Solaris United Americas Peacekeepers"
 	assignment = "United Americas Peacekeeper"
-	minimap_icon = "peacekeeper"
+	minimap_icon_state = "peacekeeper"
 	minimap_background = "background_ua"
 
 /datum/equipment_preset/survivor/security/solaris/load_gear(mob/living/carbon/human/new_human)
@@ -88,7 +88,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	role_comm_title = "CMB MAR"
 	paygrades = list(PAY_SHORT_CMBM = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "deputy"
+	minimap_icon_state = "deputy"
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/marshal
 	skills = /datum/skills/cmb/co_survivor
@@ -134,7 +134,7 @@
 	name = "Survivor - Solaris United States Colonial Marine Corps Recruiter"
 	assignment = "USCM Recruiter"
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "recruiter"
+	minimap_icon_state = "recruiter"
 	minimap_background = "background_medical"
 	skills = /datum/skills/civilian/survivor/uscm_recruiter
 

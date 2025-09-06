@@ -1,7 +1,7 @@
 /datum/equipment_preset/survivor/engineer/soro_industry_contractor
 	name = "Survivor - UPP - Ministry of Industry - Infrastructure Engineer"
 	assignment = "Inzhener Infrastruktury"
-	minimap_icon = "upp_cont"
+	minimap_icon_state = "upp_cont"
 	minimap_background = "background_upp_bravo"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
@@ -34,7 +34,7 @@
 /datum/equipment_preset/survivor/engineer/soro_reactor_tech
 	name = "Survivor - UPP - Ministry of Energy - Reactor Technician"
 	assignment = "Tekhnik Reaktora"
-	minimap_icon = "upp_cont"
+	minimap_icon_state = "upp_cont"
 	minimap_background = "background_upp_bravo"
 	faction_group = FACTION_LIST_SURVIVOR_UPP
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
@@ -85,7 +85,7 @@
 	name = "Survivor - UPP - People's Armed Police Officer"
 	assignment = "Narodnyy Vooruzhennyy Politsioner"
 	faction_group = FACTION_LIST_SURVIVOR_PAP
-	minimap_icon = "upp_sec"
+	minimap_icon_state = "upp_sec"
 	minimap_background = "background_upp_alpha"
 	paygrades = list(PAY_SHORT_PAP_MLTS = JOB_PLAYTIME_TIER_0, PAY_SHORT_PAP_SMLTS = JOB_PLAYTIME_TIER_3, PAY_SHORT_PAP_STRSH = JOB_PLAYTIME_TIER_4)
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
@@ -123,7 +123,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = FACTION_LIST_SURVIVOR_UPP
-	minimap_icon = "upp_pvt"
+	minimap_icon_state = "upp_pvt"
 	minimap_background = "background_upp"
 	role_comm_title = "202/ARMY"
 	idtype = /obj/item/card/id/dogtag/upp
@@ -196,7 +196,7 @@
 /datum/equipment_preset/survivor/doctor/soro
 	name = "Survivor - UPP - Ministry of Health - Doctor"
 	assignment = "Doktor Ministerstva Zdravookhraneniya"
-	minimap_icon = "upp_doc"
+	minimap_icon_state = "upp_doc"
 	minimap_background = "background_upp_medical"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
@@ -264,7 +264,7 @@
 /datum/equipment_preset/survivor/scientist/soro
 	name = "Survivor - UPP - Cosmos Exploration Corps Researcher"
 	assignment = "Issledovatel' Korpusa Kosmicheskoy Eksploratsii"
-	minimap_icon = "upp_sci"
+	minimap_icon_state = "upp_sci"
 	minimap_background = "background_upp_charlie"
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_CHINESE)
 	faction = FACTION_UPP
@@ -524,7 +524,7 @@
 	)
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_CHINESE)
 	survivor_variant = CORPORATE_SURVIVOR
-	minimap_icon = "hc_cl"
+	minimap_icon_state = "hc_cl"
 	minimap_background = "background_hc_management"
 
 /datum/equipment_preset/survivor/hyperdyne/load_rank(mob/living/carbon/human/new_human, client/mob_client)

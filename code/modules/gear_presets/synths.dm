@@ -3,7 +3,7 @@
 	uses_special_name = TRUE
 	languages = ALL_SYNTH_LANGUAGES
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "synth"
+	minimap_icon_state = "synth"
 	skills = /datum/skills/synthetic
 	var/preset_generation_support = FALSE
 
@@ -57,7 +57,7 @@
 	role_comm_title = "Syn"
 	preset_generation_support = TRUE
 
-	minimap_icon = "synth"
+	minimap_icon_state = "synth"
 	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/synth/uscm/load_gear(mob/living/carbon/human/new_human)
@@ -170,7 +170,7 @@
 	flags = EQUIPMENT_PRESET_STUB
 	faction = FACTION_WY
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
-	minimap_icon = "wy_syn"
+	minimap_icon_state = "wy_syn"
 	minimap_background = "background_goon"
 	origin_override = ORIGIN_WY
 
@@ -624,7 +624,7 @@
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_background = "background_cmb"
-	minimap_icon = "cmb_syn"
+	minimap_icon_state = "cmb_syn"
 	origin_override = ORIGIN_CMB
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
@@ -752,7 +752,7 @@
 	assignment = JOB_WORKING_JOE
 	job_title = JOB_WORKING_JOE
 
-	minimap_icon = "joe"
+	minimap_icon_state = "joe"
 
 	skills = /datum/skills/working_joe
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_APOLLO, LANGUAGE_JAPANESE, LANGUAGE_SPANISH)
@@ -890,7 +890,7 @@
 /datum/equipment_preset/synth/survivor/cultist_synth
 	name = "Cultist - Xeno Cultist Synthetic"
 	faction = FACTION_XENOMORPH
-	minimap_icon = "cult_synth"
+	minimap_icon_state = "cult_synth"
 	minimap_background = "background_cultist"
 
 /datum/equipment_preset/synth/survivor/cultist_synth/load_gear(mob/living/carbon/human/new_human)

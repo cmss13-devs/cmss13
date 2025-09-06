@@ -61,7 +61,7 @@
 	job_title = JOB_CLF
 	role_comm_title = "GRL"
 
-	minimap_icon = "clf_mil"
+	minimap_icon_state = "clf_mil"
 
 	skills = /datum/skills/clf
 
@@ -171,7 +171,7 @@
 	job_title = JOB_CLF_ENGI
 	role_comm_title = "TECH"
 
-	minimap_icon = "clf_engi"
+	minimap_icon_state = "clf_engi"
 
 	skills = /datum/skills/clf/combat_engineer
 
@@ -299,7 +299,7 @@
 	assignment = JOB_CLF_MEDIC
 	job_title = JOB_CLF_MEDIC
 	role_comm_title = "MED"
-	minimap_icon = "clf_med"
+	minimap_icon_state = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/clf/combat_medic
 
@@ -461,7 +461,7 @@
 	job_title = JOB_CLF_SPECIALIST
 	role_comm_title = "SPC"
 
-	minimap_icon = "clf_spec"
+	minimap_icon_state = "clf_spec"
 
 	skills = /datum/skills/clf/specialist
 
@@ -590,7 +590,7 @@
 	job_title = JOB_CLF_LEADER
 	role_comm_title = "LDR"
 
-	minimap_icon = "clf_sl"
+	minimap_icon_state = "clf_sl"
 
 	skills = /datum/skills/clf/leader
 
@@ -747,7 +747,7 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 
-	minimap_icon = "clf_synth"
+	minimap_icon_state = "clf_synth"
 
 /datum/equipment_preset/clf/synth/New()
 	. = ..()
@@ -998,7 +998,7 @@
 	paygrades = list(PAY_SHORT_REBC = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CMDR"
 
-	minimap_icon = "deputy"
+	minimap_icon_state = "deputy"
 
 	skills = /datum/skills/clf/commander
 
@@ -1129,7 +1129,7 @@
 	assignment = JOB_CLF_COORDINATOR
 	job_title = JOB_CLF_COORDINATOR
 	role_comm_title = "CRDN"
-	minimap_icon = "clf_cr"
+	minimap_icon_state = "clf_cr"
 	skills = /datum/skills/clf/coordinator
 
 /datum/equipment_preset/clf/coordinator/load_gear(mob/living/carbon/human/new_human)

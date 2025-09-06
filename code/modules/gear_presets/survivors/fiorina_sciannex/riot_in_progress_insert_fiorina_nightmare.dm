@@ -24,7 +24,7 @@
 	idtype = /obj/item/card/id/deputy/riot
 	job_title = JOB_CMB_RIOT
 	skills = /datum/skills/cmb
-	minimap_icon = "deputy"
+	minimap_icon_state = "deputy"
 
 /datum/equipment_preset/survivor/cmb/riot/load_gear(mob/living/carbon/human/new_human)
 
@@ -99,7 +99,7 @@
 	languages = ALL_SYNTH_LANGUAGES
 	idtype = /obj/item/card/id/deputy/riot
 	skills = /datum/skills/synthetic/cmb
-	minimap_icon = "cmb_syn"
+	minimap_icon_state = "cmb_syn"
 	minimap_background = "background_cmb"
 
 /datum/equipment_preset/synth/survivor/cmb/riotsynth/load_race(mob/living/carbon/human/new_human)
@@ -159,7 +159,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "United Americas Police Officer"
 	skills = /datum/skills/civilian/survivor/marshal
-	minimap_icon = "mp"
+	minimap_icon_state = "mp"
 	minimap_background = "background_ua"
 	idtype = /obj/item/card/id/silver
 
@@ -244,7 +244,7 @@
 	assignment = "UA Police Synthetic"
 	languages = ALL_SYNTH_LANGUAGES
 	skills = /datum/skills/colonial_synthetic
-	minimap_icon = "synth"
+	minimap_icon_state = "synth"
 	minimap_background = "background_ua"
 	idtype = /obj/item/card/id/silver
 

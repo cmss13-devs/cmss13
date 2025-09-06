@@ -14,7 +14,7 @@
 	assignment = JOB_WY_SEC
 	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
-	minimap_icon = "cmp"
+	minimap_icon_state = "cmp"
 	faction = FACTION_WY
 	idtype = /obj/item/card/id/silver/cl
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)

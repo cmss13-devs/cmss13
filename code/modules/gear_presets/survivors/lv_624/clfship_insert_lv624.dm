@@ -14,7 +14,7 @@
 	faction_group = list(FACTION_CLF, FACTION_SURVIVOR)
 	origin_override = ORIGIN_CIVILIAN
 	minimap_background = "background_clf"
-	minimap_icon = "clf_mil"
+	minimap_icon_state = "clf_mil"
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
 /datum/equipment_preset/survivor/clf/load_gear(mob/living/carbon/human/new_human)
@@ -51,7 +51,7 @@
 	job_title = JOB_CLF_LEADER
 	role_comm_title = "LDR"
 	skills = /datum/skills/civilian/survivor/clf/leader
-	minimap_icon = "clf_sl"
+	minimap_icon_state = "clf_sl"
 
 /datum/equipment_preset/survivor/clf/leader/load_gear(mob/living/carbon/human/new_human)
 	add_ice_colony_rebel_equipment(new_human)
@@ -92,7 +92,7 @@
 	assignment = JOB_CLF_MEDIC
 	job_title = JOB_CLF_MEDIC
 	role_comm_title = "MED"
-	minimap_icon = "clf_med"
+	minimap_icon_state = "clf_med"
 	paygrades = list(PAY_SHORT_CDOC = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/survivor/clf/combat_medic
 
@@ -140,7 +140,7 @@
 	job_title = JOB_CLF_ENGI
 	role_comm_title = "TECH"
 
-	minimap_icon = "clf_engi"
+	minimap_icon_state = "clf_engi"
 
 	skills = /datum/skills/civilian/survivor/clf/combat_engineer
 
@@ -192,7 +192,7 @@
 	paygrades = list(PAY_SHORT_SYN = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "Syn"
 	minimap_background = "background_clf"
-	minimap_icon = "clf_synth"
+	minimap_icon_state = "clf_synth"
 
 /datum/equipment_preset/synth/survivor/clf/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species(SYNTH_COLONY_GEN_ONE)
@@ -244,7 +244,7 @@
 	assignment = JOB_CLF_COORDINATOR
 	job_title = JOB_CLF_COORDINATOR
 	role_comm_title = "CRDN"
-	minimap_icon = "clf_cr"
+	minimap_icon_state = "clf_cr"
 	skills = /datum/skills/civilian/survivor/clf/coordinator
 
 /datum/equipment_preset/survivor/clf/coordinator/load_gear(mob/living/carbon/human/new_human)

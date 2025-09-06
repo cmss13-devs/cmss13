@@ -16,7 +16,7 @@
 
 	assignment = JOB_WY_COMMANDO_STANDARD
 	job_title = JOB_WY_COMMANDO_STANDARD
-	minimap_icon = "pmc_gun"
+	minimap_icon_state = "pmc_gun"
 	paygrades = list(PAY_SHORT_WY_COM = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/pmc/commando/standard/load_gear(mob/living/carbon/human/new_human)
@@ -116,7 +116,7 @@
 
 	assignment = JOB_WY_COMMANDO_GUNNER
 	job_title = JOB_WY_COMMANDO_GUNNER
-	minimap_icon = "pmc_sg"
+	minimap_icon_state = "pmc_sg"
 	skills = /datum/skills/pmc/commando/gunner
 	paygrades = list(PAY_SHORT_WY_GUN = JOB_PLAYTIME_TIER_0)
 
@@ -208,7 +208,7 @@
 
 	assignment = JOB_WY_COMMANDO_LEADER
 	job_title = JOB_WY_COMMANDO_LEADER
-	minimap_icon = "pmc_ld"
+	minimap_icon_state = "pmc_ld"
 	skills = /datum/skills/pmc/commando/leader
 	paygrades = list(PAY_SHORT_WY_COMLD = JOB_PLAYTIME_TIER_0)
 
@@ -324,7 +324,7 @@
 	job_title = JOB_WY_COMMANDO_DOGCATHER
 	paygrades = list(PAY_SHORT_WY_DOG = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "DOG"
-	minimap_icon = "dogcather"
+	minimap_icon_state = "dogcather"
 	skills = /datum/skills/pmc/commando/dogcatcher
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_XENOMORPH)
 	headset_type = /obj/item/device/radio/headset/distress/pmc/commando

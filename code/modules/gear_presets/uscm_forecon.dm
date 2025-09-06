@@ -84,7 +84,7 @@
 	assignment = JOB_FORECON_RIFLEMAN
 	job_title = JOB_SQUAD_MARINE
 	role_comm_title = "RFN"
-	minimap_icon = ""
+	minimap_icon_state = ""
 	skills = /datum/skills/military/survivor/forecon_standard
 
 /datum/equipment_preset/uscm/forecon/standard/load_gear(mob/living/carbon/human/new_human)
@@ -121,7 +121,7 @@
 	assignment = JOB_FORECON_SUPPORT
 	job_title = JOB_FORECON_SUPPORT
 	role_comm_title = "SuppTech"
-	minimap_icon = "engi"
+	minimap_icon_state = "engi"
 	skills = /datum/skills/military/survivor/forecon_techician
 
 /datum/equipment_preset/uscm/forecon/tech/load_gear(mob/living/carbon/human/new_human)
@@ -163,7 +163,7 @@
 	assignment = JOB_FORECON_MARKSMAN
 	job_title = JOB_SQUAD_SPECIALIST
 	role_comm_title = "DMR"
-	minimap_icon = "spec"
+	minimap_icon_state = "spec"
 	skills = /datum/skills/military/survivor/forecon_marksman
 
 /datum/equipment_preset/uscm/forecon/marksman/load_gear(mob/living/carbon/human/new_human)
@@ -207,7 +207,7 @@
 	assignment = JOB_FORECON_SMARTGUNNER
 	job_title = JOB_SQUAD_SMARTGUN
 	role_comm_title = "SG"
-	minimap_icon = "smartgunner"
+	minimap_icon_state = "smartgunner"
 	skills = /datum/skills/military/survivor/forecon_smartgunner
 
 /datum/equipment_preset/uscm/forecon/smartgunner/load_gear(mob/living/carbon/human/new_human)

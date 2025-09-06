@@ -11,7 +11,7 @@
 	faction = FACTION_IASF
 	faction_group = FACTION_LIST_SURVIVOR_IASF
 	origin_override = ORIGIN_TWE
-	minimap_icon = "rmc_rifleman"
+	minimap_icon_state = "rmc_rifleman"
 	minimap_background = "background_iasf"
 	role_comm_title = "24/PARA"
 	idtype = /obj/item/card/id/dogtag
@@ -86,7 +86,7 @@
 	assignment = "IASF - Combat Engineer"
 	job_title = JOB_TWE_IASF_PARA_ENGI
 
-	minimap_icon = "rmc_breacher"
+	minimap_icon_state = "rmc_breacher"
 
 	skills = /datum/skills/iasf/engi
 
@@ -120,7 +120,7 @@
 	assignment = "IASF - Combat Medical Technician"
 	job_title = JOB_TWE_IASF_PARA_MEDIC
 
-	minimap_icon = "rmc_medic"
+	minimap_icon_state = "rmc_medic"
 
 	skills = /datum/skills/iasf/medic
 
@@ -154,7 +154,7 @@
 	name = "Survivor - IASF Dropship Pilot"
 	assignment = "IASF - Dropship Pilot"
 	job_title = JOB_TWE_IASF_PARA_PILOT
-	minimap_icon = "pilot"
+	minimap_icon_state = "pilot"
 	paygrades = list(PAY_SHORT_IASFE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/iasf/pilot
 
@@ -179,7 +179,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	role_comm_title = "24/PARA SL"
 
-	minimap_icon = "rmc_teamleader"
+	minimap_icon_state = "rmc_teamleader"
 
 	skills = /datum/skills/iasf/leader
 
@@ -210,7 +210,7 @@
 	idtype = /obj/item/card/id/dogtag
 	role_comm_title = "24/PARA Syn"
 	minimap_background = "background_iasf"
-	minimap_icon = "synth"
+	minimap_icon_state = "synth"
 
 /datum/equipment_preset/synth/survivor/iasf_synth/load_gear(mob/living/carbon/human/new_human)
 	var/obj/item/clothing/under/marine/veteran/royal_marine/iasf/uniform = new()
@@ -254,7 +254,7 @@
 	skills = /datum/skills/iasf/commander
 	paygrades = list(PAY_SHORT_IASFO5 = JOB_PLAYTIME_TIER_0)
 	job_title = JOB_TWE_IASF_PARA_COMMANDER
-	minimap_icon = "rmc_commander"
+	minimap_icon_state = "rmc_commander"
 	minimap_background = "background_iasf"
 	idtype = /obj/item/card/id/gold
 	role_comm_title = "IASF CDR"

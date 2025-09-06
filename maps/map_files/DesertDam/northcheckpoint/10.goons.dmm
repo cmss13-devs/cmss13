@@ -1,0 +1,780 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"aM" = (
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 0
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"aP" = (
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"be" = (
+/obj/structure/closet/secure_closet/guncabinet{
+	req_access = null
+	},
+/obj/item/weapon/gun/smg/m39/corporate/no_lock,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/turf/open/floor/prison/darkred2/west,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"dC" = (
+/obj/structure/barricade/deployable,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"dE" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"dW" = (
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"fx" = (
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	id = "dam_checkpoint_northwest";
+	name = "\improper Checkpoint Lock"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"gn" = (
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"gs" = (
+/obj/item/ammo_magazine/sentry/wy{
+	current_rounds = 0
+	},
+/turf/open/floor/plating/burnt_platingdmg3,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"gx" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"ha" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"hR" = (
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"il" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/clothing/head/cmcap/wy_cap,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"iP" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"jm" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"kb" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass/colony,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"kh" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"kA" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"kF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/spawner/random/claymore/midchance{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"kG" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"lq" = (
+/turf/open/desert/rock/deep,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"lu" = (
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"mS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"nx" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"nN" = (
+/obj/structure/barricade/deployable{
+	damage_state = 3;
+	health = 50;
+	icon_state = "folding_3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"og" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"oQ" = (
+/turf/open/asphalt/cement/cement15,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"pZ" = (
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 0
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"qi" = (
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"qG" = (
+/turf/open/desert/rock/deep,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"rV" = (
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"sl" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"sK" = (
+/obj/structure/closet/secure_closet/security,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/clothing/under/marine/veteran/pmc/corporate,
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate,
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate,
+/obj/item/storage/belt/gun/m4a3/mod88,
+/turf/open/floor/prison/darkred2/northwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"sM" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/barricade/deployable,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"tw" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"tY" = (
+/obj/effect/spawner/random/claymore/midchance{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"ur" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"uN" = (
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 0
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"wj" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"wH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"wR" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/cameras{
+	name = "Security Cameras - Operations";
+	network = list("chigusa_1")
+	},
+/turf/open/floor/prison/darkred2/north,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"xG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/random/gun/corporate,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"xP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/item/stack/sheet/metal,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"zn" = (
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 0
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Af" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/structure/machinery/sentry_holder/colony{
+	pixel_y = 26
+	},
+/turf/open/asphalt/cement/cement2,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Ay" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/item/weapon/gun/rifle/nsg23/no_lock{
+	current_mag = null
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Bk" = (
+/turf/open/floor/prison/darkred2/west,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"BK" = (
+/obj/structure/filingcabinet,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/prison/darkred2/west,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Co" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 4
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Cy" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"CH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E"
+	},
+/obj/item/ammo_magazine/rifle{
+	current_rounds = 0
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"DQ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/landmark/corpsespawner/wygoon/lead,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"DR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/barricade/deployable,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Ex" = (
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Fv" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/darkred2/northwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"FL" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"GA" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/pen/blue{
+	pixel_x = -6
+	},
+/obj/item/paper_bin,
+/obj/item/shard,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"GB" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"GK" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	id = "dam_checkpoint_northwest";
+	name = "\improper Checkpoint Lock"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"HM" = (
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"HO" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"JA" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/darkred2/west,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Ks" = (
+/obj/effect/spawner/random/claymore/midchance,
+/turf/open/asphalt/cement/cement9,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Ky" = (
+/obj/structure/barricade/deployable{
+	damage_state = 2;
+	dir = 8;
+	health = 140;
+	icon_state = "folding_2"
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Lp" = (
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Mj" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement2,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Ms" = (
+/turf/open/floor/prison/darkredcorners2/east,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Nj" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"NH" = (
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "3"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Oa" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2"
+	},
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Oh" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/structure/machinery/door/poddoor/almayer/planet_side_blastdoor{
+	id = "dam_checkpoint_northwest";
+	name = "\improper Checkpoint Lock"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"On" = (
+/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Oo" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal2"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"OR" = (
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"PD" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door_control{
+	id = "dam_checkpoint_northwest";
+	name = "Checkpoint Lockdown"
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 4;
+	pixel_y = 12
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"QE" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"QM" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/stamp,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/shard,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"QO" = (
+/obj/structure/desertdam/decals/road_edge,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Rh" = (
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement3,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Rq" = (
+/turf/open/desert/rock/deep/rock3,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Rr" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"RJ" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/sand_overlay/sand2{
+	dir = 8
+	},
+/turf/open/asphalt/cement/cement14,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"RR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"Sm" = (
+/obj/item/shard,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"UA" = (
+/obj/structure/window_frame/bunker/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"UQ" = (
+/obj/effect/decal/sand_overlay/sand2/corner2{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement12,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"UU" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/structure/barricade/deployable{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"VC" = (
+/obj/effect/spawner/random/claymore/midchance,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"VI" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"VJ" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+"VP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/landmark/corpsespawner/wygoon,
+/obj/effect/decal/cleanable/blood,
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"VY" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal7"
+	},
+/turf/open/asphalt,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Wp" = (
+/obj/effect/spawner/random/claymore/midchance,
+/turf/open/desert/rock/deep/transition/east,
+/area/desert_dam/interior/dam_interior/north_tunnel)
+"Zq" = (
+/obj/item/prop/colony/used_flare,
+/turf/open/asphalt/cement,
+/area/desert_dam/interior/dam_interior/north_tunnel_entrance)
+
+(1,1,1) = {"
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+jm
+Co
+UQ
+og
+HM
+"}
+(2,1,1) = {"
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+jm
+hR
+dW
+FL
+ur
+"}
+(3,1,1) = {"
+Nj
+jm
+jm
+jm
+jm
+jm
+jm
+jm
+VJ
+tY
+VI
+iP
+"}
+(4,1,1) = {"
+jm
+jm
+sK
+JA
+be
+BK
+Bk
+jm
+zn
+dW
+FL
+HM
+"}
+(5,1,1) = {"
+jm
+Fv
+Ms
+HO
+Lp
+On
+Lp
+Cy
+Zq
+Rr
+FL
+kF
+"}
+(6,1,1) = {"
+jm
+wR
+dE
+PD
+Lp
+Lp
+pZ
+jm
+rV
+aM
+FL
+tw
+"}
+(7,1,1) = {"
+jm
+UA
+GA
+QM
+jm
+kb
+jm
+jm
+VJ
+Ky
+UU
+HM
+"}
+(8,1,1) = {"
+jm
+kh
+Sm
+aa
+wj
+Ex
+Ex
+gs
+Ks
+oQ
+FL
+DR
+"}
+(9,1,1) = {"
+GK
+QO
+sl
+QO
+QO
+QO
+xP
+QO
+gx
+VP
+VY
+nN
+"}
+(10,1,1) = {"
+fx
+wH
+OR
+OR
+xG
+OR
+OR
+lu
+OR
+aP
+CH
+QE
+"}
+(11,1,1) = {"
+fx
+DQ
+GB
+OR
+RR
+NH
+il
+uN
+VC
+HM
+mS
+dC
+"}
+(12,1,1) = {"
+Oh
+Ay
+kA
+kA
+kA
+kA
+kA
+Oh
+kA
+Oo
+ha
+sM
+"}
+(13,1,1) = {"
+jm
+Mj
+Rh
+Rh
+Oa
+Rh
+RJ
+jm
+Af
+nx
+nx
+nx
+"}
+(14,1,1) = {"
+jm
+qi
+qi
+qi
+qi
+qi
+qi
+jm
+kG
+gn
+gn
+Wp
+"}
+(15,1,1) = {"
+Nj
+Nj
+Nj
+Nj
+qG
+Rq
+jm
+jm
+jm
+Nj
+lq
+Nj
+"}
+(16,1,1) = {"
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+Nj
+"}

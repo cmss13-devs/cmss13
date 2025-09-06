@@ -946,6 +946,15 @@
 /turf/open/asphalt/cement/cement15
 	icon_state = "cement15"
 
+/turf/open/asphalt/cement/cement18
+	icon_state = "cement18"
+
+/turf/open/asphalt/cement/cement19
+	icon_state = "cement19"
+
+/turf/open/asphalt/cement/cement16
+	icon_state = "cement16"
+
 /turf/open/asphalt/cement/cement2
 	icon_state = "cement2"
 

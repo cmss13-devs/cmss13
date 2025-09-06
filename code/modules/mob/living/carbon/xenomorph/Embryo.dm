@@ -16,6 +16,8 @@
 	var/hugger_ckey
 	/// The total time the person is hugged divided by stages until burst
 	var/per_stage_hugged_time = 90 //Set in Initialize due to config
+	/// How How many units of stims are drained per tick
+	var/stim_drain = 2
 
 /obj/item/alien_embryo/Initialize(mapload, ...)
 	. = ..()
@@ -84,8 +86,11 @@
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 
 	var/is_nested = HAS_TRAIT(affected_mob, TRAIT_NESTED)
-	if(is_nested && !(affected_mob.stat & DEAD) && stage <= 3 && affected_mob.reagents && affected_mob.reagents.get_reagent_amount("host_stabilizer") < 1)
-		affected_mob.reagents.add_reagent("host_stabilizer", 1)
+	if(is_nested && !(affected_mob.stat & DEAD) && stage <= 3 && affected_mob.reagents)
+		if(affected_mob.reagents.get_reagent_amount("host_stabilizer") < 1)
+			affected_mob.reagents.add_reagent("host_stabilizer", 1)
+		for(var/datum/reagent/generated/stim in affected_mob.reagents.reagent_list)
+			affected_mob.reagents.remove_reagent(stim.id, stim_drain, TRUE)
 
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.

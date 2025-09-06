@@ -27,6 +27,10 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "af" = (
+/obj/structure/prop/hybrisa/vehicles/Meridian/Orange,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"ag" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/tray{
@@ -39,7 +43,7 @@
 	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"ag" = (
+"ah" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/condiment/saltshaker{
 	pixel_x = -9;
@@ -51,11 +55,11 @@
 	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"ah" = (
+"ai" = (
 /obj/structure/prop/dam/crane/damaged,
 /turf/open/floor/prison,
 /area/desert_dam/building/cafeteria/loading)
-"ai" = (
+"aj" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/kitchen/utensil/fork{
@@ -64,18 +68,18 @@
 	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"aj" = (
+"ak" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/twohanded/folded_metal_chair,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"ak" = (
+"al" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/broken_glass,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"al" = (
+"am" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -88,19 +92,19 @@
 /obj/item/reagent_container/food/snacks/grown/corn,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/cafeteria/loading)
-"am" = (
+"an" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
 	pixel_y = 38
 	},
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"an" = (
+"ao" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/power/apc/no_power/east,
 /turf/open/floor/prison/kitchen/southwest,
 /area/desert_dam/building/cafeteria/cafeteria)
-"ao" = (
+"ap" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/freezer,
 /obj/item/reagent_container/food/snacks/grown/wheat,
@@ -108,27 +112,17 @@
 /obj/item/reagent_container/food/snacks/grown/wheat,
 /obj/item/reagent_container/food/snacks/grown/wheat,
 /obj/item/reagent_container/food/snacks/grown/wheat,
-/turf/open/floor/prison/floor_marked/southwest,
-/area/desert_dam/building/cafeteria/loading)
-"ap" = (
-/obj/structure/closet/crate/freezer,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/obj/item/reagent_container/food/snacks/grown/potato,
-/obj/item/reagent_container/food/snacks/grown/potato,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/cafeteria/loading)
 "aq" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 28
-	},
-/turf/open/floor/prison/kitchen/southwest,
-/area/desert_dam/building/cafeteria/cafeteria)
+/obj/structure/closet/crate/freezer,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/obj/item/reagent_container/food/snacks/grown/potato,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/desert_dam/building/cafeteria/loading)
 "ar" = (
 /obj/structure/machinery/door_control{
 	id = "warehouse_dam_2";
@@ -154,46 +148,60 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "au" = (
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Garbage,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_civilian)
+"av" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 28
+	},
+/turf/open/floor/prison/kitchen/southwest,
+/area/desert_dam/building/cafeteria/cafeteria)
+"aw" = (
 /obj/structure/machinery/vending/cigarette/wy,
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/building/cafeteria/cafeteria)
-"av" = (
-/obj/structure/surface/table/reinforced,
-/turf/open/floor/prison/sterile_white,
-/area/desert_dam/building/cafeteria/cafeteria)
-"aw" = (
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/desert_dam/building/cafeteria/backroom)
 "ax" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/mining/workshop_foyer)
 "ay" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/desert_dam/building/cafeteria/backroom)
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison/sterile_white,
+/area/desert_dam/building/cafeteria/cafeteria)
 "az" = (
-/obj/item/weapon/twohanded/folded_metal_chair,
+/obj/structure/grille,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "aA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"aB" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/plating,
+/area/desert_dam/building/cafeteria/backroom)
+"aC" = (
 /obj/structure/closet/crate/trashcart,
 /obj/item/storage/bag/trash,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aB" = (
+"aD" = (
 /obj/effect/decal/cleanable/dirt/greenglow{
 	color = "#140400";
 	name = "dirt"
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aC" = (
+"aE" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aD" = (
+"aF" = (
 /obj/structure/surface/rack,
 /obj/item/tool/wet_sign,
 /obj/item/tool/wet_sign,
@@ -203,14 +211,6 @@
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
-"aE" = (
-/obj/structure/prop/hybrisa/vehicles/Meridian/Orange,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
-"aF" = (
-/obj/structure/prop/hybrisa/vehicles/Small_Truck/Garbage,
-/turf/open/asphalt,
-/area/desert_dam/exterior/valley/valley_civilian)
 "aI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached13,
@@ -3520,7 +3520,7 @@ BW
 BW
 Cx
 Cx
-aw
+az
 Cx
 ff
 Qj
@@ -3576,7 +3576,7 @@ BW
 BW
 BW
 Cx
-aA
+aC
 Ry
 hV
 ff
@@ -3588,7 +3588,7 @@ NE
 oK
 oK
 Qv
-ag
+ah
 mK
 ff
 IG
@@ -3634,7 +3634,7 @@ BW
 BW
 Cx
 OV
-ay
+aA
 Cx
 QR
 FC
@@ -3747,8 +3747,8 @@ ET
 Cx
 Cx
 gw
+aD
 aB
-az
 Cx
 gS
 ff
@@ -3804,7 +3804,7 @@ JL
 Cx
 Uf
 Ry
-aC
+aE
 YQ
 Cx
 XL
@@ -3815,7 +3815,7 @@ wi
 ZI
 oK
 oK
-ai
+aj
 PU
 fL
 ff
@@ -3859,22 +3859,22 @@ ww
 RT
 FX
 Cx
-aD
-ay
+aF
+aA
 Ry
 oA
 Cx
-au
+aw
 Qj
 Qr
 fL
 Rt
 gC
 oK
-ak
+al
 rX
 tz
-af
+ag
 cL
 FL
 FL
@@ -3926,7 +3926,7 @@ Ty
 si
 Fn
 mg
-aj
+ak
 oK
 oK
 mg
@@ -4039,7 +4039,7 @@ Qj
 yS
 dw
 oK
-an
+ao
 kY
 oK
 He
@@ -4148,14 +4148,14 @@ FL
 um
 ee
 yS
-av
+ay
 ff
 QR
-aq
+av
 QR
 QR
 QR
-am
+an
 oK
 QR
 QR
@@ -4283,7 +4283,7 @@ wq
 zN
 zN
 JY
-aE
+af
 IH
 Fu
 Gu
@@ -4328,7 +4328,7 @@ QV
 QV
 oK
 oK
-aj
+ak
 QV
 QV
 ff
@@ -4666,7 +4666,7 @@ iE
 JN
 iE
 xN
-ao
+ap
 Qc
 iE
 FL
@@ -4722,7 +4722,7 @@ Gg
 fy
 gU
 iE
-ap
+aq
 xN
 ns
 iE
@@ -4842,7 +4842,7 @@ IY
 za
 un
 iE
-ah
+ai
 Iy
 Ut
 yL
@@ -5011,7 +5011,7 @@ RP
 RP
 lq
 iE
-al
+am
 Qc
 iE
 Im
@@ -5349,7 +5349,7 @@ Iy
 Iy
 AO
 Wa
-aF
+au
 vD
 IH
 bH

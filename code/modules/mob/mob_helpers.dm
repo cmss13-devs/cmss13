@@ -342,6 +342,13 @@ GLOBAL_LIST_INIT(limb_types_by_name, list(
 
 #undef PIXELS_PER_STRENGTH_VAL
 
+/proc/stop_camera_shake(mob/targetmob)
+	if(!targetmob?.client)
+		return
+
+	targetmob.shakecamera = 0 
+	animate(targetmob.client, pixel_x = 0, pixel_y = 0, time = 1)
+
 /proc/findname(msg)
 	for(var/mob/M in GLOB.mob_list)
 		if (M.real_name == text("[msg]"))

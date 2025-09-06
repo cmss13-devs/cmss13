@@ -961,6 +961,10 @@
 	specialty = "sof uniform"
 	flags_item = NO_GAMEMODE_SKIN
 
+/obj/item/clothing/under/marine/veteran/marsoc/grs
+	name = "GRS Uniform"
+	desc = "A black uniform for GRS personnel. Designed to be comfortable and help blend into dark enviorments."
+
 //=========================//PMC\\================================\\
 
 /obj/item/clothing/under/marine/veteran/pmc

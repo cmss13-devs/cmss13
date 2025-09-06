@@ -111,6 +111,10 @@
 	gun_type = /obj/item/weapon/gun/smartgun/dirty
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
+/obj/item/ammo_magazine/smartgun/dirty/grs
+	desc = "What at first glance appears to be a standard 500-round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56R smartguns, and is marked with a red X."
+	gun_type = /obj/item/weapon/gun/smartgun/co/grs
+
 /obj/item/ammo_magazine/smartgun/holo_targetting
 	name = "holotargetting smartgun drum"
 	desc = "A 10x28mm holotargetting drum magazine for use in the Royal Marines Commando L56A2 Smartgun."

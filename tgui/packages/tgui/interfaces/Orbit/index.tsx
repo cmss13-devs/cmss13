@@ -496,6 +496,33 @@ const weyyuSplitter = (members: Array<Observable>) => {
   return squads;
 };
 
+const uaSplitter = (members: Array<Observable>) => {
+  const uacqs: Array<Observable> = [];
+  const grs: Array<Observable> = [];
+  const cia: Array<Observable> = [];
+  const other: Array<Observable> = [];
+
+  members.forEach((x) => {
+    if (x.job?.includes('UACQS')) {
+      uacqs.push(x);
+    } else if (x.job?.includes('Global Response')) {
+      grs.push(x);
+    } else if (x.job?.includes('CIA')) {
+      cia.push(x);
+    } else {
+      other.push(x);
+    }
+  });
+
+  const squads = [
+    buildSquadObservable('UACQS', 'blue', uacqs),
+    buildSquadObservable('Central Intelligence Agency', 'grey', cia),
+    buildSquadObservable('Global Response', 'red', grs),
+    buildSquadObservable('Other', 'dark-blue', other),
+  ];
+  return squads;
+};
+
 const tweSplitter = (members: Array<Observable>) => {
   const iasf: Array<Observable> = [];
   const commando: Array<Observable> = [];
@@ -544,6 +571,7 @@ const ObservableContent = () => {
     contractor = [],
     dutch = [],
     marshal = [],
+    united_americas = [],
     synthetics = [],
     predators = [],
     hunted = [],
@@ -612,6 +640,12 @@ const ObservableContent = () => {
         color="orange"
         section={hyperdyne}
         title="Hyperdyne Corporation"
+      />
+      <GroupedObservable
+        color="dark-blue"
+        section={united_americas}
+        title="United Americas"
+        splitter={uaSplitter}
       />
       <GroupedObservable
         color="red"

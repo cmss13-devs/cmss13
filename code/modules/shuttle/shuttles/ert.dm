@@ -128,6 +128,13 @@
 	preferred_direction = SOUTH
 	port_direction = NORTH
 
+// ERT Shuttle 5
+/obj/docking_port/mobile/emergency_response/ert5
+	name = "CIA Shuttle"
+	id = MOBILE_SHUTTLE_ID_ERT5
+	preferred_direction = SOUTH
+	port_direction = NORTH
+
 /obj/docking_port/mobile/emergency_response/small
 	name = "Rescue Shuttle"
 	id = MOBILE_SHUTTLE_ID_ERT_SMALL
@@ -373,6 +380,10 @@
 /datum/map_template/shuttle/twe_ert
 	name = "TWE Shuttle"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT4
+
+/datum/map_template/shuttle/cia_ert
+	name = "CIA Shuttle"
+	shuttle_id = MOBILE_SHUTTLE_ID_ERT5
 
 /datum/map_template/shuttle/small_ert
 	name = "Rescue Shuttle"

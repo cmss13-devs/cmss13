@@ -70,6 +70,16 @@
 	rank_short = PAY_SHORT_ME9C
 	icon_state = "ranks_snco"
 
+/obj/item/clothing/accessory/ranks/marine/wo
+	name = "rank boards"
+	rank_short = PAY_SHORT_MWO
+	icon_state = "ranks_warrant"
+
+/obj/item/clothing/accessory/ranks/marine/cwo
+	name = "rank boards"
+	rank_short = PAY_SHORT_MCWO
+	icon_state = "ranks_chiefwarrant"
+
 //OFFICERS
 /obj/item/clothing/accessory/ranks/marine/o1
 	name = "rank boards"

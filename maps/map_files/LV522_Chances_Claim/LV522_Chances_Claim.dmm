@@ -750,6 +750,15 @@
 /obj/effect/landmark/spycam_start,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv522/landing_zone_1)
+"acV" = (
+/obj/effect/landmark/survivor_spawner/lv522_forecon_major,
+/turf/open/floor/prison,
+/area/lv522/indoors/a_block/admin)
+"acW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/lv522_forecon_synth,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/lv522/indoors/a_block/admin)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -78195,7 +78204,7 @@ fRk
 ibk
 qcd
 mEx
-sWr
+acV
 lxZ
 lHV
 wGY
@@ -79018,7 +79027,7 @@ lsa
 svf
 ydV
 sWT
-oGF
+acW
 dkq
 iBr
 wGY

@@ -16,10 +16,57 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	var/hostile = FALSE
 	/// How many survs have been spawned total
 	var/static/total_spawned = 0
+	/// Assoc list of new_player to landmark that have been slotted
+	var/list/slotted_landmarks
+	/// List of survivor landmarks for the current scenario sorted by priority
+	var/list/available_landmarks
 
 /datum/job/civilian/survivor/set_spawn_positions(count)
 	spawn_positions = clamp((floor(count * SURVIVOR_TO_TOTAL_SPAWN_RATIO)), 2, 8)
 	total_positions = spawn_positions
+	slotted_landmarks = list()
+	available_landmarks = list()
+	var/hostile_scenario = SSnightmare.get_scenario_is_hostile_survivor()
+	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
+		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
+			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
+				if(spawner.archetype == INSERT_SYNTH) //Don't add synths or COs to normal survivor spawns
+					continue
+				if(spawner.archetype == INSERT_CO)
+					continue
+				if(spawner.hostile == hostile_scenario)
+					available_landmarks += spawner
+
+/datum/job/civilian/survivor/proc/get_valid_prefs(mob/new_player)
+	var/list/insert_prefs
+	LAZYINITLIST(insert_prefs) // return a list of all the archetypes the player has opted into, if none, all default landmarks can be used anyway
+	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_CORPORATE))
+		insert_prefs += INSERT_CORPORATE
+	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_LEADER))
+		insert_prefs += INSERT_LEADER
+	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_MEDIC))
+		insert_prefs += INSERT_MEDIC
+	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_ENGINEER))
+		insert_prefs += INSERT_ENGINEER
+	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_SPECIALIST))
+		insert_prefs += INSERT_SPECIALIST
+	if(HAS_FLAG(new_player.client.prefs.toggles_insert, PLAY_INSERT_SMARTGUNNER))
+		insert_prefs += INSERT_SMARTGUNNER
+
+	return insert_prefs
+
+/datum/job/civilian/survivor/assign_landmark(mob/new_player)
+	if(!new_player?.client)
+		return FALSE
+	var/list/valid_prefs
+	LAZYINITLIST(valid_prefs)
+	valid_prefs = get_valid_prefs(new_player)
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks)
+		if(LAZYISIN(valid_prefs, spawner.archetype) || spawner.archetype == INSERT_NONE) //only add landmarks that match prefs or generic ones
+			slotted_landmarks[new_player] = spawner
+			available_landmarks -= spawner
+			return TRUE
+	return FALSE
 
 /datum/job/civilian/survivor/equip_job(mob/living/survivor)
 	var/generated_account = generate_money_account(survivor)
@@ -54,21 +101,14 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 
 	GLOB.spawned_survivors += WEAKREF(H)
 
-	var/list/potential_spawners = list()
-	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
-		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
-			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
-				if(spawner.check_can_spawn(H))
-					potential_spawners += spawner
-			if(length(potential_spawners))
-				break
-	if(!length(potential_spawners))
+	var/obj/effect/landmark/survivor_spawner/picked_spawner = slotted_landmarks[NP]
+	if(!picked_spawner)
 		// Generally this shouldn't happen since role authority shouldn't be rolling us for a survivor in a hostile scenario
 		message_admins("Failed to spawn_in_player [key_name_admin(H)] as a survivor! This likely means NIGHTMARE_SCENARIO_HOSTILE_SURVIVOR is incorrect for this map!")
 		H.send_to_lobby()
 		qdel(H)
 		return null
-	var/obj/effect/landmark/survivor_spawner/picked_spawner = pick(potential_spawners)
+
 	H.forceMove(get_turf(picked_spawner))
 
 	handle_equip_gear(H, picked_spawner)
@@ -183,12 +223,31 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	job_options = null
 
 /datum/job/civilian/survivor/synth/set_spawn_positions(count)
-	return spawn_positions
+	slotted_landmarks = list()
+	available_landmarks = list()
+	var/hostile_scenario = SSnightmare.get_scenario_is_hostile_survivor()
+	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
+		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
+			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
+				if(spawner.archetype != INSERT_SYNTH)
+					continue
+				if(spawner.hostile == hostile_scenario)
+					available_landmarks += spawner
+
+/datum/job/civilian/survivor/synth/assign_landmark(mob/new_player)
+	if(!new_player?.client)
+		return FALSE
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks)
+		if(spawner.archetype == INSERT_SYNTH || spawner.archetype == INSERT_NONE) //only pass synth landmarks or generic ones
+			slotted_landmarks[new_player] = spawner
+			available_landmarks -= spawner
+			return TRUE
+	return FALSE
 
 /datum/job/civilian/survivor/synth/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
-	if(picked_spawner.synth_equipment)
-		arm_equipment(equipping_human, picked_spawner.synth_equipment, FALSE, TRUE)
-	else
+	if(picked_spawner.synth_equipment) //insert with synth
+		arm_equipment(equipping_human, picked_spawner.synth_equipment, FALSE, TRUE) //use synth equipmnent
+	else //else, use player prefs
 		var/preferred_variant = ANY_SURVIVOR
 		if(equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR] != ANY_SURVIVOR)
 			preferred_variant = equipping_human.client?.prefs?.pref_special_job_options[JOB_SURVIVOR]
@@ -210,19 +269,42 @@ AddTimelock(/datum/job/civilian/survivor, list(
 	job_options = null
 
 /datum/job/civilian/survivor/commanding_officer/set_spawn_positions()
+	slotted_landmarks = list()
+	available_landmarks = list()
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
 	var/list/CO_insert_survivor_types = SSmapping.configs[GROUND_MAP].CO_insert_survivor_types
-	if(length(CO_survivor_types) || length(CO_insert_survivor_types))
-		total_positions = 1
-		spawn_positions = 1
-	return spawn_positions
+	if(!length(CO_survivor_types) && !length(CO_insert_survivor_types))
+		return
+	total_positions = 1
+	spawn_positions = 1
+	var/hostile_scenario = SSnightmare.get_scenario_is_hostile_survivor()
+	for(var/priority = 1 to LOWEST_SPAWN_PRIORITY)
+		if(length(GLOB.survivor_spawns_by_priority["[priority]"]))
+			for(var/obj/effect/landmark/survivor_spawner/spawner as anything in GLOB.survivor_spawns_by_priority["[priority]"])
+				if(spawner.archetype != INSERT_CO)
+					continue
+				if(spawner.hostile == hostile_scenario)
+					available_landmarks += spawner
+
+/datum/job/civilian/survivor/commanding_officer/assign_landmark(mob/new_player)
+	if(!new_player?.client)
+		return FALSE
+	var/list/valid_prefs
+	LAZYINITLIST(valid_prefs)
+	valid_prefs = get_valid_prefs(new_player)
+	for(var/obj/effect/landmark/survivor_spawner/spawner as anything in available_landmarks)
+		if(LAZYISIN(valid_prefs, spawner.archetype) || spawner.archetype == INSERT_NONE || spawner.archetype == INSERT_CO) //only add landmarks that match prefs or CO or generic ones. CO landmarks are always the highest priority, so if one exists, it will get picked first
+			slotted_landmarks[new_player] = spawner
+			available_landmarks -= spawner
+			return TRUE
+	return FALSE
 
 /datum/job/civilian/survivor/commanding_officer/handle_equip_gear(mob/living/carbon/human/equipping_human, obj/effect/landmark/survivor_spawner/picked_spawner)
 	var/list/CO_survivor_types = SSmapping.configs[GROUND_MAP].CO_survivor_types
-	if(picked_spawner.CO_equipment) //insert with CO
-		arm_equipment(equipping_human, picked_spawner.CO_equipment, FALSE, TRUE)
+	if(picked_spawner.equipment) //insert with CO, filtered by assign_landmark()
+		arm_equipment(equipping_human, picked_spawner.equipment, FALSE, TRUE)
 		return
-	else if(length(CO_survivor_types)) //map with guarenteed CO slot
+	else if(length(CO_survivor_types)) //map with guaranteed CO slot
 		arm_equipment(equipping_human, pick(CO_survivor_types), FALSE, TRUE)
 		return
 	else //map that has an insert that enabled rolling for CO but the insert didn't fire and there is no default CO equipment, thus equip as a normal survivor

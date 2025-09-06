@@ -214,6 +214,7 @@
 	},
 /obj/structure/bed/stool,
 /obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/clf_synth/hybrisa,
 /turf/open/floor/strata/yellow3,
 /area/lv759/indoors/spaceport/cargo)
 "cO" = (
@@ -789,6 +790,7 @@
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
+/obj/effect/landmark/survivor_spawner/clf_coordinator/hybrisa,
 /turf/open/floor/strata/yellow3,
 /area/lv759/indoors/spaceport/cargo)
 "jx" = (

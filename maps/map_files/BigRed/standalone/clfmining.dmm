@@ -1852,7 +1852,7 @@
 	icon_state = "4-8";
 	name = "heavy duty power cable"
 	},
-/obj/effect/landmark/survivor_spawner/clf/solaris,
+/obj/effect/landmark/survivor_spawner/clf_synth/solaris,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves/mining)
 "Ds" = (
@@ -3139,7 +3139,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/landmark/survivor_spawner/clf/solaris,
+/obj/effect/landmark/survivor_spawner/clf_coordinator/solaris,
 /turf/open/mars_cave/mars_cave_17,
 /area/bigredv2/caves/mining)
 "Xy" = (

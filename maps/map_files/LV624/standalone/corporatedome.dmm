@@ -47,6 +47,10 @@
 /obj/item/ammo_casing/cartridge,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
+"ah" = (
+/obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_synth,
+/turf/open/floor/white,
+/area/lv624/lazarus/corporate_dome)
 "aQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Corporation Dome";
@@ -1263,7 +1267,7 @@ Yg
 bm
 FZ
 gx
-cA
+ah
 ab
 cn
 XG

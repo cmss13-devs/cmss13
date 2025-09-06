@@ -923,6 +923,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "tu" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/survivor_spawner/upp_synth,
 /turf/open/shuttle/dropship/can_surgery/light_grey_bottom_right,
 /area/desert_dam/building/bar/bar)
 "tA" = (

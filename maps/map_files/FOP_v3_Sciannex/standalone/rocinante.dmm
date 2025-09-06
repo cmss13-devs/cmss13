@@ -213,6 +213,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
 "aI" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/fiorina,
 /turf/open/floor/almayer/blue/southwest,
 /area/fiorina/station/clf_ship)
 "aM" = (
@@ -1766,6 +1767,7 @@
 /turf/open/floor/plating/platingdmg3,
 /area/fiorina/station/clf_ship)
 "UJ" = (
+/obj/effect/landmark/survivor_spawner/clf_coordinator/fiorina,
 /turf/open/floor/almayer/blue/southeast,
 /area/fiorina/station/clf_ship)
 "UM" = (

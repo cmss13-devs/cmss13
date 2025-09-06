@@ -247,6 +247,13 @@
 /obj/item/storage/belt/medical/lifesaver/wy,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
+"aV" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_synth,
+/turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
+/area/bigredv2/outside/office_complex)
 "aW" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1
@@ -748,6 +755,7 @@
 /area/bigredv2/outside/e)
 "vw" = (
 /obj/item/limb/arm/l_arm,
+/obj/effect/landmark/survivor_spawner/bigred_crashed_pmc_commander,
 /turf/open/shuttle/dropship/can_surgery/light_grey_single_wide_left_to_right,
 /area/bigredv2/outside/office_complex)
 "vH" = (
@@ -1768,7 +1776,7 @@ Vg
 aw
 qw
 ws
-hl
+aV
 zH
 hl
 hl

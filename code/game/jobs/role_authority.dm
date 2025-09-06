@@ -361,7 +361,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 /datum/authority/branch/role/proc/assign_role(mob/new_player/M, datum/job/J, latejoin = FALSE)
 	if(ismob(M) && istype(J))
-		if(check_role_entry(M, J, latejoin))
+		if(check_role_entry(M, J, latejoin) && J.assign_landmark(M))
 			M.job = J.title
 			J.current_positions++
 			return TRUE

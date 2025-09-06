@@ -1299,6 +1299,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/survivor_spawner/clf_synth/trijent,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "ED" = (
@@ -1671,6 +1672,7 @@
 	icon_state = "road_edge_decal6"
 	},
 /obj/structure/tent/big,
+/obj/effect/landmark/survivor_spawner/clf_coordinator/trijent,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "PE" = (

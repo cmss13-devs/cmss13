@@ -67,6 +67,9 @@
 /obj/structure/machinery/disposal/Destroy()
 	if(length(contents))
 		eject()
+	var/obj/structure/disposalpipe/trunk/T = trunk
+	if(T)
+		T.linked = null
 	trunk = null
 	return ..()
 
@@ -1265,6 +1268,9 @@
 	getlinked()
 
 /obj/structure/disposalpipe/trunk/Destroy()
+	var/obj/structure/machinery/disposal/D = linked
+	if(istype(D, /obj/structure/machinery/disposal))
+		D.trunk = null
 	linked = null
 	return ..()
 
@@ -1372,6 +1378,12 @@
 	var/obj/structure/disposalpipe/trunk/trunk = locate() in loc
 	if(trunk)
 		trunk.linked = src //Link the pipe trunk to self
+
+/obj/structure/disposaloutlet/Destroy()
+	var/obj/structure/disposalpipe/trunk/trunk = locate() in loc //Outlets don't record the trunk they're linked to, so we need to find it again.
+	if(trunk)
+		trunk.linked = null
+	return ..()
 
 //Expel the contents of the holder object, then delete it. Called when the holder exits the outlet
 /obj/structure/disposaloutlet/proc/expel(obj/structure/disposalholder/H)

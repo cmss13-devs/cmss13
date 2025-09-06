@@ -333,7 +333,7 @@
 	density = FALSE
 	equip_categories = list(DROPSHIP_WEAPON, DROPSHIP_CREW_WEAPON)
 	icon_state = "mg_system"
-	point_cost = 50
+	point_cost = 100
 	shorthand = "MG"
 	var/deployment_cooldown
 	var/obj/structure/machinery/m56d_hmg/mg_turret/dropship/deployed_mg

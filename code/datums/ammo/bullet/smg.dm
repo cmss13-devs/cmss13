@@ -77,8 +77,8 @@
 		return
 
 	if(iscarbonsizexeno(target))
-		var/mob/living/carbon/xenomorph/X = target
-		if(X.tier != 1) // 0 is queen!
+		var/mob/living/carbon/xenomorph/xeno = target
+		if(xeno.tier != 1) // 0 is queen!
 			return
 	else if(HAS_TRAIT(target, TRAIT_SUPER_STRONG))
 		return
@@ -114,8 +114,8 @@
 	var/super_slowdown_duration = 0.6
 	//If there's an obstacle on the far side, superslow and do extra damage.
 	if(iscarbonsizexeno(target)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
-		var/mob/living/carbon/xenomorph/X = target
-		if(X.tier != 1) // 0 is queen!
+		var/mob/living/carbon/xenomorph/xeno = target
+		if(xeno.tier != 1) // 0 is queen!
 			super_slowdown_duration = 0.5
 	else if(HAS_TRAIT(target, TRAIT_SUPER_STRONG)) //preds dont get slowed
 		super_slowdown_duration = 0

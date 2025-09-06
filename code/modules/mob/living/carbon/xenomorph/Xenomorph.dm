@@ -318,6 +318,8 @@
 
 	var/icon_xeno
 	var/icon_xenonid
+	/// Stores the overlay icon for spitting/drooling when acid-based abilities are selected
+	var/acid_overlay
 
 	bubble_icon = "alien"
 
@@ -1089,6 +1091,11 @@
 	. = ..()
 	if(. && !can_reenter_corpse && stat != DEAD && !QDELETED(src) && !should_block_game_interaction(src))
 		handle_ghost_message()
+	if(selected_ability)
+		selected_ability.action_deselect()
+		if(selected_ability.charge_time)
+			selected_ability.stop_charging_ability()
+		set_selected_ability(null)
 
 /mob/living/carbon/xenomorph/proc/handle_ghost_message()
 	notify_ghosts("[src] ([get_strain_name()] [caste_type]) has ghosted and their body is up for grabs!", source = src)

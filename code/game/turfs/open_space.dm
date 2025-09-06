@@ -9,6 +9,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /turf/open_space
+	is_weedable = NOT_WEEDABLE
 	name = "open space"
 	icon_state = "transparent"
 	baseturfs = /turf/open_space

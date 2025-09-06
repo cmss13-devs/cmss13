@@ -1273,7 +1273,6 @@
 	faction = FACTION_HUNTED
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 	faction_group = FACTION_LIST_HUNTED
-	ert_squad = TRUE
 
 /datum/equipment_preset/uscm/hunted/rifleman
 	name = "USCM Solar Devils Rifleman (Hunted)"

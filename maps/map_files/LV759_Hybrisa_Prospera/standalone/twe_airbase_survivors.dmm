@@ -825,7 +825,7 @@
 /obj/structure/prop/hybrisa/misc/metergreen{
 	pixel_y = 32
 	},
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plating_striped/north,
 /area/lv759/indoors/twe_souter_outpost/maint)
 "fp" = (

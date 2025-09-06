@@ -3572,7 +3572,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/ne)
 "app" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "apq" = (
@@ -6336,7 +6336,7 @@
 /turf/open/floor/delivery,
 /area/bigredv2/caves/lambda/xenobiology)
 "aCz" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/warning_stripes{
 	icon_state = "U-N"
 	},
@@ -15297,7 +15297,7 @@
 /turf/open/mars_cave/mars_cave_23,
 /area/bigredv2/caves_se)
 "bvS" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating,
 /area/bigredv2/outside/lz2_south_cas)
 "bvV" = (
@@ -17696,7 +17696,7 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "bRV" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/white,
 /area/bigredv2/outside/virology)
 "bSk" = (
@@ -20244,7 +20244,7 @@
 /turf/open/asphalt/cement,
 /area/bigredv2/outside/filtration_cave_cas)
 "eER" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "eFh" = (
@@ -20316,7 +20316,7 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "eIN" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering/reactor)
@@ -22063,7 +22063,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/nw)
 "gyJ" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/mars_cave/mars_cave_2,
 /area/bigredv2/caves/mining)
 "gyL" = (
@@ -22165,7 +22165,7 @@
 /turf/open/floor/red,
 /area/bigredv2/outside/lambda_cave_cas)
 "gFR" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering/reactor)
 "gGf" = (
@@ -23111,7 +23111,7 @@
 /turf/open/floor/freezerfloor,
 /area/bigredv2/outside/dorms)
 "hHG" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/storage)
 "hIk" = (
@@ -24714,7 +24714,7 @@
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering)
 "jEx" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/mars_cave/mars_cave_16,
 /area/bigredv2/caves/mining)
 "jEX" = (
@@ -26669,7 +26669,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
 /area/bigredv2/outside/c)
 "lCt" = (
-/obj/structure/machinery/power/reactor/colony{
+/obj/structure/machinery/power/power_generator/reactor/colony{
 	name = "Reactor Turbine"
 	},
 /turf/open/floor/delivery,
@@ -26999,7 +26999,7 @@
 /turf/open/mars_cave/mars_cave_18,
 /area/bigredv2/caves_se)
 "lUM" = (
-/obj/structure/machinery/power/reactor/colony,
+/obj/structure/machinery/power/power_generator/reactor/colony,
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "lVr" = (
@@ -29705,7 +29705,7 @@
 	icon_state = "1-2-4";
 	name = "heavy duty power cable"
 	},
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/plating/platingdmg3/west,
 /area/bigredv2/caves/mining)
 "oJh" = (
@@ -33769,7 +33769,7 @@
 /turf/open/mars_cave/mars_cave_9,
 /area/bigredv2/caves_sw)
 "sDO" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/darkyellow2/west,
 /area/bigredv2/outside/engineering/reactor)
 "sDZ" = (

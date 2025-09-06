@@ -24,8 +24,9 @@ SUBSYSTEM_DEF(stickyban)
 	for(var/datum/view_record/stickyban_matched_cid/matched_cid as anything in get_impacted_cid_records(computer_id))
 		stickyban_ids += matched_cid.linked_stickyban
 
-	for(var/datum/view_record/stickyban_matched_ip/matched_ip as anything in get_impacted_ip_records(address))
-		stickyban_ids += matched_ip.linked_stickyban
+	if(!SSipcheck.is_whitelisted(ckey))
+		for(var/datum/view_record/stickyban_matched_ip/matched_ip as anything in get_impacted_ip_records(address))
+			stickyban_ids += matched_ip.linked_stickyban
 
 	if(!length(stickyban_ids))
 		return FALSE

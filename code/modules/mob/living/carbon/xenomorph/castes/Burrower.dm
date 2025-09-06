@@ -84,7 +84,7 @@
 	skull = /obj/item/skull/burrower
 	pelt = /obj/item/pelt/burrower
 
-/mob/living/carbon/xenomorph/burrower/ex_act(severity)
+/mob/living/carbon/xenomorph/burrower/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		return
 	..()

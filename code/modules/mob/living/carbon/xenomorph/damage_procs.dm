@@ -44,7 +44,7 @@
 		return
 	return ..()
 
-/mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0)
+/mob/living/carbon/xenomorph/ex_act(severity, direction, datum/cause_data/cause_data, pierce=0, enviro=FALSE)
 
 	if(body_position == LYING_DOWN && direction)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -80,8 +80,8 @@
 	if (damage >= 0)
 		b_loss += damage * 0.5
 		f_loss += damage * 0.5
-		apply_damage(b_loss, BRUTE)
-		apply_damage(f_loss, BURN)
+		apply_damage(b_loss, BRUTE, enviro=enviro)
+		apply_damage(f_loss, BURN, enviro=enviro)
 		updatehealth()
 
 		var/powerfactor_value = round( damage * 0.05 ,1)
@@ -136,12 +136,11 @@
 
 	return modified_damage
 
-/mob/living/carbon/xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE)
+/mob/living/carbon/xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE, enviro = FALSE)
 	if(!damage)
 		return
 
-
-	var/list/damagedata = list("damage" = damage)
+	var/list/damagedata = list("damage" = damage, "enviro" = enviro)
 	if(SEND_SIGNAL(src, COMSIG_XENO_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE)
 		return
 	damage = damagedata["damage"]
@@ -157,7 +156,8 @@
 
 	var/list/damage_data = list(
 		"bonus_damage" = 0,
-		"damage" = damage
+		"damage" = damage,
+		"enviro" = enviro
 	)
 	SEND_SIGNAL(src, COMSIG_BONUS_DAMAGE, damage_data)
 	damage += damage_data["bonus_damage"]

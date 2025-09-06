@@ -43,6 +43,8 @@
 	var/falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR
 	// How much power does the explosion gain (or lose) by bouncing off walls?
 	var/reflection_power_multiplier = 0.4
+	/// Whether the damage is considered to be from an environmental source
+	var/enviro = FALSE
 
 	//Diagonal cells have a small delay when branching off from a non-diagonal cell. This helps the explosion look circular
 	var/delay = 0
@@ -147,13 +149,13 @@
 		resistance += max(0, A.get_explosion_resistance())
 
 	// Blow stuff up
-	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
+	INVOKE_ASYNC(in_turf, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
 	for(var/atom/A in in_turf)
 		if(A in exploded_atoms)
 			continue
 		if(A.gc_destroyed)
 			continue
-		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data)
+		INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, direction, explosion_cause_data, 0, enviro)
 		exploded_atoms += A
 		log_explosion(A, src)
 
@@ -241,13 +243,13 @@ as having entered the turf.
 	if(A.gc_destroyed)
 		return
 
-	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data)
+	INVOKE_ASYNC(A, TYPE_PROC_REF(/atom, ex_act), power, null, explosion_cause_data, 0, enviro)
 	log_explosion(A, src)
 
 // I'll admit most of the code from here on out is basically just copypasta from DOREC
 
 // Spawns a cellular automaton of an explosion
-/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data)
+/proc/cell_explosion(turf/epicenter, power, falloff, falloff_shape = EXPLOSION_FALLOFF_SHAPE_LINEAR, direction, datum/cause_data/explosion_cause_data, enviro=FALSE)
 	if(!istype(epicenter))
 		epicenter = get_turf(epicenter)
 
@@ -292,6 +294,7 @@ as having entered the turf.
 	E.falloff_shape = falloff_shape
 	E.direction = direction
 	E.explosion_cause_data = explosion_cause_data
+	E.enviro = enviro
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter

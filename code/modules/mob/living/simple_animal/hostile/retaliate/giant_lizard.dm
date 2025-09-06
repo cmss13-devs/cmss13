@@ -367,7 +367,7 @@
 		handle_blood_splatter(get_dir(attacker.loc, loc))
 	return ..()
 
-/mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force)
+/mob/living/simple_animal/hostile/retaliate/giant_lizard/apply_damage(damage, damagetype, def_zone, used_weapon, sharp, edge, force, enviro)
 	Retaliate()
 	aggression_value = clamp(aggression_value + 5, 0, 30)
 	. = ..()
@@ -573,7 +573,7 @@
 		//xenos take extra damage
 		if(isxeno(target))
 			var/extra_damage = rand(melee_damage_lower, melee_damage_upper) * 0.33
-			target.apply_damage(extra_damage, BRUTE)
+			target.apply_damage(extra_damage, BRUTE, enviro=TRUE)
 
 		if(prob(33))
 			if(client && !is_retreating)
@@ -871,7 +871,7 @@
 			target.handle_blood_splatter(get_dir(src.loc, target.loc))
 
 			if(target.body_position == LYING_DOWN)
-				target.apply_damage(damage, BRUTE)
+				target.apply_damage(damage, BRUTE, enviro=TRUE)
 				target.apply_effect(1, DAZE)
 				shake_camera(target, 1, 2)
 

@@ -100,12 +100,6 @@
 
 	return ..()
 
-/datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	xeno.lay_down()
-	button.icon_state = xeno.resting ? "template_active" : "template"
-	return ..()
-
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)
 	var/mob/living/carbon/xenomorph/X = owner

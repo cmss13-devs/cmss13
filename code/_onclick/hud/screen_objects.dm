@@ -145,75 +145,188 @@
 /atom/movable/screen/zone_sel
 	name = "damage zone"
 	icon_state = "zone_sel"
-	var/selecting = "chest"
+	plane = HUD_PLANE
+	layer = HUD_LAYER
+	var/overlay_icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_xeno.dmi'
+	var/static/list/hover_overlays_cache = list()
+	var/hovering
 
-/atom/movable/screen/zone_sel/update_icon(mob/living/user)
-	overlays.Cut()
-	overlays += image('icons/mob/hud/zone_sel.dmi', "[selecting]")
+/atom/movable/screen/Click(location, control, params)
+	return ..()
 
-/atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
-	if (..())
-		return TRUE
+/atom/movable/screen/zone_sel/Click(location, control,params)
+	if(isobserver(usr))
+		return
 
-	var/icon_x = text2num(mods[ICON_X])
-	var/icon_y = text2num(mods[ICON_Y])
-	var/old_selecting = selecting //We're only going to update_icon() if there's been a change
+	var/list/modifiers = params2list(params)
+	var/icon_x = text2num(LAZYACCESS(modifiers, ICON_X))
+	var/icon_y = text2num(LAZYACCESS(modifiers, ICON_Y))
+	var/choice = get_zone_at(icon_x, icon_y)
+	if(!choice)
+		return 1
 
-	switch(icon_y)
-		if(1 to 3) //Feet
-			switch(icon_x)
-				if(10 to 15)
-					selecting = "r_foot"
-				if(17 to 22)
-					selecting = "l_foot"
-				else
-					return 1
-		if(4 to 9) //Legs
-			switch(icon_x)
-				if(10 to 15)
-					selecting = "r_leg"
-				if(17 to 22)
-					selecting = "l_leg"
-				else
-					return 1
-		if(10 to 13) //Hands and groin
-			switch(icon_x)
-				if(8 to 11)
-					selecting = "r_hand"
-				if(12 to 20)
-					selecting = "groin"
-				if(21 to 24)
-					selecting = "l_hand"
-				else
-					return 1
-		if(14 to 22) //Chest and arms to shoulders
-			switch(icon_x)
-				if(8 to 11)
-					selecting = "r_arm"
-				if(12 to 20)
-					selecting = "chest"
-				if(21 to 24)
-					selecting = "l_arm"
-				else
-					return 1
-		if(23 to 30) //Head, but we need to check for eye or mouth
-			if(icon_x in 12 to 20)
-				selecting = "head"
-				switch(icon_y)
-					if(23 to 24)
-						if(icon_x in 15 to 17)
-							selecting = "mouth"
-					if(26) //Eyeline, eyes are on 15 and 17
-						if(icon_x in 14 to 18)
-							selecting = "eyes"
-					if(25 to 27)
-						if(icon_x in 15 to 17)
-							selecting = "eyes"
+	// if(old_selecting != selecting)
+	// 	user.zone_selected = selecting
+	// 	update_icon(user)
+	// return 1
+	return set_selected_zone(choice, usr)
 
-	if(old_selecting != selecting)
-		user.zone_selected = selecting
+/atom/movable/screen/zone_sel/MouseEntered(location, control, params)
+	. = ..()
+	MouseMove(location, control, params)
+
+/atom/movable/screen/zone_sel/MouseMove(location, control, params)
+	if(isobserver(usr))
+		return
+
+	var/list/modifiers = params2list(params)
+	var/icon_x = text2num(LAZYACCESS(modifiers, ICON_X))
+	var/icon_y = text2num(LAZYACCESS(modifiers, ICON_Y))
+	var/choice = get_zone_at(icon_x, icon_y, usr)
+
+	if(hovering == choice)
+		return
+	vis_contents -= hover_overlays_cache[hovering]
+	hovering = choice
+
+	// Don't need to account for turf cause we're on the hud babyyy
+	var/obj/effect/overlay/zone_sel/overlay_object = hover_overlays_cache[choice]
+	if(!overlay_object)
+		overlay_object = new
+		overlay_object.icon_state = "[choice]"
+		hover_overlays_cache[choice] = overlay_object
+	vis_contents += overlay_object
+
+/atom/movable/screen/zone_sel/proc/set_selected_zone(choice, mob/user, should_log = TRUE)
+	if(user != hud?.mymob)
+		return
+
+	if(choice != hud.mymob.zone_selected)
+		hud.mymob.zone_selected = choice
 		update_icon(user)
-	return 1
+
+	return TRUE
+
+/atom/movable/screen/zone_sel/update_icon(mob/user)
+	// if(!hud?.mymob)
+	// 	return
+	user.hud_used.zone_sel.overlays.Cut()
+	user.hud_used.zone_sel.overlays += mutable_appearance(overlay_icon, "[user.zone_selected]")
+
+/atom/movable/screen/zone_sel/MouseExited(location, control, params)
+	if(!isobserver(usr) && hovering)
+		vis_contents -= hover_overlays_cache[hovering]
+		hovering = null
+
+/obj/effect/overlay/zone_sel
+	icon = 'icons/mob/hud/cm_hud/cm_hud_zone_sel_xeno.dmi'
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	alpha = 128
+	anchored = TRUE
+	plane = ABOVE_HUD_PLANE
+	layer = ABOVE_HUD_LAYER
+
+// /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
+// 	if (..())
+// 		return TRUE
+
+// 	var/icon_x = text2num(mods[ICON_X])
+// 	var/icon_y = text2num(mods[ICON_Y])
+// 	var/old_selecting = selecting //We're only going to update_icon() if there's been a change
+
+
+/atom/movable/screen/zone_sel/proc/get_zone_at(icon_x, icon_y, mob/user)
+	if(isxeno(user))
+		switch(icon_y)
+			if(2 to 5) //Feet
+				switch(icon_x)
+					if(20 to 23)
+						return BODY_ZONE_R_FOOT
+					if(24 to 26)
+						return BODY_ZONE_L_FOOT
+			if(6 to 13) //Legs
+				switch(icon_x)
+					if(20 to 23)
+						return BODY_ZONE_R_LEG
+					if(24 to 26)
+						return BODY_ZONE_L_LEG
+			if(14 to 19) //Hands and groin
+				switch(icon_x)
+					if(17 to 20)
+						return BODY_ZONE_R_HAND
+					if(21 to 25)
+						return BODY_ZONE_GROIN
+					if(26 to 29)
+						return BODY_ZONE_L_HAND
+			if(20 to 32) //Chest and arms to shoulders
+				switch(icon_x)
+					if(17 to 20)
+						return BODY_ZONE_R_ARM
+					if(21 to 25)
+						return BODY_ZONE_CHEST
+					if(26 to 29)
+						return BODY_ZONE_L_ARM
+			if(33 to 40) //Head, but we need to check for eye or mouth
+				if(icon_x in 20 to 26)
+					switch(icon_y)
+						if(33 to 35)
+							if(icon_x in 22 to 24)
+								return BODY_ZONE_MOUTH
+						if(36 to 38) //Eyeline, eyes are on 15 and 17
+							if(icon_x in 20 to 26)
+								return BODY_ZONE_EYES
+					return BODY_ZONE_HEAD
+	// else
+	// 	switch(icon_y)
+	// 		if(1 to 3) //Feet
+	// 			switch(icon_x)
+	// 				if(10 to 15)
+	// 					selecting = "r_foot"
+	// 				if(17 to 22)
+	// 					selecting = "l_foot"
+	// 				else
+	// 					return 1
+	// 		if(4 to 9) //Legs
+	// 			switch(icon_x)
+	// 				if(10 to 15)
+	// 					selecting = "r_leg"
+	// 				if(17 to 22)
+	// 					selecting = "l_leg"
+	// 				else
+	// 					return 1
+	// 		if(10 to 13) //Hands and groin
+	// 			switch(icon_x)
+	// 				if(8 to 11)
+	// 					selecting = "r_hand"
+	// 				if(12 to 20)
+	// 					selecting = "groin"
+	// 				if(21 to 24)
+	// 					selecting = "l_hand"
+	// 				else
+	// 					return 1
+	// 		if(14 to 22) //Chest and arms to shoulders
+	// 			switch(icon_x)
+	// 				if(8 to 11)
+	// 					selecting = "r_arm"
+	// 				if(12 to 20)
+	// 					selecting = "chest"
+	// 				if(21 to 24)
+	// 					selecting = "l_arm"
+	// 				else
+	// 					return 1
+	// 		if(23 to 30) //Head, but we need to check for eye or mouth
+	// 			if(icon_x in 12 to 20)
+	// 				selecting = "head"
+	// 				switch(icon_y)
+	// 					if(23 to 24)
+	// 						if(icon_x in 15 to 17)
+	// 							selecting = "mouth"
+	// 					if(26) //Eyeline, eyes are on 15 and 17
+	// 						if(icon_x in 14 to 18)
+	// 							selecting = "eyes"
+	// 					if(25 to 27)
+	// 						if(icon_x in 15 to 17)
+	// 							selecting = "eyes"
 
 /atom/movable/screen/gun
 	/// The proc/verb which should be called on the gun.
@@ -352,6 +465,19 @@
 		living.resist()
 		return 1
 
+/atom/movable/screen/rest
+	name = "rest"
+	icon = 'icons/mob/hud/human_midnight.dmi'
+	icon_state = "act_rest"
+	layer = HUD_LAYER
+
+/atom/movable/screen/rest/clicked(mob/user)
+	if(.)
+		return
+	var/mob/living/living_mob = user
+	living_mob.lay_down()
+	return TRUE
+
 /atom/movable/screen/mov_intent
 	name = "run/walk toggle"
 	icon = 'icons/mob/hud/human_midnight.dmi'
@@ -406,18 +532,24 @@
 	var/_x = text2num(mods[ICON_X])
 	var/_y = text2num(mods[ICON_Y])
 
-	if(_x<=16 && _y<=16)
-		user.a_intent_change(INTENT_HARM)
-
-	else if(_x<=16 && _y>=17)
-		user.a_intent_change(INTENT_HELP)
-
-	else if(_x>=17 && _y<=16)
-		user.a_intent_change(INTENT_GRAB)
-
-	else if(_x>=17 && _y>=17)
-		user.a_intent_change(INTENT_DISARM)
-
+	if(isxeno(user))
+		if(_x<=19 && _y<=20)
+			user.a_intent_change(INTENT_HARM)
+		else if(_x<=19 && _y>=22)
+			user.a_intent_change(INTENT_HELP)
+		else if(_x>=21 && _y<=20)
+			user.a_intent_change(INTENT_GRAB)
+		else if(_x>=21 && _y>=22)
+			user.a_intent_change(INTENT_DISARM)
+	else
+		if(_x<=16 && _y<=16)
+			user.a_intent_change(INTENT_HARM)
+		else if(_x<=16 && _y>=17)
+			user.a_intent_change(INTENT_HELP)
+		else if(_x>=17 && _y<=16)
+			user.a_intent_change(INTENT_GRAB)
+		else if(_x>=17 && _y>=17)
+			user.a_intent_change(INTENT_DISARM)
 	return 1
 
 
@@ -425,7 +557,10 @@
 	name = "health"
 	icon_state = "health0"
 	icon = 'icons/mob/hud/human_midnight.dmi'
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/atom/movable/screen/healths/xeno
+	name = "health"
+	icon_state = "health_doll"
 
 /atom/movable/screen/pull
 	name = "stop pulling"
@@ -442,11 +577,9 @@
 	if(!user)
 		return
 	if(user.pulling)
-		icon_state = "pull"
+		icon_state = "pull1"
 	else
 		icon_state = "pull0"
-
-
 
 /atom/movable/screen/squad_leader_locator
 	name = "beacon tracker"
@@ -594,6 +727,17 @@
 			icon_state = "nightvision_off"
 			vision_define = XENO_VISION_LEVEL_NO_NVG
 	to_chat(owner, SPAN_NOTICE("Night vision mode switched to <b>[vision_define]</b>."))
+
+/atom/movable/screen/xenoevo
+	name = "Evolve Status"
+	desc = "Click for evolve panel."
+
+/atom/movable/screen/alien/evolvehud/Click()
+	. = ..()
+	if(!.)
+		return
+	var/mob/living/carbon/xenomorph/X = usr
+	X.Evolve()
 
 /atom/movable/screen/equip
 	name = "equip"

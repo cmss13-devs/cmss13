@@ -118,6 +118,8 @@
 /area/whiskey_outpost/outside/lane/two_north
 	name = "\improper Western Path North"
 	icon_state = "lane2n"
+	always_unpowered = 0
+	power_equip = TRUE
 
 /area/whiskey_outpost/outside/lane/two_south
 	name = "\improper Western Path South"
@@ -126,6 +128,8 @@
 /area/whiskey_outpost/outside/lane/three_north
 	name = "\improper Eastern Path North"
 	icon_state = "lane3n"
+	always_unpowered = 0
+	power_equip = TRUE
 
 /area/whiskey_outpost/outside/lane/three_south
 	name = "\improper Eastern Path South"
@@ -199,3 +203,10 @@
 /area/whiskey_outpost/inside/caves/caverns/east
 	name = "\improper Eastern Caverns"
 	icon_state = "caveseast"
+
+/area/whiskey_outpost/inside/caves/deep
+	name = "\improper Deep Caves"
+	icon_state = "caves"
+	ceiling = CEILING_DEEP_UNDERGROUND
+	unoviable_timer = FALSE
+	flags_area = AREA_NOTUNNEL

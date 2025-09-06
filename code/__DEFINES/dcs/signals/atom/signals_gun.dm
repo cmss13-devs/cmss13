@@ -33,3 +33,6 @@
 
 /// Called when IFF is toggled on or off
 #define COMSIG_GUN_ALT_IFF_TOGGLED "gun_iff_toggled"
+
+/// Called for gun_game to initalize
+#define COMSIG_GUN_GAME_REGISTER "gun_game_started"

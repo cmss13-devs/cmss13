@@ -69,25 +69,24 @@
 		if(current_human.rank_override && squad.squad_leader != current_human)
 			marine_rk = current_human.rank_override
 		if(marine_rk)
-			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
+			var/image/IMG = image('icons/mob/hud/factions/marine.dmi', current_human, "hudsquad")
 			if(squad_clr)
 				IMG.color = squad_clr
 			else
 				IMG.color = "#5A934A"
 			holder.overlays += IMG
-			holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad_[marine_rk]")
+			holder.overlays += image('icons/mob/hud/factions/marine.dmi', current_human, "hudsquad_[marine_rk]")
 		if(current_human.assigned_squad && current_human.assigned_fireteam)
-			var/image/IMG2 = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad_[current_human.assigned_fireteam]")
+			var/image/IMG2 = image('icons/mob/hud/factions/marine.dmi', current_human, "hudsquad_[current_human.assigned_fireteam]")
 			IMG2.color = squad_clr
 			holder.overlays += IMG2
 			if(current_human.assigned_squad.fireteam_leaders[current_human.assigned_fireteam] == current_human)
-				var/image/IMG3 = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad_ftl")
+				var/image/IMG3 = image('icons/mob/hud/factions/marine.dmi', current_human, "hudsquad_ftl")
 				IMG3.color = squad_clr
 				holder.overlays += IMG3
 	else
 		var/marine_rk
 		var/border_rk
-		var/icon_prefix = "hudsquad_"
 		var/obj/item/card/id/ID = current_human.get_idcard()
 		var/_role
 		if(current_human.mind)
@@ -248,9 +247,9 @@
 			marine_rk = current_human.rank_override
 
 		if(marine_rk)
-			var/image/I = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
+			var/image/I = image('icons/mob/hud/factions/marine.dmi', current_human, "hudsquad")
 			I.color = "#5A934A"
 			holder.overlays += I
-			holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "[icon_prefix][marine_rk]")
+			holder.overlays += image('icons/mob/hud/factions/marine.dmi', current_human, "hudsquad_[marine_rk]")
 			if(border_rk)
-				holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "hudmarineborder[border_rk]")
+				holder.overlays += image('icons/mob/hud/factions/marine.dmi', current_human, "hudmarineborder[border_rk]")

@@ -38,4 +38,4 @@
 		if (JOB_TWE_IASF_PARA_SYNTH)
 			hud_icon_state = "synth"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "iasf_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/twe.dmi', human, "iasf_[hud_icon_state]")

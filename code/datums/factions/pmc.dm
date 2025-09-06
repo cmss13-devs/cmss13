@@ -50,7 +50,7 @@
 		if(JOB_WY_COMMANDO_DOGCATHER)
 			hud_icon_state = "commando_dogcatcher"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "pmc_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/wy.dmi', H, "pmc_[hud_icon_state]")
 
 /datum/faction/pmc/get_antag_guns_snowflake_equipment()
 	return list(

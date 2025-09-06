@@ -30,7 +30,7 @@
 		if(JOB_TWE_RMC_MAJOR)
 			hud_icon_state = "major"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "rmc_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/twe.dmi', H, "rmc_[hud_icon_state]")
 
 /datum/faction/royal_marines_commando/get_antag_guns_snowflake_equipment()
 	return list(

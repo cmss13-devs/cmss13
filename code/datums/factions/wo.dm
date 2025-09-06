@@ -20,4 +20,4 @@
 		if(JOB_DS_CU)
 			hud_icon_state = "op"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "wo_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/wy.dmi', human, "wo_[hud_icon_state]")

@@ -300,7 +300,8 @@
 		var/atom/movable/temp = new spray_path()
 		var/atom/movable/blocker = LinkBlocked(temp, prev_turf, turf)
 		qdel(temp)
-		if(blocker)
+		// despite the tank being a blocker, acid sprays should still go through it to hit marines ontop.
+		if(blocker && !locate(/obj/vehicle/multitile/tank) in turf.contents)
 			blocker.acid_spray_act(src)
 			break
 

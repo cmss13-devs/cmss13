@@ -68,7 +68,18 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 	while(istype(below, /turf/open_space))
 		below = SSmapping.get_turf_below(below)
 
+	var/obj/vehicle/multitile/tank/tank_at_destination = null
+	for(var/obj/vehicle/multitile/tank/T in below.contents)
+		if(below in T.locs)
+			tank_at_destination = T
+			break
+
 	user.forceMove(below)
+
+	if(tank_at_destination && isliving(user))
+		var/mob/living/L = user
+		tank_at_destination.mark_on_top(L)
+
 	return
 
 /turf/open_space/proc/check_fall(atom/movable/movable)
@@ -84,6 +95,16 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
+
+	var/obj/vehicle/multitile/tank/tank_at_destination = null
+	for(var/obj/vehicle/multitile/tank/T in below.contents)
+		if(below in T.locs)
+			tank_at_destination = T
+			break
+
+	if(tank_at_destination && isliving(movable))
+		var/mob/living/L = movable
+		tank_at_destination.mark_on_top(L)
 
 
 /turf/solid_open_space

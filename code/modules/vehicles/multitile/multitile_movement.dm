@@ -163,11 +163,12 @@
 		if(T in old_turfs)
 			continue
 
-		if(!T.Enter(src))
+		if(!T.Enter(src) || locate(/obj/structure/shuttle/part) in T)
 			can_move = FALSE
 
 	// Crashed with something that stopped us
 	if(!can_move)
+		on_crash()
 		move_momentum = floor(move_momentum/2)
 		update_next_move()
 		interior_crash_effect()
@@ -304,3 +305,12 @@
 		return
 	else
 		cell_explosion(target, explosion_strength, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
+
+/**
+ * Base proc for defining special behavior when crashing
+ *
+ * on_crash is a proc meant to be overridable by child classes
+ * That way, all of the effects that happen when crashing are in the same spot.
+ */
+/obj/vehicle/multitile/proc/on_crash()
+	return

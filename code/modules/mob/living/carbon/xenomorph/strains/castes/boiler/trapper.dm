@@ -226,12 +226,18 @@
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] fires a blast of acid at [affected_atom]!"), SPAN_XENOWARNING("We fire a blast of acid at [affected_atom]!"))
 
-	var/turf/target_turf = locate(affected_atom.x, affected_atom.y, affected_atom.z)
+	// Allows acid shotgun ability to play nice with rideable tank
+	var/atom/shot_target
+	if(ismob(affected_atom))
+		shot_target = affected_atom
+	else
+		shot_target = locate(affected_atom.x, affected_atom.y, affected_atom.z)
+
 	var/obj/projectile/proj = new(xeno.loc, create_cause_data("acid shotgun", xeno))
 	var/datum/ammo/ammoDatum = new ammo_type()
 
 	proj.generate_bullet(ammoDatum)
-	proj.fire_at(target_turf, xeno, xeno, ammoDatum.max_range, ammoDatum.shell_speed)
+	proj.fire_at(shot_target, xeno, xeno, ammoDatum.max_range, ammoDatum.shell_speed)
 
 	apply_cooldown()
 	return ..()

@@ -224,9 +224,14 @@
 			clear_fullscreen("weather")
 
 /mob/living/handle_flamer_fire(obj/flamer_fire/fire, damage, delta_time)
+	if(is_on_tank_hull())
+		return
 	. = ..()
 	fire.set_on_fire(src)
 
 /mob/living/handle_flamer_fire_crossed(obj/flamer_fire/fire)
+	if(is_on_tank_hull())
+		return
 	. = ..()
 	fire.set_on_fire(src)
+

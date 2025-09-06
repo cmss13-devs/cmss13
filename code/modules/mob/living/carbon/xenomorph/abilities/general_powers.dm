@@ -1051,18 +1051,29 @@
 	if(distance > stab_range)
 		return FALSE
 
+	// allows tailstabs into mobs riding atop the tank
+	var/obj/vehicle/multitile/tank/skip_tank = null
+	if(ismob(targetted_atom))
+		var/mob/living/M = targetted_atom
+		if(istype(M) && M.tank_on_top_of)
+			skip_tank = M.tank_on_top_of
+
 	var/list/turf/path = get_line(stabbing_xeno, targetted_atom, include_start_atom = FALSE)
 	for(var/turf/path_turf as anything in path)
 		if(path_turf.density)
 			to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 			return FALSE
 		for(var/obj/path_contents in path_turf.contents)
+			if(skip_tank && path_contents == skip_tank)
+				continue
 			if(path_contents != targetted_atom && path_contents.density && !path_contents.throwpass)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))
 				return FALSE
 
 		var/atom/barrier = path_turf.handle_barriers(stabbing_xeno, null, (PASS_MOB_THRU_XENO|PASS_OVER_THROW_MOB|PASS_TYPE_CRAWLER))
 		if(barrier != path_turf)
+			if(skip_tank && barrier == skip_tank)
+				continue
 			var/tail_stab_cooldown_multiplier = barrier.handle_tail_stab(stabbing_xeno)
 			if(!tail_stab_cooldown_multiplier)
 				to_chat(stabbing_xeno, SPAN_WARNING("There's something blocking our strike!"))

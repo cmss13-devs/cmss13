@@ -106,6 +106,25 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 	user.visible_message(SPAN_WARNING("[user] holds [victim] by the neck and starts choking them!"), null, null, 5)
 	msg_admin_attack("[key_name(user)] started to choke [key_name(victim)] at [get_area_name(victim)]", victim.loc.x, victim.loc.y, victim.loc.z)
+
+	// allows pulling ppl onto the tank if you are already ontop of it..
+	// the idea is to allow the tank to charge into an incend OB and for corpsmen ontop to recover people.
+	if(user.tank_on_top_of && !victim.tank_on_top_of)
+		var/obj/vehicle/multitile/tank/T = user.tank_on_top_of
+		if(istype(T))
+			var/turf/victim_turf = get_turf(victim)
+			var/adjacent_to_tank = FALSE
+			for(var/turf/tank_turf in T.locs)
+				if(get_dist(victim_turf, tank_turf) <= 1 && victim_turf != tank_turf)
+					adjacent_to_tank = TRUE
+					break
+
+			if(adjacent_to_tank)
+				victim.forceMove(user.loc)
+				T.mark_on_top(victim)
+				victim.update_transform(TRUE)
+				return
+
 	victim.Move(user.loc, get_dir(victim.loc, user.loc))
 	victim.update_transform(TRUE)
 

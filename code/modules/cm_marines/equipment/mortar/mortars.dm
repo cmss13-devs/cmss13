@@ -611,6 +611,12 @@
 	if(CEILING_IS_PROTECTED(area.ceiling, CEILING_PROTECTION_TIER_1) && is_ground_level(deploy_turf.z))
 		to_chat(user, SPAN_WARNING("You probably shouldn't deploy [src] indoors."))
 		return
+	if(isliving(user))
+		var/mob/living/L = user
+		if(L.is_on_tank_hull())
+			to_chat(user, SPAN_WARNING("You can't deploy [src] here!"))
+			return
+
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."),
 		SPAN_NOTICE("You start deploying [src]."))
 	playsound(deploy_turf, 'sound/items/Deconstruct.ogg', 25, 1)

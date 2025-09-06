@@ -156,6 +156,76 @@
 
 	return
 
+/**
+ * _handle_tank_edge_move blocks consensual movement outside of tank tiles, unless you invoke climb_down()
+ *
+ * This proc makes it so that you cannot instantly dismount the tank, nor accidentally walk out of it.
+ * Marines and xenos alike become unable to dismount unless:
+ *   - They are dismounted forcefully (e.g, by an explosion, grab, et-cetera)
+ *     > Marines eat a 3 second stun if this happens. Xenos currently do not get punished.
+ *   - They use some kind of skill to dismount (e.g pouncing outside)
+ *   - They wait 1 second until climb_down finishes.
+ *
+ * OOPS! As a fix for LINTERS, climb_down() is called on the proc in carbon.dm
+ *
+ * Arguments:
+ * * NewLoc   - Wherever we're trying to step down towards.
+ * * Direct   - Direction we're facing
+ *
+ * Returns:
+ * * TRUE     - When dismounting is impossible (blocked turf) or consensual (climb_down)
+ * * FALSE    - When the mob dismounts improperly, and must be punished.
+ */
+/mob/living/proc/_handle_tank_edge_move(NewLoc, direct)
+	var/obj/vehicle/multitile/tank/T = tank_on_top_of
+
+	if(!T)
+		return FALSE
+
+	var/turf/here = get_turf(src)
+	if(!(here in T.locs))
+		T.clear_on_top(src)
+		return FALSE
+
+	// only care about steps that would leave the hull.
+	if(isturf(NewLoc) && !(NewLoc in T.locs))
+		if(!(flags_atom & DIRLOCK))
+			setDir(direct)
+		SEND_SIGNAL(src, COMSIG_MOB_MOVE_OR_LOOK, TRUE, direct, direct)
+		if(pulledby || throwing)
+			return FALSE
+		var/turf/edge = get_step(here, direct)
+		if(!edge || edge.z != z || (edge in T.locs))
+			return FALSE
+		if(T._blocked_except_mobs(edge))
+			return TRUE
+		// special interaction for simple_animals and (edge case) silicons...
+		// ...to prevent SpacemanDMM from sleeping and still allow dismounts.
+		if(!iscarbon(src))
+			T.clear_on_top(src)
+			src.forceMove(NewLoc)
+			return TRUE
+		return TRUE
+
+	return FALSE
+
+/**
+ * is_on_tank_hull checks if a mob has a valid tank_on_top_of.
+ *
+ * This proc checks the tank_on_top_of var of a mob.
+ * If it is anything except null, it means this mob is atop a tank tile.
+ *
+ * Returns:
+ * * TRUE    - If there is a valid tile under the tank, and if mob and tank are on the same Z-level.
+ * * FALSE   - If tank_on_top_of is null, if the Z-levels of the mob and Tank mistmach, if the tile Tu is invalid,
+ * *              ...Or if the tile Tu is not, in fact, underneath a tank.
+ */
+/mob/living/proc/is_on_tank_hull()
+	var/obj/vehicle/multitile/tank/T = tank_on_top_of
+	if(!T || z != T.z) return FALSE
+	var/turf/Tu = get_turf(src)
+	return Tu && (Tu in T.locs)
+
 /mob/living/Move(NewLoc, direct)
 	if(lying_angle != 0)
 		lying_angle_on_movement(direct)
@@ -164,6 +234,18 @@
 			return buckled.Move(NewLoc, direct)
 		else
 			return FALSE
+
+	if(is_on_tank_hull())
+		if(_handle_tank_edge_move(NewLoc, direct))
+			return FALSE
+		if(isturf(NewLoc))
+			var/obj/vehicle/multitile/tank/T = tank_on_top_of
+			if(T && !(NewLoc in T.locs))
+				if(ishuman(src))
+					var/mob/living/carbon/human/H = src
+					H.apply_effect(3, WEAKEN)
+					playsound(src, "punch", 25, TRUE)
+					T.clear_on_top(src)
 
 	var/atom/movable/pullee = pulling
 	if(pullee && get_dist(src, pullee) > 1) //Is the pullee adjacent?
@@ -376,6 +458,23 @@
 		if(!(living_mob.status_flags & CANPUSH))
 			now_pushing = FALSE
 			return
+
+	// tank-related collision rules
+	var/src_on_tank = is_on_tank_hull()
+	var/target_on_tank = living_mob.is_on_tank_hull()
+
+	if(src_on_tank != target_on_tank)
+		now_pushing = FALSE
+		return
+
+	if(src_on_tank && target_on_tank)
+		if(tank_on_top_of == living_mob.tank_on_top_of)
+			var/obj/vehicle/multitile/tank/T = tank_on_top_of
+			var/turf/destination = get_step(living_mob.loc, dir)
+			if(destination && !(destination in T.locs))
+				if(src.a_intent != INTENT_HELP || living_mob.a_intent != INTENT_HELP)
+					now_pushing = FALSE
+					return
 
 	if(!living_mob.buckled && !living_mob.anchored)
 		var/mob_swap
@@ -620,7 +719,7 @@
 	//so mob lying always appear behind standing mobs, but dead ones appear behind living ones
 	if(pulledby && pulledby.grab_level == GRAB_CARRY)
 		layer = ABOVE_MOB_LAYER
-	else if (body_position == LYING_DOWN && stat == DEAD)
+	else if (body_position == LYING_DOWN && stat == DEAD && !is_on_tank_hull())
 		layer = LYING_DEAD_MOB_LAYER // Dead mobs should layer under living ones
 	else if(body_position == LYING_DOWN && layer == initial(layer)) //to avoid things like hiding larvas. //i have no idea what this means
 		layer = LYING_LIVING_MOB_LAYER

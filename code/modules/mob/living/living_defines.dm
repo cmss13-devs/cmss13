@@ -144,3 +144,7 @@
 
 	// for multiz looking up
 	var/atom/observed_atom
+
+	// keeps track of the tank we are currently riding atop of.
+	// unecessary, but saves us from having to do a locate() for it on a turf every time we need to check it.
+	var/tmp/obj/vehicle/multitile/tank/tank_on_top_of = null

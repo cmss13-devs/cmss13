@@ -42,6 +42,7 @@
 	. = ..()
 	if(garbage)
 		add_to_garbage(src)
+	add_debris_element()
 
 /obj/Destroy(force)
 	if(buckled_mob)

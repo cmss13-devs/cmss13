@@ -11,6 +11,34 @@
 	name = "droppod landing-zone"
 	icon_state = "techpod_lz_marker"
 
+/obj/effect/warning/droppod/smoke
+	///particle holder for smoke
+	var/obj/effect/abstract/particle_holder/particle_holder
+
+/obj/effect/warning/droppod/smoke/Initialize(mapload)
+	. = ..()
+	particle_holder = new(src, /particles/droppod_dust)
+
+/obj/effect/warning/droppod/smoke/Destroy(force)
+	. = ..()
+	QDEL_NULL(particle_holder)
+
+/particles/droppod_dust
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "smoke"
+	width = 200
+	height = 200
+	count = 30
+	spawning = 10
+	lifespan = 5
+	fade = 10
+	fadein = 2
+	grow = 0.2
+	velocity = generator(GEN_CIRCLE, 5, 10, UNIFORM_RAND)
+	scale = 0.1
+	rotation = 0
+	spin = generator(GEN_NUM, -20, 20)
+
 /obj/effect/warning/alien
 	name = "alien warning"
 	color = "#a800ff"

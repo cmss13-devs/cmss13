@@ -111,7 +111,7 @@
 	roundstart_damage_times = 2
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-	archetype = INSERT_MEDIC
+	archetype = INSERT_CO
 
 /obj/effect/landmark/survivor_spawner/clf_synth
 	icon_state = "surv_clf"
@@ -127,7 +127,7 @@
 	roundstart_damage_times = 2
 
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
-	archetype = INSERT_MEDIC
+	archetype = INSERT_SYNTH
 //Big Red CLF survivors//
 
 /obj/effect/landmark/survivor_spawner/clf/solaris
@@ -769,6 +769,7 @@
 
 /obj/effect/landmark/survivor_spawner/lv522_forecon_synth
 	equipment = /datum/equipment_preset/synth/survivor/forecon
+	synth_equipment = /datum/equipment_preset/synth/survivor/forecon
 	spawn_priority = SPAWN_PRIORITY_VERY_HIGH
 	archetype = INSERT_SYNTH
 

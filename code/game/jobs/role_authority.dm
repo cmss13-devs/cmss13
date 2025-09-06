@@ -207,6 +207,10 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 	if(istype(CO_surv_job))
 		CO_surv_job.set_spawn_positions(GLOB.players_preassigned)
 
+	var/datum/job/synth_surv_job = temp_roles_for_mode[JOB_SYNTH_SURVIVOR]
+	if(istype(synth_surv_job))
+		synth_surv_job.set_spawn_positions(GLOB.players_preassigned)
+
 	var/chance = trim(file2text("data/predchance.txt"))
 	if(chance)
 		chance = text2num(chance)

@@ -309,6 +309,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// Sends messages in chat when the Xeno Action's cooldown is complete and adds cooldown timers in stat panel
 	var/show_cooldown_messages = FALSE
 
+	/// A list of saved presets for the ChemMaster, storing pill bottle color, label, and pill color preferences
+	var/list/chem_presets = list()
+
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -2506,3 +2509,17 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		return
 
 	return slots_with_stuff
+
+/datum/preferences/proc/get_all_chem_presets()
+	return chem_presets
+
+/datum/preferences/proc/get_chem_preset(preset_name)
+	return chem_presets[preset_name]
+
+/datum/preferences/proc/save_chem_preset(preset_name, list/preset_data)
+	chem_presets[preset_name] = preset_data
+	save_preferences()
+
+/datum/preferences/proc/delete_chem_preset(preset_name)
+	chem_presets -= preset_name
+	save_preferences()

@@ -15,7 +15,7 @@
 	access = get_access(ACCESS_LIST_UA)
 
 /datum/equipment_preset/cmb/load_name(mob/living/carbon/human/new_human)
-	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name = random_name(new_human.gender)
@@ -541,7 +541,7 @@
 		new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/cmb/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name

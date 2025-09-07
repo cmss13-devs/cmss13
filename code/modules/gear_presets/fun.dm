@@ -430,7 +430,7 @@
 	new_human.set_species(SPECIES_MONKEY)
 
 /datum/equipment_preset/fun/monkey/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
-	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
+	new_human.gender = pick(MALE, FEMALE)
 	var/random_name = get_random_name(new_human)
 	new_human.change_real_name(new_human, random_name)
 	new_human.age = rand(1, 40)

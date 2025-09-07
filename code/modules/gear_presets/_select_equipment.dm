@@ -88,7 +88,7 @@
 	return
 
 /datum/equipment_preset/proc/load_name(mob/living/carbon/human/new_human, randomise, client/mob_client)
-	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name = random_name(new_human.gender)

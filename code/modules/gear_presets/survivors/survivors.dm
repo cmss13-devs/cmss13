@@ -19,7 +19,7 @@
 	var/survivor_variant = CIVILIAN_SURVIVOR
 
 /datum/equipment_preset/survivor/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new
 	A.randomize_appearance(new_human)
 	var/random_name = random_name(new_human.gender)

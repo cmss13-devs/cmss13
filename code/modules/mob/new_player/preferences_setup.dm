@@ -9,7 +9,7 @@
 			if(PLURAL)
 				gender = PLURAL
 			else
-				gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
+				gender = pick(MALE, FEMALE)
 
 	skin_color = random_skin_color()
 	body_type = random_body_type()

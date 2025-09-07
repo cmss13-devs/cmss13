@@ -14,7 +14,7 @@
 	access = get_access(ACCESS_LIST_CLF_BASE)
 
 /datum/equipment_preset/clf/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
+	new_human.gender = pick(MALE, FEMALE)
 	var/random_name
 	var/first_name
 	var/last_name
@@ -754,7 +754,7 @@
 	access = get_access(ACCESS_LIST_CLF_ALL)
 
 /datum/equipment_preset/clf/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick_weight(list(MALE = 47.5, FEMALE = 47.5, PLURAL = 5))
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name

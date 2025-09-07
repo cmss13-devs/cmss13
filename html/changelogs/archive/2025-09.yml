@@ -1,0 +1,12 @@
+2025-09-04:
+  TheGamerdk:
+  - spellcheck: Removes extra . from forsaken ert message
+2025-09-05:
+  ihatethisengine:
+  - balance: boosting boosts props by 0.5 per level again instead of 1 per level.
+2025-09-07:
+  TheGamerdk:
+  - spellcheck: Fixed missing capitalization in CLF van interior
+  Zenith:
+  - imageadd: replaced the auto_sand.dmi edges and last layer with better sprites
+      - no more square sand.

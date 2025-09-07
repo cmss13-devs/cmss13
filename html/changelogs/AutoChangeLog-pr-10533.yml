@@ -1,4 +1,0 @@
-author: "Zenith"
-delete-after: True
-changes:
-  - imageadd: "replaced the auto_sand.dmi edges and last layer with better sprites - no more square sand."

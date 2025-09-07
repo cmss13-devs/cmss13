@@ -785,11 +785,12 @@ const RenderCategory = (props: {
     ? categories_to_objects[category]
     : all_items.filter((pack: Pack) => {
         return (
-          pack.name.toLowerCase().includes(lowerCaseCategory) ||
-          pack.english_name.toLowerCase().includes(lowerCaseCategory) ||
-          pack.category.toLowerCase().includes(lowerCaseCategory) ||
-          (pack.english_category &&
-            pack.english_category.toLowerCase().includes(lowerCaseCategory))
+          !pack.dollar_cost &&
+          (pack.name.toLowerCase().includes(lowerCaseCategory) ||
+            pack.english_name.toLowerCase().includes(lowerCaseCategory) ||
+            pack.category.toLowerCase().includes(lowerCaseCategory) ||
+            (pack.english_category &&
+              pack.english_category.toLowerCase().includes(lowerCaseCategory)))
         );
       });
 

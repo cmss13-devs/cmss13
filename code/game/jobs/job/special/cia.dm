@@ -6,6 +6,14 @@
 	title = JOB_CIA_UACQS_COMR
 	gear_preset = /datum/equipment_preset/cia/uacqs/commissioner
 
+/datum/job/special/cia/uacqs_dir_gen
+	title = JOB_CIA_UACQS_DG
+	gear_preset = /datum/equipment_preset/cia/uacqs/dir_gen
+
+/datum/job/special/cia/uacqs_sec_gen
+	title = JOB_CIA_UACQS_SG
+	gear_preset = /datum/equipment_preset/cia/uacqs/dir_gen/sec_gen
+
 /datum/job/special/cia/uacqs_security
 	title = JOB_CIA_UACQS_SEC
 	gear_preset = /datum/equipment_preset/cia/uacqs/security

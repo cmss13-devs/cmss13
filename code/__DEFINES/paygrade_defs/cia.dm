@@ -20,10 +20,20 @@
 /// CIA-ADM, Administrator
 #define PAY_SHORT_CIA_ADM "CIA-ADM"
 
+/// CIA-SADM, Senior Administrator
+#define PAY_SHORT_CIA_SADM "CIA-SADM"
+
+/// CIA-ACOM, Acting Commissioner
+#define PAY_SHORT_CIA_ACOM "CIA-ACOM"
+
 /// CIA-COM, Commissioner
 #define PAY_SHORT_CIA_COM "CIA-COM"
 
+/// CIA-DG, Director General
+#define PAY_SHORT_CIA_DG "CIA-DG"
 
+/// CIA-SG, Secretary General
+#define PAY_SHORT_CIA_SG "CIA-SG"
 
 /// GRS-OPR, Operator
 #define PAY_SHORT_GRS_OPR "GRS-OPR"

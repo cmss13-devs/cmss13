@@ -27,7 +27,7 @@
 	prefix = "C"
 	pay_multiplier = 2.4
 
-/datum/paygrade/cia/agent
+/datum/paygrade/cia/spec_agent
 	paygrade = PAY_SHORT_CIA_SA
 	name = "Special Agent"
 	prefix = "SpAgt."
@@ -40,12 +40,40 @@
 	officer_grade = GRADE_OFFICER
 	pay_multiplier = 3
 
+/datum/paygrade/cia/senior_admin
+	paygrade = PAY_SHORT_CIA_SADM
+	name = "Senior Administrator"
+	prefix = "SAdmn."
+	officer_grade = GRADE_OFFICER
+	pay_multiplier = 3.3
+
+/datum/paygrade/cia/acting_commissioner
+	paygrade = PAY_SHORT_CIA_ACOM
+	name = "Acting Commissioner"
+	prefix = "ACom."
+	officer_grade = GRADE_OFFICER
+	pay_multiplier = 3.5
+
 /datum/paygrade/cia/commissioner
 	paygrade = PAY_SHORT_CIA_COM
 	name = "Commissioner"
 	prefix = "Com."
 	officer_grade = GRADE_FLAG
 	pay_multiplier = 4
+
+/datum/paygrade/cia/director_general
+	paygrade = PAY_SHORT_CIA_DG
+	name = "Director General"
+	prefix = "DG."
+	officer_grade = GRADE_FLAG
+	pay_multiplier = 8
+
+/datum/paygrade/cia/secretary_general
+	paygrade = PAY_SHORT_CIA_SG
+	name = "Secretary General"
+	prefix = "SG."
+	officer_grade = GRADE_FLAG
+	pay_multiplier = 10
 
 /datum/paygrade/cia/grs
 	fprefix = "GRS."

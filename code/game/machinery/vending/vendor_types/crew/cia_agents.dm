@@ -110,7 +110,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cia, list(
 	vendor_theme = VENDOR_THEME_USCM
 	show_points = FALSE
 	req_access = list()
-	vendor_role = JOB_CIA_ROLES_LIST
+	vendor_role = JOB_UACQS_ROLES_LIST
 
 /obj/structure/machinery/cm_vending/clothing/cia/get_listed_products(mob/user)
 	return GLOB.cm_vending_clothing_cia

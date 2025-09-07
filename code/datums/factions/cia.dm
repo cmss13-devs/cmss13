@@ -4,12 +4,12 @@
 
 /datum/faction/cia/modify_hud_holder(image/holder, mob/living/carbon/human/H)
 	var/hud_icon_state
-	var/obj/item/card/id/ID = H.get_idcard()
+	var/obj/item/card/id/id_card = H.get_idcard()
 	var/_role
 	if(H.mind)
 		_role = H.job
-	else if(ID)
-		_role = ID.rank
+	else if(id_card)
+		_role = id_card.rank
 	switch(_role)
 		if(JOB_CIA_LIAISON)
 			hud_icon_state = "cialo"
@@ -19,6 +19,10 @@
 			hud_icon_state = "uacqs_com"
 		if(JOB_CIA_UACQS_SEC)
 			hud_icon_state = "uacqs_sec"
+			if(id_card.paygrade == PAY_SHORT_CIA_SO)
+				hud_icon_state = "uacqs_sec_senior"
+		if(JOB_CIA_UACQS_DG, JOB_CIA_UACQS_SG)
+			hud_icon_state = "uacqs_dg"
 		if(JOB_CIA_GRS_OPR)
 			hud_icon_state = "grs_opr"
 		if(JOB_CIA_GRS_MED)

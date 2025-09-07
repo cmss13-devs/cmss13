@@ -8,6 +8,7 @@
 	role_comm_title = "UACQS"
 	minimap_icon = "uacqs"
 	minimap_background = "background_ua"
+	var/headset_type = /obj/item/device/radio/headset/almayer/uacqs
 
 /datum/equipment_preset/cia/uacqs/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//Give them a random piece of civvie clothing.
@@ -30,7 +31,7 @@
 		/obj/item/clothing/suit/storage/jacket/marine/vest/grey,
 	)
 
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new headset_type(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new random_outfit(new_human), WEAR_BODY)
 	new_human.equip_to_slot_or_del(new random_suit(new_human), WEAR_JACKET)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/pmc/cia_knife(new_human), WEAR_FEET)
@@ -55,6 +56,7 @@
 	minimap_icon = "uacqs_c"
 	idtype = /obj/item/card/id/adaptive/silver
 	skills = /datum/skills/cia/field_agent/senior
+	headset_type = /obj/item/device/radio/headset/almayer/uacqs_com
 
 /datum/equipment_preset/cia/uacqs/commissioner/New()
 	. = ..()
@@ -64,6 +66,26 @@
 	. = ..()
 	new_human.equip_to_slot_or_del(new /obj/item/paper/prefab/uacqs_notice(new_human), WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/syringe/uacqs_fountain(new_human), WEAR_R_EAR)
+
+/datum/equipment_preset/cia/uacqs/dir_gen
+	name = "CIA Lead Agent (UACQS Director General)"
+	job_title = JOB_CIA_UACQS_DG
+	assignment = JOB_CIA_UACQS_DG
+	paygrades = list(PAY_SHORT_CIA_DG = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "uacqs_dg"
+	idtype = /obj/item/card/id/adaptive/gold
+	skills = /datum/skills/cia/field_agent/senior
+	headset_type = /obj/item/device/radio/headset/almayer/uacqs_com
+
+/datum/equipment_preset/cia/uacqs/dir_gen/load_gear(mob/living/carbon/human/new_human, client/mob_client)
+	. = ..()
+	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/syringe/uacqs_fountain(new_human), WEAR_R_EAR)
+
+/datum/equipment_preset/cia/uacqs/dir_gen/sec_gen
+	name = "CIA Lead Agent (UACQS Secretary General)"
+	job_title = JOB_CIA_UACQS_SG
+	assignment = JOB_CIA_UACQS_SG
+	paygrades = list(PAY_SHORT_CIA_SG = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/cia/uacqs/security
 	name = "CIA Agent (UACQS Security)"
@@ -78,7 +100,7 @@
 	new_human.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/black, WEAR_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/low_points, WEAR_IN_BACK) //CIA equipment
 	//face
-	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cia(new_human), WEAR_L_EAR)
+	new_human.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/uacqs(new_human), WEAR_L_EAR)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/antag(new_human), WEAR_EYES)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/black, WEAR_FACE)
 

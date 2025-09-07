@@ -731,6 +731,26 @@
 	name = "radio headset"
 	desc = "A radio headset."
 	frequency = CIA_FREQ
+	maximum_keys = 3
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/public)
+	hud_type = MOB_HUD_FACTION_CIA
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY, MOB_HUD_FACTION_UPP, MOB_HUD_FACTION_PMC, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_TWE)
+
+/obj/item/device/radio/headset/almayer/uacqs
+	name = "UACQS radio headset"
+	desc = "A radio headset used by the United Americas Commission for Quality and Standards."
+	icon_state = "uacqs_headset"
+	frequency = CIA_FREQ
+	maximum_keys = 3
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/public)
+	hud_type = MOB_HUD_FACTION_CIA
+	additional_hud_types = list(MOB_HUD_FACTION_MARINE, MOB_HUD_FACTION_CMB, MOB_HUD_FACTION_WY, MOB_HUD_FACTION_UPP, MOB_HUD_FACTION_PMC, MOB_HUD_FACTION_IASF, MOB_HUD_FACTION_TWE)
+
+/obj/item/device/radio/headset/almayer/uacqs_com
+	name = "UACQS Commissioner radio headset"
+	desc = "A radio headset used by top brass of the United Americas Commission for Quality and Standards."
+	icon_state = "ms_headset"
+	frequency = CIA_FREQ
 	maximum_keys = 4
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom, /obj/item/device/encryptionkey/cia_grs, /obj/item/device/encryptionkey/soc, /obj/item/device/encryptionkey/public)
 	hud_type = MOB_HUD_FACTION_CIA

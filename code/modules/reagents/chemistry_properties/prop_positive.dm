@@ -595,12 +595,15 @@
 			if(embryo.counter > 0)
 				embryo.counter = embryo.counter - (potency * delta_time)
 				current_human.take_limb_damage(0, POTENCY_MULTIPLIER_MEDIUMLOW*potency)
+				if(prob(potency * 5)) //Higher chance of notice with higher potency makes sense
+					to_chat(current_human, SPAN_NOTICE("You feel something inside you squirming in agitation!")) //Inform the marine their embryo is dying
 			else
 				embryo.stage--
 				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
 					qdel(embryo)
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
+					to_chat(current_human, SPAN_NOTICE("You start to throw up several bits of wormlike matter!")) //Embryo is dead
 				else
 					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 

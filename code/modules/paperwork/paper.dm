@@ -255,6 +255,7 @@
 	paper_text = replacetext(paper_text, "\[time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")]</i></font>")
 	paper_text = replacetext(paper_text, "\[date+time\]", "<font face=\"[signfont]\"><i>[worldtime2text("hh:mm")], [time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>")
 	paper_text = replacetext(paper_text, "\[field\]", "<span class=\"paper_field\"></span>")
+	paper_text = replacetext(paper_text, "\[current_location\]", "<font face=\"[signfont]\"><i>[SSmapping.configs?[GROUND_MAP]?.map_name]</i></font>")
 
 	paper_text = replacetext(paper_text, "\[h1\]", "<H1>")
 	paper_text = replacetext(paper_text, "\[/h1\]", "</H1>")

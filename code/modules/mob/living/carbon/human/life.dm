@@ -70,7 +70,7 @@
 
 	else if(stat != DEAD)
 		handle_stasis_bag()
-		handle_stasis_bag_with_APS() //Handle effects from antiparasitic reagents while in stasis
+
 
 	stabilize_body_temperature() //Body temperature adjusts itself (self-regulation) (even when dead)
 

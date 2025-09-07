@@ -131,10 +131,6 @@
 		log_attack("[key_name(bound_xeno)] slashed [key_name(aoe_targets)]")
 		aoe_targets.apply_armoured_damage(get_xeno_damage_slash(aoe_targets, damage), ARMOR_MELEE, BRUTE, bound_xeno.zone_selected)
 
-	var/datum/action/xeno_action/activable/pounce/crusher_charge/cAction = get_action(bound_xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
-	if (!cAction.action_cooldown_check())
-		cAction.reduce_cooldown(cdr_amount)
-
 	var/datum/action/xeno_action/onclick/crusher_shield/sAction = get_action(bound_xeno, /datum/action/xeno_action/onclick/crusher_shield)
 	if (!sAction.action_cooldown_check())
 		sAction.reduce_cooldown(base_cdr_amount)

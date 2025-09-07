@@ -77,6 +77,10 @@
 	skills = /datum/skills/cia/field_agent/senior
 	headset_type = /obj/item/device/radio/headset/almayer/uacqs_com
 
+/datum/equipment_preset/cia/uacqs/dir_gen/New()
+	. = ..()
+	access = get_access(ACCESS_LIST_MARINE_ALL) + list(ACCESS_CIA, ACCESS_CIA_SENIOR)
+
 /datum/equipment_preset/cia/uacqs/dir_gen/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	. = ..()
 	new_human.equip_to_slot_or_del(new /obj/item/tool/pen/syringe/uacqs_fountain(new_human), WEAR_R_EAR)

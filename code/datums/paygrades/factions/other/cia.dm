@@ -8,7 +8,7 @@
 	name = "Officer"
 	prefix = "Off."
 
-/datum/paygrade/civillian/officer/senior
+/datum/paygrade/cia/officer/senior
 	paygrade = PAY_SHORT_CIA_SO
 	name = "Senior Officer"
 	prefix = "Sr. Off."

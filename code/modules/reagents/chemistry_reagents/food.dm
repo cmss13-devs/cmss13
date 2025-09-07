@@ -229,7 +229,7 @@
 	reagent_state = LIQUID
 	color = "#B31008" // rgb: 139, 166, 233
 	chemclass = CHEM_CLASS_HYDRO
-	properties = list(PROPERTY_ELECTROGENETIC = 7, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 0.5)
+	properties = list(PROPERTY_ELECTROGENETIC = 5, PROPERTY_INTRAVENOUS = 1, PROPERTY_NEUROTOXIC = 0.5)
 
 /datum/reagent/thymol //some kind of thyme
 	name = "Thymol"

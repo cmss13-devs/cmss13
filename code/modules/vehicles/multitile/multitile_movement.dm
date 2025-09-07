@@ -163,6 +163,12 @@
 		if(T in old_turfs)
 			continue
 
+		if(istype(T, /turf/open_space))
+			// early return so we skip crash behavior.
+			move_momentum = floor(move_momentum/2)
+			update_next_move()
+			return FALSE
+
 		if(!T.Enter(src) || locate(/obj/structure/shuttle/part) in T)
 			can_move = FALSE
 

@@ -57,6 +57,7 @@
 		/datum/action/xeno_action/activable/destroy,
 		/datum/action/xeno_action/onclick/king_shield,
 		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/tacmap,
 	)
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/king.dmi'
@@ -90,6 +91,9 @@
 
 /mob/living/carbon/xenomorph/king/proc/post_move(mob/king)
 	SIGNAL_HANDLER
+
+	if(stat == DEAD)
+		return
 
 	var/turf/new_loc = get_turf(src)
 

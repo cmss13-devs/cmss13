@@ -174,6 +174,7 @@
 	sharp = 1
 	attack_verb = list("slashed", "torn", "scraped", "gashed", "ripped")
 	pry_capable = IS_PRY_CAPABLE_FORCE
+	attack_speed = 1 SECONDS
 	var/infectious = TRUE
 	var/no_harm_faction = null
 

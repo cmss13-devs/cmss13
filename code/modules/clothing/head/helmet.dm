@@ -537,11 +537,16 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(istype(attacking_item, /obj/item/device/helmet_visor))
+		var/obj/item/device/helmet_visor/new_visor = attacking_item
+
+		if(!new_visor.can_attach_to(src))
+			to_chat(user, SPAN_NOTICE("The [new_visor] does not fit on the [src]."))
+			return
+
 		if(length(inserted_visors) >= max_inserted_visors)
 			to_chat(user, SPAN_NOTICE("[src] has used all of its visor attachment sockets."))
 			return
 
-		var/obj/item/device/helmet_visor/new_visor = attacking_item
 		for(var/obj/item/device/helmet_visor/cycled_visor as anything in (built_in_visors + inserted_visors))
 			if(cycled_visor.type == new_visor.type)
 				to_chat(user, SPAN_NOTICE("[src] already has this type of HUD connected."))
@@ -550,7 +555,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			return
 
 		inserted_visors += new_visor
-		to_chat(user, SPAN_NOTICE("You connect [new_visor] to [src]."))
+		to_chat(user, SPAN_NOTICE("You connect [new_visor] to the [src]."))
 		new_visor.forceMove(src)
 		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
 			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
@@ -1165,8 +1170,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "MK30 tactical"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
+	max_inserted_visors = 1
 
-/obj/item/clothing/head/helmet/marine/pilottex
+/obj/item/clothing/head/helmet/marine/pilot/tex
 	name = "\improper Tex's MK30 tactical helmet"
 	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
 	icon_state = "helmetp_tex"

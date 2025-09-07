@@ -43,7 +43,7 @@
 	var/rare_variance = TRUE
 
 /datum/species/pathogen_walker/handle_post_spawn(mob/living/carbon/human/zombie)
-	zombie.set_languages(list(LANGUAGE_PATHOGEN))
+	zombie.set_languages(list(LANGUAGE_PATHOGEN, LANGUAGE_PATHOGEN_MIND))
 
 	zombie.faction = FACTION_PATHOGEN
 	zombie.hivenumber = XENO_HIVE_PATHOGEN
@@ -69,7 +69,7 @@
 	ZC.icon_state = "claw_r"
 	zombie.equip_to_slot_or_del(ZC, WEAR_R_HAND, TRUE)
 	zombie.equip_to_slot_or_del(new /obj/item/weapon/zombie_claws/no_infect/pathogen(zombie), WEAR_L_HAND, TRUE)
-	zombie.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(zombie), WEAR_EYES, TRUE)
+	zombie.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes/pathogen(zombie), WEAR_EYES, TRUE)
 
 	var/datum/mob_hud/zom_hud = GLOB.huds[MOB_HUD_MEDICAL_OBSERVER]
 	zom_hud.add_hud_to(zombie, zombie)
@@ -142,7 +142,7 @@
 	if(ghost?.client)
 		playsound_client(ghost.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(ghost, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Your body has risen! (Verbs -> Ghost -> Re-enter corpse, or <a href='byond://?src=\ref[ghost];reentercorpse=1'>click here!</a>)")))
-	else
+	else if(!zombie.client)
 		zombie.free_for_ghosts(TRUE)
 
 /datum/species/pathogen_walker/proc/remove_from_revive(mob/living/carbon/human/zombie)

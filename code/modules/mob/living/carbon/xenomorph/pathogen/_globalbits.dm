@@ -136,6 +136,8 @@
 	minimum_evolve_time = 0
 	pathogen_creature = TRUE
 	language = LANGUAGE_PATHOGEN
+	fire_immunity = FIRE_VULNERABILITY
+	fire_vulnerability_mult = FIRE_MULTIPLIER_MEDIUM
 
 /*
 /datum/caste_datum/pathogen/get_minimap_icon()

@@ -3856,3 +3856,11 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = null
 	attach_icon = "m56f_sling"
 	flags_attach_features = NO_FLAGS
+
+/obj/item/attachable/cosmetic/uscm_flag
+	name = "USCM flag"
+	desc = "A cloth flag."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	icon_state = null
+	attach_icon = "m56c_flag"
+	flags_attach_features = NO_FLAGS

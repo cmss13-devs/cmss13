@@ -805,12 +805,26 @@
 	desc = "The actual firearm in the 4-piece M56A2C Smartgun system. Back order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56A2.\nAlt-click it to open the feed cover and allow for reloading."
 	icon_state = "m56c"
 	item_state = "m56c"
+	random_cosmetic_chance = 10
+	random_spawn_cosmetic = list(
+		/obj/item/attachable/cosmetic/uscm_flag,
+	)
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
 
 /obj/item/weapon/gun/smartgun/co/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/co_sg/toggle_id_lock)
 	. = ..()
+
+/obj/item/weapon/gun/smartgun/co/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14, "cosmetic_x" = 16, "cosmetic_y" = 16)
+
+/obj/item/weapon/gun/smartgun/co/update_icon()
+	. = ..()
+	if(locate(/obj/item/attachable/cosmetic/uscm_flag) in src)
+		item_state = "m56c_flag"
+		item_state_slots[WEAR_J_STORE] ="m56c_flag"
+		item_state_slots[WEAR_BACK] ="m56c_flag"
 
 /obj/item/weapon/gun/smartgun/co/able_to_fire(mob/user)
 	. = ..()

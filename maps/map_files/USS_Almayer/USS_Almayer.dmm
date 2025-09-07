@@ -2762,7 +2762,7 @@
 /turf/open/floor/almayer/silver/southeast,
 /area/almayer/living/officer_study)
 "agv" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	access_modified = 1;
 	dir = 2;
 	name = "\improper Requisitions Break Room";
@@ -46765,7 +46765,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
 "fIX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	access_modified = 1;
 	name = "\improper Requisitions Auxiliary Storage Room";
 	req_one_access_txt = "19;21"
@@ -59340,7 +59340,7 @@
 /turf/open/floor/almayer/aicore/glowing/no_build/ai_floor3,
 /area/almayer/command/airoom)
 "kSi" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
+/obj/structure/machinery/door/airlock/multi_tile/almayer/glass{
 	req_access = list(19);
 	name = "\improper Intel Storage"
 	},
@@ -71402,7 +71402,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/living/grunt_rnr)
 "pPd" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer{
+/obj/structure/machinery/door/airlock/multi_tile/almayer{
 	name = "\improper Saferoom Entrance"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{

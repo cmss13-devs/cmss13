@@ -207,9 +207,6 @@
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 
-/mob/living/carbon/xenomorph/larva/is_xeno_grabbable()
-	return TRUE
-
 /*
 Larva name generation, set nicknumber = (number between 1 & 999) which isn't taken by any other xenos in GLOB.xeno_mob_list if doesn't already exist.
 Also handles the "Mature / Bloody naming convention. Call this to update the name."

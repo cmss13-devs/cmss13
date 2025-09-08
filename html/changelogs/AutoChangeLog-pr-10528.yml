@@ -1,0 +1,4 @@
+author: "FloranOtten"
+delete-after: True
+changes:
+  - bugfix: "Throwing the phone down the ASRS pit after being hung up on won't cause it to loop forever."

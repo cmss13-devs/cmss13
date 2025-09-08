@@ -322,7 +322,6 @@
 	S["synth_type"] >> synthetic_type
 	S["pred_name"] >> predator_name
 	S["pred_gender"] >> predator_gender
-	S["pred_body_presentation"] >> pred_body_presentation
 	S["pred_age"] >> predator_age
 	S["pred_use_legacy"] >> predator_use_legacy
 	S["pred_trans_type"] >> predator_translator_type
@@ -434,7 +433,6 @@
 	synthetic_type = sanitize_inlist(synthetic_type, PLAYER_SYNTHS, initial(synthetic_type))
 	predator_name = predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender = sanitize_text(predator_gender, initial(predator_gender))
-	pred_body_presentation = sanitize_text(pred_body_presentation, initial(pred_body_presentation))
 	predator_age = sanitize_integer(predator_age, 100, 10000, initial(predator_age))
 	predator_use_legacy = sanitize_inlist(predator_use_legacy, PRED_LEGACIES, initial(predator_use_legacy))
 	predator_translator_type = sanitize_inlist(predator_translator_type, PRED_TRANSLATORS, initial(predator_translator_type))
@@ -577,7 +575,6 @@
 	S["synth_type"] << synthetic_type
 	S["pred_name"] << predator_name
 	S["pred_gender"] << predator_gender
-	S["pred_body_presentation"] << pred_body_presentation
 	S["pred_age"] << predator_age
 	S["pred_use_legacy"] << predator_use_legacy
 	S["pred_trans_type"] << predator_translator_type

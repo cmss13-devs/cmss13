@@ -104,7 +104,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	//Predator specific preferences.
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
-	var/pred_body_presentation = MALE
 	var/predator_age = 100
 	var/predator_h_style = "Standard"
 	var/predator_skin_color = "tan"
@@ -1311,7 +1310,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						else
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 				if("pred_gender")
-					predator_gender = predator_gender == MALE ? FEMALE : predator_gender == FEMALE ? PLURAL : MALE
+					predator_gender = predator_gender == MALE ? FEMALE : MALE
 				if("pred_age")
 					var/new_predator_age = tgui_input_number(user, "Choose your Predator's age(175 to 3000):", "Character Preference", 1234, 3000, 175)
 					if(new_predator_age)

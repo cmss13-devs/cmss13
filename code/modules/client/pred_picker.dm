@@ -77,7 +77,6 @@
 
 	.["name"] = prefs.predator_name
 	.["gender"] = prefs.predator_gender
-	.["body_presentation"] = prefs.pred_body_presentation
 	.["age"] = prefs.predator_age
 	.["hair_style"] = prefs.predator_h_style
 	.["skin_color"] = prefs.predator_skin_color
@@ -121,11 +120,7 @@
 			prefs.predator_name = picked_name
 
 		if("gender")
-			prefs.predator_gender = prefs.predator_gender == MALE ? FEMALE : prefs.predator_gender == FEMALE ? PLURAL : MALE
-
-		if("body_presentation")
-
-			prefs.pred_body_presentation = prefs.pred_body_presentation == MALE ? FEMALE : MALE
+			prefs.predator_gender = prefs.predator_gender == FEMALE ? MALE : FEMALE
 
 		if("age")
 			var/age = params["age"]

@@ -1,0 +1,4 @@
+author: "FloranOtten"
+delete-after: True
+changes:
+  - bugfix: "Firing your guns akimbo is once again possible."

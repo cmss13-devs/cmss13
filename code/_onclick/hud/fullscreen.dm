@@ -243,3 +243,14 @@
 	layer = LIGHTING_PRIMARY_LAYER
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE
+
+/atom/movable/screen/backhud/Click()
+	return
+
+/atom/movable/screen/backhud/xeno
+	icon = 'icons/mob/hud/cm_hud/cmhud_xeno_background.dmi'
+	icon_state = ""
+	name = " "
+	plane = FULLSCREEN_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+

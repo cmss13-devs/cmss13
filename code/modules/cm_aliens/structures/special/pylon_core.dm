@@ -263,11 +263,10 @@
 	// Handle spawning larva if core is connected to a hive
 	if(linked_hive)
 		for(var/mob/living/carbon/xenomorph/larva/worm in range(2, src))
-			if((!worm.ckey && worm.stat != DEAD) && worm.burrowable && (worm.hivenumber == linked_hive.hivenumber) && !QDELETED(worm))
+			if((!worm.ckey && worm.stat != DEAD) && worm.burrowable && !worm.banished && (worm.hivenumber == linked_hive.hivenumber) && !QDELETED(worm)) //only admit non-banished, living, ghosted larva of the same hive. Banished larva refund on death, which is cooler
 				visible_message(SPAN_XENODANGER("[worm] quickly burrows into \the [src]."))
-				if(!worm.banished) // banished xenos dying refunds a larva anyway, better to have them brutally murdered than be allowed to retreat into the core
-					linked_hive.stored_larva++
-					linked_hive.hive_ui.update_burrowed_larva()
+				linked_hive.stored_larva++
+				linked_hive.hive_ui.update_burrowed_larva()
 				qdel(worm)
 
 		var/count_spawned = 0

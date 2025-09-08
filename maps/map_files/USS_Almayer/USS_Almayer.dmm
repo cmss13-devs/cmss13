@@ -30406,10 +30406,6 @@
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
 	},
-/obj/structure/curtain/colorable_transparent{
-	color = "#FED8B1";
-	alpha = 225
-	},
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/command/corporateliaison)
@@ -53438,10 +53434,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/curtain/colorable_transparent{
-	color = "#FED8B1";
-	alpha = 225
-	},
 /turf/open/floor/plating,
 /area/almayer/command/corporateliaison)
 "hEm" = (

@@ -151,24 +151,16 @@
 	var/static/list/hover_overlays_cache = list()
 	var/hovering
 
-/atom/movable/screen/Click(location, control, params)
-	return ..()
-
-/atom/movable/screen/zone_sel/Click(location, control,params)
+/atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
 	if(isobserver(usr))
 		return
 
-	var/list/modifiers = params2list(params)
-	var/icon_x = text2num(LAZYACCESS(modifiers, ICON_X))
-	var/icon_y = text2num(LAZYACCESS(modifiers, ICON_Y))
-	var/choice = get_zone_at(icon_x, icon_y)
+	var/icon_x = text2num(LAZYACCESS(mods, ICON_X))
+	var/icon_y = text2num(LAZYACCESS(mods, ICON_Y))
+	var/choice = get_zone_at(icon_x, icon_y, user)
 	if(!choice)
 		return 1
 
-	// if(old_selecting != selecting)
-	// 	user.zone_selected = selecting
-	// 	update_icon(user)
-	// return 1
 	return set_selected_zone(choice, usr)
 
 /atom/movable/screen/zone_sel/MouseEntered(location, control, params)
@@ -198,11 +190,8 @@
 	vis_contents += overlay_object
 
 /atom/movable/screen/zone_sel/proc/set_selected_zone(choice, mob/user, should_log = TRUE)
-	if(user != hud?.mymob)
-		return
-
-	if(choice != hud.mymob.zone_selected)
-		hud.mymob.zone_selected = choice
+	if(choice != user.hud_used.mymob.zone_selected)
+		user.hud_used.mymob.zone_selected = choice
 		update_icon(user)
 
 	return TRUE
@@ -210,8 +199,8 @@
 /atom/movable/screen/zone_sel/update_icon(mob/user)
 	// if(!hud?.mymob)
 	// 	return
-	user.hud_used.zone_sel.overlays.Cut()
-	user.hud_used.zone_sel.overlays += mutable_appearance(overlay_icon, "[user.zone_selected]")
+	user.hud_used?.zone_sel.overlays.Cut()
+	user.hud_used?.zone_sel.overlays += mutable_appearance(overlay_icon, "[user.zone_selected]")
 
 /atom/movable/screen/zone_sel/MouseExited(location, control, params)
 	if(!isobserver(usr) && hovering)

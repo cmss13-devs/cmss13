@@ -237,6 +237,9 @@ SUBSYSTEM_DEF(ipcheck)
 
 	WAIT_DB_READY
 
+	if(!player_entity)
+		player_entity = setup_player_entity(ckey)
+
 	if(!SSipcheck.is_enabled(src))
 		return
 

@@ -31,7 +31,7 @@
 			apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 		if(O.status & LIMB_ESCHAR)
-			apply_pain(PAINT_ESCHAR)
+			apply_pain(PAIN_ESCHAR)
 
 	//Internal organs
 	for(var/datum/internal_organ/O in H.internal_organs)

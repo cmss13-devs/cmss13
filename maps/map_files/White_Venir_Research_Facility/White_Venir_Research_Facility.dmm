@@ -127,7 +127,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/floor_plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "aaE" = (
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv759/oob)
@@ -662,7 +662,7 @@
 	start_charge = 20
 	},
 /turf/open/floor/almayer/blackfull/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_security/checkpoint_east)
 "ace" = (
 /obj/structure/barricade/handrail/strata,
 /turf/open/shuttle/escapepod/west,
@@ -674,24 +674,24 @@
 	},
 /obj/structure/barricade/handrail/strata,
 /turf/open/shuttle/escapepod/floor2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_security/checkpoint_central)
 "acg" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_security/checkpoint_central)
 "ach" = (
 /obj/structure/machinery/power/terminal{
 	dir = 4
 	},
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_security/checkpoint_east)
 "aci" = (
 /obj/structure/machinery/power/smes/buildable{
 	capacity = 1e+006;
 	dir = 1
 	},
 /turf/open/floor/almayer/blackfull/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_security/checkpoint_east)
 "acj" = (
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/almayer/blackfull/west,
@@ -705,11 +705,11 @@
 	start_charge = 20
 	},
 /turf/open/floor/almayer/blackfull/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_security/checkpoint_central)
 "acl" = (
 /obj/structure/platform/metal/hybrisa/metalplatform1/west,
 /turf/open/floor/prison/darkyellow2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_security/checkpoint_central)
 "acm" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -1577,7 +1577,7 @@
 /obj/structure/window_frame/hybrisa/colony/engineering/reinforced,
 /obj/item/shard,
 /turf/open/floor/plating,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aeC" = (
 /obj/item/reagent_container/food/condiment/peppermill{
 	pixel_x = 3;
@@ -3497,7 +3497,7 @@
 	},
 /obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/almayer/green2/southwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ajJ" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/asphalt/cement/cement14,
@@ -3527,7 +3527,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ajQ" = (
 /obj/effect/decal/hybrisa/WY/WY1{
 	dir = 4
@@ -3603,14 +3603,14 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/green2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ajZ" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aka" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -3671,15 +3671,15 @@
 	pixel_y = 8
 	},
 /turf/open/floor/almayer/silvercorner/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akh" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aki" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer/silver2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akj" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -3698,7 +3698,7 @@
 	pixel_y = -9
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akl" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -3708,7 +3708,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akm" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	light_color = "#FF0000";
@@ -3720,7 +3720,7 @@
 	},
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/silver2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akn" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -3738,24 +3738,24 @@
 	pixel_y = 6
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ako" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on{
 	pixel_x = 32;
 	pixel_y = -12
 	},
 /turf/open/floor/almayer/silver2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akp" = (
 /obj/effect/decal/hybrisa/trash{
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/silvercorner/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akq" = (
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/almayer/silvercorner/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akr" = (
 /obj/structure/sign/safety/outpatient{
 	name = "entrance lobby semiotic";
@@ -3776,7 +3776,7 @@
 	layer = 4
 	},
 /turf/open/floor/almayer/silver2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akt" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8;
@@ -3788,21 +3788,21 @@
 	pixel_x = -3
 	},
 /turf/open/floor/almayer/silver2/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aku" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
 	pixel_y = 13
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "akv" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akw" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -3813,19 +3813,19 @@
 "akx" = (
 /obj/effect/decal/strata_decals/grime/grime1,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aky" = (
 /obj/effect/decal/strata_decals/grime/grime2,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "akz" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akA" = (
 /obj/structure/largecrate/empty/secure,
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akB" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
@@ -3836,7 +3836,7 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/almayer/black2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akC" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -3859,7 +3859,7 @@
 	},
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akE" = (
 /obj/structure/largecrate/empty/case,
 /obj/structure/largecrate/random/mini/chest/b{
@@ -3867,7 +3867,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double{
@@ -3880,11 +3880,11 @@
 	pixel_x = 1
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/black2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akH" = (
 /obj/structure/largecrate/random/mini/wooden{
 	pixel_x = 6;
@@ -3902,7 +3902,7 @@
 	pixel_y = 13
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akI" = (
 /obj/structure/largecrate/random/barrel/black,
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -3913,12 +3913,12 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akK" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
@@ -3927,7 +3927,7 @@
 	layer = 4
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akL" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 4;
@@ -3935,7 +3935,7 @@
 	buckling_x = -4
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akM" = (
 /obj/structure/machinery/light/double,
 /obj/item/trash/cigbutt{
@@ -3947,7 +3947,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/almayer/black2/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akN" = (
 /obj/structure/bed/chair{
 	can_buckle = 0;
@@ -3970,11 +3970,11 @@
 	alpha = 155
 	},
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akP" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greenwywingsleft,
 /obj/structure/sign/safety/reception{
@@ -3984,7 +3984,7 @@
 	pixel_x = 8
 	},
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akQ" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
@@ -3995,11 +3995,11 @@
 	},
 /obj/structure/cargo_container/hybrisa/containersextended/greenwywingsright,
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akR" = (
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akS" = (
 /obj/structure/machinery/light/double,
 /obj/structure/largecrate/empty/case,
@@ -4008,25 +4008,25 @@
 	pixel_y = 8
 	},
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akT" = (
 /obj/structure/largecrate/random/mini/small_case/c{
 	pixel_x = -11;
 	pixel_y = -2
 	},
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akU" = (
 /obj/structure/sign/safety/coffee{
 	pixel_x = 12;
 	pixel_y = -28
 	},
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akV" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/almayer/black2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akW" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
@@ -4034,13 +4034,13 @@
 	},
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/almayer/black2/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akX" = (
 /obj/effect/decal/hybrisa/WY/WY1{
 	dir = 1
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/sheet/metal,
@@ -4050,18 +4050,18 @@
 	pixel_y = -11
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "akZ" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ala" = (
 /obj/structure/largecrate/empty/secure,
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alb" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	light_color = "#FF0000";
@@ -4074,7 +4074,7 @@
 	layer = 3.01
 	},
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alc" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/prop/hybrisa/misc/blood/blood1{
@@ -4107,23 +4107,23 @@
 	},
 /obj/item/shard/shrapnel,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ald" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "ale" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alf" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alg" = (
 /obj/vehicle/train/cargo/trolley,
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alh" = (
 /obj/vehicle/train/cargo/trolley,
 /obj/structure/largecrate/random/mini/chest/c{
@@ -4131,11 +4131,11 @@
 	pixel_y = 2
 	},
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ali" = (
 /obj/vehicle/train/cargo/engine,
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alj" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
 	light_color = "#FF0000";
@@ -4145,7 +4145,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alk" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_3";
@@ -4153,7 +4153,7 @@
 	pixel_y = 42
 	},
 /turf/open/floor/almayer/black2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "all" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -4165,20 +4165,20 @@
 	pixel_x = 1
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alm" = (
 /obj/structure/cargo_container/hybrisa/containersextended/greywyleft{
 	layer = 4.2
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aln" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container/hybrisa/containersextended/greywyright{
 	layer = 4.2
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -4187,7 +4187,7 @@
 	},
 /obj/structure/machinery/disposal/delivery,
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/flora/pottedplant{
@@ -4197,7 +4197,7 @@
 	layer = 4
 	},
 /turf/open/floor/almayer,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alq" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
@@ -4208,14 +4208,14 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alr" = (
 /obj/structure/largecrate/empty/case/double,
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "als" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/stool{
@@ -4223,7 +4223,7 @@
 	pixel_y = 11
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alt" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -4233,14 +4233,14 @@
 	buckling_y = 7
 	},
 /turf/open/floor/almayer/black2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alu" = (
 /obj/structure/surface/rack,
 /obj/item/prop/colony/canister{
 	pixel_y = 1
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -4249,11 +4249,11 @@
 	pixel_y = 6
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alw" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alx" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /obj/effect/decal/cleanable/blood{
@@ -4261,7 +4261,7 @@
 	pixel_y = -6
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aly" = (
 /obj/structure/sign/safety/rad_haz{
 	desc = "Semiotic Standard denoting the nearby presence of a mining processing area.";
@@ -4272,18 +4272,18 @@
 	pixel_x = 47
 	},
 /turf/open/floor/almayer/black2/southwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alz" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alA" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alB" = (
 /obj/structure/sign/safety/radio_rad{
 	pixel_x = 34;
@@ -4299,7 +4299,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/almayer/black2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alC" = (
 /obj/effect/decal/hybrisa/WY/WY1{
 	pixel_x = -17;
@@ -4321,7 +4321,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alE" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /obj/effect/decal/cleanable/blood/drip,
@@ -4330,7 +4330,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alF" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -13;
@@ -4357,7 +4357,7 @@
 	pixel_y = 11
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alG" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/frame{
 	pixel_y = 32
@@ -4386,7 +4386,7 @@
 /obj/item/shard/shrapnel,
 /obj/effect/spawner/gibspawner/human,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alH" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -4408,7 +4408,7 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "alI" = (
 /obj/effect/decal/hybrisa/road/lines1,
 /obj/effect/decal/hybrisa/road/road_edge,
@@ -4475,7 +4475,7 @@
 	pixel_y = -31
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/wrench{
@@ -4483,7 +4483,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alQ" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/largecrate/random/mini/chest{
@@ -4494,14 +4494,14 @@
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alR" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -4509,7 +4509,7 @@
 	alpha = 155
 	},
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alT" = (
 /obj/effect/spawner/random/toolbox{
 	layer = 4;
@@ -4518,18 +4518,18 @@
 	},
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alU" = (
 /obj/item/clothing/head/welding{
 	pixel_x = -11;
 	pixel_y = -4
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small{
@@ -4541,7 +4541,7 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alX" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -4560,25 +4560,25 @@
 	pixel_y = -2
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alY" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -4;
 	pixel_y = 4
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "alZ" = (
 /obj/item/tool/warning_cone{
 	pixel_x = 5;
 	pixel_y = 13
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "ama" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amb" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /obj/effect/decal/cleanable/blood{
@@ -4586,11 +4586,11 @@
 	pixel_y = -4
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amd" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
@@ -4598,19 +4598,19 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/cell_stripe,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "ame" = (
 /obj/item/prop/colony/canister{
 	pixel_y = 6;
 	pixel_x = 6
 	},
 /turf/open/floor/prison/darkyellow2/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amf" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amg" = (
 /obj/structure/sign/safety/radio_rad{
 	pixel_x = -31;
@@ -4623,7 +4623,7 @@
 "amh" = (
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "ami" = (
 /obj/item/ammo_magazine/smg/nailgun{
 	pixel_x = -8;
@@ -4631,36 +4631,36 @@
 	current_rounds = 41
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amj" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amk" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	pixel_x = 5;
 	pixel_y = 5
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "aml" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amm" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amn" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11;
 	pixel_y = 5
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amo" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
@@ -4671,7 +4671,7 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/prison/darkyellow2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amp" = (
 /obj/structure/sign/safety/rad_haz{
 	desc = "Semiotic Standard denoting the nearby presence of a mining processing area.";
@@ -4695,7 +4695,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amr" = (
 /obj/item/weapon/gun/smg/nailgun/compact{
 	pixel_y = 1;
@@ -4711,26 +4711,26 @@
 	pixel_y = -2
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "ams" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amt" = (
 /obj/item/stack/sheet/wood{
 	pixel_x = 5;
 	pixel_y = 6
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amu" = (
 /obj/structure/largecrate/empty,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amv" = (
 /obj/item/shard/shrapnel,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amw" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/storage/hazardvest/black,
@@ -4765,11 +4765,11 @@
 	pixel_x = -29
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amx" = (
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/prison/darkyellow2/southwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amy" = (
 /obj/structure/surface/table/almayer,
 /obj/item/tool/weldpack{
@@ -4781,7 +4781,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/prison/darkyellow2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amz" = (
 /obj/structure/surface/table/almayer,
 /obj/item/stack/sheet/metal/medium_stack{
@@ -4793,7 +4793,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/prison/darkyellow2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -4801,7 +4801,7 @@
 	alpha = 155
 	},
 /turf/open/floor/prison/darkyellow2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amB" = (
 /obj/item/shard/shrapnel/bone_chips/human{
 	pixel_x = -6;
@@ -4816,21 +4816,21 @@
 	pixel_y = 19
 	},
 /turf/open/floor/prison/darkyellow2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amC" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 6;
 	pixel_y = 22
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amD" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 3;
 	pixel_y = 11
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amE" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "mgibbl2";
@@ -4838,7 +4838,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amF" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -4846,7 +4846,7 @@
 	pixel_y = -8
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amG" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -4866,17 +4866,17 @@
 	alpha = 155
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "amI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amJ" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 14
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amK" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -4899,7 +4899,7 @@
 	pixel_y = -2
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amL" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 14
@@ -4909,7 +4909,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amM" = (
 /obj/effect/decal/remains/robot{
 	pixel_x = 1;
@@ -4918,7 +4918,7 @@
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "amN" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xsplatter4";
@@ -4936,7 +4936,7 @@
 	layer = 2.8
 	},
 /turf/open/floor/prison/darkyellow2/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double{
@@ -4945,7 +4945,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amR" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on{
 	light_color = "#00f4ff";
@@ -4954,20 +4954,20 @@
 	},
 /obj/structure/largecrate/empty/secure,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amS" = (
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 32
 	},
 /turf/open/floor/prison/floor_marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amT" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double{
@@ -4981,14 +4981,14 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amV" = (
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 32;
 	layer = 2.8
 	},
 /turf/open/floor/prison/darkyellow2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/empty{
@@ -4999,30 +4999,30 @@
 	pixel_y = 32
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "amX" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras{
 	dir = 1
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "amY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/prop/almayer/comp_open,
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "amZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ana" = (
 /obj/structure/sign/poster/wylogo{
 	pixel_y = -27;
 	layer = 2.9
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anb" = (
 /obj/item/paper{
 	pixel_x = -3;
@@ -5030,17 +5030,17 @@
 	},
 /obj/structure/machinery/light/double,
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anc" = (
 /obj/item/paper/crumpled,
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "and" = (
 /obj/structure/sign/calendar/wy{
 	pixel_y = -29
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ane" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/sand_white/layer0,
@@ -5053,37 +5053,37 @@
 	},
 /obj/structure/machinery/light/double,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ang" = (
 /obj/structure/surface/rack,
 /obj/item/stack/folding_barricade/three,
 /turf/open/floor/prison/darkred2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anh" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -3;
 	pixel_y = 6
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ani" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anj" = (
 /obj/structure/sign/poster/propaganda{
 	pixel_x = -32
 	},
 /turf/open/floor/prison/darkred2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ank" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8
 	},
 /turf/open/floor/prison/darkred2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anl" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -5110,24 +5110,24 @@
 	pixel_y = 9
 	},
 /turf/open/floor/prison/darkred2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anm" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -5;
 	pixel_y = 3
 	},
 /turf/open/floor/prison/darkred2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ann" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
 	},
 /turf/open/floor/prison/darkred2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ano" = (
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/xenos_claw{
@@ -5136,7 +5136,7 @@
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/prison/darkredfull2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anq" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgibleg"
@@ -5164,7 +5164,7 @@
 	},
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer/green2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "anu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -5176,11 +5176,11 @@
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkred2/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anv" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anw" = (
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 9;
@@ -5188,7 +5188,7 @@
 	},
 /obj/item/shard/shrapnel,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anx" = (
 /obj/effect/decal/hybrisa/bloodtrail{
 	dir = 4;
@@ -5203,7 +5203,7 @@
 	pixel_y = 19
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "any" = (
 /obj/item/weapon/gun/smg/p90{
 	current_mag = null;
@@ -5217,13 +5217,13 @@
 	current_rounds = 39
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anz" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anA" = (
 /obj/structure/prop/invuln{
 	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
@@ -5249,14 +5249,14 @@
 	name = "impact"
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anB" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xsplatter4";
 	pixel_x = -11
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anC" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -5272,13 +5272,13 @@
 	welded = 1
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anE" = (
 /obj/item/tool/weldingtool{
 	pixel_x = -7
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anF" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/spawner/gibspawner/xeno,
@@ -5291,25 +5291,25 @@
 	name = "impact"
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anG" = (
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa/medic{
 	pixel_x = 7;
 	pixel_y = -8
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anH" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anI" = (
 /obj/item/stack/folding_barricade/three{
 	pixel_y = 6
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anJ" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	light_color = "#FF0000";
@@ -5320,7 +5320,7 @@
 	},
 /obj/effect/spawner/gibspawner/xeno,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anK" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
@@ -5331,7 +5331,7 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anL" = (
 /obj/structure/sign/safety/radio_rad{
 	pixel_x = -32;
@@ -5353,28 +5353,28 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "anN" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
 	dir = 1
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anO" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anP" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/prison/darkred2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anQ" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/prison/darkred2/southwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anR" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
@@ -5385,7 +5385,7 @@
 	pixel_y = 14
 	},
 /turf/open/floor/prison/darkred2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anS" = (
 /obj/structure/sign/safety/security{
 	pixel_x = -32
@@ -5406,15 +5406,15 @@
 	pixel_y = 10
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anU" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -5422,7 +5422,7 @@
 	alpha = 155
 	},
 /turf/open/floor/prison/darkred2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anX" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -5437,7 +5437,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "anZ" = (
 /obj/item/weapon/gun/pistol/vp78{
 	current_mag = null;
@@ -5448,11 +5448,11 @@
 	current_rounds = 13
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aoa" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aob" = (
 /obj/structure/closet/secure_closet/security,
 /obj/item/storage/belt/gun/m4a3/mod88,
@@ -5460,7 +5460,7 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
 /turf/open/floor/prison/darkred2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aoc" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
@@ -5478,11 +5478,11 @@
 	layer = 2.31
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aoe" = (
 /obj/item/shard/shrapnel,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aof" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
@@ -5494,7 +5494,7 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
 /turf/open/floor/prison/darkred2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aog" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double{
@@ -5502,7 +5502,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkred2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aoh" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -5552,7 +5552,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/prison/darkred2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aoi" = (
 /obj/structure/filingcabinet{
 	density = 0;
@@ -5573,7 +5573,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/prison/darkred2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aoj" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	light_color = "#FF0000";
@@ -5590,7 +5590,7 @@
 	pixel_x = -6
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aok" = (
 /obj/effect/decal/hybrisa/road/lines1{
 	pixel_x = -1;
@@ -5599,7 +5599,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aol" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/item/shard/shrapnel/bone_chips/human{
@@ -5657,7 +5657,7 @@
 	pixel_y = 19
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoq" = (
 /obj/item/shard/shrapnel/bone_chips/human{
 	pixel_x = 5;
@@ -5669,7 +5669,7 @@
 	},
 /obj/item/shard/shrapnel,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aor" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -5730,13 +5730,13 @@
 	pixel_x = 1
 	},
 /turf/open/floor/almayer/black2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aou" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aov" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 1;
@@ -5747,21 +5747,21 @@
 	pixel_x = -5
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aow" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -3;
 	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aox" = (
 /obj/effect/decal/cleanable/blood/tracks/footprints,
 /obj/structure/sign/poster/io{
 	pixel_y = 35
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoy" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/lines4,
@@ -5787,11 +5787,11 @@
 "aoA" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "aoB" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "aoC" = (
 /obj/effect/decal/remains/robot{
 	pixel_x = 1;
@@ -5804,18 +5804,18 @@
 	pixel_x = -6
 	},
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "aoD" = (
 /obj/structure/prop/hybrisa/misc/metergreen{
 	pixel_y = 34
 	},
 /turf/open/floor/prison/darkyellow2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "aoE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoF" = (
 /obj/structure/machinery/disposal/delivery,
 /obj/structure/prop/hybrisa/misc/redmeter{
@@ -5826,18 +5826,18 @@
 	pixel_y = 20
 	},
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoG" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoH" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoI" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/green2/east,
@@ -5855,7 +5855,7 @@
 	color = "#140400"
 	},
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoL" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 6;
@@ -5874,7 +5874,7 @@
 "aoM" = (
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/almayer/green2/southwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoN" = (
 /obj/structure/largecrate/empty/case,
 /obj/structure/largecrate/random/mini/small_case/c{
@@ -5890,7 +5890,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/green2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoO" = (
 /obj/structure/largecrate/random/mini/small_case{
 	pixel_y = -4;
@@ -5901,14 +5901,14 @@
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/green2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoP" = (
 /obj/item/tool/crowbar/red{
 	pixel_y = -8;
 	pixel_x = -3
 	},
 /turf/open/floor/almayer/green2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoQ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29";
@@ -5921,7 +5921,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -5930,7 +5930,7 @@
 	pixel_y = -1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoS" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/largecrate/random/mini/chest{
@@ -5938,7 +5938,7 @@
 	pixel_x = -3
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoT" = (
 /obj/structure/machinery/light/double,
 /obj/structure/flora/pottedplant{
@@ -5954,14 +5954,14 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoV" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoW" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/green2/north,
@@ -5971,25 +5971,25 @@
 	color = "#140400"
 	},
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoY" = (
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aoZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/empty/secure,
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apa" = (
 /obj/structure/cargo_container/hybrisa/containersextended/redwywingsleft,
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cargo_container/hybrisa/containersextended/redwywingsright,
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double{
@@ -5998,11 +5998,11 @@
 	pixel_y = 9
 	},
 /turf/open/floor/almayer/green2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ape" = (
 /obj/structure/sign/safety/reception{
 	desc = "Semiotic Standard denoting the nearby presence of a dormitory area.";
@@ -6015,7 +6015,7 @@
 	alpha = 155
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/small{
@@ -6027,7 +6027,7 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apg" = (
 /obj/structure/machinery/light/double{
 	dir = 1;
@@ -6035,7 +6035,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aph" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29";
@@ -6051,7 +6051,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "api" = (
 /obj/structure/barricade/handrail{
 	dir = 4;
@@ -6061,15 +6061,15 @@
 	dir = 1
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apj" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apk" = (
 /obj/structure/window/framed/hybrisa/colony,
 /turf/open/floor/plating,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apl" = (
 /obj/structure/machinery/vending/snack/packaged,
 /obj/effect/decal/cleanable/blood,
@@ -6078,11 +6078,11 @@
 	pixel_x = -8
 	},
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apm" = (
 /obj/item/shard/shrapnel,
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apn" = (
 /obj/effect/decal/hybrisa/bloodtrail{
 	pixel_y = 12
@@ -6092,15 +6092,15 @@
 	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apo" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/green2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "app" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double{
@@ -6108,18 +6108,18 @@
 	pixel_y = -5
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apr" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
 	pixel_x = -8
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aps" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apt" = (
 /obj/effect/decal/hybrisa/bloodtrail{
 	pixel_y = 9
@@ -6134,19 +6134,19 @@
 	pixel_y = 22
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apu" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
 /turf/open/floor/prison/blue/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apw" = (
 /obj/effect/hybrisa/misc/fake/wire/red{
 	dir = 4
@@ -6157,7 +6157,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apx" = (
 /obj/effect/decal/hybrisa/road/lines3{
 	pixel_y = -1;
@@ -6169,11 +6169,11 @@
 	},
 /obj/structure/machinery/space_heater/radiator/red,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apy" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/floor/almayer/green2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apz" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -6201,7 +6201,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/tool/mop{
@@ -6216,11 +6216,11 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/up,
 /turf/open/floor/almayer/green2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apB" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apC" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/coffee{
@@ -6231,35 +6231,35 @@
 	pixel_x = -7
 	},
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apD" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/snacks/eat_bar,
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apE" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apF" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -9;
 	pixel_y = 11
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apG" = (
 /obj/item/tool/mop{
 	pixel_y = 23
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apH" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 1
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apI" = (
 /obj/structure/sign/safety/cryo{
 	name = "exit semiotic";
@@ -6278,7 +6278,7 @@
 	pixel_x = -6
 	},
 /turf/open/floor/almayer/green2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apJ" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
@@ -6289,12 +6289,12 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apK" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/drinks/cans/sodawater,
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apL" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/food/snacks/mre_pack/meal1{
@@ -6303,17 +6303,17 @@
 	pixel_y = 9
 	},
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apM" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_7"
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apN" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apO" = (
 /obj/effect/decal/hybrisa/road/lines2{
 	pixel_y = 1;
@@ -6321,7 +6321,7 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apP" = (
 /obj/effect/decal/hybrisa/road/lines2{
 	pixel_y = 1;
@@ -6329,7 +6329,7 @@
 	},
 /obj/structure/janitorialcart,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apQ" = (
 /obj/effect/decal/hybrisa/road/lines2{
 	pixel_y = 1;
@@ -6341,14 +6341,14 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apR" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 1;
 	pixel_y = -9
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "apS" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 12;
@@ -6358,12 +6358,26 @@
 	pixel_x = 7;
 	pixel_y = 11
 	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apT" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apU" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -6383,11 +6397,11 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/item/shard/shrapnel,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apV" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bluefull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
@@ -6397,18 +6411,18 @@
 	layer = 3.1
 	},
 /turf/open/floor/prison/bluefull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apX" = (
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 32;
 	layer = 2.8
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apY" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "apZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -6416,21 +6430,21 @@
 	alpha = 155
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqa" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8;
 	pixel_x = 7
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqb" = (
 /obj/item/shard/shrapnel/bone_chips/human{
 	pixel_x = 5;
 	pixel_y = 6
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqc" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -14;
@@ -6445,11 +6459,11 @@
 	pixel_y = 1
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqd" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -6460,24 +6474,24 @@
 	dir = 1
 	},
 /turf/open/floor/prison/bluefull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqf" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
 /turf/open/floor/prison/blue/southwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqg" = (
 /obj/structure/largecrate/empty/case{
 	pixel_x = 5
 	},
 /turf/open/floor/prison/blue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqh" = (
 /obj/structure/largecrate/empty/case/double,
 /turf/open/floor/prison/blue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqi" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -6485,7 +6499,7 @@
 	alpha = 155
 	},
 /turf/open/floor/prison/blue/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqj" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_2";
@@ -6493,18 +6507,22 @@
 	pixel_y = 12
 	},
 /turf/open/floor/prison/blue/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aql" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer/flooredge/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/flooredge/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqn" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -6532,7 +6550,7 @@
 	pixel_y = 6
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqo" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -5;
@@ -6547,27 +6565,27 @@
 	pixel_x = -17
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqp" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 4
 	},
 /obj/item/shard/shrapnel,
 /turf/open/floor/prison/blue/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqq" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 4
 	},
 /turf/open/floor/prison/blue/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqr" = (
 /obj/item/weapon/twohanded/folded_metal_chair{
 	pixel_x = -9;
 	pixel_y = 11
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqs" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4";
@@ -6575,7 +6593,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/prison/blue/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqt" = (
 /obj/structure/bed/stool{
 	icon_state = "stool_alt";
@@ -6583,26 +6601,26 @@
 	pixel_y = 18
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqu" = (
 /turf/open/floor/almayer/flooredge/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqv" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = -13;
 	pixel_y = 33
 	},
 /turf/open/floor/prison/blue/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/almayer/flooredge/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqx" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer/flooredge/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqy" = (
 /obj/structure/surface/table/almayer{
 	color = "#848484"
@@ -6612,26 +6630,26 @@
 	pixel_y = 13
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqz" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqA" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = -5;
 	pixel_y = 2
 	},
 /turf/open/floor/prison/blue/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/blue/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqC" = (
 /obj/structure/machinery/space_heater/radiator/red,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqD" = (
 /obj/effect/decal/hybrisa/road/lines3{
 	pixel_y = -1;
@@ -6647,21 +6665,21 @@
 	pixel_x = 4
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqE" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_25";
 	pixel_y = 16
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqF" = (
 /obj/effect/decal/cleanable/blood/drip{
 	pixel_x = 4;
 	pixel_y = -9
 	},
 /turf/open/floor/prison/blue/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqG" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 1;
@@ -6672,21 +6690,21 @@
 	pixel_y = -9
 	},
 /turf/open/floor/prison/blue/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqH" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8;
 	pixel_x = 1
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqI" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
 	},
 /turf/open/floor/almayer/flooredge/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqJ" = (
 /obj/structure/bed/hybrisa/bunkbed2,
 /obj/structure/sign/poster/blacklight{
@@ -6694,7 +6712,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqK" = (
 /obj/structure/bed/hybrisa/bunkbed4{
 	dir = 4
@@ -6704,7 +6722,7 @@
 	layer = 3
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqL" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -6728,7 +6746,7 @@
 /obj/effect/spawner/gibspawner/human,
 /obj/item/shard/shrapnel,
 /turf/open/floor/prison/blue/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqM" = (
 /obj/structure/bed/hybrisa/bunkbed1,
 /obj/structure/sign/poster/corporate{
@@ -6736,14 +6754,14 @@
 	pixel_y = 32
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqN" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/flooredge/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqO" = (
 /obj/structure/sign/safety/reception{
 	desc = "Semiotic Standard denoting the nearby presence of a dormitory area.";
@@ -6758,25 +6776,25 @@
 	pixel_y = -5
 	},
 /turf/open/floor/prison/blue/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqQ" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/prison/blue/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqR" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 1;
 	pixel_y = 6
 	},
 /turf/open/floor/prison/blue/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqS" = (
 /obj/structure/machinery/light/double{
 	dir = 4;
 	pixel_y = -5
 	},
 /turf/open/floor/prison/blue/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/space_heater/radiator/red{
@@ -6784,7 +6802,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/prison/blue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqU" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -10;
@@ -6795,32 +6813,32 @@
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqV" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqW" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
 	dir = 8
 	},
 /obj/structure/machinery/space_heater/radiator/red,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqX" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_8";
 	pixel_y = 12
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double,
 /turf/open/floor/prison/bluefull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aqZ" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/head/cmcap/wy_cap{
@@ -6828,7 +6846,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "ara" = (
 /obj/structure/surface/table/almayer,
 /obj/item/ashtray/bronze{
@@ -6842,20 +6860,20 @@
 	pixel_y = -1
 	},
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arb" = (
 /obj/item/trash/cigbutt{
 	pixel_x = -9;
 	pixel_y = -6
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arc" = (
 /obj/structure/closet/crate/foodcart/alt{
 	pixel_y = 8
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "ard" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
@@ -6865,15 +6883,21 @@
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "are" = (
 /obj/structure/sign/nosmoking_1{
 	pixel_y = 32;
 	layer = 2.8
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arf" = (
 /obj/structure/sign/poster/wylogo{
 	pixel_y = 32
@@ -6883,14 +6907,17 @@
 	pixel_x = 9;
 	pixel_y = 32
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arg" = (
 /obj/structure/sign/poster/marshalls{
 	pixel_y = 35
 	},
 /turf/open/floor/prison/bluefull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
@@ -6899,7 +6926,7 @@
 	start_charge = 20
 	},
 /turf/open/floor/prison/bluefull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "ari" = (
 /obj/structure/sign/safety/cryo{
 	name = "exit semiotic";
@@ -6910,7 +6937,7 @@
 	pixel_x = 46
 	},
 /turf/open/floor/almayer/black2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arj" = (
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
@@ -6921,39 +6948,39 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/hybrisa/carpet/blue_grey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "ark" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail,
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arm" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arn" = (
 /obj/item/paper/crumpled{
 	pixel_x = 15;
 	pixel_y = 10
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aro" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arp" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
 	pixel_y = -5
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arq" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -6961,7 +6988,7 @@
 	pixel_y = -8
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -6979,7 +7006,7 @@
 	pixel_x = 10
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "ars" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin{
@@ -6991,7 +7018,7 @@
 	pixel_y = 11
 	},
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "art" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
@@ -7006,7 +7033,7 @@
 	pixel_x = 36
 	},
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aru" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -7037,16 +7064,16 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arv" = (
 /obj/structure/window_frame/hybrisa/colony/reinforced,
 /obj/item/shard,
 /turf/open/floor/plating,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arw" = (
 /obj/effect/acid_hole,
 /turf/closed/wall/hybrisa/colony,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "arx" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -7054,7 +7081,7 @@
 	pixel_y = -11
 	},
 /turf/open/floor/almayer/black2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ary" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/green2/northeast,
@@ -7067,12 +7094,12 @@
 /obj/structure/stairs/multiz/up,
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer_hull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "arB" = (
 /obj/structure/stairs/multiz/up,
 /obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer_hull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "arC" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
@@ -7125,11 +7152,11 @@
 /obj/structure/machinery/disposal/delivery,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/mono,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arL" = (
 /obj/structure/largecrate/lisa,
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arM" = (
 /obj/structure/largecrate/random/case/small,
 /obj/structure/largecrate/random/mini/med{
@@ -7137,11 +7164,11 @@
 	pixel_x = -5
 	},
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arN" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arO" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor/strata/orange_cover,
@@ -7149,7 +7176,7 @@
 "arP" = (
 /obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -7160,7 +7187,7 @@
 	color = "#140400"
 	},
 /turf/open/floor/almayer/green2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arR" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_5";
@@ -7184,7 +7211,7 @@
 	pixel_x = 15
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arU" = (
 /obj/structure/bed/chair/comfy/lime{
 	dir = 4;
@@ -7200,12 +7227,12 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arY" = (
 /obj/effect/decal/cleanable/blood{
 	pixel_x = 1;
@@ -7215,7 +7242,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arZ" = (
 /obj/structure/bed/chair/comfy/lime{
 	dir = 4;
@@ -7230,19 +7257,19 @@
 "asb" = (
 /obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "asc" = (
 /obj/item/shard{
 	icon_state = "medium"
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "asd" = (
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ase" = (
 /obj/structure/sign/poster/safety{
 	pixel_y = 34
@@ -7253,20 +7280,20 @@
 	pixel_y = 6
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "asf" = (
 /obj/structure/machinery/meter{
 	pixel_y = 32
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "asg" = (
 /obj/item/reagent_container/food/drinks/cans/cola{
 	pixel_x = 10;
 	pixel_y = 10
 	},
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ash" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip{
@@ -7292,7 +7319,7 @@
 	},
 /obj/effect/decal/hybrisa/bloodtrail,
 /turf/open/floor/almayer/green2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "asi" = (
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/almayer/green2/southeast,
@@ -7347,7 +7374,7 @@
 	pixel_y = -11
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "asp" = (
 /obj/structure/prop/hybrisa/misc/redmeter{
 	pixel_y = 32
@@ -7384,7 +7411,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "asu" = (
 /obj/vehicle/train/cargo/engine,
 /obj/structure/prop/hybrisa/airport/refuelinghose{
@@ -7462,7 +7489,7 @@
 	dir = 4
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "asE" = (
 /obj/structure/machinery/disposal/delivery,
 /turf/open/floor/almayer/blackcorner/north,
@@ -7495,7 +7522,7 @@
 	pixel_y = 31
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "asJ" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_29";
@@ -7511,6 +7538,37 @@
 	},
 /turf/open/auto_turf/shale/layer1,
 /area/lv759/oob)
+"asL" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"asM" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"asN" = (
+/turf/closed/wall/hybrisa/research/reinforced/hull,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"asO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"asP" = (
+/turf/open/floor/prison/floor_marked,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"asQ" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"asR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_red"
+	},
+/turf/open/floor/almayer/test_floor4,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"asS" = (
+/turf/open/floor/prison,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"asT" = (
+/turf/open/floor/prison/darkred2/east,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "asU" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
@@ -7522,10 +7580,282 @@
 	pixel_y = 5
 	},
 /turf/open/floor/prison/darkred2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"asV" = (
+/turf/open/floor/prison/darkred2/northeast,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"asW" = (
+/obj/structure/window/framed/hybrisa/research/reinforced,
+/turf/open/floor/corsat/marked,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"asX" = (
+/turf/open/floor/almayer/green2/east,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"asY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/green2/east,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"asZ" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"ata" = (
+/turf/open/floor/prison/darkred2/southwest,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"atb" = (
+/obj/structure/stairs/multiz/up,
+/turf/open/floor/almayer_hull,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"atc" = (
+/turf/open_space,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"atd" = (
+/turf/open/floor/strata/red3/west,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"ate" = (
+/turf/closed/wall/hybrisa/research,
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
+"atf" = (
+/turf/closed/wall/hybrisa/research,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atg" = (
+/turf/open/floor/almayer/green2/west,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"ath" = (
+/obj/structure/window/framed/hybrisa/research/reinforced,
+/turf/open/floor/corsat/marked,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"ati" = (
+/turf/open/floor/almayer/green2/northwest,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/green2/north,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atk" = (
+/turf/open/floor/almayer/green2/north,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atl" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atm" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atn" = (
+/turf/open/floor/almayer/green2/southwest,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"ato" = (
+/turf/open/floor/almayer/green2,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atp" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atq" = (
+/turf/open/floor/corsat/marked,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atr" = (
+/turf/closed/wall/hybrisa/research,
+/area/lv759/indoors/wy_research_complex/cargo)
+"ats" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata,
+/area/lv759/indoors/wy_research_complex/cargo)
+"att" = (
+/turf/open/floor/strata,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atu" = (
+/turf/open/floor/prison/blue/east,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atv" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/green2/west,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atw" = (
+/obj/structure/window/framed/hybrisa/research/reinforced,
+/turf/open/floor/plating,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atx" = (
+/turf/open/floor/prison/blue/southeast,
+/area/lv759/indoors/wy_research_complex/cargo)
+"aty" = (
+/turf/open/floor/prison/blue,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atz" = (
+/turf/open/floor/prison/blue/southwest,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atA" = (
+/turf/open/floor/prison,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atB" = (
+/turf/open/floor/almayer/silvercorner/south,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atC" = (
+/turf/open/floor/corsat/marked,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atD" = (
+/turf/open/floor/almayer/silvercorner/north,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atE" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atF" = (
+/turf/open/floor/prison/blue/west,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atG" = (
+/turf/open/floor/almayer/flooredge/west,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atH" = (
+/turf/closed/wall/hybrisa/colony,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atI" = (
+/turf/open/floor/prison/blue/northeast,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atJ" = (
+/turf/open/floor/prison/blue/north,
+/area/lv759/indoors/wy_research_complex/cargo)
+"atK" = (
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/black2/west,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atL" = (
+/turf/open/floor/almayer/black2/east,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atM" = (
+/turf/open/floor/almayer/black2/west,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "atN" = (
 /turf/closed/wall/hybrisa/colony/reinforced,
 /area/lv759/oob)
+"atO" = (
+/turf/open/floor/almayer/black2/northwest,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atP" = (
+/turf/open/floor/almayer/black2/north,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atQ" = (
+/turf/open/floor/almayer/black2/southwest,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atR" = (
+/turf/open/floor/almayer/black2,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atS" = (
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"atT" = (
+/turf/closed/wall/hybrisa/colony/engineering/reinforced,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"atU" = (
+/turf/open/floor/almayer/black2/southeast,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atV" = (
+/obj/structure/platform/metal/almayer/west,
+/turf/open_space,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"atW" = (
+/turf/open_space,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"atX" = (
+/obj/structure/platform/metal/almayer/east,
+/turf/open_space,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"atY" = (
+/turf/closed/wall/hybrisa/colony/engineering,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"atZ" = (
+/turf/open/floor/prison/darkyellow2/east,
+/area/lv759/indoors/wy_security/checkpoint_east)
+"aua" = (
+/turf/closed/wall/hybrisa/research,
+/area/lv759/indoors/wy_security/checkpoint_east)
+"aub" = (
+/turf/open/floor/prison/darkyellow2/northeast,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"auc" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/lv759/indoors/wy_security/checkpoint_east)
+"aud" = (
+/turf/open/floor/prison/darkyellow2/east,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"aue" = (
+/turf/open/shuttle/escapepod/west,
+/area/lv759/indoors/wy_security/checkpoint_central)
+"auf" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/turf/open/floor/almayer_hull,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"aug" = (
+/obj/structure/machinery/power/reactor/colony,
+/turf/open/floor/almayer/blackfull/west,
+/area/lv759/indoors/wy_security/checkpoint_central)
+"auh" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"aui" = (
+/turf/open/floor/prison/darkyellow2,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"auj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 1
+	},
+/turf/open/floor/prison/cell_stripe,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"auk" = (
+/turf/closed/wall/hybrisa/research,
+/area/lv759/indoors/wy_security/checkpoint_central)
+"aul" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/lv759/indoors/wy_security/checkpoint_central)
+"aum" = (
+/turf/open/floor/corsat/marked,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"aun" = (
+/turf/open/floor/prison,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"auo" = (
+/obj/structure/window_frame/hybrisa/colony/engineering/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"aup" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"auq" = (
+/turf/open/floor/prison/darkyellow2/west,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"aur" = (
+/obj/effect/landmark/static_comms/net_two,
+/turf/open/floor/prison/floor_marked,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"aus" = (
+/turf/open/floor/prison/floor_marked,
+/area/lv759/indoors/wy_research_complex/cafeteria)
+"aut" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "auL" = (
 /obj/structure/barricade/handrail,
 /turf/open/floor/strata/green3,
@@ -7539,7 +7869,7 @@
 /area/lv759/oob)
 "avB" = (
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "awA" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 4;
@@ -7553,14 +7883,14 @@
 	pixel_y = 12
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "azz" = (
 /obj/effect/decal/strata_decals/grime/grime2{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "azI" = (
 /turf/open/floor/almayer/purple/northwest,
 /area/lv759/oob)
@@ -7578,7 +7908,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aEE" = (
 /turf/open/floor/prison/darkred2/west,
 /area/lv759/oob)
@@ -7659,7 +7989,7 @@
 	pixel_y = -28
 	},
 /turf/open/floor/prison/darkyellowcorners2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "aKJ" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
 	name = "\improper Lockdown";
@@ -7758,7 +8088,7 @@
 	pixel_x = -3
 	},
 /turf/open/floor/almayer/silver2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "aSs" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 5;
@@ -7802,13 +8132,13 @@
 "aWt" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "aWT" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	pixel_y = 12
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "aXi" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/closet/secure_closet{
@@ -7816,7 +8146,7 @@
 	req_access_txt = "3"
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aXE" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 8;
@@ -7861,7 +8191,7 @@
 /area/lv759/oob)
 "bgn" = (
 /turf/open/floor/hybrisa/carpet/blue_grey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "bhn" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine/uscm,
@@ -7869,7 +8199,7 @@
 	pixel_y = -34
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "biS" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "32";
@@ -7956,7 +8286,7 @@
 "btB" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "buq" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 10
@@ -8004,11 +8334,11 @@
 	color = "#DAA06D"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "bzJ" = (
 /obj/structure/platform/metal/almayer/east,
 /turf/open_space,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "bzK" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -8019,7 +8349,7 @@
 	color = "#DAA06D"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "bCJ" = (
 /turf/open/floor/shiva/multi_tiles/west,
 /area/lv759/oob)
@@ -8034,11 +8364,18 @@
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = 6
+	},
 /turf/open/floor/plating/plating_catwalk/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "bEF" = (
 /turf/open/floor/prison/darkyellow2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "bFk" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "4"
@@ -8063,7 +8400,7 @@
 "bMq" = (
 /obj/structure/bed/hybrisa/bunkbed1,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "bMO" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
@@ -8088,7 +8425,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "bTr" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
@@ -8122,7 +8459,7 @@
 "bYN" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/prison/floor_marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "bZv" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 1
@@ -8166,7 +8503,7 @@
 "cgU" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "cks" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing2";
@@ -8203,7 +8540,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "cpw" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
@@ -8328,7 +8665,7 @@
 /obj/item/fuel_cell,
 /obj/item/fuel_cell,
 /turf/open/floor/prison/darkyellow2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "cEf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -8366,7 +8703,7 @@
 	color = "#DAA06D"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "cIl" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/metal/almayer_smooth/north,
@@ -8417,7 +8754,7 @@
 "cOF" = (
 /obj/structure/prop/hybrisa/fakeplatforms,
 /turf/open/floor/prison/darkred2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "cPM" = (
 /obj/effect/decal/hybrisa/road/road_stop{
 	icon_state = "stop_decal2"
@@ -8453,7 +8790,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "cUy" = (
 /obj/structure/machinery/computer/telecomms/traffic{
 	pixel_y = 22
@@ -8517,7 +8854,7 @@
 	color = "#DAA06D"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "dkb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow2";
@@ -8527,7 +8864,7 @@
 /area/lv759/oob)
 "dkf" = (
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "dlI" = (
 /turf/open/floor/hybrisa/metal/bluemetal1/southeast,
 /area/lv759/oob)
@@ -8593,7 +8930,7 @@
 /area/lv759/oob)
 "dzD" = (
 /turf/open/floor/prison/darkyellow2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "dAg" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "SW-out";
@@ -8648,7 +8985,7 @@
 	current_mag = null
 	},
 /turf/open/floor/strata/red3/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "dGn" = (
 /obj/item/clothing/ears/earmuffs{
 	pixel_y = 5;
@@ -8659,7 +8996,7 @@
 "dGz" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic,
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "dGT" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/auto_turf/shale/layer2,
@@ -8671,11 +9008,11 @@
 "dJK" = (
 /obj/structure/bed/hybrisa/bunkbed2,
 /turf/open/floor/hybrisa/carpet/blue_grey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "dJV" = (
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "dKt" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2
@@ -8775,7 +9112,7 @@
 	dir = 1
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "dXT" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider,
 /area/lv759/oob)
@@ -8794,7 +9131,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "ebm" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
@@ -8854,7 +9191,7 @@
 /area/lv759/oob)
 "elp" = (
 /turf/open/floor/strata/red4,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "emN" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/auto_turf/sand_white/layer0,
@@ -8875,11 +9212,11 @@
 	dir = 1
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "eoT" = (
 /obj/structure/closet/crate,
 /turf/open/floor/prison/blue/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "epg" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/shuttle/dropship/light_grey_single_wide_up_to_down,
@@ -8929,7 +9266,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "euM" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/lv759/oob)
@@ -8957,7 +9294,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison/darkred2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ewE" = (
 /turf/closed/wall/strata_ice/rock,
 /area/lv759/oob)
@@ -9007,15 +9344,15 @@
 "eIk" = (
 /obj/structure/bed/hybrisa/bunkbed1,
 /turf/open/floor/hybrisa/carpet/blue_grey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "eMe" = (
 /obj/structure/bed/hybrisa/bunkbed2,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "eNg" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "eNF" = (
 /turf/open/floor/prison/rampbottom,
 /area/lv759/oob)
@@ -9064,7 +9401,7 @@
 "fbx" = (
 /obj/structure/bed/hybrisa/bunkbed1,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "fcJ" = (
 /obj/structure/bed/chair/dropship/passenger{
 	dir = 1
@@ -9090,7 +9427,7 @@
 	pixel_y = -6
 	},
 /turf/open/floor/strata/red1,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ffs" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 4
@@ -9101,7 +9438,7 @@
 	},
 /obj/item/shard/shrapnel,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "fgv" = (
 /obj/structure/platform_decoration/metal/almayer/west,
 /obj/structure/platform_decoration/metal/almayer/east,
@@ -9123,7 +9460,7 @@
 "fjW" = (
 /obj/structure/platform/metal/almayer/west,
 /turf/open_space,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "flS" = (
 /obj/structure/closet/bombcloset,
 /turf/open/floor/strata/orange_cover,
@@ -9137,7 +9474,7 @@
 "fml" = (
 /obj/structure/machinery/door/airlock/multi_tile/hybrisa/generic_solid,
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "fmJ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -9183,7 +9520,7 @@
 "ftQ" = (
 /obj/structure/closet/secure_closet/engineering_materials,
 /turf/open/floor/prison/darkyellow2/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "fuj" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/lv759/oob)
@@ -9213,7 +9550,7 @@
 	},
 /obj/effect/decal/strata_decals/grime/grime2,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "fAk" = (
 /turf/open/floor/almayer/emerald2/east,
 /area/lv759/oob)
@@ -9246,7 +9583,7 @@
 "fFV" = (
 /obj/structure/surface/table/almayer,
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "fGb" = (
 /turf/closed/wall/strata_ice/dirty,
 /area/lv759/oob)
@@ -9389,7 +9726,7 @@
 	pixel_y = 40
 	},
 /turf/open/floor/prison/blue/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "goq" = (
 /turf/open/floor/prison/darkyellow2,
 /area/lv759/oob)
@@ -9466,7 +9803,7 @@
 	pixel_y = 28
 	},
 /turf/open/floor/strata/red3/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "gwc" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing6";
@@ -9576,7 +9913,7 @@
 "gSd" = (
 /obj/structure/closet/toolcloset,
 /turf/open/floor/prison/darkyellow2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "gUw" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -9640,7 +9977,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/strata/red3/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "hdN" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -9674,7 +10011,7 @@
 /area/lv759/oob)
 "hjx" = (
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "hjW" = (
 /turf/open/asphalt/cement/cement14,
 /area/lv759/oob)
@@ -9716,7 +10053,7 @@
 	},
 /obj/structure/machinery/photocopier,
 /turf/open/floor/almayer/silver2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "hsB" = (
 /obj/structure/prop/hybrisa/airport/dropshipventright,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -9741,7 +10078,7 @@
 	buckling_x = -4
 	},
 /turf/open/floor/almayer/silver2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "hun" = (
 /obj/structure/stairs/multiz/down{
 	dir = 8
@@ -9823,7 +10160,7 @@
 	},
 /obj/structure/platform/metal/almayer/east,
 /turf/open/floor/almayer_hull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "hAa" = (
 /turf/open/floor/prison,
 /area/lv759/oob)
@@ -9844,13 +10181,13 @@
 	dir = 4
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "hCO" = (
 /obj/structure/machinery/door/airlock/hybrisa/personal/autoname{
 	dir = 1
 	},
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "hDO" = (
 /obj/structure/stairs{
 	dir = 1
@@ -9926,7 +10263,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/strata/red4/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "hPN" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "zwing7";
@@ -10054,7 +10391,7 @@
 	},
 /obj/item/paper,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "ilV" = (
 /obj/item/prop/alien/hugger{
 	color = "#ffff80";
@@ -10141,11 +10478,11 @@
 "iAT" = (
 /obj/structure/closet/athletic_mixed,
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "iAU" = (
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/prison/darkred2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "iDu" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red"
@@ -10251,14 +10588,14 @@
 	dir = 8
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "iLN" = (
 /obj/effect/decal/hybrisa/WY/WY1{
 	dir = 4;
 	pixel_y = -16
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "iLT" = (
 /obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
@@ -10267,7 +10604,7 @@
 "iMb" = (
 /obj/structure/bed/hybrisa/bunkbed3,
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "iMv" = (
 /obj/structure/platform_decoration/stone/kutjevo/north,
 /turf/open/auto_turf/sand/layer0,
@@ -10288,7 +10625,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/almayer/silver2/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "iTa" = (
 /obj/structure/stairs/multiz/up{
 	dir = 4;
@@ -10354,7 +10691,7 @@
 "jbE" = (
 /obj/structure/closet,
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "jcK" = (
 /obj/effect/decal/hybrisa/road/lines2,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -10498,7 +10835,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass/reinforced/colony,
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "jIC" = (
 /turf/open/floor/almayer_hull/outerhull_dir/northeast,
 /area/lv759/oob)
@@ -10527,11 +10864,11 @@
 	dir = 8
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "jOE" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /turf/open/floor/prison/darkred2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "jPD" = (
 /turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "22"
@@ -10572,7 +10909,7 @@
 	dir = 4
 	},
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "kaE" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
@@ -10741,7 +11078,7 @@
 	dir = 8
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "kOT" = (
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv759/oob)
@@ -10776,7 +11113,7 @@
 	pixel_y = -2
 	},
 /turf/open/floor/prison/darkred2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "kXF" = (
 /obj/structure/machinery/light/dropship/blue{
 	dir = 4
@@ -10893,7 +11230,7 @@
 /area/lv759/oob)
 "lqu" = (
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "lqW" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/auto_turf/sand/layer0,
@@ -10909,7 +11246,7 @@
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "lvO" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
@@ -11003,7 +11340,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "lMI" = (
 /obj/structure/prop/invuln{
 	desc = "Disgusting... It seems to be decayed...";
@@ -11053,7 +11390,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "lRQ" = (
 /obj/item/prop/alien/hugger{
 	color = "#ffff80";
@@ -11075,7 +11412,7 @@
 	start_charge = 20
 	},
 /turf/open/floor/almayer/silver2/northwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "lWy" = (
 /turf/open/floor/prison/rampbottom/west,
 /area/lv759/oob)
@@ -11170,7 +11507,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "mtb" = (
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/prison/ramptop/north,
@@ -11254,7 +11591,7 @@
 	pixel_x = -7
 	},
 /turf/open/floor/prison/blue_plate/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "mFQ" = (
 /obj/effect/alien/weeds/node/kseries,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -11273,7 +11610,7 @@
 "mIj" = (
 /obj/structure/machinery/door/airlock/hybrisa/personal/autoname,
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "mID" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/largecrate/random/mini/med{
@@ -11281,7 +11618,7 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plating/plating_catwalk,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "mIN" = (
 /turf/open/floor/almayer/emerald2smooth/southeast,
 /area/lv759/oob)
@@ -11369,7 +11706,7 @@
 "mYF" = (
 /obj/item/tool/soap/weyland_yutani,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "nag" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 8
@@ -11428,7 +11765,7 @@
 	icon_state = "chair_alt"
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "njj" = (
 /obj/structure/bookcase{
 	icon_state = "book-5";
@@ -11437,7 +11774,7 @@
 	density = 0
 	},
 /turf/open/floor/prison/blue/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "nkN" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open_space,
@@ -11494,12 +11831,12 @@
 	icon_state = "door_warning2_red"
 	},
 /turf/open/floor/hybrisa/metal/stripe_red/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "nwL" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/darkyellow2/southwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "nyj" = (
 /turf/open/floor/almayer/emerald2smooth/southwest,
 /area/lv759/oob)
@@ -11565,7 +11902,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "nPP" = (
 /turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "24"
@@ -11589,7 +11926,7 @@
 "nQX" = (
 /obj/item/clothing/suit/storage/marine/veteran/pmc/guard/vest,
 /turf/open/floor/strata/red4/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "nRU" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -11603,7 +11940,7 @@
 	pixel_y = -4
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "nTQ" = (
 /obj/structure/prop/hybrisa/misc/urinal/dark{
 	pixel_y = 32;
@@ -11618,7 +11955,7 @@
 	pixel_y = 2
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "nVc" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -11663,17 +12000,17 @@
 	dir = 1
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "ocB" = (
 /turf/open/floor/almayer/silver2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "ocK" = (
 /turf/open/floor/almayer/black2/east,
 /area/lv759/oob)
 "odb" = (
 /obj/structure/machinery/power/reactor/colony,
 /turf/open/floor/prison/bright_clean,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "odm" = (
 /turf/open/floor/prison/darkbrown2/north,
 /area/lv759/oob)
@@ -11811,7 +12148,7 @@
 	pixel_x = 4
 	},
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "omQ" = (
 /obj/structure/platform/metal/stair_cut/almayer_smooth_right,
 /turf/open/floor/prison/rampbottom/west,
@@ -11855,7 +12192,7 @@
 "oxi" = (
 /obj/structure/largecrate/supply/weapons/flamers,
 /turf/open/floor/strata/red4/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "oyK" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southeast,
 /area/lv759/oob)
@@ -11902,7 +12239,7 @@
 /obj/item/stack/sheet/metal/large_stack,
 /obj/item/stack/sheet/plasteel/small_stack,
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "oHw" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
@@ -11917,7 +12254,7 @@
 	pixel_x = -1
 	},
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "oLd" = (
 /obj/structure/platform/metal/almayer_smooth/east,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -11935,11 +12272,11 @@
 	pixel_y = 32
 	},
 /turf/open/floor/prison/blue/northeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "oLT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkyellowcorners2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "oMk" = (
 /obj/structure/platform_decoration/metal/almayer_smooth,
 /turf/open/floor/prison/floor_plate/southwest,
@@ -12099,7 +12436,7 @@
 	pixel_y = 9
 	},
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "psX" = (
 /obj/structure/stairs/multiz/up,
 /turf/open/floor/almayer_hull,
@@ -12123,7 +12460,7 @@
 	layer = 3.2
 	},
 /turf/open/floor/plating,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "pyo" = (
 /obj/structure/platform/metal/almayer_smooth/east,
 /turf/open/floor/almayer/silvercorner/east,
@@ -12161,7 +12498,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/prison/darkyellow2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "pDy" = (
 /turf/open/floor/hybrisa/metal/zbrownfloor1/northwest,
 /area/lv759/oob)
@@ -12226,7 +12563,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/hybrisa/carpet/blue_grey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "pQi" = (
 /turf/open/floor/prison/damaged3,
 /area/lv759/oob)
@@ -12269,7 +12606,7 @@
 /area/lv759/oob)
 "qbk" = (
 /turf/open/floor/almayer/silver2/south,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "qcD" = (
 /turf/closed/shuttle/dropship4/WY/StarGlider{
 	icon_state = "5"
@@ -12338,7 +12675,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "qnK" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
@@ -12417,7 +12754,7 @@
 	id = "Sec-Armoury-Lockdown"
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "qsH" = (
 /turf/open/floor/prison/darkred2/southeast,
 /area/lv759/oob)
@@ -12436,7 +12773,7 @@
 	pixel_x = -2
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "qwn" = (
 /turf/open/floor/almayer/greencorner/north,
 /area/lv759/oob)
@@ -12507,7 +12844,7 @@
 	pixel_y = -1
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "qHO" = (
 /turf/open/floor/corsat/marked,
 /area/lv759/oob)
@@ -12527,7 +12864,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "qJx" = (
 /turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "23"
@@ -12599,14 +12936,14 @@
 	dir = 1
 	},
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "rdC" = (
 /turf/closed/wall/r_wall/biodome,
 /area/lv759/oob)
 "rdV" = (
 /obj/structure/bed/hybrisa/bunkbed3,
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "rec" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
@@ -12618,7 +12955,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/prison/darkyellowcorners2/north,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "reI" = (
 /turf/open/floor/almayer/blue2/southeast,
 /area/lv759/oob)
@@ -12661,7 +12998,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/almayer/silver2/southwest,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "roH" = (
 /obj/structure/window/reinforced{
 	color = "#1B1212"
@@ -12723,7 +13060,7 @@
 	color = "#DAA06D"
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "rrA" = (
 /turf/open/floor/almayer/blackfull/west,
 /area/lv759/oob)
@@ -12768,7 +13105,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/almayer/plate,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "rCT" = (
 /turf/open/floor/strata/green4,
 /area/lv759/oob)
@@ -12786,10 +13123,10 @@
 	dir = 4
 	},
 /turf/open/floor/hybrisa/carpet/carpetbluedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "rHC" = (
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "rIc" = (
 /turf/open/auto_turf/snow/layer2,
 /area/lv759/oob)
@@ -12798,7 +13135,7 @@
 	dir = 4
 	},
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "rMO" = (
 /obj/structure/machinery/door/airlock/almayer/secure/colony,
 /turf/open/floor/corsat/marked,
@@ -12877,14 +13214,14 @@
 	layer = 3.1
 	},
 /turf/open/floor/prison/darkredcorners2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "sav" = (
 /obj/structure/sink{
 	pixel_y = 26
 	},
 /obj/effect/decal/strata_decals/grime/grime2,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "sdf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2";
@@ -12950,7 +13287,7 @@
 "sAO" = (
 /obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/prison/darkyellow2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "sDA" = (
 /obj/structure/platform/metal/almayer_smooth/north,
 /obj/structure/platform/metal/almayer_smooth/east,
@@ -12964,7 +13301,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/prison/blue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "sFP" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -13028,7 +13365,7 @@
 	pixel_x = 1
 	},
 /turf/open/floor/prison/darkred2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "sUP" = (
 /obj/structure/fence/dark,
 /turf/open/auto_turf/shale/layer1,
@@ -13085,7 +13422,7 @@
 /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/lead,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
 /turf/open/floor/prison/darkred2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "tpc" = (
 /obj/effect/decal/strata_decals/mud_corner{
 	dir = 5
@@ -13191,7 +13528,7 @@
 	start_charge = 20
 	},
 /turf/open/floor/prison/darkred2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "uaZ" = (
 /turf/open/floor/almayer/emerald2smooth/east,
 /area/lv759/oob)
@@ -13279,7 +13616,7 @@
 /area/lv759/oob)
 "uqO" = (
 /turf/open/floor/strata/red3,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "urk" = (
 /obj/structure/machinery/vending/cola,
 /obj/structure/machinery/light/small{
@@ -13291,7 +13628,7 @@
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/prison/darkred2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "uwP" = (
 /turf/open/floor/prison/darkbrown3/southwest,
 /area/lv759/oob)
@@ -13331,7 +13668,7 @@
 /obj/item/clothing/accessory/storage/black_vest,
 /obj/item/clothing/accessory/storage/black_vest,
 /turf/open/floor/strata,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "uJj" = (
 /turf/open/floor/prison/cell_stripe/east,
 /area/lv759/oob)
@@ -13418,7 +13755,7 @@
 	pixel_y = 22
 	},
 /turf/open/floor/prison/darkred2,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "uTZ" = (
 /obj/effect/mist/steam,
 /obj/structure/blocker/invisible_wall,
@@ -13432,7 +13769,7 @@
 	pixel_y = 12
 	},
 /turf/open/floor/prison/blue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "uUl" = (
 /turf/open/floor/prison/bluefull,
 /area/lv759/oob)
@@ -13480,14 +13817,14 @@
 /area/lv759/oob)
 "vcS" = (
 /turf/open/floor/prison/darkyellow2/southeast,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "veC" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
 /obj/structure/platform/metal/almayer/west,
 /turf/open/floor/almayer_hull,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "veX" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out";
@@ -13530,7 +13867,7 @@
 /area/lv759/oob)
 "vkP" = (
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "vkU" = (
 /turf/open/floor/strata/red3/northwest,
 /area/lv759/oob)
@@ -13550,7 +13887,7 @@
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "vpf" = (
 /obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door{
 	dir = 4
@@ -13668,7 +14005,7 @@
 	pixel_y = 42
 	},
 /turf/open/floor/prison/darkred2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "vJS" = (
 /turf/open/floor/almayer/green2/west,
 /area/lv759/oob)
@@ -13823,7 +14160,7 @@
 "wtR" = (
 /obj/structure/machinery/vending/cigarette,
 /turf/open/floor/prison/darkred2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "wtV" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4
@@ -13953,7 +14290,7 @@
 "wPy" = (
 /obj/structure/machinery/recharge_station,
 /turf/open/floor/prison/darkyellow2/east,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "wQD" = (
 /turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "36"
@@ -13981,7 +14318,7 @@
 	dir = 1
 	},
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "wSU" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
@@ -13996,7 +14333,7 @@
 /area/lv759/oob)
 "wTr" = (
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "wUJ" = (
 /obj/structure/prop/hybrisa/airport/dropshipventleft,
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -14050,7 +14387,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/prison/darkred2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "xhU" = (
 /turf/open/floor/almayer/purple,
 /area/lv759/oob)
@@ -14118,7 +14455,7 @@
 	dir = 4
 	},
 /turf/open/floor/hybrisa/carpet/blue_grey,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "xwf" = (
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/lv759/oob)
@@ -14242,7 +14579,7 @@
 	alpha = 155
 	},
 /turf/open/floor/hybrisa/carpet/carpetbeigedeco,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cargo)
 "xTl" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "door_warning2_red";
@@ -14262,7 +14599,7 @@
 	autoname = 1
 	},
 /turf/open/floor/corsat/marked,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/cafeteria)
 "xZk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S"
@@ -14298,7 +14635,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/prison/darkred2/west,
-/area/lv759/oob)
+/area/lv759/indoors/wy_research_complex/dormsfoyer)
 "yaT" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/structure/prop/hybrisa/misc/floorprops/grate,
@@ -71382,38 +71719,38 @@ kui
 iTa
 iTa
 rBH
-qpw
-kRD
-oAY
+asM
+atf
+ath
 aeB
-oAY
-oAY
-kRD
-kRD
+ath
+ath
+atf
+atf
 ajM
 ajO
 ajO
 ajJ
-kRD
-kRD
-qHO
+atf
+atf
+atC
 rcY
-oAY
-qHO
+ath
+atC
 rcY
-kRD
-kRD
+atf
+atf
 ajS
 ajO
 ajO
 ajM
-kRD
-kRD
-oAY
-oAY
-oAY
-oAY
-kRD
+atf
+atf
+ath
+ath
+ath
+ath
+atf
 qpw
 kui
 iTa
@@ -71541,57 +71878,57 @@ qQq
 nyQ
 icq
 kRD
-jaC
-jaC
-jaC
-jaC
-qpw
-jaC
-jaC
-jaC
-jaC
-qpw
+asN
+asN
+asN
+asN
+asM
+asN
+asN
+asN
+asN
+asM
 all
 akL
 akY
 akL
 akL
 akF
-kRD
-kRD
-oAY
-oAY
-kRD
-kRD
+atf
+atf
+ath
+ath
+atf
+atf
 lTs
 akp
 akg
 hud
-jwY
+atD
 akg
 rkP
-kRD
-kRD
-oAY
-oAY
-kRD
-kRD
+atf
+atf
+ath
+ath
+atf
+atf
 aph
 aoU
 aoU
 aoU
 aoU
 aoQ
-qpw
-jaC
-jaC
-jaC
-jaC
-qpw
-jaC
-jaC
-jaC
-jaC
+asM
+asN
+asN
+asN
+asN
+asM
+asN
+asN
+asN
+asN
 kRD
 jvo
 nyQ
@@ -71708,59 +72045,59 @@ qpw
 pIU
 pIU
 pIU
-qpw
-qpw
+asM
+asM
 alD
 alz
 alw
 alv
 alu
 als
-ocK
-ocK
+atL
+atL
 alq
-ocK
-ocK
+atL
+atL
 aot
 akX
-ocK
-ocK
+atL
+atL
 akD
 akA
-ocK
+atL
 akz
 akv
 hCO
 ocB
-hAa
-akd
-hAa
-akd
-hAa
+atA
+atE
+atA
+atE
+atA
 qbk
 nLk
 ajZ
-ioB
+asX
 apy
 aps
 apm
-ioB
-aoI
-aoI
+asX
+asY
+asY
 ajP
-ioB
-ioB
-ioB
-ioB
-aoI
+asX
+asX
+asX
+asX
+asY
 aoK
-aoI
-ioB
+asY
+asX
 aoH
 aoG
 aoF
-qpw
-qpw
+asM
+asM
 pIU
 pIU
 pIU
@@ -71876,59 +72213,59 @@ qpw
 cml
 cml
 cml
-qpw
+asM
 alG
 alE
 alA
 alx
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-frB
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+atw
 aks
-hAa
-hAa
+atA
+atA
 iLN
-hAa
-hAa
+atA
+atA
 qbk
-frB
+atw
 apR
 apH
 apz
 apt
 apn
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-cDM
-akC
-qpw
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asQ
+asO
+asM
 cml
 cml
 cml
@@ -72044,28 +72381,28 @@ qpw
 vQX
 vQX
 vQX
-qpw
+asM
 alH
 alF
 alB
 aly
-cDM
-cDM
+asQ
+asQ
 alt
-akw
+atK
 akG
-iZO
-iZO
-uFz
-cDM
-cDM
-lXU
+atM
+atM
+atQ
+asQ
+asQ
+atO
 akG
-iZO
+atM
 akB
-iZO
+atM
 ari
-akw
+atK
 hCO
 ocB
 akh
@@ -72075,28 +72412,28 @@ hAR
 akh
 qbk
 nLk
-aka
+atv
 apI
 apA
 ajY
 apo
-vJS
-iDy
-cDM
-cDM
-etk
-vJS
+atg
+atn
+asQ
+asQ
+ati
+atg
 aoP
 aoO
 aoN
 aoM
-aoJ
-cDM
+asZ
+asQ
 ant
 ajI
-cDM
+asQ
 aoE
-qpw
+asM
 vQX
 vQX
 vQX
@@ -72212,59 +72549,59 @@ aaB
 xqd
 hPE
 tyR
-qpw
-cDM
-cDM
-iHi
-iHi
-cDM
-cDM
-iHi
-iHi
-iHi
+asM
+asQ
+asQ
+atY
+atS
+auh
+auh
+atS
+atS
+atS
 alr
 alm
 akZ
-cDM
-cDM
-mEu
+asQ
+asQ
+atP
 akH
 akE
-aet
-aet
-aet
-aet
-aet
+atp
+atp
+atp
+atp
+atp
 akt
 akq
-hAa
+atA
 mrA
 akk
-nzk
+atB
 aRI
-aet
-aet
-aet
-aet
-aet
+atp
+atp
+atp
+atp
+atp
 app
 api
-fAn
-cDM
-cDM
+ato
+asQ
+asQ
 aoV
 aoR
 mID
-qpw
-qpw
-qpw
+asL
+asL
+asM
 anM
-cDM
-qpw
-qpw
-akC
-akC
-qpw
+asQ
+asM
+asM
+asO
+asO
+asM
 xqd
 hPE
 tyR
@@ -72380,59 +72717,59 @@ aaB
 jcK
 jUa
 mgB
-qpw
-qHO
+aut
+aum
 wRF
-iHi
-iHi
-qHO
+atS
+atS
+aum
 wRF
-iHi
-iHi
-iHi
-iHi
+atS
+atS
+atS
+atY
 aln
-aND
-cDM
-cDM
-mEu
+atR
+asQ
+asQ
+atP
 akI
-aet
-aet
+atp
+atp
 pOm
 arj
 dJK
-aet
-aet
+atp
+atH
 iSx
 ako
 akm
 hrX
 aki
-aet
-aet
+atp
+atp
 aDT
 apJ
 iMb
-aet
-aet
+atp
+atp
 apj
-fAn
+ato
 arW
-cDM
-aoW
+asQ
+atj
 aoS
-qpw
-qpw
-qpw
-qpw
-ixv
+asL
+asL
+asL
+asL
+asR
 anD
-qpw
-qpw
-ixv
+asL
+asL
+asR
 bNz
-qpw
+asL
 jcK
 jUa
 mgB
@@ -72548,49 +72885,49 @@ aaB
 jcK
 jUa
 mgB
-qpw
+aut
 aoD
-amH
+aup
 amw
 amq
-hAa
-goq
+aun
+aui
 alW
 odb
 alO
-iHi
-iHi
+atS
+atS
 ala
 aou
-cDM
+asQ
 akM
-aet
-aet
+atp
+atp
 njj
 xuT
 bgn
 eIk
 aqT
-aet
-aet
-aet
-aet
-aet
-aet
-aet
+atp
+atp
+atp
+atp
+atp
+atp
+atp
 gmO
 kat
 wTr
 bMq
 uUc
-aet
-aet
+atp
+atp
 apc
 arX
-cDM
+asQ
 aoX
-qpw
-qpw
+asL
+asL
 sTF
 wtR
 urk
@@ -72600,7 +72937,7 @@ anu
 anj
 rHC
 amZ
-qpw
+asL
 jcK
 jUa
 mgB
@@ -72716,48 +73053,48 @@ aaB
 jcK
 jUa
 mgB
-qpw
+aut
 amP
-wmp
-wmp
-wmp
-wmp
+aud
+aud
+aud
+aud
 vcS
-piB
+aub
 alT
 rec
 odb
-iHi
+atS
 alb
 aou
 aop
-cDM
+asQ
 dGz
 arp
-pOh
-cMt
-cMt
-cMt
-mib
-aet
+atI
+atu
+atu
+atu
+atx
+atp
 aqJ
 aqy
 rGs
 aqn
 rdV
-aet
+atp
 oLJ
-cMt
-cMt
-cMt
+atu
+atu
+atu
 apu
 apq
 dGz
-cDM
-anr
-cDM
+asQ
+atm
+asQ
 aoY
-qpw
+asL
 aoh
 aod
 anY
@@ -72768,7 +73105,7 @@ rHC
 rHC
 rHC
 rHC
-qpw
+asL
 jcK
 jUa
 mgB
@@ -72884,7 +73221,7 @@ aaB
 jcK
 jUa
 mgB
-qpw
+aut
 amQ
 hjx
 hjx
@@ -72895,37 +73232,37 @@ alX
 alU
 alP
 odb
-iHi
+atS
 alc
 aov
 aoq
-cDM
-qHO
-rHC
-rHC
-rHC
-amZ
-rHC
-rHC
-aet
+asQ
+atq
+att
+att
+att
+ats
+att
+att
+atp
 aqK
 aqz
 fbx
 aqo
 rGs
-aet
+atp
 apX
-rHC
-rHC
+att
+att
 apB
 apv
-amZ
-qHO
-cDM
-cDM
-cDM
+ats
+atq
+asQ
+asQ
+asQ
 aoZ
-qpw
+asL
 aoi
 aoe
 anZ
@@ -72936,7 +73273,7 @@ anv
 rHC
 rHC
 ana
-qpw
+asL
 jcK
 jUa
 mgB
@@ -73052,7 +73389,7 @@ aaB
 jvo
 czb
 erH
-qpw
+aut
 amR
 hjx
 hjx
@@ -73061,12 +73398,12 @@ ami
 hjx
 alY
 hjx
-piB
+aub
 dJV
-iHi
+atS
 ald
 aow
-cDM
+asQ
 arx
 arv
 arq
@@ -73076,9 +73413,9 @@ rBT
 dWq
 apY
 aqP
-eyo
+atF
 aqA
-eyo
+atF
 aqp
 aqi
 aqf
@@ -73089,11 +73426,11 @@ niX
 lqu
 apr
 apk
-iDy
-cDM
-cDM
+atn
+asQ
+asQ
 apa
-qpw
+asL
 uTV
 rHC
 aoa
@@ -73104,7 +73441,7 @@ rHC
 kXf
 ewd
 xgv
-qpw
+asL
 jvo
 czb
 erH
@@ -73219,10 +73556,10 @@ vRW
 xGl
 sAB
 sAB
-qpw
-qpw
+aut
+aut
 aWt
-hgH
+auq
 amx
 hjx
 amj
@@ -73231,10 +73568,10 @@ aoA
 alV
 alQ
 cgU
-iHi
+atS
 ale
-cDM
-cDM
+asQ
+asQ
 akN
 apk
 arr
@@ -73243,13 +73580,13 @@ apw
 mFB
 aqZ
 aqU
-pOh
-cMt
+atI
+atu
 aqB
-cMt
+atu
 aqq
 aqj
-mib
+atx
 lqu
 lqu
 apK
@@ -73258,22 +73595,22 @@ apw
 lqu
 apk
 asb
-cDM
-cDM
+asQ
+asQ
 apb
-qpw
+asL
 rYO
 aof
 aob
 tmQ
-pKB
+ata
 rHC
 rHC
 ank
 kLZ
 anb
-qpw
-qpw
+asL
+asL
 sAB
 sAB
 wgp
@@ -73387,22 +73724,22 @@ vRW
 odm
 ojI
 ojI
-qpw
+aut
 aaD
 enE
-hAa
+aun
 pCR
 ams
 amk
 ftQ
 lvg
 oHy
-iHi
-iHi
-iHi
-iHi
+atS
+atS
+atS
+atS
 aox
-cDM
+asQ
 akO
 apk
 jbE
@@ -73417,7 +73754,7 @@ aqC
 rGs
 aqr
 fbx
-lXc
+aty
 apY
 lqu
 apL
@@ -73426,12 +73763,12 @@ apw
 aso
 arv
 asc
-cDM
+asQ
 arT
-qpw
-qpw
-kRD
-kRD
+asL
+asL
+ate
+ate
 vJb
 anU
 anP
@@ -73441,7 +73778,7 @@ anl
 anh
 anc
 amX
-qpw
+asL
 ojI
 ojI
 ojI
@@ -73555,23 +73892,23 @@ ojI
 odm
 ojI
 ojI
-qpw
+aut
 aaD
 enE
 amI
 amy
 hjx
 hjx
-lqX
+auj
 veC
-fjW
-fjW
-fjW
-fjW
-aPR
-cDM
-cDM
-mEu
+atV
+atV
+atV
+atV
+atT
+asQ
+asQ
+atP
 apk
 jbE
 arn
@@ -73579,7 +73916,7 @@ ark
 ark
 arb
 asD
-nfb
+atJ
 rGs
 aqE
 rdV
@@ -73594,9 +73931,9 @@ ast
 arq
 apk
 apd
-cDM
-amO
-qpw
+asQ
+atl
+asL
 fjW
 fjW
 fjW
@@ -73609,7 +73946,7 @@ anm
 amH
 rIQ
 bhn
-qpw
+asL
 ojI
 ojI
 ojI
@@ -73723,31 +74060,31 @@ ojI
 odm
 acr
 itJ
-qpw
+aut
 aaD
 enE
-hAa
+aun
 amz
 hjx
 hjx
 amd
-oSg
-spC
-spC
-spC
-spC
-aPR
-cDM
-cDM
+auf
+atW
+atW
+atW
+atW
+atT
+asQ
+asQ
 akP
-aet
+atp
 ars
-rHC
+att
 apE
-rHC
+att
 arc
-rHC
-nfb
+att
+atJ
 fbx
 avB
 eMe
@@ -73755,29 +74092,29 @@ avB
 rGs
 aqh
 apZ
-amZ
+ats
 apM
 apE
-rHC
+att
 jbE
-aet
+atp
 ape
-cDM
-cDM
-qpw
-spC
-spC
-spC
-spC
-psX
+asQ
+asQ
+asL
+atc
+atc
+atc
+atc
+atb
 nwx
 anG
 any
 ann
-hAa
+asS
 jND
 amY
-qpw
+asL
 itJ
 gxO
 ojI
@@ -73891,61 +74228,61 @@ ojI
 odm
 iqP
 cDM
-qpw
-qpw
+aut
+aut
 qns
-hAa
+aun
 amA
 hjx
 hjx
-lqX
-oSg
-spC
-spC
-spC
-spC
-aPR
-cDM
-cDM
+auj
+auf
+atW
+atW
+atW
+atW
+atT
+asQ
+asQ
 akQ
-aet
+atp
 lME
 lRH
-amZ
-rHC
-rHC
-amZ
+ats
+att
+att
+ats
 aqQ
 aqk
 aqF
 aqv
-eyo
+atF
 aqk
-xEI
+atz
 aqa
-rHC
-rHC
-rHC
-rHC
+att
+att
+att
+att
 jbE
-aet
+atp
 apf
-cDM
-cDM
-qpw
-spC
-spC
-spC
-spC
-psX
+asQ
+asQ
+asL
+atc
+atc
+atc
+atc
+atb
 nwx
 anH
 rHC
 iAU
 aXi
-qpw
-qpw
-qpw
+asL
+asL
+asL
 cDM
 odm
 ojI
@@ -74060,47 +74397,47 @@ odm
 iqP
 cDM
 cDM
-qpw
-esx
-bYN
-goq
+aut
+aus
+aur
+aui
 amt
 aml
-lqX
+auj
 hzW
-bzJ
-bzJ
-bzJ
-bzJ
-aPR
-cDM
-cDM
+atX
+atX
+atX
+atX
+atT
+asQ
+asQ
 akR
-aet
+atp
 art
 aro
 arl
 eNg
-rHC
-amZ
+att
+ats
 aqR
 aqL
 aqG
-cMt
+atu
 aqs
-cMt
-mib
+atu
+atx
 aqa
-rHC
+att
 apN
-rHC
-amZ
+att
+ats
 iAT
-aet
+atp
 asd
-cDM
-cDM
-qpw
+asQ
+asQ
+asL
 bzJ
 bzJ
 bzJ
@@ -74110,9 +74447,9 @@ nwx
 rHC
 anv
 cOF
-esx
+asP
 bYN
-qpw
+asL
 cDM
 cDM
 odm
@@ -74228,59 +74565,59 @@ mtx
 iqP
 cDM
 cDM
-qpw
+aut
 amS
-esx
-goq
+aus
+aui
 amu
 hjx
 gSd
 sAO
 oFL
-iHi
-iHi
-iHi
-iHi
+atS
+atS
+atS
+atS
 asI
-cDM
+asQ
 akS
-aet
-aet
-aet
-aet
-aet
+atp
+atp
+atp
+atp
+atp
 ard
-amZ
-nfb
+ats
+atJ
 rGs
 aqz
 rdV
 aqt
 rGs
-lXc
+aty
 aqb
 bDx
-kRD
+atr
 qIb
 aok
 xPC
-aet
+atp
 apg
-cDM
-cDM
-qpw
-qpw
-kRD
-kRD
+asQ
+asQ
+asL
+asL
+ate
+ate
 yaL
 anV
 anQ
 anH
 ano
 cOF
-esx
-esx
-qpw
+asP
+asP
+asL
 cDM
 cDM
 odm
@@ -74396,29 +74733,29 @@ mtx
 iqP
 cDM
 cDM
-qpw
+aut
 cpe
-wmp
+aud
 amB
 hjx
 alZ
 ame
 aoB
-wmp
+aud
 alR
 wPy
-iHi
+atS
 alf
-akC
-cDM
+asO
+asQ
 akT
 arw
 aru
 etU
 etU
-aet
+atp
 are
-rHC
+att
 aqS
 eMe
 avB
@@ -74432,12 +74769,12 @@ djh
 awA
 vkP
 bzT
-aet
+atp
 apd
 aou
-cDM
+asQ
 arL
-qpw
+asL
 asU
 aog
 anU
@@ -74447,8 +74784,8 @@ anI
 rHC
 jOE
 voV
-qpw
-qpw
+asL
+asL
 cDM
 cDM
 odm
@@ -74564,7 +74901,7 @@ mtx
 iqP
 cDM
 cDM
-qpw
+aut
 amT
 amJ
 amC
@@ -74575,48 +74912,48 @@ hjx
 hjx
 hjx
 cDW
-iHi
+atS
 alg
-cDM
-cDM
-mEu
-aet
+asQ
+asQ
+atP
+atp
 nTQ
 mYF
 azz
-aet
+atp
 arf
 aqV
-aet
+atp
 aqM
 aqH
 rGs
 qwh
 rGs
-aet
+atp
 cTO
 apT
 apO
 apF
 vkP
 bzT
-aet
+atp
 ase
 aou
-cDM
+asQ
 arM
-qpw
-qpw
-qpw
-qpw
-qpw
-qpw
+asL
+asL
+asL
+asL
+asL
+asL
 anJ
 rHC
-sfO
-quF
+asV
+asT
 uak
-qpw
+asL
 cDM
 cDM
 odm
@@ -74732,7 +75069,7 @@ lqo
 iqP
 cDM
 cDM
-qpw
+aut
 amU
 amK
 amD
@@ -74743,40 +75080,40 @@ hjx
 bEF
 alS
 aKo
-iHi
+atS
 alh
-cDM
-cDM
-mEu
-aet
+asQ
+asQ
+atP
+atp
 pqr
 ffs
 dkf
-aet
+atp
 omd
 aqW
-aet
-aet
+atp
+atp
 pyk
 pyk
 pyk
-aet
-aet
+atp
+atp
 cTO
 apU
 apP
 apG
 qHM
 aqD
-aet
+atp
 asf
-cDM
-cDM
+asQ
+asQ
 arN
-qpw
+asL
 feX
 elp
-fpn
+atd
 nQX
 qsG
 rHC
@@ -74784,7 +75121,7 @@ anz
 ano
 rHC
 and
-qpw
+asL
 cDM
 cDM
 odm
@@ -74900,7 +75237,7 @@ lqo
 iqP
 cDM
 cDM
-qpw
+aut
 amV
 amL
 amE
@@ -74910,49 +75247,49 @@ hjx
 alZ
 dzD
 odb
-iHi
-iHi
+atS
+atS
 ali
-cDM
-cDM
+asQ
+asQ
 akU
-aet
-aet
+atp
+atp
 sav
 aWT
 fml
 akx
-rHC
+att
 dGz
 aqN
-aql
+atG
 aqw
-aql
+atG
 aql
 dGz
 aqd
-rHC
+att
 apQ
 nZu
 bzT
-aet
-aet
+atp
+atp
 asg
-cDM
-cDM
+asQ
+asQ
 arP
-qpw
-qpw
+asL
+asL
 dGb
 rHC
 uqO
-qpw
+asL
 ihH
 anA
 ano
 rHC
 anf
-qpw
+asL
 cDM
 cDM
 odm
@@ -75068,49 +75405,49 @@ lqo
 iqP
 cDM
 cDM
-qpw
+aut
 amW
-hAa
+aun
 amF
-goq
+aui
 amo
 alV
 ama
 oLT
 alO
-iHi
+atS
 alo
-aND
-cDM
-cDM
-mEu
+atR
+asQ
+asQ
+atP
 akJ
-aet
+atp
 dYZ
 dkf
-qHO
+atq
 aky
 aqX
-qHO
+atq
 aqu
 aqI
 aqx
 aqu
 aqm
-qHO
-rHC
-rHC
+atq
+att
+att
 cIf
 vkP
 bzT
-aet
+atp
 apl
 ash
 arY
-cDM
-cgK
+asQ
+atk
 arK
-qpw
+asL
 gvZ
 uIZ
 uqO
@@ -75120,7 +75457,7 @@ anB
 anp
 ani
 ang
-qpw
+asL
 cDM
 cDM
 odm
@@ -75235,61 +75572,61 @@ vRW
 mtx
 iqP
 cDM
-qpw
-qpw
-iHi
+aut
+aut
+atS
 aoC
-aeB
+auo
 xYp
-iHi
+atS
 odb
 odb
 odb
-iHi
-iHi
-iHi
+atS
+atS
+atY
 alj
-cDM
-cDM
+asQ
+asQ
 akV
-aet
-aet
+atp
+atp
 btB
 btB
-aet
+atp
 arg
 aqY
-aet
-aet
+atp
+atp
 mIj
 apk
 mIj
-aet
-aet
+atp
+atp
 aqe
 apV
 cIf
 qHM
 apx
-aet
-kRD
+atp
+atr
 aoj
-cDM
-cDM
+asQ
+asQ
 arQ
-qpw
-qpw
+asL
+asL
 hPL
 hbE
 oxi
-qpw
-qpw
+asL
+asL
 amM
-oAY
+asW
 jIg
-qpw
-qpw
-qpw
+asL
+asL
+asL
 cDM
 odm
 ojI
@@ -75404,59 +75741,59 @@ mtx
 iqP
 cDM
 cDM
-qpw
+aut
 aND
 amN
 amG
 cDM
-iHi
-iHi
-iHi
-iHi
-iHi
-iHi
+atS
+atS
+atS
+atS
+atS
+atS
 alp
 alk
-cDM
-cDM
-mEu
+asQ
+asQ
+atP
 akK
-aet
+atp
 nRU
 fzB
-aet
+atp
 arh
-aet
+atp
 aet
 aqO
 cDM
 cDM
 cDM
 asB
-aet
-aet
+atp
+atp
 apW
 bzD
 rrj
-aet
-aet
+atp
+atp
 ask
 fAn
 cDM
 cDM
 cgK
 aoT
-qpw
-qpw
-qpw
-qpw
-qpw
-qpw
+asL
+asL
+asL
+asL
+asL
+asL
 amN
 cDM
 cDM
 cgK
-qpw
+asL
 cDM
 cDM
 odm
@@ -75583,18 +75920,18 @@ ocK
 ocK
 ocK
 ocK
-ocK
-fjh
-cDM
-cDM
+atL
+atU
+asQ
+asQ
 akW
 akz
-aet
-aet
-aet
-aet
-aet
-aet
+atp
+atp
+atp
+atp
+atp
+atp
 nCG
 mTp
 cDM
@@ -75602,11 +75939,11 @@ cDM
 cDM
 cPR
 asz
-aet
-aet
-aet
-aet
-aet
+atp
+atp
+atp
+atp
+atp
 asp
 asl
 asi
@@ -81794,9 +82131,9 @@ ozb
 jaC
 iKa
 iKa
-kRD
-acj
-kIo
+auk
+aug
+aue
 aca
 ojI
 ojI
@@ -81962,7 +82299,7 @@ jaC
 iKa
 iKa
 iKa
-qpw
+aul
 ack
 acf
 acb
@@ -82130,7 +82467,7 @@ iKa
 iKa
 iKa
 iKa
-kRD
+auk
 acl
 acg
 acc
@@ -82637,8 +82974,8 @@ iKa
 kRD
 piB
 ach
-wmp
-wmp
+atZ
+atZ
 abW
 abU
 abR
@@ -82806,7 +83143,7 @@ kRD
 kRD
 aci
 acd
-kRD
+aua
 kRD
 kRD
 kRD
@@ -82972,9 +83309,9 @@ ozb
 euM
 kRD
 kRD
-kRD
-qpw
-kRD
+aua
+auc
+aua
 rdC
 rdC
 rdC

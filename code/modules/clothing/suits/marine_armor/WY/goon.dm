@@ -32,3 +32,11 @@
 	item_state = "armor"
 	storage_slots = 2
 	item_state_slots = list(WEAR_JACKET = "armor")
+
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo
+	desc = "A basic vest with a Weyland-Yutani badge on the right breast. This variant is worn by Personal Protection Officers protecting Weyland-Yutani employees, as denoted by the blue badge."
+	icon_state = "ppo_armor"
+	item_state = "ppo_armor"
+	item_state_slots = list(WEAR_JACKET = "ppo_armor")
+	uniform_restricted = null
+	storage_slots = 1

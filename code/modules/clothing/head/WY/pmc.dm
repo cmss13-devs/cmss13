@@ -178,6 +178,10 @@
 	name = "\improper PMC guard tactical cap"
 	icon_state = "guard_cap"
 
+/obj/item/clothing/head/helmet/marine/veteran/pmc/guard/ppo
+	name = "\improper corporate security cap"
+	icon_state = "ppo_cap"
+
 /obj/item/clothing/head/helmet/marine/veteran/pmc/guard/crewman
 	name = "\improper PMC driver tactical cap"
 	icon_state = "guard_cap"

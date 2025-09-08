@@ -20,10 +20,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	list("Formal Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/formal, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 
 	list("ARMOR (CHOOSE 1)", 0, null, null, null),
-	list("Bulletproof Vest", 0, /obj/item/clothing/suit/armor/bulletproof, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+	list("Corporate Security Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 	list("HEADGEAR (CHOOSE 1)", 0, null, null, null),
-	list("Security Guard Armored Cap", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/guard, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+	list("Corporate Security Cap", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/guard/ppo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 	list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 	list("Black Leather Satchel", 0, /obj/item/storage/backpack/satchel/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
@@ -83,12 +83,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security_full, list(
 	list("Formal Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/formal, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 
 	list("ARMOR (CHOOSE 1)", 0, null, null, null),
-	list("Bulletproof Vest", 0, /obj/item/clothing/suit/armor/bulletproof, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+	list("Corporate Security Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 	list("Security Guard Light Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/bulletproof/guard, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 	list("Security Guard Medium Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/guard, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
 	list("HEADGEAR (CHOOSE 1)", 0, null, null, null),
-	list("Security Guard Armored Cap", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/guard, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+	list("Security Guard Armored Cap", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/guard/ppo, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 	list("Corporate Security Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 	list("BACKPACK (CHOOSE 1)", 0, null, null, null),

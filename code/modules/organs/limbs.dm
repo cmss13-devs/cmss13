@@ -1215,11 +1215,11 @@ treat_grafted var tells it to apply to grafted but unsalved wounds, for burn kit
 
 	//flesh limb part
 	owner.visible_message(
-		SPAN_WARNING("You hear flesh on [owner] shizzling!"),
+		SPAN_WARNING("You hear flesh on [owner] sizzling!"),
 		SPAN_HIGHDANGER("Your [display_name] feels burned!"),
 		SPAN_HIGHDANGER("Your stomach turns as the flesh on your [display_name] chars!"))
 	status |= LIMB_ESCHAR
-	owner.pain.apply_pain(PAINT_ESCHAR)
+	owner.pain.apply_pain(PAIN_ESCHAR)
 	broken_description = pick("eschar")
 	start_processing()
 

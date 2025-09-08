@@ -19,3 +19,14 @@
 
 // UPP
 #define ORIGIN_UPP "Union of Progressive Peoples"
+
+// WY
+#define ORIGIN_WY "Weyland-Yutani Corporation"
+#define ORIGIN_WY_SEC "Weyland-Yutani Security"
+#define ORIGIN_WY_PMC "Weyland-Yutani Private Military Company"
+
+// TWE
+#define ORIGIN_TWE "Three World Empire"
+
+// CMB
+#define ORIGIN_CMB "The Colonial Marshal Bureau"

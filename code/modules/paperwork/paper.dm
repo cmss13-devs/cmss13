@@ -280,6 +280,7 @@
 		paper_text = replacetext(paper_text, "\[wy_inv\]", "<img src = [asset.get_url_mappings()["logo_wy_inv.png"]]>")
 		paper_text = replacetext(paper_text, "\[uscm\]", "<img src = [asset.get_url_mappings()["logo_uscm.png"]]>")
 		paper_text = replacetext(paper_text, "\[upp\]", "<img src = [asset.get_url_mappings()["logo_upp.png"]]>")
+		paper_text = replacetext(paper_text, "\[twe\]", "<img src = [asset.get_url_mappings()["logo_twe.png"]]>")
 		paper_text = replacetext(paper_text, "\[cmb\]", "<img src = [asset.get_url_mappings()["logo_cmb.png"]]>")
 
 		paper_text = "<font face=\"[deffont]\" color=[P ? P.pen_color : "black"]>[paper_text]</font>"
@@ -714,68 +715,97 @@
 	icon_state = "paper_wy_words"
 	unacidable = TRUE
 	var/datum/reagent/data
+	var/list/hint = list()
+	var/picked_property
 	var/tier
 	var/note_type
 	var/full_report
 	var/grant
+	var/contract
 
-/obj/item/paper/research_notes/Initialize()
+/obj/item/paper/research_notes/Initialize(mapload, data, note_type, contract)
 	. = ..()
+	if(data)
+		src.data = data
+	if(note_type)
+		src.note_type = note_type
+	if(contract)
+		src.contract = contract
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/item/paper/research_notes/LateInitialize()
 	. = ..()
 	generate()
 
+/obj/item/paper/research_notes/Destroy()
+	data = null
+	hint = null
+	. = ..()
+
 /obj/item/paper/research_notes/proc/generate()
 	is_objective = TRUE
 	if(!note_type)
-		note_type = pick(prob(50);"synthesis",prob(35);"grant",prob(15);"test")
-	var/datum/reagent/generated/C = data
-	if(!C)
-		var/random_chem
-		if(tier)
-			random_chem = pick(GLOB.chemical_gen_classes_list[tier])
-		else
-			if(note_type == "test")
-				random_chem = pick(GLOB.chemical_gen_classes_list["T4"])
-			else
-				random_chem = pick( prob(55);pick(GLOB.chemical_gen_classes_list["T2"]),
-									prob(30);pick(GLOB.chemical_gen_classes_list["T3"]),
-									prob(15);pick(GLOB.chemical_gen_classes_list["T4"]))
-		if(!random_chem)
-			random_chem = pick(GLOB.chemical_gen_classes_list["T1"])
-		C = GLOB.chemical_reagents_list["[random_chem]"]
+		note_type = pick_weight(list("synthesis" = 7, "grant" = 3))
+	var/datum/reagent/generated/chemical_to_generate
+	if(note_type == "synthesis")
+		chemical_to_generate = data
+		if(!chemical_to_generate)
+			chemical_to_generate = new /datum/reagent/generated
+			chemical_to_generate.id = "tau-[length(GLOB.chemical_gen_classes_list["tau"])]"
+			chemical_to_generate.generate_name()
+			chemical_to_generate.chemclass = CHEM_CLASS_ULTRA
+			chemical_to_generate.gen_tier = rand(1, 2)
+			chemical_to_generate.generate_stats()
+			GLOB.chemical_gen_classes_list["tau"] += chemical_to_generate.id //Because each unique_vended should be unique, we do not save the chemclass anywhere but in the tau list
+			GLOB.chemical_reagents_list[chemical_to_generate.id] = chemical_to_generate
+			chemical_to_generate.generate_assoc_recipe()
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	var/txt = "<center><img src = [asset.get_url_mappings()["logo_wy.png"]]><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
-			var/datum/chemical_reaction/G = GLOB.chemical_reactions_list[C.id]
-			name = "Synthesis of [C.name]"
+			var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[chemical_to_generate.id]
 			icon_state = "paper_wy_partial_report"
+			if(!contract)
+				name = "Synthesis of [chemical_to_generate.name]"
+			else
+				name = "Contract for [chemical_to_generate.name]"
+				icon_state = "paper_wy_contract"
 			txt += "[name] </H2></center>"
-			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [C.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
-			for(var/I in G.required_reagents)
+			txt += "During experiment <I>[pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]</I> the theorized compound identified as [chemical_to_generate.name], was successfully synthesized using the following formula:<BR>\n<BR>\n"
+			for(var/I in reaction_generated.required_reagents)
 				var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-				var/U = G.required_reagents[I]
+				var/U = reaction_generated.required_reagents[I]
 				txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
-			if(LAZYLEN(G.required_catalysts))
+			if(LAZYLEN(reaction_generated.required_catalysts))
 				txt += "<BR>\nWhile using the following catalysts: <BR>\n<BR>\n"
-				for(var/I in G.required_catalysts)
+				for(var/I in reaction_generated.required_catalysts)
 					var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-					var/U = G.required_catalysts[I]
+					var/U = reaction_generated.required_catalysts[I]
 					txt += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
 			if(full_report)
-				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[C.description]\n"
-				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
+				txt += "<BR>Chemical has following reaction indicators:"
+				if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
+					txt += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
+					txt += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
+					txt += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
+					txt += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+				else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+					txt += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
+				else
+					txt += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
+				txt += "<BR>The following properties have been discovered during tests:<BR><font size = \"2.5\">[chemical_to_generate.description]\n"
+				txt += "<BR>Overdoses at: [chemical_to_generate.overdose] units</font><BR>\n"
 				icon_state = "paper_wy_full_report"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			var/is_volatile = FALSE
-			if(C.chemfiresupp)
+			if(chemical_to_generate.chemfiresupp)
 				is_volatile = TRUE
 			else
-				for(var/datum/chem_property/P in C.properties)
+				for(var/datum/chem_property/P in chemical_to_generate.properties)
 					if(P.volatile)
 						is_volatile = TRUE
 						break
@@ -786,7 +816,7 @@
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 			icon_state = "paper_wy_synthesis"
 			txt += "Note for [name]</H2></center>"
-			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
+			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(chemical_to_generate.properties)] effects during testing of [chemical_to_generate.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("grant")
 			if(!grant)
@@ -796,25 +826,27 @@
 			txt += "Weyland-Yutani Research Grant</H2></center>"
 			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("ciph_hint")
+			icon_state = "paper_wy_words"
+			name = "Transmission Intercepted"
+			txt += "[MAIN_SHIP_NAME] intelligence Relay</H2></center>"
+			txt += "Progress report<BR>\n\n"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b>. Recent discoveries have made us believe that one of the missing pieces has <b>[isNeutralProperty(hint[3]) ? "neutral" : "negative"]</b> effects.<BR>\n"
+			txt += "This will be the last transmission before the scheduled communications blackout, testing has been successful so far.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("ciph_hint_complete")
+			icon_state = "paper_wy_words"
+			name = "Research Ciphering Breakthrough"
+			txt += "Weyland-Yutani Biological Weapons Division</H2></center>"
+			txt += "During testing, the theorized component <b>[PROPERTY_CIPHERING]</b> was found to be made of <b>[hint[1]]</b> and <b>[hint[2]]</b>. Recent discovery made us believe last piece is <b>[hint[3]]</b>.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
+		if("leg_hint")
+			icon_state = "paper_wy_words"
+			name = "Property Breakthrough"
+			txt += "Weyland-Yutani Pharmaceuticals Division(TM).</H2></center>"
+			txt += "During XRF process on substance <I>[rand(10000,99999)]</I>, the theorized component <b>[picked_property]</b> was found to be made of <b>[hint[1]]</b>, and <b>[hint[2]]</b>. Final discovery made us believe the final missing piece was <b>[hint[3]]</b>.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 	info = txt
-
-/obj/item/paper/research_notes/bad
-	note_type = "synthesis"
-	tier = "T1"
-
-/obj/item/paper/research_notes/decent
-	note_type = "synthesis"
-	tier = "T2"
-	full_report = TRUE
-
-/obj/item/paper/research_notes/good
-	note_type = "synthesis"
-	full_report = TRUE
-
-/obj/item/paper/research_notes/good/Initialize()
-	var/list/L = list("T3", "T4")
-	tier = pick(L)
-	. = ..()
 
 /obj/item/paper/research_notes/unique
 	note_type = "synthesis"
@@ -851,8 +883,30 @@
 	GLOB.chemical_reagents_list[C.id] = C
 	C.generate_assoc_recipe()
 	data = C
-	msg_admin_niche("New reagent with id [C.id], name [C.name], level [C.gen_tier], generated and printed at [loc] [ADMIN_JMP(loc)].")
 	. = ..()
+
+/obj/item/paper/research_notes/ciph_hint
+	note_type = "ciph_hint"
+
+/obj/item/paper/research_notes/ciph_hint/Initialize()
+	. = ..()
+	hint = GLOB.combining_properties[PROPERTY_CIPHERING]
+	if(length(hint) < CIPHERING_COMBINE_PROPERTIES)
+		return INITIALIZE_HINT_QDEL
+
+/obj/item/paper/research_notes/ciph_hint/complete
+	note_type = "ciph_hint_complete"
+
+/obj/item/paper/research_notes/leg_hint
+	note_type = "leg_hint"
+
+/obj/item/paper/research_notes/leg_hint/Initialize()
+	. = ..()
+	picked_property = pick(PROPERTY_LEGENDARY_LIST)
+	hint = GLOB.combining_properties[picked_property]
+	if(length(hint) < LEGENDARY_COMBINE_PROPERTIES)
+		return INITIALIZE_HINT_QDEL //shouldnt happen, will happen.
+
 
 /obj/item/paper/research_notes/grant
 	note_type = "grant"
@@ -865,15 +919,33 @@
 	icon_state = "paper_wy_words"
 	var/datum/reagent/data
 	var/completed = FALSE
+	///does the document has the information needed but .
+	var/valid_report = TRUE
 
 /obj/item/paper/research_report/proc/generate(datum/reagent/S, info_only = FALSE)
 	if(!S)
 		return
 	info += "<B>ID:</B> <I>[S.name]</I><BR><BR>\n"
+	var/datum/chemical_reaction/reaction_generated = GLOB.chemical_reactions_list[S.id]
 	info += "<B>Database Details:</B><BR>\n"
 	if(S.chemclass >= CHEM_CLASS_ULTRA)
 		if(GLOB.chemical_data.clearance_level >= S.gen_tier || info_only)
+			for(var/datum/chem_property/scanned_property in S.properties)
+				name += " "+scanned_property.code+"[scanned_property.level]"
 			info += "<I>The following information relating to [S.name] is restricted with a level [S.gen_tier] clearance classification.</I><BR>"
+			info += "<BR>Chemical has following reaction indicators:"
+			if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
+				info += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
+				info += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
+				info += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
+				info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+			else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+				info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
+			else
+				info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 			info += "<font size = \"2.5\">[S.description]\n"
 			info += "<BR>Overdoses at: [S.overdose] units\n"
 			info += "<BR>Standard duration multiplier of [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
@@ -882,10 +954,25 @@
 		else
 			info += "CLASSIFIED:<I> Clearance level [S.gen_tier] required to read the database entry.</I><BR>\n"
 			icon_state = "paper_wy_partial_report"
+			valid_report = FALSE
 	else if(S.chemclass == CHEM_CLASS_SPECIAL && !GLOB.chemical_data.clearance_x_access && !info_only)
 		info += "CLASSIFIED:<I> Clearance level <B>X</B> required to read the database entry.</I><BR>\n"
 		icon_state = "paper_wy_partial_report"
+		valid_report = FALSE
 	else if(S.description)
+		info += "<BR>Chemical has following reaction indicators:"
+		if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_BUBBLING))
+			info += "\n<BR><B>Aggressive foaming</B><BR>\n	- The reaction causes bubbling and foam to build up rapidly and shoot out of the beaker. Biological Suit gives complete protection.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_GLOWING))
+			info += "\n<BR><B>Luminesence</B>.<BR>\n	- The reaction produces light, power of the light is dictated by the amount mixed.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_SMOKING))
+			info += "\n<BR><B>Fuming</B><BR>\n	- The reaction produces heavy fumes from contents of the beaker. Work under a fume hood, wear a gas mask, or simply put an airtight seal over the beaker.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_FIRE))
+			info += "\n<BR><B>Exothermic</B><BR>\n	- The reaction produces heat and will cause a small scale combustion. This will not compromise the contents of the beaker.<BR>"
+		else if(CHECK_BITFIELD(reaction_generated?.reaction_type, CHEM_REACTION_ENDOTHERMIC))
+			info += "\n<BR><B>Endothermic</B><BR>\n	- The reaction is endothermic. This slows down the mixing process significantly and stops all other reactions from happening.<BR>"
+		else
+			info += "<BR><B>Inert</B><BR> -  The reaction has no indicators.<BR>"
 		info += "<font size = \"2.5\">[S.description]\n"
 		info += "<BR>Overdoses at: [S.overdose] units\n"
 		info += "<BR>Standard duration multiplier: [REAGENTS_METABOLISM/S.custom_metabolism]x</font><BR>\n"
@@ -894,6 +981,7 @@
 	else
 		info += "<I>No details on this reagent could be found in the database.</I><BR>\n"
 		icon_state = "paper_wy_synthesis"
+		valid_report = FALSE
 	if(S.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[S.id] && !info_only)
 		info += "<BR><I>Saved emission spectrum of [S.name] to the database.</I><BR>\n"
 	info += "<BR><B>Composition Details:</B><BR>\n"
@@ -901,9 +989,10 @@
 		var/datum/chemical_reaction/C = GLOB.chemical_reactions_list[S.id]
 		for(var/I in C.required_reagents)
 			var/datum/reagent/R = GLOB.chemical_reagents_list["[I]"]
-			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only)
+			if(R.chemclass >= CHEM_CLASS_SPECIAL && !GLOB.chemical_data.chemical_identified_list[R.id] && !info_only && R.chemclass != CHEM_CLASS_HYDRO)
 				info += "<font size = \"2\"><I> - Unknown emission spectrum</I></font><BR>\n"
 				completed = FALSE
+				valid_report = FALSE
 			else
 				var/U = C.required_reagents[I]
 				info += "<font size = \"2\"><I> - [U] [R.name]</I></font><BR>\n"
@@ -922,12 +1011,14 @@
 	else
 		info += "<I>ERROR: Unable to analyze emission spectrum of sample.</I>" //A reaction to make this doesn't exist, so this is our IC excuse
 		completed = FALSE
+		valid_report = FALSE
 
 	if(info_only)
 		completed = TRUE
 	else
 		if(!S.properties) //Safety for empty reagents
 			completed = FALSE
+			valid_report = FALSE
 		if(S.chemclass == CHEM_CLASS_SPECIAL && GLOB.chemical_data.clearance_x_access)
 			completed = TRUE
 

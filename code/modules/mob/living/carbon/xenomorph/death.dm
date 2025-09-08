@@ -11,6 +11,26 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	GLOB.living_xeno_list -= src
 
+	if(huggers_max > 0 && huggers_cur)
+		//Hugger explosion, like an egg morpher
+		var/obj/item/clothing/mask/facehugger/hugger
+		visible_message(SPAN_XENOWARNING("The chittering mass of tiny aliens is trying to escape [src]!"))
+		for(var/i in 1 to huggers_cur)
+			if(prob(drop_chance))
+				hugger = new(loc, hivenumber)
+				step_away(hugger, src, 1)
+
+	if(eggs_max > 0 && eggs_cur)
+		var/eggs_dropped = FALSE
+		for(var/i in 1 to eggs_cur)
+			if(prob(drop_chance))
+				new /obj/item/xeno_egg(loc, hivenumber)
+				eggs_dropped = TRUE
+		eggs_cur = 0
+
+		if(eggs_dropped) //Checks whether or not to announce egg drop.
+			xeno_message(SPAN_XENOANNOUNCE("[src] has dropped some precious eggs!"), 2, hive.hivenumber)
+
 	if(is_zoomed)
 		zoom_out()
 

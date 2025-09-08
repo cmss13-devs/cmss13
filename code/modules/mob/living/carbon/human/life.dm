@@ -72,7 +72,6 @@
 		handle_stasis_bag()
 
 
-
 	stabilize_body_temperature() //Body temperature adjusts itself (self-regulation) (even when dead)
 
 	//Handle temperature/pressure differences between body and environment

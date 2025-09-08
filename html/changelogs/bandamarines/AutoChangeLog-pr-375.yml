@@ -1,0 +1,4 @@
+author: "Poslushneek"
+delete-after: True
+changes:
+  - bugfix: "Уменьшено время получения контракта"

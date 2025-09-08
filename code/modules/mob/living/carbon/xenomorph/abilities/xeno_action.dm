@@ -197,7 +197,7 @@
 			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
 		if(charge_time)
 			start_charging_ability()
-		if(ability_uses_acid_overlay && !(xeno.acid_overlay in xeno.overlays) && !xeno.resting)
+		if(ability_uses_acid_overlay && !(xeno.acid_overlay in xeno.overlays) && !xeno.resting && xeno.stat != DEAD)
 			xeno.overlays += xeno.acid_overlay
 
 // Called when a different action is clicked on and this one is deselected.

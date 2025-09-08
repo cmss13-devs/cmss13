@@ -70,7 +70,8 @@
 
 	else if(stat != DEAD)
 		handle_stasis_bag()
-		handle_stasis_bag_with_APS()
+
+
 
 	stabilize_body_temperature() //Body temperature adjusts itself (self-regulation) (even when dead)
 

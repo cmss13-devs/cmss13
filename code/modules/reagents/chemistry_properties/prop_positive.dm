@@ -603,7 +603,7 @@
 					qdel(embryo)
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
-					to_chat(current_human, SPAN_NOTICE("You start to throw up several bits of wormlike matter!")) //Embryo is dead
+					to_chat(current_human, SPAN_NOTICE("You throw up several bits of wormlike matter!")) //Embryo is dead
 				else
 					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 

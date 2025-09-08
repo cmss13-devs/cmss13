@@ -4998,7 +4998,7 @@
 /area/lv759/indoors/wy_research_complex/cafeteria)
 "amX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras{
+/obj/structure/machinery/computer/emails{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -5473,6 +5473,10 @@
 	dir = 1;
 	layer = 2.31
 	},
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa{
+	pixel_x = -5;
+	pixel_y = 10
+	},
 /turf/open/floor/strata,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aoe" = (
@@ -5520,7 +5524,6 @@
 	},
 /obj/item/shard/shrapnel,
 /obj/effect/spawner/gibspawner/human,
-/obj/item/shard/shrapnel,
 /obj/effect/decal/hybrisa/bloodtrail{
 	pixel_y = 9
 	},
@@ -5543,11 +5546,7 @@
 	dir = 1;
 	layer = 2.31
 	},
-/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa{
-	pixel_x = -5;
-	pixel_y = -3
-	},
-/turf/open/floor/prison/darkred2/north,
+/turf/open/floor/prison/darkred2,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "aoi" = (
 /obj/structure/filingcabinet{
@@ -7066,10 +7065,6 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_research_complex/cargo)
-"arw" = (
-/obj/effect/acid_hole,
-/turf/closed/wall/hybrisa/colony,
-/area/lv759/indoors/wy_research_complex/cargo)
 "arx" = (
 /obj/item/shard{
 	icon_state = "medium";
@@ -7099,7 +7094,6 @@
 "arC" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
-/obj/effect/spawner/random/balaclavas,
 /turf/open/floor/almayer/green2/east,
 /area/lv759/oob)
 "arD" = (
@@ -7150,7 +7144,7 @@
 /turf/open/floor/almayer/mono,
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arL" = (
-/obj/structure/largecrate/lisa,
+/obj/structure/largecrate,
 /turf/open/floor/almayer/green2/north,
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arM" = (
@@ -8188,10 +8182,10 @@
 /area/lv759/indoors/wy_research_complex/cargo)
 "bhn" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/faxmachine/uscm,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = -34
 	},
+/obj/structure/machinery/faxmachine,
 /turf/open/floor/prison,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "biS" = (
@@ -8965,10 +8959,6 @@
 /obj/item/ammo_magazine/smg/p90,
 /obj/item/ammo_magazine/smg/p90,
 /obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
 /obj/item/weapon/gun/smg/p90{
 	current_mag = null
 	},
@@ -9284,7 +9274,7 @@
 /area/lv759/oob)
 "ewd" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/objective{
+/obj/structure/machinery/computer/emails{
 	dir = 4
 	},
 /turf/open/floor/prison/darkred2/west,
@@ -10827,7 +10817,7 @@
 /area/lv759/oob)
 "jND" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/cameras/wooden_tv{
+/obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
 	dir = 8
 	},
 /turf/open/floor/prison,
@@ -11292,11 +11282,11 @@
 /area/lv759/oob)
 "lME" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/objective,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/wylogo{
 	pixel_y = 32
 	},
+/obj/structure/machinery/computer/emails,
 /turf/open/floor/prison/blue_plate/north,
 /area/lv759/indoors/wy_research_complex/cargo)
 "lMI" = (
@@ -11706,13 +11696,6 @@
 "niu" = (
 /turf/open/floor/prison/darkbrown3/southeast,
 /area/lv759/oob)
-"niX" = (
-/obj/structure/bed/chair/comfy{
-	dir = 4;
-	icon_state = "chair_alt"
-	},
-/turf/open/floor/almayer/plate,
-/area/lv759/indoors/wy_research_complex/cargo)
 "njj" = (
 /obj/structure/bookcase{
 	icon_state = "book-5";
@@ -11867,7 +11850,6 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/lv759/oob)
 "nQX" = (
-/obj/item/clothing/suit/storage/marine/veteran/pmc/guard/vest,
 /turf/open/floor/strata/red4/east,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "nRU" = (
@@ -13141,8 +13123,7 @@
 /obj/structure/prop/hybrisa/misc/cabinet{
 	dir = 8;
 	pixel_x = 7;
-	pixel_y = 3;
-	layer = 3.1
+	pixel_y = 3
 	},
 /turf/open/floor/prison/darkredcorners2/west,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
@@ -73341,7 +73322,7 @@ aqf
 ast
 lqu
 lqu
-niX
+rBT
 lqu
 apr
 apk
@@ -74668,7 +74649,7 @@ alf
 asO
 asQ
 akT
-arw
+atp
 aru
 etU
 etU

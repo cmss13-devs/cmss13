@@ -71,14 +71,6 @@
 	user.forceMove(above_current)
 	return
 
-/turf/closed/attack_alien(mob/user)
-	attack_hand(user)
-
-/turf/closed/attack_hand(mob/user)
-	if(user.a_intent == INTENT_HARM)
-		return
-	climb_up(user)
-
 /turf/closed/Enter(atom/movable/mover, atom/forget)
 	. = ..()
 	if(!mover.move_intentionally || !istype(mover,/mob/living))

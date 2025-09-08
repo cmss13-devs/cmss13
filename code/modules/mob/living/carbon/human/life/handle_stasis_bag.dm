@@ -18,7 +18,7 @@
 		if(property) //If we have APS and a 25% chance to run
 			var/obj/item/alien_embryo/embryo = locate() in contents //Check if we have an embryo in us
 			if(embryo)
-				if(prob(25))
+				if(prob(25) && embryo.stage >= 2) //Embryo should only be noticed when you are above stage 2 (This is the standard in embryo.dm)
 					to_chat(src, SPAN_NOTICE("As metabolism slows down as something inside you relaxes")) //Inform the marine the stasis field is killing
 				break// otherwise, stop looping this handling regardless
 

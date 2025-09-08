@@ -600,7 +600,7 @@
 			else
 				embryo.stage--
 				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
-					qdel(embryo)
+					embryo.forceMove(current_human.loc) //forces the embryo out of the container that is the human host and onto the ground
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
 					to_chat(current_human, SPAN_NOTICE("You throw up several bits of wormlike matter!")) //Embryo is dead

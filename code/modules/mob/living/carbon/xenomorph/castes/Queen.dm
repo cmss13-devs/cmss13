@@ -283,6 +283,8 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_4/queen.dmi'
 
+	acid_overlay = icon('icons/mob/xenos/castes/tier_4/queen.dmi', "Queen-Spit")
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Queen_1","Queen_2","Queen_3")
 	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
@@ -617,6 +619,7 @@
 					if(length(T.contents) <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
+			overlays -= acid_overlay
 
 		// Grant temporary maturity if near the hive_location for early game
 		if(!queen_aged)

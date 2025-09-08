@@ -1,0 +1,5 @@
+author: "Blue-Fox5"
+delete-after: True
+changes:
+  - imageadd: "added some new bits to the boiler sprite"
+  - imagedel: "old sprites are gone"

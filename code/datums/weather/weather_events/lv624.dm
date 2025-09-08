@@ -49,7 +49,10 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 	if(active)
 		return
 	active = TRUE
-	var/duration = pick(10, 20)
+	addtimer(CALLBACK(src, PROC_REF(set_off)), rand(0,59))
+
+/obj/effect/landmark/fog_marker/proc/set_off()
+	var/duration = rand(5,10)
 	smoke = new()
 	smoke.set_up(radius = 0, loca = loc,smoke_time = duration)
 	smoke.start()
@@ -68,7 +71,7 @@ GLOBAL_LIST_INIT(fog_tiles, list())
 
 /datum/weather_event/heavy_rain/fog/handle_weather_process()
 	. = ..()
-	for(var/i = 1 to 20)
+	for(var/i = 1 to 60)
 		var/obj/effect/landmark/fog_marker/marker = pick(GLOB.fog_tiles)
 		marker.activate()
 

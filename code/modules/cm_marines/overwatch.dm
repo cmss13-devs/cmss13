@@ -1537,26 +1537,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			glob_squad.drop_pad = null
 	return ..()
 
-/obj/structure/supply_drop/alpha
-	icon_state = "alphadrop"
-	squad = SQUAD_MARINE_1
-
-/obj/structure/supply_drop/bravo
-	icon_state = "bravodrop"
-	squad = SQUAD_MARINE_2
-
-/obj/structure/supply_drop/charlie
-	icon_state = "charliedrop"
-	squad = SQUAD_MARINE_3
-
-/obj/structure/supply_drop/delta
-	icon_state = "deltadrop"
-	squad = SQUAD_MARINE_4
-
-/obj/structure/supply_drop/echo //extra supply drop pad
-	icon_state = "echodrop"
-	squad = SQUAD_MARINE_5
-
 //======UPP=======
 
 /obj/structure/supply_drop/upp1

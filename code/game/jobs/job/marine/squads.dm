@@ -1,3 +1,99 @@
+// These defines add the peripheral objects needed for a squad so you don't have to do it each time you define a new squad in 20 different files
+#define SQUAD_LANDMARKS(_name) \
+/obj/effect/landmark/start/marine/engineer/_name {\
+    icon_state = "engi_spawn_" + #_name; \
+    squad = #_name; \
+}\
+\
+/obj/effect/landmark/start/marine/medic/_name{\
+	icon_state = "medic_spawn_"  + #_name;\
+    squad = #_name; \
+}\
+\
+/obj/effect/landmark/start/marine/leader/_name{\
+	icon_state = "leader_spawn_"  + #_name;\
+	squad = #_name; \
+}\
+\
+/obj/effect/landmark/start/marine/smartgunner/_name{\
+	icon_state = "smartgunner_spawn_"  + #_name;\
+	squad = #_name; \
+}\
+\
+/obj/effect/landmark/start/marine/spec/_name{\
+	icon_state = "spec_spawn_"  + #_name;\
+	squad = #_name; \
+}\
+\
+/obj/effect/landmark/start/marine/_name{\
+	icon_state = "marine_spawn_"  + #_name;\
+	squad = #_name; \
+}\
+\
+/obj/effect/landmark/start/marine/tl/_name{\
+	icon_state = "tl_spawn_"  + #_name;\
+	squad = #_name;\
+}\
+/obj/effect/landmark/late_join/_name{\
+	name = #_name + " late join";\
+	icon_state = "late_join_" + #_name;\
+	squad = #_name;\
+}
+
+
+#define SQUAD_CRYOSTORAGE(_name) \
+/obj/structure/machinery/computer/cryopod/_name {\
+	cryotype = #_name;\
+}
+
+#define SQUAD_DROPPAD(_name) \
+/obj/structure/supply_drop/_name{\
+	squad = #_name;\
+}
+
+#define SQUAD_VENDORS(_name, _access) \
+/obj/structure/machinery/cm_vending/clothing/engi/_name {\
+	squad_tag = #_name;\
+	req_access = list(ACCESS_MARINE_ENGPREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/engi;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/leader/_name{\
+	squad_tag = #_name;\
+	req_access = list(ACCESS_MARINE_LEADER, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/lead;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/medic/_name{\
+	squad_tag = #_name;\
+	req_access = list(ACCESS_MARINE_MEDPREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/med;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/marine/_name{\
+	squad_tag = #_name;\
+	req_access = list(_access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/smartgun/_name{\
+	squad_tag = #_name;\
+	req_access = list(ACCESS_MARINE_SMARTPREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/specialist/_name{\
+	squad_tag = #_name;\
+	req_access = list(ACCESS_MARINE_SPECPREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
+}\
+\
+/obj/structure/machinery/cm_vending/clothing/tl/_name{\
+	squad_tag = #_name;\
+	req_access = list(ACCESS_MARINE_TL_PREP, _access);\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/tl;\
+}
+
 //This datum keeps track of individual squads. New squads can be added without any problem but to give them
 //access you must add them individually to access.dm with the other squads. Just look for "access_alpha" and add the new one
 
@@ -109,7 +205,14 @@
 	///Should we add the name of our squad in front of their name? Ex: Alpha Hospital Corpsman
 	var/prepend_squad_name_to_assignment = TRUE
 
+	///Will it have a category in cryostorage
+	var/has_cryostorage = FALSE
 
+	///Add to role squad glob list (adds it to the manifest)
+	var/add_to_glob_squad_list = FALSE
+
+	///Flavor desc found on the squad specific beret
+	var/beret_flavortext
 
 /datum/squad/marine
 	name = "Root"
@@ -126,6 +229,14 @@
 	radio_freq = ALPHA_FREQ
 	minimap_color = MINIMAP_SQUAD_ALPHA
 	background_icon = "background_alpha"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Often found atop heads, slightly less found on those still attached."
+
+SQUAD_LANDMARKS(alpha)
+SQUAD_CRYOSTORAGE(alpha)
+SQUAD_VENDORS(alpha, ACCESS_MARINE_ALPHA)
+SQUAD_DROPPAD(alpha)
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
@@ -135,6 +246,14 @@
 	radio_freq = BRAVO_FREQ
 	minimap_color = MINIMAP_SQUAD_BRAVO
 	background_icon = "background_bravo"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
+
+SQUAD_LANDMARKS(bravo)
+SQUAD_CRYOSTORAGE(bravo)
+SQUAD_VENDORS(bravo, ACCESS_MARINE_BRAVO)
+SQUAD_DROPPAD(bravo)
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
@@ -144,6 +263,14 @@
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
 	background_icon = "background_charlie"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Still has some morning toast crumbs on it."
+
+SQUAD_LANDMARKS(charlie)
+SQUAD_CRYOSTORAGE(charlie)
+SQUAD_VENDORS(charlie, ACCESS_MARINE_CHARLIE)
+SQUAD_DROPPAD(charlie)
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
@@ -153,6 +280,14 @@
 	radio_freq = DELTA_FREQ
 	minimap_color = MINIMAP_SQUAD_DELTA
 	background_icon = "background_delta"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Hard to consider protection, but these types of people don't seek protection."
+
+SQUAD_LANDMARKS(delta)
+SQUAD_CRYOSTORAGE(delta)
+SQUAD_VENDORS(delta, ACCESS_MARINE_DELTA)
+SQUAD_DROPPAD(delta)
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
@@ -163,10 +298,14 @@
 	omni_squad_vendor = TRUE
 	minimap_color = MINIMAP_SQUAD_ECHO
 	background_icon = "background_echo"
+	beret_flavortext = "Tightly Woven, as it should be."
 
 	active = FALSE
 	roundstart = FALSE
 	locked = TRUE
+	add_to_glob_squad_list = TRUE
+
+SQUAD_DROPPAD(echo)
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO
@@ -175,6 +314,7 @@
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
 	minimap_color = MINIMAP_SQUAD_FOXTROT
 	background_icon = "background_foxtrot"
+	beret_flavortext = "Looks and feels starched, cold to the touch."
 
 	omni_squad_vendor = TRUE
 	radio_freq = CRYO_FREQ
@@ -182,6 +322,7 @@
 	active = FALSE
 	roundstart = FALSE
 	locked = TRUE
+	add_to_glob_squad_list = TRUE
 
 /datum/squad/marine/intel
 	name = SQUAD_MARINE_INTEL
@@ -190,6 +331,7 @@
 	minimap_color = MINIMAP_SQUAD_INTEL
 	radio_freq = INTEL_FREQ
 	background_icon = "background_intel"
+	beret_flavortext = "Looks more intellegent than the person wearing it."
 
 	roundstart = FALSE
 	prepend_squad_name_to_assignment = FALSE
@@ -203,6 +345,8 @@
 		JOB_SQUAD_TEAM_LEADER = 0,
 		JOB_SQUAD_LEADER = 0,
 	)
+
+	add_to_glob_squad_list = TRUE
 
 /datum/squad/marine/sof
 	name = SQUAD_SOF
@@ -356,6 +500,15 @@
 	SStracking.setup_trackers(null, "FT3")
 	update_all_squad_info()
 
+
+	if (!(name in GLOB.radiochannels))
+		GLOB.radiochannels[name] = radio_freq
+
+	if(has_cryostorage && !(name in GLOB.frozen_items))
+		GLOB.frozen_items[name] = list()
+
+	if(add_to_glob_squad_list && !(name in GLOB.ROLES_SQUAD_ALL))
+		GLOB.ROLES_SQUAD_ALL += name
 	RegisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, PROC_REF(setup_supply_drop_list))
 
 /datum/squad/proc/setup_supply_drop_list()

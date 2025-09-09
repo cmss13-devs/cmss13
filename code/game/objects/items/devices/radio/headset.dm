@@ -1007,35 +1007,10 @@
 	var/mob/living/carbon/human/H = loc
 	if(istype(H, /mob/living/carbon/human))
 		if(H.assigned_squad)
-			switch(H.assigned_squad.name)
-				if(SQUAD_MARINE_1)
-					name = "[SQUAD_MARINE_1] radio headset"
-					desc = "This is used by [SQUAD_MARINE_1] squad members."
-					icon_state = "alpha_headset"
-					frequency = ALPHA_FREQ
-				if(SQUAD_MARINE_2)
-					name = "[SQUAD_MARINE_2] radio headset"
-					desc = "This is used by [SQUAD_MARINE_2] squad members."
-					icon_state = "bravo_headset"
-					frequency = BRAVO_FREQ
-				if(SQUAD_MARINE_3)
-					name = "[SQUAD_MARINE_3] radio headset"
-					desc = "This is used by [SQUAD_MARINE_3] squad members."
-					icon_state = "charlie_headset"
-					frequency = CHARLIE_FREQ
-				if(SQUAD_MARINE_4)
-					name = "[SQUAD_MARINE_4] radio headset"
-					desc = "This is used by [SQUAD_MARINE_4] squad members."
-					icon_state = "delta_headset"
-					frequency = DELTA_FREQ
-				if(SQUAD_MARINE_5)
-					name = "[SQUAD_MARINE_5] radio headset"
-					desc = "This is used by [SQUAD_MARINE_5] squad members."
-					frequency = ECHO_FREQ
-				if(SQUAD_MARINE_CRYO)
-					name = "[SQUAD_MARINE_CRYO] radio headset"
-					desc = "This is used by [SQUAD_MARINE_CRYO] squad members."
-					frequency = CRYO_FREQ
+			name = "[H.assigned_squad.name] radio headset"
+			desc = "This is used by [H.assigned_squad.name] squad members."
+			icon_state = "[lowertext(H.assigned_squad.name)]_headset"
+			frequency = H.assigned_squad.radio_freq
 
 			switch(GET_DEFAULT_ROLE(H.job))
 				if(JOB_SQUAD_LEADER)

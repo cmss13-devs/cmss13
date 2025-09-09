@@ -216,9 +216,17 @@
 	. = ..()
 
 /turf/ex_act(severity)
+	. = ..()
+	if(!explodable(severity))
+		return FALSE
 	//if(breach_resistance && severity >= breach_resistance)
 	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
-	return 0
+	return TRUE
+
+/turf/proc/explodable(severity)
+	if(!SSmapping.get_turf_below(src))
+		return FALSE
+	return TRUE
 
 /turf/proc/breach_floor(severity)
 	ChangeTurf(/turf/open_space)

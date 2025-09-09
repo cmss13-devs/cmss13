@@ -153,12 +153,6 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
 		return
 
-	//Stop people hurling eachother up to the next floor. And back down.
-	if(istype(src, /mob/living/carbon/human))
-		var/turf/above = SSmapping.get_turf_above(thrower)
-		if(above && above.z == target.z)
-			to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
-			return
 
 	flags_atom |= NO_ZFALL
 

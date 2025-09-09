@@ -1378,7 +1378,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			too_deap = TRUE
 			continue
 
-		z_coord = z
+		z_coord = max(z, z_coord)
 
 	if(protected_by_pylon)
 		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")

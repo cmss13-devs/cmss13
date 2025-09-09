@@ -236,6 +236,10 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 		to_chat(src, SPAN_WARNING("We can't evolve here."))
 		return FALSE
 
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
+
 	if(hardcore)
 		to_chat(src, SPAN_WARNING("Nuh-uh."))
 		return FALSE
@@ -289,6 +293,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(!isturf(loc))
 		to_chat(src, SPAN_XENOWARNING("We can't transmute here."))
 		return
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to transmute, we must regain our health first."))
 		return
@@ -346,6 +353,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 	if(health < maxHealth)
 		to_chat(src, SPAN_XENOWARNING("We are too weak to deevolve, we must regain our health first."))
 		return
+	if(HAS_TRAIT(src, TRAIT_HIVEMIND_INTERFERENCE))
+		to_chat(src, SPAN_WARNING("Our link to the hive is being suppressed...we should wait a bit."))
+		return FALSE
 	if(length(caste.deevolves_to) < 1)
 		to_chat(src, SPAN_XENOWARNING("We can't deevolve any further."))
 		return

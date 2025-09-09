@@ -119,7 +119,7 @@
 /datum/equipment_preset/uscm/forecon/tech
 	name = "USCM Reconnaissance Support Technician"
 	assignment = JOB_FORECON_SUPPORT
-	job_title = JOB_SQUAD_TECH
+	job_title = JOB_FORECON_SUPPORT
 	role_comm_title = "SuppTech"
 	minimap_icon = "engi"
 	skills = /datum/skills/military/survivor/forecon_techician

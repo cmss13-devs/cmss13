@@ -7,6 +7,7 @@
     "survivor_types": [
         "/datum/equipment_preset/survivor/scientist/solaris",
         "/datum/equipment_preset/survivor/doctor/solaris",
+        "/datum/equipment_preset/survivor/hybrisa/paramedic",
         "/datum/equipment_preset/survivor/chaplain/solaris",
         "/datum/equipment_preset/survivor/engineer/solaris",
         "/datum/equipment_preset/survivor/trucker/solaris",
@@ -22,6 +23,9 @@
     ],
     "CO_survivor_types": [
         "/datum/equipment_preset/survivor/solaris_ridge/co_survivor"
+    ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
     ],
     "defcon_triggers": [
         4750,

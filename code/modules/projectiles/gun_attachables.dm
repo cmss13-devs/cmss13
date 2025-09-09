@@ -553,7 +553,7 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/shotgun_choke
 	name = "shotgun choke"
-	desc = "A modified choke for the M37A2 pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
+	desc = "A modified choke for a pump shotgun. It tightens the spread, accuracy, speed and max range of fired shells. The cyclic rate of the weapon is also increased. In exchange, projectile damage and force is greatly reduced, with the weapon also having higher recoil. Not recommended for use with slugs."
 	slot = "muzzle"
 	icon = 'icons/obj/items/weapons/guns/attachments/barrel.dmi'
 	icon_state = "choke"
@@ -614,7 +614,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	detaching_gun.attachable_offset["muzzle_x"] = 20
 
-/obj/item/attachable/mateba/dark
+/obj/item/attachable/mateba/silver
+	icon_state = "mateba_medium_s"
+
+/obj/item/attachable/mateba/gold
 	icon_state = "mateba_medium_a"
 
 /obj/item/attachable/mateba/long
@@ -634,7 +637,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	G.attachable_offset["muzzle_x"] = 27
 
-/obj/item/attachable/mateba/long/dark
+/obj/item/attachable/mateba/long/silver
+	icon_state = "mateba_long_s"
+
+/obj/item/attachable/mateba/long/gold
 	icon_state = "mateba_long_a"
 
 /obj/item/attachable/mateba/short
@@ -653,7 +659,10 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	G.attachable_offset["muzzle_x"] = 27
 
-/obj/item/attachable/mateba/short/dark
+/obj/item/attachable/mateba/short/silver
+	icon_state = "mateba_short_s"
+
+/obj/item/attachable/mateba/short/gold
 	icon_state = "mateba_short_a"
 
 // ======== Rail attachments ======== //
@@ -1812,6 +1821,122 @@ Defined in conflicts.dm of the #defines folder.
 
 	select_gamemode_skin(type)
 
+
+/obj/item/attachable/stock/synth/collapsible
+	name = "\improper M37A2 Collapsible Stock"
+	desc = "A wire stock for the M37A2, used to help with recoil control."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "37stock"
+	attach_icon = "37stock"
+	pixel_shift_x = 40
+	pixel_shift_y = 14
+	hud_offset_mod = 3
+	collapsible = TRUE
+	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/synth/collapsible/New()
+	..()
+
+	//rifle stock starts collapsed so we zero out everything
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+	recoil_unwielded_mod = 0
+	scatter_unwielded_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
+	select_gamemode_skin(type)
+
+
+/obj/item/attachable/stock/synth/collapsible/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+		recoil_mod = -RECOIL_AMOUNT_TIER_4
+		scatter_mod = -SCATTER_AMOUNT_TIER_8
+		//it makes stuff worse when one handed
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
+		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
+		scatter_unwielded_mod =  SCATTER_AMOUNT_TIER_8
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
+		hud_offset_mod = 5
+		select_gamemode_skin(type)
+		wield_delay_mod = WIELD_DELAY_VERY_FAST //added 0.2 seconds for wield, basic solid stock adds 0.4
+
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		scatter_unwielded_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = 5
+		select_gamemode_skin(type)
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
+
+/obj/item/attachable/stock/synth/collapsible/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..() // We are forcing attach_icon skin
+	var/new_attach_icon
+	var/new_icon_state
+	if(stock_activated)
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("jungle")
+				attach_icon = new_attach_icon ? new_attach_icon : initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : initial(icon_state) + "_on"
+				. = TRUE
+			if("snow")
+				attach_icon = new_attach_icon ? new_attach_icon : "s_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "s_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("desert")
+				attach_icon = new_attach_icon ? new_attach_icon : "d_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "d_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("classic")
+				attach_icon = new_attach_icon ? new_attach_icon : "c_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "c_" + initial(icon_state) + "_on"
+				. = TRUE
+			if("urban")
+				attach_icon = new_attach_icon ? new_attach_icon : "u_" + initial(attach_icon) + "_on"
+				icon_state = new_icon_state ? new_icon_state : "u_" + initial(icon_state) + "_on"
+				. = TRUE
+	else
+		switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+			if("jungle")
+				attach_icon = new_attach_icon ? new_attach_icon : initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : initial(icon_state)
+				. = TRUE
+			if("snow")
+				attach_icon = new_attach_icon ? new_attach_icon : "s_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "s_" + initial(icon_state)
+				. = TRUE
+			if("desert")
+				attach_icon = new_attach_icon ? new_attach_icon : "d_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "d_" + initial(icon_state)
+				. = TRUE
+			if("classic")
+				attach_icon = new_attach_icon ? new_attach_icon : "c_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "c_" + initial(icon_state)
+				. = TRUE
+			if("urban")
+				attach_icon = new_attach_icon ? new_attach_icon : "u_" + initial(attach_icon)
+				icon_state = new_icon_state ? new_icon_state : "u_" + initial(icon_state)
+				. = TRUE
+	return .
+
 /obj/item/attachable/stock/double
 	name = "\improper double barrel shotgun stock"
 	desc = "A chunky piece of wood coated in varnish and age."
@@ -2058,6 +2183,57 @@ Defined in conflicts.dm of the #defines folder.
 		hud_offset_mod = 3
 		icon_state = "ak4047_folding"
 		attach_icon = "ak4047_folding_a"
+		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
+
+	gun.recalculate_attachment_bonuses()
+	gun.update_overlays(src, "stock")
+
+/obj/item/attachable/stock/rifle/collapsible/m41ae2
+	name = "\improper M41AE2 folding stock"
+	desc = "A standard M41AE2 integrated folding stock."
+	slot = "stock"
+	melee_mod = 5
+	size_mod = 1
+	icon_state = "m41ae2_folding"
+	attach_icon = "m41ae2_folding_a"
+	pixel_shift_x = 29
+	hud_offset_mod = -2
+	collapsible = TRUE
+	stock_activated = FALSE
+	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
+	collapse_delay = 0.5 SECONDS
+	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
+	attachment_action_type = /datum/action/item_action/toggle
+
+/obj/item/attachable/stock/rifle/collapsible/m41ae2/New()
+	..()
+
+	//rifle stock starts collapsed so we zero out everything
+	accuracy_mod = 0
+	recoil_mod = 0
+	scatter_mod = 0
+	aim_speed_mod = 0
+	wield_delay_mod = WIELD_DELAY_NONE
+
+/obj/item/attachable/stock/rifle/collapsible/m41ae2/apply_on_weapon(obj/item/weapon/gun/gun)
+	if(stock_activated)
+		accuracy_mod = HIT_ACCURACY_MULT_TIER_1
+		recoil_mod = -RECOIL_AMOUNT_TIER_5
+		scatter_mod = -SCATTER_AMOUNT_TIER_10
+		//it makes stuff worse when one handed
+		aim_speed_mod = CONFIG_GET(number/slowdown_med)
+		hud_offset_mod = -1
+		icon_state = "m41ae2_folding_on"
+		attach_icon = "m41ae2_folding_a_on"
+		wield_delay_mod = WIELD_DELAY_SLOW
+	else
+		accuracy_mod = 0
+		recoil_mod = 0
+		scatter_mod = 0
+		aim_speed_mod = 0
+		hud_offset_mod = -3
+		icon_state = "m41ae2_folding"
+		attach_icon = "m41ae2_folding_a"
 		wield_delay_mod = WIELD_DELAY_NONE //stock is folded so no wield delay
 
 	gun.recalculate_attachment_bonuses()
@@ -2816,6 +2992,15 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		. += "It's empty."
 
+/obj/item/attachable/attached_gun/flamer/update_icon()
+	. = ..()
+	attach_icon = initial(attach_icon)
+	if(intense_mode)
+		attach_icon += "-intense"
+	if(isgun(loc))
+		var/obj/item/weapon/gun/gun = loc
+		gun.update_attachable(slot)
+
 /obj/item/attachable/attached_gun/flamer/unique_action(mob/user)
 	..()
 	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
@@ -2833,6 +3018,7 @@ Defined in conflicts.dm of the #defines folder.
 		burn_duration = BURN_TIME_TIER_2
 		max_range = 2
 		intense_mode = TRUE
+	update_icon()
 
 /obj/item/attachable/attached_gun/flamer/handle_pre_break_attachment_description(base_description_text as text)
 	return base_description_text + " It is on [intense_mode ? "intense" : "normal"] mode."
@@ -3335,6 +3521,8 @@ Defined in conflicts.dm of the #defines folder.
 	var/full_auto_switch = FALSE
 	// Store our old firemode so we can switch to it when undeploying the bipod
 	var/old_firemode = null
+	// if this bipod has a camo skin
+	var/camo_bipod = FALSE
 
 /obj/item/attachable/bipod/New()
 	..()
@@ -3381,6 +3569,8 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		icon_state = initial(icon_state)
 		attach_icon = initial(attach_icon)
+		if(camo_bipod)
+			select_gamemode_skin()
 
 	if(istype(loc, /obj/item/weapon/gun))
 		var/obj/item/weapon/gun/gun = loc
@@ -3551,6 +3741,7 @@ Defined in conflicts.dm of the #defines folder.
 	heavy_bipod = TRUE
 	// Disable gamemode skin for item state, but we explicitly force attach_icon gamemode skins
 	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
+	camo_bipod = TRUE // this bipod has a camo skin
 
 /obj/item/attachable/bipod/vulture/Initialize(mapload, ...)
 	. = ..()
@@ -3582,6 +3773,41 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
 	scatter_mod = SCATTER_AMOUNT_NONE
 	recoil_mod = RECOIL_AMOUNT_TIER_5
+
+/obj/item/attachable/bipod/m41ae2
+	name = "machinegun bipod"
+	desc = "A set of rugged telescopic poles to keep a weapon stabilized during firing."
+	icon_state = "bipod_m41ae2"
+	attach_icon = "bipod_m41ae2_a"
+	heavy_bipod = TRUE
+	camo_bipod = TRUE // this bipod has a camo skin
+
+/obj/item/attachable/bipod/m41ae2/Initialize(mapload, ...)
+	. = ..()
+	update_icon()
+
+/obj/item/attachable/bipod/m41ae2/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..() // We are forcing attach_icon skin
+	var/new_attach_icon
+	var/new_icon_state
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			attach_icon = new_attach_icon ? new_attach_icon : "s_" + attach_icon
+			icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
+			. = TRUE
+		if("desert")
+			attach_icon = new_attach_icon ? new_attach_icon : "d_" + attach_icon
+			icon_state = new_icon_state ? new_icon_state : "d_" + icon_state
+			. = TRUE
+		if("classic")
+			attach_icon = new_attach_icon ? new_attach_icon : "c_" + attach_icon
+			icon_state = new_icon_state ? new_icon_state : "c_" + icon_state
+			. = TRUE
+		if("urban")
+			attach_icon = new_attach_icon ? new_attach_icon : "u_" + attach_icon
+			icon_state = new_icon_state ? new_icon_state : "u_" + icon_state
+			. = TRUE
+	return .
 
 /obj/item/attachable/burstfire_assembly
 	name = "burst fire assembly"

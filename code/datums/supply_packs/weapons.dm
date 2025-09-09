@@ -32,14 +32,14 @@
 	group = "Weapons"
 
 /datum/supply_packs/grenade_launchers
-	name = "M79 Grenade Launcher Crate (x2 Guncases)"
+	name = "M85A1 Grenade Launcher Crate (x2 Guncases)"
 	contains = list(
-		/obj/item/storage/box/guncase/m79,
-		/obj/item/storage/box/guncase/m79,
+		/obj/item/storage/box/guncase/m85a1,
+		/obj/item/storage/box/guncase/m85a1,
 	)
 	cost = 40
 	containertype = /obj/structure/closet/crate/weapon
-	containername = "M79 grenade launcher crate"
+	containername = "M85A1 grenade launcher crate"
 	group = "Weapons"
 
 /datum/supply_packs/mou53

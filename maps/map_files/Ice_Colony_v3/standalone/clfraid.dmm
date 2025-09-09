@@ -109,6 +109,14 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/plating/platingdmg1,
 /area/shiva/interior/colony/s_admin)
+"at" = (
+/obj/item/defenses/handheld/planted_flag/clf,
+/turf/open/floor/corsat/cargo,
+/area/shiva/interior/colony/clf_shuttle)
+"au" = (
+/obj/item/flag/plantable/clf,
+/turf/open/floor/corsat/cargo,
+/area/shiva/interior/colony/clf_shuttle)
 "aC" = (
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/junkyard/cp_bar)
@@ -131,7 +139,6 @@
 /area/shiva/exterior/junkyard)
 "aO" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 1
 	},
 /turf/open/floor/shiva/north,
@@ -290,7 +297,6 @@
 /area/shiva/interior/colony/s_admin)
 "fX" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 4
 	},
 /turf/open/floor/corsat/cargo,
@@ -892,7 +898,6 @@
 /area/shiva/interior/colony/clf_shuttle)
 "xC" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 1
 	},
 /turf/open/floor/shiva/multi_tiles/west,
@@ -975,9 +980,7 @@
 /turf/open/floor/shiva/north,
 /area/shiva/interior/garage)
 "Ay" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF")
-	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "Az" = (
@@ -1188,9 +1191,7 @@
 /turf/open/floor/shiva/floor3,
 /area/shiva/interior/colony/s_admin)
 "EQ" = (
-/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF")
-	},
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard/cp_bar)
 "ER" = (
@@ -1858,7 +1859,6 @@
 /area/shiva/exterior/cp_colony_grounds)
 "WF" = (
 /obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb{
-	faction_group = list("CLF");
 	dir = 1
 	},
 /turf/open/auto_turf/snow/layer2,
@@ -3031,7 +3031,7 @@ vh
 Kx
 hZ
 hs
-hs
+au
 ai
 kI
 Kx
@@ -3088,7 +3088,7 @@ Kx
 hs
 hs
 fX
-hs
+at
 hs
 Kx
 GL

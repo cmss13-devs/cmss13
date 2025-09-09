@@ -140,7 +140,6 @@
 		GLOB.round_statistics.track_death(new_death)
 
 	new_death.save()
-	new_death.detach()
 	return new_death
 
 /mob/living/carbon/human/track_mob_death(datum/cause_data/cause_data, turf/death_loc)

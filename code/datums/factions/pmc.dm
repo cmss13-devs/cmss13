@@ -1,8 +1,10 @@
 /datum/faction/pmc
 	name = "Private Military Company"
 	faction_tag = FACTION_PMC
+	base_icon_file = 'icons/mob/hud/factions/wy.dmi'
 
 /datum/faction/pmc/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+	var/icon/override_icon_file
 	var/hud_icon_state
 	var/obj/item/card/id/ID = H.get_idcard()
 	var/_role
@@ -50,7 +52,7 @@
 		if(JOB_WY_COMMANDO_DOGCATHER)
 			hud_icon_state = "commando_dogcatcher"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/factions/wy.dmi', H, "pmc_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, H, "pmc_[hud_icon_state]")
 
 /datum/faction/pmc/get_antag_guns_snowflake_equipment()
 	return list(

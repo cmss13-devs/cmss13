@@ -224,8 +224,12 @@
 	return TRUE
 
 /turf/proc/explodable(severity)
-	if(!SSmapping.get_turf_below(src))
+	var/turf/turf_below = SSmapping.get_turf_below(src)
+	if(!turf_below) //so we do not make hole into space
 		return FALSE
+	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
+		return FALSE
+
 	return TRUE
 
 /turf/proc/breach_floor(severity)

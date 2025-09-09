@@ -265,10 +265,11 @@ as having entered the turf.
 
 	if(initial_call) //stuff that is supposed to happen just one, calls epxlosion on lower and hiver level
 		var/turf/above = SSmapping.get_turf_above(epicenter)
-		if(istype(above, /turf/open_space) || above.explodable(power))
-			cell_explosion(above, power * 0.8, falloff, falloff_shape, direction, explosion_cause_data, initial_call = FALSE)
+		if(above)
+			if(istype(above, /turf/open_space) || above.explodable(power))
+				cell_explosion(above, power * 0.8, falloff, falloff_shape, direction, explosion_cause_data, initial_call = FALSE)
 		if(istype(epicenter, /turf/open_space || epicenter.explodable(power)))
-			var/below = SSmapping.get_turf_below(epicenter)
+			var/turf/below = SSmapping.get_turf_below(epicenter)
 			cell_explosion(below, power * 0.8, falloff, falloff_shape, direction, explosion_cause_data, initial_call = FALSE)
 
 		var/obj/causing_obj = explosion_cause_data?.resolve_cause()

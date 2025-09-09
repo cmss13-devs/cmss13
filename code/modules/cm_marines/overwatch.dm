@@ -743,11 +743,10 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if("tacmap_unpin")
 			tacmap.tgui_interact(user)
 		if("dropbomb")
-			if(isnull(params["x"]) || isnull(params["y"]) || isnull(params["z"]))
+			if(isnull(params["x"]) || isnull(params["y"]))
 				return
 			x_bomb = text2num(params["x"])
 			y_bomb = text2num(params["y"])
-			z_bomb = text2num(params["z"])
 			if(current_orbital_cannon.is_disabled)
 				to_chat(user, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
 			else if(!COOLDOWN_FINISHED(current_orbital_cannon, ob_firing_cooldown))

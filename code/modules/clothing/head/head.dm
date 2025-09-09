@@ -169,6 +169,7 @@
 	if(istype(H))
 		if(H.assigned_squad)
 			icon_state = "beret_[lowertext(H.assigned_squad.name)]"
+			desc = H.assigned_squad.beret_flavortext
 		else
 			icon_state = "beret"
 			desc = initial(desc)

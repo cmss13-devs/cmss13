@@ -115,6 +115,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		. += SPAN_WARNING("It looks slightly damaged.")
 	if(masterkey_resist)
 		. += SPAN_INFO("It has been reinforced against breaching attempts.")
+	if(secondsElectrified != 0)
+		. += SPAN_DANGER("Violent sparks are firing from the door's machinery.")
 
 /obj/structure/machinery/door/airlock/proc/take_damage(dam, mob/M)
 	if(!dam || unacidable)

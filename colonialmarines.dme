@@ -1956,7 +1956,6 @@
 #include "code\modules\hydroponics\hydro_tray.dm"
 #include "code\modules\hydroponics\seed_datums.dm"
 #include "code\modules\hydroponics\seeds.dm"
-#include "code\modules\hydroponics\vines.dm"
 #include "code\modules\hydroponics\seed_machines\seed_editor.dm"
 #include "code\modules\hydroponics\seed_machines\seed_extractor.dm"
 #include "code\modules\hydroponics\seed_machines\seed_machines.dm"

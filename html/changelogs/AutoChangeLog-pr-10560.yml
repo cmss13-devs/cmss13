@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fix a runtime related to new players opening the loadout menu in character preferences"

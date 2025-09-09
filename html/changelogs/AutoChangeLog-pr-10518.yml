@@ -1,4 +1,0 @@
-author: "FebrezeNinja"
-delete-after: True
-changes:
-  - bugfix: "Autodoc's close incisions surgery now removes the open chest/skull overlays."

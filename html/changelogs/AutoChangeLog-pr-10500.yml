@@ -1,5 +1,0 @@
-author: "FloranOtten"
-delete-after: True
-changes:
-  - bugfix: "Curtains block view without prior encouragement."
-  - bugfix: "Transparent curtains remain transparent, even when opened and closed."

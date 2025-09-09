@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "SDMM suite for linting is bumped to a new version for more 516 support"

@@ -1,4 +1,0 @@
-author: "BOBAMAx"
-delete-after: True
-changes:
-  - bugfix: "civilian survivor COs should no longer show up in team inerts like the UPP on Trijent"

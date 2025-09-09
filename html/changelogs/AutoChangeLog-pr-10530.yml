@@ -1,5 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "TGUI input lists now Cut their entries rather than wait for byond garbage collection"
-  - ui: "TGUI checkboxes input now validates the selected entries passed"

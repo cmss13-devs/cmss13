@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - bugfix: "Fixed runtimes related to BlockedExitDirs and BlockedPassDirs trying access null pass_flags"

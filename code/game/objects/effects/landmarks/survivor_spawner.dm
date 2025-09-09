@@ -326,6 +326,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_cl
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/corporate/executive
+	CO_equipment = /datum/equipment_preset/survivor/corporate/executive
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are the last alive Executive of Lazarus Landing!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -337,6 +338,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon
+	CO_equipment = /datum/equipment_preset/survivor/goon/lead
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Officer!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -348,6 +350,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_medic
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/medic
+	CO_equipment = /datum/equipment_preset/survivor/goon/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Medic!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -359,6 +362,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_engi
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/engineer
+	CO_equipment = /datum/equipment_preset/survivor/goon/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Technician!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -370,6 +374,7 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon_lead
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon/lead
+	CO_equipment = /datum/equipment_preset/survivor/goon/lead
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Lead!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -382,7 +387,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/standard
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
-	CO_equipment = /datum/equipment_preset/survivor/pmc/standard
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
@@ -397,7 +402,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
-	CO_equipment = /datum/equipment_preset/survivor/pmc/medic
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
@@ -412,7 +417,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/engineer
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
-	CO_equipment = /datum/equipment_preset/survivor/pmc/engineer
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
@@ -427,7 +432,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/pmc_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
-	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_leader
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"You are NOT aware of the xenomorph threat.",\
 	"Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.")
@@ -442,6 +447,7 @@
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/corporate/manager
 	synth_equipment = /datum/equipment_preset/synth/survivor/pmc
+	CO_equipment = /datum/equipment_preset/survivor/pmc/pmc_commander
 	intro_text = list("<h2>You are a survivor of a crash landing!</h2>",\
 	"<span class='notice'>You are NOT aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive. You believe a second dropship crashed somewhere to the north, which was carrying additional supplies.</span>")
@@ -457,6 +463,7 @@
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_commando
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
+	CO_equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
 	intro_text = list("<h2>You are the last living security element on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -467,6 +474,7 @@
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_cl
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/corporate/asstmanager
+	CO_equipment = /datum/equipment_preset/survivor/corporate/asstmanager
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/corporate_synth
 	intro_text = list("<h2>You are the last alive Senior Administrator on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -478,6 +486,7 @@
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_doc
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/doctor/shiva
+	CO_equipment = /datum/equipment_preset/survivor/doctor/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/emt_synth_teal
 	intro_text = list("<h2>You are a Medical Doctor on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -492,6 +501,7 @@
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_eng
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/engineer/shiva
+	CO_equipment = /datum/equipment_preset/survivor/engineer/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/engineer_synth
 	intro_text = list("<h2>You are an Engineer on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -506,6 +516,7 @@
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_sci
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/scientist/shiva
+	CO_equipment = /datum/equipment_preset/survivor/scientist/shiva
 	synth_equipment = /datum/equipment_preset/synth/survivor/scientist_synth
 	intro_text = list("<h2>You are a Weyland-Yutani Scientist on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -519,6 +530,7 @@
 
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_civ
 	equipment = /datum/equipment_preset/survivor/civilian
+	CO_equipment = /datum/equipment_preset/survivor/civilian
 	synth_equipment = /datum/equipment_preset/synth/survivor/chef_synth
 	intro_text = list("<h2>You are a worker on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -531,6 +543,7 @@
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_cmb
 	equipment = /datum/equipment_preset/survivor/cmb/riot
+	CO_equipment = /datum/equipment_preset/survivor/cmb/riot
 	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/riotsynth
 	intro_text = list("<h2>You are a CMB Riot Control Officer!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
@@ -541,6 +554,7 @@
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control
 	equipment = /datum/equipment_preset/survivor/cmb/ua
+	CO_equipment = /datum/equipment_preset/survivor/cmb/ua
 	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/ua_synth
 	intro_text = list("<h2>You are a United Americas Riot Control Officer!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
@@ -579,6 +593,7 @@
 /obj/effect/landmark/survivor_spawner/upp/soldier
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/soldier
+	CO_equipment = /datum/equipment_preset/survivor/upp/soldier
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -589,6 +604,7 @@
 /obj/effect/landmark/survivor_spawner/upp_sapper
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/sapper
+	CO_equipment = /datum/equipment_preset/survivor/upp/sapper
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -599,6 +615,7 @@
 /obj/effect/landmark/survivor_spawner/upp_medic
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/medic
+	CO_equipment = /datum/equipment_preset/survivor/upp/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -609,6 +626,7 @@
 /obj/effect/landmark/survivor_spawner/upp_specialist
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/specialist
+	CO_equipment = /datum/equipment_preset/survivor/upp/specialist
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -619,6 +637,7 @@
 /obj/effect/landmark/survivor_spawner/squad_leader
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/squad_leader
+	CO_equipment = /datum/equipment_preset/survivor/upp/squad_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -686,6 +705,7 @@
 
 /obj/effect/landmark/survivor_spawner/SOF_survivor/soldier
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
+	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -697,6 +717,7 @@
 
 /obj/effect/landmark/survivor_spawner/SOF_survivor/sapper
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/sapper
+	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/sapper
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -708,6 +729,7 @@
 
 /obj/effect/landmark/survivor_spawner/SOF_survivor/medic
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/medic
+	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/medic
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -719,6 +741,7 @@
 
 /obj/effect/landmark/survivor_spawner/SOF_survivor/specialist
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
+	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/specialist
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -730,6 +753,7 @@
 
 /obj/effect/landmark/survivor_spawner/SOF_survivor/squad_leader
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader
+	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/squad_leader
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\

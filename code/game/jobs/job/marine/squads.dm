@@ -1,95 +1,95 @@
 // These defines add the peripheral objects needed for a squad so you don't have to do it each time you define a new squad in 20 different files
-#define SQUAD_LANDMARKS(_name) \
+#define SQUAD_LANDMARKS(_name, _tag) \
 /obj/effect/landmark/start/marine/engineer/_name {\
 	icon_state = "engi_spawn_" + #_name; \
-	squad = #_name; \
+	squad = #_tag; \
 }\
 \
 /obj/effect/landmark/start/marine/medic/_name{\
 	icon_state = "medic_spawn_"  + #_name;\
-	squad = #_name; \
+	squad = #_tag; \
 }\
 \
 /obj/effect/landmark/start/marine/leader/_name{\
 	icon_state = "leader_spawn_"  + #_name;\
-	squad = #_name; \
+	squad = #_tag; \
 }\
 \
 /obj/effect/landmark/start/marine/smartgunner/_name{\
 	icon_state = "smartgunner_spawn_"  + #_name;\
-	squad = #_name; \
+	squad = #_tag; \
 }\
 \
 /obj/effect/landmark/start/marine/spec/_name{\
 	icon_state = "spec_spawn_"  + #_name;\
-	squad = #_name; \
+	squad = #_tag; \
 }\
 \
 /obj/effect/landmark/start/marine/_name{\
 	icon_state = "marine_spawn_"  + #_name;\
-	squad = #_name; \
+	squad = #_tag; \
 }\
 \
 /obj/effect/landmark/start/marine/tl/_name{\
 	icon_state = "tl_spawn_"  + #_name;\
-	squad = #_name;\
+	squad = #_tag;\
 }\
 /obj/effect/landmark/late_join/_name{\
 	name = #_name + " late join";\
 	icon_state = "late_join_" + #_name;\
-	squad = #_name;\
+	squad = #_tag;\
 }
 
 
-#define SQUAD_CRYOSTORAGE(_name) \
+#define SQUAD_CRYOSTORAGE(_name, _tag) \
 /obj/structure/machinery/computer/cryopod/_name {\
-	cryotype = #_name;\
+	cryotype = #_tag;\
 }
 
-#define SQUAD_DROPPAD(_name) \
+#define SQUAD_DROPPAD(_name, _tag) \
 /obj/structure/supply_drop/_name{\
-	squad = #_name;\
+	squad = #_tag;\
 }
 
-#define SQUAD_VENDORS(_name, _access) \
+#define SQUAD_VENDORS(_name, _access, _tag) \
 /obj/structure/machinery/cm_vending/clothing/engi/_name {\
-	squad_tag = #_name;\
+	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_ENGPREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/engi;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/leader/_name{\
-	squad_tag = #_name;\
+	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_LEADER, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/lead;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/medic/_name{\
-	squad_tag = #_name;\
+	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_MEDPREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/med;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/marine/_name{\
-	squad_tag = #_name;\
+	squad_tag = #_tag;\
 	req_access = list(_access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/smartgun/_name{\
-	squad_tag = #_name;\
+	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_SMARTPREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/specialist/_name{\
-	squad_tag = #_name;\
+	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_SPECPREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/tl/_name{\
-	squad_tag = #_name;\
+	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_TL_PREP, _access);\
 	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/tl;\
 }
@@ -233,10 +233,10 @@
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Often found atop heads, slightly less found on those still attached."
 
-SQUAD_LANDMARKS(alpha)
-SQUAD_CRYOSTORAGE(alpha)
-SQUAD_VENDORS(alpha, ACCESS_MARINE_ALPHA)
-SQUAD_DROPPAD(alpha)
+SQUAD_LANDMARKS(alpha, Alpha)
+SQUAD_CRYOSTORAGE(alpha, Alpha)
+SQUAD_VENDORS(alpha, ACCESS_MARINE_ALPHA, Alpha)
+SQUAD_DROPPAD(alpha, Alpha)
 
 /datum/squad/marine/bravo
 	name = SQUAD_MARINE_2
@@ -250,10 +250,10 @@ SQUAD_DROPPAD(alpha)
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
 
-SQUAD_LANDMARKS(bravo)
-SQUAD_CRYOSTORAGE(bravo)
-SQUAD_VENDORS(bravo, ACCESS_MARINE_BRAVO)
-SQUAD_DROPPAD(bravo)
+SQUAD_LANDMARKS(bravo, Bravo)
+SQUAD_CRYOSTORAGE(bravo, Bravo)
+SQUAD_VENDORS(bravo, ACCESS_MARINE_BRAVO, Bravo)
+SQUAD_DROPPAD(bravo, Bravo)
 
 /datum/squad/marine/charlie
 	name = SQUAD_MARINE_3
@@ -267,10 +267,10 @@ SQUAD_DROPPAD(bravo)
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Still has some morning toast crumbs on it."
 
-SQUAD_LANDMARKS(charlie)
-SQUAD_CRYOSTORAGE(charlie)
-SQUAD_VENDORS(charlie, ACCESS_MARINE_CHARLIE)
-SQUAD_DROPPAD(charlie)
+SQUAD_LANDMARKS(charlie, Charlie)
+SQUAD_CRYOSTORAGE(charlie, Charlie)
+SQUAD_VENDORS(charlie, ACCESS_MARINE_CHARLIE, Charlie)
+SQUAD_DROPPAD(charlie, Charlie)
 
 /datum/squad/marine/delta
 	name = SQUAD_MARINE_4
@@ -284,10 +284,10 @@ SQUAD_DROPPAD(charlie)
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Hard to consider protection, but these types of people don't seek protection."
 
-SQUAD_LANDMARKS(delta)
-SQUAD_CRYOSTORAGE(delta)
-SQUAD_VENDORS(delta, ACCESS_MARINE_DELTA)
-SQUAD_DROPPAD(delta)
+SQUAD_LANDMARKS(delta, Delta)
+SQUAD_CRYOSTORAGE(delta, Delta)
+SQUAD_VENDORS(delta, ACCESS_MARINE_DELTA, Delta)
+SQUAD_DROPPAD(delta, Delta)
 
 /datum/squad/marine/echo
 	name = SQUAD_MARINE_5
@@ -305,7 +305,7 @@ SQUAD_DROPPAD(delta)
 	locked = TRUE
 	add_to_glob_squad_list = TRUE
 
-SQUAD_DROPPAD(echo)
+SQUAD_DROPPAD(echo, Echo)
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO

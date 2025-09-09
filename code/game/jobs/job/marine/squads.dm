@@ -1,13 +1,13 @@
 // These defines add the peripheral objects needed for a squad so you don't have to do it each time you define a new squad in 20 different files
 #define SQUAD_LANDMARKS(_name) \
 /obj/effect/landmark/start/marine/engineer/_name {\
-    icon_state = "engi_spawn_" + #_name; \
-    squad = #_name; \
+	icon_state = "engi_spawn_" + #_name; \
+	squad = #_name; \
 }\
 \
 /obj/effect/landmark/start/marine/medic/_name{\
 	icon_state = "medic_spawn_"  + #_name;\
-    squad = #_name; \
+	squad = #_name; \
 }\
 \
 /obj/effect/landmark/start/marine/leader/_name{\

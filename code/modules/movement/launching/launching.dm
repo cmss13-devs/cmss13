@@ -153,7 +153,6 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
 		return
 
-
 	flags_atom |= NO_ZFALL
 
 	launch_towards(LM, tracking)

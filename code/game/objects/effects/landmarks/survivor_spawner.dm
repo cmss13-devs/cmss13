@@ -464,7 +464,6 @@
 /obj/effect/landmark/survivor_spawner/lv624_corporate_dome_goon
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/goon
-	CO_equipment = /datum/equipment_preset/survivor/goon/lead
 	synth_equipment = /datum/equipment_preset/synth/survivor/wy/security_synth
 	intro_text = list("<h2>You are a Corporate Security Officer!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
@@ -624,7 +623,6 @@
 /obj/effect/landmark/survivor_spawner/shivas_panic_room_commando
 	icon_state = "surv_wy"
 	equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
-	CO_equipment = /datum/equipment_preset/survivor/pmc/commando_shivas
 	intro_text = list("<h2>You are the last living security element on the Colony!</h2>",\
 	"<span class='notice'>You are aware of the xenomorph threat.</span>",\
 	"<span class='danger'>Your primary objective is to survive the outbreak.</span>")
@@ -718,7 +716,6 @@
 
 /obj/effect/landmark/survivor_spawner/fiorina_armory_riot_control
 	equipment = /datum/equipment_preset/survivor/cmb/ua
-	CO_equipment = /datum/equipment_preset/survivor/cmb/ua
 	synth_equipment = /datum/equipment_preset/synth/survivor/cmb/ua_synth
 	intro_text = list("<h2>You are a United Americas Riot Control Officer!</h2>",\
 	"<span class='notice'>You are aware of the 'alien' threat.</span>",\
@@ -784,7 +781,6 @@
 /obj/effect/landmark/survivor_spawner/upp/soldier
 	icon_state = "surv_upp"
 	equipment = /datum/equipment_preset/survivor/upp/soldier
-	CO_equipment = /datum/equipment_preset/survivor/upp/soldier
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp
 	intro_text = list("<h2>You are a member of a UPP recon force!</h2>",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\
@@ -916,7 +912,6 @@
 
 /obj/effect/landmark/survivor_spawner/SOF_survivor/soldier
 	equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
-	CO_equipment = /datum/equipment_preset/survivor/upp/SOF_survivor/soldier
 	synth_equipment = /datum/equipment_preset/synth/survivor/upp/SOF_synth
 	intro_text = list("You are a member of a UPP SOF QRF team!",\
 	"<span class='notice'>You ARE aware of the xenomorph threat.</span>",\

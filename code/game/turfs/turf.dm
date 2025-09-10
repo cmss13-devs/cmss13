@@ -219,7 +219,8 @@
 	. = ..()
 	if(!explodable(severity))
 		return FALSE
-	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
+	breach_floor(severity)
+	//addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
 	return TRUE
 
 /turf/proc/explodable(severity)

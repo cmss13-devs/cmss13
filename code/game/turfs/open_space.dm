@@ -93,6 +93,9 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		below = SSmapping.get_turf_below(below)
 		height++
 
+	if(!below)
+		return //so we do not try to fall when there is nowhere to fall
+
 	movable.forceMove(below)
 	movable.onZImpact(below, height)
 

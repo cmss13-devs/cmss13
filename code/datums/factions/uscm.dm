@@ -48,7 +48,7 @@
 			if(JOB_MARINE_RAIDER)
 				marine_rk = "soc_grunt"
 			if(JOB_MARINE_RAIDER_SG)
-				marine_rk = "soc"
+				marine_rk = "soc_sg"
 			if(JOB_MARINE_RAIDER_SL)
 				marine_rk = "soctl"
 			if(JOB_MARINE_RAIDER_CMD)

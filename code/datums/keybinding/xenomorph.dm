@@ -690,7 +690,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
-	var/datum/action/xeno_action/activable/fortify/fortify_check = get_action(xeno, /datum/action/xeno_action/activable/fortify/fortify_check)
+	var/datum/action/xeno_action/activable/fortify/fortify_check = get_action(xeno, /datum/action/xeno_action/activable/fortify)
 	if(fortify_check)
 		if(fortify_check && !fortify_check.hidden)
 			handle_xeno_macro_datum(xeno, fortify_check)

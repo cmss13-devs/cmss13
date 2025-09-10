@@ -48,6 +48,7 @@
 
 #define SQUAD_DROPPAD(_name, _tag) \
 /obj/structure/supply_drop/_name{\
+	icon_state = #_name + "drop";\
 	squad = #_tag;\
 }
 

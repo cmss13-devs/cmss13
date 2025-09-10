@@ -1441,7 +1441,7 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
+	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and follow the Queen?", "Alliance broken!", list("Obey the Queen", "Obey the talls"), 10 SECONDS) == "Obey the talls")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and our service to the Queen continues."))
 			return
@@ -1471,6 +1471,8 @@
 		return
 
 	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	if(faction == FACTION_MARINE && ares_can_interface())
+		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and succesfully supressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
 	defectors.Cut()
 
 /datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)

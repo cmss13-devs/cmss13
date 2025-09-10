@@ -271,8 +271,8 @@ GLOBAL_LIST_INIT_TYPED(cardboard_recipes, /datum/stack_recipe, list ( \
 		new/datum/stack_recipe("empty magazine box (M41A MK1)", /obj/item/ammo_box/magazine/mk1/empty), \
 		new/datum/stack_recipe("empty magazine box (M41A MK1 AP)", /obj/item/ammo_box/magazine/mk1/ap/empty), \
 		null, \
-		new/datum/stack_recipe("empty drum box (M56B)", /obj/item/ammo_box/magazine/m56b/empty), \
-		new/datum/stack_recipe("empty drum box (M56B Irradiated)", /obj/item/ammo_box/magazine/m56b/dirty/empty), \
+		new/datum/stack_recipe("empty drum box (M56)", /obj/item/ammo_box/magazine/m56a2/empty), \
+		new/datum/stack_recipe("empty drum box (M56 Irradiated)", /obj/item/ammo_box/magazine/m56a2/dirty/empty), \
 		new/datum/stack_recipe("empty drum box (M56D)", /obj/item/ammo_box/magazine/m56d/empty), \
 		null, \
 		new/datum/stack_recipe("empty drum box (M2C)", /obj/item/ammo_box/magazine/m2c/empty), \

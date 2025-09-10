@@ -100,6 +100,18 @@
 
 	return ..()
 
+/mob/living/carbon/xenomorph/set_lying_down()
+	if(selected_ability && selected_ability.ability_uses_acid_overlay)
+		overlays -= acid_overlay
+
+	return ..()
+
+/mob/living/carbon/xenomorph/get_up()
+	if(selected_ability && selected_ability.ability_uses_acid_overlay && !(acid_overlay in overlays))
+		overlays += acid_overlay
+
+	return ..()
+
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.lay_down()

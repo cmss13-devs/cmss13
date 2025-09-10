@@ -148,7 +148,7 @@
 	storage_slots = 7
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
-		/obj/item/device/flashlight,
+		/obj/item/device/flashlight/lantern,
 		/obj/item/tool/crowbar,
 		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
@@ -158,7 +158,7 @@
 	)
 
 /obj/item/storage/pouch/survival/full/fill_preset_inventory()
-	new /obj/item/device/flashlight(src)
+	new /obj/item/device/flashlight/lantern(src)
 	new /obj/item/tool/crowbar/red(src)
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -584,9 +584,20 @@
 		/obj/item/ammo_magazine/smartgun,
 	)
 
-/obj/item/storage/pouch/magazine/large/pmc_sg/fill_preset_inventory()
+/obj/item/storage/pouch/magazine/large/pmc_sg/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/dirty(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc
+	icon_state = "socdrums"
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun/heap(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/full_low_threat/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun(src)
 
 /obj/item/storage/pouch/magazine/large/m16/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

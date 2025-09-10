@@ -6,12 +6,12 @@
 /datum/chem_property/special/boosting
 	name = PROPERTY_BOOSTING
 	code = "BST"
-	description = "Boosts the potency of all other properties in this chemical when inside the body by 1 levels for every level that this property has."
+	description = "Boosts the potency of all other properties in this chemical when inside the body by 0.5 levels for every level that this property has."
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
-	return list(REAGENT_BOOST = level)
+	return list(REAGENT_BOOST = level * 0.5)
 
 /datum/chem_property/special/optimized
 	name = PROPERTY_OPTIMIZED

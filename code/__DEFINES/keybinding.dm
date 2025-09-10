@@ -170,6 +170,8 @@
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
+#define COMSIG_KB_XENO_BECOME_SEETHROUGH "keybinding_become_seethrough"
+
 #define COMSIG_KB_XENO_TRANSFER_PLASMA "keybinding_drone_transfer_plasma"
 #define COMSIG_KB_XENO_PLANT_RESIN_FRUIT "keybinding_plant_resin_fruit"
 #define COMSIG_KB_XENO_CHANGE_FRUIT "keybinding_change_fruit"

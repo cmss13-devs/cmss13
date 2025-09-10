@@ -744,6 +744,7 @@
 
 /obj/effect/landmark/breachable_floor/medium
 	name = "breachable floor medium"
+
 /obj/effect/landmark/breachable_floor/strong
 	name = "breachable floor strong"
 	explosive_threshold = 300

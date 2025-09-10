@@ -28,7 +28,7 @@
 	icon = 'icons/turf/floors/floors.dmi'
 
 	///How much explosive power is needed to breach, null is unbreachable
-	var/breach_threshold = TRUE
+	var/breach_threshold
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?

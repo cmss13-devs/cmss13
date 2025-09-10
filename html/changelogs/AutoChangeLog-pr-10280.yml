@@ -1,0 +1,15 @@
+author: "Blundir, Crow, Thwomper, jupyterkat, dimdimich1996, piotrthetchaikowsky, Dongwaiver, po1ntm4n, notfunny."
+delete-after: True
+changes:
+  - rscadd: "CLF spec now has a 30% to be a smartgunner with unique sg that can malfunction and jam"
+  - rscadd: "CLF spec and cell commander spawn with new rusty sg drums that spawn with 280-500 bullets in them"
+  - rscadd: "CLF cell commander was remade"
+  - rscadd: "Marsoc squad now has a dedicated SG with an sg loaded with heap, also has aim assist"
+  - rscadd: "PMC/Commandos now have a new sg that doesn't need cover opening to reload, it also has aim assist"
+  - rscadd: "SG goggles now act an overwatch camera, thus you no longer need helmet or M5 camera anymore for overwatch to see you"
+  - rscadd: "new optional SG armor with unique sprite that has 5% higher bio, melee, internal damage, bullet resistance, but medium armor tier slowdown"
+  - rscadd: "M56B been globally renamed to M56A2, some other sgs followed the same logic"
+  - rscadd: "M56A2C (CO sg) has 10% to spawn with a decorative USCM flag on it"
+  - rscdel: "you can no longer attach flashlight on sg"
+  - imageadd: "all sgs were resprited, which include: M56A2 (previously M56B), M56A2C (previously M56C), L56A2 (new WY sg), L56A1, with new sprites for M57R (marsoc SG), scavenged M56 (CLF sg), RFVS37 (UPP sg), and unnamed UPP gatling gun for future content"
+  - imageadd: "M56D got inhands for the gun itself and the gun mount"

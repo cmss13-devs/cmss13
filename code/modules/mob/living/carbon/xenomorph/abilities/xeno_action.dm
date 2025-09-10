@@ -26,6 +26,9 @@
 
 	var/charges = NO_ACTION_CHARGES
 
+	/// Should the ability trigger an acid overlay for their respective caste upon action selection and deselection.
+	var/ability_uses_acid_overlay = FALSE
+
 	//Shielder content
 	var/plasma_channel_timer = null
 	var/plasma_channel_tick = 1 SECONDS
@@ -184,6 +187,8 @@
 		xeno.set_selected_ability(null)
 		if(charge_time)
 			stop_charging_ability()
+		if(ability_uses_acid_overlay)
+			xeno.overlays -= xeno.acid_overlay
 	else
 		to_chat(xeno, "You will now use [name] with [xeno.get_ability_mouse_name()].")
 		if(xeno.selected_ability)
@@ -197,11 +202,15 @@
 			to_chat(xeno, SPAN_INFO("It has [charges] uses left."))
 		if(charge_time)
 			start_charging_ability()
+		if(ability_uses_acid_overlay && !(xeno.acid_overlay in xeno.overlays) && !xeno.resting)
+			xeno.overlays += xeno.acid_overlay
 
 // Called when a different action is clicked on and this one is deselected.
 /datum/action/xeno_action/activable/proc/action_deselect()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if(ability_uses_acid_overlay)
+		xeno.overlays -= xeno.acid_overlay
 	button.icon_state = "template"
-
 
 /datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
 	..()

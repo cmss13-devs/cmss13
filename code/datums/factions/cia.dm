@@ -36,7 +36,7 @@
 		if(JOB_CIA_GRS_TL)
 			hud_icon_state = "grs_tl"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "hudsquad_[hud_icon_state]")
+		holder.overlays += image('icons/mob/hud/factions/cia.dmi', H, "ua_[hud_icon_state]")
 
 /datum/faction/cia/united_americas
 	name = FACTION_UA

@@ -577,6 +577,9 @@
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv759/oob)
+"abL" = (
+/turf/closed/wall/hybrisa/marhsalls/reinforced,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "abM" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
@@ -7375,14 +7378,32 @@
 /turf/open/floor/almayer/green2/north,
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "arR" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_5";
-	pixel_x = 1
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
 	},
-/obj/item/clipboard{
-	pixel_y = 8;
-	pixel_x = -7
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/remains/robot{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/almayer/green2/northeast,
 /area/lv759/oob)
 "arS" = (
@@ -7748,7 +7769,7 @@
 /turf/open/auto_turf/shale/layer1,
 /area/lv759/oob)
 "asL" = (
-/turf/closed/wall/hybrisa/research/reinforced,
+/turf/closed/wall/hybrisa/marhsalls/reinforced,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "asM" = (
 /turf/closed/wall/hybrisa/research/reinforced,
@@ -7971,6 +7992,31 @@
 /turf/closed/wall/hybrisa/colony/engineering/reinforced,
 /area/lv759/indoors/wy_research_complex/cafeteria)
 "atU" = (
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/remains/robot{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/almayer/black2/southeast,
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "atV" = (
@@ -8239,7 +8285,7 @@
 	dir = 1
 	},
 /obj/effect/decal/hybrisa/bloodtrail,
-/turf/open/floor/almayer/green2,
+/turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/oob)
 "auO" = (
 /obj/effect/decal/cleanable/blood{
@@ -8544,6 +8590,7 @@
 	density = 0;
 	opacity = 0
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/oob)
 "avw" = (
@@ -11078,6 +11125,10 @@
 /area/lv759/indoors/wy_research_complex/head_research_office)
 "aCn" = (
 /obj/effect/landmark/lv624/door_blocker,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	name = "\improper Shutters";
+	dir = 4
+	},
 /turf/open/floor/corsat/marked,
 /area/lv759/indoors/wy_research_complex/head_research_office)
 "aCo" = (
@@ -11109,6 +11160,10 @@
 "aCu" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /obj/effect/landmark/lv624/door_blocker,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	name = "\improper Shutters";
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/lv759/indoors/wy_research_complex/head_research_office)
 "aCv" = (
@@ -11438,7 +11493,7 @@
 /area/lv759/indoors/wy_research_complex/head_research_office)
 "aDj" = (
 /obj/structure/machinery/power/apc/power/north{
-	start_charge = 25
+	start_charge = 35
 	},
 /turf/open/floor/corsat,
 /area/lv759/indoors/wy_research_complex/head_research_office)
@@ -11769,7 +11824,7 @@
 	pixel_x = 15;
 	pixel_y = -9
 	},
-/turf/open/floor/almayer/emerald2smooth/north,
+/turf/open/floor/shiva,
 /area/lv759/oob)
 "aDW" = (
 /obj/structure/largecrate/machine/bodyscanner,
@@ -11927,6 +11982,10 @@
 	pixel_x = 6;
 	pixel_y = 24
 	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
 /turf/open/floor/almayer/emerald2smooth/west,
 /area/lv759/oob)
 "aEs" = (
@@ -11943,6 +12002,9 @@
 	layer = 2
 	},
 /obj/structure/machinery/big_computers/computerwhite/computer1,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
 /turf/open/floor/almayer/silver,
 /area/lv759/oob)
 "aEu" = (
@@ -11950,6 +12012,9 @@
 	color = "#1B1212";
 	dir = 1;
 	layer = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
 	},
 /turf/open/floor/almayer/silver,
 /area/lv759/oob)
@@ -12006,6 +12071,11 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/item/reagent_container/glass/beaker,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/almayer/silver/north,
 /area/lv759/oob)
 "aEz" = (
@@ -12024,6 +12094,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/big_computers/computerwhite/computer4,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
 /turf/open/floor/almayer/silver/west,
 /area/lv759/oob)
 "aEB" = (
@@ -12075,6 +12148,10 @@
 	layer = 5;
 	pixel_x = 16
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/almayer/silver/northwest,
 /area/lv759/oob)
 "aEH" = (
@@ -12108,6 +12185,7 @@
 /obj/structure/machinery/light/double/blue{
 	dir = 4
 	},
+/obj/structure/largecrate/empty/case,
 /turf/open/floor/almayer/emerald2smooth/east,
 /area/lv759/oob)
 "aEL" = (
@@ -12128,6 +12206,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/machinery/computer/disk_reader{
+	dir = 8
+	},
 /turf/open/floor/almayer/silver/west,
 /area/lv759/oob)
 "aEN" = (
@@ -12146,6 +12230,11 @@
 	icon_state = "1-4";
 	layer = 5;
 	level = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/silver/east,
 /area/lv759/oob)
@@ -12172,6 +12261,10 @@
 	layer = 5;
 	level = 2
 	},
+/obj/item/stool{
+	pixel_x = -4;
+	pixel_y = 20
+	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/oob)
 "aER" = (
@@ -12191,6 +12284,16 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/device/camera{
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/device/radio/headset{
+	pixel_x = 3
+	},
 /turf/open/floor/almayer/silver/west,
 /area/lv759/oob)
 "aET" = (
@@ -12202,6 +12305,14 @@
 /obj/structure/window/reinforced{
 	color = "#1B1212";
 	dir = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer/silvercorner/west,
 /area/lv759/oob)
@@ -12227,6 +12338,9 @@
 	layer = 2
 	},
 /obj/structure/machinery/big_computers/computerwhite/computer5,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
 /turf/open/floor/almayer/silver,
 /area/lv759/oob)
 "aEW" = (
@@ -12240,6 +12354,13 @@
 	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/item/device/radio{
+	pixel_x = -4;
+	pixel_y = 3
 	},
 /turf/open/floor/almayer/silver,
 /area/lv759/oob)
@@ -12255,6 +12376,14 @@
 	},
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
+	},
+/obj/item/device/radio{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/paper_bin{
+	pixel_x = -15;
+	pixel_y = 9
 	},
 /turf/open/floor/almayer/silvercorner/west,
 /area/lv759/oob)
@@ -12375,15 +12504,8 @@
 /turf/open/floor/almayer/emeraldfull2,
 /area/lv759/oob)
 "aFo" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 2
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W"
-	},
 /obj/effect/decal/hybrisa/dirt,
-/turf/open/floor/almayer/emerald2smooth/northwest,
+/turf/open/floor/almayer/emerald2smooth/southwest,
 /area/lv759/oob)
 "aFp" = (
 /obj/structure/machinery/light/double/blue{
@@ -12393,7 +12515,7 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
-/turf/open/floor/almayer/emerald2smooth/north,
+/turf/open/floor/almayer/emerald2smooth/northwest,
 /area/lv759/oob)
 "aFq" = (
 /obj/structure/stairs/perspective{
@@ -13384,8 +13506,622 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/lv759/oob)
+"aHt" = (
+/obj/item/prop/alien/hugger{
+	color = "#ffff80";
+	name = "k-series facehugger";
+	desc = "It has some sort of a tube at the end of its tail. Why is it yellow?"
+	},
+/turf/open/floor/almayer/green2/east,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"aHu" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = 1
+	},
+/obj/item/clipboard{
+	pixel_y = 8;
+	pixel_x = -7
+	},
+/turf/open/floor/almayer/green2/east,
+/area/lv759/oob)
+"aHv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHw" = (
+/obj/structure/machinery/computer/telecomms/server{
+	pixel_y = 22
+	},
+/turf/open/floor/prison/darkbrown3/north,
+/area/lv759/oob)
+"aHx" = (
+/obj/structure/machinery/computer/telecomms/monitor{
+	pixel_y = 22
+	},
+/turf/open/floor/prison/darkbrown3/north,
+/area/lv759/oob)
+"aHy" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = -2
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xsplatter4";
+	pixel_x = -11
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHA" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 16
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHB" = (
+/obj/structure/machinery/space_heater/radiator/red,
+/turf/open/floor/almayer/blue2/north,
+/area/lv759/oob)
+"aHC" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/obj/structure/bed/stool{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/floor/almayer/blue2/north,
+/area/lv759/oob)
+"aHD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/blue2/north,
+/area/lv759/oob)
+"aHE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue2/northeast,
+/area/lv759/oob)
+"aHF" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/almayer/blue2/north,
+/area/lv759/oob)
+"aHG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/case,
+/turf/open/floor/almayer/blue2/north,
+/area/lv759/oob)
+"aHH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/almayer/blue2/north,
+/area/lv759/oob)
+"aHI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/almayer/blue2/northeast,
+/area/lv759/oob)
+"aHJ" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/almayer/purple2/north,
+/area/lv759/oob)
+"aHK" = (
+/obj/effect/alien/weeds/kseries,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 2;
+	light_range = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/oob)
+"aHL" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHM" = (
+/obj/structure/largecrate/random/barrel/red{
+	layer = 6;
+	pixel_y = 9;
+	pixel_x = 6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHN" = (
+/obj/structure/cargo_container/hybrisa/containersextended/redleft,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHO" = (
+/obj/structure/cargo_container/hybrisa/containersextended/redright,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHP" = (
+/obj/structure/machinery/meter{
+	pixel_y = -30
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHQ" = (
+/obj/structure/machinery/light/double,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/corsat/marked,
+/area/lv759/oob)
+"aHR" = (
+/obj/structure/cargo_container/horizontal/blue/bottom,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHS" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 7;
+	pixel_x = 7;
+	layer = 3.6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHT" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 7;
+	pixel_x = -7;
+	layer = 3.6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHU" = (
+/obj/structure/largecrate/random/barrel/purewhite{
+	pixel_x = 4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHV" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4;
+	pixel_x = 14;
+	pixel_y = -15
+	},
+/obj/structure/cargo_container/horizontal/blue/top,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHW" = (
+/obj/effect/alien/weeds/kseries,
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/lv759/oob)
+"aHX" = (
+/obj/effect/alien/weeds/kseries,
+/obj/structure/sign/poster/io{
+	pixel_y = 35
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHY" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/prop/invuln{
+	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
+	dir = 4;
+	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon_state = "Normal Drone Dead";
+	layer = 2.5;
+	name = "K-series drone";
+	color = "#ffff80";
+	pixel_x = -7;
+	pixel_y = -4;
+	anchored = 0;
+	density = 0
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHZ" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 8
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aIa" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 5
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aIb" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	layer = 3.1;
+	pixel_y = 5;
+	pixel_x = -9
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/corsat/marked,
+/area/lv759/oob)
+"aIc" = (
+/obj/vehicle/train/cargo/engine,
+/obj/structure/prop/hybrisa/airport/refuelinghose{
+	pixel_x = -25;
+	pixel_y = -87;
+	color = "#36454F";
+	name = "reinforced chain";
+	desc = "A special-issue reinforced chain, coated in a protective film that provides acid protection.";
+	layer = 2.9;
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aId" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer/blue2/southwest,
+/area/lv759/oob)
+"aIe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer/blue2,
+/area/lv759/oob)
+"aIf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/handrail{
+	dir = 8
+	},
+/turf/open/floor/almayer/blue2,
+/area/lv759/oob)
+"aIg" = (
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = -4;
+	pixel_y = -5;
+	current_rounds = 24
+	},
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/almayer/blue2,
+/area/lv759/oob)
+"aIh" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/blue2/southeast,
+/area/lv759/oob)
+"aIi" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/blue2,
+/area/lv759/oob)
+"aIj" = (
+/obj/structure/bed/chair/comfy/blue,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 1;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/almayer/blue2,
+/area/lv759/oob)
+"aIk" = (
+/obj/structure/bed/chair/comfy/blue,
+/turf/open/floor/almayer/blue2,
+/area/lv759/oob)
+"aIl" = (
+/obj/structure/surface/table/almayer,
+/obj/item/storage/pouch/electronics/full{
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/blue2/southeast,
+/area/lv759/oob)
+"aIm" = (
+/obj/item/clothing/head/hardhat/orange{
+	pixel_y = -10;
+	pixel_x = -9
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aIn" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/emerald2smooth/southeast,
+/area/lv759/oob)
 "aIo" = (
 /turf/open/floor/almayer/emeraldcornersmooth/north,
+/area/lv759/oob)
+"aIp" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/emerald2smooth/southwest,
+/area/lv759/oob)
+"aIq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/emerald2smooth/northeast,
+/area/lv759/oob)
+"aIr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aIs" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/emerald2smooth/northwest,
+/area/lv759/oob)
+"aIt" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aIu" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/silver/east,
+/area/lv759/oob)
+"aIv" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/pouch/chem,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIw" = (
+/obj/structure/surface/rack,
+/obj/structure/machinery/big_computers/science_big/operator_machine,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIx" = (
+/obj/structure/machinery/smartfridge/chemistry/antag,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIy" = (
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/oldresearch/Blood{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/oldresearch/Blood{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/obj/item/oldresearch/Blood{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/reagent_container/glass/beaker/vial,
+/obj/item/reagent_container/glass/beaker/vial,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIz" = (
+/obj/item/tool/surgery/surgicaldrill{
+	pixel_y = 7
+	},
+/obj/item/tool/surgery/hemostat{
+	pixel_x = 2;
+	pixel_y = 1
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aIB" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aIC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aID" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIE" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/alien/weeds/kseries,
+/obj/effect/alien/egg/kseries{
+	status = 1;
+	icon_state = "Egg Opened"
+	},
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aIF" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aIG" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aIH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/prop/alien/hugger{
+	color = "#ffff80";
+	name = "k-series facehugger";
+	desc = "It has some sort of a tube at the end of its tail. Why is it yellow?"
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aII" = (
+/obj/item/stool{
+	pixel_x = 2;
+	pixel_y = 23
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/alien/weeds/kseries,
+/obj/item/prop/alien/hugger{
+	color = "#ffff80";
+	name = "k-series facehugger";
+	desc = "It has some sort of a tube at the end of its tail. Why is it yellow?"
+	},
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aIK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aIL" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/machinery/big_computers/computerwhite/computer4,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIM" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/surgery/cautery,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIN" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIO" = (
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/prop/alien/hugger{
+	pixel_y = 4
+	},
+/obj/item/tool/surgery/retractor{
+	pixel_x = -1;
+	pixel_y = -3
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
 /area/lv759/oob)
 "aIP" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_nest/kseries,
@@ -13397,11 +14133,269 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/lv759/oob)
+"aIQ" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = -6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"aIR" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = -6
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"aIS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 2;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/indoors/wy_research_complex/cafeteriakitchen)
+"aIT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aIU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aIV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/item/clipboard{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aIW" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/weed_extract{
+	pixel_y = 6
+	},
+/obj/item/weed_extract{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/item/weed_extract{
+	pixel_x = -6;
+	pixel_y = 7
+	},
+/obj/structure/platform/metal/almayer/north{
+	layer = 1.9
+	},
+/obj/item/xenos_claw{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/obj/item/xenos_claw{
+	pixel_x = -6
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIX" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aIY" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/storage/fancy/vials/random{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/obj/item/reagent_container/dropper{
+	pixel_x = -1;
+	pixel_y = 9
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/silver/west,
+/area/lv759/oob)
+"aIZ" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/structure/machinery/r_n_d/organic_analyzer{
+	pixel_y = 15;
+	pixel_x = 1
+	},
+/obj/item/storage/pouch/pressurized_reagent_canister/tricordrazine{
+	pixel_y = -2
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aJa" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aJb" = (
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "5-6";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aJc" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4;
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aJd" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/emerald2smooth/northwest,
+/area/lv759/oob)
 "aJe" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8
 	},
 /turf/open/floor/plating/kutjevo,
+/area/lv759/oob)
+"aJf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/emerald2smooth/northeast,
+/area/lv759/oob)
+"aJg" = (
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "1-4";
+	layer = 5;
+	level = 2
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aJh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aJi" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aJj" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/machinery/big_computers/science_big/synthesis_simulator,
+/turf/open/floor/almayer/silvercorner,
+/area/lv759/oob)
+"aJk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aJl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aJm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/emerald2smooth/southwest,
+/area/lv759/oob)
+"aJn" = (
+/obj/item/prop/alien/hugger{
+	color = "#ffff80";
+	name = "k-series facehugger";
+	desc = "It has some sort of a tube at the end of its tail. Why is it yellow?"
+	},
+/turf/open/floor/strata/gray_multi_tiles,
+/area/lv759/oob)
+"aJo" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = -6
+	},
+/turf/open/floor/strata/gray_multi_tiles,
+/area/lv759/oob)
+"aJp" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/strata/gray_multi_tiles,
 /area/lv759/oob)
 "aKo" = (
 /obj/structure/machinery/fuelcell_recycler/full,
@@ -13814,6 +14808,9 @@
 	color = "#1B1212";
 	dir = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
 /turf/open/floor/almayer/silver,
 /area/lv759/oob)
 "bMq" = (
@@ -13895,6 +14892,11 @@
 /obj/structure/machinery/door/window/southleft{
 	color = "#1B1212";
 	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
 	},
 /turf/open/floor/almayer/silver/east,
 /area/lv759/oob)
@@ -14742,6 +15744,10 @@
 /obj/structure/window/reinforced{
 	color = "#1B1212"
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
 /turf/open/floor/almayer/silver/north,
 /area/lv759/oob)
 "eAn" = (
@@ -14790,6 +15796,10 @@
 	color = "#1B1212";
 	dir = 1;
 	layer = 2
+	},
+/obj/structure/prop/hybrisa/misc/cabinet{
+	pixel_x = -3;
+	pixel_y = 1
 	},
 /turf/open/floor/almayer/silvercorner,
 /area/lv759/oob)
@@ -15966,9 +16976,7 @@
 /obj/structure/window/reinforced{
 	color = "#1B1212"
 	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
+/obj/structure/machinery/autodispenser,
 /turf/open/floor/almayer/silvercorner/north,
 /area/lv759/oob)
 "iJq" = (
@@ -16997,7 +18005,6 @@
 	color = "#848484"
 	},
 /obj/item/ammo_magazine/rifle/boltaction/vulture{
-	current_rounds = 1;
 	pixel_x = 2;
 	pixel_y = 5
 	},
@@ -17648,6 +18655,9 @@
 	color = "#1B1212";
 	dir = 4
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
 /turf/open/floor/almayer/silver/west,
 /area/lv759/oob)
 "oLJ" = (
@@ -18123,6 +19133,13 @@
 	},
 /obj/structure/machinery/big_computers/computerwhite/computer2{
 	pixel_x = 10
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /turf/open/floor/almayer/silver,
 /area/lv759/oob)
@@ -19087,6 +20104,9 @@
 /obj/structure/window/reinforced{
 	color = "#1B1212";
 	dir = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
 	},
 /turf/open/floor/almayer/silver/west,
 /area/lv759/oob)
@@ -20081,6 +21101,10 @@
 "ymi" = (
 /obj/structure/machinery/door/window/southleft{
 	color = "#1B1212"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
 	},
 /turf/open/floor/almayer/silver/north,
 /area/lv759/oob)
@@ -74444,7 +75468,7 @@ acs
 pzq
 pzq
 atN
-ljU
+cUy
 hmb
 uwP
 esx
@@ -74612,7 +75636,7 @@ pzo
 pzo
 pzq
 atN
-woC
+aHw
 hAa
 lKF
 esx
@@ -74780,7 +75804,7 @@ pzo
 pzo
 pzo
 atN
-woC
+aHx
 vRW
 qiq
 hmb
@@ -77476,7 +78500,7 @@ asX
 asY
 aoK
 asY
-asX
+aHt
 aoH
 aoG
 aoF
@@ -77981,8 +79005,8 @@ asL
 asM
 anM
 asQ
-asM
-asM
+abL
+abL
 asO
 asO
 asM
@@ -80970,7 +81994,7 @@ atS
 atS
 atY
 alj
-asQ
+aIQ
 asQ
 akV
 atp
@@ -81138,7 +82162,7 @@ atS
 atS
 alp
 alk
-asQ
+aIR
 asQ
 atP
 akK
@@ -81164,7 +82188,7 @@ atp
 ask
 fAn
 awi
-cDM
+aHy
 cgK
 aoT
 asL
@@ -81306,7 +82330,7 @@ avA
 avu
 atL
 atU
-asQ
+aIS
 asQ
 akW
 akz
@@ -81332,10 +82356,10 @@ asp
 asl
 asi
 auw
-cDM
+aHz
 arR
 ioB
-aoI
+aHu
 arH
 arF
 arC
@@ -81472,8 +82496,8 @@ avI
 akC
 avC
 avv
-akC
-cDM
+aIT
+aHm
 cDM
 ajQ
 cDM
@@ -81499,10 +82523,10 @@ ioB
 bCP
 cDM
 cDM
-cDM
-ajQ
-cDM
-cDM
+amO
+aHA
+aHv
+anr
 cDM
 aua
 cDM
@@ -82471,10 +83495,10 @@ cDM
 cDM
 qpw
 aFo
-aEa
-aEa
-aEa
-aEn
+aIr
+vbZ
+aJh
+aJd
 aEa
 aEa
 aED
@@ -82485,7 +83509,7 @@ aEv
 aEa
 aEa
 aEa
-aEa
+aIH
 aEa
 aEn
 aEh
@@ -82638,17 +83662,17 @@ iqP
 cDM
 akC
 qpw
-lcC
-svL
+mIN
+aJl
+aJk
+aJi
+aJf
 uaZ
 uaZ
 uaZ
 uaZ
-uaZ
-uaZ
-uaZ
-uaZ
-uaZ
+aIV
+aIU
 uaZ
 uaZ
 uaZ
@@ -82807,7 +83831,7 @@ cDM
 akC
 aAe
 aFp
-aDK
+aJm
 aEZ
 aEi
 aEi
@@ -82830,9 +83854,9 @@ lcC
 aDG
 kRD
 kRD
+aHW
 awn
-awn
-awn
+aHK
 kRD
 kRD
 vMy
@@ -82977,28 +84001,28 @@ qpw
 aFq
 aFh
 aFa
-eQc
-czO
+aJj
+aIu
 cbb
-czO
-czO
-czO
+aIu
+aIu
+aIu
 roH
 poe
 dra
 eQc
-czO
+aIu
 cbb
-czO
-czO
-czO
+aIu
+aIu
+aIu
 roH
 aEd
 lcC
 aDH
 kRD
 kRD
-anD
+aHX
 anD
 anD
 kRD
@@ -83146,26 +84170,26 @@ aFr
 aFi
 aFb
 aEu
-aEq
-hZR
-hZR
-hZR
+aJg
+aJb
+aIZ
+aIW
 hZR
 ymi
 mvP
 mvP
 bLZ
 hZR
+aIL
+aII
 hZR
-hZR
-hZR
-hZR
+aIv
 ymi
 aEd
 lcC
 aDI
 kRD
-eYg
+aId
 cDM
 anD
 anD
@@ -83311,10 +84335,10 @@ cDM
 cDM
 aAe
 aFj
-aFj
+aJn
 aFc
 bLZ
-hZR
+aER
 hZR
 hZR
 hZR
@@ -83327,17 +84351,17 @@ hZR
 hZR
 hZR
 hZR
-hZR
+aIw
 ezV
 aEd
 aDS
 aDJ
 kRD
-mTp
-cDM
+aIe
+awi
 anD
 anD
-cPR
+aHB
 kRD
 hyh
 ene
@@ -83484,28 +84508,28 @@ aFd
 aEu
 hZR
 hZR
-hZR
-hZR
+aEq
+aIX
 hZR
 aEy
 gWg
 oji
 aEt
+hZR
 aEq
 hZR
 hZR
-hZR
-hZR
+aIx
 ezV
 aEd
 aDU
 aDK
 kRD
-mTp
+aIf
 cDM
 cDM
 cDM
-cPR
+aHC
 kRD
 jPT
 dGn
@@ -83647,13 +84671,13 @@ cDM
 aAg
 qpw
 aFs
-aFj
+aJo
 gIT
 aET
 uLW
 oLq
 uLW
-uLW
+aIY
 aEA
 iJj
 lpC
@@ -83669,11 +84693,11 @@ aEd
 lcC
 aDL
 kRD
-mTp
+aIg
+aua
 cDM
-cDM
-cDM
-cPR
+aHL
+aHD
 kRD
 oAY
 qHO
@@ -83815,7 +84839,7 @@ awz
 akC
 qpw
 aFt
-aFj
+aJo
 qoO
 bMO
 nbQ
@@ -83834,14 +84858,14 @@ nYZ
 qnK
 bsr
 aEd
-lcC
-aDK
+aIq
+aIn
 frB
-reI
-cDM
-cDM
-cDM
-hVG
+aIh
+avC
+aHS
+akC
+aHE
 frB
 fst
 hAa
@@ -83983,7 +85007,7 @@ aAl
 cDM
 qHO
 aFu
-aFj
+aJp
 qoO
 ddN
 qpQ
@@ -84002,8 +85026,8 @@ nYZ
 gDS
 yaT
 aEd
-lcC
-aDK
+aIr
+vbZ
 qHO
 cDM
 cDM
@@ -84171,12 +85195,12 @@ rpu
 vka
 aEd
 aDV
-aDK
+vbZ
 qHO
 cDM
-cDM
+anr
 qpw
-cDM
+aHM
 cDM
 avw
 hAa
@@ -84298,7 +85322,7 @@ iKa
 rdC
 rdC
 iVS
-hAa
+iKf
 hAa
 hAa
 vRW
@@ -84324,27 +85348,27 @@ aFb
 aEU
 aEO
 cbb
-czO
+aIu
 aEF
 czO
 iWq
 lpC
 tpg
 iwQ
-czO
-czO
-czO
+aIu
+aIu
+aIu
 cbb
-czO
+aIu
 aEj
 aEd
-lcC
-aDK
+aIr
+vbZ
 qHO
 cDM
-cDM
+aHY
 qpw
-cDM
+aHN
 cDM
 avw
 hAa
@@ -84500,19 +85524,19 @@ gWg
 oji
 aEu
 hZR
-aEq
 hZR
+aEq
 hZR
 hZR
 ymi
 aEd
-lcC
-aDK
+aIs
+aIp
 frB
 eYg
-cDM
-cDM
-cDM
+aHZ
+aHT
+aHO
 kTA
 frB
 rbR
@@ -84667,21 +85691,21 @@ hAM
 ihp
 qrX
 aEu
+aIN
 hZR
 hZR
 hZR
-hZR
-hZR
+aIy
 ezV
 aEd
 lcC
 aDL
 kRD
-mTp
+aIi
+aIa
 cDM
 cDM
-cDM
-cPR
+aHF
 kRD
 fnq
 mKy
@@ -84806,7 +85830,7 @@ ojI
 ojI
 hAa
 hAa
-hAa
+iKf
 hAa
 wHj
 lqX
@@ -84827,7 +85851,7 @@ aFk
 gIT
 aEX
 aER
-hZR
+aJc
 hZR
 ymi
 mvP
@@ -84835,21 +85859,21 @@ mvP
 mvP
 mvP
 bLZ
+aIO
+aIM
 hZR
-hZR
-hZR
-hZR
-hZR
+aID
+aIz
 ezV
 aEd
 lcC
 aDK
 kRD
-mTp
+aIj
+auR
+auz
 cDM
-cDM
-cDM
-cPR
+aHB
 kRD
 aTb
 wgh
@@ -84971,7 +85995,7 @@ rdC
 iVS
 vRW
 vRW
-ojI
+ozH
 ojI
 hAa
 hAa
@@ -85013,11 +86037,11 @@ aEd
 lcC
 aDK
 kRD
-mTp
+aIk
 cDM
 cDM
 cDM
-cPR
+aHG
 kRD
 ncH
 fnq
@@ -85181,11 +86205,11 @@ aEe
 lcC
 aDK
 kRD
-mTp
+aIk
 cDM
 cDM
-cDM
-cPR
+akC
+aHH
 kRD
 flS
 fnq
@@ -85331,7 +86355,7 @@ hIN
 aEa
 aEh
 aEa
-aEa
+aIH
 aEa
 aEa
 hun
@@ -85342,18 +86366,18 @@ aEa
 aEa
 aEr
 aEa
-aEa
-aEa
+aIA
+aIA
 aEa
 aEa
 aIo
 aDM
 kRD
-reI
+aIl
 cDM
 cDM
 cDM
-hVG
+aHI
 kRD
 arO
 fnq
@@ -85508,19 +86532,19 @@ spC
 spC
 dXY
 uaZ
-uaZ
-uaZ
-uaZ
-uaZ
-uaZ
+aIt
+aIt
+aIE
+aIt
+aIt
 uaZ
 uaZ
 aDN
 kRD
 kRD
 cDM
-cDM
-cDM
+akC
+aHP
 kRD
 kRD
 lNR
@@ -85668,7 +86692,7 @@ aFg
 vbZ
 vbZ
 fMa
-mRU
+aJa
 frB
 spC
 spC
@@ -85677,18 +86701,18 @@ spC
 frB
 mRU
 nyj
-vbZ
-vbZ
-aEo
+aIJ
+aIF
+aIB
 fMa
 mRU
 aDW
 aDO
 kRD
 kRD
-qHO
-qHO
-qHO
+aIb
+aFC
+aHQ
 kRD
 kRD
 ncH
@@ -85845,18 +86869,18 @@ spC
 qpw
 aEs
 mIN
-vbZ
-aEo
-vbZ
+aIK
+aIG
+aIC
 jiC
 aEf
 aDX
 aDP
 kRD
 kRD
-cDM
-cDM
-cDM
+anD
+anD
+anD
 kRD
 kRD
 ncH
@@ -86024,8 +87048,8 @@ kRD
 vYk
 cDM
 cDM
-cDM
-gdt
+anD
+aHJ
 kRD
 pVs
 fiU
@@ -86188,13 +87212,13 @@ wEh
 kRD
 kRD
 kRD
-kRD
+fAk
 hwd
 cDM
-cDM
+aHU
 cDM
 one
-kRD
+ezL
 kRD
 kRD
 kRD
@@ -86359,8 +87383,8 @@ cDM
 cDM
 cDM
 cDM
-ajW
-cDM
+aHV
+aHR
 cDM
 cDM
 cDM
@@ -86525,8 +87549,8 @@ cDM
 cDM
 cDM
 cDM
-cDM
-cDM
+aIm
+aIc
 cDM
 cDM
 cDM

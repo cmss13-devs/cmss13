@@ -28,7 +28,7 @@
 	icon = 'icons/turf/floors/floors.dmi'
 
 	///How much explosive power is needed to breach, null is unbreachable
-	var/breach_resistance = TRUE
+	var/breach_threshold = TRUE
 	///Used by floors to indicate the floor is a tile (otherwise its plating)
 	var/intact_tile = TRUE
 	///Can blood spawn on this turf?
@@ -228,7 +228,7 @@
 		return FALSE
 	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
 		return FALSE
-	if(!breach_resistance && severity >= breach_resistance)
+	if(!breach_threshold || severity < breach_threshold)
 		return FALSE
 
 	return TRUE

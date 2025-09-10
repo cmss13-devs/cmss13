@@ -735,7 +735,7 @@
 /obj/effect/landmark/breachable_floor/LateInitialize()
 	. = ..()
 	var/turf/turf = src.loc
-	turf.breach_resistance = explosive_threshold
+	turf.breach_threshold = explosive_threshold
 	qdel(src)
 
 /obj/effect/landmark/breachable_floor/weak

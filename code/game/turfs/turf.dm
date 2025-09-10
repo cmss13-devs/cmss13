@@ -234,6 +234,8 @@
 	return TRUE
 
 /turf/proc/breach_floor(severity)
+	if(!explodable(severity)) // incase something fucks up from the moment of explosion
+		return FALSE
 	ChangeTurf(/turf/open_space)
 
 /turf/proc/update_icon() //Base parent. - Abby

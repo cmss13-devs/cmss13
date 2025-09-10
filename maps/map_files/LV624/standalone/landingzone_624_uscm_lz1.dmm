@@ -405,7 +405,7 @@
 /turf/open/floor/plating/warnplate,
 /area/lv624/lazarus/robotics)
 "oZ" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating,
 /area/lv624/lazarus/landing_zones/lz2)
 "pe" = (
@@ -967,7 +967,7 @@
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "Iy" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/landmark/start/hunter_games,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
 "IF" = (
@@ -1313,7 +1313,7 @@
 /turf/open/gm/dirtgrassborder/south,
 /area/lv624/lazarus/landing_zones/lz2)
 "UN" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/gm/dirt,
 /area/lv624/lazarus/landing_zones/lz2)
 "UO" = (

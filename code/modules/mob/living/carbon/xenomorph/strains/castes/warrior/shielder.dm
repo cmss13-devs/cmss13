@@ -547,9 +547,8 @@
 	reflective_shield_chance = chance
 
 	src.add_filter("reflective_shield", 1, list("type" = "outline", "color" = "#2b8080", "size" = 1))
-	to_chat(src, SPAN_XENOWARNING("We adjust plates and getting ready for incomming attacks!"))
+	to_chat(src, SPAN_XENOWARNING("We adjust plates and stance to get ready for incomming attacks!"))
 	visible_message(SPAN_XENOWARNING("[src]'s changes stance and adjusting its plates!"))
-	src.balloon_alert(src, "we adjust our plates!", text_color = "#326dbb")
 
 	addtimer(CALLBACK(src, PROC_REF(remove_reflective_shield)), duration)
 
@@ -561,8 +560,7 @@
 	reflective_shield_chance = 0
 
 	src.remove_filter("reflective_shield")
-	to_chat(src, SPAN_XENOWARNING("We adjust plates back to their position."))
-	src.balloon_alert(src, "we adjust plates back to normal.", text_color = "#326dbb")
+	to_chat(src, SPAN_XENOWARNING("We adjust our plates and stance back to normal."))
 
 /mob/living/carbon/xenomorph/proc/get_reflection_chance(obj/projectile/bullet)
 	if(!reflective_shield_active)

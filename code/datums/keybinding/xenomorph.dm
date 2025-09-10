@@ -648,7 +648,7 @@
 	classic_keys = list("Unbound")
 	name = "defender_tail_sweep"
 	full_name = "Defender: Tail Sweep"
-	keybind_signal = COMSIG_KB_XENO_DEFENDER_HEADBUTT
+	keybind_signal = COMSIG_KB_XENO_DEFENDER_TAIL_SWEEP
 
 /datum/keybinding/xenomorph/defender_tail_sweep/down(client/user)
 	. = ..()
@@ -656,7 +656,7 @@
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
 	var/datum/action/xeno_action/onclick/tail_sweep/defender_tail_sweep_check = get_action(xeno, /datum/action/xeno_action/onclick/tail_sweep)
-	if(tail_sweep_check)
+	if(defender_tail_sweep_check)
 		if(defender_tail_sweep_check && !defender_tail_sweep_check.hidden)
 			handle_xeno_macro_datum(xeno, defender_tail_sweep_check)
 			return TRUE
@@ -664,8 +664,8 @@
 /datum/keybinding/xenomorph/fortify
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "tail_sweep"
-	full_name = "Defender: Tail Sweep"
+	name = "fortify"
+	full_name = "Defender: Fortify"
 	keybind_signal = COMSIG_KB_XENO_DEFENDER_FORTIFY
 
 /datum/keybinding/xenomorph/fortify/down(client/user)
@@ -673,9 +673,27 @@
 	if(.)
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
-	var/datum/action/xeno_action/onclick/tail_sweep/tail_sweep_check = get_action(xeno, /datum/action/xeno_action/onclick/tail_sweep)
-	if(tail_sweep_check)
-		if(tail_sweep_check && !tail_sweep_check.hidden)
-			handle_xeno_macro_datum(xeno, tail_sweep_check)
+	var/datum/action/xeno_action/activable/fortify/fortify_check = get_action(xeno, /datum/action/xeno_action/activable/fortify/fortify_check)
+	if(fortify_check)
+		if(fortify_check && !fortify_check.hidden)
+			handle_xeno_macro_datum(xeno, fortify_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/steal_crest_soak
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "steal_crest_soak"
+	full_name = "Steal Crest: Soak"
+	keybind_signal = COMSIG_KB_XENO_STEEL_CREST_SOAK
+
+/datum/keybinding/xenomorph/steal_crest_soak/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/soak/soak_check = get_action(xeno, /datum/action/xeno_action/onclick/soak)
+	if(soak_check)
+		if(soak_check && !soak_check.hidden)
+			handle_xeno_macro_datum(xeno, soak_check)
 			return TRUE
 

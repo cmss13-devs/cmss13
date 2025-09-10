@@ -577,10 +577,6 @@
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/lv759/oob)
-"abL" = (
-/obj/structure/machinery/sensortower,
-/turf/open/floor/hybrisa/tile/tilewhite,
-/area/lv759/oob)
 "abM" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
@@ -800,12 +796,61 @@
 /turf/open/floor/almayer/orange/north,
 /area/lv759/oob)
 "acz" = (
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /turf/open/floor/almayer/orange/northeast,
 /area/lv759/oob)
 "acA" = (
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
 /turf/open/floor/almayer/orange/northwest,
 /area/lv759/oob)
 "acB" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10"
+	},
 /turf/open/floor/almayer/orange/southwest,
 /area/lv759/oob)
 "acC" = (
@@ -8496,7 +8541,8 @@
 /area/lv759/oob)
 "avv" = (
 /obj/structure/cargo_container/hybrisa/containersextended/emptymedicalright{
-	density = 0
+	density = 0;
+	opacity = 0
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv759/oob)
@@ -11200,16 +11246,16 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
-/obj/item/device/defibrillator/synthetic/hyperdyne{
-	pixel_x = 4;
-	pixel_y = 7
-	},
 /obj/item/device/assembly/signaller{
 	pixel_x = 5
 	},
 /obj/item/book/manual/evaguide{
 	pixel_y = -1;
 	pixel_x = -6
+	},
+/obj/item/device/defibrillator/synthetic{
+	pixel_x = 6;
+	pixel_y = 11
 	},
 /turf/open/floor/prison,
 /area/lv759/indoors/wy_research_complex/head_research_office)
@@ -11394,7 +11440,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 25
 	},
-/turf/open/floor/prison,
+/turf/open/floor/corsat,
 /area/lv759/indoors/wy_research_complex/head_research_office)
 "aDk" = (
 /obj/structure/largecrate/empty/case,
@@ -11589,6 +11635,113 @@
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/lv759/indoors/wy_research_complex/head_research_office)
+"aDF" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/random/barrel/medical,
+/turf/open/floor/almayer/emerald2smooth/southwest,
+/area/lv759/oob)
+"aDG" = (
+/obj/structure/machinery/light/double/blue,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aDH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aDI" = (
+/obj/structure/machinery/space_heater/radiator/red,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aDJ" = (
+/obj/structure/machinery/space_heater/radiator/red,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aDK" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aDL" = (
+/obj/structure/machinery/light/double/blue,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aDM" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aDN" = (
+/obj/structure/machinery/light/double/blue,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/almayer/emerald2smooth/southeast,
+/area/lv759/oob)
+"aDO" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/almayer/emerald2smooth/southwest,
+/area/lv759/oob)
+"aDP" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
+/turf/open/floor/almayer/emerald2smooth/southeast,
+/area/lv759/oob)
+"aDQ" = (
+/obj/structure/cargo_container/hybrisa/containersextended/emptymedicalleft,
+/turf/open/floor/almayer/emeraldfull2,
+/area/lv759/oob)
+"aDR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/emptymedicalright{
+	density = 0;
+	opacity = 0
+	},
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aDS" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/bed/roller,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/floor/almayer/emerald2smooth/north,
+/area/lv759/oob)
 "aDT" = (
 /obj/structure/bed/hybrisa/bunkbed2,
 /obj/structure/sign/poster/pinup{
@@ -11596,11 +11749,1088 @@
 	},
 /turf/open/floor/hybrisa/carpet/carpetdarkerblue,
 /area/lv759/indoors/wy_research_complex/cargo)
+"aDU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/machinery/iv_drip{
+	layer = 4;
+	pixel_y = 19
+	},
+/turf/open/floor/almayer/emerald2smooth/north,
+/area/lv759/oob)
+"aDV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/turf/open/floor/almayer/emerald2smooth/north,
+/area/lv759/oob)
+"aDW" = (
+/obj/structure/largecrate/machine/bodyscanner,
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aDX" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aDY" = (
+/obj/structure/largecrate/empty/case/double,
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/almayer/emeraldfull2,
+/area/lv759/oob)
+"aDZ" = (
+/obj/item/clipboard,
+/obj/item/paper,
+/obj/item/tool/pen,
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/turf/open/floor/almayer/emeraldfull2,
+/area/lv759/oob)
+"aEa" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aEb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 4
+	},
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aEc" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 4.12
+	},
+/turf/open/floor/almayer/black2/southwest,
+/area/lv759/oob)
+"aEd" = (
+/obj/structure/barricade/handrail/strata,
+/turf/open/floor/almayer/black2,
+/area/lv759/oob)
+"aEe" = (
+/obj/structure/barricade/handrail/strata,
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/almayer/black2/southeast,
+/area/lv759/oob)
+"aEf" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8;
+	name = "Purple chair";
+	desc = "A simple chair permanently attached to the floor.";
+	pixel_x = 6
+	},
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aEg" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/almayer/emeraldfull2,
+/area/lv759/oob)
+"aEh" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aEi" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 4.12
+	},
+/turf/open/floor/almayer/black2/west,
+/area/lv759/oob)
+"aEj" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212"
+	},
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 8
+	},
+/turf/open/floor/almayer/silvercorner/east,
+/area/lv759/oob)
+"aEk" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212"
+	},
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 4
+	},
+/turf/open/floor/almayer/silvercorner/north,
+/area/lv759/oob)
+"aEl" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"aEm" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/black2/east,
+/area/lv759/oob)
+"aEn" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aEo" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aEp" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/black2/northeast,
+/area/lv759/oob)
+"aEq" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aEr" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 6;
+	pixel_y = 24
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aEs" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aEt" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/machinery/big_computers/computerwhite/computer1,
+/turf/open/floor/almayer/silver,
+/area/lv759/oob)
+"aEu" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 1;
+	layer = 2
+	},
+/turf/open/floor/almayer/silver,
+/area/lv759/oob)
+"aEv" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 8
+	},
+/obj/item/tool/wet_sign{
+	pixel_y = 2;
+	pixel_x = 6
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aEw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	pixel_y = -15
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4;
+	pixel_y = 8
+	},
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 1
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aEx" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/tool/wet_sign{
+	pixel_x = -2;
+	pixel_y = 7
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aEy" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212"
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/almayer/silver/north,
+/area/lv759/oob)
+"aEz" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
+"aEA" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 4
+	},
+/obj/structure/machinery/big_computers/computerwhite/computer4,
+/turf/open/floor/almayer/silver/west,
+/area/lv759/oob)
+"aEB" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 4
+	},
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "9-10";
+	layer = 5
+	},
+/turf/open/floor/almayer/silver/west,
+/area/lv759/oob)
+"aEC" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer/emeraldfull2,
+/area/lv759/oob)
+"aED" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/almayer/emerald2smooth/west,
+/area/lv759/oob)
 "aEE" = (
 /turf/open/floor/prison/darkred2/west,
 /area/lv759/oob)
+"aEF" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 8
+	},
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "5-6";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/almayer/silver/east,
+/area/lv759/oob)
+"aEG" = (
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "1-9";
+	layer = 5;
+	pixel_x = 16
+	},
+/turf/open/floor/almayer/silver/northwest,
+/area/lv759/oob)
+"aEH" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/device/defibrillator/synthetic{
+	pixel_x = -6;
+	pixel_y = -1
+	},
+/turf/open/floor/almayer/emeraldfull2,
+/area/lv759/oob)
+"aEI" = (
+/obj/structure/cable/white{
+	color = "550d0d";
+	icon_state = "2-10";
+	layer = 5
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aEJ" = (
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "1-10";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aEK" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/lv759/oob)
+"aEL" = (
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "1-10";
+	layer = 5;
+	level = 2;
+	pixel_x = 16
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aEM" = (
+/obj/structure/machinery/door/window/southleft{
+	color = "#1B1212";
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/almayer/silver/west,
+/area/lv759/oob)
+"aEN" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8
+	},
+/turf/open/floor/almayer/emerald2smooth/northeast,
+/area/lv759/oob)
+"aEO" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 8
+	},
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "1-4";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/almayer/silver/east,
+/area/lv759/oob)
+"aEP" = (
+/obj/item/device/flashlight/lamp/tripod/grey,
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "4-8";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aEQ" = (
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "8-9";
+	layer = 5;
+	level = 2
+	},
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "1-4";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aER" = (
+/obj/structure/cable/white{
+	color = "#550d0d";
+	icon_state = "8-10";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/lv759/oob)
+"aES" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/almayer/silver/west,
+/area/lv759/oob)
+"aET" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 4
+	},
+/turf/open/floor/almayer/silvercorner/west,
+/area/lv759/oob)
+"aEU" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 8
+	},
+/obj/structure/machinery/big_computers/computerwhite/computer2{
+	pixel_x = -2
+	},
+/turf/open/floor/almayer/silvercorner,
+/area/lv759/oob)
+"aEV" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/machinery/big_computers/computerwhite/computer5,
+/turf/open/floor/almayer/silver,
+/area/lv759/oob)
 "aEW" = (
 /turf/open/floor/prison/darkpurple2/southeast,
+/area/lv759/oob)
+"aEX" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/almayer/silver,
+/area/lv759/oob)
+"aEY" = (
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/window/reinforced{
+	color = "#1B1212";
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/almayer/silvercorner/west,
+/area/lv759/oob)
+"aEZ" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 4.12
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/turf/open/floor/almayer/black2/northwest,
+/area/lv759/oob)
+"aFa" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4;
+	layer = 4;
+	pixel_x = -2
+	},
+/turf/open/floor/almayer/black2/northeast,
+/area/lv759/oob)
+"aFb" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopleft";
+	color = "#d3d3d3";
+	pixel_x = 19;
+	pixel_y = -18
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/oob)
+"aFc" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3";
+	pixel_y = -18
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/oob)
+"aFd" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecaltopright";
+	color = "#d3d3d3";
+	pixel_x = -19;
+	pixel_y = -18
+	},
+/turf/open/floor/strata/floor3,
+/area/lv759/oob)
+"aFe" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 4.12
+	},
+/turf/open/floor/almayer/black2/northwest,
+/area/lv759/oob)
+"aFf" = (
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 4
+	},
+/turf/open/floor/almayer/black2/northeast,
+/area/lv759/oob)
+"aFg" = (
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = 10
+	},
+/turf/open/floor/shiva,
+/area/lv759/oob)
+"aFh" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 8
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aFi" = (
+/turf/open/floor/strata/blue3/northwest,
+/area/lv759/oob)
+"aFj" = (
+/turf/open/floor/strata/gray_multi_tiles,
+/area/lv759/oob)
+"aFk" = (
+/turf/open/floor/strata/blue3/northeast,
+/area/lv759/oob)
+"aFl" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 4
+	},
+/obj/structure/platform/metal/almayer,
+/turf/open/floor/almayer/emerald2smooth,
+/area/lv759/oob)
+"aFm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/turf/open/floor/almayer/emerald2smooth/southeast,
+/area/lv759/oob)
+"aFn" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/almayer/emeraldfull2,
+/area/lv759/oob)
+"aFo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/emerald2smooth/northwest,
+/area/lv759/oob)
+"aFp" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/emerald2smooth/north,
+/area/lv759/oob)
+"aFq" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 8
+	},
+/obj/structure/platform/metal/stair_cut/platform_right,
+/turf/open/floor/almayer/emerald2smooth/north,
+/area/lv759/oob)
+"aFr" = (
+/turf/open/floor/strata/blue3/west,
+/area/lv759/oob)
+"aFs" = (
+/obj/item/paper/crumpled{
+	pixel_x = 20
+	},
+/turf/open/floor/strata/gray_multi_tiles,
+/area/lv759/oob)
+"aFt" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/turf/open/floor/strata/gray_multi_tiles,
+/area/lv759/oob)
+"aFu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/strata/gray_multi_tiles,
+/area/lv759/oob)
+"aFv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/strata/gray_multi_tiles,
+/area/lv759/oob)
+"aFw" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 1;
+	pixel_y = 24
+	},
+/turf/open/floor/strata/blue3/east,
+/area/lv759/oob)
+"aFx" = (
+/obj/structure/stairs/perspective{
+	color = "#6e6e6e";
+	dir = 4
+	},
+/obj/structure/platform/metal/stair_cut/platform_left,
+/turf/open/floor/almayer/emerald2smooth/north,
+/area/lv759/oob)
+"aFy" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/almayer/emerald2smooth/north,
+/area/lv759/oob)
+"aFz" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/almayer/emerald2smooth/northeast,
+/area/lv759/oob)
+"aFA" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/prison,
+/area/lv759/indoors/wy_research_complex/head_research_office)
+"aFB" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/lv759/oob)
+"aFC" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/marked,
+/area/lv759/oob)
+"aFD" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat/marked,
+/area/lv759/oob)
+"aFE" = (
+/obj/effect/alien/weeds/kseries,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = -32
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aFF" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/alien/weeds/kseries,
+/obj/structure/machinery/light/double,
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aFG" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFI" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 4;
+	pixel_x = 2
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFJ" = (
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29
+	},
+/obj/structure/machinery/light/double,
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aFK" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aFL" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/lv759/oob)
+"aFM" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFN" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFO" = (
+/obj/effect/decal/remains/robot{
+	pixel_x = -13;
+	pixel_y = -11
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFP" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = -2
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFQ" = (
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFR" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFS" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFT" = (
+/obj/structure/prop/hybrisa/misc/blood/blood2{
+	pixel_y = -4;
+	pixel_x = -14
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg2,
+/area/lv759/oob)
+"aFU" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = -3
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFV" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFW" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = 7;
+	layer = 2.9
+	},
+/turf/open/floor/almayer/orange/southeast,
+/area/lv759/oob)
+"aFX" = (
+/obj/structure/prop/invuln{
+	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
+	dir = 4;
+	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon_state = "Normal Drone Dead";
+	layer = 2.5;
+	name = "K-series drone";
+	color = "#ffff80";
+	pixel_x = -7;
+	pixel_y = -4;
+	anchored = 0;
+	density = 0
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFY" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 4;
+	pixel_x = -11
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aFZ" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange,
+/area/lv759/oob)
+"aGa" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/orange,
+/area/lv759/oob)
+"aGb" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/almayer/orange,
+/area/lv759/oob)
+"aGc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = -8
+	},
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGe" = (
+/obj/structure/largecrate/empty/case{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/orange/east,
+/area/lv759/oob)
+"aGf" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/almayer/orange/west,
+/area/lv759/oob)
+"aGg" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGh" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGi" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = -8
+	},
+/obj/item/stack/sheet/metal{
+	pixel_y = -8;
+	pixel_x = -4
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGk" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/almayer/orange/east,
+/area/lv759/oob)
+"aGl" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/almayer/orange/west,
+/area/lv759/oob)
+"aGm" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = -3
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGn" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/bed/chair/comfy/orange{
+	dir = 8
+	},
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGo" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 5;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/orange/northeast,
 /area/lv759/oob)
 "aGp" = (
 /obj/effect/alien/weeds/node/kseries,
@@ -11632,9 +12862,179 @@
 	},
 /turf/open/hybrisa/street/underground_unweedable,
 /area/lv759/oob)
+"aGr" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/almayer/orange/northwest,
+/area/lv759/oob)
+"aGs" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 12;
+	pixel_y = -9
+	},
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aGt" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
 "aGu" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/corsat/marked,
+/area/lv759/oob)
+"aGv" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 12;
+	pixel_y = -9
+	},
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGw" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper{
+	layer = 5;
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGy" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGz" = (
+/obj/item/weapon/gun/smg/p90{
+	current_mag = null;
+	pixel_x = -2;
+	pixel_y = -9
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = 2;
+	pixel_y = 15;
+	current_rounds = 0
+	},
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGA" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGB" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = 4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGC" = (
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa{
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGD" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGE" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 4;
+	pixel_x = -9
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGF" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 7;
+	pixel_y = 11
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGG" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21"
+	},
+/turf/open/floor/almayer/orange/southeast,
+/area/lv759/oob)
+"aGH" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_y = 9
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aGI" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = -5;
+	layer = 2.9
+	},
+/turf/open/floor/almayer/orange/southwest,
+/area/lv759/oob)
+"aGJ" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = -3
+	},
+/turf/open/floor/almayer/orange,
 /area/lv759/oob)
 "aGK" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -11650,6 +13050,339 @@
 	pixel_x = -16
 	},
 /turf/open/asphalt/brown,
+/area/lv759/oob)
+"aGL" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGN" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/almayer/orange/east,
+/area/lv759/oob)
+"aGO" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 17;
+	pixel_y = 17
+	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGP" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 8
+	},
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGQ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/platingdmg1,
+/area/lv759/oob)
+"aGR" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGS" = (
+/turf/open/floor/plating/platingdmg3/west,
+/area/lv759/oob)
+"aGT" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGU" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 8
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = 5
+	},
+/turf/open/floor/almayer/mono,
+/area/lv759/oob)
+"aGV" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aGW" = (
+/obj/effect/alien/weeds/kseries,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10"
+	},
+/turf/open/floor/almayer/orange/northeast,
+/area/lv759/oob)
+"aGX" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 5;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/orange/northwest,
+/area/lv759/oob)
+"aGY" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_y = -3
+	},
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aGZ" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 15
+	},
+/obj/effect/decal/hybrisa/trash{
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aHa" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail,
+/turf/open/floor/almayer/orange/north,
+/area/lv759/oob)
+"aHb" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHc" = (
+/obj/structure/prop/invuln{
+	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
+	dir = 4;
+	icon = 'icons/mob/xenos/castes/tier_2/lurker.dmi';
+	icon_state = "Normal Lurker Dead";
+	layer = 2.5;
+	name = "K-series Lurker";
+	color = "#ffff80";
+	pixel_x = -7;
+	pixel_y = -4;
+	anchored = 0;
+	density = 0
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHd" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHe" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHf" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHg" = (
+/obj/effect/decal/hybrisa/WY/WY1,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHh" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = -6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHi" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "csplatter1"
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail,
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/almayer/orange,
+/area/lv759/oob)
+"aHk" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/orange,
+/area/lv759/oob)
+"aHl" = (
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/remains/robot{
+	pixel_x = -10
+	},
+/turf/open/floor/almayer/orange/southeast,
+/area/lv759/oob)
+"aHm" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHn" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 4;
+	pixel_x = 2
+	},
+/obj/effect/decal/remains/robot{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/lv759/oob)
+"aHp" = (
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "Something about a research lab.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/almayer/orange/southwest,
+/area/lv759/oob)
+"aHq" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 9
+	},
+/turf/open/floor/almayer/orange,
+/area/lv759/oob)
+"aHr" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	layer = 3.1;
+	pixel_y = 5;
+	pixel_x = -21
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/orange,
+/area/lv759/oob)
+"aHs" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 7;
+	pixel_y = 7;
+	buckling_x = 7;
+	buckling_y = 7
+	},
+/turf/open/floor/corsat/marked,
 /area/lv759/oob)
 "aIo" = (
 /turf/open/floor/almayer/emeraldcornersmooth/north,
@@ -11805,6 +13538,10 @@
 "aUs" = (
 /obj/structure/barricade/handrail/type_b{
 	dir = 4
+	},
+/obj/structure/barricade/handrail/strata{
+	dir = 8;
+	layer = 4.12
 	},
 /turf/open/floor/almayer/black2/west,
 /area/lv759/oob)
@@ -12077,7 +13814,7 @@
 	color = "#1B1212";
 	dir = 1
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silver,
 /area/lv759/oob)
 "bMq" = (
 /obj/structure/bed/hybrisa/bunkbed1,
@@ -12159,7 +13896,7 @@
 	color = "#1B1212";
 	dir = 8
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silver/east,
 /area/lv759/oob)
 "cbM" = (
 /turf/open/floor/almayer/emeraldcornersmooth/east,
@@ -12307,7 +14044,7 @@
 	color = "#1B1212";
 	dir = 8
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silver/east,
 /area/lv759/oob)
 "cBx" = (
 /turf/closed/shuttle/dropship4/WY/HorizonRunner{
@@ -12800,6 +14537,11 @@
 /obj/structure/barricade/handrail{
 	dir = 1
 	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/emerald2smooth/east,
 /area/lv759/oob)
 "dYZ" = (
@@ -13000,7 +14742,7 @@
 /obj/structure/window/reinforced{
 	color = "#1B1212"
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silver/north,
 /area/lv759/oob)
 "eAn" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -13046,9 +14788,10 @@
 	},
 /obj/structure/window/reinforced{
 	color = "#1B1212";
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silvercorner,
 /area/lv759/oob)
 "eQq" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -13133,12 +14876,6 @@
 /area/lv759/oob)
 "fjh" = (
 /turf/open/floor/almayer/black2/southeast,
-/area/lv759/oob)
-"fjj" = (
-/obj/structure/barricade/handrail/type_b{
-	dir = 1
-	},
-/turf/open/floor/almayer/black2,
 /area/lv759/oob)
 "fjW" = (
 /obj/structure/platform/metal/almayer/west,
@@ -13307,13 +15044,13 @@
 /area/lv759/oob)
 "fQm" = (
 /obj/structure/window/reinforced{
-	color = "#1B1212"
-	},
-/obj/structure/window/reinforced{
 	color = "#1B1212";
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/obj/structure/window/reinforced{
+	color = "#1B1212"
+	},
+/turf/open/floor/almayer/silvercorner/north,
 /area/lv759/oob)
 "fRY" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
@@ -14116,13 +15853,14 @@
 "iwQ" = (
 /obj/structure/window/reinforced{
 	color = "#1B1212";
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/structure/window/reinforced{
 	color = "#1B1212";
 	dir = 8
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silvercorner,
 /area/lv759/oob)
 "ixv" = (
 /obj/effect/decal/warning_stripes{
@@ -14228,7 +15966,10 @@
 /obj/structure/window/reinforced{
 	color = "#1B1212"
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/turf/open/floor/almayer/silvercorner/north,
 /area/lv759/oob)
 "iJq" = (
 /turf/open/floor/prison/yellow/southeast,
@@ -14310,7 +16051,10 @@
 /obj/structure/window/reinforced{
 	color = "#1B1212"
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/obj/structure/machinery/sensortower{
+	pixel_x = 7
+	},
+/turf/open/floor/almayer/silvercorner/east,
 /area/lv759/oob)
 "iWD" = (
 /obj/structure/machinery/power/breakerbox{
@@ -14378,6 +16122,12 @@
 /turf/open/asphalt/brown,
 /area/lv759/oob)
 "jiC" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8;
+	name = "Purple chair";
+	desc = "A simple chair permanently attached to the floor.";
+	pixel_x = 6
+	},
 /turf/open/floor/almayer/emerald2smooth/northeast,
 /area/lv759/oob)
 "jjv" = (
@@ -14793,6 +16543,10 @@
 /turf/open/floor/almayer/floor,
 /area/lv759/oob)
 "lcC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
 /turf/open/floor/almayer/emerald2smooth/north,
 /area/lv759/oob)
 "leD" = (
@@ -15029,6 +16783,7 @@
 /turf/open/floor/almayer/purple/west,
 /area/lv759/indoors/wy_security/checkpoint_east)
 "lOT" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright,
 /turf/open/floor/almayer/emeraldfull2,
 /area/lv759/oob)
 "lQg" = (
@@ -15545,9 +17300,10 @@
 	},
 /obj/structure/window/reinforced{
 	color = "#1B1212";
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silvercorner/west,
 /area/lv759/oob)
 "nQp" = (
 /obj/structure/platform_decoration/metal/almayer_smooth/east,
@@ -15788,13 +17544,15 @@
 "opy" = (
 /obj/structure/window/reinforced{
 	color = "#1B1212";
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
 /obj/structure/window/reinforced{
 	color = "#1B1212";
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/obj/structure/machinery/big_computers/computerwhite/computer3,
+/turf/open/floor/almayer/silvercorner/west,
 /area/lv759/oob)
 "ort" = (
 /turf/closed/shuttle/dropship4/WY/HorizonRunner{
@@ -15890,7 +17648,7 @@
 	color = "#1B1212";
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silver/west,
 /area/lv759/oob)
 "oLJ" = (
 /obj/structure/closet,
@@ -16007,6 +17765,11 @@
 /area/lv759/oob)
 "phJ" = (
 /obj/structure/barricade/handrail,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/emerald2smooth/east,
 /area/lv759/oob)
 "piB" = (
@@ -16318,7 +18081,7 @@
 /area/lv759/oob)
 "qoO" = (
 /obj/structure/barricade/handrail/type_b,
-/turf/open/floor/almayer/black2/north,
+/turf/open/floor/strata/floor3,
 /area/lv759/oob)
 "qpw" = (
 /turf/closed/wall/hybrisa/research/reinforced,
@@ -16355,9 +18118,13 @@
 "qrY" = (
 /obj/structure/window/reinforced{
 	color = "#1B1212";
-	dir = 1
+	dir = 1;
+	layer = 2
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/obj/structure/machinery/big_computers/computerwhite/computer2{
+	pixel_x = 10
+	},
+/turf/open/floor/almayer/silver,
 /area/lv759/oob)
 "qsg" = (
 /obj/effect/landmark/hunter_primary,
@@ -16620,13 +18387,13 @@
 /area/lv759/indoors/wy_research_complex/cafeteriakitchen)
 "roH" = (
 /obj/structure/window/reinforced{
-	color = "#1B1212"
-	},
-/obj/structure/window/reinforced{
 	color = "#1B1212";
 	dir = 8
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/obj/structure/window/reinforced{
+	color = "#1B1212"
+	},
+/turf/open/floor/almayer/silvercorner/east,
 /area/lv759/oob)
 "rpu" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
@@ -17107,6 +18874,10 @@
 /turf/open/floor/prison,
 /area/lv759/oob)
 "tMw" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/largecrate/empty/case,
 /turf/open/floor/almayer/emerald2smooth,
 /area/lv759/oob)
 "tSd" = (
@@ -17148,6 +18919,11 @@
 /turf/open/floor/prison/darkred2/east,
 /area/lv759/indoors/wy_research_complex/dormsfoyer)
 "uaZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
 /turf/open/floor/almayer/emerald2smooth/east,
 /area/lv759/oob)
 "ubv" = (
@@ -17312,7 +19088,7 @@
 	color = "#1B1212";
 	dir = 4
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silver/west,
 /area/lv759/oob)
 "uNm" = (
 /obj/structure/platform/metal/almayer_smooth,
@@ -18306,7 +20082,7 @@
 /obj/structure/machinery/door/window/southleft{
 	color = "#1B1212"
 	},
-/turf/open/floor/hybrisa/tile/tilewhite,
+/turf/open/floor/almayer/silver/north,
 /area/lv759/oob)
 
 (1,1,1) = {"
@@ -79702,8 +81478,8 @@ cDM
 ajQ
 cDM
 avk
-qYq
-ocK
+aEp
+aEm
 avf
 avf
 ocK
@@ -80531,9 +82307,9 @@ gdH
 frB
 gdH
 kRD
-lOT
-lOT
-lOT
+aEC
+aEH
+aEC
 kRD
 kRD
 kRD
@@ -80544,9 +82320,9 @@ kRD
 kRD
 kRD
 kRD
-lOT
-lOT
-lOT
+aEg
+aDZ
+aDQ
 kRD
 kRD
 auZ
@@ -80694,28 +82470,28 @@ awQ
 cDM
 cDM
 qpw
-fMa
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-nyj
+aFo
+aEa
+aEa
+aEa
+aEn
+aEa
+aEa
+aED
+aEz
+aEx
+aEw
+aEv
+aEa
+aEa
+aEa
+aEa
+aEa
+aEn
+aEh
+aEa
+aDR
+aDF
 kRD
 asC
 cDM
@@ -80881,7 +82657,7 @@ uaZ
 uaZ
 uaZ
 uaZ
-uaZ
+aEb
 cbM
 tMw
 kRD
@@ -81030,28 +82806,28 @@ awW
 cDM
 akC
 aAe
-lcC
-tMw
-lXU
-iZO
-iZO
-iZO
-iZO
-iZO
-iZO
-iZO
+aFp
+aDK
+aEZ
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
 aUs
 aUs
-iZO
-iZO
-iZO
-iZO
-iZO
-iZO
-iZO
-uFz
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEi
+aEc
 lcC
-tMw
+aDG
 kRD
 kRD
 awn
@@ -81198,28 +82974,28 @@ awX
 cDM
 aAf
 qpw
-lcC
-tMw
-mEu
+aFq
+aFh
+aFa
 eQc
 czO
 cbb
 czO
 czO
 czO
-iWq
+roH
 poe
 dra
 eQc
 czO
-czO
-czO
 cbb
 czO
+czO
+czO
 roH
-aND
+aEd
 lcC
-tMw
+aDH
 kRD
 kRD
 anD
@@ -81366,11 +83142,11 @@ awX
 cDM
 cDM
 qpw
-lcC
-tMw
-mEu
-bLZ
-hZR
+aFr
+aFi
+aFb
+aEu
+aEq
 hZR
 hZR
 hZR
@@ -81385,9 +83161,9 @@ hZR
 hZR
 hZR
 ymi
-aND
+aEd
 lcC
-tMw
+aDI
 kRD
 eYg
 cDM
@@ -81534,10 +83310,10 @@ iqP
 cDM
 cDM
 aAe
-lcC
-tMw
-mEu
-qrY
+aFj
+aFj
+aFc
+bLZ
 hZR
 hZR
 hZR
@@ -81553,9 +83329,9 @@ hZR
 hZR
 hZR
 ezV
-aND
-lcC
-tMw
+aEd
+aDS
+aDJ
 kRD
 mTp
 cDM
@@ -81702,28 +83478,28 @@ iqP
 cDM
 cDM
 qpw
-lcC
-tMw
-mEu
-qrY
+aFj
+aFj
+aFd
+aEu
 hZR
 hZR
 hZR
 hZR
 hZR
-ezV
+aEy
 gWg
 oji
-qrY
-hZR
+aEt
+aEq
 hZR
 hZR
 hZR
 hZR
 ezV
-aND
-lcC
-tMw
+aEd
+aDU
+aDK
 kRD
 mTp
 cDM
@@ -81870,15 +83646,15 @@ iqP
 cDM
 aAg
 qpw
-lcC
-tMw
-mEu
-opy
+aFs
+aFj
+gIT
+aET
 uLW
 oLq
 uLW
 uLW
-uLW
+aEA
 iJj
 lpC
 tpg
@@ -81889,9 +83665,9 @@ uLW
 oLq
 uLW
 fQm
-aND
+aEd
 lcC
-tMw
+aDL
 kRD
 mTp
 cDM
@@ -82038,8 +83814,8 @@ iqP
 awz
 akC
 qpw
-lcC
-tMw
+aFt
+aFj
 qoO
 bMO
 nbQ
@@ -82057,9 +83833,9 @@ nbQ
 nYZ
 qnK
 bsr
-fjj
+aEd
 lcC
-tMw
+aDK
 frB
 reI
 cDM
@@ -82206,8 +83982,8 @@ aAn
 aAl
 cDM
 qHO
-lcC
-tMw
+aFu
+aFj
 qoO
 ddN
 qpQ
@@ -82225,9 +84001,9 @@ qpQ
 nYZ
 gDS
 yaT
-fjj
+aEd
 lcC
-tMw
+aDK
 qHO
 cDM
 cDM
@@ -82374,8 +84150,8 @@ iqP
 cDM
 cDM
 qHO
-lcC
-tMw
+aFv
+aFj
 qoO
 pbU
 cDv
@@ -82393,9 +84169,9 @@ cDv
 nYZ
 rpu
 vka
-fjj
-lcC
-tMw
+aEd
+aDV
+aDK
 qHO
 cDM
 cDM
@@ -82542,14 +84318,14 @@ iqP
 auz
 cDM
 qHO
-lcC
-tMw
-mEu
-iwQ
-czO
+aFu
+aFj
+aFb
+aEU
+aEO
 cbb
 czO
-czO
+aEF
 czO
 iWq
 lpC
@@ -82560,10 +84336,10 @@ czO
 czO
 cbb
 czO
-roH
-aND
+aEj
+aEd
 lcC
-tMw
+aDK
 qHO
 cDM
 cDM
@@ -82710,28 +84486,28 @@ vFF
 cDM
 akC
 qpw
-lcC
-tMw
-mEu
+aFt
+aFj
+aFc
 bLZ
+aEP
 hZR
-hZR
-hZR
-hZR
-uLW
-iJj
+aEI
+aEG
+aEB
+fQm
 gWg
 oji
-qrY
+aEu
 hZR
-hZR
+aEq
 hZR
 hZR
 hZR
 ymi
-aND
+aEd
 lcC
-tMw
+aDK
 frB
 eYg
 cDM
@@ -82878,28 +84654,28 @@ aAo
 aaC
 aAh
 qpw
-lcC
-tMw
-mEu
-qrY
-hZR
-hZR
-hZR
+aFj
+aFj
+aFd
+aEV
+aEQ
+aEL
+aEJ
 ezV
 kjK
 hAM
 ihp
 qrX
-qrY
+aEu
 hZR
 hZR
 hZR
 hZR
 hZR
 ezV
-aND
+aEd
 lcC
-tMw
+aDL
 kRD
 mTp
 cDM
@@ -83046,11 +84822,11 @@ vRW
 aaC
 aaC
 qpw
-lcC
-tMw
-mEu
-qrY
-hZR
+aFw
+aFk
+gIT
+aEX
+aER
 hZR
 hZR
 ymi
@@ -83063,11 +84839,11 @@ hZR
 hZR
 hZR
 hZR
-abL
+hZR
 ezV
-aND
+aEd
 lcC
-tMw
+aDK
 kRD
 mTp
 cDM
@@ -83214,14 +84990,14 @@ aaB
 aaB
 aaB
 qpw
-lcC
-tMw
-mEu
-opy
+aFx
+aFl
+aFe
+aEY
+aES
+aEM
 uLW
-oLq
-uLW
-iJj
+fQm
 qPl
 qPl
 qPl
@@ -83232,10 +85008,10 @@ uLW
 uLW
 oLq
 uLW
-fQm
-aND
+aEk
+aEd
 lcC
-tMw
+aDK
 kRD
 mTp
 cDM
@@ -83382,28 +85158,28 @@ aaB
 aaB
 aAi
 qpw
+aFy
+aDK
+aFf
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEl
+aEe
 lcC
-tMw
-qYq
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-ocK
-fjh
-lcC
-tMw
+aDK
 kRD
 mTp
 cDM
@@ -83552,26 +85328,26 @@ aAj
 qpw
 lcC
 hIN
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
+aEa
+aEh
+aEa
+aEa
+aEa
+aEa
 hun
 hun
 hun
 hun
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
-mRU
+aEa
+aEa
+aEr
+aEa
+aEa
+aEa
+aEa
+aEa
 aIo
-tMw
+aDM
 kRD
 reI
 cDM
@@ -83739,7 +85515,7 @@ uaZ
 uaZ
 uaZ
 uaZ
-mIN
+aDN
 kRD
 kRD
 cDM
@@ -83886,9 +85662,9 @@ kRD
 kRD
 kRD
 qpw
-jiC
-mIN
-vbZ
+aFz
+aFm
+aFg
 vbZ
 vbZ
 fMa
@@ -83903,11 +85679,11 @@ mRU
 nyj
 vbZ
 vbZ
-vbZ
+aEo
 fMa
 mRU
-mRU
-nyj
+aDW
+aDO
 kRD
 kRD
 qHO
@@ -84055,27 +85831,27 @@ jaC
 ozb
 qpw
 qpw
-lOT
+aFn
+aEo
 vbZ
 vbZ
-vbZ
-jiC
-uaZ
+aEN
+aEK
 qpw
 spC
 spC
 spC
 spC
 qpw
-uaZ
+aEs
 mIN
 vbZ
-vbZ
+aEo
 vbZ
 jiC
-uaZ
-uaZ
-mIN
+aEf
+aDX
+aDP
 kRD
 kRD
 cDM
@@ -84242,7 +86018,7 @@ qHO
 qHO
 oAY
 kRD
-lOT
+aDY
 lOT
 kRD
 vYk
@@ -125261,10 +127037,10 @@ jpm
 rNZ
 qFU
 ady
-ady
-ady
-ady
-ady
+ahI
+ahI
+ahI
+ahI
 iKa
 spC
 spC
@@ -125416,7 +127192,7 @@ qFU
 lHi
 jpm
 jpm
-jpm
+aFL
 rNZ
 qFU
 qFU
@@ -125432,7 +127208,7 @@ aet
 spC
 spC
 spC
-kRD
+qpw
 spC
 spC
 spC
@@ -125566,7 +127342,7 @@ aet
 aet
 aet
 aet
-qpw
+aet
 frB
 qHO
 qHO
@@ -125584,9 +127360,9 @@ qpw
 frB
 qHO
 qHO
-qHO
+awn
 frB
-qpw
+aet
 aet
 aet
 aet
@@ -125600,7 +127376,7 @@ aet
 spC
 spC
 spC
-kRD
+qpw
 spC
 spC
 spC
@@ -125734,27 +127510,27 @@ hAa
 hAa
 hAa
 hAa
-qpw
-sOR
-jpm
-jpm
-jpm
+aet
+aHj
+cDM
+aHc
+amO
 acy
-nCG
-nCG
+aGP
+aGL
 sOR
-jpm
-jpm
-jpm
+cDM
+awy
+cDM
 acy
-nCG
-nCG
+aGj
+aGc
 sOR
-jpm
-jpm
-jpm
-acy
-qpw
+cDM
+awf
+anD
+aFE
+aet
 hAa
 hAa
 hAa
@@ -125768,7 +127544,7 @@ iPn
 spC
 spC
 spC
-kRD
+qpw
 spC
 spC
 spC
@@ -125902,27 +127678,27 @@ hAa
 hAa
 hAa
 hAa
-qpw
-sOR
-jpm
-jpm
-jpm
+aet
+aHk
+awy
+aHd
+cDM
 acy
-nCG
+aGQ
+aGM
+sOR
+akC
+akC
+cDM
+acy
+aGd
 nCG
 sOR
-jpm
-jpm
-jpm
-acy
-nCG
-nCG
-sOR
-jpm
-jpm
-jpm
-acy
-qpw
+awy
+cDM
+aFM
+aFF
+aet
 hAa
 hAa
 hAa
@@ -125936,7 +127712,7 @@ iPn
 spC
 spC
 spC
-kRD
+qpw
 spC
 spC
 spC
@@ -126071,24 +127847,24 @@ hAa
 hAa
 hAa
 frB
-hJp
-jpm
-jpm
-jpm
-acy
-nCG
-nCG
+aHl
+auS
+aHd
+cDM
+aGV
+aGR
+aGd
 sOR
-jpm
-jpm
-jpm
+awf
+cDM
+cDM
 acy
-nCG
-nCG
+aGd
+aGd
 sOR
-jpm
-jpm
-jpm
+cDM
+auz
+aFN
 acz
 frB
 hAa
@@ -126104,7 +127880,7 @@ iPn
 aaU
 aaU
 aaU
-kRD
+qpw
 spC
 spC
 spC
@@ -126239,25 +128015,25 @@ wfX
 wfX
 wfX
 qHO
-jpm
-jpm
-jpm
-jpm
-acz
-iuV
-iuV
-hJp
-jpm
-jpm
-jpm
-acz
-iuV
-iuV
-hJp
-jpm
-jpm
-jpm
-jpm
+aHm
+aua
+cDM
+anD
+aGW
+aGN
+aGN
+aGG
+aGC
+aGx
+cDM
+aGo
+aGk
+aGe
+aFW
+amO
+cDM
+aFO
+aFG
 qHO
 wfX
 wfX
@@ -126272,7 +128048,7 @@ csI
 jpm
 jpm
 jpm
-kRD
+qpw
 spC
 spC
 spC
@@ -126407,26 +128183,27 @@ jpm
 jpm
 jpm
 qHO
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
+cDM
+aHg
+awy
+cDM
+anD
+awf
+awy
+aGH
+aGD
+aGy
+cDM
+cDM
+cDM
+amO
+aFX
+cDM
+cDM
+cDM
+aFH
 qHO
+aFB
 jpm
 jpm
 jpm
@@ -126439,8 +128216,7 @@ jpm
 jpm
 jpm
 jpm
-jpm
-kRD
+qpw
 spC
 spC
 spC
@@ -126575,6 +128351,26 @@ jpm
 jpm
 jpm
 qHO
+aHn
+cDM
+cDM
+cDM
+anD
+cDM
+cDM
+anC
+aGE
+aGz
+cDM
+cDM
+cDM
+cDM
+aFY
+cDM
+awf
+cDM
+akC
+aFC
 jpm
 jpm
 jpm
@@ -126588,27 +128384,7 @@ jpm
 jpm
 jpm
 jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-qHO
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-kRD
+qpw
 spC
 spC
 spC
@@ -126742,27 +128518,27 @@ nEQ
 nEQ
 nEQ
 nEQ
-qHO
-jpm
-jpm
-jpm
-jpm
-acA
+aHs
+aHo
+auz
+aHe
+cDM
+aGX
+aGS
 uEw
-uEw
+aGI
+cDM
+aGA
+cDM
+aGr
+aGl
+aGf
 acB
-jpm
-jpm
-jpm
-acA
-uEw
-uEw
-acB
-jpm
-jpm
-jpm
-jpm
-qHO
+cDM
+cDM
+awy
+aFI
+aFD
 nEQ
 nEQ
 nEQ
@@ -126776,7 +128552,7 @@ jXs
 jpm
 jpm
 kRD
-kRD
+qpw
 spC
 spC
 spC
@@ -126911,24 +128687,24 @@ hAa
 hAa
 hAa
 frB
-acB
-jpm
-jpm
-jpm
-acy
-nCG
-nCG
-sOR
-jpm
-jpm
-jpm
-acy
-nCG
+aHp
+auS
+aHe
+cDM
+aGY
+aGh
 nCG
 sOR
-jpm
-jpm
-jpm
+cDM
+cDM
+aGv
+acy
+nCG
+aGg
+aFZ
+cDM
+aFS
+aFP
 acA
 frB
 hAa
@@ -127078,27 +128854,27 @@ hAa
 hAa
 hAa
 hAa
-qpw
-sOR
-jpm
-jpm
-jpm
-acy
-nCG
-nCG
-sOR
-jpm
-jpm
-jpm
-acy
-nCG
-nCG
-sOR
-jpm
-jpm
-jpm
-acy
-qpw
+aet
+aHq
+aHh
+aHf
+aHb
+aGZ
+aGT
+aGO
+aGJ
+aFR
+aGB
+aGw
+aGs
+aGm
+aGh
+aGa
+akC
+aFT
+aFQ
+aFJ
+aet
 hAa
 hAa
 hAa
@@ -127246,27 +129022,27 @@ aet
 aet
 aet
 hAa
-qpw
-sOR
-jpm
-jpm
-jpm
-acy
-nCG
-nCG
-sOR
-jpm
-jpm
-jpm
-acy
-nCG
-nCG
-sOR
-jpm
-jpm
-jpm
-acy
-qpw
+aet
+aHr
+aHi
+aFR
+aGB
+aHa
+aGU
+aGn
+aGb
+aGF
+aFU
+aFR
+aGt
+aGn
+aGi
+aGb
+aFV
+aFU
+aFR
+aFK
+aet
 hAa
 kRD
 kRD
@@ -127924,7 +129700,7 @@ aBR
 aBR
 aBR
 aBI
-aBI
+aFA
 aBI
 aBI
 aBR
@@ -127932,7 +129708,7 @@ aBR
 aBR
 aBI
 aCw
-aBI
+aFA
 aBI
 aBR
 aBR
@@ -128245,7 +130021,7 @@ euM
 aBB
 aDC
 aDb
-aBI
+aFA
 aBR
 aBR
 aBV
@@ -128283,7 +130059,7 @@ aBR
 aBV
 aBR
 aBR
-aBI
+aFA
 aBH
 aBC
 aBB

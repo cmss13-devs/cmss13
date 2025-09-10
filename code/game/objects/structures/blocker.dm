@@ -64,7 +64,7 @@
 
 /obj/structure/blocker/door
 	name = "shutter"
-	desc = "Containment shutter. Used during routine testing to minimse the risk of a containment breach."
+	desc = "Containment shutter. Used during routine testing to reduce the risk of a containment breach."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shutter"
 	opacity = TRUE
@@ -76,10 +76,10 @@
 		return INITIALIZE_HINT_QDEL
 
 	dir = pick(CARDINAL_DIRS)
-	QDEL_IN(src, time_to_dispel + rand(-5 SECONDS, 5 SECONDS))
+	QDEL_IN(src, time_to_dispel)
 
 /obj/structure/blocker/door/attack_hand(mob/M)
-	to_chat(M, SPAN_NOTICE("Won't budge, will have to wait until the all-clear is sent."))
+	to_chat(M, SPAN_NOTICE("Won't budge, you'll have to wait until the all-clear is sent."))
 
 /obj/structure/blocker/door/attack_alien(M)
 	attack_hand(M)

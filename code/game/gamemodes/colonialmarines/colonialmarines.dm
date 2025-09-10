@@ -77,7 +77,7 @@
 	name = "door blocker"
 	icon_state = "o_red"
 
-	var/time_to_dispel = 60 SECONDS
+	var/time_to_dispel = 1 MINUTES
 
 /obj/effect/landmark/lv624/door_blocker/Initialize(mapload, ...)
 	. = ..()
@@ -377,6 +377,7 @@
 	if(SSmapping.configs[GROUND_MAP].announce_text)
 		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
 		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
+		lore_announcement()
 
 /datum/game_mode/proc/ares_command_check()
 	var/role_in_charge
@@ -439,6 +440,15 @@
 	ai_silent_announcement("Bioscan complete. No unknown lifeform signature detected.", ".V")
 	ai_silent_announcement("Saving operational report to archive.", ".V")
 	ai_silent_announcement("Commencing final systems scan in 3 minutes.", ".V")
+
+/datum/game_mode/colonialmarines/proc/lore_announcement()
+	//A proc that will queue up announcements for the lore of the map.
+	switch(SSmapping.configs[GROUND_MAP].map_name)
+		if(MAP_WHITE_VENIR_RESEARCH_FACILITY)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention all White Venir personnel. K-Series hive testing in the northern quadrant is in progress and is reaching 90% maturation levels. We’ll be commencing the secondary trials with the Prime hive in the eastern quadrant at this time.\n\nEast Sector Overwatch be prepared to receive Prime hive larvae into your containment area, and commence observation protocols. Code Blue lockdown is in progress in your sector. We will introduce the K-Series to your area for a live-combat exercise once Prime hive maturation is at 80%.\n\nFurthermore, all personnel are reminded that elements of Azure-15 of the Whiteguard PMC and a detachment of the USCM are en-route to assist in testing and to take delivery of vital cargo. Azure-15 has just arrived, the USCM are expected to arrive within the hour, over.", "White Venir Central Announcement", 'sound/AI/commandreport.ogg'), 5 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention, attention! We are experiencing a massive K-Series xenomorph containment breach! Full site lockdown initiated, all guards report to combat stations.", "White Venir Central Announcement", 'sound/AI/commandreport.ogg'), 30 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Attention! We think Azure-15 has lured the bulk of the K-Series off site, but we are experiencing massive power failures, the Prime hive containment zone is at risk. All surviving personnel prepa%^@!&*------", "White Venir Central Announcement", 'sound/AI/commandreport.ogg'), 35 SECONDS)
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(venir_announcement), "Automated Message: Prime hive containment blastdoor failure detected", "Automated Facility Announcement", 'sound/AI/commandreport.ogg'), 45 SECONDS)
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

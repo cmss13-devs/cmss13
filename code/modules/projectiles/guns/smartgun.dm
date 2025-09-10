@@ -912,7 +912,7 @@
 
 /obj/item/weapon/gun/smartgun/cia_grs
 	name = "\improper R56A2 'Ronin' smartgun"
-	desc = "The actual firearm in the 4-piece M56A2R Smartgun system. Special order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56B.\nAlt-click it to open the feed cover and allow for reloading."
+	desc = "The actual firearm in the 2-piece R56A2 Smartgun system, a custom built smartgun platform used by the Global Response Staff."
 	icon_state = "m50r"
 	item_state = "m50r"
 	gun_faction = FACTION_CIA

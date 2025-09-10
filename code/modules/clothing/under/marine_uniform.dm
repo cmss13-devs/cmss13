@@ -964,6 +964,8 @@
 /obj/item/clothing/under/marine/veteran/marsoc/grs
 	name = "GRS Uniform"
 	desc = "A black uniform for GRS personnel. Designed to be comfortable and help blend into dark enviorments."
+	icon_state = "cia_jumpsuit"
+	worn_state = "cia_jumpsuit"
 
 //=========================//PMC\\================================\\
 

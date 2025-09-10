@@ -1305,11 +1305,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/sof/grs
 	name = "GRS Operator Helmet"
 	desc = "A GRS variant of the standard M10 pattern. The front plate is reinforced. This one is a lot more tight fitting, also protects from flashbangs."
-	icon_state = "cmb_helmet"
-	icon = 'icons/obj/items/clothing/hats/hats_by_faction/CMB.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/CMB.dmi',
-	)
+	icon_state = "cia_helmet"
 	armor_energy = CLOTHING_ARMOR_HIGH
 	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH

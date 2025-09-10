@@ -168,16 +168,16 @@ SUBSYSTEM_DEF(hijack)
 	var/message = ""
 
 	for(var/area/cycled_area as anything in progress_areas)
-		message += "[cycled_area] - [cycled_area.power_equip ? "Online" : "Offline"]\n"
+		message += "[cycled_area] - [cycled_area.power_equip ? "Онлайн" : "Оффлайн"]\n"
 		progress_areas[cycled_area] = cycled_area.power_equip
 
-	message += "\nDue to low orbit, extra fuel is required for non-surface evacuations.\nMaintain fueling functionality for optimal evacuation conditions."
+	message += "\nИз-за низкой орбиты для эвакуации не с поверхности требуется дополнительное топливо.\nПоддерживайте функциональность заправочных станций для оптимальных условий эвакуации."
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
 ///Called when an area power status is changed to announce that it has been changed
 /datum/controller/subsystem/hijack/proc/announce_area_power_change(area/changed_area)
-	var/message = "[changed_area] - [changed_area.power_equip ? "Online" : "Offline"]"
+	var/message = "[changed_area] - [changed_area.power_equip ? "Онлайн" : "Оффлайн"]"
 
 	marine_announcement(message, HIJACK_ANNOUNCE)
 
@@ -208,23 +208,23 @@ SUBSYSTEM_DEF(hijack)
 
 		switch(announce)
 			if(1)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are a quarter of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Носители находятся на четверти пути к своей цели. Отключите следующие области: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 			if(2)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are half way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Носители находятся на полпути к своей цели. Отключите следующие области: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 			if(3)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls are three quarters of the way towards their goals. Disable the following areas: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Носители почти достигли своей цели! Отключите следующие области: [xeno_warning_areas]"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 			if(4)
-				xeno_announcement(SPAN_XENOANNOUNCE("The talls have completed their goals!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+				xeno_announcement(SPAN_XENOANNOUNCE("Носители достигли своей цели!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 
 	switch(announce)
 		if(1)
-			marine_announcement("Emergency fuel replenishment is at 25 percent. Lifeboat early launch is now available. Recommendation: wait for 100% fuel for safety purposes.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Экстренное восполнение запасов топлива составляет 25 процентов. Спасательный под доступен для досрочного запуска. Рекомендация: дождаться 100 процентов топлива в целях безопасности.[marine_warning_areas ? "\nДля увеличения скорости восстановите питание в следующих зонах: [marine_warning_areas]" : " Все заправочные станции работают."]", HIJACK_ANNOUNCE)
 		if(2)
-			marine_announcement("Emergency fuel replenishment is at 50 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Экстренное восполнение запасов топлива составляет 50 процентов.[marine_warning_areas ? "\nЧтобы увеличить скорость, восстановите питание в следующих зонах: [marine_warning_areas]" : " Все заправочные станции работают в штатном режиме."]", HIJACK_ANNOUNCE)
 		if(3)
-			marine_announcement("Emergency fuel replenishment is at 75 percent.[marine_warning_areas ? "\nTo increase speed, restore power to the following areas: [marine_warning_areas]" : " All fueling areas operational."]", HIJACK_ANNOUNCE)
+			marine_announcement("Экстренное восполнение запасов топлива составляет 75 процентов.[marine_warning_areas ? "\nЧтобы увеличить скорость, восстановите питание в следующих зонах: [marine_warning_areas]" : " Все заправочные станции работают в штатном режиме."]", HIJACK_ANNOUNCE)
 		if(4)
-			marine_announcement("Emergency fuel replenishment is at 100 percent. Safe utilization of lifeboats and pods is now possible.", HIJACK_ANNOUNCE)
+			marine_announcement("Экстренное восполнение запасов топлива составляет 100 процентов. Обеспечивается безопасная эксплуатация спасательных подов и капсул.", HIJACK_ANNOUNCE)
 			if(!admin_sd_blocked)
 				addtimer(CALLBACK(src, PROC_REF(unlock_self_destruct)), 8 SECONDS)
 
@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/initiate_evacuation()
 	if(evac_status == EVACUATION_STATUS_NOT_INITIATED && !(evac_admin_denied & FLAGS_EVACUATION_DENY))
 		evac_status = EVACUATION_STATUS_INITIATED
-		ai_announcement("Attention. Emergency. All personnel must evacuate immediately.", 'sound/AI/evacuate.ogg')
+		ai_announcement("Тревога. Чрезвычайная ситуация. Всему персоналу необходимо немедленно эвакуироваться.", 'sound/AI/evacuate.ogg')
 
 		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))
@@ -269,7 +269,7 @@ SUBSYSTEM_DEF(hijack)
 	if(evac_status == EVACUATION_STATUS_INITIATED)
 		evac_status = EVACUATION_STATUS_NOT_INITIATED
 		deactivate_lifeboats()
-		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
+		ai_announcement("Эвакуация была отменена.", 'sound/AI/evacuate_cancelled.ogg')
 
 		for(var/obj/structure/machinery/status_display/cycled_status_display in GLOB.machines)
 			if(is_mainship_level(cycled_status_display.z))
@@ -299,7 +299,7 @@ SUBSYSTEM_DEF(hijack)
 /datum/controller/subsystem/hijack/proc/unlock_self_destruct()
 	sd_time_remaining = sd_max_time
 	sd_unlocked = TRUE
-	marine_announcement("Fuel reserves full. Manual detonation of fuel reserves by overloading the on-board fusion reactors now possible.", HIJACK_ANNOUNCE)
+	marine_announcement("Запасы топлива полностью заполнены. Возможна ручная детонация запасов топлива путем перегрузки бортовых термоядерных реакторов.", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/on_generator_overload(obj/structure/machinery/power/reactor/source, new_overloading)
 	SIGNAL_HANDLER
@@ -312,7 +312,7 @@ SUBSYSTEM_DEF(hijack)
 			if(!length(hive.totalXenos))
 				continue
 
-			xeno_announcement(SPAN_XENOANNOUNCE("The talls may be attempting to take their ship down with them in Engineering, stop them!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
+			xeno_announcement(SPAN_XENOANNOUNCE("Похоже носители пытаются уничтожить свой корабль вместе с собой в Инженерном отсеке, остановите их!"), hive.hivenumber, XENO_HIJACK_ANNOUNCE)
 
 	adjust_generator_overload_count(new_overloading ? 1 : -1)
 
@@ -347,7 +347,7 @@ SUBSYSTEM_DEF(hijack)
 
 /datum/controller/subsystem/hijack/proc/announce_sd_halfway()
 	ares_sd_announced = TRUE
-	marine_announcement("ALERT: Fusion reactor meltdown has reached fifty percent.", HIJACK_ANNOUNCE)
+	marine_announcement("ТРЕВОГА: Расплавление термоядерного реактора достигло пятидесяти процентов.", HIJACK_ANNOUNCE)
 
 /datum/controller/subsystem/hijack/proc/detonate_sd()
 	set waitfor = FALSE
@@ -364,7 +364,7 @@ SUBSYSTEM_DEF(hijack)
 	sleep(7 SECONDS)
 	shakeship(2, 10, TRUE)
 
-	marine_announcement("ALERT: Fusion reactors dangerously overloaded. Runaway meltdown in reactor core imminent.", HIJACK_ANNOUNCE)
+	marine_announcement("ТРЕВОГА: Термоядерные реакторы находятся в состоянии критической перегрузки. Неизбежно расплавление активной зоны реактора.", HIJACK_ANNOUNCE)
 	sleep(5 SECONDS)
 
 	var/sound_picked = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')

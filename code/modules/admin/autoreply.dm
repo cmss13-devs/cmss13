@@ -11,156 +11,153 @@ GLOBAL_REFERENCE_LIST_INDEXED(mentorreplies, /datum/autoreply/mentor, title)
 
 /// Admin Replies
 /datum/autoreply/admin/handled
-	title = "Being Handled"
-	message = "Staff are aware of this issue and it is being handled"
+	title = "В процессе решения" // SS220 - EDIT
+	message = "Разработчики знают о проблеме и уже работают над её решением." // SS220 - EDIT
 	closer = FALSE
 
 /datum/autoreply/admin/icissue
-	title = "IC Issue"
-	message = "Your issue has been determined by an administrator to be an in character issue and does NOT require administrator intervention at this time. For further resolution you should pursue options that are in character."
+	title = "РП-отыгрыш" // SS220 - EDIT
+	message = "Администратор определил, что ваш вопрос соответствует РП-отыгрышу и не требует вмешательства. Попробуйте найти решение соответствующее характеру ситуации." // SS220 - EDIT
 
 /datum/autoreply/admin/bug
-	title = "Bug Report"
+	title = "L: Сообщение об ошибке" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/admin/bug)
-	message = "Please report all bugs on our <a href='[CONFIG_GET(string/githuburl)]'>Github</a>. Administrative staff are unable to fix most bugs on a round to round basis and only round critical bugs, or exploits, should be ahelped."
+	message = "Пожалуйста, сообщайте обо всех ошибках в нашем <a href='[CONFIG_GET(string/githuburl)]'>Github</a> репозитории. К сожалению, большинство ошибок невозможно исправить за короткое время, за исключением критических ошибок или эксплойтов, о которых также следует сообщить через \"AdminHelp\"." // SS220 - EDIT
 
 /datum/autoreply/admin/marine
-	title = "Marine Guide"
+	title = "H: Руководство для морпехов" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/admin/marine)
-	message = "Your action can be answered by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Marine Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "На большинство ваших вопросов может ответить <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Краткое руководство по морпехам</a>. Если что-то непонятно или у вас есть другой вопрос, пожалуйста, создайте новый тикет в \"MentorHelp\" или \"AdminHelp\"." // SS220 - EDIT
 
 /datum/autoreply/admin/xeno
-	title = "Xeno Guide"
+	title = "X: Руководство для ксеноморфов" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/admin/xeno)
-	message = "Your action can be answered by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Xeno Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "На большинство ваших вопросов может ответить <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Краткое руководство по ксеноморфам</a>. Если что-то непонятно или у вас есть другой вопрос, пожалуйста, создайте новый тикет в \"MentorHelp\" или \"AdminHelp\"." // SS220 - EDIT
 
-/datum/autoreply/admin/changelog
-	title = "Changelog"
-	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+ON_CONFIG_LOAD(/datum/autoreply/admin/changelog) // SS220 - EDIT
+	title = "C: Список изменений" // SS220 - EDIT
+	message = "Ответ на ваш вопрос можно найти в списке изменений. Перейдите во вкладку \"OOC\" и выберите пункт \"Changelog\" в правом верхнем углу экрана для просмотра списка или же зайдите на наш Discord-сервер SS220 <a href='[CONFIG_GET(string/discordurl)]'>здесь</a>." // SS220 - EDIT
 
 /datum/autoreply/admin/intended
-	title = "Intended"
-	message = "This is an intended feature and therefore does not need admin intervention."
+	title = "Предусмотренный функционал" // SS220 - EDIT
+	message = "Это предусмотренный функционал, поэтому в данном случае не требуется вмешательство администрации." // SS220 - EDIT
 
 /datum/autoreply/admin/event
-	title = "Event"
-	message = "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
+	title = "A: Специальное событие" // SS220 - EDIT
+	message = "В настоящее время проводится специальное событие, и многие вещи могли быть изменены или удалены, однако обычные правила продолжают действовать, кроме тех, о которых сообщил администратор." // SS220 - EDIT
 
 /datum/autoreply/admin/whitelist
-	title = "Whitelist Issue"
+	title = "L: Нарушение правил" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/admin/whitelist)
-	message = "Staff are unable to handle most whitelist rulebreaks in-game, please make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
+	message = "В большинстве случаев нарушения правил не могут быть рассмотрены непосредственно в игре. Пожалуйста, сообщите об этом на нашем Discord-сервере SS220 <a href='[CONFIG_GET(string/discordurl)]'>здесь</a>." // SS220 - EDIT
 
 /datum/autoreply/admin/clear_cache
-	title = "Clear Cache"
-	message = "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
+	title = "C: Очистка кеша" // SS220 - EDIT
+	message = "Чтобы очистить кэш, вам нужно нажать на значок шестерёнки, расположенной в правом верхнем углу клиента BYOND, и выбрать пункт меню \"Preferences\". В открывшемся окне перейдите во вкладку \"Game\" и нажмите кнопку \"Clear Cache\". В некоторых случаях необходимо вручную удалить кэш. Для этого перейдите во вкладку \"Advanced\" и нажмите кнопку \"Open User Directory\", затем удалите папку \"cache\"." // SS220 - EDIT
 	closer = FALSE
 
 /datum/autoreply/admin/lobby
-	title = "Cryo and Ghost to Lobby"
-	message = "Staff have approved your request to be returned to the lobby. In order to do so, you must enter a cryogenics bay and ghost. You will be then manually returned to the lobby by staff."
+	title = "Возврат в лобби" // SS220 - EDIT
+	message = "Администрация одобрила вашу просьбу о возвращении в лобби. Для этого вы должны войти в криохранилище и стать призраком, после чего вас переместят в главное меню." // SS220 - EDIT
 	closer = FALSE
 ////////////////////////////
 /////   MENTOR HELPS   /////
 ////////////////////////////
 
 /datum/autoreply/mentor/staff_issue
-	title = "A: Staff Issue"
-	message = "This is not something that mentors can help with, please contact the staff team via AdminHelp."
+	title = "A: Вне компетенции" // SS220 - EDIT
+	message = "Менторы, к сожалению, не смогут помочь вам в решении этого вопроса. Пожалуйста, свяжитесь с командой через \"AdminHelp\"." // SS220 - EDIT
 
 /datum/autoreply/mentor/whitelist
-	title = "L: Whitelist Issue"
+	title = "L: Нарушение правил" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/whitelist)
-	message = "This is not something that mentors can help with, please contact the staff team via AdminHelp. Staff are unable to handle most whitelist rulebreaks in-game and you are likely to be told to make a player report on the forums, <a href='[CONFIG_GET(string/playerreport)]'>here</a>."
+	message = "Менторы, к сожалению, не смогут помочь вам в решении этого вопроса. Пожалуйста, свяжитесь с администрацией через \"AdminHelp\". В большинстве случаев нарушения правил не могут быть рассмотрены непосредственно в игре, и вам, скорее всего, будет предложено написать сообщение об игроке на нашем Discord-сервере SS220 <a href='[CONFIG_GET(string/discordurl)]'>здесь</a>." // SS220 - EDIT
 
 /datum/autoreply/mentor/event
-	title = "A: Event in Progress"
-	message = "There is currently a special event running and many things may be changed or different, however normal rules still apply unless you have been specifically instructed otherwise by a staff member."
+	title = "A: Специальное событие" // SS220 - EDIT
+	message = "В настоящее время проводится специальное событие, и многие вещи могли быть изменены или удалены, однако обычные правила продолжают действовать, кроме тех, о которых сообщил администратор." // SS220 - EDIT
 
-/datum/autoreply/mentor/changelog
-	title = "C: Changelog"
-	message = "The answer to your question can be found in the Changelog. Click the changelog button at the top-right of the screen to view it in-game, alternatively go the the CM-SS13 discord server where you can look at the cm-changelog channel to find links to any merged changes to the server."
+ON_CONFIG_LOAD(/datum/autoreply/mentor/changelog) // SS220 - EDIT
+	title = "C: Список изменений" // SS220 - EDIT
+	message = "Ответ на ваш вопрос можно найти в списке изменений. Перейдите во вкладку \"OOC\" и выберите пункт \"Changelog\" в правом верхнем углу экрана для просмотра списка или же зайдите на наш Discord-сервер SS220 <a href='[CONFIG_GET(string/discordurl)]'>здесь</a>." // SS220 - EDIT
 
 /datum/autoreply/mentor/join_server
-	title = "C: Joining the Server"
-	message = "Joining for new players is disabled for the current round due to either a staff member or and automatic setting during the end of the round. You can observe while it ends and wait for a new round to start."
+	title = "C: Подключение к игре" // SS220 - EDIT
+	message = "Присоединение новых игроков в текущем раунде отключено по решению администратора или автоматически, однако вы можете наблюдать за ним перед началом следующего раунда." // SS220 - EDIT
 
 /datum/autoreply/mentor/leave_server
-	title = "C: Leaving the Server"
-	message = "If you need to leave the server as a marine, either go to cryo or ask someone to cryo you before leaving. If you are a xenomorph, find a safe place to rest and ghost before leaving, that will instantly unlock your xeno for observers to join."
+	title = "C: Отключение от игры" // SS220 - EDIT
+	message = "Если вам нужно покинуть игру, будучи морпехом, отправляйтесь в криохранилище или попросите кого-нибудь погрузить вас в него. Если вы ксеноморф, найдите безопасное место, нажмите на кнопку \"OOC\" и выберите пункт \"Ghost\", чтобы разблокировать тело ксеноморфа для других игроков." // SS220 - EDIT
 
 /datum/autoreply/mentor/clear_cache
-	title = "C: Clear Cache"
-	message = "In order to clear cache, you need to click on gear icon located in upper-right corner of your BYOND client and select preferences. Switch to Games tab and click Clear Cache button. In some cases you need to manually delete cache. To do that, select Advanced tab and click Open User Directory and delete \"cache\" folder there."
+	title = "C: Очистка кеша" // SS220 - EDIT
+	message = "Чтобы очистить кэш, вам нужно нажать на значок шестерёнки, расположенной в правом верхнем углу клиента BYOND, и выбрать пункт меню \"Preferences\". В открывшемся окне перейдите во вкладку \"Game\" и нажмите кнопку \"Clear Cache\". В некоторых случаях необходимо вручную удалить кэш. Для этого перейдите во вкладку \"Advanced\" и нажмите кнопку \"Open User Directory\", затем удалите папку \"cache\"." // SS220 - EDIT
 
 /datum/autoreply/mentor/click_drag
-	title = "C: Combat Click-Drag Override"
-	message = "When clicking while moving the mouse, Byond sometimes detects it as a click-and-drag attempt and prevents the click from taking effect, even if the button was only held down for an instant.\
-This toggle means that when you're on disarm or harm intent, depressing the mouse triggers a click immediately even if you hold it down - unless you're trying to click-drag yourself, an ally, or something in your own inventory."
+	title = "C: Проблема с щелчком и перетаскиванием" // SS220 - EDIT
+	message = "Когда вы нажимаете на кнопку мыши, BYOND иногда распознаёт это как попытку щелчка и перетаскивания, даже если кнопка была нажата всего на мгновение. Этот переключатель позволяет осуществлять клик в режиме, даже если вы удерживаете кнопку мыши нажатой, кроме случаев, когда вы пытаетесь перетащить себя, союзника или что-либо в инвентаре." // SS220 - EDIT
 
 /datum/autoreply/mentor/discord
 	title = "L: Discord"
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/discord)
-	message = "You can join our Discord server by using <a href='[CONFIG_GET(string/discordurl)]'>this link</a>!"
+	message = "Вы можете присоединиться к нашему Discord-серверу по этой <a href='[CONFIG_GET(string/discordurl)]'>ссылке</a>!" // SS220 - EDIT
 
 /datum/autoreply/mentor/bug
-	title = "L: Bug Report"
+	title = "L: Сообщение об ошибке" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/bug)
-	message = "Please report all bugs on our <a href='[CONFIG_GET(string/githuburl)]'>Github</a>. Administrative staff are unable to fix most bugs on a round to round basis and only round critical bugs, or exploits, should be ahelped."
+	message = "Пожалуйста, сообщайте обо всех ошибках в нашем <a href='[CONFIG_GET(string/githuburl)]'>Github</a> репозитории. К сожалению, большинство ошибок невозможно исправить за короткое время, за исключением критических ошибок или эксплойтов, о которых также следует сообщить через \"AdminHelp\"." // SS220 - EDIT
 
 /datum/autoreply/mentor/currentmap
-	title = "L: Current Map"
+	title = "L: Текущая карта" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/currentmap)
-	message = "If you need a map overview of the current round, use Current Map verb in OOC tab to check name of the map. Then open our <a href='[CONFIG_GET(string/wikiurl)]'>wiki front page</a> and look for the map overview in the 'Maps' section. If the map is not listed, it's a new or rare map and the overview hasn't been finished yet."
+	message = "Если вам необходимо узнать информацию о текущей карте, перейдите во вкладку \"OOC\" и выберите пункт \"Current Map\". Затем откройте главную страницу <a href='[CONFIG_GET(string/wikiurl)]'>Wiki</a> и найдите статью о карте в разделе \"Карты\". Если вашей карты нет в списке, это означает, что она новая или редкая, и статья о ней ещё не опубликована." // SS220 - EDIT
 
 /datum/autoreply/mentor/marine
-	title = "L: Marine Guide"
+	title = "H: Руководство для морпехов" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/marine)
-	message = "Your action can be answered by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Marine Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "На большинство ваших вопросов может ответить <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MARINE_QUICKSTART]'>Краткое руководство по морпехам</a>. Если что-то непонятно или у вас есть другой вопрос, пожалуйста, создайте новый тикет в \"MentorHelp\" или \"AdminHelp\"." // SS220 - EDIT
 
 /datum/autoreply/mentor/xeno
-	title = "L: Xeno Guide"
+	title = "X: Руководство для ксеноморфов" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/xeno)
-	message = "Your action can be answered by the <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Xeno Quickstart Guide</a>. If anything is unclear or you have another question please make a new mentorhelp or ahelp about it."
+	message = "На большинство ваших вопросов может ответить <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_XENO_QUICKSTART]'>Краткое руководство по ксеноморфам</a>. Если что-то непонятно или у вас есть другой вопрос, пожалуйста, создайте новый тикет в \"MentorHelp\" или \"AdminHelp\"." // SS220 - EDIT
 
 /datum/autoreply/mentor/macros
-	title = "L: Macros"
+	title = "L: Макросы" // SS220 - EDIT
 
 ON_CONFIG_LOAD(/datum/autoreply/mentor/macros)
-	message = "This <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>guide</a> explains how to set up macros including examples of most common and useful ones."
+	message = "Это <a href='[CONFIG_GET(string/wikiarticleurl)]/[URL_WIKI_MACROS]'>руководство</a> содержит инструкции по настройке макросов, включая примеры наиболее распространённых и полезных из них." // SS220 - EDIT
 
 /datum/autoreply/mentor/synthkey
-	title = "H: Synthetic Reset Key"
-	message = "Synthetics cannot be restarted with a normal defibrilator and instead require a unique item called the Synthetic Reset Key. This functions the same as a defibrilator but only for synthetics. It can be used by anyone with engineering training and acquired from various squad role vendors. Most synthetics will carry one at all times."
+	title = "H: Ключ перезапуска синтетика" // SS220 - EDIT
+	message = "Для возвращения к функционированию синтетиков требуется уникальный предмет под названием \"Synthetic Reboot Key\", использование которого схоже с дефибриллятором. Его может использовать любой человек с инженерными навыками, а заполучить его можно разными способами, однако в большинстве случаев синтетики носят ключ с собой." // SS220 - EDIT
 
 /datum/autoreply/mentor/radio
-	title = "H: Radio"
-	message = "Take your headset in hand and activate it by clicking it or pressing \"Page Down\" or \"Z\" (in Hotkey Mode). This will open window with all available channels, which also contains channel keys. Marine headsets have their respective squad channels available on \";\" key. Ship crew headsets have access to the Almayer public comms on \";\" and their respective department channel on \":h\"."
+	title = "H: Связь" // SS220 - EDIT
+	message = "Возьмите гарнитуру в руки и активируйте её, щёлкнув по ней или нажав клавишу \"Page Down\" или \"Z\". Гарнитуры морпехов имеют доступ к каналу соответствующего отряда \":a\" (Альфа), \":b\" (Браво), \":c\" (Чарли) или \":d\" (Дельта). Гарнитуры экипажа имеют доступ к каналу Алмаера \":g\" и каналу соответствующего отдела." // SS220 - EDIT
 
 /datum/autoreply/mentor/binos
-	title = "H: Binoculars"
-	message = "Binoculars allow you to increase distance of your view in direction you are looking. To zoom in, take them into your hand and activate them by pressing \"Page Down\" or \"Z\" (in Hotkey Mode) or clicking them while they are in your hand.\
-Rangefinders allow you to get tile coordinates (longitude and latitude) by lasing it while zoomed in (produces a GREEN laser). Ctrl + Click on any open tile to start lasing. Ctrl + Click on your rangefinders to stop lasing without zooming out. Coordinates can be used by Staff Officers to send supply drops or to perform Orbital Bombardment. You also can use them to call mortar fire if there are engineers with a mortar. \
-Laser Designators have a second mode (produces a RED laser) that allows highlighting targets for Close Air Support performed by dropship pilots. They also have a fixed ID number that is shown on the pilot's weaponry console. Examine the laser designator to check its ID. Red laser must be maintained as long as needed in order for the dropship pilot to bomb the designated area. To switch between lasing modes, Alt + Click the laser designator. Alternatively, Right + Click it in hand and click \"Toggle Mode\"."
+	title = "H: Бинокль и лазерные целеуказатели" // SS220 - EDIT
+	message = "Бинокль позволяет наблюдать за чем-либо на расстоянии. Чтобы воспользоваться биноклем, возьмите его в руку и активируйте, щёлкнув по нему или нажав клавишу \"Page Down\" или \"Z\". Дальномеры позволяют получить координаты плитки (долготу и широту), подсветив её ЗЕЛЁНЫМ лазером. Нажмите \"Ctrl\" + \"ЛКМ\" на плитке, чтобы получить её координаты. Нажмите \"Ctrl\" + \"ЛКМ\" на дальномере в руках, чтобы прекратить подсветку лазером без выхода из режима наблюдения. Координаты могут помочь офицерам в штабе отправить снабжение или произвести орбитальную бомбардировку. Кроме этого, вы можете использовать его для передачи координат миномётчику. Лазерные целеуказатели, кроме ЗЕЛЁНОГО, имеют второй режим (КРАСНЫЙ лазер). Для переключения между режимами нажмите \"Alt\" + \"ЛКМ\" на целеуказателе в руках или щёлкните ПКМ на нём и выберите пункт меню \"Toggle Laser Mode\". Целеуказатели имеют идентификационный номер, который будет отображаться в оружейной консоли пилота. Чтобы проверить ID своего устройства, нажмите \"Shift\" + \"ЛКМ\" на целеуказателе в руках. Важно помнить, что подсвечивать плитку красным лазером нужно столько, сколько потребуется, чтобы пилот дропшипа смог сбросить бомбы по полученным им координатам." // SS220 - EDIT
 
 /datum/autoreply/mentor/haul
-	title = "X: Haul as Xeno"
-	message = "Hauling is useful to quickly transport incapacitated hosts from one place to another. In order to haul a host as a Xeno, grab the mob (CTRL+Click) and then click on yourself to begin hauling. The host can break out of your grip, which will result in your death so make sure your target is incapacitated. After approximately 1 minute host will be automatically released. To release your target voluntary, click 'Release' on the HUD to throw them back up."
+	title = "X: Захват за ксеноморфа" // SS220 - EDIT
+	message = "Захват полезен для быстрой переноски недееспособных противников из одного места в другое. Чтобы захватить цель, нажмите на ней \"Ctrl\" + \"ЛКМ\", а затем кликните \"ЛКМ\" по себе. Цель может вырваться из вашего захвата, что может привести к вашей смерти, поэтому убедитесь, что ваша цель недееспособна. Кроме этого, примерно через 1 минуту цель будет автоматически освобождена из захвата. Чтобы освободить цель, примените способность \"Release\" вверху экрана."
 
 /datum/autoreply/mentor/plasma
-	title = "X: No plasma regen"
-	message = "If you have low/no plasma regen, it's most likely because you are off weeds or are currently using a passive ability, such as the Runner's 'Hide' or emitting a pheromone."
+	title = "X: Не регенерируется плазма" // SS220 - EDIT
+	message = "Если вы заметили медленную регенерацию или отсутствие плазмы, то, скорее всего, это связано с тем, что вы находитесь не на траве или используете пассивные способности, например, \"Hide\" или \"Emit Pheromones\"." // SS220 - EDIT
 
 /datum/autoreply/mentor/tunnel
-	title = "X: Tunnel"
-	message = "Click on the tunnel to enter it. While being in the tunnel, Alt + Click it to exit, Ctrl + Click to choose a destination."
+	title = "X: Туннели" // SS220 - EDIT
+	message = "Нажмите \"ЛКМ\" по туннелю, чтобы войти в него. Находясь в туннеле, нажмите \"Alt\" + \"ЛКМ\", чтобы выйти из него, или \"Ctrl\" + \"ЛКМ\", чтобы выбрать пункт назначения." // SS220 - EDIT

@@ -12,6 +12,7 @@ describe('ChannelIterator', () => {
   it('should cycle through channels properly', ({ expect }) => {
     expect(channelIterator.current()).toBe('Say');
     expect(channelIterator.next()).toBe('Comms');
+    expect(channelIterator.next()).toBe('Whisper');
     expect(channelIterator.next()).toBe('Me');
     expect(channelIterator.next()).toBe('OOC');
     expect(channelIterator.next()).toBe('LOOC');

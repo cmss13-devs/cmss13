@@ -2,7 +2,7 @@
 // crate of random ingredient that you can buy in vendor in kitchen
 /datum/supply_packs/ingredient
 	name = "surplus boxes of ingredients(x6 boxes)"
-	randomised_num_contained = 6
+	randomised_num_contained = 10 // SS220 EDIT NUM OF BOXES CONTAINED
 	contains = list(
 		/obj/item/storage/fancy/egg_box,
 		/obj/item/storage/box/fish,
@@ -72,6 +72,8 @@
 	name = "pizza ready-to-eat (x3)"
 	contains = list(
 		/obj/item/pizzabox/mystery/stack,
+		/obj/item/pizzabox/mystery/stack, // SS220 EDIT FIX MISSED
+		/obj/item/pizzabox/mystery/stack, // SS220 EDIT FIX MISSED
 	)
 	cost = 30
 	containertype = /obj/structure/closet/crate/freezer

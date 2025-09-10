@@ -5,7 +5,7 @@
 	name = "Supply Drop"
 	mob_max = 0
 	mob_min = 0
-	arrival_message = "Weyland-Yutani Automated Supply Drop 334-Q signal received. Docking procedures have commenced."
+	arrival_message = "Получен сигнал от \"Вейланд-Ютани, Автоматизированное снабжение 334-Q\". Начата процедура стыковки."
 	probability = 0
 	auto_shuttle_launch = TRUE
 

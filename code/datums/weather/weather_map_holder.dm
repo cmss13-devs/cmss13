@@ -48,10 +48,10 @@
 	for(var/mob/living/carbon/human/affected_human in GLOB.alive_human_list)
 		if(!affected_human.stat && affected_human.client && (affected_human.z in ground_levels))
 			playsound_client(affected_human.client, 'sound/effects/radiostatic.ogg', affected_human.loc, 25, FALSE)
-			affected_human.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>Weather Alert:</u></span><br>" + "Incoming [weather_name]", /atom/movable/screen/text/screen_text/command_order, rgb(103, 214, 146))
+			affected_human.play_screen_text("<span class='langchat_notification' style=text-align:center valign='top'><u>Weather Alert:</u></span><br>" + "Incoming [weather_name]", /atom/movable/screen/text/screen_text/command_order, rgb(103, 214, 146)) // SS220 EDIT: font
 	for(var/mob/living/carbon/xenomorph/affected_xeno in GLOB.living_xeno_list)
 		if(!affected_xeno.stat && affected_xeno.client)
 			playsound_client(affected_xeno.client, 'sound/voice/alien_distantroar_3.ogg', affected_xeno.loc, 25, FALSE)
-			affected_xeno.play_screen_text("<span class='langchat' style=font-size:16pt;text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "Incoming [weather_name]", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175))
+			affected_xeno.play_screen_text("<span class='langchat_notification' style=text-align:center valign='top'><u>The Hivemind Senses:</u></span><br>" + "Incoming [weather_name]", /atom/movable/screen/text/screen_text/command_order, rgb(175, 0, 175)) // SS220 EDIT: font
 
-	elder_overseer_message("Incoming [weather_name].")
+	elder_overseer_message("Наступает [weather_name].") // SS220 EDIT - Translate

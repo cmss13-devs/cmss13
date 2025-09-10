@@ -80,9 +80,9 @@
 	hive = xenohive
 
 	if(!engage_flavourmessage)
-		engage_flavourmessage = "The Queen has purchased [name]."
+		engage_flavourmessage = "Королева приобрела [name]."
 	if(!cease_flavourmessage)
-		cease_flavourmessage = "The [name] has expired."
+		cease_flavourmessage = "Срок действия [name] истёк."
 
 	return TRUE
 
@@ -345,7 +345,7 @@
 	desc = "Provides 5 larva instantly to the hive."
 	radial_icon = "larba"
 
-	engage_flavourmessage = "The Queen has purchased 5 extra larva to join the hive!"
+	engage_flavourmessage = "Королева приобрела дополнительно 5 грудоломов, чтобы пополнить улей!"
 	cost = 5
 	number_of_required_pylons = 1
 	is_reusable = FALSE

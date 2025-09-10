@@ -1,0 +1,5 @@
+author: "biologed"
+delete-after: True
+changes:
+  - rscadd: "Перенос чата (TSay) с ТГ"
+  - bugfix: "исправление отсутствующих ключей шифрования у отрядов"

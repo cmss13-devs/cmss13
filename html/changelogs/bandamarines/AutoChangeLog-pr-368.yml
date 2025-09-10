@@ -1,0 +1,4 @@
+author: "MiraHell"
+delete-after: True
+changes:
+  - bugfix: "Время раунда теперь правильное"

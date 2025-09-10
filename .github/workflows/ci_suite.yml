@@ -8,7 +8,7 @@ jobs:
   run_linters:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Run Linters
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     timeout-minutes: 30
     concurrency:
       group: run_linters-${{ github.head_ref || github.run_id }}
@@ -44,6 +44,8 @@ jobs:
             ${{ runner.os }}-rust-
       - name: Install Tools
         run: |
+          sudo apt-get update
+          sudo apt-get install -y php-cli
           pip3 install setuptools
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
           cargo install ripgrep --features pcre2
@@ -53,6 +55,7 @@ jobs:
           bash tools/ci/check_filedirs.sh colonialmarines.dme
           bash tools/ci/check_changelogs.sh
           bash tools/ci/check_grep.sh
+          bash tools/bandastation_check_grep.sh # BANDASTATION EDIT ADDITION - checking modular code
           bash tools/ci/check_misc.sh
           tools/bootstrap/python tools/ci/validate_dme.py < colonialmarines.dme
           tools/bootstrap/python -m tools.maplint.source --github
@@ -69,12 +72,14 @@ jobs:
 
   odlint:
     name: Lint with OpenDream
-    runs-on: ubuntu-22.04
+    runs-on: [self-hosted]
     steps:
-      - uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9
       - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        env:
+          DOTNET_INSTALL_DIR: "./_work/.dotnet"
+        with:
+          dotnet-version: 9.x
       - uses: robinraju/release-downloader@v1.9
         with:
           repository: "OpenDreamProject/OpenDream"
@@ -86,7 +91,7 @@ jobs:
   compile_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Compile Maps
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
@@ -102,7 +107,7 @@ jobs:
   find_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Find Maps to Test
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     outputs:
       maps: ${{ steps.map_finder.outputs.maps }}
       alternate_tests: ${{ steps.alternate_test_finder.outputs.alternate_tests }}
@@ -165,43 +170,43 @@ jobs:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]' )
     name: Check Alternate Tests
     needs: [run_alternate_tests]
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     steps:
       - run: echo Alternate tests passed.
 
-  test_windows:
-    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
-    name: Windows Build
-    runs-on: windows-latest
-    timeout-minutes: 30
-    concurrency:
-      group: test_windows-${{ github.head_ref || github.run_id }}
-      cancel-in-progress: true
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Node
-        uses: ./.github/actions/setup_node
-        with:
-          restore-yarn-cache: true
-      - name: Configure BYOND version from inputs
-        if: ${{ inputs.major }}
-        shell: bash
-        run: |
-          echo "BYOND_MAJOR=${{ inputs.major }}" >> $GITHUB_ENV
-          echo "BYOND_MINOR=${{ inputs.minor }}" >> $GITHUB_ENV
-      - name: Configure BYOND version from dependencies.sh
-        if: ${{ !inputs.major }}
-        shell: bash
-        run: |
-          source dependencies.sh
-          echo "BYOND_MAJOR=$BYOND_MAJOR" >> $GITHUB_ENV
-          echo "BYOND_MINOR=$BYOND_MINOR" >> $GITHUB_ENV
-      - name: Restore BYOND cache
-        uses: actions/cache@v4
-        with:
-          path: C:\\byond
-          key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}-${{ env.BYOND_MINOR }}
-      - name: Compile
-        run: pwsh tools/ci/build.ps1
-        env:
-          DM_EXE: "C:\\byond\\bin\\dm.exe"
+  # test_windows:
+  #   if: ( !contains(github.event.head_commit.message, '[ci skip]') )
+  #   name: Windows Build
+  #   runs-on: windows-latest
+  #   timeout-minutes: 30
+  #   concurrency:
+  #     group: test_windows-${{ github.head_ref || github.run_id }}
+  #     cancel-in-progress: true
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Setup Node
+  #       uses: ./.github/actions/setup_node
+  #       with:
+  #         restore-yarn-cache: true
+  #     - name: Configure BYOND version from inputs
+  #       if: ${{ inputs.major }}
+  #       shell: bash
+  #       run: |
+  #         echo "BYOND_MAJOR=${{ inputs.major }}" >> $GITHUB_ENV
+  #         echo "BYOND_MINOR=${{ inputs.minor }}" >> $GITHUB_ENV
+  #     - name: Configure BYOND version from dependencies.sh
+  #       if: ${{ !inputs.major }}
+  #       shell: bash
+  #       run: |
+  #         source dependencies.sh
+  #         echo "BYOND_MAJOR=$BYOND_MAJOR" >> $GITHUB_ENV
+  #         echo "BYOND_MINOR=$BYOND_MINOR" >> $GITHUB_ENV
+  #     - name: Restore BYOND cache
+  #       uses: actions/cache@v4
+  #       with:
+  #         path: C:\\byond
+  #         key: ${{ runner.os }}-byond-${{ env.BYOND_MAJOR }}-${{ env.BYOND_MINOR }}
+  #     - name: Compile
+  #       run: pwsh tools/ci/build.ps1
+  #       env:
+  #         DM_EXE: "C:\\byond\\bin\\dm.exe"

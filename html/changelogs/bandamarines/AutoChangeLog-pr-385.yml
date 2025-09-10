@@ -1,0 +1,4 @@
+author: "biologed"
+delete-after: True
+changes:
+  - bugfix: "фикс поиска консоли карко по доступным предметам без её взлома"

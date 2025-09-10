@@ -1,0 +1,147 @@
+# MARK: Uncategorized
+
+["pig toy"]
+nominative = "игрушечный хряк"
+genitive = "игрушечного хряка"
+dative = "игрушечному хряку"
+accusative = "игрушечного хряка"
+instrumental = "игрушечным хряком"
+prepositional = "игрушечном хряке"
+gender = "male"
+
+["foam scepter"]
+nominative = "пенный скипетр"
+genitive = "пенного скипетра"
+dative = "пенному скипетру"
+accusative = "пенный скипетр"
+instrumental = "пенным скипетром"
+prepositional = "пенном скипетре"
+gender = "male"
+
+# MARK: Donksoft
+
+["cryptographic sequencer"]
+nominative = "криптографический секвенсор"
+genitive = "криптографического секвенсора"
+dative = "криптографическому секвенсору"
+accusative = "криптографический секвенсор"
+instrumental = "криптографическим секвенсором"
+prepositional = "криптографическом секвенсоре"
+gender = "male"
+
+["hot potato"]
+nominative = "горячая картошка"
+genitive = "горячей картошки"
+dative = "горячей картошке"
+accusative = "горячую картошку"
+instrumental = "горячей картошкой"
+prepositional = "горячей картошке"
+gender = "female"
+
+["toy sword"]
+nominative = "игрушечный меч"
+genitive = "игрушечного меча"
+dative = "игрушечному мечу"
+accusative = "игрушечный меч"
+instrumental = "игрушечным мечом"
+prepositional = "игрушечном мече"
+gender = "male"
+
+["double-bladed toy sword"]
+nominative = "двухклинковый игрушечный меч"
+genitive = "двухклинкового игрушечного меча"
+dative = "двухклинковому игрушечному мечу"
+accusative = "двухклинковый игрушечный меч"
+instrumental = "двухклинковым игрушечным мечом"
+prepositional = "двухклинковом игрушечном мече"
+gender = "male"
+
+["foam force pistol"]
+nominative = "пистолет \"Пенная полиция\""
+genitive = "пистолета \"Пенная полиция\""
+dative = "пистолету \"Пенная полиция\""
+accusative = "пистолет \"Пенная полиция\""
+instrumental = "пистолетом \"Пенная полиция\""
+prepositional = "пистолете \"Пенная полиция\""
+gender = "male"
+
+["foam force SMG"]
+nominative = "пулемет \"Пенная полиция\""
+genitive = "пулемета \"Пенная полиция\""
+dative = "пулемету \"Пенная полиция\""
+accusative = "пулемет \"Пенная полиция\""
+instrumental = "пулеметом \"Пенная полиция\""
+prepositional = "пулемете \"Пенная полиция\""
+gender = "male"
+
+["foam force shotgun"]
+nominative = "дробовик \"Пенная полиция\""
+genitive = "дробовика \"Пенная полиция\""
+dative = "дробовику \"Пенная полиция\""
+accusative = "дробовик \"Пенная полиция\""
+instrumental = "дробовиком \"Пенная полиция\""
+prepositional = "дробовике \"Пенная полиция\""
+gender = "male"
+
+["foam force crossbow"]
+nominative = "арбалет \"Пенная полиция\""
+genitive = "арбалета \"Пенная полиция\""
+dative = "арбалету \"Пенная полиция\""
+accusative = "арбалет \"Пенная полиция\""
+instrumental = "арбалетом \"Пенная полиция\""
+prepositional = "арбалете \"Пенная полиция\""
+gender = "male"
+
+["syndicate balloon"]
+nominative = "шарик синдиката"
+genitive = "шарика синдиката"
+dative = "шарику синдиката"
+accusative = "шарик синдиката"
+instrumental = "шариком синдиката"
+prepositional = "шарике синдиката"
+gender = "male"
+
+["replica katana"]
+nominative = "реплика катаны"
+genitive = "реплики катаны"
+dative = "реплике катаны"
+accusative = "реплику катаны"
+instrumental = "репликой катаны"
+prepositional = "реплике катаны"
+gender = "female"
+
+["suspicious looking deck of cards"]
+nominative = "подозрительно выглядящая колода карт"
+genitive = "подозрительно выглядящей колоды карт"
+dative = "подозрительно выглядящей колоде карт"
+accusative = "подозрительно выглядящую колоду карт"
+instrumental = "подозрительно выглядящей колодой карт"
+prepositional = "подозрительно выглядящей колоде карт"
+gender = "female"
+
+["boxed replica space suit and helmet"]
+nominative = "коробка с репликой космического скафандра и шлема"
+genitive = "коробки с репликой космического скафандра и шлема"
+dative = "коробке с репликой космического скафандра и шлема"
+accusative = "коробку с репликой космического скафандра и шлема"
+instrumental = "коробкой с репликой космического скафандра и шлема"
+prepositional = "коробке с репликой космического скафандра и шлема"
+gender = "female"
+
+["donksoft SMG"]
+nominative = "пистолет-пулемёт Донксофт"
+genitive = "пистолета-пулемёта Донксофт"
+dative = "пистолету-пулемёту Донксофт"
+accusative = "пистолет-пулемёт Донксофт"
+instrumental = "пистолетом-пулемётом Донксофт"
+prepositional = "пистолете-пулемёте Донксофт"
+gender = "male"
+
+["donksoft LMG"]
+nominative = "ленточный пулемёт Донксофт"
+genitive = "ленточного пулемёта Донксофт"
+dative = "ленточному пулемёту Донксофт"
+accusative = "ленточный пулемёт Донксофт"
+instrumental = "ленточным пулемётом Донксофт"
+prepositional = "ленточном пулемёте Донксофт"
+gender = "male"

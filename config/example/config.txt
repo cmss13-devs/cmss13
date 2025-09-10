@@ -5,6 +5,7 @@
 # $include resources.txt
 # $include icon_source.txt
 # $include relays.txt
+$include bandamarines_config.txt
 
 ## Server name: This appears at the top of the screen in-game. In this case it will read "tgstation: station_name" where station_name is the randomly generated name of the station for the round. Remove the # infront of SERVERNAME and replace 'tgstation' with the name of your choice
 # SERVERNAME spacestation13
@@ -132,17 +133,17 @@ GUEST_BAN
 FORUMURL https://forum.cm-ss13.com/
 
 ## Wiki address
-WIKIURL https://cm-ss13.com/w
-WIKIARTICLEURL https://cm-ss13.com/wiki
+WIKIURL https://bm.ss220.club/w
+WIKIARTICLEURL https://bm.ss220.club/wiki
 
 ## Rules address
 RULESURL https://cm-ss13.com/viewtopic.php?f=57&t=5094
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
-BANAPPEALS https://cm-ss13.com/viewforum.php?f=76
+BANAPPEALS https://discord.com/ss220
 
 ## Discord URL - uncomment and add a valid Discord invite link (remember to make it a permanent one, since it does not default to it) to make the Discord button work properly.
-## DISCORDURL
+## DISCORDURL https://discord.com/ss220
 
 ## In-game features
 ## Remove the # to show a popup 'reply to' window to every non-admin that recieves an adminPM.
@@ -265,3 +266,14 @@ CLIENT_ERROR_VERSION 514
 #GITHUB_APP_API
 #REPO_NAME cmss13
 #ORG cmss13-devs
+
+## =====================================
+## SS220
+## TTS
+#tts_enabled
+#tts_token_silero
+#tts_cache_enabled
+#ffmpeg_cpuaffinity
+#tts_api_url_silero
+
+## =====================================

@@ -38,7 +38,7 @@ Defined in conflicts.dm of the #defines folder.
 	matter = list("metal" = 100)
 	w_class = SIZE_SMALL
 	force = 1
-	var/slot = null //"muzzle", "rail", "under", "stock", "special"
+	var/slot = null //"muzzle", "rail", "under", "stock", "special", "cosmetic"
 
 	/*
 	Anything that isn't used as the gun fires should be a flat number, never a percentange. It screws with the calculations,
@@ -3837,3 +3837,40 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_5
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_5
 	damage_mod -= BULLET_DAMAGE_MULT_TIER_4
+
+
+///Purely cosmetic attachments, used to change the appearance of a gun without changing its stats.
+/obj/item/attachable/cosmetic
+	slot = "cosmetic"
+
+/obj/item/attachable/cosmetic/clf_flag
+	name = "worn off CLF flag"
+	desc = "A worn flag."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
+	icon_state = null
+	attach_icon = "m56f_flag"
+	flags_attach_features = NO_FLAGS
+
+/obj/item/attachable/cosmetic/clf_rags
+	name = "dirty rags"
+	desc = "Some rags."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
+	icon_state = null
+	attach_icon = "m56f_rags"
+	flags_attach_features = NO_FLAGS
+
+/obj/item/attachable/cosmetic/clf_sling
+	name = "makeshift sling"
+	desc = "A leather sling."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/colony/machineguns.dmi'
+	icon_state = null
+	attach_icon = "m56f_sling"
+	flags_attach_features = NO_FLAGS
+
+/obj/item/attachable/cosmetic/uscm_flag
+	name = "USCM flag"
+	desc = "A cloth flag."
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/machineguns.dmi'
+	icon_state = null
+	attach_icon = "m56c_flag"
+	flags_attach_features = NO_FLAGS

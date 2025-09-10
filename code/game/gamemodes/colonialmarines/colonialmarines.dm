@@ -58,6 +58,9 @@
 /obj/effect/landmark/lv624/fog_blocker/short
 	time_to_dispel = 15 MINUTES
 
+/obj/effect/landmark/lv624/fog_blocker/very_short
+	time_to_dispel = 10 SECONDS
+
 /obj/effect/landmark/lv624/fog_blocker/Initialize(mapload, ...)
 	. = ..()
 
@@ -68,6 +71,24 @@
 		return
 
 	new /obj/structure/blocker/fog(loc, time_to_dispel)
+	qdel(src)
+
+/obj/effect/landmark/lv624/door_blocker
+	name = "door blocker"
+	icon_state = "o_red"
+
+	var/time_to_dispel = 60 SECONDS
+
+/obj/effect/landmark/lv624/door_blocker/Initialize(mapload, ...)
+	. = ..()
+
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/effect/landmark/lv624/door_blocker/LateInitialize()
+	if(!(SSticker.mode.flags_round_type & MODE_FOG_ACTIVATED) || !SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG])
+		return
+
+	new /obj/structure/blocker/door(loc, time_to_dispel)
 	qdel(src)
 
 /obj/effect/landmark/lv624/xeno_tunnel

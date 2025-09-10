@@ -66,3 +66,10 @@
       all your fingerless needs.
   - rscadd: Quartermaster and Cargo Techs now spawn with fingerless gloves, you can
       still get insulated gloves from your lockers in req.
+2025-09-10:
+  MeH0y:
+  - balance: airlocks fire sparks every 6 seconds when electrocuted
+  Red-byte3D:
+  - bugfix: Queen transparency hotfix, now it has a cooldown of 5 seconds as well
+  SirNightKnight:
+  - bugfix: fixed the offset of some onmob WY patch sprites

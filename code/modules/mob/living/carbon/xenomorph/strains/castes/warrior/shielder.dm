@@ -21,7 +21,6 @@
 
 /datum/xeno_strain/shielder/apply_strain(mob/living/carbon/xenomorph/warrior/warrior)
 	warrior.damage_modifier -= XENO_DAMAGE_MOD_SHIELDER
-	warrior.health_modifier += XENO_HEALTH_MOD_VERY_LARGE
 	warrior.explosivearmor_modifier += XENO_EXPLOSIVE_ARMOR_TIER_1
 	warrior.add_plasma += XENO_PLASMA_TIER_2
 	warrior.speed += XENO_SPEED_TIER_1

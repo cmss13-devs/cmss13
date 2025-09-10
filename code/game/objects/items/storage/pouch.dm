@@ -681,7 +681,7 @@
 
 /obj/item/storage/pouch/magazine/large/grs_sg/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/smartgun(src)
+		new /obj/item/ammo_magazine/smartgun/holo_targetting/grs(src)
 
 /obj/item/storage/pouch/magazine/large/grs_sg/deathsquad/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

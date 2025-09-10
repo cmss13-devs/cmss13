@@ -812,25 +812,6 @@
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
 
-/obj/item/weapon/gun/smartgun/co/grs
-	name = "\improper M56R 'Ronin' smartgun"
-	desc = "The actual firearm in the 4-piece M56R Smartgun system. Special order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56B.\nAlt-click it to open the feed cover and allow for reloading."
-
-/obj/item/weapon/gun/smartgun/co/grs/Initialize(mapload, ...)
-	. = ..()
-	MD.iff_signal = FACTION_CIA
-
-/obj/item/weapon/gun/smartgun/co/grs/dirty
-	name = "\improper M56R-X 'Ronin' smartgun"
-	current_mag = /obj/item/ammo_magazine/smartgun/dirty/grs
-	ammo = /datum/ammo/bullet/smartgun/dirty
-	ammo_primary //Toggled ammo type
-	ammo_secondary //Toggled ammo type
-	ammo_primary_def = /datum/ammo/bullet/smartgun/dirty
-	ammo_secondary_def = /datum/ammo/bullet/smartgun/dirty/armor_piercing
-	ammo_primary_alt = /datum/ammo/bullet/smartgun/dirty/alt
-	ammo_secondary_alt = /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
-
 /obj/item/weapon/gun/smartgun/co/Initialize(mapload, ...)
 	LAZYADD(actions_types, /datum/action/item_action/co_sg/toggle_id_lock)
 	. = ..()
@@ -928,6 +909,43 @@
 /obj/item/weapon/gun/smartgun/co/proc/remove_idlock()
 	SIGNAL_HANDLER
 	linked_human = null
+
+/obj/item/weapon/gun/smartgun/cia_grs
+	name = "\improper R56A2 'Ronin' smartgun"
+	desc = "The actual firearm in the 4-piece M56A2R Smartgun system. Special order only. Besides a more robust weapons casing, an ID lock system and a fancy paintjob, the gun's performance is identical to the standard-issue M56B.\nAlt-click it to open the feed cover and allow for reloading."
+	icon_state = "m50r"
+	item_state = "m50r"
+	gun_faction = FACTION_CIA
+	has_cover = FALSE
+
+	current_mag = /obj/item/ammo_magazine/smartgun/holo_targetting/grs
+	ammo = /datum/ammo/bullet/smartgun/holo_target
+	ammo_primary_def = /datum/ammo/bullet/smartgun/holo_target
+	ammo_secondary_def = /datum/ammo/bullet/smartgun/holo_target/ap
+	ammo_primary_alt = /datum/ammo/bullet/smartgun/holo_target/alt
+	ammo_secondary_alt = /datum/ammo/bullet/smartgun/holo_target/ap/alt
+
+	actions_types = list(
+		/datum/action/item_action/smartgun/toggle_accuracy_improvement,
+		/datum/action/item_action/smartgun/toggle_frontline_mode,
+		/datum/action/item_action/smartgun/toggle_aim_assist,
+		/datum/action/item_action/smartgun/toggle_lethal_mode,
+		/datum/action/item_action/smartgun/toggle_motion_detector,
+		/datum/action/item_action/smartgun/toggle_recoil_compensation,
+	)
+
+/obj/item/weapon/gun/smartgun/cia_grs/Initialize(mapload, ...)
+	. = ..()
+	toggle_aim_assist(null, TRUE)
+
+/obj/item/weapon/gun/smartgun/cia_grs/elite
+	name = "\improper R56A2D 'Reaper' smartgun"
+	current_mag = /obj/item/ammo_magazine/smartgun/dirty/grs
+	ammo = /datum/ammo/bullet/smartgun/dirty
+	ammo_primary_def = /datum/ammo/bullet/smartgun/dirty
+	ammo_secondary_def = /datum/ammo/bullet/smartgun/dirty/armor_piercing
+	ammo_primary_alt = /datum/ammo/bullet/smartgun/dirty/alt
+	ammo_secondary_alt = /datum/ammo/bullet/smartgun/dirty/armor_piercing/alt
 
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/terminator

@@ -123,8 +123,9 @@
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
 
 /obj/item/ammo_magazine/smartgun/dirty/grs
-	desc = "What at first glance appears to be a standard 500-round M56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in M56R smartguns, and is marked with a red X."
-	gun_type = /obj/item/weapon/gun/smartgun/co/grs
+	name = "irradiated R56 smartgun drum"
+	desc = "What at first glance appears to be a standard 500-round R56 Smartgun drum, is actually a drum loaded with irradiated rounds, providing an extra 'oomph' to to its bullets. The magazine itself is slightly modified to only fit in R56A2 smartguns, and is marked with a red X."
+	gun_type = /obj/item/weapon/gun/smartgun/cia_grs/elite
 
 /obj/item/ammo_magazine/smartgun/holo_targetting
 	name = "holotargetting M56 smartgun drum"
@@ -135,6 +136,11 @@
 	default_ammo = /datum/ammo/bullet/smartgun/holo_target
 	gun_type = /obj/item/weapon/gun/smartgun/rmc
 	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
+
+/obj/item/ammo_magazine/smartgun/holo_targetting/grs
+	name = "holotargetting R56 smartgun drum"
+	desc = "A 10x28mm holotargetting drum magazine for use in the Global Response Staff R56A2 Smartgun."
+	gun_type = /obj/item/weapon/gun/smartgun/cia_grs
 
 /obj/item/ammo_magazine/smartgun/heap
 	name = "HEAP M56 smartgun drum"

@@ -96,8 +96,6 @@
 		src.forceMove(above)
 		return
 
-	if(is_watching)
-		to_chat(is_watching, "You can not move eye up or down here.")
 
 /mob/hologram/queen/Initialize(mapload, mob/living/carbon/xenomorph/queen/Q)
 	if(!Q)

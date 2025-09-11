@@ -714,3 +714,22 @@
 			handle_xeno_macro_datum(xeno, soak_check)
 			return TRUE
 
+// Spitter
+
+/datum/keybinding/xenomorph/spitter_spray_acid
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "spitter_spray_acid"
+	full_name = "Spitter: spray acid"
+	keybind_signal = COMSIG_KB_XENO_SPITTER_SPRAY_ACID
+
+/datum/keybinding/xenomorph/spitter_spray_acid/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/spray_acid/spitter/spitter_spray_acid_check = get_action(xeno, /datum/action/xeno_action/activable/spray_acid/spitter)
+	if(spitter_spray_acid_check)
+		if(spitter_spray_acid_check && !spitter_spray_acid_check.hidden)
+			handle_xeno_macro_datum(xeno, spitter_spray_acid_check)
+			return TRUE

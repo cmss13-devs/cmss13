@@ -203,6 +203,9 @@
 #define COMSIG_KB_XENO_DEFENDER_FORTIFY "keybinding_defender_fortify"
 #define COMSIG_KB_XENO_STEEL_CREST_SOAK "keybinding_steal_crest_soak"
 
+// Xenomorph Spitter
+#define COMSIG_KB_XENO_SPITTER_SPRAY_ACID "keybinding_spitter_spray_acid"
+
 // Yautja
 
 #define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"

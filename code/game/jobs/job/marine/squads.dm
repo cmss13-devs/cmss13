@@ -503,7 +503,14 @@ SQUAD_DROPPAD(echo, Echo)
 
 
 	if (!(name in GLOB.radiochannels))
-		GLOB.radiochannels[name] = radio_freq
+		var/found = FALSE
+		for(var/name in GLOB.radiochannels)
+			if(GLOB.radiochannels[name] == radio_freq)
+				found = TRUE
+				break
+
+		if(!found)
+			GLOB.radiochannels[name] = radio_freq
 
 	if(has_cryostorage && !(name in GLOB.frozen_items))
 		GLOB.frozen_items[name] = list()

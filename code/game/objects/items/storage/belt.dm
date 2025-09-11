@@ -677,6 +677,7 @@
 		/obj/item/device/clue_scanner,
 		/obj/item/weapon/gun/energy/taser
 	)
+	bypass_w_limit = list(/obj/item/weapon/gun/energy/taser)
 
 /obj/item/storage/belt/security/provost/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/energy/taser(src)

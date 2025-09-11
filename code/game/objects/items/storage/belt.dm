@@ -675,7 +675,7 @@
 		/obj/item/device/radio/headset,
 		/obj/item/weapon,
 		/obj/item/device/clue_scanner,
-		/obj/item/weapon/gun/energy/taser
+		/obj/item/weapon/gun/energy/taser,
 	)
 	bypass_w_limit = list(/obj/item/weapon/gun/energy/taser)
 

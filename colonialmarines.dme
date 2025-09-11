@@ -836,6 +836,7 @@
 #include "code\game\area\techtree.dm"
 #include "code\game\area\varadero.dm"
 #include "code\game\area\WhiskeyOutpost.dm"
+#include "code\game\area\White_Antre.dm"
 #include "code\game\camera_manager\camera_manager.dm"
 #include "code\game\cas_manager\datums\cas_fire_envelope.dm"
 #include "code\game\cas_manager\datums\cas_fire_mission.dm"

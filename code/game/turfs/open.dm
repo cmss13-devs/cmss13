@@ -167,6 +167,17 @@
 	can_bloody = FALSE
 	supports_surgery = FALSE
 
+//Slipery slope
+/turf/open/slippery
+	name = "sloped roof"
+	icon = 'icons/turf/floors/floors.dmi'
+	icon_state = "grass1"
+
+/turf/open/slippery/Entered(atom/movable/atom)
+	. = ..()
+	atom.forceMove(get_step(src, dir))
+
+
 // Prison grass
 /turf/open/organic/grass
 	name = "grass"

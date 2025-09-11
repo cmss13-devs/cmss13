@@ -925,6 +925,7 @@
 #include "code\game\machinery\buttons.dm"
 #include "code\game\machinery\cell_charger.dm"
 #include "code\game\machinery\cloning.dm"
+#include "code\game\machinery\colony_floodlight_antre.dm"
 #include "code\game\machinery\colony_floodlights.dm"
 #include "code\game\machinery\constructable_frame.dm"
 #include "code\game\machinery\cryo.dm"

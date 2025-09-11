@@ -321,6 +321,14 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 		set_light(is_on ? lum_value : 0)
 	return .
 
+/obj/structure/machinery/colony_floodlight_switch/containment
+
+/obj/structure/machinery/colony_floodlight_switch/containment/LateInitialize()
+	. = ..()
+	toggle_is_on()
+	toggle_machines()
+	update_icon()
+
 /obj/structure/machinery/colony_floodlight/venir_wall_light
 	name = "wall mounted containment floodlight"
 	desc = "Powerful wall-mounted lights. Designed to survive xenomorph attacks and acid. Powered externally."
@@ -329,8 +337,14 @@ GLOBAL_LIST_INIT(all_breaker_switches, list())
 	density = FALSE
 	health = 999999
 	light_range = 14
+	lum_value = 14
 	needs_power = TRUE
 	light_color = "#FFEFD2"
+
+/obj/structure/machinery/colony_floodlight/venir_wall_light/LateInitialize()
+	. = ..()
+	toggle_is_on()
+	update_icon()
 
 /obj/structure/machinery/colony_floodlight/venir_wall_light/update_icon()
 	if(damaged)

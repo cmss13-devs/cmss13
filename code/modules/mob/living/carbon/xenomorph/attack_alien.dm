@@ -910,6 +910,26 @@
 		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
 	return XENO_ATTACK_ACTION
 
+/obj/structure/machinery/colony_floodlight_switch/antre/attack_alien(mob/living/carbon/xenomorph/M)
+	if(!is_on)
+		to_chat(M, SPAN_WARNING("We stare at the [src] clulessly. It's just some weird metal thing."))
+		return XENO_NO_DELAY_ACTION
+	if(!damaged)
+		M.animation_attack_on(src)
+		M.visible_message("[M] slashes away at [src]!","We slash and claw at the bright light!", max_distance = 5, message_flags = CHAT_TYPE_XENO_COMBAT)
+		damaged = TRUE
+		alarming = FALSE
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(5, 1, src)
+		sparks.start()
+		toggle_is_on()
+		toggle_machines()
+		playsound(loc, 'sound/effects/Glasshit.ogg', 25, 1)
+		return XENO_ATTACK_ACTION
+	else
+		to_chat(M, SPAN_WARNING("It's already damaged."))
+		return XENO_NO_DELAY_ACTION
+
 /obj/structure/machinery/colony_floodlight/attack_larva(mob/living/carbon/xenomorph/larva/M)
 	M.visible_message("[M] starts biting [src]!","In a rage, we start biting [src], but with no effect!", null, 5, CHAT_TYPE_XENO_COMBAT)
 

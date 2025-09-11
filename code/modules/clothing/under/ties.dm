@@ -1185,7 +1185,6 @@
 
 //Can hold variety of pistols and revolvers together with ammo for them. Can also hold the flare pistol and signal/illumination flares.
 	/obj/item/weapon/gun/pistol,
-	/obj/item/weapon/gun/energy/taser,
 	/obj/item/weapon/gun/revolver,
 	/obj/item/ammo_magazine/pistol,
 	/obj/item/ammo_magazine/revolver,

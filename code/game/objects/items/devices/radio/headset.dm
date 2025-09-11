@@ -478,7 +478,9 @@
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
-		"Intel SL" = TRACKER_ISL
+		"Intel SL" = TRACKER_ISL,
+		"Kilo SL" = TRACKER_KSL,
+		"Oscar SL" = TRACKER_OSL,
 	)
 
 /obj/item/device/radio/headset/almayer/cmo

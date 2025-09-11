@@ -150,7 +150,9 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 #define CHARLIE_FREQ 1493
 #define DELTA_FREQ 1494
 #define ECHO_FREQ 1495
-#define CRYO_FREQ 1496
+#define KILO_FREQ 1496
+#define OSCAR_FREQ 1497
+#define CRYO_FREQ 1498
 
 //Civilian channels
 #define COLONY_FREQ 1469
@@ -238,7 +240,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 #define FAX_RESP_FREQS list(FAX_WY_FREQ, FAX_USCM_HC_FREQ, FAX_USCM_PVST_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, KILO_FREQ, OSCAR_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE 0
 #define TRANSMISSION_RADIO 1
@@ -295,6 +297,8 @@ SUBSYSTEM_DEF(radio)
 		"[CHARLIE_FREQ]" = "charlieradio",
 		"[DELTA_FREQ]" = "deltaradio",
 		"[ECHO_FREQ]" = "echoradio",
+		"[KILO_FREQ]" = "kiloradio",
+		"[OSCAR_FREQ]" = "oscarradio",
 		"[CRYO_FREQ]" = "cryoradio",
 		"[CBRN_FREQ]" = "hcradio",
 		"[FORECON_FREQ]" = "hcradio",

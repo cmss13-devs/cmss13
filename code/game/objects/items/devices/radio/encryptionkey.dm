@@ -209,6 +209,16 @@
 	icon_state = "cryo_key"
 	channels = list(SQUAD_MARINE_CRYO = TRUE)
 
+/obj/item/device/encryptionkey/kilo
+	name = "\improper Kilo Squad Radio Encryption Key"
+	icon_state = "kilo_key"
+	channels = list(SQUAD_MARINE_6 = TRUE)
+
+/obj/item/device/encryptionkey/oscar
+	name = "\improper Oscar Squad Radio Encryption Key"
+	icon_state = "oscar_key"
+	channels = list(SQUAD_MARINE_7 = TRUE)
+
 /obj/item/device/encryptionkey/soc
 	name = "\improper SOF Radio Encryption Key"
 	icon_state = "binary_key"

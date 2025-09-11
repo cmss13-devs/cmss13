@@ -260,7 +260,7 @@ SQUAD_DROPPAD(bravo, Bravo)
 	name = SQUAD_MARINE_3
 	equipment_color = "#c864c8"
 	chat_color = "#ff96ff"
-	access = list(ACCESS_MARINE_CHARLIE)
+	access = list(ACCESS_MARINE_SUPPORT)
 	radio_freq = CHARLIE_FREQ
 	minimap_color = MINIMAP_SQUAD_CHARLIE
 	background_icon = "background_charlie"
@@ -270,7 +270,7 @@ SQUAD_DROPPAD(bravo, Bravo)
 
 SQUAD_LANDMARKS(charlie, Charlie)
 SQUAD_CRYOSTORAGE(charlie, Charlie)
-SQUAD_VENDORS(charlie, ACCESS_MARINE_CHARLIE, Charlie)
+SQUAD_VENDORS(charlie, ACCESS_MARINE_SUPPORT, Charlie)
 SQUAD_DROPPAD(charlie, Charlie)
 
 /datum/squad/marine/delta
@@ -294,7 +294,7 @@ SQUAD_DROPPAD(delta, Delta)
 	name = SQUAD_MARINE_5
 	equipment_color = "#67d692"
 	chat_color = "#67d692"
-	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_SUPPORT, ACCESS_MARINE_DELTA)
 	radio_freq = ECHO_FREQ
 	omni_squad_vendor = TRUE
 	minimap_color = MINIMAP_SQUAD_ECHO
@@ -308,11 +308,45 @@ SQUAD_DROPPAD(delta, Delta)
 
 SQUAD_DROPPAD(echo, Echo)
 
+/datum/squad/marine/kilo
+	name = SQUAD_MARINE_6
+	equipment_color = "#059e96"
+	chat_color = "#059e96"
+	access = list(ACCESS_MARINE_SUPPORT)
+	radio_freq = KILO_FREQ
+	minimap_color = MINIMAP_SQUAD_KILO
+	background_icon = "background_charlie"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Still has some morning toast crumbs on it."
+
+SQUAD_LANDMARKS(kilo, Kilo)
+SQUAD_CRYOSTORAGE(kilo, Kilo)
+SQUAD_VENDORS(kilo, ACCESS_MARINE_SUPPORT, Kilo)
+SQUAD_DROPPAD(kilo, Kilo)
+
+/datum/squad/marine/oscar
+	name = SQUAD_MARINE_7
+	equipment_color = "#61a3ae"
+	chat_color = "#61a3ae"
+	access = list(ACCESS_MARINE_SUPPORT)
+	radio_freq = KILO_FREQ
+	minimap_color = MINIMAP_SQUAD_OSCAR
+	background_icon = "background_charlie"
+	has_cryostorage = TRUE
+	add_to_glob_squad_list = TRUE
+	beret_flavortext = "Still has some morning toast crumbs on it."
+
+SQUAD_LANDMARKS(oscar, Oscar)
+SQUAD_CRYOSTORAGE(oscar, Oscar)
+SQUAD_VENDORS(oscar, ACCESS_MARINE_SUPPORT, Oscar)
+SQUAD_DROPPAD(oscar, Oscar)
+
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO
 	equipment_color = "#c47a50"
 	chat_color = "#c47a50"
-	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_SUPPORT, ACCESS_MARINE_DELTA)
 	minimap_color = MINIMAP_SQUAD_FOXTROT
 	background_icon = "background_foxtrot"
 	beret_flavortext = "Looks and feels starched, cold to the touch."

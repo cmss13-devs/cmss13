@@ -156,6 +156,9 @@
 		to_chat(user, SPAN_NOTICE("You deactivate \the [src]."))
 	scanning = FALSE // safety if MD runtimes in scan and stops scanning
 	icon_state = "[initial(icon_state)]"
+	for(var/button in actions)
+		var/datum/action/action_button = button
+		action_button.update_button_icon()
 	playsound(loc, 'sound/items/detector_turn_off.ogg', 30, FALSE, 5, 2)
 	STOP_PROCESSING(SSobj, src)
 

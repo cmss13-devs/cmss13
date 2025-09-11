@@ -2220,7 +2220,7 @@ Defined in conflicts.dm of the #defines folder.
 	wield_delay_mod = WIELD_DELAY_NONE //starts collapsed so no delay mod
 	collapse_delay = 0.5 SECONDS
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION
-	attachment_action_type = /datum/action/item_action/toggle
+	attachment_action_type = /datum/action/item_action/toggle/stock
 
 /obj/item/attachable/stock/rifle/collapsible/m41ae2/New()
 	..()
@@ -3021,6 +3021,8 @@ Defined in conflicts.dm of the #defines folder.
 	if(isgun(loc))
 		var/obj/item/weapon/gun/gun = loc
 		gun.update_attachable(slot)
+		for(var/datum/action/item_action as anything in gun.actions)
+			item_action.update_button_icon()
 
 /obj/item/attachable/attached_gun/flamer/unique_action(mob/user)
 	..()

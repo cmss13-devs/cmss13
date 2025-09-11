@@ -778,6 +778,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/see_emote(mob/living/sourcemob, emote, audible)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
 
+/datum/action/item_action/cycle_helmet_huds
+	var/supported_custom_icons = list(
+		"hud_marine",
+		"nvg_sight_down",
+		"med_sight_down",
+		"sec_sight_down",
+		"blank_hud_sight_down"
+	)
+
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()
 	name = "Cycle helmet HUD"
@@ -799,10 +808,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	action_icon_state = new_visor.action_icon_string
 	button.overlays.Cut()
-	if(new_visor.action_icon_string == "hud_marine" || "nvg_sight_down" || "med_sight_down" || "blank_hud_sight_down" || "sec_sight_down")
-		button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
-	else
-		button.overlays += image('icons/obj/items/clothing/helmet_visors.dmi', button, action_icon_state)
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/cycle_helmet_huds/update_button_icon()
+	return
 
 /// Sets the action overlay to default hud sight up
 /datum/action/item_action/cycle_helmet_huds/proc/set_default_overlay()

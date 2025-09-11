@@ -309,9 +309,15 @@
 		return
 	var/obj/item/device/motiondetector/detector = holder_item
 	if(!detector.active)
-		action_icon_state = "motion_detector"
+		if(istype(detector, /obj/item/device/motiondetector/intel))
+			action_icon_state = "data_detector"
+		else
+			action_icon_state = "motion_detector"
 	else
-		action_icon_state = "motion_detector_off"
+		if(istype(detector, /obj/item/device/motiondetector/intel))
+			action_icon_state = "data_detector_on"
+		else
+			action_icon_state = "motion_detector_off"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
@@ -466,9 +472,15 @@
 	var/obj/item/weapon/gun/firearm = holder_item
 	var/obj/item/attachable/attached_gun/flamer/burner = firearm.attachments["under"]
 	if(firearm.active_attachable == burner)
-		action_icon_state = "underflamer_off"
+		if(burner.intense_mode)
+			action_icon_state = "underflamer_turbo_off"
+		else
+			action_icon_state = "underflamer_off"
 	else
-		action_icon_state = "underflamer"
+		if(burner.intense_mode)
+			action_icon_state = "underflamer_turbo"
+		else
+			action_icon_state = "underflamer"
 	button.overlays.Cut()
 	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 

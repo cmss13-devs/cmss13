@@ -267,7 +267,12 @@
 				B.screen_loc = null
 				continue
 			button_number++
-			B.screen_loc = B.get_button_screen_loc(button_number)
+			if(isxeno(src))
+				// Xenomorphs have action buttons on hud
+				B.screen_loc = B.get_xeno_button_screen_loc(button_number)
+			else
+				// Default action button positioning
+				B.screen_loc = B.get_button_screen_loc(button_number)
 
 		if(!button_number)
 			hud_used.hide_actions_toggle.screen_loc = null

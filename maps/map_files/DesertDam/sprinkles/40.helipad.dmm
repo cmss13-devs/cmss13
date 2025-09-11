@@ -130,7 +130,7 @@
 /turf/open/floor/floor4,
 /area/desert_dam/exterior/roof)
 "z" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
 "A" = (

@@ -337,6 +337,19 @@
 /obj/structure/platform/metal/kutjevo_smooth/west
 	dir = WEST
 
+/obj/structure/platform/metal/kutjevo_smooth_immune
+	icon_state = "kutjevo_platform_sm"
+	name = "raised metal edge"
+	desc =  "A raised level of metal, often used to elevate areas above others, or construct bridges. You could probably climb it."
+	explo_proof = TRUE
+
+/obj/structure/platform/metal/kutjevo_smooth_immune/north
+	dir = NORTH
+/obj/structure/platform/metal/kutjevo_smooth_immune/east
+	dir = EAST
+/obj/structure/platform/metal/kutjevo_smooth_immune/west
+	dir = WEST
+
 
 /obj/structure/platform/metal/kutjevo_smooth/stair_plate
 	icon_state = "kutjevo_stair_plate"
@@ -533,6 +546,19 @@
 /obj/structure/platform_decoration/metal/kutjevo_smooth/east
 	dir = EAST
 /obj/structure/platform_decoration/metal/kutjevo_smooth/west
+	dir = WEST
+
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune
+	name = "raised metal corner"
+	desc = "The corner of what appears to be raised piece of metal, often used to imply the illusion of elevation in non-Euclidean 2d spaces. But you don't know that, you're just a spaceman with a rifle."
+	icon_state = "kutjevo_platform_sm_deco"
+	explo_proof = TRUE
+
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north
+	dir = NORTH
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east
+	dir = EAST
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west
 	dir = WEST
 
 

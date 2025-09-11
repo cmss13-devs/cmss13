@@ -452,17 +452,19 @@
 /area/desert_dam/building/warehouse/loading)
 "abi" = (
 /obj/structure/stairs,
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/warehouse/loading)
 "abj" = (
 /obj/structure/stairs,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/warehouse/loading)
 "abk" = (
 /obj/structure/machinery/light,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/loading)
 "abl" = (
@@ -471,6 +473,7 @@
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "abm" = (
 /obj/structure/machinery/light,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/warehouse/loading)
 "abn" = (
@@ -615,6 +618,7 @@
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "abN" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
 /turf/closed/wall/r_wall/unmeltable,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "abO" = (
@@ -633,7 +637,7 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "abR" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /obj/structure/stairs,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
@@ -744,6 +748,8 @@
 /area/desert_dam/building/warehouse/office)
 "ack" = (
 /obj/structure/machinery/light,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/office)
 "acl" = (
@@ -754,8 +760,8 @@
 /area/desert_dam/building/warehouse/office)
 "acn" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/warehouse/office)
 "aco" = (
@@ -773,7 +779,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/warehouse/office)
 "acr" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/warehouse/loading)
 "acs" = (
@@ -783,8 +789,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/building/warehouse/loading)
 "act" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/warehouse/office)
 "acu" = (
@@ -810,7 +816,7 @@
 /area/desert_dam/building/warehouse/office)
 "acz" = (
 /obj/structure/barricade/handrail,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/darkbrown2,
 /area/desert_dam/building/warehouse/office)
 "acA" = (
@@ -992,7 +998,7 @@
 /turf/open/floor/prison/darkred2,
 /area/desert_dam/building/security/warden)
 "acZ" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/warehouse/warehouse)
 "ada" = (
@@ -1019,7 +1025,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/building/warehouse/loading)
 "ade" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/warehouse/loading)
 "adf" = (
@@ -1110,17 +1116,17 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/building/warehouse/warehouse)
 "adu" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/warehouse/loading)
 "adv" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/building/warehouse/loading)
 "adw" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/warehouse/loading)
 "adx" = (
@@ -1357,7 +1363,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "aeh" = (
 /turf/open/desert/rock/deep/transition/east,
@@ -2255,12 +2261,12 @@
 /area/desert_dam/interior/dam_interior/upper_stairwell)
 "ahd" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/upper_stairwell)
 "ahe" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/upper_stairwell)
 "ahf" = (
@@ -2291,11 +2297,11 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/upper_stairwell)
 "ahj" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/upper_stairwell)
 "ahk" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/upper_stairwell)
 "ahl" = (
@@ -3380,13 +3386,16 @@
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/maint/South)
 "aku" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison/darkred2/west,
 /area/desert_dam/building/security/stairwell)
 "akv" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/stairwell)
 "akw" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/stairwell)
 "akx" = (
@@ -3426,14 +3435,14 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/South)
 "akE" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/security/stairwell)
 "akF" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /obj/structure/stairs{
 	dir = 8
 	},
@@ -3461,7 +3470,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/security/maint/South)
 "akK" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /obj/structure/stairs/multiz/up{
 	dir = 8
 	},
@@ -3471,7 +3480,7 @@
 /obj/structure/stairs{
 	dir = 8
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/security/stairwell)
 "akM" = (
@@ -3496,6 +3505,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Marshal Office"
 	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/security/stairwell)
 "akR" = (
@@ -3574,7 +3584,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "alf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4706,7 +4716,7 @@
 /turf/open/floor/prison/darkred2/southwest,
 /area/desert_dam/building/security/stairwell/upper)
 "aoD" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
@@ -4730,16 +4740,16 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/hanger)
 "aoH" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/building/security/stairwell/upper)
 "aoI" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/security/stairwell/upper)
 "aoJ" = (
@@ -4835,16 +4845,16 @@
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/security/stairwell/upper)
 "apc" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/building/security/stairwell/upper)
 "apd" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/security/stairwell/upper)
 "ape" = (
@@ -6510,14 +6520,14 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/hanger)
 "auU" = (
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/hanger)
 "auV" = (
@@ -6633,7 +6643,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/administration/stairwell)
 "avr" = (
@@ -6854,8 +6864,8 @@
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "awa" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "awb" = (
@@ -6864,7 +6874,7 @@
 /turf/open/floor/prison/darkyellow2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "awc" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "awd" = (
@@ -6950,7 +6960,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "awr" = (
@@ -7927,6 +7937,10 @@
 	},
 /turf/open/floor/prison/blue/west,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
+"azs" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
 "azt" = (
 /obj/item/trash/cigbutt,
 /obj/structure/pipes/vents/pump{
@@ -8111,19 +8125,19 @@
 /turf/open/floor/vault2/northeast,
 /area/desert_dam/building/substation/central)
 "azR" = (
-/obj/structure/platform/metal/kutjevo/west,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "azS" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "azT" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "azU" = (
@@ -8285,8 +8299,8 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "aAr" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "aAs" = (
@@ -8297,14 +8311,14 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "aAt" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "aAu" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "aAv" = (
@@ -8320,7 +8334,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/interior/dam_interior/hanger/waiting)
 "aAx" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/purification)
 "aAy" = (
@@ -8340,7 +8354,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/administration/stairwell)
 "aAB" = (
@@ -9427,19 +9441,19 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/upper_hallway)
 "aDB" = (
-/obj/structure/platform/metal/kutjevo_smooth,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/administration/stairwell/upper)
 "aDC" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/building/administration/stairwell/upper)
 "aDD" = (
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/administration/stairwell/upper)
 "aDE" = (
@@ -9476,12 +9490,12 @@
 /turf/open/floor/prison/bluefull,
 /area/desert_dam/building/administration/control_room)
 "aDK" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/administration/stairwell/upper)
 "aDL" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/building/administration/stairwell/upper)
 "aDM" = (
@@ -9491,7 +9505,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/administration/stairwell/upper)
 "aDO" = (
@@ -10011,7 +10025,7 @@
 /area/desert_dam/building/administration/gate)
 "aFC" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
 "aFD" = (
@@ -10039,6 +10053,7 @@
 	pixel_x = -9;
 	pixel_y = 4
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/administration/stairwell)
 "aFI" = (
@@ -10142,6 +10157,7 @@
 /turf/open/floor/dark2,
 /area/desert_dam/building/substation/northwest)
 "aGa" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/building/administration/stairwell)
 "aGb" = (
@@ -12326,13 +12342,9 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "aMI" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/building/medical/stairwell/upper)
-"aMJ" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/closed/wall/r_wall,
-/area/desert_dam/building/medical/stairwell/upper_north)
 "aMK" = (
 /obj/structure/grille,
 /obj/structure/prop/invuln/overhead_pipe{
@@ -12461,14 +12473,14 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
 "aNe" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /obj/structure/stairs{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/hydroponics/hydroponics)
 "aNf" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /obj/structure/stairs{
 	dir = 1
 	},
@@ -12485,14 +12497,14 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
 "aNi" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/hydroponics/hydroponics)
 "aNj" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
@@ -12544,14 +12556,14 @@
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "aNr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "aNs" = (
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "aNt" = (
@@ -12568,12 +12580,12 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "aNv" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "aNw" = (
@@ -12647,7 +12659,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/overlook)
 "aNI" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /obj/structure/barricade/handrail,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -13096,13 +13108,13 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/hydroponics/maint)
 "aPm" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/building/hydroponics/stairwell)
 "aPn" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/building/hydroponics/stairwell)
 "aPo" = (
@@ -13136,11 +13148,11 @@
 /turf/open/floor/prison/yellow/east,
 /area/desert_dam/building/hydroponics/offices)
 "aPr" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/hydroponics/stairwell)
 "aPs" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/hydroponics/stairwell)
 "aPt" = (
@@ -13180,14 +13192,14 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/hydroponics/stairwell)
 "aPA" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/hydroponics/stairwell)
 "aPB" = (
@@ -13237,6 +13249,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/yellowcorner/west,
 /area/desert_dam/building/hydroponics/stairwell)
 "aPK" = (
@@ -13257,6 +13270,7 @@
 /area/desert_dam/exterior/landing_pad_two)
 "aPO" = (
 /obj/structure/machinery/light,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison/yellowcorner,
 /area/desert_dam/building/hydroponics/stairwell)
 "aPP" = (
@@ -13459,7 +13473,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/sky)
 "aQw" = (
 /obj/effect/landmark/nightmare{
@@ -13488,7 +13502,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/sky)
 "aQB" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
@@ -13548,7 +13562,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/sky)
 "aQM" = (
 /turf/open/floor/prison,
@@ -13792,7 +13806,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "aRE" = (
@@ -13806,12 +13820,12 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "aRG" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "aRH" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
 "aRI" = (
@@ -14484,7 +14498,7 @@
 /turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aTV" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /obj/structure/barricade/handrail,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/overlook)
@@ -14693,6 +14707,10 @@
 	},
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
+"aUG" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
 "aUH" = (
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached19,
 /area/desert_dam/exterior/valley/valley_civilian)
@@ -14703,10 +14721,35 @@
 	},
 /turf/open/gm/river/desert/deep/toxic,
 /area/desert_dam/building/water_treatment_two)
+"aUJ" = (
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/east_caves)
+"aUK" = (
+/obj/structure/stairs/multiz/up,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/east_caves)
+"aUL" = (
+/obj/structure/stairs/multiz/up,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/interior/caves/east_caves)
+"aUM" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
 "aUN" = (
 /obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"aUO" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/desert/dirt,
+/area/desert_dam/interior/caves/east_caves)
 "aUP" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/structure/disposalpipe/junction{
@@ -14714,6 +14757,58 @@
 	},
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/east_wing_hallway)
+"aUQ" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/darkbrowncorners2/west,
+/area/desert_dam/building/warehouse/loading)
+"aUR" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/prison/whitegreen,
+/area/desert_dam/building/medical/stairwell)
+"aUS" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/prison/whitegreen/southeast,
+/area/desert_dam/building/medical/stairwell)
+"aUT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/stairwell)
+"aUU" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/turf/closed/wall/r_wall/prison_unmeltable,
+/area/desert_dam/building/security/stairwell)
+"aUV" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_two/hallway)
+"aUW" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/whitegreen/north,
+/area/desert_dam/building/medical/stairwell/north)
+"aUX" = (
+/obj/structure/stairs{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/building/medical/stairwell/north)
+"aUY" = (
+/obj/structure/stairs/multiz/up{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/building/medical/stairwell/north)
+"aUZ" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
+"aVa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/closed/wall/r_wall/unmeltable,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
 "aVb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -14721,18 +14816,143 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
+"aVc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
+"aVd" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached12,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aVe" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
+"aVf" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/darkyellow2/north,
+/area/desert_dam/interior/dam_interior/lower_stairwell)
+"aVg" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 1
+	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aVh" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"aVi" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/hanger)
+"aVj" = (
+/obj/effect/decal/sand_overlay/sand1/corner1{
+	dir = 8
+	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached3,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aVk" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth/north,
+/turf/open_space,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "aVl" = (
 /turf/open/floor/prison/yellowcorner/west,
 /area/desert_dam/building/hydroponics/hydroponics)
 "aVm" = (
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/landing_pad_two)
+"aVn" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/turf/open_space,
+/area/desert_dam/exterior/valley/valley_crashsite)
+"aVo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell)
+"aVp" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell)
+"aVq" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell)
+"aVr" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell)
+"aVs" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/closed/wall/r_wall/unmeltable,
+/area/desert_dam/building/administration/stairwell)
+"aVt" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"aVu" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open_space,
+/area/desert_dam/exterior/rock)
+"aVv" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/warehouse/office)
+"aVw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_one/overlook)
+"aVx" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_one/overlook)
+"aVy" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/stairwell)
+"aVz" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/hydroponics/stairwell)
 "aVA" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/floor/prison/red,
 /area/desert_dam/building/security/northern_hallway)
+"aVB" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/whitegreen/west,
+/area/desert_dam/building/medical/stairwell/upper)
+"aVC" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/whitegreen/north,
+/area/desert_dam/building/medical/stairwell/upper)
+"aVD" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/prison/darkred2,
+/area/desert_dam/building/security/stairwell/upper)
+"aVE" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/stairwell/upper)
+"aVF" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
+/turf/open/floor/prison,
+/area/desert_dam/building/security/stairwell/upper)
+"aVG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_two/overlook)
 "aVH" = (
 /obj/item/tool/kitchen/tray{
 	pixel_y = 8
@@ -14747,6 +14967,39 @@
 	},
 /turf/open/floor/prison,
 /area/desert_dam/interior/lab_northeast/east_lab_containment)
+"aVI" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/building/water_treatment_two/overlook)
+"aVJ" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open_space,
+/area/desert_dam/building/medical/stairwell/upper_north)
+"aVK" = (
+/obj/structure/stairs/multiz/down{
+	dir = 1
+	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/almayer_hull,
+/area/desert_dam/building/medical/stairwell/upper_north)
+"aVL" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/whitegreen/west,
+/area/desert_dam/building/medical/stairwell/upper_north)
+"aVM" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
+"aVN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/primary_tool_storage/upper)
+"aVO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_stairwell)
 "aVP" = (
 /obj/structure/largecrate/empty,
 /obj/structure/largecrate/empty{
@@ -14756,11 +15009,54 @@
 	},
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/building/warehouse/warehouse)
+"aVQ" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/upper_stairwell)
+"aVR" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/turf/open_space,
+/area/desert_dam/interior/dam_interior/upper_stairwell)
+"aVS" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
+/turf/open_space,
+/area/desert_dam/interior/dam_interior/upper_stairwell)
+"aVT" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bluecorner/west,
+/area/desert_dam/interior/dam_interior/hanger/waiting)
+"aVU" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/hanger/waiting)
+"aVV" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/hanger/waiting)
 "aVW" = (
 /obj/structure/machinery/power/apc/no_power/west,
 /obj/structure/largecrate/random/barrel/yellow,
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/smes_main)
+"aVX" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/blue/north,
+/area/desert_dam/interior/dam_interior/hanger/waiting)
+"aVY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell/upper)
+"aVZ" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell/upper)
+"aWa" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
+/turf/open/floor/prison/bright_clean2,
+/area/desert_dam/building/administration/stairwell/upper)
 "aWb" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_corner2/west,
@@ -15582,8 +15878,8 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
 "bmN" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/overlook)
 "bmY" = (
@@ -15607,8 +15903,8 @@
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/valley_civilian)
 "bnB" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "bnC" = (
@@ -15986,10 +16282,6 @@
 /obj/structure/bed/chair/comfy/teal,
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/outgoing)
-"btJ" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/turf/closed/wall/r_wall/unmeltable,
-/area/desert_dam/building/medical/stairwell/north)
 "btO" = (
 /obj/structure/surface/rack,
 /obj/item/stack/sheet/metal/medium_stack,
@@ -16412,6 +16704,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_two/hallway)
 "bDz" = (
@@ -18006,7 +18299,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "clE" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /obj/structure/stairs/multiz/up,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -18830,8 +19123,8 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "cFA" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/purification)
 "cFD" = (
@@ -19098,7 +19391,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/outgoing)
 "cJS" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/overlook)
 "cKb" = (
@@ -19338,11 +19631,11 @@
 /turf/open/desert/rock/edge1/east,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cNC" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/stairs/perspective{
 	dir = 5;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
 "cNE" = (
@@ -19715,6 +20008,7 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/prison/whitegreen/northeast,
 /area/desert_dam/building/medical/stairwell)
 "cUs" = (
@@ -20871,7 +21165,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_two/hallway)
 "dqS" = (
@@ -21866,7 +22160,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/upper)
 "dIF" = (
@@ -23377,7 +23671,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "epe" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/sky)
 "epj" = (
@@ -23808,7 +24102,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/building/water_treatment_one/equipment)
 "ezm" = (
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/sky)
 "ezp" = (
@@ -24016,6 +24310,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell)
 "eDI" = (
@@ -24169,7 +24464,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "eGg" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/closed/wall/r_wall/unmeltable,
 /area/desert_dam/building/hydroponics/hydroponics)
 "eGi" = (
@@ -25229,10 +25524,10 @@
 /turf/open/floor/prison/darkyellow2/west,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "faD" = (
-/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "faE" = (
@@ -25317,6 +25612,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/upper_north)
 "fcq" = (
@@ -27029,6 +27325,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/upper)
 "fLl" = (
@@ -27752,8 +28049,8 @@
 /turf/open/floor/prison/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "fZb" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/purification)
 "fZc" = (
@@ -27957,7 +28254,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/medical/office1)
 "gdi" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /obj/structure/stairs/multiz/up,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
@@ -28239,11 +28536,11 @@
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/desert_dam/building/warehouse/warehouse)
 "giU" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/stairs/perspective{
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
 "gjd" = (
@@ -29154,7 +29451,7 @@
 /turf/open/floor/freezerfloor,
 /area/desert_dam/interior/dam_interior/break_room)
 "gAD" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/overlook)
 "gAE" = (
@@ -29298,7 +29595,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
 "gDa" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_one/overlook)
 "gDc" = (
@@ -29645,6 +29942,7 @@
 /area/desert_dam/building/security/holding)
 "gKt" = (
 /obj/effect/decal/sand_overlay/sand1/corner1,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "gKz" = (
@@ -31928,7 +32226,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/warehouse)
 "hCQ" = (
-/obj/structure/platform/metal/almayer/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "hCR" = (
@@ -32515,7 +32813,7 @@
 /turf/open/floor/prison/whitered/northwest,
 /area/desert_dam/building/medical/office3)
 "hOu" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/sky)
 "hOL" = (
@@ -33972,7 +34270,7 @@
 	pixel_x = -12;
 	pixel_y = 25
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "iqy" = (
 /obj/structure/machinery/light{
@@ -34008,7 +34306,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "irr" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /obj/structure/stairs,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
@@ -34853,7 +35151,7 @@
 	pixel_x = 8;
 	pixel_y = 2
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "iHj" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34899,8 +35197,8 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/bar/bar_restroom)
 "iHZ" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "iIi" = (
@@ -35078,7 +35376,7 @@
 /turf/open/asphalt,
 /area/desert_dam/building/water_treatment_one/garage)
 "iLi" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "iLq" = (
@@ -35150,6 +35448,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "iMQ" = (
@@ -35316,6 +35615,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/upper_hallway)
 "iRp" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/whitegreencorner,
 /area/desert_dam/building/medical/stairwell/upper_north)
 "iRz" = (
@@ -35626,8 +35926,8 @@
 /area/desert_dam/building/bar/bar_restroom)
 "iXJ" = (
 /obj/structure/stairs/multiz/up,
-/obj/structure/platform/metal/kutjevo_smooth/west,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/warehouse/loading)
 "iXK" = (
@@ -35680,7 +35980,7 @@
 /turf/open/floor/prison/blue,
 /area/desert_dam/building/dorms/pool)
 "iZs" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /obj/structure/stairs/multiz/up,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
@@ -36299,7 +36599,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/warehouse/warehouse)
 "jls" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "jlt" = (
@@ -36545,7 +36845,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "jpX" = (
@@ -36638,7 +36938,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "jro" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -36828,6 +37128,7 @@
 /turf/open/floor/prison/sterile_white/west,
 /area/desert_dam/building/hydroponics/hydroponics_breakroom)
 "jvj" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/prison/whitegreen/southwest,
 /area/desert_dam/building/medical/stairwell/north)
 "jvk" = (
@@ -36967,7 +37268,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "jxV" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/overlook)
 "jyd" = (
@@ -37775,7 +38077,7 @@
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached17,
 /area/desert_dam/interior/dam_interior/north_tunnel_entrance)
 "jPs" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
 "jPt" = (
@@ -38016,7 +38318,7 @@
 /turf/open/floor/coagulation/icon8_0,
 /area/desert_dam/building/water_treatment_two/purification)
 "jUK" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
 "jUM" = (
@@ -38105,7 +38407,7 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_civilian)
 "jWr" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "jWs" = (
@@ -38123,6 +38425,7 @@
 /turf/open/desert/rock/deep/transition/north,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "jWX" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/medical/stairwell/upper_north)
 "jWY" = (
@@ -38154,7 +38457,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/administration/stairwell)
 "jXJ" = (
@@ -39148,7 +39451,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/valley_labs)
 "kss" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /obj/structure/stairs,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -40801,6 +41104,7 @@
 /turf/open/floor/prison/bright_clean2,
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "lcL" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison/whitegreencorner/west,
 /area/desert_dam/building/medical/stairwell/upper)
 "lda" = (
@@ -40988,6 +41292,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell)
 "lhs" = (
@@ -41967,7 +42272,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_mining)
 "lAr" = (
-/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/darkyellow2,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "lAt" = (
@@ -43797,7 +44102,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/north_valley_dam)
 "mnj" = (
-/obj/structure/platform_decoration/metal/kutjevo/north,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "mnt" = (
@@ -44517,7 +44822,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/east,
 /area/desert_dam/exterior/valley/valley_labs)
 "mzF" = (
-/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "mzL" = (
@@ -44735,6 +45040,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "mEk" = (
@@ -45270,7 +45576,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/hanger)
 "mQG" = (
@@ -45411,7 +45717,7 @@
 	},
 /area/desert_dam/interior/dam_interior/break_room)
 "mSW" = (
-/obj/structure/platform_decoration/metal/almayer/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "mSZ" = (
@@ -45549,7 +45855,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_two/hallway)
 "mWr" = (
@@ -46196,7 +46502,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/stair_cut/kutjevo_smooth_right,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_two/overlook)
 "njJ" = (
@@ -46851,12 +47157,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
-"nvR" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/desert_dam/exterior/roof)
 "nwc" = (
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/valley/valley_medical)
@@ -47169,7 +47469,7 @@
 	},
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "nDa" = (
-/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/closed/wall/r_wall/unmeltable,
 /area/desert_dam/building/hydroponics/hydroponics)
 "nDc" = (
@@ -47748,6 +48048,7 @@
 /turf/open/floor/prison/whitegreenfull/southwest,
 /area/desert_dam/building/medical/virology_wing)
 "nOe" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/overlook)
 "nOf" = (
@@ -48193,6 +48494,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/caves/east_caves)
 "nVy" = (
@@ -48373,7 +48675,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "nZb" = (
@@ -48681,10 +48983,10 @@
 /turf/open/floor/prison/floor_marked/southwest,
 /area/desert_dam/building/warehouse/loading)
 "oeh" = (
-/obj/structure/platform/metal/stair_cut/platform_left,
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "oes" = (
@@ -49396,12 +49698,6 @@
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached4,
 /area/desert_dam/exterior/valley/valley_cargo)
-"otO" = (
-/obj/structure/cable/heavyduty{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/desert_dam/exterior/roof)
 "otT" = (
 /turf/open/floor/prison/bluecorner/east,
 /area/desert_dam/interior/dam_interior/tech_storage)
@@ -49797,6 +50093,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 1
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "oBu" = (
@@ -50051,6 +50348,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_two/hallway)
 "oGi" = (
@@ -51492,8 +51790,8 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/building/water_treatment_one/purification)
 "pkl" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
 /obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
 "pks" = (
@@ -52043,7 +52341,7 @@
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_two/overlook)
 "pvj" = (
@@ -52747,6 +53045,7 @@
 /area/desert_dam/exterior/landing_pad_one)
 "pIu" = (
 /obj/structure/stairs/multiz/down,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/interior/lab_northeast/east_lab_east_entrance)
 "pIw" = (
@@ -53185,7 +53484,7 @@
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "pQn" = (
 /obj/effect/decal/warning_stripes{
@@ -54117,7 +54416,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "qiK" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "qiQ" = (
@@ -55768,6 +56067,7 @@
 /turf/open/asphalt,
 /area/desert_dam/interior/dam_interior/south_tunnel)
 "qMT" = (
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/building/medical/stairwell/upper)
 "qMY" = (
@@ -55881,10 +56181,10 @@
 /turf/open/floor/prison/sterile_white,
 /area/desert_dam/interior/dam_interior/workshop)
 "qPt" = (
-/obj/structure/platform/metal/almayer,
 /obj/structure/stairs/multiz/down{
 	dir = 8
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "qPu" = (
@@ -56654,7 +56954,7 @@
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/roof)
 "rdx" = (
-/obj/structure/platform_decoration/metal/almayer/east,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rdS" = (
@@ -56851,7 +57151,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/west,
 /area/desert_dam/exterior/valley/valley_northwest)
 "rgV" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/sky)
 "rhe" = (
@@ -56913,6 +57213,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 1
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
 "riF" = (
@@ -57493,8 +57794,8 @@
 /turf/open/floor/prison/green/north,
 /area/desert_dam/building/dorms/hallway_northwing)
 "rwm" = (
-/obj/structure/platform/metal/almayer/north,
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "rwn" = (
@@ -57511,7 +57812,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/river/riverside_east)
 "rwO" = (
-/obj/structure/platform_decoration/metal/kutjevo,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_one/hallway)
 "rxa" = (
@@ -59184,7 +59485,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/dorms/hallway_westwing)
 "sft" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /obj/structure/stairs/multiz/up,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -60156,7 +60457,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/northwest,
 /area/desert_dam/exterior/valley/valley_northwest)
 "sxQ" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/purification)
 "sya" = (
@@ -60710,6 +61011,7 @@
 /turf/open/floor/prison/darkyellow2/northwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "sHB" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/desert_dam/interior/dam_interior/lower_stairwell)
 "sHD" = (
@@ -61743,7 +62045,7 @@
 /turf/open/floor/prison/darkyellowcorners2/east,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "tfd" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /obj/structure/machinery/light,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
@@ -62663,8 +62965,8 @@
 /turf/open/floor/prison/darkred2/north,
 /area/desert_dam/building/security/staffroom)
 "twJ" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "twQ" = (
@@ -62676,7 +62978,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "twT" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/purification)
 "twY" = (
@@ -63304,7 +63606,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/hallway)
 "tJR" = (
-/obj/structure/platform_decoration/metal/kutjevo/east,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/hydroponics/hydroponics)
 "tJV" = (
@@ -63687,7 +63989,7 @@
 /turf/open/desert/dirt/desert_transition_edge1/northeast,
 /area/desert_dam/exterior/valley/valley_security)
 "tQb" = (
-/obj/structure/platform_decoration/metal/almayer/north,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "tQg" = (
@@ -63703,7 +64005,7 @@
 /turf/open/desert/excavation/component6/east,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "tQo" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/overlook)
 "tQp" = (
@@ -63815,7 +64117,7 @@
 /turf/open/desert/dirt/rock1,
 /area/desert_dam/exterior/landing_pad_two)
 "tRR" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /obj/structure/stairs,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_one/hallway)
@@ -64210,7 +64512,7 @@
 /obj/structure/stairs/multiz/up{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell)
 "uaU" = (
@@ -64510,7 +64812,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/administration/stairwell)
 "ugF" = (
@@ -64645,10 +64947,10 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "uiW" = (
-/obj/structure/platform/metal/stair_cut/platform_right,
 /obj/structure/stairs/multiz/down{
 	dir = 4
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "uiX" = (
@@ -65110,7 +65412,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/central_tunnel)
 "uqF" = (
-/obj/structure/platform_decoration/metal/almayer,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "uqL" = (
@@ -65279,7 +65581,7 @@
 /area/desert_dam/exterior/river/riverside_south)
 "utZ" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
 "uub" = (
@@ -65772,7 +66074,7 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/smes_main)
 "uEU" = (
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "uFa" = (
@@ -66102,7 +66404,7 @@
 /turf/open/floor/prison/whitegreen/east,
 /area/desert_dam/building/medical/stairwell/north)
 "uLM" = (
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/purification)
 "uLR" = (
@@ -67071,7 +67373,7 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_labs)
 "vha" = (
-/obj/structure/platform_decoration/metal/kutjevo/west,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_two/purification)
 "vhh" = (
@@ -67105,8 +67407,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_civilian)
 "vhE" = (
-/obj/structure/platform/metal/almayer/west,
 /obj/structure/stairs/multiz/down,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vhF" = (
@@ -67651,7 +67953,7 @@
 /turf/open/asphalt/cement/cement12,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "vrI" = (
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vrR" = (
@@ -67872,7 +68174,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_RND)
 "vwm" = (
 /obj/structure/stairs/multiz/down,
-/obj/structure/platform/metal/kutjevo_smooth/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/water_treatment_one/overlook)
 "vwn" = (
@@ -68374,7 +68676,7 @@
 /obj/structure/stairs{
 	dir = 4
 	},
-/obj/structure/platform/metal/kutjevo_smooth,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell)
 "vHr" = (
@@ -68807,7 +69109,7 @@
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "vPW" = (
-/obj/structure/platform/metal/almayer,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "vQa" = (
@@ -69679,8 +69981,8 @@
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "wix" = (
-/obj/structure/platform/metal/almayer/east,
 /obj/structure/stairs/multiz/down,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wiB" = (
@@ -70659,8 +70961,8 @@
 /turf/open/asphalt/tile,
 /area/desert_dam/exterior/valley/valley_hydro)
 "wCh" = (
-/obj/structure/platform/metal/almayer,
-/obj/structure/platform/metal/almayer/east,
+/obj/structure/platform/metal/kutjevo_smooth_immune,
+/obj/structure/platform/metal/kutjevo_smooth_immune/east,
 /turf/open_space,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "wCy" = (
@@ -71634,7 +71936,7 @@
 /area/desert_dam/exterior/valley/bar_valley_dam)
 "wZt" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/platform_decoration/metal/kutjevo_smooth,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune,
 /turf/open/floor/prison/bright_clean/southwest,
 /area/desert_dam/building/water_treatment_two/hallway)
 "wZL" = (
@@ -72078,7 +72380,7 @@
 	pixel_x = -10;
 	pixel_y = 2
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/plating_catwalk/prison,
 /area/desert_dam/exterior/roof)
 "xiW" = (
 /obj/structure/window/framed/hangar,
@@ -72546,8 +72848,8 @@
 /turf/open/desert/rock/deep/rock3,
 /area/desert_dam/interior/dam_interior/north_tunnel)
 "xrW" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
-/obj/structure/platform/metal/kutjevo_smooth/west,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "xrZ" = (
@@ -73124,7 +73426,7 @@
 /turf/closed/wall,
 /area/desert_dam/building/medical/maint/north)
 "xEs" = (
-/obj/structure/platform/metal/kutjevo_smooth/north,
+/obj/structure/platform/metal/kutjevo_smooth_immune/north,
 /turf/open_space,
 /area/desert_dam/building/water_treatment_one/purification)
 "xEw" = (
@@ -73496,6 +73798,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/lobby)
 "xMf" = (
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/stairwell/north)
 "xMh" = (
@@ -73633,6 +73936,7 @@
 "xOY" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/platform_decoration/metal/kutjevo_smooth_immune/north,
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/stairwell/upper_north)
 "xPc" = (
@@ -74655,6 +74959,7 @@
 /obj/structure/stairs{
 	dir = 1
 	},
+/obj/structure/platform/metal/kutjevo_smooth_immune/west,
 /turf/open/floor/almayer_hull,
 /area/desert_dam/building/medical/stairwell/north)
 "yjj" = (
@@ -128649,8 +128954,8 @@ rfS
 rfS
 rfS
 pfK
-pfK
-hgm
+aUM
+aUK
 biJ
 biJ
 biJ
@@ -128658,7 +128963,7 @@ biJ
 biJ
 biJ
 nVu
-pfK
+azs
 pfK
 rfS
 rfS
@@ -128883,16 +129188,16 @@ rfS
 rfS
 rfS
 pfK
-pfK
-hgm
+aUO
+aUL
 biJ
 biJ
 biJ
 biJ
 biJ
 biJ
-nVu
-pfK
+aUJ
+aUG
 pfK
 pfK
 rfS
@@ -136905,9 +137210,9 @@ dmu
 qDu
 ilV
 rgj
-rgj
-rgj
-rgj
+aVh
+aVi
+aVh
 asT
 lZB
 eYE
@@ -138615,7 +138920,7 @@ sAG
 alu
 all
 osy
-dpA
+aUU
 akK
 akE
 aku
@@ -138849,7 +139154,7 @@ dDX
 iay
 alm
 hZD
-dpA
+aUU
 akL
 akF
 akv
@@ -139085,7 +139390,7 @@ aln
 kTS
 akQ
 akw
-akv
+aUT
 akw
 akq
 akc
@@ -144539,7 +144844,7 @@ aBy
 oyR
 slX
 ruY
-vdb
+aUQ
 abj
 abi
 iXJ
@@ -150432,8 +150737,8 @@ qaR
 qaR
 aFj
 aGa
-avo
-aFs
+aVr
+aVo
 aFt
 aFj
 iCP
@@ -150667,7 +150972,7 @@ qaR
 avp
 ugp
 jXG
-avo
+aVp
 aFu
 aFj
 pNM
@@ -151134,8 +151439,8 @@ qaR
 qaR
 avp
 avp
-avp
-avo
+aVs
+aVq
 aFu
 aFj
 avm
@@ -157735,11 +158040,11 @@ lLH
 abZ
 iyX
 xiW
-abT
-abQ
-abQ
-abQ
-abM
+aVe
+aVc
+aVc
+aVc
+aUZ
 abG
 onF
 brL
@@ -157969,7 +158274,7 @@ bFT
 cpS
 khl
 xiW
-abT
+aVf
 abR
 abR
 gdi
@@ -158207,7 +158512,7 @@ sHB
 irr
 irr
 iZs
-abN
+aVa
 gmK
 wQs
 cVc
@@ -173226,8 +173531,8 @@ bhg
 bhg
 bhg
 bhg
-rip
-yji
+aUY
+aUX
 xMf
 bIE
 ham
@@ -173460,9 +173765,9 @@ bhg
 bhg
 bhg
 bhg
-btJ
-btJ
-set
+bhg
+bhg
+aUW
 bQD
 lVX
 tHG
@@ -174115,8 +174420,8 @@ kbg
 iVF
 iVF
 iVF
-uRC
-uOW
+aVg
+aVd
 iVF
 iVF
 iVF
@@ -175361,8 +175666,8 @@ sqn
 bNh
 pUY
 cUr
-eLC
-bkW
+aUS
+aUR
 xCM
 bkW
 nPu
@@ -178300,9 +178605,9 @@ hCQ
 uub
 uub
 uub
-tQb
+aVk
 vhE
-idK
+aVj
 cli
 cli
 cli
@@ -178534,7 +178839,7 @@ hCQ
 uub
 uub
 uub
-uqF
+aVn
 wix
 gKt
 gvx
@@ -179320,7 +179625,7 @@ dip
 nTK
 hAx
 mNA
-bzY
+aUV
 wZt
 aFC
 xSQ
@@ -185981,14 +186286,14 @@ qaR
 qaR
 hor
 hor
-hor
+aVt
 iMy
 pGT
 nAy
 nAy
 hKm
 mEh
-hor
+aVt
 hor
 hor
 qaR
@@ -186215,14 +186520,14 @@ qaR
 qaR
 hor
 hor
-hor
+aVu
 pIu
 flo
 fwW
 fwW
 uLR
 oBt
-hor
+aVu
 hor
 hor
 qaR
@@ -191521,10 +191826,10 @@ wnN
 wnN
 wnN
 wnN
-piv
-dWI
-dWI
-dWI
+aNy
+aNy
+aNy
+aNy
 dsS
 aei
 dsS
@@ -191755,10 +192060,10 @@ wnN
 wnN
 wnN
 wnN
-bhG
-dsS
-dsS
-dsS
+aNy
+aNy
+aNy
+aNy
 dsS
 dsS
 wrN
@@ -191768,7 +192073,7 @@ dsS
 dsS
 dsS
 dsS
-dsS
+aTI
 dsS
 dsS
 dsS
@@ -191989,10 +192294,10 @@ wnN
 wnN
 wnN
 wnN
-bhG
-dsS
-dsS
-dsS
+aNy
+aNy
+aNy
+aNy
 dsS
 aej
 dsS
@@ -192002,7 +192307,7 @@ aef
 dsS
 dsS
 dsS
-dsS
+aTK
 dsS
 dsS
 dsS
@@ -192463,13 +192768,13 @@ dsS
 dsS
 dsS
 dsS
-dsS
-dsS
-dsS
-dsS
-dsS
-dsS
-dsS
+aNy
+aNy
+aNy
+aNy
+aNy
+aNy
+aNy
 adZ
 dsS
 dsS
@@ -192697,13 +193002,13 @@ dsS
 dsS
 dsS
 dsS
-dsS
-dsS
-dsS
-dsS
-dsS
-dsS
-dsS
+aNy
+aNy
+aNy
+aNy
+aNy
+aNy
+aNy
 dsS
 dsS
 dsS
@@ -192931,13 +193236,13 @@ dsS
 dsS
 dsS
 dsS
-dsS
-dsS
-dsS
-dsS
-dsS
-dsS
-dsS
+aNy
+aNy
+aNy
+aNy
+aNy
+aNy
+aNy
 dsS
 dsS
 dsS
@@ -195172,10 +195477,10 @@ aCh
 aBU
 aBG
 axD
-ayo
-ayr
-ayr
-azG
+aVX
+aVV
+aVU
+aVT
 azw
 azq
 azh
@@ -195478,9 +195783,9 @@ aqx
 aqH
 anT
 apQ
-aof
-aof
-aoa
+aVF
+aVE
+aVD
 anT
 ipW
 ipW
@@ -199962,8 +200267,8 @@ ipW
 piv
 dsS
 dsS
-dsS
-dsS
+adH
+adH
 dsS
 dsS
 ewx
@@ -200196,8 +200501,8 @@ ipW
 bhG
 dsS
 dsS
-dsS
-dsS
+adH
+adH
 dsS
 dsS
 jyV
@@ -200430,8 +200735,8 @@ ipW
 bhG
 dsS
 dsS
-dsS
-dsS
+adH
+adH
 dsS
 dsS
 jyV
@@ -200664,8 +200969,8 @@ ipW
 bhG
 dsS
 dsS
-dsS
-dsS
+adH
+adH
 dsS
 dsS
 jyV
@@ -200898,8 +201203,8 @@ ipW
 bhG
 dsS
 dsS
-dsS
-dsS
+adH
+adH
 dsS
 dsS
 jyV
@@ -201132,8 +201437,8 @@ ipW
 bhG
 dsS
 dsS
-dsS
-dsS
+adH
+adH
 dsS
 dsS
 jyV
@@ -202108,7 +202413,7 @@ acA
 acp
 acp
 acp
-acm
+aVv
 acj
 wnN
 wnN
@@ -202319,7 +202624,7 @@ ipW
 bhG
 dsS
 dsS
-dsS
+aTI
 dsS
 jyV
 kwC
@@ -202553,7 +202858,7 @@ ipW
 bhG
 dsS
 dsS
-dsS
+aTK
 dsS
 jyV
 joU
@@ -202786,7 +203091,7 @@ ipW
 ipW
 bhG
 dsS
-dsS
+adF
 dsS
 dsS
 jyV
@@ -203020,8 +203325,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-adF
+aNy
+aNy
 dsS
 jyV
 joU
@@ -203254,8 +203559,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 kwC
@@ -203488,8 +203793,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 kwC
@@ -203706,8 +204011,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+adH
+adH
 dsS
 jyV
 ipW
@@ -203722,8 +204027,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 joU
@@ -203940,8 +204245,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+adH
+adH
 dsS
 jyV
 ipW
@@ -203956,8 +204261,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 joU
@@ -204190,8 +204495,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 joU
@@ -204424,8 +204729,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 kwC
@@ -204658,8 +204963,8 @@ ipW
 piv
 dsS
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 kwC
@@ -204892,8 +205197,8 @@ ipW
 bhG
 dsS
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 joU
@@ -205028,8 +205333,8 @@ aRb
 aQX
 aQS
 ale
-otO
-otO
+aRb
+aRb
 aeg
 bhG
 dsS
@@ -205126,8 +205431,8 @@ ipW
 bhG
 dsS
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 joU
@@ -208698,9 +209003,9 @@ ipW
 ipW
 ipW
 aLS
-aKI
-aKI
-aLb
+aWa
+aVZ
+aVY
 aLc
 aKG
 aKn
@@ -208767,8 +209072,8 @@ awX
 awV
 awp
 awA
-awA
-awp
+aVN
+aVM
 avP
 wnN
 wnN
@@ -212127,8 +212432,8 @@ dsS
 dsS
 dsS
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 dsS
 dsS
@@ -212361,8 +212666,8 @@ dsS
 dsS
 dsS
 aTI
-dsS
-dsS
+aNy
+aNy
 aTI
 dsS
 dsS
@@ -212595,8 +212900,8 @@ dsS
 dsS
 dsS
 aTK
-dsS
-dsS
+aNy
+aNy
 aTK
 jbF
 dsS
@@ -212829,8 +213134,8 @@ dsS
 dsS
 dsS
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 dsS
 dsS
@@ -213083,8 +213388,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 dsS
 dsS
@@ -213317,8 +213622,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 jKa
 dsS
 aTI
@@ -213551,8 +213856,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 dsS
 aTK
@@ -213785,8 +214090,8 @@ ipW
 ipW
 bhG
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 dsS
 dsS
@@ -214465,7 +214770,7 @@ aea
 aQp
 aQd
 aPL
-aPL
+aVy
 aPz
 aPr
 aPm
@@ -214699,7 +215004,7 @@ aQa
 aPR
 aQe
 aPL
-aPL
+aVz
 aPA
 aPs
 aPn
@@ -215301,10 +215606,10 @@ dsS
 dsS
 afI
 ahB
-ahj
+aVR
 ahj
 ahd
-agC
+aVO
 agm
 afZ
 afI
@@ -215426,7 +215731,7 @@ aTV
 tQo
 tQo
 gDa
-gLv
+aVw
 aNA
 izP
 prg
@@ -215535,10 +215840,10 @@ dsS
 dsS
 afH
 ahC
-ahk
+aVS
 ahk
 ahe
-agD
+aVQ
 agp
 afZ
 afH
@@ -215660,7 +215965,7 @@ aNI
 cJS
 cJS
 vwm
-izP
+aVx
 adC
 gLv
 cFH
@@ -215856,8 +216161,8 @@ wnN
 aeW
 dsS
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 ipW
@@ -216090,8 +216395,8 @@ wnN
 aeX
 dsS
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 ipW
@@ -216324,8 +216629,8 @@ wnN
 aeY
 aeP
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 ipW
@@ -216558,8 +216863,8 @@ wnN
 wnN
 dsS
 dsS
-dsS
-dsS
+aNy
+aNy
 dsS
 jyV
 ipW
@@ -217024,7 +217329,7 @@ wnN
 wnN
 wnN
 wnN
-wnN
+dsS
 dsS
 dsS
 dsS
@@ -222133,7 +222438,7 @@ ipW
 ipW
 bhG
 dsS
-dsS
+eHc
 dsS
 dsS
 dsS
@@ -222836,7 +223141,7 @@ ipW
 bhG
 dsS
 dsS
-eHc
+dsS
 dsS
 dsS
 dsS
@@ -230321,7 +230626,7 @@ ipW
 ipW
 nrV
 nwP
-bFj
+aVL
 fcn
 jWX
 jWX
@@ -230556,9 +230861,9 @@ ipW
 afg
 uZp
 iRp
-fcn
-jWX
-jWX
+aVK
+aVJ
+aVJ
 nrV
 oga
 ljJ
@@ -230790,9 +231095,9 @@ ipW
 afg
 rdS
 xOY
-aMJ
-aMJ
-aMJ
+nrV
+nrV
+nrV
 nrV
 oga
 oga
@@ -232967,14 +233272,14 @@ aNy
 dsS
 jyV
 ale
-otO
-otO
-otO
+aRb
+aRb
+aRb
 iHi
-otO
-otO
-otO
-otO
+aRb
+aRb
+aRb
+aRb
 xiV
 bhG
 dsS
@@ -233861,9 +234166,9 @@ vRa
 jDF
 vRa
 igB
-vpq
+aVC
 lcL
-mEt
+aVB
 wrh
 awO
 rAc
@@ -237660,7 +237965,7 @@ ipW
 ipW
 ipW
 ezm
-nvR
+aRh
 epe
 ipW
 ipW
@@ -237821,8 +238126,8 @@ xEW
 xEW
 xEW
 lZS
-wuL
-mQO
+aVI
+aVG
 xlz
 wuL
 kPC
@@ -238128,7 +238433,7 @@ ipW
 ipW
 ipW
 ezm
-nvR
+aRh
 epe
 ipW
 ipW
@@ -239989,10 +240294,10 @@ dsS
 dsS
 jyV
 iqm
-otO
-otO
-otO
-otO
+aRb
+aRb
+aRb
+aRb
 iHi
 bhG
 dsS

@@ -351,14 +351,14 @@
 /area/white_antre/indoors/main_level/east_containment)
 "abp" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -801,14 +801,14 @@
 /area/white_antre/oob)
 "acz" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -828,14 +828,14 @@
 /area/white_antre/oob)
 "acA" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -6024,6 +6024,35 @@
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/almayer/green2/east,
 /area/white_antre/indoors/main_level/west_corridor)
+"aoI" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8;
+	layer = 3.1
+	},
+/turf/open/floor/almayer_hull,
+/area/white_antre/oob)
+"aoJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2";
+	dir = 4;
+	pixel_x = 2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	dir = 4;
+	pixel_x = -16
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8;
+	layer = 3.1
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/oob)
 "aoK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/alt_dirt{
@@ -7350,6 +7379,13 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "arO" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/obj/structure/sign/poster/safety{
+	pixel_x = 27;
+	pixel_y = 32
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/open/floor/strata/orange_cover,
 /area/white_antre/indoors/main_level/weapons)
 "arP" = (
@@ -7369,14 +7405,14 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "arR" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -7420,6 +7456,14 @@
 /obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/almayer/green2/west,
 /area/white_antre/indoors/main_level/west_corridor)
+"arW" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8;
+	layer = 3.1
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/oob)
 "arX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/ammo_casing/bullet,
@@ -7752,7 +7796,7 @@
 	pixel_x = -31
 	},
 /turf/open/auto_turf/shale/layer1,
-/area/white_antre/oob)
+/area/white_antre/outdoors/north_field)
 "asL" = (
 /turf/closed/wall/hybrisa/marhsalls/reinforced,
 /area/white_antre/indoors/main_level/security)
@@ -7769,6 +7813,13 @@
 "asP" = (
 /turf/open/floor/prison/floor_marked,
 /area/white_antre/indoors/main_level/security)
+"asQ" = (
+/obj/item/stack/tile/plasteel{
+	name = "ceiling tile";
+	pixel_y = -7
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "asR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_red"
@@ -7825,14 +7876,68 @@
 /turf/open_space,
 /area/white_antre/indoors/main_level/security)
 "atd" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
 /turf/open/floor/strata/red3/west,
 /area/white_antre/indoors/main_level/security)
 "ate" = (
 /turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/main_level/security)
+"atf" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "atg" = (
 /turf/open/floor/almayer/green2/west,
 /area/white_antre/indoors/main_level/west_corridor)
+"ath" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"ati" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"atj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"atk" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"atl" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	layer = 2.5;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"atm" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "atn" = (
 /turf/open/floor/almayer/green2/southwest,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -7858,6 +7963,15 @@
 "atu" = (
 /turf/open/floor/prison/blue/east,
 /area/white_antre/indoors/main_level/dorms)
+"atv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "atw" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
 /turf/open/floor/plating,
@@ -7877,6 +7991,10 @@
 "atB" = (
 /turf/open/floor/almayer/silvercorner/south,
 /area/white_antre/indoors/main_level/west_corridor)
+"atC" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "atD" = (
 /turf/open/floor/almayer/silvercorner/north,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -7906,6 +8024,10 @@
 	},
 /turf/open/floor/almayer/black2/west,
 /area/white_antre/indoors/main_level/west_corridor)
+"atL" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/almayer/silver/west,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "atM" = (
 /turf/open/floor/almayer/black2/west,
 /area/white_antre/indoors/main_level/west_corridor)
@@ -7933,14 +8055,14 @@
 /area/white_antre/indoors/main_level/engineering)
 "atU" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -7996,6 +8118,14 @@
 "aud" = (
 /turf/open/floor/prison/darkyellow2/east,
 /area/white_antre/indoors/main_level/engineering)
+"aue" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/structure/prop/ice_colony/ground_wire,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "auf" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -8020,6 +8150,12 @@
 	},
 /turf/open/floor/prison/cell_stripe,
 /area/white_antre/indoors/main_level/engineering)
+"auk" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "aul" = (
 /turf/closed/wall/hybrisa/research/reinforced/hull,
 /area/white_antre/indoors/main_level/east_containment)
@@ -8061,6 +8197,17 @@
 	},
 /turf/open/floor/almayer/flooredge/west,
 /area/white_antre/indoors/main_level/dorms)
+"auv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_y = -1;
+	pixel_x = 1
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "auw" = (
 /obj/effect/decal/strata_decals/grime/grime3,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -8087,6 +8234,13 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/west_corridor)
+"auA" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = -3;
+	pixel_y = -6
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "auB" = (
 /obj/structure/sign/safety/security{
 	pixel_x = 34
@@ -8114,14 +8268,14 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "auF" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -8268,14 +8422,14 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "auW" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -8376,6 +8530,18 @@
 	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/west_corridor)
+"avf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S"
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "avg" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
@@ -8571,14 +8737,6 @@
 	buckling_x = -4
 	},
 /turf/open/floor/almayer/black2/east,
-/area/white_antre/indoors/main_level/west_corridor)
-"avF" = (
-/obj/item/ammo_magazine/smg/p90{
-	pixel_x = -6;
-	pixel_y = 1;
-	current_rounds = 8
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/west_corridor)
 "avG" = (
 /obj/item/tool/screwdriver{
@@ -8934,6 +9092,15 @@
 /obj/effect/alien/weeds/kseries,
 /turf/open/floor/almayer/black2/north,
 /area/white_antre/indoors/main_level/west_corridor)
+"awr" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "aws" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_7";
@@ -9090,7 +9257,7 @@
 	},
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/prison/floor_plate/southwest,
-/area/white_antre/indoors/main_level/north_containment_hive)
+/area/white_antre/indoors/main_level/north_containment)
 "awJ" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/machinery/light/double,
@@ -9323,14 +9490,14 @@
 /area/white_antre/indoors/main_level/north_containment)
 "axp" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -9437,14 +9604,14 @@
 /area/white_antre/indoors/main_level/north_containment)
 "axx" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -10289,6 +10456,11 @@
 "aAc" = (
 /turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"aAd" = (
+/obj/structure/prop/invuln/dense/excavator/gray,
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "aAe" = (
 /obj/structure/machinery/meter,
 /turf/closed/wall/hybrisa/research/reinforced,
@@ -13301,14 +13473,14 @@
 /area/white_antre/oob)
 "aHl" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -13359,14 +13531,14 @@
 /area/white_antre/oob)
 "aHp" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -14433,12 +14605,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/main_level/south_containment)
-"aJY" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 20
-	},
-/turf/open/floor/hybrisa/tile/tilegrey,
-/area/white_antre/indoors/main_level/south_containment_hive)
 "aJZ" = (
 /turf/closed/wall/hybrisa/research/reinforced/hull,
 /area/white_antre/indoors/main_level/east_corridor)
@@ -14479,23 +14645,16 @@
 	color = "#5d524b";
 	alpha = 155
 	},
-/turf/open/floor/strata/green3/north,
+/turf/open/floor/strata/green3/northwest,
 /area/white_antre/indoors/main_level/weapons)
 "aKk" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/green3/north,
+/obj/structure/machinery/space_heater/radiator/red,
+/turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aKl" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison,
-/area/white_antre/indoors/main_level/weapons)
-"aKm" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/turf/open/floor/strata/green3/north,
 /area/white_antre/indoors/main_level/weapons)
 "aKn" = (
 /turf/closed/wall/hybrisa/research/reinforced,
@@ -14537,6 +14696,13 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
 /turf/open/floor/strata/green3,
 /area/white_antre/indoors/main_level/weapons)
 "aKx" = (
@@ -14565,6 +14731,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/alien/weeds/kseries,
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aKF" = (
@@ -14602,6 +14769,7 @@
 /area/white_antre/landing_zone/roof)
 "aKO" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/green,
 /turf/open/floor/strata/green3/east,
 /area/white_antre/indoors/main_level/weapons)
 "aKP" = (
@@ -14686,7 +14854,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
 	},
-/turf/open/floor/prison/floor_plate/southwest,
+/turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/south_containment)
 "aLk" = (
 /turf/open/floor/almayer/plating_striped/north,
@@ -14928,14 +15096,14 @@
 /area/white_antre/oob)
 "aMd" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -15165,6 +15333,10 @@
 /turf/open/floor/plating,
 /area/white_antre/indoors/main_level/research)
 "aMX" = (
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	dir = 2;
+	icon_state = "udoor0"
+	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/research)
 "aMY" = (
@@ -15448,7 +15620,7 @@
 "aOm" = (
 /obj/structure/machinery/power/apc/power/south,
 /turf/open/floor/prison/darkbrown2/east,
-/area/white_antre/indoors/main_level/north_containment)
+/area/white_antre/indoors/main_level/north_containment_hive)
 "aOn" = (
 /turf/closed/wall/hybrisa/research/reinforced/hull,
 /area/white_antre/indoors/main_level/north_containment)
@@ -16117,6 +16289,146 @@
 /obj/item/ammo_casing/bullet,
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/oob)
+"aRo" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRp" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/floor/almayer/silver/northwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRq" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/floor/almayer/silvercorner/north,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRr" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRs" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRt" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice10";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/floor,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRv" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt{
+	color = "#140400"
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRw" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRy" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRz" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRA" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRB" = (
+/obj/structure/blocker/invisible_wall,
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRC" = (
+/obj/structure/prop/ice_colony/surveying_device/measuring_device,
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRD" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRE" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRF" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "aRG" = (
 /turf/closed/shuttle/dropship2/transparent{
 	desc = "The WY-LWI Horizon Runner HR-150, a collaborative creation of Lunnar-Welsun Industries and Weyland-Yutani. This small dropship is designed for short-range commercial transport.";
@@ -16125,6 +16437,15 @@
 	name = "\improper WY-LWI Horizon Runner HR-150"
 	},
 /area/white_antre/interior/pmc_dropship)
+"aRH" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
 "aRI" = (
 /obj/structure/machinery/space_heater/radiator/red{
 	dir = 8;
@@ -16138,6 +16459,280 @@
 	},
 /turf/open/floor/almayer/silver2/southeast,
 /area/white_antre/indoors/main_level/west_corridor)
+"aRJ" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRK" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRL" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRM" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRN" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/obj/structure/girder/displaced,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRO" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRP" = (
+/obj/structure/girder/displaced,
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRQ" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRS" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/turf/open/floor/almayer/silver/east,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRT" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRU" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRV" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRW" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRX" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 4
+	},
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 1
+	},
+/turf/open/floor/almayer/silver/east,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRY" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aRZ" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSa" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/silver/north,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSb" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSc" = (
+/obj/item/device/flashlight/lamp/tripod{
+	on = 0
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSd" = (
+/obj/structure/prop/invuln/lattice_prop{
+	dir = 1;
+	icon_state = "lattice-simple";
+	pixel_x = -2;
+	pixel_y = -8
+	},
+/turf/closed/wall/r_wall/biodome,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSe" = (
+/obj/structure/prop/ice_colony/ground_wire,
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSf" = (
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSg" = (
+/obj/structure/prop/ice_colony/surveying_device/measuring_device{
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSh" = (
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSi" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/tiretrack{
+	pixel_x = -6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/invuln/lattice_prop{
+	icon_state = "lattice12";
+	pixel_x = -2;
+	pixel_y = 24
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSj" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSk" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSl" = (
+/obj/structure/prop/ice_colony/surveying_device/measuring_device{
+	dir = 4;
+	layer = 5
+	},
+/turf/open/auto_turf/shale/layer1,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSm" = (
+/obj/structure/prop/ice_colony/ground_wire{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aSn" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/white_antre/indoors/main_level/south_containment)
+"aSo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
+"aSp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
+"aSq" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
+"aSr" = (
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyleft,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
 "aSs" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 5;
@@ -16153,8 +16748,670 @@
 	},
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/road_east)
+"aSt" = (
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyright,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
+"aSu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 2;
+	light_range = 2;
+	pixel_y = -29
+	},
+/turf/open/floor/prison/red/west,
+/area/white_antre/indoors/main_level/south_containment)
+"aSv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/east,
+/area/white_antre/indoors/main_level/south_containment)
+"aSy" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = -2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2,
+/area/white_antre/indoors/main_level/south_containment)
+"aSz" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/west,
+/area/white_antre/indoors/main_level/south_containment)
+"aSA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalertblank{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 2;
+	light_range = 2;
+	pixel_y = -29
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSB" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/obj/structure/machinery/light/double,
+/turf/open/floor/shiva/radiator_tile2,
+/area/white_antre/indoors/main_level/south_containment)
+"aSC" = (
+/obj/effect/decal/strata_decals/catwalk/prison,
+/turf/open/floor/shiva/radiator_tile2,
+/area/white_antre/indoors/main_level/south_containment)
+"aSD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox{
+	layer = 4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
+"aSE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/ramptop/east,
+/area/white_antre/indoors/main_level/south_containment)
+"aSF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/prison/ramptop/east,
+/area/white_antre/indoors/main_level/south_containment)
+"aSG" = (
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison/ramptop/east,
+/area/white_antre/indoors/main_level/south_containment)
+"aSH" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/prison/ramptop/east,
+/area/white_antre/indoors/main_level/south_containment)
+"aSI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSJ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2/west,
+/area/white_antre/indoors/main_level/south_containment)
+"aSK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_left,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
+"aSL" = (
+/obj/structure/cargo_container/hybrisa/containersextended/kelland_right,
+/turf/open/floor/prison/ramptop/east,
+/area/white_antre/indoors/main_level/south_containment)
+"aSM" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/cardboard/full_stack,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
+"aSN" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSP" = (
+/obj/structure/largecrate/empty,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSQ" = (
+/obj/item/device/floor_painter,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSR" = (
+/obj/structure/cargo_container/hybrisa/containersextended/medicalleft,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cargo_container/hybrisa/containersextended/medicalright,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aST" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = -9
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/white_antre/indoors/main_level/south_containment)
+"aSU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSV" = (
+/obj/structure/largecrate/random/barrel/yellow,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4_red";
+	dir = 8;
+	pixel_x = 11
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSX" = (
+/obj/item/reagent_container/glass/paint/red,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aSY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 2;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkred2/west,
+/area/white_antre/indoors/main_level/south_containment)
+"aSZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/item/prop{
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Unfinished WY 5-GSE3 Static Turret";
+	anchored = 1;
+	desc = "Only half built."
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aTa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/north,
+/area/white_antre/indoors/main_level/south_containment)
 "aTb" = (
+/obj/structure/sign/poster/ad{
+	layer = 4;
+	pixel_x = 9;
+	pixel_y = 32
+	},
 /turf/open/floor/strata/orange_icorner,
+/area/white_antre/indoors/main_level/weapons)
+"aTc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/north,
+/area/white_antre/indoors/main_level/south_containment)
+"aTd" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/red/northeast,
+/area/white_antre/indoors/main_level/south_containment)
+"aTe" = (
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/main_level/south_containment)
+"aTf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/medicine/medkits,
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/indoors/main_level/south_containment)
+"aTg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/indoors/main_level/south_containment)
+"aTh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown2,
+/area/white_antre/indoors/main_level/south_containment)
+"aTi" = (
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/indoors/main_level/south_containment)
+"aTj" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/prison/darkbrown2/north,
+/area/white_antre/indoors/main_level/south_containment)
+"aTk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrown2/north,
+/area/white_antre/indoors/main_level/south_containment)
+"aTl" = (
+/obj/structure/bed/chair/comfy/teal{
+	dir = 8
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/indoors/main_level/south_containment)
+"aTm" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/south_containment)
+"aTn" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/prison/darkbrown2/east,
+/area/white_antre/indoors/main_level/south_containment_hive)
+"aTo" = (
+/obj/effect/alien/weeds/kseries,
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/south_containment)
+"aTp" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/south_containment)
+"aTq" = (
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/south_containment)
+"aTr" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/south_containment)
+"aTs" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/south_containment)
+"aTt" = (
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/prison/ramptop/east,
+/area/white_antre/indoors/main_level/south_containment)
+"aTu" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/indoors/main_level/south_containment)
+"aTv" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/strata/green3/north,
+/area/white_antre/indoors/main_level/weapons)
+"aTw" = (
+/obj/structure/largecrate/empty/case,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aTx" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aTy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aTz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/disposal/delivery,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_14";
+	pixel_y = 20
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aTA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aTB" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aTC" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenleft,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aTD" = (
+/obj/structure/cargo_container/hybrisa/containersextended/greenright,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aTE" = (
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = -6;
+	pixel_y = 1;
+	current_rounds = 14
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/west_corridor)
+"aTF" = (
+/obj/effect/decal/remains/robot{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/main_level/weapons)
+"aTG" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/strata/green4/north,
+/area/white_antre/indoors/main_level/weapons)
+"aTH" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/strata/green4,
+/area/white_antre/indoors/main_level/weapons)
+"aTI" = (
+/obj/item/prop/alien/hugger{
+	color = "#ffff80";
+	name = "k-series facehugger";
+	desc = "It has some sort of a tube at the end of its tail. Why is it yellow?"
+	},
+/turf/open/floor/strata/green3/north,
+/area/white_antre/indoors/main_level/weapons)
+"aTJ" = (
+/obj/structure/largecrate/random/barrel{
+	pixel_x = 2
+	},
+/turf/open/floor/strata/green3/north,
+/area/white_antre/indoors/main_level/weapons)
+"aTK" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/floor/strata/green3/north,
+/area/white_antre/indoors/main_level/weapons)
+"aTL" = (
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/strata/green3/north,
+/area/white_antre/indoors/main_level/weapons)
+"aTM" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 5
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/west_corridor)
+"aTN" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 5
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/west_corridor)
+"aTO" = (
+/obj/structure/window_frame/hybrisa/research/reinforced,
+/obj/item/shard,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 5
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/weapons)
+"aTP" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aTQ" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aTR" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 5
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aTS" = (
+/obj/structure/stairs/multiz/up{
+	icon_state = "ramptop";
+	dir = 8
+	},
+/turf/open/floor/almayer_hull,
+/area/white_antre/indoors/main_level/east_corridor)
+"aTT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 2;
+	dir = 1
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aTU" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aTV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/machinery/meter{
+	pixel_y = 32
+	},
+/turf/open/floor/strata/green3,
+/area/white_antre/indoors/main_level/weapons)
+"aTW" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/green3,
+/area/white_antre/indoors/main_level/weapons)
+"aTX" = (
+/obj/item/prop{
+	desc = "Something tore this apart.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/green4/west,
+/area/white_antre/indoors/main_level/weapons)
+"aTY" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xsplatter4";
+	pixel_x = -11
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aTZ" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/strata/green4/east,
+/area/white_antre/indoors/main_level/weapons)
+"aUa" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
+/turf/open/floor/strata/green3/east,
+/area/white_antre/indoors/main_level/weapons)
+"aUb" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUc" = (
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced,
+/obj/item/weapon/gun/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUd" = (
+/obj/structure/surface/rack,
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/item/weapon/gun/shotgun/pump/m37a,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUe" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/strata/green3/southeast,
+/area/white_antre/indoors/main_level/weapons)
+"aUf" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/strata/green3,
+/area/white_antre/indoors/main_level/weapons)
+"aUg" = (
+/obj/item/stack/sheet/metal{
+	pixel_x = 5
+	},
+/turf/open/floor/strata/green3,
+/area/white_antre/indoors/main_level/weapons)
+"aUh" = (
+/obj/structure/machinery/autolathe,
+/turf/open/floor/strata/red1,
+/area/white_antre/indoors/main_level/weapons)
+"aUi" = (
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUj" = (
+/obj/item/shard/shrapnel,
+/turf/open/floor/strata/multi_tiles/southeast,
+/area/white_antre/indoors/main_level/weapons)
+"aUk" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
+/turf/open/floor/strata/green3/east,
+/area/white_antre/indoors/main_level/weapons)
+"aUl" = (
+/obj/structure/machinery/door/window/southleft{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUm" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUn" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUo" = (
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUp" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_y = 9
+	},
+/turf/open/floor/prison,
 /area/white_antre/indoors/main_level/weapons)
 "aUq" = (
 /obj/effect/decal/warning_stripes{
@@ -16169,6 +17426,15 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/north_containment)
+"aUr" = (
+/obj/item/ammo_magazine/rifle/boltaction/vulture{
+	current_rounds = 0;
+	pixel_x = 3;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
 "aUs" = (
 /obj/structure/barricade/handrail/type_b{
 	dir = 4
@@ -16179,9 +17445,526 @@
 	},
 /turf/open/floor/almayer/black2/west,
 /area/white_antre/indoors/main_level/research)
+"aUt" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUu" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
 "aUv" = (
 /turf/open/floor/almayer/purple/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
+"aUw" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/obj/item/ammo_magazine/pistol/mod88,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2
+	},
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/turf/open/floor/strata/green3/northeast,
+/area/white_antre/indoors/main_level/weapons)
+"aUy" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/green3/north,
+/area/white_antre/indoors/main_level/weapons)
+"aUz" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/green3/north,
+/area/white_antre/indoors/main_level/weapons)
+"aUA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "1-4";
+	layer = 5;
+	level = 2
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/white_antre/indoors/main_level/weapons)
+"aUB" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "4-8";
+	layer = 5;
+	level = 2
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/white_antre/indoors/main_level/weapons)
+"aUC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "4-8";
+	layer = 5;
+	level = 2
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_y = -8
+	},
+/turf/open/floor/strata/multi_tiles/west,
+/area/white_antre/indoors/main_level/weapons)
+"aUD" = (
+/obj/structure/largecrate/random/barrel/brown{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUE" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/strata/green3/east,
+/area/white_antre/indoors/main_level/weapons)
+"aUG" = (
+/obj/item/prop/alien/hugger{
+	color = "#ffff80";
+	name = "k-series facehugger";
+	desc = "It has some sort of a tube at the end of its tail. Why is it yellow?"
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUH" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUI" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8;
+	layer = 3.1
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUJ" = (
+/obj/structure/stairs/multiz/down{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8;
+	layer = 3.1
+	},
+/turf/open/floor/almayer_hull,
+/area/white_antre/indoors/main_level/weapons)
+"aUK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/strata/green3/east,
+/area/white_antre/indoors/main_level/weapons)
+"aUL" = (
+/obj/item/tool/extinguisher{
+	pixel_x = -12;
+	pixel_y = -3
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUM" = (
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/obj/structure/machinery/light/double,
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/strata/orange_edge/east,
+/area/white_antre/indoors/main_level/weapons)
+"aUO" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6;
+	pixel_x = 5
+	},
+/turf/open/floor/strata/green4/north,
+/area/white_antre/indoors/main_level/weapons)
+"aUP" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/strata/green4/west,
+/area/white_antre/indoors/main_level/weapons)
+"aUQ" = (
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/sign/poster/propaganda{
+	pixel_x = -6;
+	pixel_y = 34
+	},
+/turf/open_space,
+/area/white_antre/indoors/main_level/weapons)
+"aUR" = (
+/obj/effect/decal/cleanable/liquid_fuel,
+/turf/open/floor/almayer/plating_striped/north,
+/area/white_antre/indoors/main_level/weapons)
+"aUS" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/machinery/computer/emails{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUT" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_x = 2;
+	pixel_y = 7;
+	buckling_x = 7;
+	buckling_y = 7
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUU" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 1;
+	pixel_x = -6;
+	pixel_y = -16
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUV" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aUW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/paper/crumpled{
+	pixel_y = -3
+	},
+/obj/structure/machinery/recharger{
+	pixel_y = 7
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUX" = (
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/item/device/flashlight/lamp{
+	pixel_x = 6;
+	pixel_y = 14
+	},
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUY" = (
+/obj/structure/reagent_dispensers/fueltank{
+	anchored = 1
+	},
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aUZ" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/strata/green4,
+/area/white_antre/indoors/main_level/weapons)
+"aVa" = (
+/obj/structure/barricade/handrail,
+/turf/open/floor/strata/green3/north,
+/area/white_antre/indoors/main_level/weapons)
+"aVb" = (
+/obj/structure/barricade/metal,
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aVc" = (
+/obj/structure/barricade/metal,
+/obj/structure/machinery/meter{
+	pixel_y = 32
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aVd" = (
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
+/turf/open/floor/strata/orange_edge/east,
+/area/white_antre/indoors/main_level/weapons)
+"aVe" = (
+/obj/vehicle/train/cargo/engine{
+	dir = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVf" = (
+/obj/vehicle/train/cargo/trolley,
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_y = 2;
+	layer = 4.2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVg" = (
+/obj/vehicle/train/cargo/trolley,
+/obj/structure/largecrate/random/mini/chest/b{
+	layer = 4.2;
+	pixel_y = 2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVh" = (
+/obj/vehicle/train/cargo/trolley,
+/obj/structure/xenoautopsy/tank/broken{
+	layer = 4.2;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/item/prop/alien/hugger{
+	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon_state = "Larva Dead";
+	name = "dead larva";
+	desc = "Looks like it was murdered by another xenomorph?";
+	layer = 4.3
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVi" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/strata/green3/east,
+/area/white_antre/indoors/main_level/weapons)
+"aVj" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVk" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	pixel_y = 9
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVl" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVm" = (
+/obj/item/shard,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVn" = (
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVo" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 9;
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVp" = (
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVq" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/hybrisa/bloodtrail{
+	dir = 4;
+	pixel_y = 8;
+	pixel_x = -11
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVr" = (
+/obj/item/device/flashlight/lamp/tripod,
+/turf/open/floor/strata/green4/east,
+/area/white_antre/indoors/main_level/weapons)
+"aVs" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/red2,
+/area/white_antre/indoors/main_level/weapons)
+"aVt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVu" = (
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aVv" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/almayer/plating_striped,
+/area/white_antre/indoors/main_level/weapons)
+"aVw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVx" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 1;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/strata/red3/east,
+/area/white_antre/indoors/main_level/weapons)
+"aVy" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 1;
+	pixel_x = 6
+	},
+/turf/open/floor/strata/green4/west,
+/area/white_antre/indoors/main_level/weapons)
+"aVz" = (
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -10;
+	pixel_y = -8
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/weapons)
+"aVA" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 9
+	},
+/turf/open/floor/strata/floor2,
+/area/white_antre/indoors/main_level/weapons)
+"aVB" = (
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 32;
+	layer = 2.9
+	},
+/turf/open/floor/strata/orange_edge/north,
+/area/white_antre/indoors/main_level/weapons)
+"aVC" = (
+/obj/structure/window_frame/hybrisa/research/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/white_antre/indoors/main_level/weapons)
+"aVD" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 14
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/east_corridor)
+"aVE" = (
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/east_corridor)
+"aVF" = (
+/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
+	dir = 4;
+	icon_state = "udoor0"
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/main_level/research)
 "aWt" = (
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
 /turf/open/floor/prison/darkyellow2/west,
@@ -16549,6 +18332,7 @@
 	desc = "A special-issue reinforced chain, coated in a protective film that provides acid protection.";
 	layer = 2.9
 	},
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/strata/orange_tile,
 /area/white_antre/indoors/main_level/weapons)
 "cgK" = (
@@ -16664,9 +18448,6 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/south_containment)
-"cyt" = (
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/white_antre/outdoors/south_field)
 "czb" = (
 /obj/effect/decal/hybrisa/road/lines4,
 /obj/effect/decal/hybrisa/road/road_edge{
@@ -16803,8 +18584,8 @@
 	anchored = 0;
 	density = 0
 	},
-/obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/strata/orange_tile,
 /area/white_antre/indoors/main_level/weapons)
 "cOF" = (
@@ -16862,8 +18643,9 @@
 	},
 /area/white_antre/interior/pmc_dropship)
 "cYe" = (
-/obj/structure/surface/table/almayer{
-	color = "#848484"
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
 	},
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
@@ -17012,18 +18794,7 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	locked = 0
 	},
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
-/obj/item/ammo_magazine/smg/p90,
+/obj/item/ammo_box/magazine/p90,
 /obj/item/weapon/gun/smg/p90{
 	current_mag = null
 	},
@@ -17032,6 +18803,13 @@
 	},
 /obj/item/weapon/gun/smg/p90{
 	current_mag = null
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
 	},
 /turf/open/floor/strata/red3/north,
 /area/white_antre/indoors/main_level/security)
@@ -17050,10 +18828,6 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /turf/open/auto_turf/shale/layer2,
 /area/white_antre/outdoors/north_field)
-"dJj" = (
-/obj/structure/reagent_dispensers/acidtank,
-/turf/open/floor/strata/floor2,
-/area/white_antre/indoors/main_level/weapons)
 "dJK" = (
 /obj/structure/bed/hybrisa/bunkbed2,
 /turf/open/floor/hybrisa/carpet/blue_grey,
@@ -17222,6 +18996,7 @@
 /turf/open/floor/hybrisa/metal/stripe_red/east,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "efO" = (
+/obj/effect/decal/cleanable/liquid_fuel,
 /turf/open/floor/strata/orange_tile,
 /area/white_antre/indoors/main_level/weapons)
 "ehn" = (
@@ -17512,6 +19287,14 @@
 /area/white_antre/interior/pmc_dropship)
 "fiU" = (
 /obj/structure/machinery/autolathe,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
 /turf/open/floor/strata/orange_cover,
 /area/white_antre/indoors/main_level/weapons)
 "fjh" = (
@@ -17523,6 +19306,10 @@
 /area/white_antre/indoors/main_level/security)
 "flS" = (
 /obj/structure/closet/bombcloset,
+/obj/structure/sign/poster/corporate{
+	pixel_y = 33;
+	pixel_x = -7
+	},
 /turf/open/floor/strata/orange_cover,
 /area/white_antre/indoors/main_level/weapons)
 "fmc" = (
@@ -17551,14 +19338,14 @@
 /area/white_antre/indoors/main_level/weapons)
 "fpR" = (
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "defense_base_off";
 	name = "Destroyed WY 5-GSE3 Static Turret";
 	anchored = 1
 	},
 /obj/item/prop{
-	desc = "Something about a research lab.";
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
 	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
 	icon_state = "Normal wy_sentry_destroyed";
 	name = "Destroyed WY 5-GSE3 Static Turret";
@@ -17584,12 +19371,6 @@
 "fuj" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/white_antre/oob)
-"fuq" = (
-/obj/structure/stairs{
-	dir = 4
-	},
-/turf/open/floor/almayer_hull,
-/area/white_antre/indoors/main_level/east_corridor)
 "fvb" = (
 /obj/structure/bed/chair/dropship/pilot{
 	dir = 1;
@@ -17834,14 +19615,13 @@
 /obj/structure/closet/secure_closet/guncabinet{
 	locked = 0
 	},
-/obj/item/storage/belt/marine,
 /obj/item/ammo_magazine/rifle/ap,
-/obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock,
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3{
 	pixel_y = 28
 	},
+/obj/item/ammo_box/magazine,
 /turf/open/floor/strata/red3/north,
 /area/white_antre/indoors/main_level/security)
 "gwc" = (
@@ -17852,12 +19632,6 @@
 	name = "\improper WY-LWI Horizon Runner HR-150"
 	},
 /area/white_antre/interior/pmc_dropship)
-"gwx" = (
-/obj/structure/reagent_dispensers/fueltank/oxygentank{
-	anchored = 1
-	},
-/turf/open/floor/strata/floor2,
-/area/white_antre/indoors/main_level/weapons)
 "gxO" = (
 /turf/open/floor/prison/darkbrowncorners2/north,
 /area/white_antre/oob)
@@ -17887,12 +19661,6 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/north_containment_hive)
-"gzT" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 10
-	},
-/turf/open/auto_turf/sand_white/layer0,
-/area/white_antre/outdoors/south_field)
 "gBI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo_arrow2";
@@ -17904,22 +19672,9 @@
 /turf/open/floor/prison/darkredcorners2/southwest,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "gDt" = (
-/obj/item/prop{
-	desc = "Something about a research lab.";
-	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
-	icon_state = "defense_base_off";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/item/prop{
-	desc = "Something about a research lab.";
-	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
-	icon_state = "Normal wy_sentry_destroyed";
-	name = "Destroyed WY 5-GSE3 Static Turret";
-	anchored = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "cargo_red"
+/obj/item/reagent_container/glass/paint/yellow{
+	pixel_x = 10;
+	pixel_y = 9
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/south_containment)
@@ -17936,6 +19691,7 @@
 /turf/open/floor/prison/redcorner,
 /area/white_antre/indoors/main_level/east_containment)
 "gIT" = (
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/floor3,
 /area/white_antre/indoors/main_level/weapons)
 "gIY" = (
@@ -18175,6 +19931,9 @@
 /obj/item/ammo_magazine/rifle/nsg23{
 	pixel_x = -6;
 	pixel_y = 5
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
 	},
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
@@ -19276,12 +21035,6 @@
 "lvY" = (
 /turf/open/auto_turf/snow/layer4,
 /area/white_antre/outdoors/south_field)
-"lwU" = (
-/obj/effect/decal/strata_decals/mud_corner{
-	dir = 5
-	},
-/turf/open/auto_turf/strata_grass/layer0,
-/area/white_antre/outdoors/south_field)
 "lzp" = (
 /turf/closed/shuttle/dropship4/WY/HorizonRunner{
 	icon_state = "95"
@@ -19445,8 +21198,8 @@
 /turf/open/floor/almayer/purple2/northwest,
 /area/white_antre/indoors/main_level/east_corridor)
 "mbM" = (
-/obj/structure/stairs/multiz/up{
-	dir = 4
+/obj/structure/stairs/perspective{
+	dir = 8
 	},
 /turf/open/floor/almayer_hull,
 /area/white_antre/indoors/main_level/east_corridor)
@@ -19738,6 +21491,13 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/white_antre/indoors/main_level/research)
 "ncH" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
 /turf/open/floor/strata/orange_edge/north,
 /area/white_antre/indoors/main_level/weapons)
 "nfb" = (
@@ -19858,7 +21618,16 @@
 /area/white_antre/oob)
 "nEH" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/strata/green1,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -10;
+	pixel_y = -8
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 5
+	},
+/turf/open/floor/prison,
 /area/white_antre/indoors/main_level/weapons)
 "nEQ" = (
 /turf/open/floor/prison/green/west,
@@ -20569,7 +22338,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/white_antre/landing_zone)
 "pVs" = (
-/obj/structure/machinery/autolathe/armylathe/full,
+/obj/structure/machinery/autolathe/armylathe,
 /turf/open/floor/strata/orange_cover,
 /area/white_antre/indoors/main_level/weapons)
 "pVF" = (
@@ -20640,10 +22409,6 @@
 "qmf" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_red"
-	},
-/obj/structure/machinery/door/poddoor/hybrisa/ultra_reinforced_door/open{
-	dir = 4;
-	icon_state = "udoor0"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/white_antre/indoors/main_level/south_containment_hive)
@@ -20912,13 +22677,29 @@
 	pixel_x = 7;
 	pixel_y = 5
 	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "qYq" = (
 /turf/open/floor/almayer/black2/northeast,
 /area/white_antre/oob)
 "rbv" = (
-/obj/structure/bed/chair,
+/obj/structure/surface/table/almayer{
+	color = "#848484"
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/paper_bin{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 5;
+	pixel_y = 4
+	},
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "rbR" = (
@@ -21709,6 +23490,7 @@
 	desc = "A special-issue reinforced chain, coated in a protective film that provides acid protection.";
 	layer = 2.9
 	},
+/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/floor/strata/red2,
 /area/white_antre/indoors/main_level/weapons)
 "uPy" = (
@@ -22323,6 +24105,7 @@
 	dir = 8;
 	pixel_x = -2
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/darkred2/southwest,
 /area/white_antre/indoors/main_level/south_containment)
 "wTr" = (
@@ -22379,6 +24162,10 @@
 /obj/item/paper_bin/wy{
 	pixel_x = -7;
 	pixel_y = 7
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 5;
+	pixel_y = 4
 	},
 /turf/open/floor/prison/darkred2/west,
 /area/white_antre/indoors/main_level/security)
@@ -22479,6 +24266,9 @@
 	pixel_x = 8;
 	pixel_y = -4
 	},
+/obj/structure/prop/hybrisa/misc/redmeter{
+	pixel_y = 32
+	},
 /turf/open/floor/strata/red1,
 /area/white_antre/indoors/main_level/weapons)
 "xCS" = (
@@ -22501,6 +24291,9 @@
 /area/white_antre/outdoors/south_field)
 "xEw" = (
 /obj/structure/machinery/big_computers/science_big/operator_machine_open,
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/open/floor/strata/red1,
 /area/white_antre/indoors/main_level/weapons)
 "xEF" = (
@@ -22546,6 +24339,28 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "xJg" = (
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "8-9";
+	layer = 5;
+	level = 2;
+	pixel_x = 14
+	},
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "4-8";
+	layer = 5;
+	level = 2;
+	pixel_x = -18
+	},
+/obj/structure/cable/white{
+	color = "#007740";
+	icon_state = "5-6";
+	layer = 5;
+	level = 2;
+	pixel_x = -13;
+	pixel_y = 27
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/white_antre/indoors/main_level/weapons)
 "xJX" = (
@@ -47654,7 +49469,7 @@ aPR
 aPR
 hun
 hun
-hun
+aoI
 hun
 aPR
 aPR
@@ -47822,7 +49637,7 @@ hAa
 xpu
 nnL
 nnL
-nnL
+aoJ
 nnL
 wfs
 hAa
@@ -47990,7 +49805,7 @@ hAa
 xpu
 dtC
 dtC
-dtC
+arW
 dtC
 wfs
 hAa
@@ -73511,10 +75326,10 @@ aMY
 aMJ
 aMJ
 aMH
-cyt
-cyt
-aJy
-aJy
+aMH
+aMH
+aMJ
+aMJ
 aJy
 aJy
 aJy
@@ -73679,10 +75494,10 @@ aMS
 iKa
 aMH
 aMH
-cyt
-cyt
-gzT
-pzq
+aMH
+aMH
+aNg
+aMI
 pzq
 pzq
 aJy
@@ -73847,10 +75662,10 @@ aMI
 iKa
 ewE
 ewE
-lwU
-cyt
-cyt
-gzT
+aNG
+aMH
+aMH
+aNg
 pzq
 acs
 pzq
@@ -78685,7 +80500,7 @@ ewE
 ewE
 ewE
 ewE
-ewE
+aMH
 aMH
 kRD
 kRD
@@ -78853,7 +80668,7 @@ iKa
 iKa
 iKa
 iKa
-iKa
+aMH
 aMJ
 aMJ
 kRD
@@ -79020,9 +80835,9 @@ iKa
 iKa
 iKa
 iKa
-iKa
-iKa
-iKa
+aMJ
+aMJ
+aMJ
 aMJ
 sUP
 alJ
@@ -79188,10 +81003,10 @@ iKa
 iKa
 iKa
 iKa
-iKa
-iKa
-iKa
-iKa
+aMJ
+aMJ
+aMJ
+aMJ
 sUP
 alJ
 jcK
@@ -79356,10 +81171,10 @@ iKa
 iKa
 iKa
 iKa
-iKa
-iKa
-iKa
-iKa
+aMI
+aMJ
+aMJ
+aMJ
 sUP
 alJ
 jcK
@@ -79524,9 +81339,9 @@ iKa
 aOM
 iKa
 iKa
-iKa
-iKa
-iKa
+aMI
+aMI
+aMJ
 asK
 sUP
 alJ
@@ -79928,10 +81743,10 @@ erH
 grf
 aJz
 aJz
-aJB
-aJB
-aJB
-aJz
+aSM
+aSK
+aSD
+aSn
 aJz
 aJz
 aJy
@@ -80097,9 +81912,9 @@ aJz
 aJz
 aJB
 aaC
-aaC
-aaC
-aJB
+aSL
+aSE
+aSo
 aJz
 aJz
 qpw
@@ -80262,15 +82077,15 @@ cml
 cml
 cml
 aJz
-aJB
+aTe
 aJB
 aaC
 aaC
-aaC
-aJB
+aSF
+aSp
 aJz
 rdC
-xxw
+atC
 rdC
 qpw
 qpw
@@ -80432,21 +82247,21 @@ vQX
 aJz
 aJB
 aaC
+aSE
 aaC
 aaC
-aaC
-aJB
+aSq
 aJz
+aRx
+aSf
+aRy
+aRx
+aRx
+aRx
+aRO
+aRE
 xxw
-xxw
-aJw
-xxw
-aJw
-xxw
-aJw
-xxw
-xxw
-xxw
+atC
 aJs
 aJs
 aJr
@@ -80599,23 +82414,23 @@ hPE
 tyR
 aaB
 aaB
-aaE
-aaE
-aaC
+aSR
+aSN
+aSE
 aaC
 aJB
 aJz
+aRx
+aSg
 aJw
 aJw
+aRP
+aRP
 aJw
-aJw
-glE
-aJw
-xxw
-cJb
-vZz
-xxw
-xxw
+aRy
+aRz
+aRx
+atC
 aJs
 aJr
 iKa
@@ -80766,24 +82581,24 @@ aJU
 aJT
 aJM
 aaB
-aaB
-aaE
-aaE
-aaC
+aTf
+aSS
+aSO
+aSE
 aaC
 aay
 aJA
-xxw
+aSj
+aSf
+aRy
+aSb
 aJw
-xxw
-cJb
-jwY
-aJu
-aJu
-aJu
-iee
-vZz
-xxw
+aJw
+aRP
+aJw
+aJw
+aRy
+aRu
 aJr
 iKa
 iKa
@@ -80934,25 +82749,25 @@ aJU
 aJT
 aJM
 aaB
-aaB
-aaC
-aaC
+aTg
+aST
+aSE
 aaC
 aaC
 aay
 aJA
+aSk
+aSf
+aJw
+aSb
 aJw
 aJw
-aJv
-aJv
 aJw
-aJt
-aJt
-aJu
-aJu
-wHj
-xxw
-xxw
+aJw
+aJw
+aJw
+aRv
+aJw
 iKa
 iKa
 aJq
@@ -81102,27 +82917,27 @@ aJU
 aJT
 aJM
 aaB
-aaB
-aaE
-aaE
+aTg
+aSU
+aSP
 aaC
 aaC
 aay
 aJA
-xxw
+aSk
+aSh
 aJw
-aJv
-aJw
-aJw
-aJv
-aJt
-aJt
-aJw
-wHj
-aJw
-aJw
-iKa
-iKa
+aSb
+aRY
+aRT
+aRH
+aRF
+aRA
+aRo
+aRo
+aRo
+aRo
+aAd
 iKa
 aJq
 iKa
@@ -81271,26 +83086,26 @@ aJT
 aJM
 aaB
 aaB
-aaE
+aSV
 aaE
 aaC
 aaC
 aay
 tIM
+aSl
+aSf
 aJw
 aJw
 aJw
 aJw
-xxw
-aJw
-xxw
 aJw
 aJw
-wHj
-xxw
-aJw
-iKa
-iKa
+aRo
+aRo
+aRo
+aRo
+aRo
+aRo
 iKa
 iKa
 aJq
@@ -81444,21 +83259,21 @@ aaC
 aaC
 aaC
 aay
-fOm
-aJw
-kaU
-tqE
-aJw
-aJw
-aJw
-aJw
-aJw
-aJw
-sOV
-xxw
-aJw
-aJw
-iKa
+tIM
+aSm
+aSi
+aSe
+aSc
+aRT
+aRH
+aRF
+aRH
+aRB
+aRo
+aRo
+aRo
+aRo
+aRo
 iKa
 iKa
 iKa
@@ -81610,19 +83425,19 @@ aJB
 aJB
 aaC
 aaC
-aaC
-aJB
+aSG
+aSr
 aJz
 rdC
 rdC
-kaU
-tqE
-aJu
-aJv
+aRx
+aRQ
+aRZ
+aRU
+aRQ
+aRJ
 aJw
-xxw
 aJw
-xxw
 iKa
 iKa
 iKa
@@ -81771,26 +83586,26 @@ anh
 anc
 amX
 asL
-aJC
+aTm
 aJC
 aJC
 aJE
 aJB
 aaC
 aaC
-aaC
-aJB
+aSH
+aSt
 aJz
 rdC
 rdC
 rdC
 kaU
 tqE
-aJv
-aJw
-aJw
-aJw
-aJw
+aRV
+aRx
+aRK
+aRC
+aRy
 aJs
 aJr
 iKa
@@ -81946,18 +83761,18 @@ aJE
 aaF
 aaz
 aaz
-aaz
-aaz
+aSz
+aSu
 aJz
 rdC
 aJs
 rdC
-rdC
-iVS
-aJt
-aJw
-xxw
-aJw
+aSd
+aSa
+aRW
+aRR
+aRL
+aRD
 rdC
 aJs
 aJr
@@ -82107,24 +83922,24 @@ asS
 jND
 amY
 asL
-aJL
+aTn
 aJP
 aJC
 aJE
 aaG
 aJC
+aSw
 aJC
-aJC
-aJC
+aSv
 aJz
 rdC
 aJs
 aJs
 rdC
 kaU
-wng
-wng
-aJw
+aRX
+aRS
+aRM
 aJw
 rdC
 aJs
@@ -82280,10 +84095,10 @@ aJQ
 aJC
 aJE
 aaG
-aJC
-aJC
-aJC
-aJC
+aSw
+aSw
+aSI
+aSw
 rdC
 rdC
 rdC
@@ -82293,7 +84108,7 @@ qmf
 qmf
 qmf
 qmf
-qmf
+xxw
 rdC
 rdC
 rdC
@@ -82449,9 +84264,9 @@ aJC
 aJE
 aaH
 aaA
-aaA
-aaA
-aaA
+aSx
+aSx
+aSx
 rdC
 glE
 cJb
@@ -82469,12 +84284,12 @@ cJb
 cJb
 cJb
 cJb
-cJb
-cJb
-cJb
-cJb
-cJb
-vZz
+atL
+xxw
+xxw
+xxw
+xxw
+xxw
 rdC
 rdC
 aJs
@@ -82611,7 +84426,7 @@ asP
 asP
 asL
 cDM
-cDM
+aJX
 aJQ
 aJC
 aay
@@ -82637,13 +84452,13 @@ aJt
 aJt
 aJt
 aJt
-aJt
-aJt
-aJt
-aJt
-aJt
-iee
-vZz
+aue
+xxw
+xxw
+xxw
+xxw
+asQ
+xxw
 rdC
 aJr
 iKa
@@ -82804,14 +84619,14 @@ oDT
 aJt
 aJu
 aJu
+auk
 aJv
-aJv
-aJv
-aJv
-aJu
-aJt
-aJt
-wHj
+atm
+xxw
+xxw
+xxw
+xxw
+xxw
 rdC
 iKa
 iKa
@@ -82947,7 +84762,7 @@ asT
 uak
 asL
 cDM
-cDM
+aJX
 aJQ
 aJC
 aay
@@ -82972,14 +84787,14 @@ oDT
 aJt
 aJu
 aJu
+auk
 aJv
-aJv
-aJv
-aJv
-aJu
-aJu
-aJt
-wHj
+atm
+xxw
+xxw
+xxw
+xxw
+xxw
 rdC
 iKa
 iKa
@@ -83119,10 +84934,10 @@ cDM
 aJQ
 aJC
 lqo
-cyd
-aLj
+aSW
+aJC
 aJB
-aLj
+aJC
 kaE
 pIV
 iVS
@@ -83140,14 +84955,14 @@ oDT
 aJt
 aJv
 aJv
-xIH
+auv
 wkj
-wkj
-rsQ
-aJt
-aJt
-aJt
-wHj
+atv
+atj
+ath
+xxw
+xxw
+xxw
 rdC
 iKa
 iKa
@@ -83288,7 +85103,7 @@ aJQ
 aJC
 lqo
 gDt
-aLt
+aSQ
 aJB
 aLj
 vfR
@@ -83299,7 +85114,7 @@ aJv
 aJv
 ckZ
 rdC
-rdC
+atC
 grL
 aJv
 aJv
@@ -83309,13 +85124,13 @@ aJt
 aJv
 aJv
 ckZ
-rdC
-rdC
-grL
-aJt
-aJt
-aJt
-wHj
+atC
+atC
+atk
+xxw
+xxw
+xxw
+xxw
 rdC
 iKa
 iKa
@@ -83455,8 +85270,8 @@ cDM
 aJQ
 aJC
 lqo
-oll
-aLj
+aSX
+aJC
 aJB
 aLj
 kaE
@@ -83467,8 +85282,8 @@ aJv
 aJv
 vIM
 rpQ
-rdC
-grL
+xxw
+aRN
 aJv
 aJv
 aJt
@@ -83479,11 +85294,11 @@ aJv
 ckZ
 rdC
 waD
-iJu
-aJt
-aJt
-aJt
-wHj
+atl
+xxw
+xxw
+xxw
+xxw
 rdC
 iKa
 iKa
@@ -83619,7 +85434,7 @@ jIg
 asL
 asL
 asL
-cDM
+aTo
 aJQ
 aJC
 aay
@@ -83639,8 +85454,8 @@ boY
 iJu
 aJv
 aJv
-aJt
-oDT
+aRw
+xxw
 aJt
 aJv
 aJv
@@ -83648,8 +85463,8 @@ vIM
 uGQ
 iJu
 aJt
-aJt
-aJt
+ati
+atf
 aJt
 wHj
 rdC
@@ -83786,9 +85601,9 @@ aKh
 aKh
 cgK
 asL
-cDM
-cDM
-aJQ
+aTp
+aTp
+aTj
 aJC
 aay
 wzr
@@ -83805,10 +85620,10 @@ aJv
 aJv
 aJv
 aJv
-aJu
-aJu
-aJt
-oDT
+xxw
+xxw
+xxw
+xxw
 aJt
 aJu
 aJu
@@ -83954,8 +85769,8 @@ anq
 acj
 ary
 oAY
-cDM
-cDM
+aTp
+aTp
 aJQ
 aJC
 aay
@@ -83973,8 +85788,8 @@ aJv
 aJv
 aJv
 aJv
-aJu
-aJt
+ath
+xxw
 nzk
 wng
 tqE
@@ -84130,7 +85945,7 @@ aJE
 aJC
 aJC
 aJC
-aJC
+aSv
 aJD
 rdC
 kaU
@@ -84245,7 +86060,7 @@ avP
 avM
 avK
 aua
-avF
+aTE
 aKh
 avx
 aKh
@@ -84295,10 +86110,10 @@ cDM
 aJQ
 aJC
 aJE
-aJC
-aJC
-aJC
-aJC
+aSw
+aSw
+aSw
+aSA
 aJD
 rdC
 rdC
@@ -84313,7 +86128,7 @@ oDT
 wHj
 rdC
 rdC
-rdC
+atC
 iVS
 oDT
 oDT
@@ -84454,7 +86269,7 @@ aKh
 aKh
 aKh
 aKh
-aKh
+anr
 aKh
 aKh
 qHO
@@ -84463,10 +86278,10 @@ cDM
 aJQ
 aJC
 aJE
-aJC
-aJC
-aJC
-aJC
+aSw
+aSw
+aSw
+aSv
 aJD
 rdC
 glE
@@ -84480,8 +86295,8 @@ aJt
 aJt
 iee
 vZz
-rdC
-glE
+atC
+aRp
 jwY
 aJt
 aJt
@@ -84621,9 +86436,9 @@ arG
 arD
 aka
 arz
-aKh
-aKh
-aKh
+anC
+aTM
+aTE
 etk
 oAY
 cDM
@@ -84631,10 +86446,10 @@ cDM
 aJQ
 aJC
 aay
-rSc
+aSY
+aSJ
 mPP
-mPP
-mPP
+aSJ
 wSU
 pIV
 iVS
@@ -84649,7 +86464,7 @@ aJu
 aJt
 iee
 cJb
-jwY
+aRq
 aJt
 aJu
 aJv
@@ -84790,7 +86605,7 @@ arE
 aKi
 aKi
 arw
-aKh
+aTN
 aKh
 aoW
 aJW
@@ -84803,7 +86618,7 @@ wzr
 aLj
 aLj
 aLj
-kaE
+aSy
 pIV
 iVS
 aJt
@@ -84817,10 +86632,10 @@ aJu
 aJu
 aJt
 oDT
-aJt
+aRr
 aJu
 aJu
-aJv
+auA
 aJv
 aJv
 aJv
@@ -84954,16 +86769,16 @@ aKi
 aKi
 aKi
 oFI
-oFI
+aUh
 aKi
 aKi
 gdH
-aKr
-gdH
+aTO
+aTF
 aKi
 aJW
 aJW
-cDM
+aTq
 aJQ
 aJC
 aay
@@ -84985,10 +86800,10 @@ aJv
 aJv
 aJt
 oDT
-aJt
-aJv
-aJv
-aJt
+aRr
+xxw
+ath
+xxw
 wkj
 rsQ
 aJt
@@ -85108,7 +86923,7 @@ aKs
 auI
 aKi
 aKi
-aLv
+aVv
 pbI
 aLk
 aKi
@@ -85120,18 +86935,18 @@ aLk
 aKi
 aKi
 dQZ
-cEf
+aUA
 mGn
 dro
 aKi
-abr
+aTV
 aKl
 nEH
 aKq
-qLP
+aTv
 aJW
-cDM
-cDM
+aTr
+aTr
 aJQ
 aJC
 lqo
@@ -85152,11 +86967,11 @@ grL
 aJv
 aJv
 aJt
-oDT
-aJt
-aJv
-aJv
-ckZ
+aRt
+aRs
+awr
+awr
+avf
 rdC
 paA
 rsQ
@@ -85277,33 +87092,33 @@ aKi
 aKi
 vMy
 aLv
-mCF
+aVs
 aLk
 fmc
 aKi
 vMy
 aLv
 cOl
-aLk
+aUR
 fmc
 aKi
 gia
-cEf
+aUB
 gIT
 gUw
 aKi
 aKw
 aKq
-aKq
+aTP
 aKq
 qLP
 aJW
-aJX
-cDM
-aJQ
+aTr
+aTr
+aTk
 aJC
 lqo
-gDt
+aSZ
 aLt
 aJB
 aLj
@@ -85443,31 +87258,31 @@ awn
 aHK
 aKi
 aKi
-vMy
+aVb
 aLv
 mCF
 aLk
-fmc
+aUM
 aKi
-vMy
+aVb
 aLv
 efO
 aLk
-fmc
+aUM
 aKi
 jHD
-cEf
-fnq
+aUC
+aUp
 fnq
 frB
 aKx
 aKq
-aKq
-aKq
+aTQ
+rCT
 aKj
 aJW
-cDM
-cDM
+aTr
+aTr
 aJQ
 aJC
 lqo
@@ -85611,31 +87426,31 @@ aMC
 aMC
 aKi
 aKi
-vMy
+aVc
 aLv
 mCF
 aLk
 fmc
 aKi
-vMy
+aVc
 aLv
 efO
 aLk
 fmc
 aKi
 xAR
-cEf
-fnq
-fnq
+aUB
+aUr
+aUi
 dmP
 aKx
-aKq
-aKq
+aTP
 aKq
 qLP
+fnq
 aJW
-aJY
 cDM
+aTr
 aJQ
 aJC
 aay
@@ -85794,15 +87609,15 @@ aKi
 jFT
 xJg
 sdQ
-sdQ
+aUj
 dmP
 aKx
 aKq
 aKq
-aKq
 qLP
+aTw
 aJW
-cDM
+aTr
 cDM
 aJQ
 aJC
@@ -85967,10 +87782,10 @@ dmP
 aKx
 aKq
 aKq
-aKq
 qLP
+aTx
 aJW
-cDM
+aTr
 cDM
 aJQ
 aJC
@@ -86115,17 +87930,17 @@ aKs
 aKs
 aHC
 aKi
-jPT
+aVx
 dGn
 aMa
 jPT
 jPT
 aKi
-aLp
+aVd
 ujo
 aLp
 ujo
-ujo
+aUN
 aKi
 gia
 cEf
@@ -86134,11 +87949,11 @@ fnq
 dmP
 aKx
 aKq
-aKq
-aKq
+aTR
+qLP
 aKk
 aJW
-cDM
+aTr
 cDM
 aJQ
 aJC
@@ -86147,7 +87962,7 @@ aaF
 aaz
 aaz
 aaz
-aaz
+aSz
 rdC
 kaU
 wng
@@ -86300,13 +88115,13 @@ frB
 fpn
 fpn
 vkU
-aKx
+aTW
 aKq
-aKq
-aKq
+aTR
+qLP
 aKk
 aJW
-cDM
+aTs
 cDM
 aJQ
 aJC
@@ -86315,7 +88130,7 @@ aaG
 aJC
 aJC
 aJC
-aJC
+aSw
 rdC
 rdC
 rdC
@@ -86450,28 +88265,28 @@ avC
 aHS
 akC
 aHE
-frB
-fst
+aVC
+aVy
 aKq
 aKl
 aKq
 yhz
-iDA
+aVi
 fst
 aKq
+aUU
 aKq
-aKq
-yhz
-aKO
-aKO
+aUO
+aUK
+aUF
 aKO
 iDA
-iDA
-iDA
-fst
+aUk
+aUa
+aTX
+aTT
 aKq
-aKq
-aKq
+aTG
 aJW
 aJW
 cDM
@@ -86479,11 +88294,11 @@ cDM
 aJQ
 aJC
 aJE
-aaG
+aTa
+aSw
 aJC
 aJC
-aJC
-aJC
+aSv
 aJz
 rdC
 aJs
@@ -86619,39 +88434,39 @@ aKn
 aKs
 aKs
 avw
+aVz
+aVw
+aVt
+aTU
+aTU
+aKq
+aKq
+aKq
+aKq
+aKq
+aKq
+aKq
+aUG
+aUD
+aKq
+aKq
+aUb
+aTY
+aKq
 aKq
 aKl
 aKl
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKl
-aKl
-aKc
+avw
 cDM
 cDM
 aJQ
 aJC
-aJE
+aTh
 aaG
+aSw
 aJC
 aJC
-aJC
-aJC
+aSA
 aJz
 rdC
 aJs
@@ -86788,36 +88603,36 @@ aHM
 aKs
 avw
 aKq
+aTU
+aTU
+aTU
+aKq
+aVj
+aUH
 aKq
 aKq
 aKq
 aKq
 aKq
+aTQ
+aUE
+aUt
 aKq
 aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
+aTP
 aKq
 aKq
 aKl
 aKl
-aKc
+avw
 cDM
 cDM
 aJQ
 aJC
-aJE
-aaG
-aJC
-aJC
+aTh
+aTc
+aSw
+aSw
 aJC
 aJC
 aJz
@@ -86957,6 +88772,13 @@ aKs
 avw
 aKq
 aKq
+aTU
+aKq
+aVo
+aVk
+aUp
+aUV
+aUV
 aKq
 aKq
 aKq
@@ -86969,22 +88791,15 @@ aKq
 aKq
 aKq
 aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKq
-aKl
-aKc
+aTy
+avw
 cDM
 cDM
 aJQ
 aJC
 aJE
-aaH
-aaA
+aTd
+aSx
 aaA
 aaA
 aaA
@@ -87126,24 +88941,24 @@ frB
 rbR
 rbR
 rbR
-clb
+aVr
+aVp
+aVl
 aKq
-aKq
-aKq
-rCT
+aUZ
 aLq
+rbR
 clb
-aKq
-aKq
 aKq
 aKq
 rCT
 rbR
 rbR
-clb
+rbR
+aTZ
 aKq
 aKq
-aKq
+aTH
 aJW
 aJW
 cDM
@@ -87151,10 +88966,10 @@ cDM
 aJQ
 aJC
 aJE
-aJC
-aJC
-aJC
-aJC
+aaC
+aSE
+aSE
+aaC
 aay
 fOm
 glE
@@ -87291,38 +89106,38 @@ aKs
 aKs
 aHF
 aKi
-aKE
+aVA
 mKy
 nXX
 aKx
+aVq
 aKq
-aKq
-aKq
+aVe
 qLP
-aLr
+aUW
+aUS
 aKx
 aKq
 aKq
-aKq
-aKq
 qLP
+aUu
 rbv
 cYe
 aKx
 aKq
 aKq
-aKq
-aKk
+qLP
+aTz
 aJW
-aaC
+aTt
 aaC
 aJR
 aJL
 aJF
-aJC
-aJC
-aJC
-aJC
+aaC
+aaC
+aSE
+aaC
 aay
 fOm
 iVS
@@ -87465,32 +89280,32 @@ iFU
 aKx
 aKq
 aKq
-aKq
+aVf
 qLP
-fnq
+aUX
+aUT
 aKx
 aKq
 aKq
-aKq
-aKq
 qLP
+aUw
 fnq
-cYe
+aUc
 aKx
 aKq
 aKq
-aKq
-aKm
+qLP
+aLr
 aKd
 aaC
 aaC
 aJB
 aJB
-aJE
-aJC
-aJC
-aJC
-aJC
+aJB
+aaC
+aaC
+aaC
+aaC
 aay
 fOm
 iVS
@@ -87622,7 +89437,7 @@ lcC
 aDK
 aMR
 aIk
-aKs
+aVD
 aKs
 aKs
 aHG
@@ -87632,33 +89447,33 @@ fnq
 cnd
 aKx
 aKq
+aVm
+aVg
+qLP
+fnq
+ulT
+aUP
+aUL
+aUH
+yhz
+aUx
+aUl
+aUd
+aKx
 aKq
 aKq
 qLP
-gwx
-aKx
-aKq
-aKq
-aKq
-aKq
-aKk
-fnq
-fnq
-aKx
-aKq
-aKq
-aKq
-aKk
+aTA
 aJW
 aaB
 aaB
 aaB
 aaB
 aJB
-aJC
-aJC
-aJC
-aJC
+aaC
+aaC
+aaC
+aaC
 aay
 fOm
 iVS
@@ -87790,7 +89605,7 @@ lcC
 aDK
 aMR
 aIk
-aKs
+aVE
 aKs
 akC
 aHH
@@ -87800,33 +89615,33 @@ fnq
 cnd
 aKx
 aKq
-aKq
-aKq
+aTP
+aVh
 qLP
-dJj
+fnq
 abr
 aKq
 aKq
+aUI
 aKq
-aKq
-aKk
-fnq
-ulT
+aUy
+aUm
+aUe
 fst
 aKq
 aKq
-aKq
-qLP
+aTI
+fnq
 aJW
 aaB
 aaB
 aaB
 aaB
 aJB
-aJC
-aJC
-aJC
-aJC
+aaC
+aaC
+aaC
+aaC
 aay
 fOm
 kaU
@@ -87968,23 +89783,23 @@ fnq
 goT
 aKx
 aKq
+aVn
 aKq
-aKq
-qLP
+aVa
 tht
 aKx
 aKP
 aKP
+aUJ
 aKP
-aKP
-qLP
-fnq
+aUz
+aUn
 aKx
 aKq
 aKq
 aKq
-aKq
 qLP
+aTB
 aJW
 aaB
 aaB
@@ -88138,7 +89953,7 @@ aKx
 aKq
 aKq
 aKq
-qLP
+aVa
 tht
 auL
 aKQ
@@ -88147,23 +89962,23 @@ aKQ
 aKQ
 uVc
 fnq
-aKx
+aUf
+aTU
 aKq
 aKq
-aKq
-aKq
-qLP
+aTJ
+aTC
 aJW
+aTu
+aTl
+aTl
 aaB
 aaB
 aaB
 aaB
 aaB
 aaB
-aaB
-aaB
-aaB
-aaB
+aSB
 aJz
 rdC
 aJs
@@ -88306,7 +90121,7 @@ aKx
 aKq
 aKq
 aKq
-qLP
+aVa
 bmO
 frB
 aKY
@@ -88315,23 +90130,23 @@ aKQ
 uNm
 frB
 aKE
-aKx
+aUf
+aTU
+aTU
 aKq
-aKq
-aKq
-aKq
-qLP
+aTK
+aTD
 aJW
 aJz
 aJz
 aJz
 aJz
+aTi
 aaB
 aaB
 aaB
 aaB
-aaB
-aaB
+aSC
 aJz
 rdC
 aJs
@@ -88467,27 +90282,27 @@ aMC
 aMC
 aKi
 aKi
-ncH
+aVB
 fnq
-fnq
+aVu
 aKx
 aKq
 aKq
 aKq
-qLP
-bmO
+aVa
+aUY
 aJW
-aKY
+aUQ
 aKQ
 aKQ
 uNm
 aJW
-fnq
-aKx
+aUo
+aUg
 aKq
-nEH
 aKl
-rCT
+aKl
+aTL
 aJW
 aJW
 aJG
@@ -88499,7 +90314,7 @@ aaB
 aaB
 aaB
 aaB
-aaB
+aSC
 aJz
 rdC
 aJr
@@ -88621,9 +90436,9 @@ aNn
 aNn
 aMR
 aNe
-aMX
-aMX
-aMX
+aVF
+aVF
+aVF
 aNe
 aMR
 aDY
@@ -88664,9 +90479,9 @@ aJG
 aJG
 aJz
 aJz
-aaB
-aaB
-aaB
+aSC
+aSC
+aSC
 aJz
 aJz
 aJr
@@ -89280,9 +91095,9 @@ iKa
 iKa
 iKa
 aKn
-fuq
-fuq
-fuq
+mbM
+mbM
+mbM
 rNZ
 qFU
 qFU
@@ -89448,9 +91263,9 @@ iKa
 iKa
 iKa
 aKn
-fuq
-fuq
-fuq
+mbM
+mbM
+mbM
 nAK
 gfI
 aKy
@@ -89616,9 +91431,9 @@ iKa
 iKa
 iKa
 aKn
-fuq
-fuq
-fuq
+mbM
+mbM
+mbM
 nAK
 aKy
 aKy
@@ -89784,9 +91599,9 @@ iKa
 iKa
 aJZ
 aKn
-mbM
-mbM
-mbM
+aTS
+aTS
+aTS
 aKy
 aKy
 ace
@@ -89828,9 +91643,9 @@ aaS
 aaN
 aKy
 aKy
-mbM
-mbM
-mbM
+aTS
+aTS
+aTS
 aKn
 aJZ
 iKa

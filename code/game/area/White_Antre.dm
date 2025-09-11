@@ -154,6 +154,7 @@
 	name = "White Antre - K-Series Containment Zone - Ground"
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/white_antre/indoors/main_level/south_containment
 	name = "White Antre - Unused Containment Holding Bay - Ground"
@@ -163,6 +164,7 @@
 	name = "White Antre - Unused Containment Zone - Ground"
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 
 /area/white_antre/indoors/main_level/east_containment
 	name = "White Antre - Prime Hive Containment Holding Bay - Ground"
@@ -172,3 +174,4 @@
 	name = "White Antre - Prime Hive Containment Zone - Ground"
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS

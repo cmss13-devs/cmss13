@@ -315,6 +315,8 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_4/queen.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_4/queen.dmi'
 
+	acid_overlay = icon('icons/mob/xenos/castes/tier_4/queen.dmi', "Queen-Spit")
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Queen_1","Queen_2","Queen_3")
 	weed_food_states_flipped = list("Queen_1","Queen_2","Queen_3")
@@ -334,6 +336,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -366,6 +369,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/release_haul,
 		/datum/action/xeno_action/watch_xeno,
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/activable/tail_stab,
 		/datum/action/xeno_action/activable/place_construction/not_primary, //normally fifth macro but not as important for queen
 		/datum/action/xeno_action/activable/corrosive_acid,
@@ -383,12 +387,12 @@
 		/datum/action/xeno_action/activable/skyspit/queen,
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits,
-		/datum/action/xeno_action/onclick/toggle_seethrough,
 		//second macro
 	)
 
 	// Abilities they get when they've successfully aged.
 	var/mobile_aged_abilities = list(
+		/datum/action/xeno_action/onclick/toggle_seethrough,
 		/datum/action/xeno_action/onclick/screech, //custom macro, Screech
 		/datum/action/xeno_action/activable/xeno_spit/queen_macro, //third macro
 		/datum/action/xeno_action/onclick/shift_spits, //second macro
@@ -651,6 +655,7 @@
 					if(length(T.contents) <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
+			overlays -= acid_overlay
 
 		// Grant temporary maturity if near the hive_location for early game
 		if(!queen_aged)

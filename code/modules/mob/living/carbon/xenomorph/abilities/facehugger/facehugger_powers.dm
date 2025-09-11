@@ -20,7 +20,7 @@
 		did_hug = facehugger.handle_hug(L)
 	log_attack("[key_name] [did_hug ? "successfully hugged" : "tried to hug"] [key_name(L)] (Pounce Distance: [facehugger.pounce_distance]) at [get_location_in_text(L)]")
 
-/datum/action/xeno_action/activable/pounce/facehugger/use_ability()
+/datum/action/xeno_action/activable/pounce/facehugger/use_ability(atom/atom)
 	for(var/obj/structure/machinery/door/airlock/current_airlock in get_turf(owner))
 		if(current_airlock.density) //if its CLOSED YOU'RE SCUTTLING AND CANNOT POUNCE!!!
 			to_chat(owner, SPAN_WARNING("We cannot do that while squeezing and scuttling!"))
@@ -29,7 +29,10 @@
 	if(HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
 		to_chat(owner, SPAN_WARNING("We cannot do that while immobilized!"))
 		return FALSE
-	
+	if(atom.z != owner.z)
+		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] that far!"))
+		return FALSE
+
 	return ..()
 
 /datum/action/xeno_action/onclick/toggle_long_range/facehugger/on_zoom_out()

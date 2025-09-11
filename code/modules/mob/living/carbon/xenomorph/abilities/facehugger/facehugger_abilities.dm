@@ -12,6 +12,7 @@
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(atom.z != xeno.z)
 		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] that far!"))
+		return FALSE
 	. = ..()
 
 

@@ -199,17 +199,15 @@
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/victim = M
 			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_SKILLED))
-				victim.AdjustEyeBlur(5)
+				victim.EyeBlur(5)
 				to_chat(victim, SPAN_WARNING("Your training protects you from the pepperspray!"))
 				return
 
 			if(victim.pain.feels_pain)
 				victim.emote("scream")
 				to_chat(victim, SPAN_WARNING("You're sprayed directly in the eyes with pepperspray!"))
-				victim.AdjustEyeBlur(25)
-				victim.AdjustEyeBlind(10)
-				victim.apply_effect(3, STUN)
-				victim.apply_effect(3, WEAKEN)
+				victim.EyeBlur(15)
+				victim.EyeBlind(5)
 
 /datum/reagent/frostoil
 	name = "Frost Oil"

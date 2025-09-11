@@ -578,7 +578,6 @@
 		/obj/item/reagent_container/food/snacks/donut/normal,
 		/obj/item/reagent_container/food/snacks/donut/jelly,
 		/obj/item/weapon/baton,
-		/obj/item/weapon/gun/energy/taser,
 		/obj/item/tool/lighter/zippo,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/clothing/glasses/hud/security,
@@ -635,7 +634,7 @@
 
 
 /obj/item/storage/belt/security/MP/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/restraint/handcuffs(src)
@@ -655,7 +654,7 @@
 	desc = "The Type 43 is the standard load-bearing equipment of the UPP. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints."
 
 /obj/item/storage/belt/security/MP/UPP/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/restraint/handcuffs(src)
@@ -670,7 +669,7 @@
 	max_storage_space = 30
 
 /obj/item/storage/belt/security/MP/CMB/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/reagent_container/spray/pepper(src)
@@ -694,7 +693,7 @@
 	desc = "A Weyland-Yutani adaptation of the M276 load-bearing equipment, designed for corporate security forces. This modular black rig features multiple pouches for carrying restraints, ammunition, and a mix of lethal and non-lethal equipment for maintaining order."
 
 /obj/item/storage/belt/security/MP/WY/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/restraint/handcuffs(src)

@@ -639,6 +639,9 @@
 	},
 /turf/open/floor/prison/darkyellow2/southwest,
 /area/white_antre/indoors/main_level/east_containment)
+"abT" = (
+/turf/closed/wall/hybrisa/colony/reinforced,
+/area/white_antre/indoors/exterior/ext_relay_south)
 "abU" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/smg/nailgun{
@@ -3424,7 +3427,6 @@
 /turf/open/floor/corsat/squares,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aiT" = (
-/obj/structure/surface/table/almayer,
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/cameras{
 	name = "Security Cameras - Alpha Containment Zone";
@@ -7891,6 +7893,10 @@
 "asM" = (
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/main_level/west_corridor)
+"asN" = (
+/obj/effect/landmark/static_comms/net_one,
+/turf/open/floor/prison/floor_marked,
+/area/white_antre/indoors/exterior/ext_relay_south)
 "asO" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -10206,6 +10212,9 @@
 	},
 /turf/open/floor/almayer/silver/west,
 /area/white_antre/indoors/main_level/north_containment_hive)
+"ayL" = (
+/turf/open/floor/prison/floor_marked,
+/area/white_antre/indoors/exterior/ext_relay_south)
 "ayM" = (
 /turf/closed/wall/r_wall/biodome,
 /area/white_antre/indoors/main_level/east_containment_hive)
@@ -11042,6 +11051,9 @@
 	},
 /turf/open/floor/almayer/floor,
 /area/white_antre/indoors/main_level/north_containment_hive)
+"aBA" = (
+/turf/open/floor/prison/darkbrown3/east,
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aBB" = (
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -12760,6 +12772,9 @@
 	icon_state = "N";
 	pixel_y = 2
 	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/almayer/emerald2smooth/northeast,
 /area/white_antre/indoors/main_level/research)
 "aFA" = (
@@ -13709,13 +13724,13 @@
 	pixel_y = 22
 	},
 /turf/open/floor/prison/darkbrown3/north,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aHx" = (
 /obj/structure/machinery/computer/telecomms/monitor{
 	pixel_y = 22
 	},
 /turf/open/floor/prison/darkbrown3/north,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aHy" = (
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/blood/xeno,
@@ -14570,6 +14585,9 @@
 "aJq" = (
 /turf/closed/wall/strata_ice/dirty,
 /area/white_antre/oob)
+"aJr" = (
+/turf/open/floor/prison/darkbrownfull2,
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aJs" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
 /area/white_antre/indoors/main_level/south_containment_hive)
@@ -14613,6 +14631,10 @@
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/prison/darkbrown2/southeast,
 /area/white_antre/indoors/main_level/south_containment)
+"aJG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkbrownfull2,
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aJH" = (
 /turf/open/auto_turf/snow/layer2,
 /area/white_antre/outdoors/facility_exterior)
@@ -14622,6 +14644,9 @@
 "aJJ" = (
 /turf/open/auto_turf/shale/layer1,
 /area/white_antre/outdoors/facility_exterior)
+"aJK" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aJL" = (
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/main_level/south_containment)
@@ -14677,6 +14702,12 @@
 "aJW" = (
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/main_level/weapons)
+"aJX" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	autoname = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aJY" = (
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -14700,6 +14731,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/indoors/main_level/weapons)
+"aKe" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/corsat/officesquares,
+/area/white_antre/indoors/upper_level/xenobio)
 "aKf" = (
 /turf/open/floor/prison,
 /area/white_antre/landing_zone/roof)
@@ -14865,7 +14902,7 @@
 /area/white_antre/landing_zone/roof)
 "aKT" = (
 /turf/open/floor/prison,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aKU" = (
 /turf/open/floor/prison/red/west,
 /area/white_antre/indoors/main_level/east_containment)
@@ -15748,6 +15785,12 @@
 "aOf" = (
 /turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/main_level/north_containment)
+"aOg" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
+/turf/open/floor/prison/green/northeast,
+/area/white_antre/indoors/upper_level/west_corridor)
 "aOh" = (
 /turf/open/asphalt/cement/cement2,
 /area/white_antre/outdoors/north_field)
@@ -15912,7 +15955,6 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aOR" = (
-/obj/structure/machinery/power/apc/power/east,
 /obj/structure/closet/crate/weapon,
 /obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
 	current_mag = null
@@ -19049,7 +19091,7 @@
 	},
 /obj/item/circuitboard/apc,
 /turf/open/floor/prison/darkbrown3,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aYs" = (
 /obj/effect/alien/weeds/kseries,
 /turf/open/floor/almayer/green2/east,
@@ -19092,13 +19134,13 @@
 	pixel_x = 9
 	},
 /turf/open/floor/prison/darkbrownfull2,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aYz" = (
 /obj/item/tool/crowbar{
 	pixel_x = -7
 	},
 /turf/open/floor/prison/darkbrown3/west,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aYA" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
 /obj/effect/decal/hybrisa/bloodtrail{
@@ -19189,7 +19231,7 @@
 	dir = 1
 	},
 /turf/open/floor/prison/darkbrown3/east,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "aYR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
@@ -22893,7 +22935,7 @@
 "blm" = (
 /obj/structure/window/framed/hybrisa/colony/reinforced,
 /turf/open/floor/corsat/marked,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "blH" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = 7
@@ -23120,7 +23162,7 @@
 	},
 /obj/structure/machinery/prop/almayer/computer/PC,
 /turf/open/floor/prison/darkbrown3/northeast,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "bXc" = (
 /obj/structure/prop/dam/crane/cargo,
 /turf/open/asphalt/brown,
@@ -23493,7 +23535,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/prison/darkbrown3/northwest,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "cXl" = (
 /obj/structure/machinery/light/dropship/red{
 	dir = 8
@@ -24697,7 +24739,7 @@
 /area/white_antre/outdoors/south_field)
 "hmb" = (
 /turf/open/floor/prison/darkbrown3/west,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "hoW" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NE-out";
@@ -25105,7 +25147,8 @@
 	pixel_y = 27;
 	pixel_x = 10
 	},
-/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/obj/structure/machinery/power/apc/power/west,
+/turf/open/floor/corsat/plate,
 /area/white_antre/interior/pmc_dropship)
 "iuV" = (
 /turf/open/floor/almayer/orange/east,
@@ -25978,7 +26021,7 @@
 /area/white_antre/landing_zone)
 "lKF" = (
 /turf/open/floor/prison/darkbrown3,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "lME" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
@@ -26418,7 +26461,7 @@
 	pixel_y = 7
 	},
 /turf/open/floor/prison/darkbrown3/southeast,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "njj" = (
 /obj/structure/bookcase{
 	icon_state = "book-5";
@@ -27293,7 +27336,7 @@
 /area/white_antre/outdoors/facility_exterior)
 "qiq" = (
 /turf/open/floor/prison/darkbrowncorners3/west,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "qlQ" = (
 /turf/open/floor/prison/darkredfull2,
 /area/white_antre/indoors/exterior/checkpoint)
@@ -28319,7 +28362,7 @@
 /area/white_antre/indoors/main_level/security)
 "uwP" = (
 /turf/open/floor/prison/darkbrown3/southwest,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "uyh" = (
 /obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
 	light_color = "#FF0000";
@@ -28781,6 +28824,9 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 20
+	},
 /turf/open/floor/almayer/emerald2/south,
 /area/white_antre/indoors/main_level/east_corridor)
 "vYw" = (
@@ -28869,7 +28915,7 @@
 	alpha = 155
 	},
 /turf/open/floor/prison/darkbrown3/north,
-/area/white_antre/indoors/exterior/ext_relay_north)
+/area/white_antre/indoors/exterior/ext_relay_south)
 "wrD" = (
 /obj/structure/platform/metal/almayer_smooth/east,
 /obj/structure/blocker/invisible_wall,
@@ -83482,11 +83528,11 @@ pzq
 pzq
 pzq
 pzq
-aKH
+abT
 blm
 blm
 blm
-aKH
+abT
 aKG
 aJy
 aJy
@@ -83649,13 +83695,13 @@ acs
 pzq
 pzq
 pzq
-aKH
-aKH
-aYF
-aYF
+abT
+abT
+aJG
+aJG
 aYy
-aKH
-aKH
+abT
+abT
 aJx
 aJy
 aJy
@@ -83817,13 +83863,13 @@ aJx
 acs
 pzq
 pzq
-aKH
+abT
 cUy
 hmb
 uwP
-esx
-igJ
-aKH
+ayL
+asN
+abT
 aJx
 acs
 aJy
@@ -83985,13 +84031,13 @@ acs
 aJy
 aJy
 pzq
-aKH
+abT
 aHw
 aKT
 lKF
-esx
-esx
-aKH
+ayL
+ayL
+abT
 aJx
 aJx
 aJx
@@ -84153,13 +84199,13 @@ aJy
 aJy
 aJy
 aJy
-aKH
+abT
 aHx
-aKW
+aJK
 qiq
 aYz
 uwP
-aKH
+abT
 lvY
 aJx
 aXT
@@ -84321,13 +84367,13 @@ sUP
 sUP
 sUP
 sUP
-aKH
+abT
 woC
-aKW
-aKW
+aJK
+aJK
 aKT
 aYr
-aKH
+abT
 ane
 ane
 ane
@@ -84489,13 +84535,13 @@ ajJ
 aKg
 aKg
 ajS
-aKH
+abT
 bUN
 aYQ
-eDC
-eDC
+aBA
+aBA
 niu
-aKH
+abT
 ajJ
 aKg
 aKg
@@ -84657,13 +84703,13 @@ ajK
 aKg
 aKg
 ajT
-aKH
-aKH
-aYF
-mVY
-mVY
-aKH
-aKH
+abT
+abT
+aJG
+aJr
+aJr
+abT
+abT
 ajK
 aKg
 aKg
@@ -84826,11 +84872,11 @@ aKg
 aKg
 ajR
 ajM
-aKH
+abT
 blm
-heI
+aJX
 blm
-aKH
+abT
 ajM
 ajL
 aKg
@@ -128156,7 +128202,7 @@ bhL
 bhL
 bhL
 bhL
-biE
+aOg
 acF
 acF
 acF
@@ -135062,7 +135108,7 @@ bhB
 bhB
 aQw
 bhg
-ahi
+aKe
 bhd
 bhd
 bhd

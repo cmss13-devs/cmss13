@@ -172,10 +172,18 @@
 	name = "sloped roof"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "grass1"
+	is_weedable = NOT_WEEDABLE
 
-/turf/open/slippery/Entered(atom/movable/atom)
+
+/turf/open/slippery/Entered(atom/movable/crosser)
 	. = ..()
-	atom.forceMove(get_step(src, dir))
+	if(isobserver(crosser) || crosser.anchored)
+		return
+
+	if(!(isitem(crosser) || isliving(crosser)))
+		return
+
+	INVOKE_ASYNC(crosser, TYPE_PROC_REF(/atom/movable, throw_atom), (get_step(src, dir)), 50, SPEED_FAST, null, TRUE)
 
 
 // Prison grass

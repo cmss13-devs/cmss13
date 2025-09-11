@@ -20,13 +20,13 @@
 				targets.Remove(H)
 				continue
 
-	else if(faction_to_display == "Everyone (-Yautja)")
-		for(var/mob/M in targets)
-			if(isobserver(M)) //observers see everything
-				continue
-			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
-				targets.Remove(H)
+//	else if(faction_to_display == "Everyone (-Yautja)")
+//		for(var/mob/M in targets)
+//			if(isobserver(M)) //observers see everything
+//				continue
+//			var/mob/living/carbon/human/H = M
+//			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
+//				targets.Remove(H)
 
 	else
 		for(var/mob/M in targets)

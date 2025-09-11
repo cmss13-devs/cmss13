@@ -856,6 +856,10 @@
 	desc = "Weird slime solidified into a wall. Remarkably resilient."
 	hivenumber = XENO_HIVE_TUTORIAL
 
+/turf/closed/wall/resin/kseries
+	color = "#ffff80"
+	hivenumber = XENO_HIVE_K_SERIES
+
 /turf/closed/wall/resin/tutorial/attack_alien(mob/living/carbon/xenomorph/xeno)
 	return
 

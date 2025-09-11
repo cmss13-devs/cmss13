@@ -175,3 +175,93 @@
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+
+//White Antre Facility - Underground
+
+/area/white_antre/indoors/underground_level
+	name = "White Antre Research Facility - Underground"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/underground_level/west_maint
+	name = "White Antre Research Facility - West Maintenance - Underground"
+	icon_state = "maints"
+
+/area/white_antre/indoors/underground_level/east_maint
+	name = "White Antre Research Facility - East Maintenance - Underground"
+	icon_state = "maints"
+
+//White Antre Facility - Above Ground
+
+/area/white_antre/indoors/upper_level
+	name = "White Antre - Upper Level"
+
+/area/white_antre/indoors/upper_level/west_corridor
+	name = "White Antre - West Corridor - Upper"
+	icon_state = "colonystreets_west"
+
+/area/white_antre/indoors/upper_level/east_corridor
+	name = "White Antre - East Corridor - Upper"
+	icon_state = "colonystreets_east"
+
+/area/white_antre/indoors/upper_level/central_corridor
+	name = "White Antre - Central Corridor - Upper"
+	icon_state = "colonystreets_north"
+
+/area/white_antre/indoors/upper_level/medical
+	name = "White Antre - Medbay - Upper"
+	icon_state = "medical_lz1"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/canteen
+	name = "White Antre - Canteen - Upper"
+	icon_state = "pizza"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/records
+	name = "White Antre - Records - Upper"
+	icon_state = "wyoffice"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/simian_storage
+	name = "White Antre - Simian Storage - Upper"
+	icon_state = "WYSpaceportcargo"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/central_command
+	name = "White Antre - Central Command - Upper"
+	icon_state = "wardens"
+
+/area/white_antre/indoors/upper_level/director_office
+	name = "White Antre - Director Kandinsky's Quarters - Upper"
+	icon_state = "tumor0-deep"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/ancillery_storage
+	name = "White Antre - Ancillery Storage - Upper"
+	icon_state = "WYSpaceportcargo"
+
+/area/white_antre/indoors/upper_level/payroll
+	name = "White Antre - Payroll - Upper"
+	icon_state = "disco"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/xenobio
+	name = "White Antre - Xenobiological Research - Upper"
+	icon_state = "medical"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/east_overwatch
+	name = "White Antre - East Containment Overwatch - Upper"
+	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/north_overwatch
+	name = "White Antre - North Containment Overwatch - Upper"
+	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+
+/area/white_antre/indoors/upper_level/south_overwatch
+	name = "White Antre - South Containment Overwatch - Upper"
+	icon_state = "wylab"
+	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+

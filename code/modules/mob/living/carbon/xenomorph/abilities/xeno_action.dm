@@ -198,7 +198,11 @@
 		if(charge_time)
 			start_charging_ability()
 		if(ability_uses_acid_overlay && !(xeno.acid_overlay in xeno.overlays) && !xeno.resting && xeno.stat != DEAD)
-			xeno.overlays += xeno.acid_overlay
+			if(HAS_TRAIT(xeno, TRAIT_FLOORED))
+				return
+			else
+				xeno.overlays += xeno.acid_overlay
+
 
 // Called when a different action is clicked on and this one is deselected.
 /datum/action/xeno_action/activable/proc/action_deselect()

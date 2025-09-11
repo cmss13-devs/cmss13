@@ -135,3 +135,9 @@
 /obj/effect/decal/mecha_wreckage/hoverpod
 	name = "Hover pod wreckage"
 	icon_state = "engineering_pod-broken"
+
+/obj/effect/eggs/eggcluster
+	icon = 'icons/effects/effects.dmi'
+	name = "egg cluster"
+	desc = "They seem to pulse slightly with an inner life"
+	icon_state = "eggs_white"

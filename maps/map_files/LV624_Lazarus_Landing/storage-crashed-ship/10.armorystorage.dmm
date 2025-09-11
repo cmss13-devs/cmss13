@@ -1,0 +1,349 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 2
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 2;
+	pixel_x = 8
+	},
+/obj/item/stack/sheet/mineral/platinum{
+	pixel_x = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"d" = (
+/obj/item/tool/shovel,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"e" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	dir = 1;
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Armory Vault";
+	req_access_txt = "100"
+	},
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"i" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27{
+	pixel_x = -8
+	},
+/obj/item/ammo_magazine/smg/mp27{
+	pixel_x = -4
+	},
+/obj/item/ammo_magazine/smg/mp27,
+/obj/item/ammo_magazine/smg/mp27{
+	pixel_x = 4
+	},
+/obj/item/ammo_magazine/smg/mp27{
+	pixel_x = 7
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"j" = (
+/turf/closed/wall,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"n" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/gold{
+	amount = 2
+	},
+/obj/item/stack/sheet/mineral/platinum{
+	pixel_x = 6
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"p" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"s" = (
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"t" = (
+/obj/item/tool/pickaxe,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"v" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"x" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/fp9000,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"y" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/explosive/grenade/high_explosive/stick,
+/obj/item/explosive/grenade/high_explosive/stick{
+	pixel_x = 6
+	},
+/obj/item/explosive/grenade/high_explosive/stick{
+	pixel_x = -6
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"z" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -3
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"B" = (
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"F" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
+/obj/item/ammo_box/magazine/nailgun,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"G" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/mp27{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/smg/mp27{
+	pixel_y = 6
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"I" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/smg/mac15{
+	pixel_x = 1
+	},
+/obj/item/ammo_magazine/smg/mac15{
+	pixel_x = -3
+	},
+/obj/item/ammo_magazine/smg/mac15{
+	pixel_x = -7
+	},
+/obj/item/ammo_magazine/smg/mac15{
+	pixel_x = 6
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"K" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"N" = (
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"O" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"P" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/mac15,
+/obj/item/weapon/gun/smg/mac15{
+	pixel_y = 6
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"Q" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 2
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"T" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	icon_state = "door_locked";
+	locked = 1;
+	name = "\improper Armory Vault";
+	req_access_txt = "100"
+	},
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"U" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/lmg,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"V" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 2
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"X" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"Z" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -3
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/effect/landmark/crap_item,
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+
+(1,1,1) = {"
+X
+p
+K
+K
+p
+p
+X
+p
+"}
+(2,1,1) = {"
+p
+p
+p
+X
+p
+p
+K
+p
+"}
+(3,1,1) = {"
+j
+j
+T
+j
+j
+j
+j
+j
+"}
+(4,1,1) = {"
+j
+F
+d
+O
+j
+i
+G
+j
+"}
+(5,1,1) = {"
+j
+N
+N
+N
+e
+v
+N
+j
+"}
+(6,1,1) = {"
+j
+Z
+N
+b
+j
+N
+t
+j
+"}
+(7,1,1) = {"
+j
+z
+N
+x
+j
+N
+N
+j
+"}
+(8,1,1) = {"
+j
+B
+N
+s
+j
+U
+n
+j
+"}
+(9,1,1) = {"
+j
+P
+v
+Q
+j
+j
+j
+j
+"}
+(10,1,1) = {"
+j
+I
+y
+V
+j
+X
+K
+p
+"}
+(11,1,1) = {"
+j
+j
+j
+j
+j
+p
+p
+p
+"}

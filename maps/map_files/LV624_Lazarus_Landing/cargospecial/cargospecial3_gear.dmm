@@ -1,0 +1,99 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/surface/rack,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/quartstorage)
+"f" = (
+/obj/structure/surface/rack,
+/obj/item/tool/shovel/etool{
+	pixel_x = 6
+	},
+/obj/item/tool/shovel/etool{
+	pixel_x = -6
+	},
+/obj/item/tool/shovel/etool,
+/turf/open/floor/dark,
+/area/lv624/lazarus/quartstorage)
+"i" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark,
+/area/lv624/lazarus/quartstorage)
+"A" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/accessory/storage/black_vest/brown_vest,
+/obj/item/clothing/accessory/storage/black_vest/brown_vest,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/quartstorage)
+"C" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/veteran/pmc,
+/obj/item/clothing/shoes/veteran/pmc{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/obj/item/clothing/shoes/veteran/pmc{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/poster,
+/obj/item/clothing/glasses/sunglasses,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/quartstorage)
+"E" = (
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"J" = (
+/obj/structure/surface/rack,
+/obj/item/stack/folding_barricade,
+/obj/item/facepaint/skull,
+/turf/open/floor/dark,
+/area/lv624/lazarus/quartstorage)
+"R" = (
+/obj/structure/surface/rack,
+/obj/effect/landmark/wo_supplies/storage/webbing,
+/obj/effect/landmark/wo_supplies/storage/webbing,
+/obj/effect/landmark/wo_supplies/storage/webbing,
+/obj/item/poster,
+/obj/item/clothing/glasses/sunglasses,
+/turf/open/floor/vault2/west,
+/area/lv624/lazarus/quartstorage)
+"V" = (
+/obj/structure/surface/rack,
+/obj/item/stack/folding_barricade,
+/obj/item/stack/folding_barricade,
+/obj/item/explosive/grenade/high_explosive/frag,
+/obj/item/explosive/grenade/high_explosive/frag{
+	pixel_x = 6
+	},
+/turf/open/floor/dark,
+/area/lv624/lazarus/quartstorage)
+
+(1,1,1) = {"
+R
+E
+a
+"}
+(2,1,1) = {"
+A
+E
+C
+"}
+(3,1,1) = {"
+i
+E
+f
+"}
+(4,1,1) = {"
+V
+E
+J
+"}

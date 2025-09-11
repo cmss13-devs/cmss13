@@ -1,0 +1,1059 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aD" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"bV" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 6
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"dd" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 9
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"gU" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 9
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"hJ" = (
+/obj/effect/decal/grass_overlay/grass1,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"hP" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	pixel_x = 11;
+	pixel_y = -2;
+	light_on = 1;
+	light_range = 1;
+	light_system = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"hW" = (
+/obj/structure/fence,
+/turf/open/floor/warning/northwest,
+/area/lv624/ground/barrens/containers)
+"iS" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
+	pixel_x = 8
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"kc" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"ks" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	pixel_x = 2;
+	pixel_y = 7;
+	light_on = 1;
+	light_range = 1;
+	light_system = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"lp" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/central_caves)
+"lq" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/barrens/west_barrens)
+"mN" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"oB" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"oJ" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"pd" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"pC" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/north_east_barrens)
+"pR" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/plumphelmet{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"qK" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"ry" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"sL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"sO" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/caves/south_central_caves)
+"vC" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 6
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"vR" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"wk" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/south_central_caves)
+"wL" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 10
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"yv" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/decal/grass_overlay/grass1,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"yD" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"yO" = (
+/obj/effect/decal/grass_overlay/grass1,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"zh" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 6
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"An" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"AL" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"DG" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"ER" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"GE" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	pixel_x = 4;
+	light_on = 1;
+	light_range = 1;
+	light_system = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/north_east_barrens)
+"GR" = (
+/obj/effect/landmark/hunter_primary,
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 10
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"Is" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/central_caves)
+"Jf" = (
+/obj/structure/flora/bush/ausbushes/var3/brflowers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"JB" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"JX" = (
+/obj/structure/flora/bush/ausbushes/lavendergrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"JZ" = (
+/obj/structure/fence,
+/turf/open/floor/warning/north,
+/area/lv624/ground/barrens/containers)
+"KX" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
+"Od" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"Oe" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/central_caves)
+"Pd" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"PB" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"Rx" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"Tu" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"Uu" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	pixel_x = 4;
+	light_on = 1;
+	light_range = 1;
+	light_system = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"UB" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"Vd" = (
+/obj/effect/landmark/hunter_primary,
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 9
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"VY" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	pixel_x = -10;
+	pixel_y = -2;
+	light_on = 1;
+	light_range = 1;
+	light_system = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"Xj" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 10
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"XV" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"ZM" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"ZU" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 5
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+
+(1,1,1) = {"
+PB
+qK
+dd
+DG
+Vd
+ER
+ER
+wL
+Xj
+qK
+XV
+sL
+XV
+XV
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+"}
+(2,1,1) = {"
+PB
+qK
+JB
+Rx
+ER
+ks
+ER
+ER
+hJ
+qK
+XV
+XV
+XV
+XV
+XV
+wk
+wk
+wk
+wk
+lq
+KX
+"}
+(3,1,1) = {"
+PB
+qK
+JB
+ER
+ER
+sO
+sO
+wk
+hJ
+qK
+XV
+XV
+XV
+XV
+XV
+XV
+wk
+wk
+wk
+KX
+KX
+"}
+(4,1,1) = {"
+PB
+aD
+wk
+wk
+sO
+sO
+wk
+wk
+wk
+wk
+wk
+XV
+XV
+XV
+XV
+XV
+wk
+wk
+wk
+KX
+KX
+"}
+(5,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+XV
+XV
+XV
+XV
+XV
+XV
+wk
+wk
+lq
+KX
+"}
+(6,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+XV
+XV
+XV
+XV
+XV
+wk
+lq
+KX
+"}
+(7,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+Tu
+yv
+qK
+qK
+wk
+wk
+lq
+"}
+(8,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+ER
+wL
+Xj
+XV
+AL
+wk
+wk
+"}
+(9,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+ER
+kc
+ER
+hJ
+XV
+XV
+wk
+wk
+"}
+(10,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+ER
+ER
+ER
+hJ
+XV
+XV
+wk
+wk
+"}
+(11,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+sO
+ks
+ER
+bV
+zh
+XV
+XV
+wk
+wk
+"}
+(12,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+sO
+sO
+ER
+ER
+hJ
+sL
+XV
+XV
+wk
+wk
+"}
+(13,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+ER
+ER
+Rx
+ER
+GR
+Xj
+XV
+XV
+wk
+wk
+"}
+(14,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+ER
+ER
+ER
+ER
+hJ
+XV
+XV
+wk
+wk
+"}
+(15,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+wk
+XV
+XV
+wk
+wk
+wk
+pd
+iS
+ER
+ER
+ER
+hJ
+XV
+XV
+wk
+wk
+"}
+(16,1,1) = {"
+wk
+wk
+wk
+wk
+wk
+XV
+XV
+XV
+XV
+wk
+wk
+wk
+sO
+sO
+ER
+hP
+hJ
+XV
+wk
+wk
+wk
+"}
+(17,1,1) = {"
+wk
+wk
+wk
+XV
+XV
+XV
+XV
+XV
+XV
+XV
+wk
+wk
+wk
+sO
+ER
+ER
+hJ
+XV
+wk
+wk
+wk
+"}
+(18,1,1) = {"
+wk
+wk
+wk
+XV
+XV
+sL
+XV
+XV
+XV
+sL
+XV
+XV
+wk
+sO
+ER
+Jf
+hJ
+XV
+wk
+wk
+wk
+"}
+(19,1,1) = {"
+wk
+wk
+XV
+XV
+XV
+XV
+XV
+XV
+XV
+XV
+XV
+XV
+Od
+ER
+ER
+ER
+wL
+Xj
+XV
+wk
+wk
+"}
+(20,1,1) = {"
+wk
+XV
+XV
+XV
+XV
+XV
+wk
+wk
+XV
+XV
+XV
+XV
+Od
+ER
+ER
+VY
+Rx
+hJ
+XV
+wk
+wk
+"}
+(21,1,1) = {"
+PB
+XV
+XV
+XV
+XV
+XV
+wk
+wk
+XV
+XV
+XV
+sL
+Pd
+ER
+ER
+ER
+ER
+hJ
+XV
+wk
+wk
+"}
+(22,1,1) = {"
+PB
+XV
+sL
+XV
+XV
+wk
+wk
+wk
+wk
+XV
+XV
+XV
+Od
+ER
+Rx
+ER
+JX
+hJ
+XV
+wk
+wk
+"}
+(23,1,1) = {"
+PB
+PB
+XV
+XV
+wk
+wk
+wk
+wk
+wk
+wk
+XV
+XV
+Od
+ER
+ry
+ER
+bV
+zh
+XV
+wk
+wk
+"}
+(24,1,1) = {"
+PB
+PB
+XV
+XV
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+pR
+ER
+ER
+hJ
+XV
+wk
+wk
+wk
+"}
+(25,1,1) = {"
+PB
+PB
+XV
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+sO
+ER
+ER
+ER
+Rx
+hJ
+XV
+wk
+wk
+wk
+"}
+(26,1,1) = {"
+PB
+PB
+XV
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+ER
+ER
+ER
+Uu
+ER
+hJ
+wk
+wk
+wk
+wk
+"}
+(27,1,1) = {"
+PB
+PB
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+sO
+ER
+ER
+ER
+ER
+hJ
+wk
+wk
+wk
+hW
+"}
+(28,1,1) = {"
+PB
+oJ
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+ER
+ER
+ER
+wk
+wk
+wk
+wk
+JZ
+"}
+(29,1,1) = {"
+PB
+UB
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+sO
+sO
+An
+An
+vC
+wk
+wk
+wk
+wk
+JZ
+"}
+(30,1,1) = {"
+PB
+UB
+oB
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+ZM
+ZM
+ZM
+wk
+wk
+yD
+yD
+JZ
+"}
+(31,1,1) = {"
+PB
+gU
+Oe
+sO
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+wk
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+JZ
+"}
+(32,1,1) = {"
+UB
+lp
+sO
+sO
+wk
+wk
+wk
+wk
+sO
+sO
+wk
+wk
+wk
+yD
+yD
+yD
+yD
+yD
+mN
+yD
+JZ
+"}
+(33,1,1) = {"
+PB
+ZU
+Is
+pC
+pC
+pC
+vR
+sO
+sO
+GE
+yO
+wk
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+yD
+JZ
+"}

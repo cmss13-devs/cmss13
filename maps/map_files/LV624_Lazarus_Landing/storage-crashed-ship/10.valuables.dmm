@@ -1,0 +1,295 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"d" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/sandstone{
+	amount = 50
+	},
+/obj/item/stack/sheet/mineral/sandstone{
+	amount = 50
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"e" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate/supply,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"f" = (
+/turf/closed/wall,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"i" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 2
+	},
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"l" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"o" = (
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/item/ammo_magazine/smg/fp9000,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"p" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/silver{
+	amount = 20
+	},
+/obj/effect/landmark/crap_item,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"q" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"r" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"s" = (
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"t" = (
+/obj/structure/surface/rack,
+/obj/item/tool/shovel,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"y" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal{
+	amount = 50;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"C" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/platinum{
+	pixel_x = -6
+	},
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"D" = (
+/obj/structure/largecrate/supply,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"G" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/lmg,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"H" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/landmark/crap_item,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"I" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -3
+	},
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"M" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/iron{
+	amount = 5
+	},
+/obj/item/tool/pickaxe/diamond,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"N" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"O" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"R" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = -3
+	},
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 6
+	},
+/obj/effect/landmark/crap_item,
+/turf/open/floor/vault2/west,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"U" = (
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/obj/item/ammo_magazine/rifle/mar40/extended,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"V" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/mineral/platinum,
+/obj/item/stack/sheet/mineral/iron{
+	amount = 5
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"X" = (
+/obj/structure/machinery/door/airlock/almayer/secure/colony{
+	icon_state = "door_locked";
+	locked = 1;
+	name = "Mining Storage";
+	req_access_txt = "100"
+	},
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+"Z" = (
+/turf/open/floor/dark,
+/area/lv624/ground/barrens/north_east_barrens/ceiling)
+
+(1,1,1) = {"
+O
+O
+O
+O
+O
+O
+N
+O
+"}
+(2,1,1) = {"
+N
+O
+O
+l
+O
+O
+O
+r
+"}
+(3,1,1) = {"
+f
+f
+X
+f
+f
+f
+f
+O
+"}
+(4,1,1) = {"
+f
+R
+Z
+H
+Z
+G
+f
+O
+"}
+(5,1,1) = {"
+f
+I
+Z
+C
+Z
+p
+f
+N
+"}
+(6,1,1) = {"
+f
+y
+Z
+M
+Z
+D
+f
+O
+"}
+(7,1,1) = {"
+f
+U
+Z
+o
+Z
+s
+f
+O
+"}
+(8,1,1) = {"
+f
+t
+q
+i
+Z
+d
+f
+O
+"}
+(9,1,1) = {"
+f
+V
+Z
+Z
+Z
+e
+f
+O
+"}
+(10,1,1) = {"
+f
+f
+f
+f
+f
+f
+f
+r
+"}
+(11,1,1) = {"
+O
+N
+r
+O
+O
+N
+O
+O
+"}

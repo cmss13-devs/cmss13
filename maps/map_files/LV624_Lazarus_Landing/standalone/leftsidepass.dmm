@@ -1,0 +1,372 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ac" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"ad" = (
+/turf/open/gm/coast/west,
+/area/lv624/ground/river/west_river)
+"ae" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"af" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"ag" = (
+/obj/effect/alien/weeds/node,
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"ah" = (
+/obj/structure/flora/jungle/alienplant1,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"ai" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/coast/beachcorner/north_west,
+/area/lv624/ground/river/west_river)
+"aj" = (
+/obj/structure/flora/bush/ausbushes/ywflowers,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"al" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"am" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"ao" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/lv624/ground/river/west_river)
+"aq" = (
+/turf/open/gm/coast/beachcorner/south_west,
+/area/lv624/ground/river/west_river)
+"ar" = (
+/turf/open/gm/coast/beachcorner/south_east,
+/area/lv624/ground/river/west_river)
+"au" = (
+/turf/open/gm/dirtgrassborder/north,
+/area/lv624/ground/jungle/west_jungle)
+"aw" = (
+/turf/open/gm/coast/beachcorner/south_west,
+/area/lv624/ground/jungle/west_jungle)
+"aC" = (
+/obj/structure/flora/jungle/vines/light_2,
+/turf/open/gm/grass/grass2,
+/area/lv624/ground/jungle/west_jungle)
+"aD" = (
+/obj/structure/flora/jungle/vines/light_1,
+/turf/open/gm/dirtgrassborder/grassdirt_corner/south_west,
+/area/lv624/ground/jungle/west_jungle)
+"aE" = (
+/turf/open/gm/dirtgrassborder/grassdirt_corner2/south_west,
+/area/lv624/ground/jungle/west_jungle)
+"aU" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/river/west_river)
+"aX" = (
+/turf/open/gm/coast/beachcorner2/south_east,
+/area/lv624/ground/river/west_river)
+"bc" = (
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"bf" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"bh" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"bi" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"bm" = (
+/turf/open/gm/coast/beachcorner2/north_west,
+/area/lv624/ground/river/west_river)
+"bt" = (
+/turf/open/gm/coast/south,
+/area/lv624/ground/river/west_river)
+"bx" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"bz" = (
+/turf/open/gm/coast/beachcorner/north_west,
+/area/lv624/ground/river/west_river)
+"bL" = (
+/turf/open/gm/coast/north,
+/area/lv624/ground/river/west_river)
+"bN" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"bV" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/west_jungle)
+"gX" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/river/west_river)
+"kE" = (
+/turf/open/gm/coast/beachcorner2/south_west,
+/area/lv624/ground/jungle/west_jungle)
+"qG" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/west_river)
+"ve" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/river,
+/area/lv624/ground/jungle/west_jungle)
+"zW" = (
+/turf/open/gm/coast/west,
+/area/lv624/ground/jungle/west_jungle)
+"Dw" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/west_jungle)
+"ES" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/river/west_river)
+"FJ" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"JC" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/south_west_caves)
+"KD" = (
+/turf/open/gm/river,
+/area/lv624/ground/jungle/west_jungle)
+"Ms" = (
+/turf/open/gm/coast/south,
+/area/lv624/ground/jungle/west_jungle)
+"Ok" = (
+/obj/structure/flora/jungle/alienplant1,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"Oz" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/barrens/south_west_barrens)
+"VA" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/west_river)
+"Za" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/jungle/west_jungle)
+
+(1,1,1) = {"
+JC
+JC
+JC
+JC
+Oz
+Oz
+gX
+aU
+aU
+aU
+aU
+Dw
+Dw
+"}
+(2,1,1) = {"
+JC
+JC
+JC
+JC
+bi
+bi
+ES
+ES
+VA
+ES
+ES
+au
+aC
+"}
+(3,1,1) = {"
+JC
+JC
+bi
+bi
+ag
+bi
+ES
+ES
+ES
+ES
+qG
+aE
+aD
+"}
+(4,1,1) = {"
+JC
+bi
+bh
+bi
+bi
+bi
+ai
+ad
+ad
+aq
+ES
+bV
+aE
+"}
+(5,1,1) = {"
+JC
+bi
+bi
+bi
+bz
+ad
+bm
+bc
+bc
+bt
+bV
+bV
+bV
+"}
+(6,1,1) = {"
+bi
+bi
+bi
+bi
+bL
+bc
+aj
+bc
+bc
+bt
+bV
+Za
+bV
+"}
+(7,1,1) = {"
+bi
+bi
+bx
+bi
+bL
+bc
+bc
+Ok
+FJ
+bt
+bV
+Za
+bV
+"}
+(8,1,1) = {"
+bi
+bi
+bh
+bi
+bL
+bc
+bc
+bc
+am
+bt
+bV
+bV
+bV
+"}
+(9,1,1) = {"
+bx
+bi
+bi
+bz
+bm
+bc
+bc
+bc
+bc
+bt
+bV
+bV
+bV
+"}
+(10,1,1) = {"
+bf
+bi
+ac
+bL
+bc
+Ok
+al
+bc
+aX
+ar
+bV
+bV
+bV
+"}
+(11,1,1) = {"
+bi
+bz
+ad
+bm
+bc
+bN
+bc
+bc
+bt
+bV
+bV
+bV
+bV
+"}
+(12,1,1) = {"
+bi
+bL
+bc
+bc
+bc
+bc
+bN
+bc
+ao
+zW
+aw
+bV
+bV
+"}
+(13,1,1) = {"
+bx
+bL
+ae
+bc
+bc
+bc
+bc
+bc
+bc
+ve
+Ms
+bV
+bV
+"}
+(14,1,1) = {"
+bi
+bL
+af
+af
+af
+ah
+af
+af
+KD
+KD
+kE
+zW
+zW
+"}

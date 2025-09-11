@@ -41,6 +41,49 @@
 	icon_state = "back_1"
 	dir = WEST
 
+// WY-White Van interior stuff
+
+/obj/structure/interior_wall/van_white
+	name = "van interior wall"
+	desc = "An interior wall."
+	icon = 'icons/obj/vehicles/interiors/van_white.dmi'
+	icon_state = "van_right_1"
+	density = TRUE
+	opacity = FALSE
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = WINDOW_LAYER
+	flags_atom = NOINTERACT
+	unacidable = TRUE
+
+/obj/effect/vehicle_roof/van_white
+	name = "\improper van interior roof"
+	icon = 'icons/obj/vehicles/interiors/van_white.dmi'
+	icon_state = "roof_1"
+
+/obj/structure/interior_exit/vehicle/van_white/left
+	name = "Van left door"
+	icon = 'icons/obj/vehicles/interiors/van_white.dmi'
+	icon_state = "interior_door"
+
+/obj/structure/interior_exit/vehicle/van_white/right
+	name = "Van right door"
+	icon = 'icons/obj/vehicles/interiors/van_whiten.dmi'
+	icon_state = "exterior_door_unique"
+	dir = SOUTH
+
+/obj/structure/interior_exit/vehicle/van_white/backleft
+	name = "Van back exit"
+	icon = 'icons/obj/vehicles/interiors/van_white.dmi'
+	icon_state = "back_2"
+	dir = WEST
+
+/obj/structure/interior_exit/vehicle/van_white/backright
+	name = "Van back exit"
+	icon = 'icons/obj/vehicles/interiors/van_white.dmi'
+	icon_state = "back_1"
+	dir = WEST
+
 //CLF Van
 
 /obj/structure/interior_wall/clf_van

@@ -3346,6 +3346,37 @@
 /turf/open/floor/interior/plastic/alt
 	icon_state = "plasticfloor2"
 
+/turf/open/floor/interior/plastic/blue
+	name = "plastic floor"
+	icon_state = "plasticfloor3"
+
+/turf/open/floor/interior/plastic/blue/alt
+	icon_state = "plasticfloor4"
+
+/turf/open/floor/interior/plastic/grey
+	name = "plastic floor"
+	icon_state = "plasticfloor5"
+
+/turf/open/floor/interior/plastic/grey/alt
+	icon_state = "plasticfloor6"
+
+/turf/open/floor/interior/plastic/purple
+	name = "plastic floor"
+	icon_state = "plasticfloor7"
+
+/turf/open/floor/interior/plastic/purple/alt
+	icon_state = "plasticfloor8"
+
+/turf/open/floor/interior/sun_emblem
+	name = "Sun Emblem"
+	desc = "Here sits a golden emblem of the sun, meant to praise the sky in it's benevolence."
+	icon_state = "sun_emblem"
+
+/turf/open/floor/interior/sun_emblem/center
+	name = "Sun Emblem"
+	desc = "Here sits a golden emblem of the sun, meant to praise the sky in it's benevolence."
+	icon_state = "sun_emblem_center"
+
 // Biodome tiles
 
 /turf/open/floor/corsat

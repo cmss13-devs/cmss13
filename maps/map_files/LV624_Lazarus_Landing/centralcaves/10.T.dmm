@@ -1,0 +1,950 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 5
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"b" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"c" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 9
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"d" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/central_caves)
+"e" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"f" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"g" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"h" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/central_caves)
+"i" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"j" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/amanita,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/central_caves)
+"k" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"l" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/south_central_caves)
+"m" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"n" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"o" = (
+/obj/structure/fence,
+/turf/open/floor/warning/northwest,
+/area/lv624/ground/barrens/containers)
+"p" = (
+/obj/structure/fence,
+/turf/open/floor/warning/north,
+/area/lv624/ground/barrens/containers)
+"s" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 10
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"t" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	pixel_x = 4;
+	light_on = 1;
+	light_range = 1;
+	light_system = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/north_east_barrens)
+"u" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/central_caves)
+"v" = (
+/obj/effect/decal/grass_overlay/grass1,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"w" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/west_barrens)
+"A" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"B" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 9
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"C" = (
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"D" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"E" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/caves/south_central_caves)
+"F" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 10
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"G" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"H" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/north_east_barrens)
+"I" = (
+/obj/effect/decal/grass_overlay/grass1,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"K" = (
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom{
+	pixel_x = 2;
+	pixel_y = 7;
+	light_on = 1;
+	light_range = 1;
+	light_system = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"M" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/barrens/north_east_barrens)
+"N" = (
+/obj/effect/landmark/hunter_primary,
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 9
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"O" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/central_caves)
+"Q" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"R" = (
+/obj/effect/decal/grass_overlay/grass1{
+	dir = 1
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"S" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"U" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/south_central_caves)
+"V" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_central_caves)
+"Z" = (
+/obj/structure/flora/bush/ausbushes/var3/ppflowers,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/lv624/ground/caves/central_caves)
+
+(1,1,1) = {"
+f
+g
+B
+b
+N
+S
+S
+s
+F
+Q
+V
+V
+V
+V
+l
+l
+l
+l
+l
+l
+l
+"}
+(2,1,1) = {"
+f
+g
+R
+U
+S
+K
+S
+S
+v
+Q
+V
+V
+V
+V
+l
+l
+l
+l
+l
+l
+l
+"}
+(3,1,1) = {"
+f
+g
+R
+S
+S
+E
+E
+l
+v
+Q
+V
+G
+V
+V
+l
+l
+l
+l
+l
+l
+w
+"}
+(4,1,1) = {"
+f
+A
+l
+l
+E
+E
+l
+l
+l
+l
+V
+V
+V
+V
+V
+l
+l
+l
+V
+V
+w
+"}
+(5,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+V
+V
+V
+V
+V
+l
+l
+V
+V
+V
+w
+"}
+(6,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+C
+V
+V
+V
+V
+l
+V
+V
+V
+G
+w
+"}
+(7,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+V
+V
+G
+V
+V
+V
+V
+V
+V
+w
+"}
+(8,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+V
+V
+V
+V
+V
+V
+V
+V
+w
+"}
+(9,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+V
+V
+V
+V
+G
+n
+n
+l
+l
+"}
+(10,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+V
+V
+V
+V
+n
+n
+l
+l
+l
+"}
+(11,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+V
+V
+n
+n
+l
+l
+l
+l
+"}
+(12,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+n
+n
+l
+l
+l
+l
+l
+"}
+(13,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+"}
+(14,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+"}
+(15,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+"}
+(16,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+"}
+(17,1,1) = {"
+d
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+n
+n
+V
+l
+l
+l
+l
+l
+"}
+(18,1,1) = {"
+d
+l
+l
+l
+l
+V
+l
+l
+l
+l
+n
+n
+n
+n
+G
+V
+V
+n
+l
+l
+l
+"}
+(19,1,1) = {"
+d
+l
+l
+l
+V
+V
+V
+l
+l
+n
+n
+V
+V
+V
+V
+V
+V
+n
+l
+l
+l
+"}
+(20,1,1) = {"
+d
+l
+l
+V
+V
+V
+V
+V
+V
+Q
+V
+V
+V
+V
+V
+V
+V
+n
+n
+l
+l
+"}
+(21,1,1) = {"
+d
+l
+V
+V
+V
+V
+V
+G
+V
+Q
+V
+V
+V
+V
+V
+V
+G
+V
+n
+l
+l
+"}
+(22,1,1) = {"
+d
+V
+V
+V
+V
+V
+V
+V
+V
+Q
+V
+V
+G
+V
+V
+V
+V
+V
+n
+l
+l
+"}
+(23,1,1) = {"
+d
+V
+V
+V
+V
+V
+V
+V
+V
+n
+n
+V
+V
+V
+V
+V
+V
+V
+n
+l
+l
+"}
+(24,1,1) = {"
+d
+V
+V
+V
+G
+V
+V
+V
+l
+l
+n
+n
+V
+V
+V
+V
+V
+V
+V
+l
+l
+"}
+(25,1,1) = {"
+d
+V
+V
+V
+V
+V
+V
+l
+l
+l
+l
+n
+n
+V
+V
+V
+V
+V
+l
+l
+l
+"}
+(26,1,1) = {"
+f
+V
+V
+V
+V
+V
+l
+l
+l
+l
+l
+l
+n
+V
+V
+G
+V
+C
+l
+l
+l
+"}
+(27,1,1) = {"
+f
+V
+V
+V
+V
+l
+l
+l
+l
+l
+l
+l
+l
+V
+V
+V
+V
+l
+l
+l
+o
+"}
+(28,1,1) = {"
+f
+e
+D
+D
+D
+l
+l
+l
+l
+l
+l
+l
+l
+V
+V
+V
+V
+l
+l
+l
+p
+"}
+(29,1,1) = {"
+f
+O
+S
+S
+l
+l
+l
+l
+l
+l
+l
+l
+l
+i
+i
+i
+l
+l
+l
+l
+p
+"}
+(30,1,1) = {"
+f
+O
+j
+l
+l
+l
+l
+l
+l
+l
+l
+l
+l
+k
+k
+k
+l
+k
+k
+k
+p
+"}
+(31,1,1) = {"
+f
+c
+Z
+E
+l
+l
+l
+l
+l
+l
+l
+l
+k
+k
+m
+k
+k
+k
+k
+k
+p
+"}
+(32,1,1) = {"
+O
+u
+E
+E
+l
+l
+l
+l
+E
+E
+l
+l
+l
+k
+k
+k
+k
+k
+m
+k
+p
+"}
+(33,1,1) = {"
+f
+a
+h
+H
+H
+H
+M
+E
+E
+t
+I
+l
+k
+k
+k
+k
+k
+k
+k
+k
+p
+"}

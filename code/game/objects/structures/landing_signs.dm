@@ -13,6 +13,12 @@
 	icon = 'icons/obj/structures/props/landing_signs.dmi'
 	icon_state = "laz_sign"
 
+/obj/structure/lz_sign/lazarus_sign/clean
+	name = "Lazarus Landing Sign"
+	desc = "A large sign reading 'lazarus landing por-' the rest of it is smeared in blood."
+	icon = 'icons/obj/structures/props/landing_signs.dmi'
+	icon_state = "laz_sign_clean"
+
 /obj/structure/lz_sign/solaris_sign
 	name = "Solaris Ridge Sign"
 	desc = "A large sign that reads 'Solaris Ridge -', the rest of it is scraped away."

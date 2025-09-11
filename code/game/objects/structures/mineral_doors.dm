@@ -221,6 +221,7 @@
 	hardness = 10
 
 /obj/structure/mineral_door/wood
+	name = "wood door"
 	icon_state = "wood"
 	mineralType = "wood"
 	hardness = 1

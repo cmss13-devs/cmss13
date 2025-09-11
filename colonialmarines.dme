@@ -2650,6 +2650,7 @@
 #include "code\modules\vehicles\van\interior.dm"
 #include "code\modules\vehicles\van\pizza_van.dm"
 #include "code\modules\vehicles\van\van.dm"
+#include "code\modules\vehicles\van\van_white.dm"
 #include "code\modules\vox\vox.dm"
 #include "code\modules\vox\vox_tgui.dm"
 #include "code\modules\vox\vox_sounds\vox.dm"

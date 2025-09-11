@@ -298,23 +298,48 @@
 	turf_flags = TURF_HULL
 	icon_state = "uppwall_hull"
 
-//UPP almayer retexture walls.
+/turf/closed/wall/upp_ship/grey
+	damage = 0
+	damage_cap = HEALTH_WALL //Wall will break down to girders if damage reaches this point
+	opacity = TRUE
+	density = TRUE
+	walltype = WALL_UPP_SHIP
+	icon = 'icons/turf/walls/upp_walls_grey.dmi'
+	icon_state = "uppwall_interior"
 
-/turf/closed/wall/almayer/upp
-	walltype = WALL_UPP_BASE
-	icon = 'icons/turf/walls/upp_almayer_walls.dmi'
-	icon_state = "uppwall"
-
-/turf/closed/wall/almayer/upp/reinforced
+/turf/closed/wall/upp_ship/grey/reinforced
 	name = "reinforced hull"
 	damage_cap = HEALTH_WALL_REINFORCED
-	icon_state = "reinforced"
+	icon_state = "uppwall_reinforced"
 
-/turf/closed/wall/almayer/upp/reinforced/outer
+/turf/closed/wall/upp_ship/grey/reinforced/outer
 	name = "ultra reinforced hull"
 	desc = "An extremely reinforced metal wall used to isolate potentially dangerous areas"
 	turf_flags = TURF_HULL
-	icon_state = "hull"
+	icon_state = "uppwall_hull"
+
+// LV colony walls
+
+/turf/closed/wall/lv_outpost
+	name = "bare outpost walls"
+	icon = 'icons/turf/walls/lv_colony_walls.dmi'
+	icon_state = "uppwall_interior"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/lv_outpost/reinforced
+	name = "ribbed outpost walls"
+	icon_state = "uppwall_reinforced"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/lv_outpost/reinforced/hull
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	icon_state = "uppwall_hull"
+	turf_flags = TURF_HULL
+
+// Strata Outpost walls
 
 /turf/closed/wall/strata_outpost
 	name = "bare outpost walls"
@@ -334,6 +359,8 @@
 	turf_flags = TURF_HULL
 	icon_state = "strata_hull"
 	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+
+///
 
 /turf/closed/wall/indestructible
 	name = "wall"
@@ -358,9 +385,6 @@
 /turf/closed/wall/indestructible/invisible
 	icon_state = "invisible"
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-
-
-
 
 // Mineral Walls
 
@@ -551,6 +575,34 @@
 		var/r1 = rand(0,10) //Make a random chance for this to happen
 		if(r1 >= 9)
 			overlays += image(icon, icon_state = "wood_variant")
+
+/turf/closed/wall/wood/plain
+	name = "plain wood wall"
+	icon = 'icons/turf/walls/wood_plain.dmi'
+	icon_state = "wood_plain"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
+/turf/closed/wall/wood/blue
+	name = "blue wood wall"
+	icon = 'icons/turf/walls/wood_blue.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
+/turf/closed/wall/wood/green
+	name = "green wood wall"
+	icon = 'icons/turf/walls/wood_green.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
+/turf/closed/wall/wood/purple
+	name = "purple wood wall"
+	icon = 'icons/turf/walls/wood_purple.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
 
 //Colorable rocks. Looks like moonsand.
 

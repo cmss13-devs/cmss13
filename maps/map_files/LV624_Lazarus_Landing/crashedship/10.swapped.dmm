@@ -1,0 +1,511 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/obj/structure/girder,
+/turf/closed/shuttle{
+	icon_state = "wall3"
+	},
+/area/lv624/lazarus/crashed_ship_containers)
+"bL" = (
+/obj/structure/girder,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"cb" = (
+/turf/closed/wall/sulaco,
+/area/lv624/lazarus/crashed_ship_containers)
+"dZ" = (
+/turf/closed/wall/sulaco,
+/area/lv624/ground/barrens/north_east_barrens)
+"eC" = (
+/obj/item/storage/firstaid/adv,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"fb" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"fd" = (
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"fx" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"fC" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"gQ" = (
+/obj/structure/foamed_metal,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"iF" = (
+/obj/item/explosive/grenade/high_explosive,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"iK" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/obj/structure/foamed_metal,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"jM" = (
+/obj/item/tool/shovel/spade,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"kS" = (
+/obj/structure/girder/displaced,
+/obj/structure/foamed_metal,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"mG" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"ng" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/structure/foamed_metal,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"pd" = (
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"pg" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"pw" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"px" = (
+/obj/structure/girder,
+/obj/structure/foamed_metal,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"qk" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"qS" = (
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"sq" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"sK" = (
+/obj/effect/decal/remains/human,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"vh" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"wK" = (
+/obj/structure/girder/displaced,
+/turf/closed/shuttle{
+	icon_state = "wall3"
+	},
+/area/lv624/lazarus/crashed_ship_containers)
+"xU" = (
+/obj/item/tool/crowbar,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"yK" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"yS" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"zh" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"At" = (
+/obj/structure/foamed_metal,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"AI" = (
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"AT" = (
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"BI" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"BW" = (
+/obj/structure/bed/chair/dropship/pilot,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"CI" = (
+/turf/open/shuttle/bright_red,
+/area/lv624/ground/barrens/north_east_barrens)
+"Dq" = (
+/turf/template_noop,
+/area/lv624/ground/caves/central_caves)
+"Ex" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/rifle/m16,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"EH" = (
+/obj/item/ammo_magazine/rifle/m16/ap,
+/obj/item/ammo_magazine/rifle/m16/ap,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"Fb" = (
+/turf/closed/shuttle{
+	icon_state = "wall3"
+	},
+/area/lv624/lazarus/crashed_ship_containers)
+"FC" = (
+/obj/effect/decal/remains/human,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"GT" = (
+/obj/structure/girder,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"Io" = (
+/obj/effect/landmark/objective_landmark/science,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"IT" = (
+/obj/structure/girder/displaced,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"Jl" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"KY" = (
+/obj/effect/landmark/crap_item,
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"My" = (
+/turf/open/floor/airless/asteroidfloor/northeast,
+/area/lv624/ground/barrens/north_east_barrens)
+"NQ" = (
+/obj/structure/girder/displaced,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"Pa" = (
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"Pp" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"Qq" = (
+/obj/structure/machinery/constructable_frame{
+	icon_state = "box_1"
+	},
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"QE" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/south_east_caves)
+"Sj" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/airless/asteroidfloor/northeast,
+/area/lv624/ground/barrens/north_east_barrens)
+"SS" = (
+/obj/structure/foamed_metal,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"Ue" = (
+/obj/item/explosive/grenade/high_explosive/pmc,
+/obj/structure/foamed_metal,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"Um" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/central_caves)
+"Ux" = (
+/obj/structure/girder,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"Vf" = (
+/obj/item/tool/pickaxe,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"Vy" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"Wh" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/shuttle/bright_red,
+/area/lv624/lazarus/crashed_ship_containers)
+"WE" = (
+/obj/item/explosive/grenade/high_explosive,
+/obj/item/stack/cable_coil/random,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+"Xu" = (
+/obj/structure/girder/displaced,
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/gm/dirt,
+/area/lv624/lazarus/crashed_ship_containers)
+
+(1,1,1) = {"
+Um
+Um
+cb
+cb
+Ux
+cb
+cb
+GT
+cb
+cb
+ab
+Xu
+fC
+Vy
+pg
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+"}
+(2,1,1) = {"
+Um
+cb
+iK
+ng
+fb
+eC
+yS
+pd
+Wh
+cb
+cb
+cb
+wK
+Vy
+Vy
+dZ
+Vy
+Vy
+Vy
+Vy
+Vy
+"}
+(3,1,1) = {"
+Um
+cb
+EH
+SS
+AT
+AI
+Pp
+Io
+AI
+qk
+At
+cb
+SS
+gQ
+Vf
+Vy
+Vy
+Sj
+CI
+pg
+Vy
+"}
+(4,1,1) = {"
+Um
+cb
+At
+zh
+fb
+fb
+Ex
+Jl
+sK
+AI
+SS
+SS
+SS
+gQ
+gQ
+Vy
+Vy
+Vy
+dZ
+Vy
+bL
+"}
+(5,1,1) = {"
+Um
+kS
+pw
+AI
+sK
+Pa
+fx
+mG
+At
+AI
+AI
+SS
+SS
+gQ
+gQ
+jM
+Vy
+Vy
+Vy
+Vy
+Vy
+"}
+(6,1,1) = {"
+Um
+cb
+WE
+qS
+iF
+AI
+xU
+At
+At
+SS
+AI
+Pp
+SS
+gQ
+dZ
+Vy
+pg
+FC
+Vy
+Vy
+Vy
+"}
+(7,1,1) = {"
+Um
+px
+vh
+KY
+SS
+AI
+Io
+fd
+Pa
+Pa
+Pa
+cb
+cb
+Vy
+Vy
+My
+Vy
+bL
+yK
+My
+CI
+"}
+(8,1,1) = {"
+Um
+kS
+cb
+BW
+Qq
+Ue
+BI
+BI
+BI
+cb
+cb
+cb
+Fb
+Vy
+My
+CI
+Vy
+Vy
+Vy
+Vy
+dZ
+"}
+(9,1,1) = {"
+Um
+Um
+cb
+cb
+NQ
+cb
+NQ
+ab
+ab
+cb
+ab
+IT
+NQ
+Vy
+pg
+dZ
+Vy
+Vy
+Vy
+pg
+Vy
+"}
+(10,1,1) = {"
+Dq
+Um
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+QE
+Vy
+Vy
+Vy
+Vy
+Vy
+Vy
+sq
+Vy
+Vy
+"}

@@ -1,0 +1,203 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"c" = (
+/turf/open/floor/loadingarea/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"d" = (
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"f" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"g" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/loadingarea/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"j" = (
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/tracks/footprints{
+	dir = 8
+	},
+/turf/open/floor/warning/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"k" = (
+/obj/structure/machinery/bot/mulebot{
+	auto_pickup = 0;
+	auto_return = 0;
+	health = 1;
+	on = 0
+	},
+/turf/open/floor/loadingarea/west,
+/area/lv624/lazarus/landing_zones/lz1)
+"m" = (
+/obj/structure/largecrate,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"o" = (
+/obj/item/device/radio/intercom{
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = -30
+	},
+/turf/open/floor/warning/southwest,
+/area/lv624/lazarus/landing_zones/lz1)
+"p" = (
+/turf/open/floor/warning,
+/area/lv624/lazarus/landing_zones/lz1)
+"t" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"C" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"F" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"K" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"L" = (
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"O" = (
+/turf/open/floor/loadingarea/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"P" = (
+/obj/vehicle/train/cargo/engine,
+/obj/effect/landmark/good_item,
+/turf/open/floor,
+/area/lv624/lazarus/landing_zones/lz1)
+"R" = (
+/turf/open/floor/warningcorner/east,
+/area/lv624/lazarus/landing_zones/lz1)
+"T" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"U" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+"X" = (
+/obj/structure/machinery/bot/mulebot{
+	auto_pickup = 0;
+	auto_return = 0;
+	health = 1;
+	on = 0
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/bot/north,
+/area/lv624/lazarus/landing_zones/lz1)
+
+(1,1,1) = {"
+a
+a
+a
+j
+a
+a
+a
+o
+a
+a
+R
+d
+d
+d
+p
+"}
+(2,1,1) = {"
+L
+c
+g
+c
+c
+k
+L
+p
+L
+m
+U
+m
+L
+m
+p
+"}
+(3,1,1) = {"
+m
+d
+L
+d
+t
+d
+m
+p
+O
+d
+F
+d
+d
+d
+p
+"}
+(4,1,1) = {"
+T
+d
+C
+d
+m
+d
+L
+p
+O
+d
+U
+T
+m
+m
+p
+"}
+(5,1,1) = {"
+C
+d
+X
+f
+L
+d
+L
+p
+O
+d
+P
+d
+d
+d
+p
+"}
+(6,1,1) = {"
+L
+d
+L
+d
+L
+d
+L
+p
+L
+L
+L
+t
+K
+L
+p
+"}

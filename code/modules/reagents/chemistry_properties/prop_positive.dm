@@ -1108,8 +1108,6 @@
 	M.Stun(20)
 
 /datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
-	M.KnockDown(20)
-	M.Stun(20)
 	if(!ishuman(M)) //Critical overdose causes heart damage. Too much stimulant
 		return
 	M.apply_internal_damage(0.25 * delta_time, "heart")

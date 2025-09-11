@@ -8,12 +8,7 @@
 	xeno_cooldown = 3 SECONDS
 	plasma_cost = 0
 
-/datum/action/xeno_action/activable/pounce/facehugger/use_ability(atom/atom)
-	var/mob/living/carbon/xenomorph/xeno = owner
-	if(atom.z != xeno.z)
-		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] that far!"))
-		return FALSE
-	. = ..()
+
 
 
 	// Config options

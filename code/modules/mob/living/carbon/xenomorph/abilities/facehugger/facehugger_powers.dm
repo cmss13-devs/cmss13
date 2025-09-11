@@ -29,11 +29,8 @@
 	if(HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
 		to_chat(owner, SPAN_WARNING("We cannot do that while immobilized!"))
 		return FALSE
-	if(atom.z != owner.z)
-		to_chat(xeno, SPAN_XENOWARNING("We can't [action_text] that far!"))
-		return FALSE
 
-	return ..()
+	. = ..()
 
 /datum/action/xeno_action/onclick/toggle_long_range/facehugger/on_zoom_out()
 	. = ..()

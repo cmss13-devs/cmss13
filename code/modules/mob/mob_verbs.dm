@@ -254,6 +254,11 @@
 		QDEL_NULL(observed_atom)
 		return
 
+	if(istype(client?.eye, /mob/hologram/queen))
+		var/mob/hologram/queen/eye = client.eye
+		eye.change_level()
+		return
+
 	if(HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
 		to_chat(src, SPAN_WARNING("We cannot look up here, we are burrowed!"))
 		return

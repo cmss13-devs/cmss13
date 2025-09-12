@@ -391,7 +391,7 @@
 	if(location in detonated_locations)
 		return
 
-	/*
+
 	if(prob(fire_chance))
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), null, 0, location, BURN_TIME_INSTANT, BURN_LEVEL_TIER_1, FLAMESHAPE_LINE, null, FIRE_VARIANT_DEFAULT)
 
@@ -404,13 +404,14 @@
 		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread
 		smoke.set_up(0, 0, location, null, 3 DECISECONDS)
 		smoke.start()
-	*/
+
 	if(edge)
 		structure_damage = rand(edge_lower_dmg, edge_upper_dmg)
 	if(istype(location,/turf/closed/wall))
 		location.ex_act(structure_damage)
 	for(var/obj/structure/structure in location.contents)
 		structure.ex_act(structure_damage)
+
 	if(location != initial_location)
 		var/throw_direction = Get_Angle(initial_location, location)
 		for(var/obj/atom in location.contents)
@@ -423,6 +424,7 @@
 			if(prob(throw_chance + living.mob_size * 5 ))
 				continue
 			living.throw_atom(get_angle_target_turf(location,throw_direction,1),range = 1,speed = SPEED_INSTANT, spin = FALSE)
+
 
 
 

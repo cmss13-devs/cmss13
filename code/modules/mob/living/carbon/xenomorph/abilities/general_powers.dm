@@ -531,6 +531,7 @@
 
 	additional_effects_always()
 
+	SEND_SIGNAL(X, COMSIG_CLIENT_MOB_MOVE)
 	if(X.observed_atom)
 		QDEL_NULL(X.observed_atom)
 

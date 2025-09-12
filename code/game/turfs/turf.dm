@@ -926,7 +926,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 /turf/proc/z_impact(mob/living/victim, height, stun_modifier = 1, damage_modifier = 1, fracture_modifier = 0)
 	if(ishuman_strict(victim))
 		var/mob/living/carbon/human/human_victim = victim
-		if(human_victim.is_being_hugged)
+		if(HAS_TRAIT(human_victim, TRAIT_HAULED))
 			return
 
 		if (stun_modifier > 0)

@@ -108,7 +108,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 /datum/action/leave_hologram/Destroy()
 	if(!QDESTROYING(linked_hologram))
-		qdel(linked_hologram)
+		QDEL_NULL(linked_hologram)
 	return ..()
 
 /mob/hologram/techtree/Initialize(mapload, mob/M)

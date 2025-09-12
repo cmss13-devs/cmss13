@@ -130,6 +130,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	if(viewer)
 		UnregisterSignal(viewer, COMSIG_CLIENT_MOB_MOVE)
 		RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
+		RegisterSignal(viewer, COMSIG_MOB_GHOSTIZE, PROC_REF(on_death))
 
 /mob/hologram/look_up/Destroy()
 	if(linked_mob)
@@ -163,7 +164,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 		view_registered = FALSE
 		linked_mob.reset_view()
 	else if (!view_registered)
-		RegisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW, PROC_REF(handle_view))
+		RegisterSignal(linked_mob, COMSIG_MOB_RESET_VIEW, PROC_REF(on_death))
 		view_registered = TRUE
 		linked_mob.reset_view()
 
@@ -182,3 +183,6 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 /mob/hologram/look_up/take_damage(mob/M, damage, damagetype)
 	return //no cancelation of looking up by taking damage
+
+/mob/hologram/look_up/proc/on_death()
+	qdel(src)

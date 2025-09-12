@@ -267,7 +267,7 @@
 
 	stage = 7
 
-/obj/item/alien_embryo/proc/start_bursting(mob/picked)
+/obj/item/alien_embryo/proc/start_bursting(mob/picked, mob/living/carbon/xenomorph/larva/new_xeno)
 	new_xeno.key = picked.key
 
 	if(new_xeno.client)
@@ -289,8 +289,7 @@
 		var/area/burst_area = get_area(src)
 		var/area_text = burst_area ? " at <b>[burst_area]</b>" : ""
 		notify_ghosts(header = "Burst Imminent", message = "A <b>[new_xeno.hive.prefix]Larva</b> is about to chestburst out of <b>[affected_mob]</b>[area_text]!", source = affected_mob)
-
-	stage = 7
+		stage = 7
 
 /mob/living/carbon/xenomorph/larva/proc/cause_unbearable_pain(mob/living/carbon/victim)
 	if(loc != victim)

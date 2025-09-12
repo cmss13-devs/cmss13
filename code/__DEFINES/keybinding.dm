@@ -205,6 +205,9 @@
 
 // Xenomorph Spitter
 #define COMSIG_KB_XENO_SPITTER_SPRAY_ACID "keybinding_spitter_spray_acid"
+#define COMSIG_KB_XENO_SPITTER_CHARGE_SPIT "keybinding_spitter_charge_spit"
+#define COMSIG_KB_XENO_SPITTER_SPIT "keybinding_spitter_spit"
+#define COMSIG_KB_XENO_SPITTER_TAIL_STAB "keybinding_spitter_tail_stab"
 
 // Yautja
 

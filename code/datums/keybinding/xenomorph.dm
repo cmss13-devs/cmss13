@@ -733,3 +733,57 @@
 		if(spitter_spray_acid_check && !spitter_spray_acid_check.hidden)
 			handle_xeno_macro_datum(xeno, spitter_spray_acid_check)
 			return TRUE
+
+/datum/keybinding/xenomorph/spitter_charge_spit
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "spitter_charge_spit"
+	full_name = "Spitter: Charge spit"
+	keybind_signal = COMSIG_KB_XENO_SPITTER_CHARGE_SPIT
+
+/datum/keybinding/xenomorph/spitter_charge_spit/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/charge_spit/spitter_charge_spit_check = get_action(xeno, /datum/action/xeno_action/onclick/charge_spit)
+	if(spitter_charge_spit_check)
+		if(spitter_charge_spit_check && !spitter_charge_spit_check.hidden)
+			handle_xeno_macro_datum(xeno, spitter_charge_spit_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/spitter_spit
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "spitter_spit"
+	full_name = "Spitter: Spit"
+	keybind_signal = COMSIG_KB_XENO_SPITTER_SPIT
+
+/datum/keybinding/xenomorph/spitter_spit/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/xeno_spit/spitter/spitter_spit_check = get_action(xeno, /datum/action/xeno_action/activable/xeno_spit/spitter)
+	if(spitter_spit_check)
+		if(spitter_spit_check && !spitter_spit_check.hidden)
+			handle_xeno_macro_datum(xeno, spitter_spit_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/spitter_tail_stab
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "spitter_tail_stab"
+	full_name = "Spitter: Corrosive acid"
+	keybind_signal = COMSIG_KB_XENO_SPITTER_TAIL_STAB
+
+/datum/keybinding/xenomorph/spitter_tail_stab/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/tail_stab/spitter/spitter_tail_stab_check = get_action(xeno, /datum/action/xeno_action/activable/tail_stab/spitter)
+	if(spitter_tail_stab_check)
+		if(spitter_tail_stab_check && !spitter_tail_stab_check.hidden)
+			handle_xeno_macro_datum(xeno, spitter_tail_stab_check)
+			return TRUE

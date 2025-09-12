@@ -380,8 +380,8 @@ export const LANGUAGE_PREFIXES = {
     label: 'Xenomporph',
   },
   '!l ': {
-    id: 'tatical',
-    label: 'Tacitical Sign',
+    id: 'tactical sign language',
+    label: 'Tactical Sign',
   },
   '!s ': {
     id: 'sainja',

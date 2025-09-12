@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 
 /*
 #ifdef TESTING
-/client/verb/changerank(newrank in admin_ranks)
+CLIENT_VERB(changerank, newrank in admin_ranks)
 	if(holder)
 		holder.rank = newrank
 		holder.rights = admin_ranks[newrank]
@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(admin_ranks) //list of all ranks with associated rights
 	remove_admin_verbs()
 	holder.associate(src)
 
-/client/verb/changerights(newrights as num)
+CLIENT_VERB(changerights, newrights as num)
 	if(holder)
 		holder.rights = newrights
 	else

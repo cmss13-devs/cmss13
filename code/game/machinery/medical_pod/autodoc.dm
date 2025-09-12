@@ -536,7 +536,13 @@
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
 						close_encased(patient,current_surgery.limb_ref)
 						close_incision(patient,current_surgery.limb_ref)
-
+						switch(current_surgery.limb_ref.name)
+							if("head")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_closed")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "skull_surgery_open")
+							if("chest")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_closed")
+								patient.overlays -= image('icons/mob/humans/dam_human.dmi', "chest_surgery_open")
 
 		if(prob(30))
 			visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure complete.");
@@ -870,6 +876,7 @@
 /obj/structure/machinery/autodoc_console/yautja
 	name = "medical pod console"
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'
+	upgrades = list(1=1, 2=2, 3=3, 4=4)
 
 /obj/structure/machinery/medical_pod/autodoc/unskilled
 	name = "advanced autodoc emergency medical system"
@@ -877,6 +884,6 @@
 	skilllock = null
 
 /obj/structure/machinery/medical_pod/autodoc/yautja
-	name = "alien automated medical pod"
+	name = "automated medical pod"
 	desc = "An emergency surgical alien device designed to perform life-saving treatments and basic surgeries on patients automatically, without the need of a surgeon."
 	icon = 'icons/obj/structures/machinery/yautja_machines.dmi'

@@ -5314,7 +5314,8 @@
 /turf/open/floor/vault2,
 /area/lv624/lazarus/robotics)
 "aCn" = (
-/obj/structure/ore_box,
+/obj/item/device/defibrillator/synthetic,
+/obj/structure/surface/table,
 /turf/open/floor/plating/platebot,
 /area/lv624/lazarus/robotics)
 "aCo" = (

@@ -530,7 +530,6 @@
 	X.update_icons()
 
 	additional_effects_always()
-
 	..()
 
 	return TRUE

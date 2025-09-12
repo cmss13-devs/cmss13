@@ -411,7 +411,6 @@
 		location.ex_act(structure_damage)
 	for(var/obj/structure/structure in location.contents)
 		structure.ex_act(structure_damage)
-
 	if(location != initial_location)
 		var/throw_direction = Get_Angle(initial_location, location)
 		for(var/obj/atom in location.contents)

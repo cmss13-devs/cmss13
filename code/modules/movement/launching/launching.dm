@@ -210,11 +210,9 @@
 			break
 		if (!Move(T)) // If this returns FALSE, then a collision happened
 			break
-		SEND_SIGNAL(src, COMSIG_CLIENT_MOB_MOVE, T, get_dir(last_loc, T))
 		last_loc = loc
 		if (++LM.dist >= LM.range)
 			break
-
 		sleep(delay)
 
 	//done throwing, either because it hit something or it finished moving

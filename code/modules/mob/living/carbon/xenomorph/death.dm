@@ -11,6 +11,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	GLOB.living_xeno_list -= src
 
+	overlays -= acid_overlay
+
 	if(is_zoomed)
 		zoom_out()
 

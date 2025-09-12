@@ -1,0 +1,5 @@
+author: "BasilHerb"
+delete-after: True
+changes:
+  - rscadd: "Added a minimum floor for most fun facts."
+  - rscadd: "Re-introduces the 'calories burned' fun fact."

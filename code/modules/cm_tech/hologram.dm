@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	if(viewer)
 		UnregisterSignal(viewer, COMSIG_CLIENT_MOB_MOVE)
 		RegisterSignal(viewer, COMSIG_MOVABLE_MOVED, PROC_REF(handle_move))
-		RegisterSignal(viewer, COMSIG_MOB_GHOSTIZE, PROC_REF(on_death))
+		RegisterSignal(viewer, COMSIG_MOB_GHOSTIZE, PROC_REF(on_ghost))
 
 /mob/hologram/look_up/Destroy()
 	if(linked_mob)
@@ -184,5 +184,5 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/look_up/take_damage(mob/M, damage, damagetype)
 	return //no cancelation of looking up by taking damage
 
-/mob/hologram/look_up/proc/on_death()
+/mob/hologram/look_up/proc/on_ghost()
 	qdel(src)

@@ -1,0 +1,4 @@
+author: "FloranOtten"
+delete-after: True
+changes:
+  - bugfix: "z level throw restriction only applies to human throwing."

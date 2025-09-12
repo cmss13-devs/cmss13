@@ -135,7 +135,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_MOVABLE_MOVED)
 		if(istype(linked_mob, /mob/living))
-			var/mob/living/linked_living
+			var/mob/living/linked_living = linked_mob
 			linked_living.observed_atom = null
 
 	. = ..()

@@ -101,3 +101,9 @@
   - imageadd: M56D got inhands for the gun itself and the gun mount
   FloranOtten:
   - rscdel: You can no longer throw people upstairs.
+2025-09-12:
+  FloranOtten:
+  - bugfix: z level throw restriction only applies to human throwing.
+  zzzmike:
+  - balance: neurocryogenic+cardiostabilizing knocks down and stuns rather than knocks
+      out

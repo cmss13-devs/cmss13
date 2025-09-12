@@ -143,7 +143,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
 
 	if(!isturf(M.loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		QDEL_NULL(src)
+		qdel(src)
 		return
 
 	if(isturf(M.loc) && isturf(oldLoc))

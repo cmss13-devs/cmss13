@@ -603,6 +603,10 @@
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/main_level/east_containment)
+"abL" = (
+/obj/effect/random_explosion/medium,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/main_level/west_corridor)
 "abM" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
@@ -2725,7 +2729,14 @@
 "ahz" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3,
 /obj/structure/surface/table/almayer,
-/obj/structure/prop/server_equipment/laptop/closed,
+/obj/structure/machinery/computer/cameras/almayer/containment{
+	dir = 8;
+	pixel_x = -2;
+	pixel_y = 1;
+	needs_power = 0;
+	network = list("containment_prime");
+	name = "Security Cameras - Alpha Containment Zone"
+	},
 /turf/open/floor/prison/blue_plate/north,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "ahA" = (
@@ -3560,9 +3571,6 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "ajg" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/north,
-/obj/structure/prop/hybrisa/misc/machinery/screens/multimonitorsmall_on{
-	pixel_y = 26
-	},
 /obj/structure/machinery/light/small{
 	light_color = "#ff3b3b";
 	color = "#ff3b3b";
@@ -3574,6 +3582,13 @@
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_25";
 	pixel_x = 2
+	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/bluemultimonitorsmall_on{
+	light_color = "#00f4ff";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
 	},
 /turf/open/floor/prison/blue_plate/north,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -4275,6 +4290,7 @@
 	alpha = 155
 	},
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/random_explosion/long,
 /turf/open/floor/almayer/black2/northeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "akX" = (
@@ -4498,6 +4514,7 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "alw" = (
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/random_explosion/uber,
 /turf/open/floor/almayer/black2/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alx" = (
@@ -5226,7 +5243,7 @@
 "amT" = (
 /obj/structure/largecrate/random/barrel/yellow,
 /obj/structure/machinery/power/apc/power/north{
-	start_charge = 60
+	start_charge = 100
 	},
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
@@ -5704,7 +5721,7 @@
 	pixel_y = 9
 	},
 /obj/item/ammo_magazine/pistol/vp78{
-	current_rounds = 13
+	current_rounds = 9
 	},
 /turf/open/floor/strata,
 /area/white_antre/indoors/main_level/security)
@@ -6094,6 +6111,7 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "aoH" = (
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/random_explosion/uber,
 /turf/open/floor/almayer/green2/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "aoI" = (
@@ -7633,6 +7651,7 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "asi" = (
 /obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/random_explosion/long,
 /turf/open/floor/almayer/green2/southeast,
 /area/white_antre/indoors/main_level/west_corridor)
 "asj" = (
@@ -11433,10 +11452,6 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
-/obj/item/device/flashlight/lamp/on{
-	pixel_x = 2;
-	pixel_y = -2
-	},
 /obj/item/paper/crumpled{
 	pixel_y = -3
 	},
@@ -11508,15 +11523,6 @@
 /obj/structure/platform/metal/hybrisa/metalplatform3,
 /turf/open/floor/prison/blue_plate/north,
 /area/white_antre/indoors/upper_level/east_overwatch)
-"aCS" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/communications{
-	dir = 8;
-	pixel_y = -2;
-	layer = 2.97
-	},
-/turf/open/floor/prison/blue_plate/west,
-/area/white_antre/indoors/upper_level/east_overwatch)
 "aCT" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -11575,6 +11581,13 @@
 "aCY" = (
 /obj/structure/platform/metal/hybrisa/metalplatform3/east,
 /obj/structure/platform/metal/hybrisa/metalplatform3,
+/obj/structure/surface/table/reinforced/prison{
+	color = "#b7b8b2"
+	},
+/obj/item/device/flashlight/lamp/on{
+	pixel_x = 2;
+	pixel_y = -2
+	},
 /turf/open/floor/prison/bright_clean2,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCZ" = (
@@ -11666,6 +11679,7 @@
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 35
 	},
+/obj/effect/random_explosion,
 /turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aDk" = (
@@ -11691,9 +11705,13 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#b7b8b2"
 	},
-/obj/structure/machinery/computer/card{
+/obj/structure/machinery/computer/cameras/almayer/containment{
 	dir = 8;
-	pixel_y = 4
+	pixel_x = -2;
+	pixel_y = 1;
+	needs_power = 0;
+	network = list("containment_prime");
+	name = "Security Cameras - Alpha Containment Zone"
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -13026,6 +13044,11 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
 /turf/open/floor/almayer/orange/east,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGf" = (
@@ -13213,17 +13236,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/white_antre/indoors/upper_level/east_corridor)
 "aGz" = (
-/obj/item/weapon/gun/smg/p90{
-	current_mag = null;
-	pixel_x = -2;
-	pixel_y = -9
-	},
 /obj/effect/decal/cleanable/blood,
-/obj/item/ammo_magazine/smg/p90{
-	pixel_x = 2;
-	pixel_y = 15;
-	current_rounds = 0
-	},
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilegrey,
@@ -15530,8 +15543,12 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/white_antre/landing_zone)
 "aNe" = (
-/obj/structure/window/framed/hybrisa/research/reinforced,
-/turf/open/floor/corsat/marked,
+/obj/structure/window_frame/hybrisa/research/reinforced,
+/obj/item/shard,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/white_antre/indoors/main_level/research)
 "aNf" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -25001,6 +25018,485 @@
 	},
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/landing_zone)
+"bqA" = (
+/obj/effect/random_explosion,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"bqB" = (
+/obj/item/ammo_magazine/pistol/vp78{
+	current_rounds = 13;
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/west_corridor)
+"bqC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_warning_smooth_red"
+	},
+/obj/effect/random_explosion,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/main_level/east_containment)
+"bqD" = (
+/obj/item/weapon/gun/pistol/vp78{
+	current_mag = null;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/green2/east,
+/area/white_antre/indoors/main_level/west_corridor)
+"bqE" = (
+/obj/effect/random_explosion/medium,
+/turf/open/floor/almayer/green2/west,
+/area/white_antre/indoors/main_level/west_corridor)
+"bqF" = (
+/obj/structure/barricade/plasteel/metal{
+	dir = 8
+	},
+/obj/effect/random_explosion/medium,
+/turf/open/floor/plating/plating_catwalk/strata,
+/area/white_antre/indoors/main_level/weapons)
+"bqG" = (
+/obj/effect/random_explosion/medium,
+/turf/open/floor/almayer/black2/west,
+/area/white_antre/indoors/main_level/west_corridor)
+"bqH" = (
+/obj/effect/random_explosion,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/main_level/east_containment_hive)
+"bqI" = (
+/obj/effect/alien/weeds/kseries,
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = -4;
+	pixel_y = -5;
+	current_rounds = 24
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/east_corridor)
+"bqJ" = (
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 5;
+	pixel_y = -11
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/shiva,
+/area/white_antre/indoors/main_level/research)
+"bqK" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/east_corridor)
+"bqL" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/almayer/emerald2smooth/east,
+/area/white_antre/indoors/main_level/research)
+"bqM" = (
+/obj/effect/random_explosion/medium,
+/turf/open/floor/prison,
+/area/white_antre/indoors/main_level/north_containment_hive)
+"bqN" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqO" = (
+/obj/effect/random_explosion,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqP" = (
+/turf/open/floor/prison/greencorner/north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqQ" = (
+/obj/effect/random_explosion,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqR" = (
+/obj/item/weapon/gun/smg/p90{
+	current_mag = null;
+	pixel_x = -2;
+	pixel_y = -9
+	},
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = 2;
+	pixel_y = 15;
+	current_rounds = 0
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison/green,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqU" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/bed/chair/comfy/lime{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqV" = (
+/turf/open/floor/prison/greencorner,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqW" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_x = 7
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqX" = (
+/obj/structure/bed/chair/comfy/lime{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqY" = (
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -4
+	},
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bqZ" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bra" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/prison/green/west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brb" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	dir = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	dir = 4;
+	pixel_y = -8
+	},
+/obj/effect/hybrisa/misc/fake/wire/yellow{
+	dir = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brc" = (
+/obj/structure/bed/chair/comfy/lime{
+	dir = 8;
+	pixel_x = 4
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brd" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_x = -4
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bre" = (
+/obj/structure/disposalpipe/junction{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/green/east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brh" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bri" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"brj" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_y = 8;
+	pixel_x = -10
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brk" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/sofa/vert/grey/bot,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/green/east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brm" = (
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brn" = (
+/obj/structure/bed/sofa/vert/grey,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bro" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brp" = (
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = -4;
+	pixel_y = -5;
+	current_rounds = 24
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brq" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/prison/green/west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brr" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brs" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brt" = (
+/obj/structure/bed/sofa/vert/grey/top,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bru" = (
+/obj/item/clothing/head/cmcap/wy_cap{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brv" = (
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = -4;
+	pixel_y = 11;
+	current_rounds = 39
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	pixel_y = -7
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brx" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bry" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brz" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brA" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brD" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	pixel_y = -7
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brE" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brF" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/green/north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brH" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brI" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/green/north,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brJ" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	pixel_y = -7
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/greencorner/east,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_10";
+	pixel_x = 4;
+	pixel_y = 9
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brM" = (
+/obj/structure/prop/invuln{
+	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
+	dir = 4;
+	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon_state = "Normal Drone Dead";
+	layer = 2.5;
+	name = "K-series drone";
+	color = "#ffff80";
+	pixel_x = -7;
+	pixel_y = -4;
+	anchored = 0;
+	density = 0
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brN" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/northwest,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brP" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brQ" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32;
+	pixel_x = 17
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
 "bsr" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
@@ -25187,8 +25683,7 @@
 /obj/structure/machinery/door/airlock/hatch/cockpit/two{
 	req_access = null;
 	req_one_access = null;
-	dir = 1;
-	name = "\improper UD4-UK"
+	dir = 1
 	},
 /turf/open/floor/corsat/officetiles,
 /area/white_antre/interior/pmc_dropship)
@@ -25950,6 +26445,7 @@
 	dir = 4;
 	pixel_y = -8
 	},
+/obj/effect/random_explosion/medium,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/white_antre/indoors/main_level/research)
 "ejX" = (
@@ -26297,7 +26793,7 @@
 	},
 /obj/structure/machinery/computer/cameras{
 	desc = "The flight controls for a UD6 Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
-	name = "\improper 'Tornado' flight controls";
+	name = "\improper 'Cash Flow' flight controls";
 	network = null;
 	pixel_y = 14;
 	pixel_x = 10
@@ -26471,6 +26967,7 @@
 "gfI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/case,
+/obj/effect/random_explosion/medium,
 /turf/open/floor/almayer,
 /area/white_antre/indoors/main_level/east_corridor)
 "gia" = (
@@ -27159,7 +27656,7 @@
 	},
 /obj/structure/machinery/computer/cameras{
 	desc = "The flight controls for a UD6 Dropship. these controls look pretty banged up, and there's some blood covering the screen..";
-	name = "\improper 'Tornado' flight controls";
+	name = "\improper 'Cash Flow' flight controls";
 	network = null;
 	pixel_y = 27;
 	pixel_x = 10
@@ -31333,6 +31830,7 @@
 /obj/structure/barricade/plasteel/metal{
 	dir = 8
 	},
+/obj/effect/random_explosion/long,
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/white_antre/indoors/main_level/weapons)
 "xIH" = (
@@ -88891,7 +89389,7 @@ atA
 qbk
 nLk
 ajZ
-asX
+bqD
 apy
 aps
 apm
@@ -89401,7 +89899,7 @@ atp
 app
 api
 ato
-aKh
+bqB
 aKh
 aoV
 aoR
@@ -90018,7 +90516,7 @@ aPC
 aPp
 aPb
 kRc
-aPo
+bqM
 aPt
 aPo
 ayH
@@ -93279,7 +93777,7 @@ aKh
 anr
 aKh
 aKh
-qHO
+abL
 cDM
 cDM
 aXu
@@ -93427,7 +93925,7 @@ kTA
 kaj
 auB
 apo
-atg
+bqE
 asy
 atg
 asr
@@ -93576,7 +94074,7 @@ aMR
 asJ
 avt
 avs
-atM
+bqG
 atM
 avm
 avl
@@ -94603,7 +95101,7 @@ awm
 aKi
 jqj
 cEJ
-xIx
+bqF
 cEJ
 cEI
 aKi
@@ -96067,7 +96565,7 @@ aPp
 aPb
 aPo
 aPo
-aPo
+bqM
 aPo
 aPo
 aOV
@@ -96926,7 +97424,7 @@ aAk
 aNn
 lcC
 svL
-uaZ
+bqL
 uaZ
 uaZ
 uaZ
@@ -97263,7 +97761,7 @@ aNn
 aNn
 aFn
 aEo
-vbZ
+bqJ
 vbZ
 aEN
 aEK
@@ -97433,7 +97931,7 @@ aNn
 aNH
 aNe
 aNH
-aNe
+aMW
 aMR
 aNn
 aNn
@@ -97442,11 +97940,11 @@ aNn
 aNn
 aNn
 aMR
-aNe
+aMW
 aVF
 aVF
 aVF
-aNe
+aMW
 aMR
 aDY
 lOT
@@ -97599,7 +98097,7 @@ ozb
 ozb
 aKn
 beh
-aKs
+bqK
 aKs
 bdU
 bdO
@@ -97768,8 +98266,8 @@ aKn
 uyh
 aMC
 aMC
-aMC
-aKs
+bqI
+avC
 aKs
 aKs
 bdE
@@ -97935,9 +98433,9 @@ iKa
 iKa
 aKn
 bei
-aKs
-aKs
-aKs
+aMB
+aMB
+aML
 aKs
 aKs
 aKs
@@ -100966,7 +101464,7 @@ ayS
 ayV
 bpi
 ayV
-ayS
+bqH
 aAb
 azw
 dRJ
@@ -100997,7 +101495,7 @@ dRJ
 azu
 azk
 ayS
-ayV
+bqA
 bpi
 ayV
 ayS
@@ -101505,7 +102003,7 @@ azj
 ayU
 ayV
 ayV
-ayV
+bqA
 ayO
 ayM
 ayM
@@ -101634,7 +102132,7 @@ ozb
 ayM
 azk
 ayV
-ayV
+bqA
 ayV
 ayT
 ayP
@@ -101645,7 +102143,7 @@ aKy
 bkc
 xTl
 rEa
-rEa
+bqC
 rEa
 rEa
 rEa
@@ -101662,7 +102160,7 @@ rEa
 rEa
 rEa
 rEa
-rEa
+bqC
 aLD
 bkc
 aKy
@@ -138472,8 +138970,8 @@ ahI
 ahI
 ahI
 iKa
-spC
-spC
+iKa
+iKa
 spC
 spC
 spC
@@ -138764,8 +139262,8 @@ bhs
 bhs
 aet
 aet
-bhC
-bhC
+brx
+brs
 aet
 aet
 aet
@@ -138930,16 +139428,16 @@ bhi
 bhs
 bhs
 bhs
-bjo
+brG
+brC
 bhC
 bhC
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+brj
+brd
+bqX
+bqU
+bqS
 aet
 aHj
 aQO
@@ -138961,7 +139459,7 @@ aQR
 aQN
 aFE
 aet
-bhC
+bjo
 bhC
 bhC
 bhC
@@ -139098,16 +139596,16 @@ bhi
 bhs
 bhs
 bhs
-bjo
+brH
+bry
+bry
+brm
 bhC
 bhC
+bre
+bqY
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+bqT
 aet
 aHk
 aQP
@@ -139129,15 +139627,15 @@ aQO
 aFM
 aFF
 aet
+bjo
+bhC
+bqN
+bqN
 bhC
 bhC
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+bqN
+bqN
 bhy
 bhs
 bhs
@@ -139266,16 +139764,16 @@ bhi
 aaU
 aaU
 aaU
-bjo
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+brI
+bqN
+bqN
+brt
+brn
+brk
+brf
+bqY
+bqV
+bhz
 bhQ
 aHl
 aRl
@@ -139287,7 +139785,7 @@ aGd
 aQZ
 aQR
 aQO
-aQO
+bqR
 acy
 aGd
 aGd
@@ -139297,15 +139795,15 @@ aQS
 aFN
 acz
 bhQ
+bjp
+bqP
+bqN
+bqN
 bhC
 bhC
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+bqN
+bqN
 bhy
 aaU
 aaU
@@ -139438,12 +139936,12 @@ bjp
 bhD
 bhD
 bhD
+bro
+brl
+brg
 bhD
-bhD
-bhD
-bhD
-bhD
-bhD
+bhz
+bht
 bhR
 aRn
 aRm
@@ -139465,8 +139963,8 @@ aQO
 aFO
 aFG
 bhR
-bhD
-bhD
+bht
+bjp
 bhD
 bhD
 bhD
@@ -139599,17 +140097,17 @@ iKa
 iKa
 aQi
 bhi
+brQ
+bht
+brM
+brJ
+brD
+brz
+bru
+brp
 bht
 bht
-bht
-bht
-bht
-bht
-bht
-bht
-bht
-bht
-bht
+bqZ
 bht
 bht
 bhR
@@ -139769,11 +140267,11 @@ bhi
 bhi
 bht
 bht
+bqZ
 bht
-bht
-bht
-bht
-bht
+brE
+brA
+brv
 bht
 bht
 bht
@@ -139783,7 +140281,7 @@ bht
 bhR
 aHn
 aQO
-aQO
+bqQ
 aQO
 aQN
 aQO
@@ -139794,7 +140292,7 @@ aGz
 aQO
 aQO
 aQO
-aQO
+bqQ
 aFY
 aQO
 aQR
@@ -139936,18 +140434,18 @@ iKa
 bhi
 bhi
 bhi
-bht
+brP
 bht
 bjq
 bhE
 bhE
 bhE
+brq
 bhE
 bhE
-bhE
-bhE
-bhE
-bhE
+bra
+bhw
+bht
 aHs
 aHo
 aQS
@@ -139969,8 +140467,8 @@ aQO
 aQP
 aFI
 aFD
-bhE
-bhE
+bht
+bjq
 bhE
 bhE
 bhE
@@ -140105,17 +140603,17 @@ iKa
 bhi
 bhi
 bhi
-bjq
-bjr
+brN
+brK
+bhC
+bqO
 bhC
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+brm
+brh
+brb
+bhA
+bhw
 bhQ
 aHp
 aRl
@@ -140137,12 +140635,12 @@ aFS
 aFP
 acA
 bhQ
+bjq
+bjr
+bqN
+bqN
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+bqO
 bhC
 bhC
 bhC
@@ -140273,17 +140771,17 @@ iKa
 iKa
 bhi
 bhi
-bhi
+brO
+brL
+brF
 bhC
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+brr
+brc
+brc
+brc
+bqW
+bqT
 aet
 aHq
 aHh
@@ -140305,7 +140803,7 @@ aFT
 aFQ
 aFJ
 aet
-bhC
+bjo
 bhC
 bhC
 bhC
@@ -140444,14 +140942,14 @@ euM
 aet
 aet
 aet
-bhC
-bhC
+brB
+brw
 aet
+bhi
+bhi
+bhi
 aet
-aet
-aet
-aet
-bhC
+bqT
 aet
 aHr
 aHi
@@ -140473,7 +140971,7 @@ aFU
 aFR
 aFK
 aet
-bhC
+bjo
 bhu
 bhu
 bhu
@@ -140616,7 +141114,7 @@ aet
 aet
 aet
 aBB
-aBB
+bri
 aBB
 aet
 aet
@@ -140809,7 +141307,7 @@ aBQ
 aCo
 aiw
 aBB
-bhu
+bhi
 bhu
 aBF
 aBF
@@ -142475,7 +142973,7 @@ aCZ
 aCs
 aCW
 aCV
-aCS
+aCm
 aCR
 aiU
 aiT

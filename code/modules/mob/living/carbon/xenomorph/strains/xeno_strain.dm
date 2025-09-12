@@ -131,7 +131,7 @@
 
 	// If it applied successfully, add it to the logs.
 	log_strain("[new_xeno.name] reset their strain.")
-	COOLDOWN_START(new_xeno, next_strain_reset, 40 MINUTES)
+	COOLDOWN_START(new_xeno, next_strain_reset, 10 MINUTES)
 
 /// Is this xeno currently able to take a strain?
 /mob/living/carbon/xenomorph/proc/can_take_strain(reset=FALSE)

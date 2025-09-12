@@ -146,9 +146,13 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 	if(isturf(M.loc) && isturf(oldLoc))
 		var/turf/mob_turf = M.loc
 		var/turf/old_mob_turf = oldLoc
+		if(!direct)
+			direct = get_dir(old_mob_turf, mob_turf)
 		if(mob_turf.z != old_mob_turf.z)
 			qdel(src)
 			return
+
+
 
 	var/turf/new_turf = get_step(loc, direct)
 	forceMove(new_turf)

@@ -108,7 +108,7 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 
 /datum/action/leave_hologram/Destroy()
 	if(!QDESTROYING(linked_hologram))
-		QDEL_NULL(linked_hologram)
+		qdel(linked_hologram)
 	return ..()
 
 /mob/hologram/techtree/Initialize(mapload, mob/M)
@@ -134,13 +134,16 @@ GLOBAL_LIST_EMPTY_TYPED(hologram_list, /mob/hologram)
 /mob/hologram/look_up/Destroy()
 	if(linked_mob)
 		UnregisterSignal(linked_mob, COMSIG_MOVABLE_MOVED)
+		if(istype(linked_mob, /mob/living))
+			var/mob/living/linked_living
+			linked_living.observed_atom = null
 
 	. = ..()
 
 /mob/hologram/look_up/handle_move(mob/M, oldLoc, direct)
 
 	if(!isturf(M.loc) || HAS_TRAIT(src, TRAIT_ABILITY_BURROWED))
-		qdel(src)
+		QDEL_NULL(src)
 		return
 
 	if(isturf(M.loc) && isturf(oldLoc))

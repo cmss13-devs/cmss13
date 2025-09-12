@@ -391,7 +391,7 @@
 	if(location in detonated_locations)
 		return
 
-
+	/*
 	if(prob(fire_chance))
 		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flame_radius), null, 0, location, BURN_TIME_INSTANT, BURN_LEVEL_TIER_1, FLAMESHAPE_LINE, null, FIRE_VARIANT_DEFAULT)
 
@@ -404,7 +404,7 @@
 		var/datum/effect_system/smoke_spread/smoke = new /datum/effect_system/smoke_spread
 		smoke.set_up(0, 0, location, null, 3 DECISECONDS)
 		smoke.start()
-
+	*/
 	if(edge)
 		structure_damage = rand(edge_lower_dmg, edge_upper_dmg)
 	if(istype(location,/turf/closed/wall))

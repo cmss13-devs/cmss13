@@ -96,7 +96,7 @@
 
 	var/obj/item/alien_embryo/embryo = new /obj/item/alien_embryo(human_to_transform) //Put the initial larva in a host
 	embryo.hivenumber = hive.hivenumber
-	embryo.start_bursting(human_to_transform)
+	embryo.start_bursting(new/mob/living/carbon/xenomorph/larva(human_to_transform), human_to_transform)
 
 /datum/job/antag/xenos/equip_job(mob/living/M)
 	return

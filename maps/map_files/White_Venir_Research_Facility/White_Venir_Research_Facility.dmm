@@ -603,9 +603,6 @@
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/main_level/east_containment)
-"abL" = (
-/turf/closed/wall/hybrisa/marhsalls/reinforced,
-/area/white_antre/indoors/main_level/west_corridor)
 "abM" = (
 /obj/structure/platform/metal/almayer/north,
 /turf/open/floor/plating/prison,
@@ -3554,6 +3551,11 @@
 	pixel_x = 1;
 	pixel_y = 7
 	},
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 13
+	},
 /turf/open/floor/prison/blue_plate/north,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "ajg" = (
@@ -3873,7 +3875,7 @@
 /obj/structure/sign/safety/east{
 	pixel_x = 47
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/facility_exterior)
 "akc" = (
 /obj/effect/decal/warning_stripes{
@@ -4007,7 +4009,7 @@
 /obj/structure/sign/safety/east{
 	pixel_x = 47
 	},
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/facility_exterior)
 "aks" = (
 /obj/effect/decal/hybrisa/dirt,
@@ -7868,7 +7870,7 @@
 	dir = 1;
 	pixel_x = -31
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "asL" = (
 /turf/closed/wall/hybrisa/marhsalls/reinforced,
@@ -8169,6 +8171,12 @@
 "atY" = (
 /turf/closed/wall/hybrisa/colony/engineering,
 /area/white_antre/indoors/main_level/west_corridor)
+"atZ" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/landing_zone)
 "aua" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
@@ -10527,7 +10535,7 @@
 "aAd" = (
 /obj/structure/prop/invuln/dense/excavator/gray,
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aAe" = (
 /obj/structure/machinery/meter,
@@ -11594,6 +11602,12 @@
 "aDb" = (
 /turf/open/floor/hybrisa/metal/bluemetalcorner/east,
 /area/white_antre/indoors/upper_level/east_overwatch)
+"aDc" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/landing_zone)
 "aDd" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4;
@@ -14578,13 +14592,13 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aJw" = (
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aJx" = (
 /turf/open/auto_turf/snow/layer2,
 /area/white_antre/outdoors/south_field)
 "aJy" = (
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aJz" = (
 /turf/closed/wall/hybrisa/research/reinforced,
@@ -14619,7 +14633,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/white_antre/outdoors/facility_exterior)
 "aJJ" = (
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/facility_exterior)
 "aJK" = (
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -14656,7 +14670,7 @@
 /turf/open/floor/prison/darkbrown2/northeast,
 /area/white_antre/indoors/main_level/south_containment)
 "aJS" = (
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/facility_exterior)
 "aJT" = (
 /turf/open/asphalt/brown,
@@ -14770,7 +14784,7 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "aKt" = (
 /obj/structure/fence/dark,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/landing_zone)
 "aKu" = (
 /obj/structure/fence/dark,
@@ -14807,7 +14821,7 @@
 /turf/open/asphalt/cement,
 /area/white_antre/landing_zone)
 "aKB" = (
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/landing_zone)
 "aKC" = (
 /turf/open/auto_turf/sand_white/layer0,
@@ -14824,7 +14838,7 @@
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aKF" = (
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/landing_zone)
 "aKG" = (
 /turf/open/auto_turf/snow/layer1,
@@ -15267,6 +15281,7 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/exterior/checkpoint)
 "aMk" = (
+/obj/item/ammo_casing/bullet,
 /turf/open/floor/prison/darkbrown2/east,
 /area/white_antre/indoors/main_level/east_containment)
 "aMl" = (
@@ -15293,7 +15308,7 @@
 /area/white_antre/indoors/main_level/weapons)
 "aMp" = (
 /obj/structure/fence/dark,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aMq" = (
 /obj/effect/decal/hybrisa/road/lines3,
@@ -15390,7 +15405,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
 "aMJ" = (
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "aMK" = (
 /obj/item/prop/alien/hugger{
@@ -15451,7 +15466,7 @@
 /turf/closed/wall/hybrisa/research,
 /area/white_antre/indoors/main_level/research)
 "aMS" = (
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/north_field)
 "aMT" = (
 /obj/structure/fence/dark,
@@ -15459,7 +15474,7 @@
 /area/white_antre/outdoors/north_field)
 "aMU" = (
 /obj/structure/fence/dark,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "aMV" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
@@ -15478,7 +15493,7 @@
 /area/white_antre/indoors/main_level/research)
 "aMY" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "aMZ" = (
 /turf/open/auto_turf/strata_grass/layer0_mud,
@@ -15603,7 +15618,7 @@
 /turf/open/asphalt/cement/cement9,
 /area/white_antre/outdoors/north_field)
 "aNz" = (
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/path_north)
 "aNA" = (
 /turf/open/asphalt/cement/cement4,
@@ -15801,7 +15816,7 @@
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aOn" = (
 /obj/structure/machinery/colony_floodlight/industrial,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aOo" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -15995,10 +16010,10 @@
 "aPf" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/path_north)
 "aPg" = (
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "aPh" = (
 /turf/open/floor/plating,
@@ -16480,7 +16495,7 @@
 /area/white_antre/indoors/upper_level/east_corridor)
 "aRo" = (
 /obj/structure/blocker/invisible_wall,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRp" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -16536,7 +16551,7 @@
 	color = "#140400"
 	},
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRw" = (
 /obj/item/stack/tile/plasteel{
@@ -16551,7 +16566,7 @@
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRy" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt/stain,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRz" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -16571,7 +16586,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -6
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRB" = (
 /obj/structure/blocker/invisible_wall,
@@ -16581,11 +16596,11 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -6
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRC" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRD" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -16594,7 +16609,7 @@
 	pixel_x = -2;
 	pixel_y = -8
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRE" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -16616,7 +16631,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -6
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRG" = (
 /turf/closed/shuttle/dropship2/transparent{
@@ -16633,7 +16648,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -6
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRI" = (
 /obj/structure/machinery/space_heater/radiator/red{
@@ -16697,7 +16712,7 @@
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRP" = (
 /obj/structure/girder/displaced,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRQ" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -16725,7 +16740,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -6
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRU" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -16768,7 +16783,7 @@
 	pixel_x = -6
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aRZ" = (
 /obj/item/stack/tile/plasteel{
@@ -16791,7 +16806,7 @@
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aSb" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aSc" = (
 /obj/item/device/flashlight/lamp/tripod{
@@ -16800,7 +16815,7 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	pixel_x = -6
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aSd" = (
 /obj/structure/prop/invuln/lattice_prop{
@@ -16832,7 +16847,7 @@
 	pixel_x = -2;
 	pixel_y = 24
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aSg" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device{
@@ -16844,7 +16859,7 @@
 	pixel_x = -2;
 	pixel_y = 24
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aSh" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -16856,7 +16871,7 @@
 	pixel_x = -2;
 	pixel_y = 24
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aSi" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -16887,7 +16902,7 @@
 	dir = 4;
 	layer = 5
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aSm" = (
 /obj/structure/prop/ice_colony/ground_wire{
@@ -18414,7 +18429,7 @@
 /area/white_antre/outdoors/south_field)
 "aWs" = (
 /obj/structure/prop/dam/drill,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "aWt" = (
 /obj/structure/machinery/colony_floodlight_switch/antre{
@@ -18495,7 +18510,7 @@
 	icon_state = "snowgrassbb_3";
 	layer = 2.9
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aWF" = (
 /obj/structure/flora/tree/tyrargo{
@@ -18591,7 +18606,7 @@
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_1"
 	},
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/south_field)
 "aWW" = (
 /obj/structure/flora/tree/tyrargo{
@@ -18685,7 +18700,7 @@
 	color = "#5F5F70";
 	dir = 8
 	},
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/south_field)
 "aXl" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -18755,7 +18770,7 @@
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassall_1"
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aXx" = (
 /obj/structure/platform_decoration/metal/almayer_smooth/west,
@@ -18791,7 +18806,7 @@
 /area/white_antre/landing_zone/roof)
 "aXB" = (
 /obj/structure/machinery/floodlight/landing,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aXC" = (
 /obj/structure/prop/colorable_rock/colorable{
@@ -18804,7 +18819,7 @@
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_1"
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aXE" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -18923,7 +18938,7 @@
 	icon_state = "snowbush_3";
 	pixel_y = 8
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aXX" = (
 /obj/effect/decal/hybrisa/bloodtrail/clawtrail{
@@ -18940,7 +18955,7 @@
 	color = "#5F5F70";
 	dir = 5
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "aYa" = (
 /obj/structure/machinery/light/double{
@@ -19607,11 +19622,11 @@
 /area/white_antre/landing_zone)
 "aZU" = (
 /obj/effect/sentry_landmark/lz_1/top_right,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/landing_zone)
 "aZV" = (
 /obj/structure/machinery/floodlight/landing,
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/south_field)
 "aZW" = (
 /obj/structure/machinery/light/double{
@@ -19679,7 +19694,7 @@
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_2"
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "bag" = (
 /obj/structure/flora/tree/tyrargo,
@@ -20211,7 +20226,7 @@
 /area/white_antre/indoors/main_level/east_containment)
 "bbj" = (
 /obj/structure/machinery/floodlight/landing,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bbk" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -20491,7 +20506,7 @@
 /area/white_antre/landing_zone)
 "bbR" = (
 /obj/effect/sentry_landmark/lz_1/top_left,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/landing_zone)
 "bbS" = (
 /obj/structure/machinery/floodlight/landing,
@@ -21104,7 +21119,7 @@
 	color = "#5F5F70";
 	dir = 10
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bdq" = (
 /obj/effect/decal/cleanable/dirt,
@@ -21406,11 +21421,11 @@
 /area/white_antre/landing_zone/roof)
 "bee" = (
 /obj/structure/platform_decoration/stone/soro/west,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bef" = (
 /obj/structure/platform/stone/soro/north,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "beg" = (
 /obj/structure/platform_decoration/stone/soro/east,
@@ -21482,7 +21497,7 @@
 "ber" = (
 /obj/structure/platform/stone/soro/north,
 /obj/structure/platform/stone/soro/east,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bes" = (
 /obj/structure/platform/stone/soro/west,
@@ -21550,7 +21565,7 @@
 /area/white_antre/outdoors/path_north)
 "beA" = (
 /obj/structure/platform/stone/soro/east,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "beB" = (
 /obj/structure/prop/colorable_rock/colorable/alt{
@@ -21678,11 +21693,11 @@
 /area/white_antre/outdoors/north_field)
 "beT" = (
 /obj/structure/platform_decoration/stone/soro/east,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "beU" = (
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "beV" = (
 /obj/item/ammo_casing/bullet,
@@ -21705,12 +21720,12 @@
 /area/white_antre/outdoors/north_field)
 "beY" = (
 /obj/structure/platform/stone/soro/west,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "beZ" = (
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/path_north)
 "bfa" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass{
@@ -21818,7 +21833,7 @@
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/cleanable/blood/xeno,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bft" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -21925,7 +21940,7 @@
 /area/white_antre/outdoors/north_field)
 "bfH" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bfI" = (
 /obj/effect/decal/hybrisa/tiretrack{
@@ -22004,7 +22019,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bfU" = (
 /obj/structure/flora/bush/ausbushes/var3/stalkybush,
@@ -22026,11 +22041,11 @@
 /area/white_antre/outdoors/north_field)
 "bfX" = (
 /obj/effect/alien/weeds/kseries,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bfY" = (
 /obj/effect/alien/weeds/kseries,
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/north_field)
 "bfZ" = (
 /obj/item/ammo_casing/bullet,
@@ -22948,7 +22963,7 @@
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bjV" = (
 /obj/structure/machinery/colony_floodlight/industrial,
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/facility_exterior)
 "bjW" = (
 /obj/structure/machinery/camera/autoname/almayer/containment{
@@ -23016,7 +23031,7 @@
 /area/white_antre/indoors/main_level/east_containment_hive)
 "bkh" = (
 /obj/structure/machinery/colony_floodlight/industrial,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bki" = (
 /obj/structure/machinery/camera/autoname/almayer/containment{
@@ -23067,7 +23082,7 @@
 /area/white_antre/outdoors/path_north)
 "bkr" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bks" = (
 /obj/structure/machinery/light/red{
@@ -24567,7 +24582,7 @@
 /area/white_antre/landing_zone/roof)
 "bpm" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "bpn" = (
 /obj/structure/surface/table/almayer,
@@ -24629,7 +24644,7 @@
 /area/white_antre/indoors/main_level/east_containment)
 "bpu" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark2,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bpv" = (
 /obj/structure/bed/chair{
@@ -24677,7 +24692,7 @@
 /area/white_antre/outdoors/north_field)
 "bpC" = (
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bpD" = (
 /obj/structure/machinery/colony_floodlight_switch/containment,
@@ -24979,6 +24994,13 @@
 /obj/structure/pipes/vents/pump_hybrisa,
 /turf/open/floor/almayer/black2/southwest,
 /area/white_antre/indoors/upper_level/west_corridor)
+"bqz" = (
+/obj/structure/fence/dark,
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/landing_zone)
 "bsr" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
@@ -25022,7 +25044,7 @@
 /area/white_antre/interior/pmc_dropship)
 "byY" = (
 /obj/structure/prop/hybrisa/airport/dropshipventright,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "bzs" = (
 /obj/structure/surface/table/reinforced/black,
@@ -25626,7 +25648,7 @@
 /area/white_antre/indoors/main_level/south_containment_hive)
 "dqC" = (
 /obj/structure/prop/hybrisa/airport/dropshipwingleft,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "dra" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -25735,7 +25757,7 @@
 /area/white_antre/indoors/main_level/dorms)
 "dGT" = (
 /obj/effect/decal/hybrisa/tiretrack,
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/north_field)
 "dJK" = (
 /obj/structure/bed/hybrisa/bunkbed2,
@@ -26578,9 +26600,6 @@
 	},
 /turf/open/floor/almayer/floor,
 /area/white_antre/indoors/main_level/east_containment_hive)
-"gCI" = (
-/turf/open/floor/prison/darkredcorners2/southwest,
-/area/white_antre/indoors/main_level/east_containment_hive)
 "gDt" = (
 /obj/item/reagent_container/glass/paint/yellow{
 	pixel_x = 10;
@@ -27070,7 +27089,7 @@
 /area/white_antre/indoors/exterior/ext_relay_north)
 "ihd" = (
 /obj/structure/prop/hybrisa/airport/dropshipventleft,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "ihp" = (
 /obj/effect/hybrisa/misc/fake/wire/blue{
@@ -27285,7 +27304,6 @@
 /turf/open/floor/prison,
 /area/white_antre/indoors/main_level/west_corridor)
 "iLT" = (
-/obj/structure/prop/hybrisa/misc/floorprops/grate2,
 /obj/effect/landmark/ert_spawns/groundside_xeno,
 /turf/open/floor/plating/plating_catwalk/shiva,
 /area/white_antre/indoors/main_level/east_containment_hive)
@@ -27624,7 +27642,7 @@
 	dir = 8;
 	pixel_y = 12
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "kex" = (
 /obj/effect/decal/warning_stripes{
@@ -27703,6 +27721,7 @@
 /area/white_antre/outdoors/north_field)
 "kCg" = (
 /obj/structure/prop/hybrisa/airport/dropshipnosecone,
+/obj/effect/decal/strata_decals/mud_corner,
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
 "kDp" = (
@@ -27744,7 +27763,7 @@
 "kKn" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "kKq" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -27984,7 +28003,7 @@
 /area/white_antre/landing_zone)
 "lGG" = (
 /obj/structure/prop/hybrisa/airport/dropshipvent1left,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "lGQ" = (
 /obj/effect/decal/strata_decals/mud_corner{
@@ -28214,7 +28233,7 @@
 	dir = 6;
 	pixel_x = -8
 	},
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "mui" = (
 /turf/open/asphalt/cement/cement1,
@@ -29173,7 +29192,7 @@
 /turf/open/floor/almayer/silvercorner/east,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "pzo" = (
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/oob)
 "pzq" = (
 /turf/open/auto_turf/sand_white/layer0,
@@ -29453,7 +29472,7 @@
 /area/white_antre/indoors/main_level/research)
 "qsg" = (
 /obj/effect/landmark/hunter_primary,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/south_field)
 "qsG" = (
 /obj/effect/decal/warning_stripes{
@@ -30093,7 +30112,7 @@
 /area/white_antre/indoors/main_level/security)
 "sUP" = (
 /obj/structure/fence/dark,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/facility_exterior)
 "sVf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -31097,7 +31116,7 @@
 /area/white_antre/outdoors/north_field)
 "wWk" = (
 /obj/effect/decal/hybrisa/tiretrack,
-/turf/open/auto_turf/shale/layer1,
+/turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
 "wYy" = (
 /obj/effect/decal/cleanable/dirt,
@@ -31273,7 +31292,7 @@
 /turf/open/hybrisa/street/underground_unweedable,
 /area/white_antre/indoors/main_level/research)
 "xEt" = (
-/turf/open/auto_turf/shale/layer2,
+/turf/open/auto_turf/shale/layer2/weedable,
 /area/white_antre/outdoors/south_field)
 "xEw" = (
 /obj/structure/machinery/big_computers/science_big/operator_machine_open,
@@ -31436,6 +31455,7 @@
 /obj/structure/prop/hybrisa/airport/dropshipnosecone{
 	dir = 4
 	},
+/obj/effect/decal/strata_decals/mud_corner,
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
 "yen" = (
@@ -76761,8 +76781,8 @@ aKC
 aKC
 aKC
 aKC
-aKC
-aKC
+atZ
+atZ
 odB
 oSf
 bbz
@@ -76786,7 +76806,7 @@ aKB
 aKB
 aKB
 aKB
-aKB
+aKF
 aKB
 dea
 iFy
@@ -76931,8 +76951,8 @@ aKB
 aKB
 aMZ
 aMZ
-aKC
-aKC
+aDc
+atZ
 aKC
 aKC
 aKC
@@ -77252,7 +77272,7 @@ aMS
 aMJ
 aMJ
 aMS
-aKu
+bqz
 aKC
 aKC
 aKC
@@ -77421,8 +77441,8 @@ aMJ
 aMH
 aMH
 aNF
-aKC
-aKC
+aDc
+atZ
 aKB
 aKB
 aKB
@@ -80125,7 +80145,7 @@ jCh
 aMH
 aMH
 hVI
-aMJ
+aMI
 aMS
 aLH
 aLm
@@ -80286,13 +80306,13 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMJ
+aMS
 aMJ
 aMI
 jCh
 aMH
 hVI
-aMJ
+aMI
 aMS
 aMJ
 aLH
@@ -80453,13 +80473,13 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMJ
-aMJ
+aMS
+aMS
 aMI
 aMI
 aMI
 iYG
-aMJ
+aMI
 aMJ
 aMS
 aMJ
@@ -80626,8 +80646,8 @@ aMI
 aMI
 aMI
 aMI
-aMJ
-aMJ
+aMI
+aMS
 aMJ
 aMJ
 aMJ
@@ -81299,7 +81319,7 @@ aMJ
 aMJ
 aMJ
 aMJ
-aMJ
+aMS
 vag
 aMH
 aMH
@@ -83945,7 +83965,7 @@ ewE
 ewE
 vGy
 aMH
-aMI
+yaj
 aMJ
 aMJ
 byY
@@ -84445,10 +84465,10 @@ iKa
 ewE
 iKa
 iKa
-aMI
-aMI
-aMI
-aMI
+iYG
+iYG
+iYG
+iYG
 qUS
 xun
 kXF
@@ -84618,8 +84638,8 @@ aMI
 aMI
 aMI
 aMI
-aMI
-aMI
+nag
+vag
 wUJ
 hvs
 bxG
@@ -84785,7 +84805,7 @@ iKa
 iKa
 aMI
 aMI
-aMI
+vag
 aMH
 bfU
 hsB
@@ -84952,7 +84972,7 @@ iKa
 iKa
 iKa
 iKa
-aMI
+vag
 bgd
 aMH
 aMH
@@ -89388,11 +89408,11 @@ aoR
 mID
 asL
 asL
-asM
+asL
 anM
 aKh
-abL
-abL
+asL
+asL
 asO
 asO
 asM
@@ -89521,7 +89541,7 @@ wRF
 atS
 atS
 atS
-atY
+atS
 aln
 atR
 aKh
@@ -92378,7 +92398,7 @@ odb
 odb
 atS
 atS
-atY
+atS
 alj
 aIQ
 aKh
@@ -104479,7 +104499,7 @@ ayS
 ayO
 azu
 azk
-gCI
+azL
 azJ
 azC
 ayS

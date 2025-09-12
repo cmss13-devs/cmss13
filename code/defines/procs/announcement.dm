@@ -4,40 +4,41 @@
 #define PMC_COMMAND_ANNOUNCE "PMC Command Announcement"
 #define VENIR_ANNOUNCE "White Venir Central Announcement"
 #define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
+#define QUEEN_LORE_ANNOUNCE "The words of the Queen reverberate in your head..."
 #define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"
 #define XENO_GENERAL_ANNOUNCE "You sense something unusual..." //general xeno announcement that don't involve Queen, for nuke for example
 #define HIGHER_FORCE_ANNOUNCE SPAN_ANNOUNCEMENT_HEADER_BLUE("Unknown Higher Force")
 
-//civilian white venir announcement
+//civilian white antre announcement
 /proc/venir_announcement(message, title = VENIR_ANNOUNCE, sound_to_play = sound('sound/misc/notice2.ogg'), faction_to_display = FACTION_SURVIVOR)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list
 	if(faction_to_display == FACTION_SURVIVOR)
 		for(var/mob/M in targets)
 			if(isobserver(M)) //observers see everything
 				continue
-//			var/mob/living/carbon/human/H = M
-//			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H)) //base human checks
-//				targets.Remove(H)
-//				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H) || ismarinejob(H)) //base human checks
+				targets.Remove(H)
+				continue
 
-//	else if(faction_to_display == "Everyone (-Yautja)")
-//		for(var/mob/M in targets)
-//			if(isobserver(M)) //observers see everything
-//				continue
-//			var/mob/living/carbon/human/H = M
-//			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
-//				targets.Remove(H)
+	else if(faction_to_display == "Everyone (-Yautja)")
+		for(var/mob/M in targets)
+			if(isobserver(M)) //observers see everything
+				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
+				targets.Remove(H)
 
-//	else
-//		for(var/mob/M in targets)
-//			if(isobserver(M)) //observers see everything
-//				continue
-//			var/mob/living/carbon/human/H = M
-//			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H))
-//				targets.Remove(H)
-//				continue
-//			if(H.faction != faction_to_display)
-//				targets.Remove(H)
+	else
+		for(var/mob/M in targets)
+			if(isobserver(M)) //observers see everything
+				continue
+			var/mob/living/carbon/human/H = M
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H) || ismarinejob(H))
+				targets.Remove(H)
+				continue
+			if(H.faction != faction_to_display)
+				targets.Remove(H)
 
 	announcement_helper(message, title, targets, sound_to_play)
 
@@ -60,6 +61,26 @@
 				targets.Remove(X)
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
+
+//xenomorph lore announcement
+/proc/xeno_lore_announcement(message, hivenumber, title = QUEEN_LORE_ANNOUNCE, sound_to_play = sound('sound/ambience/containment_breach1.ogg'))
+	var/list/targets = GLOB.living_xeno_list + GLOB.dead_mob_list
+	if(hivenumber == "everything")
+		for(var/mob/M in targets)
+			var/mob/living/carbon/xenomorph/X = M
+			if(!isobserver(X) && !istype(X)) //filter out any potential non-xenomorphs/observers mobs
+				targets.Remove(X)
+
+		announcement_helper(message, title, targets, sound_to_play)
+	else
+		for(var/mob/M in targets)
+			if(isobserver(M))
+				continue
+			var/mob/living/carbon/X = M
+			if(!istype(X) || !X.ally_of_hivenumber(hivenumber)) //additionally filter out those of wrong hive
+				targets.Remove(X)
+
+		announcement_helper(message, title, targets, sound_to_play)
 
 
 //general marine announcement

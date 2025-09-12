@@ -15,6 +15,9 @@
         "/datum/equipment_preset/survivor/security/shiva",
         "/datum/equipment_preset/survivor/civilian"
     ],
+    "CO_insert_survivor_types": [
+        "/datum/equipment_preset/survivor/clf/coordinator"
+    ],
     "defcon_triggers": [
         3300,
         2100,

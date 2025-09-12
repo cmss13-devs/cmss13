@@ -8,9 +8,6 @@
 	xeno_cooldown = 3 SECONDS
 	plasma_cost = 0
 
-
-
-
 	// Config options
 	knockdown = TRUE
 	knockdown_duration = 0.5

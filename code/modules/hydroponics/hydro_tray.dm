@@ -512,24 +512,13 @@
 
 			to_chat(user, "You plant the [S.seed.seed_name] [S.seed.seed_noun].")
 
-			if(S.seed.spread == 1)
-				msg_admin_attack("[key_name(user)] has planted a creeper packet in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-				var/obj/effect/plant_controller/creeper/PC = new(get_turf(src))
-				if(PC)
-					PC.seed = S.seed
-			else if(S.seed.spread == 2)
-				msg_admin_attack("[key_name(user)] has planted a spreading vine packet in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-				var/obj/effect/plant_controller/PC = new(get_turf(src))
-				if(PC)
-					PC.seed = S.seed
-			else
-				seed = S.seed //Grab the seed datum.
-				dead = 0
-				age = 1
-				//Snowflakey, maybe move this to the seed datum
-				plant_health = (istype(S, /obj/item/seeds/cutting) ? floor(seed.endurance/rand(2,5)) : seed.endurance)
+			seed = S.seed //Grab the seed datum.
+			dead = 0
+			age = 1
+			//Snowflakey, maybe move this to the seed datum
+			plant_health = (istype(S, /obj/item/seeds/cutting) ? floor(seed.endurance/rand(2,5)) : seed.endurance)
 
-				lastcycle = world.time
+			lastcycle = world.time
 
 			qdel(O)
 

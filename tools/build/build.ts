@@ -203,12 +203,11 @@ export const BunTarget = new Juke.Target({
 export const TgFontTarget = new Juke.Target({
   dependsOn: [BunTarget],
   inputs: [
-    "tgui/packages/tgfont/**/*.+(js|cjs|svg)",
+    "tgui/packages/tgfont/**/*.+(js|mjs|svg)",
     "tgui/packages/tgfont/package.json",
   ],
   outputs: [
     "tgui/packages/tgfont/dist/tgfont.css",
-    "tgui/packages/tgfont/dist/tgfont.eot",
     "tgui/packages/tgfont/dist/tgfont.woff2",
   ],
   executes: async () => {
@@ -217,10 +216,6 @@ export const TgFontTarget = new Juke.Target({
     fs.copyFileSync(
       "tgui/packages/tgfont/dist/tgfont.css",
       "tgui/packages/tgfont/static/tgfont.css",
-    );
-    fs.copyFileSync(
-      "tgui/packages/tgfont/dist/tgfont.eot",
-      "tgui/packages/tgfont/static/tgfont.eot"
     );
     fs.copyFileSync(
       "tgui/packages/tgfont/dist/tgfont.woff2",
@@ -286,11 +281,6 @@ export const TguiDevTarget = new Juke.Target({
 export const TguiAnalyzeTarget = new Juke.Target({
   dependsOn: [BunTarget],
   executes: () => bun("tgui:analyze"),
-});
-
-export const TguiBenchTarget = new Juke.Target({
-  dependsOn: [BunTarget],
-  executes: () => bun("tgui:bench"),
 });
 
 export const TguiPrettierFix = new Juke.Target({

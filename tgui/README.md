@@ -107,7 +107,6 @@ Run `yarn install` once to install tgui dependencies.
 - `yarn tgui:tsc` - Check code with TypeScript compiler.
 - `yarn tgui:test` - Run unit and integration tests.
 - `yarn tgui:analyze` - Run a bundle analyzer.
-- `yarn tgui:bench` - Run benchmarks.
 - `yarn tgfont:build` - Build icon fonts.
 
 ## Important Memo

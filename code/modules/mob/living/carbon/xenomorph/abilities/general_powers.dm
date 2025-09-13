@@ -524,6 +524,8 @@
 	pre_pounce_effects()
 
 	X.pounce_distance = get_dist(X, A)
+	if(X.z != A.z)
+		X.pounce_distance += 2
 	X.throw_atom(A, distance, throw_speed, X, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
 	X.update_icons()
 

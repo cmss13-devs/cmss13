@@ -256,6 +256,7 @@
 	reagents.add_reagent("bicaridine", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("kelotane", REAGENTS_OVERDOSE-1)
 	reagents.add_reagent("oxycodone", MED_REAGENTS_OVERDOSE-1)
+	reagents.add_reagent("dexalin", MED_REAGENTS_OVERDOSE-1)
 	update_icon()
 
 /obj/item/reagent_container/hypospray/autoinjector/black_goo_cure

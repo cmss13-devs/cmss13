@@ -221,15 +221,20 @@
 	range_bounds.set_shape(cur_turf.x, cur_turf.y, detector_range * 2)
 
 	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+	if(SSmapping.get_turf_above(cur_turf))
+		ping_candidates += SSquadtree.players_in_range(range_bounds, cur_turf.z+1, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
+	if(SSmapping.get_turf_below(cur_turf))
+		ping_candidates += SSquadtree.players_in_range(range_bounds, cur_turf.z-1, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 
 	for(var/A in ping_candidates)
 		var/mob/living/M = A //do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
 		if(M == loc)
 			continue //device user isn't detected
-		if(world.time > M.l_move_time + 20)
-			continue //hasn't moved recently
 		if(M.get_target_lock(iff_signal))
 			continue
+		if(world.time > M.l_move_time + 20)
+			continue //hasn't moved recently
+
 
 		apply_debuff(M)
 		ping_count++
@@ -239,7 +244,7 @@
 	for(var/mob/hologram/holo as anything in GLOB.hologram_list)
 		if(!holo.motion_sensed)
 			continue
-		if(holo.z != cur_turf.z || !(range_bounds.contains_atom(holo)))
+		if(holo.z != cur_turf.z || !(range_bounds.contains_atom(holo))) //I do not think marines need queen eye ping from other z level
 			continue
 		ping_count++
 		if(human_user)
@@ -260,6 +265,8 @@
 	if(user && user.client)
 
 		blip_icon = blip_icon ? blip_icon : blip_type
+		if(user.z != target.z)
+			blip_icon = "queen_eye" //if someone makes different icons they can be used
 
 		if(!blip_pool[target])
 			blip_pool[target] = new /obj/effect/detector_blip

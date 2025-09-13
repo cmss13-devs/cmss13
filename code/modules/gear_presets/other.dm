@@ -753,7 +753,7 @@
 	assignment = "Cultist"
 	job_title = "Cultist"
 
-	minimap_icon = "cultist"
+	minimap_icon_state = "cultist"
 	minimap_background = "background_cultist"
 
 /datum/equipment_preset/other/xeno_cultist/New()
@@ -817,7 +817,7 @@
 	assignment = "Cultist Leader"
 	job_title = "Cultist Leader"
 
-	minimap_icon = "cult_leader"
+	minimap_icon_state = "cult_leader"
 
 /datum/equipment_preset/other/xeno_cultist/leader/load_gear(mob/living/carbon/human/new_human)
 	. = ..()
@@ -971,7 +971,7 @@
 	paygrades = list(PAY_SHORT_ME1 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
-	minimap_icon = "private"
+	minimap_icon_state = "private"
 
 	uses_special_name = TRUE
 

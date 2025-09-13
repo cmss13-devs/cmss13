@@ -64,7 +64,7 @@
 	paygrades = list(PAY_SHORT_MO7 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "GEN"
 	minimum_age = 50
-	minimap_icon = "deputy"
+	minimap_icon_state = "deputy"
 	minimap_background = "background_command"
 	skills = /datum/skills/general
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_TSL) //Know your enemy.
@@ -210,7 +210,7 @@
 	paygrades = list(PAY_SHORT_ME5 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME6 = JOB_PLAYTIME_TIER_1, PAY_SHORT_ME7 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvE"
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "pve"
+	minimap_icon_state = "pve"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues)
@@ -254,7 +254,7 @@
 	paygrades = list(PAY_SHORT_ME8 = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvTML"
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "pve_leader"
+	minimap_icon_state = "pve_leader"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/nco)
@@ -298,7 +298,7 @@
 	paygrades = list(PAY_SHORT_PVI = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvI"
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "pve_inspector"
+	minimap_icon_state = "pve_inspector"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -337,7 +337,7 @@
 	paygrades = list(PAY_SHORT_PVCI = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "PvCI"
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "pve_chief_inspector"
+	minimap_icon_state = "pve_chief_inspector"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/senior)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)
@@ -375,7 +375,7 @@
 	paygrades = list(PAY_SHORT_ME8E = JOB_PLAYTIME_TIER_0, PAY_SHORT_ME9E = JOB_PLAYTIME_TIER_3)
 	role_comm_title = "PvA"
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "pve_advisor"
+	minimap_icon_state = "pve_advisor"
 
 /datum/equipment_preset/uscm_event/provost/marshal/deputy
 	name = "Provost Deputy Marshal (MO6)"
@@ -387,7 +387,7 @@
 	paygrades = list(PAY_SHORT_PVDM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVDM
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "deputy"
+	minimap_icon_state = "deputy"
 
 /datum/equipment_preset/uscm_event/provost/marshal
 	name = "Provost Marshal (MO7)"
@@ -399,7 +399,7 @@
 	paygrades = list(PAY_SHORT_PVM = JOB_PLAYTIME_TIER_0)
 	role_comm_title = PAY_SHORT_PVM
 	flags = EQUIPMENT_PRESET_EXTRA
-	minimap_icon = "deputy"
+	minimap_icon_state = "deputy"
 
 	dress_under = list(/obj/item/clothing/under/marine/dress/blues/general)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/blues/officer)

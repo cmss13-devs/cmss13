@@ -10,7 +10,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	faction = FACTION_UPP
 	faction_group = list(FACTION_UPP, FACTION_SURVIVOR)
-	minimap_icon = "upp_pvt"
+	minimap_icon_state = "upp_pvt"
 	minimap_background = "background_upp"
 	role_comm_title = "121/RECON"
 	idtype = /obj/item/card/id/dogtag/upp
@@ -61,7 +61,7 @@
 	job_title = JOB_UPP_ENGI
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 
-	minimap_icon = "upp_sapper"
+	minimap_icon_state = "upp_sapper"
 
 	skills = /datum/skills/military/survivor/upp_sapper
 
@@ -82,7 +82,7 @@
 	job_title = JOB_UPP_MEDIC
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 
-	minimap_icon = "upp_med"
+	minimap_icon_state = "upp_med"
 
 	skills = /datum/skills/military/survivor/upp_medic
 
@@ -103,7 +103,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	job_title = JOB_UPP_SPECIALIST
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
-	minimap_icon = "upp_spec"
+	minimap_icon_state = "upp_spec"
 	paygrades = list(PAY_SHORT_UE4 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/military/survivor/upp_spec/rocket
 
@@ -123,7 +123,7 @@
 	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH,  LANGUAGE_GERMAN,  LANGUAGE_CHINESE)
 	role_comm_title = "121/RECON SL"
 
-	minimap_icon = "upp_sl"
+	minimap_icon_state = "upp_sl"
 
 	skills = /datum/skills/military/survivor/upp_sl
 
@@ -152,7 +152,7 @@
 	idtype = /obj/item/card/id/dogtag/upp
 	role_comm_title = "121/RECON Syn"
 	minimap_background = "background_upp"
-	minimap_icon = "upp_synth"
+	minimap_icon_state = "upp_synth"
 
 /datum/equipment_preset/synth/survivor/upp/SOF_synth/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/SOF_uniform(new_human), WEAR_BODY)

@@ -851,7 +851,7 @@
 	assignment = "Weyland-Yutani - Corporate Security Guard"
 	assignment = JOB_WY_GOON
 	job_title = JOB_WY_GOON
-	minimap_icon = "goon_standard"
+	minimap_icon_state = "goon_standard"
 	minimap_background = "background_goon"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	faction = FACTION_WY

@@ -8,7 +8,7 @@
 	skills = /datum/skills/civilian/survivor/manager
 	assignment = "Assistant Operations Manager"
 	minimap_background = "background_wy_management"
-	minimap_icon = "ass_man"
+	minimap_icon_state = "ass_man"
 	job_title = JOB_ASSISTANT_MANAGER
 	idtype = /obj/item/card/id/silver/clearance_badge/manager
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
@@ -55,9 +55,9 @@
 	idtype = /obj/item/card/id/pmc/commando
 	skills = /datum/skills/civilian/survivor/pmc/commando
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_TSL)
-	minimap_icon = "private"
+	minimap_icon_state = "private"
 	minimap_background = "background_wy_com"
-	minimap_icon = "pmc_gun"
+	minimap_icon_state = "pmc_gun"
 
 	access = list(
 		ACCESS_WY_GENERAL,

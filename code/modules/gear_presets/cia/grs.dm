@@ -231,6 +231,9 @@
 	skills = /datum/skills/cia/global_response/sniper
 	minimap_icon = "spec_sniper"
 	role_comm_title = "AdvMrk"
+	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/sniper
+	suit_type = /obj/item/clothing/suit/storage/marine/ghillie/grs
+	back_type = /obj/item/storage/backpack/lightpack/black/grs_sniper
 
 /datum/equipment_preset/cia_global_response/sniper/deathsquad
 	strength_type = STRENGTH_DEATH

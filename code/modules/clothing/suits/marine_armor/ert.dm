@@ -39,8 +39,11 @@
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN
 	storage_slots = 4
 
+//======================//Global Response Staff\\======================\\
+//=======================================================================\\
+
 /obj/item/clothing/suit/storage/marine/sof/grs
-	name = "\improper GRS armor"
+	name = "\improper GRS Armor"
 	desc = "A dark set of armor used by the Global Response Staff."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
@@ -52,7 +55,7 @@
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof/grs
-	name = "\improper GRS smartgun harness"
+	name = "\improper GRS Smartgun Harness"
 	desc = "A dark set of armor used by the Global Response Staff. This variant is designed to hold a smartgun system."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
@@ -60,6 +63,17 @@
 	)
 	icon_state = "cia_sg"
 	item_state_slots = list(WEAR_JACKET = "cia_sg")
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
+
+/obj/item/clothing/suit/storage/marine/ghillie/grs
+	name = "\improper GRS Marksman Armor"
+	desc = "A dark set of armor used by the Global Response Staff. This lighter variant is designed to be used by an Advanced Marksman and provides adaptive camoflauge."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
+	icon_state = "cia_sniper"
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
 

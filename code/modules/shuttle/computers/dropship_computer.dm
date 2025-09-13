@@ -335,6 +335,9 @@
 		hijack(xeno)
 		return
 
+/obj/structure/machinery/computer/shuttle/dropship/flight/handle_tail_stab(mob/living/carbon/xenomorph/xeno)
+	return TAILSTAB_COOLDOWN_NONE
+
 /obj/structure/machinery/computer/shuttle/dropship/flight/update_icon()
 	. = ..()
 	if(icon_state == "console") // someday, replace this with a better check

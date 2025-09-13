@@ -17725,7 +17725,8 @@
 /area/almayer/squads/platoon1_shared)
 "aUj" = (
 /obj/structure/machinery/cm_vending/clothing/tl/delta{
-	pixel_x = 32
+	pixel_x = 32;
+	density = 0
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)

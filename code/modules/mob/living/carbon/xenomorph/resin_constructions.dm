@@ -92,8 +92,8 @@
 /datum/resin_construction/proc/check_for_wall_or_door()
 	return FALSE
 
-/datum/resin_construction/proc/build(turf/T, hivenumber, builder)
-	return
+/datum/resin_construction/proc/build()
+	return TRUE
 
 /datum/resin_construction/proc/check_thick_build(turf/build_turf, hivenumber, mob/living/carbon/xenomorph/builder)
 	var/can_build_thick = TRUE
@@ -125,6 +125,8 @@
 		resin_wall.set_resin_builder(builder)
 		set_hive_data(resin_wall, hivenumber)
 
+	.=..() //we call parent after the turf is placed for correct link with upper_wall
+
 	return build_turf
 
 // Resin Walls
@@ -140,6 +142,12 @@
 
 /datum/resin_construction/resin_turf/wall/check_for_wall_or_door()
 	return TRUE
+
+/datum/resin_construction/resin_turf/wall/above
+	name = "resin high wall"
+	cost = 0
+	scaling_cost = FALSE
+	build_path = /turf/closed/wall/resin/above
 
 /datum/resin_construction/resin_turf/wall/thick
 	name = "Thick Resin Wall"

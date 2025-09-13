@@ -236,6 +236,71 @@
 /obj/structure/prop/dam/wide_boulder/boulder1
 	icon_state = "boulder1"
 
+//Grayscaled boulders
+
+/obj/structure/prop/boulder
+	name = "boulder"
+	desc = "A large rock. It's not cooking anything."
+	icon = 'icons/obj/structures/props/natural/boulder_smallgray.dmi'
+	icon_state = "boulder_small1"
+
+/obj/structure/prop/boulder/boulder2
+	icon_state = "boulder_small2"
+
+/obj/structure/prop/boulder/boulder3
+	icon_state = "boulder_small3"
+
+/obj/structure/prop/boulder/large
+	icon = 'icons/obj/structures/props/natural/boulder_largegray.dmi'
+	icon_state = "boulder_large1"
+	bound_height = 64
+	bound_width = 64
+
+/obj/structure/prop/boulder/large/boulder_large2
+	icon_state = "boulder_large2"
+
+/obj/structure/prop/boulder/large/boulder_large3
+	icon_state = "boulder_large3"
+
+/obj/structure/prop/boulder/wide
+	icon = 'icons/obj/structures/props/natural/boulder_widegray.dmi'
+	icon_state = "boulder_wide1"
+	bound_height = 32
+	bound_width = 64
+
+/obj/structure/prop/boulder/wide/boulder_wide2
+	icon_state = "boulder_wide2"
+
+/obj/structure/prop/boulder/brown
+	color = "#826161"
+
+/obj/structure/prop/boulder/brown/boulder2
+	icon_state = "boulder_small2"
+
+/obj/structure/prop/boulder/brown/boulder3
+	icon_state = "boulder_small3"
+
+/obj/structure/prop/boulder/brown/large
+	icon = 'icons/obj/structures/props/natural/boulder_largegray.dmi'
+	icon_state = "boulder_large1"
+	bound_height = 64
+	bound_width = 64
+
+/obj/structure/prop/boulder/brown/large/boulder_large2
+	icon_state = "boulder_large2"
+
+/obj/structure/prop/boulder/brown/large/boulder_large3
+	icon_state = "boulder_large3"
+
+/obj/structure/prop/boulder/brown/wide
+	icon = 'icons/obj/structures/props/natural/boulder_widegray.dmi'
+	icon_state = "boulder_wide1"
+	bound_height = 32
+	bound_width = 64
+
+/obj/structure/prop/boulder/brown/wide/boulder_wide2
+	icon_state = "boulder_wide2"
+
 //Use these to replace non-functional machinery 'props' around maps from bay12
 
 /obj/structure/prop/server_equipment
@@ -988,6 +1053,7 @@
 		new_info_tag.fallen_names = list(dogtag_name)
 		new_info_tag.fallen_assgns = list(dogtag_assign)
 		new_info_tag.fallen_blood_types = list(dogtag_blood)
+		GLOB.fallen_list_cross -= dogtag_name
 	return ..()
 
 /obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
@@ -999,8 +1065,7 @@
 			dogtag_name = popleft(dog.fallen_names)
 			dogtag_assign = popleft(dog.fallen_assgns)
 			dogtag_blood = popleft(dog.fallen_blood_types)
-			if(!(dogtag_name in GLOB.fallen_list_cross))
-				GLOB.fallen_list_cross += dogtag_name
+			GLOB.fallen_list_cross += dogtag_name
 			update_icon()
 			if(!length(dog.fallen_names))
 				qdel(dog)

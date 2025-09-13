@@ -599,6 +599,8 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun(src)
 
+// --------------------------------------------------------------------------------
+
 /obj/item/storage/pouch/magazine/large/m16/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16(src)
@@ -638,7 +640,6 @@
 /obj/item/storage/pouch/magazine/large/m16a5/heap/black
 	icon_state = "wy_ammo_mag"
 
-
 /obj/item/storage/pouch/magazine/large/mp5/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/mp5(src)
@@ -660,32 +661,18 @@
 /obj/item/storage/pouch/magazine/large/mp5a5_heap/black
 	icon_state = "wy_ammo_mag"
 
-/obj/item/storage/pouch/magazine/large/grs_sg
-	name = "GRS heavy magazine pouch"
-	icon_state = "wy_ammo_mag"
-	bypass_w_limit = list(
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg/m39,
-		/obj/item/ammo_magazine/smartgun,
-	)
-	can_hold = list(
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg,
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/ammo_magazine/sniper,
-		/obj/item/ammo_magazine/m60,
-		/obj/item/ammo_magazine/handful,
-		/obj/item/ammo_magazine/smartgun,
-	)
-
-/obj/item/storage/pouch/magazine/large/grs_sg/fill_preset_inventory()
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/holo_targetting/grs(src)
 
-/obj/item/storage/pouch/magazine/large/grs_sg/deathsquad/fill_preset_inventory()
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/near_empty/fill_preset_inventory()
+		new /obj/item/ammo_magazine/smartgun/holo_targetting/grs(src)
+
+/obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/deathsquad/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/dirty/grs(src)
+
+// --------------------------------------------------------------------------------
 
 /obj/item/storage/pouch/magazine/large/rifle_heap
 	icon_state = "wy_ammo_mag"

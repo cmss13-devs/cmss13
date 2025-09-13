@@ -41,71 +41,27 @@
 
 /obj/item/clothing/suit/storage/marine/sof/grs
 	name = "\improper GRS armor"
-	desc = "A dark set of armor, which is a modification of the Armat Systems M3 armor. It has an eagle sigil emblazoned on the shoulders."
+	desc = "A dark set of armor used by the Global Response Staff."
 	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
 	)
 	icon_state = "cia_light"
-
+	item_state_slots = list(WEAR_JACKET = "cia_light")
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
-	item_state_slots = list(WEAR_JACKET = "cia_light")
 
-/obj/item/clothing/suit/storage/marine/sof/grs/smartgun
+/obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof/grs
 	name = "\improper GRS smartgun harness"
-	desc = "A dark set of heavy armor, which is a modification of the Armat Systems M3 armor. It has an eagle sigil emblazoned on the shoulders. This is designed to hold a smartgun system, but is sometimes used by other operators."
+	desc = "A dark set of armor used by the Global Response Staff. This variant is designed to hold a smartgun system."
+	icon = 'icons/obj/items/clothing/suits/suits_by_faction/UA.dmi'
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/suits/suits_by_faction/UA.dmi'
+	)
 	icon_state = "cia_sg"
 	item_state_slots = list(WEAR_JACKET = "cia_sg")
-	armor_melee = CLOTHING_ARMOR_HIGHPLUS
-	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	flags_inventory = BLOCKSHARPOBJ|SMARTGUN_HARNESS
-	slowdown = SLOWDOWN_ARMOR_MEDIUM
-
-/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/Initialize(mapload)
-	. = ..()
-
-	pockets.bypass_w_limit = list(
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg,
-		/obj/item/ammo_magazine/sniper,
-		/obj/item/ammo_magazine/smartgun,
-	)
-
-/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/mob_can_equip(mob/equipping_mob, slot, disable_warning = FALSE)
-	. = ..()
-
-	if(equipping_mob.back && !(equipping_mob.back.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE))
-		if(!disable_warning)
-			to_chat(equipping_mob, SPAN_WARNING("You can't equip [src] while wearing a backpack."))
-		return FALSE
-
-/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/equipped(mob/user, slot, silent)
-	. = ..()
-
-	if(slot == WEAR_JACKET)
-		RegisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP, PROC_REF(check_equipping))
-
-/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/proc/check_equipping(mob/living/carbon/human/equipping_human, obj/item/equipping_item, slot)
-	SIGNAL_HANDLER
-
-	if(slot != WEAR_BACK)
-		return
-
-	if(equipping_item.flags_item & SMARTGUNNER_BACKPACK_OVERRIDE)
-		return
-
-	. = COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP
-
-	if(equipping_item.flags_equip_slot == SLOT_BACK)
-		to_chat(equipping_human, SPAN_WARNING("You can't equip [equipping_item] on your back while wearing [src]."))
-		return
-
-/obj/item/clothing/suit/storage/marine/sof/grs/smartgun/unequipped(mob/user, slot)
-	. = ..()
-
-	UnregisterSignal(user, COMSIG_HUMAN_ATTEMPTING_EQUIP)
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
 
 //=============================//GENERIC FACTIONAL ARMOR ITEM\\==================================\\
 //=======================================================================\\

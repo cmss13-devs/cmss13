@@ -353,6 +353,30 @@
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/storage/pill_bottle/imidazoline(src)
 	new /obj/item/storage/pill_bottle/alkysine(src)
+	new /obj/item/bodybag/cryobag(src)
+	new /obj/item/bodybag/cryobag(src)
+
+/obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs_weak/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/dexalin(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/peridaxon(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/imidazoline(src)
+	new /obj/item/storage/pill_bottle/alkysine(src)
+	new /obj/item/bodybag/cryobag(src)
+
 
 /obj/item/storage/belt/medical/lifesaver/wy
 	name = "\improper WY-TM625 pattern medical bag"
@@ -865,6 +889,13 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap (src)
 
+/obj/item/storage/belt/marine/black/m16a5/weak/fill_preset_inventory()
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap (src)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ext (src)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5/ext (src)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
+		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
+
 /obj/item/storage/belt/marine/black/m16a5/heap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/m16a5/heap (src)
@@ -1156,6 +1187,10 @@
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
 
+/obj/item/storage/belt/shotgun/black/es7_lethal/half/fill_preset_inventory()
+	for(var/i in 1 to (storage_slots/ 2))
+		new /obj/item/ammo_magazine/handful/shotgun/slug/es7(src)
+
 /obj/item/storage/belt/shotgun/black/es7_incendiary/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/slug/es7/incendiary(src)
@@ -1254,6 +1289,10 @@
 
 /obj/item/storage/belt/shotgun/xm88/black/full_cia/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/lever_action/xm88/cia_iff(src)
+
+/obj/item/storage/belt/shotgun/xm88/black/half_full_cia/fill_preset_inventory()
+	for(var/i = 1 to (storage_slots / 2))
 		new /obj/item/ammo_magazine/handful/lever_action/xm88/cia_iff(src)
 
 /obj/item/storage/belt/shotgun/xm88/attackby(obj/item/W, mob/user)

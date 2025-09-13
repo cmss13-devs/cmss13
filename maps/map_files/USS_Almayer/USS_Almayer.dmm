@@ -60412,11 +60412,6 @@
 /obj/structure/platform_decoration/metal/almayer,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/u_a_p)
-"lsn" = (
-/obj/structure/machinery/cm_vending/gear/engi,
-/obj/structure/machinery/cm_vending/gear/engi,
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/support)
 "lso" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -145120,7 +145115,7 @@ dpO
 nCf
 sUO
 bJC
-lsn
+cdX
 tEC
 cdX
 bJC

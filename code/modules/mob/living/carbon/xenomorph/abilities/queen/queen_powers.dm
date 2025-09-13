@@ -747,6 +747,29 @@
 			node = weeds_to_locate.parent
 			break
 
+	var/turf/below = SSmapping.get_turf_below(turf_to_get)
+	if(!node && below && istype(below, /turf/closed))
+		for(var/direction in GLOB.cardinals)
+			if(!istype(get_step(turf_to_get, direction), /turf/open_space))
+				continue
+			var/turf/turf_to_weed = get_step(below, direction)
+			var/obj/effect/alien/weeds/weeds_to_locate = locate() in turf_to_weed
+			if(weeds_to_locate && weeds_to_locate.hivenumber == xeno.hivenumber && weeds_to_locate.parent && !weeds_to_locate.hibernate && !LinkBlocked(weeds_to_locate, turf_to_weed, turf_to_get))
+				node = weeds_to_locate.parent
+				break
+
+	var/turf/above = SSmapping.get_turf_above(turf_to_get)
+	if(!node && above && istype(above, /turf/open_space))
+		for(var/direction in GLOB.cardinals)
+			if(!istype(get_step(turf_to_get, direction), /turf/closed))
+				continue
+			var/turf/turf_to_weed = get_step(above, direction)
+			var/obj/effect/alien/weeds/weeds_to_locate = locate() in turf_to_weed
+			if(weeds_to_locate && weeds_to_locate.hivenumber == xeno.hivenumber && weeds_to_locate.parent && !weeds_to_locate.hibernate && !LinkBlocked(weeds_to_locate, turf_to_weed, turf_to_get))
+				node = weeds_to_locate.parent
+				break
+
+
 	if(!node)
 		to_chat(xeno, SPAN_XENOWARNING("You can only plant weeds if there is a nearby node."))
 		return

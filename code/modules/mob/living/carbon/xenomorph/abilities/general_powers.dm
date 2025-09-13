@@ -524,9 +524,9 @@
 	pre_pounce_effects()
 
 	xeno.pounce_distance = get_dist(xeno, atom)
-	if(xeno.z != A.z)
+	if(xeno.z != atom.z)
 		xeno.pounce_distance += 2
-	xeno.throw_atom(A, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
+	xeno.throw_atom(atom, distance, throw_speed, xeno, launch_type = LOW_LAUNCH, pass_flags = pounce_pass_flags, collision_callbacks = pounce_callbacks, tracking=TRUE)
 	xeno.update_icons()
 
 	additional_effects_always()

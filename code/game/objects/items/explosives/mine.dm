@@ -40,7 +40,7 @@
 	if(map_deployed)
 		deploy_mine(null)
 	else
-		cause_data = create_cause_data(initial(name))
+		cause_data = create_cause_data(initial(name), null, src)
 
 /obj/item/explosive/mine/Destroy()
 	QDEL_NULL(tripwire)
@@ -110,7 +110,7 @@
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 
-	cause_data = create_cause_data(initial(name), user)
+	cause_data = create_cause_data(initial(name), user, src)
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
 	if(user)
@@ -243,8 +243,11 @@
 	set waitfor = 0
 
 	if(!customizable)
-		create_shrapnel(loc, 12, dir, shrapnel_spread, , cause_data)
-		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
+		var/shrap_type = /datum/ammo/bullet/shrapnel
+		if(map_deployed)
+			shrap_type = /datum/ammo/bullet/shrapnel/enviro
+		create_shrapnel(loc, 12, dir, shrapnel_spread, shrap_type, cause_data)
+		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data, enviro=map_deployed)
 		qdel(src)
 	else
 		. = ..()
@@ -426,7 +429,7 @@
 /obj/item/explosive/mine/sharp/prime(mob/user)
 	set waitfor = FALSE
 	if(!cause_data)
-		cause_data = create_cause_data(initial(name), user)
+		cause_data = create_cause_data(initial(name), user, src)
 	if(mine_level == 1)
 		explosion_size = 100
 	else if(mine_level == 2)
@@ -438,7 +441,7 @@
 	else
 		explosion_size = 125
 		explosion_falloff = 25
-	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data)
+	cell_explosion(loc, explosion_size, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, CARDINAL_ALL_DIRS, cause_data, enviro=map_deployed)
 	playsound(loc, 'sound/weapons/gun_sharp_explode.ogg', 100)
 	qdel(src)
 
@@ -465,7 +468,7 @@
 	if(!hard_iff_lock && user)
 		iff_signal = user.faction
 
-	cause_data = create_cause_data(initial(name), user)
+	cause_data = create_cause_data(initial(name), user, src)
 	if(user)
 		user.drop_inv_item_on_ground(src)
 	setDir(user ? user.dir : dir) //The direction it is planted in is the direction the user faces at that time
@@ -503,7 +506,7 @@
 /obj/item/explosive/mine/sharp/incendiary/prime(mob/user)
 	set waitfor = FALSE
 	if(!cause_data)
-		cause_data = create_cause_data(initial(name), user)
+		cause_data = create_cause_data(initial(name), user, src)
 	if(mine_level == 1)
 		var/datum/effect_system/smoke_spread/phosphorus/smoke = new /datum/effect_system/smoke_spread/phosphorus/sharp
 		var/smoke_radius = 2

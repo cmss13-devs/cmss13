@@ -1,8 +1,10 @@
 /datum/faction/hyperdyne
 	name = "Hyperdyne Corporation"
 	faction_tag = FACTION_HYPERDYNE
+	base_icon_file = 'icons/mob/hud/factions/hyperdyne.dmi'
 
 /datum/faction/hyperdyne/modify_hud_holder(image/holder, mob/living/carbon/human/user)
+	var/icon/override_icon_file
 	var/hud_icon_state
 	var/obj/item/card/id/id_card = user.get_idcard()
 	var/role
@@ -36,4 +38,4 @@
 		if(JOB_HC_DIRECTOR)
 			hud_icon_state = "director"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', user, "hc_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, user, "hc_[hud_icon_state]")

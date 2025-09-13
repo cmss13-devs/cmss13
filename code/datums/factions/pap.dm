@@ -1,8 +1,10 @@
 /datum/faction/pap
 	name = "People's Armed Police"
 	faction_tag = FACTION_PAP
+	base_icon_file = 'icons/mob/hud/factions/upp.dmi'
 
 /datum/faction/pap/modify_hud_holder(image/holder, mob/living/carbon/human/human)
+	var/icon/override_icon_file
 	var/hud_icon_state
 	var/obj/item/card/id/ID = human.get_idcard()
 	var/_role
@@ -28,4 +30,4 @@
 		if(JOB_PAP_POLKOVNIK)
 			hud_icon_state = "gold"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "pap_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "pap_[hud_icon_state]")

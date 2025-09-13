@@ -1,8 +1,10 @@
 /datum/faction/wo
 	name = "Whiteout"
 	faction_tag = FACTION_WY_DEATHSQUAD
+	base_icon_file = 'icons/mob/hud/factions/wy.dmi'
 
 /datum/faction/wo/modify_hud_holder(image/holder, mob/living/carbon/human/human)
+	var/icon/override_icon_file
 	var/hud_icon_state
 	var/obj/item/card/id/ID = human.get_idcard()
 	var/_role
@@ -20,4 +22,4 @@
 		if(JOB_DS_CU)
 			hud_icon_state = "op"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "wo_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, human, "wo_[hud_icon_state]")

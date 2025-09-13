@@ -235,6 +235,15 @@
 	has_cryostorage = TRUE
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Often found atop heads, slightly less found on those still attached."
+	roles_cap = list(
+		JOB_SQUAD_MARINE = null,
+		JOB_SQUAD_ENGI = 3,
+		JOB_SQUAD_MEDIC = 4,
+		JOB_SQUAD_SMARTGUN = 2,
+		JOB_SQUAD_SPECIALIST = 1,
+		JOB_SQUAD_TEAM_LEADER = 2,
+		JOB_SQUAD_LEADER = 1,
+	)
 
 SQUAD_LANDMARKS(alpha, Alpha)
 SQUAD_CRYOSTORAGE(alpha, Alpha)
@@ -310,6 +319,16 @@ SQUAD_DROPPAD(charlie, Charlie)
 	has_cryostorage = TRUE
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Hard to consider protection, but these types of people don't seek protection."
+
+	roles_cap = list(
+		JOB_SQUAD_MARINE = null,
+		JOB_SQUAD_ENGI = 3,
+		JOB_SQUAD_MEDIC = 4,
+		JOB_SQUAD_SMARTGUN = 2,
+		JOB_SQUAD_SPECIALIST = 1,
+		JOB_SQUAD_TEAM_LEADER = 2,
+		JOB_SQUAD_LEADER = 1,
+	)
 
 SQUAD_LANDMARKS(delta, Delta)
 SQUAD_CRYOSTORAGE(delta, Delta)

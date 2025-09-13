@@ -360,7 +360,7 @@ SQUAD_DROPPAD(echo, Echo)
 	access = list(ACCESS_MARINE_SUPPORT)
 	radio_freq = KILO_FREQ
 	minimap_color = MINIMAP_SQUAD_KILO
-	background_icon = "background_charlie"
+	background_icon = "background_kilo"
 	has_cryostorage = TRUE
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Still has some morning toast crumbs on it."
@@ -388,7 +388,7 @@ SQUAD_DROPPAD(kilo, Kilo)
 	access = list(ACCESS_MARINE_SUPPORT)
 	radio_freq = OSCAR_FREQ
 	minimap_color = MINIMAP_SQUAD_OSCAR
-	background_icon = "background_charlie"
+	background_icon = "background_oscar"
 	has_cryostorage = TRUE
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Still has some morning toast crumbs on it."

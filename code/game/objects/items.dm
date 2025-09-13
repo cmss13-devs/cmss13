@@ -84,6 +84,8 @@
 	var/flags_heat_protection = NO_FLAGS
 	/// flags which determine which body parts are protected from cold. Use the HEAD, UPPER_TORSO, LOWER_TORSO, etc. flags. See setup.dm
 	var/flags_cold_protection = NO_FLAGS
+	/// flags which determine which body parts are hidden from view.
+	var/flags_bodypart_hidden = NO_FLAGS
 	/// Set this variable to determine up to which temperature (IN KELVIN) the item protects against heat damage. Keep at null to disable protection. Only protects areas set by flags_heat_protection flags
 	var/max_heat_protection_temperature
 	/// Set this variable to determine down to which temperature (IN KELVIN) the item protects against cold damage. 0 is NOT an acceptable number due to if(varname) tests!! Keep at null to disable protection. Only protects areas set by flags_cold_protection flags

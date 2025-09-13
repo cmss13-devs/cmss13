@@ -533,6 +533,8 @@
 	COOLDOWN_DECLARE(semiauto_fire_cooldown)
 	/// How long between semi-auto shots this should wait, to reduce possible spam
 	var/semiauto_cooldown_time = 0.2 SECONDS
+	/// Does this gun have smoke
+	var/has_smoke = FALSE
 
 /obj/structure/machinery/m56d_hmg/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
@@ -801,6 +803,14 @@
 	SEND_SIGNAL(in_chamber, COMSIG_BULLET_USER_EFFECTS, operator)
 	playsound(loc, gun_noise, 50, 1)
 	in_chamber.fire_at(target, operator, src, ammo.max_range, ammo.shell_speed)
+	if(has_smoke && target)
+		var/x_component = sin(final_angle) * 40
+		var/y_component = cos(final_angle) * 40
+		var/obj/effect/abstract/particle_holder/gun_smoke = new(get_turf(src), /particles/firing_smoke_large)
+		gun_smoke.particles.velocity = list(x_component, y_component)
+		addtimer(VARSET_CALLBACK(gun_smoke.particles, count, 0), 5)
+		addtimer(VARSET_CALLBACK(gun_smoke.particles, drift, 0), 3)
+		QDEL_IN(gun_smoke, 0.6 SECONDS)
 	if(target)
 		muzzle_flash(final_angle)
 	in_chamber = null

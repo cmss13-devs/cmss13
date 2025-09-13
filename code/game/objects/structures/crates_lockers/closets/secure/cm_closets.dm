@@ -360,7 +360,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
 	density = FALSE
 	store_mobs = FALSE
-	req_access = list(ACCESS_MARINE_SENIOR)
+	req_one_access = list(ACCESS_MARINE_SENIOR)
 	icon_state = "secure_locked_cmdcabinet"
 	icon_closed = "secure_unlocked_cmdcabinet"
 	icon_locked = "secure_locked_cmdcabinet"
@@ -369,3 +369,28 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_off = "secure_unlocked_cmdcabinet"
 	wall_mounted = TRUE
 
+/obj/structure/closet/secure_closet/cmdcabinet/comms_mp
+	name = "communications cabinet"
+	desc = "A bulletproof cabinet containing communications equipment."
+	req_one_access = list(ACCESS_MARINE_BRIG)
+
+/obj/structure/closet/secure_closet/cmdcabinet/comms_mp/Initialize()
+	. = ..()
+	new /obj/item/device/radio(src)
+	new /obj/item/device/radio/listening_bug/radio_linked/mp(src)
+	new /obj/item/device/radio/listening_bug/radio_linked/mp(src)
+	new /obj/item/device/motion_sensor/mp(src)
+	new /obj/item/device/motion_sensor/mp(src)
+	new /obj/item/device/motion_sensor/mp(src)
+
+/obj/structure/closet/secure_closet/cmdcabinet/comms_cl
+	name = "communications cabinet"
+	desc = "A bulletproof cabinet containing communications equipment."
+	req_one_access = list(ACCESS_WY_EXEC, ACCESS_WY_SECURITY)
+
+/obj/structure/closet/secure_closet/cmdcabinet/comms_cl/Initialize()
+	. = ..()
+	new /obj/item/device/radio(src)
+	new /obj/item/device/radio/listening_bug/radio_linked/wy(src)
+	new /obj/item/device/radio/listening_bug/radio_linked/wy(src)
+	new /obj/item/device/motion_sensor/wy(src)

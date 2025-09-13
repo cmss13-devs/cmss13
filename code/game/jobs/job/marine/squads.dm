@@ -383,8 +383,8 @@ SQUAD_DROPPAD(kilo, Kilo)
 
 /datum/squad/marine/oscar
 	name = SQUAD_MARINE_7
-	equipment_color = "#61a3ae"
-	chat_color = "#61a3ae"
+	equipment_color = "#bde331"
+	chat_color = "#c2ee22"
 	access = list(ACCESS_MARINE_SUPPORT)
 	radio_freq = KILO_FREQ
 	minimap_color = MINIMAP_SQUAD_OSCAR
@@ -409,7 +409,7 @@ SQUAD_LANDMARKS(oscar, Oscar)
 SQUAD_CRYOSTORAGE(oscar, Oscar)
 SQUAD_DROPPAD(oscar, Oscar)
 
-SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, "null")
+SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO

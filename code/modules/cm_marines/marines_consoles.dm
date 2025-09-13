@@ -1015,17 +1015,17 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_CHIEF_REQUISITION = 60,
 				JOB_CARGO_TECH = 61,
 				JOB_MESS_SERGEANT = 62,
-				// 70-149: SQUADS (look below)
+				// 70-169: SQUADS (look below)
 				JOB_SYNTH_K9 = 71,
-				// 150+: Civilian/other
-				JOB_CORPORATE_LIAISON = 150,
-				JOB_CIA = 151,
-				JOB_PASSENGER = 152,
+				// 170+: Civilian/other
+				JOB_CORPORATE_LIAISON = 170,
+				JOB_CIA = 171,
+				JOB_PASSENGER = 172,
 				// Non Almayer jobs lower then registered
-				JOB_SYNTH_SURVIVOR = 160,
-				JOB_SURVIVOR = 161,
-				JOB_COLONIST = 162,
-				JOB_WORKING_JOE = 163,
+				JOB_SYNTH_SURVIVOR = 180,
+				JOB_SURVIVOR = 181,
+				JOB_COLONIST = 182,
+				JOB_WORKING_JOE = 183,
 
 				// WO jobs
 				// 10-19: Command

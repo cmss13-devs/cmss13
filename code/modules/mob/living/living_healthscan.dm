@@ -187,6 +187,9 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			if((!limb.brute_dam && !limb.burn_dam && !(limb.status & LIMB_DESTROYED)) && !bleeding_check && !internal_bleeding_check && !(implant && detail_level >= DETAIL_LEVEL_BODYSCAN ) && !(limb.status & LIMB_UNCALIBRATED_PROSTHETIC) && !(limb.status & LIMB_BROKEN) && !(limb.status & LIMB_SPLINTED) && !(limb.status & LIMB_SPLINTED_INDESTRUCTIBLE) && !(limb.get_incision_depth()))
 				continue
 			var/list/core_body_parts = list("head", "chest", "groin")
+			var/eschar = null
+			if(limb.status & LIMB_ESCHAR)
+				eschar = "Eschar"
 			var/list/current_list = list(
 				"name" = limb.display_name,
 				"brute" = floor(limb.brute_dam),
@@ -195,6 +198,7 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				"salved" = limb.is_salved(),
 				"missing" = (limb.status & LIMB_DESTROYED),
 				"limb_status" = null,
+				"limb_eschar" = eschar,
 				"bleeding" = bleeding_check,
 				"implant" = implant,
 				"internal_bleeding" = internal_bleeding_check

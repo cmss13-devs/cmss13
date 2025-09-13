@@ -286,6 +286,16 @@
 	walltype = WALL_UPP_SHIP
 	icon = 'icons/turf/walls/upp_walls.dmi'
 	icon_state = "uppwall_interior"
+	tiles_with = list(
+		/turf/closed/wall,
+		/obj/structure/window/framed,
+		/obj/structure/window_frame,
+		/obj/structure/girder,
+		/obj/structure/machinery/door,
+		/obj/structure/machinery/cm_vending/sorted/attachments/upp_attachments/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/upp_cargo_ammo/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_guns/upp_cargo_guns/blend,
+	)
 
 /turf/closed/wall/upp_ship/reinforced
 	name = "reinforced hull"

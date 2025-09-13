@@ -41,3 +41,7 @@
 /datum/job/special/cia/grs/teamlead
 	title = JOB_CIA_GRS_TL
 	gear_preset = /datum/equipment_preset/cia_global_response/leader
+
+/datum/job/special/cia/grs/commander
+	title = JOB_CIA_GRS_CDR
+	gear_preset = /datum/equipment_preset/cia_global_response/commander

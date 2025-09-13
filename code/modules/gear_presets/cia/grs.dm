@@ -450,6 +450,10 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/mp5a5_heap, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mp5a5_heap/black, WEAR_L_STORE)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medkit/wy/full_elite, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs, WEAR_WAIST)
+
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/defibrillator/upgraded, WEAR_IN_BACK)
@@ -486,7 +490,6 @@
 	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
-
 
 	switch(strength_type)
 		if(STRENGTH_WEAK, STRENGTH_SURVIVOR)
@@ -541,6 +544,98 @@
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_R_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4_breaching, WEAR_L_STORE)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/strong, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive/super, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_IN_BACK)
+
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/cia_global_response/commander
+	name = JOB_CIA_GRS_CDR
+	paygrades = list(PAY_SHORT_GRS_CDR = JOB_PLAYTIME_TIER_0)
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	assignment = JOB_CIA_GRS_CDR
+	job_title = JOB_CIA_GRS_CDR
+	skills = /datum/skills/cia/global_response/commander
+	minimap_icon = "pmc_sd"
+	role_comm_title = "CDR"
+
+/datum/equipment_preset/cia_global_response/commander/deathsquad
+	strength_type = STRENGTH_DEATH
+
+/datum/equipment_preset/cia_global_response/commander/weak
+	strength_type = STRENGTH_WEAK
+
+/datum/equipment_preset/cia_global_response/commander/weak/survivor
+	strength_type = STRENGTH_SURVIVOR
+
+/datum/equipment_preset/cia_global_response/commander/load_gear(mob/living/carbon/human/new_human)
+	load_standard_gear(new_human)
+
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing/black, WEAR_ACCESSORY)
+	new_human.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+
+	new_human.equip_to_slot_or_del(new /obj/item/tool/crowbar/tactical, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
+	new_human.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
+
+	switch(strength_type)
+		if(STRENGTH_WEAK, STRENGTH_SURVIVOR)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ext, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ext, WEAR_IN_ACCESSORY)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/commander/half, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/m16a6, WEAR_J_STORE)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m16a5/ap/black, WEAR_L_STORE)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_IN_BACK)
+			if(strength_type == STRENGTH_SURVIVOR)
+				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
+
+		if(STRENGTH_NORM)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ap, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ap, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ap, WEAR_IN_ACCESSORY)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/commander, WEAR_WAIST)
+
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/m16a6, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ext, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ext, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ext, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/ext, WEAR_IN_JACKET)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/no_stims, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m16a5/ap/black, WEAR_L_STORE)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/strong, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive, WEAR_IN_BACK)
+			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717, WEAR_IN_BACK)
+
+		if(STRENGTH_DEATH)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/incendiary, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/incendiary, WEAR_IN_ACCESSORY)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/incendiary, WEAR_IN_ACCESSORY)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/commander/boom, WEAR_WAIST)
+
+			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m16/m16a5/m16a6/heap, WEAR_J_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/heap, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/heap, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/heap, WEAR_IN_JACKET)
+			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/m16a5/heap, WEAR_IN_JACKET)
+
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_R_STORE)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/m16a5/heap/black, WEAR_L_STORE)
 
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/m15, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/phosphorus/strong, WEAR_IN_BACK)

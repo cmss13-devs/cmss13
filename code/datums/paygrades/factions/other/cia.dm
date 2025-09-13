@@ -113,5 +113,12 @@
 	pay_multiplier = 3.5
 	officer_grade = GRADE_OFFICER
 
+/datum/paygrade/cia/grs/commander
+	paygrade = PAY_SHORT_GRS_CDR
+	name = "Commander"
+	prefix = "CDR."
+	pay_multiplier = 4
+	officer_grade = GRADE_FLAG
+
 
 

@@ -76,6 +76,12 @@
 	desc = "A magazine for the legendary M1911 pistol. Holds eight concussive armor-piercing rounds that can briefly knock people down."
 	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT_AP
+
+/obj/item/ammo_magazine/pistol/m1911/highimpact/explosive
+	name = "\improper M1911 high-impact explosive magazine (.45)"
+	desc = "A magazine for the legendary M1911 pistol. Holds eight concussive explosive rounds that can briefly knock people down."
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/explosive
+	ammo_band_color = AMMO_BAND_COLOR_EXPLOSIVE
 //-------------------------------------------------------
 //88M4 based off VP70
 

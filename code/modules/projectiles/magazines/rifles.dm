@@ -271,6 +271,12 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
 
+/obj/item/ammo_magazine/rifle/m16/m16a5/incendiary
+	name = "\improper M16A5 incendiary magazine (5.56x45mm)"
+	desc = "An incendiary 5.56x45mm magazine for the M16A5 assault rifle. It holds an additional 10 rounds compared to the older M16 magazine."
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+
 /obj/item/ammo_magazine/rifle/m16/m16a5/heap
 	name = "\improper M16A5 HEAP magazine (5.56x45mm)"
 	desc = "A high-explosive armor-piercing 5.56x45mm magazine for the M16A5 assault rifle."

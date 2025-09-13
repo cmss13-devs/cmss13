@@ -35,6 +35,8 @@
 			hud_icon_state = "grs_sniper"
 		if(JOB_CIA_GRS_TL)
 			hud_icon_state = "grs_tl"
+		if(JOB_CIA_GRS_CDR)
+			hud_icon_state = "grs_cdr"
 	if(hud_icon_state)
 		holder.overlays += image('icons/mob/hud/factions/cia.dmi', H, "ua_[hud_icon_state]")
 

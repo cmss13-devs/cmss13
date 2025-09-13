@@ -448,11 +448,22 @@ SUBSYSTEM_DEF(ticker)
 	if(mode && istype(mode,/datum/game_mode/huntergames)) // || istype(mode,/datum/game_mode/whiskey_outpost)
 		return
 
+	var/list/scaled_squads = list()
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(target_squad)
+			continue
+
+		if(target_squad.riflemen_limited)
+			scaled_squads += target_squad.name
+
 	var/list/random_players = shuffle(GLOB.human_mob_list)
+	var/list/players_equipped = list()
 	for(var/mob/living/carbon/human/player in random_players)
 		if(player.mind)
 			if(player.job == JOB_CO)
 				captainless = FALSE
+			if(player.job == JOB_SQUAD_MARINE && player.client?.prefs?.preferred_squad in scaled_squads)
+				continue
 			if(player.job)
 				INVOKE_ASYNC(GLOB.RoleAuthority, TYPE_PROC_REF(/datum/authority/branch/role, equip_role), player, GLOB.RoleAuthority.roles_by_name[player.job], FALSE)
 				if(player.ckey in GLOB.donator_items)
@@ -464,6 +475,32 @@ SUBSYSTEM_DEF(ticker)
 					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 				if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
 					msg_sea(("NEW PLAYER: <b>[key_name(player, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(player)] - Current location: [get_area(player)]"), TRUE)
+		players_equipped += player
+	random_players -= players_equipped
+
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(!target_squad)
+			continue
+
+		if(!target_squad.riflemen_limited)
+			continue
+
+		target_squad.roles_cap[JOB_SQUAD_MARINE] = floor(get_total_squad_marines() * target_squad.riflemen_limited / 100)
+
+	for(var/mob/living/carbon/human/player in random_players)
+		if(player.mind)
+			if(player.job)
+				INVOKE_ASYNC(GLOB.RoleAuthority, TYPE_PROC_REF(/datum/authority/branch/role, equip_role), player, GLOB.RoleAuthority.roles_by_name[player.job], FALSE)
+				if(player.ckey in GLOB.donator_items)
+					to_chat(player, SPAN_BOLDNOTICE("You have gear available in the personal gear vendor near Requisitions."))
+
+			if(player.client)
+				var/client/C = player.client
+				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)]</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+				if(C.player_data && C.player_data.playtime_loaded && ((round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1)) <= 5))
+					msg_sea(("NEW PLAYER: <b>[key_name(player, 0, 1, 0)]</b> only has [(round(C.get_total_human_playtime() DECISECONDS_TO_HOURS, 0.1))] hours as a human. Current role: [get_actual_job_name(player)] - Current location: [get_area(player)]"), TRUE)
+
 	if(captainless)
 		for(var/mob/M in GLOB.player_list)
 			if(!istype(M,/mob/new_player))

@@ -474,6 +474,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 
 	if(new_job.flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 		randomize_squad(new_human)
+
 	if(!late_join)
 		prioritize_specialist(new_human)
 
@@ -571,7 +572,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.put_marine_in_squad(human))
 				return
 
-		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
+		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]) && !squad.riflemen_limited) // Don't put people against their preference in limited squads
 			lowest = squad
 	if(!lowest)
 		lowest = locate(/datum/squad/marine/cryo) in squads

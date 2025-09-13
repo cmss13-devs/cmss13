@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec_heavy, list(
 		return
 	if(!user.skills.get_skill_level(SKILL_SPEC_WEAPONS) == SKILL_SPEC_TRAINED)
 		return
-	if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)))
+	if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)) && squad_tag != "null")
 		to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
 		return
 	var/datum/specialist_set/chosen_set = get_specialist_set(user)

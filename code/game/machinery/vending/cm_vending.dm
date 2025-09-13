@@ -552,7 +552,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 				vendor_successful_vend(itemspec, user)
 				add_fingerprint(user)
 				return TRUE
-			if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)))
+			if((!human_user.assigned_squad && squad_tag) || (!human_user.assigned_squad?.omni_squad_vendor && (squad_tag && human_user.assigned_squad.name != squad_tag)) && squad_tag != "null")
 				to_chat(user, SPAN_WARNING("This machine isn't for your squad."))
 				vend_fail()
 				return FALSE

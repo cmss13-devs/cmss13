@@ -390,7 +390,7 @@ SQUAD_LANDMARKS(oscar, Oscar)
 SQUAD_CRYOSTORAGE(oscar, Oscar)
 SQUAD_DROPPAD(oscar, Oscar)
 
-SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
+SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, "null")
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO

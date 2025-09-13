@@ -656,6 +656,13 @@
 	desc = "Scientists use these suspended nets to superimpose a grid over a patch of ground for study."
 	icon_state = "soil_grid"
 
+/obj/structure/prop/ice_colony/soil_net/navalis_indestructible
+	name = "safety net"
+	desc = "Special net intended to catch anyone, or anything, that falls off the rig. Difficult to move around in, but preferable to falling into the endless ocean below."
+	unslashable = TRUE
+	unacidable = TRUE
+	explo_proof = TRUE
+
 /obj/structure/prop/ice_colony/ice_crystal
 	name = "ice crystal"
 	desc = "It is a giant crystal of ice. The chemical process that keeps it frozen despite major seasonal temperature flux is what the United American Greater Argentinian science team is studying here on the Snowball."
@@ -1181,3 +1188,45 @@
 	if(initial(emote.sound))
 		playsound(loc, initial(emote.sound), 50, FALSE)
 	return TRUE
+
+//-- Navails Platform 13 Props --//
+
+// Support Beam
+
+/obj/structure/prop/oilrig/support_beam
+	name = "support beam"
+	desc = "Marval of human engineering, keeping a metal platform afloat on the seas of a distant alien world."
+	icon = 'icons/obj/structures/props/oilrig/support_beam.dmi'
+	icon_state = "support_beam"
+	bound_height = 64
+	bound_width = 64
+
+/obj/structure/prop/oilrig/support_beam/blue
+	icon_state = "support_beam_blue"
+
+/obj/structure/prop/oilrig/support_beam/green
+	icon_state = "support_beam_green"
+
+/obj/structure/prop/oilrig/support_beam/aqua
+	icon_state = "support_beam_aqua"
+
+/obj/structure/prop/oilrig/support_beam/red
+	icon_state = "support_beam_red"
+
+/obj/structure/prop/oilrig/support_beam/brown
+	icon_state = "support_beam_brown"
+
+// Half-Grate Edge
+
+/obj/effect/decal/navalis/plate_edge
+	name = "solid metal grate"
+	desc = "A metal grate."
+	icon = 'icons/obj/structures/props/hybrisa/grates.dmi'
+	icon_state = "zhalfgrate1"
+	layer = HATCH_LAYER
+
+/obj/effect/decal/navalis/plate_edge/darker
+	color = "#ABA39D"
+
+/obj/effect/decal/navalis/plate_edge/see_through
+	icon_state = "zhalfgrate2"

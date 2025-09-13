@@ -1,0 +1,62 @@
+{
+    "map_name": "Navalis Platform 13 (singlez)",
+    "short_name": "Navalis Single-Z",
+    "map_path": "map_files/Navalis_Platform_13_singlez",
+    "map_file": "Navalis_Platform_13_singlez.dmm",
+
+    "weather_holder": "/datum/weather_ss_map_holder/navalis_platform_13",
+    "survivor_types": [
+        "/datum/equipment_preset/survivor/navalis/automation_specialist",
+        "/datum/equipment_preset/survivor/navalis/radio_operator",
+        "/datum/equipment_preset/survivor/navalis/platform_guard",
+        "/datum/equipment_preset/survivor/navalis/exo_geologist",
+        "/datum/equipment_preset/survivor/navalis/medic",
+        "/datum/equipment_preset/survivor/navalis/first_officer",
+        "/datum/equipment_preset/survivor/navalis/operations_engineer",
+        "/datum/equipment_preset/survivor/navalis/maint_tech",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/operative",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/tech",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/medic",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/spec",
+        "/datum/equipment_preset/survivor/navalis/clf_wet_ops/leader"
+    ],
+    "defcon_triggers": [
+        3750,
+        2600,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "It has been weeks since the outbreak began. What started as whispers in the dark and the sounds of something crawling in the dank and murky corners of the platform, quickly blossomed into an orgy of violence and chaos, all culminating as a cyclone descended upon the rig. Now, the lifeboats are gone, the upper-decks are sealed, and something worse cries out from the deepest parts of the residential deck, something so alien that even the Xenomorphs appear to shudder at those sounds. The cyclone has given you and your fellows a brief reprieve, but as it lifts, only one question now remains. Can you survive until help arrives?",
+    "announce_text": "An automated distress signal has been received from \"Navalis Platform 13\" on the planet Aires.\n\nNP-13 is an off-shore platform that acts as the command and control hub for dozens of other resource extraction platforms. The strategic value of the continued operation of these platforms is sufficent to authorize deployment of military assets to resolve the issue.\n\nThe ###SHIPNAME### has been dispatched.",
+    "liaison_briefing": "maps/map_briefings/cl_brief_navalis.html",
+    "map_item_type": "/obj/item/map/navalis",
+	"monkey_types": [
+        "stok"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [
+        {
+            "Ground": true,
+            "Up": 1
+        },
+        {
+            "Ground": true,
+            "Down": -1
+        }
+    ],
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    },
+    "camouflage": "classic",
+	"gamemodes": [
+        "Distress Signal",
+        "Hunter Games",
+        "Hive Wars",
+        "Faction Clash",
+        "Infection"
+    ]
+}

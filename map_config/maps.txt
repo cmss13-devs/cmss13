@@ -60,6 +60,13 @@ map lv759_hybrisa_prospera
 	minplayers 130
 endmap
 
+map navalis_platform_13
+endmap
+
+map navalis_platform_13_singlez
+	disabled
+endmap
+
 map new_varadero
 endmap
 

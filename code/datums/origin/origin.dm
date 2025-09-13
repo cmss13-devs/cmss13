@@ -3,7 +3,13 @@
 	var/desc = "You were born somewhere, someplace. The area is known for doing things, you think."
 
 /datum/origin/proc/generate_human_name(gender = MALE)
-	return pick(gender == MALE ? GLOB.first_names_male : GLOB.first_names_female) + " " + pick(GLOB.last_names)
+	switch(gender)
+		if(FEMALE)
+			return capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+		if(MALE)
+			return capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names))
+		if(PLURAL)
+			return capitalize(pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))) + " " + capitalize(pick(GLOB.last_names))
 
 /// Return null if the name is correct, otherwise return a string containing the error message
 /datum/origin/proc/validate_name(name_to_check)

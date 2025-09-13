@@ -15,11 +15,10 @@
 
 
 /datum/equipment_preset/contractor/load_name(mob/living/carbon/human/new_human)
-	new_human.gender = pick(60;MALE,40;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	var/random_name
-	random_name = capitalize(pick(new_human.gender == MALE ? GLOB.first_names_male : GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names))
+	var/random_name = random_name(new_human.gender)
 	new_human.change_real_name(new_human, random_name)
 	new_human.name = new_human.real_name
 	new_human.age = rand(22,45)
@@ -387,14 +386,17 @@
 		new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/contractor/duty/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male)]"
-	else
-		random_name = "[pick(GLOB.first_names_female)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male)]"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")
@@ -784,14 +786,17 @@
 		new_human.allow_gun_usage = FALSE
 
 /datum/equipment_preset/contractor/covert/synth/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(50;MALE,50;FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
 	var/random_name
-	if(new_human.gender == MALE)
-		random_name = "[pick(GLOB.first_names_male)]"
-	else
-		random_name = "[pick(GLOB.first_names_female)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male)]"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male), pick(GLOB.first_names_female))]"
 
 	if(new_human.gender == MALE)
 		new_human.f_style = pick("3 O'clock Shadow", "3 O'clock Moustache", "5 O'clock Shadow", "5 O'clock Moustache")

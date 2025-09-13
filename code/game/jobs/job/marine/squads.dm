@@ -56,43 +56,43 @@
 /obj/structure/machinery/cm_vending/clothing/engi/_name {\
 	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_ENGPREP, _access);\
-	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/engi;\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/leader/_name{\
 	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_LEADER, _access);\
-	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/lead;\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/medic/_name{\
 	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_MEDPREP, _access);\
-	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/med;\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/marine/_name{\
 	squad_tag = #_tag;\
 	req_access = list(_access);\
-	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/smartgun/_name{\
 	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_SMARTPREP, _access);\
-	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/specialist/_name{\
 	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_SPECPREP, _access);\
-	headset_type = /obj/item/device/radio/headset/almayer/marine/_name;\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }\
 \
 /obj/structure/machinery/cm_vending/clothing/tl/_name{\
 	squad_tag = #_tag;\
 	req_access = list(ACCESS_MARINE_TL_PREP, _access);\
-	headset_type = /obj/item/device/radio/headset/almayer/marine/_name/tl;\
+	headset_type = /obj/item/device/radio/headset/almayer/marine/self_setting;\
 }
 
 //This datum keeps track of individual squads. New squads can be added without any problem but to give them
@@ -150,6 +150,8 @@
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
+	/// Is this squad's rifleman limited, meaning the total population of the squad can only be X% of the population of all squads, 0 means disabled
+	var/riflemen_limited = 0
 	/// Squad roles actual number of players list
 	var/list/roles_in = list()
 	/// Squad headsets default radio frequency
@@ -251,6 +253,19 @@ SQUAD_DROPPAD(alpha, Alpha)
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "It has quite a lot of debris on it, the person wearing this probably moves less than a wall."
 
+	roles_cap = list(
+		JOB_SQUAD_MARINE = 0,
+		JOB_SQUAD_ENGI = 2,
+		JOB_SQUAD_MEDIC = 2,
+		JOB_SQUAD_SMARTGUN = 0,
+		JOB_SQUAD_SPECIALIST = 0,
+		JOB_SQUAD_TEAM_LEADER = 1,
+		JOB_SQUAD_LEADER = 1,
+	)
+
+	riflemen_limited = 20
+
+
 SQUAD_LANDMARKS(bravo, Bravo)
 SQUAD_CRYOSTORAGE(bravo, Bravo)
 SQUAD_VENDORS(bravo, ACCESS_MARINE_BRAVO, Bravo)
@@ -268,9 +283,20 @@ SQUAD_DROPPAD(bravo, Bravo)
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Still has some morning toast crumbs on it."
 
+	roles_cap = list(
+		JOB_SQUAD_MARINE = 0,
+		JOB_SQUAD_ENGI = 1,
+		JOB_SQUAD_MEDIC = 1,
+		JOB_SQUAD_SMARTGUN = 0,
+		JOB_SQUAD_SPECIALIST = 1,
+		JOB_SQUAD_TEAM_LEADER = 0,
+		JOB_SQUAD_LEADER = 1,
+	)
+
+	riflemen_limited = 10
+
 SQUAD_LANDMARKS(charlie, Charlie)
 SQUAD_CRYOSTORAGE(charlie, Charlie)
-SQUAD_VENDORS(charlie, ACCESS_MARINE_SUPPORT, Charlie)
 SQUAD_DROPPAD(charlie, Charlie)
 
 /datum/squad/marine/delta
@@ -320,9 +346,20 @@ SQUAD_DROPPAD(echo, Echo)
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Still has some morning toast crumbs on it."
 
+	roles_cap = list(
+		JOB_SQUAD_MARINE = 0,
+		JOB_SQUAD_ENGI = 1,
+		JOB_SQUAD_MEDIC = 1,
+		JOB_SQUAD_SMARTGUN = 0,
+		JOB_SQUAD_SPECIALIST = 1,
+		JOB_SQUAD_TEAM_LEADER = 0,
+		JOB_SQUAD_LEADER = 1,
+	)
+
+	riflemen_limited = 10
+
 SQUAD_LANDMARKS(kilo, Kilo)
 SQUAD_CRYOSTORAGE(kilo, Kilo)
-SQUAD_VENDORS(kilo, ACCESS_MARINE_SUPPORT, Kilo)
 SQUAD_DROPPAD(kilo, Kilo)
 
 /datum/squad/marine/oscar
@@ -337,10 +374,23 @@ SQUAD_DROPPAD(kilo, Kilo)
 	add_to_glob_squad_list = TRUE
 	beret_flavortext = "Still has some morning toast crumbs on it."
 
+	roles_cap = list(
+		JOB_SQUAD_MARINE = 0,
+		JOB_SQUAD_ENGI = 1,
+		JOB_SQUAD_MEDIC = 1,
+		JOB_SQUAD_SMARTGUN = 0,
+		JOB_SQUAD_SPECIALIST = 1,
+		JOB_SQUAD_TEAM_LEADER = 0,
+		JOB_SQUAD_LEADER = 1,
+	)
+
+	riflemen_limited = 10
+
 SQUAD_LANDMARKS(oscar, Oscar)
 SQUAD_CRYOSTORAGE(oscar, Oscar)
-SQUAD_VENDORS(oscar, ACCESS_MARINE_SUPPORT, Oscar)
 SQUAD_DROPPAD(oscar, Oscar)
+
+SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 
 /datum/squad/marine/cryo
 	name = SQUAD_MARINE_CRYO

@@ -9263,7 +9263,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/telecomms)
 "axp" = (
-/obj/structure/machinery/cm_vending/clothing/leader/oscar,
+/obj/structure/machinery/cm_vending/clothing/leader/support,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/support)
 "axq" = (
@@ -36719,7 +36719,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/cm_vending/clothing/leader/kilo,
+/obj/structure/machinery/cm_vending/clothing/leader/support,
 /turf/open/floor/almayer/blue/west,
 /area/almayer/squads/support)
 "bVs" = (
@@ -36741,10 +36741,6 @@
 /obj/structure/platform_decoration/metal/almayer/west,
 /turf/open/floor/almayer/red/north,
 /area/almayer/lifeboat_pumps/south1)
-"bVy" = (
-/obj/structure/machinery/cm_vending/clothing/engi/oscar,
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/support)
 "bVE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Bay";
@@ -37554,7 +37550,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/platoon2_shared)
 "cgq" = (
-/obj/structure/machinery/cm_vending/clothing/medic/charlie,
+/obj/structure/machinery/cm_vending/clothing/medic/bravo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "cgr" = (
@@ -37586,10 +37582,6 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/bravo)
-"cgv" = (
-/obj/structure/machinery/cm_vending/clothing/leader/charlie,
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/support)
 "cgy" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -37684,7 +37676,7 @@
 /turf/open/floor/almayer/orange/east,
 /area/almayer/squads/bravo)
 "chm" = (
-/obj/structure/machinery/cm_vending/clothing/engi/charlie,
+/obj/structure/machinery/cm_vending/clothing/engi/bravo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "chp" = (
@@ -38076,7 +38068,7 @@
 /turf/open/floor/almayer/blackcorner/south,
 /area/almayer/squads/support)
 "cln" = (
-/obj/structure/machinery/cm_vending/clothing/leader/charlie,
+/obj/structure/machinery/cm_vending/clothing/leader/bravo,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/bravo)
 "clo" = (
@@ -38136,10 +38128,6 @@
 "clK" = (
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
-"clL" = (
-/obj/structure/machinery/cm_vending/clothing/specialist/charlie,
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/support)
 "clM" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -38169,10 +38157,6 @@
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/squads/req)
-"clW" = (
-/obj/structure/machinery/cm_vending/clothing/medic/charlie,
-/turf/open/floor/almayer/plate,
-/area/almayer/squads/support)
 "clX" = (
 /obj/structure/machinery/cm_vending/gear/smartgun,
 /obj/structure/sign/safety/hazard{
@@ -39764,7 +39748,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/cm_vending/clothing/medic/kilo,
+/obj/structure/machinery/cm_vending/clothing/medic/support,
 /turf/open/floor/almayer/blue/west,
 /area/almayer/squads/support)
 "cQg" = (
@@ -40971,8 +40955,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "dpO" = (
-/obj/structure/machinery/cm_vending/clothing/marine/bravo{
-	density = 0;
+/obj/structure/machinery/cm_vending/clothing/marine/support{
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
@@ -46222,7 +46205,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/lower/port_midship_hallway)
 "fwb" = (
-/obj/structure/machinery/cm_vending/clothing/engi/charlie,
+/obj/structure/machinery/cm_vending/clothing/engi/support,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/support)
 "fwD" = (
@@ -50745,7 +50728,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/cm_vending/clothing/engi/kilo,
+/obj/structure/machinery/cm_vending/clothing/engi/support,
 /turf/open/floor/almayer/blue/west,
 /area/almayer/squads/support)
 "hsu" = (
@@ -60782,7 +60765,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/underdeck/hangar)
 "lAQ" = (
-/obj/structure/machinery/cm_vending/clothing/tl/charlie,
+/obj/structure/machinery/cm_vending/clothing/tl/bravo,
 /turf/open/floor/almayer/emerald/west,
 /area/almayer/squads/bravo)
 "lAW" = (
@@ -71665,7 +71648,7 @@
 /turf/open/floor/almayer/red/east,
 /area/almayer/lifeboat_pumps/north2)
 "pZw" = (
-/obj/structure/machinery/cm_vending/clothing/specialist/oscar,
+/obj/structure/machinery/cm_vending/clothing/specialist/support,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/support)
 "pZH" = (
@@ -75824,7 +75807,7 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/lower/workshop)
 "rDF" = (
-/obj/structure/machinery/cm_vending/clothing/medic/oscar,
+/obj/structure/machinery/cm_vending/clothing/medic/support,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/support)
 "rDH" = (
@@ -85181,7 +85164,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/cm_vending/clothing/specialist/kilo,
+/obj/structure/machinery/cm_vending/clothing/specialist/support,
 /turf/open/floor/almayer/blue/west,
 /area/almayer/squads/support)
 "vpW" = (
@@ -144313,7 +144296,7 @@ rLP
 hLS
 tHv
 bJC
-clW
+rDF
 cQc
 rDF
 bJC
@@ -144830,7 +144813,7 @@ xoe
 bJC
 fwb
 hss
-bVy
+fwb
 bJC
 ljv
 ljv
@@ -145343,7 +145326,7 @@ bJC
 rvT
 xoe
 bJC
-clL
+pZw
 vpV
 pZw
 bJC
@@ -145859,7 +145842,7 @@ rvT
 alZ
 pbV
 bJC
-cgv
+axp
 bVq
 axp
 ljv

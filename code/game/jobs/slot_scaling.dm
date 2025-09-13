@@ -5,6 +5,13 @@
 			count++
 	return count
 
+/proc/get_total_squad_marines()
+	var/count = 0
+	for(var/mob/living/carbon/human/cur_human in GLOB.human_mob_list)
+		if(H.faction == FACTION_MARINE && cur_human.assigned_squad)
+			count++
+	return count
+
 // https://docs.google.com/spreadsheets/d/1PlnIwKhq-bVWWFPoBrzWYh1mWK04pyBSQUtUMEw3qSw/edit#gid=1290768907
 
 /proc/job_slot_formula(marine_count, factor, c, min, max)

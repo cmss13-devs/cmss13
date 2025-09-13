@@ -149,6 +149,11 @@
 			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
 			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
 
+			if(!target_squad.riflemen_limited)
+				continue
+
+			target_squad.roles_cap[JOB_SQUAD_MARINE] = floor(get_total_squad_marines() * target_squad.riflemen_limited / 100)
+
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 
 	if (ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)

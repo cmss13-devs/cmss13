@@ -1439,6 +1439,10 @@ GLOBAL_LIST_INIT(cm_vending_gear_corresponding_types_list, list(
 			else
 				user.equip_to_appropriate_slot(new_item)
 
+			if(istype(new_item, /obj/item/device/radio/headset/almayer/marine/self_setting))
+				var/obj/item/device/radio/headset/almayer/marine/self_setting/new_headset = new_item
+				new_headset.self_set()
+
 	if(vend_flags & VEND_TO_HAND)
 		if(user.client?.prefs && (user.client?.prefs?.toggle_prefs & TOGGLE_VEND_ITEM_TO_HAND))
 			if(Adjacent(user))

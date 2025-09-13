@@ -60,7 +60,7 @@
 /turf/open/floor/asteroidfloor/north,
 /area/bigredv2/outside/c)
 "R" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/admin_building)
 "S" = (
 /obj/structure/pipes/standard/simple/hidden/green,

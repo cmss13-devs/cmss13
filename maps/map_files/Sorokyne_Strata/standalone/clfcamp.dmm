@@ -1077,7 +1077,7 @@
 /turf/open/floor/wood,
 /area/strata/interior/outpost/clf_dorms)
 "dG" = (
-/turf/closed/wall/strata_outpost/reinforced/hull,
+/turf/closed/wall/strata_outpost/hull,
 /area/strata/exterior/far_north_outpost)
 "dT" = (
 /obj/structure/platform_decoration/stone/soro/north,
@@ -1349,7 +1349,7 @@
 /turf/closed/wall/strata_outpost,
 /area/strata/interior/checkpoints/clf)
 "nN" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/interior/outpost/clf_dorms)
 "oa" = (
 /obj/structure/barricade/handrail/strata{
@@ -1781,7 +1781,7 @@
 /turf/open/floor/wood,
 /area/strata/interior/outpost/clf_dorms)
 "Cr" = (
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/interior/checkpoints/clf)
 "CI" = (
 /obj/effect/blocker/sorokyne_hot_water,
@@ -2425,7 +2425,7 @@
 	pixel_x = -18;
 	pixel_y = 10
 	},
-/turf/closed/wall/strata_outpost/reinforced,
+/turf/closed/wall/r_wall/strata_outpost,
 /area/strata/interior/checkpoints/clf)
 "YU" = (
 /obj/effect/landmark/survivor_spawner/clf_engi/soro,

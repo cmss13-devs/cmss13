@@ -227,6 +227,8 @@
 		return
 	if(HAS_TRAIT(enemy, TRAIT_ABILITY_BURROWED))
 		return
+	if(enemy.is_on_tank_hull())
+		return
 
 	enemy.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [enemy] moves in front of it."),
 	SPAN_DANGER("[icon2html(src, enemy)] The [name] clicks as you move in front of it."),

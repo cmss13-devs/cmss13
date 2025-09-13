@@ -467,6 +467,16 @@
 		return FALSE
 	permutated |= O
 
+	// this block allows us to shoot people ontop of the tank by sprite clicking
+	var/obj/vehicle/multitile/tank/M = _owning_tank_of(O)
+	if(M)
+		var/mob/living/F = isliving(firer) ? firer : null
+		var/mob/living/OR = isliving(original) ? original : null
+		if(F && F.tank_on_top_of == M)
+			return FALSE
+		if(OR && OR.tank_on_top_of == M)
+			return FALSE
+
 	var/hit_chance = O.get_projectile_hit_boolean(src)
 	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
 		SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_OBJ, O)
@@ -1297,6 +1307,12 @@
 	if(dy == 0) //above or below you
 		if(dx == -1 || dx == 1)
 			return TRUE
+
+// helper proc to see if we are about to hit a tank
+/obj/projectile/proc/_owning_tank_of(atom/A)
+	if(istype(A, /obj/vehicle/multitile/tank))
+		return A
+	return null
 
 /obj/projectile/vulture
 	accuracy_range_falloff = 10

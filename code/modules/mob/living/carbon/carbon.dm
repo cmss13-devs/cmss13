@@ -29,6 +29,15 @@
 	halimage = null
 	halbody = null
 
+// Same as the parent proc, but adds 1 additional check for climb_down
+/mob/living/carbon/_handle_tank_edge_move(NewLoc, direct)
+	var/obj/vehicle/multitile/tank/T = tank_on_top_of
+	var/result = ..()
+	if(result)
+		var/turf/edge = get_step(get_turf(src), direct)
+		if(T.climb_down(src, edge))
+			return TRUE
+	return result
 
 /mob/living/carbon/Move(NewLoc, direct)
 	. = ..()

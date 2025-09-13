@@ -2645,6 +2645,7 @@
 #include "code\modules\vehicles\multitile\multitile_verbs.dm"
 #include "code\modules\vehicles\tank\interior.dm"
 #include "code\modules\vehicles\tank\tank.dm"
+#include "code\modules\vehicles\tank\tank_helpers.dm"
 #include "code\modules\vehicles\van\box_van.dm"
 #include "code\modules\vehicles\van\clf_van.dm"
 #include "code\modules\vehicles\van\interior.dm"

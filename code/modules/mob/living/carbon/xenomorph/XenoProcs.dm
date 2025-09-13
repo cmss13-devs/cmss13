@@ -368,6 +368,17 @@
 		obj_launch_collision(O)
 		return
 
+	// Castes that can pounce can use this ability to instantly climb ontop or down a tank with no delay.
+	var/obj/vehicle/multitile/tank/T = null
+	if(istype(O, /obj/vehicle/multitile/tank))
+		T = O
+	if(T)
+		var/turf/current = get_turf(src)
+		var/turf/facing = get_step(current, dir)
+		if(facing && (facing in T.locs))
+			forceMove(facing)
+			T.mark_on_top(src)
+
 	if (pounceAction.should_destroy_objects)
 		if(istype(O, /obj/structure/surface/table) || istype(O, /obj/structure/surface/rack) || istype(O, /obj/structure/window_frame))
 			var/obj/structure/S = O

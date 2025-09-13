@@ -501,11 +501,14 @@
 
 /obj/structure/mineral_door/resin/Destroy()
 	if(upper_wall)
-		QDEL_NULL(upper_wall)
+		upper_wall.dismantle_wall()
+		upper_wall = null
 	relativewall_neighbours()
 	var/area/area = get_area(src)
 	area?.current_resin_count--
 	var/turf/base_turf = loc
+	if(upper_wall)
+		upper_wall.dismantle_wall()
 	spawn(0)
 		var/turf/adjacent_turf
 		for(var/cardinal in GLOB.cardinals)

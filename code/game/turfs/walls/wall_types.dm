@@ -821,7 +821,7 @@
 		area?.current_resin_count--
 
 	if(upper_wall)
-		qdel(upper_wall)
+		upper_wall.dismantle_wall()
 
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER
@@ -841,7 +841,7 @@
 	. = ..()
 	var/turf/below = SSmapping.get_turf_below(src)
 	if(!below)
-		qdel(src)
+		dismantle_wall()
 	if(istype(below, /turf/closed/wall/resin))
 		wall_below = below
 		wall_below.upper_wall = src
@@ -853,7 +853,7 @@
 			door_below.upper_wall = src
 			return
 
-	qdel(src)
+	dismantle_wall()
 
 
 /turf/closed/wall/resin/above/Destroy(force)
@@ -872,7 +872,7 @@
 	if(door_below)
 		door_below.take_damage(dam,M)
 		return
-	qdel(src) //something went wrong and we are floating
+	dismantle_wall() //something went wrong and we are floating
 
 
 /turf/closed/wall/resin/pillar

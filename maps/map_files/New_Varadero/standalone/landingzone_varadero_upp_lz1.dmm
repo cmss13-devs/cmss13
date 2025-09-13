@@ -484,7 +484,7 @@
 /turf/open/floor/plating/plating_catwalk/strata,
 /area/event/metal/dynamic/lit)
 "ib" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},

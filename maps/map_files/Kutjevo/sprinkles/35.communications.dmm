@@ -383,7 +383,7 @@
 /turf/open/floor/kutjevo/tan/grey_edge/north,
 /area/kutjevo/interior/construction/signal_tower)
 "YG" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction/signal_tower)

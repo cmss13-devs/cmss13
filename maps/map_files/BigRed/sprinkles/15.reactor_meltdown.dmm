@@ -619,7 +619,7 @@
 /turf/open/mars_cave/mars_cave_19,
 /area/bigredv2/outside/lz2_south_cas)
 "df" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering/reactor)
 "di" = (
@@ -680,7 +680,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/engineering/reactor)
 "dy" = (
-/obj/structure/machinery/power/reactor/colony{
+/obj/structure/machinery/power/power_generator/reactor/colony{
 	name = "Reactor Turbine"
 	},
 /turf/open/floor/plating,
@@ -703,7 +703,7 @@
 /turf/open/mars_cave/mars_dirt_7,
 /area/bigredv2/outside/s)
 "dG" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/engineering/reactor)

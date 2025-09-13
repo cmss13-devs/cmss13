@@ -4316,7 +4316,7 @@
 /turf/open/floor/almayer/plate,
 /area/adminlevel/chinook/engineering)
 "qV" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "qX" = (
@@ -10888,7 +10888,7 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "Tt" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/cargo,
 /area/adminlevel/chinook/engineering)
 "Tu" = (
@@ -12464,7 +12464,7 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "ZH" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /obj/item/tool/weldingtool/largetank,
 /obj/structure/sign/safety/high_voltage{
 	pixel_y = 25
@@ -12496,7 +12496,7 @@
 /turf/open/floor/almayer/orange/north,
 /area/adminlevel/chinook/engineering)
 "ZM" = (
-/obj/structure/machinery/power/port_gen/pacman/super,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/super,
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/engineering)
 "ZN" = (

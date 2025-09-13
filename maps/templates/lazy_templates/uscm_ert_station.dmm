@@ -723,7 +723,7 @@
 /turf/open/floor/almayer/sterile_green,
 /area/adminlevel/ert_station/uscm_station)
 "ip" = (
-/obj/structure/machinery/power/port_gen/pacman/mrs,
+/obj/structure/machinery/power/power_generator/port_gen/pacman/mrs,
 /turf/open/floor/almayer/plating_striped/north,
 /area/adminlevel/ert_station/uscm_station)
 "iq" = (
@@ -2659,7 +2659,7 @@
 /turf/open/floor/plating,
 /area/adminlevel/ert_station/uscm_station)
 "EA" = (
-/obj/structure/machinery/power/port_gen/pacman,
+/obj/structure/machinery/power/power_generator/port_gen/pacman,
 /turf/open/floor/almayer/plating_striped/north,
 /area/adminlevel/ert_station/uscm_station)
 "EG" = (

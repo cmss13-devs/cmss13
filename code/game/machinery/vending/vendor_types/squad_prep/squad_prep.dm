@@ -240,11 +240,11 @@
 		list("Marine Bravo Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/bravo, VENDOR_ITEM_REGULAR),
 		)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/charlie
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/support
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_CHARLIE, ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO)
+	req_one_access = list(ACCESS_MARINE_SUPPORT, ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO)
 
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/charlie/populate_product_list(scale)
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/support/populate_product_list(scale)
 	..()
 	listed_products += list(
 		list("HEADSET", -1, null, null),

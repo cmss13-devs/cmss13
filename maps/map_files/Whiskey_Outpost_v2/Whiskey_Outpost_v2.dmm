@@ -4244,7 +4244,7 @@
 /area/whiskey_outpost/outside/lane/two_north)
 "sc" = (
 /obj/structure/disposalpipe/segment,
-/obj/structure/machinery/door/airlock/almayer/marine/charlie{
+/obj/structure/machinery/door/airlock/almayer/marine/support{
 	dir = 1;
 	name = "\improper Pillbox Vodka";
 	req_access = null;
@@ -5537,7 +5537,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/whiskey_outpost/inside/bunker/pillbox/three)
 "xF" = (
-/obj/structure/machinery/cm_vending/clothing/marine/charlie{
+/obj/structure/machinery/cm_vending/clothing/marine/support{
 	density = 0;
 	pixel_x = -16
 	},
@@ -5906,7 +5906,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/river/east)
 "zA" = (
-/obj/structure/machinery/cm_vending/clothing/marine/charlie{
+/obj/structure/machinery/cm_vending/clothing/marine/support{
 	density = 0;
 	pixel_x = 16
 	},
@@ -6330,7 +6330,7 @@
 /turf/open/gm/coast/beachcorner2/north_west,
 /area/whiskey_outpost/outside/river/east)
 "BB" = (
-/obj/structure/machinery/door/airlock/almayer/marine/charlie{
+/obj/structure/machinery/door/airlock/almayer/marine/support{
 	dir = 1;
 	name = "\improper Pillbox Vodka";
 	req_access = null;
@@ -9087,7 +9087,7 @@
 /turf/open/gm/river,
 /area/whiskey_outpost/outside/lane/four_south)
 "Re" = (
-/obj/structure/machinery/cm_vending/clothing/marine/charlie{
+/obj/structure/machinery/cm_vending/clothing/marine/support{
 	density = 0;
 	pixel_x = 16
 	},
@@ -9259,7 +9259,7 @@
 /turf/open/floor/prison/floor_plate,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Sm" = (
-/obj/structure/machinery/cm_vending/clothing/marine/charlie{
+/obj/structure/machinery/cm_vending/clothing/marine/support{
 	density = 0;
 	pixel_x = 16
 	},

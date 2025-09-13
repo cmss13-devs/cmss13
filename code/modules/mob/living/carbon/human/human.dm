@@ -1277,7 +1277,9 @@
 		TRACKER_DSL = /datum/squad/marine/delta,
 		TRACKER_ESL = /datum/squad/marine/echo,
 		TRACKER_FSL = /datum/squad/marine/cryo,
-		TRACKER_ISL = /datum/squad/marine/intel
+		TRACKER_ISL = /datum/squad/marine/intel,
+		TRACKER_KSL = /datum/squad/marine/kilo,
+		TRACKER_OSL = /datum/squad/marine/oscar
 	)
 
 	hud_used.locate_leader.overlays.Cut()

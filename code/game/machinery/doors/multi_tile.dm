@@ -578,11 +578,11 @@
 	req_access = list(ACCESS_MARINE_PREP)
 	req_one_access = list(ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_BRAVO)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/charlie
-	name = "\improper Charlie Squad Preparations"
-	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/support
+	name = "\improper Support Squad Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
 	req_access = list(ACCESS_MARINE_PREP)
-	req_one_access = list(ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE)
+	req_one_access = list(ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_SUPPORT)
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/delta
 	name = "\improper Delta Squad Preparations"
@@ -593,25 +593,25 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared
 	name = "\improper Squads Preparations"
 	icon = 'icons/obj/structures/doors/prepdoor.dmi'
-	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_SUPPORT, ACCESS_MARINE_DELTA)
 	opacity = FALSE
 	glass = TRUE
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo
-	name = "\improper Alpha-Bravo Squads Preparations"
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_delta
+	name = "\improper 1st Platooon Squads Preparations"
 	icon = 'icons/obj/structures/doors/2x1prepdoor_alpha.dmi'
-	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO)
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_ALPHA, ACCESS_MARINE_DELTA)
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_bravo/yellow
-	icon = 'icons/obj/structures/doors/2x1prepdoor_bravo.dmi'
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta
-	name = "\improper Charlie-Delta Squads Preparations"
-	icon = 'icons/obj/structures/doors/2x1prepdoor_charlie.dmi'
-	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
-
-/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/charlie_delta/blue
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/alpha_delta/blue
 	icon = 'icons/obj/structures/doors/2x1prepdoor_delta.dmi'
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/bravo_support
+	name = "\improper 2nd Platoon Squads Preparations"
+	icon = 'icons/obj/structures/doors/2x1prepdoor.dmi'
+	req_one_access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_GENERAL, ACCESS_MARINE_CARGO, ACCESS_MARINE_SUPPORT, ACCESS_MARINE_BRAVO)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/marine/shared/bravo_support/yellow
+	icon = 'icons/obj/structures/doors/2x1prepdoor_bravo.dmi'
 
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic2

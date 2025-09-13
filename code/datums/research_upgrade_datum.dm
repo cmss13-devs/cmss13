@@ -172,6 +172,17 @@
 	maximum_price = 500
 	item_reference = /obj/item/ammo_magazine/flamer_tank/smoke/upgraded
 
+/datum/research_upgrades/item/matrix_frame
+	name = "Matrix Frame"
+	desc = "A matrix of a complex arrange of lenses that allow the upgrade of optical devices."
+	value_upgrade = 200 // relatively cheap because it doesnt do nothing by itself
+	clearance_req = 1
+	change_purchase = 100
+	maximum_price = 1000
+	behavior = RESEARCH_UPGRADE_ITEM
+	upgrade_type = ITEM_ACCESSORY_UPGRADE
+	item_reference = /obj/item/frame/matrix_frame
+
 /datum/research_upgrades/armor
 	name = "Armor"
 	behavior = RESEARCH_UPGRADE_CATEGORY

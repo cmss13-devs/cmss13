@@ -262,7 +262,7 @@
 /datum/emergency_call/young_bloods/one_member/experienced //For if a pred wants to teach a more experienced youngblood but still one on one
 	name = "Hunting Grounds - Solo Youngblood (Experienced)"
 	blooding_name = "Solo Youngblood (One member - Experienced)"
-	youngblood_time = 5 HOURS
+	youngblood_time = 7 HOURS
 	youngblood_time_required_for_job = 5 HOURS
 
 /datum/emergency_call/young_bloods/three_members

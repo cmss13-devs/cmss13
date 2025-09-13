@@ -57,9 +57,6 @@
 	if(istype(O,/obj/effect/glowshroom))
 		qdel(O)
 		return
-	if(istype(O,/obj/effect/plantsegment))
-		if(prob(50))
-			qdel(O)
 
 /datum/chem_property/negative/toxic/reaction_mob(mob/living/M, method=TOUCH, volume, potency = 1)
 	if(!iscarbon(M))

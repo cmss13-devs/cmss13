@@ -98,6 +98,7 @@
 			return
 		playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
 		handle_upgrade(omnitrix.upgrade, omnitrix.power)
+		qdel(omnitrix)
 
 /obj/item/device/binoculars/proc/handle_upgrade(new_upgrade , power)
 	upgrade = new_upgrade

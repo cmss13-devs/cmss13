@@ -66,32 +66,6 @@
         },
         {
             "type": "shell",
-            "command": "bin/tgui-bench",
-            "windows": {
-                "command": ".\\bin\\tgui-bench.cmd"
-            },
-            "problemMatcher": [
-                "$tsc",
-                "$eslint-stylish"
-            ],
-            "group": "build",
-            "label": "tgui: bench"
-        },
-        {
-            "type": "shell",
-            "command": "bin/tgui-sonar",
-            "windows": {
-                "command": ".\\bin\\tgui-sonar.cmd"
-            },
-            "problemMatcher": [
-                "$tsc",
-                "$eslint-stylish"
-            ],
-            "group": "build",
-            "label": "tgui: sonar"
-        },
-        {
-            "type": "shell",
             "command": "bin/tgfont",
             "windows": {
                 "command": ".\\bin\\tgfont.cmd"

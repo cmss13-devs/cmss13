@@ -1372,10 +1372,16 @@
 		hud_used.locate_nuke.icon_state = "nuke_trackon"
 
 
+/mob/living/carbon/human/ //Define new variables, chem_night_vision and chem_, to track if the mob has night vision from chems. The chem itself will turn this on and off
+	var/chem_night_vision = FALSE
+	var/chem_wall_vision = FALSE
+	var/chem_mob_vision = FALSE
 
 
 /mob/proc/update_sight()
 	sync_lighting_plane_alpha()
+
+
 
 /mob/living/carbon/human/update_sight()
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT)
@@ -1389,8 +1395,18 @@
 	sight |= species.flags_sight
 	if(glasses)
 		process_glasses(glasses)
+	if ((chem_night_vision == TRUE) && !check_glasses(glasses) && !check_visor(head))  // If we have chem night vision and aren't wearing glasses that already modify our sight and we aren't wearing NVG already
+		see_in_dark = 12 //Human default is 2
+		lighting_alpha = LIGHTING_PLANE_ALPHA_SOMEWHAT_INVISIBLE
+
+	if(chem_wall_vision == TRUE && !check_glasses(glasses) && !check_visor(head)) // If we have chem wall vision and aren't wearing glasses that already modify our sight AND we aren't wearing NVG already
+		sight |= SEE_TURFS | SEE_OBJS
+
+	if(chem_mob_vision == TRUE && !check_glasses(glasses) && !check_visor(head)) // If we have chem mob vision and aren't wearing glasses that already modify our sight AND we aren't wearing NVG already
+		sight |= SEE_MOBS
 
 	if(!(sight & SEE_TURFS) && !(sight & SEE_MOBS) && !(sight & SEE_OBJS))
+
 		sight |= SEE_BLACKNESS
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
@@ -1435,6 +1451,9 @@
 			return TRUE
 		else //unequipped or deactivated
 			clear_fullscreen("glasses_vision", 0)
+
+
+
 
 /mob/living/carbon/human/verb/remove_your_splints()
 	set name = "Remove Your Splints"

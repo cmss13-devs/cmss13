@@ -384,3 +384,99 @@
 	holder.durationfire += 1 * level
 	holder.durationmod += 0.1 * level
 	..()
+
+
+/datum/chem_property/special/opticconeenhancing
+	name = PROPERTY_OPTICCONEENHANCING
+	code = "OCE"
+	description = "Temporaily causes some cones in the eyes to detect at higher and lower wavelengths, allowing for observation of stationary objects and objects past walls. "
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_STIMULANT
+	value = 3
+	max_level = 1
+/datum/chem_property/special/opticconeenhancing/process(mob/living/M, potency = 1, delta_time)
+
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	if(H.chem_wall_vision == FALSE) //Prevents calling update sight every time we process the chem. Which would be bad
+		H.chem_wall_vision = TRUE
+		H.update_sight()
+/datum/chem_property/special/opticconeenhancing/on_delete(mob/living/M)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.chem_wall_vision = FALSE
+	H.update_sight()
+	to_chat(H, SPAN_NOTICE("Your vision returns to normal"))
+
+/datum/chem_property/special/opticconeenhancing/process_overdose(mob/living/M, potency = 1, delta_time)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.apply_internal_damage(3, "eyes")
+
+/datum/chem_property/special/opticrodenhancing
+	name = PROPERTY_OPTICRODENHANCING
+	code = "ORE"
+	description = "Temporaily increases the sensitivity of rods in the eyes, allowing for better sight in low-light conditions"
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_STIMULANT
+	value = 3
+	max_level = 1
+/datum/chem_property/special/opticrodenhancing/process(mob/living/M, potency = 1, delta_time)
+
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	if(H.chem_night_vision == FALSE) //Prevents calling update sight every time we process the chem. Which would be bad
+		H.chem_night_vision = TRUE
+		H.update_sight()
+/datum/chem_property/special/opticrodenhancing/on_delete(mob/living/M)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.chem_night_vision = FALSE
+
+	H.update_sight()
+	to_chat(H, SPAN_NOTICE("Your vision returns to normal"))
+/datum/chem_property/special/opticrodenhancing/process_overdose(mob/living/M, potency = 1, delta_time)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.apply_internal_damage(3, "eyes")
+
+/datum/chem_property/special/hyperoptic
+	name = PROPERTY_HYPEROPTIC
+	code = "HYO"
+	description = "Increases rod and cone function with enhanced nervous system processing to aid in comprehension. Allowing for the additional detection of minute heat signatures passing through walls."
+	rarity = PROPERTY_DISABLED
+	category = PROPERTY_TYPE_STIMULANT
+	value = 3
+	max_level = 1
+/datum/chem_property/special/hyperoptic/process(mob/living/M, potency = 1, delta_time)
+
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	if(H.chem_night_vision == FALSE || H.chem_wall_vision == FALSE || H.chem_mob_vision == FALSE) //Prevents calling update sight every time we process the chem. Which would be bad
+		H.chem_night_vision = TRUE
+		H.chem_wall_vision = TRUE
+		H.chem_mob_vision = TRUE
+		H.update_sight()
+/datum/chem_property/special/hyperoptic/on_delete(mob/living/M)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.chem_night_vision = FALSE
+	H.chem_wall_vision = FALSE
+	H.chem_mob_vision = FALSE
+
+	H.update_sight()
+	to_chat(H, SPAN_NOTICE("Your vision returns to normal"))
+
+/datum/chem_property/special/hyperoptic/process_overdose(mob/living/M, potency = 1, delta_time)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.apply_internal_damage(5, "eyes")

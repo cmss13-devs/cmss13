@@ -84,7 +84,9 @@
 		/obj/item/device/radio,
 		/obj/structure/machinery/camera,
 		/obj/limb,
-		/obj/item/alien_embryo
+		/obj/item/alien_embryo,
+		/mob/living/carbon/cortical_borer,
+		/mob/living/captive_brain
 	)
 	//blood.dm
 	///How much blood the mob has
@@ -143,3 +145,6 @@
 
 	// for multiz looking up
 	var/atom/observed_atom
+
+	/// Used to highlight on follow menu.
+	var/special_mob = FALSE

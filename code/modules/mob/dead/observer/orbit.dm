@@ -48,6 +48,7 @@
 /datum/orbit_menu/ui_static_data(mob/user)
 	var/list/data = list()
 
+	var/list/special_mobs = list()
 	var/list/humans = list()
 	var/list/responders = list()
 	var/list/marines = list()
@@ -132,6 +133,9 @@
 			serialized["in_ship"] = is_mainship_level(player.z)
 
 			serialized["health"] = floor(player.health / player.maxHealth * 100)
+
+			if(player.special_mob)
+				special_mobs += list(serialized)
 
 			if(isxeno(player))
 				var/mob/living/carbon/xenomorph/xeno = player
@@ -232,6 +236,7 @@
 			if(isanimal(player))
 				animals += list(serialized)
 
+	data["special_mobs"] = special_mobs
 	data["humans"] = humans
 	data["marines"] = marines
 	data["survivors"] = survivors

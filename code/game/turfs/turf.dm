@@ -931,8 +931,8 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 			return
 
 		if (stun_modifier > 0)
-			human_victim.KnockDown(3 * height * stun_modifier)
-			human_victim.Stun(3 * height * stun_modifier)
+			human_victim.KnockDown(1 *height * stun_modifier )
+			human_victim.Superslow(3 * height * stun_modifier)
 			human_victim.Slow(5 * height * stun_modifier)
 
 		if (damage_modifier > 0)
@@ -951,13 +951,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		var/mob/living/carbon/xenomorph/xeno_victim = victim
 		if(stun_modifier > 0)
 			if(xeno_victim.mob_size >= MOB_SIZE_BIG)
-				xeno_victim.KnockDown(height * 3.5 * stun_modifier)
-				xeno_victim.Stun( height * 3.5 * stun_modifier)
 				xeno_victim.Slow(height * 6 * stun_modifier)
 			else
 				xeno_victim.KnockDown(height * 0.5 * stun_modifier)
-				xeno_victim.Stun( height * 0.5 * stun_modifier)
-				xeno_victim.Slow(height * 2.5 * stun_modifier)
+				xeno_victim.Stun(height * 0.5 * stun_modifier)
+				xeno_victim.Superslow(height * 1 * stun_modifier)
+				xeno_victim.Slow(height * 2 * stun_modifier)
 
 
 

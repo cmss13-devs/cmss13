@@ -386,7 +386,7 @@ SQUAD_DROPPAD(kilo, Kilo)
 	equipment_color = "#bde331"
 	chat_color = "#c2ee22"
 	access = list(ACCESS_MARINE_SUPPORT)
-	radio_freq = KILO_FREQ
+	radio_freq = OSCAR_FREQ
 	minimap_color = MINIMAP_SQUAD_OSCAR
 	background_icon = "background_charlie"
 	has_cryostorage = TRUE

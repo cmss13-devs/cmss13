@@ -19,7 +19,7 @@
 	ground_offset_x = 2
 	ground_offset_y = 6
 
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle/flashlight)
 	var/on = FALSE
 	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
 	var/toggleable = TRUE

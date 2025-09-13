@@ -778,6 +778,15 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 /obj/item/clothing/head/helmet/marine/see_emote(mob/living/sourcemob, emote, audible)
 	SEND_SIGNAL(src, COMSIG_BROADCAST_SEE_EMOTE, sourcemob, emote, audible, loc == sourcemob && audible)
 
+/datum/action/item_action/cycle_helmet_huds
+	var/supported_custom_icons = list(
+		"hud_marine",
+		"nvg_sight_down",
+		"med_sight_down",
+		"sec_sight_down",
+		"blank_hud_sight_down"
+	)
+
 /datum/action/item_action/cycle_helmet_huds/New(Target, obj/item/holder)
 	. = ..()
 	name = "Cycle helmet HUD"
@@ -799,13 +808,16 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	action_icon_state = new_visor.action_icon_string
 	button.overlays.Cut()
-	button.overlays += image('icons/obj/items/clothing/helmet_visors.dmi', button, action_icon_state)
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
+
+/datum/action/item_action/cycle_helmet_huds/update_button_icon()
+	return
 
 /// Sets the action overlay to default hud sight up
 /datum/action/item_action/cycle_helmet_huds/proc/set_default_overlay()
-	action_icon_state = "hud_sight_up"
+	action_icon_state = "hud_deploy"
 	button.overlays.Cut()
-	button.overlays += image('icons/obj/items/clothing/helmet_visors.dmi', button, action_icon_state)
+	button.overlays += image('icons/mob/hud/actions.dmi', button, action_icon_state)
 
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"
@@ -1026,7 +1038,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "Use Phone"
 	button.name = name
 	button.overlays.Cut()
-	var/image/IMG = image('icons/obj/structures/phone.dmi', button, "scout_microphone")
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "microphone")
 	button.overlays += IMG
 
 /datum/action/item_action/radio_helmet/use_phone/action_activate()

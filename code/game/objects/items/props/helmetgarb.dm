@@ -167,7 +167,7 @@
 	var/active_icon_state = "nvg_down"
 	var/inactive_icon_state = "nvg"
 
-	var/datum/action/item_action/activation
+	var/datum/action/item_action/toggle/helmet_nvg/activation
 	var/obj/item/clothing/head/attached_item
 	var/mob/living/attached_mob
 	var/lighting_alpha = 100
@@ -301,8 +301,9 @@
 
 /obj/item/prop/helmetgarb/helmet_nvg/proc/set_attached_mob(mob/User)
 	attached_mob = User
-	activation = new /datum/action/item_action/toggle(src, attached_item)
+	activation = new /datum/action/item_action/toggle/helmet_nvg(src, attached_item)
 	activation.give_to(attached_mob)
+	activation.action_icon_state = "nvg"
 	add_verb(attached_mob, /obj/item/prop/helmetgarb/helmet_nvg/proc/toggle)
 	RegisterSignal(attached_mob, COMSIG_HUMAN_XENO_ATTACK, PROC_REF(break_nvg))
 	RegisterSignal(attached_item, COMSIG_ITEM_DROPPED, PROC_REF(remove_attached_mob))

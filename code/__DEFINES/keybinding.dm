@@ -159,6 +159,11 @@
 #define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"
 #define COMSIG_KB_XENO_SCREECH "keybinding_xeno_screech"
 #define COMSIG_KB_TAIL_STAB "keybinding_tail_stab"
+#define COMSIG_KB_XENO_TOGGLE_LONG_RANGE_SIGHT "keybinding_toggle_long_range_sight"
+#define COMSIG_KB_XENO_PLANT_WEEDS "keybinding_plant_weeds"
+#define COMSIG_KB_XENO_CHOOSE_RESIN "keybinding_choose_resin"
+#define COMSIG_KB_XENO_SECRETE_RESIN "keybinding_secrete_resin"
+#define COMSIG_KB_XENO_PLACE_CONSTRUCTION "keybinding_place_construction"
 
 #define COMSIG_KB_XENO_HIVE_STATUS "keybinding_hive_status"
 #define COMSIG_KB_XENO_HIDE "keybinding_hide"
@@ -166,6 +171,43 @@
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
 #define COMSIG_KB_XENO_BECOME_SEETHROUGH "keybinding_become_seethrough"
+
+#define COMSIG_KB_XENO_TRANSFER_PLASMA "keybinding_drone_transfer_plasma"
+#define COMSIG_KB_XENO_PLANT_RESIN_FRUIT "keybinding_plant_resin_fruit"
+#define COMSIG_KB_XENO_CHANGE_FRUIT "keybinding_change_fruit"
+
+// Xenomorph Facehugger
+#define COMSIG_KB_XENO_FACEHUGGER_POUNCE "keybinding_hugger_pounce"
+
+// Xenomorph Runner
+#define COMSIG_KB_XENO_RUNNER_POUNCE "keybinding_runner_pounce"
+#define COMSIG_KB_XENO_RUNNER_BONE_SPUR "keybinding_runner_bonespur"
+#define COMSIG_KB_XENO_ACIDER_FOR_THE_HIVE "keybinding_acider_for_the_hive"
+#define COMSIG_KB_XENO_ACIDER_ACID "keybinding_acider_acid"
+
+// Xenomorph Drone
+#define COMSIG_KB_XENO_HEALER_APPLY_SALVE "keybinding_healer_apply_salve"
+#define COMSIG_KB_XENO_HEALER_SACRIFICE "keybinding_healer_sacrifice"
+#define COMSIG_KB_XENO_GARDENER_PLANT_WEEDS "keybinding_gardener_plant_weeds"
+#define COMSIG_KB_XENO_GARDENER_RESING_SURGE "keybinding_gardener_resin_surge"
+
+// Xenomorph Sentinel
+#define COMSIG_KB_XENO_SENTINEL_SLOWING_SPIT "keybinding_sentinel_slowing_spit"
+#define COMSIG_KB_XENO_SENTINEL_SCATTERED_SPIT "keybinding_sentinel_scattered_spit"
+#define COMSIG_KB_XENO_SENTINEL_PARALYZING_SLASH "keybinding_sentinel_paralyzing_slash"
+
+// Xenomorph Defender
+#define COMSIG_KB_XENO_DEFENDER_TOGGLE_CREST_DEFENCE "keybinding_defender_toggle_crest_defence"
+#define COMSIG_KB_XENO_DEFENDER_HEADBUTT "keybinding_defender_headbutt"
+#define COMSIG_KB_XENO_DEFENDER_TAIL_SWEEP "keybinding_defender_tail_sweep"
+#define COMSIG_KB_XENO_DEFENDER_FORTIFY "keybinding_defender_fortify"
+#define COMSIG_KB_XENO_STEEL_CREST_SOAK "keybinding_steal_crest_soak"
+
+// Xenomorph Spitter
+#define COMSIG_KB_XENO_SPITTER_SPRAY_ACID "keybinding_spitter_spray_acid"
+#define COMSIG_KB_XENO_SPITTER_CHARGE_SPIT "keybinding_spitter_charge_spit"
+#define COMSIG_KB_XENO_SPITTER_SPIT "keybinding_spitter_spit"
+#define COMSIG_KB_XENO_SPITTER_TAIL_STAB "keybinding_spitter_tail_stab"
 
 // Yautja
 

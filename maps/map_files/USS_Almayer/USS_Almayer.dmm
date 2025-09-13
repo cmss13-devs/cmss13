@@ -14790,15 +14790,15 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/engineering/upper_engineering)
 "aMx" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;21";
+	req_one_access_txt = "15;18;21";
 	vend_x_offset = 0;
 	vend_y_offset = 0
-	},
-/obj/structure/machinery/light{
-	dir = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
@@ -15786,8 +15786,7 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aPn" = (
-/obj/structure/machinery/cm_vending/clothing/marine/bravo{
-	density = 0;
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/plate,
@@ -17383,8 +17382,7 @@
 /turf/open_space,
 /area/almayer/middeck/req)
 "aTv" = (
-/obj/structure/machinery/cm_vending/clothing/marine/bravo{
-	density = 0;
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
 	pixel_y = 16
 	},
 /turf/open/floor/almayer/cargo_arrow/north,
@@ -17726,8 +17724,7 @@
 /turf/open/floor/almayer/cargo_arrow,
 /area/almayer/squads/platoon1_shared)
 "aUj" = (
-/obj/structure/machinery/cm_vending/clothing/tl/bravo{
-	density = 0;
+/obj/structure/machinery/cm_vending/clothing/tl/delta{
 	pixel_x = 32
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -28950,7 +28947,7 @@
 /turf/open/floor/almayer/green/east,
 /area/almayer/living/offices)
 "bsS" = (
-/obj/structure/machinery/cm_vending/clothing/specialist/bravo,
+/obj/structure/machinery/cm_vending/clothing/specialist/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "bsT" = (
@@ -29863,7 +29860,7 @@
 /turf/open/floor/almayer/no_build,
 /area/almayer/middeck/maintenance/sf)
 "buM" = (
-/obj/structure/machinery/cm_vending/clothing/smartgun/bravo,
+/obj/structure/machinery/cm_vending/clothing/smartgun/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "buO" = (
@@ -35779,15 +35776,15 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
 "bIZ" = (
-/obj/structure/machinery/cm_vending/clothing/leader/bravo,
+/obj/structure/machinery/cm_vending/clothing/leader/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "bJa" = (
-/obj/structure/machinery/cm_vending/clothing/medic/bravo,
+/obj/structure/machinery/cm_vending/clothing/medic/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "bJb" = (
-/obj/structure/machinery/cm_vending/clothing/engi/bravo,
+/obj/structure/machinery/cm_vending/clothing/engi/delta,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
 "bJc" = (
@@ -36273,7 +36270,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "17;18;21";
+	req_one_access_txt = "17;16;21";
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -49856,7 +49853,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "17;18;21";
+	req_one_access_txt = "17;16;21";
 	vend_x_offset = 0
 	},
 /turf/open/floor/almayer/plate,
@@ -53370,7 +53367,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;21";
+	req_one_access_txt = "15;18;21";
 	vend_y_offset = 0
 	},
 /turf/open/floor/almayer/plate,
@@ -59360,8 +59357,7 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/engineering/upper_engineering/port)
 "kLk" = (
-/obj/structure/machinery/cm_vending/clothing/tl/bravo{
-	density = 0;
+/obj/structure/machinery/cm_vending/clothing/tl/delta{
 	pixel_x = 32
 	},
 /turf/open/floor/almayer/blue/south,
@@ -59891,12 +59887,11 @@
 /turf/open/floor/almayer/blue/west,
 /area/almayer/living/auxiliary_officer_office)
 "kXa" = (
-/obj/structure/machinery/cm_vending/clothing/marine/bravo{
-	density = 0;
-	pixel_y = 16
-	},
 /obj/structure/sign/safety/cryo{
 	pixel_x = 32
+	},
+/obj/structure/machinery/cm_vending/clothing/marine/delta{
+	pixel_y = 16
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/delta)
@@ -65938,7 +65933,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;21";
+	req_one_access_txt = "15;18;21";
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -71487,14 +71482,14 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/shipboard/navigation)
 "pQF" = (
+/obj/structure/machinery/light,
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "17;18;21";
+	req_one_access_txt = "17;16;21";
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
-/obj/structure/machinery/light,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon2_shared)
 "pQI" = (
@@ -80097,7 +80092,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;16;21";
+	req_one_access_txt = "15;18;21";
 	vend_x_offset = 0
 	},
 /turf/open/floor/almayer/plate,
@@ -89590,7 +89585,7 @@
 /obj/structure/machinery/cm_vending/sorted/attachments/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "17;18;21";
+	req_one_access_txt = "17;16;21";
 	vend_y_offset = 0
 	},
 /turf/open/floor/almayer/plate,

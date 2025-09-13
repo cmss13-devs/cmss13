@@ -1009,7 +1009,7 @@
 	var/mob/living/carbon/human/H = loc
 	if(istype(H, /mob/living/carbon/human))
 		if(H.assigned_squad)
-			name = "[H.assigned_squad.name] radio headset"
+			name = "[lowertext(H.assigned_squad.name)] radio headset"
 			desc = "This is used by [H.assigned_squad.name] squad members."
 			icon_state = "[lowertext(H.assigned_squad.name)]_headset"
 			frequency = H.assigned_squad.radio_freq

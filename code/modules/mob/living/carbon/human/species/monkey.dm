@@ -51,8 +51,9 @@
 
 	var/is_on_turf = isturf(monkey.loc)
 	var/monkey_turf = get_turf(monkey)
+	var/hauled = HAS_TRAIT(monkey, TRAIT_HAULED)
 
-	if(prob(33) && is_on_turf && !monkey.pulledby && (monkey.mobility_flags & MOBILITY_MOVE) && !monkey.is_mob_restrained()) //won't move if being pulled
+	if(prob(33) && is_on_turf && !monkey.pulledby && (monkey.mobility_flags & MOBILITY_MOVE) && !monkey.is_mob_restrained() && !hauled) //won't move if being pulled
 		step(monkey, pick(GLOB.cardinals))
 
 	var/obj/held = monkey.get_active_hand()
@@ -71,7 +72,7 @@
 				monkey.throw_item(turf)
 		else
 			monkey.drop_held_item()
-	if(!held && !monkey.buckled && prob(5))
+	if(!held && !monkey.buckled && !hauled && prob(5))
 		var/list/touchables = list()
 		for(var/obj/thing in range(1, monkey_turf))
 			if(thing.Adjacent(monkey))

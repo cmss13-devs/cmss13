@@ -141,7 +141,7 @@ Additional game mode variables.
 //===================================================\\
 
 /datum/game_mode/proc/initialize_predator(mob/living/carbon/human/new_predator, ignore_pred_num = FALSE)
-	predators[new_predator.ckey] = list("Name" = new_predator.real_name, "Status" = "Alive")
+	predators[new_predator.username()] = list("Name" = new_predator.real_name, "Status" = "Alive")
 	if(!ignore_pred_num)
 		pred_current_num++
 
@@ -265,7 +265,7 @@ Additional game mode variables.
 
 	GLOB.RoleAuthority.equip_role(new_predator, J, new_predator.loc)
 
-	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER))
+	if(new_predator.client.check_whitelist_status(WHITELIST_YAUTJA_LEADER) && (tgui_alert(new_predator, "Do you wish to announce your presence?", "Announce Arrival", list("Yes","No"), 10 SECONDS) != "No"))
 		elder_overseer_message("[new_predator.real_name] has joined the hunting party.")
 
 	return new_predator
@@ -360,9 +360,11 @@ Additional game mode variables.
 	return TRUE
 
 /datum/game_mode/proc/load_fax_base()
+	loaded_fax_base = "loading"
 	loaded_fax_base = SSmapping.lazy_load_template(/datum/lazy_template/fax_response_base, force = TRUE)
-	if(!loaded_fax_base)
+	if(!loaded_fax_base || (loaded_fax_base == "loading"))
 		log_debug("Error loading fax response base!")
+		loaded_fax_base = null
 		return FALSE
 	return TRUE
 
@@ -515,6 +517,15 @@ Additional game mode variables.
 
 		// If a lobby player is trying to join as xeno, estimate their possible position
 		if(is_new_player)
+			if(!SSticker.HasRoundStarted() || world.time < SSticker.round_start_time + 15 SECONDS)
+				// Larva queue numbers are too volatile at the start of the game for the estimation to be what they end up with
+				to_chat(xeno_candidate, SPAN_XENONOTICE("Larva queue position estimation is not available until shortly after the game has started. \
+					The ordering is based on your time of death or the time you joined. When you have been dead long enough and are not inactive, \
+					you will periodically receive messages where you are in the queue relative to other currently valid xeno candidates. \
+					Your current position will shift as others change their preferences or go inactive, but your relative position compared to all observers is the same. \
+					Note: Playing as a facehugger/lesser or in the thunderdome will not alter your time of death. \
+					This means you won't lose your relative place in queue if you step away, disconnect, play as a facehugger/lesser, or play in the thunderdome."))
+				return FALSE
 			var/mob/new_player/candidate_new_player = xeno_candidate
 			if(candidate_new_player.larva_queue_message_stale_time <= world.time)
 				// No cached/current lobby message, determine the position

@@ -45,9 +45,6 @@
 	var/fire_immunity = FIRE_IMMUNITY_NONE
 	var/fire_intensity_resistance = 0
 
-	///Delay timer for spitting
-	var/spit_delay = 60
-
 	/// Windup for spits
 	var/spit_windup = FALSE
 
@@ -107,10 +104,7 @@
 	var/fire_vulnerability_mult = 0
 
 	var/burrow_cooldown = 5 SECONDS
-	var/tunnel_cooldown = 100
-	var/widen_cooldown = 10 SECONDS
-	///Big strong ability, big cooldown.
-	var/tremor_cooldown = 30 SECONDS
+	var/tunnel_cooldown = 10 SECONDS
 	///whether the xeno heals even outside weeds.
 	var/innate_healing = FALSE
 

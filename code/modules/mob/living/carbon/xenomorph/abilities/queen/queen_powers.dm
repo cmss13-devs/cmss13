@@ -192,7 +192,7 @@
 
 		if(length(possible_xenos) > 1)
 			var/mob/living/carbon/xenomorph/selected_xeno = tgui_input_list(xeno, "Target", "Watch which leader?", possible_xenos, theme="hive_status")
-			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != xeno.z || !xeno.check_state())
+			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == xeno.observed_xeno || selected_xeno.stat == DEAD || !xeno.check_state())
 				return
 			xeno.overwatch(selected_xeno)
 		else if(length(possible_xenos))
@@ -710,7 +710,7 @@
 
 	var/turf/turf_to_get = get_turf(atom)
 
-	if(!turf_to_get || turf_to_get.is_weedable() < FULLY_WEEDABLE || turf_to_get.density || (turf_to_get.z != xeno.z))
+	if(!turf_to_get || turf_to_get.is_weedable < FULLY_WEEDABLE || turf_to_get.density || !SSmapping.same_z_map(turf_to_get.z, xeno.z))
 		to_chat(xeno, SPAN_XENOWARNING("You can't do that here."))
 		return
 
@@ -990,10 +990,5 @@
 	var/mob/living/carbon/xenomorph/queen/xeno = owner
 	// We don't test or apply the cooldown here because the proc does it since verbs can activate it too
 	xeno.hive_message()
-	return ..()
-
-/datum/action/xeno_action/onclick/queen_tacmap/use_ability(atom/target)
-	var/mob/living/carbon/xenomorph/queen/xeno = owner
-	xeno.xeno_tacmap()
 	return ..()
 

@@ -223,14 +223,14 @@
 		var/turf/T = get_step(src, dirn)
 		if(!istype(T))
 			continue
-		var/is_weedable = T.is_weedable()
-		if(!is_weedable)
+		if(!T.is_weedable)
 			continue
-		if(!spread_on_semiweedable && is_weedable < FULLY_WEEDABLE)
+		if(!spread_on_semiweedable && T.is_weedable < FULLY_WEEDABLE)
 			continue
 		T.clean_cleanables()
 
 		var/obj/effect/alien/resin/fruit/old_fruit
+		var/obj/effect/alien/resin/design/old_design
 
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
@@ -245,6 +245,11 @@
 
 			if(old_fruit)
 				old_fruit.unregister_weed_expiration_signal()
+
+			old_design = locate() in T
+
+			if(old_design)
+				old_design.unregister_weed_expiration_signal_design()
 
 			qdel(W)
 
@@ -264,6 +269,9 @@
 
 		if(old_fruit)
 			old_fruit.register_weed_expiration_signal(new_weed)
+
+		if(old_design)
+			old_design.register_weed_expiration_signal_design(new_weed)
 
 	on_weed_expand(src, weeds)
 	if(parent)
@@ -533,6 +541,7 @@
 
 	. = ..(mapload, src)
 
+	// Create the overlay with the determined icon_state
 	if(!staticnode)
 		staticnode = image('icons/mob/xenos/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
 

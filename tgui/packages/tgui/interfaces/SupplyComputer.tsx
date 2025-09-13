@@ -150,8 +150,8 @@ export const SupplyComputer = () => {
     <Window width={1050} height={700} theme={theme}>
       <Window.Content>
         {!!modal && <Modal>{modal}</Modal>}
-        <Stack>
-          <Stack.Item>
+        <Stack fill>
+          <Stack.Item width="200px">
             <SideButtons
               menu={menu}
               selectedCategory={selectedCategory}
@@ -213,10 +213,10 @@ const SideButtons = (props: {
   };
 
   return (
-    <Stack vertical>
+    <Stack vertical fill>
       <Stack.Item>
-        <Section>
-          <Stack vertical>
+        <Section fill>
+          <Stack vertical fill>
             <Stack.Item>
               <Stack justify="space-between">
                 <Stack.Item>Supply Budget: ${points * 100}</Stack.Item>
@@ -330,9 +330,9 @@ const SideButtons = (props: {
           </Stack>
         </Section>
       </Stack.Item>
-      <Stack.Item>
-        <Section scrollable height="470px">
-          <Stack vertical height="450px">
+      <Stack.Item grow>
+        <Section scrollable fill>
+          <Stack vertical>
             <Input
               placeholder="Search..."
               fluid
@@ -347,7 +347,7 @@ const SideButtons = (props: {
               }}
             />
             {valid_categories.sort().map((category) => (
-              <Stack.Item key={category}>
+              <Stack.Item key={category} grow>
                 <Button
                   fluid
                   onClick={() => {
@@ -395,9 +395,9 @@ const Options = (props: {
         <Section
           title={categories.includes(category!) ? category : 'Search'}
           scrollable
-          height="650px"
+          fill
         >
-          <Box height="610px">
+          <Box>
             <RenderCategory category={category!} categories={categories} />
           </Box>
         </Section>
@@ -407,11 +407,7 @@ const Options = (props: {
       return <CurrentOrder />;
 
     case MenuOptions.BlackMarket:
-      return (
-        <Stack vertical justify="space-around" align="center" height="100%">
-          <BlackMarketMenu />
-        </Stack>
-      );
+      return <BlackMarketMenu />;
 
     case MenuOptions.Pending:
       return <PendingOrder />;
@@ -434,7 +430,7 @@ const CurrentOrder = () => {
     <Section
       title="Current Order"
       scrollable
-      height="650px"
+      fill
       buttons={
         <Stack>
           {requester && (
@@ -477,7 +473,7 @@ const PendingOrder = () => {
   const { pending } = data;
 
   return (
-    <Section title="Pending Orders" scrollable height="650px">
+    <Section title="Pending Orders" scrollable fill>
       <Stack vertical height="610px">
         {pending!.map((order) => (
           <RenderOrder order={order} key={order.order_num} />
@@ -493,7 +489,7 @@ const Requests = () => {
   const { requests } = data;
 
   return (
-    <Section title="Requests" scrollable height="650px">
+    <Section title="Requests" scrollable fill>
       <Stack vertical height="610px">
         {requests!.map((order) => (
           <RenderOrder order={order} key={order.order_num} request />
@@ -630,20 +626,18 @@ const BlackMarketMenu = () => {
   }
 
   return (
-    <>
-      <Box
-        position="absolute"
-        right="20px"
-        top="20px"
-        p={2}
-        style={{ border: '1px solid' }}
-      >
-        WY${dollars}
-      </Box>
-      <Stack.Item>
+    <Stack vertical fill align="center" justify="space-evenly">
+      <Stack.Item mr="3%" align="end">
+        <Stack justify="space-evenly">
+          <Box p={2} style={{ border: '1px solid' }}>
+            WY${dollars}
+          </Box>
+        </Stack>
+      </Stack.Item>
+      <Stack.Item height="25%" width="75%">
         {blackmarketCategory ? (
-          <Section fitted height="330px" scrollable>
-            <Box height="310px">
+          <Section fill scrollable width="100%">
+            <Box>
               <RenderCategory
                 category={blackmarketCategory}
                 categories={contraband_categories}
@@ -672,7 +666,7 @@ const BlackMarketMenu = () => {
           </Stack>
         </Stack.Item>
       )}
-    </>
+    </Stack>
   );
 };
 
@@ -708,14 +702,14 @@ const MendozaDialogue = () => {
 
   if (!mendoza_status) {
     return (
-      <Stack vertical justify="center" width="400px">
+      <Stack vertical fill justify="space-around">
         <Stack.Item>.......</Stack.Item>
       </Stack>
     );
   }
 
   return stateFirst ? (
-    <Stack vertical justify="center" width="400px">
+    <Stack vertical fill justify="space-around">
       <Stack.Item>
         {
           "Hold on- holy shit, what? Hey, hey! Finally! I've set THAT circuit board for replacement shipping off god knows who long ago. I had totally given up on it."
@@ -748,7 +742,7 @@ const MendozaDialogue = () => {
       </Stack.Item>
     </Stack>
   ) : (
-    <Stack vertical justify="center" width="400px">
+    <Stack vertical fill justify="space-around">
       <Stack.Item>{pickedDialogue}</Stack.Item>
     </Stack>
   );
@@ -789,7 +783,7 @@ const RenderCategory = (props: {
       );
 
   return (
-    <Stack vertical>
+    <Stack vertical fill>
       {relevant_items.map((item) => (
         <>
           <RenderPack key={item.name} pack={item} />
@@ -868,8 +862,8 @@ const RenderPack = (props: {
   }
 
   return (
-    <Stack.Item key={item.name}>
-      <Stack>
+    <Stack.Item grow key={item.name}>
+      <Stack fill>
         {orderedQuantity ? (
           <Stack.Item>
             <Box p={1} width="30px" textAlign="right" inline>
@@ -926,12 +920,12 @@ const RenderPack = (props: {
           {item.dollar_cost ? `WY$${item.dollar_cost}` : `$${item.cost * 100}`}
         </Stack.Item>
 
-        <Stack.Item p={1}>
-          <Stack vertical>
-            <Stack.Item>
-              <Stack justify="space-between">
-                <Stack.Item>
-                  <Stack>
+        <Stack.Item grow p={1}>
+          <Stack fill vertical>
+            <Stack.Item grow>
+              <Stack fill justify="space-between">
+                <Stack.Item grow>
+                  <Stack fill>
                     <Stack.Item>
                       {item.icon && (
                         <DmIcon
@@ -941,9 +935,7 @@ const RenderPack = (props: {
                         />
                       )}
                     </Stack.Item>
-                    <Stack.Item width={orderedQuantity ? '575px' : '500px'}>
-                      {item.name}
-                    </Stack.Item>
+                    <Stack.Item grow>{item.name}</Stack.Item>
                   </Stack>
                 </Stack.Item>
                 {item.contains.length > 0 && (

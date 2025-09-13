@@ -283,6 +283,7 @@
 
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			GLOB.RoleAuthority.randomize_squad(human)
+		GLOB.RoleAuthority.prioritize_specialist(human)
 
 		if(Check_WO() && GLOB.job_squad_roles.Find(GET_DEFAULT_ROLE(human.job))) //activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
@@ -351,4 +352,8 @@
 
 /// Called when the job owner enters deep cryogenic storage
 /datum/job/proc/on_cryo(mob/living/carbon/human/cryoing)
+	return
+
+/// Returns the active player on this job, specifically for singleton jobs
+/datum/job/proc/get_active_player_on_job()
 	return

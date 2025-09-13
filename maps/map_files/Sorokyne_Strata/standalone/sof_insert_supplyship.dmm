@@ -1,0 +1,1566 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = -12;
+	pixel_x = 12
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"aP" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 5;
+	pixel_y = 20;
+	pixel_x = -5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"bB" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 5;
+	pixel_x = 11;
+	pixel_y = 15
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -13;
+	pixel_y = 8;
+	dir = 1
+	},
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/strata/exterior/marsh/crash)
+"cq" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"cG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/organ/eyes{
+	pixel_x = 2;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/strata/exterior/marsh/crash)
+"dj" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "3,12";
+	opacity = 0
+	},
+/area/strata/interior/supply_shuttle_sof)
+"dI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/strata/exterior/marsh/crash)
+"eR" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "1,12"
+	},
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "1,11"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"eV" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/marsh/crash)
+"eZ" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "8,7"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"fp" = (
+/obj/item/shard,
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = -3;
+	pixel_x = 14
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"fs" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "8,3"
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_x = -5;
+	pixel_y = -2
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"fD" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -3;
+	pixel_y = 20;
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"gP" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "1,1"
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3;
+	pixel_x = 1
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"gR" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "7,1"
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -3;
+	pixel_y = 9;
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"gV" = (
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/supply_shuttle_sof)
+"gZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/chair/vehicle{
+	pixel_y = 22;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_y = 22;
+	pixel_x = -8
+	},
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/strata/exterior/marsh/crash)
+"hL" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "0,7"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"ii" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"iO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/structure/closet/crate/explosives,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/obj/item/explosive/grenade/high_explosive/upp,
+/turf/open/floor/almayer/no_build/plating,
+/area/strata/interior/supply_shuttle_sof)
+"iS" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "1,2"
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	light_color = "#FF7700";
+	pixel_x = 3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"iT" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "7,12"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	light_color = "#FF7700";
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"iY" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "7,6"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"jA" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"jL" = (
+/obj/structure/closet/crate/ammo,
+/obj/item/ammo_magazine/rifle/ak4047/ap,
+/obj/item/ammo_magazine/rifle/ak4047/ap,
+/obj/item/ammo_magazine/rifle/ak4047/ap,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/strata/interior/supply_shuttle_sof)
+"kf" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 19;
+	pixel_x = 10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"kN" = (
+/obj/structure/bed/chair/dropship/pilot{
+	dir = 1;
+	pixel_x = 1;
+	pixel_y = 3;
+	buckling_x = 1;
+	buckling_y = 3
+	},
+/obj/structure/machinery/big_computers/computerblack/computer3{
+	pixel_y = 19;
+	layer = 2;
+	density = 0;
+	icon_state = "blacksensor_comp3_off"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/obj/item/shard,
+/turf/open/floor/strata/grey_multi_tiles,
+/area/strata/exterior/marsh/crash)
+"kW" = (
+/obj/structure/flora/bush/ausbushes/var3/sparsegrass,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"mF" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "7,3"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"mL" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "6,0"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"mM" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 13;
+	pixel_y = 15;
+	dir = 1
+	},
+/obj/item/stack/rods,
+/obj/item/shard,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"nf" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "0,8"
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	light_color = "#FF7700";
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"ns" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -11;
+	pixel_y = 15
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"nu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 13;
+	pixel_x = -24
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"or" = (
+/obj/item/ammo_box/magazine/ak4047/ap/empty{
+	pixel_x = -6;
+	pixel_y = 9
+	},
+/obj/item/ammo_magazine/rifle/ak4047{
+	pixel_x = 13;
+	pixel_y = -3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/item/ammo_box/magazine/ak4047/empty{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/almayer/no_build/plating,
+/area/strata/interior/supply_shuttle_sof)
+"oZ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 5;
+	pixel_y = 43;
+	pixel_x = -10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"pc" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"pM" = (
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/marsh/crash)
+"pV" = (
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/exterior/marsh/crash)
+"qH" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "0,4"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"qZ" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"ra" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -13;
+	pixel_y = 18
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"rb" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "0,6"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"rw" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 19;
+	dir = 8;
+	pixel_x = -15
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"rI" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/upp_sof_alt/transparent{
+	icon_state = "3,13"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"sa" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	name = "Supply Dropship Hold Lockdown";
+	needs_power = 0;
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi';
+	pixel_y = -3
+	},
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/supply_shuttle_sof)
+"sw" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "1,0"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"sG" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = 15;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"tc" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "8,8"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"ug" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "1,4"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"uS" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"vl" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "1,12"
+	},
+/obj/structure/blocker/invisible_wall,
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	light_color = "#FF7700";
+	pixel_x = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"vm" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "8,4"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"vB" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "6,1"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"vE" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "8,6"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"wc" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 12;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"wH" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 1;
+	pixel_y = 27;
+	dir = 4
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"xC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3;
+	pixel_x = 1
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"xI" = (
+/obj/structure/shuttle/part/upp_sof{
+	icon_state = "4,1";
+	density = 0;
+	opacity = 0
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/obj/item/stack/rods,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"ya" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"yt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"yC" = (
+/obj/structure/platform/stone/soro/west,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"zi" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "1,12"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/interior/supply_shuttle_sof)
+"zZ" = (
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/exterior/marsh/crash)
+"Ax" = (
+/obj/item/stack/sheet/metal,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"AN" = (
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/strata/exterior/marsh/crash)
+"AT" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "2,1"
+	},
+/obj/structure/prop/hybrisa/misc/fire/fire2{
+	color = "#FF7700";
+	icon = 'icons/effects/fire.dmi';
+	icon_state = "dynamic_2";
+	light_color = "#FF7700";
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"BC" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	name = "Supply Dropship Hold Lockdown";
+	needs_power = 0;
+	icon = 'icons/obj/structures/doors/hybrisashutters.dmi'
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/supply_shuttle_sof)
+"BN" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 19;
+	pixel_y = 19;
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"CM" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -20;
+	pixel_y = 2
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"CS" = (
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"CU" = (
+/obj/structure/platform/stone/soro/north,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"Dn" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 5;
+	pixel_x = -14;
+	pixel_y = 19
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"DB" = (
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"DL" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = -12;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/exterior/marsh/crash)
+"DW" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 19;
+	dir = 8;
+	pixel_x = -15
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"Ef" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"Ev" = (
+/turf/closed/wall/strata_ice/rock,
+/area/strata/interior/out_of_bounds)
+"ED" = (
+/obj/structure/blocker/invisible_wall,
+/turf/closed/shuttle/upp_sof_alt/transparent{
+	icon_state = "2,12"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"ES" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/strata/exterior/marsh/crash)
+"Ff" = (
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"Fz" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "7,4"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"FA" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 10
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"FK" = (
+/obj/structure/platform/stone/soro/west,
+/obj/structure/platform/stone/soro,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"FL" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 19;
+	pixel_x = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"Gj" = (
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	dir = 4;
+	pixel_y = -14
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"Gp" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "7,0"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"Gt" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "6,13";
+	density = 0;
+	pixel_y = -3
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -16;
+	pixel_y = 15
+	},
+/obj/item/stack/rods{
+	pixel_x = -14;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"Hm" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"HS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 13;
+	pixel_y = 15;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/item/shard,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"Is" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -9;
+	pixel_y = 3
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 19;
+	pixel_x = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"Iz" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 17;
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"IC" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = -7;
+	pixel_y = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"II" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/floor/plating,
+/area/strata/exterior/marsh/crash)
+"Ju" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -1;
+	pixel_y = 9
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"Jy" = (
+/obj/structure/closet/crate/ammo,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -31
+	},
+/obj/item/storage/belt/gun/type47/SOF_belt,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/item/clothing/accessory/storage/webbing/black,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
+/obj/item/clothing/suit/storage/marine/faction/UPP/SOF_armor,
+/turf/open/floor/almayer/no_build/plating,
+/area/strata/interior/supply_shuttle_sof)
+"Kj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"Kr" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 1;
+	pixel_y = 6;
+	dir = 1
+	},
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"Lc" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "2,0"
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"Lq" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "2,13";
+	density = 0;
+	pixel_x = 12;
+	pixel_y = -3
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 5;
+	pixel_x = 6;
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"LL" = (
+/obj/structure/platform_decoration/stone/soro/north,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"MO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/structure/girder/reinforced,
+/turf/open/floor/plating,
+/area/strata/exterior/marsh/crash)
+"Nq" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -11;
+	pixel_y = 5;
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"Nx" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "7,2"
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"Nz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet{
+	pixel_x = -11;
+	pixel_y = -1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"NA" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "8,3"
+	},
+/obj/structure/prop/colorable_rock/colorable/alt{
+	color = "#9d796a";
+	pixel_x = -11;
+	pixel_y = -4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/interior/supply_shuttle_sof)
+"NK" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 19;
+	pixel_y = 19;
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"Ow" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -1;
+	pixel_y = 7
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"OI" = (
+/obj/item/stack/rods,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 17;
+	pixel_y = -1;
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"PH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/structure/bed/chair/vehicle{
+	pixel_y = 22;
+	pixel_x = 8
+	},
+/obj/effect/landmark/objective_landmark/close,
+/obj/effect/decal/cleanable/blood{
+	pixel_x = 1;
+	pixel_y = -12
+	},
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/strata/exterior/marsh/crash)
+"QE" = (
+/obj/structure/platform/stone/soro/west,
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	density = 0
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"Sj" = (
+/obj/structure/shuttle/part/upp_sof{
+	icon_state = "2,11"
+	},
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "6,2"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"Tp" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -17;
+	pixel_y = -11
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"TE" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "1,11"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"TQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods,
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 17;
+	pixel_y = -1;
+	dir = 4
+	},
+/obj/item/shard,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"TT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/rods{
+	pixel_x = 1;
+	pixel_y = -14
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -11;
+	pixel_y = 15
+	},
+/obj/item/shard,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"TW" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/obj/item/ammo_box/magazine/ak4047/empty{
+	pixel_x = 5;
+	pixel_y = -7
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/strata/interior/supply_shuttle_sof)
+"Uc" = (
+/obj/item/stack/rods{
+	pixel_x = -15;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -11;
+	pixel_y = 15
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"Ud" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "8,0";
+	density = 0
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"UM" = (
+/obj/structure/platform_decoration/stone/soro/east,
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"UY" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -2;
+	pixel_y = 2;
+	dir = 4
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"Vs" = (
+/obj/item/ammo_magazine/rifle/ak4047{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/turf/open/floor/hybrisa/metal/red_warning_floor,
+/area/strata/interior/supply_shuttle_sof)
+"VU" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = 8;
+	pixel_y = -14
+	},
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_y = 19;
+	dir = 8;
+	pixel_x = -15
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"Wk" = (
+/obj/structure/closet/crate/ammo,
+/obj/structure/machinery/light/double{
+	dir = 4;
+	pixel_y = -32
+	},
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/ammo_magazine/rifle/ak4047,
+/obj/item/weapon/gun/rifle/ak4047,
+/obj/item/weapon/gun/rifle/ak4047,
+/obj/effect/decal/warning_stripes{
+	icon_state = "test_square_red"
+	},
+/turf/open/floor/almayer/no_build/plating,
+/area/strata/interior/supply_shuttle_sof)
+"Wm" = (
+/obj/structure/shuttle/part/upp_sof{
+	icon_state = "2,11"
+	},
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "2,2"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"Ww" = (
+/obj/item/stack/rods,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_y = 3;
+	pixel_x = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/oil,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"WW" = (
+/obj/structure/platform/stone/soro/north,
+/turf/open/gm/dirt/brown/variant_2,
+/area/strata/exterior/marsh/crash)
+"XD" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d796a";
+	dir = 9;
+	pixel_x = -11;
+	pixel_y = 15
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/marsh/crash)
+"XL" = (
+/obj/item/stack/rods,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 8;
+	pixel_x = 8;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"XR" = (
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "5,12";
+	opacity = 0
+	},
+/area/strata/interior/supply_shuttle_sof)
+"YA" = (
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"YU" = (
+/obj/effect/decal/strata_decals/mud_corner{
+	dir = 8
+	},
+/turf/open/gm/dirt/brown/variant_1,
+/area/strata/exterior/marsh/crash)
+"Zi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -19;
+	pixel_y = 12;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/dirt/greenglow{
+	color = "#140400";
+	name = "dirt";
+	alpha = 100
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"Zr" = (
+/obj/structure/platform/stone/soro,
+/turf/open/gm/dirt/brown,
+/area/strata/exterior/marsh/crash)
+"Zy" = (
+/obj/structure/shuttle/part/upp_sof_alt/transparent{
+	icon_state = "7,12"
+	},
+/turf/closed/shuttle/upp_sof_alt{
+	icon_state = "7,3"
+	},
+/area/strata/interior/supply_shuttle_sof)
+"ZB" = (
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	dir = 4;
+	pixel_x = 15;
+	pixel_y = 1
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+"ZE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/colorable_rock/colorable{
+	color = "#9d7766";
+	pixel_x = -2;
+	pixel_y = 2;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/strata/exterior/marsh/crash)
+
+(1,1,1) = {"
+Ff
+Ff
+Ff
+pM
+wH
+YU
+Ff
+sG
+ZB
+wc
+ae
+Zr
+pV
+Ef
+eV
+CU
+Ff
+CS
+Ff
+CS
+Ff
+"}
+(2,1,1) = {"
+BN
+Ff
+NK
+Ax
+Ff
+XL
+nu
+ya
+Ff
+DB
+DB
+LL
+FK
+Kr
+Ev
+WW
+Ju
+pV
+Ff
+Ff
+CS
+"}
+(3,1,1) = {"
+Ff
+Ff
+mM
+Uc
+Zi
+Kj
+nf
+hL
+rb
+qH
+fs
+Iz
+xC
+QE
+yC
+UM
+Ff
+Ff
+FA
+Ff
+Ff
+"}
+(4,1,1) = {"
+OI
+fp
+Lq
+zi
+MO
+ZE
+eR
+TE
+ug
+ug
+iS
+gP
+pc
+sw
+Dn
+DB
+Is
+DB
+FL
+FA
+Ff
+"}
+(5,1,1) = {"
+HS
+vl
+rI
+ED
+PH
+II
+XR
+Jy
+iO
+or
+Wm
+AT
+Ww
+Lc
+aP
+XD
+DB
+kf
+Ff
+DB
+Ff
+"}
+(6,1,1) = {"
+yt
+ES
+kN
+cG
+Nz
+zZ
+BC
+gV
+Vs
+gV
+sa
+xI
+YA
+uS
+DB
+ns
+DB
+DB
+IC
+Ff
+IC
+"}
+(7,1,1) = {"
+TQ
+ii
+bB
+ED
+gZ
+dI
+dj
+Wk
+jL
+TW
+Sj
+vB
+mL
+Hm
+Ff
+FL
+Ff
+qZ
+Ff
+Ff
+Ff
+"}
+(8,1,1) = {"
+Ff
+TT
+Gj
+iT
+AN
+DL
+Zy
+mF
+Fz
+iY
+Nx
+gR
+Gp
+DB
+oZ
+Ff
+ra
+DB
+jA
+cq
+Ff
+"}
+(9,1,1) = {"
+DB
+DW
+Ff
+UY
+pc
+Gt
+tc
+eZ
+vE
+vm
+NA
+Ow
+Ud
+Ff
+Ff
+Nq
+Ff
+Ff
+Ff
+Ff
+Ff
+"}
+(10,1,1) = {"
+DW
+CM
+DB
+DB
+Ff
+UY
+Ff
+Ff
+Ff
+Ff
+fD
+Ff
+Tp
+Ff
+Ff
+Ff
+Ff
+Ff
+Ff
+Ff
+DB
+"}
+(11,1,1) = {"
+Ff
+Ff
+Ff
+rw
+VU
+DB
+Ff
+Ff
+Ff
+Ff
+Ff
+Ff
+Ff
+CS
+Ff
+kW
+Ff
+Ff
+Ff
+DB
+Ff
+"}

@@ -48,3 +48,13 @@
 	. = ..()
 	dir = pick(dir_list_limited)//only 4 variants of this, and thusly on 4 directions on the icon to randomize from
 
+/obj/structure/prop/colorable_rock/colorable
+	name = "rocks"
+	desc = "A solidified collection of local minerals. When melted, becomes a substance best known as lava."
+	icon_state = "ground_colorable"
+	icon = 'icons/obj/structures/props/natural/rocks.dmi'
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	layer = TURF_LAYER
+
+/obj/structure/prop/colorable_rock/colorable/alt
+	icon_state = "ground_colorable_alt"

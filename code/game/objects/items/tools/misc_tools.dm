@@ -53,7 +53,8 @@
 	if(istype(A, /obj/item/tool/surgery) || istype(A, /obj/item/reagent_container/pill))
 		to_chat(user, SPAN_WARNING("That wouldn't be sanitary."))
 		return
-	if((istype(A, /obj/vehicle/multitile)) || (istype(A, /obj/structure))) // disallow naming structures
+	//disallow naming structures and vehicles, but not crates!
+	if(istype(A, /obj/vehicle/multitile) || (istype(A, /obj/structure) && !istype(A, /obj/structure/closet/crate) && !istype(A, /obj/structure/closet/coffin/woodencrate)))
 		to_chat(user, SPAN_WARNING("The label won't stick to that."))
 		return
 	if(isturf(A))
@@ -68,9 +69,9 @@
 		return
 
 	var/datum/component/label/labelcomponent = A.GetComponent(/datum/component/label)
-	if(labelcomponent)
+	if(labelcomponent && labelcomponent.has_label())
 		if(labelcomponent.label_name == label)
-			to_chat(user, SPAN_WARNING("It already has the same label."))
+			to_chat(user, SPAN_WARNING("The label already says \"[label]\"."))
 			return
 
 	user.visible_message(SPAN_NOTICE("[user] labels [A] as \"[label]\"."),
@@ -89,19 +90,19 @@
 	mode = !mode
 	icon_state = "labeler[mode]"
 	if(mode)
-		to_chat(user, SPAN_NOTICE("You turn on \the [src]."))
+		to_chat(user, SPAN_NOTICE("You turn on [src]."))
 		//Now let them choose the text.
-		var/str = copytext(reject_bad_text(input(user,"Label text?", "Set label", "")), 1, MAX_NAME_LEN)
+		var/str = copytext(reject_bad_text(tgui_input_text(user, "Label text?", "Set label", "", MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state)), 1, MAX_NAME_LEN)
 		if(!str || !length(str))
 			to_chat(user, SPAN_NOTICE("Label text cleared. You can now remove labels."))
 			label = null
 			return
 		label = str
 		to_chat(user, SPAN_NOTICE("You set the text to '[str]'."))
-	else
-		to_chat(user, SPAN_NOTICE("You turn off \the [src]."))
+		return
 
-
+	to_chat(user, SPAN_NOTICE("You turn off [src]."))
+	return
 
 /*
 	Allow the user of the labeler to remove a label, if there is no text set
@@ -110,18 +111,18 @@
 
 */
 
-/obj/item/tool/hand_labeler/proc/remove_label(atom/A, mob/user)
-	var/datum/component/label/label = A.GetComponent(/datum/component/label)
-	if(label)
-		user.visible_message(SPAN_NOTICE("[user] removes label from [A]."),
-						SPAN_NOTICE("You remove the label from [A]."))
-		label.remove_label()
-		log_admin("[user] has removed label from [A.name]. (CKEY: ([user.ckey]))")
-		playsound(A, remove_label_sound, 20, TRUE)
+/obj/item/tool/hand_labeler/proc/remove_label(atom/target, mob/user)
+	var/datum/component/label/label = target.GetComponent(/datum/component/label)
+	if(label && label.has_label())
+		user.visible_message(SPAN_NOTICE("[user] removes label from [target]."),
+						SPAN_NOTICE("You remove the label from [target]."))
+		log_admin("[key_name(usr)] has removed label from [target].")
+		label.clear_label()
+		playsound(target, remove_label_sound, 20, TRUE)
 		return
-	else
-		to_chat(user, SPAN_NOTICE("There is no label to remove."))
-		return
+
+	to_chat(user, SPAN_NOTICE("There is no label to remove."))
+	return
 
 /**
 	Allow the user to refill the labeller
@@ -221,13 +222,13 @@
 			if(input == oldname || !input)
 				to_chat(user, SPAN_NOTICE("You changed [target] to... well... [target]."))
 			else
-				msg_admin_niche("[key_name(usr)] changed \the [src]'s name to [input] [ADMIN_JMP(src)]")
+				msg_admin_niche("[key_name(usr)] changed [src]'s name to [input] [ADMIN_JMP(src)]")
 				target.AddComponent(/datum/component/rename, input, target.desc)
 				var/datum/component/label/label = target.GetComponent(/datum/component/label)
 				if(label)
-					label.remove_label()
+					label.clear_label()
 					label.apply_label()
-				to_chat(user, SPAN_NOTICE("You have successfully renamed \the [oldname] to [target]."))
+				to_chat(user, SPAN_NOTICE("You have successfully renamed [oldname] to [target]."))
 				obj_target.renamedByPlayer = TRUE
 				playsound(target, "paper_writing", 15, TRUE)
 
@@ -254,7 +255,7 @@
 			//reapply any label to name
 			var/datum/component/label/label = target.GetComponent(/datum/component/label)
 			if(label)
-				label.remove_label()
+				label.clear_label()
 				label.apply_label()
 
 			to_chat(user, SPAN_NOTICE("You have successfully reset [target]'s name and description."))
@@ -365,7 +366,7 @@
 /obj/item/tool/pen/sleepypen/Initialize()
 	. = ..()
 	create_reagents(30)
-	reagents.add_reagent("chloralhydrate", 22)
+	reagents.add_reagent("chloralhydrate", 15)
 
 /obj/item/tool/pen/sleepypen/attack(mob/M as mob, mob/user as mob)
 	if(!(istype(M,/mob)))

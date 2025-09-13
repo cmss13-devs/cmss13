@@ -733,6 +733,23 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/drop2/lv522)
+"acS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar{
+	pixel_y = 29
+	},
+/turf/open/floor/wood,
+/area/lv522/indoors/b_block/bar)
+"acT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_2)
+"acU" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/lv522/landing_zone_1)
 "adk" = (
 /obj/structure/surface/table/almayer,
 /obj/item/trash/plate,
@@ -2314,7 +2331,7 @@
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/item/weapon/gun/launcher/grenade/m81/m79,
+/obj/item/weapon/gun/launcher/grenade/m81/m85a1,
 /turf/open/floor/prison/darkredfull2,
 /area/lv522/outdoors/colony_streets/north_street)
 "beb" = (
@@ -9846,6 +9863,9 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/gun/revolver/m44/custom/pkd_special/k2049,
+/obj/structure/sign/calendar{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/lv522/indoors/a_block/security)
 "flN" = (
@@ -20594,6 +20614,10 @@
 /area/lv522/indoors/a_block/security)
 "kZe" = (
 /obj/structure/machinery/photocopier,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29;
+	pixel_x = 8
+	},
 /turf/open/floor/prison/floor_plate,
 /area/lv522/indoors/a_block/corpo)
 "kZj" = (
@@ -22597,7 +22621,7 @@
 /turf/open/floor/corsat/marked,
 /area/lv522/indoors/c_block/bridge)
 "meM" = (
-/obj/item/clothing/accessory/red,
+/obj/item/clothing/accessory/tie/red,
 /obj/item/clothing/under/liaison_suit/field{
 	pixel_x = -4;
 	pixel_y = 9
@@ -32680,7 +32704,7 @@
 /area/lv522/indoors/a_block/dorm_north)
 "rfl" = (
 /obj/structure/surface/table/almayer,
-/obj/item/grown/nettle/death{
+/obj/item/reagent_container/food/snacks/grown/nettle{
 	pixel_x = -3;
 	pixel_y = 7
 	},
@@ -34215,12 +34239,11 @@
 /area/lv522/outdoors/colony_streets/south_street)
 "rSG" = (
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = 5;
-	pixel_y = -6
+	pixel_x = 2
 	},
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = -6;
-	pixel_y = 10
+	pixel_x = -13;
+	pixel_y = 16
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/vents/pump,
@@ -39468,7 +39491,7 @@
 /area/lv522/indoors/c_block/garage)
 "uyN" = (
 /obj/effect/decal/cleanable/blood/drip,
-/obj/item/clothing/head/helmet/marine/scout{
+/obj/item/clothing/head/helmet/marine/radio_helmet/scout{
 	armor_bullet = 5;
 	armor_melee = 15;
 	desc = "A custom helmet designed for USCM Scouts. Looks like this one has seen some action.";
@@ -41532,8 +41555,7 @@
 /area/lv522/indoors/a_block/dorms/glass)
 "vyD" = (
 /obj/item/clothing/shoes/jackboots{
-	pixel_x = -6;
-	pixel_y = -6
+	pixel_x = -6
 	},
 /turf/open/floor/prison,
 /area/lv522/indoors/b_block/bar)
@@ -52503,7 +52525,7 @@ wuK
 xfW
 wuK
 xcY
-sAT
+acU
 sAT
 pnj
 uiM
@@ -59686,7 +59708,7 @@ jaO
 lYR
 wmI
 mBF
-wDy
+acS
 hds
 mBF
 mBF
@@ -77456,7 +77478,7 @@ tJa
 wQa
 eXG
 eXG
-eXG
+aaa
 eXG
 eXG
 wPN
@@ -78061,7 +78083,7 @@ gRp
 iGr
 iGr
 uIn
-uIn
+acT
 rqn
 qvA
 lhE

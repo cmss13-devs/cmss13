@@ -44,4 +44,6 @@
 			LAZYREMOVE(xeno.modifier_sources, effect_modifier_source)
 		if(effect_end_message)
 			to_chat(xeno, effect_end_message)
+		xeno.balloon_alert(xeno, "our speed fall back to normal.", text_color = "#5B248C")
+		playsound(xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 	return ..()

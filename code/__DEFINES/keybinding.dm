@@ -165,6 +165,7 @@
 #define COMSIG_KB_XENO_EVOLVE "keybinding_evolve"
 #define COMSIG_KB_XENO_PURCHASE_STRAIN "keybinding_purchase_strain"
 #define COMSIG_KB_XENO_RESET_STRAIN "keybinding_reset_strain"
+#define COMSIG_KB_XENO_BECOME_SEETHROUGH "keybinding_become_seethrough"
 
 // Yautja
 
@@ -202,6 +203,7 @@
 
 #define COMSIG_KB_YAUTJA_TELE_LOC "keybinding_yautja_tele_loc"
 #define COMSIG_KB_YAUTJA_FOLD_COMBISTICK "keybinding_yautja_fold_combistick"
+#define COMSIG_KB_YAUTJA_GAUNTLET_GUARD "keybinding_yautja_gauntlet_guard"
 
 #define COMSIG_KB_OBSERVER_JOIN_XENO "keybinding_observer_join_as_xeno"
 #define COMSIG_KB_OBSERVER_JOIN_ERT "keybinding_observer_join_ert"

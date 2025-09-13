@@ -179,8 +179,11 @@
 /datum/emergency_call/young_bloods //YOUNG BLOOD ERT ONLY FOR HUNTING GROUNDS IF SOME MOD USES THIS INSIDE THE MAIN GAME THE COUNCIL WONT BE HAPPY (Joe Lampost)
 	name = "Template"
 	var/blooding_name
-	time_required_for_job = 60 HOURS
+	var/youngblood_time
 	probability = 0
+	mob_max = 3
+	mob_min = 1
+	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner/pred
 	shuttle_id = ""
 
@@ -190,25 +193,22 @@
 		if(youngblood_candidate.current?.client?.check_whitelist_status(WHITELIST_YAUTJA) || jobban_isbanned(youngblood_candidate.current, ERT_JOB_YOUNGBLOOD))
 			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you are already whitelisted for predator or you are job banned from youngblood."))
 			continue
+		if(check_timelock(youngblood_candidate.current?.client, JOB_YOUNGBLOOD_ROLES_LIST, youngblood_time))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You did not qualify for the ERT beacon because you have already reached the maximum time allowed for Youngblood, please consider applying for Predator on the forums."))
+			continue
 		if(check_timelock(youngblood_candidate.current?.client, JOB_SQUAD_ROLES_LIST, time_required_for_job) && (youngblood_candidate.current?.client.get_total_xeno_playtime() >= time_required_for_job))
 			youngblood_candidates_clean.Add(youngblood_candidate)
 			continue
 		if(youngblood_candidate.current)
-			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role [round(time_required_for_job / 36000)] hours on both squad roles and xenomorph roles."))
+			to_chat(youngblood_candidate.current, SPAN_WARNING("You didn't qualify for the ERT beacon because you did not meet the required hours for this role [round(time_required_for_job / 18000)] hours on both squad roles and xenomorph roles."))
 	return youngblood_candidates_clean
 
-/datum/emergency_call/young_bloods/hunting_party
-	name = "Hunting Grounds - Youngblood Party"
-	blooding_name = "Youngblood Party (Three members)"
-	mob_max = 3
-	mob_min = 1
-	objectives = "Hunt down and defeat prey within the hunting grounds to earn your mark. You may not: Stun hit prey, hit prey in cloak or excessively run away to heal."
 
 /datum/emergency_call/young_bloods/spawn_candidates(quiet_launch, announce_incoming, override_spawn_loc)
 	. = ..()
 	if(length(members) < mob_min)
 		message_all_yautja("No youngbloods answered the call.")
-		GLOB.blooding_activated = FALSE
+		COOLDOWN_RESET(GLOB, youngblood_timer_yautja)
 	else
 		message_all_yautja("Awoke [length(members)] youngbloods for the ritual.")
 
@@ -247,3 +247,21 @@
 
 	if(SSticker.mode)
 		SSticker.mode.initialize_predator(hunter, ignore_pred_num = TRUE)
+
+/datum/emergency_call/young_bloods/inexperienced
+	name = "Hunting Grounds - Inexperienced Youngblood Party" //For completly new youngblood players
+	blooding_name = "Inexperienced Youngblood Party (Three members)"
+	time_required_for_job = 5 HOURS
+	youngblood_time = 2 HOURS
+
+/datum/emergency_call/young_bloods/intermediate
+	name = "Hunting Grounds - Intermediate Youngblood Party" //For players who have played a few rounds as youngblood
+	blooding_name = "Intermediate Youngblood Party (Three members)"
+	time_required_for_job = 10 HOURS
+	youngblood_time = 5 HOURS
+
+/datum/emergency_call/young_bloods/experienced //Regular youngblood party
+	name = "Hunting Grounds - Experienced Youngblood Party"
+	blooding_name = "Experienced Youngblood Party (Three members)"
+	time_required_for_job = 20 HOURS
+	youngblood_time = 10 HOURS

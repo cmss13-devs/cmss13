@@ -14,6 +14,8 @@ SUBSYSTEM_DEF(inactivity)
 		debug_log("Removed nulls from GLOB.clients!")
 	if(list_clear_nulls(GLOB.player_list))
 		debug_log("Removed nulls from GLOB.player_list!")
+	if(list_clear_nulls(GLOB.new_player_list))
+		debug_log("Removed nulls from GLOB.new_player_list!")
 
 	if(!CONFIG_GET(flag/kick_inactive))
 		return

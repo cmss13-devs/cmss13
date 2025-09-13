@@ -1,14 +1,12 @@
 /mob/living/carbon/xenomorph/say(message)
 	var/verb = "says"
-	var/forced = 0
 	var/message_range = GLOB.world_view_size
 
-	if(client)
-		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
-			return
+	if(client?.prefs?.muted & MUTE_IC)
+		to_chat(src, SPAN_WARNING("You cannot speak in IC (Muted)."))
+		return
 
-	message =  trim(strip_html(message))
+	message = trim(strip_html(message))
 
 	if(stat == DEAD)
 		return say_dead(message)
@@ -16,75 +14,66 @@
 	if(stat == UNCONSCIOUS)
 		return //Unconscious? Nope.
 
-	if(copytext(message, 1, 2) == "*")
+	var/prefix = copytext(message, 1, 2)
+	if(prefix == "*")
 		if(!findtext(message, "*", 2)) //Second asterisk means it is markup for *bold*, not an *emote.
 			return emote(lowertext(copytext(message, 2)), intentional = TRUE)
 
-	var/datum/language/speaking = null
-	if(length(message) >= 2)
-		if(can_hivemind_speak && copytext(message,1,2) == ";" && length(languages))
-			for(var/datum/language/L in languages)
-				if(L.flags & HIVEMIND)
-					verb = L.speech_verb
-					speaking = L
-					break
-		var/channel_prefix = copytext(message, 1, 3)
-		if(length(languages))
-			for(var/datum/language/L in languages)
-				if(lowertext(channel_prefix) == ":[L.key]" || lowertext(channel_prefix) == ".[L.key]")
-					verb = L.speech_verb
-					speaking = L
-					break
+	var/hivemind_speak = FALSE
 
-	if(caste)
-		if(isnull(speaking) || (!can_hivemind_speak && (speaking.flags & HIVEMIND)) || speaking.key != "q") //Not hivemind? Then default to xenocommon. BRUTE FORCE YO
-			for(var/datum/language/L in languages)
-				if(L.key == speaking_key)
-					verb = L.speech_verb
-					speaking = L
-					forced = 1
-					break
+	if(prefix == ";")
+		message = capitalize(trim_left(copytext(message, 2)))
+		hivemind_speak = TRUE
+	else if(prefix == "." || prefix == "#" || prefix == ":" || prefix == ",")
+		message = capitalize(trim_left(copytext(message, 3)))
+		hivemind_speak = TRUE
+
+	if(!message)
+		return
+
+	if(hivemind_speak && can_hivemind_speak)
+		// Automatic punctuation
+		if(client?.prefs?.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
+			if(!(copytext(message, -1) in ENDING_PUNCT))
+				message += "."
+
+		hivemind_talk(message)
+		return
+
+	var/datum/language/speaking = parse_language(message)
+	if(speaking)
+		verb = speaking.speech_verb
+		message = capitalize(trim_left(copytext(message, 3)))
 	else
-		if(!speaking || isnull(speaking))
-			for(var/datum/language/L in languages)
-				if(L.key == "0")
-					verb = L.speech_verb
-					speaking = L
-					forced = 1
-					break
+		speaking = get_default_language()
+		verb = speaking.speech_verb
+		message = capitalize(trim_left(strip_language(message)))
 
-	if(!(speaking.flags & HIVEMIND) && HAS_TRAIT(src, TRAIT_LISPING)) // Xenomorphs can lisp too. :) Only if they're not speaking in hivemind.
+	// Xenomorphs can lisp too. :) Only if they're not speaking in hivemind.
+	if((!(speaking.flags & HIVEMIND) || !can_hivemind_speak) && HAS_TRAIT(src, TRAIT_LISPING))
 		var/old_message = message
 		message = lisp_replace(message)
 		if(old_message != message)
 			verb = "lisps"
 
-	if(copytext(message,1,2) == ";")
-		message = trim(copytext(message,2))
-	else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
-		message = trim(copytext(message,3))
-
-	message = capitalize(trim_left(message))
-
-	if(!message || stat)
+	if(!message)
 		return
 
 	// Automatic punctuation
-	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
+	if(client?.prefs?.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
 		if(!(copytext(message, -1) in ENDING_PUNCT))
 			message += "."
-
-	if(forced)
-		if(speaking_noise)
-			playsound(loc, speaking_noise, 25, 1)
-		..(message, speaking, verb, null, null, message_range, null)
-	else
+	if((speaking.flags & HIVEMIND) && can_hivemind_speak)
 		hivemind_talk(message)
+		return
+
+	if(speaking_noise)
+		playsound(loc, speaking_noise, 25, 1)
+	..(message, speaking, verb, null, null, message_range, null)
 
 /mob/living/carbon/xenomorph/say_understands(mob/other, datum/language/speaking = null)
-
 	if(isxeno(other))
-		return 1
+		return TRUE
 	return ..()
 
 

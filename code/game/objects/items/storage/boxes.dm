@@ -998,8 +998,8 @@
 		new /obj/item/reagent_container/food/snacks/grown/banana(src)
 
 //chanterelle
-/obj/item/storage/box/chanterelles
-	name = "box of chanterelle"
+/obj/item/storage/box/chanterelle
+	name = "box of chanterelles"
 
 /obj/item/storage/box/chanterelle/fill_preset_inventory()
 	for(var/i in 1 to 7)

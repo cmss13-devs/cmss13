@@ -9,13 +9,13 @@
 		forceMove(get_turf(pick(GLOB.newplayer_start)))
 	else
 		forceMove(locate(1,1,1))
-	lastarea = get_area(src.loc)
-
-	initialize_lobby_screen()
+	lastarea = get_area(loc)
 
 	GLOB.new_player_list += src
 
-	. = ..()
+	..()
+
+	initialize_lobby_screen() // This has winsets that can sleep, so all variables must be set prior in the event Logout occurs during sleep
 
 	addtimer(CALLBACK(src, PROC_REF(lobby)), 4 SECONDS)
 

@@ -44,6 +44,12 @@
 				attacking_xeno.start_pulling(src)
 
 		if(INTENT_HARM)
+			if(attacking_xeno.claw_restrained())
+				attacking_xeno.animation_attack_on(src)
+				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] tries to strike [src]"),
+				SPAN_XENONOTICE("We try to strike [src] but fail due to our restraints!"))
+				return XENO_ATTACK_ACTION
+
 			if(attacking_xeno.can_not_harm(src))
 				attacking_xeno.animation_attack_on(src)
 				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
@@ -125,11 +131,6 @@
 				n_damage = attacking_xeno.behavior_delegate.melee_attack_modify_damage(n_damage, src)
 				attacking_xeno.behavior_delegate.melee_attack_additional_effects_target(src)
 				attacking_xeno.behavior_delegate.melee_attack_additional_effects_self()
-
-			//xenos damaging gun durability
-			var/obj/item/weapon/gun/gun_inhand = get_active_hand()
-			if(istype(gun_inhand))
-				gun_inhand.xeno_attack_durability(attacking_xeno, src) //damages durability of gun on the active hand regardless of which hand is targetted by the xeno
 
 			var/slash_noise = attacking_xeno.slash_sound
 			var/list/slashdata = list("n_damage" = n_damage, "slash_noise" = slash_noise)

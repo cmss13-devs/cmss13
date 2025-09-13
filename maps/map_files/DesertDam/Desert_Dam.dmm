@@ -919,12 +919,28 @@
 	},
 /turf/open/desert/rock/deep/transition/west,
 /area/desert_dam/interior/dam_interior/hanger)
+"adN" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt/cement_sunbleached/cement_sunbleached1,
+/area/desert_dam/exterior/landing_pad_two)
 "adO" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8
 	},
 /turf/open/asphalt/cement_sunbleached/cement_sunbleached9,
 /area/desert_dam/exterior/valley/valley_labs)
+"adP" = (
+/obj/structure/desertdam/decals/road_edge,
+/obj/effect/landmark/spycam_start,
+/turf/open/asphalt,
+/area/desert_dam/exterior/landing_pad_one)
+"adQ" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/machinery/power/apc/power/north,
+/turf/open/floor/plating,
+/area/desert_dam/exterior/landing_pad_one)
 "adR" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/desert/desert_shore/shore_edge1,
@@ -5631,6 +5647,9 @@
 /obj/structure/surface/table,
 /obj/effect/spawner/random/tech_supply,
 /obj/item/phone,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/blue/north,
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayH" = (
@@ -6674,7 +6693,7 @@
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDq" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aDr" = (
@@ -18344,7 +18363,7 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bIx" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/prison/green/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bIy" = (
@@ -29099,6 +29118,9 @@
 /area/desert_dam/building/medical/virology_wing)
 "cIN" = (
 /obj/structure/machinery/computer/crew,
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
+	},
 /turf/open/floor/prison/whitegreen/north,
 /area/desert_dam/building/medical/virology_wing)
 "cIO" = (
@@ -32468,6 +32490,7 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
+/obj/structure/machinery/power/apc/power/north,
 /turf/open/floor/plating,
 /area/desert_dam/exterior/landing_pad_two)
 "dax" = (
@@ -44795,7 +44818,7 @@
 /turf/open/floor/prison/whitegreen/southeast,
 /area/desert_dam/building/medical/emergency_room)
 "mqi" = (
-/obj/item/weapon/gun/shotgun/pump/dual_tube/cmb,
+/obj/item/weapon/gun/shotgun/double/with_stock,
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/building/bar/bar)
 "mqM" = (
@@ -57449,7 +57472,7 @@ cDX
 cDX
 cDX
 cDX
-cDX
+adN
 cDX
 cDX
 cDX
@@ -60554,7 +60577,7 @@ iKp
 iKp
 iKp
 iKp
-iKp
+adP
 iKp
 iKp
 iKp
@@ -61706,7 +61729,7 @@ aPF
 aSC
 aau
 aOc
-aUH
+adQ
 aVk
 aVk
 aVk

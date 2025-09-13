@@ -87,5 +87,5 @@
 /// From /mob/living/carbon/human/UnarmedAttack()
 #define COMSIG_HUMAN_UNARMED_ATTACK "human_unarmed_attack"
 
-/// from /modules/animations/animations_library.dm
-#define COMSIG_HUMAN_ANIMATING "human_animating"
+/// From /mob/living/carbon/human/hud_set_holocard()
+#define COMSIG_HUMAN_TRIAGE_CARD_UPDATED "human_triage_card_updated"

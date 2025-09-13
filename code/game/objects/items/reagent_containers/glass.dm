@@ -4,7 +4,6 @@
 
 /obj/item/reagent_container/glass
 	name = " "
-	var/base_name = " "
 	desc = " "
 	icon = 'icons/obj/items/chemistry.dmi'
 	item_icons = list(
@@ -16,10 +15,12 @@
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,25,30,60)
 	volume = 60
-	var/splashable = TRUE
 	flags_atom = FPRINT|OPENCONTAINER
 	transparent = TRUE
+	var/splashable = TRUE
 	var/has_lid = TRUE
+	var/base_name = " "
+
 
 	var/list/can_be_placed_into = list(
 		/obj/structure/machinery/chem_master/,
@@ -52,6 +53,7 @@
 /obj/item/reagent_container/glass/Initialize()
 	. = ..()
 	base_name = name
+	ADD_TRAIT(src, TRAIT_REACTS_UNSAFELY, TRAIT_SOURCE_INHERENT)
 
 /obj/item/reagent_container/glass/get_examine_text(mob/user)
 	. = ..()
@@ -171,30 +173,35 @@
 			reagents.clear_reagents()
 		return
 
-/obj/item/reagent_container/glass/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_container/glass/attackby(obj/item/W, mob/user)
 	if(HAS_TRAIT(W, TRAIT_TOOL_PEN))
 		var/prior_label_text
-		var/datum/component/label/labelcomponent = src.GetComponent(/datum/component/label)
-		if(labelcomponent)
+		var/datum/component/label/labelcomponent = GetComponent(/datum/component/label)
+		if(labelcomponent && labelcomponent.has_label())
 			prior_label_text = labelcomponent.label_name
-		var/tmp_label = sanitize(input(user, "Enter a label for [name]","Label", prior_label_text))
-		if(tmp_label == "" || !tmp_label)
-			if(labelcomponent)
-				labelcomponent.remove_label()
-				user.visible_message(SPAN_NOTICE("[user] removes the label from \the [src]."),
-				SPAN_NOTICE("You remove the label from \the [src]."))
-				return
-			else
-				return
+		var/tmp_label = tgui_input_text(user, "Enter a label for [src] (or nothing to remove)", "Label", prior_label_text, MAX_NAME_LEN, ui_state=GLOB.not_incapacitated_state)
+		if(isnull(tmp_label))
+			return // Canceled
+		if(!tmp_label)
+			if(prior_label_text)
+				log_admin("[key_name(usr)] has removed label from [src].")
+				user.visible_message(SPAN_NOTICE("[user] removes label from [src]."),
+									SPAN_NOTICE("You remove the label from [src]."))
+				labelcomponent.clear_label()
+			return
 		if(length(tmp_label) > MAX_NAME_LEN)
 			to_chat(user, SPAN_WARNING("The label can be at most [MAX_NAME_LEN] characters long."))
-		else
-			user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
-			SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
-			AddComponent(/datum/component/label, tmp_label)
-			playsound(src, "paper_writing", 15, TRUE)
-	else
-		. = ..()
+			return
+		if(prior_label_text == tmp_label)
+			to_chat(user, SPAN_WARNING("The label already says \"[tmp_label]\"."))
+			return
+		user.visible_message(SPAN_NOTICE("[user] labels [src] as \"[tmp_label]\"."),
+		SPAN_NOTICE("You label [src] as \"[tmp_label]\"."))
+		AddComponent(/datum/component/label, tmp_label)
+		playsound(src, "paper_writing", 15, TRUE)
+		return
+
+	return ..()
 
 /obj/item/reagent_container/glass/beaker
 	name = "beaker"
@@ -209,7 +216,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/beaker/dropped(mob/user)
@@ -386,6 +393,23 @@
 	ground_offset_x = 9
 	ground_offset_y = 8
 
+
+/obj/item/reagent_container/glass/beaker/vial/random
+	var/tier
+
+/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
+	. = ..()
+	var/random_chem
+	if(tier)
+		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
+	else
+		random_chem = pick(GLOB.chemical_gen_classes_list["C5"])
+	if(prob(4))
+		random_chem = "xenogenic"
+	if(random_chem)
+		reagents.add_reagent(random_chem, 30)
+		update_icon()
+
 /obj/item/reagent_container/glass/beaker/vial/epinephrine
 	name = "epinephrine vial"
 
@@ -409,34 +433,6 @@
 	. = ..()
 	reagents.add_reagent("chloralhydrate", 30)
 	update_icon()
-
-/obj/item/reagent_container/glass/beaker/vial/random
-	var/tier
-
-/obj/item/reagent_container/glass/beaker/vial/random/Initialize()
-	. = ..()
-	var/random_chem
-	if(tier)
-		random_chem = pick(GLOB.chemical_gen_classes_list[tier])
-	else
-		random_chem = pick( prob(3);pick(GLOB.chemical_gen_classes_list["C1"]),\
-							prob(5);pick(GLOB.chemical_gen_classes_list["C2"]),\
-							prob(7);pick(GLOB.chemical_gen_classes_list["C3"]),\
-							prob(10);pick(GLOB.chemical_gen_classes_list["C4"]),\
-							prob(15);pick(GLOB.chemical_gen_classes_list["C5"]),\
-							prob(25);pick(GLOB.chemical_gen_classes_list["T1"]),\
-							prob(15);pick(GLOB.chemical_gen_classes_list["T2"]),\
-							prob(10);pick(GLOB.chemical_gen_classes_list["T3"]),\
-							prob(5);pick(GLOB.chemical_gen_classes_list["T4"]),\
-							prob(15);"")
-	if(random_chem)
-		reagents.add_reagent(random_chem, 30)
-		update_icon()
-
-/obj/item/reagent_container/glass/beaker/vial/random/good/Initialize()
-	tier = pick("C5","T4")
-	. = ..()
-
 /obj/item/reagent_container/glass/beaker/cryoxadone
 	name = "cryoxadone beaker"
 
@@ -632,7 +628,7 @@
 	update_icon()
 
 /obj/item/reagent_container/glass/bucket/pickup(mob/user)
-	..()
+	. = ..()
 	update_icon()
 
 /obj/item/reagent_container/glass/bucket/dropped(mob/user)

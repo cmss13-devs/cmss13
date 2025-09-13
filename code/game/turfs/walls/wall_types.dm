@@ -77,7 +77,7 @@
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"
-	desc = "A metal wall used to separate space from the ship"
+	desc = "A metal wall used to separate space from the ship."
 	icon_state = "hull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 	//icon_state = "testwall0_debug" //Uncomment to check hull in the map editor.
 	walltype = WALL_HULL
@@ -88,6 +88,11 @@
 
 /turf/closed/wall/almayer/outer/take_damage(dam, mob/M)
 	return
+
+/turf/closed/wall/almayer/outer/internal
+	name = "structural hull"
+	desc = "The core structure of the hull, it holds the ship together."
+	icon_state = "innerhull" //Codersprite to make it more obvious in the map maker what's a hull wall and what's not
 
 /turf/closed/wall/almayer/white
 	walltype = WALL_WHITE
@@ -481,8 +486,9 @@
 	walltype = WALL_BONE_RESIN
 	turf_flags = TURF_HULL
 
-/turf/closed/wall/mineral/bone/is_weedable()
-	return NOT_WEEDABLE
+
+/turf/closed/wall/mineral/bone
+	is_weedable = NOT_WEEDABLE
 
 //Misc walls
 
@@ -782,6 +788,7 @@
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/should_track_build = FALSE
+	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
 
@@ -1354,7 +1361,6 @@
 	damage_cap = HEALTH_WALL_XENO_WEAK
 	var/duration = 5 SECONDS
 
-
 /turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()
 	if(mapload)
@@ -1362,6 +1368,18 @@
 		return
 	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
+/turf/closed/wall/resin/reflective/weak
+	name = "weakened reflective wall"
+	desc = "Weird slime with strange hardened fragments solidified into a wall. It looks like it last for moment before it will collapse."
+	damage_cap = HEALTH_WALL_XENO_REFLECTIVE_WEAK
+	var/duration = 13 SECONDS
+
+/turf/closed/wall/resin/reflective/weak/Initialize(mapload, ...)
+	. = ..()
+	if(mapload)
+		ScrapeAway()
+		return
+	addtimer(CALLBACK(src, PROC_REF(ScrapeAway)), duration)
 
 /turf/closed/wall/resin/can_be_dissolved()
 	return FALSE

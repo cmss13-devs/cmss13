@@ -32,15 +32,12 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 			to_chat(usr, SPAN_WARNING("You don't have the dexterity to do this!"))
 			return
 		if(!ignore_delay && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-			to_chat(user, SPAN_WARNING("You start fumbling around with [target_mob]..."))
+			to_chat(user, SPAN_WARNING("You start fumbling around with the scanner..."))
 			var/fduration = 60
 			if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_DEFAULT))
 				fduration = 30
 			if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(target_mob))
 				return
-		if(!istype(target_mob, /mob/living/carbon) || isxeno(target_mob))
-			to_chat(user, SPAN_WARNING("The scanner can't make sense of this creature."))
-			return
 
 	detail_level = detail
 	tgui_interact(user, ui)
@@ -526,9 +523,6 @@ GLOBAL_LIST_INIT(known_implants, subtypesof(/obj/item/implant))
 				fduration = 30
 			if(!do_after(user, fduration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY) || !user.Adjacent(src))
 				return
-		if(isxeno(src))
-			to_chat(user, SPAN_WARNING("[src] can't make sense of this creature."))
-			return
 		// Doesn't work on non-humans
 		if(!istype(src, /mob/living/carbon))
 			user.show_message("\nHealth Analyzer results for ERROR:\n\t Overall Status: ERROR")

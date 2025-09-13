@@ -52,6 +52,13 @@
 /obj/item/tool/pen/clicky,
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/uscm_station)
+"aj" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 28;
+	pixel_x = -7
+	},
+/turf/open/floor/dark,
+/area/adminlevel/ert_station/uscm_station)
 "ak" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -2246,6 +2253,10 @@
 "zT" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 10
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 27;
+	pixel_x = 8
 	},
 /turf/open/floor/wood/ship,
 /area/adminlevel/ert_station/uscm_station)
@@ -5252,7 +5263,7 @@ Hc
 Hc
 Hc
 Hc
-AR
+aj
 di
 pD
 Df

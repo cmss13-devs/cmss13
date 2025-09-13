@@ -147,6 +147,7 @@
 	desc = "A personal data transmitter bracelet, also known as a PDT, is a form of personal locator typically surgically implanted into the body of extrasolar colonists, among others. Its purpose is to allow rapid location of the associated personnel anywhere within a certain radius of the receiving equipment, sometimes up to 30km distance. This bracelet forms part of the PDT/L variant, which is a wearable version of the PDT technology. Both it and the linked locator tube share a serial number for ease of detection in case of mixup."
 	icon = 'icons/obj/items/clothing/accessory/watches.dmi'
 	icon_state = ""
+	worn_accessory_limit = 1
 	accessory_icons = list(
 		WEAR_BODY = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi',
 		WEAR_JACKET = 'icons/mob/humans/onmob/clothing/accessory/watches.dmi'

@@ -38,9 +38,9 @@
 	yautja = mob
 
 	if(require_bracers)
-		if(istype(yautja.gloves, /obj/item/clothing/gloves/yautja/hunter))
+		if(istype(yautja.gloves, /obj/item/clothing/gloves/yautja))
 			bracers = yautja.gloves
-		else if(istype(yautja.get_held_item(), /obj/item/clothing/gloves/yautja/hunter))
+		else if(istype(yautja.get_held_item(), /obj/item/clothing/gloves/yautja))
 			bracers = yautja.get_held_item()
 		if(!bracers)
 			to_chat(yautja, SPAN_WARNING("You don't have bracers."))
@@ -291,7 +291,7 @@
 	var/list/data = list()
 
 	data["categories"] = yautja_categories
-	data["theme"] = "crtgreen"
+	data["theme"] = "crtred"
 	data["emotes"] = list()
 
 	for(var/datum/emote/living/carbon/human/yautja/emote as anything in yautja_emotes)

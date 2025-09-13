@@ -4,7 +4,7 @@
 //======
 */
 
-// Used by M4A3, M4A3 Custom and B92FS
+// Used by M4A3, M4A4, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
@@ -28,7 +28,6 @@
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	stamina_damage = 60
 	damage = 15
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
 //Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.
@@ -55,8 +54,6 @@
 
 	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_10
-	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/pistol/ap/penetrating/set_bullet_traits()
 	. = ..()
@@ -68,8 +65,6 @@
 	name = "toxic pistol bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -91,8 +86,6 @@
 	damage = 15
 	penetration = ARMOR_PENETRATION_TIER_4
 	pen_armor_punch = 3
-	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/pistol/rubber
 	name = "rubber pistol bullet"
@@ -101,7 +94,6 @@
 	damage = 0
 	stamina_damage = 25
 	shrapnel_chance = 0
-	bullet_duraloss = BULLET_DURABILITY_LOSS_SMALL_RUBBER //youre firing rubber, of course its gonna damage your shit more... its smaller though so not as much
 
 // Reskinned rubber bullet used for the ES-4 CL pistol.
 /datum/ammo/bullet/pistol/rubber/es4
@@ -116,7 +108,7 @@
 	stamina_damage = 30
 	accuracy = HIT_ACCURACY_TIER_4
 
-// Used by M1911, Deagle and KT-42
+// Used by M1911 and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
 	headshot_state = HEADSHOT_OVERLAY_MEDIUM
@@ -126,39 +118,51 @@
 	penetration = ARMOR_PENETRATION_TIER_3
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-/datum/ammo/bullet/pistol/heavy/super //Commander's variant
+/datum/ammo/bullet/pistol/heavy/highimpact
+	name = "high-impact pistol bullet"
+	debilitate = list(0,0.2,0,0,0,1,0,0)
+
+/datum/ammo/bullet/pistol/heavy/highimpact/ap
+	name = "high-impact armor-piercing pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_10
+	damage = 40
+
+/datum/ammo/bullet/pistol/heavy/highimpact/New()
+	..()
+	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
+
+/datum/ammo/bullet/pistol/deagle //Commander's variant
 	name = ".50 heavy pistol bullet"
 	damage = 60
-	damage_var_low = PROJECTILE_VARIANCE_TIER_8
-	damage_var_high = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_4
+	headshot_state = HEADSHOT_OVERLAY_HEAVY
+	accuracy = -HIT_ACCURACY_TIER_3
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_6
+	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact
+/datum/ammo/bullet/pistol/deagle/highimpact
 	name = ".50 high-impact pistol bullet"
-	penetration = ARMOR_PENETRATION_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_4
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
-	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/ap
+/datum/ammo/bullet/pistol/deagle/highimpact/ap
 	name = ".50 high-impact armor piercing pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_10
-	damage = 45
-	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
+	damage = 50
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+/datum/ammo/bullet/pistol/deagle/highimpact/upp
 	name = "high-impact pistol bullet"
 	sound_override = 'sound/weapons/gun_DE50.ogg'
 	penetration = ARMOR_PENETRATION_TIER_6
 	debilitate = list(0,1.5,0,0,0,1,0,0)
 	flags_ammo_behavior = AMMO_BALLISTIC
-	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/New()
+/datum/ammo/bullet/pistol/deagle/highimpact/New()
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/projectile/P)
+/datum/ammo/bullet/pistol/deagle/highimpact/on_hit_mob(mob/M, obj/projectile/P)
 	knockback(M, P, 4)
 
 /datum/ammo/bullet/pistol/deagle
@@ -169,7 +173,6 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -179,8 +182,6 @@
 
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 20
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_MEDIUM
 
 /datum/ammo/bullet/pistol/incendiary/set_bullet_traits()
 	..()
@@ -201,7 +202,6 @@
 	damage = 36
 	penetration = ARMOR_PENETRATION_TIER_5
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -215,14 +215,11 @@
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
 /datum/ammo/bullet/pistol/squash/toxin
 	name = "toxic squash-head pistol bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_HIGH
 
 /datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/projectile/P)
 	. = ..()
@@ -242,8 +239,6 @@
 	name = "wall-penetrating squash-head pistol bullet"
 	shrapnel_chance = 0
 	penetration = ARMOR_PENETRATION_TIER_10
-	bullet_duraloss = BULLET_DURABILITY_LOSS_FAIR
-	bullet_duraloss = BULLET_DURABILITY_DAMAGE_LOW
 
 /datum/ammo/bullet/pistol/squash/penetrating/set_bullet_traits()
 	. = ..()
@@ -258,7 +253,6 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = 35
-	bullet_duraloss = BULLET_DURABILITY_LOSS_LOW
 
 /datum/ammo/bullet/pistol/squash/incendiary/set_bullet_traits()
 	..()
@@ -305,6 +299,6 @@
 	damage = 30
 	penetration = 20
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
-	bullet_duraloss = BULLET_DURABILITY_LOSS_MEDIUM // yeah this thing is gonna rattle inside the barrel when fired
-	bullet_duramage = BULLET_DURABILITY_DAMAGE_INSUBSTANTIAL
 
+/datum/ammo/bullet/pistol/l54_custom
+	penetration= ARMOR_PENETRATION_TIER_3

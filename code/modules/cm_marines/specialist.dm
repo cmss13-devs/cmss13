@@ -79,16 +79,18 @@
 		available_vendor_num = 0
 		available_kit_num = 0
 
-/datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE)
+/datum/specialist_set/proc/redeem_set(mob/living/carbon/human/redeemer, kit = FALSE, silent = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 	if(!redeemer)
 		return FALSE
 
 	if(kit && (available_kit_num <= 0))
-		to_chat(redeemer, SPAN_WARNING("No more kits of this type may be chosen."))
+		if(!silent)
+			to_chat(redeemer, SPAN_WARNING("No more kits of this type may be chosen."))
 		return FALSE
 	else if(!kit && (available_vendor_num <= 0))
-		to_chat(redeemer, SPAN_WARNING("That set is already taken."))
+		if(!silent)
+			to_chat(redeemer, SPAN_WARNING("That set is already taken."))
 		return FALSE
 
 	if(skill_to_give != SKILL_SPEC_DEFAULT)
@@ -130,6 +132,9 @@
 /datum/specialist_set/proc/get_name() as text
 	return name
 
+/datum/specialist_set/proc/get_role() as text
+	return role_name
+
 /datum/specialist_set/proc/get_available_kit_num() as num
 	return available_kit_num
 
@@ -144,7 +149,7 @@
 	rank_icon = "spec_demo"
 	kit_typepath = /obj/item/storage/box/spec/demolitionist
 
-/datum/specialist_set/sadar/redeem_set(mob/living/redeemer, kit)
+/datum/specialist_set/sadar/redeem_set(mob/living/redeemer, kit, silent)
 	. = ..()
 	if(!.)
 		return .
@@ -160,7 +165,7 @@
 	trait_to_give = "scout"
 	kit_typepath = /obj/item/storage/box/spec/scout
 
-/datum/specialist_set/scout/redeem_set(mob/living/redeemer, kit)
+/datum/specialist_set/scout/redeem_set(mob/living/redeemer, kit, silent)
 	. = ..()
 	if(!.)
 		return .
@@ -198,6 +203,19 @@
 	trait_to_give = "grenadier"
 	rank_icon = "spec_grenadier"
 	kit_typepath = /obj/item/storage/box/spec/heavy_grenadier
+	incompatible_sets = list(
+		/datum/specialist_set/sharp_operator,
+	)
+
+/datum/specialist_set/sharp_operator
+	name = "SHARP Operator Set"
+	role_name = "SHARP Operator"
+	skill_to_give = SKILL_SPEC_GRENADIER
+	rank_icon = "spec_sharp"
+	kit_typepath = /obj/item/storage/box/spec/sharp_operator
+	incompatible_sets = list(
+		/datum/specialist_set/grenadier,
+	)
 
 /datum/specialist_set/pyro
 	name = "Pyro Set"
@@ -212,6 +230,7 @@
 	role_name = "Heavy"
 	skill_to_give = SKILL_SPEC_PYRO //we do not realy care atm
 	trait_to_give = "heavy"
+	rank_icon = "spec_heavy"
 	kit_typepath = /obj/item/storage/box/spec/B18
 	available_vendor_num = 0
 	available_kit_num = 0

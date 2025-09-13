@@ -295,6 +295,9 @@
 /// If this item can hear things from inside one level of contents.
 #define TRAIT_HEARS_FROM_CONTENTS "t_hears_from_contents"
 
+///if this item can allow reactions to occur "fully" in itself. missing this trait makes the reaction inert. it will still mix, but safely.
+#define TRAIT_REACTS_UNSAFELY "t_reacts_unsafely"
+
 // Miscellaneous item traits.
 // Do NOT bloat this category, if needed make a new category (like shoe traits, xeno item traits...)
 
@@ -310,6 +313,9 @@
 
 // This item can't be implanted into someone, regardless of the size of the item.
 #define TRAIT_ITEM_NOT_IMPLANTABLE "t_item_not_implantable"
+
+//This item is being dissolved. Used by yautja_cleaner.
+#define TRAIT_ITEM_DISSOLVING "item_dissolving"
 
 //-- structure traits --
 // TABLE TRAITS

@@ -15,6 +15,31 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/adminlevel/ert_station/fax_response_station/exterior)
+"ab" = (
+/obj/structure/sign/calendar{
+	pixel_y = 27
+	},
+/turf/open/floor/wood/ship,
+/area/adminlevel/ert_station/fax_response_station)
+"ac" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/calendar{
+	pixel_y = 27
+	},
+/turf/open/floor/wood,
+/area/adminlevel/ert_station/fax_response_station)
+"ad" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer/blue/north,
+/area/adminlevel/ert_station/fax_response_station)
+"ae" = (
+/obj/structure/sign/calendar/ua{
+	pixel_y = 28
+	},
+/turf/open/floor/almayer/red/north,
+/area/adminlevel/ert_station/fax_response_station)
 "af" = (
 /obj/structure/surface/table/woodentable/fancy,
 /turf/open/floor/almayer/red,
@@ -560,8 +585,12 @@
 /area/adminlevel/ert_station/fax_response_station)
 "fv" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails{
+/obj/structure/machinery/computer/spy_camera/upp{
 	dir = 4
+	},
+/obj/structure/sign/calendar/upp{
+	pixel_y = 30;
+	pixel_x = 8
 	},
 /turf/open/floor/darkgreen2/northwest,
 /area/adminlevel/ert_station/fax_response_station)
@@ -1152,7 +1181,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 8;
 	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
 	layer = 3.01;
 	name = "USS Almayer Cameras";
 	pixel_y = -10;
@@ -1737,7 +1766,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 4;
 	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
 	pixel_x = -3;
 	layer = 2.99;
 	name = "USS Almayer Cameras";
@@ -1824,8 +1853,8 @@
 	pixel_y = -14;
 	layer = 2.99
 	},
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/sign/calendar/wy{
+	pixel_y = 28
 	},
 /turf/open/floor/corsat/white/northeast,
 /area/adminlevel/ert_station/fax_response_station)
@@ -2300,6 +2329,9 @@
 	name = "TWE monitoring computer";
 	dir = 8
 	},
+/obj/structure/sign/calendar/twe{
+	pixel_y = 29
+	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "yK" = (
@@ -2629,7 +2661,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 1;
 	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
 	layer = 2.99;
 	name = "USS Almayer Cameras";
 	pixel_y = -6;
@@ -2868,7 +2900,7 @@
 /obj/structure/machinery/computer/cameras/almayer{
 	dir = 1;
 	admin_console = 1;
-	network = list("ARES","Almayer","Research","Containment","Containment Hidden");
+	network = list("ARES","Almayer","Research","Containment","Containment Hidden","Brig");
 	layer = 2.99;
 	name = "USS Almayer Cameras";
 	pixel_y = -6;
@@ -3189,14 +3221,10 @@
 	pixel_y = -6;
 	colony_camera_mapload = 0
 	},
-/obj/structure/machinery/computer/cameras/almayer{
+/obj/structure/machinery/computer/spy_camera/clf{
 	dir = 4;
-	admin_console = 1;
-	network = list("Overwatch");
-	pixel_x = -4;
 	pixel_y = 8;
-	name = "Overwatch Cameras";
-	colony_camera_mapload = 0
+	pixel_x = -4
 	},
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
@@ -3565,7 +3593,10 @@
 /area/adminlevel/ert_station/fax_response_station)
 "JY" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/spy_camera/cmb,
+/obj/structure/sign/calendar/ua{
+	pixel_y = 26
+	},
 /turf/open/floor/shiva/blue/northeast,
 /area/adminlevel/ert_station/fax_response_station)
 "Kc" = (
@@ -3646,8 +3677,8 @@
 /area/adminlevel/ert_station/fax_response_station)
 "KR" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/wy,
 /turf/open/floor/corsat/white/northwest,
 /area/adminlevel/ert_station/fax_response_station)
 "KT" = (
@@ -3706,7 +3737,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "Mx" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/spy_camera/uscm,
 /turf/open/floor/almayer/red/north,
 /area/adminlevel/ert_station/fax_response_station)
 "MA" = (
@@ -3838,10 +3869,10 @@
 "NT" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/spy_camera/twe{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/adminlevel/ert_station/fax_response_station)
 "NU" = (
@@ -4127,7 +4158,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "RJ" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/emails,
+/obj/structure/machinery/computer/spy_camera/uscm,
 /turf/open/floor/almayer/blue/north,
 /area/adminlevel/ert_station/fax_response_station)
 "RK" = (
@@ -4237,6 +4268,7 @@
 /area/adminlevel/ert_station/fax_response_station)
 "SS" = (
 /obj/structure/surface/table/woodentable/fancy,
+/obj/item/device/flashlight/lamp/green,
 /turf/open/floor/corsat/white/east,
 /area/adminlevel/ert_station/fax_response_station)
 "ST" = (
@@ -4272,7 +4304,7 @@
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/emails{
+/obj/structure/machinery/computer/spy_camera/uscm{
 	dir = 4
 	},
 /turf/open/floor/wood/ship,
@@ -5098,7 +5130,7 @@ pV
 pV
 gX
 ls
-IQ
+ad
 QY
 vL
 QY
@@ -5898,7 +5930,7 @@ pV
 pV
 gX
 ls
-Zd
+ae
 QY
 vL
 QY
@@ -7004,7 +7036,7 @@ wZ
 cX
 bX
 xK
-wZ
+ab
 TW
 aK
 Ir
@@ -7027,7 +7059,7 @@ Sy
 vE
 es
 Rp
-Ec
+ac
 Hh
 Rp
 gX

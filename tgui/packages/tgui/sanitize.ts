@@ -3,6 +3,8 @@
  */
 
 import DOMPurify from 'dompurify';
+import createDOMPurify from 'dompurify';
+import { JSDOM } from 'jsdom';
 
 // Default values
 const defTag = [
@@ -76,6 +78,32 @@ export const sanitizeText = (
     tags = tags.concat(advTags);
   }
   return DOMPurify.sanitize(input, {
+    ALLOWED_TAGS: tags,
+    FORBID_ATTR: forbidAttr,
+  });
+};
+
+/**
+ * Exclusive function to test as we need a dom to actually test the sanitizer. Don't use in tgui
+ */
+const window = new JSDOM('').window;
+const TestDOMPurify = createDOMPurify(window);
+export const sanitizeTest = (
+  input: string,
+  advHtml = false,
+  tags = defTag,
+  forbidAttr = defAttr,
+  advTags = advTag,
+) => {
+  // This is VERY important to think first if you NEED
+  // the tag you put in here.  We are pushing all this
+  // though dangerouslySetInnerHTML and even though
+  // the default DOMPurify kills javascript, it doesn't
+  // kill href links or such
+  if (advHtml) {
+    tags = tags.concat(advTags);
+  }
+  return TestDOMPurify.sanitize(input, {
     ALLOWED_TAGS: tags,
     FORBID_ATTR: forbidAttr,
   });

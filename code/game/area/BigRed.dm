@@ -691,3 +691,52 @@
 	name = "\improper Filtration Lockdown Caves Entrance"
 	icon_state = "garden"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
+
+//Z-LEVEL 2
+
+/area/bigredv2/secondfloor
+	name = "\improper Solaris Ridge Z2 Parent"
+	icon_state = "garden"
+	ceiling = CEILING_NONE
+
+/area/bigredv2/secondfloor/indoors
+	name = "\improper Solaris Ridge Z2 Indoors Parent"
+	icon_state = "garden"
+	ceiling = CEILING_METAL
+
+/area/bigredv2/secondfloor/rooftops
+	name = "\improper Solaris Ridge Second Story Rooftops"
+	icon_state = "garden"
+	ceiling = CEILING_NONE
+
+/area/bigredv2/secondfloor/indoors/lz1
+	name = "\improper Solaris Ridge Second Story - Spaceport"
+	icon_state = "green"
+
+/area/bigredv2/secondfloor/indoors/medical
+	name = "\improper Solaris Ridge Second Story - Hospital"
+	icon_state = "CMO"
+
+/area/bigredv2/secondfloor/indoors/operations
+	name = "\improper Solaris Ridge Second Story - Admin"
+	icon_state = "bridge"
+
+/area/bigredv2/secondfloor/indoors/cargo
+	name = "\improper Solaris Ridge Second Story - Cargo"
+	icon_state = "storage"
+
+/area/bigredv2/secondfloor/indoors/filtration
+	name = "\improper Solaris Ridge Second Story - Filtration Building"
+	icon_state = "atmos"
+
+/area/bigredv2/secondfloor/indoors/dorms
+	name = "\improper Solaris Ridge Second Story - Dorms"
+	icon_state = "fitness"
+
+/area/bigredv2/secondfloor/indoors/office
+	name = "\improper Solaris Ridge Second Story - Offices"
+	icon_state = "explored"
+
+/area/bigredv2/secondfloor/indoors/sec
+	name = "\improper Solaris Ridge Second Story - Marshal Office"
+	icon_state = "explored"

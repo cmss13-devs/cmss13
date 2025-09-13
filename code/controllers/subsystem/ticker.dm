@@ -462,7 +462,7 @@ SUBSYSTEM_DEF(ticker)
 		if(player.mind)
 			if(player.job == JOB_CO)
 				captainless = FALSE
-			if(player.job == JOB_SQUAD_MARINE && ((player.client?.prefs?.preferred_squad in scaled_squads))
+			if(player.job == JOB_SQUAD_MARINE && ((player.client?.prefs?.preferred_squad in scaled_squads)))
 				continue
 			if(player.job)
 				INVOKE_ASYNC(GLOB.RoleAuthority, TYPE_PROC_REF(/datum/authority/branch/role, equip_role), player, GLOB.RoleAuthority.roles_by_name[player.job], FALSE)

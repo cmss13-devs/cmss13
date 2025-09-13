@@ -141,7 +141,6 @@
 	modifier_name = "Weaker explosions"
 	modifier_desc = "Reduces damage from flames and explosion and stun from explosions to humans."
 
-
 /datum/gamemode_modifier/no_body_c4
 	modifier_name = "No body c4"
 	modifier_desc = "Prevents c4 explosives from being planted on dead body."
@@ -149,3 +148,7 @@
 /datum/gamemode_modifier/ceasefire
 	modifier_name = "Ceasefire"
 	modifier_desc = "Prevents firing guns and throwing granades."
+
+/datum/gamemode_modifier/resistable_nests
+	modifier_name = "Weak Resin Nests"
+	modifier_desc = "Makes all xeno nests resistable."

@@ -842,6 +842,7 @@
 	var/turf/below = SSmapping.get_turf_below(src)
 	if(!below)
 		dismantle_wall()
+		return
 	if(istype(below, /turf/closed/wall/resin))
 		wall_below = below
 		wall_below.upper_wall = src

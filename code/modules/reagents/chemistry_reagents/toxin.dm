@@ -90,7 +90,8 @@
 	color = "#72478b"
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_UNCOMMON
+	flags = REAGENT_NO_GENERATION|REAGENT_SCANNABLE
+	chemclass = CHEM_CLASS_SPECIAL
 	properties = list(PROPERTY_HYPOXEMIC = 8, PROPERTY_SEDATIVE = 5)
 
 /datum/reagent/toxin/minttoxin

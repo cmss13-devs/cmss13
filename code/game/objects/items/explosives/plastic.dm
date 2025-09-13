@@ -28,6 +28,9 @@
 	var/list/breachable = list(/obj/structure/window, /turf/closed, /obj/structure/machinery/door, /obj/structure/mineral_door , /obj/structure/cargo_container)
 	antigrief_protection = TRUE //Should it be checked by antigrief?
 
+
+	mouse_pointer = 'icons/effects/mouse_pointer/item_icon/placeables/plastic_explosive.dmi'
+
 	var/req_skill = SKILL_ENGINEER
 	var/req_skill_level = SKILL_ENGINEER_NOVICE
 

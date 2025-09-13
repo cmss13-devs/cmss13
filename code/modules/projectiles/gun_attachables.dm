@@ -317,6 +317,7 @@ Defined in conflicts.dm of the #defines folder.
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 	flags_item = CAN_DIG_SHRAPNEL
+	mouse_pointer = 'icons/effects/mouse_pointer/item_icon/blades/bayonet.dmi'
 
 
 	attach_icon = "bayonet_a"

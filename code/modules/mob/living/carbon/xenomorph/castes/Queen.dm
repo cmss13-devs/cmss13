@@ -420,6 +420,11 @@
 
 	hivenumber = XENO_HIVE_DELTA
 
+/mob/living/carbon/xenomorph/queen/k_series
+	AUTOWIKI_SKIP(TRUE)
+
+	hivenumber = XENO_HIVE_K_SERIES
+
 /mob/living/carbon/xenomorph/queen/mutated
 	AUTOWIKI_SKIP(TRUE)
 

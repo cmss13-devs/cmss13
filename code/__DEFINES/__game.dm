@@ -34,9 +34,9 @@
 #define MAP_LV522_CHANCES_CLAIM "LV-522 Chance's Claim"
 #define MAP_LV759_HYBRISA_PROSPERA "LV-759 Hybrisa Prospera" // Highpop Only
 #define MAP_NEW_VARADERO "New Varadero"//ice colony underground but as its own map
+#define MAP_WHITE_VENIR_RESEARCH_FACILITY "White Venir Research Facility"
 #define MAP_CHINOOK "Chinook 91 GSO" //admin level
 #define MAP_ROSTOCK "SSV Rostock" //UPP Warship
-
 #define GAMEMODE_WHISKEY_OUTPOST "Whiskey Outpost"
 #define GAMEMODE_HIVE_WARS "Hive Wars"
 #define GAMEMODE_FACTION_CLASH_UPP_CM "Faction Clash UPP CM"

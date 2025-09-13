@@ -791,6 +791,7 @@
 	var/upgrading_now = FALSE //flag to track upgrading/thickening process
 	var/datum/cause_data/construction_data
 	turf_flags = TURF_ORGANIC
+	var/turf/closed/wall/resin/above/upper_wall
 
 /turf/closed/wall/resin/Initialize(mapload)
 	. = ..()
@@ -807,6 +808,10 @@
 			if(area.linked_lz)
 				AddComponent(/datum/component/resin_cleanup)
 			area.current_resin_count++
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(istype(above,/turf/open_space))
+		above.PlaceOnTop(/turf/closed/wall/resin/above)
+		upper_wall = above
 
 /turf/closed/wall/resin/Destroy(force)
 	. = ..()
@@ -815,6 +820,9 @@
 		var/area/area = get_area(src)
 		area?.current_resin_count--
 
+	if(upper_wall)
+		qdel(upper_wall)
+
 /turf/closed/wall/resin/proc/forsaken_handling()
 	SIGNAL_HANDLER
 	if(is_ground_level(z))
@@ -822,6 +830,50 @@
 		set_hive_data(src, XENO_HIVE_FORSAKEN)
 
 	UnregisterSignal(SSdcs, COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING)
+
+/turf/closed/wall/resin/above
+	flags_atom = NO_ZFALL
+	name = "resin high wall"
+	var/turf/closed/wall/resin/wall_below
+	var/obj/structure/mineral_door/resin/door_below
+
+/turf/closed/wall/resin/above/Initialize(mapload)
+	. = ..()
+	var/turf/below = SSmapping.get_turf_below(src)
+	if(!below)
+		qdel(src)
+	if(istype(below, /turf/closed/wall/resin))
+		wall_below = below
+		wall_below.upper_wall = src
+		return
+
+	for(var/obj in below.contents)
+		if(istype(obj, /obj/structure/mineral_door/resin))
+			door_below = obj
+			door_below.upper_wall = src
+			return
+
+	qdel(src)
+
+
+/turf/closed/wall/resin/above/Destroy(force)
+	. = ..()
+	if(wall_below)
+		wall_below.upper_wall = null //we should not get here naturaly
+		wall_below = null
+	if(door_below)
+		door_below.upper_wall = null
+		door_below = null
+
+/turf/closed/wall/resin/above/take_damage(dam, mob/M)
+	if(wall_below)
+		wall_below.take_damage(dam, M)
+		return
+	if(door_below)
+		door_below.take_damage(dam,M)
+		return
+	qdel(src) //something went wrong and we are floating
+
 
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"

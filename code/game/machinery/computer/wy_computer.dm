@@ -273,15 +273,17 @@
 			continue
 		if(!target_door.density)
 			continue
+
 		target_door.unlock(force)
-		target_door.open(force)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, open), force), 1 SECONDS)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock), force), 2 SECONDS)
 		open_cell_door = TRUE
 
 	return TRUE
 
 // Closes and unlocks doors, power check
-/obj/structure/machinery/computer/wy_intranet/proc/close_door()
-	if(inoperable())
+/obj/structure/machinery/computer/wy_intranet/proc/close_door(force = FALSE)
+	if(inoperable() && !force)
 		return FALSE
 
 	for(var/obj/structure/machinery/door/airlock/target_door in targets)
@@ -289,8 +291,10 @@
 			continue
 		if(target_door.density)
 			continue
-		target_door.close()
-		target_door.lock()
+
+		target_door.unlock(force)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, close), force), 1 SECONDS)
+		addtimer(CALLBACK(target_door, TYPE_PROC_REF(/obj/structure/machinery/door/airlock, lock), force), 2 SECONDS)
 		open_cell_door = FALSE
 
 	return TRUE
@@ -376,7 +380,7 @@
 			vent_tag_num++
 
 		var/list/current_vent = list()
-		var/is_available = COOLDOWN_FINISHED(vent, vent_trigger_cooldown)
+		var/is_available = (COOLDOWN_FINISHED(vent, vent_trigger_cooldown) && !vent.welded)
 		current_vent["vent_tag"] = vent.vent_tag
 		current_vent["ref"] = "\ref[vent]"
 		current_vent["available"] = is_available

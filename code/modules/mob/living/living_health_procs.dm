@@ -448,6 +448,9 @@
 	stuttering = max(stuttering + amount,0)
 	return
 
+/mob/living/proc/EyeBlind(amount)
+	eye_blind = max(max(eye_blind, amount), 0)
+	return
 
 /mob/living/proc/SetEyeBlind(amount)
 	eye_blind = max(amount, 0)

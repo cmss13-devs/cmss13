@@ -578,7 +578,6 @@
 		/obj/item/reagent_container/food/snacks/donut/normal,
 		/obj/item/reagent_container/food/snacks/donut/jelly,
 		/obj/item/weapon/baton,
-		/obj/item/weapon/gun/energy/taser,
 		/obj/item/tool/lighter/zippo,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/clothing/glasses/hud/security,
@@ -635,7 +634,7 @@
 
 
 /obj/item/storage/belt/security/MP/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/restraint/handcuffs(src)
@@ -650,12 +649,51 @@
 	new /obj/item/device/clue_scanner(src)
 	new /obj/item/restraint/handcuffs(src)
 
+/obj/item/storage/belt/security/provost
+	name = "\improper M276 pattern military police rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints. This one has extra space for a taser."
+	storage_slots = 6
+	max_w_class = SIZE_MEDIUM
+	max_storage_space = 30
+	can_hold = list(
+		/obj/item/explosive/grenade/flashbang,
+		/obj/item/explosive/grenade/custom/teargas,
+		/obj/item/reagent_container/spray/pepper,
+		/obj/item/restraint/handcuffs,
+		/obj/item/device/flash,
+		/obj/item/clothing/glasses,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/handful,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/reagent_container/food/snacks/donut/normal,
+		/obj/item/reagent_container/food/snacks/donut/jelly,
+		/obj/item/weapon/baton,
+		/obj/item/tool/lighter/zippo,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/clothing/glasses/hud/security,
+		/obj/item/device/flashlight,
+		/obj/item/device/radio/headset,
+		/obj/item/weapon,
+		/obj/item/device/clue_scanner,
+		/obj/item/weapon/gun/energy/taser,
+	)
+	bypass_w_limit = list(/obj/item/weapon/gun/energy/taser)
+
+/obj/item/storage/belt/security/provost/full/fill_preset_inventory()
+	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/device/flash(src)
+	new /obj/item/weapon/baton(src)
+	new /obj/item/restraint/handcuffs(src)
+	new /obj/item/reagent_container/spray/pepper(src)
+	new /obj/item/device/clue_scanner(src)
+
+
 /obj/item/storage/belt/security/MP/UPP
 	name = "\improper Type 43 military police rig"
 	desc = "The Type 43 is the standard load-bearing equipment of the UPP. It consists of a modular belt with various clips. This version is filled with an array of small pouches, meant to carry non-lethal equipment and restraints."
 
 /obj/item/storage/belt/security/MP/UPP/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/restraint/handcuffs(src)
@@ -670,7 +708,7 @@
 	max_storage_space = 30
 
 /obj/item/storage/belt/security/MP/CMB/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/reagent_container/spray/pepper(src)
@@ -694,7 +732,7 @@
 	desc = "A Weyland-Yutani adaptation of the M276 load-bearing equipment, designed for corporate security forces. This modular black rig features multiple pouches for carrying restraints, ammunition, and a mix of lethal and non-lethal equipment for maintaining order."
 
 /obj/item/storage/belt/security/MP/WY/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/energy/taser(src)
+	new /obj/item/explosive/grenade/flashbang(src)
 	new /obj/item/device/flash(src)
 	new /obj/item/weapon/baton(src)
 	new /obj/item/restraint/handcuffs(src)

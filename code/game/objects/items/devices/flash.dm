@@ -95,11 +95,11 @@
 		if(iscarbon(M))
 			flashfail = !M.flash_eyes()
 			if(!flashfail)
-				M.KnockDown(10)
-				M.Stun(10)
+				M.KnockDown(4)
+				M.Stun(4)
 
 		else if(isSilicon(M))
-			M.apply_effect(rand(5,10), WEAKEN)
+			M.apply_effect(rand(1,4), WEAKEN)
 
 		else //if not carbon or sillicn
 			flashfail = TRUE

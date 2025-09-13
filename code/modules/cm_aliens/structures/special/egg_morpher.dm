@@ -116,7 +116,11 @@
 
 	if(!linked_hive || !COOLDOWN_FINISHED(src, spawn_cooldown) || stored_huggers == huggers_to_grow_max)
 		return
-	COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
+
+	if(boosted_structure)
+		COOLDOWN_START(src, spawn_cooldown, 30 SECONDS)
+	else
+		COOLDOWN_START(src, spawn_cooldown, get_egg_cooldown())
 	if(stored_huggers < huggers_to_grow_max)
 		stored_huggers = min(huggers_to_grow_max, stored_huggers + 1)
 

@@ -63,6 +63,11 @@
 /// From /datum/game_mode/colonialmarines/proc/check_ground_humans()
 #define COMSIG_GLOB_GROUNDSIDE_FORSAKEN_HANDLING "!groundside_forsaken_handling"
 
+#define COMSIG_GLOB_BOOST_XENOMORPH_WALLS "!boost_xenomorph_walls"
+
+#define COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS "!stop_boost_xenomorph_walls"
+
+
 /// From
 #define COMSIG_GLOB_YAUTJA_ARMORY_OPENED "!yautja_armory_opened"
 

@@ -8,7 +8,7 @@
 /proc/get_total_squad_marines()
 	var/count = 0
 	for(var/mob/living/carbon/human/cur_human in GLOB.human_mob_list)
-		if(H.faction == FACTION_MARINE && cur_human.assigned_squad)
+		if(cur_human.faction == FACTION_MARINE && cur_human.assigned_squad)
 			count++
 	return count
 

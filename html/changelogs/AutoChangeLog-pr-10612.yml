@@ -1,0 +1,8 @@
+author: "cuberound"
+delete-after: True
+changes:
+  - balance: "prevents huggers from hugging across z levels"
+  - balance: "pounces are one tile shorter when going up a z level"
+  - bugfix: "fixes being unable to pounce/throw stuff up a z level when next to an edge"
+  - bugfix: "fixes majority of issues with looking up not being updated on movement, report any remaining issues"
+  - bugfix: "crossing z level ends looking up correctly"

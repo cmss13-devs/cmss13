@@ -253,11 +253,6 @@ export const TguiPrettierTarget = new Juke.Target({
   executes: () => bun("tgui:prettier"),
 });
 
-export const TguiSonarTarget = new Juke.Target({
-  dependsOn: [BunTarget],
-  executes: () => bun("tgui:sonar"),
-});
-
 export const TguiTscTarget = new Juke.Target({
   dependsOn: [BunTarget],
   executes: () => bun("tgui:tsc"),

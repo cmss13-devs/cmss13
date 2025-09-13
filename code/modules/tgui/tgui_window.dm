@@ -98,6 +98,10 @@
 	var/html = SStgui.basehtml
 	html = replacetextEx(html, "\[tgui:windowId]", id)
 	html = replacetextEx(html, "\[tgui:strictMode]", strict_mode)
+
+	if(client.use_secondary_cdn)
+		html = replacetextEx(html, "tgui:usesecondary", "[TRUE]")
+
 	// Inject assets
 	var/inline_assets_str = ""
 	for(var/datum/asset/asset in assets)

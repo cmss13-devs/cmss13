@@ -1,0 +1,623 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/sink/kitchen{
+	dir = 4;
+	pixel_x = 12;
+	name = "holy water";
+	desc = "A basin filled with water."
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"ab" = (
+/obj/structure/noticeboard{
+	pixel_y = 32
+	},
+/obj/structure/noticeboard{
+	pixel_y = 33;
+	icon_state = "notices_4";
+	desc = null;
+	name = "sticky notes"
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"ay" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/carpet5_1/west,
+/area/desert_dam/building/church)
+"aU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"be" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/north,
+/area/desert_dam/building/church)
+"bx" = (
+/turf/open/floor/carpet14_10/west,
+/area/desert_dam/building/church)
+"bM" = (
+/obj/structure/flora/grass/desert/lightgrass_9,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"cw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/carpet6_2/west,
+/area/desert_dam/building/church)
+"cF" = (
+/obj/effect/landmark/good_item,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"dM" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"eo" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"fb" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/church)
+"gK" = (
+/obj/structure/machinery/light,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"gL" = (
+/obj/structure/flora/grass/desert/lightgrass_3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"gT" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"hV" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"iq" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"iF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/church)
+"jv" = (
+/obj/item/ammo_magazine/shotgun/buckshot{
+	current_rounds = 0
+	},
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"ld" = (
+/obj/structure/machinery/light,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel/west,
+/area/desert_dam/building/church)
+"oy" = (
+/obj/structure/flora/bush/desert,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"oC" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/church)
+"oO" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/east,
+/area/desert_dam/building/church)
+"si" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/north,
+/area/desert_dam/building/church)
+"sr" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 2;
+	name = "\improper Chapel"
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"sK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/church)
+"sP" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/weapon/gun/shotgun/double/with_stock,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"sX" = (
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/east,
+/area/desert_dam/building/church)
+"uh" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"vs" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/device/flashlight/lamp/candelabra,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"vJ" = (
+/obj/structure/flora/grass/desert/lightgrass_1,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"vL" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/bible{
+	pixel_y = 16
+	},
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"wB" = (
+/obj/structure/machinery/light,
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel,
+/area/desert_dam/building/church)
+"wK" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"yA" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/east,
+/area/desert_dam/building/church)
+"zd" = (
+/obj/effect/decal/cleanable/generic,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"zh" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/church)
+"AK" = (
+/obj/structure/flora/bush/desert/cactus{
+	icon_state = "cactus_8"
+	},
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"AM" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"CY" = (
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"Dr" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel/west,
+/area/desert_dam/building/church)
+"Eq" = (
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel/west,
+/area/desert_dam/building/church)
+"GM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet10_8/west,
+/area/desert_dam/building/church)
+"GT" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"Hb" = (
+/obj/structure/flora/grass/desert/heavygrass_3,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_cargo)
+"Ho" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/carpet14_10/west,
+/area/desert_dam/building/church)
+"HA" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"Ij" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/surface/table/woodentable,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"IS" = (
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/church)
+"Js" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"JB" = (
+/turf/closed/wall,
+/area/desert_dam/building/church)
+"Ke" = (
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"Lt" = (
+/obj/structure/stairs{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"Mb" = (
+/obj/structure/surface/rack,
+/obj/item/storage/fancy/candle_box,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"Oh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet14_10/west,
+/area/desert_dam/building/church)
+"Ot" = (
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel,
+/area/desert_dam/building/church)
+"Tj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+"Tn" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Backroom"
+	},
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"Ux" = (
+/obj/structure/closet/wardrobe/chaplain_black,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"UH" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/carpet14_10/west,
+/area/desert_dam/building/church)
+"VV" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/structure/bed/sofa/pews/flipped{
+	dir = 1
+	},
+/turf/open/floor/chapel/east,
+/area/desert_dam/building/church)
+"Xj" = (
+/obj/structure/machinery/light,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"Xp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/sofa/pews/flipped,
+/turf/open/floor/chapel,
+/area/desert_dam/building/church)
+"XC" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/ammo_magazine/shotgun/buckshot{
+	current_rounds = 0;
+	pixel_y = 15
+	},
+/obj/item/tool/candle,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"YE" = (
+/turf/open/floor/carpet9_4/west,
+/area/desert_dam/building/church)
+"YP" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/trash/candle,
+/turf/open/floor/cult,
+/area/desert_dam/building/church)
+"ZA" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/dark,
+/area/desert_dam/building/church)
+
+(1,1,1) = {"
+Hb
+gT
+JB
+JB
+Ke
+sr
+JB
+JB
+gT
+gT
+"}
+(2,1,1) = {"
+bM
+vJ
+JB
+AM
+ZA
+Tj
+gK
+JB
+gT
+AK
+"}
+(3,1,1) = {"
+gL
+gT
+JB
+ab
+aU
+Ke
+aa
+JB
+gT
+gT
+"}
+(4,1,1) = {"
+gT
+JB
+JB
+JB
+Ke
+sr
+JB
+JB
+JB
+gT
+"}
+(5,1,1) = {"
+gT
+fb
+Ke
+eo
+Tj
+Ke
+ZA
+Ke
+fb
+gT
+"}
+(6,1,1) = {"
+gT
+fb
+be
+Eq
+cw
+ay
+be
+Eq
+fb
+gT
+"}
+(7,1,1) = {"
+gT
+JB
+yA
+Ot
+bx
+IS
+oO
+wB
+JB
+gT
+"}
+(8,1,1) = {"
+gT
+fb
+be
+Dr
+Oh
+zh
+be
+Eq
+fb
+gT
+"}
+(9,1,1) = {"
+gT
+fb
+VV
+Ot
+Oh
+oC
+sX
+Xp
+fb
+gT
+"}
+(10,1,1) = {"
+gT
+JB
+si
+Eq
+UH
+sK
+be
+ld
+JB
+gT
+"}
+(11,1,1) = {"
+gT
+fb
+sX
+Ot
+Ho
+IS
+sX
+Ot
+fb
+gT
+"}
+(12,1,1) = {"
+gT
+fb
+be
+Eq
+bx
+iF
+be
+Eq
+fb
+gT
+"}
+(13,1,1) = {"
+JB
+JB
+sX
+Ot
+bx
+sK
+oO
+Ot
+JB
+JB
+"}
+(14,1,1) = {"
+fb
+Ke
+aU
+ZA
+GM
+YE
+dM
+Ke
+Ke
+fb
+"}
+(15,1,1) = {"
+fb
+iq
+Ke
+dM
+GT
+Ke
+Ke
+aU
+Ke
+fb
+"}
+(16,1,1) = {"
+fb
+Ke
+Lt
+YP
+sP
+vL
+XC
+Js
+Ke
+fb
+"}
+(17,1,1) = {"
+JB
+JB
+CY
+CY
+zd
+wK
+CY
+CY
+JB
+JB
+"}
+(18,1,1) = {"
+gT
+fb
+jv
+uh
+wK
+CY
+hV
+CY
+fb
+gT
+"}
+(19,1,1) = {"
+gT
+JB
+JB
+JB
+JB
+Tn
+JB
+JB
+JB
+gT
+"}
+(20,1,1) = {"
+gT
+gT
+JB
+HA
+CY
+CY
+vs
+JB
+gT
+gT
+"}
+(21,1,1) = {"
+gT
+gT
+JB
+Ij
+CY
+CY
+Xj
+JB
+gT
+gT
+"}
+(22,1,1) = {"
+oy
+gT
+JB
+CY
+cF
+Ux
+Mb
+JB
+gT
+gT
+"}
+(23,1,1) = {"
+gT
+gT
+JB
+JB
+JB
+JB
+JB
+JB
+gT
+gT
+"}

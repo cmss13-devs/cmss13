@@ -1,0 +1,218 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"b" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"c" = (
+/obj/item/ammo_casing,
+/turf/open/floor/prison/darkyellowcorners2/west,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"d" = (
+/obj/item/ammo_casing,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"e" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"f" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"g" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"j" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"p" = (
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"q" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"r" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/device/flashlight/on,
+/turf/open/floor/prison/darkyellowcorners2/east,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"s" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/darkyellowcorners2,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"t" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"u" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"w" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
+/turf/open/floor/prison/darkyellow2/west,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"y" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison/darkyellow2/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"z" = (
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"A" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"F" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"G" = (
+/obj/structure/surface/rack,
+/obj/item/device/defibrillator/synthetic,
+/turf/open/floor/prison/darkyellow2/northwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"M" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib2"
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"P" = (
+/turf/open/floor/prison/darkyellowcorners2/east,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"Q" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"R" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "xgib4"
+	},
+/turf/open/floor/prison/bright_clean/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"U" = (
+/turf/closed/wall/r_wall/bunker{
+	name = "reinforced metal wall"
+	},
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"W" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood{
+	layer = 3
+	},
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"X" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/item/ammo_casing,
+/obj/effect/spawner/random/gun/cmb,
+/turf/open/floor/prison/southwest,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+"Z" = (
+/turf/open/floor/prison/darkyellow2,
+/area/desert_dam/interior/dam_interior/engine_west_wing)
+
+(1,1,1) = {"
+U
+z
+w
+y
+"}
+(2,1,1) = {"
+G
+r
+X
+Z
+"}
+(3,1,1) = {"
+P
+t
+W
+d
+"}
+(4,1,1) = {"
+p
+f
+e
+Z
+"}
+(5,1,1) = {"
+g
+b
+R
+c
+"}
+(6,1,1) = {"
+p
+Q
+j
+F
+"}
+(7,1,1) = {"
+a
+u
+e
+a
+"}
+(8,1,1) = {"
+a
+M
+p
+s
+"}
+(9,1,1) = {"
+p
+q
+a
+A
+"}

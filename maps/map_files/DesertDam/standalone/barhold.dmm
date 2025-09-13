@@ -1,0 +1,1438 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/reagent_container/glass/bucket{
+	pixel_y = -3;
+	pixel_x = 8
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"ab" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"ac" = (
+/obj/item/tool/mop{
+	pixel_x = -16;
+	pixel_y = 26
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"ad" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"ae" = (
+/obj/structure/bed/stool{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"af" = (
+/obj/structure/bed/stool{
+	pixel_y = 12
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"ag" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/spawner/random/gun/shotgun/lowchance,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"aR" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "2"
+	},
+/turf/open/floor/plating/panelscorched,
+/area/desert_dam/building/bar/backroom)
+"bo" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"cm" = (
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
+"dx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"ei" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"eB" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/platingdmg1,
+/area/desert_dam/building/bar/bar)
+"eF" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"fj" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/platingdmg1,
+/area/desert_dam/building/bar/bar)
+"fM" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"gx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"gE" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/carpet6_2/west,
+/area/desert_dam/building/bar/bar)
+"gO" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"hb" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"hE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/vending/cigarette/wy,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"hJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/item/weapon/twohanded/spear,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"hP" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/platingdmg1,
+/area/desert_dam/building/bar/bar)
+"hU" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/good_item,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"ig" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"jh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"jm" = (
+/obj/item/weapon/baseballbat/metal,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"jM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/woodentable,
+/obj/structure/largecrate/supply{
+	pixel_x = -3
+	},
+/obj/structure/largecrate/supply{
+	pixel_x = -15;
+	pixel_y = 10
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"kk" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"kr" = (
+/obj/structure/machinery/light,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"kz" = (
+/obj/structure/machinery/power/apc/no_power/west,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"kX" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"lh" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_y = 32
+	},
+/obj/item/tool/kitchen/tray{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/drinks/bottle/wine{
+	pixel_y = 14;
+	pixel_x = -8
+	},
+/obj/item/trash/ceramic_plate,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"lP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"lV" = (
+/obj/item/weapon/broken_bottle,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"lX" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 7
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"mo" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Restroom"
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/freezerfloor,
+/area/desert_dam/building/bar/bar_restroom)
+"mE" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"mG" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"mM" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"nt" = (
+/obj/item/ammo_casing,
+/turf/open/floor/carpet14_10/west,
+/area/desert_dam/building/bar/bar)
+"oc" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"od" = (
+/obj/structure/window/framed/wood/reinforced,
+/turf/open/floor/plating,
+/area/desert_dam/building/bar/bar)
+"or" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/obj/item/explosive/grenade/incendiary/molotov,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"oA" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"oE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/gun/revolver/cmb,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"oI" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/surface/table/woodentable,
+/obj/structure/largecrate/supply,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"ph" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"pi" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/broken_bottle,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"px" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"pz" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"pP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"pY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"qF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"qL" = (
+/obj/structure/prop/hybrisa/misc/blood/blood3,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/obj/effect/landmark/corpsespawner/trijent/nspa_constable,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"rt" = (
+/obj/effect/landmark/objective_landmark/close,
+/obj/structure/sign/poster/art{
+	pixel_y = 32
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"rz" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/ammo_magazine/handful/shotgun/buckshot{
+	pixel_x = -7;
+	pixel_y = -2
+	},
+/obj/item/ammo_magazine/handful/shotgun/buckshot{
+	pixel_x = 3
+	},
+/turf/open/floor/carpet5_1/west,
+/area/desert_dam/building/bar/bar)
+"rB" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 7
+	},
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"rF" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"sh" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"su" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"sy" = (
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"sF" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/item/explosive/grenade/incendiary/molotov,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"sO" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"to" = (
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"tE" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/sign/poster/music{
+	pixel_y = 32
+	},
+/turf/open/floor/plating/burnt_platingdmg3/west,
+/area/desert_dam/building/bar/bar)
+"ut" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"uT" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"vU" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"wh" = (
+/obj/structure/window_frame/wood,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/desert_dam/building/bar/bar)
+"wi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet14_10/west,
+/area/desert_dam/building/bar/bar)
+"xh" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"xj" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"yc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"yt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/tool/kitchen/knife/butcher,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"yQ" = (
+/turf/closed/wall/wood,
+/area/desert_dam/building/bar/backroom)
+"zw" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"zF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"Aj" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"Ap" = (
+/obj/structure/bed/stool{
+	pixel_y = 6
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"AB" = (
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/bar_valley_dam)
+"AW" = (
+/turf/open/desert/dirt/desert_transition_corner1,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"Bv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"Bx" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"BF" = (
+/obj/structure/machinery/atm{
+	name = "Weyland-Yutani Automatic Teller Machine";
+	pixel_y = 30
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"BG" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"BI" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"BM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"Cr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"CE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"CU" = (
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/bar/bar)
+"Db" = (
+/turf/open/floor/carpet15_15/west,
+/area/desert_dam/building/bar/bar)
+"DH" = (
+/obj/structure/sink{
+	pixel_y = 20
+	},
+/obj/structure/mirror{
+	pixel_y = 32
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"Ea" = (
+/obj/structure/machinery/squeezer,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"Ef" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"Fh" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"FH" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/gun/shotgun/double,
+/turf/open/floor/carpet7_3/west,
+/area/desert_dam/building/bar/bar)
+"FI" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"Gb" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"GB" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/paper_bin{
+	amount = 0
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"GG" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/obj/item/explosive/grenade/incendiary/molotov,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"GH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet13_5/west,
+/area/desert_dam/building/bar/bar)
+"GS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6"
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"GY" = (
+/obj/structure/machinery/light,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"Hm" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"HE" = (
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/building/bar/bar)
+"HG" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony{
+	dir = 1;
+	name = "\improper Bar Backroom";
+	welded = 1
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"HR" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Toilet Unit"
+	},
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"HV" = (
+/obj/item/ammo_casing,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"Iz" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	pixel_y = -8
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"Jf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"JD" = (
+/obj/structure/bed/stool{
+	pixel_x = -3;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"Kx" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_y = 32
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"Kz" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"KO" = (
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"KV" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"Lr" = (
+/obj/structure/window/framed/wood/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/desert_dam/building/bar/bar)
+"Lx" = (
+/obj/structure/largecrate/random/barrel{
+	pixel_x = 8
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"LE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/stack/rods,
+/turf/open/floor/plating,
+/area/desert_dam/building/bar/backroom)
+"LJ" = (
+/obj/structure/machinery/light,
+/obj/structure/device/broken_moog{
+	icon_state = "minimoog";
+	pixel_x = -5
+	},
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"LK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"LL" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/paper_bin{
+	amount = 0
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"LS" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ashtray/glass,
+/obj/item/explosive/grenade/incendiary/molotov,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"Mv" = (
+/turf/closed/wall/wood,
+/area/desert_dam/building/bar/bar_restroom)
+"ML" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"MP" = (
+/obj/structure/closet/secure_closet/bar,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"Nl" = (
+/obj/structure/surface/table/woodentable,
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/reagent_container/glass/rag{
+	pixel_y = 8
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"NL" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"NV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"Oq" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/platingdmg1,
+/area/desert_dam/building/bar/bar)
+"OM" = (
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"OW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"OX" = (
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"PE" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_y = 32
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"PV" = (
+/turf/closed/wall/wood,
+/area/desert_dam/building/bar/bar)
+"PY" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"QJ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/wooden,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"Rj" = (
+/obj/effect/landmark/corpsespawner/colonist/random,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"Rn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"RQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"RS" = (
+/turf/open/floor/carpet10_8/west,
+/area/desert_dam/building/bar/bar)
+"RW" = (
+/obj/effect/landmark/survivor_spawner,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"Sb" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = 8
+	},
+/obj/item/explosive/grenade/incendiary/molotov{
+	pixel_x = -3
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"SH" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"SJ" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"SR" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/structure/prop/hybrisa/misc/machinery/screens/wood_clock{
+	pixel_y = 38
+	},
+/turf/open/floor/platingdmg3,
+/area/desert_dam/building/bar/bar)
+"SX" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"Ta" = (
+/obj/structure/closet/secure_closet/bar,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"Te" = (
+/obj/structure/bed/stool{
+	pixel_y = 12;
+	pixel_x = 3
+	},
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"Tv" = (
+/obj/structure/reagent_dispensers/beerkeg,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"TN" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"TP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"Ul" = (
+/obj/item/weapon/broken_bottle,
+/turf/open/floor/plating/panelscorched,
+/area/desert_dam/building/bar/bar)
+"UY" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	icon_state = "4"
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"Vi" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
+	pixel_y = 32
+	},
+/obj/item/reagent_container/food/drinks/shaker,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"Vk" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Bar";
+	welded = 1
+	},
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/bar)
+"Vu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/weapon/broken_bottle,
+/turf/open/floor/carpet9_4/west,
+/area/desert_dam/building/bar/bar)
+"VL" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/interior/tatami,
+/area/desert_dam/building/bar/bar)
+"Wv" = (
+/obj/structure/bed/stool{
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/grimy,
+/area/desert_dam/building/bar/bar)
+"WF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing,
+/turf/open/floor/carpet11_12/west,
+/area/desert_dam/building/bar/bar)
+"Xh" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/interior/wood,
+/area/desert_dam/building/bar/backroom)
+"XE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/platingdmg1,
+/area/desert_dam/building/bar/bar)
+"XJ" = (
+/turf/open/desert/rock,
+/area/desert_dam/interior/dam_interior/south_tunnel)
+"XX" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/interior/wood/alt,
+/area/desert_dam/building/bar/bar)
+"Zs" = (
+/obj/structure/machinery/power/apc/no_power/north,
+/turf/open/floor/prison/sterile_white/west,
+/area/desert_dam/building/bar/bar_restroom)
+"Zz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/carpet15_15/west,
+/area/desert_dam/building/bar/bar)
+"ZE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/plating/panelscorched,
+/area/desert_dam/building/bar/bar)
+
+(1,1,1) = {"
+XJ
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+Mv
+Mv
+Mv
+Mv
+Mv
+"}
+(2,1,1) = {"
+XJ
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+Mv
+ab
+Mv
+oA
+Mv
+"}
+(3,1,1) = {"
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+Mv
+HR
+Mv
+HR
+Mv
+"}
+(4,1,1) = {"
+AW
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+Mv
+Mv
+Zs
+sy
+sy
+Mv
+"}
+(5,1,1) = {"
+yQ
+yQ
+yQ
+yQ
+yQ
+cm
+cm
+cm
+cm
+cm
+cm
+Mv
+DH
+ac
+xj
+GY
+Mv
+"}
+(6,1,1) = {"
+yQ
+Tv
+oc
+Xh
+yQ
+cm
+cm
+cm
+cm
+cm
+cm
+Mv
+DH
+ad
+uT
+sy
+Mv
+"}
+(7,1,1) = {"
+yQ
+Tv
+PY
+FI
+yQ
+PV
+PV
+PV
+PV
+PV
+PV
+Mv
+DH
+sy
+GS
+aa
+Mv
+"}
+(8,1,1) = {"
+yQ
+Tv
+pz
+hU
+yQ
+KO
+HV
+OX
+gE
+FH
+rz
+Mv
+Mv
+Mv
+mo
+Mv
+Mv
+"}
+(9,1,1) = {"
+yQ
+MP
+ut
+NL
+yQ
+qL
+Iz
+lP
+wi
+Zz
+GH
+OX
+KO
+KO
+CE
+Lx
+PV
+"}
+(10,1,1) = {"
+yQ
+Ta
+UY
+Ea
+yQ
+oE
+TP
+Rn
+nt
+Db
+CU
+OX
+TP
+RQ
+yc
+oI
+Vk
+"}
+(11,1,1) = {"
+HG
+kX
+ut
+Kz
+yQ
+rt
+KO
+zF
+RS
+WF
+Vu
+qF
+TP
+Aj
+hE
+jM
+KO
+"}
+(12,1,1) = {"
+yQ
+sh
+aR
+sO
+yQ
+SJ
+gO
+bo
+kk
+dx
+BM
+qF
+TN
+px
+jh
+LJ
+PV
+"}
+(13,1,1) = {"
+yQ
+yQ
+LE
+yQ
+yQ
+PV
+BF
+OX
+OW
+ag
+KV
+qF
+LK
+to
+hb
+TN
+Lr
+"}
+(14,1,1) = {"
+PV
+Vi
+hP
+eB
+kz
+SH
+KO
+RW
+rB
+NV
+BI
+OX
+BI
+jm
+VL
+TN
+Lr
+"}
+(15,1,1) = {"
+PV
+PE
+fM
+LL
+Nl
+Ap
+Ef
+pP
+mG
+mE
+mG
+su
+QJ
+Hm
+sF
+OX
+PV
+"}
+(16,1,1) = {"
+PV
+PV
+XE
+ph
+GB
+Te
+KO
+Rj
+qF
+pY
+GG
+OX
+lV
+OX
+jh
+Cr
+od
+"}
+(17,1,1) = {"
+PV
+tE
+fj
+eB
+Bx
+ae
+KO
+px
+to
+eF
+Fh
+OX
+mM
+Fh
+hb
+TN
+od
+"}
+(18,1,1) = {"
+PV
+SR
+Oq
+vU
+lX
+JD
+Jf
+OX
+hJ
+gx
+to
+rF
+to
+to
+hb
+kr
+PV
+"}
+(19,1,1) = {"
+PV
+PV
+BG
+OM
+Sb
+Wv
+pi
+OX
+to
+eF
+to
+OX
+to
+to
+xh
+TN
+od
+"}
+(20,1,1) = {"
+PV
+lh
+OM
+OM
+LS
+af
+KO
+XX
+OX
+pY
+ei
+ig
+yt
+OX
+OX
+TN
+od
+"}
+(21,1,1) = {"
+PV
+Kx
+SX
+SX
+OM
+SX
+or
+ML
+Gb
+Bv
+Ul
+Jf
+zw
+Gb
+Gb
+PV
+PV
+"}
+(22,1,1) = {"
+PV
+PV
+od
+od
+PV
+od
+od
+PV
+wh
+ZE
+HE
+od
+PV
+od
+od
+PV
+AB
+"}

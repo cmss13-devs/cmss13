@@ -200,6 +200,7 @@
 "aQ" = (
 /obj/structure/platform/metal/almayer/east,
 /obj/structure/platform/metal/almayer,
+/obj/effect/blocker/toxic_water/Group_1,
 /turf/open/gm/river/desert/shallow,
 /area/desert_dam/exterior/river/riverside_south)
 "aR" = (

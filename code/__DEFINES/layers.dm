@@ -234,6 +234,10 @@
 #define GAME_PLANE -6
 /// Above Game Plane. For things which are above game objects, but below screen effects.
 #define ABOVE_GAME_PLANE -5
+
+///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
+#define SEETHROUGH_PLANE -2
+
 /// Roof plane, disappearing when entering buildings
 #define ROOF_PLANE -4
 

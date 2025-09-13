@@ -46,6 +46,7 @@ export const COLORS = {
     echo: '#027d02',
     foxtrot: '#4a4740',
     raiders: '#6e1919',
+    forecon: '#32CD32',
   },
   // Damage type colors
   damageType: {

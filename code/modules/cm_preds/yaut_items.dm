@@ -524,7 +524,7 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 
 /obj/structure/machinery/hunting_ground_selection/attack_hand(mob/living/user)
 	. = ..()
-	if(!isyautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You do not understand how to use this console."))
 		return
 

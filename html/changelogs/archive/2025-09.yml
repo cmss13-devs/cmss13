@@ -107,3 +107,19 @@
   zzzmike:
   - balance: neurocryogenic+cardiostabilizing knocks down and stuns rather than knocks
       out
+2025-09-13:
+  BasilHerb:
+  - rscadd: Added a minimum floor for most fun facts.
+  - rscadd: Re-introduces the 'calories burned' fun fact.
+  Red-byte3D:
+  - bugfix: Spit overlays no longer get added on when you chose an ability after you
+      die or are knocked down
+  cuberound:
+  - bugfix: marines hauled by xeno no longer take fall damage
+  - balance: prevents huggers from hugging across z levels
+  - balance: pounces are one tile shorter when going up a z level
+  - bugfix: fixes being unable to pounce/throw stuff up a z level when next to an
+      edge
+  - bugfix: fixes majority of issues with looking up not being updated on movement,
+      report any remaining issues
+  - bugfix: crossing z level ends looking up correctly

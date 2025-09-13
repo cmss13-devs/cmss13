@@ -1079,9 +1079,14 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// Appear at bottom of squad list
 				JOB_MARINE_RAIDER_SL = 130,
 				RAIDER_SL_SQUAD = 130,
+				JOB_CIA_GRS_TL = 130,
 				JOB_MARINE_RAIDER = 131,
 				JOB_MARINE_RAIDER_SG = 132,
 				RAIDER_SQUAD = 132,
+				JOB_CIA_GRS_HVY = 131,
+				JOB_CIA_GRS_MED = 132,
+				JOB_CIA_GRS_ENG = 133,
+				JOB_CIA_GRS_OPR =  134,
 
 				JOB_FORECON_CO = 140,
 				JOB_FORECON_SL = 140,

@@ -27276,7 +27276,7 @@
 "vKD" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/pen/blue/clicky,
-/obj/item/tool/pen/sleepypen{
+/obj/item/tool/pen/syringe{
 	pixel_x = -4;
 	pixel_y = 4
 	},

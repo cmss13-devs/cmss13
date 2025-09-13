@@ -56,7 +56,7 @@
 		deactivate_camouflage(H)
 		return
 
-	H.visible_message(SPAN_DANGER("[H] goes prone, and begins adjusting \his ghillie suit!"), SPAN_NOTICE("You go prone, and begins adjusting your ghillie suit."), max_distance = 4)
+	H.visible_message(SPAN_DANGER("[H] goes prone, and begins adjusting \his ghillie suit!"), SPAN_NOTICE("You go prone, and begin adjusting your ghillie suit."), max_distance = 4)
 	hide_in_progress = TRUE
 	H.unset_interaction() // If we're sticking to a machine gun or what not.
 	if(!do_after(H, camouflage_enter_delay, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

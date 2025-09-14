@@ -260,6 +260,12 @@
 
 	X.set_faction(internal_faction)
 
+	var/turf/turf = get_turf(X)
+
+	if (X.hive.hivenumber == XENO_HIVE_NORMAL && SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED && is_ground_level(turf?.z)) {
+		X.set_hive_and_update(XENO_HIVE_FORSAKEN)
+	}
+
 	if(X.hud_list)
 		X.hud_update()
 

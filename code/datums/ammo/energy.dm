@@ -144,21 +144,21 @@
 	var/stun_time = 6
 
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun/on_hit_mob(mob/all_targets, obj/projectile/stun_projectile)
-	do_area_stun(stun_projectile)
+	do_area_stun(all_targets, stun_projectile)
 
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun/on_hit_turf(turf/any_turf, obj/projectile/stun_projectile)
-	do_area_stun(stun_projectile)
+	do_area_stun(any_turf, stun_projectile)
 
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun/on_hit_obj(obj/any_object, obj/projectile/stun_projectile)
-	do_area_stun(stun_projectile)
+	do_area_stun(any_object, stun_projectile)
 
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun/do_at_max_range(obj/projectile/stun_projectile)
-	do_area_stun(stun_projectile)
+	do_area_stun(stun_projectile, stun_projectile)
 
-/datum/ammo/energy/yautja/caster/sphere/aoe_stun/proc/do_area_stun(obj/projectile/stun_projectile)
+/datum/ammo/energy/yautja/caster/sphere/aoe_stun/proc/do_area_stun(atom/impact, obj/projectile/stun_projectile)
 	playsound(stun_projectile, 'sound/weapons/wave.ogg', 75, 1, 25)
 
-	for(var/mob/living/carbon/any_target in orange(stun_range, stun_projectile))
+	for(var/mob/living/carbon/any_target in orange(stun_range, impact))
 		log_attack("[key_name(any_target)] was stunned by a plasma immobilizer from [key_name(stun_projectile.firer)] at [get_area(stun_projectile)]")
 		var/stun_time = src.stun_time
 

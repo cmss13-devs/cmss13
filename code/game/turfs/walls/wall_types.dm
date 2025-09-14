@@ -837,7 +837,7 @@
 	var/turf/closed/wall/resin/wall_below
 	var/obj/structure/mineral_door/resin/door_below
 
-/turf/closed/wall.resin/above/bullet_ping(obj/projectile/P, pixel_x_offset, pixel_y_offset)
+/turf/closed/wall/resin/above/bullet_ping(obj/projectile/P, pixel_x_offset, pixel_y_offset)
 	. = ..()
 	if(wall_below)
 		wall_below.bullet_ping(P,pixel_x_offset,pixel_y_offset)

@@ -331,7 +331,7 @@ const marineSplitter = (members: Array<Observable>) => {
     buildSquadObservable('Charlie', 'purple', charlieSquad),
     buildSquadObservable('Delta', 'blue', deltaSquad),
     buildSquadObservable('Kilo', 'teal', kiloSquad),
-    buildSquadObservable('Oscar', 'yellowgreen', oscarSquad),
+    buildSquadObservable('Oscar', 'green', oscarSquad),
     buildSquadObservable('Foxtrot', 'brown', foxtrotSquad),
     buildSquadObservable('Echo', 'teal', echoSquad),
     buildSquadObservable('CBRN', 'dark-blue', CBRNSquad),

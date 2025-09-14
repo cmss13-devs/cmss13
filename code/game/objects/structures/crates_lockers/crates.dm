@@ -198,7 +198,7 @@
 
 /obj/structure/closet/crate/alpha
 	name = "alpha squad crate"
-	desc = "A crate with alpha squad'sparker symbol on it. "
+	desc = "A crate with alpha squad's symbol on it. "
 	icon_state = "closed_alpha"
 	icon_opened = "open_alpha"
 	icon_closed = "closed_alpha"
@@ -233,14 +233,14 @@
 
 /obj/structure/closet/crate/bravo
 	name = "bravo squad crate"
-	desc = "A crate with bravo squad'sparker symbol on it. "
+	desc = "A crate with bravo squad's symbol on it. "
 	icon_state = "closed_bravo"
 	icon_opened = "open_bravo"
 	icon_closed = "closed_bravo"
 
 /obj/structure/closet/crate/charlie
 	name = "charlie squad crate"
-	desc = "A crate with charlie squad'sparker symbol on it. "
+	desc = "A crate with charlie squad's symbol on it. "
 	icon_state = "closed_charlie"
 	icon_opened = "open_charlie"
 	icon_closed = "closed_charlie"
@@ -254,7 +254,7 @@
 
 /obj/structure/closet/crate/delta
 	name = "delta squad crate"
-	desc = "A crate with delta squad'sparker symbol on it. "
+	desc = "A crate with delta squad's symbol on it. "
 	icon_state = "closed_delta"
 	icon_opened = "open_delta"
 	icon_closed = "closed_delta"

@@ -167,15 +167,6 @@
 /obj/structure/closet/crate/supply/attempt_rigging(obj/item/object, mob/user)
 	return FALSE // No rigging because its wooden I guess
 
-/obj/structure/closet/crate/explosives/attempt_rigging(obj/item/object, mob/user)
-	return FALSE // No rigging because its wooden I guess
-
-/obj/structure/closet/crate/empexplosives/attempt_rigging(obj/item/object, mob/user)
-	return FALSE // No rigging because its wooden I guess
-
-/obj/structure/closet/crate/secure/explosives/attempt_rigging(obj/item/object, mob/user)
-	return FALSE // No rigging because its wooden I guess
-
 /obj/structure/closet/crate/update_icon()
 	. = ..()
 	if(rigged)

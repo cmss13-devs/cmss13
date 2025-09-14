@@ -10,7 +10,7 @@ permissions:
   contents: write
 jobs:
   auto_changelog:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true && github.head_ref != 'merge-upstream'
     steps:
     - name: Generate App Token

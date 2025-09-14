@@ -5,7 +5,7 @@ on:
 jobs:
   automatic-approve:
     name: Automatic Approve Workflows
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     steps:
       - name: Generate App Token
         id: app-token-generation

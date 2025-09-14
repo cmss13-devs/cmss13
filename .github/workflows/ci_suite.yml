@@ -8,7 +8,7 @@ jobs:
   run_linters:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Run Linters
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     concurrency:
       group: run_linters-${{ github.head_ref || github.run_id }}
@@ -44,8 +44,6 @@ jobs:
             ${{ runner.os }}-rust-
       - name: Install Tools
         run: |
-          sudo apt-get update
-          sudo apt-get install -y php-cli
           pip3 install setuptools
           bash tools/ci/install_spaceman_dmm.sh dreamchecker
           cargo install ripgrep --features pcre2
@@ -72,14 +70,12 @@ jobs:
 
   odlint:
     name: Lint with OpenDream
-    runs-on: [self-hosted]
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
-        env:
-          DOTNET_INSTALL_DIR: "./_work/.dotnet"
         with:
-          dotnet-version: 9.x
+          dotnet-version: 9
+      - uses: actions/checkout@v4
       - uses: robinraju/release-downloader@v1.9
         with:
           repository: "OpenDreamProject/OpenDream"
@@ -91,7 +87,7 @@ jobs:
   compile_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Compile Maps
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v3
@@ -107,7 +103,7 @@ jobs:
   find_all_maps:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     name: Find Maps to Test
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     outputs:
       maps: ${{ steps.map_finder.outputs.maps }}
       alternate_tests: ${{ steps.alternate_test_finder.outputs.alternate_tests }}
@@ -170,7 +166,7 @@ jobs:
     if: ( !contains(github.event.head_commit.message, '[ci skip]') && needs.find_all_maps.outputs.alternate_tests != '[]' )
     name: Check Alternate Tests
     needs: [run_alternate_tests]
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     steps:
       - run: echo Alternate tests passed.
 

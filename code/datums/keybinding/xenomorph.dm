@@ -787,3 +787,95 @@
 		if(spitter_tail_stab_check && !spitter_tail_stab_check.hidden)
 			handle_xeno_macro_datum(xeno, spitter_tail_stab_check)
 			return TRUE
+// Warrior
+
+/datum/keybinding/xenomorph/warrior_punch
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "warrior_punch"
+	full_name = "Warrior: Punch"
+	keybind_signal = COMSIG_KB_XENO_WARRIOR_PUNCH
+
+/datum/keybinding/xenomorph/warrior_punch/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/warrior_punch/warrior_punch_check = get_action(xeno, /datum/action/xeno_action/activable/warrior_punch)
+	if(warrior_punch_check)
+		if(warrior_punch_check && !warrior_punch_check.hidden)
+			handle_xeno_macro_datum(xeno, warrior_punch_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/warrior_lunch
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "warrior_lunch"
+	full_name = "Warrior: Lunch"
+	keybind_signal = COMSIG_KB_XENO_WARRIOR_LUNCH
+
+/datum/keybinding/xenomorph/warrior_lunch/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/lunge/warrior_lunch_check = get_action(xeno, /datum/action/xeno_action/activable/lunge)
+	if(warrior_lunch_check)
+		if(warrior_lunch_check && !warrior_lunch_check.hidden)
+			handle_xeno_macro_datum(xeno, warrior_lunch_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/warrior_fling
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "warrior_fling"
+	full_name = "Warrior: Fling"
+	keybind_signal = COMSIG_KB_XENO_WARRIOR_FLING
+
+/datum/keybinding/xenomorph/warrior_fling/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/fling/warrior_fling_check = get_action(xeno, /datum/action/xeno_action/activable/fling)
+	if(warrior_fling_check)
+		if(warrior_fling_check && !warrior_fling_check.hidden)
+			handle_xeno_macro_datum(xeno, warrior_fling_check)
+			return TRUE
+// Burrower
+
+/datum/keybinding/xenomorph/burrower_build_tunnel
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "burrower_build_tunnel"
+	full_name = "Burrower: Build Tunnel"
+	keybind_signal = COMSIG_KB_XENO_BURROWER_BUILD_TUNNEL
+
+/datum/keybinding/xenomorph/burrower_build_tunnel/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/build_tunnel/burrower_build_tunnel_check = get_action(xeno, /datum/action/xeno_action/onclick/build_tunnel)
+	if(burrower_build_tunnel_check)
+		if(burrower_build_tunnel_check && !burrower_build_tunnel_check.hidden)
+			handle_xeno_macro_datum(xeno, burrower_build_tunnel_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/burrower_build_tunnel
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "burrower_build_tunnel"
+	full_name = "Burrower: Build Tunnel"
+	keybind_signal = COMSIG_KB_XENO_BURROWER_BUILD_TUNNEL
+
+/datum/keybinding/xenomorph/burrower_build_tunnel/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/build_tunnel/burrower_build_tunnel_check = get_action(xeno, /datum/action/xeno_action/onclick/build_tunnel)
+	if(burrower_build_tunnel_check)
+		if(burrower_build_tunnel_check && !burrower_build_tunnel_check.hidden)
+			handle_xeno_macro_datum(xeno, burrower_build_tunnel_check)
+			return TRUE

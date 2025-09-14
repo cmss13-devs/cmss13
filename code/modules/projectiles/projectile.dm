@@ -1229,7 +1229,7 @@
 
 
 //This is where the bullet bounces off.
-/atom/proc/bullet_ping(obj/projectile/P, pixel_x_offset = 0, pixel_y_offset = 0, pixel_x, pixel_y)
+/atom/proc/bullet_ping(obj/projectile/P, pixel_x_offset = 0, pixel_y_offset = 0)
 	if(!P || !P.ammo.ping)
 		return
 
@@ -1238,16 +1238,8 @@
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, P.ammo.ping, 10)
 	var/offset_x = clamp(P.pixel_x + pixel_x_offset, -10, 10)
 	var/offset_y = clamp(P.pixel_y + pixel_y_offset, -10, 10)
-	if(!pixel_x)
-		I.pixel_x += round(rand(-4,4) + offset_x, 1)
-	else
-		I.pixel_x += pixel_x
-
-	if(!pixel_y)
-		I.pixel_y += round(rand(-4,4) + offset_y, 1)
-	else
-		I.pixel_y += pixel_y
-
+	I.pixel_x += round(rand(-4,4) + offset_x, 1)
+	I.pixel_y += round(rand(-4,4) + offset_y, 1)
 
 	var/matrix/rotate = matrix()
 	rotate.Turn(P.angle)

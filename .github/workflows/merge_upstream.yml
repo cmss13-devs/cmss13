@@ -5,7 +5,7 @@ on:
 
 jobs:
   merge-upstream:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
 
     steps:
       - id: create_token

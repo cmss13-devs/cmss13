@@ -5,7 +5,7 @@ on:
 
 jobs:
   labeler:
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v5
       with:

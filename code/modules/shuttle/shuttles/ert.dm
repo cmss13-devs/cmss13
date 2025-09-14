@@ -203,7 +203,7 @@
 		WARNING("No starboard door found for [src]")
 
 /obj/docking_port/mobile/emergency_response/big/cia_barge
-	name = "UACQS Barge"
+	name = "GRS Barge"
 	id = MOBILE_SHUTTLE_ID_ERT_BIG_CIA
 
 // Generic ERT Dock
@@ -398,5 +398,5 @@
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG
 
 /datum/map_template/shuttle/big_cia
-	name = "UACQS Barge"
+	name = "GRS Barge"
 	shuttle_id = MOBILE_SHUTTLE_ID_ERT_BIG_CIA

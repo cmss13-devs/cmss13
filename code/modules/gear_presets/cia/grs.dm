@@ -13,6 +13,7 @@
 	faction = FACTION_CIA
 	faction_group = FACTION_LIST_CIA_MARINE
 	minimap_background = "background_ua"
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_FRENCH, LANGUAGE_TSL)
 	var/strength_type = STRENGTH_NORM
 	var/helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs
 	var/headset_type = /obj/item/device/radio/headset/almayer/cia_grs

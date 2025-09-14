@@ -131,6 +131,9 @@
 	..()
 	RegisterSignal(src, COMSIG_AMMO_POINT_BLANK, PROC_REF(handle_battlefield_execution))
 
+/datum/ammo/bullet/pistol/heavy/highimpact/on_hit_mob(mob/M, obj/projectile/P)
+	knockback(M, P, 4)
+
 /datum/ammo/bullet/pistol/heavy/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
 	name = ".high-impact explosive pistol bullet"
 	damage = 100

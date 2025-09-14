@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Queen transparency hotfix, now it has a cooldown of 5 seconds as well"

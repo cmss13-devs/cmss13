@@ -824,10 +824,14 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 		if(JOB_MARINE_RAIDER)
 			assignment = JOB_MARINE_RAIDER
 			if(name == JOB_MARINE_RAIDER)
+				assignment = "Smartgunner Specialist"
+		if(JOB_MARINE_RAIDER_SG)
+			assignment = JOB_MARINE_RAIDER_SG
+			if(name == JOB_MARINE_RAIDER_SG)
 				assignment = "Special Operator"
 		if(JOB_MARINE_RAIDER_SL)
 			assignment = JOB_MARINE_RAIDER_SL
-			if(name == JOB_MARINE_RAIDER)
+			if(name == JOB_MARINE_RAIDER || name == JOB_MARINE_RAIDER_SG)
 				if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_MARINE_RAIDER_SL) //field promoted SL
 					var/old_lead = squad_leader
 					demote_squad_leader() //replaced by the real one
@@ -839,7 +843,7 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 				mob_role = JOB_SQUAD_LEADER
 		if(JOB_MARINE_RAIDER_CMD)
 			assignment = JOB_MARINE_RAIDER_CMD
-			if(name == JOB_MARINE_RAIDER)
+			if(name == JOB_MARINE_RAIDER || name == JOB_MARINE_RAIDER_SG)
 				assignment = "Officer"
 
 	if(mob_role in roles_cap)
@@ -962,6 +966,8 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 						old_lead.comm_title = "Sgt"
 				if(JOB_MARINE_RAIDER)
 					old_lead.comm_title = "Op."
+				if(JOB_MARINE_RAIDER_SG)
+					old_lead.comm_title = "SG."
 				if(JOB_MARINE_RAIDER_SL)
 					old_lead.comm_title = "TL."
 				if(JOB_MARINE_RAIDER_CMD)

@@ -837,6 +837,34 @@
 	var/turf/closed/wall/resin/wall_below
 	var/obj/structure/mineral_door/resin/door_below
 
+/turf/closed/wall/resin/above/bullet_ping(obj/projectile/P, pixel_x_offset, pixel_y_offset, pixel_x, pixel_y)
+	if(!P || !P.ammo.ping)
+		return
+
+	if(P.ammo.sound_bounce)
+		playsound(src, P.ammo.sound_bounce, 50, 1)
+	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, P.ammo.ping, 10)
+	var/offset_x = clamp(P.pixel_x + pixel_x_offset, -10, 10)
+	var/offset_y = clamp(P.pixel_y + pixel_y_offset, -10, 10)
+	var/random_x = round(rand(-4,4) + offset_x, 1)
+	var/random_y = round(rand(-4,4) + offset_y, 1)
+	I.pixel_x += random_x
+	I.pixel_y += random_y
+
+	if(wall_below)
+		wall_below.bullet_ping(P, pixel_x_offset, pixel_y_offset, random_x, random_y)
+
+	if(door_below)
+		door_below.bullet_ping(P, pixel_x_offset, pixel_y_offset, random_x, random_y)
+
+
+
+	var/matrix/rotate = matrix()
+	rotate.Turn(P.angle)
+	I.transform = rotate
+	// Need to do this in order to prevent the ping from being deleted
+	addtimer(CALLBACK(I, TYPE_PROC_REF(/image, flick_overlay), src, 3), 1)
+
 /turf/closed/wall/resin/above/Initialize(mapload)
 	. = ..()
 	var/turf/below = SSmapping.get_turf_below(src)

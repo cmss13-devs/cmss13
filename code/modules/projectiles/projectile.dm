@@ -440,7 +440,7 @@
 	var/hit_turf = FALSE
 	// Explosive ammo always explodes on the turf of the clicked target
 	// So does ammo that's flagged to always hit the target
-	if(((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf)
+	if(!istype(T, /turf/open_space) && (((ammo_flags & AMMO_EXPLOSIVE) || (ammo_flags & AMMO_HITS_TARGET_TURF)) && T == target_turf))
 		hit_turf = TRUE
 
 	for(var/atom/movable/clone/C in T) //Handle clones if there are any

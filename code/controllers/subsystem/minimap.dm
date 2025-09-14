@@ -907,7 +907,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canChangeZ"] = TRUE
 	data["canViewCanvas"] = FALSE
 	data["isxeno"] = FALSE
-	data["zlevel"] = 2
+	data["zlevel"] = 0
 
 	return data
 
@@ -918,7 +918,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canDraw"] = FALSE
 	data["mapFallback"] = wiki_map_fallback
 	data["canChangeZ"] = TRUE
-	data["zlevel"] = 2
+	data["zlevel"] = 0
 
 	var/mob/living/carbon/xenomorph/xeno = user
 	var/is_xeno = istype(xeno)
@@ -945,7 +945,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
 	data["isxeno"] = FALSE
-	data["zlevel"] = 2
+	data["zlevel"] = 0
 
 	return data
 
@@ -958,7 +958,7 @@ SUBSYSTEM_DEF(minimaps)
 	data["canViewTacmap"] = FALSE
 	data["canViewCanvas"] = TRUE
 	data["isxeno"] = TRUE
-	data["zlevel"] = 2
+	data["zlevel"] = 0
 
 	return data
 

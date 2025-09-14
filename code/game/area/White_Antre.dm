@@ -49,6 +49,7 @@
 	ceiling = CEILING_NONE
 	linked_lz = DROPSHIP_LZ1
 	requires_power = FALSE
+	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
 
 /area/white_antre/landing_zone/roof
 	name = "White Antre Research Facility - Supply Pad - Landing Zone"
@@ -63,38 +64,49 @@
 	name = "PMC-DS-1 'Cash Flow'"
 	icon_state = "WYSpaceport"
 	ambience_exterior = AMBIENCE_SHIP_ALT
+	minimap_color = MINIMAP_AREA_COLONY_SPACE_PORT
 
 //Exterior Area
 
 /area/white_antre/outdoors/north_field
 	name = "Snow Fields - North"
 	icon_state = "caves_north"
+	minimap_color = MINIMAP_SNOW
+
 
 /area/white_antre/outdoors/south_field
 	name = "Snow Fields - South"
 	icon_state = "caves_south"
+	minimap_color = MINIMAP_SNOW
+
 
 /area/white_antre/outdoors/road_west
 	name = "Snow Fields - Road West"
 	icon_state = "meridian_factory"
+	minimap_color = MINIMAP_DIRT
 
 /area/white_antre/outdoors/road_east
 	name = "Snow Fields - Road East"
 	icon_state = "meridian"
+	minimap_color = MINIMAP_DIRT
 
 /area/white_antre/outdoors/path_north
 	name = "Snow Fields - Offroad North"
 	icon_state = "mining"
+	minimap_color = MINIMAP_MARS_DIRT
 
 /area/white_antre/outdoors/facility_exterior
 	name = "White Antre - Western Facility Exterior"
 	icon_state = "police_line"
+	minimap_color = MINIMAP_AREA_CELL_VIP
 
 /area/white_antre/indoors/exterior
 	name = "White Antre Research Facility - Exterior"
 	ceiling = CEILING_METAL
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
+
 
 /area/white_antre/indoors/exterior/checkpoint
 	name = "White Antre Research Facility - Exterior Checkpoint"
@@ -112,6 +124,7 @@
 
 /area/white_antre/indoors/main_level
 	name = "White Antre Research Facility - Ground Level"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 
 /area/white_antre/indoors/main_level/west_corridor
 	name = "White Antre Research Facility - West Corridor - Ground"
@@ -125,62 +138,74 @@
 	name = "White Antre Research Facility - Engineering - Ground"
 	icon_state = "power0"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_COLONY_ENGINEERING
 
 /area/white_antre/indoors/main_level/security
 	name = "White Antre Research Facility - Security - Ground"
 	icon_state = "security_checkpoint"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
 
 /area/white_antre/indoors/main_level/dorms
 	name = "White Antre Research Facility - Dormitory - Ground"
 	icon_state = "apartments"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/white_antre/indoors/main_level/research
 	name = "White Antre - Xenobiological Research - Ground"
 	icon_state = "apartments"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/white_antre/indoors/main_level/weapons
 	name = "White Antre - Weapons Research - Ground"
 	icon_state = "wylab"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_SEC
 
 /area/white_antre/indoors/main_level/north_containment
 	name = "White Antre - K-Series Containment Holding Bay - Ground"
 	icon_state = "tumor1"
+	minimap_color = MINIMAP_AREA_DERELICT
 
 /area/white_antre/indoors/main_level/north_containment_hive
 	name = "White Antre - K-Series Containment Zone - Ground"
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_DERELICT
 
 /area/white_antre/indoors/main_level/south_containment
 	name = "White Antre - Unused Containment Holding Bay - Ground"
 	icon_state = "tumor1"
+	minimap_color = MINIMAP_AREA_DERELICT
 
 /area/white_antre/indoors/main_level/south_containment_hive
 	name = "White Antre - Unused Containment Zone - Ground"
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_DERELICT
 
 /area/white_antre/indoors/main_level/east_containment
 	name = "White Antre - Prime Hive Containment Holding Bay - Ground"
 	icon_state = "tumor1"
+	minimap_color = MINIMAP_AREA_HYBRISACAVES
 
 /area/white_antre/indoors/main_level/east_containment_hive
 	name = "White Antre - Prime Hive Containment Zone - Ground"
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
+	minimap_color = MINIMAP_AREA_HYBRISACAVES
 
 //White Antre Facility - Underground
 
 /area/white_antre/indoors/underground_level
 	name = "White Antre Research Facility - Underground"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_ENGI
 
 /area/white_antre/indoors/underground_level/west_maint
 	name = "White Antre Research Facility - West Maintenance - Underground"
@@ -194,6 +219,7 @@
 
 /area/white_antre/indoors/upper_level
 	name = "White Antre - Upper Level"
+	minimap_color = MINIMAP_AREA_COLONY_RESANDCOM
 
 /area/white_antre/indoors/upper_level/west_corridor
 	name = "White Antre - West Corridor - Upper"
@@ -211,57 +237,69 @@
 	name = "White Antre - Medbay - Upper"
 	icon_state = "medical_lz1"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_COLONY_HOSPITAL
 
 /area/white_antre/indoors/upper_level/canteen
 	name = "White Antre - Canteen - Upper"
 	icon_state = "pizza"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/white_antre/indoors/upper_level/records
 	name = "White Antre - Records - Upper"
 	icon_state = "wyoffice"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_COLONY
 
 /area/white_antre/indoors/upper_level/simian_storage
 	name = "White Antre - Simian Storage - Upper"
 	icon_state = "WYSpaceportcargo"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/white_antre/indoors/upper_level/central_command
 	name = "White Antre - Central Command - Upper"
 	icon_state = "wardens"
+	minimap_color = MINIMAP_AREA_COMMAND
 
 /area/white_antre/indoors/upper_level/director_office
 	name = "White Antre - Director Kandinsky's Quarters - Upper"
 	icon_state = "tumor0-deep"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_COMMAND_CAVE
 
 /area/white_antre/indoors/upper_level/ancillery_storage
 	name = "White Antre - Ancillery Storage - Upper"
 	icon_state = "WYSpaceportcargo"
+	minimap_color = MINIMAP_AREA_GLASS
 
 /area/white_antre/indoors/upper_level/payroll
 	name = "White Antre - Payroll - Upper"
 	icon_state = "disco"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_MINING
 
 /area/white_antre/indoors/upper_level/xenobio
 	name = "White Antre - Xenobiological Research - Upper"
 	icon_state = "medical"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_RESEARCH
 
 /area/white_antre/indoors/upper_level/east_overwatch
 	name = "White Antre - East Containment Overwatch - Upper"
 	icon_state = "wylab"
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
+	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 
 /area/white_antre/indoors/upper_level/north_overwatch
 	name = "White Antre - North Containment Overwatch - Upper"
 	icon_state = "wylab"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 
 /area/white_antre/indoors/upper_level/south_overwatch
 	name = "White Antre - South Containment Overwatch - Upper"
 	icon_state = "wylab"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	minimap_color = MINIMAP_AREA_HYBRISARESEARCH
 

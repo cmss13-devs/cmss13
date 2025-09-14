@@ -1178,7 +1178,7 @@
 		if(welded)
 			difficulty = 30 // if its welded shut it should be harder to smash open
 		if(prob(difficulty))
-			break_open()
+			break_open(xeno)
 			xeno.visible_message(SPAN_DANGER("[xeno] smashes [src] open with its tail!"),
 			SPAN_DANGER("We smash [src] open with our tail!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else

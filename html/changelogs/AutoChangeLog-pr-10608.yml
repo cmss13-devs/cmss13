@@ -1,0 +1,4 @@
+author: "FebrezeNinja"
+delete-after: True
+changes:
+  - bugfix: "ARC phone now shows up as \"ARC\" in the Vehicles phone list."

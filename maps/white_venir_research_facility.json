@@ -29,7 +29,7 @@
         0.0
     ],
     "survivor_message": "Test",
-    "announce_text": "USS Almayer, this is Director Kadinsky of the White Venir Research Facility, welcome. I have been informed by my superiors that you have been dispatched to collect a classified cargo shipment for transport to Chinook station and to observe the on-going live-fire xenomorph testing being conducted at this site.\n\nYou’ll be joined by Azure-15, of the Whiteguard PMC. Further information will be sent after your arrival.\n\nPlease inform your corporate liaison that I look forward to seeing them again. Kadinsky out.",
+    "announce_text": "USS Almayer, this is Director Kadinsky of the White Antre Research Facility, welcome. I have been informed by my superiors that you have been dispatched to collect a classified cargo shipment for transport to Chinook station and to observe the on-going live-fire xenomorph testing being conducted at this site.\n\nYou’ll be joined by Azure-15, of the Whiteguard PMC. Further information will be sent after your arrival.\n\nPlease inform your corporate liaison that I look forward to seeing them again. Kadinsky out.",
     "map_item_type": "/obj/item/map/white_venir_map",
 	"monkey_types": [
         "neaera",

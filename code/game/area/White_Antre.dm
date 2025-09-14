@@ -253,7 +253,7 @@
 /area/white_antre/indoors/upper_level/east_overwatch
 	name = "White Antre - East Containment Overwatch - Upper"
 	icon_state = "wylab"
-	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 
 /area/white_antre/indoors/upper_level/north_overwatch
 	name = "White Antre - North Containment Overwatch - Upper"

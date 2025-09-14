@@ -601,6 +601,11 @@
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/cleanable/blood/gibs/xeno,
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/main_level/east_containment)
 "abL" = (
@@ -2142,6 +2147,14 @@
 /area/white_antre/indoors/upper_level/canteen)
 "afD" = (
 /obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
 /turf/open/floor/prison/blue/southwest,
 /area/white_antre/indoors/upper_level/central_command)
 "afE" = (
@@ -2160,10 +2173,19 @@
 	layer = 3.1;
 	pixel_y = 1
 	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/upper_level/central_command)
 "afG" = (
 /obj/structure/surface/table/almayer,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/kit/self_defense,
 /turf/open/floor/prison/blue/southeast,
 /area/white_antre/indoors/upper_level/central_command)
 "afH" = (
@@ -2176,13 +2198,14 @@
 /turf/open/floor/plating,
 /area/white_antre/indoors/upper_level/director_office)
 "afI" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e";
-	layer = 3
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/prop/almayer/computer/PC{
+	dir = 1
 	},
 /turf/open/floor/corsat/officetiles,
 /area/white_antre/indoors/upper_level/director_office)
 "afJ" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison/bluecorner/west,
 /area/white_antre/indoors/upper_level/central_command)
 "afK" = (
@@ -2213,6 +2236,8 @@
 /obj/structure/machinery/power/apc/power/west{
 	start_charge = 20
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/floor/prison/bluefull/west,
 /area/white_antre/indoors/upper_level/central_command)
 "afR" = (
@@ -2224,6 +2249,10 @@
 "afS" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/prop/almayer/CICmap,
+/obj/item/device/binoculars/range/designator{
+	pixel_x = 9;
+	pixel_y = 7
+	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/central_command)
 "afT" = (
@@ -2233,9 +2262,17 @@
 /area/white_antre/indoors/upper_level/director_office)
 "afU" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/prop/almayer/computer/PC{
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/computer/cameras/almayer/containment{
 	dir = 4;
-	pixel_y = -4
+	pixel_x = 2;
+	pixel_y = 1;
+	needs_power = 0;
+	network = list("containment_prime");
+	name = "Security Cameras - Alpha Containment Zone"
+	},
+/obj/structure/sign/calendar/wy{
+	pixel_y = 29
 	},
 /turf/open/floor/prison/bluefull/west,
 /area/white_antre/indoors/upper_level/central_command)
@@ -2247,9 +2284,13 @@
 	pixel_y = 32;
 	layer = 2.9
 	},
-/obj/structure/surface/table/reinforced/prison{
-	color = "#848484"
+/obj/item/device/flashlight/lamp/on{
+	pixel_x = 2;
+	pixel_y = 5;
+	layer = 3.03
 	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/fancy/cigar,
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/white_antre/indoors/upper_level/director_office)
 "afX" = (
@@ -2273,6 +2314,9 @@
 	dir = 8;
 	pixel_x = -14
 	},
+/obj/structure/mirror{
+	pixel_x = -31
+	},
 /turf/open/floor/hybrisa/tile/tilewhitecheckered/biege,
 /area/white_antre/indoors/upper_level/director_office)
 "aga" = (
@@ -2289,6 +2333,19 @@
 /area/white_antre/indoors/upper_level/director_office)
 "agd" = (
 /obj/structure/closet/firecloset/full,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 1;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 34;
+	layer = 2.9;
+	pixel_x = -16
+	},
 /turf/open/floor/prison/blue/northwest,
 /area/white_antre/indoors/upper_level/central_command)
 "age" = (
@@ -5242,7 +5299,7 @@
 /area/white_antre/indoors/main_level/engineering)
 "amT" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/obj/structure/machinery/power/apc/power/north{
+/obj/structure/machinery/power/apc/upgraded/power/north{
 	start_charge = 100
 	},
 /turf/open/floor/prison/bright_clean,
@@ -10534,6 +10591,11 @@
 /area/white_antre/indoors/main_level/east_containment_hive)
 "azY" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
+/obj/structure/machinery/colony_floodlight_switch/containment{
+	pixel_x = -28;
+	name = "backup containment light switch";
+	desc = "This switch controls the containment zone floodlights. This appears to be a backup switch kept within the containment zone. This needs to be powered elsewhere."
+	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "azZ" = (
@@ -11293,6 +11355,7 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCk" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/coffee,
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aCl" = (
@@ -11523,6 +11586,14 @@
 /obj/structure/platform/metal/hybrisa/metalplatform3,
 /turf/open/floor/prison/blue_plate/north,
 /area/white_antre/indoors/upper_level/east_overwatch)
+"aCS" = (
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/prison/darkbrown2/west,
+/area/white_antre/indoors/main_level/east_containment)
 "aCT" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -11601,17 +11672,6 @@
 /obj/effect/landmark/survivor_spawner,
 /turf/open/floor/prison/blue_plate/west,
 /area/white_antre/indoors/upper_level/east_overwatch)
-"aDa" = (
-/obj/effect/decal/hybrisa/trash{
-	icon_state = "trash_8";
-	pixel_y = 6
-	},
-/obj/effect/decal/cleanable/generic{
-	color = "#5d524b";
-	alpha = 155
-	},
-/turf/open/floor/hybrisa/metal/bluemetal1/west,
-/area/white_antre/indoors/upper_level/east_overwatch)
 "aDb" = (
 /turf/open/floor/hybrisa/metal/bluemetalcorner/east,
 /area/white_antre/indoors/upper_level/east_overwatch)
@@ -11674,13 +11734,6 @@
 	pixel_y = -5
 	},
 /turf/open/floor/hybrisa/metal/bluemetal1/southeast,
-/area/white_antre/indoors/upper_level/east_overwatch)
-"aDj" = (
-/obj/structure/machinery/power/apc/power/north{
-	start_charge = 35
-	},
-/obj/effect/random_explosion,
-/turf/open/floor/corsat,
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aDk" = (
 /obj/structure/largecrate/empty/case,
@@ -11902,6 +11955,13 @@
 	icon_state = "S"
 	},
 /obj/structure/largecrate/empty/case/double,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
 /turf/open/floor/almayer/emerald2smooth,
 /area/white_antre/indoors/main_level/research)
 "aDI" = (
@@ -11958,6 +12018,13 @@
 /area/white_antre/indoors/main_level/research)
 "aDP" = (
 /obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
 /turf/open/floor/almayer/emerald2smooth/southeast,
 /area/white_antre/indoors/main_level/research)
 "aDQ" = (
@@ -12090,6 +12157,14 @@
 /area/white_antre/indoors/main_level/research)
 "aEg" = (
 /obj/structure/largecrate/empty/case/double,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
 /turf/open/floor/almayer/emeraldfull2,
 /area/white_antre/indoors/main_level/research)
 "aEh" = (
@@ -12350,6 +12425,14 @@
 /obj/item/device/defibrillator/synthetic{
 	pixel_x = -6;
 	pixel_y = -1
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
 /turf/open/floor/almayer/emeraldfull2,
 /area/white_antre/indoors/main_level/research)
@@ -12783,6 +12866,15 @@
 	},
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 8
 	},
 /turf/open/floor/almayer/emerald2smooth/northeast,
 /area/white_antre/indoors/main_level/research)
@@ -16385,9 +16477,6 @@
 "aQK" = (
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/upper_level/ancillery_storage)
-"aQL" = (
-/turf/open/floor/almayer/blue2/west,
-/area/white_antre/indoors/upper_level/payroll)
 "aQM" = (
 /obj/effect/alien/weeds/kseries,
 /turf/open/floor/corsat/marked,
@@ -17690,6 +17779,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/structure/machinery/colony_floodlight/industrial,
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "aUv" = (
@@ -20010,6 +20100,11 @@
 /turf/open/floor/prison/redfull,
 /area/white_antre/indoors/main_level/east_containment)
 "baO" = (
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
 /turf/open/floor/prison/redcorner/north,
 /area/white_antre/indoors/main_level/east_containment)
 "baP" = (
@@ -22765,13 +22860,26 @@
 /turf/closed/wall/hybrisa/colony,
 /area/white_antre/indoors/upper_level/central_command)
 "biI" = (
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder{
+	name = "bunker hatch";
+	desc = "Some kind of emergency shelter, this one seems to be locked up tight."
+	},
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/upper_level/central_command)
 "biJ" = (
 /obj/structure/window/framed/hybrisa/research/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "command_centre"
+	},
 /turf/open/floor/plating,
 /area/white_antre/indoors/upper_level/central_command)
 "biK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
 /turf/open/floor/prison/blue/southwest,
 /area/white_antre/indoors/upper_level/central_command)
 "biL" = (
@@ -22781,7 +22889,11 @@
 /turf/open/floor/prison/blue/east,
 /area/white_antre/indoors/upper_level/central_command)
 "biN" = (
-/turf/open/floor/almayer/blue2/east,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "command_centre"
+	},
+/turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/central_command)
 "biO" = (
 /turf/open/floor/almayer/black2/west,
@@ -22790,6 +22902,7 @@
 /turf/open/floor/almayer/black2/east,
 /area/white_antre/indoors/upper_level/director_office)
 "biQ" = (
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/central_command)
 "biR" = (
@@ -22805,15 +22918,35 @@
 /turf/open/floor/prison/blue/west,
 /area/white_antre/indoors/upper_level/central_command)
 "biU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/upper_level/central_command)
 "biV" = (
+/obj/structure/machinery/door_control/brbutton{
+	id = "command_centre";
+	name = "North Cargo Entrance control";
+	pixel_y = 27
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 5;
+	pixel_x = 1
+	},
 /turf/open/floor/prison/blue/northeast,
 /area/white_antre/indoors/upper_level/central_command)
 "biW" = (
 /obj/structure/machinery/power/apc/power/north{
 	start_charge = 20
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/black2/northeast,
 /area/white_antre/indoors/upper_level/director_office)
 "biX" = (
@@ -24711,11 +24844,6 @@
 /obj/structure/prop/hybrisa/boulders/large_boulderdark/boulder_dark1,
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/outdoors/north_field)
-"bpD" = (
-/obj/structure/machinery/colony_floodlight_switch/containment,
-/obj/structure/blocker/invisible_wall,
-/turf/open/asphalt/brown,
-/area/white_antre/indoors/main_level/east_containment_hive)
 "bpE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/green2/north,
@@ -24837,7 +24965,7 @@
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/white_antre/indoors/upper_level/canteen)
 "bqb" = (
-/obj/structure/prop/broken_ladder,
+/obj/structure/machinery/big_computers/computerblack/computer1,
 /turf/open/floor/hybrisa/carpet/carpetblackdeco,
 /area/white_antre/indoors/upper_level/director_office)
 "bqc" = (
@@ -25157,13 +25285,12 @@
 /turf/open/floor/prison/greencorner,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bqW" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_29";
-	pixel_x = 7
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light/double{
 	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29"
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
@@ -25262,10 +25389,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/upper_level/east_corridor)
-"bri" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/corsat,
-/area/white_antre/indoors/upper_level/east_overwatch)
 "brj" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -25497,6 +25620,175 @@
 	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/white_antre/indoors/upper_level/east_corridor)
+"brR" = (
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/main_level/east_containment)
+"brS" = (
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/hybrisa/tile/tilelightbeige,
+/area/white_antre/indoors/main_level/east_containment)
+"brT" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brU" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = -32;
+	pixel_x = 17
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brV" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brW" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/southwest,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brX" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/prison/green,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/southwest,
+/area/white_antre/indoors/upper_level/east_corridor)
+"brZ" = (
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/greencorner/west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsa" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/green/west,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsb" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsd" = (
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/almayer/emerald2/northwest,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bse" = (
+/obj/structure/closet/firecloset/full,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsf" = (
+/obj/effect/random_explosion,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/vending/walkman,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsh" = (
+/obj/structure/closet/emcloset,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsi" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsj" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/disposal,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsk" = (
+/turf/closed/wall/hybrisa/colony,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"bsl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsm" = (
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = -4;
+	pixel_y = 11;
+	current_rounds = 39
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsn" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/lamp/on{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bso" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_box/magazine/nailgun/empty{
+	pixel_y = 5
+	},
+/obj/item/weapon/gun/smg/nailgun,
+/obj/structure/surface/rack,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"bsp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/surface/table/almayer,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsq" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
 "bsr" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
 /obj/effect/hybrisa/misc/fake/wire/yellow{
@@ -25513,10 +25805,787 @@
 /obj/structure/platform/metal/hybrisa/metalplatform1,
 /turf/open/hybrisa/street/underground_unweedable,
 /area/white_antre/indoors/main_level/research)
+"bss" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/barrel,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"bst" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"bsu" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 8
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsv" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"bsw" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8";
+	pixel_y = 6
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsx" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/secure,
+/obj/effect/spawner/random/powercell{
+	pixel_y = 8
+	},
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"bsy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"bsz" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsA" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29"
+	},
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/east_corridor)
+"bsB" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/blue2,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsC" = (
+/turf/open/floor/prison/darkbrowncorners2/southwest,
+/area/white_antre/indoors/upper_level/ancillery_storage)
+"bsD" = (
+/turf/open/floor/almayer/silvercorner/west,
+/area/white_antre/indoors/upper_level/payroll)
+"bsE" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4;
+	pixel_x = 14;
+	pixel_y = -15
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsF" = (
+/turf/open/floor/prison/darkbrowncorners2/north,
+/area/white_antre/indoors/upper_level/ancillery_storage)
+"bsG" = (
+/turf/open/floor/almayer/silvercorner/north,
+/area/white_antre/indoors/upper_level/payroll)
+"bsH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/largecrate/supply/floodlights,
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/supply/supplies/tables_racks,
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsK" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/almayer/emerald2/north,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsM" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsN" = (
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 4;
+	pixel_x = -18
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsO" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsP" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4;
+	pixel_x = 14;
+	pixel_y = -15
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsQ" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 4;
+	pixel_x = -18
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 2;
+	dir = 1
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsS" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/blue2,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsT" = (
+/obj/item/prop{
+	desc = "Something tore this apart.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/remains/robot{
+	pixel_x = -13;
+	pixel_y = -11
+	},
+/turf/open/floor/almayer/blue2/southeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsU" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsV" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/frame{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/emerald2,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsW" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/almayer/emerald2/southeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsX" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsY" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/emerald2/southwest,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bsZ" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 1;
+	layer = 2.51
+	},
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bta" = (
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btb" = (
+/obj/structure/bed/chair/comfy/charlie{
+	name = "Purple chair";
+	desc = "A simple chair permanently attached to the floor."
+	},
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/emerald2/west,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btd" = (
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
+	name = "bunker hatch";
+	desc = "Some kind of emergency shelter, this one seems to be locked up tight."
+	},
+/turf/open/floor/prison/blue,
+/area/white_antre/indoors/upper_level/central_command)
+"bte" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_x = -8;
+	pixel_y = 29
+	},
+/obj/structure/machinery/light/double,
+/obj/structure/pipes/vents/pump{
+	welded = 1
+	},
+/obj/item/tool/weldingtool/screen{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/blue,
+/area/white_antre/indoors/upper_level/central_command)
+"btf" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 1;
+	layer = 2.51
+	},
+/turf/open/floor/almayer/blue2/southeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btg" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 1;
+	layer = 2.51;
+	pixel_x = -6;
+	pixel_y = -12
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bth" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/bluefull,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bti" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/black2,
+/area/white_antre/indoors/upper_level/director_office)
+"btj" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine,
+/obj/item/tool/pen{
+	pixel_x = 5;
+	pixel_y = 9
+	},
+/turf/open/floor/corsat/officetiles,
+/area/white_antre/indoors/upper_level/director_office)
+"btk" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/obj/structure/surface/table/almayer,
+/obj/item/device/radio{
+	pixel_x = 6;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btl" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btm" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7";
+	pixel_x = -13
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btn" = (
+/obj/item/storage/toolbox/emergency{
+	pixel_x = -9;
+	pixel_y = -3
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"bto" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/east,
+/area/white_antre/indoors/upper_level/central_command)
+"btp" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 1;
+	layer = 2.51;
+	pixel_x = -6;
+	pixel_y = -12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal{
+	name = "bunker hatch";
+	desc = "Some kind of emergency shelter, this one seems to be locked up tight."
+	},
+/turf/open/floor/hybrisa/carpet/carpetblackdeco,
+/area/white_antre/indoors/upper_level/director_office)
+"btr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/emerald2/east,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bts" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btt" = (
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = -9
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btu" = (
+/obj/effect/hybrisa/misc/fake/wire/red{
+	pixel_x = 4
+	},
+/obj/effect/hybrisa/misc/fake/wire/blue{
+	pixel_x = -4
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btv" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 9;
+	pixel_y = 20
+	},
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = -7;
+	pixel_y = 21;
+	density = 0
+	},
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/decal/hybrisa/trash,
+/turf/open/floor/almayer/black2/north,
+/area/white_antre/indoors/upper_level/director_office)
+"btw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/emerald2/east,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btx" = (
+/obj/item/paper/crumpled{
+	pixel_x = 9;
+	pixel_y = -2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"bty" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/flashlight/combat{
+	pixel_y = -5
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btz" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/prop/server_equipment/laptop,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btA" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 8
+	},
+/obj/item/stack/sheet/metal{
+	pixel_x = 5
+	},
+/turf/open/floor/prison/blue/east,
+/area/white_antre/indoors/upper_level/central_command)
 "btB" = (
 /obj/structure/machinery/door/airlock/hybrisa/generic_solid/autoname,
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/white_antre/indoors/main_level/dorms)
+"btC" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	name = "\improper Shutters";
+	dir = 4
+	},
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = 8
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/upper_level/central_command)
+"btD" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btE" = (
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib3"
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btF" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue2/southwest,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btG" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/black2/southeast,
+/area/white_antre/indoors/upper_level/director_office)
+"btH" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6"
+	},
+/obj/item/paper/research_notes/unique/tier_four{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/paper/research_notes/grant{
+	pixel_y = -7;
+	pixel_x = -8
+	},
+/turf/open/floor/corsat/officetiles,
+/area/white_antre/indoors/upper_level/director_office)
+"btI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/emerald2/east,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btJ" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btK" = (
+/obj/item/paper/crumpled{
+	pixel_x = 15;
+	pixel_y = 10
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btL" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3"
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btM" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_2";
+	pixel_y = 12
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/central_command)
+"btN" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue2/southeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/black2/east,
+/area/white_antre/indoors/upper_level/director_office)
+"btP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tileblackcheckered,
+/area/white_antre/indoors/upper_level/director_office)
+"btQ" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/emerald2/east,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btR" = (
+/obj/structure/prop/almayer/computers/sensor_computer3{
+	density = 0;
+	pixel_y = 16
+	},
+/obj/structure/bed/chair/comfy{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/prison/blue/north,
+/area/white_antre/indoors/upper_level/central_command)
+"btS" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue2/northeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btT" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	pixel_y = 12;
+	pixel_x = -1
+	},
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/floor/almayer/blue2/northwest,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 4;
+	pixel_x = -5;
+	layer = 4
+	},
+/turf/open/floor/almayer/emeraldcorner/east,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btV" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_x = -10
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/emerald2/southwest,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btX" = (
+/obj/effect/spawner/gibspawner/xeno,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno,
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btY" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/almayer/emeraldcorner/east,
+/area/white_antre/indoors/upper_level/central_corridor)
+"btZ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/emerald2/northeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bua" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bub" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_y = 12
+	},
+/turf/open/floor/almayer/emerald2/west,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buc" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/blue2/north,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bud" = (
+/obj/item/prop{
+	desc = "Something tore this apart.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/blue2/northeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bue" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/effect/decal/remains/robot{
+	pixel_x = -13;
+	pixel_y = -11
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buf" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/almayer/blue2/north,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bug" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/case/small,
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/emerald2/north,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buh" = (
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = -4;
+	pixel_y = 11;
+	current_rounds = 39
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bui" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = -2
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buj" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/trash/cigbutt{
+	pixel_x = -10;
+	pixel_y = 13
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buk" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8;
+	name = "Purple chair";
+	desc = "A simple chair permanently attached to the floor.";
+	pixel_x = 6
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bul" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bum" = (
+/obj/structure/bed/chair/comfy/charlie{
+	dir = 8;
+	name = "Purple chair";
+	desc = "A simple chair permanently attached to the floor.";
+	pixel_x = 6
+	},
+/obj/item/trash/cigbutt{
+	pixel_x = -9;
+	pixel_y = -6
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bun" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = -16
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buo" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/case,
+/obj/item/stack/sheet/metal/large_stack,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"bup" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
 "buq" = (
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 10
@@ -25529,6 +26598,342 @@
 	},
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/road_east)
+"bur" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bus" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/largecrate/random/mini/med,
+/turf/open/floor/almayer/emerald2/west,
+/area/white_antre/indoors/upper_level/central_corridor)
+"but" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/obj/structure/machinery/meter{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/emeraldcorner/south,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buu" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/emerald2/southeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buv" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/obj/item/clipboard{
+	pixel_y = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buw" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/large_stack,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/almayer/emerald2/west,
+/area/white_antre/indoors/upper_level/central_corridor)
+"bux" = (
+/obj/effect/random_explosion,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"buy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 10;
+	pixel_x = -4;
+	layer = 4
+	},
+/turf/open/floor/almayer/emerald2/east,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buz" = (
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 35
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/corsat,
+/area/white_antre/indoors/upper_level/east_overwatch)
+"buA" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump_hybrisa,
+/turf/open/floor/almayer/emerald2/southwest,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/disposal/delivery,
+/turf/open/floor/almayer/emerald2/west,
+/area/white_antre/indoors/upper_level/central_corridor)
+"buD" = (
+/turf/closed/wall/hybrisa/colony,
+/area/white_antre/oob)
+"buE" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/black2/northeast,
+/area/white_antre/oob)
+"buF" = (
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buG" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/almayer/black2/northwest,
+/area/white_antre/oob)
+"buI" = (
+/obj/structure/machinery/disposal/delivery,
+/turf/open/floor/almayer/blackcorner/north,
+/area/white_antre/oob)
+"buJ" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 4;
+	pixel_x = -5;
+	layer = 4
+	},
+/turf/open/floor/almayer/mono,
+/area/white_antre/oob)
+"buK" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/black2/east,
+/area/white_antre/oob)
+"buL" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buM" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buN" = (
+/obj/effect/alien/weeds/kseries,
+/obj/effect/alien/egg/kseries{
+	status = 1;
+	icon_state = "Egg Opened"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buO" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/obj/structure/bed/stool{
+	buckling_y = 14;
+	pixel_y = 12;
+	pixel_x = -5
+	},
+/turf/open/floor/almayer/black2/west,
+/area/white_antre/oob)
+"buP" = (
+/turf/open/floor/almayer/black2/north,
+/area/white_antre/oob)
+"buQ" = (
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/pipes/vents/pump_hybrisa,
+/obj/effect/random_explosion/long,
+/turf/open/floor/almayer/black2/northeast,
+/area/white_antre/oob)
+"buR" = (
+/obj/structure/machinery/light/double{
+	dir = 1;
+	layer = 2.9;
+	pixel_y = 9
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/almayer/black2/west,
+/area/white_antre/oob)
+"buT" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 16
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buU" = (
+/obj/structure/bed/chair/comfy/black{
+	dir = 4;
+	pixel_x = -4;
+	buckling_x = -4
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buV" = (
+/turf/open/floor/almayer/black2/west,
+/area/white_antre/oob)
+"buW" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = -6
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 2;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buY" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"buZ" = (
+/obj/effect/random_explosion/medium,
+/turf/open/floor/almayer/black2/west,
+/area/white_antre/oob)
+"bva" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_3";
+	pixel_x = 9;
+	pixel_y = 42
+	},
+/turf/open/floor/almayer/black2,
+/area/white_antre/oob)
+"bvb" = (
+/obj/item/prop{
+	desc = "Something tore this apart.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "defense_base_off";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/item/prop{
+	desc = "The turret is hanging on by a thread. Something tore this apart.";
+	icon = 'icons\obj\structures\machinery\defenses\wy_defenses.dmi';
+	icon_state = "Normal wy_sentry_destroyed";
+	name = "Destroyed WY 5-GSE3 Static Turret";
+	anchored = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/remains/robot{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/almayer/black2/southeast,
+/area/white_antre/oob)
+"bvc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"bvd" = (
+/obj/structure/largecrate/random/mini{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/turf/open/floor/almayer/black2/west,
+/area/white_antre/oob)
+"bve" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_21";
+	pixel_y = 12;
+	pixel_x = -5;
+	layer = 4
+	},
+/turf/open/floor/almayer,
+/area/white_antre/oob)
+"bvf" = (
+/turf/open/floor/almayer/black2/east,
+/area/white_antre/oob)
+"bvg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/oob)
+"bvh" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat/orange{
+	pixel_x = -3;
+	pixel_y = -1
+	},
+/obj/item/clothing/head/hardhat/white{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/hardhat/dblue{
+	pixel_x = 5;
+	pixel_y = -8
+	},
+/turf/open/floor/almayer/black2/west,
+/area/white_antre/oob)
 "bwc" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/platform/metal/almayer_smooth/east,
@@ -26179,9 +27584,6 @@
 	},
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
-"dsC" = (
-/turf/open/floor/almayer/blue2/east,
-/area/white_antre/indoors/upper_level/ancillery_storage)
 "dtC" = (
 /turf/open/floor/shiva/multi_tiles,
 /area/white_antre/indoors/underground_level/east_maint)
@@ -26730,6 +28132,12 @@
 /turf/open/floor/strata/orange_cover,
 /area/white_antre/indoors/main_level/weapons)
 "fjh" = (
+/obj/structure/machinery/photocopier/wyphotocopier,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 7;
+	layer = 3.01
+	},
 /turf/open/floor/almayer/black2/southeast,
 /area/white_antre/indoors/upper_level/director_office)
 "fjW" = (
@@ -27764,9 +29172,10 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced{
-	color = "#1B1212"
+	color = "#1B1212";
+	layer = 4.13
 	},
-/obj/structure/machinery/autodispenser,
+/obj/structure/machinery/colony_floodlight/industrial,
 /turf/open/floor/almayer/silvercorner/north,
 /area/white_antre/indoors/main_level/research)
 "iJq" = (
@@ -28781,6 +30190,21 @@
 /turf/open/floor/strata/red2,
 /area/white_antre/indoors/main_level/weapons)
 "mEu" = (
+/obj/structure/sign/poster/wylogo{
+	pixel_y = 34;
+	layer = 2.9;
+	pixel_x = -16
+	},
+/obj/structure/sign/poster/art{
+	pixel_y = 34;
+	layer = 3.1;
+	pixel_x = 4
+	},
+/obj/structure/prop/hybrisa/misc/cabinet{
+	dir = 8;
+	pixel_x = 9;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/black2/north,
 /area/white_antre/indoors/upper_level/director_office)
 "mFB" = (
@@ -30908,6 +32332,14 @@
 /turf/open/floor/almayer/orange/west,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "uFz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/double,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_17";
+	pixel_y = 9;
+	pixel_x = -6;
+	layer = 4
+	},
 /turf/open/floor/almayer/black2/southwest,
 /area/white_antre/indoors/upper_level/director_office)
 "uGQ" = (
@@ -31402,6 +32834,10 @@
 /area/white_antre/outdoors/facility_exterior)
 "wmh" = (
 /obj/structure/surface/table/almayer,
+/obj/item/prop/almayer/flight_recorder/colony{
+	pixel_x = 7;
+	pixel_y = 7
+	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/central_command)
 "wmp" = (
@@ -83100,7 +84536,7 @@ ewE
 ewE
 ewE
 kIT
-bpD
+kIT
 kIT
 kIT
 kIT
@@ -99961,7 +101397,7 @@ aLB
 aLB
 aMD
 abm
-abm
+brS
 abF
 abm
 abm
@@ -100142,7 +101578,7 @@ aLB
 aLB
 abv
 bpq
-aLB
+aCS
 aLx
 aKI
 aKV
@@ -100471,7 +101907,7 @@ aKK
 aKV
 aKK
 abE
-aLV
+brR
 bpr
 aZp
 aKV
@@ -135073,7 +136509,7 @@ aQw
 biH
 agd
 afY
-biL
+btx
 biL
 afJ
 afD
@@ -135240,10 +136676,10 @@ bhB
 aQw
 biH
 age
-biL
+btK
 biQ
 biQ
-biL
+btl
 biI
 biH
 aQz
@@ -135408,11 +136844,11 @@ bhB
 aQw
 biH
 agf
-biL
+btL
+bty
 wmh
-wmh
-biL
-biI
+btm
+btd
 biH
 aQz
 bhB
@@ -135576,11 +137012,11 @@ bhB
 aQw
 biH
 biU
-biL
-wmh
+btM
+btz
 afS
 biL
-biI
+bte
 biH
 aQz
 bhB
@@ -135743,15 +137179,15 @@ bhB
 bhB
 aQw
 biH
-agf
+btR
 biL
 biL
-biL
-biL
+btt
+btn
 afE
 biH
 aQz
-bhB
+bsM
 bhB
 bhB
 aQw
@@ -135908,18 +137344,18 @@ ago
 bjd
 aQz
 bhB
-bhB
+bsM
 aQw
 biH
 age
 biL
-biQ
-biQ
+btu
+btu
 afK
 afF
 biH
 aQz
-bhB
+bsQ
 bhB
 bhB
 aQw
@@ -136076,27 +137512,27 @@ ago
 bjd
 aQz
 bhB
-bhB
-aQw
+bsN
+buc
 biH
 biV
 biM
+btA
 biM
-biM
-biM
+bto
 afG
 biH
-aQz
+bsS
 bhB
-bhB
+bsM
 bhB
 aQw
 bhO
 bio
-bic
-bic
-bic
-bic
+bsF
+bib
+bib
+bsC
 bhV
 bhO
 aQz
@@ -136244,27 +137680,27 @@ agn
 bjd
 aQz
 bhB
-bhB
-hVG
+bui
+bud
 biH
 biJ
 biN
-biN
+btC
 biN
 biN
 biJ
 biH
-reI
-bhB
-bhB
+bsT
+bsR
+bsN
 bhB
 hVG
 bhO
 bhW
-dsC
-dsC
-dsC
-dsC
+bio
+bic
+bic
+bhV
 bhW
 bhO
 reI
@@ -136413,27 +137849,27 @@ bjd
 aQz
 bhB
 bhB
-bhB
-bhJ
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhJ
-bhB
+bue
+btX
+btS
+btN
+btD
+bts
+hVG
+btf
+bsZ
+bsU
 bhB
 biA
 bhB
 bhB
 bhJ
+hVG
+reI
 bhB
 bhB
-bhB
-bhB
-bhB
-bhB
+hVG
+reI
 bhJ
 bhB
 bhB
@@ -136585,10 +138021,10 @@ bhB
 bhJ
 bhB
 bhB
+btE
 bhB
-bhB
-bhB
-bhB
+bsX
+btg
 bhJ
 bhB
 bhB
@@ -136750,26 +138186,26 @@ aQz
 bhB
 bhB
 bhB
-bhJ
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhJ
+bta
+btT
+bik
+btF
+bsX
+btp
+bth
+bta
 bhB
 bhB
 biA
 bhB
 bhB
 bhJ
+aRf
+aQA
 bhB
 bhB
-bhB
-bhB
-bhB
-bhB
+aRf
+aQA
 bhJ
 bhB
 bhB
@@ -136933,10 +138369,10 @@ bhB
 aRf
 bhP
 bhX
-aQL
-aQL
-aQL
-aQL
+aRc
+bid
+bid
+aQG
 bhX
 bhP
 aQA
@@ -137101,10 +138537,10 @@ bhB
 aQw
 bhP
 aRc
-bid
-bid
-bid
-bid
+bsG
+aQH
+aQH
+bsD
 aQG
 bhP
 aQz
@@ -137250,7 +138686,7 @@ agu
 agu
 ago
 bjd
-aQz
+bsB
 bhB
 bhB
 aQw
@@ -137260,9 +138696,9 @@ aga
 afV
 mEu
 afM
-aND
+bti
 afA
-aQz
+bsB
 bhB
 bhB
 bhB
@@ -137275,7 +138711,7 @@ afi
 aQH
 aQH
 bhP
-aQz
+bsB
 bhB
 bhB
 aQw
@@ -137426,7 +138862,7 @@ afA
 afV
 agb
 afV
-mEu
+btv
 afM
 aND
 afA
@@ -137592,8 +139028,8 @@ bhB
 aQw
 afA
 biW
-biP
-fjh
+btO
+btG
 qYq
 biP
 fjh
@@ -137757,10 +139193,10 @@ bjd
 aQz
 bhB
 bhB
-aQw
+buf
 afA
 agi
-agc
+btP
 afO
 aiY
 afN
@@ -137929,14 +139365,14 @@ bhJ
 afA
 agj
 agc
+btH
 afO
 afO
-afO
-afI
+btj
 afA
 bhJ
 bhJ
-bhJ
+bsO
 bhJ
 bhJ
 bhP
@@ -138093,19 +139529,19 @@ bjd
 aQB
 bhB
 bhB
-aQx
+bug
 afA
 afA
 bqb
 afP
 afP
-afP
+btq
 afA
 afA
-aQB
-bhB
-bhB
-bhB
+bsV
+aFL
+aFL
+aFL
 aQx
 bhP
 bhP
@@ -138257,37 +139693,37 @@ agN
 agI
 bjd
 bjd
-bhI
-aQB
-bhB
-bhB
-aQx
-bhI
+but
+aQv
+bul
+bts
+aQy
+btY
 afA
 afA
 afW
 afT
 afA
 afA
-bhI
+btb
 aQB
-bhB
-bhB
-bhB
+aFL
+aFL
+aFL
 aQx
-bhI
+bsI
 bhP
 bhP
 afr
 afk
 bhP
 bhP
-bhI
-aQB
+acx
+aQv
 bhB
 bhB
-aQx
-bhI
+aQy
+acP
 bhg
 aho
 ahm
@@ -138424,38 +139860,38 @@ bjd
 bjk
 bjk
 bjd
-aQC
-acP
+buy
+buu
+bhB
+bhB
+buj
+bhB
+btZ
+btU
+afA
+afA
+afA
+afA
+btk
+btb
 aQB
-bhB
-bhB
-aQx
-bhI
-bhI
-afA
-afA
-afA
-afA
-bhI
-bhI
-aQB
-bhB
-bhB
-bhB
-aQx
-bhI
-bhI
+bsL
+aFL
+aFL
+bsK
+bsJ
+bsH
 bhP
 bhP
 bhP
 bhP
-bhI
-bhI
-aQB
-bhB
-bhB
-aQx
 acx
+aQv
+bhB
+bhB
+bhB
+bhB
+aQy
 bhg
 bhg
 bhk
@@ -138591,39 +140027,39 @@ agB
 bjm
 bhB
 bhB
+buA
 bhB
-bhB
+buv
+bur
+bum
+buk
+buh
+bua
 aQy
+btQ
+btI
+btw
+btr
+aQC
+aQC
+bsW
+bsL
+bsL
+bsL
+aQy
+aQC
+aQC
+aQC
+aQC
+aQC
+aQC
 aQv
 bhB
 bhB
-aQy
-aQC
-aQC
-aQC
-aQC
-aQC
-aQC
-aQC
-aQC
-aQv
 bhB
 bhB
 bhB
-aQy
-aQC
-aQC
-aQC
-aQC
-aQC
-aQC
-aQC
-aQC
-aQv
 bhB
-bhB
-aQy
-aQv
 bhB
 bhB
 wcO
@@ -138757,39 +140193,39 @@ ago
 ago
 ago
 bjm
+bsX
+bhB
+bhB
+btJ
+bhB
+bhB
+biA
+biA
+bhB
+bhB
+bhB
+bhB
+bsE
+bhB
+bts
+bhB
+bsX
+bhB
+aFL
+bsP
+aFL
 bhB
 bhB
 bhB
 bhB
 bhB
+bsE
 bhB
 bhB
 bhB
 bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
+biA
+biA
 bhB
 bhB
 bhB
@@ -138925,8 +140361,26 @@ bjn
 bjn
 bjn
 bjn
-aQs
-aQY
+buC
+buB
+bhB
+bhB
+bhB
+bhB
+bun
+bhB
+bhB
+bhB
+btV
+bhB
+bhB
+bhB
+bhB
+bhB
+bsX
+bsX
+bhB
+aFL
 bhB
 bhB
 bhB
@@ -138944,25 +140398,7 @@ bhB
 bhB
 bhB
 bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-bhB
-aQt
+bsd
 aQs
 bhg
 ahI
@@ -139097,20 +140533,20 @@ aet
 aet
 aet
 aet
+buw
+bus
+btc
 aQs
 aQs
-aQs
-aQs
-aQs
-aQs
-aQY
+bub
+btW
 bhB
-bhB
+btJ
 bhB
 aQt
 aQs
-aQs
-aQY
+btc
+bsY
 bhB
 bhB
 bhB
@@ -139246,13 +140682,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+bve
+bva
+buW
+buF
+buP
+buJ
+buD
 spC
 spC
 iKa
@@ -139297,8 +140733,8 @@ aet
 aet
 aet
 aet
-bhC
-bhC
+bsh
+bse
 aet
 aet
 bhs
@@ -139414,13 +140850,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+bvf
+bvb
+buX
+buF
+buQ
+buK
+buD
 spC
 iKa
 iKa
@@ -139460,15 +140896,15 @@ aQN
 aFE
 aet
 bjo
+bsz
 bhC
+bsu
+bsp
+bsl
+bsc
+bsc
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhy
+brX
 bhs
 bhs
 bhs
@@ -139582,13 +141018,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+bvg
+bvc
+buF
+buT
+buF
+buL
+buE
 iKa
 iKa
 aQi
@@ -139632,8 +141068,8 @@ bhC
 bqN
 bqN
 bhC
-bhC
-bhC
+bsc
+bsc
 bqN
 bqN
 bhy
@@ -139750,13 +141186,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+buF
+buF
+aPW
+aPW
+buR
+buM
+buF
 iKa
 aQi
 ozb
@@ -139797,13 +141233,13 @@ acz
 bhQ
 bjp
 bqP
-bqN
-bqN
-bhC
-bhC
-bhC
-bqN
-bqN
+bry
+bry
+brt
+brn
+brk
+bry
+bry
 bhy
 aaU
 aaU
@@ -139918,13 +141354,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+buF
+buF
+buU
+buU
+buM
+buN
+buG
 iKa
 aQi
 ozb
@@ -139975,7 +141411,7 @@ bhD
 bhz
 bht
 bht
-bht
+brT
 bhi
 ozb
 aQi
@@ -140086,13 +141522,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+buF
+buF
+buY
+buF
+buM
+buM
+buH
 iKa
 iKa
 aQi
@@ -140133,17 +141569,17 @@ aFH
 bhR
 aFB
 bht
+bsw
+bqZ
+bht
+bsm
+bsi
 bht
 bht
 bht
 bht
-bht
-bht
-bht
-bht
-bht
-bht
-bht
+brV
+brU
 bhi
 aQi
 iKa
@@ -140254,13 +141690,13 @@ spC
 spC
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+bvh
+bvd
+buZ
+buV
+buS
+buO
+buI
 spC
 iKa
 bhi
@@ -140303,13 +141739,13 @@ bht
 bht
 bht
 bht
+bsq
+bht
+brE
 bht
 bht
 bht
-bht
-bht
-bht
-bht
+bqZ
 bht
 bht
 bhi
@@ -140475,8 +141911,8 @@ bhE
 bhE
 bhE
 bhE
-bhE
-bhw
+bsa
+brY
 bht
 bht
 bhu
@@ -140640,12 +142076,12 @@ bjr
 bqN
 bqN
 bhC
-bqO
 bhC
 bhC
 bhC
-bhA
-bhw
+bsb
+brZ
+brW
 bhu
 bhu
 iKa
@@ -140804,14 +142240,14 @@ aFQ
 aFJ
 aet
 bjo
+bsA
+brc
+brc
+brc
+bsn
 bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
-bhC
+bsf
+bsc
 bhu
 bhu
 bhu
@@ -140945,9 +142381,9 @@ aet
 brB
 brw
 aet
-bhi
-bhi
-bhi
+aet
+aet
+aet
 aet
 bqT
 aet
@@ -140977,8 +142413,8 @@ bhu
 bhu
 bhu
 bhu
-bhC
-bhC
+bsj
+bsg
 bhu
 bhu
 bhu
@@ -141113,9 +142549,9 @@ aet
 aet
 aet
 aet
-aBB
-bri
-aBB
+bst
+bsv
+buo
 aet
 aet
 aBB
@@ -141141,9 +142577,9 @@ aBB
 aBB
 bhu
 bhu
-aBF
-aBF
-aBF
+bsx
+bsv
+bss
 bhu
 bhu
 bhu
@@ -141279,16 +142715,16 @@ euM
 aBF
 aBF
 aBF
-aBF
-aBF
-aBB
-aDj
-aBB
+bsk
+buz
+bux
+bst
+bup
 aet
 aBB
 aBB
 aja
-aDa
+aCo
 aBQ
 aBQ
 aBQ
@@ -141309,11 +142745,11 @@ aiw
 aBB
 bhi
 bhu
-aBF
-aBF
-aBF
-aBF
-aBF
+bsy
+bst
+bst
+bso
+bsk
 aBF
 aBF
 aBF
@@ -141478,7 +142914,7 @@ aCk
 aBB
 aBB
 aBB
-aBB
+aCn
 aBB
 aBB
 aBB

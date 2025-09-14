@@ -53,6 +53,7 @@ const MapPanel = () => {
   return (
     <Box className="NavigationMenu">
       <ByondUi
+        key={data.zlevel}
         params={{
           id: data.tactical_map_ref[data.zlevel],
           type: 'map',

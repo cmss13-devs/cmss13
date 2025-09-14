@@ -9,8 +9,12 @@
 /datum/reagent/generated
 	reagent_state = LIQUID //why isn't this default, seriously
 	chemclass = CHEM_CLASS_ULTRA
-	objective_value = OBJECTIVE_HIGH_VALUE
+	objective_value = OBJECTIVE_NO_VALUE
 	flags = REAGENT_SCANNABLE
+	/// One reagent for the recipe picked at the creation of chem without creating recipe datum but is guranteed to be a part of recipe when recipe datum is created. Used as a hint for research contracts.
+	var/reagent_recipe_hint = null
+	/// one consistent property hint picked from itself. Set when creating itself
+	var/property_hint = null
 
 /datum/reagent/generated/New()
 	//Generate stats
@@ -32,110 +36,8 @@
 		GLOB.chemical_reactions_list[id] = src
 	make_alike(GLOB.chemical_reactions_list[id])
 
-/////////Tier 1
-/datum/chemical_reaction/generated/alpha
-	id = "alpha"
-	result = "alpha"
-	gen_tier = 1
-
-/datum/reagent/generated/alpha
-	id = "alpha"
-	gen_tier = 1
-
-/datum/chemical_reaction/generated/beta
-	id = "beta"
-	result = "beta"
-	gen_tier = 1
-
-/datum/reagent/generated/beta
-	id = "beta"
-	gen_tier = 1
-
-/datum/chemical_reaction/generated/gamma
-	id = "gamma"
-	result = "gamma"
-	gen_tier = 1
-
-/datum/reagent/generated/gamma
-	id = "gamma"
-	gen_tier = 1
-
-/datum/chemical_reaction/generated/delta
-	id = "delta"
-	result = "delta"
-	gen_tier = 1
-
-/datum/reagent/generated/delta
-	id = "delta"
-	gen_tier = 1
-
-/datum/chemical_reaction/generated/epsilon
-	id = "epsilon"
-	result = "epsilon"
-	gen_tier = 1
-
-/datum/reagent/generated/epsilon
-	id = "epsilon"
-	gen_tier = 1
-
-/////////Tier 2
-/datum/chemical_reaction/generated/zeta
-	id = "zeta"
-	result = "zeta"
-	gen_tier = 2
-
-/datum/reagent/generated/zeta
-	id = "zeta"
-	gen_tier = 2
-
-/datum/chemical_reaction/generated/eta
-	id = "eta"
-	result = "eta"
-	gen_tier = 2
-
-/datum/reagent/generated/eta
-	id = "eta"
-	gen_tier = 2
-
-/datum/chemical_reaction/generated/theta
-	id = "theta"
-	result = "theta"
-	gen_tier = 2
-
-/datum/reagent/generated/theta
-	id = "theta"
-	gen_tier = 2
-
-/////////Tier 3
-/datum/chemical_reaction/generated/iota
-	id = "iota"
-	result = "iota"
-	gen_tier = 3
-
-/datum/reagent/generated/iota
-	id = "iota"
-	gen_tier = 3
-
-/datum/chemical_reaction/generated/kappa
-	id = "kappa"
-	result = "kappa"
-	gen_tier = 3
-
-/datum/reagent/generated/kappa
-	id = "kappa"
-	gen_tier = 3
-
-/////////Tier 4
-/datum/chemical_reaction/generated/lambda
-	id = "lambda"
-	result = "lambda"
-	gen_tier = 4
-
-/datum/reagent/generated/lambda
-	id = "lambda"
-	gen_tier = 4
-
 /datum/chemical_reaction/generated/on_reaction(datum/reagents/holder, created_volume)
+	. = ..()
 	var/datum/reagent/R = holder.has_reagent(id)
 	if(!R || !R.properties)
 		return
@@ -147,3 +49,8 @@
 				if(P.volatile)
 					holder.trigger_volatiles = TRUE
 					break
+
+/datum/reagent/generated/make_alike(datum/reagent/generated/chemical_to_copy)
+	. = ..()
+	reagent_recipe_hint = chemical_to_copy.reagent_recipe_hint
+	property_hint = chemical_to_copy.property_hint

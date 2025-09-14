@@ -53,5 +53,8 @@
 /// GRS-TL, Team Leader
 #define PAY_SHORT_GRS_TL "GRS-TL"
 
+/// GRS-DCDR, Deputy Commander
+#define PAY_SHORT_GRS_DCDR "GRS-DCDR"
+
 /// GRS-CDR, Commander
 #define PAY_SHORT_GRS_CDR "GRS-CDR"

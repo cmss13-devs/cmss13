@@ -209,14 +209,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
-"ls" = (
-/obj/structure/surface/rack,
-/obj/item/storage/firstaid/adv{
-	pixel_x = 2;
-	pixel_y = -5
-	},
-/turf/open/floor/almayer/plate,
-/area/shuttle/grs_barge)
 "mH" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -251,17 +243,6 @@
 	},
 /obj/effect/landmark/ert_spawns/distress,
 /turf/open/floor/plating/almayer,
-/area/shuttle/grs_barge)
-"pI" = (
-/obj/structure/bed/chair/vehicle/white{
-	pixel_x = 8;
-	dir = 1
-	},
-/obj/structure/bed/chair/vehicle/white{
-	pixel_x = -8;
-	dir = 1
-	},
-/turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "qk" = (
 /obj/structure/machinery/computer/communications{
@@ -524,7 +505,10 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "DC" = (
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/closet/secure_closet/personal{
+	req_one_access_txt = "125;126;127";
+	req_access = null
+	},
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "DO" = (
@@ -674,7 +658,9 @@
 /turf/closed/wall/almayer/outer,
 /area/shuttle/grs_barge)
 "Qb" = (
-/obj/docking_port/mobile/emergency_response/big/cia_barge,
+/obj/docking_port/mobile/emergency_response/big/cia_barge{
+	area_type = /area/shuttle/grs_barge
+	},
 /turf/closed/wall/almayer/outer,
 /area/shuttle/grs_barge)
 "Qx" = (
@@ -794,10 +780,6 @@
 "Tp" = (
 /turf/template_noop,
 /area/template_noop)
-"Tq" = (
-/obj/structure/bed/chair/dropship/passenger,
-/turf/open/floor/almayer/plate,
-/area/shuttle/grs_barge)
 "Tv" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -975,7 +957,7 @@ KS
 KS
 KS
 KS
-Ml
+hQ
 AE
 hZ
 TO
@@ -1006,7 +988,7 @@ KS
 wc
 wc
 KS
-Ml
+hQ
 ad
 hZ
 TO
@@ -1037,7 +1019,7 @@ KS
 ad
 ad
 KS
-Ml
+hQ
 Uq
 ag
 ER
@@ -1064,12 +1046,12 @@ tG
 AZ
 qk
 hQ
-Ml
-Ml
+hQ
+hQ
 Gg
-Ml
-Ml
-Tq
+hQ
+hQ
+ad
 wz
 og
 ad
@@ -1100,14 +1082,14 @@ aa
 RG
 aa
 aa
-KS
+ad
 wz
 og
 ad
 aa
 aa
 RG
-pI
+aa
 Ml
 vl
 ig
@@ -1165,7 +1147,7 @@ ab
 ab
 wz
 og
-ad
+ab
 ab
 ab
 hZ
@@ -1224,14 +1206,14 @@ ac
 mH
 ac
 ac
-ls
+ad
 wz
 og
 ad
 ac
 ac
 mH
-pI
+ac
 Ml
 Lk
 zT
@@ -1255,7 +1237,7 @@ Ml
 Kg
 Ml
 Ml
-Tq
+ad
 wz
 og
 ad

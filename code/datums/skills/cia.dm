@@ -178,3 +178,6 @@ CIA
 		SKILL_PILOT = SKILL_PILOT_EXPERT,
 		SKILL_EXECUTION = SKILL_EXECUTION_TRAINED,
 	)
+
+/datum/skills/cia/global_response/commander/deputy
+	name = JOB_CIA_GRS_DCDR

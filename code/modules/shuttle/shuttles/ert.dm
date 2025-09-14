@@ -205,6 +205,7 @@
 /obj/docking_port/mobile/emergency_response/big/cia_barge
 	name = "GRS Barge"
 	id = MOBILE_SHUTTLE_ID_ERT_BIG_CIA
+	area_type = /area/shuttle/grs_barge
 
 // Generic ERT Dock
 /obj/docking_port/stationary/emergency_response

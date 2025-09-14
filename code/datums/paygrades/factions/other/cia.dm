@@ -113,6 +113,13 @@
 	pay_multiplier = 3.5
 	officer_grade = GRADE_OFFICER
 
+/datum/paygrade/cia/grs/dep_commander
+	paygrade = PAY_SHORT_GRS_DCDR
+	name = "Deputy Commander"
+	prefix = "DCDR."
+	pay_multiplier = 3.8
+	officer_grade = GRADE_FLAG
+
 /datum/paygrade/cia/grs/commander
 	paygrade = PAY_SHORT_GRS_CDR
 	name = "Commander"

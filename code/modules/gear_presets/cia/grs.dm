@@ -644,6 +644,22 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/packet/high_explosive/super, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/device/motiondetector/m717/cia, WEAR_IN_BACK)
 
+/datum/equipment_preset/cia_global_response/commander/deputy
+	name = JOB_CIA_GRS_DCDR
+	paygrades = list(PAY_SHORT_GRS_DCDR = JOB_PLAYTIME_TIER_0)
+	assignment = JOB_CIA_GRS_DCDR
+	job_title = JOB_CIA_GRS_DCDR
+	skills = /datum/skills/cia/global_response/commander/deputy
+	role_comm_title = "DCDR"
+
+/datum/equipment_preset/cia_global_response/commander/deputy/deathsquad
+	strength_type = STRENGTH_DEATH
+
+/datum/equipment_preset/cia_global_response/commander/deputy/weak
+	strength_type = STRENGTH_WEAK
+
+/datum/equipment_preset/cia_global_response/commander/deputy/weak/survivor
+	strength_type = STRENGTH_SURVIVOR
 
 #undef STRENGTH_NORM
 #undef STRENGTH_WEAK

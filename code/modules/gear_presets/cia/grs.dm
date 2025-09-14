@@ -46,6 +46,7 @@
 		if(STRENGTH_SURVIVOR)
 			name = "Survivor - [name]"
 			faction_group = FACITON_LIST_SURVIVOR_CIA
+			headset_type = /obj/item/device/radio/headset/almayer/cia_grs/survivor
 		if(STRENGTH_DEATH)
 			name = "[name] (!DEATHSQUAD!)"
 			faction_group = FACTION_LIST_CIA

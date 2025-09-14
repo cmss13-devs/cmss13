@@ -180,7 +180,7 @@
 		map_refs += map_holder?.map_ref
 	.["tactical_map_ref"] = map_refs
 	.["camera_map_ref"] = camera_map_name
-	.["zlevel"] = 0
+	.["zlevel"] = 2
 	.["zlevelMax"] = length(map_refs)
 
 /obj/structure/machinery/computer/dropship_weapons/ui_data(mob/user)

@@ -121,7 +121,6 @@ export const TacticalMap = (props) => {
 
   const handleTacmapOnClick = (i: number, pageTitle: string) => {
     setPageIndex(i);
-    data.zlevel = 0;
     act('menuSelect', {
       selection: pageTitle,
     });
@@ -134,8 +133,7 @@ export const TacticalMap = (props) => {
 
   const tryIncrementZ = () => {
     if (
-      (data.zlevel + 1 < data.maxZlevel &&
-        PAGES[pageIndex].title !== 'Map View') ||
+      data.zlevel + 1 < data.maxZlevel ||
       data.zlevel + 1 < data.maxZlevelOld
     ) {
       const dat = saveSVGData();
@@ -263,6 +261,7 @@ const ViewMapPanel = (props) => {
   return (
     <Section fill fitted height="100%">
       <ByondUi
+        key={data.zlevel}
         height="100%"
         width="100%"
         params={{

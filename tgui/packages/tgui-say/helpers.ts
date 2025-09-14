@@ -1,5 +1,12 @@
 import type { Channel } from './ChannelIterator';
-import { LANGUAGE_PREFIXES, RADIO_PREFIXES, WindowSize } from './constants';
+import {
+  LIVING_TYPES,
+  type LivingType,
+  RADIO_PREFIXES,
+  RADIO_PREFIXES_MAP,
+  SMALL_WINDOW_SIZE,
+  WIDTH_WINDOW_SIZE,
+} from './constants';
 
 /**
  * Once byond signals this via keystroke, it
@@ -25,10 +32,10 @@ export function windowClose(scale: boolean): void {
 /**
  * Modifies the window size.
  */
-export function windowSet(size = WindowSize.Small, scale: boolean): void {
+export function windowSet(size = SMALL_WINDOW_SIZE, scale: boolean): void {
   const pixelRatio = scale ? window.devicePixelRatio : 1;
 
-  const sizeStr = `${WindowSize.Width * pixelRatio}x${size * pixelRatio}`;
+  const sizeStr = `${WIDTH_WINDOW_SIZE * pixelRatio}x${size * pixelRatio}`;
 
   Byond.winset(null, {
     'tgui_say.size': sizeStr,
@@ -40,7 +47,7 @@ export function windowSet(size = WindowSize.Small, scale: boolean): void {
 function setWindowVisibility(visible: boolean, scale: boolean): void {
   const pixelRatio = scale ? window.devicePixelRatio : 1;
 
-  const sizeStr = `${WindowSize.Width * pixelRatio}x${WindowSize.Small * pixelRatio}`;
+  const sizeStr = `${WIDTH_WINDOW_SIZE * pixelRatio}x${SMALL_WINDOW_SIZE * pixelRatio}`;
 
   Byond.winset(null, {
     'tgui_say.is-visible': visible,
@@ -49,27 +56,34 @@ function setWindowVisibility(visible: boolean, scale: boolean): void {
   });
 }
 
-const CHANNEL_REGEX = /^[!:.#№][a-zA-Zfа-яёА-ЯЁ0-9_]\w\s/; // BANDAMARINES EDIT
+export const isHuman = (type: LivingType) => type === LIVING_TYPES.HUMAN;
+export const isXeno = (type: LivingType) => type === LIVING_TYPES.XENO;
+export const isSynth = (type: LivingType) => type === LIVING_TYPES.SYNTH;
+export const isYautja = (type: LivingType) => type === LIVING_TYPES.YAUTJA;
+
+const CHANNEL_REGEX = /^[:.#№][\wА-яёЁ]\s/;
+
+function normalizeRadioPrefixes(input: string): string {
+  return RADIO_PREFIXES_MAP[input] ?? input;
+}
 
 /** Tests for a channel prefix, returning it or none */
-export function getPrefix(
-  value: string,
-): keyof typeof RADIO_PREFIXES | keyof typeof LANGUAGE_PREFIXES | undefined {
+export function getPrefix(value: string): keyof typeof RADIO_PREFIXES | null {
   if (!value || value.length < 3 || !CHANNEL_REGEX.test(value)) {
-    return;
-  }
-  let adjusted;
-  let languagePrefixCheck = value.charAt(0);
-  if ((languagePrefixCheck = '!')) {
-    adjusted = value
-      .slice(0, 3)
-      ?.toLowerCase() as keyof typeof LANGUAGE_PREFIXES;
-  } else {
-    adjusted = value.slice(0, 3)?.toLowerCase() as keyof typeof RADIO_PREFIXES;
+    return null;
   }
 
-  if (!RADIO_PREFIXES[adjusted] && !LANGUAGE_PREFIXES[adjusted]) {
-    return;
+  const adjusted = normalizeRadioPrefixes(
+    value
+      .slice(0, 3)
+      ?.toLowerCase()
+      ?.replace('.', ':')
+      ?.replace('#', ':')
+      ?.replace('№', ':'),
+  ) as keyof typeof RADIO_PREFIXES;
+
+  if (!RADIO_PREFIXES[adjusted]) {
+    return null;
   }
 
   return adjusted;

@@ -88,6 +88,7 @@
 #define JOB_CARGO_TECH_RU "Грузовой Техник"
 
 #define JOB_MARINE_RAIDER_RU "Морпех Рейдер"
+#define JOB_MARINE_RAIDER_SG_RU "Морпех Рейдер Смартганнер"
 #define JOB_MARINE_RAIDER_SL_RU "Морпех Рейдер Командир"
 #define JOB_MARINE_RAIDER_CMD_RU "Морпех Рейдер Командир Взвода"
 

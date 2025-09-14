@@ -158,7 +158,7 @@
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun/proc/do_area_stun(atom/impact, obj/projectile/stun_projectile)
 	playsound(stun_projectile, 'sound/weapons/wave.ogg', 75, 1, 25)
 
-	for(var/mob/living/carbon/any_target in orange(stun_range, impact))
+	for(var/mob/living/carbon/any_target in range(stun_range, impact))
 		log_attack("[key_name(any_target)] was stunned by a plasma immobilizer from [key_name(stun_projectile.firer)] at [get_area(stun_projectile)]")
 		var/stun_time = src.stun_time
 

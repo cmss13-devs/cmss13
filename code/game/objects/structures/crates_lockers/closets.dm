@@ -90,11 +90,12 @@
 				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
 
-/obj/structure/closet/proc/open(mob/user)
+/// Attempts to open this closet by user, skipping checks that prevent opening if forced
+/obj/structure/closet/proc/open(mob/user, force)
 	if(opened)
 		return FALSE
 
-	if(!can_open())
+	if(!force && !can_open())
 		return FALSE
 
 	dump_contents()
@@ -386,7 +387,7 @@
 /obj/structure/closet/proc/break_open(mob/user)
 	if(!opened)
 		welded = FALSE
-		open(user)
+		open(user, force=TRUE)
 
 /obj/structure/closet/yautja
 	name = "alien closet"

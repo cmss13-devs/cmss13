@@ -56,10 +56,10 @@
 
 	return ..()
 
-/obj/structure/closet/crate/open(mob/user)
+/obj/structure/closet/crate/open(mob/user, force)
 	if(opened)
 		return FALSE
-	if(!can_open())
+	if(!force && !can_open())
 		return FALSE
 
 	if(rigged && locate(/obj/item/device/radio/electropack) in src)
@@ -70,7 +70,8 @@
 				var/datum/effect_system/spark_spread/sparker = new /datum/effect_system/spark_spread
 				sparker.set_up(5, 1, src)
 				sparker.start()
-				return 2
+				if(!force)
+					return 2
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
 	for(var/obj/thing in src)
@@ -82,7 +83,7 @@
 		climbable = FALSE //Open crate is not a surface that works when climbing around
 	return TRUE
 
-/obj/structure/closet/crate/close()
+/obj/structure/closet/crate/close(mob/user)
 	if(!opened)
 		return 0
 	if(!can_close())

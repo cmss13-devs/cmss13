@@ -112,8 +112,11 @@
 /datum/ammo/rifle/sharp/on_hit_obj(obj/O, obj/projectile/P)
 	drop_dart(P.loc, P)
 
-/datum/ammo/rifle/sharp/on_hit_turf(turf/T, obj/projectile/P)
-	drop_dart(T, P)
+/datum/ammo/rifle/sharp/on_hit_turf(turf/turf, obj/projectile/P)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
+	drop_dart(turf, P)
 
 /datum/ammo/rifle/sharp/do_at_max_range(obj/projectile/P)
 	drop_dart(P.loc, P)
@@ -225,8 +228,11 @@
 /datum/ammo/rifle/sharp/flechette/on_hit_obj(obj/O, obj/projectile/P)
 	create_flechette(O.loc, P)
 
-/datum/ammo/rifle/sharp/flechette/on_hit_turf(turf/T, obj/projectile/P)
-	create_flechette(T, P)
+/datum/ammo/rifle/sharp/flechette/on_hit_turf(turf/turf, obj/projectile/P)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
+	create_flechette(turf, P)
 
 /datum/ammo/rifle/sharp/flechette/do_at_max_range(obj/projectile/P)
 	create_flechette(P.loc, P)

@@ -42,8 +42,11 @@
 /datum/ammo/flamethrower/on_hit_obj(obj/O, obj/projectile/P)
 	drop_flame(get_turf(O), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/on_hit_turf(turf/T, obj/projectile/P)
-	drop_flame(T, P.weapon_cause_data)
+/datum/ammo/flamethrower/on_hit_turf(turf/any_turf, obj/projectile/P)
+	if(istype(any_turf,/turf/open_space))
+		.=..()
+		return
+	drop_flame(any_turf, P.weapon_cause_data)
 
 /datum/ammo/flamethrower/do_at_max_range(obj/projectile/P)
 	drop_flame(get_turf(P), P.weapon_cause_data)
@@ -89,10 +92,10 @@
 	. = ..()
 	smoke = new()
 
-/datum/ammo/flamethrower/sentry_flamer/glob/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
+/datum/ammo/flamethrower/sentry_flamer/glob/drop_flame(turf/any_turf, datum/cause_data/cause_data)
+	if(!istype(any_turf))
 		return
-	smoke.set_up(1, 0, T, new_cause_data = cause_data)
+	smoke.set_up(1, 0, any_turf, new_cause_data = cause_data)
 	smoke.start()
 
 /datum/ammo/flamethrower/sentry_flamer/glob/Destroy()
@@ -102,12 +105,12 @@
 /datum/ammo/flamethrower/sentry_flamer/mini
 	name = "normal fire"
 
-/datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
+/datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/any_turf, datum/cause_data/cause_data)
+	if(!istype(any_turf))
 		return
 	var/datum/reagent/napalm/ut/R = new()
 	R.durationfire = BURN_TIME_INSTANT
-	new /obj/flamer_fire(T, cause_data, R, 0)
+	new /obj/flamer_fire(any_turf, cause_data, R, 0)
 
 /datum/ammo/flamethrower/sentry_flamer/wy
 	name = "sticky fire"
@@ -145,17 +148,20 @@
 /datum/ammo/flare/on_hit_obj(obj/O,obj/projectile/P)
 	drop_flare(get_turf(P), P, P.firer)
 
-/datum/ammo/flare/on_hit_turf(turf/T, obj/projectile/P)
-	if(T.density && isturf(P.loc))
+/datum/ammo/flare/on_hit_turf(turf/any_turf, obj/projectile/P)
+	if(istype(any_turf,/turf/open_space))
+		.=..()
+		return
+	if(any_turf.density && isturf(P.loc))
 		drop_flare(P.loc, P, P.firer)
 	else
-		drop_flare(T, P, P.firer)
+		drop_flare(any_turf, P, P.firer)
 
 /datum/ammo/flare/do_at_max_range(obj/projectile/P, mob/firer)
 	drop_flare(get_turf(P), P, P.firer)
 
-/datum/ammo/flare/proc/drop_flare(turf/T, obj/projectile/fired_projectile, mob/firer)
-	var/obj/item/device/flashlight/flare/G = new flare_type(T)
+/datum/ammo/flare/proc/drop_flare(turf/any_turf, obj/projectile/fired_projectile, mob/firer)
+	var/obj/item/device/flashlight/flare/G = new flare_type(any_turf)
 	var/matrix/rotation = matrix()
 	rotation.Turn(fired_projectile.angle - 90)
 	G.apply_transform(rotation)
@@ -168,7 +174,7 @@
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
 	handful_type = /obj/item/device/flashlight/flare/signal
 
-/datum/ammo/flare/signal/drop_flare(turf/T, obj/projectile/fired_projectile, mob/firer)
+/datum/ammo/flare/signal/drop_flare(turf/any_turf, obj/projectile/fired_projectile, mob/firer)
 	var/obj/item/device/flashlight/flare/signal/gun/signal_flare = ..()
 	signal_flare.activate_signal(firer)
 	if(istype(fired_projectile.shot_from, /obj/item/weapon/gun/flare))
@@ -198,8 +204,8 @@
 		return
 	target_organ.embed(new shrapnel_type)
 
-/datum/ammo/arrow/proc/drop_arrow(turf/T, obj/projectile/fired_projectile)
-	var/obj/item/arrow/arrow = new handful_type(T)
+/datum/ammo/arrow/proc/drop_arrow(turf/any_turf, obj/projectile/fired_projectile)
+	var/obj/item/arrow/arrow = new handful_type(any_turf)
 	var/matrix/rotation = matrix()
 	rotation.Turn(fired_projectile.angle - 90)
 	arrow.apply_transform(rotation)
@@ -215,6 +221,9 @@
 	drop_arrow(get_turf(projectile), projectile)
 
 /datum/ammo/arrow/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	if(turf.density && isturf(projectile.loc))
 		drop_arrow(projectile.loc, projectile)
 	else
@@ -244,7 +253,11 @@
 	cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, get_turf(projectile))
 	smoke.start()
+
 /datum/ammo/arrow/expl/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	if(turf.density && isturf(projectile.loc))
 		cell_explosion(get_turf(projectile), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 		smoke.set_up(1, get_turf(projectile))
@@ -317,7 +330,10 @@
 /datum/ammo/souto/on_hit_obj(obj/O,obj/projectile/P)
 	drop_can(P.loc, P) //We make a can at the location.
 
-/datum/ammo/souto/on_hit_turf(turf/T, obj/projectile/P)
+/datum/ammo/souto/on_hit_turf(turf/any_turf, obj/projectile/P)
+	if(istype(any_turf,/turf/open_space))
+		.=..()
+		return
 	drop_can(P.loc, P) //We make a can at the location.
 
 /datum/ammo/souto/do_at_max_range(obj/projectile/P)
@@ -353,16 +369,19 @@
 /datum/ammo/grenade_container/on_hit_obj(obj/O,obj/projectile/P)
 	drop_nade(P)
 
-/datum/ammo/grenade_container/on_hit_turf(turf/T,obj/projectile/P)
+/datum/ammo/grenade_container/on_hit_turf(turf/any_turf,obj/projectile/P)
+	if(istype(any_turf,/turf/open_space))
+		.=..()
+		return
 	drop_nade(P)
 
 /datum/ammo/grenade_container/do_at_max_range(obj/projectile/P)
 	drop_nade(P)
 
 /datum/ammo/grenade_container/proc/drop_nade(obj/projectile/P)
-	var/turf/T = get_turf(P)
-	var/obj/item/explosive/grenade/G = new nade_type(T)
-	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
+	var/turf/any_turf = get_turf(P)
+	var/obj/item/explosive/grenade/G = new nade_type(any_turf)
+	G.visible_message(SPAN_WARNING("\A [G] lands on [any_turf]!"))
 	G.det_time = 10
 	G.cause_data = P.weapon_cause_data
 	G.activate()
@@ -395,14 +414,17 @@
 /datum/ammo/hugger_container/on_hit_obj(obj/O,obj/projectile/P)
 	spawn_hugger(get_turf(P))
 
-/datum/ammo/hugger_container/on_hit_turf(turf/T,obj/projectile/P)
+/datum/ammo/hugger_container/on_hit_turf(turf/any_turf,obj/projectile/P)
+	if(istype(any_turf,/turf/open_space))
+		.=..()
+		return
 	spawn_hugger(get_turf(P))
 
 /datum/ammo/hugger_container/do_at_max_range(obj/projectile/P)
 	spawn_hugger(get_turf(P))
 
-/datum/ammo/hugger_container/proc/spawn_hugger(turf/T)
-	var/obj/item/clothing/mask/facehugger/child = new(T)
+/datum/ammo/hugger_container/proc/spawn_hugger(turf/any_turf)
+	var/obj/item/clothing/mask/facehugger/child = new(any_turf)
 	child.hivenumber = hugger_hive
 	INVOKE_ASYNC(child, TYPE_PROC_REF(/obj/item/clothing/mask/facehugger, leap_at_nearest_target))
 

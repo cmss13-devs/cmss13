@@ -23,22 +23,25 @@
 	max_range = 32
 	shell_speed = AMMO_SPEED_TIER_6
 
-/datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/projectile/P)
-	burst(get_turf(M),P,damage_type, 2 , 3)
-	burst(get_turf(M),P,damage_type, 1 , 3 , 0)
+/datum/ammo/bullet/tank/flak/on_hit_mob(mob/M,obj/projectile/projectile)
+	burst(get_turf(M),projectile,damage_type, 2 , 3)
+	burst(get_turf(M),projectile,damage_type, 1 , 3 , 0)
 
-/datum/ammo/bullet/tank/flak/on_near_target(turf/T, obj/projectile/P)
-	burst(get_turf(T),P,damage_type, 2 , 3)
-	burst(get_turf(T),P,damage_type, 1 , 3, 0)
+/datum/ammo/bullet/tank/flak/on_near_target(turf/turf, obj/projectile/projectile)
+	burst(get_turf(turf),projectile,damage_type, 2 , 3)
+	burst(get_turf(turf),projectile,damage_type, 1 , 3, 0)
 	return 1
 
-/datum/ammo/bullet/tank/flak/on_hit_obj(obj/O,obj/projectile/P)
-	burst(get_turf(P),P,damage_type, 2 , 3)
-	burst(get_turf(P),P,damage_type, 1 , 3 , 0)
+/datum/ammo/bullet/tank/flak/on_hit_obj(obj/O,obj/projectile/projectile)
+	burst(get_turf(projectile),projectile,damage_type, 2 , 3)
+	burst(get_turf(projectile),projectile,damage_type, 1 , 3 , 0)
 
-/datum/ammo/bullet/tank/flak/on_hit_turf(turf/T,obj/projectile/P)
-	burst(get_turf(T),P,damage_type, 2 , 3)
-	burst(get_turf(T),P,damage_type, 1 , 3 , 0)
+/datum/ammo/bullet/tank/flak/on_hit_turf(turf/turf,obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
+	burst(get_turf(turf),projectile,damage_type, 2 , 3)
+	burst(get_turf(turf),projectile,damage_type, 1 , 3 , 0)
 
 /datum/ammo/bullet/tank/dualcannon
 	name = "dualcannon bullet"
@@ -55,24 +58,27 @@
 	max_range = 12
 	shell_speed = AMMO_SPEED_TIER_5
 
-/datum/ammo/bullet/tank/dualcannon/on_hit_mob(mob/M,obj/projectile/P)
+/datum/ammo/bullet/tank/dualcannon/on_hit_mob(mob/M,obj/projectile/projectile)
 	for(var/mob/living/carbon/L in get_turf(M))
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
 
-/datum/ammo/bullet/tank/dualcannon/on_near_target(turf/T, obj/projectile/P)
-	for(var/mob/living/carbon/L in T)
+/datum/ammo/bullet/tank/dualcannon/on_near_target(turf/turf, obj/projectile/projectile)
+	for(var/mob/living/carbon/L in turf)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
 	return 1
 
-/datum/ammo/bullet/tank/dualcannon/on_hit_obj(obj/O,obj/projectile/P)
+/datum/ammo/bullet/tank/dualcannon/on_hit_obj(obj/O,obj/projectile/projectile)
 	for(var/mob/living/carbon/L in get_turf(O))
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
 
-/datum/ammo/bullet/tank/dualcannon/on_hit_turf(turf/T,obj/projectile/P)
-	for(var/mob/living/carbon/L in T)
+/datum/ammo/bullet/tank/dualcannon/on_hit_turf(turf/turf,obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
+	for(var/mob/living/carbon/L in turf)
 		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
 			shake_camera(L, 1, 1)
 

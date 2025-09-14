@@ -41,6 +41,9 @@
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	cell_explosion(turf, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	smoke.set_up(1, turf)
 	smoke.start()
@@ -82,6 +85,9 @@
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	var/hit_something = 0
 	for(var/mob/mob in turf)
 		mob.ex_act(150, projectile.dir, projectile.weapon_cause_data, 100)
@@ -167,6 +173,9 @@
 	cell_explosion(get_turf(object), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	cell_explosion(get_turf(turf), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 	cell_explosion(get_turf(turf), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, projectile.weapon_cause_data)
 
@@ -211,6 +220,9 @@
 	drop_flame(get_turf(object), projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	drop_flame(turf, projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/do_at_max_range(obj/projectile/projectile)
@@ -248,6 +260,9 @@
 	drop_flame(get_turf(object), projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/upp/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	drop_flame(turf, projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/upp/do_at_max_range(obj/projectile/projectile)
@@ -270,6 +285,9 @@
 	explosion(projectile.loc,  -1, 2, 4, 5, , , ,projectile.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	drop_flame(turf, projectile.weapon_cause_data)
 	explosion(projectile.loc,  -1, 2, 4, 5, , , ,projectile.weapon_cause_data)
 
@@ -303,6 +321,9 @@
 	prime(object, projectile)
 
 /datum/ammo/rocket/custom/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	prime(turf, projectile)
 
 /datum/ammo/rocket/custom/do_at_max_range(obj/projectile/projectile)
@@ -336,6 +357,9 @@
 	INVOKE_ASYNC(src,PROC_REF(prime), object, projectile)
 
 /datum/ammo/rocket/brute/on_hit_turf(turf/turf, obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
 	INVOKE_ASYNC(src,PROC_REF(prime), turf, projectile)
 
 /datum/ammo/rocket/brute/do_at_max_range(obj/projectile/projectile)

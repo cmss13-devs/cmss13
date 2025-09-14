@@ -264,11 +264,14 @@
 /datum/ammo/xeno/boiler_gas/on_hit_obj(obj/outbacksteakhouse, obj/projectile/proj)
 	drop_nade(get_turf(proj), proj)
 
-/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/Turf, obj/projectile/proj)
-	if(Turf.density && isturf(proj.loc))
+/datum/ammo/xeno/boiler_gas/on_hit_turf(turf/turf, obj/projectile/proj)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
+	if(turf.density && isturf(proj.loc))
 		drop_nade(proj.loc, proj) //we don't want the gas globs to land on dense turfs, they block smoke expansion.
 	else
-		drop_nade(Turf, proj)
+		drop_nade(turf, proj)
 
 /datum/ammo/xeno/boiler_gas/do_at_max_range(obj/projectile/proj)
 	drop_nade(get_turf(proj), proj)

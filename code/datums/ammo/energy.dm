@@ -147,6 +147,9 @@
 	do_area_stun(stun_projectile)
 
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun/on_hit_turf(turf/any_turf, obj/projectile/stun_projectile)
+	if(istype(any_turf,/turf/open_space))
+		.=..()
+		return
 	do_area_stun(stun_projectile)
 
 /datum/ammo/energy/yautja/caster/sphere/aoe_stun/on_hit_obj(obj/any_object, obj/projectile/stun_projectile)
@@ -201,7 +204,10 @@
 /datum/ammo/energy/yautja/caster/aoe_lethal/on_hit_mob(mob/all_targets, obj/projectile/lethal_projectile)
 	cell_explosion(lethal_projectile, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, lethal_projectile.weapon_cause_data)
 
-/datum/ammo/energy/yautja/caster/aoe_lethal/on_hit_turf(mob/all_targets, obj/projectile/lethal_projectile)
+/datum/ammo/energy/yautja/caster/aoe_lethal/on_hit_turf(turf/any_turf, mob/all_targets, obj/projectile/lethal_projectile)
+	if(istype(any_turf,/turf/open_space))
+		.=..()
+		return
 	cell_explosion(lethal_projectile, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, lethal_projectile.weapon_cause_data)
 
 /datum/ammo/energy/yautja/caster/aoe_lethal/on_hit_obj(obj/any_object, obj/projectile/lethal_projectile)

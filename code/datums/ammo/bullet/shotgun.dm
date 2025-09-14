@@ -24,8 +24,8 @@
 	damage_armor_punch = 2
 	handful_state = "slug_shell"
 
-/datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/projectile/P)
-	knockback(M, P, 6)
+/datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/projectile/projectile)
+	knockback(M, projectile, 6)
 
 /datum/ammo/bullet/shotgun/slug/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
@@ -70,8 +70,8 @@
 	shell_speed = AMMO_SPEED_TIER_3
 	handful_state = "beanbag_slug"
 
-/datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/projectile/P)
-	if(!M || M == P.firer)
+/datum/ammo/bullet/shotgun/beanbag/on_hit_mob(mob/M, obj/projectile/projectile)
+	if(!M || M == projectile.firer)
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -96,7 +96,7 @@
 	shell_speed = AMMO_SPEED_TIER_4
 	handful_state = "shock_slug"
 
-/datum/ammo/bullet/shotgun/beanbag/es7/on_hit_mob(mob/mobs, obj/projectile/P)
+/datum/ammo/bullet/shotgun/beanbag/es7/on_hit_mob(mob/mobs, obj/projectile/projectile)
 	if(!isyautja(mobs) && !isxeno(mobs))
 		mobs.emote("pain")
 		mobs.sway_jitter(2,1)
@@ -124,15 +124,18 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/shotgun/incendiary/on_hit_mob(mob/M,obj/projectile/P)
-	burst(get_turf(M),P,damage_type)
-	knockback(M,P)
+/datum/ammo/bullet/shotgun/incendiary/on_hit_mob(mob/M,obj/projectile/projectile)
+	burst(get_turf(M),projectile,damage_type)
+	knockback(M,projectile)
 
-/datum/ammo/bullet/shotgun/incendiary/on_hit_obj(obj/O,obj/projectile/P)
-	burst(get_turf(P),P,damage_type)
+/datum/ammo/bullet/shotgun/incendiary/on_hit_obj(obj/O,obj/projectile/projectile)
+	burst(get_turf(projectile),projectile,damage_type)
 
-/datum/ammo/bullet/shotgun/incendiary/on_hit_turf(turf/T,obj/projectile/P)
-	burst(get_turf(T),P,damage_type)
+/datum/ammo/bullet/shotgun/incendiary/on_hit_turf(turf/turf,obj/projectile/projectile)
+	if(istype(turf,/turf/open_space))
+		.=..()
+		return
+	burst(get_turf(turf),projectile,damage_type)
 
 
 /datum/ammo/bullet/shotgun/flechette
@@ -206,8 +209,8 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/projectile/P)
-	knockback(M,P)
+/datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/projectile/projectile)
+	knockback(M,projectile)
 
 //buckshot variant only used by the masterkey shotgun attachment.
 /datum/ammo/bullet/shotgun/buckshot/masterkey
@@ -215,8 +218,8 @@
 
 	damage = 55
 
-/datum/ammo/bullet/shotgun/buckshot/masterkey/on_hit_mob(mob/M,obj/projectile/P)
-	knockback(M,P,1)
+/datum/ammo/bullet/shotgun/buckshot/masterkey/on_hit_mob(mob/M,obj/projectile/projectile)
+	knockback(M,projectile,1)
 
 /datum/ammo/bullet/shotgun/spread
 	name = "additional buckshot"
@@ -257,8 +260,8 @@
 	damage_armor_punch = 0
 	pen_armor_punch = 0
 
-/datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/projectile/P)
-	knockback(M,P)
+/datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/projectile/projectile)
+	knockback(M,projectile)
 
 /datum/ammo/bullet/shotgun/heavy/buckshot/spread
 	name = "additional heavy buckshot"
@@ -301,8 +304,8 @@
 	penetration = ARMOR_PENETRATION_TIER_6
 	damage_armor_punch = 2
 
-/datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/projectile/P)
-	knockback(M, P, 7)
+/datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/projectile/projectile)
+	knockback(M, projectile, 7)
 
 /datum/ammo/bullet/shotgun/heavy/slug/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))
@@ -334,8 +337,8 @@
 	accuracy = HIT_ACCURACY_TIER_2
 	shell_speed = AMMO_SPEED_TIER_2
 
-/datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/projectile/P)
-	if(!M || M == P.firer)
+/datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/projectile/projectile)
+	if(!M || M == projectile.firer)
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -441,18 +444,18 @@
 	effective_range_max = EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
 	var/hit_messages = list()
 
-/datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/projectile/P)
-	var/mob/shooter = P.firer
+/datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/projectile/projectile)
+	var/mob/shooter = projectile.firer
 	if(shooter && ismob(shooter) && HAS_TRAIT(shooter, TRAIT_TWOBORE_TRAINING) && M.stat != DEAD && prob(40)) //Death is handled by periodic life() checks so this should have a chance to fire on a killshot.
 		if(!length(hit_messages)) //Pick and remove lines, refill on exhaustion.
 			hit_messages = list("Got you!", "Aha!", "Bullseye!", "It's curtains for you, Sonny Jim!", "Your head will look fantastic on my wall!", "I have you now!", "You miserable coward! Come and fight me like a man!", "Tally ho!")
 		var/message = pick_n_take(hit_messages)
 		shooter.say(message)
 
-	if(P.distance_travelled > 8)
-		knockback(M, P, 12)
+	if(projectile.distance_travelled > 8)
+		knockback(M, projectile, 12)
 
-	else if(!M || M == P.firer || M.body_position == LYING_DOWN) //These checks are included in knockback and would be redundant above.
+	else if(!M || M == projectile.firer || M.body_position == LYING_DOWN) //These checks are included in knockback and would be redundant above.
 		return
 
 	shake_camera(M, 3, 4)
@@ -464,7 +467,7 @@
 	else //This will hammer a Yautja as hard as a human.
 		to_chat(M, SPAN_HIGHDANGER("The impact knocks you off your feet!"))
 
-	step(M, get_dir(P.firer, M))
+	step(M, get_dir(projectile.firer, M))
 
 /datum/ammo/bullet/shotgun/twobore/knockback_effects(mob/living/living_mob, obj/projectile/fired_projectile)
 	if(iscarbonsizexeno(living_mob))

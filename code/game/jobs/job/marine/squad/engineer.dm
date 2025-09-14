@@ -9,7 +9,7 @@
 
 /datum/job/marine/engineer/set_spawn_positions(count)
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
+		if(target_squad && !target_squad.riflemen_limited)
 			target_squad.roles_cap[title] = engi_slot_formula(count)
 
 /datum/job/marine/engineer/get_total_positions(latejoin=0)
@@ -22,7 +22,7 @@
 
 	if(latejoin)
 		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-			if(target_squad)
+			if(target_squad && !target_squad.riflemen_limited)
 				target_squad.roles_cap[title] = slots
 
 	return (slots*4)

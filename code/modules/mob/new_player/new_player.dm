@@ -145,14 +145,15 @@
 	SSticker.mode.update_gear_scale()
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
+		if(!target_squad)
+			continue
+
+		if(target_squad.riflemen_limited)
+			target_squad.roles_cap[JOB_SQUAD_MARINE] = floor(get_total_squad_marines() * target_squad.riflemen_limited / 100)
+		else
 			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(length(GLOB.clients))
 			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(length(GLOB.clients))
 
-			if(!target_squad.riflemen_limited)
-				continue
-
-			target_squad.roles_cap[JOB_SQUAD_MARINE] = floor(get_total_squad_marines() * target_squad.riflemen_limited / 100)
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 

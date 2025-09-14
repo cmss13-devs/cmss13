@@ -124,7 +124,7 @@ Additional game mode variables.
 	surv_starting_num = clamp((GLOB.readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
 	marine_starting_num = length(GLOB.player_list) - xeno_starting_num - surv_starting_num
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-		if(target_squad)
+		if(target_squad && !target_squad.riflemen_limited)
 			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(marine_starting_num)
 			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(marine_starting_num)
 

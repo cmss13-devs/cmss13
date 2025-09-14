@@ -123,3 +123,8 @@
   - bugfix: fixes majority of issues with looking up not being updated on movement,
       report any remaining issues
   - bugfix: crossing z level ends looking up correctly
+2025-09-14:
+  TheGamerdk:
+  - balance: High impact M1911 bullets cause knockback on-par with Mateba and Deagle.
+  cuberound:
+  - bugfix: BRUTE no longer messes up looking down

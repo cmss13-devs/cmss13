@@ -488,7 +488,13 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<b>Religion:</b> <a href='byond://?_src_=prefs;preference=religion;task=input'><b>[religion]</b></a><br/>"
 
 			dat += "<b>Corporate Relation:</b> <a href='byond://?_src_=prefs;preference=wy_relation;task=input'><b>[weyland_yutani_relation]</b></a><br>"
-			dat += "<b>Preferred Squad:</b> <a href='byond://?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
+			var/squad_designation = "Support"
+			switch(preferred_squad)
+				if("Alpha", "Delta")
+					squad_designation = "Assault"
+				if("Bravo")
+					squad_designation = "Security"
+			dat += "<b>Preferred Squad:</b> <a href='byond://?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a> <b>Squad Designation: [squad_designation]</b><br>"
 			var/spec_detail
 			switch(length(preferred_spec))
 				if(0)

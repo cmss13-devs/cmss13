@@ -955,7 +955,7 @@
 /obj/item/device/radio/headset/almayer/marine/cryo
 	name = "marine foxtrot radio headset"
 	desc = "This is used by Foxtrot squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	icon_state = "cryo_headset"
+	icon_state = "foxtrot_headset"
 	frequency = CRYO_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/cryo/lead
@@ -1018,6 +1018,22 @@
 				if(JOB_SQUAD_LEADER)
 					name = "marine leader " + name
 					keys += new /obj/item/device/encryptionkey/squadlead(src)
+					inbuilt_tracking_options = list(
+						"Squad Leader" = TRACKER_SL,
+						"Fireteam Leader" = TRACKER_FTL,
+						"Landing Zone" = TRACKER_LZ,
+						"Commanding Officer" = TRACKER_CO,
+						"Executive Officer" = TRACKER_XO,
+						"Alpha SL" = TRACKER_ASL,
+						"Bravo SL" = TRACKER_BSL,
+						"Delta SL" = TRACKER_DSL,
+						"Echo SL" = TRACKER_ESL,
+						"Foxtrot SL" = TRACKER_FSL,
+						"Intel SL" = TRACKER_ISL,
+						"Kilo SL" = TRACKER_KSL,
+						"Oscar SL" = TRACKER_OSL
+					)
+					inbuilt_tracking_options -= "[H.assigned_squad.name] SL"
 					volume = RADIO_VOLUME_CRITICAL
 				if(JOB_SQUAD_MEDIC)
 					name = "marine hospital corpsman " + name

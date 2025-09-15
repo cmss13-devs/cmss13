@@ -237,7 +237,8 @@
 	set waitfor = 0
 
 	var/turf/curloc = get_turf(original_P.shot_from)
-	var/initial_angle = Get_Angle(curloc, original_P.target_turf)
+	var/turf/cur_target = get_turf(original_P.target_turf)
+	var/initial_angle = Get_Angle(curloc, cur_target)
 
 	for(var/i in 1 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
 		var/final_angle = initial_angle
@@ -253,12 +254,12 @@
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
-		if(curloc.z < new_target.z)
+		if(cur_target.z < new_target.z)
 			var/turf/below = SSmapping.get_turf_below(new_target)
 			if(below)
 				new_target = below
 
-		if(curloc.z > new_target.z)
+		if(cur_target.z > new_target.z)
 			var/turf/above = SSmapping.get_turf_above(new_target)
 			if(above)
 				new_target = above

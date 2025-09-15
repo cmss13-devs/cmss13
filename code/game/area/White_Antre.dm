@@ -175,6 +175,7 @@
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_DERELICT
+	ceiling_muffle = FALSE
 
 /area/white_antre/indoors/main_level/south_containment
 	name = "White Antre - Unused Containment Holding Bay - Ground"
@@ -187,6 +188,7 @@
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_DERELICT
+	ceiling_muffle = FALSE
 
 /area/white_antre/indoors/main_level/east_containment
 	name = "White Antre - Prime Hive Containment Holding Bay - Ground"
@@ -196,9 +198,10 @@
 /area/white_antre/indoors/main_level/east_containment_hive
 	name = "White Antre - Prime Hive Containment Zone - Ground"
 	icon_state = "tumor2"
-	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
+	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	ceiling_muffle = FALSE
 
 //White Antre Facility - Underground
 

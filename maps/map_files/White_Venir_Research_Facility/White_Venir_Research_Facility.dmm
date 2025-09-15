@@ -138,6 +138,7 @@
 /turf/open/floor/prison/red/north,
 /area/white_antre/indoors/main_level/south_containment)
 "aaH" = (
+/obj/effect/alien/weeds/kseries,
 /turf/open/floor/prison/red/northeast,
 /area/white_antre/indoors/main_level/south_containment)
 "aaI" = (
@@ -1403,6 +1404,7 @@
 /area/white_antre/indoors/upper_level/records)
 "adv" = (
 /obj/structure/machinery/disposal,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1,
 /area/white_antre/indoors/upper_level/medical)
 "adw" = (
@@ -1415,6 +1417,7 @@
 	pixel_x = 4
 	},
 /obj/structure/pipes/vents/pump,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/cyan1,
 /area/white_antre/indoors/upper_level/medical)
 "adx" = (
@@ -1432,7 +1435,11 @@
 /turf/closed/wall/hybrisa/colony/hospital,
 /area/white_antre/indoors/main_level/east_containment)
 "adz" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 5;
+	pixel_x = 1
+	},
 /turf/open/floor/strata/white_cyan3/north,
 /area/white_antre/indoors/upper_level/medical)
 "adA" = (
@@ -1445,6 +1452,10 @@
 /turf/open/floor/strata/white_cyan3/northeast,
 /area/white_antre/indoors/upper_level/medical)
 "adD" = (
+/obj/structure/surface/table/almayer{
+	dir = 4;
+	flipped = 1
+	},
 /turf/open/floor/strata/white_cyan3/north,
 /area/white_antre/indoors/upper_level/medical)
 "adE" = (
@@ -1482,9 +1493,12 @@
 /turf/open/floor/almayer/green2/southwest,
 /area/white_antre/indoors/upper_level/west_corridor)
 "adN" = (
-/obj/structure/bed/chair/comfy/teal{
-	dir = 4
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
 	},
+/obj/item/stack/sheet/metal,
 /turf/open/floor/strata/white_cyan3,
 /area/white_antre/indoors/upper_level/medical)
 "adO" = (
@@ -1510,6 +1524,15 @@
 /obj/structure/bed/chair/comfy/teal{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
 /turf/open/floor/strata/white_cyan2,
 /area/white_antre/indoors/upper_level/medical)
 "adU" = (
@@ -1523,6 +1546,8 @@
 /area/white_antre/indoors/upper_level/medical)
 "adW" = (
 /obj/structure/closet/wardrobe/medic_white,
+/obj/item/clothing/glasses/hud/health/basic,
+/obj/item/clothing/glasses/hud/health/basic,
 /turf/open/floor/strata/white_cyan3/east,
 /area/white_antre/indoors/upper_level/medical)
 "adX" = (
@@ -1532,8 +1557,10 @@
 /turf/open/floor/almayer/green2/northwest,
 /area/white_antre/indoors/upper_level/west_corridor)
 "adY" = (
-/obj/structure/bed/chair/comfy/teal{
-	dir = 4
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
 	},
 /turf/open/floor/strata/white_cyan3/north,
 /area/white_antre/indoors/upper_level/medical)
@@ -1583,6 +1610,9 @@
 /area/white_antre/indoors/upper_level/medical)
 "aeg" = (
 /obj/structure/machinery/bioprinter,
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
 /turf/open/floor/strata/cyan1,
 /area/white_antre/indoors/upper_level/medical)
 "aeh" = (
@@ -1590,9 +1620,6 @@
 /area/white_antre/indoors/upper_level/medical)
 "aei" = (
 /obj/structure/machinery/optable,
-/obj/structure/machinery/light{
-	dir = 4
-	},
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/cyan1,
 /area/white_antre/indoors/upper_level/medical)
@@ -1619,6 +1646,7 @@
 	icon_state = "bigrollerempty2_up";
 	dir = 8
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "aen" = (
@@ -1644,21 +1672,37 @@
 /turf/open/floor/strata/cyan2/east,
 /area/white_antre/indoors/upper_level/medical)
 "aep" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/vents/pump,
 /turf/open/floor/strata/white_cyan2,
 /area/white_antre/indoors/upper_level/medical)
 "aeq" = (
 /obj/structure/machinery/iv_drip{
 	pixel_y = 19
 	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "aer" = (
 /obj/structure/closet/crate/medical,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/medical/advanced/bruise_pack/upgraded,
+/obj/item/stack/medical/advanced/ointment/upgraded,
+/obj/item/stack/medical/splint/nano,
+/obj/structure/prop/hybrisa/misc/blood/blood2{
+	pixel_x = -21;
+	pixel_y = -13
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
+	},
 /turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "aes" = (
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
 /turf/open/floor/strata/cyan1,
 /area/white_antre/indoors/upper_level/medical)
 "aet" = (
@@ -2039,6 +2083,10 @@
 /obj/structure/largecrate/random/case,
 /turf/open/floor/prison/floor_marked/southwest,
 /area/white_antre/indoors/upper_level/ancillery_storage)
+"afo" = (
+/obj/effect/alien/weeds/kseries,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/outdoors/path_north)
 "afp" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper,
@@ -2565,6 +2613,9 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/structure/machinery/defenses/sentry/premade/lowammo/dumb,
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_red"
+	},
 /turf/open/floor/almayer/research/containment/corner_var1/east,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agT" = (
@@ -2753,6 +2804,7 @@
 	color = "#6b675e";
 	layer = 3
 	},
+/obj/effect/spawner/random/pills/highchance,
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/xenobio)
 "ahr" = (
@@ -2831,6 +2883,13 @@
 	icon_state = "triagedecaltopright";
 	color = "#d3d3d3"
 	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
 /turf/open/floor/corsat/spiralplate,
 /area/white_antre/indoors/upper_level/xenobio)
 "ahB" = (
@@ -2858,6 +2917,9 @@
 	icon_state = "triagedecaltopleft";
 	color = "#d3d3d3"
 	},
+/obj/structure/prop/hybrisa/misc/machinery/screens/frame{
+	pixel_y = 32
+	},
 /turf/open/floor/corsat/officesquares,
 /area/white_antre/indoors/upper_level/xenobio)
 "ahE" = (
@@ -2868,6 +2930,14 @@
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltopleft";
 	color = "#d3d3d3"
+	},
+/obj/structure/bed/roller,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
 	},
 /turf/open/floor/corsat/spiralplate,
 /area/white_antre/indoors/upper_level/xenobio)
@@ -2925,6 +2995,9 @@
 /area/white_antre/indoors/upper_level/xenobio)
 "ahN" = (
 /obj/structure/platform/metal/almayer_smooth,
+/obj/structure/machinery/iv_drip{
+	pixel_y = 19
+	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/upper_level/xenobio)
 "ahO" = (
@@ -2963,6 +3036,11 @@
 	icon_state = "medium";
 	pixel_x = -5;
 	pixel_y = -8
+	},
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
 	},
 /turf/open/floor/bluegrid,
 /area/white_antre/indoors/upper_level/xenobio)
@@ -3015,6 +3093,14 @@
 	icon_state = "medium";
 	pixel_x = 5;
 	pixel_y = -11
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	pixel_y = -7;
+	layer = 2.52
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/upper_level/xenobio)
@@ -3098,6 +3184,10 @@
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/shard{
 	icon_state = "medium"
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/upper_level/xenobio)
@@ -3240,6 +3330,18 @@
 	icon_state = "medium"
 	},
 /obj/item/shard,
+/obj/structure/machinery/meter{
+	pixel_y = 32
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 8;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 8
+	},
 /turf/open/floor/bluegrid,
 /area/white_antre/indoors/upper_level/xenobio)
 "aim" = (
@@ -3276,6 +3378,11 @@
 	},
 /obj/effect/decal/cleanable/blood/xeno,
 /obj/item/shard,
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
 /turf/open/floor/bluegrid,
 /area/white_antre/indoors/upper_level/xenobio)
 "aio" = (
@@ -3713,6 +3820,11 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 2;
+	dir = 1
+	},
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "ajk" = (
@@ -3720,6 +3832,11 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	pixel_y = 2;
+	dir = 1
+	},
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "ajl" = (
@@ -3736,6 +3853,11 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/white_antre/indoors/upper_level/simian_storage)
 "ajn" = (
@@ -3744,6 +3866,11 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
+/obj/effect/decal/warning_stripes{
+	icon_state = "door_warning2_red";
+	dir = 8;
+	pixel_x = -2
+	},
 /turf/open/floor/almayer/research/containment/floor2/north,
 /area/white_antre/indoors/upper_level/simian_storage)
 "ajo" = (
@@ -11704,6 +11831,10 @@
 /area/white_antre/indoors/upper_level/east_overwatch)
 "aDa" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
 /turf/open/floor/prison/cell_stripe/west,
 /area/white_antre/indoors/upper_level/central_corridor)
 "aDb" = (
@@ -22639,6 +22770,10 @@
 /turf/closed/wall/hybrisa/colony/hospital,
 /area/white_antre/indoors/upper_level/xenobio)
 "bhh" = (
+/obj/structure/surface/table/almayer{
+	dir = 8;
+	flipped = 1
+	},
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/white_antre/indoors/upper_level/medical)
 "bhi" = (
@@ -22692,6 +22827,14 @@
 /turf/open/floor/prison/green/southwest,
 /area/white_antre/indoors/upper_level/east_corridor)
 "bhx" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	pixel_y = -7;
+	layer = 2.52
+	},
 /turf/open/floor/hybrisa/metal/bluemetal1/northeast,
 /area/white_antre/indoors/upper_level/xenobio)
 "bhy" = (
@@ -22718,6 +22861,9 @@
 "bhF" = (
 /obj/structure/machinery/power/apc/power/west{
 	start_charge = 20
+	},
+/obj/structure/machinery/light/double{
+	dir = 1
 	},
 /turf/open/floor/strata/white_cyan3,
 /area/white_antre/indoors/upper_level/medical)
@@ -25245,6 +25391,10 @@
 /obj/effect/random_explosion/medium,
 /turf/open/floor/almayer/green2/west,
 /area/white_antre/indoors/main_level/west_corridor)
+"bqF" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/strata/white_cyan3/northwest,
+/area/white_antre/indoors/upper_level/medical)
 "bqG" = (
 /obj/effect/random_explosion/medium,
 /turf/open/floor/almayer/black2/west,
@@ -26101,6 +26251,14 @@
 	},
 /turf/open/floor/almayer/emerald2,
 /area/white_antre/indoors/upper_level/central_corridor)
+"bsW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/strata/white_cyan2,
+/area/white_antre/indoors/upper_level/medical)
 "bsX" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/tile/tilebeige,
@@ -26765,6 +26923,213 @@
 /obj/structure/machinery/disposal/delivery,
 /turf/open/floor/almayer/emerald2/west,
 /area/white_antre/indoors/upper_level/central_corridor)
+"buD" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/strata/white_cyan2,
+/area/white_antre/indoors/upper_level/medical)
+"buE" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/machinery/light/double,
+/turf/open/floor/strata/white_cyan2,
+/area/white_antre/indoors/upper_level/medical)
+"buF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/white_cyan2,
+/area/white_antre/indoors/upper_level/medical)
+"buG" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_x = -19;
+	pixel_y = -14
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/upper_level/medical)
+"buH" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/strata/white_cyan2,
+/area/white_antre/indoors/upper_level/medical)
+"buI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	layer = 2.8;
+	pixel_x = 7;
+	pixel_y = 10
+	},
+/turf/open/floor/almayer/green2/northeast,
+/area/white_antre/indoors/upper_level/west_corridor)
+"buJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/green2/northwest,
+/area/white_antre/indoors/upper_level/west_corridor)
+"buK" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/almayer/green2/north,
+/area/white_antre/indoors/upper_level/west_corridor)
+"buL" = (
+/obj/structure/closet/l3closet/virology,
+/obj/item/clothing/suit/bio_suit/wy_bio,
+/obj/item/clothing/suit/bio_suit/wy_bio,
+/obj/item/clothing/head/bio_hood/wy_bio,
+/obj/item/clothing/head/bio_hood/wy_bio,
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison/southwest,
+/area/white_antre/indoors/upper_level/xenobio)
+"buM" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"buN" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_8"
+	},
+/turf/open/floor/corsat/officesquares,
+/area/white_antre/indoors/upper_level/xenobio)
+"buO" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"buP" = (
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"buQ" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/floor/hybrisa/metal/bluemetal1/west,
+/area/white_antre/indoors/upper_level/xenobio)
+"buR" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyleft,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"buS" = (
+/obj/structure/cargo_container/hybrisa/containersextended/lightgreywyright{
+	layer = 4.2
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"buT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/strata/white_cyan3,
+/area/white_antre/indoors/upper_level/medical)
+"buU" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/strata/white_cyan3,
+/area/white_antre/indoors/upper_level/medical)
+"buV" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/white_cyan3,
+/area/white_antre/indoors/upper_level/medical)
+"buW" = (
+/obj/item/tank/oxygen/yellow{
+	pixel_x = 3
+	},
+/turf/open/floor/strata/white_cyan3,
+/area/white_antre/indoors/upper_level/medical)
+"buX" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/strata/white_cyan3,
+/area/white_antre/indoors/upper_level/medical)
+"buY" = (
+/obj/structure/surface/table/almayer{
+	dir = 4;
+	flipped = 1
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/medical)
+"buZ" = (
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bva" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bvb" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/corsat/officesquares,
+/area/white_antre/indoors/upper_level/xenobio)
+"bvc" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 2
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"bvd" = (
+/obj/structure/largecrate/random/barrel/purewhite,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bve" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bvf" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bvg" = (
+/obj/structure/closet/bodybag,
+/obj/structure/bed/roller,
+/turf/open/floor/strata/white_cyan2/west,
+/area/white_antre/indoors/upper_level/medical)
+"bvh" = (
+/obj/structure/closet/bodybag,
+/obj/structure/bed/roller,
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32;
+	pixel_x = 16
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/white_antre/indoors/upper_level/medical)
 "bvi" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/blue2/north,
@@ -27362,10 +27727,876 @@
 /obj/structure/largecrate/random/barrel/brown,
 /turf/open/floor/almayer/blue2,
 /area/white_antre/indoors/upper_level/central_corridor)
+"bwR" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 1;
+	pixel_y = 6
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/white_cyan2/west,
+/area/white_antre/indoors/upper_level/medical)
+"bwS" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/upper_level/medical)
+"bwT" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/white_cyan3/east,
+/area/white_antre/indoors/upper_level/medical)
+"bwU" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bwV" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/white_antre/indoors/upper_level/xenobio)
+"bwW" = (
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_6";
+	pixel_y = 12
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/white_antre/indoors/upper_level/xenobio)
+"bwX" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/corsat/officesquares,
+/area/white_antre/indoors/upper_level/xenobio)
+"bwY" = (
+/obj/structure/machinery/light/double/blue,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bwZ" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxa" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxb" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxc" = (
+/obj/item/weapon/gun/pistol/vp78{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/ammo_magazine/pistol/vp78{
+	current_rounds = 13;
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/strata/white_cyan3/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 1;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/strata/white_cyan3/southeast,
+/area/white_antre/indoors/upper_level/medical)
+"bxe" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/stack/sheet/metal,
+/obj/item/frame/table/almayer,
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = -13
+	},
+/obj/structure/machinery/meter{
+	pixel_y = 32
+	},
+/turf/open/floor/strata/white_cyan3,
+/area/white_antre/indoors/upper_level/medical)
+"bxf" = (
+/obj/structure/window_frame/hybrisa/colony/hospital/reinforced,
+/obj/item/shard,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = -13
+	},
+/turf/open/floor/plating,
+/area/white_antre/indoors/upper_level/medical)
+"bxg" = (
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/closet/hydrant{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer/green2,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxh" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxi" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxk" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxl" = (
+/obj/item/device/flashlight/lamp/tripod/grey{
+	on = 0;
+	pixel_y = 9
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxm" = (
+/obj/item/paper{
+	layer = 5;
+	pixel_x = -7;
+	pixel_y = 7
+	},
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxn" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e";
+	layer = 3
+	},
+/obj/item/paper{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/paper{
+	pixel_x = -8;
+	pixel_y = -1
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxo" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W"
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxp" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/strata/white_cyan2,
+/area/white_antre/indoors/upper_level/medical)
+"bxq" = (
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_x = -10
+	},
+/turf/open/floor/strata/white_cyan3/west,
+/area/white_antre/indoors/upper_level/medical)
+"bxr" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/almayer/green2/east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxs" = (
+/obj/item/weapon/shield/riot,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxt" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxu" = (
+/obj/item/device/flashlight/lamp/tripod/grey{
+	on = 0;
+	pixel_y = 22
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/officesquares,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxv" = (
+/obj/structure/bed/chair/office/light{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_5";
+	pixel_x = -8;
+	pixel_y = 12
+	},
+/turf/open/floor/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxw" = (
+/obj/structure/machinery/space_heater/radiator/red{
+	dir = 8;
+	pixel_x = 1
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxx" = (
+/obj/structure/surface/table/almayer,
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxy" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/tool,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxz" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 5;
+	pixel_x = 1
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxA" = (
+/obj/structure/machinery/light/double,
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxB" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxC" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxD" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/almayer/green2/east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxE" = (
+/obj/structure/bed/chair/comfy/lime{
+	dir = 8;
+	pixel_x = 4
+	},
+/turf/open/floor/almayer/green2/west,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxF" = (
+/obj/structure/closet/crate/science,
+/obj/item/device/defibrillator/upgraded,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/white_antre/indoors/upper_level/xenobio)
 "bxG" = (
 /obj/structure/bed/chair/dropship/passenger,
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/white_antre/interior/pmc_dropship)
+"bxH" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/northwest,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxI" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1/north,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxJ" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxK" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/upper_level/medical)
+"bxL" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/turf/closed/wall/hybrisa/colony/hospital,
+/area/white_antre/indoors/upper_level/medical)
+"bxM" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/almayer/green2/east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxN" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxO" = (
+/obj/structure/bed/chair/comfy/lime{
+	dir = 8;
+	pixel_x = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/green2/west,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bxP" = (
+/obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
+/turf/closed/wall/hybrisa/colony/hospital,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxQ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/bodybag/tarp/reactive,
+/obj/item/bodybag/tarp/reactive,
+/turf/open/floor/hybrisa/metal/bluemetal1/east,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxR" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_4";
+	layer = 3.2
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxS" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/obj/structure/bed/roller,
+/obj/structure/closet/bodybag{
+	icon_state = "bodybag_open"
+	},
+/turf/open/floor/corsat/officesquares,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxT" = (
+/obj/effect/decal/medical_decals{
+	dir = 1;
+	icon_state = "triagedecaldir";
+	color = "#d3d3d3"
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	pixel_y = -7;
+	layer = 2.52
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxU" = (
+/obj/effect/decal/remains/robot{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/upper_level/xenobio)
+"bxV" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = -5
+	},
+/turf/open/floor/strata/white_cyan3/west,
+/area/white_antre/indoors/upper_level/medical)
+"bxW" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = -5
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/white_antre/indoors/upper_level/medical)
+"bxX" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxY" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bxZ" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"bya" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"byb" = (
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_x = -26;
+	pixel_y = -28
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"byc" = (
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor/almayer/green2/east,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byd" = (
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = -5;
+	pixel_y = -8
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"bye" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/strata_decals/grime/grime3{
+	pixel_x = -10
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/white_antre/indoors/upper_level/xenobio)
+"byf" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/prison/bright_clean2/southwest,
+/area/white_antre/indoors/upper_level/xenobio)
+"byg" = (
+/obj/effect/decal/remains/robot{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail{
+	dir = 8;
+	pixel_x = 7
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/upper_level/xenobio)
+"byh" = (
+/obj/effect/landmark/wo_supplies/storage/belts/medical,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/turf/open/floor/strata/white_cyan3/southwest,
+/area/white_antre/indoors/upper_level/medical)
+"byi" = (
+/obj/item/frame/table/almayer,
+/turf/open/floor/strata/white_cyan2,
+/area/white_antre/indoors/upper_level/medical)
+"byj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "cargo_arrow4";
+	dir = 4;
+	pixel_x = -10
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"byk" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"byl" = (
+/obj/structure/surface/table/almayer,
+/obj/item/tool/screwdriver/tactical{
+	pixel_x = -7
+	},
+/obj/item/reagent_container/food/snacks/eat_bar{
+	pixel_x = 7
+	},
+/turf/open/floor/almayer/green2/west,
+/area/white_antre/indoors/upper_level/west_corridor)
+"bym" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/white_antre/indoors/upper_level/xenobio)
+"byn" = (
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/white_antre/indoors/upper_level/xenobio)
+"byo" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/structure/machinery/light/double/blue{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt{
+	icon_state = "thermite";
+	name = "impact"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/white_antre/indoors/upper_level/xenobio)
+"byp" = (
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/white_antre/indoors/upper_level/xenobio)
+"byq" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/upper_level/xenobio)
+"byr" = (
+/obj/structure/window_frame/hybrisa/colony/hospital/reinforced,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/white_antre/indoors/upper_level/xenobio)
+"bys" = (
+/obj/structure/closet/l3closet/virology,
+/obj/item/clothing/suit/bio_suit/wy_bio,
+/obj/item/clothing/suit/bio_suit/wy_bio,
+/obj/item/clothing/head/bio_hood/wy_bio,
+/obj/item/clothing/head/bio_hood/wy_bio,
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/turf/open/floor/prison/southwest,
+/area/white_antre/indoors/upper_level/xenobio)
+"byt" = (
+/obj/effect/landmark/wo_supplies/storage/belts/lifesaver,
+/turf/open/floor/strata/white_cyan2,
+/area/white_antre/indoors/upper_level/medical)
+"byu" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/turf/open/floor/strata/white_cyan3/west,
+/area/white_antre/indoors/upper_level/medical)
+"byv" = (
+/obj/structure/bed/roller,
+/obj/structure/sign/poster/safety{
+	pixel_y = 34
+	},
+/turf/open/floor/strata/white_cyan2/west,
+/area/white_antre/indoors/upper_level/medical)
+"byw" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -2
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"byx" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/meter{
+	pixel_y = 32
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/upper_level/medical)
+"byy" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/structure/machinery/light/double{
+	dir = 1
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"byz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = 2;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/structure/sign/poster/safety{
+	pixel_x = -4;
+	pixel_y = 34
+	},
+/turf/open/floor/strata/white_cyan1/east,
+/area/white_antre/indoors/upper_level/medical)
+"byA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -15;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = -13;
+	pixel_y = 33
+	},
+/obj/item/shard/shrapnel/bone_chips/human{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/blood/gibs/core,
+/obj/structure/prop/hybrisa/misc/blood/blood3{
+	pixel_y = -29;
+	pixel_x = -8
+	},
+/obj/item/shard/shrapnel,
+/obj/effect/spawner/gibspawner/human,
+/obj/item/shard/shrapnel,
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/prop/hybrisa/misc/blood/blood1{
+	pixel_x = -12;
+	pixel_y = 1
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 1;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours."
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/upper_level/medical)
+"byB" = (
+/obj/item/ammo_magazine/smg/p90{
+	pixel_x = -4;
+	pixel_y = -5;
+	current_rounds = 24
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byC" = (
+/obj/item/ammo_casing/bullet,
+/obj/item/ammo_casing/bullet,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byD" = (
+/obj/structure/machinery/light/double{
+	dir = 4
+	},
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byE" = (
+/obj/effect/decal/medical_decals{
+	icon_state = "triagedecalleft";
+	color = "#d3d3d3"
+	},
+/obj/structure/machinery/light/double/blue{
+	dir = 1
+	},
+/turf/open/floor/corsat/spiralplate,
+/area/white_antre/indoors/upper_level/xenobio)
+"byF" = (
+/obj/structure/machinery/disposal/delivery,
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byG" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byH" = (
+/obj/effect/decal/hybrisa/WY/WY1{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	light_color = "#ff3b3b";
+	color = "#ff3b3b";
+	needs_power = 0;
+	dir = 4;
+	name = "emergency lighting";
+	desc = "A small emergency light. Has an internal battery which should last for five hours.";
+	pixel_y = 16
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byI" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byJ" = (
+/obj/structure/bed/chair/comfy/lime{
+	dir = 4;
+	pixel_x = -5
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byK" = (
+/obj/structure/machinery/vending/cola,
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byL" = (
+/obj/structure/prop/hybrisa/misc/machinery/screens/redalert{
+	light_color = "#FF0000";
+	light_on = 1;
+	light_power = 3;
+	light_range = 5;
+	pixel_y = 32
+	},
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/almayer/mono,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byM" = (
+/obj/structure/machinery/light/double{
+	dir = 8;
+	pixel_y = -5
+	},
+/turf/open/floor/almayer/greencorner/south,
+/area/white_antre/indoors/upper_level/west_corridor)
+"byN" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue2/northeast,
+/area/white_antre/indoors/upper_level/central_corridor)
+"byO" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/hybrisa/trash{
+	icon_state = "trash_7"
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
+"byP" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/blue2/northwest,
+/area/white_antre/indoors/upper_level/central_corridor)
 "byY" = (
 /obj/structure/prop/hybrisa/airport/dropshipventright,
 /turf/open/auto_turf/shale/layer1/weedable,
@@ -33203,6 +34434,7 @@
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "wcO" = (
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/cell_stripe/west,
 /area/white_antre/indoors/upper_level/central_corridor)
 "wcT" = (
@@ -85657,7 +86889,7 @@ aMJ
 bfX
 bfX
 bfX
-aNz
+afo
 aNt
 aNt
 aNt
@@ -93455,7 +94687,7 @@ asL
 cDM
 aTj
 aXq
-aJE
+boT
 aaG
 aSw
 aSw
@@ -93791,7 +95023,7 @@ cDM
 cDM
 aTj
 aXq
-aay
+boU
 rSc
 mPP
 mPP
@@ -117971,8 +119203,8 @@ spC
 spC
 nkN
 nkN
-spC
-spC
+nkN
+nkN
 nkN
 nkN
 nkN
@@ -132922,15 +134154,15 @@ jpm
 aQl
 aQo
 aep
-adO
+byh
 adG
 adG
 adA
-adB
+bxp
 adO
 adG
 adG
-adA
+bqF
 bgZ
 aiP
 ajx
@@ -133089,8 +134321,8 @@ jpm
 jpm
 aQl
 aQo
-aep
-adB
+byt
+byi
 adB
 adB
 adB
@@ -133257,12 +134489,12 @@ jpm
 jpm
 aQl
 aQo
+byu
+adG
+bxV
 adG
 adG
-adG
-adG
-adG
-adG
+bxq
 adG
 adG
 adH
@@ -133425,16 +134657,16 @@ jpm
 jpm
 aQl
 aQo
+byv
 aej
-aej
-adL
+bxW
 aeb
 adL
 adL
 adL
 adL
 adI
-adB
+bsW
 adv
 bgZ
 aQf
@@ -133593,16 +134825,16 @@ jpm
 jpm
 aQl
 aQo
-adQ
-adQ
-adQ
-adQ
-adQ
+byw
+bxC
+bxJ
+bxJ
+bxz
 adP
 adP
 adL
-adI
-adB
+buT
+bsW
 adw
 bgZ
 aQg
@@ -133761,16 +134993,16 @@ jpm
 jpm
 aQl
 aQo
-adQ
+byx
+byj
+bxX
 aec
-adQ
-aec
-adQ
+bxA
 aQo
 aQo
-adL
+bvg
 adI
-adB
+buD
 adx
 bgZ
 aQg
@@ -133929,16 +135161,16 @@ jpm
 jpm
 aQl
 aQo
-adQ
+byy
 aek
-adQ
+bxY
 aed
 adQ
 adU
 aQo
-adL
+bvh
 adI
-adB
+buE
 bgZ
 bgZ
 aQg
@@ -134097,16 +135329,16 @@ jpm
 jpm
 aQl
 aQo
-adQ
+byz
 ael
-adQ
+bxZ
 aee
-adQ
+bxB
 adV
 aQo
-adL
-adI
-adB
+aej
+buU
+buF
 bgZ
 aQf
 ahn
@@ -134266,15 +135498,15 @@ jpm
 aQl
 aQo
 aeq
+bxK
+bya
 adQ
-adQ
-adQ
-adQ
+bxA
 aQo
 aQo
-adL
-adI
-adB
+aej
+buV
+buG
 bgZ
 aQg
 bgW
@@ -134433,15 +135665,15 @@ jpm
 jpm
 aQl
 aQo
-adQ
+byA
 aem
+byb
+bxK
+bxC
 adQ
-adQ
-adQ
-adQ
-adQ
+bxa
 adL
-adI
+buW
 adB
 bgZ
 aQg
@@ -134602,14 +135834,14 @@ jpm
 bpE
 aQo
 aer
+byk
+bxX
 adQ
 adQ
-adQ
-adQ
-adQ
-adQ
-adL
-adI
+bxb
+bxb
+bwR
+buX
 adB
 bgZ
 aQg
@@ -134775,10 +136007,10 @@ bhj
 aef
 aQo
 adW
-adK
-adK
+bxc
+bwS
 adJ
-adB
+buH
 bgZ
 aQg
 bgW
@@ -134943,8 +136175,8 @@ adC
 adR
 aQo
 aQo
-adR
-adK
+bxd
+bwT
 adK
 adC
 bgZ
@@ -135099,21 +136331,21 @@ aev
 aev
 aev
 bhL
-nCG
+byK
 fAn
 jpm
 jpm
 aQl
-nCG
+byF
 aQo
 aen
 aeh
 adJ
 adZ
 aQo
-adI
-bhh
-bhh
+bxe
+buY
+buY
 adD
 bgZ
 aQh
@@ -135267,7 +136499,7 @@ aev
 aev
 aev
 bhL
-nCG
+byL
 fAn
 jpm
 jpm
@@ -135279,7 +136511,7 @@ aei
 aeg
 aea
 aQo
-adE
+bxf
 bhj
 adF
 adE
@@ -135444,13 +136676,13 @@ jps
 aQo
 aQo
 aQo
+bxL
 aQo
 aQo
-aQo
-fAn
+bxg
+bwU
 jpm
-jpm
-aQl
+bpE
 bgZ
 aQf
 ahn
@@ -135602,23 +136834,23 @@ bhL
 bhL
 bhL
 bhL
-iOV
+byM
 aQq
 jpm
 jpm
 jpm
-jpm
+byG
 qNw
-ioB
-ioB
-ioB
-ioB
-ioB
-ioB
+bpK
+byc
+byc
+bxM
+bxD
+bxr
 aQq
-jpm
-jpm
-qNw
+buZ
+buZ
+buI
 aQj
 aQg
 bgW
@@ -135774,17 +137006,17 @@ aQq
 jpm
 jpm
 jpm
+byH
+jpm
+byC
+byB
+jpm
+buZ
 jpm
 jpm
 jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
-jpm
+bxh
+buZ
 jpm
 jpm
 bha
@@ -135945,13 +137177,13 @@ bhK
 bhK
 jpm
 jpm
+byC
 jpm
 jpm
+bxN
 jpm
-jpm
-jpm
-jpm
-jpm
+bxs
+bxi
 jpm
 jpm
 jpm
@@ -136109,12 +137341,12 @@ jpm
 jpm
 jpm
 jpm
+byJ
+byI
 jpm
 jpm
 jpm
-jpm
-jpm
-jpm
+bxh
 jpm
 jpm
 jpm
@@ -136282,15 +137514,15 @@ jpm
 jpm
 aQm
 vJS
-vJS
-vJS
-vJS
-vJS
+byl
+bxO
+bxO
+bxE
 vJS
 iDy
 jpm
-jpm
-aQm
+bva
+buJ
 aQj
 aQg
 bgW
@@ -136442,23 +137674,23 @@ bhO
 bhO
 bhO
 bhO
-nCG
+byD
 bTL
 bvD
 jpm
 jpm
 aQm
 qwn
-nCG
+byD
 bhg
 bhg
+bxP
 bhg
 bhg
-bhg
-fAn
+bpH
 aQp
 aQp
-aQl
+buK
 bhb
 aQh
 aiI
@@ -136620,8 +137852,8 @@ nCG
 bhg
 bhg
 bhg
-bhv
-bhv
+bxQ
+bxF
 bhg
 bhc
 bhk
@@ -137124,13 +138356,13 @@ ahI
 aif
 ahX
 ahK
-ahC
+bxR
 ahi
 ahr
 ahg
 ahm
 ahl
-ahg
+buL
 bhb
 aQg
 bgW
@@ -137458,15 +138690,15 @@ bvv
 aQw
 ahI
 aih
-aQu
+bym
 ahM
 ahC
 ahi
-ahj
+bxt
 bhd
 bhd
 bhd
-bhd
+buM
 bhb
 aQg
 bgW
@@ -137629,12 +138861,12 @@ ahI
 ahI
 ahI
 ahD
+bxj
+bxu
+bxj
+bwV
 ahj
-ahi
-ahj
-ahi
-ahj
-ahi
+buN
 bhb
 aQg
 bgW
@@ -137794,15 +139026,15 @@ bhB
 bvk
 ahI
 aii
-aQu
+byn
 ahM
 ahC
-bhp
+bxH
 bhe
 bhe
 bhl
-ahi
-ahj
+bvb
+buO
 bhb
 aQg
 bgW
@@ -137965,11 +139197,11 @@ aij
 aQu
 ahN
 ahB
-bhq
+bxI
 ahs
 ahp
 bhm
-ahj
+bvc
 ahi
 bhb
 aQh
@@ -138133,11 +139365,11 @@ aif
 ahY
 ahO
 ahC
-bhq
-bhf
+bxI
+bxv
 ahq
 bhm
-ahi
+bvb
 ahj
 bhb
 bgV
@@ -138288,8 +139520,8 @@ bvQ
 hVG
 reI
 bhB
-bhB
-hVG
+bsX
+byN
 reI
 bvQ
 bts
@@ -138300,12 +139532,12 @@ ahI
 aik
 ahZ
 ahP
-ahB
-bhq
+bxS
+bxI
 bhf
-bhf
+bxk
 bhm
-ahj
+bvc
 ahi
 aQk
 aQf
@@ -138455,8 +139687,8 @@ bhB
 bhJ
 bhB
 bhB
-bhB
-bhB
+bsX
+byO
 bhB
 bhB
 bhJ
@@ -138469,11 +139701,11 @@ ahI
 ahI
 ahI
 ahE
-bhq
+bxI
 bhf
 bhf
 bhm
-ahi
+bvb
 ahj
 aQk
 aQg
@@ -138621,8 +139853,8 @@ biA
 bhB
 bhB
 bta
-aRf
-aQA
+byP
+btF
 bhB
 bhB
 aRf
@@ -138634,14 +139866,14 @@ bvz
 bvp
 ahI
 ail
-aia
+byo
 ahQ
 ahB
-bhq
+bxI
 bhf
-bhf
+bxl
 bhm
-ahj
+bvc
 ahi
 aQk
 aQh
@@ -138805,11 +140037,11 @@ aim
 aia
 ahR
 ahC
-bhq
+bxI
 aht
-bhf
+bxm
 bhm
-ahi
+bvb
 ahj
 bhb
 bgV
@@ -138973,11 +140205,11 @@ ain
 aib
 ahS
 ahB
-bhq
+bxI
 ahu
-ahq
-bhm
-ahj
+bxn
+bwW
+bvc
 ahi
 bhb
 aQf
@@ -139138,15 +140370,15 @@ bhB
 aQw
 ahI
 aio
-aQu
+byp
 ahT
-ahC
+bxT
 bhx
 bhv
 bhv
 bho
-ahi
-ahj
+bvb
+buO
 bhb
 aQg
 bgW
@@ -139305,14 +140537,14 @@ bhB
 bhB
 aQw
 bhg
-ahU
+byE
 aic
 ahU
 ahF
-ahj
-ahi
-ahj
-ahi
+bxo
+bwX
+bxo
+bwX
 ahj
 ahi
 bhb
@@ -139474,15 +140706,15 @@ bts
 bvr
 bhg
 aKe
+byq
+byd
 bhd
 bhd
-bhd
-bhd
-ahj
+bxw
 ahi
 ahj
 ahi
-ahj
+buP
 bhb
 aQg
 bgW
@@ -139642,7 +140874,7 @@ bhB
 bvi
 bhg
 bhg
-bhc
+byr
 bhk
 ahk
 bhc
@@ -139650,7 +140882,7 @@ bhg
 ahj
 bhp
 bhe
-bhe
+buQ
 bhb
 aQg
 bgW
@@ -139810,15 +141042,15 @@ bhJ
 bhJ
 bhg
 bhg
-ahg
+bys
 ahm
 ahl
 ahg
 bhc
 ahi
 bhq
-bhf
-bhf
+bvd
+buR
 bhb
 aQh
 aQe
@@ -139979,14 +141211,14 @@ aQx
 bhg
 bhg
 aho
-ahm
+bye
 ahl
 ahf
 bhc
 ahj
 bhq
-bhf
-bhf
+bvd
+buS
 bhb
 bgV
 bgV
@@ -140147,13 +141379,13 @@ aQy
 acP
 bhg
 aho
-ahm
+byf
 ahl
 ahf
 bhc
 bhe
 bhr
-bhf
+bve
 bhb
 bhb
 ozb
@@ -140314,13 +141546,13 @@ bur
 bhB
 bpD
 bhg
-bhg
-bhk
-ahk
+bhc
+byg
+bxU
 bhg
 bhg
 bhf
-bhf
+bwY
 bhg
 bhb
 ozb
@@ -140486,7 +141718,7 @@ bhB
 wcO
 aDa
 bhc
-bhd
+bxx
 bhf
 bhf
 bhg
@@ -140654,10 +141886,10 @@ aQL
 bsX
 bsX
 bhc
-bhd
+bxy
 bhf
-bhf
-bhf
+bwZ
+bvf
 bhg
 aQi
 iKa

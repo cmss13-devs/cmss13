@@ -777,6 +777,8 @@
 /mob/living/carbon/xenomorph/pull_response(mob/puller)
 	if(stat == DEAD)
 		return TRUE
+	if(legcuffed)
+		return TRUE
 	if(has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
 		var/mob/living/carbon/human/H = puller
 		if(H.ally_of_hivenumber(hivenumber))

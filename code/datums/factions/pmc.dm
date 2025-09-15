@@ -13,6 +13,8 @@
 	switch(_role)
 		if(JOB_PMC_DIRECTOR)
 			hud_icon_state = "sd"
+		if(JOB_PMC_FIELD_OP_LEADER)
+			hud_icon_state = "fol"
 		if(JOB_PMC_LEADER)
 			hud_icon_state = "ld"
 		if(JOB_PMC_LEAD_INVEST)

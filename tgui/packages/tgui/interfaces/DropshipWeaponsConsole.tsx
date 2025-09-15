@@ -21,7 +21,7 @@ export interface DropshipProps {
   fulton_targets: Array<string>;
   selected_eqp: number;
   tactical_map_ref?: Array<string>;
-  zlevel: number;
+  zlevel?: number;
   zlevelMax: number;
   camera_map_ref?: string;
   camera_target_id?: string;
@@ -278,8 +278,12 @@ const WeaponsMfdPanel = (props) => {
 };
 
 const BaseMfdPanel = (props: MfdProps) => {
+  const { data } = useBackend<DropshipProps>();
   const { setPanelState } = mfdState(props.panelStateId);
   const { otherPanelState } = otherMfdState(props.otherPanelStateId);
+
+  // Set default zlevel to 2 if not provided (this map starts at zlevel 2)
+  const zlevel = data.zlevel ?? 2;
 
   return (
     <MfdPanel
@@ -322,6 +326,12 @@ const BaseMfdPanel = (props: MfdProps) => {
 
 const PrimaryPanel = (props: MfdProps) => {
   const { panelState } = mfdState(props.panelStateId);
+  const { data } = useBackend<DropshipProps>();
+
+  // Use zlevel as part of the key to force re-render when it changes
+  // Backend uses 1-indexed zlevels, this map starts at zlevel 2
+  const zlevel = data.zlevel ?? 2;
+
   switch (panelState) {
     case 'camera':
       return <CameraMfdPanel {...props} />;

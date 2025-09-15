@@ -34757,12 +34757,6 @@
 /obj/docking_port/stationary/marine_dropship/almayer_hangar_1,
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
-"bFS" = (
-/obj/structure/bed/roller/hospital_empty/bigrollerempty{
-	dir = 4
-	},
-/turf/open/floor/almayer/sterile_green,
-/area/almayer/medical/lower_medical_medbay)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4
@@ -52336,6 +52330,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/brig/processing)
+"hZN" = (
+/obj/structure/bed/roller/hospital_empty/bigrollerempty{
+	dir = 4
+	},
+/turf/open/floor/almayer/sterile_green,
+/area/almayer/medical/lower_medical_medbay)
 "hZZ" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating/plating_catwalk,
@@ -139073,7 +139073,7 @@ afq
 afe
 aZK
 rlZ
-bFS
+hZN
 cpJ
 tni
 bCn

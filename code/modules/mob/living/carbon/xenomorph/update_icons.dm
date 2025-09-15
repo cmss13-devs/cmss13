@@ -335,7 +335,7 @@
 
 	var/new_icon_state
 
-	if(health > human_health_threshold_dead)
+	if(health > -100)
 		if(health_threshold > 3)
 			new_icon_state = "none"
 		else if(body_position == LYING_DOWN)

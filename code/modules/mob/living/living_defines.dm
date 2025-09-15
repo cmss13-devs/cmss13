@@ -5,7 +5,6 @@
 	var/maxHealth = 100 //Maximum health that should be possible.
 	var/health = 100 //A mob's health
 
-	// Crit and Dead thresholds until a human reaches crit or dies.
 	var/human_health_threshold_dead = -100
 	var/human_health_threshold_crit = -50
 

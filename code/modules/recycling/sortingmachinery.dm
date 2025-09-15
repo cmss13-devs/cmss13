@@ -339,11 +339,11 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
-/obj/item/device/destTagger/proc/openwindow(mob/user as mob)
+/obj/item/device/destTagger/proc/openwindow(mob/user)
 	var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
-	for(var/i = 1 to length(GLOB.tagger_locations))
+	for(var/i in 1 to length(GLOB.tagger_locations))
 		var/encoded_tag = html_encode(GLOB.tagger_locations[i])
 		dat += "<td><a href='byond://?src=\ref[src];nextTag=[encoded_tag]'>[encoded_tag]</a></td>"
 
@@ -354,7 +354,7 @@
 	show_browser(user, dat, "Whiskey Outpost Destination Tagger")
 	onclose(user, "destTagScreen")
 
-/obj/item/device/destTagger/attack_self(mob/user as mob)
+/obj/item/device/destTagger/attack_self(mob/user)
 	. = ..()
 	openwindow(user)
 

@@ -112,7 +112,7 @@
 	wound_icon_holder.dir = dir
 	wound_icon_holder.icon = icon
 	var/health_threshold = max(ceil((health * 4) / (maxHealth)), 0) //From 0 to 4, in 25% chunks
-	if(health > human_health_threshold_dead)
+	if(health > -100)
 		if(health_threshold > 3)
 			wound_icon_holder.icon_state = "none"
 		else if(body_position == LYING_DOWN)

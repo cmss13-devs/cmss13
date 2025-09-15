@@ -20,12 +20,20 @@
 	else
 		total_positions_so_far = slots
 
-	if(latejoin)
-		for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
-			if(target_squad && !target_squad.riflemen_limited)
-				target_squad.roles_cap[title] = slots
+	var/total_slots = 0
 
-	return (slots*4)
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(!target_squad)
+			continue
+
+		if(target_squad.riflemen_limited)
+			total_slots += target_squad.roles_cap[title]
+		else
+			if(latejoin)
+				target_squad.roles_cap[title] = slots
+			total_slots += slots
+
+	return total_slots
 
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC

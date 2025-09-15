@@ -34761,11 +34761,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "bGr" = (
-/obj/structure/machinery/cm_vending/clothing/specialist/support,
+/obj/structure/machinery/cm_vending/clothing/tl/support,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/support)
 "bGs" = (
-/obj/structure/machinery/cm_vending/gear/spec,
+/obj/structure/machinery/cm_vending/gear/tl,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/support)
 "bGt" = (
@@ -34938,7 +34938,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/machinery/cm_vending/clothing/specialist/support,
+/obj/structure/machinery/cm_vending/clothing/tl/support,
 /turf/open/floor/almayer/blue/west,
 /area/almayer/squads/support)
 "bGU" = (
@@ -34949,7 +34949,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/obj/structure/machinery/cm_vending/gear/spec,
+/obj/structure/machinery/cm_vending/gear/tl,
 /turf/open/floor/almayer/blue/east,
 /area/almayer/squads/support)
 "bGW" = (

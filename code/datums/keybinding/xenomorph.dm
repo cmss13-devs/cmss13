@@ -862,20 +862,20 @@
 			handle_xeno_macro_datum(xeno, burrower_build_tunnel_check)
 			return TRUE
 
-/datum/keybinding/xenomorph/burrower_build_tunnel
+/datum/keybinding/xenomorph/burrower_place_trap
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "burrower_build_tunnel"
-	full_name = "Burrower: Build Tunnel"
-	keybind_signal = COMSIG_KB_XENO_BURROWER_BUILD_TUNNEL
+	name = "burrower_place_trap"
+	full_name = "Burrower: Place Trap"
+	keybind_signal = COMSIG_KB_XENO_BURROWER_PLACE_TRAP
 
-/datum/keybinding/xenomorph/burrower_build_tunnel/down(client/user)
+/datum/keybinding/xenomorph/burrower_place_trap/down(client/user)
 	. = ..()
 	if(.)
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
-	var/datum/action/xeno_action/onclick/build_tunnel/burrower_build_tunnel_check = get_action(xeno, /datum/action/xeno_action/onclick/build_tunnel)
-	if(burrower_build_tunnel_check)
-		if(burrower_build_tunnel_check && !burrower_build_tunnel_check.hidden)
-			handle_xeno_macro_datum(xeno, burrower_build_tunnel_check)
+	var/datum/action/xeno_action/onclick/place_trap/burrower_place_trap_check = get_action(xeno, /datum/action/xeno_action/onclick/place_trap)
+	if(burrower_place_trap_check)
+		if(burrower_place_trap_check && !burrower_place_trap_check.hidden)
+			handle_xeno_macro_datum(xeno, burrower_place_trap_check)
 			return TRUE

@@ -253,6 +253,16 @@
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
+		if(curloc.z < new_target.z)
+			var/turf/below = SSmapping.get_turf_below(new_target)
+			if(below)
+				new_target = below
+
+		if(curloc.z > new_target.z)
+			var/turf/above = SSmapping.get_turf_above(new_target)
+			if(above)
+				new_target = above
+
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range + projectile_max_range_add, P.ammo.shell_speed, original_P.original, FALSE) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/turf, datum/cause_data/cause_data) // ~Art updated fire 20JAN17

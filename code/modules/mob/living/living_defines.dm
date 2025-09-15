@@ -5,8 +5,9 @@
 	var/maxHealth = 100 //Maximum health that should be possible.
 	var/health = 100 //A mob's health
 
-	///Thresholds until a living/carbon/human mob reaches crit or dies.
+	///How much health a living/carbon/human mob has when it dies.
 	var/human_health_threshold_dead = -100
+	///How much health a living/carbon/human mob has when it goes into crit state.
 	var/human_health_threshold_crit = -50
 
 	//Damage related vars, NOTE: THESE SHOULD ONLY BE MODIFIED BY PROCS

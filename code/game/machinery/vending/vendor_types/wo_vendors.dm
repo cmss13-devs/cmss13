@@ -20,7 +20,7 @@
 		list("RADIO HEADSETS", -1, null, null),
 		list("Marine Alpha Radio Headset", floor(scale * 5), /obj/item/device/radio/headset/almayer/marine/alpha, VENDOR_ITEM_REGULAR),
 		list("Marine Bravo Radio Headset", floor(scale * 5), /obj/item/device/radio/headset/almayer/marine/bravo, VENDOR_ITEM_REGULAR),
-		list("Marine Charlie Radio Headset", floor(scale * 5), /obj/item/device/radio/headset/almayer/marine/charlie, VENDOR_ITEM_REGULAR),
+		list("Marine Tango Radio Headset", floor(scale * 5), /obj/item/device/radio/headset/almayer/marine/tango, VENDOR_ITEM_REGULAR),
 		list("Marine Delta Radio Headset", floor(scale * 5), /obj/item/device/radio/headset/almayer/marine/delta, VENDOR_ITEM_REGULAR),
 		list("Marine Radio Headset", floor(scale * 5), /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 

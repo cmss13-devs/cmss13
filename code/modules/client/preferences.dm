@@ -1649,7 +1649,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 						weyland_yutani_relation = new_relation
 
 				if("prefsquad")
-					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Charlie", "Delta", "Kilo", "Oscar", "None")
+					var/new_pref_squad = input(user, "Choose your preferred squad.", "Character Preference")  as null|anything in list("Alpha", "Bravo", "Tango", "Delta", "Kilo", "Oscar", "None")
 					if(new_pref_squad)
 						preferred_squad = new_pref_squad
 

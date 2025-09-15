@@ -474,7 +474,7 @@
 		"Landing Zone" = TRACKER_LZ,
 		"Alpha SL" = TRACKER_ASL,
 		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
@@ -608,7 +608,7 @@
 		"Landing Zone" = TRACKER_LZ,
 		"Alpha SL" = TRACKER_ASL,
 		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
@@ -677,7 +677,7 @@
 		"Landing Zone" = TRACKER_LZ,
 		"Alpha SL" = TRACKER_ASL,
 		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
@@ -692,7 +692,7 @@
 		"Landing Zone" = TRACKER_LZ,
 		"Alpha SL" = TRACKER_ASL,
 		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
@@ -755,7 +755,7 @@
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
 		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
@@ -798,7 +798,7 @@
 		"Commanding Officer" = TRACKER_CO,
 		"Executive Officer" = TRACKER_XO,
 		"Alpha SL" = TRACKER_ASL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
@@ -821,16 +821,16 @@
 	desc = "This is used by the marine Bravo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
-//############################## CHARLIE ###############################
-/obj/item/device/radio/headset/almayer/marine/charlie
-	name = "marine charlie radio headset"
-	desc = "This is used by Charlie squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	icon_state = "charlie_headset"
-	frequency = CHARLIE_FREQ
+//############################## TANGO ###############################
+/obj/item/device/radio/headset/almayer/marine/tango
+	name = "marine tango radio headset"
+	desc = "This is used by Tango squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	icon_state = "tango_headset"
+	frequency = TANGO_FREQ
 
-/obj/item/device/radio/headset/almayer/marine/charlie/lead
-	name = "marine charlie leader radio headset"
-	desc = "This is used by the marine Charlie squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+/obj/item/device/radio/headset/almayer/marine/tango/lead
+	name = "marine tango leader radio headset"
+	desc = "This is used by the marine Tango squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
 	volume = RADIO_VOLUME_CRITICAL
 
@@ -848,20 +848,20 @@
 		"Intel SL" = TRACKER_ISL
 	)
 
-/obj/item/device/radio/headset/almayer/marine/charlie/tl
-	name = "marine charlie team leader radio headset"
-	desc = "This is used by the marine Charlie team leader. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+/obj/item/device/radio/headset/almayer/marine/tango/tl
+	name = "marine tango team leader radio headset"
+	desc = "This is used by the marine Tango team leader. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
 	volume = RADIO_VOLUME_RAISED
 
-/obj/item/device/radio/headset/almayer/marine/charlie/engi
-	name = "marine charlie engineer radio headset"
-	desc = "This is used by the marine Charlie combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+/obj/item/device/radio/headset/almayer/marine/tango/engi
+	name = "marine tango engineer radio headset"
+	desc = "This is used by the marine Tango combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
-/obj/item/device/radio/headset/almayer/marine/charlie/med
-	name = "marine charlie corpsman radio headset"
-	desc = "This is used by the marine Charlie combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+/obj/item/device/radio/headset/almayer/marine/tango/med
+	name = "marine tango corpsman radio headset"
+	desc = "This is used by the marine Tango combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 //############################## DELTA ###############################
@@ -885,7 +885,7 @@
 		"Executive Officer" = TRACKER_XO,
 		"Alpha SL" = TRACKER_ASL,
 		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Echo SL" = TRACKER_ESL,
 		"Foxtrot SL" = TRACKER_FSL,
 		"Intel SL" = TRACKER_ISL
@@ -928,7 +928,7 @@
 		"Executive Officer" = TRACKER_XO,
 		"Alpha SL" = TRACKER_ASL,
 		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Delta SL" = TRACKER_DSL,
 		"Foxtrot SL" = TRACKER_FSL,
 		"Intel SL" = TRACKER_ISL
@@ -972,7 +972,7 @@
 		"Executive Officer" = TRACKER_XO,
 		"Alpha SL" = TRACKER_ASL,
 		"Bravo SL" = TRACKER_BSL,
-		"Charlie SL" = TRACKER_CSL,
+		"Tango SL" = TRACKER_TSL,
 		"Delta SL" = TRACKER_DSL,
 		"Echo SL" = TRACKER_ESL
 	)

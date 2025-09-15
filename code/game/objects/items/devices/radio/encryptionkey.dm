@@ -189,9 +189,9 @@
 	icon_state = "bravo_key"
 	channels = list(SQUAD_MARINE_2 = TRUE)
 
-/obj/item/device/encryptionkey/charlie
-	name = "\improper Charlie Squad Radio Encryption Key"
-	icon_state = "charlie_key"
+/obj/item/device/encryptionkey/tango
+	name = "\improper Tango Squad Radio Encryption Key"
+	icon_state = "tango_key"
 	channels = list(SQUAD_MARINE_3 = TRUE)
 
 /obj/item/device/encryptionkey/delta

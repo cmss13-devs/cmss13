@@ -147,7 +147,7 @@ Radiochat range: 1441 to 1489 (most devices refuse to be tune to other frequency
 //Marine Squad channels
 #define ALPHA_FREQ 1491
 #define BRAVO_FREQ 1492
-#define CHARLIE_FREQ 1493
+#define TANGO_FREQ 1493
 #define DELTA_FREQ 1494
 #define ECHO_FREQ 1495
 #define KILO_FREQ 1496
@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(radiochannels, list(
 #define FAX_RESP_FREQS list(FAX_WY_FREQ, FAX_USCM_HC_FREQ, FAX_USCM_PVST_FREQ)
 
 //Depts - used for colors in headset.dm, as well as deciding what the marine comms tower can listen into
-#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, KILO_FREQ, OSCAR_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
+#define DEPT_FREQS list(COMM_FREQ, MED_FREQ, ENG_FREQ, SEC_FREQ, SENTRY_FREQ, ALPHA_FREQ, BRAVO_FREQ, TANGO_FREQ, DELTA_FREQ, ECHO_FREQ, KILO_FREQ, OSCAR_FREQ, CRYO_FREQ, REQ_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 #define TRANSMISSION_WIRE 0
 #define TRANSMISSION_RADIO 1
@@ -294,7 +294,7 @@ SUBSYSTEM_DEF(radio)
 		"[CMB_FREQ]" = "cmbradio",
 		"[ALPHA_FREQ]" = "alpharadio",
 		"[BRAVO_FREQ]" = "bravoradio",
-		"[CHARLIE_FREQ]" = "charlieradio",
+		"[TANGO_FREQ]" = "tangoradio",
 		"[DELTA_FREQ]" = "deltaradio",
 		"[ECHO_FREQ]" = "echoradio",
 		"[KILO_FREQ]" = "kiloradio",

@@ -317,7 +317,7 @@
 		list("RADIO KEYS", 0, null, null, null),
 		list("Alpha Squad", 15, /obj/item/device/encryptionkey/alpha, "white", "Radio Key for USCM Alpha Squad."),
 		list("Bravo Squad", 15, /obj/item/device/encryptionkey/bravo, "white", "Radio Key for USCM Bravo Squad."),
-		list("Charlie Squad", 15, /obj/item/device/encryptionkey/charlie, "white", "Radio Key for USCM Charlie Squad."),
+		list("Tango Squad", 15, /obj/item/device/encryptionkey/tango, "white", "Radio Key for USCM Tango Squad."),
 		list("Delta Squad", 15, /obj/item/device/encryptionkey/delta, "white", "Radio Key for USCM Delta Squad."),
 		list("Echo Squad", 15, /obj/item/device/encryptionkey/echo, "white", "Radio Key for USCM Echo Squad."),
 		list("Colony", 20, /obj/item/device/encryptionkey/colony, "white", "Pre-tuned Radio Key for local colony comms."),

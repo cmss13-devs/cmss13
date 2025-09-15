@@ -21,7 +21,7 @@
 
 #define ALPHA 1
 #define BRAVO 2
-#define CHARLIE 3
+#define TANGO 3
 #define DELTA 4
 #define ECHO 5
 #define CRYO 6

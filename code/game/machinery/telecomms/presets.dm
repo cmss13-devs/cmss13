@@ -440,7 +440,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 	id = "Receiver A"
 	network = "tcommsat"
 	autolinkers = list("receiverA") // link to relay
-	freq_listening = list(ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, KILO_FREQ, OSCAR_FREQ)
+	freq_listening = list(ALPHA_FREQ, BRAVO_FREQ, TANGO_FREQ, DELTA_FREQ, KILO_FREQ, OSCAR_FREQ)
 
 //--PRESET RIGHT--//
 
@@ -473,7 +473,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 /obj/structure/machinery/telecomms/bus/preset_two
 	id = "Bus 2"
 	network = "tcommsat"
-	freq_listening = list(ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, ECHO_FREQ, KILO_FREQ, OSCAR_FREQ, CRYO_FREQ)
+	freq_listening = list(ALPHA_FREQ, BRAVO_FREQ, TANGO_FREQ, DELTA_FREQ, ECHO_FREQ, KILO_FREQ, OSCAR_FREQ, CRYO_FREQ)
 	autolinkers = list("processor2","squads")
 
 /obj/structure/machinery/telecomms/bus/preset_three
@@ -533,7 +533,7 @@ GLOBAL_LIST_EMPTY(all_static_telecomms_towers)
 
 /obj/structure/machinery/telecomms/server/presets/squads
 	id = "Squad Server"
-	freq_listening = list(ALPHA_FREQ, BRAVO_FREQ, CHARLIE_FREQ, DELTA_FREQ, KILO_FREQ, OSCAR_FREQ)
+	freq_listening = list(ALPHA_FREQ, BRAVO_FREQ, TANGO_FREQ, DELTA_FREQ, KILO_FREQ, OSCAR_FREQ)
 	autolinkers = list("squads")
 
 /obj/structure/machinery/telecomms/server/presets/medical

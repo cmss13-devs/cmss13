@@ -69,7 +69,7 @@
 
 #define TRACKER_ASL "_asl" // Alpha Squad Leader
 #define TRACKER_BSL "_bsl" // Bravo Squad Leader
-#define TRACKER_CSL "_csl" // Charlie Squad Leader
+#define TRACKER_TSL "_tsl" // Tango Squad Leader
 #define TRACKER_DSL "_dsl" // Delta Squad Leader
 #define TRACKER_ESL "_esl" // Echo Squad Leader
 #define TRACKER_KSL "_ksl" // Kilo Squad Leader

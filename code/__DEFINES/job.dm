@@ -5,7 +5,7 @@
 // Squad name defines
 #define SQUAD_MARINE_1 "Alpha"
 #define SQUAD_MARINE_2 "Bravo"
-#define SQUAD_MARINE_3 "Charlie"
+#define SQUAD_MARINE_3 "Tango"
 #define SQUAD_MARINE_4 "Delta"
 #define SQUAD_MARINE_5 "Echo"
 #define SQUAD_MARINE_6 "Kilo"

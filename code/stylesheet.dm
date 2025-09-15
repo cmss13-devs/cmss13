@@ -60,7 +60,7 @@ em {font-style: normal; font-weight: bold;}
 
 .alpharadio {color: #EA0000;}
 .bravoradio {color: #C68610;}
-.charlieradio {color: #AA55AA;}
+.tangoradio {color: #2a9e9e;}
 .deltaradio {color: #007FCF;}
 .kiloradio {color: #059E96;}
 .oscarradio {color: #BDE331;}

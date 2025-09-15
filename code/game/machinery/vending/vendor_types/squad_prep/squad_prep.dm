@@ -248,7 +248,7 @@
 	..()
 	listed_products += list(
 		list("HEADSET", -1, null, null),
-		list("Marine Charlie Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/charlie, VENDOR_ITEM_REGULAR),
+		list("Marine Tango Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/tango, VENDOR_ITEM_REGULAR),
 		)
 
 /obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/delta

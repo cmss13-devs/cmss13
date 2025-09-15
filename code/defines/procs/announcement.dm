@@ -2,7 +2,7 @@
 #define UPP_COMMAND_ANNOUNCE "UPP Command Announcement"
 #define CLF_COMMAND_ANNOUNCE "CLF Command Announcement"
 #define PMC_COMMAND_ANNOUNCE "PMC Command Announcement"
-#define VENIR_ANNOUNCE "White Venir Central Announcement"
+#define VENIR_ANNOUNCE "White Antre Central Announcement"
 #define QUEEN_ANNOUNCE "The words of the Queen reverberate in your head..."
 #define QUEEN_LORE_ANNOUNCE "The words of the Queen reverberate in your head..."
 #define QUEEN_MOTHER_ANNOUNCE "Queen Mother Psychic Directive"

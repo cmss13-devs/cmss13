@@ -142,9 +142,9 @@
 	html_link = "images/9/94/New_Varadero.png"
 	color = "red"
 
-/obj/item/map/white_venir_map
-	name = "\improper White Venir Research Facility map"
-	desc = "An overview of the White Venir facility schematics."
+/obj/item/map/white_antre_map
+	name = "\improper White Antre Research Facility map"
+	desc = "An overview of the White Antre facility schematics."
 	html_link = "images/b/bb/C_claim.png"
 	color = "cyan"
 
@@ -166,7 +166,7 @@ GLOBAL_LIST_INIT_TYPED(map_type_list, /obj/item/map, setup_all_maps())
 		MAP_LV522_CHANCES_CLAIM = new /obj/item/map/lv522_map(),
 		MAP_LV759_HYBRISA_PROSPERA = new /obj/item/map/lv759_map(),
 		MAP_NEW_VARADERO = new /obj/item/map/new_varadero(),
-		MAP_WHITE_VENIR_RESEARCH_FACILITY = new /obj/item/map/white_venir_map()
+		MAP_WHITE_ANTRE_RESEARCH_FACILITY = new /obj/item/map/white_antre_map()
 	)
 
 //used by marine equipment machines to spawn the correct map.

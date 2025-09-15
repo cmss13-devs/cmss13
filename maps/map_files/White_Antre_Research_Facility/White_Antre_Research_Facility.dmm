@@ -26961,14 +26961,12 @@
 /obj/item/shard/shrapnel,
 /obj/effect/spawner/gibspawner/human,
 /obj/item/shard/shrapnel,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/blood/blood1{
 	pixel_x = -19;
 	pixel_y = -14
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/strata/white_cyan2,
 /area/white_antre/indoors/upper_level/medical)
 "buH" = (
 /obj/structure/machinery/light/double,
@@ -27757,7 +27755,7 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/strata/white_cyan3/east,
 /area/white_antre/indoors/upper_level/medical)
 "bwT" = (
 /obj/effect/decal/cleanable/dirt,
@@ -28097,10 +28095,8 @@
 /obj/item/shard/shrapnel,
 /obj/effect/spawner/gibspawner/human,
 /obj/item/shard/shrapnel,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "bxL" = (
 /obj/structure/prop/hybrisa/misc/buildinggreebliessmall/smallvent3,
@@ -28420,13 +28416,11 @@
 /obj/item/shard/shrapnel,
 /obj/effect/spawner/gibspawner/human,
 /obj/item/shard/shrapnel,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/meter{
 	pixel_y = 32
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "byy" = (
 /obj/effect/decal/cleanable/blood,
@@ -28478,8 +28472,6 @@
 /obj/item/shard/shrapnel,
 /obj/effect/spawner/gibspawner/human,
 /obj/item/shard/shrapnel,
-/obj/item/ammo_casing/bullet,
-/obj/item/ammo_casing/bullet,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/hybrisa/misc/blood/blood1{
 	pixel_x = -12;
@@ -28493,7 +28485,7 @@
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
-/turf/open/floor/hybrisa/tile/tilegrey,
+/turf/open/floor/strata/white_cyan1/east,
 /area/white_antre/indoors/upper_level/medical)
 "byB" = (
 /obj/item/ammo_magazine/smg/p90{

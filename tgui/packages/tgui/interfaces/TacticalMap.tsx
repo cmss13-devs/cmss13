@@ -34,6 +34,7 @@ interface TacMapProps {
   canViewTacmap: boolean;
   canDraw: boolean;
   isxeno: boolean;
+  isMainship: boolean;
   canViewCanvas: boolean;
   newCanvasFlatImage: Array<string>;
   oldCanvasFlatImage: Array<string>;
@@ -133,15 +134,15 @@ export const TacticalMap = (props) => {
 
   const tryIncrementZ = () => {
     if (
-      data.zlevel + 1 < data.maxZlevel ||
-      data.zlevel + 1 < data.maxZlevelOld
+      data.zlevel + 1 <= data.maxZlevel ||
+      data.zlevel + 1 <= data.maxZlevelOld
     ) {
       const dat = saveSVGData();
       if (dat !== undefined) {
         data.tempSVGData = dat;
       }
-      data.zlevel++;
-      act('updateZlevel', {});
+      const newZlevel = data.zlevel + 1;
+      act('change_zlevel', { zlevel: newZlevel });
     }
   };
 
@@ -151,8 +152,8 @@ export const TacticalMap = (props) => {
       if (dat !== undefined) {
         data.tempSVGData = dat;
       }
-      data.zlevel--;
-      act('updateZlevel', {});
+      const newZlevel = data.zlevel - 1;
+      act('change_zlevel', { zlevel: newZlevel });
     }
   };
 
@@ -225,9 +226,16 @@ export const TacticalMap = (props) => {
                   {data.canChangeMapview ? (
                     <Tabs.Tab
                       onClick={() => {
-                        act('ChangeMapView', {});
+                        // Use isMainship to determine what we're switching to
+                        // If currently on mainship (isMainship=true), we're switching to ground
+                        // If currently on ground (isMainship=false), we're switching to ship
+                        const switchingToGround = data.isMainship;
+
+                        // Both ship and ground maps should default to Z-level 1
+                        const targetZLevel = 1;
+
+                        act('ChangeMapView', { target_zlevel: targetZLevel });
                         setPageIndex(0);
-                        data.zlevel = 0;
                         data.tempSVGData = [];
                       }}
                     >
@@ -258,14 +266,18 @@ const ViewMapPanel = (props) => {
     return <DrawnMap {...props} />;
   }
 
+  // Handle index mapping for different map types
+  const isSingleLevel = data.mapRef.length <= 1;
+  const mapIndex = isSingleLevel ? 0 : data.zlevel - 1;
+
   return (
     <Section fill fitted height="100%">
       <ByondUi
-        key={data.zlevel}
+        key={data.lastUpdateTime}
         height="100%"
         width="100%"
         params={{
-          id: data.mapRef[data.zlevel],
+          id: data.mapRef[mapIndex],
           type: 'map',
           'background-color': 'none',
         }}
@@ -276,12 +288,17 @@ const ViewMapPanel = (props) => {
 
 const OldMapPanel = (props) => {
   const { data } = useBackend<TacMapProps>();
+
+  // Handle index mapping for different map types
+  const isSingleLevel = data.mapRef.length <= 1;
+  const mapIndex = isSingleLevel ? 0 : data.zlevel - 1;
+
   return (
     <Section fill>
       {data.canViewCanvas ? (
         <DrawnMap
           svgData={data.svgData}
-          flatImage={data.oldCanvasFlatImage[data.zlevel]}
+          flatImage={data.oldCanvasFlatImage[mapIndex]}
           backupImage={data.mapFallback}
           key={data.lastUpdateTime}
           zlevel={data.zlevel}
@@ -299,6 +316,10 @@ const DrawMapPanel = (props) => {
   const { data, act } = useBackend<TacMapProps>();
 
   const { canvasLayerRef } = props;
+
+  // Handle index mapping for different map types
+  const isSingleLevel = data.mapRef.length <= 1;
+  const mapIndex = isSingleLevel ? 0 : data.zlevel - 1;
 
   const timeLeftPct = data.canvasCooldown / data.canvasCooldownDuration;
   const canUpdate = data.canvasCooldown <= 0 && !data.updatedCanvas;
@@ -437,7 +458,7 @@ const DrawMapPanel = (props) => {
           ref={canvasLayerRef}
           selection={handleColorSelection(data.toolbarUpdatedSelection)}
           actionQueueChange={data.actionQueueChange}
-          imageSrc={data.newCanvasFlatImage[data.zlevel]}
+          imageSrc={data.newCanvasFlatImage[mapIndex]}
           key={data.lastUpdateTime}
           onImageExport={handleTacMapExport}
           zlevel={data.zlevel}

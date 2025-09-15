@@ -715,6 +715,8 @@ SUBSYSTEM_DEF(minimaps)
 	var/current_ztrait = ZTRAIT_GROUND
 	/// the current z level within the z stack
 	var/atom/owner
+	/// Current zlevel for map display (starts at appropriate level based on map type)
+	var/current_zlevel = 2
 
 	/// tacmap holder for holding the minimap
 
@@ -853,8 +855,28 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/ui_data(mob/user)
 	var/list/data = list()
 
-	data["minZlevel"] = 0
-	data["maxZlevelOld"] = length(map_holders)
+	// Handle different map types:
+	// Single-level maps: zlevel 0
+	// Ship map (mainship): zlevels 1, 2, 3
+	// Ground map (multi-z): zlevels 1, 2, 3
+	if(length(map_holders) <= 1)
+		// Single-level maps (non-multiz ground maps)
+		data["minZlevel"] = 0
+		data["maxZlevel"] = 0
+		current_zlevel = 0
+	else if(is_mainship)
+		// Ship map: always multi-z, valid zlevels 1, 2, 3
+		data["minZlevel"] = 1
+		data["maxZlevel"] = 3
+		// Keep current_zlevel as is for ship map (starts at 2)
+	else
+		// Ground map: multi-z, valid zlevels 1, 2, 3
+		data["minZlevel"] = 1
+		data["maxZlevel"] = 3
+		// Keep current_zlevel as is for ground map (starts at 1)
+
+	data["zlevel"] = current_zlevel
+	data["maxZlevelOld"] = data["maxZlevel"]  // Keep compatibility
 	data["mapRef"] = list()
 	for(var/datum/tacmap_holder/map_holder in map_holders)
 		data["mapRef"] += map_holder?.map_ref
@@ -865,8 +887,25 @@ SUBSYSTEM_DEF(minimaps)
 /datum/tacmap/drawing/ui_data(mob/user)
 	var/list/data = list()
 
-	data["minZlevel"] = 0
-	data["maxZlevel"] = length(new_current_maps)
+	// Handle different map types:
+	// Single-level maps: zlevel 0
+	// Ship map (mainship): zlevels 1, 2, 3
+	// Ground map (multi-z): zlevels 1, 2, 3
+	if(length(map_holders) <= 1)
+		// Single-level maps (non-multiz ground maps)
+		data["minZlevel"] = 0
+		data["maxZlevel"] = 0
+		current_zlevel = 0
+	else if(is_mainship)
+		// Ship map: always multi-z, valid zlevels 1, 2, 3
+		data["minZlevel"] = 1
+		data["maxZlevel"] = 3
+	else
+		// Ground map: multi-z, valid zlevels 1, 2, 3
+		data["minZlevel"] = 1
+		data["maxZlevel"] = 3
+
+	data["zlevel"] = current_zlevel
 	data["maxZlevelOld"] = length(old_maps)
 	data["newCanvasFlatImage"] = list()
 	for(var/datum/flattened_tacmap/new_current_map in new_current_maps)
@@ -1041,10 +1080,44 @@ SUBSYSTEM_DEF(minimaps)
 			else
 				current_ztrait = targeted_ztrait
 
+			// Set appropriate Z-level based on target_zlevel parameter
+			var/target_zlevel = params["target_zlevel"]
+
+			if(target_zlevel)
+				current_zlevel = target_zlevel
+			else
+				current_zlevel = 1 // Default fallback
+
+			last_update_time = world.time //forcing canvas to update
+
 		if("updateZlevel")
 			last_update_time = world.time //forcing canvas to update
 			action_queue_change += 1
 			updated_canvas = FALSE
+
+		if("change_zlevel")
+			var/new_zlevel = params["zlevel"]
+			// Handle boundary checking for both single-level and multi-level maps
+			var/min_zlevel
+			var/max_zlevel
+			if(length(map_holders) <= 1)
+				// Single-level maps (non-multiz ground maps)
+				min_zlevel = 0
+				max_zlevel = 0
+			else if(is_mainship)
+				// Ship map: always multi-z, valid zlevels 1, 2, 3
+				min_zlevel = 1
+				max_zlevel = 3
+			else
+				// Ground map: multi-z, valid zlevels 1, 2, 3
+				min_zlevel = 1
+				max_zlevel = 3
+
+			if(new_zlevel >= min_zlevel && new_zlevel <= max_zlevel)
+				current_zlevel = new_zlevel
+				last_update_time = world.time //forcing canvas to update
+
+			return TRUE
 
 		if("selectAnnouncement")
 			if(!drawing_allowed)

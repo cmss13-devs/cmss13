@@ -84,7 +84,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			to_chat(src, SPAN_WARNING("We require more plasma! Currently at: [plasma_stored] / [required_plasma]."))
 			return
 
-	if(hardcore)
+	if(Check_WO())
 		if(castepick != XENO_CASTE_QUEEN) //Prevent evolutions into T2s and T3s in WO
 			to_chat(src, SPAN_WARNING ("The Hive can only support evolving into Queens!"))
 			return
@@ -367,7 +367,7 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 
 	if(hardcore)
 		to_chat(src, SPAN_WARNING("We can't deevolve."))
-		return
+		return FALSE
 
 	var/alleged_queens = hive.get_potential_queen_count()
 	if(hive.allow_queen_evolve && !hive.living_xeno_queen && alleged_queens < 2 && isdrone(src))

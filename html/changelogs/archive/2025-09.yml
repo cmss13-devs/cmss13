@@ -128,3 +128,12 @@
   - balance: High impact M1911 bullets cause knockback on-par with Mateba and Deagle.
   cuberound:
   - bugfix: BRUTE no longer messes up looking down
+2025-09-15:
+  DoguhanOzgurAkca:
+  - maptweak: Sorokyne LZ2 weedkiller is bigger now
+  Drathek:
+  - bugfix: Fixed runtimes caused by playable huggers hugging
+  FebrezeNinja:
+  - bugfix: ARC phone now shows up as "ARC" in the Vehicles phone list.
+  zzzmike:
+  - bugfix: warden headset added to warden vendor

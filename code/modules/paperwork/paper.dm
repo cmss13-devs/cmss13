@@ -1202,3 +1202,10 @@
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	info = replacetext(info, "%%WYLOGO%%", asset.get_url_mappings()["logo_wy.png"])
+
+/obj/item/paper/captain_brief
+	name = "Classified Operations Briefing"
+	desc = "A classified document from USCM high-command about the colony the ship is responding to."
+	icon_state = "paper_uscm_words_dark"
+
+	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"

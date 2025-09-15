@@ -33,6 +33,7 @@
 	var/announce_text = ""
 	var/infection_announce_text = ""
 	var/liaison_briefing = ""
+	var/list/co_briefing_files = list()
 
 	var/squads_max_num = 4
 
@@ -383,6 +384,9 @@
 
 	if(json["liaison_briefing"])
 		liaison_briefing = json["liaison_briefing"]
+
+	if(islist(json["co_briefing"]))
+		co_briefing_files = json["co_briefing"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])

@@ -21,6 +21,8 @@
 			hud_icon_state = "uacqs_sec"
 			if(id_card.paygrade == PAY_SHORT_CIA_SO)
 				hud_icon_state = "uacqs_sec_senior"
+		if(JOB_CIA_UACQS_SECL)
+			hud_icon_state = "uacqs_sec_senior"
 		if(JOB_CIA_UACQS_DG, JOB_CIA_UACQS_SG)
 			hud_icon_state = "uacqs_dg"
 		if(JOB_CIA_GRS_OPR)
@@ -35,6 +37,8 @@
 			hud_icon_state = "grs_sniper"
 		if(JOB_CIA_GRS_TL)
 			hud_icon_state = "grs_tl"
+		if(JOB_CIA_GRS_DCDR)
+			hud_icon_state = "grs_xo"
 		if(JOB_CIA_GRS_CDR)
 			hud_icon_state = "grs_cdr"
 	if(hud_icon_state)

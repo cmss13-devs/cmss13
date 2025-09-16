@@ -18,6 +18,10 @@
 	title = JOB_CIA_UACQS_SEC
 	gear_preset = /datum/equipment_preset/cia/uacqs/security
 
+/datum/job/special/cia/uacqs_security/lead
+	title = JOB_CIA_UACQS_SECL
+	gear_preset = /datum/equipment_preset/cia/uacqs/security/lead
+
 /datum/job/special/cia/grs/standard
 	title = JOB_CIA_GRS_OPR
 	gear_preset = /datum/equipment_preset/cia_global_response/standard
@@ -45,3 +49,7 @@
 /datum/job/special/cia/grs/commander
 	title = JOB_CIA_GRS_CDR
 	gear_preset = /datum/equipment_preset/cia_global_response/commander
+
+/datum/job/special/cia/grs/dep_commander
+	title = JOB_CIA_GRS_DCDR
+	gear_preset = /datum/equipment_preset/cia_global_response/commander/deputy

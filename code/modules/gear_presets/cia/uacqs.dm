@@ -9,6 +9,8 @@
 	minimap_icon = "uacqs"
 	minimap_background = "background_ua"
 	var/headset_type = /obj/item/device/radio/headset/almayer/uacqs
+	var/pistol_path = /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical
+	var/pistol_ammo_path = /obj/item/ammo_magazine/pistol/ap
 
 /datum/equipment_preset/cia/uacqs/load_gear(mob/living/carbon/human/new_human, client/mob_client)
 	//Give them a random piece of civvie clothing.
@@ -42,7 +44,9 @@
 	new_human.equip_to_slot_or_del(new /obj/item/device/binoculars/range(new_human), WEAR_IN_R_STORE)
 
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/holster, WEAR_ACCESSORY)
-	new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new pistol_path, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new pistol_ammo_path, WEAR_IN_ACCESSORY)
+	new_human.equip_to_slot_or_del(new pistol_ammo_path, WEAR_IN_ACCESSORY)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_ACCESSORY)
 
 	new_human.equip_to_slot_or_del(new /obj/item/device/portable_vendor/antag/cia/covert(new_human), WEAR_IN_BACK)
@@ -76,6 +80,8 @@
 	idtype = /obj/item/card/id/adaptive/gold
 	skills = /datum/skills/cia/field_agent/senior
 	headset_type = /obj/item/device/radio/headset/almayer/uacqs_com
+	pistol_path = /obj/item/weapon/gun/pistol/m1911/custom/tactical
+	pistol_ammo_path = /obj/item/ammo_magazine/pistol/m1911/highimpact
 
 /datum/equipment_preset/cia/uacqs/dir_gen/New()
 	. = ..()
@@ -129,3 +135,11 @@
 	//pockets
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_L_STORE)
 	new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/mp5/ap/black, WEAR_R_STORE)
+
+/datum/equipment_preset/cia/uacqs/security/lead
+	name = "CIA Agent (UACQS Security Lead)"
+	job_title = JOB_CIA_UACQS_SECL
+	assignment = JOB_CIA_UACQS_SECL
+	paygrades = list(PAY_SHORT_CIA_SO = JOB_PLAYTIME_TIER_0)
+	minimap_icon = "uacqs_s"
+	skills = /datum/skills/cia/security_officer/lead

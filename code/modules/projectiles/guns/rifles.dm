@@ -1085,65 +1085,6 @@
 		/obj/item/attachable/suppressor,
 	)
 
-/obj/item/weapon/gun/rifle/m16/m16a5/m16a6
-	name = "\improper M16A6 rifle"
-	desc = "A modernized version of M16 platform rifle, based upon the M16A5, this version has an auto-ejector and ammo counter. It is chambered in 5.56x45mm."
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_AMMO_COUNTER|GUN_CAN_POINTBLANK
-	current_mag = /obj/item/ammo_magazine/rifle/m16/m16a5/ap
-
-	attachable_allowed = list(
-		/obj/item/attachable/suppressor,
-		/obj/item/attachable/bayonet,
-		/obj/item/attachable/bayonet/custom,
-		/obj/item/attachable/bayonet/wy,
-		/obj/item/attachable/bayonet/custom/red,
-		/obj/item/attachable/bayonet/custom/blue,
-		/obj/item/attachable/bayonet/custom/black,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/scope/mini,
-		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/bipod,
-		/obj/item/attachable/extended_barrel,
-		/obj/item/attachable/attached_gun/grenade/m16a6,
-		/obj/item/attachable/attached_gun/grenade/m16a6/hedp,
-		/obj/item/attachable/attached_gun/grenade/m16a6/hedp_super,
-		/obj/item/attachable/attached_gun/flamer,
-		/obj/item/attachable/attached_gun/flamer/advanced,
-		/obj/item/attachable/attached_gun/extinguisher,
-		/obj/item/attachable/attached_gun/shotgun,
-		/obj/item/attachable/lasersight,
-	)
-
-	random_spawn_chance = 100
-	random_spawn_rail = list(
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-	)
-	random_spawn_under = list(
-		/obj/item/attachable/angledgrip,
-		/obj/item/attachable/verticalgrip,
-		/obj/item/attachable/lasersight,
-	)
-	random_spawn_muzzle = list(
-		/obj/item/attachable/suppressor,
-	)
-
-/obj/item/weapon/gun/rifle/m16/m16a5/m16a6/heap
-	current_mag = /obj/item/ammo_magazine/rifle/m16/m16a5/heap
-
-/obj/item/weapon/gun/rifle/m16/m16a5/m16a6/grenadier
-	random_spawn_under = list(
-		/obj/item/attachable/attached_gun/grenade/m16a6/hedp,
-	)
-
-/obj/item/weapon/gun/rifle/m16/m16a5/m16a6/grenadier/heap
-	random_spawn_under = list(
-		/obj/item/attachable/attached_gun/grenade/m16a6/hedp_super,
-	)
-	current_mag = /obj/item/ammo_magazine/rifle/m16/m16a5/heap
-
 /obj/item/weapon/gun/rifle/m16/grenadier
 	name = "\improper M16 grenadier rifle"
 	desc = "An old, reliable design first adopted by the U.S. military in the 1960s. Something like this belongs in a museum of war history. It is chambered in 5.56x45mm. This one has an irremovable M203 grenade launcher attached to it, holds one propriatary 40mm shell at a time, it lacks modern IFF systems and will impact the first target it hits; introduce your little friend."

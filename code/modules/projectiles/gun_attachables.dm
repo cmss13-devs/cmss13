@@ -2972,18 +2972,18 @@ Defined in conflicts.dm of the #defines folder.
 	attachment_firing_delay = 24
 
 // GRS Grenadier
-/obj/item/attachable/attached_gun/grenade/m16a6
+/obj/item/attachable/attached_gun/grenade/grs
 	name = "UA6 grenade launcher"
-	desc = "A weapon-mounted, reloadable grenade launcher designed specifically for the M16A6."
+	desc = "A weapon-mounted, reloadable grenade launcher designed specifically for use by the GRS."
 
-/obj/item/attachable/attached_gun/grenade/m16a6/hedp/New()
+/obj/item/attachable/attached_gun/grenade/grs/hedp/New()
 	..()
 	for(var/i = 1 to max_rounds)
 		var/grenade = new /obj/item/explosive/grenade/high_explosive(src)
 		loaded_grenades += grenade
 		current_rounds++
 
-/obj/item/attachable/attached_gun/grenade/m16a6/hedp_super/New()
+/obj/item/attachable/attached_gun/grenade/grs/hedp_super/New()
 	..()
 	for(var/i = 1 to max_rounds)
 		var/grenade = new /obj/item/explosive/grenade/high_explosive/super(src)

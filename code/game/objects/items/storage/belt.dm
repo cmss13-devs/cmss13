@@ -869,18 +869,6 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
-/obj/item/storage/belt/marine/m16a5/fill_preset_inventory() // M16A5 and A6
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
-
-/obj/item/storage/belt/marine/m16a5/ap/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/m16/m16a5/ap (src)
-
-/obj/item/storage/belt/marine/m16a5/heap/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/rifle/m16/m16a5/heap (src)
-
 /obj/item/storage/belt/marine/black/m16a5/fill_preset_inventory() // Black Belt, M16A5 and A6
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/m16a5 (src)
@@ -899,6 +887,25 @@
 /obj/item/storage/belt/marine/black/m16a5/heap/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m16/m16a5/heap (src)
+
+/obj/item/storage/belt/marine/black/m47/fill_preset_inventory() // Black Belt, M47 GRS Pulse Rifle
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47 (src)
+
+/obj/item/storage/belt/marine/black/m47/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/ap (src)
+
+/obj/item/storage/belt/marine/black/m47/weak/fill_preset_inventory()
+		new /obj/item/ammo_magazine/rifle/m47/ap (src)
+		new /obj/item/ammo_magazine/rifle/m47/le (src)
+		new /obj/item/ammo_magazine/rifle/m47/le (src)
+		new /obj/item/ammo_magazine/rifle/m47 (src)
+		new /obj/item/ammo_magazine/rifle/m47 (src)
+
+/obj/item/storage/belt/marine/black/m47/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/heap (src)
 
 /obj/item/storage/belt/marine/mar40/fill_preset_inventory() // Mar40
 	for(var/i = 1 to storage_slots)
@@ -1859,14 +1866,23 @@
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
 
-/obj/item/storage/belt/gun/m4a3/m1911/commander/half/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom())
+/obj/item/storage/belt/gun/m4a3/m1911/commander/tactical/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom/tactical())
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
+
+/obj/item/storage/belt/gun/m4a3/m1911/commander/tactical/half/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom/tactical())
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact/ap(src)
 
-/obj/item/storage/belt/gun/m4a3/m1911/commander/boom/fill_preset_inventory()
-	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom())
+/obj/item/storage/belt/gun/m4a3/m1911/commander/tactical/boom/fill_preset_inventory()
+	handle_item_insertion(new /obj/item/weapon/gun/pistol/m1911/custom/tactical())
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/pistol/m1911/highimpact(src)

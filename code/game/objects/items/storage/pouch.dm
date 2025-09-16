@@ -640,6 +640,26 @@
 /obj/item/storage/pouch/magazine/large/m16a5/heap/black
 	icon_state = "wy_ammo_mag"
 
+/obj/item/storage/pouch/magazine/large/m47
+	icon_state = "wy_ammo_mag"
+
+/obj/item/storage/pouch/magazine/large/m47/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47(src)
+
+/obj/item/storage/pouch/magazine/large/m47/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/ap(src)
+
+/obj/item/storage/pouch/magazine/large/m47/le/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/le(src)
+
+/obj/item/storage/pouch/magazine/large/m47/heap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m47/heap(src)
+
+
 /obj/item/storage/pouch/magazine/large/mp5/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/mp5(src)

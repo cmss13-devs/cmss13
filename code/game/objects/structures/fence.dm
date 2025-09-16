@@ -256,6 +256,7 @@
 GLOBAL_LIST_INIT(all_electric_fences, list())
 
 // Hybrisa Electric Fence
+
 /obj/structure/fence/electrified
 	name = "electrified grille"
 	desc = "A dark reinforced mesh grille with warning stripes, equipped with Tesla-like coils to regulate high voltage current. It is highly electrified and dangerous when powered."
@@ -264,6 +265,8 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	basestate = "highvoltagegrille"
 	throwpass = TRUE
 	unacidable = TRUE
+	health = 150
+	health_max = 200
 	forms_junctions = FALSE
 	var/electrified = FALSE
 	var/obj/structure/machinery/colony_floodlight_switch/electrified_fence_switch/breaker_switch = null
@@ -273,7 +276,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 	var/tforce = 0
 	if(ismob(AM))
 		if(electrified && !cut)
-			electrocute_mob(AM, get_area(breaker_switch), src, 0.75)
+			electrocute_mob(AM, get_area(breaker_switch), src, 2.25)
 		else
 			tforce = 40
 	else if(isobj(AM))
@@ -308,7 +311,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 
 /obj/structure/fence/electrified/attackby(obj/item/W, mob/user)
 	if(electrified && !cut)
-		electrocute_mob(user, get_area(breaker_switch), src, 0.75)
+		electrocute_mob(user, get_area(breaker_switch), src, 2.25)
 	return ..()
 
 /obj/structure/fence/electrified/ex_act(severity)

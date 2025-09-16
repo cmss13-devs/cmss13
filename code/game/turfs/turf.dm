@@ -968,12 +968,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	if(xeno_victim.mob_size >= MOB_SIZE_BIG)
 		xeno_victim.Superslow(2)
 		xeno_victim.Slow(2.5)
-		xeno_victim.Daze(3 SECONDS)
+		xeno_victim.Daze(3)
 		return
 
 	xeno_victim.Superslow(1)
 	xeno_victim.Slow(1.5)
-	xeno_victim.Daze(2)
+	xeno_victim.Daze(1)
 
 
 

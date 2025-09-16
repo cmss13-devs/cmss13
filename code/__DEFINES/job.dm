@@ -500,6 +500,9 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_GRS_ROLES_LIST list(JOB_CIA_GRS_OPR, JOB_CIA_GRS_MED, JOB_CIA_GRS_ENG, JOB_CIA_GRS_HVY, JOB_CIA_GRS_SNP, JOB_CIA_GRS_TL, JOB_CIA_GRS_DCDR, JOB_CIA_GRS_CDR)
 #define JOB_CIA_ROLES_LIST JOB_UACQS_ROLES_LIST + JOB_GRS_ROLES_LIST
 
+#define JOB_UA_PEACEKEEPER "United Americas Peacekeeper"
+#define JOB_UA_RIOT_OFFICER "United Americas Riot Officer"
+
 //-------- DUTCH'S DOZEN --------//
 #define JOB_DUTCH_ARNOLD "Dutch's Dozen - Dutch"
 #define JOB_DUTCH_RIFLEMAN "Dutch's Dozen - Rifleman"

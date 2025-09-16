@@ -68,7 +68,7 @@
 
 /datum/equipment_preset/survivor/security/solaris
 	name = "Survivor - Solaris United Americas Peacekeepers"
-	assignment = "United Americas Peacekeeper"
+	assignment = JOB_UA_PEACEKEEPER
 	minimap_icon = "peacekeeper"
 	minimap_background = "background_ua"
 	faction = FACTION_UA

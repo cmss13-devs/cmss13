@@ -1233,7 +1233,32 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				// 200-229: Visitors
 				JOB_UPP_REPRESENTATIVE = 201,
 				JOB_TWE_REPRESENTATIVE = 201,
-				JOB_COLONEL = 201
+				JOB_COLONEL = 201,
+			)
+		if(FACTION_CIA, FACTION_UA)
+			jobs = list(
+				JOB_CIA_UACQS_SG = 00,
+				JOB_CIA_UACQS_DG = 00,
+
+				JOB_CIA_GRS_CDR = 10,
+				JOB_CIA_GRS_DCDR = 11,
+
+				JOB_CIA_UACQS_COMR = 20,
+				JOB_CIA_UACQS_ADMN = 21,
+				JOB_CIA_UACQS_SECL = 22,
+				JOB_CIA_UACQS_SEC = 23,
+
+				JOB_CIA_GRS_TL = 30,
+				JOB_CIA_GRS_SNP = 31,
+				JOB_CIA_GRS_HVY = 32,
+				JOB_CIA_GRS_MED = 33,
+				JOB_CIA_GRS_ENG = 34,
+				JOB_CIA_GRS_OPR = 35,
+
+				JOB_CIA_LIAISON = 51,
+
+				JOB_UA_PEACEKEEPER = 61,
+				JOB_UA_RIOT_OFFICER = 62,
 			)
 		else
 			jobs = list()

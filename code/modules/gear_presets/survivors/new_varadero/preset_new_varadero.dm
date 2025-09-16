@@ -1,6 +1,6 @@
 /datum/equipment_preset/survivor/security/nv
 	name = "Survivor - New Varadero Security Guard"
-	assignment = "United Americas Peacekeeper"
+	assignment = JOB_UA_PEACEKEEPER
 	faction = FACTION_UA
 	faction_group = FACTION_LIST_SURVIVOR_UA
 

@@ -50,7 +50,7 @@
 
 /datum/equipment_preset/survivor/colonial_marshal/fiorina
 	name = "Survivor - United Americas Riot Officer"
-	assignment = "United Americas Riot Officer"
+	assignment = JOB_UA_RIOT_OFFICER
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver
 	job_title = JOB_SURVIVOR

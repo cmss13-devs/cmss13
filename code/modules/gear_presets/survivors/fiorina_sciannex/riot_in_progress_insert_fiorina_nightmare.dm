@@ -159,7 +159,7 @@
 	faction = FACTION_UA
 	faction_group = FACTION_LIST_SURVIVOR_UA
 	flags = EQUIPMENT_PRESET_EXTRA
-	assignment = "United Americas Police Officer"
+	assignment = JOB_UA_RIOT_OFFICER
 	skills = /datum/skills/civilian/survivor/marshal
 	minimap_icon = "mp"
 	minimap_background = "background_ua"

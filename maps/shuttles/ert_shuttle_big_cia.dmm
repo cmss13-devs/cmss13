@@ -208,7 +208,7 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
 "hQ" = (
-/turf/closed/wall/almayer/reinforced,
+/turf/closed/wall/almayer/outer/internal,
 /area/shuttle/grs_barge)
 "hZ" = (
 /obj/effect/decal/warning_stripes{
@@ -638,9 +638,6 @@
 "LB" = (
 /obj/structure/largecrate/random/barrel/white,
 /turf/open/floor/almayer/plate,
-/area/shuttle/grs_barge)
-"Ml" = (
-/turf/closed/wall/almayer,
 /area/shuttle/grs_barge)
 "Mx" = (
 /obj/structure/machinery/computer/med_data/laptop{
@@ -1121,7 +1118,7 @@ aa
 aa
 lp
 aa
-Ml
+hQ
 vl
 ig
 PE
@@ -1152,7 +1149,7 @@ zZ
 zZ
 JE
 Cw
-Ml
+hQ
 rv
 rv
 Zy
@@ -1214,7 +1211,7 @@ zZ
 zZ
 Bq
 bo
-Ml
+hQ
 rv
 rv
 QM
@@ -1245,7 +1242,7 @@ ac
 ac
 lp
 ac
-Ml
+hQ
 Lk
 zT
 PE
@@ -1263,20 +1260,20 @@ rv
 rv
 cx
 hQ
-Ml
-Ml
+hQ
+hQ
 Kg
-Ml
-Ml
+hQ
+hQ
 ad
 wz
 og
 ad
-Ml
-Ml
+hQ
+hQ
 Pf
-Ml
-Ml
+hQ
+hQ
 PE
 xK
 PE
@@ -1295,15 +1292,15 @@ DC
 OF
 hQ
 ry
-Ml
+hQ
 rv
 Ik
-Ml
+hQ
 Uq
 ag
 ae
 Uq
-Ml
+hQ
 CX
 rv
 rv
@@ -1329,12 +1326,12 @@ XW
 rG
 rv
 Ik
-Ml
+hQ
 KS
 hZ
 TO
 LB
-Ml
+hQ
 Vw
 rv
 rv
@@ -1357,15 +1354,15 @@ Tp
 Tp
 PE
 WW
-Ml
+hQ
 rv
 Ik
-Ml
+hQ
 iu
 hZ
 TO
 sW
-Ml
+hQ
 SQ
 oc
 fq

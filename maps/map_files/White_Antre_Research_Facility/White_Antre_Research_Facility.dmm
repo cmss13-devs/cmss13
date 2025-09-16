@@ -3195,7 +3195,7 @@
 /obj/structure/prop/invuln{
 	desc = "A deceased xenomorph, subject of a live-fire test.";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi';
 	icon_state = "Normal Drone Dead";
 	name = "deceased drone";
 	pixel_x = -7;
@@ -3280,7 +3280,7 @@
 /obj/structure/prop/invuln{
 	desc = "A deceased xenomorph, subject of a live-fire test.";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi';
 	icon_state = "Normal Drone Dead";
 	name = "deceased drone";
 	pixel_x = -7;
@@ -9920,7 +9920,7 @@
 /obj/structure/prop/invuln{
 	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi';
 	icon_state = "Normal Drone Dead";
 	layer = 2.5;
 	name = "K-series drone";
@@ -13156,7 +13156,7 @@
 /obj/structure/prop/invuln{
 	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi';
 	icon_state = "Normal Drone Dead";
 	layer = 2.5;
 	name = "K-series drone";
@@ -14115,7 +14115,7 @@
 /obj/structure/prop/invuln{
 	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi';
 	icon_state = "Normal Drone Dead";
 	layer = 2.5;
 	name = "K-series drone";
@@ -25741,7 +25741,7 @@
 /obj/structure/prop/invuln{
 	desc = "A deceased K-series xenomorph, looks like it died a very short time ago.";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi';
 	icon_state = "Normal Drone Dead";
 	layer = 2.5;
 	name = "K-series drone";
@@ -31318,7 +31318,7 @@
 /obj/structure/prop/invuln{
 	desc = "A deceased xenomorph, subject of a live-fire test.";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi';
 	icon_state = "Normal Drone Dead";
 	layer = 3.1;
 	name = "deceased drone";
@@ -32750,7 +32750,7 @@
 /obj/structure/prop/invuln{
 	desc = "The decayed flesh of a ovipositor, seems more yellow in apperance than a typical xenomorph ovipositor...";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_4\ovipositor.dmi';
+	icon = 'icons/mob/xenos/castes/tier_4/ovipositor.dmi';
 	icon_state = "ovipositor_molted";
 	layer = 4.5;
 	name = "molted ovipositor";
@@ -34981,7 +34981,7 @@
 /obj/structure/prop/invuln{
 	desc = "A deceased xenomorph, subject of a live-fire test.";
 	dir = 4;
-	icon = 'icons\mob\xenos\castes\tier_1\drone.dmi';
+	icon = 'icons/mob/xenos/castes/tier_1/drone.dmi';
 	icon_state = "Normal Drone Dead";
 	layer = 3.1;
 	name = "deceased drone";

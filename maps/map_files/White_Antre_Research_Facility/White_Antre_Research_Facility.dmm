@@ -2962,12 +2962,6 @@
 	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/upper_level/xenobio)
-"ahL" = (
-/obj/structure/platform/metal/almayer_smooth,
-/obj/structure/platform_decoration/metal/almayer_smooth/southeast,
-/obj/item/xeno_egg,
-/turf/open/floor/hybrisa/tile/tilewhite,
-/area/white_antre/indoors/upper_level/xenobio)
 "ahM" = (
 /obj/structure/stairs/perspective/ice{
 	dir = 1
@@ -26005,7 +25999,7 @@
 "bsx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/secure,
-/obj/effect/spawner/random/powercell{
+/obj/item/cell/high{
 	pixel_y = 8
 	},
 /turf/open/floor/corsat,
@@ -140884,7 +140878,7 @@ aQw
 ahI
 aig
 aQu
-ahL
+ahO
 ahB
 ahj
 bhg

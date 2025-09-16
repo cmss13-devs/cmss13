@@ -43,6 +43,93 @@
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/shuttle/grs_barge)
+"ah" = (
+/obj/structure/surface/rack,
+/obj/item/ammo_box/rounds/le,
+/turf/open/floor/almayer/cargo,
+/area/shuttle/grs_barge)
+"ai" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	dir = 1;
+	pixel_x = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/grs_barge)
+"aj" = (
+/obj/item/ammo_magazine/smartgun/holo_targetting/grs,
+/obj/item/ammo_magazine/smartgun/holo_targetting/grs,
+/obj/item/ammo_magazine/smartgun/holo_targetting/grs,
+/obj/item/ammo_magazine/smartgun/holo_targetting/grs,
+/obj/item/ammo_magazine/smartgun/holo_targetting/grs,
+/obj/structure/surface/rack,
+/obj/item/ammo_magazine/smartgun/holo_targetting/grs,
+/turf/open/floor/almayer/cargo,
+/area/shuttle/grs_barge)
+"ak" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	pixel_x = 1;
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/grs_barge)
+"al" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	dir = 1;
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	dir = 1
+	},
+/turf/open/floor/plating/almayer,
+/area/shuttle/grs_barge)
+"am" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/obj/structure/machinery/door/window/ultra{
+	req_one_access_txt = "125;126;127"
+	},
+/obj/structure/window/reinforced/ultra,
+/turf/open/floor/almayer/plate,
+/area/shuttle/grs_barge)
+"an" = (
+/obj/structure/machinery/door/window/ultra{
+	req_one_access_txt = "125;126;127"
+	},
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/obj/structure/window/reinforced/ultra,
+/turf/open/floor/almayer/plate,
+/area/shuttle/grs_barge)
+"ao" = (
+/obj/structure/surface/rack{
+	pixel_y = 16;
+	density = 0
+	},
+/turf/open/floor/almayer/plate,
+/area/shuttle/grs_barge)
 "bo" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -66,12 +153,6 @@
 	},
 /obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer/plate,
-/area/shuttle/grs_barge)
-"dx" = (
-/obj/structure/surface/table/almayer,
-/obj/item/storage/box/donkpockets,
-/obj/item/storage/box/donkpockets,
-/turf/open/floor/almayer,
 /area/shuttle/grs_barge)
 "fq" = (
 /obj/structure/surface/table/almayer,
@@ -209,21 +290,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
-"mH" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	dir = 1
-	},
-/turf/open/floor/plating/almayer,
-/area/shuttle/grs_barge)
 "oc" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
@@ -282,12 +348,6 @@
 	},
 /turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
-"sI" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Secure Storage"
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/shuttle/grs_barge)
 "sW" = (
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer/plate,
@@ -322,19 +382,10 @@
 "tG" = (
 /turf/open/floor/wood,
 /area/shuttle/grs_barge)
-"tI" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
-	req_access = null;
-	access_modified = 1;
-	req_one_access_txt = "125;126;127";
-	dir = 1
-	},
-/turf/open/floor/almayer/test_floor4,
-/area/shuttle/grs_barge)
 "ue" = (
-/obj/structure/bed,
-/obj/item/bedsheet/brown,
-/turf/open/floor/almayer,
+/obj/structure/surface/rack,
+/obj/item/ammo_box/rounds/ap,
+/turf/open/floor/almayer/cargo,
 /area/shuttle/grs_barge)
 "up" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -381,28 +432,16 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
 "wK" = (
-/obj/structure/machinery/computer/crew/alt{
-	dir = 8;
-	faction = "CIA";
-	extra_factions = list("United Americas")
-	},
 /obj/structure/surface/table/reinforced/black,
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/obj/item/tool/pen,
+/obj/item/tool/pen,
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "xK" = (
 /obj/structure/window/framed/almayer/hull,
 /turf/open/floor/plating,
-/area/shuttle/grs_barge)
-"yQ" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	dir = 1
-	},
-/turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
 "zd" = (
 /obj/structure/machinery/computer/communications,
@@ -432,9 +471,9 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
 "Ad" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/microwave,
-/turf/open/floor/almayer,
+/obj/structure/surface/rack,
+/obj/item/ammo_box/rounds/heap,
+/turf/open/floor/almayer/cargo,
 /area/shuttle/grs_barge)
 "AE" = (
 /obj/structure/largecrate/random/case/small,
@@ -512,9 +551,9 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "DO" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/flashlight/lamp,
-/turf/open/floor/almayer/plate,
+/obj/structure/surface/rack,
+/obj/item/ammo_box/rounds/pistol/ap,
+/turf/open/floor/almayer/cargo,
 /area/shuttle/grs_barge)
 "ER" = (
 /obj/effect/decal/warning_stripes{
@@ -530,13 +569,13 @@
 /turf/open/floor/almayer/test_floor4,
 /area/shuttle/grs_barge)
 "Gg" = (
-/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+/obj/structure/machinery/door/airlock/almayer/security/reinforced{
+	req_one_access_txt = "125;126;127";
 	req_access = null;
 	access_modified = 1;
-	req_one_access_txt = "125;126;127";
-	name = "\improper Storeroom"
+	name = "\improper Brig"
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/grs_barge)
 "Ik" = (
 /obj/structure/closet,
@@ -560,10 +599,11 @@
 /turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
 "Kg" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+	req_access = null;
 	name = "Crew Lockers"
 	},
-/turf/open/floor/plating/almayer,
+/turf/open/floor/almayer/test_floor4,
 /area/shuttle/grs_barge)
 "Kt" = (
 /obj/structure/flora/pottedplant{
@@ -628,11 +668,11 @@
 /turf/open/floor/almayer/test_floor4,
 /area/shuttle/grs_barge)
 "Oj" = (
-/obj/item/paper_bin,
-/obj/item/tool/pen,
-/obj/item/tool/pen,
-/obj/item/tool/pen,
-/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/computer/crew{
+	faction = "CIA";
+	extra_factions = list("United Americas");
+	name = "bio monitoring computer"
+	},
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "OF" = (
@@ -649,8 +689,11 @@
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "Pf" = (
-/obj/structure/machinery/door/airlock/almayer/generic{
-	name = "Crew Bunks"
+/obj/structure/machinery/door/airlock/almayer/secure/reinforced{
+	req_access = null;
+	access_modified = 1;
+	req_one_access_txt = "125;126;127";
+	name = "\improper Storeroom"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/shuttle/grs_barge)
@@ -667,18 +710,18 @@
 /obj/structure/machinery/door/airlock/almayer/secure/reinforced{
 	req_access = null;
 	access_modified = 1;
-	req_one_access_txt = "125;126;127"
+	req_one_access_txt = "125;126;127";
+	name = "\improper Commander's Quarters"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/shuttle/grs_barge)
 "QK" = (
 /obj/structure/surface/rack,
-/obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/firstaid/regular/response,
+/obj/item/storage/belt/medical/lifesaver/full/dutch/black/grs,
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "QM" = (
-/obj/structure/surface/table/almayer,
 /obj/item/stack/sheet/metal{
 	amount = 50;
 	pixel_x = 3;
@@ -709,6 +752,9 @@
 	},
 /obj/item/stack/cable_coil,
 /obj/item/stack/cable_coil,
+/obj/structure/closet/crate/secure{
+	req_one_access_txt = "125;126;127"
+	},
 /turf/open/floor/almayer/plate,
 /area/shuttle/grs_barge)
 "Ro" = (
@@ -720,21 +766,6 @@
 	req_one_access_txt = "125;126;127"
 	},
 /turf/open/floor/almayer/test_floor4,
-/area/shuttle/grs_barge)
-"RG" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	dir = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	dir = 1
-	},
-/turf/open/floor/plating/almayer,
 /area/shuttle/grs_barge)
 "RN" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -953,19 +984,19 @@ Tp
 Tp
 Tp
 PE
-KS
-KS
-KS
-KS
+an
+am
+am
+am
 hQ
 AE
 hZ
 TO
 KS
-Ml
+hQ
 DO
-DC
-DC
+ah
+ah
 PE
 PE
 Tp
@@ -984,19 +1015,19 @@ xK
 xK
 PE
 PE
-KS
+ad
 wc
 wc
-KS
+ad
 hQ
 ad
 hZ
 TO
 ja
-Ml
+hQ
 ue
-wc
-wc
+ak
+ai
 Ad
 xK
 Tp
@@ -1015,20 +1046,20 @@ tG
 Tv
 VW
 hQ
-KS
+ao
 ad
 ad
-KS
+ad
 hQ
 Uq
 ag
 ER
 Uq
-Ml
+hQ
 ue
-rv
-rv
-dx
+al
+aj
+Ad
 PE
 Tp
 Tp
@@ -1055,11 +1086,11 @@ ad
 wz
 og
 ad
-Ml
-Ml
+hQ
+hQ
 Pf
-Ml
-Ml
+hQ
+hQ
 PE
 xK
 PE
@@ -1079,7 +1110,7 @@ Kt
 hQ
 QK
 aa
-RG
+lp
 aa
 aa
 ad
@@ -1088,7 +1119,7 @@ og
 ad
 aa
 aa
-RG
+lp
 aa
 Ml
 vl
@@ -1138,8 +1169,8 @@ rv
 rv
 rv
 rv
-tI
-yQ
+iP
+TO
 ab
 lp
 ab
@@ -1203,7 +1234,7 @@ OF
 hQ
 QK
 ac
-mH
+lp
 ac
 ac
 ad
@@ -1212,7 +1243,7 @@ og
 ad
 ac
 ac
-mH
+lp
 ac
 Ml
 Lk
@@ -1243,7 +1274,7 @@ og
 ad
 Ml
 Ml
-sI
+Pf
 Ml
 Ml
 PE

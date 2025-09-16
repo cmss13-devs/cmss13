@@ -72,15 +72,15 @@
 /obj/item/weapon/gun/rifle/m47 //PLACEHOLDER SPRITES
 	name = "\improper M47 pulse rifle"
 	desc = "A lightweight and powerful pulse rifle used by some special forces groups."
-	icon = 'icons/obj/items/weapons/guns/guns_by_faction/TWE/marksman_rifles.dmi'
+	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
 	item_icons = list(
-		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/marksman_rifles.dmi',
-		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/marksman_rifles.dmi',
-		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_lefthand.dmi',
-		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/marksman_rifles_righthand.dmi'
+		WEAR_BACK = 'icons/mob/humans/onmob/clothing/back/guns_by_type/assault_rifles.dmi',
+		WEAR_J_STORE = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/assault_rifles.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/assault_rifles_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/guns/assault_rifles_righthand.dmi'
 	)
-	icon_state = "l42a3"
-	item_state = "l42a3"
+	icon_state = "M47"
+	item_state = "M47"
 	reload_sound = 'sound/weapons/handling/rmcdmr_reload.ogg'
 	unload_sound = 'sound/weapons/handling/rmcdmr_unload.ogg'
 	fire_sound = "gun_l64"
@@ -126,8 +126,16 @@
 //		/obj/item/attachable/suppressor,
 //	)
 
+/obj/item/weapon/gun/rifle/m47/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/m47pulse/stock = new(src)
+	stock.flags_attach_features &= ~ATTACH_REMOVABLE
+	stock.hidden = FALSE
+	stock.Attach(src)
+	update_attachable(stock.slot)
+
 /obj/item/weapon/gun/rifle/m47/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 37, "muzzle_y" = 16, "rail_x" = 17, "rail_y" = 19, "under_x" = 27, "under_y" = 14, "stock_x" = 22, "stock_y" = 10)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 18, "rail_x" = 13, "rail_y" = 22, "under_x" = 23, "under_y" = 14, "stock_x" = 17, "stock_y" = 15)
 
 /obj/item/weapon/gun/rifle/m47/set_gun_config_values()
 	..()
@@ -158,12 +166,12 @@
 
 /obj/item/ammo_magazine/rifle/m47 //PLACEHOLDER SPRITES
 	name = "\improper M47 magazine (10x24mm)"
-	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo. "
+	desc = "A magazine of 10x24mm caseless ammo for the M47 Pulse Rifle."
 	caliber = "10x24mm"
-	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/marksman_rifles.dmi'
-	icon_state = "l64"
-	ammo_band_icon = "+l64_band"
-	ammo_band_icon_empty = "+l64_band_e"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/assault_rifles.dmi'
+	icon_state = "M47"
+	ammo_band_icon = "+M47_band"
+	ammo_band_icon_empty = "+M47_band_e"
 	w_class = SIZE_MEDIUM
 	max_rounds = 50
 	default_ammo = /datum/ammo/bullet/rifle

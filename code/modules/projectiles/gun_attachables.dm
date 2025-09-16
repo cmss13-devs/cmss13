@@ -2008,6 +2008,13 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "s_boomslang-stock"
 	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 
+/obj/item/attachable/stock/m47pulse
+	name = "\improper M47 integrated stock"
+	desc = "A stock"
+	icon_state = "m47stock"
+	attach_icon = "m47stock_a"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_atom = FPRINT|CONDUCT|NO_GAMEMODE_SKIN
 
 /obj/item/attachable/stock/tactical
 	name = "\improper MK221 tactical stock"

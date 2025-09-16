@@ -17,7 +17,7 @@
 			if(isobserver(M)) //observers see everything
 				continue
 			var/mob/living/carbon/human/H = M
-			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H) || ismarinejob(H)) //base human checks
+			if(!istype(H) || H.stat != CONSCIOUS || isyautja(H) || ismarinejob(H) || is_mainship_level(H.z)) //base human checks
 				targets.Remove(H)
 				continue
 

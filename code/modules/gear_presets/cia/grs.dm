@@ -607,7 +607,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/ap, WEAR_IN_ACCESSORY)
 
-			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/tactical/commander, WEAR_WAIST)
+			new_human.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/m1911/commander/tactical, WEAR_WAIST)
 
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m47, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/le, WEAR_IN_JACKET)

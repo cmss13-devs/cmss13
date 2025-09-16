@@ -5371,9 +5371,7 @@
 /area/white_antre/indoors/main_level/engineering)
 "amT" = (
 /obj/structure/largecrate/random/barrel/yellow,
-/obj/structure/machinery/power/apc/upgraded/power/north{
-	start_charge = 100
-	},
+/obj/structure/machinery/power/apc/upgraded/power/north,
 /turf/open/floor/prison/bright_clean,
 /area/white_antre/indoors/main_level/engineering)
 "amU" = (

@@ -259,7 +259,7 @@
 			if(below)
 				new_target = below
 
-		if(cur_target.z > new_target.z)
+		else if(cur_target.z > new_target.z)
 			var/turf/above = SSmapping.get_turf_above(new_target)
 			if(above)
 				new_target = above

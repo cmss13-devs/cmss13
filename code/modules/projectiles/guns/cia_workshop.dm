@@ -122,9 +122,6 @@
 		/obj/item/attachable/verticalgrip,
 		/obj/item/attachable/lasersight,
 	)
-//	random_spawn_muzzle = list(
-//		/obj/item/attachable/suppressor,
-//	)
 
 /obj/item/weapon/gun/rifle/m47/handle_starting_attachment()
 	..()
@@ -149,6 +146,32 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_6
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+/obj/item/weapon/gun/rifle/m47/stripped
+	random_spawn_chance = 0
+
+/obj/item/weapon/gun/rifle/m47/carbine
+	name = "M47B pulse carbine"
+
+	attachable_allowed = list(
+		/obj/item/attachable/suppressor,
+		/obj/item/attachable/bayonet,
+		/obj/item/attachable/bayonet/custom,
+		/obj/item/attachable/bayonet/wy,
+		/obj/item/attachable/bayonet/custom/red,
+		/obj/item/attachable/bayonet/custom/blue,
+		/obj/item/attachable/bayonet/custom/black,
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+		/obj/item/attachable/scope/mini,
+		/obj/item/attachable/verticalgrip,
+		/obj/item/attachable/angledgrip,
+		/obj/item/attachable/bipod,
+		/obj/item/attachable/lasersight,
+	)
+
+/obj/item/weapon/gun/rifle/m47/carbine/handle_starting_attachment()
+	return
 
 /obj/item/weapon/gun/rifle/m47/heap
 	current_mag = /obj/item/ammo_magazine/rifle/m47/heap

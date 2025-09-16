@@ -879,3 +879,57 @@
 		if(burrower_place_trap_check && !burrower_place_trap_check.hidden)
 			handle_xeno_macro_datum(xeno, burrower_place_trap_check)
 			return TRUE
+
+/datum/keybinding/xenomorph/burrower_burrow
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "burrower_burrow"
+	full_name = "Burrower: Burrow"
+	keybind_signal = COMSIG_KB_XENO_BURROWER_BURROW
+
+/datum/keybinding/xenomorph/burrower_burrow/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/burrow/burrower_burrow_check = get_action(xeno, /datum/action/xeno_action/activable/burrow)
+	if(burrower_burrow_check)
+		if(burrower_burrow_check && !burrower_burrow_check.hidden)
+			handle_xeno_macro_datum(xeno, burrower_burrow_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/burrower_tremor
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "burrower_tremor"
+	full_name = "Burrower: Tremor"
+	keybind_signal = COMSIG_KB_XENO_BURROWER_TREMOR
+
+/datum/keybinding/xenomorph/burrower_tremor/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/tremor/burrower_tremor_check = get_action(xeno, /datum/action/xeno_action/onclick/tremor)
+	if(burrower_tremor_check)
+		if(burrower_tremor_check && !burrower_tremor_check.hidden)
+			handle_xeno_macro_datum(xeno, burrower_tremor_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/burrower_toggle_meson_vision
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "burrower_toggle_meson_vision"
+	full_name = "Burrower: Togggle meson vision"
+	keybind_signal = COMSIG_KB_XENO_BURROWER_TOGGLE_MESON_VISION
+
+/datum/keybinding/xenomorph/burrower_toggle_meson_vision/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/active_toggle/toggle_meson_vision/burrower_toggle_meson_vision_check = get_action(xeno, /datum/action/xeno_action/active_toggle/toggle_meson_vision)
+	if(burrower_toggle_meson_vision_check)
+		if(burrower_toggle_meson_vision_check && !burrower_toggle_meson_vision_check.hidden)
+			handle_xeno_macro_datum(xeno, burrower_toggle_meson_vision_check)
+			return TRUE

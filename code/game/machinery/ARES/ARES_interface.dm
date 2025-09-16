@@ -358,7 +358,7 @@
 
 		// -- Emergency Buttons -- //
 		if("general_quarters")
-			if(!COOLDOWN_ID_FINISHED(datacore, COOLDOWN_GENERAL_QUARTERS))
+			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE

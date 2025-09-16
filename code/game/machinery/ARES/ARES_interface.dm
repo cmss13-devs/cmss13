@@ -358,7 +358,7 @@
 
 		// -- Emergency Buttons -- //
 		if("general_quarters")
-			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
+			if(!COOLDOWN_FINISHED(datacore, COOLDOWN_GENERAL_QUARTERS))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
@@ -368,7 +368,7 @@
 			log_game("[key_name(user)] has called for general quarters via ARES.")
 			message_admins("[key_name_admin(user)] has called for general quarters via ARES.")
 			log_ares_security("General Quarters", "Called for general quarters via ARES.", last_login)
-			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
+			COOLDOWN_START(datacore, COOLDOWN_GENERAL_QUARTERS, 10 MINUTES)
 			. = TRUE
 
 		if("evacuation_start")

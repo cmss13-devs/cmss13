@@ -104,7 +104,7 @@
 		co_briefing.info = file2text(co_briefing.placeholder)
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
-	co_briefing.info = replacetext(co_briefing.info, "%%WYLOGO%%", asset.get_url_mappings()["logo_wy.png"])
+	co_briefing.info = replacetext(co_briefing.info, "%%USCMLOGO%%", asset.get_url_mappings()["logo_uscm.png"])
 
 	var/obj/structure/machinery/faxmachine/receiver
 	for(var/target_machine_code as anything in GLOB.fax_network.all_faxcodes)

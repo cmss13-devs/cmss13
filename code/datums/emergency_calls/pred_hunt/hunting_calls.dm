@@ -6,7 +6,7 @@
 	probability = 0
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress/hunt_spawner
 	shuttle_id = ""
-	ert_message = "Prey is being set loose in the yautja hunting grounds"
+	ert_message = "Prey is being set loose in the Yautja Hunting Grounds"
 	var/hunt_name
 	var/message = "You are still expected to uphold the RP of the standard as this character!"
 

@@ -1,0 +1,4 @@
+author: "Joe Lampost"
+delete-after: True
+changes:
+  - rscadd: "Updates the messages sent for the hunting ground and youngblood ERTs"

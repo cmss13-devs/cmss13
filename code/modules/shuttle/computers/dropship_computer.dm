@@ -397,7 +397,6 @@
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack_general_quarters()
 	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
-		to_chat(user, SPAN_WARNING("General Quarters has been recently called! Please wait."))
 		return FALSE
 	if(GLOB.security_level < SEC_LEVEL_RED)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)

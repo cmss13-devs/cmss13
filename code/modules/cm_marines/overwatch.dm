@@ -64,8 +64,6 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	COOLDOWN_DECLARE(cooldown_message)
 	/// making a shipside announcement
 	COOLDOWN_DECLARE(cooldown_shipside_message)
-	/// 10 minute cooldown between calls for 'general quarters'
-	COOLDOWN_DECLARE(general_quarters)
 
 /obj/structure/machinery/computer/overwatch/groundside_operations
 	name = "Groundside Operations Console"
@@ -1043,7 +1041,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
 
 		if("general_quarters")
-			if(!COOLDOWN_FINISHED(src, general_quarters))
+			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE
@@ -1053,7 +1051,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_game("[key_name(user)] has called for general quarters via the groundside operations console.")
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
-			COOLDOWN_START(src, general_quarters, 10 MINUTES)
+			COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 			. = TRUE
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)

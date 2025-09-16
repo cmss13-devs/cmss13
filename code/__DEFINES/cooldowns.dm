@@ -2,6 +2,7 @@
 #define COOLDOWN_IDLOCK_TEXTALERT "mob_idlock_textalert"
 #define COOLDOWN_HIJACK_BARRAGE "gamemode_explosive_barrage"
 #define COOLDOWN_HIJACK_GROUND_CHECK "gamemode_ground_check"
+#define COOLDOWN_GENERAL_QUARTERS "ares_quarters_cooldown"
 #define COOLDOWN_ITEM_HOOD_SOUND "item_hood_sound"
 #define COOLDOWN_LIGHT "cooldown_light"
 

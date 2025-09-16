@@ -368,7 +368,7 @@
 			log_game("[key_name(user)] has called for general quarters via ARES.")
 			message_admins("[key_name_admin(user)] has called for general quarters via ARES.")
 			log_ares_security("General Quarters", "Called for general quarters via ARES.", last_login)
-			COOLDOWN_ID_START(datacore, COOLDOWN_GENERAL_QUARTERS, 10 MINUTES)
+			COOLDOWN_START(datacore, ares_general_quarters, 10 MINUTES)
 			. = TRUE
 
 		if("evacuation_start")

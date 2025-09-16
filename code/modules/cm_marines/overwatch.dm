@@ -1051,7 +1051,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_game("[key_name(user)] has called for general quarters via the groundside operations console.")
 			message_admins("[key_name_admin(user)] has called for general quarters via the groundside operations console.")
 			log_ares_security("General Quarters", "Called for general quarters via the groundside operations console.", user)
-			COOLDOWN_START(datacore, COOLDOWN_GENERAL_QUARTERS, 10 MINUTES) // Use the new alias
+			COOLDOWN_START(datacore, COOLDOWN_GENERAL_QUARTERS, 10 MINUTES)
 			. = TRUE
 
 /obj/structure/machinery/computer/overwatch/proc/transfer_talk(obj/item/camera, mob/living/sourcemob, message, verb = "says", datum/language/language, italics = FALSE, show_message_above_tv = FALSE)

@@ -400,8 +400,8 @@
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 		return FALSE
-	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 	COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
+	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
 	return TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()

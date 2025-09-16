@@ -37374,7 +37374,7 @@
 /obj/structure/machinery{
 	density = 1;
 	dir = 8;
-	icon = 'icons\obj\vehicles\apc_pmc.dmi';
+	icon = 'icons/obj/vehicles/apc_pmc.dmi';
 	icon_state = "hull_wy";
 	explo_proof = 1;
 	name = "\improper M577-WY Armored Personnel Carrier";

@@ -562,27 +562,31 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		slot_check = GET_DEFAULT_ROLE(human.job)
 
 	//we make a list of squad that is randomized so alpha isn't always lowest squad.
-	var/list/mixed_squads = list()
+	var/list/usable_squads = list()
 	for(var/datum/squad/squad in squads)
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
-			mixed_squads += squad
+			usable_squads += squad
 
-	var/preferred_squad = human.client?.prefs?.preferred_squad
-	if(preferred_squad == "None")
-		preferred_squad = null
+
+	var/list/preferred_squads = human.client?.prefs?.preferred_squad
+	if(islist(preferred_squads) && length(preferred_squads))
+		var/list/ordered_squads = list()
+		for(var/squad in preferred_squads)
+			for(var/datum/squad/_squad in usable_squads)
+				if(_squad.name == squad || _squad.equivalent_name == squad)
+					ordered_squads += _squad
+					continue
+
+		usable_squads = ordered_squads
 
 	var/datum/squad/lowest
-	for(var/datum/squad/squad in mixed_squads)
+	for(var/datum/squad/squad in usable_squads)
 		if(slot_check && !isnull(squad.roles_cap[slot_check]) && !skip_limit)
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 
-		if(preferred_squad && (squad.name == preferred_squad || squad.equivalent_name == preferred_squad)) //fav squad or faction equivalent has a spot for us, no more searching needed.
-			if(squad.put_marine_in_squad(human))
-				return
-
-		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]) && !squad.riflemen_limited) // Don't put people against their preference in limited squads
-			lowest = squad
+		if(squad.put_marine_in_squad(human))
+			return
 	if(!lowest)
 		lowest = locate(/datum/squad/marine/cryo) in squads
 	lowest.put_marine_in_squad(human)

@@ -44060,8 +44060,6 @@
 	dir = 2;
 	icon_state = "pipe-j2"
 	},
-/obj/effect/landmark/start/marine/spec/charlie,
-/obj/effect/landmark/late_join/charlie,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/support)
 "erL" = (
@@ -76144,6 +76142,8 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/effect/landmark/start/marine/tl/charlie,
+/obj/effect/landmark/late_join/charlie,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/support)
 "rEK" = (
@@ -76536,8 +76536,8 @@
 /area/almayer/living/starboard_emb)
 "rNd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/marine/spec/kilo,
 /obj/effect/landmark/late_join/kilo,
+/obj/effect/landmark/start/marine/tl/kilo,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/support)
 "rNu" = (
@@ -84859,8 +84859,8 @@
 /area/almayer/squads/delta)
 "vio" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/marine/spec/oscar,
 /obj/effect/landmark/late_join/oscar,
+/obj/effect/landmark/start/marine/tl/oscar,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/support)
 "vip" = (
@@ -88925,12 +88925,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_p)
-"wGE" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start/marine/charlie,
-/obj/effect/landmark/late_join/charlie,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/squads/support)
 "wGX" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -146450,8 +146444,8 @@ iIR
 bHM
 clr
 nvT
-wGE
-wGE
+bHH
+bHH
 erG
 ewO
 sEu

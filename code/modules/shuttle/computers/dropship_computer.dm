@@ -1,3 +1,4 @@
+#include "code/game/machinery/ARES/ARES_procs.dm"
 /obj/structure/machinery/computer/shuttle/dropship/flight
 	name = "dropship navigation computer"
 	desc = "A flight computer that can be used for autopilot or long-range flights."
@@ -395,13 +396,13 @@
 		colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack_general_quarters()
-	if(!COOLDOWN_FINISHED(datacore, COOLDOWN_GENERAL_QUARTERS))
+	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 		to_chat(user, SPAN_WARNING("General Quarters has been recently called! Please wait."))
 		return FALSE
 	if(GLOB.security_level < SEC_LEVEL_RED)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
-	COOLDOWN_START(datacore, COOLDOWN_GENERAL_QUARTERS, 10 MINUTES)
+	COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 	return TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()

@@ -1040,7 +1040,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
 
 		if("general_quarters")
-			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
+			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown, world.time))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)
 				return FALSE

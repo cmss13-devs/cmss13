@@ -1948,6 +1948,7 @@
 #include "code\modules\gear_presets\survivors\sorokyne_strata\preset_sorokyne_strata.dm"
 #include "code\modules\gear_presets\survivors\trijent\crashlanding_upp_bar_insert_trijent.dm"
 #include "code\modules\gear_presets\survivors\trijent\preset_trijent.dm"
+#include "code\modules\gear_presets\survivors\white_antre\preset_white_antre.dm"
 #include "code\modules\holidays\holidays.dm"
 #include "code\modules\holidays\halloween\decorators.dm"
 #include "code\modules\holidays\halloween\pumpkins\patches.dm"

@@ -1,4 +1,3 @@
-#include "code/game/machinery/ARES/ARES_procs.dm"
 /obj/structure/machinery/computer/shuttle/dropship/flight
 	name = "dropship navigation computer"
 	desc = "A flight computer that can be used for autopilot or long-range flights."
@@ -396,6 +395,7 @@
 		colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack_general_quarters()
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 		to_chat(user, SPAN_WARNING("General Quarters has been recently called! Please wait."))
 		return FALSE

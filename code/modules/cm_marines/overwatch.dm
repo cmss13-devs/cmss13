@@ -2,7 +2,7 @@
 #define HIDE_ALMAYER 2
 #define HIDE_GROUND 1
 #define HIDE_NONE 0
-var/time = world.time
+var time = world.time
 GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
 
 /obj/structure/machinery/computer/overwatch

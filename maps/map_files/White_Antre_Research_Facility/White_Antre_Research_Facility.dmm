@@ -456,7 +456,7 @@
 	name = "slashed apart cryo tank"
 	},
 /obj/item/prop/alien/hugger{
-	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Dead";
 	name = "dead larva";
 	desc = "Looks like it was murdered by another xenomorph?"
@@ -539,7 +539,7 @@
 	name = "slashed apart cryo tank"
 	},
 /obj/item/prop/alien/hugger{
-	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Dead";
 	name = "dead larva";
 	desc = "Looks like it was murdered by another xenomorph?"
@@ -571,7 +571,7 @@
 	name = "slashed apart cryo tank"
 	},
 /obj/item/prop/alien/hugger{
-	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Dead";
 	name = "dead larva";
 	desc = "Looks like it was murdered by another xenomorph?"
@@ -3004,7 +3004,7 @@
 	layer = 3
 	},
 /obj/item/prop/alien/hugger{
-	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Dead";
 	name = "dead larva";
 	desc = "Looks like it was murdered by another xenomorph?"
@@ -3035,7 +3035,7 @@
 	layer = 3
 	},
 /obj/item/prop/alien/hugger{
-	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Dead";
 	name = "dead larva";
 	desc = "Looks like it was murdered by another xenomorph?"
@@ -3332,7 +3332,7 @@
 	layer = 3
 	},
 /obj/item/prop/alien/hugger{
-	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Dead";
 	name = "dead larva";
 	desc = "Looks like it was murdered by another xenomorph?"
@@ -3352,7 +3352,7 @@
 	layer = 3
 	},
 /obj/item/prop/alien/hugger{
-	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Dead";
 	name = "dead larva";
 	desc = "Looks like it was murdered by another xenomorph?"
@@ -18252,7 +18252,7 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/item/prop/alien/hugger{
-	icon = 'icons\mob\xenos\castes\tier_0\larva.dmi';
+	icon = 'icons/mob/xenos/castes/tier_0/larva.dmi';
 	icon_state = "Larva Dead";
 	name = "dead larva";
 	desc = "Looks like it was murdered by another xenomorph?";

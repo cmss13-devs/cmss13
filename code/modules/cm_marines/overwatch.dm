@@ -1,5 +1,4 @@
 #define MAX_SAVED_COORDINATES 3
-#include "../../game/machinery/ARES/ARES_procs.dm"
 #define HIDE_ALMAYER 2
 #define HIDE_GROUND 1
 #define HIDE_NONE 0

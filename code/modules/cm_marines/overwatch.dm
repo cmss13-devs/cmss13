@@ -2,7 +2,6 @@
 #define HIDE_ALMAYER 2
 #define HIDE_GROUND 1
 #define HIDE_NONE 0
-var time = world.time
 GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/computer/overwatch)
 
 /obj/structure/machinery/computer/overwatch
@@ -1040,6 +1039,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 			log_ares_security("Cancel Evacuation", "Cancelled the emergency evacuation.", user)
 
 		if("general_quarters")
+			var/datum/ares_datacore/datacore
 			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))
 				playsound(src, 'sound/machines/buzz-two.ogg', 15, 1)

@@ -1043,6 +1043,9 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 		if("general_quarters")
 			var/datum/ares_datacore/datacore = GLOB.ares_datacore
 			if(GLOB.security_level < SEC_LEVEL_RED)
+				log_game("[key_name(user)] set red alert via the groundside operations console.")
+				message_admins("[key_name_admin(user)] set red alert via the groundside operations console.")
+				log_ares_security("Manual Security Update", "Changed the security level to red.", user)
 				set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
 			if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
 				to_chat(user, SPAN_WARNING("It has not been long enough since the last General Quarters call!"))

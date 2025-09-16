@@ -63,6 +63,7 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 		below = SSmapping.get_turf_below(below)
 
 	user.forceMove(below)
+	below.on_climb_down(user)
 	return
 
 /turf/open_space/proc/check_fall(atom/movable/movable)

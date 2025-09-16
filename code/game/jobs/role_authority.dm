@@ -567,7 +567,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		if(squad.roundstart && squad.usable && squad.faction == human.faction && squad.name != "Root")
 			usable_squads += squad
 
-
+	var/has_squad_pref = FALSE
 	var/list/preferred_squads = human.client?.prefs?.preferred_squad
 	if(islist(preferred_squads) && length(preferred_squads))
 		var/list/ordered_squads = list()
@@ -576,7 +576,7 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 				if(_squad.name == squad || _squad.equivalent_name == squad)
 					ordered_squads += _squad
 					continue
-
+		has_squad_pref = TRUE
 		usable_squads = ordered_squads
 
 	var/datum/squad/lowest
@@ -585,8 +585,11 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 			if(squad.roles_in[slot_check] >= squad.roles_cap[slot_check])
 				continue
 
-		if(squad.put_marine_in_squad(human))
+		if(has_squad_pref && squad.put_marine_in_squad(human))
 			return
+
+		if(!lowest || (slot_check && lowest.roles_in[slot_check] > squad.roles_in[slot_check]))
+			lowest = squad
 	if(!lowest)
 		lowest = locate(/datum/squad/marine/cryo) in squads
 	lowest.put_marine_in_squad(human)

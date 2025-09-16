@@ -5041,6 +5041,13 @@
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/tankerbunks)
+"alZ" = (
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/almayer/orange2,
+/area/almayer/squads/bravo)
 "ama" = (
 /obj/structure/stairs/perspective{
 	dir = 4
@@ -7733,6 +7740,16 @@
 /obj/item/flag/plantable/ua,
 /turf/open/floor/almayer/redfull,
 /area/almayer/command/cic)
+"asR" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	pixel_x = 1
+	},
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer/orange/west,
+/area/almayer/squads/bravo)
 "asS" = (
 /obj/structure/machinery/cryopod/right{
 	pixel_y = 6
@@ -8333,6 +8350,16 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/p_bow)
+"auT" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer/orange/east,
+/area/almayer/squads/bravo)
 "auU" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/plating_striped/west,
@@ -38126,6 +38153,9 @@
 	icon_state = "SE-out";
 	pixel_x = 1;
 	pixel_y = -1
+	},
+/obj/structure/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/almayer/orange/north,
 /area/almayer/squads/bravo)
@@ -78427,6 +78457,10 @@
 	icon_state = "pottedplant_22";
 	name = "synthetic potted plant";
 	pixel_y = 8
+	},
+/obj/structure/machinery/light{
+	unacidable = 1;
+	unslashable = 1
 	},
 /turf/open/floor/almayer/orange/southeast,
 /area/almayer/squads/bravo)
@@ -144684,10 +144718,10 @@ aQL
 cdV
 bIr
 bIr
-bIr
+asR
 chQ
 bHT
-mzg
+alZ
 aQL
 bFS
 bHK
@@ -145202,7 +145236,7 @@ bIv
 bIv
 chS
 bHT
-mzg
+alZ
 aQL
 dpO
 bHK
@@ -145405,7 +145439,7 @@ aQL
 ack
 chl
 chl
-chl
+auT
 bIf
 bHW
 mzg
@@ -145717,7 +145751,7 @@ brs
 bpH
 chN
 bHY
-mzg
+alZ
 aQL
 dpO
 bHK

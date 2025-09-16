@@ -489,7 +489,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			dat += "<b>Corporate Relation:</b> <a href='byond://?_src_=prefs;preference=wy_relation;task=input'><b>[weyland_yutani_relation]</b></a><br>"
 			var/squad_detail = "No preference"
-			if(length(preferred_squad))
+			if(length(preferred_squad) && islist(preferred_squad))
 				squad_detail = ""
 				for(var/squad in preferred_squad)
 					squad_detail += copytext(squad, 1, 2) + ", "

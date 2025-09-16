@@ -3,25 +3,13 @@
 	"map_path": "map_files/White_Antre_Research_Facility",
 	"map_file": "White_Antre_Research_Facility.dmm",
     "webmap_url": "LV552",
-    "weather_holder": "/datum/weather_ss_map_holder/lv522_chances_claim",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/lv",
-        "/datum/equipment_preset/survivor/doctor/lv",
-        "/datum/equipment_preset/survivor/chaplain/lv",
-        "/datum/equipment_preset/survivor/engineer/lv",
-        "/datum/equipment_preset/survivor/corporate/lv",
-        "/datum/equipment_preset/survivor/trucker/lv",
+        "/datum/equipment_preset/survivor_antre/civilian",
+        "/datum/equipment_preset/survivor_antre/corporate",
         "/datum/equipment_preset/survivor_antre/site_security",
-        "/datum/equipment_preset/survivor/hybrisa/kelland_miner",
-        "/datum/equipment_preset/survivor/civilian",
-        "/datum/equipment_preset/survivor/civilian_unique"
-    ],
-    "defcon_triggers": [
-        3300,
-        2100,
-        1450,
-        580,
-        0.0
+        "/datum/equipment_preset/survivor_antre/scientist_xenobiologist",
+        "/datum/equipment_preset/survivor_antre/doctor",
+        "/datum/equipment_preset/survivor_antre/maint_engineer"
     ],
     "survivor_message": "You are currently within the White Antre Research Facility, as an employee. Today is the big day, a new round of tests and a visit by corporate and government agents. Just another day at the office.",
     "announce_text": "USS Almayer, this is Director Kadinsky of the White Antre Research Facility, welcome. I have been informed by my superiors that you have been dispatched to collect a classified cargo shipment for transport to Chinook station and to observe the on-going live-fire xenomorph testing being conducted at this site.\n\nYou’ll be joined by Azure-15, of the Whiteguard PMC. Further information will be sent after your arrival.\n\nPlease inform your corporate liaison that I look forward to seeing them again. Kadinsky out.",

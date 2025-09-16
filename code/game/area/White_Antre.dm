@@ -60,7 +60,7 @@
 
 // PMC Ship
 
-/area/white_antre/interior/pmc_dropship
+/area/white_antre/indoors/pmc_dropship
 	name = "PMC-DS-1 'Cash Flow'"
 	icon_state = "WYSpaceport"
 	ambience_exterior = AMBIENCE_SHIP_ALT

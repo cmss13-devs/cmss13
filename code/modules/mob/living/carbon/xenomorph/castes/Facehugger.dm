@@ -34,7 +34,7 @@
 	see_in_dark = 8
 	tier = 0  //Facehuggers don't count towards Pop limits
 	acid_blood_damage = 5
-	crit_health = 0
+	health_threshold_dead = 0
 	crit_grace_time = 0
 	gib_chance = 75
 	mob_size = MOB_SIZE_SMALL

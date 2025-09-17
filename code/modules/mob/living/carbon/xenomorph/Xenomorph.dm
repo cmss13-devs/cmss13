@@ -84,7 +84,7 @@
 	var/slash_sound = "alien_claw_flesh"
 	health = 5
 	maxHealth = 5
-	var/crit_health = -100 // What negative healthy they die in.
+	health_threshold_dead = -100 // What negative healthy they die in.
 	var/gib_chance  = 5 // % chance of them exploding when taking damage. Goes up with damage inflicted.
 	speed = -0.5 // Speed. Positive makes you go slower. (1.5 is equivalent to FAT mutation)
 	can_crawl = FALSE

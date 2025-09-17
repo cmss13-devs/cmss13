@@ -90,6 +90,9 @@ GLOBAL_LIST_EMPTY(deevolved_ckeys)
 			return
 		on_mob_jump()
 		forceMove(get_turf(pick(GLOB.queen_spawns)))
+	else if(hardcore)
+		to_chat(src, SPAN_WARNING("Nuh-uhh."))
+		return
 
 	if(evolution_threshold && castepick != XENO_CASTE_QUEEN) //Does the caste have an evolution timer? Then check it
 		if(evolution_stored < evolution_threshold)

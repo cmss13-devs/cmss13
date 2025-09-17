@@ -54,7 +54,7 @@
 	counts_for_slots = FALSE
 	counts_for_roundend = FALSE
 	refunds_larva_if_banished = FALSE
-	crit_health = 0
+	health_threshold_dead = 0
 	gib_chance = 100
 	acid_blood_damage = 15
 	base_actions = list(

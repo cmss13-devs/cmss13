@@ -139,7 +139,7 @@
 
 	if (ishuman(source))
 		var/mob/living/carbon/human/sourcehuman = source
-		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcehuman.stat == DEAD || sourcehuman.health < sourcehuman.human_health_threshold_crit) && !sourcehuman.get_target_lock(user.faction_group))
+		if(MODE_HAS_MODIFIER(/datum/gamemode_modifier/disable_stripdrag_enemy) && (sourcehuman.stat == DEAD || sourcehuman.health < sourcehuman.health_threshold_crit) && !sourcehuman.get_target_lock(user.faction_group))
 			to_chat(user, SPAN_WARNING("You can't strip items of a crit or dead member of another faction!"))
 			return FALSE
 

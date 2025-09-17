@@ -7,7 +7,7 @@
 	name = JOB_SURVIVOR
 	assignment = JOB_SURVIVOR
 	job_title = JOB_SURVIVOR
-	flags = EQUIPMENT_PRESET_START_OF_ROUND
+
 	skills = /datum/skills/civilian/survivor
 	languages = list(LANGUAGE_ENGLISH)
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)

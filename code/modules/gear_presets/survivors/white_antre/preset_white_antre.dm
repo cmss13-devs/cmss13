@@ -45,6 +45,7 @@
 /datum/equipment_preset/survivor_antre/civilian
 	name = "Survivor - White Antre - Civilian"
 	assignment = "Civilian"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	skills = /datum/skills/civilian/survivor
 	access = list(ACCESS_CIVILIAN_PUBLIC)
 
@@ -125,6 +126,7 @@
 	name = "Survivor - White Antre - Corporate Junior Director"
 	assignment = "Corporate Junior Director"
 	skills = /datum/skills/civilian/survivor
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	paygrades = list(PAY_SHORT_WYC3 = JOB_PLAYTIME_TIER_0, PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_2)
 	faction_group = FACTION_LIST_SURVIVOR_WY
 	idtype = /obj/item/card/id/silver/clearance_badge/cl
@@ -175,6 +177,7 @@
 	origin_override = ORIGIN_WY_SEC
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0, PAY_SHORT_CSPO = JOB_PLAYTIME_TIER_4)
 	skills = /datum/skills/civilian/survivor/goon
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_RESEARCH,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS,ACCESS_CIVILIAN_BRIG,ACCESS_CIVILIAN_MEDBAY,ACCESS_CIVILIAN_COMMAND,ACCESS_WY_EXEC,ACCESS_WY_GENERAL,ACCESS_WY_COLONIAL)
 
@@ -207,6 +210,7 @@
 	name = "Survivor - White Antre - Xenobiologist"
 	assignment = "Xenobiologist"
 	skills = /datum/skills/civilian/survivor/scientist
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge/scientist
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY)
 
@@ -233,6 +237,7 @@
 	name = "Survivor - White Antre - Medical Doctor"
 	assignment = "Doctor"
 	skills = /datum/skills/civilian/survivor/doctor
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/clearance_badge
 	access = list(ACCESS_CIVILIAN_PUBLIC, ACCESS_CIVILIAN_RESEARCH, ACCESS_CIVILIAN_MEDBAY, ACCESS_CIVILIAN_COMMAND)
 
@@ -260,6 +265,7 @@
 	name = "Survivor - White Antre - Maintenance Engineer"
 	assignment = "Electrical Engineer"
 	skills = /datum/skills/civilian/survivor/engineer
+	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(ACCESS_CIVILIAN_PUBLIC,ACCESS_CIVILIAN_ENGINEERING,ACCESS_CIVILIAN_LOGISTICS)
 
 	survivor_variant = ENGINEERING_SURVIVOR

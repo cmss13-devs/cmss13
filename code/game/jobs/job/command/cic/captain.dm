@@ -93,6 +93,12 @@
 	var/list/co_briefing_files = SSmapping.configs[GROUND_MAP].co_briefing_files
 	var/faction_alignment = "Unaligned"
 
+	if(!co_briefing_files)	// ground map has no defined briefing faxes
+		return
+
+	if(!player.client)	// our CO has ghosted or DC'd within the 15 seconds
+		return
+
 	if(player.client.prefs.affiliation)
 		faction_alignment = player.client.prefs.affiliation
 
@@ -101,7 +107,8 @@
 	if(co_briefing_files[faction_alignment])
 		co_briefing.info = file2text(co_briefing_files[faction_alignment])
 	else
-		co_briefing.info = file2text(co_briefing.placeholder)
+		qdel(co_briefing)
+		return
 
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	co_briefing.info = replacetext(co_briefing.info, "%%USCMLOGO%%", asset.get_url_mappings()["logo_uscm.png"])

@@ -1207,5 +1207,3 @@
 	name = "Classified Operations Briefing"
 	desc = "A classified document from USCM high-command about the colony the ship is responding to."
 	icon_state = "paper_uscm_words_dark"
-
-	var/placeholder = "maps/map_briefings/cl_brief_placeholder.html"

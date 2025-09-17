@@ -27,6 +27,12 @@
         0.0
     ],
     "survivor_message": "You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now.",
+    "co_briefing": {
+        "Hawks": "maps/map_briefings/commanding_officer/fiorina/FIORINAcpo.html",
+        "Doves": "maps/map_briefings/commanding_officer/fiorina/FIORINAhmm.html",
+        "Magpies": "maps/map_briefings/commanding_officer/fiorina/FIORINAmodi.html",
+        "Unaligned": "maps/map_briefings/commanding_officer/fiorina/FIORINAunaligned.html"
+    },
     "map_item_type": "/obj/item/map/FOP_map_v3",
     "announce_text": "An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "environment_traits": { "InSpace": true },

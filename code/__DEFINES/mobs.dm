@@ -271,9 +271,8 @@
 //defins for datum/hud
 
 #define HUD_STYLE_STANDARD 1
-#define HUD_STYLE_REDUCED 2
-#define HUD_STYLE_NOHUD 3
-#define HUD_VERSIONS 3
+#define HUD_STYLE_NOHUD 2
+#define HUD_VERSIONS 2
 
 
 //Blood levels

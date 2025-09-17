@@ -18,6 +18,8 @@
 	var/atom/movable/screen/r_hand_hud_object
 	var/atom/movable/screen/l_hand_hud_object
 	var/atom/movable/screen/action_intent
+	var/atom/movable/screen/screen_border
+	var/atom/movable/screen/backhud
 	var/atom/movable/screen/mov_intent/move_intent
 	var/atom/movable/screen/alien_plasma_display
 	var/atom/movable/screen/alien_armor_display
@@ -210,25 +212,6 @@
 			if(length(infodisplay))
 				screenmob.client.add_to_screen(infodisplay)
 
-		if(HUD_STYLE_REDUCED) //Reduced HUD
-			hud_shown = 0 //Governs behavior of other procs
-			if(length(static_inventory))
-				screenmob.client.remove_from_screen(static_inventory)
-			if(length(toggleable_inventory))
-				screenmob.client.remove_from_screen(toggleable_inventory)
-			if(length(hotkeybuttons))
-				screenmob.client.remove_from_screen(hotkeybuttons)
-			if(length(infodisplay))
-				screenmob.client.add_to_screen(infodisplay)
-
-			//These ones are a part of 'static_inventory', 'toggleable_inventory' or 'hotkeybuttons' but we want them to stay
-			if(l_hand_hud_object)
-				screenmob.client.add_to_screen(l_hand_hud_object) //we want the hands to be visible
-			if(r_hand_hud_object)
-				screenmob.client.add_to_screen(r_hand_hud_object) //we want the hands to be visible
-			if(action_intent)
-				screenmob.client.add_to_screen(action_intent) //we want the intent switcher visible
-
 		if(HUD_STYLE_NOHUD) //No HUD
 			hud_shown = 0 //Governs behavior of other procs
 			if(length(static_inventory))
@@ -290,14 +273,12 @@
 		to_chat(usr, SPAN_WARNING("This mob type does not use a HUD."))
 
 
-/datum/hud/proc/draw_act_intent(datum/custom_hud/ui_datum, ui_alpha, ui_icon, ui_loc)
+/datum/hud/proc/draw_act_intent(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	var/atom/movable/screen/using = new /atom/movable/screen/act_intent/corner()
 	if(ui_icon)
 		using.icon = ui_icon
 	else
 		using.icon = ui_datum.ui_style_icon
-	if(ui_alpha)
-		using.alpha = ui_alpha
 	using.icon_state = "intent_"+ intent_text(mymob.a_intent)
 	if(ui_loc)
 		using.screen_loc = ui_loc
@@ -306,7 +287,7 @@
 	static_inventory += using
 	action_intent = using
 
-/datum/hud/proc/draw_mov_intent(datum/custom_hud/ui_datum, ui_alpha, ui_color, ui_icon, ui_loc)
+/datum/hud/proc/draw_mov_intent(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	var/atom/movable/screen/using = new /atom/movable/screen/mov_intent()
 	if(ui_icon)
 		using.icon = ui_icon
@@ -316,15 +297,11 @@
 		using.screen_loc = ui_loc
 	else
 		using.screen_loc = ui_datum.ui_movi
-	if(ui_alpha)
-		using.alpha = ui_alpha
-	if(ui_color)
-		using.color = ui_color
 	using.icon_state = (mymob.m_intent == MOVE_INTENT_RUN ? "running" : "walking")
 	static_inventory += using
 	move_intent = using
 
-/datum/hud/proc/draw_drop(datum/custom_hud/ui_datum, ui_alpha, ui_color, ui_icon, ui_loc)
+/datum/hud/proc/draw_drop(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	var/atom/movable/screen/using = new /atom/movable/screen/drop()
 	if(ui_icon)
 		using.icon = ui_icon
@@ -333,14 +310,10 @@
 	if(ui_loc)
 		using.screen_loc = ui_loc
 	else
-		using.screen_loc = ui_datum.ui_drop_throw
-	if(ui_alpha)
-		using.alpha = ui_alpha
-	if(ui_color)
-		using.color = ui_color
+		using.screen_loc = ui_datum.ui_dropbutton
 	static_inventory += using
 
-/datum/hud/proc/draw_throw(datum/custom_hud/ui_datum, ui_alpha, ui_color, ui_icon, ui_loc)
+/datum/hud/proc/draw_throw(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	throw_icon = new /atom/movable/screen/throw_catch()
 	if(ui_icon)
 		throw_icon.icon = ui_icon
@@ -350,10 +323,6 @@
 		throw_icon.screen_loc = ui_loc
 	else
 		throw_icon.screen_loc = ui_datum.ui_drop_throw
-	if(ui_alpha)
-		throw_icon.alpha = ui_alpha
-	if(ui_color)
-		throw_icon.color = ui_color
 	hotkeybuttons += throw_icon
 
 /datum/hud/proc/draw_pull(datum/custom_hud/ui_datum, ui_loc, ui_icon)
@@ -369,17 +338,22 @@
 	pull_icon.update_icon(mymob)
 	hotkeybuttons += pull_icon
 
-/datum/hud/proc/draw_resist(datum/custom_hud/ui_datum, ui_alpha, ui_color)
+/datum/hud/proc/draw_resist(datum/custom_hud/ui_datum, ui_icon)
 	var/atom/movable/screen/using = new /atom/movable/screen/resist()
-	using.icon = ui_datum.ui_style_icon
+	if(ui_icon)
+		using.icon = ui_icon
+	else
+		using.icon = ui_datum.ui_style_icon
 	using.screen_loc = ui_datum.ui_resist
-	if(ui_alpha)
-		using.alpha = ui_alpha
-	if(ui_color)
-		using.color = ui_color
 	hotkeybuttons += using
 
-/datum/hud/proc/draw_left_hand(datum/custom_hud/ui_datum, ui_alpha, ui_color, ui_icon, ui_loc)
+/datum/hud/proc/draw_rest(datum/custom_hud/ui_datum)
+	var/atom/movable/screen/using = new /atom/movable/screen/rest()
+	using.icon = 'icons/mob/hud/cm_hud/cm_hud_marine_buttons.dmi'
+	using.screen_loc = ui_datum.ui_rest
+	hotkeybuttons += using
+
+/datum/hud/proc/draw_left_hand(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = WEAR_L_HAND
 	if(ui_icon)
@@ -394,16 +368,12 @@
 	inv_box.icon_state = "hand_inactive"
 	if(mymob && mymob.hand)
 		inv_box.icon_state = "hand_active"
-	if(ui_alpha)
-		inv_box.alpha = ui_alpha
-	if(ui_color)
-		inv_box.color = ui_color
 	inv_box.layer = HUD_LAYER
 	inv_box.slot_id = WEAR_L_HAND
 	l_hand_hud_object = inv_box
 	static_inventory += inv_box
 
-/datum/hud/proc/draw_right_hand(datum/custom_hud/ui_datum, ui_alpha, ui_color, ui_icon, ui_loc)
+/datum/hud/proc/draw_right_hand(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	var/atom/movable/screen/inventory/inv_box = new /atom/movable/screen/inventory()
 	inv_box.name = WEAR_R_HAND
 	if(ui_icon)
@@ -418,16 +388,12 @@
 	inv_box.icon_state = "hand_inactive"
 	if(mymob && !mymob.hand) //This being 0 or null means the right hand is in use
 		inv_box.icon_state = "hand_active"
-	if(ui_alpha)
-		inv_box.alpha = ui_alpha
-	if(ui_color)
-		inv_box.color = ui_color
 	inv_box.layer = HUD_LAYER
 	inv_box.slot_id = WEAR_R_HAND
 	r_hand_hud_object = inv_box
 	static_inventory += inv_box
 
-/datum/hud/proc/draw_swaphand(handswap_part, handswap_part_loc, datum/custom_hud/ui_datum, ui_icon, ui_alpha, ui_color)
+/datum/hud/proc/draw_swaphand(handswap_part, handswap_part_loc, datum/custom_hud/ui_datum, ui_icon)
 	var/atom/movable/screen/using = new /atom/movable/screen/inventory()
 	using.name = "hand"
 	if(ui_icon)
@@ -436,14 +402,10 @@
 		using.icon = ui_datum.ui_style_icon
 	using.icon_state = handswap_part
 	using.screen_loc = handswap_part_loc
-	if(ui_alpha)
-		using.alpha = ui_alpha
-	if(ui_color)
-		using.color = ui_color
 	using.layer = HUD_LAYER
 	static_inventory += using
 
-/datum/hud/proc/draw_healths(datum/custom_hud/ui_datum, ui_alpha, ui_icon, ui_loc)
+/datum/hud/proc/draw_healths(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	healths = new /atom/movable/screen/healths()
 	if(ui_icon)
 		healths.icon = ui_icon
@@ -455,7 +417,7 @@
 		healths.screen_loc = ui_datum.UI_HEALTH_LOC
 	infodisplay += healths
 
-/datum/hud/proc/draw_zone_sel(datum/custom_hud/ui_datum, ui_alpha, ui_color, ui_icon, ui_loc)
+/datum/hud/proc/draw_zone_sel(datum/custom_hud/ui_datum, ui_icon, ui_loc)
 	zone_sel = new /atom/movable/screen/zone_sel()
 	if(ui_icon)
 		zone_sel.icon = ui_icon
@@ -465,12 +427,20 @@
 		zone_sel.screen_loc = ui_loc
 	else
 		zone_sel.screen_loc = ui_datum.ui_zonesel
-	if(ui_alpha)
-		zone_sel.alpha = ui_alpha
-	if(ui_color)
-		zone_sel.color = ui_color
 	zone_sel.update_icon(mymob)
 	static_inventory += zone_sel
+
+/datum/hud/proc/draw_screen_border(datum/custom_hud/ui_datum, ui_icon, ui_loc)
+	screen_border = new /atom/movable/screen/border()
+	screen_border.icon = 'icons/mob/hud/cm_hud/cmhud_border.dmi'
+	screen_border.screen_loc = ui_datum.ui_screen_border
+	infodisplay += screen_border
+
+/datum/hud/proc/draw_backhud(datum/custom_hud/alien/ui_alien_datum)
+	backhud = new /atom/movable/screen/backhud/marine()
+	backhud.icon = 'icons/mob/hud/cm_hud/cmhud_marine_background.dmi'
+	backhud.screen_loc = ui_datum.ui_backhud
+	infodisplay += backhud
 
 // Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
 /datum/hud/proc/reorganize_alerts(mob/viewmob)

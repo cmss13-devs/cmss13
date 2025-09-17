@@ -91,7 +91,7 @@
 		next_slash_buffed = FALSE
 		var/datum/action/xeno_action/onclick/lurker_assassinate/ability = get_action(bound_xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
 		if (ability)
-			ability.button.icon_state = "template"
+			ability.button.icon_state = "template_xeno"
 
 	return original_damage
 
@@ -243,7 +243,7 @@
 		invisibility_off(0.9) // Near full refund of remaining time
 		return ..()
 
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 	xeno.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
 
 	animate(xeno, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
@@ -277,7 +277,7 @@
 	animate(xeno, alpha = initial(xeno.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our invisibility end!"))
 
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 	xeno.update_icons()
 
 	xeno.speed_modifier += speed_buff

@@ -155,7 +155,7 @@
 
 	xeno.create_shield(shield_duration, "shield2")
 	shield_active = TRUE
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 	addtimer(CALLBACK(src, PROC_REF(remove_shield)), shield_duration)
 
 	apply_cooldown()
@@ -177,7 +177,7 @@
 		return
 
 	shield_active = FALSE
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 
 	for (var/datum/xeno_shield/shield in xeno.xeno_shields)
 		if (shield.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)

@@ -8,8 +8,8 @@
 	draw_act_intent(ui_alien_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi', ui_loc = "hud:2:-4,9:26")
 	draw_mov_intent(ui_alien_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi', ui_loc = "hud:4:28,4:59")
 	draw_drop(ui_alien_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi', ui_loc = "hud:1:-4,5:50")
-	draw_right_hand(ui_alien_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi', ui_loc = "hud:2:12,7:28")
-	draw_left_hand(ui_alien_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi', ui_loc = "hud:2:44,7:28")
+	draw_right_hand(ui_alien_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_hands.dmi', ui_loc = "hud:2:12,7:28")
+	draw_left_hand(ui_alien_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_hands.dmi', ui_loc = "hud:2:44,7:28")
 	draw_swaphand("swap", "hud:3:-4,8:17", ui_alien_datum, 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi')
 	draw_alien_resist(ui_alien_datum)
 	draw_pull(ui_alien_datum, ui_icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi', ui_loc = "hud:1:-4,6:6")
@@ -24,6 +24,7 @@
 	draw_alien_rest(ui_alien_datum)
 	draw_alien_evo_display(ui_alien_datum)
 	draw_alien_health_doll(ui_alien_datum)
+	draw_screen_border(ui_alien_datum)
 
 /datum/hud/proc/draw_alien_backhud(datum/custom_hud/alien/ui_alien_datum)
 	alien_backhud = new /atom/movable/screen/backhud/xeno()
@@ -31,24 +32,16 @@
 	alien_backhud.screen_loc = ui_alien_datum.ui_backhud
 	infodisplay += alien_backhud
 
-/datum/hud/proc/draw_alien_resist(datum/custom_hud/alien/ui_alien_datum, ui_alpha, ui_color)
+/datum/hud/proc/draw_alien_resist(datum/custom_hud/alien/ui_alien_datum)
 	var/atom/movable/screen/using = new /atom/movable/screen/resist()
 	using.icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi'
 	using.screen_loc = ui_alien_datum.ui_alien_resist
-	if(ui_alpha)
-		using.alpha = ui_alpha
-	if(ui_color)
-		using.color = ui_color
 	hotkeybuttons += using
 
-/datum/hud/proc/draw_alien_rest(datum/custom_hud/alien/ui_alien_datum, ui_alpha, ui_color)
+/datum/hud/proc/draw_alien_rest(datum/custom_hud/alien/ui_alien_datum)
 	var/atom/movable/screen/using = new /atom/movable/screen/rest()
 	using.icon = 'icons/mob/hud/cm_hud/cm_hud_xeno_buttons.dmi'
 	using.screen_loc = ui_alien_datum.ui_alien_rest
-	if(ui_alpha)
-		using.alpha = ui_alpha
-	if(ui_color)
-		using.color = ui_color
 	hotkeybuttons += using
 
 /datum/hud/proc/draw_alien_health_doll(datum/custom_hud/alien/ui_alien_datum)

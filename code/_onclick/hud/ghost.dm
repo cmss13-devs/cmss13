@@ -60,7 +60,7 @@
 	ghost.teleport_z_down()
 	return
 
-/datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi', ui_color, ui_alpha = 230)
+/datum/hud/ghost/New(mob/owner, ui_style='icons/mob/hud/human_white.dmi')
 	. = ..()
 	var/atom/movable/screen/using
 

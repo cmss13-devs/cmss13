@@ -1,6 +1,5 @@
 /*
 	Screen objects
-	Todo: improve/re-implement
 
 	Screen objects are only used for the hud and should not appear anywhere "in-game".
 	They are used with the client/screen list and the screen_loc var.
@@ -39,7 +38,6 @@
 	name = "close"
 	icon_state = "close"
 
-
 /atom/movable/screen/close/clicked(mob/user)
 	if(isobserver(user))
 		return TRUE
@@ -48,7 +46,6 @@
 			var/obj/item/storage/master_storage = master
 			master_storage.storage_close(user)
 	return TRUE
-
 
 /atom/movable/screen/action_button
 	icon = 'icons/mob/hud/actions.dmi'
@@ -220,15 +217,6 @@ GLOBAL_LIST_INIT(xeno_action_hud_coords, list("hud:2:2,6:30", "hud:2:31,6:30", "
 	plane = ABOVE_HUD_PLANE
 	layer = ABOVE_HUD_LAYER
 
-// /atom/movable/screen/zone_sel/clicked(mob/user, list/mods)
-// 	if (..())
-// 		return TRUE
-
-// 	var/icon_x = text2num(mods[ICON_X])
-// 	var/icon_y = text2num(mods[ICON_Y])
-// 	var/old_selecting = selecting //We're only going to update_icon() if there's been a change
-
-
 /atom/movable/screen/zone_sel/proc/get_zone_at(icon_x, icon_y, mob/user)
 	if(isxeno(user))
 		switch(icon_y)
@@ -325,6 +313,7 @@ GLOBAL_LIST_INIT(xeno_action_hud_coords, list("hud:2:2,6:30", "hud:2:31,6:30", "
 /atom/movable/screen/gun
 	/// The proc/verb which should be called on the gun.
 	var/gun_proc_ref
+	icon = 'icons/mob/hud/cm_hud/cm_hud_marine_attachment_buttons.dmi'
 
 /atom/movable/screen/gun/clicked(mob/user, list/mods)
 	. = ..()
@@ -345,10 +334,10 @@ GLOBAL_LIST_INIT(xeno_action_hud_coords, list("hud:2:2,6:30", "hud:2:31,6:30", "
 	icon_state = "gun_raillight"
 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, activate_rail_attachment_verb)
 
-/atom/movable/screen/gun/eject_magazine
-	name = "Eject magazine"
-	icon_state = "gun_loaded"
-	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, empty_mag)
+// /atom/movable/screen/gun/eject_magazine
+// 	name = "Eject magazine"
+// 	icon_state = "gun_loaded"
+// 	gun_proc_ref = TYPE_VERB_REF(/obj/item/weapon/gun, empty_mag)
 
 /atom/movable/screen/gun/toggle_firemode
 	name = "Toggle firemode"
@@ -526,24 +515,14 @@ GLOBAL_LIST_INIT(xeno_action_hud_coords, list("hud:2:2,6:30", "hud:2:31,6:30", "
 	var/_x = text2num(mods[ICON_X])
 	var/_y = text2num(mods[ICON_Y])
 
-	if(isxeno(user))
-		if(_x<=19 && _y<=20)
-			user.a_intent_change(INTENT_HARM)
-		else if(_x<=19 && _y>=22)
-			user.a_intent_change(INTENT_HELP)
-		else if(_x>=21 && _y<=20)
-			user.a_intent_change(INTENT_GRAB)
-		else if(_x>=21 && _y>=22)
-			user.a_intent_change(INTENT_DISARM)
-	else
-		if(_x<=16 && _y<=16)
-			user.a_intent_change(INTENT_HARM)
-		else if(_x<=16 && _y>=17)
-			user.a_intent_change(INTENT_HELP)
-		else if(_x>=17 && _y<=16)
-			user.a_intent_change(INTENT_GRAB)
-		else if(_x>=17 && _y>=17)
-			user.a_intent_change(INTENT_DISARM)
+	if(_x<=19 && _y<=20)
+		user.a_intent_change(INTENT_HARM)
+	else if(_x<=19 && _y>=22)
+		user.a_intent_change(INTENT_HELP)
+	else if(_x>=21 && _y<=20)
+		user.a_intent_change(INTENT_GRAB)
+	else if(_x>=21 && _y>=22)
+		user.a_intent_change(INTENT_DISARM)
 	return 1
 
 
@@ -726,25 +705,12 @@ GLOBAL_LIST_INIT(xeno_action_hud_coords, list("hud:2:2,6:30", "hud:2:31,6:30", "
 	name = "Evolve Status"
 	desc = "Click for evolve panel."
 
-/atom/movable/screen/alien/evolvehud/Click()
+/atom/movable/screen/alien/evolvehud/clicked(mob/user, list/mods)
 	. = ..()
 	if(!.)
 		return
-	var/mob/living/carbon/xenomorph/X = usr
+	var/mob/living/carbon/xenomorph/X = user
 	X.Evolve()
-
-/atom/movable/screen/equip
-	name = "equip"
-	icon_state = "act_equip"
-	layer = ABOVE_HUD_LAYER
-	plane = ABOVE_HUD_PLANE
-
-/atom/movable/screen/equip/clicked(mob/user)
-	. = ..()
-	if(. || !ishuman(user))
-		return TRUE
-	var/mob/living/carbon/human/human_user = user
-	human_user.quick_equip()
 
 /atom/movable/screen/bodytemp
 	name = "body temperature"
@@ -753,25 +719,6 @@ GLOBAL_LIST_INIT(xeno_action_hud_coords, list("hud:2:2,6:30", "hud:2:31,6:30", "
 /atom/movable/screen/oxygen
 	name = "oxygen"
 	icon_state = "oxy0"
-
-/atom/movable/screen/toggle_inv
-	name = "toggle"
-	icon_state = "other"
-
-/atom/movable/screen/toggle_inv/clicked(mob/user)
-	if (..())
-		return 1
-
-	if(user && user.hud_used)
-		if(user.hud_used.inventory_shown)
-			user.hud_used.inventory_shown = 0
-			user.client.remove_from_screen(user.hud_used.toggleable_inventory)
-		else
-			user.hud_used.inventory_shown = 1
-			user.client.add_to_screen(user.hud_used.toggleable_inventory)
-
-		user.hud_used.hidden_inventory_update()
-	return 1
 
 /atom/movable/screen/preview
 	icon = 'icons/turf/almayer.dmi'

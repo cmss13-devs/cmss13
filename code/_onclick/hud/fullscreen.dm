@@ -244,13 +244,23 @@
 	blend_mode = BLEND_ADD
 	show_when_dead = TRUE
 
-/atom/movable/screen/backhud/Click()
-	return
-
-/atom/movable/screen/backhud/xeno
-	icon = 'icons/mob/hud/cm_hud/cmhud_xeno_background.dmi'
+/atom/movable/screen/backhud
 	icon_state = ""
 	name = " "
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
+/atom/movable/screen/backhud/Click()
+	return
+
+/atom/movable/screen/backhud/xeno
+	icon = 'icons/mob/hud/cm_hud/cmhud_xeno_background.dmi'
+
+/atom/movable/screen/backhud/marine
+	icon = 'icons/mob/hud/cm_hud/cmhud_marine_background.dmi'
+
+/atom/movable/screen/border
+	icon = 'icons/mob/hud/cm_hud/cmhud_border.dmi'
+	screen_loc = "1, 1"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	plane = FULLSCREEN_PLANE

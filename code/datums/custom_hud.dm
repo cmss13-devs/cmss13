@@ -6,24 +6,38 @@
 	var/ui_inventory = "WEST:6,1:5"
 
 	//Lower center, persistent menu
-	var/ui_sstore1 = "WEST+2:10,1:5"
-	var/ui_id = "WEST+3:12,1:5"
-	var/ui_belt = "WEST+4:14,1:5"
-	var/ui_back = "WEST+5:14,1:5"
-	var/ui_rhand = "WEST+6:16,1:5"
-	var/ui_lhand = "WEST+7:16,1:5"
+	var/ui_rhand = "hud:1:44,7:28"
+	var/ui_lhand = "hud:2:44,7:28"
+	var/ui_item_lhand = "hud:2:48,7:32"
+	var/ui_item_rhand = "hud:1:49,7:32"
 	var/ui_equip = "WEST+6:16,2:5"
 	var/ui_swaphand1 = "WEST+6:16,2:5"
 	var/ui_swaphand2 = "WEST+7:16,2:5"
-	var/ui_storage1 = "WEST+8:18,1:5"
-	var/ui_storage2 = "WEST+9:20,1:5"
+
+	//Inventory
+	var/ui_shoes = "hud:1:64,7:-128"
+	var/ui_iclothing = "hud:1:32,7:-64"
+	var/ui_oclothing = "hud:1:64,7:-64"
+	var/ui_gloves = "hud:1:96,7:-96"
+	var/ui_glasses = "hud:1:96,7:-32"
+	var/ui_mask = "hud:1:64,7:-32"
+	var/ui_wear_l_ear = "hud:1:96,7:0"
+	var/ui_wear_r_ear = "hud:1:32,7:0"
+	var/ui_head = "hud:1:64,7:0"
+	var/ui_back = "hud:1:32,7:-96"
+	var/ui_idcard = "hud:1:32,7:-32"
+	var/ui_belt = "hud:1:64,7:-96"
+	var/ui_s_store = "hud:1:96,7:-64"
+	var/ui_storage1 = "hud:1:32,7:-128"
+	var/ui_storage2 = "hud:1:96,7:-128"
 
 	//Lower right, persistent menu
-	var/ui_dropbutton = "EAST-4:22,1:5"
-	var/ui_drop_throw = "EAST-1:28,2:7"
-	var/ui_pull = "EAST-2:26,2:7"
-	var/ui_resist = "EAST-2:26,2:7"
-	var/ui_acti = "EAST-2:26,1:5"
+	var/ui_dropbutton = "hud:1:0,6:3"
+	var/ui_drop_throw = "hud:1:-2,6:26"
+	var/ui_pull = "hud:1:13,4:36"
+	var/ui_resist = "hud:1:9,7:36"
+	var/ui_rest = "hud:1:9,6:55"
+	var/ui_acti = "hud:2:-4,9:26"
 	var/ui_movi = "EAST-3:24,1:5"
 	var/ui_zonesel = "EAST-1:28,1:5"
 
@@ -33,11 +47,11 @@
 	var/ui_gun3 = "EAST-2:26,4:7"
 	var/ui_gun_select = "EAST-1:28,3:7"
 
-	var/ui_gun_burst = "EAST-3:-8,1:+5"
-	var/ui_gun_railtoggle = "EAST-3:-21,1:+13"
-	var/ui_gun_eject = "EAST-3:-12,1:+5"
-	var/ui_gun_attachment = "EAST-3:-10,1:+5"
-	var/ui_gun_unique = "EAST-3:-4,1:+2"
+	var/ui_gun_burst = "hud:5:-4,9:30"
+	var/ui_gun_railtoggle = "hud:4:1,9:30"
+	// var/ui_gun_eject = "EAST-3:-12,1:+5"
+	var/ui_gun_attachment = "hud:5:-18,9:30"
+	var/ui_gun_unique = "hud:5:9,9:30"
 
 	//Frame related placements
 	var/UI_FRAME_LOC = "EAST-3:0,14:15"
@@ -52,22 +66,14 @@
 	var/UI_SL_LOCATOR_LOC = "EAST-1:28,9:18"
 	var/UI_OXYGEN_LOC = "EAST-1:28,8:17"
 	var/UI_HEALTH_LOC = "EAST-1:28,7:15"
-	var/UI_TEMP_LOC = "EAST-1:28,6:13"
+	var/UI_TEMP_LOC = "hud:3:2,9:19"
 	var/UI_NUTRITION_LOC = "EAST-1:28,5:11"
 
 	//Backhud
 	var/ui_backhud = "hud:1,1"
 
-	//Pop-up inventory
-	var/ui_shoes = "WEST+1:8,1:5"
-	var/ui_iclothing = "WEST:6,2:7"
-	var/ui_oclothing = "WEST+1:8,2:7"
-	var/ui_gloves = "WEST+2:10,2:7"
-	var/ui_glasses = "WEST:6,3:9"
-	var/ui_mask = "WEST+1:8,3:9"
-	var/ui_wear_l_ear = "WEST+2:10,3:9"
-	var/ui_wear_r_ear = "WEST+2:10,4:11"
-	var/ui_head = "WEST+1:8,4:11"
+	//Screen border
+	var/ui_screen_border = "1,1"
 
 /datum/custom_hud/proc/get_status_loc(placement)
 	var/col = ((placement - 1)%(13)) + 1
@@ -83,9 +89,9 @@
 /datum/custom_hud/proc/hud_slot_offset(obj/item/A, ui_slot)
 	var/coords = splittext(ui_slot, ",")
 	var/coords_x = splittext(coords[1], ":")
-	return "[coords_x[1]]:[text2num(coords_x[2])+A.hud_offset],[coords[2]]"
+	return "hud:[coords_x[1]]:[text2num(coords_x[2])+A.hud_offset],[coords[2]]"
 
-/datum/custom_hud/proc/special_behaviour(datum/hud/element, ui_alpha = 255, ui_color = "#ffffff")
+/datum/custom_hud/proc/special_behaviour(datum/hud/element)
 	return
 
 /datum/custom_hud/old
@@ -135,15 +141,13 @@
 	var/coord_row_offset = -8
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
 
-/datum/custom_hud/dark/special_behaviour(datum/hud/element, ui_alpha = 255, ui_color = "#ffffff")
+/datum/custom_hud/dark/special_behaviour(datum/hud/element)
 	element.frame_hud = new /atom/movable/screen()
 	element.frame_hud.icon = ui_frame_icon
 	element.frame_hud.icon_state = "dark"
 	element.frame_hud.screen_loc = UI_FRAME_LOC
 	element.frame_hud.layer = ABOVE_HUD_LAYER
 	element.frame_hud.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	element.frame_hud.alpha = ui_alpha
-	element.frame_hud.color = ui_color
 	element.static_inventory += element.frame_hud
 
 	element.pulse_line = new /atom/movable/screen()

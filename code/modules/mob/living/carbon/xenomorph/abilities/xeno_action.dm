@@ -176,7 +176,7 @@
 		if(xeno.client && xeno.client.prefs && xeno.client.prefs.toggle_prefs & TOGGLE_ABILITY_DEACTIVATION_OFF)
 			return
 		to_chat(xeno, "You will no longer use [name] with [xeno.get_ability_mouse_name()].")
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 		xeno.set_selected_ability(null)
 		if(charge_time)
 			stop_charging_ability()
@@ -186,7 +186,7 @@
 			xeno.selected_ability.action_deselect()
 			if(xeno.selected_ability.charge_time)
 				xeno.selected_ability.stop_charging_ability()
-		button.icon_state = "template_on"
+		button.icon_state = "template_xeno_active"
 		xeno.set_selected_ability(src)
 		xeno.deselect_timer = world.time + 5 // Half a second
 		if(charges != NO_ACTION_CHARGES)
@@ -196,7 +196,7 @@
 
 // Called when a different action is clicked on and this one is deselected.
 /datum/action/xeno_action/activable/proc/action_deselect()
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 
 
 /datum/action/xeno_action/activable/remove_from(mob/living/carbon/xenomorph/xeno)
@@ -448,7 +448,7 @@
 
 /datum/action/xeno_action/active_toggle/proc/disable_toggle()
 	action_active = FALSE
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 	if(action_end_message)
 		to_chat(owner, SPAN_WARNING(action_end_message))
 
@@ -456,7 +456,7 @@
 	if(!check_and_use_plasma_owner(plasma_cost))
 		return
 	action_active = TRUE
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 	track_xeno_ability_stats()
 	if(action_start_message)
 		to_chat(owner, SPAN_NOTICE(action_start_message))

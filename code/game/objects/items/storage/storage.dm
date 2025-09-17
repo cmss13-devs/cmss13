@@ -184,7 +184,7 @@
 /obj/item/storage/proc/slot_orient_objs(rows, cols, list/obj/item/display_contents)
 	var/cx = 4
 	var/cy = 2+rows
-	boxes.screen_loc = "4:16,2:16 to [4+cols]:16,[2+rows]:16"
+	boxes.screen_loc = "4:16,1:16 to [4+cols]:16,[1+rows]:16"
 
 	if (storage_flags & STORAGE_CONTENT_NUM_DISPLAY)
 		for (var/datum/numbered_display/ND in display_contents)
@@ -207,7 +207,7 @@
 			if (cx > (4+cols))
 				cx = 4
 				cy--
-	closer.screen_loc = "[4+cols+1]:16,2:16"
+	closer.screen_loc = "[4+cols+1]:16,1:16"
 	if (storage_flags & STORAGE_SHOW_FULLNESS)
 		boxes.update_fullness(src)
 
@@ -257,9 +257,9 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		storage_continue.apply_transform(M)
 
 	if(!opened) //initialize background box
-		storage_start.screen_loc = "4:16,2:16"
-		storage_continue.screen_loc = "4:[floor(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],2:16"
-		storage_end.screen_loc = "4:[19+storage_width-storage_cap_width],2:16"
+		storage_start.screen_loc = "4:16,1:16"
+		storage_continue.screen_loc = "4:[floor(storage_cap_width+(storage_width-storage_cap_width*2)/2+2)],1:16"
+		storage_end.screen_loc = "4:[19+storage_width-storage_cap_width],1:16"
 
 	var/startpoint = 0
 	var/endpoint = 1
@@ -293,11 +293,11 @@ GLOBAL_LIST_EMPTY_TYPED(item_storage_box_cache, /datum/item_storage_box)
 		storage_start.overlays += ISB.continued
 		storage_start.overlays += ISB.end
 
-		O.screen_loc = "4:[floor((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
+		O.screen_loc = "4:[floor((startpoint+endpoint)/2)+(2+O.hud_offset)],1:16"
 		O.layer = ABOVE_HUD_LAYER
 		O.plane = ABOVE_HUD_PLANE
 
-	src.closer.screen_loc = "4:[storage_width+19],2:16"
+	src.closer.screen_loc = "4:[storage_width+19],1:16"
 	return
 
 /atom/movable/screen/storage/clicked(mob/user, list/mods) //Much of this is replicated do_click behaviour.

@@ -482,7 +482,7 @@
 		return
 
 	xeno.visible_message(SPAN_XENOWARNING("[xeno] hunkers down and bolsters its defenses!"), SPAN_XENOHIGHDANGER("We hunker down and bolster our defenses!"))
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 
 	xeno.create_crusher_shield()
 
@@ -522,6 +522,6 @@
 		found.on_removal()
 		qdel(found)
 		to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our enhanced shield end!"))
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 
 	xeno.overlay_shields()

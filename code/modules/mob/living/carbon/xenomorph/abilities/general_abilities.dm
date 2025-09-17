@@ -43,12 +43,12 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.resting)
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	xeno.lay_down()
-	button.icon_state = xeno.resting ? "template_active" : "template"
+	button.icon_state = xeno.resting ? "template_xeno_active" : "template_xeno"
 	return ..()
 
 // Shift Spits
@@ -302,7 +302,7 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.is_zoomed)
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 
 /datum/action/xeno_action/onclick/toggle_long_range/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -329,7 +329,7 @@
 		xeno.speed_modifier += movement_slowdown
 		xeno.recalculate_speed()
 	xeno.zoom_in()
-	button.icon_state = "template_active"
+	button.icon_state = "template_xeno_active"
 	return ..()
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_out()
@@ -339,7 +339,7 @@
 	if(movement_slowdown)
 		xeno.speed_modifier -= movement_slowdown
 		xeno.recalculate_speed()
-	button.icon_state = "template"
+	button.icon_state = "template_xeno"
 
 /datum/action/xeno_action/onclick/toggle_long_range/proc/on_zoom_in()
 	return
@@ -414,7 +414,7 @@
 	UnregisterSignal(xeno, COMSIG_MOB_STATCHANGE)
 	if(xeno.layer == XENO_HIDING_LAYER)
 		xeno.layer = initial(xeno.layer)
-		button.icon_state = "template"
+		button.icon_state = "template_xeno"
 		xeno.update_wounds()
 		xeno.update_layer()
 	apply_cooldown(4) //2 second cooldown after attacking
@@ -423,7 +423,7 @@
 	. = ..()
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(xeno.layer == XENO_HIDING_LAYER)
-		button.icon_state = "template_active"
+		button.icon_state = "template_xeno_active"
 
 /datum/action/xeno_action/onclick/place_trap
 	name = "Place resin hole (200)"

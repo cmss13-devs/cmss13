@@ -1031,6 +1031,34 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, underb
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 
+/obj/item/weapon/gun/pistol/m10/black_tactical
+	map_specific_decoration = FALSE
+	icon = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_obj.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/obj/items/weapons/guns/guns_by_map/snow/back.dmi',
+		WEAR_J_STORE = 'icons/obj/items/weapons/guns/guns_by_map/snow/suit_slot.dmi',
+		WEAR_L_HAND = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_lefthand.dmi',
+		WEAR_R_HAND = 'icons/obj/items/weapons/guns/guns_by_map/snow/guns_righthand.dmi',
+	)
+
+	random_spawn_chance = 100
+	random_spawn_rail = list(
+		/obj/item/attachable/reddot,
+		/obj/item/attachable/reflex,
+	)
+	random_spawn_under = list(
+		/obj/item/attachable/lasersight,
+	)
+	random_spawn_muzzle = list(
+		/obj/item/attachable/suppressor,
+	)
+
+/obj/item/weapon/gun/pistol/m10/black_tactical/ap
+	current_mag = /obj/item/ammo_magazine/pistol/m10/ap
+
+/obj/item/weapon/gun/pistol/m10/black_tactical/incendiary
+	current_mag = /obj/item/ammo_magazine/pistol/m10/incendiary
+
 //-------------------------------------------------------
 /*
 

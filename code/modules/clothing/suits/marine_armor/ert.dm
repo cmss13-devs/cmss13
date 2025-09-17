@@ -53,6 +53,101 @@
 	item_state_slots = list(WEAR_JACKET = "cia_light")
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_GAMEMODE_SKIN|NO_NAME_OVERRIDE
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/marsoc/grs)
+	var/obj/item/hidden_item
+	var/hidden_item_type = /obj/item/attachable/bayonet/tanto/grs
+	var/hidden_item_name
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/suit/storage/marine/sof/grs/New()
+	. = ..()
+	if(hidden_item_type)
+		hidden_item = new hidden_item_type(src)
+		hidden_item.forceMove(src)
+		hidden_item_name = hidden_item.name
+
+/obj/item/clothing/suit/storage/marine/sof/grs/get_examine_text(mob/user)
+	. = ..()
+	if(skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		if(hidden_item)
+			. += SPAN_ORANGE("It has a [hidden_item_name] concealed within.")
+		else
+			. += SPAN_ORANGE("It has room for a [hidden_item_name] to be concealed within.")
+			. += SPAN_PURPLE("You must use GRAB intent with a [hidden_item_name] to replace it.")
+
+/obj/item/clothing/suit/storage/marine/sof/grs/proc/restock_hidden_item()
+	if(hidden_item)
+		return FALSE
+	if(!hidden_item_type)
+		return FALSE
+	hidden_item = new(hidden_item_type)
+	hidden_item.forceMove(src)
+	return TRUE
+
+/obj/item/clothing/suit/storage/marine/sof/grs/verb/hidden_item()
+	set name = "Draw Hidden Item"
+	set category = "Object.Armor"
+	set src in usr
+
+	var/mob/living/carbon/user = usr
+	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		to_chat(user, SPAN_NOTICE("You frantically pat yourself down. Are you feeling paranoid?"))
+		return FALSE
+
+	if(user.is_mob_incapacitated())
+		return FALSE
+
+	if(!hidden_item)
+		to_chat(user, SPAN_WARNING("Your armor is empty!"))
+		return FALSE
+
+	if(user.get_active_hand())
+		to_chat(user, SPAN_WARNING("Your active hand must be empty."))
+		return FALSE
+
+	to_chat(user, "You feel a faint hiss and [hidden_item] drops into your hand.")
+	user.put_in_active_hand(hidden_item)
+	hidden_item = null
+	playsound(src,'sound/machines/click.ogg', 15, 1)
+	return TRUE
+
+/obj/item/clothing/suit/storage/marine/sof/grs/attackby(obj/item/attacking_item, mob/user)
+	if(!(user.a_intent == INTENT_GRAB))
+		return ..()
+	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		return ..()
+	if(!istype(attacking_item, hidden_item_type) || hidden_item)
+		return ..()
+
+	hidden_item = attacking_item
+	user.drop_inv_item_on_ground(attacking_item)
+	playsound(src,'sound/machines/click.ogg', 15, 1)
+	attacking_item.forceMove(src)
+
+/obj/item/clothing/suit/storage/marine/sof/grs/hidden_holdout
+	hidden_item_type = /obj/item/weapon/gun/pistol/action
+
+/*
+/datum/action/item_action/specialist/draw_hidden_item
+	ability_primacy = SPEC_PRIMARY_ACTION_1
+
+/datum/action/item_action/specialist/draw_hidden_item/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Draw Hidden Item"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "antag_objective_receive")
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/draw_hidden_item/can_use_action()
+	var/mob/living/carbon/human/H = owner
+	if(istype(H) && !H.is_mob_incapacitated() && H.body_position == STANDING_UP && holder_item == H.wear_suit)
+		return TRUE
+
+/datum/action/item_action/specialist/draw_hidden_item/action_activate()
+	. = ..()
+	var/obj/item/clothing/suit/storage/marine/sof/grs/suit = holder_item
+	suit.hidden_item()
+*/
 
 /obj/item/clothing/suit/storage/marine/smartgunner/veteran/sof/grs
 	name = "\improper GRS Smartgun Harness"

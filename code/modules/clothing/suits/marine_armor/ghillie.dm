@@ -37,7 +37,7 @@
 /obj/item/clothing/suit/storage/marine/ghillie/verb/camouflage()
 	set name = "Prepare Position"
 	set desc = "Use the ghillie suit and the nearby environment to become near invisible."
-	set category = "Object"
+	set category = "Object.Armor"
 	set src in usr
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return

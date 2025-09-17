@@ -457,6 +457,16 @@ Defined in conflicts.dm of the #defines folder.
 	item_state = "bayonet_tanto_alt"
 	attach_icon = "bayonet_tanto_alt_a"
 
+/obj/item/attachable/bayonet/tanto/grs
+	AUTOWIKI_SKIP(TRUE)
+
+	name = "\improper R4 tactical bayonet"
+	desc = "A custom tanto-bladed bayonet used by the Global Response Staff, it has a carbon finish grip and corrosion proof blade."
+	icon_state = "bayonet_tanto_grs"
+	item_state = "bayonet_tanto_grs"
+	attach_icon = "bayonet_tanto_grs_a"
+	unacidable = TRUE
+
 /obj/item/attachable/bayonet/van_bandolier
 	AUTOWIKI_SKIP(TRUE)
 

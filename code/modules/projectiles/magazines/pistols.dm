@@ -434,6 +434,8 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	caliber = "10x20mm"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/USCM/pistols.dmi'
 	icon_state = "m10"
+	ammo_band_icon = "+m10_band"//Not for use with extended or drum mags
+	ammo_band_icon_empty = "+m10_band_e"
 	bonus_overlay = "m10_overlay"
 	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/pistols.dmi'
 	max_rounds = 40
@@ -458,6 +460,18 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	bonus_overlay = "m10_drum_overlay"
 	max_rounds = 92
 	gun_type = /obj/item/weapon/gun/pistol/m10
+
+/obj/item/ammo_magazine/pistol/m10/ap
+	name = "\improper M10 AP magazine (10x20mm)"
+	desc = "A compact 40-round armor-piercing magazine, designed for rapid reloads and reliable performance in close-quarters combat."
+	ammo_band_color = AMMO_BAND_COLOR_AP
+	default_ammo = /datum/ammo/bullet/smg/ap
+
+/obj/item/ammo_magazine/pistol/m10/incendiary
+	name = "\improper M10 incendiary magazine (10x20mm)"
+	desc = "A compact 40-round incendiary magazine, designed for rapid reloads and reliable performance in close-quarters combat."
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+	default_ammo = /datum/ammo/bullet/smg/incendiary
 
 //-------------------------------------------------------
 /*

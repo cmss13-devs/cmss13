@@ -680,10 +680,11 @@
 	specialty = "B18 defensive"
 	unacidable = TRUE
 	var/injections = 4
+	var/injection_type = /obj/item/reagent_container/hypospray/autoinjector/skillless
 
 /obj/item/clothing/suit/storage/marine/specialist/verb/inject()
 	set name = "Create Injector"
-	set category = "Object"
+	set category = "Object.Armor"
 	set src in usr
 
 	if(usr.is_mob_incapacitated())
@@ -698,8 +699,8 @@
 		return 0
 
 	to_chat(usr, "You feel a faint hiss and an injector drops into your hand.")
-	var/obj/item/reagent_container/hypospray/autoinjector/skillless/O = new(usr)
-	usr.put_in_active_hand(O)
+	var/obj/item/reagent_container/hypospray/autoinjector/injector = new injection_type(usr)
+	usr.put_in_active_hand(injector)
 	injections--
 	playsound(src,'sound/machines/click.ogg', 15, 1)
 	return

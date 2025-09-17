@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_cia, list(
 	list("Laceup Shoes, Brown", 0, /obj/item/clothing/shoes/laceup/brown, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 	list("Fancy Leather Shoes", 0, /obj/item/clothing/shoes/leather/fancy, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 	list("Sneakers, Black", 0, /obj/item/clothing/shoes/black, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
-	list("Polished Shoes", 0, /obj/item/clothing/shoes/veteran/pmc/knife, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
+	list("Polished Shoes", 0, /obj/item/clothing/shoes/veteran/pmc/cia_knife, CIVILIAN_CAN_BUY_SHOES, VENDOR_ITEM_REGULAR),
 
 	list("GLOVES (CHOOSE 2)", 0, null, null, null),
 	list("Black Gloves", 0, /obj/item/clothing/gloves/black, CIVILIAN_CAN_BUY_GLOVES, VENDOR_ITEM_RECOMMENDED),

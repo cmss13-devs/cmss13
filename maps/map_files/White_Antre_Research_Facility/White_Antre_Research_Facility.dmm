@@ -1499,6 +1499,7 @@
 	color = "#AFE1AF"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
 "adv" = (
@@ -2368,6 +2369,7 @@
 	name = "emergency lighting";
 	desc = "A small emergency light. Has an internal battery which should last for five hours."
 	},
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/blue/southwest,
 /area/white_antre/indoors/upper_level/central_command)
 "afE" = (
@@ -2377,6 +2379,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen/blue/clicky,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/blue,
 /area/white_antre/indoors/upper_level/central_command)
 "afF" = (
@@ -2618,7 +2621,6 @@
 /turf/open/floor/hybrisa/tile/tileblackcheckered,
 /area/white_antre/indoors/upper_level/director_office)
 "agk" = (
-/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/corner4,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agl" = (
@@ -2664,6 +2666,7 @@
 /area/white_antre/indoors/upper_level/simian_storage)
 "agv" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/lizard_spawn,
 /turf/open/floor/almayer/research/containment/corner4,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agw" = (
@@ -2756,6 +2759,7 @@
 /area/white_antre/indoors/upper_level/simian_storage)
 "agU" = (
 /obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/corner_var1/east,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agV" = (
@@ -3975,6 +3979,8 @@
 /area/white_antre/indoors/exterior/ext_relay_south)
 "ajn" = (
 /obj/structure/safe,
+/obj/item/attachable/heavy_barrel,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/strata/floor2,
 /area/white_antre/indoors/main_level/weapons)
 "ajo" = (
@@ -4839,7 +4845,6 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "alw" = (
 /obj/structure/pipes/vents/pump_hybrisa,
-/obj/effect/random_explosion/uber,
 /turf/open/floor/almayer/black2/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alx" = (
@@ -4869,6 +4874,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/effect/random_explosion/uber,
 /turf/open/floor/almayer/black2/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "alA" = (
@@ -6500,7 +6506,6 @@
 /area/white_antre/indoors/main_level/west_corridor)
 "aoH" = (
 /obj/structure/pipes/vents/pump_hybrisa,
-/obj/effect/random_explosion/uber,
 /turf/open/floor/almayer/green2/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "aoI" = (
@@ -14349,6 +14354,7 @@
 	name = "k-series facehugger";
 	desc = "It has some sort of a tube at the end of its tail. Why is it yellow?"
 	},
+/obj/effect/random_explosion/uber,
 /turf/open/floor/almayer/green2/east,
 /area/white_antre/indoors/main_level/west_corridor)
 "aHu" = (
@@ -16443,6 +16449,7 @@
 	pixel_x = 11;
 	pixel_y = 15
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkbrown2/northwest,
 /area/white_antre/landing_zone/roof)
 "aNN" = (
@@ -17196,6 +17203,9 @@
 	start_charge = 20
 	},
 /obj/structure/safe,
+/obj/effect/landmark/objective_landmark/medium,
+/obj/item/storage/backpack/lightpack,
+/obj/item/storage/backpack/lightpack,
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/indoors/upper_level/ancillery_storage)
 "aQR" = (
@@ -19467,10 +19477,6 @@
 	},
 /turf/open/floor/prison/ramptop/north,
 /area/white_antre/indoors/main_level/south_containment)
-"aXa" = (
-/obj/item/weapon/gun/rifle/m41a/elite/commando/deathsquad,
-/turf/open/floor/strata,
-/area/white_antre/indoors/main_level/dorms)
 "aXb" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "test_warning_smooth_red"
@@ -19731,6 +19737,7 @@
 /obj/structure/machinery/light/double{
 	dir = 1
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/hybrisa/metal/bluemetalfull,
 /area/white_antre/landing_zone/roof)
 "aXR" = (
@@ -22339,9 +22346,8 @@
 "bek" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/prop/almayer/computer/PC{
-	dir = 4;
-	pixel_y = 7
+/obj/structure/machinery/computer/objective{
+	dir = 4
 	},
 /turf/open/floor/prison/darkbrownfull2,
 /area/white_antre/landing_zone/roof)
@@ -22952,11 +22958,6 @@
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
 /obj/item/ammo_casing/bullet,
-/turf/open/auto_turf/strata_grass/layer0_mud,
-/area/white_antre/outdoors/path_north)
-"bgc" = (
-/obj/effect/alien/weeds/kseries,
-/obj/effect/spawner/gibspawner/xeno,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/white_antre/outdoors/path_north)
 "bgd" = (
@@ -23759,6 +23760,12 @@
 	light_range = 5;
 	pixel_y = 32
 	},
+/obj/structure/safe,
+/obj/item/storage/box/kit/pursuit,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/spacecash/ewallet,
 /turf/open/floor/prison/blue/north,
 /area/white_antre/indoors/upper_level/central_command)
 "biV" = (
@@ -24415,12 +24422,18 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
 	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "blC" = (
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
 	},
 /turf/open/floor/shiva/multi_tiles,
 /area/white_antre/indoors/underground_level/west_maint)
@@ -24504,6 +24517,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/mob/living/simple_animal/mouse/rat/brown,
 /turf/open/floor/prison/darkpurple2,
 /area/white_antre/indoors/underground_level/east_maint)
 "blO" = (
@@ -24806,6 +24820,9 @@
 /obj/structure/prop/invuln/overhead_pipe{
 	pixel_y = -6
 	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bmK" = (
@@ -25063,15 +25080,24 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bnE" = (
 /obj/structure/cargo_container/hybrisa/containersextended/tanwywingsleft,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnF" = (
 /obj/structure/cargo_container/hybrisa/containersextended/tanwywingsright,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/largecrate/random/barrel/blue,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 6
+	},
 /turf/open/floor/shiva/multi_tiles/west,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnH" = (
@@ -25586,6 +25612,7 @@
 	},
 /obj/item/tool/pen/blue/clicky,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/blue/east,
 /area/white_antre/landing_zone/roof)
 "bpo" = (
@@ -30553,9 +30580,6 @@
 /area/white_antre/indoors/pmc_dropship)
 "bBy" = (
 /obj/effect/attach_point/crew_weapon,
-/obj/item/storage/backpack/marine/satchel/rto/small{
-	name = "\improper Corporate Small Radio Telephone Pack"
-	},
 /turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
 /area/white_antre/indoors/pmc_dropship)
 "bBz" = (
@@ -32489,6 +32513,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/white_antre/indoors/upper_level/canteen)
 "bGI" = (
@@ -32575,6 +32600,13 @@
 /area/white_antre/indoors/upper_level/west_corridor)
 "bGV" = (
 /obj/structure/safe/floor,
+/obj/item/storage/box/stompers,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/c1000,
+/obj/item/spacecash/ewallet,
+/obj/effect/landmark/objective_landmark/far,
+/obj/effect/landmark/objective_landmark/far,
+/obj/item/weapon/gun/revolver/small,
 /turf/open/floor/corsat/officetiles,
 /area/white_antre/indoors/upper_level/director_office)
 "bGW" = (
@@ -33348,6 +33380,7 @@
 	pixel_y = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/hybrisa/carpet/carpetgreen,
 /area/white_antre/indoors/upper_level/records)
 "bIR" = (
@@ -34309,15 +34342,15 @@
 "bKT" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing/bullet,
-/obj/item/weapon/gun/rifle/m41a/elite{
+/obj/item/weapon/gun/rifle/m41a/corporate/no_lock{
+	current_mag = null;
 	pixel_x = 6;
-	pixel_y = 6;
-	current_mag = null
+	pixel_y = 5
 	},
-/obj/item/ammo_magazine/rifle/heap{
-	current_rounds = 0;
+/obj/item/ammo_magazine/rifle/ap{
 	pixel_x = -8;
-	pixel_y = -8
+	pixel_y = -7;
+	current_rounds = 34
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/north_overwatch)
@@ -35624,6 +35657,7 @@
 	pixel_y = 8
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/white_antre/oob)
 "bOq" = (
@@ -35635,6 +35669,7 @@
 	pixel_x = 9
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/white_antre/oob)
 "bOr" = (
@@ -35651,6 +35686,7 @@
 	pixel_y = -11
 	},
 /obj/structure/blocker/invisible_wall,
+/obj/structure/platform/metal/almayer_smooth/east,
 /turf/open_space,
 /area/white_antre/oob)
 "bOs" = (
@@ -38094,6 +38130,318 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/white_antre/indoors/upper_level/west_corridor)
+"bUZ" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/mouse/rat/white,
+/turf/open/floor/prison,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVa" = (
+/obj/structure/pipes/standard/manifold/hidden/purple{
+	dir = 8
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVb" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVd" = (
+/obj/structure/pipes/standard/manifold/hidden/purple,
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVe" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVf" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVg" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 9
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVh" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 5
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVi" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 9
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVj" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/mouse/rat/white,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVk" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVl" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVm" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 6
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVn" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVo" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 10
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVp" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVq" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/prison/darkred2/southwest,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVr" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVs" = (
+/obj/structure/pipes/standard/manifold/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVt" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVu" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/corsat/marked,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVv" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVw" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/purple,
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVx" = (
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVy" = (
+/obj/structure/pipes/standard/manifold/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVA" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/mouse/rat/gray,
+/turf/open/floor/prison/floor_plate/southwest,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVB" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/prison/darkbrown2/northwest,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/southeast,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVD" = (
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/purple,
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVF" = (
+/obj/structure/prop/invuln/overhead_pipe{
+	pixel_y = -6
+	},
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/manifold/hidden/purple{
+	dir = 1
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/west_maint)
+"bVH" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 4
+	},
+/turf/open/floor/shiva/multi_tiles/west,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVI" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/pipes/standard/simple/hidden/purple{
+	dir = 10
+	},
+/turf/open/floor/shiva/multi_tiles,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic{
+	color = "#5d524b";
+	alpha = 155
+	},
+/mob/living/simple_animal/mouse/rat/black,
+/turf/open/floor/prison/green,
+/area/white_antre/indoors/underground_level/east_maint)
+"bVK" = (
+/obj/structure/blocker/invisible_wall,
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/oob)
+"bVL" = (
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/north_field)
+"bVM" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/hybrisa/bloodtrail/clawtrail/xeno{
+	dir = 8;
+	pixel_x = -1;
+	pixel_y = 12
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/north_field)
+"bVN" = (
+/obj/item/stack/rods{
+	pixel_y = 9;
+	pixel_x = -6
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/facility_exterior)
+"bVO" = (
+/obj/item/stack/rods,
+/turf/open/auto_turf/sand_white/layer0,
+/area/white_antre/outdoors/facility_exterior)
+"bVP" = (
+/obj/effect/decal{
+	icon = 'icons/mob/xenos/effects.dmi';
+	icon_state = "acid_weak";
+	name = "weak acid"
+	},
+/turf/open/floor/hybrisa/tile/tilegrey,
+/area/white_antre/indoors/main_level/west_corridor)
+"bVQ" = (
+/obj/effect/spawner/gibspawner/xeno,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/white_antre/outdoors/path_north)
+"bVR" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20;
+	layer = 3.20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20;
+	layer = 3.20
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1;
+	color = "#AFE1AF"
+	},
+/obj/effect/landmark/objective_landmark/far,
+/turf/open/floor/hybrisa/carpet/carpetgreen,
+/area/white_antre/indoors/upper_level/records)
+"bVS" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = -8;
+	pixel_y = 20;
+	layer = 3.20
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	pixel_x = 8;
+	pixel_y = 20;
+	layer = 3.20
+	},
+/obj/effect/decal/hybrisa/road/lines3{
+	pixel_y = -1;
+	color = "#AFE1AF"
+	},
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/hybrisa/carpet/carpetgreen,
+/area/white_antre/indoors/upper_level/records)
+"bVT" = (
+/obj/item/ammo_magazine/pistol/vp78{
+	current_rounds = 13;
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/metal/bluemetalcorner/west,
+/area/white_antre/indoors/upper_level/north_overwatch)
 "bXc" = (
 /obj/structure/prop/dam/crane/cargo,
 /turf/open/asphalt/brown,
@@ -38613,6 +38961,7 @@
 	color = "#5d524b";
 	alpha = 155
 	},
+/obj/structure/pipes/standard/simple/hidden/purple,
 /turf/open/floor/prison/darkbrown2/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "dtC" = (
@@ -39012,6 +39361,7 @@
 /turf/open/floor/prison/darkpurplecorners2/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "eyo" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
 /turf/open/floor/prison/blue/west,
 /area/white_antre/indoors/underground_level/west_maint)
 "ezs" = (
@@ -39349,7 +39699,7 @@
 /area/white_antre/indoors/main_level/research)
 "fRY" = (
 /obj/docking_port/stationary/marine_dropship/lz1{
-	name = "LZ1: Southwest Landing Zone"
+	name = "White Antre Cargo Landing Zone"
 	},
 /turf/open/floor/plating,
 /area/white_antre/landing_zone)
@@ -42590,6 +42940,7 @@
 /turf/open/floor/almayer/blackfull/west,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "qEM" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
 /turf/open/floor/prison/blue/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "qFd" = (
@@ -44324,6 +44675,7 @@
 /turf/closed/wall/hybrisa/colony/engineering/reinforced/hull,
 /area/white_antre/oob)
 "xws" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
 /turf/open/floor/prison/darkred2/northwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "xwx" = (
@@ -44384,6 +44736,7 @@
 /turf/open/floor/prison/darkred2/north,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "xEI" = (
+/obj/structure/pipes/standard/simple/hidden/purple,
 /turf/open/floor/prison/blue/southwest,
 /area/white_antre/indoors/underground_level/west_maint)
 "xFj" = (
@@ -48169,10 +48522,10 @@ bMK
 bMK
 bMK
 pzo
-pzo
-pzo
-pzo
-pzo
+bVK
+bVK
+bVK
+bVK
 pzo
 pzo
 pzo
@@ -48338,8 +48691,8 @@ bMK
 bMK
 iKa
 iKa
-pzo
-pzo
+iKa
+iKa
 iKa
 iKa
 iKa
@@ -63165,7 +63518,7 @@ lXc
 aVJ
 aVJ
 aJY
-bkv
+bVj
 bkv
 aJY
 aVJ
@@ -63824,21 +64177,21 @@ boh
 boh
 bnZ
 bnI
-aVK
-aVK
-xGl
+bVa
+bVk
+bVB
 drC
-dKt
+bVt
 qEM
 eyo
 eyo
 eyo
 xEI
-dKt
+bVt
 xws
-pKB
-aVK
-aVK
+bVq
+bVk
+bVa
 blo
 aEE
 blc
@@ -63992,7 +64345,7 @@ aVJ
 aVJ
 aVJ
 iqP
-aVK
+bVb
 aVK
 odm
 aVJ
@@ -64006,7 +64359,7 @@ aVJ
 aVJ
 krp
 aVK
-aVK
+bVb
 pAI
 aVJ
 aVJ
@@ -64160,7 +64513,7 @@ avF
 avF
 avF
 bnJ
-aVK
+bVb
 aVK
 odm
 aVJ
@@ -64174,7 +64527,7 @@ avF
 aVJ
 blI
 blA
-aVK
+bVb
 blp
 avF
 avF
@@ -64328,7 +64681,7 @@ iKa
 iKa
 avF
 iqP
-aVK
+bVb
 aVK
 bnq
 aVJ
@@ -64342,7 +64695,7 @@ avF
 aVJ
 blI
 aVK
-blA
+bVc
 blq
 avF
 iKa
@@ -64496,7 +64849,7 @@ iKa
 iKa
 avF
 bnK
-aVK
+bVb
 blA
 bnr
 aVJ
@@ -64510,7 +64863,7 @@ aVJ
 aVJ
 blI
 blA
-blA
+bVc
 blq
 avF
 iKa
@@ -64664,7 +65017,7 @@ iKa
 iKa
 avF
 bnL
-blD
+bVF
 bnz
 bns
 aVJ
@@ -64678,7 +65031,7 @@ blZ
 aVJ
 krp
 blA
-blA
+bVc
 blq
 avF
 iKa
@@ -64832,7 +65185,7 @@ iKa
 iKa
 avF
 bnM
-aVK
+bVb
 aVK
 bnt
 aVJ
@@ -64846,7 +65199,7 @@ bma
 aVJ
 blI
 aVK
-aVK
+bVb
 pAI
 avF
 iKa
@@ -65000,11 +65353,11 @@ iKa
 iKa
 avF
 bnN
-aVK
+bVb
 aVK
 bnu
 aVJ
-bma
+bVA
 bmM
 bmN
 bma
@@ -65014,7 +65367,7 @@ bma
 aVJ
 blI
 aVK
-aVK
+bVb
 pAI
 avF
 iKa
@@ -65168,7 +65521,7 @@ iKa
 iKa
 avF
 bnO
-aVK
+bVb
 aVK
 bnv
 pkd
@@ -65182,7 +65535,7 @@ aVG
 blT
 blI
 aVK
-aVK
+bVb
 pAI
 avF
 iKa
@@ -65336,7 +65689,7 @@ iKa
 iKa
 avF
 iqP
-aVK
+bVb
 aVK
 bnv
 aVJ
@@ -65350,7 +65703,7 @@ aVG
 aVJ
 blI
 aVK
-aVK
+bVb
 pAI
 avF
 iKa
@@ -65504,7 +65857,7 @@ iKa
 iKa
 avF
 iqP
-aVK
+bVb
 aVK
 bnv
 aVJ
@@ -65518,7 +65871,7 @@ aVG
 aVJ
 blJ
 aVK
-aVK
+bVb
 pAI
 avF
 iKa
@@ -65672,7 +66025,7 @@ iKa
 iKa
 avF
 bnJ
-aVK
+bVb
 aVK
 bnv
 aVJ
@@ -65686,7 +66039,7 @@ bmb
 aVJ
 krp
 aVK
-aVK
+bVb
 blp
 avF
 iKa
@@ -65840,7 +66193,7 @@ iKa
 iKa
 avF
 iqP
-aVK
+bVb
 aVK
 odm
 aVJ
@@ -65854,7 +66207,7 @@ aVJ
 aVJ
 krp
 aVK
-aVK
+bVb
 pAI
 avF
 iKa
@@ -66008,7 +66361,7 @@ iKa
 iKa
 avF
 bnP
-aVK
+bVb
 aVK
 odm
 aVJ
@@ -66022,7 +66375,7 @@ avF
 aVJ
 krp
 blA
-aVK
+bVb
 pAI
 avF
 iKa
@@ -66190,7 +66543,7 @@ avF
 aVJ
 krp
 blA
-blA
+bVc
 blq
 avF
 iKa
@@ -66512,7 +66865,7 @@ iKa
 avF
 boa
 bnS
-aVK
+bVb
 aVK
 cYs
 dKt
@@ -66526,7 +66879,7 @@ mib
 dKt
 qsH
 aVK
-aVK
+bVb
 blq
 blf
 avF
@@ -66680,21 +67033,21 @@ iKa
 avF
 bob
 bnN
-bkF
-aVH
-aVI
-dKt
-aVI
-bkX
-aVH
-aVH
-aVH
-aVI
-aVI
-dKt
-aVI
-aVH
-aVH
+bVG
+bVl
+bVr
+bVt
+bVr
+bVz
+bVl
+bVw
+bVl
+bVr
+bVr
+bVt
+bVr
+bVl
+bVd
 pAI
 blh
 avF
@@ -66848,14 +67201,14 @@ iKa
 avF
 boc
 bnN
-aVH
+bVx
 aVH
 aVI
 dKt
 bkX
 bkX
 aVH
-aVH
+bVx
 aVH
 aVI
 aVI
@@ -67016,21 +67369,21 @@ iKa
 avF
 bkE
 bnO
-aVK
+bVb
 aVK
 xGl
 dKt
 bmc
 bmX
 aVK
-aVK
+bVb
 aVK
 bmn
 bmc
 blU
 pKB
 aVK
-aVK
+bVb
 bls
 blj
 avF
@@ -67184,21 +67537,21 @@ iKa
 avF
 avF
 bnN
-aVK
+bVb
 aVK
 odm
 aVJ
 bnl
 bmY
 aVK
-aVK
+bVb
 aVK
 bmo
 bmd
 aVJ
 krp
 aVK
-aVK
+bVb
 blp
 avF
 avF
@@ -67352,21 +67705,21 @@ iKa
 iKa
 avF
 iqP
-aVK
+bVb
 aVK
 odm
 aVJ
 aVJ
 bmZ
 aVK
-aVK
+bVb
 aVK
 bmo
 aVJ
 aVJ
 krp
 aVK
-aVK
+bVb
 pAI
 avF
 iKa
@@ -67520,21 +67873,21 @@ iKa
 avF
 avF
 iqP
-aVK
+bVb
 aVK
 odm
 aVJ
 aVJ
 bna
 aVK
-aVK
+bVb
 aVK
 bmp
 aVJ
 aVJ
 blL
 aVK
-aVK
+bVb
 pAI
 avF
 avF
@@ -67688,21 +68041,21 @@ iKa
 avF
 bod
 iqP
-aVK
+bVb
 aVK
 odm
 aVJ
 aVJ
 bnb
 aVK
-aVK
+bVb
 aVK
 bmq
 aVJ
 aVJ
 krp
 aVK
-aVK
+bVb
 pAI
 aKm
 avF
@@ -67856,21 +68209,21 @@ aPR
 avF
 bnp
 bnT
-aVK
+bVb
 bnA
 iHi
 aPR
 aPR
 iHi
 aVK
-aVK
+bVb
 aVK
 iHi
 aPR
 aPR
 aVJ
 blE
-aVK
+bVb
 sfO
 quF
 avF
@@ -68024,21 +68377,21 @@ aPR
 aGu
 aGu
 bnU
-aGu
+bVe
 iHi
 aPR
 ozb
 ozb
 aPR
 aGu
-aGu
+bVe
 aGu
 aPR
 ozb
 ozb
 aPR
 iHi
-aGu
+bVe
 aGu
 aGu
 aGu
@@ -68192,21 +68545,21 @@ aPR
 aPR
 boe
 jXs
-bCJ
+bVf
 bCJ
 iHi
 aPR
 aPR
 iHi
 bmR
-bCJ
+bVf
 blF
 iHi
 aPR
 aPR
 iHi
 bCJ
-bCJ
+bVf
 kUL
 blk
 aPR
@@ -68360,21 +68713,21 @@ aVZ
 aPR
 bof
 iPn
-bCJ
+bVf
 bCJ
 uDv
 iHi
 iHi
 bnc
 bCJ
-bCJ
+bVf
 bCJ
 bmr
 iHi
 iHi
 blM
 bCJ
-bCJ
+bVf
 wfs
 bll
 aPR
@@ -68528,21 +68881,21 @@ iKa
 aPR
 iHi
 bnV
-bCJ
+bVf
 bCJ
 uDv
 iHi
 iHi
 bnd
 bCJ
-bCJ
+bVf
 bCJ
 bms
 iHi
 iHi
 blN
 bCJ
-bCJ
+bVf
 blt
 iHi
 aPR
@@ -68696,21 +69049,21 @@ iKa
 aPR
 iHi
 bnW
-bCJ
+bVf
 bCJ
 uDv
 iHi
 iHi
 bne
 bmS
-bCJ
+bVf
 bCJ
 bmt
 iHi
 iHi
 xpu
 bCJ
-bCJ
+bVf
 blu
 iHi
 aPR
@@ -68864,21 +69217,21 @@ iKa
 aPR
 iHi
 bnW
-bCJ
+bVf
 bCJ
 uDv
 iHi
 iHi
 cvP
 bmT
-bCJ
+bVf
 bCJ
 bmu
 iHi
 iHi
 xpu
 bCJ
-bCJ
+bVf
 blv
 iHi
 aPR
@@ -69032,21 +69385,21 @@ iKa
 aPR
 iHi
 bnW
-bCJ
+bVf
 bCJ
 uDv
 iHi
 iHi
 bnf
 bmS
-bCJ
+bVf
 bCJ
 bmu
 iHi
 iHi
 xpu
 bCJ
-bCJ
+bVf
 blw
 iHi
 aPR
@@ -69200,21 +69553,21 @@ iKa
 aPR
 iHi
 bnW
-bCJ
+bVf
 bCJ
 uDv
 blX
 iHi
 cvP
 bCJ
-bCJ
+bVf
 bCJ
 bmv
 iHi
 blV
 blO
 bCJ
-bCJ
+bVf
 wfs
 iHi
 aPR
@@ -69368,8 +69721,8 @@ aPR
 aPR
 iHi
 iHi
-bCJ
-bCJ
+bVo
+bVh
 uDv
 acp
 iHi
@@ -69381,8 +69734,8 @@ iHi
 iHi
 blW
 blP
-bCJ
-bCJ
+bVm
+bVg
 iHi
 iHi
 aPR
@@ -69537,19 +69890,19 @@ aPR
 iHi
 iHi
 iHi
-bmR
+bVD
 uDv
 acp
 vRW
 iHi
 bmR
-bCJ
+bVf
 bCJ
 iHi
 bme
 blX
 xpu
-blF
+bVn
 iHi
 iHi
 iHi
@@ -69705,20 +70058,20 @@ iHi
 iHi
 iHi
 bnG
-bCJ
+bVg
 uDv
 acp
 iHi
 iHi
 bCJ
-bCJ
+bVf
 bCJ
 iHi
 iHi
 acp
 blQ
-bCJ
-bCJ
+bVo
+bVh
 iHi
 iHi
 iHi
@@ -69872,21 +70225,21 @@ aWa
 iHi
 iHi
 bnX
-bmS
+bVH
 bCJ
 uDv
 acp
 iHi
 bng
 bCJ
-bCJ
+bVf
 bCJ
 bmw
 iHi
 acp
 blQ
 bCJ
-bCJ
+bVf
 blx
 iHi
 iHi
@@ -69898,7 +70251,7 @@ dtC
 arW
 dtC
 acq
-acp
+bUZ
 aco
 aPR
 xwf
@@ -70040,21 +70393,21 @@ boj
 iHi
 iHi
 bnY
-bmS
+bVH
 bCJ
 uDv
 iHi
 iHi
 bnh
 bCJ
-bCJ
+bVf
 bCJ
 bmx
 iHi
 iHi
 xpu
 bCJ
-bCJ
+bVf
 blx
 iHi
 iHi
@@ -70207,22 +70560,22 @@ bon
 iHi
 iHi
 iHi
-bnV
-bCJ
+bVJ
+bVf
 bCJ
 uDv
 iHi
 iHi
 bni
 bCJ
-bCJ
+bVf
 bCJ
 bmy
 iHi
 iHi
 xpu
 bCJ
-bCJ
+bVf
 bly
 iHi
 iHi
@@ -70376,21 +70729,21 @@ aPR
 aPR
 iHi
 bnW
-bCJ
+bVf
 bCJ
 uDv
 iHi
 iHi
 bnj
 bCJ
-bCJ
+bVf
 bCJ
 bmA
 iHi
 iHi
 xpu
 bCJ
-bCJ
+bVf
 wfs
 iHi
 aPR
@@ -70544,21 +70897,21 @@ iHi
 iHi
 iHi
 iPn
-bmS
+bVH
 bmS
 bnw
 iHi
 hAa
 cvP
 bCJ
-bCJ
+bVf
 bCJ
 pMG
 hAa
 iHi
 xpu
 bCJ
-bCJ
+bVf
 wfs
 iHi
 iHi
@@ -70712,21 +71065,21 @@ bok
 wfX
 bog
 csI
-bmS
+bVH
 bmS
 sVf
 aVL
 aCL
 iJq
 bCJ
-bCJ
+bVf
 bCJ
 vYw
 aCL
 aVL
 blR
 bCJ
-bCJ
+bVf
 wfC
 bln
 bld
@@ -70880,21 +71233,21 @@ hQK
 hQK
 hQK
 hQK
-bnB
-bnB
-bnx
-aVL
-hQK
-hQK
-dtC
-dtC
-dtC
-hQK
-hQK
-aVL
-hQK
-dtC
-dtC
+bVI
+bVE
+bVC
+bVu
+bVv
+bVv
+bVp
+bVy
+bVp
+bVv
+bVv
+bVu
+bVs
+bVp
+bVi
 hQK
 hQK
 hQK
@@ -87353,7 +87706,7 @@ aLy
 aLy
 aLy
 uci
-aLy
+aZr
 aLy
 aLy
 aLy
@@ -89033,7 +89386,7 @@ aLy
 aLy
 aLy
 uci
-aLy
+aZr
 aLy
 aLy
 aLy
@@ -96040,8 +96393,8 @@ bgt
 alN
 aPK
 alL
-bgc
-aNt
+bkl
+bVQ
 bfS
 bfP
 aNt
@@ -98767,7 +99120,7 @@ aKH
 aKH
 aMJ
 aMI
-aMI
+bVL
 vag
 aMH
 aLR
@@ -98935,7 +99288,7 @@ bcW
 aKH
 aMI
 vag
-aMH
+bVM
 aMH
 aLR
 aLR
@@ -99438,8 +99791,8 @@ aKW
 bcZ
 aKH
 ane
-ane
-yiF
+bVO
+bVN
 yiF
 aLR
 bch
@@ -104325,7 +104678,7 @@ aqs
 atu
 atx
 aqa
-aXa
+att
 apN
 att
 ats
@@ -106313,7 +106666,7 @@ awf
 awd
 awa
 avW
-aKh
+bVP
 aKh
 aKh
 aKh
@@ -143949,7 +144302,7 @@ acQ
 bRJ
 bjf
 acV
-acQ
+bVR
 bjj
 bjj
 acV
@@ -144032,8 +144385,8 @@ iKa
 iKa
 iKa
 iKa
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -144199,9 +144552,9 @@ iKa
 iKa
 iKa
 iKa
-iKa
-iKa
-iKa
+spC
+spC
+spC
 spC
 spC
 spC
@@ -144367,8 +144720,8 @@ iKa
 iKa
 euM
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -144536,7 +144889,7 @@ euM
 ozb
 ozb
 euM
-iKa
+spC
 spC
 spC
 spC
@@ -144621,7 +144974,7 @@ bHx
 bRJ
 bjf
 acV
-acQ
+bVS
 bjj
 bjj
 acV
@@ -145040,7 +145393,7 @@ spC
 spC
 euM
 euM
-iKa
+spC
 spC
 spC
 spC
@@ -145207,8 +145560,8 @@ spC
 spC
 spC
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -145289,7 +145642,7 @@ bKb
 bJE
 bjt
 acV
-acQ
+bVS
 bRJ
 bjf
 acV
@@ -145375,8 +145728,8 @@ spC
 spC
 spC
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -145543,8 +145896,8 @@ spC
 spC
 spC
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -146125,7 +146478,7 @@ bjD
 bLb
 bKR
 bKz
-bjC
+bVT
 bjy
 bjt
 bJh
@@ -148400,7 +148753,7 @@ spC
 spC
 euM
 euM
-iKa
+spC
 spC
 spC
 spC
@@ -148904,7 +149257,7 @@ euM
 ozb
 ozb
 euM
-iKa
+spC
 spC
 spC
 spC
@@ -149068,11 +149421,11 @@ spC
 spC
 spC
 spC
-iKa
+spC
 euM
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -149227,7 +149580,7 @@ spC
 euM
 ozb
 euM
-iKa
+spC
 spC
 spC
 spC
@@ -149394,8 +149747,8 @@ spC
 spC
 euM
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -149562,8 +149915,8 @@ spC
 spC
 spC
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -149730,8 +150083,8 @@ spC
 spC
 spC
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -149898,8 +150251,8 @@ spC
 spC
 spC
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -150066,8 +150419,8 @@ spC
 spC
 spC
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -150235,7 +150588,7 @@ spC
 spC
 euM
 euM
-iKa
+spC
 spC
 spC
 spC
@@ -150730,16 +151083,16 @@ bgV
 euM
 ozb
 euM
-iKa
-iKa
-iKa
-iKa
-iKa
+spC
+spC
+spC
+spC
+spC
 euM
 ozb
 ozb
 euM
-iKa
+spC
 spC
 spC
 spC
@@ -150897,17 +151250,17 @@ bCd
 bgV
 euM
 euM
-iKa
-iKa
-iKa
-iKa
-iKa
-iKa
-iKa
+spC
+spC
+spC
+spC
+spC
+spC
+spC
 euM
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -151063,7 +151416,7 @@ bCb
 bCb
 bgV
 bgV
-spC
+euM
 spC
 spC
 spC
@@ -154361,7 +154714,7 @@ spC
 spC
 spC
 spC
-spC
+iKa
 euM
 aBB
 aBB
@@ -154529,7 +154882,7 @@ spC
 spC
 spC
 spC
-spC
+iKa
 euM
 aBB
 aDC
@@ -154697,7 +155050,7 @@ spC
 spC
 spC
 spC
-spC
+iKa
 euM
 aBB
 aDD
@@ -154865,7 +155218,7 @@ spC
 spC
 spC
 spC
-spC
+iKa
 euM
 aBB
 aDE
@@ -155033,7 +155386,7 @@ spC
 spC
 spC
 spC
-spC
+iKa
 euM
 aBB
 aBB
@@ -155200,7 +155553,7 @@ spC
 spC
 spC
 spC
-spC
+iKa
 euM
 ozb
 euM
@@ -155368,7 +155721,7 @@ spC
 spC
 spC
 spC
-spC
+iKa
 euM
 ozb
 euM
@@ -155536,7 +155889,7 @@ spC
 spC
 spC
 spC
-spC
+iKa
 euM
 ozb
 euM
@@ -155594,11 +155947,11 @@ spC
 spC
 spC
 spC
-iKa
+spC
 euM
 euM
-iKa
-iKa
+spC
+spC
 spC
 spC
 spC
@@ -155766,7 +156119,7 @@ euM
 ozb
 ozb
 euM
-iKa
+spC
 spC
 spC
 spC
@@ -156270,7 +156623,7 @@ spC
 spC
 euM
 euM
-iKa
+spC
 spC
 spC
 spC

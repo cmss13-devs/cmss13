@@ -72,7 +72,7 @@
 	role_comm_title = "MPHG"
 
 	minimap_icon = "honorguard"
-	headset_item = /obj/item/device/radio/headset/almayer/mp_honor/com
+	headset_item = /obj/item/device/radio/headset/almayer/marine/mp_honor/com
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp/honorguard/New()
 	. = ..()

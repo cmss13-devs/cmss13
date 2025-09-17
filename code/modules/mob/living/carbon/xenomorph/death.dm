@@ -11,6 +11,8 @@ GLOBAL_VAR_INIT(total_dead_xenos, 0)
 
 	GLOB.living_xeno_list -= src
 
+	overlays -= acid_overlay
+
 	if(huggers_max > 0 && huggers_cur)
 		//Hugger explosion, like an egg morpher
 		var/obj/item/clothing/mask/facehugger/hugger

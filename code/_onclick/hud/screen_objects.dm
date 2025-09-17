@@ -71,8 +71,6 @@
 	QDEL_NULL(maptext_overlay)
 	return ..()
 
-GLOBAL_LIST_INIT(xeno_action_hud_coords, list("hud:2:2,6:30", "hud:2:31,6:30", "hud:2:60,6:30", "hud:2:2,5:30", "hud:2:31,5:30", "hud:2:60,5:30", "hud:2:2,4:30", "hud:2:31,4:30", "hud:2:60,4:30", "hud:2:2,3:30", "hud:2:31,3:30", "hud:2:60,3:30", "hud:2:2,2:30", "hud:2:31,2:30", "hud:2:60,2:30", "hud:2:90,4:30", "hud:2:90,3:30", "hud:2:90,2:30", "hud:2:2,1:30", "hud:2:31,1:30", "hud:2:60,1:30", "hud:2:90,1:30"))
-
 /atom/movable/screen/action_button/proc/get_button_screen_loc(button_number)
 	var/row = floor((button_number-1)/13) //13 is max amount of buttons per row
 	var/col = ((button_number - 1)%(13)) + 1

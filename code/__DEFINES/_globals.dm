@@ -103,3 +103,6 @@
 
 /// Creates list of subtype paths indexed by a variable
 #define GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(X, TypePath, Index) GLOBAL_RAW(/list/##X); GLOBAL_SUBTYPE_PATH_INDEXED(X, TypePath, Index)
+
+/// List of coordinates for xeno action hud buttons
+GLOBAL_LIST_INIT(xeno_action_hud_coords, list("hud:2:2,6:30", "hud:2:31,6:30", "hud:2:60,6:30", "hud:2:2,5:30", "hud:2:31,5:30", "hud:2:60,5:30", "hud:2:2,4:30", "hud:2:31,4:30", "hud:2:60,4:30", "hud:2:2,3:30", "hud:2:31,3:30", "hud:2:60,3:30", "hud:2:2,2:30", "hud:2:31,2:30", "hud:2:60,2:30", "hud:2:90,4:30", "hud:2:90,3:30", "hud:2:90,2:30", "hud:2:2,1:30", "hud:2:31,1:30", "hud:2:60,1:30", "hud:2:90,1:30"))

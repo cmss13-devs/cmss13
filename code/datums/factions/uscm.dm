@@ -137,6 +137,8 @@
 					marine_rk = "hgmp"
 				else
 					marine_rk = "mp"
+			if(JOB_POLICE_HG)
+				marine_rk = "hgmp"
 			if(JOB_TANK_CREW)
 				marine_rk = "tc"
 			if(JOB_WARDEN)

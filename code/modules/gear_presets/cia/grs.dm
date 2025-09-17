@@ -1,5 +1,6 @@
 /// Global Response Staff, CIA Paramilitaries. ///
 #define STRENGTH_NORM "Normal"
+#define STRENGTH_NO_IFF "No-IFF"
 #define STRENGTH_WEAK "Weakened"
 #define STRENGTH_SURVIVOR "Survivor"
 #define STRENGTH_DEATH "Deathsquad"
@@ -44,6 +45,9 @@
 	switch(strength_type)
 		if(STRENGTH_WEAK)
 			name = "[name] (Weakened)"
+		if(STRENGTH_NO_IFF)
+			name = "[name] (No-IFF)"
+			faction_group = FACTION_LIST_CIA
 		if(STRENGTH_SURVIVOR)
 			name = "Survivor - [name]"
 			faction_group = FACITON_LIST_SURVIVOR_CIA
@@ -83,6 +87,9 @@
 /datum/equipment_preset/cia_global_response/standard/deathsquad
 	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/standard/no_iff
+	strength_type = STRENGTH_NO_IFF
+
 /datum/equipment_preset/cia_global_response/standard/weak
 	strength_type = STRENGTH_WEAK
 
@@ -111,7 +118,7 @@
 			if(strength_type == STRENGTH_SURVIVOR)
 				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
 
-		if(STRENGTH_NORM)
+		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
@@ -175,6 +182,9 @@
 /datum/equipment_preset/cia_global_response/heavy/deathsquad
 	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/heavy/no_iff
+	strength_type = STRENGTH_NO_IFF
+
 /datum/equipment_preset/cia_global_response/heavy/weak
 	strength_type = STRENGTH_WEAK
 
@@ -199,7 +209,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sg/marsoc/grs/near_empty, WEAR_L_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/not_op, WEAR_R_STORE)
 
-		if(STRENGTH_NORM)
+		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
@@ -240,6 +250,9 @@
 /datum/equipment_preset/cia_global_response/sniper/deathsquad
 	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/sniper/no_iff
+	strength_type = STRENGTH_NO_IFF
+
 /datum/equipment_preset/cia_global_response/sniper/weak
 	strength_type = STRENGTH_WEAK
 
@@ -274,7 +287,7 @@
 			if(strength_type == STRENGTH_SURVIVOR)
 				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
 
-		if(STRENGTH_NORM)
+		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m10/black_tactical/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m10/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m10/ap, WEAR_IN_ACCESSORY)
@@ -325,6 +338,9 @@
 /datum/equipment_preset/cia_global_response/engineer/deathsquad
 	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/engineer/no_iff
+	strength_type = STRENGTH_NO_IFF
+
 /datum/equipment_preset/cia_global_response/engineer/weak
 	strength_type = STRENGTH_WEAK
 
@@ -353,7 +369,7 @@
 			new_human.equip_to_slot_or_del(new /obj/item/storage/box/explosive_mines, WEAR_IN_BACK)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_BACK)
 
-		if(STRENGTH_NORM)
+		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/es7/tactical/lethal, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(new_human), WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/explosive/grenade/high_explosive(new_human), WEAR_IN_JACKET)
@@ -399,6 +415,9 @@
 /datum/equipment_preset/cia_global_response/medic/deathsquad
 	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/medic/no_iff
+	strength_type = STRENGTH_NO_IFF
+
 /datum/equipment_preset/cia_global_response/medic/weak
 	strength_type = STRENGTH_WEAK
 
@@ -431,7 +450,7 @@
 			if(strength_type == STRENGTH_SURVIVOR)
 				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
 
-		if(STRENGTH_NORM)
+		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/mp5/mp5a5/mp5a6, WEAR_J_STORE)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/ap, WEAR_IN_JACKET)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/mp5/ap, WEAR_IN_JACKET)
@@ -479,6 +498,9 @@
 /datum/equipment_preset/cia_global_response/leader/deathsquad
 	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/leader/no_iff
+	strength_type = STRENGTH_NO_IFF
+
 /datum/equipment_preset/cia_global_response/leader/weak
 	strength_type = STRENGTH_WEAK
 
@@ -512,7 +534,7 @@
 			if(strength_type == STRENGTH_SURVIVOR)
 				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
 
-		if(STRENGTH_NORM)
+		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3/m4a4/tactical, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/ap, WEAR_IN_ACCESSORY)
@@ -571,6 +593,9 @@
 /datum/equipment_preset/cia_global_response/commander/deathsquad
 	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/commander/no_iff
+	strength_type = STRENGTH_NO_IFF
+
 /datum/equipment_preset/cia_global_response/commander/weak
 	strength_type = STRENGTH_WEAK
 
@@ -604,7 +629,7 @@
 			if(strength_type == STRENGTH_SURVIVOR)
 				new_human.equip_to_slot_or_del(new /obj/item/stack/sheet/metal/medium_stack, WEAR_IN_BACK)
 
-		if(STRENGTH_NORM)
+		if(STRENGTH_NORM, STRENGTH_NO_IFF)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/ap, WEAR_IN_ACCESSORY)
 			new_human.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m47/ap, WEAR_IN_ACCESSORY)
@@ -657,6 +682,9 @@
 /datum/equipment_preset/cia_global_response/commander/deputy/deathsquad
 	strength_type = STRENGTH_DEATH
 
+/datum/equipment_preset/cia_global_response/commander/deputy/no_iff
+	strength_type = STRENGTH_NO_IFF
+
 /datum/equipment_preset/cia_global_response/commander/deputy/weak
 	strength_type = STRENGTH_WEAK
 
@@ -664,6 +692,7 @@
 	strength_type = STRENGTH_SURVIVOR
 
 #undef STRENGTH_NORM
+#undef STRENGTH_NO_IFF
 #undef STRENGTH_WEAK
 #undef STRENGTH_SURVIVOR
 #undef STRENGTH_DEATH

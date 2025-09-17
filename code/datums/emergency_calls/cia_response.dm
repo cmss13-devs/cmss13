@@ -72,7 +72,10 @@
 	if(!leader && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_LEADER) && check_timelock(H.client, JOB_SQUAD_LEADER, time_required_for_job))    //First one spawned is always the leader.
 		leader = H
 		if(!is_deathsquad)
-			arm_equipment(H, /datum/equipment_preset/cia_global_response/leader, TRUE, TRUE)
+			if(!hostility)
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/leader, TRUE, TRUE)
+			else
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/leader/no_iff, TRUE, TRUE)
 		else
 			arm_equipment(H, /datum/equipment_preset/cia_global_response/leader/deathsquad, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Global Response Team Leader!"))
@@ -80,7 +83,10 @@
 	else if(smartgunners < max_smartgunners && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_SMARTGUNNER) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		smartgunners++
 		if(!is_deathsquad)
-			arm_equipment(H, /datum/equipment_preset/cia_global_response/heavy, TRUE, TRUE)
+			if(!hostility)
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/heavy, TRUE, TRUE)
+			else
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/heavy/no_iff, TRUE, TRUE)
 		else
 			arm_equipment(H, /datum/equipment_preset/cia_global_response/heavy/deathsquad, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Heavy Operator!"))
@@ -88,7 +94,10 @@
 	else if(heavies < max_heavies && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_HEAVY) && check_timelock(H.client, JOB_SQUAD_SMARTGUN, time_required_for_job))
 		heavies++
 		if(!is_deathsquad)
-			arm_equipment(H, /datum/equipment_preset/cia_global_response/sniper, TRUE, TRUE)
+			if(!hostility)
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/sniper, TRUE, TRUE)
+			else
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/sniper/no_iff, TRUE, TRUE)
 		else
 			arm_equipment(H, /datum/equipment_preset/cia_global_response/sniper/deathsquad, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Advanced Marksman!"))
@@ -96,7 +105,10 @@
 	else if(medics < max_medics && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_MEDIC) && check_timelock(H.client, JOB_SQUAD_MEDIC, time_required_for_job))
 		medics++
 		if(!is_deathsquad)
-			arm_equipment(H, /datum/equipment_preset/cia_global_response/medic, TRUE, TRUE)
+			if(!hostility)
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/medic, TRUE, TRUE)
+			else
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/medic/no_iff, TRUE, TRUE)
 		else
 			arm_equipment(H, /datum/equipment_preset/cia_global_response/medic/deathsquad, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Medic!"))
@@ -104,14 +116,20 @@
 	else if(engineers < max_engineers && HAS_FLAG(H.client.prefs.toggles_ert, PLAY_ENGINEER) && check_timelock(H.client, JOB_SQUAD_ENGI, time_required_for_job))
 		engineers++
 		if(!is_deathsquad)
-			arm_equipment(H, /datum/equipment_preset/cia_global_response/engineer, TRUE, TRUE)
+			if(!hostility)
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/engineer, TRUE, TRUE)
+			else
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/engineer/no_iff, TRUE, TRUE)
 		else
 			arm_equipment(H, /datum/equipment_preset/cia_global_response/engineer/deathsquad, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Technician!"))
 
 	else
 		if(!is_deathsquad)
-			arm_equipment(H, /datum/equipment_preset/cia_global_response/standard, TRUE, TRUE)
+			if(!hostility)
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/standard, TRUE, TRUE)
+			else
+				arm_equipment(H, /datum/equipment_preset/cia_global_response/standard/no_iff, TRUE, TRUE)
 		else
 			arm_equipment(H, /datum/equipment_preset/cia_global_response/standard/deathsquad, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Global Response Operator!"))

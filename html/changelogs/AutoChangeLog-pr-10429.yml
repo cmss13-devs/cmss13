@@ -1,4 +1,0 @@
-author: "Red-byte3D"
-delete-after: True
-changes:
-  - bugfix: "Fixes some broken vending code so you can properly vend apc gear if an apc is \"chosen\""

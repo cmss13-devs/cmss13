@@ -1,9 +1,0 @@
-author: "Blundir"
-delete-after: True
-changes:
-  - rscadd: "yautja, working joes, provost now have unique bubbles types to them"
-  - rscadd: "yautja translator now has a unique speech and typing bubble"
-  - rscadd: "speech bubbles now render over huds like med/sec huds"
-  - rscadd: "whisper now shows runechat message above your head (if you are in range)"
-  - imageadd: "a lot of new bubble icons, resprite of old ones, adding a smooth fade out animation to all of them"
-  - bugfix: "whispering while laying down (like in crit) no longer shows your speech bubble under your legs"

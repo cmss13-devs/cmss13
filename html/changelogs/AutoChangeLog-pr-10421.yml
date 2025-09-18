@@ -1,4 +1,0 @@
-author: "SirNightKnight"
-delete-after: True
-changes:
-  - bugfix: "fixed light fixture deconstruction getting stuck on removing the light fitting."

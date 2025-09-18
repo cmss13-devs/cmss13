@@ -150,6 +150,8 @@
 		JOB_SQUAD_TEAM_LEADER = 2,
 		JOB_SQUAD_LEADER = 1,
 	)
+	/// Saves the initial roles cap, since byond doesn't like initial() on lists
+	var/list/initial_roles_cap
 	/// Do this squad's roles scale with pop
 	var/dynamic_scaling = TRUE
 	/// At which amount of clients does this squad become playable
@@ -604,6 +606,7 @@ SQUAD_VENDORS(support, ACCESS_MARINE_SUPPORT, null)
 	update_all_squad_info()
 
 	if(pop_lock > 0)
+		initial_roles_cap = roles_cap.Copy()
 		roles_cap = list(
 			JOB_SQUAD_MARINE = 0,
 			JOB_SQUAD_ENGI = 0,

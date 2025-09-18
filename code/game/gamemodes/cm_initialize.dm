@@ -131,8 +131,8 @@ Additional game mode variables.
 			target_squad.roles_cap[JOB_SQUAD_ENGI] = engi_slot_formula(marine_starting_num)
 			target_squad.roles_cap[JOB_SQUAD_MEDIC] = medic_slot_formula(marine_starting_num)
 
-		if(target_squad.pop_lock <= length(GLOB.clients))
-			target_squad.roles_cap = initial(target_squad.roles_cap)
+		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
+			target_squad.roles_cap = target_squad.initial_roles_cap
 
 	for(var/i in GLOB.RoleAuthority.roles_by_name)
 		var/datum/job/J = GLOB.RoleAuthority.roles_by_name[i]

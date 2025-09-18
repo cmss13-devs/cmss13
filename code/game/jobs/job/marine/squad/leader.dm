@@ -14,8 +14,8 @@
 		if(!target_squad)
 			continue
 
-		if(target_squad.pop_lock < length(GLOB.clients))
-			target_squad.roles_cap = initial(target_squad.roles_cap)
+		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
+			target_squad.roles_cap = target_squad.initial_roles_cap
 
 		total_slots += target_squad.roles_cap[title]
 

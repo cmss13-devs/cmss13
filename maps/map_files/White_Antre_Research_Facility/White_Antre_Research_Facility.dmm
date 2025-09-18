@@ -2708,6 +2708,7 @@
 /area/white_antre/indoors/upper_level/simian_storage)
 "agF" = (
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/landmark/monkey_spawn,
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/white_antre/indoors/upper_level/simian_storage)
 "agG" = (
@@ -14872,6 +14873,12 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/white_antre/indoors/main_level/research)
+"aIv" = (
+/obj/structure/flora/bush/snow{
+	icon_state = "snowgrassall_3"
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/oob)
 "aIw" = (
 /obj/structure/machinery/big_computers/computerwhite/computer2{
 	pixel_x = 10
@@ -15029,6 +15036,13 @@
 	},
 /turf/open/floor/shiva,
 /area/white_antre/indoors/main_level/research)
+"aIL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall/kseries,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/turf/open/floor/hybrisa/tile/tilebeige,
+/area/white_antre/indoors/upper_level/central_corridor)
 "aIM" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -26975,6 +26989,9 @@
 /area/white_antre/indoors/upper_level/central_corridor)
 "bsO" = (
 /obj/effect/alien/weeds/kseries,
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bsP" = (
@@ -26984,9 +27001,7 @@
 	pixel_x = 14;
 	pixel_y = -15
 	},
-/obj/structure/pipes/standard/manifold/hidden/cyan{
-	dir = 8
-	},
+/obj/structure/pipes/standard/manifold/fourway/hidden/cyan,
 /turf/open/floor/hybrisa/tile/tilebeige,
 /area/white_antre/indoors/upper_level/central_corridor)
 "bsQ" = (
@@ -31991,10 +32006,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/upper_level/xenobio)
-"bFf" = (
-/obj/item/stack/sheet/metal,
-/turf/open/floor/hybrisa/tile/tilebeige,
-/area/white_antre/indoors/upper_level/central_corridor)
 "bFg" = (
 /obj/structure/closet/firecloset/full,
 /obj/item/storage/toolbox/emergency,
@@ -39181,6 +39192,10 @@
 	pixel_x = 6;
 	pixel_y = 11
 	},
+/obj/item/clothing/accessory/health/ceramic_plate{
+	pixel_x = 6;
+	pixel_y = -10
+	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/main_level/research)
 "bXQ" = (
@@ -39298,6 +39313,11 @@
 	},
 /obj/item/prop/almayer/box,
 /turf/open/floor/hybrisa/metal/bluemetal1,
+/area/white_antre/indoors/upper_level/north_overwatch)
+"bYf" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/suit/armor/vest,
+/turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/north_overwatch)
 "bYN" = (
 /obj/effect/landmark/static_comms/net_two,
@@ -40324,17 +40344,20 @@
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/hybrisa,
-/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate{
-	pixel_y = -6
+/obj/item/clothing/suit/armor/vest{
+	pixel_y = -7
 	},
-/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate{
-	pixel_y = -6
+/obj/item/clothing/suit/armor/vest{
+	pixel_y = -7
 	},
-/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate{
-	pixel_y = -6
+/obj/item/clothing/suit/armor/vest{
+	pixel_y = -7
 	},
-/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate{
-	pixel_y = -6
+/obj/item/clothing/suit/armor/vest{
+	pixel_y = -7
+	},
+/obj/item/weapon/telebaton{
+	pixel_x = -2
 	},
 /turf/open/floor/strata/red1,
 /area/white_antre/indoors/main_level/security)
@@ -47613,7 +47636,7 @@ rIc
 rIc
 adn
 rIc
-rIc
+bMt
 rIc
 rIc
 rIc
@@ -48600,7 +48623,7 @@ rIc
 rIc
 rIc
 aiD
-rIc
+aIv
 aKG
 rIc
 rIc
@@ -48941,7 +48964,7 @@ rIc
 rIc
 rIc
 rIc
-rIc
+aIv
 pzo
 rIc
 rIc
@@ -50484,9 +50507,9 @@ iKa
 iKa
 iKa
 pzo
-pzo
-pzo
 bRR
+pzo
+aKG
 pzo
 byT
 ylt
@@ -50654,8 +50677,8 @@ iKa
 iKa
 pzo
 pzo
-bRR
-pzo
+aKG
+aKG
 byT
 ylt
 byQ
@@ -50821,10 +50844,10 @@ iKa
 iKa
 iKa
 iKa
-pzo
-bRR
-bRR
-byT
+rIc
+rIc
+bMC
+bMx
 ylt
 byQ
 byQ
@@ -50990,9 +51013,9 @@ iKa
 iKa
 iKa
 iKa
-pzo
-bRR
-byT
+rIc
+rIc
+bMx
 ylt
 byQ
 byQ
@@ -51159,8 +51182,8 @@ iKa
 iKa
 iKa
 iKa
-bRR
-byT
+rIc
+byR
 ylt
 byQ
 byQ
@@ -51328,7 +51351,7 @@ iKa
 iKa
 iKa
 iKa
-byT
+byR
 ylt
 byQ
 byQ
@@ -136034,8 +136057,8 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
+ewE
+ewE
 spC
 spC
 spC
@@ -136202,8 +136225,8 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
+ewE
+ewE
 spC
 spC
 spC
@@ -136370,9 +136393,9 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
+ewE
+ewE
+ewE
 spC
 spC
 spC
@@ -136538,10 +136561,10 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
 spC
 spC
 spC
@@ -136706,20 +136729,20 @@ byQ
 byQ
 byQ
 ylt
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
+ewE
+iKa
+iKa
 spC
 spC
 spC
@@ -136874,23 +136897,23 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+iKa
+iKa
+iKa
+ewE
+ewE
+iKa
+iKa
+iKa
+iKa
 iKa
 spC
 spC
@@ -137042,22 +137065,22 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+iKa
+iKa
+ewE
+ewE
+ewE
+iKa
+iKa
+iKa
 iKa
 iKa
 spC
@@ -137210,22 +137233,22 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+iKa
+ewE
+ewE
+ewE
+ewE
+iKa
+iKa
+iKa
 iKa
 iKa
 spC
@@ -137378,22 +137401,22 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+iKa
+iKa
+iKa
+iKa
+ewE
+iKa
+iKa
+iKa
 iKa
 iKa
 spC
@@ -137546,22 +137569,22 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+iKa
+ewE
+ewE
+iKa
+iKa
+iKa
 iKa
 iKa
 spC
@@ -137714,22 +137737,22 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+iKa
+iKa
+iKa
 iKa
 iKa
 spC
@@ -137882,22 +137905,22 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+ewE
+iKa
+iKa
+ewE
+ewE
 iKa
 iKa
 spC
@@ -138050,20 +138073,20 @@ byQ
 byQ
 byQ
 ylt
+ewE
+ewE
+ewE
+ewE
+ewE
 spC
 spC
 spC
+ewE
+iKa
 spC
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-spC
+iKa
+iKa
 spC
 spC
 iKa
@@ -138218,10 +138241,10 @@ byQ
 byQ
 byQ
 ylt
-spC
-spC
-spC
-spC
+ewE
+ewE
+ewE
+ewE
 spC
 spC
 spC
@@ -138386,7 +138409,7 @@ byQ
 byQ
 byQ
 ylt
-spC
+ewE
 spC
 spC
 spC
@@ -148000,7 +148023,7 @@ bLG
 bjK
 bKb
 bKo
-bKo
+bYf
 bKD
 bKb
 bJI
@@ -150886,7 +150909,7 @@ uFz
 afA
 aQz
 bhB
-bFf
+bPH
 bhB
 aQw
 bhP
@@ -151054,7 +151077,7 @@ bti
 afA
 bwx
 bhB
-bhB
+bPG
 bhB
 bvi
 bhP
@@ -151222,7 +151245,7 @@ aND
 afA
 bww
 bsX
-bhB
+bPG
 bhB
 bvi
 bhP
@@ -151390,7 +151413,7 @@ fjh
 afA
 bwy
 bsX
-bhB
+bPG
 bhB
 bvi
 bhP
@@ -151558,7 +151581,7 @@ afI
 afA
 bww
 bhB
-bhB
+bPG
 bhB
 bvi
 bhP
@@ -151894,7 +151917,7 @@ afA
 afA
 bsV
 aFL
-aFL
+bPK
 aFL
 aQx
 bhP
@@ -152062,7 +152085,7 @@ afA
 btb
 aQB
 aFL
-aFL
+bPK
 aFL
 aQx
 bsI
@@ -152230,7 +152253,7 @@ btk
 btb
 aQB
 bsL
-aFL
+bPK
 aFL
 bsK
 bsJ
@@ -152398,7 +152421,7 @@ aQC
 aQC
 aQv
 bsL
-bsL
+aIL
 bsL
 aQy
 aQC

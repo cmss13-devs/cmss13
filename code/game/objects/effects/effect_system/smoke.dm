@@ -115,6 +115,9 @@
 			if(foundsmoke.smokeranking <= src.smokeranking)
 				qdel(foundsmoke)
 				turfs_to_spread += below
+		else
+			turfs_to_spread += below
+
 
 	if(above && istype(above,/turf/open_space))
 		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in above
@@ -122,6 +125,8 @@
 			if(foundsmoke.smokeranking <= src.smokeranking)
 				qdel(foundsmoke)
 				turfs_to_spread += above
+		else
+			turfs_to_spread += below
 
 	for(var/turf/spread in turfs_to_spread)
 		var/obj/effect/particle_effect/smoke/smoke = new type(spread, amount, cause_data)

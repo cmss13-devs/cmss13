@@ -110,10 +110,18 @@
 	var/turf/below = SSmapping.get_turf_below(loc)
 	var/turf/above = SSmapping.get_turf_above(loc)
 	if(below && istype(loc,/turf/open_space))
-		turfs_to_spread += below
+		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in below
+		if(foundsmoke)
+			if(foundsmoke.smokeranking <= src.smokeranking)
+				qdel(foundsmoke)
+				turfs_to_spread += below
 
 	if(above && istype(above,/turf/open_space))
-		turfs_to_spread += above
+		var/obj/effect/particle_effect/smoke/foundsmoke = locate() in above
+		if(foundsmoke)
+			if(foundsmoke.smokeranking <= src.smokeranking)
+				qdel(foundsmoke)
+				turfs_to_spread += above
 
 	for(var/turf/spread in turfs_to_spread)
 		var/obj/effect/particle_effect/smoke/smoke = new type(spread, amount, cause_data)

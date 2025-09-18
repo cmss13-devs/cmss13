@@ -20,7 +20,7 @@
 	else
 		total_positions_so_far = slots
 
-	var/total_slots = 0
+	var/extra_slots = 0
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		if(!target_squad)
@@ -32,11 +32,10 @@
 		if(target_squad.dynamic_scaling)
 			if(latejoin)
 				target_squad.roles_cap[title] = slots
-			total_slots += slots
 		else
-			total_slots += target_squad.roles_cap[title]
+			extra_slots += target_squad.roles_cap[title]
 
-	return total_slots
+	return slots * 2 + extra_slots
 
 /datum/job/marine/medic/whiskey
 	title = JOB_WO_SQUAD_MEDIC

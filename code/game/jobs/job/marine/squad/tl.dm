@@ -1,7 +1,7 @@
 /datum/job/marine/tl
 	title = JOB_SQUAD_TEAM_LEADER
-	total_positions = 8
-	spawn_positions = 8
+	total_positions = 6
+	spawn_positions = 6
 	allow_additional = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = /datum/equipment_preset/uscm/tl
@@ -12,7 +12,7 @@
 	spawning_human.important_radio_channels += JTAC_FREQ
 
 /datum/job/marine/tl/get_total_positions(latejoin=0)
-	var/total_slots = 0
+	var/extra_slots = 0
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		if(!target_squad)
@@ -20,10 +20,9 @@
 
 		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
 			target_squad.roles_cap = target_squad.initial_roles_cap
+			extra_slots++
 
-		total_slots += target_squad.roles_cap[title]
-
-	return total_slots
+	return extra_slots + spawn_positions
 
 AddTimelock(/datum/job/marine/tl, list(
 	JOB_SQUAD_ROLES = 8 HOURS

@@ -8,7 +8,7 @@
 	entry_message_body = "<a href='"+WIKI_PLACEHOLDER+"'>You are responsible for the men and women of your squad.</a> Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
 
 /datum/job/marine/leader/get_total_positions(latejoin=0)
-	var/total_slots = 0
+	var/extra_slots = 0
 
 	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
 		if(!target_squad)
@@ -16,10 +16,9 @@
 
 		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
 			target_squad.roles_cap = target_squad.initial_roles_cap
-
-		total_slots += target_squad.roles_cap[title]
-
-	return total_slots
+			extra_slots++
+	to_world(extra_slots + 4)
+	return extra_slots + spawn_positions
 
 /datum/job/marine/leader/whiskey
 	title = JOB_WO_SQUAD_LEADER

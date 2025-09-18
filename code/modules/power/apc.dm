@@ -1236,9 +1236,9 @@ GLOBAL_LIST_INIT(apc_wire_descriptions, list(
 		//Now trickle-charge the cell
 		if(attempt_charging())
 			if(power_excess > 0) //Check to make sure we have enough to charge
-				var/what_is_left = max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0) //Actually recharge the cell
-				//Giving power back to the powernet if not used
-				add_avail(what_is_left)
+				var/surplus = max(power_excess - cell.give(power_excess * CELLRATE) / CELLRATE, 0) //Actually recharge the cell
+				//Giving surplus to the powernet
+				add_avail(surplus)
 			else
 				charging = APC_NOT_CHARGING //Stop charging
 				chargecount = 0

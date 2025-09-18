@@ -14872,20 +14872,14 @@
 	},
 /turf/open/floor/almayer/silver/east,
 /area/white_antre/indoors/main_level/research)
-"aIv" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/storage/pouch/chem,
-/turf/open/floor/hybrisa/tile/tilewhite,
-/area/white_antre/indoors/main_level/research)
 "aIw" = (
-/obj/structure/surface/rack,
-/obj/structure/machinery/big_computers/science_big/operator_machine,
+/obj/structure/machinery/big_computers/computerwhite/computer2{
+	pixel_x = 10
+	},
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/main_level/research)
 "aIx" = (
-/obj/structure/machinery/smartfridge/chemistry/antag,
+/obj/structure/machinery/big_computers/computerwhite/computer4,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/main_level/research)
 "aIy" = (
@@ -14999,10 +14993,20 @@
 /turf/open/floor/almayer/emerald2smooth/west,
 /area/white_antre/indoors/main_level/research)
 "aII" = (
-/obj/item/stool{
-	pixel_x = 2;
-	pixel_y = 23
+/obj/item/clothing/under/marine{
+	pixel_x = 7
 	},
+/obj/item/clothing/under/marine,
+/obj/structure/closet/crate/green,
+/obj/item/clothing/under/marine/veteran/pmc{
+	pixel_x = -5
+	},
+/obj/item/clothing/gloves/marine/veteran/pmc,
+/obj/item/clothing/gloves/marine/veteran,
+/obj/item/clothing/gloves/marine/veteran,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/shoes/jackboots,
+/obj/item/clothing/shoes/jackboots,
 /turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/main_level/research)
 "aIJ" = (
@@ -15024,14 +15028,6 @@
 	pixel_y = 1
 	},
 /turf/open/floor/shiva,
-/area/white_antre/indoors/main_level/research)
-"aIL" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2
-	},
-/obj/structure/machinery/big_computers/computerwhite/computer4,
-/turf/open/floor/hybrisa/tile/tilewhite,
 /area/white_antre/indoors/main_level/research)
 "aIM" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -20169,9 +20165,11 @@
 	dir = 8
 	},
 /obj/structure/barricade/handrail/no_vault,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/red/southwest,
 /area/white_antre/landing_zone)
 "aYT" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/redcorner/west,
 /area/white_antre/landing_zone)
 "aYU" = (
@@ -21420,9 +21418,11 @@
 /turf/open/floor/prison,
 /area/white_antre/landing_zone)
 "bbP" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/redcorner/north,
 /area/white_antre/landing_zone)
 "bbQ" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/red/northeast,
 /area/white_antre/landing_zone)
 "bbR" = (
@@ -21528,6 +21528,7 @@
 	pixel_y = 1;
 	pixel_x = -13
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/red/east,
 /area/white_antre/landing_zone)
 "bce" = (
@@ -21708,6 +21709,7 @@
 	pixel_y = -19;
 	pixel_x = -18
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/red/northeast,
 /area/white_antre/landing_zone)
 "bct" = (
@@ -21900,6 +21902,7 @@
 /area/white_antre/indoors/main_level/east_corridor)
 "bcU" = (
 /obj/effect/sentry_landmark/lz_1/bottom_left,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/landing_zone)
 "bcV" = (
@@ -24209,6 +24212,7 @@
 "bkD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/emcloset,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "bkE" = (
@@ -24785,6 +24789,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/technology_scanner,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/yellow/north,
 /area/white_antre/indoors/underground_level/east_maint)
 "bms" = (
@@ -24999,12 +25004,14 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
 /obj/item/storage/box/lights/bulbs,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bnd" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
 /obj/item/storage/box/lights/tubes,
+/obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison/yellow,
 /area/white_antre/indoors/underground_level/east_maint)
 "bne" = (
@@ -25194,6 +25201,7 @@
 	pixel_y = 10
 	},
 /obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison/darkbrown2,
 /area/white_antre/indoors/underground_level/west_maint)
 "bnM" = (
@@ -25362,6 +25370,7 @@
 /area/white_antre/indoors/underground_level/west_maint)
 "bom" = (
 /obj/structure/closet/crate/science,
+/obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "bon" = (
@@ -25400,6 +25409,7 @@
 	alpha = 155
 	},
 /obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/west_maint)
 "bot" = (
@@ -25462,6 +25472,7 @@
 	pixel_y = 33;
 	pixel_x = 2
 	},
+/obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/white_antre/indoors/underground_level/west_maint)
 "boE" = (
@@ -25497,6 +25508,7 @@
 "boK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
+/obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison,
 /area/white_antre/indoors/underground_level/east_maint)
 "boL" = (
@@ -29763,6 +29775,7 @@
 	},
 /obj/structure/barricade/handrail/no_vault,
 /obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/red/southwest,
 /area/white_antre/landing_zone)
 "bzH" = (
@@ -29970,6 +29983,11 @@
 	dir = 8
 	},
 /obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_y = 1
+	},
 /turf/open/floor/prison/red/west,
 /area/white_antre/landing_zone)
 "bAg" = (
@@ -30290,6 +30308,9 @@
 /obj/effect/decal/hybrisa/tiretrack{
 	dir = 8;
 	pixel_y = 12
+	},
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain{
+	pixel_x = 16
 	},
 /turf/open/auto_turf/shale/layer1/weedable,
 /area/white_antre/landing_zone)
@@ -35699,6 +35720,11 @@
 /obj/effect/mist/steam,
 /turf/open_space,
 /area/white_antre/oob)
+"bOl" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/objective_landmark/medium,
+/turf/open/floor/prison/floor_marked/southwest,
+/area/white_antre/indoors/underground_level/west_maint)
 "bOm" = (
 /obj/structure/blocker/invisible_wall,
 /obj/effect/mist/steam,
@@ -35785,6 +35811,25 @@
 /obj/effect/mist/steam,
 /turf/open_space,
 /area/white_antre/oob)
+"bOw" = (
+/obj/effect/decal/hybrisa/road/lines3,
+/obj/effect/decal/hybrisa/road/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Brown_Cargo{
+	dir = 1
+	},
+/turf/open/asphalt/brown,
+/area/white_antre/indoors/main_level/south_containment)
+"bOx" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/cargo_container/hybrisa/containersextended/blackwyleft,
+/obj/structure/barricade/handrail/no_vault{
+	layer = 4.12
+	},
+/turf/open/floor/prison/red,
+/area/white_antre/landing_zone)
 "bOy" = (
 /obj/structure/platform/metal/almayer_smooth/east,
 /obj/structure/blocker/invisible_wall,
@@ -38747,10 +38792,243 @@
 	},
 /turf/open/floor/prison,
 /area/white_antre/indoors/upper_level/east_overwatch)
+"bWN" = (
+/obj/structure/barricade/handrail/no_vault{
+	layer = 4.12
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/blackwyright,
+/turf/open/floor/prison/red,
+/area/white_antre/landing_zone)
+"bWO" = (
+/obj/structure/barricade/handrail/no_vault,
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_x = -7;
+	pixel_y = 17;
+	layer = 3.01
+	},
+/turf/open/floor/prison/red,
+/area/white_antre/landing_zone)
+"bWP" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red,
+/area/white_antre/landing_zone)
+"bWQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red/southeast,
+/area/white_antre/landing_zone)
+"bWR" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/closet/crate/internals{
+	pixel_x = 3
+	},
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bWS" = (
+/obj/structure/largecrate/empty/case/double,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bWT" = (
+/obj/structure/largecrate/empty/secure,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bWU" = (
+/obj/structure/largecrate/empty/case,
+/obj/structure/largecrate/random/mini/chest{
+	pixel_y = 7
+	},
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bWV" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red{
+	dir = 8
+	},
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bWW" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bWX" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red/east,
+/area/white_antre/landing_zone)
+"bWY" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/red,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bWZ" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bXa" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXb" = (
+/obj/structure/blocker/invisible_wall,
+/obj/structure/platform/metal/almayer_smooth/north,
+/obj/structure/platform/metal/almayer_smooth/east,
+/obj/structure/platform_decoration/metal/almayer_smooth/northeast,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open_space,
+/area/white_antre/oob)
 "bXc" = (
 /obj/structure/prop/dam/crane/cargo,
 /turf/open/asphalt/brown,
 /area/white_antre/outdoors/facility_exterior)
+"bXd" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXe" = (
+/obj/structure/largecrate/random{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/floor/prison/redcorner/west,
+/area/white_antre/landing_zone)
+"bXf" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXg" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/redcorner,
+/area/white_antre/landing_zone)
+"bXh" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/secure,
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bXi" = (
+/obj/structure/largecrate/random/mini/wooden{
+	pixel_x = -10;
+	pixel_y = -3
+	},
+/obj/item/stack/sheet/wood{
+	layer = 2.7;
+	pixel_y = 11
+	},
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXj" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison,
+/area/white_antre/landing_zone)
+"bXk" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain{
+	pixel_y = 15
+	},
+/turf/open/auto_turf/shale/layer1/weedable,
+/area/white_antre/landing_zone)
+"bXl" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/obj/structure/prop/hybrisa/airport/refuelinghose{
+	pixel_y = -20;
+	pixel_x = -7
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/landing_zone)
+"bXm" = (
+/obj/effect/decal/cleanable/dirt/alt_dirt/stain{
+	pixel_y = 1;
+	pixel_x = -13
+	},
+/turf/open/auto_turf/shale/layer2/weedable,
+/area/white_antre/landing_zone)
+"bXn" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 14;
+	pixel_y = 16
+	},
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXo" = (
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/landing_zone)
+"bXp" = (
+/obj/structure/prop/hybrisa/airport/refuelinghose2{
+	pixel_y = 12;
+	pixel_x = -7
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/landing_zone)
+"bXq" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/landing_zone)
+"bXr" = (
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/landing_zone)
+"bXs" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bXt" = (
+/obj/structure/showcase{
+	breakable = 1;
+	density = 0;
+	desc = null;
+	icon_state = "igniter0";
+	name = "floor panel"
+	},
+/turf/open/floor/shiva/radiator_tile2,
+/area/white_antre/landing_zone)
+"bXu" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = 10;
+	pixel_y = 14
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/landing_zone)
+"bXv" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/tool/warning_cone{
+	layer = 4;
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/landing_zone)
 "bXw" = (
 /obj/structure/machinery/door/airlock/hatch/cockpit/two{
 	req_access = null;
@@ -38759,6 +39037,268 @@
 	},
 /turf/open/floor/corsat/officetiles,
 /area/white_antre/indoors/pmc_dropship)
+"bXx" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXy" = (
+/obj/effect/landmark/hunter_secondary,
+/turf/open/asphalt/brown,
+/area/white_antre/outdoors/road_west)
+"bXz" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	layer = 3.33;
+	pixel_y = 1
+	},
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bXA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	layer = 3.3
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 17;
+	layer = 4.2
+	},
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/landing_zone)
+"bXB" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/structure/prop/hybrisa/vehicles/Small_Truck/Green{
+	dir = 1;
+	pixel_x = 5
+	},
+/obj/structure/reagent_dispensers/fueltank/spacecraft{
+	layer = 4.2;
+	pixel_x = 10;
+	pixel_y = 26
+	},
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bXC" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/landing_zone)
+"bXD" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/landing_zone)
+"bXE" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bXF" = (
+/obj/structure/largecrate/random/barrel/black,
+/turf/open/floor/plating/plating_catwalk/prison,
+/area/white_antre/landing_zone)
+"bXG" = (
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/ramptop/north,
+/area/white_antre/landing_zone)
+"bXH" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bXI" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXJ" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 10;
+	pixel_y = 14
+	},
+/turf/open/floor/plating,
+/area/white_antre/landing_zone)
+"bXK" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXL" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXM" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/white_antre/indoors/main_level/research)
+"bXN" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/prop/almayer/handheld1{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/item/tool/screwdriver{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/white_antre/indoors/main_level/research)
+"bXO" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXP" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = -9;
+	pixel_y = 1
+	},
+/obj/item/paper/crumpled{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/turf/open/floor/hybrisa/tile/tilewhite,
+/area/white_antre/indoors/main_level/research)
+"bXQ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/redcorner/east,
+/area/white_antre/landing_zone)
+"bXR" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXS" = (
+/obj/structure/barricade/handrail/hybrisa/road/plastic/blue{
+	dir = 1
+	},
+/turf/open/floor/prison,
+/area/white_antre/landing_zone)
+"bXT" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/medical{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/prison/red/west,
+/area/white_antre/landing_zone)
+"bXU" = (
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_y = 9;
+	pixel_x = 11
+	},
+/obj/item/stack/sheet/wood{
+	pixel_x = -1;
+	pixel_y = -5
+	},
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXV" = (
+/obj/structure/largecrate/machine/bodyscanner{
+	pixel_y = 4
+	},
+/turf/open/floor/prison/floor_plate,
+/area/white_antre/landing_zone)
+"bXW" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/structure/largecrate/random/barrel/white{
+	pixel_x = -8;
+	pixel_y = 9
+	},
+/turf/open/floor/prison,
+/area/white_antre/landing_zone)
+"bXX" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 1
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/medicalleft,
+/turf/open/floor/prison/red/north,
+/area/white_antre/landing_zone)
+"bXY" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 1
+	},
+/obj/structure/cargo_container/hybrisa/containersextended/medicalright,
+/turf/open/floor/prison/red/north,
+/area/white_antre/landing_zone)
+"bXZ" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 1
+	},
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_y = 3;
+	pixel_x = -7
+	},
+/turf/open/floor/prison/red/north,
+/area/white_antre/landing_zone)
+"bYa" = (
+/obj/structure/barricade/handrail/no_vault{
+	dir = 1
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red/north,
+/area/white_antre/landing_zone)
+"bYb" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/prison/red/north,
+/area/white_antre/landing_zone)
+"bYc" = (
+/obj/structure/bed/chair/dropship/passenger{
+	dir = 1
+	},
+/obj/item/clothing/under/marine/veteran/pmc{
+	pixel_x = -4;
+	pixel_y = -2
+	},
+/obj/item/clothing/under/marine/veteran/pmc,
+/turf/open/shuttle/dropship/medium_grey_single_wide_up_to_down,
+/area/white_antre/indoors/pmc_dropship)
+"bYd" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/paper_bin{
+	pixel_x = -8;
+	pixel_y = 2
+	},
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/white_antre/indoors/upper_level/north_overwatch)
+"bYe" = (
+/obj/structure/surface/table/almayer{
+	color = "#EBD9B7"
+	},
+/obj/item/prop/almayer/box,
+/turf/open/floor/hybrisa/metal/bluemetal1,
+/area/white_antre/indoors/upper_level/north_overwatch)
 "bYN" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/prison/floor_marked,
@@ -40752,7 +41292,8 @@
 	req_access_txt = "212"
 	},
 /obj/item/paper{
-	info = "Why is the head of security in the north observation room when he's the only one with the armoury access?"
+	info = "Why is the head of security in the north observation room when he's the only one with the armoury access?";
+	pixel_y = 2
 	},
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
@@ -41704,8 +42245,8 @@
 /turf/open/floor/almayer/silver/north,
 /area/white_antre/indoors/main_level/east_containment_hive)
 "lKA" = (
-/obj/effect/landmark/hunter_secondary,
-/turf/open/floor/prison/floor_plate,
+/obj/structure/reagent_dispensers/fueltank/spacecraft,
+/turf/open/floor/shiva/radiator_tile2,
 /area/white_antre/landing_zone)
 "lKF" = (
 /turf/open/floor/prison/darkbrown3,
@@ -41830,6 +42371,7 @@
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/landing_zone)
 "mew" = (
@@ -41941,6 +42483,7 @@
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/landing_zone)
 "mAU" = (
@@ -42716,6 +43259,7 @@
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/floor_plate,
 /area/white_antre/landing_zone)
 "oRZ" = (
@@ -44113,6 +44657,7 @@
 	dir = 8
 	},
 /obj/structure/machinery/floodlight/landing,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/prison/red/southwest,
 /area/white_antre/landing_zone)
 "uzG" = (
@@ -66004,7 +66549,7 @@ aVG
 bmj
 bmM
 bma
-bmk
+bOl
 bmk
 aVG
 aVJ
@@ -87336,14 +87881,14 @@ bbK
 bwc
 mKN
 bbM
-aYK
-aYK
-aYK
-aYK
+bXH
+bXE
+bXB
+bXz
 bAf
-aYK
-aYK
-aYK
+bXs
+bWZ
+bWZ
 aYK
 aYK
 aYS
@@ -87504,20 +88049,20 @@ bOs
 bAR
 aYK
 bbN
-aYL
-aYL
-aYL
-aYL
+bXI
+bXF
+bXC
+bXt
 lKA
+bXt
+bXq
+bXo
 aYL
-aYL
-aYL
-aYL
-aYL
+bWW
 aYT
-aYK
+bXh
 bzG
-cIl
+bXb
 bwc
 bwc
 bwc
@@ -87665,30 +88210,30 @@ bOu
 bwc
 mKN
 bbM
-aYK
-aYK
-aYK
+bWZ
+bWZ
+bWZ
 aYK
 bbN
 aZa
 aZa
-aZa
-aZa
-aZa
-aZa
-aZa
-aZa
-aZa
-aZa
-aZa
-aZa
-aZa
 aYL
-aYT
+bXG
+bXD
+bXA
+bXv
+bXu
+bXr
+bXp
+bXn
+aZa
+aZa
+bXi
+bXe
 aYK
 aYK
-aYK
-aYK
+bWZ
+bWZ
 aYS
 cIl
 bwc
@@ -87831,11 +88376,11 @@ bNW
 bNR
 rpv
 bAR
-aYK
-bbN
-aYL
+bXT
+bXQ
+bWW
 myO
-wtV
+bXK
 pTd
 jdm
 aZJ
@@ -87849,16 +88394,16 @@ aZS
 bau
 bal
 bac
-aZS
+bXl
 aZJ
 wtV
 pTd
-jdm
+bXd
 myO
-aYL
+bWW
 aYL
 aYT
-aYK
+bWR
 uyB
 bGJ
 bNN
@@ -87998,9 +88543,9 @@ bNR
 bOg
 bOd
 rpv
-bde
-aYL
-aYL
+bXX
+bXU
+bXR
 crT
 aZr
 uci
@@ -88025,9 +88570,9 @@ uci
 aZr
 mbN
 aYL
-aYL
-aYL
-aYC
+bWY
+bWS
+bOx
 bGJ
 bNO
 bNZ
@@ -88166,13 +88711,14 @@ bNX
 bNS
 bOh
 bOv
-bde
-aYL
-aZa
+bXY
+bXV
+bXS
 eZj
 aLy
 aLy
 aLy
+bXJ
 aLy
 aLy
 aLy
@@ -88190,12 +88736,11 @@ aLy
 aLy
 aLy
 aLy
-aLy
-ezs
+bXa
 aYL
-aYL
-aYL
-aYC
+bWY
+bWT
+bWN
 bOn
 bNP
 bOa
@@ -88334,8 +88879,8 @@ bNN
 bNR
 bOi
 bOv
-bde
-aZa
+bXZ
+bXW
 aZa
 bUs
 aLy
@@ -88361,9 +88906,9 @@ aLy
 aLy
 aPv
 aZa
-aYL
-aYL
-aYC
+bWY
+bWU
+bWO
 bOn
 bNZ
 bOb
@@ -88503,7 +89048,7 @@ bNS
 bOh
 bOv
 bde
-aZa
+bXj
 aZa
 lzW
 aLy
@@ -88530,7 +89075,7 @@ aLy
 xjs
 aZa
 aYL
-aYL
+bWV
 aYC
 bOn
 bOa
@@ -88671,7 +89216,7 @@ bNR
 bOi
 bOv
 bde
-aZa
+bXj
 aZa
 bcF
 aLy
@@ -88838,7 +89383,7 @@ bzc
 bzc
 bOk
 bBb
-bde
+bYa
 aZa
 aZa
 bcG
@@ -88866,7 +89411,7 @@ aLy
 aZj
 aZa
 aYL
-aYL
+bWW
 aYC
 bOo
 bOk
@@ -89006,8 +89551,8 @@ bSA
 bUv
 bUv
 bUu
-bdf
-aZa
+bYb
+bXj
 aZa
 bUs
 aLy
@@ -89034,7 +89579,7 @@ aLy
 aPv
 aZa
 aYL
-aYL
+bWW
 aYD
 bSC
 bSB
@@ -89175,7 +89720,7 @@ aKC
 aKC
 dwB
 bdf
-aZa
+bXj
 aZa
 lzW
 aLy
@@ -89343,7 +89888,7 @@ aKB
 aKC
 dwB
 bdf
-aZa
+bXj
 aZa
 bcF
 aLy
@@ -89371,7 +89916,7 @@ aZi
 aZa
 aYL
 aYL
-aYD
+bWP
 siB
 aKC
 aKB
@@ -89510,7 +90055,7 @@ aKB
 aKB
 aKC
 dwB
-bdf
+bYb
 aYL
 aZa
 eZj
@@ -89539,7 +90084,7 @@ ezs
 aYL
 aYL
 aYL
-aYD
+bWP
 siB
 aKC
 aKF
@@ -89678,7 +90223,7 @@ aKB
 aKB
 aKB
 dwB
-bdf
+bYb
 bcU
 aYL
 bcH
@@ -89707,7 +90252,7 @@ aZk
 aYL
 aYL
 aYM
-aYD
+bWP
 siB
 aKC
 aKB
@@ -89847,11 +90392,11 @@ aKB
 aKB
 dwB
 bbQ
-aYN
+bWX
 bbP
 aYL
-aJe
-vMZ
+bXO
+bXL
 jzV
 bcq
 bcb
@@ -89868,14 +90413,14 @@ bad
 aZT
 aZK
 vMZ
-jzV
+bXf
 oOF
 aJe
 aYL
 aYL
 aYU
-aYN
-aYE
+bWX
+bWQ
 siB
 aKC
 aKB
@@ -90017,10 +90562,10 @@ odB
 oSf
 wvY
 bbQ
-aYN
-aYN
-aYN
-aYN
+bWX
+bWX
+bWX
+bWX
 bcr
 bcc
 bbO
@@ -90033,15 +90578,15 @@ aZa
 aZa
 aZa
 aZa
-aZa
-aZa
-aYL
-aYU
+bXj
+bXj
+bWW
+bXg
+bWX
 aYN
 aYN
-aYN
-aYN
-aYE
+bWX
+bWQ
 lDX
 oSf
 nQp
@@ -90192,18 +90737,18 @@ wvY
 bcs
 bcd
 bbP
+bWW
+aYL
+aYL
+aYL
+bXx
 aYL
 aYL
 aYL
 aYL
 aYL
-aYL
-aYL
-aYL
-aYL
-aYL
-aYU
-aYN
+bXg
+bWX
 aYE
 lDX
 oSf
@@ -90360,17 +90905,17 @@ odB
 oSf
 wvY
 bbQ
+bWX
 aYN
 aYN
 aYN
 aYN
 aYN
-aYN
-aYN
-aYN
-aYN
-aYN
-aYE
+bWX
+bWX
+bWX
+bWX
+bWQ
 vMK
 oSf
 nQp
@@ -91368,7 +91913,7 @@ aKC
 aKB
 aKB
 bbR
-aKB
+bXk
 aKB
 aMM
 aMy
@@ -91378,7 +91923,7 @@ aMq
 aKB
 aKB
 aZU
-aKB
+bXk
 aKB
 aKB
 aKB
@@ -91535,7 +92080,7 @@ aKC
 aKC
 aKB
 aKB
-aKF
+bXm
 aKB
 aKB
 aMM
@@ -91545,7 +92090,7 @@ bAb
 aMq
 aKB
 aKB
-aKF
+bXm
 aKB
 aKB
 aKC
@@ -95572,7 +96117,7 @@ lGQ
 bbt
 aLH
 aLm
-aLm
+bXy
 aLm
 aLm
 pMU
@@ -98388,7 +98933,7 @@ hvs
 bxG
 bxG
 cSI
-fcJ
+bYc
 rYD
 hHz
 tZm
@@ -103833,7 +104378,7 @@ ana
 asL
 aJU
 aJT
-aJM
+bOw
 aaB
 aaB
 aSV
@@ -108329,10 +108874,10 @@ mvP
 mvP
 bLZ
 hZR
-aIL
+hZR
 aII
 hZR
-aIv
+hZR
 ymi
 aEd
 bUd
@@ -108499,7 +109044,7 @@ qrY
 hZR
 hZR
 hZR
-hZR
+bXM
 aIw
 ezV
 aEd
@@ -108666,8 +109211,8 @@ oji
 aEt
 hZR
 aEq
-hZR
-hZR
+bXP
+bXN
 aIx
 ezV
 aEd
@@ -150986,7 +151531,7 @@ bjD
 bjD
 bKb
 bjD
-bJU
+bYd
 bjn
 bJp
 agN
@@ -151154,7 +151699,7 @@ bKX
 bKX
 bKK
 bKq
-bJU
+bYe
 bjn
 agu
 agN

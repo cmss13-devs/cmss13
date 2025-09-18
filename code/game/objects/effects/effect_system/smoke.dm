@@ -126,7 +126,7 @@
 				qdel(foundsmoke)
 				turfs_to_spread += above
 		else
-			turfs_to_spread += below
+			turfs_to_spread += above
 
 	for(var/turf/spread in turfs_to_spread)
 		var/obj/effect/particle_effect/smoke/smoke = new type(spread, amount, cause_data)

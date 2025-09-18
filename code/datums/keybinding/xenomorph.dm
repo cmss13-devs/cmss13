@@ -933,3 +933,22 @@
 		if(burrower_toggle_meson_vision_check && !burrower_toggle_meson_vision_check.hidden)
 			handle_xeno_macro_datum(xeno, burrower_toggle_meson_vision_check)
 			return TRUE
+// Hivelord
+
+/datum/keybinding/xenomorph/hivelord_resin_whisperer_toggle_speed
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "hivelord_resin_whisperer_toggle_speed"
+	full_name = "Resin Whisperer: Toggle speed"
+	keybind_signal = COMSIG_KB_XENO_RESIN_WHISPERER_TOGGLE_SPEED
+
+/datum/keybinding/xenomorph/hivelord_resin_whisperer_toggle_speed/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/active_toggle/toggle_speed/hivelord_resin_whisperer_toggle_speed_check = get_action(xeno, /datum/action/xeno_action/active_toggle/toggle_speed)
+	if(hivelord_resin_whisperer_toggle_speed_check)
+		if(hivelord_resin_whisperer_toggle_speed_check && !hivelord_resin_whisperer_toggle_speed_check.hidden)
+			handle_xeno_macro_datum(xeno, hivelord_resin_whisperer_toggle_speed_check)
+			return TRUE

@@ -222,7 +222,7 @@
 #define COMSIG_KB_XENO_BURROWER_TOGGLE_MESON_VISION "keybinding_burrower_toggle_meson_vision"
 
 // Xeomorph Hivelord Resin Whisperer
-#define COMSIG_KB_XENO_RESIN_WHISPERER_TOGGLE_SPEED "keybinding_resin_whisperer_toggle_speed"
+#define COMSIG_KB_XENO_RESIN_WHISPERER_TOGGLE_SPEED "keybinding_hivelord_resin_whisperer_toggle_speed"
 
 // Xeomorph Lurker
 #define COMSIG_KB_XENO_LURKER_POUNCE "keybinding_lurker_pounce"

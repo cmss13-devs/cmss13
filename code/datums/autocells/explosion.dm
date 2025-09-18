@@ -212,8 +212,42 @@
 			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
 			if(!direction && (dir in GLOB.diagonals))
 				E.delay = 1
-
 			setup_new_cell(E)
+
+		var/turf/below = SSmapping.get_turf_below(E.in_turf)
+		if(below && istype(E.in_turf,/turf/open_space) && (!below.get_cell(type)))
+			var/datum/automata_cell/C = new type(below)
+			var/datum/automata_cell/explosion/explosion = C
+			new_power -= (power_falloff * dir_falloff)
+			explosion.power = new_power
+			explosion.power_falloff = new_falloff
+			explosion.falloff_shape = falloff_shape
+			explosion.explosion_cause_data = explosion_cause_data
+
+			// Set the direction the explosion is traveling in
+			explosion.direction = dir
+			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
+			if(!direction && (dir in GLOB.diagonals))
+				explosion.delay = 1
+			setup_new_cell(E)
+		var/turf/above = SSmapping.get_turf_above(E.in_turf)
+		if(above && istype(above,/turf/open_space) && (! above.get_cell(type)))
+			var/datum/automata_cell/C = new type(above)
+			var/datum/automata_cell/explosion/explosion = C
+			new_power -= (power_falloff * dir_falloff)
+			explosion.power = new_power
+			explosion.power_falloff = new_falloff
+			explosion.falloff_shape = falloff_shape
+			explosion.explosion_cause_data = explosion_cause_data
+
+			// Set the direction the explosion is traveling in
+			explosion.direction = dir
+			//Diagonal cells have a small delay when branching off the center. This helps the explosion look circular
+			if(!direction && (dir in GLOB.diagonals))
+				explosion.delay = 1
+			setup_new_cell(E)
+
+
 
 	// We've done our duty, now die pls
 	qdel(src)
@@ -263,7 +297,7 @@ as having entered the turf.
 			explosion_cause_data = create_cause_data("Explosion")
 	falloff = max(falloff, power/100)
 
-	if(initial_call) //stuff that is supposed to happen just one, calls epxlosion on lower and hiver level
+	/*if(initial_call) //stuff that is supposed to happen just one, calls epxlosion on lower and hiver level
 		var/turf/above = SSmapping.get_turf_above(epicenter)
 		if(above)
 			if(istype(above, /turf/open_space) || above.explodable(power))
@@ -284,7 +318,7 @@ as having entered the turf.
 			playsound(epicenter, "explosion", 90, 1, max(round(power,1),7))
 		if(power > EXPLOSION_MAX_POWER)
 			log_debug("[explosion_cause_data.cause_name] exploded with force of [power]. Overriding to capacity of [EXPLOSION_MAX_POWER].")
-			power = EXPLOSION_MAX_POWER
+			power = EXPLOSION_MAX_POWER*/
 
 	var/datum/automata_cell/explosion/E = new /datum/automata_cell/explosion(epicenter)
 

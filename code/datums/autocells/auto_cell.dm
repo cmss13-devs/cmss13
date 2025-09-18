@@ -109,8 +109,6 @@
 				if(istype(C, type))
 					neighbors += C
 
-	return neighbors
-
 // Create a new cell in the given direction
 // Obviously override this if you want custom propagation,
 // but I figured this is pretty useful as a basic propagation function

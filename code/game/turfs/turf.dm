@@ -217,6 +217,9 @@
 
 /turf/ex_act(severity)
 	. = ..()
+	var/turf/above = SSmapping.get_turf_above(src)
+	if(above && above.explodable(severity))
+		addtimer(CALLBACK(above,PROC_REF(breach_floor), severity), 1)
 	if(!explodable(severity))
 		return FALSE
 	addtimer(CALLBACK(src,PROC_REF(breach_floor), severity), 1)
@@ -228,8 +231,8 @@
 		return FALSE
 	if((turf_below.turf_flags & TURF_HULL) && turf_below.density) //so we do not make hole into unbreachable wall on bottom layer
 		return FALSE
-	if(!breach_threshold || severity < breach_threshold)
-		return FALSE
+	//if(!breach_threshold || severity < breach_threshold)
+	//	return FALSE
 
 	return TRUE
 

@@ -1,4 +1,0 @@
-author: "HaultyAnonie"
-delete-after: True
-changes:
-  - bugfix: "Fixed clocks outputting \"the\" twice on examine."

@@ -143,3 +143,6 @@
 2025-09-17:
   Joe Lampost:
   - rscadd: Updates the messages sent for the hunting ground and youngblood ERTs
+2025-09-18:
+  HaultyAnonie:
+  - bugfix: Fixed clocks outputting "the" twice on examine.

@@ -17,7 +17,6 @@
 		if(target_squad.pop_lock && target_squad.pop_lock < length(GLOB.clients))
 			target_squad.roles_cap = target_squad.initial_roles_cap
 			extra_slots++
-	to_world(extra_slots + 4)
 	return extra_slots + spawn_positions
 
 /datum/job/marine/leader/whiskey

@@ -34,7 +34,6 @@
 				target_squad.roles_cap[title] = slots
 		else
 			extra_slots += target_squad.roles_cap[title]
-	to_world("ENGI [slots * 2 + extra_slots]")
 	return slots * 2 + extra_slots
 
 /datum/job/marine/engineer/whiskey

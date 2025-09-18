@@ -187,15 +187,6 @@ I hope it's easier to tell what the heck this proc is even doing, unlike previou
 		var/datum/job/J = temp_roles_for_mode[title]
 		J.current_positions = 0
 
-	for(var/datum/squad/target_squad in squads)
-		if(!target_squad)
-			continue
-
-		if(!target_squad.riflemen_limited)
-			continue
-
-		target_squad.roles_cap[JOB_SQUAD_MARINE] = floor(GLOB.players_preassigned * target_squad.riflemen_limited / 100)
-
 	// Set up limits for other roles based on our balancing weight number.
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]

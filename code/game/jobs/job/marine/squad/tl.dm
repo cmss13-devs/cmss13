@@ -11,6 +11,20 @@
 	. = ..()
 	spawning_human.important_radio_channels += JTAC_FREQ
 
+/datum/job/marine/tl/get_total_positions(latejoin=0)
+	var/total_slots = 0
+
+	for(var/datum/squad/target_squad in GLOB.RoleAuthority.squads)
+		if(!target_squad)
+			continue
+
+		if(target_squad.pop_lock < length(GLOB.clients))
+			target_squad.roles_cap = initial(target_squad.roles_cap)
+
+		total_slots += target_squad.roles_cap[title]
+
+	return total_slots
+
 AddTimelock(/datum/job/marine/tl, list(
 	JOB_SQUAD_ROLES = 8 HOURS
 ))

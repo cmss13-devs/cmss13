@@ -72,8 +72,8 @@ export const PriorityInput = (props) => {
                       <TableCell>
                         <Button fluid>{item}</Button>
                       </TableCell>
-                      <TableCell fit>
-                        <Stack horizontal>
+                      <TableCell>
+                        <Stack>
                           <Stack.Item>
                             <Tooltip content="Move up" position="bottom">
                               <Button

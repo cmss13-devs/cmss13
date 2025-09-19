@@ -503,6 +503,80 @@
 	frame_type = /obj/structure/prop/brazier
 	state = STATE_IGNITE
 
+// Ancient Temple Brazier & Torch
+
+/obj/structure/prop/brazier/ancient
+	name = "brazier"
+	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
+	icon = 'icons/obj/structures/props/hunter/ancientbrazier.dmi'
+	icon_state = "brazier"
+	icon_state = "brazier"
+	density = TRUE
+	health = 150
+	light_range = 6
+	light_on = TRUE
+	light_color =  "#edbdef"
+	pixel_y = 5
+
+/obj/structure/prop/brazier/ancient/alt
+	icon_state = "brazier_alt"
+	icon_state = "brazier_alt"
+	pixel_y = 3
+
+/obj/structure/prop/brazier/ancient/frame
+	name = "empty brazier"
+	desc = "An empty brazier."
+	icon_state = "brazier_frame"
+	light_on = FALSE
+	frame_type = /obj/structure/prop/ancient_brazier/frame/full
+	state = STATE_FUEL
+
+/obj/structure/prop/brazier/ancient/alt/frame
+	icon_state = "brazier_alt_frame"
+
+/obj/structure/prop/brazier/ancient/frame/full
+	name = "empty full brazier"
+	desc = "An empty brazier. Yet it's also full. What???  Use something hot to ignite it, like a welding tool."
+	icon_state = "brazier_frame_filled"
+	frame_type = /obj/structure/prop/brazier/ancient
+	state = STATE_IGNITE
+
+/obj/structure/prop/brazier/ancient/alt/frame/full
+	icon_state = "brazier_alt_frame_filled"
+
+/obj/structure/prop/brazier/ancient/tall
+	icon_state = "tall_small_brazier"
+	icon_state = "tall_small_brazier"
+	layer = BIG_XENO_LAYER
+
+/obj/structure/prop/brazier/ancient/tall/frame
+	icon_state = "tall_small_brazier_frame"
+
+/obj/structure/prop/brazier/ancient/tall/frame/full
+	icon_state = "tall_small_brazier_frame_filled"
+
+/obj/structure/prop/brazier/torch/ancient
+	name = "torch"
+	desc = "It's a torch."
+	icon = 'icons/obj/structures/props/hunter/ancientbrazier.dmi'
+	icon_state = "torch"
+	density = FALSE
+	light_range = 5
+	light_color =  "#edbdef"
+
+/obj/structure/prop/brazier/frame/full/torch/ancient
+	name = "unlit torch"
+	desc = "It's a torch, but it's not lit.  Use something hot to ignite it, like a welding tool."
+	icon_state = "torch_frame"
+	frame_type = /obj/structure/prop/brazier/torch/ancient
+
+/obj/item/prop/torch_frame/ancient
+	name = "unlit torch"
+	icon = 'icons/obj/structures/props/hunter/ancientbrazier.dmi'
+	desc = "It's a torch, but it's not lit or placed down. Click on a wall to place it."
+
+////
+
 /obj/structure/prop/brazier/torch
 	name = "torch"
 	desc = "It's a torch."

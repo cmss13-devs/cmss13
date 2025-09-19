@@ -67,6 +67,10 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			deconstruct(FALSE)
 
+/obj/structure/showcase/yautja/ancient
+	icon = 	'icons/obj/structures/machinery/yautja_machines.dmi'
+	icon_state = "ancient_sandstone"
+
 /obj/structure/showcase/yautja
 	name = "alien warrior statue"
 	desc = "A statue of some armored alien humanoid."

@@ -339,6 +339,26 @@
 	icon_state = "uppwall_hull"
 	turf_flags = TURF_HULL
 
+/turf/closed/wall/lv_outpost/white
+	name = "bare outpost walls"
+	icon = 'icons/turf/walls/white_lv_colony_walls.dmi'
+	icon_state = "uppwall_interior"
+	desc = "A thick and chunky metal wall. The surface is barren and imposing."
+	walltype = WALL_STRATA_OUTPOST_BARE
+
+/turf/closed/wall/lv_outpost/white/reinforced
+	name = "ribbed outpost walls"
+	icon_state = "uppwall_reinforced"
+	desc = "A thick and chunky metal wall covered in jagged ribs."
+	walltype = WALL_STRATA_OUTPOST_RIBBED
+	damage_cap = HEALTH_WALL_REINFORCED
+
+/turf/closed/wall/lv_outpost/white/reinforced/hull
+	desc = "A thick and chunky metal wall that is, just by virtue of its placement and imposing presence, entirely indestructible."
+	icon_state = "uppwall_hull"
+	turf_flags = TURF_HULL
+
+
 // Strata Outpost walls
 
 /turf/closed/wall/strata_outpost
@@ -391,7 +411,7 @@
 /turf/closed/wall/mineral
 	name = "mineral wall"
 	desc = "This shouldn't exist"
-	icon = 'icons/turf/walls/stone.dmi'
+	icon = 'icons/turf/walls/mineral_wall.dmi'
 	icon_state = "stone"
 	walltype = WALL_STONE
 	var/mineral
@@ -404,6 +424,16 @@
 	desc = "A wall with gold plating. Swag!"
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "gold0"
+	walltype = WALL_GOLD
+	mineral = "gold"
+	//var/electro = 1
+	//var/shocked = null
+
+/turf/closed/wall/mineral/gold/wy
+	name = "gold wall"
+	desc = "A wall with gold plating. Swag!"
+	icon = 'icons/turf/walls/walls.dmi'
+	icon_state = "gold"
 	walltype = WALL_GOLD
 	mineral = "gold"
 	//var/electro = 1
@@ -430,15 +460,19 @@
 /turf/closed/wall/mineral/sandstone
 	name = "sandstone wall"
 	desc = "A wall with sandstone plating."
-	mineral = "sandstone"
+	icon = 'icons/turf/walls/temple/stone.dmi'
 	color = "#c6a480"
+	icon_state = "stone"
+	mineral = "sandstone"
 	baseturfs = /turf/open/gm/dirt
 
 /turf/closed/wall/mineral/sandstone/runed
 	name = "sandstone temple wall"
 	desc = "A heavy wall of sandstone."
+	icon = 'icons/turf/walls/temple/hunter_temple.dmi'
+	color = null
+	icon_state = "ancient_stone"
 	mineral = "runed sandstone"
-	color = "#b29082"
 	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
 	baseturfs = /turf/open/floor/sandstone/runed
 
@@ -449,9 +483,17 @@
 /turf/closed/wall/mineral/sandstone/runed/decor
 	name = "runed sandstone temple wall"
 	desc = "A heavy wall of sandstone, with elegant carvings and runes inscribed upon its face."
-	icon = 'icons/turf/walls/runedstone.dmi'
-	icon_state = "runedstone"
+	color = null
+	icon_state = "ancient_stone3d"
 	walltype = "runedstone"
+
+/turf/closed/wall/mineral/sandstone/runed/deco_1
+	color = null
+	icon_state = "ancient_stone1d"
+
+/turf/closed/wall/mineral/sandstone/runed/deco_2
+	color = null
+	icon_state = "ancient_stone2d"
 
 /turf/closed/wall/mineral/sandstone/runed/can_be_dissolved()
 	return 2
@@ -558,7 +600,7 @@
 	icon_state = "dome"
 	walltype = WALL_DOME
 
-//Wood wall
+// Wood walls
 
 /turf/closed/wall/wood
 	name = "wood wall"
@@ -600,6 +642,13 @@
 /turf/closed/wall/wood/purple
 	name = "purple wood wall"
 	icon = 'icons/turf/walls/wood_purple.dmi'
+	icon_state = "wood"
+	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
+
+/turf/closed/wall/wood/teal
+	name = "teal wood wall"
+	icon = 'icons/turf/walls/wood_teal.dmi'
 	icon_state = "wood"
 	walltype = WALL_WOOD
 	baseturfs = /turf/open/floor/wood

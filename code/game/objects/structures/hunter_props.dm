@@ -76,6 +76,64 @@
 /obj/effect/hunter/bridge_border/brown/large_stair
 	icon_state = "large_stair"
 
+// Ancient Temple
+
+/obj/effect/hunter/ancient_temple
+	name = null
+	desc = null
+	icon = 'icons/effects/32x32-hunter_effects.dmi'
+	icon_state = "rubble0"
+	density = FALSE
+	anchored = TRUE
+	layer = ABOVE_TURF_LAYER
+	plane = FLOOR_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+/obj/effect/hunter/ancient_temple/rubble/rubble
+	icon_state = "rubble0"
+
+/obj/effect/hunter/ancient_temple/rubble/rubble_1
+	icon_state = "rubble1"
+
+/obj/effect/hunter/ancient_temple/rubble/rubble_2
+	icon_state = "rubble2"
+
+/obj/effect/hunter/ancient_temple/rubble/rubble_3
+	icon_state = "rubble3"
+
+/obj/effect/hunter/ancient_temple/rubble/rubble_4
+	icon_state = "rubble4"
+
+/obj/effect/hunter/ancient_temple/rubble/rubble_5
+	icon_state = "rubble5"
+
+/obj/effect/hunter/ancient_temple/rubble/rubble_6
+	icon_state = "rubble6"
+
+/obj/effect/hunter/ancient_temple/rubble/rubble_7
+	icon_state = "rubble7"
+
+/obj/effect/hunter/ancient_temple/deco_border
+	icon_state = "deco_border1"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border2
+	icon_state = "deco_border2"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border3
+	icon_state = "deco_border3"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border4
+	icon_state = "deco_border4"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border5
+	icon_state = "deco_border5"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border6
+	icon_state = "deco_border6"
+
+/obj/effect/hunter/ancient_temple/deco_border/deco_border7
+	icon_state = "deco_border7"
+
 // Catwalks
 
 /obj/structure/prop/hunter/catwalk
@@ -145,6 +203,10 @@
 
 /obj/effect/hunter/catwalk/hunter_grate
 	icon_state = "hunter_grate_alpha"
+
+/obj/effect/hunter/catwalk/ancient_temple_grille
+	icon = 'icons/turf/floors/temple/ancientfloor.dmi'
+	icon_state = "grille_transparent"
 
 // Misc
 
@@ -345,3 +407,59 @@
 	new_item.pixel_x = (CELLSIZE * (cell_x + 0.5)) - center["x"]
 	new_item.pixel_y = (CELLSIZE * (cell_y + 0.5)) - center["y"]
 	new_item.pixel_z = 0
+
+/// Ancient Temple Props & Effects
+
+/obj/structure/prop/hunter/ancient_temple
+	icon = 'icons/obj/structures/props/hunter/ancientstatue.dmi'
+	icon_state = "ancient_statue"
+
+/obj/structure/prop/hunter/ancient_temple/giant_statue
+	icon = 'icons/obj/structures/props/hunter/ancientstatue.dmi'
+	icon_state = "ancient_statue"
+	name = "giant statue"
+	desc = "A giant statue"
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+	bound_height = 94
+	bound_width = 64
+
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base
+	icon = 'icons/obj/structures/props/hunter/ancientsatuebase.dmi'
+	icon_state = "statue_base_big"
+	name = "giant statue base"
+	desc = "A giant statue base"
+	anchored = TRUE
+	layer = BELOW_MOB_LAYER
+	density = FALSE
+
+/obj/structure/prop/hunter/ancient_temple/giant_statue/base/small
+
+	icon_state = "statue_base_small"
+
+/obj/structure/prop/hunter/ancient_temple/small_statue
+	icon = 'icons/obj/structures/props/hunter/ancientsmallstatue.dmi'
+	icon_state = "statue_ancient"
+	name = "statue"
+	desc = "statue"
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+
+/obj/structure/prop/hunter/ancient_temple/small_statue/grey
+
+	icon_state = "statue_grey"
+	name = "statue"
+	desc = "statue"
+	anchored = TRUE
+	layer = BIG_XENO_LAYER
+	density = TRUE
+
+/obj/structure/prop/hunter/ancient_temple/small_statue/sandstone
+
+	icon_state = "statue_sandstone"
+
+/obj/structure/prop/hunter/ancient_temple/small_statue/base
+
+	icon_state = "small_statue_base"

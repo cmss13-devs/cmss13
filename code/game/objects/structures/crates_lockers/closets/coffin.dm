@@ -31,6 +31,24 @@
 	open_sound = 'sound/effects/stonedoor_openclose.ogg'
 	close_sound = 'sound/effects/stonedoor_openclose.ogg'
 
+/// Ancient Stone Sarcophagus
+
+/obj/structure/closet/coffin/predator/ancient_stone
+	name = "ancient stone sarcophagus"
+	desc = "A colossal stone sarcophagus, its surface scarred with the glyphs of the Hunt. Time and tradition have sealed whatever lies within..."
+	icon = 'icons/obj/structures/props/hunter/sarcophagus.dmi'
+	icon_state = "ancient_coffin"
+	icon_closed = "ancient_coffin"
+	icon_opened = "ancient_coffin_open"
+	anchored = TRUE
+
+	open_sound = 'sound/effects/stonedoor_openclose.ogg'
+	close_sound = 'sound/effects/stonedoor_openclose.ogg'
+
+/obj/structure/closet/coffin/predator/ancient_stone/mummy
+	icon_state = "ancient_coffin"
+	icon_closed = "ancient_coffin"
+	icon_opened = "ancient_coffin_mumified_open"
 
 /obj/structure/closet/coffin/woodencrate //Subtyped here so Req doesn't sell them
 	name = "wooden crate"

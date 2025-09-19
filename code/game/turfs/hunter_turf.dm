@@ -299,3 +299,292 @@
 
 /turf/open/floor/predship/hull/non_weedable_hull/northwest
 	dir = NORTHWEST
+
+// Ancient Temple
+
+/turf/open/floor/ancient_temple
+	name = "floor"
+	icon = 'icons/turf/floors/temple/ancientfloor.dmi'
+	icon_state = "floor1"
+	supports_surgery = TRUE
+
+//
+
+/turf/open/floor/ancient_temple/floor_1
+	icon_state = "floor1"
+
+
+//
+
+/turf/open/floor/ancient_temple/floor_2
+	icon_state = "floor2"
+
+
+//
+
+/turf/open/floor/ancient_temple/floor_3
+	icon_state = "floor3"
+
+/turf/open/floor/ancient_temple/floor_3/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/floor_3/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/floor_3/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/floor_3/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/ancient_temple/floor_3/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/ancient_temple/floor_3/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/ancient_temple/floor_3/southwest
+	dir = SOUTHWEST
+
+//
+
+/turf/open/floor/ancient_temple/floor_4
+	icon_state = "floor4"
+
+/turf/open/floor/ancient_temple/floor_4/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/floor_4/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/floor_4/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/floor_4/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/ancient_temple/floor_4/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/ancient_temple/floor_4/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/ancient_temple/floor_4/southwest
+	dir = SOUTHWEST
+
+//
+
+/turf/open/floor/ancient_temple/floor_5
+	icon_state = "floor5"
+
+
+//
+
+/turf/open/floor/ancient_temple/floor_6
+	icon_state = "floor6"
+
+/turf/open/floor/ancient_temple/floor_6/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/floor_6/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/floor_6/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/floor_6/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/ancient_temple/floor_6/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/ancient_temple/floor_6/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/ancient_temple/floor_6/southwest
+	dir = SOUTHWEST
+
+//
+
+/turf/open/floor/ancient_temple/floor_7
+	icon_state = "floor7"
+
+//
+
+/turf/open/floor/ancient_temple/floor_8
+	icon_state = "floor8"
+
+
+//
+
+/turf/open/floor/ancient_temple/floor_9
+	icon_state = "floor9"
+
+/turf/open/floor/ancient_temple/floor_9/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/floor_9/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/floor_9/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/floor_9/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/ancient_temple/floor_9/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/ancient_temple/floor_9/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/ancient_temple/floor_9/southwest
+	dir = SOUTHWEST
+
+//
+
+/turf/open/floor/ancient_temple/floor_10
+	icon_state = "floor10"
+
+/turf/open/floor/ancient_temple/floor_10/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/floor_10/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/floor_10/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/floor_10/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/ancient_temple/floor_10/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/ancient_temple/floor_10/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/ancient_temple/floor_10/southwest
+	dir = SOUTHWEST
+
+//
+
+/turf/open/floor/ancient_temple/floor_11
+	icon_state = "floor11"
+
+
+//
+
+/turf/open/floor/ancient_temple/floor_12
+	icon_state = "floor12"
+
+
+//
+
+/turf/open/floor/ancient_temple/floor_13
+	icon_state = "floor13"
+
+/turf/open/floor/ancient_temple/floor_13/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/floor_13/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/floor_13/west
+	dir = WEST
+
+//
+
+/turf/open/floor/ancient_temple/floor_14
+	icon_state = "floor14"
+
+
+//
+
+/turf/open/floor/ancient_temple/floor_15
+	icon_state = "floor15"
+
+//
+
+/turf/open/floor/ancient_temple/floor_19
+	icon_state = "floor19"
+
+/turf/open/floor/ancient_temple/floor_19/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/floor_19/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/floor_19/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/floor_19/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/ancient_temple/floor_19/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/ancient_temple/floor_19/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/ancient_temple/floor_19/southwest
+	dir = SOUTHWEST
+
+//
+
+/turf/open/floor/ancient_temple/floor_20
+	icon_state = "floor20"
+
+/turf/open/floor/ancient_temple/floor_20/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/floor_20/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/floor_20/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/floor_20/northeast
+	dir = NORTHEAST
+
+/turf/open/floor/ancient_temple/floor_20/northwest
+	dir = NORTHWEST
+
+/turf/open/floor/ancient_temple/floor_20/southeast
+	dir = SOUTHEAST
+
+/turf/open/floor/ancient_temple/floor_20/southwest
+	dir = SOUTHWEST
+
+// MISC
+
+/turf/open/floor/ancient_temple/floor_grille
+	icon_state = "floor_grille_end"
+
+/turf/open/floor/ancient_temple/floor_grille/full_dark
+	icon_state = "floor_grille_full_dark"
+
+/turf/open/floor/ancient_temple/floor_grille/water
+	icon_state = "water_grille"
+
+//
+
+/turf/open/floor/ancient_temple/base
+	icon_state = "floor_statue_base"
+
+/turf/open/floor/ancient_temple/base/alt
+	icon_state = "floor_statue_base_alt"
+
+//
+
+/turf/open/floor/ancient_temple/ruined
+	icon_state = "floor_breach"
+
+/turf/open/floor/ancient_temple/ruined/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/ruined/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/ruined/west
+	dir = WEST

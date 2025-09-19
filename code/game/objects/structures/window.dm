@@ -809,6 +809,16 @@
 	basestate = "wood_purple_rwindow"
 	window_frame = /obj/structure/window_frame/wood/purple
 
+/obj/structure/window/framed/wood/teal
+	icon_state = "wood_teal_window0"
+	basestate = "wood_teal_window"
+	window_frame = /obj/structure/window_frame/wood/teal
+
+/obj/structure/window/framed/wood/reinforced/teal
+	icon_state = "wood_teal_rwindow0"
+	basestate = "wood_teal_rwindow"
+	window_frame = /obj/structure/window_frame/wood/teal
+
 //Strata windows
 
 /obj/structure/window/framed/strata
@@ -867,6 +877,33 @@
 	unacidable = TRUE
 	health = 1000000
 	window_frame = /obj/structure/window_frame/lv_colony/hull
+
+/obj/structure/window/framed/lv_colony/white
+	name = "window"
+	icon = 'icons/turf/walls/white_lv_colony_windows.dmi'
+	icon_state = "uppwall_window0"
+	basestate = "uppwall_window"
+	desc = "A glass window inside a wall frame."
+	health = 40
+	window_frame = /obj/structure/window_frame/lv_colony
+
+/obj/structure/window/framed/lv_colony/white/reinforced
+	name = "reinforced window"
+	desc = "A glass window. Light refracts incorrectly when looking through. It looks rather strong. Might take a few good hits to shatter it."
+	health = 100
+	reinf = 1
+	window_frame = /obj/structure/window_frame/lv_colony/white/reinforced
+
+/obj/structure/window/framed/lv_colony/white/hull
+	name = "hull window"
+	desc = "A glass window with a special rod matrix inside a wall frame. This one was made out of exotic materials to prevent hull breaches. No way to get through here."
+	//	icon_state = "upp_rwindow0"
+	not_damageable = TRUE
+	not_deconstructable = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	health = 1000000
+	window_frame = /obj/structure/window_frame/lv_colony/white/hull
 
 //Kutjevo Windows
 

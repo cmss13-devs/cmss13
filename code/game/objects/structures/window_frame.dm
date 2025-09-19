@@ -229,6 +229,10 @@
 	icon_state = "wood_purple_window0_frame"
 	basestate = "wood_window"
 
+/obj/structure/window_frame/wood/teal
+	icon_state = "wood_teal_window0_frame"
+	basestate = "wood_window"
+
 /obj/structure/window_frame/prison
 	icon_state = "prison_rwindow0_frame"
 	basestate = "prison_rwindow"
@@ -285,6 +289,18 @@
 	reinforced = TRUE
 
 /obj/structure/window_frame/lv_colony/hull
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/window_frame/lv_colony/white
+	icon = 'icons/turf/walls/white_lv_colony_windows.dmi'
+	icon_state = "uppwall_window0_frame"
+	basestate = "uppwall_window"
+
+/obj/structure/window_frame/lv_colony/white/reinforced
+	reinforced = TRUE
+
+/obj/structure/window_frame/lv_colony/white/hull
 	unslashable = TRUE
 	unacidable = TRUE
 

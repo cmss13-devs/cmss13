@@ -32,6 +32,8 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 	new/datum/stack_recipe_list("temple walls",list( \
 		new/datum/stack_recipe("temple wall", /turf/closed/wall/mineral/sandstone/runed, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 		new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/deco_1, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+		new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/deco_2, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 		new/datum/stack_recipe("dark engraved wall", /turf/closed/wall/cult, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 		), 5), \
 	new/datum/stack_recipe_list("temple floors",list( \
@@ -45,6 +47,7 @@ GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 	new/datum/stack_recipe("wall torch frame", /obj/item/prop/torch_frame, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("alien chair", /obj/structure/bed/chair/comfy/yautja, 2, time = 2 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("alien bed", /obj/structure/bed/alien/yautja, 3, time = 3 SECONDS, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("ancient statue", /obj/structure/showcase/yautja/ancient, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("tan statue", /obj/structure/showcase/yautja, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("grey statue", /obj/structure/showcase/yautja/alt, 10, time = 30, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	))

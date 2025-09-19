@@ -292,6 +292,7 @@
 /obj/structure/morgue/sarcophagus
 	name = "sarcophagus"
 	desc = "Used to store fallen warriors."
+	icon = 'icons/obj/structures/props/hunter/sarcophagus.dmi'
 	icon_state = "sarcophagus1"
 	morgue_type = "sarcophagus"
 	tray_path = /obj/structure/morgue_tray/sarcophagus
@@ -303,6 +304,7 @@
  */
 
 /obj/structure/morgue_tray/sarcophagus
+	icon = 'icons/obj/structures/props/hunter/sarcophagus.dmi'
 	name = "sarcophagus tray"
 	desc = "Apply corpse before closing."
 	icon_state = "sarcomat"

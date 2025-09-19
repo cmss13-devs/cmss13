@@ -952,3 +952,22 @@
 		if(hivelord_resin_whisperer_toggle_speed_check && !hivelord_resin_whisperer_toggle_speed_check.hidden)
 			handle_xeno_macro_datum(xeno, hivelord_resin_whisperer_toggle_speed_check)
 			return TRUE
+// Lurker
+
+/datum/keybinding/xenomorph/lurker_invisibility
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "lurker_invisibility"
+	full_name = "Lurker: Invisibility"
+	keybind_signal = COMSIG_KB_XENO_LURKER_INVISIBILITY
+
+/datum/keybinding/xenomorph/lurker_invisibility/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/lurker_invisibility/lurker_invisibility_check = get_action(xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
+	if(lurker_invisibility_check)
+		if(lurker_invisibility_check && !lurker_invisibility_check.hidden)
+			handle_xeno_macro_datum(xeno, lurker_invisibility_check)
+			return TRUE

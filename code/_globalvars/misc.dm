@@ -118,9 +118,16 @@ GLOBAL_DATUM_INIT(item_to_box_mapping, /datum/item_to_box_mapping, init_item_to_
 /// Offset for the Operation time
 GLOBAL_VAR_INIT(time_offset, setup_offset())
 
+/// Planetside open space above indicator
+GLOBAL_DATUM_INIT(look_up_effect, /image, setup_look_up_effect())
+
 /// Sets the offset 2 lines above.
 /proc/setup_offset()
 	return rand(10 MINUTES, 24 HOURS)
+
+/proc/setup_look_up_effect()
+	var/image/look_up =  image('icons/effects/weather.dmi', null, "bigred_dust", layer = WEATHER_LAYER)
+	return look_up
 
 /// The last count of possible candidates in the xeno larva queue (updated via get_alien_candidates)
 GLOBAL_VAR(xeno_queue_candidate_count)

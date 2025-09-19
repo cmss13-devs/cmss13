@@ -74,7 +74,7 @@
 
 /obj/item/paper/update_icon()
 	switch(icon_state)
-		if("paper_wy_words", "paper_uscm_words", "paper_uscm_words_dark", "paper_flag_words", "fortune")
+		if("paper_wy_words", "paper_uscm_words", "paper_flag_words", "fortune")
 			return
 
 	if(!info)
@@ -1206,4 +1206,9 @@
 /obj/item/paper/captain_brief
 	name = "Classified Operations Briefing"
 	desc = "A classified document from USCM high-command about the colony the ship is responding to."
-	icon_state = "paper_uscm_words_dark"
+	icon_state = "paper_uscm_words"
+
+	// important documents should not be turned into hats
+	flags_equip_slot = FALSE
+	flags_armor_protection = FALSE
+

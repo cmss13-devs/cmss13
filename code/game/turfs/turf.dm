@@ -91,6 +91,12 @@
 
 	if(above)
 		above.multiz_new(dir=DOWN)
+		if(SSmapping.level_has_any_trait(z,list(ZTRAIT_GROUND)))
+			var/obj/effect/weather_vfx_holder/i_need_to_move_this = new /obj/effect/weather_vfx_holder
+			i_need_to_move_this.icon_state = "bigred_dust"
+			overlays += i_need_to_move_this
+
+
 
 	if(below)
 		below.multiz_new(dir=UP)

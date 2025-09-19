@@ -558,8 +558,8 @@
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(10 * delta_time))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
-	M.apply_effect(20, PARALYZE)
-	M.apply_effect(20, STUN)
+	M.KnockDown(20)
+	M.Stun(20)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.bodytemperature = max(BODYTEMP_CRYO_LIQUID_THRESHOLD, M.bodytemperature - 2.5 * potency * delta_time)
@@ -1104,11 +1104,11 @@
 
 /datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.make_jittery(5) //Overdose causes a spasm
-	M.apply_effect(20, PARALYZE)
+	M.KnockDown(20)
+	M.Stun(20)
 
 /datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness = max(M.drowsyness, 20)
-	if(!ishuman(M)) //Critical overdose causes total blackout and heart damage. Too much stimulant
+	if(!ishuman(M)) //Critical overdose causes heart damage. Too much stimulant
 		return
 	M.apply_internal_damage(0.25 * delta_time, "heart")
 	if(prob(5 * delta_time))

@@ -1168,6 +1168,11 @@ GLOBAL_LIST_EMPTY(roles_with_gear)
 	path = /obj/item/clothing/gloves/marine/brown
 	fluff_cost = 2
 
+/datum/gear/misc/fingerless_gloves
+	display_name = "fingerless combat gloves"
+	path = /obj/item/clothing/gloves/marine/fingerless
+	fluff_cost = 2
+
 /datum/gear/misc/grey_boots
 	display_name = "grey combat boots"
 	path = /obj/item/clothing/shoes/marine/grey

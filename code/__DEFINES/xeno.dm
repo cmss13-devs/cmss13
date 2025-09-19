@@ -59,6 +59,8 @@
 #define XENO_CORROSIVE_ACID 6 //Macro for covering things in acid, universal ability
 #define XENO_SCREECH 7 //Macro for queen screech
 #define XENO_TAIL_STAB 8 //macro for tail stabs
+#define XENO_BECOME_SEETHROUGH 9 // macro to become seethrough, only used by queen as of implementation
+
 
 #define NO_ACTION_CHARGES -1 // This ability does not have a limit to how many times it can be used
 

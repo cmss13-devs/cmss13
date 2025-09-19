@@ -8,16 +8,18 @@ if %errorlevel%==0 (
 )
 
 call %powershellCmd% -NoLogo -ExecutionPolicy Bypass -File "%~dp0\javascript_.ps1" Download-Bun
-for /f "tokens=* USEBACKQ" %%s in (`
-    call %powershellCmd% -NoLogo -ExecutionPolicy Bypass -File "%~dp0\javascript_.ps1" Get-Path
-`) do (
-    set "PATH=%%s;%PATH%"
-)
-where bun.exe >nul 2>nul
-if %errorlevel% == 0 (
+
+REM Get the bun path using a temporary file to avoid console wrapping issues
+set "TEMP_FILE=%TEMP%\bunpath_%RANDOM%.txt"
+call %powershellCmd% -NoLogo -ExecutionPolicy Bypass -Command "& '%~dp0\javascript_.ps1' Get-Path | Out-File -FilePath '%TEMP_FILE%' -Encoding ASCII -NoNewline"
+set /p BUN_PATH=<"%TEMP_FILE%"
+del "%TEMP_FILE%" 2>nul
+
+set "PATH=%BUN_PATH%;%PATH%"
+if exist "%BUN_PATH%\bun.exe" (
     echo | set /p printed_str="Using vendored Bun "
-    call bun.exe --version
-    call bun.exe %*
+    call "%BUN_PATH%\bun.exe" --version
+    call "%BUN_PATH%\bun.exe" %*
     goto exit_with_last_error_level
 )
 echo "javascript.bat: Failed to bootstrap Bun!"

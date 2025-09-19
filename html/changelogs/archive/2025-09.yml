@@ -146,3 +146,7 @@
 2025-09-18:
   HaultyAnonie:
   - bugfix: Fixed clocks outputting "the" twice on examine.
+2025-09-19:
+  cuberound:
+  - bugfix: extra (shotgun) projectiles are fired on the same z level as the main
+      shot

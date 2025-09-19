@@ -1,4 +1,0 @@
-author: "cuberound"
-delete-after: True
-changes:
-  - bugfix: "extra (shotgun) projectiles are fired on the same z level as the main shot"

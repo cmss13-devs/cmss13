@@ -961,11 +961,71 @@
 	specialty = "sof uniform"
 	flags_item = NO_GAMEMODE_SKIN
 
+//=====================//Global Response Staff\\============================\\
+
 /obj/item/clothing/under/marine/veteran/marsoc/grs
 	name = "GRS Uniform"
 	desc = "A black uniform for GRS personnel. Designed to be comfortable and help blend into dark enviorments."
 	icon_state = "cia_jumpsuit"
 	worn_state = "cia_jumpsuit"
+
+	var/hidden_item_type = /obj/item/attachable/bayonet/tanto/grs
+	actions_types = list(/datum/action/item_action/specialist/open_hidden_pocket)
+
+	var/obj/item/storage/internal/hidden_pocket
+
+/obj/item/clothing/under/marine/veteran/marsoc/grs/Initialize()
+	. = ..()
+	hidden_pocket = new(src)
+	hidden_pocket.storage_slots = 1
+
+	var/obj/item/hidden_item = new hidden_item_type(src)
+	hidden_pocket.handle_item_insertion(hidden_item)
+
+/obj/item/clothing/under/marine/veteran/marsoc/grs/get_examine_text(mob/user)
+	. = ..()
+	if(skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		. += SPAN_ORANGE("It has a hidden pocket within.")
+
+/obj/item/clothing/under/marine/veteran/marsoc/grs/verb/hidden_pocket()
+	set name = "Open Hidden Pocket"
+	set category = "Object"
+	set src in usr
+
+	var/mob/living/carbon/user = usr
+	if(user.is_mob_incapacitated())
+		return FALSE
+
+	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
+		to_chat(user, SPAN_NOTICE("You frantically pat yourself down. Are you feeling paranoid?"))
+		return FALSE
+
+	hidden_pocket.open(user)
+	return TRUE
+
+/obj/item/clothing/under/marine/veteran/marsoc/grs/hidden_holdout
+	hidden_item_type = /obj/item/weapon/gun/pistol/action
+
+/datum/action/item_action/specialist/open_hidden_pocket
+	ability_primacy = SPEC_PRIMARY_ACTION_2
+
+/datum/action/item_action/specialist/open_hidden_pocket/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Open Hidden Pocket"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/mob/hud/actions.dmi', button, "antag_objective_receive")//placeholder icon
+	button.overlays += IMG
+
+/datum/action/item_action/specialist/open_hidden_pocket/can_use_action()
+	var/mob/living/carbon/human/human_owner = owner
+	if(istype(human_owner) && !human_owner.is_mob_incapacitated() && human_owner.body_position == STANDING_UP && holder_item == human_owner.w_uniform)
+		return TRUE
+
+/datum/action/item_action/specialist/open_hidden_pocket/action_activate()
+	. = ..()
+	var/obj/item/clothing/under/marine/veteran/marsoc/grs/uniform = holder_item
+	uniform.hidden_pocket()
 
 //=========================//PMC\\================================\\
 

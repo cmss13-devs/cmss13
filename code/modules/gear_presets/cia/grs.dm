@@ -244,6 +244,7 @@
 	minimap_icon = "spec_sniper"
 	role_comm_title = "AdvMrk"
 	helmet_type = /obj/item/clothing/head/helmet/marine/sof/grs/sniper
+	uniform_type = /obj/item/clothing/under/marine/veteran/marsoc/grs/hidden_holdout
 	suit_type = /obj/item/clothing/suit/storage/marine/ghillie/grs
 	back_type = /obj/item/storage/backpack/lightpack/black/grs_sniper
 
@@ -333,7 +334,7 @@
 	minimap_icon = "engi"
 	role_comm_title = "TechOpr"
 	back_type = /obj/item/storage/backpack/marine/engineerpack/ert/black
-	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/hidden_holdout
+	uniform_type = /obj/item/clothing/under/marine/veteran/marsoc/grs/hidden_holdout
 
 /datum/equipment_preset/cia_global_response/engineer/deathsquad
 	strength_type = STRENGTH_DEATH
@@ -410,7 +411,7 @@
 	minimap_icon = "medic"
 	role_comm_title = "MedOpr"
 	back_type = /obj/item/storage/backpack/lightpack/black/medic
-	suit_type = /obj/item/clothing/suit/storage/marine/sof/grs/hidden_holdout
+	uniform_type = /obj/item/clothing/under/marine/veteran/marsoc/grs/hidden_holdout
 
 /datum/equipment_preset/cia_global_response/medic/deathsquad
 	strength_type = STRENGTH_DEATH

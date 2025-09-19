@@ -34775,19 +34775,19 @@
 /turf/open/floor/plating,
 /area/almayer/hallways/hangar)
 "bFS" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/sp)
 "bFT" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/paft)
 "bFU" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/pb)
 "bFV" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/aft)
 "bFW" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/shipboard/navigation)
 "bFX" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -34796,10 +34796,10 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/lower/port_aft_hallway)
 "bFY" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/req)
 "bFZ" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/briefing)
 "bGa" = (
 /obj/effect/decal/warning_stripes{
@@ -34809,7 +34809,7 @@
 /turf/open/floor/almayer/red/northwest,
 /area/almayer/hallways/upper/port)
 "bGb" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/saft)
 "bGc" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
@@ -34818,14 +34818,17 @@
 /turf/open/floor/almayer/red/west,
 /area/almayer/command/lifeboat)
 "bGd" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/sb)
 "bGe" = (
 /turf/closed/wall/almayer/outer/internal,
 /area/almayer/stair_clone/upper/starboard_fore)
 "bGf" = (
-/turf/closed/wall/almayer/outer/internal,
+/turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/sf)
+"bGg" = (
+/turf/closed/wall/almayer/reinforced/temphull,
+/area/almayer/command/airoom)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer/cargo,
@@ -175435,9 +175438,9 @@ yaQ
 clw
 daz
 daz
-mOi
-mOi
-mOi
+bGg
+bGg
+bGg
 bFY
 bFY
 bFY
@@ -175538,9 +175541,9 @@ qQS
 qQS
 daz
 daz
-mOi
-mOi
-mOi
+bGg
+bGg
+bGg
 bFY
 bFY
 bFY
@@ -175641,9 +175644,9 @@ daz
 daz
 daz
 daz
-mOi
-mOi
-mOi
+bGg
+bGg
+bGg
 bFY
 bFY
 bFY

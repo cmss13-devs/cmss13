@@ -76,7 +76,7 @@
 	job_title = JOB_CIA_UACQS_DG
 	assignment = JOB_CIA_UACQS_DG
 	paygrades = list(PAY_SHORT_CIA_DG = JOB_PLAYTIME_TIER_0)
-	minimap_icon = "uacqs_dg"
+	minimap_icon = "uacqs_c"
 	idtype = /obj/item/card/id/adaptive/gold
 	skills = /datum/skills/cia/field_agent/senior
 	headset_type = /obj/item/device/radio/headset/almayer/uacqs_com

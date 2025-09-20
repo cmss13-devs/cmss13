@@ -789,6 +789,11 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/plating,
 /area/almayer/medical/lockerroom)
 "aca" = (
@@ -1228,6 +1233,11 @@
 	id = "MedicalDistriShu";
 	name = "\improper Medical Equipment Distribution Shutters";
 	dir = 4
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/lockerroom)
@@ -3203,6 +3213,11 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/plating,
 /area/almayer/medical/chemistry)
 "ahm" = (
@@ -5728,6 +5743,10 @@
 	req_one_access_txt = "3;22;2;19"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/flight)
 "anV" = (
@@ -29466,6 +29485,11 @@
 	req_access = null;
 	req_one_access_txt = "3;19"
 	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
+	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
 "btO" = (
@@ -42327,6 +42351,10 @@
 	name = "\improper Dropship Control Bubble";
 	req_access = null;
 	req_one_access_txt = "3;22;2;19"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/flight)
@@ -65104,6 +65132,11 @@
 	name = "\improper Astronavigational Deck";
 	req_access = null;
 	req_one_access_txt = "3;19"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "Hangar Lockdown";
+	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)

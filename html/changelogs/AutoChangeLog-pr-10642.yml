@@ -1,0 +1,4 @@
+author: "Nanu"
+delete-after: True
+changes:
+  - maptweak: "Almayer internals has more temphull walls now to hinder the evil dwarfs from turning it into swiss cheese before hijack occurs."

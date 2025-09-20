@@ -65995,14 +65995,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower)
 "nBa" = (
+/obj/structure/machinery/light,
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = s;
+	req_one_access_txt = "15;18;21";
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
-/obj/structure/machinery/light,
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
 "nBi" = (

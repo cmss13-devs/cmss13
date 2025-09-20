@@ -221,6 +221,9 @@
 	///Flavor desc found on the squad specific beret
 	var/beret_flavortext
 
+	///The squad's role from Assault / Support / Security
+	var/squad_role = SQUAD_ROLE_ASSAULT
+
 /datum/squad/marine
 	name = "Root"
 	usable = TRUE
@@ -276,6 +279,8 @@ SQUAD_DROPPAD(alpha, Alpha)
 	)
 	dynamic_scaling = FALSE
 
+	squad_role = SQUAD_ROLE_SECURITY
+
 
 SQUAD_LANDMARKS(bravo, Bravo)
 SQUAD_CRYOSTORAGE(bravo, Bravo)
@@ -304,6 +309,8 @@ SQUAD_DROPPAD(bravo, Bravo)
 		JOB_SQUAD_LEADER = 1,
 	)
 	dynamic_scaling = FALSE
+	pop_lock = 120
+	squad_role = SQUAD_ROLE_SUPPORT
 
 SQUAD_LANDMARKS(charlie, Charlie)
 SQUAD_CRYOSTORAGE(charlie, Charlie)
@@ -375,8 +382,8 @@ SQUAD_DROPPAD(echo, Echo)
 		JOB_SQUAD_TEAM_LEADER = 1,
 		JOB_SQUAD_LEADER = 1,
 	)
+	squad_role = SQUAD_ROLE_SUPPORT
 	dynamic_scaling = FALSE
-	pop_lock = 80
 
 SQUAD_LANDMARKS(kilo, Kilo)
 SQUAD_CRYOSTORAGE(kilo, Kilo)
@@ -404,7 +411,8 @@ SQUAD_DROPPAD(kilo, Kilo)
 		JOB_SQUAD_LEADER = 1,
 	)
 	dynamic_scaling = FALSE
-	pop_lock = 120
+	pop_lock = 80
+	squad_role = SQUAD_ROLE_SUPPORT
 
 SQUAD_LANDMARKS(oscar, Oscar)
 SQUAD_CRYOSTORAGE(oscar, Oscar)

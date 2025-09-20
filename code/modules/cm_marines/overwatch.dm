@@ -56,6 +56,8 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	var/show_command_squad = FALSE
 	var/tgui_interaction_distance = 1
 
+	var/can_override_overwatch_officer = FALSE
+
 	/// requesting a distress beacon
 	COOLDOWN_DECLARE(cooldown_request)
 	/// messaging HC (admins)
@@ -76,6 +78,12 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 	no_skill_req = TRUE
 	show_command_squad = TRUE
 	tgui_interaction_distance = 3
+	can_override_overwatch_officer = TRUE
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/support
+	name = "Support Overwatch Console"
+	no_skill_req = FALSE
+	req_access = null
 
 /obj/structure/machinery/computer/overwatch/Initialize()
 	. = ..()
@@ -534,7 +542,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 /obj/structure/machinery/computer/overwatch/groundside_operations/ui_data(mob/user)
 	var/list/data = list()
-
+	data["executive"] = TRUE
 	data["theme"] = ui_theme
 
 	if(!current_squad)
@@ -548,6 +556,57 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 
 	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
 		if(index_squad.active && index_squad.faction == faction && index_squad.name != "Root")
+			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
+			data["squad_data"] += squad_data
+
+	data["z_hidden"] = z_hidden
+
+	data["can_launch_obs"] = current_orbital_cannon
+	if(current_orbital_cannon)
+		data["ob_cooldown"] = COOLDOWN_TIMELEFT(current_orbital_cannon, ob_firing_cooldown)
+		data["ob_loaded"] = current_orbital_cannon.chambered_tray
+		data["ob_safety"] = ob_cannon_safety
+		if(current_orbital_cannon.tray.warhead)
+			data["ob_warhead"] = current_orbital_cannon.tray.warhead.warhead_kind
+	if(GLOB.almayer_aa_cannon.protecting_section)
+		data["aa_targeting"] = GLOB.almayer_aa_cannon.protecting_section
+
+	data["marines"] = list()
+	data = count_marines(data, current_squad)
+
+	if(operator)
+		data["operator"] = operator.name
+
+	if(SSticker.mode.active_lz)
+		data["primary_lz"] = SSticker.mode.active_lz
+	data["alert_level"] = GLOB.security_level
+	data["evac_status"] = SShijack.evac_status
+	data["world_time"] = world.time
+
+	data["time_request"] = cooldown_request
+
+	var/datum/squad/marine/echo/echo_squad = locate() in GLOB.RoleAuthority.squads
+	data["echo_squad_active"] = echo_squad.active
+
+	return data
+
+/obj/structure/machinery/computer/overwatch/groundside_operations/support/ui_data(mob/user)
+	var/list/data = list()
+
+	data["theme"] = ui_theme
+	data["executive"] = FALSE
+
+	if(!current_squad)
+		data["squad_list"] = list()
+		for(var/datum/squad/current_squad in GLOB.RoleAuthority.squads)
+			if(current_squad.active && current_squad.squad_role == SQUAD_ROLE_SUPPORT && !current_squad.overwatch_officer && current_squad.faction == faction && current_squad.name != "Root")
+				data["squad_list"] += current_squad.name
+		return data
+
+	data["current_squad"] = current_squad.name
+
+	for(var/datum/squad/index_squad in GLOB.RoleAuthority.squads)
+		if(index_squad.active && index_squad.squad_role == SQUAD_ROLE_SUPPORT && index_squad.faction == faction && index_squad.name != "Root")
 			var/list/squad_data = list(list("name" = index_squad.name, "primary_objective" = index_squad.primary_objective, "secondary_objective" = index_squad.secondary_objective, "overwatch_officer" = index_squad.overwatch_officer, "ref" = REF(index_squad)))
 			data["squad_data"] += squad_data
 
@@ -614,7 +673,7 @@ GLOBAL_LIST_EMPTY_TYPED(active_overwatch_consoles, /obj/structure/machinery/comp
 				return
 			var/datum/squad/selected_squad
 			for(var/datum/squad/searching_squad in GLOB.RoleAuthority.squads)
-				if(searching_squad.active && !searching_squad.overwatch_officer && searching_squad.faction == faction && searching_squad.name == params["squad"])
+				if(searching_squad.active && (!searching_squad.overwatch_officer || can_override_overwatch_officer) && searching_squad.faction == faction && searching_squad.name == params["squad"])
 					selected_squad = searching_squad
 					break
 

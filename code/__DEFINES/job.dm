@@ -17,6 +17,11 @@
 #define SQUAD_FORECON "FORECON"
 #define SQUAD_SOLAR "Solar Devils"
 
+// Squad Roles
+#define SQUAD_ROLE_ASSAULT "Assault"
+#define SQUAD_ROLE_SUPPORT "Support"
+#define SQUAD_ROLE_SECURITY "Security"
+
 // Job name defines
 #define JOB_SQUAD_MARINE "Rifleman"
 #define JOB_SQUAD_LEADER "Squad Leader"

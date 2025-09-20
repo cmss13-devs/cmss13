@@ -277,7 +277,6 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/ui_state(mob/user)
 	return GLOB.not_incapacitated_and_adjacent_strict_state
 
-
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/populate_product_list(scale)
 	listed_products = list(
 		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
@@ -295,6 +294,69 @@
 
 		list("SPECIAL AMMUNITION", -1, null, null),
 		list("M56 Smartgun Drum", 1, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
+		list("M44 Heavy Speed Loader (.44)", floor(scale * 2), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
+		list("M44 Marksman Speed Loader (.44)", floor(scale * 2), /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
+		list("M4A3 AP Magazine", floor(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
+
+		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
+		list("VP78 Magazine", floor(scale * 5), /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
+		list("SU-6 Smartpistol Magazine (.45)", floor(scale * 5), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
+		list("M240 Incinerator Tank", floor(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
+		list("M56D Drum Magazine", floor(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
+		list("M2C Box Magazine", floor(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
+		list("HIRR Baton Slugs", floor(scale * 6), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-S Star Shell", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-H Hornet Shell", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
+		)
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1/populate_product_list(scale)
+	listed_products = list(
+		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
+		list("M4RA AP Magazine (10x24mm)", 3.5, /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
+		list("M39 AP Magazine (10x20mm)", floor(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
+		list("M41A AP Magazine (10x24mm)", floor(scale * 3), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
+
+		list("EXTENDED AMMUNITION", -1, null, null),
+		list("M4RA Extended Magazine (10x24mm)", 1.8, /obj/item/ammo_magazine/rifle/m4ra/extended, null, VENDOR_ITEM_REGULAR),
+		list("M39 Extended Magazine (10x20mm)", 1.8, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
+		list("M41A Extended Magazine (10x24mm)", 1.9, /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
+		list("M10 HV extended magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
+		list("M10 HV drum magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
+
+
+		list("SPECIAL AMMUNITION", -1, null, null),
+		list("M56 Smartgun Drum", 2, /obj/item/ammo_magazine/smartgun, VENDOR_ITEM_REGULAR),
+		list("M44 Heavy Speed Loader (.44)", floor(scale * 2), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
+		list("M44 Marksman Speed Loader (.44)", floor(scale * 2), /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
+		list("M4A3 AP Magazine", floor(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),
+
+		list("RESTRICTED FIREARM AMMUNITION", -1, null, null),
+		list("VP78 Magazine", floor(scale * 5), /obj/item/ammo_magazine/pistol/vp78, VENDOR_ITEM_REGULAR),
+		list("SU-6 Smartpistol Magazine (.45)", floor(scale * 5), /obj/item/ammo_magazine/pistol/smart, VENDOR_ITEM_REGULAR),
+		list("M240 Incinerator Tank", floor(scale * 3), /obj/item/ammo_magazine/flamer_tank, VENDOR_ITEM_REGULAR),
+		list("M56D Drum Magazine", floor(scale * 2), /obj/item/ammo_magazine/m56d, VENDOR_ITEM_REGULAR),
+		list("M2C Box Magazine", floor(scale * 2), /obj/item/ammo_magazine/m2c, VENDOR_ITEM_REGULAR),
+		list("HIRR Baton Slugs", floor(scale * 6), /obj/item/explosive/grenade/slug/baton, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-S Star Shell", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/starshell, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-H Hornet Shell", floor(scale * 4), /obj/item/explosive/grenade/high_explosive/airburst/hornet_shell, VENDOR_ITEM_REGULAR),
+		)
+
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon2/populate_product_list(scale)
+	listed_products = list(
+		list("ARMOR-PIERCING AMMUNITION", -1, null, null),
+		list("M4RA AP Magazine (10x24mm)", 3.5, /obj/item/ammo_magazine/rifle/m4ra/ap, VENDOR_ITEM_REGULAR),
+		list("M39 AP Magazine (10x20mm)", floor(scale * 3), /obj/item/ammo_magazine/smg/m39/ap, VENDOR_ITEM_REGULAR),
+		list("M41A AP Magazine (10x24mm)", floor(scale * 3), /obj/item/ammo_magazine/rifle/ap, VENDOR_ITEM_REGULAR),
+
+		list("EXTENDED AMMUNITION", -1, null, null),
+		list("M4RA Extended Magazine (10x24mm)", 1.8, /obj/item/ammo_magazine/rifle/m4ra/extended, null, VENDOR_ITEM_REGULAR),
+		list("M39 Extended Magazine (10x20mm)", 1.8, /obj/item/ammo_magazine/smg/m39/extended, VENDOR_ITEM_REGULAR),
+		list("M41A Extended Magazine (10x24mm)", 1.9, /obj/item/ammo_magazine/rifle/extended, VENDOR_ITEM_REGULAR),
+		list("M10 HV extended magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/extended , VENDOR_ITEM_REGULAR),
+		list("M10 HV drum magazine (10x20mm)", floor(scale * 5), /obj/item/ammo_magazine/pistol/m10/drum , VENDOR_ITEM_REGULAR),
+
+
+		list("SPECIAL AMMUNITION", -1, null, null),
 		list("M44 Heavy Speed Loader (.44)", floor(scale * 2), /obj/item/ammo_magazine/revolver/heavy, VENDOR_ITEM_REGULAR),
 		list("M44 Marksman Speed Loader (.44)", floor(scale * 2), /obj/item/ammo_magazine/revolver/marksman, VENDOR_ITEM_REGULAR),
 		list("M4A3 AP Magazine", floor(scale * 2), /obj/item/ammo_magazine/pistol/ap, VENDOR_ITEM_REGULAR),

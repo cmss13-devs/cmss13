@@ -971,3 +971,113 @@
 		if(lurker_invisibility_check && !lurker_invisibility_check.hidden)
 			handle_xeno_macro_datum(xeno, lurker_invisibility_check)
 			return TRUE
+
+/datum/keybinding/xenomorph/lurker_pounce
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "lurker_pounce"
+	full_name = "Lurker: Pounce"
+	keybind_signal = COMSIG_KB_XENO_LURKER_POUNCE
+
+/datum/keybinding/xenomorph/lurker_pounce/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pounce/lurker/lurker_pounce_check = get_action(xeno, /datum/action/xeno_action/activable/pounce/lurker)
+	if(lurker_pounce_check)
+		if(lurker_pounce_check && !lurker_pounce_check.hidden)
+			handle_xeno_macro_datum(xeno, lurker_pounce_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/lurker_assasinate
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "lurker_assasinate"
+	full_name = "Lurker: Assasinate"
+	keybind_signal = COMSIG_KB_XENO_LURKER_ASSASINATE
+
+/datum/keybinding/xenomorph/lurker_assasinate/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/lurker_assassinate/lurker_assasinate_check = get_action(xeno, /datum/action/xeno_action/onclick/lurker_assassinate)
+	if(lurker_assasinate_check)
+		if(lurker_assasinate_check && !lurker_assasinate_check.hidden)
+			handle_xeno_macro_datum(xeno, lurker_assasinate_check)
+			return TRUE
+// Lurker Vampire
+
+/datum/keybinding/xenomorph/vampire_rush
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "vampire_rush"
+	full_name = "Vampire: Rush"
+	keybind_signal = COMSIG_KB_XENO_VAMPIRE_RUSH
+
+/datum/keybinding/xenomorph/vampire_rush/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pounce/rush/vampire_rush_check = get_action(xeno, /datum/action/xeno_action/activable/pounce/rush)
+	if(vampire_rush_check)
+		if(vampire_rush_check && !vampire_rush_check.hidden)
+			handle_xeno_macro_datum(xeno, vampire_rush_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/vampire_flurry
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "vampire_flurry"
+	full_name = "Vampire: Flurry"
+	keybind_signal = COMSIG_KB_XENO_VAMPIRE_FLURRY
+
+/datum/keybinding/xenomorph/vampire_flurry/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/flurry/vampire_flurry_check = get_action(xeno, /datum/action/xeno_action/activable/flurry)
+	if(vampire_flurry_check)
+		if(vampire_flurry_check && !vampire_flurry_check.hidden)
+			handle_xeno_macro_datum(xeno, vampire_flurry_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/vampire_tail_jab
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "vampire_tail_jab"
+	full_name = "Vampire: Tail Jab"
+	keybind_signal = COMSIG_KB_XENO_VAMPIRE_TAIL_JAB
+
+/datum/keybinding/xenomorph/vampire_tail_jab/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/tail_jab/vampire_tail_jab_check = get_action(xeno, /datum/action/xeno_action/activable/tail_jab)
+	if(vampire_tail_jab_check)
+		if(vampire_tail_jab_check && !vampire_tail_jab_check.hidden)
+			handle_xeno_macro_datum(xeno, vampire_tail_jab_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/vampire_headbite
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "vampire_headbite"
+	full_name = "Vampire: Headbite"
+	keybind_signal = COMSIG_KB_XENO_VAMPIRE_HEADBITE
+
+/datum/keybinding/xenomorph/vampire_headbite/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/headbite/vampire_headbite_check = get_action(xeno, /datum/action/xeno_action/activable/headbite)
+	if(vampire_headbite_check)
+		if(vampire_headbite_check && !vampire_headbite_check.hidden)
+			handle_xeno_macro_datum(xeno, vampire_headbite_check)
+			return TRUE
+

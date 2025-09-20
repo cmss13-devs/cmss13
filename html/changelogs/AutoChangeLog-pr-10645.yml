@@ -1,0 +1,6 @@
+author: "zzzmike"
+delete-after: True
+changes:
+  - bugfix: "general quarters spam is now prevented (except if admins do it)"
+  - qol: "If general quarters is on cooldown, you'll now set red alert (if it wasn't set already) by attempting to call general quarters."
+  - admin: "logging for general quarters and red alert is now separate"

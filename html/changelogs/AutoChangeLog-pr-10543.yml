@@ -1,0 +1,4 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - qol: "Repathed the squadhud icon file into separate faction files."

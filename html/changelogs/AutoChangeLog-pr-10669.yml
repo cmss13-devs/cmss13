@@ -1,0 +1,4 @@
+author: "HaultyAnonie"
+delete-after: True
+changes:
+  - bugfix: "Fixed a typo in RMC shield's description."

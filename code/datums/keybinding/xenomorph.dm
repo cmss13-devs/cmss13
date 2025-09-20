@@ -1080,4 +1080,96 @@
 		if(vampire_headbite_check && !vampire_headbite_check.hidden)
 			handle_xeno_macro_datum(xeno, vampire_headbite_check)
 			return TRUE
+//Carrier
+
+/datum/keybinding/xenomorph/carrier_throw_hugger
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "carrier_throw_hugger"
+	full_name = "Carrier: Throw hugger"
+	keybind_signal = COMSIG_KB_XENO_CARRIER_THROW_HUGGER
+
+/datum/keybinding/xenomorph/carrier_throw_hugger/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/throw_hugger/carrier_throw_hugger_check = get_action(xeno, /datum/action/xeno_action/activable/throw_hugger)
+	if(carrier_throw_hugger_check)
+		if(carrier_throw_hugger_check && !carrier_throw_hugger_check.hidden)
+			handle_xeno_macro_datum(xeno, carrier_throw_hugger_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/carrier_retrieve_egg
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "carrier_retrieve_egg"
+	full_name = "Carrier: Retrieve egg"
+	keybind_signal = COMSIG_KB_XENO_CARRIER_RETRIEVE_EGG
+
+/datum/keybinding/xenomorph/carrier_retrieve_egg/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/retrieve_egg/carrier_retrieve_egg_check = get_action(xeno, /datum/action/xeno_action/activable/retrieve_egg)
+	if(carrier_retrieve_egg_check)
+		if(carrier_retrieve_egg_check && !carrier_retrieve_egg_check.hidden)
+			handle_xeno_macro_datum(xeno, carrier_retrieve_egg_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/set_hugger_reserve
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "set_hugger_reserve"
+	full_name = "Carrier: Set hugger reserve"
+	keybind_signal = COMSIG_KB_XENO_CARRIER_SET_HUGGER_RESERVE
+
+/datum/keybinding/xenomorph/set_hugger_reserve/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/set_hugger_reserve/set_hugger_reserve_check = get_action(xeno, /datum/action/xeno_action/onclick/set_hugger_reserve)
+	if(set_hugger_reserve_check)
+		if(set_hugger_reserve_check && !set_hugger_reserve_check.hidden)
+			handle_xeno_macro_datum(xeno, set_hugger_reserve_check)
+			return TRUE
+// Eggsac
+
+/datum/keybinding/xenomorph/eggsac_generate_egg
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "eggsac_generate_egg"
+	full_name = "Eggsac: Toggle generate egg"
+	keybind_signal = COMSIG_KB_XENO_CARRIER_SET_HUGGER_RESERVE
+
+/datum/keybinding/xenomorph/eggsac_generate_egg/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/active_toggle/generate_egg/eggsac_generate_egg_check = get_action(xeno, /datum/action/xeno_action/active_toggle/generate_egg)
+	if(eggsac_generate_egg_check)
+		if(eggsac_generate_egg_check && !eggsac_generate_egg_check.hidden)
+			handle_xeno_macro_datum(xeno, eggsac_generate_egg_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/eggsac_retrieve_egg
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "eggsac_retrieve_egg"
+	full_name = "Eggsac: Retrieve egg"
+	keybind_signal = COMSIG_KB_XENO_EGGSAC_RETRIEVE_EGG
+
+/datum/keybinding/xenomorph/eggsac_retrieve_egg/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/retrieve_egg/eggsac_retrieve_egg_check = get_action(xeno, /datum/action/xeno_action/activable/retrieve_egg)
+	if(eggsac_retrieve_egg_check)
+		if(eggsac_retrieve_egg_check && !eggsac_retrieve_egg_check.hidden)
+			handle_xeno_macro_datum(xeno, eggsac_retrieve_egg_check)
+			return TRUE
 

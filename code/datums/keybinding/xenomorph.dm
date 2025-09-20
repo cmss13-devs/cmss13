@@ -954,40 +954,76 @@
 			return TRUE
 // Hivelord Designer
 
-/datum/keybinding/xenomorph/hivelord_resin_whisperer_toggle_speed
+/datum/keybinding/xenomorph/hivelord_designer_change_design
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "hivelord_resin_whisperer_toggle_speed"
-	full_name = "Resin Whisperer: Toggle speed"
-	keybind_signal = COMSIG_KB_XENO_RESIN_WHISPERER_TOGGLE_SPEED
+	name = "hivelord_designer_change_design"
+	full_name = "Designer: Change design"
+	keybind_signal = COMSIG_KB_XENO_DESIGNER_CHANGE_DESIGN
 
-/datum/keybinding/xenomorph/hivelord_resin_whisperer_toggle_speed/down(client/user)
+/datum/keybinding/xenomorph/hivelord_designer_change_design/down(client/user)
 	. = ..()
 	if(.)
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
-	var/datum/action/xeno_action/active_toggle/toggle_speed/hivelord_resin_whisperer_toggle_speed_check = get_action(xeno, /datum/action/xeno_action/active_toggle/toggle_speed)
-	if(hivelord_resin_whisperer_toggle_speed_check)
-		if(hivelord_resin_whisperer_toggle_speed_check && !hivelord_resin_whisperer_toggle_speed_check.hidden)
-			handle_xeno_macro_datum(xeno, hivelord_resin_whisperer_toggle_speed_check)
+	var/datum/action/xeno_action/onclick/change_design/hivelord_designer_change_design_check = get_action(xeno, /datum/action/xeno_action/onclick/change_design)
+	if(hivelord_designer_change_design_check)
+		if(hivelord_designer_change_design_check && !hivelord_designer_change_design_check.hidden)
+			handle_xeno_macro_datum(xeno, hivelord_designer_change_design_check)
 			return TRUE
 
-/datum/keybinding/xenomorph/hivelord_resin_whisperer_toggle_speed
+/datum/keybinding/xenomorph/hivelord_designer_place_design
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
-	name = "hivelord_resin_whisperer_toggle_speed"
-	full_name = "Resin Whisperer: Toggle speed"
-	keybind_signal = COMSIG_KB_XENO_RESIN_WHISPERER_TOGGLE_SPEED
+	name = "hivelord_designer_place_design"
+	full_name = "Designer: Place design"
+	keybind_signal = COMSIG_KB_XENO_DESIGNER_PLACE_DESIGN
 
-/datum/keybinding/xenomorph/hivelord_resin_whisperer_toggle_speed/down(client/user)
+/datum/keybinding/xenomorph/hivelord_designer_place_design/down(client/user)
 	. = ..()
 	if(.)
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
-	var/datum/action/xeno_action/active_toggle/toggle_speed/hivelord_resin_whisperer_toggle_speed_check = get_action(xeno, /datum/action/xeno_action/active_toggle/toggle_speed)
-	if(hivelord_resin_whisperer_toggle_speed_check)
-		if(hivelord_resin_whisperer_toggle_speed_check && !hivelord_resin_whisperer_toggle_speed_check.hidden)
-			handle_xeno_macro_datum(xeno, hivelord_resin_whisperer_toggle_speed_check)
+	var/datum/action/xeno_action/activable/place_design/hivelord_designer_place_design_check = get_action(xeno, /datum/action/xeno_action/activable/place_design)
+	if(hivelord_designer_place_design_check)
+		if(hivelord_designer_place_design_check && !hivelord_designer_place_design_check.hidden)
+			handle_xeno_macro_datum(xeno, hivelord_designer_place_design_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/hivelord_designer_toggle_design_icons
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "hivelord_designer_toggle_design_icons"
+	full_name = "Designer: Toggle design icons"
+	keybind_signal = COMSIG_KB_XENO_DESIGNER_TOGGLE_DESIGN_ICONS
+
+/datum/keybinding/xenomorph/hivelord_designer_toggle_design_icons/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/toggle_design_icons/hivelord_designer_toggle_design_icons_check = get_action(xeno, /datum/action/xeno_action/onclick/toggle_design_icons)
+	if(hivelord_designer_toggle_design_icons_check)
+		if(hivelord_designer_toggle_design_icons_check && !hivelord_designer_toggle_design_icons_check.hidden)
+			handle_xeno_macro_datum(xeno, hivelord_designer_toggle_design_icons_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/hivelord_designer_greater_resin_surge
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "hivelord_designer_greater_resin_surge"
+	full_name = "Designer: Greater resin surge"
+	keybind_signal = COMSIG_KB_XENO_DESIGNER_GREATER_RESIN_SURGE
+
+/datum/keybinding/xenomorph/hivelord_designer_greater_resin_surge/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/greater_resin_surge/hivelord_designer_greater_resin_surge_check = get_action(xeno, /datum/action/xeno_action/activable/greater_resin_surge)
+	if(hivelord_designer_greater_resin_surge_check)
+		if(hivelord_designer_greater_resin_surge_check && !hivelord_designer_greater_resin_surge_check.hidden)
+			handle_xeno_macro_datum(xeno, hivelord_designer_greater_resin_surge_check)
 			return TRUE
 // Lurker
 

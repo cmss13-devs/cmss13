@@ -49916,7 +49916,11 @@
 /turf/open/floor/almayer/sterile_green_side/northwest,
 /area/almayer/medical/medical_science)
 "gNq" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon2,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon2{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "17;16;21"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon2_shared)
 "gNy" = (
@@ -65994,7 +65998,7 @@
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad{
 	req_access = null;
 	req_one_access = null;
-	req_one_access_txt = "15;18;21";
+	req_one_access_txt = s;
 	vend_x_offset = 0;
 	vend_y_offset = 0
 	},
@@ -80155,7 +80159,11 @@
 /turf/open/floor/almayer/blue/north,
 /area/almayer/hallways/upper/midship_hallway)
 "tkN" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1,
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad/platoon1{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;18;21"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/platoon1_shared)
 "tkR" = (

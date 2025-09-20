@@ -250,6 +250,21 @@
 #define COMSIG_KB_XENO_EGGSAC_GENERATE_EGG "keybinding_eggsac_generate_egg"
 #define COMSIG_KB_XENO_EGGSAC_RETRIEVE_EGG "keybinding_eggsac_retrieve_egg"
 
+// Xenomorph Ravager
+
+// Xenomorph Ravager Berserk
+// Xenomorph Ravager Hedgehog
+// Xenomorph Crusher
+// Xenomorph Crusher Charger
+// Xenomorph Boiler
+// Xenomorph Boiler Trapper
+// Xenomorph Praetorian
+// Xenomorph Praetorian Dancer
+// Xenomorph Praetorian Oppressor
+// Xenomorph Praetorian Vanguard
+// Xenomorph Praetorian Valkyrie
+
+
 // Yautja
 
 #define COMSIG_KB_YAUTJA_BUTCHER "keybinding_yautja_butcher"

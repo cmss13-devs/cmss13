@@ -209,38 +209,44 @@
 #define COMSIG_KB_XENO_SPITTER_SPIT "keybinding_spitter_spit"
 #define COMSIG_KB_XENO_SPITTER_TAIL_STAB "keybinding_spitter_tail_stab"
 
-// Xeomorph Warrior
+// Xenomorph Warrior
 #define COMSIG_KB_XENO_WARRIOR_PUNCH "keybinding_warrior_punch"
 #define COMSIG_KB_XENO_WARRIOR_LUNCH "keybinding_warrior_lunch"
 #define COMSIG_KB_XENO_WARRIOR_FLING "keybinding_warrior_fling"
 
-// Xeomorph Burrower
+// Xenomorph Burrower
 #define COMSIG_KB_XENO_BURROWER_BUILD_TUNNEL "keybinding_burrower_build_tunnel"
 #define COMSIG_KB_XENO_BURROWER_PLACE_TRAP "keybinding_burrower_place_trap"
 #define COMSIG_KB_XENO_BURROWER_BURROW "keybinding_burrower_burrow"
 #define COMSIG_KB_XENO_BURROWER_TREMOR "keybinding_burrower_tremor"
 #define COMSIG_KB_XENO_BURROWER_TOGGLE_MESON_VISION "keybinding_burrower_toggle_meson_vision"
 
-// Xeomorph Hivelord Resin Whisperer
+// Xenomorph Hivelord Resin Whisperer
 #define COMSIG_KB_XENO_RESIN_WHISPERER_TOGGLE_SPEED "keybinding_hivelord_resin_whisperer_toggle_speed"
 
-// Xeomorph Lurker
+// Xenomorph Hivelord Designer
+#define COMSIG_KB_XENO_DESIGNER_CHANGE_DESIGN "keybinding_hivelord_resin_whisperer_toggle_speed"
+#define COMSIG_KB_XENO_DESIGNER_PLACE_DESIGN "keybinding_hivelord_resin_whisperer_toggle_speed"
+#define COMSIG_KB_XENO_DESIGNER_TOGGLE_DESIGN_ICONS "keybinding_hivelord_resin_whisperer_toggle_speed"
+#define COMSIG_KB_XENO_DESIGNER_GREATER_RESIN_SURGE "keybinding_hivelord_resin_whisperer_toggle_speed"
+
+// Xenomorph Lurker
 #define COMSIG_KB_XENO_LURKER_POUNCE "keybinding_lurker_pounce"
 #define COMSIG_KB_XENO_LURKER_INVISIBILITY "keybinding_lurker_invisibility"
 #define COMSIG_KB_XENO_LURKER_ASSASINATE "keybinding_lurker_assasinate"
 
-// Xeomorph Lurker Vampire
+// Xenomorph Lurker Vampire
 #define COMSIG_KB_XENO_VAMPIRE_RUSH "keybinding_vampire_rush"
 #define COMSIG_KB_XENO_VAMPIRE_FLURRY "keybinding_vampire_flurry"
 #define COMSIG_KB_XENO_VAMPIRE_TAIL_JAB "keybinding_vampire_tail_jab"
 #define COMSIG_KB_XENO_VAMPIRE_HEADBITE "keybinding_vampire_headbite"
 
-// Xeomorph Carrier
+// Xenomorph Carrier
 #define COMSIG_KB_XENO_CARRIER_THROW_HUGGER "keybinding_carrier_throw_hugger"
 #define COMSIG_KB_XENO_CARRIER_RETRIEVE_EGG "keybinding_carrier_retrieve_egg"
 #define COMSIG_KB_XENO_CARRIER_SET_HUGGER_RESERVE "keybinding_carrier_set_hugger_reserve"
 
-// Xeomorph Carrier Eggsac
+// Xenomorph Carrier Eggsac
 #define COMSIG_KB_XENO_EGGSAC_GENERATE_EGG "keybinding_eggsac_generate_egg"
 #define COMSIG_KB_XENO_EGGSAC_RETRIEVE_EGG "keybinding_eggsac_retrieve_egg"
 

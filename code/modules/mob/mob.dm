@@ -209,8 +209,8 @@
 	var/hear_dist = 7
 	if(max_distance)
 		hear_dist = max_distance
-	for(var/mob/M as anything in hearers(hear_dist, src.loc))
-		M.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
+	for(var/mob/current in hearers(hear_dist, loc))
+		current.show_message(message, SHOW_MESSAGE_AUDIBLE, deaf_message, SHOW_MESSAGE_VISIBLE, message_flags = message_flags)
 
 /atom/proc/ranged_message(message, blind_message, max_distance, message_flags = CHAT_TYPE_OTHER)
 	var/view_dist = 7

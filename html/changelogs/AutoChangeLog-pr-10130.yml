@@ -1,0 +1,6 @@
+author: "Puckaboo2"
+delete-after: True
+changes:
+  - imageadd: "All variants of undershirts now camo-conform to all maps"
+  - imageadd: "All variants of undershirts, bras, and underwear now come in black"
+  - rscdel: "You can no longer choose an underwear camo color that does not match the current map."

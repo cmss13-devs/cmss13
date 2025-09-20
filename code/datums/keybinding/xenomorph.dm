@@ -774,7 +774,7 @@
 	hotkey_keys = list("Unbound")
 	classic_keys = list("Unbound")
 	name = "spitter_tail_stab"
-	full_name = "Spitter: Corrosive acid"
+	full_name = "Spitter: Corrosive Tail stab"
 	keybind_signal = COMSIG_KB_XENO_SPITTER_TAIL_STAB
 
 /datum/keybinding/xenomorph/spitter_tail_stab/down(client/user)

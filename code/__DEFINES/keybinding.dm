@@ -242,7 +242,7 @@
 
 // Xeomorph Carrier Eggsac
 #define COMSIG_KB_XENO_EGGSAC_GENERATE_EGG "keybinding_eggsac_generate_egg"
-#define COMSIG_KB_XENO_EGGSAC_RETRIEVE_EGG"keybinding_eggsac_retrieve_egg"
+#define COMSIG_KB_XENO_EGGSAC_RETRIEVE_EGG "keybinding_eggsac_retrieve_egg"
 
 // Yautja
 

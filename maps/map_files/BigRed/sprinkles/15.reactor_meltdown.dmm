@@ -31,7 +31,7 @@
 /turf/open/floor/dark,
 /area/bigredv2/outside/engineering)
 "aq" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/engineering)
 "as" = (
 /turf/open/mars,
@@ -986,7 +986,7 @@
 /turf/open/floor/darkyellow2/east,
 /area/bigredv2/outside/engineering)
 "vs" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/telecomm/engi)
 "vu" = (
 /obj/structure/machinery/power/apc/fully_broken{
@@ -1013,7 +1013,7 @@
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/telecomm/engi)
 "Af" = (
-/turf/closed/wall/solaris/reinforced,
+/turf/closed/wall/r_wall/solaris,
 /area/bigredv2/outside/engineering/reactor)
 "Ah" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,

@@ -30,7 +30,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_lz2)
 "x" = (
-/turf/closed/wall/shiva/prefabricated/reinforced/hull,
+/turf/closed/wall/shiva/prefabricated/hull,
 /area/shiva/exterior/lz2_fortress)
 "C" = (
 /turf/open/floor/shiva/radiator_tile,

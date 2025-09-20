@@ -1,0 +1,5 @@
+author: "halander1"
+delete-after: True
+changes:
+  - code_imp: "Modified APS trait to give span_notices when processing telling you it is doing something. Also gives a notice when you finally kill the larva"
+  - code_imp: "Modifies the handling of stasis bags to check for an APS chem and notifies the player of the incompatibility with lore compatible text."

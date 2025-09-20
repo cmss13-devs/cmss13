@@ -1,0 +1,7 @@
+author: "Steelpoint, dimdimich1996"
+delete-after: True
+changes:
+  - rscadd: "Adds a new set of UPP cargo vendor and table sprites to the game. Sprite credit to dimdimich1996."
+  - mapadd: "Adds the new UPP cargo vendors and tables to the SSV Rostock, the UPP ship."
+  - maptweak: "Tweaked some personal vendor offsets on the SSV Rostock. This should fix some minor issues such as the Political Officer having to climb a table to exit their quarters."
+  - maptweak: "Adds a wall mounted telephone to the UPP requisition department."

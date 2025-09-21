@@ -366,6 +366,7 @@
 #include "code\datums\event_info_text.dm"
 #include "code\datums\fluff_emails.dm"
 #include "code\datums\global_variables.dm"
+#include "code\datums\highlight_keywords_payload.dm"
 #include "code\datums\http.dm"
 #include "code\datums\internet_media.dm"
 #include "code\datums\lazy_template.dm"

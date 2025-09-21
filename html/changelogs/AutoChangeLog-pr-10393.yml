@@ -1,0 +1,7 @@
+author: "Zenith"
+delete-after: True
+changes:
+  - rscadd: "Added Kutjevo LZ1 insert."
+  - rscadd: "Added small Soro insert."
+  - maptweak: "Added Kutjevo south facility extension, opening up a route into the caves with flanking potential for both Marines and Xenos."
+  - imageadd: "Adds bodybag pile sprites & large stain decals."

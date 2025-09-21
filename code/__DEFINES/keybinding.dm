@@ -251,6 +251,9 @@
 #define COMSIG_KB_XENO_EGGSAC_RETRIEVE_EGG "keybinding_eggsac_retrieve_egg"
 
 // Xenomorph Ravager
+#define COMSIG_KB_XENO_RAVAGER_CHARGE "keybinding_ravager_charge"
+#define COMSIG_KB_XENO_RAVAGER_CHARGE "keybinding_ravager_charge"
+#define COMSIG_KB_XENO_RAVAGER_CHARGE "keybinding_ravager_charge"
 
 // Xenomorph Ravager Berserk
 // Xenomorph Ravager Hedgehog

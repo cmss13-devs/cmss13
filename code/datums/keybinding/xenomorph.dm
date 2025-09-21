@@ -1246,3 +1246,23 @@
 			handle_xeno_macro_datum(xeno, eggsac_retrieve_egg_check)
 			return TRUE
 
+// Ravager
+
+/datum/keybinding/xenomorph/ravager_charge
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "ravager_charge"
+	full_name = "Ravager: Charge"
+	keybind_signal = COMSIG_KB_XENO_RAVAGER_CHARGE
+
+/datum/keybinding/xenomorph/ravager_charge/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pounce/charge/ravager_charge_check = get_action(xeno, /datum/action/xeno_action/activable/pounce/charge)
+	if(ravager_charge_check)
+		if(ravager_charge_check && !ravager_charge_check.hidden)
+			handle_xeno_macro_datum(xeno, ravager_charge_check)
+			return TRUE
+

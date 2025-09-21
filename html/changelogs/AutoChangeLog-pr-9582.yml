@@ -1,0 +1,7 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added an internal camera console to the Intranet Console."
+  - rscadd: "Added a WY camera subtype."
+  - bugfix: "Fixes WY Director access to the Intranet Console."
+  - rscadd: "Added Document Printer."

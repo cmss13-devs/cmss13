@@ -1,0 +1,4 @@
+author: "benrobey"
+delete-after: True
+changes:
+  - bugfix: "fixed groundside xenos not getting correctly set to forsaken hive after hijack"

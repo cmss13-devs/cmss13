@@ -1,0 +1,7 @@
+author: "Red-byte3D"
+delete-after: True
+changes:
+  - rscadd: "Added a new Fortification Boon that allows xenomorphs to boost their structures."
+  - rscadd: "Pylons, Plasma trees recovery nodes and xenomorph resin walls (not doors) will now regenerate their health when under the effects of the \"Fortification Boon\""
+  - rscadd: "Plasma tree and recovery nodes have increased recovery while under the effects of \"Fortification Boon\""
+  - rscadd: "Egg morphers now generate huggers at 30 seconds per hugger while boosted."

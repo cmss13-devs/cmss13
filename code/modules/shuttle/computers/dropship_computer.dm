@@ -221,6 +221,11 @@
 		to_chat(xeno, SPAN_NOTICE("This terminal is inactive."))
 		return
 
+	//BANDAMARINES ADD START - Queen Minor
+	if(!SSticker.mode.queen_minor_choice(xeno) || SSticker.mode.round_finished)
+		return
+	//BANDAMARINES ADD END - Queen Minor
+
 	var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 	if(linked_lz)
 		var/obj/docking_port/stationary/landing_zone = SSshuttle.getDock(linked_lz)

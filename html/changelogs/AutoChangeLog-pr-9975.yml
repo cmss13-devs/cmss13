@@ -1,7 +1,0 @@
-author: "Zenith"
-delete-after: True
-changes:
-  - balance: "Rebalanced health values for many Hybrisa map props, Cars, Windows, Shutters ect. Should be much easier to break as both the Marines and Xenos."
-  - balance: "Scrape-away is reduced by 5 minutes. Cave walls will now drop at 00:30."
-  - bugfix: "Replaced a lot of windows with their correct versions, was reinforced in some cases, as well as reduced the regular window health values."
-  - bugfix: "Fixes broken offset road-railings, makes them one instance instead of two per tile."

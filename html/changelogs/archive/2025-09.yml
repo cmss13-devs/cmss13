@@ -1,0 +1,193 @@
+2025-09-04:
+  TheGamerdk:
+  - spellcheck: Removes extra . from forsaken ert message
+2025-09-05:
+  ihatethisengine:
+  - balance: boosting boosts props by 0.5 per level again instead of 1 per level.
+2025-09-07:
+  TheGamerdk:
+  - spellcheck: Fixed missing capitalization in CLF van interior
+  Zenith:
+  - imageadd: replaced the auto_sand.dmi edges and last layer with better sprites
+      - no more square sand.
+2025-09-08:
+  Blue-Fox5:
+  - imageadd: added some new bits to the boiler sprite
+  - imagedel: old sprites are gone
+  SirNightKnight:
+  - bugfix: fixes being able to pick up live plastic explosives without disarming
+      them first.
+2025-09-09:
+  BOBAMAx:
+  - bugfix: civilian survivor COs should no longer show up in team inerts like the
+      UPP on Trijent
+  BasilHerb:
+  - rscadd: 'Xenomorphs now start drooling acid when they have relevant abilities
+      selected, which currently includes: All forms of xeno spitting, including sentinel
+      neurospit, all forms of xeno acid spray, boiler bombard, scatterspit, thanks
+      to Spypig for un-shittifying my code!'
+  - imageadd: Added drooling overlays for the relevant castes, courtesy of Blundir!
+  - bugfix: Fixed an oversight with abilities not deselecting upon ghosting, courtesy
+      of Drathek!
+  Drathek:
+  - code_imp: SDMM suite for linting is bumped to a new version for more 516 support
+  - bugfix: Fixed runtimes related to BlockedExitDirs and BlockedPassDirs trying access
+      null pass_flags
+  - code_imp: TGUI input lists now Cut their entries rather than wait for byond garbage
+      collection
+  - ui: TGUI checkboxes input now validates the selected entries passed
+  - bugfix: Fix a runtime related to new players opening the loadout menu in character
+      preferences
+  FebrezeNinja:
+  - bugfix: Autodoc's close incisions surgery now removes the open chest/skull overlays.
+  FloranOtten:
+  - bugfix: destroying parts of the disposal network will no longer send your items
+      to nullspace
+  - bugfix: openspace now properly initializes pass_flags
+  - bugfix: Throwing the phone down the ASRS pit after being hung up on won't cause
+      it to loop forever.
+  - bugfix: Firing your guns akimbo is once again possible.
+  - bugfix: Curtains block view without prior encouragement.
+  - bugfix: Transparent curtains remain transparent, even when opened and closed.
+  Red-byte3D:
+  - rscadd: Xenomorphs now get +1 resin upon capturing a comms tower for the first
+      time
+  SirNightKnight:
+  - bugfix: fixed ghost circuitboards being created by deconstructing a machine
+  Yachuk:
+  - rscadd: Added miniflamer intense icon.
+  cuberound:
+  - rscdel: removes spacevine (unused)
+  nauticall:
+  - balance: Increased weapon performance on all variants of the M1911, particularly
+      the newly-added M1911C.
+  riot:
+  - rscadd: Adds fingerless combat gloves to preferences and surplus vendors, for
+      all your fingerless needs.
+  - rscadd: Quartermaster and Cargo Techs now spawn with fingerless gloves, you can
+      still get insulated gloves from your lockers in req.
+2025-09-10:
+  MeH0y:
+  - balance: airlocks fire sparks every 6 seconds when electrocuted
+  Red-byte3D:
+  - bugfix: Queen transparency hotfix, now it has a cooldown of 5 seconds as well
+  SirNightKnight:
+  - bugfix: fixed the offset of some onmob WY patch sprites
+2025-09-11:
+  BOBAMAx:
+  - bugfix: fixed a few bugs with shocked doors
+  Blundir, Crow, Thwomper, jupyterkat, dimdimich1996, piotrthetchaikowsky, Dongwaiver, po1ntm4n, notfunny.:
+  - rscadd: CLF spec now has a 30% to be a smartgunner with unique sg that can malfunction
+      and jam
+  - rscadd: CLF spec and cell commander spawn with new rusty sg drums that spawn with
+      280-500 bullets in them
+  - rscadd: CLF cell commander was remade
+  - rscadd: Marsoc squad now has a dedicated SG with an sg loaded with heap, also
+      has aim assist
+  - rscadd: PMC/Commandos now have a new sg that doesn't need cover opening to reload,
+      it also has aim assist
+  - rscadd: SG goggles now act an overwatch camera, thus you no longer need helmet
+      or M5 camera anymore for overwatch to see you
+  - rscadd: new optional SG armor with unique sprite that has 5% higher bio, melee,
+      internal damage, bullet resistance, but medium armor tier slowdown
+  - rscadd: M56B been globally renamed to M56A2, some other sgs followed the same
+      logic
+  - rscadd: M56A2C (CO sg) has 10% to spawn with a decorative USCM flag on it
+  - rscdel: you can no longer attach flashlight on sg
+  - imageadd: 'all sgs were resprited, which include: M56A2 (previously M56B), M56A2C
+      (previously M56C), L56A2 (new WY sg), L56A1, with new sprites for M57R (marsoc
+      SG), scavenged M56 (CLF sg), RFVS37 (UPP sg), and unnamed UPP gatling gun for
+      future content'
+  - imageadd: M56D got inhands for the gun itself and the gun mount
+  FloranOtten:
+  - rscdel: You can no longer throw people upstairs.
+2025-09-12:
+  FloranOtten:
+  - bugfix: z level throw restriction only applies to human throwing.
+  zzzmike:
+  - balance: neurocryogenic+cardiostabilizing knocks down and stuns rather than knocks
+      out
+2025-09-13:
+  BasilHerb:
+  - rscadd: Added a minimum floor for most fun facts.
+  - rscadd: Re-introduces the 'calories burned' fun fact.
+  Red-byte3D:
+  - bugfix: Spit overlays no longer get added on when you chose an ability after you
+      die or are knocked down
+  cuberound:
+  - bugfix: marines hauled by xeno no longer take fall damage
+  - balance: prevents huggers from hugging across z levels
+  - balance: pounces are one tile shorter when going up a z level
+  - bugfix: fixes being unable to pounce/throw stuff up a z level when next to an
+      edge
+  - bugfix: fixes majority of issues with looking up not being updated on movement,
+      report any remaining issues
+  - bugfix: crossing z level ends looking up correctly
+2025-09-14:
+  TheGamerdk:
+  - balance: High impact M1911 bullets cause knockback on-par with Mateba and Deagle.
+  cuberound:
+  - bugfix: BRUTE no longer messes up looking down
+2025-09-15:
+  DoguhanOzgurAkca:
+  - maptweak: Sorokyne LZ2 weedkiller is bigger now
+  Drathek:
+  - bugfix: Fixed runtimes caused by playable huggers hugging
+  FebrezeNinja:
+  - bugfix: ARC phone now shows up as "ARC" in the Vehicles phone list.
+  zzzmike:
+  - bugfix: warden headset added to warden vendor
+2025-09-16:
+  Kashargul:
+  - code_imp: replaces yarn with bun
+2025-09-17:
+  Joe Lampost:
+  - rscadd: Updates the messages sent for the hunting ground and youngblood ERTs
+2025-09-18:
+  HaultyAnonie:
+  - bugfix: Fixed clocks outputting "the" twice on examine.
+2025-09-19:
+  cuberound:
+  - bugfix: extra (shotgun) projectiles are fired on the same z level as the main
+      shot
+2025-09-21:
+  Drathek:
+  - bugfix: Fix some busted browse calls displaying as text instead of html
+  - bugfix: Fixed medical laptop UI crashing when someone has been gibbed
+  - code_imp: Added a lint for optimization of range, orange, hearers, and ohearers
+  HaultyAnonie:
+  - bugfix: Fixed a typo in RMC shield's description.
+  Nanu:
+  - maptweak: Almayer internals has more temphull walls now to hinder the evil dwarfs
+      from turning it into swiss cheese before hijack occurs.
+  Puckaboo2:
+  - imageadd: All variants of undershirts now camo-conform to all maps
+  - imageadd: All variants of undershirts, bras, and underwear now come in black
+  - rscdel: You can no longer choose an underwear camo color that does not match the
+      current map.
+  Steelpoint, dimdimich1996:
+  - rscadd: Adds a new set of UPP cargo vendor and table sprites to the game. Sprite
+      credit to dimdimich1996.
+  - mapadd: Adds the new UPP cargo vendors and tables to the SSV Rostock, the UPP
+      ship.
+  - maptweak: Tweaked some personal vendor offsets on the SSV Rostock. This should
+      fix some minor issues such as the Political Officer having to climb a table
+      to exit their quarters.
+  - maptweak: Adds a wall mounted telephone to the UPP requisition department.
+  halander1:
+  - code_imp: Modified APS trait to give span_notices when processing telling you
+      it is doing something. Also gives a notice when you finally kill the larva
+  - code_imp: Modifies the handling of stasis bags to check for an APS chem and notifies
+      the player of the incompatibility with lore compatible text.
+  realforest2001:
+  - bugfix: Fixed unintended access to Landing Zone, Laser Targets and WY cameras.
+  - bugfix: Fixes a runtime with candles updating icons.
+  - qol: Repathed the squadhud icon file into separate faction files.
+  zzzmike:
+  - rscdel: Removes anti-capitalist vendor slogan from USCM vendor
+  - qol: hivemind collapse warning now includes the time remaining when there's less
+      than a minute left
+  - bugfix: general quarters spam is now prevented (except if admins do it)
+  - qol: If general quarters is on cooldown, you'll now set red alert (if it wasn't
+      set already) by attempting to call general quarters.
+  - admin: logging for general quarters and red alert is now separate

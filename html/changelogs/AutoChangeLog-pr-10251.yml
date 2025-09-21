@@ -1,0 +1,8 @@
+author: "Drathek, KornFlaks, ihatethisengine"
+delete-after: True
+changes:
+  - bugfix: "Forbid slashing/harming setting now works"
+  - refactor: "Hive permissions are now flags"
+  - qol: "Hive permission toggles are now accessible in Manage the Hive for the queen and the input selectors now preselect the current hive setting"
+  - code_imp: "Cleaned up various single variable usage and autodoc comments"
+  - admin: "Hives can have permission toggles locked (which prevents queens from changing them and prevents reversion on queen death)"

@@ -1,0 +1,5 @@
+author: "realforest2001"
+delete-after: True
+changes:
+  - rscadd: "Added Radio-Alert Motion Sensors.  They will be available to MPs, WY, CLF, UPP, TWE and CIA."
+  - rscadd: "They are activated by a security tuner (no skills required) and disabled the same way. Radio/Access can be changed with an ID card if you have access already."

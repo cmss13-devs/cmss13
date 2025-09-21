@@ -134,6 +134,7 @@
 /area/strata/interior/vanyard
 	name = "Flight Control Vehicle Yard"
 	icon_state = "garage"
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/exterior/tcomms_mining_caves
 	name = "Mining Pathway Relay"
@@ -141,6 +142,7 @@
 /area/strata/exterior/tcomms_vehicle_yard
 	name = "Vehicle Yard Relay"
 	icon_state = "tcomms1"
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/exterior/tcomms_geosprings
 	name = "Geothermal Springs Relay"
@@ -325,6 +327,7 @@
 /area/strata/interior/checkpoints/south
 	name = "Landing Zone South Security Checkpoint"
 	is_landing_zone = TRUE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/interior/checkpoints/outpost
 	name = "Outpost - Deck Security Checkpoint"
@@ -335,6 +338,7 @@
 /area/strata/interior/parts_storage
 	name = "Engineering - Parts Storage"
 	icon_state = "outpost_engi_1"
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/interior/generator_substation
 	name = "Engineering - Generator Substation"
@@ -346,6 +350,7 @@
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	soundscape_playlist = SCAPE_PL_LV759_CAVES
 	ceiling_muffle = FALSE
+	linked_lz = DROPSHIP_LZ2
 
 /area/strata/exterior/parts_storage_cave
 	name = "Engineering - Parts Storage Exterior"

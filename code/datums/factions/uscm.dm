@@ -1,9 +1,11 @@
 /datum/faction/uscm
 	name = "United States Colonial Marines"
 	faction_tag = FACTION_MARINE
+	base_icon_file = 'icons/mob/hud/factions/marine.dmi'
 
 /datum/faction/uscm/modify_hud_holder(image/holder, mob/living/carbon/human/current_human)
 	var/datum/squad/squad = current_human.assigned_squad
+	var/icon/override_icon_file
 	if(istype(squad))
 		var/squad_clr = current_human.assigned_squad.equipment_color
 		var/marine_rk
@@ -44,12 +46,14 @@
 			if(JOB_DROPSHIP_CREW_CHIEF)
 				marine_rk = "dcc"
 			if(JOB_MARINE_RAIDER)
-				marine_rk = "soc"
+				marine_rk = "soc_grunt"
+			if(JOB_MARINE_RAIDER_SG)
+				marine_rk = "soc_sg"
 			if(JOB_MARINE_RAIDER_SL)
 				marine_rk = "soctl"
 			if(JOB_MARINE_RAIDER_CMD)
 				marine_rk = "soccmd"
-			if(JOB_SQUAD_TECH)
+			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
 		if(squad.squad_leader == current_human)
 			switch(squad.squad_type)
@@ -64,30 +68,30 @@
 
 		current_human.langchat_color = current_human.assigned_squad.chat_color
 
+		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file
 		if(!marine_rk)
 			marine_rk = current_human.rank_fallback
 		if(current_human.rank_override && squad.squad_leader != current_human)
 			marine_rk = current_human.rank_override
 		if(marine_rk)
-			var/image/IMG = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
+			var/image/IMG = image(file_to_use, current_human, "hudsquad")
 			if(squad_clr)
 				IMG.color = squad_clr
 			else
 				IMG.color = "#5A934A"
 			holder.overlays += IMG
-			holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad_[marine_rk]")
+			holder.overlays += image(file_to_use, current_human, "hudsquad_[marine_rk]")
 		if(current_human.assigned_squad && current_human.assigned_fireteam)
-			var/image/IMG2 = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad_[current_human.assigned_fireteam]")
+			var/image/IMG2 = image(file_to_use, current_human, "hudsquad_[current_human.assigned_fireteam]")
 			IMG2.color = squad_clr
 			holder.overlays += IMG2
 			if(current_human.assigned_squad.fireteam_leaders[current_human.assigned_fireteam] == current_human)
-				var/image/IMG3 = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad_ftl")
+				var/image/IMG3 = image(file_to_use, current_human, "hudsquad_ftl")
 				IMG3.color = squad_clr
 				holder.overlays += IMG3
 	else
 		var/marine_rk
 		var/border_rk
-		var/icon_prefix = "hudsquad_"
 		var/obj/item/card/id/ID = current_human.get_idcard()
 		var/_role
 		if(current_human.mind)
@@ -117,7 +121,7 @@
 				marine_rk = "med"
 			if(JOB_PLT_SL)
 				marine_rk = "leader"
-			if(JOB_SQUAD_TECH)
+			if(JOB_FORECON_SUPPORT)
 				marine_rk = "tech"
 			if(JOB_INTEL)
 				marine_rk = "io"
@@ -247,10 +251,11 @@
 		if(current_human.rank_override)
 			marine_rk = current_human.rank_override
 
+		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file
 		if(marine_rk)
-			var/image/I = image('icons/mob/hud/marine_hud.dmi', current_human, "hudsquad")
+			var/image/I = image(file_to_use, current_human, "hudsquad")
 			I.color = "#5A934A"
 			holder.overlays += I
-			holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "[icon_prefix][marine_rk]")
+			holder.overlays += image(file_to_use, current_human, "hudsquad_[marine_rk]")
 			if(border_rk)
-				holder.overlays += image('icons/mob/hud/marine_hud.dmi', current_human, "hudmarineborder[border_rk]")
+				holder.overlays += image(file_to_use, current_human, "hudmarineborder[border_rk]")

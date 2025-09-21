@@ -766,6 +766,7 @@
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.set_species(joe_type)
+	new_human.bubble_icon = "robot"
 	new_human.gender = MALE
 	new_human.flavor_text = ""
 	new_human.h_style = "Bald"
@@ -873,6 +874,10 @@
 /datum/equipment_preset/synth/working_joe/upp/load_skills(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.allow_gun_usage = TRUE
+
+/datum/equipment_preset/synth/working_joe/upp/load_race(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.bubble_icon = "syndibot"
 
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
 	if(src.faction == FACTION_UPP)

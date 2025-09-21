@@ -1,4 +1,0 @@
-author: "Drathek"
-delete-after: True
-changes:
-  - code_imp: "Added a lint for optimization of range, orange, hearers, and ohearers"

@@ -724,7 +724,7 @@
 		return FALSE
 
 	if(SSticker?.mode?.hardcore)
-		to_chat(X, SPAN_XENOWARNING("The hive is too inexperienced to design constructions."))
+		to_chat(xeno, SPAN_XENOWARNING("The hive is too inexperienced to design constructions."))
 		return FALSE
 
 	//Make sure construction is unrestricted

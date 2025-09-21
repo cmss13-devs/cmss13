@@ -1,0 +1,5 @@
+author: "BirdLover88"
+delete-after: True
+changes:
+  - rscadd: "Extract data when occupying a mob and set highlight keywords"
+  - ui: "Add keyword menu to chat highlight menu"

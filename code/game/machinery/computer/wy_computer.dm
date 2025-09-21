@@ -284,6 +284,8 @@
 					return WY_COMP_ACCESS_SUPERVISOR
 		if(card.assignment == JOB_CORPORATE_LIAISON)
 			return WY_COMP_ACCESS_LIAISON
+		if(card.assignment == JOB_CORPORATE_BODYGUARD)
+			return WY_COMP_ACCESS_LIAISON_GUARD
 		if(card.paygrade && (card.paygrade == PAY_SHORT_WYC5 || card.paygrade == PAY_SHORT_WYC4))
 			return WY_COMP_ACCESS_CORPORATE_SENIOR
 		return WY_COMP_ACCESS_CORPORATE
@@ -298,6 +300,8 @@
 			return "Logged Out"
 		if(WY_COMP_ACCESS_FORBIDDEN)
 			return "Unauthorized User"
+		if(WY_COMP_ACCESS_LIAISON_GUARD)
+			return "Weyland-Yutani Personal Protection"
 		if(WY_COMP_ACCESS_LIAISON)
 			return "Weyland-Yutani Liaison"
 		if(WY_COMP_ACCESS_CORPORATE)

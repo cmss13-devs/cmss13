@@ -435,6 +435,12 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"abd" = (
+/obj/structure/machinery/camera/wey_yu/autoname{
+	dir = 1
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/medical/containment/cell/cl)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -880,6 +886,12 @@
 	},
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
+"acm" = (
+/obj/structure/machinery/camera/wey_yu/autoname{
+	dir = 1
+	},
+/turf/open/floor/wood/ship,
+/area/almayer/command/corporateliaison)
 "acn" = (
 /obj/structure/stairs/multiz/down{
 	dir = 1
@@ -35808,10 +35820,6 @@
 "bIZ" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/adv,
-/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
-	name = "ship-grade camera";
-	dir = 4
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -35820,11 +35828,16 @@
 	icon_state = "W";
 	layer = 3.3
 	},
+/obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell{
+	dir = 4
+	},
 /turf/open/floor/almayer/silver/northwest/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bJa" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/wy_intranet/liaison,
+/obj/structure/machinery/computer/wy_intranet/liaison{
+	internal_camera_network = list("Containment","Research","Containment Hidden","WY")
+	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
@@ -36225,10 +36238,8 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/weapon_room)
 "bKc" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	dir = 1;
-	network = list("WY")
+/obj/structure/machinery/camera/wey_yu/autoname{
+	dir = 1
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -36672,12 +36683,6 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
 "bKZ" = (
-/obj/structure/machinery/computer/cameras/containment/hidden{
-	dir = 4;
-	layer = 3;
-	network = list("Containment","Containment Hidden","Research","WY");
-	pixel_y = -12
-	},
 /obj/structure/machinery/computer/emails{
 	dir = 4;
 	pixel_y = 2
@@ -36698,27 +36703,9 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bLb" = (
-/obj/structure/closet/secure_closet/cmdcabinet{
-	desc = "A bulletproof cabinet containing communications equipment.";
-	name = "communications cabinet";
-	pixel_y = 24;
-	req_access = null;
-	req_one_access_txt = "207;203"
+/obj/structure/closet/secure_closet/cmdcabinet/comms_cl{
+	pixel_y = 24
 	},
-/obj/item/device/radio/listening_bug/radio_linked/wy{
-	pixel_x = 4;
-	pixel_y = 5
-	},
-/obj/item/device/radio/listening_bug/radio_linked/wy{
-	pixel_x = 4;
-	pixel_y = -3
-	},
-/obj/item/device/radio{
-	pixel_x = -8;
-	pixel_y = 3
-	},
-/obj/item/device/motion_sensor/wy,
-/obj/item/device/motion_sensor/wy,
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
 "bLc" = (
@@ -37411,14 +37398,12 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/p_bow)
 "bMF" = (
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	dir = 4;
-	network = list("WY")
-	},
 /obj/structure/sign/poster/wylogo{
 	pixel_y = 27;
 	pixel_x = -28
+	},
+/obj/structure/machinery/camera/wey_yu/autoname{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -37939,10 +37924,8 @@
 /obj/effect/decal/floor_symbol/wy_3x1{
 	dir = 1
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	name = "ship-grade camera";
-	dir = 4;
-	network = list("WY")
+/obj/structure/machinery/camera/wey_yu/autoname{
+	dir = 4
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -90494,9 +90477,8 @@
 /turf/open/floor/almayer/orange,
 /area/almayer/engineering/upper_engineering)
 "wwW" = (
-/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
-	dir = 8;
-	name = "ship-grade camera"
+/obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell{
+	dir = 8
 	},
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/almayer/medical/containment/cell/cl)
@@ -173055,7 +173037,7 @@ bHM
 bGV
 bHh
 bGV
-bGv
+abd
 bGm
 aXw
 aYF
@@ -204467,7 +204449,7 @@ trU
 oNY
 bMt
 bMc
-eAN
+acm
 pBG
 nFc
 bKY

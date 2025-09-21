@@ -1,0 +1,5 @@
+author: "jupyterkat"
+delete-after: True
+changes:
+  - rscadd: "lights now get dimmer across zlevels"
+  - refactor: "optimized lights"

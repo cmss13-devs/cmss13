@@ -88828,17 +88828,9 @@
 /turf/open/floor/almayer/flooredgesmooth2/south,
 /area/almayer/hallways/lower/starboard_aft_hallway)
 "wxF" = (
-/obj/structure/closet/secure_closet/cmdcabinet{
-	desc = "A bulletproof cabinet containing communications equipment.";
-	name = "communications cabinet";
-	pixel_y = 24;
-	req_access = null;
-	req_one_access_txt = "3"
+/obj/structure/closet/secure_closet/cmdcabinet/comms_mp{
+	pixel_y = 24
 	},
-/obj/item/device/radio/listening_bug/radio_linked/mp{
-	pixel_y = 8
-	},
-/obj/item/device/radio/listening_bug/radio_linked/mp,
 /turf/open/floor/almayer/red/northeast,
 /area/almayer/shipboard/brig/warden_office)
 "wxU" = (

@@ -1755,6 +1755,13 @@
 			return
 	. = ..()
 
+/mob/living/carbon/human/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+	var/turf/above = SSmapping.get_turf_above(thrower)
+	if(above && above.z == target.z)
+		to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
+		return
+	..()
+
 /mob/living/carbon/human/equip_to_slot_if_possible(obj/item/equipping_item, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
 
 	if(SEND_SIGNAL(src, COMSIG_HUMAN_ATTEMPTING_EQUIP, equipping_item, slot) & COMPONENT_HUMAN_CANCEL_ATTEMPT_EQUIP)

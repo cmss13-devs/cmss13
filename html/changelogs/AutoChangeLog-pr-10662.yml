@@ -1,4 +1,0 @@
-author: "zzzmike"
-delete-after: True
-changes:
-  - qol: "hivemind collapse warning now includes the time remaining when there's less than a minute left"

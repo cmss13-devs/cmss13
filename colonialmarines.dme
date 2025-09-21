@@ -67,6 +67,7 @@
 #include "code\__DEFINES\guns.dm"
 #include "code\__DEFINES\hijack.dm"
 #include "code\__DEFINES\html.dm"
+#include "code\__DEFINES\html_assistant.dm"
 #include "code\__DEFINES\hud.dm"
 #include "code\__DEFINES\human.dm"
 #include "code\__DEFINES\job.dm"

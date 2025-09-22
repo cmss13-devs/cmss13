@@ -52,8 +52,8 @@
 
 	return ..()
 
-/datum/effects/sentinel_neuro_stacks/proc/increment_stack_count(increment_number = 2)
-	stack_count = min(max_stacks, stack_count + increment_number)
+/datum/effects/sentinel_neuro_stacks/proc/increment_stack_count(difference = 2)
+	stack_count = min(max_stacks, stack_count + difference)
 
 	if(stack_count <= 0)
 		qdel(src)

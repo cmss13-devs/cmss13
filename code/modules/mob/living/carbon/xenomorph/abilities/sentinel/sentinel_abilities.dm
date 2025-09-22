@@ -31,6 +31,19 @@
 
 	var/buff_duration = 50
 
+/datum/action/xeno_action/activable/tail_stab/sentinel
+	name = "Catalytic Shock Tailstab"
+
 /datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 	. = ..()
+
+/datum/action/xeno_action/activable/draining_bite
+	name = "Headbite"
+	action_icon_state = "headbite"
+	macro_path = /datum/action/xeno_action/verb/verb_headbite
+	ability_primacy = XENO_PRIMARY_ACTION_4
+	action_type = XENO_ACTION_CLICK
+	xeno_cooldown = 12 SECONDS
+	plasma_cost = 100
+	var/minimal_stun = 0.1
 

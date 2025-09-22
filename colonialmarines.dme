@@ -509,6 +509,7 @@
 #include "code\datums\effects\xeno_strains\dancer_tag.dm"
 #include "code\datums\effects\xeno_strains\gain_xeno_cooldown_reduction_on_slash.dm"
 #include "code\datums\effects\xeno_strains\prae_acid_stacks.dm"
+#include "code\datums\effects\xeno_strains\sentinel_neuro_stacks.dm"
 #include "code\datums\effects\xeno_strains\xeno_buff.dm"
 #include "code\datums\effects\xeno_strains\xeno_slow.dm"
 #include "code\datums\effects\xeno_strains\xeno_speed.dm"

@@ -48,6 +48,7 @@
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
 		/datum/action/xeno_action/activable/slowing_spit, //first macro
 		/datum/action/xeno_action/onclick/paralyzing_slash, //third macro
+		/datum/action/xeno_action/activable/draining_bite,
 		/datum/action/xeno_action/onclick/tacmap,
 	)
 	inherent_verbs = list(
@@ -223,3 +224,47 @@
 
 	to_chat(unbuffslash_user, SPAN_XENODANGER("We have waited too long, our slash will no longer apply neurotoxin!"))
 	button.icon_state = "template"
+
+/datum/action/xeno_action/activable/draining_bite/use_ability(atom/target)
+	. = ..()
+	var/mob/living/carbon/xenomorph/xeno = owner
+
+	if(!ishuman(target))
+		return
+
+	var/mob/living/carbon/human/target_human = target
+
+	if(xeno.can_not_harm(target_human))
+		return
+
+	if(!xeno.Adjacent(target_human))
+		to_chat(xeno, SPAN_XENOHIGHDANGER("We can only drain bite an adjacent target!"))
+		return
+
+	if(xeno.stat == UNCONSCIOUS)
+		return
+
+	if(xeno.stat == DEAD)
+		return
+
+	if(xeno.action_busy)
+		return
+
+	var/datum/effects/sentinel_neuro_stacks/sns = null
+	for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in target_human.effects_list)
+		sns = sentinel_neuro_stacks
+		break
+	var/stun_duration = minimal_stun
+	if(sns)
+		stun_duration = max(minimal_stun, (sns.stack_count/10)-1)
+		sns.increment_stack_count(-sns.stack_count/3)
+
+
+	target_human.Stun(stun_duration)
+	target_human.KnockDown(stun_duration)
+
+
+
+
+
+

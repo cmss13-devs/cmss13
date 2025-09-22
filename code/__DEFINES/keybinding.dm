@@ -252,8 +252,8 @@
 
 // Xenomorph Ravager
 #define COMSIG_KB_XENO_RAVAGER_CHARGE "keybinding_ravager_charge"
-#define COMSIG_KB_XENO_RAVAGER_CHARGE "keybinding_ravager_charge"
-#define COMSIG_KB_XENO_RAVAGER_CHARGE "keybinding_ravager_charge"
+#define COMSIG_KB_XENO_RAVAGER_EMPOWER "keybinding_ravager_empower"
+#define COMSIG_KB_XENO_RAVAGER_SCISSOR_CUT "keybinding_ravager_scissor_cut"
 
 // Xenomorph Ravager Berserk
 // Xenomorph Ravager Hedgehog

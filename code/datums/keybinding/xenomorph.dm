@@ -1266,3 +1266,39 @@
 			handle_xeno_macro_datum(xeno, ravager_charge_check)
 			return TRUE
 
+/datum/keybinding/xenomorph/ravager_empower
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "ravager_empower"
+	full_name = "Ravager: Empower"
+	keybind_signal = COMSIG_KB_XENO_RAVAGER_EMPOWER
+
+/datum/keybinding/xenomorph/ravager_empower/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/empower/ravager_empower_check = get_action(xeno, /datum/action/xeno_action/onclick/empower)
+	if(ravager_empower_check)
+		if(ravager_empower_check && !ravager_empower_check.hidden)
+			handle_xeno_macro_datum(xeno, ravager_empower_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/ravager_scissor_cut
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "ravager_scissor_cut"
+	full_name = "Ravager: Scissor cut"
+	keybind_signal = COMSIG_KB_XENO_RAVAGER_SCISSOR_CUT
+
+/datum/keybinding/xenomorph/ravager_scissor_cut/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/scissor_cut/ravager_scissor_cut_check = get_action(xeno, /datum/action/xeno_action/activable/scissor_cut)
+	if(ravager_scissor_cut_check)
+		if(ravager_scissor_cut_check && !ravager_scissor_cut_check.hidden)
+			handle_xeno_macro_datum(xeno, ravager_scissor_cut_check)
+			return TRUE
+

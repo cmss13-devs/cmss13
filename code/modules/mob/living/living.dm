@@ -243,7 +243,9 @@
 			if(T && !(NewLoc in T.locs))
 				if(ishuman(src))
 					var/mob/living/carbon/human/H = src
-					H.apply_effect(3, WEAKEN)
+					H.apply_effect(1.5, WEAKEN)
+					H.apply_effect(3, SUPERSLOW)
+					H.apply_effect(5, SLOW)
 					playsound(src, "punch", 25, TRUE)
 					T.clear_on_top(src)
 

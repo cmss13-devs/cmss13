@@ -147,7 +147,7 @@
 	light_color = LIGHT_COLOR_TUNGSTEN
 	var/on = 0 // 1 if on, 0 if off
 	var/on_gs = 0
-	var/brightness = 6 // luminosity when on, also used in power calculation
+	var/brightness = 8 // luminosity when on, also used in power calculation
 	var/status = LIGHT_OK // LIGHT_OK, _EMPTY, _BURNED or _BROKEN
 	var/flickering = 0
 	var/light_type = /obj/item/light_bulb/tube // the type of light item
@@ -172,12 +172,13 @@
 	icon_state = "btube1"
 	base_state = "btube"
 	desc = "A lighting fixture. Its glass covering is a bright, fluorescent blue."
-	light_color = LIGHT_COLOR_XENON
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/structure/machinery/light/red
 	icon_state = "rtube1"
 	base_state = "rtube"
 	desc = "A lighting fixture. Its glass covering is a bright, fluorescent red."
+	brightness = 4
 
 // the smaller bulb light fixture
 
@@ -273,11 +274,9 @@
 	. = ..()
 	switch(fitting)
 		if("tube")
-			brightness = 8
 			if(prob(2))
 				broken(1)
 		if("bulb")
-			brightness = 4
 			if(prob(5))
 				broken(1)
 

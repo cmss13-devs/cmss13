@@ -15547,15 +15547,14 @@
 /turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/medical)
 "aOE" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
-	dir = 8
+	dir = 1
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/req)
 "aOF" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -15719,17 +15718,28 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "aPb" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F"
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
 	},
-/turf/open_space,
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aPc" = (
-/obj/structure/platform/metal/almayer_smooth/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
 	},
-/turf/open_space,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aPd" = (
 /obj/effect/decal/cleanable/dirt,
@@ -16086,19 +16096,25 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/maintenance/saft)
 "aPX" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
 	},
-/turf/open_space,
+/obj/structure/machinery/light/red{
+	dir = 8;
+	light_color = "#BB3F3F"
+	},
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aPY" = (
-/obj/structure/platform/metal/almayer_smooth/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/largecrate/random/barrel/medical,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/turf/open_space,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "aPZ" = (
 /obj/effect/decal/warning_stripes{
@@ -18424,12 +18440,11 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "aVA" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "aVB" = (
@@ -23481,19 +23496,12 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/briefing)
 "bhe" = (
+/obj/effect/decal/heavy_cable/cable_vertical,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E"
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "bhf" = (
 /obj/effect/decal/cleanable/dirt,
@@ -23529,11 +23537,10 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/req)
 "bhj" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 1
-	},
 /obj/effect/decal/heavy_cable/cable_vertical,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F"
+	},
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/req)
 "bhk" = (
@@ -25924,6 +25931,10 @@
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
 	pixel_y = 1
+	},
+/obj/structure/machinery/light/red{
+	dir = 8;
+	light_color = "#BB3F3F"
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
@@ -50225,9 +50236,6 @@
 /turf/open/floor/almayer/plating_striped/southeast,
 /area/almayer/engineering/lower/engine_core)
 "hfO" = (
-/obj/structure/machinery/light/small{
-	dir = 1
-	},
 /obj/structure/surface/rack,
 /obj/item/storage/belt/utility/full{
 	pixel_y = 8
@@ -50235,6 +50243,10 @@
 /obj/item/storage/belt/utility/full,
 /obj/item/clothing/suit/storage/hazardvest/black,
 /obj/item/tool/crowbar,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 1
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_a_s)
 "hfQ" = (
@@ -167718,13 +167730,13 @@ bud
 bib
 avN
 avN
-aPX
+aOY
 aOx
 bfM
-bmU
+aPb
 aPq
 aOl
-aPb
+aOY
 avN
 avN
 brG
@@ -168233,13 +168245,13 @@ aTF
 avN
 avN
 avN
-aPY
+aPu
 aPV
 bfM
 bmU
 bfU
 aOm
-aPc
+aPu
 avN
 avN
 avN
@@ -168334,7 +168346,7 @@ avN
 aIA
 avN
 avN
-aIc
+aPX
 beB
 bhw
 bhw
@@ -168435,7 +168447,7 @@ aOl
 avN
 bui
 bnw
-aOE
+aHP
 aHP
 bnm
 bcP
@@ -168449,7 +168461,7 @@ aYN
 aYN
 bmd
 blV
-aOE
+aHP
 aHr
 bci
 avN
@@ -169880,7 +169892,7 @@ bnv
 blH
 bcj
 avN
-btP
+aPY
 bmV
 bfU
 aOl
@@ -169888,7 +169900,7 @@ aOY
 aOx
 bfM
 bah
-baC
+aPc
 avN
 bwp
 blP
@@ -174003,7 +174015,7 @@ lcg
 daz
 lmz
 asm
-bhe
+aTa
 bgB
 bdb
 aUJ
@@ -174106,9 +174118,9 @@ lcg
 daz
 lmz
 asm
-bcW
+aOE
 bak
-bcX
+bhj
 asm
 bsH
 bsc
@@ -174724,9 +174736,9 @@ daz
 daz
 daz
 asm
-bcX
+bhe
 byl
-bcW
+aVA
 asm
 bsO
 bsc
@@ -174827,7 +174839,7 @@ ahM
 daz
 lmz
 asm
-bhe
+aTa
 bgD
 bdS
 aUJ
@@ -175342,9 +175354,9 @@ lmz
 lmz
 lmz
 asm
-bcW
+aOE
 bak
-bcW
+aVA
 asm
 asm
 bsA
@@ -175445,7 +175457,7 @@ bFZ
 asm
 asm
 asm
-aVA
+bcW
 bak
 bcW
 asm
@@ -177093,7 +177105,7 @@ asm
 asm
 asm
 asm
-bhj
+bcX
 byl
 bcW
 asm
@@ -177196,9 +177208,9 @@ bFZ
 bFZ
 bFZ
 asm
-bcX
+bhe
 byl
-bcW
+aVA
 asm
 asm
 beM
@@ -177814,9 +177826,9 @@ bFZ
 bFZ
 bFZ
 asm
-bcX
+bhe
 bak
-bcW
+aVA
 asm
 asm
 aIJ
@@ -178123,7 +178135,7 @@ bFZ
 bFZ
 bFZ
 asm
-bhe
+aTa
 bgB
 aTf
 asm
@@ -178432,9 +178444,9 @@ bFZ
 bFZ
 bFZ
 asm
-bcW
+aOE
 byl
-bcX
+bhj
 asm
 btb
 aZw
@@ -178741,7 +178753,7 @@ bFZ
 bFZ
 bFZ
 asm
-aVA
+bcW
 byl
 bcX
 asm

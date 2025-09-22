@@ -338,3 +338,16 @@
   - bugfix: Filling an acid trap successfully no longer swipes at it
   jupyterkat:
   - rscadd: added spec icon for heavy armor spec
+2025-08-30:
+  Don Cycon:
+  - balance: Replaces flashlights in firesuit closets with M94 flare packets.
+  - balance: Replaces flashlights in survival pouches with lanterns.
+  FloranOtten:
+  - bugfix: Queen eye can now peep into tents
+  LTNTS:
+  - bugfix: fixes inability to do surgery on lifeboat catwalk
+  Lukas-Seltz:
+  - maptweak: Tweaked OT lab to have a better layout for easier use
+  ihatethisengine:
+  - rscadd: Rephrased Renegade defection message and added an announcement for marines
+      when Renegades appear

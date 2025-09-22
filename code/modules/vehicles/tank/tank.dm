@@ -266,13 +266,16 @@
 		return ..()
 	if(M.action_busy)
 		return
-	if(get_turf(M) in locs)
-		return
 	if(M.pulledby || M.throwing)
 		return
 	var/turf/facing_turf = get_step(get_turf(M), M.dir)
 	if(!facing_turf)
 		return ..()
+	if(M.resting)
+		M.forceMove(facing_turf)
+		return ..()
+	if(get_turf(M) in locs)
+		return
 
 	climb_onto(M, facing_turf)
 	return

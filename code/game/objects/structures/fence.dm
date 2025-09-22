@@ -85,7 +85,7 @@
 	operating = TRUE
 	playsound(loc, 'sound/effects/fenceopen.ogg', 25, 1)
 	update_icon()
-	addtimer(CALLBACK(src, PROC_REF(open), opening_time))
+	addtimer(CALLBACK(src, PROC_REF(open)), opening_time)
 
 /obj/structure/fence/proc/open()
 	operating = FALSE

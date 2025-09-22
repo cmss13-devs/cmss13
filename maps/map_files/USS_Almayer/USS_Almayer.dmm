@@ -35062,7 +35062,6 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
-/obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
 "bHg" = (

@@ -219,7 +219,7 @@
 	if(recipient && !QDELETED(recipient))
 		recipient.gain_health(heal_amount)
 		//Every second, heal them for 20.
-		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
+		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1, show_baloon_alert = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We recover a bit from our injuries, and begin to regenerate rapidly."))
 		recipient.balloon_alert(recipient, "our flesh mends, and the regeneration quickens!", text_color = "#17991B")
 	if(do_consume)
@@ -255,7 +255,7 @@
 	if(mature && recipient && !QDELETED(recipient))
 		recipient.add_xeno_shield(clamp(overshield_amount, 0, recipient.maxHealth * 0.3), XENO_SHIELD_SOURCE_GARDENER, duration = shield_duration, decay_amount_per_second = shield_decay)
 		//Every second, heal them for 5.
-		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1)
+		new /datum/effects/heal_over_time(recipient, regeneration_amount_total, regeneration_ticks, 1, show_baloon_alert = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel our defense being bolstered, and begin to slowly regenerate."))
 		recipient.balloon_alert(recipient, "our regeneration quickens and carapace thickens!", text_color = "#179973")
 	if(do_consume)
@@ -291,7 +291,7 @@
 		for(var/datum/effects/gain_xeno_cooldown_reduction_on_slash/E in recipient.effects_list)
 			if(E.effect_source == "spore")
 				qdel(E)
-		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 90 SECONDS, "spore")
+		new /datum/effects/gain_xeno_cooldown_reduction_on_slash(recipient, bound_xeno, max_cooldown_reduction, cooldown_per_slash, 90 SECONDS, "spore", show_baloon_alert = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("We feel a frenzy coming onto us! Our abilities will cool off faster as we slash!"))
 		recipient.balloon_alert(recipient, "we feel a frenzy coming onto us!", text_color = "#994617", delay = 1 SECONDS)
 	if(do_consume)
@@ -342,7 +342,7 @@
 
 /obj/effect/alien/resin/fruit/speed/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && !QDELETED(recipient))
-		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENOWARNING("We feel the effects of the [name] wane..."))
+		new /datum/effects/xeno_speed(recipient, ttl = speed_duration, set_speed_modifier = speed_buff_amount, set_modifier_source = XENO_FRUIT_SPEED, set_end_message = SPAN_XENOWARNING("We feel the effects of the [name] wane..."), show_baloon_alert = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("The [name] invigorates us to move faster!"))
 		recipient.balloon_alert(recipient, "we feel invigorated to run faster!", text_color = "#5B248C", delay = 1 SECONDS)
 	if(do_consume)
@@ -373,7 +373,7 @@
 /obj/effect/alien/resin/fruit/plasma/consume_effect(mob/living/carbon/xenomorph/recipient, do_consume = TRUE)
 	if(mature && recipient && recipient.plasma_max > 0 && !QDELETED(recipient))
 		//With the current values (240, 15, 3), this will give the recipient 48 plasma every 3 seconds, for a total of 240 in 15 seconds.
-		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas)
+		new /datum/effects/plasma_over_time(recipient, plasma_amount, plasma_time, time_between_plasmas, show_baloon_alert = TRUE)
 		to_chat(recipient, SPAN_XENOBOLDNOTICE("The [name] boosts our plasma regeneration!"))
 		recipient.balloon_alert(recipient, "we feel our plasma rapidly regenerate!", text_color = "#287A90")
 	if(do_consume)

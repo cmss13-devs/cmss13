@@ -87,7 +87,7 @@
 	update_icon()
 	addtimer(CALLBACK(src, PROC_REF(open), opening_time))
 
-/obj/structure/fence/open()
+/obj/structure/fence/proc/open()
 	operating = FALSE
 	if(cut)
 		return

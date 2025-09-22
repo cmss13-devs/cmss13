@@ -5,8 +5,8 @@
 	macro_path = /datum/action/xeno_action/verb/verb_slowing_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 2 SECONDS
-	plasma_cost = 20
+	xeno_cooldown = 1 SECONDS
+	plasma_cost = 50
 	ability_uses_acid_overlay = TRUE
 
 // Scatterspit
@@ -19,15 +19,18 @@
 	xeno_cooldown = 7 SECONDS
 	plasma_cost = 30
 	ability_uses_acid_overlay = TRUE
-
-// Paralyzing slash
+// Toxic slash
 /datum/action/xeno_action/onclick/paralyzing_slash
-	name = "Paralyzing Slash"
+	name = "Toxic Slash"
 	action_icon_state = "lurker_inject_neuro"
 	macro_path = /datum/action/xeno_action/verb/verb_paralyzing_slash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 12 SECONDS
-	plasma_cost = 50
+	xeno_cooldown = 10 SECONDS
+	plasma_cost = 100
 
 	var/buff_duration = 50
+
+/datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
+	. = ..()
+

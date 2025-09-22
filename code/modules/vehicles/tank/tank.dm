@@ -76,6 +76,12 @@
 	explosive_resistance = 400
 
 	var/list/on_top_mobs = list() /// keeps track of all mobs currently atop the tank
+	var/on_top_mobs_shooting_inaccuracy_time = 0 /// world_time must be bigger than this so mobs don't get penalized for shooting while atop the tank.
+
+/obj/vehicle/multitile/tank/update_next_move()
+	var/anti_build_factor = 1/((max(abs(move_momentum), 1)/move_max_momentum) * move_momentum_build_factor)
+	on_top_mobs_shooting_inaccuracy_time = world.time + move_delay * move_momentum_build_factor * anti_build_factor * misc_multipliers["move"] * 5
+	. = ..()
 
 /obj/vehicle/multitile/tank/initialize_cameras(change_tag = FALSE)
 	if(!camera)

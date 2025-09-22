@@ -575,6 +575,12 @@
 /turf/open/floor/ancient_temple/base/alt
 	icon_state = "floor_statue_base_alt"
 
+/turf/open/floor/ancient_temple/base/dark
+	icon_state = "floor_dark_statue_base"
+
+/turf/open/floor/ancient_temple/base/dark/alt
+	icon_state = "floor_dark_statue_base_alt"
+
 //
 
 /turf/open/floor/ancient_temple/ruined

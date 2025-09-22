@@ -2724,6 +2724,9 @@
 /turf/open/floor/prison/sterile_white/southwest
 	dir = SOUTHWEST
 
+/turf/open/floor/prison/brown
+	icon_state = "brown"
+
 /turf/open/floor/prison/whitegreen
 	icon_state = "whitegreen"
 

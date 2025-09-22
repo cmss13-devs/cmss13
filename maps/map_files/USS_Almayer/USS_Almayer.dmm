@@ -17972,6 +17972,12 @@
 /obj/structure/airlock_assembly,
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/middeck/maintenance/sp)
+"aUE" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
+	},
+/turf/open/floor/almayer/mono/no_build,
+/area/almayer/medical/containment/cell/cl)
 "aUF" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /turf/open/floor/almayer/no_build/test_floor4,
@@ -19780,6 +19786,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/shipboard/navigation)
+"aYH" = (
+/obj/structure/bed/chair/comfy,
+/turf/open/floor/almayer/mono/no_build,
+/area/almayer/medical/containment/cell/cl)
 "aYI" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -20337,18 +20347,6 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/sp)
-"aZU" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/sign/safety/terminal{
-	pixel_x = 32;
-	pixel_y = 3
-	},
-/obj/structure/machinery/computer/cameras/containment{
-	network = list("Containment","Research","WY");
-	dir = 8
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/medical/containment/cell/cl)
 "aZV" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo,
 /turf/open/floor/almayer/plate,
@@ -34855,9 +34853,6 @@
 /area/almayer/squads/req)
 "bGx" = (
 /obj/structure/machinery/light/containment,
-/obj/structure/bed/chair/comfy{
-	dir = 1
-	},
 /turf/open/floor/almayer/mono/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bGy" = (
@@ -35005,15 +35000,13 @@
 /area/almayer/medical/containment/cell/cl)
 "bGS" = (
 /obj/structure/bed/chair/comfy{
-	dir = 4
+	dir = 1
 	},
 /turf/open/floor/almayer/mono/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bGT" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/item/ashtray/glass{
-	pixel_x = -3;
-	pixel_y = 6
+/obj/structure/bed/chair/comfy{
+	dir = 1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
@@ -35076,8 +35069,17 @@
 /turf/open/floor/almayer/mono/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bHe" = (
-/obj/structure/bed/chair/comfy{
-	dir = 4
+/obj/structure/surface/table/reinforced/black,
+/obj/structure/machinery/door_control{
+	id = "WY_conference";
+	name = "Meeting Room Shutters";
+	pixel_y = 4;
+	req_access_txt = "200";
+	pixel_x = -6
+	},
+/obj/item/ashtray/glass{
+	pixel_x = 3;
+	pixel_y = 6
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
@@ -35087,6 +35089,7 @@
 	pixel_x = -1;
 	pixel_y = 3
 	},
+/obj/structure/surface/table/reinforced/black,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
 "bHg" = (
@@ -35113,8 +35116,10 @@
 /turf/open/floor/almayer/dark_sterile2,
 /area/almayer/medical/cryo_tubes)
 "bHh" = (
-/obj/structure/bed/chair/comfy{
-	dir = 8
+/obj/structure/surface/table/reinforced/black,
+/obj/item/ashtray/glass{
+	pixel_x = 3;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
@@ -35196,26 +35201,12 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/lower_astronav)
 "bHr" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/transmitter/rotary{
-	do_not_disturb = 2;
-	name = "Weyland-Yutani Meeting Room";
+/obj/structure/transmitter{
 	phone_category = "Liaison";
-	phone_id = "Meeting Room";
-	pixel_x = -6;
-	pixel_y = 16
-	},
-/obj/item/paper_bin/wy{
-	pixel_x = 6;
-	pixel_y = 7
-	},
-/obj/item/tool/pen/clicky{
-	pixel_x = -1;
-	pixel_y = 3
-	},
-/obj/item/tool/pen/clicky{
-	pixel_x = -1;
-	pixel_y = -1
+	phone_id = "Conference Room";
+	dir = 4;
+	pixel_x = -26;
+	name = "Conference Room Telephone"
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
@@ -35223,17 +35214,7 @@
 /turf/open/floor/almayer/flooredge/southeast/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bHt" = (
-/obj/structure/surface/table/reinforced/black,
-/obj/structure/machinery/door_control{
-	id = "WY_conference";
-	name = "Meeting Room Shutters";
-	pixel_y = 4;
-	req_access_txt = "200"
-	},
-/obj/item/ashtray/glass{
-	pixel_x = 3;
-	pixel_y = -6
-	},
+/obj/structure/bed/chair/comfy,
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
 "bHu" = (
@@ -35331,8 +35312,21 @@
 "bHK" = (
 /obj/structure/surface/table/reinforced/black,
 /obj/structure/machinery/faxmachine/corporate/liaison/almayer{
-	pixel_y = 2;
-	sub_name = "W-Y Liaison (Conference)"
+	pixel_y = 19;
+	sub_name = "W-Y Liaison (Conference)";
+	pixel_x = -4
+	},
+/obj/item/paper_bin/wy{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = -1;
+	pixel_y = 3
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = -1;
+	pixel_y = -1
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
@@ -35342,26 +35336,12 @@
 "bHM" = (
 /turf/open/floor/almayer/flooredge/south/no_build,
 /area/almayer/medical/containment/cell/cl)
-"bHN" = (
-/obj/structure/bed/chair/comfy/orange,
-/turf/open/floor/almayer/mono/no_build,
-/area/almayer/medical/containment/cell/cl)
 "bHO" = (
 /turf/open/floor/almayer/flooredge/west/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bHP" = (
 /turf/open/floor/almayer/plating,
 /area/almayer/shipboard/weapon_room)
-"bHQ" = (
-/obj/structure/bookcase{
-	opacity = 0
-	},
-/obj/item/book/manual/marine_law,
-/obj/item/book/manual/security_space_law,
-/obj/item/book/manual/nuclear,
-/obj/item/book/manual/rank,
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/medical/containment/cell/cl)
 "bHR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/heavy_cable/node_n_e_s,
@@ -172744,7 +172724,7 @@ bIg
 bHW
 bHL
 bHs
-bHd
+aUE
 bGR
 bGt
 bGm
@@ -172846,7 +172826,7 @@ bID
 bIh
 bHX
 bHM
-bGS
+aYH
 bHe
 bGS
 bGv
@@ -172948,7 +172928,7 @@ bIV
 bID
 bIg
 bHW
-bHN
+bHd
 bHt
 bHf
 bGT
@@ -173052,9 +173032,9 @@ bID
 bIi
 bHX
 bHM
-bGV
+aYH
 bHh
-bGV
+bGS
 abd
 bGm
 aXw
@@ -173156,7 +173136,7 @@ bIg
 bHW
 bHO
 bHv
-bHd
+bGV
 bGW
 bGA
 bGm
@@ -173257,8 +173237,8 @@ bGm
 bIF
 bIj
 bGm
-bHQ
-aZU
+bGv
+bGv
 bHi
 bGv
 bGm

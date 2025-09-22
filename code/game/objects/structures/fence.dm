@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(all_electric_fences, list())
 // Classic Style Fences
 
 /obj/structure/fence/overgrown
-	name = "overgrow fence"
+	name = "overgrown fence"
 	desc = "A large metal mesh strewn between two poles, tangled with vines and creeping growth. Still separates areas, but nature is reclaiming it."
 	icon = 'icons/obj/structures/props/fences/overgrown_fence.dmi'
 

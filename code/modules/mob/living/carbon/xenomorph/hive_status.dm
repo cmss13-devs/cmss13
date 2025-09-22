@@ -804,9 +804,12 @@
 		if(xeno.tier >= 1)
 			xenos_count++
 	for(var/mob/living/potential_host as anything in GLOB.alive_mob_list)
-		if(!(potential_host.status_flags & XENO_HOST))
-			continue
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
+			continue
+		var/obj/item/clothing/mask/facehugger/hugger = locate() in potential_host
+		if(hugger && hugger.hivenumber == hivenumber)
+			hugger.hivenumber = XENO_HIVE_FORSAKEN
+		if(!(potential_host.status_flags & XENO_HOST))
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			if(embryo.hivenumber != hivenumber)

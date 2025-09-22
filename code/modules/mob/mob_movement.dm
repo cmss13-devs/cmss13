@@ -185,7 +185,7 @@ CLIENT_VERB(drop_item)
 		if(mob.next_move_slowdown)
 			move_delay += mob.next_move_slowdown
 			mob.next_move_slowdown = 0
-		if(!ishuman(mob)) //humans can dirlock with no slowdown
+		if(mob.dirlock_slowdown) //humans can dirlock with no slowdown
 			if((mob.flags_atom & DIRLOCK) && mob.dir != direct)
 				move_delay += MOVE_REDUCTION_DIRECTION_LOCKED // by Geeves
 

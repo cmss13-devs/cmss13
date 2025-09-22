@@ -29,6 +29,8 @@
 	var/damage_per_tick = 200 // more likely to report the bug if it instantly kills them
 	var/damage_type = BURN
 
+	var/should_sound_weather_alarm = FALSE // Variable to check if weather alarm on loudspeakers (like soro) should be played.
+
 	var/ambience = 'sound/ambience/strata/strata_snow.ogg'
 
 	/// to be used with handle_weather_process()

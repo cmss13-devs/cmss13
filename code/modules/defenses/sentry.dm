@@ -357,9 +357,10 @@
 	var/list/unconscious_targets = list()
 
 	for(var/atom/movable/A in targets) // orange allows sentry to fire through gas and darkness
+		var/turf/target_turf = get_turf(A)
 		if(isliving(A))
 			var/mob/living/M = A
-			if(M.stat & DEAD)
+			if(M.stat & DEAD || isbrain(M))
 				if(A == target)
 					target = null
 				targets.Remove(A)
@@ -382,17 +383,17 @@
 			var/adj
 			switch(dir)
 				if(NORTH)
-					opp = x-A.x
-					adj = A.y-y
+					opp = x-target_turf.x
+					adj = target_turf.y-y
 				if(SOUTH)
-					opp = x-A.x
-					adj = y-A.y
+					opp = x-target_turf.x
+					adj = y-target_turf.y
 				if(EAST)
-					opp = y-A.y
-					adj = A.x-x
+					opp = y-target_turf.y
+					adj = target_turf.x-x
 				if(WEST)
-					opp = y-A.y
-					adj = x-A.x
+					opp = y-target_turf.y
+					adj = x-target_turf.x
 
 			var/r = 9999
 			if(adj != 0)
@@ -404,8 +405,8 @@
 				targets.Remove(A)
 				continue
 
-		var/list/turf/path = get_line(src, A, include_start_atom = FALSE)
-		if(!length(path) || get_dist(src, A) > sentry_range)
+		var/list/turf/path = get_line(src, target_turf, include_start_atom = FALSE)
+		if(!length(path) || get_dist(src, target_turf) > sentry_range)
 			if(A == target)
 				target = null
 			targets.Remove(A)
@@ -475,10 +476,33 @@
 	faction_group = FACTION_LIST_MARINE
 	static = TRUE
 
+/obj/structure/machinery/defenses/sentry/premade/lowammo
+	name = "\improper UA-577 Gauss Turret"
+	immobile = TRUE
+	turned_on = TRUE
+	icon = 'icons/obj/structures/machinery/defenses/clf_defenses.dmi'
+	icon_state = "premade" //for the map editor only
+	faction_group = FACTION_LIST_MARINE
+	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo
+	static = TRUE
+
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random
+	name = "\improper UA-577 Gauss Turret"
+	immobile = TRUE
+	turned_on = TRUE
+	icon_state = "premade" //for the map editor only
+	faction_group = FACTION_LIST_MARINE
+	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo
+	static = TRUE
+
 /obj/structure/machinery/defenses/sentry/premade/Initialize()
 	. = ..()
 	if(selected_categories[SENTRY_CATEGORY_IFF])
 		selected_categories[SENTRY_CATEGORY_IFF] = FACTION_MARINE
+
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/Initialize()
+	. = ..()
+	ammo.current_rounds = rand(100,500)
 
 /obj/structure/machinery/defenses/sentry/premade/get_examine_text(mob/user)
 	. = ..()
@@ -501,6 +525,18 @@
 	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been disabled, and it will open fire on any targets within range."
 	faction_group = null
 	ammo = new /obj/item/ammo_magazine/sentry/premade/dumb
+
+/obj/structure/machinery/defenses/sentry/premade/lowammo/dumb
+	name = "modified UA-577 Gauss Turret"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been disabled, and it will open fire on any targets within range."
+	faction_group = null
+	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo/dumb
+
+/obj/structure/machinery/defenses/sentry/premade/lowammo/random/dumb
+	name = "modified UA-577 Gauss Turret"
+	desc = "A deployable, semi-automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a high-capacity drum magazine. This one's IFF system has been disabled, and it will open fire on any targets within range."
+	faction_group = FACTION_LIST_CLF
+	ammo = new /obj/item/ammo_magazine/sentry/premade/lowammo/dumb
 
 //the turret inside a static sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/deployable

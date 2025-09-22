@@ -54,6 +54,7 @@
 	var/state_override
 	/// Whether we're bloody, normal, or mature
 	var/larva_state = LARVA_STATE_BLOODY
+	var/last_roar_time = 0
 
 	icon_xeno = 'icons/mob/xenos/castes/tier_0/larva.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_0/larva.dmi'
@@ -172,6 +173,10 @@
 		return
 
 	var/mob/living/carbon/xenomorph/larva/larva = new /mob/living/carbon/xenomorph/larva(atom)
+	var/turf/turf = get_turf(larva)
+
+	if(SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED && is_ground_level(turf?.z))
+		hivenumber = XENO_HIVE_FORSAKEN //Set to forsaken hive if hijack is active and on ground level
 
 	larva.set_hive_and_update(hivenumber)
 
@@ -197,6 +202,12 @@
 			return FALSE
 
 	// Otherwise, ""roar""!
+	var/current_time = world.time
+	if(current_time - last_roar_time < 1 SECONDS)
+		to_chat(src, SPAN_WARNING("You must wait before roaring again."))
+		return FALSE
+
+	last_roar_time = current_time
 	playsound(loc, "alien_roar_larva", 15)
 	return TRUE
 

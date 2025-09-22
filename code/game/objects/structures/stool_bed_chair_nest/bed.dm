@@ -469,6 +469,58 @@ GLOBAL_LIST_EMPTY(activated_medevac_stretchers)
 	icon_state = "bedroll"
 	rollertype = /obj/structure/bed/bedroll
 
+/obj/structure/bed/bedroll/comfy
+	name = "unfolded comfy bedroll"
+	desc = "A bedroll so comfy, it’s technically illegal in three sectors for causing excessive napping."
+	icon_state = "bedroll_comfy_o"
+	foldabletype = /obj/item/roller/bedroll/comfy
+
+/obj/item/roller/bedroll/comfy
+	name = "folded comfy bedroll"
+	desc = "Folded and innocent-looking — but don’t be fooled. It's technically illegal in three sectors for causing excessive napping."
+	icon_state = "bedroll_comfy"
+	rollertype = /obj/structure/bed/bedroll/comfy
+
+/obj/structure/bed/bedroll/comfy/blue
+	color = "#8cb9e2"
+	foldabletype = /obj/item/roller/bedroll/comfy/blue
+
+/obj/item/roller/bedroll/comfy/blue
+	color = "#8cb9e2"
+	rollertype = /obj/structure/bed/bedroll/comfy/blue
+
+/obj/structure/bed/bedroll/comfy/red
+	color = "#df4f4f"
+	foldabletype = /obj/item/roller/bedroll/comfy/red
+
+/obj/item/roller/bedroll/comfy/red
+	color = "#df4f4f"
+	rollertype = /obj/structure/bed/bedroll/comfy/red
+
+/obj/structure/bed/bedroll/comfy/pink
+	color = "#eaa8b2"
+	foldabletype = /obj/item/roller/bedroll/comfy/pink
+
+/obj/item/roller/bedroll/comfy/pink
+	color = "#eaa8b2"
+	rollertype = /obj/structure/bed/bedroll/comfy/pink
+
+/obj/structure/bed/bedroll/comfy/green
+	color = "#b3e290"
+	foldabletype = /obj/item/roller/bedroll/comfy/green
+
+/obj/item/roller/bedroll/comfy/green
+	color = "#b3e290"
+	rollertype = /obj/structure/bed/bedroll/comfy/green
+
+/obj/structure/bed/bedroll/comfy/yellow
+	color = "#e2df90"
+	foldabletype = /obj/item/roller/bedroll/comfy/yellow
+
+/obj/item/roller/bedroll/comfy/yellow
+	color = "#e2df90"
+	rollertype = /obj/structure/bed/bedroll/comfy/yellow
+
 //Hospital Rollers (non foldable)
 
 /obj/structure/bed/roller/hospital

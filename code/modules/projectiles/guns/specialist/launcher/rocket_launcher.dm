@@ -1,10 +1,9 @@
 
-//-------------------------------------------------------
-//M5 RPG
+
 
 /obj/item/weapon/gun/launcher/rocket
-	name = "\improper M5 RPG"
-	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+	name = "\improper common rocket launcher ancestor"
+	desc = "You should not be seeing this"
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	icon_state = "m5"
 	item_state = "m5"
@@ -154,6 +153,7 @@
 			rocket.forceMove(src)
 			replace_ammo(,rocket)
 			to_chat(user, SPAN_NOTICE("You load [rocket] into [src]."))
+			update_icon()
 			if(reload_sound)
 				playsound(user, reload_sound, 25, 1)
 			else
@@ -166,6 +166,7 @@
 		current_mag = rocket
 		rocket.forceMove(src)
 		replace_ammo(,rocket)
+		update_icon()
 	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
@@ -183,6 +184,7 @@
 			SPAN_NOTICE("You unload [ammo] from [src]."))
 			make_rocket(user, drop_override, 0)
 			current_mag.current_rounds = 0
+			update_icon()
 
 //Adding in the rocket backblast. The tile behind the specialist gets blasted hard enough to down and slightly wound anyone
 /obj/item/weapon/gun/launcher/rocket/apply_bullet_effects(obj/projectile/projectile_to_fire, mob/user, i = 1, reflex = 0)
@@ -210,6 +212,22 @@
 		mob.KnockDown(knockdown_amount)
 		mob.apply_effect(6, STUTTER)
 		mob.emote("pain")
+
+
+//-------------------------------------------------------
+//M5 RPG
+
+/obj/item/weapon/gun/launcher/rocket/m5
+	name = "\improper M5 RPG"
+	desc = "The M5 RPG is the primary anti-armor weapon of the USCM. Used to take out light-tanks and enemy structures, the M5 RPG is a dangerous weapon with a variety of combat uses."
+	map_specific_decoration = TRUE
+	has_empty_icon = TRUE
+	auto_retrieval_slot = WEAR_J_STORE
+	attachable_allowed = list()
+
+/obj/item/weapon/gun/launcher/rocket/m5/Fire(atom/target, mob/living/user, params, reflex, dual_wield)
+	. = ..()
+	update_icon()
 
 //-------------------------------------------------------
 //M5 RPG'S MEAN FUCKING COUSIN
@@ -266,6 +284,7 @@
 	name = "\improper M83A2 SADAR"
 	desc = "The M83A2 SADAR is a lightweight one-shot anti-armor weapon capable of engaging enemy vehicles at ranges up to 1,000m. Fully disposable, the rocket's launcher is discarded after firing. When stowed (unique-action), the SADAR system consists of a watertight carbon-fiber composite blast tube, inside of which is an aluminum launch tube containing the missile. The weapon is fired by pushing a charge button on the trigger grip.  It is sighted and fired from the shoulder."
 	var/fired = FALSE
+	can_be_reloaded = FALSE
 
 /obj/item/weapon/gun/launcher/rocket/anti_tank/disposable/get_examine_text(mob/user)
 	. = ..()
@@ -307,7 +326,7 @@
 //folded version of the sadar
 /obj/item/prop/folded_anti_tank_sadar
 	name = "\improper M83 SADAR (folded)"
-	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded by in-hand activation."
+	desc = "An M83 SADAR Anti-Tank RPG, compacted for easier storage. Can be unfolded with the in-hand activation key, default 'Z'."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/rocket_launchers.dmi'
 	item_icons = list(
 		WEAR_BACK = 'icons/mob/humans/onmob/clothing/suit_storage/guns_by_type/rocket_launchers.dmi',
@@ -352,21 +371,22 @@
 //UPP Rocket Launcher
 
 /obj/item/weapon/gun/launcher/rocket/upp
-	name = "\improper HJRA-12 Handheld Anti-Tank Grenade Launcher"
-	desc = "The HJRA-12 Handheld Anti-Tank Grenade Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
+	name = "\improper HJRA-12 Handheld Anti-Tank Rocket Launcher"
+	desc = "The HJRA-12 Handheld Anti-Tank Rocket Launcher is the standard Anti-Armor weapon of the UPP. It is designed to be easy to use and to take out or disable armored vehicles."
 	icon = 'icons/obj/items/weapons/guns/guns_by_faction/UPP/rocket_launchers.dmi'
 	icon_state = "hjra12"
 	item_state = "hjra12"
-	skill_locked = FALSE
+	skill_locked = TRUE
 	current_mag = /obj/item/ammo_magazine/rocket/upp/at
+	unacidable = TRUE
+	explo_proof = TRUE
 
 	pixel_x = -7
 	hud_offset = -7
 
+	flags_gun_features = GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 
-	flags_gun_features = GUN_WIELDED_FIRING_ONLY
-
-	flags_item = TWOHANDED
+	flags_item = TWOHANDED|NO_CRYO_STORE
 
 /obj/item/weapon/gun/launcher/rocket/upp/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 6, "rail_y" = 19, "under_x" = 19, "under_y" = 14, "stock_x" = -6, "stock_y" = 16, "special_x" = 37, "special_y" = 16)
@@ -395,6 +415,9 @@
 			C.apply_effect(6, STUTTER)
 			C.emote("pain")
 
+//-------------------------------------------------------
+//BRUTE
+
 /obj/item/weapon/gun/launcher/rocket/brute
 	name = "\improper M6H-BRUTE launcher system"
 	desc = " Breaching Rocket Unit for Tactical Entry, or BRUTE, is a shoulder-mounted, man-portable launcher system designed to give combat technicians rapid structure defeating capabilities at reasonable range. The launcher fits a fore-mounted laser guidance module that steers the 90mm shaped-charge rockets towards a fortified position. Try not to drool on it."
@@ -411,10 +434,28 @@
 	var/f_aiming_time = 4 SECONDS
 	var/aiming = FALSE
 
+/obj/item/weapon/gun/launcher/rocket/brute/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 8, "rail_y" = 17, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+
+
 /obj/item/weapon/gun/launcher/rocket/brute/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
 	))
+
+/obj/item/weapon/gun/launcher/rocket/brute/retrieve_to_slot(mob/living/carbon/human/user, retrieval_slot, check_loc, silent)
+	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
+		if(..(user, WEAR_IN_BACK, check_loc, silent)) //...first try to put it into the bag
+			return TRUE
+	return ..()
+
+/obj/item/weapon/gun/launcher/rocket/brute/retrieval_check(mob/living/carbon/human/user, retrieval_slot)
+	if(retrieval_slot == WEAR_IN_BACK)
+		var/obj/item/storage/belt/gun/brutepack/brutepack = user.back
+		if(istype(brutepack) && brutepack.can_be_inserted(src, user, TRUE))
+			return TRUE
+		return FALSE
+	return ..()
 
 /obj/item/weapon/gun/launcher/rocket/brute/skill_fail(mob/living/user)
 	return !skillcheck(user, SKILL_ENGINEER ,SKILL_ENGINEER_ENGI)
@@ -424,13 +465,13 @@
 		return
 
 	if(!(istype(target, /obj/structure) || istype(target,/turf/closed/wall)) )
-		user.visible_message(SPAN_WARNING("Invalid target!"))
+		to_chat(user, SPAN_WARNING("Invalid target!"))
 		return
 
 	var/list/turf/path = get_line(user, target, include_start_atom = FALSE)
-	for(var/turf/T in path)
-		if(T.opacity && T != target)
-			user.visible_message(SPAN_WARNING("Target obscured!"))
+	for(var/turf/turf_path in path)
+		if(turf_path.opacity && turf_path != target)
+			to_chat(user, SPAN_WARNING("Target obscured!"))
 			return
 	aiming = TRUE
 	var/beam = "laser_beam_guided"
@@ -449,7 +490,8 @@
 
 	if(do_after(user, f_aiming_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		if(!QDELETED(target))
-			.=..()
+			. = ..()
+
 	target.overlays -= lockon_icon
 	target.overlays -= lockon_direction_icon
 	qdel(laser_beam)
@@ -458,4 +500,4 @@
 /obj/item/weapon/gun/launcher/rocket/brute/make_rocket(mob/user, drop_override = 0, empty = 1)
 	if(empty)
 		return
-	.=..()
+	. = ..()

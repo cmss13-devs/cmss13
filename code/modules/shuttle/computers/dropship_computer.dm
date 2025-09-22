@@ -300,7 +300,7 @@
 		return
 
 	// door controls being overridden
-	if(!dropship_control_lost)
+	if(!dropship_control_lost && do_after(xeno, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		dropship.control_doors("unlock", "all", TRUE)
 		dropship_control_lost = TRUE
 		update_icon()
@@ -356,6 +356,7 @@
 		return
 
 	var/datum/dropship_hijack/almayer/hijack = new()
+	SShijack.call_shuttle()
 	dropship.hijack = hijack
 	hijack.shuttle = dropship
 	hijack.target_crash_site(result)
@@ -382,6 +383,8 @@
 	if(hive.living_xeno_queen)
 		var/datum/action/xeno_action/onclick/grow_ovipositor/ovi_ability = get_action(hive.living_xeno_queen, /datum/action/xeno_action/onclick/grow_ovipositor)
 		ovi_ability.reduce_cooldown(ovi_ability.xeno_cooldown)
+		if(!hive.living_xeno_queen.queen_aged)
+			hive.living_xeno_queen.make_combat_effective()
 	addtimer(CALLBACK(hive, TYPE_PROC_REF(/datum/hive_status, override_evilution), original_evilution, FALSE), XENO_HIJACK_EVILUTION_TIME)
 
 	// Notify the yautja too so they stop the hunt
@@ -393,9 +396,14 @@
 		colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack_general_quarters()
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(GLOB.security_level < SEC_LEVEL_RED)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
+		return FALSE
+	COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+	return TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	if(door_control_cooldown)

@@ -5733,7 +5733,7 @@
 /area/whiskey_outpost/inside/supply)
 "yG" = (
 /obj/structure/closet/secure_closet/req_officer,
-/obj/item/clothing/suit/storage/marine/MP/SO,
+/obj/item/clothing/suit/storage/marine/CIC,
 /obj/structure/machinery/light{
 	unacidable = 1;
 	unslashable = 1

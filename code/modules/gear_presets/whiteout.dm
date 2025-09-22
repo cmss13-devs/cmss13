@@ -5,7 +5,7 @@
 	faction = FACTION_WY_DEATHSQUAD
 	assignment = JOB_DS_CU
 	role_comm_title = "WO"
-	rank = JOB_DS_CU
+	job_title = JOB_DS_CU
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_CHINESE, LANGUAGE_RUSSIAN, LANGUAGE_GERMAN, LANGUAGE_FRENCH, LANGUAGE_SCANDINAVIAN, LANGUAGE_SPANISH, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	minimap_icon = "whiteout"
@@ -90,7 +90,7 @@
 	role_comm_title = "WO-SUP"
 	minimap_background = "background_ua"
 	assignment = JOB_DS_SUP
-	rank = JOB_DS_SUP
+	job_title = JOB_DS_SUP
 
 /datum/equipment_preset/pmc/w_y_whiteout/medic/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -141,7 +141,7 @@
 	role_comm_title = "WO-CK"
 	minimap_background = "background_mp"
 	assignment = JOB_DS_CK
-	rank = JOB_DS_CK
+	job_title = JOB_DS_CK
 	new_bubble_icon = "syndibot"
 
 /datum/equipment_preset/pmc/w_y_whiteout/cloaker/load_race(mob/living/carbon/human/new_human)
@@ -201,7 +201,7 @@
 	role_comm_title = "WO-LU"
 	minimap_background = "background_command"
 	assignment = JOB_DS_SL
-	rank = JOB_DS_SL
+	job_title = JOB_DS_SL
 
 /datum/equipment_preset/pmc/w_y_whiteout/leader/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -252,7 +252,7 @@
 	name = "Whiteout Team Combat Unit"
 	minimap_background = "background_pmc"
 	assignment = JOB_DS_CU
-	rank = JOB_DS_CU
+	job_title = JOB_DS_CU
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/load_race(mob/living/carbon/human/new_human)
 	new_human.set_species("W-Y Combat Android (Weaker)")
@@ -315,7 +315,7 @@
 	minimap_background = "background_ua"
 	role_comm_title = "WO-SUP"
 	assignment = JOB_DS_SUP
-	rank = JOB_DS_SUP
+	job_title = JOB_DS_SUP
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/medic/load_gear(mob/living/carbon/human/new_human)
 	// back
@@ -364,7 +364,7 @@
 	role_comm_title = "WO-CK"
 	minimap_background = "background_mp"
 	assignment = JOB_DS_CK
-	rank = JOB_DS_CK
+	job_title = JOB_DS_CK
 	new_bubble_icon = "syndibot"
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/cloaker/load_race(mob/living/carbon/human/new_human)
@@ -424,7 +424,7 @@
 	minimap_background = "background_command"
 	role_comm_title = "WO-LU"
 	assignment = JOB_DS_SL
-	rank = JOB_DS_SL
+	job_title = JOB_DS_SL
 
 /datum/equipment_preset/pmc/w_y_whiteout/low_threat/leader/load_gear(mob/living/carbon/human/new_human)
 	// back

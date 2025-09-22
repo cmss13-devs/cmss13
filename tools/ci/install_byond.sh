@@ -18,7 +18,7 @@ else
   if [ $? -ne 0 ] || !(unzip -qt byond.zip); then
     echo "Attempting fallback mirror..."
     rm byond.zip
-    curl "https://cmss13-devs.github.io/byond-build-mirror/www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip -A "CMSS13/1.0 Continuous Integration"
+    curl "https://cmss13-devs.github.io/byond-build-mirror/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip" -o byond.zip -A "CMSS13/1.0 Continuous Integration"
     if [ $? -ne 0 ] || !(unzip -qt byond.zip); then
       echo "Failure!"
       exit 1

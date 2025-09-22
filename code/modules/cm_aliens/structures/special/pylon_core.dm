@@ -26,7 +26,8 @@
 	/// The maximum amount of lesser drone spawns this pylon can hold
 	var/lesser_drone_spawn_limit = 5
 
-	plane = FLOOR_PLANE
+	plane = GAME_PLANE
+	layer = WINDOW_LAYER
 
 /obj/effect/alien/resin/special/pylon/endgame/update_icon()
 	if(protection_level == TURF_PROTECTION_OB)
@@ -235,6 +236,8 @@
 	var/surge_cooldown = 90 SECONDS
 	var/surge_incremental_reduction = 3 SECONDS
 
+	plane = FLOOR_PLANE
+
 	protection_level = TURF_PROTECTION_OB
 
 	lesser_drone_spawn_limit = 10
@@ -294,7 +297,7 @@
 				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 			if(linked_hive.hijack_burrowed_left < 1)
 				linked_hive.hijack_burrowed_surge = FALSE
-				xeno_message(SPAN_XENOANNOUNCE("The hive's power wanes. We will no longer gain pooled larva over time."), 3, linked_hive.hivenumber)
+				xeno_message(SPAN_XENOANNOUNCE("The hive's power wanes. We will no longer gain burrowed larva over time."), 3, linked_hive.hivenumber)
 
 	// Hive core can repair itself over time
 	if(health < maxhealth && last_healed <= world.time)

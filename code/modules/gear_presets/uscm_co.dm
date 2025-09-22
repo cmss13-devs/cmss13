@@ -6,7 +6,7 @@
 
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_CO
-	rank = JOB_CO
+	job_title = JOB_CO
 	paygrades = list(PAY_SHORT_MO4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CO"
 	minimum_age = 30
@@ -70,8 +70,8 @@
 				kit = /obj/item/storage/mateba_case/captain/council
 			if(CO_GUN_DEAGLE)
 				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
-			if(CO_GUN_DEAGLE_COUNCIL)
-				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
+			if(CO_GUN_M1911C)
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/m1911/commander
 	switch(whitelist_level)
 		if(WHITELIST_COUNCIL)
 			new_human.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/council(new_human), WEAR_HEAD)
@@ -313,7 +313,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_USCM_OBSV
-	rank = JOB_USCM_OBSV
+	job_title = JOB_USCM_OBSV
 	role_comm_title = "VO"
 	minimap_background = "background_medical_WO"
 
@@ -322,7 +322,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	idtype = /obj/item/card/id/gold/council
-	rank = JOB_CO
+	job_title = JOB_CO
 	paygrades = list(PAY_SHORT_MO5 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "CO"
 	minimum_age = 35

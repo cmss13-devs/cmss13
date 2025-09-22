@@ -68,8 +68,8 @@
 	spawn_header_leader = "You are a Weyland-Yutani PMC Lead Investigator!"
 
 /datum/emergency_call/wy_bodyguard/commando
-	equipment_preset = /datum/equipment_preset/pmc/commando/standard
-	equipment_preset_leader = /datum/equipment_preset/pmc/commando/leader
+	equipment_preset = /datum/equipment_preset/pmc/commando/standard/low_threat
+	equipment_preset_leader = /datum/equipment_preset/pmc/commando/leader/low_threat
 	spawn_header = "You are a Weyland-Yutani Commando!"
 	spawn_header_leader = "You are a Weyland-Yutani Commando Leader!"
 

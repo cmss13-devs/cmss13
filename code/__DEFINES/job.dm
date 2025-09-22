@@ -511,8 +511,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 
 //---------- ANTAG ----------//
 #define JOB_PREDATOR "Predator"
-#define JOB_XENOMORPH    "Xenomorph"
-#define JOB_XENOMORPH_QUEEN  "Queen"
+#define JOB_XENOMORPH "Xenomorph"
+#define JOB_XENOMORPH_QUEEN "Queen"
 
 // For coloring the ranks in the statistics menu
 #define JOB_PLAYTIME_TIER_0  (0 HOURS)
@@ -527,7 +527,7 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_PLAYTIME_TIER_9  (2100 HOURS)
 #define JOB_PLAYTIME_TIER_10 (2800 HOURS)
 
-#define XENO_NO_AGE  -1
+#define XENO_NO_AGE -1
 #define XENO_YOUNG 0
 #define XENO_NORMAL 1
 #define XENO_MATURE 2

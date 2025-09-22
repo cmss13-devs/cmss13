@@ -35,7 +35,7 @@
 	icon_state = "van"
 
 /area/interior/vehicle/clf_van
-	name = "clf van interior"
+	name = "CLF van interior"
 	icon_state = "van"
 
 /area/interior/vehicle/box_van

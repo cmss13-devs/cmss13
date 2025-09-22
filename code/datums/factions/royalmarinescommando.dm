@@ -1,10 +1,12 @@
 /datum/faction/royal_marines_commando
 	name = "Royal Marines Commando"
 	faction_tag = FACTION_TWE
+	base_icon_file = 'icons/mob/hud/factions/twe.dmi'
 
 /datum/faction/royal_marines_commando/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+	var/icon/override_icon_file
 	var/hud_icon_state
-	var/obj/item/card/id/dogtag/ID = H.get_idcard()
+	var/obj/item/card/id/ID = H.get_idcard()
 	var/_role
 	if(H.mind)
 		_role = H.job
@@ -30,7 +32,7 @@
 		if(JOB_TWE_RMC_MAJOR)
 			hud_icon_state = "major"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "rmc_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, H, "rmc_[hud_icon_state]")
 
 /datum/faction/royal_marines_commando/get_antag_guns_snowflake_equipment()
 	return list(

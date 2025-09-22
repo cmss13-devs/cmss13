@@ -56,6 +56,8 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/boiler.dmi'
 
+	acid_overlay = icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Boiler_1","Boiler_2","Boiler_3")
 	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
@@ -213,6 +215,7 @@
 				continue
 
 			xeno_action.apply_cooldown_override(cooldown_duration)
+
 
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/affected_atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas

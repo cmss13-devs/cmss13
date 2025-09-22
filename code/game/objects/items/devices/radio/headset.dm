@@ -738,12 +738,13 @@
 	name = "marine alpha radio headset"
 	desc = "This is used by Alpha squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	icon_state = "alpha_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/alpha) // SS220 TGUI CHAT ADDICTION
 	frequency = ALPHA_FREQ //default frequency is alpha squad channel, not PUB_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/alpha/lead
 	name = "marine alpha leader radio headset"
 	desc = "This is used by the marine Alpha squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead, /obj/item/device/encryptionkey/alpha) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -763,30 +764,31 @@
 /obj/item/device/radio/headset/almayer/marine/alpha/tl
 	name = "marine alpha team leader radio headset"
 	desc = "This is used by the marine Alpha team leader. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac, /obj/item/device/encryptionkey/alpha) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/alpha/engi
 	name = "marine alpha engineer radio headset"
 	desc = "This is used by the marine Alpha combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi, /obj/item/device/encryptionkey/alpha) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/almayer/marine/alpha/med
 	name = "marine alpha corpsman radio headset"
 	desc = "This is used by the marine Alpha combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med, /obj/item/device/encryptionkey/alpha) // SS220 TGUI CHAT ADDICTION
 
 //############################## BRAVO ###############################
 /obj/item/device/radio/headset/almayer/marine/bravo
 	name = "marine bravo radio headset"
 	desc = "This is used by Bravo squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	icon_state = "bravo_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/bravo) // SS220 TGUI CHAT ADDICTION
 	frequency = BRAVO_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/bravo/lead
 	name = "marine bravo leader radio headset"
 	desc = "This is used by the marine Bravo squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead, /obj/item/device/encryptionkey/bravo) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -806,30 +808,31 @@
 /obj/item/device/radio/headset/almayer/marine/bravo/tl
 	name = "marine bravo team leader radio headset"
 	desc = "This is used by the marine Bravo team leader. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac, /obj/item/device/encryptionkey/bravo) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/bravo/engi
 	name = "marine bravo engineer radio headset"
 	desc = "This is used by the marine Bravo combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi, /obj/item/device/encryptionkey/bravo) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/almayer/marine/bravo/med
 	name = "marine bravo corpsman radio headset"
 	desc = "This is used by the marine Bravo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med, /obj/item/device/encryptionkey/bravo) // SS220 TGUI CHAT ADDICTION
 
 //############################## CHARLIE ###############################
 /obj/item/device/radio/headset/almayer/marine/charlie
 	name = "marine charlie radio headset"
 	desc = "This is used by Charlie squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	icon_state = "charlie_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/charlie) // SS220 TGUI CHAT ADDICTION
 	frequency = CHARLIE_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/charlie/lead
 	name = "marine charlie leader radio headset"
 	desc = "This is used by the marine Charlie squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead, /obj/item/device/encryptionkey/charlie) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -849,30 +852,31 @@
 /obj/item/device/radio/headset/almayer/marine/charlie/tl
 	name = "marine charlie team leader radio headset"
 	desc = "This is used by the marine Charlie team leader. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac, /obj/item/device/encryptionkey/charlie) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/charlie/engi
 	name = "marine charlie engineer radio headset"
 	desc = "This is used by the marine Charlie combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi, /obj/item/device/encryptionkey/charlie) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/almayer/marine/charlie/med
 	name = "marine charlie corpsman radio headset"
 	desc = "This is used by the marine Charlie combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med, /obj/item/device/encryptionkey/charlie) // SS220 TGUI CHAT ADDICTION
 
 //############################## DELTA ###############################
 /obj/item/device/radio/headset/almayer/marine/delta
 	name = "marine delta radio headset"
 	desc = "This is used by Delta squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	icon_state = "delta_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/delta) // SS220 TGUI CHAT ADDICTION
 	frequency = DELTA_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/delta/lead
 	name = "marine delta leader radio headset"
 	desc = "This is used by the marine Delta squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead, /obj/item/device/encryptionkey/delta) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -892,30 +896,31 @@
 /obj/item/device/radio/headset/almayer/marine/delta/tl
 	name = "marine delta team leader radio headset"
 	desc = "This is used by the marine Delta team leader. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac, /obj/item/device/encryptionkey/delta) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/delta/engi
 	name = "marine delta engineer radio headset"
 	desc = "This is used by the marine Delta combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi, /obj/item/device/encryptionkey/delta) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/almayer/marine/delta/med
 	name = "marine delta corpsman radio headset"
 	desc = "This is used by the marine Delta combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med, /obj/item/device/encryptionkey/delta) // SS220 TGUI CHAT ADDICTION
 
 //############################## ECHO ###############################
 /obj/item/device/radio/headset/almayer/marine/echo
 	name = "marine echo radio headset"
 	desc = "This is used by Echo squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	icon_state = "echo_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/echo) // SS220 TGUI CHAT ADDICTION
 	frequency = ECHO_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/echo/lead
 	name = "marine echo leader radio headset"
 	desc = "This is used by the marine Echo squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead, /obj/item/device/encryptionkey/echo) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list( //unknown if this, as of Sept 2024, given to echo leads but adding this here just in case
@@ -935,18 +940,18 @@
 /obj/item/device/radio/headset/almayer/marine/echo/tl
 	name = "marine echo team leader radio headset"
 	desc = "This is used by the marine Echo team leader. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac, /obj/item/device/encryptionkey/echo) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/echo/engi
 	name = "marine echo engineer radio headset"
 	desc = "This is used by the marine Echo combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi, /obj/item/device/encryptionkey/echo) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/almayer/marine/echo/med
 	name = "marine echo corpsman radio headset"
 	desc = "This is used by the marine Echo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med, /obj/item/device/encryptionkey/echo) // SS220 TGUI CHAT ADDICTION
 
 
 //############################## CRYO ###############################
@@ -954,12 +959,13 @@
 	name = "marine foxtrot radio headset"
 	desc = "This is used by Foxtrot squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	icon_state = "cryo_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/cryo) // SS220 TGUI CHAT ADDICTION
 	frequency = CRYO_FREQ
 
 /obj/item/device/radio/headset/almayer/marine/cryo/lead
 	name = "marine foxtrot leader radio headset"
 	desc = "This is used by the marine Foxtrot squad leader. Channels are as follows: :u - requisitions, :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead, /obj/item/device/encryptionkey/cryo) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_CRITICAL
 
 	inbuilt_tracking_options = list(
@@ -978,24 +984,24 @@
 /obj/item/device/radio/headset/almayer/marine/cryo/tl
 	name = "marine foxtrot team leader radio headset"
 	desc = "This is used by the marine Foxtrot team leader. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac, /obj/item/device/encryptionkey/cryo) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/cryo/engi
 	name = "marine foxtrot engineer radio headset"
 	desc = "This is used by the marine Foxtrot combat engineers. To access the engineering channel, use :n. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi, /obj/item/device/encryptionkey/cryo) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/almayer/marine/cryo/med
 	name = "marine foxtrot corpsman radio headset"
 	desc = "This is used by the marine Foxtrot combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med, /obj/item/device/encryptionkey/cryo) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/almayer/marine/mortar
 	name = "mortar crew radio headset"
 	desc = "This is used by the dust raider's bunker mortar crew to get feedback on how good the hits of that 80mm rain turned out. Comes with access to the engineering channel with :e, JTAC for coordinating with :j, Intel with :t, and request more shells supply with :u - this ain't Winchester Outpost!"
 	icon_state = "ce_headset"
-	initial_keys = list(/obj/item/device/encryptionkey/mortar)
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mortar) // SS220 TGUI CHAT ADDICTION
 	volume = RADIO_VOLUME_RAISED
 
 //*************************************
@@ -1067,6 +1073,7 @@
 /obj/item/device/radio/headset/distress
 	name = "colony headset"
 	desc = "A standard headset used by colonists."
+	initial_keys = list(/obj/item/device/encryptionkey/colony) // SS220 TGUI CHAT ADDICTION
 	frequency = COLONY_FREQ
 
 /obj/item/device/radio/headset/distress/WY
@@ -1099,7 +1106,7 @@
 	name = "Dutch's Dozen headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel, use :h."
 	frequency = DUT_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/dutch) // SS220 TGUI CHAT ADDICTION
 	ignore_z = TRUE
 
 /obj/item/device/radio/headset/distress/cbrn
@@ -1216,62 +1223,62 @@
 	name = "UPP headset"
 	desc = "A special headset used by UPP military. To access the colony channel, use :o."
 	frequency = UPP_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp) // SS220 TGUI CHAT ADDICTION
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_UPP
 
 /obj/item/device/radio/headset/distress/UPP/cct
 	name = "UPP-CCT headset"
 	desc = "A special headset used by UPP military. Channels are as follows: :o - colony, #j - combat controller, #n engineering."
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp, /obj/item/device/encryptionkey/upp/engi) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/distress/UPP/medic
 	name = "UPP-MED headset"
 	desc = "A special headset used by UPP military. Channels are as follows: :o - colony, #m - medical."
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp/medic)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp, /obj/item/device/encryptionkey/upp/medic) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/distress/UPP/command
 	name = "UPP-CMD headset"
 	desc = "A special headset used by UPP military. Channels are as follows: :o - colony, #j - combat controller, #n - engineering, #m - medical, #v - command, #u - UPP general."
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp/command)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp, /obj/item/device/encryptionkey/upp/command) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/distress/UPP/kdo
 	name = "UPP-Kdo headset"
 	desc = "A specialist headset used by UPP kommandos. Channels are as follows: :o - colony, #j - combat controller, #u - UPP general, #T - kommandos."
-	initial_keys = list(/obj/item/device/encryptionkey/upp/kdo, /obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/upp/kdo, /obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/distress/UPP/kdo/medic
 	name = "UPP-KdoM headset"
 	desc = "A specialist headset used by UPP kommandos. Channels are as follows: :o - colony, #j - combat controller, #m - medical #u - UPP general, #T - kommandos."
-	initial_keys = list(/obj/item/device/encryptionkey/upp/kdo, /obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/upp/kdo, /obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/distress/UPP/kdo/command
 	name = "UPP-KdoC headset"
 	desc = "A specialist headset used by UPP kommandos. Channels are as follows: :o - colony, #j - combat controller, #n - engineering, #m - medical, #v - command, #u - UPP general, #T - kommandos."
-	initial_keys = list(/obj/item/device/encryptionkey/upp/kdo, /obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp/command)
+	initial_keys = list(/obj/item/device/encryptionkey/upp/kdo, /obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/upp, /obj/item/device/encryptionkey/upp/command) // SS220 TGUI CHAT ADDICTION
 
 //CLF Headsets
 /obj/item/device/radio/headset/distress/CLF
 	name = "CLF headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the colony channel use :o."
 	frequency = CLF_FREQ
-	initial_keys = list(/obj/item/device/encryptionkey/colony)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf) // SS220 TGUI CHAT ADDICTION
 	has_hud = TRUE
 	hud_type = MOB_HUD_FACTION_CLF
 
 /obj/item/device/radio/headset/distress/CLF/cct
 	name = "CLF-CCT headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :o - colony, #d - combat controller, #b - engineering"
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf/engi)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf, /obj/item/device/encryptionkey/clf/engi) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/distress/CLF/medic
 	name = "CLF-MED headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :o - colony, #a - medical"
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf/medic)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf, /obj/item/device/encryptionkey/clf/medic) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/distress/CLF/command
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. Channels are as follows: :o - colony, #a - medical, #b - engineering, #c - command, #d - combat controller, #g clf general"
-	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf/command)
+	initial_keys = list(/obj/item/device/encryptionkey/colony, /obj/item/device/encryptionkey/clf, /obj/item/device/encryptionkey/clf/command) // SS220 TGUI CHAT ADDICTION
 
 /obj/item/device/radio/headset/distress/contractor
 	name = "VAI Headset"

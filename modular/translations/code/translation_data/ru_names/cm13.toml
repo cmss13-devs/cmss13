@@ -1,0 +1,65 @@
+# Uncategorized Colonial Marines stuff
+
+["Black Donnovan II: Double Revenge"]
+nominative = "игровой автомат «Чёрный Донован II: Двойная месть»"
+genitive = "игрового автомата «Чёрный Донован II: Двойная месть»"
+dative = "игровому автомату «Чёрный Донован II: Двойная месть»"
+accusative = "игровой автомат «Чёрный Донован II: Двойная месть»"
+instrumental = "игровым автоматом «Чёрный Донован II: Двойная месть»"
+prepositional = "игровом автомате «Чёрный Донован II: Двойная месть»"
+gender = "male"
+
+# осколок от зеркала или шрапнель
+["piece of shrapnel"]
+nominative = "осколок"
+genitive = "осколка"
+dative = "осколку"
+accusative = "осколок"
+instrumental = "осколком"
+prepositional = "осколке"
+gender = "male"
+
+["rat"]
+nominative = "крыса"
+genitive = "крысы"
+dative = "крысе"
+accusative = "крысу"
+instrumental = "крысой"
+prepositional = "крысе"
+gender = "female"
+
+["draw pile"]
+nominative = "стопка карт"
+genitive = "стопки карт"
+dative = "стопке карт"
+accusative = "стопку карт"
+instrumental = "стопкой карт"
+prepositional = "стопке карт"
+gender = "female"
+
+["hand of cards"] # cards condition
+nominative = "игральные карты"
+genitive = "игральных карт"
+dative = "игральным картам"
+accusative = "игральные карты"
+instrumental = "игральными картами"
+prepositional = "игральных картах"
+gender = "plural"
+
+["a playing card"] # cards condition
+nominative = "игральная карта"
+genitive = "игральной карты"
+dative = "игральной карте"
+accusative = "игральную карту"
+instrumental = "игральной картой"
+prepositional = "игральной карте"
+gender = "female"
+
+["discard pile"] # cards condition
+nominative = "сброшенные карты"
+genitive = "сброшенных карт"
+dative = "сброшенным картам"
+accusative = "сброшенные карты"
+instrumental = "сброшенными картами"
+prepositional = "сброшенных картах"
+gender = "plural"

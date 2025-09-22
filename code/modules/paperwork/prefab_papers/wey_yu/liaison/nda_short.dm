@@ -1,4 +1,4 @@
-/datum/prefab_document/wey_yu/liaison/nda_short/New()
+/datum/prefab_document/wey_yu/liaison/nda_short/New() // BANDAMARINES Translate
 	var/datum/asset/asset = get_asset_datum(/datum/asset/simple/paper)
 	var/dat = ""
 
@@ -109,7 +109,7 @@
 	dat += ""
 	dat += "<!--Header Info here-->"
 	dat += "<div class=\"message-header-text\">"
-	dat += "<p class=\"header-title\">Confidentiality Agreement</p>"
+	dat += "<p class=\"header-title\">Соглашение о неразглашении - краткое</p>"
 	dat += "<p class=\"header-subtitle\">WY441</p>"
 	dat += "<hr style=\"margin-top:5px; margin-bottom:35px;\">"
 	dat += "</div> <!-- /Heasder Info -->"
@@ -117,17 +117,17 @@
 	dat += ""
 	dat += "<!-- Message -->"
 	dat += "<div class=\"message-body-text\">"
-	dat += "<p>I, <span class=\"paper_field\"></span>, agree to a Confidentiality Agreement with the Weyland-Yutani Corporation that no information regarding the events that took place on the facility named <span class=\"paper_field\"></span> or any directly supporting facility in the immediate region is to be delivered publicly. Only qualified Corporate personnel whose identities have been confirmed will receive such information.</p>"
+	dat += "<p>Я, <span class=\"paper_field\"></span>, подтверждаю свое согласие настоящим Соглашением с Корпорацией Вейланд-Ютани, согласно которому никакая информация о событиях, произошедших на объекте под названием  <span class=\"paper_field\"></span>, или любом другом ближайшем и непосредственно связанным с ним объектом не будет обнародована. Только квалифицированный и авторизированный корпоративный персонал имеет право на получение информации такого рода.</p>"
 	dat += "<p>"
-	dat += "Signature: <span class=\"paper_field\"></span><br>"
-	dat += "Liaison Signature: <span class=\"paper_field\"></span><br>"
-	dat += "Date: <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>"
+	dat += "Подпись: <span class=\"paper_field\"></span><br>"
+	dat += "Подпись связного: <span class=\"paper_field\"></span><br>"
+	dat += "Дата: <font face=\"Times New Roman\"><i>[time2text(REALTIMEOFDAY, "Day DD Month [GLOB.game_year]")]</i></font>"
 	dat += "</p>"
 	dat += "</div> <!-- /message-body-text -->"
 	dat += ""
 	dat += "<div class=\"message-signature-text\">"
-	dat += "<p class=\"disclaimer\">Our organization accepts no liability for the content of this missive, or for the consequences of any actions taken on the basis of the information provided, unless that information is subsequently confirmed in writing. If you are not the intended recipient, you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.</p>"
-	dat += "<p class=\"disclaimer\">This message and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom they are addressed. This message contains confidential information and is intended only for addressee, if you are not the aforementioned addressee you should not disseminate, distribute or copy this missive. If you are not the intended recipient, you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.</p>"
+	dat += "<p class=\"disclaimer\">Наша организация не несёт никакой ответственности за содержание данного документа или за последствия любых действий, предпринятых на основе содержащейся в нем информации, если только эта информация не будет заверена в письменной форме в дальнейшем. Если вы не являетесь ранее упомянутым адресатом, то вы не должны распространять, копировать или предпринимать какие-либо действия, основываясь на информации полученной из данного документа. Не являясь заявленным адресатом, вы уведомлены о последствиях раскрытия, копирования, распространения или предпринятия иных действий в отношении полученной конфиденциальной информациии.</p>"
+	dat += "<p class=\"disclaimer\">Этот документ, а так же все иные переданные с ним данные являются конфиденциальными и предназначены исключительно для использования лицом или организацией, которым они адресованы. Если вы не являетесь ранее упомянутым адресатом, то вы не должны распространять, копировать или предпринимать какие-либо действия, основываясь на информации полученной из данного документа. Не являясь заявленным адресатом, вы уведомлены о последствиях раскрытия, копирования, распространения или предпринятия иных действий в отношении полученной конфиденциальной информациии.</p>"
 	dat += "</div> <!-- /message-signature-text -->"
 	dat += ""
 	dat += "</div> <!-- /width-container -->"

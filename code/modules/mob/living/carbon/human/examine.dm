@@ -3,34 +3,34 @@
 		return list(desc)
 
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
-		return list(SPAN_NOTICE("Something is there but you can't see it."))
+		return list(SPAN_NOTICE("Тут что-то есть, но вы не можете разглядеть."))
 
 	var/mob/dead/observer/observer
 	if(isobserver(user))
 		observer = user
 
 	if(isxeno(user))
-		var/msg = "<span class='info'>This is "
+		var/msg = "<span class='info'>Это "
 
 		if(icon)
 			msg += "[icon2html(icon, user)] "
 		msg += "<EM>[src]</EM>!\n"
 
 		if(species && species.flags & IS_SYNTHETIC)
-			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is not organic.\n</span>"
+			msg += "<span style='font-weight: bold; color: purple;'>Вы чуствуете, что это существо не является органическим.\n</span>"
 
 		if(status_flags & XENO_HOST)
-			msg += "This creature is impregnated.\n"
+			msg += "Это существо оплодотворено.\n"
 		else if(chestburst == 2)
-			msg += "A larva escaped from this creature.\n"
+			msg += "Грудолом вырвался из этого существа.\n"
 		if(istype(wear_mask, /obj/item/clothing/mask/facehugger))
-			msg += "It has a little one on its face.\n"
+			msg += "Лицехват уже уселся на лице существа.\n"
 		if(on_fire)
-			msg += "It is on fire!\n"
+			msg += "Оно горит!\n"
 		if(stat == DEAD)
-			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n</span>"
+			msg += "<span style='font-weight: bold; color: purple;'>Вы чувствуете, что это существо мертво.\n</span>"
 		else if(stat || !client)
-			msg += SPAN_XENOWARNING("It doesn't seem responsive.\n")
+			msg += SPAN_XENOWARNING("Оно без сознания.\n")
 		msg += "</span>"
 		return list(msg)
 
@@ -61,104 +61,90 @@
 	if(wear_mask)
 		skipface |= wear_mask.flags_inv_hide & HIDEFACE
 
-	// crappy hacks because you can't do \his[src] etc. I'm sorry this proc is so unreadable, blame the text macros :<
-	var/t_He = "It" //capitalised for use at the start of each line.
-	var/t_his = "its"
-	var/t_him = "it"
-	var/t_has = "has"
-	var/t_is = "is"
+	var/t_He = ru_p_they(TRUE)
+	var/t_he = ru_p_they()
+	var/t_His = ru_p_them(TRUE)
+	var/t_his = ru_p_them()
+	var/t_theirs = ru_p_theirs()
+	// var/t_has = "has"
+	// var/t_is = "is"
 
 	var/id_paygrade = ""
 	var/obj/item/card/id/I = get_idcard()
 	if(I)
 		id_paygrade = I.paygrade
 	var/rank_display = get_paygrades(id_paygrade, FALSE, gender)
-	var/msg = "<span class='info'>\nThis is "
+	var/msg = "<span class='info'>\nЭто "
 
-	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
-		t_He = "They"
-		t_his = "their"
-		t_him = "them"
-		t_has = "have"
-		t_is = "are"
-	else
+	if(!skipjumpsuit || !skipface) //big suits/masks/helmets make it hard to tell their gender
 		if(icon)
 			msg += "[icon2html(src, user)] "
-		switch(gender)
-			if(MALE)
-				t_He = "He"
-				t_his = "his"
-				t_him = "him"
-			if(FEMALE)
-				t_He = "She"
-				t_his = "her"
-				t_him = "her"
 
 	if(id_paygrade)
 		msg += "<EM>[rank_display] </EM>"
-	msg += "<EM>[src]</EM>!\n"
+	msg += "<EM>[declent_ru(NOMINATIVE)]</EM>!\n"
 
 	//uniform
 	if(w_uniform && !skipjumpsuit)
-		msg += "[t_He] [t_is] [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [w_uniform.get_examine_location(src, user, WEAR_BODY, t_He, t_his, t_theirs)].\n"
 
 	//head
 	if(head)
-		msg += "[t_He] [t_is] wearing [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [head.get_examine_line(user)] [head.get_examine_location(src, user, WEAR_HEAD, t_He, t_his, t_theirs)].\n"
 
 	//suit/armor
 	if(wear_suit)
-		msg += "[t_He] [t_is] [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [wear_suit.get_examine_location(src, user, WEAR_JACKET, t_He, t_his, t_theirs)].\n"
 	//suit/armor storage
 	if(s_store && !skipsuitstorage)
-		msg += "[t_He] [t_is] carrying [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [s_store.get_examine_line(user)] [s_store.get_examine_location(src, user, WEAR_J_STORE, t_He, t_his, t_theirs)].\n"
 
 	//back
 	if(back)
-		msg += "[t_He] [t_has] [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [back.get_examine_line(user)] [back.get_examine_location(src, user, WEAR_BACK, t_He, t_his, t_theirs)].\n"
 
 	//left hand
 	if(l_hand)
-		msg += "[t_He] [t_is] holding [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] держит [l_hand.get_examine_line(user)] [l_hand.get_examine_location(src, user, WEAR_L_HAND, t_He, t_his, t_theirs)].\n"
 
 	//right hand
 	if(r_hand)
-		msg += "[t_He] [t_is] holding [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] держит [r_hand.get_examine_line(user)] [r_hand.get_examine_location(src, user, WEAR_R_HAND, t_He, t_his, t_theirs)].\n"
 
 	//gloves
 	if(gloves && !skipgloves)
-		msg += "[t_He] [t_has] [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [gloves.get_examine_line(user)] [gloves.get_examine_location(src, user, WEAR_HANDS, t_He, t_his, t_theirs)].\n"
 	else if(hands_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(hands_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained hands!\n")
+		msg += SPAN_WARNING("У [t_theirs] [(hands_blood_color == COLOR_OIL) ? "замасленные" : "окровавленные"] руки!\n") // SS220 EDIT ADDICTION
 
 	//belt
 	if(belt)
-		msg += "[t_He] [t_has] [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [belt.get_examine_line(user)] [belt.get_examine_location(src, user, WEAR_WAIST, t_He, t_his, t_theirs)].\n"
 
 	//shoes
 	if(shoes && !skipshoes)
-		msg += "[t_He] [t_is] wearing [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [shoes.get_examine_line(user)] [shoes.get_examine_location(src, user, WEAR_FEET, t_He, t_his, t_theirs)].\n"
 	else if(feet_blood_color)
-		msg += SPAN_WARNING("[t_He] [t_has] [(feet_blood_color != COLOR_OIL) ? "blood" : "oil"]-stained feet!\n")
+		msg += SPAN_WARNING("[t_He] [(feet_blood_color == COLOR_OIL) ? "замасленные" : "окровавленные"] ноги!\n") // SS220 EDIT ADDICTION
 
 	//mask
 	if(wear_mask && !skipmask)
-		msg += "[t_He] [t_has] [wear_mask.get_examine_line(user)] [wear_mask.get_examine_location(src, user, WEAR_FACE, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [wear_mask.get_examine_line(user)] [wear_mask.get_examine_location(src, user, WEAR_FACE, t_He, t_his, t_theirs)].\n"
 
 	//eyes
 	if(glasses && !skipeyes)
-		msg += "[t_He] [t_has] [glasses.get_examine_line(user)] [glasses.get_examine_location(src, user, WEAR_EYES, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [glasses.get_examine_line(user)] [glasses.get_examine_location(src, user, WEAR_EYES, t_He, t_his, t_theirs)].\n"
 
 	//ears
 	if(!skipears)
 		if(wear_l_ear)
-			msg += "[t_He] [t_has] [wear_l_ear.get_examine_line(user)] [wear_l_ear.get_examine_location(src, user, WEAR_L_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
+			msg += "[t_He] носит [wear_l_ear.get_examine_line(user)] [wear_l_ear.get_examine_location(src, user, WEAR_L_EAR, t_He, t_his, t_theirs)].\n"
 		if(wear_r_ear)
-			msg += "[t_He] [t_has] [wear_r_ear.get_examine_line(user)] [wear_r_ear.get_examine_location(src, user, WEAR_R_EAR, t_He, t_his, t_him, t_has, t_is)].\n"
+			msg += "[t_He] носит [wear_r_ear.get_examine_line(user)] [wear_r_ear.get_examine_location(src, user, WEAR_R_EAR, t_He, t_his, t_theirs)].\n"
 
 	//ID
 	if(wear_id)
-		msg += "[t_He] [t_is] [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_him, t_has, t_is)].\n"
+		msg += "[t_He] носит [wear_id.get_examine_location(src, user, WEAR_ID, t_He, t_his, t_theirs)].\n"
 
 	//Inform user if their weapon's IFF will or won't hit src, code by The32bitguy from PVE
 	if(ishuman(user))
@@ -187,23 +173,23 @@
 					msg += SPAN_DANGER("[capitalize(t_He)] is not compatible with your weapon's IFF. They will be shot by your weapon!\n")
 	//Restraints
 	if(handcuffed)
-		msg += SPAN_ORANGE("[capitalize(t_his)] arms are restrained by [handcuffed].\n")
+		msg += SPAN_ORANGE("[t_His] руки в [handcuffed.declent_ru(PREPOSITIONAL)].\n")
 
 	if(legcuffed)
-		msg += SPAN_ORANGE("[capitalize(t_his)] ankles are restrained by [legcuffed].\n")
+		msg += SPAN_ORANGE("[capitalize(t_his)] ноги в [handcuffed.declent_ru(PREPOSITIONAL)].\n")
 
 	//Admin-slept
 	if(sleeping > 8000000)
-		msg += SPAN_HIGHDANGER(SPAN_BOLD("This player has been slept by staff.\n"))
+		msg += SPAN_HIGHDANGER(SPAN_BOLD("Этот игрок был усыплен администрацией.\n"))
 
 	//Jitters
 	if(is_jittery)
 		if(jitteriness >= 300)
-			msg += SPAN_WARNING(SPAN_BOLD("[t_He] [t_is] convulsing violently!\n"))
+			msg += SPAN_WARNING(SPAN_BOLD("[t_He] бьется в конвульсиях!\n"))
 		else if(jitteriness >= 200)
-			msg += SPAN_WARNING("[t_He] [t_is] extremely jittery.\n")
+			msg += SPAN_WARNING("[t_He] сильно дергается.\n")
 		else if(jitteriness >= 100)
-			msg += SPAN_WARNING("[t_He] [t_is] twitching ever so slightly.\n")
+			msg += SPAN_WARNING("[t_He] слегка подергивается.\n")
 
 	//splints & surgical incisions
 	for(var/organ in list("l_leg","r_leg","l_arm","r_arm","l_foot","r_foot","l_hand","r_hand","chest","groin","head"))
@@ -211,7 +197,7 @@
 		if(o)
 			var/list/damage = list()
 			if(o.status & LIMB_SPLINTED)
-				damage += "a splint"
+				damage += "шина"
 
 			var/limb_incision = o.get_incision_depth()
 			if(limb_incision)
@@ -222,42 +208,42 @@
 				damage += limb_surgeries
 
 			if(length(damage))
-				msg += SPAN_WARNING("[t_He] [t_has] [english_list(damage, final_comma_text = ",")] on [t_his] [o.display_name]!\n")
+				msg += SPAN_WARNING("У [t_theirs] [english_list(damage, final_comma_text = ",")] на [t_his] [o.declent_ru(PREPOSITIONAL)]!\n")
 
 	if(holo_card_color)
-		msg += "[t_He] has a [holo_card_color] holo card on [t_his] chest.\n"
+		msg += "У [t_theirs] [holo_card_color] голокарта на груди.\n"
 
 	var/distance = get_dist(user,src)
 	if(istype(user, /mob/dead/observer) || user.stat == DEAD) // ghosts can see anything
 		distance = 1
 	if (stat || status_flags & FAKEDEATH)
-		msg += SPAN_WARNING("[t_He] [t_is]n't responding to anything around [t_him] and seems to be asleep.\n")
+		msg += SPAN_WARNING("[t_He] не реагирует на окружение, и, кажется, спит.\n")
 		if(stat == DEAD && distance <= 3)
-			msg += SPAN_WARNING("[t_He] does not appear to be breathing.\n")
+			msg += SPAN_WARNING("[t_He] не дышит.\n")
 		if(paralyzed > 1 && distance <= 3)
-			msg += SPAN_WARNING("[t_He] seems to be completely still.\n")
+			msg += SPAN_WARNING("[t_He] совершенно неподвижен.\n")
 		if(ishuman(user) && !user.stat && Adjacent(user))
-			user.visible_message("[SPAN_BOLD("[user]")] checks [src]'s pulse.", "You check [src]'s pulse.", null, 4)
+			user.visible_message("[SPAN_BOLD("[capitalize(user.declent_ru(NOMINATIVE))]")] проверяет [t_his] пульс.", "Вы проверили [t_his] пульс.", null, 4)
 		spawn(15)
 			if(user && src && distance <= 1)
 				get_pulse(GETPULSE_HAND) // to update it
 				if(pulse == PULSE_NONE || status_flags & FAKEDEATH)
-					to_chat(user, SPAN_DEADSAY("[t_He] has no pulse[client ? "" : " and [t_his] soul has departed"]..."))
+					to_chat(user, SPAN_DEADSAY("У [t_theirs] нету пульса[client ? "" : " и [t_his] душа ушла"]..."))
 				else
-					to_chat(user, SPAN_DEADSAY("[t_He] has a pulse!"))
+					to_chat(user, SPAN_DEADSAY("У [t_theirs] нету пульса!"))
 
 	if((species && !species.has_organ["brain"] || has_brain()) && stat != DEAD && stat != CONSCIOUS)
 		if(!key)
-			msg += SPAN_DEADSAY("[t_He] [t_is] fast asleep. It doesn't look like they are waking up anytime soon.\n")
+			msg += SPAN_DEADSAY("[t_He] глубоко спит. Не похоже, что [t_he] скоро проснется.\n")
 		else if(!client)
-			msg += "[t_He] [t_has] suddenly fallen asleep.\n"
+			msg += "[t_He] внезапно засыпает.\n"
 
 	if(fire_stacks > 0)
-		msg += "[t_He] [t_is] covered in something flammable.\n"
+		msg += "[t_He] покрыт[genderize_ru(gender, "", "а", "о", "ы")] чем-то легковоспламеняющимся.\n"
 	if(fire_stacks < 0)
-		msg += "[t_He] looks a little soaked.\n"
+		msg += "[t_He] промок[genderize_ru(gender, "", "ла", "ло", "ли")].\n"
 	if(on_fire)
-		msg += SPAN_WARNING("[t_He] [t_is] on fire!\n")
+		msg += SPAN_WARNING("[t_He] горит!\n")
 
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()
@@ -266,29 +252,29 @@
 		if(temp)
 			if(temp.status & LIMB_DESTROYED)
 				is_destroyed["[temp.display_name]"] = 1
-				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING(SPAN_BOLD("[t_He] is missing [t_his] [temp.display_name].\n"))
+				wound_flavor_text["[temp.display_name]"] = SPAN_WARNING(SPAN_BOLD("У [t_theirs] отсутствует [temp.declent_ru(NOMINATIVE)].\n"))
 				continue
 			if(temp.status & (LIMB_ROBOT|LIMB_SYNTHSKIN))
 				if(!(temp.brute_dam + temp.burn_dam))
 					if(!(temp.status & LIMB_SYNTHSKIN) && !(species && species.flags & IS_SYNTHETIC))
-						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]!\n")
+						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("У [t_theirs] [temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " нефункционирующий" : ""] протез [temp.declent_ru(GENITIVE)]!\n")
 						continue
 				else
-					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] [temp.status & LIMB_SYNTHSKIN ? "synthskin" : "robot"] [temp.display_name]. It has")
+					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("У [t_theirs] [temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " нефункционирующий" : ""] [temp.status & LIMB_SYNTHSKIN ? "синтетический" : "кибернетический"] протез [temp.declent_ru(GENITIVE)]. У него")
 				if(temp.brute_dam)
 					switch(temp.brute_dam)
 						if(0 to 20)
-							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some [temp.status & LIMB_SYNTHSKIN ? "surface damage" : "dents"]")
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" малочисленные [temp.status & LIMB_SYNTHSKIN ? "повреждения поверхности" : "вмятины"]")
 						if(21 to INFINITY)
-							wound_flavor_text["[temp.display_name]"] += temp.status & LIMB_SYNTHSKIN ? SPAN_WARNING(pick(" a lot of surface damage", " severe surface damage")) : SPAN_WARNING(pick(" a lot of dents"," severe denting"))
+							wound_flavor_text["[temp.display_name]"] += temp.status & LIMB_SYNTHSKIN ? SPAN_WARNING(pick(" многочисленные повреждения поверхности", " серьезные повреждения поверхности")) : SPAN_WARNING(pick(" многочисленные вмятины"," глубокие вмятины"))
 				if(temp.brute_dam && temp.burn_dam)
-					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" and")
+					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" и")
 				if(temp.burn_dam)
 					switch(temp.burn_dam)
 						if(0 to 20)
-							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" some burns")
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(" малочисленные ожоги")
 						if(21 to INFINITY)
-							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" a lot of burns"," severe melting"))
+							wound_flavor_text["[temp.display_name]"] += SPAN_WARNING(pick(" многочисленные ожоги"," серьезные ожоги"))
 				if(wound_flavor_text["[temp.display_name]"])
 					wound_flavor_text["[temp.display_name]"] += SPAN_WARNING("!\n")
 			else if(length(temp.wounds) > 0)
@@ -296,19 +282,19 @@
 				for(var/datum/wound/W as anything in temp.wounds)
 					if(W.internal && incision_depths[temp.name] == SURGERY_DEPTH_SURFACE)
 						continue // can't see internal wounds normally.
-					var/this_wound_desc = W.desc
+					var/this_wound_desc = declent_ru_initial(W.amount > 1 ? "[W.desc]s" : W.desc, W.amount > 1 ? GENITIVE : NOMINATIVE)
 					if(W.damage_type == BURN)
 						switch(W.salved & (WOUND_BANDAGED|WOUND_SUTURED))
 							if(WOUND_BANDAGED)
-								this_wound_desc = "salved [this_wound_desc]"
+								this_wound_desc = "обработанн[genderize_ru(W.declent_ru("gender"), "ый", "ая", "ое", "ыx")] [this_wound_desc]"
 							if(WOUND_SUTURED, (WOUND_BANDAGED|WOUND_SUTURED)) //Grafting has priority.
-								this_wound_desc = "grafted [this_wound_desc]"
+								this_wound_desc = "пересаженн[genderize_ru(W.declent_ru("gender"), "ый", "ая", "ое", "ыx")] [this_wound_desc]" //??????!
 					else
 						switch(W.bandaged & (WOUND_BANDAGED|WOUND_SUTURED))
 							if(WOUND_BANDAGED, (WOUND_BANDAGED|WOUND_SUTURED)) //Bandages go over the top.
-								this_wound_desc = "bandaged [this_wound_desc]"
+								this_wound_desc = "перевязанн[genderize_ru(W.declent_ru("gender"), "ый", "ая", "ое", "ыx")] [this_wound_desc]"
 							if(WOUND_SUTURED)
-								this_wound_desc = "sutured [this_wound_desc]"
+								this_wound_desc = "зашит[genderize_ru(W.declent_ru("gender"), "ый", "ая", "ое", "ыx")] [this_wound_desc]"
 
 					if(wound_descriptors[this_wound_desc])
 						wound_descriptors[this_wound_desc] += W.amount
@@ -316,38 +302,36 @@
 					wound_descriptors[this_wound_desc] = W.amount
 				if(length(wound_descriptors))
 					var/list/flavor_text = list()
-					var/list/no_exclude = list("gaping wound", "big gaping wound", "massive wound", "large bruise",\
-					"huge bruise", "massive bruise", "severe burn", "large burn", "deep burn", "carbonised area")
 					for(var/wound in wound_descriptors)
 						switch(wound_descriptors[wound])
 							if(1)
 								if(!length(flavor_text))
-									flavor_text += SPAN_WARNING("[t_He] has[prob(10) && !(wound in no_exclude)  ? " what might be" : ""] a [wound]")
+									flavor_text += SPAN_WARNING("У [t_theirs] [wound]")
 								else
-									flavor_text += "[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a [wound]"
+									flavor_text += " [wound]"
 							if(2)
 								if(!length(flavor_text))
-									flavor_text += SPAN_WARNING("[t_He] has[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a pair of [wound]s")
+									flavor_text += SPAN_WARNING("У [t_theirs] пара [wound]")
 								else
-									flavor_text += "[prob(10) && !(wound in no_exclude) ? " what might be" : ""] a pair of [wound]s"
+									flavor_text += " пара [wound]"
 							if(3 to 5)
 								if(!length(flavor_text))
-									flavor_text += SPAN_WARNING("[t_He] has several [wound]s")
+									flavor_text += SPAN_WARNING("У [t_theirs] несколько [wound]")
 								else
-									flavor_text += " several [wound]s"
+									flavor_text += " нескольно [wound]"
 							if(6 to INFINITY)
 								if(!length(flavor_text))
-									flavor_text += SPAN_WARNING("[t_He] has a bunch of [wound]s")
+									flavor_text += SPAN_WARNING("У [t_theirs] множество [wound]")
 								else
-									flavor_text += " a ton of [wound]\s"
+									flavor_text += " множество [wound]"
 					var/flavor_text_string = ""
 					for(var/text = 1, text <= length(flavor_text), text++)
 						if(text == length(flavor_text) && length(flavor_text) > 1)
-							flavor_text_string += ", and"
+							flavor_text_string += ", а также"
 						else if(length(flavor_text) > 1 && text > 1)
 							flavor_text_string += ","
 						flavor_text_string += flavor_text[text]
-					flavor_text_string += " on [t_his] [temp.display_name].</span><br>"
+					flavor_text_string += " на [t_his] [temp.declent_ru(PREPOSITIONAL)].</span><br>"
 					wound_flavor_text["[temp.display_name]"] = flavor_text_string
 				else
 					wound_flavor_text["[temp.display_name]"] = ""
@@ -417,62 +401,62 @@
 		display_foot_right = 1
 
 	if (display_head)
-		msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] [SPAN_BOLD("face!")]\n")
+		msg += SPAN_WARNING("Кровь капает с [t_his] [SPAN_BOLD("лица!")]\n")
 
 	if (display_chest && display_groin && display_arm_left && display_arm_right && display_hand_left && display_hand_right && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-		msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from all over [t_his] [SPAN_BOLD("entire body!")]\n")
+		msg += SPAN_WARNING("Кровь капает через [t_his] одежду с каждой части [t_his] [SPAN_BOLD("всего тела!")]\n")
 	else
 		if (display_chest && display_arm_left && display_arm_right && display_hand_left && display_hand_right)
-			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from every part of [t_his] [SPAN_BOLD("upper body!")]\n")
+			msg += SPAN_WARNING("Кровь капает через [t_his] одежду с каждой части [t_his] [SPAN_BOLD("всего торса!")]\n")
 		else
 			if (display_chest)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("shirt!")]\n")
+				msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("футболку!")]\n")
 			if (display_arm_left && display_arm_right && display_hand_left && display_hand_left)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("gloves")] and [SPAN_BOLD("sleeves!")]\n")
+				msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("перчатки")] и [SPAN_BOLD("рукава!")]\n")
 			else
 				if (display_arm_left && display_arm_right)
-					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("sleeves!")]\n")
+					msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("рукава!")]\n")
 				else
 					if (display_arm_left)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("left sleeve!")]\n")
+						msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("левый рукав!")]\n")
 					if (display_arm_right)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("right sleeve!")]\n")
+						msg += SPAN_WARNING("Кровь капает через [t_his] [SPAN_BOLD("правый рукав!")]\n")
 				if (display_hand_left && display_hand_right)
-					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("gloves!")]\n")
+					msg += SPAN_WARNING("Кровь течёт из-под [t_his] [SPAN_BOLD("перчаток!")]\n")
 				else
 					if (display_hand_left)
-						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("left glove!")]\n")
+						msg += SPAN_WARNING("Кровь течёт из-под [t_his] [SPAN_BOLD("левой перчатки!")]\n")
 					if (display_hand_right)
-						msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] [SPAN_BOLD("right glove!")]\n")
+						msg += SPAN_WARNING("Кровь течёт из-под [t_his] [SPAN_BOLD("правой перчатки!")]\n")
 
 		if (display_groin && display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-			msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] clothes from every part of [t_his] [SPAN_BOLD("lower body!")]\n")
+			msg += SPAN_WARNING("Кровь капает через [t_his] одежду с каждой части [t_his] [SPAN_BOLD("нижней половины тела!")]\n")
 		else
 			if (display_groin)
-				msg += SPAN_WARNING("[t_He] has blood dripping from [t_his] [SPAN_BOLD("groin!")]\n")
+				msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("паха!")]\n")
 			if (display_leg_left && display_leg_right && display_foot_left && display_foot_right)
-				msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("pant legs")] and [SPAN_BOLD("boots!")]\n")
+				msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("штанов")] и [SPAN_BOLD("ботинок!")]\n")
 			else
 				if (display_leg_left && display_leg_right)
-					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("pant legs!")]\n")
+					msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("штанов!")]\n")
 				else
 					if (display_leg_left)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("left pant leg!")]\n")
+						msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("левой штанины!")]\n")
 					if (display_leg_right)
-						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] [SPAN_BOLD("right pant leg!")]\n")
+						msg += SPAN_WARNING("Кровь течёт из [t_his] [SPAN_BOLD("правой штанины!")]\n")
 				if (display_foot_left && display_foot_right)
-					msg += SPAN_WARNING("[t_He] has blood pooling around[t_his] [SPAN_BOLD("boots!")]\n")
+					msg += SPAN_WARNING("Кровь собирается вокруг [t_his] [SPAN_BOLD("ботинок!")]\n")
 				else
 					if (display_foot_left)
-						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] [SPAN_BOLD("left boot!")]\n")
+						msg += SPAN_WARNING("Кровь собирается вокруг [t_his] [SPAN_BOLD("левого ботинка!")]\n")
 					if (display_foot_right)
-						msg += SPAN_WARNING("[t_He] has blood pooling around [t_his] [SPAN_BOLD("right boot!")]\n")
+						msg += SPAN_WARNING("Кровь собирается вокруг [t_his] [SPAN_BOLD("правого ботинка!")]\n")
 
 	if(chestburst == 2)
-		msg += SPAN_WARNING(SPAN_BOLD("[t_He] has a giant hole in [t_his] chest!\n"))
+		msg += SPAN_WARNING(SPAN_BOLD("У [t_theirs] огромное отверстие в груди!\n"))
 
-	for(var/implant in get_visible_implants())
-		msg += SPAN_WARNING(SPAN_BOLD("[t_He] has \a [implant] sticking out of [t_his] flesh!\n"))
+	for(var/obj/implant in get_visible_implants())
+		msg += SPAN_WARNING(SPAN_BOLD("[capitalize(implant.declent_ru(NOMINATIVE))] торчит из-под [t_his] кожи!</b>\n"))
 
 	if(hasHUD(user,"security") || (observer && observer.HUD_toggled["Security HUD"]))
 		var/perpref
@@ -564,7 +548,6 @@
 			. += SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'.")
 		else if(src.hunter_data.gear)
 			. += SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set].")
-
 
 //Helper procedure. Called by /mob/living/carbon/human/get_examine_text() and /mob/living/carbon/human/Topic() to determine HUD access to security and medical records.
 /proc/hasHUD(mob/passed_mob, hudtype)

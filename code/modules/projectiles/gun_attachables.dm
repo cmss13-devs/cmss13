@@ -3576,7 +3576,7 @@ Defined in conflicts.dm of the #defines folder.
 		var/obj/item/weapon/gun/gun = loc
 		gun.update_attachable(slot)
 		for(var/datum/action/item_action as anything in gun.actions)
-			if(!istype(item_action, /datum/action/item_action/bipod/toggle_full_auto_switch))
+			if(!istype(item_action, /datum/action/item_action/bipod/toggle_full_auto_switch) && !istype(item_action, /datum/action/item_action/stock/vulture/stock_iff)) //BANDAMARINES EDIT
 				item_action.update_button_icon()
 
 /obj/item/attachable/bipod/proc/handle_drop(obj/item/weapon/gun/gun, mob/living/carbon/human/user)

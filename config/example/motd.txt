@@ -1,12 +1,14 @@
-<h1>Welcome to Colonial Marines - Space Station 13!</h1>
+<h1>Добро пожаловать на SS220 BandaMarines - SS13!</h1>
 
--<i>This server is based on a modification <a href="http://baystation12.net/">Baystation 12's</a> code,
-<br> which itself is a modification of the <a href="http://ss13.eu/">/tg/station13</a> SS13 code.</i>-
+-<i>Сервер базируется на билде <a href="http://ss13.eu/">Colonial Marines</a>,
+<br> который был модифицирован и подготовлен для игры Банды и русскоязычного коммьюнити SS220
 <br>
-<br>Currently running: <a href="https://github.com/cmss13-devs/cmss13/">https://github.com/cmss13-devs/cmss13</a>,
-<br>Wiki here: <a href="https://cm-ss13.com/wiki/Main_Page">https://cm-ss13.com/wiki/Main_Page</a>
+<br>Наш Гитхаб: <a href="https://github.com/ss220club/BandaMarines/">https://github.com/ss220club/BandaMarines</a>,
+<br>Гитхаб CM: <a href="https://github.com/cmss13-devs/cmss13/">https://github.com/cmss13-devs/cmss13</a>,
+<br>Википедия (Англ.): <a href="https://cm-ss13.com/wiki/Main_Page">https://cm-ss13.com/wiki/Main_Page</a>
 <br><br>
-<strong>Isssue Tracker:</strong> <a href="https://github.com/cmss13-devs/cmss13/issues">https://github.com/cmss13-devs/cmss13/issues</a>
+<strong>Все предложения и ошибки сообщать:</strong> <a href="https://github.com/cmss13-devs/cmss13/issues">https://github.com/cmss13-devs/cmss13/issues</a>
 <br>
 <br>
-Dont forget to make and set confing/role_whitelist.txt and confing/admins.txt for access to whitelists and other staff ranks, and other settings.
+
+<h1>На сервере действуют стандартные правила Прайма!</h1>

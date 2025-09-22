@@ -1,37 +1,38 @@
+//BANDAMARINES - Translate
 /datum/law/civilian_law/terror_association
-	name = "Terror Association"
-	desc = "Being a member of, or providing aid to a member of, a terrorist organisation."
+	name = "Террористическая Ассоциация"
+	desc = "Быть членом или предоставлять помощь члену террористической организации."
 	brig_time = PERMABRIG_SENTENCE
-	conditions = "Not applicable if the defendant has engaged in terror attacks. Not applicable for execution on its own."
+	conditions = "Не применимо, если обвиняемый участвовал в террористических атаках. Не применимо для казни само по себе."
 
 /datum/law/civilian_law/terrorism
-	name = "Terrorism"
-	desc = "Conducting terror attacks against the United Americas or its allies."
+	name = "Терроризм"
+	desc = "Проведение террористических атак против Объединенных Штатов Америки или их союзников."
 	brig_time = PERMABRIG_SENTENCE
-	conditions = "Not applicable if the defendant has not engaged in terror attacks."
+	conditions = "Не применимо, если обвиняемый не участвовал в террористических атаках."
 
 /datum/law/civilian_law/minor_civil_insubordination
-	name = "Minor Civil Insubordination"
-	desc = "Failing to follow a lawful order from a member of the department (if any) to which you have been assigned. Additionally applicable for being disrespectful to the Commander or Duty Officer."
+	name = "Незначительное Гражданское Неподчинение"
+	desc = "Неисполнение законного приказа от члена подразделения (если таковой имеется), к которому вы были назначены. Также применимо за неуважение к Командиру или Дежурному Офицеру."
 	brig_time = 5
-	conditions = "Only Applicable to Non-USCM personnel."
+	conditions = "Применимо только для не-USCM персонала."
 
 /datum/law/civilian_law/major_civil_insubordination
-	name = "Major Civil Insubordination"
-	desc = "Failing to follow a lawful order from the Commander or Duty Officer (or assigned department head, if any) during an active Military Operation."
+	name = "Существенное Гражданское Неподчинение"
+	desc = "Неисполнение законного приказа Командира или Дежурного Офицера (или назначенного руководителя подразделения, если таковой имеется) во время активной Военной Операции."
 	brig_time = 10
-	conditions = "Only Applicable to Non-USCM personnel."
+	conditions = "Применимо только для не-USCM персонала."
 
 /datum/law/civilian_law/black_marketeering
-	name = "Blackmarketeering"
-	desc = "Illegally procuring or selling restricted products, excluding firearms or explosives."
+	name = "Незаконная торговля"
+	desc = "Незаконное приобретение или продажа ограниченных товаров, исключая огнестрельное оружие или взрывчатые вещества."
 	brig_time = 7.5
-	conditions = "Enforced by Civil Authorities such as the CMB."
-	special_punishment = "Confiscation of Contraband"
+	conditions = "Исполняется Гражданскими Властями, такими как CMB."
+	special_punishment = "Конфискация Контрабанды"
 
 /datum/law/civilian_law/arms_dealing
-	name = "Arms Dealing"
-	desc = "Illegally procuring or selling firearms or explosives."
+	name = "Торговля оружием"
+	desc = "Незаконное приобретение или продажа огнестрельного оружия или взрывчатых веществ."
 	brig_time = 15
-	conditions = "Enforced by Civil Authorities such as the CMB."
-	special_punishment = "Confiscation of Contraband"
+	conditions = "Исполняется Гражданскими Властями, такими как CMB."
+	special_punishment = "Конфискация Контрабанды"

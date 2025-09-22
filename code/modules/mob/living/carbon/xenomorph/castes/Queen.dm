@@ -466,28 +466,35 @@
 /mob/living/carbon/xenomorph/queen/generate_name()
 	if(!nicknumber)
 		generate_and_set_nicknumber()
-	var/name_prefix = hive.prefix
+	var/name_prefix = hive.prefix_fem || hive.prefix
 	if(queen_aged)
 		age_xeno()
 		switch(age)
 			if(XENO_YOUNG)
-				name = "[name_prefix]Young Queen" //Young
+				name = "[name_prefix]Молодая [declent_ru_initial("Queen", NOMINATIVE, "Queen")]" //Young
+				ru_names_rename(ru_names_toml("Queen", "[name_prefix]Молодая ", override_base = name))
 			if(XENO_NORMAL)
-				name = "[name_prefix]Queen"  //Regular
+				name = "[name_prefix][declent_ru_initial("Queen", NOMINATIVE, "Queen")]"  //Regular
+				ru_names_rename(ru_names_toml("Queen", "[name_prefix]", override_base = name))
 			if(XENO_MATURE)
-				name = "[name_prefix]Elder Queen"  //Mature
+				name = "[name_prefix]Старшая [declent_ru_initial("Queen", NOMINATIVE, "Queen")]"  //Mature
+				ru_names_rename(ru_names_toml("Queen", "[name_prefix]Старшая ", override_base = name))
 			if(XENO_ELDER)
-				name = "[name_prefix]Elder Empress"  //Elite
+				name = "[name_prefix]Старшая [declent_ru_initial("Empress", NOMINATIVE, "Empress")]"  //Elite
+				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Старшая ", override_base = name))
 			if(XENO_ANCIENT)
-				name = "[name_prefix]Ancient Empress" //Ancient
+				name = "[name_prefix]Древняя [declent_ru_initial("Empress", NOMINATIVE, "Empress")]" //Ancient
+				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Древняя ", override_base = name))
 			if(XENO_PRIME)
-				name = "[name_prefix]Prime Empress" //Primordial
+				name = "[name_prefix]Прайм [declent_ru_initial("Empress", NOMINATIVE, "Empress")]" //Primordial
+				ru_names_rename(ru_names_toml("Empress", "[name_prefix]Прайм ", override_base = name))
 	else
 		age = XENO_NORMAL
 		if(client)
 			hud_update()
 
-		name = "[name_prefix]Immature Queen"
+		name = "[name_prefix]Неокрепшая [declent_ru_initial("Queen", NOMINATIVE, "Queen")]"
+		ru_names_rename(ru_names_toml("Queen", "[name_prefix]Неокрепшая ", override_base = name))
 
 	var/name_client_prefix = ""
 	var/name_client_postfix = ""
@@ -634,14 +641,14 @@
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - length(hive?.open_xeno_leader_positions)
 
-	. += "Pooled Larvae: [stored_larvae]"
-	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
-	. += "Royal Resin: [hive?.buff_points]"
+	. += "Зарытых грудоломов: [stored_larvae]"
+	. += "Лидеры: [xeno_leader_num] / [hive?.queen_leader_limit]"
+	. += "Королевская смола: [hive?.buff_points]"
 	if(!queen_aged)
 		if(queen_age_timer_id != TIMER_ID_NULL)
-			. += "Maturity: [time2text(timeleft(queen_age_timer_id), "mm:ss")] remaining"
+			. += "Взросление: [time2text(timeleft(queen_age_timer_id), "mm:ss")] осталось"
 		if(queen_age_temp_timer_id != TIMER_ID_NULL)
-			. += "Temporary Maturity: [time2text(timeleft(queen_age_temp_timer_id), "mm:ss")] remaining"
+			. += "Временная зрелость: [time2text(timeleft(queen_age_temp_timer_id), "mm:ss")] осталось"
 
 /mob/living/carbon/xenomorph/queen/proc/set_orders()
 	set category = "Alien"
@@ -698,7 +705,7 @@
 	if(word_ability)
 		word_ability.apply_cooldown()
 
-	xeno_announcement(input, hivenumber, "The words of the [name] reverberate in our head...")
+	xeno_announcement(input, hivenumber, "Слова [declent_ru(GENITIVE)] раздаются эхом в нашей голове...")
 
 	message_admins("[key_name_admin(src)] has created a Word of the Queen report:")
 	log_admin("[key_name_admin(src)] Word of the Queen: [input]")

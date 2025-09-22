@@ -1,7 +1,7 @@
 
 
 /obj/item/reagent_container/food/drinks/drinkingglass
-	name = "glass"
+	name = "стакан" // SS220 EDIT ADDICTION
 	desc = "Your standard drinking glass."
 	icon_state = "glass_empty"
 	item_icons = list(
@@ -624,9 +624,10 @@
 				if(istype(R, /datum/reagent/drink) && R.volume >= 0.5*reagents.total_volume)
 					icon_state ="glass_brown"
 					if(R.volume >= 0.75*reagents.total_volume)
-						name = "Glass of [R.id]"
+						name = "[R.id]" // SS220 EDIT ADDICTION
 					else
-						name = "Glass of ..[R.id]?"
+						name = "[R.id]" // SS220 EDIT ADDICTION
+						name = "[R.declent_reagent_ru()] (микс)" // SS220 EDIT ADDICTION
 						desc = "This looks like mostly [R.id] mixed with something."
 					center_of_mass = "x=16;y=10"
 				else
@@ -634,9 +635,10 @@
 					name = "Glass of ..what?"
 					desc = "You can't really tell what this is."
 					center_of_mass = "x=16;y=10"
+		name = R.declent_reagent_ru() // SS220 EDIT ADDICTION
 	else
 		icon_state = "glass_empty"
-		name = "glass"
+		name = "стакан" // SS220 EDIT ADDICTION
 		desc = "Your standard drinking glass."
 		center_of_mass = "x=16;y=10"
 		return

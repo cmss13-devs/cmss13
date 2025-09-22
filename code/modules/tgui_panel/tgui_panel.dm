@@ -107,6 +107,13 @@
 	if(type == "act/ping_relays")
 		ping_relays()
 		return TRUE
+	if(type == "refresh_keywords")
+		var/datum/highlight_keywords_payload/highlight_keywords_payload = new(usr)
+		usr.client.tgui_panel.window.send_message(
+			"settings/updateHighlightKeywords",
+			highlight_keywords_payload.to_list()
+		)
+		return TRUE
 
 /**
  * public

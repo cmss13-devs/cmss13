@@ -127,6 +127,20 @@
 	},
 /turf/open/floor/strata/floor3,
 /area/strata/interior/outpost/canteen)
+"aau" = (
+/obj/structure/largecrate/random,
+/obj/structure/barricade/handrail/strata{
+	dir = 1
+	},
+/obj/effect/spawner/random/powercell{
+	pixel_y = 10
+	},
+/turf/open/asphalt/cement/cement4,
+/area/strata/interior/outpost/med)
+"aav" = (
+/obj/effect/spawner/random/powercell,
+/turf/open/floor/strata/multi_tiles/southwest,
+/area/strata/interior/planet_core_research_station)
 "aaw" = (
 /obj/effect/decal/cleanable/blood{
 	icon_state = "xgibdown1"
@@ -244,10 +258,18 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
+"aaM" = (
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/landmark/nightmare{
+	insert_tag = "flamer_bodypile"
+	},
+/turf/open/floor/strata,
+/area/strata/exterior/outpost_decks)
 "aaN" = (
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/effect/spawner/random/powercell,
 /turf/open/floor/strata/multi_tiles/west,
 /area/strata/interior/mining_outpost/maintenance)
 "aaO" = (
@@ -364,6 +386,7 @@
 	color = "#98a3ab"
 	},
 /obj/structure/machinery/door/window/eastright,
+/obj/effect/spawner/random/powercell,
 /turf/open/floor/interior/plastic,
 /area/strata/interior/wooden_hospital)
 "abg" = (
@@ -20513,6 +20536,9 @@
 /area/strata/interior/bball)
 "bik" = (
 /obj/structure/largecrate/random/case/small,
+/obj/effect/spawner/random/powercell{
+	pixel_y = 6
+	},
 /turf/open/floor/strata/multi_tiles/southwest,
 /area/strata/interior/outpost/foyer)
 "bil" = (
@@ -52729,6 +52755,7 @@
 /obj/structure/surface/rack{
 	color = "#98a3ab"
 	},
+/obj/effect/spawner/random/powercell,
 /turf/open/floor/strata,
 /area/strata/interior/parts_storage)
 "vyl" = (
@@ -70238,7 +70265,7 @@ auw
 cuX
 cuX
 cuX
-cuX
+aaM
 cfZ
 cuX
 aPx
@@ -76943,7 +76970,7 @@ hkC
 vtz
 vtz
 xLK
-fkK
+aau
 vlm
 acc
 acc
@@ -91289,7 +91316,7 @@ khT
 rJf
 wbK
 khT
-lZd
+aav
 aLj
 khT
 oZt

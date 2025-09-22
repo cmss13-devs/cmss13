@@ -266,6 +266,7 @@
  */
 /obj/vehicle/multitile/tank/proc/_apply_rider_visuals(mob/living/M)
 	M.layer = TANK_RIDER_LAYER
+	M.pixel_y = M.old_y + 12
 
 // --- helpers for handlign interactions with grabbed mobs
 

@@ -402,6 +402,7 @@
 		M.tank_on_top_of = null
 	M.layer   = initial(M.layer)
 	M.plane   = initial(M.plane)
+	M.pixel_y = initial(M.pixel_y)
 
 /**
  * Destroy proc. This shouldn't normally be called, but just in case.

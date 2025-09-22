@@ -85,12 +85,14 @@
 	operating = TRUE
 	playsound(loc, 'sound/effects/fenceopen.ogg', 25, 1)
 	update_icon()
-	sleep(opening_time)
+	addtimer(CALLBACK(src, PROC_REF(open), opening_time))
+
+/obj/structure/fence/proc/open()
+	operating = FALSE
 	if(cut)
 		return
 	open = !open
 	density = !density
-	operating = FALSE
 	update_icon()
 
 //Used by attack_animal

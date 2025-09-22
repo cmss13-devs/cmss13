@@ -202,5 +202,4 @@
 	return
 
 /obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell
-	autoname = TRUE
 	network = list(CAMERA_NET_CONTAINMENT_HIDDEN)

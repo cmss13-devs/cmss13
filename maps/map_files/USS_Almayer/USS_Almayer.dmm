@@ -436,8 +436,9 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
 "abd" = (
-/obj/structure/machinery/camera/wey_yu/autoname{
-	dir = 1
+/obj/structure/machinery/camera/wey_yu{
+	dir = 1;
+	c_tag = "Corporate Office - Conference Room"
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
@@ -887,8 +888,9 @@
 /turf/open/floor/almayer/mono,
 /area/almayer/medical/medical_science)
 "acm" = (
-/obj/structure/machinery/camera/wey_yu/autoname{
-	dir = 1
+/obj/structure/machinery/camera/wey_yu{
+	dir = 1;
+	c_tag = "Corporate Office - Liaison"
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -14076,6 +14078,13 @@
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /turf/open/floor/plating/almayer/no_build,
 /area/almayer/stair_clone/upper/port_aft)
+"aKB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/camera/wey_yu{
+	c_tag = "Corporate Office - Maintenance"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/maint/hull/upper/u_m_p)
 "aKC" = (
 /obj/structure/machinery/light,
 /turf/open_space,
@@ -20334,12 +20343,9 @@
 	pixel_x = 32;
 	pixel_y = 3
 	},
-/obj/structure/machinery/computer/cameras/containment/hidden{
-	dir = 8;
-	layer = 3;
+/obj/structure/machinery/computer/cameras/containment{
 	network = list("Containment","Research","WY");
-	pixel_y = 4;
-	name = "Research and Office Cameras"
+	dir = 8
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/medical/containment/cell/cl)
@@ -35811,6 +35817,9 @@
 /area/almayer/hallways/lower/port_midship_hallway)
 "bIX" = (
 /obj/structure/machinery/vending/snack,
+/obj/structure/machinery/camera/wey_yu{
+	c_tag = "Corporate Office - Conference Hall"
+	},
 /turf/open/floor/almayer/silver/north/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bIY" = (
@@ -35829,7 +35838,8 @@
 	layer = 3.3
 	},
 /obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell{
-	dir = 4
+	dir = 4;
+	c_tag = "Containment Antechamber"
 	},
 /turf/open/floor/almayer/silver/northwest/no_build,
 /area/almayer/medical/containment/cell/cl)
@@ -36072,6 +36082,10 @@
 "bJF" = (
 /obj/structure/platform/metal/almayer_smooth,
 /obj/structure/platform/metal/almayer_smooth/west,
+/obj/structure/machinery/camera/wey_yu{
+	dir = 4;
+	c_tag = "Corporate Office - Internal Stairs"
+	},
 /turf/open/floor/almayer/silver/southwest,
 /area/almayer/command/corporateliaison)
 "bJG" = (
@@ -36238,8 +36252,9 @@
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/weapon_room)
 "bKc" = (
-/obj/structure/machinery/camera/wey_yu/autoname{
-	dir = 1
+/obj/structure/machinery/camera/wey_yu{
+	dir = 1;
+	c_tag = "Corporate Office - Internal Hall"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -37402,8 +37417,9 @@
 	pixel_y = 27;
 	pixel_x = -28
 	},
-/obj/structure/machinery/camera/wey_yu/autoname{
-	dir = 4
+/obj/structure/machinery/camera/wey_yu{
+	dir = 4;
+	c_tag = "Corporate Office - Security Desk"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -37924,8 +37940,9 @@
 /obj/effect/decal/floor_symbol/wy_3x1{
 	dir = 1
 	},
-/obj/structure/machinery/camera/wey_yu/autoname{
-	dir = 4
+/obj/structure/machinery/camera/wey_yu{
+	dir = 4;
+	c_tag = "Corporate Office - Entryway"
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -90478,7 +90495,8 @@
 /area/almayer/engineering/upper_engineering)
 "wwW" = (
 /obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell{
-	dir = 8
+	dir = 8;
+	c_tag = "Containment Cell"
 	},
 /turf/open/floor/almayer/research/containment/floor2/west,
 /area/almayer/medical/containment/cell/cl)
@@ -204355,7 +204373,7 @@ bKq
 bKa
 bJM
 pBG
-bJj
+aKB
 tMU
 woU
 bdH

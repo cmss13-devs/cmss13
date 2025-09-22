@@ -1297,6 +1297,10 @@
 	var/starting_charges = 20
 	icon_state = "satchelbelt"
 	item_state = "satchelbelt"
+	icon = 'icons/obj/items/clothing/belts/belts_by_map/classic.dmi'
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/clothing/belts/belts_by_map/jungle.dmi'
+	)
 
 /obj/item/storage/belt/marine/satchelcharge/fill_preset_inventory()
 	new /obj/item/satchel_charge_detonator(src)

@@ -31,7 +31,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "bi" = (
@@ -808,7 +808,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "Cx" = (
@@ -1149,7 +1149,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clipboard,
 /obj/item/tool/stamp,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/north,
 /area/shiva/interior/colony/s_admin)
 "PV" = (
@@ -1332,7 +1332,7 @@
 	pixel_y = -5
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/shiva/bluefull,
 /area/shiva/interior/colony/s_admin)
 "VE" = (

@@ -168,7 +168,7 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "aG" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/item/frame/rack,
 /turf/open/floor/plating/panelscorched,
 /area/bigredv2/outside/office_complex)
@@ -177,7 +177,7 @@
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "aI" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/plating/platingdmg3,
 /area/bigredv2/outside/office_complex)
 "aJ" = (
@@ -591,7 +591,7 @@
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/e)
 "kP" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/asteroidwarning/north,
 /area/bigredv2/outside/c)
 "lH" = (
@@ -619,7 +619,7 @@
 /area/bigredv2/outside/se)
 "nn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/platingdmg1,
 /area/bigredv2/outside/office_complex)
 "ny" = (
@@ -974,7 +974,7 @@
 /area/bigredv2/outside/office_complex)
 "Fp" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "FH" = (
@@ -1038,7 +1038,7 @@
 "HG" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/floor/white,
 /area/bigredv2/outside/office_complex)
 "HP" = (
@@ -1085,7 +1085,7 @@
 /area/bigredv2/outside/office_complex)
 "KK" = (
 /obj/structure/surface/rack,
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /turf/open/shuttle/dropship/can_surgery/medium_grey_single_wide_up_to_down,
 /area/bigredv2/outside/office_complex)
 "Lq" = (
@@ -1166,7 +1166,7 @@
 /turf/open/floor/whiteyellowfull/east,
 /area/bigredv2/outside/office_complex)
 "ON" = (
-/obj/effect/landmark/crap_item,
+/obj/effect/landmark/melee_weapon,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},

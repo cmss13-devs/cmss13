@@ -356,6 +356,7 @@
 		return
 
 	var/datum/dropship_hijack/almayer/hijack = new()
+	SShijack.call_shuttle()
 	dropship.hijack = hijack
 	hijack.shuttle = dropship
 	hijack.target_crash_site(result)

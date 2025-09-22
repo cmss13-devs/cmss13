@@ -163,7 +163,9 @@
 		if(T in old_turfs)
 			continue
 
-		if(istype(T, /turf/open_space))
+		// This first istype() check is probably a bad practice but it'll allow V-TOL to still enter...
+		// ... open_space turfs in case Tank Desant and VTOL get TM'd together.
+		if(istype(src, /obj/vehicle/multitile/tank) && istype(T, /turf/open_space))
 			// early return so we skip crash behavior.
 			move_momentum = floor(move_momentum/2)
 			update_next_move()

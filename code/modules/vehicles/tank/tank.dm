@@ -345,6 +345,10 @@
 	if(user.action_busy)
 		return
 
+	if(!_validate_climb_target(user, target, FALSE)) {
+		return
+	}
+
 	user.visible_message(
 		SPAN_WARNING("[user] starts climbing down from [src]."),
 		SPAN_WARNING("You start climbing down from [src]."))

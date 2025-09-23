@@ -33,9 +33,22 @@
 
 /datum/action/xeno_action/activable/tail_stab/sentinel
 	name = "Catalytic Shock Tailstab"
+	damage_multiplier = 1
 
 /datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 	. = ..()
+	if(!istype(target,/mob/living/carbon/human))
+		return
+	var/mob/living/carbon/human/human = target
+	var/datum/effects/sentinel_neuro_stacks/sns = null
+	for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in human.effects_list)
+		sns = sentinel_neuro_stacks
+		break
+	if(!sns)
+		return
+	var/stacks = sns.stack_count
+	sns.increment_stack_count(-stacks/2)
+	target.apply_armoured_damage(stacks*1.2, ARMOR_MELEE, BURN, limb ? limb.name : "chest")
 
 /datum/action/xeno_action/activable/draining_bite
 	name = "Headbite"

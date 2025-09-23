@@ -484,6 +484,7 @@
 	var/stab_range = 2
 	/// Used for defender's tail 'stab'.
 	var/blunt_stab = FALSE
+	var/damage_multiplier = TAILSTAB_MOB_DAMAGE_MULTIPLIER
 
 /datum/action/xeno_action/onclick/evolve
 	name = "Evolve"

@@ -6,7 +6,7 @@
 	var/stack_count = 1
 	var/max_stacks = 30
 	var/last_decrement_time = 0
-	var/time_between_decrements = 10
+	var/time_between_decrements = 1
 	var/last_increment_time = 0
 	var/increment_grace_time = 50
 	var/proc_damage = 1
@@ -29,6 +29,10 @@
 	if (!istype(affected_atom, /mob/living/carbon/human))
 		return
 
+	var/mob/living/carbon/human/H = affected_atom
+	H.apply_damage(proc_damage, OXY)
+	H.update_xeno_hostile_hud()
+
 	if (last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))
 		stack_count--
 		last_decrement_time = world.time
@@ -37,9 +41,7 @@
 			qdel(src)
 			return
 
-	var/mob/living/carbon/human/H = affected_atom
-	H.apply_damage(proc_damage, OXY)
-	H.update_xeno_hostile_hud()
+
 
 
 /datum/effects/sentinel_neuro_stacks/Destroy()

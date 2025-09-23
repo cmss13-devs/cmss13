@@ -1,0 +1,4 @@
+author: "Git-Nivrak"
+delete-after: True
+changes:
+  - bugfix: "Fixes lighting sometimes appearing as blocky instead of fancy lighting"

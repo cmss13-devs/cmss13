@@ -5,7 +5,7 @@ import { fetchRetry } from '../http';
 import type { BoxProps } from './Box';
 import { Image } from './Image';
 
-enum Direction {
+export enum Direction {
   NORTH = 1,
   SOUTH = 2,
   EAST = 4,
@@ -35,9 +35,14 @@ type Props = {
 
 let refMap: Record<string, string> | undefined;
 
+/**
+ * ## DmIcon
+ *
+ * Displays an icon from the BYOND icon reference map. Requires Byond 515+.
+ * A much faster alternative to base64 icons.
+ */
 export function DmIcon(props: Props) {
   const {
-    className,
     direction = Direction.SOUTH,
     fallback,
     frame = 1,
@@ -48,8 +53,6 @@ export function DmIcon(props: Props) {
   } = props;
 
   const [iconRef, setIconRef] = useState('');
-
-  const query = `${iconRef}?state=${icon_state}&dir=${direction}&movement=${movement}&frame=${frame}`;
 
   useEffect(() => {
     async function fetchRefMap() {
@@ -67,6 +70,8 @@ export function DmIcon(props: Props) {
   }, []);
 
   if (!iconRef) return fallback;
+
+  const query = `${iconRef}?state=${icon_state}&dir=${direction}&movement=${!!movement}&frame=${frame}`;
 
   return <Image fixErrors src={query} {...rest} />;
 }

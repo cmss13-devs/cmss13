@@ -435,6 +435,12 @@
 /obj/structure/machinery/power/apc/almayer/east,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/upper/s_stern)
+"abd" = (
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = 26
+	},
+/turf/open/floor/almayer/flooredge/south,
+/area/almayer/command/corporateliaison)
 "abe" = (
 /obj/structure/machinery/power/apc/almayer/hardened/south,
 /turf/open/floor/almayer/plate,
@@ -36548,10 +36554,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/charlie)
 "bKN" = (
-/obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 8;
-	vent_tag = "WY Liaison Quarters";
-	network_id = "CL_Security"
+/obj/structure/pipes/vents/pump{
+	dir = 8
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliaison)
@@ -36635,6 +36639,7 @@
 	pixel_x = 5;
 	pixel_y = 10
 	},
+/obj/structure/machinery/recharger,
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/command/corporateliaison)
 "bKX" = (
@@ -36655,8 +36660,8 @@
 /area/almayer/command/corporateliaison)
 "bKZ" = (
 /obj/structure/pipes/vents/pump/no_boom/gas{
-	dir = 8;
-	vent_tag = "WY Liaison Quarters";
+	dir = 4;
+	vent_tag = "WY Liaison Corridor";
 	network_id = "CL_Security"
 	},
 /turf/open/floor/almayer/flooredge/east,
@@ -37015,20 +37020,20 @@
 	pixel_y = 8;
 	pixel_x = -3
 	},
-/obj/structure/machinery/door_control/cl/office/office_door_remote{
-	pixel_x = -6;
-	pixel_y = -3
-	},
 /obj/structure/machinery/door_control/cl/office/lobby_door{
 	pixel_x = 2;
 	pixel_y = -3
 	},
 /obj/structure/machinery/door_control/cl/office/lobby_window{
-	pixel_x = 10;
+	pixel_x = -6;
 	pixel_y = -3
 	},
 /obj/structure/sign/calendar/wy{
 	pixel_y = -26
+	},
+/obj/structure/machinery/door_control/cl/office/office_door_remote{
+	pixel_x = 10;
+	pixel_y = -3
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/command/corporateliaison)
@@ -37200,22 +37205,9 @@
 	layer = 3.2;
 	pixel_x = -24;
 	pixel_y = 1;
-	network = list("Combat Correspondent Live","WY");
 	name = "Wall-Mounted Television Set"
 	},
 /turf/open/floor/almayer/plate,
-/area/almayer/command/corporateliaison)
-"bMo" = (
-/obj/structure/machinery/flasher{
-	alpha = 50;
-	id = "CL_Security";
-	layer = 2.1;
-	name = "Ceiling Flash";
-	pixel_x = -8;
-	mouse_opacity = 0;
-	pixel_y = 8
-	},
-/turf/open/floor/almayer/flooredge/east,
 /area/almayer/command/corporateliaison)
 "bMp" = (
 /obj/structure/surface/table/reinforced/black,
@@ -37429,6 +37421,15 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/machinery/flasher{
+	alpha = 50;
+	id = "CL_Security";
+	layer = 2.1;
+	name = "Ceiling Flash";
+	pixel_x = -8;
+	mouse_opacity = 0;
+	pixel_y = 8
+	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/command/corporateliaison)
 "bMO" = (
@@ -80906,8 +80907,7 @@
 "sOv" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/cameras/wooden_tv/broadcast{
-	pixel_y = 4;
-	network = list("Combat Correspondent Live","WY")
+	pixel_y = 4
 	},
 /turf/open/floor/carpet,
 /area/almayer/command/corporateliaison)
@@ -203311,7 +203311,7 @@ pBG
 pBG
 bNp
 bMI
-bMo
+bKU
 bKJ
 bLQ
 bJG
@@ -203933,7 +203933,7 @@ fQS
 pBG
 pBG
 pBG
-bKf
+abd
 bKV
 vzp
 bJG

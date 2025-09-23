@@ -15,6 +15,7 @@ import {
 } from 'tgui/components';
 import { Window } from 'tgui/layouts';
 
+import { NoticeBox } from '../components';
 import { replaceRegexChars } from './helpers';
 
 type MarineData = {
@@ -123,6 +124,12 @@ const HomePanel = (props) => {
             </Stack.Item>
           );
         })}
+        {data.squad_list.length === 0 && (
+          <NoticeBox warning>
+            No squads available for Overwatch! Please log-out of an existing
+            console to start Overwatching here.
+          </NoticeBox>
+        )}
       </Stack>
     </Section>
   );

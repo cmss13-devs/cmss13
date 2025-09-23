@@ -72,6 +72,25 @@
 	objective_value = OBJECTIVE_HIGH_VALUE
 	properties = list(PROPERTY_CORROSIVE = 3)
 
+/datum/reagent/blood/xeno_blood/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 3*volume
+	processing_tray.plant_health += -volume
+	if(prob(10))
+		var/turf/c_turf = get_turf(processing_tray)
+		var/removed_chem = pick(processing_tray.seed.chems)
+		processing_tray.seed = processing_tray.seed.diverge()
+		if(length(processing_tray.seed.chems) > 1)
+			c_turf.visible_message(SPAN_WARNING("[capitalize_first_letters(processing_tray.seed.display_name)] sizzles and pops!"))
+			processing_tray.seed.chems.Remove(removed_chem)
+		if(length(processing_tray.seed.chems) <= 1)
+			if (!isnull(processing_tray.seed.chems["xenoblood"]))
+				return
+			processing_tray.seed.chems += list("xenoblood" = list(1,2))
+			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)]'s sizzling sputters out, you smell [lowertext(name)]!"))
+
 /datum/reagent/blood/xeno_blood/royal
 	name = "Dark Acidic Blood"
 	id = "xenobloodroyal"
@@ -79,6 +98,24 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_CORROSIVE = 6)
+
+/datum/reagent/blood/xeno_blood/royal/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	if(!processing_tray.seed)
+		return
+	processing_tray.toxins += 6*volume
+	processing_tray.plant_health += -4*volume
+	processing_tray.chem_add_counter += 1*volume
+	if(processing_tray.chem_add_counter >= 5 && prob(60))
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.chem_add_counter += -5
+		processing_tray.seed = processing_tray.seed.diverge()
+		if(length(processing_tray.seed.chems) > 10)
+			return
+		if(!isnull(processing_tray.seed.chems["xenoblood"]))
+			var/list/new_chem = list(pick( GLOB.chemical_gen_classes_list["H1"]) = list(1,rand(2,3)))
+			var/datum/reagent/new_chem_datum = GLOB.chemical_reagents_list[new_chem[1]]
+			processing_tray.seed.chems += new_chem
+			c_turf.visible_message(SPAN_NOTICE("[capitalize_first_letters(processing_tray.seed.display_name)] flashes an erie green, you smell [new_chem_datum.name]!"))
 
 /datum/reagent/vaccine
 	//data must contain virus type
@@ -135,6 +172,10 @@
 		M.adjust_fire_stacks(-(volume / 10))
 		if(M.fire_stacks <= 0)
 			M.ExtinguishMob()
+
+/datum/reagent/water/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	processing_tray.waterlevel += 0.5*volume
 
 /datum/reagent/water/holywater
 	name = "Holy Water"
@@ -643,6 +684,14 @@
 	color = "#404030" // rgb: 64, 64, 48
 	chemclass = CHEM_CLASS_COMMON
 
+/datum/reagent/ammonia/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.5*volume
+	processing_tray.yield_mod += 0.1*volume
+	processing_tray.nutrilevel += 2*volume
+
 /datum/reagent/hexamine
 	name = "Hexamine"
 	id = "hexamine"
@@ -652,7 +701,7 @@
 	chemfiresupp = TRUE
 	durationmod = 0.5
 	burncolor = "#ff9900"
-	chemclass = CHEM_CLASS_UNCOMMON
+	chemclass = CHEM_CLASS_RARE
 
 /datum/reagent/ultraglue
 	name = "Ultra Glue"
@@ -667,6 +716,14 @@
 	reagent_state = LIQUID
 	color = "#604030" // rgb: 96, 64, 48
 	chemclass = CHEM_CLASS_UNCOMMON
+
+/datum/reagent/diethylamine/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.plant_health += 0.8*volume
+	processing_tray.yield_mod += 0.3*volume
+	processing_tray.nutrilevel += 2*volume
 
 /datum/reagent/blackgoo
 	name = "Black goo"
@@ -690,6 +747,18 @@
 		return
 	if(!(locate(/obj/effect/decal/cleanable/blackgoo) in T))
 		new /obj/effect/decal/cleanable/blackgoo(T)
+
+/datum/reagent/viroxeno
+	name = "Xenogenetic Catalyst"
+	id = "xenogenic"
+	description = "A catalyst chemical that is extremely aggresive towards any organic substance before swiftly turning it into itself."
+	reagent_state = LIQUID
+	color = "#a244d8"
+	overdose = 10
+	overdose_critical = 20
+	chemclass = CHEM_CLASS_SPECIAL
+	flags = REAGENT_NO_GENERATION
+	properties = list(PROPERTY_DNA_DISINTEGRATING = 5, PROPERTY_HEMOSITIC = 2)
 
 
 // Chemfire supplements
@@ -958,7 +1027,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_EXTREME_VALUE
-	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 6)
+	properties = list(PROPERTY_HALLUCINOGENIC = 8, PROPERTY_NERVESTIMULATING = 3)
 
 /datum/reagent/plasma/chitin
 	name = "Chitin Plasma"
@@ -1057,6 +1126,23 @@
 	objective_value = OBJECTIVE_EXTREME_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 2)
 
+/datum/reagent/plasma/purple/reaction_hydro_tray_reagent(obj/structure/machinery/portable_atmospherics/hydroponics/processing_tray, volume)
+	. = ..()
+	if(!processing_tray.seed)
+		return
+	processing_tray.pestlevel += 2*volume
+	processing_tray.nutrilevel += -2*volume
+	if(processing_tray.seed.production <= 1)
+		return
+	processing_tray.production_time_counter += volume
+	if (processing_tray.production_time_counter >= 30)
+		var/turf/c_turf = get_turf(processing_tray)
+		processing_tray.seed = processing_tray.seed.diverge()
+		processing_tray.seed.production += -1
+		if(prob(50))
+			c_turf.visible_message(SPAN_NOTICE("[processing_tray.seed.display_name] bristles and sways towards you!"))
+		processing_tray.production_time_counter = 0
+
 /datum/reagent/plasma/royal
 	name = "Royal Plasma"
 	id = PLASMA_ROYAL
@@ -1066,7 +1152,7 @@
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
-	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_CIPHERING = 1)
+	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_ENCRYPTED = 1)
 
 /datum/reagent/fruit_resin
 	name = "Fruit Resin"

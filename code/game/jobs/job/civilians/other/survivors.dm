@@ -81,9 +81,8 @@ GLOBAL_LIST_EMPTY(spawned_survivors)
 	// There is no insert, so now we have to assign a random generic spawn
 	var/obj/effect/landmark/survivor_spawner/spawner = pick(generic_landmarks)
 
-	if(spawner) //if there is a generic spawn, use it and remove it from the list so it can't be used again(doesnt really matter becuase this gets checked)
+	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
-		generic_landmarks -= spawner
 		return TRUE
 	return FALSE
 
@@ -271,9 +270,8 @@ AddTimelock(/datum/job/civilian/survivor, list(
 
 	// There is no insert, so now we have to assign a random generic spawn
 	var/obj/effect/landmark/survivor_spawner/spawner = pick(generic_landmarks)
-	if(spawner) //if there is a generic spawn, use it and remove it from the list so it can't be used again
+	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
-		generic_landmarks -= spawner
 		return TRUE
 
 	return FALSE
@@ -341,9 +339,8 @@ AddTimelock(/datum/job/civilian/survivor, list(
 			return TRUE
 	// There is no insert, so now we have to assign a random generic spawn
 	var/obj/effect/landmark/survivor_spawner/spawner = pick(generic_landmarks)
-	if(spawner) //if there is a generic spawn, use it and remove it from the list so it can't be used again
+	if(spawner) //if there is a generic spawn, use it
 		slotted_landmarks[new_player] = spawner
-		generic_landmarks -= spawner
 		return TRUE
 	return FALSE
 

@@ -44,7 +44,13 @@
 				attacking_xeno.start_pulling(src)
 
 		if(INTENT_HARM)
-			if(attacking_xeno.can_not_harm(src))
+			if(attacking_xeno.claw_restrained())
+				attacking_xeno.animation_attack_on(src)
+				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] tries to strike [src]"),
+				SPAN_XENONOTICE("We try to strike [src] but fail due to our restraints!"))
+				return XENO_ATTACK_ACTION
+
+			if(attacking_xeno.can_not_harm(src, check_hive_flags=FALSE)) // We manually check hive_flags later
 				attacking_xeno.animation_attack_on(src)
 				attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
 				SPAN_XENONOTICE("We nibble [src]"))
@@ -58,11 +64,29 @@
 				return XENO_NO_DELAY_ACTION
 
 			if(attacking_xeno.caste && !attacking_xeno.caste.is_intelligent)
-				if(HAS_TRAIT(src, TRAIT_NESTED) && (status_flags & XENO_HOST))
+				var/embryo_allied = FALSE
+				if(status_flags & XENO_HOST)
 					for(var/obj/item/alien_embryo/embryo in src)
 						if(HIVE_ALLIED_TO_HIVE(attacking_xeno.hivenumber, embryo.hivenumber))
-							to_chat(attacking_xeno, SPAN_WARNING("We should not harm this host! It has a sister inside."))
-							return XENO_NO_DELAY_ACTION
+							embryo_allied = TRUE
+							break
+
+				if(embryo_allied)
+					if(HAS_TRAIT(src, TRAIT_NESTED))
+						attacking_xeno.animation_attack_on(src)
+						attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+						SPAN_XENONOTICE("We nibble [src], as it has a sister inside we should not harm."))
+						return XENO_NO_DELAY_ACTION
+					if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_INFECTED))
+						attacking_xeno.animation_attack_on(src)
+						attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+						SPAN_XENONOTICE("We nibble [src], as queen forbade slashing of infected hosts!"))
+						return XENO_ATTACK_ACTION
+				if(!HAS_FLAG(attacking_xeno.hive.hive_flags, XENO_SLASH_NORMAL))
+					attacking_xeno.animation_attack_on(src)
+					attacking_xeno.visible_message(SPAN_NOTICE("[attacking_xeno] nibbles [src]"),
+					SPAN_XENONOTICE("We nibble [src], as queen forbade slashing!"))
+					return XENO_ATTACK_ACTION
 
 			if(check_shields(0, attacking_xeno.name)) // Blocking check
 				attacking_xeno.visible_message(SPAN_DANGER("[attacking_xeno]'s slash is blocked by [src]'s shield!"),

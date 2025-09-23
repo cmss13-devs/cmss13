@@ -1779,12 +1779,10 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		// increases scatter to penalize marines firing atop a moving tank instead of outright restricting it
 		// only for wielded firearms.
 		if(tank_on_top_of)
-			user.visible_message(SPAN_NOTICE("Entered 1781: if(tank_on_top_of)"), null, 4)
 			var/obj/vehicle/multitile/tank/TANK = tank_on_top_of
 			if(world.time < TANK.on_top_mobs_shooting_inaccuracy_time)
 				if(world.time % 3)
 					to_chat(gun_user, SPAN_DANGER("You struggle to keep your aim centered as the [TANK] moves!"))
-				user.visible_message(SPAN_NOTICE("Tank inaccuracy applied"), null, 4)
 				gun_accuracy_mult = max(0.1, gun_accuracy_mult * 0.4) // 60% accuracy loss
 				gun_scatter += SCATTER_AMOUNT_TIER_4
 
@@ -1813,9 +1811,6 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	projectile_to_fire.accuracy = floor(projectile_to_fire.accuracy * gun_accuracy_mult) // Apply gun accuracy multiplier to projectile accuracy
 	projectile_to_fire.scatter += gun_scatter
-
-	user.visible_message(SPAN_NOTICE("projectile_to_fire.scatter = [projectile_to_fire.scatter]"), null, 4)
-	user.visible_message(SPAN_NOTICE("projectile_to_fire.accuracy = [projectile_to_fire.accuracy]"), null, 4)
 
 /// When the gun is about to shoot this is called to play the specific gun's firing sound. Requires the firing projectile and the gun's user as the first and second argument
 /obj/item/weapon/gun/proc/play_firing_sounds(obj/projectile/projectile_to_fire, mob/user)

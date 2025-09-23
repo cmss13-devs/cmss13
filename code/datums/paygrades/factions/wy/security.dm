@@ -20,6 +20,13 @@
 	prefix = "CSSgt."
 	pay_multiplier = 3
 
+
+/datum/paygrade/wy_sec/bodyguard/trainee
+	paygrade = PAY_SHORT_WY_SEC_TPPO
+	name = "Trainee Personal Protection Officer"
+	prefix = "TPPO."
+	pay_multiplier = 2.5
+
 /datum/paygrade/wy_sec/bodyguard
 	paygrade = PAY_SHORT_WY_SEC_PPO
 	name = "Personal Protection Officer"

@@ -40,3 +40,28 @@
 	item_state_slots = list(WEAR_JACKET = "ppo_armor")
 	uniform_restricted = null
 	storage_slots = 1
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+	slowdown = SLOWDOWN_ARMOR_SUPER_LIGHT
+
+/obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo/strong
+	name = "\improper M4 pattern PPO armor"
+	desc = "A modification of the standard Armat Systems M3 armor. This variant is worn by Personal Protection Officers protecting Weyland-Yutani employees, as denoted by the blue detailing. Has some armor plating removed for extra mobility."
+	icon_state = "ppo_armor_strong"
+	item_state_slots = list(WEAR_JACKET = "ppo_armor_strong")
+	storage_slots = 2
+
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+

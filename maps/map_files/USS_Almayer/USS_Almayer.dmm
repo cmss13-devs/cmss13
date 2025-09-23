@@ -36880,8 +36880,9 @@
 /turf/open/floor/engine,
 /area/almayer/engineering/airmix)
 "bLB" = (
-/obj/structure/reagent_dispensers/peppertank{
-	pixel_y = 26
+/obj/structure/machinery/cm_vending/gear/corporate_security{
+	pixel_y = 16;
+	density = 0
 	},
 /turf/open/floor/almayer/flooredge/south,
 /area/almayer/command/corporateliaison)
@@ -90480,6 +90481,9 @@
 /obj/structure/sign/safety/stairs{
 	pixel_x = -17;
 	pixel_y = 1
+	},
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_y = 26
 	},
 /turf/open/floor/almayer/flooredge/west,
 /area/almayer/command/corporateliaison)

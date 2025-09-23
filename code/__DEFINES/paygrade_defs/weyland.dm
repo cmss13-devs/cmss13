@@ -112,6 +112,9 @@
 #define PAY_SHORT_WY_SEC_LEAD "WY-SEC-LEAD"
 
 
+/// WY-SEC-PSO Trainee Personal Protection Officer
+#define PAY_SHORT_WY_SEC_TPPO "WY-SEC-TPPO"
+
 /// WY-SEC-PSO Personal Protection Officer
 #define PAY_SHORT_WY_SEC_PPO "WY-SEC-PPO"
 

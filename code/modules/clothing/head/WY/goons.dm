@@ -12,6 +12,10 @@
 	icon_state = "sec_helmet"
 	item_state = "sec_helmet"
 
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/ppo
+	icon_state = "ppo_helmet"
+	item_state = "ppo_helmet"
+
 /obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/medic
 	desc = "A basic skull-helm worn by corporate security assets. This variant lacks a visor, granting the wearer a better view of any potential patients."
 	icon_state = "med_helmet"

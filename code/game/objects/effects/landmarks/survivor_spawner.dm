@@ -20,8 +20,15 @@
 	LAZYINITLIST(GLOB.survivor_spawns_by_priority["[spawn_priority]"])
 	GLOB.survivor_spawns_by_priority["[spawn_priority]"] += src
 
+	if(spawn_priority == LOWEST_SPAWN_PRIORITY && archetype == INSERT_NONE)
+		LAZYINITLIST(GLOB.generic_survivor_spawns)
+		GLOB.generic_survivor_spawns += src
+
 /obj/effect/landmark/survivor_spawner/Destroy()
 	GLOB.survivor_spawns_by_priority["[spawn_priority]"] -= src
+
+	if(LAZYISIN(GLOB.generic_survivor_spawns, src))
+		GLOB.generic_survivor_spawns -= src
 	return ..()
 
 /obj/effect/landmark/survivor_spawner/proc/check_can_spawn(mob/living/carbon/human/survivor)

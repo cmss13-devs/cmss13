@@ -73,7 +73,7 @@
 	// State
 	var/max_buffed_slashes = 3
 	var/buffed_slashes = 0
-	var/increment_amount = 5
+	var/increment_amount = 11
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!buffed_slashes)

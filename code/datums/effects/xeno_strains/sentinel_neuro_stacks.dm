@@ -54,7 +54,7 @@
 
 	return ..()
 
-/datum/effects/sentinel_neuro_stacks/proc/increment_stack_count(difference = 2)
+/datum/effects/sentinel_neuro_stacks/proc/increment_stack_count(difference = 5)
 	stack_count = min(max_stacks, stack_count + difference)
 
 	if(stack_count <= 0)

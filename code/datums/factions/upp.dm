@@ -1,8 +1,10 @@
 /datum/faction/upp
 	name = "Union of Progressive Peoples"
 	faction_tag = FACTION_UPP
+	base_icon_file = 'icons/mob/hud/factions/upp.dmi'
 
 /datum/faction/upp/modify_hud_holder(image/holder, mob/living/carbon/human/human)
+	var/icon/override_icon_file
 	var/hud_icon_state
 	var/obj/item/card/id/ID = human.get_idcard()
 	var/default_color = FALSE //so squad units get red icons as survs and ERT
@@ -57,12 +59,13 @@
 		if(JOB_UPP_COMMISSAR)
 			hud_icon_state = "commi"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', human, "upp_background")
-		var/image/rank_icon_image = image('icons/mob/hud/marine_hud.dmi', human, "upp_[hud_icon_state]")
+		var/icon/file_to_use = override_icon_file ? override_icon_file : base_icon_file
+		holder.overlays += image(file_to_use, human, "upp_background")
+		var/image/rank_icon_image = image(file_to_use, human, "upp_[hud_icon_state]")
 		if(istype(squad))
 			human.langchat_color = human.assigned_squad.chat_color
 			rank_icon_image.color = squad.equipment_color
-			var/image/squad_circle = image('icons/mob/hud/marine_hud.dmi', human, "upp_squad_circle")
+			var/image/squad_circle = image(file_to_use, human, "upp_squad_circle")
 			squad_circle.color = squad.equipment_color
 			holder.overlays += squad_circle
 		else

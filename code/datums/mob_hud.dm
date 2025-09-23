@@ -852,6 +852,18 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 	if (acid_found && acid_count > 0)
 		acid_holder.overlays += image('icons/mob/hud/hud.dmi',"acid_stacks[acid_count]")
 
+	var/neuro_found = FALSE
+	var/neuro_count = 0
+	for (var/datum/effects/sentinel_neuro_stacks/sns in effects_list)
+		if (!QDELETED(sns))
+			neuro_count = sns.stack_count
+			neuro_found = TRUE
+			break
+
+	if (neuro_found && neuro_count > 9)
+		var/value = floor(neuro_count/10)
+		acid_holder.overlays += image('icons/mob/hud/hud.dmi',"acid_stacks[value]")
+
 	var/slow_found = FALSE
 	for (var/datum/effects/xeno_slow/XS in effects_list)
 		if (!QDELETED(XS))

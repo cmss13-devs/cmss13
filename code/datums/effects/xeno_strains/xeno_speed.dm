@@ -6,7 +6,7 @@
 	var/effect_modifier_source = null
 	var/effect_end_message = null
 
-/datum/effects/xeno_speed/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 3.5 SECONDS, set_speed_modifier = 0, set_modifier_source = null, set_end_message = SPAN_XENONOTICE("You feel lethargic..."))
+/datum/effects/xeno_speed/New(atom/A, mob/from = null, last_dmg_source = null, zone = "chest", ttl = 3.5 SECONDS, set_speed_modifier = 0, set_modifier_source = null, set_end_message = SPAN_XENONOTICE("You feel lethargic..."), show_baloon_alert = FALSE)
 	. = ..(A, from, last_dmg_source, zone)
 	if(QDELETED(src))
 		return
@@ -20,6 +20,7 @@
 	effect_modifier_source = set_modifier_source
 	effect_end_message = set_end_message
 	added_effect = TRUE
+	src.show_baloon_alert = show_baloon_alert
 
 /datum/effects/xeno_speed/validate_atom(atom/A)
 	if(!isxeno(A))
@@ -44,6 +45,7 @@
 			LAZYREMOVE(xeno.modifier_sources, effect_modifier_source)
 		if(effect_end_message)
 			to_chat(xeno, effect_end_message)
-		xeno.balloon_alert(xeno, "our speed fall back to normal.", text_color = "#5B248C")
-		playsound(xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
+		if(istype(xeno) && show_baloon_alert)
+			xeno.balloon_alert(xeno, "our speed fall back to normal.", text_color = "#5B248C")
+			playsound(xeno, 'sound/effects/squish_and_exhaust.ogg', 25, 1)
 	return ..()

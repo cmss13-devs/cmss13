@@ -705,30 +705,39 @@
 
 	return alien_weeds
 
-/datum/action/xeno_action/activable/place_construction/use_ability(atom/atom)
+/datum/action/xeno_action/activable/place_construction/use_ability(atom/target)
 	var/mob/living/carbon/xenomorph/xeno = owner
 	if(!xeno.check_state())
 		return FALSE
 
-	if(isstorage(atom.loc) || xeno.contains(atom) || istype(atom, /atom/movable/screen))
+	if(isstorage(target.loc) || xeno.contains(target) || istype(target, /atom/movable/screen))
+		return FALSE
+
+	if(!xeno.hive)
 		return FALSE
 
 	//Make sure construction is unrestricted
-	if(xeno.hive && xeno.hive.construction_allowed == XENO_LEADER && xeno.hive_pos == NORMAL_XENO)
-		to_chat(xeno, SPAN_WARNING("Construction is currently restricted to Leaders only!"))
-		return FALSE
-	else if(xeno.hive && xeno.hive.construction_allowed == XENO_QUEEN && !istype(xeno.caste, /datum/caste_datum/queen))
-		to_chat(xeno, SPAN_WARNING("Construction is currently restricted to Queen only!"))
-		return FALSE
-	else if(xeno.hive && xeno.hive.construction_allowed == XENO_NOBODY)
-		to_chat(xeno, SPAN_WARNING("The hive is too weak and fragile to have the strength to design constructions."))
-		return FALSE
+	if(IS_NORMAL_XENO(xeno))
+		if(!HAS_FLAG(xeno.hive.hive_flags, XENO_CONSTRUCTION_NORMAL))
+			to_chat(xeno, SPAN_WARNING("Construction by normal sisters is currently restricted!"))
+			return FALSE
+	else if(IS_XENO_LEADER(xeno))
+		if(!HAS_FLAG(xeno.hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+			to_chat(xeno, SPAN_WARNING("Construction by leader sisters is currently restricted!"))
+			return FALSE
+	else if(isqueen(xeno))
+		if(!HAS_FLAG(xeno.hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
+			to_chat(xeno, SPAN_WARNING("We are currently not allowed to designate construction!"))
+			return FALSE
+	else
+		to_chat(xeno, SPAN_DANGER("Something went wrong!"))
+		CRASH("Something went wrong determining hive_pos during place_construction!")
 
-	var/turf/turf = get_turf(atom)
+	var/turf/target_turf = get_turf(target)
 
-	var/area/area = get_area(turf)
-	if(isnull(area) || !(area.is_resin_allowed))
-		if(!area || area.flags_area & AREA_UNWEEDABLE)
+	var/area/target_area = get_area(target_turf)
+	if(isnull(target_area) || !(target_area.is_resin_allowed))
+		if(!target_area || target_area.flags_area & AREA_UNWEEDABLE)
 			to_chat(xeno, SPAN_XENOWARNING("This area is unsuited to host the hive!"))
 			return
 		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
@@ -742,7 +751,8 @@
 		to_chat(xeno, SPAN_XENOWARNING("It's too tight in here to build."))
 		return FALSE
 
-	if(!xeno.check_alien_construction(turf))
+
+	if(!xeno.check_alien_construction(target_turf))
 		return FALSE
 
 	var/choice = XENO_STRUCTURE_CORE
@@ -765,11 +775,12 @@
 	var/structure_type = xeno.hive.hive_structure_types[choice]
 	var/datum/construction_template/xenomorph/structure_template = new structure_type()
 
-	if(!spacecheck(xeno, turf, structure_template))
+
+	if(!spacecheck(xeno, target_turf, structure_template))
 		// spacecheck already cleans up the template
 		return FALSE
 
-	if((choice == XENO_STRUCTURE_EGGMORPH) && locate(/obj/structure/flora/grass/tallgrass) in turf)
+	if((choice == XENO_STRUCTURE_EGGMORPH) && locate(/obj/structure/flora/grass/tallgrass) in target_turf)
 		to_chat(xeno, SPAN_WARNING("The tallgrass is preventing us from building the egg morpher!"))
 		qdel(structure_template)
 		return FALSE
@@ -777,11 +788,11 @@
 	if(!do_after(xeno, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
-	if(!spacecheck(xeno, turf, structure_template)) //doublechecking
+	if(!spacecheck(xeno, target_turf, structure_template)) //doublechecking
 		// spacecheck already cleans up the template
 		return FALSE
 
-	if(choice == XENO_STRUCTURE_CORE && area.unoviable_timer)
+	if(choice == XENO_STRUCTURE_CORE && target_area.unoviable_timer)
 		to_chat(xeno, SPAN_WARNING("This area does not feel right for you to build this in."))
 		qdel(structure_template)
 		return FALSE
@@ -800,12 +811,12 @@
 		qdel(structure_template)
 		return FALSE
 
-	if(QDELETED(turf))
+	if(QDELETED(target_turf))
 		to_chat(xeno, SPAN_WARNING("We cannot build here!"))
 		qdel(structure_template)
 		return FALSE
 
-	var/queen_on_zlevel = !xeno.hive.living_xeno_queen || SSmapping.same_z_map(xeno.hive.living_xeno_queen.z, turf.z)
+	var/queen_on_zlevel = !xeno.hive.living_xeno_queen || SSmapping.same_z_map(xeno.hive.living_xeno_queen.z, target_turf.z)
 	if(!queen_on_zlevel)
 		to_chat(xeno, SPAN_WARNING("Our link to the Queen is too weak here. She is on another world."))
 		qdel(structure_template)
@@ -816,19 +827,19 @@
 		qdel(structure_template)
 		return FALSE
 
-	if(turf.is_weedable < FULLY_WEEDABLE)
-		to_chat(xeno, SPAN_WARNING("\The [turf] can't support a [structure_template.name]!"))
+	if(target_turf.is_weedable < FULLY_WEEDABLE)
+		to_chat(xeno, SPAN_WARNING("\The [target_turf] can't support a [structure_template.name]!"))
 		qdel(structure_template)
 		return FALSE
 
-	var/obj/effect/alien/weeds/weeds = locate() in turf
+	var/obj/effect/alien/weeds/weeds = locate() in target_turf
 	if(weeds?.block_structures >= BLOCK_SPECIAL_STRUCTURES)
 		to_chat(xeno, SPAN_WARNING("\The [weeds] block the construction of any special structures!"))
 		qdel(structure_template)
 		return FALSE
 
 	xeno.use_plasma(400)
-	xeno.place_construction(turf, structure_template)
+	xeno.place_construction(target_turf, structure_template)
 
 	return ..()
 

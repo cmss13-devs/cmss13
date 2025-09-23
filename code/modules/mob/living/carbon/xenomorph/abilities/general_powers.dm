@@ -743,7 +743,7 @@
 		to_chat(xeno, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return FALSE
 
-	if(!SSmapping.same_z_map(turf.z, xeno.z))
+	if(!SSmapping.same_z_map(target_turf.z, xeno.z))
 		to_chat(xeno, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 

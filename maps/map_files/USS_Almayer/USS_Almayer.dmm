@@ -35817,7 +35817,8 @@
 	},
 /obj/structure/machinery/camera/wey_yu/unbreakable/liaison_cell{
 	dir = 4;
-	c_tag = "Containment Antechamber"
+	c_tag = "Containment Antechamber";
+	network = list("Containment Hidden","WY")
 	},
 /turf/open/floor/almayer/silver/northwest/no_build,
 /area/almayer/medical/containment/cell/cl)
@@ -35846,6 +35847,9 @@
 	icon_state = "N";
 	pixel_y = 1
 	},
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/ammo_magazine/smg/m39,
+/obj/item/weapon/gun/smg/m39/corporate/no_lock,
 /turf/open/floor/almayer/silver/north/no_build,
 /area/almayer/medical/containment/cell/cl)
 "bJe" = (

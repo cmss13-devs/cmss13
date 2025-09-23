@@ -29,6 +29,10 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
+"ae" = (
+/obj/effect/landmark/survivor_spawner/clf_synth/soro,
+/turf/open/floor/strata/orange_cover,
+/area/strata/interior/outpost/clf_dorms)
 "af" = (
 /obj/effect/landmark/survivor_spawner/clf/soro,
 /obj/item/ammo_casing,
@@ -848,9 +852,12 @@
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
 "ck" = (
-/obj/effect/landmark/survivor_spawner/clf_synth/soro,
-/turf/open/floor/strata/orange_cover,
-/area/strata/interior/outpost/clf_dorms)
+/obj/structure/sign/banners/clf_worn{
+	pixel_x = 9;
+	pixel_y = 31
+	},
+/turf/open/auto_turf/strata_grass/layer1,
+/area/strata/exterior/far_north_outpost)
 "cl" = (
 /obj/structure/sign/poster/clf{
 	pixel_y = 34;
@@ -1069,57 +1076,50 @@
 /turf/open/gm/dirt/brown/variant_1,
 /area/strata/exterior/far_north_outpost)
 "cS" = (
-/obj/effect/landmark/survivor_spawner/clf_coordinator/soro,
-/turf/open/floor/wood,
-/area/strata/interior/outpost/clf_office)
-"cT" = (
-/obj/structure/sign/banners/clf_worn{
-	pixel_x = 9;
-	pixel_y = 31
-	},
-/turf/open/auto_turf/strata_grass/layer1,
-/area/strata/exterior/far_north_outpost)
-"cU" = (
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
 /turf/open/auto_turf/snow/brown_base/layer0,
 /area/strata/exterior/far_north_outpost)
-"cV" = (
+"cT" = (
 /obj/structure/fence/slim/upp/door{
 	dir = 4
 	},
 /turf/open/asphalt/cement/cement1/north,
 /area/strata/interior/outpost/clf_dorms)
-"cW" = (
+"cU" = (
 /obj/item/trash/cigbutt,
 /obj/structure/fence/slim/upp/door{
 	dir = 4
 	},
 /turf/open/asphalt/cement/cement1/north,
 /area/strata/interior/outpost/clf_dorms)
-"cX" = (
+"cV" = (
 /obj/structure/fence/slim/upp,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/strata/exterior/far_north_outpost)
-"cY" = (
+"cW" = (
 /obj/item/trash/cigbutt,
+/obj/structure/fence/slim/upp/door{
+	dir = 1
+	},
+/turf/open/asphalt/cement/cement12,
+/area/strata/interior/outpost/clf_dorms)
+"cX" = (
+/obj/item/trash/cigbutt,
+/obj/structure/fence/slim/upp,
+/turf/open/asphalt/cement/cement12,
+/area/strata/interior/outpost/clf_dorms)
+"cY" = (
 /obj/structure/fence/slim/upp/door{
 	dir = 1
 	},
 /turf/open/asphalt/cement/cement12,
 /area/strata/interior/outpost/clf_dorms)
 "cZ" = (
-/obj/item/trash/cigbutt,
-/obj/structure/fence/slim/upp,
-/turf/open/asphalt/cement/cement12,
-/area/strata/interior/outpost/clf_dorms)
-"da" = (
-/obj/structure/fence/slim/upp/door{
-	dir = 1
-	},
-/turf/open/asphalt/cement/cement12,
-/area/strata/interior/outpost/clf_dorms)
+/obj/effect/landmark/survivor_spawner/clf_coordinator/soro,
+/turf/open/floor/wood,
+/area/strata/interior/outpost/clf_office)
 "dk" = (
 /turf/open/floor/wood/wood_broken6,
 /area/strata/interior/outpost/clf_dorms)
@@ -2735,7 +2735,7 @@ Mx
 vY
 VR
 xH
-cT
+ck
 ts
 bg
 zq
@@ -2764,7 +2764,7 @@ Ef
 fR
 xH
 bL
-ck
+ae
 Sl
 Sl
 xH
@@ -2797,11 +2797,11 @@ fR
 Ef
 xH
 Tt
-cW
-cV
+cU
+cT
 Tt
 xH
-cU
+cS
 zq
 eg
 GR
@@ -2828,7 +2828,7 @@ fR
 fR
 Zy
 fR
-cX
+cV
 ad
 bI
 GD
@@ -2850,7 +2850,7 @@ cH
 cH
 bA
 cM
-cS
+cZ
 jw
 OF
 ev
@@ -2861,7 +2861,7 @@ Zy
 bt
 bt
 fR
-cX
+cV
 bM
 zq
 zq
@@ -2894,7 +2894,7 @@ bY
 bt
 bT
 Zy
-cX
+cV
 bN
 zq
 zq
@@ -2927,7 +2927,7 @@ bx
 ce
 bV
 bt
-cX
+cV
 bN
 zq
 bs
@@ -3020,7 +3020,7 @@ fR
 bJ
 zq
 CN
-cX
+cV
 zq
 cg
 ag
@@ -3053,7 +3053,7 @@ cE
 cB
 bJ
 cw
-cX
+cV
 zq
 ft
 cf
@@ -3185,7 +3185,7 @@ YU
 zq
 zq
 cw
-cX
+cV
 fR
 Ky
 fR
@@ -3218,7 +3218,7 @@ zq
 bs
 fR
 cw
-cX
+cV
 bs
 fR
 fR
@@ -3246,7 +3246,7 @@ cH
 Ld
 GJ
 Sl
-cY
+cW
 zq
 fR
 bg
@@ -3279,7 +3279,7 @@ cH
 Fe
 JD
 Sl
-cZ
+cX
 zq
 zq
 fR
@@ -3312,7 +3312,7 @@ cH
 Ld
 JD
 Sl
-da
+cY
 zq
 zq
 fR

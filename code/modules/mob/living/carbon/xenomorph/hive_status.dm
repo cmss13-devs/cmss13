@@ -106,7 +106,7 @@
 
 	var/list/allies = list()
 	/// The list of factions this hive is forbidden to ally with.
-	var/list/banned_allies = list(FACTION_XENOMORPH_TUTORIAL, FACTION_XENOMORPH_TAMED)
+	var/list/banned_allies
 	/// Admin override var.
 	var/allow_banned_allies = FALSE
 
@@ -195,6 +195,8 @@
 
 	RegisterSignal(SSdcs, COMSIG_GLOB_POST_SETUP, PROC_REF(post_setup))
 
+	setup_banned_allies()
+
 ///Generate the image()'s requried for the evolution radial menu.
 /datum/hive_status/proc/generate_evo_menu_images()
 	for(var/datum/caste_datum/caste as anything in subtypesof(/datum/caste_datum))
@@ -243,6 +245,10 @@
 
 		if(issynth(current_mob))
 			to_chat(current_mob, SPAN_HIGHDANGER("You hear the distant call of an unknown bioform, it sounds like they're informing others to change form. You begin to analyze and decrypt the strange vocalization."))
+
+/datum/hive_status/proc/setup_banned_allies()
+	banned_allies = DEFAULT_ALLY_BAN_LIST
+	banned_allies -= name
 
 /// Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(mob/living/carbon/xenomorph/X)
@@ -1150,6 +1156,9 @@
 		return TRUE
 	return FALSE
 
+/datum/hive_status/corrupted/setup_banned_allies()
+	banned_allies = list(FACTION_XENOMORPH_TUTORIAL, FACTION_XENOMORPH_HELLHOUNDS)
+
 /datum/hive_status/alpha
 	name = FACTION_XENOMORPH_ALPHA
 	reporting_id = "alpha"
@@ -1250,6 +1259,8 @@
 		XENO_STRUCTURE_EGGMORPH = 999,
 		XENO_STRUCTURE_RECOVERY = 999,
 	)
+
+/datum/hive_status/tutorial/setup_banned_allies()
 	banned_allies = list("All")
 
 /datum/hive_status/tutorial/can_delay_round_end(mob/living/carbon/xenomorph/xeno)
@@ -1302,7 +1313,8 @@
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions
 
-	// Tamed allies are handled differently.
+// Tamed allies are handled differently.
+/datum/hive_status/corrupted/tamed/setup_banned_allies()
 	banned_allies = list("All")
 
 /datum/hive_status/corrupted/tamed/New()
@@ -1353,7 +1365,7 @@
 	return ..()
 
 /datum/hive_status/corrupted/renegade
-	name = "Renegade Hive"
+	name = FACTION_XENOMORPH_RENEGADE
 	reporting_id = "renegade"
 	hivenumber = XENO_HIVE_RENEGADE
 	prefix = "Renegade "
@@ -1370,6 +1382,9 @@
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	for(var/faction in FACTION_LIST_HUMANOID) //renegades allied to all humanoids, but it mostly affects structures. Their ability to attack humanoids and other xenos (including of the same hive) depends on iff settings
 		allies[faction] = TRUE
+
+/datum/hive_status/corrupted/renegade/setup_banned_allies()
+	banned_allies = FACTION_LIST_XENOMORPH
 
 /datum/hive_status/corrupted/renegade/can_spawn_as_hugger(mob/dead/observer/user)
 	to_chat(user, SPAN_WARNING("The [name] cannot support facehuggers."))

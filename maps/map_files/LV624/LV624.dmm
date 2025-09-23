@@ -1823,7 +1823,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/south_west_caves)
 "afK" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/west,
 /area/lv624/lazarus/landing_zones/lz2)
 "afM" = (
@@ -2757,7 +2757,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/south_west_jungle)
 "ajA" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
@@ -3187,7 +3187,7 @@
 /turf/open/gm/mudcoast/greenwater/east,
 /area/lv624/ground/river/east_river)
 "alt" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/colony/west_tcomms_road)
 "alu" = (
@@ -4391,7 +4391,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
 "apl" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz2)
 "apm" = (
@@ -5222,7 +5222,7 @@
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/jungle/west_jungle)
 "asb" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
@@ -7367,7 +7367,7 @@
 "aBQ" = (
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /obj/structure/flora/jungle/vines/light_3,
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/central_jungle)
 "aBR" = (
@@ -11714,7 +11714,7 @@
 /obj/structure/flora/jungle/vines/light_3{
 	layer = 4.14
 	},
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/central_jungle)
 "aST" = (
@@ -15639,7 +15639,7 @@
 /turf/open/floor/hybrisa/tile/darkgrey_bigtile,
 /area/lv624/lazarus/hydroponics)
 "bfB" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
@@ -18727,7 +18727,7 @@
 /area/lv624/lazarus/kmcc_cargo)
 "brk" = (
 /obj/structure/flora/jungle/vines/heavy,
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/central_jungle)
 "brl" = (
@@ -19330,7 +19330,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
 "btF" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "btG" = (
@@ -19687,7 +19687,7 @@
 /area/lv624/ground/colony/phi_lab_road)
 "buZ" = (
 /obj/structure/flora/jungle/vines/light_3,
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
@@ -32723,7 +32723,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "cTN" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/jungle/central_jungle)
@@ -33663,7 +33663,7 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/kmcc_cargo)
 "dXx" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
@@ -34904,7 +34904,7 @@
 /turf/open/floor/prison,
 /area/lv624/lazarus/secure_bunker)
 "fkD" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/jungle/west_central_jungle)
@@ -37085,7 +37085,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_west_jungle)
 "hEu" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/west,
 /area/lv624/ground/colony/west_nexus_road)
 "hFh" = (
@@ -37840,7 +37840,7 @@
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "ixv" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/jungle/west_central_jungle)
 "iyd" = (
@@ -37927,7 +37927,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/central_jungle)
 "iAF" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/central_jungle)
@@ -38164,7 +38164,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/caves/mining)
 "iQF" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/corner/south_east,
 /area/lv624/lazarus/landing_zones/lz1)
 "iRb" = (
@@ -38210,7 +38210,7 @@
 /turf/open/gm/grass/grassmud/corner/north_west,
 /area/lv624/ground/jungle/north_jungle)
 "iXG" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/colony/west_nexus_road)
 "iXX" = (
@@ -38596,7 +38596,7 @@
 /turf/open/floor/plating/warnplate/east,
 /area/lv624/lazarus/disposals)
 "jwI" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grassmud/south,
@@ -39278,7 +39278,7 @@
 /turf/open/floor/hybrisa/carpet/rug_colorable/biege/north,
 /area/lv624/lazarus/corpo_apartments)
 "kjj" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/jungle/west_central_jungle)
@@ -39327,7 +39327,7 @@
 /turf/open/floor/whiteblue,
 /area/lv624/lazarus/customs_dome)
 "kls" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/jungle/central_jungle)
 "klD" = (
@@ -39729,7 +39729,7 @@
 /turf/open/gm/grass/grassmud/corner/north_west,
 /area/lv624/ground/jungle/east_central_jungle)
 "kId" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_3,
 /turf/open/gm/grass/grassmud/corner/south_west,
 /area/lv624/ground/jungle/central_jungle)
@@ -40478,7 +40478,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/ancient_temple)
 "lAH" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/corner2/north_east,
 /area/lv624/ground/colony/west_nexus_road)
 "lAX" = (
@@ -41007,7 +41007,7 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/landing_zones/lz2)
 "lYO" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/central_jungle)
 "lZl" = (
@@ -41452,7 +41452,7 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
 "muz" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassmud/south,
@@ -42206,7 +42206,7 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/cargo_storage)
 "nnL" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassmud/corner/north_west,
@@ -42300,7 +42300,7 @@
 /turf/open/floor/hybrisa/tile/tilegrey,
 /area/lv624/ground/caves/mining)
 "nro" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassmud/south,
@@ -42371,7 +42371,7 @@
 /turf/open/floor/barber/west,
 /area/lv624/lazarus/fitness)
 "nuz" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/colony/north_tcomms_road)
 "nuI" = (
@@ -43152,7 +43152,7 @@
 /area/lv624/ground/jungle/west_jungle/swamp)
 "omK" = (
 /obj/structure/flora/jungle/vines/light_1,
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
@@ -43830,7 +43830,7 @@
 /turf/open/floor/corsat/squareswood/north,
 /area/lv624/ground/caves/ancient_temple)
 "pcd" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
@@ -43840,7 +43840,7 @@
 /area/lv624/ground/jungle/north_jungle)
 "pci" = (
 /obj/structure/flora/jungle/vines/light_2,
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
 "pcu" = (
@@ -44512,7 +44512,7 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/kmcc_cargo)
 "pLm" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/corner/north_east,
 /area/lv624/ground/colony/west_nexus_road)
 "pLv" = (
@@ -44826,7 +44826,7 @@
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/north_west_jungle)
 "pYS" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/ground/jungle/central_jungle)
 "pZb" = (
@@ -45037,7 +45037,7 @@
 /turf/open/floor/prison,
 /area/lv624/lazarus/secure_bunker)
 "qmV" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/south,
 /area/lv624/lazarus/landing_zones/lz1)
 "qna" = (
@@ -45305,7 +45305,7 @@
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/north_jungle)
 "qIA" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/ground/jungle/west_central_jungle)
@@ -45827,7 +45827,7 @@
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/east_caves)
 "rhQ" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/corner/south_west,
 /area/lv624/lazarus/landing_zones/lz1)
 "rit" = (
@@ -46512,7 +46512,7 @@
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/cargo_storage)
 "rZR" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/east,
 /area/lv624/lazarus/landing_zones/lz1)
 "sau" = (
@@ -47652,7 +47652,7 @@
 /turf/open/floor/corsat,
 /area/lv624/lazarus/disposals)
 "tnq" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grassmud/west,
 /area/lv624/ground/jungle/west_central_jungle)
@@ -48557,7 +48557,7 @@
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/east_jungle)
 "uuk" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_2,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/west_central_jungle)
@@ -48842,7 +48842,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/lv624/ground/caves/ancient_temple)
 "uLy" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/lazarus/landing_zones/lz1)
 "uMd" = (
@@ -50223,7 +50223,7 @@
 /turf/open/floor/plating,
 /area/lv624/ground/caves/mining)
 "wjd" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_3,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassmud/west,
@@ -51503,7 +51503,7 @@
 /turf/open/floor/plating/bare_catwalk,
 /area/lv624/lazarus/general_dorms)
 "xAu" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_2,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass/grassmud/north,
@@ -51864,7 +51864,7 @@
 /turf/open/floor/kutjevo/grey/plate,
 /area/lv624/lazarus/nexus_radio)
 "xRA" = (
-/obj/structure/fence/overgrown,
+/obj/structure/fence/dark/overgrown,
 /obj/structure/flora/jungle/vines/light_1,
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/west_central_jungle)

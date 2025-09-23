@@ -272,6 +272,7 @@
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "abg" = (
 /obj/structure/janitorialcart,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/whitebluefull,
 /area/lv624/ground/colony/phi_lab/breakroom)
 "abh" = (
@@ -1123,6 +1124,7 @@
 	pixel_x = 14
 	},
 /obj/structure/pipes/vents/pump,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/box,
 /area/lv624/ground/colony/phi_lab/dome)
 "adO" = (
@@ -1132,12 +1134,14 @@
 /obj/structure/pipes/standard/manifold/hidden/cyan{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "adQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "adR" = (
@@ -1232,6 +1236,7 @@
 	pixel_y = 6;
 	pixel_x = -16
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/box,
 /area/lv624/ground/colony/phi_lab/dome)
 "aej" = (
@@ -12415,10 +12420,6 @@
 /turf/open/floor/bcircuit,
 /area/lv624/lazarus/engineering)
 "aVh" = (
-/obj/structure/machinery/light{
-	dir = 8;
-	invisibility = 101
-	},
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv624/lazarus/general_dorms)
 "aVi" = (
@@ -19522,6 +19523,7 @@
 	pixel_x = -30
 	},
 /obj/effect/decal/hybrisa/dirt,
+/obj/structure/machinery/vending/walkman,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
 "bup" = (
@@ -22674,6 +22676,7 @@
 /area/lv624/ground/colony/phi_lab)
 "bEQ" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/colony/phi_lab)
 "bER" = (
@@ -22807,6 +22810,7 @@
 	icon_state = "trash_6";
 	pixel_y = 3
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/colony/phi_lab)
 "bFo" = (
@@ -23001,6 +23005,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 8
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/plate,
 /area/lv624/ground/colony/phi_lab)
 "bFV" = (
@@ -23205,6 +23210,7 @@
 	pixel_x = 2;
 	pixel_y = -6
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat,
 /area/lv624/ground/colony/phi_lab)
 "bGw" = (
@@ -26708,11 +26714,13 @@
 "bPa" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/machinery/power/apc/no_power/south,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/colony/phi_lab/restroom)
 "bPb" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/structure/prop/hybrisa/misc/trash,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/colony/phi_lab/restroom)
 "bPc" = (
@@ -26831,6 +26839,8 @@
 	pixel_x = -2;
 	pixel_y = 6
 	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/retrosquares,
 /area/lv624/ground/colony/phi_lab/breakroom)
 "bPu" = (
@@ -26895,6 +26905,7 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/colony/phi_lab/restroom)
 "bPD" = (
@@ -26905,6 +26916,7 @@
 	pixel_y = 6
 	},
 /obj/structure/bed/stool,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/colony/phi_lab/restroom)
 "bPE" = (
@@ -26918,6 +26930,7 @@
 "bPG" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/strata_decals/grime/grime3,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/colony/phi_lab/restroom)
 "bPH" = (
@@ -26928,6 +26941,7 @@
 	layer = 4
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/colony/phi_lab/restroom)
 "bPI" = (
@@ -26958,11 +26972,13 @@
 	pixel_x = 1;
 	pixel_y = 11
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/retrosquares,
 /area/lv624/ground/colony/phi_lab/breakroom)
 "bPN" = (
-/turf/open/floor/corsat/retrosquares,
-/area/lv624/ground/colony/phi_lab/breakroom)
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/redcorner,
+/area/lv624/ground/colony/phi_lab/dome)
 "bPO" = (
 /obj/item/paper/crumpled,
 /obj/effect/decal/strata_decals/grime/grime4{
@@ -26971,11 +26987,13 @@
 /obj/effect/decal/strata_decals/grime/grime4{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/retrosquares,
 /area/lv624/ground/colony/phi_lab/breakroom)
 "bPP" = (
-/turf/open/floor/hybrisa/tile/tileblue,
-/area/lv624/ground/colony/phi_lab/breakroom)
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/yellow/north,
+/area/lv624/ground/colony/phi_lab/dome)
 "bPQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/light/double/blue{
@@ -26999,6 +27017,7 @@
 "bPT" = (
 /obj/effect/decal/hybrisa/dirt_2,
 /obj/effect/decal/strata_decals/grime/grime2,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tilewhitecheckered,
 /area/lv624/ground/colony/phi_lab/restroom)
 "bPU" = (
@@ -27083,6 +27102,7 @@
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_9"
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/hybrisa/tile/tileblue,
 /area/lv624/ground/colony/phi_lab/breakroom)
 "bQf" = (
@@ -27232,6 +27252,7 @@
 /turf/open/floor/barber/west,
 /area/lv624/lazarus/fitness)
 "bQB" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/white,
 /area/lv624/ground/colony/phi_lab/dome)
 "bQC" = (
@@ -27373,6 +27394,7 @@
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRa" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/whitecorner,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRb" = (
@@ -27425,6 +27447,7 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/white/northwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRj" = (
@@ -27447,12 +27470,15 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRm" = (
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/whitecorner/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRn" = (
@@ -27592,6 +27618,7 @@
 /area/lv624/ground/colony/phi_lab/dome)
 "bRB" = (
 /obj/item/shard/shrapnel,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRC" = (
@@ -27759,6 +27786,7 @@
 	color = "#6b675e"
 	},
 /obj/item/tool/weldingtool,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRQ" = (
@@ -27812,10 +27840,12 @@
 /obj/structure/machinery/light/blue{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/white/northwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRU" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/whitecorner/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRV" = (
@@ -27832,6 +27862,7 @@
 	icon_state = "trash_6";
 	pixel_y = 3
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/whitecorner/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bRX" = (
@@ -27894,6 +27925,7 @@
 /turf/open/floor/corsat/purple/west,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSc" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purplecorner,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSd" = (
@@ -28035,6 +28067,7 @@
 	color = "#6b675e"
 	},
 /obj/effect/landmark/objective_landmark/far,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSu" = (
@@ -28120,6 +28153,7 @@
 	dir = 4
 	},
 /obj/structure/machinery/r_n_d/protolathe,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purple/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSB" = (
@@ -28256,12 +28290,14 @@
 /turf/open/floor/corsat/yellow,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSR" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/yellow,
 /area/lv624/ground/colony/phi_lab/dome)
 "bSS" = (
 /obj/structure/machinery/light/blue{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/yellow,
 /area/lv624/ground/colony/phi_lab/dome)
 "bST" = (
@@ -28472,6 +28508,7 @@
 /area/lv624/ground/colony/phi_lab/dome)
 "bTt" = (
 /obj/item/ammo_box/magazine/misc/power_cell,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/yellowcorner/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTu" = (
@@ -28614,22 +28651,26 @@
 /turf/open/floor/corsat/purplecorner/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTC" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purple/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTD" = (
 /obj/effect/decal/strata_decals/grime/grime3{
 	dir = 8
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purple/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTE" = (
 /obj/item/shard/shrapnel,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purple/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTF" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purplecorner/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTG" = (
@@ -28854,6 +28895,7 @@
 /turf/open/floor/corsat,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTV" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purple/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bTW" = (
@@ -28878,6 +28920,7 @@
 	pixel_x = -8;
 	pixel_y = 12
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purple/west,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUb" = (
@@ -29055,6 +29098,7 @@
 	dir = 1;
 	pixel_y = 6
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purplecorner/west,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUp" = (
@@ -29079,6 +29123,7 @@
 /area/lv624/ground/caves/west_caves)
 "bUt" = (
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/yellow/northwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUu" = (
@@ -29110,6 +29155,7 @@
 /turf/open/floor/corsat/purple/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUy" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/purplecorner/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUz" = (
@@ -29197,6 +29243,7 @@
 /turf/open/floor/corsat,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUH" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/red/southwest,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUI" = (
@@ -29335,6 +29382,7 @@
 /area/lv624/ground/colony/phi_lab/dome)
 "bUY" = (
 /obj/structure/machinery/light/blue,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/red/southeast,
 /area/lv624/ground/colony/phi_lab/dome)
 "bUZ" = (
@@ -29521,12 +29569,15 @@
 /turf/open/floor/corsat/redcorner/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVo" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/red/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVp" = (
 /turf/open/floor/corsat/redcorner/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVq" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/red/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVr" = (
@@ -29666,6 +29717,7 @@
 /area/lv624/ground/colony/phi_lab/dome)
 "bVF" = (
 /obj/structure/dropship_equipment/weapon/heavygun,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/red/southeast,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVG" = (
@@ -29697,9 +29749,12 @@
 /turf/open/floor/corsat/squares,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVL" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/redcorner/east,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVM" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/red/northeast,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVN" = (
@@ -29721,6 +29776,7 @@
 /obj/structure/machinery/light/blue{
 	dir = 1
 	},
+/obj/effect/decal/hybrisa/dirt_2,
 /turf/open/floor/corsat/red/north,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVR" = (
@@ -29742,6 +29798,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/redcorner/west,
 /area/lv624/ground/colony/phi_lab/dome)
 "bVU" = (
@@ -30001,7 +30058,7 @@
 /area/lv624/ground/caves/north_central_caves/lake_house_tower)
 "bWH" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/gm/grass/grass1,
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/central_caves)
 "bWI" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
@@ -32625,6 +32682,10 @@
 	},
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/caves/south_west_caves)
+"cPz" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/red/west,
+/area/lv624/ground/colony/phi_lab/dome)
 "cPV" = (
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
@@ -32824,6 +32885,8 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/white/northeast,
 /area/lv624/ground/colony/phi_lab/dome)
 "ddp" = (
@@ -33094,6 +33157,10 @@
 /obj/structure/flora/bush/ausbushes/ywflowers,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
+"drc" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/marked,
+/area/lv624/ground/colony/phi_lab/dome)
 "drs" = (
 /turf/open/gm/dirtmud/dirtmud_edge/west,
 /area/lv624/lazarus/main_hall)
@@ -33125,6 +33192,10 @@
 	},
 /turf/closed/wall/cult/temple,
 /area/lv624/ground/caves/ancient_temple/pyramid)
+"dtu" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/purple/west,
+/area/lv624/ground/colony/phi_lab/dome)
 "dtI" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/gm/dirt/brown,
@@ -33433,7 +33504,7 @@
 "dLm" = (
 /obj/structure/blocker/forcefield/multitile_vehicles,
 /obj/effect/decal/grass_overlay/grass1{
-	dir = 8
+	dir = 10
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/caves/central_caves)
@@ -33882,6 +33953,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/ship,
 /area/lv624/lazarus/general_dorms)
+"enm" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/red/southwest,
+/area/lv624/ground/colony/phi_lab)
 "enn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
@@ -34042,6 +34118,10 @@
 	},
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
+"euB" = (
+/obj/structure/prop/hybrisa/vehicles/Mining_Crawlers,
+/turf/open/auto_turf/strata_grass/layer0_mud,
+/area/lv624/ground/jungle/north_west_jungle)
 "euR" = (
 /obj/structure/prop/hybrisa/misc/cabinet{
 	dir = 8;
@@ -34637,6 +34717,11 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/jungle/east_jungle)
+"fbK" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/squares,
+/area/lv624/ground/colony/phi_lab/dome)
 "fcQ" = (
 /obj/effect/decal/hybrisa/trash{
 	icon_state = "trash_4";
@@ -34842,6 +34927,7 @@
 /area/lv624/lazarus/customs_dome)
 "flO" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/white,
 /area/lv624/ground/colony/phi_lab/dome)
 "fmm" = (
@@ -34904,6 +34990,13 @@
 	},
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/lv624/ground/jungle/north_east_jungle)
+"frj" = (
+/obj/structure/blocker/forcefield/multitile_vehicles,
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 10
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/ground/caves/central_caves)
 "frV" = (
 /obj/effect/decal/grass_overlay/grass1/inner{
 	dir = 6
@@ -35431,6 +35524,11 @@
 	},
 /turf/open/gm/grass/grassmud/corner/south_east,
 /area/lv624/ground/jungle/north_east_jungle)
+"fSC" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/retrosquares,
+/area/lv624/ground/colony/phi_lab/breakroom)
 "fSX" = (
 /turf/open/gm/grass/grass2,
 /area/lv624/ground/jungle/east_jungle)
@@ -35663,6 +35761,10 @@
 	},
 /turf/open/floor/whitebluecorner/east,
 /area/lv624/lazarus/customs_dome)
+"gdJ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/white/southeast,
+/area/lv624/ground/colony/phi_lab/dome)
 "gdS" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -36340,6 +36442,11 @@
 "gUq" = (
 /turf/open/gm/grass/grassmud/north,
 /area/lv624/ground/jungle/south_east_jungle)
+"gUA" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/obj/effect/decal/strata_decals/mud_corner,
+/turf/open/gm/dirt/brown,
+/area/lv624/ground/caves/west_caves)
 "gVn" = (
 /turf/open/gm/dirt/brown/variant_1,
 /area/lv624/ground/jungle/east_central_jungle)
@@ -36827,6 +36934,11 @@
 /obj/structure/flora/jungle/planttop1,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/west_central_jungle)
+"hvg" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/whitebluefull,
+/area/lv624/ground/colony/phi_lab/breakroom)
 "hvq" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/hybrisa/street/sidewalk/west,
@@ -36912,6 +37024,7 @@
 /turf/open/floor/wood/wood_broken,
 /area/lv624/ground/caves/mining)
 "hBL" = (
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/box,
 /area/lv624/ground/colony/phi_lab/dome)
 "hCg" = (
@@ -37722,6 +37835,10 @@
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/white,
 /area/lv624/lazarus/customs_dome)
+"ixb" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/squares,
+/area/lv624/ground/colony/phi_lab/dome)
 "ixv" = (
 /obj/structure/fence/overgrown,
 /turf/open/gm/grass/grassmud/east,
@@ -38008,11 +38125,12 @@
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/mining)
 "iPk" = (
-/obj/structure/sign/calendar{
-	pixel_y = 27
+/obj/structure/machinery/light/blue{
+	dir = 1
 	},
-/turf/open/floor/hybrisa/carpet/carpetpatternbrown,
-/area/lv624/lazarus/general_dorms)
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/red/north,
+/area/lv624/ground/colony/phi_lab/dome)
 "iPw" = (
 /obj/structure/platform/stone/runed_sandstone/north{
 	color = "#34393C"
@@ -38430,6 +38548,10 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass/grass1,
 /area/lv624/lazarus/landing_zones/lz1)
+"jtv" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/purple,
+/area/lv624/ground/colony/phi_lab/dome)
 "jvk" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /obj/effect/landmark/fog_marker,
@@ -38944,6 +39066,10 @@
 /obj/item/tool/pickaxe,
 /turf/open/auto_turf/strata_grass/layer0_mud,
 /area/lv624/ground/caves/north_west_caves)
+"jSo" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/corsat/red/northwest,
+/area/lv624/ground/colony/phi_lab/dome)
 "jSR" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "N";
@@ -39274,6 +39400,7 @@
 /area/lv624/ground/jungle/north_east_jungle)
 "koP" = (
 /obj/structure/pipes/vents/pump,
+/obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/corsat/box,
 /area/lv624/ground/colony/phi_lab/dome)
 "kpk" = (
@@ -39546,6 +39673,11 @@
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/west_caves)
+"kDN" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/marked,
+/area/lv624/ground/colony/phi_lab/dome)
 "kES" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/hybrisa/street/sidewalkfull,
@@ -39826,6 +39958,13 @@
 "kVS" = (
 /turf/open/hybrisa/street/sidewalk/northwest,
 /area/lv624/lazarus/quartstorage/outdoors)
+"kWb" = (
+/obj/structure/pipes/standard/simple/hidden/cyan{
+	dir = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/white/north,
+/area/lv624/ground/colony/phi_lab/dome)
 "kWh" = (
 /obj/effect/decal/cleanable/dirt{
 	layer = 5
@@ -41450,6 +41589,12 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/hybrisa/street/cement1,
 /area/lv624/lazarus/cargo_storage)
+"mCy" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/lv624/ground/colony/phi_lab/restroom)
 "mCz" = (
 /obj/item/tool/pickaxe{
 	pixel_y = 8
@@ -41541,6 +41686,11 @@
 	},
 /turf/open/floor/prison/darkbrown3/north,
 /area/lv624/lazarus/engineering)
+"mJz" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/lv624/ground/colony/phi_lab/restroom)
 "mJB" = (
 /obj/effect/decal/cleanable/dirt/alt_dirt{
 	color = "#140400"
@@ -41585,6 +41735,10 @@
 "mKf" = (
 /turf/open/gm/dirtmud/dirtmud_edge/west,
 /area/lv624/ground/colony/west_nexus_road)
+"mKL" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/turf/open/floor/corsat/red/east,
+/area/lv624/ground/colony/phi_lab/dome)
 "mKR" = (
 /obj/structure/tunnel{
 	id = "hole8"
@@ -42264,6 +42418,10 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/whiteyellowcorner/west,
 /area/lv624/lazarus/customs_dome)
+"nxW" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/redcorner/west,
+/area/lv624/ground/colony/phi_lab/dome)
 "nxY" = (
 /turf/open/gm/dirt/brown,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -44366,6 +44524,12 @@
 	},
 /turf/open/auto_turf/strata_grass/layer1,
 /area/lv624/ground/caves/north_west_caves)
+"pMa" = (
+/obj/effect/decal/grass_overlay/grass1/inner{
+	dir = 6
+	},
+/turf/open/auto_turf/strata_grass/layer0_mud_alt,
+/area/lv624/lazarus/crash_site)
 "pMo" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -44430,6 +44594,14 @@
 /obj/effect/landmark/fog_marker,
 /turf/open/gm/mudcoast/greenwater/cornerouter/east,
 /area/lv624/ground/river/east_river)
+"pNI" = (
+/obj/effect/decal/hybrisa/dirt_2,
+/obj/effect/decal/strata_decals/grime/grime2{
+	pixel_y = 4
+	},
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tilewhitecheckered,
+/area/lv624/ground/colony/phi_lab/restroom)
 "pNP" = (
 /turf/open/gm/dirt/brown/variant_2,
 /area/lv624/ground/colony/west_tcomms_road)
@@ -44917,6 +45089,11 @@
 	},
 /turf/open/floor/plating/platingdmg3/west,
 /area/lv624/ground/caves/mining)
+"qsp" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/white/southeast,
+/area/lv624/ground/colony/phi_lab/dome)
 "qsF" = (
 /obj/structure/surface/table/almayer{
 	color = "#EBD9B7"
@@ -46090,6 +46267,11 @@
 /obj/structure/flora/jungle/vines/light_2,
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/landing_zones/lz2)
+"rKc" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/hybrisa/tile/tileblue,
+/area/lv624/ground/colony/phi_lab/breakroom)
 "rKf" = (
 /obj/effect/sentry_landmark/lz_2/top_left,
 /turf/open/hybrisa/street/cement1,
@@ -47801,6 +47983,10 @@
 /obj/structure/flora/grass/tallgrass/jungle/corner,
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/east_central_jungle)
+"tHi" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/whitecorner/west,
+/area/lv624/ground/colony/phi_lab/dome)
 "tHz" = (
 /obj/effect/decal/hybrisa/dirt,
 /obj/effect/decal/warning_stripes{
@@ -48283,6 +48469,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/hybrisa/street/cement3,
 /area/lv624/ground/caves/mining)
+"ulr" = (
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/red/west,
+/area/lv624/ground/colony/phi_lab/dome)
+"umY" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/red,
+/area/lv624/ground/colony/phi_lab/dome)
 "unp" = (
 /turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/caves/ancient_temple)
@@ -48435,6 +48630,9 @@
 	color = "#997470"
 	},
 /obj/effect/decal/hybrisa/dirt_2,
+/obj/structure/sign/calendar{
+	pixel_y = 27
+	},
 /turf/open/floor/hybrisa/carpet/carpetpatternbrown,
 /area/lv624/lazarus/general_dorms)
 "uzh" = (
@@ -48486,6 +48684,10 @@
 /obj/effect/decal/hybrisa/dirt,
 /turf/open/floor/whitepurplecorner/east,
 /area/lv624/lazarus/fitness)
+"uBZ" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/white/southwest,
+/area/lv624/ground/colony/phi_lab/dome)
 "uCV" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/grass/grassmud/west,
@@ -50181,16 +50383,10 @@
 /turf/open/gm/grass/grass1,
 /area/lv624/ground/jungle/north_west_jungle)
 "wrd" = (
-/obj/structure/machinery/light{
-	dir = 4;
-	invisibility = 101
-	},
-/obj/effect/decal/hybrisa/road/lines1{
-	pixel_x = -1;
-	color = "#997470"
-	},
-/turf/open/floor/hybrisa/carpet/carpetpatternbrown,
-/area/lv624/lazarus/general_dorms)
+/obj/effect/decal/hybrisa/dirt,
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/redcorner/north,
+/area/lv624/ground/colony/phi_lab/dome)
 "wrv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "cargo"
@@ -51802,6 +51998,10 @@
 	},
 /turf/open/floor,
 /area/lv624/ground/caves/mining)
+"xZY" = (
+/obj/effect/decal/hybrisa/dirt,
+/turf/open/floor/corsat/plate,
+/area/lv624/ground/colony/phi_lab)
 "yar" = (
 /obj/structure/flora/jungle/thickbush/large_jungle_bush{
 	color = "#648c57";
@@ -60987,7 +61187,7 @@ mdQ
 bwe
 bwe
 bKF
-bzu
+gUA
 bzu
 bzu
 bwe
@@ -61213,8 +61413,8 @@ mdQ
 mdQ
 mdQ
 mdQ
-bsO
-bsO
+bFe
+bFe
 bsO
 bsO
 bsO
@@ -61447,7 +61647,7 @@ bBP
 bsO
 bsO
 bsO
-bym
+byH
 bGN
 bym
 btY
@@ -61926,7 +62126,7 @@ mdQ
 dNj
 apv
 bXu
-apv
+euB
 oTJ
 oTJ
 oTJ
@@ -70194,7 +70394,7 @@ aHt
 eWJ
 atU
 aPW
-wrd
+pqy
 pqy
 ezw
 aHt
@@ -70311,7 +70511,7 @@ bOM
 aWZ
 bUP
 bUE
-bTu
+bPP
 bUf
 bTs
 bTq
@@ -70538,23 +70738,23 @@ aWZ
 aWZ
 bVh
 bUQ
-bQX
-bTu
+ixb
+bPP
 bUg
 bTP
 bTr
 bSR
-bQX
-bQX
+ixb
+ixb
 bRw
 aWZ
 gDu
 bQI
 bQw
 bQd
-bPN
-bPN
 bPu
+bPu
+fSC
 bOQ
 bOs
 bNI
@@ -70651,7 +70851,7 @@ npG
 spW
 spW
 aHt
-iPk
+rLN
 cNu
 xUM
 aHt
@@ -70766,15 +70966,15 @@ aWZ
 aei
 bVi
 bUQ
-bQX
-bTu
+ixb
+bPP
 bUh
 bTQ
 bTs
 bSR
-bQX
-bQX
-bQX
+ixb
+ixb
+ixb
 adN
 gDu
 bQI
@@ -71004,11 +71204,11 @@ bSu
 bRQ
 bRx
 bRi
-bQy
+uBZ
 aWZ
 ree
 bQq
-bQd
+hvg
 abg
 bPw
 bOS
@@ -71217,7 +71417,7 @@ bPg
 bPg
 bPg
 aWZ
-bVJ
+jSo
 bVp
 bUI
 bVk
@@ -71226,19 +71426,19 @@ bUG
 bUu
 bSQ
 bQL
-bTu
+bPP
 bSS
 bSv
 bRR
 bRy
-bRj
-bQK
+kWb
+tHi
 bQy
 aWZ
 bQr
 bQe
-bPP
 bPx
+rKc
 bOT
 aia
 bNL
@@ -71446,7 +71646,7 @@ bPg
 aWZ
 aWZ
 bVQ
-bQX
+bQL
 bUI
 bVl
 bUT
@@ -71680,8 +71880,8 @@ bVm
 bUV
 gDu
 aed
-bTx
-bTx
+drc
+drc
 bTx
 bST
 gDu
@@ -71902,12 +72102,12 @@ bPg
 ael
 bWb
 bUX
-bVq
-bVq
+mKL
+mKL
 bVn
-bUW
+nxW
 bUH
-bTx
+kDN
 bUk
 bTS
 bTy
@@ -71938,7 +72138,7 @@ bID
 bAg
 bHc
 bMO
-bCO
+xZY
 bFl
 bEL
 bAg
@@ -72133,16 +72333,16 @@ bVS
 bVK
 bVE
 bVo
-bQX
-bUI
-bTx
+ixb
+umY
+drc
 bUl
 bTT
 bTz
 bSV
 bSx
 bQX
-bQX
+ixb
 adP
 bQZ
 qfd
@@ -72166,7 +72366,7 @@ bIE
 bAg
 bHd
 bGt
-bCO
+xZY
 bFm
 bEM
 bAg
@@ -72358,10 +72558,10 @@ bPg
 ael
 bWd
 bVT
-bVm
-bVm
-bVp
-bUX
+cPz
+ulr
+wrd
+bPN
 bUJ
 bTx
 bUm
@@ -72370,7 +72570,7 @@ bTA
 bSV
 bRn
 bRW
-bQX
+ixb
 adQ
 bQL
 bQL
@@ -72394,7 +72594,7 @@ bAg
 bAg
 bHe
 bGu
-bCO
+xZY
 uxL
 bEN
 bAg
@@ -72586,8 +72786,8 @@ bPg
 aWZ
 bWe
 bVU
-bQX
-bUX
+ixb
+bPN
 bVq
 bUY
 gDu
@@ -72600,9 +72800,9 @@ gDu
 bRX
 bRC
 bRm
-bQX
+ixb
 bQM
-bQC
+gdJ
 aWZ
 aWZ
 aWZ
@@ -72813,9 +73013,9 @@ bPg
 bPg
 aWZ
 aWZ
-bVQ
-bQX
-bUI
+iPk
+fbK
+umY
 bVr
 bUZ
 gDu
@@ -72827,14 +73027,14 @@ gDu
 gDu
 bRY
 bRD
-bRj
-bQX
+kWb
+ixb
 bQJ
 aWZ
 moM
 bQh
 bPS
-bPB
+pNI
 moM
 bOr
 bNM
@@ -72849,7 +73049,7 @@ bJm
 bAg
 bHQ
 bHg
-bGw
+enm
 bCO
 cxi
 bEP
@@ -73055,7 +73255,7 @@ bSX
 bSy
 bRZ
 bRE
-bRj
+kWb
 bRa
 bQC
 aWZ
@@ -73276,7 +73476,7 @@ bVt
 bVb
 bUL
 bUx
-bUn
+jtv
 bTX
 bTC
 bSY
@@ -73284,7 +73484,7 @@ bSz
 bSa
 bRF
 dcF
-bQC
+qsp
 aWZ
 moM
 bQh
@@ -73504,12 +73704,12 @@ bVu
 bSb
 bSb
 bUy
-bUn
+jtv
 bTY
 bTD
 bSZ
-bSb
-bSb
+dtu
+dtu
 bRG
 koP
 gDu
@@ -73518,7 +73718,7 @@ moM
 moM
 moM
 bPC
-bPF
+mJz
 bOX
 bOr
 bNR
@@ -73730,13 +73930,13 @@ aWZ
 aWZ
 bVv
 bTB
-bQX
-bQX
-bUn
+ixb
+ixb
+jtv
 bTZ
 bTE
-bQX
-bQX
+ixb
+ixb
 bSc
 bRH
 aWZ
@@ -73744,9 +73944,9 @@ gDu
 bxM
 bQD
 bPS
-bPB
-bPF
-bPF
+pNI
+mJz
+mJz
 bOY
 bOr
 bNS
@@ -73975,7 +74175,7 @@ moM
 bPC
 xwr
 bOZ
-bOZ
+mCy
 bOx
 bNT
 bNo
@@ -74269,7 +74469,7 @@ bdR
 aCD
 aCD
 anG
-nHj
+anG
 ehy
 nHj
 bej
@@ -76265,8 +76465,8 @@ bJv
 bxb
 rTT
 rTT
-rTT
-bIO
+pMa
+aet
 aet
 aet
 bDe
@@ -76487,14 +76687,14 @@ jcn
 jcn
 jcn
 dLm
-kae
+aet
 aet
 aet
 kpx
 bJv
 bJv
-bJv
 tYW
+aet
 aet
 bDe
 bDe
@@ -76714,8 +76914,8 @@ fDE
 fDE
 osf
 hNT
-ydz
-bIO
+frj
+kae
 aet
 aet
 dCD
@@ -81351,7 +81551,7 @@ inO
 inO
 inO
 bah
-aKo
+aLW
 aLW
 xGd
 arw
@@ -81810,7 +82010,7 @@ xqV
 luB
 bah
 bah
-cOs
+aVQ
 arw
 eZD
 aqW
@@ -82267,7 +82467,7 @@ rZL
 wuX
 gRH
 inO
-cOs
+fjM
 kVS
 aqW
 aOk

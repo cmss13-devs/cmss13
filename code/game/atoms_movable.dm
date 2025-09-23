@@ -354,5 +354,8 @@
 /atom/movable/proc/onZImpact(turf/impact_turf, height)
 	if(height <= 0)
 		return
-	
-	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)		
+
+	if(HAS_TRAIT(src, TRAIT_HAULED)) //we do not spin houled humans
+		return
+
+	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)

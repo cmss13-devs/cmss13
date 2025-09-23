@@ -356,6 +356,7 @@
 		return
 
 	var/datum/dropship_hijack/almayer/hijack = new()
+	SShijack.call_shuttle()
 	dropship.hijack = hijack
 	hijack.shuttle = dropship
 	hijack.target_crash_site(result)
@@ -395,9 +396,14 @@
 		colonial_marines.add_current_round_status_to_end_results("Hijack")
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/hijack_general_quarters()
+	var/datum/ares_datacore/datacore = GLOB.ares_datacore
 	if(GLOB.security_level < SEC_LEVEL_RED)
 		set_security_level(SEC_LEVEL_RED, no_sound = TRUE, announce = FALSE)
+	if(!COOLDOWN_FINISHED(datacore, ares_quarters_cooldown))
+		return FALSE
+	COOLDOWN_START(datacore, ares_quarters_cooldown, 10 MINUTES)
 	shipwide_ai_announcement("ATTENTION! GENERAL QUARTERS. ALL HANDS, MAN YOUR BATTLESTATIONS.", MAIN_AI_SYSTEM, 'sound/effects/GQfullcall.ogg')
+	return TRUE
 
 /obj/structure/machinery/computer/shuttle/dropship/flight/proc/remove_door_lock()
 	if(door_control_cooldown)

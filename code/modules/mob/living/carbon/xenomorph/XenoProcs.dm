@@ -220,11 +220,24 @@
 		return
 	. = ..()
 
+// this proc only serves to fix a visual bug where hauled mobs get layered below the tank.
+// this is a rare edge case, because xenos won't usually be hauling mobs atop the tank, but just for completeness...
+/mob/living/carbon/xenomorph/proc/check_on_tank_hauled_mob(mob/victim)
+	var/obj/vehicle/multitile/tank/T = null
+	if(src.is_on_tank_hull())
+		T = src.tank_on_top_of
+		T._apply_rider_visuals(victim)
+	else
+		victim.layer   = initial(victim.layer)
+		victim.plane   = initial(victim.plane)
+		victim.pixel_y = initial(victim.pixel_y)
+
 /mob/living/carbon/xenomorph/Move(NewLoc, direct)
 	. = ..()
 	var/mob/user = hauled_mob?.resolve()
 	if(user)
 		user.forceMove(loc)
+		check_on_tank_hauled_mob(user)
 
 /mob/living/carbon/xenomorph/forceMove(atom/destination)
 	. = ..()
@@ -232,8 +245,10 @@
 	if(user)
 		if(!isturf(destination))
 			user.forceMove(src)
+			check_on_tank_hauled_mob(user)
 		else
 			user.forceMove(loc)
+			check_on_tank_hauled_mob(user)
 
 /mob/living/carbon/xenomorph/relaymove(mob/user, direction)
 	. = ..()

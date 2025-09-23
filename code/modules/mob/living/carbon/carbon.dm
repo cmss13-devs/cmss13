@@ -548,6 +548,9 @@
 	var/location = get_turf(loc)
 	remove_traits(list(TRAIT_HAULED, TRAIT_NO_STRAY, TRAIT_FLOORED, TRAIT_IMMOBILIZED), TRAIT_SOURCE_XENO_HAUL)
 	pixel_y = 0
+	var/obj/vehicle/multitile/tank/TANK = null
+	if(hauling_xeno.is_on_tank_hull())
+		TANK = hauling_xeno.tank_on_top_of
 	UnregisterSignal(src, list(COMSIG_ATTEMPT_MOB_PULL, COMSIG_LIVING_PREIGNITION, COMSIG_LIVING_FLAMER_CROSSED, COMSIG_LIVING_FLAMER_FLAMED))
 	UnregisterSignal(hauling_xeno, COMSIG_MOB_DEATH)
 	hauling_xeno = null
@@ -561,7 +564,8 @@
 			object.Crossed(src)
 	next_haul_resist = 0
 	SEND_SIGNAL(src, COMSIG_MOB_UNHAULED)
-
+	if(TANK)
+		TANK.mark_on_top(src)
 
 /mob/living/carbon/proc/extinguish_mob(mob/living/carbon/C)
 	adjust_fire_stacks(-5, min_stacks = 0)

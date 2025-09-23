@@ -255,18 +255,47 @@
 #define COMSIG_KB_XENO_RAVAGER_EMPOWER "keybinding_ravager_empower"
 #define COMSIG_KB_XENO_RAVAGER_SCISSOR_CUT "keybinding_ravager_scissor_cut"
 
-// Xenomorph Ravager Berserk
+// Xenomorph Ravager Berserker
+#define COMSIG_KB_XENO_BERSERKER_APPREHEND "keybinding_berserker_apprened"
+#define COMSIG_KB_XENO_BERSERKER_CLOTHESLINE "keybinding_berserker_clothesline"
+#define COMSIG_KB_XENO_BERSERKER_EVISCERATE "keybinding_berserker_eviscerate"
+
 // Xenomorph Ravager Hedgehog
+#define COMSIG_KB_XENO_HEDGEHOG_SPIKE_SHIELD "keybinding_hedgehog_spike_shield"
+#define COMSIG_KB_XENO_HEDGEHOG_RAV_SPIKES "keybinding_hedgehog_rav_spikes"
+#define COMSIG_KB_XENO_HEDGEHOG_SPIKE_SHED "keybinding_hedgehog_spike_shed"
+
 // Xenomorph Crusher
 // Xenomorph Crusher Charger
 // Xenomorph Boiler
 // Xenomorph Boiler Trapper
 // Xenomorph Praetorian
-// Xenomorph Praetorian Dancer
-// Xenomorph Praetorian Oppressor
-// Xenomorph Praetorian Vanguard
-// Xenomorph Praetorian Valkyrie
+#define COMSIG_KB_XENO_PRAETORIAN_SPIT "keybinding_praetorian_spit"
+#define COMSIG_KB_XENO_PRAETORIAN_DASH "keybinding_praetorian_dash"
+#define COMSIG_KB_XENO_PRAETORIAN_ACID_BALL "keybinding_praetorian_acid_ball"
+#define COMSIG_KB_XENO_PRAETORIAN_SPRAY_ACID "keybinding_praetorian_spray_acid"
 
+// Xenomorph Praetorian Dancer
+#define COMSIG_KB_XENO_DANCER_IMPALE "keybinding_dancer_impale"
+#define COMSIG_KB_XENO_DANCER_DODGE "keybinding_dancer_dodge"
+#define COMSIG_KB_XENO_DANCER_TAIL_TRIP "keybinding_dancer_tail_trip"
+
+// Xenomorph Praetorian Oppressor
+#define COMSIG_KB_XENO_OPPRESSOR_ABDUCT "keybinding_oppressor_adbuct"
+#define COMSIG_KB_XENO_OPPRESSOR_PUNCH "keybinding_oppressor_punch"
+#define COMSIG_KB_XENO_OPPRESSOR_TAIL_LASH "keybinding_oppressor_tail_lash"
+
+// Xenomorph Praetorian Vanguard
+#define COMSIG_KB_XENO_VANGUARD_PIERCE "keybinding_vanguard_pierce"
+#define COMSIG_KB_XENO_VANGUARD_DASH "keybinding_vanguard_dash"
+#define COMSIG_KB_XENO_VANGUARD_CLEAVE "keybinding_vanguard_cleave"
+#define COMSIG_KB_XENO_VANGUARD_TOGGLE_CLEAVE "keybinding_vanguard_toggle_cleave"
+
+// Xenomorph Praetorian Valkyrie
+#define COMSIG_KB_XENO_VALKYRIE_RAGE "keybinding_valkyrie_rage"
+#define COMSIG_KB_XENO_VALKYRIE_HIGH_GALLOP "keybinding_valkyrie_high_gallop"
+#define COMSIG_KB_XENO_VALKYRIE_FIGHT_OR_FLIGHT "keybinding_valkyrie_fight_or_flight"
+#define COMSIG_KB_XENO_VALKYRIE_RETRIEVE "keybinding_valkyrie_retrieve"
 
 // Yautja
 

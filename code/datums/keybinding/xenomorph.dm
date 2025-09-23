@@ -1301,4 +1301,187 @@
 		if(ravager_scissor_cut_check && !ravager_scissor_cut_check.hidden)
 			handle_xeno_macro_datum(xeno, ravager_scissor_cut_check)
 			return TRUE
+// Ravager Berserker
+
+/datum/keybinding/xenomorph/berserker_apprened
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "berserker_apprened"
+	full_name = "Berserker: Scissor cut"
+	keybind_signal = COMSIG_KB_XENO_BERSERKER_APPREHEND
+
+/datum/keybinding/xenomorph/berserker_apprened/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/apprehend/berserker_apprened_check = get_action(xeno, /datum/action/xeno_action/onclick/apprehend)
+	if(berserker_apprened_check)
+		if(berserker_apprened_check && !berserker_apprened_check.hidden)
+			handle_xeno_macro_datum(xeno, berserker_apprened_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/berserker_clothesline
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "berserker_clothesline"
+	full_name = "Berserker: Clothesline"
+	keybind_signal = COMSIG_KB_XENO_BERSERKER_CLOTHESLINE
+
+/datum/keybinding/xenomorph/berserker_clothesline/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/clothesline/berserker_clothesline_check = get_action(xeno, /datum/action/xeno_action/activable/clothesline)
+	if(berserker_clothesline_check)
+		if(berserker_clothesline_check && !berserker_clothesline_check.hidden)
+			handle_xeno_macro_datum(xeno, berserker_clothesline_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/berserker_eviscerate
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "berserker_eviscerate"
+	full_name = "Berserker: Eviscerate"
+	keybind_signal = COMSIG_KB_XENO_BERSERKER_EVISCERATE
+
+/datum/keybinding/xenomorph/berserker_eviscerate/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/eviscerate/berserker_eviscerate_check = get_action(xeno, /datum/action/xeno_action/activable/eviscerate)
+	if(berserker_eviscerate_check)
+		if(berserker_eviscerate_check && !berserker_eviscerate_check.hidden)
+			handle_xeno_macro_datum(xeno, berserker_eviscerate_check)
+			return TRUE
+// Ravager Hedgehog
+
+/datum/keybinding/xenomorph/hedgehog_spike_shield
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "hedgehog_spike_shield"
+	full_name = "Hedgehod: Spike Shield"
+	keybind_signal = COMSIG_KB_XENO_BERSERKER_EVISCERATE
+
+/datum/keybinding/xenomorph/hedgehog_spike_shield/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/spike_shield/hedgehog_spike_shield_check = get_action(xeno, /datum/action/xeno_action/onclick/spike_shield)
+	if(hedgehog_spike_shield_check)
+		if(hedgehog_spike_shield_check && !hedgehog_spike_shield_check.hidden)
+			handle_xeno_macro_datum(xeno, hedgehog_spike_shield_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/hedgehog_rav_spikes
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "hedgehog_rav_spikes"
+	full_name = "Hedgehod: Rav Spikes"
+	keybind_signal = COMSIG_KB_XENO_BERSERKER_EVISCERATE
+
+/datum/keybinding/xenomorph/hedgehog_rav_spikes/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/rav_spikes/hedgehog_rav_spikes_check = get_action(xeno, /datum/action/xeno_action/activable/rav_spikes)
+	if(hedgehog_rav_spikes_check)
+		if(hedgehog_rav_spikes_check && !hedgehog_rav_spikes_check.hidden)
+			handle_xeno_macro_datum(xeno, hedgehog_rav_spikes_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/hedgehog_spike_shed
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "hedgehog_spike_shed"
+	full_name = "Hedgehod: Spike Shed"
+	keybind_signal = COMSIG_KB_XENO_HEDGEHOG_SPIKE_SHED
+
+/datum/keybinding/xenomorph/hedgehog_spike_shed/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/spike_shed/hedgehog_spike_shed_check = get_action(xeno, /datum/action/xeno_action/onclick/spike_shed)
+	if(hedgehog_spike_shed_check)
+		if(hedgehog_spike_shed_check && !hedgehog_spike_shed_check.hidden)
+			handle_xeno_macro_datum(xeno, hedgehog_spike_shed_check)
+			return TRUE
+// Praetorian
+
+/datum/keybinding/xenomorph/praetorian_spit
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "praetorian_spit"
+	full_name = "Praetorian: Spit"
+	keybind_signal = COMSIG_KB_XENO_PRAETORIAN_SPIT
+
+/datum/keybinding/xenomorph/praetorian_spit/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/xeno_spit/praetorian/praetorian_spit_check = get_action(xeno, /datum/action/xeno_action/activable/xeno_spit/praetorian)
+	if(praetorian_spit_check)
+		if(praetorian_spit_check && !praetorian_spit_check.hidden)
+			handle_xeno_macro_datum(xeno, praetorian_spit_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/praetorian_dash
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "praetorian_dash"
+	full_name = "Praetorian: Dash"
+	keybind_signal = COMSIG_KB_XENO_PRAETORIAN_DASH
+
+/datum/keybinding/xenomorph/praetorian_dash/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pounce/base_prae_dash/praetorian_dash_check = get_action(xeno, /datum/action/xeno_action/activable/pounce/base_prae_dash)
+	if(praetorian_dash_check)
+		if(praetorian_dash_check && !praetorian_dash_check.hidden)
+			handle_xeno_macro_datum(xeno, praetorian_dash_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/praetorian_acid_ball
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "praetorian_acid_ball"
+	full_name = "Praetorian: Acid ball"
+	keybind_signal = COMSIG_KB_XENO_PRAETORIAN_ACID_BALL
+
+/datum/keybinding/xenomorph/praetorian_acid_ball/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/prae_acid_ball/praetorian_acid_ball_check = get_action(xeno, /datum/action/xeno_action/activable/prae_acid_ball)
+	if(praetorian_acid_ball_check)
+		if(praetorian_acid_ball_check && !praetorian_acid_ball_check.hidden)
+			handle_xeno_macro_datum(xeno, praetorian_acid_ball_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/praetorian_spray_acid
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "praetorian_spray_acid"
+	full_name = "Praetorian: Spray acid"
+	keybind_signal = COMSIG_KB_XENO_PRAETORIAN_SPRAY_ACID
+
+/datum/keybinding/xenomorph/praetorian_spray_acid/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid/praetorian_spray_acid_check = get_action(xeno, /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid)
+	if(praetorian_spray_acid_check)
+		if(praetorian_spray_acid_check && !praetorian_spray_acid_check.hidden)
+			handle_xeno_macro_datum(xeno, praetorian_spray_acid_check)
+			return TRUE
 

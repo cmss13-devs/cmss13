@@ -17,6 +17,9 @@ GLOBAL_LIST_INIT(cm_vending_clothing_corporate_security, list(
 	list("Blue Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/blue, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Brown Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/brown, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 	list("Formal Suit Jacket", 0, /obj/item/clothing/suit/storage/jacket/marine/corporate/formal, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("Beige Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("Brown Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/brown, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
+	list("Grey Trenchcoat", 0, /obj/item/clothing/suit/storage/CMB/trenchcoat/grey, CIVILIAN_CAN_BUY_SUIT, VENDOR_ITEM_REGULAR),
 
 	list("BACKPACK (CHOOSE 1)", 0, null, null, null),
 	list("Black Leather Satchel", 0, /obj/item/storage/backpack/satchel/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
@@ -39,6 +42,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security, list(
 
 	list("ARMOR (CHOOSE 1)", 0, null, null, null),
 	list("Corporate Security Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+
+	list("GLOVES (CHOOSE 1)", 0, null, null, null),
+	list("Corporate Security Gloves", 0, /obj/item/clothing/gloves/marine/veteran/ppo, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 
 	list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full/black, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
@@ -75,6 +81,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_non_lethal, list(
 	list("ARMOR (CHOOSE 1)", 0, null, null, null),
 	list("Corporate Security Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 
+	list("GLOVES (CHOOSE 1)", 0, null, null, null),
+	list("Corporate Security Gloves", 0, /obj/item/clothing/gloves/marine/veteran/ppo, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+
 	list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full/black, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
 	list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate/wy, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_REGULAR),
@@ -107,6 +116,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	list("ARMOR (CHOOSE 1)", 0, null, null, null),
 	list("Corporate Security Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 	list("M4 PPO Armor", 0, /obj/item/clothing/suit/storage/marine/veteran/pmc/light/corporate/ppo/strong, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+
+	list("GLOVES (CHOOSE 1)", 0, null, null, null),
+	list("Corporate Security Gloves", 0, /obj/item/clothing/gloves/marine/veteran/ppo, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 
 	list("POUCHES (CHOOSE 2)", 0, null, null, null),
 	list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full/black, MARINE_CAN_BUY_POUCH, VENDOR_ITEM_RECOMMENDED),
@@ -174,7 +186,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_corporate_security_full, list(
 	if(user?.wear_id)
 		var/obj/item/card/id/id_card = user.wear_id
 		switch(id_card.paygrade)
-			if(PAY_SHORT_WY_SEC_PPS)
+			if(PAY_SHORT_WY_SEC_PPS, PAY_SHORT_WY_SEC_PPC)
 				return GLOB.cm_vending_gear_corporate_security_full
 			if(PAY_SHORT_WY_SEC_TPPO)
 				return GLOB.cm_vending_gear_corporate_security_non_lethal

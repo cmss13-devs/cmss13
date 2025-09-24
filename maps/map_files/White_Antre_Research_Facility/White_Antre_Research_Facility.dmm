@@ -22186,8 +22186,10 @@
 /turf/open/floor/prison/darkbrown3/northwest,
 /area/white_antre/indoors/exterior/ext_relay_north)
 "bdC" = (
-/obj/structure/machinery/power/apc/power/north,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 60
+	},
 /turf/open/floor/prison/darkbrown3/north,
 /area/white_antre/indoors/exterior/ext_relay_north)
 "bdD" = (
@@ -45369,11 +45371,13 @@
 /turf/open/floor/almayer/silver/east,
 /area/white_antre/indoors/main_level/south_containment_hive)
 "woC" = (
-/obj/structure/machinery/power/apc/power/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic{
 	color = "#5d524b";
 	alpha = 155
+	},
+/obj/structure/machinery/power/apc/power/north{
+	start_charge = 60
 	},
 /turf/open/floor/prison/darkbrown3/north,
 /area/white_antre/indoors/exterior/ext_relay_south)

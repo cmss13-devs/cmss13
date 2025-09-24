@@ -35,7 +35,7 @@
 			holder.remove_reagent(twotri.id, max(first_collective_volume / 10, 5) * delta_time, TRUE)
 			second_collective_volume += twotri.volume
 		var/mob/living/carbon/human/subject = M
-		if(ishuman(M) && subject.lastpuke == FALSE && second_collective_volume > REAGENTS_OVERDOSE_CRITICAL)
+		if(ishuman(M) && subject.lastpuke == FALSE && second_collective_volume > HIGH_REAGENTS_OVERDOSE)
 			subject.Superslow(20)
 			subject.vomit()
 

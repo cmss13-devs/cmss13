@@ -4018,7 +4018,7 @@
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "Rl" = (
-/obj/item/ammo_magazine/smg/p90/twe,
+/obj/item/ammo_magazine/smg/p90/ap,
 /turf/open/floor/almayer/cargo,
 /area/lv759/indoors/twe_souter_outpost/hangar)
 "Rq" = (

@@ -26,7 +26,7 @@
 	if(adj_dizzy)
 		M.dizziness = max(0,M.dizziness + adj_dizzy * delta_time)
 	if(adj_drowsy)
-		M.drowsyness = max(0,M.drowsyness + adj_drowsy * delta_time)
+		M.drowsiness = max(0,M.drowsiness + adj_drowsy * delta_time)
 	if(adj_sleepy)
 		M.sleeping = max(0,M.sleeping + adj_sleepy * delta_time)
 
@@ -322,7 +322,7 @@
 	M.make_jittery(20)
 	M.druggy = max(M.druggy, 30)
 	M.dizziness +=5
-	M.drowsyness = 0
+	M.drowsiness = 0
 
 /datum/reagent/drink/cold/spacemountainwind
 	name = "Mountain Wind"

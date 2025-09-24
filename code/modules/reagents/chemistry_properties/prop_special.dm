@@ -61,7 +61,7 @@
 /datum/chem_property/special/organhealing
 	name = PROPERTY_ORGAN_HEALING
 	code = "OHG"
-	description = "Regenerates all types of cell membranes mending damage in all organs."
+	description = "Regenerates all types of cell membranes, mending damage in all organs."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_MEDICINE
 
@@ -95,7 +95,7 @@
 /datum/chem_property/special/DNA_Disintegrating/trigger()
 	SSticker.mode.get_specific_call(/datum/emergency_call/goon/chem_retrieval, TRUE, FALSE, holder.name) // "Weyland-Yutani Goon (Chemical Investigation Squad)"
 	GLOB.chemical_data.update_credits(10)
-	message_admins("The research department has discovered DNA_Disintegrating in [holder.name] adding 10 bonus tech points.")
+	message_admins("The research department has discovered DNA Disintegrating in [holder.name] adding 10 bonus tech points.")
 	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
 	tree.add_points(10)
 	ai_announcement("NOTICE: Encrypted data transmission received from USCSS Royce. Shuttle inbound.")
@@ -193,7 +193,7 @@
 /datum/chem_property/special/embryonic
 	name = PROPERTY_EMBRYONIC
 	code = "MYO"
-	description = "The chemical agent carries causes an infection of type REDACTED parasitic embryonic organism."
+	description = "The chemical agent carries an infection of type REDACTED parasitic embryonic organism."
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
@@ -289,7 +289,7 @@
 	M.set_effect(0, PARALYZE)
 	M.silent = 0
 	M.dizziness = 0
-	M.drowsyness = 0
+	M.drowsiness = 0
 	M.stuttering = 0
 	M.confused = 0
 	M.sleeping = 0

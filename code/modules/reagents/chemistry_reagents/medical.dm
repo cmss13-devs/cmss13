@@ -6,7 +6,7 @@
 /datum/reagent/medical/inaprovaline
 	name = "Inaprovaline"
 	id = "inaprovaline"
-	description = "Inaprovaline is a synaptic stimulant and cardiostimulant. Commonly used to stabilize patients. If the lungs are functional, inaprovaline will allow respiration while under cardiac arrest. Slows down bleeding and acts as a weak painkiller. Overdosing may cause severe damage to cardiac tissue."
+	description = "Inaprovaline is a weak synaptic stimulant and cardiostimulant used to stabilize patients under cardiac arrest by allowing respiration when the lungs are functional. Though the body can tolerate unusually high doses of the medication, as a cardiostimulant, side effects of overdosing at 60u include involuntary body jerks, limb seizures, collapses, and, in extreme cases at 100u, damage to cardiac tissue."
 	reagent_state = LIQUID
 	color = "#dcbaf0" // rgb: 220, 186, 240
 	overdose = HIGH_REAGENTS_OVERDOSE
@@ -17,7 +17,7 @@
 /datum/reagent/medical/ryetalyn
 	name = "Ryetalyn"
 	id = "ryetalyn"
-	description = "Ryetalyn repairs genetic defects, mutations and abnormalities through a catalytic process. Used to treat genetic eye and vision problems. Overdosing on ryetalyn is very toxic and can impair sense of balance."
+	description = "Ryetalyn repairs genetic and ocular defects, mutations, and abnormalities through a catalytic process. Side effects of ryetalin overdoses at 30u include confusion and toxin damage, and in extreme cases at 50u, it causes paralysis and damages DNA strands."
 	reagent_state = SOLID
 	color = "#E4D2EE" // rgb: 228, 210, 238
 	overdose = REAGENTS_OVERDOSE
@@ -28,7 +28,7 @@
 /datum/reagent/medical/paracetamol
 	name = "Paracetamol"
 	id = "paracetamol"
-	description = "Also known as Tylenol, this is a moderate long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure."
+	description = "Also known as Tylenol, this is a moderate long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure. Side effects of Paracetamol overdoses at 60u include: Opiate Receptor Deficiency, hallucination, and toxin damage, while at 100u, it becomes neurotoxic, hepatotoxic, and causes extreme difficulties in breathing."
 	reagent_state = LIQUID
 	color = "#C855DC" // rgb: 200, 85, 220
 	custom_metabolism = AMOUNT_PER_TIME(15, 10 MINUTES) // Lasts 10 minutes for 15 units
@@ -40,7 +40,7 @@
 /datum/reagent/medical/tramadol
 	name = "Tramadol"
 	id = "tramadol"
-	description = "Tramadol is a centrally acting analgesic and is considered to be a relatively safe. The analgesic potency is claimed to be about one tenth that of morphine. It is used to treat both acute and chronic pain of moderate to (moderately) severe intensity. Tramadol is generally considered as a medicinal drug with a low potential for dependence relative to morphine. Overdosing on tramadol is highly toxic."
+	description = "Tramadol is a centrally acting analgesic. The analgesic potency is claimed to be about one-tenth that of morphine. It is used to treat both acute and chronic pain of moderate to (moderately) severe intensity. Tramadol is generally considered a medicinal drug with a low potential for dependence relative to morphine. Side effects of Tramadol overdoses at 30u include opiate receptor deficiency, hallucination, and toxin damage, while at 50u, it becomes neurotoxic, hepatotoxic, and causes extreme difficulties in breathing."
 	reagent_state = LIQUID
 	color = "#648abd" // rgb: 100, 138, 189   Color changed because you could barely tell the difference between inaprovaline and tramadol in autoinjectors and bottles.
 	custom_metabolism = AMOUNT_PER_TIME(15, 10 MINUTES) // Lasts 10 minutes for 15 units
@@ -53,7 +53,7 @@
 /datum/reagent/medical/oxycodone
 	name = "Oxycodone"
 	id = "oxycodone"
-	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
+	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Side effects of oxycodone overdoses at 20u include opiate receptor deficiency, hallucination, and toxin damage, while at 30u, it becomes neurotoxic, hepatotoxic, and paralyzes the diaphragm."
 	reagent_state = LIQUID
 	color = "#1cc282" // rgb: 28, 194, 130
 	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES) // Lasts 5 minutes for 15 units
@@ -73,7 +73,7 @@
 /datum/reagent/medical/leporazine
 	name = "Leporazine"
 	id = "leporazine"
-	description = "A drug used to treat hypothermia and hyperthermia. Stabilizes patient body temperature. Prevents the use of cryogenics. Overdosing on leporazine can cause extreme drowsiness."
+	description = "A drug used to treat hypothermia and hyperthermia. Stabilizes patient body temperature. Prevents the use of cryogenics. Overdosing on leporazine can cause extreme drowsiness. Doses over 30u can cause drowsiness and paralysis."
 	reagent_state = LIQUID
 	color = "#a03919" // rgb: 160, 57, 25
 	overdose = REAGENTS_OVERDOSE
@@ -84,7 +84,7 @@
 /datum/reagent/medical/kelotane
 	name = "Kelotane"
 	id = "kelotane"
-	description = "Common medicine used to treat burns, caustic and corrosive trauma. Overdosing on kelotane can cause internal tissue damage."
+	description = "Kelotane is a common anticorrosive drug used to treat corrosive and caustic trauma. Doses above 30u are ironically caustic and toxic, damaging skin and muscle tissues."
 	reagent_state = LIQUID
 	color = "#e2972e" // rgb: 226, 151, 46  Kelotane needs to be orange to differentiate from epinephrine in autoinjectors.
 	overdose = REAGENTS_OVERDOSE
@@ -95,7 +95,7 @@
 /datum/reagent/medical/dermaline
 	name = "Dermaline"
 	id = "dermaline"
-	description = "Advanced medicine used to treat severe burn trauma. Enables the body to restore even the direst heat-damaged tissue. Overdosing on dermaline can cause severe internal tissue damage."
+	description = "Advanced medicine used to treat severe burn trauma. Enables the body to restore even the direst heat-damaged tissue. Doses above 15u are toxic and can severely damage skin and muscle tissues."
 	reagent_state = LIQUID
 	color = "#e67e22" // 230, 126, 34 darker kelotane
 	overdose = LOWH_REAGENTS_OVERDOSE
@@ -106,7 +106,7 @@
 /datum/reagent/medical/dexalin
 	name = "Dexalin"
 	id = "dexalin"
-	description = "Dexalin is used in the treatment of oxygen deprivation by feeding oxygen to red blood cells directly inside the bloodstream. Used as an antidote to lexorin poisoning."
+	description = "Dexalin is used in the treatment of oxygen deprivation by feeding oxygen to red blood cells directly inside the bloodstream. Doses above 30u are toxic and can severely damage skin and muscle tissues. "
 	reagent_state = LIQUID
 	color = "#1f28a7" // rgb: 31, 40, 167
 	overdose = REAGENTS_OVERDOSE
@@ -117,7 +117,7 @@
 /datum/reagent/medical/dexalinp
 	name = "Dexalin Plus"
 	id = "dexalinp"
-	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to quicken the rate which oxygen binds to the hemoglobin in red blood cells."
+	description = "Dexalin Plus is an upgraded form of Dexalin with added iron and carbon to expedite the rate at which oxygen binds to the hemoglobin in red blood cells. One unit can immediately and completely cleanse the body of excessive carbon dioxide. However, doses above 15u are toxic and can severely damage skin and muscle tissues."
 	reagent_state = LIQUID
 	color = "#293fff" // rgb: 41, 63, 255
 	overdose = LOWH_REAGENTS_OVERDOSE
@@ -128,7 +128,7 @@
 /datum/reagent/medical/tricordrazine
 	name = "Tricordrazine"
 	id = "tricordrazine"
-	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. Can be used to treat a wide range of injuries."
+	description = "Tricordrazine is a highly potent stimulant, originally derived from cordrazine. It is a wide-spectrum medication that treats all types of skin and muscle damage, replenishes the body with oxygen, and neutralizes toxins. It is extremely toxic at doses over 30u, however, causing widespread toxin, tissue, and organ damage."
 	reagent_state = LIQUID
 	color = "#e06fff" // rgb: 224, 111, 255   color changed to differentiate from kelotane and dermaline. Hopefully, it makes Unga pinker.
 	overdose = REAGENTS_OVERDOSE
@@ -139,7 +139,7 @@
 /datum/reagent/medical/anti_toxin
 	name = "Dylovene"
 	id = "anti_toxin"
-	description = "General use anti-toxin, that neutralizes most toxins in the bloodstream. Commonly used in many advanced chemicals. Can be used as a mild anti-hallucinogen and to reduce tiredness."
+	description = "General-use antitoxin that neutralizes most toxins in the bloodstream. Commonly used in many advanced chemicals. It can be used as a mild anti-hallucinogen and to reduce tiredness. Doses over 30u are not toxic, but they will cause drowsiness and ocular damage."
 	reagent_state = LIQUID
 	color = "#3EA72A" // rgb: 62, 167, 42 changed to be slightly darker to differentiate from oxycodone autoinjectors
 	overdose = REAGENTS_OVERDOSE
@@ -196,7 +196,7 @@
 /datum/reagent/medical/arithrazine
 	name = "Arithrazine"
 	id = "arithrazine"
-	description = "A stabilized variant of dylovene. Its toxin-cleansing properties are weakened and there are harmful side effects, but it does not react with other compounds to create toxin."
+	description = "A stabilized variant of dylovene. Its toxin-cleansing properties are weakened, and there are harmful side effects, but it does not react with other compounds to create toxins. The body has a low tolerance to this medication, with side effects of drowsiness and eye damage beginning at 15u."
 	reagent_state = LIQUID
 	color = "#3c8529" // rgb: 60, 133, 41
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
@@ -208,7 +208,7 @@
 /datum/reagent/medical/russianred
 	name = "Russian Red"
 	id = "russianred"
-	description = "An emergency radiation treatment. The list of potential side effects include retinal damage and unconsciousness."
+	description = "An emergency radiation treatment. The list of potential side effects includes retinal damage and unconsciousness."
 	reagent_state = LIQUID
 	color = "#ce2727" // rgb: 206, 39, 39
 	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
@@ -219,7 +219,7 @@
 /datum/reagent/medical/alkysine
 	name = "Alkysine"
 	id = "alkysine"
-	description = "Alkysine is a drug used to lessen and heal the damage to neurological tissue after a catastrophic injury. Small amounts can repair extensive brain trauma. Functions as a very weak painkiller. Overdosing on alkysine is extremely toxic."
+	description = "Alkysine is a drug used to lessen and heal the damage to neurological tissue after a catastrophic injury. Alkysine is toxic at 30u, and at 50u, it is neurotoxic and can cause limb paralysis."
 	reagent_state = LIQUID
 	color = "#e9d191" // rgb: 233, 209, 145
 	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
@@ -231,7 +231,7 @@
 /datum/reagent/medical/imidazoline
 	name = "Imidazoline"
 	id = "imidazoline"
-	description = "Used for treating non-genetic eye trauma. Generally prescribed as treatment for most cases of eye trauma instead of performing a surgical operation."
+	description = "Used for treating non-genetic eye trauma. Generally prescribed as treatment for most cases of eye trauma instead of performing a surgical operation. Imidazoline is toxic at 30u, and at 50u, it is neurotoxic."
 	reagent_state = LIQUID
 	color = "#F4E8C8" // rgb: 244, 232, 200   color changed to be similar to alkysine and to get rid of the #c8a5dc colors in medicine
 	overdose = REAGENTS_OVERDOSE
@@ -242,7 +242,7 @@
 /datum/reagent/medical/peridaxon
 	name = "Peridaxon"
 	id = "peridaxon"
-	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon will cause internal tissue damage."
+	description = "Prevents symptoms caused by damaged internal organs while in the bloodstream, but does not fix the organ damage. Recommended for patients awaiting internal organ surgery. Overdosing on peridaxon at 15u damages external tissues, and at 30u, it causes internal organ damage."
 	reagent_state = LIQUID
 	color = "#403142" // rgb: 64, 49, 66
 	overdose = LOWH_REAGENTS_OVERDOSE
@@ -254,7 +254,7 @@
 /datum/reagent/medical/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
 	name = "Bicaridine"
 	id = "bicaridine"
-	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing on Bicaridine will cause caustic burns and toxins."
+	description = "Bicaridine is an analgesic medication and can be used to treat severe external blunt trauma and to stabilize patients. Overdosing on Bicaridine at 30u will cause caustic burns and is toxic at 50u."
 	reagent_state = LIQUID
 	color = "#e7554a" // rgb: 231, 85, 74
 	overdose = REAGENTS_OVERDOSE
@@ -265,7 +265,7 @@
 /datum/reagent/medical/meralyne
 	name = "Meralyne"
 	id = "meralyne"
-	description = "Advanced analgesic medication used to treat extremely severe blunt trauma. Allows the body to quickly repair damaged tissue. Overdosing on Meralyne can cause severe corrosion to cell membranes."
+	description = "Advanced analgesic medication used to treat extremely severe blunt trauma. Allows the body to quickly repair damaged tissue. Overdosing on Meralyne starting at 15u can cause severe corrosion to cell membranes and is toxic at 25u."
 	reagent_state = LIQUID
 	color = "#b40000"  // rgb: 180, 0, 0
 	overdose = LOWH_REAGENTS_OVERDOSE
@@ -276,7 +276,7 @@
 /datum/reagent/medical/adrenaline
 	name = "Epinephrine"
 	id = "adrenaline"
-	description = "A natural muscle and heart stimulant. Useful for restarting the heart. Overdosing may stress the heart and cause tissue damage."
+	description = "Known commonly as the natural muscle and heart stimulant 'adrenaline,' low doses of this medication help restart the heart after defibrillation. It also acts as a mild painkiller. Overdosing at over 10u may stress the heart and cause tissue damage."
 	reagent_state = LIQUID
 	color = "#ffe073"  // rgb: 255, 224, 115
 	overdose = LOWM_REAGENTS_OVERDOSE
@@ -289,7 +289,7 @@
 /datum/reagent/medical/ultrazine
 	name = "Ultrazine"
 	id = "ultrazine"
-	description = "A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive."
+	description = "A highly-potent, long-lasting combination CNS and muscle stimulant. Extremely addictive. Doses above 20u are cardiotoxic."
 	reagent_state = LIQUID
 	color = "#ffec43" // rgb: 255, 236, 67
 	custom_metabolism = 0.0167 //5 units will last approximately 10 minutes
@@ -315,7 +315,7 @@
 /datum/reagent/medical/cryoxadone
 	name = "Cryoxadone"
 	id = "cryoxadone"
-	description = "Industrial grade cryogenic medicine. Treats most types of tissue damage. Its main limitation is that the patient's body temperature must be under 170K to metabolise correctly."
+	description = "Industrial grade cryogenic medicine. Treats most types of tissue damage. Its main limitation is that the patient's body temperature must be under 170K to metabolize correctly."
 	reagent_state = LIQUID
 	color = "#4acaca" // rgb: 74, 202, 202
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -334,7 +334,7 @@
 /datum/reagent/medical/clonexadone
 	name = "Clonexadone"
 	id = "clonexadone"
-	description = "Advanced cryogenic medicine made from cryoxadone. Treats most types of tissue damage. Requires temperatures below 170K to to metabolise correctly."
+	description = "Advanced cryogenic medicine made from cryoxadone. Treats most types of tissue damage. Requires temperatures below 170K to metabolize correctly."
 	reagent_state = LIQUID
 	color = "#51b4db" // rgb: 81, 180, 219
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -343,7 +343,7 @@
 /datum/reagent/medical/rezadone
 	name = "Rezadone"
 	id = "rezadone"
-	description = "A powder derived from fish toxin, this substance can effectively treat genetic damage in humanoids. Excessive consumption may cause disastrous side effects."
+	description = "A powder derived from fish toxin, this substance can effectively treat genetic damage in humanoids. Causes toxin damage. Excessive consumption may cause disastrous side effects."
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	overdose = REAGENTS_OVERDOSE
@@ -364,7 +364,7 @@
 /datum/reagent/medical/ethylredoxrazine // FUCK YOU, ALCOHOL
 	name = "Ethylredoxrazine"
 	id = "ethylredoxrazine"
-	description = "Neutralizes the effects of alcohol in the blood stream, by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine being a powerful oxidizer, it becomes toxic in high doses."
+	description = "Neutralizes the effects of alcohol in the blood stream, by oxidizing it into water molecules. However, it does not stop immediate intoxication. Ethylredoxrazine being a powerful oxidizer, it becomes toxic at doses over 30u."
 	reagent_state = SOLID
 	color = "#605048" // rgb: 96, 80, 72
 	overdose = REAGENTS_OVERDOSE
@@ -376,7 +376,7 @@
 /datum/reagent/medical/antidepressant/methylphenidate
 	name = "Methylphenidate"
 	id = "methylphenidate"
-	description = "A commonly prescribed psychostimulant that increases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex (reasoning, inhibiting behaviors, organizing, problem solving, planning ect.)"
+	description = "A commonly prescribed psychostimulant that increases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex (reasoning, inhibiting behaviors, organizing, problem solving, planning, etc.)."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
@@ -387,7 +387,7 @@
 /datum/reagent/medical/antidepressant/citalopram
 	name = "Citalopram"
 	id = "citalopram"
-	description = "Citalopram is a drug used to treat depression, obsessive-compulsive disorder and panic disorder. It is considered safe for consumption and has been commonly available since 1998."
+	description = "Citalopram is a drug used to treat depression, obsessive-compulsive disorder, and panic disorder. It is considered safe for consumption and has been commonly available since 1998."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
@@ -398,7 +398,7 @@
 /datum/reagent/medical/antidepressant/paroxetine
 	name = "Paroxetine"
 	id = "paroxetine"
-	description = "Very powerful antidepressant used to treat: major depressive disorder (MDD), obsessive-compulsive disorder (OCD), social anxiety disorder (SAD), panic disorder, posttraumatic stress disorder (PTSD), generalized anxiety disorder (GAD) and prenmenstrual dysphoric disorder (PMDD). Prolonged use may have side effects."
+	description = "Very powerful antidepressant used to treat major depressive disorder (MDD), obsessive-compulsive disorder (OCD), social anxiety disorder (SAD), panic disorder, posttraumatic stress disorder (PTSD), generalized anxiety disorder (GAD) and premenstrual dysphoric disorder (PMDD). Prolonged use may have side effects."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
 	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)

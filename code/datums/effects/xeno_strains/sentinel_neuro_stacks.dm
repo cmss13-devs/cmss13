@@ -3,7 +3,7 @@
 	duration = null
 	flags = DEL_ON_DEATH | INF_DURATION // We always clean ourselves up
 
-	var/stack_count = 1
+	var/stack_count = 0
 	var/max_stacks = 30
 	var/last_decrement_time = 0
 	var/time_between_decrements = 1

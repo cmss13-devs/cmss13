@@ -102,8 +102,7 @@
 
 			if (sns == null)
 				sns = new /datum/effects/sentinel_neuro_stacks(human)
-			else
-				sns.increment_stack_count(increment_amount)
+			sns.increment_stack_count(increment_amount)
 
 			buffed_slashes --
 	if(!buffed_slashes)

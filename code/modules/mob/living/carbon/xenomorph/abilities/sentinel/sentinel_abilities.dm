@@ -22,7 +22,7 @@
 // Toxic slash
 /datum/action/xeno_action/onclick/paralyzing_slash
 	name = "Toxic Slash"
-	action_icon_state = "lurker_inject_neuro"
+	action_icon_state = "para_slash"
 	macro_path = /datum/action/xeno_action/verb/verb_paralyzing_slash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
@@ -73,8 +73,8 @@
 	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
 
 /datum/action/xeno_action/activable/draining_bite
-	name = "Headbite"
-	action_icon_state = "headbite"
+	name = "Draining bite"
+	action_icon_state = "draining_bite"
 	macro_path = /datum/action/xeno_action/verb/verb_headbite
 	ability_primacy = XENO_PRIMARY_ACTION_4
 	action_type = XENO_ACTION_CLICK

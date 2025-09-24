@@ -861,6 +861,7 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 			break
 
 	if (neuro_found)
+		acid_holder.overlays += image('icons/mob/hud/intoxicated.dmi',"intoxicated")
 		acid_holder.overlays += image('icons/mob/hud/intoxicated.dmi',"intoxicated_amount[neuro_count]")
 
 	var/slow_found = FALSE

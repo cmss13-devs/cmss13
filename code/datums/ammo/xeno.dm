@@ -108,8 +108,7 @@
 
 		if (sns == null)
 			sns = new /datum/effects/sentinel_neuro_stacks(human)
-		else
-			sns.increment_stack_count(increment_amount)
+		sns.increment_stack_count(increment_amount)
 
 	neuro_callback.Invoke(M, effect_power, drain_power, FALSE, TRUE, TRUE)
 

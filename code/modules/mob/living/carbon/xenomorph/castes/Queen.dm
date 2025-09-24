@@ -116,12 +116,20 @@
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
-	hud_used = Q.hud_used
-
 	Q.sight |= SEE_TURFS|SEE_OBJS
 
 /mob/hologram/queen/proc/exit_hologram()
 	SIGNAL_HANDLER
+
+	var/obj/structure/tent/tent = locate() in ((get_turf(linked_mob)).contents)
+
+	var/atom/movable/screen/plane_master/roof/roof_plane = linked_mob.hud_used.plane_masters["[ROOF_PLANE]"]
+
+	if(!tent)
+		roof_plane?.invisibility = 0
+	else if (roof_plane?.invisibility == 0)
+		roof_plane?.invisibility = INVISIBILITY_MAXIMUM
+
 	qdel(src)
 
 /mob/hologram/queen/handle_move(mob/living/carbon/xenomorph/X, NewLoc, direct)

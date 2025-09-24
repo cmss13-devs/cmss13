@@ -236,3 +236,22 @@
   - rscadd: Added a WY camera subtype.
   - bugfix: Fixes WY Director access to the Intranet Console.
   - rscadd: Added Document Printer.
+2025-09-23:
+  Venuska1117:
+  - bugfix: Fruit balloon alert now only trigger after consuming fruit, instead for
+      every not related Destroy() proc call.
+  Zenith, cuberound, dimdimich1996:
+  - rscadd: Added new fences fence types & fence doors.
+  - imageadd: Replaced existing fence sprites & added new fence types with doors.
+  - soundadd: Added new fence hit sounds & fence door opening sounds.
+  - maptweak: Added new fence types to LV & Soro.
+  - maptweak: Soro map tweaks to comms areas, cleaned them up to accommodate new fence
+      types.
+2025-09-24:
+  Git-Nivrak:
+  - qol: Queen eye can now look into tents
+  - bugfix: Fixes lighting sometimes appearing as blocky instead of fancy lighting
+  Googles-Hands:
+  - maptweak: Added lockdown doors to remapped areas of the Hangar that lacked them.
+  stanalbatross:
+  - balance: direction locking no longer slows down humans. Xenos etc unaffected.

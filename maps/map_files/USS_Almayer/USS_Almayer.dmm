@@ -15703,13 +15703,19 @@
 /turf/open_space,
 /area/almayer/middeck/medical)
 "aOZ" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/plating/plating_catwalk/no_build,
+/turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "aPa" = (
 /obj/structure/machinery/light{
@@ -15718,20 +15724,12 @@
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
 "aPb" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
-	dir = 8
+	dir = 1
 	},
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/medical)
 "aPc" = (
 /obj/effect/decal/cleanable/dirt,
@@ -15806,12 +15804,11 @@
 /turf/open/floor/almayer/plate,
 /area/almayer/squads/alpha)
 "aPm" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
+	light_color = "#BB3F3F"
 	},
-/obj/effect/decal/heavy_cable/cable_horizontal,
-/turf/open/floor/plating/plating_catwalk/no_build,
+/turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/medical)
 "aPn" = (
 /obj/structure/machinery/cm_vending/clothing/marine/bravo{
@@ -15957,19 +15954,13 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/maintenance/pb)
 "aPG" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
-	dir = 8
+	dir = 1
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/turf/open/floor/almayer/no_build/plate,
+/turf/open/floor/almayer/no_build/test_floor4,
 /area/almayer/middeck/medical)
 "aPH" = (
 /obj/structure/pipes/vents/pump{
@@ -29397,12 +29388,12 @@
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/medical)
 "btF" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/largecrate/random/barrel/medical,
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F";
 	dir = 4
 	},
-/obj/effect/decal/heavy_cable/cable_horizontal,
-/obj/structure/largecrate/random/barrel/medical,
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/medical)
 "btG" = (
@@ -64360,6 +64351,22 @@
 "mXJ" = (
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
+"mYa" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "mYt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -74370,6 +74377,14 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/door,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
+"qRE" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/medical)
 "qRX" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -167733,7 +167748,7 @@ avN
 aOY
 aOx
 bfM
-aPb
+mYa
 aPq
 aOl
 aOY
@@ -168559,7 +168574,7 @@ btF
 bty
 aPL
 aOO
-aPm
+qRE
 aOO
 aOO
 aOO
@@ -169174,9 +169189,9 @@ beB
 aHE
 aHE
 aHE
-aOZ
+aHE
 bmU
-aOZ
+aHE
 beB
 beB
 beB
@@ -169274,7 +169289,7 @@ aJA
 bih
 avN
 avN
-bnY
+aPb
 bhD
 bnY
 avN
@@ -169282,7 +169297,7 @@ avN
 avN
 btj
 bnY
-bnY
+aPm
 avN
 avN
 aIb
@@ -170510,15 +170525,15 @@ aIA
 avN
 avN
 avN
+aPG
 bhD
-bhD
 bnY
 avN
 avN
 avN
 bnY
 bnY
-bnY
+aPm
 avN
 avN
 avN
@@ -170616,9 +170631,9 @@ bah
 bhO
 bah
 beJ
-aPG
+aOh
 bvA
-aPG
+aOh
 beJ
 aOh
 beJ
@@ -170824,7 +170839,7 @@ beB
 beB
 aOh
 beB
-aOh
+aOZ
 beB
 beB
 beB

@@ -39473,6 +39473,10 @@
 "bYI" = (
 /turf/open/floor/almayer_hull/outerhull_dir/north,
 /area/white_antre/outdoors/facility_exterior)
+"bYJ" = (
+/obj/structure/flora/tree/tyrargo/tree_3,
+/turf/open/auto_turf/snow/layer2,
+/area/white_antre/outdoors/south_field)
 "bYN" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/prison/floor_marked,
@@ -100165,7 +100169,7 @@ aLR
 aMf
 aMf
 aLR
-aJx
+bYJ
 acs
 pzq
 pzq

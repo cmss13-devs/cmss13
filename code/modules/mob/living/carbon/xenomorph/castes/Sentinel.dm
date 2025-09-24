@@ -73,7 +73,7 @@
 	// State
 	var/max_buffed_slashes = 3
 	var/buffed_slashes = 0
-	var/increment_amount = 11
+	var/increment_amount = 7
 
 /datum/behavior_delegate/sentinel_base/melee_attack_modify_damage(original_damage, mob/living/carbon/carbon_target)
 	if (!buffed_slashes)
@@ -93,7 +93,7 @@
 			buffed_slashes --
 			return //species like zombies or synths are immune to neurotoxin
 		if (buffed_slashes)
-			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("We add neurotoxin into our attack!"))
+			to_chat(bound_xeno, SPAN_XENOHIGHDANGER("Our slash applied a large amount of neurotoxin!"))
 			to_chat(carbon_target, SPAN_XENOHIGHDANGER("You feel your muscles, as [bound_xeno] slashes you with its neurotoxin coated claws!"))
 			var/datum/effects/sentinel_neuro_stacks/sns = null
 			for (var/datum/effects/sentinel_neuro_stacks/sentinel_neuro_stacks in human.effects_list)
@@ -203,7 +203,7 @@
 	if (istype(behavior))
 		behavior.buffed_slashes = behavior.max_buffed_slashes
 
-	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next slash will apply neurotoxin!"))
+	to_chat(paraslash_user, SPAN_XENOHIGHDANGER("Our next three slashes will apply neurotoxin!"))
 	button.icon_state = "template_active"
 
 	addtimer(CALLBACK(src, PROC_REF(unbuff_slash)), buff_duration)

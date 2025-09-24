@@ -860,9 +860,8 @@ GLOBAL_DATUM_INIT(hud_icon_hudfocus, /image, image('icons/mob/hud/marine_hud.dmi
 			neuro_found = TRUE
 			break
 
-	if (neuro_found && neuro_count > 9)
-		var/value = floor(neuro_count/10)
-		acid_holder.overlays += image('icons/mob/hud/hud.dmi',"acid_stacks[value]")
+	if (neuro_found)
+		acid_holder.overlays += image('icons/mob/hud/intoxicated.dmi',"intoxicated_amount[neuro_count]")
 
 	var/slow_found = FALSE
 	for (var/datum/effects/xeno_slow/XS in effects_list)

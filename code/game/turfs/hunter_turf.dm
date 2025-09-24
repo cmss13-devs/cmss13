@@ -583,6 +583,70 @@
 
 //
 
+/turf/open/floor/ancient_temple/deco
+	icon_state = "floor_deco"
+
+/turf/open/floor/ancient_temple/deco/deco_0
+	icon_state = "floor_deco_0"
+
+/turf/open/floor/ancient_temple/deco/deco_1
+	icon_state = "floor_deco_1"
+
+/turf/open/floor/ancient_temple/deco/deco_1/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/deco/deco_1/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/deco/deco_1/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/deco/deco_2
+	icon_state = "floor_deco_2"
+
+/turf/open/floor/ancient_temple/deco/deco_2/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/deco/deco_2/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/deco/deco_2/west
+	dir = WEST
+
+//
+
+/turf/open/floor/ancient_temple/deco/dark
+	icon_state = "floor_dark_deco"
+
+/turf/open/floor/ancient_temple/deco/dark/deco_0
+	icon_state = "floor_dark_deco_0"
+
+/turf/open/floor/ancient_temple/deco/dark/deco_1
+	icon_state = "floor_dark_deco_1"
+
+/turf/open/floor/ancient_temple/deco/dark/deco_1/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/deco/dark/deco_1/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/deco/dark/deco_1/west
+	dir = WEST
+
+/turf/open/floor/ancient_temple/deco/dark/deco_2
+	icon_state = "floor_dark_deco_2"
+
+/turf/open/floor/ancient_temple/deco/dark/deco_2/north
+	dir = NORTH
+
+/turf/open/floor/ancient_temple/deco/dark/deco_2/east
+	dir = EAST
+
+/turf/open/floor/ancient_temple/deco/dark/deco_2/west
+	dir = WEST
+
+//
+
 /turf/open/floor/ancient_temple/ruined
 	icon_state = "floor_breach"
 

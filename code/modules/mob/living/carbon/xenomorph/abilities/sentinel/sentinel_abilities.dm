@@ -34,6 +34,9 @@
 /datum/action/xeno_action/activable/tail_stab/sentinel
 	name = "Catalytic Shock Tailstab"
 	damage_multiplier = 1
+	var/duration = 35
+	var/speed_buff_amount = 0.8 // Go from shit slow to kindafast
+	var/armor_buff_amount = 10 // hopefully-minor buff so they can close the distance
 
 /datum/action/xeno_action/activable/tail_stab/sentinel/ability_act(mob/living/carbon/xenomorph/stabbing_xeno, mob/living/carbon/target, obj/limb/limb)
 	. = ..()
@@ -49,6 +52,25 @@
 	var/stacks = sns.stack_count
 	sns.increment_stack_count(-stacks/2)
 	target.apply_armoured_damage(stacks*1.2, ARMOR_MELEE, BURN, limb ? limb.name : "chest")
+	if(stacks < 20)
+		return
+	stabbing_xeno.speed_modifier -= speed_buff_amount
+	stabbing_xeno.armor_modifier += armor_buff_amount
+	stabbing_xeno.recalculate_speed()
+	stabbing_xeno.recalculate_armor()
+	addtimer(CALLBACK(src, PROC_REF(remove_effects)), duration)
+	to_chat(stabbing_xeno, SPAN_XENOWARNING("We are slightly faster and more armored for a small amount of time."))
+
+/datum/action/xeno_action/activable/tail_stab/sentinel/proc/remove_effects()
+	var/mob/living/carbon/xenomorph/xeno = owner
+	if (!istype(xeno))
+		return
+
+	xeno.speed_modifier += speed_buff_amount
+	xeno.armor_modifier -= armor_buff_amount
+	xeno.recalculate_speed()
+	xeno.recalculate_armor()
+	to_chat(xeno, SPAN_XENOHIGHDANGER("We feel our movement speed slow down!"))
 
 /datum/action/xeno_action/activable/draining_bite
 	name = "Headbite"

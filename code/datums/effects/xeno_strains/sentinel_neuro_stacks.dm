@@ -42,8 +42,6 @@
 			return
 
 
-
-
 /datum/effects/sentinel_neuro_stacks/Destroy()
 	if (!ishuman(affected_atom))
 		return ..()

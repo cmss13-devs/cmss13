@@ -117,28 +117,41 @@
 		else if(!(caste_type == XENO_CASTE_QUEEN))
 			. += "Местоположение королевы: [hive.living_xeno_queen.loc.loc.name]"
 
-		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_SLASH_ALLOW_ALL))
 			. += "Убийство носителей: РАЗРЕШЕНО"
+		else if (HAS_FLAG(hive.hive_flags, XENO_SLASH_NORMAL))
+			. += "Убийство носителей: ЗАПРЕЩЕНО УБИВАТЬ ЗАРАЖЕННЫХ"
 		else
 			. += "Убийство носителей: ЗАПРЕЩЕНО"
 
-		if(hive.construction_allowed == XENO_LEADER)
-			. += "Строительство продвинутых структур: ЛИДЕРЫ"
-		else if(hive.construction_allowed == NORMAL_XENO)
-			. += "Строительство продвинутых структур: ВСЕ"
-		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Строительство продвинутых структур: НИКТО"
+		var/str_builder = "НИКТО"
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_CONSTRUCTION_ALLOW_ALL))
+			str_builder = "ВСЕ"
 		else
-			. += "Строительство продвинутых структур: КОРОЛЕВА"
+			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_QUEEN))
+				str_builder = "КОРОЛЕВА"
+				if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+					str_builder += " и "
+			if (HAS_FLAG(hive.hive_flags, XENO_CONSTRUCTION_LEADERS))
+				str_builder += "ЛИДЕРЫ"
+		. += "Special Structure Placement: [str_builder]"
 
-		if(hive.destruction_allowed == XENO_LEADER)
-			. += "Разрушение продвинутых структур: ЛИДЕРЫ"
-		else if(hive.destruction_allowed == NORMAL_XENO)
-			. += "Разрушение продвинутых структур: СТРОИТЕЛИ и ЛИДЕРЫ"
-		else if(hive.construction_allowed == XENO_NOBODY)
-			. += "Строительство продвинутых структур: НИКТО"
+		str_builder = "НИКТО"
+		if (CHECK_MULTIPLE_BITFIELDS(hive.hive_flags, XENO_DECONSTRUCTION_ALLOW_ALL))
+			str_builder = "ВСЕ"
 		else
-			. += "Разрушение продвинутых структур: КОРОЛЕВА"
+			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_QUEEN))
+				str_builder = "КОРОЛЕВА"
+				if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
+					str_builder += " и "
+			if (HAS_FLAG(hive.hive_flags, XENO_DECONSTRUCTION_LEADERS))
+				str_builder += "ЛИДЕРЫ"
+		. += "Разрушение продвинутых структур: [str_builder]"
+
+		if (HAS_FLAG(hive.hive_flags, XENO_UNNESTING_RESTRICTED))
+			. += "Снимать с гнезда: СТРОИТЕЛИ"
+		else
+			. += "Снимать с гнезда: ВСЕ"
 
 		if(hive.hive_orders)
 			. += "Приказы улья: [hive.hive_orders]"

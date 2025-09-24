@@ -354,6 +354,8 @@
 	set_light_color(color)
 
 /atom/movable/proc/onZImpact(turf/impact_turf, height)
+	if(HAS_TRAIT(src, TRAIT_HAULED)) //we do not spin houled humans
+		return
 	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
 
 // SS220 ADD Start

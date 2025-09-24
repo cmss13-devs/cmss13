@@ -441,9 +441,15 @@
 			hive = GLOB.hive_datum[hivenumber]
 			if(!hive.xeno_queen_timer)
 				continue
-
 			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
-				xeno_message("The Hive is ready for a new Queen to evolve. The hive can only survive for a limited time without a queen!", 3, hive.hivenumber)
+				var/time_remaining = (QUEEN_DEATH_COUNTDOWN + hive.xeno_queen_timer) - world.time
+				if(time_remaining <= 59 SECONDS)
+					var/seconds_left = round(time_remaining / 10)
+					xeno_message("The Hive is ready for a new Queen to evolve. The Hive will collapse in [seconds_left] seconds without a Queen.", 3, hive.hivenumber)
+				else
+					xeno_message("The Hive is ready for a new Queen to evolve. The Hive can only survive for a limited time without a Queen!", 3, hive.hivenumber)
+
+
 
 		if(!active_lz && world.time > lz_selection_timer)
 			select_lz(locate(/obj/structure/machinery/computer/shuttle/dropship/flight/lz1))

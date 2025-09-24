@@ -173,6 +173,10 @@
 		return
 
 	var/mob/living/carbon/xenomorph/larva/larva = new /mob/living/carbon/xenomorph/larva(atom)
+	var/turf/turf = get_turf(larva)
+
+	if(SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED && is_ground_level(turf?.z))
+		hivenumber = XENO_HIVE_FORSAKEN //Set to forsaken hive if hijack is active and on ground level
 
 	larva.set_hive_and_update(hivenumber)
 

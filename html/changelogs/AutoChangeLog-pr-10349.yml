@@ -1,0 +1,8 @@
+author: "Zenith, cuberound, dimdimich1996"
+delete-after: True
+changes:
+  - rscadd: "Added new fences fence types & fence doors."
+  - imageadd: "Replaced existing fence sprites & added new fence types with doors."
+  - soundadd: "Added new fence hit sounds & fence door opening sounds."
+  - maptweak: "Added new fence types to LV & Soro."
+  - maptweak: "Soro map tweaks to comms areas, cleaned them up to accommodate new fence types."

@@ -266,9 +266,27 @@
 #define COMSIG_KB_XENO_HEDGEHOG_SPIKE_SHED "keybinding_hedgehog_spike_shed"
 
 // Xenomorph Crusher
+#define COMSIG_KB_XENO_CRUSHER_CHARGE "keybinding_crusher_charge"
+#define COMSIG_KB_XENO_CRUSHER_STOMP "keybinding_crusher_stomp"
+#define COMSIG_KB_XENO_CRUSHER_SHIELD "keybinding_crusher_shield"
+
 // Xenomorph Crusher Charger
+#define COMSIG_KB_XENO_CHARGER_CHARGE "keybinding_charger_charge"
+#define COMSIG_KB_XENO_CHARGER_TUMBLE "keybinding_charger_tumble"
+#define COMSIG_KB_XENO_CHARGER_STOMP "keybinding_charger_stomp"
+#define COMSIG_KB_XENO_CHARGER_FLING "keybinding_charger_fling"
+
 // Xenomorph Boiler
+#define COMSIG_KB_XENO_BOILER_BOMBARD "keybinding_boiler_bombard"
+#define COMSIG_KB_XENO_BOILER_SHIFT_SPITS "keybinding_boiler_shift_spits"
+#define COMSIG_KB_XENO_BOILER_SPRAY_ACID "keybinding_boiler_spray_acid"
+#define COMSIG_KB_XENO_BOILER_ACID_SHROUD "keybinding_boiler_acid_shroud"
+
 // Xenomorph Boiler Trapper
+#define COMSIG_KB_XENO_TRAPPER_TRAP "keybinding_trapper_trap"
+#define COMSIG_KB_XENO_TRAPPER_ACID_MINE "keybinding_trapper_acid_mine"
+#define COMSIG_KB_XENO_TRAPPER_ACID_SHOTGUN "keybinding_trapper_acid_shotgun"
+
 // Xenomorph Praetorian
 #define COMSIG_KB_XENO_PRAETORIAN_SPIT "keybinding_praetorian_spit"
 #define COMSIG_KB_XENO_PRAETORIAN_DASH "keybinding_praetorian_dash"
@@ -296,6 +314,26 @@
 #define COMSIG_KB_XENO_VALKYRIE_HIGH_GALLOP "keybinding_valkyrie_high_gallop"
 #define COMSIG_KB_XENO_VALKYRIE_FIGHT_OR_FLIGHT "keybinding_valkyrie_fight_or_flight"
 #define COMSIG_KB_XENO_VALKYRIE_RETRIEVE "keybinding_valkyrie_retrieve"
+
+// Xenomorph Queen
+#define COMSIG_KB_XENO_QUEEN_SPIT "keybinding_queen_spit"
+#define COMSIG_KB_XENO_QUEEN_SHIFT_SPITS "keybinding_queen_shift_spits"
+#define COMSIG_KB_XENO_QUEEN_GUT "keybinding_queen_gut"
+#define COMSIG_KB_XENO_QUEEN_GROW_OVIPOSITOR "keybinding_queen_grow_ovipositor"
+#define COMSIG_KB_XENO_QUEEN_MANAGE_HIVE "keybinding_queen_manage_hive"
+
+// Xenomorph King
+#define COMSIG_KB_XENO_KING_REND "keybinding_king_rend"
+#define COMSIG_KB_XENO_KING_DOOM "keybinding_king_doom"
+#define COMSIG_KB_XENO_KING_DESTROY "keybinding_king_destroy"
+#define COMSIG_KB_XENO_KING_SHIELD "keybinding_king_shield"
+
+// Xenomorph Predalien
+#define COMSIG_KB_XENO_PREDALIEN_FERALRUSH "keybinding_predalien_feralrush"
+#define COMSIG_KB_XENO_PREDALIEN_ROAR "keybinding_predalien_roar"
+#define COMSIG_KB_XENO_PREDALIEN_FERAL_SMASH "keybinding_predalien_feral_smash"
+#define COMSIG_KB_XENO_PREDALIEN_FERALFRENZY "keybinding_predalien_feralfrenzy"
+#define COMSIG_KB_XENO_PREDALIEN_TOGGLE_GUT_TARGETING "keybinding_predalien_toggle_gut_targeting"
 
 // Yautja
 

@@ -1484,4 +1484,514 @@
 		if(praetorian_spray_acid_check && !praetorian_spray_acid_check.hidden)
 			handle_xeno_macro_datum(xeno, praetorian_spray_acid_check)
 			return TRUE
+// Dancer
 
+/datum/keybinding/xenomorph/dancer_impale
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "dancer_impale"
+	full_name = "Dancer: Impale"
+	keybind_signal = COMSIG_KB_XENO_DANCER_IMPALE
+
+/datum/keybinding/xenomorph/dancer_impale/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/prae_impale/dancer_impale_check = get_action(xeno, /datum/action/xeno_action/activable/prae_impale)
+	if(dancer_impale_check)
+		if(dancer_impale_check && !dancer_impale_check.hidden)
+			handle_xeno_macro_datum(xeno, dancer_impale_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/dancer_dodge
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "dancer_dodge"
+	full_name = "Dancer: Dodge"
+	keybind_signal = COMSIG_KB_XENO_DANCER_DODGE
+
+/datum/keybinding/xenomorph/dancer_dodge/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/prae_dodge/dancer_dodge_check = get_action(xeno, /datum/action/xeno_action/onclick/prae_dodge)
+	if(dancer_dodge_check)
+		if(dancer_dodge_check && !dancer_dodge_check.hidden)
+			handle_xeno_macro_datum(xeno, dancer_dodge_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/dancer_tail_trip
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "dancer_tail_trip"
+	full_name = "Dancer: Tail trip"
+	keybind_signal = COMSIG_KB_XENO_DANCER_TAIL_TRIP
+
+/datum/keybinding/xenomorph/dancer_tail_trip/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/prae_tail_tripale/dancer_tail_trip_check = get_action(xeno, /datum/action/xeno_action/activable/prae_tail_trip)
+	if(dancer_tail_trip_check)
+		if(dancer_tail_trip_check && !dancer_tail_trip_check.hidden)
+			handle_xeno_macro_datum(xeno, dancer_tail_trip_check)
+			return TRUE
+// Oppressor
+
+/datum/keybinding/xenomorph/oppressor_adbuct
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "oppressor_adbuct"
+	full_name = "Oppressor: Abduct"
+	keybind_signal = COMSIG_KB_XENO_OPPRESSOR_ABDUCT
+
+/datum/keybinding/xenomorph/oppressor_adbuct/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/prae_abduct/oppressor_adbuct_check = get_action(xeno, /datum/action/xeno_action/activable/prae_abduct)
+	if(oppressor_adbuct_check)
+		if(oppressor_adbuct_check && !oppressor_adbuct_check.hidden)
+			handle_xeno_macro_datum(xeno, oppressor_adbuct_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/oppressor_punch
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "oppressor_punch"
+	full_name = "Oppressor: Punch"
+	keybind_signal = COMSIG_KB_XENO_OPPRESSOR_PUNCH
+
+/datum/keybinding/xenomorph/oppressor_punch/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/oppressor_punch/oppressor_punch_check = get_action(xeno, /datum/action/xeno_action/activable/oppressor_punch)
+	if(oppressor_punch_check)
+		if(oppressor_punch_check && !oppressor_punch_check.hidden)
+			handle_xeno_macro_datum(xeno, oppressor_punch_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/oppressor_tail_lash
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "oppressor_tail_lash"
+	full_name = "Oppressor: Tail lash"
+	keybind_signal = COMSIG_KB_XENO_OPPRESSOR_TAIL_LASH
+
+/datum/keybinding/xenomorph/oppressor_tail_lash/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/tail_lash/oppressor_tail_lash_check = get_action(xeno, /datum/action/xeno_action/activable/tail_lash)
+	if(oppressor_tail_lash_check)
+		if(oppressor_tail_lash_check && !oppressor_tail_lash_check.hidden)
+			handle_xeno_macro_datum(xeno, oppressor_tail_lash_check)
+			return TRUE
+// Vanguard
+
+/datum/keybinding/xenomorph/vanguard_pierce
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "vanguard_pierce"
+	full_name = "Vanguard: Pierce"
+	keybind_signal = COMSIG_KB_XENO_VANGUARD_PIERCE
+
+/datum/keybinding/xenomorph/vanguard_pierce/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pierce/vanguard_pierce_check = get_action(xeno, /datum/action/xeno_action/activable/pierce)
+	if(vanguard_pierce_check)
+		if(vanguard_pierce_check && !vanguard_pierce_check.hidden)
+			handle_xeno_macro_datum(xeno, vanguard_pierce_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/vanguard_dash
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "vanguard_dash"
+	full_name = "Vanguard: Dash"
+	keybind_signal = COMSIG_KB_XENO_VANGUARD_DASH
+
+/datum/keybinding/xenomorph/vanguard_dash/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pounce/prae_dash/vanguard_dash_check = get_action(xeno, /datum/action/xeno_action/activable/pounce/prae_dash)
+	if(vanguard_dash_check)
+		if(vanguard_dash_check && !vanguard_dash_check.hidden)
+			handle_xeno_macro_datum(xeno, vanguard_dash_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/vanguard_cleave
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "vanguard_cleave"
+	full_name = "Vanguard: Cleave"
+	keybind_signal = COMSIG_KB_XENO_VANGUARD_CLEAVE
+
+/datum/keybinding/xenomorph/vanguard_cleave/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/cleave/vanguard_cleave_check = get_action(xeno, /datum/action/xeno_action/activable/cleave)
+	if(vanguard_cleave_check)
+		if(vanguard_cleave_check && !vanguard_cleave_check.hidden)
+			handle_xeno_macro_datum(xeno, vanguard_cleave_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/vanguard_toggle_cleave
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "vanguard_toggle_cleave"
+	full_name = "Vanguard: Toggle Cleave"
+	keybind_signal = COMSIG_KB_XENO_VANGUARD_DASH
+
+/datum/keybinding/xenomorph/vanguard_toggle_cleave/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/toggle_cleave/vanguard_toggle_cleave_check = get_action(xeno, /datum/action/xeno_action/onclick/toggle_cleave)
+	if(vanguard_toggle_cleave_check)
+		if(vanguard_toggle_cleave_check && !vanguard_toggle_cleave_check.hidden)
+			handle_xeno_macro_datum(xeno, vanguard_toggle_cleave_check)
+			return TRUE
+// Valkyrie
+
+/datum/keybinding/xenomorph/valkyrie_rage
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "valkyrie_rage"
+	full_name = "Valkyrie: Rage"
+	keybind_signal = COMSIG_KB_XENO_VALKYRIE_RAGE
+
+/datum/keybinding/xenomorph/valkyrie_rage/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/valkyrie_rage/valkyrie_rage_check = get_action(xeno, /datum/action/xeno_action/activable/valkyrie_rage)
+	if(valkyrie_rage_check)
+		if(valkyrie_rage_check && !valkyrie_rage_check.hidden)
+			handle_xeno_macro_datum(xeno, valkyrie_rage_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/valkyrie_high_gallop
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "valkyrie_high_gallop"
+	full_name = "Valkyrie: High gallop"
+	keybind_signal = COMSIG_KB_XENO_VALKYRIE_HIGH_GALLOP
+
+/datum/keybinding/xenomorph/valkyrie_high_gallop/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/high_gallop/valkyrie_high_gallop_check = get_action(xeno, /datum/action/xeno_action/activable/high_gallop)
+	if(valkyrie_high_gallop_check)
+		if(valkyrie_high_gallop_check && !valkyrie_high_gallop_check.hidden)
+			handle_xeno_macro_datum(xeno, valkyrie_high_gallop_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/valkyrie_fight_or_flight
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "valkyrie_fight_or_flight"
+	full_name = "Valkyrie: Figth or flight"
+	keybind_signal = COMSIG_KB_XENO_VALKYRIE_FIGHT_OR_FLIGHT
+
+/datum/keybinding/xenomorph/valkyrie_fight_or_flight/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/fight_or_flight/valkyrie_fight_or_flight_check = get_action(xeno, /datum/action/xeno_action/onclick/fight_or_flight)
+	if(valkyrie_fight_or_flight_check)
+		if(valkyrie_fight_or_flight_check && !valkyrie_fight_or_flight_check.hidden)
+			handle_xeno_macro_datum(xeno, valkyrie_fight_or_flight_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/valkyrie_retrieve
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "valkyrie_retrieve"
+	full_name = "Valkyrie: Retrieve"
+	keybind_signal = COMSIG_KB_XENO_VALKYRIE_RETRIEVE
+
+/datum/keybinding/xenomorph/valkyrie_retrieve/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/prae_retrieve/valkyrie_retrieve_check = get_action(xeno, /datum/action/xeno_action/activable/prae_retrieve)
+	if(valkyrie_retrieve_check)
+		if(valkyrie_retrieve_check && !valkyrie_retrieve_check.hidden)
+			handle_xeno_macro_datum(xeno, valkyrie_retrieve_check)
+			return TRUE
+// Boiler
+
+/datum/keybinding/xenomorph/boiler_bombard
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "boiler_bombard"
+	full_name = "Boiler: Bombard"
+	keybind_signal = COMSIG_KB_XENO_BOILER_BOMBARD
+
+/datum/keybinding/xenomorph/boiler_bombard/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/xeno_spit/bombard/boiler_bombard_check = get_action(xeno, /datum/action/xeno_action/activable/xeno_spit/bombard)
+	if(boiler_bombard_check)
+		if(boiler_bombard_check && !boiler_bombard_check.hidden)
+			handle_xeno_macro_datum(xeno, boiler_bombard_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/boiler_shift_spits
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "boiler_shift_spits"
+	full_name = "Boiler: Shift spits"
+	keybind_signal = COMSIG_KB_XENO_BOILER_SHIFT_SPITS
+
+/datum/keybinding/xenomorph/boiler_shift_spits/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/shift_spits/boiler/boiler_shift_spits_check = get_action(xeno, /datum/action/xeno_action/onclick/shift_spits/boiler)
+	if(boiler_shift_spits_check)
+		if(boiler_shift_spits_check && !boiler_shift_spits_check.hidden)
+			handle_xeno_macro_datum(xeno, boiler_shift_spits_check)
+			return TRUE
+/datum/keybinding/xenomorph/boiler_spray_acid
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "boiler_spray_acid"
+	full_name = "Boiler: Spray acid"
+	keybind_signal = COMSIG_KB_XENO_BOILER_SPRAY_ACID
+
+/datum/keybinding/xenomorph/boiler_spray_acid/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/spray_acid/boiler/boiler_spray_acid_check = get_action(xeno, /datum/action/xeno_action/activable/spray_acid/boiler)
+	if(boiler_spray_acid_check)
+		if(boiler_spray_acid_check && !boiler_spray_acid_check.hidden)
+			handle_xeno_macro_datum(xeno, boiler_spray_acid_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/boiler_acid_shroud
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "boiler_acid_shroud"
+	full_name = "Boiler: Acid shroud"
+	keybind_signal = COMSIG_KB_XENO_BOILER_ACID_SHROUD
+
+/datum/keybinding/xenomorph/boiler_boiler_acid_shroudspray_acid/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/acid_shroud/boiler_acid_shroud_check = get_action(xeno, /datum/action/xeno_action/onclick/acid_shroud)
+	if(boiler_acid_shroud_check)
+		if(boiler_acid_shroud_check && !boiler_acid_shroud_check.hidden)
+			handle_xeno_macro_datum(xeno, boiler_acid_shroud_check)
+			return TRUE
+// Trapper
+
+/datum/keybinding/xenomorph/trapper_trap
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "trapper_trap"
+	full_name = "Trapper: Trap"
+	keybind_signal = COMSIG_KB_XENO_TRAPPER_TRAP
+
+/datum/keybinding/xenomorph/trapper_trap/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/boiler_trap/trapper_trap_check = get_action(xeno, /datum/action/xeno_action/activable/boiler_trap)
+	if(trapper_trap_check)
+		if(trapper_trap_check && !trapper_trap_check.hidden)
+			handle_xeno_macro_datum(xeno, trapper_trap_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/trapper_acid_mine
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "trapper_acid_mine"
+	full_name = "Trapper: Acid mine"
+	keybind_signal = COMSIG_KB_XENO_TRAPPER_ACID_MINE
+
+/datum/keybinding/xenomorph/trapper_acid_mine/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/acid_mine/trapper_acid_mine_check = get_action(xeno, /datum/action/xeno_action/activable/acid_mine)
+	if(trapper_acid_mine_check)
+		if(trapper_acid_mine_check && !trapper_acid_mine_check.hidden)
+			handle_xeno_macro_datum(xeno, trapper_acid_mine_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/trapper_acid_shotgun
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "trapper_acid_shotgun"
+	full_name = "Trapper: Acid shotgun"
+	keybind_signal = COMSIG_KB_XENO_TRAPPER_ACID_SHOTGUN
+
+/datum/keybinding/xenomorph/trapper_acid_shotgun/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/acid_shotgun/trapper_acid_shotgun_check = get_action(xeno, /datum/action/xeno_action/activable/acid_shotgun)
+	if(trapper_acid_shotgun_check)
+		if(trapper_acid_shotgun_check && !trapper_acid_shotgun_check.hidden)
+			handle_xeno_macro_datum(xeno, trapper_acid_shotgun_check)
+			return TRUE
+// Crusher
+
+/datum/keybinding/xenomorph/crusher_charge
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "crusher_charge"
+	full_name = "Crusher: Charge"
+	keybind_signal = COMSIG_KB_XENO_CRUSHER_CHARGE
+
+/datum/keybinding/xenomorph/crusher_charge/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/pounce/crusher_charge/crusher_charge_check = get_action(xeno, /datum/action/xeno_action/activable/pounce/crusher_charge)
+	if(crusher_charge_check)
+		if(crusher_charge_check && !crusher_charge_check.hidden)
+			handle_xeno_macro_datum(xeno, crusher_charge_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/crusher_stomp
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "crusher_stomp"
+	full_name = "Crusher: Stomp"
+	keybind_signal = COMSIG_KB_XENO_CRUSHER_STOMP
+
+/datum/keybinding/xenomorph/crusher_stomp/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/crusher_stomp/crusher_stomp_check = get_action(xeno, /datum/action/xeno_action/onclick/crusher_stomp)
+	if(crusher_stomp_check)
+		if(crusher_stomp_check && !crusher_stomp_check.hidden)
+			handle_xeno_macro_datum(xeno, crusher_stomp_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/crusher_shield
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "crusher_shield"
+	full_name = "Crusher: Shield"
+	keybind_signal = COMSIG_KB_XENO_CRUSHER_SHIELD
+
+/datum/keybinding/xenomorph/crusher_shield/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/crusher_shield/crusher_shield_check = get_action(xeno, /datum/action/xeno_action/onclick/crusher_shield)
+	if(crusher_shield_check)
+		if(crusher_shield_check && !crusher_shield_check.hidden)
+			handle_xeno_macro_datum(xeno, crusher_shield_check)
+			return TRUE
+// Charger
+
+/datum/keybinding/xenomorph/charger_charge
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "charger_charge"
+	full_name = "Charger: Charge"
+	keybind_signal = COMSIG_KB_XENO_CHARGER_CHARGE
+
+/datum/keybinding/xenomorph/charger_charge/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/charger_charge/charger_charge_check = get_action(xeno, /datum/action/xeno_action/onclick/charger_charge)
+	if(charger_charge_check)
+		if(charger_charge_check && !charger_charge_check.hidden)
+			handle_xeno_macro_datum(xeno, charger_charge_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/charger_tumble
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "charger_tumble"
+	full_name = "Charger: Tumble"
+	keybind_signal = COMSIG_KB_XENO_CHARGER_CHARGE
+
+/datum/keybinding/xenomorph/charger_tumble/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/tumble/charger_tumble_check = get_action(xeno, /datum/action/xeno_action/activable/tumble)
+	if(charger_tumble_check)
+		if(charger_tumble_check && !charger_tumble_check.hidden)
+			handle_xeno_macro_datum(xeno, charger_tumble_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/charger_stomp
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "charger_stomp"
+	full_name = "Charger: Stomp"
+	keybind_signal = COMSIG_KB_XENO_CHARGER_STOMP
+
+/datum/keybinding/xenomorph/charger_stomp/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/crusher_stomp/charger/charger_stomp_check = get_action(xeno, /datum/action/xeno_action/crusher_stomp/charger)
+	if(charger_stomp_check)
+		if(charger_stomp_check && !charger_stomp_check.hidden)
+			handle_xeno_macro_datum(xeno, charger_stomp_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/charger_fling
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "charger_fling"
+	full_name = "Charger: Fling"
+	keybind_signal = COMSIG_KB_XENO_CHARGER_FLING
+
+/datum/keybinding/xenomorph/charger_fling/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/fling/charger/charger_fling_check = get_action(xeno, /datum/action/xeno_action/activable/fling/charger)
+	if(charger_fling_check)
+		if(charger_fling_check && !charger_fling_check.hidden)
+			handle_xeno_macro_datum(xeno, charger_fling_check)
+			return TRUE

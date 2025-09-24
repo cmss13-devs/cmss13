@@ -1534,7 +1534,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
-	var/datum/action/xeno_action/activable/prae_tail_tripale/dancer_tail_trip_check = get_action(xeno, /datum/action/xeno_action/activable/prae_tail_trip)
+	var/datum/action/xeno_action/activable/prae_tail_trip/dancer_tail_trip_check = get_action(xeno, /datum/action/xeno_action/activable/prae_tail_trip)
 	if(dancer_tail_trip_check)
 		if(dancer_tail_trip_check && !dancer_tail_trip_check.hidden)
 			handle_xeno_macro_datum(xeno, dancer_tail_trip_check)
@@ -1972,7 +1972,7 @@
 	if(.)
 		return
 	var/mob/living/carbon/xenomorph/xeno = user.mob
-	var/datum/action/xeno_action/crusher_stomp/charger/charger_stomp_check = get_action(xeno, /datum/action/xeno_action/crusher_stomp/charger)
+	var/datum/action/xeno_action/onclick/crusher_stomp/charger/charger_stomp_check = get_action(xeno, /datum/action/xeno_action/onclick/crusher_stomp/charger)
 	if(charger_stomp_check)
 		if(charger_stomp_check && !charger_stomp_check.hidden)
 			handle_xeno_macro_datum(xeno, charger_stomp_check)
@@ -1994,4 +1994,259 @@
 	if(charger_fling_check)
 		if(charger_fling_check && !charger_fling_check.hidden)
 			handle_xeno_macro_datum(xeno, charger_fling_check)
+			return TRUE
+// Queen
+
+/datum/keybinding/xenomorph/queen_gut
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "queen_gut"
+	full_name = "Queen: Gut"
+	keybind_signal = COMSIG_KB_XENO_QUEEN_GUT
+
+/datum/keybinding/xenomorph/queen_gut/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/gut/queen_gut_check = get_action(xeno, /datum/action/xeno_action/activable/gut)
+	if(queen_gut_check)
+		if(queen_gut_check && !queen_gut_check.hidden)
+			handle_xeno_macro_datum(xeno, queen_gut_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/queen_spit
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "queen_spit"
+	full_name = "Queen: Spit"
+	keybind_signal = COMSIG_KB_XENO_QUEEN_SPIT
+
+/datum/keybinding/xenomorph/queen_spit/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/xeno_spit/queen_macro/queen_spit_check = get_action(xeno, /datum/action/xeno_action/activable/xeno_spit/queen_macro)
+	if(queen_spit_check)
+		if(queen_spit_check && !queen_spit_check.hidden)
+			handle_xeno_macro_datum(xeno, queen_spit_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/queen_shift_spits
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "queen_shift_spits"
+	full_name = "Queen: Shift spits"
+	keybind_signal = COMSIG_KB_XENO_QUEEN_SHIFT_SPITS
+
+/datum/keybinding/xenomorph/queen_shift_spits/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/shift_spits/queen_shift_spits_check = get_action(xeno, /datum/action/xeno_action/onclick/shift_spits)
+	if(queen_shift_spits_check)
+		if(queen_shift_spits_check && !queen_shift_spits_check.hidden)
+			handle_xeno_macro_datum(xeno, queen_shift_spits_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/queen_grow_ovipositor
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "queen_grow_ovipositor"
+	full_name = "Queen: Grow Ovipositor"
+	keybind_signal = COMSIG_KB_XENO_QUEEN_GROW_OVIPOSITOR
+
+/datum/keybinding/xenomorph/queen_grow_ovipositor/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/grow_ovipositor/queen_grow_ovipositor_check = get_action(xeno, /datum/action/xeno_action/onclick/grow_ovipositor)
+	if(queen_grow_ovipositor_check)
+		if(queen_grow_ovipositor_check && !queen_grow_ovipositor_check.hidden)
+			handle_xeno_macro_datum(xeno, queen_grow_ovipositor_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/queen_manage_hive
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "queen_manage_hive"
+	full_name = "Queen: Manage hive"
+	keybind_signal = COMSIG_KB_XENO_QUEEN_MANAGE_HIVE
+
+/datum/keybinding/xenomorph/queen_manage_hive/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/manage_hive/queen_manage_hive_check = get_action(xeno, /datum/action/xeno_action/onclick/manage_hive)
+	if(queen_manage_hive_check)
+		if(queen_manage_hive_check && !queen_manage_hive_check.hidden)
+			handle_xeno_macro_datum(xeno, queen_manage_hive_check)
+			return TRUE
+// King
+
+/datum/keybinding/xenomorph/king_rend
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "king_rend"
+	full_name = "King: Rend"
+	keybind_signal = COMSIG_KB_XENO_KING_REND
+
+/datum/keybinding/xenomorph/king_rend/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/rend/king_rend_check = get_action(xeno, /datum/action/xeno_action/onclick/rend)
+	if(king_rend_check)
+		if(king_rend_check && !king_rend_check.hidden)
+			handle_xeno_macro_datum(xeno, king_rend_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/king_doom
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "king_doom"
+	full_name = "King: Doom"
+	keybind_signal = COMSIG_KB_XENO_KING_DOOM
+
+/datum/keybinding/xenomorph/king_doom/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/doom/king_doom_check = get_action(xeno, /datum/action/xeno_action/activable/doom)
+	if(king_doom_check)
+		if(king_doom_check && !king_doom_check.hidden)
+			handle_xeno_macro_datum(xeno, king_doom_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/king_destroy
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "king_destroy"
+	full_name = "King: Destroy"
+	keybind_signal = COMSIG_KB_XENO_KING_DESTROY
+
+/datum/keybinding/xenomorph/king_destroy/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/destroy/king_destroy_check = get_action(xeno, /datum/action/xeno_action/activable/destroy)
+	if(king_destroy_check)
+		if(king_destroy_check && !king_destroy_check.hidden)
+			handle_xeno_macro_datum(xeno, king_destroy_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/king_shield
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "king_shield"
+	full_name = "King: Shield"
+	keybind_signal = COMSIG_KB_XENO_KING_SHIELD
+
+/datum/keybinding/xenomorph/king_shield/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/king_shield/king_shield_check = get_action(xeno, /datum/action/xeno_action/onclick/king_shield)
+	if(king_shield_check)
+		if(king_shield_check && !king_shield_check.hidden)
+			handle_xeno_macro_datum(xeno, king_shield_check)
+			return TRUE
+// Predalien
+
+/datum/keybinding/xenomorph/predalien_feralrush
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "predalien_feralrush"
+	full_name = "Predalien: Feralrush"
+	keybind_signal = COMSIG_KB_XENO_PREDALIEN_FERALRUSH
+
+/datum/keybinding/xenomorph/predalien_feralrush/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/feralrush/predalien_feralrush_check = get_action(xeno, /datum/action/xeno_action/onclick/feralrush)
+	if(predalien_feralrush_check)
+		if(predalien_feralrush_check && !predalien_feralrush_check.hidden)
+			handle_xeno_macro_datum(xeno, predalien_feralrush_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/predalien_roar
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "predalien_roar"
+	full_name = "Predalien: Roar"
+	keybind_signal = COMSIG_KB_XENO_PREDALIEN_ROAR
+
+/datum/keybinding/xenomorph/predalien_roar/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/predalien_roar/predalien_roar_check = get_action(xeno, /datum/action/xeno_action/onclick/predalien_roar)
+	if(predalien_roar_check)
+		if(predalien_roar_check && !predalien_roar_check.hidden)
+			handle_xeno_macro_datum(xeno, predalien_roar_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/predalien_feral_smash
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "predalien_feral_smash"
+	full_name = "Predalien: Feral smash"
+	keybind_signal = COMSIG_KB_XENO_PREDALIEN_FERALRUSH
+
+/datum/keybinding/xenomorph/predalien_feral_smash/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/feral_smash/predalien_feral_smash_check = get_action(xeno, /datum/action/xeno_action/activable/feral_smash)
+	if(predalien_feral_smash_check)
+		if(predalien_feral_smash_check && !predalien_feral_smash_check.hidden)
+			handle_xeno_macro_datum(xeno, predalien_feral_smash_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/predalien_feralfrenzy
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "predalien_feralfrenzy"
+	full_name = "Predalien: Feral frenzy"
+	keybind_signal = COMSIG_KB_XENO_PREDALIEN_FERALFRENZY
+
+/datum/keybinding/xenomorph/predalien_feralfrenzy/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/activable/feralfrenzy/predalien_feralfrenzy_check = get_action(xeno, /datum/action/xeno_action/activable/feralfrenzy)
+	if(predalien_feralfrenzy_check)
+		if(predalien_feralfrenzy_check && !predalien_feralfrenzy_check.hidden)
+			handle_xeno_macro_datum(xeno, predalien_feralfrenzy_check)
+			return TRUE
+
+/datum/keybinding/xenomorph/predalien_toggle_gut_targeting
+	hotkey_keys = list("Unbound")
+	classic_keys = list("Unbound")
+	name = "predalien_toggle_gut_targeting"
+	full_name = "Predalien: Toggle gut targeting"
+	keybind_signal = COMSIG_KB_XENO_PREDALIEN_TOGGLE_GUT_TARGETING
+
+/datum/keybinding/xenomorph/predalien_toggle_gut_targeting/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/carbon/xenomorph/xeno = user.mob
+	var/datum/action/xeno_action/onclick/toggle_gut_targeting/predalien_toggle_gut_targeting_check = get_action(xeno, /datum/action/xeno_action/onclick/toggle_gut_targeting)
+	if(predalien_toggle_gut_targeting_check)
+		if(predalien_toggle_gut_targeting_check && !predalien_toggle_gut_targeting_check.hidden)
+			handle_xeno_macro_datum(xeno, predalien_toggle_gut_targeting_check)
 			return TRUE

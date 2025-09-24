@@ -789,11 +789,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
-	},
 /turf/open/floor/plating,
 /area/almayer/medical/lockerroom)
 "aca" = (
@@ -1233,11 +1228,6 @@
 	id = "MedicalDistriShu";
 	name = "\improper Medical Equipment Distribution Shutters";
 	dir = 4
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/plating,
 /area/almayer/medical/lockerroom)
@@ -3213,11 +3203,6 @@
 	dir = 4
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
-	},
 /turf/open/floor/plating,
 /area/almayer/medical/chemistry)
 "ahm" = (
@@ -5743,10 +5728,6 @@
 	req_one_access_txt = "3;22;2;19"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/flight)
 "anV" = (
@@ -6187,15 +6168,31 @@
 "apc" = (
 /turf/open/floor/almayer/flooredgesmooth2/north,
 /area/almayer/shipboard/weapon_room)
+"apd" = (
+/turf/open/floor/almayer/blue/west,
+/area/almayer/living/pilotbunks)
 "ape" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/almayer/green/north,
 /area/almayer/living/grunt_rnr)
+"apf" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/blue/northeast,
+/area/almayer/living/pilotbunks)
 "apg" = (
 /turf/open/floor/almayer/red/southwest,
 /area/almayer/lifeboat_pumps/north1)
+"aph" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/pilotbunks)
 "api" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -6248,11 +6245,6 @@
 "apn" = (
 /obj/structure/machinery/light{
 	dir = 8
-	},
-/obj/structure/coatrack,
-/obj/item/clothing/head/helmet/marine/pilot{
-	pixel_x = -1;
-	pixel_y = 10
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
@@ -6454,6 +6446,13 @@
 /obj/structure/sign/safety/bulkhead_door{
 	pixel_y = 32
 	},
+/obj/structure/machinery/door_control{
+	id = "DeployWorkR";
+	name = "Workshop Shutters";
+	pixel_x = 8;
+	pixel_y = 25;
+	req_one_access_txt = "3;22;2;19;7"
+	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
 "apP" = (
@@ -6559,15 +6558,11 @@
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/pilotbunks)
 "aqe" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 2.5
-	},
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
 	},
@@ -6617,6 +6612,12 @@
 "aqk" = (
 /turf/closed/wall/almayer,
 /area/almayer/shipboard/operations)
+"aql" = (
+/obj/structure/machinery/status_display{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer/plate,
+/area/almayer/living/pilotbunks)
 "aqm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7179,7 +7180,6 @@
 	pixel_x = 8;
 	pixel_y = 32
 	},
-/obj/structure/largecrate/random/barrel/red,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/maint/hull/lower/s_bow)
 "arE" = (
@@ -7354,6 +7354,15 @@
 	},
 /turf/open/floor/almayer/plating_striped/east,
 /area/almayer/shipboard/operations)
+"asb" = (
+/obj/structure/coatrack,
+/obj/item/clothing/head/helmet/marine/pilot{
+	pixel_x = -1;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/pilotbunks)
 "asc" = (
 /turf/open/floor/almayer/silver/north,
 /area/almayer/command/cic)
@@ -12526,14 +12535,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/cafeteria_officer)
 "aGj" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/almayer/blue/north,
+/turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "aGk" = (
 /obj/structure/machinery/door_control{
@@ -21320,7 +21322,6 @@
 /turf/open/floor/plating/plating_catwalk/no_build,
 /area/almayer/middeck/hanger)
 "bcf" = (
-/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bcg" = (
 /obj/effect/decal/warning_stripes{
@@ -22695,6 +22696,17 @@
 	},
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/middeck/engineer)
+"bfs" = (
+/obj/structure/machinery/disposal{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/almayer/plate,
+/area/almayer/living/pilotbunks)
 "bft" = (
 /obj/structure/disposalpipe/junction{
 	dir = 4
@@ -29421,11 +29433,6 @@
 	req_access = null;
 	req_one_access_txt = "3;19"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
 "btO" = (
@@ -32531,25 +32538,21 @@
 /area/almayer/middeck/maintenance/paft)
 "bAW" = (
 /obj/effect/attach_point/weapon/dropship1/left_fore,
-/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bAX" = (
 /obj/effect/attach_point/electronics/dropship1{
 	dir = 1;
 	attach_id = 5
 	},
-/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bAY" = (
 /obj/effect/attach_point/electronics/dropship1{
 	dir = 1;
 	attach_id = 6
 	},
-/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bAZ" = (
 /obj/effect/attach_point/weapon/dropship1/right_fore,
-/turf/open_space/solid,
 /area/almayer/middeck/hanger)
 "bBa" = (
 /obj/effect/decal/cleanable/dirt,
@@ -34793,40 +34796,6 @@
 /area/almayer/middeck/maintenance/sf)
 "bGi" = (
 /area/almayer/middeck/maintenance/sf)
-"bGj" = (
-/obj/structure/pipes/vents/pump{
-	dir = 8
-	},
-/turf/open/floor/almayer/blue,
-/area/almayer/living/pilotbunks)
-"bGk" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer/blue/north,
-/area/almayer/living/pilotbunks)
-"bGl" = (
-/obj/structure/machinery/disposal{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/structure/disposalpipe/trunk,
-/turf/open/floor/almayer/plate,
-/area/almayer/living/pilotbunks)
-"bGm" = (
-/obj/structure/machinery/door_control{
-	id = "flightcryo";
-	name = "Privacy Shutters";
-	pixel_x = -22;
-	pixel_y = 10;
-	req_access = null;
-	req_access_txt = "19"
-	},
-/turf/open/floor/almayer/cargo_arrow,
-/area/almayer/living/pilotbunks)
 "bGn" = (
 /obj/structure/barricade/plasteel/metal,
 /turf/open/floor/almayer/cargo,
@@ -34841,18 +34810,6 @@
 /obj/structure/window/framed/almayer/hull/hijack_bustable,
 /turf/open/floor/plating,
 /area/almayer/squads/req)
-"bGp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "NW-out";
-	pixel_y = 0
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/pilotbunks)
 "bGq" = (
 /obj/structure/machinery/light,
 /obj/effect/decal/warning_stripes{
@@ -34877,13 +34834,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"bGt" = (
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/maint/hull/lower/s_bow)
 "bGu" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -34893,27 +34843,12 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hallways/hangar)
-"bGv" = (
-/obj/effect/landmark/start/crew_chief,
-/turf/closed/wall/almayer,
-/area/almayer/hallways/lower/starboard_umbilical)
 "bGw" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/squads/req)
-"bGx" = (
-/obj/structure/surface/table/almayer,
-/obj/item/toy/deck{
-	pixel_x = -4;
-	pixel_y = 10
-	},
-/obj/item/ashtray/plastic{
-	pixel_y = -4
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/pilotbunks)
 "bGy" = (
 /turf/open/floor/almayer/green/west,
 /area/almayer/squads/req)
@@ -34924,10 +34859,6 @@
 	},
 /turf/open/floor/almayer/green/northwest,
 /area/almayer/squads/req)
-"bGA" = (
-/obj/effect/landmark/start/ops_crew_chief,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/pilotbunks)
 "bGB" = (
 /turf/open/floor/almayer/cargo_arrow,
 /area/almayer/shipboard/operations)
@@ -34935,26 +34866,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/shipboard/operations)
-"bGD" = (
-/obj/structure/surface/rack,
-/obj/item/tank/emergency_oxygen/double,
-/obj/item/tank/emergency_oxygen/double,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/pilotbunks)
-"bGE" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "W";
-	layer = 2.5
-	},
-/obj/structure/machinery/status_display{
-	pixel_y = 30
-	},
-/turf/open/floor/almayer/plate,
-/area/almayer/living/pilotbunks)
 "bGF" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1
@@ -35037,10 +34948,6 @@
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/hallways/hangar)
-"bGR" = (
-/obj/effect/landmark/start/pilot/operations_pilot,
-/turf/open/floor/plating/plating_catwalk,
-/area/almayer/living/pilotbunks)
 "bGS" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
@@ -35124,6 +35031,16 @@
 /obj/item/tool/wet_sign,
 /turf/open/floor/almayer/plate,
 /area/almayer/maint/hull/lower/l_f_s)
+"bHa" = (
+/obj/structure/machinery/door_control{
+	id = "flightcryo";
+	name = "Privacy Shutters";
+	pixel_x = -22;
+	pixel_y = 10;
+	req_access_txt = "19"
+	},
+/turf/open/floor/almayer/cargo_arrow,
+/area/almayer/living/pilotbunks)
 "bHg" = (
 /obj/structure/pipes/unary/freezer{
 	throwpass = 1
@@ -36739,10 +36656,10 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/weapon_room)
 "bTU" = (
-/obj/structure/machinery/light{
+/obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/turf/open/floor/almayer/plate,
+/turf/open/floor/almayer/blue/north,
 /area/almayer/living/pilotbunks)
 "bTV" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -42518,10 +42435,6 @@
 	req_access = null;
 	req_one_access_txt = "3;22;2;19"
 	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
-	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/living/offices/flight)
 "dRP" = (
@@ -42753,8 +42666,10 @@
 /turf/open/floor/almayer/no_build/plating,
 /area/almayer/stair_clone/upper/port_fore)
 "dXY" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/almayer/plate,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4
+	},
+/turf/open/floor/almayer/blue/north,
 /area/almayer/living/pilotbunks)
 "dYb" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -50073,13 +49988,10 @@
 /turf/open/floor/almayer/uscm/directional/southwest,
 /area/almayer/living/briefing)
 "gZK" = (
-/obj/structure/pipes/standard/manifold/hidden/supply{
+/obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer/blue/north,
+/turf/open/floor/almayer,
 /area/almayer/living/pilotbunks)
 "gZP" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/blastdoor{
@@ -54809,7 +54721,6 @@
 /turf/open/floor/almayer/plating_striped/south,
 /area/almayer/underdeck/req)
 "iWH" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	pixel_x = 1
@@ -65337,11 +65248,6 @@
 	name = "\improper Astronavigational Deck";
 	req_access = null;
 	req_one_access_txt = "3;19"
-	},
-/obj/structure/machinery/door/poddoor/almayer/open{
-	dir = 4;
-	id = "Hangar Lockdown";
-	name = "\improper Hangar Lockdown Blast Door"
 	},
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/hallways/hangar)
@@ -83270,10 +83176,11 @@
 /area/almayer/maint/upper/u_f_s)
 "utK" = (
 /obj/structure/disposalpipe/segment{
-	dir = 4
+	dir = 1;
+	icon_state = "pipe-c"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
+	dir = 5
 	},
 /turf/open/floor/almayer/plate,
 /area/almayer/living/pilotbunks)
@@ -92853,13 +92760,7 @@
 /turf/open/floor/carpet,
 /area/almayer/shipboard/sea_office)
 "xYr" = (
-/obj/structure/pipes/standard/simple/hidden/supply{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/almayer/blue/northeast,
+/turf/open/floor/almayer/blue/east,
 /area/almayer/living/pilotbunks)
 "xYB" = (
 /obj/structure/sign/safety/storage{
@@ -130895,7 +130796,7 @@ fUz
 ldF
 eQR
 eQR
-bGt
+eQR
 eQR
 aiX
 apl
@@ -130996,10 +130897,10 @@ nBJ
 rLp
 fUz
 eQR
-aiX
-aiX
-aiX
-aiX
+eQR
+ldF
+rdN
+iWJ
 aiX
 apm
 iqp
@@ -131100,9 +131001,9 @@ avo
 auZ
 bTW
 aiX
-vkO
-bKP
-bos
+aiX
+aiX
+aiX
 aiX
 aiX
 bBD
@@ -131205,7 +131106,7 @@ eQR
 aiX
 jCr
 aqc
-iqp
+bos
 bBD
 apn
 apq
@@ -131312,8 +131213,8 @@ iqp
 apx
 amh
 bFr
-bFr
 hPh
+apd
 wGX
 amh
 amh
@@ -131414,7 +131315,7 @@ bKP
 apG
 aiX
 app
-bGl
+amh
 dXY
 aGj
 pQV
@@ -131510,8 +131411,7 @@ aad
 nBJ
 lJM
 eQR
-aiX
-aiX
+eQR
 aiX
 aiX
 aiX
@@ -131519,7 +131419,8 @@ aiX
 aiX
 aiX
 oMi
-bGk
+dXY
+aGj
 bTS
 hbu
 niR
@@ -131613,16 +131514,16 @@ aad
 nBJ
 arE
 eQR
+eQR
 aiX
-bGD
-bGx
 aqx
 aqd
 apH
-bGm
+bHa
 apr
 amh
-bGk
+dXY
+aGj
 pQV
 ase
 aok
@@ -131715,18 +131616,18 @@ aaa
 aad
 nBJ
 eQR
+eQR
 eox
 aiX
-bGE
 iWH
 aqe
-bGp
 apI
 apy
 aiX
+aql
 bTU
 gZK
-bGj
+pQV
 ase
 aok
 sDx
@@ -131818,16 +131719,16 @@ nBJ
 nBJ
 nBJ
 eQR
+eQR
 ldF
 aiX
-bGR
-bGA
 avU
 avU
 mKN
 apA
 gUi
-apq
+asb
+apf
 xYr
 wdf
 ase
@@ -131921,16 +131822,16 @@ ldF
 jsE
 rdN
 eQR
+ldF
 eQR
 aiX
 rMO
 aqj
 rMO
-aqj
-rMO
 apC
 aiX
-amh
+bfs
+aph
 utK
 amh
 rKA
@@ -132131,7 +132032,7 @@ dPk
 nBV
 dyq
 rVB
-bGv
+uaG
 lYN
 byr
 aXh

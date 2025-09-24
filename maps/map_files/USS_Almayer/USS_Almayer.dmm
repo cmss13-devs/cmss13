@@ -43384,6 +43384,22 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/maint/hull/lower/l_m_s)
+"eoq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	layer = 3.3
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	pixel_y = 1
+	},
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 8
+	},
+/turf/open/floor/almayer/no_build/plate,
+/area/almayer/middeck/medical)
 "eox" = (
 /obj/structure/machinery/light/red{
 	light_color = "#BB3F3F"
@@ -45647,9 +45663,6 @@
 /turf/open/floor/plating,
 /area/almayer/maint/lower/constr)
 "ffx" = (
-/obj/structure/machinery/light/small{
-	dir = 8
-	},
 /obj/item/clothing/head/helmet/marine/tech/tanker,
 /obj/structure/largecrate/random/secure,
 /turf/open/floor/almayer/plate,
@@ -64351,22 +64364,6 @@
 "mXJ" = (
 /turf/open/floor/almayer/no_build/plate,
 /area/almayer/underdeck/vehicle)
-"mYa" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "S";
-	layer = 3.3
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	pixel_y = 1
-	},
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 8
-	},
-/turf/open/floor/almayer/no_build/plate,
-/area/almayer/middeck/medical)
 "mYt" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -72801,6 +72798,14 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/orange,
 /area/almayer/hallways/upper/midship_hallway)
+"qnW" = (
+/obj/effect/decal/heavy_cable/cable_horizontal,
+/obj/structure/machinery/light/red{
+	light_color = "#BB3F3F";
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk/no_build,
+/area/almayer/middeck/medical)
 "qnX" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/almayer/red,
@@ -74377,14 +74382,6 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer/cl/quarter/door,
 /turf/open/floor/almayer/test_floor4,
 /area/almayer/command/corporateliaison)
-"qRE" = (
-/obj/effect/decal/heavy_cable/cable_horizontal,
-/obj/structure/machinery/light/red{
-	light_color = "#BB3F3F";
-	dir = 4
-	},
-/turf/open/floor/plating/plating_catwalk/no_build,
-/area/almayer/middeck/medical)
 "qRX" = (
 /obj/structure/pipes/standard/simple/hidden/supply/no_boom{
 	dir = 4
@@ -167748,7 +167745,7 @@ avN
 aOY
 aOx
 bfM
-mYa
+eoq
 aPq
 aOl
 aOY
@@ -168574,7 +168571,7 @@ btF
 bty
 aPL
 aOO
-qRE
+qnW
 aOO
 aOO
 aOO

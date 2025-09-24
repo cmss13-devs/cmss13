@@ -172,7 +172,7 @@
 	icon_state = "btube1"
 	base_state = "btube"
 	desc = "A lighting fixture. Its glass covering is a bright, fluorescent blue."
-	light_color = LIGHT_COLOR_BLUE
+	light_color = LIGHT_COLOR_XENON
 
 /obj/structure/machinery/light/red
 	icon_state = "rtube1"

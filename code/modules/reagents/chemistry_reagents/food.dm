@@ -31,11 +31,11 @@
 		first_collective_volume += nutri.volume
 	if(first_collective_volume >= HIGH_REAGENTS_OVERDOSE)
 		var/second_collective_volume = 0
-		for(var/datum/reagent/nutriment/twotri in M.reagents.reagent_list)
-			holder.remove_reagent(twotri.id, max(first_collective_volume / 10, 5) * delta_time, TRUE)
-			second_collective_volume += twotri.volume
+		for(var/datum/reagent/nutriment/nutri in M.reagents.reagent_list)
+			holder.remove_reagent(nutri.id, max(first_collective_volume / 10, 5) * delta_time, TRUE)
+			second_collective_volume += nutri.volume
 		var/mob/living/carbon/human/subject = M
-		if(ishuman(M) && subject.lastpuke == FALSE && second_collective_volume > HIGH_REAGENTS_OVERDOSE)
+		if(ishuman(M) && subject.lastpuke == FALSE && second_collective_volume >= HIGH_REAGENTS_OVERDOSE)
 			subject.Superslow(20)
 			subject.vomit()
 

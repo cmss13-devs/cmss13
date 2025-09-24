@@ -6557,15 +6557,7 @@
 	icon_state = "W";
 	layer = 2.5
 	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/warning_stripes{
-	icon_state = "E";
-	pixel_x = 1
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
 	},
@@ -34736,7 +34728,6 @@
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/sp)
 "bFT" = (
-/turf/solid_open_space,
 /area/almayer/middeck/maintenance/sp)
 "bFU" = (
 /turf/closed/wall/almayer/reinforced/temphull,
@@ -34791,7 +34782,6 @@
 /turf/closed/wall/almayer/reinforced/temphull,
 /area/almayer/middeck/maintenance/sf)
 "bGi" = (
-/turf/solid_open_space,
 /area/almayer/middeck/maintenance/sf)
 "bGj" = (
 /obj/structure/pipes/vents/pump{
@@ -48393,17 +48383,6 @@
 /obj/structure/machinery/vending/coffee{
 	layer = 2.89;
 	pixel_y = 5
-	},
-/obj/merge_conflict_marker{
-	name = "---Merge Conflict Marker---";
-	desc = "A best-effort merge was performed. You must resolve this conflict yourself (manually) and remove this object once complete."
-	},
-/obj/structure/machinery/door_control{
-	id = "flightcryo";
-	name = "Privacy Shutters";
-	pixel_x = -22;
-	pixel_y = 10;
-	req_access_txt = "19"
 	},
 /turf/open/floor/almayer/cargo,
 /area/almayer/living/pilotbunks)

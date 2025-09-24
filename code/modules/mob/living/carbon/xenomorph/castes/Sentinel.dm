@@ -262,6 +262,7 @@
 
 	target_human.Stun(stun_duration)
 	target_human.KnockDown(stun_duration)
+	apply_cooldown()
 
 
 

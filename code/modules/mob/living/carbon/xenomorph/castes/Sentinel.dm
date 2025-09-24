@@ -258,6 +258,7 @@
 	if(sns)
 		stun_duration = max(minimal_stun, (sns.stack_count/10)-1)
 		sns.increment_stack_count(-sns.stack_count/3)
+		apply_neuro(target_human, 0, sns.stack_count/2, TRUE, TRUE, TRUE, FALSE)
 
 
 	target_human.Stun(stun_duration)

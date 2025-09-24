@@ -39,7 +39,7 @@
 
 	neuro_callback = CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(apply_neuro))
 
-/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE)
+/proc/apply_neuro(mob/living/M, power, drain, insta_neuro = FALSE, drain_stims = FALSE, drain_medchems = FALSE, apply_effect = TRUE)
 	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
@@ -54,6 +54,8 @@
 		if(drain_medchems)
 			for(var/datum/reagent/medical/med in human.reagents.reagent_list)
 				human.reagents.remove_reagent(med.id, drain, TRUE)
+	if(!apply_effect)
+		return
 
 	if(!isxeno(M))
 		if(insta_neuro)

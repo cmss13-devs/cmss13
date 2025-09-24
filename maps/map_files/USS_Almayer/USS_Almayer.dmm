@@ -6373,6 +6373,16 @@
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/living/pilotbunks)
+"apH" = (
+/obj/structure/platform{
+	layer = 2.9
+	},
+/obj/structure/machinery/vending/coffee{
+	layer = 2.89;
+	pixel_y = 5
+	},
+/turf/open/floor/almayer/cargo,
+/area/almayer/living/pilotbunks)
 "apI" = (
 /obj/structure/platform_decoration/metal/almayer/north,
 /obj/effect/decal/warning_stripes{
@@ -48376,16 +48386,6 @@
 /obj/structure/bed/chair,
 /turf/open/floor/almayer/green,
 /area/almayer/living/grunt_rnr)
-"gpO" = (
-/obj/structure/platform{
-	layer = 2.9
-	},
-/obj/structure/machinery/vending/coffee{
-	layer = 2.89;
-	pixel_y = 5
-	},
-/turf/open/floor/almayer/cargo,
-/area/almayer/living/pilotbunks)
 "gpT" = (
 /obj/structure/sign/safety/maint{
 	pixel_x = 8;
@@ -131618,7 +131618,7 @@ bGD
 bGx
 aqx
 aqd
-gpO
+apH
 bGm
 apr
 amh

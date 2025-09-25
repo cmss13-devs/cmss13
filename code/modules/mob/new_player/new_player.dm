@@ -8,10 +8,10 @@
 
 	var/ready = FALSE
 	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
-	///The last message for this player with their larva queue information
-	var/larva_queue_cached_message
-	///The time when the larva_queue_cached_message should be considered stale
-	var/larva_queue_message_stale_time
+	///The last message for this player with their larva pool information
+	var/larva_pool_cached_message
+	///The time when the larva_pool_cached_message should be considered stale
+	var/larva_pool_message_stale_time
 
 	/// The window that we display the main menu in
 	var/datum/tgui_window/lobby_window

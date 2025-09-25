@@ -129,8 +129,9 @@ GLOBAL_DATUM_INIT(look_up_effect, /image, setup_look_up_effect())
 	var/image/look_up =  image('icons/effects/weather.dmi', null, "bigred_dust", layer = WEATHER_LAYER)
 	return look_up
 
-/// The last count of possible candidates in the xeno larva queue (updated via get_alien_candidates)
-GLOBAL_VAR(xeno_queue_candidate_count)
+/// The last count of possible candidates in the xeno larva pool (updated via get_alien_candidates)
+GLOBAL_VAR(larva_pool_candidate_count)
+
 
 //Coordinate obsfucator
 //Used by the rangefinders and linked systems to prevent coords collection/prefiring

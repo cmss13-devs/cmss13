@@ -23,6 +23,7 @@
 
 /datum/ammo/xeno/toxin
 	name = "neurotoxic spit"
+	icon_state = "sentinel_neurotoxin"
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_XENO|AMMO_IGNORE_RESIST|AMMO_SKIPS_ALIENS
 	spit_cost = 25

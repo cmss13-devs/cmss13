@@ -10,6 +10,7 @@
 	var/last_increment_time = 0
 	var/increment_grace_time = 50
 	var/proc_damage = 1
+	var/max_oxyloss = 20
 
 /datum/effects/sentinel_neuro_stacks/New(mob/living/carbon/human/H, mob/from = null, last_dmg_source = null, zone = "chest")
 	last_decrement_time = world.time
@@ -30,7 +31,8 @@
 		return
 
 	var/mob/living/carbon/human/H = affected_atom
-	H.apply_damage(proc_damage, OXY)
+	if(H.oxyloss < max_oxyloss)
+		H.apply_damage(proc_damage, OXY)
 	H.update_xeno_hostile_hud()
 
 	if (last_decrement_time + time_between_decrements < world.time && !(last_increment_time + increment_grace_time > world.time))

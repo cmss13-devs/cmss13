@@ -247,3 +247,11 @@
   - maptweak: Added new fence types to LV & Soro.
   - maptweak: Soro map tweaks to comms areas, cleaned them up to accommodate new fence
       types.
+2025-09-24:
+  Git-Nivrak:
+  - qol: Queen eye can now look into tents
+  - bugfix: Fixes lighting sometimes appearing as blocky instead of fancy lighting
+  Googles-Hands:
+  - maptweak: Added lockdown doors to remapped areas of the Hangar that lacked them.
+  stanalbatross:
+  - balance: direction locking no longer slows down humans. Xenos etc unaffected.

@@ -37,7 +37,6 @@
 	flags_atom |= USES_HEARING
 
 /obj/structure/closet/Destroy()
-	dump_contents()
 	GLOB.closet_list -= src
 	return ..()
 
@@ -90,21 +89,22 @@
 				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
 
-/obj/structure/closet/proc/open()
+/// Attempts to open this closet by user, skipping checks that prevent opening if forced
+/obj/structure/closet/proc/open(mob/user, force)
 	if(opened)
-		return 0
+		return FALSE
 
-	if(!can_open())
-		return 0
+	if(!force && !can_open())
+		return FALSE
 
 	dump_contents()
 
 	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
-	opened = 1
+	opened = TRUE
 	update_icon()
-	playsound(src.loc, open_sound, 15, 1)
+	playsound(loc, open_sound, 15, 1)
 	density = FALSE
-	return 1
+	return TRUE
 
 /obj/structure/closet/proc/close(mob/user)
 	if(!src.opened)
@@ -159,7 +159,7 @@
 
 /obj/structure/closet/proc/toggle(mob/living/user)
 	user.next_move = world.time + 5
-	if(!(src.opened ? src.close(user) : src.open()))
+	if(!(opened ? close(user) : open(user)))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
 
@@ -170,14 +170,9 @@
 
 	health = max(health - damage, 0)
 	if(health <= 0)
-		for(var/atom/movable/movable as anything in src)
-			if(!loc)
-				break
-			movable.forceMove(loc)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-		qdel(src)
+		deconstruct(FALSE)
 
-// this should probably use dump_contents()
 /obj/structure/closet/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -191,6 +186,10 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
 			deconstruct(FALSE)
+
+/obj/structure/closet/deconstruct(disassembled = TRUE)
+	dump_contents()
+	return ..()
 
 /obj/structure/closet/proc/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	SIGNAL_HANDLER
@@ -208,9 +207,7 @@
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
 		visible_message(SPAN_DANGER("[user] destroys [src]."))
-		for(var/atom/movable/A as mob|obj in src)
-			A.forceMove(src.loc)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)
@@ -330,10 +327,10 @@
 	if(istype(I) && (I.pry_capable == IS_PRY_CAPABLE_FORCE))
 		visible_message(SPAN_DANGER("[user] smashes out of the locker!"))
 		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
-		qdel(src)
+		deconstruct(FALSE)
 		return
 
-	if(!src.open())
+	if(!open(user))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 		if(!lastbang)
 			lastbang = 1
@@ -383,10 +380,10 @@
 			proxy_object_heard(src, M, TM, text, verb, language, italics)
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
-/obj/structure/closet/proc/break_open()
+/obj/structure/closet/proc/break_open(mob/user)
 	if(!opened)
-		welded = 0
-		open()
+		welded = FALSE
+		open(user, force=TRUE)
 
 /obj/structure/closet/yautja
 	name = "alien closet"

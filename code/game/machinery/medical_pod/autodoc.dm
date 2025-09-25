@@ -282,7 +282,7 @@
 	if(!occupant || !ishuman(occupant) || occupant.stat == DEAD || surgery)
 		return
 	if(isnull(generated_surgery_list) || generated_surgery_list.len < 1)
-		visible_message("\The [src] buzzes, no data to import.")
+		visible_message("[src] buzzes, no data to import.")
 		return
 	surgery_todo_list = list()
 	var/list/researched_upgrades = list()
@@ -308,7 +308,7 @@
 			continue
 		surgery_todo_list += surgery_item
 	if(skipped > 0)
-		visible_message("\The [src] buzzes, some surgeries cannot be completed by this machine.")
+		visible_message("[src] buzzes, some surgeries cannot be completed by this machine.")
 
 /obj/structure/machinery/medical_pod/autodoc/proc/surgery_op(mob/living/carbon/enclosed)
 	set background = 1

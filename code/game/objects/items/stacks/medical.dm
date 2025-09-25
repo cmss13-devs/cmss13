@@ -84,7 +84,7 @@
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 		switch(affecting.bandage())
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -139,7 +139,7 @@
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 		switch(affecting.salve())
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -194,7 +194,7 @@
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 		switch(affecting.bandage(TRUE))
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -275,7 +275,7 @@
 			return TRUE
 
 		var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-		var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+		var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 		switch(affecting.salve(TRUE))
 			if(WOUNDS_BANDAGED)
 				user.affected_message(M,
@@ -372,7 +372,7 @@
 
 		if(M != user)
 			var/possessive = "[user == M ? "your" : "\the [M]'s"]"
-			var/possessive_their = "[user == M ? user.gender == MALE ? "his" : "her" : "\the [M]'s"]"
+			var/possessive_their = "[user == M ? user.p_their() : "\the [M]'s"]"
 			user.affected_message(M,
 				SPAN_HELPFUL("You <b>start splinting</b> [possessive] <b>[affecting.display_name]</b>."),
 				SPAN_HELPFUL("[user] <b>starts splinting</b> your <b>[affecting.display_name]</b>."),

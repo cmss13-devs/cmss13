@@ -263,12 +263,6 @@
 
 	X.set_faction(internal_faction)
 
-	var/turf/turf = get_turf(X)
-
-	if (X.hive.hivenumber == XENO_HIVE_NORMAL && SShijack.hijack_status != HIJACK_OBJECTIVES_NOT_STARTED && is_ground_level(turf?.z)) {
-		X.set_hive_and_update(XENO_HIVE_FORSAKEN)
-	}
-
 	if(X.hud_list)
 		X.hud_update()
 
@@ -798,7 +792,7 @@
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, separating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
@@ -809,16 +803,17 @@
 			continue
 		if(xeno.tier >= 1)
 			xenos_count++
-	for(var/i in GLOB.alive_mob_list)
-		var/mob/living/potential_host = i
-		if(!(potential_host.status_flags & XENO_HOST))
-			continue
+	for(var/mob/living/potential_host as anything in GLOB.alive_mob_list)
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
 			continue
-		var/obj/item/alien_embryo/A = locate() in potential_host
-		if(A && A.hivenumber != hivenumber)
+		var/obj/item/clothing/mask/facehugger/hugger = locate() in potential_host
+		if(hugger && hugger.hivenumber == hivenumber)
+			hugger.hivenumber = XENO_HIVE_FORSAKEN
+		if(!(potential_host.status_flags & XENO_HOST))
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
+			if(embryo.hivenumber != hivenumber)
+				continue
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
@@ -962,8 +957,8 @@
 			to_chat(user, SPAN_WARNING("You cannot become a facehugger until you are no longer alive in a nest."))
 			return FALSE
 
-		if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
-			var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
+		if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
+			var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
 			to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a facehugger until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
 			return FALSE
 
@@ -1042,8 +1037,8 @@
 		to_chat(user, SPAN_WARNING("You cannot become a lesser drone until you are no longer alive in a nest."))
 		return FALSE
 
-	if(world.time - user.client?.player_details.larva_queue_time < XENO_JOIN_DEAD_TIME)
-		var/time_left = floor((user.client.player_details.larva_queue_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
+	if(world.time - user.client?.player_details.larva_pool_time < XENO_JOIN_DEAD_TIME)
+		var/time_left = floor((user.client.player_details.larva_pool_time + XENO_JOIN_DEAD_TIME - world.time) / 10)
 		to_chat(user, SPAN_WARNING("You ghosted too recently. You cannot become a lesser drone until [XENO_JOIN_DEAD_TIME / 600] minutes have passed ([time_left] seconds remaining)."))
 		return FALSE
 

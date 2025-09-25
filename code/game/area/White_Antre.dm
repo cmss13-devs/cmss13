@@ -105,8 +105,7 @@
 	ceiling = CEILING_METAL
 	soundscape_playlist = SCAPE_PL_LV759_INDOORS
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
-	minimap_color = MINIMAP_AREA_COLONY_MARSHALLS
-
+	minimap_color = MINIMAP_SNOW
 
 /area/white_antre/indoors/exterior/checkpoint
 	name = "White Antre Research Facility - Exterior Checkpoint"
@@ -187,20 +186,20 @@
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_ANTRE_ADJACENT
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
-	minimap_color = MINIMAP_AREA_DERELICT
+	minimap_color = MINIMAP_AREA_RESEARCH
 	ceiling_muffle = FALSE
 
 /area/white_antre/indoors/main_level/east_containment
 	name = "White Antre - Prime Hive Containment Holding Bay - Ground"
 	icon_state = "tumor1"
-	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 
 /area/white_antre/indoors/main_level/east_containment_hive
 	name = "White Antre - Prime Hive Containment Zone - Ground"
 	icon_state = "tumor2"
 	ambience_exterior = AMBIENCE_HYBRISA_INTERIOR
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
-	minimap_color = MINIMAP_AREA_HYBRISACAVES
+	minimap_color = MINIMAP_AREA_RESEARCH_CAVE
 	ceiling_muffle = FALSE
 
 //White Antre Facility - Underground

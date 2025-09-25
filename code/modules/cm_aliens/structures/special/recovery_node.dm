@@ -9,6 +9,8 @@
 /obj/effect/alien/resin/special/plasma_tree/Initialize(mapload, hive_ref)
 	. = ..()
 	update_minimap_icon()
+	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_boost))
+	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(disable_boost))
 
 /obj/effect/alien/resin/special/plasma_tree/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
@@ -21,6 +23,15 @@
 
 /obj/effect/alien/resin/special/plasma_tree/process()
 	update_minimap_icon()
+
+
+	if(boosted_structure)
+		replenish_amount = 200 // Increase plasma replenish by a bit
+		if(health <= maxhealth)
+			health += 25 // Regenerate health by 25
+	else
+		replenish_amount = 75
+
 
 	if(!COOLDOWN_FINISHED(src, last_replenish))
 		return
@@ -54,12 +65,13 @@
 	icon_state = "recovery"
 	health = 400
 	var/heal_amount = 20
-	var/heal_cooldown = 5 SECONDS
-	var/last_healed
+	COOLDOWN_DECLARE(last_heal)
 
 /obj/effect/alien/resin/special/recovery/Initialize(mapload, hive_ref)
 	. = ..()
 	update_minimap_icon()
+	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(enable_boost))
+	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(disable_boost))
 
 /obj/effect/alien/resin/special/recovery/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
@@ -78,7 +90,14 @@
 /obj/effect/alien/resin/special/recovery/process()
 	update_minimap_icon()
 
-	if(last_healed && world.time < last_healed + heal_cooldown)
+	if(boosted_structure)
+		heal_amount = 100 // increase heal amount by abit, needs tweaking probably
+		if(health <= maxhealth)
+			health += 25 // Regenerate health by 25
+	else
+		heal_amount = 25
+
+	if(!COOLDOWN_FINISHED(src, last_heal))
 		return
 
 	var/list/heal_candidates = list()
@@ -90,7 +109,9 @@
 			continue
 		heal_candidates += xeno_in_range
 
-	last_healed = world.time
+	COOLDOWN_START(src, last_heal, 3 SECONDS)
+
+
 
 	if(!length(heal_candidates))
 		return
@@ -98,7 +119,5 @@
 	var/mob/living/carbon/xenomorph/picked_candidate = pick(heal_candidates)
 	picked_candidate.visible_message(SPAN_HELPFUL("\The [picked_candidate] glows as a warm aura envelops them."),
 			SPAN_HELPFUL("We feel a warm aura envelop us."))
-	if(!do_after(picked_candidate, heal_cooldown, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-		return
 
 	picked_candidate.gain_health(heal_amount)

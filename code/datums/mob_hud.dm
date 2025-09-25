@@ -387,6 +387,16 @@ GLOBAL_LIST_INIT_TYPED(huds, /datum/mob_hud, list(
 			holder.icon_state = "hudhealth-50"
 		else
 			holder.icon_state = "hudhealth-100"
+		holder.overlays.Cut()
+		var/neuro_found = FALSE
+		for (var/datum/effects/sentinel_neuro_stacks/sns in effects_list)
+			if (!QDELETED(sns))
+				neuro_found = TRUE
+				break
+
+		if (neuro_found)
+			holder.overlays += image('icons/mob/hud/intoxicated.dmi',"intoxicated")
+
 
 
 /mob/proc/med_hud_set_status() //called when mob stat changes, or get a virus/xeno host, etc

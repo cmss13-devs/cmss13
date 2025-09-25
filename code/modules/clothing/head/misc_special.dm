@@ -75,6 +75,16 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
+/obj/item/clothing/head/welding/painted
+	name = "custom welding helmet"
+	desc = "A head-mounted face cover, painted red with bold white stripes, offering solid protection and a touch of style."
+	icon_state = "weldingpainted"
+	item_state = "weldingpainted"
+	icon = 'icons/obj/items/clothing/hats/hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats.dmi'
+	)
+
 /*
  * Cakehat
  */

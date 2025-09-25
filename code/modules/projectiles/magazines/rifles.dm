@@ -28,7 +28,6 @@
 	icon_state = "m41a_extended"
 	max_rounds = 60
 	bonus_overlay_icon = 'icons/obj/items/weapons/guns/guns_by_faction/USCM/assault_rifles.dmi'
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 	bonus_overlay = "m41a_ex"
 
 /obj/item/ammo_magazine/rifle/incendiary
@@ -36,21 +35,18 @@
 	desc = "An incendiary 10x24mm assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/explosive
 	name = "\improper M41A explosive magazine (10x24mm)"
 	desc = "An explosive 10x24mm assault rifle magazine. Oh god... just don't hit friendlies with it."
 	default_ammo = /datum/ammo/bullet/rifle/explosive
 	ammo_band_color = AMMO_BAND_COLOR_EXPLOSIVE
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_CRITICAL
 
 /obj/item/ammo_magazine/rifle/heap
 	name = "\improper M41A HEAP magazine (10x24mm)"
 	desc = "A high-explosive armor-piercing 10x24mm assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/ap
 	name = "\improper M41A AP magazine (10x24mm)"
@@ -64,28 +60,25 @@
 	desc = "An armor-shredding 10x24mm assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/le
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/penetrating
 	name = "\improper M41A wall-penetrating magazine (10x24mm)"
 	desc = "A wall-penetrating 10x24mm assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_FAIR
 
 /obj/item/ammo_magazine/rifle/toxin
 	name = "\improper M41A toxin magazine (10x24mm)"
 	desc = "A toxin 10x24mm assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
+
 
 /obj/item/ammo_magazine/rifle/rubber
 	name = "M41A Rubber Magazine (10x24mm)"
 	desc = "A 10x24mm assault rifle magazine filled with rubber bullets."
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
 
 //-------------------------------------------------------
 //M41A (MK1) TRUE AND ORIGINAL
@@ -99,42 +92,36 @@
 	default_ammo = /datum/ammo/bullet/rifle
 	ammo_band_icon = "+m41a_mk1_band"
 	ammo_band_icon_empty = "+m41a_mk1_band_e"
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_INSUBSTANTIAL //standard MK1 mags get innate jam chances due to interactibility with the m46c, also lore accurate-ish
 
 /obj/item/ammo_magazine/rifle/m41aMK1/ap
 	name = "\improper M41A MK1 AP magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains AP bullets."
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_INSUBSTANTIAL //standard MK1 mags get innate jam chances due to interactibility with the m46c, also lore accurate-ish
 
 /obj/item/ammo_magazine/rifle/m41aMK1/heap
 	name = "\improper M41A MK1 HEAP magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains High-Explosive Armor-Piercing bullets."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/m41aMK1/incendiary
 	name = "\improper M41A MK1 incendiary magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains incendiary bullets."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/m41aMK1/toxin
 	name = "\improper M41A MK1 toxin magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains toxic bullets."
 	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/m41aMK1/penetrating
 	name = "\improper M41A MK1 wall-penetrating magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds. This one contains wall-penetrating bullets."
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_FAIR
 
 //-------------------------------------------------------
 //M4RA, l42 reskin, same stats as before but different, lore friendly, shell.
@@ -163,7 +150,6 @@
 	desc = "An extended magazine of 10x24mm rounds for use in the M4RA battle rifle. Holds an additional 10 rounds, up to 35."
 	icon_state = "m4ra_extended"
 	bonus_overlay = "m4ra_ex"
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 	max_rounds = 35
 
 /obj/item/ammo_magazine/rifle/m4ra/rubber
@@ -171,28 +157,24 @@
 	desc = "A magazine of less than lethal rubber 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
 
 /obj/item/ammo_magazine/rifle/m4ra/heap
 	name = "\improper M4RA high-explosive armor-piercing magazine (10x24mm)"
 	desc = "A magazine of high-explosive armor-piercing 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/m4ra/penetrating
 	name = "\improper M4RA wall-penetrating magazine (10x24mm)"
 	desc = "A magazine of wall-penetrating 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_FAIR
 
 /obj/item/ammo_magazine/rifle/m4ra/incendiary
 	name = "\improper M4RA incendiary magazine (10x24mm)"
 	desc = "A magazine of incendiary 10x24mm rounds for use in the M4RA battle rifle."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 //-------------------------------------------------------
 //XM40 AKA SOF RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
@@ -211,7 +193,6 @@
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/xm40
 	default_ammo = /datum/ammo/bullet/rifle/heap
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 //-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.
@@ -231,7 +212,6 @@
 	name = "\improper MAR extended magazine (7.62x39mm)"
 	desc = "A 7.62x39mm MAR magazine, this one carries more rounds than the average magazine."
 	max_rounds = 60
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 	bonus_overlay = "mar40_ex"
 	icon_state = "mar40_extended"
 
@@ -243,7 +223,6 @@
 	icon_state = "mar50"
 	max_rounds = 100
 	gun_type = /obj/item/weapon/gun/rifle/mar40/lmg
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_CRITICAL
 
 //-------------------------------------------------------
 //M16 RIFLE
@@ -278,7 +257,6 @@
 	item_state = "m16_ext"
 	bonus_overlay = "m16_ext_overlay"
 	max_rounds = 30
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 //-------------------------------------------------------
 //AR10 RIFLE
@@ -305,9 +283,31 @@
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	flags_magazine = AMMUNITION_CANNOT_REMOVE_BULLETS|AMMUNITION_REFILLABLE|AMMUNITION_SLAP_TRANSFER
+	flags_atom = FPRINT|CONDUCT|MAP_COLOR_INDEX
 	ammo_band_icon = "+m41ae2_band"
 	ammo_band_icon_empty = "+m41ae2_band_e"
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM
+
+/obj/item/ammo_magazine/rifle/lmg/Initialize(...)
+	. = ..()
+	select_gamemode_skin(type)
+
+/obj/item/ammo_magazine/rifle/lmg/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	var/new_base_icon_state
+	switch(SSmapping.configs[GROUND_MAP].camouflage_type)
+		if("snow")
+			base_mag_icon = new_base_icon_state ? new_base_icon_state : "s_" + initial(icon_state)
+			. = TRUE
+		if("desert")
+			base_mag_icon = new_base_icon_state ? new_base_icon_state : "d_" + initial(icon_state)
+			. = TRUE
+		if("classic")
+			base_mag_icon = new_base_icon_state ? new_base_icon_state : "c_" + initial(icon_state)
+			. = TRUE
+		if("urban")
+			base_mag_icon = new_base_icon_state ? new_base_icon_state : "u_" + initial(icon_state)
+			. = TRUE
+	return .
 
 /obj/item/ammo_magazine/rifle/lmg/holo_target
 	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
@@ -315,7 +315,6 @@
 	default_ammo = /datum/ammo/bullet/rifle/holo_target
 	max_rounds = 200
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_INSUBSTANTIAL
 
 /obj/item/ammo_magazine/rifle/lmg/ap
 	name = "\improper M41AE2 ammo box (10x24mm armor-piercing)"
@@ -323,7 +322,6 @@
 	default_ammo = /datum/ammo/bullet/rifle/ap
 	max_rounds = 300
 	ammo_band_color = AMMO_BAND_COLOR_AP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_CRITICAL
 
 /obj/item/ammo_magazine/rifle/lmg/heap
 	name = "\improper M41AE2 ammo box (10x24mm high-explosive armor-piercing)"
@@ -332,7 +330,6 @@
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_CRITICAL
 
 //-------------------------------------------------------
 //UPP TYPE 71 RIFLE
@@ -360,7 +357,45 @@
 	desc = "A standard high-explosive armor-piercing 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	default_ammo = /datum/ammo/bullet/rifle/type71/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
+
+//-------------------------------------------------------
+//UPP - Norcomm AK-4047 RIFLE
+
+/obj/item/ammo_magazine/rifle/ak4047
+	name = "\improper AK-4047 magazine (10x24mm)"
+	desc = "A rugged and reliable 40-round magazine designed for the AK-4047 series assault rifle. Built for durability, it can withstand harsh conditions and keep firing even in the worst environments."
+	caliber = "10x24mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/assault_rifles.dmi'
+	icon_state = "ak4047"
+	item_state = "generic_mag"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/inhands/weapons/ammo_righthand.dmi'
+		)
+	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 40
+	gun_type = /obj/item/weapon/gun/rifle/ak4047
+	ammo_band_icon = "+ak4047_band"
+	ammo_band_icon_empty = "+ak4047_band_e"
+
+/obj/item/ammo_magazine/rifle/ak4047/ap
+	name = "\improper AK-4047 AP magazine (10x24mm)"
+	desc = "A 10mm magazine containing armor piercing rounds for the AK-4047 rifle."
+	default_ammo = /datum/ammo/bullet/rifle/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/rifle/ak4047/heap
+	name = "\improper AK-4047 HEAP magazine (10x24mm)"
+	desc = "A 10mm magazine containing the standard high explosive armor piercing rounds for the AK-4047 rifle."
+	default_ammo = /datum/ammo/bullet/rifle/heap
+	ammo_band_color = AMMO_BAND_COLOR_HEAP
+
+/obj/item/ammo_magazine/rifle/ak4047/incendiary
+	name = "\improper AK-4047 incendiary magazine (10x24mm)"
+	desc = "A 10mm assault rifle magazine containing the incendiary rounds for the AK-4047 rifle."
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
 
 //-------------------------------------------------------
 //L42A Battle Rifle
@@ -391,35 +426,30 @@
 	desc = "An armor-shredding 10x24mm battle rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/le
 	ammo_band_color = AMMO_BAND_COLOR_LIGHT_EXPLOSIVE
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/l42a/rubber
 	name = "L42A rubber magazine (10x24mm)"
 	desc = "A 10x24mm battle rifle magazine filled with rubber bullets."
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
 
 /obj/item/ammo_magazine/rifle/l42a/heap
 	name = "\improper L42A HEAP (10x24mm)"
 	desc = "A high-explosive armor-piercing 10x24mm battle rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/l42a/penetrating
 	name = "\improper L42A wall-penetrating magazine (10x24mm)"
 	desc = "A wall-penetrating 10x24mm battle rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_FAIR
 
 /obj/item/ammo_magazine/rifle/l42a/toxin
 	name = "\improper L42A toxin magazine (10x24mm)"
 	desc = "A toxin 10x244mm battle rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/l42a/extended
 	name = "\improper L42A extended magazine (10x24mm)"
@@ -429,7 +459,6 @@
 	bonus_overlay = "l42_ex_overlay"
 	default_ammo = /datum/ammo/bullet/rifle
 	max_rounds = 35
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 
@@ -442,7 +471,6 @@
 	gun_type = /obj/item/weapon/gun/rifle/l42a
 	w_class = SIZE_MEDIUM
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/l42a/abr40
 	name = "\improper ABR-40 magazine (10x24mm)"
@@ -485,7 +513,6 @@
 	item_state = "nsg23_ext"
 	bonus_overlay = "nsg23_ext_overlay"
 	max_rounds = 45
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/nsg23/ap
 	name = "\improper NSG 23 armor-piercing magazine (10x24mm)"
@@ -498,21 +525,18 @@
 	desc = "A high-explosive armor-piercing NSG 23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/nsg23/incendiary
 	name = "\improper NSG 23 incindiary magazine (10x24mm)"
 	desc = "A white phosphorus-tipped incendiary NSG 23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/nsg23/rubber
 	name = "\improper NSG 23 training magazine (10x24mm)"
 	desc = "An NSG 23 assault rifle magazine. This one is loaded with rubber bullets."
 	default_ammo = /datum/ammo/bullet/rifle/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
 
 //--------------------------------------------------------
 //Bolt action rifle ammo
@@ -546,7 +570,6 @@
 	desc = "A magazine for the M707 \"Vulture\" anti-materiel rifle. Contains up to 4 massively oversized <b>IFF-CAPABLE</b> holo-targeting rounds, which excel at marking heavy targets to be attacked by allied ground forces. The logistical requirements for such capabilities heavily hinder the performance and stopping power of this round."
 	default_ammo =  /datum/ammo/bullet/sniper/anti_materiel/vulture/holo_target
 	ammo_band_color = AMMO_BAND_COLOR_HOLOTARGETING
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_FAIR
 
 //=ROYAL MARINES=\\
 
@@ -581,7 +604,6 @@
 	desc = "A high-explosive armor-piercing 10x24mm armor piercing high explosive assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/rmc_f90/marksman/heap
 	name = "\improper F903A1 Marksman magazine (10x24mm)"
@@ -590,7 +612,6 @@
 	item_state = "aug_dmr"
 	default_ammo = /datum/ammo/bullet/rifle/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/l23
 	name = "\improper L23 magazine (8.88x51mm)"
@@ -612,7 +633,6 @@
 	item_state = "l23_ext"
 	bonus_overlay = "l23_ext_overlay"
 	max_rounds = 45
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/l23/ap
 	name = "\improper L23 armor-piercing magazine (8.88x51mm)"
@@ -625,28 +645,43 @@
 	desc = "A high-explosive armor-piercing 8.88x51mm L23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/l23/heap
 	ammo_band_color = AMMO_BAND_COLOR_HEAP
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_HIGH
 
 /obj/item/ammo_magazine/rifle/l23/incendiary
 	name = "\improper L23 incindiary magazine (8.88x51mm)"
 	desc = "A white phosphorus-tipped incendiary 8.88x51mm L23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/l23/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
 
 /obj/item/ammo_magazine/rifle/l23/rubber
 	name = "\improper L23 practice magazine (8.88x51mm)"
 	desc = "An L23 assault rifle magazine. This one is loaded with rubber bullets."
 	default_ammo = /datum/ammo/bullet/rifle/l23/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
 
 /obj/item/ammo_magazine/rifle/l23/toxin
 	name = "\improper L23 toxin magazine (8.88x51mm)"
 	desc = "A toxin 8.88x51mm L23 assault rifle magazine."
 	default_ammo = /datum/ammo/bullet/rifle/l23/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_LOW
+
+/obj/item/ammo_magazine/rifle/l64
+	name = "\improper L64A3 squash-head magazine (8.88x51mm Caseless)"
+	desc = "A magazine of L10A7 squash-head match-grade 8.88x51mm ammo. "
+	caliber = "8.88x51mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/marksman_rifles.dmi'
+	icon_state = "l64"
+	w_class = SIZE_MEDIUM
+	max_rounds = 25
+	default_ammo = /datum/ammo/bullet/rifle/l64
+	gun_type = /obj/item/weapon/gun/rifle/l64a3
+
+
+/obj/item/ammo_magazine/rifle/l64/ap
+	name = "\improper L64 armor-piercing magazine (8.88x51mm)"
+	desc = "An armor-piercing 8.88x51mm L23 assault rifle magazine."
+	default_ammo = /datum/ammo/bullet/rifle/l64/ap
+	ammo_band_icon = "+l64_band"
+	ammo_band_icon_empty = "+l64_band_e"
 
 //--------------------------------------------------------
 //XM51 BREACHING SHOTGUN
@@ -674,7 +709,6 @@
 	icon_state = "m51b_rubber"
 	gun_type = /obj/item/weapon/gun/rifle/xm51/cmb
 	default_ammo = /datum/ammo/bullet/shotgun/light/rubber
-	mag_jam_modifier = MAG_JAM_MOD_RIFLE_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more
 
 //-------------------------------------------------------
 //P9 SHARP Rifle
@@ -707,3 +741,4 @@
 	desc = "A specialized flechette dart magazine for the SHARP rifle."
 	icon_state = "sharp_flechette_mag"
 	default_ammo = /datum/ammo/rifle/sharp/flechette
+

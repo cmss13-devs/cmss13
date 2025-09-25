@@ -53,7 +53,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
-	rank = "Synthetic"
+	job_title = "Synthetic"
 	role_comm_title = "Syn"
 	preset_generation_support = TRUE
 
@@ -80,7 +80,7 @@
 	faction = FACTION_MARINE
 	idtype = /obj/item/card/id/gold
 	assignment = JOB_SYNTH
-	rank = "Synthetic"
+	job_title = "Synthetic"
 	role_comm_title = "Syn"
 	paygrades = list(PAY_SHORT_ME9 = JOB_PLAYTIME_TIER_0)
 
@@ -126,9 +126,10 @@
 	faction_group = list(FACTION_SURVIVOR)
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SYNTH
-	rank = JOB_SYNTH_SURVIVOR
+	job_title = JOB_SYNTH_SURVIVOR
 	skills = /datum/skills/colonial_synthetic
 	preset_generation_support = TRUE
+	origin_override = ORIGIN_CIVILIAN
 
 	var/list/equipment_to_spawn = list(
 		WEAR_BODY = /obj/item/clothing/under/rank/synthetic/joe,
@@ -171,6 +172,7 @@
 	faction_group = list(FACTION_WY, FACTION_SURVIVOR)
 	minimap_icon = "wy_syn"
 	minimap_background = "background_goon"
+	origin_override = ORIGIN_WY
 
 /datum/equipment_preset/synth/survivor/wy/New()
 	. = ..()
@@ -281,7 +283,7 @@
 		WEAR_EYES = /obj/item/clothing/glasses/science,
 		WEAR_BODY = /obj/item/clothing/under/detective/neutral,
 		WEAR_BACK = /obj/item/storage/backpack/satchel,
-		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/labcoat,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
@@ -301,7 +303,7 @@
 		WEAR_EYES = /obj/item/clothing/glasses/science,
 		WEAR_BODY = /obj/item/clothing/under/rank/scientist/hybrisa,
 		WEAR_BACK = /obj/item/storage/backpack/satchel/tox,
-		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/synthbio,
 		WEAR_WAIST = /obj/item/storage/belt/medical/lifesaver/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/latex,
@@ -617,12 +619,13 @@
 	idtype = /obj/item/card/id/deputy
 	role_comm_title = "CMB Syn"
 	assignment = JOB_CMB_SYN
-	rank = JOB_CMB_SYN
+	job_title = JOB_CMB_SYN
 	paygrades = list(PAY_SHORT_CMBS = JOB_PLAYTIME_TIER_0)
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE, FACTION_SURVIVOR)
 	minimap_background = "background_cmb"
 	minimap_icon = "cmb_syn"
+	origin_override = ORIGIN_CMB
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/CMB,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/CMB/limited,
@@ -646,9 +649,10 @@
 /datum/equipment_preset/synth/survivor/wy/security_synth
 	name = "Survivor - Synthetic - W-Y Security Guard Synthetic"
 	assignment = JOB_WY_SEC_SYNTH
-	rank = JOB_WY_SEC_SYNTH
+	job_title = JOB_WY_SEC_SYNTH
 	idtype = /obj/item/card/id/silver/cl
 	role_comm_title = "WY Syn"
+	origin_override = ORIGIN_WY_SEC
 	equipment_to_spawn = list(
 		WEAR_HEAD = /obj/item/clothing/head/cmcap/wy_cap,
 		WEAR_L_EAR = /obj/item/device/radio/headset/distress/WY,
@@ -681,7 +685,7 @@
 		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
 		WEAR_IN_BACK = /obj/item/notepad,
 		WEAR_IN_BACK = /obj/item/folder,
-		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_IN_BACK = /obj/item/device/taperecorder,
 		WEAR_WAIST = /obj/item/storage/belt/utility/full,
 		WEAR_HANDS = /obj/item/clothing/gloves/botanic_leather,
@@ -706,7 +710,7 @@
 		WEAR_BACK = /obj/item/storage/backpack/satchel/lockable,
 		WEAR_IN_BACK = /obj/item/notepad,
 		WEAR_IN_BACK = /obj/item/folder,
-		WEAR_IN_BACK = /obj/item/paper/research_notes/good,
+		WEAR_IN_BACK = /obj/item/paper/research_notes/unique/tier_three,
 		WEAR_WAIST = /obj/item/clipboard,
 		WEAR_JACKET = /obj/item/clothing/suit/storage/hazardvest/yellow,
 		WEAR_IN_JACKET = /obj/item/device/taperecorder,
@@ -746,7 +750,7 @@
 	faction = FACTION_MARINE
 	faction_group = list(FACTION_MARINE)
 	assignment = JOB_WORKING_JOE
-	rank = JOB_WORKING_JOE
+	job_title = JOB_WORKING_JOE
 
 	minimap_icon = "joe"
 
@@ -762,6 +766,7 @@
 /datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.set_species(joe_type)
+	new_human.bubble_icon = "robot"
 	new_human.gender = MALE
 	new_human.flavor_text = ""
 	new_human.h_style = "Bald"
@@ -837,7 +842,7 @@
 /datum/equipment_preset/synth/working_joe/upp
 	name = "Synthetic - Dzho Automaton"
 	assignment = JOB_UPP_JOE
-	rank = JOB_UPP_JOE
+	job_title = JOB_UPP_JOE
 	joe_type = SYNTH_UPP_JOE
 	idtype = /obj/item/card/id/dogtag
 	minimap_background = "background_upp"
@@ -869,6 +874,10 @@
 /datum/equipment_preset/synth/working_joe/upp/load_skills(mob/living/carbon/human/new_human)
 	. = ..()
 	new_human.allow_gun_usage = TRUE
+
+/datum/equipment_preset/synth/working_joe/upp/load_race(mob/living/carbon/human/new_human)
+	. = ..()
+	new_human.bubble_icon = "syndibot"
 
 /datum/equipment_preset/synth/working_joe/load_name(mob/living/carbon/human/new_human, randomise)
 	if(src.faction == FACTION_UPP)
@@ -950,7 +959,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	faction = FACTION_NEUTRAL
 	assignment = JOB_COLONIST
-	rank = JOB_COLONIST
+	job_title = JOB_COLONIST
 	skills = /datum/skills/infiltrator_synthetic
 	idtype = /obj/item/card/id/lanyard
 	paygrades = list(PAY_SHORT_CIV = JOB_PLAYTIME_TIER_0)
@@ -960,16 +969,19 @@
 	access = get_access(ACCESS_LIST_GLOBAL)
 
 /datum/equipment_preset/synth/infiltrator/load_name(mob/living/carbon/human/new_human, randomise)
-	new_human.gender = pick(MALE,FEMALE)
+	new_human.gender = pick(MALE, FEMALE)
 	var/random_name
 	var/first_name
 	var/last_name
 	var/datum/preferences/A = new()
 	A.randomize_appearance(new_human)
-	if(new_human.gender == MALE)
-		first_name = "[pick(GLOB.first_names_male_colonist)]"
-	else
-		first_name ="[pick(GLOB.first_names_female_colonist)]"
+	switch(new_human.gender)
+		if(MALE)
+			random_name = "[pick(GLOB.first_names_male_colonist)] [pick(GLOB.last_names_colonist)]"
+		if(FEMALE)
+			random_name = "[pick(GLOB.first_names_female_colonist)] [pick(GLOB.last_names_colonist)]"
+		if(PLURAL)
+			random_name = "[pick(pick(GLOB.first_names_male_colonist), pick(GLOB.first_names_female_colonist))] [pick(GLOB.last_names_colonist)]"
 
 	last_name ="[pick(GLOB.last_names_colonist)]"
 	random_name = "[first_name] [last_name]"

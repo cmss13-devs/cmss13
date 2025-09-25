@@ -240,6 +240,10 @@
 
 		return XENO_NO_DELAY_ACTION
 
+	if(user.action_busy)
+		to_chat(user, SPAN_WARNING("We are already busy with something."))
+		return XENO_NO_DELAY_ACTION
+
 	if(user.anchored)
 		to_chat(user, SPAN_XENOWARNING("We can't climb through a tunnel while immobile."))
 		return XENO_NO_DELAY_ACTION
@@ -260,7 +264,7 @@
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
 
 	if(user.banished)
-		return
+		return XENO_NO_DELAY_ACTION
 
 	if(user.mob_size >= MOB_SIZE_BIG) //Big xenos take WAY longer
 		tunnel_time = TUNNEL_ENTER_BIG_XENO_DELAY
@@ -279,12 +283,23 @@
 		to_chat(user, SPAN_WARNING("Our crawling was interrupted!"))
 		return XENO_NO_DELAY_ACTION
 
-	if(length(hive.tunnels)) //Make sure other tunnels exist
-		user.forceMove(src) //become one with the tunnel
-		to_chat(user, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
-		pick_tunnel(user)
-	else
-		to_chat(user, SPAN_WARNING("[src] ended unexpectedly, so we return back up."))
+	if(user.hauled_mob)
+		to_chat(user, SPAN_WARNING("We can't tunnel and haul someone at the same time."))
+		user.balloon_alert(user, "we're hauling someone!", text_color = "#7d32bb", delay = 1 SECONDS)
+		return XENO_NO_DELAY_ACTION
+
+	if(!length(hive.tunnels)) //Make sure other tunnels exist
+		to_chat(user, SPAN_WARNING("[src] doesn't seem to lead anywhere anymore."))
+		return XENO_NO_DELAY_ACTION
+
+	user.forceMove(src) //become one with the tunnel
+
+	if(isqueen(user))
+		var/mob/living/carbon/xenomorph/queen/queen_user = user
+		queen_user.end_temporary_maturity()
+
+	to_chat(user, SPAN_HIGHDANGER("Alt + Click the tunnel to exit, Ctrl + Click to choose a destination."))
+	pick_tunnel(user)
 	return XENO_NO_DELAY_ACTION
 
 /obj/structure/tunnel/maint_tunnel

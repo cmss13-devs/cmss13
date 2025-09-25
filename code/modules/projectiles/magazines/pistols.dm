@@ -20,56 +20,62 @@
 	desc = "A hollow-point 9mm pistol magazine for the M4A3. These hollow-point bullets have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
 	default_ammo = /datum/ammo/bullet/pistol/hollow
 	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_MEDIUM
 
 /obj/item/ammo_magazine/pistol/ap
 	name = "\improper M4A3 AP magazine (9mm)"
 	desc = "An armor-piercing 9mm pistol magazine for the M4A3. These armor-piercing rounds have noticeably higher stopping power on armored targets, and noticeably less on unarmored targets."
 	default_ammo = /datum/ammo/bullet/pistol/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_MEDIUM
 
 /obj/item/ammo_magazine/pistol/rubber
 	name = "\improper M4A3 Rubber magazine (9mm)"
 	desc = "A 9mm pistol magazine for the M4A3. This one contains rubber bullets."
 	default_ammo = /datum/ammo/bullet/pistol/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more... but its smaller so we give it a little pass
 
 /obj/item/ammo_magazine/pistol/incendiary
 	name = "\improper M4A3 incendiary magazine (9mm)"
 	desc = "An incendiary 9mm pistol magazine for the M4A3."
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_LOW
 
 /obj/item/ammo_magazine/pistol/penetrating
 	name = "\improper M4A3 wall-penetrating magazine (9mm)"
 	desc = "A wall-penetrating 9mm pistol magazine for the M4A3."
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_FAIR
 
 /obj/item/ammo_magazine/pistol/toxin
 	name = "\improper M4A3 toxin magazine (9mm)"
 	desc = "A toxin 9mm pistol magazine for the M4A3."
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_LOW
 
 //-------------------------------------------------------
 //M4A3 45 //Inspired by the 1911
 
 /obj/item/ammo_magazine/pistol/m1911
 	name = "\improper M1911 magazine (.45)"
-	desc = "A .45 ACP pistol magazine."
+	desc = "A magazine for the legendary M1911 pistol. Holds eight standard rounds."
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".45"
 	icon_state = "m4a345"//rename later
-	max_rounds = 7
+	max_rounds = 8
 	gun_type = /obj/item/weapon/gun/pistol/m1911
+	ammo_band_icon = "+m4a345_band"
+	ammo_band_icon_empty = "+m4a345_band_e"
 
+/obj/item/ammo_magazine/pistol/m1911/highimpact
+	name = "\improper M1911 high-impact magazine (.45)"
+	desc = "A magazine for the legendary M1911 pistol. Holds eight concussive rounds that can briefly knock people down."
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
 
+/obj/item/ammo_magazine/pistol/m1911/highimpact/ap
+	name = "\improper M1911 high-impact armor-piercing magazine (.45)"
+	desc = "A magazine for the legendary M1911 pistol. Holds eight concussive armor-piercing rounds that can briefly knock people down."
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact/ap
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT_AP
 //-------------------------------------------------------
 //88M4 based off VP70
 
@@ -103,28 +109,24 @@
 	desc = "A toxin 9mm pistol magazine for the Mod88."
 	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_LOW
 
 /obj/item/ammo_magazine/pistol/mod88/penetrating
 	name = "\improper 88M4 wall-penetrating magazine (9mm)"
 	desc = "A wall-penetrating 9mm pistol magazine for the Mod88."
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_FAIR
 
 /obj/item/ammo_magazine/pistol/mod88/incendiary
 	name = "\improper 88M4 incendiary magazine (9mm)"
 	desc = "An incendiary 9mm pistol magazine for the Mod88."
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_LOW
 
 /obj/item/ammo_magazine/pistol/mod88/rubber
 	name = "\improper 88M4 rubber magazine (9mm)"
 	desc = "A 9mm pistol magazine for the Mod88. This one contains rubber bullets."
 	default_ammo = /datum/ammo/bullet/pistol/rubber
 	ammo_band_color = AMMO_BAND_COLOR_RUBBER
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_RUBBER //youre firing rubber, of course its gonna jam your shit a lot more... but its smaller so we give it a little pass
 
 //-------------------------------------------------------
 //ES-4
@@ -159,21 +161,18 @@
 	desc = "A toxin 9mm pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/squash/toxin
 	ammo_band_color = AMMO_BAND_COLOR_TOXIN
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_LOW
 
 /obj/item/ammo_magazine/pistol/vp78/penetrating
 	name = "\improper VP78 wall-penetrating magazine (9mm)"
 	desc = "A wall-penetrating 9mm pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/squash/penetrating
 	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_FAIR
 
 /obj/item/ammo_magazine/pistol/vp78/incendiary
 	name = "\improper VP78 incendiary magazine (9mm)"
 	desc = "An incendiary 9mm pistol magazine for the VP78."
 	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
 	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_LOW
 
 /obj/item/ammo_magazine/pistol/vp78/rubber
 	name = "\improper VP78 rubber magazine (9mm)"
@@ -206,30 +205,28 @@
 	icon_state = "deagle"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/heavy
+	default_ammo = /datum/ammo/bullet/pistol/heavy
 	ammo_band_icon = "+deagle_band"
 	ammo_band_icon_empty = "+deagle_band_e"
 
 /obj/item/ammo_magazine/pistol/heavy/super //Commander's variant
-	name = "\improper Heavy Desert Eagle magazine (.50)"
+	name = "heavy Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction."
 	gun_type = /obj/item/weapon/gun/pistol/heavy/co
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super
+	default_ammo = /datum/ammo/bullet/pistol/deagle
 	ammo_band_color = AMMO_BAND_COLOR_SUPER
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_HIGH
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact
-	name = "\improper High Impact Desert Eagle magazine (.50)"
+	name = "high impact heavy Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. The bullets are tipped with a synthesized osmium and lead alloy to stagger absolutely anything they hit. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact
+	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact
 	ammo_band_color = AMMO_BAND_COLOR_HIGH_IMPACT
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_CRITICAL
 
 /obj/item/ammo_magazine/pistol/heavy/super/highimpact/ap
 	name = "\improper High Impact Armor-Piercing Desert Eagle magazine (.50)"
 	desc = "Seven rounds of devastatingly powerful 50-caliber destruction. Packs a devastating punch. The bullets are tipped with an osmium-tungsten carbide alloy to not only stagger but also shred through any target's armor. Issued in few numbers due to the massive production cost and worries about hull breaches. Point away from anything you value."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/ap
+	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/ap
 	ammo_band_color = AMMO_BAND_COLOR_AP
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_CRITICAL
 
 //-------------------------------------------------------
 //Type 31 pistol. //A makarov
@@ -261,7 +258,6 @@
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "npz92tranqmag"
 	max_rounds = 12
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_MEDIUM
 
 //-------------------------------------------------------
 //Type 73 pistol. //A TT
@@ -279,13 +275,12 @@
 /obj/item/ammo_magazine/pistol/t73_impact
 	name = "\improper High Impact Type 74 magazine (7.62x25mm Tokarev)"
 	desc = "A high-impact 7.62x25mm Tokarev pistol magazine. The bullets are tipped with a tungsten-lead alloy to stagger absolutely anything they hit. Point towards dissidents."
-	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact/upp
+	default_ammo = /datum/ammo/bullet/pistol/deagle/highimpact/upp
 	caliber = "7.62x25mm Tokarev"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/UPP/pistols.dmi'
 	icon_state = "ttmag_impact"
 	max_rounds = 9
 	gun_type = /obj/item/weapon/gun/pistol/t73/leader
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_HIGH
 
 //-------------------------------------------------------
 //KT-42 //Inspired by the .44 Auto Mag pistol
@@ -301,18 +296,32 @@
 	gun_type = /obj/item/weapon/gun/pistol/kt42
 
 //-------------------------------------------------------
-//PIZZACHIMP PROTECTION
+//W62 'Whisper' (.22 LR)
 
 /obj/item/ammo_magazine/pistol/holdout
-	name = "tiny pistol magazine (.22)"
+	name = "W62 magazine (.22)"
 	desc = "A surprisingly small magazine, holding .22 bullets. No Kolibri, but it's getting there."
 	default_ammo = /datum/ammo/bullet/pistol/tiny
 	caliber = ".22"
 	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
 	icon_state = "holdout"
-	max_rounds = 5
+	max_rounds = 10
 	w_class = SIZE_TINY
 	gun_type = /obj/item/weapon/gun/pistol/holdout
+
+//-------------------------------------------------------
+//AC71 (.380 ACP)
+
+/obj/item/ammo_magazine/pistol/action
+	name = "AC71 magazine (.380 ACP)"
+	desc = "A small mag holding 8 .380 ACP rounds."
+	default_ammo = /datum/ammo/bullet/pistol/tiny
+	caliber = ".380 ACP"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/colony/pistols.dmi'
+	icon_state = "action"
+	max_rounds = 8
+	w_class = SIZE_TINY
+	gun_type = /obj/item/weapon/gun/pistol/action
 
 //-------------------------------------------------------
 //CLF HOLDOUT PISTOL
@@ -433,7 +442,6 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	bonus_overlay = "m10_ex_overlay"
 	max_rounds = 78
 	gun_type = /obj/item/weapon/gun/pistol/m10
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_MEDIUM //the blicky
 
 /obj/item/ammo_magazine/pistol/m10/drum
 	name = "\improper M10 HV drum magazine (10x20mm)"
@@ -444,4 +452,69 @@ Unlike other pistols, it can be equipped with limited mods (small muzzle, magazi
 	bonus_overlay = "m10_drum_overlay"
 	max_rounds = 92
 	gun_type = /obj/item/weapon/gun/pistol/m10
-	mag_jam_modifier = MAG_JAM_MOD_PISTOL_CRITICAL //cant handle this shit brap brap brap
+
+//-------------------------------------------------------
+/*
+
+L54 service pistol
+
+*/
+
+/obj/item/ammo_magazine/pistol/l54
+	name = "\improper L54 magazine (9mm)"
+	desc = "A pistol magazine that fits the L54."
+	caliber = "9mm"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/pistols.dmi'
+	icon_state = "l54"
+	max_rounds = 12
+	w_class = SIZE_SMALL
+	default_ammo = /datum/ammo/bullet/pistol
+	gun_type = /obj/item/weapon/gun/pistol/l54
+	ammo_band_icon = "+l54_band"
+	ammo_band_icon_empty = "+l54_band_e"
+
+/obj/item/ammo_magazine/pistol/l54_custom
+	name = "\improper L54-S magazine (.9x20mm)"
+	desc = "A modified L54 pistol magazine loaded with proprietary .9x20mm ammunition. Incompatible with standard 9mm weapons or magazines."
+	caliber = "9mm (special)"
+	icon = 'icons/obj/items/weapons/guns/ammo_by_faction/TWE/pistols.dmi'
+	icon_state = "l54"
+	max_rounds = 12
+	w_class = SIZE_SMALL
+	default_ammo = /datum/ammo/bullet/pistol/l54_custom
+	gun_type = /obj/item/weapon/gun/pistol/l54_custom
+	ammo_band_icon = "+l54_band"
+	ammo_band_icon_empty = "+l54_band_e"
+	ammo_band_color = AMMO_BAND_COLOR_HIGH_VELOCITY
+
+/obj/item/ammo_magazine/pistol/l54/hp
+	name = "\improper L54 hollowpoint magazine (9mm)"
+	desc = "A pistol magazine for the L54. This one contains hollowpoint bullets, which have noticeably higher stopping power on unarmored targets, and noticeably less on armored targets."
+	default_ammo = /datum/ammo/bullet/pistol/hollow
+	ammo_band_color = AMMO_BAND_COLOR_HOLLOWPOINT
+
+/obj/item/ammo_magazine/pistol/l54/ap
+	name = "\improper L54 AP magazine (9mm)"
+	desc = "A pistol magazine for the L54. This one contains armor-piercing bullets, which have noticeably higher stopping power on well-armored targets, and noticeably less on unarmored or lightly-armored targets."
+	default_ammo = /datum/ammo/bullet/pistol/ap
+	ammo_band_color = AMMO_BAND_COLOR_AP
+
+/obj/item/ammo_magazine/pistol/l54/rubber
+	name = "\improper L54 Rubber magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/rubber
+	ammo_band_color = AMMO_BAND_COLOR_RUBBER
+
+/obj/item/ammo_magazine/pistol/l54/incendiary
+	name = "\improper L54 incendiary magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/incendiary
+	ammo_band_color = AMMO_BAND_COLOR_INCENDIARY
+
+/obj/item/ammo_magazine/pistol/l54/penetrating
+	name = "\improper L54 wall-penetrating magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
+	ammo_band_color = AMMO_BAND_COLOR_PENETRATING
+
+/obj/item/ammo_magazine/pistol/l54/toxin
+	name = "\improper L54 toxin magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
+	ammo_band_color = AMMO_BAND_COLOR_TOXIN

@@ -243,6 +243,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/glasses/regular = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mbcg = NO_GARB_OVERRIDE,
 	/obj/item/clothing/glasses/mgoggles/cmb_riot_shield = NO_GARB_OVERRIDE,
+	/obj/item/clothing/glasses/mgoggles/mp_riot_shield = NO_GARB_OVERRIDE,
 
 	// WALKMAN AND CASSETTES
 	/obj/item/device/walkman = NO_GARB_OVERRIDE,
@@ -259,6 +260,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/storage/pouch/cassette = NO_GARB_OVERRIDE,
 
 	// PREFERENCES GEAR
+	/obj/item/prop/helmetgarb/gunoil = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting/desert = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/netting/jungle = NO_GARB_OVERRIDE,
@@ -305,6 +307,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/head/headband/brown = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/gray = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/clothing/head/headband/squad = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
+	/obj/item/clothing/head/headband/rebel = PREFIX_HELMET_GARB_OVERRIDE, // helmet_
 	/obj/item/tool/candle = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/facehugger = NO_GARB_OVERRIDE,
 	/obj/item/clothing/mask/facehugger/lamarr = NO_GARB_OVERRIDE,
@@ -352,11 +355,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/clothing/accessory/patch/upp/alt = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/medic_patch = NO_GARB_OVERRIDE,
 	/obj/item/clothing/accessory/patch/clf_patch = NO_GARB_OVERRIDE,
+	/obj/item/clothing/accessory/patch/hyperdyne_patch = NO_GARB_OVERRIDE,
 	/obj/item/ammo_magazine/handful = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/riot_shield = NO_GARB_OVERRIDE,
 	/obj/item/attachable/flashlight = NO_GARB_OVERRIDE,
 	/obj/item/prop/helmetgarb/chaplain_patch = NO_GARB_OVERRIDE,
-	/obj/item/stack/repairable/gunlube = NO_GARB_OVERRIDE,
 
 	// MEDICAL
 	/obj/item/stack/medical/bruise_pack = NO_GARB_OVERRIDE,
@@ -534,11 +537,16 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		return
 
 	if(istype(attacking_item, /obj/item/device/helmet_visor))
+		var/obj/item/device/helmet_visor/new_visor = attacking_item
+
+		if(!new_visor.can_attach_to(src))
+			to_chat(user, SPAN_NOTICE("The [new_visor] does not fit on the [src]."))
+			return
+
 		if(length(inserted_visors) >= max_inserted_visors)
 			to_chat(user, SPAN_NOTICE("[src] has used all of its visor attachment sockets."))
 			return
 
-		var/obj/item/device/helmet_visor/new_visor = attacking_item
 		for(var/obj/item/device/helmet_visor/cycled_visor as anything in (built_in_visors + inserted_visors))
 			if(cycled_visor.type == new_visor.type)
 				to_chat(user, SPAN_NOTICE("[src] already has this type of HUD connected."))
@@ -547,7 +555,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			return
 
 		inserted_visors += new_visor
-		to_chat(user, SPAN_NOTICE("You connect [new_visor] to [src]."))
+		to_chat(user, SPAN_NOTICE("You connect [new_visor] to the [src]."))
 		new_visor.forceMove(src)
 		if(!(locate(/datum/action/item_action/cycle_helmet_huds) in actions))
 			var/datum/action/item_action/cycle_helmet_huds/new_action = new(src)
@@ -805,12 +813,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 
 /obj/item/clothing/head/helmet/marine/welding
 	name = "\improper M10 welding helmet"
 	desc = "A modified M10 marine helmet, Features a toggleable welding screen for eye protection. Completely invisible while toggled off as opposed to the technician helmet."
 	specialty = "M10 welding"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/welding_visor)
+	clothing_traits = list(TRAIT_EAR_PROTECTION)
 
 
 /obj/item/clothing/head/helmet/marine/grey
@@ -991,13 +1001,142 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "M3-G4 grenadier"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
-/obj/item/clothing/head/helmet/marine/scout
+
+/obj/item/clothing/head/helmet/marine/radio_helmet
+
+	name = "M3 antenna helmet"
+	desc = "You should not be seeing this!"
+	icon_state = "scout_helmet"
+	item_state = "scout_helmet"
+
+	actions_types = list(/datum/action/item_action/radio_helmet/use_phone)
+
+	flags_item = ITEM_OVERRIDE_NORTHFACE
+
+	var/obj/structure/transmitter/internal/internal_transmitter
+
+	var/phone_category = PHONE_MARINE
+	var/list/networks_receive = list(FACTION_MARINE)
+	var/list/networks_transmit = list(FACTION_MARINE)
+	var/base_icon
+
+
+/datum/action/item_action/radio_helmet/use_phone/New(mob/living/user, obj/item/holder)
+	..()
+	name = "Use Phone"
+	button.name = name
+	button.overlays.Cut()
+	var/image/IMG = image('icons/obj/structures/phone.dmi', button, "scout_microphone")
+	button.overlays += IMG
+
+/datum/action/item_action/radio_helmet/use_phone/action_activate()
+	. = ..()
+	for(var/obj/item/clothing/head/helmet/marine/radio_helmet/radio_backpack in owner)
+		radio_backpack.use_phone(owner)
+		return
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/Initialize()
+	. = ..()
+	internal_transmitter = new(src)
+	internal_transmitter.relay_obj = src
+	internal_transmitter.phone_category = phone_category
+	internal_transmitter.enabled = FALSE
+	internal_transmitter.networks_receive = networks_receive
+	internal_transmitter.networks_transmit = networks_transmit
+	internal_transmitter.outring_loop.start_length = 0 SECONDS
+	internal_transmitter.outring_loop.start_sound = null
+	internal_transmitter.outring_loop.mid_sounds = 'sound/machines/telephone/scout_ring_outgoing.ogg'
+	internal_transmitter.outring_loop.mid_length = 3 SECONDS
+	internal_transmitter.hangup_loop.start_sound = 'sound/machines/telephone/scout_hang_up.ogg'
+	internal_transmitter.hangup_loop.mid_sounds = null
+	internal_transmitter.busy_loop.start_sound = 'sound/machines/telephone/scout_remote_hangup.ogg'
+	internal_transmitter.busy_loop.mid_sounds = null
+	internal_transmitter.call_sound = 'sound/machines/telephone/scout_ring.ogg'
+	internal_transmitter.attached_to.icon_state = "scout_microphone"
+	internal_transmitter.attached_to.item_state = ""
+	internal_transmitter.attached_to.name = "helmet microphone"
+	internal_transmitter.attached_to.desc = "A small microphone attached to the helmet, used to communicate with the internal radio transmitter."
+	internal_transmitter.pickup_sound = 'sound/machines/telephone/scout_pick_up.ogg'
+	internal_transmitter.attached_to.can_be_raised = FALSE
+	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, PROC_REF(check_for_ringing))
+	GLOB.radio_packs += src
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/proc/check_for_ringing()
+	SIGNAL_HANDLER
+	update_icon()
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/update_icon()
+	. = ..()
+
+	if(internal_transmitter.inbound_call)
+		overlays += image('icons/obj/items/clothing/hats/overlays.dmi', "scout_helmet_beep")
+	else
+		overlays -= image('icons/obj/items/clothing/hats/overlays.dmi', "scout_helmet_beep")
+/obj/item/clothing/head/helmet/marine/radio_helmet/forceMove(atom/dest)
+	. = ..()
+	if(isturf(dest))
+		internal_transmitter.set_tether_holder(src)
+	else
+		internal_transmitter.set_tether_holder(loc)
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/Destroy()
+	GLOB.radio_packs -= src
+	qdel(internal_transmitter)
+	return ..()
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/pickup(mob/user)
+	. = ..()
+	autoset_phone_id(user)
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/equipped(mob/user, slot)
+	. = ..()
+	autoset_phone_id(user)
+
+/// Automatically sets the phone_id based on the current or updated user
+/obj/item/clothing/head/helmet/marine/radio_helmet/proc/autoset_phone_id(mob/user)
+	if(!user)
+		internal_transmitter.phone_id = "[src]"
+		internal_transmitter.enabled = FALSE
+		return
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.comm_title)
+			internal_transmitter.phone_id = "[H.comm_title] [H]"
+		else if(H.job)
+			internal_transmitter.phone_id = "[H.job] [H]"
+		else
+			internal_transmitter.phone_id = "[H]"
+
+		if(H.assigned_squad)
+			internal_transmitter.phone_id += " ([H.assigned_squad.name])"
+	else
+		internal_transmitter.phone_id = "[user]"
+	internal_transmitter.enabled = TRUE
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/dropped(mob/user)
+	. = ..()
+	autoset_phone_id(null) // Disable phone when dropped
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/proc/use_phone(mob/user)
+	internal_transmitter.attack_hand(user)
+
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/attackby(obj/item/scout_phone, mob/user)
+	if(internal_transmitter && internal_transmitter.attached_to == scout_phone)
+		internal_transmitter.attackby(scout_phone, user)
+	else
+		. = ..()
+
+
+/obj/item/clothing/head/helmet/marine/radio_helmet/scout
 	name = "\improper M3-S light helmet"
 	icon_state = "scout_helmet"
-	desc = "A custom helmet designed for USCM Scouts."
+	desc = "A custom helmet designed for USCM Scouts. Has a built-in small microphone for long-range communications."
 	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
 	specialty = "M3-S light"
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
+
+	phone_category = PHONE_MARINE
 
 /obj/item/clothing/head/helmet/marine/pyro
 	name = "\improper M35 pyrotechnician helmet"
@@ -1031,8 +1170,10 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "MK30 tactical"
 	built_in_visors = list(new /obj/item/device/helmet_visor, new /obj/item/device/helmet_visor/medical/advanced)
+	inserted_visors = list(new /obj/item/device/helmet_visor/po_visor)
+	max_inserted_visors = 1
 
-/obj/item/clothing/head/helmet/marine/pilottex
+/obj/item/clothing/head/helmet/marine/pilot/tex
 	name = "\improper Tex's MK30 tactical helmet"
 	desc = "The MK30 tactical helmet has an eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
 	icon_state = "helmetp_tex"
@@ -1308,6 +1449,28 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
 
+/obj/item/clothing/head/helmet/marine/veteran/UPP/army
+	name = "\improper 6B82 combat helmet"
+	desc = "An older version of the UPP Army's 6B92 combat helmet, still worn by certain units on planets the UPP deems less important"
+	icon_state = "upp_army_helmet"
+
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy/SOF_helmet
+	name = "\improper CCC5-L composite helmet"
+	desc = "A UPP-manufactured combat helmet with a distinctive spherical design. Made from a reinforced polymer composite, it offers ballistic protection while incorporating an integrated HUD, encrypted comms, and a rebreather system. Its limited visor visibility is a tradeoff for enhanced durability."
+	icon_state = "sof_helmet"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	flags_inv_hide = HIDEEARS|HIDEALLHAIR
+
+/obj/item/clothing/head/uppcap/peaked/police
+	name = "\improper UL3 PaP peaked cap"
+	desc = "Standard issue peaked cap of the People's Armed Police."
+	icon_state = "upp_peaked_police"
+
 /obj/item/clothing/head/uppcap
 	name = "\improper UL2 UPP cap"
 	desc = "UPP headgear issued to soldiers when they're not expected to face combat, and may be requested by officers and above."
@@ -1331,10 +1494,22 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/helmet/marine/veteran/UPP/firefighter
+	name = "T-20 firefighter helmet"
+	desc = "A reinforced, heat-resistant helmet issued to UPP emergency responders. Its durable composite shell provides protection against falling debris and extreme heat, while the attached fire-resistant shroud shields the wearer’s neck and shoulders. A red star is emblazoned on the front, marking its service within the Union."
+	icon_state = "firefighter"
+	flags_heat_protection = BODY_FLAG_HEAD
+	max_heat_protection_temperature = FIRE_HELMET_MAX_HEAT_PROT
+
 /obj/item/clothing/head/uppcap/civi
 	name = "\improper UL2C UPP cap"
 	desc = "UPP civilian headgear. It's of poor quality, and isn't expected to last all that long, however for as long as it's whole, it appears quite stylish."
 	icon_state = "upp_cap_civi"
+
+/obj/item/clothing/head/uppcap/civi/plant_worker
+	name = "white worker cap"
+	desc = "A simple white fabric cap, commonly worn by various UPP workers to keep hair contained and maintain cleanliness. Lightweight and practical, but not very durable."
+	icon_state = "plant_work_cap"
 
 /obj/item/clothing/head/uppcap/beret
 	name = "\improper UL3 UPP beret"
@@ -1705,6 +1880,48 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	start_down_visor_type = /obj/item/device/helmet_visor/medical
 	camera_factions = FACTION_LIST_TWE
 
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/generic
+	name = "\improper L1 ballistic helmet"
+	desc = "A versatile ballistic helmet designed by Alphatech for general use across various branches of the TWE military and affiliated organizations. Drawing some design inspiration from the USCM’s M10 Pattern Helmet, the L1 offers reliable protection against shrapnel and ballistic threats."
+	icon_state = "generic_helm"
+	item_state = "generic_helm"
+	flags_marine_helmet = HELMET_GARB_OVERLAY
+
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot
+	name = "\improper PH-4 'Spitfire' flight helmet"
+	desc = "Standard flight helmet used across the Three World Empire’s aerospace forces, from fighter pilots to atmospheric crews. This PH-4 variant is tailored for dropship operations in space, featuring reinforced plating, HUD optics, and encrypted comms. Essential for high-risk insertions, landings, and exfil missions. Nicknamed “Spitfire” for its reliability under fire."
+	icon_state = "pilot_helm"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = HIDEALLHAIR
+
+/obj/item/clothing/head/helmet/marine/veteran/royal_marine/pilot/alt
+	icon_state = "pilot_helm_alt"
+
+/obj/item/clothing/head/helmet/marine/veteran/iasf_beret
+	name = "\improper IASF beret"
+	desc = "A distinctive crimson beret worn by the Imperial Armed Space Force. Reinforced with flexible Kevlar, it offers minimal protection while maintaining a traditional and respected appearance."
+	icon_state = "beret_iasf"
+	item_state = "beret_iasf"
+	icon = 'icons/obj/items/clothing/hats/hats_by_faction/TWE.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/clothing/head/hats_by_faction/TWE.dmi',
+	)
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_MIN_COLD_PROT
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = NO_FLAGS
+	flags_marine_helmet = NO_FLAGS
+
+/obj/item/clothing/head/helmet/marine/veteran/iasf_beret/tl
+	icon_state = "beret_iasf_tl"
+	item_state = "beret_iasf_tl"
 
 /obj/item/clothing/head/helmet/marine/veteran/royal_marine/breacher
 	name = "\improper L5A3 ballistic helmet"

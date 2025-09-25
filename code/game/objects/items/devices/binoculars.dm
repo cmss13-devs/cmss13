@@ -427,7 +427,7 @@
 		overlays += cas_laser_overlay
 
 /datum/action/item_action/specialist/spotter_target
-	ability_primacy = SPEC_PRIMARY_ACTION_1
+	ability_primacy = SPEC_PRIMARY_ACTION_2
 	var/minimum_laze_distance = 2
 
 /datum/action/item_action/specialist/spotter_target/New(mob/living/user, obj/item/holder)

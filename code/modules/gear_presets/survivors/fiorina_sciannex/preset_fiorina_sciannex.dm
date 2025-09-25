@@ -29,7 +29,7 @@
 /datum/equipment_preset/survivor/security/fiorina
 	name = "Survivor - Fiorina Prison Guard"
 	assignment = JOB_WY_SEC
-	rank = JOB_WY_SEC
+	job_title = JOB_WY_SEC
 	minimap_background = "background_goon"
 	minimap_icon = "cmp"
 	idtype = /obj/item/card/id/silver/cl
@@ -53,7 +53,7 @@
 	assignment = "United Americas Riot Officer"
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	idtype = /obj/item/card/id/silver
-	rank = JOB_SURVIVOR
+	job_title = JOB_SURVIVOR
 	role_comm_title = "UA RO"
 	faction = FACTION_SURVIVOR
 	minimap_icon = "mp"

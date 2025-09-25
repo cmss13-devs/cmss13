@@ -3,12 +3,13 @@
 	desc = "Use this to keep prisoners in line."
 	gender = PLURAL
 	icon = 'icons/obj/items/security.dmi'
-	icon_state = "handcuff"
+	icon_state = "legcuff"
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 0
 	w_class = SIZE_MEDIUM
 
 	target_zone = SLOT_LEGS
+	var/stop_xeno_slash = FALSE
 
 /obj/item/restraint/proc/apply_legcuffs(mob/living/carbon/target, mob/user)
 	playsound(loc, 'sound/weapons/handcuffs.ogg', 25, 1, 4)
@@ -92,3 +93,50 @@
 					var/mob/living/simple_animal/SA = AM
 					SA.health -= 20
 	..()
+
+
+/obj/item/restraint/legcuffs/xeno_restraints
+	name = "xeno restraints"
+	desc = "Use this to hold xenomorphic creatures moderately-safely."
+	flags_equip_slot = SLOT_WAIST
+	throwforce = 5
+	w_class = SIZE_SMALL
+	throw_range = 5
+	matter = list("metal" = 500)
+
+	breakouttime = 2 MINUTES
+
+/obj/item/restraint/legcuffs/xeno_restraints/apply_legcuffs(mob/living/carbon/target, mob/user)
+	return FALSE
+
+/obj/item/restraint/legcuffs/xeno_restraints/attack(mob/living/carbon/target_mob, mob/user as mob)
+	if(!istype(target_mob, /mob/living/carbon/xenomorph))
+		to_chat(user, SPAN_DANGER("The cuffs do not fit!"))
+		return FALSE
+	if(target_mob.legcuffed)
+		to_chat(user, SPAN_DANGER("They're already cuffed!"))
+		return FALSE
+
+	var/turf/user_loc = get_turf(user)
+	var/turf/target_loc = get_turf(target_mob)
+	playsound(src.loc, 'sound/weapons/handcuffs.ogg', 25, 1, 6)
+	target_mob.visible_message(SPAN_DANGER("<B>[user] is trying to put restraints on [target_mob]!</B>"))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mob, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		return FALSE
+	if(!target_mob)
+		return FALSE
+	if(user_loc != get_turf(user) || target_loc != get_turf(target_mob))
+		return FALSE
+	target_mob.legcuffed = src
+	forceMove(target_mob)
+	target_mob.legcuff_update()
+	target_mob.visible_message(SPAN_DANGER("[target_mob] has been successfully restrained by [user]!"))
+	return TRUE
+
+/obj/item/restraint/legcuffs/xeno_restraints/strong
+	name = "strong xeno restraints"
+	desc = "Use this to hold xenomorphic creatures safely."
+	color = "#ff0000"
+
+	breakouttime = 3 MINUTES
+	stop_xeno_slash = TRUE

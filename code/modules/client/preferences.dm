@@ -22,8 +22,7 @@ GLOBAL_LIST_INIT(bgstate_options, list(
 ))
 
 GLOBAL_LIST_INIT(be_special_flags, list(
-	"Xenomorph after unrevivable death" = BE_ALIEN_AFTER_DEATH,
-	"Agent" = BE_AGENT,
+	"Xenomorph" = BE_ALIEN,
 	"King" = BE_KING,
 ))
 
@@ -63,7 +62,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	//game-preferences
 	var/lastchangelog = "" // Saved changlog filesize to detect if there was a change
 	var/ooccolor
-	var/be_special = BE_ALIEN_AFTER_DEATH|BE_KING // Special role selection
+	var/be_special = BE_ALIEN|BE_KING // Special role selection
 	var/toggle_prefs = TOGGLE_DIRECTIONAL_ATTACK|TOGGLE_COMBAT_CLICKDRAG_OVERRIDE|TOGGLE_MEMBER_PUBLIC|TOGGLE_AMBIENT_OCCLUSION|TOGGLE_VEND_ITEM_TO_HAND|TOGGLE_LEADERSHIP_SPOKEN_ORDERS // flags in #define/mode.dm
 	var/xeno_ability_click_mode = XENO_ABILITY_CLICK_MIDDLE
 	var/auto_fit_viewport = FALSE
@@ -673,14 +672,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 
 			for(var/role_name in GLOB.be_special_flags)
 				var/flag = GLOB.be_special_flags[role_name]
-
-				var/ban_check_name
-				switch(role_name)
-					if("Xenomorph after unrevivable death")
-						ban_check_name = JOB_XENOMORPH
-
-					if("Agent")
-						ban_check_name = "Agent"
+				var/ban_check_name = JOB_XENOMORPH // Ever a be_special_flags uses a different ban check, check and switch here
 
 				if(ban_check_name && jobban_isbanned(user, ban_check_name))
 					dat += "<b>Be [role_name]:</b> <font color=red><b>\[BANNED]</b></font><br>"

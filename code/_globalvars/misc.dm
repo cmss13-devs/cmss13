@@ -122,8 +122,8 @@ GLOBAL_VAR_INIT(time_offset, setup_offset())
 /proc/setup_offset()
 	return rand(10 MINUTES, 24 HOURS)
 
-/// The last count of possible candidates in the xeno larva queue (updated via get_alien_candidates)
-GLOBAL_VAR(xeno_queue_candidate_count)
+/// The last count of possible candidates in the xeno larva pool (updated via get_alien_candidates)
+GLOBAL_VAR(larva_pool_candidate_count)
 
 //Coordinate obsfucator
 //Used by the rangefinders and linked systems to prevent coords collection/prefiring

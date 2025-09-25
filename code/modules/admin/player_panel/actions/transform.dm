@@ -122,6 +122,11 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	name = XENO_CASTE_CRUSHER,
 	key = /mob/living/carbon/xenomorph/crusher,
 	color = "purple"
+	),
+	list(
+	name = XENO_CASTE_REAPER,
+	key = /mob/living/carbon/xenomorph/reaper,
+	color = "purple"
 	)
 	),
 

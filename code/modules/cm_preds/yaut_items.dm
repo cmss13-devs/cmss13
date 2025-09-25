@@ -1490,6 +1490,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	desc = "Skull of a highly acidic xenomorph, a venomous ranged attacker."
 	icon_state = "spitter_skull"
 
+/obj/item/skull/reaper
+	name = "Reaper skull"
+	desc = "Skull of a gaunt and gangly xenomorph, a herald of pestillence."
+	icon_state = "reaper_skull"
+
 // PELTS
 
 /obj/item/pelt
@@ -1596,6 +1601,11 @@ GLOBAL_VAR_INIT(youngblood_timer_yautja, 0)
 	name = "Larva pelt"
 	desc = "The hide of a juvenile Xenomorph, a grim trophy from a fledgling that never reached its full potential."
 	icon_state = "larva_pelt"
+
+/obj/item/pelt/reaper
+	name = "Reaper pelt"
+	desc = "The pelt of a gaunt and gangly xenomorph, a herald of pestillence."
+	icon_state = "reaper_pelt"
 
 /// TOOLS
 

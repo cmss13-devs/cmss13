@@ -81,10 +81,8 @@
 
 	/// if a hugger is held in hand, won't attempt to leap and kill itself
 	var/hugger_nurturing = FALSE
-	var/huggers_max = 0
 	var/throwspeed = 0
 	var/hugger_delay = 0
-	var/eggs_max = 0
 	var/egg_cooldown = 30
 	///Armor but for explosions
 	var/xeno_explosion_resistance = 0

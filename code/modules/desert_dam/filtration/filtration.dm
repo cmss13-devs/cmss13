@@ -155,7 +155,6 @@ Each var depends on others
 		if(HAS_TRAIT(M, TRAIT_HAULED))
 			return
 
-		cause_damage(M)
 		START_PROCESSING(SSobj, src)
 		return
 	else if(isVehicleMultitile(A))
@@ -184,7 +183,6 @@ Each var depends on others
 	var/targets_present = 0
 	for(var/mob/living/carbon/M in range(0, src))
 		targets_present++
-		cause_damage(M)
 	for(var/obj/vehicle/multitile/V in range(0, src))
 		if(V.vehicle_flags & VEHICLE_CLASS_WEAK)
 			targets_present++

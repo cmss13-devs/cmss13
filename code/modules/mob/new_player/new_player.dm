@@ -8,10 +8,10 @@
 
 	var/ready = FALSE
 	var/spawning = FALSE//Referenced when you want to delete the new_player later on in the code.
-	///The last message for this player with their larva queue information
-	var/larva_queue_cached_message
-	///The time when the larva_queue_cached_message should be considered stale
-	var/larva_queue_message_stale_time
+	///The last message for this player with their larva pool information
+	var/larva_pool_cached_message
+	///The time when the larva_pool_cached_message should be considered stale
+	var/larva_pool_message_stale_time
 
 	/// The window that we display the main menu in
 	var/datum/tgui_window/lobby_window
@@ -151,7 +151,7 @@
 
 	var/latejoin_larva_drop = SSticker.mode.latejoin_larva_drop
 
-	if (ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2)
+	if(ROUND_TIME < XENO_ROUNDSTART_LATEJOIN_LARVA_TIME)
 		latejoin_larva_drop = SSticker.mode.latejoin_larva_drop_early
 
 	if(latejoin_larva_drop && SSticker.mode.latejoin_tally - SSticker.mode.latejoin_larva_used >= latejoin_larva_drop)
@@ -160,7 +160,7 @@
 		for(var/hivenumber in GLOB.hive_datum)
 			hive = GLOB.hive_datum[hivenumber]
 			if(hive.latejoin_burrowed == TRUE)
-				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_PROGRESS_TIME_2))
+				if(length(hive.totalXenos) && (hive.hive_location || ROUND_TIME < XENO_ROUNDSTART_LATEJOIN_LARVA_TIME))
 					hive.stored_larva++
 					hive.hive_ui.update_burrowed_larva()
 

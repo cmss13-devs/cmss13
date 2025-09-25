@@ -302,4 +302,4 @@
 
 /obj/item/clock/get_examine_text(mob/user)
 	. = ..()
-	. += SPAN_NOTICE("The [src] reads: [GLOB.current_date_string] - [worldtime2text()]")
+	. += SPAN_NOTICE("The [name] reads: [GLOB.current_date_string] - [worldtime2text()]")

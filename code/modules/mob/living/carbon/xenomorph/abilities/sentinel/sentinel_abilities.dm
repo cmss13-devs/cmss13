@@ -1,7 +1,7 @@
 //Slowing spit
 /datum/action/xeno_action/activable/slowing_spit
 	name = "Slowing Spit"
-	action_icon_state = "xeno_spit"
+	action_icon_state = "neurotoxin_spit"
 	macro_path = /datum/action/xeno_action/verb/verb_slowing_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1

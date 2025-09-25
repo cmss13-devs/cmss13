@@ -265,8 +265,6 @@
 	if(user && user.client)
 
 		blip_icon = blip_icon ? blip_icon : blip_type
-		if(user.z != target.z)
-			blip_icon = "queen_eye" //if someone makes different icons they can be used
 
 		if(!blip_pool[target])
 			blip_pool[target] = new /obj/effect/detector_blip
@@ -299,6 +297,16 @@
 		else
 			DB.icon_state = "[blip_icon]_blip"
 			DB.setDir(initial(DB.dir))
+
+		DB.overlays.Cut()
+		if(user.z != target.z)
+			var/image/new_overlay = image('icons/mob/hud/screen1.dmi', icon_state = "big_arrow_grey")
+			new_overlay.color = "#BDFDFE"
+
+			if(target.z > user.z)
+				new_overlay.transform = turn(matrix(), 180)
+
+			DB.overlays += new_overlay
 
 		DB.screen_loc = "[clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
 		user.client.add_to_screen(DB)

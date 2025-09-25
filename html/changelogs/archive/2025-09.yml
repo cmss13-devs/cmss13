@@ -191,3 +191,67 @@
   - qol: If general quarters is on cooldown, you'll now set red alert (if it wasn't
       set already) by attempting to call general quarters.
   - admin: logging for general quarters and red alert is now separate
+2025-09-22:
+  BirdLover88:
+  - rscadd: Extract data when occupying a mob and set highlight keywords
+  - ui: Add keyword menu to chat highlight menu
+  DarkLordCabbage:
+  - rscadd: Adds the ability to fill the MS-11 Smart Refill Tank in the pressurized
+      chemical dispensers
+  Drathek, KornFlaks, ihatethisengine:
+  - bugfix: Forbid slashing/harming setting now works
+  - refactor: Hive permissions are now flags
+  - qol: Hive permission toggles are now accessible in Manage the Hive for the queen
+      and the input selectors now preselect the current hive setting
+  - code_imp: Cleaned up various single variable usage and autodoc comments
+  - admin: Hives can have permission toggles locked (which prevents queens from changing
+      them and prevents reversion on queen death)
+  Red-byte3D:
+  - rscadd: Added a new Fortification Boon that allows xenomorphs to boost their structures.
+  - rscadd: Pylons, Plasma trees recovery nodes and xenomorph resin walls (not doors)
+      will now regenerate their health when under the effects of the "Fortification
+      Boon"
+  - rscadd: Plasma tree and recovery nodes have increased recovery while under the
+      effects of "Fortification Boon"
+  - rscadd: Egg morphers now generate huggers at 30 seconds per hugger while boosted.
+  Zenith:
+  - rscadd: Added Kutjevo LZ1 insert.
+  - rscadd: Added small Soro insert.
+  - maptweak: Added Kutjevo south facility extension, opening up a route into the
+      caves with flanking potential for both Marines and Xenos.
+  - imageadd: Adds bodybag pile sprites & large stain decals.
+  benrobey:
+  - bugfix: fixed groundside xenos not getting correctly set to forsaken hive after
+      hijack
+  jupyterkat:
+  - rscadd: lights now get dimmer across zlevels
+  - refactor: optimized lights
+  realforest2001:
+  - rscadd: Added Radio-Alert Motion Sensors.  They will be available to MPs, WY,
+      CLF, UPP, TWE and CIA.
+  - rscadd: They are activated by a security tuner (no skills required) and disabled
+      the same way. Radio/Access can be changed with an ID card if you have access
+      already.
+  - rscadd: Added an internal camera console to the Intranet Console.
+  - rscadd: Added a WY camera subtype.
+  - bugfix: Fixes WY Director access to the Intranet Console.
+  - rscadd: Added Document Printer.
+2025-09-23:
+  Venuska1117:
+  - bugfix: Fruit balloon alert now only trigger after consuming fruit, instead for
+      every not related Destroy() proc call.
+  Zenith, cuberound, dimdimich1996:
+  - rscadd: Added new fences fence types & fence doors.
+  - imageadd: Replaced existing fence sprites & added new fence types with doors.
+  - soundadd: Added new fence hit sounds & fence door opening sounds.
+  - maptweak: Added new fence types to LV & Soro.
+  - maptweak: Soro map tweaks to comms areas, cleaned them up to accommodate new fence
+      types.
+2025-09-24:
+  Git-Nivrak:
+  - qol: Queen eye can now look into tents
+  - bugfix: Fixes lighting sometimes appearing as blocky instead of fancy lighting
+  Googles-Hands:
+  - maptweak: Added lockdown doors to remapped areas of the Hangar that lacked them.
+  stanalbatross:
+  - balance: direction locking no longer slows down humans. Xenos etc unaffected.

@@ -15,6 +15,7 @@
 	var/obj/item/reagent_container/beaker = null
 	var/list/loaded_pill_bottles = list()
 	var/list/loaded_pill_bottles_to_fill = list()
+	var/list/presets = list()
 	var/mode = 0
 	var/condi = 0
 	var/useramount = 30 // Last used amount
@@ -75,22 +76,71 @@
 			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		SStgui.update_uis(src)
 		update_icon()
+		return
 
-	else if(istype(inputed_item, /obj/item/storage/pill_bottle) && pill_maker)
+	if(!pill_maker)
+		return
+
+	if(istype(inputed_item, /obj/item/storage/pill_bottle))
 		var/obj/item/storage/pill_bottle/bottle = inputed_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
 			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
 			return
 
-		loaded_pill_bottles += bottle
-		if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
-			loaded_pill_bottles_to_fill += bottle
+		add_pill_bottle(bottle)
 
 		user.drop_inv_item_to_loc(bottle, src)
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		SStgui.update_uis(src)
-	return
+		return
+
+	if(istype(inputed_item, /obj/item/storage/box/pillbottles))
+		var/obj/item/storage/box/pillbottles/box = inputed_item
+		if(!box)
+			return
+
+		if(length(loaded_pill_bottles) >= max_bottles_count)
+			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
+			return
+
+		if(length(box.contents) == 0)
+			to_chat(user, SPAN_WARNING("[box.name] is empty and cannot be unloaded into the [name]."))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box.name] into the [name]..."),
+		SPAN_NOTICE("You start to empty the [box.name] into the [name]..."))
+
+		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
+
+		if(waiting_time <= 0) //well, something went wrong
+			return
+
+		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			return
+
+		playsound(user.loc, box.use_sound, 25, TRUE, 3)
+
+		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
+			if(!bottle)
+				continue
+			if(length(loaded_pill_bottles) >= max_bottles_count)
+				to_chat(user, SPAN_WARNING("[name] is fully loaded by pill bottles."))
+				return
+			add_pill_bottle(bottle)
+			box.forced_item_removal(bottle)
+
+		SStgui.update_uis(src)
+
+/obj/structure/machinery/chem_master/proc/add_pill_bottle(obj/item/storage/pill_bottle/bottle)
+	if(!bottle)
+		return
+
+	loaded_pill_bottles += bottle
+
+	if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
+		loaded_pill_bottles_to_fill += bottle
+
 
 /obj/structure/machinery/chem_master/proc/transfer_chemicals(obj/dest, obj/source, amount, reagent_id)
 	if(istype(source))
@@ -108,6 +158,9 @@
 
 /obj/structure/machinery/chem_master/ui_data(mob/user)
 	. = ..()
+	if(user?.client?.prefs)
+		var/list/presets = user.client.prefs.get_all_chem_presets()
+		.["presets"] = presets
 
 	.["is_connected"] = !!connected
 	.["mode"] = mode
@@ -180,6 +233,198 @@
 		return
 
 	switch(action)
+		if("set_quick_access")
+			if(!user.client?.prefs)
+				return TRUE
+
+			var/preset_name = params["name"]
+			if(!preset_name)
+				return TRUE
+
+			var/list/preset_data = user.client.prefs.get_chem_preset(preset_name)
+			if(!preset_data)
+				return TRUE
+
+			var/slot = params["slot"]
+			if(slot == null)
+				// Store label before removing from quick access
+				var/stored_label = preset_data["quick_access_label"]
+
+				preset_data -= "quick_access_slot"
+				preset_data -= "quick_access_label"
+
+				// Store the label in a separate key so it persists
+				if(stored_label)
+					preset_data["stored_quick_access_label"] = stored_label
+			else
+				preset_data["quick_access_slot"] = slot
+
+				// Restore previous label if it exists
+				if(!preset_data["quick_access_label"])
+					if(preset_data["stored_quick_access_label"])
+						preset_data["quick_access_label"] = preset_data["stored_quick_access_label"]
+						preset_data -= "stored_quick_access_label"
+					else if(preset_data["bottle_label"]) // Use bottle label if no stored label
+						preset_data["quick_access_label"] = preset_data["bottle_label"]
+
+			user.client.prefs.save_chem_preset(preset_name, preset_data)
+			return TRUE
+
+		if("set_quick_access_label")
+			if(!user.client?.prefs)
+				return TRUE
+
+			var/preset_name = params["name"]
+			if(!preset_name)
+				return TRUE
+
+			var/list/preset_data = user.client.prefs.get_chem_preset(preset_name)
+			if(!preset_data || preset_data["quick_access_slot"] == null)
+				return TRUE
+
+			var/label = copytext(reject_bad_text(params["label"] || ""), 1, 4)
+			preset_data["quick_access_label"] = label
+			user.client.prefs.save_chem_preset(preset_name, preset_data)
+			return TRUE
+
+		if("apply_preset")
+			if(!user.client?.prefs)
+				return TRUE
+
+			var/preset_name = params["name"]
+			if(!preset_name)
+				return TRUE
+
+			var/list/preset_data = user.client.prefs.get_chem_preset(preset_name)
+			if(!preset_data)
+				return TRUE
+
+			// Apply preset to selected bottles
+			if(preset_data["bottle_color"] && length(loaded_pill_bottles_to_fill) > 0)
+				var/picked_color = preset_data["bottle_color"]
+				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					if(picked_color && (picked_color in bottle.possible_colors))
+						bottle.icon_state = bottle.base_icon + bottle.possible_colors[picked_color]
+
+			if(preset_data["bottle_label"] && length(loaded_pill_bottles_to_fill) > 0)
+				var/label = copytext(preset_data["bottle_label"], 1, 4)
+				var/use_full_name = preset_data["use_preset_name_as_label"] ? TRUE : FALSE
+
+				for(var/obj/item/storage/pill_bottle/bottle in loaded_pill_bottles_to_fill)
+					// If we're using the preset name as a full label, we handle it differently
+					if(use_full_name)
+						// First set the short maptext label for the icon display
+						bottle.maptext_label = label
+						bottle.update_icon()
+
+						// Then use the full preset name with the label component
+						bottle.AddComponent(/datum/component/label, preset_name)
+					else
+						// Standard label behavior
+						bottle.AddComponent(/datum/component/label, label)
+						if(length(label) < 4)
+							bottle.maptext_label = label
+							bottle.update_icon()
+
+			if(preset_data["pill_color"])
+				pillsprite = preset_data["pill_color"]
+
+			return TRUE
+
+		if("save_preset")
+			if(!user.client?.prefs)
+				return TRUE
+			var/preset_name = trim(params["name"])
+			if(!preset_name || !length(preset_name))
+				return TRUE
+			preset_name = copytext(reject_bad_text(preset_name), 1, MAX_PRESET_NAME_LEN)
+			var/original_name = params["original_name"] // Original name for editing
+			var/list/preset_data = list(
+				"bottle_color" = params["bottle_color"],
+				"bottle_label" = copytext(reject_bad_text(params["bottle_label"] || ""), 1, 4),
+				"pill_color" = params["pill_color"],
+				"use_preset_name_as_label" = params["use_preset_name_as_label"]
+			)
+
+			// Add quick access data if provided
+			if(params["quick_access_slot"] != null)
+				preset_data["quick_access_slot"] = params["quick_access_slot"]
+
+				if(params["quick_access_label"])
+					preset_data["quick_access_label"] = copytext(reject_bad_text(params["quick_access_label"]), 1, 4)
+
+			// Get current presets to determine order
+			var/list/current_presets = user.client.prefs.get_all_chem_presets()
+			var/max_order = 0
+
+			// Find the highest order number
+			for(var/name in current_presets)
+				var/list/preset = current_presets[name]
+				if(preset["order"] > max_order)
+					max_order = preset["order"]
+
+			// If editing, keep the original order and quick access data
+			if(original_name && current_presets[original_name])
+				preset_data["order"] = current_presets[original_name]["order"]
+
+				// Preserve quick access data when renaming
+				if(current_presets[original_name]["quick_access_slot"] != null && params["quick_access_slot"] == null)
+					preset_data["quick_access_slot"] = current_presets[original_name]["quick_access_slot"]
+					if(current_presets[original_name]["quick_access_label"])
+						preset_data["quick_access_label"] = current_presets[original_name]["quick_access_label"]
+
+				if(original_name != preset_name)
+					user.client.prefs.delete_chem_preset(original_name)
+			else
+				preset_data["order"] = max_order + 1
+
+			user.client.prefs.save_chem_preset(preset_name, preset_data)
+			// Force UI refresh
+			SStgui.update_uis(src)
+			return TRUE
+
+		if("delete_preset")
+			if(!user.client?.prefs)
+				return TRUE
+
+			var/preset_name = params["name"]
+			user.client.prefs.delete_chem_preset(preset_name)
+			return TRUE
+
+		if("reorder_preset")
+			if(!user.client?.prefs)
+				return TRUE
+
+			var/preset_name = params["name"]
+			var/direction = params["direction"] // "up" or "down"
+			var/list/current_presets = user.client.prefs.get_all_chem_presets()
+
+			if(!current_presets[preset_name])
+				return TRUE
+
+			// Get current position
+			var/current_pos = current_presets[preset_name]["order"]
+			var/target_pos = direction == "up" ? current_pos - 1 : current_pos + 1
+
+			// Find preset at target position
+			var/target_name = null
+			for(var/name in current_presets)
+				if(current_presets[name]["order"] == target_pos)
+					target_name = name
+					break
+
+			if(!target_name)
+				return TRUE
+
+			// Swap positions
+			current_presets[preset_name]["order"] = target_pos
+			current_presets[target_name]["order"] = current_pos
+
+			// Save changes
+			user.client.prefs.save_chem_preset(preset_name, current_presets[preset_name])
+			user.client.prefs.save_chem_preset(target_name, current_presets[target_name])
+			return TRUE
+
 		if("eject_pill")
 			var/bottle_index = params["bottleIndex"] + 1;
 			if(length(loaded_pill_bottles) == 0 || bottle_index > length(loaded_pill_bottles))
@@ -444,6 +689,7 @@
 		if("connect")
 			connect_smartfridge()
 			return TRUE
+
 		if("check_pill_bottle")
 			if(params["bottleIndex"] + 1 > length(loaded_pill_bottles))
 				return FALSE
@@ -451,7 +697,14 @@
 				loaded_pill_bottles_to_fill += loaded_pill_bottles[params["bottleIndex"] + 1]
 			else if (LAZYFIND(loaded_pill_bottles_to_fill, loaded_pill_bottles[params["bottleIndex"] + 1]) != 0)
 				loaded_pill_bottles_to_fill -= loaded_pill_bottles[params["bottleIndex"] + 1]
+			return TRUE
 
+		if("select_all_bottles")
+			if(params["value"])
+				loaded_pill_bottles_to_fill = LAZYCOPY(loaded_pill_bottles)
+			else
+				loaded_pill_bottles_to_fill = list()
+			return TRUE
 
 /obj/structure/machinery/chem_master/attack_hand(mob/living/user)
 	if(stat & BROKEN)
@@ -491,3 +744,7 @@
 
 /obj/structure/machinery/chem_master/vial
 	vial_maker = TRUE
+
+/proc/cmp_preset_order(a, b)
+	var/list/presets = usr.client.prefs.get_all_chem_presets()
+	return presets[a]["order"] - presets[b]["order"]

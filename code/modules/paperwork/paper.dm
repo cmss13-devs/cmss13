@@ -37,8 +37,6 @@
 	var/ico[0] //Icons and
 	var/offset_x[0] //offsets stored for later
 	var/offset_y[0] //usage by the photocopier
-	var/rigged = 0
-	var/spam_flag = 0
 
 	// any photos that might be attached to the paper
 	var/list/photo_list

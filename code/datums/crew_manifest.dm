@@ -2,7 +2,6 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 
 /datum/crew_manifest
 	var/list/departments = list()
-	var/list/passenger_jobs = list()
 
 /datum/crew_manifest/New()
 	. = ..()
@@ -15,7 +14,6 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		"Medical" = GLOB.ROLES_MEDICAL,
 		"Miscellaneous" = GLOB.ROLES_MISC
 	)
-	passenger_jobs = GLOB.ROLES_USCM_FACTION_SHARED
 
 /datum/crew_manifest/ui_static_data(mob/user)
 	. = ..()
@@ -45,7 +43,7 @@ GLOBAL_DATUM_INIT(crew_manifest, /datum/crew_manifest, new)
 		if(isnull(name) || isnull(rank))
 			continue
 
-		if(record_entry.fields["mob_faction"] != FACTION_MARINE && !(rank in passenger_jobs))
+		if(record_entry.fields["mob_faction"] != FACTION_MARINE && !(rank in USCM_SHARED_JOBS))
 			continue
 
 		var/entry_dept = null

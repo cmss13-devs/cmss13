@@ -1,5 +1,5 @@
 import { classes } from 'common/react';
-import { useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, NumberInput, Section, Stack } from 'tgui/components';
 import { Window } from 'tgui/layouts';
@@ -93,7 +93,6 @@ export const StackReceipts = () => {
         ])}
         style={{
           position: 'relative',
-          top: '6px',
           marginRight: '2px',
         }}
       />
@@ -101,102 +100,112 @@ export const StackReceipts = () => {
       ''
     );
 
-  const renderReceipt = (receipt: Receipt, index: number) => (
-    <Stack key={index} justify="space-between">
-      <Stack.Item
-        width="100%"
-        style={{
-          whiteSpace: 'nowrap',
-        }}
-      >
+  const renderReceipt = (receipt: Receipt, index: number) => {
+    let materialAmount = receipt.req_amount ?? 1;
+
+    if (receipt.is_multi) {
+      materialAmount = (receipt.amount_to_build ?? 1) * materialAmount;
+    }
+
+    return (
+      <Fragment key={index}>
         {receipt.empty_line_next ? (
           <hr className="HrLine" color="#4972a2" />
         ) : (
           ''
         )}
-        {receipt.stack_sub_receipts ? (
-          <>
-            {renderIcon(
-              receipt.stack_sub_receipts?.[
-                cycleIndex % receipt.stack_sub_receipts.length
-              ]?.image,
-              receipt.stack_sub_receipts?.[
-                cycleIndex % receipt.stack_sub_receipts.length
-              ]?.image_size,
-            )}
-            <Button
-              className="StackButton"
-              onClick={() => {
-                setReceiptStack((prev) => [
-                  ...prev,
-                  receipt.stack_sub_receipts!,
-                ]);
-                scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-            >
-              {receipt.title}
-            </Button>
-          </>
-        ) : (
-          <>
-            {renderIcon(receipt.image, receipt.image_size)}
-            <Button
-              className="StackButton"
-              disabled={
-                !(
-                  receipt.can_build && stack_amount >= (receipt.req_amount ?? 1)
-                )
-              }
-              onClick={() => {
-                handleBuildClick(receipt, receipt.amount_to_build ?? 1);
-              }}
-            >
-              {getNotOne(receipt.res_amount ?? 1)}
-              {pluralize(receipt.res_amount ?? 1, receipt.title)}
-              {` (${receipt.req_amount ?? 1} ${pluralize(
-                (receipt.is_multi ?? false)
-                  ? (receipt.amount_to_build ?? 1)
-                  : 1,
-                data.singular_name,
-              )})`}
-            </Button>
-            {receipt.is_multi && (receipt.req_amount ?? 1) < stack_amount ? (
-              <span style={{ marginLeft: '8px' }}>
-                {' '}
-                <NumberInput
-                  tabbed
-                  className="StackNumberInput"
-                  value={receipt.amount_to_build ?? 1}
-                  maxValue={Math.min(
-                    20,
-                    Math.floor(stack_amount / (receipt.req_amount ?? 1)),
-                  )}
-                  minValue={1}
-                  step={1}
-                  stepPixelSize={3}
-                  width="30px"
-                  onChange={(value) => {
-                    setReceiptStack((prev) => {
-                      const newStack = [...prev];
-                      const lastLevel = [...newStack[newStack.length - 1]];
-                      lastLevel[index] = {
-                        ...lastLevel[index],
-                        amount_to_build: value,
-                      };
-                      newStack[newStack.length - 1] = lastLevel;
-                      return newStack;
-                    });
+        <Stack justify="space-between">
+          <Stack.Item
+            width="100%"
+            style={{
+              whiteSpace: 'nowrap',
+            }}
+          >
+            {receipt.stack_sub_receipts ? (
+              <>
+                {renderIcon(
+                  receipt.stack_sub_receipts?.[
+                    cycleIndex % receipt.stack_sub_receipts.length
+                  ]?.image,
+                  receipt.stack_sub_receipts?.[
+                    cycleIndex % receipt.stack_sub_receipts.length
+                  ]?.image_size,
+                )}
+                <Button
+                  className="StackButton"
+                  onClick={() => {
+                    setReceiptStack((prev) => [
+                      ...prev,
+                      receipt.stack_sub_receipts!,
+                    ]);
+                    scrollRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                />
-              </span>
+                >
+                  {receipt.title}
+                </Button>
+              </>
             ) : (
-              ''
+              <>
+                {renderIcon(receipt.image, receipt.image_size)}
+                <Button
+                  className="StackButton"
+                  disabled={
+                    !(
+                      receipt.can_build &&
+                      stack_amount >= (receipt.req_amount ?? 1)
+                    )
+                  }
+                  onClick={() => {
+                    handleBuildClick(receipt, receipt.amount_to_build ?? 1);
+                  }}
+                >
+                  {pluralize(receipt.res_amount ?? 1, receipt.title)}
+                  {` (${materialAmount} ${pluralize(
+                    materialAmount,
+                    data.singular_name,
+                  )})`}
+                </Button>
+                {receipt.is_multi &&
+                (receipt.req_amount ?? 1) < stack_amount ? (
+                  <span style={{ marginLeft: '8px' }}>
+                    {' '}
+                    <NumberInput
+                      tabbed
+                      className="StackNumberInput"
+                      value={receipt.amount_to_build ?? 1}
+                      maxValue={Math.min(
+                        20,
+                        Math.floor(stack_amount / (receipt.req_amount ?? 1)),
+                      )}
+                      minValue={1}
+                      step={1}
+                      stepPixelSize={3}
+                      width="30px"
+                      height="24px"
+                      onChange={(value) => {
+                        setReceiptStack((prev) => {
+                          const newStack = [...prev];
+                          const lastLevel = [...newStack[newStack.length - 1]];
+                          lastLevel[index] = {
+                            ...lastLevel[index],
+                            amount_to_build: value,
+                          };
+                          newStack[newStack.length - 1] = lastLevel;
+                          return newStack;
+                        });
+                      }}
+                    />
+                  </span>
+                ) : (
+                  ''
+                )}
+              </>
             )}
-          </>
-        )}
-      </Stack.Item>
-    </Stack>
-  );
+          </Stack.Item>
+        </Stack>
+      </Fragment>
+    );
+  };
 
   return (
     <Window width={440} height={500}>

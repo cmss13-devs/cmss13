@@ -12,6 +12,8 @@ $mandatory-color: hsl(39, 100%, 25%);
     white-space: nowrap;
     white-space-collapse: nowrap;
     left: 6px;
+    vertical-align: top;
+    margin-top: 6px;
     &:hover,
     &:focus {
       transition:
@@ -22,8 +24,12 @@ $mandatory-color: hsl(39, 100%, 25%);
     }
   }
 
+  .StackNumberInput {
+    vertical-align: top;
+    margin-top: 6px;
+  }
+
   .HrLine {
-    top: 6px;
     position: relative;
     color: colors.$primary;
     background-color: colors.$primary;

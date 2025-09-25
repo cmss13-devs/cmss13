@@ -819,7 +819,7 @@ SUBSYSTEM_DEF(minimaps)
 
 	var/use_live_map = faction == FACTION_MARINE && skillcheck(user, SKILL_OVERWATCH, SKILL_OVERWATCH_TRAINED) || is_xeno
 
-	if(use_live_map && (!map_holders || length(map_holders) == 0))
+	if((!map_holders || length(map_holders) == 0))
 		map_holders = list()
 		var/levels = SSmapping.levels_by_trait(current_ztrait)
 		for(var/level in levels)

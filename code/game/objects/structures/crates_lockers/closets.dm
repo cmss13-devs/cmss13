@@ -37,7 +37,6 @@
 	flags_atom |= USES_HEARING
 
 /obj/structure/closet/Destroy()
-	dump_contents()
 	GLOB.closet_list -= src
 	return ..()
 
@@ -170,14 +169,9 @@
 
 	health = max(health - damage, 0)
 	if(health <= 0)
-		for(var/atom/movable/movable as anything in src)
-			if(!loc)
-				break
-			movable.forceMove(loc)
 		playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
-		qdel(src)
+		deconstruct(FALSE)
 
-// this should probably use dump_contents()
 /obj/structure/closet/ex_act(severity)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
@@ -191,6 +185,10 @@
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			contents_explosion(severity - EXPLOSION_THRESHOLD_LOW)
 			deconstruct(FALSE)
+
+/obj/structure/closet/deconstruct(disassembled = TRUE)
+	dump_contents()
+	return ..()
 
 /obj/structure/closet/proc/flashbang(datum/source, obj/item/explosive/grenade/flashbang/FB)
 	SIGNAL_HANDLER
@@ -208,9 +206,7 @@
 /obj/structure/closet/attack_animal(mob/living/user)
 	if(user.wall_smash)
 		visible_message(SPAN_DANGER("[user] destroys [src]."))
-		for(var/atom/movable/A as mob|obj in src)
-			A.forceMove(src.loc)
-		qdel(src)
+		deconstruct(FALSE)
 
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)
 	if(src.opened)
@@ -330,7 +326,7 @@
 	if(istype(I) && (I.pry_capable == IS_PRY_CAPABLE_FORCE))
 		visible_message(SPAN_DANGER("[user] smashes out of the locker!"))
 		playsound(loc, 'sound/effects/metal_crash.ogg', 75)
-		qdel(src)
+		deconstruct(FALSE)
 		return
 
 	if(!src.open())

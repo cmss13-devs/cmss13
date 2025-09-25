@@ -8599,6 +8599,10 @@
 "atG" = (
 /turf/open/floor/almayer/flooredge/west,
 /area/white_antre/indoors/main_level/dorms)
+"atH" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal/autoname,
+/turf/open/floor/corsat/marked,
+/area/white_antre/landing_zone/roof)
 "atI" = (
 /turf/open/floor/prison/blue/northeast,
 /area/white_antre/indoors/main_level/dorms)
@@ -16022,6 +16026,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/strata/red3/east,
 /area/white_antre/indoors/main_level/weapons)
+"aMb" = (
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/personal/autoname{
+	dir = 1
+	},
+/turf/open/floor/corsat/marked,
+/area/white_antre/landing_zone/roof)
 "aMc" = (
 /obj/structure/window/framed/corsat/research,
 /turf/open/floor/corsat/marked,
@@ -16761,7 +16771,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/white_antre/outdoors/north_field)
 "aOJ" = (
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/dropship/light_grey_single_wide_left_to_right,
 /area/white_antre/indoors/pmc_dropship)
 "aOK" = (
 /obj/effect/decal/warning_stripes{
@@ -17066,6 +17076,9 @@
 	},
 /turf/open/floor/prison/floor_plate/southwest,
 /area/white_antre/indoors/main_level/north_containment_hive)
+"aPV" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/white_antre/indoors/main_level/east_containment)
 "aPW" = (
 /turf/closed/wall/hybrisa/research/reinforced,
 /area/white_antre/oob)
@@ -39058,7 +39071,7 @@
 	req_one_access = null;
 	dir = 1
 	},
-/turf/open/floor/corsat/officetiles,
+/turf/open/floor/corsat/plate,
 /area/white_antre/indoors/pmc_dropship)
 "bXx" = (
 /obj/effect/landmark/spycam_start,
@@ -39595,9 +39608,6 @@
 "bZk" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/white_antre/indoors/main_level/west_corridor)
-"bZl" = (
-/turf/closed/wall/hybrisa/colony/reinforced/hull,
-/area/white_antre/indoors/main_level/weapons)
 "bZm" = (
 /turf/closed/wall/hybrisa/colony/reinforced/hull,
 /area/white_antre/indoors/main_level/dorms)
@@ -39613,6 +39623,14 @@
 "bZq" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/white_antre/indoors/upper_level/east_overwatch)
+"bZr" = (
+/turf/closed/wall/hybrisa/research/reinforced,
+/area/white_antre/indoors/main_level/north_containment)
+"bZs" = (
+/obj/effect/decal/hybrisa/tiretrack,
+/obj/effect/decal/hybrisa/tiretrack,
+/turf/open/shuttle/dropship/light_grey_bottom_right,
+/area/white_antre/indoors/pmc_dropship)
 "bZv" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 1
@@ -45168,7 +45186,7 @@
 "vgO" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
-/turf/open/floor/almayer/test_floor4,
+/turf/open/shuttle/dropship/light_grey_bottom_left,
 /area/white_antre/indoors/pmc_dropship)
 "vka" = (
 /obj/structure/prop/hybrisa/misc/fake/lattice/full,
@@ -90183,7 +90201,7 @@ bel
 bdZ
 bdZ
 aNB
-aKz
+atH
 aNi
 aKB
 aKB
@@ -90223,7 +90241,7 @@ bYx
 aKC
 aKB
 dea
-aKz
+atH
 jTp
 iDL
 iDL
@@ -91023,7 +91041,7 @@ bep
 bec
 aKf
 aNC
-aKz
+atH
 aNi
 aKC
 aKB
@@ -91063,7 +91081,7 @@ aKB
 aKB
 aKB
 dea
-aKz
+atH
 aXU
 aXH
 aKp
@@ -92539,7 +92557,7 @@ pWw
 aKA
 iFy
 aKz
-aKz
+aMb
 akw
 akw
 akw
@@ -92572,7 +92590,7 @@ akw
 akw
 akw
 aKz
-aKz
+aMb
 iFy
 aKA
 aKD
@@ -99072,7 +99090,7 @@ fgv
 aOR
 epg
 lnf
-vgO
+bZs
 kKn
 kKn
 kKn
@@ -103103,11 +103121,11 @@ aPg
 aOM
 aOM
 aOM
-aOf
-aOf
-aOf
-aOf
-aOf
+bZr
+bZr
+bZr
+bZr
+bZr
 sUP
 alJ
 jcK
@@ -103271,12 +103289,12 @@ aPg
 aOM
 aOM
 oXw
-aOf
+bZr
 ayh
 axV
 axL
-aOf
-aOf
+bZr
+bZr
 alJ
 aOp
 nyQ
@@ -103444,8 +103462,8 @@ ayi
 axW
 axM
 aOx
-aOf
-aOf
+bZr
+bZr
 beH
 beE
 beE
@@ -103613,7 +103631,7 @@ axX
 axN
 acw
 axg
-aOf
+bZr
 aNS
 aNS
 aNS
@@ -103781,7 +103799,7 @@ axY
 aOd
 axz
 axh
-aOf
+bZr
 beI
 aNT
 aNT
@@ -108184,9 +108202,9 @@ bSc
 cPR
 auD
 aKi
-bZl
-bZl
-bZl
+bZi
+bZi
+bZi
 aKi
 ass
 asn
@@ -108199,8 +108217,8 @@ arJ
 aKi
 aKi
 arE
-aKi
-aKi
+bZi
+bZi
 arw
 aTN
 aKh
@@ -108358,17 +108376,17 @@ aLk
 aKi
 aKi
 aKi
-bZl
-bZl
-bZl
+bZi
+bZi
+bZi
 aKi
 aKi
 aKi
 aKi
 oFI
 aUh
-aKi
-aKi
+bZi
+bZi
 bSi
 aTO
 aTF
@@ -108685,8 +108703,8 @@ bZn
 auU
 bSp
 aKs
-bZl
-bZl
+bZi
+bZi
 vMy
 aLv
 aVs
@@ -108853,8 +108871,8 @@ bZn
 aHW
 awn
 aHK
-bZl
-bZl
+bZi
+bZi
 aVb
 aLv
 mCF
@@ -109021,8 +109039,8 @@ bZn
 aHX
 bTP
 aMC
-bZl
-bZl
+bZi
+bZi
 aVc
 aLv
 mCF
@@ -109532,13 +109550,13 @@ dGn
 aMa
 jPT
 jPT
-aKi
+bZi
 aVd
 ujo
 aLp
 ujo
 aUN
-aKi
+bZi
 gia
 cEf
 fnq
@@ -109700,14 +109718,14 @@ aKc
 aKc
 aLS
 aKr
-aKi
+bZi
 aKr
 aKc
 aKc
 aKc
 aKr
-aKi
-aKi
+bZi
+bZi
 frB
 fpn
 fpn
@@ -111541,8 +111559,8 @@ bZn
 aKs
 bTQ
 aHP
-bZl
-bZl
+bZi
+bZi
 lNR
 aLp
 aCP
@@ -111709,8 +111727,8 @@ bZn
 aIb
 aFC
 aHQ
-bZl
-bZl
+bZi
+bZi
 aMo
 fnq
 fnq
@@ -111877,8 +111895,8 @@ bZn
 aMC
 bTP
 aMC
-bZl
-bZl
+bZi
+bZi
 aVB
 fnq
 aVu
@@ -112699,8 +112717,8 @@ rNZ
 qFU
 bdL
 bdF
-aul
-aul
+aPV
+aPV
 bdl
 bdc
 bcT

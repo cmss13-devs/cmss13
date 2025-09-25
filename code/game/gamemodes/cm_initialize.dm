@@ -96,11 +96,13 @@ Additional game mode variables.
 	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
 
 	var/lz_selection_timer = 25 MINUTES //25 minutes in
-	var/round_time_burrowed_cutoff = 25 MINUTES //Time for when free burrowed larvae stop spawning.
 
-	var/round_time_resin = 40 MINUTES //Time for when resin placing is allowed close to LZs
+	///Time for when resin placing is allowed close to LZs
+	var/round_time_resin = 40 MINUTES
 
-	var/round_time_evolution_ovipositor = 5 MINUTES //Time for when ovipositor becomes necessary for evolution to progress.
+	///Time for when ovipositor becomes necessary for evolution to progress.
+	var/round_time_evolution_ovipositor = XENO_ROUNDSTART_FREE_EVO_TIME
+	///Indicates when round_time_evolution_ovipositor has been passed. While FALSE, round_time_evolution_ovipositor is checked
 	var/evolution_ovipositor_threshold = FALSE
 
 	var/flags_round_type = NO_FLAGS

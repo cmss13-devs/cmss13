@@ -997,6 +997,7 @@ GLOBAL_LIST_EMPTY_TYPED(crew_monitor, /datum/crewmonitor)
 				JOB_PROVOST_TML = 30,
 				JOB_WARDEN = 31,
 				JOB_PROVOST_ENFORCER = 31,
+				JOB_POLICE_HG = 32,
 				JOB_RIOT_CHIEF = 32,
 				JOB_RIOT = 33,
 				JOB_POLICE = 34,

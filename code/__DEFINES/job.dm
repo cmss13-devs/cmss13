@@ -104,6 +104,8 @@ GLOBAL_LIST_INIT(job_command_roles, JOB_COMMAND_ROLES_LIST)
 #define JOB_CHIEF_POLICE "Chief MP"
 #define JOB_POLICE_ROLES /datum/timelock/mp
 #define JOB_POLICE_ROLES_LIST    list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE, JOB_CO)
+/// Not a spawn role, but used for title assignment.
+#define JOB_POLICE_HG "Military Police Honor Guard"
 
 #define JOB_SEA "Senior Enlisted Advisor"
 

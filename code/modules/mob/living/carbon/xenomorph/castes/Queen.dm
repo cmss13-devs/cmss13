@@ -522,6 +522,11 @@
 	SIGNAL_HANDLER
 	if(queen_age_temp_timer_id == TIMER_ID_NULL)
 		CRASH("[src] called on_take_damage when not temporarily mature!")
+	if(damage_data["enviro"])
+		return
+	var/damage = damage_data["damage"]
+	if(damage < 5)
+		return
 	var/new_duration = min(timeleft(queen_age_temp_timer_id) + XENO_QUEEN_TEMP_AGE_EXTENSION, XENO_QUEEN_TEMP_AGE_DURATION)
 	queen_age_temp_timer_id = addtimer(CALLBACK(src, PROC_REF(refresh_combat_effective)), new_duration, TIMER_OVERRIDE|TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_NO_HASH_WAIT)
 
@@ -560,6 +565,14 @@
 			queen_age_temp_timer_id = TIMER_ID_NULL
 			UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
 
+	refresh_combat_effective()
+
+/mob/living/carbon/xenomorph/queen/proc/end_temporary_maturity()
+	if(queen_age_temp_timer_id == TIMER_ID_NULL)
+		return
+	deltimer(queen_age_temp_timer_id)
+	queen_age_temp_timer_id = TIMER_ID_NULL
+	UnregisterSignal(src, COMSIG_XENO_TAKE_DAMAGE)
 	refresh_combat_effective()
 
 /// When not on ovipositor, refreshes all mobile_abilities including mobile_aged_abilities if applicable
@@ -629,7 +642,8 @@
 
 		// Grant temporary maturity if near the hive_location for early game
 		if(!queen_aged)
-			var/near_hive = hive?.hive_location && (get_area(hive.hive_location) == get_area(src) || get_dist(hive.hive_location, src) <= 10)
+			// Explicitly requires queen to not be inside something (e.g. a tunnel)
+			var/near_hive = hive?.hive_location && loc == get_turf(src) && (get_area(hive.hive_location) == get_area(src) || get_dist(hive.hive_location, src) <= 10)
 			if(near_hive && ROUND_TIME < XENO_QUEEN_AGE_TIME * 2 && !is_mob_incapacitated(TRUE))
 				make_combat_effective(temporary=TRUE)
 			else if(queen_age_temp_timer_id != TIMER_ID_NULL)

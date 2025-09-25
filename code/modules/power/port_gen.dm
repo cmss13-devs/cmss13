@@ -23,16 +23,16 @@
 	var/lastgen
 
 
-/obj/structure/machinery/power/port_gen/process()
+/obj/structure/machinery/power/power_generator/port_gen/process()
 ideally we're looking to generate 5000
 
-/obj/structure/machinery/power/port_gen/attackby(obj/item/W, mob/user)
+/obj/structure/machinery/power/power_generator/port_gen/attackby(obj/item/W, mob/user)
 tank [un]loading stuff
 
-/obj/structure/machinery/power/port_gen/attack_hand(mob/user)
+/obj/structure/machinery/power/power_generator/port_gen/attack_hand(mob/user)
 turn on/off
 
-/obj/structure/machinery/power/port_gen/get_examine_text(mob/user)
+/obj/structure/machinery/power/power_generator/port_gen/get_examine_text(mob/user)
 display floor(lastgen) and phorontank amount
 
 */

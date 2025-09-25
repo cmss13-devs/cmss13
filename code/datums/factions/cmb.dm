@@ -1,8 +1,10 @@
 /datum/faction/cmb
 	name = "Colonial Marshal Bureau"
 	faction_tag = FACTION_MARSHAL
+	base_icon_file = 'icons/mob/hud/factions/cmb.dmi'
 
 /datum/faction/cmb/modify_hud_holder(image/holder, mob/living/carbon/human/H)
+	var/icon/override_icon_file
 	var/hud_icon_state
 	var/obj/item/card/id/ID = H.get_idcard()
 	var/_role
@@ -32,4 +34,4 @@
 		if(JOB_CMB_SWAT)
 			hud_icon_state = "spec"
 	if(hud_icon_state)
-		holder.overlays += image('icons/mob/hud/marine_hud.dmi', H, "cmb_[hud_icon_state]")
+		holder.overlays += image(override_icon_file ? override_icon_file : base_icon_file, H, "cmb_[hud_icon_state]")

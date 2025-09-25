@@ -1,4 +1,0 @@
-author: "BOBAMAx"
-delete-after: True
-changes:
-  - bugfix: "CLF CO survs now actually spawn, CO survs in PMC insert will no longer be CMB"

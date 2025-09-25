@@ -362,11 +362,15 @@
 	/// The world.time when the xeno was created. Carries over between strains and evolving
 	var/creation_time = 0
 
+
+
 /mob/living/carbon/xenomorph/Initialize(mapload, mob/living/carbon/xenomorph/old_xeno, hivenumber)
 	if(old_xeno && old_xeno.hivenumber)
 		src.hivenumber = old_xeno.hivenumber
 	else if(hivenumber)
 		src.hivenumber = hivenumber
+	minimap_type = get_minimap_flag_for_faction(hivenumber)
+	tacmap = new/datum/tacmap/drawing/xeno(src, minimap_type)
 
 	//putting the organ in for research
 	if(organ_value != 0)

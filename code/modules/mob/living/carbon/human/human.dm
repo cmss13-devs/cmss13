@@ -21,6 +21,10 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
+	minimap_type = get_minimap_flag_for_faction(faction)
+	tacmap = new/datum/tacmap/drawing(src, minimap_type)
+	give_action(src, /datum/action/human_action/tacmap)
+
 /mob/living/carbon/human/initialize_pass_flags(datum/pass_flags_container/PF)
 	..()
 	if (PF)

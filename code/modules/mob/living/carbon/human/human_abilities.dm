@@ -46,6 +46,24 @@
 	action_icon_state = "order_focus"
 	order_type = COMMAND_ORDER_FOCUS
 
+/datum/action/human_action/tacmap
+	name = "View Tacmap"
+	action_icon_state = "minimap"
+
+/datum/action/human_action/tacmap/can_use_action()
+	. = ..()
+	if(!owner)
+		return FALSE
+	var/mob/living/carbon/human = owner
+	if(human.is_mob_incapacitated() || human.dazed)
+		return FALSE
+	return TRUE
+
+/datum/action/human_action/tacmap/action_activate()
+	var/mob/living/carbon/human/carbon = owner
+	carbon.tacmap()
+	return ..()
+
 /datum/action/human_action/psychic_whisper
 	name = "Psychic Whisper"
 	action_icon_state = "cultist_channel_hivemind"

@@ -89,21 +89,22 @@
 				M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),
 				SPAN_WARNING("You get out of [src] and get your bearings!"))
 
-/obj/structure/closet/proc/open()
+/// Attempts to open this closet by user, skipping checks that prevent opening if forced
+/obj/structure/closet/proc/open(mob/user, force)
 	if(opened)
-		return 0
+		return FALSE
 
-	if(!can_open())
-		return 0
+	if(!force && !can_open())
+		return FALSE
 
 	dump_contents()
 
 	UnregisterSignal(src, COMSIG_CLOSET_FLASHBANGED)
-	opened = 1
+	opened = TRUE
 	update_icon()
-	playsound(src.loc, open_sound, 15, 1)
+	playsound(loc, open_sound, 15, 1)
 	density = FALSE
-	return 1
+	return TRUE
 
 /obj/structure/closet/proc/close(mob/user)
 	if(!src.opened)
@@ -158,7 +159,7 @@
 
 /obj/structure/closet/proc/toggle(mob/living/user)
 	user.next_move = world.time + 5
-	if(!(src.opened ? src.close(user) : src.open()))
+	if(!(opened ? close(user) : open(user)))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 	return
 
@@ -329,7 +330,7 @@
 		deconstruct(FALSE)
 		return
 
-	if(!src.open())
+	if(!open(user))
 		to_chat(user, SPAN_NOTICE("It won't budge!"))
 		if(!lastbang)
 			lastbang = 1
@@ -379,10 +380,10 @@
 			proxy_object_heard(src, M, TM, text, verb, language, italics)
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
-/obj/structure/closet/proc/break_open()
+/obj/structure/closet/proc/break_open(mob/user)
 	if(!opened)
-		welded = 0
-		open()
+		welded = FALSE
+		open(user, force=TRUE)
 
 /obj/structure/closet/yautja
 	name = "alien closet"

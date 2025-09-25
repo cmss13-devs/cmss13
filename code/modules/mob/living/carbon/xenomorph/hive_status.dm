@@ -10,10 +10,13 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/xenomorph/queen/living_xeno_queen
 	var/egg_planting_range = 15
-	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
-	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
-	var/destruction_allowed = NORMAL_XENO //Who can destroy special structures
-	var/unnesting_allowed = TRUE
+
+	/// Toggles for the hive that are reset on queen death unless hive_flags_locked
+	var/hive_flags = XENO_SLASH_ALLOW_ALL|XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL
+
+	/// Whether hive_flags are locked (as in cannot be changed by a queen)
+	var/hive_flags_locked = FALSE
+
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
@@ -789,7 +792,7 @@
 				qdel(xeno)
 				continue
 			if(xeno.hunter_data.hunted && !isqueen(xeno))
-				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, seperating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
+				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, separating you from her hive! You must defend yourself from the headhunter before you can enter hibernation..."))
 				xeno.set_hive_and_update(XENO_HIVE_FORSAKEN)
 			else
 				to_chat(xeno, SPAN_XENOANNOUNCE("The Queen has left without you, you quickly find a hiding place to enter hibernation as you lose touch with the hive mind."))
@@ -800,16 +803,17 @@
 			continue
 		if(xeno.tier >= 1)
 			xenos_count++
-	for(var/i in GLOB.alive_mob_list)
-		var/mob/living/potential_host = i
-		if(!(potential_host.status_flags & XENO_HOST))
-			continue
+	for(var/mob/living/potential_host as anything in GLOB.alive_mob_list)
 		if(!is_ground_level(potential_host.z) || get_area(potential_host) == hijacked_dropship)
 			continue
-		var/obj/item/alien_embryo/A = locate() in potential_host
-		if(A && A.hivenumber != hivenumber)
+		var/obj/item/clothing/mask/facehugger/hugger = locate() in potential_host
+		if(hugger && hugger.hivenumber == hivenumber)
+			hugger.hivenumber = XENO_HIVE_FORSAKEN
+		if(!(potential_host.status_flags & XENO_HOST))
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
+			if(embryo.hivenumber != hivenumber)
+				continue
 			embryo.hivenumber = XENO_HIVE_FORSAKEN
 		potential_host.update_med_icon()
 	for(var/mob/living/carbon/human/current_human as anything in GLOB.alive_human_list)
@@ -1189,8 +1193,7 @@
 	color = "#828296"
 	ui_color = "#828296"
 
-	construction_allowed = XENO_NOBODY
-	destruction_allowed = XENO_NOBODY
+	hive_flags = parent_type::hive_flags & ~(XENO_CONSTRUCTION_ALLOW_ALL|XENO_DECONSTRUCTION_ALLOW_ALL)
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_no_queen_evo = TRUE
@@ -1441,7 +1444,7 @@
 	addtimer(CALLBACK(src, PROC_REF(handle_defectors), faction), 11 SECONDS)
 
 /datum/hive_status/corrupted/proc/give_defection_choice(mob/living/carbon/xenomorph/xeno, faction)
-	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and stay loyal to her?", "Alliance broken!", list("Stay loyal", "Obey the talls"), 10 SECONDS) == "Obey the talls")
+	if(tgui_alert(xeno, "Our Queen has broken the alliance with the [faction]. The device inside our carapace begins to suppress our connection with the Hive. Do we remove it and follow the Queen?", "Alliance broken!", list("Obey the Queen", "Obey the talls"), 10 SECONDS) == "Obey the talls")
 		if(!xeno.iff_tag)
 			to_chat(xeno, SPAN_XENOWARNING("It's too late now. The device is gone and our service to the Queen continues."))
 			return
@@ -1471,6 +1474,8 @@
 		return
 
 	xeno_message(SPAN_XENOANNOUNCE("We sense that [english_list(defectors)] turned their backs against their sisters and the Queen in favor of their slavemasters!"), 3, hivenumber)
+	if(faction == FACTION_MARINE && ares_can_interface())
+		marine_announcement("The advanced IFF Xenomorph tagging technology has detected hostile intentions and succesfully supressed the psychic link of [length(defectors)] lifeform\s. The collaborative lifeforms are given designation Renegades. Full cooperation is to be expected.", MAIN_AI_SYSTEM)
 	defectors.Cut()
 
 /datum/hive_status/corrupted/proc/add_personal_ally(mob/living/ally)

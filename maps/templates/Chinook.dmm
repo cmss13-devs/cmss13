@@ -1,4 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/effect/decal/floor_symbol/uscm_3x3/northface/southeast,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
+"ab" = (
+/obj/effect/decal/floor_symbol/uscm_3x3/northface/east,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
 "ac" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
@@ -22,6 +30,10 @@
 	},
 /turf/open/floor/almayer/silver/north,
 /area/adminlevel/chinook)
+"ae" = (
+/obj/effect/decal/floor_symbol/uscm_3x3/northface/northeast,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
 "af" = (
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/space)
@@ -35,12 +47,26 @@
 "ai" = (
 /turf/open/floor/almayer_hull/outerhull_dir/southwest,
 /area/space)
+"aj" = (
+/obj/effect/decal/floor_symbol/uscm_3x3/northface,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
+"ak" = (
+/obj/effect/decal/floor_symbol/uscm_3x3{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
 "al" = (
 /turf/open/floor/almayer_hull,
 /area/space)
 "am" = (
 /turf/open/floor/almayer/tcomms,
 /area/adminlevel/chinook/engineering)
+"an" = (
+/obj/effect/decal/floor_symbol/uscm_3x3/northface/north,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
 "ao" = (
 /turf/open/floor/kutjevo,
 /area/adminlevel/chinook)
@@ -72,6 +98,14 @@
 	},
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
+"as" = (
+/obj/effect/decal/floor_symbol/uscm_3x3/northface/southwest,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
+"at" = (
+/obj/effect/decal/floor_symbol/uscm_3x3/northface/west,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
 "au" = (
 /turf/open/floor/almayer_hull/outerhull_dir/east,
 /area/space)
@@ -89,6 +123,10 @@
 /obj/structure/machinery/vending/cola,
 /turf/open/floor/kutjevo/plate,
 /area/adminlevel/chinook/offices)
+"ay" = (
+/obj/effect/decal/floor_symbol/uscm_3x3/northface/northwest,
+/turf/open/floor/carpet,
+/area/adminlevel/chinook/event)
 "aA" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/almayer,
@@ -1417,7 +1455,8 @@
 /turf/open/floor/almayer/blue,
 /area/adminlevel/chinook/offices)
 "fh" = (
-/turf/open/floor/almayer/uscm/directional/west,
+/obj/effect/decal/floor_symbol/uscm_3x3/westface/west,
+/turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "fi" = (
 /obj/effect/decal/cleanable/liquid_fuel,
@@ -3648,10 +3687,12 @@
 /turf/open/floor/almayer/plating/northeast,
 /area/adminlevel/chinook/cargo)
 "ou" = (
-/turf/open/floor/almayer/uscm/directional/north,
+/obj/effect/decal/floor_symbol/uscm_3x3/westface/north,
+/turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "ov" = (
-/turf/open/floor/almayer/uscm/directional/northeast,
+/obj/effect/decal/floor_symbol/uscm_3x3/westface/northeast,
+/turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "ow" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -3943,7 +3984,8 @@
 /turf/open/floor/wood,
 /area/adminlevel/chinook/offices)
 "pE" = (
-/turf/open/floor/almayer/uscm/directional/southeast,
+/obj/effect/decal/floor_symbol/uscm_3x3/westface/southeast,
+/turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "pF" = (
 /obj/structure/surface/table/reinforced/black,
@@ -5339,7 +5381,10 @@
 /turf/open/floor/carpet,
 /area/adminlevel/chinook)
 "vu" = (
-/turf/open/floor/almayer/uscm/directional/logo_c/west,
+/obj/effect/decal/floor_symbol/uscm_3x3{
+	dir = 8
+	},
+/turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "vv" = (
 /obj/structure/bed/stool,
@@ -6649,7 +6694,8 @@
 /turf/open/floor/almayer/orange/north,
 /area/adminlevel/chinook/engineering)
 "Bu" = (
-/turf/open/floor/almayer/uscm/directional/southwest,
+/obj/effect/decal/floor_symbol/uscm_3x3/westface/southwest,
+/turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "Bx" = (
 /obj/structure/surface/table/reinforced/black,
@@ -6882,7 +6928,8 @@
 /turf/open/floor/almayer/ai_floors,
 /area/adminlevel/chinook/offices)
 "Cx" = (
-/turf/open/floor/almayer/uscm/directional/northwest,
+/obj/effect/decal/floor_symbol/uscm_3x3/westface/northwest,
+/turf/open/floor/almayer/emeraldcorner/north,
 /area/adminlevel/chinook/shuttle)
 "Cz" = (
 /obj/structure/bed/sofa/south/grey,
@@ -8221,7 +8268,8 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/chinook/engineering)
 "Ih" = (
-/turf/open/floor/almayer/uscm/directional,
+/obj/effect/decal/floor_symbol/uscm_3x3/westface,
+/turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "Ij" = (
 /obj/structure/bed/chair{
@@ -12491,7 +12539,8 @@
 /turf/open/floor/almayer/plating_striped/east,
 /area/adminlevel/chinook/engineering)
 "ZV" = (
-/turf/open/floor/almayer/uscm/directional/east,
+/obj/effect/decal/floor_symbol/uscm_3x3/westface/east,
+/turf/open/floor/almayer,
 /area/adminlevel/chinook/shuttle)
 "ZW" = (
 /obj/structure/surface/table/almayer,
@@ -25899,9 +25948,9 @@ WZ
 Hz
 Vr
 Vr
-Vr
-Vr
-Vr
+as
+aj
+aa
 Vr
 Vr
 Vr
@@ -26026,9 +26075,9 @@ WZ
 mg
 IM
 Vr
-Vr
-Vr
-Vr
+at
+ak
+ab
 Vr
 Vr
 Vr
@@ -26153,9 +26202,9 @@ WZ
 mi
 Vr
 Vr
-Vr
-Vr
-Vr
+ay
+an
+ae
 Vr
 Vr
 Vr

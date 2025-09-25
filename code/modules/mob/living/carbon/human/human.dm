@@ -1207,30 +1207,38 @@
 	var/legs_exposed = 1
 	var/hands_exposed = 1
 	var/feet_exposed = 1
+	var/armor_on = 0
+	var/helmet_on = 0
 
 	for(var/obj/item/clothing/C in equipment)
-		if(C.flags_armor_protection & BODY_FLAG_HEAD)
+		if(C.flags_bodypart_hidden & BODY_FLAG_HEAD)
 			head_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_FACE)
+		if(C.flags_inv_hide & HIDEFACE)
 			face_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_EYES)
+		if(C.flags_inv_hide & HIDEEYES)
 			eyes_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_CHEST)
+		if(C.flags_bodypart_hidden & BODY_FLAG_CHEST)
 			torso_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_ARMS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_ARMS)
 			arms_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_HANDS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_HANDS)
 			hands_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_LEGS)
+		if(C.flags_bodypart_hidden & BODY_FLAG_LEGS)
 			legs_exposed = 0
-		if(C.flags_armor_protection & BODY_FLAG_FEET)
+		if(C.flags_bodypart_hidden & BODY_FLAG_FEET)
 			feet_exposed = 0
+		if(istype(C, /obj/item/clothing/suit/storage/marine))
+			armor_on = 1
+		if(istype(C, /obj/item/clothing/head/helmet/marine))
+			helmet_on = 1
 
 	flavor_text = flavor_texts["general"]
 	flavor_text += "\n\n"
 	for(var/T in flavor_texts)
 		if(flavor_texts[T] && flavor_texts[T] != "")
-			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed))
+			if((T == "head" && head_exposed) || (T == "face" && face_exposed) || (T == "eyes" && eyes_exposed) || (T == "torso" && torso_exposed) || (T == "arms" && arms_exposed) || (T == "hands" && hands_exposed) || (T == "legs" && legs_exposed) || (T == "feet" && feet_exposed) || (T == "armor" && armor_on) || (T == "helmet" && helmet_on))
+				flavor_text += "[capitalize(T)]: "
+				flavor_text += "\n\n"
 				flavor_text += flavor_texts[T]
 				flavor_text += "\n\n"
 
@@ -1742,6 +1750,9 @@
 	HTML += "<a href='byond://?src=\ref[src];flavor_change=feet'>Feet:</a> "
 	HTML += TextPreview(flavor_texts["feet"])
 	HTML += "<br>"
+	HTML += "<a href='byond://?src=\ref[src];flavor_change=armor'>Armor:</a> "
+	HTML += TextPreview(flavor_texts["armor"])
+	HTML += "<br>"
 	HTML += "<hr />"
 	HTML +="<a href='byond://?src=\ref[src];flavor_change=done'>\[Done\]</a>"
 	HTML += "<tt>"
@@ -1754,6 +1765,13 @@
 			to_chat(src, SPAN_DANGER("You are currently unable to throw harmful items."))
 			return
 	. = ..()
+
+/mob/living/carbon/human/throw_atom(atom/target, range, speed = 0, atom/thrower, spin, launch_type = NORMAL_LAUNCH, pass_flags = NO_FLAGS, list/end_throw_callbacks, list/collision_callbacks, tracking = FALSE)
+	var/turf/above = SSmapping.get_turf_above(thrower)
+	if(above && above.z == target.z)
+		to_chat(thrower, SPAN_WARNING("You can't throw someone that high!"))
+		return
+	..()
 
 /mob/living/carbon/human/equip_to_slot_if_possible(obj/item/equipping_item, slot, ignore_delay = 1, del_on_fail = 0, disable_warning = 0, redraw_mob = 1, permanent = 0)
 
@@ -1850,5 +1868,4 @@
 		if(PULSE_THREADY)
 			return method ? ">250" : "extremely weak and fast, patient's artery feels like a thread"
 // output for machines^ ^^^^^^^output for people^^^^^^^^^
-
 

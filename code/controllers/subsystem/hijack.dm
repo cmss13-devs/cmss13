@@ -163,6 +163,10 @@ SUBSYSTEM_DEF(hijack)
 	current_run_progress_additive = 0
 	current_run_progress_multiplicative = 1
 
+///Called when the dropship has been called by the xenos
+/datum/controller/subsystem/hijack/proc/call_shuttle()
+	hijack_status = HIJACK_OBJECTIVES_SHIP_INBOUND
+
 ///Called when the xeno dropship crashes into the Almayer and announces the current status of various objectives to marines
 /datum/controller/subsystem/hijack/proc/announce_status_on_crash()
 	var/message = ""

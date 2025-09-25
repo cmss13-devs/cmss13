@@ -435,3 +435,8 @@
 	var/mob/living/carbon/xenomorph/xenomorph = owner
 	to_chat(xenomorph, SPAN_NOTICE("We are ready to dig a tunnel again."))
 	xenomorph.tunnel_delay = 0
+
+/mob/living/carbon/xenomorph/burrower/try_fill_trap(obj/effect/alien/resin/trap/target)
+	. = ..()
+	if(.)
+		target.set_state(RESIN_TRAP_ACID3)

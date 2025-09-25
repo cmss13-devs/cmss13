@@ -218,6 +218,13 @@ if $grep 'to_chat\(("|SPAN)' $code_files; then
 	st=1
 fi;
 
+part "deoptimization of range/hearers with as anything"
+if $grep 'as anything in o?(range|hearers)\(' $code_files; then
+	echo
+	echo -e "${RED}ERROR: range(), orange(), hearers(), and ohearers() perform significantly worse with as anything.${NC}"
+	st=1
+fi;
+
 section "515 Proc Syntax"
 part "proc ref syntax"
 if $grep '\.proc/' $code_x_515 ; then

@@ -56,6 +56,8 @@
 	icon_xeno = 'icons/mob/xenos/castes/tier_3/boiler.dmi'
 	icon_xenonid = 'icons/mob/xenonids/castes/tier_3/boiler.dmi'
 
+	acid_overlay = icon('icons/mob/xenos/castes/tier_3/boiler.dmi', "Boiler-Spit")
+
 	weed_food_icon = 'icons/mob/xenos/weeds_64x64.dmi'
 	weed_food_states = list("Boiler_1","Boiler_2","Boiler_3")
 	weed_food_states_flipped = list("Boiler_1","Boiler_2","Boiler_3")
@@ -214,6 +216,7 @@
 
 			xeno_action.apply_cooldown_override(cooldown_duration)
 
+
 /datum/action/xeno_action/onclick/acid_shroud/use_ability(atom/affected_atom)
 	var/datum/effect_system/smoke_spread/xeno_acid/spicy_gas
 	var/mob/living/carbon/xenomorph/xeno = owner
@@ -279,3 +282,56 @@
 		else
 			CRASH("Globber has unknown ammo [stabbing_xeno.ammo]! Oh no!")
 		return TRUE
+
+#define ACID_COST_BOILER 200 // ACID_COST_LEVEL_3
+
+/mob/living/carbon/xenomorph/boiler/try_fill_trap(obj/effect/alien/resin/trap/target)
+	if(!istype(target))
+		return FALSE
+
+	if(!acid_level)
+		to_chat(src, SPAN_XENONOTICE("You can't secrete any acid into [target]."))
+		return FALSE
+
+	var/trap_acid_level = 0
+	if(target.trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
+
+	if(trap_acid_level >= acid_level)
+		to_chat(src, SPAN_XENONOTICE("It already has good acid in."))
+		return FALSE
+
+	if(!check_plasma(ACID_COST_BOILER))
+		to_chat(src, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+		return FALSE
+
+	to_chat(src, SPAN_XENONOTICE("You begin charging the resin trap with acid gas."))
+	xeno_attack_delay(src)
+	if(!do_after(src, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+		return FALSE
+
+	if(target.trap_type >= RESIN_TRAP_ACID1)
+		trap_acid_level = 1 + target.trap_type - RESIN_TRAP_ACID1
+
+	if(trap_acid_level >= acid_level)
+		return FALSE
+
+	if(!check_plasma(ACID_COST_BOILER))
+		return FALSE
+
+	use_plasma(ACID_COST_BOILER)
+
+	if(ammo.type == /datum/ammo/xeno/boiler_gas)
+		target.smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
+	else
+		target.smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
+	target.cause_data = create_cause_data("resin gas trap", src)
+	target.setup_tripwires()
+	target.set_state(RESIN_TRAP_GAS)
+
+	playsound(target, 'sound/effects/refill.ogg', 25, 1)
+	visible_message(SPAN_XENOWARNING("[src] pressurises the resin trap with acid gas!"),
+	SPAN_XENOWARNING("You pressurise the resin trap with acid gas!"), null, 5)
+	return TRUE
+
+#undef ACID_COST_BOILER

@@ -76,22 +76,71 @@
 			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		SStgui.update_uis(src)
 		update_icon()
+		return
 
-	else if(istype(inputed_item, /obj/item/storage/pill_bottle) && pill_maker)
+	if(!pill_maker)
+		return
+
+	if(istype(inputed_item, /obj/item/storage/pill_bottle))
 		var/obj/item/storage/pill_bottle/bottle = inputed_item
 
 		if(length(loaded_pill_bottles) >= max_bottles_count)
 			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
 			return
 
-		loaded_pill_bottles += bottle
-		if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
-			loaded_pill_bottles_to_fill += bottle
+		add_pill_bottle(bottle)
 
 		user.drop_inv_item_to_loc(bottle, src)
 		to_chat(user, SPAN_NOTICE("You add the pill bottle into the dispenser slot!"))
 		SStgui.update_uis(src)
-	return
+		return
+
+	if(istype(inputed_item, /obj/item/storage/box/pillbottles))
+		var/obj/item/storage/box/pillbottles/box = inputed_item
+		if(!box)
+			return
+
+		if(length(loaded_pill_bottles) >= max_bottles_count)
+			to_chat(user, SPAN_WARNING("Machine is fully loaded by pill bottles."))
+			return
+
+		if(length(box.contents) == 0)
+			to_chat(user, SPAN_WARNING("[box.name] is empty and cannot be unloaded into the [name]."))
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [box.name] into the [name]..."),
+		SPAN_NOTICE("You start to empty the [box.name] into the [name]..."))
+
+		var/waiting_time = min(length(box.contents), max_bottles_count - length(loaded_pill_bottles)) * box.time_to_empty
+
+		if(waiting_time <= 0) //well, something went wrong
+			return
+
+		if(!do_after(user, waiting_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+			return
+
+		playsound(user.loc, box.use_sound, 25, TRUE, 3)
+
+		for(var/obj/item/storage/pill_bottle/bottle in box.contents)
+			if(!bottle)
+				continue
+			if(length(loaded_pill_bottles) >= max_bottles_count)
+				to_chat(user, SPAN_WARNING("[name] is fully loaded by pill bottles."))
+				return
+			add_pill_bottle(bottle)
+			box.forced_item_removal(bottle)
+
+		SStgui.update_uis(src)
+
+/obj/structure/machinery/chem_master/proc/add_pill_bottle(obj/item/storage/pill_bottle/bottle)
+	if(!bottle)
+		return
+
+	loaded_pill_bottles += bottle
+
+	if (length(loaded_pill_bottles) == 1 || length(loaded_pill_bottles_to_fill) == 0)
+		loaded_pill_bottles_to_fill += bottle
+
 
 /obj/structure/machinery/chem_master/proc/transfer_chemicals(obj/dest, obj/source, amount, reagent_id)
 	if(istype(source))

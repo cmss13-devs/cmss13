@@ -38,8 +38,10 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/static/datum/body_picker/body_picker = new
 	var/static/datum/traits_picker/traits_picker = new
 	var/static/datum/loadout_picker/loadout_picker = new
+	var/static/datum/flavor_text_editor/flavor_text_editor = new
 
 	var/static/datum/pred_picker/pred_picker = new
+
 
 	//doohickeys for savefiles
 	var/path
@@ -309,6 +311,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	/// Sends messages in chat when the Xeno Action's cooldown is complete and adds cooldown timers in stat panel
 	var/show_cooldown_messages = FALSE
 
+	/// A list of saved presets for the ChemMaster, storing pill bottle color, label, and pill color preferences
+	var/list/chem_presets = list()
+
 /datum/preferences/New(client/C)
 	key_bindings = deep_copy_list(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -403,7 +408,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			dat += "<h2><b><u>Physical Information:</u></b>"
 			dat += "<a href='byond://?_src_=prefs;preference=all;task=random'>&reg;</A></h2>"
 			dat += "<b>Age:</b> <a href='byond://?_src_=prefs;preference=age;task=input'><b>[age]</b></a><br>"
-			dat += "<b>Gender:</b> <a href='byond://?_src_=prefs;preference=gender'><b>[gender == MALE ? "Male" : "Female"]</b></a><br><br>"
+			dat += "<b>Gender:</b> <a href='byond://?_src_=prefs;preference=gender'><b>[gender == PLURAL ? "Non-Binary" : gender == MALE ? "Male" : "Female"]</b></a><br>"
 
 			dat += "<b>Skin Color:</b> [skin_color]<br>"
 			dat += "<b>Body Size:</b> [body_size]<br>"
@@ -950,23 +955,6 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	show_browser(user, HTML, "Set Records", "records", width = 350, height = 300)
 	return
 
-/datum/preferences/proc/SetFlavorText(mob/user)
-	var/HTML = "<body>"
-	HTML += "<tt>"
-	HTML += "You may include %bloodtype% %rank% or %name% as inserts."
-	HTML += "<br>"
-	HTML += "The %rank% will include a space after if applicable."
-	HTML += "<br>"
-	HTML += "<a href='byond://?src=\ref[user];preference=flavor_text;task=general'>General:</a> "
-	HTML += TextPreview(flavor_texts["general"])
-	HTML += "<br>"
-	HTML += "<hr />"
-	HTML +="<a href='byond://?src=\ref[user];preference=flavor_text;task=done'>Done</a>"
-	HTML += "<tt>"
-	close_browser(user, "preferences")
-	show_browser(user, HTML, "Set Flavor Text", "flavor_text", width = 410, height = 430)
-	return
-
 /datum/preferences/proc/SetJob(mob/user, role, priority)
 	var/datum/job/job = GLOB.RoleAuthority.roles_by_name[role]
 	if(!job)
@@ -1109,27 +1097,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 			return
 
 		if("flavor_text")
-			switch(href_list["task"])
-				if("open")
-					SetFlavorText(user)
-					return
-				if("done")
-					close_browser(user, "flavor_text")
-					ShowChoices(user)
-					return
-				if("general")
-					var/msg = input(usr,"Give a physical description of your character. This will be shown regardless of clothing.","Flavor Text",html_decode(flavor_texts[href_list["task"]])) as message
-					if(msg != null)
-						msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-						msg = html_encode(msg)
-					flavor_texts[href_list["task"]] = msg
-				else
-					var/msg = input(usr,"Set the flavor text for your [href_list["task"]].","Flavor Text",html_decode(flavor_texts[href_list["task"]])) as message
-					if(msg != null)
-						msg = copytext(msg, 1, MAX_MESSAGE_LEN)
-						msg = html_encode(msg)
-					flavor_texts[href_list["task"]] = msg
-			SetFlavorText(user)
+			flavor_text_editor.tgui_interact(user)
 			return
 
 		if("records")
@@ -1796,7 +1764,9 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 				if("gender")
 					if(gender == MALE)
 						gender = FEMALE
-					else
+					else if(gender == FEMALE)
+						gender = PLURAL
+					else if(gender == PLURAL)
 						gender = MALE
 					underwear = sanitize_inlist(underwear, gender == MALE ? GLOB.underwear_m : GLOB.underwear_f, initial(underwear))
 					undershirt = sanitize_inlist(undershirt, gender == MALE ? GLOB.undershirt_m : GLOB.undershirt_f, initial(undershirt))
@@ -2116,6 +2086,8 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		character.flavor_texts["hands"] = flavor_texts["hands"]
 		character.flavor_texts["legs"] = flavor_texts["legs"]
 		character.flavor_texts["feet"] = flavor_texts["feet"]
+		character.flavor_texts["helmet"] = flavor_texts["helmet"]
+		character.flavor_texts["armor"] = flavor_texts["armor"]
 
 	if(!be_random_name)
 		character.med_record = strip_html(med_record)
@@ -2506,3 +2478,17 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 		return
 
 	return slots_with_stuff
+
+/datum/preferences/proc/get_all_chem_presets()
+	return chem_presets
+
+/datum/preferences/proc/get_chem_preset(preset_name)
+	return chem_presets[preset_name]
+
+/datum/preferences/proc/save_chem_preset(preset_name, list/preset_data)
+	chem_presets[preset_name] = preset_data
+	save_preferences()
+
+/datum/preferences/proc/delete_chem_preset(preset_name)
+	chem_presets -= preset_name
+	save_preferences()

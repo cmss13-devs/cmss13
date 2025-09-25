@@ -164,7 +164,6 @@
 	else
 		if(HAS_TRAIT(moving_human, TRAIT_BIMEX))
 			visible_message(SPAN_NOTICE("[moving_human]'s BiMex© personal shades shine as \the [src] passes over them."), SPAN_NOTICE("Your BiMex© personal shades as \the [src] passes over them."))
-			//drip = bonus balloonchat
 		else
 			visible_message(SPAN_NOTICE("[moving_human]'s headgear protects them from \the [src]."), SPAN_NOTICE("Your headgear protects you from  \the [src]."))
 

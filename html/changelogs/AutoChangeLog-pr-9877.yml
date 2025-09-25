@@ -1,4 +1,0 @@
-author: "Venuska1117"
-delete-after: True
-changes:
-  - bugfix: "Fruit balloon alert now only trigger after consuming fruit, instead for every not related Destroy() proc call."

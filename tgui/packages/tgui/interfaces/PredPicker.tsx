@@ -24,7 +24,6 @@ import { HairPickerElement } from './HairPicker';
 type PredData = {
   name: string;
   gender: string;
-  body_presentation: string;
   age: number;
   hair_style: string;
   skin_color: string;
@@ -89,7 +88,6 @@ export const PredPicker = () => {
   const {
     name,
     gender,
-    body_presentation,
     age,
     hair_icon,
     hair_style,
@@ -123,9 +121,7 @@ export const PredPicker = () => {
                 </LabeledList.Item>
                 <LabeledList.Item label="Gender">
                   <Button onClick={() => act('gender')}>
-                    {gender === 'plural'
-                      ? 'Non-Binary'
-                      : capitalizeFirst(gender)}
+                    {capitalizeFirst(gender)}
                   </Button>
                 </LabeledList.Item>
                 <LabeledList.Item label="Age">
@@ -135,12 +131,6 @@ export const PredPicker = () => {
                     minValue={175}
                     maxValue={3000}
                     onChange={(val) => act('age', { age: val })}
-                  />
-                </LabeledList.Item>
-                <LabeledList.Item label="Body Presentation">
-                  <Button
-                    icon={body_presentation === 'male' ? 'mars' : 'venus'}
-                    onClick={() => act('body_presentation')}
                   />
                 </LabeledList.Item>
               </LabeledList>

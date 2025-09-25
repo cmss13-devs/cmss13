@@ -1133,6 +1133,7 @@
 #include "code\game\objects\effects\overlays.dm"
 #include "code\game\objects\effects\portals.dm"
 #include "code\game\objects\effects\projector.dm"
+#include "code\game\objects\effects\random_explosion.dm"
 #include "code\game\objects\effects\rappel_rope.dm"
 #include "code\game\objects\effects\shockwave.dm"
 #include "code\game\objects\effects\spiders.dm"

@@ -919,7 +919,7 @@
 	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
 		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
 		if(potency > /datum/chem_property/positive/fire/oxidizing::ignite_threshold)
-			L.IgniteMob(TRUE)
+			L.IgniteMob()
 
 /datum/chem_property/positive/fire/oxidizing/can_cause_harm()
 	. = ..()

@@ -35,6 +35,7 @@
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
 	QDEL_NULL(hallucinations)
+	QDEL_NULL(tacmap)
 	status_effects = null
 
 /// Clear all running status effects assuming deletion

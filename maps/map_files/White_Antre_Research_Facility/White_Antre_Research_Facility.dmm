@@ -37004,6 +37004,9 @@
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},
+/obj/structure/machinery/door/airlock/multi_tile/hybrisa/medical/autoname{
+	dir = 1
+	},
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/upper_level/simian_storage)
 "bRD" = (
@@ -39470,19 +39473,40 @@
 /turf/open/floor/almayer_hull/outerhull_dir,
 /area/white_antre/outdoors/facility_exterior)
 "bYH" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/slippery/roof/dir/east,
 /area/white_antre/outdoors/facility_exterior)
 "bYI" = (
-/turf/open/floor/almayer_hull/outerhull_dir/north,
+/turf/open/slippery/roof/dir/north,
 /area/white_antre/outdoors/facility_exterior)
 "bYJ" = (
 /obj/structure/flora/tree/tyrargo/tree_3,
 /turf/open/auto_turf/snow/layer2,
 /area/white_antre/outdoors/south_field)
+"bYK" = (
+/turf/open/slippery/roof/dir/southwest,
+/area/white_antre/outdoors/facility_exterior)
+"bYL" = (
+/turf/open/slippery/roof/dir,
+/area/white_antre/outdoors/facility_exterior)
+"bYM" = (
+/turf/open/slippery/roof/dir/southeast,
+/area/white_antre/outdoors/facility_exterior)
 "bYN" = (
 /obj/effect/landmark/static_comms/net_two,
 /turf/open/floor/prison/floor_marked,
 /area/white_antre/indoors/main_level/security)
+"bYO" = (
+/turf/open/slippery/roof,
+/area/white_antre/outdoors/facility_exterior)
+"bYP" = (
+/turf/open/slippery/roof/dir/west,
+/area/white_antre/outdoors/facility_exterior)
+"bYQ" = (
+/turf/open/slippery/roof/dir/northwest,
+/area/white_antre/outdoors/facility_exterior)
+"bYR" = (
+/turf/open/slippery/roof/dir/northeast,
+/area/white_antre/outdoors/facility_exterior)
 "bZv" = (
 /obj/effect/decal/hybrisa/road/corner{
 	dir = 1
@@ -40617,7 +40641,7 @@
 /turf/open/floor/prison/darkyellow2/northeast,
 /area/white_antre/indoors/main_level/engineering)
 "fuj" = (
-/turf/open/floor/almayer_hull/outerhull_dir/north,
+/turf/open/slippery/roof/dir/north,
 /area/white_antre/landing_zone)
 "fvb" = (
 /obj/structure/bed/chair/dropship/pilot{
@@ -41327,7 +41351,7 @@
 /turf/open/floor/almayer/orange/southeast,
 /area/white_antre/indoors/main_level/north_containment_hive)
 "hLL" = (
-/turf/open/floor/almayer_hull/outerhull_dir/east,
+/turf/open/slippery/roof/dir/east,
 /area/white_antre/landing_zone)
 "hNM" = (
 /turf/open/asphalt/cement/cement3,
@@ -41930,7 +41954,7 @@
 /turf/open/floor/corsat/marked,
 /area/white_antre/indoors/main_level/security)
 "jIC" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northeast,
+/turf/open/slippery/roof/dir/northeast,
 /area/white_antre/landing_zone)
 "jJl" = (
 /turf/closed/shuttle/dropship4/WY/HorizonRunner{
@@ -42111,7 +42135,7 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/white_antre/outdoors/north_field)
 "kDp" = (
-/turf/open/floor/almayer_hull/outerhull_dir/west,
+/turf/open/slippery/roof/dir/west,
 /area/white_antre/landing_zone)
 "kEK" = (
 /obj/effect/decal/warning_stripes{
@@ -42181,7 +42205,7 @@
 /turf/open/auto_turf/strata_grass/layer0_mud_alt,
 /area/white_antre/outdoors/path_north)
 "kPj" = (
-/turf/open/floor/almayer_hull,
+/turf/open/slippery/roof,
 /area/white_antre/landing_zone)
 "kRc" = (
 /turf/open/floor/prison/damaged2,
@@ -43336,7 +43360,7 @@
 /turf/open/floor/strata/red4/west,
 /area/white_antre/indoors/main_level/security)
 "oyK" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southeast,
+/turf/open/slippery/roof/dir/southeast,
 /area/white_antre/landing_zone)
 "ozb" = (
 /turf/closed/wall/kutjevo/colony/reinforced/hull,
@@ -43678,7 +43702,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/white_antre/outdoors/north_field)
 "pHD" = (
-/turf/open/floor/almayer_hull/outerhull_dir,
+/turf/open/slippery/roof/dir,
 /area/white_antre/landing_zone)
 "pIU" = (
 /obj/effect/decal/warning_stripes{
@@ -43768,10 +43792,6 @@
 	name = "PMC-DS-1 'Cash Flow'"
 	},
 /area/white_antre/indoors/pmc_dropship)
-"qdD" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass,
-/turf/open/floor/corsat/marked,
-/area/white_antre/landing_zone/roof)
 "qeq" = (
 /obj/effect/decal/hybrisa/tiretrack,
 /obj/effect/decal/hybrisa/tiretrack,
@@ -44690,7 +44710,7 @@
 /turf/open/auto_turf/strata_grass/layer0,
 /area/white_antre/landing_zone)
 "tUu" = (
-/turf/open/floor/almayer_hull/outerhull_dir/northwest,
+/turf/open/slippery/roof/dir/northwest,
 /area/white_antre/landing_zone)
 "tZm" = (
 /obj/structure/machinery/light/dropship/green{
@@ -45112,7 +45132,7 @@
 /turf/open/floor/prison/darkred2/east,
 /area/white_antre/indoors/main_level/south_containment)
 "vuo" = (
-/turf/open/floor/almayer_hull/outerhull_dir/southwest,
+/turf/open/slippery/roof/dir/southwest,
 /area/white_antre/landing_zone)
 "vww" = (
 /turf/closed/wall/strata_ice/dirty/rock,
@@ -45587,15 +45607,6 @@
 "wZd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/hybrisa/metal/bluemetal1/southwest,
-/area/white_antre/landing_zone/roof)
-"xaX" = (
-/obj/structure/machinery/door/airlock/multi_tile/almayer/almayer/glass{
-	access_modified = 1;
-	dir = 2;
-	name = "\improper Requisitions Break Room";
-	req_one_access_txt = "19;21"
-	},
-/turf/open/floor/corsat/marked,
 /area/white_antre/landing_zone/roof)
 "xbN" = (
 /turf/closed/shuttle/dropship2/transparent{
@@ -90066,7 +90077,7 @@ bel
 bdZ
 bdZ
 aNB
-qdD
+aKz
 aNi
 aKB
 aKB
@@ -90106,7 +90117,7 @@ bYx
 aKC
 aKB
 dea
-qdD
+aKz
 jTp
 iDL
 iDL
@@ -90906,7 +90917,7 @@ bep
 bec
 aKf
 aNC
-qdD
+aKz
 aNi
 aKC
 aKB
@@ -90946,7 +90957,7 @@ aKB
 aKB
 aKB
 dea
-qdD
+aKz
 aXU
 aXH
 aKp
@@ -92422,7 +92433,7 @@ pWw
 aKA
 iFy
 aKz
-xaX
+aKz
 akw
 akw
 akw
@@ -92455,7 +92466,7 @@ akw
 akw
 akw
 aKz
-xaX
+aKz
 iFy
 aKA
 aKD
@@ -140639,9 +140650,9 @@ spC
 spC
 spC
 spC
-bgX
-bgS
-bgR
+bYQ
+bYP
+bYK
 spC
 spC
 spC
@@ -140669,9 +140680,9 @@ spC
 spC
 spC
 spC
-bgX
-bgS
-bgR
+bYQ
+bYP
+bYK
 spC
 spC
 spC
@@ -140806,11 +140817,11 @@ spC
 spC
 spC
 spC
-bgX
-bgT
-bgT
-bgT
-bgR
+bYQ
+bYO
+bYO
+bYO
+bYK
 spC
 spC
 spC
@@ -140818,8 +140829,8 @@ spC
 spC
 spC
 spC
-bgX
-bgR
+bYQ
+bYK
 spC
 spC
 spC
@@ -140827,8 +140838,8 @@ spC
 spC
 spC
 spC
-bgX
-bgR
+bYQ
+bYK
 spC
 spC
 spC
@@ -140836,11 +140847,11 @@ spC
 spC
 spC
 spC
-bgX
-bgT
-bgT
-bgT
-bgR
+bYQ
+bYO
+bYO
+bYO
+bYK
 spC
 spC
 spC
@@ -140975,29 +140986,20 @@ spC
 spC
 spC
 bYI
-bgT
-bgT
-bgT
-bYG
+bYO
+bYO
+bYO
+bYL
 spC
 spC
 spC
 spC
 spC
 spC
-bgX
-bgT
-bYG
+bYQ
+bYO
+bYL
 spC
-spC
-spC
-spC
-spC
-spC
-spC
-bYI
-bgT
-bgR
 spC
 spC
 spC
@@ -141005,10 +141007,19 @@ spC
 spC
 spC
 bYI
-bgT
-bgT
-bgT
-bYG
+bYO
+bYK
+spC
+spC
+spC
+spC
+spC
+spC
+bYI
+bYO
+bYO
+bYO
+bYL
 spC
 spC
 spC
@@ -141143,9 +141154,28 @@ spC
 spC
 spC
 bYI
-bgT
-bgT
-bgT
+bYO
+bYO
+bYO
+bYL
+spC
+spC
+spC
+spC
+spC
+spC
+bYI
+bYO
+bYL
+spC
+spC
+spC
+spC
+spC
+spC
+spC
+bYI
+bYO
 bYG
 spC
 spC
@@ -141154,29 +141184,10 @@ spC
 spC
 spC
 bYI
-bgT
-bYG
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-bYI
-bgT
-bYG
-spC
-spC
-spC
-spC
-spC
-spC
-bYI
-bgT
-bgT
-bgT
-bYG
+bYO
+bYO
+bYO
+bYL
 spC
 spC
 spC
@@ -141311,9 +141322,28 @@ spC
 spC
 spC
 bYI
-bgT
-bgT
-bgT
+bYO
+bYO
+bYO
+bYL
+spC
+spC
+spC
+spC
+spC
+spC
+bYI
+bYO
+bYL
+spC
+spC
+spC
+spC
+spC
+spC
+spC
+bYI
+bYO
 bYG
 spC
 spC
@@ -141322,29 +141352,10 @@ spC
 spC
 spC
 bYI
-bgT
-bYG
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-bYI
-bgT
-bYG
-spC
-spC
-spC
-spC
-spC
-spC
-bYI
-bgT
-bgT
-bgT
-bYG
+bYO
+bYO
+bYO
+bYL
 spC
 spC
 spC
@@ -141478,11 +141489,11 @@ spC
 spC
 spC
 spC
-bje
-bgT
-bgT
-bgT
-bhG
+bYR
+bYO
+bYO
+bYO
+bYM
 spC
 spC
 spC
@@ -141490,8 +141501,8 @@ spC
 spC
 spC
 bYI
-bgT
-bYG
+bYO
+bYL
 spC
 spC
 spC
@@ -141500,7 +141511,7 @@ spC
 spC
 spC
 bYI
-bgT
+bYO
 bYG
 spC
 spC
@@ -141508,11 +141519,11 @@ spC
 spC
 spC
 spC
-bje
-bgT
-bgT
-bgT
-bhG
+bYR
+bYO
+bYO
+bYO
+bYM
 spC
 spC
 spC
@@ -141647,9 +141658,9 @@ spC
 spC
 spC
 spC
-bje
+bYR
 bYH
-bhG
+bYM
 spC
 spC
 spC
@@ -141657,29 +141668,29 @@ spC
 spC
 spC
 spC
-bje
+bYI
+bYO
+bYL
+spC
+spC
+spC
+spC
+spC
+spC
+spC
+bYI
+bYO
+bYG
+spC
+spC
+spC
+spC
+spC
+spC
+spC
+bYR
 bYH
-bhG
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-bje
-bYH
-bhG
-spC
-spC
-spC
-spC
-spC
-spC
-spC
-bje
-bYH
-bhG
+bYM
 spC
 spC
 spC
@@ -141825,19 +141836,19 @@ spC
 spC
 spC
 spC
-spC
-bgT
-spC
-spC
-spC
+bYR
+bYH
+bYM
 spC
 spC
 spC
 spC
 spC
 spC
-bgT
 spC
+bYR
+bYH
+bYM
 spC
 spC
 spC

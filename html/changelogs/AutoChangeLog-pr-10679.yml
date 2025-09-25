@@ -1,4 +1,0 @@
-author: "stanalbatross"
-delete-after: True
-changes:
-  - balance: "direction locking no longer slows down humans. Xenos etc unaffected."

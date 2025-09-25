@@ -46,7 +46,7 @@
 		. += current
 
 //more specialised stuff
-/proc/sanitize_gender(gender, default="male")
+/proc/sanitize_gender(gender, default = MALE)
 	switch(gender)
 		if(MALE, FEMALE, PLURAL)
 			return gender

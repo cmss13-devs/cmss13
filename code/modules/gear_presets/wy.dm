@@ -11,7 +11,7 @@
 	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 	var/headset_type = /obj/item/device/radio/headset/distress/WY
 
-	minimap_icon = "cl"
+	minimap_icon_state = "cl"
 	minimap_background = "background_goon"
 
 /datum/equipment_preset/wy/New()
@@ -36,7 +36,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_TRAINEE
 	job_title = JOB_TRAINEE
-	minimap_icon = "trainee"
+	minimap_icon_state = "trainee"
 	paygrades = list(PAY_SHORT_WYC1 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/trainee/load_gear(mob/living/carbon/human/new_human)
@@ -48,7 +48,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_JUNIOR_EXECUTIVE
 	job_title = JOB_JUNIOR_EXECUTIVE
-	minimap_icon = "junior_exec"
+	minimap_icon_state = "junior_exec"
 	paygrades = list(PAY_SHORT_WYC2 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec
@@ -63,7 +63,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_SENIOR_EXECUTIVE
 	job_title = JOB_SENIOR_EXECUTIVE
-	minimap_icon = "senior_exec"
+	minimap_icon_state = "senior_exec"
 	paygrades = list(PAY_SHORT_WYC4 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec
@@ -71,7 +71,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SPECIALIST
 	job_title = JOB_EXECUTIVE_SPECIALIST
-	minimap_icon = "exec_spec"
+	minimap_icon_state = "exec_spec"
 	paygrades = list(PAY_SHORT_WYC5 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_spec/lawyer
@@ -96,7 +96,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_EXECUTIVE_SUPERVISOR
 	job_title = JOB_EXECUTIVE_SUPERVISOR
-	minimap_icon = "exec_super"
+	minimap_icon_state = "exec_super"
 	paygrades = list(PAY_SHORT_WYC6 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/exec_supervisor/lawyer
@@ -139,7 +139,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_ASSISTANT_MANAGER
 	job_title = JOB_ASSISTANT_MANAGER
-	minimap_icon = "ass_man"
+	minimap_icon_state = "ass_man"
 	paygrades = list(PAY_SHORT_WYC7 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/division_manager
@@ -147,7 +147,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIVISION_MANAGER
 	job_title = JOB_DIVISION_MANAGER
-	minimap_icon = "div_man"
+	minimap_icon_state = "div_man"
 	paygrades = list(PAY_SHORT_WYC8 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive
@@ -155,7 +155,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_CHIEF_EXECUTIVE
 	job_title = JOB_CHIEF_EXECUTIVE
-	minimap_icon = "chief_man"
+	minimap_icon_state = "chief_man"
 	paygrades = list(PAY_SHORT_WYC9 = JOB_PLAYTIME_TIER_0)
 
 /datum/equipment_preset/wy/manager/chief_executive/New()
@@ -167,7 +167,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DEPUTY_DIRECTOR
 	job_title = JOB_DEPUTY_DIRECTOR
-	minimap_icon = "dep_director"
+	minimap_icon_state = "dep_director"
 	paygrades = list(PAY_SHORT_WYC10 = JOB_PLAYTIME_TIER_0)
 	gun_type = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
 
@@ -176,7 +176,7 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = JOB_DIRECTOR
 	job_title = JOB_DIRECTOR
-	minimap_icon = "director"
+	minimap_icon_state = "director"
 	paygrades = list(PAY_SHORT_WYC11 = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/civilian/manager/director
 	headset_type = /obj/item/device/radio/headset/distress/pmc/command/director
@@ -203,7 +203,7 @@
 	paygrades = list(PAY_SHORT_CPO = JOB_PLAYTIME_TIER_0)
 	skills = /datum/skills/wy_goon
 	minimap_background = "background_goon"
-	minimap_icon = "cmp"
+	minimap_icon_state = "cmp"
 	idtype = /obj/item/card/id/silver/cl
 
 /datum/equipment_preset/wy/security/load_gear(mob/living/carbon/human/new_human)

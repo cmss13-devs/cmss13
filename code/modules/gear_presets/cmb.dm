@@ -65,7 +65,7 @@
 	assignment = "CMB Deputy"
 	job_title = JOB_CMB
 
-	minimap_icon = "deputy"
+	minimap_icon_state = "deputy"
 
 	skills = /datum/skills/cmb
 
@@ -150,7 +150,7 @@
 	role_comm_title = "CMB MAR"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = "xo"
+	minimap_icon_state = "xo"
 
 	assignment = "CMB Marshal"
 	job_title = JOB_CMB_TL
@@ -258,7 +258,7 @@
 	role_comm_title = "CMB RCO"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = "mp"
+	minimap_icon_state = "mp"
 
 	assignment = "CMB Riot Control Officer"
 	job_title = JOB_CMB_RIOT
@@ -375,7 +375,7 @@
 	role_comm_title = "CMB MDT"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = "medic"
+	minimap_icon_state = "medic"
 
 	assignment = "CMB Medical Technician"
 	job_title = JOB_CMB_MED
@@ -426,7 +426,7 @@
 	role_comm_title = "CMB BT"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = "engi"
+	minimap_icon_state = "engi"
 
 	assignment = "CMB Breaching Technician"
 	job_title = JOB_CMB_ENG
@@ -480,7 +480,7 @@
 	role_comm_title = "CMB Spec"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = "cmb_spc"
+	minimap_icon_state = "cmb_spc"
 
 	assignment = "CMB SWAT Specialist"
 	job_title = JOB_CMB_SWAT
@@ -531,7 +531,7 @@
 	role_comm_title = "CMB Syn"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = "cmb_syn"
+	minimap_icon_state = "cmb_syn"
 
 	assignment = "CMB Investigative Synthetic"
 	job_title = JOB_CMB_SYN
@@ -629,7 +629,7 @@
 	name = "CMB - Colonial Marshal Riot Control Synthetic"
 	paygrades = list(PAY_SHORT_CMBRS = JOB_PLAYTIME_TIER_0)
 
-	minimap_icon = "pmc_syn"
+	minimap_icon_state = "pmc_syn"
 
 	assignment = "CMB Riot Control Synthetic"
 	job_title = JOB_CMB_RSYN
@@ -691,7 +691,7 @@
 	role_comm_title = "ICC Rep."
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = "icc"
+	minimap_icon_state = "icc"
 
 	assignment = "Interstellar Commerce Commission Corporate Liaison"
 	job_title = JOB_CMB_ICC
@@ -752,7 +752,7 @@
 	role_comm_title = "OBS"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	minimap_icon = "obs"
+	minimap_icon_state = "obs"
 
 	assignment = "Interstellar Human Rights Observer"
 	job_title = JOB_CMB_OBS
@@ -809,7 +809,7 @@
 	skills = /datum/skills/pfc/crafty
 	faction = FACTION_MARSHAL
 	faction_group = list(FACTION_MARSHAL, FACTION_MARINE)
-	minimap_icon = "private"
+	minimap_icon_state = "private"
 	minimap_background = "background_cmb"
 
 /datum/equipment_preset/uscm/cmb/New()
@@ -861,7 +861,7 @@
 	role_comm_title = "A-TL"
 	minimum_age = 25
 	skills = /datum/skills/SL
-	minimap_icon = "leader"
+	minimap_icon_state = "leader"
 
 /datum/equipment_preset/uscm/cmb/leader/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)
@@ -903,7 +903,7 @@
 	paygrades = list(PAY_SHORT_ME4 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-TS"
 	skills = /datum/skills/tl
-	minimap_icon = "tl"
+	minimap_icon_state = "tl"
 
 /datum/equipment_preset/uscm/cmb/rto/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine/rto, WEAR_BODY)
@@ -946,7 +946,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-HM"
 	skills = /datum/skills/combat_medic
-	minimap_icon = "medic"
+	minimap_icon_state = "medic"
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
 
@@ -1005,7 +1005,7 @@
 	paygrades = list(PAY_SHORT_ME3 = JOB_PLAYTIME_TIER_0)
 	role_comm_title = "A-SG"
 	skills = /datum/skills/smartgunner
-	minimap_icon = "smartgunner"
+	minimap_icon_state = "smartgunner"
 
 /datum/equipment_preset/uscm/cmb/smartgunner/load_gear(mob/living/carbon/human/new_human)
 	new_human.equip_to_slot_or_del(new /obj/item/clothing/under/marine, WEAR_BODY)

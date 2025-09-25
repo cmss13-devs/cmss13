@@ -45,8 +45,8 @@ GLOBAL_LIST_EMPTY(cached_maps)
 
 /proc/initiate_minimap_icons()
 	var/list/icons = list()
-	for(var/iconstate in icon_states('icons/UI_icons/map_blips.dmi'))
-		var/icon/image = icon('icons/UI_icons/map_blips.dmi', icon_state = iconstate)
+	for(var/iconstate in icon_states('icons/ui_icons/minimap/map_blips.dmi'))
+		var/icon/image = icon('icons/ui_icons/minimap/map_blips.dmi', icon_state = iconstate)
 		icons[iconstate] += image
 
 	var/list/base64_icons = list()

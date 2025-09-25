@@ -450,6 +450,48 @@
 /obj/item/ammo_box/magazine/type71/heap/empty
 	empty = TRUE
 
+//-----------------------AK-4047 Rifle Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/ak4047
+	name = "magazine box (AK-4047 x 10)"
+	icon_state = "base_type71"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_type71_reg"
+	overlay_gun_type = "_ak4047"
+	overlay_content = "_type71_reg"
+	num_of_magazines = 14
+	magazine_type = /obj/item/ammo_magazine/rifle/ak4047
+
+/obj/item/ammo_box/magazine/ak4047/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/ak4047/ap
+	name = "magazine box (AK-4047 AP x 10)"
+	overlay_ammo_type = "_type71_ap"
+	overlay_content = "_type71_ap"
+	magazine_type = /obj/item/ammo_magazine/rifle/ak4047/ap
+
+/obj/item/ammo_box/magazine/ak4047/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/ak4047/heap
+	name = "magazine box (AK-4047 HEAP x 10)"
+	overlay_ammo_type = "_type71_heap"
+	overlay_content = "_type71_heap"
+	magazine_type = /obj/item/ammo_magazine/rifle/ak4047/heap
+
+/obj/item/ammo_box/magazine/ak4047/heap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/ak4047/incendiary
+	name = "magazine box (AK-4047 HEAP x 10)"
+	overlay_ammo_type = "_type71_incend"
+	overlay_content = "_type71_incend"
+	magazine_type = /obj/item/ammo_magazine/rifle/ak4047/incendiary
+
+/obj/item/ammo_box/magazine/ak4047/incendiary/empty
+	empty = TRUE
+
 //-----------------------Nailgun Mag Box-----------------------
 
 /obj/item/ammo_box/magazine/nailgun
@@ -468,10 +510,10 @@
 /obj/item/ammo_box/magazine/nailgun/empty
 	empty = TRUE
 
-//-----------------------M56B Drum Box-----------------------
+//-----------------------M56A2 Drum Box-----------------------
 
-/obj/item/ammo_box/magazine/m56b
-	name = "drum box (M56B x 8)"
+/obj/item/ammo_box/magazine/m56a2
+	name = "drum box (M56A2 x 8)"
 	icon_state = "base_m56b"
 	overlay_ammo_type = "_reg_heavy"
 	overlay_gun_type = "_sg"
@@ -479,16 +521,16 @@
 	magazine_type = /obj/item/ammo_magazine/smartgun
 	num_of_magazines = 8
 
-/obj/item/ammo_box/magazine/m56b/empty
+/obj/item/ammo_box/magazine/m56a2/empty
 	empty = TRUE
 
-/obj/item/ammo_box/magazine/m56b/dirty
-	name = "drum box (M56B 'Dirty' x 8)"
+/obj/item/ammo_box/magazine/m56a2/dirty
+	name = "drum box (M56A2 'Dirty' x 8)"
 	overlay_ammo_type = "_red_heavy"
 	overlay_content = "_sgdirty"
 	magazine_type = /obj/item/ammo_magazine/smartgun/dirty
 
-/obj/item/ammo_box/magazine/m56b/dirty/empty
+/obj/item/ammo_box/magazine/m56a2/dirty/empty
 	empty = TRUE
 
 //-----------------------M56D Drum Box-----------------------
@@ -1148,4 +1190,45 @@
 	overlays += image(text_markings_icon, icon_state = "text[overlay_gun_type]") //adding text
 
 /obj/item/ammo_box/magazine/mar50/empty
+	empty = TRUE
+
+//-----------------------l54 Pistol Mag Box-----------------------
+
+/obj/item/ammo_box/magazine/l54
+	name = "magazine box (L54 x 16)"
+	icon_state = "base_l54"
+	flags_equip_slot = SLOT_BACK
+	overlay_ammo_type = "_reg"
+	overlay_gun_type = "_l54"
+	num_of_magazines = 16
+	magazine_type = /obj/item/ammo_magazine/pistol/l54
+
+/obj/item/ammo_box/magazine/l54/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/ap
+	name = "magazine box (AP L54 x 16)"
+	overlay_ammo_type = "_ap"
+	overlay_content = "_ap"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/ap
+
+/obj/item/ammo_box/magazine/l54/ap/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/hp
+	name = "magazine box (HP L54 x 16)"
+	overlay_ammo_type = "_hp"
+	overlay_content = "_hp"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/hp
+
+/obj/item/ammo_box/magazine/l54/hp/empty
+	empty = TRUE
+
+/obj/item/ammo_box/magazine/l54/incen
+	name = "magazine box (Incen L54 x 16)"
+	overlay_ammo_type = "_incen"
+	overlay_content = "_incen"
+	magazine_type = /obj/item/ammo_magazine/pistol/l54/incendiary
+
+/obj/item/ammo_box/magazine/l54/incen/empty
 	empty = TRUE

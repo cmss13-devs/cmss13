@@ -18363,7 +18363,7 @@
 /area/desert_dam/interior/dam_interior/engine_east_wing)
 "bIx" = (
 /obj/structure/surface/rack,
-/obj/item/clothing/mask/gas,
+/obj/item/device/defibrillator/synthetic,
 /turf/open/floor/prison/green/southwest,
 /area/desert_dam/interior/dam_interior/atmos_storage)
 "bIy" = (

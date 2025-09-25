@@ -280,6 +280,14 @@
 		/obj/item/device/motiondetector,
 	)
 
+/obj/item/clothing/suit/storage/webbing/black
+	icon_state = "webbing_black"
+	item_state = "webbing_black"
+
+/obj/item/clothing/suit/storage/webbing/brown
+	icon_state = "webbing_brown"
+	item_state = "webbing_brown"
+
 /obj/item/clothing/suit/storage/utility_vest
 	name = "utility vest"
 	desc = "A utility vest to hold tools in."
@@ -349,6 +357,15 @@
 	icon_state = "red_pyjamas"
 	item_state = "red_pyjamas"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+
+/obj/item/clothing/suit/xenos
+	name = "alien costume suit"
+	desc = "A costume made out of a cheap fabric."
+	icon_state = "xenos"
+	item_state = "xenos_suit"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
+	flags_inv_hide = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	siemens_coefficient = 2
 
 //swimsuit
 

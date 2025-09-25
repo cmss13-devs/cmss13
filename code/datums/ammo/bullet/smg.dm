@@ -159,7 +159,7 @@
 /datum/ammo/bullet/smg/p90/twe_ap
 	name = "armor-piercing submachinegun bullet"
 
-	damage = 26
+	damage = 20
 	accurate_range = 5
 	effective_range_max = 8
 	penetration = ARMOR_PENETRATION_TIER_4

@@ -106,3 +106,4 @@ If you jump out of a dropship with a parachute on (when there is no paradrop sys
 If you push crates out of a dropship when paradropping, it will land near the paradrop drop point.
 When paradropping, you can toss any large item (such as a backpack, pouch, or gun) into hyperspace, and it will land near the paradrop drop point. However, smaller items such as flares will not survive the fall.
 Medbay cryotubes will process chemicals in the dead if Cryoxadone and or Clonexadone is present. In a mass-casualty situation or when a patient has severe injuries, consider injecting the dead with chemicals and putting them in the tubes.
+A synthetic's head can be reattached to their body by a skilled doctor. Save your synth!

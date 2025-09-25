@@ -128,6 +128,7 @@
 	attack_verb = list("flayed", "punched", "suckerpunched")
 	force = MELEE_FORCE_TIER_4
 	speed_bonus_amount = 0
+	var/move_delay_addition = 0.5 // ~30% increase.
 	var/gauntlet_deployed = FALSE
 	var/combo_counter = 0
 	var/has_chain = FALSE
@@ -248,7 +249,8 @@
 		gauntlet_deployed = TRUE
 		punch_knockback = 7
 		yautja_user.start_stomping()
-		addtimer(CALLBACK(src, PROC_REF(undeploy_gauntlets)), 10 SECONDS)
+		RegisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY, PROC_REF(handle_movedelay))
+		addtimer(CALLBACK(src, PROC_REF(undeploy_gauntlets), user), 10 SECONDS)
 		yautja_user.visible_message(SPAN_WARNING("[yautja_user] raises the gauntlets infront of its face and starts sprinting!"))
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(to_chat), yautja_user, SPAN_WARNING("You stop covering your face and stop sprinting.")), 10 SECONDS)
 
@@ -256,18 +258,21 @@
 		to_chat(user, SPAN_WARNING("You're already charging."))
 		return
 
-/obj/item/weapon/bracer_attachment/chain_gauntlets/proc/undeploy_gauntlets()
-	src.gauntlet_deployed = FALSE
+/obj/item/weapon/bracer_attachment/chain_gauntlets/proc/undeploy_gauntlets(mob/user)
+	gauntlet_deployed = FALSE
 	punch_knockback = 5
+	UnregisterSignal(user, COMSIG_HUMAN_POST_MOVE_DELAY)
 
 /mob/living/carbon/human/proc/start_stomping(mob/user)
-	src.AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
+	AddComponent(/datum/component/footstep, 4, 25, 11, 2, "alien_footstep_medium")
 	addtimer(CALLBACK(src, PROC_REF(stop_stomping)), 10 SECONDS)
-	src.species.slowdown += -0.5
 
 /mob/living/carbon/human/proc/stop_stomping(mob/user, obj/item/weapon/bracer_attachment/chain_gauntlets/yautja_glove)
 	GetExactComponent(/datum/component/footstep).RemoveComponent()
-	species.slowdown -= -0.5
+
+/obj/item/weapon/bracer_attachment/chain_gauntlets/proc/handle_movedelay(mob/living/moving_mob, list/movedata)
+	SIGNAL_HANDLER
+	movedata["move_delay"] -= move_delay_addition
 
 /obj/item/weapon/bracer_attachment/chain_gauntlets/verb/gauntlet_guard()
 	set category = "Weapons"
@@ -565,11 +570,11 @@
 		return
 
 	var/mob/living/carbon/human/user = chain.affected_atom
-	if((src in user.contents) || !istype(user.gloves, /obj/item/clothing/gloves/yautja/hunter))
+	if((src in user.contents) || !istype(user.gloves, /obj/item/clothing/gloves/yautja))
 		cleanup_chain()
 		return
 
-	var/obj/item/clothing/gloves/yautja/hunter/pred_gloves = user.gloves
+	var/obj/item/clothing/gloves/yautja/pred_gloves = user.gloves
 
 	if(user.put_in_hands(src, TRUE))
 		if(!pred_gloves.drain_power(user, 70))
@@ -695,7 +700,7 @@
 		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
 
 /obj/item/weapon/yautja/chained/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
-	if(!human_adapted && !HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()

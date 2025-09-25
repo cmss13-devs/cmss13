@@ -57,8 +57,8 @@
 /obj/item/storage/mateba_case
 	icon = 'icons/obj/items/storage/kits.dmi'
 	icon_state = "matebacase"
-	name = "mateba customization kit case"
-	desc = "A wooden case used for storing the tools and parts needed to customize a Mateba revolver. Comes with three barrel lengths and the necessary key to swap them out."
+	name = "mateba case"
+	desc = "A wooden case used for storing the tools and parts needed to customize a Mateba revolver. Comes with three barrel lengths and the necessary key to swap them out, as well as room for the gun itself."
 	storage_slots = 5
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
@@ -70,8 +70,14 @@
 
 /obj/item/storage/mateba_case/captain/council
 	icon_state = "c_matebacase"
-	name = "colonel's mateba customization kit case"
-	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is custom-made for colonels."
+	name = "senior officer's mateba case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver, as well as room for the gun itself. This variant is custom-made for senior officers and comes with silver barrel attachments."
+
+/obj/item/storage/mateba_case/captain/council/fill_preset_inventory()
+	new /obj/item/attachable/mateba/short/silver(src)
+	new /obj/item/attachable/mateba/silver(src)
+	new /obj/item/attachable/mateba/long/silver(src)
+	new /obj/item/weapon/mateba_key(src)
 
 /obj/item/storage/mateba_case/general
 	icon_state = "c_matebacase"
@@ -79,9 +85,9 @@
 	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is made for general-grade golden Matebas and comes with golden barrel attachments."
 
 /obj/item/storage/mateba_case/general/fill_preset_inventory()
-	new /obj/item/attachable/mateba/short/dark(src)
-	new /obj/item/attachable/mateba/dark(src)
-	new /obj/item/attachable/mateba/long/dark(src)
+	new /obj/item/attachable/mateba/short/gold(src)
+	new /obj/item/attachable/mateba/gold(src)
+	new /obj/item/attachable/mateba/long/gold(src)
 	new /obj/item/weapon/mateba_key(src)
 
 //6 pack
@@ -139,6 +145,36 @@
 	new /obj/item/weapon/gun/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
 	new /obj/item/ammo_magazine/pistol/t73(src)
+
+/obj/item/storage/box/action
+	name = "AC71 'Action' storing case"
+	desc = "A small case containing an AC71 Action, a holdout pistol by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "m43case"
+	w_class = SIZE_SMALL
+	max_w_class = SIZE_TINY
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/pistol/action, /obj/item/ammo_magazine/pistol/action)
+
+/obj/item/storage/box/action/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/action(src)
+	new /obj/item/ammo_magazine/pistol/action(src)
+	new /obj/item/ammo_magazine/pistol/action(src)
+
+/obj/item/storage/box/plinker
+	name = "W62 'Whisper' storing case"
+	desc = "A small case containing a W62 Whisper, a .22 ratkiller made by Spearhead Armory. It was most likely brought by a marine from home, or taken from a colony without permission."
+	icon = 'icons/obj/items/storage/kits.dmi'
+	icon_state = "m43case"
+	w_class = SIZE_MEDIUM
+	max_w_class = SIZE_SMALL
+	storage_slots = 3
+	can_hold = list(/obj/item/weapon/gun/pistol/holdout, /obj/item/ammo_magazine/pistol/holdout)
+
+/obj/item/storage/box/plinker/fill_preset_inventory()
+	new /obj/item/weapon/gun/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
+	new /obj/item/ammo_magazine/pistol/holdout(src)
 
 /obj/item/storage/box/co2_knife
 	name = "M8 cartridge bayonet packaging"

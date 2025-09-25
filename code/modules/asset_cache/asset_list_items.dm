@@ -128,6 +128,7 @@
 		"logo_uscm.png" = 'html/paper_assets/logo_uscm.png',
 		"logo_provost.png" = 'html/paper_assets/logo_provost.png',
 		"logo_upp.png" = 'html/paper_assets/logo_upp.png',
+		"logo_twe.png" = 'html/paper_assets/logo_twe.png',
 		"logo_cmb.png" = 'html/paper_assets/logo_cmb.png',
 		"background_white.jpg" = 'html/paper_assets/background_white.jpg',
 		"background_dark.jpg" = 'html/paper_assets/background_dark.jpg',
@@ -259,7 +260,7 @@
 	name = "squadranks"
 
 /datum/asset/spritesheet/ranks/register()
-	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
+	var/icon_file = 'icons/mob/hud/factions/marine.dmi'
 
 	var/list/icon_data = list(
 		list("Mar", null),
@@ -274,16 +275,19 @@
 		list("SpcDem", "hudsquad_spec_demo"),
 		list("SpcSn", "hudsquad_spec_sniper"),
 		list("SpcGr", "hudsquad_spec_grenadier"),
+		list("SpcShp", "hudsquad_spec_sharp"),
+		list("SpcHvy", "hudsquad_spec_heavy"),
 		list("SpcPy", "hudsquad_spec_pyro"),
 		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
+		list("hg", "hudsquad_hg"),
 	)
 
 	for(var/datum/squad/marine/squad in GLOB.RoleAuthority.squads)
 		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
-			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
+			var/icon/background = icon('icons/mob/hud/factions/marine.dmi', "hudsquad", SOUTH)
 			background.Blend(color, ICON_MULTIPLY)
 			if(iconref[2])
 				var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
@@ -398,6 +402,38 @@
 				else
 					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
 			stack_trace("[fruit] does not have a valid icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state]), icon_states=[icon_states_string]")
+			icon_file = 'icons/turf/floors/floors.dmi'
+			icon_state = ""
+
+		var/icon/iconNormal = icon(icon_file, icon_state, SOUTH)
+		Insert(icon_name, iconNormal)
+
+		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
+		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
+		Insert("[icon_name]_big", iconBig)
+	return ..()
+
+/datum/asset/spritesheet/choose_design
+	name = "choosedesign"
+
+/datum/asset/spritesheet/choose_design/register()
+	var/icon_file = 'icons/mob/hud/actions_xeno.dmi'
+	var/icon_states_list = icon_states(icon_file)
+	for(var/obj/effect/alien/resin/design/design as anything in typesof(/obj/effect/alien/resin/design))
+		var/icon_state = initial(design.icon_state)
+		var/icon_name = replacetext(icon_state, " ", "-")
+
+		if (sprites[icon_name])
+			continue
+
+		if(!(icon_state in icon_states_list))
+			var/icon_states_string
+			for (var/an_icon_state in icon_states_list)
+				if (!icon_states_string)
+					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
+				else
+					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
+			stack_trace("[design] does not have a valid icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state]), icon_states=[icon_states_string]")
 			icon_file = 'icons/turf/floors/floors.dmi'
 			icon_state = ""
 

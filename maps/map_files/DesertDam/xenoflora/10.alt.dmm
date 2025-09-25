@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/structure/fence/slim/door,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_labs)
 "bE" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
@@ -141,7 +145,7 @@
 /turf/open/floor/whitegreen/west,
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora)
 "pz" = (
-/obj/structure/fence,
+/obj/structure/fence/slim,
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
 "qO" = (
@@ -666,7 +670,7 @@ ex
 MQ
 Fm
 pz
-pz
+aa
 pz
 "}
 (12,1,1) = {"

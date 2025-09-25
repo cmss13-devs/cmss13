@@ -15111,6 +15111,24 @@
 /obj/structure/cargo_container/hybrisa/containersextended/greywyright,
 /turf/open/floor/prison/whitepurple,
 /area/desert_dam/interior/lab_northeast/east_lab_central_hallway)
+"aWj" = (
+/obj/structure/fence/slim,
+/turf/open/desert/dirt,
+/area/desert_dam/exterior/valley/valley_security)
+"aWk" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 4
+	},
+/obj/structure/fence/slim,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_security)
+"aWl" = (
+/obj/effect/decal/sand_overlay/sand1{
+	dir = 8
+	},
+/obj/structure/fence/slim,
+/turf/open/asphalt/cement_sunbleached,
+/area/desert_dam/exterior/valley/valley_security)
 "aWs" = (
 /obj/effect/blocker/toxic_water/Group_1,
 /obj/item/stack/sheet/wood/medium_stack,
@@ -47596,7 +47614,7 @@
 /turf/open/floor/prison/whitegreen,
 /area/desert_dam/building/medical/lobby)
 "nEQ" = (
-/obj/structure/fence,
+/obj/structure/fence/slim,
 /turf/open/desert/dirt/desert_transition_edge1,
 /area/desert_dam/exterior/valley/valley_security)
 "nEU" = (
@@ -134730,7 +134748,7 @@ gNv
 gNv
 gNv
 gNv
-pHi
+aWj
 gNv
 gNv
 gNv
@@ -134964,7 +134982,7 @@ pBu
 pBu
 pBu
 pBu
-pBu
+aWk
 pBu
 pBu
 rGW
@@ -135198,7 +135216,7 @@ hUD
 hUD
 hUD
 ejT
-hUD
+aWl
 hUD
 gVE
 bbG
@@ -135432,7 +135450,7 @@ gNv
 shO
 gNv
 gNv
-pHi
+aWj
 gNv
 uXB
 oXw
@@ -135666,7 +135684,7 @@ iqz
 gNv
 gNv
 shO
-pHi
+aWj
 gNv
 uXB
 oXw
@@ -135900,7 +135918,7 @@ nTA
 gNv
 gNv
 gNv
-pHi
+aWj
 gNv
 uXB
 oXw
@@ -136131,9 +136149,9 @@ qaR
 qaR
 qaR
 nEQ
-pHi
-pHi
-pHi
+aWj
+aWj
+aWj
 czh
 gNv
 uXB
@@ -141282,7 +141300,7 @@ bzf
 bzf
 qrd
 hyt
-pHi
+aWj
 gNv
 uXB
 amR
@@ -141516,7 +141534,7 @@ rBY
 lXc
 qrd
 hyt
-pHi
+aWj
 gNv
 amT
 oXw
@@ -141750,7 +141768,7 @@ bzf
 bzf
 qrd
 hyt
-pHi
+aWj
 gNv
 amU
 amS
@@ -141984,7 +142002,7 @@ bzf
 pzB
 qrd
 hyt
-pHi
+aWj
 gNv
 amU
 alS
@@ -142218,7 +142236,7 @@ nkj
 mYw
 qrd
 hyt
-pHi
+aWj
 gNv
 amU
 alS
@@ -142452,7 +142470,7 @@ uTm
 bzf
 qrd
 hyt
-pHi
+aWj
 gNv
 amU
 alS

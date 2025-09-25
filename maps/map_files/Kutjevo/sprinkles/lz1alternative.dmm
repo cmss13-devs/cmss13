@@ -1,0 +1,3994 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"ab" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"ac" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"ad" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"ae" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_dunes)
+"af" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"ag" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"ah" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"ai" = (
+/obj/item/stack/sheet/wood,
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"aj" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"ak" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"al" = (
+/obj/structure/largecrate/random/case,
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"am" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"an" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"as" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 5
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"at" = (
+/obj/structure/fence,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"aw" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 1
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"aC" = (
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/exterior/lz_dunes)
+"aF" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"aL" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"aW" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_river)
+"bd" = (
+/obj/structure/fence,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"bf" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"bj" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"bH" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"bT" = (
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"cs" = (
+/obj/structure/cargo_container/hybrisa/containersextended/redleft,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"cw" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"cP" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"cV" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 2.9;
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"cW" = (
+/obj/structure/cargo_container/arious/right,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"dD" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors/red/edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"dU" = (
+/obj/structure/largecrate/random,
+/obj/item/ashtray/plastic{
+	icon_state = "ashtray_half_bl";
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"ee" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"ej" = (
+/obj/item/trash/cigbutt,
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/kutjevo/exterior/lz_dunes)
+"et" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	pixel_y = -16
+	},
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/orange/edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"ex" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "kutjevo_landingzone_s";
+	name = "\improper Landing Zone Shutters"
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_dunes)
+"eL" = (
+/obj/structure/window/framed/kutjevo/reinforced/hull,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/oob)
+"eM" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 2.9;
+	name = "????";
+	stat = 2
+	},
+/obj/item/clothing/head/helmet/marine/veteran/kutjevo,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"eQ" = (
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/lz_dunes)
+"fv" = (
+/obj/structure/machinery/door/airlock/almayer/maint/colony/autoname{
+	dir = 1;
+	req_one_access = null
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"fZ" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_ew_full_cap"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"gj" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"gw" = (
+/turf/open/floor/kutjevo/colors/red/edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"gF" = (
+/turf/open/floor/kutjevo/colors/red/inner_corner/east,
+/area/kutjevo/exterior/lz_dunes)
+"gR" = (
+/obj/structure/largecrate/random/mini/ammo{
+	pixel_x = -3;
+	pixel_y = 6;
+	layer = 3.12
+	},
+/obj/structure/largecrate/random/mini/med{
+	pixel_x = 15;
+	pixel_y = 4;
+	layer = 3.11
+	},
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"hg" = (
+/obj/structure/cargo_container/hybrisa/containersextended/tanright{
+	layer = 3.1
+	},
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"ho" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"hA" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"hG" = (
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 2.9;
+	name = "????";
+	stat = 2
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"hR" = (
+/obj/structure/platform/stone/kutjevo,
+/turf/open/desert/desert_shore/shore_corner2/west,
+/area/kutjevo/exterior/lz_dunes)
+"iy" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"iz" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/desert/desert_shore/shore_edge1/east,
+/area/kutjevo/exterior/lz_dunes)
+"iC" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"iX" = (
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/obj/item/weapon/gun/revolver/small,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"js" = (
+/obj/effect/landmark/spycam_start,
+/turf/open/floor/kutjevo/tan/alt_edge/northeast,
+/area/kutjevo/exterior/lz_dunes)
+"jz" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 16
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -12
+	},
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"kh" = (
+/obj/structure/cargo_container/ferret/right,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"ki" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/kutjevo/tan/alt_edge/southwest,
+/area/kutjevo/exterior/lz_dunes)
+"ks" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"kA" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"kG" = (
+/turf/open/floor/kutjevo/colors/red/inner_corner,
+/area/kutjevo/exterior/lz_dunes)
+"kZ" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"lk" = (
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/machinery/landinglight/ds1/delayone,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"lm" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/exterior/lz_dunes)
+"lt" = (
+/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"lz" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -12
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"lB" = (
+/turf/open/floor/kutjevo/colors/red/inner_corner/west,
+/area/kutjevo/exterior/lz_dunes)
+"lO" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	name = "\improper Landing Zone Shutters";
+	id = "kutjevo_landingzone_e"
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/exterior/lz_dunes)
+"lT" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"lV" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "kutjevo_landingzone_sw";
+	name = "\improper Landing Zone Shutters"
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_dunes)
+"md" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"mf" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"ml" = (
+/obj/item/ammo_casing/cartridge,
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"my" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastleft{
+	dir = 8;
+	name = "Security Desk"
+	},
+/obj/structure/machinery/door/window/brigdoor/westleft{
+	dir = 4;
+	icon_state = "leftsecure";
+	id = "brg"
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = 7;
+	pixel_y = -5
+	},
+/obj/item/tool/stamp,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"mP" = (
+/obj/structure/machinery/landinglight/ds1/delayone,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"nd" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"nh" = (
+/turf/template_noop,
+/area/template_noop)
+"np" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"nD" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/limited{
+	pixel_y = 28
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"nS" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/obj/item/shard,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"nZ" = (
+/obj/structure/flora/bush/desert,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"oc" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"of" = (
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"om" = (
+/turf/closed/wall/kutjevo/colony/reinforced/hull,
+/area/kutjevo/interior/oob)
+"ov" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/alt_edge/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"oU" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"px" = (
+/obj/structure/platform_decoration/stone/kutjevo,
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/lz_dunes)
+"py" = (
+/obj/structure/largecrate/random,
+/obj/item/toy/deck/uno,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"pF" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"pL" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"pX" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"qi" = (
+/obj/structure/platform/stone/kutjevo,
+/turf/open/gm/river/desert/shallow_edge/northeast,
+/area/kutjevo/exterior/lz_dunes)
+"qr" = (
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/lz_dunes)
+"qs" = (
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyright,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"qy" = (
+/obj/structure/flora/bush/desert,
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"qQ" = (
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_river)
+"qS" = (
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt,
+/obj/item/clothing/head/helmet/marine/veteran/kutjevo,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"ra" = (
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"rx" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"rM" = (
+/obj/structure/platform/stone/kutjevo/west,
+/obj/structure/platform/stone/kutjevo,
+/turf/open/gm/river/desert/shallow_edge/northeast,
+/area/kutjevo/exterior/lz_dunes)
+"rY" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_dunes)
+"ss" = (
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor/kutjevo/plate,
+/area/kutjevo/exterior/lz_dunes)
+"sL" = (
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"sU" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"sY" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"th" = (
+/turf/closed/wall/kutjevo/rock/border,
+/area/kutjevo/interior/oob)
+"ts" = (
+/obj/structure/toilet{
+	dir = 8;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/colonist/kutjevo,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"tv" = (
+/obj/structure/flora/grass/desert/lightgrass_2,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"tw" = (
+/obj/structure/machinery/colony_floodlight{
+	pixel_y = 10
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"tB" = (
+/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"tK" = (
+/obj/effect/sentry_landmark/lz_1/bottom_right,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"up" = (
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"ur" = (
+/obj/structure/largecrate/random/mini{
+	pixel_x = -11;
+	pixel_y = 7
+	},
+/obj/structure/largecrate/random/mini/wooden{
+	pixel_y = 8;
+	pixel_x = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"uw" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"ux" = (
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/floor/kutjevo/tan/alt_edge/northeast,
+/area/kutjevo/exterior/lz_dunes)
+"uT" = (
+/obj/structure/toilet{
+	dir = 8;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"vd" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door/window/eastleft{
+	dir = 8;
+	name = "Security Desk"
+	},
+/obj/structure/machinery/door/window/brigdoor/westleft{
+	dir = 4;
+	icon_state = "leftsecure";
+	id = "brg"
+	},
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/item/paper{
+	pixel_x = -4;
+	pixel_y = -13
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"vs" = (
+/obj/item/clothing/head/hardhat,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"vC" = (
+/obj/item/shard,
+/obj/item/shard,
+/obj/item/stack/sheet/wood,
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"vI" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"vW" = (
+/obj/structure/cargo_container/arious/mid,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"wf" = (
+/obj/structure/machinery/landinglight/ds1/delayone{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"wq" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"wt" = (
+/obj/structure/largecrate/random{
+	anchored = 1;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/largecrate/random/mini{
+	pixel_x = -1;
+	pixel_y = 18;
+	layer = 3.12
+	},
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"wu" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = -5;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/drinks/coffeecup{
+	pixel_x = 11
+	},
+/obj/item/tool/pen/blue{
+	pixel_x = -2;
+	pixel_y = -3
+	},
+/obj/item/clothing/head/helmet/marine/veteran/pmc/corporate/kutjevo{
+	pixel_x = 7;
+	pixel_y = 11
+	},
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"wD" = (
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"wO" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 15;
+	pixel_y = 33
+	},
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"wS" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"wV" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 15;
+	pixel_y = 33
+	},
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"wY" = (
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_dunes)
+"xh" = (
+/obj/structure/bed/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/colors,
+/area/kutjevo/exterior/lz_dunes)
+"xp" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 11
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"xv" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/interior/power/comms)
+"xy" = (
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/lz_dunes)
+"xC" = (
+/obj/structure/prop/dam/boulder/boulder3,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"xG" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = 32
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power/comms)
+"xW" = (
+/obj/structure/platform/stone/kutjevo,
+/turf/open/gm/river/desert/shallow_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"yi" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"yD" = (
+/obj/structure/platform_decoration/metal/kutjevo/west,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"yG" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"yU" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"yZ" = (
+/turf/open/desert/desert_shore/shore_corner2/west,
+/area/kutjevo/exterior/lz_dunes)
+"zc" = (
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"ze" = (
+/turf/open/desert/desert_shore/shore_edge1/east,
+/area/kutjevo/exterior/lz_dunes)
+"zf" = (
+/obj/structure/largecrate/random/barrel/brown,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"zJ" = (
+/obj/structure/flora/bush/desert{
+	icon_state = "tree_2";
+	pixel_y = 14
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"zO" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_y = 33
+	},
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/obj/effect/sentry_landmark/lz_1/bottom_left,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/lz_dunes)
+"Ak" = (
+/turf/open/floor/kutjevo/colors/orange/edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"AE" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"AG" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"AI" = (
+/obj/structure/machinery/light,
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"AL" = (
+/obj/structure/fence,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_river)
+"Bd" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"Bj" = (
+/obj/structure/cargo_container/grant/right{
+	layer = 3.1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Bp" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"BE" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"BK" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "kutjevo_landingzone";
+	name = "\improper Landing Zone Shutters";
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"BT" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/obj/item/ammo_casing/cartridge,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"BW" = (
+/obj/structure/prop/dam/truck/mining,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/lz_dunes)
+"Cg" = (
+/obj/structure/sign/safety/flightcontrol,
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/exterior/lz_dunes)
+"Ch" = (
+/obj/structure/largecrate/random/barrel/brown,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Ci" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Cm" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"CT" = (
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/desert/desert_shore/shore_corner2/west,
+/area/kutjevo/exterior/lz_dunes)
+"Di" = (
+/obj/structure/cargo_container/grant/rightmid,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"Dk" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"Do" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Dw" = (
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"Dx" = (
+/obj/item/shard,
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"DE" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"DK" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/interior/power/comms)
+"Eb" = (
+/obj/structure/sign/safety/bathmens,
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/exterior/lz_dunes)
+"EO" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 1;
+	icon_state = "p_stair_ew_half_cap"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"Fb" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"Fc" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"Fd" = (
+/obj/structure/machinery/door/airlock/almayer/generic/autoname/rusted_wite,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Fg" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_sn_full_cap"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"Fx" = (
+/turf/closed/shuttle{
+	dir = 1;
+	icon_state = "pwall"
+	},
+/area/kutjevo/interior/oob)
+"FJ" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"FQ" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "kutjevo_landingzone_sw2";
+	name = "\improper Landing Zone Shutters"
+	},
+/turf/open/floor/almayer/research/containment/floor2,
+/area/kutjevo/exterior/lz_dunes)
+"Ge" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/item/clothing/mask/facehugger{
+	desc = "It has some sort of a tube at the end of its tail. What the hell is this thing?";
+	icon_state = "facehugger_impregnated";
+	layer = 2.9;
+	name = "????";
+	stat = 2
+	},
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"Gm" = (
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"GD" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 6
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"GN" = (
+/obj/structure/largecrate/random,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"GS" = (
+/obj/structure/platform_decoration/metal/kutjevo,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"GU" = (
+/obj/item/tool/warning_cone{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"He" = (
+/obj/structure/cargo_container/ferret/left,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"Hg" = (
+/turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/exterior/lz_dunes)
+"Hh" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"Hl" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/gm/river/desert/shallow_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"Hm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/communications{
+	dir = 1;
+	pixel_x = 15
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_landingzone_ne";
+	idle_power_usage = 0;
+	name = "Hydroponics West Lock Override";
+	pixel_x = -14;
+	pixel_y = 11
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_landingzone";
+	idle_power_usage = 0;
+	name = "Hydroponics East Lock Override";
+	pixel_x = -14;
+	pixel_y = -3
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/exterior/lz_dunes)
+"Hz" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_29";
+	pixel_y = 6
+	},
+/turf/open/floor/kutjevo/colors/orange/edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"HF" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"HK" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"HL" = (
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/exterior/lz_river)
+"HQ" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/suit/armor/vest/security,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/colors/red/edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"HT" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_ew_full_cap";
+	pixel_y = -13
+	},
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_full";
+	pixel_y = 7
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"Ih" = (
+/turf/open/desert/desert_shore/desert_shore1/north,
+/area/kutjevo/exterior/lz_dunes)
+"Is" = (
+/turf/open/floor/kutjevo/tan/alt_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"ID" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"IK" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = -32
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/power/comms)
+"IP" = (
+/obj/effect/sentry_landmark/lz_1/top_right,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"Jn" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/cameras/wooden_tv{
+	explo_proof = 1;
+	pixel_y = 7
+	},
+/turf/open/floor/kutjevo/colors/red/edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"Jt" = (
+/obj/structure/cargo_container/arious/leftmid,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Jw" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/obj/structure/platform_decoration/stone/kutjevo/east,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"Jz" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"JK" = (
+/obj/item/shard,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"JU" = (
+/obj/structure/flora/grass/desert/lightgrass_4,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"Kc" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"Kf" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 9
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"Kl" = (
+/obj/item/weapon/twohanded/folded_metal_chair{
+	pixel_x = 1;
+	pixel_y = 11
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Kp" = (
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"KE" = (
+/obj/structure/platform_decoration/stone/kutjevo/north,
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/lz_dunes)
+"KN" = (
+/obj/structure/machinery/colony_floodlight,
+/obj/structure/platform/metal/kutjevo_smooth/east,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"KS" = (
+/obj/structure/fence,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_river)
+"KT" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"Lg" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/interior/oob)
+"Lr" = (
+/obj/structure/cargo_container/grant/left,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"LC" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 16
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -14
+	},
+/turf/open/floor/kutjevo/tan/alt_edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"LF" = (
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/lz_river)
+"LO" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_landingzone_sw2";
+	idle_power_usage = 0;
+	name = "Hydroponics East Lock Override";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_landingzone_s";
+	idle_power_usage = 0;
+	name = "Hydroponics West Lock Override";
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_landingzone_sw";
+	idle_power_usage = 0;
+	name = "Hydroponics East Lock Override";
+	pixel_x = -8;
+	pixel_y = -3
+	},
+/obj/structure/machinery/door_control/brbutton/alt{
+	health = null;
+	id = "kutjevo_landingzone_e";
+	idle_power_usage = 0;
+	name = "Hydroponics West Lock Override";
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/exterior/lz_dunes)
+"Ma" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/hybrisa/coffee_machine{
+	pixel_x = -3;
+	layer = 3.3;
+	pixel_y = 8
+	},
+/turf/open/floor/kutjevo/colors/red/inner_corner/north,
+/area/kutjevo/exterior/lz_dunes)
+"Mc" = (
+/turf/open/floor/kutjevo/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"Mx" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"MA" = (
+/obj/structure/cargo_container/grant/rightmid{
+	layer = 3.1
+	},
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"MN" = (
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"MR" = (
+/obj/structure/flora/grass/tallgrass/desert/corner,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"MZ" = (
+/obj/structure/sign/safety/hazard{
+	pixel_x = -32
+	},
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/interior/power/comms)
+"Ne" = (
+/obj/structure/machinery/landinglight/ds1/delaythree,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Nt" = (
+/obj/structure/cargo_container/ferret/mid,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"NB" = (
+/obj/item/weapon/twohanded/folded_metal_chair,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"NK" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"Oj" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Or" = (
+/obj/item/tool/warning_cone{
+	pixel_x = -12
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Ot" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/obj/item/tool/warning_cone{
+	pixel_y = 16
+	},
+/obj/item/tool/warning_cone{
+	pixel_x = -12
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Ow" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/kutjevo/exterior/lz_dunes)
+"OG" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 4;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"OM" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Pb" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/interior/power/comms)
+"Pd" = (
+/obj/structure/window_frame/kutjevo/reinforced,
+/obj/item/shard,
+/obj/item/shard,
+/obj/item/stack/rods,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "kutjevo_landingzone";
+	name = "\improper Landing Zone Shutters";
+	dir = 8
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"Pe" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Pn" = (
+/turf/open/floor/kutjevo/tan/alt_edge/northwest,
+/area/kutjevo/exterior/lz_dunes)
+"Pp" = (
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"Pu" = (
+/obj/structure/cargo_container/grant/leftmid,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"PA" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_full"
+	},
+/obj/structure/sign/safety/hazard{
+	pixel_x = 32
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/power/comms)
+"PB" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"PE" = (
+/obj/structure/stairs/perspective/kutjevo{
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"PS" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_full"
+	},
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/power/comms)
+"Qd" = (
+/obj/item/shard,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"Rg" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"Ry" = (
+/obj/item/tool/pickaxe/drill,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"RY" = (
+/obj/item/tool/warning_cone{
+	pixel_y = 16
+	},
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"Sd" = (
+/obj/structure/sign/safety/landingzone{
+	pixel_x = 15;
+	pixel_y = 33
+	},
+/obj/structure/flora/grass/tallgrass/desert/corner{
+	dir = 10
+	},
+/obj/item/shard,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"So" = (
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"SF" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/card{
+	dir = 1
+	},
+/turf/open/floor/kutjevo/colors/red,
+/area/kutjevo/exterior/lz_dunes)
+"SP" = (
+/obj/structure/stairs/perspective/kutjevo{
+	icon_state = "p_stair_full"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"SS" = (
+/obj/structure/cargo_container/grant/right,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"Tf" = (
+/turf/open/floor/kutjevo/tan/alt_edge/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"Ty" = (
+/obj/structure/flora/grass/tallgrass/desert,
+/obj/item/shard,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"TG" = (
+/turf/open/floor/kutjevo/tan/alt_edge/southwest,
+/area/kutjevo/exterior/lz_dunes)
+"TL" = (
+/obj/effect/sentry_landmark/lz_1/top_left,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"TS" = (
+/obj/effect/sentry_landmark/lz_1/top_right,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_river)
+"TV" = (
+/obj/structure/girder,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"Uw" = (
+/obj/structure/machinery/landinglight/ds1{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"UB" = (
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"UK" = (
+/obj/structure/cargo_container/hybrisa/containersextended/redright,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"UR" = (
+/turf/open/floor/kutjevo/colors/red/edge,
+/area/kutjevo/exterior/lz_dunes)
+"US" = (
+/turf/open/floor/kutjevo/tan/alt_edge/northeast,
+/area/kutjevo/exterior/lz_dunes)
+"UX" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor/kutjevo/tan/alt_edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"Ve" = (
+/turf/open/floor/kutjevo/colors/red/edge/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"Vg" = (
+/obj/structure/machinery/light,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Vo" = (
+/obj/structure/cargo_container/hybrisa/containersextended/tanleft{
+	layer = 3.1
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"VI" = (
+/turf/open/gm/river/desert/shallow,
+/area/kutjevo/exterior/lz_dunes)
+"VK" = (
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/tan/alt_edge/southeast,
+/area/kutjevo/exterior/lz_dunes)
+"VV" = (
+/obj/structure/largecrate/random/mini/small_case,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Wc" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"Wj" = (
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"Wm" = (
+/obj/structure/closet/secure_closet/security_empty,
+/obj/item/weapon/gun/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/ammo_magazine/rifle/m16,
+/obj/item/clothing/suit/armor/vest/security,
+/obj/item/clothing/accessory/storage/black_vest,
+/obj/item/clothing/accessory/holobadge,
+/obj/item/storage/belt/marine,
+/obj/effect/landmark/objective_landmark/close,
+/obj/item/clothing/under/marine/veteran/pmc/corporate/kutjevo,
+/turf/open/floor/kutjevo/colors/red/inner_corner/west,
+/area/kutjevo/exterior/lz_dunes)
+"Wo" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/obj/effect/landmark/objective_landmark/close,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/exterior/lz_dunes)
+"Ws" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"WI" = (
+/obj/structure/barricade/wooden{
+	dir = 1;
+	pixel_y = 13
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"WO" = (
+/obj/structure/barricade/wooden{
+	dir = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/kutjevo/tan/multi_tiles/north,
+/area/kutjevo/exterior/lz_dunes)
+"Xa" = (
+/turf/open/floor/kutjevo/tan/alt_edge,
+/area/kutjevo/exterior/lz_dunes)
+"Xh" = (
+/obj/item/trash/cigbutt,
+/obj/item/stack/sheet/wood,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Xq" = (
+/turf/closed/wall/kutjevo/rock,
+/area/kutjevo/exterior/lz_dunes)
+"Xr" = (
+/obj/structure/flora/grass/desert/lightgrass_6,
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/lz_dunes)
+"XJ" = (
+/turf/open/floor/kutjevo/colors/orange/edge/east,
+/area/kutjevo/exterior/lz_dunes)
+"XY" = (
+/obj/item/ammo_casing/cartridge,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"Ye" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/kutjevo/colors/orange/edge/west,
+/area/kutjevo/exterior/lz_dunes)
+"Yi" = (
+/obj/structure/machinery/landinglight/ds1/delaythree{
+	dir = 8
+	},
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"Yv" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	name = "\improper Landing Zone Shutters";
+	id = "kutjevo_landingzone_ne"
+	},
+/turf/open/floor/almayer/research/containment/floor1,
+/area/kutjevo/exterior/lz_dunes)
+"Yy" = (
+/obj/structure/machinery/landinglight/ds1,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"YC" = (
+/obj/structure/cargo_container/hybrisa/containersextended/whitewyleft,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"YM" = (
+/obj/item/weapon/gun/revolver/cmb,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/kutjevo/multi_tiles/east,
+/area/kutjevo/exterior/lz_dunes)
+"YN" = (
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/exterior/lz_dunes)
+"YO" = (
+/obj/structure/platform/stone/kutjevo,
+/obj/structure/platform/stone/kutjevo/east,
+/turf/open/gm/river/desert/shallow_edge/north,
+/area/kutjevo/exterior/lz_dunes)
+"YP" = (
+/obj/structure/sign/safety/bathwomens,
+/turf/closed/wall/kutjevo/colony/reinforced,
+/area/kutjevo/exterior/lz_dunes)
+"YV" = (
+/obj/structure/platform/stone/kutjevo/north,
+/obj/structure/platform/stone/kutjevo/west,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_dunes)
+"Zc" = (
+/obj/structure/window/framed/kutjevo/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "kutjevo_landingzone";
+	name = "\improper Landing Zone Shutters"
+	},
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/exterior/lz_dunes)
+"Zo" = (
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/exterior/lz_river)
+"Zx" = (
+/obj/structure/machinery/landinglight/ds1/delaytwo,
+/turf/open/floor/kutjevo/multi_tiles,
+/area/kutjevo/exterior/lz_dunes)
+"ZD" = (
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/floor/kutjevo/multi_tiles/southeast,
+/area/kutjevo/exterior/lz_dunes)
+
+(1,1,1) = {"
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+Fx
+nh
+nh
+nh
+"}
+(2,1,1) = {"
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+nh
+nh
+"}
+(3,1,1) = {"
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+nh
+nh
+"}
+(4,1,1) = {"
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+nh
+nh
+"}
+(5,1,1) = {"
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+nh
+nh
+"}
+(6,1,1) = {"
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+nh
+nh
+"}
+(7,1,1) = {"
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+sL
+xy
+xy
+sL
+sL
+Wj
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+nh
+nh
+"}
+(8,1,1) = {"
+Lg
+om
+om
+om
+om
+om
+om
+om
+om
+om
+om
+om
+om
+om
+om
+om
+om
+om
+TV
+Ry
+zc
+zc
+BW
+xy
+xy
+TV
+om
+om
+om
+om
+om
+om
+om
+om
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+"}
+(9,1,1) = {"
+Lg
+om
+Lr
+YC
+Ot
+up
+up
+up
+ak
+Ch
+pX
+up
+wS
+up
+up
+up
+wS
+up
+up
+up
+eM
+up
+up
+GU
+up
+yi
+up
+wS
+yG
+Ch
+up
+wS
+up
+om
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+"}
+(10,1,1) = {"
+Lg
+om
+Di
+qs
+VK
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+lz
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ux
+vs
+zc
+YN
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+"}
+(11,1,1) = {"
+Lg
+om
+SS
+pX
+Ow
+qr
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+qr
+Is
+up
+Ry
+xy
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+nh
+"}
+(12,1,1) = {"
+Lg
+om
+Wo
+oU
+Xa
+wY
+ss
+Ci
+OM
+wf
+Jz
+Ci
+OM
+wf
+Jz
+Ci
+OM
+wf
+Jz
+Ci
+OM
+wf
+Jz
+Ci
+OM
+wf
+Jz
+Ci
+OM
+ss
+wY
+Is
+up
+xy
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+iz
+CT
+eQ
+rM
+Lg
+Lg
+nh
+"}
+(13,1,1) = {"
+Lg
+om
+Bp
+Xh
+Xa
+wY
+Yy
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+vI
+wY
+Is
+up
+TV
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+Lg
+YV
+Gm
+qy
+ze
+yZ
+KE
+Hl
+Lg
+nh
+"}
+(14,1,1) = {"
+Lg
+om
+py
+dU
+ej
+wY
+Ne
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+oc
+wY
+Is
+Vg
+lm
+lm
+lm
+lm
+lm
+lm
+Lg
+YV
+Jw
+zc
+sL
+sL
+Ih
+VI
+qi
+Lg
+nh
+"}
+(15,1,1) = {"
+om
+om
+qS
+Do
+Xa
+wY
+Zx
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+kZ
+wY
+Is
+up
+lm
+Hz
+et
+Ye
+Ak
+lm
+lm
+zO
+sL
+pF
+xy
+sL
+ze
+yZ
+KE
+Hl
+nh
+"}
+(16,1,1) = {"
+eL
+qr
+cV
+up
+Xa
+wY
+lk
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+ks
+rY
+Is
+ho
+FQ
+up
+up
+Kl
+ho
+lV
+Fb
+bT
+zc
+bT
+sL
+pF
+sL
+Ih
+VI
+xW
+nh
+"}
+(17,1,1) = {"
+eL
+Mc
+bT
+up
+Xa
+wY
+Yy
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+vI
+wY
+Is
+NK
+FQ
+ab
+Pp
+Pp
+aa
+lV
+SP
+bT
+bT
+zc
+sL
+sL
+zc
+Ih
+px
+YO
+nh
+"}
+(18,1,1) = {"
+eL
+Mc
+bT
+up
+Xa
+wY
+Ne
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+hA
+wY
+ac
+PB
+FQ
+Pp
+ab
+Pp
+PB
+lV
+SP
+bT
+zc
+bT
+sL
+xy
+sL
+ze
+hR
+Lg
+nh
+"}
+(19,1,1) = {"
+eL
+qr
+bT
+up
+Xa
+wY
+Zx
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+ag
+wY
+ad
+PB
+FQ
+Pp
+xp
+WO
+PB
+lV
+SP
+bT
+bT
+zc
+zc
+pF
+zc
+nZ
+Lg
+Lg
+nh
+"}
+(20,1,1) = {"
+om
+om
+bT
+up
+Xa
+wY
+mP
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+ks
+ae
+Is
+ho
+FQ
+up
+ho
+up
+mf
+lV
+Fg
+bT
+sL
+bT
+sL
+zc
+pF
+aL
+Lg
+Lg
+nh
+"}
+(21,1,1) = {"
+th
+om
+RY
+up
+Xa
+wY
+Yy
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+vI
+wY
+ad
+mf
+lm
+XJ
+XJ
+XJ
+XJ
+lm
+lm
+wO
+bT
+sL
+pF
+Xr
+xy
+MR
+Lg
+Lg
+nh
+"}
+(22,1,1) = {"
+th
+om
+zf
+GU
+Xa
+wY
+Ne
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+oc
+wY
+ad
+Vg
+lm
+iC
+vd
+my
+iC
+lm
+gj
+tv
+zc
+bT
+xy
+pF
+GD
+Rg
+Rg
+Lg
+nh
+"}
+(23,1,1) = {"
+th
+om
+iy
+VV
+Xa
+wY
+Zx
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+kZ
+wY
+ad
+up
+fv
+kG
+gw
+dD
+gF
+lm
+lm
+lT
+bT
+bT
+sL
+Lg
+Lg
+Rg
+Kf
+sL
+nh
+"}
+(24,1,1) = {"
+th
+om
+cs
+up
+Xa
+wY
+ss
+bH
+Uw
+Yi
+Pe
+bH
+Uw
+Yi
+Pe
+bH
+Uw
+Yi
+Pe
+bH
+Uw
+Yi
+Pe
+bH
+Uw
+Yi
+Pe
+bH
+Uw
+ss
+wY
+ad
+up
+lm
+HK
+aC
+aC
+UR
+LO
+Zc
+zc
+xy
+sL
+Lg
+Lg
+Lg
+Lg
+pF
+xy
+nh
+"}
+(25,1,1) = {"
+th
+om
+UK
+up
+Xa
+qr
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+Hg
+qr
+Is
+up
+iC
+wu
+aC
+aC
+UR
+Hm
+Zc
+sL
+bT
+zc
+Lg
+Lg
+Lg
+Rg
+as
+Xr
+nh
+"}
+(26,1,1) = {"
+om
+om
+om
+nD
+ki
+UB
+UB
+UB
+UB
+UB
+UB
+UB
+UB
+UB
+UB
+cw
+UB
+kA
+UB
+UB
+UX
+UB
+UB
+UB
+UB
+UB
+UB
+UB
+UB
+UB
+UB
+Pn
+up
+iC
+Jn
+xh
+Ve
+lB
+SF
+Zc
+pF
+zc
+bT
+Lg
+Lg
+Rg
+Rg
+Rg
+sL
+nh
+"}
+(27,1,1) = {"
+nh
+nh
+om
+DE
+Xa
+wD
+TL
+wD
+TL
+wD
+wD
+Fc
+wD
+lt
+Fc
+YM
+Fc
+ml
+wD
+wD
+wD
+wD
+wD
+Xa
+XY
+wD
+wD
+wD
+wD
+wD
+wD
+Is
+up
+iC
+Ma
+HQ
+Wm
+lm
+lm
+Cg
+as
+bT
+zc
+MR
+Lg
+Lg
+Rg
+Kf
+xy
+nh
+"}
+(28,1,1) = {"
+nh
+nh
+om
+sY
+Tf
+ra
+ra
+ra
+al
+LC
+ra
+pL
+cP
+js
+yU
+ra
+ra
+KT
+ra
+ra
+ra
+ra
+ra
+ov
+ra
+lz
+AG
+of
+ra
+ra
+ra
+US
+Vg
+lm
+lm
+lm
+lm
+lm
+Xq
+Xq
+aw
+zc
+sL
+MR
+Rg
+Rg
+Kf
+pF
+Lg
+nh
+"}
+(29,1,1) = {"
+nh
+nh
+om
+om
+Xa
+up
+Dw
+up
+am
+up
+He
+Vo
+wt
+Is
+np
+up
+Dw
+up
+ZD
+up
+Dw
+nd
+Dw
+Xa
+Dw
+rx
+Dw
+Pu
+Dw
+up
+Dw
+Is
+up
+lm
+lm
+lm
+Xq
+Xq
+Xq
+Rg
+Kf
+Xr
+zc
+wq
+Rg
+aw
+pF
+sL
+Lg
+nh
+"}
+(30,1,1) = {"
+nh
+nh
+DK
+lm
+Xa
+Dw
+up
+Dw
+yG
+Dw
+Nt
+hg
+ur
+Is
+UB
+uw
+UB
+UB
+UB
+UB
+UB
+uw
+UB
+Xa
+up
+gR
+Jt
+MA
+up
+ah
+up
+Is
+Pp
+PB
+ex
+Fb
+bT
+wq
+Kp
+Kf
+xy
+bT
+zc
+pF
+MR
+Rg
+as
+xy
+Lg
+nh
+"}
+(31,1,1) = {"
+nh
+nh
+MZ
+mf
+Xa
+up
+NB
+MN
+an
+up
+kh
+GN
+np
+Is
+aj
+lm
+Fd
+YP
+lm
+Fd
+Eb
+lm
+ID
+Xa
+Ge
+up
+vW
+Bj
+np
+up
+Dw
+Is
+ab
+PB
+ex
+SP
+sL
+bT
+zc
+pF
+tK
+zc
+bT
+zc
+AE
+Kp
+Kf
+xy
+Lg
+nh
+"}
+(32,1,1) = {"
+nh
+nh
+Pb
+Pp
+Xa
+Dw
+up
+Dw
+up
+Dw
+Or
+Dw
+up
+Is
+AI
+lm
+bj
+BT
+lm
+bj
+md
+lm
+tB
+Xa
+Ch
+Dw
+cW
+aF
+hG
+Dw
+af
+Is
+PB
+NK
+ex
+Fg
+bT
+zc
+bT
+sL
+xy
+bT
+zc
+bT
+bT
+zc
+bT
+zc
+xy
+Lg
+"}
+(33,1,1) = {"
+nh
+nh
+xv
+WI
+Xa
+up
+Dw
+up
+Dw
+up
+np
+JK
+Dw
+Dx
+Ws
+lm
+iX
+ts
+lm
+So
+uT
+lm
+Dk
+Xa
+Dw
+up
+Dw
+mf
+jz
+af
+Dw
+Is
+up
+lm
+lm
+lm
+Wc
+xy
+bT
+bT
+bT
+zc
+bT
+zc
+sL
+bT
+zc
+bT
+zc
+sL
+"}
+(34,1,1) = {"
+nh
+nh
+xG
+Oj
+TG
+UB
+Cm
+UB
+HF
+HF
+FJ
+vC
+Qd
+Pn
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+lm
+TG
+UB
+UB
+FJ
+kA
+HF
+HF
+UB
+Pn
+Vg
+lm
+Xq
+Xq
+sL
+bT
+zc
+bT
+xy
+bT
+xy
+sL
+bT
+xy
+bT
+sL
+bT
+zc
+"}
+(35,1,1) = {"
+nh
+nh
+DK
+lm
+Ch
+yG
+Kc
+Kc
+Bd
+Bd
+lm
+Pd
+Pd
+BK
+lm
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+Xq
+lm
+BK
+BK
+BK
+lm
+Kc
+Bd
+ai
+Kc
+up
+up
+lm
+Xq
+Xq
+sL
+zc
+bT
+xy
+sL
+xy
+zc
+zc
+gj
+Hh
+PE
+bf
+EO
+xy
+"}
+(36,1,1) = {"
+nh
+nh
+DK
+lm
+lm
+lm
+Yv
+Yv
+Yv
+Yv
+lm
+Sd
+Ty
+Rg
+lm
+Xq
+Xq
+Xq
+sL
+sL
+Xq
+Xq
+lm
+wV
+Rg
+Rg
+lm
+lO
+lO
+lO
+lO
+lm
+lm
+lm
+Xq
+sL
+xy
+bT
+tK
+xC
+zc
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}
+(37,1,1) = {"
+nh
+nh
+DK
+Lg
+Lg
+Lg
+fZ
+Mx
+Mx
+HT
+sL
+nS
+wq
+BE
+Kf
+sL
+sL
+sL
+xy
+zc
+sL
+pF
+wq
+Kf
+wq
+Kp
+Kf
+fZ
+OG
+OG
+HT
+sL
+xy
+zc
+sL
+zc
+bT
+zc
+bT
+zc
+sL
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}
+(38,1,1) = {"
+nh
+nh
+DK
+Lg
+Lg
+tw
+zc
+bT
+bT
+bT
+xy
+bT
+IP
+bT
+pF
+sL
+bT
+zc
+zc
+sL
+zc
+sL
+zc
+pF
+sL
+bT
+pF
+bT
+zc
+bT
+bT
+bT
+zc
+bT
+tK
+bT
+zc
+zc
+zc
+pF
+sL
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}
+(39,1,1) = {"
+nh
+nh
+DK
+Lg
+Lg
+sL
+xy
+bT
+xy
+bT
+bT
+xy
+bT
+zc
+bT
+zc
+xy
+bT
+sL
+bT
+sL
+xy
+sL
+bT
+sL
+xy
+bT
+zc
+bT
+zc
+bT
+zc
+bT
+zc
+bT
+xy
+bT
+zc
+Xr
+sL
+Xq
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}
+(40,1,1) = {"
+nh
+nh
+IK
+qQ
+aW
+qQ
+Zo
+qQ
+bT
+sL
+bT
+zc
+zc
+xy
+zc
+sL
+bT
+pF
+xy
+sL
+zc
+bT
+zc
+sL
+zc
+bT
+zc
+bT
+sL
+bT
+sL
+ee
+KN
+yD
+bT
+bT
+zc
+GS
+KN
+Xq
+Xq
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}
+(41,1,1) = {"
+nh
+nh
+PS
+qQ
+qQ
+LF
+qQ
+qQ
+zc
+zc
+sL
+Xq
+sL
+zc
+zc
+IP
+xy
+GD
+Xq
+Xq
+JU
+zc
+xy
+zc
+sL
+zc
+zc
+sL
+xy
+zc
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}
+(42,1,1) = {"
+nh
+nh
+PS
+qQ
+aW
+qQ
+qQ
+LF
+TS
+sL
+Xq
+Xq
+Xq
+sL
+pF
+GD
+sU
+Rg
+Xq
+Xq
+at
+at
+at
+at
+at
+at
+at
+at
+at
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}
+(43,1,1) = {"
+nh
+nh
+PA
+qQ
+qQ
+aW
+Zo
+qQ
+LF
+Zo
+Xq
+Xq
+sL
+xy
+zc
+MR
+Rg
+Xq
+Xq
+zJ
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}
+(44,1,1) = {"
+nh
+nh
+DK
+HL
+AL
+AL
+AL
+KS
+KS
+KS
+Xq
+Xq
+bd
+bd
+bd
+Xq
+Xq
+Xq
+Xq
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+nh
+"}

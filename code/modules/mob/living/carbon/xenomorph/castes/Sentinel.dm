@@ -259,9 +259,11 @@
 		sns.increment_stack_count(-sns.stack_count/3)
 		apply_neuro(target_human, 0, sns.stack_count/2, TRUE, TRUE, TRUE, FALSE)
 
-
+	xeno.flick_attack_overlay(target_human, "headbite")
+	xeno.animation_attack_on(target_human, pixel_offset = 16)
 	target_human.Stun(stun_duration)
 	target_human.KnockDown(stun_duration)
+	playsound(target_human,'sound/weapons/alien_bite2.ogg', 50, TRUE)
 	apply_cooldown()
 
 

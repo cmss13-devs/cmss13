@@ -558,8 +558,8 @@
 /datum/chem_property/positive/neurocryogenic/process(mob/living/M, potency = 1, delta_time)
 	if(prob(10 * delta_time))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
-	M.apply_effect(20, PARALYZE)
-	M.apply_effect(20, STUN)
+	M.KnockDown(20)
+	M.Stun(20)
 
 /datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.bodytemperature = max(BODYTEMP_CRYO_LIQUID_THRESHOLD, M.bodytemperature - 2.5 * potency * delta_time)
@@ -595,12 +595,15 @@
 			if(embryo.counter > 0)
 				embryo.counter = embryo.counter - (potency * delta_time)
 				current_human.take_limb_damage(0, POTENCY_MULTIPLIER_MEDIUMLOW*potency)
+				if(prob(potency * 5)) //Higher chance of notice with higher potency makes sense
+					to_chat(current_human, SPAN_NOTICE("You feel something inside you squirming in agitation!")) //Inform the marine their embryo is dying
 			else
 				embryo.stage--
 				if(embryo.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
-					qdel(embryo)
+					embryo.forceMove(current_human.loc) //forces the embryo out of the container that is the human host and onto the ground
 					current_human.take_limb_damage(0,rand(20,40))
 					current_human.vomit()
+					to_chat(current_human, SPAN_NOTICE("You throw up several bits of wormlike matter!")) //Embryo is dead
 				else
 					embryo.counter = embryo.per_stage_hugged_time - (potency * delta_time)
 
@@ -1104,11 +1107,11 @@
 
 /datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, potency = 1, delta_time)
 	M.make_jittery(5) //Overdose causes a spasm
-	M.apply_effect(20, PARALYZE)
+	M.KnockDown(20)
+	M.Stun(20)
 
 /datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, potency = 1, delta_time)
-	M.drowsyness = max(M.drowsyness, 20)
-	if(!ishuman(M)) //Critical overdose causes total blackout and heart damage. Too much stimulant
+	if(!ishuman(M)) //Critical overdose causes heart damage. Too much stimulant
 		return
 	M.apply_internal_damage(0.25 * delta_time, "heart")
 	if(prob(5 * delta_time))

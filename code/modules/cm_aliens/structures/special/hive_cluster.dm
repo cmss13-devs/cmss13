@@ -19,12 +19,15 @@
 	var/damaged = FALSE
 	var/plasma_stored = 0
 	var/plasma_required_to_repair = 300
+	COOLDOWN_DECLARE(time_for_auto_repair)
 
 /obj/effect/alien/resin/special/cluster/Initialize(mapload, hive_ref)
 	. = ..()
 	node = place_node()
 	update_minimap_icon()
 
+	RegisterSignal(SSdcs, COMSIG_GLOB_BOOST_XENOMORPH_WALLS, PROC_REF(start_boost))
+	RegisterSignal(SSdcs, COMSIG_GLOB_STOP_BOOST_XENOMORPH_WALLS, PROC_REF(stop_boost))
 /obj/effect/alien/resin/special/cluster/proc/update_minimap_icon()
 	SSminimaps.remove_marker(src)
 	SSminimaps.add_marker(src, z, MINIMAP_FLAG_XENO, "cluster")
@@ -40,6 +43,47 @@
 		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
+
+
+/obj/effect/alien/resin/special/cluster/process()
+	. = ..()
+
+	if(!boosted_structure)
+		STOP_PROCESSING(SSobj, src)
+		return
+
+	if(!COOLDOWN_FINISHED(src, time_for_auto_repair))
+		return
+
+	if(health <= maxhealth)
+		automatic_repair()
+
+	COOLDOWN_START(src, time_for_auto_repair, 20 SECONDS) // 20 seconds because it takes 15 seconds for weeds to grow back.
+
+/obj/effect/alien/resin/special/cluster/proc/start_boost(source, hive_purchaser)
+	SIGNAL_HANDLER
+	if(hive_purchaser != src.linked_hive.hivenumber)
+		return
+	else
+		boosted_structure = TRUE
+		START_PROCESSING(SSdcs, src)
+
+/obj/effect/alien/resin/special/cluster/proc/stop_boost(source, hive_purchaser)
+	SIGNAL_HANDLER
+	if(hive_purchaser != src.linked_hive.hivenumber)
+		return
+	else
+		boosted_structure = FALSE
+
+/obj/effect/alien/resin/special/cluster/proc/automatic_repair()
+	damaged = FALSE
+	health = initial(health)
+	for(var/obj/effect/alien/weeds/W as anything in node.children)
+		if(get_dist(node, W) >= node.node_range)
+			continue
+		if(istype(W, /obj/effect/alien/weeds/weedwall))
+			continue
+		addtimer(CALLBACK(W, TYPE_PROC_REF(/obj/effect/alien/weeds, weed_expand), node), CLUSTER_WEEDS_REGROWTH_TIME, TIMER_UNIQUE)
 
 /obj/effect/alien/resin/special/cluster/proc/do_repair(mob/living/carbon/xenomorph/xeno)
 	if(!istype(xeno))

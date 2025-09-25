@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	var/age = 19 //age of character
 	var/spawnpoint = "Arrivals Shuttle" //where this character will spawn (0-2).
 	var/underwear = "Boxers (Camo Conforming)" //underwear type
-	var/undershirt = "Undershirt (Tan)" //undershirt type
+	var/undershirt = "Undershirt (Tan) (Camo Conforming)" //undershirt type
 	var/backbag = 2 //backpack type
 	var/preferred_armor = "Random" //preferred armor type (from their primary prep vendor)
 
@@ -298,7 +298,7 @@ GLOBAL_LIST_INIT(be_special_flags, list(
 	VAR_PRIVATE/list/loadout = list()
 
 	/// Mapping of jobs to slot numbers to names, to allow users to customise slots
-	var/list/loadout_slot_names
+	var/list/loadout_slot_names = list()
 
 	/// Which slot is currently in use
 	var/selected_loadout_slot = 1

@@ -260,7 +260,7 @@
 	name = "squadranks"
 
 /datum/asset/spritesheet/ranks/register()
-	var/icon_file = 'icons/mob/hud/marine_hud.dmi'
+	var/icon_file = 'icons/mob/hud/factions/marine.dmi'
 
 	var/list/icon_data = list(
 		list("Mar", null),
@@ -276,6 +276,7 @@
 		list("SpcSn", "hudsquad_spec_sniper"),
 		list("SpcGr", "hudsquad_spec_grenadier"),
 		list("SpcShp", "hudsquad_spec_sharp"),
+		list("SpcHvy", "hudsquad_spec_heavy"),
 		list("SpcPy", "hudsquad_spec_pyro"),
 		list("TL", "hudsquad_tl"),
 		list("SL", "hudsquad_leader"),
@@ -285,7 +286,7 @@
 		var/color = squad.equipment_color
 		for(var/iref in icon_data)
 			var/list/iconref = iref
-			var/icon/background = icon('icons/mob/hud/marine_hud.dmi', "hudsquad", SOUTH)
+			var/icon/background = icon('icons/mob/hud/factions/marine.dmi', "hudsquad", SOUTH)
 			background.Blend(color, ICON_MULTIPLY)
 			if(iconref[2])
 				var/icon/squad_icon = icon(icon_file, iconref[2], SOUTH)
